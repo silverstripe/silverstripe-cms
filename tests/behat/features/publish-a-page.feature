@@ -35,7 +35,7 @@ So that only high quality changes are seen by our visitors
 		When I click "More options" in the "#ActionMenus" element
 		Then I should not see "Unpublish" in the "#ActionMenus_MoreOptions" element
 		And I should see "Not published" in the "#ActionMenus_MoreOptions" element
-		And I should see "Delete draft" in the "#ActionMenus_MoreOptions" element
+		And I should see "Archive" in the "#ActionMenus_MoreOptions" element
 		And I should see a "Save & publish" button
 		And I should see a "Saved" button
 
@@ -48,7 +48,7 @@ So that only high quality changes are seen by our visitors
 		When I press the "Publish" button
 		And I click "More options" in the "#ActionMenus" element
 		Then I should see "Unpublish" in the "#ActionMenus_MoreOptions" element
-		And I should see "Delete draft" in the "#ActionMenus_MoreOptions" element
+		And I should see "Archive" in the "#ActionMenus_MoreOptions" element
 		And I should see a "Published" button
 		And I should see a "Saved" button
 
@@ -64,7 +64,7 @@ So that only high quality changes are seen by our visitors
 		And I click on "Hello" in the tree
 
 		When I click "More options" in the "#ActionMenus" element
-		And I press the "Unpublish" button
+		And I press the "Unpublish" button, confirming the dialog
 
 		Then I press the "Log out" button
 		And I go to "/hello"
@@ -80,16 +80,16 @@ So that only high quality changes are seen by our visitors
 		And I click "More options" in the "#ActionMenus" element
 		Then I should see "Unpublish" in the "#ActionMenus_MoreOptions" element
 
-		When I press the "Unpublish" button
+		When I press the "Unpublish" button, confirming the dialog
 		And I click "More options" in the "#ActionMenus" element
-		Then I should see "Delete draft" in the "#ActionMenus_MoreOptions" element
+		Then I should see "Archive" in the "#ActionMenus_MoreOptions" element
 
-		When I press the "Delete draft" button
+		When I press the "Archive" button, confirming the dialog
 		Then I should see a "Restore" button
 		And I should not see a "Published" button
 		And I should not see a "Save & publish" button
 		And I should not see a "Saved" button
 		And I should not see a "Save draft" button
 
-		When I press the "Restore" button
+		When I press the "Restore" button, confirming the dialog
 		Then I should see a "Save & publish" button

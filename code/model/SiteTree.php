@@ -509,7 +509,12 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 */
 	public function RelativeLink($action = null) {
 		if($this->ParentID && self::config()->nested_urls) {
-			$base = $this->Parent()->RelativeLink($this->URLSegment);
+			$parent = $this->Parent();
+			// If page is removed select parent from version history (for archive page view)
+			if((!$parent || !$parent->exists()) && $this->IsDeletedFromStage) {
+				$parent = Versioned::get_latest_version('SiteTree', $this->ParentID);
+			}
+			$base = $parent->RelativeLink($this->URLSegment);
 		} elseif(!$action && $this->URLSegment == RootURLController::get_homepage_link()) {
 			// Unset base for root-level homepages.
 			// Note: Homepages with action parameters (or $action === true) 
@@ -2298,20 +2303,50 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					if($this->canDelete() && $this->canDeleteFromLive()) {
 						// "delete from live"
 						$majorActions->push(
-							FormAction::create('deletefromlive',_t('CMSMain.DELETEFP','Delete'))->addExtraClass('ss-ui-action-destructive')
+							FormAction::create('deletefromlive',_t('CMSMain.DELETEFP','Delete'))
+								->addExtraClass('ss-ui-action-destructive')
 						);
 					}
 				} else {
+					// Determine if we should force a restore to root (where once it was a subpage)
+					$restoreToRoot = $this->isParentArchived();
+					
 					// "restore"
+					$title = $restoreToRoot
+						? _t('CMSMain.RESTORE_TO_ROOT','Restore draft at top level')
+						: _t('CMSMain.RESTORE','Restore draft');
+					$description = $restoreToRoot
+						? _t('CMSMain.RESTORE_TO_ROOT_DESC','Restore the archived version to draft as a top level page')
+						: _t('CMSMain.RESTORE_DESC', 'Restore the archived version to draft');
 					$majorActions->push(
-						FormAction::create('restore',_t('CMSMain.RESTORE','Restore'))->setAttribute('data-icon', 'decline')
+						FormAction::create('restore', $title)
+							->setDescription($description)
+							->setAttribute('data-to-root', $restoreToRoot)
+							->setAttribute('data-icon', 'decline')
 					);
 				}
 			} else {
-				if($this->canDelete()) {
-					// "delete"
+				// Detect use of legacy actions
+				// {@see CMSMain::enabled_legacy_actions}
+				$legacy = CMSMain::config()->enabled_legacy_actions;
+				if(in_array('CMSBatchAction_Delete', $legacy)) {
+					Deprecation::notice('4.0', 'Delete from Stage is deprecated. Use Archive instead.');
+					if($this->canDelete()) {
+						// delete
+						$moreOptions->push(
+							FormAction::create('delete',_t('CMSMain.DELETE','Delete draft'))
+								->addExtraClass('delete ss-ui-action-destructive')
+						);
+					}
+				} elseif($this->canArchive()) {
+					// "archive"
 					$moreOptions->push(
-						FormAction::create('delete',_t('CMSMain.DELETE','Delete draft'))->addExtraClass('delete ss-ui-action-destructive')
+						FormAction::create('archive',_t('CMSMain.ARCHIVE','Archive'))
+							->setDescription(_t(
+								'SiteTree.BUTTONARCHIVEDESC',
+								'Unpublish and send to archive'
+							))
+							->addExtraClass('delete ss-ui-action-destructive')
 					);
 				}
 			
@@ -2353,6 +2388,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * 
 	 * @uses SiteTreeExtension->onBeforePublish()
 	 * @uses SiteTreeExtension->onAfterPublish()
+	 * @return bool True if published
 	 */
 	public function doPublish() {
 		if (!$this->canPublish()) return false;
@@ -2461,6 +2497,22 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 		
 		$this->invokeWithExtensions('onAfterRevertToLive', $this);
+		return true;
+	}
+
+	/**
+	 * Determine if this page references a parent which is archived, and not available in stage
+	 *
+	 * @return bool True if there is an archived parent
+	 */
+	protected function isParentArchived() {
+		if($parentID = $this->ParentID) {
+			$parentPage = Versioned::get_latest_version("SiteTree", $parentID);
+			if(!$parentPage || $parentPage->IsDeletedFromStage) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	/**
@@ -2469,6 +2521,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return self
 	 */
 	public function doRestoreToStage() {
+		// Ensure that the parent page is restored, otherwise restore to root
+		if($this->isParentArchived()) {
+			$this->ParentID = 0;
+		}
+		
 		// if no record can be found on draft stage (meaning it has been "deleted from draft" before),
 		// create an empty record
 		if(!DB::prepared_query("SELECT \"ID\" FROM \"SiteTree\" WHERE \"ID\" = ?", array($this->ID))->value()) {
@@ -2494,6 +2551,50 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		Versioned::reading_stage($oldStage);
 		
 		return $result;
+	}
+
+	/**
+	 * Removes the page from both live and stage
+	 *
+	 * @return bool Success
+	 */
+	public function doArchive() {
+		if($this->doUnpublish()) {
+			$this->delete();
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Check if the current user is allowed to archive this page.
+	 * If extended, ensure that both canDelete and canDeleteFromLive are extended also
+	 *
+	 * @param Member $member
+	 * @return bool
+	 */
+	public function canArchive($member = null) {
+		if(!$member) {
+            $member = Member::currentUser();
+        }
+		
+		// Standard mechanism for accepting permission changes from extensions
+		$extended = $this->extendedCan('canArchive', $member);
+		if($extended !== null) {
+            return $extended;
+        }
+
+		// Check if this page can be deleted
+        if(!$this->canDelete($member)) {
+            return false;
+        }
+        
+        // If published, check if we can delete from live
+        if($this->ExistsOnLive && !$this->canDeleteFromLive($member)) {
+            return false;
+        }
+        
+		return true;
 	}
 
 	/**
@@ -2689,9 +2790,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						'title' => _t('SiteTree.REMOVEDFROMDRAFTHELP', 'Page is published, but has been deleted from draft'),
 					);
 				} else {
-					$flags['deletedonlive'] = array(
-						'text' => _t('SiteTree.DELETEDPAGESHORT', 'Deleted'),
-						'title' => _t('SiteTree.DELETEDPAGEHELP', 'Page is no longer published'),
+					$flags['archived'] = array(
+						'text' => _t('SiteTree.ARCHIVEDPAGESHORT', 'Archived'),
+						'title' => _t('SiteTree.ARCHIVEDPAGEHELP', 'Page is removed from draft and live'),
 					);
 				}
 			} else if($this->IsAddedToStage) {

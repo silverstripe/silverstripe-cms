@@ -36,6 +36,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	private static $page_length = 15;
 	
 	private static $allowed_actions = array(
+		'archive',
 		'buildbrokenlinks',
 		'deleteitems',
 		'DeleteItemsForm',
@@ -56,6 +57,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'ListViewForm',
 		'childfilter',
 	);
+
+	/**
+	 * Enable legacy batch actions.
+	 * @deprecated since version 4.0
+	 * @var array
+	 * @config
+	 */
+	private static $enabled_legacy_actions = array();
 	
 	public function init() {
 		// set reading lang
@@ -88,8 +97,24 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		CMSBatchActionHandler::register('publish', 'CMSBatchAction_Publish');
 		CMSBatchActionHandler::register('unpublish', 'CMSBatchAction_Unpublish');
-		CMSBatchActionHandler::register('delete', 'CMSBatchAction_Delete');
-		CMSBatchActionHandler::register('deletefromlive', 'CMSBatchAction_DeleteFromLive');
+		
+
+		// Check legacy actions
+		$legacy = $this->config()->enabled_legacy_actions;
+
+		// Delete from live is unnecessary since we have unpublish which does the same thing
+		if(in_array('CMSBatchAction_DeleteFromLive', $legacy)) {
+			Deprecation::notice('4.0', 'Delete From Live is deprecated. Use Un-publish instead');
+			CMSBatchActionHandler::register('deletefromlive', 'CMSBatchAction_DeleteFromLive');
+		}
+
+		// Delete action
+		if(in_array('CMSBatchAction_Delete', $legacy)) {
+			Deprecation::notice('4.0', 'Delete from Stage is deprecated. Use Archive instead.');
+			CMSBatchActionHandler::register('delete', 'CMSBatchAction_Delete');
+		} else {
+			CMSBatchActionHandler::register('archive', 'CMSBatchAction_Archive');
+		}
 	}
 
 	public function index($request) {
@@ -1059,13 +1084,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * @see deletefromlive()
 	 */
 	public function delete($data, $form) {
+		Deprecation::notice('4.0', 'Delete from stage is deprecated. Use archive instead');
 		$id = $data['ID'];
 		$record = DataObject::get_by_id("SiteTree", $id);
 		if($record && !$record->canDelete()) return Security::permissionFailure();
 		if(!$record || !$record->ID) throw new SS_HTTPResponse_Exception("Bad record ID #$id", 404);
 		
-		// save ID and delete record
-		$recordID = $record->ID;
+		// Delete record
 		$record->delete();
 
 		$this->response->addHeader(
@@ -1073,6 +1098,34 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			rawurlencode(sprintf(_t('CMSMain.REMOVEDPAGEFROMDRAFT',"Removed '%s' from the draft site"), $record->Title))
 		);
 		
+		// Even if the record has been deleted from stage and live, it can be viewed in "archive mode"
+		return $this->getResponseNegotiator()->respond($this->getRequest());
+	}
+
+	/**
+	 * Delete this page from both live and stage
+	 *
+	 * @param type $data
+	 * @param type $form
+	 */
+	public function archive($data, $form) {
+		$id = $data['ID'];
+		$record = DataObject::get_by_id("SiteTree", $id);
+		if(!$record || !$record->exists()) {
+			throw new SS_HTTPResponse_Exception("Bad record ID #$id", 404);
+		}
+		if(!$record->canArchive()) {
+			return Security::permissionFailure();
+		}
+
+		// Archive record
+		$record->doArchive();
+
+		$this->response->addHeader(
+			'X-Status',
+			rawurlencode(sprintf(_t('CMSMain.ARCHIVEDPAGE',"Archived page '%s'"), $record->Title))
+		);
+
 		// Even if the record has been deleted from stage and live, it can be viewed in "archive mode"
 		return $this->getResponseNegotiator()->respond($this->getRequest());
 	}
