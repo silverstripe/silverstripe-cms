@@ -17,8 +17,8 @@ class ContentControllerSearchExtension extends Extension {
 	public function SearchForm() {
 		$searchText =  _t('SearchForm.SEARCH', 'Search');
 
-		if($this->owner->request && $this->owner->request->getVar('Search')) {
-			$searchText = $this->owner->request->getVar('Search');
+		if($this->owner->getRequest() && $this->owner->getRequest()->getVar('Search')) {
+			$searchText = $this->owner->getRequest()->getVar('Search');
 		}
 
 		$fields = new FieldList(

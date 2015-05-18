@@ -215,7 +215,7 @@ class ContentController extends Controller {
 	 */
 	public function httpError($code, $message = null) {
 		// Don't use the HTML response for media requests
-		$response = $this->request->isMedia() ? null : ErrorPage::response_for($code);
+		$response = $this->getRequest()->isMedia() ? null : ErrorPage::response_for($code);
 		// Failover to $message if the HTML response is unavailable / inappropriate
 		parent::httpError($code, $response ? $response : $message);
 	}
