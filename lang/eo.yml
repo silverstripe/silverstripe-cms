@@ -215,7 +215,7 @@ eo:
     DEFAULTSERVERERRORPAGETITLE: 'Servila eraro'
     DESCRIPTION: 'Propra enhavo por diversaj kazoj de eraro (ekzemple, "Ne trovis paĝon")'
     ERRORFILEPROBLEM: 'Eraro okazis malfermante dosieron "{filename}" por skribi. Bonvolu kontroli permesojn.'
-    PLURALNAME: 'Prieraraj paĝoj'
+    PLURALNAME: 'Paĝoj pri eraroj'
     SINGULARNAME: 'Prierara paĝo'
   Folder:
     AddFolderButton: 'Aldoni dosierujon'
@@ -238,7 +238,7 @@ eo:
     HASBEENSETUP: 'Alidirekta paĝo estis agordita sen ie al kie alidirekti.'
     HEADER: 'Ĉi tiu paĝo redirektos uzantojn al alia paĝo'
     OTHERURL: 'URL de alia retejo'
-    PLURALNAME: 'Alidirektaj paĝoj'
+    PLURALNAME: 'Paĝoj pri alidirekto'
     REDIRECTTO: 'Alidirekti al'
     REDIRECTTOEXTERNAL: 'Alia retejo'
     REDIRECTTOPAGE: 'Paĝo en via retejo'

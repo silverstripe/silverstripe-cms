@@ -1,18 +1,18 @@
 <?php
 /**
- * Adds tracking of links in any HTMLText fields which reference SiteTree or File items. Attaching this to any
- * DataObject will add four fields which contain all links to SiteTree and File items referenced in any HTMLText fields, 
- * and two booleans to indicate if there are any broken links.
+ * Adds tracking of links in any HTMLText fields which reference SiteTree or File items.
  *
- * SiteTreeLinkTracking provides augmentSyncLinkTracking as an entry point for the tracking updater.
+ * Attaching this to any DataObject will add four fields which contain all links to SiteTree and File items
+ * referenced in any HTMLText fields, and two booleans to indicate if there are any broken links. Call
+ * augmentSyncLinkTracking to update those fields with any changes to those fields.
  *
- * Additionally, a SiteTreeLinkTracking_Highlighter extension is provided which, when applied to HtmlEditorField,
- * will reuse the link SiteTreeLinkTracking's parser to add "ss-broken" classes to all broken links found this way.
- * The resulting class will be saved to the Content on the subsequent write operation. If links are found to be
- * no longer broken, the class will be removed on the next write.
+ * @property SiteTree owner
  *
- * The underlying SiteTreeLinkTracking_Parser can recognise broken internal links, broken internal anchors, and some
- * typical broken links such as empty href, or a link starting with a slash.
+ * @property bool HasBrokenFile
+ * @property bool HasBrokenLink
+ *
+ * @method ManyManyList LinkTracking List of site pages linked on this page.
+ * @method ManyManyList ImageTracking List of Images linked on this page.
  */
 class SiteTreeLinkTracking extends DataExtension {
 
@@ -37,6 +37,11 @@ class SiteTreeLinkTracking extends DataExtension {
 		"ImageTracking" => array("FieldName" => "Varchar")
 	);
 
+	/**
+	 * Scrape the content of a field to detect anly links to local SiteTree pages or files
+	 *
+	 * @param string $fieldName The name of the field on {@link @owner} to scrape
+	 */
 	public function trackLinksInField($fieldName) {
 		$record = $this->owner;
 
@@ -137,6 +142,9 @@ class SiteTreeLinkTracking extends DataExtension {
 		}
 	}
 
+	/**
+	 * Find HTMLText fields on {@link owner} to scrape for links that need tracking
+	 */
 	public function augmentSyncLinkTracking() {
 		// Reset boolean broken flags
 		$this->owner->HasBrokenLink = false;

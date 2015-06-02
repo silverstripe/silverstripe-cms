@@ -70,6 +70,7 @@ el:
     DELETEFP: Διαγραφή
     EMAIL: Email
     EditTree: 'Επεξεργασία Δένδρου'
+    ListFiltered: 'Φιλτραρισμένη λίστα.'
     NEWPAGE: 'Νέο {pagetype}'
     PAGENOTEXISTS: 'Αυτή η σελίδα δεν υπάρχει'
     PAGES: Σελίδες
@@ -83,6 +84,7 @@ el:
     TabContent: Περιεχόμενο
     TabHistory: Ιστορικό
     TabSettings: Ρυθμίσεις
+    TreeFiltered: 'Φιλτραρισμένο δένδρο.'
     TreeFilteredClear: 'Καθαρισμός φίλτρου'
     MENUTITLE: 'Επεξεργασία Σελίδας'
   CMSMain_left_ss:
@@ -133,7 +135,17 @@ el:
     PUBLISHED: Δημοσιευμένο
     Password: Κωδικός
     VIEWPAGEIN: 'Προβολή Σελίδας σε:'
+  ErrorPage:
+    404: '404 - Δεν βρέθηκε'
+    CODE: 'Κωδικός σφάλματος'
+    DEFAULTERRORPAGETITLE: 'Η σελίδα δεν βρέθηκε'
+    DEFAULTSERVERERRORPAGETITLE: 'Σφάλμα διακομιστή'
+    PLURALNAME: 'Σελίδες Σφάλματος'
+    SINGULARNAME: 'Σελίδα Σφάλματος'
   Folder:
+    AddFolderButton: 'Προσθήκη φακέλου'
+    DELETEUNUSEDTHUMBNAILS: 'Διαγραφή αχρησιμοποίητων εικονιδίων'
+    UNUSEDFILESTITLE: 'Αχρησιμοποίητα αρχεία'
     UNUSEDTHUMBNAILSTITLE: 'Αχρησιμοποίητα εικονίδια'
     UploadFilesButton: Μεταφόρτωση
   LeftAndMain:
@@ -149,8 +161,12 @@ el:
   RedirectorPage:
     DESCRIPTION: 'Κάνει ανακατεύθυνση σε μια διαφορετική εσωτερική σελίδα'
     HEADER: 'Αυτή η σελίδα θα ανακατευθύνει τους χρήστες σε μια άλλη σελίδα'
+    REDIRECTTO: 'Ανακατεύθυνση σε'
   ReportAdmin:
     ReportTitle: Τίτλος
+    MENUTITLE: Αναφορές
+  ReportAdminForm:
+    FILTERBY: 'Φίλτρο κατά'
   SearchForm:
     GO: Μετάβαση
     SEARCH: Αναζήτηση
@@ -207,12 +223,14 @@ el:
     MENUTITLE: 'Επίπεδο πλοίγησης'
     METADESC: 'Μετα-Περιγραφή'
     MODIFIEDONDRAFTHELP: 'Η σελίδα έχει μη δημοσιευμένες αλλαγές'
+    MODIFIEDONDRAFTSHORT: Τροποποιημένο
     MetadataToggle: Μετα-δεδομένα
     MoreOptions: 'Περισσότερες επιλογές'
     NOTPUBLISHED: 'Δεν έχει δημοσιευθεί'
     PAGELOCATION: 'Θέση σελίδας'
     PAGETITLE: 'Όνομα σελίδας'
     PAGETYPE: 'Τύπος σελίδας'
+    PARENTID: 'Γονική Σελίδα'
     PARENTTYPE: 'Θέση σελίδας'
     PLURALNAME: Σελίδες
     REORGANISE_DESCRIPTION: 'Αλλαγή δομής του ιστοτόπου '
@@ -240,6 +258,7 @@ el:
     DESCRIPTION: 'Εμφανίζει το περιεχόμενο μιας άλλης σελίδας'
     EditLink: επεξεργασία
     HEADER: 'Αυτή είναι μια εικονική σελίδα'
+    PLURALNAME: 'Εικονικές Σελίδες'
     SINGULARNAME: 'Εικονική Σελίδα'
   CMSFileAddController:
     MENUTITLE: Αρχεία

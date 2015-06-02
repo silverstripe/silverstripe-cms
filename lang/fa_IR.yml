@@ -1,14 +1,40 @@
 fa_IR:
   AssetAdmin:
+    ADDFILES: 'اضافه کردن فایل'
+    ActionAdd: 'اضافه کردن پوشه'
+    AppCategoryAudio: صوتی
+    AppCategoryDocument: اسناد
+    AppCategoryImage: تصویر
+    AppCategoryVideo: ویدئو
+    BackToFolder: 'بازگشت به پوشه'
+    CREATED: تاریخ
+    DetailsView: جزییات
+    FILES: فایل ها
+    FROMTHEINTERNET: 'از اینترنت'
+    FROMYOURCOMPUTER: 'از کامپیوتر شما'
+    Filetype: 'نوع فایل'
     NEWFOLDER: پوشه جديد
+    SIZE: حجم
+    TreeView: 'مشاهده درخت'
+    Upload: آپلود
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'حذف پوشه ها'
+  AssetAdmin_left_ss:
+    GO: برو
   BrokenLinksReport:
     ColumnURL: آدرس
     HoverTitleEditPage: 'ویرایش صفحه'
     PageName: 'نام صفحه'
     ReasonDropdown: 'مشکل در بررسی'
+  CMSAddPageController:
+    Title: 'اضافه کردن صفحه'
   CMSBatchActions:
+    DELETE_DRAFT_PAGES: 'حذف از پیش نویس سایت'
     PUBLISH_PAGES: انتشار
   CMSMain:
+    AddNewButton: 'جدید'
+    Cancel: لغو
+    Create: ایجاد
     DELETE: 'حذف کردن از پیشنویس سایت'
     DELETEFP: حذف کردن از منتشر شده های سایت
     EMAIL: پست الکترونیک
@@ -17,6 +43,10 @@ fa_IR:
     SAVE: ذخیره
   CMSPageHistoryController:
     SHOWVERSION: 'نمایش ویرایش'
+  CMSPageHistoryController_versions_ss:
+    AUTHOR: ناشر
+  CMSPagesController:
+    MENUTITLE: صفحات
   ContentController:
     DRAFTSITE: 'تارگاه چرکنویس'
   ErrorPage:

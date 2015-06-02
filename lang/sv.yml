@@ -215,7 +215,7 @@ sv:
     DEFAULTSERVERERRORPAGETITLE: 'Serverfel'
     DESCRIPTION: 'Anpassat innehåll för olika felärenden (t.ex. "Sidan kan inte hittas")'
     ERRORFILEPROBLEM: 'Kunde inte skriva filen "{filename}". Var vänlig kontrollera skrivrättigheterna.'
-    PLURALNAME: 'Felmeddelandesidor'
+    PLURALNAME: 'Felsidor'
     SINGULARNAME: 'Felsida'
   Folder:
     AddFolderButton: 'Skapa mapp'
@@ -238,7 +238,7 @@ sv:
     HASBEENSETUP: 'En omdirigeringssida har skapats utan att ha något mål.'
     HEADER: 'Den här sidan omdirigerar användare till en annan sida'
     OTHERURL: 'Andra sidans URL'
-    PLURALNAME: 'Omdirigerings sidor'
+    PLURALNAME: 'Omdirigeringssida'
     REDIRECTTO: 'Omdirigera till'
     REDIRECTTOEXTERNAL: 'En annan sajt'
     REDIRECTTOPAGE: 'En sida på din sajt'
