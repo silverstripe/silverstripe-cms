@@ -2275,7 +2275,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			return $actions;
 		}
 
-		if($this->isPublished() && $this->canPublish() && !$this->IsDeletedFromStage && $this->canDeleteFromLive()) {
+		if($this->isPublished() && $this->canPublish() && !$this->getIsDeletedFromStage() && $this->canDeleteFromLive()) {
 			// "unpublish"
 			$moreOptions->push(
 				FormAction::create('unpublish', _t('SiteTree.BUTTONUNPUBLISH', 'Unpublish'), 'delete')
@@ -2284,7 +2284,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			);
 		}
 
-		if($this->stagesDiffer('Stage', 'Live') && !$this->IsDeletedFromStage) {
+		if($this->stagesDiffer('Stage', 'Live') && !$this->getIsDeletedFromStage()) {
 			if($this->isPublished() && $this->canEdit())	{
 				// "rollback"
 				$moreOptions->push(
@@ -2295,7 +2295,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 
 		if($this->canEdit()) {
-			if($this->IsDeletedFromStage) {
+			if($this->getIsDeletedFromStage()) {
 				// The usual major actions are not available, so we provide alternatives here.
 				if($existsOnLive) {
 					// "restore"
@@ -2360,7 +2360,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			}
 		}
 
-		if($this->canPublish() && !$this->IsDeletedFromStage) {
+		if($this->canPublish() && !$this->getIsDeletedFromStage()) {
 			// "publish", as with "save", it supports an alternate state to show when action is needed.
 			$majorActions->push(
 				$publish = FormAction::create('publish', _t('SiteTree.BUTTONPUBLISHED', 'Published'))
@@ -2415,7 +2415,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if($linkedPages) foreach($linkedPages as $page) {
 			$page->copyFrom($page->CopyContentFrom());
 			$page->write();
-			if($page->ExistsOnLive) $page->doPublish();
+			if($page->getExistsOnLive()) $page->doPublish();
 		}
 		
 		// Need to update pages linking to this one as no longer broken, on the live site
@@ -2783,8 +2783,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	public function getStatusFlags($cached = true) {
 		if(!$this->_cache_statusFlags || !$cached) {
 			$flags = array();
-			if($this->IsDeletedFromStage) {
-				if($this->ExistsOnLive) {
+			if($this->getIsDeletedFromStage()) {
+				if($this->getExistsOnLive()) {
 					$flags['removedfromdraft'] = array(
 						'text' => _t('SiteTree.REMOVEDFROMDRAFTSHORT', 'Removed from draft'),
 						'title' => _t('SiteTree.REMOVEDFROMDRAFTHELP', 'Page is published, but has been deleted from draft'),
@@ -2795,12 +2795,12 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						'title' => _t('SiteTree.ARCHIVEDPAGEHELP', 'Page is removed from draft and live'),
 					);
 				}
-			} else if($this->IsAddedToStage) {
+			} else if($this->getIsAddedToStage()) {
 				$flags['addedtodraft'] = array(
 					'text' => _t('SiteTree.ADDEDTODRAFTSHORT', 'Draft'),
 					'title' => _t('SiteTree.ADDEDTODRAFTHELP', "Page has not been published yet")
 				);
-			} else if($this->IsModifiedOnStage) {
+			} else if($this->getIsModifiedOnStage()) {
 				$flags['modified'] = array(
 					'text' => _t('SiteTree.MODIFIEDONDRAFTSHORT', 'Modified'),
 					'title' => _t('SiteTree.MODIFIEDONDRAFTHELP', 'Page has unpublished changes'),
