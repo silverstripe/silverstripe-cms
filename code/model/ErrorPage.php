@@ -260,6 +260,7 @@ class ErrorPage extends Page {
 			$this->response->addHeader('X-Status', rawurlencode($fileErrorText));
 			return $this->httpError(405);
 		}
+		return true;
 	}
 	
 	/**

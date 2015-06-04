@@ -46,7 +46,7 @@ Feature: Search for a page
 		And the "page" "Deleted Page" is deleted
 		When I press the "Apply Filter" button
 		Then I should not see "Deleted Page" in the tree
-		When I select "All pages, including deleted" from "Pages"
+		When I select "All pages, including archived" from "Pages"
 		And I press the "Apply Filter" button
 		Then I should see "Deleted Page" in the tree
 
@@ -56,7 +56,7 @@ Feature: Search for a page
 		And the "page" "Deleted Page" is deleted
 		When I press the "Apply Filter" button
 		Then I should not see "Deleted Page" in the tree
-		When I select "Deleted pages" from "Pages"
+		When I select "Archived pages" from "Pages"
 		And I press the "Apply Filter" button
 		Then I should see "Deleted Page" in the tree
 		And I should not see "About Us" in the tree
@@ -66,7 +66,7 @@ Feature: Search for a page
 		And the "page" "Draft Page" is not published
 		When I press the "Apply Filter" button
 		Then I should see "Draft Page" in the tree
-		When I select "Draft unpublished pages" from "Pages"
+		When I select "Draft pages" from "Pages"
 		And I press the "Apply Filter" button
 		Then I should see "Draft Page" in the tree
 		And I should not see "About Us" in the tree
@@ -81,7 +81,7 @@ Feature: Search for a page
 
 		When I go to "/admin/pages"
 		And I expand the "Filter" CMS Panel
-		When I select "Changed pages" from "Pages"
+		When I select "Modified pages" from "Pages"
 		And I press the "Apply Filter" button
 		Then I should see "About Us" in the tree
 		And I should not see "Home" in the tree

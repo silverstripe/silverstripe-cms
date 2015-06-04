@@ -119,7 +119,7 @@ class ContentController extends Controller {
 				|| (Versioned::current_stage() && Versioned::current_stage() != 'Live')
 			)
 		) {
-			if(!$this->dataRecord->canViewStage(Versioned::current_archived_date() ? 'Stage' : Versioned::current_stage())) {
+			if(!$this->dataRecord->canView()) {
 				Session::clear('currentStage');
 				Session::clear('archiveDate');
 				
