@@ -100,7 +100,6 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 				'"SiteTree"."ID"' => $id
 			));
 			if($liveRecord) {
-				$liveRecord->IsDeletedFromStage = true;
 				$status['modified'][$liveRecord->ID] = array(
 					'TreeTitle' => $liveRecord->TreeTitle,
 				);
@@ -148,7 +147,6 @@ class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 				'"SiteTree"."ID"' => $id
 			));
 			if($stageRecord) {
-				$stageRecord->IsAddedToStage = true;
 				$status['modified'][$stageRecord->ID] = array(
 					'TreeTitle' => $stageRecord->TreeTitle,
 				);
