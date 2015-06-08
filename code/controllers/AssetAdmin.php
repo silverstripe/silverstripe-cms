@@ -294,9 +294,9 @@ JS
 		$actions = $form->Actions();
 		$saveBtn = $actions->fieldByName('action_save');
 		$deleteBtn = $actions->fieldByName('action_delete');
+		$actions->removeByName('action_save');
+		$actions->removeByName('action_delete');
 		if(($saveBtn || $deleteBtn) && $fields->fieldByName('Root.DetailsView')) {
-			$actions->removeByName('action_save');
-			$actions->removeByName('action_delete');
 			$fields->addFieldToTab(
 				'Root.DetailsView', 
 				CompositeField::create($saveBtn,$deleteBtn)->addExtraClass('Actions')
@@ -535,6 +535,7 @@ JS
 	
 	public function getSiteTreeFor($className, $rootID = null, $childrenMethod = null, $numChildrenMethod = null, $filterFunction = null, $minNodeCount = 30) {
 		if (!$childrenMethod) $childrenMethod = 'ChildFolders';
+		if (!$numChildrenMethod) $numChildrenMethod = 'numChildFolders';
 		return parent::getSiteTreeFor($className, $rootID, $childrenMethod, $numChildrenMethod, $filterFunction, $minNodeCount);
 	}
 	
@@ -543,7 +544,7 @@ JS
 	}
 	
 	public function SiteTreeAsUL() {
-		return $this->getSiteTreeFor($this->stat('tree_class'), null, 'ChildFolders');
+		return $this->getSiteTreeFor($this->stat('tree_class'), null, 'ChildFolders', 'numChildFolders');
 	}
 
 	//------------------------------------------------------------------------------------------//

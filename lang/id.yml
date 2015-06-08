@@ -1,32 +1,39 @@
 id:
   AssetAdmin:
     ADDFILES: 'Tambah Berkas'
-    ActionAdd: 'Tambah map'
+    ActionAdd: 'Tambah Folder'
     AppCategoryArchive: Arsip
-    AppCategoryAudio: Suara
+    AppCategoryAudio: Audio
     AppCategoryDocument: Dokumen
     AppCategoryFlash: Flash
     AppCategoryImage: Gambar
     AppCategoryVideo: Video
-    BackToFolder: 'Kembali ke map'
+    BackToFolder: 'Kembali ke Folder'
     CREATED: Tanggal
-    CurrentFolderOnly: 'Batas pada map sekarang?'
+    CurrentFolderOnly: 'Batasi sesuai folder ini?'
     DetailsView: Perincian
-    FILES: Berkas-berkas
+    FILES: Berkas
+    FILESYSTEMSYNC: 'Selaraskan berkas'
+    FILESYSTEMSYNCTITLE: 'Perbarui entri database CMS untuk berkas-berkas pada sistem berkas (filesystem). Berguna saat berkas-berkas baru diunggah di luar sistem CMS, misalnya melalui FTP.'
     FROMTHEINTERNET: 'Dari internet'
-    FROMYOURCOMPUTER: 'Dari komputer kamu'
+    FROMYOURCOMPUTER: 'Dari komputer Anda'
     Filetype: 'Jenis berkas'
-    ListView: 'Tampilan daftar'
-    NEWFOLDER: Map baru
+    ListView: 'Tampilan Daftar'
+    NEWFOLDER: FolderBaru
     SIZE: Ukuran
-    TreeView: 'Tampilan menurun'
-    MENUTITLE: Berkas-berkas
+    THUMBSDELETED: '{count} thumbnail tak terpakai telah dihapus'
+    TreeView: 'Tampilan Struktur'
+    Upload: Unggah
+    MENUTITLE: Berkas
   AssetAdmin_DeleteBatchAction:
-    TITLE: 'Hapus map'
+    TITLE: 'Hapus Folder'
   AssetAdmin_Tools:
     FILTER: Saring
   AssetAdmin_left_ss:
     GO: Lanjut
+  AssetTableField:
+    BACKLINKCOUNT: 'Dipakai pada:'
+    PAGES: laman
   BackLink_Button_ss:
     Back: Kembali
   BrokenLinksReport:
@@ -34,83 +41,147 @@ id:
     BROKENLINKS: 'Laporan tautan rusak'
     CheckSite: 'Cek situs'
     CheckSiteDropdownDraft: 'Draf situs'
-    CheckSiteDropdownPublished: 'Publikasi situs'
+    CheckSiteDropdownPublished: 'Situs Terbit'
     ColumnDateLastModified: 'Tanggal terakhir modifikasi'
-    ColumnDateLastPublished: 'Tanggal terakhir terbit'
+    ColumnDateLastPublished: 'Tanggal terbit terakhir'
     ColumnProblemType: 'Jenis masalah'
     ColumnURL: URL
-    HoverTitleEditPage: 'Edit halaman '
-    PageName: 'Nama halaman'
+    HasBrokenFile: 'terdapat berkas yang rusak'
+    HasBrokenLink: 'terdapat tautan yang rusak'
+    HasBrokenLinkAndFile: 'terdapat berkas dan tautan yang rusak'
+    HoverTitleEditPage: 'Edit laman '
+    PageName: 'Nama laman'
     ReasonDropdown: 'Masalah yang diperiksa'
     ReasonDropdownBROKENFILE: 'Berkas rusak'
     ReasonDropdownBROKENLINK: 'Tautan rusak'
+    ReasonDropdownRPBROKENLINK: 'Laman pengarah mengarah ke laman yang tidak ada'
+    ReasonDropdownVPBROKENLINK: 'Laman virtual mengarah ke laman yang tidak ada'
+    RedirectorNonExistent: 'laman pengarah mengarah ke laman yang tidak ada'
+    VirtualPageNonExistent: 'laman virtual mengarah ke laman yang tidak ada'
   CMSAddPageController:
-    Title: 'Tambah halaman'
+    Title: 'Tambah laman'
   CMSBatchActions:
+    DELETED_DRAFT_PAGES: '%d laman berhasil dihapus dari draft, %d laman gagal dihapus'
+    DELETED_PAGES: '%d laman berhasil dihapus dari situs terbit, %d gagal'
     DELETE_DRAFT_PAGES: 'Hapus dari draf situs'
-    DELETE_PAGES: 'Hapus dari publikasi situs'
-    PUBLISHED_PAGES: 'Menerbitkan %d halaman, %d gagal'
+    DELETE_PAGES: 'Hapus dari situs terbit'
+    PUBLISHED_PAGES: 'Menerbitkan %d laman, %d gagal'
     PUBLISH_PAGES: Terbitkan
-    UNPUBLISH_PAGES: Tidak terbit
+    UNPUBLISHED_PAGES: '%d laman dibatalterbitkan'
+    UNPUBLISH_PAGES: Batalterbitkan
   CMSMain:
-    AddNew: 'Tambah halaman baru'
+    ACCESS: 'Akses ke bagian ''{title}'''
+    ACCESS_HELP: 'Perbolehkan menampilkan bagian dengan struktur laman dan konten. Perijinan menampilkan dan mengedit dapat diatur melalui pilihan terkait laman, sebagaimana "Perijinan Konten".'
+    AddNew: 'Tambah laman baru'
     AddNewButton: 'Tambah baru'
+    AddPageRestriction: 'Catatan: Sebagian jenis laman tidak dapat dipilih'
     Cancel: Batal
-    ChoosePageType: 'Pilih jenis halaman'
+    ChoosePageParentMode: 'Pilih lokasi untuk laman ini'
+    ChoosePageType: 'Pilih jenis laman'
     Create: Buat
     DELETE: 'Hapus dari situs draft'
     DELETEFP: Hapus dari situs yang telah diterbitkan
+    DESCREMOVED: 'dan {count} turunannya'
+    DUPLICATED: '''{title}'' berhasil diduplikasi'
+    DUPLICATEDWITHCHILDREN: '''{title}'' dan turunannya berhasil diduplikasi'
     EMAIL: Surel
-    NEWPAGE: 'Baru {pagetype}'
-    PAGENOTEXISTS: 'Halaman tidak ada'
-    PAGES: Halaman
+    EditTree: 'Edit Struktur'
+    ListFiltered: 'Daftar tersaring'
+    NEWPAGE: '{pagetype} baru'
+    PAGENOTEXISTS: 'Laman ini tidak ada'
+    PAGES: Laman
     PAGETYPEANYOPT: Lain
-    PAGETYPEOPT: 'Jenis Halaman'
-    PUBPAGES: 'Selesai: Diterbitkan {count} halaman'
-    PageAdded: 'Berhasil buat halaman'
+    PAGETYPEOPT: 'Jenis Laman'
+    PUBALLCONFIRM: 'Mohon terbitkan semua laman pada situs'
+    PUBALLFUN: 'Fungsi "Terbitkan Semua"'
+    PUBALLFUN2: "Menekan tombol ini sama dengan membuka semua laman dan menerbitkannya. Hal ini \n\t\t\t\tditujukan untuk dilakukan setelah ada banyak pengeditan konten, misalnya saat situs pertama kali \n\t\t\t\tdiinstal."
+    PUBPAGES: 'Selesai: {count} laman terbit'
+    PageAdded: 'Laman berhasil dibuat'
     REMOVED: 'Dihapus ''{title}''{description} dari situs langsung'
-    REMOVEDPAGE: 'Menghapus ''{title}'' dari terbitan situs '
+    REMOVEDPAGE: 'Menghapus ''{title}'' dari situs terbit'
     REMOVEDPAGEFROMDRAFT: 'Menghapus ''%s'' dari draf situs'
     RESTORE: Pulihkan
     RESTORED: 'Pemulihan ''{title}'' sukses'
     ROLLBACK: 'Kembali ke versi ini'
+    ROLLEDBACKPUBv2: 'Kembali ke versi terbit'
+    ROLLEDBACKVERSIONv2: 'Kembali ke versi #%d.'
     SAVE: Simpan
     SAVEDRAFT: 'Simpan draf'
     TabContent: Konten
     TabHistory: Sejarah
     TabSettings: Pengaturan
+    TreeFiltered: 'Struktur tersaring.'
     TreeFilteredClear: 'Bersihkan saring'
+    MENUTITLE: 'Edit Laman'
+  CMSMain_left_ss:
+    APPLY_FILTER: 'Terapkan Saring'
+    RESET: Reset
+  CMSPageAddController:
+    ParentMode_child: 'Di bawah laman lain'
+    ParentMode_top: 'Laman atas'
+    MENUTITLE: 'Tambah laman'
+  CMSPageHistoryController:
+    COMPAREMODE: 'Modus pembanding (pilih dua)'
+    COMPAREVERSIONS: 'Bandingkan Versi'
+    COMPARINGVERSION: 'Bandingkan versi {version1} dan {version2}.'
+    REVERTTOTHISVERSION: 'Kembali ke versi ini'
+    SHOWUNPUBLISHED: 'Tampilkan versi batalterbit'
+    SHOWVERSION: 'Tampilkan Versi'
+    VIEW: tampilkan
+    VIEWINGLATEST: 'Versi terakhir sedang ditampilkan.'
+    VIEWINGVERSION: 'Versi {version} sedang ditampilkan.'
+    MENUTITLE: Sejarah
   CMSPageHistoryController_versions_ss:
+    AUTHOR: Penulis
+    NOTPUBLISHED: 'Batal terbit'
     PUBLISHER: Penerbit
     UNKNOWN: Tidak diketahui
     WHEN: Ketika
   CMSPagesController:
     GalleryView: 'Tampilan Galeri'
     ListView: 'Tampilan daftar'
-    MENUTITLE: Halaman
+    MENUTITLE: Laman
+    TreeView: 'Tampilan Struktur'
+  CMSPagesController_ContentToolbar_ss:
+    MULTISELECT: Multi-pilihan
   CMSPagesController_Tools_ss:
     FILTER: Saring
   CMSSearch:
     FILTERDATEFROM: Dari
     FILTERDATEHEADING: Tanggal
     FILTERDATETO: Ke
-    FILTERLABELTEXT: Isi
+    FILTERLABELTEXT: Konten
   CMSSiteTreeFilter_ChangedPages:
-    Title: 'Perubahan halaman'
+    Title: 'Laman yang berubah'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Semua laman, termasuk yang terhapus'
   CMSSiteTreeFilter_Search:
-    Title: 'Semua halaman'
+    Title: 'Semua laman'
+  ContentControl:
+    NOTEWONTBESHOWN: 'Catatan: pesan ini tidak akan ditampilkan kepada pengunjung'
   ContentController:
+    ARCHIVEDSITE: 'Versi pratinjau'
+    ARCHIVEDSITEFROM: 'Arsip dari'
     CMS: CMS
     DRAFT: Draf
     DRAFTSITE: 'Draf situs'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'Anda harus login untuk menampilkan konten draft atau arsip. <a href="%s">Klik di sini untuk kembali ke situs terbit.</a>'
     Email: Surel
-    INSTALL_SUCCESS: 'Pemasangan sukses'
-    InstallFilesDeleted: 'Berkas pemasangan telah berhasil dihapus'
-    InstallSuccessCongratulations: 'SilverStripe telah sukses dipasang!'
+    INSTALL_SUCCESS: 'Penginstalan berhasil!'
+    InstallFilesDeleted: 'Berkas penginstalan telah berhasil dihapus.'
+    InstallSecurityWarning: 'Untuk alasan keamanan, sekarang Anda perlu menghapus berkas-berkas penginstalan, kecuali Anda berencana untuk melakukan penginstalan ulang lagi (<em>memerlukan login admin, lihat di atas</em>). Selanjutnya server juga memerlukan akses tulis ke folder "assets", Anda dapat mencabut akses tulis dari folder lainnya. <a href="{link}" style="text-align: center;">Klik di sini untuk menghapus berkas-berkas penginstalan.</a>'
+    InstallSuccessCongratulations: 'SilverStripe telah berhasil diinstal!'
     LOGGEDINAS: 'Masuk sebagai'
     LOGIN: Masuk
     LOGOUT: 'Keluar'
     NOTLOGGEDIN: 'Tidak masuk'
+    PUBLISHED: Terbit
+    PUBLISHEDSITE: 'Situs Terbit'
+    Password: Kata kunci
+    PostInstallTutorialIntro: 'Situs ini adalah versi sederhana dari situs SilverStripe 3. Untuk meningkatkannya, mohon kunjungi {link}.'
+    StartEditing: 'Anda dapat mulai mengedit konten dengan membuka <a href="{link}">CMS</a>.'
+    UnableDeleteInstall: 'Gagal menghapus berkas-berkas penginstalan. Mohon lakukan penghapusan berkas-berkas berikut ini secara manual.'
+    VIEWPAGEIN: 'Tampikan Laman pada:'
   ErrorPage:
     400: '400 - Permintaan buruk'
     401: '401 - Tidak ada otorisasi'
@@ -129,103 +200,215 @@ id:
     415: '425 - Tipe Media Tidak Disupport'
     416: '416 - Lingkup Permintaan Tidak Dapat Dipuaskan'
     417: '417 - Expectation Gagal'
+    422: '422 - Entitas Tidak Terproses'
+    429: '429 - Terlalu Banyak Permintaan'
     500: '500 - Server Internal Error'
     501: '501 - Tidak Diimplementasi'
     502: '502 - Gateway Buruk'
     503: '503 - Servis Tidak Tersedia'
-    505: '505 - Versi HTTP Tidak Disupport'
+    504: '504 - Masa Tunggu Terlewat'
+    505: '505 - Versi HTTP Tidak Didukung'
     CODE: 'Kode yang salah'
-    DEFAULTERRORPAGECONTENT: '<p>Maaf, sepertinya anda berusha mengakses halaman yang tidak ada.</p><p>Mohon periksa ejaan URL yang ingin anda akses dan coba lagi.</p>'
-    DEFAULTERRORPAGETITLE: 'Halaman tidak ditemukan'
+    DEFAULTERRORPAGECONTENT: '<p>Maaf, sepertinya anda berusaha mengakses laman yang tidak ada.</p><p>Mohon periksa ejaan URL yang ingin anda akses dan coba lagi.</p>'
+    DEFAULTERRORPAGETITLE: 'Laman tidak ditemukan'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Maaf, ada masalah dalam penanganan permintaan Anda.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Server mengalami kesalahan'
+    DESCRIPTION: 'Laman untuk berbagai kasus kesalahan (misalnya "Laman tidak ditemukan")'
+    ERRORFILEPROBLEM: 'Gagal membuka berkas "{filename}" untuk penulisan data. Mohon periksa pengaturan akses tulis.'
+    PLURALNAME: 'Laman Kesalahan'
+    SINGULARNAME: 'Laman Kesalahan'
   Folder:
     AddFolderButton: 'Tambah map'
     DELETEUNUSEDTHUMBNAILS: 'Hapus thumbnail-thumbnail yang tidal dipakai'
-    UNUSEDFILESTITLE: 'File-file yang tidak dipakai'
+    UNUSEDFILESTITLE: 'Berkas tidak terpakai'
     UNUSEDTHUMBNAILSTITLE: 'Thumbnail-thumbnail yang tidak dipakai'
+    UploadFilesButton: Unggah
   LeftAndMain:
     DELETED: Hapus
+    PreviewButton: Pratinjau
     SAVEDUP: Disimpan
     SearchResults: 'Hasil pencarian'
+  Permission:
+    CMS_ACCESS_CATEGORY: 'Akses CMS'
+  Permissions:
+    CONTENT_CATEGORY: 'Perijinan konten'
+    PERMISSIONS_CATEGORY: 'Peran dan akses perijinan'
   RedirectorPage:
-    HASBEENSETUP: 'halaman yang mengirim user ke alamat lain dibuat tanpa tujuan dari pengiriman itu sendiri'
-    HEADER: 'Halaman ini akan mengarahkan user ke halaman lain'
+    DESCRIPTION: 'Mengarahkan ke laman internal berbeda'
+    HASBEENSETUP: 'Sebuah laman pengarah telah dibuat tanpa arah yang dituju.'
+    HEADER: 'Laman ini akan mengarahkan pengguna ke laman lain'
     OTHERURL: 'URL situs web lain'
+    PLURALNAME: 'Laman Pengarah'
     REDIRECTTO: 'Arahkan lagi ke'
     REDIRECTTOEXTERNAL: 'Situs web yang lain'
-    REDIRECTTOPAGE: 'Sebuah halaman pada situs web Anda'
-    YOURPAGE: 'Halaman pada situs web Anda'
+    REDIRECTTOPAGE: 'Laman pada situs Anda'
+    SINGULARNAME: 'Laman Pengarah'
+    YOURPAGE: 'Laman pada situs Anda'
   ReportAdmin:
     ReportTitle: Judul
     MENUTITLE: Laporan
   ReportAdminForm:
     FILTERBY: 'Saring dengan'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Mohon terbitkan laman tertaut untuk menayangkan laman virtual'
+    VIRTUALPAGEWARNING: 'Mohon pilih laman tertaut dan simpan lebih dulu untuk menayangkan laman ini'
+    VIRTUALPAGEWARNINGSETTINGS: 'Mohon pilih laman tertaut pada konten utama untuk menayangkan'
   SearchForm:
     GO: Pergi
     SEARCH: Cari
     SearchResults: 'Hasil Pencarian'
   SideReport:
-    ContentGroupTitle: 'Isi laporan'
+    BROKENFILES: 'Laman dengan berkas rusak'
+    BROKENLINKS: 'Laman dengan tautan rusak'
+    BROKENREDIRECTORPAGES: 'LamanPengarah mengarah pada laman terhapus'
+    BROKENVIRTUALPAGES: 'LamanVirtual mengarah pada laman terhapus'
+    BrokenLinksGroupTitle: 'Laporan tautan-tautan rusak'
+    ContentGroupTitle: 'Laporan konten'
+    EMPTYPAGES: 'Laman tanpa konten'
+    LAST2WEEKS: 'Laman diedit dalam 2 minggu terakhir'
+    OtherGroupTitle: Lainnya
+    ParameterLiveCheckbox: 'Periksa situs live'
+    REPEMPTY: 'Laporan {title} kosong.'
+  SilverStripeNavigator:
+    ARCHIVED: Terarsip
+  SilverStripeNavigatorLink:
+    ShareInstructions: 'Untuk membagi laman ini, salin dan tempel pada tautan berikut.'
+    ShareLink: 'Bagi tautan'
   SilverStripeNavigatorLinkl:
     CloseLink: Tutup
   SiteConfig:
+    DEFAULTTHEME: '(Gunakan tema standar)'
+    EDITHEADER: 'Siapa yang boleh mengedit laman pada situs ini?'
+    EDIT_PERMISSION: 'Mengelola pengaturan situs'
+    EDIT_PERMISSION_HELP: 'Bolehkan mengedit pengaturan akses umum atau perijinan tingkat atas.'
+    PLURALNAME: 'Pengaturan Situs'
+    SINGULARNAME: 'Pengaturan Situs'
     SITENAMEDEFAULT: 'Nama Situs'
     SITETAGLINE: 'Slogan Situs'
     SITETITLE: 'Judul Situs'
+    TABACCESS: Akses
     TABMAIN: Tab Utama
     TAGLINEDEFAULT: 'slogan situsmu disini'
     THEME: Tema
+    TOPLEVELCREATE: 'Siapa yang dapat membuat laman utama yang baru?'
+    VIEWHEADER: 'Siapa yang dapat menampilkan laman pada situs ini?'
   SiteTree:
     ACCESSANYONE: Siapa saja
-    ACCESSHEADER: 'Siapa yang dapat melihat halaman ini pada situs saya?'
+    ACCESSHEADER: 'Siapa yang dapat melihat laman ini?'
     ACCESSLOGGEDIN: 'User yang masuk'
     ACCESSONLYTHESE: 'Hanya orang ini saja (pilih dari daftar)'
-    ALLOWCOMMENTS: 'Bolehkan komentar pada halaman ini?'
+    ADDEDTODRAFTHELP: 'Laman belum terbit'
+    ADDEDTODRAFTSHORT: Darft
+    ALLOWCOMMENTS: 'Bolehkan komentar pada laman ini?'
+    APPEARSVIRTUALPAGES: 'Konten ini akan tampil juga pada laman virtual di bagian {title}.'
     BUTTONCANCELDRAFT: 'Batalkan perubahan draft'
-    BUTTONCANCELDRAFTDESC: 'Hapus draft dan kembalikan ke halaman yang sedang dipublikasikan'
-    BUTTONUNPUBLISH: Tidak Dipublikasi
-    BUTTONUNPUBLISHDESC: 'Pindahkan halaman ini dari situs yang dipublikasikan'
+    BUTTONCANCELDRAFTDESC: 'Hapus draft dan kembalikan ke laman terbit'
+    BUTTONPUBLISHED: Terbit
+    BUTTONSAVED: Tersimpan
+    BUTTONSAVEPUBLISH: 'Simpan dan terbitkan'
+    BUTTONUNPUBLISH: Batalterbitkan
+    BUTTONUNPUBLISHDESC: 'Hapus laman ini dari situs terbit'
     Comments: Komen-komen
-    Content: Isi
-    DEFAULTABOUTCONTENT: '<p>Anda dapat mengisi halaman ini dengan isi anda sendiri, atau hapus dan buat halaman-halaman anda sendiri.<br /></p>'
+    Content: Konten
+    DEFAULTABOUTCONTENT: '<p>Anda dapat mengisi laman ini dengan konten Anda sendiri, atau menghapusnya dan membuat laman Anda sendiri.<br /></p>'
     DEFAULTABOUTTITLE: 'Tentang Kami'
-    DEFAULTCONTACTCONTENT: '<p>Anda dapat mengisi halaman ini dengan isi anda sendiri, atau hapus dan buat halaman-halaman anda sendiri.<br /></p>'
+    DEFAULTCONTACTCONTENT: '<p>Anda dapat mengisi laman ini dengan konten Anda sendiri, atau menghapusnya dan membuat laman Anda sendiri.<br /></p>'
     DEFAULTCONTACTTITLE: 'Hubungi Kami'
-    DEFAULTHOMECONTENT: '<p>Selamat datang di SilverStripe! Ini adalah homepage default anda. Anda dapat mengedit halaman ini dengan membuka <a href="admin/">CMS ini</a>. Sekarang anda dapat mengakses <a href="http://doc.silverstripe.com">dokumentasi developer</a>, atau memulai <a href="http://doc.silverstripe.com/doku.php?id=tutorials">tutorial-tutorial yang tersedia.</a></p>'
+    DEFAULTHOMECONTENT: '<p>Selamat datang di SilverStripe! Ini adalah halaman awal situs Anda. Anda dapat mengedit laman ini dengan membuka <a href="admin/">CMS ini</a>. Selanjutnya Anda dapat mengakses <a href="http://doc.silverstripe.com">dokumentasi pengembang</a>, atau mulai dengan <a href="http://doc.silverstripe.com/doku.php?id=tutorials">tutorial-tutorial yang tersedia.</a></p>'
+    DEFAULTHOMETITLE: Beranda
+    DELETEDPAGEHELP: 'Laman tidak lagi terbit'
     DELETEDPAGESHORT: Hapus
+    DEPENDENT_NOTE: 'Laman-laman berikut ini bergantung pada laman ini. Termasuk laman virtual, laman pengarah, dan laman-laman dengan tautan konten.'
+    DESCRIPTION: 'Laman konten umum'
+    DependtPageColumnLinkType: 'Jenis tautan'
+    DependtPageColumnURL: URL
     EDITANYONE: 'Siapa saja yang dapat masuk ke dalam CMS'
-    EDITHEADER: 'Siapa yang dapat mengedit ini dari dalam CMS?'
+    EDITHEADER: 'Siapa yang dapat mengedit laman ini?'
     EDITONLYTHESE: 'Hanya orang ini saja (pilih dari daftar)'
-    EDITORGROUPS: 'Editor Grup'
-    HASBROKENLINKS: 'Halaman ini mempunyai link yang rusak'
+    EDITORGROUPS: 'Kelompok Editor'
+    EDIT_ALL_DESCRIPTION: 'Edit semua laman'
+    EDIT_ALL_HELP: 'Bolehkan mengedit semua laman pada situs, terlepas dari pengaturan Akses. Memerlukan perijinan "Akses ke bagian ''Laman''".'
+    Editors: 'Kelompok Editor'
+    GroupPlaceholder: 'Klik untuk memilih kelompok'
+    HASBROKENLINKS: 'Laman ini mempunyai tautan yang rusak.'
     HTMLEDITORTITLE: Konten
+    INHERIT: 'Warisi dari laman induk'
+    LASTPUBLISHED: 'Terakhir terbit'
+    LASTSAVED: 'Terakhir tersimpan'
+    LASTUPDATED: 'Terakhir diperbarui'
+    LINKCHANGENOTE: 'Mengganti tautan laman ini akan mempengaruhi semua tautan pada laman terkait.'
     MENUTITLE: 'Label navigasi'
     METADESC: 'Deskripsi'
+    METADESCHELP: 'Mesin pencari menggunakan konten ini untuk menampilkan hasil pencarian (meskipun tidak mempengaruhi pemeringkatan situs).'
+    METAEXTRA: 'Penanda Meta'
+    METAEXTRAHELP: 'Penanda HTML untuk informasi meta tambahan. Contohnya &lt;meta name="namaMeta" content="konten Anda di sini" /&gt;'
+    MODIFIEDONDRAFTHELP: 'Laman memiliki perubahan yang tidak terbit'
+    MODIFIEDONDRAFTSHORT: Diubah
     MetadataToggle: Metadata
     MoreOptions: 'Pilihan lain'
-    PAGELOCATION: 'Lokasi halaman'
-    PAGETITLE: 'Nama Halaman'
-    PAGETYPE: 'Tipe halaman'
-    PARENTTYPE: 'Lokasi halaman'
+    NOTPUBLISHED: 'Tidak diterbitkan'
+    OBSOLETECLASS: 'Jenis laman {type} ini sudah usang. Menyimpannya akan memperbarui jenisnya dan Anda kemungkinan akan kehilangan data'
+    PAGELOCATION: 'Lokasi laman'
+    PAGETITLE: 'Nama laman'
+    PAGETYPE: 'Tipe laman'
+    PARENTID: 'Laman induk'
+    PARENTTYPE: 'Lokasi laman'
+    PARENTTYPE_ROOT: 'Laman atas'
+    PARENTTYPE_SUBPAGE: 'Sub-laman di bawah laman induk'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Kelola hak akses untuk konten ini'
+    PERMISSION_GRANTACCESS_HELP: 'Perbolehkan pengaturan pencegahan akses ke laman tertentu di bagian "Laman".'
+    PLURALNAME: Laman
+    PageTypNotAllowedOnRoot: 'Jenis laman {type} tidak diperbolehkan di tingkat atas'
+    PageTypeNotAllowed: 'Jenis laman {type} tidak diperbolehkan menjadi turunan dari laman induk ini'
+    REMOVEDFROMDRAFTHELP: 'Laman sudah terbit, tapi telah dihapus dari draft'
+    REMOVEDFROMDRAFTSHORT: 'Dihapus dari draft'
+    REMOVE_INSTALL_WARNING: 'Peringatan: Anda perlu menghapus instal.php dari penginstalan SilverStripe ini untuk alasan keamanan.'
     REORGANISE_DESCRIPTION: 'Ubah stuktur situs'
+    REORGANISE_HELP: 'Atur ulang laman pada struktur situs dengan drag&drop.'
     SHOWINMENUS: 'Perlihatkan dalam menu?'
     SHOWINSEARCH: 'Perlihatkan dalam pencarian'
+    SINGULARNAME: Laman
     TABBEHAVIOUR: Perilaku
-    TABCONTENT: 'Kontain'
-    TOPLEVEL: 'Konten Situs (Level Atas)'
+    TABCONTENT: 'Konten Utama'
+    TABDEPENDENT: 'Laman terkait'
+    TOPLEVEL: 'Konten Situs (Tingkat Atas)'
+    TOPLEVELCREATORGROUPS: 'Pembuat tingkat atas'
     URLSegment: 'Segmen URL'
-    has_one_Parent: 'Halaman Induk'
+    VIEWERGROUPS: 'Kelompok Penampil'
+    VIEW_ALL_DESCRIPTION: 'Tampilkan semua laman'
+    VIEW_ALL_HELP: 'Bolehkan menampilkan semua laman pada situs, terlepas dari pengaturan Akses. Memerlukan perijinan "Akses ke bagian ''Laman''".'
+    VIEW_DRAFT_CONTENT: 'Tampilkan konten draft'
+    VIEW_DRAFT_CONTENT_HELP: 'Untuk menampilkan laman di luar CMS pada modus draft. Berguna untuk kolaborasi eksternal tanpa akses CMS.'
+    Viewers: 'Kelompok Penampil'
+    Visibility: Visibilitas
+    has_one_Parent: 'Laman Induk'
+    many_many_BackLinkTracking: 'Jajaki Tautan Balik'
+    many_many_ImageTracking: 'Jajaki Gambar'
+    many_many_LinkTracking: 'Jajaki Tautan'
+  SiteTreeURLSegmentField:
+    EMPTY: 'Mohon isikan URL atau klik Batal'
+    HelpChars: 'Karakter khusus akan dikonversi secara otomatis atau dihapus.'
+  URLSegmentField:
+    Cancel: Batal
+    Edit: Edit
+    OK: OK
+  ViewArchivedEmail_ss:
+    CANACCESS: 'Anda dapat mengakses arsip situs pada tautan ini:'
+    HAVEASKED: 'Anda telah meminta menampilkan konten situs ini pada'
   VirtualPage:
-    HEADER: 'Ini adalah halaman virtual'
-    PLURALNAME: 'Halaman-halaman Virtual'
-    SINGULARNAME: 'Halaman Virtual'
+    CHOOSE: 'Laman Tertaut'
+    DESCRIPTION: 'Tampilkan konten laman lain'
+    EditLink: edit
+    HEADER: 'Ini adalah laman virtual'
+    HEADERWITHLINK: 'Ini adalah laman virtual dengan konten salinan dari "{title}" ({link})'
+    PLURALNAME: 'Laman Virtual'
+    PageTypNotAllowedOnRoot: 'Laman asli jenis "{type}" tidak dibolehkan pada tingkat atas untuk laman virtual ini'
+    SINGULARNAME: 'Laman Virtual'
   CMSFileAddController:
     MENUTITLE: Berkas
   CMSPageEditController:
-    MENUTITLE: 'Ubah halaman'
+    MENUTITLE: 'Edit Laman'
   CMSPageSettingsController:
-    MENUTITLE: 'Ubah halaman'
+    MENUTITLE: 'Edit Laman'
   CMSSettingsController:
     MENUTITLE: Pengaturan
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Halaman yang dihapus'

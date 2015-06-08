@@ -4,7 +4,7 @@
  * - action_save
  * - action_publish
  * - action_unpublish
- * - action_delete
+ * - action_archive
  * - action_deletefromlive
  * - action_rollback
  * - action_revert
@@ -83,7 +83,7 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$this->assertNotNull($actions->dataFieldByName('action_save'));
 		$this->assertNotNull($actions->dataFieldByName('action_publish'));
 		$this->assertNotNull($actions->dataFieldByName('action_unpublish'));
-		$this->assertNotNull($actions->dataFieldByName('action_delete'));
+		$this->assertNotNull($actions->dataFieldByName('action_archive'));
 		$this->assertNull($actions->dataFieldByName('action_deletefromlive'));
 		$this->assertNull($actions->dataFieldByName('action_rollback'));
 		$this->assertNull($actions->dataFieldByName('action_revert'));
@@ -111,7 +111,7 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$this->assertNull($actions->dataFieldByName('action_save'));
 		$this->assertNull($actions->dataFieldByName('action_publish'));
 		$this->assertNull($actions->dataFieldByName('action_unpublish'));
-		$this->assertNull($actions->dataFieldByName('action_delete'));
+		$this->assertNull($actions->dataFieldByName('action_archive'));
 		$this->assertNotNull($actions->dataFieldByName('action_deletefromlive'));
 		$this->assertNull($actions->dataFieldByName('action_rollback'));
 		$this->assertNotNull($actions->dataFieldByName('action_revert'));
@@ -135,7 +135,7 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$this->assertNotNull($actions->dataFieldByName('action_save'));
 		$this->assertNotNull($actions->dataFieldByName('action_publish'));
 		$this->assertNotNull($actions->dataFieldByName('action_unpublish'));
-		$this->assertNotNull($actions->dataFieldByName('action_delete'));
+		$this->assertNotNull($actions->dataFieldByName('action_archive'));
 		$this->assertNull($actions->dataFieldByName('action_deletefromlive'));
 		$this->assertNotNull($actions->dataFieldByName('action_rollback'));
 		$this->assertNull($actions->dataFieldByName('action_revert'));
@@ -155,7 +155,7 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$this->assertNull($actions->dataFieldByName('action_save'));
 		$this->assertNull($actions->dataFieldByName('action_publish'));
 		$this->assertNull($actions->dataFieldByName('action_unpublish'));
-		$this->assertNull($actions->dataFieldByName('action_delete'));
+		$this->assertNull($actions->dataFieldByName('action_archive'));
 		$this->assertNotNull($actions->dataFieldByName('action_email'));
 		$this->assertNotNull($actions->dataFieldByName('action_rollback'));
 	}

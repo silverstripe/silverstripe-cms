@@ -259,7 +259,7 @@ class CMSSIteTreeFilter_PublishedPages extends CMSSiteTreeFilter {
 		$pages = Versioned::get_including_deleted('SiteTree');
 		$pages = $this->applyDefaultFilters($pages);
 		$pages = $pages->filterByCallback(function($page) {
-			return $page->ExistsOnLive;
+			return $page->getExistsOnLive();
 		});
 		return $pages;
 	}
@@ -286,7 +286,7 @@ class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter {
 	protected $numChildrenMethod = 'numHistoricalChildren';
 	
 	static public function title() {
-		return _t('CMSSiteTreeFilter_DeletedPages.Title', "All pages, including deleted");
+		return _t('CMSSiteTreeFilter_DeletedPages.Title', "All pages, including archived");
 	}
 	
 	public function getFilteredPages() {
@@ -305,7 +305,7 @@ class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter {
 class CMSSiteTreeFilter_ChangedPages extends CMSSiteTreeFilter {
 	
 	static public function title() {
-		return _t('CMSSiteTreeFilter_ChangedPages.Title', "Changed pages");
+		return _t('CMSSiteTreeFilter_ChangedPages.Title', "Modified pages");
 	}
 	
 	public function getFilteredPages() {
@@ -339,7 +339,7 @@ class CMSSiteTreeFilter_StatusRemovedFromDraftPages extends CMSSiteTreeFilter {
 		$pages = $this->applyDefaultFilters($pages);
 		$pages = $pages->filterByCallback(function($page) {
 			// If page is removed from stage but not live
-			return $page->IsDeletedFromStage && $page->ExistsOnLive;
+			return $page->getIsDeletedFromStage() && $page->getExistsOnLive();
 		});
 		return $pages;
 	}	
@@ -354,7 +354,7 @@ class CMSSiteTreeFilter_StatusRemovedFromDraftPages extends CMSSiteTreeFilter {
 class CMSSiteTreeFilter_StatusDraftPages extends CMSSiteTreeFilter {
 	
 	static public function title() {
-		return _t('CMSSiteTreeFilter_StatusDraftPages.Title', 'Draft unpublished pages');
+		return _t('CMSSiteTreeFilter_StatusDraftPages.Title', 'Draft pages');
 	}
 	
 	/**
@@ -368,7 +368,7 @@ class CMSSiteTreeFilter_StatusDraftPages extends CMSSiteTreeFilter {
 		$pages = $this->applyDefaultFilters($pages);
 		$pages = $pages->filterByCallback(function($page) {
 			// If page exists on stage but not on live
-			return (!$page->IsDeletedFromStage && $page->IsAddedToStage);
+			return (!$page->getIsDeletedFromStage() && $page->getIsAddedToStage());
 		});
 		return $pages;
 	}	
@@ -393,7 +393,7 @@ class CMSSiteTreeFilter_StatusDeletedPages extends CMSSiteTreeFilter {
 	protected $numChildrenMethod = 'numHistoricalChildren';
 	
 	static public function title() {
-		return _t('CMSSiteTreeFilter_StatusDeletedPages.Title', 'Deleted pages');
+		return _t('CMSSiteTreeFilter_StatusDeletedPages.Title', 'Archived pages');
 	}
 	
 	/**
@@ -408,7 +408,7 @@ class CMSSiteTreeFilter_StatusDeletedPages extends CMSSiteTreeFilter {
 
 		$pages = $pages->filterByCallback(function($page) {
 			// Doesn't exist on either stage or live
-			return $page->IsDeletedFromStage && !$page->ExistsOnLive;
+			return $page->getIsDeletedFromStage() && !$page->getExistsOnLive();
 		});
 		return $pages;
 	}	
