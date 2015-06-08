@@ -1023,24 +1023,27 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 *                       If omitted, it will be assumed this is to be created as a top level page.
 	 * @return bool True if the current user can create pages on this class.
 	 */
-	public function canCreate($member = null) {
+	public function canCreate($member = null, $context = array()) {
 		if(!$member || !(is_a($member, 'Member')) || is_numeric($member)) {
 			$member = Member::currentUserID();
 		}
 
 		// Check parent (custom canCreate option for SiteTree)
 		// Block children not allowed for this parent type
-		$context = func_num_args() > 1 ? func_get_arg(1) : array();
 		$parent = isset($context['Parent']) ? $context['Parent'] : null;
-		if($parent && !in_array(get_class($this), $parent->allowedChildren())) return false;
+		if($parent && !in_array(get_class($this), $parent->allowedChildren())) {
+			return false;
+		}
 
 		// Check permission
-		if($member && Permission::checkMember($member, "ADMIN")) return true;
+		if($member && Permission::checkMember($member, "ADMIN")) {
+			return true;
+		}
 
 		// Standard mechanism for accepting permission changes from extensions
-		$results = $this->extend('canCreate', $member, $parent);
-		if(is_array($results) && ($results = array_filter($results, function($v) {return $v !== null;}))) {
-			return min($results);
+		$extended = $this->extendedCan(__FUNCTION__, $member, $context);
+		if($extended !== null) {
+			return $extended;
 		}
 
 		// Fall over to inherited permissions
