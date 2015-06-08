@@ -535,6 +535,7 @@ JS
 	
 	public function getSiteTreeFor($className, $rootID = null, $childrenMethod = null, $numChildrenMethod = null, $filterFunction = null, $minNodeCount = 30) {
 		if (!$childrenMethod) $childrenMethod = 'ChildFolders';
+		if (!$numChildrenMethod) $numChildrenMethod = 'numChildFolders';
 		return parent::getSiteTreeFor($className, $rootID, $childrenMethod, $numChildrenMethod, $filterFunction, $minNodeCount);
 	}
 	
@@ -543,7 +544,7 @@ JS
 	}
 	
 	public function SiteTreeAsUL() {
-		return $this->getSiteTreeFor($this->stat('tree_class'), null, 'ChildFolders');
+		return $this->getSiteTreeFor($this->stat('tree_class'), null, 'ChildFolders', 'numChildFolders');
 	}
 
 	//------------------------------------------------------------------------------------------//
