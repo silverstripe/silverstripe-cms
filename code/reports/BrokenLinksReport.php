@@ -29,9 +29,8 @@ class BrokenLinksReport extends SS_Report {
 				$sort = '';
 			}
 		}
-		if (!isset($_REQUEST['CheckSite']) || $params['CheckSite'] == 'Published') $ret = Versioned::get_by_stage('SiteTree', 'Live', '("SiteTree"."HasBrokenLink" = 1 OR "SiteTree"."HasBrokenFile" = 1)', $sort, $join, $limit);
-		else $ret = DataObject::get('SiteTree', '("SiteTree"."HasBrokenFile" = 1 OR "HasBrokenLink" = 1)', $sort, $join, $limit);
-		
+		$ret = Versioned::get_by_stage('SiteTree', ((!isset($params['CheckSite']) || ($params['CheckSite'] == 'Published')) ? 'Live' : 'Stage'), '("SiteTree"."HasBrokenLink" = 1 OR "SiteTree"."HasBrokenFile" = 1)', $sort, $join, $limit);
+
 		$returnSet = new ArrayList();
 		if ($ret) foreach($ret as $record) {
 			$reason = false;
@@ -73,7 +72,7 @@ class BrokenLinksReport extends SS_Report {
 		return $returnSet;
 	}
 	public function columns() {
-		if(isset($_REQUEST['CheckSite']) && $_REQUEST['CheckSite'] == 'Draft') {
+		if(isset($_REQUEST['filters']['CheckSite']) && $_REQUEST['filters']['CheckSite'] == 'Draft') {
 			$dateTitle = _t('BrokenLinksReport.ColumnDateLastModified', 'Date last modified');
 		} else {
 			$dateTitle = _t('BrokenLinksReport.ColumnDateLastPublished', 'Date last published');

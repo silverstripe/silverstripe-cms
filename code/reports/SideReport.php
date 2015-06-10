@@ -199,9 +199,8 @@ class SideReport_BrokenLinks extends SS_Report {
 		// Get class names for page types that are not virtual pages or redirector pages
 		$classes = array_diff(ClassInfo::subclassesFor('SiteTree'), ClassInfo::subclassesFor('VirtualPage'), ClassInfo::subclassesFor('RedirectorPage'));
 		$classNames = "'".join("','", $classes)."'";
-		
-		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "\"ClassName\" IN ($classNames) AND \"HasBrokenLink\" = 1");
-		else $ret = DataObject::get('SiteTree', "\"ClassName\" IN ($classNames) AND \"HasBrokenLink\" = 1");
+
+		$ret = Versioned::get_by_stage('SiteTree', ((isset($params['OnLive']) && $params['OnLive']) ? 'Live' : 'Stage'), "\"ClassName\" IN ($classNames) AND \"HasBrokenLink\" = 1");
 		return $ret;
 	}
 	public function columns() {
@@ -212,7 +211,7 @@ class SideReport_BrokenLinks extends SS_Report {
 			),
 		);
 	}
-	public function getParameterFields() {
+	public function parameterFields() {
 		return new FieldList(
 			new CheckboxField('OnLive', _t('SideReport.ParameterLiveCheckbox', 'Check live site'))
 		);
@@ -237,9 +236,8 @@ class SideReport_BrokenFiles extends SS_Report {
 		// Get class names for page types that are not virtual pages or redirector pages
 		$classes = array_diff(ClassInfo::subclassesFor('SiteTree'), ClassInfo::subclassesFor('VirtualPage'), ClassInfo::subclassesFor('RedirectorPage'));
 		$classNames = "'".join("','", $classes)."'";
-		
-		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "\"ClassName\" IN ($classNames) AND \"HasBrokenFile\" = 1");
-		else $ret = DataObject::get('SiteTree', "\"ClassName\" IN ($classNames) AND \"HasBrokenFile\" = 1");
+
+		$ret = Versioned::get_by_stage('SiteTree', ((isset($params['OnLive']) && $params['OnLive']) ? 'Live' : 'Stage'), "\"ClassName\" IN ($classNames) AND \"HasBrokenFile\" = 1");
 		return $ret;
 	}
 	public function columns() {
@@ -251,7 +249,7 @@ class SideReport_BrokenFiles extends SS_Report {
 		);
 	}
 
-	public function getParameterFields() {
+	public function parameterFields() {
 		return new FieldList(
 			new CheckboxField('OnLive', _t('SideReport.ParameterLiveCheckbox', 'Check live site'))
 		);
@@ -271,8 +269,8 @@ class SideReport_BrokenVirtualPages extends SS_Report {
 	}
 	public function sourceRecords($params = null) {
 		$classNames = "'".join("','", ClassInfo::subclassesFor('VirtualPage'))."'";
-		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "\"ClassName\" IN ($classNames) AND \"HasBrokenLink\" = 1");
-		else $ret = DataObject::get('SiteTree', "\"ClassName\" IN ($classNames) AND \"HasBrokenLink\" = 1");
+
+		$ret = Versioned::get_by_stage('SiteTree', ((isset($params['OnLive']) && $params['OnLive']) ? 'Live' : 'Stage'), "\"ClassName\" IN ($classNames) AND \"HasBrokenLink\" = 1");
 		return $ret;
 	}
 	
@@ -285,7 +283,7 @@ class SideReport_BrokenVirtualPages extends SS_Report {
 		);
 	}
 
-	public function getParameterFields() {
+	public function parameterFields() {
 		return new FieldList(
 			new CheckboxField('OnLive', _t('SideReport.ParameterLiveCheckbox', 'Check live site'))
 		);
@@ -305,9 +303,8 @@ class SideReport_BrokenRedirectorPages extends SS_Report {
 	}
 	public function sourceRecords($params = null) {
 		$classNames = "'".join("','", ClassInfo::subclassesFor('RedirectorPage'))."'";
-		
-		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "\"ClassName\" IN ($classNames) AND \"HasBrokenLink\" = 1");
-		else $ret = DataObject::get('SiteTree', "\"ClassName\" IN ($classNames) AND \"HasBrokenLink\" = 1");
+
+		$ret = Versioned::get_by_stage('SiteTree', ((isset($params['OnLive']) && $params['OnLive']) ? 'Live' : 'Stage'), "\"ClassName\" IN ($classNames) AND \"HasBrokenLink\" = 1");
 		return $ret;
 	}
 	
@@ -320,7 +317,7 @@ class SideReport_BrokenRedirectorPages extends SS_Report {
 		);
 	}
 	
-	public function getParameterFields() {
+	public function parameterFields() {
 		return new FieldList(
 			new CheckboxField('OnLive', _t('SideReport.ParameterLiveCheckbox', 'Check live site'))
 		);
