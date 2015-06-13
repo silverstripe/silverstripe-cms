@@ -406,8 +406,7 @@ class SiteTreeTest extends SapphireTest {
 		Versioned::reading_stage('Stage');
 		Config::inst()->update('SiteTree', 'enforce_strict_hierarchy', true);
 	}
-
-
+    
 	public function testDeleteFromLiveOperatesRecursivelyStrict() {
 		$this->logInWithPermission('ADMIN');
 
@@ -545,7 +544,7 @@ class SiteTreeTest extends SapphireTest {
 		// Confirm that Member.editor can still edit the page
 		$this->objFromFixture('Member','editor')->logIn();
 		$this->assertTrue($page->canEdit());
-}
+    }
 
 	public function testCompareVersions() {
 		// Necessary to avoid
@@ -691,6 +690,59 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertTrue($about->isSection());
 		$this->assertTrue($staff->isSection());
 		$this->assertTrue($ceo->isSection());
+	}
+
+	public function testURLSegmentAutoUpdate() {
+		$sitetree = new SiteTree();
+		$sitetree->Title = _t(
+			'CMSMain.NEWPAGE',
+			array('pagetype' => $sitetree->i18n_singular_name())
+		);
+		$sitetree->write();
+		$this->assertEquals($sitetree->URLSegment, 'new-page',
+			'Sets based on default title on first save'
+		);
+		
+		$sitetree->Title = 'Changed';
+		$sitetree->write();
+		$this->assertEquals($sitetree->URLSegment, 'changed',
+			'Auto-updates when set to default title'
+		);
+
+		$sitetree->Title = 'Changed again';
+		$sitetree->write();
+		$this->assertEquals($sitetree->URLSegment, 'changed',
+			'Does not auto-update once title has been changed'
+		);
+	}
+
+	public function testURLSegmentAutoUpdateLocalized() {
+		$oldLocale = i18n::get_locale();
+		i18n::set_locale('de_DE');
+
+		$sitetree = new SiteTree();
+		$sitetree->Title = _t(
+			'CMSMain.NEWPAGE',
+			array('pagetype' => $sitetree->i18n_singular_name())
+		);
+		$sitetree->write();
+		$this->assertEquals($sitetree->URLSegment, 'neue-seite',
+			'Sets based on default title on first save'
+		);
+
+		$sitetree->Title = 'Changed';
+		$sitetree->write();
+		$this->assertEquals($sitetree->URLSegment, 'changed',
+			'Auto-updates when set to default title'
+		);
+
+		$sitetree->Title = 'Changed again';
+		$sitetree->write();
+		$this->assertEquals($sitetree->URLSegment, 'changed',
+			'Does not auto-update once title has been changed'
+		);
+
+		i18n::set_locale($oldLocale);
 	}
 
 	/**
