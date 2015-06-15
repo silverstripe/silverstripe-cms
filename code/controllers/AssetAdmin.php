@@ -308,7 +308,7 @@ JS
 		$fields->setForm($form);
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 		// TODO Can't merge $FormAttributes in template at the moment
-		$form->addExtraClass('cms-edit-form cms-panel-padded center ' . $this->BaseCSSClasses());
+		$form->addExtraClass('cms-edit-form ' . $this->BaseCSSClasses());
 		$form->setAttribute('data-pjax-fragment', 'CurrentForm');
 		$form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
 
@@ -360,21 +360,17 @@ JS
 		foreach($context->getFilters() as $filter) $filter->setFullName(sprintf('q[%s]', $filter->getFullName()));
 
 		// Customize fields
-		$context->addField(
-			new HeaderField('q[Date]', _t('CMSSearch.FILTERDATEHEADING', 'Date'), 4)
+		$dateHeader = HeaderField::create('q[Date]', _t('CMSSearch.FILTERDATEHEADING', 'Date'), 4);
+		$dateFrom = DateField::create('q[CreatedFrom]', _t('CMSSearch.FILTERDATEFROM', 'From'))
+		->setConfig('showcalendar', true);
+		$dateTo = DateField::create('q[CreatedTo]',_t('CMSSearch.FILTERDATETO', 'To'))
+		->setConfig('showcalendar', true);
+		$dateGroup = FieldGroup::create(
+			$dateHeader,
+			$dateFrom,
+			$dateTo
 		);
-		$context->addField(
-			DateField::create(
-				'q[CreatedFrom]', 
-				_t('CMSSearch.FILTERDATEFROM', 'From')
-			)->setConfig('showcalendar', true)
-		);
-		$context->addField(
-			DateField::create(
-				'q[CreatedTo]',
-				_t('CMSSearch.FILTERDATETO', 'To')
-			)->setConfig('showcalendar', true)
-		);
+		$context->addField($dateGroup);
 		$appCategories = array(
 			'image' => _t('AssetAdmin.AppCategoryImage', 'Image'),
 			'audio' => _t('AssetAdmin.AppCategoryAudio', 'Audio'),

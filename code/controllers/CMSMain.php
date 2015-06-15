@@ -314,8 +314,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 */
 	public function SearchForm() {
 		// Create the fields
-		$content = new TextField('q[Term]', _t('CMSSearch.FILTERLABELTEXT', 'Content'));
-		$dateHeader = new HeaderField('q[Date]', _t('CMSSearch.FILTERDATEHEADING', 'Date'), 4);
+		$content = new TextField('q[Term]', _t('CMSSearch.FILTERLABELTEXT', 'Search'));
+		$dateHeader = new HeaderField('q[Date]', _t('CMSSearch.PAGEFILTERDATEHEADING', 'Last edited'), 4);
 		$dateFrom = new DateField(
 			'q[LastEditedFrom]', 
 			_t('CMSSearch.FILTERDATEFROM', 'From')
@@ -328,12 +328,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$dateTo->setConfig('showcalendar', true);
 		$pageFilter = new DropdownField(
 			'q[FilterClass]', 
-			_t('CMSMain.PAGES', 'Pages'), 
+			_t('CMSMain.PAGES', 'Page status'), 
 			CMSSiteTreeFilter::get_all_filters()
 		);
 		$pageClasses = new DropdownField(
 			'q[ClassName]', 
-			_t('CMSMain.PAGETYPEOPT', 'Page Type', 'Dropdown for limiting search to a page type'), 
+			_t('CMSMain.PAGETYPEOPT', 'Page type', 'Dropdown for limiting search to a page type'), 
 			$this->getPageTypes()
 		);
 		$pageClasses->setEmptyString(_t('CMSMain.PAGETYPEANYOPT','Any'));
@@ -356,9 +356,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		// Create the Search and Reset action
 		$actions = new FieldList(
-			FormAction::create('doSearch',  _t('CMSMain_left_ss.APPLY_FILTER', 'Apply Filter'))
+			FormAction::create('doSearch',  _t('CMSMain_left_ss.APPLY_FILTER', 'Search'))
 				->addExtraClass('ss-ui-action-constructive'),
-			Object::create('ResetFormAction', 'clear', _t('CMSMain_left_ss.CLEAR_FILTER', 'Clear Filter'))
+			Object::create('ResetFormAction', 'clear', _t('CMSMain_left_ss.CLEAR_FILTER', 'Clear'))
 		);
 
 		// Use <button> to allow full jQuery UI styling on the all of the Actions
