@@ -344,7 +344,7 @@ class VirtualPage extends Page {
 		}
 	}
 
-	public function validate() {
+	protected function validate() {
 		$result = parent::validate();
 
 		// "Can be root" validation
