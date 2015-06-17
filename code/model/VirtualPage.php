@@ -344,7 +344,7 @@ class VirtualPage extends Page {
 		}
 	}
 
-	public function validate() {
+	protected function validate() {
 		$result = parent::validate();
 
 		// "Can be root" validation
@@ -517,6 +517,7 @@ class VirtualPage_Controller extends Page_Controller {
 			}
 		}
 		parent::init();
+		$this->__call('init', array());
 	}
 
 	public function loadcontentall() {

@@ -290,7 +290,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * @return boolean
 	 */
 	public function TreeIsFiltered() {
-		return $this->getRequest()->getVar('q');
+		$query = $this->getRequest()->getVar('q');
+
+		if (!$query || (count($query) === 1 && isset($query['FilterClass']) && $query['FilterClass'] === 'CMSSiteTreeFilter_Search')) {
+			return false;
+		}
+
+		return true;
 	}
 
 	public function ExtraTreeTools() {
@@ -351,8 +357,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// Create the Search and Reset action
 		$actions = new FieldList(
 			FormAction::create('doSearch',  _t('CMSMain_left_ss.APPLY_FILTER', 'Apply Filter'))
-			->addExtraClass('ss-ui-action-constructive'),
-			Object::create('ResetFormAction', 'clear', _t('CMSMain_left_ss.RESET', 'Reset'))
+				->addExtraClass('ss-ui-action-constructive'),
+			Object::create('ResetFormAction', 'clear', _t('CMSMain_left_ss.CLEAR_FILTER', 'Clear Filter'))
 		);
 
 		// Use <button> to allow full jQuery UI styling on the all of the Actions

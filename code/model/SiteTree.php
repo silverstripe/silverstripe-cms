@@ -1536,7 +1536,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 
 		// If there is no URLSegment set, generate one from Title
-		if((!$this->URLSegment || $this->URLSegment == 'new-page') && $this->Title) {
+		$defaultSegment = $this->generateURLSegment(_t(
+			'CMSMain.NEWPAGE',
+			array('pagetype' => $this->i18n_singular_name())
+		));
+		if((!$this->URLSegment || $this->URLSegment == $defaultSegment) && $this->Title) {
 			$this->URLSegment = $this->generateURLSegment($this->Title);
 		} else if($this->isChanged('URLSegment', 2)) {
 			// Do a strict check on change level, to avoid double encoding caused by
@@ -1624,7 +1628,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$this->_cache_statusFlags = null;
 	}
 	
-	public function validate() {
+	protected function validate() {
 		$result = parent::validate();
 
 		// Allowed children validation 
@@ -1974,8 +1978,12 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			(self::config()->nested_urls && $this->ParentID ? $this->Parent()->RelativeLink(true) : null)
 		);
 		
-		$urlsegment = new SiteTreeURLSegmentField("URLSegment", $this->fieldLabel('URLSegment'));
-		$urlsegment->setURLPrefix($baseLink);
+		$urlsegment = SiteTreeURLSegmentField::create("URLSegment", $this->fieldLabel('URLSegment'))
+			->setURLPrefix($baseLink)
+			->setDefaultURL($this->generateURLSegment(_t(
+				'CMSMain.NEWPAGE',
+				array('pagetype' => $this->i18n_singular_name())
+			)));
 		$helpText = (self::config()->nested_urls && count($this->Children())) ? $this->fieldLabel('LinkChangeNote') : '';
 		if(!Config::inst()->get('URLSegmentFilter', 'default_allow_multibyte')) {
 			$helpText .= $helpText ? '<br />' : '';
