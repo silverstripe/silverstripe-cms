@@ -18,13 +18,13 @@
 	"require": {
 		"php": ">=5.3.2",
 		"composer/installers": "*",
-		"silverstripe/framework": "3.2.x-dev",
-		"silverstripe/reports": "*",
-		"silverstripe/siteconfig": "3.2.x-dev"
+		"silverstripe/framework": "3.3.x-dev",
+		"silverstripe/reports": "3.3.x-dev",
+		"silverstripe/siteconfig": "3.3.x-dev"
 	},
 	"extra": {
 		"branch-alias": {
-			"3.x-dev": "3.2.x-dev"
+			"3.x-dev": "3.3.x-dev"
 		}
 	},
 	"autoload": {
