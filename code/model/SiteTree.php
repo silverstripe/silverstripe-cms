@@ -1628,7 +1628,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$this->_cache_statusFlags = null;
 	}
 	
-	protected function validate() {
+	public function validate() {
 		$result = parent::validate();
 
 		// Allowed children validation 
