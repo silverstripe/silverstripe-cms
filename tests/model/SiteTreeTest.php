@@ -925,27 +925,27 @@ class SiteTreeTest extends SapphireTest {
 		$classCext->write();
 
 		$classB->ParentID = $page->ID;
-		$valid = $classB->validate();
+		$valid = $classB->doValidate();
 		$this->assertTrue($valid->valid(), "Does allow children on unrestricted parent");
 
 		$classB->ParentID = $classA->ID;
-		$valid = $classB->validate();
+		$valid = $classB->doValidate();
 		$this->assertTrue($valid->valid(), "Does allow child specifically allowed by parent");
 
 		$classC->ParentID = $classA->ID;
-		$valid = $classC->validate();
+		$valid = $classC->doValidate();
 		$this->assertFalse($valid->valid(), "Doesnt allow child on parents specifically restricting children");
 
 		$classB->ParentID = $classC->ID;
-		$valid = $classB->validate();
+		$valid = $classB->doValidate();
 		$this->assertFalse($valid->valid(), "Doesnt allow child on parents disallowing all children");
 
 		$classB->ParentID = $classC->ID;
-		$valid = $classB->validate();
+		$valid = $classB->doValidate();
 		$this->assertFalse($valid->valid(), "Doesnt allow child on parents disallowing all children");
 
 		$classCext->ParentID = $classD->ID;
-		$valid = $classCext->validate();
+		$valid = $classCext->doValidate();
 		$this->assertFalse($valid->valid(), "Doesnt allow child where only parent class is allowed on parent node, and asterisk prefixing is used");
 	}
 
