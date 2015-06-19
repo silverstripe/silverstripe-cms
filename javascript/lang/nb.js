@@ -36,10 +36,16 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
     "Tree.ThisPageOnly": "Bare denne siden",
     "Tree.ThisPageAndSubpages": "Denne siden og undersider",
     "Tree.ShowAsList": "Vis undersider som en liste",
-    "CMSMain.ConfirmRestoreFromLive": "Vil du virkelig kopiere den publiserte siden til utkastsiden?",
+    "CMSMain.ConfirmRestoreFromLive": "Are you sure you want to revert draft to when the page was last published?",
     "CMSMain.RollbackToVersion": "Vil du virkelig rulle tilbake til versjon #%s av denne siden?",
+    "CMSMain.Archive": "Are you sure you want to archive this page?\n\nThe page will be unpublished and sent to the archive.",
+    "CMSMain.Restore": "Are you sure you want to restore this page from archive?",
+    "CMSMain.RestoreToRoot": "Are you sure you want to restore this page from archive?\n\nBecause the parent page is not available this will be restored to the top level.",
+    "CMSMain.Unpublish": "Are you sure you want to remove your page from the published site?\n\nThis page will still be available in the sitetree as draft.",
+    "CMSMain.DeleteFromDraft": "Are you sure you want to remove your page from the draft site?\n\nThis page will remain on the published site.",
     "URLSEGMENT.Edit": "Rediger",
     "URLSEGMENT.OK": "OK",
-    "URLSEGMENT.Cancel": "Avbryt"
+    "URLSEGMENT.Cancel": "Avbryt",
+    "URLSEGMENT.UpdateURL": "Update URL"
 });
 }

@@ -31,9 +31,15 @@
     "Tree.ThisPageOnly": "Tik šį puslapį",
     "Tree.ThisPageAndSubpages": "Šį puslapį ir visus po juo",
     "Tree.ShowAsList": "Rodyti žemesnius pusl. kaip sąrašą",
-    "CMSMain.ConfirmRestoreFromLive": "Ar tikrai norite kopijuoti publikuotą turinį į juodraštinę svetainę?",
+    "CMSMain.ConfirmRestoreFromLive": "Are you sure you want to revert draft to when the page was last published?",
     "CMSMain.RollbackToVersion": "Ar tikrai norite atstatyti šį puslapį į #%s versiją?",
+    "CMSMain.Archive": "Are you sure you want to archive this page?\n\nThe page will be unpublished and sent to the archive.",
+    "CMSMain.Restore": "Are you sure you want to restore this page from archive?",
+    "CMSMain.RestoreToRoot": "Are you sure you want to restore this page from archive?\n\nBecause the parent page is not available this will be restored to the top level.",
+    "CMSMain.Unpublish": "Are you sure you want to remove your page from the published site?\n\nThis page will still be available in the sitetree as draft.",
+    "CMSMain.DeleteFromDraft": "Are you sure you want to remove your page from the draft site?\n\nThis page will remain on the published site.",
     "URLSEGMENT.Edit": "Redaguoti",
     "URLSEGMENT.OK": "Gerai",
-    "URLSEGMENT.Cancel": "Atšaukti"
+    "URLSEGMENT.Cancel": "Atšaukti",
+    "URLSEGMENT.UpdateURL": "Update URL"
 }
