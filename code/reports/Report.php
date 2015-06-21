@@ -120,7 +120,7 @@ class SS_Report extends ViewableData {
 		if($this->hasMethod('sourceRecords')) {
 			return $this->sourceRecords($params, null, null);
 		} else {
-			$query = $this->sourceQuery();
+			$query = $this->sourceQuery($params);
 			$results = new ArrayList();
 			foreach($query->execute() as $data) {
 				$class = $this->dataClass();
@@ -266,7 +266,7 @@ class SS_Report extends ViewableData {
 	public function getReportField() {
 		// TODO Remove coupling with global state
 		$params = isset($_REQUEST['filters']) ? $_REQUEST['filters'] : array();
-		$items = $this->sourceRecords($params, null, null);
+		$items = $this->records($params);
 
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
 			new GridFieldToolbarHeader(),
