@@ -31,9 +31,15 @@
     "Tree.ThisPageOnly": "Solo questa pagina",
     "Tree.ThisPageAndSubpages": "Questa pagina e le sottopagine",
     "Tree.ShowAsList": "Mostra figli come lista",
-    "CMSMain.ConfirmRestoreFromLive": "Vuoi veramente copiare il contenuto pubblicato nel sito bozza?",
+    "CMSMain.ConfirmRestoreFromLive": "Are you sure you want to revert draft to when the page was last published?",
     "CMSMain.RollbackToVersion": "Vuoi veramente tornare alla versione #%s di questa pagina?",
+    "CMSMain.Archive": "Are you sure you want to archive this page?\n\nThe page will be unpublished and sent to the archive.",
+    "CMSMain.Restore": "Are you sure you want to restore this page from archive?",
+    "CMSMain.RestoreToRoot": "Are you sure you want to restore this page from archive?\n\nBecause the parent page is not available this will be restored to the top level.",
+    "CMSMain.Unpublish": "Are you sure you want to remove your page from the published site?\n\nThis page will still be available in the sitetree as draft.",
+    "CMSMain.DeleteFromDraft": "Are you sure you want to remove your page from the draft site?\n\nThis page will remain on the published site.",
     "URLSEGMENT.Edit": "Modifica",
     "URLSEGMENT.OK": "OK",
-    "URLSEGMENT.Cancel": "Annulla"
+    "URLSEGMENT.Cancel": "Annulla",
+    "URLSEGMENT.UpdateURL": "Update URL"
 }

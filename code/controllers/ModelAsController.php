@@ -129,7 +129,7 @@ class ModelAsController extends Controller implements NestedController {
 	}
 
 	/**
-	 * @deprecated 3.2 Use OldPageRedirector::find_old_page instead
+	 * @deprecated 4.0 Use OldPageRedirector::find_old_page instead
 	 *
 	 * @param string $URLSegment A subset of the url. i.e in /home/contact/ home and contact are URLSegment.
 	 * @param int $parent The ID of the parent of the page the URLSegment belongs to.
@@ -137,7 +137,7 @@ class ModelAsController extends Controller implements NestedController {
 	 * @return SiteTree
 	 */
 	static public function find_old_page($URLSegment, $parent = null, $ignoreNestedURLs = false) {
-		Deprecation::notice('3.2', 'Use OldPageRedirector::find_old_page instead');
+		Deprecation::notice('4.0', 'Use OldPageRedirector::find_old_page instead');
 		if ($parent) {
 			$parent = SiteTree::get()->byId($parent);	
 		}

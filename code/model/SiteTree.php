@@ -241,69 +241,69 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * by deleting all children when the their parent is deleted (TRUE),
 	 * or rather preserve this data even if its not reachable through any navigation path (FALSE).
 	 * 
-	 * @deprecated 3.2 Use the "SiteTree.enforce_strict_hierarchy" config setting instead
+	 * @deprecated 4.0 Use the "SiteTree.enforce_strict_hierarchy" config setting instead
 	 * @param boolean
 	 */
 	static public function set_enforce_strict_hierarchy($to) {
-		Deprecation::notice('3.2', 'Use the "SiteTree.enforce_strict_hierarchy" config setting instead');
+		Deprecation::notice('4.0', 'Use the "SiteTree.enforce_strict_hierarchy" config setting instead');
 		Config::inst()->update('SiteTree', 'enforce_strict_hierarchy', $to);
 	}
 	
 	/**
-	 * @deprecated 3.2 Use the "SiteTree.enforce_strict_hierarchy" config setting instead
+	 * @deprecated 4.0 Use the "SiteTree.enforce_strict_hierarchy" config setting instead
 	 * @return boolean
 	 */
 	static public function get_enforce_strict_hierarchy() {
-		Deprecation::notice('3.2', 'Use the "SiteTree.enforce_strict_hierarchy" config setting instead');
+		Deprecation::notice('4.0', 'Use the "SiteTree.enforce_strict_hierarchy" config setting instead');
 		return Config::inst()->get('SiteTree', 'enforce_strict_hierarchy');
 	}
 
 	/**
 	 * Returns TRUE if nested URLs (e.g. page/sub-page/) are currently enabled on this site.
 	 *
-	 * @deprecated 3.2 Use the "SiteTree.nested_urls" config setting instead
+	 * @deprecated 4.0 Use the "SiteTree.nested_urls" config setting instead
 	 * @return bool
 	 */
 	static public function nested_urls() {
-		Deprecation::notice('3.2', 'Use the "SiteTree.nested_urls" config setting instead');
+		Deprecation::notice('4.0', 'Use the "SiteTree.nested_urls" config setting instead');
 		return Config::inst()->get('SiteTree', 'nested_urls');
 	}
 	
 	/**
-	 * @deprecated 3.2 Use the "SiteTree.nested_urls" config setting instead
+	 * @deprecated 4.0 Use the "SiteTree.nested_urls" config setting instead
 	 */
 	static public function enable_nested_urls() {
-		Deprecation::notice('3.2', 'Use the "SiteTree.nested_urls" config setting instead');
+		Deprecation::notice('4.0', 'Use the "SiteTree.nested_urls" config setting instead');
 		Config::inst()->update('SiteTree', 'nested_urls', true);
 	}
 	
 	/**
-	 * @deprecated 3.2 Use the "SiteTree.nested_urls" config setting instead
+	 * @deprecated 4.0 Use the "SiteTree.nested_urls" config setting instead
 	 */
 	static public function disable_nested_urls() {
-		Deprecation::notice('3.2', 'Use the "SiteTree.nested_urls" config setting instead');
+		Deprecation::notice('4.0', 'Use the "SiteTree.nested_urls" config setting instead');
 		Config::inst()->update('SiteTree', 'nested_urls', false);
 	}
 	
 	/**
 	 * Set the (re)creation of default pages on /dev/build
 	 *
-	 * @deprecated 3.2 Use the "SiteTree.create_default_pages" config setting instead
+	 * @deprecated 4.0 Use the "SiteTree.create_default_pages" config setting instead
 	 * @param bool $option
 	 */
 	static public function set_create_default_pages($option = true) {
-		Deprecation::notice('3.2', 'Use the "SiteTree.create_default_pages" config setting instead');
+		Deprecation::notice('4.0', 'Use the "SiteTree.create_default_pages" config setting instead');
 		Config::inst()->update('SiteTree', 'create_default_pages', $option);
 	}
 
 	/**
 	 * Return true if default pages should be created on /dev/build.
 	 *
-	 * @deprecated 3.2 Use the "SiteTree.create_default_pages" config setting instead
+	 * @deprecated 4.0 Use the "SiteTree.create_default_pages" config setting instead
 	 * @return bool
 	 */
 	static public function get_create_default_pages() {
-		Deprecation::notice('3.2', 'Use the "SiteTree.create_default_pages" config setting instead');
+		Deprecation::notice('4.0', 'Use the "SiteTree.create_default_pages" config setting instead');
 		return Config::inst()->get('SiteTree', 'create_default_pages');
 	}
 	
@@ -1478,7 +1478,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			if(!SiteTree::get_by_link(Config::inst()->get('RootURLController', 'default_homepage_link'))) {
 				$homepage = new Page();
 				$homepage->Title = _t('SiteTree.DEFAULTHOMETITLE', 'Home');
-				$homepage->Content = _t('SiteTree.DEFAULTHOMECONTENT', '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>');
+				$homepage->Content = _t('SiteTree.DEFAULTHOMECONTENT', '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>.</p><p>You can now access the <a href="http://docs.silverstripe.org">developer documentation</a>, or begin the <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lessons</a>.</p>');
 				$homepage->URLSegment = Config::inst()->get('RootURLController', 'default_homepage_link');
 				$homepage->Sort = 1;
 				$homepage->write();
