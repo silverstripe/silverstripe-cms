@@ -7,4 +7,10 @@
  */
 class CMSSettingsController extends SiteConfigLeftAndMain {
 
+	/**
+	 * @config
+	 * @var int
+	 */
+	private static $url_priority = 60;
+
 }
