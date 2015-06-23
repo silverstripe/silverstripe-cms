@@ -91,9 +91,9 @@ en:
     ListFiltered: 'Filtered list.'
     NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'This page doesn''t exist'
-    PAGES: Pages
+    PAGES: 'Page status'
     PAGETYPEANYOPT: Any
-    PAGETYPEOPT: 'Page Type'
+    PAGETYPEOPT: 'Page type'
     PUBALLCONFIRM: 'Please publish every page in the site, copying content stage to live'
     PUBALLFUN: '"Publish All" functionality'
     PUBALLFUN2: "Pressing this button will do the equivalent of going to every page and pressing \"publish\".  It's\n				intended to be used after there have been massive edits of the content, such as when the site was\n				first built."
@@ -115,13 +115,13 @@ en:
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
-    TreeFiltered: 'Filtered tree.'
-    TreeFilteredClear: 'Clear filter'
+    TreeFiltered: 'Search results.'
+    TreeFilteredClear: Clear
     MENUTITLE: 'Edit Page'
     ARCHIVE: Archive
     ARCHIVEDPAGE: 'Archived page ''%s'''
   CMSMain_left_ss:
-    APPLY_FILTER: 'Apply Filter'
+    APPLY_FILTER: 'Search'
     RESET: Reset
     CLEAR_FILTER: 'Clear Filter'
   CMSPageAddController:
@@ -151,14 +151,14 @@ en:
     MENUTITLE: Pages
     TreeView: 'Tree View'
   CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Multi-selection
+    MULTISELECT: Bulk actions
   CMSPagesController_Tools_ss:
     FILTER: Filter
   CMSSearch:
     FILTERDATEFROM: From
-    FILTERDATEHEADING: Date
+    FILTERDATEHEADING: 'Date'
     FILTERDATETO: To
-    FILTERLABELTEXT: Content
+    FILTERLABELTEXT: 'Search'
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Modified pages'
   CMSSiteTreeFilter_DeletedPages:

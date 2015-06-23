@@ -6,6 +6,7 @@
 		</div>
 
 		<div class="cms-content-header-tabs">
+			<button id="filters-button" class="icon-button font-icon-search" title="<% _t('CMSPagesController_Tools_ss.FILTER', 'Filter') %>"></button>
 			<ul class="cms-tabset-nav-primary">
 				<li class="content-treeview<% if ViewState == tree %> ui-tabs-active ss-tabs-force-active<% end_if %> cms-tabset-icon tree">
 					<a href="#cms-content-treeview" class="cms-panel-link" data-href="$LinkTreeView"><% _t('CMSPagesController.TreeView', 'Tree View') %></a>
@@ -22,9 +23,8 @@
 		</div>
 	</div>
 
-	$Tools
-
 	<div class="cms-content-fields center ui-widget-content cms-panel-padded">
+		$Tools
 
 		<div class="cms-content-view cms-panel-deferred" id="cms-content-treeview" data-url="$LinkTreeView">
 			<%-- Lazy-loaded via ajax --%>
