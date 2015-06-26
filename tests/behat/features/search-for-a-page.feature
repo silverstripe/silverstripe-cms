@@ -10,7 +10,6 @@ Feature: Search for a page
 		And I am logged in with "ADMIN" permissions
 		And I go to "/admin/pages"
 		And I expand the content filters
-		And I wait for 2 seconds
 
 	Scenario: I can search for a page by its title
 		Given I fill in "Search" with "About Us"

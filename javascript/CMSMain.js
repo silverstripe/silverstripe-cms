@@ -7,6 +7,22 @@
 	 */
 	$.entwine('ss', function ($) {
 
+		// Faux three column layout
+		$('.cms-content-header-info').entwine({
+			'from .cms-panel': {
+				// Keep the header info's width synced with the TreeView panel's width.
+				ontoggle: function (e) {
+					var $treeViewPanel = this.closest('.cms-content').find(e.target);
+
+					if ($treeViewPanel.length === 0) {
+						return;
+					}
+
+					this.parent()[$treeViewPanel.hasClass('collapsed') ? 'addClass' : 'removeClass']('collapsed');
+				}
+			}
+		});
+
 		$('.cms-content-toolbar').entwine({
 
 			onmatch: function () {

@@ -10,7 +10,7 @@ $ExtraTreeTools
 	<% if $TreeIsFiltered %>
 	<div class="cms-tree-filtered cms-notice">
 		<strong><% _t('CMSMain.TreeFiltered', 'Search results.') %></strong>
-		<a href="$LinkPages" class="cms-panel-link">
+		<a href="javascript:void(0)" class="clear-filter">
 			<% _t('CMSMain.TreeFilteredClear', 'Clear') %>
 		</a>
 	</div>

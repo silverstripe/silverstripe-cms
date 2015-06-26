@@ -36,7 +36,7 @@ Feature: Manage files
     And I click on "file1" in the "folder1" table
     And I fill in "renamedfile" for "Title"
     And I press the "Save" button
-    And I press the "Back" button
+    And I follow "folder1"
     Then the "folder1" table should not contain "testfile"
     And the "folder1" table should contain "renamedfile"
 

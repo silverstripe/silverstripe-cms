@@ -7,19 +7,16 @@
 
 		<div class="cms-content-header-tabs">
 			<button id="filters-button" class="icon-button font-icon-search" title="<% _t('CMSPagesController_Tools_ss.FILTER', 'Filter') %>"></button>
-			<ul class="cms-tabset-nav-primary">
-				<li class="content-treeview<% if ViewState == tree %> ui-tabs-active ss-tabs-force-active<% end_if %> cms-tabset-icon tree">
-					<a href="#cms-content-treeview" class="cms-panel-link" data-href="$LinkTreeView"><% _t('CMSPagesController.TreeView', 'Tree View') %></a>
-				</li>
-				<li class="content-listview<% if ViewState == list %> ui-tabs-active ss-tabs-force-active<% end_if %> cms-tabset-icon list">
-					<a href="#cms-content-listview" class="cms-panel-link" data-href="$LinkListView"><% _t('CMSPagesController.ListView', 'List View') %></a>
-				</li>
-				<!--
-				<li class="content-galleryview cms-tabset-icon gallery">
-					<a href="#cms-content-galleryview"><% _t('CMSPagesController.GalleryView', 'Gallery View') %></a>
-				</li>
-				-->
-			</ul>
+			<div class="icon-button-group">
+				<ul class="cms-tabset-nav-primary ss-tabset">
+					<li class="content-treeview<% if ViewState == tree %> ui-tabs-active ss-tabs-force-active<% end_if %> cms-tabset-icon tree">
+						<a href="#cms-content-treeview" class="cms-panel-link icon-button font-icon-tree" data-href="$LinkTreeView" title="<% _t('CMSPagesController.TreeView', 'Tree View') %>"></a>
+					</li>
+					<li class="content-listview<% if ViewState == list %> ui-tabs-active ss-tabs-force-active<% end_if %> cms-tabset-icon list">
+						<a href="#cms-content-listview" class="cms-panel-link icon-button font-icon-list" data-href="$LinkListView" title="<% _t('CMSPagesController.ListView', 'List View') %>"></a>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 
