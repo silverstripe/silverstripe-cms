@@ -63,16 +63,16 @@
 .cms-content-tools {
 	#cms-content-treeview {
 		.cms-content-toolbar {
-			border-bottom:none;
-			box-shadow:none;
-			margin-bottom:8px;
+			border-bottom: none;
+			box-shadow: none;
+			margin-bottom: 0;
 		}
 		.cms-tree-expand-trigger {
 			display: block;
 			float: left;
-			margin:0 0 2px 0;
-			span.ui-button-text{
-					padding-right:8px;
+			margin: 0 0 2px 0;
+			span.ui-button-text {
+					padding-right: 8px;
 			}
 		}
 
@@ -95,9 +95,10 @@
  * Associated behaviour in CMSMain.js
  * -------------------------------------------- */
 .cms-content-toolbar {
-	button.ss-ui-button {
-		padding: .4em .75em;
-		vertical-align: baseline;
+	[class*="font-icon-"].ss-ui-button,
+	[class^="font-icon-"].ss-ui-button {
+		padding: 5px 8px;
+		vertical-align: middle;
 
 		&:hover {
 			@include box-shadow(none);
@@ -108,15 +109,19 @@
 		}
 
 		&:before {
-			font-size: 1.1em;
+			font-size: 1.3em;
+			margin-right: 0.3em;
+			margin-top: 0;
+			vertical-align: middle;
 		}
 
 		&.ui-state-focus {
 			@include box-shadow(none);
 		}
 
-		&.active {
-			@include box-shadow(0 0 5px #b3b3b3 inset);
+		&.active,
+		&:active {
+			@include box-shadow(0 0 3px rgba(191, 194, 196, .9) inset);
 		}
 
 		.ui-button-text {
