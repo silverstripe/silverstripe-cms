@@ -52,9 +52,9 @@ So that I can link to a external website or a page on my site
     Given I select "awesome" in the "Content" HTML field
     When I press the "Insert Link" button
     When I select the "Download a file" radio button
-    And I fill in the "File" dropdown with "file1.jpg"
+    And I attach the file "testfile.jpg" to "file[Uploads][]" with HTML5
     And I press the "Insert link" button
-    Then the "Content" HTML field should contain "<a href="[file_link,id=1]" target="_blank">awesome</a>"
+    Then the "Content" HTML field should contain "<a href="[file_link,id=3]" target="_blank">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save draft" button
 
