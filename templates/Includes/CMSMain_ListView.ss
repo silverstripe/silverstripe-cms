@@ -9,7 +9,7 @@
 	<div class="cms-tree-filtered cms-notice">
 		<strong><% _t('CMSMain.ListFiltered', 'Filtered list.') %></strong>
 		<a href="$LinkPages" class="cms-panel-link">
-			<% _t('CMSMain.TreeFilteredClear', 'Clear filter') %>
+			<% _t('CMSMain.TreeFilteredClear', 'Clear') %>
 		</a>
 	</div>
 	<% end_if %>

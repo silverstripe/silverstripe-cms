@@ -342,8 +342,8 @@ class CMSMainTest extends FunctionalTest {
 	}
 
 	public function testBreadcrumbs() {
-		$page3 = $this->objFromFixture('Page', 'page3');		
-		$page31 = $this->objFromFixture('Page', 'page31');		
+		$page3 = $this->objFromFixture('Page', 'page3');
+		$page31 = $this->objFromFixture('Page', 'page31');
 		$adminuser = $this->objFromFixture('Member', 'admin');
 		$this->session()->inst_set('loggedInAs', $adminuser->ID);
 
@@ -352,9 +352,9 @@ class CMSMainTest extends FunctionalTest {
 		$crumbs = $parser->getBySelector('.breadcrumbs-wrapper .crumb');
 
 		$this->assertNotNull($crumbs);
-		$this->assertEquals(3, count($crumbs));
-		$this->assertEquals('Page 3', (string)$crumbs[1]);
-		$this->assertEquals('Page 3.1', (string)$crumbs[2]);
+		$this->assertEquals(2, count($crumbs));
+		$this->assertEquals('Page 3', (string)$crumbs[0]);
+		$this->assertEquals('Page 3.1', (string)$crumbs[1]);
 
 		$this->session()->inst_set('loggedInAs', null);
 	}

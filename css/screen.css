@@ -17,12 +17,13 @@
 .cms-content-tools #cms-content-treeview .cms-content-toolbar { border-bottom: none; box-shadow: none; margin-bottom: 8px; }
 .cms-content-tools #cms-content-treeview .cms-tree-expand-trigger { display: block; float: left; margin: 0 0 2px 0; }
 .cms-content-tools #cms-content-treeview .cms-tree-expand-trigger span.ui-button-text { padding-right: 8px; }
+.cms-content-tools #cms-content-treeview .cms-tree .badge { display: none; }
 .cms-content-tools #cms-content-treeview .cms-tree a:hover > .text > .badge, .cms-content-tools #cms-content-treeview .cms-tree .jstree-clicked > .text > .badge { display: inline-block; }
 
 /** -------------------------------------------- The CMS Content Toolbar. Associated behaviour in CMSMain.js -------------------------------------------- */
 .cms-content-toolbar button.ss-ui-button { padding: .4em .75em; vertical-align: baseline; }
 .cms-content-toolbar button.ss-ui-button:hover { -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
-.cms-content-toolbar button.ss-ui-button:focus { -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; outline: 0; }
+.cms-content-toolbar button.ss-ui-button:focus { -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
 .cms-content-toolbar button.ss-ui-button:before { font-size: 1.1em; }
 .cms-content-toolbar button.ss-ui-button.ui-state-focus { -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
 .cms-content-toolbar button.ss-ui-button.active { -webkit-box-shadow: 0 0 5px #b3b3b3 inset; -moz-box-shadow: 0 0 5px #b3b3b3 inset; box-shadow: 0 0 5px #b3b3b3 inset; }
@@ -42,7 +43,7 @@
 .cms .AssetAdmin .cms-content-fields .cms-edit-form.AssetAdmin { width: 100%; overflow-y: auto; }
 .cms .AssetAdmin .cms-content-fields .cms-content-tools .cms-panel-content { overflow: hidden; }
 .cms .AssetAdmin .cms-content-fields .cms-content-tools .cms-panel-content .cms-search-form { height: 100%; }
-.cms .AssetAdmin .cms-content-toolbar .cms-page-add-button { background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2YzZjNmMyIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Q5ZDlkOSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA=='); background-size: 100%; background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f3f3f3), color-stop(100%, #d9d9d9)); background-image: -moz-linear-gradient(#f3f3f3, #d9d9d9); background-image: -webkit-linear-gradient(#f3f3f3, #d9d9d9); background-image: linear-gradient(#f3f3f3, #d9d9d9); border-color: #c0c0c2; }
+.cms .AssetAdmin .cms-content-toolbar .cms-page-add-button { background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f3f3f3), color-stop(100%, #d9d9d9)); background-image: -webkit-linear-gradient(#f3f3f3, #d9d9d9); background-image: -moz-linear-gradient(#f3f3f3, #d9d9d9); background-image: -o-linear-gradient(#f3f3f3, #d9d9d9); background-image: linear-gradient(#f3f3f3, #d9d9d9); border-color: #c0c0c2; }
 .cms .AssetAdmin .cms-content-toolbar .cms-page-add-button span.btn-icon-add { height: 17px; }
 .cms .AssetAdmin .cms-content-toolbar .cms-page-add-button span.ui-button-text { color: #393939; text-shadow: white 0 1px 1px; }
 .cms .AssetAdmin #Root_TreeView .cms-tree ul .class-Folder a span.text span.jstree-foldericon { background: url(../images/blue-folder-horizontal.png) no-repeat; width: 16px; height: 16px; float: left; display: block; margin-right: 4px; }

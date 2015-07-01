@@ -17,7 +17,7 @@ So that I can link to a external website or a page on my site
     Given I select "awesome" in the "Content" HTML field
     And I press the "Insert Link" button
     When I select the "Page on the site" radio button
-    And I fill in the "Page" dropdown with "Home"
+    And I fill in the "internal" dropdown with "Home"
     And I fill in "my desc" for "Link description"
     And I press the "Insert" button
     # TODO Dynamic DB identifiers
@@ -29,7 +29,7 @@ So that I can link to a external website or a page on my site
     Given I select "awesome" in the "Content" HTML field
     And I press the "Insert Link" button
     And I select the "Page on the site" radio button
-    And I fill in the "Page" dropdown with "Details"
+    And I fill in the "internal" dropdown with "Details"
     And I wait for 1 second
     And I select "youranchor" from "Form_EditorToolbarLinkForm_AnchorSelector"
     And I press the "Insert link" button
@@ -52,9 +52,9 @@ So that I can link to a external website or a page on my site
     Given I select "awesome" in the "Content" HTML field
     When I press the "Insert Link" button
     When I select the "Download a file" radio button
-    And I fill in the "File" dropdown with "file1.jpg"
+    And I attach the file "testfile.jpg" to "file[Uploads][]" with HTML5
     And I press the "Insert link" button
-    Then the "Content" HTML field should contain "<a href="[file_link,id=1]" target="_blank">awesome</a>"
+    Then the "Content" HTML field should contain "<a href="[file_link,id=3]" target="_blank">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save draft" button
 

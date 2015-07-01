@@ -77,6 +77,11 @@
 		}
 
 		.cms-tree {
+			// Hide badges and drag icons to save space
+			.badge {
+				display: none;
+			}
+
 			// Show badge on hovered node
 			a:hover > .text > .badge, .jstree-clicked > .text > .badge {
 				display: inline-block;
@@ -100,7 +105,6 @@
 
 		&:focus {
 			@include box-shadow(none);
-			outline: 0;
 		}
 
 		&:before {
