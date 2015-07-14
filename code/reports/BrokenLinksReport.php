@@ -83,7 +83,7 @@ class BrokenLinksReport extends SS_Report {
 			"Title" => array(
 				"title" => _t('BrokenLinksReport.PageName', 'Page name'),
 				'formatting' => function($value, $item) use ($linkBase) {
-					return sprintf('<a href=\"%s\" title=\"%s\">%s</a>',
+					return sprintf('<a href="%s" title="%s">%s</a>',
 						Controller::join_links($linkBase, $item->ID),
 						_t('BrokenLinksReport.HoverTitleEditPage', 'Edit page'),
 						$value
