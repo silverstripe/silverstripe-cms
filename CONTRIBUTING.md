@@ -6,7 +6,7 @@ See our [high level overview](http://silverstripe.org/contributing-to-silverstri
 
 Or, for more detailed guidance, read one of the following pages:
 
- * [Sharing your opinion and raising issues](http://doc.silverstripe.org/framework/en/trunk/misc/contributing/issues)
- * [Providing code, whether it's creating a feature or fixing a bug](http://doc.silverstripe.org/framework/en/trunk/misc/contributing/code)
- * [Writing and translating documentation](http://doc.silverstripe.org/framework/en/trunk/misc/contributing/documentation)
- * [Translating user-interface elements](http://doc.silverstripe.org/framework/en/trunk/misc/contributing/translation)
+ * [Sharing your opinion and raising issues](http://docs.silverstripe.org/en/3.1/contributing/issues_and_bugs/)
+ * [Providing code, whether it's creating a feature or fixing a bug](http://docs.silverstripe.org/en/3.1/contributing/code/)
+ * [Writing and translating documentation](http://docs.silverstripe.org/en/3.1/contributing/translations/)
+ * [Translating user-interface elements](http://docs.silverstripe.org/en/3.1/contributing/translation_process/)
