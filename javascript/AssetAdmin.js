@@ -11,7 +11,7 @@
 		$(document).ready(function() {
 			$('#Form_BatchActionsForm').entwine('.ss.tree').register(
 				// TODO Hardcoding of base URL
-				'admin/assets/batchactions/delete', 
+				ss.config.adminURL+'assets/batchactions/delete', 
 				function(ids) {
 					var confirmed = confirm(
 						ss.i18n.sprintf(
@@ -112,7 +112,7 @@
 						  var url = $(currNode).find('a').attr('href');
 							$('.cms-content').loadPanel(url);
 						}
-						$('.cms-tree')[0].setCustomURL('admin/assets/getsubtree');
+						$('.cms-tree')[0].setCustomURL(ss.config.adminURL+'assets/getsubtree');
 						$('.cms-tree')[0].reload({onSuccess: function() {
 							// TODO Reset current tree node
 						}});

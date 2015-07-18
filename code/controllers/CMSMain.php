@@ -173,7 +173,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 */
 	public function Link($action = null) {
 		$link = Controller::join_links(
-			$this->stat('url_base', true),
+			AdminRootController::admin_url(),
 			$this->stat('url_segment', true), // in case we want to change the segment
 			'/', // trailing slash needed if $action is null!
 			"$action"

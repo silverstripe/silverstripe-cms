@@ -169,7 +169,7 @@ JS
 			new GridFieldEditButton(),
 			new GridFieldDeleteAction(),
 			new GridFieldDetailForm(),
-			GridFieldLevelup::create($folder->ID)->setLinkSpec('admin/assets/show/%d')
+			GridFieldLevelup::create($folder->ID)->setLinkSpec(AdminRootController::admin_url().'assets/show/%d')
 		);
 
 		$gridField = GridField::create('File', $title, $this->getList(), $gridFieldConfig);
