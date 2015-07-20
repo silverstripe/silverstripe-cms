@@ -17,12 +17,12 @@ Feature: Insert an image into a page
     Then I should see "Choose files to upload..."
 
     When I press the "From the web" button
-    And I fill in "RemoteURL" with "http://www.silverstripe.com/themes/sscom/images/silverstripe_logo_web.png"
+    And I fill in "RemoteURL" with "http://www.silverstripe.org/themes/ssv3/img/ss_logo.png"
     And I press the "Add url" button
-    Then I should see "silverstripe_logo_web.png (www.silverstripe.com)" in the ".ss-assetuploadfield span.name" element
+    Then I should see "ss_logo.png (www.silverstripe.org)" in the ".ss-assetuploadfield span.name" element
 
     When I press the "Insert" button  
-    Then the "Content" HTML field should contain "silverstripe_logo_web.png"
+    Then the "Content" HTML field should contain "ss_logo.png"
     # Required to avoid "unsaved changed" browser dialog
     Then I press the "Save draft" button
 
