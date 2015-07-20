@@ -80,7 +80,7 @@ class BrokenLinksReport extends SS_Report {
 		return $returnSet;
 	}
 	public function columns() {
-		if(isset($_REQUEST['CheckSite']) && $_REQUEST['CheckSite'] == 'Draft') {
+		if(isset($_REQUEST['filters']['CheckSite']) && $_REQUEST['filters']['CheckSite'] == 'Draft') {
 			$dateTitle = _t('BrokenLinksReport.ColumnDateLastModified', 'Date last modified');
 		} else {
 			$dateTitle = _t('BrokenLinksReport.ColumnDateLastPublished', 'Date last published');
@@ -91,7 +91,7 @@ class BrokenLinksReport extends SS_Report {
 			"Title" => array(
 				"title" => _t('BrokenLinksReport.PageName', 'Page name'),
 				'formatting' => function($value, $item) use ($linkBase) {
-					return sprintf('<a href=\"%s\" title=\"%s\">%s</a>',
+					return sprintf('<a href="%s" title="%s">%s</a>',
 						Controller::join_links($linkBase, $item->ID),
 						_t('BrokenLinksReport.HoverTitleEditPage', 'Edit page'),
 						$value
