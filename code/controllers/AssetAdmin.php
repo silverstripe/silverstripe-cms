@@ -176,13 +176,12 @@ JS
 		$columns = $gridField->getConfig()->getComponentByType('GridFieldDataColumns');
 		$columns->setDisplayFields(array(
 			'StripThumbnail' => '',
-			// 'Parent.FileName' => 'Folder',
-			'Title' => _t('File.Name'),
+			'Title' => _t('File.Title', 'Title'),
 			'Created' => _t('AssetAdmin.CREATED', 'Date'),
 			'Size' => _t('AssetAdmin.SIZE', 'Size'),
 		));
 		$columns->setFieldCasting(array(
-			'Created' => 'Date->Nice'
+			'Created' => 'SS_Datetime->Nice'
 		));
 		$gridField->setAttribute(
 			'data-url-folder-template', 
