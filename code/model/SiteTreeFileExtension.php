@@ -56,7 +56,7 @@ class SiteTreeFileExtension extends DataExtension {
 	 */
 	public function BackLinkTracking($filter = null, $sort = null, $join = null, $limit = null) {
 		if($filter !== null || $sort !== null || $join !== null || $limit !== null) {
-			Deprecation::notice('3.2', 'The $filter, $sort, $join and $limit parameters for
+			Deprecation::notice('4.0', 'The $filter, $sort, $join and $limit parameters for
 				SiteTreeFileExtension::BackLinkTracking() have been deprecated.
 				Please manipluate the returned list directly.', Deprecation::SCOPE_GLOBAL);
 		}
@@ -67,7 +67,7 @@ class SiteTreeFileExtension extends DataExtension {
 		}
 
 		if($filter || $sort || $join || $limit) {
-			Deprecation::notice('3.2', 'The $filter, $sort, $join and $limit parameters for 
+			Deprecation::notice('4.0', 'The $filter, $sort, $join and $limit parameters for 
 				SiteTreeFileExtension::BackLinkTracking() have been deprecated. 
 				Please manipluate the returned list directly.', Deprecation::SCOPE_GLOBAL);
 		}

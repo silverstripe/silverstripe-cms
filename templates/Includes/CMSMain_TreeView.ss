@@ -1,7 +1,4 @@
-<div class="cms-content-toolbar">
-	<% include CMSPagesController_ContentToolActions %>
-	<% include CMSPagesController_ContentToolbar %>
-</div>
+<% include CMSPagesController_ContentToolActions View='Tree' %>
 
 <div class="ss-dialog cms-page-add-form-dialog cms-dialog-content" id="cms-page-add-form" title="<% _t('CMSMain.AddNew', 'Add new page') %>">
 	$AddForm
@@ -12,9 +9,9 @@ $ExtraTreeTools
 <div class="center">
 	<% if $TreeIsFiltered %>
 	<div class="cms-tree-filtered cms-notice">
-		<strong><% _t('CMSMain.TreeFiltered', 'Filtered tree.') %></strong>
-		<a href="$LinkPages" class="cms-panel-link">
-			<% _t('CMSMain.TreeFilteredClear', 'Clear filter') %>
+		<strong><% _t('CMSMain.TreeFiltered', 'Search results.') %></strong>
+		<a href="javascript:void(0)" class="clear-filter">
+			<% _t('CMSMain.TreeFilteredClear', 'Clear') %>
 		</a>
 	</div>
 	<% end_if %>

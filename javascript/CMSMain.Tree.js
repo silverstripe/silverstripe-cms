@@ -151,6 +151,13 @@
 				}
 			}
 		});
+
+		// Clear filters button
+		$('.cms-tree-filtered .clear-filter').entwine({
+			onclick: function () {
+				window.location = location.protocol + '//' + location.host + location.pathname;
+			}
+		});
 	});
 
 }(jQuery));

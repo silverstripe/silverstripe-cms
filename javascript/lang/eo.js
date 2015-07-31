@@ -36,10 +36,16 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
     "Tree.ThisPageOnly": "Nur ĉi tiu paĝo",
     "Tree.ThisPageAndSubpages": "Ĉi tiu paĝo kaj subpaĝoj",
     "Tree.ShowAsList": "Vidigi idojn kiel liston",
-    "CMSMain.ConfirmRestoreFromLive": "Ĉu vi vere volas kopii la publikigitan enhavon al la malneta retejo?",
+    "CMSMain.ConfirmRestoreFromLive": "Are you sure you want to revert draft to when the page was last published?",
     "CMSMain.RollbackToVersion": "Cu vi vere volas malfare restaŭri al versio #%s de ĉi tiu paĝo?",
+    "CMSMain.Archive": "Are you sure you want to archive this page?\n\nThe page will be unpublished and sent to the archive.",
+    "CMSMain.Restore": "Are you sure you want to restore this page from archive?",
+    "CMSMain.RestoreToRoot": "Are you sure you want to restore this page from archive?\n\nBecause the parent page is not available this will be restored to the top level.",
+    "CMSMain.Unpublish": "Are you sure you want to remove your page from the published site?\n\nThis page will still be available in the sitetree as draft.",
+    "CMSMain.DeleteFromDraft": "Are you sure you want to remove your page from the draft site?\n\nThis page will remain on the published site.",
     "URLSEGMENT.Edit": "Redakti",
     "URLSEGMENT.OK": "Akcepti",
-    "URLSEGMENT.Cancel": "Rezigni"
+    "URLSEGMENT.Cancel": "Rezigni",
+    "URLSEGMENT.UpdateURL": "Update URL"
 });
 }

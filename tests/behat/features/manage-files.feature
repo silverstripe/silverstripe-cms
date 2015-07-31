@@ -36,7 +36,7 @@ Feature: Manage files
     And I click on "file1" in the "folder1" table
     And I fill in "renamedfile" for "Title"
     And I press the "Save" button
-    And I press the "Back" button
+    And I follow "folder1"
     Then the "folder1" table should not contain "testfile"
     And the "folder1" table should contain "renamedfile"
 
@@ -62,24 +62,24 @@ Feature: Manage files
     Then I should see "png,"
 
   Scenario: I can filter the files list view using name
-    Given I expand the "Filter" CMS Panel
+    Given I expand the content filters
     And I fill in "Name" with "file1"
-    And I press the "Apply Filter" button
+    And I press the "Search" button
     Then the "Files" table should contain "file1"
     And the "Files" table should not contain "file2"
 
   Scenario: I can filter the files list view using filetype
     Given a "file" "assets/document.pdf"
-    And I expand the "Filter" CMS Panel
+    And I expand the content filters
     And I select "Image" from "File type" with javascript
-    And I press the "Apply Filter" button
+    And I press the "Search" button
     Then the "Files" table should contain "file1"
     And the "Files" table should not contain "document"
 
   Scenario: I can filter out files that don't match the date range
-    Given I expand the "Filter" CMS Panel
+    Given I expand the content filters
     And I fill in "From" with "2003-01-01"
     And I fill in "To" with "2011-01-01"
-    And I press the "Apply Filter" button
+    And I press the "Search" button
     And the "Files" table should contain "file2"
     And the "Files" table should not contain "file1"

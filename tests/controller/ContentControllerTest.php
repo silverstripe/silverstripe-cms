@@ -168,6 +168,14 @@ class ContentControllerTest extends FunctionalTest {
 			// to say the default Page.ss template
 			$response = $self->get($page->RelativeLink("testwithouttemplate"));
 			$self->assertEquals("Page", $response->getBody());
+
+			// Test that an action with a template will render the both action template *and* the
+			// correct parent template
+			$controller = new ContentController($page);
+			$viewer = $controller->getViewer('test');
+			$templateList = array('ContentControllerTestPage_test', 'Page');
+			$expected = SS_TemplateLoader::instance()->findTemplates($templateList, 'controllertest');
+			$self->assertEquals($expected, $viewer->templates());
 		});
 	}
 

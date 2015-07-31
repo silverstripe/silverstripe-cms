@@ -121,7 +121,7 @@
 				var compare, selected;
 				
 				// compare mode
-				compare = this.parents("form").find(':input[name=CompareMode]').attr("checked"),
+				compare = this.parents("form").find(':input[name=CompareMode]').attr("checked");
 				selected = this.siblings(".active");
 				
 				if(compare && this.hasClass('active')) {
@@ -172,6 +172,6 @@
 				this.find(":input[type=checkbox]").attr("checked", true);
 			}
 			
-		})
+		});
 	});
 })(jQuery);

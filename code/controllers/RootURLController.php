@@ -63,22 +63,22 @@ class RootURLController extends Controller {
 	 * Set the URL Segment used for your homepage when it is created by dev/build.
 	 * This allows you to use home page URLs other than the default "home".
 	 *
-	 * @deprecated 3.2 Use the "RootURLController.default_homepage_link" config setting instead
+	 * @deprecated 4.0 Use the "RootURLController.default_homepage_link" config setting instead
 	 * @param string $urlsegment the URL segment for your home page
 	 */
 	static public function set_default_homepage_link($urlsegment = "home") {
-		Deprecation::notice('3.2', 'Use the "RootURLController.default_homepage_link" config setting instead');
+		Deprecation::notice('4.0', 'Use the "RootURLController.default_homepage_link" config setting instead');
 		Config::inst()->update('RootURLController', 'default_homepage_link', $urlsegment);
 	}
 
 	/**
 	 * Gets the link that denotes the homepage if there is not one explicitly defined for this HTTP_HOST value.
 	 *
-	 * @deprecated 3.2 Use the "RootURLController.default_homepage_link" config setting instead
+	 * @deprecated 4.0 Use the "RootURLController.default_homepage_link" config setting instead
 	 * @return string
 	 */
 	static public function get_default_homepage_link() {
-		Deprecation::notice('3.2', 'Use the "RootURLController.default_homepage_link" config setting instead');
+		Deprecation::notice('4.0', 'Use the "RootURLController.default_homepage_link" config setting instead');
 		return Config::inst()->get('RootURLController', 'default_homepage_link');
 	}
 	

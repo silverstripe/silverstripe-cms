@@ -1,15 +1,21 @@
 .cms .AssetAdmin {
 	.cms-content-fields {
-		overflow:hidden; //removes scrolling from filter panel
 		.cms-edit-form.AssetAdmin {
+			width: 100%;
 			overflow-y:auto; //adds scrolling only to the datagrid 
 		}
+
+		/**
+		 * DEPRECATED:
+		 * .cms-content-tools will be removed in 4.0
+		 * Use .cms-content-filters instead.
+		 */
 		.cms-content-tools .cms-panel-content {
 			overflow:hidden; //removes scollbar from search field in filter
 			.cms-search-form {
 				height:100%; //increases height of search form to accomodate dropdown
 			}
-		}	
+		}
 	}
 
 	.cms-content-toolbar {

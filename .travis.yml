@@ -1,4 +1,11 @@
-language: php 
+language: php
+
+sudo: false
+
+addons:
+  apt:
+    packages:
+      - tidy
 
 php:
   - 5.4
@@ -20,8 +27,13 @@ env:
 
 matrix:
   allow_failures:
-    - php: hhvm-nightly
+    - php: hhvm
+    - php: 7.0
+    - php: nightly
+
   include:
+    - php: 5.4
+      env: DB=MYSQL PDO=1
     - php: 5.5
       env: DB=MYSQL
     - php: 5.6
@@ -30,11 +42,12 @@ matrix:
       env: DB=MYSQL BEHAT_TEST=1
     - php: 5.3
       env: DB=MYSQL
-    - php: hhvm-nightly
+    - php: 7.0
       env: DB=MYSQL
-      before_install:
-        - sudo apt-get update -qq
-        - sudo apt-get install -y tidy
+    - php: nightly
+      env: DB=MYSQL
+    - php: hhvm
+      env: DB=MYSQL
 
 before_script:
  - composer self-update || true

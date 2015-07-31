@@ -69,6 +69,8 @@ en:
     PUBLISH_PAGES: Publish
     UNPUBLISHED_PAGES: 'Unpublished %d pages'
     UNPUBLISH_PAGES: Unpublish
+    ARCHIVE: Archive
+    ARCHIVED_PAGES: 'Archived %d pages'
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
@@ -89,9 +91,9 @@ en:
     ListFiltered: 'Filtered list.'
     NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'This page doesn''t exist'
-    PAGES: Pages
+    PAGES: 'Page status'
     PAGETYPEANYOPT: Any
-    PAGETYPEOPT: 'Page Type'
+    PAGETYPEOPT: 'Page type'
     PUBALLCONFIRM: 'Please publish every page in the site, copying content stage to live'
     PUBALLFUN: '"Publish All" functionality'
     PUBALLFUN2: "Pressing this button will do the equivalent of going to every page and pressing \"publish\".  It's\n				intended to be used after there have been massive edits of the content, such as when the site was\n				first built."
@@ -113,12 +115,15 @@ en:
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
-    TreeFiltered: 'Filtered tree.'
-    TreeFilteredClear: 'Clear filter'
+    TreeFiltered: 'Search results.'
+    TreeFilteredClear: Clear
     MENUTITLE: 'Edit Page'
+    ARCHIVE: Archive
+    ARCHIVEDPAGE: 'Archived page ''%s'''
   CMSMain_left_ss:
-    APPLY_FILTER: 'Apply Filter'
+    APPLY_FILTER: 'Search'
     RESET: Reset
+    CLEAR_FILTER: 'Clear Filter'
   CMSPageAddController:
     ParentMode_child: 'Under another page'
     ParentMode_top: 'Top level'
@@ -146,14 +151,14 @@ en:
     MENUTITLE: Pages
     TreeView: 'Tree View'
   CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Multi-selection
+    MULTISELECT: Bulk actions
   CMSPagesController_Tools_ss:
     FILTER: Filter
   CMSSearch:
     FILTERDATEFROM: From
-    FILTERDATEHEADING: Date
+    FILTERDATEHEADING: 'Date'
     FILTERDATETO: To
-    FILTERLABELTEXT: Content
+    FILTERLABELTEXT: 'Search'
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Modified pages'
   CMSSiteTreeFilter_DeletedPages:
@@ -325,7 +330,7 @@ en:
     DEFAULTABOUTTITLE: 'About Us'
     DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
     DEFAULTCONTACTTITLE: 'Contact Us'
-    DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
+    DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>.</p><p>You can now access the <a href="http://docs.silverstripe.org">developer documentation</a>, or begin the <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lessons</a>.</p>'
     DEFAULTHOMETITLE: Home
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Deleted
@@ -396,6 +401,9 @@ en:
     many_many_BackLinkTracking: 'Backlink Tracking'
     many_many_ImageTracking: 'Image Tracking'
     many_many_LinkTracking: 'Link Tracking'
+    ARCHIVEDPAGEHELP: 'Page is removed from draft and live'
+    ARCHIVEDPAGESHORT: Archived
+    BUTTONARCHIVEDESC: 'Unpublish and send to archive'
   SiteTreeURLSegmentField:
     EMPTY: 'Please enter a URL Segment or click cancel'
     HelpChars: ' Special characters are automatically converted or removed.'
@@ -423,3 +431,6 @@ en:
     MENUTITLE: 'Edit Page'
   CMSSettingsController:
     MENUTITLE: Settings
+  SiteTreeFileExtension:
+    BACKLINK_LIST_DESCRIPTION: 'This list shows all pages where the file has been added through a WYSIWYG editor.'
+    EDIT: Edit
