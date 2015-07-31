@@ -402,15 +402,15 @@ HTML;
 		if($action == "index") $action = "";
 		else $action = '_' . $action;
 
-		// Find templates by dataRecord
-		$templates = SSViewer::get_templates_by_class(get_class($this->dataRecord), $action, "SiteTree");
-
-		// Next, we need to add templates for all controllers
-		$templates += SSViewer::get_templates_by_class(get_class($this), $action, "Controller");
-
-		// Fail-over to the same for the "index" action
-		$templates += SSViewer::get_templates_by_class(get_class($this->dataRecord), "", "SiteTree");
-		$templates += SSViewer::get_templates_by_class(get_class($this), "", "Controller");
+		$templates = array_merge(
+			// Find templates by dataRecord
+			SSViewer::get_templates_by_class(get_class($this->dataRecord), $action, "SiteTree"),
+			// Next, we need to add templates for all controllers
+			SSViewer::get_templates_by_class(get_class($this), $action, "Controller"),
+			// Fail-over to the same for the "index" action
+			SSViewer::get_templates_by_class(get_class($this->dataRecord), "", "SiteTree"),
+			SSViewer::get_templates_by_class(get_class($this), "", "Controller")
+		);
 
 		return new SSViewer($templates);
 	}
