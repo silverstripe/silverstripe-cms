@@ -318,6 +318,13 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertEquals('about-us/tom&jerry', $about->RelativeLink('tom&jerry'), 'Doesnt url encode parameter');
 	}
 
+	public function testPageLevel() {
+		$about = $this->objFromFixture('Page', 'about');
+		$staff = $this->objFromFixture('Page', 'staff');
+		$this->assertEquals(1, $about->getPageLevel());
+		$this->assertEquals(2, $staff->getPageLevel());
+	}
+
 	public function testAbsoluteLiveLink() {
 		$parent = $this->objFromFixture('Page', 'about');
 		$child = $this->objFromFixture('Page', 'staff');

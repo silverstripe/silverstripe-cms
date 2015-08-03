@@ -2878,6 +2878,18 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 	/**
+	 * Gets the depth of this page in the sitetree, where 1 is the root level
+	 *
+	 * @return int
+	 */
+	public function getPageLevel() {
+		if($this->ParentID) {
+			return 1 + $this->Parent()->getPageLevel();
+		}
+		return 1;
+	}
+
+	/**
 	 * Return the CSS classes to apply to this node in the CMS tree.
 	 *
 	 * @param string $numChildrenMethod
