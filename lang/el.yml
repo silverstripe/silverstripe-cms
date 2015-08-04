@@ -79,7 +79,6 @@ el:
     PUBALLFUN: 'Λειτουργία "Δημοσίευση Όλων"'
     PUBPAGES: 'Ολοκληρώθηκε: Δημοσίευση {count} σελίδων'
     PageAdded: 'Η σελίδα δημιουργήθηκε με επιτυχία'
-    RESTORE: Επαναφορά
     SAVE: Αποθήκευση
     TabContent: Περιεχόμενο
     TabHistory: Ιστορικό
@@ -118,10 +117,6 @@ el:
     FILTERDATEHEADING: Ημερομηνία
     FILTERDATETO: Έως
     FILTERLABELTEXT: Περιεχόμενο
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Τροποποιημένες σελίδες'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Όλες οι σελίδες, συμπεριλαμβανομένων των διαγραμμένων'
   CMSSiteTreeFilter_Search:
     Title: 'Όλες οι σελίδες'
   ContentController:
@@ -268,5 +263,3 @@ el:
     MENUTITLE: 'Επεξεργασία Σελίδας'
   CMSSettingsController:
     MENUTITLE: Ρυθμίσεις
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Διεγραμμένες σελίδες'

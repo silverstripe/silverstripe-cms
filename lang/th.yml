@@ -66,8 +66,6 @@ th:
     DELETE_PAGES: 'ลบออกจากเว็บไซต์ที่เผยแพร่อยู่'
     PUBLISHED_PAGES: 'เผยแพร่แล้ว %d หน้า, ล้วเหลว %d'
     PUBLISH_PAGES: เผยแพร่
-    UNPUBLISHED_PAGES: 'ยกเลิกการเผยแพร่หน้าเว็บแล้ว %d หน้า'
-    UNPUBLISH_PAGES: ยกเลิกการเผยแพร่
   CMSMain:
     ACCESS: 'เข้าถึงเซ็กชั่น ''{title}'''
     ACCESS_HELP: 'อนุญาตให้เปิดดูส่วนของเซ็กชั่นที่บรรจุรายการหน้าเว็บแบบทรีและเนื้อหาได้ สิทธิ์ในการเปิดดูและแก้ไขสามารถจัดการได้ผ่านทางหน้าเว็บทีระบุอยู่ในเมนูแบบดรอปดาวน์ เช่นเดียวกับ "สิทธิ์อนุญาตของเนื้อหา" ที่แยกออกมาต่างหากด้วยเช่นกัน'
@@ -94,7 +92,6 @@ th:
     PageAdded: 'หน้าเว็บที่สร้างเสร็จเรียบร้อยแล้ว'
     REMOVEDPAGE: 'ลบ ''{title}'' ออกจากเว็บไซต์ที่เผยแพร่อยู่แล้ว'
     REMOVEDPAGEFROMDRAFT: 'ลบ ''%s'' ออกจากเว็บไซต์ฉบับร่างแล้ว'
-    RESTORE: คืนค่า
     RESTORED: 'เรียกคืนค่า ''{title}'' เสร็จเรียบร้อยแล้ว'
     ROLLBACK: 'ย้อนกลับไปที่รุ่นนี้'
     SAVE: บันทึก
@@ -135,10 +132,6 @@ th:
     FILTER: ตัวกรองข้อมูล
   CMSSearch:
     FILTERDATEHEADING: วันที่
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'หน้าที่ถูกเปลี่ยนแปลง'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'ทุกหน้า รวมทั้งหน้าที่ถูกลบไปแล้วด้วย'
   CMSSiteTreeFilter_Search:
     Title: 'หน้าทั้งหมด'
   ContentControl:
@@ -193,7 +186,6 @@ th:
     DEFAULTSERVERERRORPAGETITLE: 'เซิร์ฟเวอร์เกิดข้อผิดพลาด'
     DESCRIPTION: 'กำหนดเนื้อหาเองสำหรับข้อผิดพลาดต่างๆ (e.g. "ไม่พบหน้าเว็บที่ต้องการ")'
     ERRORFILEPROBLEM: 'เกิดข้อผิดพลาดในการเปิดไฟล์ "{filename}" เพื่อเขียนข้อมูล. กรุณาตรวจสอบสิทธิ์.'
-    PLURALNAME: 'หน้าเว็บแสดงข้อผิดพลาด'
     SINGULARNAME: 'หน้าเว็บแสดงข้อผิดพลาด'
   Folder:
     AddFolderButton: 'เพิ่มโฟลเดอร์'
@@ -214,7 +206,6 @@ th:
     HASBEENSETUP: 'หน้าเว็บที่มีการเปลี่ยนเส้นทางซึ่งได้รับการตั้งค่าโดยปราศจากตำแหน่งปลายทางที่ต้องการเปลี่ยนเส้นทางไป'
     HEADER: 'หน้าเว็บนี้จะเปลี่ยนเส้นทางผู้ใช้งานไปยังหน้าเว็บอื่นๆ'
     OTHERURL: 'ที่อยู่ URL ของเว็บไซต์อื่นๆ'
-    PLURALNAME: 'หน้าเว็บเปลี่ยนเส้นทาง'
     REDIRECTTO: 'เปลี่ยนเส้นทางไปที่'
     REDIRECTTOEXTERNAL: 'เว็บไซต์อื่นๆ'
     REDIRECTTOPAGE: 'หน้าเว็บในเว็บไซต์ของคุณ'
@@ -278,7 +269,6 @@ th:
     DEFAULTABOUTTITLE: 'เกี่ยวกับเรา'
     DEFAULTCONTACTCONTENT: '<p>คุณสามารถใส่เนื้อหาของคุณลงไปในหน้าเว็บนี้ได้, หรือลบเนื้อหาออกแล้วสร้างหน้าเว็บที่เป็นของคุณเองใหม่ได้.<br /></p>'
     DEFAULTCONTACTTITLE: 'ติดต่อเรา'
-    DEFAULTHOMECONTENT: '<p>ยินดีต้อนรับเข้าสู่ SilverStripe! นี่คือคือหน้าแรกที่กำหนดไว้เริ่มต้น. คุณสามารถแก้ไขหน้าเว็บนี้ได้ด้วยการเปิด <a href="admin/">CMS</a>. คุณสามารถเข้าไปที่ <a href="http://doc.silverstripe.org">เอกสารคู่มือประกอบการใช้งานสำหรับนักพัฒนา</a>, หรือเข้าไปที่<a href="http://doc.silverstripe.org/doku.php?id=tutorials">เพื่อศึกษาบทเรียนต่างๆได้.</a></p>'
     DEFAULTHOMETITLE: หน้าแรก
     DELETEDPAGEHELP: 'หน้าเว็บไม่ได้ถูกเผยแพร่อีกต่อไปแล้ว'
     DELETEDPAGESHORT: ถูกลบ
@@ -348,7 +338,6 @@ th:
   VirtualPage:
     DESCRIPTION: 'แสดงเนื้อหาของหน้าเว็บอื่นๆ'
     HEADER: 'นี่เป็นหน้าเว็บจำลอง'
-    PLURALNAME: 'หน้าเว็บจำลอง'
     PageTypNotAllowedOnRoot: 'ชนิดของหน้าเว็บดั้งเดิม "{type}" ไม่ได้รับอนุญาตให้ใช้งานกับหน้าเว็บจำลองที่ตำแหน่ง root'
     SINGULARNAME: 'หน้าจำลอง'
   CMSFileAddController:

@@ -12,7 +12,6 @@ ca:
     PUBALLFUN: 'Funcionalitat de "Publica-ho tot"'
     PUBALLFUN2: "Prémer aquest botó farà l'equivalent a anar a cada pàgina i prémer \"Publica\". És pràctic d'usar quan hi ha hagut edicions massives del contingut, com ara quan el lloc web s'ha fet per primer cop."
     REMOVEDPAGEFROMDRAFT: 'S''ha suprimit  ''%s'' del lloc esborrany'
-    RESTORE: Restaura
     ROLLBACK: 'Torna a aquesta versió'
     SAVE: Desa
   ErrorPage:
@@ -76,7 +75,6 @@ ca:
     DEFAULTABOUTTITLE: 'Sobre nosaltres'
     DEFAULTCONTACTCONTENT: '<p>Podeu omplir aquesta pàgina amb el vostre propi contingut, o eliminar-la i crear les vostres pròpies pàgines.<br/></p>'
     DEFAULTCONTACTTITLE: 'Contacteu amb nosaltres'
-    DEFAULTHOMECONTENT: '<p>Benvingut a SilverStripe! Aquesta és la portada per defecte. Podeu editar aquesta pàgina obrint <a href="admin/">el SGC</a>. Podeu accedir a la <a href="http://doc.silverstripe.com">documentació del desenvolupador</a>, o començar <a href="http://doc.silverstripe.com/doku.php?id=tutorials">els tutorials.</a></p>'
     DEFAULTHOMETITLE: Portada
     EDITANYONE: 'Qualsevol que pot entrar al SGC'
     EDITHEADER: 'Qui pot editar-la des del SGC?'
@@ -107,5 +105,4 @@ ca:
     HAVEASKED: 'Heu demanat de veure el contingut del nostre lloc el'
   VirtualPage:
     HEADER: 'Aquesta és una pàgina virtual'
-    PLURALNAME: 'Pàgines virtuals'
     SINGULARNAME: 'Pàgina virtual'

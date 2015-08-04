@@ -67,8 +67,6 @@ pl:
     DELETE_PAGES: 'Usuń z opublikowanej witryny'
     PUBLISHED_PAGES: 'Opublikowano %d stron, %d się nie powiodło'
     PUBLISH_PAGES: Opublikuj
-    UNPUBLISHED_PAGES: 'Usunięto z opublikowanych %d stron'
-    UNPUBLISH_PAGES: Cofnij publikację
   CMSMain:
     ACCESS: 'Dostęp do sekcji ''{title}'''
     ACCESS_HELP: 'Zezwala na oglądanie sekcji zawierających drzewo stron oraz treść. Prawo Przeglądaj i edytuj może być obsługiwane przez pola wyboru dostępne na stronach oraz poprzez zakładkę uprawnień.'
@@ -100,7 +98,6 @@ pl:
     REMOVED: 'Usunięto ''{title}''{description} z witryny'
     REMOVEDPAGE: 'Usunięto ''{title}'' z opublikowanej witryny'
     REMOVEDPAGEFROMDRAFT: '''%s'' usunięto ze szkiców'
-    RESTORE: Przywróć
     RESTORED: 'Pomyślnie przywrócono ''{title}'''
     ROLLBACK: 'Wróć do tej wersji'
     ROLLEDBACKPUBv2: 'Przywrócono opublikowaną wersję'
@@ -151,10 +148,6 @@ pl:
     FILTERDATEHEADING: Data
     FILTERDATETO: Do
     FILTERLABELTEXT: Zawartość
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Zmienione strony'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Wszystkie strony włącznie z usuniętymi'
   CMSSiteTreeFilter_Search:
     Title: 'Wszystkie strony'
   ContentControl:
@@ -215,7 +208,6 @@ pl:
     DEFAULTSERVERERRORPAGETITLE: 'Błąd serwera'
     DESCRIPTION: 'Własna zawartość dla różnych błędów (np. "Strona nie została znaleziona")'
     ERRORFILEPROBLEM: 'Błąd podczas otwierania pliku "{filename}". Proszę sprawdzić uprawnienia do plików.'
-    PLURALNAME: 'Strony błędów'
     SINGULARNAME: 'Strona błędów'
   Folder:
     AddFolderButton: 'Dodaj katalog'
@@ -238,7 +230,6 @@ pl:
     HASBEENSETUP: 'Strona przekierowująca została ustawiona bez celu, do którego ma przekierowywać.'
     HEADER: 'Ta strona przeniesie użytkowników na inną stronę'
     OTHERURL: 'Adres URL innej strony'
-    PLURALNAME: 'Strony przekierowujące'
     REDIRECTTO: 'Przenieś do'
     REDIRECTTOEXTERNAL: 'Inna strona'
     REDIRECTTOPAGE: 'Strona na Twojej witrynie'
@@ -314,7 +305,6 @@ pl:
     DEFAULTABOUTTITLE: 'O nas'
     DEFAULTCONTACTCONTENT: '<p>Możesz wypełnić tę stronę własną treścią, usunąć ją i tworzyć własne strony.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontakt'
-    DEFAULTHOMECONTENT: '<p>Witaj w SilverStripe! To jest domyślna strona główna. Możesz ją edytować, otwierając <a href="admin/">CMS</a>. Możesz również otworzyć <a href="http://doc.silverstripe.com">dokumentację dla developerów</a>, lub rozpocząć <a href="http://doc.silverstripe.com/doku.php?id=tutorials">jeden z samouczków.</a></p>'
     DEFAULTHOMETITLE: Strona główna
     DELETEDPAGEHELP: 'Strona nie jest już opublikowana'
     DELETEDPAGESHORT: Usunięty
@@ -401,7 +391,6 @@ pl:
     EditLink: edytuj
     HEADER: 'To jest wirtualna strona'
     HEADERWITHLINK: 'Strona wirtualna odzwierciedlająca treść "{title}" ({link})'
-    PLURALNAME: 'Wirtualne Strony'
     PageTypNotAllowedOnRoot: '"{type}" nie jest dozwolona dla głównego poziomu wirtualnej strony'
     SINGULARNAME: 'Wirtualna Strona'
   CMSFileAddController:
@@ -412,9 +401,3 @@ pl:
     MENUTITLE: 'Edytuj stronę'
   CMSSettingsController:
     MENUTITLE: Ustawienia
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Usunięte strony'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Szkic nieopublikowanych stron'
-  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
-    Title: 'Opublikowana ale usunięta ze szkicu strony'

@@ -31,7 +31,6 @@ ms:
     DEFAULTABOUTTITLE: 'Tentang Kami'
     DEFAULTCONTACTCONTENT: '<p>Anda bole isikan kandungan anda sendiri ke dalam mukasurat ini. atau padamkannya dan hasilkan mukasurat yang baru untuk menggantikannya.<br /></p>'
     DEFAULTCONTACTTITLE: 'Hubungi Kami'
-    DEFAULTHOMECONTENT: '<p>Selamat datang ke laman SilverStripe! Ini adalah laman utama yang asal. Anda boleh menyunting mukasurat ini dengan menggunakan <a href="admin/">CMS yang disediakan</a>. Untuk bantuan, sila lawati <a href="http://doc.silverstripe.com">dukumentasi pembangun perisian</a>, atau mula menggunakan <a href="http://doc.silverstripe.com/doku.php?id=tutorials">dokumen tutorial.</a></p>'
     DEFAULTHOMETITLE: Utama
     EDITANYONE: 'Sesiapa sahaja yang boleh mendaftar masuk ke CMS'
     EDITHEADER: 'Siapa yang boleh melakukan penyuntingan menggunakan CMS?'
@@ -52,5 +51,4 @@ ms:
     has_one_Parent: 'Halaman Induk'
   VirtualPage:
     HEADER: 'Ini adalah mukasurat maya'
-    PLURALNAME: 'Halaman-halaman Maya'
     SINGULARNAME: 'Halaman Maya'

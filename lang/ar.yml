@@ -67,8 +67,6 @@ ar:
     DELETE_PAGES: 'حذف من الصفحة المنشورة'
     PUBLISHED_PAGES: '%d من الصفحات المنشورة'
     PUBLISH_PAGES: النشر
-    UNPUBLISHED_PAGES: '%d من الصفحات غير المنشورة'
-    UNPUBLISH_PAGES: غير منشور
   CMSMain:
     ACCESS: 'النفاذ إلى القسم ''{title}'''
     ACCESS_HELP: 'سماح بعرض لقسم يحتوي على صفحة الشجرة والمحتوى. يمكن التعامل معها عرض وتحرير الأذونات من خلال القائمه المنسدله للروابط محددة صفحة، فضلا عن فصل "أذونات المحتوى".'
@@ -99,7 +97,6 @@ ar:
     REMOVED: 'حذف ''{title}''{description} من الموقع الحي'
     REMOVEDPAGE: 'أزيل ''{title}'' من الموقع المنشور'
     REMOVEDPAGEFROMDRAFT: '''%s'' محذوف من مسودة الموقع'
-    RESTORE: تخزين
     RESTORED: 'استعادة ''{title}'' بنجاح'
     ROLLBACK: 'عودة إلى هذا الإصدار'
     ROLLEDBACKPUBv2: 'التراجع إلى النسخة المنشورة.'
@@ -150,10 +147,6 @@ ar:
     FILTERDATEHEADING: موعد
     FILTERDATETO: إلى
     FILTERLABELTEXT: المحتوى
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'الصفحات التي تم تغييرها'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'كل الصفحات، بما في ذلك المحذوفة'
   CMSSiteTreeFilter_Search:
     Title: 'كل الصفحات'
   ContentControl:
@@ -212,7 +205,6 @@ ar:
     DEFAULTSERVERERRORPAGETITLE: 'خطأ في الملقم'
     DESCRIPTION: 'محتوى مخصص للحالات المختلفة من الأخطاء (على سبيل المثال "الصفحة غير موجودة")'
     ERRORFILEPROBLEM: 'خطأ في فتح الملف "{filename}" للكتابة. يرجى التحقق من تراخيص ملف.'
-    PLURALNAME: 'صفحات الأخطاء'
     SINGULARNAME: 'صفحة الأخطاء'
   Folder:
     AddFolderButton: 'أضف مجلد'
@@ -235,7 +227,6 @@ ar:
     HASBEENSETUP: 'صفحة التحويل تم تهيئتها بدون تحديد وجهة التحويل'
     HEADER: 'هذه الصفحة سوف تقوم بتحويل الأعضاء إلى صفحة أخرى'
     OTHERURL: 'رابط موقع آخر'
-    PLURALNAME: 'معيد توجيه الصفحات'
     REDIRECTTO: 'تحويل إلى'
     REDIRECTTOEXTERNAL: 'موقع آخر'
     REDIRECTTOPAGE: 'صفحة في موقعك الشخصي'
@@ -311,7 +302,6 @@ ar:
     DEFAULTABOUTTITLE: 'حول'
     DEFAULTCONTACTCONTENT: '<p>يمكنك ملء هذه الصفحة بمحتوى خاص بك أو حذفها و إنشاء صفحات جديدة خاصة بك<br /></p>'
     DEFAULTCONTACTTITLE: 'اتصل بنا'
-    DEFAULTHOMECONTENT: '<p>أهلاً بك في  SilverStripe!<br />هذه هي الصفحة الرئيسة.يمكنك تعديل الصفحة عن طريق  <a href="admin/">نظام إدارة المحتوى</a>.يمكنك الآن الدخول إلى  <a href="http://doc.silverstripe.com">مستندات المطورين</a>, أو الدخول إلى  <a href="http://doc.silverstripe.com/doku.php?id=tutorials">الدروس التعليمية.</a></p>'
     DEFAULTHOMETITLE: الرئيسة
     DELETEDPAGEHELP: 'لم تعد الصفحة المنشورة'
     DELETEDPAGESHORT: المحذوف
@@ -398,7 +388,6 @@ ar:
     EditLink: حرر
     HEADER: 'هذه صفحة افتراضية'
     HEADERWITHLINK: 'هذه صفحة افتراضية تنسخ المحتوى من "{title}" ({link})'
-    PLURALNAME: 'الصفحات الافتراضية'
     PageTypNotAllowedOnRoot: 'نوع الصفحة الأصلية "{type}"غير مسموح به على مستوى الجذر لهذه الصفحة الافتراضية'
     SINGULARNAME: 'الصفحة الافتراضية'
   CMSFileAddController:

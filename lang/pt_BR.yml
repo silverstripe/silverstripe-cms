@@ -12,7 +12,6 @@ pt_BR:
     PUBALLFUN: 'Funcionalidade "Publicar Tudo"'
     PUBALLFUN2: "Apertar este botão equivale a ir em cada página individualmente e clicar em \"Publicar\". Serve para ser usado em situações em que foram editadas grandes quantidades de conteúdo, como por exemplo quando o site foi inicialmente construído."
     REMOVEDPAGEFROMDRAFT: 'Removido ''%s''  do site de rascunho'
-    RESTORE: Restaurar
     ROLLBACK: 'Reverter para esta versão'
     SAVE: Salvar
   ErrorPage:
@@ -76,7 +75,6 @@ pt_BR:
     DEFAULTABOUTTITLE: 'Sobre nós'
     DEFAULTCONTACTCONTENT: '<p>Você pode alimentar esta página com seu próprio conteúdo, ou excluir esta página e criar as suas proprias.<br /></p>'
     DEFAULTCONTACTTITLE: 'Contato'
-    DEFAULTHOMECONTENT: '<p>Bem vindo ao SilverStripe! Esta é a página padrão de entrada. Você pode editar esta página abrindo o <a href="admin/">a area de administração CMS</a>. Você pode acessar a <a href="http://doc.silverstripe.com"> documentação do desenvolvedor</a>, ou começar <a href="http://doc.silverstripe.com/doku.php?id=tutorials">com os tutoriais.</a></p>'
     DEFAULTHOMETITLE: Página Inicial
     EDITANYONE: 'Qualquer pessoa que possa fazer log-in'
     EDITHEADER: 'Quem pode editar esta página?'
@@ -109,5 +107,4 @@ pt_BR:
     HAVEASKED: 'Você pediu para ver o conteúdo do nosso site em'
   VirtualPage:
     HEADER: 'Esta é uma página virtual'
-    PLURALNAME: 'Páginas virtuais'
     SINGULARNAME: 'Página virtual'

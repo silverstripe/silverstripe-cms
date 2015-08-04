@@ -67,8 +67,6 @@ nl:
     DELETE_PAGES: 'Verwijder van gepubliceerde site'
     PUBLISHED_PAGES: '%d pagina''s gepubliceerd'
     PUBLISH_PAGES: Publiceer
-    UNPUBLISHED_PAGES: 'Publicatie van %d pagina''s ingetrokken'
-    UNPUBLISH_PAGES: Publicatie intrekken
   CMSMain:
     ACCESS: 'Toegang tot het ''{title}'' gedeelte'
     ACCESS_HELP: 'Bevoegdheid om paginastructuur en inhoud te bekijken. Bekijk- en bewerkingstoestemmingen kunnen worden toegekend met pagina-specifieke menu''s en het aparte "Inhoudsmachtigingen".'
@@ -100,7 +98,6 @@ nl:
     REMOVED: '''{title}''{description} verwijderd van de live site'
     REMOVEDPAGE: '''{title}'' is van de gepubliceerde site verwijderd'
     REMOVEDPAGEFROMDRAFT: '''%s'' is verwijderd uit de concept site'
-    RESTORE: Herstel
     RESTORED: '''{title}'' is met succes hersteld'
     ROLLBACK: 'Terugdraaien naar deze versie'
     ROLLEDBACKPUBv2: 'Teruggedraaid naar gepubliceerde versie.'
@@ -151,10 +148,6 @@ nl:
     FILTERDATEHEADING: Datum
     FILTERDATETO: Tot
     FILTERLABELTEXT: Inhoud
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Gewijzigde pagina''s'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Alle pagina''s (inclusief verwijderde)'
   CMSSiteTreeFilter_Search:
     Title: 'Alle pagina''s'
   ContentControl:
@@ -215,7 +208,6 @@ nl:
     DEFAULTSERVERERRORPAGETITLE: 'Probleem met de server'
     DESCRIPTION: 'Aangepaste tekst voor verschillende foutmeldingen (bv. "Pagina niet gevonden")'
     ERRORFILEPROBLEM: 'Fout: "{filename}" kan niet geopend worden om te schrijven. Controleer alstublieft de bestandspermissies.'
-    PLURALNAME: 'Foutpagina''s'
     SINGULARNAME: 'Foutpagina'
   Folder:
     AddFolderButton: 'Map toevoegen'
@@ -238,7 +230,6 @@ nl:
     HASBEENSETUP: 'Er is een verwijspagina opgezet zonder ergens naar te verwijzen.'
     HEADER: 'Deze pagina zal gebruikers naar een andere pagina doorsturen (redirect)'
     OTHERURL: 'Andere website URL'
-    PLURALNAME: 'Verwijzingspagina''s'
     REDIRECTTO: 'Doorverwijzen naar'
     REDIRECTTOEXTERNAL: 'Een andere website'
     REDIRECTTOPAGE: 'Een pagina op deze website'
@@ -314,7 +305,6 @@ nl:
     DEFAULTABOUTTITLE: 'Over Ons'
     DEFAULTCONTACTCONTENT: '<p>Je kan deze pagina vullen met je eigen inhoud, of ze verwijderen en je eigen pagina''s aanmaken.</p>'
     DEFAULTCONTACTTITLE: 'Contact'
-    DEFAULTHOMECONTENT: '<p>Welkom bij Silverstripe! Dit is de standaard homepagina. Je kan deze pagina wijzigen door <a href="admin/">het CMS</a> te openen. Je kan nu de <a href="http://doc.silverstripe.org">documentatie voor ontwikkelaars</a> bekijken, of aan <a href="http://doc.silverstripe.org/doku.php?id=tutorials">de tutorials</a> beginnen.'
     DEFAULTHOMETITLE: Home
     DELETEDPAGEHELP: 'Deze pagina is niet langer gepubliceerd'
     DELETEDPAGESHORT: Verwijderd
@@ -401,7 +391,6 @@ nl:
     EditLink: wijzigen
     HEADER: 'Dit is een virtuele pagina'
     HEADERWITHLINK: 'Dit is een virtuele pagina met de inhoud van "{title}" ({link})'
-    PLURALNAME: 'Virtuele pagina''s'
     PageTypNotAllowedOnRoot: 'Voor deze virtuele pagina is het originele paginatype "{type}" niet toegestaan op het hoogste niveau.'
     SINGULARNAME: 'Virtuele pagina'
   CMSFileAddController:
@@ -412,9 +401,3 @@ nl:
     MENUTITLE: 'Wijzig pagina'
   CMSSettingsController:
     MENUTITLE: Instellingen
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Verwijderde pagina''s'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Niet gepubliceerde concept pagina''s'
-  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
-    Title: 'Gepubliceerd maar verwijderd uit concept'

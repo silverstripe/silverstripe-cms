@@ -67,8 +67,6 @@ he_IL:
     DELETE_PAGES: 'מחיקה מאתר שפורסם'
     PUBLISHED_PAGES: 'פורסמו %d עמודים, %d שגיאות'
     PUBLISH_PAGES: פרסום
-    UNPUBLISHED_PAGES: 'בוטל פרסומם של %d עמודים'
-    UNPUBLISH_PAGES: ביטול הפרסום
   CMSMain:
     ACCESS: 'גישה לאגף ''{title}'''
     ACCESS_HELP: 'מתן האפשרות לצפות באגף המכיל את עץ העמודים והתוכן. ניתן לצפות ולערוך הרשאות באמצעות תיבות בחירה ייעודיות לכל עמוד, כמו גם „הרשאות התוכן“ הנפרדות.'
@@ -95,7 +93,6 @@ he_IL:
     PageAdded: 'העמוד נוצר בהצלחה'
     REMOVEDPAGE: '''{title}'' הוסר מהאתר שפורסם'
     REMOVEDPAGEFROMDRAFT: '''$s'' הוסר מאתר הטיוטה'
-    RESTORE: שחזור
     RESTORED: '''{title}'' שוחזר בהצלחה'
     ROLLBACK: 'שחזור לגרסה זו'
     SAVE: שמירה
@@ -142,10 +139,6 @@ he_IL:
     FILTERDATEHEADING: תאריך
     FILTERDATETO: עד
     FILTERLABELTEXT: תוכן
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'דפים ששונו'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'כל העמודים, לרבות אלו שנמחקו'
   CMSSiteTreeFilter_Search:
     Title: 'כל העמודים'
   ContentControl:
@@ -200,7 +193,6 @@ he_IL:
     DEFAULTSERVERERRORPAGETITLE: 'שגיאת שרת'
     DESCRIPTION: 'תוכן מותאם אישית למקרי שגיאות שונים (לדוגמה: „העמוד לא נמצא“)'
     ERRORFILEPROBLEM: 'שגיאה בפתיחת הקובץ „{filename}“ לכתיבה. נא לבדוק את הרשאות הקובץ.'
-    PLURALNAME: 'עמודי שגיאה'
     SINGULARNAME: 'עמוד שגיאה'
   Folder:
     AddFolderButton: 'הוספת תיקייות'
@@ -223,7 +215,6 @@ he_IL:
     HASBEENSETUP: 'נוצר דף הפניה ללא יעד'
     HEADER: 'העמוד הזה יוביל משתמשים לעמוד אחר'
     OTHERURL: 'כתובת של אתר אחר'
-    PLURALNAME: 'עמודי הפנייה'
     REDIRECTTO: 'העברה אל'
     REDIRECTTOEXTERNAL: 'אתר אחר'
     REDIRECTTOPAGE: 'עמוד באתר שלך'
@@ -289,7 +280,6 @@ he_IL:
     DEFAULTABOUTTITLE: 'על אודותינו'
     DEFAULTCONTACTCONTENT: '<p>ניתן למלא עמוד זה בתוכן משלך, או למחוק אותו וליצור עמודים משלך.<br /></p>'
     DEFAULTCONTACTTITLE: 'יצירת קשר'
-    DEFAULTHOMECONTENT: '<p>ברוך בואך ל־SilverStripe! זהו עמוד הבית כבררת המחדל. ניתן לערוך עמוד זה על ידי פתיחת <a href="admin/">ה־CMS</a>. כעת ניתן לגשת <a href="http://doc.silverstripe.org">לתיעוד עבור המפתחים</a>, או לגשת ללמוד <a href="http://doc.silverstripe.org/doku.php?id=tutorials">מהמדריכים.</a></p>'
     DEFAULTHOMETITLE: דף הבית
     DELETEDPAGEHELP: 'העמוד אינו מפורסם עוד'
     DELETEDPAGESHORT: נמחק
@@ -361,7 +351,6 @@ he_IL:
   VirtualPage:
     DESCRIPTION: 'הצגת תוכן של עמוד אחר'
     HEADER: 'זהו עמוד וירטואלי'
-    PLURALNAME: 'דפים וירטואליים'
     PageTypNotAllowedOnRoot: 'סוג העמוד המקורי „{type}“ אינו מורשה ברמת העל של עמוד וירטואלי זה'
     SINGULARNAME: 'דף וירטואלי'
   CMSFileAddController:

@@ -31,15 +31,15 @@
     "Tree.ThisPageOnly": "Solo questa pagina",
     "Tree.ThisPageAndSubpages": "Questa pagina e le sottopagine",
     "Tree.ShowAsList": "Mostra figli come lista",
-    "CMSMain.ConfirmRestoreFromLive": "Are you sure you want to revert draft to when the page was last published?",
+    "CMSMain.ConfirmRestoreFromLive": "Si è sicuri di voler ripristinare questa bozza all'ultima volta che è stata pubblicata?",
     "CMSMain.RollbackToVersion": "Vuoi veramente tornare alla versione #%s di questa pagina?",
-    "CMSMain.Archive": "Are you sure you want to archive this page?\n\nThe page will be unpublished and sent to the archive.",
-    "CMSMain.Restore": "Are you sure you want to restore this page from archive?",
-    "CMSMain.RestoreToRoot": "Are you sure you want to restore this page from archive?\n\nBecause the parent page is not available this will be restored to the top level.",
-    "CMSMain.Unpublish": "Are you sure you want to remove your page from the published site?\n\nThis page will still be available in the sitetree as draft.",
-    "CMSMain.DeleteFromDraft": "Are you sure you want to remove your page from the draft site?\n\nThis page will remain on the published site.",
+    "CMSMain.Archive": "Si è sicuri di voler archiviare questa pagina?\n\nLa pagina sarà nascosta ed archiviata.",
+    "CMSMain.Restore": "Si è sicuri di voler ripristinare questa pagina dall'archivio?",
+    "CMSMain.RestoreToRoot": "Si è sicuri di voler ripristinare questa pagina dall'archivio?\n\nPoiché la pagina genitore non è disponibile, questo ripristinerà al primo livello.",
+    "CMSMain.Unpublish": "Si è sicuri di voler eliminare la pagina dal sito pubblico?\n\nQuesta pagina sarà comunque disponibile nel SiteTree come bozza.",
+    "CMSMain.DeleteFromDraft": "Si è sicuri di voler eliminare la pagina dal sito bozza?\n\nQuesta pagina rimarrà disponibile nel sito pubblico.",
     "URLSEGMENT.Edit": "Modifica",
     "URLSEGMENT.OK": "OK",
     "URLSEGMENT.Cancel": "Annulla",
-    "URLSEGMENT.UpdateURL": "Update URL"
+    "URLSEGMENT.UpdateURL": "Aggiornare l'URL"
 }

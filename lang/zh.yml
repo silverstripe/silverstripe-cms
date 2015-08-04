@@ -67,8 +67,6 @@ zh:
     DELETE_PAGES: '从已发布网站中删除'
     PUBLISHED_PAGES: '发布 %d 个页面， %d 个失败'
     PUBLISH_PAGES: 发布
-    UNPUBLISHED_PAGES: '已取消发布 %d 页面'
-    UNPUBLISH_PAGES: 取消发布
   CMSMain:
     ACCESS: '访问 ''{title}'' 部分'
     ACCESS_HELP: '允许查看包含页面树及内容 部分。查看和编辑权限可以通过页面特定的下拉菜单进行控制，与使用单独的”内容权限“处理一样。'
@@ -99,7 +97,6 @@ zh:
     REMOVED: '从线上站点删除‘{title}''{description}'
     REMOVEDPAGE: '从已发布站点删除’{title}'''
     REMOVEDPAGEFROMDRAFT: '从草稿站点删除‘s%’'
-    RESTORE: 恢复
     RESTORED: '成功恢复’{title}‘'
     ROLLBACK: '回滚到该版本'
     ROLLEDBACKPUBv2: '回滚到已发布版本。'
@@ -150,10 +147,6 @@ zh:
     FILTERDATEHEADING: 日期
     FILTERDATETO: 到
     FILTERLABELTEXT: 内容
-  CMSSiteTreeFilter_ChangedPages:
-    Title: '有改动的页面'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: '所有页面，包括已删除的'
   CMSSiteTreeFilter_Search:
     Title: '所有页面'
   ContentControl:
@@ -212,7 +205,6 @@ zh:
     DEFAULTSERVERERRORPAGETITLE: '服务器错误'
     DESCRIPTION: '给不同的错误自定义内容（例如”未发现页面“）'
     ERRORFILEPROBLEM: '打开文件”{filename}“尝试写入. 请检查文件许可'
-    PLURALNAME: '错误页面'
     SINGULARNAME: '错误页面'
   Folder:
     AddFolderButton: '增加文件夹'
@@ -235,7 +227,6 @@ zh:
     HASBEENSETUP: '建立了一个没有任何跳转目标的重定向页。'
     HEADER: '该页面将会使用户转向另外一个页面'
     OTHERURL: '其他网站URL'
-    PLURALNAME: '重定向页'
     REDIRECTTO: '重定向到'
     REDIRECTTOEXTERNAL: '另一个网站'
     REDIRECTTOPAGE: '您网站上的一个页面'
@@ -311,7 +302,6 @@ zh:
     DEFAULTABOUTTITLE: '关于我们'
     DEFAULTCONTACTCONTENT: '<p>您可以使用您自己的内容填充该页面，或者删除它并创建您自己的页面。<br /></p>'
     DEFAULTCONTACTTITLE: '联络我们'
-    DEFAULTHOMECONTENT: '<p>欢迎来到SilverStripe！这是默认首页。您可以通过打开<a href="admin/">内容管理系统</a>修改该页面。您现在可以访问<a href="http://doc.silverstripe.org">开发者文档</a>，或者从<a href="http://doc.silverstripe.org/doku.php?id=tutorials">教程</a>开始。</p>'
     DEFAULTHOMETITLE: 首页
     DELETEDPAGEHELP: '页面已停止发布'
     DELETEDPAGESHORT: 已删除
@@ -398,7 +388,6 @@ zh:
     EditLink: 编辑
     HEADER: '这是一个虚拟页面'
     HEADERWITHLINK: '这是一个从“{标题}”复制内容的虚拟页面（{链接}）'
-    PLURALNAME: '虚拟页面'
     PageTypNotAllowedOnRoot: '此虚拟页面的根级不允许使用原页面类型 "{type}"'
     SINGULARNAME: '虚拟页面'
   CMSFileAddController:

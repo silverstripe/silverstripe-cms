@@ -67,8 +67,10 @@ lt:
     DELETE_PAGES: 'Trinti iš publikuojamos svetainės'
     PUBLISHED_PAGES: 'Publikuoti %d puslapiai, %d klaidų.'
     PUBLISH_PAGES: Publikuoti
-    UNPUBLISHED_PAGES: 'Nebepublikuojami %d puslapiai.'
+    UNPUBLISHED_PAGES: 'Nebepublikuojami %d puslapiai'
     UNPUBLISH_PAGES: Nebepublikuoti
+    ARCHIVE: Archyvuoti
+    ARCHIVED_PAGES: 'Suarchyvuoti %d puslapiai'
   CMSMain:
     ACCESS: 'Priėjimas prie ''{title}'' dalies'
     ACCESS_HELP: 'Leisti peržiūrėti svetainės medžio ir turinio skiltį. Peržiūros, bei redagavimo leidimai gali būti pakeisti per iškrentančius pasirinkimus ir per atskirus "Turinio leidimai".'
@@ -100,8 +102,11 @@ lt:
     REMOVED: 'Iš publikuojamos svetainės ištrintas ''{title}''{description}'
     REMOVEDPAGE: 'Iš publikuojamos svetainės pašalintas ''{title}'''
     REMOVEDPAGEFROMDRAFT: '''%s'' pašalintas iš juodraštinės svetainės'
-    RESTORE: Atstatyti
+    RESTORE: 'Atstatyti juodraštį'
+    RESTORE_TO_ROOT: 'Atstatyti juodraštį aukščiausiame lygyje'
+    RESTORE_TO_ROOT_DESC: 'Atstatyti suarchyvuotą versiją kaip aukščiausio lygio juodraštinį puslapį'
     RESTORED: '''{title}'' atstatytas sėkmingai'
+    RESTORE_DESC: 'Atstatyti suarchyvuotą versiją kaip juodraštinį puslapį'
     ROLLBACK: 'Grįžti prie šios versijos'
     ROLLEDBACKPUBv2: 'Sugrįžta prie publikuotos versijos.'
     ROLLEDBACKVERSIONv2: 'Sugrįžta prie  #%d versijos.'
@@ -113,9 +118,12 @@ lt:
     TreeFiltered: 'Filtruotas medis.'
     TreeFilteredClear: 'Išvalyti filtrą'
     MENUTITLE: 'Redaguoti puslapį'
+    ARCHIVE: Archyvas
+    ARCHIVEDPAGE: 'Suarchyvuotas puslapis ''%s'''
   CMSMain_left_ss:
     APPLY_FILTER: 'Vykdyti'
     RESET: Atstatyti
+    CLEAR_FILTER: 'Išvalyti filtrą'
   CMSPageAddController:
     ParentMode_child: 'Po kitu puslapiu'
     ParentMode_top: 'Aukščiausias lygmuo'
@@ -154,9 +162,17 @@ lt:
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Pakeisti puslapiai'
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'Visi puslapiai (ir ištrinti)'
+    Title: 'Visi puslapiai, kartu su suarchyvuotais'
+  CMSSIteTreeFilter_PublishedPages:
+    Title: 'Publikuoti puslapiai'
   CMSSiteTreeFilter_Search:
     Title: 'Visi puslapiai'
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Suarchyvuoti puslapiai'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Juyodraštiniai puslapiai'
+  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'Publikuotas, bet pašalintas iš juodraščių'
   ContentControl:
     NOTEWONTBESHOWN: 'Pastaba: ši žinutė nebus rodoma jūsų lankytojams'
   ContentController:
@@ -314,7 +330,7 @@ lt:
     DEFAULTABOUTTITLE: 'Apie mus'
     DEFAULTCONTACTCONTENT: '<p>Jūs galite į šį puslapį patalpinti savo norimą turinį. Taip pat galite šį puslapį ištrinti ir sukurti visiškai naujus puslapius.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontaktai'
-    DEFAULTHOMECONTENT: '<p>Sveiki atvykę į SilverStripe! Tai yra pagrindinis puslapis. Jūs galite redaguoti šį puslapį atidarę <a href="admin/">TVS</a>. Dabar galite naudotis <a href="http://doc.silverstripe.com">programuotojų dokumentacija</a>, arba <a href = "http://doc.silverstripe.com/doku.php?id=tutorials">pradėti nuo pamokų.</a></p>'
+    DEFAULTHOMECONTENT: '<p>Sveiki atvykę į SilverStripe! Tai yra pagrindinis puslapis. Jūs galite redaguoti šį puslapį atsidarę <a href="admin/">TVS</a>. Dabar galite naudotis <a href="http://doc.silverstripe.com">programuotojų dokumentacija</a>, arba pradėti nuo <a href = "http://doc.silverstripe.com/doku.php?id=tutorials">SilverStripe pamokų.</a></p>'
     DEFAULTHOMETITLE: Pradžia
     DELETEDPAGEHELP: 'Puslapis nebepublikuojamas'
     DELETEDPAGESHORT: Ištrinti
@@ -385,6 +401,9 @@ lt:
     many_many_BackLinkTracking: 'Atgalinis stebėjimas'
     many_many_ImageTracking: 'Paveikslėlių sekimas'
     many_many_LinkTracking: 'Nuorodos sekimas'
+    ARCHIVEDPAGEHELP: 'Puslapis pašalintas iš juodraščių ir publikuotų puslapių'
+    ARCHIVEDPAGESHORT: Archyvuota
+    BUTTONARCHIVEDESC: 'Nebepublikuoti ir suarchyvuoti'
   SiteTreeURLSegmentField:
     EMPTY: 'Prašome įvesti URL dalį arba spauskite atšaukti'
     HelpChars: 'Specialūs simboliai automatiškai pakeičiami arba pašalinami.'
@@ -412,9 +431,6 @@ lt:
     MENUTITLE: 'Redaguoti puslapį'
   CMSSettingsController:
     MENUTITLE: Nustatymai
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Ištrinti puslapiai'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Juodraštiniai nepublikuoti puslapiai'
-  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
-    Title: 'Publikuoti, bet pašalinti iš juodraščių'
+  SiteTreeFileExtension:
+    BACKLINK_LIST_DESCRIPTION: 'Šiame sąraše rodomi visi puslapiai, kurie turi per teksto redaktorių prisegtų bylų.'
+    EDIT: Redaguoti

@@ -74,5 +74,4 @@ si:
     HAVEASKED: 'ඹබට අපගේ වෙබ් අඩවිය නිරීක්ශනය කරන ලෙස ඉල්ලා ඇත'
   VirtualPage:
     HEADER: 'මෙය මනඃකල්පිත පිටුවකි'
-    PLURALNAME: 'මනඃකල්පිත පිටු'
     SINGULARNAME: 'මනඃකල්පිත පිටුව'

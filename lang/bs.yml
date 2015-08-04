@@ -1,8 +1,37 @@
 bs:
   AssetAdmin:
+    ADDFILES: 'Dodaj datoteke'
+    ActionAdd: 'Kreiraj direktorij'
+    AppCategoryArchive: Arhiva
+    AppCategoryAudio: Audio
+    AppCategoryDocument: Dokument
+    BackToFolder: 'Nazad na direktorij'
+    CREATED: Datum
+    CurrentFolderOnly: 'Limitiraj na trenutni direktorij?'
+    DetailsView: Detalji
+    FILES: Datoteke
+    FILESYSTEMSYNC: 'Sinhroniziraj datoteke'
+    FROMTHEINTERNET: 'Sa interneta'
+    FROMYOURCOMPUTER: 'Sa Vašeg kompijutera'
+    Filetype: 'Tip datoteke'
     NEWFOLDER: NoviDirektorij
+    SIZE: Veličina
+    THUMBSDELETED: '{count} nekorištenih je obrisano'
+    Upload: Upload
+    MENUTITLE: Datoteke
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Izbriši direktorije'
+  AssetAdmin_Tools:
+    FILTER: Filter
   AssetAdmin_left_ss:
     GO: Idi
+  AssetTableField:
+    BACKLINKCOUNT: 'Korišteno ovdje:'
+    PAGES: strana(ice)
+  BackLink_Button_ss:
+    Back: Nazad
+  BrokenLinksReport:
+    Any: Bilo koji
   CMSMain:
     DELETE: 'Izbriši sa privremenog nacrta stranice'
     EMAIL: E-mail
@@ -72,7 +101,6 @@ bs:
     DEFAULTABOUTTITLE: 'O nama'
     DEFAULTCONTACTCONTENT: '<p>Ovu stranicu možete popuniti sa vlastitim sadržajem, ili je izbrisati i kreirati svoje vlastite stranice.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontaktirajte nas'
-    DEFAULTHOMECONTENT: '<p>Dobrodošli u SilverStripe! Ovo je standardna početna stranica. Možete je izmijeniti otvaranjem <a href="admin/">administracijskog odjela CMS-a</a>. Sada možete pristupiti <a href="http://doc.silverstripe.com">razvojnoj dokumentaciji</a> ili <a href="http://doc.silverstripe.com/doku.php?id=tutorials">vodičima</a>.</p>'
     DEFAULTHOMETITLE: Početna
     EDITANYONE: 'Svi korisnici koji se mogu prijaviti u CMS'
     EDITHEADER: 'Ko može izmijeniti ovu stavku unutar CMS-a?'

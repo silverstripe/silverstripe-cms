@@ -55,8 +55,6 @@ sl:
     DELETE_PAGES: 'Izbriši z objavljenega spletnega mesta'
     PUBLISHED_PAGES: 'Objavljenih je bilo %d strani. (Število napak %d)'
     PUBLISH_PAGES: Objavi
-    UNPUBLISHED_PAGES: 'Število iz objave umaknjenih strani: %d'
-    UNPUBLISH_PAGES: Umakni iz objave
   CMSMain:
     ACCESS: 'Dostop do razdelka ''{title}'' '
     ACCESS_HELP: 'Dovoli vpogled  sklop z drevesno strukturo in vsebino. Pravice za ogled in urejanje je možno urejati prek dropdown-seznamov za vsako posamezno stran, ali pa ločeno v sklopu Nastavitve pravic za upravljanje z vsebino (Content permissions). '
@@ -80,7 +78,6 @@ sl:
     PageAdded: 'Stran je bila uspešno ustvarjena'
     REMOVEDPAGE: '''{title}'' je odstranjen z objavljenega spletnega mesta. '
     REMOVEDPAGEFROMDRAFT: 'Vsebina, odstranjena iz osnutka spletnega mesta: ''%s'''
-    RESTORE: Obnovi
     ROLLBACK: 'Ponastavi na to različico'
     SAVE: Shrani
     TabContent: Vsebina
@@ -100,10 +97,6 @@ sl:
     SHOWVERSION: 'Pokaži različico'
     VIEWINGVERSION: 'Trenutno prikazana različica {version}.'
     MENUTITLE: Zgodovina
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Spremenjene strani'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Vse strani, tudi izbrisane'
   CMSSiteTreeFilter_Search:
     Title: 'Vse strani'
   ContentControl:
@@ -237,7 +230,6 @@ sl:
     DEFAULTABOUTTITLE: 'O nas'
     DEFAULTCONTACTCONTENT: '<p>Na to stran lahko vnesete svojo vsebino ali pa jo izbrišete in sami ustvarjate strani po svoji meri.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontakt'
-    DEFAULTHOMECONTENT: '<p>Pozdravljeni pri SilverStripe! To je privzeto spletno mesto, ki ga lahko urejate prek <a href="admin/">CMS-vmesnika</a>. Oglejte si <a href="http://doc.silverstripe.org">dokumentacijo za razvijalce</a> ali pa <a href="http://doc.silverstripe.org/doku.php?id=tutorials">napotke za uporabo.</a></p>'
     DEFAULTHOMETITLE: Domov
     DELETEDPAGEHELP: 'Stran ni več objavljena'
     DELETEDPAGESHORT: Izbrisano
@@ -304,7 +296,6 @@ sl:
     HAVEASKED: 'Za vpogled v vsebino našega spletnega mesta ste zaprosili'
   VirtualPage:
     HEADER: 'To je navidezna stran'
-    PLURALNAME: 'Virtualne strani'
     SINGULARNAME: 'Virtualna stran'
   CMSFileAddController:
     MENUTITLE: Datoteke

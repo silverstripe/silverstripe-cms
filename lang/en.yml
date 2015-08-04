@@ -19,12 +19,12 @@ en:
     FROMYOURCOMPUTER: 'From your computer'
     Filetype: 'File type'
     ListView: 'List View'
+    MENUTITLE: Files
     NEWFOLDER: NewFolder
     SIZE: Size
     THUMBSDELETED: '{count} unused thumbnails have been deleted'
     TreeView: 'Tree View'
     Upload: Upload
-    MENUTITLE: Files
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
   AssetAdmin_Tools:
@@ -61,19 +61,25 @@ en:
   CMSAddPageController:
     Title: 'Add page'
   CMSBatchActions:
+    ARCHIVE: Archive
+    ARCHIVED_PAGES: 'Archived %d pages'
     DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
     DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
     DELETE_DRAFT_PAGES: 'Delete from draft site'
     DELETE_PAGES: 'Delete from published site'
     PUBLISHED_PAGES: 'Published %d pages, %d failures'
     PUBLISH_PAGES: Publish
+    RESTORE: Restore
+    RESTORED_PAGES: 'Restored %d pages'
     UNPUBLISHED_PAGES: 'Unpublished %d pages'
     UNPUBLISH_PAGES: Unpublish
-    ARCHIVE: Archive
-    ARCHIVED_PAGES: 'Archived %d pages'
+  CMSFileAddController:
+    MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
+    ARCHIVE: Archive
+    ARCHIVEDPAGE: 'Archived page ''%s'''
     AddNew: 'Add new page'
     AddNewButton: 'Add new'
     AddPageRestriction: 'Note: Some page types are not allowed for this selection'
@@ -89,6 +95,7 @@ en:
     EMAIL: Email
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
+    MENUTITLE: 'Edit Page'
     NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'This page doesn''t exist'
     PAGES: Pages
@@ -103,10 +110,10 @@ en:
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: 'Removed ''%s'' from the draft site'
     RESTORE: 'Restore draft'
-    RESTORE_TO_ROOT: 'Restore draft at top level'
-    RESTORE_TO_ROOT_DESC: 'Restore the archived version to draft as a top level page'
     RESTORED: 'Restored ''{title}'' successfully'
     RESTORE_DESC: 'Restore the archived version to draft'
+    RESTORE_TO_ROOT: 'Restore draft at top level'
+    RESTORE_TO_ROOT_DESC: 'Restore the archived version to draft as a top level page'
     ROLLBACK: 'Roll back to this version'
     ROLLEDBACKPUBv2: 'Rolled back to published version.'
     ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
@@ -117,34 +124,35 @@ en:
     TabSettings: Settings
     TreeFiltered: 'Filtered tree.'
     TreeFilteredClear: 'Clear filter'
-    MENUTITLE: 'Edit Page'
-    ARCHIVE: Archive
-    ARCHIVEDPAGE: 'Archived page ''%s'''
   CMSMain_left_ss:
     APPLY_FILTER: 'Apply Filter'
-    RESET: Reset
     CLEAR_FILTER: 'Clear Filter'
+    RESET: Reset
   CMSPageAddController:
+    MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
     ParentMode_top: 'Top level'
-    MENUTITLE: 'Add page'
+  CMSPageEditController:
+    MENUTITLE: 'Edit Page'
   CMSPageHistoryController:
     COMPAREMODE: 'Compare mode (select two)'
     COMPAREVERSIONS: 'Compare Versions'
     COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
+    MENUTITLE: History
     REVERTTOTHISVERSION: 'Revert to this version'
     SHOWUNPUBLISHED: 'Show unpublished versions'
     SHOWVERSION: 'Show Version'
     VIEW: view
     VIEWINGLATEST: 'Currently viewing the latest version.'
     VIEWINGVERSION: 'Currently viewing version {version}.'
-    MENUTITLE: History
   CMSPageHistoryController_versions_ss:
     AUTHOR: Author
     NOTPUBLISHED: 'Not published'
     PUBLISHER: Publisher
     UNKNOWN: Unknown
     WHEN: When
+  CMSPageSettingsController:
+    MENUTITLE: 'Edit Page'
   CMSPagesController:
     GalleryView: 'Gallery View'
     ListView: 'List View'
@@ -154,17 +162,19 @@ en:
     MULTISELECT: Multi-selection
   CMSPagesController_Tools_ss:
     FILTER: Filter
+  CMSSIteTreeFilter_PublishedPages:
+    Title: 'Published pages'
   CMSSearch:
     FILTERDATEFROM: From
     FILTERDATEHEADING: Date
     FILTERDATETO: To
     FILTERLABELTEXT: Content
+  CMSSettingsController:
+    MENUTITLE: Settings
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Modified pages'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including archived'
-  CMSSIteTreeFilter_PublishedPages:
-    Title: 'Published pages'
   CMSSiteTreeFilter_Search:
     Title: 'All pages'
   CMSSiteTreeFilter_StatusDeletedPages:
@@ -261,8 +271,8 @@ en:
     SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Page on your website'
   ReportAdmin:
-    ReportTitle: Title
     MENUTITLE: Reports
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SITETREE:
@@ -317,6 +327,9 @@ en:
     ADDEDTODRAFTSHORT: Draft
     ALLOWCOMMENTS: 'Allow comments on this page?'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
+    ARCHIVEDPAGEHELP: 'Page is removed from draft and live'
+    ARCHIVEDPAGESHORT: Archived
+    BUTTONARCHIVEDESC: 'Unpublish and send to archive'
     BUTTONCANCELDRAFT: 'Cancel draft changes'
     BUTTONCANCELDRAFTDESC: 'Delete your draft and revert to the currently published page'
     BUTTONPUBLISHED: Published
@@ -401,9 +414,9 @@ en:
     many_many_BackLinkTracking: 'Backlink Tracking'
     many_many_ImageTracking: 'Image Tracking'
     many_many_LinkTracking: 'Link Tracking'
-    ARCHIVEDPAGEHELP: 'Page is removed from draft and live'
-    ARCHIVEDPAGESHORT: Archived
-    BUTTONARCHIVEDESC: 'Unpublish and send to archive'
+  SiteTreeFileExtension:
+    BACKLINK_LIST_DESCRIPTION: 'This list shows all pages where the file has been added through a WYSIWYG editor.'
+    EDIT: Edit
   SiteTreeURLSegmentField:
     EMPTY: 'Please enter a URL Segment or click cancel'
     HelpChars: ' Special characters are automatically converted or removed.'
@@ -423,14 +436,3 @@ en:
     PLURALNAME: 'Virtual Pages'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtual Page'
-  CMSFileAddController:
-    MENUTITLE: Files
-  CMSPageEditController:
-    MENUTITLE: 'Edit Page'
-  CMSPageSettingsController:
-    MENUTITLE: 'Edit Page'
-  CMSSettingsController:
-    MENUTITLE: Settings
-  SiteTreeFileExtension:
-    BACKLINK_LIST_DESCRIPTION: 'This list shows all pages where the file has been added through a WYSIWYG editor.'
-    EDIT: Edit
