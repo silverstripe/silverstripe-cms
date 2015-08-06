@@ -7,6 +7,7 @@ class VirtualPageTest extends SapphireTest {
 		'VirtualPageTest_ClassA',
 		'VirtualPageTest_ClassB',
 		'VirtualPageTest_VirtualPageSub',
+		'VirtualPageTest_PageWithAllowedChildren'
 	);
 
 	protected $illegalExtensions = array(
@@ -604,6 +605,45 @@ class VirtualPageTest extends SapphireTest {
 		$this->assertEquals('SOME CONTENT', $virtual->obj('CastingTest')->forTemplate());
 	}
 
+	public function testVirtualPageAsAnAllowedChild() {
+		$parentPage = new VirtualPageTest_PageWithAllowedChildren();
+		$parentPage->write();
+
+		$childPage = new VirtualPageTest_ClassA();
+		$childPage->ParentID = $parentPage->ID;
+		$childPage->write();
+
+		// Check we're allowed to create a VirtualPage without linking it to a page yet
+		$childVirtualPage = new VirtualPage();
+		$childVirtualPage->ParentID = $parentPage->ID;
+		try {
+			$childVirtualPage->write();
+		} catch(ValidationException $e) {
+			$this->fail('Failed to write VirtualPage when it is an allowed child');
+		}
+
+		// Check that we can link a VirtualPage to a page type that's an allowed child
+		$childVirtualPage->CopyContentFromID = $childPage->ID;
+		try {
+			$childVirtualPage->write();
+		} catch(ValidationException $e) {
+			$this->fail('Failed to write VirtualPage when it is linked to an allowed child');
+		}
+
+		// Check that we CAN'T link a VirtualPage to a page that is NOT an allowed child
+		$disallowedChild = new VirtualPageTest_ClassB();
+		$disallowedChild->write();
+		$childVirtualPage->CopyContentFromID = $disallowedChild->ID;
+		$isDetected = false;
+		try {
+			$childVirtualPage->write();
+		} catch(ValidationException $e) {
+			$this->assertContains('not allowed as child of this parent page', $e->getMessage());
+			$isDetected = true;
+		} 
+
+		if(!$isDetected) $this->fail("Shouldn't be allowed to write a VirtualPage that links to a disallowed child");
+	}
 }
 
 class VirtualPageTest_ClassA extends Page implements TestOnly {
@@ -651,4 +691,11 @@ class VirtualPageTest_PageExtension extends DataExtension implements TestOnly {
 		'MySharedNonVirtualField' => 'Text',
 	);
 
+}
+
+class VirtualPageTest_PageWithAllowedChildren extends Page implements TestOnly {
+	private static $allowed_children = array(
+		'VirtualPageTest_ClassA',
+		'VirtualPage'
+	);
 }
