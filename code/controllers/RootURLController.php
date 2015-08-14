@@ -4,23 +4,23 @@
  * @subpackage control
  */
 class RootURLController extends Controller {
-	
+
 	/**
 	 * @var bool
 	 */
 	protected static $is_at_root = false;
-	
+
 	/**
 	 * @config
 	 * @var string
 	 */
 	private static $default_homepage_link = 'home';
-	
+
 	/**
 	 * @var string
 	 */
 	protected static $cached_homepage_link;
-	
+
 	/**
 	 * Get the full form (e.g. /home/) relative link to the home page for the current HTTP_HOST value. Note that the
 	 * link is trimmed of leading and trailing slashes before returning to ensure consistency.
@@ -41,7 +41,7 @@ class RootURLController extends Controller {
 					}
 				}
 			}
-			
+
 			if(!self::$cached_homepage_link) {
 				// TODO Move to 'translatable' module
 				if (
@@ -55,10 +55,10 @@ class RootURLController extends Controller {
 				}
 			}
 		}
-		
+
 		return self::$cached_homepage_link;
 	}
-	
+
 	/**
 	 * Set the URL Segment used for your homepage when it is created by dev/build.
 	 * This allows you to use home page URLs other than the default "home".
@@ -81,7 +81,7 @@ class RootURLController extends Controller {
 		Deprecation::notice('4.0', 'Use the "RootURLController.default_homepage_link" config setting instead');
 		return Config::inst()->get('RootURLController', 'default_homepage_link');
 	}
-	
+
 	/**
 	 * Returns TRUE if a request to a certain page should be redirected to the site root (i.e. if the page acts as the
 	 * home page).
@@ -95,17 +95,17 @@ class RootURLController extends Controller {
 				class_exists('Translatable') && $page->hasExtension('Translatable') && $page->Locale && $page->Locale != Translatable::default_locale()
 			);
 		}
-		
+
 		return false;
 	}
-	
+
 	/**
 	 * Resets the cached homepage link value - useful for testing.
 	 */
 	static public function reset() {
 		self::$cached_homepage_link = null;
 	}
-	
+
 	/**
 	 * @param SS_HTTPRequest $request
 	 * @param DataModel|null $model
@@ -114,24 +114,23 @@ class RootURLController extends Controller {
 	public function handleRequest(SS_HTTPRequest $request, DataModel $model = null) {
 		self::$is_at_root = true;
 		$this->setDataModel($model);
-		
+
 		$this->pushCurrent();
 		$this->init();
-		
+
 		if(!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
-			$this->response = new SS_HTTPResponse();
-			$this->response->redirect(Director::absoluteBaseURL() . 'dev/build?returnURL=' . (isset($_GET['url']) ? urlencode($_GET['url']) : null));
-			return $this->response;
+			$this->getResponse()->redirect(Director::absoluteBaseURL() . 'dev/build?returnURL=' . (isset($_GET['url']) ? urlencode($_GET['url']) : null));
+			return $this->getResponse();
 		}
-			
+
 		$request->setUrl(self::get_homepage_link() . '/');
 		$request->match('$URLSegment//$Action', true);
 		$controller = new ModelAsController();
 
 		$result     = $controller->handleRequest($request, $model);
-		
+
 		$this->popCurrent();
 		return $result;
 	}
-	
+
 }
