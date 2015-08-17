@@ -49,9 +49,9 @@ Feature: Insert an image into a page
     And I wait for 2 seconds
     # Note change in default behaviour from 3.1, respect default Upload.replaceFile=false
     Then there should be a file "assets/Uploads/file1.jpg"
-    And there should be a file "assets/Uploads/file2.jpg"
+    And there should be a file "assets/Uploads/file1-v2.jpg"
     When I press the "Insert" button
-    Then the "Content" HTML field should contain "file2.jpg"
+    Then the "Content" HTML field should contain "file1-v2.jpg"
     # Required to avoid "unsaved changed" browser dialog
     Then I press the "Save draft" button
 
