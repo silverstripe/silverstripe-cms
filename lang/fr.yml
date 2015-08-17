@@ -67,8 +67,6 @@ fr:
     DELETE_PAGES: 'Supprimer du site publié'
     PUBLISHED_PAGES: '%d pages publiées, %d échecs'
     PUBLISH_PAGES: Publier
-    UNPUBLISHED_PAGES: '%d pages non publiées'
-    UNPUBLISH_PAGES: Non publiées
   CMSMain:
     ACCESS: 'Droits d’accès à la section « {title} »'
     ACCESS_HELP: 'Permettre l''affichage de la section contenant l''arborescence et le contenu. La gestion des permissions de visualisation et d''édition peut se faire à travers des liste spécifiques à chaque page. Et aussi la "Permission de contenu" séparé.'
@@ -99,7 +97,6 @@ fr:
     REMOVED: '''{title}''{description} supprimé du site live'
     REMOVEDPAGE: '« {title} » a été éliminée du site public '
     REMOVEDPAGEFROMDRAFT: 'Supprimé ''%s'' du site de test'
-    RESTORE: Restaurer
     RESTORED: '« {title} » restaurée avec succès'
     ROLLBACK: 'Retourner à cette version'
     ROLLEDBACKPUBv2: 'Revenir à la version publiée'
@@ -150,10 +147,6 @@ fr:
     FILTERDATEHEADING: Date
     FILTERDATETO: A
     FILTERLABELTEXT: Terme
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Pages modifiées'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Toutes les pages, y compris les supprimées'
   CMSSiteTreeFilter_Search:
     Title: 'Toutes les pages'
   ContentControl:
@@ -212,7 +205,6 @@ fr:
     DEFAULTSERVERERRORPAGETITLE: 'Erreur du serveur'
     DESCRIPTION: 'Contenu personnalisé pour diverses erreurs (p. ex. « Page introuvable »)'
     ERRORFILEPROBLEM: ' L’ouverture du fichier « {filename} » afin de le modifier a provoqué une erreur ; vérifiez les droits d’accès au fichier. '
-    PLURALNAME: 'Pages d’erreur'
     SINGULARNAME: 'Page d’erreur'
   Folder:
     AddFolderButton: 'Ajouter un dossier'
@@ -235,7 +227,6 @@ fr:
     HASBEENSETUP: 'Une page de redirection sans adresse de redirection a été créée.'
     HEADER: 'Cette page va rediriger les utilisateurs vers une autre page'
     OTHERURL: 'Autre URL de site web'
-    PLURALNAME: 'Pages de redirection'
     REDIRECTTO: 'Rediriger vers'
     REDIRECTTOEXTERNAL: 'Autre site web'
     REDIRECTTOPAGE: 'Une page de votre site web'
@@ -311,7 +302,6 @@ fr:
     DEFAULTABOUTTITLE: 'Qui sommes nous ?'
     DEFAULTCONTACTCONTENT: '<p>Vous pouvez éditer cette page avec votre propre contenu ou supprimer celle-ci et créer vos propres pages.<br></p>'
     DEFAULTCONTACTTITLE: 'Contactez-nous'
-    DEFAULTHOMECONTENT: '<p>Bienvenue sur SilverStripe&nbsp;! Ceci est la page d’accueil par défaut. Vous pouvez la modifier dans le <a href="admin/">panneau d’administration</a> du CMS.  Vous pouvez consulter la <a href="http://doc.silverstripe.com">documentation développeur</a> ou commencer <a href="http://doc.silverstripe.com/doku.php?id=tutorials">les tutoriaux.</a></p>'
     DEFAULTHOMETITLE: Accueil
     DELETEDPAGEHELP: 'La page n’est plus publique '
     DELETEDPAGESHORT: Supprimée
@@ -398,7 +388,6 @@ fr:
     EditLink: éditer
     HEADER: 'Cette page est virtuelle'
     HEADERWITHLINK: 'Ceci est une page virtuelle copiant le contenu de "{title}" ({link})'
-    PLURALNAME: 'Pages Virtuelles'
     PageTypNotAllowedOnRoot: 'Le type de page d’origine « {type} » n’est pas autorisé au niveau racine pour cette page virtuelle'
     SINGULARNAME: 'Page virtuelle'
   CMSFileAddController:

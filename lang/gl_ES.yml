@@ -52,8 +52,6 @@ gl_ES:
     DELETE_PAGES: 'Eliminar do sitio publicado'
     PUBLISHED_PAGES: '%d páxinas publicadas, %d erros'
     PUBLISH_PAGES: Publicar
-    UNPUBLISHED_PAGES: '%d páxinas sen publicar'
-    UNPUBLISH_PAGES: Sen publicar
   CMSMain:
     AddNew: 'Engadir nova páxina'
     AddNewButton: 'Engadir novo'
@@ -71,7 +69,6 @@ gl_ES:
     PUBALLFUN: 'Funcionalidade "Publicar Todo"'
     PUBALLFUN2: "Premendo este botón farás o equivalente de ir a todas as páxinas e premer en \"publicar\". \nIsto está pensado para facer un uso masivo despois das edicións de contido, por exemplo \ncando o sitio foi construído por primeira vez."
     REMOVEDPAGEFROMDRAFT: 'Eliminado ''%s''  do borrador do sitio'
-    RESTORE: Restaurar
     ROLLBACK: 'Desfacer a esta versión'
     SAVE: Gardar
     TabContent: Contido
@@ -107,10 +104,6 @@ gl_ES:
     MULTISELECT: Selección múltiple
   CMSPagesController_Tools_ss:
     FILTER: Filtro
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Páxinas cambiadas'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Todas as páxinas, incluindo eliminadas'
   CMSSiteTreeFilter_Search:
     Title: 'Todas as páxinas'
   ContentControl:
@@ -198,7 +191,6 @@ gl_ES:
     Content: Contido
     DEFAULTABOUTTITLE: 'Sobre nós'
     DEFAULTCONTACTTITLE: 'Contactarnos'
-    DEFAULTHOMECONTENT: '<p>Benvido a SilverStripe! Esta é a páxina de inicio por defecto. Podes editar esta páxina abrindo <a href="admin/">o CMS</a>. Agora podes acceder a <a href="http://doc.silverstripe.org">documentación do desenvolvedor</a>, ou comezar <a href="http://doc.silverstripe.org/doku.php?id=tutorials">os titoriais.</a></p>'
     DEFAULTHOMETITLE: Inicio
     DELETEDPAGESHORT: Eliminado
     DESCRIPTION: 'Páxina de contido xenérico'
@@ -249,7 +241,6 @@ gl_ES:
   VirtualPage:
     DESCRIPTION: 'Visualizar o contido doutra páxina'
     HEADER: 'Esta é unha páxina virtual'
-    PLURALNAME: 'Páxs Virtuais'
     SINGULARNAME: 'Páxina Virtual'
   CMSFileAddController:
     MENUTITLE: Ficheiros

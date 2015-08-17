@@ -60,8 +60,6 @@ bg:
     DELETE_PAGES: 'Изтрий от публикуваните страници'
     PUBLISHED_PAGES: 'Публикувани %d страници, %d грешки'
     PUBLISH_PAGES: Публикувай
-    UNPUBLISHED_PAGES: 'Премахнати от публикация %d страници'
-    UNPUBLISH_PAGES: Премахни от публикация
   CMSMain:
     ACCESS: 'Достъп до ''{title}'' секция'
     ACCESS_HELP: 'Разреши излгед на раздела съдържащ структурното дърво и съдържанието. Правата за достъп и редактиране могат да бъдат променени през падащи менюта (dropdowns), както и чрез отделни права на съдържанието'
@@ -83,7 +81,6 @@ bg:
     PageAdded: 'успешно създадена страница'
     REMOVEDPAGE: 'Примахнато ''{title}'' от публикувания сайт'
     REMOVEDPAGEFROMDRAFT: 'Премахната(и) ''%s'' от черновите'
-    RESTORE: Възтанови
     RESTORED: 'Успешно възтановен/а ''{title}'''
     ROLLBACK: 'Върни към тази версия'
     SAVE: Запис
@@ -116,8 +113,6 @@ bg:
   CMSSearch:
     FILTERDATEFROM: От
     FILTERLABELTEXT: Съдържание
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Всички страници, включително изтритите'
   CMSSiteTreeFilter_Search:
     Title: 'Всички страници'
   ContentControl:
@@ -238,7 +233,6 @@ bg:
     DEFAULTABOUTTITLE: 'За Нас'
     DEFAULTCONTACTCONTENT: '<p>Може да запълните тази страница със собствено съдържание, или да я изтриете и да създадете ваши собствени страници.<br /></p>'
     DEFAULTCONTACTTITLE: 'За Контакт'
-    DEFAULTHOMECONTENT: "<p>Добре дошли в SilverStripe! Това е началната страница подразбиране. Може да промените тази страница отваряйки a href=\"admin/\">CMS системата</a>. Сега можете да влезните в <a href=\"http://doc.silverstripe.com\">документацията на \t\nразработчика</a>, или започнете <a href=\"http://doc.silverstripe.com/doku.php?id=tutorials\">уроците.</a></p\n"
     DEFAULTHOMETITLE: Начало
     DELETEDPAGESHORT: Изтрит(а)
     DependtPageColumnLinkType: 'Тип на връзката'
@@ -290,7 +284,6 @@ bg:
     CANACCESS: 'Можете да достигнете архивирания сайт, чрез тази връзка'
   VirtualPage:
     HEADER: 'Това е виртуална страница'
-    PLURALNAME: 'Виртуални страници'
     SINGULARNAME: 'Виртуална страница'
   CMSPageEditController:
     MENUTITLE: 'Редактиране на страницата'

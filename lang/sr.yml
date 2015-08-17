@@ -67,8 +67,6 @@ sr:
     DELETE_PAGES: 'Избриши из објављеног сајта'
     PUBLISHED_PAGES: 'Објављено %d страница. Није успело објављивање %d страница.'
     PUBLISH_PAGES: Објави
-    UNPUBLISHED_PAGES: 'Поништена је објава %d страница.'
-    UNPUBLISH_PAGES: Поништи објаву
   CMSMain:
     ACCESS: 'Приступ ''{title}'' секцији'
     ACCESS_HELP: 'Дозвољава преглед секције која садржи стабло страница и садржај. Дозволе за преглед и уређивање могу се подесити путем специфичних падајућих листи појединачних страница, као и путем "Дозволе за садржај".'
@@ -99,7 +97,6 @@ sr:
     REMOVED: 'Са објављеног сајта обрисана је страница ''{title}''{description}'
     REMOVEDPAGE: 'Са објављеног сајта уклоњена је страница ''{title}'''
     REMOVEDPAGEFROMDRAFT: 'Страница ''%s'' је уклоњена из нацрта сајта'
-    RESTORE: Обнови
     RESTORED: '''{title}'' успешно обновљен'
     ROLLBACK: 'Врати се на ову верзију'
     ROLLEDBACKPUBv2: 'Враћено на објављену верзију.'
@@ -150,10 +147,6 @@ sr:
     FILTERDATEHEADING: Датум
     FILTERDATETO: За
     FILTERLABELTEXT: Садржај
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Измењене странице'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Све странице, укључујући и избрисане'
   CMSSiteTreeFilter_Search:
     Title: 'Све странице'
   ContentControl:
@@ -212,7 +205,6 @@ sr:
     DEFAULTSERVERERRORPAGETITLE: 'Грешка сервера'
     DESCRIPTION: 'Прилагођени садржај за различите случајеве грешака (нпр. "Страница није пронађена" )'
     ERRORFILEPROBLEM: 'Грешка при отварању датотеке "{filename}" за упис. Молимо Вас да проверите права приступа датотеци. '
-    PLURALNAME: 'Странице грешака'
     SINGULARNAME: 'Страница грешке'
   Folder:
     AddFolderButton: 'Додај фасциклу'
@@ -235,7 +227,6 @@ sr:
     HASBEENSETUP: 'Страници за преусмеравање није подешено одредиште на које преусмерава.'
     HEADER: 'Ова страница ће преусмерити кориснике на другу страницу'
     OTHERURL: 'URL другог веб сајта'
-    PLURALNAME: 'Странице за преусмеравања'
     REDIRECTTO: 'Преусмери на'
     REDIRECTTOEXTERNAL: 'Други веб сајт'
     REDIRECTTOPAGE: 'Страницу на Вашем веб сајту'
@@ -311,7 +302,6 @@ sr:
     DEFAULTABOUTTITLE: 'О нама'
     DEFAULTCONTACTCONTENT: '<p>Ову страницу можете попунити Вашим садржајем. Осим тога, можете је избрисати и креирати сопствене странице.<br /></p>'
     DEFAULTCONTACTTITLE: 'Контактирајте нас'
-    DEFAULTHOMECONTENT: '<p>Добро дошли у SilverStripe! Ово је подразумевана почетна страница коју можете је изменити отварањем <a href="admin/">ЦМС-а</a>. Такође, можете приступити <a href="http://doc.silverstripe.org">документуацији за развијаоце</a> или <a href="http://doc.silverstripe.org/doku.php?id=tutorials">упутствима за кориснике.</a></p>'
     DEFAULTHOMETITLE: Почетна страница
     DELETEDPAGEHELP: 'Страница није више објављена'
     DELETEDPAGESHORT: Избрисано
@@ -398,7 +388,6 @@ sr:
     EditLink: измени
     HEADER: 'Ово је виртуелна страница'
     HEADERWITHLINK: 'Ово је виртуелна страница која копира садржај из "{title}" ({link})'
-    PLURALNAME: 'Виртуелне странице'
     PageTypNotAllowedOnRoot: 'Оригинални тип странице "{type}" није дозвољен на вршном нивоу за ову виртуелну страницу'
     SINGULARNAME: 'Виртуелна страница'
   CMSFileAddController:

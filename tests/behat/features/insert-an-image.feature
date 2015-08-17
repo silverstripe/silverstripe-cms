@@ -59,7 +59,7 @@ Feature: Insert an image into a page
     Given I press the "Insert Media" button
     And I press the "From the CMS" button
     And I fill in the "ParentID" dropdown with "folder1"
-    And I click on "file1.jpg" in the "Files" table
+    And I click on "file1" in the "Files" table
     When I press the "Insert" button
     Then the "Content" HTML field should contain "file1.jpg"
     # Required to avoid "unsaved changed" browser dialog
@@ -69,7 +69,7 @@ Feature: Insert an image into a page
     Given I press the "Insert Media" button
     And I press the "From the CMS" button
     And I fill in the "ParentID" dropdown with "folder1"
-    And I click on "file1.jpg" in the "Files" table
+    And I click on "file1" in the "Files" table
     And I press the "Edit" button
     When I fill in "Alternative text (alt)" with "My alt"
     And I press the "Insert" button

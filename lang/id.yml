@@ -67,8 +67,6 @@ id:
     DELETE_PAGES: 'Hapus dari situs terbit'
     PUBLISHED_PAGES: 'Menerbitkan %d laman, %d gagal'
     PUBLISH_PAGES: Terbitkan
-    UNPUBLISHED_PAGES: '%d laman dibatalterbitkan'
-    UNPUBLISH_PAGES: Batalterbitkan
   CMSMain:
     ACCESS: 'Akses ke bagian ''{title}'''
     ACCESS_HELP: 'Perbolehkan menampilkan bagian dengan struktur laman dan konten. Perijinan menampilkan dan mengedit dapat diatur melalui pilihan terkait laman, sebagaimana "Perijinan Konten".'
@@ -100,7 +98,6 @@ id:
     REMOVED: 'Dihapus ''{title}''{description} dari situs langsung'
     REMOVEDPAGE: 'Menghapus ''{title}'' dari situs terbit'
     REMOVEDPAGEFROMDRAFT: 'Menghapus ''%s'' dari draf situs'
-    RESTORE: Pulihkan
     RESTORED: 'Pemulihan ''{title}'' sukses'
     ROLLBACK: 'Kembali ke versi ini'
     ROLLEDBACKPUBv2: 'Kembali ke versi terbit'
@@ -151,10 +148,6 @@ id:
     FILTERDATEHEADING: Tanggal
     FILTERDATETO: Ke
     FILTERLABELTEXT: Konten
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Laman yang berubah'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Semua laman, termasuk yang terhapus'
   CMSSiteTreeFilter_Search:
     Title: 'Semua laman'
   ContentControl:
@@ -314,7 +307,6 @@ id:
     DEFAULTABOUTTITLE: 'Tentang Kami'
     DEFAULTCONTACTCONTENT: '<p>Anda dapat mengisi laman ini dengan konten Anda sendiri, atau menghapusnya dan membuat laman Anda sendiri.<br /></p>'
     DEFAULTCONTACTTITLE: 'Hubungi Kami'
-    DEFAULTHOMECONTENT: '<p>Selamat datang di SilverStripe! Ini adalah halaman awal situs Anda. Anda dapat mengedit laman ini dengan membuka <a href="admin/">CMS ini</a>. Selanjutnya Anda dapat mengakses <a href="http://doc.silverstripe.com">dokumentasi pengembang</a>, atau mulai dengan <a href="http://doc.silverstripe.com/doku.php?id=tutorials">tutorial-tutorial yang tersedia.</a></p>'
     DEFAULTHOMETITLE: Beranda
     DELETEDPAGEHELP: 'Laman tidak lagi terbit'
     DELETEDPAGESHORT: Hapus

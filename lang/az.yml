@@ -2,7 +2,6 @@ az:
   CMSMain:
     DELETE: 'Qaralama saytdan sil'
     DELETEFP: Dərc olunmuş saytdan sil
-    RESTORE: Bərpa et
     SAVE: Yadda saxla
   ContentControl:
     NOTEWONTBESHOWN: 'Qeyd: Bu mesaj ziyarətçilər üçün görünməyəcək'
@@ -107,5 +106,4 @@ az:
     many_many_LinkTracking: 'Keçidin izlənməsi'
   VirtualPage:
     HEADER: 'Bu virtual səhifədir'
-    PLURALNAME: 'Virtual səhifələr'
     SINGULARNAME: 'Virtual səhifə'

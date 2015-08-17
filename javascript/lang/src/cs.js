@@ -31,15 +31,15 @@
     "Tree.ThisPageOnly": "Pouze tuto stránku",
     "Tree.ThisPageAndSubpages": "Tuto stránku a podstránky",
     "Tree.ShowAsList": "Zobrazit potomky jako seznam",
-    "CMSMain.ConfirmRestoreFromLive": "Are you sure you want to revert draft to when the page was last published?",
+    "CMSMain.ConfirmRestoreFromLive": "Určitě chcete obnovit koncept do stavz, kdy stránka byla naposled zveřejněna?",
     "CMSMain.RollbackToVersion": "Skutečně chcete vrátit zpět na verzi #%s této stránky?",
-    "CMSMain.Archive": "Are you sure you want to archive this page?\n\nThe page will be unpublished and sent to the archive.",
-    "CMSMain.Restore": "Are you sure you want to restore this page from archive?",
-    "CMSMain.RestoreToRoot": "Are you sure you want to restore this page from archive?\n\nBecause the parent page is not available this will be restored to the top level.",
-    "CMSMain.Unpublish": "Are you sure you want to remove your page from the published site?\n\nThis page will still be available in the sitetree as draft.",
-    "CMSMain.DeleteFromDraft": "Are you sure you want to remove your page from the draft site?\n\nThis page will remain on the published site.",
+    "CMSMain.Archive": "Určitě chcete archivovat tuto stránku?\n\nTato stránka bude nezveřejněna a bude odeslána do archívu.",
+    "CMSMain.Restore": "Určitě chcete obnovit tyto stránky z archívu?",
+    "CMSMain.RestoreToRoot": "Určitě chcete obnovit tuto stránku z archívu?\n\nProtože nadřazená stránka není k dispozici, bude obnovena do nejvyšší úrovně.",
+    "CMSMain.Unpublish": "Určitě chcete odstranit stránku ze zveřejněného webu?\n\nTato stránka bude stále k dispozici ve struktuře webu jako koncept.",
+    "CMSMain.DeleteFromDraft": "Určitě chcete odstranit stránku z konceptu?\n\nTato stránka zůstane na zveřejněném webu.",
     "URLSEGMENT.Edit": "Editovat",
     "URLSEGMENT.OK": "OK",
     "URLSEGMENT.Cancel": "Storno",
-    "URLSEGMENT.UpdateURL": "Update URL"
+    "URLSEGMENT.UpdateURL": "Aktualizovat URL"
 }

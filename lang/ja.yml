@@ -67,8 +67,6 @@ ja:
     DELETE_PAGES: '公開サイトから削除'
     PUBLISHED_PAGES: '%dページを公開しましたが、%dページの公開に失敗しました。'
     PUBLISH_PAGES: 公開
-    UNPUBLISHED_PAGES: '%dページを非公開にしました'
-    UNPUBLISH_PAGES: 非公開
   CMSMain:
     ACCESS: '''{title}'' セクションにアクセス'
     ACCESS_HELP: 'ページツリーとコンテンツを含むセクションの閲覧を許可します。　表示および編集の権限は、ページの特定のドロップダウンだけでなく、独立した"コンテンツの権限"を介して処理することができます。'
@@ -99,7 +97,6 @@ ja:
     REMOVED: 'この配信サイトから ''{title}''{description} を削除しました'
     REMOVEDPAGE: '''{title}''を公開されているサイトから削除しました'
     REMOVEDPAGEFROMDRAFT: '%sを下書きサイトから削除しました'
-    RESTORE: 復元
     RESTORED: '{title}を復旧しました'
     ROLLBACK: 'このバージョンへ戻す'
     ROLLEDBACKPUBv2: '公開されたバージョンにロールバックされました。'
@@ -150,10 +147,6 @@ ja:
     FILTERDATEHEADING: 日付
     FILTERDATETO: 終了日
     FILTERLABELTEXT: コンテンツ
-  CMSSiteTreeFilter_ChangedPages:
-    Title: '変更されたページ'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: '全ページ（削除されたページも含む）'
   CMSSiteTreeFilter_Search:
     Title: '全ページ'
   ContentControl:
@@ -212,7 +205,6 @@ ja:
     DEFAULTSERVERERRORPAGETITLE: 'サーバーエラー'
     DESCRIPTION: 'それぞれのエラーケースに対してカスタムコンテンツを表示する(例:"ページがありません")'
     ERRORFILEPROBLEM: '書き込み用のファイル"{filename}"を開く際にエラーが発生しました。　ファイルの権限を確認してください。'
-    PLURALNAME: 'エラーページ'
     SINGULARNAME: 'エラーページ'
   Folder:
     AddFolderButton: 'フォルダの追加'
@@ -235,7 +227,6 @@ ja:
     HASBEENSETUP: '転送URLを含むページには、転送先がない状態で設定されています。'
     HEADER: 'このページをユーザーを変更して他のページにしますか？'
     OTHERURL: '他のウェブサイトのURL'
-    PLURALNAME: 'リダイレクトページ'
     REDIRECTTO: '変更は'
     REDIRECTTOEXTERNAL: '他のウェブサイト'
     REDIRECTTOPAGE: '貴方のウェブサイトを表示します'
@@ -311,7 +302,6 @@ ja:
     DEFAULTABOUTTITLE: '私たちについて'
     DEFAULTCONTACTCONTENT: '<p>あなた自身、自由にページに書き込むことが出来、もちろん添削も自由に行えます。<br /></p>'
     DEFAULTCONTACTTITLE: '連絡はこちらまで'
-    DEFAULTHOMECONTENT: '<p>SilverStripeへようこそ！これはデフォルトのホームページです。このページを編集するには、<a href="admin/">CMS</a>にアクセスしてください。<a href="http://doc.silverstripe.org">開発者向けドキュメント</a>や、<a href="http://doc.silverstripe.org/doku.php?id=tutorials">チュートリアル</a>もご覧いただけます。</p>'
     DEFAULTHOMETITLE: ホーム
     DELETEDPAGEHELP: 'このページは今は公開されていません。'
     DELETEDPAGESHORT: 削除済
@@ -398,7 +388,6 @@ ja:
     EditLink: 編集
     HEADER: 'これがバーチャルページです'
     HEADERWITHLINK: 'これは "{title}" ({link}) からコンテンツをコピーしている仮想ページです'
-    PLURALNAME: '仮想ページ'
     PageTypNotAllowedOnRoot: 'この仮想ページに対して元のページの種類{type}はルートレベルに配置されることが許可されていません。'
     SINGULARNAME: '仮想ページ'
   CMSFileAddController:

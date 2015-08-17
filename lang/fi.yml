@@ -67,8 +67,6 @@ fi:
     DELETE_PAGES: 'Poista julkaistulta sivustolta'
     PUBLISHED_PAGES: 'Julkaistu %d sivua, %d epäonnistumista'
     PUBLISH_PAGES: Julkaise
-    UNPUBLISHED_PAGES: 'Julkaisemattomat %d sivut'
-    UNPUBLISH_PAGES: Poista julkaisu
   CMSMain:
     ACCESS: 'Pääsy ''{title}'' -osioon'
     ACCESS_HELP: 'Oikeuttaa näkemään osion, joka sisältää sivurakenteen ja sisällön. Katselu- ja muokkausoikeuksia voidaan käsitellä sivukohtaisten pudotusvalikoiden kautta, kuten myös erillisestä "Sisällön oikeudet"-kohdasta.'
@@ -100,7 +98,6 @@ fi:
     REMOVED: 'Poista ''{title}''{description} näkyvältä sivustolta'
     REMOVEDPAGE: '''{title}'' poistettiin julkaistulta sivustolta'
     REMOVEDPAGEFROMDRAFT: 'Poistettu ''%s'' luonnossivustolta'
-    RESTORE: Palauta
     RESTORED: '''{title}'' palautettiin onnistuneesti'
     ROLLBACK: 'Siirry takaisin tähän versioon.'
     ROLLEDBACKPUBv2: 'Palattiin takaisin julkaistuun versioon'
@@ -151,10 +148,6 @@ fi:
     FILTERDATEHEADING: Pvm
     FILTERDATETO: Päättyen
     FILTERLABELTEXT: Sisältö
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Muuttuneet sivut'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Kaikki sivut, myös poistetut'
   CMSSiteTreeFilter_Search:
     Title: 'Kaikki sivut'
   ContentControl:
@@ -314,7 +307,6 @@ fi:
     DEFAULTABOUTTITLE: 'Tietoa meistä'
     DEFAULTCONTACTCONTENT: '<p>Voit täyttää tämän sivun omalla sisällölläsi tai poistaa sen ja luoda omia sivujasi.<br /></p>'
     DEFAULTCONTACTTITLE: 'Ota yhteyttä meihin'
-    DEFAULTHOMECONTENT: '<p>Tervetuloa SilverStripeen! Tämä on oletus-kotisivu. Voit muokata tätä sivua kirjautumalla <a href="admin/">ylläpitonäkymään</a>. Voit myös lukea <a href="http://doc.silverstripe.com">kehittäjä-dokumentaatiota</a> tai aloittaa tutustumisen järjestelmään <a href="http://doc.silverstripe.com/doku.php?id=tutorials">johdatuskursseista</a>.</p>'
     DEFAULTHOMETITLE: Koti
     DELETEDPAGEHELP: 'Sivu ei ole enää julkaistuna'
     DELETEDPAGESHORT: Poistettu
@@ -412,9 +404,3 @@ fi:
     MENUTITLE: 'Muokkaa sivua'
   CMSSettingsController:
     MENUTITLE: Asetukset
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Poistetut sivut'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Luonnokset julkaisemattomista sivuista'
-  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
-    Title: 'Näkyvillä, mutta poistettu luonnoksista'

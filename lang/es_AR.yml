@@ -29,8 +29,6 @@ es_AR:
     DELETE_PAGES: 'Eliminar del sitio publicado'
     PUBLISHED_PAGES: 'Se publicaron %d páginas, %d fallas'
     PUBLISH_PAGES: Publicar
-    UNPUBLISHED_PAGES: 'Se despublicaron %d páginas'
-    UNPUBLISH_PAGES: Despublicar
   CMSMain:
     ACCESS_HELP: 'Permitir la visualización de la sección que contiene el árbol de páginas y el contenido. Ver y editar permisos que se pueden manejar mediante listas desplegables específicas de la página, así como el apartado "Permisos del contenido".'
     DELETE: 'Eliminar del sitio borrador'
@@ -40,7 +38,6 @@ es_AR:
     PUBALLFUN: 'Funcionalidad "Publicar Todo"'
     PUBALLFUN2: "Pulsar este botón hará el equivalente de ir a cada página y pulsar \"Publicar\". Está pensado para ser usado en edición masiva de contenido, por ejemplo cuando se construye el sitio por primera vez."
     REMOVEDPAGEFROMDRAFT: 'Quitados ''%s'' del borrador del sitio'
-    RESTORE: Restaurar
     ROLLBACK: 'Restaurar a ésta versión'
     SAVE: Guardar
   ContentControl:
@@ -147,7 +144,6 @@ es_AR:
     DEFAULTABOUTTITLE: 'de Nosotros'
     DEFAULTCONTACTCONTENT: '<p>Puedes llenar esta página con tu propio contenido, o eliminarla y crear tus propias páginas.<br /></p>'
     DEFAULTCONTACTTITLE: 'Contactenos'
-    DEFAULTHOMECONTENT: '<p>¡Bienvenido a SilverStripe! Esta es la página inicial por defecto. Puede editar esta página al abrir <a href="admin/">el CMS</a>. Ahora puede acceder a la <a href="http://doc.silverstripe.org">documentación del desarrollador</a>, o comenzar <a href="http://doc.silverstripe.org/doku.php?id=tutorials">tos tutoriales.</a></p>'
     DEFAULTHOMETITLE: Inicio
     DEPENDENT_NOTE: 'Las siguientes páginas dependen de esta página. Esto incluye páginas virtuales, páginas de redireccionamiento y páginas con enlaces de contenido.'
     DependtPageColumnLinkType: 'Tipo de enlace'
@@ -193,5 +189,4 @@ es_AR:
     HAVEASKED: 'Has solicitado ver el contenido de nuestro sitio en'
   VirtualPage:
     HEADER: 'Esta es una página virtual'
-    PLURALNAME: 'Págs. Virtuales'
     SINGULARNAME: 'Página Virtual'

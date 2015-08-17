@@ -12,7 +12,6 @@ fo:
     PUBALLFUN: '"Ger alt alment" funka'
     PUBALLFUN2: "Við at trýsta á knøttin við tað sama henda, sum at fara inn á allar síðurnar og trýsta á \"Ger alment\". Endamálið við knøttunum er at hann skal brúkast, tá ið nógv innihald er blivið broytt, t.d. á einari nýggjari heimasíðu."
     REMOVEDPAGEFROMDRAFT: 'Strikaði ''%s'' frá kladdu heimasíðuni'
-    RESTORE: Endurstovna
     ROLLBACK: 'Far aftur til hesa útgávuna'
     SAVE: Goym
   ErrorPage:

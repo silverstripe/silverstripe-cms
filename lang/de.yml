@@ -67,8 +67,6 @@ de:
     DELETE_PAGES: 'Von veröffentlichter Site löschen'
     PUBLISHED_PAGES: '%d Seiten veröffentlicht, %d Fehler'
     PUBLISH_PAGES: Veröffentlichen
-    UNPUBLISHED_PAGES: 'Veröffentlichung von %d Seiten zurückgenommen'
-    UNPUBLISH_PAGES: Veröffentlichung zurücknehmen
   CMSMain:
     ACCESS: 'Zugang zum Bereich ''{title}'''
     ACCESS_HELP: 'Seiteninhalt im CMS anzeigen. Anzeige- und Bearbeitungsberechtigungen können sowohl seitenspezifische als auch über die globalen Inhaltsberechtigungen gesetzt werden.'
@@ -100,7 +98,6 @@ de:
     REMOVED: 'Lösche ''{title}''{description} von Live Umgebung'
     REMOVEDPAGE: '''{title}'' wurde von der veröffentlichten Site entfernt'
     REMOVEDPAGEFROMDRAFT: 'Lösche ''%s'' von der Entwurfs-Site'
-    RESTORE: Wiederherstellen
     RESTORED: '''{title}'' wurde wiederhergestellt'
     ROLLBACK: 'Diese Version wiederherstellen'
     ROLLEDBACKPUBv2: 'Veröffentlichte Version wiederhergestellt'
@@ -151,10 +148,6 @@ de:
     FILTERDATEHEADING: Datum
     FILTERDATETO: Bis
     FILTERLABELTEXT: Inhalt
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Veränderte Seiten'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Alle Seiten, auch gelöschte.'
   CMSSiteTreeFilter_Search:
     Title: 'Alle Seiten'
   ContentControl:
@@ -314,7 +307,6 @@ de:
     DEFAULTABOUTTITLE: 'Über uns'
     DEFAULTCONTACTCONTENT: '<p>Sie können diese Seite mit Ihren eigenen Inhalten füllen, oder sie löschen und Ihre eigenen Seiten erstellen.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontakt'
-    DEFAULTHOMECONTENT: '<p>Willkommen bei SilverStripe! Dies ist die Standard-Startseite. Sie können diese Seite bearbeiten, indem Sie <a href="admin/">das CMS</a> öffnen. Sie können außerdem die  <a href="http://doc.silverstripe.com">Entwicker-Dokumentation</a> oder die <a href="http://doc.silverstripe.com/doku.php?id=tutorials">Einführungskurse und Tutorien</a> aufrufen.</p>'
     DEFAULTHOMETITLE: Startseite
     DELETEDPAGEHELP: 'Die Seite ist nicht länger veröffentlicht'
     DELETEDPAGESHORT: Gelöscht
@@ -412,9 +404,3 @@ de:
     MENUTITLE: 'Seite bearbeiten'
   CMSSettingsController:
     MENUTITLE: Einstellungen
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Gelöschte Seiten'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Nicht veröffentlichte Entwurfs-Seiten'
-  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
-    Title: 'Veröffentlicht aber aus Entwurf entfernt'

@@ -67,8 +67,8 @@ sv:
     DELETE_PAGES: 'Radera från publicerade sajten'
     PUBLISHED_PAGES: 'Publicerade %d sidor, %d misslyckades'
     PUBLISH_PAGES: Publicera
-    UNPUBLISHED_PAGES: 'Avpublicerade %d sidor'
-    UNPUBLISH_PAGES: Avpublicera
+    ARCHIVE: Arkivera
+    ARCHIVED_PAGES: 'Arkiverade %d sidor'
   CMSMain:
     ACCESS: 'Tillgång till sektionen ''{title}'''
     ACCESS_HELP: 'Tillåt visning av sektionen innehållande sidträdet och dess innehåll. Rättigheter att visa och redigera sidan kan hanteras i dess rullgardinsmenyer, liksom i "Innehållsbehörigheter".'
@@ -100,7 +100,7 @@ sv:
     REMOVED: 'Tog bort ''{title}''{description} från den publicerade sajten'
     REMOVEDPAGE: 'Tog bort ''{title}'' från den publicerade sajten'
     REMOVEDPAGEFROMDRAFT: 'Raderade ''%s'' från utkast'
-    RESTORE: Återskapa
+    RESTORE: 'Återställ utkast'
     RESTORED: 'Återskapandet av  ''{title}'' lyckades'
     ROLLBACK: 'Återställ den här versionen'
     ROLLEDBACKPUBv2: 'Återställde till den publicerade versionen.'
@@ -113,6 +113,7 @@ sv:
     TreeFiltered: 'Filtrerat träd'
     TreeFilteredClear: 'Rensa lista'
     MENUTITLE: 'Redigera sida'
+    ARCHIVE: Arkiv
   CMSMain_left_ss:
     APPLY_FILTER: 'Filtrera'
     RESET: Rensa
@@ -153,8 +154,6 @@ sv:
     FILTERLABELTEXT: Innehåll
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Ändrade sidor'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Alla sidor, inklusive raderade'
   CMSSiteTreeFilter_Search:
     Title: 'Alla sidor'
   ContentControl:
@@ -314,7 +313,6 @@ sv:
     DEFAULTABOUTTITLE: 'Om oss'
     DEFAULTCONTACTCONTENT: '<p>Du kan fylla den här sidan med ditt eget innehåll, eller radera den och skapa dina egna sidor.<br/></p>'
     DEFAULTCONTACTTITLE: 'Kontakta oss'
-    DEFAULTHOMECONTENT: '<p>Välkommen till SilverStripe! Det här är standardhemsidan. Du kan redigera sidan genom att öppna <a href="admin/">CMS:et</a>. Du kan även komma åt <a href="http://doc.silverstripe.com">utvecklardokumentationen</a>, eller börja med <a href="http://doc.silverstripe.com/doku.php?id=tutorials">guiderna</a></p>'
     DEFAULTHOMETITLE: Hem
     DELETEDPAGEHELP: 'Sidan är inte längre publicerad'
     DELETEDPAGESHORT: Raderad
@@ -412,9 +410,3 @@ sv:
     MENUTITLE: 'Redigera sida'
   CMSSettingsController:
     MENUTITLE: Inställningar
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Raderade sidor'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Ej publicerade utkast'
-  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
-    Title: 'Live men borttagen från utkast'

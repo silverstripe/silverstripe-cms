@@ -1634,7 +1634,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			// No need to check for subclasses or instanceof, as allowedChildren() already 
 			// deconstructs any inheritance trees already.
 			$allowed = $parent->allowedChildren();
-			$subject = ($this instanceof VirtualPage) ? $this->CopyContentFrom() : $this;
+			$subject = ($this instanceof VirtualPage && $this->CopyContentFromID) ? $this->CopyContentFrom() : $this;
 			if(!in_array($subject->ClassName, $allowed)) {
 				
 				$result->error(
@@ -2875,6 +2875,18 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 
 		return isset($stack[$level-1]) ? $stack[$level-1] : null;
+	}
+
+	/**
+	 * Gets the depth of this page in the sitetree, where 1 is the root level
+	 *
+	 * @return int
+	 */
+	public function getPageLevel() {
+		if($this->ParentID) {
+			return 1 + $this->Parent()->getPageLevel();
+		}
+		return 1;
 	}
 
 	/**
