@@ -29,8 +29,6 @@ es_MX:
     DELETE_PAGES: 'Eliminada del sito público'
     PUBLISHED_PAGES: 'Se publicaron %d páginas, %d fallos'
     PUBLISH_PAGES: Publicar
-    UNPUBLISHED_PAGES: '%d páginas no publicadas'
-    UNPUBLISH_PAGES: No publicadas
   CMSMain:
     DELETE: 'Eliminar del boceto del sitio'
     DELETEFP: Eliminar del sitio público
@@ -40,7 +38,6 @@ es_MX:
     PUBALLFUN: 'Funcionalidad "Publicar todo"'
     PUBALLFUN2: "Al precionar este botón hará el equivalente de ir a cada página y precionar \"Publicar\". Está pensado para ser usado en edición masiva de contenido, por ejemplo cuando se construye el sitio por primera vez."
     REMOVEDPAGEFROMDRAFT: 'Se ha eliminado ''%s'' del boceto del sitio'
-    RESTORE: Restaurar
     ROLLBACK: 'Restaurar a ésta versión'
     SAVE: Guardar
   ContentControl:
@@ -147,7 +144,6 @@ es_MX:
     DEFAULTABOUTTITLE: 'Sobre nosotros'
     DEFAULTCONTACTCONTENT: '<p>Usted puede llenar esta págna con su propio contenido, o eliminarla y crear sus propias páginas.<br /></p>'
     DEFAULTCONTACTTITLE: 'Contacto'
-    DEFAULTHOMECONTENT: '<p>¡Bienvenido a SilverStripe! Ésta es la página de Inicio predeterminada. Usted puede modificar esta página abriendo el <a href="admin/">CMS</a>. Ahora puede navegar por la <a href="http://doc.silverstripe.org">documentación del desarrollador</a>, o comenzar los <a href="href="http://doc.silverstripe.com/doku.php?id=tutorials">tutoriales</a></p>.'
     DEFAULTHOMETITLE: Inicio
     DEPENDENT_NOTE: 'Las siguientes páginas depender de esta página. Esto incluye páginas virtuales, redirección de páginas y páginas con enlaces de contenido.'
     DependtPageColumnLinkType: 'Tipo de enlace'
@@ -194,5 +190,4 @@ es_MX:
     HAVEASKED: 'Has solicitado ver el contenido de nuestro sitio en'
   VirtualPage:
     HEADER: 'Esta es una página virtual'
-    PLURALNAME: 'Páginas virtuales'
     SINGULARNAME: 'Página virtual'

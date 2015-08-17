@@ -67,8 +67,6 @@ et_EE:
     DELETE_PAGES: 'Kustuta avaldatud lehekülgede hulgast'
     PUBLISHED_PAGES: 'Avaldatud %d lehte, %d tõrget'
     PUBLISH_PAGES: Avalda
-    UNPUBLISHED_PAGES: 'Tühistati %d lehe avaldamine'
-    UNPUBLISH_PAGES: Tühista avaldamine
   CMSMain:
     ACCESS: 'Juurdepääs jaotisele ''{title}'''
     ACCESS_HELP: 'Luba lehepuud ja sisu hõlmava jaotise vaatamine. Vaatamis- ja redigeerimisõigusi on võimalik hallata nii lehepõhiselt kui ka eraldi jaotise "Sisu õigused" abil.'
@@ -95,7 +93,6 @@ et_EE:
     PageAdded: 'Lehekülje loomine õnnestus'
     REMOVEDPAGE: 'Leht ''{title}'' eemaldati avaldatud saitide hulgast'
     REMOVEDPAGEFROMDRAFT: '''%s'' eemaldatud visandi lehelt'
-    RESTORE: Taasta
     RESTORED: '''{title}'' taastati edukalt'
     ROLLBACK: 'Pööra tagasi sellesse versiooni'
     SAVE: Salvesta
@@ -142,10 +139,6 @@ et_EE:
     FILTERDATEHEADING: Kuupäev
     FILTERDATETO: Kuni
     FILTERLABELTEXT: Sisu
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Muudetud lehed'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Kõik lehed, k.a kustutatud'
   CMSSiteTreeFilter_Search:
     Title: 'Kõik lehed'
   ContentControl:
@@ -202,7 +195,6 @@ et_EE:
     DEFAULTSERVERERRORPAGETITLE: 'Serveri viga'
     DESCRIPTION: 'Kohandatud sisu erinevate tõrgete korral (nt "Lehte ei leitud")'
     ERRORFILEPROBLEM: 'Tõrge faili "{filename}" avamisel kirjutamiseks. Kontrollige faili õigusi.'
-    PLURALNAME: 'Vealeheküljed'
     SINGULARNAME: 'Vealehekülg'
   Folder:
     AddFolderButton: 'Lisa kaust'
@@ -225,7 +217,6 @@ et_EE:
     HASBEENSETUP: 'Suunav lehekülg seati üles ilma, et ta kuhugile suunaks.'
     HEADER: 'See lehekülg suunab kasutajad teisele leheküljele'
     OTHERURL: 'Teise veebisaidi URL'
-    PLURALNAME: 'Ümbersuunamisleheküljed'
     REDIRECTTO: 'Suuna ümber'
     REDIRECTTOEXTERNAL: 'Teisele veebisaidile'
     REDIRECTTOPAGE: 'Leheküljele sinu veebisaidil'
@@ -296,7 +287,6 @@ et_EE:
     DEFAULTABOUTTITLE: 'Meist'
     DEFAULTCONTACTCONTENT: '<p>võid selle lehe sisu muuta või selle ära kustutada.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontakt'
-    DEFAULTHOMECONTENT: '<p>Tere tulemast kasutama SilverStripe! sisuhaldust, see on algne avaleht.<br>Saad seda muuta <a href="admin/">Sisuhalduse lehel</a>. <br>Abiks on ka <a href="http://doc.silverstripe.com">Sisuhalduse dokumentatsioon</a> või <a href="http://doc.silverstripe.com/doku.php?id=tutorials">õppetus leht.</a></p>'
     DEFAULTHOMETITLE: Avaleht
     DELETEDPAGEHELP: 'Leht ei ole enam avaldatud'
     DELETEDPAGESHORT: Kustutatud
@@ -374,7 +364,6 @@ et_EE:
     DESCRIPTION: 'Kuvab sisu teiselt lehelt'
     EditLink: redigeeri
     HEADER: 'See on virtuaalne leht'
-    PLURALNAME: 'Virtuaalsed lehed'
     PageTypNotAllowedOnRoot: 'Lehe originaaltüüp "{type}" ei ole selle virtuaalse lehe juurtasandil lubatud.'
     SINGULARNAME: 'Virtuaalne leht'
   CMSFileAddController:

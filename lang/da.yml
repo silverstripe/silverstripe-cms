@@ -59,8 +59,6 @@ da:
     DELETE_PAGES: 'Slet fra publiseret side'
     PUBLISHED_PAGES: 'Publiserede %d sider'
     PUBLISH_PAGES: Publisér
-    UNPUBLISHED_PAGES: 'U-publiserede %d sider'
-    UNPUBLISH_PAGES: U-publisér
   CMSMain:
     ACCESS: 'Adgang til ''{title}'' sektionen'
     ACCESS_HELP: 'Tillad visning af den sektion, som indeholder sidetræet og indhold. Visnings- og redigeringstilladelser kan håndteres gennem sidespecifikke rullemenuer, såvel som de enkelte "Inholdstilladelser".'
@@ -86,7 +84,6 @@ da:
     PageAdded: 'Siden blev oprettet med succes'
     REMOVEDPAGE: 'Fjernede ''{title}'' fra den udgivne side'
     REMOVEDPAGEFROMDRAFT: '''%s''  fjernet fra udkast-sitet'
-    RESTORE: Genskab
     RESTORED: 'Genskabte ''{title}'' korrekt'
     ROLLBACK: 'Rul tilbage til denne version'
     SAVE: Gem
@@ -133,10 +130,6 @@ da:
     FILTERDATEHEADING: Dato
     FILTERDATETO: Til
     FILTERLABELTEXT: Indhold
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Ændrede sider'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Alle sider, inklusive slettede'
   CMSSiteTreeFilter_Search:
     Title: 'Alle sider'
   ContentControl:
@@ -184,7 +177,6 @@ da:
     HASBEENSETUP: 'En omdirigeringsside er blevet sat op, uden et sted at omdirigere til.'
     HEADER: 'Denne side omdirigerer besøgende til en anden side'
     OTHERURL: 'Andet websteds URL'
-    PLURALNAME: 'Videresendende sider'
     REDIRECTTO: 'Omdiriger til'
     REDIRECTTOEXTERNAL: 'Et andet websted'
     REDIRECTTOPAGE: 'En side på dit websted'
@@ -248,7 +240,6 @@ da:
     DEFAULTABOUTTITLE: 'Om os'
     DEFAULTCONTACTCONTENT: '<p>Du kan udfylde denne side med dit eget indhold, eller slette den og oprette dine egne sider.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontakt os'
-    DEFAULTHOMECONTENT: '<p>Velkommen til  SilverStripe! Dette er en standard forside. Du kan redigere den ved at åbne <a href="admin/">CMS</a>. Du kan læse <a href="http://doc.silverstripe.org">udviklerdokumentationen</a>, eller påbegynde en af  <a href="http://doc.silverstripe.org/doku.php?id=tutorials">selvstudierne.</a></p>\n'
     DEFAULTHOMETITLE: Forside
     DELETEDPAGEHELP: 'Siden er ikke længere udgiven'
     DELETEDPAGESHORT: Slettet
@@ -310,7 +301,6 @@ da:
   VirtualPage:
     DESCRIPTION: 'Viser indholdet fra en anden side'
     HEADER: 'Dette er en virtuel side'
-    PLURALNAME: 'Virtuelle sider'
     PageTypNotAllowedOnRoot: 'Original side type "{type}" er ikke tilladt på rodniveau for denne virtuelle side'
     SINGULARNAME: 'Virtuel side'
   CMSFileAddController:

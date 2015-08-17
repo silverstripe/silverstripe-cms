@@ -2,7 +2,6 @@ is:
   CMSMain:
     DELETE: 'Eyða úr drögum'
     DELETEFP: Eyða úr birtum síðum
-    RESTORE: Endurheimta
     SAVE: Vista
   ContentController:
     LOGGEDINAS: 'Innskráður sem'
@@ -52,7 +51,6 @@ is:
     DEFAULTABOUTTITLE: 'Um okkur'
     DEFAULTCONTACTCONTENT: '<p>Þú getur fyllt út þessa síðu með þínu efni  eða eytt því og búið til þína eigin síður<br/></p>'
     DEFAULTCONTACTTITLE: 'Hafa samband'
-    DEFAULTHOMECONTENT: '<p>Velkomin(n) á SilverStripe! Þetta er sjálfvalda heimasíðan. Þú getur breytt þessari síðu með því að opna <a href="admin/">kerfið</a>. Þú getur skoðað <a href="http://doc.silverstripe.com">hönnunar leiðbeiningarnar</a>, eða skoðað<a href="http://doc.silverstripe.com/doku.php?id=tutorials">kennsluna</a></p>'
     DEFAULTHOMETITLE: Heim
     EDITANYONE: 'Allir þeir sem geta innskráð sig í kerfið'
     EDITHEADER: 'Hver getur breytt þessu í kerfinu?'
@@ -74,5 +72,4 @@ is:
     has_one_Parent: 'Yfir síða'
   VirtualPage:
     HEADER: 'Þetta er sýndarsíða'
-    PLURALNAME: 'Sýndar síða'
     SINGULARNAME: 'Sýndar síða'

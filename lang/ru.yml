@@ -67,8 +67,6 @@ ru:
     DELETE_PAGES: 'Удалить из опубликованной версии сайта'
     PUBLISHED_PAGES: 'Опубликовано %d страниц, %d ошибок'
     PUBLISH_PAGES: Опубликовать
-    UNPUBLISHED_PAGES: 'Публикация %d страниц отменена'
-    UNPUBLISH_PAGES: Отмена публикации
   CMSMain:
     ACCESS: 'Доступ к разделу ''{title}'''
     ACCESS_HELP: 'Возможность просматривать раздел, содержащий дерево страниц и контент. Настройка прав просмотра и редактирования производится через выпадающие меню на отдельных страницах, а также через "Права доступа к содержимому".'
@@ -100,7 +98,6 @@ ru:
     REMOVED: 'Страница ''{title}''{description} удалена с опубликованного сайта'
     REMOVEDPAGE: 'Страница ''{title}'' удалена с опубликованного сайта'
     REMOVEDPAGEFROMDRAFT: 'Страница ''%s'' удалена с чернового сайта'
-    RESTORE: Восстановить
     RESTORED: '''{title}'' успешно восстановлен'
     ROLLBACK: 'Откатить до этой версии'
     ROLLEDBACKPUBv2: 'Выполнен откат к опубликованной версии.'
@@ -151,10 +148,6 @@ ru:
     FILTERDATEHEADING: Дата
     FILTERDATETO: До
     FILTERLABELTEXT: Содержимое
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Измененные страницы'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Все страницы, включая удаленные'
   CMSSiteTreeFilter_Search:
     Title: 'Все страницы'
   ContentControl:
@@ -215,7 +208,6 @@ ru:
     DEFAULTSERVERERRORPAGETITLE: 'Ошибка сервера'
     DESCRIPTION: 'Пользовательские страницы ошибок (например, "Страница не найдена")'
     ERRORFILEPROBLEM: 'Ошибка при открытии файла "{filename}" для записи. Пожалуйста, проверьте права доступа к файлам.'
-    PLURALNAME: 'Страницы ошибок'
     SINGULARNAME: 'Страница ошибки'
   Folder:
     AddFolderButton: 'Добавить папку'
@@ -238,7 +230,6 @@ ru:
     HASBEENSETUP: 'Страница перенаправления установлена без указания места перенаправления.'
     HEADER: 'Эта страница будет перенаправлять пользователей на другую страницу'
     OTHERURL: 'URL другого сайта'
-    PLURALNAME: 'Страницы перенаправления'
     REDIRECTTO: 'Перенаправлять на'
     REDIRECTTOEXTERNAL: 'Другой сайт'
     REDIRECTTOPAGE: 'Страницу вашего сайта'
@@ -314,7 +305,6 @@ ru:
     DEFAULTABOUTTITLE: 'О нас'
     DEFAULTCONTACTCONTENT: '<p>Вы можете заполнить эту страницу собственным содержимым или удалить ее и создать новые страницы.<br /></p>'
     DEFAULTCONTACTTITLE: 'Контакты'
-    DEFAULTHOMECONTENT: '<p>Добро пожаловать в SilverStripe! Это главная страница по умолчанию. Вы можете редактировать ее в <a href="admin/">Системе Управления Содержимым</a>. Вы также можете обратиться к <a href="http://doc.silverstripe.com">документации для разработчиков</a> или начать с <a href="http://doc.silverstripe.com/doku.php?id=tutorials">учебных материалов.</a></p>'
     DEFAULTHOMETITLE: Главная
     DELETEDPAGEHELP: 'Страница больше не является опубликованной'
     DELETEDPAGESHORT: Удалено
@@ -401,7 +391,6 @@ ru:
     EditLink: редактировать
     HEADER: 'Это виртуальная страница'
     HEADERWITHLINK: 'Это виртуальная страница, копирующая содержимое из "{title}" ({link})'
-    PLURALNAME: 'Виртуальная страница'
     PageTypNotAllowedOnRoot: 'Страницы типа "{type}" недопустимы в качестве корневых для этой виртуальной страницы'
     SINGULARNAME: 'Виртуальная страница'
   CMSFileAddController:
@@ -412,9 +401,3 @@ ru:
     MENUTITLE: 'Править страницу'
   CMSSettingsController:
     MENUTITLE: Настройки
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Удаленные страницы'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Неопубликованные черновые страницы'
-  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
-    Title: 'Опубликовано, но удалено из черновика'

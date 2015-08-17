@@ -64,7 +64,6 @@ pt:
     DELETE_DRAFT_PAGES: 'Apagar do site de rascunho'
     PUBLISHED_PAGES: 'Publicadas %d páginas, %d falhas'
     PUBLISH_PAGES: Publicar
-    UNPUBLISHED_PAGES: '%d páginas não publicadas'
   CMSMain:
     ACCESS: 'Acesso à secção ''{title}'''
     ACCESS_HELP: 'Permitir a visualização da árvore de páginas e respectivos conteúdos. Ver e editar permissões que podem ser seleccionadas a partir de uma caixa de selecção, bem como os separadores de "permissões de conteúdo".'
@@ -93,7 +92,6 @@ pt:
     PageAdded: 'Página criada com sucesso'
     REMOVEDPAGE: 'Remover ''{title}'' do site publicado'
     REMOVEDPAGEFROMDRAFT: 'Removido ''%s'' do site de rascunho'
-    RESTORE: Restaurar
     RESTORED: '''{title}'' restaurado com sucesso'
     ROLLBACK: 'Voltar para esta versão'
     ROLLEDBACKPUBv2: 'Voltar para a versão publicada.'
@@ -144,10 +142,6 @@ pt:
     FILTERDATEHEADING: Data
     FILTERDATETO: Para
     FILTERLABELTEXT: Conteúdo
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Páginas alteradas'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Todas as páginas, incluindo apagadas'
   CMSSiteTreeFilter_Search:
     Title: 'Todas as páginas'
   ContentControl:
@@ -199,7 +193,6 @@ pt:
     DEFAULTSERVERERRORPAGETITLE: '500 - Erro do servidor'
     DESCRIPTION: 'Conteúdo personalizado para as diferentes possibilidades de erro (ex. página não encontrada)'
     ERRORFILEPROBLEM: 'Erro ao escrever no ficheiro "{filename}". Por favor, verifique as permissões do ficheiro.'
-    PLURALNAME: 'Página de erro'
     SINGULARNAME: 'Página de erro'
   Folder:
     AddFolderButton: 'Adicionar pasta'
@@ -222,7 +215,6 @@ pt:
     HASBEENSETUP: 'Uma página de redireccionamento foi criada sem nenhum destino.'
     HEADER: 'Esta página irá redireccionar os utilizadores para outra página'
     OTHERURL: 'Outro Site'
-    PLURALNAME: 'Página de redirecção'
     REDIRECTTO: 'Redireccionar para'
     REDIRECTTOEXTERNAL: 'Outro site'
     REDIRECTTOPAGE: 'Uma página no seu site'
@@ -288,7 +280,6 @@ pt:
     DEFAULTABOUTTITLE: 'Quem Somos'
     DEFAULTCONTACTCONTENT: '<p>Pode preencher esta página com o seu próprio conteúdo, ou apagá-la e criar as suas próprias páginas.</p>'
     DEFAULTCONTACTTITLE: 'Contacte-nos'
-    DEFAULTHOMECONTENT: '<p>Bem-vido ao SilverStripe! Esta é a página principal. Pode editar esta página acedendo ao <a href="admin/">CMS</a>. Poderá também visitar a <a href="http//doc.silverstripe.com">documentação para desenvolvimento</a>, ou começar <a href="http://doc.silverstripe.com/doku.php?id=tutorials">pelos tutoriais.</a></p>'
     DEFAULTHOMETITLE: Página Principal
     DELETEDPAGEHELP: 'A página nunca mais será publicada'
     DELETEDPAGESHORT: Apagada
@@ -360,7 +351,6 @@ pt:
     EditLink: editar
     HEADER: 'Esta é uma página virtual'
     HEADERWITHLINK: 'Esta é uma página virtual com o conteúdo copiado da página "{title}" ({link})'
-    PLURALNAME: 'Páginas Virtuais'
     PageTypNotAllowedOnRoot: 'Páginas do tipo "{type}" não tem permissões para serem criadas a este nível.'
     SINGULARNAME: 'Página Virtual'
   CMSFileAddController:

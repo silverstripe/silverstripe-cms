@@ -62,19 +62,22 @@ it:
     Title: 'Aggiungi pagina'
   CMSBatchActions:
     DELETED_DRAFT_PAGES: 'Eliminate %d pagine dal sito bozza, %d non a buon fine'
-    DELETED_PAGES: 'Eliminate %d pagine dal sito pubblicato, %d non a buon fine'
+    DELETED_PAGES: 'Eliminate %d pagine dal sito pubbico, %d non a buon fine'
     DELETE_DRAFT_PAGES: 'Elimina dal sito bozza'
     DELETE_PAGES: 'Eliminata dal sito pubblicato'
     PUBLISHED_PAGES: 'Pubblicate %d pagine, %d non a buon fine'
     PUBLISH_PAGES: Pubblica
-    UNPUBLISHED_PAGES: '%d pagine non pubblicate'
-    UNPUBLISH_PAGES: Non pubblicare
+    UNPUBLISHED_PAGES: '%d pagine nascoste'
+    UNPUBLISH_PAGES: Nascondere
+    ARCHIVE: Archiviare
+    ARCHIVED_PAGES: '%d pagine archiviate'
   CMSMain:
     ACCESS: 'Accesso alla sezione ''{title}'''
     ACCESS_HELP: 'Consente la visualizzazione della sezione con l''albero delle pagine e i contenuti. I permessi di visualizzazione e modifica possono essere gestiti attraverso menù a tendina specifici della pagina, come dai separati "Permessi sui contenuti".'
     AddNew: 'Aggiungi nuova pagina'
     AddNewButton: 'Aggiungi nuova'
     AddPageRestriction: 'Nota: alcuni tipi di pagina non sono permessi in questa sezione'
+    Cancel: Annulla
     ChoosePageParentMode: 'Scegli dove creare questa pagina'
     ChoosePageType: 'Scegli tipo di pagina'
     Create: Crea
@@ -99,8 +102,11 @@ it:
     REMOVED: '''{title}'' {description} rimosso dal sito pubblico'
     REMOVEDPAGE: 'Eliminata ''{title}'' dal sito pubblicato'
     REMOVEDPAGEFROMDRAFT: 'Eliminata ''%s'' dal sito bozza'
-    RESTORE: Ripristina
+    RESTORE: 'Ripristinare bozza'
+    RESTORE_TO_ROOT: 'Ripristinare bozza al primo livello'
+    RESTORE_TO_ROOT_DESC: 'Ripristinare la versione archiviata nella bozza come pagina di primo livello'
     RESTORED: 'Ripristinata ''{title}'' con successo'
+    RESTORE_DESC: 'Ripristinare la versione archiviata nella bozza'
     ROLLBACK: 'Ripristina a questa versione'
     ROLLEDBACKPUBv2: 'Ripristinata la versione pubblicata.'
     ROLLEDBACKVERSIONv2: 'Ripristinata la versione #%d.'
@@ -112,9 +118,12 @@ it:
     TreeFiltered: 'Albero filtrato.'
     TreeFilteredClear: 'Azzera filtro'
     MENUTITLE: 'Modifica pagina'
+    ARCHIVE: Archiviare
+    ARCHIVEDPAGE: 'Pagina ''%s'' archiviata'
   CMSMain_left_ss:
     APPLY_FILTER: 'Applica filtro'
     RESET: Azzera
+    CLEAR_FILTER: 'Azzera filtro'
   CMSPageAddController:
     ParentMode_child: 'Sotto un''altra pagina'
     ParentMode_top: 'Primo livello'
@@ -124,7 +133,7 @@ it:
     COMPAREVERSIONS: 'Confronta versioni'
     COMPARINGVERSION: 'Confronto versioni {version1} e {version2}.'
     REVERTTOTHISVERSION: 'Ripristina a questa versione'
-    SHOWUNPUBLISHED: 'Mostra versioni non pubblicate'
+    SHOWUNPUBLISHED: 'Mostra versioni nascoste'
     SHOWVERSION: 'Mostra versione'
     VIEW: vista
     VIEWINGLATEST: 'Attualmente visualizzata ultima versione.'
@@ -151,11 +160,19 @@ it:
     FILTERDATETO: A
     FILTERLABELTEXT: Contenuto
   CMSSiteTreeFilter_ChangedPages:
-    Title: 'Pagine cambiate'
+    Title: 'Pagine modificate'
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'Tutte le pagine, eliminate incluse'
+    Title: 'Tutte le pagine, comprese quelle archiviate'
+  CMSSIteTreeFilter_PublishedPages:
+    Title: 'Pagine pubblicate'
   CMSSiteTreeFilter_Search:
     Title: 'Tutte le pagine'
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Pagine archiviate'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Pagine bozza'
+  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'Live ma rimosse dalla bozza'
   ContentControl:
     NOTEWONTBESHOWN: 'Nota: questo messaggio non verrà mostrato ai visitatori'
   ContentController:
@@ -199,6 +216,8 @@ it:
     415: '415 - Tipo di media non supportato'
     416: '416 - Intervallo di richiesta non soddisfacibile'
     417: '417 - Attesa fallita'
+    422: '422 - Entità non elaborabile'
+    429: '429 - Troppe richieste'
     500: '500 - Errore Interno del Server'
     501: '501 - Non implementato'
     502: '502 - Gateway errato'
@@ -212,7 +231,7 @@ it:
     DEFAULTSERVERERRORPAGETITLE: 'Errore server'
     DESCRIPTION: 'Contenuto personalizzato per differenti casi di errore (es. "Pagina non trovata")'
     ERRORFILEPROBLEM: 'Errore nell''apertura del file "{filename}" per la scrittura. Controlla i permessi del file.'
-    PLURALNAME: 'Pagine errore'
+    PLURALNAME: 'Pagine di errore'
     SINGULARNAME: 'Pagine errore'
   Folder:
     AddFolderButton: 'Aggiungi cartella'
@@ -303,7 +322,7 @@ it:
     BUTTONPUBLISHED: Pubblicato
     BUTTONSAVED: Salvato
     BUTTONSAVEPUBLISH: 'Salva & pubblica'
-    BUTTONUNPUBLISH: Non pubblicare
+    BUTTONUNPUBLISH: Nascondere
     BUTTONUNPUBLISHDESC: 'Rimuovi questa pagina dal sito pubblicato'
     Comments: Commenti
     Content: Contenuto
@@ -311,7 +330,7 @@ it:
     DEFAULTABOUTTITLE: 'Chi siamo'
     DEFAULTCONTACTCONTENT: '<p>Puoi riempire questa pagina con i tuoi contenuti, oppure cancellarla e creare le tue pagine.<br /></p>'
     DEFAULTCONTACTTITLE: 'Contattaci'
-    DEFAULTHOMECONTENT: '<p>Benvenuto in SilverStripe! Questa è l''homepage di default. Puoi modificare questa pagina aprendo <a href="admin/">il CMS</a>. Puoi visualizzare adesso la <a href="http://doc.silverstripe.com">documentazione di sviluppo</a>, o iniziaren <a href="http://doc.silverstripe.com/doku.php?id=tutorials">i tutorial.</a></p>'
+    DEFAULTHOMECONTENT: '<p>Benvenuto in SilverStripe! Questa è la home page di default. Puoi modificare questa pagina direttamente <a href="admin/">dal CMS</a>.</p><p>Puoi accedere alla <a href="http://docs.silverstripe.org">documentazione per gli sviluppatori</a> o partire dalle <a href="http://www.silverstripe.org/learn/lessons">lezioni di SilverStripe</a>.</p>'
     DEFAULTHOMETITLE: Home
     DELETEDPAGEHELP: 'La pagina non è più pubblicata'
     DELETEDPAGESHORT: Eliminata
@@ -339,7 +358,7 @@ it:
     METADESCHELP: 'I motori di ricerca utilizzano questo contenuto per visualizzare i risultati (ma non ne influenza la posizione)'
     METAEXTRA: 'Meta tag personalizzati'
     METAEXTRAHELP: 'Tag HTML per meta addizionali. Per esempio &lt;meta name="nomePersonalizzato" content="Il tuo contenuto personalizzato" /&gt;'
-    MODIFIEDONDRAFTHELP: 'La pagina ha modifiche non pubblicate'
+    MODIFIEDONDRAFTHELP: 'La pagina ha modifiche nascoste'
     MODIFIEDONDRAFTSHORT: Modificata
     MetadataToggle: Metadati
     MoreOptions: 'Altre opzioni'
@@ -382,6 +401,9 @@ it:
     many_many_BackLinkTracking: 'Monitoriaggio link di ritorno'
     many_many_ImageTracking: 'Monitoraggio immagine'
     many_many_LinkTracking: 'Monitoraggio link'
+    ARCHIVEDPAGEHELP: 'Pagina rimossa da bozza e live'
+    ARCHIVEDPAGESHORT: Archiviato
+    BUTTONARCHIVEDESC: 'Nascondere e mettere in archivio'
   SiteTreeURLSegmentField:
     EMPTY: 'Perfavore inserisci un segmento URL o clicca cancella'
     HelpChars: 'I caratteri speciali sono automaticamente convertiti o eliminati.'
@@ -409,3 +431,6 @@ it:
     MENUTITLE: 'Modifica pagina'
   CMSSettingsController:
     MENUTITLE: Impostazioni
+  SiteTreeFileExtension:
+    BACKLINK_LIST_DESCRIPTION: 'Questo elenco mostra tutte le pagine dove il file è stato aggiunto con l''editor WYSIWYG.'
+    EDIT: Modifica

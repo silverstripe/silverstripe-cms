@@ -67,8 +67,6 @@ eo:
     DELETE_PAGES: 'Forigi el publikigita retejo'
     PUBLISHED_PAGES: 'Publikigis %d paĝojn, %d malsukcesojn'
     PUBLISH_PAGES: Publikigi
-    UNPUBLISHED_PAGES: 'Malpublikigis %d paĝojn'
-    UNPUBLISH_PAGES: Malpublikigi
   CMSMain:
     ACCESS: 'Aliro al sekcio ''{title}'''
     ACCESS_HELP: 'Permesi vidigi la sekcion kiu enhavas paĝarbon kaj enhavon. Vidigaj kaj redaktaj permesoj estas trakteblaj per paĝspecifaj fallistoj, kaj ankaŭ la apartaj "Enhavaj permesoj".'
@@ -100,7 +98,6 @@ eo:
     REMOVED: 'Forigis je ''{title}''{description} el la publikigita retejo'
     REMOVEDPAGE: 'Forigis je ''{title}'' el la publikigita retejo'
     REMOVEDPAGEFROMDRAFT: 'Forigis je ''%s'' el la malneta retejo'
-    RESTORE: Restaŭri
     RESTORED: 'Sukcese restaŭris je ''{title}'''
     ROLLBACK: 'Malfari al ĉi tiu versio'
     ROLLEDBACKPUBv2: 'Malfaris ŝanĝojn ĝis la publikigita versio.'
@@ -151,10 +148,6 @@ eo:
     FILTERDATEHEADING: Dato
     FILTERDATETO: Al
     FILTERLABELTEXT: Enhavo
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Ŝanĝitaj paĝoj'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Ĉiuj paĝoj, inklude forigitajn'
   CMSSiteTreeFilter_Search:
     Title: 'Ĉiuj paĝoj'
   ContentControl:
@@ -314,7 +307,6 @@ eo:
     DEFAULTABOUTTITLE: 'Pri ni'
     DEFAULTCONTACTCONTENT: '<p>Vi povas plenigi ĉi tiun paĝon per via materialo, aŭ forigi ĝin kaj krei viajn proprajn paĝojn.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontakti nin'
-    DEFAULTHOMECONTENT: '<p>Bonvenon al SilverStripe! Jen la apriora hejmpaĝo. Vi povas redakti ĉi tiun paĝon malfermante je <a href="admin/">la CMS</a>. Tiam vi povas aliri al la <a href="http://doc.silverstripe.com">dokumentaro por evoluigistoj</a>, aŭ ekuzi <a href="http://doc.silverstripe.com/doku.php?id=tutorials">la instruilojn.</a></p>'
     DEFAULTHOMETITLE: Hejmo
     DELETEDPAGEHELP: 'Paĝo ne plu estas publikigita'
     DELETEDPAGESHORT: Forigita
@@ -412,9 +404,3 @@ eo:
     MENUTITLE: 'Redakti paĝon'
   CMSSettingsController:
     MENUTITLE: Agordoj
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Forigitaj paĝoj'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Malnetaj nepublikigitaj paĝoj'
-  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
-    Title: 'Publikaj sed forigitaj el malnetaj'

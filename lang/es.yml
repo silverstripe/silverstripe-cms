@@ -67,8 +67,10 @@ es:
     DELETE_PAGES: 'Eliminar del sitio público'
     PUBLISHED_PAGES: 'Publicadas %d páginas, %d fallos'
     PUBLISH_PAGES: Publicar
-    UNPUBLISHED_PAGES: 'No publicadas %d páginas'
-    UNPUBLISH_PAGES: Sin Publicar
+    UNPUBLISHED_PAGES: 'Ocultar %d páginas'
+    UNPUBLISH_PAGES: Ocultar publicación
+    ARCHIVE: Archivar
+    ARCHIVED_PAGES: '%d páginas archivadas'
   CMSMain:
     ACCESS: 'Acceso a la sección ''{title}'''
     ACCESS_HELP: 'Permitir la visualización de la sección que contiene el árbol de la página y el contenido. Ver y editar permisos puede ser gestionado a través de menús desplegables específicos de las páginas, así como los "permisos de contenido" separados.'
@@ -100,8 +102,11 @@ es:
     REMOVED: 'Removido'
     REMOVEDPAGE: 'Eliminado ''{title}'' del sitio publicado'
     REMOVEDPAGEFROMDRAFT: 'Borrado ''%s''%s desde el sitio no publicado'
-    RESTORE: Restaurar
+    RESTORE: 'Recuperar borrador'
+    RESTORE_TO_ROOT: 'Recuperar borrador al nivel superior'
+    RESTORE_TO_ROOT_DESC: 'Recuperar la versión archivada del borrador como de nivel superior'
     RESTORED: 'Restablecido ''{title}'' correctamente'
+    RESTORE_DESC: 'Recuperar la versión archivada del borrador'
     ROLLBACK: 'Restaurar esta versión'
     ROLLEDBACKPUBv2: 'Restaurado'
     ROLLEDBACKVERSIONv2: 'Versión #%d restaurada'
@@ -113,9 +118,12 @@ es:
     TreeFiltered: 'Árbol filtrado'
     TreeFilteredClear: 'Borrar filtro'
     MENUTITLE: 'Editar página'
+    ARCHIVE: Archivar
+    ARCHIVEDPAGE: '''%s'' páginas archivadas'
   CMSMain_left_ss:
     APPLY_FILTER: 'Aplicar filtro'
     RESET: Restablecer
+    CLEAR_FILTER: 'Limpiar filtro'
   CMSPageAddController:
     ParentMode_child: 'Debajo de otra página'
     ParentMode_top: 'Nivel superior'
@@ -152,11 +160,19 @@ es:
     FILTERDATETO: Hasta
     FILTERLABELTEXT: Filtrar
   CMSSiteTreeFilter_ChangedPages:
-    Title: 'Páginas cambiadas'
+    Title: 'Páginas modificadas'
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'Todas las páginas'
+    Title: 'Todas las páginas, incluyendo archivadas'
+  CMSSIteTreeFilter_PublishedPages:
+    Title: 'Páginas publicadas'
   CMSSiteTreeFilter_Search:
     Title: 'Todas las paginas'
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Páginas archivadas'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Borradores'
+  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'Publicada, pero eliminada de los borradores'
   ContentControl:
     NOTEWONTBESHOWN: 'Nota: este mensaje no se mostrará a tus visitantes'
   ContentController:
@@ -314,7 +330,7 @@ es:
     DEFAULTABOUTTITLE: 'Sobre nosotros'
     DEFAULTCONTACTCONTENT: '<p>Tú puedes rellenar esta página con tu propio contenido, o borrarla y crear tus propias páginas.<br />Aquí pondrías tu información de contacto.<br /></p>'
     DEFAULTCONTACTTITLE: 'Contacta con nosotros'
-    DEFAULTHOMECONTENT: '<p>Bienvenido a SilverStripe! Esta es la página de inicio por defecto. Puedes editarla abriendo <a href="admin/">el Sistema Gestor de Contenidos (CMS)</a>. Puedes acceder ahora a <a href="http://doc.silverstripe.com">la documentación para desarrolladores</a>, o empezar <a href="http://doc.silverstripe.com/doku.php?id=tutorials">los tutoriales.</a></p>'
+    DEFAULTHOMECONTENT: '<p>¡Bienvenido a SilverStripe! Esta es la página de inicio por defecto. Tú puedes editar esta página abriendo <a href="admin/">el CMS</a>.</p><p>También puedes acceder a la  <a href="http://docs.silverstripe.org">documentación de desarrollo</a>, o comenzar con las<a href="http://www.silverstripe.org/learn/lessons">Lecciones de SilverStripe</a>.</p>'
     DEFAULTHOMETITLE: Inicio
     DELETEDPAGEHELP: 'La página ya no está publicada'
     DELETEDPAGESHORT: Borrado
@@ -385,6 +401,9 @@ es:
     many_many_BackLinkTracking: 'Rastreo de Backlinks'
     many_many_ImageTracking: 'Rastreo de Imágenes'
     many_many_LinkTracking: 'Rastreo de Enlaces'
+    ARCHIVEDPAGEHELP: 'Esta página ha sido removida de los borradores y del sitio en vivo'
+    ARCHIVEDPAGESHORT: Archivada
+    BUTTONARCHIVEDESC: 'Ocultar y mandar al archivo'
   SiteTreeURLSegmentField:
     EMPTY: 'Vacío'
     HelpChars: 'Los caracteres especiales son automáticamente convertidos o eliminados.'
@@ -401,7 +420,7 @@ es:
     EditLink: Editar
     HEADER: 'Esta es una página virtual'
     HEADERWITHLINK: 'Título con link'
-    PLURALNAME: 'Páginas Virtuales'
+    PLURALNAME: 'Páginas virtuales'
     PageTypNotAllowedOnRoot: 'Tipo de página original "{type}" no se permite en el nivel raíz para esta página virtual'
     SINGULARNAME: 'Página Virtual'
   CMSFileAddController:
@@ -412,9 +431,6 @@ es:
     MENUTITLE: 'Editar página'
   CMSSettingsController:
     MENUTITLE: Ajustes
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Páginas borradas'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Enviar al borrador las páginas sin prublicar'
-  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
-    Title: 'Publicada pero eliminada del borrador'
+  SiteTreeFileExtension:
+    BACKLINK_LIST_DESCRIPTION: 'Esta lista muestra todas las páginas que han sido añadidas mediante un editor WYSIWYG.'
+    EDIT: Editar

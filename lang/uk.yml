@@ -61,8 +61,6 @@ uk:
     DELETE_PAGES: 'Видалити з опублікованого сайту'
     PUBLISHED_PAGES: 'Опубліковано %d сторінок, %d навдач'
     PUBLISH_PAGES: Опублікувати
-    UNPUBLISHED_PAGES: 'Знято з публікації %d сторінок'
-    UNPUBLISH_PAGES: Зняти з публікації
   CMSMain:
     ACCESS: 'Доступ до секції ''{title}'' '
     ACCESS_HELP: 'Дозволити перегляд розділу, що містить дерево сторінок і зміст. Дозволами на перегляд та редагування, а також окремими дозволами на контент, можна керувати на відповідних сторінках.'
@@ -85,7 +83,6 @@ uk:
     PageAdded: 'Сторінка успішно створена'
     REMOVEDPAGE: '''{title}'' видалено з публічного сайту'
     REMOVEDPAGEFROMDRAFT: 'Видалено ''%s'' з чорнового сайту'
-    RESTORE: Відновити
     ROLLBACK: 'Повернутися до цієї версії'
     SAVE: Зберегти
     TabContent: Вміст
@@ -121,10 +118,6 @@ uk:
     FILTER: Фільтр
   CMSSearch:
     FILTERDATEFROM: Від
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Змінені сторінки'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Всі сторінки, включаючи видалені'
   CMSSiteTreeFilter_Search:
     Title: 'Всі сторінки'
   ContentControl:
@@ -231,7 +224,6 @@ uk:
     DEFAULTABOUTTITLE: 'Про нас'
     DEFAULTCONTACTCONTENT: '<p>Ви можете заповнити цю сторінку власним вмістом або видалити її та створити інші сторінки.<br /></p>'
     DEFAULTCONTACTTITLE: 'Контакти'
-    DEFAULTHOMECONTENT: '<p>Ласкаво просимо до SilverStripe! Це стандартна домашня сторінка. Ви можете редагувати цю сторінку відкривши <a href="admin/">CMS</a>. Ви можете переглянути <a href="http://doc.silverstripe.org">документацію для розробників</a>, або почати з <a href="http://doc.silverstripe.org/doku.php?id=tutorials"> туторіалів.</a></p>'
     DEFAULTHOMETITLE: Домівка
     DELETEDPAGEHELP: 'Сторінка вже не є опублікованою'
     DELETEDPAGESHORT: Видалений
@@ -296,7 +288,6 @@ uk:
   VirtualPage:
     DESCRIPTION: 'Відображення вмісту іншої сторінки'
     HEADER: 'Це віртуальна сторінка'
-    PLURALNAME: 'Віртуальні сторінки'
     PageTypNotAllowedOnRoot: 'Тип сторінки "{type}" не допускається на кореневому рівні для цієї віртуальної сторінки'
     SINGULARNAME: 'Віртуальна сторінка'
   CMSFileAddController:

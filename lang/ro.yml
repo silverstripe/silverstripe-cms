@@ -67,8 +67,6 @@ ro:
     DELETE_PAGES: 'Ştergere de pe site-ul live'
     PUBLISHED_PAGES: '%d pagini publicate, %d erori'
     PUBLISH_PAGES: Publicare
-    UNPUBLISHED_PAGES: '%d pagini au fost deactivate de la publicare'
-    UNPUBLISH_PAGES: Deactivare publicare
   CMSMain:
     ACCESS: 'Acces la secţiunea ''{title}'' '
     ACCESS_HELP: 'Permite vizualizarea secțiunii cu arborele de pagini și conținut. Permisiunile de vizualizare și editare pot fi setate specific prin meniul vertical din pagini sau separat în "Permisiuni de conținut". '
@@ -99,7 +97,6 @@ ro:
     REMOVED: 'Șterge ''{title}''{description} din site-ul live'
     REMOVEDPAGE: 'Înlătură ''{title}'' din site-ul publicat'
     REMOVEDPAGEFROMDRAFT: 'Înlătură ''%s'' din site-ul ciornă'
-    RESTORE: Restaurează
     RESTORED: 'Restaurare ''{title}'' cu succes'
     ROLLBACK: 'Revenire la versiunea aceasta'
     ROLLEDBACKPUBv2: 'Revenire la versiunea publicată'
@@ -150,10 +147,6 @@ ro:
     FILTERDATEHEADING: Data
     FILTERDATETO: La
     FILTERLABELTEXT: Conținut
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Pagini schimbate'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Toate paginile, incluzând cele șterse'
   CMSSiteTreeFilter_Search:
     Title: 'Toate paginile'
   ContentControl:
@@ -212,7 +205,6 @@ ro:
     DEFAULTSERVERERRORPAGETITLE: 'Eroare de server'
     DESCRIPTION: 'Conșinut preferențial pentru diferitele cazuri (ex. "Pagină negăsită")'
     ERRORFILEPROBLEM: 'Eroare la deschiderea fișierului "{filename}" pentru scriere. Vă rugăm verificași permisiunile.'
-    PLURALNAME: 'Eroare pagini'
     SINGULARNAME: 'Pagină de eroare'
   Folder:
     AddFolderButton: 'Adaugă director'
@@ -235,7 +227,6 @@ ro:
     HASBEENSETUP: 'O pagină referitoare a fost creată fără a direcționa către ceva'
     HEADER: 'Pagina v-a redirecționa utilizatorii către altă pagină'
     OTHERURL: 'URL-ul altui website'
-    PLURALNAME: 'Pagini referitoare'
     REDIRECTTO: 'Redirecționare către'
     REDIRECTTOEXTERNAL: 'Alt website'
     REDIRECTTOPAGE: 'O pagină de pe website-ul dumneavoastră'
@@ -311,7 +302,6 @@ ro:
     DEFAULTABOUTTITLE: 'Despre Noi'
     DEFAULTCONTACTCONTENT: '<p>Puteți completa pagina cu conținut propriu, sau o puteți șterge și să vă creați alte pagini.<br /></p>'
     DEFAULTCONTACTTITLE: 'Contactați-ne'
-    DEFAULTHOMECONTENT: '<p>Bine ați venit în SilverStripe! Aceasta este pagina principala. Puteți edita pagina deschizînd <a href="admin/">CMS-ul</a>. Acum puteți accesa <a href="http://doc.silverstripe.org">developer documentatia</a>, sau să începeți <a href="http://doc.silverstripe.org/doku.php?id=tutorials">tutorialele.</a></p>'
     DEFAULTHOMETITLE: Acasă
     DELETEDPAGEHELP: 'Pagina nu mai este publicată'
     DELETEDPAGESHORT: Șters
@@ -398,7 +388,6 @@ ro:
     EditLink: editare
     HEADER: 'Aceasta este o pagină virtuală '
     HEADERWITHLINK: 'Aceasta este o pagina virtuală care copiază conținut din "{title}" ({link})'
-    PLURALNAME: 'Pagini virtuale'
     PageTypNotAllowedOnRoot: 'Tipul original al pagini "{type}" nu este permis pe nivelul rădăcină pentru pagina virtuală'
     SINGULARNAME: 'Pagina Virtuala'
   CMSFileAddController:

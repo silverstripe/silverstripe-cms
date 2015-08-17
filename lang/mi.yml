@@ -67,8 +67,6 @@ mi:
     DELETE_PAGES: 'Mukua i te pae kua whakaputaina'
     PUBLISHED_PAGES: '%d ngā whārangi kua whakaputaina, %d i rahua'
     PUBLISH_PAGES: Whakaputa
-    UNPUBLISHED_PAGES: ' %d ngā whārangi kua wetewhakaputaina'
-    UNPUBLISH_PAGES: Wete-whakaputa
   CMSMain:
     ACCESS: 'Uru ki te wāhanga ''{title}'' '
     ACCESS_HELP: 'Tukua kia kitea te wāhanga kei roto te whārangi rākau me ngā ihirangi. Ka taea te whakahaere i te tiro me te whakatika whakaaetanga mā ngā takaiho tauwhāiti-whārangi, mā "Ngā whakaaetanga ihirangi" motuhake hoki.'
@@ -99,7 +97,6 @@ mi:
     REMOVED: 'I mukua te ''{title}''{description} i te pae ora'
     REMOVEDPAGE: 'I tango te ''{title}'' i te pae kua whakaputaina'
     REMOVEDPAGEFROMDRAFT: 'I tangohia a ''%s'' i te pae hukihuki'
-    RESTORE: Whakaora
     RESTORED: 'I momoho te whakaora i te ''{title}'''
     ROLLBACK: 'Hoki whakamuri ki tēnei putanga.'
     ROLLEDBACKPUBv2: 'I hoki ki te tauira kua whakaputaina.'
@@ -150,10 +147,6 @@ mi:
     FILTERDATEHEADING: Rā
     FILTERDATETO: Ki
     FILTERLABELTEXT: Ngā Ihirangi
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Ngā whārangi kua hurihia'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Ngā whārangi katoa, tae atu ki ērā kua mukua'
   CMSSiteTreeFilter_Search:
     Title: 'Ngā Whārangi Katoa'
   ContentControl:
@@ -212,7 +205,6 @@ mi:
     DEFAULTSERVERERRORPAGETITLE: 'Hapa tūmau'
     DESCRIPTION: 'Ngā ihirangi ritenga mō ngā take hapa rerekē (hei tauira. "Kāore i kitea te whārangi")'
     ERRORFILEPROBLEM: 'Kua hapa te whakatuwhera i te kōnae "{filename}" mō te tuhituhi. Tirohia ngā whakaaetanga kōnae.'
-    PLURALNAME: 'Ngā Whārangi Hapa'
     SINGULARNAME: 'Whārangi Hapa'
   Folder:
     AddFolderButton: 'Tāpiri kōpaki'
@@ -235,7 +227,6 @@ mi:
     HASBEENSETUP: 'Kua tatū he whārangi tuku anō me te kore whai wāhi hei tuku anō.'
     HEADER: 'Ka tuku anō tēnei whārangi i ngā kaiwhakamahi ki whārangi kē'
     OTHERURL: 'Tētahi atu PRO paetukutuku'
-    PLURALNAME: 'Ngā Whārangi Tuku Anō'
     REDIRECTTO: 'Tukua anō ki'
     REDIRECTTOEXTERNAL: 'Tētahi atu paetukutuku'
     REDIRECTTOPAGE: 'Whārangi kei tō paetukutuku'
@@ -311,7 +302,6 @@ mi:
     DEFAULTABOUTTITLE: 'Mō Mātou'
     DEFAULTCONTACTCONTENT: '<p>Ka taea te whakakī i tēnei whārangi ki āu ake ihirangi, te muku rānei me te hanga i āu ake whārangi.<br /></p>'
     DEFAULTCONTACTTITLE: 'Whakapā Mai'
-    DEFAULTHOMECONTENT: '<p>Nau mai ki SilverStripe! Ko tēnei te whārangi kāinga taunoa. Ka taea tēnei whārangi te whakatika mā te <a href="admin/">the CMS</a>. Ka taea ngā tuhinga kaiwhakawhanake <a href="http://doc.silverstripe.org">te uru</a>, te tīmata rānei i ngā akoranga <a href="http://doc.silverstripe.org/doku.php?id=tutorials">.</a></p>'
     DEFAULTHOMETITLE: Kāinga
     DELETEDPAGEHELP: 'Kua kore e whakaputaina te whārangi'
     DELETEDPAGESHORT: Kua Mukua
@@ -398,7 +388,6 @@ mi:
     EditLink: Whakatika
     HEADER: 'He whārangi mariko tēnei'
     HEADERWITHLINK: 'He whārangi mariko tēnei e tārua ihirangi ana i "{title}" ({link})'
-    PLURALNAME: 'Ngā Whārangi Mariko'
     PageTypNotAllowedOnRoot: 'Kāore e whakaaetia te momo whārangi taketake "{type}" i te taumata pūtake o tēnei whārangi mariko'
     SINGULARNAME: 'Whārangi Mariko'
   CMSFileAddController:
