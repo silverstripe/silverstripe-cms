@@ -69,6 +69,8 @@ class CMSBatchAction_Archive extends CMSBatchAction {
 
 /**
  * Batch restore of pages
+ * @package cms
+ * @subpackage batchaction
  */
 class CMSBatchAction_Restore extends CMSBatchAction {
 	
