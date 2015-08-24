@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * @package cms
+ * @subpackage model
+ */
+
 /**
  * Adds tracking of links in any HTMLText fields which reference SiteTree or File items.
  *

@@ -229,8 +229,11 @@ abstract class CMSSiteTreeFilter extends Object implements LeftAndMain_SearchFil
  * pages that is currently published.
  *
  * Note that this does not check canView permissions that might hide pages from certain visitors
+ *
+ * @package cms
+ * @subpackage content
  */
-class CMSSIteTreeFilter_PublishedPages extends CMSSiteTreeFilter {
+class CMSSiteTreeFilter_PublishedPages extends CMSSiteTreeFilter {
 
 	/**
 	 * @return string
