@@ -19,12 +19,12 @@ ja:
     FROMYOURCOMPUTER: 'コンピュータから'
     Filetype: 'ファイルの種類'
     ListView: 'リスト表示'
+    MENUTITLE: ファイル
     NEWFOLDER: 新しいフォルダ
     SIZE: サイズ
     THUMBSDELETED: '{count}個の未使用のサムネイルを削除しました'
     TreeView: 'ツリー表示'
     Upload: アップロード
-    MENUTITLE: ファイル
   AssetAdmin_DeleteBatchAction:
     TITLE: 'フォルダを削除'
   AssetAdmin_Tools:
@@ -67,6 +67,8 @@ ja:
     DELETE_PAGES: '公開サイトから削除'
     PUBLISHED_PAGES: '%dページを公開しましたが、%dページの公開に失敗しました。'
     PUBLISH_PAGES: 公開
+  CMSFileAddController:
+    MENUTITLE: ファイル
   CMSMain:
     ACCESS: '''{title}'' セクションにアクセス'
     ACCESS_HELP: 'ページツリーとコンテンツを含むセクションの閲覧を許可します。　表示および編集の権限は、ページの特定のドロップダウンだけでなく、独立した"コンテンツの権限"を介して処理することができます。'
@@ -84,6 +86,7 @@ ja:
     EMAIL: Eメール
     EditTree: 'ツリーを編集'
     ListFiltered: 'フィルタリングされたリスト'
+    MENUTITLE: 'ページを編集'
     NEWPAGE: '新しい {pagetype}'
     PAGENOTEXISTS: 'このページは存在しません'
     PAGES: ページ
@@ -108,31 +111,34 @@ ja:
     TabSettings: 設定
     TreeFiltered: 'フィルタリングされたツリー'
     TreeFilteredClear: 'フィルタを解除'
-    MENUTITLE: 'ページを編集'
   CMSMain_left_ss:
     APPLY_FILTER: 'フィルタを適用'
     RESET: リセット
   CMSPageAddController:
+    MENUTITLE: 'ページを追加'
     ParentMode_child: '他のページの下に作成'
     ParentMode_top: '最上位層'
-    MENUTITLE: 'ページを追加'
+  CMSPageEditController:
+    MENUTITLE: 'ページの編集'
   CMSPageHistoryController:
     COMPAREMODE: '比較モード（２つを選択）'
     COMPAREVERSIONS: 'バージョンの比較'
     COMPARINGVERSION: '{version1}と{version2}を比較しています。'
+    MENUTITLE: 履歴
     REVERTTOTHISVERSION: 'このバージョンに戻す'
     SHOWUNPUBLISHED: '公開されていないバージョンを表示'
     SHOWVERSION: 'バージョンを表示'
     VIEW: 表示
     VIEWINGLATEST: '現在最新のバージョンを表示。'
     VIEWINGVERSION: '現在表示しているバージョンは{version}です。'
-    MENUTITLE: 履歴
   CMSPageHistoryController_versions_ss:
     AUTHOR: 作成者
     NOTPUBLISHED: '未公開'
     PUBLISHER: パブリッシャー
     UNKNOWN: 不明
     WHEN: いつ
+  CMSPageSettingsController:
+    MENUTITLE: 'ページの編集'
   CMSPagesController:
     GalleryView: 'ギャラリー表示'
     ListView: '一覧表示'
@@ -147,6 +153,8 @@ ja:
     FILTERDATEHEADING: 日付
     FILTERDATETO: 終了日
     FILTERLABELTEXT: コンテンツ
+  CMSSettingsController:
+    MENUTITLE: 設定
   CMSSiteTreeFilter_Search:
     Title: '全ページ'
   ContentControl:
@@ -233,8 +241,8 @@ ja:
     SINGULARNAME: 'リダイレクトページ'
     YOURPAGE: '貴方のウェブサイトを表示します'
   ReportAdmin:
-    ReportTitle: タイトル
     MENUTITLE: レポート
+    ReportTitle: タイトル
   ReportAdminForm:
     FILTERBY: 'によってフィルター'
   SITETREE:
@@ -390,11 +398,3 @@ ja:
     HEADERWITHLINK: 'これは "{title}" ({link}) からコンテンツをコピーしている仮想ページです'
     PageTypNotAllowedOnRoot: 'この仮想ページに対して元のページの種類{type}はルートレベルに配置されることが許可されていません。'
     SINGULARNAME: '仮想ページ'
-  CMSFileAddController:
-    MENUTITLE: ファイル
-  CMSPageEditController:
-    MENUTITLE: 'ページの編集'
-  CMSPageSettingsController:
-    MENUTITLE: 'ページの編集'
-  CMSSettingsController:
-    MENUTITLE: 設定

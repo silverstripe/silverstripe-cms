@@ -33,7 +33,7 @@
     "Tree.ShowAsList": "Mostrar hijos como lista",
     "CMSMain.ConfirmRestoreFromLive": "¿Estás seguro de que quieres revertir el borrador a la última página publicada?",
     "CMSMain.RollbackToVersion": "¿Realmente quieres volver a la versión #%s de esta página?",
-    "CMSMain.Archive": "¿Estás seguro que quieres archivar esta página?\n\nLa página será ocultada y enviada al archivo.",
+    "CMSMain.Archive": "¿Está seguro de querer archivar esta página y todas sus páginas hijas?\n\nEsta página y todas sus hijas se retirarán de publicación y se enviarán al archivo.",
     "CMSMain.Restore": "¿Estás seguro que quieres restaurar esta página desde el archivo?",
     "CMSMain.RestoreToRoot": "¿Estás seguro que quieres restaurar esta página desde el archivo?\n\nEl padre de esta página no está disponible, debido a ello, esta página será restaurada en el primer nivel del árbol",
     "CMSMain.Unpublish": "¿Estás seguro que quieres remover tu página desde el sitio publicado?\n\nEsta página se mantendrá disponible en el árbol de páginas como un borrador.",

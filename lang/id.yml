@@ -19,12 +19,12 @@ id:
     FROMYOURCOMPUTER: 'Dari komputer Anda'
     Filetype: 'Jenis berkas'
     ListView: 'Tampilan Daftar'
+    MENUTITLE: Berkas
     NEWFOLDER: FolderBaru
     SIZE: Ukuran
     THUMBSDELETED: '{count} thumbnail tak terpakai telah dihapus'
     TreeView: 'Tampilan Struktur'
     Upload: Unggah
-    MENUTITLE: Berkas
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Hapus Folder'
   AssetAdmin_Tools:
@@ -61,12 +61,20 @@ id:
   CMSAddPageController:
     Title: 'Tambah laman'
   CMSBatchActions:
+    ARCHIVE: Arsip
+    ARCHIVED_PAGES: 'Arsip %d halaman'
     DELETED_DRAFT_PAGES: '%d laman berhasil dihapus dari draft, %d laman gagal dihapus'
     DELETED_PAGES: '%d laman berhasil dihapus dari situs terbit, %d gagal'
     DELETE_DRAFT_PAGES: 'Hapus dari draf situs'
     DELETE_PAGES: 'Hapus dari situs terbit'
     PUBLISHED_PAGES: 'Menerbitkan %d laman, %d gagal'
     PUBLISH_PAGES: Terbitkan
+    RESTORE: Pulihkan
+    RESTORED_PAGES: 'Pulihkan %d halaman'
+    UNPUBLISHED_PAGES: 'Batal Terbit %d halaman'
+    UNPUBLISH_PAGES: Batal Terbit
+  CMSFileAddController:
+    MENUTITLE: Berkas
   CMSMain:
     ACCESS: 'Akses ke bagian ''{title}'''
     ACCESS_HELP: 'Perbolehkan menampilkan bagian dengan struktur laman dan konten. Perijinan menampilkan dan mengedit dapat diatur melalui pilihan terkait laman, sebagaimana "Perijinan Konten".'
@@ -85,6 +93,7 @@ id:
     EMAIL: Surel
     EditTree: 'Edit Struktur'
     ListFiltered: 'Daftar tersaring'
+    MENUTITLE: 'Edit Laman'
     NEWPAGE: '{pagetype} baru'
     PAGENOTEXISTS: 'Laman ini tidak ada'
     PAGES: Laman
@@ -98,7 +107,11 @@ id:
     REMOVED: 'Dihapus ''{title}''{description} dari situs langsung'
     REMOVEDPAGE: 'Menghapus ''{title}'' dari situs terbit'
     REMOVEDPAGEFROMDRAFT: 'Menghapus ''%s'' dari draf situs'
+    RESTORE: 'Pulihkan Draf'
     RESTORED: 'Pemulihan ''{title}'' sukses'
+    RESTORE_DESC: 'Pulihkan versi arsip ke draf'
+    RESTORE_TO_ROOT: 'Pulihkan draf pada level teratas'
+    RESTORE_TO_ROOT_DESC: 'Pulihkan versi arsip ke draf sebagai halaman level teratas'
     ROLLBACK: 'Kembali ke versi ini'
     ROLLEDBACKPUBv2: 'Kembali ke versi terbit'
     ROLLEDBACKVERSIONv2: 'Kembali ke versi #%d.'
@@ -109,31 +122,34 @@ id:
     TabSettings: Pengaturan
     TreeFiltered: 'Struktur tersaring.'
     TreeFilteredClear: 'Bersihkan saring'
-    MENUTITLE: 'Edit Laman'
   CMSMain_left_ss:
     APPLY_FILTER: 'Terapkan Saring'
     RESET: Reset
   CMSPageAddController:
+    MENUTITLE: 'Tambah laman'
     ParentMode_child: 'Di bawah laman lain'
     ParentMode_top: 'Laman atas'
-    MENUTITLE: 'Tambah laman'
+  CMSPageEditController:
+    MENUTITLE: 'Edit Laman'
   CMSPageHistoryController:
     COMPAREMODE: 'Modus pembanding (pilih dua)'
     COMPAREVERSIONS: 'Bandingkan Versi'
     COMPARINGVERSION: 'Bandingkan versi {version1} dan {version2}.'
+    MENUTITLE: Sejarah
     REVERTTOTHISVERSION: 'Kembali ke versi ini'
     SHOWUNPUBLISHED: 'Tampilkan versi batalterbit'
     SHOWVERSION: 'Tampilkan Versi'
     VIEW: tampilkan
     VIEWINGLATEST: 'Versi terakhir sedang ditampilkan.'
     VIEWINGVERSION: 'Versi {version} sedang ditampilkan.'
-    MENUTITLE: Sejarah
   CMSPageHistoryController_versions_ss:
     AUTHOR: Penulis
     NOTPUBLISHED: 'Batal terbit'
     PUBLISHER: Penerbit
     UNKNOWN: Tidak diketahui
     WHEN: Ketika
+  CMSPageSettingsController:
+    MENUTITLE: 'Edit Laman'
   CMSPagesController:
     GalleryView: 'Tampilan Galeri'
     ListView: 'Tampilan daftar'
@@ -148,6 +164,8 @@ id:
     FILTERDATEHEADING: Tanggal
     FILTERDATETO: Ke
     FILTERLABELTEXT: Konten
+  CMSSettingsController:
+    MENUTITLE: Pengaturan
   CMSSiteTreeFilter_Search:
     Title: 'Semua laman'
   ContentControl:
@@ -238,8 +256,8 @@ id:
     SINGULARNAME: 'Laman Pengarah'
     YOURPAGE: 'Laman pada situs Anda'
   ReportAdmin:
-    ReportTitle: Judul
     MENUTITLE: Laporan
+    ReportTitle: Judul
   ReportAdminForm:
     FILTERBY: 'Saring dengan'
   SITETREE:
@@ -396,11 +414,3 @@ id:
     PLURALNAME: 'Laman Virtual'
     PageTypNotAllowedOnRoot: 'Laman asli jenis "{type}" tidak dibolehkan pada tingkat atas untuk laman virtual ini'
     SINGULARNAME: 'Laman Virtual'
-  CMSFileAddController:
-    MENUTITLE: Berkas
-  CMSPageEditController:
-    MENUTITLE: 'Edit Laman'
-  CMSPageSettingsController:
-    MENUTITLE: 'Edit Laman'
-  CMSSettingsController:
-    MENUTITLE: Pengaturan

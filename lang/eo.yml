@@ -19,12 +19,12 @@ eo:
     FROMYOURCOMPUTER: 'El via komputilo'
     Filetype: 'Tipo de dosiero'
     ListView: 'Lista vido'
+    MENUTITLE: Dosieroj
     NEWFOLDER: Nova dosierujo
     SIZE: Grando
     THUMBSDELETED: '{count} neuzitaj miniaturoj estas forigitaj'
     TreeView: 'Arba vido'
     Upload: Alŝuti
-    MENUTITLE: Dosieroj
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Forigi dosierujojn'
   AssetAdmin_Tools:
@@ -67,6 +67,8 @@ eo:
     DELETE_PAGES: 'Forigi el publikigita retejo'
     PUBLISHED_PAGES: 'Publikigis %d paĝojn, %d malsukcesojn'
     PUBLISH_PAGES: Publikigi
+  CMSFileAddController:
+    MENUTITLE: Dosieroj
   CMSMain:
     ACCESS: 'Aliro al sekcio ''{title}'''
     ACCESS_HELP: 'Permesi vidigi la sekcion kiu enhavas paĝarbon kaj enhavon. Vidigaj kaj redaktaj permesoj estas trakteblaj per paĝspecifaj fallistoj, kaj ankaŭ la apartaj "Enhavaj permesoj".'
@@ -85,6 +87,7 @@ eo:
     EMAIL: Retpoŝto
     EditTree: 'Redakta arbo'
     ListFiltered: 'Filtrita listo.'
+    MENUTITLE: 'Redakti paĝon'
     NEWPAGE: 'Nova {pagetype}'
     PAGENOTEXISTS: 'Ĉi tiu paĝo ne ekzistas'
     PAGES: Paĝoj
@@ -109,31 +112,34 @@ eo:
     TabSettings: Agordoj
     TreeFiltered: 'Filtrita arbo.'
     TreeFilteredClear: 'Vakigi filtrilon'
-    MENUTITLE: 'Redakti paĝon'
   CMSMain_left_ss:
     APPLY_FILTER: 'Apliki filtrilon'
     RESET: Restartigi
   CMSPageAddController:
+    MENUTITLE: 'Enmeti paĝon'
     ParentMode_child: 'Sub alia paĝo'
     ParentMode_top: 'Supra nivelo'
-    MENUTITLE: 'Enmeti paĝon'
+  CMSPageEditController:
+    MENUTITLE: 'Redakti paĝon'
   CMSPageHistoryController:
     COMPAREMODE: 'Kompara reĝimo (elektu du)'
     COMPAREVERSIONS: 'Kompari versiojn'
     COMPARINGVERSION: 'Komparas versiojn {version1} kaj {version2}.'
+    MENUTITLE: Historio
     REVERTTOTHISVERSION: 'Malfari al ĉi tiu versio'
     SHOWUNPUBLISHED: 'Vidigi nepublikigitajn versiojn'
     SHOWVERSION: 'Vidigi version'
     VIEW: vido
     VIEWINGLATEST: 'Aktuale vidiĝas la lasta versio.'
     VIEWINGVERSION: 'Aktuale vidiĝas versio {version}.'
-    MENUTITLE: Historio
   CMSPageHistoryController_versions_ss:
     AUTHOR: Aŭtoro
     NOTPUBLISHED: 'Nepublikigita'
     PUBLISHER: Publikiginto
     UNKNOWN: Nekonata
     WHEN: Kiam
+  CMSPageSettingsController:
+    MENUTITLE: 'Redakti paĝon'
   CMSPagesController:
     GalleryView: 'Galeria vido'
     ListView: 'Lista vido'
@@ -148,6 +154,8 @@ eo:
     FILTERDATEHEADING: Dato
     FILTERDATETO: Al
     FILTERLABELTEXT: Enhavo
+  CMSSettingsController:
+    MENUTITLE: Agordoj
   CMSSiteTreeFilter_Search:
     Title: 'Ĉiuj paĝoj'
   ContentControl:
@@ -238,8 +246,8 @@ eo:
     SINGULARNAME: 'Alidirekta paĝo'
     YOURPAGE: 'Paĝo en via retejo'
   ReportAdmin:
-    ReportTitle: Titolo
     MENUTITLE: Raportoj
+    ReportTitle: Titolo
   ReportAdminForm:
     FILTERBY: 'Filtri laŭ'
   SITETREE:
@@ -396,11 +404,3 @@ eo:
     PLURALNAME: 'Virtualaj paĝoj'
     PageTypNotAllowedOnRoot: 'Origina paĝa tipo "{type}" ne estas permesita ĉe la root-nivelo por ĉi tiu virtuala paĝo.'
     SINGULARNAME: 'Virtuala paĝo'
-  CMSFileAddController:
-    MENUTITLE: Dosieroj
-  CMSPageEditController:
-    MENUTITLE: 'Redakti paĝon'
-  CMSPageSettingsController:
-    MENUTITLE: 'Redakti paĝon'
-  CMSSettingsController:
-    MENUTITLE: Agordoj

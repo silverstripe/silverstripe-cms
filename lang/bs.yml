@@ -14,11 +14,11 @@ bs:
     FROMTHEINTERNET: 'Sa interneta'
     FROMYOURCOMPUTER: 'Sa Vašeg kompijutera'
     Filetype: 'Tip datoteke'
+    MENUTITLE: Datoteke
     NEWFOLDER: NoviDirektorij
     SIZE: Veličina
     THUMBSDELETED: '{count} nekorištenih je obrisano'
     Upload: Upload
-    MENUTITLE: Datoteke
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Izbriši direktorije'
   AssetAdmin_Tools:

@@ -18,12 +18,12 @@ el:
     FROMYOURCOMPUTER: 'Από τον υπολογιστή σας'
     Filetype: 'Τύπος αρχείου'
     ListView: 'Προβολή Λίστας'
+    MENUTITLE: Αρχεία
     NEWFOLDER: ΝέοςΦάκελος
     SIZE: Μέγεθος
     THUMBSDELETED: '{count} αχρησιμοποίητα εικονίδια έχουν διαγραφεί'
     TreeView: 'Προβολή Δέντρου'
     Upload: Μεταφόρτωση
-    MENUTITLE: Αρχεία
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Διαγραφή φακέλων'
   AssetAdmin_Tools:
@@ -61,6 +61,8 @@ el:
   CMSBatchActions:
     DELETED_PAGES: 'Διαγράφηκαν %d σελίδες απο τις δημοσιευμένες, με %d αποτυχίες'
     PUBLISH_PAGES: Δημοσίευση
+  CMSFileAddController:
+    MENUTITLE: Αρχεία
   CMSMain:
     AddNew: 'Προσθήκη σελίδας'
     AddNewButton: 'Προσθήκη'
@@ -71,6 +73,7 @@ el:
     EMAIL: Email
     EditTree: 'Επεξεργασία Δένδρου'
     ListFiltered: 'Φιλτραρισμένη λίστα.'
+    MENUTITLE: 'Επεξεργασία Σελίδας'
     NEWPAGE: 'Νέο {pagetype}'
     PAGENOTEXISTS: 'Αυτή η σελίδα δεν υπάρχει'
     PAGES: Σελίδες
@@ -85,27 +88,30 @@ el:
     TabSettings: Ρυθμίσεις
     TreeFiltered: 'Φιλτραρισμένο δένδρο.'
     TreeFilteredClear: 'Καθαρισμός φίλτρου'
-    MENUTITLE: 'Επεξεργασία Σελίδας'
   CMSMain_left_ss:
     APPLY_FILTER: 'Εφαρμογή Φίλτρου'
     RESET: Επαναφορά
   CMSPageAddController:
+    MENUTITLE: 'Προσθήκη σελίδας'
     ParentMode_child: 'Κάτω από άλλη σελίδα'
     ParentMode_top: 'Επίπεδο κορυφής'
-    MENUTITLE: 'Προσθήκη σελίδας'
+  CMSPageEditController:
+    MENUTITLE: 'Επεξεργασία Σελίδας'
   CMSPageHistoryController:
     COMPAREVERSIONS: 'Σύγκριση Εκδόσεων'
     COMPARINGVERSION: 'Σύγκριση Εκδόσεων {version1} και {version2}.'
+    MENUTITLE: Ιστορικό
     REVERTTOTHISVERSION: 'Επαναφορά σε αυτήν την έκδοση'
     SHOWVERSION: 'Προβολή Έκδοσης'
     VIEW: προβολή
-    MENUTITLE: Ιστορικό
   CMSPageHistoryController_versions_ss:
     AUTHOR: Συγγραφέας
     NOTPUBLISHED: 'δεν έχει δημοσιευθεί'
     PUBLISHER: Εκδότης
     UNKNOWN: Άγνωστο
     WHEN: Όταν
+  CMSPageSettingsController:
+    MENUTITLE: 'Επεξεργασία Σελίδας'
   CMSPagesController:
     ListView: 'Προβολή Λίστας'
     MENUTITLE: Σελίδες
@@ -117,6 +123,8 @@ el:
     FILTERDATEHEADING: Ημερομηνία
     FILTERDATETO: Έως
     FILTERLABELTEXT: Περιεχόμενο
+  CMSSettingsController:
+    MENUTITLE: Ρυθμίσεις
   CMSSiteTreeFilter_Search:
     Title: 'Όλες οι σελίδες'
   ContentController:
@@ -158,8 +166,8 @@ el:
     HEADER: 'Αυτή η σελίδα θα ανακατευθύνει τους χρήστες σε μια άλλη σελίδα'
     REDIRECTTO: 'Ανακατεύθυνση σε'
   ReportAdmin:
-    ReportTitle: Τίτλος
     MENUTITLE: Αναφορές
+    ReportTitle: Τίτλος
   ReportAdminForm:
     FILTERBY: 'Φίλτρο κατά'
   SearchForm:
@@ -255,11 +263,3 @@ el:
     HEADER: 'Αυτή είναι μια εικονική σελίδα'
     PLURALNAME: 'Εικονικές Σελίδες'
     SINGULARNAME: 'Εικονική Σελίδα'
-  CMSFileAddController:
-    MENUTITLE: Αρχεία
-  CMSPageEditController:
-    MENUTITLE: 'Επεξεργασία Σελίδας'
-  CMSPageSettingsController:
-    MENUTITLE: 'Επεξεργασία Σελίδας'
-  CMSSettingsController:
-    MENUTITLE: Ρυθμίσεις

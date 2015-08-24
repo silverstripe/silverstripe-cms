@@ -19,12 +19,12 @@ mi:
     FROMYOURCOMPUTER: 'Mai i tō rorohiko'
     Filetype: 'Momo kōnae'
     ListView: 'Tirohanga Rārangi'
+    MENUTITLE: Ngā Kōnae
     NEWFOLDER: KōpakiHōu
     SIZE: Rahi
     THUMBSDELETED: ' Kua mukua e {count} ngā karakōnui kāore i whakamahia'
     TreeView: 'Tirohanga Rākau'
     Upload: Tukuatu
-    MENUTITLE: Ngā Kōnae
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Muku kōpaki'
   AssetAdmin_Tools:
@@ -67,6 +67,8 @@ mi:
     DELETE_PAGES: 'Mukua i te pae kua whakaputaina'
     PUBLISHED_PAGES: '%d ngā whārangi kua whakaputaina, %d i rahua'
     PUBLISH_PAGES: Whakaputa
+  CMSFileAddController:
+    MENUTITLE: Ngā Kōnae
   CMSMain:
     ACCESS: 'Uru ki te wāhanga ''{title}'' '
     ACCESS_HELP: 'Tukua kia kitea te wāhanga kei roto te whārangi rākau me ngā ihirangi. Ka taea te whakahaere i te tiro me te whakatika whakaaetanga mā ngā takaiho tauwhāiti-whārangi, mā "Ngā whakaaetanga ihirangi" motuhake hoki.'
@@ -84,6 +86,7 @@ mi:
     EMAIL: Īmēra
     EditTree: 'Whakatika Rākau'
     ListFiltered: 'Rārangi kua tātaritia'
+    MENUTITLE: 'Whakatika Whārangi'
     NEWPAGE: '{pagetype} hou'
     PAGENOTEXISTS: 'KIāore tēnei whārangi e tīari'
     PAGES: Ngā Whārangi
@@ -108,31 +111,34 @@ mi:
     TabSettings: Ngā Tautuhinga
     TreeFiltered: 'Rākau kua tātaritia'
     TreeFilteredClear: 'Ūkui tātari'
-    MENUTITLE: 'Whakatika Whārangi'
   CMSMain_left_ss:
     APPLY_FILTER: 'Hoatu Tātari'
     RESET: Tautuhi Anō
   CMSPageAddController:
+    MENUTITLE: 'Tāpiri whārangi'
     ParentMode_child: 'Kei raro i tētahi atu whārangi'
     ParentMode_top: 'Taumata matua'
-    MENUTITLE: 'Tāpiri whārangi'
+  CMSPageEditController:
+    MENUTITLE: 'Whakatika Whārangi'
   CMSPageHistoryController:
     COMPAREMODE: 'Whakataurite Aratau (tīpakohia kia rua)'
     COMPAREVERSIONS: 'Whakatauritea Ngā Putanga'
     COMPARINGVERSION: 'Whakataurite ana i te putanga {version1} me te putanga {version2}.'
+    MENUTITLE: Hītori
     REVERTTOTHISVERSION: 'Hoki ki tēnei putanga'
     SHOWUNPUBLISHED: 'Whakaaturia ngā putanga kāore i whakaputaina'
     SHOWVERSION: 'Whakaatu Putanga'
     VIEW: Tiro
     VIEWINGLATEST: 'Tirohia ana te tauira hou rawa ināianei.'
     VIEWINGVERSION: 'Tiro ana i te putanga {version} ināianei.'
-    MENUTITLE: Hītori
   CMSPageHistoryController_versions_ss:
     AUTHOR: Kaituhi
     NOTPUBLISHED: 'Kāore i whakaputaina'
     PUBLISHER: Pūwhakaputa
     UNKNOWN: Tē Mōhiotia
     WHEN: Inahea
+  CMSPageSettingsController:
+    MENUTITLE: 'Whakatika Whārangi'
   CMSPagesController:
     GalleryView: 'Tirohanga Taiwhanga'
     ListView: 'Tirohanga Rārangi'
@@ -147,6 +153,8 @@ mi:
     FILTERDATEHEADING: Rā
     FILTERDATETO: Ki
     FILTERLABELTEXT: Ngā Ihirangi
+  CMSSettingsController:
+    MENUTITLE: Ngā Tautuhinga
   CMSSiteTreeFilter_Search:
     Title: 'Ngā Whārangi Katoa'
   ContentControl:
@@ -233,8 +241,8 @@ mi:
     SINGULARNAME: 'Whārangi Tuku Anō'
     YOURPAGE: 'Whārangi kei tō paetukutuku'
   ReportAdmin:
-    ReportTitle: Taitara
     MENUTITLE: Ngā Pūrongo
+    ReportTitle: Taitara
   ReportAdminForm:
     FILTERBY: 'Tātari mā te'
   SITETREE:
@@ -390,11 +398,3 @@ mi:
     HEADERWITHLINK: 'He whārangi mariko tēnei e tārua ihirangi ana i "{title}" ({link})'
     PageTypNotAllowedOnRoot: 'Kāore e whakaaetia te momo whārangi taketake "{type}" i te taumata pūtake o tēnei whārangi mariko'
     SINGULARNAME: 'Whārangi Mariko'
-  CMSFileAddController:
-    MENUTITLE: Ngā Kōnae
-  CMSPageEditController:
-    MENUTITLE: 'Whakatika Whārangi'
-  CMSPageSettingsController:
-    MENUTITLE: 'Whakatika Whārangi'
-  CMSSettingsController:
-    MENUTITLE: Ngā Tautuhinga

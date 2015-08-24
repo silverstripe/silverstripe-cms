@@ -21,22 +21,26 @@ zh_TW:
   CMSPageHistoryController:
     COMPAREMODE: '比較模式(選擇兩個)'
     COMPAREVERSIONS: '比較版本'
+    MENUTITLE: 歷史
     REVERTTOTHISVERSION: '回復到此版本'
     SHOWUNPUBLISHED: '顯示未出版的版本'
     SHOWVERSION: '顯示版本'
     VIEW: 瀏覽
-    MENUTITLE: 歷史
   CMSPageHistoryController_versions_ss:
     AUTHOR: 作者
     NOTPUBLISHED: '未發行的'
     PUBLISHER: 發行者
     UNKNOWN: 未知的
     WHEN: 何時
+  CMSPageSettingsController:
+    MENUTITLE: '編輯網頁'
   CMSPagesController:
     GalleryView: '圖庫瀏覽'
     ListView: '清單瀏覽'
     MENUTITLE: 網頁
     TreeView: '樹狀瀏覽'
+  CMSSettingsController:
+    MENUTITLE: 設定值
   CMSSiteTreeFilter_Search:
     Title: '所有網頁'
   ContentControl:
@@ -144,7 +148,3 @@ zh_TW:
     DESCRIPTION: '顯示其他網頁的內容'
     HEADER: '這是一個虛擬網頁'
     SINGULARNAME: '虛擬網頁'
-  CMSPageSettingsController:
-    MENUTITLE: '編輯網頁'
-  CMSSettingsController:
-    MENUTITLE: 設定值
