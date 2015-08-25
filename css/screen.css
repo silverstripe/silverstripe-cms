@@ -20,15 +20,6 @@
 .cms-content-tools #cms-content-treeview .cms-tree .badge { display: none; }
 .cms-content-tools #cms-content-treeview .cms-tree a:hover > .text > .badge, .cms-content-tools #cms-content-treeview .cms-tree .jstree-clicked > .text > .badge { display: inline-block; }
 
-/** -------------------------------------------- The CMS Content Toolbar. Associated behaviour in CMSMain.js -------------------------------------------- */
-.cms-content-toolbar [class*="font-icon-"].ss-ui-button, .cms-content-toolbar [class^="font-icon-"].ss-ui-button { padding: 5px 8px; vertical-align: middle; }
-.cms-content-toolbar [class*="font-icon-"].ss-ui-button:hover, .cms-content-toolbar [class^="font-icon-"].ss-ui-button:hover { -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
-.cms-content-toolbar [class*="font-icon-"].ss-ui-button:focus, .cms-content-toolbar [class^="font-icon-"].ss-ui-button:focus { -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
-.cms-content-toolbar [class*="font-icon-"].ss-ui-button:before, .cms-content-toolbar [class^="font-icon-"].ss-ui-button:before { font-size: 1.3em; margin-right: 0.3em; margin-top: 0; vertical-align: middle; }
-.cms-content-toolbar [class*="font-icon-"].ss-ui-button.ui-state-focus, .cms-content-toolbar [class^="font-icon-"].ss-ui-button.ui-state-focus { -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
-.cms-content-toolbar [class*="font-icon-"].ss-ui-button.active, .cms-content-toolbar [class*="font-icon-"].ss-ui-button:active, .cms-content-toolbar [class^="font-icon-"].ss-ui-button.active, .cms-content-toolbar [class^="font-icon-"].ss-ui-button:active { -moz-box-shadow: 0 0 3px rgba(191, 194, 196, 0.9) inset; -webkit-box-shadow: 0 0 3px rgba(191, 194, 196, 0.9) inset; box-shadow: 0 0 3px rgba(191, 194, 196, 0.9) inset; }
-.cms-content-toolbar [class*="font-icon-"].ss-ui-button .ui-button-text, .cms-content-toolbar [class^="font-icon-"].ss-ui-button .ui-button-text { display: inline-block; vertical-align: middle; *vertical-align: auto; *zoom: 1; *display: inline; vertical-align: baseline; padding: 0; }
-
 /** ------------------------------------------------------------------ URLSegment field ----------------------------------------------------------------- */
 .field.urlsegment.loading { background: url(../images/loading.gif) no-repeat 162px 8px; }
 .field.urlsegment .preview { padding-top: 8px; display: inline-block; }

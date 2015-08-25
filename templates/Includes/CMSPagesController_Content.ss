@@ -10,7 +10,7 @@
 			<div class="icon-button-group">
 				<ul class="cms-tabset-nav-primary ss-tabset">
 					<li class="content-treeview<% if ViewState == tree %> ui-tabs-active ss-tabs-force-active<% end_if %> cms-tabset-icon tree">
-						<a href="#cms-content-treeview" class="cms-panel-link icon-button font-icon-tree" data-href="$LinkTreeView" title="<% _t('CMSPagesController.TreeView', 'Tree View') %>"></a>
+						<a href="#cms-content-treeview" class="cms-panel-link icon-button font-icon-icon-tree" data-href="$LinkTreeView" title="<% _t('CMSPagesController.TreeView', 'Tree View') %>"></a>
 					</li>
 					<li class="content-listview<% if ViewState == list %> ui-tabs-active ss-tabs-force-active<% end_if %> cms-tabset-icon list">
 						<a href="#cms-content-listview" class="cms-panel-link icon-button font-icon-list" data-href="$LinkListView" title="<% _t('CMSPagesController.ListView', 'List View') %>"></a>
