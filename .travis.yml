@@ -63,8 +63,3 @@ branches:
     - 2.2
     - 2.3
     - translation-staging
-
-notifications:
-  irc:
-    channels:
-     - "irc.freenode.org#silverstripe"
