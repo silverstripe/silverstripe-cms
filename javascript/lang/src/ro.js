@@ -31,9 +31,15 @@
     "Tree.ThisPageOnly": "Doar această pagină",
     "Tree.ThisPageAndSubpages": "Această pagină cu subpagini",
     "Tree.ShowAsList": "Afişare fii în format listă",
-    "CMSMain.ConfirmRestoreFromLive": "Doriţi copierea conținutul publicat pe site-ul ciornă (draft)?",
+    "CMSMain.ConfirmRestoreFromLive": "Are you sure you want to revert draft to when the page was last published?",
     "CMSMain.RollbackToVersion": "Doriţi revenirea la versiunea #%s a acestei pagini?",
+    "CMSMain.Archive": "Are you sure you want to archive this page and all of its children pages?\n\nThis page and all of its children will be unpublished and sent to the archive.",
+    "CMSMain.Restore": "Are you sure you want to restore this page from archive?",
+    "CMSMain.RestoreToRoot": "Are you sure you want to restore this page from archive?\n\nBecause the parent page is not available this will be restored to the top level.",
+    "CMSMain.Unpublish": "Are you sure you want to remove your page from the published site?\n\nThis page will still be available in the sitetree as draft.",
+    "CMSMain.DeleteFromDraft": "Are you sure you want to remove your page from the draft site?\n\nThis page will remain on the published site.",
     "URLSEGMENT.Edit": "Editare",
     "URLSEGMENT.OK": "OK",
-    "URLSEGMENT.Cancel": "Renunţare"
+    "URLSEGMENT.Cancel": "Renunţare",
+    "URLSEGMENT.UpdateURL": "Update URL"
 }

@@ -19,12 +19,12 @@ pl:
     FROMYOURCOMPUTER: 'Z komputera'
     Filetype: 'Typ pliku'
     ListView: 'Widok listy'
+    MENUTITLE: Pliki
     NEWFOLDER: Nowy katalog
     SIZE: Rozmiar
     THUMBSDELETED: '{count} nieuzywane miniatury zostały usunięte'
     TreeView: 'Widok drzewa'
     Upload: Prześlij
-    MENUTITLE: Pliki
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Usuń foldery'
   AssetAdmin_Tools:
@@ -67,8 +67,8 @@ pl:
     DELETE_PAGES: 'Usuń z opublikowanej witryny'
     PUBLISHED_PAGES: 'Opublikowano %d stron, %d się nie powiodło'
     PUBLISH_PAGES: Opublikuj
-    UNPUBLISHED_PAGES: 'Usunięto z opublikowanych %d stron'
-    UNPUBLISH_PAGES: Cofnij publikację
+  CMSFileAddController:
+    MENUTITLE: Pliki
   CMSMain:
     ACCESS: 'Dostęp do sekcji ''{title}'''
     ACCESS_HELP: 'Zezwala na oglądanie sekcji zawierających drzewo stron oraz treść. Prawo Przeglądaj i edytuj może być obsługiwane przez pola wyboru dostępne na stronach oraz poprzez zakładkę uprawnień.'
@@ -87,6 +87,7 @@ pl:
     EMAIL: Email
     EditTree: 'Edytuj drzewko'
     ListFiltered: 'Filtrowana lista.'
+    MENUTITLE: 'Edytuj stronę'
     NEWPAGE: 'Nowa {pagetype}'
     PAGENOTEXISTS: 'Ta strona nie istnieje'
     PAGES: Strony
@@ -100,7 +101,6 @@ pl:
     REMOVED: 'Usunięto ''{title}''{description} z witryny'
     REMOVEDPAGE: 'Usunięto ''{title}'' z opublikowanej witryny'
     REMOVEDPAGEFROMDRAFT: '''%s'' usunięto ze szkiców'
-    RESTORE: Przywróć
     RESTORED: 'Pomyślnie przywrócono ''{title}'''
     ROLLBACK: 'Wróć do tej wersji'
     ROLLEDBACKPUBv2: 'Przywrócono opublikowaną wersję'
@@ -112,31 +112,34 @@ pl:
     TabSettings: Opcje
     TreeFiltered: 'Filtruj drzewko'
     TreeFilteredClear: 'Wyczyść filtr'
-    MENUTITLE: 'Edytuj stronę'
   CMSMain_left_ss:
     APPLY_FILTER: 'Zastosuj filtr'
     RESET: Resetuj
   CMSPageAddController:
+    MENUTITLE: 'Dodaj stronę'
     ParentMode_child: 'Pod inną stroną'
     ParentMode_top: 'Główny poziom'
-    MENUTITLE: 'Dodaj stronę'
+  CMSPageEditController:
+    MENUTITLE: 'Edytuj stronę'
   CMSPageHistoryController:
     COMPAREMODE: 'Tryb porównywania (wybierz dwie)'
     COMPAREVERSIONS: 'Porównaj wersje'
     COMPARINGVERSION: 'Porównanie wersji {version1} i {version2}.'
+    MENUTITLE: Historia
     REVERTTOTHISVERSION: 'Wróć do tej wersji'
     SHOWUNPUBLISHED: 'Pokaż nieopublikowane wersje'
     SHOWVERSION: 'Pokaż wersję'
     VIEW: zobacz
     VIEWINGLATEST: 'Obecnie oglądasz najnowszą wersję'
     VIEWINGVERSION: 'Obecnie oglądasz wersję {version}.'
-    MENUTITLE: Historia
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
     NOTPUBLISHED: 'Nieopublikowana'
     PUBLISHER: Edytor
     UNKNOWN: Nieznany
     WHEN: Kiedy
+  CMSPageSettingsController:
+    MENUTITLE: 'Edytuj stronę'
   CMSPagesController:
     GalleryView: 'Tryb galerii'
     ListView: 'Widok listy'
@@ -151,10 +154,8 @@ pl:
     FILTERDATEHEADING: Data
     FILTERDATETO: Do
     FILTERLABELTEXT: Zawartość
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Zmienione strony'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Wszystkie strony włącznie z usuniętymi'
+  CMSSettingsController:
+    MENUTITLE: Ustawienia
   CMSSiteTreeFilter_Search:
     Title: 'Wszystkie strony'
   ContentControl:
@@ -215,7 +216,6 @@ pl:
     DEFAULTSERVERERRORPAGETITLE: 'Błąd serwera'
     DESCRIPTION: 'Własna zawartość dla różnych błędów (np. "Strona nie została znaleziona")'
     ERRORFILEPROBLEM: 'Błąd podczas otwierania pliku "{filename}". Proszę sprawdzić uprawnienia do plików.'
-    PLURALNAME: 'Strony błędów'
     SINGULARNAME: 'Strona błędów'
   Folder:
     AddFolderButton: 'Dodaj katalog'
@@ -238,15 +238,14 @@ pl:
     HASBEENSETUP: 'Strona przekierowująca została ustawiona bez celu, do którego ma przekierowywać.'
     HEADER: 'Ta strona przeniesie użytkowników na inną stronę'
     OTHERURL: 'Adres URL innej strony'
-    PLURALNAME: 'Strony przekierowujące'
     REDIRECTTO: 'Przenieś do'
     REDIRECTTOEXTERNAL: 'Inna strona'
     REDIRECTTOPAGE: 'Strona na Twojej witrynie'
     SINGULARNAME: 'Strona przekierowująca'
     YOURPAGE: 'Strona na Twojej witrynie'
   ReportAdmin:
-    ReportTitle: Tytuł
     MENUTITLE: Raporty
+    ReportTitle: Tytuł
   ReportAdminForm:
     FILTERBY: 'Filtruj po'
   SITETREE:
@@ -314,7 +313,6 @@ pl:
     DEFAULTABOUTTITLE: 'O nas'
     DEFAULTCONTACTCONTENT: '<p>Możesz wypełnić tę stronę własną treścią, usunąć ją i tworzyć własne strony.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontakt'
-    DEFAULTHOMECONTENT: '<p>Witaj w SilverStripe! To jest domyślna strona główna. Możesz ją edytować, otwierając <a href="admin/">CMS</a>. Możesz również otworzyć <a href="http://doc.silverstripe.com">dokumentację dla developerów</a>, lub rozpocząć <a href="http://doc.silverstripe.com/doku.php?id=tutorials">jeden z samouczków.</a></p>'
     DEFAULTHOMETITLE: Strona główna
     DELETEDPAGEHELP: 'Strona nie jest już opublikowana'
     DELETEDPAGESHORT: Usunięty
@@ -401,20 +399,5 @@ pl:
     EditLink: edytuj
     HEADER: 'To jest wirtualna strona'
     HEADERWITHLINK: 'Strona wirtualna odzwierciedlająca treść "{title}" ({link})'
-    PLURALNAME: 'Wirtualne Strony'
     PageTypNotAllowedOnRoot: '"{type}" nie jest dozwolona dla głównego poziomu wirtualnej strony'
     SINGULARNAME: 'Wirtualna Strona'
-  CMSFileAddController:
-    MENUTITLE: Pliki
-  CMSPageEditController:
-    MENUTITLE: 'Edytuj stronę'
-  CMSPageSettingsController:
-    MENUTITLE: 'Edytuj stronę'
-  CMSSettingsController:
-    MENUTITLE: Ustawienia
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Usunięte strony'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Szkic nieopublikowanych stron'
-  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
-    Title: 'Opublikowana ale usunięta ze szkicu strony'

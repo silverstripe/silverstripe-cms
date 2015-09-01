@@ -39,7 +39,6 @@ fa_IR:
     DELETEFP: حذف کردن از منتشر شده های سایت
     EMAIL: پست الکترونیک
     PAGENOTEXISTS: 'این صفحه وجود ندارد'
-    RESTORE: بازنشاندن
     SAVE: ذخیره
   CMSPageHistoryController:
     SHOWVERSION: 'نمایش ویرایش'
@@ -122,5 +121,4 @@ fa_IR:
     HAVEASKED: 'شما خواسته اید که درون‌مایه تارگاه ما را ببینید در'
   VirtualPage:
     HEADER: 'این یک صفحه مجازی است'
-    PLURALNAME: 'صفحه های مجازی'
     SINGULARNAME: 'صفحه مجازی'

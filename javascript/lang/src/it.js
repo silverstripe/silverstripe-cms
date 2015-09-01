@@ -31,9 +31,15 @@
     "Tree.ThisPageOnly": "Solo questa pagina",
     "Tree.ThisPageAndSubpages": "Questa pagina e le sottopagine",
     "Tree.ShowAsList": "Mostra figli come lista",
-    "CMSMain.ConfirmRestoreFromLive": "Vuoi veramente copiare il contenuto pubblicato nel sito bozza?",
+    "CMSMain.ConfirmRestoreFromLive": "Si è sicuri di voler ripristinare questa bozza all'ultima volta che è stata pubblicata?",
     "CMSMain.RollbackToVersion": "Vuoi veramente tornare alla versione #%s di questa pagina?",
+    "CMSMain.Archive": "Sei sicuro di voler archiviare questa pagina con tutti i sui figli?\n\nQuesta pagina e tutti i suoi figli saranno spubblicati e archiviati.",
+    "CMSMain.Restore": "Si è sicuri di voler ripristinare questa pagina dall'archivio?",
+    "CMSMain.RestoreToRoot": "Si è sicuri di voler ripristinare questa pagina dall'archivio?\n\nPoiché la pagina genitore non è disponibile, questo ripristinerà al primo livello.",
+    "CMSMain.Unpublish": "Si è sicuri di voler eliminare la pagina dal sito pubblico?\n\nQuesta pagina sarà comunque disponibile nel SiteTree come bozza.",
+    "CMSMain.DeleteFromDraft": "Si è sicuri di voler eliminare la pagina dal sito bozza?\n\nQuesta pagina rimarrà disponibile nel sito pubblico.",
     "URLSEGMENT.Edit": "Modifica",
     "URLSEGMENT.OK": "OK",
-    "URLSEGMENT.Cancel": "Annulla"
+    "URLSEGMENT.Cancel": "Annulla",
+    "URLSEGMENT.UpdateURL": "Aggiornare l'URL"
 }

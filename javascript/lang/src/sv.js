@@ -31,9 +31,15 @@
     "Tree.ThisPageOnly": "Endast denna sida",
     "Tree.ThisPageAndSubpages": "Denna sida och undersidor",
     "Tree.ShowAsList": "Visa undersidor som lista",
-    "CMSMain.ConfirmRestoreFromLive": "Vill du verkligen kopiera det publicerade innehållet till utkastsajten?",
+    "CMSMain.ConfirmRestoreFromLive": "Är du säker på att du vill återskapa utkast till när sidan senast publicerades?",
     "CMSMain.RollbackToVersion": "Vill du verkligen gå tillbaka till version %s av denna sida?",
+    "CMSMain.Archive": "Är du säker på att du vill arkivera denna sida och alla sidans undersidor.\n\nDenna sida och sidans undersidor kommer att avpubliceras och arkiveras",
+    "CMSMain.Restore": "Är du säker på att du vill återställa sidan från arkiverad sida",
+    "CMSMain.RestoreToRoot": "Är du säker på att du vill återskapa denna sida från arkivet?\n\nEftersom sidan förälder är ej tillgänglig så kommer denbli återskapa under huvudmenun",
+    "CMSMain.Unpublish": "Är du säker på att du vill ta bort sidan från den publicerade hemsidan.\nSidan kommer fortfarande att synas i menu som utkast",
+    "CMSMain.DeleteFromDraft": "Är du säker på att du vill radera din sida från utkast hemsidan.\nSidan kommer att finnas kvar på din publicerade hemsida.",
     "URLSEGMENT.Edit": "Redigera",
     "URLSEGMENT.OK": "OK",
-    "URLSEGMENT.Cancel": "Avbryt"
+    "URLSEGMENT.Cancel": "Avbryt",
+    "URLSEGMENT.UpdateURL": "Uppdatera URL"
 }

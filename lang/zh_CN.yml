@@ -13,8 +13,6 @@ zh_CN:
     REMOVEDPAGEFROMDRAFT: '已从测试站点删除 ''%s'''
     ROLLBACK: '恢复到这一版本'
     SAVE: 保存
-  CMSSiteTreeFilter_DeletedPages:
-    Title: '所有页面(包含已删除)'
   ErrorPage:
     CODE: '错误代码'
   Folder:

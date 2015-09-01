@@ -19,12 +19,12 @@ he_IL:
     FROMYOURCOMPUTER: 'מהמחשב שלך'
     Filetype: 'סוג הקובץ'
     ListView: 'תצוגת רשימה'
+    MENUTITLE: קבצים
     NEWFOLDER: תיקייה חדשה
     SIZE: גודל
     THUMBSDELETED: '{count} תמונות ממוזערות שלא היו בשימוש נמחקו'
     TreeView: 'תצוגת עץ'
     Upload: העלאה
-    MENUTITLE: קבצים
   AssetAdmin_DeleteBatchAction:
     TITLE: 'למחוק תיקיות'
   AssetAdmin_Tools:
@@ -67,8 +67,8 @@ he_IL:
     DELETE_PAGES: 'מחיקה מאתר שפורסם'
     PUBLISHED_PAGES: 'פורסמו %d עמודים, %d שגיאות'
     PUBLISH_PAGES: פרסום
-    UNPUBLISHED_PAGES: 'בוטל פרסומם של %d עמודים'
-    UNPUBLISH_PAGES: ביטול הפרסום
+  CMSFileAddController:
+    MENUTITLE: קבצים
   CMSMain:
     ACCESS: 'גישה לאגף ''{title}'''
     ACCESS_HELP: 'מתן האפשרות לצפות באגף המכיל את עץ העמודים והתוכן. ניתן לצפות ולערוך הרשאות באמצעות תיבות בחירה ייעודיות לכל עמוד, כמו גם „הרשאות התוכן“ הנפרדות.'
@@ -83,6 +83,7 @@ he_IL:
     EMAIL: דוא״ל
     EditTree: 'עריכת העץ'
     ListFiltered: 'רשימה מסוננת.'
+    MENUTITLE: 'עריכת העמוד'
     NEWPAGE: '{pagetype} חדש'
     PAGENOTEXISTS: 'עמוד זה אינו קיים במערכת'
     PAGES: עמודים
@@ -95,7 +96,6 @@ he_IL:
     PageAdded: 'העמוד נוצר בהצלחה'
     REMOVEDPAGE: '''{title}'' הוסר מהאתר שפורסם'
     REMOVEDPAGEFROMDRAFT: '''$s'' הוסר מאתר הטיוטה'
-    RESTORE: שחזור
     RESTORED: '''{title}'' שוחזר בהצלחה'
     ROLLBACK: 'שחזור לגרסה זו'
     SAVE: שמירה
@@ -104,30 +104,33 @@ he_IL:
     TabSettings: הגדרות
     TreeFiltered: 'עץ מסונן.'
     TreeFilteredClear: 'ביטול הסינון'
-    MENUTITLE: 'עריכת העמוד'
   CMSMain_left_ss:
     APPLY_FILTER: 'החלת המסנן'
     RESET: איפוס
   CMSPageAddController:
+    MENUTITLE: 'הוספת עמוד'
     ParentMode_child: 'תחת עמוד אחר'
     ParentMode_top: 'רמה עליונה'
-    MENUTITLE: 'הוספת עמוד'
+  CMSPageEditController:
+    MENUTITLE: 'עריכת עמוד'
   CMSPageHistoryController:
     COMPAREMODE: 'מצב השוואה (יש לבחור שניים)'
     COMPAREVERSIONS: 'השוואת גרסאות'
     COMPARINGVERSION: 'השוואה בין הגרסאות {version1} ו־{version2}.'
+    MENUTITLE: היסטוריה
     REVERTTOTHISVERSION: 'חזרה לגרסה זו'
     SHOWUNPUBLISHED: 'הצגת גרסאות שלא פוסרמו'
     SHOWVERSION: 'הצגת הגרסה'
     VIEW: צפייה
     VIEWINGVERSION: 'הגרסה הנוכחית המופיעה {version}.'
-    MENUTITLE: היסטוריה
   CMSPageHistoryController_versions_ss:
     AUTHOR: נוצר על ידי
     NOTPUBLISHED: 'לא פורסם'
     PUBLISHER: פורסם על ידי
     UNKNOWN: לא ידוע
     WHEN: מתי
+  CMSPageSettingsController:
+    MENUTITLE: 'עריכת העמוד'
   CMSPagesController:
     GalleryView: 'תצוגת גלריה'
     ListView: 'תצוגת רשימה'
@@ -142,10 +145,8 @@ he_IL:
     FILTERDATEHEADING: תאריך
     FILTERDATETO: עד
     FILTERLABELTEXT: תוכן
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'דפים ששונו'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'כל העמודים, לרבות אלו שנמחקו'
+  CMSSettingsController:
+    MENUTITLE: הגדרות
   CMSSiteTreeFilter_Search:
     Title: 'כל העמודים'
   ContentControl:
@@ -200,7 +201,6 @@ he_IL:
     DEFAULTSERVERERRORPAGETITLE: 'שגיאת שרת'
     DESCRIPTION: 'תוכן מותאם אישית למקרי שגיאות שונים (לדוגמה: „העמוד לא נמצא“)'
     ERRORFILEPROBLEM: 'שגיאה בפתיחת הקובץ „{filename}“ לכתיבה. נא לבדוק את הרשאות הקובץ.'
-    PLURALNAME: 'עמודי שגיאה'
     SINGULARNAME: 'עמוד שגיאה'
   Folder:
     AddFolderButton: 'הוספת תיקייות'
@@ -223,15 +223,14 @@ he_IL:
     HASBEENSETUP: 'נוצר דף הפניה ללא יעד'
     HEADER: 'העמוד הזה יוביל משתמשים לעמוד אחר'
     OTHERURL: 'כתובת של אתר אחר'
-    PLURALNAME: 'עמודי הפנייה'
     REDIRECTTO: 'העברה אל'
     REDIRECTTOEXTERNAL: 'אתר אחר'
     REDIRECTTOPAGE: 'עמוד באתר שלך'
     SINGULARNAME: 'עמוד הפנייה'
     YOURPAGE: 'עמוד באתר שלך'
   ReportAdmin:
-    ReportTitle: כותרת
     MENUTITLE: דוחות
+    ReportTitle: כותרת
   ReportAdminForm:
     FILTERBY: 'סינון לפי'
   SearchForm:
@@ -289,7 +288,6 @@ he_IL:
     DEFAULTABOUTTITLE: 'על אודותינו'
     DEFAULTCONTACTCONTENT: '<p>ניתן למלא עמוד זה בתוכן משלך, או למחוק אותו וליצור עמודים משלך.<br /></p>'
     DEFAULTCONTACTTITLE: 'יצירת קשר'
-    DEFAULTHOMECONTENT: '<p>ברוך בואך ל־SilverStripe! זהו עמוד הבית כבררת המחדל. ניתן לערוך עמוד זה על ידי פתיחת <a href="admin/">ה־CMS</a>. כעת ניתן לגשת <a href="http://doc.silverstripe.org">לתיעוד עבור המפתחים</a>, או לגשת ללמוד <a href="http://doc.silverstripe.org/doku.php?id=tutorials">מהמדריכים.</a></p>'
     DEFAULTHOMETITLE: דף הבית
     DELETEDPAGEHELP: 'העמוד אינו מפורסם עוד'
     DELETEDPAGESHORT: נמחק
@@ -361,14 +359,5 @@ he_IL:
   VirtualPage:
     DESCRIPTION: 'הצגת תוכן של עמוד אחר'
     HEADER: 'זהו עמוד וירטואלי'
-    PLURALNAME: 'דפים וירטואליים'
     PageTypNotAllowedOnRoot: 'סוג העמוד המקורי „{type}“ אינו מורשה ברמת העל של עמוד וירטואלי זה'
     SINGULARNAME: 'דף וירטואלי'
-  CMSFileAddController:
-    MENUTITLE: קבצים
-  CMSPageEditController:
-    MENUTITLE: 'עריכת עמוד'
-  CMSPageSettingsController:
-    MENUTITLE: 'עריכת העמוד'
-  CMSSettingsController:
-    MENUTITLE: הגדרות

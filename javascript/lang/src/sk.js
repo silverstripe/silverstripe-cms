@@ -31,9 +31,15 @@
     "Tree.ThisPageOnly": "Iba túto stránku",
     "Tree.ThisPageAndSubpages": "Túto stránku a podstránky",
     "Tree.ShowAsList": "Zobraziť potomkov ako zoznam",
-    "CMSMain.ConfirmRestoreFromLive": "Skutočne chcete skopírovať zverejnený obsah do konceptu?",
+    "CMSMain.ConfirmRestoreFromLive": "Určite chcete obnoviť koncept do doby, kedy bola stránka naposledy zverejnená?",
     "CMSMain.RollbackToVersion": "Skutočne chcete vrátiť späť na verziu #%s tejto stránky?",
+    "CMSMain.Archive": "Určite chcete archivovať túto stránku a jej všetky postránky?\n\nTáto stránka a jej všetky podstránky budú nezverejnené a odoslané do archívu.",
+    "CMSMain.Restore": "Určite chcete obnoviť túto stánku z archívu?",
+    "CMSMain.RestoreToRoot": "Určite chcete obnoviť túto stránku z archívu?\n\nPretože nadriadená stránka nie je k dispozícii, bude obnovena do najvyššej úrovne.",
+    "CMSMain.Unpublish": "Určite chcete odstrániť stránku zo zverejneného webu?\n\nTáto stránka bude stále k dispozícii v štruktúre webu ako koncept.",
+    "CMSMain.DeleteFromDraft": "Určite chcete odstrániť stránku z konceptu?\n\nTáto stránka ostane na zverejneném webu.",
     "URLSEGMENT.Edit": "Editovať",
     "URLSEGMENT.OK": "OK",
-    "URLSEGMENT.Cancel": "Zrušiť"
+    "URLSEGMENT.Cancel": "Zrušiť",
+    "URLSEGMENT.UpdateURL": "Aktualizovať URL"
 }

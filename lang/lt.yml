@@ -19,12 +19,12 @@ lt:
     FROMYOURCOMPUTER: 'Iš jūsų kompiuterio'
     Filetype: 'Bylos tipas'
     ListView: 'Sąrašo rodinys'
+    MENUTITLE: Bylos
     NEWFOLDER: Naujas katalogas
     SIZE: Dydis
     THUMBSDELETED: 'Ištrinta {count} nenaudojamų paveikslėlių miniatiūrų.'
     TreeView: 'Medžio rodinys'
     Upload: Įkelti
-    MENUTITLE: Bylos
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Ištrinti katalogus'
   AssetAdmin_Tools:
@@ -61,17 +61,25 @@ lt:
   CMSAddPageController:
     Title: 'Pridėti puslapį'
   CMSBatchActions:
+    ARCHIVE: Archyvuoti
+    ARCHIVED_PAGES: 'Suarchyvuoti %d puslapiai'
     DELETED_DRAFT_PAGES: 'Iš juodraštinės svetainės ištrinti %d puslapiai, %d klaidų.'
     DELETED_PAGES: 'Iš publikuojamos svetainės ištrinti %d puslapiai, %d klaidų.'
     DELETE_DRAFT_PAGES: 'Ištrinti iš juodraščių'
     DELETE_PAGES: 'Trinti iš publikuojamos svetainės'
     PUBLISHED_PAGES: 'Publikuoti %d puslapiai, %d klaidų.'
     PUBLISH_PAGES: Publikuoti
-    UNPUBLISHED_PAGES: 'Nebepublikuojami %d puslapiai.'
+    RESTORE: Atstatyti
+    RESTORED_PAGES: 'Atstatyti %d puslapiai'
+    UNPUBLISHED_PAGES: 'Nebepublikuojami %d puslapiai'
     UNPUBLISH_PAGES: Nebepublikuoti
+  CMSFileAddController:
+    MENUTITLE: Bylos
   CMSMain:
     ACCESS: 'Priėjimas prie ''{title}'' dalies'
     ACCESS_HELP: 'Leisti peržiūrėti svetainės medžio ir turinio skiltį. Peržiūros, bei redagavimo leidimai gali būti pakeisti per iškrentančius pasirinkimus ir per atskirus "Turinio leidimai".'
+    ARCHIVE: Archyvas
+    ARCHIVEDPAGE: 'Suarchyvuotas puslapis ''%s'''
     AddNew: 'Pridėti naują puslapį'
     AddNewButton: 'Sukurti naują'
     AddPageRestriction: 'Pastaba: kai kurie puslapių tipai šioje vietoje neleidžiami'
@@ -87,6 +95,7 @@ lt:
     EMAIL: E. paštas
     EditTree: 'Redaguoti medį'
     ListFiltered: 'Filtruotas sąrašas.'
+    MENUTITLE: 'Redaguoti puslapį'
     NEWPAGE: 'Naujas {pagetype}'
     PAGENOTEXISTS: 'Šis puslapis neegzistuoja'
     PAGES: Puslapiai
@@ -100,8 +109,11 @@ lt:
     REMOVED: 'Iš publikuojamos svetainės ištrintas ''{title}''{description}'
     REMOVEDPAGE: 'Iš publikuojamos svetainės pašalintas ''{title}'''
     REMOVEDPAGEFROMDRAFT: '''%s'' pašalintas iš juodraštinės svetainės'
-    RESTORE: Atstatyti
+    RESTORE: 'Atstatyti juodraštį'
     RESTORED: '''{title}'' atstatytas sėkmingai'
+    RESTORE_DESC: 'Atstatyti suarchyvuotą versiją kaip juodraštinį puslapį'
+    RESTORE_TO_ROOT: 'Atstatyti juodraštį aukščiausiame lygyje'
+    RESTORE_TO_ROOT_DESC: 'Atstatyti suarchyvuotą versiją kaip aukščiausio lygio juodraštinį puslapį'
     ROLLBACK: 'Grįžti prie šios versijos'
     ROLLEDBACKPUBv2: 'Sugrįžta prie publikuotos versijos.'
     ROLLEDBACKVERSIONv2: 'Sugrįžta prie  #%d versijos.'
@@ -112,31 +124,35 @@ lt:
     TabSettings: Nustatymai
     TreeFiltered: 'Filtruotas medis.'
     TreeFilteredClear: 'Išvalyti filtrą'
-    MENUTITLE: 'Redaguoti puslapį'
   CMSMain_left_ss:
     APPLY_FILTER: 'Vykdyti'
+    CLEAR_FILTER: 'Išvalyti filtrą'
     RESET: Atstatyti
   CMSPageAddController:
+    MENUTITLE: 'Pridėti puslapį'
     ParentMode_child: 'Po kitu puslapiu'
     ParentMode_top: 'Aukščiausias lygmuo'
-    MENUTITLE: 'Pridėti puslapį'
+  CMSPageEditController:
+    MENUTITLE: 'Redaguoti puslapį'
   CMSPageHistoryController:
     COMPAREMODE: 'Palyginimo režimas (pasirinkite du)'
     COMPAREVERSIONS: 'Palyginti versijas'
     COMPARINGVERSION: 'Lyginamos versijos {version1} ir {version2}.'
+    MENUTITLE: Istorija
     REVERTTOTHISVERSION: 'Palikti šią versiją'
     SHOWUNPUBLISHED: 'Rodyti nepublikuojamas versijas'
     SHOWVERSION: 'Rodyti versiją'
     VIEW: peržiūrėti
     VIEWINGLATEST: 'Dabar peržiūrima naujausia versija.'
     VIEWINGVERSION: 'Dabar peržiūrima versija {version}.'
-    MENUTITLE: Istorija
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autorius
     NOTPUBLISHED: 'Nepublikuotas'
     PUBLISHER: Publikavo
     UNKNOWN: Nežinoma
     WHEN: Kada
+  CMSPageSettingsController:
+    MENUTITLE: 'Redaguoti puslapį'
   CMSPagesController:
     GalleryView: 'Galerijos rodinys'
     ListView: 'Sąrašo rodinys'
@@ -146,17 +162,27 @@ lt:
     MULTISELECT: Daugybinis pasirinkimas
   CMSPagesController_Tools_ss:
     FILTER: Filtras
+  CMSSIteTreeFilter_PublishedPages:
+    Title: 'Publikuoti puslapiai'
   CMSSearch:
     FILTERDATEFROM: Nuo
     FILTERDATEHEADING: Data
     FILTERDATETO: Iki
     FILTERLABELTEXT: Turinys
+  CMSSettingsController:
+    MENUTITLE: Nustatymai
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Pakeisti puslapiai'
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'Visi puslapiai (ir ištrinti)'
+    Title: 'Visi puslapiai, kartu su suarchyvuotais'
   CMSSiteTreeFilter_Search:
     Title: 'Visi puslapiai'
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Suarchyvuoti puslapiai'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Juyodraštiniai puslapiai'
+  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'Publikuotas, bet pašalintas iš juodraščių'
   ContentControl:
     NOTEWONTBESHOWN: 'Pastaba: ši žinutė nebus rodoma jūsų lankytojams'
   ContentController:
@@ -245,8 +271,8 @@ lt:
     SINGULARNAME: 'Nukreipimo puslapis'
     YOURPAGE: 'Puslapį Jūsų svetainėje'
   ReportAdmin:
-    ReportTitle: Antraštė
     MENUTITLE: Ataskaitos
+    ReportTitle: Antraštė
   ReportAdminForm:
     FILTERBY: 'Filtruoti pagal'
   SITETREE:
@@ -301,6 +327,9 @@ lt:
     ADDEDTODRAFTSHORT: Juodraštis
     ALLOWCOMMENTS: 'Ar leisti komentarus šiame puslapyje?'
     APPEARSVIRTUALPAGES: 'Šis turinys taip pat matomas ir virtualiuose puslapiuose {title} dalyse.'
+    ARCHIVEDPAGEHELP: 'Puslapis pašalintas iš juodraščių ir publikuotų puslapių'
+    ARCHIVEDPAGESHORT: Archyvuota
+    BUTTONARCHIVEDESC: 'Nebepublikuoti ir suarchyvuoti'
     BUTTONCANCELDRAFT: 'Atšaukti juodraščio pakeitimus'
     BUTTONCANCELDRAFTDESC: 'Ištrinti juodraštį ir grįžti prie šiuo metu publikuojamo puslapio'
     BUTTONPUBLISHED: Publikuota
@@ -314,7 +343,7 @@ lt:
     DEFAULTABOUTTITLE: 'Apie mus'
     DEFAULTCONTACTCONTENT: '<p>Jūs galite į šį puslapį patalpinti savo norimą turinį. Taip pat galite šį puslapį ištrinti ir sukurti visiškai naujus puslapius.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontaktai'
-    DEFAULTHOMECONTENT: '<p>Sveiki atvykę į SilverStripe! Tai yra pagrindinis puslapis. Jūs galite redaguoti šį puslapį atidarę <a href="admin/">TVS</a>. Dabar galite naudotis <a href="http://doc.silverstripe.com">programuotojų dokumentacija</a>, arba <a href = "http://doc.silverstripe.com/doku.php?id=tutorials">pradėti nuo pamokų.</a></p>'
+    DEFAULTHOMECONTENT: '<p>Sveiki atvykę į SilverStripe! Tai yra pagrindinis puslapis. Jūs galite redaguoti šį puslapį atsidarę <a href="admin/">TVS</a>. Dabar galite naudotis <a href="http://doc.silverstripe.com">programuotojų dokumentacija</a>, arba pradėti nuo <a href = "http://doc.silverstripe.com/doku.php?id=tutorials">SilverStripe pamokų.</a></p>'
     DEFAULTHOMETITLE: Pradžia
     DELETEDPAGEHELP: 'Puslapis nebepublikuojamas'
     DELETEDPAGESHORT: Ištrinti
@@ -385,6 +414,9 @@ lt:
     many_many_BackLinkTracking: 'Atgalinis stebėjimas'
     many_many_ImageTracking: 'Paveikslėlių sekimas'
     many_many_LinkTracking: 'Nuorodos sekimas'
+  SiteTreeFileExtension:
+    BACKLINK_LIST_DESCRIPTION: 'Šiame sąraše rodomi visi puslapiai, kurie turi per teksto redaktorių prisegtų bylų.'
+    EDIT: Redaguoti
   SiteTreeURLSegmentField:
     EMPTY: 'Prašome įvesti URL dalį arba spauskite atšaukti'
     HelpChars: 'Specialūs simboliai automatiškai pakeičiami arba pašalinami.'
@@ -404,17 +436,3 @@ lt:
     PLURALNAME: 'Virtualūs puslapiai'
     PageTypNotAllowedOnRoot: 'Norimas puslapio tipas "{type}" neleidžiamas šiam virtualiam puslapiui šakniniame lygmenyje.'
     SINGULARNAME: 'Virtualus puslapis'
-  CMSFileAddController:
-    MENUTITLE: Bylos
-  CMSPageEditController:
-    MENUTITLE: 'Redaguoti puslapį'
-  CMSPageSettingsController:
-    MENUTITLE: 'Redaguoti puslapį'
-  CMSSettingsController:
-    MENUTITLE: Nustatymai
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Ištrinti puslapiai'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Juodraštiniai nepublikuoti puslapiai'
-  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
-    Title: 'Publikuoti, bet pašalinti iš juodraščių'

@@ -31,9 +31,15 @@
     "Tree.ThisPageOnly": "Tik šį puslapį",
     "Tree.ThisPageAndSubpages": "Šį puslapį ir visus po juo",
     "Tree.ShowAsList": "Rodyti žemesnius pusl. kaip sąrašą",
-    "CMSMain.ConfirmRestoreFromLive": "Ar tikrai norite kopijuoti publikuotą turinį į juodraštinę svetainę?",
+    "CMSMain.ConfirmRestoreFromLive": "Ar tikrai norite atšaukti pakeitimus juodraštyje į paskutinę publikuotą versiją?",
     "CMSMain.RollbackToVersion": "Ar tikrai norite atstatyti šį puslapį į #%s versiją?",
+    "CMSMain.Archive": "Ar tikrai norite suarchyvuoti šį puslapį ir visus puslapius, esančius po juo?\n\nŠis puslapis ir visi po juo esantys puslapiai bus nebepublikuojami ir suarchyvuoti.",
+    "CMSMain.Restore": "Ar tikrai norite atstatyti šį puslapį iš archyvo?",
+    "CMSMain.RestoreToRoot": "Ar tikrai norite atstatyti šį puslapį iš archyvo?\n\nKadangi tėvinis puslapis neegzistuoja, šis puslapis bus atstatytas kaip aukščiausio lygio puslapis.",
+    "CMSMain.Unpublish": "Ar tikrai norite pašalinti šį puslapį iš publikuotų puslapių?\n\nŠis puslapis liks puslapių medyje kaip juodraštinis.",
+    "CMSMain.DeleteFromDraft": "Ar tikrai norite pašalinti šį puslapį iš juodraščių?\n\nŠis puslapis liks publikuotuose puslapiuose.",
     "URLSEGMENT.Edit": "Redaguoti",
     "URLSEGMENT.OK": "Gerai",
-    "URLSEGMENT.Cancel": "Atšaukti"
+    "URLSEGMENT.Cancel": "Atšaukti",
+    "URLSEGMENT.UpdateURL": "Atnaujinti URL dalį"
 }

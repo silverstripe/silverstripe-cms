@@ -19,12 +19,12 @@ ko:
     FROMYOURCOMPUTER: '컴퓨터로부터'
     Filetype: '파일 형식'
     ListView: '목록보기'
+    MENUTITLE: 파일
     NEWFOLDER: 새 폴더
     SIZE: 사이즈
     THUMBSDELETED: '{count}개의 사용하지 않은 이미지를 제거했습니다'
     TreeView: '트리보기'
     Upload: 업로드
-    MENUTITLE: 파일
   AssetAdmin_DeleteBatchAction:
     TITLE: '폴더를 삭제'
   AssetAdmin_Tools:
@@ -67,8 +67,8 @@ ko:
     DELETE_PAGES: '공개 사이트에서 삭제'
     PUBLISHED_PAGES: '%d페이지를 공개하고, %d페이지는 공개에서 실패했습니다.'
     PUBLISH_PAGES: 공개
-    UNPUBLISHED_PAGES: '%d페이지를 비공개시킴'
-    UNPUBLISH_PAGES: 비공개
+  CMSFileAddController:
+    MENUTITLE: 파일
   CMSMain:
     ACCESS: '''{title}'' 섹션으로 이동'
     ACCESS_HELP: '페이지 트리 및 내용을 포함 섹션의 열람을 허용합니다. 표시 및 편집 권한은 페이지의 특정 드롭 다운뿐만 아니라 독립적 인 "콘텐츠의 권한"을 통해 처리 할 수 있습니다.'
@@ -87,6 +87,7 @@ ko:
     EMAIL: 이메일
     EditTree: '트리를 편집'
     ListFiltered: '필터링된 목록'
+    MENUTITLE: '페이지 편집'
     NEWPAGE: '새로운 {pagetype}'
     PAGENOTEXISTS: '이 페이지는 존재하지 않습니다'
     PAGES: 페이지
@@ -100,7 +101,6 @@ ko:
     REMOVED: '이 전달 사이트에서''{title}''{description}을 제거했습니다.'
     REMOVEDPAGE: '''{title}''을 공개된 사이트에서 제거했습니다'
     REMOVEDPAGEFROMDRAFT: '%s 초안 사이트에서 제거했습니다'
-    RESTORE: 복원
     RESTORED: '{title}를 복구했습니다'
     ROLLBACK: '이 버전으로 복원'
     ROLLEDBACKPUBv2: '공개된 버전으로 롤백되었습니다.'
@@ -112,31 +112,34 @@ ko:
     TabSettings: 설정
     TreeFiltered: '필터링된 트리'
     TreeFilteredClear: '필터 제거'
-    MENUTITLE: '페이지 편집'
   CMSMain_left_ss:
     APPLY_FILTER: '필터링'
     RESET: 리셋
   CMSPageAddController:
+    MENUTITLE: '페이지 추가'
     ParentMode_child: '다른 페이지 아래에 작성'
     ParentMode_top: '최상위 계층'
-    MENUTITLE: '페이지 추가'
+  CMSPageEditController:
+    MENUTITLE: '페이지 편집'
   CMSPageHistoryController:
     COMPAREMODE: '비교 모드 (2개 선택)'
     COMPAREVERSIONS: '버전 비교'
     COMPARINGVERSION: '{version1}과 {version2}을 비교하고 있습니다.'
+    MENUTITLE: 기록
     REVERTTOTHISVERSION: '이 버전으로 복원'
     SHOWUNPUBLISHED: '공개되지 않은 버전을 표시'
     SHOWVERSION: '버전을 표시'
     VIEW: 표시
     VIEWINGLATEST: '현재 최신 버전을 보고있는 중.'
     VIEWINGVERSION: '현재 {version}버젼을 보고 있는 중.'
-    MENUTITLE: 기록
   CMSPageHistoryController_versions_ss:
     AUTHOR: 작성자
     NOTPUBLISHED: '미공개'
     PUBLISHER: 게시자
     UNKNOWN: 알 수 없슴
     WHEN: 언제
+  CMSPageSettingsController:
+    MENUTITLE: '페이지 편집'
   CMSPagesController:
     GalleryView: '갤러리보기'
     ListView: '목록보기'
@@ -151,10 +154,8 @@ ko:
     FILTERDATEHEADING: 날짜
     FILTERDATETO: 종료일
     FILTERLABELTEXT: 컨텐츠
-  CMSSiteTreeFilter_ChangedPages:
-    Title: '변경된 페이지'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: '전체 페이지 (삭제된 페이지도 포함)'
+  CMSSettingsController:
+    MENUTITLE: 설정
   CMSSiteTreeFilter_Search:
     Title: '전체 페이지'
   ContentControl:
@@ -215,7 +216,6 @@ ko:
     DEFAULTSERVERERRORPAGETITLE: '서버 오류'
     DESCRIPTION: '각각의 오류 사례에 대해 사용자 지정 콘텐츠를 표시 (예: "페이지가 없습니다")'
     ERRORFILEPROBLEM: '쓰기용 파일 "{filename}"을 열때 오류가 발생했습니다. 파일 권한을 확인하십시오.'
-    PLURALNAME: '오류 페이지'
     SINGULARNAME: '오류 페이지'
   Folder:
     AddFolderButton: '폴더 추가'
@@ -238,15 +238,14 @@ ko:
     HASBEENSETUP: '다른곳으로 리다이렉트되지않고 리다이렉터 페이지가 설치되었습니다.'
     HEADER: '이 페이지는 다른 페이지로 사용자들을 이동시킵니다.'
     OTHERURL: '다른 웹사이트 URL'
-    PLURALNAME: '리디렉션 페이지'
     REDIRECTTO: '변경'
     REDIRECTTOEXTERNAL: '다른 웹사이트'
     REDIRECTTOPAGE: '당신의 웹사이트의 페이지'
     SINGULARNAME: '리디렉션 페이지'
     YOURPAGE: '당신의 웹사이트의 페이지'
   ReportAdmin:
-    ReportTitle: 제목
     MENUTITLE: 보고서
+    ReportTitle: 제목
   ReportAdminForm:
     FILTERBY: '에 의해 필터'
   SITETREE:
@@ -314,7 +313,6 @@ ko:
     DEFAULTABOUTTITLE: '회사 소개'
     DEFAULTCONTACTCONTENT: '<p> 이 페이지에 내용을 자유롭게 채워넣을 수 있으며, 또한 삭제하거나 새로 만들 수 있습니다.<br /> </p>'
     DEFAULTCONTACTTITLE: '연락처'
-    DEFAULTHOMECONTENT: '<p> SilverStripe에 오신 것을 환영합니다!  이것은 기본 홈페이지입니다. 이 페이지를 편집하려면 <a href="admin/"> CMS </a>에 액세스하십시오. <a href="http: //doc.silverstripe.org"> 개발자 문서 </a>과 <a href="http: //doc.silverstripe.org/doku.php?id=tutorials"> 튜토리얼 </a>도 보실 수 있습니다. </p>'
     DEFAULTHOMETITLE: 홈
     DELETEDPAGEHELP: '이 문서는 더이상 공개되지 않습니다.'
     DELETEDPAGESHORT: 삭제됨
@@ -401,20 +399,5 @@ ko:
     EditLink: 편집
     HEADER: '가상 페이지입니다'
     HEADERWITHLINK: '이것은 "{title}"({link})에서 콘텐츠를 복사하는 가상 페이지입니다'
-    PLURALNAME: '가상 페이지'
     PageTypNotAllowedOnRoot: '이 가상 페이지에 대해 원본 페이지 형식 {type}는 루트 레벨에 배치되는 것을 허용하지 않습니다.'
     SINGULARNAME: '가상 페이지'
-  CMSFileAddController:
-    MENUTITLE: 파일
-  CMSPageEditController:
-    MENUTITLE: '페이지 편집'
-  CMSPageSettingsController:
-    MENUTITLE: '페이지 편집'
-  CMSSettingsController:
-    MENUTITLE: 설정
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: '삭제된 페이지들'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: '초안, 공개안된 페이지들'
-  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
-    Title: '살아있으나 초안으로부터는 제거됨'

@@ -19,12 +19,12 @@ fi:
     FROMYOURCOMPUTER: 'Omalta tietokoneelta'
     Filetype: 'Tiedostotyyppi'
     ListView: 'Listanäkymä'
+    MENUTITLE: Tiedostot
     NEWFOLDER: Uusi kansio
     SIZE: Koko
     THUMBSDELETED: '{count} käyttämätöntä esikatselukuvaa poistettiin'
     TreeView: 'Puunäkymä'
     Upload: Siirrä
-    MENUTITLE: Tiedostot
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Poista kansiot'
   AssetAdmin_Tools:
@@ -67,8 +67,8 @@ fi:
     DELETE_PAGES: 'Poista julkaistulta sivustolta'
     PUBLISHED_PAGES: 'Julkaistu %d sivua, %d epäonnistumista'
     PUBLISH_PAGES: Julkaise
-    UNPUBLISHED_PAGES: 'Julkaisemattomat %d sivut'
-    UNPUBLISH_PAGES: Poista julkaisu
+  CMSFileAddController:
+    MENUTITLE: Tiedostot
   CMSMain:
     ACCESS: 'Pääsy ''{title}'' -osioon'
     ACCESS_HELP: 'Oikeuttaa näkemään osion, joka sisältää sivurakenteen ja sisällön. Katselu- ja muokkausoikeuksia voidaan käsitellä sivukohtaisten pudotusvalikoiden kautta, kuten myös erillisestä "Sisällön oikeudet"-kohdasta.'
@@ -87,6 +87,7 @@ fi:
     EMAIL: Sähköposti
     EditTree: 'Muokkaa rakennepuuta'
     ListFiltered: 'Suodatettu lista.'
+    MENUTITLE: 'Muokkaa sivua'
     NEWPAGE: 'Uusi {pagetype}'
     PAGENOTEXISTS: 'Tätä sivua ei ole olemassa'
     PAGES: Sivut
@@ -100,7 +101,6 @@ fi:
     REMOVED: 'Poista ''{title}''{description} näkyvältä sivustolta'
     REMOVEDPAGE: '''{title}'' poistettiin julkaistulta sivustolta'
     REMOVEDPAGEFROMDRAFT: 'Poistettu ''%s'' luonnossivustolta'
-    RESTORE: Palauta
     RESTORED: '''{title}'' palautettiin onnistuneesti'
     ROLLBACK: 'Siirry takaisin tähän versioon.'
     ROLLEDBACKPUBv2: 'Palattiin takaisin julkaistuun versioon'
@@ -112,31 +112,34 @@ fi:
     TabSettings: Asetukset
     TreeFiltered: 'Suodatettu hakemistopuu.'
     TreeFilteredClear: 'Nollaa suodatin'
-    MENUTITLE: 'Muokkaa sivua'
   CMSMain_left_ss:
     APPLY_FILTER: 'Suodata'
     RESET: Nollaa
   CMSPageAddController:
+    MENUTITLE: 'Lisää sivu'
     ParentMode_child: 'Toisen sivun alla'
     ParentMode_top: 'Ylätaso'
-    MENUTITLE: 'Lisää sivu'
+  CMSPageEditController:
+    MENUTITLE: 'Muokkaa sivua'
   CMSPageHistoryController:
     COMPAREMODE: 'Vertailutila (valitse kaksi)'
     COMPAREVERSIONS: 'Vertaa versioita'
     COMPARINGVERSION: 'Vertaillaan versioita {version1} ja {version2}'
+    MENUTITLE: Historia
     REVERTTOTHISVERSION: 'Palaa tähän versioon'
     SHOWUNPUBLISHED: 'Näytä julkaisemattomat versiot'
     SHOWVERSION: 'Näytä versionumero'
     VIEW: näkymä
     VIEWINGLATEST: 'Katsot viimeisintä versiota.'
     VIEWINGVERSION: 'Katsot versiota {version}.'
-    MENUTITLE: Historia
   CMSPageHistoryController_versions_ss:
     AUTHOR: Tekijä
     NOTPUBLISHED: 'Julkaisematon'
     PUBLISHER: Julkaisija
     UNKNOWN: Tuntematon
     WHEN: Milloin
+  CMSPageSettingsController:
+    MENUTITLE: 'Muokkaa sivua'
   CMSPagesController:
     GalleryView: 'Suuret ikonit'
     ListView: 'Listanäkymä'
@@ -151,10 +154,8 @@ fi:
     FILTERDATEHEADING: Pvm
     FILTERDATETO: Päättyen
     FILTERLABELTEXT: Sisältö
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Muuttuneet sivut'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Kaikki sivut, myös poistetut'
+  CMSSettingsController:
+    MENUTITLE: Asetukset
   CMSSiteTreeFilter_Search:
     Title: 'Kaikki sivut'
   ContentControl:
@@ -245,8 +246,8 @@ fi:
     SINGULARNAME: 'Uudelleenohjaava sivu'
     YOURPAGE: 'Sivu verkkosivustollasi'
   ReportAdmin:
-    ReportTitle: Otsikko
     MENUTITLE: Raportit
+    ReportTitle: Otsikko
   ReportAdminForm:
     FILTERBY: 'Suodata'
   SITETREE:
@@ -314,7 +315,6 @@ fi:
     DEFAULTABOUTTITLE: 'Tietoa meistä'
     DEFAULTCONTACTCONTENT: '<p>Voit täyttää tämän sivun omalla sisällölläsi tai poistaa sen ja luoda omia sivujasi.<br /></p>'
     DEFAULTCONTACTTITLE: 'Ota yhteyttä meihin'
-    DEFAULTHOMECONTENT: '<p>Tervetuloa SilverStripeen! Tämä on oletus-kotisivu. Voit muokata tätä sivua kirjautumalla <a href="admin/">ylläpitonäkymään</a>. Voit myös lukea <a href="http://doc.silverstripe.com">kehittäjä-dokumentaatiota</a> tai aloittaa tutustumisen järjestelmään <a href="http://doc.silverstripe.com/doku.php?id=tutorials">johdatuskursseista</a>.</p>'
     DEFAULTHOMETITLE: Koti
     DELETEDPAGEHELP: 'Sivu ei ole enää julkaistuna'
     DELETEDPAGESHORT: Poistettu
@@ -404,17 +404,3 @@ fi:
     PLURALNAME: 'Virtuaalisivut'
     PageTypNotAllowedOnRoot: 'Alkuperäinen sivutyyppi "{type}" ei ole sallittu tämän virtuaalisen sivun päätasolla'
     SINGULARNAME: 'Virtuaalisivu'
-  CMSFileAddController:
-    MENUTITLE: Tiedostot
-  CMSPageEditController:
-    MENUTITLE: 'Muokkaa sivua'
-  CMSPageSettingsController:
-    MENUTITLE: 'Muokkaa sivua'
-  CMSSettingsController:
-    MENUTITLE: Asetukset
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Poistetut sivut'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Luonnokset julkaisemattomista sivuista'
-  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
-    Title: 'Näkyvillä, mutta poistettu luonnoksista'

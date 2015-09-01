@@ -19,12 +19,12 @@ zh:
     FROMYOURCOMPUTER: '从您的电脑'
     Filetype: '文件类型'
     ListView: '列表视图'
+    MENUTITLE: 文件
     NEWFOLDER: 新文件夹
     SIZE: 大小
     THUMBSDELETED: '{count} 个未使用的缩略图已被删除'
     TreeView: '树状图'
     Upload: 上传
-    MENUTITLE: 文件
   AssetAdmin_DeleteBatchAction:
     TITLE: '删除文件夹'
   AssetAdmin_Tools:
@@ -67,8 +67,8 @@ zh:
     DELETE_PAGES: '从已发布网站中删除'
     PUBLISHED_PAGES: '发布 %d 个页面， %d 个失败'
     PUBLISH_PAGES: 发布
-    UNPUBLISHED_PAGES: '已取消发布 %d 页面'
-    UNPUBLISH_PAGES: 取消发布
+  CMSFileAddController:
+    MENUTITLE: 文件
   CMSMain:
     ACCESS: '访问 ''{title}'' 部分'
     ACCESS_HELP: '允许查看包含页面树及内容 部分。查看和编辑权限可以通过页面特定的下拉菜单进行控制，与使用单独的”内容权限“处理一样。'
@@ -86,6 +86,7 @@ zh:
     EMAIL: 电子邮件
     EditTree: '编辑树'
     ListFiltered: '已过滤的列表。'
+    MENUTITLE: '编辑页面'
     NEWPAGE: '新建{pagetype}'
     PAGENOTEXISTS: '该页面不存在'
     PAGES: 页面
@@ -99,7 +100,6 @@ zh:
     REMOVED: '从线上站点删除‘{title}''{description}'
     REMOVEDPAGE: '从已发布站点删除’{title}'''
     REMOVEDPAGEFROMDRAFT: '从草稿站点删除‘s%’'
-    RESTORE: 恢复
     RESTORED: '成功恢复’{title}‘'
     ROLLBACK: '回滚到该版本'
     ROLLEDBACKPUBv2: '回滚到已发布版本。'
@@ -111,31 +111,34 @@ zh:
     TabSettings: 设置
     TreeFiltered: '已过滤的树。'
     TreeFilteredClear: '清除过滤器'
-    MENUTITLE: '编辑页面'
   CMSMain_left_ss:
     APPLY_FILTER: '应用过滤器'
     RESET: 重置
   CMSPageAddController:
+    MENUTITLE: '添加页面'
     ParentMode_child: '根据另一个页面'
     ParentMode_top: '顶层'
-    MENUTITLE: '添加页面'
+  CMSPageEditController:
+    MENUTITLE: '编辑页面'
   CMSPageHistoryController:
     COMPAREMODE: '比较模式（选择两个）'
     COMPAREVERSIONS: '版本比较'
     COMPARINGVERSION: '正在对比版本{version1}和{version2}。'
+    MENUTITLE: 历史记录
     REVERTTOTHISVERSION: '恢复到这个版本'
     SHOWUNPUBLISHED: '显示未发布的版本'
     SHOWVERSION: '显示版本'
     VIEW: 查看
     VIEWINGLATEST: '当前正在查看最新版本。'
     VIEWINGVERSION: '当前正在查看版本{version}。'
-    MENUTITLE: 历史记录
   CMSPageHistoryController_versions_ss:
     AUTHOR: 作者
     NOTPUBLISHED: '未发布'
     PUBLISHER: 发布者
     UNKNOWN: 未知的
     WHEN: 何时
+  CMSPageSettingsController:
+    MENUTITLE: '编辑页面'
   CMSPagesController:
     GalleryView: '图库视图'
     ListView: '列表视图'
@@ -150,10 +153,8 @@ zh:
     FILTERDATEHEADING: 日期
     FILTERDATETO: 到
     FILTERLABELTEXT: 内容
-  CMSSiteTreeFilter_ChangedPages:
-    Title: '有改动的页面'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: '所有页面，包括已删除的'
+  CMSSettingsController:
+    MENUTITLE: 设置
   CMSSiteTreeFilter_Search:
     Title: '所有页面'
   ContentControl:
@@ -212,7 +213,6 @@ zh:
     DEFAULTSERVERERRORPAGETITLE: '服务器错误'
     DESCRIPTION: '给不同的错误自定义内容（例如”未发现页面“）'
     ERRORFILEPROBLEM: '打开文件”{filename}“尝试写入. 请检查文件许可'
-    PLURALNAME: '错误页面'
     SINGULARNAME: '错误页面'
   Folder:
     AddFolderButton: '增加文件夹'
@@ -235,15 +235,14 @@ zh:
     HASBEENSETUP: '建立了一个没有任何跳转目标的重定向页。'
     HEADER: '该页面将会使用户转向另外一个页面'
     OTHERURL: '其他网站URL'
-    PLURALNAME: '重定向页'
     REDIRECTTO: '重定向到'
     REDIRECTTOEXTERNAL: '另一个网站'
     REDIRECTTOPAGE: '您网站上的一个页面'
     SINGULARNAME: '重定向页'
     YOURPAGE: '您网站的页面'
   ReportAdmin:
-    ReportTitle: 标题
     MENUTITLE: 报告
+    ReportTitle: 标题
   ReportAdminForm:
     FILTERBY: '过滤'
   SITETREE:
@@ -311,7 +310,6 @@ zh:
     DEFAULTABOUTTITLE: '关于我们'
     DEFAULTCONTACTCONTENT: '<p>您可以使用您自己的内容填充该页面，或者删除它并创建您自己的页面。<br /></p>'
     DEFAULTCONTACTTITLE: '联络我们'
-    DEFAULTHOMECONTENT: '<p>欢迎来到SilverStripe！这是默认首页。您可以通过打开<a href="admin/">内容管理系统</a>修改该页面。您现在可以访问<a href="http://doc.silverstripe.org">开发者文档</a>，或者从<a href="http://doc.silverstripe.org/doku.php?id=tutorials">教程</a>开始。</p>'
     DEFAULTHOMETITLE: 首页
     DELETEDPAGEHELP: '页面已停止发布'
     DELETEDPAGESHORT: 已删除
@@ -398,14 +396,5 @@ zh:
     EditLink: 编辑
     HEADER: '这是一个虚拟页面'
     HEADERWITHLINK: '这是一个从“{标题}”复制内容的虚拟页面（{链接}）'
-    PLURALNAME: '虚拟页面'
     PageTypNotAllowedOnRoot: '此虚拟页面的根级不允许使用原页面类型 "{type}"'
     SINGULARNAME: '虚拟页面'
-  CMSFileAddController:
-    MENUTITLE: 文件
-  CMSPageEditController:
-    MENUTITLE: '编辑页面'
-  CMSPageSettingsController:
-    MENUTITLE: '编辑页面'
-  CMSSettingsController:
-    MENUTITLE: 设置

@@ -53,5 +53,4 @@ hr:
     HAVEASKED: 'Zatražili ste sadržaj naše stranice '
   VirtualPage:
     HEADER: 'Ovo je virtualna stranica'
-    PLURALNAME: 'Virtualne stranice'
     SINGULARNAME: 'Virtualna stranica'

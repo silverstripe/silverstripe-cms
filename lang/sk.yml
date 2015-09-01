@@ -19,12 +19,12 @@ sk:
     FROMYOURCOMPUTER: 'Z vášho počitača'
     Filetype: 'Typ súboru'
     ListView: 'Zobraziť zoznam'
+    MENUTITLE: Súbory
     NEWFOLDER: Nový priečinok
     SIZE: Veľkosť
     THUMBSDELETED: '{count} nepoužitých miniatúr bolo smazaných'
     TreeView: 'Zobraziť strom'
     Upload: Nahrať
-    MENUTITLE: Súbory
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Vymazať priečinky'
   AssetAdmin_Tools:
@@ -61,17 +61,25 @@ sk:
   CMSAddPageController:
     Title: 'Pridať stránku'
   CMSBatchActions:
+    ARCHIVE: Archivovať
+    ARCHIVED_PAGES: 'Archivované %d stranky'
     DELETED_DRAFT_PAGES: 'Smazaných %d stránok z konceptu webu, %d zlyhaní'
     DELETED_PAGES: 'Smazaných %d stránok z verejného webu, %d zlyhaní'
     DELETE_DRAFT_PAGES: 'Vymazať z návhrového webu'
     DELETE_PAGES: 'Vymazať z verejného webu'
     PUBLISHED_PAGES: 'Publikovaných %d stránok, %d zlyhaní'
     PUBLISH_PAGES: Zverejniť
-    UNPUBLISHED_PAGES: 'Ne-zverejnené %d stranky'
-    UNPUBLISH_PAGES: Ne-zverejniť
+    RESTORE: Obnoviť
+    RESTORED_PAGES: 'Obnovených %d stránok'
+    UNPUBLISHED_PAGES: 'Nezverejnených %d stránok'
+    UNPUBLISH_PAGES: Nezverejniť
+  CMSFileAddController:
+    MENUTITLE: Súbory
   CMSMain:
     ACCESS: 'Pristup k ''{title}'' sekcii'
     ACCESS_HELP: 'Povoliť prezeranie sekcie obsahujúcu strom stránok a obsah. Práva na prezeranie a úpravu môžu byť nastavené cez výber, ako aj jednotlivo  "Práva obsahu".'
+    ARCHIVE: Archív
+    ARCHIVEDPAGE: 'Archivovaná stránka ''%s'''
     AddNew: 'Pridať novou stránku'
     AddNewButton: 'Pridať nový'
     AddPageRestriction: 'Poznámka: Niektoré typy stránok nie sú povolené pre tento výber'
@@ -87,6 +95,7 @@ sk:
     EMAIL: Pošli e-mailom
     EditTree: 'Editovať strom'
     ListFiltered: 'Filtrovaný zoznam.'
+    MENUTITLE: 'Upraviť stránku'
     NEWPAGE: 'Nová {pagetype}'
     PAGENOTEXISTS: 'Táto stránka neexistuje.'
     PAGES: Stránky
@@ -100,8 +109,11 @@ sk:
     REMOVED: 'Smazané ''{title}''{description} z webu'
     REMOVEDPAGE: 'Smazané ''{title}'' z verejného webu'
     REMOVEDPAGEFROMDRAFT: 'Odstránené ''%s'' z konceptu webu'
-    RESTORE: Obnoviť
+    RESTORE: 'Obnoviť koncept'
     RESTORED: 'Obnovené ''{title}'' úspešne'
+    RESTORE_DESC: 'Obnoviť archivovanú verziu na koncept'
+    RESTORE_TO_ROOT: 'Obnoviť koncept na najvyšiu úroveň'
+    RESTORE_TO_ROOT_DESC: 'Obnoviť archivovanú verziu na koncept ako stránku najvyššej úrovne'
     ROLLBACK: 'Návrat späť na túto verziu'
     ROLLEDBACKPUBv2: 'Vrátené späť na zverejnenú verziu.'
     ROLLEDBACKVERSIONv2: 'Vrátené späť na verziu #%d.'
@@ -112,31 +124,35 @@ sk:
     TabSettings: Nastavenia
     TreeFiltered: 'Filtrovaný strom.'
     TreeFilteredClear: 'Vyčistiť filter'
-    MENUTITLE: 'Upraviť stránku'
   CMSMain_left_ss:
     APPLY_FILTER: 'Použiť filter'
+    CLEAR_FILTER: 'Vyčistiť filter'
     RESET: Reset
   CMSPageAddController:
+    MENUTITLE: 'Pridať stránku'
     ParentMode_child: 'Pod inú stránku'
     ParentMode_top: 'Najvyššia úroveň'
-    MENUTITLE: 'Pridať stránku'
+  CMSPageEditController:
+    MENUTITLE: 'Upraviť stránku'
   CMSPageHistoryController:
     COMPAREMODE: 'Mód porovnania (vyberte dva)'
     COMPAREVERSIONS: 'Porovnať verzie'
     COMPARINGVERSION: 'Porovnie verzií {version1} a {version2}.'
+    MENUTITLE: História
     REVERTTOTHISVERSION: 'Vrátiť sa k tejto verzii'
     SHOWUNPUBLISHED: 'Zobraziť nepublikované verzie'
     SHOWVERSION: 'Zobraziť verziu'
     VIEW: zobraziť
     VIEWINGLATEST: 'Práve sa zobrazuje posledná verzia.'
     VIEWINGVERSION: 'Práve sa zobrazuje verzia {version}.'
-    MENUTITLE: História
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
     NOTPUBLISHED: 'Nepublikovaná'
     PUBLISHER: Vydavateľ
     UNKNOWN: Neznáma
     WHEN: Keď
+  CMSPageSettingsController:
+    MENUTITLE: 'Editovať stránku'
   CMSPagesController:
     GalleryView: 'Zobraziť galériu'
     ListView: 'Zobraziť zoznam'
@@ -146,17 +162,27 @@ sk:
     MULTISELECT: Multi výber
   CMSPagesController_Tools_ss:
     FILTER: Filtrovať
+  CMSSIteTreeFilter_PublishedPages:
+    Title: 'Zverejnené stránky'
   CMSSearch:
     FILTERDATEFROM: Od
     FILTERDATEHEADING: Dátum
     FILTERDATETO: Do
     FILTERLABELTEXT: Obsah
+  CMSSettingsController:
+    MENUTITLE: Nastavenia
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Zmenené stránky'
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'Všetky stránky, vrátane vymazaných'
+    Title: 'Všetky stránky, vrátane archivovaných'
   CMSSiteTreeFilter_Search:
     Title: 'Všechny stránky'
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Archivované stranky'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Stránky konceptu'
+  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'Živé, ale odstránené z konceptu'
   ContentControl:
     NOTEWONTBESHOWN: 'Poznámka: Táto správa sa nebude zobrazovať vašim návštevníkom'
   ContentController:
@@ -245,8 +271,8 @@ sk:
     SINGULARNAME: 'Presmerovacia stránka'
     YOURPAGE: 'Stránka na vašom webe'
   ReportAdmin:
-    ReportTitle: Titulok
     MENUTITLE: Výkazy
+    ReportTitle: Titulok
   ReportAdminForm:
     FILTERBY: 'Filtrovať podľa'
   SITETREE:
@@ -301,6 +327,9 @@ sk:
     ADDEDTODRAFTSHORT: Koncept
     ALLOWCOMMENTS: 'Povoliť komentáre na tejto stránke?'
     APPEARSVIRTUALPAGES: 'Tento obsah sa zobrazí aj na virtuálnych stránkach v {title} sekciách.'
+    ARCHIVEDPAGEHELP: 'Stránka je odstránená z konceptu a z webu'
+    ARCHIVEDPAGESHORT: Archivované
+    BUTTONARCHIVEDESC: 'Nezverejniť a odoslať do archívu'
     BUTTONCANCELDRAFT: 'Zrušiť zmeny v konceptu'
     BUTTONCANCELDRAFTDESC: 'Vymazať návrh a vrátiť sa k aktuálne zverejnenej stránke'
     BUTTONPUBLISHED: Publikované
@@ -314,7 +343,7 @@ sk:
     DEFAULTABOUTTITLE: 'O nás'
     DEFAULTCONTACTCONTENT: '<p>Túto stránku môžete vyplniť vlastným obsahom, alebo ju zmazať a vytvoriť vaše vlastné stránky.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontakt'
-    DEFAULTHOMECONTENT: '<p>Vitajte v SilverStripe! Toto je predvolená úvodná stránka. Môžete you upraviť otvorením <a href="admin/">CMS-ka</a>. Môžete isť na <a href="http://doc.silverstripe.org">dokumentáciu vývoára</a>, alebo začať s <a href="http://doc.silverstripe.org/doku.php?id=tutorials">návodmi</a>.</p>'
+    DEFAULTHOMECONTENT: '<p>Vitajte v SilverStripe! Toto je základná domáca stránka. Môžte ju upraviť otvorením <a href="admin/">CMS</a>.</p><p>Môžte tiež vstúpiť k <a href="http://docs.silverstripe.org">dokumentácii vývojára</a>, alebo sa priučit na <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lekciách</a>.</p>'
     DEFAULTHOMETITLE: Domov
     DELETEDPAGEHELP: 'Stránka už nie je viacej zverejnená'
     DELETEDPAGESHORT: Smazané
@@ -385,6 +414,9 @@ sk:
     many_many_BackLinkTracking: 'Záznamy o Backlinkoch'
     many_many_ImageTracking: 'Záznamy o obrázkoch'
     many_many_LinkTracking: 'Záznamy o odkazoch'
+  SiteTreeFileExtension:
+    BACKLINK_LIST_DESCRIPTION: 'Zoznam zobrazuje všetky stránky, kde bol súbor pridaný pomocou WYSIWYG editora.'
+    EDIT: Editovať
   SiteTreeURLSegmentField:
     EMPTY: 'Zadajte prosím URL segment alebo kliknite zrušiť'
     HelpChars: 'Špeciálne znaky sú automaticky zkonvertované alebo ostránené.'
@@ -404,17 +436,3 @@ sk:
     PLURALNAME: 'Virtuálne stránky'
     PageTypNotAllowedOnRoot: 'Pôvodná stránka typu "{type}" nie je povolená na najvyššej úrovni pre túto virtuálnu stránku'
     SINGULARNAME: 'Virtuálna stránka'
-  CMSFileAddController:
-    MENUTITLE: Súbory
-  CMSPageEditController:
-    MENUTITLE: 'Upraviť stránku'
-  CMSPageSettingsController:
-    MENUTITLE: 'Editovať stránku'
-  CMSSettingsController:
-    MENUTITLE: Nastavenia
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Zmazané stránky.'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Koncept nezverejnených stránok'
-  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
-    Title: 'Živé, ale odstránené z konceptu'

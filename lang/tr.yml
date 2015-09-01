@@ -24,7 +24,8 @@ tr:
   CMSBatchActions:
     DELETE_PAGES: 'Yayındaki siteden sil'
     PUBLISH_PAGES: Yayınla
-    UNPUBLISH_PAGES: Yayından kaldır
+  CMSFileAddController:
+    MENUTITLE: Dosyalar
   CMSMain:
     AddNew: 'Yeni sayfa ekle'
     AddNewButton: 'Yeni ekle'
@@ -34,6 +35,7 @@ tr:
     DELETE: 'Taslak siteden kaldır'
     DELETEFP: Yayındaki siteden kaldır
     EMAIL: Eposta
+    MENUTITLE: 'Sayfayı düzenle'
     PAGENOTEXISTS: 'Sayfa bulunamadı'
     PAGES: Sayfalar
     PAGETYPEOPT: 'Sayfa Tipi'
@@ -42,18 +44,18 @@ tr:
     PUBALLFUN2: "Bu butona bastığınız zaman, tüm sayfaları tek tek açıp \"yayınla\" butonuna basmışsınız gibi işlem yapılacaktır.  Bunun amacı sitede toplu miktarda içerik düzenleyip eklediyseniz (örneğin sitenin ilk yayınlanması gibi) size kolaylık sağlamaktır."
     PageAdded: 'Sayfa başarıyla oluşturuldu'
     REMOVEDPAGEFROMDRAFT: '''%s'' taslak siteden silindi'
-    RESTORE: Geri yükle
     ROLLBACK: 'Bu sürüme geri dön'
     SAVE: Kaydet
     TabContent: İçerik
     TabHistory: Geçmiş
     TabSettings: Ayarlar
-    MENUTITLE: 'Sayfayı düzenle'
   CMSMain_left_ss:
     APPLY_FILTER: 'Filteri Uygula'
     RESET: Sıfırla
   CMSPageAddController:
     MENUTITLE: 'Sayfa ekle'
+  CMSPageEditController:
+    MENUTITLE: 'Sayfayı Düzenle'
   CMSPageHistoryController:
     COMPAREVERSIONS: 'Versiyonları karşılaştır'
     MENUTITLE: Geçmiş
@@ -63,13 +65,15 @@ tr:
     PUBLISHER: Yayınlayan
     UNKNOWN: Bilinmeyen
     WHEN: Ne zaman
+  CMSPageSettingsController:
+    MENUTITLE: 'Sayfayı düzenle'
   CMSPagesController:
     GalleryView: 'Galeri Görünümü'
     MENUTITLE: Sayfalar
   CMSPagesController_Tools_ss:
     FILTER: Filtre
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Değiştirilen sayfalar'
+  CMSSettingsController:
+    MENUTITLE: Ayarlar
   CMSSiteTreeFilter_Search:
     Title: 'Tüm sayfalar'
   ContentControl:
@@ -169,7 +173,6 @@ tr:
     DEFAULTABOUTTITLE: 'Hakkımızda'
     DEFAULTCONTACTCONTENT: '<p>Bu sayfayı kendi içeriğinizle doldurabilir, ya da bu sayfayı silip kendi sayfalarınızı oluşturabilirsiniz.<br /></p>'
     DEFAULTCONTACTTITLE: 'İletişim'
-    DEFAULTHOMECONTENT: '<p>SilverStripe''a hoşgeldiniz! Burası anasayfanız. <a href="admin/">Yönetim panelinden</a> bu sayfayı düzenleyebilirsiniz. Geliştirici dökümanlarına <a href="http://doc.silverstripe.com">buradan</a> ulaşabilir, veya <a href="http://doc.silverstripe.com/doku.php?id=tutorials">eğitim videolarını</a> izleyebilirsiniz.</p>'
     DEFAULTHOMETITLE: Anasayfa
     DependtPageColumnLinkType: 'Link tipi'
     EDITANYONE: 'CMS''e giriş yapabilen herkes'
@@ -210,13 +213,4 @@ tr:
     HAVEASKED: 'Şu tarihe kadar olan site içeriğini görüntülemek istediniz:'
   VirtualPage:
     HEADER: 'Bu sanal bir sayfadır'
-    PLURALNAME: 'Sanal Sayfalar'
     SINGULARNAME: 'Sanal Sayfa'
-  CMSFileAddController:
-    MENUTITLE: Dosyalar
-  CMSPageEditController:
-    MENUTITLE: 'Sayfayı Düzenle'
-  CMSPageSettingsController:
-    MENUTITLE: 'Sayfayı düzenle'
-  CMSSettingsController:
-    MENUTITLE: Ayarlar

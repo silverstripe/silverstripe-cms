@@ -10,8 +10,6 @@ zh_TW:
     DELETE_PAGES: '從已出版網站刪除'
     PUBLISHED_PAGES: '已出版 %d 網頁, %d 失敗'
     PUBLISH_PAGES: 出版
-    UNPUBLISHED_PAGES: '未出版 %d 網頁'
-    UNPUBLISH_PAGES: 未出版的
   CMSMain:
     EMAIL: 電子郵件
     PAGENOTEXISTS: '這頁不存在'
@@ -23,24 +21,26 @@ zh_TW:
   CMSPageHistoryController:
     COMPAREMODE: '比較模式(選擇兩個)'
     COMPAREVERSIONS: '比較版本'
+    MENUTITLE: 歷史
     REVERTTOTHISVERSION: '回復到此版本'
     SHOWUNPUBLISHED: '顯示未出版的版本'
     SHOWVERSION: '顯示版本'
     VIEW: 瀏覽
-    MENUTITLE: 歷史
   CMSPageHistoryController_versions_ss:
     AUTHOR: 作者
     NOTPUBLISHED: '未發行的'
     PUBLISHER: 發行者
     UNKNOWN: 未知的
     WHEN: 何時
+  CMSPageSettingsController:
+    MENUTITLE: '編輯網頁'
   CMSPagesController:
     GalleryView: '圖庫瀏覽'
     ListView: '清單瀏覽'
     MENUTITLE: 網頁
     TreeView: '樹狀瀏覽'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: '所有網頁, 包括已刪除的'
+  CMSSettingsController:
+    MENUTITLE: 設定值
   CMSSiteTreeFilter_Search:
     Title: '所有網頁'
   ContentControl:
@@ -89,7 +89,6 @@ zh_TW:
     DEFAULTABOUTTITLE: '關於我們'
     DEFAULTCONTACTCONTENT: '<p>您可以用您自己的內容填入本網頁, 或是刪除它並建立您自己的網頁<br /></p>'
     DEFAULTCONTACTTITLE: '連絡我們'
-    DEFAULTHOMECONTENT: '<p>歡迎光臨 SilverStrip! 這是預設的主頁. 您可以開啟<a href="admin/">the CMS</a>來編輯這個網頁. 您現在可存取<a href="http://doc.silverstripe.org">developer documentation</a>, 或是開始<a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
     DEFAULTHOMETITLE: 首頁
     DELETEDPAGESHORT: 已刪除
     DEPENDENT_NOTE: '以下的網頁是依附在本網頁的. 這包含了虛擬網頁, 重新導向網頁, 以及有內容鏈結的網頁.'
@@ -148,9 +147,4 @@ zh_TW:
   VirtualPage:
     DESCRIPTION: '顯示其他網頁的內容'
     HEADER: '這是一個虛擬網頁'
-    PLURALNAME: '虛擬網頁'
     SINGULARNAME: '虛擬網頁'
-  CMSPageSettingsController:
-    MENUTITLE: '編輯網頁'
-  CMSSettingsController:
-    MENUTITLE: 設定值

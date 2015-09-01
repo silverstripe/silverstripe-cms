@@ -19,12 +19,12 @@ nl:
     FROMYOURCOMPUTER: 'Vanaf computer'
     Filetype: 'Bestandstype'
     ListView: 'Lijstweergave'
+    MENUTITLE: Bestanden
     NEWFOLDER: Nieuwe map
     SIZE: Omvang
     THUMBSDELETED: '{count} ongebruikte miniatuurafbeeldingen zijn verwijderd'
     TreeView: 'Boomstructuur'
     Upload: Uploaden
-    MENUTITLE: Bestanden
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Verwijder mappen'
   AssetAdmin_Tools:
@@ -67,8 +67,8 @@ nl:
     DELETE_PAGES: 'Verwijder van gepubliceerde site'
     PUBLISHED_PAGES: '%d pagina''s gepubliceerd'
     PUBLISH_PAGES: Publiceer
-    UNPUBLISHED_PAGES: 'Publicatie van %d pagina''s ingetrokken'
-    UNPUBLISH_PAGES: Publicatie intrekken
+  CMSFileAddController:
+    MENUTITLE: Bestanden
   CMSMain:
     ACCESS: 'Toegang tot het ''{title}'' gedeelte'
     ACCESS_HELP: 'Bevoegdheid om paginastructuur en inhoud te bekijken. Bekijk- en bewerkingstoestemmingen kunnen worden toegekend met pagina-specifieke menu''s en het aparte "Inhoudsmachtigingen".'
@@ -87,6 +87,7 @@ nl:
     EMAIL: E-mail
     EditTree: 'Paginastructuur aanpassen'
     ListFiltered: 'Gefilterde lijst.'
+    MENUTITLE: 'Wijzig pagina'
     NEWPAGE: 'Nieuwe {pagetype}'
     PAGENOTEXISTS: 'Deze pagina bestaat niet'
     PAGES: Pagina 's
@@ -100,7 +101,6 @@ nl:
     REMOVED: '''{title}''{description} verwijderd van de live site'
     REMOVEDPAGE: '''{title}'' is van de gepubliceerde site verwijderd'
     REMOVEDPAGEFROMDRAFT: '''%s'' is verwijderd uit de concept site'
-    RESTORE: Herstel
     RESTORED: '''{title}'' is met succes hersteld'
     ROLLBACK: 'Terugdraaien naar deze versie'
     ROLLEDBACKPUBv2: 'Teruggedraaid naar gepubliceerde versie.'
@@ -112,31 +112,34 @@ nl:
     TabSettings: Instellingen
     TreeFiltered: 'Gefilterde boomstructuur.'
     TreeFilteredClear: 'Filter leegmaken'
-    MENUTITLE: 'Wijzig pagina'
   CMSMain_left_ss:
     APPLY_FILTER: 'Filter toepassen'
     RESET: Reset
   CMSPageAddController:
+    MENUTITLE: 'Pagina toevoegen'
     ParentMode_child: 'Onder een andere pagina'
     ParentMode_top: 'Hoogste niveau'
-    MENUTITLE: 'Pagina toevoegen'
+  CMSPageEditController:
+    MENUTITLE: 'Wijzig pagina'
   CMSPageHistoryController:
     COMPAREMODE: 'Vergelijken (selecteer 2)'
     COMPAREVERSIONS: 'Vergelijk versies'
     COMPARINGVERSION: 'U vergelijkt versie {version1} en {version2}.'
+    MENUTITLE: Geschiedenis
     REVERTTOTHISVERSION: 'Deze versie terugzetten'
     SHOWUNPUBLISHED: 'Toon nog niet gepubliceerde versies'
     SHOWVERSION: 'Toon versie'
     VIEW: toon
     VIEWINGLATEST: 'U bekijkt nu de laatste versie.'
     VIEWINGVERSION: 'U bekijkt nu versie {version}.'
-    MENUTITLE: Geschiedenis
   CMSPageHistoryController_versions_ss:
     AUTHOR: Auteur
     NOTPUBLISHED: 'Niet gepubliceerd'
     PUBLISHER: Publiceerder
     UNKNOWN: Onbekend
     WHEN: Wanneer
+  CMSPageSettingsController:
+    MENUTITLE: 'Wijzig pagina'
   CMSPagesController:
     GalleryView: 'Album weergave'
     ListView: 'Lijstweergave'
@@ -151,10 +154,8 @@ nl:
     FILTERDATEHEADING: Datum
     FILTERDATETO: Tot
     FILTERLABELTEXT: Inhoud
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Gewijzigde pagina''s'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Alle pagina''s (inclusief verwijderde)'
+  CMSSettingsController:
+    MENUTITLE: Instellingen
   CMSSiteTreeFilter_Search:
     Title: 'Alle pagina''s'
   ContentControl:
@@ -215,7 +216,6 @@ nl:
     DEFAULTSERVERERRORPAGETITLE: 'Probleem met de server'
     DESCRIPTION: 'Aangepaste tekst voor verschillende foutmeldingen (bv. "Pagina niet gevonden")'
     ERRORFILEPROBLEM: 'Fout: "{filename}" kan niet geopend worden om te schrijven. Controleer alstublieft de bestandspermissies.'
-    PLURALNAME: 'Foutpagina''s'
     SINGULARNAME: 'Foutpagina'
   Folder:
     AddFolderButton: 'Map toevoegen'
@@ -238,15 +238,14 @@ nl:
     HASBEENSETUP: 'Er is een verwijspagina opgezet zonder ergens naar te verwijzen.'
     HEADER: 'Deze pagina zal gebruikers naar een andere pagina doorsturen (redirect)'
     OTHERURL: 'Andere website URL'
-    PLURALNAME: 'Verwijzingspagina''s'
     REDIRECTTO: 'Doorverwijzen naar'
     REDIRECTTOEXTERNAL: 'Een andere website'
     REDIRECTTOPAGE: 'Een pagina op deze website'
     SINGULARNAME: 'Verwijzingspagina'
     YOURPAGE: 'Pagina op deze website'
   ReportAdmin:
-    ReportTitle: Titel
     MENUTITLE: Rapporten
+    ReportTitle: Titel
   ReportAdminForm:
     FILTERBY: 'Filter op'
   SITETREE:
@@ -314,7 +313,6 @@ nl:
     DEFAULTABOUTTITLE: 'Over Ons'
     DEFAULTCONTACTCONTENT: '<p>Je kan deze pagina vullen met je eigen inhoud, of ze verwijderen en je eigen pagina''s aanmaken.</p>'
     DEFAULTCONTACTTITLE: 'Contact'
-    DEFAULTHOMECONTENT: '<p>Welkom bij Silverstripe! Dit is de standaard homepagina. Je kan deze pagina wijzigen door <a href="admin/">het CMS</a> te openen. Je kan nu de <a href="http://doc.silverstripe.org">documentatie voor ontwikkelaars</a> bekijken, of aan <a href="http://doc.silverstripe.org/doku.php?id=tutorials">de tutorials</a> beginnen.'
     DEFAULTHOMETITLE: Home
     DELETEDPAGEHELP: 'Deze pagina is niet langer gepubliceerd'
     DELETEDPAGESHORT: Verwijderd
@@ -401,20 +399,5 @@ nl:
     EditLink: wijzigen
     HEADER: 'Dit is een virtuele pagina'
     HEADERWITHLINK: 'Dit is een virtuele pagina met de inhoud van "{title}" ({link})'
-    PLURALNAME: 'Virtuele pagina''s'
     PageTypNotAllowedOnRoot: 'Voor deze virtuele pagina is het originele paginatype "{type}" niet toegestaan op het hoogste niveau.'
     SINGULARNAME: 'Virtuele pagina'
-  CMSFileAddController:
-    MENUTITLE: Bestanden
-  CMSPageEditController:
-    MENUTITLE: 'Wijzig pagina'
-  CMSPageSettingsController:
-    MENUTITLE: 'Wijzig pagina'
-  CMSSettingsController:
-    MENUTITLE: Instellingen
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Verwijderde pagina''s'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Niet gepubliceerde concept pagina''s'
-  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
-    Title: 'Gepubliceerd maar verwijderd uit concept'

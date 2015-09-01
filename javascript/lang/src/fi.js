@@ -31,9 +31,15 @@
     "Tree.ThisPageOnly": "Vain tämä sivu",
     "Tree.ThisPageAndSubpages": "Tämä sivu ja alasivut",
     "Tree.ShowAsList": "Näytä alasivut listana",
-    "CMSMain.ConfirmRestoreFromLive": "Haluatko varmasti kopioida julkaistua sisältöä luonnossivustolle?",
+    "CMSMain.ConfirmRestoreFromLive": "Are you sure you want to revert draft to when the page was last published?",
     "CMSMain.RollbackToVersion": "Haluatko varmasti palauttaa #%s version tästä sivusta?",
+    "CMSMain.Archive": "Are you sure you want to archive this page and all of its children pages?\n\nThis page and all of its children will be unpublished and sent to the archive.",
+    "CMSMain.Restore": "Are you sure you want to restore this page from archive?",
+    "CMSMain.RestoreToRoot": "Are you sure you want to restore this page from archive?\n\nBecause the parent page is not available this will be restored to the top level.",
+    "CMSMain.Unpublish": "Are you sure you want to remove your page from the published site?\n\nThis page will still be available in the sitetree as draft.",
+    "CMSMain.DeleteFromDraft": "Are you sure you want to remove your page from the draft site?\n\nThis page will remain on the published site.",
     "URLSEGMENT.Edit": "Muokkaa",
     "URLSEGMENT.OK": "OK",
-    "URLSEGMENT.Cancel": "Peruuta"
+    "URLSEGMENT.Cancel": "Peruuta",
+    "URLSEGMENT.UpdateURL": "Update URL"
 }

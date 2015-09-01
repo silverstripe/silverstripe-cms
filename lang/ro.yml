@@ -19,12 +19,12 @@ ro:
     FROMYOURCOMPUTER: 'De pe calculator'
     Filetype: 'Tip fişier'
     ListView: 'Vizualizare listă'
+    MENUTITLE: Fişiere
     NEWFOLDER: Dosar nou
     SIZE: Mărime
     THUMBSDELETED: '{count} pictograme nefolosite au fost șterse'
     TreeView: 'Vizualizare arborescentă'
     Upload: Upload
-    MENUTITLE: Fişiere
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Ştergere dosare'
   AssetAdmin_Tools:
@@ -67,8 +67,8 @@ ro:
     DELETE_PAGES: 'Ştergere de pe site-ul live'
     PUBLISHED_PAGES: '%d pagini publicate, %d erori'
     PUBLISH_PAGES: Publicare
-    UNPUBLISHED_PAGES: '%d pagini au fost deactivate de la publicare'
-    UNPUBLISH_PAGES: Deactivare publicare
+  CMSFileAddController:
+    MENUTITLE: Fișiere
   CMSMain:
     ACCESS: 'Acces la secţiunea ''{title}'' '
     ACCESS_HELP: 'Permite vizualizarea secțiunii cu arborele de pagini și conținut. Permisiunile de vizualizare și editare pot fi setate specific prin meniul vertical din pagini sau separat în "Permisiuni de conținut". '
@@ -86,6 +86,7 @@ ro:
     EMAIL: E-mail
     EditTree: 'Editare structură arbore'
     ListFiltered: 'Listă filtrată'
+    MENUTITLE: 'Editează pagina'
     NEWPAGE: '{pagetype} nouă'
     PAGENOTEXISTS: 'Această pagină nu există'
     PAGES: Pagini
@@ -99,7 +100,6 @@ ro:
     REMOVED: 'Șterge ''{title}''{description} din site-ul live'
     REMOVEDPAGE: 'Înlătură ''{title}'' din site-ul publicat'
     REMOVEDPAGEFROMDRAFT: 'Înlătură ''%s'' din site-ul ciornă'
-    RESTORE: Restaurează
     RESTORED: 'Restaurare ''{title}'' cu succes'
     ROLLBACK: 'Revenire la versiunea aceasta'
     ROLLEDBACKPUBv2: 'Revenire la versiunea publicată'
@@ -111,31 +111,34 @@ ro:
     TabSettings: Setări
     TreeFiltered: 'Arbore filtrat'
     TreeFilteredClear: 'Șterge filtru'
-    MENUTITLE: 'Editează pagina'
   CMSMain_left_ss:
     APPLY_FILTER: 'Aplică Filtrul'
     RESET: Resetează
   CMSPageAddController:
+    MENUTITLE: 'Adaugă pagină'
     ParentMode_child: 'Sub altă pagină'
     ParentMode_top: 'Nivel top'
-    MENUTITLE: 'Adaugă pagină'
+  CMSPageEditController:
+    MENUTITLE: 'Editează Pagina'
   CMSPageHistoryController:
     COMPAREMODE: 'Mod comparare (selectează 2)'
     COMPAREVERSIONS: 'Compară Versiunile'
     COMPARINGVERSION: 'Comparație versiuni {version1} și {version2}.'
+    MENUTITLE: Istorie
     REVERTTOTHISVERSION: 'Revernire la versiune'
     SHOWUNPUBLISHED: 'Afișează versiunile nepublicate'
     SHOWVERSION: 'Afișează Versiune'
     VIEW: Vizualizare
     VIEWINGLATEST: 'Vizualizare curentă a ultimii versiuni.'
     VIEWINGVERSION: 'Vizualizarea versiunii {version}.'
-    MENUTITLE: Istorie
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
     NOTPUBLISHED: 'Nepublicat'
     PUBLISHER: Redactor
     UNKNOWN: Necunoscut
     WHEN: Când
+  CMSPageSettingsController:
+    MENUTITLE: 'Editare pagină'
   CMSPagesController:
     GalleryView: 'View Galerie'
     ListView: 'View listă'
@@ -150,10 +153,8 @@ ro:
     FILTERDATEHEADING: Data
     FILTERDATETO: La
     FILTERLABELTEXT: Conținut
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Pagini schimbate'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Toate paginile, incluzând cele șterse'
+  CMSSettingsController:
+    MENUTITLE: Setări
   CMSSiteTreeFilter_Search:
     Title: 'Toate paginile'
   ContentControl:
@@ -212,7 +213,6 @@ ro:
     DEFAULTSERVERERRORPAGETITLE: 'Eroare de server'
     DESCRIPTION: 'Conșinut preferențial pentru diferitele cazuri (ex. "Pagină negăsită")'
     ERRORFILEPROBLEM: 'Eroare la deschiderea fișierului "{filename}" pentru scriere. Vă rugăm verificași permisiunile.'
-    PLURALNAME: 'Eroare pagini'
     SINGULARNAME: 'Pagină de eroare'
   Folder:
     AddFolderButton: 'Adaugă director'
@@ -235,15 +235,14 @@ ro:
     HASBEENSETUP: 'O pagină referitoare a fost creată fără a direcționa către ceva'
     HEADER: 'Pagina v-a redirecționa utilizatorii către altă pagină'
     OTHERURL: 'URL-ul altui website'
-    PLURALNAME: 'Pagini referitoare'
     REDIRECTTO: 'Redirecționare către'
     REDIRECTTOEXTERNAL: 'Alt website'
     REDIRECTTOPAGE: 'O pagină de pe website-ul dumneavoastră'
     SINGULARNAME: 'Pagină referitoare'
     YOURPAGE: 'Pagină de pe website-ul dumneavoastră'
   ReportAdmin:
-    ReportTitle: Titlu
     MENUTITLE: Rapoarte
+    ReportTitle: Titlu
   ReportAdminForm:
     FILTERBY: 'Filtrează după'
   SITETREE:
@@ -311,7 +310,6 @@ ro:
     DEFAULTABOUTTITLE: 'Despre Noi'
     DEFAULTCONTACTCONTENT: '<p>Puteți completa pagina cu conținut propriu, sau o puteți șterge și să vă creați alte pagini.<br /></p>'
     DEFAULTCONTACTTITLE: 'Contactați-ne'
-    DEFAULTHOMECONTENT: '<p>Bine ați venit în SilverStripe! Aceasta este pagina principala. Puteți edita pagina deschizînd <a href="admin/">CMS-ul</a>. Acum puteți accesa <a href="http://doc.silverstripe.org">developer documentatia</a>, sau să începeți <a href="http://doc.silverstripe.org/doku.php?id=tutorials">tutorialele.</a></p>'
     DEFAULTHOMETITLE: Acasă
     DELETEDPAGEHELP: 'Pagina nu mai este publicată'
     DELETEDPAGESHORT: Șters
@@ -398,14 +396,5 @@ ro:
     EditLink: editare
     HEADER: 'Aceasta este o pagină virtuală '
     HEADERWITHLINK: 'Aceasta este o pagina virtuală care copiază conținut din "{title}" ({link})'
-    PLURALNAME: 'Pagini virtuale'
     PageTypNotAllowedOnRoot: 'Tipul original al pagini "{type}" nu este permis pe nivelul rădăcină pentru pagina virtuală'
     SINGULARNAME: 'Pagina Virtuala'
-  CMSFileAddController:
-    MENUTITLE: Fișiere
-  CMSPageEditController:
-    MENUTITLE: 'Editează Pagina'
-  CMSPageSettingsController:
-    MENUTITLE: 'Editare pagină'
-  CMSSettingsController:
-    MENUTITLE: Setări

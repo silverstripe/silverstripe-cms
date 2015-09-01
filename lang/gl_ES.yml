@@ -12,10 +12,10 @@ gl_ES:
     FROMYOURCOMPUTER: 'Dende o teu Computador'
     Filetype: 'Tipo ficheiro'
     ListView: 'Vista en Listado'
+    MENUTITLE: Ficheiros
     SIZE: Tamaño
     TreeView: 'Vista en Árbore'
     Upload: Subir
-    MENUTITLE: Ficheiros
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Eliminar cartafoles'
   AssetAdmin_Tools:
@@ -52,8 +52,8 @@ gl_ES:
     DELETE_PAGES: 'Eliminar do sitio publicado'
     PUBLISHED_PAGES: '%d páxinas publicadas, %d erros'
     PUBLISH_PAGES: Publicar
-    UNPUBLISHED_PAGES: '%d páxinas sen publicar'
-    UNPUBLISH_PAGES: Sen publicar
+  CMSFileAddController:
+    MENUTITLE: Ficheiros
   CMSMain:
     AddNew: 'Engadir nova páxina'
     AddNewButton: 'Engadir novo'
@@ -63,6 +63,7 @@ gl_ES:
     DELETE: 'Eliminar borrador'
     DELETEFP: Eliminar
     EMAIL: Correo-e
+    MENUTITLE: 'Editar Páxina'
     PAGENOTEXISTS: 'Esta páxina non existe'
     PAGES: Páxinas
     PAGETYPEANYOPT: Ningún
@@ -71,33 +72,35 @@ gl_ES:
     PUBALLFUN: 'Funcionalidade "Publicar Todo"'
     PUBALLFUN2: "Premendo este botón farás o equivalente de ir a todas as páxinas e premer en \"publicar\". \nIsto está pensado para facer un uso masivo despois das edicións de contido, por exemplo \ncando o sitio foi construído por primeira vez."
     REMOVEDPAGEFROMDRAFT: 'Eliminado ''%s''  do borrador do sitio'
-    RESTORE: Restaurar
     ROLLBACK: 'Desfacer a esta versión'
     SAVE: Gardar
     TabContent: Contido
     TabHistory: Historial
     TabSettings: Configuracións
-    MENUTITLE: 'Editar Páxina'
   CMSMain_left_ss:
     APPLY_FILTER: 'Aplicar Filtro'
     RESET: Reiniciar
   CMSPageAddController:
+    MENUTITLE: 'Engadir páxina'
     ParentMode_child: 'Baixo outra páxina'
     ParentMode_top: 'Nivel superior'
-    MENUTITLE: 'Engadir páxina'
+  CMSPageEditController:
+    MENUTITLE: 'Editar Páxina'
   CMSPageHistoryController:
     COMPAREMODE: 'Modo comparación (seleccionar dúas)'
     COMPAREVERSIONS: 'Comparar Versións'
+    MENUTITLE: Historial
     REVERTTOTHISVERSION: 'Retornar a esta versión'
     SHOWUNPUBLISHED: 'Amosar versións sen publicar'
     SHOWVERSION: 'Amosar Versión'
     VIEW: ver
-    MENUTITLE: Historial
   CMSPageHistoryController_versions_ss:
     NOTPUBLISHED: 'Non publicado'
     PUBLISHER: Editor
     UNKNOWN: Descoñecido
     WHEN: Cando
+  CMSPageSettingsController:
+    MENUTITLE: 'Editar Páxina'
   CMSPagesController:
     GalleryView: 'Vista en Galería'
     ListView: 'Vista en Listado'
@@ -107,10 +110,8 @@ gl_ES:
     MULTISELECT: Selección múltiple
   CMSPagesController_Tools_ss:
     FILTER: Filtro
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Páxinas cambiadas'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Todas as páxinas, incluindo eliminadas'
+  CMSSettingsController:
+    MENUTITLE: Configuracións
   CMSSiteTreeFilter_Search:
     Title: 'Todas as páxinas'
   ContentControl:
@@ -198,7 +199,6 @@ gl_ES:
     Content: Contido
     DEFAULTABOUTTITLE: 'Sobre nós'
     DEFAULTCONTACTTITLE: 'Contactarnos'
-    DEFAULTHOMECONTENT: '<p>Benvido a SilverStripe! Esta é a páxina de inicio por defecto. Podes editar esta páxina abrindo <a href="admin/">o CMS</a>. Agora podes acceder a <a href="http://doc.silverstripe.org">documentación do desenvolvedor</a>, ou comezar <a href="http://doc.silverstripe.org/doku.php?id=tutorials">os titoriais.</a></p>'
     DEFAULTHOMETITLE: Inicio
     DELETEDPAGESHORT: Eliminado
     DESCRIPTION: 'Páxina de contido xenérico'
@@ -249,13 +249,4 @@ gl_ES:
   VirtualPage:
     DESCRIPTION: 'Visualizar o contido doutra páxina'
     HEADER: 'Esta é unha páxina virtual'
-    PLURALNAME: 'Páxs Virtuais'
     SINGULARNAME: 'Páxina Virtual'
-  CMSFileAddController:
-    MENUTITLE: Ficheiros
-  CMSPageEditController:
-    MENUTITLE: 'Editar Páxina'
-  CMSPageSettingsController:
-    MENUTITLE: 'Editar Páxina'
-  CMSSettingsController:
-    MENUTITLE: Configuracións

@@ -31,9 +31,15 @@
     "Tree.ThisPageOnly": "このページのみ",
     "Tree.ThisPageAndSubpages": "このページとサブページ",
     "Tree.ShowAsList": "子どもをリストで表示する",
-    "CMSMain.ConfirmRestoreFromLive": "公開されているコンテンツを下書きサイトへ本当にコピーしますか?",
+    "CMSMain.ConfirmRestoreFromLive": "Are you sure you want to revert draft to when the page was last published?",
     "CMSMain.RollbackToVersion": "このページのバージョン#%sへ本当にロールバックしますか?",
+    "CMSMain.Archive": "Are you sure you want to archive this page and all of its children pages?\n\nThis page and all of its children will be unpublished and sent to the archive.",
+    "CMSMain.Restore": "Are you sure you want to restore this page from archive?",
+    "CMSMain.RestoreToRoot": "Are you sure you want to restore this page from archive?\n\nBecause the parent page is not available this will be restored to the top level.",
+    "CMSMain.Unpublish": "Are you sure you want to remove your page from the published site?\n\nThis page will still be available in the sitetree as draft.",
+    "CMSMain.DeleteFromDraft": "Are you sure you want to remove your page from the draft site?\n\nThis page will remain on the published site.",
     "URLSEGMENT.Edit": "編集",
     "URLSEGMENT.OK": "OK",
-    "URLSEGMENT.Cancel": "キャンセル"
+    "URLSEGMENT.Cancel": "キャンセル",
+    "URLSEGMENT.UpdateURL": "Update URL"
 }

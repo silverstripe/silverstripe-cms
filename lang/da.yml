@@ -16,12 +16,12 @@ da:
     FROMYOURCOMPUTER: 'Fra din computer'
     Filetype: 'Filtype'
     ListView: 'Listevisning'
+    MENUTITLE: Filer
     NEWFOLDER: Ny mappe
     SIZE: Størrelse
     THUMBSDELETED: '{count} ubrugte miniaturer er blevet slettet'
     TreeView: 'Trævisning'
     Upload: Overfør
-    MENUTITLE: Filer
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Slet mapper'
   AssetTableField:
@@ -59,8 +59,8 @@ da:
     DELETE_PAGES: 'Slet fra publiseret side'
     PUBLISHED_PAGES: 'Publiserede %d sider'
     PUBLISH_PAGES: Publisér
-    UNPUBLISHED_PAGES: 'U-publiserede %d sider'
-    UNPUBLISH_PAGES: U-publisér
+  CMSFileAddController:
+    MENUTITLE: Filer
   CMSMain:
     ACCESS: 'Adgang til ''{title}'' sektionen'
     ACCESS_HELP: 'Tillad visning af den sektion, som indeholder sidetræet og indhold. Visnings- og redigeringstilladelser kan håndteres gennem sidespecifikke rullemenuer, såvel som de enkelte "Inholdstilladelser".'
@@ -74,6 +74,7 @@ da:
     DESCREMOVED: 'og {count} efterkommere'
     EditTree: 'Rediger sidetræ'
     ListFiltered: 'Filtreret liste.'
+    MENUTITLE: 'Rediger side'
     NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Denne side eksisterer ikke'
     PAGES: Sider
@@ -86,7 +87,6 @@ da:
     PageAdded: 'Siden blev oprettet med succes'
     REMOVEDPAGE: 'Fjernede ''{title}'' fra den udgivne side'
     REMOVEDPAGEFROMDRAFT: '''%s''  fjernet fra udkast-sitet'
-    RESTORE: Genskab
     RESTORED: 'Genskabte ''{title}'' korrekt'
     ROLLBACK: 'Rul tilbage til denne version'
     SAVE: Gem
@@ -95,30 +95,33 @@ da:
     TabSettings: Indstillinger
     TreeFiltered: 'Filtreret sidetræ.'
     TreeFilteredClear: 'Nulstil filter'
-    MENUTITLE: 'Rediger side'
   CMSMain_left_ss:
     APPLY_FILTER: 'Anvend filter'
     RESET: Nulstil
   CMSPageAddController:
+    MENUTITLE: 'Tilføj side'
     ParentMode_child: 'Under en anden side'
     ParentMode_top: 'Højeste niveau'
-    MENUTITLE: 'Tilføj side'
+  CMSPageEditController:
+    MENUTITLE: 'Rediger side'
   CMSPageHistoryController:
     COMPAREMODE: 'Sammenligningstilstand (vælg to)'
     COMPAREVERSIONS: 'Sammenlign versioner'
     COMPARINGVERSION: 'Sammenligner versionerne {version1} og {version2}.'
+    MENUTITLE: Historik
     REVERTTOTHISVERSION: 'Genskab denne version'
     SHOWUNPUBLISHED: 'Vis versioner der ikke er udgivne'
     SHOWVERSION: 'Vis version'
     VIEW: Visning
     VIEWINGVERSION: 'Lige nu vises version {version}.'
-    MENUTITLE: Historik
   CMSPageHistoryController_versions_ss:
     AUTHOR: Forfatter
     NOTPUBLISHED: 'Ikke udgivet'
     PUBLISHER: Udgiver
     UNKNOWN: Ukendt
     WHEN: Hvornår
+  CMSPageSettingsController:
+    MENUTITLE: 'Rediger side'
   CMSPagesController:
     GalleryView: 'Gallerivisning'
     ListView: 'Listevisning'
@@ -133,10 +136,8 @@ da:
     FILTERDATEHEADING: Dato
     FILTERDATETO: Til
     FILTERLABELTEXT: Indhold
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Ændrede sider'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Alle sider, inklusive slettede'
+  CMSSettingsController:
+    MENUTITLE: Indstillinger
   CMSSiteTreeFilter_Search:
     Title: 'Alle sider'
   ContentControl:
@@ -184,15 +185,14 @@ da:
     HASBEENSETUP: 'En omdirigeringsside er blevet sat op, uden et sted at omdirigere til.'
     HEADER: 'Denne side omdirigerer besøgende til en anden side'
     OTHERURL: 'Andet websteds URL'
-    PLURALNAME: 'Videresendende sider'
     REDIRECTTO: 'Omdiriger til'
     REDIRECTTOEXTERNAL: 'Et andet websted'
     REDIRECTTOPAGE: 'En side på dit websted'
     SINGULARNAME: 'Viderestillende side'
     YOURPAGE: 'Side på dit websted'
   ReportAdmin:
-    ReportTitle: Titel
     MENUTITLE: Rapporter
+    ReportTitle: Titel
   ReportAdminForm:
     FILTERBY: 'Filtrer ved'
   SearchForm:
@@ -248,7 +248,6 @@ da:
     DEFAULTABOUTTITLE: 'Om os'
     DEFAULTCONTACTCONTENT: '<p>Du kan udfylde denne side med dit eget indhold, eller slette den og oprette dine egne sider.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontakt os'
-    DEFAULTHOMECONTENT: '<p>Velkommen til  SilverStripe! Dette er en standard forside. Du kan redigere den ved at åbne <a href="admin/">CMS</a>. Du kan læse <a href="http://doc.silverstripe.org">udviklerdokumentationen</a>, eller påbegynde en af  <a href="http://doc.silverstripe.org/doku.php?id=tutorials">selvstudierne.</a></p>\n'
     DEFAULTHOMETITLE: Forside
     DELETEDPAGEHELP: 'Siden er ikke længere udgiven'
     DELETEDPAGESHORT: Slettet
@@ -310,14 +309,5 @@ da:
   VirtualPage:
     DESCRIPTION: 'Viser indholdet fra en anden side'
     HEADER: 'Dette er en virtuel side'
-    PLURALNAME: 'Virtuelle sider'
     PageTypNotAllowedOnRoot: 'Original side type "{type}" er ikke tilladt på rodniveau for denne virtuelle side'
     SINGULARNAME: 'Virtuel side'
-  CMSFileAddController:
-    MENUTITLE: Filer
-  CMSPageEditController:
-    MENUTITLE: 'Rediger side'
-  CMSPageSettingsController:
-    MENUTITLE: 'Rediger side'
-  CMSSettingsController:
-    MENUTITLE: Indstillinger
