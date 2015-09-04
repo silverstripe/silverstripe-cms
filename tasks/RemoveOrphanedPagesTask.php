@@ -62,8 +62,8 @@ in the other stage:<br />
 	
 	public function index() {
 		Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.js');
-		Requirements::customCSS('#OrphanIDs .middleColumn {width: auto;}');
-		Requirements::customCSS('#OrphanIDs label {display: inline;}');
+		Requirements::custom_css('#OrphanIDs .middleColumn {width: auto;}');
+		Requirements::custom_css('#OrphanIDs label {display: inline;}');
 		
 		return $this->renderWith('BlankPage');
 	}

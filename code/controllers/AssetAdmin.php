@@ -75,7 +75,7 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang', false, true);
 		Requirements::css(CMS_DIR . "/css/screen.css");
 		$frameworkDir = FRAMEWORK_DIR;
-		Requirements::customScript(<<<JS
+		Requirements::custom_script(<<<JS
 			_TREE_ICONS = {};
 			_TREE_ICONS['Folder'] = {
 					fileIcon: '$frameworkDir/javascript/tree/images/page-closedfolder.gif',
