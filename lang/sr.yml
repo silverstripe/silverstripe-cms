@@ -19,12 +19,12 @@ sr:
     FROMYOURCOMPUTER: 'Са Вашег рачунара'
     Filetype: 'Тип датотеке'
     ListView: 'Приказ у виду листе'
+    MENUTITLE: Датотеке
     NEWFOLDER: Нова фасцикла
     SIZE: Величина
     THUMBSDELETED: '{count} некоришћених сличицâ је обрисано'
     TreeView: 'Преглед у виду стабла'
     Upload: Постави
-    MENUTITLE: Датотеке
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Обриши фасцикле'
   AssetAdmin_Tools:
@@ -67,6 +67,8 @@ sr:
     DELETE_PAGES: 'Избриши из објављеног сајта'
     PUBLISHED_PAGES: 'Објављено %d страница. Није успело објављивање %d страница.'
     PUBLISH_PAGES: Објави
+  CMSFileAddController:
+    MENUTITLE: Датотеке
   CMSMain:
     ACCESS: 'Приступ ''{title}'' секцији'
     ACCESS_HELP: 'Дозвољава преглед секције која садржи стабло страница и садржај. Дозволе за преглед и уређивање могу се подесити путем специфичних падајућих листи појединачних страница, као и путем "Дозволе за садржај".'
@@ -84,6 +86,7 @@ sr:
     EMAIL: Е-пошта
     EditTree: 'Измени стабло'
     ListFiltered: 'Филтрирана листа.'
+    MENUTITLE: 'Измени страницу'
     NEWPAGE: 'Нова {pagetype}'
     PAGENOTEXISTS: 'Ова страница не постоји'
     PAGES: Странице
@@ -108,31 +111,34 @@ sr:
     TabSettings: Подешавања
     TreeFiltered: 'Филтрирано стабло'
     TreeFilteredClear: 'Избриши филтер'
-    MENUTITLE: 'Измени страницу'
   CMSMain_left_ss:
     APPLY_FILTER: 'Примени филтер'
     RESET: Врати у пређашње стање
   CMSPageAddController:
+    MENUTITLE: 'Додај страницу'
     ParentMode_child: 'Као подстраницу друге странице'
     ParentMode_top: 'Вршни ниво'
-    MENUTITLE: 'Додај страницу'
+  CMSPageEditController:
+    MENUTITLE: 'Измени страницу'
   CMSPageHistoryController:
     COMPAREMODE: 'Режим поређења (изабери два)'
     COMPAREVERSIONS: 'Упореди верзије'
     COMPARINGVERSION: 'Поређење верзија {version1} и {version2}.'
+    MENUTITLE: Историја
     REVERTTOTHISVERSION: 'Врати на ову верзију'
     SHOWUNPUBLISHED: 'Прикажи необјављене верзије'
     SHOWVERSION: 'Прикажи верзију'
     VIEW: преглед
     VIEWINGLATEST: 'Тренутно се приказује последња верзија.'
     VIEWINGVERSION: 'Тренутно је приказана верзија {version}.'
-    MENUTITLE: Историја
   CMSPageHistoryController_versions_ss:
     AUTHOR: Аутор
     NOTPUBLISHED: 'Необјављено'
     PUBLISHER: Објављивач
     UNKNOWN: Непознато
     WHEN: Датум
+  CMSPageSettingsController:
+    MENUTITLE: 'Измени страницу'
   CMSPagesController:
     GalleryView: 'Приказ у виду галерије'
     ListView: 'Приказ у виду листе'
@@ -147,6 +153,8 @@ sr:
     FILTERDATEHEADING: Датум
     FILTERDATETO: За
     FILTERLABELTEXT: Садржај
+  CMSSettingsController:
+    MENUTITLE: Подешавања
   CMSSiteTreeFilter_Search:
     Title: 'Све странице'
   ContentControl:
@@ -233,8 +241,8 @@ sr:
     SINGULARNAME: 'Страница за преусмеравање'
     YOURPAGE: 'Страница на Вашем веб сајту'
   ReportAdmin:
-    ReportTitle: Наслов
     MENUTITLE: Извештаји
+    ReportTitle: Наслов
   ReportAdminForm:
     FILTERBY: 'Филтрирај по'
   SITETREE:
@@ -390,11 +398,3 @@ sr:
     HEADERWITHLINK: 'Ово је виртуелна страница која копира садржај из "{title}" ({link})'
     PageTypNotAllowedOnRoot: 'Оригинални тип странице "{type}" није дозвољен на вршном нивоу за ову виртуелну страницу'
     SINGULARNAME: 'Виртуелна страница'
-  CMSFileAddController:
-    MENUTITLE: Датотеке
-  CMSPageEditController:
-    MENUTITLE: 'Измени страницу'
-  CMSPageSettingsController:
-    MENUTITLE: 'Измени страницу'
-  CMSSettingsController:
-    MENUTITLE: Подешавања

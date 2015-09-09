@@ -19,12 +19,12 @@ et_EE:
     FROMYOURCOMPUTER: 'Teie arvutist'
     Filetype: 'Faili tüüp'
     ListView: 'Loendivaade'
+    MENUTITLE: Failid
     NEWFOLDER: Uus kaust
     SIZE: Suurus
     THUMBSDELETED: '{count} kasutamata pisipilti on kustutatud'
     TreeView: 'Puuvaade'
     Upload: Laadi üles
-    MENUTITLE: Failid
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Kustuta kaustad'
   AssetAdmin_Tools:
@@ -67,6 +67,8 @@ et_EE:
     DELETE_PAGES: 'Kustuta avaldatud lehekülgede hulgast'
     PUBLISHED_PAGES: 'Avaldatud %d lehte, %d tõrget'
     PUBLISH_PAGES: Avalda
+  CMSFileAddController:
+    MENUTITLE: Failid
   CMSMain:
     ACCESS: 'Juurdepääs jaotisele ''{title}'''
     ACCESS_HELP: 'Luba lehepuud ja sisu hõlmava jaotise vaatamine. Vaatamis- ja redigeerimisõigusi on võimalik hallata nii lehepõhiselt kui ka eraldi jaotise "Sisu õigused" abil.'
@@ -81,6 +83,7 @@ et_EE:
     EMAIL: E-post
     EditTree: 'Redigeeri'
     ListFiltered: 'Filtreeritud loend'
+    MENUTITLE: 'Redigeeri lehte'
     NEWPAGE: 'Uus {pagetype}'
     PAGENOTEXISTS: 'Antud lehekülge ei eksisteeri'
     PAGES: Lehed
@@ -102,29 +105,32 @@ et_EE:
     TabSettings: Seaded
     TreeFiltered: 'Filtreeritud puu.'
     TreeFilteredClear: 'Eemalda filtreering'
-    MENUTITLE: 'Redigeeri lehte'
   CMSMain_left_ss:
     APPLY_FILTER: 'Aktiveeri filter'
     RESET: Lähtesta
   CMSPageAddController:
+    MENUTITLE: 'Lisa leht'
     ParentMode_child: 'Teise lehe all'
     ParentMode_top: 'Kõrgem tase'
-    MENUTITLE: 'Lisa leht'
+  CMSPageEditController:
+    MENUTITLE: 'Muuda lehte'
   CMSPageHistoryController:
     COMPAREMODE: 'Võrdlusrežiim (valige kaks)'
     COMPAREVERSIONS: 'Võrdle versioone'
     COMPARINGVERSION: 'Versioonide {version1} ja {version2} võrdlus.'
+    MENUTITLE: Ajalugu
     REVERTTOTHISVERSION: 'Taasta valitud versioon'
     SHOWUNPUBLISHED: 'Näita ka avaldamata versioone'
     SHOWVERSION: 'Näita versiooni'
     VIEW: vaade
     VIEWINGVERSION: 'Hetkel kuvatud versioon {version}.'
-    MENUTITLE: Ajalugu
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
     NOTPUBLISHED: 'Avaldamata'
     PUBLISHER: Avaldaja
     UNKNOWN: Tundmatu
+  CMSPageSettingsController:
+    MENUTITLE: 'Muuda lehte'
   CMSPagesController:
     GalleryView: 'Galeriivaade'
     ListView: 'Loendivaade'
@@ -139,6 +145,8 @@ et_EE:
     FILTERDATEHEADING: Kuupäev
     FILTERDATETO: Kuni
     FILTERLABELTEXT: Sisu
+  CMSSettingsController:
+    MENUTITLE: Seaded
   CMSSiteTreeFilter_Search:
     Title: 'Kõik lehed'
   ContentControl:
@@ -223,8 +231,8 @@ et_EE:
     SINGULARNAME: 'Ümbersuunamisleht'
     YOURPAGE: 'Lehekülg sinu veebisaidil'
   ReportAdmin:
-    ReportTitle: Pealkiri
     MENUTITLE: Aruanded
+    ReportTitle: Pealkiri
   ReportAdminForm:
     FILTERBY: 'Filtreeri'
   SearchForm:
@@ -366,11 +374,3 @@ et_EE:
     HEADER: 'See on virtuaalne leht'
     PageTypNotAllowedOnRoot: 'Lehe originaaltüüp "{type}" ei ole selle virtuaalse lehe juurtasandil lubatud.'
     SINGULARNAME: 'Virtuaalne leht'
-  CMSFileAddController:
-    MENUTITLE: Failid
-  CMSPageEditController:
-    MENUTITLE: 'Muuda lehte'
-  CMSPageSettingsController:
-    MENUTITLE: 'Muuda lehte'
-  CMSSettingsController:
-    MENUTITLE: Seaded

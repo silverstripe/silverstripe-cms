@@ -24,6 +24,8 @@ tr:
   CMSBatchActions:
     DELETE_PAGES: 'Yayındaki siteden sil'
     PUBLISH_PAGES: Yayınla
+  CMSFileAddController:
+    MENUTITLE: Dosyalar
   CMSMain:
     AddNew: 'Yeni sayfa ekle'
     AddNewButton: 'Yeni ekle'
@@ -33,6 +35,7 @@ tr:
     DELETE: 'Taslak siteden kaldır'
     DELETEFP: Yayındaki siteden kaldır
     EMAIL: Eposta
+    MENUTITLE: 'Sayfayı düzenle'
     PAGENOTEXISTS: 'Sayfa bulunamadı'
     PAGES: Sayfalar
     PAGETYPEOPT: 'Sayfa Tipi'
@@ -46,12 +49,13 @@ tr:
     TabContent: İçerik
     TabHistory: Geçmiş
     TabSettings: Ayarlar
-    MENUTITLE: 'Sayfayı düzenle'
   CMSMain_left_ss:
     APPLY_FILTER: 'Filteri Uygula'
     RESET: Sıfırla
   CMSPageAddController:
     MENUTITLE: 'Sayfa ekle'
+  CMSPageEditController:
+    MENUTITLE: 'Sayfayı Düzenle'
   CMSPageHistoryController:
     COMPAREVERSIONS: 'Versiyonları karşılaştır'
     MENUTITLE: Geçmiş
@@ -61,11 +65,15 @@ tr:
     PUBLISHER: Yayınlayan
     UNKNOWN: Bilinmeyen
     WHEN: Ne zaman
+  CMSPageSettingsController:
+    MENUTITLE: 'Sayfayı düzenle'
   CMSPagesController:
     GalleryView: 'Galeri Görünümü'
     MENUTITLE: Sayfalar
   CMSPagesController_Tools_ss:
     FILTER: Filtre
+  CMSSettingsController:
+    MENUTITLE: Ayarlar
   CMSSiteTreeFilter_Search:
     Title: 'Tüm sayfalar'
   ContentControl:
@@ -206,11 +214,3 @@ tr:
   VirtualPage:
     HEADER: 'Bu sanal bir sayfadır'
     SINGULARNAME: 'Sanal Sayfa'
-  CMSFileAddController:
-    MENUTITLE: Dosyalar
-  CMSPageEditController:
-    MENUTITLE: 'Sayfayı Düzenle'
-  CMSPageSettingsController:
-    MENUTITLE: 'Sayfayı düzenle'
-  CMSSettingsController:
-    MENUTITLE: Ayarlar

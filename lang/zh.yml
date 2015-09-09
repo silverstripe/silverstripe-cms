@@ -19,12 +19,12 @@ zh:
     FROMYOURCOMPUTER: '从您的电脑'
     Filetype: '文件类型'
     ListView: '列表视图'
+    MENUTITLE: 文件
     NEWFOLDER: 新文件夹
     SIZE: 大小
     THUMBSDELETED: '{count} 个未使用的缩略图已被删除'
     TreeView: '树状图'
     Upload: 上传
-    MENUTITLE: 文件
   AssetAdmin_DeleteBatchAction:
     TITLE: '删除文件夹'
   AssetAdmin_Tools:
@@ -67,6 +67,8 @@ zh:
     DELETE_PAGES: '从已发布网站中删除'
     PUBLISHED_PAGES: '发布 %d 个页面， %d 个失败'
     PUBLISH_PAGES: 发布
+  CMSFileAddController:
+    MENUTITLE: 文件
   CMSMain:
     ACCESS: '访问 ''{title}'' 部分'
     ACCESS_HELP: '允许查看包含页面树及内容 部分。查看和编辑权限可以通过页面特定的下拉菜单进行控制，与使用单独的”内容权限“处理一样。'
@@ -84,6 +86,7 @@ zh:
     EMAIL: 电子邮件
     EditTree: '编辑树'
     ListFiltered: '已过滤的列表。'
+    MENUTITLE: '编辑页面'
     NEWPAGE: '新建{pagetype}'
     PAGENOTEXISTS: '该页面不存在'
     PAGES: 页面
@@ -108,31 +111,34 @@ zh:
     TabSettings: 设置
     TreeFiltered: '已过滤的树。'
     TreeFilteredClear: '清除过滤器'
-    MENUTITLE: '编辑页面'
   CMSMain_left_ss:
     APPLY_FILTER: '应用过滤器'
     RESET: 重置
   CMSPageAddController:
+    MENUTITLE: '添加页面'
     ParentMode_child: '根据另一个页面'
     ParentMode_top: '顶层'
-    MENUTITLE: '添加页面'
+  CMSPageEditController:
+    MENUTITLE: '编辑页面'
   CMSPageHistoryController:
     COMPAREMODE: '比较模式（选择两个）'
     COMPAREVERSIONS: '版本比较'
     COMPARINGVERSION: '正在对比版本{version1}和{version2}。'
+    MENUTITLE: 历史记录
     REVERTTOTHISVERSION: '恢复到这个版本'
     SHOWUNPUBLISHED: '显示未发布的版本'
     SHOWVERSION: '显示版本'
     VIEW: 查看
     VIEWINGLATEST: '当前正在查看最新版本。'
     VIEWINGVERSION: '当前正在查看版本{version}。'
-    MENUTITLE: 历史记录
   CMSPageHistoryController_versions_ss:
     AUTHOR: 作者
     NOTPUBLISHED: '未发布'
     PUBLISHER: 发布者
     UNKNOWN: 未知的
     WHEN: 何时
+  CMSPageSettingsController:
+    MENUTITLE: '编辑页面'
   CMSPagesController:
     GalleryView: '图库视图'
     ListView: '列表视图'
@@ -147,6 +153,8 @@ zh:
     FILTERDATEHEADING: 日期
     FILTERDATETO: 到
     FILTERLABELTEXT: 内容
+  CMSSettingsController:
+    MENUTITLE: 设置
   CMSSiteTreeFilter_Search:
     Title: '所有页面'
   ContentControl:
@@ -233,8 +241,8 @@ zh:
     SINGULARNAME: '重定向页'
     YOURPAGE: '您网站的页面'
   ReportAdmin:
-    ReportTitle: 标题
     MENUTITLE: 报告
+    ReportTitle: 标题
   ReportAdminForm:
     FILTERBY: '过滤'
   SITETREE:
@@ -390,11 +398,3 @@ zh:
     HEADERWITHLINK: '这是一个从“{标题}”复制内容的虚拟页面（{链接}）'
     PageTypNotAllowedOnRoot: '此虚拟页面的根级不允许使用原页面类型 "{type}"'
     SINGULARNAME: '虚拟页面'
-  CMSFileAddController:
-    MENUTITLE: 文件
-  CMSPageEditController:
-    MENUTITLE: '编辑页面'
-  CMSPageSettingsController:
-    MENUTITLE: '编辑页面'
-  CMSSettingsController:
-    MENUTITLE: 设置

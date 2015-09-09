@@ -115,6 +115,60 @@ class ModelAsControllerTest extends FunctionalTest {
 		$response = $this->get('newlevel1/newlevel2/level3');
 	}
 
+	/**
+	 * Test that the redirect works even with a lot of nested pages
+	 * Original: /oldurl/level2/level3/level4/level5
+	 * New: /newurl/level2/level3/level4/level5
+	 */
+	public function testHeavilyNestedRenamedRedirectedPages() {
+		$page = new Page();
+		$page->Title      = 'First Level';
+		$page->URLSegment = 'oldurl';
+		$page->write();
+		$page->publish('Stage', 'Live');
+		
+		$page->URLSegment = 'newurl';
+		$page->write();
+		$page->publish('Stage', 'Live');
+
+		$page2 = new Page();
+		$page2->Title      = 'Second Level Page';
+		$page2->URLSegment = 'level2';
+		$page2->ParentID = $page->ID;
+		$page2->write();
+		$page2->publish('Stage', 'Live');
+		
+		$page3 = new Page();
+		$page3->Title      = 'Third Level Page';
+		$page3->URLSegment = 'level3';
+		$page3->ParentID = $page2->ID;
+		$page3->write();
+		$page3->publish('Stage', 'Live');
+	
+		$page4 = new Page();
+		$page4->Title      = 'Fourth Level Page';
+		$page4->URLSegment = 'level4';
+		$page4->ParentID = $page3->ID;
+		$page4->write();
+		$page4->publish('Stage', 'Live');
+		
+		$page5 = new Page();
+		$page5->Title      = 'Fifth Level Page';
+		$page5->URLSegment = 'level5';
+		$page5->ParentID = $page4->ID;
+		$page5->write();
+		$page5->publish('Stage', 'Live');
+
+		// Test that the redirect still works fine when trying to access the most nested page
+		$response = $this->get('oldurl/level2/level3/level4/level5/');
+		$this->assertEquals($response->getStatusCode(), 301);
+		$this->assertEquals(
+			Controller::join_links(Director::baseURL() . 'newurl/level2/level3/level4/level5/'),
+			$response->getHeader('Location')
+		);
+	}
+
+
 	public function testRedirectionForPreNestedurlsBookmarks(){
 		$this->generateNestedPagesFixture();
 

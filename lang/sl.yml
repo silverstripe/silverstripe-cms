@@ -14,11 +14,11 @@ sl:
     FROMTHEINTERNET: 'S spleta'
     FROMYOURCOMPUTER: 'Z vašega računalnika'
     Filetype: 'Tip datoteke'
+    MENUTITLE: Datoteke
     NEWFOLDER: Nova mapa
     SIZE: Velikost
     THUMBSDELETED: '{count} neuporabljenih predoglednih sličic je bilo izbrisanih'
     Upload: Naloži
-    MENUTITLE: Datoteke
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Izbriši mape'
   AssetAdmin_left_ss:
@@ -55,6 +55,8 @@ sl:
     DELETE_PAGES: 'Izbriši z objavljenega spletnega mesta'
     PUBLISHED_PAGES: 'Objavljenih je bilo %d strani. (Število napak %d)'
     PUBLISH_PAGES: Objavi
+  CMSFileAddController:
+    MENUTITLE: Datoteke
   CMSMain:
     ACCESS: 'Dostop do razdelka ''{title}'' '
     ACCESS_HELP: 'Dovoli vpogled  sklop z drevesno strukturo in vsebino. Pravice za ogled in urejanje je možno urejati prek dropdown-seznamov za vsako posamezno stran, ali pa ločeno v sklopu Nastavitve pravic za upravljanje z vsebino (Content permissions). '
@@ -67,6 +69,7 @@ sl:
     DELETEFP: Izbriši z objavljenega spletnega mesta
     EMAIL: E-naslov
     EditTree: 'Uredi drevesno strukturo'
+    MENUTITLE: 'Uredi stran'
     NEWPAGE: 'Nov {pagetype}'
     PAGENOTEXISTS: 'Stran na tem naslovu ne obstaja'
     PAGES: Strani
@@ -83,20 +86,23 @@ sl:
     TabContent: Vsebina
     TabHistory: Zgodovina
     TabSettings: Nastavitve
-    MENUTITLE: 'Uredi stran'
   CMSMain_left_ss:
     RESET: Ponastavi
   CMSPageAddController:
-    ParentMode_top: 'Stran na prvem nivoju'
     MENUTITLE: 'Dodaj stran'
+    ParentMode_top: 'Stran na prvem nivoju'
+  CMSPageEditController:
+    MENUTITLE: 'Uredi stran'
   CMSPageHistoryController:
     COMPAREVERSIONS: 'Primerjaj različice'
     COMPARINGVERSION: 'Primerjava različic {version1} in {version2}.'
+    MENUTITLE: Zgodovina
     REVERTTOTHISVERSION: 'Povrni v to različico'
     SHOWUNPUBLISHED: 'Pokaži neobjavljeno različico'
     SHOWVERSION: 'Pokaži različico'
     VIEWINGVERSION: 'Trenutno prikazana različica {version}.'
-    MENUTITLE: Zgodovina
+  CMSPageSettingsController:
+    MENUTITLE: 'Uredi stran'
   CMSSiteTreeFilter_Search:
     Title: 'Vse strani'
   ContentControl:
@@ -174,8 +180,8 @@ sl:
     REDIRECTTOPAGE: 'Stran na tvojem spletnem mestu'
     YOURPAGE: 'Stran na tvojem spletnem mestu'
   ReportAdmin:
-    ReportTitle: Naslov
     MENUTITLE: Poročila
+    ReportTitle: Naslov
   ReportAdminForm:
     FILTERBY: 'Filtriraj po'
   SearchForm:
@@ -297,9 +303,3 @@ sl:
   VirtualPage:
     HEADER: 'To je navidezna stran'
     SINGULARNAME: 'Virtualna stran'
-  CMSFileAddController:
-    MENUTITLE: Datoteke
-  CMSPageEditController:
-    MENUTITLE: 'Uredi stran'
-  CMSPageSettingsController:
-    MENUTITLE: 'Uredi stran'

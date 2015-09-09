@@ -7,9 +7,6 @@ addons:
     packages:
       - tidy
 
-php:
-  - 5.4
-
 addons:
   firefox: "31.0"
 
@@ -20,34 +17,19 @@ env:
     - "ARTIFACTS_S3_BUCKET=silverstripe-travis-artifacts"
     - secure: "7V20Qk3bIG2AlTJaA5D/uzB8vUVvRwQp+xjRYUxlahtj9FcuqEV3HIyjwwJe0T6Z1bnRYuu28ZnCT2CfP9BBZ3FE7AwSZbPase9c0/at2qDJNqkvIdC1xZ1H6Fcy2LSwNB9wLQPe613ItVdanitEuwE41iowxBPslxUUTnwx7eY="
     - secure: "f/GWlbnNri2YpCOrJfZl7tkhpMmcRVUbCdmb+beAY90gFBJQPHtljzf8M4KaCP0OkLOtRFuGoMFdIcpadl4J6IG1XP18IJNz+nKzCL/sJj/FF9y77RdMHWE9jr21G9ar5tywkn7JM6vrnTCY89OnHeQx67SKvxqX5CpVx+rdcEU="
-  matrix:
-    - DB=MYSQL
-    - DB=SQLITE
-    - DB=PGSQL
 
 matrix:
-  allow_failures:
-    - php: hhvm
-    - php: 7.0
-    - php: nightly
-
   include:
-    - php: 5.4
-      env: DB=MYSQL PDO=1
-    - php: 5.5
-      env: DB=MYSQL
-    - php: 5.6
-      env: DB=MYSQL
-    - php: 5.4
-      env: DB=MYSQL BEHAT_TEST=1
     - php: 5.3
       env: DB=MYSQL
-    - php: 7.0
-      env: DB=MYSQL
-    - php: nightly
-      env: DB=MYSQL
-    - php: hhvm
-      env: DB=MYSQL
+    - php: 5.4
+      env: DB=PGSQL
+    - php: 5.5
+      env: DB=SQLITE
+    - php: 5.6
+      env: DB=MYSQL PDO=1
+    - php: 5.6
+      env: DB=MYSQL BEHAT_TEST=1
 
 before_script:
  - composer self-update || true
@@ -72,8 +54,3 @@ branches:
     - 2.2
     - 2.3
     - translation-staging
-
-notifications:
-  irc:
-    channels:
-     - "irc.freenode.org#silverstripe"

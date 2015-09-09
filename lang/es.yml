@@ -19,12 +19,12 @@ es:
     FROMYOURCOMPUTER: 'Desde tu ordenador'
     Filetype: 'Tipo de archivo'
     ListView: 'Vista de Lista'
+    MENUTITLE: Archivos
     NEWFOLDER: NuevaCarpeta
     SIZE: Tamaño
     THUMBSDELETED: '{count} miniaturas no utilizadas han sido eliminadas'
     TreeView: 'Vista en árbol'
     Upload: Subir
-    MENUTITLE: Archivos
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Eliminar carpetas'
   AssetAdmin_Tools:
@@ -61,19 +61,25 @@ es:
   CMSAddPageController:
     Title: 'Añadir página'
   CMSBatchActions:
+    ARCHIVE: Archivar
+    ARCHIVED_PAGES: '%d páginas archivadas'
     DELETED_DRAFT_PAGES: 'Eliminadas %d páginas del sitio en borrador, %d fallos'
     DELETED_PAGES: 'Eliminadas %d páginas del sitio publicado, %d fallos'
     DELETE_DRAFT_PAGES: 'Eliminar del sitio borrador'
     DELETE_PAGES: 'Eliminar del sitio público'
     PUBLISHED_PAGES: 'Publicadas %d páginas, %d fallos'
     PUBLISH_PAGES: Publicar
+    RESTORE: Restaurar
+    RESTORED_PAGES: '%d páginas restauradas'
     UNPUBLISHED_PAGES: 'Ocultar %d páginas'
     UNPUBLISH_PAGES: Ocultar publicación
-    ARCHIVE: Archivar
-    ARCHIVED_PAGES: '%d páginas archivadas'
+  CMSFileAddController:
+    MENUTITLE: Archivos
   CMSMain:
     ACCESS: 'Acceso a la sección ''{title}'''
     ACCESS_HELP: 'Permitir la visualización de la sección que contiene el árbol de la página y el contenido. Ver y editar permisos puede ser gestionado a través de menús desplegables específicos de las páginas, así como los "permisos de contenido" separados.'
+    ARCHIVE: Archivar
+    ARCHIVEDPAGE: '''%s'' páginas archivadas'
     AddNew: 'Añadir nueva página'
     AddNewButton: 'Añadir nuevo'
     AddPageRestriction: 'Agregar restricción a la página'
@@ -89,6 +95,7 @@ es:
     EMAIL: E-mail
     EditTree: 'Editar árbol'
     ListFiltered: 'Mostrar lista'
+    MENUTITLE: 'Editar página'
     NEWPAGE: 'Nuevo {pagetype}'
     PAGENOTEXISTS: 'Esta página no existe'
     PAGES: Páginas
@@ -103,10 +110,10 @@ es:
     REMOVEDPAGE: 'Eliminado ''{title}'' del sitio publicado'
     REMOVEDPAGEFROMDRAFT: 'Borrado ''%s''%s desde el sitio no publicado'
     RESTORE: 'Recuperar borrador'
-    RESTORE_TO_ROOT: 'Recuperar borrador al nivel superior'
-    RESTORE_TO_ROOT_DESC: 'Recuperar la versión archivada del borrador como de nivel superior'
     RESTORED: 'Restablecido ''{title}'' correctamente'
     RESTORE_DESC: 'Recuperar la versión archivada del borrador'
+    RESTORE_TO_ROOT: 'Recuperar borrador al nivel superior'
+    RESTORE_TO_ROOT_DESC: 'Recuperar la versión archivada del borrador como de nivel superior'
     ROLLBACK: 'Restaurar esta versión'
     ROLLEDBACKPUBv2: 'Restaurado'
     ROLLEDBACKVERSIONv2: 'Versión #%d restaurada'
@@ -117,34 +124,35 @@ es:
     TabSettings: Ajustes
     TreeFiltered: 'Árbol filtrado'
     TreeFilteredClear: 'Borrar filtro'
-    MENUTITLE: 'Editar página'
-    ARCHIVE: Archivar
-    ARCHIVEDPAGE: '''%s'' páginas archivadas'
   CMSMain_left_ss:
     APPLY_FILTER: 'Aplicar filtro'
-    RESET: Restablecer
     CLEAR_FILTER: 'Limpiar filtro'
+    RESET: Restablecer
   CMSPageAddController:
+    MENUTITLE: 'Añadir página'
     ParentMode_child: 'Debajo de otra página'
     ParentMode_top: 'Nivel superior'
-    MENUTITLE: 'Añadir página'
+  CMSPageEditController:
+    MENUTITLE: 'Editar página'
   CMSPageHistoryController:
     COMPAREMODE: 'Modo comparación (seleccionar dos)'
     COMPAREVERSIONS: 'Comparar Versiones'
     COMPARINGVERSION: 'Comparando versiones {version1} y {version2}'
+    MENUTITLE: Historial
     REVERTTOTHISVERSION: 'Volver a esta versión'
     SHOWUNPUBLISHED: 'Mostrar versiones no publicadas'
     SHOWVERSION: 'Mostrar Versión'
     VIEW: vista
     VIEWINGLATEST: 'Viendo la última versión'
     VIEWINGVERSION: 'Actualmente viendo la versión {version}.'
-    MENUTITLE: Historial
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
     NOTPUBLISHED: 'Sin publicar'
     PUBLISHER: Publicado por
     UNKNOWN: Desconocido
     WHEN: Cuando
+  CMSPageSettingsController:
+    MENUTITLE: 'Editar página'
   CMSPagesController:
     GalleryView: 'Ver como galería'
     ListView: 'Vista como lista'
@@ -154,17 +162,19 @@ es:
     MULTISELECT: Multi-selección
   CMSPagesController_Tools_ss:
     FILTER: Filtro
+  CMSSIteTreeFilter_PublishedPages:
+    Title: 'Páginas publicadas'
   CMSSearch:
     FILTERDATEFROM: De
     FILTERDATEHEADING: Fecha
     FILTERDATETO: Hasta
     FILTERLABELTEXT: Filtrar
+  CMSSettingsController:
+    MENUTITLE: Ajustes
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Páginas modificadas'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'Todas las páginas, incluyendo archivadas'
-  CMSSIteTreeFilter_PublishedPages:
-    Title: 'Páginas publicadas'
   CMSSiteTreeFilter_Search:
     Title: 'Todas las paginas'
   CMSSiteTreeFilter_StatusDeletedPages:
@@ -261,8 +271,8 @@ es:
     SINGULARNAME: 'Página de redirección apuntando a una página que no existe'
     YOURPAGE: 'Página en su sitio web'
   ReportAdmin:
-    ReportTitle: Título
     MENUTITLE: Informes
+    ReportTitle: Título
   ReportAdminForm:
     FILTERBY: 'Filtrar por'
   SITETREE:
@@ -317,6 +327,9 @@ es:
     ADDEDTODRAFTSHORT: Borrador
     ALLOWCOMMENTS: '¿Permitir comentarios en esta página?'
     APPEARSVIRTUALPAGES: 'Este contenido también aparece en las páginas virtuales en las secciones {title}.'
+    ARCHIVEDPAGEHELP: 'Esta página ha sido removida de los borradores y del sitio en vivo'
+    ARCHIVEDPAGESHORT: Archivada
+    BUTTONARCHIVEDESC: 'Ocultar y mandar al archivo'
     BUTTONCANCELDRAFT: 'Cancelar los cambios en el borrador'
     BUTTONCANCELDRAFTDESC: 'Elimine el borrador y regrese a la página que se encuentra publicada actualmente'
     BUTTONPUBLISHED: Publicado
@@ -401,9 +414,9 @@ es:
     many_many_BackLinkTracking: 'Rastreo de Backlinks'
     many_many_ImageTracking: 'Rastreo de Imágenes'
     many_many_LinkTracking: 'Rastreo de Enlaces'
-    ARCHIVEDPAGEHELP: 'Esta página ha sido removida de los borradores y del sitio en vivo'
-    ARCHIVEDPAGESHORT: Archivada
-    BUTTONARCHIVEDESC: 'Ocultar y mandar al archivo'
+  SiteTreeFileExtension:
+    BACKLINK_LIST_DESCRIPTION: 'Esta lista muestra todas las páginas que han sido añadidas mediante un editor WYSIWYG.'
+    EDIT: Editar
   SiteTreeURLSegmentField:
     EMPTY: 'Vacío'
     HelpChars: 'Los caracteres especiales son automáticamente convertidos o eliminados.'
@@ -423,14 +436,3 @@ es:
     PLURALNAME: 'Páginas virtuales'
     PageTypNotAllowedOnRoot: 'Tipo de página original "{type}" no se permite en el nivel raíz para esta página virtual'
     SINGULARNAME: 'Página Virtual'
-  CMSFileAddController:
-    MENUTITLE: Archivos
-  CMSPageEditController:
-    MENUTITLE: 'Editar página'
-  CMSPageSettingsController:
-    MENUTITLE: 'Editar página'
-  CMSSettingsController:
-    MENUTITLE: Ajustes
-  SiteTreeFileExtension:
-    BACKLINK_LIST_DESCRIPTION: 'Esta lista muestra todas las páginas que han sido añadidas mediante un editor WYSIWYG.'
-    EDIT: Editar

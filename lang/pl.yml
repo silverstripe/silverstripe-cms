@@ -19,12 +19,12 @@ pl:
     FROMYOURCOMPUTER: 'Z komputera'
     Filetype: 'Typ pliku'
     ListView: 'Widok listy'
+    MENUTITLE: Pliki
     NEWFOLDER: Nowy katalog
     SIZE: Rozmiar
     THUMBSDELETED: '{count} nieuzywane miniatury zostały usunięte'
     TreeView: 'Widok drzewa'
     Upload: Prześlij
-    MENUTITLE: Pliki
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Usuń foldery'
   AssetAdmin_Tools:
@@ -67,6 +67,8 @@ pl:
     DELETE_PAGES: 'Usuń z opublikowanej witryny'
     PUBLISHED_PAGES: 'Opublikowano %d stron, %d się nie powiodło'
     PUBLISH_PAGES: Opublikuj
+  CMSFileAddController:
+    MENUTITLE: Pliki
   CMSMain:
     ACCESS: 'Dostęp do sekcji ''{title}'''
     ACCESS_HELP: 'Zezwala na oglądanie sekcji zawierających drzewo stron oraz treść. Prawo Przeglądaj i edytuj może być obsługiwane przez pola wyboru dostępne na stronach oraz poprzez zakładkę uprawnień.'
@@ -85,6 +87,7 @@ pl:
     EMAIL: Email
     EditTree: 'Edytuj drzewko'
     ListFiltered: 'Filtrowana lista.'
+    MENUTITLE: 'Edytuj stronę'
     NEWPAGE: 'Nowa {pagetype}'
     PAGENOTEXISTS: 'Ta strona nie istnieje'
     PAGES: Strony
@@ -109,31 +112,34 @@ pl:
     TabSettings: Opcje
     TreeFiltered: 'Filtruj drzewko'
     TreeFilteredClear: 'Wyczyść filtr'
-    MENUTITLE: 'Edytuj stronę'
   CMSMain_left_ss:
     APPLY_FILTER: 'Zastosuj filtr'
     RESET: Resetuj
   CMSPageAddController:
+    MENUTITLE: 'Dodaj stronę'
     ParentMode_child: 'Pod inną stroną'
     ParentMode_top: 'Główny poziom'
-    MENUTITLE: 'Dodaj stronę'
+  CMSPageEditController:
+    MENUTITLE: 'Edytuj stronę'
   CMSPageHistoryController:
     COMPAREMODE: 'Tryb porównywania (wybierz dwie)'
     COMPAREVERSIONS: 'Porównaj wersje'
     COMPARINGVERSION: 'Porównanie wersji {version1} i {version2}.'
+    MENUTITLE: Historia
     REVERTTOTHISVERSION: 'Wróć do tej wersji'
     SHOWUNPUBLISHED: 'Pokaż nieopublikowane wersje'
     SHOWVERSION: 'Pokaż wersję'
     VIEW: zobacz
     VIEWINGLATEST: 'Obecnie oglądasz najnowszą wersję'
     VIEWINGVERSION: 'Obecnie oglądasz wersję {version}.'
-    MENUTITLE: Historia
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
     NOTPUBLISHED: 'Nieopublikowana'
     PUBLISHER: Edytor
     UNKNOWN: Nieznany
     WHEN: Kiedy
+  CMSPageSettingsController:
+    MENUTITLE: 'Edytuj stronę'
   CMSPagesController:
     GalleryView: 'Tryb galerii'
     ListView: 'Widok listy'
@@ -148,6 +154,8 @@ pl:
     FILTERDATEHEADING: Data
     FILTERDATETO: Do
     FILTERLABELTEXT: Zawartość
+  CMSSettingsController:
+    MENUTITLE: Ustawienia
   CMSSiteTreeFilter_Search:
     Title: 'Wszystkie strony'
   ContentControl:
@@ -236,8 +244,8 @@ pl:
     SINGULARNAME: 'Strona przekierowująca'
     YOURPAGE: 'Strona na Twojej witrynie'
   ReportAdmin:
-    ReportTitle: Tytuł
     MENUTITLE: Raporty
+    ReportTitle: Tytuł
   ReportAdminForm:
     FILTERBY: 'Filtruj po'
   SITETREE:
@@ -393,11 +401,3 @@ pl:
     HEADERWITHLINK: 'Strona wirtualna odzwierciedlająca treść "{title}" ({link})'
     PageTypNotAllowedOnRoot: '"{type}" nie jest dozwolona dla głównego poziomu wirtualnej strony'
     SINGULARNAME: 'Wirtualna Strona'
-  CMSFileAddController:
-    MENUTITLE: Pliki
-  CMSPageEditController:
-    MENUTITLE: 'Edytuj stronę'
-  CMSPageSettingsController:
-    MENUTITLE: 'Edytuj stronę'
-  CMSSettingsController:
-    MENUTITLE: Ustawienia

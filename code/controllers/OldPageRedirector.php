@@ -10,8 +10,8 @@ class OldPageRedirector extends Extension {
 	 * @throws SS_HTTPResponse_Exception
 	 */
 	public function onBeforeHTTPError404($request) {
-		// Build up the request parameters
-		$params = array_filter(array_values($request->allParams()), function($v) { return ($v !== NULL); });
+		// We need to get the URL ourselves because $request->allParams() only has a max of 4 params
+		$params = preg_split('|/+|', $request->getURL());
 
 		$getvars = $request->getVars();
 		unset($getvars['url']);
