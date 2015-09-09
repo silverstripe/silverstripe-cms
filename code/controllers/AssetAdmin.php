@@ -192,7 +192,7 @@ JS
 			$uploadBtn = new LiteralField(
 				'UploadButton', 
 				sprintf(
-					'<a class="ss-ui-button ss-ui-action-constructive cms-panel-link" data-pjax-target="Content" data-icon="drive-upload" href="%s">%s</a>',
+					'<a class="ss-ui-button font-icon-upload cms-panel-link" data-pjax-target="Content" data-icon="drive-upload" href="%s">%s</a>',
 					Controller::join_links(singleton('CMSFileAddController')->Link(), '?ID=' . $folder->ID),
 					_t('Folder.UploadFilesButton', 'Upload')
 				)
@@ -206,7 +206,7 @@ JS
 			$addFolderBtn = new LiteralField(
 				'AddFolderButton', 
 				sprintf(
-					'<a class="ss-ui-button ss-ui-action-constructive cms-add-folder-link" data-icon="add" data-url="%s" href="%s">%s</a>',
+					'<a class="ss-ui-button font-icon-plus-circled cms-add-folder-link" data-icon="add" data-url="%s" href="%s">%s</a>',
 					Controller::join_links($this->Link('AddForm'), '?' . http_build_query(array(
 						'action_doAdd' => 1,
 						'ParentID' => $folder->ID,
@@ -224,7 +224,7 @@ JS
 			$syncButton = new LiteralField(
 				'SyncButton',
 				sprintf(
-					'<a class="ss-ui-button ss-ui-action ui-button-text-icon-primary ss-ui-button-ajax" data-icon="arrow-circle-double" title="%s" href="%s">%s</a>',
+					'<a class="ss-ui-button ss-ui-action ui-button-text-icon-primary ss-ui-button-ajax font-icon-sync" data-icon="arrow-circle-double" title="%s" href="%s">%s</a>',
 					_t('AssetAdmin.FILESYSTEMSYNCTITLE', 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'),
 					$this->Link('doSync'),
 					_t('AssetAdmin.FILESYSTEMSYNC','Sync files')

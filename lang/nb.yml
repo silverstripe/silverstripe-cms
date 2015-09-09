@@ -19,12 +19,12 @@ nb:
     FROMYOURCOMPUTER: 'Fra din PC'
     Filetype: 'Filtype'
     ListView: 'Listevisning'
+    MENUTITLE: Filer
     NEWFOLDER: Ny mappe
     SIZE: Størrelse
     THUMBSDELETED: '{count} ubrukte miniatyrbilder har blitt slettet.'
     TreeView: 'Trevisning'
     Upload: Last opp
-    MENUTITLE: Filer
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Slett mapper'
   AssetAdmin_Tools:
@@ -67,6 +67,8 @@ nb:
     DELETE_PAGES: 'Slett fra publisert side'
     PUBLISHED_PAGES: 'Publiserte %d sider, %d feilet.'
     PUBLISH_PAGES: Publiser
+  CMSFileAddController:
+    MENUTITLE: Filer
   CMSMain:
     ACCESS: 'Adgang til seksjon for ''{title}'''
     ACCESS_HELP: 'Lar deg se seksjonen som inneholder sidetreet og annet innhold. Tillatelser for å vise og redigere kan behandles gjennom sidespesifikke nedtrekkslister, så vel som  separate "Innholdstillatelser".'
@@ -84,6 +86,7 @@ nb:
     EMAIL: Epost
     EditTree: 'Rediger treet'
     ListFiltered: 'Filtrerte liste.'
+    MENUTITLE: 'Rediger side'
     NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Siden eksisterer ikke'
     PAGES: Sider
@@ -108,31 +111,34 @@ nb:
     TabSettings: Innstillinger
     TreeFiltered: 'Filtrerte treet.'
     TreeFilteredClear: 'Fjern filtrering'
-    MENUTITLE: 'Rediger side'
   CMSMain_left_ss:
     APPLY_FILTER: 'Aktiver filter'
     RESET: Tilbakestill
   CMSPageAddController:
+    MENUTITLE: 'Legg til side'
     ParentMode_child: 'Under en annen side'
     ParentMode_top: 'Toppnivå'
-    MENUTITLE: 'Legg til side'
+  CMSPageEditController:
+    MENUTITLE: 'Rediger side'
   CMSPageHistoryController:
     COMPAREMODE: 'Sammenlign modus (velg to)'
     COMPAREVERSIONS: 'Sammenlign versjoner'
     COMPARINGVERSION: 'Sammenligner versjon {version1} og {version2}.'
+    MENUTITLE: Historie
     REVERTTOTHISVERSION: 'Tilbakestill til denne versjonen'
     SHOWUNPUBLISHED: 'Vis upubliserte versjoner'
     SHOWVERSION: 'Vis versjon'
     VIEW: Visning
     VIEWINGLATEST: 'Viser den nyeste versjonen.'
     VIEWINGVERSION: 'Viser versjon {version}.'
-    MENUTITLE: Historie
   CMSPageHistoryController_versions_ss:
     AUTHOR: Forfatter
     NOTPUBLISHED: 'Ikke publisert'
     PUBLISHER: Utgiver
     UNKNOWN: Ukjent
     WHEN: Når
+  CMSPageSettingsController:
+    MENUTITLE: 'Rediger siden'
   CMSPagesController:
     GalleryView: 'Gallerivisning'
     ListView: 'Listevisning'
@@ -147,6 +153,8 @@ nb:
     FILTERDATEHEADING: Dato
     FILTERDATETO: Til
     FILTERLABELTEXT: Innhold
+  CMSSettingsController:
+    MENUTITLE: Innstillinger
   CMSSiteTreeFilter_Search:
     Title: 'Alle sider'
   ContentControl:
@@ -233,8 +241,8 @@ nb:
     SINGULARNAME: 'Omdirigeringsside'
     YOURPAGE: 'Side på ditt nettsted'
   ReportAdmin:
-    ReportTitle: Tittel
     MENUTITLE: Rapporter
+    ReportTitle: Tittel
   ReportAdminForm:
     FILTERBY: 'Filtrer på '
   SITETREE:
@@ -390,11 +398,3 @@ nb:
     HEADERWITHLINK: 'Dette er en virtuell side som kopierer innhold fra "{title}" ({link})'
     PageTypNotAllowedOnRoot: 'Originaltypen "{type}" er ikke tillatt på toppnivået for denne virtuelle siden.'
     SINGULARNAME: 'Virtuell side'
-  CMSFileAddController:
-    MENUTITLE: Filer
-  CMSPageEditController:
-    MENUTITLE: 'Rediger side'
-  CMSPageSettingsController:
-    MENUTITLE: 'Rediger siden'
-  CMSSettingsController:
-    MENUTITLE: Innstillinger

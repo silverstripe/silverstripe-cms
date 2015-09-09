@@ -19,12 +19,12 @@ af:
     FROMYOURCOMPUTER: 'Van jou rekenaar af'
     Filetype: 'Lêer tipe'
     ListView: 'Lys aansig'
+    MENUTITLE: Lêers
     NEWFOLDER: Nuwe Dossier
     SIZE: Groote
     THUMBSDELETED: '{count} ongebruikte duimnaelsketse was verwyder'
     TreeView: 'Boom aansig'
     Upload: Laai op
-    MENUTITLE: Lêers
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Verwyder dossiere'
   AssetAdmin_Tools:

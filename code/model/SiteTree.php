@@ -862,6 +862,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return bool True if the current user can add children
 	 */
 	public function canAddChildren($member = null) {
+		// Disable adding children to archived pages
+		if($this->getIsDeletedFromStage()) {
+			return false;
+		}
+
 		if(!$member || !(is_a($member, 'Member')) || is_numeric($member)) {
 			$member = Member::currentUserID();
 		}

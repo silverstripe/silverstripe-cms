@@ -14,10 +14,10 @@ bg:
     FILESYSTEMSYNCTITLE: 'Актуализира базата данни с файловете от файловата система. Полезно когато файлове са били качени не през системата, а например през FTP.'
     FROMTHEINTERNET: 'От интернет'
     ListView: 'Изглед в списък'
+    MENUTITLE: Файлове
     NEWFOLDER: Нова директория
     SIZE: Размер
     TreeView: 'Дървовиден изглед'
-    MENUTITLE: Файлове
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Изтрити папки'
   AssetAdmin_Tools:
@@ -71,6 +71,7 @@ bg:
     DELETE: 'Изтрий черновата и отиди на текущата публикувана страница'
     DELETEFP: Изтрии
     ListFiltered: 'Филтриран списък.'
+    MENUTITLE: 'Редактиране на страницата'
     PAGENOTEXISTS: 'Тази страница не съществува'
     PAGES: Страници
     PAGETYPEANYOPT: Всички
@@ -88,24 +89,27 @@ bg:
     TabHistory: История
     TabSettings: Настройки
     TreeFilteredClear: 'Нулирай филтъра'
-    MENUTITLE: 'Редактиране на страницата'
   CMSMain_left_ss:
     APPLY_FILTER: 'Приложи филтър'
   CMSPageAddController:
+    MENUTITLE: 'Добави страница'
     ParentMode_child: 'Под друга страница'
     ParentMode_top: 'Най-високо ниво'
-    MENUTITLE: 'Добави страница'
+  CMSPageEditController:
+    MENUTITLE: 'Редактиране на страницата'
   CMSPageHistoryController:
     COMPAREMODE: 'Режим на сравнение (Избери два)'
     COMPAREVERSIONS: 'Сравни версиите'
+    MENUTITLE: История
     SHOWUNPUBLISHED: 'Покажи непублекуваната версия'
     SHOWVERSION: 'Покажи версията'
     VIEW: Изглед
-    MENUTITLE: История
   CMSPageHistoryController_versions_ss:
     AUTHOR: Автор
     UNKNOWN: Неизвестно
     WHEN: Когато
+  CMSPageSettingsController:
+    MENUTITLE: 'Редактиране на страницата'
   CMSPagesController_ContentToolbar_ss:
     MULTISELECT: Избиране на няколко
   CMSPagesController_Tools_ss:
@@ -285,7 +289,3 @@ bg:
   VirtualPage:
     HEADER: 'Това е виртуална страница'
     SINGULARNAME: 'Виртуална страница'
-  CMSPageEditController:
-    MENUTITLE: 'Редактиране на страницата'
-  CMSPageSettingsController:
-    MENUTITLE: 'Редактиране на страницата'

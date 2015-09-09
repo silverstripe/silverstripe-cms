@@ -16,12 +16,12 @@ uk:
     FROMYOURCOMPUTER: 'З мого комп''ютера'
     Filetype: 'Тип файлу'
     ListView: 'У вигляді списку'
+    MENUTITLE: Файли
     NEWFOLDER: Нова Тека
     SIZE: Розмір
     THUMBSDELETED: '{count} невикористаних ескізів було видалено'
     TreeView: 'У вигляді дерева'
     Upload: Завантажити
-    MENUTITLE: Файли
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Видалені папки'
   AssetAdmin_Tools:
@@ -61,6 +61,8 @@ uk:
     DELETE_PAGES: 'Видалити з опублікованого сайту'
     PUBLISHED_PAGES: 'Опубліковано %d сторінок, %d навдач'
     PUBLISH_PAGES: Опублікувати
+  CMSFileAddController:
+    MENUTITLE: Файли
   CMSMain:
     ACCESS: 'Доступ до секції ''{title}'' '
     ACCESS_HELP: 'Дозволити перегляд розділу, що містить дерево сторінок і зміст. Дозволами на перегляд та редагування, а також окремими дозволами на контент, можна керувати на відповідних сторінках.'
@@ -73,6 +75,7 @@ uk:
     DELETEFP: Видалити
     DESCREMOVED: 'і {count} нащадків'
     EMAIL: Електронна пошта
+    MENUTITLE: 'Редагувати сторінку'
     PAGENOTEXISTS: 'Ця сторінка не існує'
     PAGES: Сторінки
     PAGETYPEANYOPT: Будь-який
@@ -88,36 +91,41 @@ uk:
     TabContent: Вміст
     TabHistory: Історія
     TabSettings: Налаштування
-    MENUTITLE: 'Редагувати сторінку'
   CMSMain_left_ss:
     APPLY_FILTER: 'Застосувати фільтр'
     RESET: Відновити
   CMSPageAddController:
+    MENUTITLE: 'Додати сторінку'
     ParentMode_child: 'Під іншою сторінкою'
     ParentMode_top: 'Вищий рівень'
-    MENUTITLE: 'Додати сторінку'
+  CMSPageEditController:
+    MENUTITLE: 'Редагувати сторінку'
   CMSPageHistoryController:
     COMPAREMODE: 'Режим порівняння (виберіть два)'
     COMPAREVERSIONS: 'Порівняти версії'
     COMPARINGVERSION: 'Порівняння версій {version1} та {version2}.'
+    MENUTITLE: Історія
     REVERTTOTHISVERSION: 'Відновити цю версію'
     SHOWUNPUBLISHED: 'Показати неопубліковані версії'
     SHOWVERSION: 'Показати версію'
     VIEW: вигляд
     VIEWINGVERSION: 'Переглядається версія {version}.'
-    MENUTITLE: Історія
   CMSPageHistoryController_versions_ss:
     AUTHOR: Автор
     NOTPUBLISHED: 'Не опубліковано'
     PUBLISHER: Видавець
     UNKNOWN: Невідомий
     WHEN: Коли
+  CMSPageSettingsController:
+    MENUTITLE: 'Редагувати сторінку'
   CMSPagesController_ContentToolbar_ss:
     MULTISELECT: Множинний вибір
   CMSPagesController_Tools_ss:
     FILTER: Фільтр
   CMSSearch:
     FILTERDATEFROM: Від
+  CMSSettingsController:
+    MENUTITLE: Налаштування
   CMSSiteTreeFilter_Search:
     Title: 'Всі сторінки'
   ContentControl:
@@ -290,11 +298,3 @@ uk:
     HEADER: 'Це віртуальна сторінка'
     PageTypNotAllowedOnRoot: 'Тип сторінки "{type}" не допускається на кореневому рівні для цієї віртуальної сторінки'
     SINGULARNAME: 'Віртуальна сторінка'
-  CMSFileAddController:
-    MENUTITLE: Файли
-  CMSPageEditController:
-    MENUTITLE: 'Редагувати сторінку'
-  CMSPageSettingsController:
-    MENUTITLE: 'Редагувати сторінку'
-  CMSSettingsController:
-    MENUTITLE: Налаштування

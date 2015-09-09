@@ -16,11 +16,11 @@ hu:
     FROMYOURCOMPUTER: 'Számítógépéről'
     Filetype: 'Állomány típusa'
     ListView: 'Lista nézet'
+    MENUTITLE: Állományok
     NEWFOLDER: Új mappa
     SIZE: Méret
     TreeView: '"Fa" nézet'
     Upload: Feltöltés
-    MENUTITLE: Állományok
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Mappák törlése'
   AssetAdmin_Tools:
@@ -61,6 +61,8 @@ hu:
     DELETE_PAGES: 'Törlés a publikált oldalakból'
     PUBLISHED_PAGES: '%d oldal publikálva, %d hibás'
     PUBLISH_PAGES: Publikálni
+  CMSFileAddController:
+    MENUTITLE: Állományok
   CMSMain:
     AddNew: 'Új oldal hozzáadása'
     AddNewButton: 'Új hozzáadása'
@@ -76,6 +78,7 @@ hu:
     EMAIL: E-mail
     EditTree: 'Menüszerkeszet módosítása'
     ListFiltered: 'Szűrt lista'
+    MENUTITLE: 'Oldal szerkesztése'
     NEWPAGE: 'Új {pagetype}'
     PAGENOTEXISTS: 'Ez az oldal nem létezik.'
     PAGES: Oldalak
@@ -99,30 +102,33 @@ hu:
     TabHistory: Történet
     TabSettings: Beállítások
     TreeFilteredClear: 'Szűrő törlése'
-    MENUTITLE: 'Oldal szerkesztése'
   CMSMain_left_ss:
     APPLY_FILTER: 'Szűrő alkalmazása'
   CMSPageAddController:
+    MENUTITLE: 'Oldal hozzáadása'
     ParentMode_child: 'Másik oldal alatt'
     ParentMode_top: 'Felső szint'
-    MENUTITLE: 'Oldal hozzáadása'
+  CMSPageEditController:
+    MENUTITLE: 'Oldal szerkesztése'
   CMSPageHistoryController:
     COMPAREMODE: 'Összehasonlítás (select two)'
     COMPAREVERSIONS: 'Verziók összehasonlítása'
     COMPARINGVERSION: '{version1} és {version2} verziók összehaonlítása. '
+    MENUTITLE: Történet
     REVERTTOTHISVERSION: 'Visszatérés erre a verzióra'
     SHOWUNPUBLISHED: 'Publikálatlan verziók megjelenítése'
     SHOWVERSION: 'Verzió megtekintése'
     VIEW: megtekintés
     VIEWINGLATEST: 'Jelenleg ez az utolsó verzió'
     VIEWINGVERSION: 'Verziószám: {version}'
-    MENUTITLE: Történet
   CMSPageHistoryController_versions_ss:
     AUTHOR: Szerző
     NOTPUBLISHED: 'Nincs publikálva'
     PUBLISHER: Szerző
     UNKNOWN: Ismeretlen
     WHEN: Mikor
+  CMSPageSettingsController:
+    MENUTITLE: 'Oldal szerkesztése'
   CMSPagesController:
     GalleryView: 'Galéria nézet'
     ListView: 'Lista nézet'
@@ -135,6 +141,8 @@ hu:
     FILTERDATEHEADING: Dátum
     FILTERDATETO: -ig
     FILTERLABELTEXT: Tartalom
+  CMSSettingsController:
+    MENUTITLE: Beállítások
   CMSSiteTreeFilter_Search:
     Title: 'Összes oldal'
   ContentControl:
@@ -204,8 +212,8 @@ hu:
     SINGULARNAME: 'Átirányító oldal'
     YOURPAGE: 'Oldal a weblapodon'
   ReportAdmin:
-    ReportTitle: Cím
     MENUTITLE: Jelentések
+    ReportTitle: Cím
   ReportAdminForm:
     FILTERBY: 'Szűrés'
   SearchForm:
@@ -341,11 +349,3 @@ hu:
     HEADER: 'Ez egy virtuális oldal'
     PLURALNAME: 'Virtuális oldalak'
     SINGULARNAME: 'Virtuális oldal'
-  CMSFileAddController:
-    MENUTITLE: Állományok
-  CMSPageEditController:
-    MENUTITLE: 'Oldal szerkesztése'
-  CMSPageSettingsController:
-    MENUTITLE: 'Oldal szerkesztése'
-  CMSSettingsController:
-    MENUTITLE: Beállítások

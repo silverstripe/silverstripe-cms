@@ -19,12 +19,12 @@ ar:
     FROMYOURCOMPUTER: 'من حاسوبك'
     Filetype: 'نوع الملف'
     ListView: 'عرض القائمة'
+    MENUTITLE: الملفات
     NEWFOLDER: مجلد جديد
     SIZE: الحجم
     THUMBSDELETED: 'تم حذف {count} صور مصغرة غير المستخدمة'
     TreeView: 'عرض الشجرة'
     Upload: تحميل
-    MENUTITLE: الملفات
   AssetAdmin_DeleteBatchAction:
     TITLE: 'احذف المجلدات'
   AssetAdmin_Tools:
@@ -67,6 +67,8 @@ ar:
     DELETE_PAGES: 'حذف من الصفحة المنشورة'
     PUBLISHED_PAGES: '%d من الصفحات المنشورة'
     PUBLISH_PAGES: النشر
+  CMSFileAddController:
+    MENUTITLE: ملفات
   CMSMain:
     ACCESS: 'النفاذ إلى القسم ''{title}'''
     ACCESS_HELP: 'سماح بعرض لقسم يحتوي على صفحة الشجرة والمحتوى. يمكن التعامل معها عرض وتحرير الأذونات من خلال القائمه المنسدله للروابط محددة صفحة، فضلا عن فصل "أذونات المحتوى".'
@@ -84,6 +86,7 @@ ar:
     EMAIL: البريد الإلكتروني
     EditTree: 'تعديل الهيكل'
     ListFiltered: 'قائمة تمت تصفيتها.'
+    MENUTITLE: 'حرر الصفحة'
     NEWPAGE: '{pagetype} جديد'
     PAGENOTEXISTS: 'هذه الصفحة غير موجودة'
     PAGES: الصفحات
@@ -108,31 +111,34 @@ ar:
     TabSettings: الإعدادات
     TreeFiltered: 'الشجرة المصفاة.'
     TreeFilteredClear: 'أزل المصفي'
-    MENUTITLE: 'حرر الصفحة'
   CMSMain_left_ss:
     APPLY_FILTER: 'طبق عامل تصفية'
     RESET: إعادة الوضع الأصلي
   CMSPageAddController:
+    MENUTITLE: 'أضف صفحة'
     ParentMode_child: 'تحت صفحة أخرى'
     ParentMode_top: 'أعلى مستوى'
-    MENUTITLE: 'أضف صفحة'
+  CMSPageEditController:
+    MENUTITLE: 'تحرير الصفحة'
   CMSPageHistoryController:
     COMPAREMODE: 'وضع المقارنة (حدد اثنين)'
     COMPAREVERSIONS: 'قارن الإصدارات'
     COMPARINGVERSION: 'مقارنة الإصدارين {version1} و {version2}.'
+    MENUTITLE: السجل
     REVERTTOTHISVERSION: 'العودة إلى هذا الإصدار'
     SHOWUNPUBLISHED: 'عرض الإصدارات الغير منشورة'
     SHOWVERSION: 'اعرض الإصدار'
     VIEW: عرض
     VIEWINGLATEST: 'يقع حاليا عرض أحدث إصدار.'
     VIEWINGVERSION: 'يقع حاليا عرض إصدار  {version}.'
-    MENUTITLE: السجل
   CMSPageHistoryController_versions_ss:
     AUTHOR: الكاتب
     NOTPUBLISHED: 'غير منشور'
     PUBLISHER: الناشر
     UNKNOWN: غير معروف
     WHEN: متى
+  CMSPageSettingsController:
+    MENUTITLE: 'تحرير صفحة'
   CMSPagesController:
     GalleryView: 'مشاهدة المعرض'
     ListView: 'عرض القائمة'
@@ -147,6 +153,8 @@ ar:
     FILTERDATEHEADING: موعد
     FILTERDATETO: إلى
     FILTERLABELTEXT: المحتوى
+  CMSSettingsController:
+    MENUTITLE: الإعدادات
   CMSSiteTreeFilter_Search:
     Title: 'كل الصفحات'
   ContentControl:
@@ -233,8 +241,8 @@ ar:
     SINGULARNAME: 'معيد توجيه الصفحة'
     YOURPAGE: 'صفحة في موقعك الشخصي'
   ReportAdmin:
-    ReportTitle: العنوان
     MENUTITLE: التقارير
+    ReportTitle: العنوان
   ReportAdminForm:
     FILTERBY: 'فرز عبر'
   SITETREE:
@@ -390,11 +398,3 @@ ar:
     HEADERWITHLINK: 'هذه صفحة افتراضية تنسخ المحتوى من "{title}" ({link})'
     PageTypNotAllowedOnRoot: 'نوع الصفحة الأصلية "{type}"غير مسموح به على مستوى الجذر لهذه الصفحة الافتراضية'
     SINGULARNAME: 'الصفحة الافتراضية'
-  CMSFileAddController:
-    MENUTITLE: ملفات
-  CMSPageEditController:
-    MENUTITLE: 'تحرير الصفحة'
-  CMSPageSettingsController:
-    MENUTITLE: 'تحرير صفحة'
-  CMSSettingsController:
-    MENUTITLE: الإعدادات

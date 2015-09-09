@@ -19,12 +19,12 @@ ru:
     FROMYOURCOMPUTER: 'С диска'
     Filetype: 'Тип файла'
     ListView: 'В виде списка'
+    MENUTITLE: Файлы
     NEWFOLDER: Новая папка
     SIZE: Размер
     THUMBSDELETED: '{count} неиспользуемых миниатюр удалено'
     TreeView: 'В виде дерева'
     Upload: Загрузить
-    MENUTITLE: Файлы
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Удалить папки'
   AssetAdmin_Tools:
@@ -67,6 +67,8 @@ ru:
     DELETE_PAGES: 'Удалить из опубликованной версии сайта'
     PUBLISHED_PAGES: 'Опубликовано %d страниц, %d ошибок'
     PUBLISH_PAGES: Опубликовать
+  CMSFileAddController:
+    MENUTITLE: Файлы
   CMSMain:
     ACCESS: 'Доступ к разделу ''{title}'''
     ACCESS_HELP: 'Возможность просматривать раздел, содержащий дерево страниц и контент. Настройка прав просмотра и редактирования производится через выпадающие меню на отдельных страницах, а также через "Права доступа к содержимому".'
@@ -85,6 +87,7 @@ ru:
     EMAIL: Email
     EditTree: 'Редактировать дерево'
     ListFiltered: 'Отфильтрованный список.'
+    MENUTITLE: 'Править страницу'
     NEWPAGE: 'Новая {pagetype}'
     PAGENOTEXISTS: 'Страница не существует'
     PAGES: Страницы
@@ -109,31 +112,34 @@ ru:
     TabSettings: Настройки
     TreeFiltered: 'Отфильтрованное дерево.'
     TreeFilteredClear: 'Сбросить фильтр'
-    MENUTITLE: 'Править страницу'
   CMSMain_left_ss:
     APPLY_FILTER: 'Применить фильтр'
     RESET: Восстановить
   CMSPageAddController:
+    MENUTITLE: 'Добавить страницу'
     ParentMode_child: 'Под другой страницей'
     ParentMode_top: 'Корневая страница'
-    MENUTITLE: 'Добавить страницу'
+  CMSPageEditController:
+    MENUTITLE: 'Редактировать страницу'
   CMSPageHistoryController:
     COMPAREMODE: 'Режим сравнения (выбрать две)'
     COMPAREVERSIONS: 'Сравнить версии'
     COMPARINGVERSION: 'Сравнение версий {version1} и {version2}.'
+    MENUTITLE: История
     REVERTTOTHISVERSION: 'Вернуться на эту версию'
     SHOWUNPUBLISHED: 'Показать неопубликованные версии'
     SHOWVERSION: 'Показать версию'
     VIEW: обзор
     VIEWINGLATEST: 'Вы просматриваете самую новую версию.'
     VIEWINGVERSION: 'Вы просматриваете версию {version}.'
-    MENUTITLE: История
   CMSPageHistoryController_versions_ss:
     AUTHOR: Автор
     NOTPUBLISHED: 'Не издавалось'
     PUBLISHER: Издатель
     UNKNOWN: Неизвестно
     WHEN: Когда
+  CMSPageSettingsController:
+    MENUTITLE: 'Править страницу'
   CMSPagesController:
     GalleryView: 'В виде галереи'
     ListView: 'Обзор списка'
@@ -148,6 +154,8 @@ ru:
     FILTERDATEHEADING: Дата
     FILTERDATETO: До
     FILTERLABELTEXT: Содержимое
+  CMSSettingsController:
+    MENUTITLE: Настройки
   CMSSiteTreeFilter_Search:
     Title: 'Все страницы'
   ContentControl:
@@ -236,8 +244,8 @@ ru:
     SINGULARNAME: 'Страница перенаправления'
     YOURPAGE: 'Страница вашего сайта'
   ReportAdmin:
-    ReportTitle: Название
     MENUTITLE: Отчеты
+    ReportTitle: Название
   ReportAdminForm:
     FILTERBY: 'Фильтровать по'
   SITETREE:
@@ -393,11 +401,3 @@ ru:
     HEADERWITHLINK: 'Это виртуальная страница, копирующая содержимое из "{title}" ({link})'
     PageTypNotAllowedOnRoot: 'Страницы типа "{type}" недопустимы в качестве корневых для этой виртуальной страницы'
     SINGULARNAME: 'Виртуальная страница'
-  CMSFileAddController:
-    MENUTITLE: Файлы
-  CMSPageEditController:
-    MENUTITLE: 'Редактировать страницу'
-  CMSPageSettingsController:
-    MENUTITLE: 'Править страницу'
-  CMSSettingsController:
-    MENUTITLE: Настройки

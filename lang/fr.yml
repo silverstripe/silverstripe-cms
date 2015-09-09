@@ -19,12 +19,12 @@ fr:
     FROMYOURCOMPUTER: 'Depuis votre ordinateur'
     Filetype: 'Type de fichier'
     ListView: 'Liste'
+    MENUTITLE: Fichiers
     NEWFOLDER: Nouveau dossier
     SIZE: Taille
     THUMBSDELETED: '{count} miniatures inutilisées ont été supprimées'
     TreeView: 'Arbre'
     Upload: Télécharger
-    MENUTITLE: Fichiers
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Supprimer dossiers'
   AssetAdmin_Tools:
@@ -67,6 +67,8 @@ fr:
     DELETE_PAGES: 'Supprimer du site publié'
     PUBLISHED_PAGES: '%d pages publiées, %d échecs'
     PUBLISH_PAGES: Publier
+  CMSFileAddController:
+    MENUTITLE: Fichiers
   CMSMain:
     ACCESS: 'Droits d’accès à la section « {title} »'
     ACCESS_HELP: 'Permettre l''affichage de la section contenant l''arborescence et le contenu. La gestion des permissions de visualisation et d''édition peut se faire à travers des liste spécifiques à chaque page. Et aussi la "Permission de contenu" séparé.'
@@ -84,6 +86,7 @@ fr:
     EMAIL: Email
     EditTree: 'Editer l''arbre'
     ListFiltered: 'Filtrelenmiş liste.'
+    MENUTITLE: 'Éditer la page'
     NEWPAGE: 'Nouveau {pagetype}'
     PAGENOTEXISTS: 'Cette page n''existe pas'
     PAGES: Pages
@@ -108,31 +111,34 @@ fr:
     TabSettings: Paramètres
     TreeFiltered: 'Filtrelenmiş ağaç liste.'
     TreeFilteredClear: 'Filtreyi temizle'
-    MENUTITLE: 'Éditer la page'
   CMSMain_left_ss:
     APPLY_FILTER: 'Appliquer le filtre'
     RESET: Réinitialiser
   CMSPageAddController:
+    MENUTITLE: 'Ajouter page'
     ParentMode_child: 'Sous une autre page'
     ParentMode_top: 'Premier niveau'
-    MENUTITLE: 'Ajouter page'
+  CMSPageEditController:
+    MENUTITLE: 'Éditer la page'
   CMSPageHistoryController:
     COMPAREMODE: 'Comparer (choisissez deux)'
     COMPAREVERSIONS: 'Comparer les versions'
     COMPARINGVERSION: 'Comparaison entre les versions {version1} et {version2}.'
+    MENUTITLE: Historique
     REVERTTOTHISVERSION: 'Revenir à cette version'
     SHOWUNPUBLISHED: 'Afficher les versions non publiées'
     SHOWVERSION: 'Afficher cette version'
     VIEW: Afficher
     VIEWINGLATEST: 'Vous regardez la dernière version'
     VIEWINGVERSION: 'Version affichée : {version}.'
-    MENUTITLE: Historique
   CMSPageHistoryController_versions_ss:
     AUTHOR: Auteur
     NOTPUBLISHED: 'Non publiée'
     PUBLISHER: Éditeur
     UNKNOWN: Inconnu
     WHEN: Date
+  CMSPageSettingsController:
+    MENUTITLE: 'Éditer la page'
   CMSPagesController:
     GalleryView: 'Galerie'
     ListView: 'Liste'
@@ -147,6 +153,8 @@ fr:
     FILTERDATEHEADING: Date
     FILTERDATETO: A
     FILTERLABELTEXT: Terme
+  CMSSettingsController:
+    MENUTITLE: Paramètres
   CMSSiteTreeFilter_Search:
     Title: 'Toutes les pages'
   ContentControl:
@@ -233,8 +241,8 @@ fr:
     SINGULARNAME: 'Page de redirection'
     YOURPAGE: 'Page de votre site web'
   ReportAdmin:
-    ReportTitle: Titre
     MENUTITLE: Rapports
+    ReportTitle: Titre
   ReportAdminForm:
     FILTERBY: 'Filtrer par'
   SITETREE:
@@ -390,11 +398,3 @@ fr:
     HEADERWITHLINK: 'Ceci est une page virtuelle copiant le contenu de "{title}" ({link})'
     PageTypNotAllowedOnRoot: 'Le type de page d’origine « {type} » n’est pas autorisé au niveau racine pour cette page virtuelle'
     SINGULARNAME: 'Page virtuelle'
-  CMSFileAddController:
-    MENUTITLE: Fichiers
-  CMSPageEditController:
-    MENUTITLE: 'Éditer la page'
-  CMSPageSettingsController:
-    MENUTITLE: 'Éditer la page'
-  CMSSettingsController:
-    MENUTITLE: Paramètres

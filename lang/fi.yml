@@ -19,12 +19,12 @@ fi:
     FROMYOURCOMPUTER: 'Omalta tietokoneelta'
     Filetype: 'Tiedostotyyppi'
     ListView: 'Listanäkymä'
+    MENUTITLE: Tiedostot
     NEWFOLDER: Uusi kansio
     SIZE: Koko
     THUMBSDELETED: '{count} käyttämätöntä esikatselukuvaa poistettiin'
     TreeView: 'Puunäkymä'
     Upload: Siirrä
-    MENUTITLE: Tiedostot
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Poista kansiot'
   AssetAdmin_Tools:
@@ -67,6 +67,8 @@ fi:
     DELETE_PAGES: 'Poista julkaistulta sivustolta'
     PUBLISHED_PAGES: 'Julkaistu %d sivua, %d epäonnistumista'
     PUBLISH_PAGES: Julkaise
+  CMSFileAddController:
+    MENUTITLE: Tiedostot
   CMSMain:
     ACCESS: 'Pääsy ''{title}'' -osioon'
     ACCESS_HELP: 'Oikeuttaa näkemään osion, joka sisältää sivurakenteen ja sisällön. Katselu- ja muokkausoikeuksia voidaan käsitellä sivukohtaisten pudotusvalikoiden kautta, kuten myös erillisestä "Sisällön oikeudet"-kohdasta.'
@@ -85,6 +87,7 @@ fi:
     EMAIL: Sähköposti
     EditTree: 'Muokkaa rakennepuuta'
     ListFiltered: 'Suodatettu lista.'
+    MENUTITLE: 'Muokkaa sivua'
     NEWPAGE: 'Uusi {pagetype}'
     PAGENOTEXISTS: 'Tätä sivua ei ole olemassa'
     PAGES: Sivut
@@ -109,31 +112,34 @@ fi:
     TabSettings: Asetukset
     TreeFiltered: 'Suodatettu hakemistopuu.'
     TreeFilteredClear: 'Nollaa suodatin'
-    MENUTITLE: 'Muokkaa sivua'
   CMSMain_left_ss:
     APPLY_FILTER: 'Suodata'
     RESET: Nollaa
   CMSPageAddController:
+    MENUTITLE: 'Lisää sivu'
     ParentMode_child: 'Toisen sivun alla'
     ParentMode_top: 'Ylätaso'
-    MENUTITLE: 'Lisää sivu'
+  CMSPageEditController:
+    MENUTITLE: 'Muokkaa sivua'
   CMSPageHistoryController:
     COMPAREMODE: 'Vertailutila (valitse kaksi)'
     COMPAREVERSIONS: 'Vertaa versioita'
     COMPARINGVERSION: 'Vertaillaan versioita {version1} ja {version2}'
+    MENUTITLE: Historia
     REVERTTOTHISVERSION: 'Palaa tähän versioon'
     SHOWUNPUBLISHED: 'Näytä julkaisemattomat versiot'
     SHOWVERSION: 'Näytä versionumero'
     VIEW: näkymä
     VIEWINGLATEST: 'Katsot viimeisintä versiota.'
     VIEWINGVERSION: 'Katsot versiota {version}.'
-    MENUTITLE: Historia
   CMSPageHistoryController_versions_ss:
     AUTHOR: Tekijä
     NOTPUBLISHED: 'Julkaisematon'
     PUBLISHER: Julkaisija
     UNKNOWN: Tuntematon
     WHEN: Milloin
+  CMSPageSettingsController:
+    MENUTITLE: 'Muokkaa sivua'
   CMSPagesController:
     GalleryView: 'Suuret ikonit'
     ListView: 'Listanäkymä'
@@ -148,6 +154,8 @@ fi:
     FILTERDATEHEADING: Pvm
     FILTERDATETO: Päättyen
     FILTERLABELTEXT: Sisältö
+  CMSSettingsController:
+    MENUTITLE: Asetukset
   CMSSiteTreeFilter_Search:
     Title: 'Kaikki sivut'
   ContentControl:
@@ -238,8 +246,8 @@ fi:
     SINGULARNAME: 'Uudelleenohjaava sivu'
     YOURPAGE: 'Sivu verkkosivustollasi'
   ReportAdmin:
-    ReportTitle: Otsikko
     MENUTITLE: Raportit
+    ReportTitle: Otsikko
   ReportAdminForm:
     FILTERBY: 'Suodata'
   SITETREE:
@@ -396,11 +404,3 @@ fi:
     PLURALNAME: 'Virtuaalisivut'
     PageTypNotAllowedOnRoot: 'Alkuperäinen sivutyyppi "{type}" ei ole sallittu tämän virtuaalisen sivun päätasolla'
     SINGULARNAME: 'Virtuaalisivu'
-  CMSFileAddController:
-    MENUTITLE: Tiedostot
-  CMSPageEditController:
-    MENUTITLE: 'Muokkaa sivua'
-  CMSPageSettingsController:
-    MENUTITLE: 'Muokkaa sivua'
-  CMSSettingsController:
-    MENUTITLE: Asetukset

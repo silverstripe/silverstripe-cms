@@ -33,7 +33,7 @@
     "Tree.ShowAsList": "Zobrazit potomky jako seznam",
     "CMSMain.ConfirmRestoreFromLive": "Určitě chcete obnovit koncept do stavz, kdy stránka byla naposled zveřejněna?",
     "CMSMain.RollbackToVersion": "Skutečně chcete vrátit zpět na verzi #%s této stránky?",
-    "CMSMain.Archive": "Určitě chcete archivovat tuto stránku?\n\nTato stránka bude nezveřejněna a bude odeslána do archívu.",
+    "CMSMain.Archive": "Určitě chcete archivovat tuto stránku a její všechny podstránky?\n\nTato stránka a její všechny podstránky budou nezveřejněny a odeslány do archívu.",
     "CMSMain.Restore": "Určitě chcete obnovit tyto stránky z archívu?",
     "CMSMain.RestoreToRoot": "Určitě chcete obnovit tuto stránku z archívu?\n\nProtože nadřazená stránka není k dispozici, bude obnovena do nejvyšší úrovně.",
     "CMSMain.Unpublish": "Určitě chcete odstranit stránku ze zveřejněného webu?\n\nTato stránka bude stále k dispozici ve struktuře webu jako koncept.",

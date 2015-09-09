@@ -1148,6 +1148,30 @@ class SiteTreeTest extends SapphireTest {
 
 	}
 
+	/**
+	 * Test archived page behaviour
+	 */
+	public function testArchivedPages() {
+		$this->logInWithPermission('ADMIN');
+
+		$page = $this->objFromFixture('Page', 'home');
+		$this->assertTrue($page->canAddChildren());
+		$this->assertFalse($page->getIsDeletedFromStage());
+		$this->assertFalse($page->isPublished());
+
+		// Publish
+		$page->doPublish();
+		$this->assertTrue($page->canAddChildren());
+		$this->assertFalse($page->getIsDeletedFromStage());
+		$this->assertTrue($page->isPublished());
+
+		// Archive
+		$page->doArchive();
+		$this->assertFalse($page->canAddChildren());
+		$this->assertTrue($page->getIsDeletedFromStage());
+		$this->assertFalse($page->isPublished());
+	}
+
 }
 
 /**#@+

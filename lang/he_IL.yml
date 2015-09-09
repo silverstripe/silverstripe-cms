@@ -19,12 +19,12 @@ he_IL:
     FROMYOURCOMPUTER: 'מהמחשב שלך'
     Filetype: 'סוג הקובץ'
     ListView: 'תצוגת רשימה'
+    MENUTITLE: קבצים
     NEWFOLDER: תיקייה חדשה
     SIZE: גודל
     THUMBSDELETED: '{count} תמונות ממוזערות שלא היו בשימוש נמחקו'
     TreeView: 'תצוגת עץ'
     Upload: העלאה
-    MENUTITLE: קבצים
   AssetAdmin_DeleteBatchAction:
     TITLE: 'למחוק תיקיות'
   AssetAdmin_Tools:
@@ -67,6 +67,8 @@ he_IL:
     DELETE_PAGES: 'מחיקה מאתר שפורסם'
     PUBLISHED_PAGES: 'פורסמו %d עמודים, %d שגיאות'
     PUBLISH_PAGES: פרסום
+  CMSFileAddController:
+    MENUTITLE: קבצים
   CMSMain:
     ACCESS: 'גישה לאגף ''{title}'''
     ACCESS_HELP: 'מתן האפשרות לצפות באגף המכיל את עץ העמודים והתוכן. ניתן לצפות ולערוך הרשאות באמצעות תיבות בחירה ייעודיות לכל עמוד, כמו גם „הרשאות התוכן“ הנפרדות.'
@@ -81,6 +83,7 @@ he_IL:
     EMAIL: דוא״ל
     EditTree: 'עריכת העץ'
     ListFiltered: 'רשימה מסוננת.'
+    MENUTITLE: 'עריכת העמוד'
     NEWPAGE: '{pagetype} חדש'
     PAGENOTEXISTS: 'עמוד זה אינו קיים במערכת'
     PAGES: עמודים
@@ -101,30 +104,33 @@ he_IL:
     TabSettings: הגדרות
     TreeFiltered: 'עץ מסונן.'
     TreeFilteredClear: 'ביטול הסינון'
-    MENUTITLE: 'עריכת העמוד'
   CMSMain_left_ss:
     APPLY_FILTER: 'החלת המסנן'
     RESET: איפוס
   CMSPageAddController:
+    MENUTITLE: 'הוספת עמוד'
     ParentMode_child: 'תחת עמוד אחר'
     ParentMode_top: 'רמה עליונה'
-    MENUTITLE: 'הוספת עמוד'
+  CMSPageEditController:
+    MENUTITLE: 'עריכת עמוד'
   CMSPageHistoryController:
     COMPAREMODE: 'מצב השוואה (יש לבחור שניים)'
     COMPAREVERSIONS: 'השוואת גרסאות'
     COMPARINGVERSION: 'השוואה בין הגרסאות {version1} ו־{version2}.'
+    MENUTITLE: היסטוריה
     REVERTTOTHISVERSION: 'חזרה לגרסה זו'
     SHOWUNPUBLISHED: 'הצגת גרסאות שלא פוסרמו'
     SHOWVERSION: 'הצגת הגרסה'
     VIEW: צפייה
     VIEWINGVERSION: 'הגרסה הנוכחית המופיעה {version}.'
-    MENUTITLE: היסטוריה
   CMSPageHistoryController_versions_ss:
     AUTHOR: נוצר על ידי
     NOTPUBLISHED: 'לא פורסם'
     PUBLISHER: פורסם על ידי
     UNKNOWN: לא ידוע
     WHEN: מתי
+  CMSPageSettingsController:
+    MENUTITLE: 'עריכת העמוד'
   CMSPagesController:
     GalleryView: 'תצוגת גלריה'
     ListView: 'תצוגת רשימה'
@@ -139,6 +145,8 @@ he_IL:
     FILTERDATEHEADING: תאריך
     FILTERDATETO: עד
     FILTERLABELTEXT: תוכן
+  CMSSettingsController:
+    MENUTITLE: הגדרות
   CMSSiteTreeFilter_Search:
     Title: 'כל העמודים'
   ContentControl:
@@ -221,8 +229,8 @@ he_IL:
     SINGULARNAME: 'עמוד הפנייה'
     YOURPAGE: 'עמוד באתר שלך'
   ReportAdmin:
-    ReportTitle: כותרת
     MENUTITLE: דוחות
+    ReportTitle: כותרת
   ReportAdminForm:
     FILTERBY: 'סינון לפי'
   SearchForm:
@@ -353,11 +361,3 @@ he_IL:
     HEADER: 'זהו עמוד וירטואלי'
     PageTypNotAllowedOnRoot: 'סוג העמוד המקורי „{type}“ אינו מורשה ברמת העל של עמוד וירטואלי זה'
     SINGULARNAME: 'דף וירטואלי'
-  CMSFileAddController:
-    MENUTITLE: קבצים
-  CMSPageEditController:
-    MENUTITLE: 'עריכת עמוד'
-  CMSPageSettingsController:
-    MENUTITLE: 'עריכת העמוד'
-  CMSSettingsController:
-    MENUTITLE: הגדרות

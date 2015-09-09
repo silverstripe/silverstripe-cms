@@ -2,6 +2,9 @@
 
 /**
  * @todo Cleanup, refactor, test this class
+ *
+ * @package cms
+ * @subpackage model
  */
 class SiteTreeFolderExtension extends DataExtension {
 

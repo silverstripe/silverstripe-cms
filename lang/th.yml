@@ -19,12 +19,12 @@ th:
     FROMYOURCOMPUTER: 'จากเครื่องคอมพิวเตอร์ของคุณ'
     Filetype: 'ชนิดของไฟล์'
     ListView: 'มุมมองแบบแสดงรายการ'
+    MENUTITLE: ไฟล์
     NEWFOLDER: สร้างโฟลเดอร์ใหม่
     SIZE: ขนาด
     THUMBSDELETED: '{count} รูปย่อที่ไม่ได้ถูกใช้งานได้ถูกลบทิ้งแล้ว'
     TreeView: 'มุมมองแบบ Tree'
     Upload: อัพโหลด
-    MENUTITLE: ไฟล์
   AssetAdmin_DeleteBatchAction:
     TITLE: 'ลบโฟลเดอร์'
   AssetAdmin_Tools:
@@ -66,6 +66,8 @@ th:
     DELETE_PAGES: 'ลบออกจากเว็บไซต์ที่เผยแพร่อยู่'
     PUBLISHED_PAGES: 'เผยแพร่แล้ว %d หน้า, ล้วเหลว %d'
     PUBLISH_PAGES: เผยแพร่
+  CMSFileAddController:
+    MENUTITLE: ไฟล์
   CMSMain:
     ACCESS: 'เข้าถึงเซ็กชั่น ''{title}'''
     ACCESS_HELP: 'อนุญาตให้เปิดดูส่วนของเซ็กชั่นที่บรรจุรายการหน้าเว็บแบบทรีและเนื้อหาได้ สิทธิ์ในการเปิดดูและแก้ไขสามารถจัดการได้ผ่านทางหน้าเว็บทีระบุอยู่ในเมนูแบบดรอปดาวน์ เช่นเดียวกับ "สิทธิ์อนุญาตของเนื้อหา" ที่แยกออกมาต่างหากด้วยเช่นกัน'
@@ -80,6 +82,7 @@ th:
     EMAIL: อีเมล
     EditTree: 'แก้ไขรายการแบบ Tree'
     ListFiltered: 'แสดงรายการตามตัวกรองข้อมูล'
+    MENUTITLE: 'แก้ไขหน้าเว็บ'
     NEWPAGE: 'ใหม่ {pagetype}'
     PAGENOTEXISTS: 'ไม่มีหน้านี้อยู่'
     PAGES: หน้า
@@ -100,30 +103,33 @@ th:
     TabSettings: ตั้งค่า
     TreeFiltered: 'แสดงรายการแบบ Tree ตามตัวกรองข้อมูล'
     TreeFilteredClear: 'ล้างค่าตัวกรองข้อมูล'
-    MENUTITLE: 'แก้ไขหน้าเว็บ'
   CMSMain_left_ss:
     APPLY_FILTER: 'นำตัวกรองข้อมูลไปใช้งาน'
     RESET: รีเซ็ต
   CMSPageAddController:
+    MENUTITLE: 'เพิ่มหน้า'
     ParentMode_child: 'อยู่ใต้หน้าอื่นๆ'
     ParentMode_top: 'ระดับสูงสุด'
-    MENUTITLE: 'เพิ่มหน้า'
+  CMSPageEditController:
+    MENUTITLE: 'แก้ไขหน้าเว็บ'
   CMSPageHistoryController:
     COMPAREMODE: 'โหมดเปรียบเทียบ (เลือกสองรายการ)'
     COMPAREVERSIONS: 'เปรียบเทียบรุ่น'
     COMPARINGVERSION: 'กำลังเปรียบเทียบรุ่น {version1} และ {version2}.'
+    MENUTITLE: ประวัติย้อนหลัง
     REVERTTOTHISVERSION: 'ย้อนกลับไปที่รุ่นนี้'
     SHOWUNPUBLISHED: 'แสดงรุ่นที่ระงับการเผยแพร่ไว้'
     SHOWVERSION: 'แสดงข้อมูลรุ่น'
     VIEW: มุมมอง
     VIEWINGVERSION: 'ขณะนี้กำลังเปิดดูในรุ่น {version}.'
-    MENUTITLE: ประวัติย้อนหลัง
   CMSPageHistoryController_versions_ss:
     AUTHOR: ผู้แต่ง
     NOTPUBLISHED: 'ยังไม่ได้เผยแพร่'
     PUBLISHER: ผู้เผยแพร่
     UNKNOWN: ไม่ทราบ
     WHEN: เมื่อ
+  CMSPageSettingsController:
+    MENUTITLE: 'แก้ไขหน้าเว็บ'
   CMSPagesController:
     GalleryView: 'มุมมองแบบแกลอรี่'
   CMSPagesController_ContentToolbar_ss:
@@ -132,6 +138,8 @@ th:
     FILTER: ตัวกรองข้อมูล
   CMSSearch:
     FILTERDATEHEADING: วันที่
+  CMSSettingsController:
+    MENUTITLE: ตั้งค่า
   CMSSiteTreeFilter_Search:
     Title: 'หน้าทั้งหมด'
   ContentControl:
@@ -212,8 +220,8 @@ th:
     SINGULARNAME: 'หน้าเว็บเปลี่ยนเส้นทาง'
     YOURPAGE: 'หน้าเว็บที่อยู่บนเว็บไซต์ของคุณ'
   ReportAdmin:
-    ReportTitle: หัวเรื่อง
     MENUTITLE: รายงาน
+    ReportTitle: หัวเรื่อง
   ReportAdminForm:
     FILTERBY: 'แสดงข้อมูลตาม'
   SearchForm:
@@ -340,11 +348,3 @@ th:
     HEADER: 'นี่เป็นหน้าเว็บจำลอง'
     PageTypNotAllowedOnRoot: 'ชนิดของหน้าเว็บดั้งเดิม "{type}" ไม่ได้รับอนุญาตให้ใช้งานกับหน้าเว็บจำลองที่ตำแหน่ง root'
     SINGULARNAME: 'หน้าจำลอง'
-  CMSFileAddController:
-    MENUTITLE: ไฟล์
-  CMSPageEditController:
-    MENUTITLE: 'แก้ไขหน้าเว็บ'
-  CMSPageSettingsController:
-    MENUTITLE: 'แก้ไขหน้าเว็บ'
-  CMSSettingsController:
-    MENUTITLE: ตั้งค่า
