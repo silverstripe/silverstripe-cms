@@ -62,17 +62,24 @@ fr:
     Title: 'Ajouter page'
   CMSBatchActions:
     ARCHIVE: Archive
+    ARCHIVED_PAGES: '%d pages archivées'
     DELETED_DRAFT_PAGES: '%d pages supprimées du site brouillon, %d échecs'
     DELETED_PAGES: '%d pages supprimées du site, %d échecs'
     DELETE_DRAFT_PAGES: 'Supprimer du site brouillion'
     DELETE_PAGES: 'Supprimer du site publié'
     PUBLISHED_PAGES: '%d pages publiées, %d échecs'
     PUBLISH_PAGES: Publier
+    RESTORE: Restaurer
+    RESTORED_PAGES: '%d pages restaurées'
+    UNPUBLISHED_PAGES: '%d page retirées du site publié'
+    UNPUBLISH_PAGES: Retirer du site publié
   CMSFileAddController:
     MENUTITLE: Fichiers
   CMSMain:
     ACCESS: 'Droits d’accès à la section « {title} »'
     ACCESS_HELP: 'Permettre l''affichage de la section contenant l''arborescence et le contenu. La gestion des permissions de visualisation et d''édition peut se faire à travers des liste spécifiques à chaque page. Et aussi la "Permission de contenu" séparé.'
+    ARCHIVE: Archive
+    ARCHIVEDPAGE: 'Page ''%s'' archivée'
     AddNew: 'Ajouter page'
     AddNewButton: 'Ajouter'
     AddPageRestriction: 'Note : certains types de page ne sont pas autorisés pour cette sélection'
@@ -163,6 +170,8 @@ fr:
     MENUTITLE: Paramètres
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Pages modifiées'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Toutes les pages, y compris celles archivées'
   CMSSiteTreeFilter_Search:
     Title: 'Toutes les pages'
   CMSSiteTreeFilter_StatusDeletedPages:
@@ -311,6 +320,7 @@ fr:
     ADDEDTODRAFTSHORT: Brouillon
     ALLOWCOMMENTS: 'Autoriser les commentaires sur cette page ?'
     APPEARSVIRTUALPAGES: 'Ce contenu apparaît aussi dans les sections {title} des pages virtuelles.'
+    ARCHIVEDPAGESHORT: Archivé
     BUTTONCANCELDRAFT: 'Annuler les changements brouillons'
     BUTTONCANCELDRAFTDESC: 'Supprimer votre brouillon et revenir à la page actuellement publiée'
     BUTTONPUBLISHED: Publié
@@ -397,6 +407,7 @@ fr:
     many_many_LinkTracking: 'Suivi des Liens'
   SiteTreeFileExtension:
     BACKLINK_LIST_DESCRIPTION: 'Cette liste affiche toutes les pages où le fichier a été ajouté via l''éditeur WYSIWYG.'
+    EDIT: Éditer
   SiteTreeURLSegmentField:
     EMPTY: 'Merci d''entrer une URL ou cliquez sur Annuler'
     HelpChars: 'Les caractères spéciaux sont automatiquement convertis ou supprimés.'
@@ -413,5 +424,6 @@ fr:
     EditLink: éditer
     HEADER: 'Cette page est virtuelle'
     HEADERWITHLINK: 'Ceci est une page virtuelle copiant le contenu de "{title}" ({link})'
+    PLURALNAME: 'Pages virtuelles'
     PageTypNotAllowedOnRoot: 'Le type de page d’origine « {type} » n’est pas autorisé au niveau racine pour cette page virtuelle'
     SINGULARNAME: 'Page virtuelle'

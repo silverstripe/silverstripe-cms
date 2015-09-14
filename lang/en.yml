@@ -71,8 +71,8 @@ en:
     PUBLISH_PAGES: Publish
     RESTORE: Restore
     RESTORED_PAGES: 'Restored %d pages'
-    UNPUBLISHED_PAGES: 'Unpublished %d pages'
-    UNPUBLISH_PAGES: Unpublish
+    UNPUBLISHED_PAGES: 'Un-published %d pages'
+    UNPUBLISH_PAGES: Un-publish
   CMSFileAddController:
     MENUTITLE: Files
   CMSMain:
@@ -103,13 +103,13 @@ en:
     PAGETYPEOPT: 'Page Type'
     PUBALLCONFIRM: 'Please publish every page in the site, copying content stage to live'
     PUBALLFUN: '"Publish All" functionality'
-    PUBALLFUN2: "Pressing this button will do the equivalent of going to every page and pressing \"publish\".  It's\n\t\t\t\tintended to be used after there have been massive edits of the content, such as when the site was\n\t\t\t\tfirst built."
+    PUBALLFUN2: "Pressing this button will do the equivalent of going to every page and pressing \"publish\".  It's\n				intended to be used after there have been massive edits of the content, such as when the site was\n				first built."
     PUBPAGES: 'Done: Published {count} pages'
     PageAdded: 'Successfully created page'
     REMOVED: 'Deleted ''{title}''{description} from live site'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: 'Removed ''%s'' from the draft site'
-    RESTORE: 'Restore draft'
+    RESTORE: Restore
     RESTORED: 'Restored ''{title}'' successfully'
     RESTORE_DESC: 'Restore the archived version to draft'
     RESTORE_TO_ROOT: 'Restore draft at top level'
@@ -172,15 +172,15 @@ en:
   CMSSettingsController:
     MENUTITLE: Settings
   CMSSiteTreeFilter_ChangedPages:
-    Title: 'Modified pages'
+    Title: 'Changed pages'
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'All pages, including archived'
+    Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
     Title: 'All pages'
   CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Archived pages'
+    Title: 'Deleted pages'
   CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Draft pages'
+    Title: 'Draft unpublished pages'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Live but removed from draft'
   ContentControl:
@@ -298,7 +298,7 @@ en:
   SilverStripeNavigator:
     ARCHIVED: Archived
   SilverStripeNavigatorLink:
-    ShareInstructions: 'To share this page, copy and paste the link below.'
+    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
     ShareLink: 'Share link'
   SilverStripeNavigatorLinkl:
     CloseLink: Close
