@@ -273,7 +273,6 @@ eo:
   SilverStripeNavigator:
     ARCHIVED: Enarkivigita
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Por komunigi ĉi tiun paĝon, kopiu kaj algluu la suban ligilon.'
     ShareLink: 'Komunigi ligilon'
   SilverStripeNavigatorLinkl:
     CloseLink: Fermi

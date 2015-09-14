@@ -268,7 +268,6 @@ sr:
   SilverStripeNavigator:
     ARCHIVED: Архивирано
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Да би сте поделили ову страницу копирајте и налепите линк испод.'
     ShareLink: 'Подели линк'
   SilverStripeNavigatorLinkl:
     CloseLink: Затвори

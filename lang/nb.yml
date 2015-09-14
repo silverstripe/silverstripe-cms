@@ -71,8 +71,6 @@ nb:
     PUBLISH_PAGES: Publiser
     RESTORE: Gjenopprett
     RESTORED_PAGES: 'Gjenopprettet %d sider'
-    UNPUBLISHED_PAGES: 'Avpubliserte %d sider'
-    UNPUBLISH_PAGES: Avpubliser
   CMSFileAddController:
     MENUTITLE: Filer
   CMSMain:
@@ -109,7 +107,6 @@ nb:
     REMOVED: 'Slettet "{title}" {description} fra publisert nettsted.'
     REMOVEDPAGE: 'Fjernet "{title}" fra det publiserte nettstedet'
     REMOVEDPAGEFROMDRAFT: 'Fjernet ''%s''  fra utkastnettstedet'
-    RESTORE: 'Gjenopprett utkast'
     RESTORED: 'Vellykket gjenoppretting av "{title}".'
     RESTORE_DESC: 'Gjenopprett arkivert versjon som utkast'
     RESTORE_TO_ROOT: 'Gjenopprett utkast på toppnivå'
@@ -171,16 +168,8 @@ nb:
     FILTERLABELTEXT: Innhold
   CMSSettingsController:
     MENUTITLE: Innstillinger
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Endrede sider'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Alle sider, inklusive arkiverte'
   CMSSiteTreeFilter_Search:
     Title: 'Alle sider'
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Arkiverte sider'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Utkast'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Publisert men fjernet fra utkast'
   ContentControl:
@@ -298,7 +287,6 @@ nb:
   SilverStripeNavigator:
     ARCHIVED: Arkivert
   SilverStripeNavigatorLink:
-    ShareInstructions: 'For å dele en lenke til denne siden, kopier og lim inn lenken nedenfor.'
     ShareLink: 'Del lenke'
   SilverStripeNavigatorLinkl:
     CloseLink: Lukk

@@ -271,7 +271,6 @@ ko:
   SilverStripeNavigator:
     ARCHIVED: 보관됨
   SilverStripeNavigatorLink:
-    ShareInstructions: '이 페이지를 공유하려면 아래 링크를 복사하여 붙여 넣기하세요.'
     ShareLink: '공유 링크'
   SilverStripeNavigatorLinkl:
     CloseLink: 닫기

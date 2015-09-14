@@ -71,8 +71,6 @@ fr:
     PUBLISH_PAGES: Publier
     RESTORE: Restaurer
     RESTORED_PAGES: '%d pages restaurées'
-    UNPUBLISHED_PAGES: '%d page retirées du site publié'
-    UNPUBLISH_PAGES: Retirer du site publié
   CMSFileAddController:
     MENUTITLE: Fichiers
   CMSMain:
@@ -109,7 +107,6 @@ fr:
     REMOVED: '''{title}''{description} supprimé du site live'
     REMOVEDPAGE: '« {title} » a été éliminée du site public '
     REMOVEDPAGEFROMDRAFT: 'Supprimé ''%s'' du site de test'
-    RESTORE: 'Restaurer le brouillon'
     RESTORED: '« {title} » restaurée avec succès'
     ROLLBACK: 'Retourner à cette version'
     ROLLEDBACKPUBv2: 'Revenir à la version publiée'
@@ -168,16 +165,8 @@ fr:
     FILTERLABELTEXT: Terme
   CMSSettingsController:
     MENUTITLE: Paramètres
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Pages modifiées'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Toutes les pages, y compris celles archivées'
   CMSSiteTreeFilter_Search:
     Title: 'Toutes les pages'
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Pages archivées'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Pages brouillon'
   ContentControl:
     NOTEWONTBESHOWN: 'Note : ce message ne sera pas visible de vos visiteurs.'
   ContentController:
@@ -291,7 +280,6 @@ fr:
   SilverStripeNavigator:
     ARCHIVED: Archivé
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Pour partager cette page, copiez et collez le lien ci-dessous.'
     ShareLink: 'Partager le lien'
   SilverStripeNavigatorLinkl:
     CloseLink: Fermer

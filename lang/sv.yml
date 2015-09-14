@@ -71,8 +71,6 @@ sv:
     PUBLISH_PAGES: Publicera
     RESTORE: Återskapa
     RESTORED_PAGES: 'Återskapade %d sidor'
-    UNPUBLISHED_PAGES: 'Avpublicerade %d sidor'
-    UNPUBLISH_PAGES: Avpublicera
   CMSFileAddController:
     MENUTITLE: Filer
   CMSMain:
@@ -109,7 +107,6 @@ sv:
     REMOVED: 'Tog bort ''{title}''{description} från den publicerade sajten'
     REMOVEDPAGE: 'Tog bort ''{title}'' från den publicerade sajten'
     REMOVEDPAGEFROMDRAFT: 'Raderade ''%s'' från utkast'
-    RESTORE: 'Återställ utkast'
     RESTORED: 'Återskapandet av  ''{title}'' lyckades'
     RESTORE_DESC: 'Återställ den arkiverade versionen av sidan som ett utkast'
     RESTORE_TO_ROOT: 'Återskapa utkast på top nivå'
@@ -171,16 +168,8 @@ sv:
     FILTERLABELTEXT: Innehåll
   CMSSettingsController:
     MENUTITLE: Inställningar
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Ändrade sidor'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Alla sidor, inklusive arkiverade sidor'
   CMSSiteTreeFilter_Search:
     Title: 'Alla sidor'
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Arkiverade sidor'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Ej publicerade sidor'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Live men borttagen från utkast'
   ContentControl:
@@ -298,7 +287,6 @@ sv:
   SilverStripeNavigator:
     ARCHIVED: Arkiverad
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Kopiera och klistra in länken nedan för att dela den här sidan.'
     ShareLink: 'Dela länk'
   SilverStripeNavigatorLinkl:
     CloseLink: Stäng

@@ -71,8 +71,6 @@ lt:
     PUBLISH_PAGES: Publikuoti
     RESTORE: Atstatyti
     RESTORED_PAGES: 'Atstatyti %d puslapiai'
-    UNPUBLISHED_PAGES: 'Nebepublikuojami %d puslapiai'
-    UNPUBLISH_PAGES: Nebepublikuoti
   CMSFileAddController:
     MENUTITLE: Bylos
   CMSMain:
@@ -109,7 +107,6 @@ lt:
     REMOVED: 'Iš publikuojamos svetainės ištrintas ''{title}''{description}'
     REMOVEDPAGE: 'Iš publikuojamos svetainės pašalintas ''{title}'''
     REMOVEDPAGEFROMDRAFT: '''%s'' pašalintas iš juodraštinės svetainės'
-    RESTORE: 'Atstatyti juodraštį'
     RESTORED: '''{title}'' atstatytas sėkmingai'
     RESTORE_DESC: 'Atstatyti suarchyvuotą versiją kaip juodraštinį puslapį'
     RESTORE_TO_ROOT: 'Atstatyti juodraštį aukščiausiame lygyje'
@@ -171,16 +168,8 @@ lt:
     FILTERLABELTEXT: Turinys
   CMSSettingsController:
     MENUTITLE: Nustatymai
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Pakeisti puslapiai'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Visi puslapiai, kartu su suarchyvuotais'
   CMSSiteTreeFilter_Search:
     Title: 'Visi puslapiai'
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Suarchyvuoti puslapiai'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Juyodraštiniai puslapiai'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Publikuotas, bet pašalintas iš juodraščių'
   ContentControl:
@@ -298,7 +287,6 @@ lt:
   SilverStripeNavigator:
     ARCHIVED: Archyvuota
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Norėdami pasidalinti šiuo puslapiu, nukopijuokite ir įdėkite nuorodą žemiau.'
     ShareLink: 'Dalintis nuoroda'
   SilverStripeNavigatorLinkl:
     CloseLink: Uždaryti

@@ -71,8 +71,6 @@ id:
     PUBLISH_PAGES: Terbitkan
     RESTORE: Pulihkan
     RESTORED_PAGES: 'Pulihkan %d halaman'
-    UNPUBLISHED_PAGES: 'Batal Terbit %d halaman'
-    UNPUBLISH_PAGES: Batal Terbit
   CMSFileAddController:
     MENUTITLE: Berkas
   CMSMain:
@@ -107,7 +105,6 @@ id:
     REMOVED: 'Dihapus ''{title}''{description} dari situs langsung'
     REMOVEDPAGE: 'Menghapus ''{title}'' dari situs terbit'
     REMOVEDPAGEFROMDRAFT: 'Menghapus ''%s'' dari draf situs'
-    RESTORE: 'Pulihkan Draf'
     RESTORED: 'Pemulihan ''{title}'' sukses'
     RESTORE_DESC: 'Pulihkan versi arsip ke draf'
     RESTORE_TO_ROOT: 'Pulihkan draf pada level teratas'
@@ -283,7 +280,6 @@ id:
   SilverStripeNavigator:
     ARCHIVED: Terarsip
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Untuk membagi laman ini, salin dan tempel pada tautan berikut.'
     ShareLink: 'Bagi tautan'
   SilverStripeNavigatorLinkl:
     CloseLink: Tutup

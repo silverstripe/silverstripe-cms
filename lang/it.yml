@@ -71,8 +71,6 @@ it:
     PUBLISH_PAGES: Pubblica
     RESTORE: Ripristina
     RESTORED_PAGES: '%d pagine ripristinate'
-    UNPUBLISHED_PAGES: '%d pagine nascoste'
-    UNPUBLISH_PAGES: Nascondere
   CMSFileAddController:
     MENUTITLE: Files
   CMSMain:
@@ -109,7 +107,6 @@ it:
     REMOVED: '''{title}'' {description} rimosso dal sito pubblico'
     REMOVEDPAGE: 'Eliminata ''{title}'' dal sito pubblicato'
     REMOVEDPAGEFROMDRAFT: 'Eliminata ''%s'' dal sito bozza'
-    RESTORE: 'Ripristinare bozza'
     RESTORED: 'Ripristinata ''{title}'' con successo'
     RESTORE_DESC: 'Ripristinare la versione archiviata nella bozza'
     RESTORE_TO_ROOT: 'Ripristinare bozza al primo livello'
@@ -171,16 +168,8 @@ it:
     FILTERLABELTEXT: Contenuto
   CMSSettingsController:
     MENUTITLE: Impostazioni
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Pagine modificate'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Tutte le pagine, comprese quelle archiviate'
   CMSSiteTreeFilter_Search:
     Title: 'Tutte le pagine'
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Pagine archiviate'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Pagine bozza'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Live ma rimosse dalla bozza'
   ContentControl:
@@ -298,7 +287,6 @@ it:
   SilverStripeNavigator:
     ARCHIVED: Archiviato
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Per condividere questa pagina, copia e incolla il link qui sotto.'
     ShareLink: 'Link di condivisione'
   SilverStripeNavigatorLinkl:
     CloseLink: Chiudi
