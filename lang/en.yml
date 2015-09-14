@@ -103,7 +103,7 @@ en:
     PAGETYPEOPT: 'Page Type'
     PUBALLCONFIRM: 'Please publish every page in the site, copying content stage to live'
     PUBALLFUN: '"Publish All" functionality'
-    PUBALLFUN2: "Pressing this button will do the equivalent of going to every page and pressing \"publish\".  It's\n\t\t\t\tintended to be used after there have been massive edits of the content, such as when the site was\n\t\t\t\tfirst built."
+    PUBALLFUN2: "Pressing this button will do the equivalent of going to every page and pressing \"publish\".  It's\n				intended to be used after there have been massive edits of the content, such as when the site was\n				first built."
     PUBPAGES: 'Done: Published {count} pages'
     PageAdded: 'Successfully created page'
     REMOVED: 'Deleted ''{title}''{description} from live site'
