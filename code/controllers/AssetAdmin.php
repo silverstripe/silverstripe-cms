@@ -153,6 +153,9 @@ JS
 	}
 
 	public function getEditForm($id = null, $fields = null) {
+		Requirements::javascript(FRAMEWORK_DIR . '/javascript/AssetUploadField.js');
+		Requirements::css(FRAMEWORK_DIR . '/css/AssetUploadField.css');
+
 		$form = parent::getEditForm($id, $fields);
 		$folder = ($id && is_numeric($id)) ? DataObject::get_by_id('Folder', $id, false) : $this->currentPage();
 		$fields = $form->Fields();
@@ -187,19 +190,6 @@ JS
 			'data-url-folder-template', 
 			Controller::join_links($this->Link('show'), '%s')
 		);
-
-		if($folder->canCreate()) {
-			$uploadBtn = new LiteralField(
-				'UploadButton', 
-				sprintf(
-					'<a class="ss-ui-button font-icon-upload cms-panel-link" data-pjax-target="Content" data-icon="drive-upload" href="%s">%s</a>',
-					Controller::join_links(singleton('CMSFileAddController')->Link(), '?ID=' . $folder->ID),
-					_t('Folder.UploadFilesButton', 'Upload')
-				)
-			);	
-		} else {
-			$uploadBtn = null;
-		}
 
 		if(!$folder->hasMethod('canAddChildren') || ($folder->hasMethod('canAddChildren') && $folder->canAddChildren())) {
 			// TODO Will most likely be replaced by GridField logic
@@ -258,18 +248,46 @@ JS
 		// we only add buttons if they're available. User might not have permission and therefore
 		// the button shouldn't be available. Adding empty values into a ComposteField breaks template rendering.
 		$actionButtonsComposite = CompositeField::create()->addExtraClass('cms-actions-row');
-		if($uploadBtn) $actionButtonsComposite->push($uploadBtn);
 		if($addFolderBtn) $actionButtonsComposite->push($addFolderBtn);
 		if($syncButton) $actionButtonsComposite->push($syncButton);
+
+		// Add the upload field for new media
+		if($currentPageID = $this->currentPageID()){
+			Session::set("{$this->class}.currentPage", $currentPageID);	
+		}
+
+		$folder = $this->currentPage();
+
+		$uploadField = UploadField::create('AssetUploadField', '');
+		$uploadField->setConfig('previewMaxWidth', 40);
+		$uploadField->setConfig('previewMaxHeight', 30);
+		$uploadField->setConfig('changeDetection', false);
+		$uploadField->addExtraClass('ss-assetuploadfield');
+		$uploadField->removeExtraClass('ss-uploadfield');
+		$uploadField->setTemplate('AssetUploadField');
+
+		if($folder->exists() && $folder->getFilename()) {
+			// The Upload class expects a folder relative *within* assets/
+			$path = preg_replace('/^' . ASSETS_DIR . '\//', '', $folder->getFilename());
+			$uploadField->setFolderName($path);
+		} else {
+			$uploadField->setFolderName('/'); // root of the assets
+		}
+
+		$exts = $uploadField->getValidator()->getAllowedExtensions();
+		asort($exts);
+		$uploadField->Extensions = implode(', ', $exts);
 
 		// List view
 		$fields->addFieldsToTab('Root.ListView', array(
 			$actionsComposite = CompositeField::create(
 				$actionButtonsComposite
 			)->addExtraClass('cms-content-toolbar field'),
+			$uploadField,
+			new HiddenField('ID'),
 			$gridField
 		));
-		
+
 		$treeField = new LiteralField('Tree', '');
 		// Tree view
 		$fields->addFieldsToTab('Root.TreeView', array(

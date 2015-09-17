@@ -122,5 +122,14 @@
 				return false;
 			}
 		});
+
+		/**
+		 * Reload the gridfield to show the user the file has been added
+		 */
+		$('.AssetAdmin.cms-edit-form .ss-uploadfield-item-progress').entwine({
+			onunmatch: function () {
+				$('.AssetAdmin.cms-edit-form .ss-gridfield').reload();
+			}
+		})
 	});
 }(jQuery));
