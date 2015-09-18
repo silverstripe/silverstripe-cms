@@ -2,52 +2,112 @@ fa_IR:
   AssetAdmin:
     ADDFILES: 'اضافه کردن فایل'
     ActionAdd: 'اضافه کردن پوشه'
+    AppCategoryArchive: بایگانی
     AppCategoryAudio: صوتی
     AppCategoryDocument: اسناد
+    AppCategoryFlash: فلش
     AppCategoryImage: تصویر
     AppCategoryVideo: ویدئو
     BackToFolder: 'بازگشت به پوشه'
     CREATED: تاریخ
+    CurrentFolderOnly: 'محدود به پوشه‌ی کنونی؟'
     DetailsView: جزییات
     FILES: فایل ها
+    FILESYSTEMSYNC: 'همگام‌سازی فایل‌ها'
     FROMTHEINTERNET: 'از اینترنت'
     FROMYOURCOMPUTER: 'از کامپیوتر شما'
     Filetype: 'نوع فایل'
+    ListView: 'نمایش لیستی'
+    MENUTITLE: فایل‌ها
     NEWFOLDER: پوشه جديد
     SIZE: حجم
+    THUMBSDELETED: '{count} تصویر انگشتی بلااستفاده حذف گردید'
     TreeView: 'مشاهده درخت'
     Upload: آپلود
   AssetAdmin_DeleteBatchAction:
     TITLE: 'حذف پوشه ها'
+  AssetAdmin_Tools:
+    FILTER: پالایش
   AssetAdmin_left_ss:
     GO: برو
+  AssetTableField:
+    PAGES: صفحه(ها)
+  BackLink_Button_ss:
+    Back: بازگشت
   BrokenLinksReport:
+    BROKENLINKS: 'گزارش پیوندهای معیوب'
+    CheckSite: 'بررسی سایت'
+    CheckSiteDropdownDraft: 'سایت پیش‌نویس'
+    CheckSiteDropdownPublished: 'سایت منتشر شده'
+    ColumnDateLastModified: 'تاریخ آخرین تغییرات'
+    ColumnDateLastPublished: 'تاریخ آخرین انتشار'
+    ColumnProblemType: 'نوع مشکل'
     ColumnURL: آدرس
+    HasBrokenFile: 'دارای فایل معیوب'
+    HasBrokenLink: 'دارای پیوند معیوب'
+    HasBrokenLinkAndFile: 'دارای پیوند و فایل معیوب'
     HoverTitleEditPage: 'ویرایش صفحه'
     PageName: 'نام صفحه'
     ReasonDropdown: 'مشکل در بررسی'
+    ReasonDropdownBROKENFILE: 'فایل معیوب'
+    ReasonDropdownBROKENLINK: 'پیوند معیوب'
   CMSAddPageController:
     Title: 'اضافه کردن صفحه'
   CMSBatchActions:
-    DELETE_DRAFT_PAGES: 'حذف از پیش نویس سایت'
+    ARCHIVE: بایگانی
+    ARCHIVED_PAGES: 'بایگانی %d صفحه'
+    DELETE_DRAFT_PAGES: 'حذف از سایت پیش‌نویس'
     PUBLISH_PAGES: انتشار
+    RESTORE: بازنشاندن
+  CMSFileAddController:
+    MENUTITLE: فایل‌ها
   CMSMain:
     AddNewButton: 'جدید'
     Cancel: لغو
     Create: ایجاد
-    DELETE: 'حذف کردن از پیشنویس سایت'
+    DELETE: 'حذف پیش‌نویس'
     DELETEFP: حذف کردن از منتشر شده های سایت
     EMAIL: پست الکترونیک
     PAGENOTEXISTS: 'این صفحه وجود ندارد'
+    RESTORE: بازنشاندن
     SAVE: ذخیره
+    SAVEDRAFT: 'ذخیره پیش‌نویس'
+  CMSMain_left_ss:
+    RESET: تنظیم مجدد
+  CMSPageAddController:
+    MENUTITLE: 'افزودن صفحه'
+  CMSPageEditController:
+    MENUTITLE: 'ویرایش صفحه'
   CMSPageHistoryController:
+    COMPAREMODE: 'وضعیت مقایسه (دو مورد انتخاب کنید)'
+    COMPAREVERSIONS: 'مقایسه نسخه‌ها'
+    MENUTITLE: تاریخچه
     SHOWVERSION: 'نمایش ویرایش'
+    VIEW: نمایش
   CMSPageHistoryController_versions_ss:
     AUTHOR: ناشر
+    WHEN: چه وقت
   CMSPagesController:
+    ListView: 'نمایش لیستی'
     MENUTITLE: صفحات
+    TreeView: 'نمایش درختی'
+  CMSPagesController_Tools_ss:
+    FILTER: پالایش
+  CMSSearch:
+    FILTERDATEFROM: از
+    FILTERDATETO: تا
+    FILTERLABELTEXT: محتوا
+  CMSSettingsController:
+    MENUTITLE: تنظیمات
+  CMSSiteTreeFilter_Search:
+    Title: 'تمامی صفحات'
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'صفحات حذف شده'
   ContentController:
-    DRAFTSITE: 'تارگاه چرکنویس'
+    DRAFT: پیش‌نویس
+    DRAFTSITE: 'سایت پیش‌نویس'
+    PUBLISHEDSITE: 'سایت منتشر شده'
+    Password: رمز عبور
   ErrorPage:
     400: '400 - درخواست نادرست'
     401: '401 - بدون مجوز'
@@ -59,6 +119,15 @@ fa_IR:
     502: '502 - درگاه نادرست'
     CODE: 'شماره ایراد'
     DEFAULTERRORPAGETITLE: 'برگ پیدا نشد'
+  Folder:
+    AddFolderButton: 'افزودن پوشه'
+  LeftAndMain:
+    DELETED: حذف شده
+    PreviewButton: پیش‌نمایش
+    SAVEDUP: ذخیره شده
+    SearchResults: 'نتایج جستجو'
+  Permission:
+    CMS_ACCESS_CATEGORY: 'دسترسی CMS'
   Permissions:
     CONTENT_CATEGORY: 'دسترسی محتوا'
     PERMISSIONS_CATEGORY: 'مجوز دسترسی ها و وظایف'
@@ -75,9 +144,16 @@ fa_IR:
     SEARCH: جستجو
     SearchResults: 'نتایج جستجو'
   SideReport:
+    BROKENFILES: 'صفحات دارای فایل معیوب'
+    BROKENLINKS: 'صفحات دارای پیوند معیوب'
+    BrokenLinksGroupTitle: 'گزارش پیوندهای معیوب'
     EMPTYPAGES: 'صفحات بدون مطلب'
     OtherGroupTitle: سایر
     ParameterLiveCheckbox: 'بررسی سایت به صورت زنده'
+  SilverStripeNavigator:
+    ARCHIVED: بایگانی شده
+  SilverStripeNavigatorLinkl:
+    CloseLink: بستن
   SiteConfig:
     DEFAULTTHEME: '(استفاده از پوسته پیشفرض)'
     EDITHEADER: 'چه کسی میتواند صفحات را در این سایت ویرایش کند؟'
@@ -94,7 +170,9 @@ fa_IR:
     ACCESSHEADER: 'چه کسی بتواند این صفحه را مشاهده کنید ؟'
     ACCESSLOGGEDIN: 'کاربران وارد شده'
     ACCESSONLYTHESE: 'فقط این افراد (انتخاب از لیست)'
+    ADDEDTODRAFTSHORT: پیش‌نویس
     ALLOWCOMMENTS: 'پذیرفتن نظرات در این صفحه ؟'
+    BUTTONCANCELDRAFT: 'لغو تغییرات پیش‌نویس'
     Content: درون مایه
     DEFAULTCONTACTTITLE: 'تماس با ما'
     DEFAULTHOMETITLE: خانه
@@ -103,22 +181,40 @@ fa_IR:
     EDITANYONE: 'هر کسی بتواند به سیستم مدیریت محتوا وارد شود'
     EDITHEADER: 'چه کسی بتواند این صفحه را ویرایش کند ؟'
     EDITONLYTHESE: 'فقط این افراد (انتخاب از لیست)'
-    HASBROKENLINKS: 'لینک این صفحه شکسته است.'
+    HASBROKENLINKS: 'این صفحه دارای پیوند معیوب است.'
     HTMLEDITORTITLE: درون‌مایه
+    INHERIT: 'از صفحه والد ارث ببر'
+    LASTPUBLISHED: 'آخرین انتشار'
+    LASTSAVED: 'آخرین ذخیره‌سازی'
+    LASTUPDATED: 'آخرین به روزرسانی'
     MENUTITLE: 'برچسب ناوبری'
     METADESC: 'توضیحات'
+    METAEXTRA: 'متا تگ‌های اختصاصی'
+    MetadataToggle: متاداده
+    MoreOptions: 'گزینه‌های بیشتر'
+    NOTPUBLISHED: 'منتشر نشده'
     PAGELOCATION: 'موقعیت صفحه'
     PAGETITLE: 'نام برگ'
     PAGETYPE: 'نوع برگ'
     PARENTID: 'برگ مادر'
     PARENTTYPE: 'جایگاه برگ'
+    REMOVEDFROMDRAFTSHORT: 'حذف شده از پیش‌نویس'
+    SHOWINMENUS: 'نمایش در منوها؟'
     SHOWINSEARCH: 'نمایش در جستجو ؟'
+    SINGULARNAME: صفحه
     TABCONTENT: 'مطلب'
     URLSegment: 'بخش آدرس URL'
-    VIEW_DRAFT_CONTENT: 'مشاهده محتوای پیشنویس'
+    VIEW_DRAFT_CONTENT: 'مشاهده محتوای پیش‌نویس'
     has_one_Parent: 'برگ مادر'
+  SiteTreeFileExtension:
+    EDIT: ویرایش
+  URLSegmentField:
+    Cancel: لغو
+    Edit: ویرایش
+    OK: تایید
   ViewArchivedEmail_ss:
     HAVEASKED: 'شما خواسته اید که درون‌مایه تارگاه ما را ببینید در'
   VirtualPage:
+    EditLink: ویرایش
     HEADER: 'این یک صفحه مجازی است'
     SINGULARNAME: 'صفحه مجازی'
