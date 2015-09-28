@@ -18,7 +18,7 @@
 	"require": {
 		"php": ">=5.3.3",
 		"composer/installers": "*",
-		"silverstripe/framework": "4.0.x-dev",
+		"silverstripe/framework": "dev-develop as 4.0.0",
 		"silverstripe/reports": "*",
 		"silverstripe/siteconfig": "3.2.x-dev"
 	},
