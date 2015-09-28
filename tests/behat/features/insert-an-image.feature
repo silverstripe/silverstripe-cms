@@ -14,9 +14,8 @@ Feature: Insert an image into a page
 
   Scenario: I can insert an image from a URL
     Given I press the "Insert Media" button
-    Then I should see "Choose files to upload..."
 
-    When I press the "From the web" button
+    When I click "add by URL" in the ".ss-uploadfield-item-info" element
     And I fill in "RemoteURL" with "http://www.silverstripe.org/themes/ssv3/img/ss_logo.png"
     And I press the "Add url" button
     Then I should see "ss_logo.png (www.silverstripe.org)" in the ".ss-assetuploadfield span.name" element
@@ -29,7 +28,6 @@ Feature: Insert an image into a page
   @assets
   Scenario: I can insert an image uploaded from my own computer
     Given I press the "Insert Media" button
-    And I press the "From your computer" button
     And I attach the file "testfile.jpg" to "AssetUploadField" with HTML5
     # TODO Delay previous step until upload succeeded
     And I wait for 2 seconds
@@ -43,7 +41,6 @@ Feature: Insert an image into a page
   Scenario: I can upload an image from my own computer that matches the name of an existing file
     Given a "image" "assets/Uploads/file1.jpg"
     When I press the "Insert Media" button
-    And I press the "From your computer" button
     And I attach the file "file1.jpg" to "AssetUploadField" with HTML5
     # TODO Delay previous step until upload succeeded
     And I wait for 2 seconds
@@ -57,7 +54,6 @@ Feature: Insert an image into a page
 
   Scenario: I can insert an image from the CMS file store
     Given I press the "Insert Media" button
-    And I press the "From the CMS" button
     And I fill in the "ParentID" dropdown with "folder1"
     And I click on "file1" in the "Files" table
     When I press the "Insert" button
@@ -67,7 +63,6 @@ Feature: Insert an image into a page
 
   Scenario: I can edit properties of an image before inserting it
     Given I press the "Insert Media" button
-    And I press the "From the CMS" button
     And I fill in the "ParentID" dropdown with "folder1"
     And I click on "file1" in the "Files" table
     And I press the "Edit" button
