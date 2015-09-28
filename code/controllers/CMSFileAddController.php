@@ -6,7 +6,7 @@ class CMSFileAddController extends LeftAndMain {
 	private static $required_permission_codes = 'CMS_ACCESS_AssetAdmin';
 	private static $menu_title = 'Files';
 	private static $tree_class = 'Folder';
-	
+
 //	public function upload($request) {
 //		$formHtml = $this->renderWith(array('AssetAdmin_UploadContent'));
 //		if($request->isAjax()) {
@@ -58,9 +58,9 @@ class CMSFileAddController extends LeftAndMain {
 		Requirements::css(FRAMEWORK_DIR . '/css/AssetUploadField.css');
 
 		if($currentPageID = $this->currentPageID()){
-			Session::set("{$this->class}.currentPage", $currentPageID);	
+			Session::set("{$this->class}.currentPage", $currentPageID);
 		}
-		
+
 		$folder = $this->currentPage();
 
 		$uploadField = UploadField::create('AssetUploadField', '');
@@ -83,11 +83,11 @@ class CMSFileAddController extends LeftAndMain {
 		asort($exts);
 		$uploadField->Extensions = implode(', ', $exts);
 
-		$form = CMSForm::create( 
+		$form = CMSForm::create(
 			$this,
 			'EditForm',
 			new FieldList(
-				$uploadField,				
+				$uploadField,
 				new HiddenField('ID')
 			),
 			new FieldList()
@@ -135,7 +135,7 @@ class CMSFileAddController extends LeftAndMain {
 			'Title' => _t('AssetAdmin.Upload', 'Upload'),
 			'Link' => $this->Link()
 		)));
-		
+
 		return $items;
 	}
 
