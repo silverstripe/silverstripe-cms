@@ -44,7 +44,7 @@ abstract class CMSSiteTreeFilter extends Object implements LeftAndMain_SearchFil
 	protected $_cache_expanded = array();
 	
 	/**
-	 * @var String 
+	 * @var string 
 	 */
 	protected $childrenMethod = null;
 

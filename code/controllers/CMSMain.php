@@ -422,7 +422,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * Create serialized JSON string with site tree hints data to be injected into
 	 * 'data-hints' attribute of root node of jsTree.
 	 * 
-	 * @return String Serialized JSON
+	 * @return string Serialized JSON
 	 */
 	public function SiteTreeHints() {
 		$json = '';
@@ -591,7 +591,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 	
 	/**
-	 * @param Int $id
+	 * @param int $id
 	 * @param FieldList $fields
 	 * @return Form
 	 */
@@ -701,7 +701,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	/**
 	 * @param SS_HTTPRequest $request
-	 * @return String HTML
+	 * @return string HTML
 	 */
 	public function treeview($request) {
 		return $this->renderWith($this->getTemplatesWithSuffix('_TreeView'));
@@ -709,7 +709,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	/**
 	 * @param SS_HTTPRequest $request
-	 * @return String HTML
+	 * @return string HTML
 	 */
 	public function listview($request) {
 		return $this->renderWith($this->getTemplatesWithSuffix('_ListView'));

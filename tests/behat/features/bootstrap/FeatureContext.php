@@ -26,7 +26,7 @@ class FeatureContext extends \SilverStripe\Framework\Test\Behaviour\FeatureConte
 	 * Initializes context.
 	 * Every scenario gets it's own context object.
 	 *
-	 * @param   array   $parameters     context parameters (set them up through behat.yml)
+	 * @param  array   $parameters     context parameters (set them up through behat.yml)
 	 */
 	public function __construct(array $parameters) {
 		parent::__construct($parameters);
