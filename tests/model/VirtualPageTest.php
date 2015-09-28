@@ -6,8 +6,12 @@ class VirtualPageTest extends SapphireTest {
 	protected $extraDataObjects = array(
 		'VirtualPageTest_ClassA',
 		'VirtualPageTest_ClassB',
+		'VirtualPageTest_ClassC',
+		'VirtualPageTest_NotRoot',
+		'VirtualPageTest_PageExtension',
+		'VirtualPageTest_PageWithAllowedChildren',
+		'VirtualPageTest_TestDBField',
 		'VirtualPageTest_VirtualPageSub',
-		'VirtualPageTest_PageWithAllowedChildren'
 	);
 
 	protected $illegalExtensions = array(
