@@ -16,6 +16,8 @@ class VirtualPage extends Page {
 	 * Note that anything in {@link self::config()->initially_copied_fields} is implicitly included in this list.
 	 */
 	private static $non_virtual_fields = array(
+		"ID",
+		"ClassName",
 		"SecurityTypeID",
 		"OwnerID",
 		"URLSegment",
@@ -53,26 +55,30 @@ class VirtualPage extends Page {
 		$nonVirtualFields = array_merge(self::config()->non_virtual_fields, self::config()->initially_copied_fields);
 		$record = $this->CopyContentFrom();
 
-		$allFields = $record->db();
-		if($hasOne = $record->hasOne()) foreach($hasOne as $link) $allFields[$link . 'ID'] = "Int";
 		$virtualFields = array();
-		foreach($allFields as $field => $type) {
-			if(!in_array($field, $nonVirtualFields)) $virtualFields[] = $field;
+		foreach($record->db() as $field => $type) {
+			if(!in_array($field, $nonVirtualFields)) {
+				$virtualFields[] = $field;
+			}
 		}
-
 		return $virtualFields;
 	}
 
 	/**
-	 * @return SiteTree Returns the linked page, or failing that, a new object.
+	 * Returns the linked page, or failing that, a new object.
+	 *
+	 * Always returns a non-empty object
+	 * 
+	 * @return SiteTree 
 	 */
 	public function CopyContentFrom() {
 		$copyContentFromID = $this->CopyContentFromID;
-		if(!$copyContentFromID) return new SiteTree();
+		if(!$copyContentFromID) {
+			return new SiteTree();
+		}
 		
 		if(!isset($this->components['CopyContentFrom'])) {
-			$this->components['CopyContentFrom'] = DataObject::get_by_id("SiteTree", 
-				$copyContentFromID);
+			$this->components['CopyContentFrom'] = DataObject::get_by_id("SiteTree", $copyContentFromID);
 
 			// Don't let VirtualPages point to other VirtualPages
 			if($this->components['CopyContentFrom'] instanceof VirtualPage) {
@@ -87,8 +93,11 @@ class VirtualPage extends Page {
 		
 		return $this->components['CopyContentFrom'] ? $this->components['CopyContentFrom'] : new SiteTree();
 	}
+	
 	public function setCopyContentFromID($val) {
-		if($val && DataObject::get_by_id('SiteTree', $val) instanceof VirtualPage) $val = 0;
+		if($val && DataObject::get_by_id('SiteTree', $val) instanceof VirtualPage) {
+			$val = 0;
+		}
 		return $this->setField("CopyContentFromID", $val);
 	}
  
@@ -440,13 +449,10 @@ class VirtualPage extends Page {
 	 * @return bool
 	 */
 	public function hasField($field) {
-		return (
-			array_key_exists($field, $this->record) 
-			|| $this->hasDatabaseField($field) 
-			|| array_key_exists($field, $this->db()) // Needed for composite fields
-			|| parent::hasMethod("get{$field}")
-			|| $this->CopyContentFrom()->hasField($field)
-		);
+		if(parent::hasField($field)) {
+			return true;
+		}
+		return $this->CopyContentFrom()->hasField($field);
 	}	
 	/**
 	 * Overwrite to also check for method on the original data object
@@ -455,8 +461,10 @@ class VirtualPage extends Page {
 	 * @return bool 
 	 */
 	public function hasMethod($method) {
-		if(parent::hasMethod($method)) return true;
-		return $this->copyContentFrom()->hasMethod($method);
+		if(parent::hasMethod($method)) {
+			return true;
+		}
+		return $this->CopyContentFrom()->hasMethod($method);
 	}
 
 	/**
@@ -467,11 +475,9 @@ class VirtualPage extends Page {
 	 * @return string
 	 */
 	public function castingHelper($field) {
-		if($this->copyContentFrom()) {
-			return $this->copyContentFrom()->castingHelper($field);
-		} else {
-			return parent::castingHelper($field);
-		}
+		return $this
+			->CopyContentFrom()
+			->castingHelper($field);
 	}
 
 }
