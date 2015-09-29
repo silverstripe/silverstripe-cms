@@ -25,10 +25,8 @@ Feature: Manage files
 
   Scenario: I can upload a file to a folder
     Given I click on "folder1" in the "Files" table
-    And I press the "Upload" button
     And I attach the file "testfile.jpg" to "AssetUploadField" with HTML5
     And I wait for 5 seconds
-    And I press the "Back to folder" button
     Then the "folder1" table should contain "testfile"
 
   Scenario: I can edit a file
@@ -51,14 +49,13 @@ Feature: Manage files
     And I click on "file1" in the "folder1" table
     And I fill in "folder2" for the "Folder" dropdown
     And I press the "Save" button
-    # /show/0 is to ensure that we are on top level folder
-    And I go to "/admin/assets/show/0"
+    And I click "Files" in the ".breadcrumbs-wrapper" element
     And I click on "folder2" in the "Files" table
     And the "folder2" table should contain "file1"
 
   Scenario: I can see allowed extensions help
-    When I go to "/admin/assets/add"
-    And I follow "Show allowed extensions"
+    When I go to "/admin/assets/"
+    And I click "Show allowed extensions" in the ".ss-uploadfield-view-allowed-extensions" element
     Then I should see "png,"
 
   Scenario: I can filter the files list view using name
