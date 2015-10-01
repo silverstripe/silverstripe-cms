@@ -593,7 +593,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	/**
 	 * @param int $id
 	 * @param FieldList $fields
-	 * @return Form
+	 * @return CMSForm
 	 */
 	public function getEditForm($id = null, $fields = null) {
 
@@ -676,7 +676,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			// if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
 			$form->setAttribute('data-pjax-fragment', 'CurrentForm');
 			// Set validation exemptions for specific actions
-			$form->setValidationExemptActions(array('restore', 'revert', 'deletefromlive', 'rollback'));
+			$form->setValidationExemptActions(array('restore', 'revert', 'deletefromlive', 'delete', 'unpublish', 'rollback'));
 
 			// Announce the capability so the frontend can decide whether to allow preview or not.
 			if(in_array('CMSPreviewable', class_implements($record))) {
