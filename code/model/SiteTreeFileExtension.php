@@ -24,7 +24,7 @@ class SiteTreeFileExtension extends DataExtension {
 	/**
 	 * Generate an HTML list which provides links to where a file is used.
 	 *
-	 * @return String
+	 * @return string
 	 */
 	public function BackLinkHTMLList() {
 		$html = '<em>' . _t('SiteTreeFileExtension.BACKLINK_LIST_DESCRIPTION', 'This list shows all pages where the file has been added through a WYSIWYG editor.') . '</em>';
@@ -91,7 +91,7 @@ class SiteTreeFileExtension extends DataExtension {
 	/**
 	 * @todo Unnecessary shortcut for AssetTableField, coupled with cms module.
 	 * 
-	 * @return Integer
+	 * @return integer
 	 */
 	public function BackLinkTrackingCount() {
 		$pages = $this->owner->BackLinkTracking();
@@ -133,8 +133,8 @@ class SiteTreeFileExtension extends DataExtension {
 	 * 
 	 * @uses SiteTree->rewriteFileURL()
 	 * 
-	 * @param String $old File path relative to the webroot
-	 * @param String $new File path relative to the webroot
+	 * @param string $old File path relative to the webroot
+	 * @param string $new File path relative to the webroot
 	 */
 	public function updateLinks($old, $new) {
 		if(class_exists('Subsite')) Subsite::disable_subsite_filter(true);

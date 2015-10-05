@@ -120,13 +120,13 @@ class SilverStripeNavigatorItem extends ViewableData {
 	}
 	
 	/**
-	 * @return String HTML, mostly a link - but can be more complex as well.
+	 * @return string HTML, mostly a link - but can be more complex as well.
 	 * For example, a "future state" item might show a date selector.
 	 */
 	public function getHTML() {}
 
 	/**
-	* @return String
+	* @return string
 	* Get the Title of an item
 	*/
 	public function getTitle() {}
@@ -143,12 +143,12 @@ class SilverStripeNavigatorItem extends ViewableData {
 	 * Not all items are simple links, please use {@link getHTML()}
 	 * to represent an item in markup unless you know what you're doing.
 	 * 
-	 * @return String
+	 * @return string
 	 */
 	public function getLink() {}
 	
 	/**
-	 * @return String
+	 * @return string
 	 */
 	public function getMessage() {}
 	
@@ -160,7 +160,7 @@ class SilverStripeNavigatorItem extends ViewableData {
 	} 
 	
 	/**
-	 * @return Int
+	 * @return int
 	 */
 	public function getPriority() {
 		return $this->stat('priority');

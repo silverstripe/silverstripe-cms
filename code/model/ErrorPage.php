@@ -280,7 +280,7 @@ class ErrorPage extends Page {
 	 * which is generated through {@link publish()}.
 	 * 
 	 * @param int $statusCode A HTTP Statuscode, mostly 404 or 500
-	 * @param String $locale A locale, e.g. 'de_DE' (Optional)
+	 * @param string $locale A locale, e.g. 'de_DE' (Optional)
 	 *
 	 * @return string
 	 */
