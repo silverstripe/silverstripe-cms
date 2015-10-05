@@ -169,7 +169,7 @@
 				// otherwise use the old value
 				else this.find(':input[name=ParentID]').val(this.find('#Form_EditForm_ParentType_subpage').data('parentIdValue'));
 				// toggle tree dropdown based on selection
-				this.find('#ParentID').toggle(selected != 'root');
+				this.find('#Form_EditForm_ParentID_Holder').toggle(selected != 'root');
 			},
 			
 			/**
@@ -196,9 +196,9 @@
 			onmatch: function() {
 				// TODO Decouple
 				var dropdown;
-				if(this.attr('id') == 'CanViewType') dropdown = $('#ViewerGroups');
-				else if(this.attr('id') == 'CanEditType') dropdown = $('#EditorGroups');
-				else if(this.attr('id') == 'CanCreateTopLevelType') dropdown = $('#CreateTopLevelGroups');
+				if(this.attr('id') == 'CanViewType') dropdown = $('#Form_EditForm_ViewerGroups_Holder');
+				else if(this.attr('id') == 'CanEditType') dropdown = $('#Form_EditForm_EditorGroups_Holder');
+				else if(this.attr('id') == 'CanCreateTopLevelType') dropdown = $('#Form_EditForm_CreateTopLevelGroups_Holder');
 		
 				this.find('.optionset :input').bind('change', function(e) {
 					var wrapper = $(this).closest('.middleColumn').parent('div');
@@ -451,7 +451,7 @@
 				this._super();
 			},
 			redraw: function() {
-				var treeField = $('.cms-edit-form.CMSPageSettingsController #ParentID');
+				var treeField = $('.cms-edit-form.CMSPageSettingsController #Form_EditForm_ParentID_Holder');
 				if ($(this).attr('id') == 'Form_EditForm_ParentType_root') treeField.slideUp();
 				else treeField.slideDown();
 			},
@@ -462,7 +462,7 @@
 
 		//trigger an initial change event to do the initial hiding of the element, if necessary
 		if ($('.cms-edit-form.CMSPageSettingsController input[name="ParentType"]:checked').attr('id') == 'Form_EditForm_ParentType_root') {
-			$('.cms-edit-form.CMSPageSettingsController #ParentID').hide(); //quick hide on first run
+			$('.cms-edit-form.CMSPageSettingsController #Form_EditForm_ParentID_Holder').hide(); //quick hide on first run
 		}
 	});
 }(jQuery));
