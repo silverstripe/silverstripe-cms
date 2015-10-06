@@ -271,7 +271,6 @@ nl:
   SilverStripeNavigator:
     ARCHIVED: Gearchiveerd
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Kopieer en plak de link hieronder, om deze pagina te delen.'
     ShareLink: 'Deel een link'
   SilverStripeNavigatorLinkl:
     CloseLink: Sluiten

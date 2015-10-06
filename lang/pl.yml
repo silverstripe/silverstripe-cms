@@ -271,7 +271,6 @@ pl:
   SilverStripeNavigator:
     ARCHIVED: Zarchiwizowane
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Aby podzielić się tą stroną, skopiuj i wklej poniższy link.'
     ShareLink: 'Podziel się linkiem'
   SilverStripeNavigatorLinkl:
     CloseLink: Zamknij

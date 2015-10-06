@@ -268,7 +268,6 @@ sr_RS@latin:
   SilverStripeNavigator:
     ARCHIVED: Arhivirano
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Da bi ste podelili ovu stranicu kopirajte i nalepite link ispod.'
     ShareLink: 'Podeli link'
   SilverStripeNavigatorLinkl:
     CloseLink: Zatvori
