@@ -1,4 +1,7 @@
 <?php
+
+use SilverStripe\Forms\AssetGalleryField;
+
 /**
  * AssetAdmin is the 'file store' section of the CMS.
  * It provides an interface for manipulating the File and Folder objects in the system.
@@ -230,7 +233,7 @@ JS
 		if(!$fields->hasTabset()) {
 			$tabs = new TabSet('Root',
 				$tabList = new Tab('ListView', _t('AssetAdmin.ListView', 'List View')),
-				$tabTree = new Tab('TreeView', _t('AssetAdmin.TreeView', 'Tree View'))
+				$tabTree = new Tab('GalleryView', _t('AssetAdmin.GalleryView', 'Gallery View'))
 			);
 			$tabList->addExtraClass("content-listview cms-tabset-icon list");
 			$tabTree->addExtraClass("content-treeview cms-tabset-icon tree");
@@ -276,36 +279,24 @@ JS
 
 		$exts = $uploadField->getValidator()->getAllowedExtensions();
 		asort($exts);
+
 		$uploadField->Extensions = implode(', ', $exts);
 
 		// List view
-		$fields->addFieldsToTab('Root.ListView', array(
-			$actionsComposite = CompositeField::create(
-				$actionButtonsComposite
-			)->addExtraClass('cms-content-toolbar field'),
-			$uploadField,
-			new HiddenField('ID'),
-			$gridField
-		));
+		$tab = $fields->findOrMakeTab('Root.ListView');
+		$tab->push(CompositeField::create($actionButtonsComposite)->addExtraClass('cms-content-toolbar field'));
+		$tab->push($uploadField);
+		$tab->push(HiddenField::create('ID'));
+		$tab->push($gridField);
 
-		$treeField = new LiteralField('Tree', '');
-		// Tree view
-		$fields->addFieldsToTab('Root.TreeView', array(
-			clone $actionsComposite,
-			// TODO Replace with lazy loading on client to avoid performance hit of rendering potentially unused views
-			new LiteralField(
-				'Tree',
-				FormField::create_tag(
-					'div',
-					array(
-						'class' => 'cms-tree',
-						'data-url-tree' => $this->Link('getsubtree'),
-						'data-url-savetreenode' => $this->Link('savetreenode')
-					),
-					$this->SiteTreeAsUL()
-				)
-			)
-		));
+		// Gallery view
+		$galleryUploadField = clone $uploadField;
+		$galleryUploadField->setName('GalleryAssetUploadField');
+
+		$tab = $fields->findOrMakeTab('Root.GalleryView');
+		$tab->push(CompositeField::create($actionButtonsComposite)->addExtraClass('cms-content-toolbar field'));
+		$tab->push($galleryUploadField);
+		$tab->push(AssetGalleryField::create('Files')->setCurrentPath('assets')->setLimit(15));
 
 		// Move actions to "details" tab (they don't make sense on list/tree view)
 		$actions = $form->Actions();
@@ -403,6 +394,17 @@ JS
 				$appCategories
 			)
 		);
+
+		$request = Controller::curr()->getRequest();
+		$query = $request->getVar('q');
+
+		$field = new HiddenField('q[Folder]');
+
+		if (!empty($query) && !empty($query['Folder'])) {
+			$field->setValue(urldecode($query['Folder']));
+		}
+
+		$context->addField($field);
 
 		$typeDropdown->setEmptyString(' ');
 

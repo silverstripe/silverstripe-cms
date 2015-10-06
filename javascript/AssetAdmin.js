@@ -101,6 +101,7 @@
 			onsubmit: function(e) {
 				var button = jQuery(this).find(':submit:first');
 				button.addClass('loading');
+
 				$.ajax({
 					url: jQuery(this).attr('action'),
 					data: this.serializeArray(),
