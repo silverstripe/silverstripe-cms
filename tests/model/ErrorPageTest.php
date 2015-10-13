@@ -6,32 +6,26 @@
 class ErrorPageTest extends FunctionalTest {
 	
 	protected static $fixture_file = 'ErrorPageTest.yml';
-	
-	protected $orig = array();
-	
+
+	/**
+	 * Location of temporary cached files
+	 *
+	 * @var string
+	 */
 	protected $tmpAssetsPath = '';
-	
+
 	public function setUp() {
 		parent::setUp();
-		
-		$this->orig['ErrorPage_staticfilepath'] = ErrorPage::config()->static_filepath;		
-		$this->tmpAssetsPath = sprintf('%s/_tmp_assets_%s', TEMP_FOLDER, rand());
-		Filesystem::makeFolder($this->tmpAssetsPath . '/ErrorPageTest');
-		ErrorPage::config()->static_filepath = $this->tmpAssetsPath . '/ErrorPageTest';
-
-		$this->origEnvType = 		Config::inst()->get('Director', 'environment_type');
+		// Set temporary asset backend store
+		AssetStoreTest_SpyStore::activate('ErrorPageTest');
+		Config::inst()->update('ErrorPage', 'static_filepath', AssetStoreTest_SpyStore::base_path());
+		Config::inst()->update('ErrorPage', 'enable_static_file', true);
 		Config::inst()->update('Director', 'environment_type', 'live');
 	}
-	
-	public function tearDown() {
-		parent::tearDown();
-		
-		ErrorPage::config()->static_filepath = $this->orig['ErrorPage_staticfilepath'];
-		
-		Filesystem::removeFolder($this->tmpAssetsPath . '/ErrorPageTest');
-		Filesystem::removeFolder($this->tmpAssetsPath);
 
-		Config::inst()->update('Director', 'environment_type', $this->origEnvType);
+	public function tearDown() {
+		AssetStoreTest_SpyStore::reset();
+		parent::tearDown();
 	}
 	
 	public function test404ErrorPage() {
@@ -81,5 +75,44 @@ class ErrorPageTest extends FunctionalTest {
 		$this->assertEquals($response->getStatusCode(), '404');
 		$this->assertNotNull($response->getBody());
 		$this->assertContains('text/html', $response->getHeader('Content-Type'));
+	}
+
+	public function testStaticCaching() {
+		// Test new error code does not have static content
+		$this->assertEmpty(ErrorPage::get_content_for_errorcode('401'));
+		$expectedErrorPagePath = AssetStoreTest_SpyStore::base_path() . '/error-401.html';
+		$this->assertFileNotExists($expectedErrorPagePath, 'Error page is not automatically cached');
+
+		// Write new 401 page
+		$page = new ErrorPage();
+		$page->ErrorCode = 401;
+		$page->Title = 'Unauthorised';
+		$page->write();
+		$page->publish('Stage', 'Live');
+		$page->doPublish();
+		
+		// Static cache should now exist
+		$this->assertNotEmpty(ErrorPage::get_content_for_errorcode('401'));
+		$expectedErrorPagePath = AssetStoreTest_SpyStore::base_path() . '/error-401.html';
+		$this->assertFileExists($expectedErrorPagePath, 'Error page is cached');
+	}
+
+	/**
+	 * Test fallback to file generation API with enable_static_file disabled
+	 */
+	public function testGeneratedFile() {
+		Config::inst()->update('ErrorPage', 'enable_static_file', false);
+		$this->logInWithPermission('ADMIN');
+
+		$page = new ErrorPage();
+		$page->ErrorCode = 405;
+		$page->Title = 'Method Not Allowed';
+		$page->write();
+		$page->doPublish();
+
+		// Error content is available, even though the static file does not exist (only in assetstore)
+		$this->assertNotEmpty(ErrorPage::get_content_for_errorcode('405'));
+		$expectedErrorPagePath = AssetStoreTest_SpyStore::base_path() . '/error-405.html';
+		$this->assertFileNotExists($expectedErrorPagePath, 'Error page is not cached in static location');
 	}
 }
