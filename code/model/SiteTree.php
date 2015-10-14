@@ -1764,10 +1764,12 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 	
 	/**
-	 * Rewrite a file URL on this page, after its been renamed. Triggers the onRenameLinkedAsset action on extensions.
+	 * Rewrites any linked images on this page.
+	 * Non-image files should be linked via shortcodes
+	 * Triggers the onRenameLinkedAsset action on extensions.
+	 * TODO: This doesn't work for HTMLText fields on other tables.
 	 */
-	public function rewriteFileURL($old, $new) {
-		$fields = $this->inheritedDatabaseFields();
+	public function rewriteFileLinks() {
 		// Update the content without actually creating a new version
 		foreach(array("SiteTree_Live", "SiteTree") as $table) {
 			// Published site
@@ -1777,23 +1779,26 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			)->record();
 			$origPublished = $published;
 
-			foreach($fields as $fieldName => $fieldType) {
-				if ($fieldType != 'HTMLText') continue;
+			foreach($this->db() as $fieldName => $fieldType) {
+				// Skip if non HTML or if empty
+				if ($fieldType !== 'HTMLText' || empty($published[$fieldName])) {
+					continue;
+				}
 
-				// TODO: This doesn't work for HTMLText fields on other tables.
-				if(isset($published[$fieldName])) {
-					$published[$fieldName] = str_replace($old, $new, $published[$fieldName], $numReplaced);
-					if($numReplaced) {
-						$query = sprintf('UPDATE "%s" SET "%s" = ? WHERE "ID" = ?', $table, $fieldName);
-						DB::prepared_query($query, array($published[$fieldName], $this->ID));
-							
-						// Tell static caching to update itself
-						if($table == 'SiteTree_Live') {
-							$publishedClass = $origPublished['ClassName'];
-							$origPublishedObj = new $publishedClass($origPublished);
-							$this->invokeWithExtensions('onRenameLinkedAsset', $origPublishedObj);
-						}
-					}
+				// Regenerate content
+				$content = Image::regenerate_html_links($published[$fieldName]);
+				if($content === $published[$fieldName]) {
+					continue;
+				}
+
+				$query = sprintf('UPDATE "%s" SET "%s" = ? WHERE "ID" = ?', $table, $fieldName);
+				DB::prepared_query($query, array($content, $this->ID));
+
+				// Tell static caching to update itself
+				if($table == 'SiteTree_Live') {
+					$publishedClass = $origPublished['ClassName'];
+					$origPublishedObj = new $publishedClass($origPublished);
+					$this->invokeWithExtensions('onRenameLinkedAsset', $origPublishedObj);
 				}
 			}
 		}

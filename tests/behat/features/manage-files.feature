@@ -6,7 +6,7 @@ Feature: Manage files
 
   Background:
     Given a "image" "assets/folder1/file1.jpg" was created "2012-01-01 12:00:00"
-    And a "image" "assets/folder1/folder1.1/file2.jpg" was created "2010-01-01 12:00:00"
+    And a "image" "assets/folder1/folder1-1/file2.jpg" was created "2010-01-01 12:00:00"
     And a "folder" "assets/folder2"
     And I am logged in with "ADMIN" permissions
     And I go to "/admin/assets"
@@ -21,7 +21,7 @@ Feature: Manage files
   Scenario: I can list files in a folder
     Given I click on "folder1" in the "Files" table
     Then the "folder1" table should contain "file1"
-    And the "folder1" table should not contain "file1.1"
+    And the "folder1" table should not contain "file1-1"
 
   Scenario: I can upload a file to a folder
     Given I click on "folder1" in the "Files" table

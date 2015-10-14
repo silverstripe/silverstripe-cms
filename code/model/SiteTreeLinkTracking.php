@@ -12,13 +12,13 @@
  * referenced in any HTMLText fields, and two booleans to indicate if there are any broken links. Call
  * augmentSyncLinkTracking to update those fields with any changes to those fields.
  *
- * @property SiteTree owner
+ * @property SiteTree $owner
  *
- * @property bool HasBrokenFile
- * @property bool HasBrokenLink
+ * @property bool $HasBrokenFile
+ * @property bool $HasBrokenLink
  *
- * @method ManyManyList LinkTracking List of site pages linked on this page.
- * @method ManyManyList ImageTracking List of Images linked on this page.
+ * @method ManyManyList LinkTracking() List of site pages linked on this page.
+ * @method ManyManyList ImageTracking() List of Images linked on this page.
  */
 class SiteTreeLinkTracking extends DataExtension {
 
@@ -110,22 +110,25 @@ class SiteTreeLinkTracking extends DataExtension {
 
 		// Add file tracking for image references
 		if($images = $htmlValue->getElementsByTagName('img')) foreach($images as $img) {
-			if($image = File::find($path = urldecode(Director::makeRelative($img->getAttribute('src'))))) {
+			// {@see HtmlEditorField} for data-fileid source
+			$fileID = $img->getAttribute('data-fileid');
+			if(!$fileID) {
+				continue;
+			}
+
+			// Assuming a local file is linked, check if it's valid
+			if($image = File::get()->byID($fileID)) {
 				$linkedFiles[] = $image->ID;
 			} else {
-				if(substr($path, 0, strlen(ASSETS_DIR) + 1) == ASSETS_DIR . '/') {
-					$record->HasBrokenFile = true;
-				}
+				$record->HasBrokenFile = true;
 			}
 		}
 
 		// Update the "LinkTracking" many_many
-		if($record->ID && $record->manyManyComponent('LinkTracking') && $tracker = $record->LinkTracking()) {
-			$tracker->removeByFilter(sprintf(
-				'"FieldName" = \'%s\' AND "%s" = %d',
-				$fieldName,
-				$tracker->getForeignKey(),
-				$record->ID
+		if($record->ID && $record->manyManyComponent('LinkTracking') && ($tracker = $record->LinkTracking())) {
+			$tracker->removeByFilter(array(
+				sprintf('"FieldName" = ? AND "%s" = ?', $tracker->getForeignKey())
+					=> array($fieldName, $record->ID)
 			));
 
 			if($linkedPages) foreach($linkedPages as $item) {
@@ -134,12 +137,10 @@ class SiteTreeLinkTracking extends DataExtension {
 		}
 
 		// Update the "ImageTracking" many_many
-		if($record->ID && $record->manyManyComponent('ImageTracking') && $tracker = $record->ImageTracking()) {
-			$tracker->removeByFilter(sprintf(
-				'"FieldName" = \'%s\' AND "%s" = %d',
-				$fieldName,
-				$tracker->getForeignKey(),
-				$record->ID
+		if($record->ID && $record->manyManyComponent('ImageTracking') && ($tracker = $record->ImageTracking())) {
+			$tracker->removeByFilter(array(
+				sprintf('"FieldName" = ? AND "%s" = ?', $tracker->getForeignKey())
+					=> array($fieldName, $record->ID)
 			));
 
 			if($linkedFiles) foreach($linkedFiles as $item) {

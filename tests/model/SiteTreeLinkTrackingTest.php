@@ -2,7 +2,7 @@
 
 class SiteTreeLinkTrackingTest extends SapphireTest {
 
-	function isBroken($content) {
+	protected function isBroken($content) {
 		$parser = new SiteTreeLinkTracking_Parser();
 		$htmlValue = Injector::inst()->create('HTMLValue', $content);
 		$links = $parser->process($htmlValue);
@@ -11,7 +11,7 @@ class SiteTreeLinkTrackingTest extends SapphireTest {
 		return $links[0]['Broken'];
 	}
 
-	function testParser() {
+	public function testParser() {
 		$this->assertTrue($this->isBroken('<a href="[sitetree_link,id=123]">link</a>'));
 		$this->assertTrue($this->isBroken('<a href="[sitetree_link,id=123]#no-such-anchor">link</a>'));
 		$this->assertTrue($this->isBroken('<a href="[file_link,id=123]">link</a>'));
@@ -34,14 +34,14 @@ class SiteTreeLinkTrackingTest extends SapphireTest {
 		$this->assertFalse($this->isBroken("<a href=\"[file_link,id=$file->ID]\">link</a>"));
 	}
 
-	function highlight($content) {
+	protected function highlight($content) {
 		$page = new Page();
 		$page->Content = $content;
 		$page->write();
 		return $page->Content;
 	}
 
-	function testHighlighter() {
+	public function testHighlighter() {
 		$content = $this->highlight('<a href="[sitetree_link,id=123]" class="existing-class">link</a>');
 		$this->assertEquals(substr_count($content, 'ss-broken'), 1, 'A ss-broken class is added to the broken link.');
 		$this->assertEquals(substr_count($content, 'existing-class'), 1, 'Existing class is not removed.');
@@ -58,6 +58,18 @@ class SiteTreeLinkTrackingTest extends SapphireTest {
 		);
 		$this->assertEquals(substr_count($content, 'ss-broken'), 0, 'All ss-broken classes are removed from good link');
 		$this->assertEquals(substr_count($content, 'existing-class'), 1, 'Existing class is not removed.');
+	}
+
+	public function testHasBrokenFile() {
+		$this->assertTrue($this->pageIsBrokenFile('<img src="someurl.jpg" data-fileid="99999999" />'));
+		$this->assertFalse($this->pageIsBrokenFile('<img src="someurl.jpg" />'));
+	}
+
+	protected function pageIsBrokenFile($content) {
+		$page = new Page();
+		$page->Content = $content;
+		$page->write();
+		return $page->HasBrokenFile;
 	}
 
 }

@@ -4,6 +4,25 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 
 	protected static $use_draft_site = true;
 
+	public function setUp() {
+		parent::setUp();
+		AssetStoreTest_SpyStore::activate('SiteTreeHtmlEditorFieldTest');
+		$this->logInWithPermission('ADMIN');
+
+		// Write file contents
+		$files = File::get()->exclude('ClassName', 'Folder');
+		foreach($files as $file) {
+			$destPath = AssetStoreTest_SpyStore::getLocalPath($file);
+			Filesystem::makeFolder(dirname($destPath));
+			file_put_contents($destPath, str_repeat('x', 1000000));
+		}
+	}
+
+	public function tearDown() {
+		AssetStoreTest_SpyStore::reset();
+		parent::tearDown();
+	}
+
 	public function testLinkTracking() {
 		$sitetree = $this->objFromFixture('SiteTree', 'home');
 		$editor   = new HtmlEditorField('Content');
@@ -102,21 +121,24 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 
 	public function testImageTracking() {
 		$sitetree = $this->objFromFixture('SiteTree', 'home');
-		$editor   = new HtmlEditorField('Content');
-		$fileID   = $this->idFromFixture('Image', 'example_image');
+		$editor = new HtmlEditorField('Content');
+		$file = $this->objFromFixture('Image', 'example_image');
 
-		$editor->setValue('<img src="assets/example.jpg" />');
+		$editor->setValue(sprintf('<img src="%s" data-fileid="%d" />', $file->getURL(), $file->ID));
 		$editor->saveInto($sitetree);
 		$sitetree->write();
-		$this->assertEquals (
-			array($fileID => $fileID), $sitetree->ImageTracking()->getIDList(), 'Inserted images are tracked.'
+		$this->assertEquals(
+			array($file->ID => $file->ID),
+			$sitetree->ImageTracking()->getIDList(),
+			'Inserted images are tracked.'
 		);
 
 		$editor->setValue(null);
 		$editor->saveInto($sitetree);
 		$sitetree->write();
-		$this->assertEquals (
-			array(), $sitetree->ImageTracking()->getIDList(), 'Tracked images are deleted when removed.'
+		$this->assertEmpty(
+			$sitetree->ImageTracking()->getIDList(),
+			'Tracked images are deleted when removed.'
 		);
 	}
 
