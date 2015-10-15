@@ -16,7 +16,7 @@
 			<div class="icon-button-group">
 				<ul class="cms-tabset-nav-primary ss-tabset">
 				<% loop $Tabs %>
-					<li<% if $extraClass %> class="$extraClass"<% end_if %>><a class="cms-panel-link icon-button <% if $Title == 'List View' %>font-icon-list<% else_if $Title == 'Tree View' %>font-icon-icon-tree<% else %>font-icon-pencil<% end_if %>" href="#$id" title="$Title"></a></li>
+					<li<% if $extraClass %> class="$extraClass"<% end_if %>><a class="cms-panel-link icon-button <% if $Title == 'List View' %>font-icon-list<% else_if $Title == 'Tree View' %>font-icon-icon-tree<% else %>font-icon-thumbnails<% end_if %>" href="#$id" title="$Title"></a></li>
 				<% end_loop %>
 				</ul>
 			</div>
