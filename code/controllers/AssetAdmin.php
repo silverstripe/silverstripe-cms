@@ -296,7 +296,7 @@ JS
 		$tab = $fields->findOrMakeTab('Root.GalleryView');
 		$tab->push(CompositeField::create($actionButtonsComposite)->addExtraClass('cms-content-toolbar field'));
 		$tab->push($galleryUploadField);
-		$tab->push(AssetGalleryField::create('Files')->setCurrentPath('assets')->setLimit(15));
+		$tab->push(AssetGalleryField::create('Files')->setCurrentPath('')->setLimit(15));
 
 		// Move actions to "details" tab (they don't make sense on list/tree view)
 		$actions = $form->Actions();
