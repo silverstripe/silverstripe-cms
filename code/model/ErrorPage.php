@@ -222,10 +222,10 @@ class ErrorPage extends Page {
 	 * content, so the page can be shown even when SilverStripe is not
 	 * functioning correctly before publishing this page normally.
 	 *
-	 * @return void
+	 * @return bool
 	 */
 	public function doPublish() {
-		parent::doPublish();
+		if (!parent::doPublish()) return false;
 
 		// Run the page (reset the theme, it might've been disabled by LeftAndMain::init())
 		$oldEnabled = Config::inst()->get('SSViewer', 'theme_enabled');
@@ -255,11 +255,13 @@ class ErrorPage extends Page {
 			$fileErrorText = _t(
 				"ErrorPage.ERRORFILEPROBLEM",
 				"Error opening file \"{filename}\" for writing. Please check file permissions.",
-				array('filename' => $errorFile)
+				array('filename' => $filePath)
 			);
-			$this->response->addHeader('X-Status', rawurlencode($fileErrorText));
-			return $this->httpError(405);
+			user_error($fileErrorText, E_USER_WARNING);
+			return false;
 		}
+
+		return true;
 	}
 	
 	/**
