@@ -32,7 +32,7 @@ So that I can link to a external website or a page on my site
     And I fill in the "internal" dropdown with "Details"
     And I wait for 1 second
     And I select "youranchor" from "Form_EditorToolbarLinkForm_AnchorSelector"
-    And I press the "Insert link" button
+    And I press the "Insert" button
     Then the "Content" HTML field should contain "<a href="[sitetree_link,id=3]#youranchor">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save draft" button
@@ -53,8 +53,8 @@ So that I can link to a external website or a page on my site
     When I press the "Insert Link" button
     When I select the "Download a file" radio button
     And I attach the file "testfile.jpg" to "file[Uploads][]" with HTML5
-    And I press the "Insert link" button
-    Then the "Content" HTML field should contain "<a href="[file_link,id=3]" target="_blank">awesome</a>"
+    And I press the "Insert" button
+    Then the "Content" HTML field should contain "<a href="[file_link,id=4]" target="_blank">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save draft" button
 
@@ -64,7 +64,7 @@ So that I can link to a external website or a page on my site
     When I press the "Insert Link" button
     When I select the "Anchor on this page" radio button
     And I select "myanchor" from "Form_EditorToolbarLinkForm_AnchorSelector"
-    And I press the "Insert link" button
+    And I press the "Insert" button
     Then the "Content" HTML field should contain "<a href="#myanchor">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save draft" button
@@ -77,7 +77,7 @@ So that I can link to a external website or a page on my site
     Then the "Form_EditorToolbarLinkForm_external" field should contain "http://silverstripe.org"
     # This doesn't seem to suffer from that issue
     When I fill in "http://google.com" for "URL"
-    And I press the "Insert link" button
+    And I press the "Insert" button
     Then the "Content" HTML field should contain "<a href="http://google.com">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save draft" button

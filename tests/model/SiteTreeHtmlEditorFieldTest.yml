@@ -8,8 +8,12 @@ SiteTree:
 
 File:
   example_file:
+    FileFilename: example.pdf
+    FileHash: 55b443b60176235ef09801153cca4e6da7494a0c
     Name: example.pdf
 
 Image:
   example_image:
+    FileFilename: example.jpg
+    FileHash: 55b443b60176235ef09801153cca4e6da7494a0c
     Name: example.jpg

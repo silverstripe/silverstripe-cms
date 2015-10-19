@@ -18,7 +18,7 @@ Feature: Insert an image into a page
     When I click "add by URL" in the ".ss-uploadfield-item-info" element
     And I fill in "RemoteURL" with "http://www.silverstripe.org/themes/ssv3/img/ss_logo.png"
     And I press the "Add url" button
-    Then I should see "ss_logo.png (www.silverstripe.org)" in the ".ss-assetuploadfield span.name" element
+    Then I should see "ss_logo.png" in the ".ss-assetuploadfield span.name" element
 
     When I press the "Insert" button  
     Then the "Content" HTML field should contain "ss_logo.png"
@@ -31,9 +31,9 @@ Feature: Insert an image into a page
     And I attach the file "testfile.jpg" to "AssetUploadField" with HTML5
     # TODO Delay previous step until upload succeeded
     And I wait for 2 seconds
-    Then there should be a file "assets/Uploads/testfile.jpg"
+    Then there should be a file "assets/Uploads/59de0c841f/testfile.jpg"
     When I press the "Insert" button
-    Then the "Content" HTML field should contain "testfile.jpg"
+    Then the "Content" HTML field should contain "testfile__Resampled.jpg"
     # Required to avoid "unsaved changed" browser dialog
     Then I press the "Save draft" button
 
@@ -45,10 +45,10 @@ Feature: Insert an image into a page
     # TODO Delay previous step until upload succeeded
     And I wait for 2 seconds
     # Note change in default behaviour from 3.1, respect default Upload.replaceFile=false
-    Then there should be a file "assets/Uploads/file1.jpg"
-    And there should be a file "assets/Uploads/file1-v2.jpg"
+    Then there should be a file "assets/Uploads/3d0ef6ec37/file1.jpg"
+    And there should be a file "assets/Uploads/3d0ef6ec37/file1-v2.jpg"
     When I press the "Insert" button
-    Then the "Content" HTML field should contain "file1-v2.jpg"
+    Then the "Content" HTML field should contain "file1-v2__Resampled.jpg"
     # Required to avoid "unsaved changed" browser dialog
     Then I press the "Save draft" button
 
@@ -57,7 +57,7 @@ Feature: Insert an image into a page
     And I fill in the "ParentID" dropdown with "folder1"
     And I click on "file1" in the "Files" table
     When I press the "Insert" button
-    Then the "Content" HTML field should contain "file1.jpg"
+    Then the "Content" HTML field should contain "file1__Resampled.jpg"
     # Required to avoid "unsaved changed" browser dialog
     Then I press the "Save draft" button
 
@@ -68,7 +68,7 @@ Feature: Insert an image into a page
     And I press the "Edit" button
     When I fill in "Alternative text (alt)" with "My alt"
     And I press the "Insert" button
-    Then the "Content" HTML field should contain "file1.jpg"
+    Then the "Content" HTML field should contain "file1__Resampled.jpg"
     And the "Content" HTML field should contain "My alt"
     # Required to avoid "unsaved changed" browser dialog
     Then I press the "Save draft" button
@@ -76,14 +76,14 @@ Feature: Insert an image into a page
   # TODO This needs to support using drag handles, as we no longer have 'Width' or 'Height' input fields
   @todo
   Scenario: I can edit dimensions of an existing image
-    Given the "page" "About us" contains "<img src=assets/folder1/file1.jpg>"
+    Given the "page" "About us" contains "<img src=assets/folder1/3d0ef6ec37/file1.jpg>"
     And I reload the current page
-    When I highlight "<img src=assets/folder1/file1.jpg>" in the "Content" HTML field
+    When I highlight "<img src=assets/folder1/3d0ef6ec37/file1.jpg>" in the "Content" HTML field
     And I press the "Insert Media" button
     Then I should see "file1.jpg"
     When I fill in "Width" with "10"
     When I fill in "Height" with "20"
     And I press the "Insert" button
-    Then the "Content" HTML field should contain "<img src=assets/folder1/file1.jpg width=10 height=20>"
+    Then the "Content" HTML field should contain "<img src=assets/folder1/3d0ef6ec37/file1.jpg width=10 height=20>"
     # Required to avoid "unsaved changed" browser dialog
     Then I press the "Save draft" button
