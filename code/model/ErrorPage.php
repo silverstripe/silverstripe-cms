@@ -1,4 +1,6 @@
 <?php
+
+use SilverStripe\Filesystem\Storage\GeneratedAssetHandler;
 /**
  * ErrorPage holds the content for the page of an error response.
  * Renders the page on each publish action into a static HTML file
@@ -8,7 +10,8 @@
  * ErrorPages
  * 
  * @see Debug::friendlyError()
- * 
+ *
+ * @property int $ErrorCode HTTP Error code
  * @package cms
  */
 class ErrorPage extends Page {
@@ -25,11 +28,30 @@ class ErrorPage extends Page {
 	private static $allowed_children = array();
 	
 	private static $description = 'Custom content for different error cases (e.g. "Page not found")';
+
+	/**
+	 * Allows control over writing directly to the static_filepath directory. Only required if relying on
+	 * apache ErrorDocument, and can be turned off otherwise.
+	 *
+	 * @config
+	 * @var bool
+	 */
+	private static $enable_static_file = true;
 	
 	/**
 	 * @config
+	 * @var string
 	 */
 	private static $static_filepath = ASSETS_PATH;
+
+	/**
+	 * Prefix for storing error files in the {@see GeneratedAssetHandler} store.
+	 * Defaults to empty (top level directory)
+	 *
+	 * @config
+	 * @var string
+	 */
+	private static $store_filepath = null;
 	
 	/**
 	 * @param $member
@@ -47,36 +69,32 @@ class ErrorPage extends Page {
 	 * file generated when the user hit's save and publish in the CMS
 	 *
 	 * @param int $statusCode
-	 *
 	 * @return SS_HTTPResponse
 	 */
 	public static function response_for($statusCode) {
 		// first attempt to dynamically generate the error page
-		$errorPage = ErrorPage::get()->filter(array(
-			"ErrorCode" => $statusCode
-		))->first(); 
+		$errorPage = ErrorPage::get()
+			->filter(array(
+				"ErrorCode" => $statusCode
+			))->first(); 
 
 		if($errorPage) {
 			Requirements::clear();
 			Requirements::clear_combined_files();
 
-			return ModelAsController::controller_for($errorPage)->handleRequest(
-				new SS_HTTPRequest('GET', ''), DataModel::inst()
-			);
+			return ModelAsController::controller_for($errorPage)
+				->handleRequest(
+					new SS_HTTPRequest('GET', ''),
+					DataModel::inst()
+				);
 		}
 		
 		// then fall back on a cached version
-		$cachedPath = self::get_filepath_for_errorcode(
-			$statusCode, 
-			class_exists('Translatable') ? Translatable::get_current_locale() : null
-		);
-
-		if(file_exists($cachedPath)) {
-			$response = new SS_HTTPResponse();	
-			
+		$content = self::get_content_for_errorcode($statusCode);
+		if($content) {
+			$response = new SS_HTTPResponse();
 			$response->setStatusCode($statusCode);
-			$response->setBody(file_get_contents($cachedPath));	
-
+			$response->setBody($content);
 			return $response;
 		}
 	}
@@ -89,52 +107,40 @@ class ErrorPage extends Page {
 	public function requireDefaultRecords() {
 		parent::requireDefaultRecords();
 
-		if ($this->class == 'ErrorPage' && SiteTree::config()->create_default_pages) {
-			// Ensure that an assets path exists before we do any error page creation
-			if(!file_exists(ASSETS_PATH)) {
-				mkdir(ASSETS_PATH);
-			}
+		if ($this->class === 'ErrorPage' && SiteTree::config()->create_default_pages) {
 
 			$defaultPages = $this->getDefaultRecords();
 	
 			foreach($defaultPages as $defaultData) {
 				$code = $defaultData['ErrorCode'];
-				$page = DataObject::get_one(
-					'ErrorPage', 
-					sprintf("\"ErrorPage\".\"ErrorCode\" = '%s'", $code)
-				);
-				$pageExists = ($page && $page->exists());
-				$pagePath = self::get_filepath_for_errorcode($code);
-				if(!($pageExists && file_exists($pagePath))) {
-					if(!$pageExists) {
-						$page = new ErrorPage($defaultData);
-						$page->write();
-						$page->publish('Stage', 'Live');
-					}
+				$page = ErrorPage::get()->filter('ErrorCode', $code)->first();
+				$pageExists = !empty($page);
+				if(!$pageExists) {
+					$page = new ErrorPage($defaultData);
+					$page->write();
+					$page->publish('Stage', 'Live');
+				}
 
-					// Ensure a static error page is created from latest error page content
-					$response = Director::test(Director::makeRelative($page->Link()));
-					$written = null;
-					if($fh = fopen($pagePath, 'w')) {
-						$written = fwrite($fh, $response->getBody());
-						fclose($fh);
-					}
+				// Ensure this page has cached error content
+				$success = true;
+				if(!$page->hasStaticPage()) {
+					// Update static content
+					$success = $page->writeStaticPage();
+				} elseif($pageExists) {
+					// If page exists and already has content, no alteration_message is displayed
+					continue;
+				}
 
-					if($written) {
-						DB::alteration_message(
-							sprintf('%s error page created', $code),
-							'created'
-						);
-					} else {
-						DB::alteration_message(
-							sprintf(
-								'%s error page could not be created at %s. Please check permissions', 
-								$code,
-								$pagePath
-							), 
-							'error'
-						);
-					}
+				if($success) {
+					DB::alteration_message(
+						sprintf('%s error page created', $code),
+						'created'
+					);
+				} else {
+					DB::alteration_message(
+						sprintf('%s error page could not be created. Please check permissions', $code),
+						'error'
+					);
 				}
 			}
 		}
@@ -222,44 +228,65 @@ class ErrorPage extends Page {
 	 * content, so the page can be shown even when SilverStripe is not
 	 * functioning correctly before publishing this page normally.
 	 *
-	 * @return void
+	 * @return bool True if published
 	 */
 	public function doPublish() {
-		parent::doPublish();
+		$result = parent::doPublish();
+		$this->writeStaticPage();
+		return $result;
+	}
 
-		return $this->writeStaticPage();
+	/**
+	 * Determine if static content is cached for this page
+	 *
+	 * @return bool
+	 */
+	protected function hasStaticPage() {
+		// Attempt to retrieve content from generated file handler
+		$filename = $this->getErrorFilename();
+		$storeFilename = File::join_paths(self::config()->store_filepath, $filename);
+		$result = self::get_asset_handler()->getGeneratedContent($storeFilename, 0);
+		if($result) {
+			return true;
+		}
+
+		// Fallback to physical store
+		if(self::config()->enable_static_file) {
+			$staticPath = self::config()->static_filepath . "/" . $filename;
+			return file_exists($staticPath);
+		}
+
+		return false;
 	}
 
 	/**
 	 * Write out the published version of the page to the filesystem
 	 *
-	 * @return mixed Either true, or an error
+	 * @return true if the page write was successful
 	 */
 	public function writeStaticPage() {
 		// Run the page (reset the theme, it might've been disabled by LeftAndMain::init())
-		$oldEnabled = Config::inst()->get('SSViewer', 'theme_enabled');
+		Config::nest();
 		Config::inst()->update('SSViewer', 'theme_enabled', true);
 		$response = Director::test(Director::makeRelative($this->Link()));
-		Config::inst()->update('SSViewer', 'theme_enabled', $oldEnabled);
+		Config::unnest();
 		$errorContent = $response->getBody();
 
-		// Check we have an assets base directory, creating if it we don't
-		if(!file_exists(ASSETS_PATH)) {
-			mkdir(ASSETS_PATH, 02775);
+		// Store file content in the default store
+		$filename = $this->getErrorFilename();
+		$storeFilename = File::join_paths(self::config()->store_filepath, $filename);
+		self::get_asset_handler()->updateContent($storeFilename, 0, $errorContent);
+
+		// Write to physical store
+		if(self::config()->enable_static_file) {
+			Filesystem::makeFolder(self::config()->static_filepath);
+			$staticPath = self::config()->static_filepath . "/" . $filename;
+			if(!file_put_contents($staticPath, $errorContent)) {
+				return false;
+			}
 		}
 
-		// if the page is published in a language other than default language,
-		// write a specific language version of the HTML page
-		$filePath = self::get_filepath_for_errorcode($this->ErrorCode, $this->Locale);
-		if (!file_put_contents($filePath, $errorContent)) {
-			$fileErrorText = _t(
-				'ErrorPage.ERRORFILEPROBLEM',
-				'Error opening file "{filename}" for writing. Please check file permissions.',
-				array('filename' => $errorFile)
-			);
-			$this->response->addHeader('X-Status', rawurlencode($fileErrorText));
-			return $this->httpError(405);
-		}
+		// Success
 		return true;
 	}
 	
@@ -274,47 +301,65 @@ class ErrorPage extends Page {
 		
 		return $labels;
 	}
-	
+
 	/**
-	 * Returns an absolute filesystem path to a static error file
-	 * which is generated through {@link publish()}.
-	 * 
-	 * @param int $statusCode A HTTP Statuscode, mostly 404 or 500
-	 * @param String $locale A locale, e.g. 'de_DE' (Optional)
+	 * Get error content for the given status code. Only returns pre-cached content
+	 * stored either in the asset store or in the static path (if enabled).
 	 *
+	 * @param int $statusCode A HTTP Statuscode, typically 404 or 500
 	 * @return string
 	 */
-	public static function get_filepath_for_errorcode($statusCode, $locale = null) {
-		if (singleton('ErrorPage')->hasMethod('alternateFilepathForErrorcode')) {
-			return singleton('ErrorPage')-> alternateFilepathForErrorcode($statusCode, $locale);
+	public static function get_content_for_errorcode($statusCode) {
+		// Attempt to retrieve content from generated file handler
+		$filename = self::get_error_filename($statusCode);
+		$storeFilename = File::join_paths(self::config()->store_filepath, $filename);
+		$result = self::get_asset_handler()->getGeneratedContent($storeFilename, 0);
+		if($result) {
+			return $result;
 		}
 
-		if(class_exists('Translatable') && singleton('SiteTree')->hasExtension('Translatable') && $locale && $locale != Translatable::default_locale()) {
-			return self::config()->static_filepath . "/error-{$statusCode}-{$locale}.html";
-		} else {
-			return self::config()->static_filepath . "/error-{$statusCode}.html";
+		// Fallback to physical store
+		if(self::config()->enable_static_file) {
+			$staticPath = self::config()->static_filepath . "/" . $filename;
+			if(file_exists($staticPath)) {
+				return file_get_contents($staticPath);
+			}
 		}
 	}
-	
+
 	/**
-	 * Set the path where static error files are saved through {@link publish()}.
-	 * Defaults to /assets.
+	 * Gets the filename identifier for the given error code.
+	 * Used when handling responses under error conditions.
 	 *
-	 * @deprecated 4.0 Use "ErrorPage.static_file_path" instead
-	 * @param string $path
-	 */
-	static public function set_static_filepath($path) {
-		Deprecation::notice('4.0', 'Use "ErrorPage.static_file_path" instead');
-		self::config()->static_filepath = $path;
-	}
-	
-	/**
-	 * @deprecated 4.0 Use "ErrorPage.static_file_path" instead
+	 * @param int $statusCode A HTTP Statuscode, typically 404 or 500
+	 * @param ErrorPage $instance Optional instance to use for name generation
 	 * @return string
 	 */
-	static public function get_static_filepath() {
-		Deprecation::notice('4.0', 'Use "ErrorPage.static_file_path" instead');
-		return self::config()->static_filepath;
+	protected static function get_error_filename($statusCode, $instance = null) {
+		if(!$instance) {
+			$instance = ErrorPage::singleton();
+		}
+		// Allow modules to extend this filename (e.g. for multi-domain, translatable)
+		$name = "error-{$statusCode}.html";
+		$instance->extend('updateErrorFilename', $name, $statusCode);
+		return $name;
+	}
+
+	/**
+	 * Get filename identifier for this record.
+	 * Used for generating the filename for the current record.
+	 *
+	 * @return string
+	 */
+	protected function getErrorFilename() {
+		return self::get_error_filename($this->ErrorCode, $this);
+	}
+
+	/**
+	 * @return GeneratedAssetHandler
+	 */
+	protected static function get_asset_handler() {
+		return Injector::inst()->get('GeneratedAssetHandler');
 	}
 }
 
@@ -336,10 +381,9 @@ class ErrorPage_Controller extends Page_Controller {
 	 * @return SS_HTTPResponse
 	 */
 	public function handleRequest(SS_HTTPRequest $request, DataModel $model = NULL) {
-		$body = parent::handleRequest($request, $model);
-		$this->response->setStatusCode($this->ErrorCode);
-
-		return $this->response;
+		$response = parent::handleRequest($request, $model);
+		$response->setStatusCode($this->ErrorCode);
+		return $response;
 	}
 }
 
