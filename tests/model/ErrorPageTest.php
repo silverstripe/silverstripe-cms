@@ -19,7 +19,6 @@ class ErrorPageTest extends FunctionalTest {
 		// Set temporary asset backend store
 		AssetStoreTest_SpyStore::activate('ErrorPageTest');
 		Config::inst()->update('ErrorPage', 'static_filepath', AssetStoreTest_SpyStore::base_path());
-		Config::inst()->update('ErrorPage', 'enable_static_file', true);
 		Config::inst()->update('Director', 'environment_type', 'live');
 	}
 
@@ -95,24 +94,5 @@ class ErrorPageTest extends FunctionalTest {
 		$this->assertNotEmpty(ErrorPage::get_content_for_errorcode('401'));
 		$expectedErrorPagePath = AssetStoreTest_SpyStore::base_path() . '/error-401.html';
 		$this->assertFileExists($expectedErrorPagePath, 'Error page is cached');
-	}
-
-	/**
-	 * Test fallback to file generation API with enable_static_file disabled
-	 */
-	public function testGeneratedFile() {
-		Config::inst()->update('ErrorPage', 'enable_static_file', false);
-		$this->logInWithPermission('ADMIN');
-
-		$page = new ErrorPage();
-		$page->ErrorCode = 405;
-		$page->Title = 'Method Not Allowed';
-		$page->write();
-		$page->doPublish();
-
-		// Error content is available, even though the static file does not exist (only in assetstore)
-		$this->assertNotEmpty(ErrorPage::get_content_for_errorcode('405'));
-		$expectedErrorPagePath = AssetStoreTest_SpyStore::base_path() . '/error-405.html';
-		$this->assertFileNotExists($expectedErrorPagePath, 'Error page is not cached in static location');
 	}
 }
