@@ -15,7 +15,7 @@ Feature: Insert an image into a page
   Scenario: I can insert an image from a URL
     Given I press the "Insert Media" button
 
-    When I click "add by URL" in the ".ss-uploadfield-item-info" element
+    When I press the "Insert from URL" button
     And I fill in "RemoteURL" with "http://www.silverstripe.org/themes/ssv3/img/ss_logo.png"
     And I press the "Add url" button
     Then I should see "ss_logo.png" in the ".ss-assetuploadfield span.name" element

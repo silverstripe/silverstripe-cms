@@ -19,6 +19,22 @@
 	}
 
 	.cms-content-toolbar {
+		float: left;
+		
+		.cms-actions-row {
+			.ss-ui-button {
+				z-index: 1;
+				
+				&::before {
+					font-size: 23px;
+				}
+			}
+			
+			.grid-levelup {
+				margin: 0;
+			}
+		}
+		
 		.cms-page-add-button {
 			@include background-image (linear-gradient(lighten(#e6e6e6, 5%), darken(#e6e6e6, 5%)));
 			border-color:#c0c0c2;
@@ -41,6 +57,10 @@
 			display:block;
 			margin-right:4px;
 		}
+	}
+	
+	.ss-gridfield {
+		margin-top: 0;
 	}
 
 	table.ss-gridfield-table {
