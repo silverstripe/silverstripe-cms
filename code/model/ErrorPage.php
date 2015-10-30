@@ -28,30 +28,12 @@ class ErrorPage extends Page {
 	private static $allowed_children = array();
 	
 	private static $description = 'Custom content for different error cases (e.g. "Page not found")';
-
-	/**
-	 * Allows control over writing directly to the static_filepath directory. Only required if relying on
-	 * apache ErrorDocument, and can be turned off otherwise.
-	 *
-	 * @config
-	 * @var bool
-	 */
-	private static $enable_static_file = true;
 	
 	/**
 	 * @config
 	 * @var string
 	 */
 	private static $static_filepath = ASSETS_PATH;
-
-	/**
-	 * Prefix for storing error files in the {@see GeneratedAssetHandler} store.
-	 * Defaults to empty (top level directory)
-	 *
-	 * @config
-	 * @var string
-	 */
-	private static $store_filepath = null;
 	
 	/**
 	 * @param $member
@@ -242,21 +224,9 @@ class ErrorPage extends Page {
 	 * @return bool
 	 */
 	protected function hasStaticPage() {
-		// Attempt to retrieve content from generated file handler
 		$filename = $this->getErrorFilename();
-		$storeFilename = File::join_paths(self::config()->store_filepath, $filename);
-		$result = self::get_asset_handler()->getGeneratedContent($storeFilename, 0);
-		if($result) {
-			return true;
-		}
-
-		// Fallback to physical store
-		if(self::config()->enable_static_file) {
-			$staticPath = self::config()->static_filepath . "/" . $filename;
-			return file_exists($staticPath);
-		}
-
-		return false;
+		$staticPath = self::config()->static_filepath . "/" . $filename;
+		return file_exists($staticPath);
 	}
 
 	/**
@@ -272,22 +242,12 @@ class ErrorPage extends Page {
 		Config::unnest();
 		$errorContent = $response->getBody();
 
-		// Store file content in the default store
+		// Store file content in the static path
 		$filename = $this->getErrorFilename();
-		$storeFilename = File::join_paths(self::config()->store_filepath, $filename);
-		self::get_asset_handler()->updateContent($storeFilename, 0, $errorContent);
-
-		// Write to physical store
-		if(self::config()->enable_static_file) {
-			Filesystem::makeFolder(self::config()->static_filepath);
-			$staticPath = self::config()->static_filepath . "/" . $filename;
-			if(!file_put_contents($staticPath, $errorContent)) {
-				return false;
-			}
-		}
-
-		// Success
-		return true;
+		Filesystem::makeFolder(self::config()->static_filepath);
+		$staticPath = self::config()->static_filepath . "/" . $filename;
+		$success = file_put_contents($staticPath, $errorContent);
+		return (bool)$success;
 	}
 	
 	/**
@@ -298,7 +258,6 @@ class ErrorPage extends Page {
 	public function fieldLabels($includerelations = true) {
 		$labels = parent::fieldLabels($includerelations);
 		$labels['ErrorCode'] = _t('ErrorPage.CODE', "Error code");
-		
 		return $labels;
 	}
 
@@ -311,20 +270,22 @@ class ErrorPage extends Page {
 	 */
 	public static function get_content_for_errorcode($statusCode) {
 		// Attempt to retrieve content from generated file handler
-		$filename = self::get_error_filename($statusCode);
-		$storeFilename = File::join_paths(self::config()->store_filepath, $filename);
-		$result = self::get_asset_handler()->getGeneratedContent($storeFilename, 0);
-		if($result) {
-			return $result;
+		$staticPath = self::get_filepath_for_errorcode($statusCode);
+		if(file_exists($staticPath)) {
+			return file_get_contents($staticPath);
 		}
+	}
 
-		// Fallback to physical store
-		if(self::config()->enable_static_file) {
-			$staticPath = self::config()->static_filepath . "/" . $filename;
-			if(file_exists($staticPath)) {
-				return file_get_contents($staticPath);
-			}
-		}
+	/**
+	 * Returns an absolute filesystem path to a static error file
+	 * which is generated through {@link publish()}.
+	 *
+	 * @param int $statusCode A HTTP Statuscode, typically 404 or 500
+	 * @return string
+	 */
+	public static function get_filepath_for_errorcode($statusCode) {
+		$filename = self::get_error_filename($statusCode);
+		return self::config()->static_filepath . "/" . $filename;
 	}
 
 	/**
@@ -353,13 +314,6 @@ class ErrorPage extends Page {
 	 */
 	protected function getErrorFilename() {
 		return self::get_error_filename($this->ErrorCode, $this);
-	}
-
-	/**
-	 * @return GeneratedAssetHandler
-	 */
-	protected static function get_asset_handler() {
-		return Injector::inst()->get('GeneratedAssetHandler');
 	}
 }
 
