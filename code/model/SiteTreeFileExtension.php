@@ -25,7 +25,7 @@ class SiteTreeFileExtension extends DataExtension {
 	/**
 	 * Generate an HTML list which provides links to where a file is used.
 	 *
-	 * @return String
+	 * @return string
 	 */
 	public function BackLinkHTMLList() {
 		$html = '<em>' . _t(
@@ -76,7 +76,7 @@ class SiteTreeFileExtension extends DataExtension {
 	/**
 	 * @todo Unnecessary shortcut for AssetTableField, coupled with cms module.
 	 * 
-	 * @return Integer
+	 * @return integer
 	 */
 	public function BackLinkTrackingCount() {
 		$pages = $this->owner->BackLinkTracking();

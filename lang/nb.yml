@@ -61,20 +61,27 @@ nb:
   CMSAddPageController:
     Title: 'Legg til side'
   CMSBatchActions:
+    ARCHIVE: Arkiv
+    ARCHIVED_PAGES: 'Arkiverte %d sider'
     DELETED_DRAFT_PAGES: 'Slettet %d sider fra utkastnettstedet, %d feilet.'
     DELETED_PAGES: 'Slettet %d sider fra det publiserte nettstedet, %d feilet.'
     DELETE_DRAFT_PAGES: 'Slett fra utkastnettsted.'
     DELETE_PAGES: 'Slett fra publisert side'
     PUBLISHED_PAGES: 'Publiserte %d sider, %d feilet.'
     PUBLISH_PAGES: Publiser
+    RESTORE: Gjenopprett
+    RESTORED_PAGES: 'Gjenopprettet %d sider'
   CMSFileAddController:
     MENUTITLE: Filer
   CMSMain:
     ACCESS: 'Adgang til seksjon for ''{title}'''
     ACCESS_HELP: 'Lar deg se seksjonen som inneholder sidetreet og annet innhold. Tillatelser for å vise og redigere kan behandles gjennom sidespesifikke nedtrekkslister, så vel som  separate "Innholdstillatelser".'
+    ARCHIVE: Arkiver
+    ARCHIVEDPAGE: 'Arkiverte side ''%s'''
     AddNew: 'Opprett ny side'
     AddNewButton: 'Opprett ny'
     AddPageRestriction: 'Merk: Noen sidetyper er ikke tillatt for dette valget.'
+    Cancel: Avbryt
     ChoosePageParentMode: 'Velg hvor du vil opprette siden'
     ChoosePageType: 'Velg sidetype'
     Create: Opprett
@@ -101,6 +108,9 @@ nb:
     REMOVEDPAGE: 'Fjernet "{title}" fra det publiserte nettstedet'
     REMOVEDPAGEFROMDRAFT: 'Fjernet ''%s''  fra utkastnettstedet'
     RESTORED: 'Vellykket gjenoppretting av "{title}".'
+    RESTORE_DESC: 'Gjenopprett arkivert versjon som utkast'
+    RESTORE_TO_ROOT: 'Gjenopprett utkast på toppnivå'
+    RESTORE_TO_ROOT_DESC: 'Gjenopprett arkivert versjon som utkast på toppnivå'
     ROLLBACK: 'Tilbakestill til denne versjonen'
     ROLLEDBACKPUBv2: 'Tilbakestilte til den publiserte versjonen.'
     ROLLEDBACKVERSIONv2: 'Tilbakestile til versjon #%d.'
@@ -113,6 +123,7 @@ nb:
     TreeFilteredClear: 'Fjern filtrering'
   CMSMain_left_ss:
     APPLY_FILTER: 'Aktiver filter'
+    CLEAR_FILTER: 'Fjern filter'
     RESET: Tilbakestill
   CMSPageAddController:
     MENUTITLE: 'Legg til side'
@@ -148,6 +159,8 @@ nb:
     MULTISELECT: Flervalg
   CMSPagesController_Tools_ss:
     FILTER: Filter
+  CMSSIteTreeFilter_PublishedPages:
+    Title: 'Publiserte sider'
   CMSSearch:
     FILTERDATEFROM: Fra
     FILTERDATEHEADING: Dato
@@ -157,6 +170,8 @@ nb:
     MENUTITLE: Innstillinger
   CMSSiteTreeFilter_Search:
     Title: 'Alle sider'
+  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'Publisert men fjernet fra utkast'
   ContentControl:
     NOTEWONTBESHOWN: 'Merk: denne beskjeden vil ikke være synlig for besøkende'
   ContentController:
@@ -200,6 +215,8 @@ nb:
     415: '415 - Mediatype ikke støttet'
     416: '416 - Spørringsspenne kan ikke tilfredstilles'
     417: '417 - Forventning feilet'
+    422: '422 - Enheten kan ikke prosesseres'
+    429: '429 - for mange sideforespørsler'
     500: '500 - Intern serverfeil'
     501: '501 - Ikke implementert'
     502: '502 - Dårlig gateway'
@@ -213,6 +230,7 @@ nb:
     DEFAULTSERVERERRORPAGETITLE: 'Serverfeil'
     DESCRIPTION: 'Egendefinert innhold for forskjellige feilsituasjoner (f.eks "Siden ble ikke funnet")'
     ERRORFILEPROBLEM: 'Feil ved åpning av filen "{filename}". Vennligst sjekk filtillatelser.'
+    PLURALNAME: 'Feilsider'
     SINGULARNAME: 'Feilside'
   Folder:
     AddFolderButton: 'Legg til mappe'
@@ -235,6 +253,7 @@ nb:
     HASBEENSETUP: 'En omdirigeringssside har blitt satt opp uten et mål å omdirigere til.'
     HEADER: 'Denne siden vil omdirigere brukere til en annen side'
     OTHERURL: 'Nettadresse til et annet nettsted'
+    PLURALNAME: 'Omdirigeringssider'
     REDIRECTTO: 'Omdiriger til'
     REDIRECTTOEXTERNAL: 'Et annet nettsted'
     REDIRECTTOPAGE: 'En side på nettstedet'
@@ -268,7 +287,6 @@ nb:
   SilverStripeNavigator:
     ARCHIVED: Arkivert
   SilverStripeNavigatorLink:
-    ShareInstructions: 'For å dele en lenke til denne siden, kopier og lim inn lenken nedenfor.'
     ShareLink: 'Del lenke'
   SilverStripeNavigatorLinkl:
     CloseLink: Lukk
@@ -297,6 +315,9 @@ nb:
     ADDEDTODRAFTSHORT: Utkast
     ALLOWCOMMENTS: 'Tillat kommentarer på denne siden?'
     APPEARSVIRTUALPAGES: 'Dette innholdet opptrer også i {title}-seksjonene til de virtuelle sidene.'
+    ARCHIVEDPAGEHELP: 'Siden er publisert og fjernet fra utkast'
+    ARCHIVEDPAGESHORT: Arkivert
+    BUTTONARCHIVEDESC: 'Avpubliser og arkiver'
     BUTTONCANCELDRAFT: 'Avbryt endringer i utkast'
     BUTTONCANCELDRAFTDESC: 'Slett utkast og gå tilbake til publisert versjon av denne siden'
     BUTTONPUBLISHED: Publisert
@@ -310,6 +331,7 @@ nb:
     DEFAULTABOUTTITLE: 'Om oss'
     DEFAULTCONTACTCONTENT: '<p>Du kan fylle denne siden med ditt innhold, eller du kan slette siden og lage dine egne sider.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontakt oss'
+    DEFAULTHOMECONTENT: '<p>Velkommen til SilverStripe! Dette er standard-forsiden. Du kan redigere denne ved å gå til <a href="admin/">publiseringssystemet</a>.</p><p>Du kan nå gå til <a href="http://docs.silverstripe.org">dokumentasjonen for utviklere</a>, eller begynne med <a href="http://www.silverstripe.org/learn/lessons">SilverStripe-leksjoner</a>.</p>'
     DEFAULTHOMETITLE: Hjem
     DELETEDPAGEHELP: 'Siden er ikke lenger publisert.'
     DELETEDPAGESHORT: Slettet
@@ -380,6 +402,9 @@ nb:
     many_many_BackLinkTracking: 'Referansesporing'
     many_many_ImageTracking: 'Bildesporing'
     many_many_LinkTracking: 'Lenkesporing'
+  SiteTreeFileExtension:
+    BACKLINK_LIST_DESCRIPTION: 'Denne liste viser alle sider med filer lastet opp gjennom en WYSIWYG-editor.'
+    EDIT: Rediger
   SiteTreeURLSegmentField:
     EMPTY: 'Vennligst skriv inn adressesegment eller trykk avbryt.'
     HelpChars: 'Spesialtegn blir automatisk konvertert eller fjernet.'
@@ -396,5 +421,6 @@ nb:
     EditLink: rediger
     HEADER: 'Dette er en virituell side'
     HEADERWITHLINK: 'Dette er en virtuell side som kopierer innhold fra "{title}" ({link})'
+    PLURALNAME: 'Virtuelle sider'
     PageTypNotAllowedOnRoot: 'Originaltypen "{type}" er ikke tillatt på toppnivået for denne virtuelle siden.'
     SINGULARNAME: 'Virtuell side'

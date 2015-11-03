@@ -273,7 +273,6 @@ fi:
   SilverStripeNavigator:
     ARCHIVED: Arkistoitu
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Jakaaksesi tämä sivu, kopioi ja liitä alla oleva linkki.'
     ShareLink: 'Jaa linkki'
   SilverStripeNavigatorLinkl:
     CloseLink: Sulje

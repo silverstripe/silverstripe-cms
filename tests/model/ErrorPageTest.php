@@ -21,6 +21,7 @@ class ErrorPageTest extends FunctionalTest {
 		Config::inst()->update('ErrorPage', 'static_filepath', AssetStoreTest_SpyStore::base_path());
 		Config::inst()->update('ErrorPage', 'enable_static_file', true);
 		Config::inst()->update('Director', 'environment_type', 'live');
+		$this->logInWithPermission('ADMIN');
 	}
 
 	public function tearDown() {

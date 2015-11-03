@@ -268,7 +268,6 @@ ja:
   SilverStripeNavigator:
     ARCHIVED: アーカイブされた
   SilverStripeNavigatorLink:
-    ShareInstructions: 'このページをシェアするには、下のリンクをコピーして貼り付けてください。'
     ShareLink: '共有リンク'
   SilverStripeNavigatorLinkl:
     CloseLink: 閉じる

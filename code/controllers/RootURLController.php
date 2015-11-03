@@ -119,9 +119,8 @@ class RootURLController extends Controller {
 		$this->init();
 
 		if(!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
-			$this->response = new SS_HTTPResponse();
-			$this->response->redirect(Director::absoluteBaseURL() . 'dev/build?returnURL=' . (isset($_GET['url']) ? urlencode($_GET['url']) : null));
-			return $this->response;
+			$this->getResponse()->redirect(Director::absoluteBaseURL() . 'dev/build?returnURL=' . (isset($_GET['url']) ? urlencode($_GET['url']) : null));
+			return $this->getResponse();
 		}
 
 		$request->setUrl(self::get_homepage_link() . '/');

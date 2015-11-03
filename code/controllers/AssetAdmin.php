@@ -297,6 +297,7 @@ JS
 			);
 		}
 
+
 		$fields->setForm($form);
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 		// TODO Can't merge $FormAttributes in template at the moment
@@ -338,8 +339,8 @@ JS
 		$record->delete();
 		$this->setCurrentPageID(null);
 
-		$this->response->addHeader('X-Status', rawurlencode(_t('LeftAndMain.DELETED', 'Deleted.')));
-		$this->response->addHeader('X-Pjax', 'Content');
+		$this->getResponse()->addHeader('X-Status', rawurlencode(_t('LeftAndMain.DELETED', 'Deleted.')));
+		$this->getResponse()->addHeader('X-Pjax', 'Content');
 		return $this->redirect(Controller::join_links($this->Link('show'), $parentID ? $parentID : 0));
 	}
 

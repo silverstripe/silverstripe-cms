@@ -235,7 +235,6 @@ hu:
   SilverStripeNavigator:
     ARCHIVED: Archiválva
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Az oldal megosztásához másolja ki az alábbi linket'
     ShareLink: 'Hivatkozás megosztása'
   SilverStripeNavigatorLinkl:
     CloseLink: Bezár

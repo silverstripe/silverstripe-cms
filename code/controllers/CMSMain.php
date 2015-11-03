@@ -422,7 +422,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * Create serialized JSON string with site tree hints data to be injected into
 	 * 'data-hints' attribute of root node of jsTree.
 	 *
-	 * @return String Serialized JSON
+	 * @return string Serialized JSON
 	 */
 	public function SiteTreeHints() {
 		$json = '';
@@ -591,9 +591,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 
 	/**
-	 * @param Int $id
+	 * @param int $id
 	 * @param FieldList $fields
-	 * @return Form
+	 * @return CMSForm
 	 */
 	public function getEditForm($id = null, $fields = null) {
 
@@ -676,7 +676,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			// if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
 			$form->setAttribute('data-pjax-fragment', 'CurrentForm');
 			// Set validation exemptions for specific actions
-			$form->setValidationExemptActions(array('restore', 'revert', 'deletefromlive', 'rollback'));
+			$form->setValidationExemptActions(array('restore', 'revert', 'deletefromlive', 'delete', 'unpublish', 'rollback'));
 
 			// Announce the capability so the frontend can decide whether to allow preview or not.
 			if(in_array('CMSPreviewable', class_implements($record))) {
@@ -701,7 +701,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	/**
 	 * @param SS_HTTPRequest $request
-	 * @return String HTML
+	 * @return string HTML
 	 */
 	public function treeview($request) {
 		return $this->renderWith($this->getTemplatesWithSuffix('_TreeView'));
@@ -709,7 +709,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	/**
 	 * @param SS_HTTPRequest $request
-	 * @return String HTML
+	 * @return string HTML
 	 */
 	public function listview($request) {
 		return $this->renderWith($this->getTemplatesWithSuffix('_ListView'));
@@ -743,7 +743,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		$this->extend('updateChildFilter', $disallowedChildren, $parentID);
 		return $this
-			->response
+			->getResponse()
 			->addHeader('Content-Type', 'application/json; charset=utf-8')
 			->setBody(Convert::raw2json($disallowedChildren));
 	}
@@ -940,7 +940,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		if(!is_subclass_of($className, $parentClass) && strcasecmp($className, $parentClass) != 0) {
 			$response = Security::permissionFailure($this);
 			if (!$response) {
-				$response = $this->response;
+				$response = $this->getResponse();
 			}
 			throw new SS_HTTPResponse_Exception($response);
 		}
@@ -1024,7 +1024,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$descRemoved = '';
 		}
 
-		$this->response->addHeader(
+		$this->getResponse()->addHeader(
 			'X-Status',
 			rawurlencode(
 				_t(
@@ -1073,7 +1073,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		$record->doRevertToLive();
 
-		$this->response->addHeader(
+		$this->getResponse()->addHeader(
 			'X-Status',
 			rawurlencode(_t(
 				'CMSMain.RESTORED',
@@ -1100,7 +1100,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// Delete record
 		$record->delete();
 
-		$this->response->addHeader(
+		$this->getResponse()->addHeader(
 			'X-Status',
 			rawurlencode(sprintf(_t('CMSMain.REMOVEDPAGEFROMDRAFT',"Removed '%s' from the draft site"), $record->Title))
 		);
@@ -1128,7 +1128,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// Archive record
 		$record->doArchive();
 
-		$this->response->addHeader(
+		$this->getResponse()->addHeader(
 			'X-Status',
 			rawurlencode(sprintf(_t('CMSMain.ARCHIVEDPAGE',"Archived page '%s'"), $record->Title))
 		);
@@ -1152,7 +1152,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		$record->doUnpublish();
 
-		$this->response->addHeader(
+		$this->getResponse()->addHeader(
 			'X-Status',
 			rawurlencode(_t('CMSMain.REMOVEDPAGE',"Removed '{title}' from the published site", array('title' => $record->Title)))
 		);
@@ -1201,15 +1201,15 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			);
 		}
 
-		$this->response->addHeader('X-Status', rawurlencode($message));
+		$this->getResponse()->addHeader('X-Status', rawurlencode($message));
 
 		// Can be used in different contexts: In normal page edit view, in which case the redirect won't have any effect.
 		// Or in history view, in which case a revert causes the CMS to re-load the edit view.
 		// The X-Pjax header forces a "full" content refresh on redirect.
 		$url = Controller::join_links(singleton('CMSPageEditController')->Link('show'), $record->ID);
-		$this->response->addHeader('X-ControllerURL', $url);
+		$this->getResponse()->addHeader('X-ControllerURL', $url);
 		$this->getRequest()->addHeader('X-Pjax', 'Content');
-		$this->response->addHeader('X-Pjax', 'Content');
+		$this->getResponse()->addHeader('X-Pjax', 'Content');
 
 		return $this->getResponseNegotiator()->respond($this->getRequest());
 	}
@@ -1352,7 +1352,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		$restoredPage = $restoredPage->doRestoreToStage();
 
-		$this->response->addHeader(
+		$this->getResponse()->addHeader(
 			'X-Status',
 			rawurlencode(_t(
 				'CMSMain.RESTORED',
@@ -1383,7 +1383,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				$newPage->write();
 			}
 
-			$this->response->addHeader(
+			$this->getResponse()->addHeader(
 				'X-Status',
 				rawurlencode(_t(
 					'CMSMain.DUPLICATED',
@@ -1392,9 +1392,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				))
 			);
 			$url = Controller::join_links(singleton('CMSPageEditController')->Link('show'), $newPage->ID);
-			$this->response->addHeader('X-ControllerURL', $url);
+			$this->getResponse()->addHeader('X-ControllerURL', $url);
 			$this->getRequest()->addHeader('X-Pjax', 'Content');
-			$this->response->addHeader('X-Pjax', 'Content');
+			$this->getResponse()->addHeader('X-Pjax', 'Content');
 
 			return $this->getResponseNegotiator()->respond($this->getRequest());
 		} else {
@@ -1415,7 +1415,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 			$newPage = $page->duplicateWithChildren();
 
-			$this->response->addHeader(
+			$this->getResponse()->addHeader(
 				'X-Status',
 				rawurlencode(_t(
 					'CMSMain.DUPLICATEDWITHCHILDREN',
@@ -1424,9 +1424,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				))
 			);
 			$url = Controller::join_links(singleton('CMSPageEditController')->Link('show'), $newPage->ID);
-			$this->response->addHeader('X-ControllerURL', $url);
+			$this->getResponse()->addHeader('X-ControllerURL', $url);
 			$this->getRequest()->addHeader('X-Pjax', 'Content');
-			$this->response->addHeader('X-Pjax', 'Content');
+			$this->getResponse()->addHeader('X-Pjax', 'Content');
 
 			return $this->getResponseNegotiator()->respond($this->getRequest());
 		} else {

@@ -177,7 +177,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	
 	/**
 	 * @config
-	 * @var String Description of the class functionality, typically shown to a user
+	 * @var string Description of the class functionality, typically shown to a user
 	 * when selecting which page type to create. Translated through {@link provideI18nEntities()}.
 	 */
 	private static $description = 'Generic content page';

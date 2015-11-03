@@ -8,7 +8,7 @@ use SilverStripe\Filesystem\Storage\GeneratedAssetHandler;
  * /assets/error-<statuscode>.html.
  * This enables us to show errors even if PHP experiences a recoverable error.
  * ErrorPages
- * 
+ *
  * @see Debug::friendlyError()
  *
  * @property int $ErrorCode HTTP Error code
@@ -26,7 +26,7 @@ class ErrorPage extends Page {
 	);
 
 	private static $allowed_children = array();
-	
+
 	private static $description = 'Custom content for different error cases (e.g. "Page not found")';
 
 	/**
@@ -37,7 +37,6 @@ class ErrorPage extends Page {
 	 * @var bool
 	 */
 	private static $enable_static_file = true;
-	
 	/**
 	 * @config
 	 * @var string
@@ -52,7 +51,6 @@ class ErrorPage extends Page {
 	 * @var string
 	 */
 	private static $store_filepath = null;
-	
 	/**
 	 * @param $member
 	 *
@@ -61,10 +59,10 @@ class ErrorPage extends Page {
 	public function canAddChildren($member = null) {
 		return false;
 	}
-	
+
 	/**
 	 * Get a {@link SS_HTTPResponse} to response to a HTTP error code if an
-	 * {@link ErrorPage} for that code is present. First tries to serve it 
+	 * {@link ErrorPage} for that code is present. First tries to serve it
 	 * through the standard SilverStripe request method. Falls back to a static
 	 * file generated when the user hit's save and publish in the CMS
 	 *
@@ -110,7 +108,7 @@ class ErrorPage extends Page {
 		if ($this->class === 'ErrorPage' && SiteTree::config()->create_default_pages) {
 
 			$defaultPages = $this->getDefaultRecords();
-	
+
 			foreach($defaultPages as $defaultData) {
 				$code = $defaultData['ErrorCode'];
 				$page = ErrorPage::get()->filter('ErrorCode', $code)->first();
@@ -147,9 +145,9 @@ class ErrorPage extends Page {
 	}
 
 	/**
-	 * Returns an array of arrays, each of which defines properties for a new 
+	 * Returns an array of arrays, each of which defines properties for a new
 	 * ErrorPage record.
-	 * 
+	 *
 	 * @return array
 	 */
 	protected function getDefaultRecords() {
@@ -158,7 +156,7 @@ class ErrorPage extends Page {
 				'ErrorCode' => 404,
 				'Title' => _t('ErrorPage.DEFAULTERRORPAGETITLE', 'Page not found'),
 				'Content' => _t(
-					'ErrorPage.DEFAULTERRORPAGECONTENT', 
+					'ErrorPage.DEFAULTERRORPAGECONTENT',
 					'<p>Sorry, it seems you were trying to access a page that doesn\'t exist.</p>'
 					. '<p>Please check the spelling of the URL you were trying to access and try again.</p>'
 				)
@@ -167,7 +165,7 @@ class ErrorPage extends Page {
 				'ErrorCode' => 500,
 				'Title' => _t('ErrorPage.DEFAULTSERVERERRORPAGETITLE', 'Server error'),
 				'Content' => _t(
-					'ErrorPage.DEFAULTSERVERERRORPAGECONTENT', 
+					'ErrorPage.DEFAULTSERVERERRORPAGECONTENT',
 					'<p>Sorry, there was a problem with handling your request.</p>'
 				)
 			)
@@ -183,9 +181,9 @@ class ErrorPage extends Page {
 	 */
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
-		
+
 		$fields->addFieldToTab(
-			"Root.Main", 
+			"Root.Main",
 			new DropdownField(
 				"ErrorCode",
 				$this->fieldLabel('ErrorCode'),
@@ -219,10 +217,10 @@ class ErrorPage extends Page {
 			),
 			"Content"
 		);
-		
+
 		return $fields;
 	}
-	
+
 	/**
 	 * When an error page is published, create a static HTML page with its
 	 * content, so the page can be shown even when SilverStripe is not
@@ -231,9 +229,8 @@ class ErrorPage extends Page {
 	 * @return bool True if published
 	 */
 	public function doPublish() {
-		$result = parent::doPublish();
-		$this->writeStaticPage();
-		return $result;
+		if (!parent::doPublish()) return false;
+		return $this->writeStaticPage();
 	}
 
 	/**
@@ -289,22 +286,25 @@ class ErrorPage extends Page {
 		// Success
 		return true;
 	}
-	
+
 	/**
 	 * @param boolean $includerelations a boolean value to indicate if the labels returned include relation fields
-	 * 
+	 *
 	 * @return array
 	 */
 	public function fieldLabels($includerelations = true) {
 		$labels = parent::fieldLabels($includerelations);
 		$labels['ErrorCode'] = _t('ErrorPage.CODE', "Error code");
-		
+
 		return $labels;
 	}
 
 	/**
-	 * Get error content for the given status code. Only returns pre-cached content
-	 * stored either in the asset store or in the static path (if enabled).
+	 * Returns an absolute filesystem path to a static error file
+	 * which is generated through {@link publish()}.
+	 *
+	 * @param int $statusCode A HTTP Statuscode, mostly 404 or 500
+	 * @param string $locale A locale, e.g. 'de_DE' (Optional)
 	 *
 	 * @param int $statusCode A HTTP Statuscode, typically 404 or 500
 	 * @return string
@@ -372,7 +372,7 @@ class ErrorPage_Controller extends Page_Controller {
 
 	/**
 	 * Overload the provided {@link Controller::handleRequest()} to append the
-	 * correct status code post request since otherwise permission related error 
+	 * correct status code post request since otherwise permission related error
 	 * pages such as 401 and 403 pages won't be rendered due to
 	  * {@link SS_HTTPResponse::isFinished() ignoring the response body.
 	 *
