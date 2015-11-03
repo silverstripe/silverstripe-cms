@@ -422,7 +422,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * Create serialized JSON string with site tree hints data to be injected into
 	 * 'data-hints' attribute of root node of jsTree.
 	 *
-	 * @return String Serialized JSON
+	 * @return string Serialized JSON
 	 */
 	public function SiteTreeHints() {
 		$json = '';
@@ -591,9 +591,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 
 	/**
-	 * @param Int $id
+	 * @param int $id
 	 * @param FieldList $fields
-	 * @return Form
+	 * @return CMSForm
 	 */
 	public function getEditForm($id = null, $fields = null) {
 
@@ -676,7 +676,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			// if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
 			$form->setAttribute('data-pjax-fragment', 'CurrentForm');
 			// Set validation exemptions for specific actions
-			$form->setValidationExemptActions(array('restore', 'revert', 'deletefromlive', 'rollback'));
+			$form->setValidationExemptActions(array('restore', 'revert', 'deletefromlive', 'delete', 'unpublish', 'rollback'));
 
 			// Announce the capability so the frontend can decide whether to allow preview or not.
 			if(in_array('CMSPreviewable', class_implements($record))) {
@@ -701,7 +701,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	/**
 	 * @param SS_HTTPRequest $request
-	 * @return String HTML
+	 * @return string HTML
 	 */
 	public function treeview($request) {
 		return $this->renderWith($this->getTemplatesWithSuffix('_TreeView'));
@@ -709,7 +709,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	/**
 	 * @param SS_HTTPRequest $request
-	 * @return String HTML
+	 * @return string HTML
 	 */
 	public function listview($request) {
 		return $this->renderWith($this->getTemplatesWithSuffix('_ListView'));

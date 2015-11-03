@@ -268,7 +268,6 @@ mi:
   SilverStripeNavigator:
     ARCHIVED: I putumōhiotia
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Hei tiritiri i tēnei whārangi, tāruatia ka whakapiri i te hono kei raro.'
     ShareLink: 'Tiritiri hono'
   SilverStripeNavigatorLinkl:
     CloseLink: Kati

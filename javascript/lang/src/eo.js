@@ -31,15 +31,15 @@
     "Tree.ThisPageOnly": "Nur ĉi tiu paĝo",
     "Tree.ThisPageAndSubpages": "Ĉi tiu paĝo kaj subpaĝoj",
     "Tree.ShowAsList": "Vidigi idojn kiel liston",
-    "CMSMain.ConfirmRestoreFromLive": "Are you sure you want to revert draft to when the page was last published?",
+    "CMSMain.ConfirmRestoreFromLive": "Ĉi vi vere volas malfari la malneton al kiam la paĝo estis laste publikigita?",
     "CMSMain.RollbackToVersion": "Cu vi vere volas malfare restaŭri al versio #%s de ĉi tiu paĝo?",
-    "CMSMain.Archive": "Are you sure you want to archive this page and all of its children pages?\n\nThis page and all of its children will be unpublished and sent to the archive.",
-    "CMSMain.Restore": "Are you sure you want to restore this page from archive?",
-    "CMSMain.RestoreToRoot": "Are you sure you want to restore this page from archive?\n\nBecause the parent page is not available this will be restored to the top level.",
-    "CMSMain.Unpublish": "Are you sure you want to remove your page from the published site?\n\nThis page will still be available in the sitetree as draft.",
-    "CMSMain.DeleteFromDraft": "Are you sure you want to remove your page from the draft site?\n\nThis page will remain on the published site.",
+    "CMSMain.Archive": "Ĉi vi estas certa ke vi volas enarkivigi tiun paĝon kaj ĉiujn ties idajn paĝojn?\n\nTiu paĝo kaj ĉiuj ties idoj malpublikiĝos kaj sendiĝos al la arkivo.",
+    "CMSMain.Restore": "Ĉi vi vere volas restaŭri ĉi tiun paĝon el la arkivo?",
+    "CMSMain.RestoreToRoot": "Ĉu vi vere volas restaŭri la paĝon el la arkivo?\n\nĈar la patra paĝo ne disponeblas, ĝi restaŭriĝos al la supra nivelo.",
+    "CMSMain.Unpublish": "Ĉu vi vere volas forigi la paĝon el la publika retejo?\n\nTiu paĝo ankoraŭ disponeblos en la reteja arbo kiel malneto.",
+    "CMSMain.DeleteFromDraft": "Ĉu vi vere volas forigi la paĝon el la malneta retejo?\n\nTiu paĝo ankoraŭ troviĝos en la publika retejo.",
     "URLSEGMENT.Edit": "Redakti",
     "URLSEGMENT.OK": "Akcepti",
     "URLSEGMENT.Cancel": "Rezigni",
-    "URLSEGMENT.UpdateURL": "Update URL"
+    "URLSEGMENT.UpdateURL": "Ĝisdatigi je URL"
 }

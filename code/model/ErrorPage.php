@@ -222,11 +222,10 @@ class ErrorPage extends Page {
 	 * content, so the page can be shown even when SilverStripe is not
 	 * functioning correctly before publishing this page normally.
 	 *
-	 * @return void
+	 * @return bool
 	 */
 	public function doPublish() {
-		parent::doPublish();
-
+		if (!parent::doPublish()) return false;
 		return $this->writeStaticPage();
 	}
 
@@ -255,10 +254,10 @@ class ErrorPage extends Page {
 			$fileErrorText = _t(
 				'ErrorPage.ERRORFILEPROBLEM',
 				'Error opening file "{filename}" for writing. Please check file permissions.',
-				array('filename' => $errorFile)
+				array('filename' => $filePath)
 			);
-			$this->getResponse()->addHeader('X-Status', rawurlencode($fileErrorText));
-			return $this->httpError(405);
+			user_error($fileErrorText, E_USER_WARNING);
+			return false;
 		}
 		return true;
 	}
@@ -280,7 +279,7 @@ class ErrorPage extends Page {
 	 * which is generated through {@link publish()}.
 	 *
 	 * @param int $statusCode A HTTP Statuscode, mostly 404 or 500
-	 * @param String $locale A locale, e.g. 'de_DE' (Optional)
+	 * @param string $locale A locale, e.g. 'de_DE' (Optional)
 	 *
 	 * @return string
 	 */

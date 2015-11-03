@@ -109,7 +109,7 @@ cs:
     REMOVED: 'Smazáno ''{title}''{description} z webu'
     REMOVEDPAGE: 'Odstraněno ''{title}'' ze zveřejněného webu'
     REMOVEDPAGEFROMDRAFT: 'Odstraněno ''%s'' z konceptu webu'
-    RESTORE: 'Obnovit koncept'
+    RESTORE: Obnovit
     RESTORED: 'Obnoveno ''{title}'' úspěšně'
     RESTORE_DESC: 'Obnovit archivovanou verzi na koncept'
     RESTORE_TO_ROOT: 'Obnovit koncept do nejvyšší úrovně'
@@ -172,15 +172,15 @@ cs:
   CMSSettingsController:
     MENUTITLE: Možnosti
   CMSSiteTreeFilter_ChangedPages:
-    Title: 'Upravené stránky'
+    Title: 'Změnené stránky'
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'Všechny stránky, včetně archivovaných'
+    Title: 'Všechny stránky, včetně odstraněných'
   CMSSiteTreeFilter_Search:
     Title: 'Všechny stránky'
   CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Archivované stránky'
+    Title: 'Smazané stránky'
   CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Stránky koncept'
+    Title: 'Koncept nezveřejněných stránek'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Živé, ale odstraněno z konceptu'
   ContentControl:

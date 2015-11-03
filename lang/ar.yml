@@ -268,7 +268,6 @@ ar:
   SilverStripeNavigator:
     ARCHIVED: المؤرشف
   SilverStripeNavigatorLink:
-    ShareInstructions: 'لمشاركة هذه الصفحة، قم بنسخ ولصق الرابط أدناه.'
     ShareLink: 'رابط مشترك'
   SilverStripeNavigatorLinkl:
     CloseLink: إغلاق

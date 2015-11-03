@@ -17,7 +17,7 @@ class CMSPagesController extends CMSMain {
 	}
 
 	/**
-	 * @return String
+	 * @return string
 	 */
 	public function ViewState() {
 		return $this->getRequest()->getVar('view');

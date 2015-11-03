@@ -268,7 +268,6 @@ zh:
   SilverStripeNavigator:
     ARCHIVED: 已存档
   SilverStripeNavigatorLink:
-    ShareInstructions: '复制并粘贴下方链接分享该页面。'
     ShareLink: '分享链接'
   SilverStripeNavigatorLinkl:
     CloseLink: 关闭

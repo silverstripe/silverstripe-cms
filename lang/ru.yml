@@ -271,7 +271,6 @@ ru:
   SilverStripeNavigator:
     ARCHIVED: Архивные
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Чтобы поделиться ссылкой на эту страницу, скопируйте URL ниже.'
     ShareLink: 'Поделиться ссылкой'
   SilverStripeNavigatorLinkl:
     CloseLink: Закрыть
