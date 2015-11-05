@@ -30,7 +30,7 @@
 
 #Form_EditForm #Title .update { margin-left: 7px; }
 
-.cms .AssetAdmin .cms-content-fields { /** DEPRECATED: .cms-content-tools will be removed in 4.0 Use .cms-content-filters instead. */ }
+.cms .AssetAdmin .cms-content-fields { overflow-x: hidden; /** DEPRECATED: .cms-content-tools will be removed in 4.0 Use .cms-content-filters instead. */ }
 .cms .AssetAdmin .cms-content-fields .cms-edit-form.AssetAdmin { width: 100%; overflow-y: auto; }
 .cms .AssetAdmin .cms-content-fields .cms-content-tools .cms-panel-content { overflow: hidden; }
 .cms .AssetAdmin .cms-content-fields .cms-content-tools .cms-panel-content .cms-search-form { height: 100%; }
