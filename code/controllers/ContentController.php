@@ -138,8 +138,9 @@ class ContentController extends Controller {
 		}
 		
 		// Use theme from the site config
-		if(($config = SiteConfig::current_site_config()) && $config->Theme) {
-			Config::inst()->update('SSViewer', 'theme', $config->Theme);
+		$config = SiteConfig::current_site_config();
+		if($config && $config->Theme && $config->Theme != SSViewer::current_theme()) {
+			SSViewer::set_theme($config->Theme);
 		}
 	}
 	
