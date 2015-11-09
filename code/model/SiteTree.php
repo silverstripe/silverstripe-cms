@@ -2120,7 +2120,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						_t('SiteTree.ACCESSHEADER', "Who can view this page?")
 					),
 					$viewerGroupsField = ListboxField::create("ViewerGroups", _t('SiteTree.VIEWERGROUPS', "Viewer Groups"))
-						->setMultiple(true)
 						->setSource($groupsMap)
 						->setAttribute(
 							'data-placeholder', 
@@ -2131,7 +2130,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						_t('SiteTree.EDITHEADER', "Who can edit this page?")
 					),
 					$editorGroupsField = ListboxField::create("EditorGroups", _t('SiteTree.EDITORGROUPS', "Editor Groups"))
-						->setMultiple(true)
 						->setSource($groupsMap)
 						->setAttribute(
 							'data-placeholder', 
