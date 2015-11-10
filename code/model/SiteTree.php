@@ -2534,8 +2534,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return self
 	 */
 	public function doRestoreToStage() {
-		$this->invokeWithExtensions('onBeforeRestoreToStage', $this);
-
 		// Ensure that the parent page is restored, otherwise restore to root
 		if($this->isParentArchived()) {
 			$this->ParentID = 0;
@@ -2564,8 +2562,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 		
 		Versioned::reading_stage($oldStage);
-
-		$this->invokeWithExtensions('onAfterRestoreToStage', $this);
 		
 		return $result;
 	}
@@ -2576,15 +2572,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return bool Success
 	 */
 	public function doArchive() {
-		$this->invokeWithExtensions('onBeforeArchive', $this);
-
 		if($this->doUnpublish()) {
 			$this->delete();
-			$this->invokeWithExtensions('onAfterArchive', $this);
-
 			return true;
 		}
-
 		return false;
 	}
 
