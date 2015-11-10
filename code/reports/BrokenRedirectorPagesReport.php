@@ -15,11 +15,13 @@ class BrokenRedirectorPagesReport extends SS_Report {
 	}
 	
 	public function sourceRecords($params = null) {
-		$classNames = "'".join("','", ClassInfo::subclassesFor('RedirectorPage'))."'";
-		
-		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "\"ClassName\" IN ($classNames) AND \"HasBrokenLink\" = 1");
-		else $ret = DataObject::get('SiteTree', "\"ClassName\" IN ($classNames) AND \"HasBrokenLink\" = 1");
-		return $ret;
+		$classes = ClassInfo::subclassesFor('RedirectorPage');
+		$classParams = DB::placeholders($classes);
+		$classFilter = array(
+			"\"ClassName\" IN ($classParams) AND \"HasBrokenLink\" = 1" => $classes
+		);
+		$stage = isset($params['OnLive']) ? 'Live' : 'Stage';
+		return Versioned::get_by_stage('SiteTree', $stage, $classFilter);
 	}
 	
 	public function columns() {
@@ -35,5 +37,15 @@ class BrokenRedirectorPagesReport extends SS_Report {
 		return new FieldList(
 			new CheckboxField('OnLive', _t('SideReport.ParameterLiveCheckbox', 'Check live site'))
 		);
+	}
+}
+
+/**
+ * @deprecated 3.2..4.0
+ */
+class SideReport_BrokenRedirectorPages extends BrokenRedirectorPagesReport {
+	public function __construct() {
+		Deprecation::notice('4.0', 'Use BrokenRedirectorPagesReport instead');
+		parent::__construct();
 	}
 }
