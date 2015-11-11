@@ -280,6 +280,7 @@ fr:
   SilverStripeNavigator:
     ARCHIVED: Archivé
   SilverStripeNavigatorLink:
+    ShareInstructions: 'Pour partager cette page, copiez et collez le lien ci-dessous.'
     ShareLink: 'Partager le lien'
   SilverStripeNavigatorLinkl:
     CloseLink: Fermer

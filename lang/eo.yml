@@ -61,17 +61,23 @@ eo:
   CMSAddPageController:
     Title: 'Enmeti paĝon'
   CMSBatchActions:
+    ARCHIVE: Arkivo
+    ARCHIVED_PAGES: 'Enarkivigis %d paĝojn'
     DELETED_DRAFT_PAGES: 'Forigis %d paĝojn el malneta retejo, %d malsukcesoj'
     DELETED_PAGES: 'Forigis %d paĝojn el publikigita retejo, %d malsukcesoj'
     DELETE_DRAFT_PAGES: 'Forigi el malneta retejo'
     DELETE_PAGES: 'Forigi el publikigita retejo'
     PUBLISHED_PAGES: 'Publikigis %d paĝojn, %d malsukcesojn'
     PUBLISH_PAGES: Publikigi
+    RESTORE: Restaŭri
+    RESTORED_PAGES: 'Restaŭris %d paĝojn'
   CMSFileAddController:
     MENUTITLE: Dosieroj
   CMSMain:
     ACCESS: 'Aliro al sekcio ''{title}'''
     ACCESS_HELP: 'Permesi vidigi la sekcion kiu enhavas paĝarbon kaj enhavon. Vidigaj kaj redaktaj permesoj estas trakteblaj per paĝspecifaj fallistoj, kaj ankaŭ la apartaj "Enhavaj permesoj".'
+    ARCHIVE: Enarkivigi
+    ARCHIVEDPAGE: 'Enarkivigis paĝon ''%s'''
     AddNew: 'Aldoni novan paĝon'
     AddNewButton: 'Aldoni novan'
     AddPageRestriction: 'Noto: iuj tipoj de paĝoj ne estas permesataj por ĉi tiu elektaĵo.'
@@ -102,6 +108,9 @@ eo:
     REMOVEDPAGE: 'Forigis je ''{title}'' el la publikigita retejo'
     REMOVEDPAGEFROMDRAFT: 'Forigis je ''%s'' el la malneta retejo'
     RESTORED: 'Sukcese restaŭris je ''{title}'''
+    RESTORE_DESC: 'Restaŭri la enarkivigitan version al malneto'
+    RESTORE_TO_ROOT: 'Restaŭri malneton ĉe la supra nivelo'
+    RESTORE_TO_ROOT_DESC: 'Restaŭri la enarkivigitan version al malneto kiel supranivela paĝo'
     ROLLBACK: 'Malfari al ĉi tiu versio'
     ROLLEDBACKPUBv2: 'Malfaris ŝanĝojn ĝis la publikigita versio.'
     ROLLEDBACKVERSIONv2: 'Malfaris ŝanĝojn ĝis versio #%d.'
@@ -114,6 +123,7 @@ eo:
     TreeFilteredClear: 'Vakigi filtrilon'
   CMSMain_left_ss:
     APPLY_FILTER: 'Apliki filtrilon'
+    CLEAR_FILTER: 'Vakigi filtrilon'
     RESET: Restartigi
   CMSPageAddController:
     MENUTITLE: 'Enmeti paĝon'
@@ -149,6 +159,8 @@ eo:
     MULTISELECT: Plurelekto
   CMSPagesController_Tools_ss:
     FILTER: Filtri
+  CMSSIteTreeFilter_PublishedPages:
+    Title: 'Publikigitaj paĝoj'
   CMSSearch:
     FILTERDATEFROM: De
     FILTERDATEHEADING: Dato
@@ -158,6 +170,8 @@ eo:
     MENUTITLE: Agordoj
   CMSSiteTreeFilter_Search:
     Title: 'Ĉiuj paĝoj'
+  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'Publikaj sed forigitaj el malneto'
   ContentControl:
     NOTEWONTBESHOWN: 'Notu: ne vidigos ĉi tiun mesaĝon al viaj vizitantoj'
   ContentController:
@@ -301,6 +315,9 @@ eo:
     ADDEDTODRAFTSHORT: Malneto
     ALLOWCOMMENTS: 'Permesi rimarkojn en ĉi tiu paĝo?'
     APPEARSVIRTUALPAGES: 'Ĉi tiu enhavo ankaŭ aperas en la virtualaj paĝoj en la sekcioj {title}.'
+    ARCHIVEDPAGEHELP: 'Paĝo estas forigita el malneta kaj publika'
+    ARCHIVEDPAGESHORT: Enarkivigita
+    BUTTONARCHIVEDESC: 'Malpublikigi kaj sendi al arkivo'
     BUTTONCANCELDRAFT: 'Nuligi malnetajn ŝanĝojn'
     BUTTONCANCELDRAFTDESC: 'Forigi vian malneton kaj reveni al la aktuale eldonita paĝo'
     BUTTONPUBLISHED: Publikigita
@@ -314,6 +331,7 @@ eo:
     DEFAULTABOUTTITLE: 'Pri ni'
     DEFAULTCONTACTCONTENT: '<p>Vi povas plenigi ĉi tiun paĝon per via materialo, aŭ forigi ĝin kaj krei viajn proprajn paĝojn.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontakti nin'
+    DEFAULTHOMECONTENT: '<p>Bonvenon al SilverStripe! Jen la apriora hejmpaĝo. Vi povas redakti la paĝon malfermante je <a href="admin/">la CMS</a>.</p><p>Vi povas nun aliri la <a href="http://docs.silverstripe.org">dokumentaron por programistoj</a>, aŭ komenci la <a href="http://www.silverstripe.org/learn/lessons">SilverStripe-lecionojn</a>.</p>'
     DEFAULTHOMETITLE: Hejmo
     DELETEDPAGEHELP: 'Paĝo ne plu estas publikigita'
     DELETEDPAGESHORT: Forigita
@@ -384,6 +402,9 @@ eo:
     many_many_BackLinkTracking: 'Spuri retroligilojn'
     many_many_ImageTracking: 'Spuri Bildojn'
     many_many_LinkTracking: 'Spuri Ligilojn'
+  SiteTreeFileExtension:
+    BACKLINK_LIST_DESCRIPTION: 'Ĉi tiu listo vidigas ĉiujn paĝojn kie la dosiero estas enmetita per la faksimila redaktilo.'
+    EDIT: Redakti
   SiteTreeURLSegmentField:
     EMPTY: 'Bonvolu enigi URL-segmenton aŭ alklaki al Rezigni'
     HelpChars: 'Aŭtomate konvertas aŭ forigas specialajn signojn.'
