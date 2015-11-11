@@ -61,6 +61,7 @@ nl:
   CMSAddPageController:
     Title: 'Pagina toevoegen'
   CMSBatchActions:
+    ARCHIVE: Archief
     DELETED_DRAFT_PAGES: '%d pagina''s van de concept-site verwijderd, %d mislukt'
     DELETED_PAGES: '%d pagina''s van de gepubliceerde site verwijderd, %d mislukt'
     DELETE_DRAFT_PAGES: 'Verwijder van concept site'
@@ -72,6 +73,7 @@ nl:
   CMSMain:
     ACCESS: 'Toegang tot het ''{title}'' gedeelte'
     ACCESS_HELP: 'Bevoegdheid om paginastructuur en inhoud te bekijken. Bekijk- en bewerkingstoestemmingen kunnen worden toegekend met pagina-specifieke menu''s en het aparte "Inhoudsmachtigingen".'
+    ARCHIVE: Archief
     AddNew: 'Voeg nieuwe pagina toe'
     AddNewButton: 'Nieuw'
     AddPageRestriction: 'Opmerking: Sommige paginatypes zijn niet toegestaan ​​voor deze selectie'

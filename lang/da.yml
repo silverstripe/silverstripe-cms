@@ -4,7 +4,10 @@ da:
     ActionAdd: 'Tilføj mappe'
     AppCategoryArchive: Arkiv
     AppCategoryAudio: Lyd
+    AppCategoryDocument: Dokument
+    AppCategoryFlash: Flash
     AppCategoryImage: Billeder
+    AppCategoryVideo: Video
     BackToFolder: 'Tilbage til mappen'
     CREATED: Dato
     CurrentFolderOnly: 'Begræns til den nuværende mappe'
@@ -24,6 +27,8 @@ da:
     Upload: Overfør
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Slet mapper'
+  AssetAdmin_Tools:
+    FILTER: Filter
   AssetTableField:
     BACKLINKCOUNT: 'Brugt på:'
     PAGES: side(r)
@@ -53,6 +58,8 @@ da:
   CMSAddPageController:
     Title: 'Tilføj side'
   CMSBatchActions:
+    ARCHIVE: Arkiv
+    ARCHIVED_PAGES: 'Arkiverede %d sider'
     DELETED_DRAFT_PAGES: 'Slettede %d sider fra kladdesiden, %d fejl'
     DELETED_PAGES: 'Slettede %d sider fra udgivet webside, %d fejl'
     DELETE_DRAFT_PAGES: 'Slet fra kladder'
@@ -64,6 +71,7 @@ da:
   CMSMain:
     ACCESS: 'Adgang til ''{title}'' sektionen'
     ACCESS_HELP: 'Tillad visning af den sektion, som indeholder sidetræet og indhold. Visnings- og redigeringstilladelser kan håndteres gennem sidespecifikke rullemenuer, såvel som de enkelte "Inholdstilladelser".'
+    ARCHIVE: Arkiv
     AddNew: 'Tilføj ny side'
     AddNewButton: 'Tilføj ny'
     ChoosePageParentMode: 'Vælg hvor denne side skal oprettes'
@@ -152,6 +160,7 @@ da:
     LOGIN: Log ind
     LOGOUT: 'Log ud'
     NOTLOGGEDIN: 'Ikke logget ind'
+    PUBLISHED: Udgivet
     PUBLISHEDSITE: 'Udgivet side'
     Password: Adgangskode
     UnableDeleteInstall: 'Var ikke i stand til at slette installationsfilerne. Slet venligst filerne herunder manuelt.'
@@ -240,6 +249,9 @@ da:
     APPEARSVIRTUALPAGES: 'Dette indhold er også på de virtuelle sider i {title}sektionerne'
     BUTTONCANCELDRAFT: 'Annuller ændringer i kladden '
     BUTTONCANCELDRAFTDESC: 'Slet kladden og benyt istedet den nuværende side'
+    BUTTONPUBLISHED: Udgivet
+    BUTTONSAVED: Gemt
+    BUTTONSAVEPUBLISH: 'Gem & udgiv'
     BUTTONUNPUBLISH: Annuller udgivelse
     BUTTONUNPUBLISHDESC: 'Fjern denne side fra det udgivne websted'
     Comments: Kommentarer

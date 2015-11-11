@@ -71,6 +71,8 @@ es:
     PUBLISH_PAGES: Publicar
     RESTORE: Restaurar
     RESTORED_PAGES: '%d páginas restauradas'
+    UNPUBLISHED_PAGES: 'Retiradas %d páginas'
+    UNPUBLISH_PAGES: Retirar
   CMSFileAddController:
     MENUTITLE: Archivos
   CMSMain:
@@ -107,6 +109,7 @@ es:
     REMOVED: 'Removido'
     REMOVEDPAGE: 'Eliminado ''{title}'' del sitio publicado'
     REMOVEDPAGEFROMDRAFT: 'Borrado ''%s''%s desde el sitio no publicado'
+    RESTORE: 'Recuperar borrador'
     RESTORED: 'Restablecido ''{title}'' correctamente'
     RESTORE_DESC: 'Recuperar la versión archivada del borrador'
     RESTORE_TO_ROOT: 'Recuperar borrador al nivel superior'
@@ -168,8 +171,16 @@ es:
     FILTERLABELTEXT: Filtrar
   CMSSettingsController:
     MENUTITLE: Ajustes
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Páginas modificadas'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Todas las páginas, incluídas las archivadas'
   CMSSiteTreeFilter_Search:
     Title: 'Todas las paginas'
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Páginas archivadas'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Borradores'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Publicada, pero eliminada de los borradores'
   ContentControl:
@@ -287,6 +298,7 @@ es:
   SilverStripeNavigator:
     ARCHIVED: Archivado
   SilverStripeNavigatorLink:
+    ShareInstructions: 'Para compartir esta página, copia y pega el link a continuación'
     ShareLink: 'Compartir enlace'
   SilverStripeNavigatorLinkl:
     CloseLink: Cerrar
