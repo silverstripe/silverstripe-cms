@@ -179,6 +179,31 @@ class ContentControllerTest extends FunctionalTest {
 		});
 	}
 
+	public function testAdminRedirect() {
+		// Check that a security message is raised
+		$this->autoFollowRedirection = false;
+		Session::clear('loggedInAs');
+		$page = $this->objFromFixture('ContentControllerTest_Page', 'second_level_page');
+		
+		$response = $this->get('home/second-level/');
+		$this->assertEquals(200, $response->getStatusCode());
+		
+		$response = $this->get('home/second-level/admin/');
+		$this->assertEquals(302, $response->getStatusCode());
+		$this->assertContains('Security/login', $response->getHeader('Location'));
+
+		// Test redirect as admin
+		$this->logInWithPermission('ADMIN');
+
+		$response = $this->get('home/second-level/');
+		$this->assertEquals(200, $response->getStatusCode());
+
+		$response = $this->get('home/second-level/admin/');
+		$this->assertEquals(302, $response->getStatusCode());
+		$this->assertContains($page->CMSEditLink(), $response->getHeader('Location'));
+		$this->autoFollowRedirection = true;
+	}
+
 }
 
 class ContentControllerTest_Page extends Page {  }
