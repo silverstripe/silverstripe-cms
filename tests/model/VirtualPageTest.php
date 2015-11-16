@@ -1,7 +1,9 @@
 <?php
 
-class VirtualPageTest extends SapphireTest {
+class VirtualPageTest extends FunctionalTest {
 	protected static $fixture_file = 'VirtualPageTest.yml';
+	protected static $use_draft_site = false;
+	protected $autoFollowRedirection = false;
 	
 	protected $extraDataObjects = array(
 		'VirtualPageTest_ClassA',
@@ -20,6 +22,9 @@ class VirtualPageTest extends SapphireTest {
 
 	public function setUp() {
 		parent::setUp();
+
+		// Ensure we always have permission to save/publish
+		$this->logInWithPermission("ADMIN");
 
 		$this->origInitiallyCopiedFields = VirtualPage::config()->initially_copied_fields;
 		Config::inst()->remove('VirtualPage', 'initially_copied_fields');
@@ -643,6 +648,24 @@ class VirtualPageTest extends SapphireTest {
 		} 
 
 		if(!$isDetected) $this->fail("Shouldn't be allowed to write a VirtualPage that links to a disallowed child");
+	}
+
+	public function testVirtualPagePointingToRedirectorPage() {
+		if (!class_exists('RedirectorPage')) {
+			$this->markTestSkipped('RedirectorPage required');
+		}
+
+		$rp = new RedirectorPage(array('ExternalURL' => 'http://google.com', 'RedirectionType' => 'External'));
+		$rp->write();
+		$rp->doPublish();
+		
+		$vp = new VirtualPage(array('URLSegment' => 'vptest', 'CopyContentFromID' => $rp->ID));
+		$vp->write();
+		$vp->doPublish();
+
+		$response = $this->get($vp->Link());
+		$this->assertEquals(301, $response->getStatusCode());
+		$this->assertEquals('http://google.com', $response->getHeader('Location'));
 	}
 }
 
