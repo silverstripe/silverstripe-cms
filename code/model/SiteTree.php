@@ -608,7 +608,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if(empty($this->ParentID)) return false;
 		
 		// Parent must exist and not be an orphan itself
-		$parent = $this->Parent();
+		$parent = $this->getParent();
 		return !$parent || !$parent->exists() || $parent->isOrphaned();
 	}
 	
