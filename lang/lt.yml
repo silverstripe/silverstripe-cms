@@ -109,7 +109,7 @@ lt:
     REMOVED: 'Iš publikuojamos svetainės ištrintas ''{title}''{description}'
     REMOVEDPAGE: 'Iš publikuojamos svetainės pašalintas ''{title}'''
     REMOVEDPAGEFROMDRAFT: '''%s'' pašalintas iš juodraštinės svetainės'
-    RESTORE: 'Atstatyti'
+    RESTORE: Atstatyti
     RESTORED: '''{title}'' atstatytas sėkmingai'
     RESTORE_DESC: 'Atstatyti suarchyvuotą versiją kaip juodraštinį puslapį'
     RESTORE_TO_ROOT: 'Atstatyti juodraštį aukščiausiame lygyje'
@@ -174,11 +174,11 @@ lt:
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Pakeisti puslapiai'
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'Visi puslapiai, kartu su suarchyvuotais'
+    Title: 'Visi puslapiai, taip pat ir archyvuoti'
   CMSSiteTreeFilter_Search:
     Title: 'Visi puslapiai'
   CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Suarchyvuoti puslapiai'
+    Title: 'Archyvuoti puslapiai'
   CMSSiteTreeFilter_StatusDraftPages:
     Title: 'Juodraštiniai puslapiai'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
@@ -298,7 +298,7 @@ lt:
   SilverStripeNavigator:
     ARCHIVED: Archyvuota
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Norėdami pasidalinti šiuo puslapiu, nusikopijuokite žemiau esančią nuorodą.'
+    ShareInstructions: 'Norėdami pasidalinti šiuo puslapiu, kopijuokite žemiau esančią nuorodą.'
     ShareLink: 'Dalintis nuoroda'
   SilverStripeNavigatorLinkl:
     CloseLink: Uždaryti
