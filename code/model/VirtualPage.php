@@ -413,7 +413,7 @@ class VirtualPage extends Page {
 	public function __get($field) {
 		if(parent::hasMethod($funcName = "get$field")) {
 			return $this->$funcName();
-		} else if(parent::hasField($field)) {
+		} else if(parent::hasField($field) || ($field === 'ID' && !$this->exists())) {
 			return $this->getField($field);
 		} else {
 			return $this->copyContentFrom()->$field;
