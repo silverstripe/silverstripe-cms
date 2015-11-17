@@ -14,11 +14,11 @@
 			},
 			toggle: function() {
 				if($(this).attr('value') == 'Internal') {
-					$('#ExternalURL').hide();
-					$('#LinkToID').show();
+					$('#Form_EditForm_ExternalURL_Holder').hide();
+					$('#Form_EditForm_LinkToID_Holder').show();
 				} else {
-					$('#ExternalURL').show();
-					$('#LinkToID').hide();
+					$('#Form_EditForm_ExternalURL_Holder').show();
+					$('#Form_EditForm_LinkToID_Holder').hide();
 				}
 			}
 		});
