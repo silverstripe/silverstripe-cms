@@ -676,6 +676,14 @@ class SiteTreeTest extends SapphireTest {
 
 		Director::set_current_page($newPage = new SiteTree());
 		$this->assertTrue($newPage->isCurrent(), 'Assert that isCurrent works on unsaved pages.');
+
+		$this->assertEquals($newPage->LinkOrCurrent(), 'current');
+		Config::inst()->update('SiteTree', 'linking_mode_current', 'active');
+		$this->assertEquals($newPage->LinkOrCurrent(), 'active');
+		
+		$this->assertEquals($aboutPage->LinkOrCurrent(), 'link');
+		Config::inst()->update('SiteTree', 'linking_mode_link', 'just-a-link');
+		$this->assertEquals($aboutPage->LinkOrCurrent(), 'just-a-link');
 	}
 
 	public function testIsSection() {
@@ -697,6 +705,10 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertTrue($about->isSection());
 		$this->assertTrue($staff->isSection());
 		$this->assertTrue($ceo->isSection());
+
+		$this->assertEquals($about->LinkOrSection(), 'section');
+		Config::inst()->update('SiteTree', 'linking_mode_section', 'active-section');
+		$this->assertEquals($about->LinkOrSection(), 'active-section');
 	}
 
 	public function testURLSegmentAutoUpdate() {
