@@ -30,18 +30,12 @@ class ErrorPage extends Page {
 	private static $description = 'Custom content for different error cases (e.g. "Page not found")';
 
 	/**
-	 * Allows control over writing directly to the static_filepath directory. Only required if relying on
-	 * apache ErrorDocument, and can be turned off otherwise.
+	 * Allows control over writing directly to the configured `GeneratedAssetStore`.
 	 *
 	 * @config
 	 * @var bool
 	 */
 	private static $enable_static_file = true;
-	/**
-	 * @config
-	 * @var string
-	 */
-	private static $static_filepath = ASSETS_PATH;
 
 	/**
 	 * Prefix for storing error files in the {@see GeneratedAssetHandler} store.
@@ -117,6 +111,11 @@ class ErrorPage extends Page {
 					$page = new ErrorPage($defaultData);
 					$page->write();
 					$page->publish('Stage', 'Live');
+				}
+
+				// Check if static files are enabled
+				if(!self::config()->enable_static_file) {
+					continue;
 				}
 
 				// Ensure this page has cached error content
@@ -239,21 +238,15 @@ class ErrorPage extends Page {
 	 * @return bool
 	 */
 	protected function hasStaticPage() {
+		if(!self::config()->enable_static_file) {
+			return false;
+		}
+
 		// Attempt to retrieve content from generated file handler
 		$filename = $this->getErrorFilename();
 		$storeFilename = File::join_paths(self::config()->store_filepath, $filename);
-		$result = self::get_asset_handler()->getGeneratedContent($storeFilename, 0);
-		if($result) {
-			return true;
-		}
-
-		// Fallback to physical store
-		if(self::config()->enable_static_file) {
-			$staticPath = self::config()->static_filepath . "/" . $filename;
-			return file_exists($staticPath);
-		}
-
-		return false;
+		$result = self::get_asset_handler()->getContent($storeFilename);
+		return !empty($result);
 	}
 
 	/**
@@ -262,6 +255,10 @@ class ErrorPage extends Page {
 	 * @return true if the page write was successful
 	 */
 	public function writeStaticPage() {
+		if(!self::config()->enable_static_file) {
+			return false;
+		}
+
 		// Run the page (reset the theme, it might've been disabled by LeftAndMain::init())
 		Config::nest();
 		Config::inst()->update('SSViewer', 'theme_enabled', true);
@@ -270,18 +267,11 @@ class ErrorPage extends Page {
 		$errorContent = $response->getBody();
 
 		// Store file content in the default store
-		$filename = $this->getErrorFilename();
-		$storeFilename = File::join_paths(self::config()->store_filepath, $filename);
-		self::get_asset_handler()->updateContent($storeFilename, 0, $errorContent);
-
-		// Write to physical store
-		if(self::config()->enable_static_file) {
-			Filesystem::makeFolder(self::config()->static_filepath);
-			$staticPath = self::config()->static_filepath . "/" . $filename;
-			if(!file_put_contents($staticPath, $errorContent)) {
-				return false;
-			}
-		}
+		$storeFilename = File::join_paths(
+			self::config()->store_filepath,
+			$this->getErrorFilename()
+		);
+		self::get_asset_handler()->setContent($storeFilename, $errorContent);
 
 		// Success
 		return true;
@@ -300,31 +290,23 @@ class ErrorPage extends Page {
 	}
 
 	/**
-	 * Returns an absolute filesystem path to a static error file
-	 * which is generated through {@link publish()}.
-	 *
-	 * @param int $statusCode A HTTP Statuscode, mostly 404 or 500
-	 * @param string $locale A locale, e.g. 'de_DE' (Optional)
+	 * Returns statically cached content for a given error code
 	 *
 	 * @param int $statusCode A HTTP Statuscode, typically 404 or 500
-	 * @return string
+	 * @return string|null
 	 */
 	public static function get_content_for_errorcode($statusCode) {
-		// Attempt to retrieve content from generated file handler
-		$filename = self::get_error_filename($statusCode);
-		$storeFilename = File::join_paths(self::config()->store_filepath, $filename);
-		$result = self::get_asset_handler()->getGeneratedContent($storeFilename, 0);
-		if($result) {
-			return $result;
+		if(!self::config()->enable_static_file) {
+			return null;
 		}
 
-		// Fallback to physical store
-		if(self::config()->enable_static_file) {
-			$staticPath = self::config()->static_filepath . "/" . $filename;
-			if(file_exists($staticPath)) {
-				return file_get_contents($staticPath);
-			}
-		}
+		// Attempt to retrieve content from generated file handler
+		$filename = self::get_error_filename($statusCode);
+		$storeFilename = File::join_paths(
+			self::config()->store_filepath,
+			$filename
+		);
+		return self::get_asset_handler()->getContent($storeFilename);
 	}
 
 	/**
