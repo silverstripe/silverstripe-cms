@@ -18,7 +18,6 @@ class ErrorPageTest extends FunctionalTest {
 		parent::setUp();
 		// Set temporary asset backend store
 		AssetStoreTest_SpyStore::activate('ErrorPageTest');
-		Config::inst()->update('ErrorPage', 'static_filepath', AssetStoreTest_SpyStore::base_path());
 		Config::inst()->update('ErrorPage', 'enable_static_file', true);
 		Config::inst()->update('Director', 'environment_type', 'live');
 		$this->logInWithPermission('ADMIN');
@@ -111,8 +110,14 @@ class ErrorPageTest extends FunctionalTest {
 		$page->write();
 		$page->doPublish();
 
-		// Error content is available, even though the static file does not exist (only in assetstore)
-		$this->assertNotEmpty(ErrorPage::get_content_for_errorcode('405'));
+		// Dynamic content is available
+		$response = ErrorPage::response_for('405');
+		$this->assertNotEmpty($response);
+		$this->assertNotEmpty($response->getBody());
+		$this->assertEquals(405, (int)$response->getStatusCode());
+
+		// Static content is not available
+		$this->assertEmpty(ErrorPage::get_content_for_errorcode('405'));
 		$expectedErrorPagePath = AssetStoreTest_SpyStore::base_path() . '/error-405.html';
 		$this->assertFileNotExists($expectedErrorPagePath, 'Error page is not cached in static location');
 	}
