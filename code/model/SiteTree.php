@@ -903,23 +903,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		// admin override
 		if($member && Permission::checkMember($member, array("ADMIN", "SITETREE_VIEW_ALL"))) return true;
-
-		// make sure we were loaded off an allowed stage
-
-		// Were we definitely loaded directly off Live during our query?
-		$fromLive = true;
-
-		foreach (array('mode' => 'stage', 'stage' => 'live') as $param => $match) {
-			$fromLive = $fromLive && strtolower((string)$this->getSourceQueryParam("Versioned.$param")) == $match;
-		}
-
-		if(!$fromLive
-			&& !Session::get('unsecuredDraftSite')
-			&& !Permission::checkMember($member, array('CMS_ACCESS_LeftAndMain', 'CMS_ACCESS_CMSMain', 'VIEW_DRAFT_CONTENT'))) {
-			// If we weren't definitely loaded from live, and we can't view non-live content, we need to
-			// check to make sure this version is the live version and so can be viewed
-			if (Versioned::get_versionnumber_by_stage($this->class, 'Live', $this->ID) != $this->Version) return false;
-		}
 		
 		// Orphaned pages (in the current stage) are unavailable, except for admins via the CMS
 		if($this->isOrphaned()) return false;
@@ -951,26 +934,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		) return true;
 		
 		return false;
-	}
-	
-	/**
-	 * Determines canView permissions for the latest version of this Page on a specific stage (see {@link Versioned}).
-	 * Usually the stage is read from {@link Versioned::current_stage()}.
-	 * 
-	 * @todo Implement in CMS UI.
-	 * 
-	 * @param string $stage
-	 * @param Member $member
-	 * @return bool
-	 */
-	public function canViewStage($stage = 'Live', $member = null) {
-		$oldMode = Versioned::get_reading_mode();
-		Versioned::reading_stage($stage);
-
-		$versionFromStage = DataObject::get($this->class)->byID($this->ID);
-		
-		Versioned::set_reading_mode($oldMode);
-		return $versionFromStage ? $versionFromStage->canView($member) : false;
 	}
 
 	/**

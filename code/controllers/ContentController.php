@@ -110,33 +110,6 @@ class ContentController extends Controller {
 			return Security::permissionFailure($this);
 		}
 
-		// Draft/Archive security check - only CMS users should be able to look at stage/archived content
-		if(
-			$this->URLSegment != 'Security' 
-			&& !Session::get('unsecuredDraftSite') 
-			&& (
-				Versioned::current_archived_date() 
-				|| (Versioned::current_stage() && Versioned::current_stage() != 'Live')
-			)
-		) {
-			if(!$this->dataRecord->canView()) {
-				Session::clear('currentStage');
-				Session::clear('archiveDate');
-				
-				$permissionMessage = sprintf(
-					_t(
-						"ContentController.DRAFT_SITE_ACCESS_RESTRICTION",
-						'You must log in with your CMS password in order to view the draft or archived content. '.
-						'<a href="%s">Click here to go back to the published site.</a>'
-					),
-					Controller::join_links($this->Link(), "?stage=Live")
-				);
-
-				return Security::permissionFailure($this, $permissionMessage);
-			}
-
-		}
-		
 		// Use theme from the site config
 		if(($config = SiteConfig::current_site_config()) && $config->Theme) {
 			Config::inst()->update('SSViewer', 'theme', $config->Theme);
