@@ -182,8 +182,9 @@ class ContentController extends Controller {
 			// look for a translation and redirect (see #5001). Only happens on the last child in
 			// a potentially nested URL chain.
 			if(class_exists('Translatable')) {
-				if($request->getVar('locale') && $this->dataRecord && $this->dataRecord->Locale != $request->getVar('locale')) {
-					$translation = $this->dataRecord->getTranslation($request->getVar('locale'));
+				$locale = $request->getVar('locale');
+				if($locale && i18n::validate_locale($locale) && $this->dataRecord && $this->dataRecord->Locale != $locale) {
+					$translation = $this->dataRecord->getTranslation($locale);
 					if($translation) {
 						$response = new SS_HTTPResponse();
 						$response->redirect($translation->Link(), 301);
