@@ -21,12 +21,16 @@ class ContentControllerPermissionsTest extends FunctionalTest {
 		$page->write();
 
 		$response = $this->get('/testpage');
-		$this->assertEquals($response->getStatusCode(), 200, 'Doesnt require login for implicit live stage');
+		$this->assertEquals($response->getStatusCode(), 200, "Doesn't require login for implicit live stage");
 		
 		$response = $this->get('/testpage/?stage=Live');
-		$this->assertEquals($response->getStatusCode(), 200, 'Doesnt require login for explicit live stage');
-		
-		$response = $this->get('/testpage/?stage=Stage');
+		$this->assertEquals($response->getStatusCode(), 200, "Doesn't require login for explicit live stage");
+
+		try {
+			$response = $this->get('/testpage/?stage=Stage');
+		} catch(SS_HTTPResponse_Exception $responseException) {
+			$response = $responseException->getResponse();
+		}
 		// should redirect to login
 		$this->assertEquals($response->getStatusCode(), 302, 'Redirects to login page when not logged in for draft stage');
 		$this->assertContains(
