@@ -96,7 +96,13 @@ class ContentControllerTest extends FunctionalTest {
 		
 		// test when user does not have permission, should get login form
 		$this->logInWithPermission('EDITOR');
-		$this->assertEquals('403', $this->get('/contact/?stage=Stage')->getstatusCode());
+		try {
+			$response = $this->get('/contact/?stage=Stage');
+		} catch(SS_HTTPResponse_Exception $responseException) {
+			$response = $responseException->getResponse();
+		}
+
+		$this->assertEquals('403', $response->getstatusCode());
 		
 		
 		// test when user does have permission, should show page title and header ok.
