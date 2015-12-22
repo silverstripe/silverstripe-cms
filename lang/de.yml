@@ -71,6 +71,8 @@ de:
     PUBLISH_PAGES: Veröffentlichen
     RESTORE: Wiederherstellen
     RESTORED_PAGES: '%d Seiten wiederhergestellt'
+    UNPUBLISHED_PAGES: 'Veröffentlichung von %d Seiten zurückgenommen'
+    UNPUBLISH_PAGES: Veröffentlichung zurücknehmen
   CMSFileAddController:
     MENUTITLE: Dateien
   CMSMain:
@@ -107,6 +109,7 @@ de:
     REMOVED: 'Lösche ''{title}''{description} von Live Umgebung'
     REMOVEDPAGE: '''{title}'' wurde von der veröffentlichten Site entfernt'
     REMOVEDPAGEFROMDRAFT: 'Lösche ''%s'' von der Entwurfs-Site'
+    RESTORE: Wiederherstellen
     RESTORED: '''{title}'' wurde wiederhergestellt'
     RESTORE_DESC: 'Entwurf aus archivierter Version wiederherstellen'
     RESTORE_TO_ROOT: 'Entwurf in oberster Ebene wiederherstellen'
@@ -168,8 +171,16 @@ de:
     FILTERLABELTEXT: Inhalt
   CMSSettingsController:
     MENUTITLE: Einstellungen
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Geänderte Seiten'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Alle Seiten, auch gelöschte'
   CMSSiteTreeFilter_Search:
     Title: 'Alle Seiten'
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Gelöschte Seiten'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Entwürfe'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Veröffentlicht aber aus Entwurf entfernt'
   ContentControl:
@@ -287,6 +298,7 @@ de:
   SilverStripeNavigator:
     ARCHIVED: Archiviert
   SilverStripeNavigatorLink:
+    ShareInstructions: 'Kopieren Sie den untenstehenden Link um ihn zu teilen.'
     ShareLink: 'Link teilen'
   SilverStripeNavigatorLinkl:
     CloseLink: schließen

@@ -172,15 +172,15 @@ lt:
   CMSSettingsController:
     MENUTITLE: Nustatymai
   CMSSiteTreeFilter_ChangedPages:
-    Title: 'Ištrinti puslapiai'
+    Title: 'Pakeisti puslapiai'
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'Visi puslapiai, kartu su suarchyvuotais'
+    Title: 'Visi puslapiai, taip pat ir archyvuoti'
   CMSSiteTreeFilter_Search:
     Title: 'Visi puslapiai'
   CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Ištrinti puslapiai'
+    Title: 'Archyvuoti puslapiai'
   CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Juodraštiniai nepublikuoti puslapiai'
+    Title: 'Juodraštiniai puslapiai'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Publikuotas, bet pašalintas iš juodraščių'
   ContentControl:
@@ -298,7 +298,7 @@ lt:
   SilverStripeNavigator:
     ARCHIVED: Archyvuota
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Norėdami pasidalinti šiuo puslapiu, nukopijuokite ir įdėkite nuorodą žemiau.'
+    ShareInstructions: 'Norėdami pasidalinti šiuo puslapiu, kopijuokite žemiau esančią nuorodą.'
     ShareLink: 'Dalintis nuoroda'
   SilverStripeNavigatorLinkl:
     CloseLink: Uždaryti

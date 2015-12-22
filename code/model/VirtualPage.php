@@ -413,7 +413,7 @@ class VirtualPage extends Page {
 	public function __get($field) {
 		if(parent::hasMethod($funcName = "get$field")) {
 			return $this->$funcName();
-		} else if(parent::hasField($field)) {
+		} else if(parent::hasField($field) || ($field === 'ID' && !$this->exists())) {
 			return $this->getField($field);
 		} else {
 			return $this->copyContentFrom()->$field;
@@ -563,12 +563,17 @@ class VirtualPage_Controller extends Page_Controller {
 		} catch (Exception $e) {
 			// Hack... detect exception type. We really should use exception subclasses.
 			// if the exception isn't a 'no method' error, rethrow it
-			if ($e->getCode() !== 2175) throw $e;
+			if ($e->getCode() !== 2175) {
+				throw $e;
+			}
+
 			$original = $this->copyContentFrom();
-			$originalClass = get_class($original);
-			if ($originalClass == 'SiteTree') $name = 'ContentController';
-			else $name = $originalClass."_Controller";
-			$controller = new $name($this->dataRecord->copyContentFrom());
+			$controller = ModelAsController::controller_for($original);
+
+			// Ensure request/response data is available on virtual controller
+			$controller->setRequest($this->getRequest());
+			$controller->response = $this->response; // @todo - replace with getter/setter in 3.3
+
 			return call_user_func_array(array($controller, $method), $args);
 		}
 	}

@@ -32,3 +32,13 @@ class RecentlyEditedReport extends SS_Report {
 		);
 	}
 }
+
+/**
+ * @deprecated 3.2..4.0
+ */
+class SideReport_RecentlyEdited extends RecentlyEditedReport {
+	public function __construct() {
+		Deprecation::notice('4.0', 'Use RecentlyEditedReport instead');
+		parent::__construct();
+	}
+}
