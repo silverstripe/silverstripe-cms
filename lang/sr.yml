@@ -85,13 +85,10 @@ sr:
     DUPLICATEDWITHCHILDREN: '''{title}'' и деца успешно дуплирани'
     EMAIL: Е-пошта
     EditTree: 'Измени стабло'
-    ListFiltered: 'Филтрирана листа.'
     MENUTITLE: 'Измени страницу'
     NEWPAGE: 'Нова {pagetype}'
     PAGENOTEXISTS: 'Ова страница не постоји'
-    PAGES: Странице
     PAGETYPEANYOPT: Било која
-    PAGETYPEOPT: 'Тип странице'
     PUBALLCONFIRM: 'Објавите сваку страну на овом сајту копирањем садржај на жив сајт.'
     PUBALLFUN: 'Функција „Објави све“ '
     PUBALLFUN2: "Притиском на ово дугме постићи ћете исто што и одласком на сваку страну и притискањем дугмета „Објави“ . Намењена је за коришћење након великих измена садржаја као када се сајт први пут објављује."
@@ -109,10 +106,7 @@ sr:
     TabContent: Садржај
     TabHistory: Историја
     TabSettings: Подешавања
-    TreeFiltered: 'Филтрирано стабло'
-    TreeFilteredClear: 'Избриши филтер'
   CMSMain_left_ss:
-    APPLY_FILTER: 'Примени филтер'
     RESET: Врати у пређашње стање
   CMSPageAddController:
     MENUTITLE: 'Додај страницу'
@@ -144,15 +138,12 @@ sr:
     ListView: 'Приказ у виду листе'
     MENUTITLE: Странице
     TreeView: 'Приказ у виду стабла'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Вишеструки избор
   CMSPagesController_Tools_ss:
     FILTER: Филтер
   CMSSearch:
     FILTERDATEFROM: Од
     FILTERDATEHEADING: Датум
     FILTERDATETO: За
-    FILTERLABELTEXT: Садржај
   CMSSettingsController:
     MENUTITLE: Подешавања
   CMSSiteTreeFilter_Search:

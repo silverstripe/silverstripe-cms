@@ -77,9 +77,7 @@ uk:
     EMAIL: Електронна пошта
     MENUTITLE: 'Редагувати сторінку'
     PAGENOTEXISTS: 'Ця сторінка не існує'
-    PAGES: Сторінки
     PAGETYPEANYOPT: Будь-який
-    PAGETYPEOPT: 'Тип сторінки'
     PUBALLCONFIRM: 'Будь ласка, опублікуйте кожну сторінку. Для цього перенесіть проміжний варіант до існуючого.'
     PUBALLFUN: 'Дія "Опублікувати все"'
     PUBALLFUN2: "Натиснувши цю кнопку Ви зробите те ж саме, що й перейшовши до кожної сторінки та натиснувши \"Публікувати\". Це внесено для тих випадків, коли Ви маєте намір маштабно змінити вміст, наприклад, після першого створення сайту."
@@ -92,7 +90,6 @@ uk:
     TabHistory: Історія
     TabSettings: Налаштування
   CMSMain_left_ss:
-    APPLY_FILTER: 'Застосувати фільтр'
     RESET: Відновити
   CMSPageAddController:
     MENUTITLE: 'Додати сторінку'
@@ -118,8 +115,6 @@ uk:
     WHEN: Коли
   CMSPageSettingsController:
     MENUTITLE: 'Редагувати сторінку'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Множинний вибір
   CMSPagesController_Tools_ss:
     FILTER: Фільтр
   CMSSearch:

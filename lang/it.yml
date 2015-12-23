@@ -92,13 +92,10 @@ it:
     DUPLICATEDWITHCHILDREN: '''{title}'' e figlie duplicate con successo'
     EMAIL: Email
     EditTree: 'Modifica albero'
-    ListFiltered: 'Lista filtrata.'
     MENUTITLE: 'Modifica pagina'
     NEWPAGE: 'Nuova {pagetype}'
     PAGENOTEXISTS: 'Questa pagina non esiste'
-    PAGES: Pagine
     PAGETYPEANYOPT: Qualsiasi
-    PAGETYPEOPT: 'Tipo di pagina'
     PUBALLCONFIRM: 'Per favore pubblica ogni singola pagina nel sito, copiando i contenuti da ''bozza'' a ''pubblicato''.'
     PUBALLFUN: 'Funzione "Pubblica tutto"'
     PUBALLFUN2: "Cliccare questo bottone equivale ad accedere a tutte le pagine e cliccare 'pubblica'. Tale bottone è inteso per essere utilizzato dopo aver apportato modifiche di massa ai contenuti, come nella prima pubblicazione del sito."
@@ -119,11 +116,7 @@ it:
     TabContent: Contenuto
     TabHistory: Archivio
     TabSettings: Impostazioni
-    TreeFiltered: 'Albero filtrato.'
-    TreeFilteredClear: 'Azzera filtro'
   CMSMain_left_ss:
-    APPLY_FILTER: 'Applica filtro'
-    CLEAR_FILTER: 'Azzera filtro'
     RESET: Azzera
   CMSPageAddController:
     MENUTITLE: 'Aggiungi pagina'
@@ -155,8 +148,6 @@ it:
     ListView: 'Visualizzazione a lista'
     MENUTITLE: Pagine
     TreeView: 'Visualizzazione a albero'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Selezione multipla
   CMSPagesController_Tools_ss:
     FILTER: Filtra
   CMSSIteTreeFilter_PublishedPages:
@@ -165,7 +156,6 @@ it:
     FILTERDATEFROM: Da
     FILTERDATEHEADING: Data
     FILTERDATETO: A
-    FILTERLABELTEXT: Contenuto
   CMSSettingsController:
     MENUTITLE: Impostazioni
   CMSSiteTreeFilter_Search:

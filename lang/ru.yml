@@ -86,13 +86,10 @@ ru:
     DUPLICATEDWITHCHILDREN: 'Копия ''{title}'' и дочерних элементов создана'
     EMAIL: Email
     EditTree: 'Редактировать дерево'
-    ListFiltered: 'Отфильтрованный список.'
     MENUTITLE: 'Править страницу'
     NEWPAGE: 'Новая {pagetype}'
     PAGENOTEXISTS: 'Страница не существует'
-    PAGES: Страницы
     PAGETYPEANYOPT: Любой
-    PAGETYPEOPT: 'Тип страницы'
     PUBALLCONFIRM: 'Пожалуйста, опубликуйте каждую страницу сайта, перенося содержимое из чернового режима в опубликованный'
     PUBALLFUN: 'Функция "Опубликовать все"'
     PUBALLFUN2: "Нажатие этой кнопки выполнит ту же функцию, что и нажатие кнопки \"Опубликовать\" для каждой отдельной страницы. Данная функция предназначена для использования после значительных изменений содержимого, например, в момент создания нового сайта."
@@ -110,10 +107,7 @@ ru:
     TabContent: Содержимое
     TabHistory: История
     TabSettings: Настройки
-    TreeFiltered: 'Отфильтрованное дерево.'
-    TreeFilteredClear: 'Сбросить фильтр'
   CMSMain_left_ss:
-    APPLY_FILTER: 'Применить фильтр'
     RESET: Восстановить
   CMSPageAddController:
     MENUTITLE: 'Добавить страницу'
@@ -145,15 +139,12 @@ ru:
     ListView: 'Обзор списка'
     MENUTITLE: Страницы
     TreeView: 'Обзор дерева'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Множественный выбор
   CMSPagesController_Tools_ss:
     FILTER: Фильтр
   CMSSearch:
     FILTERDATEFROM: От
     FILTERDATEHEADING: Дата
     FILTERDATETO: До
-    FILTERLABELTEXT: Содержимое
   CMSSettingsController:
     MENUTITLE: Настройки
   CMSSiteTreeFilter_Search:

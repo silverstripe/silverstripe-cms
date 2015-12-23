@@ -94,11 +94,11 @@ lt:
     DUPLICATEDWITHCHILDREN: 'Puslapis ''{title}'' , bei jo vaikai kopijuoti sėkmingai'
     EMAIL: E. paštas
     EditTree: 'Redaguoti medį'
-    ListFiltered: 'Filtruotas sąrašas.'
+    ListFiltered: 'Rodomi paieškos rezultatai'
     MENUTITLE: 'Redaguoti puslapį'
     NEWPAGE: 'Naujas {pagetype}'
     PAGENOTEXISTS: 'Šis puslapis neegzistuoja'
-    PAGES: Puslapiai
+    PAGES: 'Puslapio būsena'
     PAGETYPEANYOPT: Bet koks
     PAGETYPEOPT: 'Puslapio tipas'
     PUBALLCONFIRM: 'Prašome publikuoti kiekvieną svetainės puslapį, kopijuojant turinį į svetainę'
@@ -109,7 +109,7 @@ lt:
     REMOVED: 'Iš publikuojamos svetainės ištrintas ''{title}''{description}'
     REMOVEDPAGE: 'Iš publikuojamos svetainės pašalintas ''{title}'''
     REMOVEDPAGEFROMDRAFT: '''%s'' pašalintas iš juodraštinės svetainės'
-    RESTORE: Atstatyti
+    RESTORE: 'Atstatyti'
     RESTORED: '''{title}'' atstatytas sėkmingai'
     RESTORE_DESC: 'Atstatyti suarchyvuotą versiją kaip juodraštinį puslapį'
     RESTORE_TO_ROOT: 'Atstatyti juodraštį aukščiausiame lygyje'
@@ -122,11 +122,11 @@ lt:
     TabContent: Turinys
     TabHistory: Istorija
     TabSettings: Nustatymai
-    TreeFiltered: 'Filtruotas medis.'
-    TreeFilteredClear: 'Išvalyti filtrą'
+    TreeFiltered: 'Rodomi paieškos rezultatai'
+    TreeFilteredClear: Išvalyti filtrą
   CMSMain_left_ss:
-    APPLY_FILTER: 'Vykdyti'
-    CLEAR_FILTER: 'Išvalyti filtrą'
+    APPLY_FILTER: Ieškoti
+    CLEAR_FILTER: Išvalyti filtrą
     RESET: Atstatyti
   CMSPageAddController:
     MENUTITLE: 'Pridėti puslapį'
@@ -159,7 +159,7 @@ lt:
     MENUTITLE: Puslapiai
     TreeView: 'Medžio rodinys'
   CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Daugybinis pasirinkimas
+    MULTISELECT: 'Daugybinis pasirinkimas'
   CMSPagesController_Tools_ss:
     FILTER: Filtras
   CMSSIteTreeFilter_PublishedPages:
@@ -168,7 +168,8 @@ lt:
     FILTERDATEFROM: Nuo
     FILTERDATEHEADING: Data
     FILTERDATETO: Iki
-    FILTERLABELTEXT: Turinys
+    FILTERLABELTEXT: Ieškoti
+    PAGEFILTERDATEHEADING: 'Redaguota'
   CMSSettingsController:
     MENUTITLE: Nustatymai
   CMSSiteTreeFilter_ChangedPages:

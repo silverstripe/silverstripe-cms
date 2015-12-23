@@ -77,13 +77,10 @@ hu:
     DUPLICATEDWITHCHILDREN: '''{title}'' és oldalai sikeresen duplikálva'
     EMAIL: E-mail
     EditTree: 'Menüszerkeszet módosítása'
-    ListFiltered: 'Szűrt lista'
     MENUTITLE: 'Oldal szerkesztése'
     NEWPAGE: 'Új {pagetype}'
     PAGENOTEXISTS: 'Ez az oldal nem létezik.'
-    PAGES: Oldalak
     PAGETYPEANYOPT: Egyéb
-    PAGETYPEOPT: 'Oldal típusa'
     PUBALLCONFIRM: 'Minden oldal publikálása, fázistartalmak kitevése'
     PUBALLFUN: '"Összes publikálása" funkció'
     PUBALLFUN2: "Ennek a gombnak a megnyomásával ugyanazt érheted el, mintha az összes oldalon megnyomnád a publikálás gombot. Akkor célszerű használni, ha a tartalom nagy változáson ment keresztül, mint például az oldal kezdeti felépítésénél."
@@ -101,9 +98,6 @@ hu:
     TabContent: Tartalom
     TabHistory: Történet
     TabSettings: Beállítások
-    TreeFilteredClear: 'Szűrő törlése'
-  CMSMain_left_ss:
-    APPLY_FILTER: 'Szűrő alkalmazása'
   CMSPageAddController:
     MENUTITLE: 'Oldal hozzáadása'
     ParentMode_child: 'Másik oldal alatt'
@@ -140,7 +134,6 @@ hu:
     FILTERDATEFROM: -tól
     FILTERDATEHEADING: Dátum
     FILTERDATETO: -ig
-    FILTERLABELTEXT: Tartalom
   CMSSettingsController:
     MENUTITLE: Beállítások
   CMSSiteTreeFilter_Search:

@@ -82,13 +82,10 @@ he_IL:
     DESCREMOVED: 'ו־{count} צאצאים'
     EMAIL: דוא״ל
     EditTree: 'עריכת העץ'
-    ListFiltered: 'רשימה מסוננת.'
     MENUTITLE: 'עריכת העמוד'
     NEWPAGE: '{pagetype} חדש'
     PAGENOTEXISTS: 'עמוד זה אינו קיים במערכת'
-    PAGES: עמודים
     PAGETYPEANYOPT: כלשהם
-    PAGETYPEOPT: 'סוג העמוד'
     PUBALLCONFIRM: 'פרסום העמודים באתר, תוך העתקת כל הטיוטות לגרסה הסופית'
     PUBALLFUN: 'פרסום הכול'
     PUBALLFUN2: "לחיצה על כפתור זה מקבילה לאישור פרסום על כל העמודים באתר. הכפתור נועד לאישורים גורפים שבאו בעקבות עריכה נרחבת באתר דוגמת ההגדרות הראשוניות בעת יצירת אתר זה"
@@ -102,10 +99,7 @@ he_IL:
     TabContent: תוכן
     TabHistory: היסטורייה
     TabSettings: הגדרות
-    TreeFiltered: 'עץ מסונן.'
-    TreeFilteredClear: 'ביטול הסינון'
   CMSMain_left_ss:
-    APPLY_FILTER: 'החלת המסנן'
     RESET: איפוס
   CMSPageAddController:
     MENUTITLE: 'הוספת עמוד'
@@ -136,15 +130,12 @@ he_IL:
     ListView: 'תצוגת רשימה'
     MENUTITLE: עמודים
     TreeView: 'תצוגת עץ'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: בחירה מרובה
   CMSPagesController_Tools_ss:
     FILTER: מסנן
   CMSSearch:
     FILTERDATEFROM: מ־
     FILTERDATEHEADING: תאריך
     FILTERDATETO: עד
-    FILTERLABELTEXT: תוכן
   CMSSettingsController:
     MENUTITLE: הגדרות
   CMSSiteTreeFilter_Search:

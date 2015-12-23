@@ -81,13 +81,10 @@ th:
     DESCREMOVED: 'และ {count} รายการลูก'
     EMAIL: อีเมล
     EditTree: 'แก้ไขรายการแบบ Tree'
-    ListFiltered: 'แสดงรายการตามตัวกรองข้อมูล'
     MENUTITLE: 'แก้ไขหน้าเว็บ'
     NEWPAGE: 'ใหม่ {pagetype}'
     PAGENOTEXISTS: 'ไม่มีหน้านี้อยู่'
-    PAGES: หน้า
     PAGETYPEANYOPT: ประเภทใดก็ได้
-    PAGETYPEOPT: 'ประเภทหน้าเว็บ'
     PUBALLCONFIRM: 'กรุณาเผยแพร่หน้าเว็บทุกหน้าในเว็บไซต์, คัดลอกเนื้อหาลงไปที่'
     PUBALLFUN: 'ฟังก์ชั่นการทำงาน "เผยแพร่ทั้งหมด"'
     PUBALLFUN2: "การกดปุ่มนี้จะเทียบเท่ากับการไปที่หน้าต่างๆทุกๆหน้าแล้วกด \"เผยแพร่\".  It's\nปุ่มดังกล่าวมีไว้ด้วยความตั้งใจที่ต้องการให้นำไปใช้กับการแก้ไขเนื้อหาเป็นจำนวนมาก เช่น เมื่อเว็บไซต์\nถูกสร้างขึ้นเป็นครั้งแรก."
@@ -101,10 +98,7 @@ th:
     TabContent: เนื้อหา
     TabHistory: ประวัติย้อนหลัง
     TabSettings: ตั้งค่า
-    TreeFiltered: 'แสดงรายการแบบ Tree ตามตัวกรองข้อมูล'
-    TreeFilteredClear: 'ล้างค่าตัวกรองข้อมูล'
   CMSMain_left_ss:
-    APPLY_FILTER: 'นำตัวกรองข้อมูลไปใช้งาน'
     RESET: รีเซ็ต
   CMSPageAddController:
     MENUTITLE: 'เพิ่มหน้า'
@@ -132,8 +126,6 @@ th:
     MENUTITLE: 'แก้ไขหน้าเว็บ'
   CMSPagesController:
     GalleryView: 'มุมมองแบบแกลอรี่'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: การเลือกพร้อมกันหลายรายการ
   CMSPagesController_Tools_ss:
     FILTER: ตัวกรองข้อมูล
   CMSSearch:
