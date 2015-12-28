@@ -613,7 +613,6 @@ class SiteTreeTest extends SapphireTest {
 
 	public function testLinkShortcodeHandler() {
 		$aboutPage = $this->objFromFixture('Page', 'about');
-		$errorPage = $this->objFromFixture('ErrorPage', '404');
 		$redirectPage = $this->objFromFixture('RedirectorPage', 'external');
 
 		$parser = new ShortcodeParser();
@@ -636,11 +635,8 @@ class SiteTreeTest extends SapphireTest {
 		$aboutShortcode = '[sitetree_link,id="-1"]';
 		$aboutEnclosed  = '[sitetree_link,id="-1"]Example Content[/sitetree_link]';
 
-		$aboutShortcodeExpected = $errorPage->Link();
-		$aboutEnclosedExpected  = sprintf('<a href="%s">Example Content</a>', $errorPage->Link());
-
-		$this->assertEquals($aboutShortcodeExpected, $parser->parse($aboutShortcode), 'Test link to 404 page if no suitable matches.');
-		$this->assertEquals($aboutEnclosedExpected, $parser->parse($aboutEnclosed));
+		$this->assertEquals('', $parser->parse($aboutShortcode), 'Test empty result if no suitable matches.');
+		$this->assertEquals('', $parser->parse($aboutEnclosed));
 
 		$redirectShortcode = sprintf('[sitetree_link,id=%d]', $redirectPage->ID);
 		$redirectEnclosed  = sprintf('[sitetree_link,id=%d]Example Content[/sitetree_link]', $redirectPage->ID);

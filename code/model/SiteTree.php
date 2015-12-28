@@ -439,7 +439,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if (
 			   !($page = DataObject::get_by_id('SiteTree', $arguments['id']))         // Get the current page by ID.
 			&& !($page = Versioned::get_latest_version('SiteTree', $arguments['id'])) // Attempt link to old version.
-			&& !($page = DataObject::get_one('ErrorPage', array('"ErrorPage"."ErrorCode"' => 404)))   // Link to 404 page directly.
 		) {
 			 return; // There were no suitable matches at all.
 		}
