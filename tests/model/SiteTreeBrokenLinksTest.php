@@ -107,7 +107,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
  		
 		// Confirm no broken link
 		$this->assertEquals(0, (int)$linkSrc->HasBrokenLink);
-		$this->assertEquals(0, DB::query("SELECT \"HasBrokenLink\" FROM \"SiteTree_Live\" 
+		$this->assertEquals(0, DB::query("SELECT \"HasBrokenLink\" FROM \"SiteTree_Live\"
 			WHERE \"ID\" = $linkSrc->ID")->value());
 		
 		// Delete page from draft
@@ -119,7 +119,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$linkSrc = $this->objFromFixture('Page', 'content');
 
 		$this->assertEquals(1, (int)$linkSrc->HasBrokenLink);
-		$this->assertEquals(0, DB::query("SELECT \"HasBrokenLink\" FROM \"SiteTree_Live\" 
+		$this->assertEquals(0, DB::query("SELECT \"HasBrokenLink\" FROM \"SiteTree_Live\"
 			WHERE \"ID\" = $linkSrc->ID")->value());
 			
 		// Delete from live
@@ -131,7 +131,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$linkSrc = $this->objFromFixture('Page', 'content');
 
 		$this->assertEquals(1, (int)$linkSrc->HasBrokenLink);
-		$this->assertEquals(1, DB::query("SELECT \"HasBrokenLink\" FROM \"SiteTree_Live\" 
+		$this->assertEquals(1, DB::query("SELECT \"HasBrokenLink\" FROM \"SiteTree_Live\"
 			WHERE \"ID\" = $linkSrc->ID")->value());
 	}
 
@@ -147,12 +147,12 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$linkSrc->Content = "<p><a href=\"[sitetree_link,id=$linkDest->ID]\">about us</a></p>";
 		$linkSrc->write();
 		
-		// Publish the source of the link, while the dest is still unpublished. 
+		// Publish the source of the link, while the dest is still unpublished.
 		$linkSrc->doPublish();
 		
 		// Verify that the link isn't broken on draft but is broken on published
 		$this->assertEquals(0, (int)$linkSrc->HasBrokenLink);
-		$this->assertEquals(1, DB::query("SELECT \"HasBrokenLink\" FROM \"SiteTree_Live\" 
+		$this->assertEquals(1, DB::query("SELECT \"HasBrokenLink\" FROM \"SiteTree_Live\"
 			WHERE \"ID\" = $linkSrc->ID")->value());
 	}
 

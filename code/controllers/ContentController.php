@@ -12,7 +12,7 @@
  *
  * Subclasses of ContentController are generally instantiated by ModelAsController; this will create
  * a controller based on the URLSegment action variable, by looking in the SiteTree table.
- * 
+ *
  * @todo Can this be used for anything other than SiteTree controllers?
  *
  * @package cms
@@ -90,7 +90,7 @@ class ContentController extends Controller {
 		
 		// If we've accessed the homepage as /home/, then we should redirect to /.
 		if($this->dataRecord && $this->dataRecord instanceof SiteTree
-			 	&& RootURLController::should_be_on_root($this->dataRecord) && (!isset($this->urlParams['Action']) || !$this->urlParams['Action'] ) 
+			 	&& RootURLController::should_be_on_root($this->dataRecord) && (!isset($this->urlParams['Action']) || !$this->urlParams['Action'] )
 				&& !$_POST && !$_FILES && !$this->redirectedTo() ) {
 			$getVars = $_GET;
 			unset($getVars['url']);
@@ -305,7 +305,7 @@ class ContentController extends Controller {
 					</div>
 
 					<div id="switchView" class="bottomTabs">
-						$viewPageIn 
+						$viewPageIn
 						$items
 					</div>
 					</div>
@@ -337,10 +337,10 @@ HTML;
 	 * Inspects the associated {@link dataRecord} for a {@link SiteTree->Locale} value if present,
 	 * and falls back to {@link Translatable::get_current_locale()} or {@link i18n::default_locale()},
 	 * depending if Translatable is enabled.
-	 * 
+	 *
 	 * Suitable for insertion into lang= and xml:lang=
 	 * attributes in HTML or XHTML output.
-	 * 
+	 *
 	 * @return string
 	 */
 	public function ContentLocale() {

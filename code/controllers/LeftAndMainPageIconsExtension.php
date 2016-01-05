@@ -1,7 +1,7 @@
 <?php
 /**
  * Extension to include custom page icons
- * 
+ *
  * @package cms
  * @subpackage controller
  */
@@ -14,16 +14,16 @@ class LeftAndMainPageIconsExtension extends Extension {
 	/**
 	 * Include CSS for page icons. We're not using the JSTree 'types' option
 	 * because it causes too much performance overhead just to add some icons.
-	 * 
-	 * @return string CSS 
+	 *
+	 * @return string CSS
 	 */
 	public function generatePageIconsCss() {
-		$css = ''; 
+		$css = '';
 		
-		$classes = ClassInfo::subclassesFor('SiteTree'); 
+		$classes = ClassInfo::subclassesFor('SiteTree');
 		foreach($classes as $class) {
-			$obj = singleton($class); 
-			$iconSpec = $obj->stat('icon'); 
+			$obj = singleton($class);
+			$iconSpec = $obj->stat('icon');
 
 			if(!$iconSpec) continue;
 
@@ -33,9 +33,9 @@ class LeftAndMainPageIconsExtension extends Extension {
 			// Legacy support: Add file extension if none exists
 			if(!pathinfo($iconFile, PATHINFO_EXTENSION)) $iconFile .= '-file.gif';
 
-			$iconPathInfo = pathinfo($iconFile); 
+			$iconPathInfo = pathinfo($iconFile);
 			
-			// Base filename 
+			// Base filename
 			$baseFilename = $iconPathInfo['dirname'] . '/' . $iconPathInfo['filename'];
 			$fileExtension = $iconPathInfo['extension'];
 

@@ -1,4 +1,4 @@
-Page:   
+Page:
    page1:
       ID: 1
       Title: page1
@@ -13,5 +13,5 @@ Page:
       URLSegment: page3
       Content: '<p><a href="[sitetree_link,id=1]">Testing page 1 link</a></p>'
       LinkTracking: =>Page.page1
-   
+
 

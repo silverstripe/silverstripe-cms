@@ -118,7 +118,7 @@ class CMSMainTest extends FunctionalTest {
 			$this->assertArrayHasKey($page2->ID, $responseData['modified']);
 		}
 
-		// Get the latest version of the redirector page 
+		// Get the latest version of the redirector page
 		$pageID = $this->idFromFixture('RedirectorPage', 'page5');
 		$latestID = DB::prepared_query('select max("Version") from "RedirectorPage_versions" where "RecordID" = ?', array($pageID))->value();
 		$dsCount = DB::prepared_query('select count("Version") from "RedirectorPage_versions" where "RecordID" = ? and "Version"= ?', array($pageID, $latestID))->value();

@@ -8,7 +8,7 @@
  * - action_deletefromlive
  * - action_rollback
  * - action_revert
- * 
+ *
  * @package cms
  * @subpackage tests
  */

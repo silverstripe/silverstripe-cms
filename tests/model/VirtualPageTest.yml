@@ -14,4 +14,4 @@ VirtualPage:
    vp2:
       CopyContentFrom: =>Page.master
       Parent: =>Page.holder
-      
+

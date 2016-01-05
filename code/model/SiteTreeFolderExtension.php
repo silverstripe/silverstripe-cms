@@ -10,7 +10,7 @@ class SiteTreeFolderExtension extends DataExtension {
 
 	/**
 	 * Looks for files used in system and create where clause which contains all ID's of files.
-	 * 
+	 *
 	 * @returns String where clause which will work as filter.
 	 */
 	public function getUnusedFilesListFilter() {
@@ -21,7 +21,7 @@ class SiteTreeFolderExtension extends DataExtension {
 		
 		if($result->numRecords() > 0) {
 			while($nextResult = $result->next()) {
-				$where .= $nextResult['FileID'] . ','; 
+				$where .= $nextResult['FileID'] . ',';
 			}
 		}
 

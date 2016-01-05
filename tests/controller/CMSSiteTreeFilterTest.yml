@@ -13,9 +13,9 @@ Page:
    page6:
       Title: Page 6
    page7:
-      Title: Page 7  
+      Title: Page 7
    page7a:
-      Parent: =>Page.page7       
+      Parent: =>Page.page7
       Title: Page 7a
    page2a:
       Parent: =>Page.page2

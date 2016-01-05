@@ -2,7 +2,7 @@
 /**
 * Virtual Page creates an instance of a  page, with the same fields that the original page had, but readonly.
 * This allows you can have a page in mulitple places in the site structure, with different children without duplicating the content
-* Note: This Only duplicates $db fields and not the $has_one etc.. 
+* Note: This Only duplicates $db fields and not the $has_one etc..
 * @package cms
 */
 class VirtualPage extends Page {
@@ -46,7 +46,7 @@ class VirtualPage extends Page {
 		"VersionID" => "Int",
 	);
 	
-	/** 
+	/**
 	 * Generates the array of fields required for the page type.
 	 */
 	public function getVirtualFields() {
@@ -71,7 +71,7 @@ class VirtualPage extends Page {
 		if(!$copyContentFromID) return new SiteTree();
 		
 		if(!isset($this->components['CopyContentFrom'])) {
-			$this->components['CopyContentFrom'] = DataObject::get_by_id("SiteTree", 
+			$this->components['CopyContentFrom'] = DataObject::get_by_id("SiteTree",
 				$copyContentFromID);
 
 			// Don't let VirtualPages point to other VirtualPages
@@ -91,7 +91,7 @@ class VirtualPage extends Page {
 		if($val && DataObject::get_by_id('SiteTree', $val) instanceof VirtualPage) $val = 0;
 		return $this->setField("CopyContentFromID", $val);
 	}
- 
+
 	public function ContentSource() {
 		return $this->CopyContentFrom();
 	}
@@ -143,7 +143,7 @@ class VirtualPage extends Page {
 	/**
 	 * Returns true if is page is publishable by anyone at all
 	 * Return false if the source page isn't published yet.
-	 * 
+	 *
 	 * Note that isPublishable doesn't affect ete from live, only publish.
 	 */
 	public function isPublishable() {
@@ -169,8 +169,8 @@ class VirtualPage extends Page {
 		
 		// Setup the linking to the original page.
 		$copyContentFromField = new TreeDropdownField(
-			"CopyContentFromID", 
-			_t('VirtualPage.CHOOSE', "Linked Page"), 
+			"CopyContentFromID",
+			_t('VirtualPage.CHOOSE', "Linked Page"),
 			"SiteTree"
 		);
 		// filter doesn't let you select children of virtual pages as as source page
@@ -191,11 +191,11 @@ class VirtualPage extends Page {
 		
 		// Create links back to the original object in the CMS
 		if($this->CopyContentFrom()->exists()) {
-			$link = "<a class=\"cmsEditlink\" href=\"admin/pages/edit/show/$this->CopyContentFromID\">" 
+			$link = "<a class=\"cmsEditlink\" href=\"admin/pages/edit/show/$this->CopyContentFromID\">"
 				. _t('VirtualPage.EditLink', 'edit')
 				. "</a>";
 			$msgs[] = _t(
-				'VirtualPage.HEADERWITHLINK', 
+				'VirtualPage.HEADERWITHLINK',
 				"This is a virtual page copying content from \"{title}\" ({link})",
 				array(
 					'title' => $this->CopyContentFrom()->obj('Title'),
@@ -210,7 +210,7 @@ class VirtualPage extends Page {
 			);
 		}
 		if(
-			$this->CopyContentFromID 
+			$this->CopyContentFromID
 			&& !Versioned::get_versionnumber_by_stage('SiteTree', 'Live', $this->CopyContentFromID)
 		) {
 			$msgs[] = _t(
@@ -219,7 +219,7 @@ class VirtualPage extends Page {
 			);
 		}
 
-		$fields->addFieldToTab("Root.Main", 
+		$fields->addFieldToTab("Root.Main",
 			new LiteralField(
 				'VirtualPageMessage',
 				'<div class="message notice">' . implode('. ', $msgs) . '.</div>'
@@ -233,7 +233,7 @@ class VirtualPage extends Page {
 	public function getSettingsFields() {
 		$fields = parent::getSettingsFields();
 		if(!$this->CopyContentFrom()->exists()) {
-			$fields->addFieldToTab("Root.Settings", 
+			$fields->addFieldToTab("Root.Settings",
 				new LiteralField(
 					'VirtualPageWarning',
 					'<div class="message notice">'
@@ -250,7 +250,7 @@ class VirtualPage extends Page {
 		return $fields;
 	}
 	
-	/** 
+	/**
 	 * We have to change it to copy all the content from the original page first.
 	 */
 	public function onBeforeWrite() {
@@ -303,7 +303,7 @@ class VirtualPage extends Page {
 		if(!$this->extension_instances['Versioned']->migratingVersion) {
 	 		if(
 				$this->isChanged('CopyContentFromID')
-	 			&& $this->CopyContentFromID != 0 
+	 			&& $this->CopyContentFromID != 0
 				&& $this instanceof VirtualPage
 			) {
 				$this->updateImageTracking();
@@ -352,8 +352,8 @@ class VirtualPage extends Page {
 		if(!$orig->stat('can_be_root') && !$this->ParentID) {
 			$result->error(
 				_t(
-					'VirtualPage.PageTypNotAllowedOnRoot', 
-					'Original page type "{type}" is not allowed on the root level for this virtual page', 
+					'VirtualPage.PageTypNotAllowedOnRoot',
+					'Original page type "{type}" is not allowed on the root level for this virtual page',
 					array('type' => $orig->i18n_singular_name())
 				),
 				'CAN_BE_ROOT_VIRTUAL'
@@ -407,7 +407,7 @@ class VirtualPage extends Page {
 	 * Allow attributes on the master page to pass
 	 * through to the virtual page
 	 *
-	 * @param string $field 
+	 * @param string $field
 	 * @return mixed
 	 */
 	public function __get($field) {
@@ -423,7 +423,7 @@ class VirtualPage extends Page {
 	/**
 	 * Pass unrecognized method calls on to the original data object
 	 *
-	 * @param string $method 
+	 * @param string $method
 	 * @param string $args
 	 * @return mixed
 	 */
@@ -441,8 +441,8 @@ class VirtualPage extends Page {
 	 */
 	public function hasField($field) {
 		return (
-			array_key_exists($field, $this->record) 
-			|| $this->hasDatabaseField($field) 
+			array_key_exists($field, $this->record)
+			|| $this->hasDatabaseField($field)
 			|| array_key_exists($field, $this->db()) // Needed for composite fields
 			|| parent::hasMethod("get{$field}")
 			|| $this->CopyContentFrom()->hasField($field)
@@ -451,8 +451,8 @@ class VirtualPage extends Page {
 	/**
 	 * Overwrite to also check for method on the original data object
 	 *
-	 * @param string $method 
-	 * @return bool 
+	 * @param string $method
+	 * @return bool
 	 */
 	public function hasMethod($method) {
 		if(parent::hasMethod($method)) return true;
@@ -533,8 +533,8 @@ class VirtualPage_Controller extends Page_Controller {
 	/**
 	 * Also check the original object's original controller for the method
 	 *
-	 * @param string $method 
-	 * @return bool 
+	 * @param string $method
+	 * @return bool
 	 */
 	public function hasMethod($method) {
 		$haveIt = parent::hasMethod($method);
@@ -551,7 +551,7 @@ class VirtualPage_Controller extends Page_Controller {
 	/**
 	 * Pass unrecognized method calls on to the original controller
 	 *
-	 * @param string $method 
+	 * @param string $method
 	 * @param string $args
 	 * @return mixed
 	 *

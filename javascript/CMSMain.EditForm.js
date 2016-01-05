@@ -17,7 +17,7 @@
 
 		/**
 		 * Class: .cms-edit-form input[name=Title]
-		 * 
+		 *
 		 * Input validation on the Title field
 		 */
 		$('.cms-edit-form input[name=Title]').entwine({
@@ -61,7 +61,7 @@
 			
 			/**
 			 * Function: updateRelatedFields
-			 * 
+			 *
 			 * Update the related fields if appropriate
 			 * (String) title The new title
 			 * (Stirng) origTitle The original title
@@ -80,7 +80,7 @@
 			
 			/**
 			 * Function: updateURLSegment
-			 * 
+			 *
 			 * Update the URLSegment
 			 * (String) title
 			 */
@@ -96,7 +96,7 @@
 			
 			/**
 			 * Function: updateBreadcrumbLabel
-			 * 
+			 *
 			 * Update the breadcrumb
 			 * (String) title
 			 */
@@ -110,9 +110,9 @@
 			
 			/**
 			 * Function: _addActions
-			 *  
+			 *
 			 * Utility to add update from title action
-			 * 
+			 *
 			 */
 			_addActions: function() {
 				var self = this;
@@ -137,7 +137,7 @@
 	
 		/**
 		 * Class: .cms-edit-form .parentTypeSelector
-		 * 
+		 *
 		 * ParentID field combination - mostly toggling between
 		 * the two radiobuttons and setting the hidden "ParentID" field
 		 */
@@ -159,7 +159,7 @@
 	
 			/**
 			 * Function: _toggleSelection
-			 * 
+			 *
 			 * Parameters:
 			 *  (Event) e
 			 */
@@ -175,7 +175,7 @@
 			
 			/**
 			 * Function: _changeParentId
-			 * 
+			 *
 			 * Parameters:
 			 *  (Event) e
 			 */
@@ -188,7 +188,7 @@
 
 		/**
 		 * Class: .cms-edit-form #CanViewType, .cms-edit-form #CanEditType
-		 * 
+		 *
 		 * Toggle display of group dropdown in "access" tab,
 		 * based on selection of radiobuttons.
 		 */
@@ -226,20 +226,20 @@
 
 		/**
 		 * Class: .cms-edit-form .Actions #Form_EditForm_action_print
-		 * 
+		 *
 		 * Open a printable representation of the form in a new window.
 		 * Used for readonly older versions of a specific page.
 		 */
 		$('.cms-edit-form .Actions #Form_EditForm_action_print').entwine({
 			/**
 			 * Function: onclick
-			 * 
+			 *
 			 * Parameters:
 			 *  (Event) e
 			 */
 			onclick: function(e) {
-				var printURL = $(this[0].form).attr('action').replace(/\?.*$/,'') 
-					+ '/printable/' 
+				var printURL = $(this[0].form).attr('action').replace(/\?.*$/,'')
+					+ '/printable/'
 					+ $(':input[name=ID]',this[0].form).val();
 				if(printURL.substr(0,7) != 'http://') printURL = $('base').attr('href') + printURL;
 
@@ -251,14 +251,14 @@
 
 		/**
 		 * Class: .cms-edit-form .Actions #Form_EditForm_action_rollback
-		 * 
+		 *
 		 * A "rollback" to a specific version needs user confirmation.
 		 */
 		$('.cms-edit-form .Actions #Form_EditForm_action_rollback').entwine({
 			
 			/**
 			 * Function: onclick
-			 * 
+			 *
 			 * Parameters:
 			 *  (Event) e
 			 */
@@ -266,7 +266,7 @@
 				var form = this.parents('form:first'), version = form.find(':input[name=Version]').val(), message = '';
 				if(version) {
 					message = ss.i18n.sprintf(
-						ss.i18n._t('CMSMain.RollbackToVersion'), 
+						ss.i18n._t('CMSMain.RollbackToVersion'),
 						version
 					);
 				} else {
@@ -282,21 +282,21 @@
 
 		/**
 		 * Class: .cms-edit-form .Actions #Form_EditForm_action_archive
-		 * 
+		 *
 		 * Informing the user about the archive action while requiring confirmation
 		 */
 		$('.cms-edit-form .Actions #Form_EditForm_action_archive').entwine({
 			
 			/**
 			 * Function: onclick
-			 * 
+			 *
 			 * Parameters:
 			 *  (Event) e
 			 */
 			onclick: function(e) {
 				var form = this.parents('form:first'), version = form.find(':input[name=Version]').val(), message = '';
 				message = ss.i18n.sprintf(
-					ss.i18n._t('CMSMain.Archive'), 
+					ss.i18n._t('CMSMain.Archive'),
 					version
 				);
 				if(confirm(message)) {
@@ -309,14 +309,14 @@
 
 		/**
 		 * Class: .cms-edit-form .Actions #Form_EditForm_action_restore
-		 * 
+		 *
 		 * Informing the user about the archive action while requiring confirmation
 		 */
 		$('.cms-edit-form .Actions #Form_EditForm_action_restore').entwine({
 			
 			/**
 			 * Function: onclick
-			 * 
+			 *
 			 * Parameters:
 			 *  (Event) e
 			 */
@@ -326,7 +326,7 @@
 					message = '',
 					toRoot = this.data('toRoot');
 				message = ss.i18n.sprintf(
-					ss.i18n._t(toRoot ? 'CMSMain.RestoreToRoot' : 'CMSMain.Restore'), 
+					ss.i18n._t(toRoot ? 'CMSMain.RestoreToRoot' : 'CMSMain.Restore'),
 					version
 				);
 				if(confirm(message)) {
@@ -339,21 +339,21 @@
 
 		/**
 		 * Class: .cms-edit-form .Actions #Form_EditForm_action_delete
-		 * 
+		 *
 		 * Informing the user about the delete from draft action while requiring confirmation
 		 */
 		$('.cms-edit-form .Actions #Form_EditForm_action_delete').entwine({
 			
 			/**
 			 * Function: onclick
-			 * 
+			 *
 			 * Parameters:
 			 *  (Event) e
 			 */
 			onclick: function(e) {
 				var form = this.parents('form:first'), version = form.find(':input[name=Version]').val(), message = '';
 				message = ss.i18n.sprintf(
-					ss.i18n._t('CMSMain.DeleteFromDraft'), 
+					ss.i18n._t('CMSMain.DeleteFromDraft'),
 					version
 				);
 				if(confirm(message)) {
@@ -372,14 +372,14 @@
 			
 			/**
 			 * Function: onclick
-			 * 
+			 *
 			 * Parameters:
 			 *  (Event) e
 			 */
 			onclick: function(e) {
 				var form = this.parents('form:first'), version = form.find(':input[name=Version]').val(), message = '';
 				message = ss.i18n.sprintf(
-					ss.i18n._t('CMSMain.Unpublish'), 
+					ss.i18n._t('CMSMain.Unpublish'),
 					version
 				);
 				if(confirm(message)) {

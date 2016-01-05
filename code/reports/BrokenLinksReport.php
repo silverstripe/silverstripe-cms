@@ -128,8 +128,8 @@ class BrokenLinksReport extends SS_Report {
 				'Draft' => _t('BrokenLinksReport.CheckSiteDropdownDraft', 'Draft Site')
 			)),
 			new DropdownField(
-				'Reason', 
-				_t('BrokenLinksReport.ReasonDropdown', 'Problem to check'), 
+				'Reason',
+				_t('BrokenLinksReport.ReasonDropdown', 'Problem to check'),
 				array(
 					'' => _t('BrokenLinksReport.Any', 'Any'),
 					'BROKENFILE' => _t('BrokenLinksReport.ReasonDropdownBROKENFILE', 'Broken file'),

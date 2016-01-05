@@ -83,7 +83,7 @@ class CMSFileAddController extends LeftAndMain {
 		asort($exts);
 		$uploadField->Extensions = implode(', ', $exts);
 
-		$form = CMSForm::create( 
+		$form = CMSForm::create(
 			$this,
 			'EditForm',
 			new FieldList(

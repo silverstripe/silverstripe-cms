@@ -31,7 +31,7 @@ RedirectorPage:
       Title: Reflexive
       RedirectionType: Internal
       LinkTo: =>RedirectorPage.reflexive
-      URLSegment: reflexive 
+      URLSegment: reflexive
    transitive:
       Title: Transitive
       RedirectionType: Internal

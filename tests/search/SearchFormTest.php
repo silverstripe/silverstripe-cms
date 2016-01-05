@@ -2,10 +2,10 @@
 /**
  * @package cms
  * @subpackage testing
- * 
+ *
  * @todo Fix unpublished pages check in testPublishedPagesMatchedByTitle()
  * @todo All tests run on unpublished pages at the moment, due to the searchform not distinguishing between them
- * 
+ *
  * Because this manipulates the test database in severe ways, I've renamed the test to force it to run last...
  */
 class ZZZSearchFormTest extends FunctionalTest {

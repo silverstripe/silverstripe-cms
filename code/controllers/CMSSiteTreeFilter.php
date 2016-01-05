@@ -1,7 +1,7 @@
 <?php
 /**
  * Base class for filtering the subtree for certain node statuses.
- * 
+ *
  * The simplest way of building a CMSSiteTreeFilter is to create a pagesToBeShown() method that
  * returns an Iterator of maps, each entry containing the 'ID' and 'ParentID' of the pages to be
  * included in the tree. The result of a DB::query() can then be returned directly.
@@ -9,7 +9,7 @@
  * If you wish to make a more complex tree, you can overload includeInTree($page) to return true/
  * false depending on whether the given page should be included. Note that you will need to include
  * parent helper pages yourself.
- * 
+ *
  * @package cms
  * @subpackage content
  */
@@ -23,7 +23,7 @@ abstract class CMSSiteTreeFilter extends Object implements LeftAndMain_SearchFil
 	
 	/**
 	 * List of filtered items and all their parents
-	 * 
+	 *
 	 * @var array
 	 */
 	protected $_cache_ids = null;
@@ -44,7 +44,7 @@ abstract class CMSSiteTreeFilter extends Object implements LeftAndMain_SearchFil
 	protected $_cache_expanded = array();
 	
 	/**
-	 * @var string 
+	 * @var string
 	 */
 	protected $childrenMethod = null;
 
@@ -55,7 +55,7 @@ abstract class CMSSiteTreeFilter extends Object implements LeftAndMain_SearchFil
 
 	/**
 	 * Returns a sorted array of all implementators of CMSSiteTreeFilter, suitable for use in a dropdown.
-	 * 
+	 *
 	 * @return array
 	 */
 	public static function get_all_filters() {
@@ -132,7 +132,7 @@ abstract class CMSSiteTreeFilter extends Object implements LeftAndMain_SearchFil
 		
 		if($pages = $this->pagesIncluded()) {
 			
-			// And keep a record of parents we don't need to get 
+			// And keep a record of parents we don't need to get
 			// parents of themselves, as well as IDs to mark
 			foreach($pages as $pageArr) {
 				$parents[$pageArr['ParentID']] = true;
@@ -163,7 +163,7 @@ abstract class CMSSiteTreeFilter extends Object implements LeftAndMain_SearchFil
 	
 	/**
 	 * Applies the default filters to a specified DataList of pages
-	 * 
+	 *
 	 * @param DataList $query Unfiltered query
 	 * @return DataList Filtered query
 	 */
@@ -211,7 +211,7 @@ abstract class CMSSiteTreeFilter extends Object implements LeftAndMain_SearchFil
 	
 	/**
 	 * Maps a list of pages to an array of associative arrays with ID and ParentID keys
-	 * 
+	 *
 	 * @param DataList $pages
 	 * @return array
 	 */
@@ -272,7 +272,7 @@ class CMSSiteTreeFilter_PublishedPages extends CMSSiteTreeFilter {
  * Works a bit different than the other filters:
  * Shows all pages *including* those deleted from stage and live.
  * It does not filter out pages still existing in the different stages.
- * 
+ *
  * @package cms
  * @subpackage content
  */
@@ -301,7 +301,7 @@ class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter {
 
 /**
  * Gets all pages which have changed on stage.
- * 
+ *
  * @package cms
  * @subpackage content
  */
@@ -322,7 +322,7 @@ class CMSSiteTreeFilter_ChangedPages extends CMSSiteTreeFilter {
 
 /**
  * Filters pages which have a status "Removed from Draft".
- * 
+ *
  * @package cms
  * @subpackage content
  */
@@ -334,7 +334,7 @@ class CMSSiteTreeFilter_StatusRemovedFromDraftPages extends CMSSiteTreeFilter {
 	
 	/**
 	 * Filters out all pages who's status is set to "Removed from draft".
-	 * 
+	 *
 	 * @return SS_List
 	 */
 	public function getFilteredPages() {
@@ -350,7 +350,7 @@ class CMSSiteTreeFilter_StatusRemovedFromDraftPages extends CMSSiteTreeFilter {
 
 /**
  * Filters pages which have a status "Draft".
- * 
+ *
  * @package cms
  * @subpackage content
  */
@@ -362,7 +362,7 @@ class CMSSiteTreeFilter_StatusDraftPages extends CMSSiteTreeFilter {
 	
 	/**
 	 * Filters out all pages who's status is set to "Draft".
-	 * 
+	 *
 	 * @see {@link SiteTree::getStatusFlags()}
 	 * @return SS_List
 	 */
@@ -379,7 +379,7 @@ class CMSSiteTreeFilter_StatusDraftPages extends CMSSiteTreeFilter {
 
 /**
  * Filters pages which have a status "Deleted".
- * 
+ *
  * @package cms
  * @subpackage content
  */
@@ -401,7 +401,7 @@ class CMSSiteTreeFilter_StatusDeletedPages extends CMSSiteTreeFilter {
 	
 	/**
 	 * Filters out all pages who's status is set to "Deleted".
-	 * 
+	 *
 	 * @see {@link SiteTree::getStatusFlags()}
 	 * @return SS_List
 	 */
@@ -430,7 +430,7 @@ class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter {
 	/**
 	 * Retun an array of maps containing the keys, 'ID' and 'ParentID' for each page to be displayed
 	 * in the search.
-	 * 
+	 *
 	 * @return SS_List
 	 */
 	public function getFilteredPages() {
