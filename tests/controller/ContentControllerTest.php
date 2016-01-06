@@ -149,8 +149,8 @@ class ContentControllerTest extends FunctionalTest {
 			$page->publish("Stage", "Live");
 
 			$response = $self->get($page->RelativeLink());
-			$self->assertEquals("ContentControllerTestPageWithoutController", $response->getBody());
-			
+			$self->assertEquals("ContentControllerTestPageWithoutController", trim($response->getBody()));
+
 			// // This should fall over to user Page.ss
 			$page = new ContentControllerTestPage();
 			$page->URLSegment = "test";
@@ -158,7 +158,7 @@ class ContentControllerTest extends FunctionalTest {
 			$page->publish("Stage", "Live");
 
 			$response = $self->get($page->RelativeLink());
-			$self->assertEquals("Page", $response->getBody());
+			$self->assertEquals("Page", trim($response->getBody()));
 
 
 			// Test that the action template is rendered.
@@ -168,12 +168,12 @@ class ContentControllerTest extends FunctionalTest {
 			$page->publish("Stage", "Live");
 
 			$response = $self->get($page->RelativeLink("test"));
-			$self->assertEquals("ContentControllerTestPage_test", $response->getBody());
+			$self->assertEquals("ContentControllerTestPage_test", trim($response->getBody()));
 
 			// Test that an action without a template will default to the index template, which is
 			// to say the default Page.ss template
 			$response = $self->get($page->RelativeLink("testwithouttemplate"));
-			$self->assertEquals("Page", $response->getBody());
+			$self->assertEquals("Page", trim($response->getBody()));
 
 			// Test that an action with a template will render the both action template *and* the
 			// correct parent template
