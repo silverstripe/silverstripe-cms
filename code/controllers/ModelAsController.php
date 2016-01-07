@@ -111,8 +111,7 @@ class ModelAsController extends Controller implements NestedController {
 		if(class_exists('Translatable')) Translatable::enable_locale_filter();
 
 		if(!$sitetree) {
-			$response = ErrorPage::response_for(404);
-			$this->httpError(404, $response ? $response : 'The requested page could not be found.');
+			$this->httpError(404, 'The requested page could not be found.');
 		}
 
 		// Enforce current locale setting to the loaded SiteTree object

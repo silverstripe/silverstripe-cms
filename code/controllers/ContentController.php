@@ -211,16 +211,6 @@ class ContentController extends Controller {
 	}
 
 	/**
-	 * @uses ErrorPage::response_for()
-	 */
-	public function httpError($code, $message = null) {
-		// Don't use the HTML response for media requests
-		$response = $this->getRequest()->isMedia() ? null : ErrorPage::response_for($code);
-		// Failover to $message if the HTML response is unavailable / inappropriate
-		parent::httpError($code, $response ? $response : $message);
-	}
-
-	/**
 	 * Get the project name
 	 *
 	 * @return string
@@ -423,12 +413,6 @@ HTML;
 		// Return 410 Gone if this site is not actually a fresh installation
 		if (!file_exists(BASE_PATH . '/install.php')) {
 			$this->httpError(410);
-		}
-		// The manifest should be built by now, so it's safe to publish the 404 page
-		$fourohfour = Versioned::get_one_by_stage('ErrorPage', 'Stage', '"ErrorPage"."ErrorCode" = 404');
-		if($fourohfour) {
-			$fourohfour->write();
-			$fourohfour->publish("Stage", "Live");
 		}
 
 		// TODO Allow this to work when allow_url_fopen=0
