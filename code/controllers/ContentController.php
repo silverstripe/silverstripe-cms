@@ -43,8 +43,10 @@ class ContentController extends Controller {
 		}
 		
 		$this->dataRecord = $dataRecord;
-		$this->failover = $this->dataRecord;
+
 		parent::__construct();
+
+		$this->setFailover($this->dataRecord);
 	}
 	
 	/**
