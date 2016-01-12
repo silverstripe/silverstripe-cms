@@ -4,11 +4,11 @@
  * for CMS authors, usually for {@link SiteTree} objects with "stage" and "live" links.
  * Useful both in the CMS and alongside the page template (for logged in authors).
  * The class can be used for any {@link DataObject} subclass implementing the {@link CMSPreviewable} interface.
- * 
+ *
  * New item types can be defined by extending the {@link SilverStripeNavigatorItem} class,
  * for example the "cmsworkflow" module defines a new "future state" item with a date selector
  * to view embargoed data at a future point in time. So the item doesn't always have to be a simple link.
- * 
+ *
  * @package cms
  * @subpackage content
  */
@@ -101,7 +101,7 @@ class SilverStripeNavigator extends ViewableData {
  * Navigator items are links that appear in the $SilverStripeNavigator bar.
  * To add an item, extend this class - it will be automatically picked up.
  * When instanciating items manually, please ensure to call {@link canView()}.
- * 
+ *
  * @package cms
  * @subpackage content
  */
@@ -142,7 +142,7 @@ class SilverStripeNavigatorItem extends ViewableData {
 	 * Optional link to a specific view of this record.
 	 * Not all items are simple links, please use {@link getHTML()}
 	 * to represent an item in markup unless you know what you're doing.
-	 * 
+	 *
 	 * @return string
 	 */
 	public function getLink() {}
@@ -157,7 +157,7 @@ class SilverStripeNavigatorItem extends ViewableData {
 	 */
 	public function getRecord() {
 		return $this->record;
-	} 
+	}
 	
 	/**
 	 * @return int
@@ -169,7 +169,7 @@ class SilverStripeNavigatorItem extends ViewableData {
 	/**
 	 * As items might convey different record states like a "stage" or "live" table,
 	 * an item can be active (showing the record in this state).
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public function isActive() {
@@ -179,7 +179,7 @@ class SilverStripeNavigatorItem extends ViewableData {
 	/**
 	 * Filters items based on member permissions or other criteria,
 	 * such as if a state is generally available for the current record.
-	 * 
+	 *
 	 * @param Member
 	 * @return Boolean
 	 */
@@ -189,7 +189,7 @@ class SilverStripeNavigatorItem extends ViewableData {
 
 	/**
 	 * Counts as "archived" if the current record is a different version from both live and draft.
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public function isArchived() {
@@ -205,7 +205,7 @@ class SilverStripeNavigatorItem extends ViewableData {
 			));
 			
 			$this->record->_cached_isArchived = (
-				(!$currentDraft || ($currentDraft && $this->record->Version != $currentDraft->Version)) 
+				(!$currentDraft || ($currentDraft && $this->record->Version != $currentDraft->Version))
 				&& (!$currentLive || ($currentLive && $this->record->Version != $currentLive->Version))
 			);
 }
@@ -280,7 +280,7 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
 	public function getLink() {
 		$date = Versioned::current_archived_date();
 		return Controller::join_links(
-			$this->record->PreviewLink(), 
+			$this->record->PreviewLink(),
 			'?stage=Stage',
 			$date ? '?archiveDate=' . $date : null
 		);
@@ -288,7 +288,7 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
 	
 	public function canView($member = null) {
 		return (
-			$this->record->hasExtension('Versioned') 
+			$this->record->hasExtension('Versioned')
 			&& $this->getDraftPage()
 			// Don't follow redirects in preview, they break the CMS editing form
 			&& !($this->record instanceof RedirectorPage)
@@ -297,7 +297,7 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
 	
 	public function isActive() {
 		return (
-			Versioned::current_stage() == 'Stage' 
+			Versioned::current_stage() == 'Stage'
 			&& !(ClassInfo::exists('SiteTreeFutureState') && SiteTreeFutureState::get_future_datetime())
 			&& !$this->isArchived()
 		);
@@ -341,7 +341,7 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem {
 	
 	public function canView($member = null) {
 		return (
-			$this->record->hasExtension('Versioned') 
+			$this->record->hasExtension('Versioned')
 			&& $this->getLivePage()
 			// Don't follow redirects in preview, they break the CMS editing form
 			&& !($this->record instanceof RedirectorPage)
@@ -380,7 +380,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 		return _t('SilverStripeNavigator.ARCHIVED', 'Archived');
 	}
 	
-	public function getMessage() { 
+	public function getMessage() {
 		if($date = Versioned::current_archived_date()) {
 			$dateObj = DBField::create_field('Datetime', $date);
 			return "<div id=\"SilverStripeNavigatorMessage\" title=\"". _t('ContentControl.NOTEWONTBESHOWN', 'Note: this message will not be shown to your visitors') ."\">". _t('ContentController.ARCHIVEDSITEFROM', 'Archived site from') ."<br>" . $dateObj->Nice() . "</div>";
@@ -393,7 +393,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 	
 	public function canView($member = null) {
 		return (
-			$this->record->hasExtension('Versioned') 
+			$this->record->hasExtension('Versioned')
 			&& $this->isArchived()
 			// Don't follow redirects in preview, they break the CMS editing form
 			&& !($this->record instanceof RedirectorPage)

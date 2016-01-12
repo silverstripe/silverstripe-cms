@@ -5,7 +5,7 @@
  * Shows the pages to an administrator, who can then
  * decide which pages to remove by ticking a checkbox
  * and manually executing the removal.
- * 
+ *
  * Caution: Pages also count as orphans if they don't
  * have parents in this stage, even if the parent has a representation
  * in the other stage:
@@ -16,7 +16,7 @@
  * before and after orphan removal.
  *
  * @author Ingo Schommer (<firstname>@silverstripe.com), SilverStripe Ltd.
- * 
+ *
  * @package cms
  * @subpackage tasks
  */
@@ -87,13 +87,13 @@ in the other stage:<br />
 			$latestAuthor = DataObject::get_by_id('Member', $latestVersion->AuthorID);
 			$orphanBaseClass = ClassInfo::baseDataClass($this->orphanedSearchClass);
 			$stageRecord = Versioned::get_one_by_stage(
-				$this->orphanedSearchClass, 
+				$this->orphanedSearchClass,
 				'Stage',
 				array("\"$orphanBaseClass\".\"ID\"" => $orphan->ID)
 			);
 			$liveRecord = Versioned::get_one_by_stage(
-				$this->orphanedSearchClass, 
-				'Live', 
+				$this->orphanedSearchClass,
+				'Live',
 				array("\"$orphanBaseClass\".\"ID\"" => $orphan->ID)
 			);
 			$label = sprintf(
@@ -125,11 +125,11 @@ in the other stage:<br />
 				)
 			));
 			$fields->push(new OptionSetField(
-				'OrphanOperation', 
+				'OrphanOperation',
 				_t('RemoveOrphanedPagesTask.CHOOSEOPERATION', 'Choose operation:'),
 				array(
 					'rebase' => _t(
-						'RemoveOrphanedPagesTask.OPERATION_REBASE', 
+						'RemoveOrphanedPagesTask.OPERATION_REBASE',
 						sprintf(
 							'Rebase selected to a new holder page "%s" and unpublish. None of these pages will show up for website visitors.',
 							$this->rebaseHolderTitle()
@@ -143,7 +143,7 @@ in the other stage:<br />
 				'Warning',
 				sprintf('<p class="message">%s</p>',
 					_t(
-						'RemoveOrphanedPagesTask.DELETEWARNING', 
+						'RemoveOrphanedPagesTask.DELETEWARNING',
 						'Warning: These operations are not reversible. Please handle with care.'
 					)
 				)
@@ -216,8 +216,8 @@ in the other stage:<br />
 		$orphanBaseClass = ClassInfo::baseDataClass($this->orphanedSearchClass);
 		foreach($orphanIDs as $id) {
 			$stageRecord = Versioned::get_one_by_stage(
-				$this->orphanedSearchClass, 
-				'Stage', 
+				$this->orphanedSearchClass,
+				'Stage',
 				array("\"$orphanBaseClass\".\"ID\"" => $id)
 			);
 			if($stageRecord) {
@@ -227,8 +227,8 @@ in the other stage:<br />
 				unset($stageRecord);
 			}
 			$liveRecord = Versioned::get_one_by_stage(
-				$this->orphanedSearchClass, 
-				'Live', 
+				$this->orphanedSearchClass,
+				'Live',
 				array("\"$orphanBaseClass\".\"ID\"" => $id)
 			);
 			if($liveRecord) {
@@ -258,7 +258,7 @@ in the other stage:<br />
 		$orphanBaseClass = ClassInfo::baseDataClass($this->orphanedSearchClass);
 		foreach($orphanIDs as $id) {
 			$stageRecord = Versioned::get_one_by_stage(
-				$this->orphanedSearchClass, 
+				$this->orphanedSearchClass,
 				'Stage',
 				array("\"$orphanBaseClass\".\"ID\"" => $id)
 			);
@@ -273,7 +273,7 @@ in the other stage:<br />
 				//unset($stageRecord);
 			}
 			$liveRecord = Versioned::get_one_by_stage(
-				$this->orphanedSearchClass, 
+				$this->orphanedSearchClass,
 				'Live',
 				array("\"$orphanBaseClass\".\"ID\"" => $id)
 			);
@@ -298,7 +298,7 @@ in the other stage:<br />
 	
 	/**
 	 * Gets all orphans from "Stage" and "Live" stages.
-	 * 
+	 *
 	 * @param string $class
 	 * @param array $filter
 	 * @param string $sort

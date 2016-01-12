@@ -23,7 +23,7 @@
 			},
 
 			redraw: function() {
-				var field = this.find(':text'), 
+				var field = this.find(':text'),
 					url = decodeURI(field.data('prefix') + field.val()),
 					previewUrl = url;
 
@@ -87,7 +87,7 @@
 	
 			/**
 			 * Return a value matching the criteria.
-			 * 
+			 *
 			 * @param (String)
 			 * @param (Function)
 			 */

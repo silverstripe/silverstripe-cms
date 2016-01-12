@@ -2,7 +2,7 @@
 
 /**
  * Enhances error handling for a controller with ErrorPage generated output
- * 
+ *
  * @package cms
  * @subpackage controller
  */

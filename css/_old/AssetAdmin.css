@@ -4,7 +4,7 @@
 #right form #deletemarked .middleColumn {
 	background: none;
 }
-.dragfile, 
+.dragfile,
 .dragfile img {
 	float: left;
 	cursor: move;

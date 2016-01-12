@@ -3,7 +3,7 @@
  * Basic data-object representing all pages within the site tree. All page types that live within the hierarchy should
  * inherit from this. In addition, it contains a number of static methods for querying the site tree and working with
  * draft and published states.
- * 
+ *
  * <h2>URLs</h2>
  * A page is identified during request handling via its "URLSegment" database column. As pages can be nested, the full
  * path of a URL might contain multiple segments. Each segment is stored in its filtered representation (through
@@ -44,7 +44,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * class is allowed - no subclasses. Otherwise, the class and all its
 	 * subclasses are allowed.
 	 * To control allowed children on root level (no parent), use {@link $can_be_root}.
-	 * 
+	 *
 	 * Note that this setting is cached when used in the CMS, use the "flush" query parameter to clear it.
 	 *
 	 * @config
@@ -168,7 +168,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * Icon to use in the CMS page tree. This should be the full filename, relative to the webroot.
 	 * Also supports custom CSS rule contents (applied to the correct selector for the tree UI implementation).
-	 * 
+	 *
 	 * @see CMSMain::generateTreeStylingCSS()
 	 * @config
 	 * @var string
@@ -240,7 +240,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * Determines if the system should avoid orphaned pages
 	 * by deleting all children when the their parent is deleted (TRUE),
 	 * or rather preserve this data even if its not reachable through any navigation path (FALSE).
-	 * 
+	 *
 	 * @deprecated 4.0 Use the "SiteTree.enforce_strict_hierarchy" config setting instead
 	 * @param boolean
 	 */
@@ -364,7 +364,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		// Traverse down the remaining URL segments and grab the relevant SiteTree objects.
 		foreach($parts as $segment) {
 			$next = DataObject::get_one('SiteTree', array(
-					'"SiteTree"."URLSegment"' => $segment, 
+					'"SiteTree"."URLSegment"' => $segment,
 					'"SiteTree"."ParentID"' => $sitetree->ID
 				),
 				$cache
@@ -483,7 +483,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * Base link used for previewing. Defaults to absolute URL, in order to account for domain changes, e.g. on multi
 	 * site setups. Does not contain hints about the stage, see {@link SilverStripeNavigator} for details.
-	 * 
+	 *
 	 * @param string $action See {@link Link()}
 	 * @return string
 	 */
@@ -503,7 +503,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * and returned in its full form.
 	 *
 	 * @uses RootURLController::get_homepage_link()
-	 * 
+	 *
 	 * @param string $action See {@link Link()}
 	 * @return string
 	 */
@@ -517,7 +517,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$base = $parent->RelativeLink($this->URLSegment);
 		} elseif(!$action && $this->URLSegment == RootURLController::get_homepage_link()) {
 			// Unset base for root-level homepages.
-			// Note: Homepages with action parameters (or $action === true) 
+			// Note: Homepages with action parameters (or $action === true)
 			// need to retain their URLSegment.
 			$base = null;
 		} else {
@@ -600,7 +600,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * Check if the parent of this page has been removed (or made otherwise unavailable), and is still referenced by
 	 * this child. Any such orphaned page may still require access via the CMS, but should not be shown as accessible
 	 * to external users.
-	 * 
+	 *
 	 * @return bool
 	 */
 	public function isOrphaned() {
@@ -752,11 +752,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$pages = array();
 		
 		while(
-			$page  
- 			&& (!$maxDepth || count($pages) < $maxDepth) 
+			$page
+ 			&& (!$maxDepth || count($pages) < $maxDepth)
  			&& (!$stopAtPageType || $page->ClassName != $stopAtPageType)
  		) {
-			if($showHidden || $page->ShowInMenus || ($page->ID == $this->ID)) { 
+			if($showHidden || $page->ShowInMenus || ($page->ID == $this->ID)) {
 				$pages[] = $page;
 			}
 			
@@ -769,7 +769,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 	/**
 	 * Make this page a child of another page.
-	 * 
+	 *
 	 * If the parent page does not exist, resolve it to a valid ID before updating this page's reference.
 	 *
 	 * @param SiteTree|int $item Either the parent object, or the parent ID
@@ -814,7 +814,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * This function should return true if the current user can execute this action. It can be overloaded to customise
 	 * the security model for an application.
-	 * 
+	 *
 	 * Slightly altered from parent behaviour in {@link DataObject->can()}:
 	 * - Checks for existence of a method named "can<$perm>()" on the object
 	 * - Calls decorators and only returns for FALSE "vetoes"
@@ -848,12 +848,12 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * This function should return true if the current user can add children to this page. It can be overloaded to
 	 * customise the security model for an application.
-	 * 
+	 *
 	 * Denies permission if any of the following conditions is true:
 	 * - alternateCanAddChildren() on a extension returns false
 	 * - canEdit() is not granted
 	 * - There are no classes defined in {@link $allowed_children}
-	 * 
+	 *
 	 * @uses SiteTreeExtension->canAddChildren()
 	 * @uses canEdit()
 	 * @uses $allowed_children
@@ -883,7 +883,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * This function should return true if the current user can view this page. It can be overloaded to customise the
 	 * security model for an application.
-	 * 
+	 *
 	 * Denies permission if any of the following conditions is true:
 	 * - canView() on any extension returns false
 	 * - "CanViewType" directive is set to "Inherit" and any parent page return false for canView()
@@ -928,8 +928,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		// check for specific groups
 		if($member && is_numeric($member)) $member = DataObject::get_by_id('Member', $member);
 		if(
-			$this->CanViewType == 'OnlyTheseUsers' 
-			&& $member 
+			$this->CanViewType == 'OnlyTheseUsers'
+			&& $member
 			&& $member->inGroups($this->ViewerGroups())
 		) return true;
 		
@@ -939,12 +939,12 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * This function should return true if the current user can delete this page. It can be overloaded to customise the
 	 * security model for an application.
-	 * 
+	 *
 	 * Denies permission if any of the following conditions is true:
 	 * - canDelete() returns false on any extension
 	 * - canEdit() returns false
 	 * - any descendant page returns false for canDelete()
-	 * 
+	 *
 	 * @uses canDelete()
 	 * @uses SiteTreeExtension->canDelete()
 	 * @uses canEdit()
@@ -974,14 +974,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 	/**
-	 * This function should return true if the current user can create new pages of this class, regardless of class. It 
+	 * This function should return true if the current user can create new pages of this class, regardless of class. It
 	 * can be overloaded to customise the security model for an application.
-	 * 
-	 * By default, permission to create at the root level is based on the SiteConfig configuration, and permission to 
+	 *
+	 * By default, permission to create at the root level is based on the SiteConfig configuration, and permission to
 	 * create beneath a parent is based on the ability to edit that parent page.
-	 * 
+	 *
 	 * Use {@link canAddChildren()} to control behaviour of creating children under this page.
-	 * 
+	 *
 	 * @uses $can_create
 	 * @uses DataExtension->canCreate()
 	 *
@@ -1024,7 +1024,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * This function should return true if the current user can edit this page. It can be overloaded to customise the
 	 * security model for an application.
-	 * 
+	 *
 	 * Denies permission if any of the following conditions is true:
 	 * - canEdit() on any extension returns false
 	 * - canView() return false
@@ -1032,7 +1032,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * - "CanEditType" directive is set to "LoggedInUsers" and no user is logged in or doesn't have the
 	 *   CMS_Access_CMSMAIN permission code
 	 * - "CanEditType" directive is set to "OnlyTheseUsers" and user is not in the given groups
-	 * 
+	 *
 	 * @uses canView()
 	 * @uses EditorGroups()
 	 * @uses DataExtension->canEdit()
@@ -1069,11 +1069,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * This function should return true if the current user can publish this page. It can be overloaded to customise
 	 * the security model for an application.
-	 * 
+	 *
 	 * Denies permission if any of the following conditions is true:
 	 * - canPublish() on any extension returns false
 	 * - canEdit() returns false
-	 * 
+	 *
 	 * @uses SiteTreeExtension->canPublish()
 	 *
 	 * @param Member $member
@@ -1229,7 +1229,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				// Get permissions that are inherited
 				$potentiallyInherited = Versioned::get_by_stage(
 					"SiteTree",
-					$stage, 
+					$stage,
 					array("\"$typeField\" = 'Inherit' AND \"SiteTree\".\"ID\" IN ($idPlaceholders)" => $ids)
 				);
 
@@ -1270,7 +1270,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			// Cache the results
  			if(empty(self::$cache_permissions[$cacheKey])) self::$cache_permissions[$cacheKey] = array();
  			self::$cache_permissions[$cacheKey] = $combinedStageResult + self::$cache_permissions[$cacheKey];
- 
+
 			return $combinedStageResult;
 		} else {
 			return array();
@@ -1402,9 +1402,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if($this->MetaDescription) {
 			$tags .= "<meta name=\"description\" content=\"" . Convert::raw2att($this->MetaDescription) . "\" />\n";
 		}
-		if($this->ExtraMeta) { 
+		if($this->ExtraMeta) {
 			$tags .= $this->ExtraMeta . "\n";
-		} 
+		}
 		
 		if(Permission::check('CMS_ACCESS_CMSMain')
 			&& in_array('CMSPreviewable', class_implements($this))
@@ -1495,7 +1495,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if(!$this->Sort) {
 			$parentID = ($this->ParentID) ? $this->ParentID : 0;
 			$this->Sort = DB::prepared_query(
-				"SELECT MAX(\"Sort\") + 1 FROM \"SiteTree\" WHERE \"ParentID\" = ?", 
+				"SELECT MAX(\"Sort\") + 1 FROM \"SiteTree\" WHERE \"ParentID\" = ?",
 				array($parentID)
 			)->value();
 		}
@@ -1596,10 +1596,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	protected function validate() {
 		$result = parent::validate();
 
-		// Allowed children validation 
+		// Allowed children validation
 		$parent = $this->getParent();
 		if($parent && $parent->exists()) {
-			// No need to check for subclasses or instanceof, as allowedChildren() already 
+			// No need to check for subclasses or instanceof, as allowedChildren() already
 			// deconstructs any inheritance trees already.
 			$allowed = $parent->allowedChildren();
 			$subject = ($this instanceof VirtualPage && $this->CopyContentFromID) ? $this->CopyContentFrom() : $this;
@@ -1607,8 +1607,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				
 				$result->error(
 					_t(
-						'SiteTree.PageTypeNotAllowed', 
-						'Page type "{type}" not allowed as child of this parent page', 
+						'SiteTree.PageTypeNotAllowed',
+						'Page type "{type}" not allowed as child of this parent page',
 						array('type' => $subject->i18n_singular_name())
 					),
 					'ALLOWED_CHILDREN'
@@ -1620,8 +1620,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if(!$this->stat('can_be_root') && !$this->ParentID) {
 			$result->error(
 				_t(
-					'SiteTree.PageTypNotAllowedOnRoot', 
-					'Page type "{type}" is not allowed on the root level', 
+					'SiteTree.PageTypNotAllowedOnRoot',
+					'Page type "{type}" is not allowed on the root level',
 					array('type' => $this->i18n_singular_name())
 				),
 				'CAN_BE_ROOT'
@@ -1661,7 +1661,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 		
 		$votes = array_filter(
-			(array)$this->extend('augmentValidURLSegment'), 
+			(array)$this->extend('augmentValidURLSegment'),
 			function($v) {return !is_null($v);}
 		);
 		if($votes) {
@@ -1682,7 +1682,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * updateURLSegment(&$url, $title).  $url will be passed by reference and should be modified. $title will contain
 	 * the title that was originally used as the source of this generated URL. This lets extensions either start from
 	 * scratch, or incrementally modify the generated URL.
-	 * 
+	 *
 	 * @param string $title Page title
 	 * @return string Generated url segment
 	 */
@@ -1761,7 +1761,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	
 	/**
 	 * Returns the pages that depend on this page. This includes virtual pages, pages that link to it, etc.
-	 * 
+	 *
 	 * @param bool $includeVirtuals Set to false to exlcude virtual pages.
 	 * @return ArrayList
 	 */
@@ -1887,7 +1887,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				}
 
 				$statusMessage[] = _t(
-					'SiteTree.APPEARSVIRTUALPAGES', 
+					'SiteTree.APPEARSVIRTUALPAGES',
 					"This content also appears on the virtual pages in the {title} sections.",
 					array('title' => $parentList)
 				);
@@ -1982,7 +1982,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$metaFieldDesc
 			->setRightTitle(
 				_t(
-					'SiteTree.METADESCHELP', 
+					'SiteTree.METADESCHELP',
 					"Search engines use this content for displaying search results (although it will not influence their ranking)."
 				)
 			)
@@ -1990,7 +1990,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$metaFieldExtra
 			->setRightTitle(
 				_t(
-					'SiteTree.METAEXTRAHELP', 
+					'SiteTree.METAEXTRAHELP',
 					"HTML tags for additional meta information. For example &lt;meta name=\"customName\" content=\"your custom content here\" /&gt;"
 				)
 			)
@@ -2017,8 +2017,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 
 		if(file_exists(BASE_PATH . '/install.php')) {
-			$fields->addFieldToTab("Root.Main", new LiteralField("InstallWarningHeader", 
-				"<p class=\"message warning\">" . _t("SiteTree.REMOVE_INSTALL_WARNING", 
+			$fields->addFieldToTab("Root.Main", new LiteralField("InstallWarningHeader",
+				"<p class=\"message warning\">" . _t("SiteTree.REMOVE_INSTALL_WARNING",
 				"Warning: You should remove install.php from this SilverStripe install for security reasons.")
 				. "</p>"), "Title");
 		}
@@ -2040,7 +2040,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * Returns fields related to configuration aspects on this record, e.g. access control. See {@link getCMSFields()}
 	 * for content-related fields.
-	 * 
+	 *
 	 * @return FieldList
 	 */
 	public function getSettingsFields() {
@@ -2055,8 +2055,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$rootTab = new TabSet("Root",
 				$tabBehaviour = new Tab('Settings',
 					new DropdownField(
-						"ClassName", 
-						$this->fieldLabel('ClassName'), 
+						"ClassName",
+						$this->fieldLabel('ClassName'),
 						$this->getClassDropdown()
 					),
 					$parentTypeSelector = new CompositeField(
@@ -2071,25 +2071,25 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						new CheckboxField("ShowInSearch", $this->fieldLabel('ShowInSearch'))
 					),
 					$viewersOptionsField = new OptionsetField(
-						"CanViewType", 
+						"CanViewType",
 						_t('SiteTree.ACCESSHEADER', "Who can view this page?")
 					),
 					$viewerGroupsField = ListboxField::create("ViewerGroups", _t('SiteTree.VIEWERGROUPS', "Viewer Groups"))
 						->setMultiple(true)
 						->setSource($groupsMap)
 						->setAttribute(
-							'data-placeholder', 
+							'data-placeholder',
 							_t('SiteTree.GroupPlaceholder', 'Click to select group')
 						),
 					$editorsOptionsField = new OptionsetField(
-						"CanEditType", 
+						"CanEditType",
 						_t('SiteTree.EDITHEADER', "Who can edit this page?")
 					),
 					$editorGroupsField = ListboxField::create("EditorGroups", _t('SiteTree.EDITORGROUPS', "Editor Groups"))
 						->setMultiple(true)
 						->setSource($groupsMap)
 						->setAttribute(
-							'data-placeholder', 
+							'data-placeholder',
 							_t('SiteTree.GroupPlaceholder', 'Click to select group')
 						)
 				)
@@ -2216,7 +2216,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		// Minor options are hidden behind a drop-up and appear as links (although they are still FormActions).
 		$rootTabSet = new TabSet('ActionMenus');
 		$moreOptions = new Tab(
-			'MoreOptions', 
+			'MoreOptions',
 			_t('SiteTree.MoreOptions', 'More options', 'Expands a view for more buttons')
 		);
 		$rootTabSet->push($moreOptions);
@@ -2361,7 +2361,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	
 	/**
 	 * Publish this page.
-	 * 
+	 *
 	 * @uses SiteTreeExtension->onBeforePublish()
 	 * @uses SiteTreeExtension->onAfterPublish()
 	 * @return bool True if published
@@ -2411,7 +2411,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	
 	/**
 	 * Unpublish this page - remove it from the live site
-	 * 
+	 *
 	 * @uses SiteTreeExtension->onBeforeUnpublish()
 	 * @uses SiteTreeExtension->onAfterUnpublish()
 	 */
@@ -2573,12 +2573,12 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
         if(!$this->canDelete($member)) {
             return false;
         }
-        
+
         // If published, check if we can delete from live
         if($this->ExistsOnLive && !$this->canDeleteFromLive($member)) {
             return false;
         }
-        
+
 		return true;
 	}
 
@@ -2755,11 +2755,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * status. Each page can have more than one status flag. Returns a map of a unique key to a (localized) title for
 	 * the flag. The unique key can be reused as a CSS class. Use the 'updateStatusFlags' extension point to customize
 	 * the flags.
-	 * 
-	 * Example (simple): 
+	 *
+	 * Example (simple):
 	 *   "deletedonlive" => "Deleted"
-	 * 
-	 * Example (with optional title attribute): 
+	 *
+	 * Example (with optional title attribute):
 	 *   "deletedonlive" => array('text' => "Deleted", 'title' => 'This page has been deleted')
 	 *
 	 * @param bool $cached Whether to serve the fields from cache; false regenerate them
@@ -2907,7 +2907,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * Compares current draft with live version, and returns true if no draft version of this page exists  but the page
 	 * is still published (eg, after triggering "Delete from draft site" in the CMS).
-	 * 
+	 *
 	 * @return bool
 	 */
 	public function getIsDeletedFromStage() {
@@ -2932,7 +2932,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * Compares current draft with live version, and returns true if these versions differ, meaning there have been
 	 * unpublished changes to the draft site.
-	 * 
+	 *
 	 * @return bool
 	 */
 	public function getIsModifiedOnStage() {
@@ -2951,7 +2951,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * Compares current draft with live version, and returns true if no live version exists, meaning the page was never
 	 * published.
-	 * 
+	 *
 	 * @return bool
 	 */
 	public function getIsAddedToStage() {
@@ -3017,7 +3017,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	
 	/**
 	 * Return the translated Singular name.
-	 * 
+	 *
 	 * @return string
 	 */
 	public function i18n_singular_name() {

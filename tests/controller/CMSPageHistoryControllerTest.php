@@ -21,7 +21,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
 		$this->page = new Page();
 		$this->page->URLSegment = "test";
 		$this->page->Content = "new content";
-		$this->page->write(); 
+		$this->page->write();
 		$this->versionUnpublishedCheck = $this->page->Version;
 		
 		$this->page->Content = "some further content";

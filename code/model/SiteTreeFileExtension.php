@@ -12,8 +12,8 @@ class SiteTreeFileExtension extends DataExtension {
 	public function updateCMSFields(FieldList $fields) {
 		$fields->insertAfter(
 			ReadonlyField::create(
-				'BackLinkCount', 
-				_t('AssetTableField.BACKLINKCOUNT', 'Used on:'), 
+				'BackLinkCount',
+				_t('AssetTableField.BACKLINKCOUNT', 'Used on:'),
 				$this->BackLinkTracking()->Count() . ' ' . _t('AssetTableField.PAGES', 'page(s)'))
 			->addExtraClass('cms-description-toggle')
 			->setDescription($this->BackLinkHTMLList()),
@@ -67,8 +67,8 @@ class SiteTreeFileExtension extends DataExtension {
 		}
 
 		if($filter || $sort || $join || $limit) {
-			Deprecation::notice('4.0', 'The $filter, $sort, $join and $limit parameters for 
-				SiteTreeFileExtension::BackLinkTracking() have been deprecated. 
+			Deprecation::notice('4.0', 'The $filter, $sort, $join and $limit parameters for
+				SiteTreeFileExtension::BackLinkTracking() have been deprecated.
 				Please manipluate the returned list directly.', Deprecation::SCOPE_GLOBAL);
 		}
 		
@@ -90,7 +90,7 @@ class SiteTreeFileExtension extends DataExtension {
 	
 	/**
 	 * @todo Unnecessary shortcut for AssetTableField, coupled with cms module.
-	 * 
+	 *
 	 * @return integer
 	 */
 	public function BackLinkTrackingCount() {
@@ -130,9 +130,9 @@ class SiteTreeFileExtension extends DataExtension {
 	
 	/**
 	 * Rewrite links to the $old file to now point to the $new file.
-	 * 
+	 *
 	 * @uses SiteTree->rewriteFileURL()
-	 * 
+	 *
 	 * @param string $old File path relative to the webroot
 	 * @param string $new File path relative to the webroot
 	 */

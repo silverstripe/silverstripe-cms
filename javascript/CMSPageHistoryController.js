@@ -1,8 +1,8 @@
 (function($) {
 	/**
 	 * File: CMSPageHistoryController.js
-	 * 
-	 * Handles related interactions between the version selection form on the 
+	 *
+	 * Handles related interactions between the version selection form on the
 	 * left hand side of the panel and the version displaying on the right
 	 * hand side.
 	 */
@@ -32,7 +32,7 @@
 			 * display based on whether we have two or 1 option selected
 			 *
 			 * Todo:
-			 *		Handle coupling to admin url 
+			 *		Handle coupling to admin url
 			 */
 			onsubmit: function(e, d) {
 				e.preventDefault();
@@ -116,7 +116,7 @@
 			 * Selects or deselects the row (if in compare mode). Will trigger
 			 * an update of the edit form if either selected (in single mode)
 			 * or if this is the second row selected (in compare mode)
-			 */ 
+			 */
 			onclick: function(e) {
 				var compare, selected;
 				
@@ -153,9 +153,9 @@
 			},
 			
 			/**
-			 * Function: _unselect() 
+			 * Function: _unselect()
 			 *
-			 * Unselects the row from the form selection. 
+			 * Unselects the row from the form selection.
 			 */
 			_unselect: function() {
 				this.removeClass('active');

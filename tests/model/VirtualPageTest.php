@@ -275,7 +275,7 @@ class VirtualPageTest extends FunctionalTest {
 		
 		$this->assertEquals($vp->ID, DB::query("SELECT \"RecordID\" FROM \"SiteTree_versions\"
 			WHERE \"RecordID\" = $vp->ID AND \"Title\" = 'T1'")->value());
-		$this->assertEquals($vp->ID, DB::query("SELECT \"RecordID\" FROM \"SiteTree_versions\" 
+		$this->assertEquals($vp->ID, DB::query("SELECT \"RecordID\" FROM \"SiteTree_versions\"
 			WHERE \"RecordID\" = $vp->ID AND \"Title\" = 'T2'")->value());
 		$this->assertEquals($vp->ID, DB::query("SELECT \"RecordID\" FROM \"SiteTree_versions\"
 			WHERE \"RecordID\" = $vp->ID AND \"Version\" = $vp->Version")->value());
@@ -286,12 +286,12 @@ class VirtualPageTest extends FunctionalTest {
 		// version
 		$liveVersion = DB::query("SELECT \"Version\" FROM \"SiteTree_Live\" WHERE \"ID\" = $vp->ID")->value();
 
-		$this->assertEquals("T0", DB::query("SELECT \"Title\" FROM \"SiteTree_Live\" 
+		$this->assertEquals("T0", DB::query("SELECT \"Title\" FROM \"SiteTree_Live\"
 				WHERE \"ID\" = $vp->ID")->value());
 
 		// SiteTree_Live.Version should reference a legal entry in SiteTree_versions for the
 		// virtual page
-		$this->assertEquals("T0", DB::query("SELECT \"Title\" FROM \"SiteTree_versions\" 
+		$this->assertEquals("T0", DB::query("SELECT \"Title\" FROM \"SiteTree_versions\"
 				WHERE \"RecordID\" = $vp->ID AND \"Version\" = $liveVersion")->value());
 	}
 	
@@ -422,12 +422,12 @@ class VirtualPageTest extends FunctionalTest {
 		$virtual->copyFrom($original);
 		// Using getField() to avoid side effects from an overloaded __get()
 		$this->assertEquals(
-			'original', 
+			'original',
 			$virtual->getField('MyInitiallyCopiedField'),
 			'Fields listed in $initially_copied_fields are copied on first copyFrom() invocation'
 		);
 		$this->assertEquals(
-			'original', 
+			'original',
 			$virtual->getField('MyVirtualField'),
 			'Fields not listed in $initially_copied_fields are copied in copyFrom()'
 		);
@@ -440,7 +440,7 @@ class VirtualPageTest extends FunctionalTest {
 		$original->write();
 		$virtual->copyFrom($original);
 		$this->assertEquals(
-			'original', 
+			'original',
 			$virtual->MyInitiallyCopiedField,
 			'Fields listed in $initially_copied_fields are not copied on subsequent copyFrom() invocations'
 		);
@@ -466,8 +466,8 @@ class VirtualPageTest extends FunctionalTest {
 		$virtual->Title = 'changed 1';
 		$virtual->writeWithoutVersion();
 		$this->assertEquals(
-			$virtual->Version, 
-			$virtualVersion, 
+			$virtual->Version,
+			$virtualVersion,
 			'writeWithoutVersion() on VirtualPage doesnt increment version'
 		);
 
@@ -477,8 +477,8 @@ class VirtualPageTest extends FunctionalTest {
 		DataObject::flush_and_destroy_cache();
 		$virtual = DataObject::get_by_id('VirtualPage', $virtual->ID, false);
 		$this->assertEquals(
-			$virtual->Version, 
-			$virtualVersion, 
+			$virtual->Version,
+			$virtualVersion,
 			'writeWithoutVersion() on original page doesnt increment version on related VirtualPage'
 		);
 		
@@ -487,8 +487,8 @@ class VirtualPageTest extends FunctionalTest {
 		DataObject::flush_and_destroy_cache();
 		$virtual = DataObject::get_by_id('VirtualPage', $virtual->ID, false);
 		$this->assertGreaterThan(
-			$virtualVersion, 
-			$virtual->Version, 
+			$virtualVersion,
+			$virtual->Version,
 			'write() on original page does increment version on related VirtualPage'
 		);
 	}
@@ -500,7 +500,7 @@ class VirtualPageTest extends FunctionalTest {
 
 		$notRootPage = new VirtualPageTest_NotRoot();
 		// we don't want the original on root, but rather the VirtualPage pointing to it
-		$notRootPage->ParentID = $page->ID; 
+		$notRootPage->ParentID = $page->ID;
 		$notRootPage->write();
 
 		$virtual = new VirtualPage();
@@ -517,7 +517,7 @@ class VirtualPageTest extends FunctionalTest {
 		} catch(ValidationException $e) {
 			$this->assertContains('is not allowed on the root level', $e->getMessage());
 			$isDetected = true;
-		} 
+		}
 
 		if(!$isDetected) $this->fail('Fails validation with $can_be_root=false');
 	}
@@ -645,7 +645,7 @@ class VirtualPageTest extends FunctionalTest {
 		} catch(ValidationException $e) {
 			$this->assertContains('not allowed as child of this parent page', $e->getMessage());
 			$isDetected = true;
-		} 
+		}
 
 		if(!$isDetected) $this->fail("Shouldn't be allowed to write a VirtualPage that links to a disallowed child");
 	}
@@ -682,7 +682,7 @@ class VirtualPageTest_ClassA extends Page implements TestOnly {
 }
 
 class VirtualPageTest_ClassB extends Page implements TestOnly {
-	private static $allowed_children = array('VirtualPageTest_ClassC'); 
+	private static $allowed_children = array('VirtualPageTest_ClassC');
 }
 
 class VirtualPageTest_ClassC extends Page implements TestOnly {

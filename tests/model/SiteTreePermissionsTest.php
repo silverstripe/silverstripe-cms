@@ -2,7 +2,7 @@
 /**
  * @package cms
  * @subpackage tests
- * 
+ *
  * @todo Test canAddChildren()
  * @todo Test canCreate()
  */
@@ -47,7 +47,7 @@ class SiteTreePermissionsTest extends FunctionalTest {
 		}
 		$this->assertEquals($response->getStatusCode(), '302');
 		$this->assertContains(
-			Config::inst()->get('Security', 'login_url'), 
+			Config::inst()->get('Security', 'login_url'),
 			$response->getHeader('Location')
 		);
 		

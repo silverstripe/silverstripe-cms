@@ -50,7 +50,7 @@ class CMSPageAddController extends CMSPageEditController {
 					new SelectionGroup_Item(
 						'child',
 						$parentField = new TreeDropdownField(
-							"ParentID", 
+							"ParentID",
 							"",
 							'SiteTree',
 							'ID',
@@ -61,8 +61,8 @@ class CMSPageAddController extends CMSPageEditController {
 				)
 			),
 			$typeField = new OptionsetField(
-				"PageType", 
-				sprintf($numericLabelTmpl, 2, _t('CMSMain.ChoosePageType', 'Choose page type')), 
+				"PageType",
+				sprintf($numericLabelTmpl, 2, _t('CMSMain.ChoosePageType', 'Choose page type')),
 				$pageTypes,
 				'Page'
 			),
@@ -71,7 +71,7 @@ class CMSPageAddController extends CMSPageEditController {
 				sprintf(
 					'<p class="message notice message-restricted">%s</p>',
 					_t(
-						'CMSMain.AddPageRestriction', 
+						'CMSMain.AddPageRestriction',
 						'Note: Some page types are not allowed for this selection'
 					)
 				)
@@ -79,7 +79,7 @@ class CMSPageAddController extends CMSPageEditController {
 		);
 		$parentField->setSearchFunction(function ($sourceObject, $labelField, $search) {
 			return DataObject::get(
-				$sourceObject, 
+				$sourceObject,
 				sprintf(
 					"\"MenuTitle\" LIKE '%%%s%%' OR \"Title\" LIKE '%%%s%%'",
 					Convert::raw2sql($search),
@@ -88,7 +88,7 @@ class CMSPageAddController extends CMSPageEditController {
 			);
 		});
 
-		// TODO Re-enable search once it allows for HTML title display, 
+		// TODO Re-enable search once it allows for HTML title display,
 		// see http://open.silverstripe.org/ticket/7455
 		// $parentField->setShowSearch(true);
 		
@@ -114,7 +114,7 @@ class CMSPageAddController extends CMSPageEditController {
 		
 		$this->extend('updatePageOptions', $fields);
 		
-		$form = CMSForm::create( 
+		$form = CMSForm::create(
 			$this, "AddForm", $fields, $actions
 		)->setHTMLID('Form_AddForm');
 		$form->setAttribute('data-hints', $this->SiteTreeHints());
@@ -163,7 +163,7 @@ class CMSPageAddController extends CMSPageEditController {
 		$editController->setCurrentPageID($record->ID);
 
 		Session::set(
-			"FormInfo.Form_EditForm.formError.message", 
+			"FormInfo.Form_EditForm.formError.message",
 			_t('CMSMain.PageAdded', 'Successfully created page')
 		);
 		Session::set("FormInfo.Form_EditForm.formError.type", 'good');

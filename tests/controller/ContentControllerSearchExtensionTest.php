@@ -6,9 +6,9 @@ class ContentControllerSearchExtensionTest extends SapphireTest {
 		$page->URLSegment = 'whatever';
 		$page->Content = 'oh really?';
 		$page->write();
-		$page->publish('Stage', 'Live'); 
+		$page->publish('Stage', 'Live');
 		$controller = new ContentController($page);
-		$form = $controller->SearchForm(); 
+		$form = $controller->SearchForm();
 		
 		if (get_class($form) == 'SearchForm') $this->assertEquals(array('File'), $form->getClassesToSearch());
 	}
