@@ -57,6 +57,10 @@ So that I can link to a external website or a page on my site
     Then the "Content" HTML field should contain "<a href="[file_link,id=3]" target="_blank">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save draft" button
+    # Check that the field is reset when adding another new link
+    Given I select "content" in the "Content" HTML field
+    When I press the "Insert Link" button
+    Then I should not see a ".ss-uploadfield-files .ss-uploadfield-item" element
 
   Scenario: I can link to an anchor
     Given I fill in the "Content" HTML field with "<p>My awesome content<a name='myanchor'></a></p>"
