@@ -65,7 +65,6 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 
 
 		Requirements::javascript(CMS_DIR . "/javascript/AssetAdmin.js");
-		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.GridField.js');
 		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang', false, true);
 		Requirements::css(CMS_DIR . "/css/screen.css");
 		CMSBatchActionHandler::register('delete', 'AssetAdmin_DeleteBatchAction', 'Folder');
