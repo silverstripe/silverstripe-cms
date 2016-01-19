@@ -82,13 +82,10 @@ et_EE:
     DESCREMOVED: 'ja {count} järglast'
     EMAIL: E-post
     EditTree: 'Redigeeri'
-    ListFiltered: 'Filtreeritud loend'
     MENUTITLE: 'Redigeeri lehte'
     NEWPAGE: 'Uus {pagetype}'
     PAGENOTEXISTS: 'Antud lehekülge ei eksisteeri'
-    PAGES: Lehed
     PAGETYPEANYOPT: Kõik
-    PAGETYPEOPT: 'Lehe tüüp'
     PUBALLCONFIRM: 'Palun avaldage iga leht selles saidis'
     PUBALLFUN: '"Avalda Kõik" funktsionaalsus'
     PUBALLFUN2: "Sellele nupule vajutamine on sama, kui käia igal lehel ja vajutada igal lehel \"Avalda\" nuppu. Nuppu on soovitatav kasutada, kui oled muutnud mitmeid lehti - see salvestab igal lehel toimunud muudatused."
@@ -103,10 +100,7 @@ et_EE:
     TabContent: Sisu
     TabHistory: Ajalugu
     TabSettings: Seaded
-    TreeFiltered: 'Filtreeritud puu.'
-    TreeFilteredClear: 'Eemalda filtreering'
   CMSMain_left_ss:
-    APPLY_FILTER: 'Aktiveeri filter'
     RESET: Lähtesta
   CMSPageAddController:
     MENUTITLE: 'Lisa leht'
@@ -136,15 +130,12 @@ et_EE:
     ListView: 'Loendivaade'
     MENUTITLE: Lehed
     TreeView: 'Puuvaade'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Mitmikvalik
   CMSPagesController_Tools_ss:
     FILTER: Filtreeri
   CMSSearch:
     FILTERDATEFROM: Alates
     FILTERDATEHEADING: Kuupäev
     FILTERDATETO: Kuni
-    FILTERLABELTEXT: Sisu
   CMSSettingsController:
     MENUTITLE: Seaded
   CMSSiteTreeFilter_Search:

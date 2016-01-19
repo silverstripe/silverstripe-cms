@@ -92,13 +92,10 @@ fr:
     DUPLICATEDWITHCHILDREN: '''{title}'' et ses enfants dupliqués avec succès'
     EMAIL: Email
     EditTree: 'Editer l''arbre'
-    ListFiltered: 'Liste filtrée.'
     MENUTITLE: 'Éditer la page'
     NEWPAGE: 'Nouveau {pagetype}'
     PAGENOTEXISTS: 'Cette page n''existe pas'
-    PAGES: Pages
     PAGETYPEANYOPT: Tous
-    PAGETYPEOPT: 'Type de page'
     PUBALLCONFIRM: 'Publier chaque page du site en copiant le contenu à partir du site brouillon s''il vous plaît'
     PUBALLFUN: 'Fonctionnalité "Tout Publier"'
     PUBALLFUN2: "Presser ce boutton fera la même chose que d'aller sur chaque page et d'appuer sur \"publier\"."
@@ -116,11 +113,7 @@ fr:
     TabContent: Contenu
     TabHistory: Historique
     TabSettings: Paramètres
-    TreeFiltered: 'Arbre filtré.'
-    TreeFilteredClear: 'Réinitialiser le filtre.'
   CMSMain_left_ss:
-    APPLY_FILTER: 'Appliquer le filtre'
-    CLEAR_FILTER: 'Réinitialiser le filtre.'
     RESET: Réinitialiser
   CMSPageAddController:
     MENUTITLE: 'Ajouter page'
@@ -152,8 +145,6 @@ fr:
     ListView: 'Liste'
     MENUTITLE: Pages
     TreeView: 'Arbre'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Choix multiple
   CMSPagesController_Tools_ss:
     FILTER: Filtrer
   CMSSIteTreeFilter_PublishedPages:
@@ -162,7 +153,6 @@ fr:
     FILTERDATEFROM: De
     FILTERDATEHEADING: Date
     FILTERDATETO: A
-    FILTERLABELTEXT: Terme
   CMSSettingsController:
     MENUTITLE: Paramètres
   CMSSiteTreeFilter_Search:

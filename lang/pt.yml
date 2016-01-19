@@ -81,13 +81,10 @@ pt:
     DUPLICATED: 'Página ''{title}'' duplicada com sucesso'
     DUPLICATEDWITHCHILDREN: 'Página ''{title}'' e filhos duplicados com sucesso'
     EditTree: 'Editar árvore'
-    ListFiltered: 'Lista filtrada.'
     MENUTITLE: 'Editar página'
     NEWPAGE: 'Nova {pagetype}'
     PAGENOTEXISTS: 'Esta página não existe'
-    PAGES: Páginas
     PAGETYPEANYOPT: Qualquer
-    PAGETYPEOPT: 'Tipo de Página'
     PUBALLCONFIRM: 'Por favor, publique cada uma das páginas do site, copiando o conteúdo para a versão publicada'
     PUBALLFUN: 'funcionalidade "Publicar tudo"'
     PUBALLFUN2: "Ao pressionar este botão fará o equivalente a ir a cada página e pressionar o botão \"publicar\". É aconselhado a sua utilização quando existem muitas edições de diferentes páginas ou então quando o site se encontra disponível para ser publicado para o público em geral."
@@ -104,10 +101,7 @@ pt:
     TabContent: Conteúdo
     TabHistory: Histórico
     TabSettings: Configurações
-    TreeFiltered: 'Filtrar árvore'
-    TreeFilteredClear: 'Remover filtro'
   CMSMain_left_ss:
-    APPLY_FILTER: 'Aplicar filtro'
     RESET: Redefinir
   CMSPageAddController:
     MENUTITLE: 'Adicionar página'
@@ -139,15 +133,12 @@ pt:
     ListView: 'Vista em lista'
     MENUTITLE: Páginas
     TreeView: 'Vista em árvore'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Multi-selecção
   CMSPagesController_Tools_ss:
     FILTER: Filtrar
   CMSSearch:
     FILTERDATEFROM: De
     FILTERDATEHEADING: Data
     FILTERDATETO: Para
-    FILTERLABELTEXT: Conteúdo
   CMSSettingsController:
     MENUTITLE: Configurações
   CMSSiteTreeFilter_Search:

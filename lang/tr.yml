@@ -37,8 +37,6 @@ tr:
     EMAIL: Eposta
     MENUTITLE: 'Sayfayı düzenle'
     PAGENOTEXISTS: 'Sayfa bulunamadı'
-    PAGES: Sayfalar
-    PAGETYPEOPT: 'Sayfa Tipi'
     PUBALLCONFIRM: 'Lütfen taslak sitedeki tüm sayfaları yayınlanmakta olan siteye kopyalayıp yayınla.'
     PUBALLFUN: '"Hepsini Yayınla" özelliği'
     PUBALLFUN2: "Bu butona bastığınız zaman, tüm sayfaları tek tek açıp \"yayınla\" butonuna basmışsınız gibi işlem yapılacaktır.  Bunun amacı sitede toplu miktarda içerik düzenleyip eklediyseniz (örneğin sitenin ilk yayınlanması gibi) size kolaylık sağlamaktır."
@@ -50,7 +48,6 @@ tr:
     TabHistory: Geçmiş
     TabSettings: Ayarlar
   CMSMain_left_ss:
-    APPLY_FILTER: 'Filteri Uygula'
     RESET: Sıfırla
   CMSPageAddController:
     MENUTITLE: 'Sayfa ekle'

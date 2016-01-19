@@ -32,6 +32,7 @@ class SiteTreeLinkTrackingTest extends SapphireTest {
 		$this->assertFalse($this->isBroken("<a href=\"[sitetree_link,id=$page->ID]#yes-name-anchor\">link</a>"));
 		$this->assertFalse($this->isBroken("<a href=\"[sitetree_link,id=$page->ID]#yes-id-anchor\">link</a>"));
 		$this->assertFalse($this->isBroken("<a href=\"[file_link,id=$file->ID]\">link</a>"));
+		$this->assertTrue($this->isBroken("<a href=\"[sitetree_link,id=$page->ID]#http://invalid-anchor.com\"></a>"));
 	}
 
 	function highlight($content) {

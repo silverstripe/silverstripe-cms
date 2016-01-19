@@ -85,13 +85,10 @@ ro:
     DUPLICATEDWITHCHILDREN: '''{title}'' și descendenții săi duplicați cu succes'
     EMAIL: E-mail
     EditTree: 'Editare structură arbore'
-    ListFiltered: 'Listă filtrată'
     MENUTITLE: 'Editează pagina'
     NEWPAGE: '{pagetype} nouă'
     PAGENOTEXISTS: 'Această pagină nu există'
-    PAGES: Pagini
     PAGETYPEANYOPT: Oricare
-    PAGETYPEOPT: 'Tip pagină'
     PUBALLCONFIRM: 'Vă rugăm publicați toate paginile din site, copiind conținutul curent în live'
     PUBALLFUN: 'Funcționalitatea "Publică Tot" '
     PUBALLFUN2: "Apăsând acest buton se v-a face echivalentul apăsării pe fiecare pagină a butonului \"publicare\". Este\n\t\t\t\tintenționat să fie folosit după ce s-au făcut editări masive de conținut, precum când site-ul a fost\n\t\t\t\tprima oară construit."
@@ -109,10 +106,7 @@ ro:
     TabContent: Conținut
     TabHistory: Istorie
     TabSettings: Setări
-    TreeFiltered: 'Arbore filtrat'
-    TreeFilteredClear: 'Șterge filtru'
   CMSMain_left_ss:
-    APPLY_FILTER: 'Aplică Filtrul'
     RESET: Resetează
   CMSPageAddController:
     MENUTITLE: 'Adaugă pagină'
@@ -144,15 +138,12 @@ ro:
     ListView: 'View listă'
     MENUTITLE: Pagini
     TreeView: 'View Arbore'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Selecție multiplă
   CMSPagesController_Tools_ss:
     FILTER: Filtru
   CMSSearch:
     FILTERDATEFROM: De la
     FILTERDATEHEADING: Data
     FILTERDATETO: La
-    FILTERLABELTEXT: Conținut
   CMSSettingsController:
     MENUTITLE: Setări
   CMSSiteTreeFilter_Search:

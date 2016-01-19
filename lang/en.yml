@@ -124,12 +124,9 @@ en:
     TabSettings: Settings
     TreeFiltered: 'Showing search results.'
     TreeFilteredClear: Clear
-    MENUTITLE: 'Edit Page'
-    ARCHIVE: Archive
-    ARCHIVEDPAGE: 'Archived page ''%s'''
   CMSMain_left_ss:
-    APPLY_FILTER: 'Search'
-    CLEAR_FILTER: 'Clear Filter'
+    APPLY_FILTER: Search
+    CLEAR_FILTER: Clear
     RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Add page'
@@ -162,16 +159,17 @@ en:
     MENUTITLE: Pages
     TreeView: 'Tree View'
   CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Bulk actions
+    MULTISELECT: 'Batch actions'
   CMSPagesController_Tools_ss:
     FILTER: Filter
   CMSSIteTreeFilter_PublishedPages:
     Title: 'Published pages'
   CMSSearch:
     FILTERDATEFROM: From
-    FILTERDATEHEADING: 'Date'
+    FILTERDATEHEADING: Date
     FILTERDATETO: To
-    FILTERLABELTEXT: 'Search'
+    FILTERLABELTEXT: Search
+    PAGEFILTERDATEHEADING: 'Last edited'
   CMSSettingsController:
     MENUTITLE: Settings
   CMSSiteTreeFilter_ChangedPages:
