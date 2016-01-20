@@ -409,11 +409,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function Breadcrumbs($unlinked = false) {
 		$items = parent::Breadcrumbs($unlinked);
 
-		// The root element should point to the pages tree view,
-		// rather than the actual controller (which would just show an empty edit form)
-		$defaultTitle = self::menu_title_for_class('CMSPagesController');
-		$items[0]->Title = _t("{$this->class}.MENUTITLE", $defaultTitle);
-		$items[0]->Link = singleton('CMSPagesController')->Link();
+		if($items->count() > 1) {
+			// Specific to the SiteTree admin section, we never show the cms section and current
+			// page in the same breadcrumbs block.
+			$items->shift();
+		}
 
 		return $items;
 	}
