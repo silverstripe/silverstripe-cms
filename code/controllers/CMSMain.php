@@ -869,15 +869,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		$this->extend('updateCurrentPageID', $id);
 
-		// Fall back to homepage record
-		if(!$id) {
-			$homepageSegment = RootURLController::get_homepage_link();
-			$homepageRecord = DataObject::get_one('SiteTree', array(
-				'"SiteTree"."URLSegment"' => $homepageSegment
-			));
-			if($homepageRecord) $id = $homepageRecord->ID;
-		}
-
 		return $id;
 	}
 
