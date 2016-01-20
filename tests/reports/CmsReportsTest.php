@@ -37,15 +37,13 @@ class CmsReportsTest extends SapphireTest {
 		$class = get_class($report);
 
 		// ASSERT that the "draft" report is returning the correct results.
-
-		$results = count($report->sourceRecords(array())) > 0;
+		$parameters = array('CheckSite' => 'Draft');
+		$results = count($report->sourceRecords($parameters, null, null)) > 0;
 		$isDraftBroken ? $this->assertTrue($results, "{$class} has NOT returned the correct DRAFT results, as NO pages were found.") : $this->assertFalse($results, "{$class} has NOT returned the correct DRAFT results, as pages were found.");
 
 		// ASSERT that the "published" report is returning the correct results.
-
-		$results = count($report->sourceRecords(array(
-			'OnLive' => 1
-		))) > 0;
+		$parameters = array('CheckSite' => 'Published', 'OnLive' => 1);
+		$results = count($report->sourceRecords($parameters, null, null)) > 0;
 		$isPublishedBroken ? $this->assertTrue($results, "{$class} has NOT returned the correct PUBLISHED results, as NO pages were found.") : $this->assertFalse($results, "{$class} has NOT returned the correct PUBLISHED results, as pages were found.");
 	}
 
@@ -82,49 +80,50 @@ class CmsReportsTest extends SapphireTest {
 		$reports = SS_Report::get_reports();
 		$brokenLinksReport = null;
 		foreach($reports as $report) {
-			if($report instanceof SideReport_BrokenLinks) {
+			if($report instanceof BrokenLinksReport) {
 				$brokenLinksReport = $report;
 				break;
 			}
 		}
 
 		// Determine that the report exists, otherwise it has been excluded.
-
-		if($brokenLinksReport) {
-
-			// ASSERT that the "draft" report has detected the page having a broken link.
-			// ASSERT that the "published" report has NOT detected the page having a broken link, as the page has not been "published" yet.
-
-			$this->isReportBroken($brokenLinksReport, true, false);
-
-			// Make sure the page is now "published".
-
-			$page->writeToStage('Live');
-
-			// ASSERT that the "draft" report has detected the page having a broken link.
-			// ASSERT that the "published" report has detected the page having a broken link.
-
-			$this->isReportBroken($brokenLinksReport, true, true);
-
-			// Correct the "draft" broken link.
-
-			$page->Content = str_replace('987654321', $page->ID, $page->Content);
-			$page->writeToStage('Stage');
-
-			// ASSERT that the "draft" report has NOT detected the page having a broken link.
-			// ASSERT that the "published" report has detected the page having a broken link, as the previous content remains "published".
-
-			$this->isReportBroken($brokenLinksReport, false, true);
-
-			// Make sure the change has now been "published".
-
-			$page->writeToStage('Live');
-
-			// ASSERT that the "draft" report has NOT detected the page having a broken link.
-			// ASSERT that the "published" report has NOT detected the page having a broken link.
-
-			$this->isReportBroken($brokenLinksReport, false, false);
+		if(!$brokenLinksReport){
+			$this->markTestSkipped('BrokenLinksReport is not an available report');
+			return;
 		}
+
+		// ASSERT that the "draft" report has detected the page having a broken link.
+		// ASSERT that the "published" report has NOT detected the page having a broken link, as the page has not been "published" yet.
+
+		$this->isReportBroken($brokenLinksReport, true, false);
+
+		// Make sure the page is now "published".
+
+		$page->writeToStage('Live');
+
+		// ASSERT that the "draft" report has detected the page having a broken link.
+		// ASSERT that the "published" report has detected the page having a broken link.
+
+		$this->isReportBroken($brokenLinksReport, true, true);
+
+		// Correct the "draft" broken link.
+
+		$page->Content = str_replace('987654321', $page->ID, $page->Content);
+		$page->writeToStage('Stage');
+
+		// ASSERT that the "draft" report has NOT detected the page having a broken link.
+		// ASSERT that the "published" report has detected the page having a broken link, as the previous content remains "published".
+
+		$this->isReportBroken($brokenLinksReport, false, true);
+
+		// Make sure the change has now been "published".
+
+		$page->writeToStage('Live');
+
+		// ASSERT that the "draft" report has NOT detected the page having a broken link.
+		// ASSERT that the "published" report has NOT detected the page having a broken link.
+
+		$this->isReportBroken($brokenLinksReport, false, false);
 	}
 
 	/**
@@ -144,52 +143,53 @@ class CmsReportsTest extends SapphireTest {
 		$reports = SS_Report::get_reports();
 		$brokenFilesReport = null;
 		foreach($reports as $report) {
-			if($report instanceof SideReport_BrokenFiles) {
+			if($report instanceof BrokenFilesReport) {
 				$brokenFilesReport = $report;
 				break;
 			}
 		}
 
 		// Determine that the report exists, otherwise it has been excluded.
-
-		if($brokenFilesReport) {
-
-			// ASSERT that the "draft" report has detected the page having a broken file.
-			// ASSERT that the "published" report has NOT detected the page having a broken file, as the page has not been "published" yet.
-
-			$this->isReportBroken($brokenFilesReport, true, false);
-
-			// Make sure the page is now "published".
-
-			$page->writeToStage('Live');
-
-			// ASSERT that the "draft" report has detected the page having a broken file.
-			// ASSERT that the "published" report has detected the page having a broken file.
-
-			$this->isReportBroken($brokenFilesReport, true, true);
-
-			// Correct the "draft" broken file.
-
-			$file = File::create();
-			$file->Filename = 'name.pdf';
-			$file->write();
-			$page->Content = str_replace('987654321', $file->ID, $page->Content);
-			$page->writeToStage('Stage');
-
-			// ASSERT that the "draft" report has NOT detected the page having a broken file.
-			// ASSERT that the "published" report has detected the page having a broken file, as the previous content remains "published".
-
-			$this->isReportBroken($brokenFilesReport, false, true);
-
-			// Make sure the change has now been "published".
-
-			$page->writeToStage('Live');
-
-			// ASSERT that the "draft" report has NOT detected the page having a broken file.
-			// ASSERT that the "published" report has NOT detected the page having a broken file.
-
-			$this->isReportBroken($brokenFilesReport, false, false);
+		if(!$brokenFilesReport){
+			$this->markTestSkipped('BrokenFilesReport is not an available report');
+			return;
 		}
+
+		// ASSERT that the "draft" report has detected the page having a broken file.
+		// ASSERT that the "published" report has NOT detected the page having a broken file, as the page has not been "published" yet.
+
+		$this->isReportBroken($brokenFilesReport, true, false);
+
+		// Make sure the page is now "published".
+
+		$page->writeToStage('Live');
+
+		// ASSERT that the "draft" report has detected the page having a broken file.
+		// ASSERT that the "published" report has detected the page having a broken file.
+
+		$this->isReportBroken($brokenFilesReport, true, true);
+
+		// Correct the "draft" broken file.
+
+		$file = File::create();
+		$file->Filename = 'name.pdf';
+		$file->write();
+		$page->Content = str_replace('987654321', $file->ID, $page->Content);
+		$page->writeToStage('Stage');
+
+		// ASSERT that the "draft" report has NOT detected the page having a broken file.
+		// ASSERT that the "published" report has detected the page having a broken file, as the previous content remains "published".
+
+		$this->isReportBroken($brokenFilesReport, false, true);
+
+		// Make sure the change has now been "published".
+
+		$page->writeToStage('Live');
+
+		// ASSERT that the "draft" report has NOT detected the page having a broken file.
+		// ASSERT that the "published" report has NOT detected the page having a broken file.
+
+		$this->isReportBroken($brokenFilesReport, false, false);
 	}
 
 	/**
@@ -209,53 +209,54 @@ class CmsReportsTest extends SapphireTest {
 		$reports = SS_Report::get_reports();
 		$brokenVirtualPagesReport = null;
 		foreach($reports as $report) {
-			if($report instanceof SideReport_BrokenVirtualPages) {
+			if($report instanceof BrokenVirtualPagesReport) {
 				$brokenVirtualPagesReport = $report;
 				break;
 			}
 		}
 
 		// Determine that the report exists, otherwise it has been excluded.
-
-		if($brokenVirtualPagesReport) {
-
-			// ASSERT that the "draft" report has detected the page having a broken link.
-			// ASSERT that the "published" report has NOT detected the page having a broken link, as the page has not been "published" yet.
-
-			$this->isReportBroken($brokenVirtualPagesReport, true, false);
-
-			// Make sure the page is now "published".
-
-			$page->writeToStage('Live');
-
-			// ASSERT that the "draft" report has detected the page having a broken link.
-			// ASSERT that the "published" report has detected the page having a broken link.
-
-			$this->isReportBroken($brokenVirtualPagesReport, true, true);
-
-			// Correct the "draft" broken link.
-
-			$contentPage = Page::create();
-			$contentPage->Content = 'This is some content.';
-			$contentPage->writeToStage('Stage');
-			$contentPage->writeToStage('Live');
-			$page->CopyContentFromID = $contentPage->ID;
-			$page->writeToStage('Stage');
-
-			// ASSERT that the "draft" report has NOT detected the page having a broken link.
-			// ASSERT that the "published" report has detected the page having a broken link, as the previous content remains "published".
-
-			$this->isReportBroken($brokenVirtualPagesReport, false, true);
-
-			// Make sure the change has now been "published".
-
-			$page->writeToStage('Live');
-
-			// ASSERT that the "draft" report has NOT detected the page having a broken link.
-			// ASSERT that the "published" report has NOT detected the page having a broken link.
-
-			$this->isReportBroken($brokenVirtualPagesReport, false, false);
+		if(!$brokenVirtualPagesReport){
+			$this->markTestSkipped('BrokenFilesReport is not an available report');
+			return;
 		}
+
+		// ASSERT that the "draft" report has detected the page having a broken link.
+		// ASSERT that the "published" report has NOT detected the page having a broken link, as the page has not been "published" yet.
+
+		$this->isReportBroken($brokenVirtualPagesReport, true, false);
+
+		// Make sure the page is now "published".
+
+		$page->writeToStage('Live');
+
+		// ASSERT that the "draft" report has detected the page having a broken link.
+		// ASSERT that the "published" report has detected the page having a broken link.
+
+		$this->isReportBroken($brokenVirtualPagesReport, true, true);
+
+		// Correct the "draft" broken link.
+
+		$contentPage = Page::create();
+		$contentPage->Content = 'This is some content.';
+		$contentPage->writeToStage('Stage');
+		$contentPage->writeToStage('Live');
+		$page->CopyContentFromID = $contentPage->ID;
+		$page->writeToStage('Stage');
+
+		// ASSERT that the "draft" report has NOT detected the page having a broken link.
+		// ASSERT that the "published" report has detected the page having a broken link, as the previous content remains "published".
+
+		$this->isReportBroken($brokenVirtualPagesReport, false, true);
+
+		// Make sure the change has now been "published".
+
+		$page->writeToStage('Live');
+
+		// ASSERT that the "draft" report has NOT detected the page having a broken link.
+		// ASSERT that the "published" report has NOT detected the page having a broken link.
+
+		$this->isReportBroken($brokenVirtualPagesReport, false, false);
 	}
 
 	/**
@@ -276,53 +277,54 @@ class CmsReportsTest extends SapphireTest {
 		$reports = SS_Report::get_reports();
 		$brokenRedirectorPagesReport = null;
 		foreach($reports as $report) {
-			if($report instanceof SideReport_BrokenRedirectorPages) {
+			if($report instanceof BrokenRedirectorPagesReport) {
 				$brokenRedirectorPagesReport = $report;
 				break;
 			}
 		}
 
 		// Determine that the report exists, otherwise it has been excluded.
-
-		if($brokenRedirectorPagesReport) {
-
-			// ASSERT that the "draft" report has detected the page having a broken link.
-			// ASSERT that the "published" report has NOT detected the page having a broken link, as the page has not been "published" yet.
-
-			$this->isReportBroken($brokenRedirectorPagesReport, true, false);
-
-			// Make sure the page is now "published".
-
-			$page->writeToStage('Live');
-
-			// ASSERT that the "draft" report has detected the page having a broken link.
-			// ASSERT that the "published" report has detected the page having a broken link.
-
-			$this->isReportBroken($brokenRedirectorPagesReport, true, true);
-
-			// Correct the "draft" broken link.
-
-			$contentPage = Page::create();
-			$contentPage->Content = 'This is some content.';
-			$contentPage->writeToStage('Stage');
-			$contentPage->writeToStage('Live');
-			$page->LinkToID = $contentPage->ID;
-			$page->writeToStage('Stage');
-
-			// ASSERT that the "draft" report has NOT detected the page having a broken link.
-			// ASSERT that the "published" report has detected the page having a broken link, as the previous content remains "published".
-
-			$this->isReportBroken($brokenRedirectorPagesReport, false, true);
-
-			// Make sure the change has now been "published".
-
-			$page->writeToStage('Live');
-
-			// ASSERT that the "draft" report has NOT detected the page having a broken link.
-			// ASSERT that the "published" report has NOT detected the page having a broken link.
-
-			$this->isReportBroken($brokenRedirectorPagesReport, false, false);
+		if(!$brokenRedirectorPagesReport){
+			$this->markTestSkipped('BrokenRedirectorPagesReport is not an available report');
+			return;
 		}
+
+		// ASSERT that the "draft" report has detected the page having a broken link.
+		// ASSERT that the "published" report has NOT detected the page having a broken link, as the page has not been "published" yet.
+
+		$this->isReportBroken($brokenRedirectorPagesReport, true, false);
+
+		// Make sure the page is now "published".
+
+		$page->writeToStage('Live');
+
+		// ASSERT that the "draft" report has detected the page having a broken link.
+		// ASSERT that the "published" report has detected the page having a broken link.
+
+		$this->isReportBroken($brokenRedirectorPagesReport, true, true);
+
+		// Correct the "draft" broken link.
+
+		$contentPage = Page::create();
+		$contentPage->Content = 'This is some content.';
+		$contentPage->writeToStage('Stage');
+		$contentPage->writeToStage('Live');
+		$page->LinkToID = $contentPage->ID;
+		$page->writeToStage('Stage');
+
+		// ASSERT that the "draft" report has NOT detected the page having a broken link.
+		// ASSERT that the "published" report has detected the page having a broken link, as the previous content remains "published".
+
+		$this->isReportBroken($brokenRedirectorPagesReport, false, true);
+
+		// Make sure the change has now been "published".
+
+		$page->writeToStage('Live');
+
+		// ASSERT that the "draft" report has NOT detected the page having a broken link.
+		// ASSERT that the "published" report has NOT detected the page having a broken link.
+
+		$this->isReportBroken($brokenRedirectorPagesReport, false, false);
 	}
 
 }

@@ -23,8 +23,8 @@ class FixtureContext extends \SilverStripe\BehatExtension\Context\FixtureContext
 
 	/**
 	 * Find or create a redirector page and link to another existing page.
-	 * Example: Given a "page" "My Redirect" which redirects to a "page" "Page 1" 
-	 * 
+	 * Example: Given a "page" "My Redirect" which redirects to a "page" "Page 1"
+	 *
 	 * @Given /^(?:(an|a|the) )"(?<type>[^"]+)" "(?<id>[^"]+)" (:?which )?redirects to (?:(an|a|the) )"(?<targetType>[^"]+)" "(?<targetId>[^"]+)"$/
 	 */
 	public function stepCreateRedirectorPage($type, $id, $targetType, $targetId) {
@@ -46,17 +46,17 @@ class FixtureContext extends \SilverStripe\BehatExtension\Context\FixtureContext
 	}
 	
 	/**
-	* 
+	*
 	* Check if the user can edit a page
-	*  
-	* Example: Then pages should be editable by "Admin" 
+	*
+	* Example: Then pages should be editable by "Admin"
 	* Then pages should not be editable by "Admin"
-	* 
+	*
 	* @Then /^pages should( not? |\s*)be editable by "([^"]*)"$/
 	*/
-	public function pagesShouldBeEditableBy($negative, $member){               
+	public function pagesShouldBeEditableBy($negative, $member){
 		$page = \Page::get()->First();
-           
+
 		return array(
 			new Step\Given('I am not logged in'),
 			new Step\Given('I am logged in with "' . $member . '" permissions'),

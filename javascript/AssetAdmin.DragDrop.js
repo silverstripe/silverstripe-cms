@@ -25,7 +25,7 @@
 			},
 			/**
 			 * Function: drop
-			 * 
+			 *
 			 * Take selected files and move them to a folder target in the tree.
 			 */
 			drop: function(e, ui) {
@@ -44,10 +44,10 @@
 			
 			/**
 			 * Function: getSelected
-			 * 
+			 *
 			 * Get the IDs of all selected files in the table.
 			 * Used for drag'n'drop.
-			 * 
+			 *
 			 * Returns:
 			 *  Array
 			 */
@@ -69,8 +69,8 @@
 					appendTo: 'body',
 					helper: function() {
 						return $(
-							'<div class="NumFilesIndicator">' +
-							ss.i18n.sprintf(ss.i18n._t('AssetTableField.MOVING'),container.getSelected().length) +
+							'<div class="NumFilesIndicator">'
+							ss.i18n.sprintf(ss.i18n._t('AssetTableField.MOVING'),container.getSelected().length)
 							'</div>'
 						);
 					}
@@ -83,10 +83,10 @@
 			},
 			/**
 			 * Function: onmousedown
-			 * 
+			 *
 			 * Parameters:
 			 * (Event) e
-			 * 
+			 *
 			 * Automatically select the checkbox in the same table row
 			 * to signify that this element is moved, and hint that
 			 * all checkboxed elements will be moved along with it.

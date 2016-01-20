@@ -2,7 +2,7 @@
 /**
  * @package cms
  * @subpackage tests
- * 
+ *
  * @todo Test canAddChildren()
  * @todo Test canCreate()
  */
@@ -40,10 +40,14 @@ class SiteTreePermissionsTest extends FunctionalTest {
 		$this->assertEquals($response->getStatusCode(), '404');
 		
 		// should be prompted for a login
-		$response = $this->get($page->URLSegment . '?stage=Stage');
+		try {
+			$response = $this->get($page->URLSegment . '?stage=Stage');
+		} catch(SS_HTTPResponse_Exception $responseException) {
+			$response = $responseException->getResponse();
+		}
 		$this->assertEquals($response->getStatusCode(), '302');
 		$this->assertContains(
-			Config::inst()->get('Security', 'login_url'), 
+			Config::inst()->get('Security', 'login_url'),
 			$response->getHeader('Location')
 		);
 		

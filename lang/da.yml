@@ -4,7 +4,10 @@ da:
     ActionAdd: 'Tilføj mappe'
     AppCategoryArchive: Arkiv
     AppCategoryAudio: Lyd
+    AppCategoryDocument: Dokument
+    AppCategoryFlash: Flash
     AppCategoryImage: Billeder
+    AppCategoryVideo: Video
     BackToFolder: 'Tilbage til mappen'
     CREATED: Dato
     CurrentFolderOnly: 'Begræns til den nuværende mappe'
@@ -24,6 +27,8 @@ da:
     Upload: Overfør
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Slet mapper'
+  AssetAdmin_Tools:
+    FILTER: Filter
   AssetTableField:
     BACKLINKCOUNT: 'Brugt på:'
     PAGES: side(r)
@@ -53,6 +58,8 @@ da:
   CMSAddPageController:
     Title: 'Tilføj side'
   CMSBatchActions:
+    ARCHIVE: Arkiv
+    ARCHIVED_PAGES: 'Arkiverede %d sider'
     DELETED_DRAFT_PAGES: 'Slettede %d sider fra kladdesiden, %d fejl'
     DELETED_PAGES: 'Slettede %d sider fra udgivet webside, %d fejl'
     DELETE_DRAFT_PAGES: 'Slet fra kladder'
@@ -64,6 +71,7 @@ da:
   CMSMain:
     ACCESS: 'Adgang til ''{title}'' sektionen'
     ACCESS_HELP: 'Tillad visning af den sektion, som indeholder sidetræet og indhold. Visnings- og redigeringstilladelser kan håndteres gennem sidespecifikke rullemenuer, såvel som de enkelte "Inholdstilladelser".'
+    ARCHIVE: Arkiv
     AddNew: 'Tilføj ny side'
     AddNewButton: 'Tilføj ny'
     ChoosePageParentMode: 'Vælg hvor denne side skal oprettes'
@@ -73,13 +81,10 @@ da:
     DELETEFP: Slet
     DESCREMOVED: 'og {count} efterkommere'
     EditTree: 'Rediger sidetræ'
-    ListFiltered: 'Filtreret liste.'
     MENUTITLE: 'Rediger side'
     NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Denne side eksisterer ikke'
-    PAGES: Sider
     PAGETYPEANYOPT: Enhver
-    PAGETYPEOPT: 'Sidetype'
     PUBALLCONFIRM: 'Udgiv alle sider på sitet. Kopierer indhold fra kladde til offentlig'
     PUBALLFUN: '"Udgiv alle" funktionalitet'
     PUBALLFUN2: "Hvis du trykker på denne knap, svarer det til at gå til hver enkel side og vælge udgiv. Det er hensigten at denne funktion benyttes når der er blevet lavet mange ændringer på flere sider, som f.eks da websitet blev påbegyndt."
@@ -93,10 +98,7 @@ da:
     TabContent: Indhold
     TabHistory: Historik
     TabSettings: Indstillinger
-    TreeFiltered: 'Filtreret sidetræ.'
-    TreeFilteredClear: 'Nulstil filter'
   CMSMain_left_ss:
-    APPLY_FILTER: 'Anvend filter'
     RESET: Nulstil
   CMSPageAddController:
     MENUTITLE: 'Tilføj side'
@@ -127,15 +129,12 @@ da:
     ListView: 'Listevisning'
     MENUTITLE: Sider
     TreeView: 'Trævisning'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Multivalg
   CMSPagesController_Tools_ss:
     FILTER: Filtre
   CMSSearch:
     FILTERDATEFROM: Fra
     FILTERDATEHEADING: Dato
     FILTERDATETO: Til
-    FILTERLABELTEXT: Indhold
   CMSSettingsController:
     MENUTITLE: Indstillinger
   CMSSiteTreeFilter_Search:
@@ -152,6 +151,7 @@ da:
     LOGIN: Log ind
     LOGOUT: 'Log ud'
     NOTLOGGEDIN: 'Ikke logget ind'
+    PUBLISHED: Udgivet
     PUBLISHEDSITE: 'Udgivet side'
     Password: Adgangskode
     UnableDeleteInstall: 'Var ikke i stand til at slette installationsfilerne. Slet venligst filerne herunder manuelt.'
@@ -240,6 +240,9 @@ da:
     APPEARSVIRTUALPAGES: 'Dette indhold er også på de virtuelle sider i {title}sektionerne'
     BUTTONCANCELDRAFT: 'Annuller ændringer i kladden '
     BUTTONCANCELDRAFTDESC: 'Slet kladden og benyt istedet den nuværende side'
+    BUTTONPUBLISHED: Udgivet
+    BUTTONSAVED: Gemt
+    BUTTONSAVEPUBLISH: 'Gem & udgiv'
     BUTTONUNPUBLISH: Annuller udgivelse
     BUTTONUNPUBLISHDESC: 'Fjern denne side fra det udgivne websted'
     Comments: Kommentarer

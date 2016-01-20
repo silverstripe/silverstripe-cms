@@ -1,4 +1,4 @@
-&nbsp; &nbsp; 
+&nbsp; &nbsp;
 <a id="SilverStripeNavigatorLink" href="#">
 	<% _t('SilverStripeNavigatorLink.ShareLink','Share link') %>
 </a>

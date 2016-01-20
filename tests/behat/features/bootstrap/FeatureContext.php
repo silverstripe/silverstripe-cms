@@ -47,7 +47,7 @@ class FeatureContext extends \SilverStripe\Framework\Test\Behaviour\FeatureConte
 				$obj->publish('Stage', 'Live');
 			});
 			$factory->define($class, $blueprint);
-		} 
+		}
 
 	}
 }

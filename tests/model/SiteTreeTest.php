@@ -413,7 +413,7 @@ class SiteTreeTest extends SapphireTest {
 		Versioned::reading_stage('Stage');
 		Config::inst()->update('SiteTree', 'enforce_strict_hierarchy', true);
 	}
-    
+
 	public function testDeleteFromLiveOperatesRecursivelyStrict() {
 		$this->logInWithPermission('ADMIN');
 
@@ -1192,7 +1192,7 @@ class SiteTreeTest_Conflicted_Controller extends Page_Controller implements Test
 			return parent::hasActionTemplate($template);
 		}
 	}
-	 
+	
 }
 
 class SiteTreeTest_NullHtmlCleaner extends HTMLCleaner {
@@ -1210,7 +1210,7 @@ class SiteTreeTest_ClassA extends Page implements TestOnly {
 
 class SiteTreeTest_ClassB extends Page implements TestOnly {
 	// Also allowed subclasses
-	private static $allowed_children = array('SiteTreeTest_ClassC'); 
+	private static $allowed_children = array('SiteTreeTest_ClassC');
 }
 
 class SiteTreeTest_ClassC extends Page implements TestOnly {

@@ -16,16 +16,18 @@ class BrokenFilesReport extends SS_Report {
 
 	public function sourceRecords($params = null) {
 		// Get class names for page types that are not virtual pages or redirector pages
-		$classes = array_diff(ClassInfo::subclassesFor('SiteTree'), ClassInfo::subclassesFor('VirtualPage'), ClassInfo::subclassesFor('RedirectorPage'));
+		$classes = array_diff(
+			ClassInfo::subclassesFor('SiteTree'),
+			ClassInfo::subclassesFor('VirtualPage'),
+			ClassInfo::subclassesFor('RedirectorPage')
+		);
+		$classParams = DB::placeholders($classes);
+		$classFilter = array(
+			"\"ClassName\" IN ($classParams) AND \"HasBrokenFile\" = 1" => $classes
+		);
 		
-		$classNames = "'".join("','", $classes)."'";
-		
-		if (isset($_REQUEST['OnLive'])) {
-			$ret = Versioned::get_by_stage('SiteTree', 'Live', "\"ClassName\" IN ($classNames) AND \"HasBrokenFile\" = 1");
-		} else {
-			$ret = DataObject::get('SiteTree', "\"ClassName\" IN ($classNames) AND \"HasBrokenFile\" = 1");
-		}
-		return $ret;
+		$stage = isset($params['OnLive']) ? 'Live' : 'Stage';
+		return Versioned::get_by_stage('SiteTree', $stage, $classFilter);
 	}
 
 	public function columns() {
@@ -41,5 +43,15 @@ class BrokenFilesReport extends SS_Report {
 		return new FieldList(
 			new CheckboxField('OnLive', _t('SideReport.ParameterLiveCheckbox', 'Check live site'))
 		);
+	}
+}
+
+/**
+ * @deprecated 3.2..4.0
+ */
+class SideReport_BrokenFiles extends BrokenFilesReport {
+	public function __construct() {
+		Deprecation::notice('4.0', 'Use BrokenFilesReport instead');
+		parent::__construct();
 	}
 }

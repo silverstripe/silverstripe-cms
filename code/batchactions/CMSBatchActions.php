@@ -1,7 +1,7 @@
 <?php
 /**
  * Publish items batch action.
- * 
+ *
  * @package cms
  * @subpackage batchaction
  */
@@ -23,7 +23,7 @@ class CMSBatchAction_Publish extends CMSBatchAction {
 
 /**
  * Unpublish items batch action.
- * 
+ *
  * @package cms
  * @subpackage batchaction
  */
@@ -116,7 +116,7 @@ class CMSBatchAction_Restore extends CMSBatchAction {
 
 /**
  * Delete items batch action.
- * 
+ *
  * @package cms
  * @subpackage batchaction
  * @deprecated since version 4.0
@@ -141,7 +141,7 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 			if($page->canDelete()) $page->delete();
 			else $status['error'][$page->ID] = true;
 
-			// check to see if the record exists on the live site, 
+			// check to see if the record exists on the live site,
 			// if it doesn't remove the tree node
 			$liveRecord = Versioned::get_one_by_stage( 'SiteTree', 'Live', array(
 				'"SiteTree"."ID"' => $id
@@ -166,7 +166,7 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 
 /**
  * Unpublish (delete from live site) items batch action.
- * 
+ *
  * @package cms
  * @subpackage batchaction
  * @deprecated since version 4.0

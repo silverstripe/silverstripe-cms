@@ -3,7 +3,7 @@
 /**
  * Used to edit the SiteTree->URLSegment property, and suggest input based on the serverside rules
  * defined through {@link SiteTree->generateURLSegment()} and {@link URLSegmentFilter}.
- * 
+ *
  * Note: The actual conversion for saving the value takes place in the model layer.
  *
  * @package cms
@@ -12,8 +12,8 @@
 
 class SiteTreeURLSegmentField extends TextField {
 	
-	/** 
-	 * @var string 
+	/**
+	 * @var string
 	 */
 	protected $helpText, $urlPrefix, $urlSuffix, $defaultUrl;
 	

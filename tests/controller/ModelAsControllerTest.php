@@ -14,8 +14,8 @@ class ModelAsControllerTest extends FunctionalTest {
 	protected $orig = array();
 
 	/**
-	 * New tests require nested urls to be enabled, but the site might not 
-	 * support nested URLs. 
+	 * New tests require nested urls to be enabled, but the site might not
+	 * support nested URLs.
 	 * This setup will enable nested-urls for this test and resets the state
 	 * after the tests have been performed.
 	 */
@@ -27,8 +27,8 @@ class ModelAsControllerTest extends FunctionalTest {
 	}
 
 	/**
-	 * New tests require nested urls to be enabled, but the site might not 
-	 * support nested URLs. 
+	 * New tests require nested urls to be enabled, but the site might not
+	 * support nested URLs.
 	 * This setup will enable nested-urls for this test and resets the state
 	 * after the tests have been performed.
 	 */
@@ -81,14 +81,14 @@ class ModelAsControllerTest extends FunctionalTest {
 	 * all pages will be found by their old segments.
 	 *
 	 * NOTE: This test requires nested_urls
-	 * 
+	 *
 	 * Original: level1/level2/level3
 	 * Republished as: newlevel1/newlevel2/newlevel3
 	 */
 	public function testRedirectsNestedRenamedPages(){
 		$this->generateNestedPagesFixture();
 		
-		// check a first level URLSegment 
+		// check a first level URLSegment
 		$response = $this->get('level1/action');
 		$this->assertEquals($response->getStatusCode(),301);
 		$this->assertEquals(
@@ -96,7 +96,7 @@ class ModelAsControllerTest extends FunctionalTest {
 			$response->getHeader('Location')
 		);
 		
-		// check second level URLSegment 
+		// check second level URLSegment
 		$response = $this->get('newlevel1/level2');
 		$this->assertEquals($response->getStatusCode(),301 );
 		$this->assertEquals(
@@ -104,7 +104,7 @@ class ModelAsControllerTest extends FunctionalTest {
 			$response->getHeader('Location')
 		);
 		
-		// check third level URLSegment 
+		// check third level URLSegment
 		$response = $this->get('newlevel1/newlevel2/level3');
 		$this->assertEquals($response->getStatusCode(), 301);
 		$this->assertEquals(
@@ -199,7 +199,7 @@ class ModelAsControllerTest extends FunctionalTest {
 
 		$response = $this->get('newlevel1/otherparent');
 		$this->assertEquals(
-			$response->getStatusCode(), 
+			$response->getStatusCode(),
 			404,
 			'Requesting an unrelated page on a renamed parent should be interpreted as a missing action, not a redirect'
 		);
@@ -208,12 +208,12 @@ class ModelAsControllerTest extends FunctionalTest {
 	/**
 	 *
 	 * NOTE: This test requires nested_urls
-	 * 
+	 *
 	 */
 	public function testRedirectsNestedRenamedPagesWithGetParameters() {
 		$this->generateNestedPagesFixture();
 		
-		// check third level URLSegment 
+		// check third level URLSegment
 		$response = $this->get('newlevel1/newlevel2/level3/?foo=bar&test=test');
 		$this->assertEquals($response->getStatusCode(), 301);
 		$this->assertEquals(
@@ -225,7 +225,7 @@ class ModelAsControllerTest extends FunctionalTest {
 	/**
 	 *
 	 * NOTE: This test requires nested_urls
-	 * 
+	 *
 	 */
 	public function testDoesntRedirectToNestedRenamedPageWhenNewExists() {
 		$this->generateNestedPagesFixture();
@@ -239,14 +239,14 @@ class ModelAsControllerTest extends FunctionalTest {
 		
 		$response = $this->get('level1');
 		$this->assertEquals(
-			$response->getStatusCode(), 
+			$response->getStatusCode(),
 			200
 		);
 		
 		$response = $this->get('level1/newlevel2');
 		$this->assertEquals(
-			$response->getStatusCode(), 
-			404, 
+			$response->getStatusCode(),
+			404,
 			'The old newlevel2/ URLSegment is checked as an action on the new page, which shouldnt exist.'
 		);
 	}
@@ -254,7 +254,7 @@ class ModelAsControllerTest extends FunctionalTest {
 	/**
 	 *
 	 * NOTE: This test requires nested_urls
-	 * 
+	 *
 	 */
 	public function testFindOldPage(){
 		$page = new Page();

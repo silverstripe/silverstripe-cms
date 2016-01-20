@@ -3,14 +3,14 @@ Group:
       Title: Editors
    admins:
       Title: Administrators
-      
+
 Permission:
    admins:
       Code: VIEW_DRAFT_CONTENT
       Group: =>Group.admins
    editors:
       Group: =>Group.editors
-      
+
 Member:
    editor:
       FirstName: Test
@@ -43,4 +43,4 @@ ContentControllerTest_Page:
     URLSegment: contact
     CanViewType: OnlyTheseUsers
     EditorGroups: =>Group.admins
-    
+

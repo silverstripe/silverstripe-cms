@@ -61,6 +61,7 @@ nl:
   CMSAddPageController:
     Title: 'Pagina toevoegen'
   CMSBatchActions:
+    ARCHIVE: Archief
     DELETED_DRAFT_PAGES: '%d pagina''s van de concept-site verwijderd, %d mislukt'
     DELETED_PAGES: '%d pagina''s van de gepubliceerde site verwijderd, %d mislukt'
     DELETE_DRAFT_PAGES: 'Verwijder van concept site'
@@ -72,6 +73,7 @@ nl:
   CMSMain:
     ACCESS: 'Toegang tot het ''{title}'' gedeelte'
     ACCESS_HELP: 'Bevoegdheid om paginastructuur en inhoud te bekijken. Bekijk- en bewerkingstoestemmingen kunnen worden toegekend met pagina-specifieke menu''s en het aparte "Inhoudsmachtigingen".'
+    ARCHIVE: Archief
     AddNew: 'Voeg nieuwe pagina toe'
     AddNewButton: 'Nieuw'
     AddPageRestriction: 'Opmerking: Sommige paginatypes zijn niet toegestaan ​​voor deze selectie'
@@ -86,13 +88,10 @@ nl:
     DUPLICATEDWITHCHILDREN: '''{title}'' en onderliggende items met succes gedupliceerd'
     EMAIL: E-mail
     EditTree: 'Paginastructuur aanpassen'
-    ListFiltered: 'Gefilterde lijst.'
     MENUTITLE: 'Wijzig pagina'
     NEWPAGE: 'Nieuwe {pagetype}'
     PAGENOTEXISTS: 'Deze pagina bestaat niet'
-    PAGES: Pagina 's
     PAGETYPEANYOPT: Elke
-    PAGETYPEOPT: 'Paginatype'
     PUBALLCONFIRM: 'Publiceer elke pagina van de site: dit kopieert de inhoud van de concept site naar de live site'
     PUBALLFUN: '"Publiceer alles" functionaliteit'
     PUBALLFUN2: "Op deze knop klikken heeft hetzelfde resultaat als bij elke pagina's op \"Publiceer\" te klikken. Het is bedoeld om te gebruiken wanneer er erg grote inhoudsaanpassingen gebeurd zijn, bijvoorbeeld wanneer een nieuwe site voor het eerst gebouwd wordt."
@@ -110,10 +109,7 @@ nl:
     TabContent: Inhoud
     TabHistory: Geschiedenis
     TabSettings: Instellingen
-    TreeFiltered: 'Gefilterde boomstructuur.'
-    TreeFilteredClear: 'Filter leegmaken'
   CMSMain_left_ss:
-    APPLY_FILTER: 'Filter toepassen'
     RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Pagina toevoegen'
@@ -145,15 +141,12 @@ nl:
     ListView: 'Lijstweergave'
     MENUTITLE: Pagina's
     TreeView: 'Hierarchische weergave'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Meervoudige selectie
   CMSPagesController_Tools_ss:
     FILTER: Filteren
   CMSSearch:
     FILTERDATEFROM: Van
     FILTERDATEHEADING: Datum
     FILTERDATETO: Tot
-    FILTERLABELTEXT: Inhoud
   CMSSettingsController:
     MENUTITLE: Instellingen
   CMSSiteTreeFilter_Search:

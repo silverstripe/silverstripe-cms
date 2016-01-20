@@ -9,6 +9,18 @@ class CMSMainTest extends FunctionalTest {
 
 	static protected $orig = array();
 
+	public function setUp() {
+		parent::setUp();
+
+		// Clear automatically created siteconfigs (in case one was created outside of the specified fixtures).
+		$ids = $this->allFixtureIDs('SiteConfig');
+		if($ids) {
+			foreach(SiteConfig::get()->exclude('ID', $ids) as $config) {
+				$config->delete();
+			}
+		}
+	}
+
 	function testSiteTreeHints() {
 		$cache = SS_Cache::factory('CMSMain_SiteTreeHints');
 		// Login as user with root creation privileges
@@ -106,7 +118,7 @@ class CMSMainTest extends FunctionalTest {
 			$this->assertArrayHasKey($page2->ID, $responseData['modified']);
 		}
 
-		// Get the latest version of the redirector page 
+		// Get the latest version of the redirector page
 		$pageID = $this->idFromFixture('RedirectorPage', 'page5');
 		$latestID = DB::prepared_query('select max("Version") from "RedirectorPage_versions" where "RecordID" = ?', array($pageID))->value();
 		$dsCount = DB::prepared_query('select count("Version") from "RedirectorPage_versions" where "RecordID" = ? and "Version"= ?', array($pageID, $latestID))->value();
@@ -262,16 +274,16 @@ class CMSMainTest extends FunctionalTest {
 		$cmsUser->logIn();
 		$this->get('admin/pages/add');
 		$response = $this->post(
-				'admin/pages/add/AddForm',
-				array(
-						'ParentID' => '0',
-						'PageType' => 'Page',
-						'Locale' => 'en_US',
-						'action_doAdd' => 1,
-						'ajax' => 1,
-				), array(
-						'X-Pjax' => 'CurrentForm,Breadcrumbs',
-				)
+			'admin/pages/add/AddForm',
+			array(
+				'ParentID' => '0',
+				'PageType' => 'Page',
+				'Locale' => 'en_US',
+				'action_doAdd' => 1,
+				'ajax' => 1,
+			), array(
+				'X-Pjax' => 'CurrentForm,Breadcrumbs',
+			)
 		);
 		// should redirect, which is a permission error
 		$this->assertEquals(403, $response->getStatusCode(), 'Add TopLevel page must fail for normal user');
@@ -281,16 +293,16 @@ class CMSMainTest extends FunctionalTest {
 		$response = $this->get('admin/pages/add');
 
 		$response = $this->post(
-				'admin/pages/add/AddForm',
-				array(
-						'ParentID' => '0',
-						'PageType' => 'Page',
-						'Locale' => 'en_US',
-						'action_doAdd' => 1,
-						'ajax' => 1,
-				), array(
-						'X-Pjax' => 'CurrentForm,Breadcrumbs',
-				)
+			'admin/pages/add/AddForm',
+			array(
+				'ParentID' => '0',
+				'PageType' => 'Page',
+				'Locale' => 'en_US',
+				'action_doAdd' => 1,
+				'ajax' => 1,
+			), array(
+				'X-Pjax' => 'CurrentForm,Breadcrumbs',
+			)
 		);
 
 		$location = $response->getHeader('X-ControllerURL');
@@ -312,27 +324,60 @@ class CMSMainTest extends FunctionalTest {
 		// Create toplevel page
 		$this->get('admin/pages/add');
 		$response = $this->post(
-				'admin/pages/add/AddForm',
-				array('ParentID' => '0', 'PageType' => 'CMSMainTest_ClassA', 'Locale' => 'en_US', 'action_doAdd' => 1)
+			'admin/pages/add/AddForm',
+			array(
+				'ParentID' => '0',
+				'PageType' => 'CMSMainTest_ClassA',
+				'Locale' => 'en_US',
+				'action_doAdd' => 1,
+				'ajax' => 1
+			), array(
+				'X-Pjax' => 'CurrentForm,Breadcrumbs',
+			)
 		);
 		$this->assertFalse($response->isError());
-		preg_match('/edit\/show\/(\d*)/', $response->getHeader('Location'), $matches);
+		$ok = preg_match('/edit\/show\/(\d*)/', $response->getHeader('X-ControllerURL'), $matches);
+		$this->assertNotEmpty($ok);
 		$newPageId = $matches[1];
 
 		// Create allowed child
 		$this->get('admin/pages/add');
 		$response = $this->post(
-				'admin/pages/add/AddForm',
-				array('ParentID' => $newPageId, 'PageType' => 'CMSMainTest_ClassB', 'Locale' => 'en_US', 'action_doAdd' => 1)
+			'admin/pages/add/AddForm',
+			array(
+				'ParentID' => $newPageId,
+				'PageType' => 'CMSMainTest_ClassB',
+				'Locale' => 'en_US',
+				'action_doAdd' => 1,
+				'ajax' => 1
+			), array(
+				'X-Pjax' => 'CurrentForm,Breadcrumbs',
+			)
 		);
 		$this->assertFalse($response->isError());
-		$this->assertNull($response->getBody());
+		$this->assertEmpty($response->getBody());
+
+		// Verify that the page was created and redirected to accurately
+		$newerPage = SiteTree::get()->byID($newPageId)->AllChildren()->first();
+		$this->assertNotEmpty($newerPage);
+		$ok = preg_match('/edit\/show\/(\d*)/', $response->getHeader('X-ControllerURL'), $matches);
+		$this->assertNotEmpty($ok);
+		$newerPageID = $matches[1];
+		$this->assertEquals($newerPage->ID, $newerPageID);
 
 		// Create disallowed child
 		$this->get('admin/pages/add');
 		$response = $this->post(
-				'admin/pages/add/AddForm',
-				array('ParentID' => $newPageId, 'PageType' => 'Page', 'Locale' => 'en_US', 'action_doAdd' => 1)
+			'admin/pages/add/AddForm',
+			array(
+				'ParentID' => $newPageId,
+				'PageType' => 'Page',
+				'Locale' => 'en_US',
+				'action_doAdd' => 1,
+				'ajax' => 1
+			), array(
+				'X-Pjax' => 'CurrentForm,Breadcrumbs',
+			)
 		);
 		$this->assertEquals(403, $response->getStatusCode(), 'Add disallowed child should fail');
 

@@ -44,7 +44,7 @@
 			 * Similar implementation to LeftAndMain.Tree.js.
 			 */
 			updateTypeList: function() {
-				var hints = this.data('hints'), 
+				var hints = this.data('hints'),
 					parentTree = this.find('#Form_AddForm_ParentID_Holder .TreeDropdownField'),
 					parentMode = this.find("input[name=ParentModeField]:checked").val(),
 					metadata = parentTree.data('metadata'),
@@ -101,7 +101,7 @@
 			},
 			/**
 			 * Update the selection filter with the given blacklist and default selection
-			 * 
+			 *
 			 * @param array disallowedChildren
 			 * @param string defaultChildClass
 			 */
@@ -109,7 +109,7 @@
 				// Limit selection
 				var allAllowed = null; // troolian
 				this.find('#Form_AddForm_PageType li').each(function() {
-					var className = $(this).find('input').val(), 
+					var className = $(this).find('input').val(),
 						isAllowed = ($.inArray(className, disallowedChildren) === -1);
 					
 					$(this).setEnabled(isAllowed);

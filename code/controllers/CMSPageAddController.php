@@ -50,7 +50,7 @@ class CMSPageAddController extends CMSPageEditController {
 					new SelectionGroup_Item(
 						'child',
 						$parentField = new TreeDropdownField(
-							"ParentID",
+							"ParentID", 
 							"",
 							'SiteTree',
 							'ID',
@@ -61,8 +61,8 @@ class CMSPageAddController extends CMSPageEditController {
 				)
 			),
 			$typeField = new OptionsetField(
-				"PageType",
-				sprintf($numericLabelTmpl, 2, _t('CMSMain.ChoosePageType', 'Choose page type')),
+				"PageType", 
+				sprintf($numericLabelTmpl, 2, _t('CMSMain.ChoosePageType', 'Choose page type')), 
 				$pageTypes,
 				'Page'
 			),
@@ -71,7 +71,7 @@ class CMSPageAddController extends CMSPageEditController {
 				sprintf(
 					'<p class="message notice message-restricted">%s</p>',
 					_t(
-						'CMSMain.AddPageRestriction',
+						'CMSMain.AddPageRestriction', 
 						'Note: Some page types are not allowed for this selection'
 					)
 				)
@@ -79,7 +79,7 @@ class CMSPageAddController extends CMSPageEditController {
 		);
 		$parentField->setSearchFunction(function ($sourceObject, $labelField, $search) {
 			return DataObject::get(
-				$sourceObject,
+				$sourceObject, 
 				sprintf(
 					"\"MenuTitle\" LIKE '%%%s%%' OR \"Title\" LIKE '%%%s%%'",
 					Convert::raw2sql($search),
@@ -88,10 +88,10 @@ class CMSPageAddController extends CMSPageEditController {
 			);
 		});
 
-		// TODO Re-enable search once it allows for HTML title display,
+		// TODO Re-enable search once it allows for HTML title display, 
 		// see http://open.silverstripe.org/ticket/7455
 		// $parentField->setShowSearch(true);
-
+		
 		$parentModeField->addExtraClass('parent-mode');
 
 		// CMSMain->currentPageID() automatically sets the homepage,
@@ -102,7 +102,7 @@ class CMSPageAddController extends CMSPageEditController {
 		} else {
 			$parentModeField->setValue('top');
 		}
-
+		
 		$actions = new FieldList(
 			FormAction::create("doAdd", _t('CMSMain.Create',"Create"))
 				->addExtraClass('ss-ui-action-constructive')->setAttribute('data-icon', 'accept')
@@ -111,10 +111,10 @@ class CMSPageAddController extends CMSPageEditController {
 				->addExtraClass('ss-ui-action-destructive ss-ui-action-cancel')
 				->setUseButtonTag(true)
 		);
-
+		
 		$this->extend('updatePageOptions', $fields);
-
-		$form = CMSForm::create(
+		
+		$form = CMSForm::create( 
 			$this, "AddForm", $fields, $actions
 		)->setHTMLID('Form_AddForm');
 		$form->setAttribute('data-hints', $this->SiteTreeHints());
@@ -140,7 +140,7 @@ class CMSPageAddController extends CMSPageEditController {
 
 		if(is_numeric($parentID) && $parentID > 0) $parentObj = DataObject::get_by_id("SiteTree", $parentID);
 		else $parentObj = null;
-
+		
 		if(!$parentObj || !$parentObj->ID) $parentID = 0;
 
 		if(!singleton($className)->canCreate(Member::currentUser(), array('Parent' => $parentObj))) {
@@ -163,11 +163,11 @@ class CMSPageAddController extends CMSPageEditController {
 		$editController->setCurrentPageID($record->ID);
 
 		Session::set(
-			"FormInfo.Form_EditForm.formError.message",
+			"FormInfo.Form_EditForm.formError.message", 
 			_t('CMSMain.PageAdded', 'Successfully created page')
 		);
 		Session::set("FormInfo.Form_EditForm.formError.type", 'good');
-
+		
 		return $this->redirect(Controller::join_links(singleton('CMSPageEditController')->Link('show'), $record->ID));
 	}
 

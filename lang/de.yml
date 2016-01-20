@@ -71,6 +71,8 @@ de:
     PUBLISH_PAGES: Veröffentlichen
     RESTORE: Wiederherstellen
     RESTORED_PAGES: '%d Seiten wiederhergestellt'
+    UNPUBLISHED_PAGES: 'Veröffentlichung von %d Seiten zurückgenommen'
+    UNPUBLISH_PAGES: Veröffentlichung zurücknehmen
   CMSFileAddController:
     MENUTITLE: Dateien
   CMSMain:
@@ -92,13 +94,11 @@ de:
     DUPLICATEDWITHCHILDREN: '''{title}'' und alle Unterseiten wurden erfolgreich dupliziert'
     EMAIL: E-Mail
     EditTree: 'Seitenbaum bearbeiten'
-    ListFiltered: 'Gefilterte Liste'
     MENUTITLE: 'Seite bearbeiten'
     NEWPAGE: 'Neue {pagetype}'
     PAGENOTEXISTS: 'Diese Seite existiert nicht'
-    PAGES: Seiten
     PAGETYPEANYOPT: Alle
-    PAGETYPEOPT: 'Seitentyp'
+    PAGETYPEOPT: 'Seitentyp:'
     PUBALLCONFIRM: 'Veröffentlicht jede Seite des Seitenbaumes und kopiert den Inhalt von Entwurf zu Live.'
     PUBALLFUN: '"Alle veröffentlichen"-Funktion'
     PUBALLFUN2: "Dieser Button bewirkt dasselbe wie auf jeder Seite \"veröffentlichen\" zu wählen. Sie sollten diese Funktion nutzen, wenn grössere Inhaltsänderungen stattgefunden haben, zum Beispiel wenn die Seite erstellt wurde."
@@ -107,6 +107,7 @@ de:
     REMOVED: 'Lösche ''{title}''{description} von Live Umgebung'
     REMOVEDPAGE: '''{title}'' wurde von der veröffentlichten Site entfernt'
     REMOVEDPAGEFROMDRAFT: 'Lösche ''%s'' von der Entwurfs-Site'
+    RESTORE: 'Entwurf wiederherstellen'
     RESTORED: '''{title}'' wurde wiederhergestellt'
     RESTORE_DESC: 'Entwurf aus archivierter Version wiederherstellen'
     RESTORE_TO_ROOT: 'Entwurf in oberster Ebene wiederherstellen'
@@ -119,11 +120,10 @@ de:
     TabContent: Inhalt
     TabHistory: Historie
     TabSettings: Einstellungen
-    TreeFiltered: 'Seitenbaum gefiltert'
-    TreeFilteredClear: 'Filter zurücksetzen'
+    TreeFilteredClear: Zurücksetzen
   CMSMain_left_ss:
-    APPLY_FILTER: 'Filter anwenden'
-    CLEAR_FILTER: 'Filter zurücksetzen'
+    APPLY_FILTER: Suchen
+    CLEAR_FILTER: Zurücksetzen
     RESET: Zurücksetzen
   CMSPageAddController:
     MENUTITLE: 'Seite hinzufügen'
@@ -155,21 +155,28 @@ de:
     ListView: 'Listenansicht'
     MENUTITLE: Seiten
     TreeView: 'Baumansicht'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Mehrfachauswahl
   CMSPagesController_Tools_ss:
     FILTER: Filter
   CMSSIteTreeFilter_PublishedPages:
-    Title: 'Nicht veröffentlichte Seiten'
+    Title: 'Veröffentlichte Seiten'
   CMSSearch:
     FILTERDATEFROM: Von
     FILTERDATEHEADING: Datum
     FILTERDATETO: Bis
-    FILTERLABELTEXT: Inhalt
+    FILTERLABELTEXT: Suchen
+    PAGEFILTERDATEHEADING: 'Zuletzt bearbeitet'
   CMSSettingsController:
     MENUTITLE: Einstellungen
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Geänderte Seiten'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Alle Seiten, auch archivierte'
   CMSSiteTreeFilter_Search:
     Title: 'Alle Seiten'
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Alle Seiten, auch archivierte'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Entwürfe'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Veröffentlicht aber aus Entwurf entfernt'
   ContentControl:
@@ -287,6 +294,7 @@ de:
   SilverStripeNavigator:
     ARCHIVED: Archiviert
   SilverStripeNavigatorLink:
+    ShareInstructions: 'Kopieren Sie den untenstehenden Link um ihn zu teilen.'
     ShareLink: 'Link teilen'
   SilverStripeNavigatorLinkl:
     CloseLink: schließen

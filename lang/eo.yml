@@ -92,13 +92,10 @@ eo:
     DUPLICATEDWITHCHILDREN: 'Sukcese duobligis je ''{title}'' kaj idoj'
     EMAIL: Retpoŝto
     EditTree: 'Redakta arbo'
-    ListFiltered: 'Filtrita listo.'
     MENUTITLE: 'Redakti paĝon'
     NEWPAGE: 'Nova {pagetype}'
     PAGENOTEXISTS: 'Ĉi tiu paĝo ne ekzistas'
-    PAGES: Paĝoj
     PAGETYPEANYOPT: Ajna
-    PAGETYPEOPT: 'Tipo de paĝo'
     PUBALLCONFIRM: 'Bonvolu eldoni ĉiun paĝon en la retejo, kopiante enhavan stadion al la publika'
     PUBALLFUN: 'Funkcio "Eldoni Ĉiujn"'
     PUBALLFUN2: "Premi ĉi tiun butonon estas same kiel viziti al ĉiu paĝo kaj premi je \"eldoni\". La intenco estas ke oni uzu ĝin post multnombraj redaktoj de la enhavo, ekzemple kiam oni unue konstruis la retejon."
@@ -119,11 +116,7 @@ eo:
     TabContent: Enhavo
     TabHistory: Historio
     TabSettings: Agordoj
-    TreeFiltered: 'Filtrita arbo.'
-    TreeFilteredClear: 'Vakigi filtrilon'
   CMSMain_left_ss:
-    APPLY_FILTER: 'Apliki filtrilon'
-    CLEAR_FILTER: 'Vakigi filtrilon'
     RESET: Restartigi
   CMSPageAddController:
     MENUTITLE: 'Enmeti paĝon'
@@ -155,8 +148,6 @@ eo:
     ListView: 'Lista vido'
     MENUTITLE: Paĝoj
     TreeView: 'Arba vido'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Plurelekto
   CMSPagesController_Tools_ss:
     FILTER: Filtri
   CMSSIteTreeFilter_PublishedPages:
@@ -165,7 +156,6 @@ eo:
     FILTERDATEFROM: De
     FILTERDATEHEADING: Dato
     FILTERDATETO: Al
-    FILTERLABELTEXT: Enhavo
   CMSSettingsController:
     MENUTITLE: Agordoj
   CMSSiteTreeFilter_Search:

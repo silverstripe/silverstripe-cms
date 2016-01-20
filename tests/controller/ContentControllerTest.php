@@ -4,13 +4,13 @@
  * @subpackage tests
  */
 class ContentControllerTest extends FunctionalTest {
-	
+
 	protected static $fixture_file = 'ContentControllerTest.yml';
-	
+
 	protected static $use_draft_site = true;
 
 	protected static $disable_themes = true;
-	
+
 	/**
 	 * Test that nested pages, basic actions, and nested/non-nested URL switching works properly
 	 */
@@ -93,25 +93,31 @@ class ContentControllerTest extends FunctionalTest {
 	}
 
 	public function testViewDraft(){
-		
+
 		// test when user does not have permission, should get login form
 		$this->logInWithPermission('EDITOR');
-		$this->assertEquals('403', $this->get('/contact/?stage=Stage')->getstatusCode());
-		
-		
+		try {
+			$response = $this->get('/contact/?stage=Stage');
+		} catch(SS_HTTPResponse_Exception $responseException) {
+			$response = $responseException->getResponse();
+		}
+
+		$this->assertEquals('403', $response->getstatusCode());
+
+
 		// test when user does have permission, should show page title and header ok.
 		$this->logInWithPermission('ADMIN');
 		$this->assertEquals('200', $this->get('/contact/?stage=Stage')->getstatusCode());
-		
-		
+
+
 	}
-	
+
 	public function testLinkShortcodes() {
 		$linkedPage = new SiteTree();
 		$linkedPage->URLSegment = 'linked-page';
 		$linkedPage->write();
 		$linkedPage->publish('Stage', 'Live');
-		
+
 		$page = new SiteTree();
 		$page->URLSegment = 'linking-page';
 		$page->Content = sprintf('<a href="[sitetree_link,id=%s]">Testlink</a>', $linkedPage->ID);
@@ -123,7 +129,7 @@ class ContentControllerTest extends FunctionalTest {
 			$this->get($page->RelativeLink())->getBody(),
 			'"sitetree_link" shortcodes get parsed properly'
 		);
-	}	
+	}
 
 
 	/**
@@ -132,7 +138,7 @@ class ContentControllerTest extends FunctionalTest {
 	 * @covers ContentController::getViewer()
 	**/
 	public function testGetViewer() {
-		
+
 		$self = $this;
 		$this->useTestTheme(dirname(__FILE__), 'controllertest', function() use ($self) {
 
@@ -143,8 +149,8 @@ class ContentControllerTest extends FunctionalTest {
 			$page->publish("Stage", "Live");
 
 			$response = $self->get($page->RelativeLink());
-			$self->assertEquals("ContentControllerTestPageWithoutController", $response->getBody());
-			
+			$self->assertEquals("ContentControllerTestPageWithoutController", trim($response->getBody()));
+
 			// // This should fall over to user Page.ss
 			$page = new ContentControllerTestPage();
 			$page->URLSegment = "test";
@@ -152,7 +158,7 @@ class ContentControllerTest extends FunctionalTest {
 			$page->publish("Stage", "Live");
 
 			$response = $self->get($page->RelativeLink());
-			$self->assertEquals("Page", $response->getBody());
+			$self->assertEquals("Page", trim($response->getBody()));
 
 
 			// Test that the action template is rendered.
@@ -162,12 +168,12 @@ class ContentControllerTest extends FunctionalTest {
 			$page->publish("Stage", "Live");
 
 			$response = $self->get($page->RelativeLink("test"));
-			$self->assertEquals("ContentControllerTestPage_test", $response->getBody());
+			$self->assertEquals("ContentControllerTestPage_test", trim($response->getBody()));
 
 			// Test that an action without a template will default to the index template, which is
 			// to say the default Page.ss template
 			$response = $self->get($page->RelativeLink("testwithouttemplate"));
-			$self->assertEquals("Page", $response->getBody());
+			$self->assertEquals("Page", trim($response->getBody()));
 
 			// Test that an action with a template will render the both action template *and* the
 			// correct parent template

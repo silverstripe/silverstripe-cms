@@ -91,8 +91,8 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 		$deletedPageID = $deletedPage->ID;
 		$deletedPage->delete();
 		$deletedPage = Versioned::get_one_by_stage(
-			'SiteTree', 
-			'Live', 
+			'SiteTree',
+			'Live',
 			array('"SiteTree_Live"."ID"' => $deletedPageID)
 		);
 
@@ -108,8 +108,8 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 		$draftPage = $this->objFromFixture('Page', 'page4');
 		$draftPage->publish('Stage', 'Stage');
 		$draftPage = Versioned::get_one_by_stage(
-			'SiteTree', 
-			'Stage', 
+			'SiteTree',
+			'Stage',
 			sprintf('"SiteTree"."ID" = %d', $draftPage->ID)
 		);
 
@@ -144,8 +144,8 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 		$removedDraftPage->doPublish();
 		$removedDraftPage->deleteFromStage('Stage');
 		$removedDraftPage = Versioned::get_one_by_stage(
-			'SiteTree', 
-			'Live', 
+			'SiteTree',
+			'Live',
 			sprintf('"SiteTree"."ID" = %d', $removedDraftPage->ID)
 		);
 

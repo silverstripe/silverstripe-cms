@@ -1,7 +1,7 @@
 <?php
 /**
  * Extension to include custom page icons
- *
+ * 
  * @package cms
  * @subpackage controller
  */
@@ -18,12 +18,12 @@ class LeftAndMainPageIconsExtension extends Extension {
 	 * @return string CSS 
 	 */
 	public function generatePageIconsCss() {
-		$css = '';
-
-		$classes = ClassInfo::subclassesFor('SiteTree');
+		$css = ''; 
+		
+		$classes = ClassInfo::subclassesFor('SiteTree'); 
 		foreach($classes as $class) {
-			$obj = singleton($class);
-			$iconSpec = $obj->stat('icon');
+			$obj = singleton($class); 
+			$iconSpec = $obj->stat('icon'); 
 
 			if(!$iconSpec) continue;
 
@@ -33,9 +33,9 @@ class LeftAndMainPageIconsExtension extends Extension {
 			// Legacy support: Add file extension if none exists
 			if(!pathinfo($iconFile, PATHINFO_EXTENSION)) $iconFile .= '-file.gif';
 
-			$iconPathInfo = pathinfo($iconFile);
-
-			// Base filename
+			$iconPathInfo = pathinfo($iconFile); 
+			
+			// Base filename 
 			$baseFilename = $iconPathInfo['dirname'] . '/' . $iconPathInfo['filename'];
 			$fileExtension = $iconPathInfo['extension'];
 

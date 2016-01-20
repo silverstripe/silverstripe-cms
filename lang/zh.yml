@@ -85,13 +85,10 @@ zh:
     DUPLICATEDWITHCHILDREN: '成功复制‘{title}’及其子页面'
     EMAIL: 电子邮件
     EditTree: '编辑树'
-    ListFiltered: '已过滤的列表。'
     MENUTITLE: '编辑页面'
     NEWPAGE: '新建{pagetype}'
     PAGENOTEXISTS: '该页面不存在'
-    PAGES: 页面
     PAGETYPEANYOPT: 任何
-    PAGETYPEOPT: '页面类型'
     PUBALLCONFIRM: '请发布站点上的所有页面，将内容复制到线上'
     PUBALLFUN: '“全部发布”功能'
     PUBALLFUN2: "按下此按钮将做相当于跳转到每一页，然后按下“发布”。拟用于对内容进行了大量编辑工作之时，例如站点初建时。"
@@ -109,10 +106,7 @@ zh:
     TabContent: 内容
     TabHistory: 历史记录
     TabSettings: 设置
-    TreeFiltered: '已过滤的树。'
-    TreeFilteredClear: '清除过滤器'
   CMSMain_left_ss:
-    APPLY_FILTER: '应用过滤器'
     RESET: 重置
   CMSPageAddController:
     MENUTITLE: '添加页面'
@@ -144,15 +138,12 @@ zh:
     ListView: '列表视图'
     MENUTITLE: 页面
     TreeView: '树视图'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: 多选
   CMSPagesController_Tools_ss:
     FILTER: 过滤器
   CMSSearch:
     FILTERDATEFROM: 从
     FILTERDATEHEADING: 日期
     FILTERDATETO: 到
-    FILTERLABELTEXT: 内容
   CMSSettingsController:
     MENUTITLE: 设置
   CMSSiteTreeFilter_Search:

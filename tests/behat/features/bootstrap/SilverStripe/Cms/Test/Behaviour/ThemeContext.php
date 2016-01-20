@@ -26,7 +26,7 @@ class ThemeContext extends BehatContext {
 
 	/**
 	 * Create a test theme
-	 * 
+	 *
 	 * @Given /^a theme "(?<theme>[^"]+)"/
 	 */
 	public function stepCreateTheme($theme) {
@@ -39,7 +39,7 @@ class ThemeContext extends BehatContext {
 
 	/**
 	 * Create a template within a test theme
-	 * 
+	 *
 	 * @Given /^a template "(?<template>[^"]+)" in theme "(?<theme>[^"]+)" with content "(?<content>[^"]+)"/
 	 */
 	public function stepCreateTemplate($template, $theme, $content) {
@@ -76,7 +76,7 @@ class ThemeContext extends BehatContext {
 
 	/**
 	 * Clean up any theme manipulation
-	 * 
+	 *
 	 * @AfterScenario
 	 */
 	public function cleanThemesAfterScenario() {

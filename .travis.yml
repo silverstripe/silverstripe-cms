@@ -41,7 +41,7 @@ before_script:
  - php ~/travis-support/travis_setup_selenium.php --if-env BEHAT_TEST
  - php ~/travis-support/travis_setup_php54_webserver.php --if-env BEHAT_TEST
 
-script: 
+script:
  - "if [ \"$BEHAT_TEST\" = \"\" ]; then vendor/bin/phpunit cms/tests; fi"
  - "if [ \"$BEHAT_TEST\" = \"1\" ]; then vendor/bin/behat @cms; fi"
 

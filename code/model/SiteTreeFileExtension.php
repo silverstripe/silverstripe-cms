@@ -16,8 +16,8 @@ class SiteTreeFileExtension extends DataExtension {
 				_t('AssetTableField.BACKLINKCOUNT', 'Used on:'), 
 				$this->BackLinkTracking()->Count() . ' ' . _t('AssetTableField.PAGES', 'page(s)')
 			)
-				->addExtraClass('cms-description-toggle')
-				->setDescription($this->BackLinkHTMLList()),
+			->addExtraClass('cms-description-toggle')
+			->setDescription($this->BackLinkHTMLList()),
 			'LastEdited'
 		);
 	}
@@ -62,7 +62,7 @@ class SiteTreeFileExtension extends DataExtension {
 			$rememberSubsiteFilter = Subsite::$disable_subsite_filter;
 			Subsite::disable_subsite_filter(true);
 		}
-		
+
 		$links = $this->owner->getManyManyComponents('BackLinkTracking');
 		$this->owner->extend('updateBackLinkTracking', $links);
 		

@@ -58,7 +58,7 @@ class MigrateSiteTreeLinkingTaskTest extends SapphireTest {
 			'HTML URLSegment links are rewritten.'
 		);
 		$this->assertEquals (
-			$aboutContent, 
+			$aboutContent,
 			DataObject::get_by_id('SiteTree', $aboutID)->Content
 		);
 		$this->assertEquals (

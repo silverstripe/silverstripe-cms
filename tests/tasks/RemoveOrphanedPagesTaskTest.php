@@ -14,7 +14,7 @@
  * parent2
  *   child2_1_published_orphaned // is orphaned because parent is not published
  * </code>
- * 
+ *
  * <h2>Cleaned up tree</h2>
  * <code>
  * parent1_published
@@ -24,9 +24,9 @@
  *   child2_1_published_orphaned
  * parent2
  * </code>
- * 
+ *
  * @author Ingo Schommer (<firstname>@silverstripe.com), SilverStripe Ltd.
- * 
+ *
  * @package cms
  * @subpackage tests
  */
