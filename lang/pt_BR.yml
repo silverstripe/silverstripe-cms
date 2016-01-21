@@ -14,6 +14,8 @@ pt_BR:
     REMOVEDPAGEFROMDRAFT: 'Removido ''%s''  do site de rascunho'
     ROLLBACK: 'Reverter para esta versão'
     SAVE: Salvar
+  CMSPagesController:
+    MENUTITLE: Páginas
   ErrorPage:
     400: '400 - Requisição Invalida'
     401: '401 - Não autorizado'
@@ -91,6 +93,7 @@ pt_BR:
     PARENTID: 'Página pai'
     PARENTTYPE: 'Lugar da página'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Controla os grupos que podem acessar ou editar determinadas páginas'
+    PLURALNAME: Páginas
     SHOWINMENUS: 'Mostrar nos menus?'
     SHOWINSEARCH: 'Uncluir na procura?'
     TABBEHAVIOUR: Comportamento

@@ -41,5 +41,6 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
     "URLSEGMENT.Edit": "Επεξεργασία",
     "URLSEGMENT.OK": "OK",
     "URLSEGMENT.Cancel": "Άκυρο"
-});
+}
+);
 }
