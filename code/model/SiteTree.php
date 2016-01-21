@@ -62,6 +62,15 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	private static $default_child = "Page";
 
 	/**
+	 * Default value for SiteTree.ClassName enum
+	 * {@see DBClassName::getDefault}
+	 *
+	 * @config
+	 * @var string
+	 */
+	private static $default_classname = "Page";
+
+	/**
 	 * The default parent class for this page.
 	 * Note: Value might be cached, see {@link $allowed_chilren}.
 	 *
