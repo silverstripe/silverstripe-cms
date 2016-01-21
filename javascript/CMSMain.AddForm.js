@@ -161,7 +161,7 @@
 			}
 		});
 
-		$(".cms-page-add-button").entwine({
+		$(".cms-content-addpage-button").entwine({
 			onclick: function(e) {
 				var tree = $('.cms-tree'), list = $('.cms-list'), parentId = 0;
 
@@ -173,7 +173,7 @@
 					var state = list.find('input[name="Page[GridState]"]').val();
 					if(state) parentId = parseInt(JSON.parse(state).ParentID, 10);
 				}
-					
+
 				var data = {selector: this.data('targetPanel'),pjax: this.data('pjax')}, url;
 				if(parentId) {
 					extraParams = this.data('extraParams') ? this.data('extraParams') : '';
