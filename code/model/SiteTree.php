@@ -2639,7 +2639,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 			// if the current page type is this the same as the class type always show the page type in the list
 			if ($this->ClassName != $instance->ClassName) {
-				if((($instance instanceof HiddenClass) || !$instance->canCreate())) continue;
+				if($instance instanceof HiddenClass) continue;
+				if(!$instance->canCreate(null, array('Parent' => $this->ParentID ? $this->Parent() : null))) continue;
 			}
 			
 			if($perms = $instance->stat('need_permission')) {

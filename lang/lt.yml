@@ -244,6 +244,8 @@ lt:
     ERRORFILEPROBLEM: 'Klaida atveriant rašymui bylą "{filename}". Prašome patikrinti bylų leidimus.'
     PLURALNAME: 'Klaidos puslapiai'
     SINGULARNAME: 'Klaidos puslapis'
+  File:
+    Title: Pavadinimas
   Folder:
     AddFolderButton: 'Naujas katalogas'
     DELETEUNUSEDTHUMBNAILS: 'Ištrinti nenaudojamas paveikslėlių miniatūras'

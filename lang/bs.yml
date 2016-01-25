@@ -33,6 +33,7 @@ bs:
   BrokenLinksReport:
     Any: Bilo koji
   CMSMain:
+    Create: Kreiraj
     DELETE: 'Izbriši sa privremenog nacrta stranice'
     EMAIL: E-mail
     PAGENOTEXISTS: 'Ova stranica ne postoji'

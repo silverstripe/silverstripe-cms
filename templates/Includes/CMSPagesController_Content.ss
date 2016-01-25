@@ -23,7 +23,7 @@
 	<div class="cms-content-fields center ui-widget-content cms-panel-padded">
 		$Tools
 
-		<div class="cms-content-view cms-panel-deferred" id="cms-content-treeview" data-url="$LinkTreeView">
+		<div class="cms-content-view cms-panel-deferred" id="cms-content-treeview" data-url="$LinkTreeView" data-deferred-no-cache="true">
 			<%-- Lazy-loaded via ajax --%>
 		</div>
 
