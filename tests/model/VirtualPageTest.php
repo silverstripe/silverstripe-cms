@@ -204,6 +204,42 @@ class VirtualPageTest extends FunctionalTest {
 		$this->assertTrue($vp->doDeleteFromLive());
 		$this->assertNull(DB::query("SELECT \"ID\" FROM \"SiteTree_Live\" WHERE \"ID\" = $vp->ID")->value());
 	}
+
+	public function testCanEdit() {
+		$parentPage = $this->objFromFixture('Page', 'master3');
+		$virtualPage = $this->objFromFixture('VirtualPage', 'vp3');
+		$bob = $this->objFromFixture('Member', 'bob');
+		$andrew = $this->objFromFixture('Member', 'andrew');
+
+		// Bob can edit the mirrored page, but he shouldn't be able to edit the virtual page.
+		$this->logInAs($bob);
+		$this->assertTrue($parentPage->canEdit());
+		$this->assertFalse($virtualPage->canEdit());
+
+		//  Andrew can only edit the virtual page, but not the original.
+		$this->logInAs($andrew);
+		$this->assertFalse($parentPage->canEdit());
+		$this->assertTrue($virtualPage->canEdit());
+	}
+
+	public function testCanView() {
+		$parentPage = $this->objFromFixture('Page', 'master3');
+		$parentPage->publish('Stage', 'Live');
+		$virtualPage = $this->objFromFixture('VirtualPage', 'vp3');
+		$virtualPage->publish('Stage', 'Live');
+		$cindy = $this->objFromFixture('Member', 'cindy');
+		$alice = $this->objFromFixture('Member', 'alice');
+
+		// Cindy can see both pages
+		$this->logInAs($cindy);
+		$this->assertTrue($parentPage->canView());
+		$this->assertTrue($virtualPage->canView());
+
+		// Alice can't see the virtual page, since it's restricted to cindy
+		$this->logInAs($alice);
+		$this->assertTrue($parentPage->canView());
+		$this->assertFalse($virtualPage->canView());
+	}
 	
 	public function testVirtualPagesArentInappropriatelyPublished() {
 		// Fixture
