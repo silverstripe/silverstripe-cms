@@ -244,6 +244,8 @@ cs:
     ERRORFILEPROBLEM: 'Chyba otevření souboru "{filename}" pro zápis. Zkontrolujte oprávnění souboru, prosím.'
     PLURALNAME: 'Chybové stránky'
     SINGULARNAME: 'Chybová stránka'
+  File:
+    Title: Název
   Folder:
     AddFolderButton: 'Přidat složku'
     DELETEUNUSEDTHUMBNAILS: 'Smazat nepoužité miniatury'
@@ -335,7 +337,7 @@ cs:
     BUTTONCANCELDRAFTDESC: 'Odstranit koncept a vrátit se k aktuálně zveřejněné stránce'
     BUTTONPUBLISHED: Zveřejněno
     BUTTONSAVED: Uloženo
-    BUTTONSAVEPUBLISH: 'Uložit & zveřehnit'
+    BUTTONSAVEPUBLISH: 'Uložit & zveřejnit'
     BUTTONUNPUBLISH: Nezveřejňovat
     BUTTONUNPUBLISHDESC: 'Odstranit tuto stránku z publikovaných na webu'
     Comments: Komentáře
@@ -369,7 +371,7 @@ cs:
     LINKCHANGENOTE: 'Změnění tohoto odkazu stránky, bude mít také vliv na odkazy podřízených stránek.'
     MENUTITLE: 'Navigační popisek'
     METADESC: 'Popis'
-    METADESCHELP: 'Vyhledávače používají tento obsah pro zobrazovaní výsledkův vyhledávaní (i když to nebude mít vlyv na jejich hodnocení).'
+    METADESCHELP: 'Krátký popis/perex, který při vyplnění mohou vyhledávače využít ve výsledcích vyhledávání. I když tento popisek nemá přímý vliv na hodnocení stránky, tak může zvýšit míru prokliku (CTR).'
     METAEXTRA: 'Vlastní meta tagy'
     METAEXTRAHELP: 'HTML tagy pro další meta informace. Například &lt;meta name="vlastnínazev" content="vlastní obsah zde" /&gt;'
     MODIFIEDONDRAFTHELP: 'Stránka má nezveřejněné změny'

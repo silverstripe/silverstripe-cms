@@ -244,6 +244,8 @@ sk:
     ERRORFILEPROBLEM: 'Chyba otvorenia súboru "{filename}" pre zápis. Skontrolujte oprávnenia súboru, prosím.'
     PLURALNAME: 'Chybové stránky'
     SINGULARNAME: 'Chybová stránka'
+  File:
+    Title: Názov
   Folder:
     AddFolderButton: 'Pridať priečinok'
     DELETEUNUSEDTHUMBNAILS: 'Vymazať nepoužité miniatúry'
