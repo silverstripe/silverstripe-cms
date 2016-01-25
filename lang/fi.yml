@@ -94,10 +94,13 @@ fi:
     DUPLICATEDWITHCHILDREN: '''{title}'' ja alasivu monistettiin onnistuneesti'
     EMAIL: Sähköposti
     EditTree: 'Muokkaa rakennepuuta'
+    ListFiltered: 'Näytetään haun tulokset.'
     MENUTITLE: 'Muokkaa sivua'
     NEWPAGE: 'Uusi {pagetype}'
     PAGENOTEXISTS: 'Tätä sivua ei ole olemassa'
+    PAGES: 'Sivun tila'
     PAGETYPEANYOPT: Mikä tahansa
+    PAGETYPEOPT: 'Sivun tyyppi'
     PUBALLCONFIRM: 'Julkaise jokainen sivu tällä sivustolla kopioiden luonnosten sisältö julkiselle sivustolle'
     PUBALLFUN: 'Julkaise kaikki -toiminto'
     PUBALLFUN2: "Painamalla tätä nappia, tekee se saman kuin kävisit painamassa joka sivulla \"julkaise\". Se on käytännöllinen, jos on tehnyt isoja muutoksia sisältöön, esim. kun sivusto luotiin."
@@ -119,7 +122,11 @@ fi:
     TabContent: Sisältö
     TabHistory: Historia
     TabSettings: Asetukset
+    TreeFiltered: 'Näytetään haun tulokset.'
+    TreeFilteredClear: Tyhjennä
   CMSMain_left_ss:
+    APPLY_FILTER: Hae
+    CLEAR_FILTER: Tyhjennä
     RESET: Nollaa
   CMSPageAddController:
     MENUTITLE: 'Lisää sivu'
@@ -151,6 +158,8 @@ fi:
     ListView: 'Listanäkymä'
     MENUTITLE: Sivut
     TreeView: 'Puunäkymä'
+  CMSPagesController_ContentToolbar_ss:
+    MULTISELECT: 'Sarjatoiminnot'
   CMSPagesController_Tools_ss:
     FILTER: Suodata
   CMSSIteTreeFilter_PublishedPages:
@@ -159,6 +168,8 @@ fi:
     FILTERDATEFROM: Alkaen
     FILTERDATEHEADING: Pvm
     FILTERDATETO: Päättyen
+    FILTERLABELTEXT: Haku
+    PAGEFILTERDATEHEADING: 'Viimeksi muokattu'
   CMSSettingsController:
     MENUTITLE: Asetukset
   CMSSiteTreeFilter_ChangedPages:
@@ -233,6 +244,8 @@ fi:
     ERRORFILEPROBLEM: 'Virhe avattaessa tiedostoa "{filename}" palvelimelle tallentamista varten. Tarkista tiedoston kirjoitusoikeudet.'
     PLURALNAME: 'Virhesivut'
     SINGULARNAME: 'Virhesivu'
+  File:
+    Title: Nimi
   Folder:
     AddFolderButton: 'Lisää kansio'
     DELETEUNUSEDTHUMBNAILS: 'Poista käyttämättömät pikkukuvat'

@@ -291,6 +291,7 @@ fa_IR:
     DELETEDPAGEHELP: 'صفحه دیگر منتشر شده نیست'
     DELETEDPAGESHORT: حذف شده
     DEPENDENT_NOTE: 'صفحات زیر وابسته به این صفحه هستند. شامل صفحات مجازی، انتقال دهنده و صفحاتی با محتوای لینک'
+    DESCRIPTION: 'صفحه محتوای عمومی'
     DependtPageColumnLinkType: 'نوع پیوند'
     DependtPageColumnURL: نشانی اینترنتی
     EDITANYONE: 'هر کسی بتواند به سیستم مدیریت محتوا وارد شود'
