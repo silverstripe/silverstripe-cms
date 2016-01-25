@@ -392,7 +392,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 *
 	 * @return array
 	 */
-	static public function page_type_classes() {
+	public static function page_type_classes() {
 		$classes = ClassInfo::getValidSubClasses();
 
 		$baseClassIndex = array_search('SiteTree', $classes);
@@ -417,8 +417,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$kill_ancestors = array_unique($kill_ancestors);
 			foreach($kill_ancestors as $mark) {
 				// unset from $classes
-				$idx = array_search($mark, $classes);
-				unset($classes[$idx]);
+				$idx = array_search($mark, $classes, true);
+				if ($idx !== false) {
+					unset($classes[$idx]);
+				}
 			}
 		}
 

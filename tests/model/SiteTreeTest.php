@@ -878,6 +878,15 @@ class SiteTreeTest extends SapphireTest {
 		$classes = SiteTree::page_type_classes();
 		$this->assertNotContains('SiteTree', $classes, 'Page types do not include base class');
 		$this->assertContains('Page', $classes, 'Page types do contain subclasses');
+
+		// Testing what happens in an incorrect config value is set - hide_ancestor should be a string
+		Config::inst()->update('SiteTreeTest_ClassA', 'hide_ancestor', true);
+		$newClasses = SiteTree::page_type_classes();
+		$this->assertEquals(
+			$classes,
+			$newClasses,
+			'Setting hide_ancestor to a boolean (incorrect) value caused a page class to be hidden'
+		);
 	}
 
 	public function testAllowedChildren() {
