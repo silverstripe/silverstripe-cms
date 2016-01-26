@@ -268,7 +268,7 @@ class ContentController extends Controller {
 			if($this->dataRecord) {
 				Requirements::css(CMS_DIR . '/css/SilverStripeNavigator.css');
 				Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.js');
-				Requirements::javascript(CMS_DIR . '/javascript/SilverStripeNavigator.js');
+				Requirements::javascript(CMS_DIR . '/javascript/dist/SilverStripeNavigator.js');
 				
 				$return = $nav = SilverStripeNavigator::get_for_record($this->dataRecord);
 				$items = $return['items'];
