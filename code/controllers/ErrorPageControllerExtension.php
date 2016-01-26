@@ -8,6 +8,13 @@
  */
 class ErrorPageControllerExtension extends Extension {
 
+	/**
+	 * Used by {@see RequestHandler::httpError}
+	 *
+	 * @param int $statusCode
+	 * @param SS_HTTPRequest $request
+	 * @throws SS_HTTPResponse_Exception
+	 */
 	public function onBeforeHTTPError($statusCode, $request) {
 		$response = ErrorPage::response_for($statusCode);
 		if($response) {

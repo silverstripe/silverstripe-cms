@@ -225,7 +225,10 @@ class ZZZSearchFormTest extends FunctionalTest {
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 		
 		$dontShowInSearchFile = $this->objFromFixture('File', 'dontShowInSearchFile');
+		$dontShowInSearchFile->publish('Stage', 'Live');
 		$showInSearchFile = $this->objFromFixture('File', 'showInSearchFile');
+		$showInSearchFile->publish('Stage', 'Live');
+
 		$results = $sf->getResults(null, array('Search'=>'dontShowInSearchFile'));
 		$this->assertNotContains(
 			$dontShowInSearchFile->ID,

@@ -12,6 +12,11 @@
  * referenced in any HTMLText fields, and two booleans to indicate if there are any broken links. Call
  * augmentSyncLinkTracking to update those fields with any changes to those fields.
  *
+ * Note that since both SiteTree and File are versioned, LinkTracking and ImageTracking will
+ * only be enabled for the Stage record.
+ *
+ * {@see SiteTreeFileExtension} for the extension applied to {@see File}
+ *
  * @property SiteTree $owner
  *
  * @property bool $HasBrokenFile
@@ -19,6 +24,7 @@
  *
  * @method ManyManyList LinkTracking() List of site pages linked on this page.
  * @method ManyManyList ImageTracking() List of Images linked on this page.
+ * @method ManyManyList BackLinkTracking List of site pages that link to this page.
  */
 class SiteTreeLinkTracking extends DataExtension {
 
@@ -38,6 +44,10 @@ class SiteTreeLinkTracking extends DataExtension {
 		"ImageTracking" => "File"
 	);
 
+	private static $belongs_many_many = array(
+		"BackLinkTracking" => "SiteTree.LinkTracking"
+	);
+
 	private static $many_many_extraFields = array(
 		"LinkTracking" => array("FieldName" => "Varchar"),
 		"ImageTracking" => array("FieldName" => "Varchar")
@@ -45,6 +55,8 @@ class SiteTreeLinkTracking extends DataExtension {
 
 	/**
 	 * Scrape the content of a field to detect anly links to local SiteTree pages or files
+	 *
+	 * @todo - Replace image tracking with shortcodes
 	 *
 	 * @param string $fieldName The name of the field on {@link @owner} to scrape
 	 */
@@ -151,8 +163,15 @@ class SiteTreeLinkTracking extends DataExtension {
 
 	/**
 	 * Find HTMLText fields on {@link owner} to scrape for links that need tracking
+	 *
+	 * @todo Support versioned many_many for per-stage page link tracking
 	 */
 	public function augmentSyncLinkTracking() {
+		// Skip live tracking
+		if(\Versioned::current_stage() == \Versioned::get_live_stage()) {
+			return;
+		}
+
 		// Reset boolean broken flags
 		$this->owner->HasBrokenLink = false;
 		$this->owner->HasBrokenFile = false;
@@ -169,7 +188,9 @@ class SiteTreeLinkTracking extends DataExtension {
 			}
 		}
 
-		foreach($htmlFields as $field) $this->trackLinksInField($field);
+		foreach($htmlFields as $field) {
+			$this->trackLinksInField($field);
+		}
 	}
 }
 

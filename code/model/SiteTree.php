@@ -26,7 +26,6 @@
  *
  * @method ManyManyList ViewerGroups List of groups that can view this object.
  * @method ManyManyList EditorGroups List of groups that can edit this object.
- * @method ManyManyList BackLinkTracking List of site pages that link to this page.
  *
  * @mixin Hierarchy
  * @mixin Versioned
@@ -129,19 +128,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	);
 
 	private static $many_many = array(
-		"LinkTracking" => "SiteTree",
-		"ImageTracking" => "File",
 		"ViewerGroups" => "Group",
 		"EditorGroups" => "Group",
-	);
-
-	private static $belongs_many_many = array(
-		"BackLinkTracking" => "SiteTree"
-	);
-
-	private static $many_many_extraFields = array(
-		"LinkTracking" => array("FieldName" => "Varchar"),
-		"ImageTracking" => array("FieldName" => "Varchar")
 	);
 
 	private static $casting = array(
@@ -1080,39 +1068,21 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 	/**
-	 * This function should return true if the current user can publish this page. It can be overloaded to customise
-	 * the security model for an application.
-	 *
-	 * Denies permission if any of the following conditions is true:
-	 * - canPublish() on any extension returns false
-	 * - canEdit() returns false
-	 *
-	 * @uses SiteTreeExtension->canPublish()
-	 *
-	 * @param Member $member
-	 * @return bool True if the current user can publish this page.
+	 * @deprecated
 	 */
-	public function canPublish($member = null) {
-		if(!$member || !(is_a($member, 'Member')) || is_numeric($member)) $member = Member::currentUser();
-		
-		if($member && Permission::checkMember($member, "ADMIN")) return true;
-
-		// Standard mechanism for accepting permission changes from extensions
-		$extended = $this->extendedCan('canPublish', $member);
-		if($extended !== null) return $extended;
-
-		// Normal case - fail over to canEdit()
-		return $this->canEdit($member);
-	}
-	
 	public function canDeleteFromLive($member = null) {
-		// Standard mechanism for accepting permission changes from extensions
-		$extended = $this->extendedCan('canDeleteFromLive', $member);
-		if($extended !==null) return $extended;
+		Deprecation::notice('4.0', 'Use canUnpublish');
 
-		return $this->canPublish($member);
+		// Deprecated extension
+		$extended = $this->extendedCan('canDeleteFromLive', $member);
+		if($extended !== null) {
+			Deprecation::notice('4.0', 'Use canUnpublish in your extension instead');
+			return $extended;
+		}
+
+		return $this->canUnpublish($member);
 	}
-	
+
 	/**
 	 * Stub method to get the site config, unless the current class can provide an alternate.
 	 *
@@ -1551,7 +1521,12 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$this->migrateVersion($this->Version);
 		}
 	}
-	
+
+	/**
+	 * Trigger synchronisation of link tracking
+	 *
+	 * {@see SiteTreeLinkTracking::augmentSyncLinkTracking}
+	 */
 	public function syncLinkTracking() {
 		$this->extend('augmentSyncLinkTracking');
 	}
@@ -1737,43 +1712,42 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 	
 	/**
-	 * Rewrites any linked images on this page.
+	 * Rewrites any linked images on this page without creating a new version record.
 	 * Non-image files should be linked via shortcodes
 	 * Triggers the onRenameLinkedAsset action on extensions.
-	 * TODO: This doesn't work for HTMLText fields on other tables.
+	 *
+	 * @todo Implement image shortcodes and remove this feature
 	 */
 	public function rewriteFileLinks() {
+		// Skip live stage
+		if(\Versioned::current_stage() === \Versioned::get_live_stage()) {
+			return;
+		}
+
 		// Update the content without actually creating a new version
-		foreach(array("SiteTree_Live", "SiteTree") as $table) {
-			// Published site
-			$published = DB::prepared_query(
-				"SELECT * FROM  \"$table\" WHERE \"ID\" = ?",
-				array($this->ID)
-			)->record();
-			$origPublished = $published;
-
-			foreach($this->db() as $fieldName => $fieldType) {
-				// Skip if non HTML or if empty
-				if ($fieldType !== 'HTMLText' || empty($published[$fieldName])) {
-					continue;
-				}
-
-				// Regenerate content
-				$content = Image::regenerate_html_links($published[$fieldName]);
-				if($content === $published[$fieldName]) {
-					continue;
-				}
-
-				$query = sprintf('UPDATE "%s" SET "%s" = ? WHERE "ID" = ?', $table, $fieldName);
-				DB::prepared_query($query, array($content, $this->ID));
-
-				// Tell static caching to update itself
-				if($table == 'SiteTree_Live') {
-					$publishedClass = $origPublished['ClassName'];
-					$origPublishedObj = new $publishedClass($origPublished);
-					$this->invokeWithExtensions('onRenameLinkedAsset', $origPublishedObj);
-				}
+		foreach($this->db() as $fieldName => $fieldType) {
+			// Skip if non HTML or if empty
+			if ($fieldType !== 'HTMLText') {
+				continue;
 			}
+			$fieldValue = $this->{$fieldName};
+			if(empty($fieldValue)) {
+				continue;
+			}
+
+			// Regenerate content
+			$content = Image::regenerate_html_links($fieldValue);
+			if($content === $fieldValue) {
+				continue;
+			}
+
+			// Write content directly without updating linked assets
+			$table = ClassInfo::table_for_object_field($this, $fieldName);
+			$query = sprintf('UPDATE "%s" SET "%s" = ? WHERE "ID" = ?', $table, $fieldName);
+			DB::prepared_query($query, array($content, $this->ID));
+
+			// Update linked assets
+			$this->invokeWithExtensions('onRenameLinkedAsset');
 		}
 	}
 	
@@ -2267,7 +2241,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			return $actions;
 		}
 
-		if($this->isPublished() && $this->canPublish() && !$this->getIsDeletedFromStage() && $this->canDeleteFromLive()) {
+		if($this->isPublished() && $this->canPublish() && !$this->getIsDeletedFromStage() && $this->canUnpublish()) {
 			// "unpublish"
 			$moreOptions->push(
 				FormAction::create('unpublish', _t('SiteTree.BUTTONUNPUBLISH', 'Unpublish'), 'delete')
@@ -2292,7 +2266,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				if($existsOnLive) {
 					// "restore"
 					$majorActions->push(FormAction::create('revert',_t('CMSMain.RESTORE','Restore')));
-					if($this->canDelete() && $this->canDeleteFromLive()) {
+					if($this->canDelete() && $this->canUnpublish()) {
 						// "delete from live"
 						$majorActions->push(
 							FormAction::create('deletefromlive',_t('CMSMain.DELETEFP','Delete'))
@@ -2428,11 +2402,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * Unpublish this page - remove it from the live site
 	 *
+	 * Overrides {@see Versioned::doUnpublish()}
+	 *
 	 * @uses SiteTreeExtension->onBeforeUnpublish()
 	 * @uses SiteTreeExtension->onAfterUnpublish()
 	 */
 	public function doUnpublish() {
-		if(!$this->canDeleteFromLive()) return false;
+		if(!$this->canUnpublish()) return false;
 		if(!$this->ID) return false;
 		
 		$this->invokeWithExtensions('onBeforeUnpublish', $this);
@@ -2550,58 +2526,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 	/**
-	 * Removes the page from both live and stage
-	 *
-	 * @return bool Success
-	 */
-	public function doArchive() {
-		$this->invokeWithExtensions('onBeforeArchive', $this);
-
-		if($this->doUnpublish()) {
-			$this->delete();
-			$this->invokeWithExtensions('onAfterArchive', $this);
-
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
-	 * Check if the current user is allowed to archive this page.
-	 * If extended, ensure that both canDelete and canDeleteFromLive are extended also
-	 *
-	 * @param Member $member
-	 * @return bool
-	 */
-	public function canArchive($member = null) {
-		if(!$member) {
-            $member = Member::currentUser();
-        }
-		
-		// Standard mechanism for accepting permission changes from extensions
-		$extended = $this->extendedCan('canArchive', $member);
-		if($extended !== null) {
-            return $extended;
-        }
-
-		// Check if this page can be deleted
-        if(!$this->canDelete($member)) {
-            return false;
-        }
-
-        // If published, check if we can delete from live
-        if($this->ExistsOnLive && !$this->canDeleteFromLive($member)) {
-            return false;
-        }
-
-		return true;
-	}
-
-	/**
-	 * Synonym of {@link doUnpublish}
+	 * @deprecated
 	 */
 	public function doDeleteFromLive() {
+		Deprecation::notice("4.0", "Use doUnpublish instead");
 		return $this->doUnpublish();
 	}
 
@@ -2620,21 +2548,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if(is_numeric($this->ID)) return false;
 
 		return stripos($this->ID, 'new') === 0;
-	}
-
-
-	/**
-	 * Check if this page has been published.
-	 *
-	 * @return bool
-	 */
-	public function isPublished() {
-		if($this->isNew())
-			return false;
-
-		return (DB::prepared_query("SELECT \"ID\" FROM \"SiteTree_Live\" WHERE \"ID\" = ?", array($this->ID))->value())
-			? true
-			: false;
 	}
 
 	/**
@@ -2920,7 +2833,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		return $classes;
 	}
-	
+
 	/**
 	 * Compares current draft with live version, and returns true if no draft version of this page exists  but the page
 	 * is still published (eg, after triggering "Delete from draft site" in the CMS).
@@ -2930,7 +2843,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	public function getIsDeletedFromStage() {
 		if(!$this->ID) return true;
 		if($this->isNew()) return false;
-		
+
 		$stageVersion = Versioned::get_versionnumber_by_stage('SiteTree', 'Stage', $this->ID);
 
 		// Return true for both completely deleted pages and for pages just deleted from stage
