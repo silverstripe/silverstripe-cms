@@ -1,3 +1,36 @@
+Group:
+  bobgroup:
+    Title: BobGroup
+    code: bobgroup
+  andrewgroup:
+    Title: AndrewGroup
+    code: andrewgroup
+  cindygroup:
+    Title: CindyGroup
+    code: cindygroup
+  alicegroup:
+    Title: AliceGroup
+    code: alicegrouip
+Permission:
+  bobpermission:
+    Code: CMS_ACCESS_CMSMain
+    Group: =>Group.bobgroup
+  andrewpermission:
+    Code: CMS_ACCESS_CMSMain
+    Group: =>Group.andrewgroup
+Member:
+  bob:
+    Email: bob@bobby.com
+    Groups: =>Group.bobgroup
+  andrew:
+    Email: andrew@andrew.com
+    Groups: =>Group.andrewgroup
+  cindy:
+    Email: cindy@cindy.com
+    Groups: =>Group.cindygroup
+  alice:
+    Email: alice@alice.com
+    Groups: =>Group.alicegroup
 Page:
   master:
     Title: My Page
@@ -7,6 +40,11 @@ Page:
     MenuTitle: My Other Page Nav
   holder:
     Title: Sub-pages
+  master3:
+    Title: CanEditBob
+    CanEditType: OnlyTheseUsers
+    CanViewType: Inherit
+    EditorGroups: =>Group.bobgroup
 VirtualPage:
   vp1:
     Title: vp1
@@ -16,3 +54,10 @@ VirtualPage:
     Title: vp2
     CopyContentFrom: =>Page.master
     Parent: =>Page.holder
+  vp3:
+    CopyContentFrom: =>Page.master3
+    Parent: =>Page.holder
+    CanEditType: OnlyTheseUsers
+    CanViewType: OnlyTheseUsers
+    EditorGroups: =>Group.andrewgroup
+    ViewerGroups: =>Group.cindygroup

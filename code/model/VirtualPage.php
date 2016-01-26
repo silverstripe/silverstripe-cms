@@ -29,6 +29,8 @@ class VirtualPage extends Page {
 		'Version',
 		"Embargo",
 		"Expiry",
+		"CanViewType",
+		"CanEditType",
 	);
 	
 	/**
