@@ -117,7 +117,7 @@ class RedirectorPage extends Page {
 	}
 
 	public function getCMSFields() {
-		Requirements::javascript(CMS_DIR . '/javascript/RedirectorPage.js');
+		Requirements::javascript(CMS_DIR . '/javascript/dist/RedirectorPage.js');
 		
 		$fields = parent::getCMSFields();
 		$fields->removeByName('Content', true);
