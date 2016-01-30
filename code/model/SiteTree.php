@@ -1004,14 +1004,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$parent = isset($context['Parent']) ? $context['Parent'] : null;
 		if($parent && !in_array(get_class($this), $parent->allowedChildren())) return false;
 
-		// Check permission
-		if($member && Permission::checkMember($member, "ADMIN")) return true;
-
 		// Standard mechanism for accepting permission changes from extensions
 		$results = $this->extend('canCreate', $member, $parent);
 		if(is_array($results) && ($results = array_filter($results, function($v) {return $v !== null;}))) {
 			return min($results);
 		}
+        
+        // Check permission <-- wait until all extensions do their magic
+		if($member && Permission::checkMember($member, "ADMIN")) return true;
 
 		// Fall over to inherited permissions
 		if($parent) {
@@ -1048,11 +1048,12 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		else if(is_numeric($member)) $memberID = $member;
 		else $memberID = Member::currentUserID();
 		
-		if($memberID && Permission::checkMember($memberID, array("ADMIN", "SITETREE_EDIT_ALL"))) return true;
-		
 		// Standard mechanism for accepting permission changes from extensions
 		$extended = $this->extendedCan('canEdit', $memberID);
 		if($extended !== null) return $extended;
+        
+        //wait until extension(s?) return their data
+        if($memberID && Permission::checkMember($memberID, array("ADMIN", "SITETREE_EDIT_ALL"))) return true;
 
 		if($this->ID) {
 			// Regular canEdit logic is handled by can_edit_multiple
@@ -1084,11 +1085,12 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	public function canPublish($member = null) {
 		if(!$member || !(is_a($member, 'Member')) || is_numeric($member)) $member = Member::currentUser();
 		
-		if($member && Permission::checkMember($member, "ADMIN")) return true;
-
 		// Standard mechanism for accepting permission changes from extensions
 		$extended = $this->extendedCan('canPublish', $member);
 		if($extended !== null) return $extended;
+        
+        //wait until extension(s?) return their data
+        if($member && Permission::checkMember($member, "ADMIN")) return true;
 
 		// Normal case - fail over to canEdit()
 		return $this->canEdit($member);
