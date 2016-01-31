@@ -1,8 +1,8 @@
 (function (global, factory) {
 	if (typeof define === "function" && define.amd) {
-		define('ss.SilverStripeNavigator', ['../../../framework/javascript/dist/jQuery'], factory);
+		define('ss.SilverStripeNavigator', ['jQuery'], factory);
 	} else if (typeof exports !== "undefined") {
-		factory(require('../../../framework/javascript/dist/jQuery'));
+		factory(require('jQuery'));
 	} else {
 		var mod = {
 			exports: {}

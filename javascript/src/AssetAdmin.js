@@ -2,8 +2,8 @@
  * File: AssetAdmin.js
  */
 
-import $ from '../../../framework/javascript/dist/jQuery';
-import i18n from '../../../framework/javascript/dist/i18n';
+import $ from 'jQuery';
+import i18n from 'i18n';
 
 $.entwine('ss', function($){
 	/**

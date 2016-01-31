@@ -1,4 +1,4 @@
-import $ from '../../../framework/javascript/dist/jQuery';
+import $ from 'jQuery';
 
 $.entwine('ss', function($){
 	$('#Form_EditForm_RedirectionType input').entwine({

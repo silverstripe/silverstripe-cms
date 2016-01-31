@@ -1,4 +1,4 @@
-import $ from '../../../framework/javascript/dist/jQuery';
+import $ from 'jQuery';
 
 function windowName(suffix) {
 	var base = document.getElementsByTagName('base')[0].href.replace('http://','').replace(/\//g,'_').replace(/\./g,'_');

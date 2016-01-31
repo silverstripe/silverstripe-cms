@@ -1,8 +1,8 @@
 (function (global, factory) {
 	if (typeof define === "function" && define.amd) {
-		define('ss.CMSMain.Tree', ['../../../framework/javascript/dist/jQuery', '../../../framework/javascript/dist/i18n'], factory);
+		define('ss.CMSMain.Tree', ['jQuery', 'i18n'], factory);
 	} else if (typeof exports !== "undefined") {
-		factory(require('../../../framework/javascript/dist/jQuery'), require('../../../framework/javascript/dist/i18n'));
+		factory(require('jQuery'), require('i18n'));
 	} else {
 		var mod = {
 			exports: {}
