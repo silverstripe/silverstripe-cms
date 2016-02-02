@@ -1,4 +1,4 @@
-import $ from '../../../framework/javascript/dist/jQuery';
+import $ from 'jQuery';
 
 /**
  * Behaviour for the CMS Content Toolbar.
