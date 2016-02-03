@@ -6,7 +6,7 @@
 		</div>
 
 		<div class="cms-content-header-tabs">
-			<button id="filters-button" class="icon-button font-icon-search" title="<% _t('CMSPagesController_Tools_ss.FILTER', 'Filter') %>"></button>
+			<button id="filters-button" class="icon-button font-icon-search no-text" title="<% _t('CMSPagesController_Tools_ss.FILTER', 'Filter') %>"></button>
 			<div class="icon-button-group">
 				<ul class="cms-tabset-nav-primary ss-tabset">
 					<li class="content-treeview<% if ViewState == tree %> ui-tabs-active ss-tabs-force-active<% end_if %> cms-tabset-icon tree">
