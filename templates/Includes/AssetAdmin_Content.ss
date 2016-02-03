@@ -11,7 +11,7 @@
 		<% if $Fields.hasTabset %>
 		<% with $Fields.fieldByName('Root') %>
 		<div class="cms-content-header-tabs">
-			<button id="filters-button" class="icon-button font-icon-search" title="<% _t('CMSPagesController_Tools_ss.FILTER', 'Filter') %>"></button>
+			<button id="filters-button" class="icon-button font-icon-search no-text" title="<% _t('CMSPagesController_Tools_ss.FILTER', 'Filter') %>"></button>
 
 			<div class="icon-button-group">
 				<ul class="cms-tabset-nav-primary ss-tabset">
