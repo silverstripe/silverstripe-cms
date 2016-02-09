@@ -156,7 +156,7 @@ JS
 		$form = parent::getEditForm($id, $fields);
 		$folder = ($id && is_numeric($id)) ? DataObject::get_by_id('Folder', $id, false) : $this->currentPage();
 		$fields = $form->Fields();
-		$title = ($folder && $folder->exists()) ? $folder->Title : _t('AssetAdmin.FILES', 'Files');
+		$title = ($folder && $folder->isInDB()) ? $folder->Title : _t('AssetAdmin.FILES', 'Files');
 		$fields->push(new HiddenField('ID', false, $folder ? $folder->ID : null));
 
 		// File listing
@@ -244,7 +244,7 @@ JS
 			);
 			$tabList->addExtraClass("content-listview cms-tabset-icon list");
 			$tabTree->addExtraClass("content-treeview cms-tabset-icon tree");
-			if($fields->Count() && $folder->exists()) {
+			if($fields->Count() && $folder && $folder->isInDB()) {
 				$tabs->push($tabDetails = new Tab('DetailsView', _t('AssetAdmin.DetailsView', 'Details')));
 				$tabDetails->addExtraClass("content-galleryview cms-tabset-icon edit");
 				foreach($fields as $field) {
@@ -520,7 +520,7 @@ JS
 		$id = $this->currentPageID();
 		if($id && is_numeric($id) && $id > 0) {
 			$folder = DataObject::get_by_id('Folder', $id);
-			if($folder && $folder->exists()) {
+			if($folder && $folder->isInDB()) {
 				return $folder;
 			}
 		}
