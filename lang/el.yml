@@ -136,7 +136,6 @@ el:
     CODE: 'Κωδικός σφάλματος'
     DEFAULTERRORPAGETITLE: 'Η σελίδα δεν βρέθηκε'
     DEFAULTSERVERERRORPAGETITLE: 'Σφάλμα διακομιστή'
-    PLURALNAME: 'Σελίδες Σφάλματος'
     SINGULARNAME: 'Σελίδα Σφάλματος'
   Folder:
     AddFolderButton: 'Προσθήκη φακέλου'
@@ -254,5 +253,4 @@ el:
     DESCRIPTION: 'Εμφανίζει το περιεχόμενο μιας άλλης σελίδας'
     EditLink: επεξεργασία
     HEADER: 'Αυτή είναι μια εικονική σελίδα'
-    PLURALNAME: 'Εικονικές Σελίδες'
     SINGULARNAME: 'Εικονική Σελίδα'

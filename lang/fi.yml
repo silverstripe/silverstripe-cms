@@ -242,7 +242,6 @@ fi:
     DEFAULTSERVERERRORPAGETITLE: 'Palvelinvirhe'
     DESCRIPTION: 'Omat virheilmoitukset (sivuille, kuten "Sivua ei löytynyt")'
     ERRORFILEPROBLEM: 'Virhe avattaessa tiedostoa "{filename}" palvelimelle tallentamista varten. Tarkista tiedoston kirjoitusoikeudet.'
-    PLURALNAME: 'Virhesivut'
     SINGULARNAME: 'Virhesivu'
   File:
     Title: Nimi
@@ -267,7 +266,6 @@ fi:
     HASBEENSETUP: 'Sivu, joka ohjaa käyttäjän toiselle sivulle on valmis, mutta sivua, jolle käyttäjä ohjataan, ei ole.'
     HEADER: 'Tämä sivu ohjaa käyttäjän toiselle sivulle'
     OTHERURL: 'Toisen verkkosivuston URL-osoite'
-    PLURALNAME: 'Uudelleenohjaavat sivut'
     REDIRECTTO: 'Minne ohjataan?'
     REDIRECTTOEXTERNAL: 'Muu verkkosivusto'
     REDIRECTTOPAGE: 'Sivu verkkosivustollasi'
@@ -436,6 +434,5 @@ fi:
     EditLink: muokkaa
     HEADER: 'Tämä on virtuaalisivu'
     HEADERWITHLINK: 'Tämä on virtuaalisivu, joka kopioi sisällön kohteesta "{title}" ({link})'
-    PLURALNAME: 'Virtuaalisivut'
     PageTypNotAllowedOnRoot: 'Alkuperäinen sivutyyppi "{type}" ei ole sallittu tämän virtuaalisen sivun päätasolla'
     SINGULARNAME: 'Virtuaalisivu'

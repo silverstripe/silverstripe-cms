@@ -221,7 +221,6 @@ sv:
     DEFAULTSERVERERRORPAGETITLE: 'Serverfel'
     DESCRIPTION: 'Anpassat innehåll för olika felärenden (t.ex. "Sidan kan inte hittas")'
     ERRORFILEPROBLEM: 'Kunde inte skriva filen "{filename}". Var vänlig kontrollera skrivrättigheterna.'
-    PLURALNAME: 'Felsidor'
     SINGULARNAME: 'Felsida'
   Folder:
     AddFolderButton: 'Skapa mapp'
@@ -244,7 +243,6 @@ sv:
     HASBEENSETUP: 'En omdirigeringssida har skapats utan att ha något mål.'
     HEADER: 'Den här sidan omdirigerar användare till en annan sida'
     OTHERURL: 'Andra sidans URL'
-    PLURALNAME: 'Omdirigeringssida'
     REDIRECTTO: 'Omdirigera till'
     REDIRECTTOEXTERNAL: 'En annan sajt'
     REDIRECTTOPAGE: 'En sida på din sajt'
@@ -412,6 +410,5 @@ sv:
     EditLink: redigera
     HEADER: 'Det här är en virutell sida'
     HEADERWITHLINK: 'Det här är en virtuell sida som kopierar innehållet från "{title}" ({link})'
-    PLURALNAME: 'Virtuella sidor'
     PageTypNotAllowedOnRoot: 'Ursprungliga sidan av typ "{type}" tillåts inte på rotnivå för denna virtuella sida'
     SINGULARNAME: 'Virtuell sida'

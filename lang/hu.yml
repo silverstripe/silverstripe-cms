@@ -175,7 +175,6 @@ hu:
     CODE: 'Hibakód'
     DEFAULTERRORPAGETITLE: 'Az oldal nem található'
     DEFAULTSERVERERRORPAGETITLE: 'Szerver hiba'
-    PLURALNAME: 'Hibaoldalak'
     SINGULARNAME: 'Hiba oldal'
   Folder:
     AddFolderButton: 'Mappa hozzáadása'
@@ -198,7 +197,6 @@ hu:
     HASBEENSETUP: 'Egy átirányító oldal került létrehozásra, anélkül hogy lenne hova átirányítania.'
     HEADER: 'Ez az oldal egy másik oldalra fogja írányítani a felhasználókat'
     OTHERURL: 'Egy másik weboldal URL-je '
-    PLURALNAME: 'Átirányító oldalak'
     REDIRECTTO: 'Átirányítás ide:'
     REDIRECTTOEXTERNAL: 'Egy másik weboldal'
     REDIRECTTOPAGE: 'Egy oldal a weblapodon'
@@ -339,5 +337,4 @@ hu:
     CHOOSE: 'Hivatkozott oldal'
     EditLink: szerkeszt
     HEADER: 'Ez egy virtuális oldal'
-    PLURALNAME: 'Virtuális oldalak'
     SINGULARNAME: 'Virtuális oldal'

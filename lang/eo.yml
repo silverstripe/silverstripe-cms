@@ -242,7 +242,6 @@ eo:
     DEFAULTSERVERERRORPAGETITLE: 'Servila eraro'
     DESCRIPTION: 'Propra enhavo por diversaj kazoj de eraro (ekzemple, "Ne trovis paĝon")'
     ERRORFILEPROBLEM: 'Eraro okazis malfermante dosieron "{filename}" por skribi. Bonvolu kontroli permesojn.'
-    PLURALNAME: 'Paĝoj pri eraroj'
     SINGULARNAME: 'Prierara paĝo'
   Folder:
     AddFolderButton: 'Aldoni dosierujon'
@@ -265,7 +264,6 @@ eo:
     HASBEENSETUP: 'Alidirekta paĝo estis agordita sen ie al kie alidirekti.'
     HEADER: 'Ĉi tiu paĝo redirektos uzantojn al alia paĝo'
     OTHERURL: 'URL de alia retejo'
-    PLURALNAME: 'Paĝoj pri alidirekto'
     REDIRECTTO: 'Alidirekti al'
     REDIRECTTOEXTERNAL: 'Alia retejo'
     REDIRECTTOPAGE: 'Paĝo en via retejo'
@@ -434,6 +432,5 @@ eo:
     EditLink: redakti
     HEADER: 'Ĉi tiu estas virtuala paĝo'
     HEADERWITHLINK: 'Ĉi tiu estas virtuala paĝo kopianta enhavon el "{title}" ({link})'
-    PLURALNAME: 'Virtualaj paĝoj'
     PageTypNotAllowedOnRoot: 'Origina paĝa tipo "{type}" ne estas permesita ĉe la root-nivelo por ĉi tiu virtuala paĝo.'
     SINGULARNAME: 'Virtuala paĝo'

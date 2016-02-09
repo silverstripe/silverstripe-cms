@@ -242,7 +242,7 @@ lt:
     DEFAULTSERVERERRORPAGETITLE: 'Tarnybinės stoties klaida'
     DESCRIPTION: 'Specifinis turinys, įvairioms klaidoms apibūdinti (Pvz.: "Puslapis nerastas")'
     ERRORFILEPROBLEM: 'Klaida atveriant rašymui bylą "{filename}". Prašome patikrinti bylų leidimus.'
-    PLURALNAME: 'Klaidos puslapiai'
+    PLURALNAME: 'Baziniai puslapiai'
     SINGULARNAME: 'Klaidos puslapis'
   File:
     Title: Pavadinimas
@@ -267,7 +267,7 @@ lt:
     HASBEENSETUP: 'Nukreipimo puslapis neturintis nukreipimo.'
     HEADER: 'Šis puslapis nukreips lankytojus į kitą puslapį'
     OTHERURL: 'Kitos svetainės URL adresas'
-    PLURALNAME: 'Nukreipimo puslapiai'
+    PLURALNAME: 'Baziniai puslapiai'
     REDIRECTTO: 'Nukreipti į'
     REDIRECTTOEXTERNAL: 'Kita svetainė'
     REDIRECTTOPAGE: 'Puslapis Jūsų svetainėje'
@@ -436,6 +436,6 @@ lt:
     EditLink: redaguoti
     HEADER: 'Tai yra virtualus puslapis'
     HEADERWITHLINK: 'Tai yra virtualus puslapis su turiniu iš puslapio "{title}" ({link})'
-    PLURALNAME: 'Virtualūs puslapiai'
+    PLURALNAME: 'Baziniai puslapiai'
     PageTypNotAllowedOnRoot: 'Norimas puslapio tipas "{type}" neleidžiamas šiam virtualiam puslapiui šakniniame lygmenyje.'
     SINGULARNAME: 'Virtualus puslapis'

@@ -237,8 +237,9 @@ de:
     DEFAULTSERVERERRORPAGETITLE: 'Serverfehler'
     DESCRIPTION: 'Spezieller Inhalt für andere Fehlerfälle (z.B. "Seite nicht gefunden")'
     ERRORFILEPROBLEM: 'Die Datei "{filename}" konnte nicht zum Schreiben geöffnet werden. Bitte überprüfen Sie die Dateiberechtigungen.'
-    PLURALNAME: 'Fehlerseiten'
     SINGULARNAME: 'Fehlerseite'
+  File:
+    Title: Titel
   Folder:
     AddFolderButton: 'Ordner hinzufügen'
     DELETEUNUSEDTHUMBNAILS: 'Unbenutzte Vorschaubilder löschen'
@@ -260,7 +261,6 @@ de:
     HASBEENSETUP: 'Eine Weiterleitungsseite wurde erstellt ohne das eine Weiterleitung definiert wurde.'
     HEADER: 'Diese Seite wird Nutzer auf eine andere Seite weiterleiten'
     OTHERURL: 'Andere Webseiten URL'
-    PLURALNAME: 'Weiterleitungsseiten'
     REDIRECTTO: 'Weiterleiten zu'
     REDIRECTTOEXTERNAL: 'Andere Website'
     REDIRECTTOPAGE: 'Eine Seite auf Ihrer Website'
@@ -429,6 +429,5 @@ de:
     EditLink: Bearbeiten
     HEADER: 'Dies ist eine virtuelle Seite'
     HEADERWITHLINK: 'Dies ist eine virtuelle Seite, die den Inhalt von "{title}" ({link}) kopiert'
-    PLURALNAME: 'Virtuelle Seiten'
     PageTypNotAllowedOnRoot: 'Der ursprüngliche Seitentyp "{type}" ist nicht zulässig für diese virtuelle Seite. '
     SINGULARNAME: 'Virtuelle Seite'

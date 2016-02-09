@@ -100,6 +100,7 @@ fa_IR:
     PUBALLFUN: 'عملکرد "انتشار همه"'
     PageAdded: 'صفحه با موفقیت ایجاد شد'
     RESTORE: 'بازنشانی پیش‌نویس'
+    RESTORED: 'بازنشانی موفقیت‌آمیز ''{title}'''
     ROLLBACK: 'بازگردانی به این نسخه'
     SAVE: ذخیره
     SAVEDRAFT: 'ذخیره پیش‌نویس'
@@ -162,12 +163,15 @@ fa_IR:
     Title: 'صفحات بایگانی شده'
   CMSSiteTreeFilter_StatusDraftPages:
     Title: 'صفحات پیش‌نویس'
+  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'زنده اما حذف‌شده از پیش‌نویس'
   ContentController:
     ARCHIVEDSITE: 'نسخه پیش‌نمایش'
     ARCHIVEDSITEFROM: 'سایت بایگانی شده از'
     CMS: CMS
     DRAFT: پیش‌نویس
     DRAFTSITE: 'سایت پیش‌نویس'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'برای نمایش پیش‌نویس یا محتوای آرشیو شده باید با رمز عبور سی‌ام‌اس خود وارد شوید. <a href="%s">اینجا را کلیک کنید</a> تا به سایت منتشر‌شده بازگردید.'
     Email: ای‌میل
     INSTALL_SUCCESS: 'نصب موفقیت‌آمیز!'
     InstallFilesDeleted: 'فایل‌های نصبی با موفقیت حذف شدند.'
@@ -198,8 +202,9 @@ fa_IR:
     DEFAULTERRORPAGETITLE: 'برگ پیدا نشد'
     DEFAULTSERVERERRORPAGECONTENT: '<p>با پوزش، در پردازش درخواست شما ایرادی بوجود آمد.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'خطای سرور'
-    PLURALNAME: 'صفحات خطا'
     SINGULARNAME: 'صفحه‌ی خطا'
+  File:
+    Title: عنوان
   Folder:
     AddFolderButton: 'افزودن پوشه'
     DELETEUNUSEDTHUMBNAILS: 'حذف تصاویر انگشتی بلااستفاده'
@@ -220,7 +225,6 @@ fa_IR:
     DESCRIPTION: 'به صفحه‌ی داخلی دیگری هدایت می‌کند'
     HEADER: 'این صفحه کاربران را به صفحه‌ای دیگر هدایت می‌کند'
     OTHERURL: 'نشانی تارگاه دیگر'
-    PLURALNAME: 'صفحات هدایت‌گر'
     REDIRECTTO: 'بازگردانی به'
     REDIRECTTOEXTERNAL: 'یک تارگاه دیگر'
     REDIRECTTOPAGE: 'یک برگ روی تارگاه شما'
@@ -274,6 +278,7 @@ fa_IR:
     ADDEDTODRAFTHELP: 'این صفحه تاکنون منتشر نشده است'
     ADDEDTODRAFTSHORT: پیش‌نویس
     ALLOWCOMMENTS: 'پذیرفتن نظرات در این صفحه ؟'
+    ARCHIVEDPAGEHELP: 'صفحه از پیش‌نویس و زنده حذف گردید'
     ARCHIVEDPAGESHORT: بایگانی شده
     BUTTONARCHIVEDESC: 'عدم انتشار و ارسال به بایگانی'
     BUTTONCANCELDRAFT: 'لغو تغییرات پیش‌نویس'
@@ -309,6 +314,7 @@ fa_IR:
     LASTUPDATED: 'آخرین به روزرسانی'
     MENUTITLE: 'برچسب ناوبری'
     METADESC: 'توضیحات'
+    METADESCHELP: 'موتورهای جستجو از این محتوا در نمایش نتایج جستجو بهره‌می‌برند (اگرچه تأثیری در رتبه‌بندی ندارد).'
     METAEXTRA: 'متا تگ‌های اختصاصی'
     MODIFIEDONDRAFTHELP: 'صفحه دارای تغییرات منتشر نشده است'
     MODIFIEDONDRAFTSHORT: تغییر یافته
@@ -349,11 +355,11 @@ fa_IR:
     Edit: ویرایش
     OK: تایید
   ViewArchivedEmail_ss:
+    CANACCESS: 'شما می‌توانید با این لینک به سایت آرشیو‌شده دسترسی یابید:'
     HAVEASKED: 'شما خواسته اید که درون‌مایه تارگاه ما را ببینید در'
   VirtualPage:
     CHOOSE: 'صفحه ارجاعی'
     DESCRIPTION: 'نمایش محتوای صفحه ی دیگر'
     EditLink: ویرایش
     HEADER: 'این یک صفحه مجازی است'
-    PLURALNAME: 'صفحات مجازی'
     SINGULARNAME: 'صفحه مجازی'

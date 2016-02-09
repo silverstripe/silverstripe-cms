@@ -242,7 +242,7 @@ sk:
     DEFAULTSERVERERRORPAGETITLE: 'Chyba servera'
     DESCRIPTION: 'Vlastný obsah pre rôzne prípady chýb (napr. "Stránka nenájdená")'
     ERRORFILEPROBLEM: 'Chyba otvorenia súboru "{filename}" pre zápis. Skontrolujte oprávnenia súboru, prosím.'
-    PLURALNAME: 'Chybové stránky'
+    PLURALNAME: 'Základné stránky'
     SINGULARNAME: 'Chybová stránka'
   File:
     Title: Názov
@@ -267,7 +267,7 @@ sk:
     HASBEENSETUP: 'Stránka na presmerovanie bola nastavená bez cieľa.'
     HEADER: 'Táto stránka presmeruje používateľov na inú stránku'
     OTHERURL: 'Iné web URL.'
-    PLURALNAME: 'Presmerovacie stránky'
+    PLURALNAME: 'Základné stránky'
     REDIRECTTO: 'Presmerovať na'
     REDIRECTTOEXTERNAL: 'Iná web stránka'
     REDIRECTTOPAGE: 'Stránka na vašom webe'
@@ -436,6 +436,6 @@ sk:
     EditLink: editovať
     HEADER: 'Toto je virtuálna stránka'
     HEADERWITHLINK: 'Toto je virtuálna stránka, kopíruje sa obsah z "{title}" ({link})'
-    PLURALNAME: 'Virtuálne stránky'
+    PLURALNAME: 'Základné stránky'
     PageTypNotAllowedOnRoot: 'Pôvodná stránka typu "{type}" nie je povolená na najvyššej úrovni pre túto virtuálnu stránku'
     SINGULARNAME: 'Virtuálna stránka'
