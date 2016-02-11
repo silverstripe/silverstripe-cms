@@ -21,18 +21,9 @@
 		};
 	}
 
-	/**
-  * Behaviour for the CMS Content Toolbar.
-  * Applies to tools on top-level views i.e. '/admin/pages' and '/admin/assets' and
-  * their corresponding tools in the SiteTree panel.
-  * An example is 'bulk actions' on the Pages view.
-  */
 	_jQuery2.default.entwine('ss', function ($) {
-
-		// Faux three column layout
 		$('.cms-content-header-info').entwine({
 			'from .cms-panel': {
-				// Keep the header info's width synced with the TreeView panel's width.
 				ontoggle: function ontoggle(e) {
 					var $treeViewPanel = this.closest('.cms-content').find(e.target);
 
@@ -52,15 +43,12 @@
 
 				this._super();
 
-				// Initialise the buttons
 				$.each(this.find('.cms-actions-buttons-row .tool-button'), function () {
 					var $button = $(this),
 					    toolId = $button.data('toolid'),
 					    isActive = $button.hasClass('active');
 
-					// We don't care about tools that don't have a related 'action'.
 					if (toolId !== void 0) {
-						// Set the tool to its closed state.
 						$button.data('active', false).removeClass('active');
 						$('#' + toolId).hide();
 
@@ -80,11 +68,6 @@
 				});
 			},
 
-			/**
-    * @func bindActionButtonEvents
-    * @param {object} $button
-    * @desc Add event handlers in the '.cmsContentToolbar' namespace.
-    */
 			bindActionButtonEvents: function bindActionButtonEvents($button) {
 				var self = this;
 
@@ -93,27 +76,15 @@
 				});
 			},
 
-			/**
-    * @func unbindActionButtonEvents
-    * @param {object} $button
-    * @desc Remove all event handlers in the '.cmsContentToolbar' namespace.
-    */
 			unbindActionButtonEvents: function unbindActionButtonEvents($button) {
 				$button.off('.cmsContentToolbar');
 			},
 
-			/**
-    * @func showTool
-    * @param {object} $button
-    * @desc Show a tool in the tools row. Hides all other tools.
-    */
 			showHideTool: function showHideTool($button) {
 				var isActive = $button.data('active'),
 				    toolId = $button.data('toolid'),
 				    $action = $('#' + toolId);
 
-				// Hide all tools except the one passed as a param,
-				// which gets handled separately.
 				$.each(this.find('.cms-actions-buttons-row .tool-button'), function () {
 					var $currentButton = $(this),
 					    $currentAction = $('#' + $currentButton.data('toolid'));

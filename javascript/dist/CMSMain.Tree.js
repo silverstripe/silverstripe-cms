@@ -30,10 +30,7 @@
 					this.adjustContextClass();
 				}
 			},
-			/*
-    * Add and remove classes from context menus to allow for
-    * adjusting the display
-    */
+
 			adjustContextClass: function adjustContextClass() {
 				var menus = $('#vakata-contextmenu').find("ul ul");
 
@@ -41,7 +38,6 @@
 					var col = "1",
 					    count = $(menus[i]).find('li').length;
 
-					//Assign columns to menus over 10 items long
 					if (count > 20) {
 						col = "3";
 					} else if (count > 10) {
@@ -50,7 +46,6 @@
 
 					$(menus[i]).addClass('col-' + col).removeClass('right');
 
-					//Remove "right" class that jstree adds on mouseenter
 					$(menus[i]).find('li').on("mouseenter", function (e) {
 						$(this).parent('ul').removeClass("right");
 					});
@@ -73,26 +68,21 @@
 							}
 						};
 
-						// Add "show as list"
 						if (!node.hasClass('nochildren')) {
 							menuitems['showaslist'] = {
 								'label': _i18n2.default._t('Tree.ShowAsList'),
 								'action': function action(obj) {
-									$('.cms-container').entwine('.ss').loadPanel(self.data('urlListview') + '&ParentID=' + obj.data('id'), null,
-									// Default to list view tab
-									{ tabState: { 'pages-controller-cms-content': { 'tabSelector': '.content-listview' } } });
+									$('.cms-container').entwine('.ss').loadPanel(self.data('urlListview') + '&ParentID=' + obj.data('id'), null, { tabState: { 'pages-controller-cms-content': { 'tabSelector': '.content-listview' } } });
 								}
 							};
 						}
 
-						// Build a list for allowed children as submenu entries
 						var pagetype = node.data('pagetype'),
 						    id = node.data('id'),
 						    allowedChildren = node.find('>a .item').data('allowedchildren'),
 						    menuAllowedChildren = {},
 						    hasAllowedChildren = false;
 
-						// Convert to menu entries
 						$.each(allowedChildren, function (klass, title) {
 							hasAllowedChildren = true;
 							menuAllowedChildren["allowedchildren-" + klass] = {
@@ -133,8 +123,6 @@
 			}
 		});
 
-		// Scroll tree down to context of the current page, if it isn't
-		// already visible
 		$('.cms-tree a.jstree-clicked').entwine({
 			onmatch: function onmatch() {
 				var self = this,
@@ -142,8 +130,6 @@
 				    scrollTo;
 
 				if (self.offset().top < 0 || self.offset().top > panel.height() - self.height()) {
-					// Current scroll top + our current offset top is our
-					// position in the panel
 					scrollTo = panel.scrollTop() + self.offset().top + panel.height() / 2;
 
 					panel.animate({
@@ -153,7 +139,6 @@
 			}
 		});
 
-		// Clear filters button
 		$('.cms-tree-filtered .clear-filter').entwine({
 			onclick: function onclick() {
 				window.location = location.protocol + '//' + location.host + location.pathname;

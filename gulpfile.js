@@ -4,6 +4,7 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     uglify = require('gulp-uglify');
     gulpUtil = require('gulp-util'),
+    gulpif = require('gulp-if'),
     browserify = require('browserify'),
     babelify = require('babelify'),
     watchify = require('watchify'),
@@ -13,7 +14,8 @@ var gulp = require('gulp'),
     glob = require('glob'),
     eventStream = require('event-stream'),
     semver = require('semver'),
-    packageJson = require('./package.json');
+    packageJson = require('./package.json'),
+    sourcemaps = require('gulp-sourcemaps');
 
 var PATHS = {
     MODULES: './node_modules',
@@ -28,6 +30,10 @@ var browserifyOptions = {
     plugin: [watchify]
 };
 
+var isDev = typeof process.env.npm_config_development !== 'undefined';
+
+process.env.NODE_ENV = isDev ? 'development' : 'production';
+
 /**
  * Transforms the passed JavaScript files to UMD modules.
  *
@@ -41,7 +47,8 @@ function transformToUmd(files, dest) {
             .pipe(babel({
                 presets: ['es2015'],
                 moduleId: 'ss.' + path.parse(file).name,
-                plugins: ['transform-es2015-modules-umd']
+                plugins: ['transform-es2015-modules-umd'],
+                comments: false
             }))
             .on('error', notify.onError({
                 message: 'Error: <%= error.message %>',
@@ -56,36 +63,36 @@ if (!semver.satisfies(process.versions.node, packageJson.engines.node)) {
     process.exit(1);
 }
 
-if (process.env.npm_config_development) {
+if (isDev) {
     browserifyOptions.debug = true;
 }
 
-gulp.task('build', ['umd-cms', 'umd-watch', 'bundle-lib']);
+var babelifyOptions = {
+	presets: ['es2015', 'react'],
+	ignore: /(node_modules|thirdparty)/,
+	comments: false
+};
 
-gulp.task('bundle-lib', function bundleLib() {
-    var stream = browserify(Object.assign({}, browserifyOptions, {
-            entries: PATHS.CMS_JAVASCRIPT_SRC + '/bundles/lib.js'
-        }))
-        .transform(babelify.configure({
-            presets: ['es2015'],
-            ignore: /(thirdparty)/
-        }))
-        .on('log', function (msg) { gulpUtil.log('Finished bundle-lib.js ' + msg); })
-        .on('update', bundleLib)
-        .external('jQuery')
-        .external('i18n')
-        .bundle()
-        .on('error', notify.onError({
-            message: 'Error: <%= error.message %>',
-        }))
-        .pipe(source('bundle-lib.js'))
-        .pipe(buffer());
+gulp.task('build', ['umd-cms', 'umd-watch', 'bundle-legacy']);
 
-    if (typeof process.env.npm_config_development === 'undefined') {
-        stream.pipe(uglify());
-    }
+gulp.task('bundle-legacy', function bundleLeftAndMain() {
+	var bundleFileName = 'bundle-legacy.js';
 
-    return stream.pipe(gulp.dest(PATHS.CMS_JAVASCRIPT_DIST));
+	return browserify(Object.assign({}, browserifyOptions, { entries: PATHS.CMS_JAVASCRIPT_SRC + '/bundles/legacy.js' }))
+		.on('update', bundleLeftAndMain)
+		.on('log', function (msg) { gulpUtil.log('Finished', 'bundled ' + bundleFileName + ' ' + msg) })
+		.transform('babelify', babelifyOptions)
+		.external('jQuery')
+		.external('i18n')
+		.external('router')
+		.bundle()
+		.on('error', notify.onError({ message: bundleFileName + ': <%= error.message %>' }))
+		.pipe(source(bundleFileName))
+		.pipe(buffer())
+		.pipe(sourcemaps.init({ loadMaps: true }))
+		.pipe(gulpif(!isDev, uglify()))
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest(PATHS.CMS_JAVASCRIPT_DIST));
 });
 
 gulp.task('umd-cms', function () {
