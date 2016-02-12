@@ -369,7 +369,7 @@ class CMSPageHistoryController extends CMSMain {
 			$fromVersion = $versionID;
 		}
 
-		if(!$toVersion || !$toVersion) return false;
+		if(!$toVersion || !$fromVersion) return false;
 		
 		$id = $this->currentPageID();
 		$page = DataObject::get_by_id("SiteTree", $id);

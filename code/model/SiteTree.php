@@ -401,7 +401,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 *
 	 * @return array
 	 */
-	static public function page_type_classes() {
+	public static function page_type_classes() {
 		$classes = ClassInfo::getValidSubClasses();
 
 		$baseClassIndex = array_search('SiteTree', $classes);
@@ -426,8 +426,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$kill_ancestors = array_unique($kill_ancestors);
 			foreach($kill_ancestors as $mark) {
 				// unset from $classes
-				$idx = array_search($mark, $classes);
-				unset($classes[$idx]);
+				$idx = array_search($mark, $classes, true);
+				if ($idx !== false) {
+					unset($classes[$idx]);
+				}
 			}
 		}
 
@@ -2225,7 +2227,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$existsOnLive = $this->getExistsOnLive();
 
 		// Major actions appear as buttons immediately visible as page actions.
-		$majorActions = CompositeField::create()->setName('MajorActions')->setTag('fieldset')->addExtraClass('ss-ui-buttonset');
+		$majorActions = CompositeField::create()->setName('MajorActions')->setTag('fieldset')->addExtraClass('ss-ui-buttonset noborder');
 
 		// Minor options are hidden behind a drop-up and appear as links (although they are still FormActions).
 		$rootTabSet = new TabSet('ActionMenus');
@@ -2234,7 +2236,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			_t('SiteTree.MoreOptions', 'More options', 'Expands a view for more buttons')
 		);
 		$rootTabSet->push($moreOptions);
-		$rootTabSet->addExtraClass('ss-ui-action-tabset action-menus');
+		$rootTabSet->addExtraClass('ss-ui-action-tabset action-menus noborder');
 
 		// Render page information into the "more-options" drop-up, on the top.
 		$live = Versioned::get_one_by_stage('SiteTree', 'Live', array(
