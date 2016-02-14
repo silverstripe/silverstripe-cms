@@ -2,6 +2,8 @@ var gulp = require('gulp'),
     babel = require('gulp-babel'),
     diff = require('gulp-diff'),
     notify = require('gulp-notify'),
+    sass = require('gulp-sass'),
+    sourcemaps = require('gulp-sourcemaps'),
     uglify = require('gulp-uglify');
     gulpUtil = require('gulp-util'),
     browserify = require('browserify'),
@@ -13,16 +15,17 @@ var gulp = require('gulp'),
     glob = require('glob'),
     eventStream = require('event-stream'),
     semver = require('semver'),
-    packageJson = require('./package.json'),
-    sourcemaps = require('gulp-sourcemaps');
+    packageJson = require('./package.json');
+
+var isDev = typeof process.env.npm_config_development !== 'undefined';
 
 var PATHS = {
     MODULES: './node_modules',
     CMS_JAVASCRIPT_SRC: './javascript/src',
-    CMS_JAVASCRIPT_DIST: './javascript/dist'
+    CMS_JAVASCRIPT_DIST: './javascript/dist',
+    CMS_SCSS: './scss',
+    CMS_CSS: './css'
 };
-
-var isDev = typeof process.env.npm_config_development !== 'undefined';
 
 process.env.NODE_ENV = isDev ? 'development' : 'production';
 
@@ -100,4 +103,25 @@ gulp.task('umd-watch', function () {
     if (isDev) {
         gulp.watch(PATHS.CMS_JAVASCRIPT_SRC + '/*.js', ['umd-cms']);
     }
+});
+
+gulp.task('css', ['compile:css'], function () {
+  if (isDev) {
+    gulp.watch(PATHS.CMS_SCSS + '/**/*.scss', ['compile:css']);
+    gulp.watch(CMS_JAVASCRIPT_SRC + '/**/*.scss', ['compile:css']);
+  }
+})
+
+gulp.task('compile:css', function () {
+    var outputStyle = isDev ? 'expanded' : 'compressed';
+
+    return gulp.src(PATHS.CMS_SCSS + '/**/*.scss')
+        .pipe(sourcemaps.init())
+        .pipe(sass({ outputStyle: outputStyle })
+            .on('error', notify.onError({
+                message: 'Error: <%= error.message %>'
+            }))
+        )
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(PATHS.CMS_CSS))
 });

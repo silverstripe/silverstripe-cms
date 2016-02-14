@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "gulp build",
-    "lock": "npm-shrinkwrap --dev"
+    "css": "gulp css"
   },
   "repository": {
     "type": "git",
@@ -42,6 +42,7 @@
     "gulp-diff": "^1.0.0",
     "gulp-if": "^2.0.0",
     "gulp-notify": "^2.2.0",
+    "gulp-sass": "^2.2.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.1",
     "gulp-util": "^3.0.7",
