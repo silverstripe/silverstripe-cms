@@ -38,7 +38,7 @@
 		}
 		
 		.cms-page-add-button {
-			@include background-image (linear-gradient(lighten(#e6e6e6, 5%), darken(#e6e6e6, 5%)));
+			background-image: linear-gradient(lighten(#e6e6e6, 5%), darken(#e6e6e6, 5%));
 			border-color:#c0c0c2;
 			span.btn-icon-add {
 				height:17px;
