@@ -5,7 +5,7 @@ Feature: View Reports
 
   Background:
     Given a "page" "Empty Page"
-    And a "page" "Filled Page" with "Content"="Some Content"
+    And a "page" "Filled Page" with "Content"="<p>Some Content</p>"
     And I am logged in with "ADMIN" permissions
     And I go to "/admin/reports"
 

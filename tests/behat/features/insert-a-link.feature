@@ -1,4 +1,4 @@
-@assets 
+@assets
 Feature: Insert links into a page
 As a cms author
 I want to insert a link into my content
@@ -6,8 +6,8 @@ So that I can link to a external website or a page on my site
 
   Background:
     Given a "page" "Home"
-    And a "page" "About Us" has the "Content" "My awesome content"
-    And a "page" "Details" has the "Content" "My sub-par content<a name="youranchor"></a>"
+    And a "page" "About Us" has the "Content" "<p>My awesome content</p>"
+    And a "page" "Details" has the "Content" "<p>My sub-par content<a name="youranchor"></a></p>"
     And a "file" "assets/file1.jpg"
     And I am logged in with "ADMIN" permissions
     And I go to "/admin/pages"
@@ -15,7 +15,7 @@ So that I can link to a external website or a page on my site
 
   Scenario: I can link to an internal page
     Given I select "awesome" in the "Content" HTML field
-    And I press the "Insert Link" button
+    And I press the "Insert Link" HTML field button
     When I select the "Page on the site" radio button
     And I fill in the "internal" dropdown with "Home"
     And I fill in "my desc" for "Link description"
@@ -27,7 +27,7 @@ So that I can link to a external website or a page on my site
 
   Scenario: I can link to an anchor in an internal page
     Given I select "awesome" in the "Content" HTML field
-    And I press the "Insert Link" button
+    And I press the "Insert Link" HTML field button
     And I select the "Page on the site" radio button
     And I fill in the "internal" dropdown with "Details"
     And I wait for 1 second
@@ -39,7 +39,7 @@ So that I can link to a external website or a page on my site
 
   Scenario: I can link to an external URL
     Given I select "awesome" in the "Content" HTML field
-    And I press the "Insert Link" button
+    And I press the "Insert Link" HTML field button
     When I select the "Another website" radio button
     And I fill in "http://silverstripe.org" for "URL"
     And I check "Open link in a new window"
@@ -50,22 +50,22 @@ So that I can link to a external website or a page on my site
 
   Scenario: I can link to a file
     Given I select "awesome" in the "Content" HTML field
-    When I press the "Insert Link" button
+    When I press the "Insert Link" HTML field button
     When I select the "Download a file" radio button
     And I attach the file "testfile.jpg" to "file[Uploads][]" with HTML5
     And I press the "Insert" button
-    Then the "Content" HTML field should contain "<a href="[file_link,id=4]" target="_blank">awesome</a>"
+    Then the "Content" HTML field should contain "<a href="[file_link,id=4]">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save draft" button
     # Check that the field is reset when adding another new link
     Given I select "content" in the "Content" HTML field
-    When I press the "Insert Link" button
+    When I press the "Insert Link" HTML field button
     Then I should not see a ".ss-uploadfield-files .ss-uploadfield-item" element
 
   Scenario: I can link to an anchor
     Given I fill in the "Content" HTML field with "<p>My awesome content<a name='myanchor'></a></p>"
     And I select "awesome" in the "Content" HTML field
-    When I press the "Insert Link" button
+    When I press the "Insert Link" HTML field button
     When I select the "Anchor on this page" radio button
     And I select "myanchor" from "Form_EditorToolbarLinkForm_AnchorSelector"
     And I press the "Insert" button
@@ -76,7 +76,7 @@ So that I can link to a external website or a page on my site
   Scenario: I can edit a link
     Given I fill in the "Content" HTML field with "<p>My <a href='http://silverstripe.org'>awesome</a> content"
     And I select "awesome" in the "Content" HTML field
-    When I press the "Insert Link" button
+    When I press the "Insert Link" HTML field button
     # We need to hard-code the <input> id attribute, if you say 'Then the URL field', it picks up URLSegment instead.
     Then the "Form_EditorToolbarLinkForm_external" field should contain "http://silverstripe.org"
     # This doesn't seem to suffer from that issue
@@ -89,7 +89,7 @@ So that I can link to a external website or a page on my site
   Scenario: I can remove a link
     Given I fill in the "Content" HTML field with "My <a href='http://silverstripe.org'>awesome</a> content"
     And I select "awesome" in the "Content" HTML field
-    When I press the "Unlink" button
+    When I press the "Remove link" HTML field button
     Then the "Content" HTML field should contain "My awesome content"
     And the "Content" HTML field should not contain "http://silverstripe.org"
     # Required to avoid "unsaved changes" browser dialog
