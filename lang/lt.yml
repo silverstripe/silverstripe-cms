@@ -71,8 +71,6 @@ lt:
     PUBLISH_PAGES: Publikuoti
     RESTORE: Atstatyti
     RESTORED_PAGES: 'Atstatyti %d puslapiai'
-    UNPUBLISHED_PAGES: 'Nebepublikuojami %d puslapiai'
-    UNPUBLISH_PAGES: Nepublikuoti
   CMSFileAddController:
     MENUTITLE: Bylos
   CMSMain:
@@ -94,13 +92,10 @@ lt:
     DUPLICATEDWITHCHILDREN: 'Puslapis ''{title}'' , bei jo vaikai kopijuoti sėkmingai'
     EMAIL: E. paštas
     EditTree: 'Redaguoti medį'
-    ListFiltered: 'Filtruotas sąrašas.'
     MENUTITLE: 'Redaguoti puslapį'
     NEWPAGE: 'Naujas {pagetype}'
     PAGENOTEXISTS: 'Šis puslapis neegzistuoja'
-    PAGES: Puslapiai
     PAGETYPEANYOPT: Bet koks
-    PAGETYPEOPT: 'Puslapio tipas'
     PUBALLCONFIRM: 'Prašome publikuoti kiekvieną svetainės puslapį, kopijuojant turinį į svetainę'
     PUBALLFUN: '"Publikuoti viską" funkcionalumas'
     PUBALLFUN2: "Paspaudus šį mygtuką, bus publikuotas kiekvienas puslapis svetainėje. Tai naudotina, kai padaromi dideli pakeitimai svetainės turinyje, pavyzdžiui ką tik sukūrus svetainę."
@@ -109,7 +104,6 @@ lt:
     REMOVED: 'Iš publikuojamos svetainės ištrintas ''{title}''{description}'
     REMOVEDPAGE: 'Iš publikuojamos svetainės pašalintas ''{title}'''
     REMOVEDPAGEFROMDRAFT: '''%s'' pašalintas iš juodraštinės svetainės'
-    RESTORE: Atstatyti
     RESTORED: '''{title}'' atstatytas sėkmingai'
     RESTORE_DESC: 'Atstatyti suarchyvuotą versiją kaip juodraštinį puslapį'
     RESTORE_TO_ROOT: 'Atstatyti juodraštį aukščiausiame lygyje'
@@ -122,11 +116,8 @@ lt:
     TabContent: Turinys
     TabHistory: Istorija
     TabSettings: Nustatymai
-    TreeFiltered: 'Filtruotas medis.'
-    TreeFilteredClear: 'Išvalyti filtrą'
   CMSMain_left_ss:
-    APPLY_FILTER: 'Vykdyti'
-    CLEAR_FILTER: 'Išvalyti filtrą'
+    CLEAR_FILTER: Išvalyti filtrą
     RESET: Atstatyti
   CMSPageAddController:
     MENUTITLE: 'Pridėti puslapį'
@@ -158,8 +149,6 @@ lt:
     ListView: 'Sąrašo rodinys'
     MENUTITLE: Puslapiai
     TreeView: 'Medžio rodinys'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Daugybinis pasirinkimas
   CMSPagesController_Tools_ss:
     FILTER: Filtras
   CMSSIteTreeFilter_PublishedPages:
@@ -168,19 +157,11 @@ lt:
     FILTERDATEFROM: Nuo
     FILTERDATEHEADING: Data
     FILTERDATETO: Iki
-    FILTERLABELTEXT: Turinys
+    PAGEFILTERDATEHEADING: 'Redaguota'
   CMSSettingsController:
     MENUTITLE: Nustatymai
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Pakeisti puslapiai'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Visi puslapiai, taip pat ir archyvuoti'
   CMSSiteTreeFilter_Search:
     Title: 'Visi puslapiai'
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Archyvuoti puslapiai'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Juodraštiniai puslapiai'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Publikuotas, bet pašalintas iš juodraščių'
   ContentControl:
@@ -243,6 +224,8 @@ lt:
     ERRORFILEPROBLEM: 'Klaida atveriant rašymui bylą "{filename}". Prašome patikrinti bylų leidimus.'
     PLURALNAME: 'Klaidos puslapiai'
     SINGULARNAME: 'Klaidos puslapis'
+  File:
+    Title: Pavadinimas
   Folder:
     AddFolderButton: 'Naujas katalogas'
     DELETEUNUSEDTHUMBNAILS: 'Ištrinti nenaudojamas paveikslėlių miniatūras'
@@ -298,7 +281,6 @@ lt:
   SilverStripeNavigator:
     ARCHIVED: Archyvuota
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Norėdami pasidalinti šiuo puslapiu, kopijuokite žemiau esančią nuorodą.'
     ShareLink: 'Dalintis nuoroda'
   SilverStripeNavigatorLinkl:
     CloseLink: Uždaryti

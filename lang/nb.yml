@@ -92,13 +92,10 @@ nb:
     DUPLICATEDWITHCHILDREN: 'Vellykket duplisering av "{title}" og undersider.'
     EMAIL: Epost
     EditTree: 'Rediger treet'
-    ListFiltered: 'Filtrerte liste.'
     MENUTITLE: 'Rediger side'
     NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Siden eksisterer ikke'
-    PAGES: Sider
     PAGETYPEANYOPT: Hvilken som helst
-    PAGETYPEOPT: 'Sidetype'
     PUBALLCONFIRM: 'Vennligst publiser hver eneste side på nettstedet, og kopier innhold til aktivt nettsted'
     PUBALLFUN: 'Funksjonalitet for "Publiser alle"'
     PUBALLFUN2: "Å trykke på denne knappen er det samme som å gå på hver side og trykke \"publiser\". Den er ment for å bli brukt etter at det har blitt gjort massive endringer av innholdet, som for eksempel når siden først ble laget."
@@ -119,11 +116,7 @@ nb:
     TabContent: Innhold
     TabHistory: Historikk
     TabSettings: Innstillinger
-    TreeFiltered: 'Filtrerte treet.'
-    TreeFilteredClear: 'Fjern filtrering'
   CMSMain_left_ss:
-    APPLY_FILTER: 'Aktiver filter'
-    CLEAR_FILTER: 'Fjern filter'
     RESET: Tilbakestill
   CMSPageAddController:
     MENUTITLE: 'Legg til side'
@@ -155,8 +148,6 @@ nb:
     ListView: 'Listevisning'
     MENUTITLE: Sider
     TreeView: 'Trevisning'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Flervalg
   CMSPagesController_Tools_ss:
     FILTER: Filter
   CMSSIteTreeFilter_PublishedPages:
@@ -165,7 +156,6 @@ nb:
     FILTERDATEFROM: Fra
     FILTERDATEHEADING: Dato
     FILTERDATETO: Til
-    FILTERLABELTEXT: Innhold
   CMSSettingsController:
     MENUTITLE: Innstillinger
   CMSSiteTreeFilter_Search:
@@ -230,7 +220,6 @@ nb:
     DEFAULTSERVERERRORPAGETITLE: 'Serverfeil'
     DESCRIPTION: 'Egendefinert innhold for forskjellige feilsituasjoner (f.eks "Siden ble ikke funnet")'
     ERRORFILEPROBLEM: 'Feil ved åpning av filen "{filename}". Vennligst sjekk filtillatelser.'
-    PLURALNAME: 'Feilsider'
     SINGULARNAME: 'Feilside'
   Folder:
     AddFolderButton: 'Legg til mappe'
@@ -253,7 +242,6 @@ nb:
     HASBEENSETUP: 'En omdirigeringssside har blitt satt opp uten et mål å omdirigere til.'
     HEADER: 'Denne siden vil omdirigere brukere til en annen side'
     OTHERURL: 'Nettadresse til et annet nettsted'
-    PLURALNAME: 'Omdirigeringssider'
     REDIRECTTO: 'Omdiriger til'
     REDIRECTTOEXTERNAL: 'Et annet nettsted'
     REDIRECTTOPAGE: 'En side på nettstedet'
@@ -421,6 +409,5 @@ nb:
     EditLink: rediger
     HEADER: 'Dette er en virituell side'
     HEADERWITHLINK: 'Dette er en virtuell side som kopierer innhold fra "{title}" ({link})'
-    PLURALNAME: 'Virtuelle sider'
     PageTypNotAllowedOnRoot: 'Originaltypen "{type}" er ikke tillatt på toppnivået for denne virtuelle siden.'
     SINGULARNAME: 'Virtuell side'

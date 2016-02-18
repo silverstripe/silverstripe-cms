@@ -92,13 +92,10 @@ sk:
     DUPLICATEDWITHCHILDREN: 'Duplikované ''{title}'' a potomkovia úspešne'
     EMAIL: Pošli e-mailom
     EditTree: 'Editovať strom'
-    ListFiltered: 'Filtrovaný zoznam.'
     MENUTITLE: 'Upraviť stránku'
     NEWPAGE: 'Nová {pagetype}'
     PAGENOTEXISTS: 'Táto stránka neexistuje.'
-    PAGES: Stránky
     PAGETYPEANYOPT: Akákoľvek
-    PAGETYPEOPT: 'Typ stránky'
     PUBALLCONFIRM: 'Prosím, zverejnite všetky stránky webu, zkopírovaním obsahu na verejné'
     PUBALLFUN: 'Funkcia "Publikovať všetko"'
     PUBALLFUN2: "Stlačením tohto tlačidla vykonáte to isté ako keby ste navštívili každú stránku a stlačili \"publikuj\". Je určené na použite po rozsiahlych zmenách obsahu, napríklad keď bol web prvýkrát vytvorený."
@@ -119,11 +116,8 @@ sk:
     TabContent: Obsah
     TabHistory: História
     TabSettings: Nastavenia
-    TreeFiltered: 'Filtrovaný strom.'
-    TreeFilteredClear: 'Vyčistiť filter'
   CMSMain_left_ss:
-    APPLY_FILTER: 'Použiť filter'
-    CLEAR_FILTER: 'Vyčistiť filter'
+    CLEAR_FILTER: Vyčistiť
     RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Pridať stránku'
@@ -155,8 +149,6 @@ sk:
     ListView: 'Zobraziť zoznam'
     MENUTITLE: Stránky
     TreeView: 'Zobraziť strom'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Multi výber
   CMSPagesController_Tools_ss:
     FILTER: Filtrovať
   CMSSIteTreeFilter_PublishedPages:
@@ -165,7 +157,7 @@ sk:
     FILTERDATEFROM: Od
     FILTERDATEHEADING: Dátum
     FILTERDATETO: Do
-    FILTERLABELTEXT: Obsah
+    PAGEFILTERDATEHEADING: 'Posledne zmenené'
   CMSSettingsController:
     MENUTITLE: Nastavenia
   CMSSiteTreeFilter_Search:
@@ -232,6 +224,8 @@ sk:
     ERRORFILEPROBLEM: 'Chyba otvorenia súboru "{filename}" pre zápis. Skontrolujte oprávnenia súboru, prosím.'
     PLURALNAME: 'Chybové stránky'
     SINGULARNAME: 'Chybová stránka'
+  File:
+    Title: Názov
   Folder:
     AddFolderButton: 'Pridať priečinok'
     DELETEUNUSEDTHUMBNAILS: 'Vymazať nepoužité miniatúry'
@@ -280,7 +274,7 @@ sk:
     BrokenLinksGroupTitle: 'Výkazy porušených odkazov'
     ContentGroupTitle: 'Výkazy obsahu'
     EMPTYPAGES: 'Prázdne stránky'
-    LAST2WEEKS: 'Stránky upravené počaas posledných 2 týždňov'
+    LAST2WEEKS: 'Stránky upravené počas posledných 2 týždňov'
     OtherGroupTitle: Ostatné
     ParameterLiveCheckbox: 'Skontolovať živú stránku'
     REPEMPTY: '{title} výkaz je prázdny.'
@@ -318,7 +312,7 @@ sk:
     ARCHIVEDPAGEHELP: 'Stránka je odstránená z konceptu a z webu'
     ARCHIVEDPAGESHORT: Archivované
     BUTTONARCHIVEDESC: 'Nezverejniť a odoslať do archívu'
-    BUTTONCANCELDRAFT: 'Zrušiť zmeny v konceptu'
+    BUTTONCANCELDRAFT: 'Zrušiť zmeny v koncepte'
     BUTTONCANCELDRAFTDESC: 'Vymazať návrh a vrátiť sa k aktuálne zverejnenej stránke'
     BUTTONPUBLISHED: Publikované
     BUTTONSAVED: Uložené
@@ -336,11 +330,11 @@ sk:
     DELETEDPAGEHELP: 'Stránka už nie je viacej zverejnená'
     DELETEDPAGESHORT: Smazané
     DEPENDENT_NOTE: 'Nasledujúce stránky sú závislé na tejto stránke. To zahŕňa virtuálne stránky, presmerovacie stránky a stránky s odkazmi obsahu.'
-    DESCRIPTION: 'Obecný obsah stránky'
+    DESCRIPTION: 'Obyčajná jednoduchá stránka s vlastným obsahom.'
     DependtPageColumnLinkType: 'Typ odkazu'
     DependtPageColumnURL: URL
     EDITANYONE: 'Ktokoľvek kto sa môže prihlásiť do CMS'
-    EDITHEADER: 'Kto môže editovať túto stránnku?'
+    EDITHEADER: 'Kto môže editovať túto stránku?'
     EDITONLYTHESE: 'Iba títo ľudia (vyberte zo zoznamu)'
     EDITORGROUPS: 'Skupiny upravovateľov'
     EDIT_ALL_DESCRIPTION: 'Upraviť akúkoľvek stránku'

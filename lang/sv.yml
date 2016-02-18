@@ -92,13 +92,10 @@ sv:
     DUPLICATEDWITHCHILDREN: 'Duplicerade ''{title}'' och undersidor utan problem'
     EMAIL: E-post
     EditTree: 'Redigera trädet'
-    ListFiltered: 'Filtrerad lista'
     MENUTITLE: 'Redigera sida'
     NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Den här sidan finns inte'
-    PAGES: Sidor
     PAGETYPEANYOPT: Vilken som helst
-    PAGETYPEOPT: 'Sidtyp'
     PUBALLCONFIRM: 'Publicera alla sidor på sajten och kopiera dem till "live"'
     PUBALLFUN: '"Publicera alla"-funktion'
     PUBALLFUN2: "Ett klick på den här knappen är samma sak som att gå till varje sida och klicka på \"Publicera\". Tanken är att den ska användas efter stora uppdateringar av innehållet på sidan, som när den skapas."
@@ -119,11 +116,7 @@ sv:
     TabContent: Innehåll
     TabHistory: Historia
     TabSettings: Inställningar
-    TreeFiltered: 'Filtrerat träd'
-    TreeFilteredClear: 'Rensa lista'
   CMSMain_left_ss:
-    APPLY_FILTER: 'Filtrera'
-    CLEAR_FILTER: 'Rensa lista'
     RESET: Rensa
   CMSPageAddController:
     MENUTITLE: 'Skapa sida'
@@ -155,8 +148,6 @@ sv:
     ListView: 'Listvy'
     MENUTITLE: Sidor
     TreeView: 'Trädvy'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Flerval
   CMSPagesController_Tools_ss:
     FILTER: Filter
   CMSSIteTreeFilter_PublishedPages:
@@ -165,7 +156,6 @@ sv:
     FILTERDATEFROM: Från
     FILTERDATEHEADING: Datum
     FILTERDATETO: Till
-    FILTERLABELTEXT: Innehåll
   CMSSettingsController:
     MENUTITLE: Inställningar
   CMSSiteTreeFilter_Search:
@@ -230,7 +220,6 @@ sv:
     DEFAULTSERVERERRORPAGETITLE: 'Serverfel'
     DESCRIPTION: 'Anpassat innehåll för olika felärenden (t.ex. "Sidan kan inte hittas")'
     ERRORFILEPROBLEM: 'Kunde inte skriva filen "{filename}". Var vänlig kontrollera skrivrättigheterna.'
-    PLURALNAME: 'Felsidor'
     SINGULARNAME: 'Felsida'
   Folder:
     AddFolderButton: 'Skapa mapp'
@@ -253,7 +242,6 @@ sv:
     HASBEENSETUP: 'En omdirigeringssida har skapats utan att ha något mål.'
     HEADER: 'Den här sidan omdirigerar användare till en annan sida'
     OTHERURL: 'Andra sidans URL'
-    PLURALNAME: 'Omdirigeringssida'
     REDIRECTTO: 'Omdirigera till'
     REDIRECTTOEXTERNAL: 'En annan sajt'
     REDIRECTTOPAGE: 'En sida på din sajt'
@@ -421,6 +409,5 @@ sv:
     EditLink: redigera
     HEADER: 'Det här är en virutell sida'
     HEADERWITHLINK: 'Det här är en virtuell sida som kopierar innehållet från "{title}" ({link})'
-    PLURALNAME: 'Virtuella sidor'
     PageTypNotAllowedOnRoot: 'Ursprungliga sidan av typ "{type}" tillåts inte på rotnivå för denna virtuella sida'
     SINGULARNAME: 'Virtuell sida'
