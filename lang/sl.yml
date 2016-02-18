@@ -72,8 +72,6 @@ sl:
     MENUTITLE: 'Uredi stran'
     NEWPAGE: 'Nov {pagetype}'
     PAGENOTEXISTS: 'Stran na tem naslovu ne obstaja'
-    PAGES: Strani
-    PAGETYPEOPT: 'Tip strani'
     PUBALLCONFIRM: 'Objavite vse strani spletnega mesta (vsebine bodo prekopirane v "objavljeno" različico spletnega mesta).'
     PUBALLFUN: 'Funkcionalnost "Objavi vse"'
     PUBALLFUN2: "Rezultat klika tega gumba bo enak, kot če bi kliknili \"Objavi\" na vsaki posamezni strani. Namenjen je uporabi pri večjih spremembah vsebine, kot na primer ob začetku postavljanja spletnega mesta."

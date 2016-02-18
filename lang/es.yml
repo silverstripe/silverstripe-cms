@@ -71,6 +71,8 @@ es:
     PUBLISH_PAGES: Publicar
     RESTORE: Restaurar
     RESTORED_PAGES: '%d páginas restauradas'
+    UNPUBLISHED_PAGES: '%d páginas sin publicar'
+    UNPUBLISH_PAGES: Despublicar
   CMSFileAddController:
     MENUTITLE: Archivos
   CMSMain:
@@ -92,13 +94,13 @@ es:
     DUPLICATEDWITHCHILDREN: 'Duplicado con hijos'
     EMAIL: E-mail
     EditTree: 'Editar árbol'
-    ListFiltered: 'Mostrar lista'
+    ListFiltered: 'Mostrando resultados de la búsqueda'
     MENUTITLE: 'Editar página'
     NEWPAGE: 'Nuevo {pagetype}'
     PAGENOTEXISTS: 'Esta página no existe'
-    PAGES: Páginas
+    PAGES: 'Estado de la página'
     PAGETYPEANYOPT: Cualquiera
-    PAGETYPEOPT: 'Tipo de Página'
+    PAGETYPEOPT: 'Tipo de página'
     PUBALLCONFIRM: 'Por favor publica todas las páginas del sitio, copiando el contenido del borrador al sitio público'
     PUBALLFUN: 'Función "Publicar Todo"'
     PUBALLFUN2: "Pulsando este botón es el equivalente de ir a cada página y pulsar \"Publicar\". Está pensado para ser usado en ediciones masivas del contenido, por ejemplo cuando el sitio se construye por primera vez."
@@ -107,6 +109,7 @@ es:
     REMOVED: 'Removido'
     REMOVEDPAGE: 'Eliminado ''{title}'' del sitio publicado'
     REMOVEDPAGEFROMDRAFT: 'Borrado ''%s''%s desde el sitio no publicado'
+    RESTORE: 'Restaurar borrador'
     RESTORED: 'Restablecido ''{title}'' correctamente'
     RESTORE_DESC: 'Recuperar la versión archivada del borrador'
     RESTORE_TO_ROOT: 'Recuperar borrador al nivel superior'
@@ -119,11 +122,11 @@ es:
     TabContent: Contenido
     TabHistory: Historial
     TabSettings: Ajustes
-    TreeFiltered: 'Árbol filtrado'
-    TreeFilteredClear: 'Borrar filtro'
+    TreeFiltered: 'Mostrando resultados de la búsqueda'
+    TreeFilteredClear: Borrar
   CMSMain_left_ss:
-    APPLY_FILTER: 'Aplicar filtro'
-    CLEAR_FILTER: 'Limpiar filtro'
+    APPLY_FILTER: Buscar
+    CLEAR_FILTER: Borrar
     RESET: Restablecer
   CMSPageAddController:
     MENUTITLE: 'Añadir página'
@@ -156,7 +159,7 @@ es:
     MENUTITLE: Páginas
     TreeView: 'Ver como árbol'
   CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Multi-selección
+    MULTISELECT: 'Acciones por lote'
   CMSPagesController_Tools_ss:
     FILTER: Filtro
   CMSSIteTreeFilter_PublishedPages:
@@ -165,11 +168,20 @@ es:
     FILTERDATEFROM: De
     FILTERDATEHEADING: Fecha
     FILTERDATETO: Hasta
-    FILTERLABELTEXT: Filtrar
+    FILTERLABELTEXT: Buscar
+    PAGEFILTERDATEHEADING: 'Última actualización'
   CMSSettingsController:
     MENUTITLE: Ajustes
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Páginas modificadas'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Todas las páginas, incluídas las archivadas'
   CMSSiteTreeFilter_Search:
     Title: 'Todas las paginas'
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Páginas archivadas'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Borrador de páginas'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Publicada, pero eliminada de los borradores'
   ContentControl:
@@ -230,8 +242,9 @@ es:
     DEFAULTSERVERERRORPAGETITLE: 'Error de servidor'
     DESCRIPTION: 'Contenido personalizado para los distintos casos de error (p.e. "Página no encontrada")'
     ERRORFILEPROBLEM: 'Error abriendo el archivo "{filename}" para escritura. Por favor comprueba los permisos del archivo.'
-    PLURALNAME: 'Páginas de error'
     SINGULARNAME: 'Página de error'
+  File:
+    Title: Título
   Folder:
     AddFolderButton: 'Añadir carpeta'
     DELETEUNUSEDTHUMBNAILS: 'Borrar miniaturas sin usar'
@@ -253,7 +266,6 @@ es:
     HASBEENSETUP: 'Se ha establecido una página redireccionadora sin ningún sitio al cual redireccionar.'
     HEADER: 'Esta página redireccionará a los usuarios a otra página'
     OTHERURL: 'Otra dirección URL de un sitio web'
-    PLURALNAME: 'Páginas de redirección'
     REDIRECTTO: 'Redireccionar a'
     REDIRECTTOEXTERNAL: 'Otro sitio web'
     REDIRECTTOPAGE: 'Una página en su sitio web'
@@ -287,6 +299,7 @@ es:
   SilverStripeNavigator:
     ARCHIVED: Archivado
   SilverStripeNavigatorLink:
+    ShareInstructions: 'Para compartir esta página, copia y pega el siguiente enlace'
     ShareLink: 'Compartir enlace'
   SilverStripeNavigatorLinkl:
     CloseLink: Cerrar
@@ -421,6 +434,5 @@ es:
     EditLink: Editar
     HEADER: 'Esta es una página virtual'
     HEADERWITHLINK: 'Título con link'
-    PLURALNAME: 'Páginas virtuales'
     PageTypNotAllowedOnRoot: 'Tipo de página original "{type}" no se permite en el nivel raíz para esta página virtual'
     SINGULARNAME: 'Página Virtual'

@@ -126,7 +126,7 @@ en:
     TreeFilteredClear: 'Clear filter'
   CMSMain_left_ss:
     APPLY_FILTER: 'Apply Filter'
-    CLEAR_FILTER: 'Clear Filter'
+    CLEAR_FILTER: Clear
     RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Add page'
@@ -169,6 +169,7 @@ en:
     FILTERDATEHEADING: Date
     FILTERDATETO: To
     FILTERLABELTEXT: Content
+    PAGEFILTERDATEHEADING: 'Last edited'
   CMSSettingsController:
     MENUTITLE: Settings
   CMSSiteTreeFilter_ChangedPages:
@@ -243,6 +244,8 @@ en:
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
     PLURALNAME: 'Error Pages'
     SINGULARNAME: 'Error Page'
+  File:
+    Title: Title
   Folder:
     AddFolderButton: 'Add folder'
     DELETEUNUSEDTHUMBNAILS: 'Delete unused thumbnails'

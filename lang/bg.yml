@@ -70,10 +70,8 @@ bg:
     Create: Създай
     DELETE: 'Изтрий черновата и отиди на текущата публикувана страница'
     DELETEFP: Изтрии
-    ListFiltered: 'Филтриран списък.'
     MENUTITLE: 'Редактиране на страницата'
     PAGENOTEXISTS: 'Тази страница не съществува'
-    PAGES: Страници
     PAGETYPEANYOPT: Всички
     PUBALLCONFIRM: 'Публикувай всяка страница в сайта'
     PUBALLFUN: '"Публикувай всичко" функционалност'
@@ -88,9 +86,6 @@ bg:
     TabContent: Съдържание
     TabHistory: История
     TabSettings: Настройки
-    TreeFilteredClear: 'Нулирай филтъра'
-  CMSMain_left_ss:
-    APPLY_FILTER: 'Приложи филтър'
   CMSPageAddController:
     MENUTITLE: 'Добави страница'
     ParentMode_child: 'Под друга страница'
@@ -110,13 +105,10 @@ bg:
     WHEN: Когато
   CMSPageSettingsController:
     MENUTITLE: 'Редактиране на страницата'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Избиране на няколко
   CMSPagesController_Tools_ss:
     FILTER: Филтър
   CMSSearch:
     FILTERDATEFROM: От
-    FILTERLABELTEXT: Съдържание
   CMSSiteTreeFilter_Search:
     Title: 'Всички страници'
   ContentControl:

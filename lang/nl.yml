@@ -88,13 +88,10 @@ nl:
     DUPLICATEDWITHCHILDREN: '''{title}'' en onderliggende items met succes gedupliceerd'
     EMAIL: E-mail
     EditTree: 'Paginastructuur aanpassen'
-    ListFiltered: 'Gefilterde lijst.'
     MENUTITLE: 'Wijzig pagina'
     NEWPAGE: 'Nieuwe {pagetype}'
     PAGENOTEXISTS: 'Deze pagina bestaat niet'
-    PAGES: Pagina 's
     PAGETYPEANYOPT: Elke
-    PAGETYPEOPT: 'Paginatype'
     PUBALLCONFIRM: 'Publiceer elke pagina van de site: dit kopieert de inhoud van de concept site naar de live site'
     PUBALLFUN: '"Publiceer alles" functionaliteit'
     PUBALLFUN2: "Op deze knop klikken heeft hetzelfde resultaat als bij elke pagina's op \"Publiceer\" te klikken. Het is bedoeld om te gebruiken wanneer er erg grote inhoudsaanpassingen gebeurd zijn, bijvoorbeeld wanneer een nieuwe site voor het eerst gebouwd wordt."
@@ -112,10 +109,7 @@ nl:
     TabContent: Inhoud
     TabHistory: Geschiedenis
     TabSettings: Instellingen
-    TreeFiltered: 'Gefilterde boomstructuur.'
-    TreeFilteredClear: 'Filter leegmaken'
   CMSMain_left_ss:
-    APPLY_FILTER: 'Filter toepassen'
     RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Pagina toevoegen'
@@ -147,15 +141,12 @@ nl:
     ListView: 'Lijstweergave'
     MENUTITLE: Pagina's
     TreeView: 'Hierarchische weergave'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Meervoudige selectie
   CMSPagesController_Tools_ss:
     FILTER: Filteren
   CMSSearch:
     FILTERDATEFROM: Van
     FILTERDATEHEADING: Datum
     FILTERDATETO: Tot
-    FILTERLABELTEXT: Inhoud
   CMSSettingsController:
     MENUTITLE: Instellingen
   CMSSiteTreeFilter_Search:

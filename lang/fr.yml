@@ -92,13 +92,10 @@ fr:
     DUPLICATEDWITHCHILDREN: '''{title}'' et ses enfants dupliqués avec succès'
     EMAIL: Email
     EditTree: 'Editer l''arbre'
-    ListFiltered: 'Liste filtrée.'
     MENUTITLE: 'Éditer la page'
     NEWPAGE: 'Nouveau {pagetype}'
     PAGENOTEXISTS: 'Cette page n''existe pas'
-    PAGES: Pages
     PAGETYPEANYOPT: Tous
-    PAGETYPEOPT: 'Type de page'
     PUBALLCONFIRM: 'Publier chaque page du site en copiant le contenu à partir du site brouillon s''il vous plaît'
     PUBALLFUN: 'Fonctionnalité "Tout Publier"'
     PUBALLFUN2: "Presser ce boutton fera la même chose que d'aller sur chaque page et d'appuer sur \"publier\"."
@@ -116,11 +113,7 @@ fr:
     TabContent: Contenu
     TabHistory: Historique
     TabSettings: Paramètres
-    TreeFiltered: 'Arbre filtré.'
-    TreeFilteredClear: 'Réinitialiser le filtre.'
   CMSMain_left_ss:
-    APPLY_FILTER: 'Appliquer le filtre'
-    CLEAR_FILTER: 'Réinitialiser le filtre.'
     RESET: Réinitialiser
   CMSPageAddController:
     MENUTITLE: 'Ajouter page'
@@ -152,8 +145,6 @@ fr:
     ListView: 'Liste'
     MENUTITLE: Pages
     TreeView: 'Arbre'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Choix multiple
   CMSPagesController_Tools_ss:
     FILTER: Filtrer
   CMSSIteTreeFilter_PublishedPages:
@@ -162,11 +153,16 @@ fr:
     FILTERDATEFROM: De
     FILTERDATEHEADING: Date
     FILTERDATETO: A
-    FILTERLABELTEXT: Terme
   CMSSettingsController:
     MENUTITLE: Paramètres
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Pages modifiées'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Toutes les pages, y compris archivées'
   CMSSiteTreeFilter_Search:
     Title: 'Toutes les pages'
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Pages archivées'
   ContentControl:
     NOTEWONTBESHOWN: 'Note : ce message ne sera pas visible de vos visiteurs.'
   ContentController:
@@ -223,7 +219,6 @@ fr:
     DEFAULTSERVERERRORPAGETITLE: 'Erreur du serveur'
     DESCRIPTION: 'Contenu personnalisé pour diverses erreurs (p. ex. « Page introuvable »)'
     ERRORFILEPROBLEM: ' L’ouverture du fichier « {filename} » afin de le modifier a provoqué une erreur ; vérifiez les droits d’accès au fichier. '
-    PLURALNAME: 'Pages d’erreur'
     SINGULARNAME: 'Page d’erreur'
   Folder:
     AddFolderButton: 'Ajouter un dossier'
@@ -246,7 +241,6 @@ fr:
     HASBEENSETUP: 'Une page de redirection sans adresse de redirection a été créée.'
     HEADER: 'Cette page va rediriger les utilisateurs vers une autre page'
     OTHERURL: 'Autre URL de site web'
-    PLURALNAME: 'Pages de redirection'
     REDIRECTTO: 'Rediriger vers'
     REDIRECTTOEXTERNAL: 'Autre site web'
     REDIRECTTOPAGE: 'Une page de votre site web'
@@ -412,6 +406,5 @@ fr:
     EditLink: éditer
     HEADER: 'Cette page est virtuelle'
     HEADERWITHLINK: 'Ceci est une page virtuelle copiant le contenu de "{title}" ({link})'
-    PLURALNAME: 'Pages virtuelles'
     PageTypNotAllowedOnRoot: 'Le type de page d’origine « {type} » n’est pas autorisé au niveau racine pour cette page virtuelle'
     SINGULARNAME: 'Page virtuelle'
