@@ -65,9 +65,7 @@ gl_ES:
     EMAIL: Correo-e
     MENUTITLE: 'Editar Páxina'
     PAGENOTEXISTS: 'Esta páxina non existe'
-    PAGES: Páxinas
     PAGETYPEANYOPT: Ningún
-    PAGETYPEOPT: 'Tipo de Páxina'
     PUBALLCONFIRM: 'Por favor publica toda a páxina no sitio, copiando o contido a contorna de produción'
     PUBALLFUN: 'Funcionalidade "Publicar Todo"'
     PUBALLFUN2: "Premendo este botón farás o equivalente de ir a todas as páxinas e premer en \"publicar\". \nIsto está pensado para facer un uso masivo despois das edicións de contido, por exemplo \ncando o sitio foi construído por primeira vez."
@@ -78,7 +76,6 @@ gl_ES:
     TabHistory: Historial
     TabSettings: Configuracións
   CMSMain_left_ss:
-    APPLY_FILTER: 'Aplicar Filtro'
     RESET: Reiniciar
   CMSPageAddController:
     MENUTITLE: 'Engadir páxina'
@@ -106,8 +103,6 @@ gl_ES:
     ListView: 'Vista en Listado'
     MENUTITLE: Páxinas
     TreeView: 'Vista en Árbore'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Selección múltiple
   CMSPagesController_Tools_ss:
     FILTER: Filtro
   CMSSettingsController:

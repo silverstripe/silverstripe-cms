@@ -85,13 +85,10 @@ ar:
     DUPLICATEDWITHCHILDREN: 'تكرار ''{title}'' والتوابع بنجاح'
     EMAIL: البريد الإلكتروني
     EditTree: 'تعديل الهيكل'
-    ListFiltered: 'قائمة تمت تصفيتها.'
     MENUTITLE: 'حرر الصفحة'
     NEWPAGE: '{pagetype} جديد'
     PAGENOTEXISTS: 'هذه الصفحة غير موجودة'
-    PAGES: الصفحات
     PAGETYPEANYOPT: أي
-    PAGETYPEOPT: 'نوع الصفحة'
     PUBALLCONFIRM: 'فضلاً قم بنشر كل صفحة من صفحات الموقع'
     PUBALLFUN: '"نشر الجميع"خاصية '
     PUBALLFUN2: "الضغط على هذا الزر يعني الذهاب لكل صفحة و نشرها.  It's\nintended to be used after there have been massive edits of the content, such as when the site was\nfirst built.\n"
@@ -109,10 +106,7 @@ ar:
     TabContent: المحتوى
     TabHistory: السوابق
     TabSettings: الإعدادات
-    TreeFiltered: 'الشجرة المصفاة.'
-    TreeFilteredClear: 'أزل المصفي'
   CMSMain_left_ss:
-    APPLY_FILTER: 'طبق عامل تصفية'
     RESET: إعادة الوضع الأصلي
   CMSPageAddController:
     MENUTITLE: 'أضف صفحة'
@@ -144,15 +138,12 @@ ar:
     ListView: 'عرض القائمة'
     MENUTITLE: الصفحات
     TreeView: 'عرض الشجرة'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: متعدد الاختيار
   CMSPagesController_Tools_ss:
     FILTER: مصفاة
   CMSSearch:
     FILTERDATEFROM: من
     FILTERDATEHEADING: موعد
     FILTERDATETO: إلى
-    FILTERLABELTEXT: المحتوى
   CMSSettingsController:
     MENUTITLE: الإعدادات
   CMSSiteTreeFilter_Search:
