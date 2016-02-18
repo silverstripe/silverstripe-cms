@@ -86,13 +86,10 @@ ko:
     DUPLICATEDWITHCHILDREN: '''{title}'' 와 그 하위에대한 복제가 완료되었습니다'
     EMAIL: 이메일
     EditTree: '트리를 편집'
-    ListFiltered: '필터링된 목록'
     MENUTITLE: '페이지 편집'
     NEWPAGE: '새로운 {pagetype}'
     PAGENOTEXISTS: '이 페이지는 존재하지 않습니다'
-    PAGES: 페이지
     PAGETYPEANYOPT: 아무거나
-    PAGETYPEOPT: '페이지 유형'
     PUBALLCONFIRM: '콘텐츠의 스테이지를 복사하고 전달하기 위해 사이트의 모든 페이지를 공개합니다'
     PUBALLFUN: ' "모두 공개"기능'
     PUBALLFUN2: "이 버튼을 누르면 모든 페이지로 이동하고 \"공개\"를 눌러도 됩니다. 이 기능은 사이트를 처음 만들 때 등 많은 컨텐츠를 편집하는 경우에 이용될 것같습니다."
@@ -110,10 +107,7 @@ ko:
     TabContent: 컨텐츠
     TabHistory: 기록
     TabSettings: 설정
-    TreeFiltered: '필터링된 트리'
-    TreeFilteredClear: '필터 제거'
   CMSMain_left_ss:
-    APPLY_FILTER: '필터링'
     RESET: 리셋
   CMSPageAddController:
     MENUTITLE: '페이지 추가'
@@ -145,15 +139,12 @@ ko:
     ListView: '목록보기'
     MENUTITLE: 페이지
     TreeView: '트리보기'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: 복수선택
   CMSPagesController_Tools_ss:
     FILTER: 필터
   CMSSearch:
     FILTERDATEFROM: 시작일
     FILTERDATEHEADING: 날짜
     FILTERDATETO: 종료일
-    FILTERLABELTEXT: 컨텐츠
   CMSSettingsController:
     MENUTITLE: 설정
   CMSSiteTreeFilter_Search:

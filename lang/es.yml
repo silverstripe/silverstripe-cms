@@ -92,13 +92,10 @@ es:
     DUPLICATEDWITHCHILDREN: 'Duplicado con hijos'
     EMAIL: E-mail
     EditTree: 'Editar árbol'
-    ListFiltered: 'Mostrar lista'
     MENUTITLE: 'Editar página'
     NEWPAGE: 'Nuevo {pagetype}'
     PAGENOTEXISTS: 'Esta página no existe'
-    PAGES: Páginas
     PAGETYPEANYOPT: Cualquiera
-    PAGETYPEOPT: 'Tipo de Página'
     PUBALLCONFIRM: 'Por favor publica todas las páginas del sitio, copiando el contenido del borrador al sitio público'
     PUBALLFUN: 'Función "Publicar Todo"'
     PUBALLFUN2: "Pulsando este botón es el equivalente de ir a cada página y pulsar \"Publicar\". Está pensado para ser usado en ediciones masivas del contenido, por ejemplo cuando el sitio se construye por primera vez."
@@ -119,11 +116,8 @@ es:
     TabContent: Contenido
     TabHistory: Historial
     TabSettings: Ajustes
-    TreeFiltered: 'Árbol filtrado'
-    TreeFilteredClear: 'Borrar filtro'
   CMSMain_left_ss:
-    APPLY_FILTER: 'Aplicar filtro'
-    CLEAR_FILTER: 'Limpiar filtro'
+    CLEAR_FILTER: Borrar
     RESET: Restablecer
   CMSPageAddController:
     MENUTITLE: 'Añadir página'
@@ -155,8 +149,6 @@ es:
     ListView: 'Vista como lista'
     MENUTITLE: Páginas
     TreeView: 'Ver como árbol'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Multi-selección
   CMSPagesController_Tools_ss:
     FILTER: Filtro
   CMSSIteTreeFilter_PublishedPages:
@@ -165,7 +157,7 @@ es:
     FILTERDATEFROM: De
     FILTERDATEHEADING: Fecha
     FILTERDATETO: Hasta
-    FILTERLABELTEXT: Filtrar
+    PAGEFILTERDATEHEADING: 'Última actualización'
   CMSSettingsController:
     MENUTITLE: Ajustes
   CMSSiteTreeFilter_Search:
@@ -230,8 +222,9 @@ es:
     DEFAULTSERVERERRORPAGETITLE: 'Error de servidor'
     DESCRIPTION: 'Contenido personalizado para los distintos casos de error (p.e. "Página no encontrada")'
     ERRORFILEPROBLEM: 'Error abriendo el archivo "{filename}" para escritura. Por favor comprueba los permisos del archivo.'
-    PLURALNAME: 'Páginas de error'
     SINGULARNAME: 'Página de error'
+  File:
+    Title: Título
   Folder:
     AddFolderButton: 'Añadir carpeta'
     DELETEUNUSEDTHUMBNAILS: 'Borrar miniaturas sin usar'
@@ -253,7 +246,6 @@ es:
     HASBEENSETUP: 'Se ha establecido una página redireccionadora sin ningún sitio al cual redireccionar.'
     HEADER: 'Esta página redireccionará a los usuarios a otra página'
     OTHERURL: 'Otra dirección URL de un sitio web'
-    PLURALNAME: 'Páginas de redirección'
     REDIRECTTO: 'Redireccionar a'
     REDIRECTTOEXTERNAL: 'Otro sitio web'
     REDIRECTTOPAGE: 'Una página en su sitio web'
@@ -421,6 +413,5 @@ es:
     EditLink: Editar
     HEADER: 'Esta es una página virtual'
     HEADERWITHLINK: 'Título con link'
-    PLURALNAME: 'Páginas virtuales'
     PageTypNotAllowedOnRoot: 'Tipo de página original "{type}" no se permite en el nivel raíz para esta página virtual'
     SINGULARNAME: 'Página Virtual'

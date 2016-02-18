@@ -90,13 +90,10 @@ id:
     DUPLICATEDWITHCHILDREN: '''{title}'' dan turunannya berhasil diduplikasi'
     EMAIL: Surel
     EditTree: 'Edit Struktur'
-    ListFiltered: 'Daftar tersaring'
     MENUTITLE: 'Edit Laman'
     NEWPAGE: '{pagetype} baru'
     PAGENOTEXISTS: 'Laman ini tidak ada'
-    PAGES: Laman
     PAGETYPEANYOPT: Lain
-    PAGETYPEOPT: 'Jenis Laman'
     PUBALLCONFIRM: 'Mohon terbitkan semua laman pada situs'
     PUBALLFUN: 'Fungsi "Terbitkan Semua"'
     PUBALLFUN2: "Menekan tombol ini sama dengan membuka semua laman dan menerbitkannya. Hal ini \n\t\t\t\tditujukan untuk dilakukan setelah ada banyak pengeditan konten, misalnya saat situs pertama kali \n\t\t\t\tdiinstal."
@@ -117,10 +114,7 @@ id:
     TabContent: Konten
     TabHistory: Sejarah
     TabSettings: Pengaturan
-    TreeFiltered: 'Struktur tersaring.'
-    TreeFilteredClear: 'Bersihkan saring'
   CMSMain_left_ss:
-    APPLY_FILTER: 'Terapkan Saring'
     RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Tambah laman'
@@ -152,15 +146,12 @@ id:
     ListView: 'Tampilan daftar'
     MENUTITLE: Laman
     TreeView: 'Tampilan Struktur'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Multi-pilihan
   CMSPagesController_Tools_ss:
     FILTER: Saring
   CMSSearch:
     FILTERDATEFROM: Dari
     FILTERDATEHEADING: Tanggal
     FILTERDATETO: Ke
-    FILTERLABELTEXT: Konten
   CMSSettingsController:
     MENUTITLE: Pengaturan
   CMSSiteTreeFilter_Search:
@@ -223,7 +214,6 @@ id:
     DEFAULTSERVERERRORPAGETITLE: 'Server mengalami kesalahan'
     DESCRIPTION: 'Laman untuk berbagai kasus kesalahan (misalnya "Laman tidak ditemukan")'
     ERRORFILEPROBLEM: 'Gagal membuka berkas "{filename}" untuk penulisan data. Mohon periksa pengaturan akses tulis.'
-    PLURALNAME: 'Laman Kesalahan'
     SINGULARNAME: 'Laman Kesalahan'
   Folder:
     AddFolderButton: 'Tambah map'
@@ -246,7 +236,6 @@ id:
     HASBEENSETUP: 'Sebuah laman pengarah telah dibuat tanpa arah yang dituju.'
     HEADER: 'Laman ini akan mengarahkan pengguna ke laman lain'
     OTHERURL: 'URL situs web lain'
-    PLURALNAME: 'Laman Pengarah'
     REDIRECTTO: 'Arahkan lagi ke'
     REDIRECTTOEXTERNAL: 'Situs web yang lain'
     REDIRECTTOPAGE: 'Laman pada situs Anda'
@@ -407,6 +396,5 @@ id:
     EditLink: edit
     HEADER: 'Ini adalah laman virtual'
     HEADERWITHLINK: 'Ini adalah laman virtual dengan konten salinan dari "{title}" ({link})'
-    PLURALNAME: 'Laman Virtual'
     PageTypNotAllowedOnRoot: 'Laman asli jenis "{type}" tidak dibolehkan pada tingkat atas untuk laman virtual ini'
     SINGULARNAME: 'Laman Virtual'
