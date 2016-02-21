@@ -19,11 +19,21 @@ class SiteTreeFileExtension extends DataExtension {
 		'BackLinkTracking' => 'SiteTree.ImageTracking' // {@see SiteTreeLinkTracking}
 	);
 
+	/**
+	 * Images tracked by pages are owned by those pages
+	 *
+	 * @config
+	 * @var array
+	 */
+	private static $owned_by = array(
+		'BackLinkTracking'
+	);
+
 	public function updateCMSFields(FieldList $fields) {
 		$fields->insertAfter(
 			ReadonlyField::create(
-				'BackLinkCount', 
-				_t('AssetTableField.BACKLINKCOUNT', 'Used on:'), 
+				'BackLinkCount',
+				_t('AssetTableField.BACKLINKCOUNT', 'Used on:'),
 				$this->BackLinkTracking()->Count() . ' ' . _t('AssetTableField.PAGES', 'page(s)')
 			)
 				->addExtraClass('cms-description-toggle')
@@ -72,17 +82,17 @@ class SiteTreeFileExtension extends DataExtension {
 
 		$links = $this->owner->getManyManyComponents('BackLinkTracking');
 		$this->owner->extend('updateBackLinkTracking', $links);
-		
+
 		if(class_exists("Subsite")){
 			Subsite::disable_subsite_filter($rememberSubsiteFilter);
 		}
-		
+
 		return $links;
 	}
-	
+
 	/**
 	 * @todo Unnecessary shortcut for AssetTableField, coupled with cms module.
-	 * 
+	 *
 	 * @return integer
 	 */
 	public function BackLinkTrackingCount() {
@@ -93,7 +103,7 @@ class SiteTreeFileExtension extends DataExtension {
 			return 0;
 		}
 	}
-	
+
 	/**
 	 * Updates link tracking in the current stage.
 	 */
@@ -125,10 +135,10 @@ class SiteTreeFileExtension extends DataExtension {
 		// after ->doPublish() is invoked.
 		$this->updateLinks();
 	}
-	
+
 	/**
 	 * Rewrite links to the $old file to now point to the $new file.
-	 * 
+	 *
 	 * @uses SiteTree->rewriteFileID()
 	 */
 	public function updateLinks() {
@@ -140,17 +150,17 @@ class SiteTreeFileExtension extends DataExtension {
 		if(class_exists('Subsite')) {
 			Subsite::disable_subsite_filter(true);
 		}
-	
+
 		$pages = $this->owner->BackLinkTracking();
 		if($pages) {
 			foreach($pages as $page) {
 				$page->rewriteFileLinks();
 			}
 		}
-		
+
 		if(class_exists('Subsite')) {
 			Subsite::disable_subsite_filter(false);
 		}
 	}
-	
+
 }

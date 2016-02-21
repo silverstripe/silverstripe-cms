@@ -41,11 +41,21 @@ class SiteTreeLinkTracking extends DataExtension {
 
 	private static $many_many = array(
 		"LinkTracking" => "SiteTree",
-		"ImageTracking" => "File"
+		"ImageTracking" => "File"  // {@see SiteTreeFileExtension}
 	);
 
 	private static $belongs_many_many = array(
 		"BackLinkTracking" => "SiteTree.LinkTracking"
+	);
+
+	/**
+	 * Tracked images are considered owned by this page
+	 *
+	 * @config
+	 * @var array
+	 */
+	private static $owns = array(
+		"ImageTracking"
 	);
 
 	private static $many_many_extraFields = array(
