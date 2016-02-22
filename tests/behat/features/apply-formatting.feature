@@ -11,7 +11,7 @@ Feature: Apply rich formatting to content
 
   Scenario: I can control alignment of selected content
     Given I select "My awesome headline" in the "Content" HTML field
-    When I press the "Align Right" button
+    When I press the "Align right" HTML field button
     Then "My awesome headline" in the "Content" HTML field should be right aligned
     But "Some amazing content" in the "Content" HTML field should be left aligned
     Then I press the "Save draft" button
@@ -19,10 +19,9 @@ Feature: Apply rich formatting to content
 
   Scenario: I can bold selected content
     Given I select "awesome" in the "Content" HTML field
-    When I press the "Bold (Ctrl+B)" button
+    When I press the "Bold" HTML field button
     Then "awesome" in the "Content" HTML field should be bold
     But "My" in the "Content" HTML field should not be bold
     When I press the "Save draft" button
     Then "awesome" in the "Content" HTML field should be bold
     But "My" in the "Content" HTML field should not be bold
-    

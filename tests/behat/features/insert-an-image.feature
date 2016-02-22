@@ -13,21 +13,21 @@ Feature: Insert an image into a page
     And I click on "About Us" in the tree
 
   Scenario: I can insert an image from a URL
-    Given I press the "Insert Media" button
+    Given I press the "Insert Media" HTML field button
 
     When I press the "Insert from URL" button
     And I fill in "RemoteURL" with "http://www.silverstripe.org/themes/ssv3/img/ss_logo.png"
     And I press the "Add url" button
     Then I should see "ss_logo.png" in the ".ss-assetuploadfield span.name" element
 
-    When I press the "Insert" button  
+    When I press the "Insert" button
     Then the "Content" HTML field should contain "ss_logo.png"
     # Required to avoid "unsaved changed" browser dialog
     Then I press the "Save draft" button
 
   @assets
   Scenario: I can insert an image uploaded from my own computer
-    Given I press the "Insert Media" button
+    Given I press the "Insert Media" HTML field button
     And I attach the file "testfile.jpg" to "AssetUploadField" with HTML5
     # TODO Delay previous step until upload succeeded
     And I wait for 2 seconds
@@ -40,7 +40,7 @@ Feature: Insert an image into a page
   @assets
   Scenario: I can upload an image from my own computer that matches the name of an existing file
     Given a "image" "assets/Uploads/file1.jpg"
-    When I press the "Insert Media" button
+    When I press the "Insert Media" HTML field button
     And I attach the file "file1.jpg" to "AssetUploadField" with HTML5
     # TODO Delay previous step until upload succeeded
     And I wait for 2 seconds
@@ -53,7 +53,7 @@ Feature: Insert an image into a page
     Then I press the "Save draft" button
 
   Scenario: I can insert an image from the CMS file store
-    Given I press the "Insert Media" button
+    Given I press the "Insert Media" HTML field button
     And I fill in the "ParentID" dropdown with "folder1"
     And I click on "file1" in the "Files" table
     When I press the "Insert" button
@@ -62,7 +62,7 @@ Feature: Insert an image into a page
     Then I press the "Save draft" button
 
   Scenario: I can edit properties of an image before inserting it
-    Given I press the "Insert Media" button
+    Given I press the "Insert Media" HTML field button
     And I fill in the "ParentID" dropdown with "folder1"
     And I click on "file1" in the "Files" table
     And I press the "Edit" button
@@ -79,7 +79,7 @@ Feature: Insert an image into a page
     Given the "page" "About us" contains "<img src=assets/folder1/3d0ef6ec37/file1.jpg>"
     And I reload the current page
     When I highlight "<img src=assets/folder1/3d0ef6ec37/file1.jpg>" in the "Content" HTML field
-    And I press the "Insert Media" button
+    And I press the "Insert Media" HTML field button
     Then I should see "file1.jpg"
     When I fill in "Width" with "10"
     When I fill in "Height" with "20"
