@@ -10,10 +10,6 @@ use SilverStripe\BehatExtension\Context\SilverStripeContext,
 	SilverStripe\Framework\Test\Behaviour\CmsUiContext,
 	SilverStripe\Cms\Test\Behaviour;
 
-// PHPUnit
-require_once 'PHPUnit/Autoload.php';
-require_once 'PHPUnit/Framework/Assert/Functions.php';
-
 /**
  * Features context
  *

@@ -12,10 +12,6 @@ use Behat\Behat\Context\ClosuredContextInterface,
 	Behat\Gherkin\Node\PyStringNode,
 	Behat\Gherkin\Node\TableNode;
 
-// PHPUnit
-require_once 'PHPUnit/Autoload.php';
-require_once 'PHPUnit/Framework/Assert/Functions.php';
-
 /**
  * Context used to create fixtures in the SilverStripe ORM.
  */
