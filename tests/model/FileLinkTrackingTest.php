@@ -8,6 +8,9 @@ class FileLinkTrackingTest extends SapphireTest {
 	
 	public function setUp() {
 		parent::setUp();
+
+		Versioned::reading_stage('Stage');
+
 		AssetStoreTest_SpyStore::activate('FileLinkTrackingTest');
 		$this->logInWithPermission('ADMIN');
 
@@ -17,6 +20,8 @@ class FileLinkTrackingTest extends SapphireTest {
 			$destPath = AssetStoreTest_SpyStore::getLocalPath($file);
 			Filesystem::makeFolder(dirname($destPath));
 			file_put_contents($destPath, str_repeat('x', 1000000));
+			// Ensure files are published, thus have public urls
+			$file->doPublish();
 		}
 
 		// Since we can't hard-code IDs, manually inject image tracking shortcode
@@ -36,7 +41,13 @@ class FileLinkTrackingTest extends SapphireTest {
 	
 	public function testFileRenameUpdatesDraftAndPublishedPages() {
 		$page = $this->objFromFixture('Page', 'page1');
-		$this->assertTrue($page->doPublish());
+		$page->doPublish();
+
+		// Live and stage pages both have link to public file
+		$this->assertContains(
+			'<img src="/assets/FileLinkTrackingTest/55b443b601/testscript-test-file.jpg"',
+			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree\" WHERE \"ID\" = ?", array($page->ID))->value()
+		);
 		$this->assertContains(
 			'<img src="/assets/FileLinkTrackingTest/55b443b601/testscript-test-file.jpg"',
 			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = ?", array($page->ID))->value()
@@ -45,7 +56,35 @@ class FileLinkTrackingTest extends SapphireTest {
 		$file = $this->objFromFixture('Image', 'file1');
 		$file->Name = 'renamed-test-file.jpg';
 		$file->write();
-		
+
+		// Staged record now points to secure URL of renamed file, live record remains unchanged
+		// Note that the "secure" url doesn't have the "FileLinkTrackingTest" component because
+		// the mocked test location disappears for secure files.
+		$this->assertContains(
+			'<img src="/assets/55b443b601/renamed-test-file.jpg"',
+			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree\" WHERE \"ID\" = ?", array($page->ID))->value()
+		);
+		$this->assertContains(
+			'<img src="/assets/FileLinkTrackingTest/55b443b601/testscript-test-file.jpg"',
+			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = ?", array($page->ID))->value()
+		);
+
+		// Publishing the file should result in a direct public link (indicated by "FileLinkTrackingTest")
+		// Although the old live page will still point to the old record.
+		// @todo - Ensure shortcodes are used with all images to prevent live records having broken links
+		$file->doPublish();
+		$this->assertContains(
+			'<img src="/assets/FileLinkTrackingTest/55b443b601/renamed-test-file.jpg"',
+			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree\" WHERE \"ID\" = ?", array($page->ID))->value()
+		);
+		$this->assertContains(
+			// Note: Broken link until shortcode-enabled
+			'<img src="/assets/FileLinkTrackingTest/55b443b601/testscript-test-file.jpg"',
+			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = ?", array($page->ID))->value()
+		);
+
+		// Publishing the page after publishing the asset will resolve any link issues
+		$page->doPublish();
 		$this->assertContains(
 			'<img src="/assets/FileLinkTrackingTest/55b443b601/renamed-test-file.jpg"',
 			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree\" WHERE \"ID\" = ?", array($page->ID))->value()
@@ -72,11 +111,16 @@ class FileLinkTrackingTest extends SapphireTest {
 		$file->Name = 'renamed-test-file.jpg';
 		$file->write();
 		
-		// Verify that the draft and publish virtual pages both have the corrected link
+		// Verify that the draft virtual pages have the correct content
 		$this->assertContains(
-			'<img src="/assets/FileLinkTrackingTest/55b443b601/renamed-test-file.jpg"',
+			'<img src="/assets/55b443b601/renamed-test-file.jpg"',
 			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree\" WHERE \"ID\" = ?", array($svp->ID))->value()
 		);
+
+		// Publishing both file and page will update the live record
+		$file->doPublish();
+		$page->doPublish();
+
 		$this->assertContains(
 			'<img src="/assets/FileLinkTrackingTest/55b443b601/renamed-test-file.jpg"',
 			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = ?", array($svp->ID))->value()
@@ -119,12 +163,16 @@ class FileLinkTrackingTest extends SapphireTest {
 		$file = DataObject::get_by_id('File', $file->ID);
 		$file->Name = 'renamed-test-file-second-time.jpg';
 		$file->write();
+		$file->doPublish();
 		
 		// Confirm that the correct image is shown in both the draft and live site
 		$this->assertContains(
 			'<img src="/assets/FileLinkTrackingTest/55b443b601/renamed-test-file-second-time.jpg"',
 			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree\" WHERE \"ID\" = ?", array($page->ID))->value()
 		);
+
+		// Publishing this record also updates live record
+		$page->doPublish();
 		$this->assertContains(
 			'<img src="/assets/FileLinkTrackingTest/55b443b601/renamed-test-file-second-time.jpg"',
 			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = ?", array($page->ID))->value()

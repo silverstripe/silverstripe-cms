@@ -39,7 +39,7 @@ class CMSBatchAction_Unpublish extends CMSBatchAction {
 	}
 
 	public function applicablePages($ids) {
-		return $this->applicablePagesHelper($ids, 'canDeleteFromLive', false, true);
+		return $this->applicablePagesHelper($ids, 'canUnpublish', false, true);
 	}
 }
 
@@ -182,12 +182,15 @@ class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 			'modified'=>array(),
 			'deleted'=>array()
 		);
-		
+
+		/** @var SiteTree $page */
 		foreach($pages as $page) {
 			$id = $page->ID;
 			
 			// Perform the action
-			if($page->canDelete()) $page->doDeleteFromLive();
+			if($page->canUnpublish()) {
+				$page->doUnpublish();
+			}
 
 			// check to see if the record exists on the stage site, if it doesn't remove the tree node
 			$stageRecord = Versioned::get_one_by_stage( 'SiteTree', 'Stage', array(

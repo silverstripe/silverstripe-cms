@@ -12,7 +12,7 @@ class VirtualPage extends Page {
 	public static $virtualFields;
 	
 	/**
-	 * @var Array Define fields that are not virtual - the virtual page must define these fields themselves.
+	 * @var array Define fields that are not virtual - the virtual page must define these fields themselves.
 	 * Note that anything in {@link self::config()->initially_copied_fields} is implicitly included in this list.
 	 */
 	private static $non_virtual_fields = array(
@@ -34,7 +34,7 @@ class VirtualPage extends Page {
 	);
 	
 	/**
-	 * @var Array Define fields that are initially copied to virtual pages but left modifiable after that.
+	 * @var array Define fields that are initially copied to virtual pages but left modifiable after that.
 	 */
 	private static $initially_copied_fields = array(
 		'ShowInMenus',
@@ -126,6 +126,7 @@ class VirtualPage extends Page {
 		if($this->CopyContentFrom()) {
 			return $this->CopyContentFrom()->allowedChildren();
 		}
+		return array();
 	}
 	
 	public function syncLinkTracking() {
@@ -138,17 +139,12 @@ class VirtualPage extends Page {
 	
 	/**
 	 * We can only publish the page if there is a published source page
+	 *
+	 * @param Member $member Member to check
+	 * @return bool
 	 */
 	public function canPublish($member = null) {
 		return $this->isPublishable() && parent::canPublish($member);
-	}
-	
-	/**
-	 * Return true if we can delete this page from the live site, which is different from can
-	 * we publish it.
-	 */
-	public function canDeleteFromLive($member = null) {
-		return parent::canPublish($member);
 	}
 	
 	/**
@@ -202,7 +198,7 @@ class VirtualPage extends Page {
 		
 		// Create links back to the original object in the CMS
 		if($this->CopyContentFrom()->exists()) {
-			$link = "<a class=\"cmsEditlink\" href=\"admin/pages/edit/show/$this->CopyContentFromID\">" 
+			$link = "<a class=\"cmsEditlink\" href=\"admin/pages/edit/show/$this->CopyContentFromID\">"
 				. _t('VirtualPage.EditLink', 'edit')
 				. "</a>";
 			$msgs[] = _t(
@@ -376,6 +372,9 @@ class VirtualPage extends Page {
 	
 	/**
 	 * Ensure we have an up-to-date version of everything.
+	 *
+	 * @param DataObject $source
+	 * @param bool $updateImageTracking
 	 */
 	public function copyFrom($source, $updateImageTracking = true) {
 		if($source) {

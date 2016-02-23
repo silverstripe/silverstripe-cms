@@ -198,14 +198,14 @@ class VirtualPageTest extends FunctionalTest {
 
 		// Delete the source page
 		$this->assertTrue($vp->canPublish());
-		$this->assertTrue($p->doDeleteFromLive());
+		$this->assertTrue($p->doUnpublish());
 		
 		// Confirm that we can unpublish, but not publish
-		$this->assertTrue($vp->canDeleteFromLive());
+		$this->assertTrue($vp->canUnpublish());
 		$this->assertFalse($vp->canPublish());
 		
 		// Confirm that the action really works
-		$this->assertTrue($vp->doDeleteFromLive());
+		$this->assertTrue($vp->doUnpublish());
 		$this->assertNull(DB::query("SELECT \"ID\" FROM \"SiteTree_Live\" WHERE \"ID\" = $vp->ID")->value());
 	}
 
@@ -398,7 +398,7 @@ class VirtualPageTest extends FunctionalTest {
 		
 		// Delete the source page form live, confirm that the virtual page has also been unpublished
 		$pLive = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree"."ID" = ' . $pID);
-		$this->assertTrue($pLive->doDeleteFromLive());
+		$this->assertTrue($pLive->doUnpublish());
 		$vpLive = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree"."ID" = ' . $vp->ID);
 		$this->assertNull($vpLive);
 		

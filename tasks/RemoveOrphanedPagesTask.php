@@ -215,6 +215,7 @@ in the other stage:<br />
 		$removedOrphans = array();
 		$orphanBaseClass = ClassInfo::baseDataClass($this->orphanedSearchClass);
 		foreach($orphanIDs as $id) {
+			/** @var SiteTree $stageRecord */
 			$stageRecord = Versioned::get_one_by_stage(
 				$this->orphanedSearchClass,
 				'Stage',
@@ -226,6 +227,7 @@ in the other stage:<br />
 				$stageRecord->destroy();
 				unset($stageRecord);
 			}
+			/** @var SiteTree $liveRecord */
 			$liveRecord = Versioned::get_one_by_stage(
 				$this->orphanedSearchClass,
 				'Live',
@@ -233,7 +235,7 @@ in the other stage:<br />
 			);
 			if($liveRecord) {
 				$removedOrphans[$liveRecord->ID] = sprintf('Removed %s (#%d) from Live', $liveRecord->Title, $liveRecord->ID);
-				$liveRecord->doDeleteFromLive();
+				$liveRecord->doUnpublish();
 				$liveRecord->destroy();
 				unset($liveRecord);
 			}

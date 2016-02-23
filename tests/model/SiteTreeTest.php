@@ -381,7 +381,7 @@ class SiteTreeTest extends SapphireTest {
 
 		$parentPage = $this->objFromFixture('Page', 'about');
 
-		$parentPage->doDeleteFromLive();
+		$parentPage->doUnpublish();
 
 		Versioned::reading_stage('Live');
 
@@ -425,7 +425,7 @@ class SiteTreeTest extends SapphireTest {
 		$pageStaffDuplicate->doPublish();
 
 		$parentPage = $this->objFromFixture('Page', 'about');
-		$parentPage->doDeleteFromLive();
+		$parentPage->doUnpublish();
 
 		Versioned::reading_stage('Live');
 		$this->assertFalse(DataObject::get_by_id('Page', $pageAbout->ID));

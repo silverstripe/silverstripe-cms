@@ -1,12 +1,22 @@
 <?php
+
 /**
+ * Extension applied to {@see File} object to track links to {@see SiteTree} records.
+ *
+ * {@see SiteTreeLinkTracking} for the extension applied to {@see SiteTree}
+ *
+ * Note that since both SiteTree and File are versioned, LinkTracking and ImageTracking will
+ * only be enabled for the Stage record.
+ *
+ * @property File $owner
+ *
  * @package cms
  * @subpackage model
  */
 class SiteTreeFileExtension extends DataExtension {
 
 	private static $belongs_many_many = array(
-		'BackLinkTracking' => 'SiteTree'
+		'BackLinkTracking' => 'SiteTree.ImageTracking' // {@see SiteTreeLinkTracking}
 	);
 
 	public function updateCMSFields(FieldList $fields) {
@@ -16,8 +26,8 @@ class SiteTreeFileExtension extends DataExtension {
 				_t('AssetTableField.BACKLINKCOUNT', 'Used on:'), 
 				$this->BackLinkTracking()->Count() . ' ' . _t('AssetTableField.PAGES', 'page(s)')
 			)
-			->addExtraClass('cms-description-toggle')
-			->setDescription($this->BackLinkHTMLList()),
+				->addExtraClass('cms-description-toggle')
+				->setDescription($this->BackLinkHTMLList()),
 			'LastEdited'
 		);
 	}
@@ -32,8 +42,8 @@ class SiteTreeFileExtension extends DataExtension {
 			'SiteTreeFileExtension.BACKLINK_LIST_DESCRIPTION',
 			'This list shows all pages where the file has been added through a WYSIWYG editor.'
 		) . '</em>';
-		$html .= '<ul>';
 
+		$html .= '<ul>';
 		foreach ($this->BackLinkTracking() as $backLink) {
 			// Add the page link and CMS link
 			$html .= sprintf(
@@ -44,17 +54,14 @@ class SiteTreeFileExtension extends DataExtension {
 				_t('SiteTreeFileExtension.EDIT', 'Edit')
 			);
 		}
+		$html .= '</ul>';
 
-		return $html .= '</ul>';
+		return $html;
 	}
 
 	/**
 	 * Extend through {@link updateBackLinkTracking()} in your own {@link Extension}.
 	 *
-	 * @param string|array $filter
-	 * @param string $sort
-	 * @param string $join
-	 * @param string $limit
 	 * @return ManyManyList
 	 */
 	public function BackLinkTracking() {
@@ -88,31 +95,35 @@ class SiteTreeFileExtension extends DataExtension {
 	}
 	
 	/**
-	 * Updates link tracking.
+	 * Updates link tracking in the current stage.
 	 */
 	public function onAfterDelete() {
+		// Skip live stage
+		if(\Versioned::current_stage() === \Versioned::get_live_stage()) {
+			return;
+		}
+
 		// We query the explicit ID list, because BackLinkTracking will get modified after the stage
 		// site does its thing
 		$brokenPageIDs = $this->owner->BackLinkTracking()->column("ID");
 		if($brokenPageIDs) {
-			$origStage = Versioned::current_stage();
-
-			// This will syncLinkTracking on draft
-			Versioned::reading_stage('Stage');
+			// This will syncLinkTracking on the same stage as this file
 			$brokenPages = DataObject::get('SiteTree')->byIDs($brokenPageIDs);
 			foreach($brokenPages as $brokenPage) {
 				$brokenPage->write();
 			}
-
-			// This will syncLinkTracking on published
-			Versioned::reading_stage('Live');
-			$liveBrokenPages = DataObject::get('SiteTree')->byIDs($brokenPageIDs);
-			foreach($liveBrokenPages as $brokenPage) {
-				$brokenPage->write();
-			}
-
-			Versioned::reading_stage($origStage);
 		}
+	}
+
+	public function onAfterWrite() {
+		// Update any database references in the current stage
+		$this->updateLinks();
+	}
+
+	public function onAfterVersionedPublish() {
+		// Ensure that ->updateLinks is invoked on the draft record
+		// after ->doPublish() is invoked.
+		$this->updateLinks();
 	}
 	
 	/**
@@ -121,6 +132,11 @@ class SiteTreeFileExtension extends DataExtension {
 	 * @uses SiteTree->rewriteFileID()
 	 */
 	public function updateLinks() {
+		// Skip live stage
+		if(\Versioned::current_stage() === \Versioned::get_live_stage()) {
+			return;
+		}
+
 		if(class_exists('Subsite')) {
 			Subsite::disable_subsite_filter(true);
 		}

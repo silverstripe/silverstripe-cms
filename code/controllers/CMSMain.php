@@ -533,7 +533,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 *
 	 * @param int $id Record ID
 	 * @param int $versionID optional Version id of the given record
-	 * @return DataObject
+	 * @return SiteTree
 	 */
  	public function getRecord($id, $versionID = null) {
 		$treeClass = $this->stat('tree_class');
@@ -591,7 +591,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * @return CMSForm
 	 */
 	public function getEditForm($id = null, $fields = null) {
-
 		if(!$id) $id = $this->currentPageID();
 		$form = parent::getEditForm($id);
 
@@ -604,7 +603,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		if($record) {
 			$deletedFromStage = $record->getIsDeletedFromStage();
-			$deleteFromLive = !$record->getExistsOnLive();
 
 			$fields->push($idField = new HiddenField("ID", false, $id));
 			// Necessary for different subsites
@@ -974,13 +972,15 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 */
 	public function deletefromlive($data, $form) {
 		Versioned::reading_stage('Live');
-		$record = DataObject::get_by_id("SiteTree", $data['ID']);
-		if($record && !($record->canDelete() && $record->canDeleteFromLive())) return Security::permissionFailure($this);
 
-		$descRemoved = '';
+		/** @var SiteTree $record */
+		$record = DataObject::get_by_id("SiteTree", $data['ID']);
+		if($record && !($record->canDelete() && $record->canUnpublish())) {
+			return Security::permissionFailure($this);
+		}
+
 		$descendantsRemoved = 0;
 		$recordTitle = $record->Title;
-		$recordID = $record->ID;
 
 		// before deleting the records, get the descendants of this tree
 		if($record) {
@@ -989,13 +989,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			// then delete them from the live site too
 			$descendantsRemoved = 0;
 			foreach( $descendantIDs as $descID )
+				/** @var SiteTree $descendant */
 				if( $descendant = DataObject::get_by_id('SiteTree', $descID) ) {
-					$descendant->doDeleteFromLive();
+					$descendant->doUnpublish();
 					$descendantsRemoved++;
 				}
 
 			// delete the record
-			$record->doDeleteFromLive();
+			$record->doUnpublish();
 		}
 
 		Versioned::reading_stage('Stage');
@@ -1098,8 +1099,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	/**
 	 * Delete this page from both live and stage
 	 *
-	 * @param type $data
-	 * @param type $form
+	 * @param array $data
+	 * @param Form $form
 	 */
 	public function archive($data, $form) {
 		$id = $data['ID'];
@@ -1131,10 +1132,15 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	public function unpublish($data, $form) {
 		$className = $this->stat('tree_class');
+		/** @var SiteTree $record */
 		$record = DataObject::get_by_id($className, $data['ID']);
 
-		if($record && !$record->canDeleteFromLive()) return Security::permissionFailure($this);
-		if(!$record || !$record->ID) throw new SS_HTTPResponse_Exception("Bad record ID #" . (int)$data['ID'], 404);
+		if($record && !$record->canUnpublish()) {
+			return Security::permissionFailure($this);
+		}
+		if(!$record || !$record->ID) {
+			throw new SS_HTTPResponse_Exception("Bad record ID #" . (int)$data['ID'], 404);
+		}
 
 		$record->doUnpublish();
 
