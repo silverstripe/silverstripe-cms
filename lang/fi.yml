@@ -71,8 +71,6 @@ fi:
     PUBLISH_PAGES: Julkaise
     RESTORE: Palauta
     RESTORED_PAGES: 'Palautettu %d sivua'
-    UNPUBLISHED_PAGES: 'Julkaisemattomat %d sivua'
-    UNPUBLISH_PAGES: Poista näkyvistä
   CMSFileAddController:
     MENUTITLE: Tiedostot
   CMSMain:
@@ -94,13 +92,10 @@ fi:
     DUPLICATEDWITHCHILDREN: '''{title}'' ja alasivu monistettiin onnistuneesti'
     EMAIL: Sähköposti
     EditTree: 'Muokkaa rakennepuuta'
-    ListFiltered: 'Näytetään haun tulokset.'
     MENUTITLE: 'Muokkaa sivua'
     NEWPAGE: 'Uusi {pagetype}'
     PAGENOTEXISTS: 'Tätä sivua ei ole olemassa'
-    PAGES: 'Sivun tila'
     PAGETYPEANYOPT: Mikä tahansa
-    PAGETYPEOPT: 'Sivun tyyppi'
     PUBALLCONFIRM: 'Julkaise jokainen sivu tällä sivustolla kopioiden luonnosten sisältö julkiselle sivustolle'
     PUBALLFUN: 'Julkaise kaikki -toiminto'
     PUBALLFUN2: "Painamalla tätä nappia, tekee se saman kuin kävisit painamassa joka sivulla \"julkaise\". Se on käytännöllinen, jos on tehnyt isoja muutoksia sisältöön, esim. kun sivusto luotiin."
@@ -109,7 +104,6 @@ fi:
     REMOVED: 'Poista ''{title}''{description} näkyvältä sivustolta'
     REMOVEDPAGE: '''{title}'' poistettiin julkaistulta sivustolta'
     REMOVEDPAGEFROMDRAFT: 'Poistettu ''%s'' luonnossivustolta'
-    RESTORE: 'Palauta luonnos'
     RESTORED: '''{title}'' palautettiin onnistuneesti'
     RESTORE_DESC: 'Palauta arkistoitu versio luonnokseksi'
     RESTORE_TO_ROOT: 'Palauta luonnos päätasolle'
@@ -122,11 +116,7 @@ fi:
     TabContent: Sisältö
     TabHistory: Historia
     TabSettings: Asetukset
-    TreeFiltered: 'Näytetään haun tulokset.'
-    TreeFilteredClear: Tyhjennä
   CMSMain_left_ss:
-    APPLY_FILTER: Hae
-    CLEAR_FILTER: Tyhjennä
     RESET: Nollaa
   CMSPageAddController:
     MENUTITLE: 'Lisää sivu'
@@ -158,8 +148,6 @@ fi:
     ListView: 'Listanäkymä'
     MENUTITLE: Sivut
     TreeView: 'Puunäkymä'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: 'Sarjatoiminnot'
   CMSPagesController_Tools_ss:
     FILTER: Suodata
   CMSSIteTreeFilter_PublishedPages:
@@ -168,20 +156,11 @@ fi:
     FILTERDATEFROM: Alkaen
     FILTERDATEHEADING: Pvm
     FILTERDATETO: Päättyen
-    FILTERLABELTEXT: Haku
     PAGEFILTERDATEHEADING: 'Viimeksi muokattu'
   CMSSettingsController:
     MENUTITLE: Asetukset
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Muokatut sivut'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Kaikki sivut, sisältäen arkistoidut'
   CMSSiteTreeFilter_Search:
     Title: 'Kaikki sivut'
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Arkistoidut sivut'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Luonnossivut'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Näkyvillä, mutta poistettu luonnoksista'
   ContentControl:
@@ -299,7 +278,6 @@ fi:
   SilverStripeNavigator:
     ARCHIVED: Arkistoitu
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Jaa tämä sivu kopioimalla ja liittämällä alapuolella oleva linkki'
     ShareLink: 'Jaa linkki'
   SilverStripeNavigatorLinkl:
     CloseLink: Sulje

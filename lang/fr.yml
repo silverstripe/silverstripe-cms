@@ -155,14 +155,8 @@ fr:
     FILTERDATETO: A
   CMSSettingsController:
     MENUTITLE: Paramètres
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Pages modifiées'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Toutes les pages, y compris archivées'
   CMSSiteTreeFilter_Search:
     Title: 'Toutes les pages'
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Pages archivées'
   ContentControl:
     NOTEWONTBESHOWN: 'Note : ce message ne sera pas visible de vos visiteurs.'
   ContentController:
