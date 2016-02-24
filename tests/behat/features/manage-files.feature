@@ -5,9 +5,9 @@ Feature: Manage files
   So that I can insert them into my content efficiently
 
   Background:
-    Given a "image" "assets/folder1/file1.jpg" was created "2012-01-01 12:00:00"
-    And a "image" "assets/folder1/folder1-1/file2.jpg" was created "2010-01-01 12:00:00"
-    And a "folder" "assets/folder2"
+    Given a "image" "folder1/file1.jpg" was created "2012-01-01 12:00:00"
+    And a "image" "folder1/folder1-1/file2.jpg" was created "2010-01-01 12:00:00"
+    And a "folder" "folder2"
     And I am logged in with "ADMIN" permissions
     And I go to "/admin/assets"
 
@@ -41,7 +41,7 @@ Feature: Manage files
   Scenario: I can delete a file
     Given I click on "folder1" in the "Files" table
     And I click on "file1" in the "folder1" table
-    And I press the "Delete" button, confirming the dialog
+    And I press the "Archive" button
     Then the "folder1" table should not contain "file1"
 
   Scenario: I can change the folder of a file
@@ -66,7 +66,7 @@ Feature: Manage files
     And the "Files" table should not contain "file2"
 
   Scenario: I can filter the files list view using filetype
-    Given a "file" "assets/document.pdf"
+    Given a "file" "document.pdf"
     And I expand the content filters
     And I select "Image" from "File type" with javascript
     And I press the "Search" button
