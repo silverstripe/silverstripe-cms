@@ -6,8 +6,8 @@ Feature: Insert an image into a page
 
   Background:
     Given a "page" "About Us"
-    And a "image" "assets/folder1/file1.jpg"
-    And a "image" "assets/folder1/file2.jpg"
+    And a "image" "folder1/file1.jpg"
+    And a "image" "folder1/file2.jpg"
     And I am logged in with "ADMIN" permissions
     And I go to "/admin/pages"
     And I click on "About Us" in the tree
@@ -31,7 +31,7 @@ Feature: Insert an image into a page
     And I attach the file "testfile.jpg" to "AssetUploadField" with HTML5
     # TODO Delay previous step until upload succeeded
     And I wait for 2 seconds
-    Then there should be a file "assets/Uploads/59de0c841f/testfile.jpg"
+    Then there should be a filename "Uploads/testfile.jpg" with hash "59de0c841f0da39f1d21ab12cd4fa85b8a91457c"
     When I press the "Insert" button
     Then the "Content" HTML field should contain "testfile__Resampled.jpg"
     # Required to avoid "unsaved changed" browser dialog
@@ -39,14 +39,14 @@ Feature: Insert an image into a page
 
   @assets
   Scenario: I can upload an image from my own computer that matches the name of an existing file
-    Given a "image" "assets/Uploads/file1.jpg"
+    Given a "image" "Uploads/file1.jpg"
     When I press the "Insert Media" HTML field button
     And I attach the file "file1.jpg" to "AssetUploadField" with HTML5
     # TODO Delay previous step until upload succeeded
     And I wait for 2 seconds
     # Note change in default behaviour from 3.1, respect default Upload.replaceFile=false
-    Then there should be a file "assets/Uploads/3d0ef6ec37/file1.jpg"
-    And there should be a file "assets/Uploads/3d0ef6ec37/file1-v2.jpg"
+    Then there should be a filename "Uploads/file1.jpg" with hash "3d0ef6ec372233e08e87f6e1f02ace9c93ce11fe"
+    And there should be a filename "Uploads/file1-v2.jpg" with hash "3d0ef6ec372233e08e87f6e1f02ace9c93ce11fe"
     When I press the "Insert" button
     Then the "Content" HTML field should contain "file1-v2__Resampled.jpg"
     # Required to avoid "unsaved changed" browser dialog

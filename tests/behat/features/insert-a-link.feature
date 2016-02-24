@@ -8,7 +8,7 @@ So that I can link to a external website or a page on my site
     Given a "page" "Home"
     And a "page" "About Us" has the "Content" "<p>My awesome content</p>"
     And a "page" "Details" has the "Content" "<p>My sub-par content<a name="youranchor"></a></p>"
-    And a "file" "assets/file1.jpg"
+    And a "file" "file1.jpg"
     And I am logged in with "ADMIN" permissions
     And I go to "/admin/pages"
     And I click on "About Us" in the tree
