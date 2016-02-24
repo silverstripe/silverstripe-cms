@@ -105,6 +105,7 @@ pl:
     REMOVED: 'Usunięto ''{title}''{description} z witryny'
     REMOVEDPAGE: 'Usunięto ''{title}'' z opublikowanej witryny'
     REMOVEDPAGEFROMDRAFT: '''%s'' usunięto ze szkiców'
+    RESTORE: 'Przywróć szkic'
     RESTORED: 'Pomyślnie przywrócono ''{title}'''
     RESTORE_DESC: 'Przywróć jako szkic'
     ROLLBACK: 'Wróć do tej wersji'
@@ -164,8 +165,14 @@ pl:
     PAGEFILTERDATEHEADING: 'Ostatnio edytowane'
   CMSSettingsController:
     MENUTITLE: Ustawienia
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Zmodyfikowane strony'
   CMSSiteTreeFilter_Search:
     Title: 'Wszystkie strony'
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Zarchiwizowane strony'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Szkice'
   ContentControl:
     NOTEWONTBESHOWN: 'Uwaga: ta strona nie będzie widoczna dla twoich odwiedzających  '
   ContentController:

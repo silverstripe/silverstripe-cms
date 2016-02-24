@@ -71,6 +71,8 @@ cs:
     PUBLISH_PAGES: Zveřejnit
     RESTORE: Obnovit
     RESTORED_PAGES: 'Obnoveno %d stránek'
+    UNPUBLISHED_PAGES: 'Nezveřejněné %d stránky'
+    UNPUBLISH_PAGES: Nezveřejnit
   CMSFileAddController:
     MENUTITLE: Soubory
   CMSMain:
@@ -107,6 +109,7 @@ cs:
     REMOVED: 'Smazáno ''{title}''{description} z webu'
     REMOVEDPAGE: 'Odstraněno ''{title}'' ze zveřejněného webu'
     REMOVEDPAGEFROMDRAFT: 'Odstraněno ''%s'' z konceptu webu'
+    RESTORE: 'Obnovit koncept'
     RESTORED: 'Obnoveno ''{title}'' úspěšně'
     RESTORE_DESC: 'Obnovit archivovanou verzi na koncept'
     RESTORE_TO_ROOT: 'Obnovit koncept do nejvyšší úrovně'
@@ -169,8 +172,16 @@ cs:
     PAGEFILTERDATEHEADING: 'Poslední změna'
   CMSSettingsController:
     MENUTITLE: Možnosti
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Upravené stránky'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Všechny stránky, včetně archivovaných'
   CMSSiteTreeFilter_Search:
     Title: 'Všechny stránky'
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Archivované stránky'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Konceptové stránky'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Živé, ale odstraněno z konceptu'
   ContentControl:
@@ -290,6 +301,7 @@ cs:
   SilverStripeNavigator:
     ARCHIVED: Archivováno
   SilverStripeNavigatorLink:
+    ShareInstructions: 'K zdílení této stránky, zkopírujte a vložte odkaz dole.'
     ShareLink: 'Sdílet odkaz'
   SilverStripeNavigatorLinkl:
     CloseLink: Zavřít
