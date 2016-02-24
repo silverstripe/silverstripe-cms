@@ -117,7 +117,6 @@ de:
     TabHistory: Historie
     TabSettings: Einstellungen
   CMSMain_left_ss:
-    CLEAR_FILTER: Zurücksetzen
     RESET: Zurücksetzen
   CMSPageAddController:
     MENUTITLE: 'Seite hinzufügen'
