@@ -220,7 +220,6 @@ nb:
     DEFAULTSERVERERRORPAGETITLE: 'Serverfeil'
     DESCRIPTION: 'Egendefinert innhold for forskjellige feilsituasjoner (f.eks "Siden ble ikke funnet")'
     ERRORFILEPROBLEM: 'Feil ved åpning av filen "{filename}". Vennligst sjekk filtillatelser.'
-    PLURALNAME: 'Feilsider'
     SINGULARNAME: 'Feilside'
   Folder:
     AddFolderButton: 'Legg til mappe'
@@ -243,7 +242,6 @@ nb:
     HASBEENSETUP: 'En omdirigeringssside har blitt satt opp uten et mål å omdirigere til.'
     HEADER: 'Denne siden vil omdirigere brukere til en annen side'
     OTHERURL: 'Nettadresse til et annet nettsted'
-    PLURALNAME: 'Omdirigeringssider'
     REDIRECTTO: 'Omdiriger til'
     REDIRECTTOEXTERNAL: 'Et annet nettsted'
     REDIRECTTOPAGE: 'En side på nettstedet'
@@ -411,6 +409,5 @@ nb:
     EditLink: rediger
     HEADER: 'Dette er en virituell side'
     HEADERWITHLINK: 'Dette er en virtuell side som kopierer innhold fra "{title}" ({link})'
-    PLURALNAME: 'Virtuelle sider'
     PageTypNotAllowedOnRoot: 'Originaltypen "{type}" er ikke tillatt på toppnivået for denne virtuelle siden.'
     SINGULARNAME: 'Virtuell side'

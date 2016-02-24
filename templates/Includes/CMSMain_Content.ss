@@ -34,7 +34,7 @@
 			</div>
 
 			<div class="view-controls">
-				<button id="filters-button" class="icon-button font-icon-search" title="<% _t('CMSPagesController_Tools_ss.FILTER', 'Filter') %>"></button>
+				<button id="filters-button" class="icon-button font-icon-search no-text" title="<% _t('CMSPagesController_Tools_ss.FILTER', 'Filter') %>"></button>
 				<div class="icon-button-group">
 					<a href="$LinkPages#cms-content-treeview" class="icon-button font-icon-icon-tree active" title="<% _t('CMSPagesController.TreeView', 'Tree View') %>"></a><a href="$LinkPages#cms-content-listview" class="icon-button font-icon-list" title="<% _t('CMSPagesController.ListView', 'List View') %>"></a>
 				</div>
