@@ -71,8 +71,6 @@ fa_IR:
     PUBLISH_PAGES: انتشار
     RESTORE: بازنشاندن
     RESTORED_PAGES: 'بازنشاندن %d صفحه'
-    UNPUBLISHED_PAGES: '%d صفحه‌ی منتشر‌نشده'
-    UNPUBLISH_PAGES: عدم انتشار
   CMSFileAddController:
     MENUTITLE: فایل‌ها
   CMSMain:
@@ -90,16 +88,12 @@ fa_IR:
     DELETEFP: حذف کردن از منتشر شده های سایت
     EMAIL: پست الکترونیک
     EditTree: 'ویرایش درخت'
-    ListFiltered: 'نمایش نتایج جستجو'
     MENUTITLE: 'ویرایش صفحه'
     NEWPAGE: '{pagetype} جدید'
     PAGENOTEXISTS: 'این صفحه وجود ندارد'
-    PAGES: 'وضعیت صفحه'
     PAGETYPEANYOPT: هر
-    PAGETYPEOPT: 'نوع صفحه'
     PUBALLFUN: 'عملکرد "انتشار همه"'
     PageAdded: 'صفحه با موفقیت ایجاد شد'
-    RESTORE: 'بازنشانی پیش‌نویس'
     RESTORED: 'بازنشانی موفقیت‌آمیز ''{title}'''
     ROLLBACK: 'بازگردانی به این نسخه'
     SAVE: ذخیره
@@ -107,11 +101,7 @@ fa_IR:
     TabContent: محتوا
     TabHistory: تاریخچه
     TabSettings: تنظیمات
-    TreeFiltered: 'نمایش نتایج جستجو'
-    TreeFilteredClear: پاک‌کردن
   CMSMain_left_ss:
-    APPLY_FILTER: جستجو
-    CLEAR_FILTER: پاک‌کردن
     RESET: تنظیم مجدد
   CMSPageAddController:
     MENUTITLE: 'افزودن صفحه'
@@ -151,18 +141,11 @@ fa_IR:
     FILTERDATEFROM: از
     FILTERDATEHEADING: تاریخ
     FILTERDATETO: تا
-    FILTERLABELTEXT: جستجو
     PAGEFILTERDATEHEADING: 'آخرین ویرایش'
   CMSSettingsController:
     MENUTITLE: تنظیمات
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'صفحات تغییر یافته'
   CMSSiteTreeFilter_Search:
     Title: 'تمامی صفحات'
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'صفحات بایگانی شده'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'صفحات پیش‌نویس'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'زنده اما حذف‌شده از پیش‌نویس'
   ContentController:
