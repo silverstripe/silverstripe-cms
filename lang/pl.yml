@@ -61,17 +61,22 @@ pl:
   CMSAddPageController:
     Title: 'Dodaj stronę'
   CMSBatchActions:
+    ARCHIVE: Archiwizuj
+    ARCHIVED_PAGES: 'Zarchiwizowano %d stron'
     DELETED_DRAFT_PAGES: 'Usunięto %d stron ze szkiców, %d nie powiodło się'
     DELETED_PAGES: 'Usunięto %d stron z opublikowanych, %d nie powiodło się'
     DELETE_DRAFT_PAGES: 'Usuń ze szkicu witryny'
     DELETE_PAGES: 'Usuń z opublikowanej witryny'
     PUBLISHED_PAGES: 'Opublikowano %d stron, %d się nie powiodło'
     PUBLISH_PAGES: Opublikuj
+    RESTORE: Przywróć
+    RESTORED_PAGES: 'Przywrócono %d stron'
   CMSFileAddController:
     MENUTITLE: Pliki
   CMSMain:
     ACCESS: 'Dostęp do sekcji ''{title}'''
     ACCESS_HELP: 'Zezwala na oglądanie sekcji zawierających drzewo stron oraz treść. Prawo Przeglądaj i edytuj może być obsługiwane przez pola wyboru dostępne na stronach oraz poprzez zakładkę uprawnień.'
+    ARCHIVE: Archiwizuj
     AddNew: 'Dodaj nową stronę'
     AddNewButton: 'Dodaj nową'
     AddPageRestriction: 'Uwaga: Niektóre typy stron nie są dozwolone dla tego wyboru'
@@ -89,7 +94,9 @@ pl:
     MENUTITLE: 'Edytuj stronę'
     NEWPAGE: 'Nowa {pagetype}'
     PAGENOTEXISTS: 'Ta strona nie istnieje'
+    PAGES: Strony
     PAGETYPEANYOPT: Jakikolwiek
+    PAGETYPEOPT: 'Rodzaj strony'
     PUBALLCONFIRM: 'Opublikuj każdą stronę w witrynie'
     PUBALLFUN: '"Opublikuj wszystko"'
     PUBALLFUN2: "Naciśnięcie tego przycisku spowoduje przejście po wszystkich stronach i opublikowanie ich. Zazwyczaj używa się tego, gdy w witrynie było bardzo dużo zmian, na przykład gdy witryna została utworzona."
@@ -98,7 +105,9 @@ pl:
     REMOVED: 'Usunięto ''{title}''{description} z witryny'
     REMOVEDPAGE: 'Usunięto ''{title}'' z opublikowanej witryny'
     REMOVEDPAGEFROMDRAFT: '''%s'' usunięto ze szkiców'
+    RESTORE: 'Przywróć szkic'
     RESTORED: 'Pomyślnie przywrócono ''{title}'''
+    RESTORE_DESC: 'Przywróć jako szkic'
     ROLLBACK: 'Wróć do tej wersji'
     ROLLEDBACKPUBv2: 'Przywrócono opublikowaną wersję'
     ROLLEDBACKVERSIONv2: 'Przywrócono wersję #%d.'
@@ -107,7 +116,10 @@ pl:
     TabContent: Zawartość
     TabHistory: Historia
     TabSettings: Opcje
+    TreeFilteredClear: 'Usuń filtr'
   CMSMain_left_ss:
+    APPLY_FILTER: 'Zastosuj filtr'
+    CLEAR_FILTER: 'Usuń filtr'
     RESET: Resetuj
   CMSPageAddController:
     MENUTITLE: 'Dodaj stronę'
@@ -139,16 +151,28 @@ pl:
     ListView: 'Widok listy'
     MENUTITLE: Strony
     TreeView: 'Widok drzewa'
+  CMSPagesController_ContentToolbar_ss:
+    MULTISELECT: Multi wybór
   CMSPagesController_Tools_ss:
     FILTER: Filtr
+  CMSSIteTreeFilter_PublishedPages:
+    Title: 'Opublikowane strony'
   CMSSearch:
     FILTERDATEFROM: Od
     FILTERDATEHEADING: Data
     FILTERDATETO: Do
+    FILTERLABELTEXT: Zawartość
+    PAGEFILTERDATEHEADING: 'Ostatnio edytowane'
   CMSSettingsController:
     MENUTITLE: Ustawienia
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Zmodyfikowane strony'
   CMSSiteTreeFilter_Search:
     Title: 'Wszystkie strony'
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Zarchiwizowane strony'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Szkice'
   ContentControl:
     NOTEWONTBESHOWN: 'Uwaga: ta strona nie będzie widoczna dla twoich odwiedzających  '
   ContentController:
@@ -207,7 +231,10 @@ pl:
     DEFAULTSERVERERRORPAGETITLE: 'Błąd serwera'
     DESCRIPTION: 'Własna zawartość dla różnych błędów (np. "Strona nie została znaleziona")'
     ERRORFILEPROBLEM: 'Błąd podczas otwierania pliku "{filename}". Proszę sprawdzić uprawnienia do plików.'
+    PLURALNAME: 'Strony błędów'
     SINGULARNAME: 'Strona błędów'
+  File:
+    Title: Tytuł
   Folder:
     AddFolderButton: 'Dodaj katalog'
     DELETEUNUSEDTHUMBNAILS: 'Usuń nieużywane miniatury'
@@ -229,6 +256,7 @@ pl:
     HASBEENSETUP: 'Strona przekierowująca została ustawiona bez celu, do którego ma przekierowywać.'
     HEADER: 'Ta strona przeniesie użytkowników na inną stronę'
     OTHERURL: 'Adres URL innej strony'
+    PLURALNAME: 'Strony przekierowujące'
     REDIRECTTO: 'Przenieś do'
     REDIRECTTOEXTERNAL: 'Inna strona'
     REDIRECTTOPAGE: 'Strona na Twojej witrynie'
@@ -290,6 +318,7 @@ pl:
     ADDEDTODRAFTSHORT: Szkic
     ALLOWCOMMENTS: 'Zezwolić na komentarze na stronie?'
     APPEARSVIRTUALPAGES: 'Ta treść pojawia się również na wirtualnej stronie w sekcji {title}.'
+    ARCHIVEDPAGESHORT: Zarchiwizowane
     BUTTONCANCELDRAFT: 'Anuluj wprowadzone zmiany'
     BUTTONCANCELDRAFTDESC: 'Usuń zmiany i wróć do istniejącej wersji opublikowanej strony'
     BUTTONPUBLISHED: Opublikowano
@@ -373,6 +402,8 @@ pl:
     many_many_BackLinkTracking: 'Śledzenie backlinków'
     many_many_ImageTracking: 'Śledzenie obrazków'
     many_many_LinkTracking: 'Śledzenie linków'
+  SiteTreeFileExtension:
+    EDIT: Edytuj
   SiteTreeURLSegmentField:
     EMPTY: 'Proszę podać część adresu lub kliknąć anuluj'
     HelpChars: 'Znaki specjalne są automatycznie konwertowane lub usuwane.'
@@ -389,5 +420,6 @@ pl:
     EditLink: edytuj
     HEADER: 'To jest wirtualna strona'
     HEADERWITHLINK: 'Strona wirtualna odzwierciedlająca treść "{title}" ({link})'
+    PLURALNAME: 'Strony wirtualne'
     PageTypNotAllowedOnRoot: '"{type}" nie jest dozwolona dla głównego poziomu wirtualnej strony'
     SINGULARNAME: 'Wirtualna Strona'
