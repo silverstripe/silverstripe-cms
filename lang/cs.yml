@@ -71,8 +71,8 @@ cs:
     PUBLISH_PAGES: Zveřejnit
     RESTORE: Obnovit
     RESTORED_PAGES: 'Obnoveno %d stránek'
-    UNPUBLISHED_PAGES: 'Nezveřejněných %d stránek'
-    UNPUBLISH_PAGES: Nezveřejňovat
+    UNPUBLISHED_PAGES: 'Nezveřejněné %d stránky'
+    UNPUBLISH_PAGES: Nezveřejnit
   CMSFileAddController:
     MENUTITLE: Soubory
   CMSMain:
@@ -94,11 +94,11 @@ cs:
     DUPLICATEDWITHCHILDREN: 'Duplikováno ''{title}'' a potomci úspěšně'
     EMAIL: E-mail
     EditTree: 'Upravit strom'
-    ListFiltered: 'Zobrazení výsledků vyhledávání.'
+    ListFiltered: 'Filtrovaný seznam.'
     MENUTITLE: 'Upravit stránku'
     NEWPAGE: 'Nová {pagetype}'
     PAGENOTEXISTS: 'Tato stránka neexistuje'
-    PAGES: 'Stav stránky'
+    PAGES: Stránky
     PAGETYPEANYOPT: Jakékoliv
     PAGETYPEOPT: 'Typ stránky'
     PUBALLCONFIRM: 'Prosím zveřejněte veškeré stránky z úschovny'
@@ -122,11 +122,11 @@ cs:
     TabContent: Obsah
     TabHistory: Historie
     TabSettings: Nastavení
-    TreeFiltered: 'Zobrazení výsledků vyhledávání.'
-    TreeFilteredClear: Vyčistit
+    TreeFiltered: 'Fltrovaná struktura.'
+    TreeFilteredClear: 'Vyčistit filtr'
   CMSMain_left_ss:
-    APPLY_FILTER: Hledat
-    CLEAR_FILTER: Vyčistit
+    APPLY_FILTER: 'Použít filtr'
+    CLEAR_FILTER: 'Vyčistit filtr'
     RESET: Resetovat
   CMSPageAddController:
     MENUTITLE: 'Přidat stránku'
@@ -159,7 +159,7 @@ cs:
     MENUTITLE: Stránky
     TreeView: 'Pohled strom'
   CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: 'Dávkové akce'
+    MULTISELECT: Multi-výběr
   CMSPagesController_Tools_ss:
     FILTER: Filtr
   CMSSIteTreeFilter_PublishedPages:
@@ -168,7 +168,7 @@ cs:
     FILTERDATEFROM: Od
     FILTERDATEHEADING: Datum
     FILTERDATETO: Do
-    FILTERLABELTEXT: Hledat
+    FILTERLABELTEXT: Obsah
     PAGEFILTERDATEHEADING: 'Poslední změna'
   CMSSettingsController:
     MENUTITLE: Možnosti
@@ -267,7 +267,7 @@ cs:
     HASBEENSETUP: 'Přesměrovací stránka byla nastavena bez cíle.'
     HEADER: 'Tato stránka přesměruje uživatele na jinou stránku'
     OTHERURL: 'Jiná web adresa'
-    PLURALNAME: 'Přesměrovací stránka'
+    PLURALNAME: 'Přesměrovací stránky'
     REDIRECTTO: 'Přesměrovat na'
     REDIRECTTOEXTERNAL: 'Jiná web stránka'
     REDIRECTTOPAGE: 'Stránka na vašem webu'
@@ -301,7 +301,7 @@ cs:
   SilverStripeNavigator:
     ARCHIVED: Archivováno
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Pro zdílení této stránky, zkopírujte a přilepte odkaz dole.'
+    ShareInstructions: 'K zdílení této stránky, zkopírujte a vložte odkaz dole.'
     ShareLink: 'Sdílet odkaz'
   SilverStripeNavigatorLinkl:
     CloseLink: Zavřít
