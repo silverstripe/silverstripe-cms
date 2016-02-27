@@ -71,6 +71,8 @@ sk:
     PUBLISH_PAGES: Zverejniť
     RESTORE: Obnoviť
     RESTORED_PAGES: 'Obnovených %d stránok'
+    UNPUBLISHED_PAGES: 'Nezverejnených %d stránok'
+    UNPUBLISH_PAGES: Nezverejniť
   CMSFileAddController:
     MENUTITLE: Súbory
   CMSMain:
@@ -92,11 +94,11 @@ sk:
     DUPLICATEDWITHCHILDREN: 'Duplikované ''{title}'' a potomkovia úspešne'
     EMAIL: Pošli e-mailom
     EditTree: 'Editovať strom'
-    ListFiltered: 'Filtrovaný zoznam.'
+    ListFiltered: 'Zobrazenie výsledkov vyhľadávania.'
     MENUTITLE: 'Upraviť stránku'
     NEWPAGE: 'Nová {pagetype}'
     PAGENOTEXISTS: 'Táto stránka neexistuje.'
-    PAGES: Stránky
+    PAGES: 'Stav stránky'
     PAGETYPEANYOPT: Akákoľvek
     PAGETYPEOPT: 'Typ stránky'
     PUBALLCONFIRM: 'Prosím, zverejnite všetky stránky webu, zkopírovaním obsahu na verejné'
@@ -107,6 +109,7 @@ sk:
     REMOVED: 'Smazané ''{title}''{description} z webu'
     REMOVEDPAGE: 'Smazané ''{title}'' z verejného webu'
     REMOVEDPAGEFROMDRAFT: 'Odstránené ''%s'' z konceptu webu'
+    RESTORE: 'Obnoviť koncept'
     RESTORED: 'Obnovené ''{title}'' úspešne'
     RESTORE_DESC: 'Obnoviť archivovanú verziu na koncept'
     RESTORE_TO_ROOT: 'Obnoviť koncept na najvyšiu úroveň'
@@ -119,11 +122,11 @@ sk:
     TabContent: Obsah
     TabHistory: História
     TabSettings: Nastavenia
-    TreeFiltered: 'Filtrované štruktúra.'
-    TreeFilteredClear: 'Vyčistiť filter'
+    TreeFiltered: 'Zobrazenie výsledkov vyhľadávania.'
+    TreeFilteredClear: Vyčistiť
   CMSMain_left_ss:
-    APPLY_FILTER: 'Použiť filter'
-    CLEAR_FILTER: 'Vyčistiť filter'
+    APPLY_FILTER: Hľadať
+    CLEAR_FILTER: Vyčistiť
     RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Pridať stránku'
@@ -156,7 +159,7 @@ sk:
     MENUTITLE: Stránky
     TreeView: 'Zobraziť strom'
   CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Multi-výber
+    MULTISELECT: 'Dávkové akcie'
   CMSPagesController_Tools_ss:
     FILTER: Filtrovať
   CMSSIteTreeFilter_PublishedPages:
@@ -165,12 +168,20 @@ sk:
     FILTERDATEFROM: Od
     FILTERDATEHEADING: Dátum
     FILTERDATETO: Do
-    FILTERLABELTEXT: Obsah
+    FILTERLABELTEXT: Hľadať
     PAGEFILTERDATEHEADING: 'Posledne zmenené'
   CMSSettingsController:
     MENUTITLE: Nastavenia
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Upravené stránky'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Všetky stránky, vrátane archivovaných'
   CMSSiteTreeFilter_Search:
     Title: 'Všechny stránky'
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Archivované stránky'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Konceptové stránky'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Živé, ale odstránené z konceptu'
   ContentControl:
@@ -290,6 +301,7 @@ sk:
   SilverStripeNavigator:
     ARCHIVED: Archivované
   SilverStripeNavigatorLink:
+    ShareInstructions: 'K zdielaniu tejto stránky, zkopírujte a vložte odkaz dolu'
     ShareLink: 'Zdieľať odkaz'
   SilverStripeNavigatorLinkl:
     CloseLink: Zavrieť

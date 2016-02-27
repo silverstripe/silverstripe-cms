@@ -94,9 +94,7 @@ pl:
     MENUTITLE: 'Edytuj stronę'
     NEWPAGE: 'Nowa {pagetype}'
     PAGENOTEXISTS: 'Ta strona nie istnieje'
-    PAGES: Strony
     PAGETYPEANYOPT: Jakikolwiek
-    PAGETYPEOPT: 'Rodzaj strony'
     PUBALLCONFIRM: 'Opublikuj każdą stronę w witrynie'
     PUBALLFUN: '"Opublikuj wszystko"'
     PUBALLFUN2: "Naciśnięcie tego przycisku spowoduje przejście po wszystkich stronach i opublikowanie ich. Zazwyczaj używa się tego, gdy w witrynie było bardzo dużo zmian, na przykład gdy witryna została utworzona."
@@ -115,10 +113,7 @@ pl:
     TabContent: Zawartość
     TabHistory: Historia
     TabSettings: Opcje
-    TreeFilteredClear: 'Usuń filtr'
   CMSMain_left_ss:
-    APPLY_FILTER: 'Zastosuj filtr'
-    CLEAR_FILTER: 'Usuń filtr'
     RESET: Resetuj
   CMSPageAddController:
     MENUTITLE: 'Dodaj stronę'
@@ -150,8 +145,6 @@ pl:
     ListView: 'Widok listy'
     MENUTITLE: Strony
     TreeView: 'Widok drzewa'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Multi wybór
   CMSPagesController_Tools_ss:
     FILTER: Filtr
   CMSSIteTreeFilter_PublishedPages:
@@ -160,7 +153,6 @@ pl:
     FILTERDATEFROM: Od
     FILTERDATEHEADING: Data
     FILTERDATETO: Do
-    FILTERLABELTEXT: Zawartość
     PAGEFILTERDATEHEADING: 'Ostatnio edytowane'
   CMSSettingsController:
     MENUTITLE: Ustawienia
