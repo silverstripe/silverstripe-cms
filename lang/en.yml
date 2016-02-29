@@ -126,7 +126,7 @@ en:
     TreeFilteredClear: 'Clear filter'
   CMSMain_left_ss:
     APPLY_FILTER: 'Apply Filter'
-    CLEAR_FILTER: 'Clear Filter'
+    CLEAR_FILTER: Clear
     RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Add page'
