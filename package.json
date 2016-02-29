@@ -9,7 +9,8 @@
     "node": "~4.2.0"
   },
   "scripts": {
-    "build": "gulp build"
+    "build": "gulp build",
+    "lock": "npm-shrinkwrap --dev"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,7 @@
     "gulp-notify": "^2.2.0",
     "gulp-uglify": "^1.5.1",
     "gulp-util": "^3.0.7",
+    "npm-shrinkwrap": "^5.4.1",
     "semver": "^5.1.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
