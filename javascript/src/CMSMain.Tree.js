@@ -1,175 +1,173 @@
-import $ from 'jQuery';
-import i18n from 'i18n';
+import $ from 'jQuery'
+import i18n from 'i18n'
 
-$.entwine('ss.tree', function($){
-	$('.cms-tree').entwine({
-		fromDocument: {
-			'oncontext_show.vakata': function(e){
-				this.adjustContextClass();
-			}
-		},
-		/*
-		 * Add and remove classes from context menus to allow for
-		 * adjusting the display
-		 */
-		adjustContextClass: function(){
-			var menus = $('#vakata-contextmenu').find("ul ul");
+$.entwine('ss.tree', function ($) {
+  $('.cms-tree').entwine({
+    fromDocument: {
+      'oncontext_show.vakata': function (e) {
+        this.adjustContextClass()
+      }
+    },
+    /*
+     * Add and remove classes from context menus to allow for
+     * adjusting the display
+     */
+    adjustContextClass: function () {
+      var menus = $('#vakata-contextmenu').find('ul ul')
 
-			menus.each(function(i){
-				var col = "1",
-					count = $(menus[i]).find('li').length;
+      menus.each(function (i) {
+        var col = '1'
+        var count = $(menus[i]).find('li').length
 
-				//Assign columns to menus over 10 items long
-				if(count > 20){
-					col = "3";
-				}else if(count > 10){
-					col = "2";
-				}
+        // Assign columns to menus over 10 items long
+        if (count > 20) {
+          col = '3'
+        } else if (count > 10) {
+          col = '2'
+        }
 
-				$(menus[i]).addClass('col-' + col).removeClass('right');
+        $(menus[i]).addClass('col-' + col).removeClass('right')
 
-				//Remove "right" class that jstree adds on mouseenter
-				$(menus[i]).find('li').on("mouseenter", function (e) {
-					$(this).parent('ul').removeClass("right");
-				});
-			});
-		},
-		getTreeConfig: function() {
-			var self = this, config = this._super(), hints = this.getHints();
-			config.plugins.push('contextmenu');
-			config.contextmenu = {
-				'items': function(node) {
+        // Remove "right" class that jstree adds on mouseenter
+        $(menus[i]).find('li').on('mouseenter', function (e) {
+          $(this).parent('ul').removeClass('right')
+        })
+      })
+    },
+    getTreeConfig: function () {
+      var self = this
+      var config = this._super()
+      config.plugins.push('contextmenu')
+      config.contextmenu = {
+        'items': function (node) {
+          var menuitems = {
+            'edit': {
+              'label': i18n._t('Tree.EditPage', 'Edit page', 100, 'Used in the context menu when right-clicking on a page node in the CMS tree'),
+              'action': function (obj) {
+                $('.cms-container').entwine('.ss').loadPanel(i18n.sprintf(
+                  self.data('urlEditpage'), obj.data('id')
+                ))
+              }
+            }
+          }
 
-					var menuitems = {
-							'edit': {
-								'label': i18n._t('Tree.EditPage', 'Edit page', 100, 'Used in the context menu when right-clicking on a page node in the CMS tree'),
-								'action': function(obj) {
-									$('.cms-container').entwine('.ss').loadPanel(i18n.sprintf(
-										self.data('urlEditpage'), obj.data('id')
-									));
-								}
-							}
-						};
+          // Add "show as list"
+          if (!node.hasClass('nochildren')) {
+            menuitems['showaslist'] = {
+              'label': i18n._t('Tree.ShowAsList'),
+              'action': function (obj) {
+                $('.cms-container').entwine('.ss').loadPanel(
+                  self.data('urlListview') + '&ParentID=' + obj.data('id'),
+                  null,
+                  // Default to list view tab
+                  {tabState: {'pages-controller-cms-content': {'tabSelector': '.content-listview'}}}
+                )
+              }
+            }
+          }
 
-					// Add "show as list"
-					if(!node.hasClass('nochildren')) {
-						menuitems['showaslist'] = {
-							'label': i18n._t('Tree.ShowAsList'),
-							'action': function(obj) {
-								$('.cms-container').entwine('.ss').loadPanel(
-									self.data('urlListview') + '&ParentID=' + obj.data('id'),
-									null,
-									// Default to list view tab
-									{tabState: {'pages-controller-cms-content': {'tabSelector': '.content-listview'}}}
-								);
-							}
-						};
-					}
+          // Build a list for allowed children as submenu entries
+          var id = node.data('id')
+          var allowedChildren = node.find('>a .item').data('allowedchildren')
+          var menuAllowedChildren = {}
+          var hasAllowedChildren = false
 
-					// Build a list for allowed children as submenu entries
-					var pagetype = node.data('pagetype'),
-						id = node.data('id'),
-						allowedChildren = node.find('>a .item').data('allowedchildren'),
-						menuAllowedChildren = {},
-						hasAllowedChildren = false;
+          // Convert to menu entries
+          $.each(allowedChildren, function (klass, title) {
+            hasAllowedChildren = true
+            menuAllowedChildren['allowedchildren-' + klass] = {
+              'label': '<span class="jstree-pageicon"></span>' + title,
+              '_class': 'class-' + klass,
+              'action': function (obj) {
+                $('.cms-container').entwine('.ss').loadPanel(
+                  $.path.addSearchParams(
+                    i18n.sprintf(self.data('urlAddpage'), id, klass),
+                    self.data('extraParams')
+                  )
+                )
+              }
+            }
+          })
 
-					// Convert to menu entries
-					$.each(allowedChildren, function(klass, title){
-						hasAllowedChildren = true;
-						menuAllowedChildren["allowedchildren-" + klass ] = {
-							'label': '<span class="jstree-pageicon"></span>' + title,
-							'_class': 'class-' + klass,
-							'action': function(obj) {
-								$('.cms-container').entwine('.ss').loadPanel(
-									$.path.addSearchParams(
-										i18n.sprintf(self.data('urlAddpage'), id, klass),
-										self.data('extraParams')
-									)
-								);
-							}
-						};
-					});
+          if (hasAllowedChildren) {
+            menuitems['addsubpage'] = {
+              'label': i18n._t('Tree.AddSubPage', 'Add page under this page', 100, 'Used in the context menu when right-clicking on a page node in the CMS tree'),
+              'submenu': menuAllowedChildren
+            }
+          }
 
-					if(hasAllowedChildren) {
-						menuitems['addsubpage'] = {
-								'label': i18n._t('Tree.AddSubPage', 'Add page under this page', 100, 'Used in the context menu when right-clicking on a page node in the CMS tree'),
-								'submenu': menuAllowedChildren
-							};
-					}
+          menuitems['duplicate'] = {
+            'label': i18n._t('Tree.Duplicate'),
+            'submenu': [
+              {
+                'label': i18n._t('Tree.ThisPageOnly'),
+                'action': function (obj) {
+                  $('.cms-container').entwine('.ss').loadPanel(
+                    $.path.addSearchParams(
+                      i18n.sprintf(self.data('urlDuplicate'), obj.data('id')),
+                      self.data('extraParams')
+                    )
+                  )
+                }
+              }, {
+                'label': i18n._t('Tree.ThisPageAndSubpages'),
+                'action': function (obj) {
+                  $('.cms-container').entwine('.ss').loadPanel(
+                    $.path.addSearchParams(
+                      i18n.sprintf(self.data('urlDuplicatewithchildren'), obj.data('id')),
+                      self.data('extraParams')
+                    )
+                  )
+                }
+              }
+            ]
+          }
 
-					menuitems['duplicate'] = {
-						'label': i18n._t('Tree.Duplicate'),
-						'submenu': [
-							{
-								'label': i18n._t('Tree.ThisPageOnly'),
-								'action': function(obj) {
-									$('.cms-container').entwine('.ss').loadPanel(
-										$.path.addSearchParams(
-											i18n.sprintf(self.data('urlDuplicate'), obj.data('id')),
-											self.data('extraParams')
-										)
-									);
-								}
-							},{
-								'label': i18n._t('Tree.ThisPageAndSubpages'),
-								'action': function(obj) {
-									$('.cms-container').entwine('.ss').loadPanel(
-										$.path.addSearchParams(
-											i18n.sprintf(self.data('urlDuplicatewithchildren'), obj.data('id')),
-											self.data('extraParams')
-										)
-									);
-								}
-							}
-						]
-					};
+          return menuitems
+        }
+      }
+      return config
+    }
+  })
 
-					return menuitems;
-				}
-			};
-			return config;
-		}
-	});
+  // Scroll tree down to context of the current page, if it isn't
+  // already visible
+  $('.cms-tree a.jstree-clicked').entwine({
+    onmatch: function () {
+      var self = this
+      var panel = self.parents('.cms-panel-content')
+      var scrollTo
 
-	// Scroll tree down to context of the current page, if it isn't
-	// already visible
-	$('.cms-tree a.jstree-clicked').entwine({
-		onmatch: function(){
-			var self = this,
-				panel = self.parents('.cms-panel-content'),
-				scrollTo;
+      if (self.offset().top < 0 ||
+        self.offset().top > panel.height() - self.height()) {
+        // Current scroll top + our current offset top is our
+        // position in the panel
+        scrollTo = panel.scrollTop() + self.offset().top + (panel.height() / 2)
 
-			if(self.offset().top < 0 ||
-				self.offset().top > panel.height() - self.height()) {
-				// Current scroll top + our current offset top is our
-				// position in the panel
-				scrollTo = panel.scrollTop() + self.offset().top
-							+ (panel.height() / 2);
+        panel.animate({
+          scrollTop: scrollTo
+        }, 'slow')
+      }
+    }
+  })
 
-				panel.animate({
-					scrollTop: scrollTo
-				}, 'slow');
-			}
-		}
-	});
+  // Clear filters button
+  $('.cms-tree-filtered .clear-filter').entwine({
+    onclick: function () {
+      window.location = document.location.protocol + '//' + document.location.host + document.location.pathname
+    }
+  })
 
-	// Clear filters button
-	$('.cms-tree-filtered .clear-filter').entwine({
-		onclick: function () {
-			window.location = location.protocol + '//' + location.host + location.pathname;
-		}
-	});
+  $('.cms-tree-filtered').entwine({
+    onmatch: function () {
+      var self = this
+      var setHeight = function () {
+        var height = $('.cms-content-tools .cms-panel-content').height() - self.parent().siblings('.cms-content-toolbar').outerHeight(true)
+        self.css('height', height + 'px')
+      }
 
-	$('.cms-tree-filtered').entwine({
-		onmatch: function () {
-			var self = this,
-				setHeight = function () {
-					var height = $('.cms-content-tools .cms-panel-content').height() - self.parent().siblings('.cms-content-toolbar').outerHeight(true);
-					self.css('height', height + 'px');
-				};
-
-			setHeight();
-			$(window).on('resize', window.ss.debounce(setHeight, 300));
-		}
-	});
-});
+      setHeight()
+      $(window).on('resize', window.ss.debounce(setHeight, 300))
+    }
+  })
+})
