@@ -71,6 +71,8 @@ fi:
     PUBLISH_PAGES: Julkaise
     RESTORE: Palauta
     RESTORED_PAGES: 'Palautettu %d sivua'
+    UNPUBLISHED_PAGES: 'Poistettiin %d sivua julkaisusta'
+    UNPUBLISH_PAGES: Piilota julkaisu
   CMSFileAddController:
     MENUTITLE: Tiedostot
   CMSMain:
@@ -92,10 +94,13 @@ fi:
     DUPLICATEDWITHCHILDREN: '''{title}'' ja alasivu monistettiin onnistuneesti'
     EMAIL: Sähköposti
     EditTree: 'Muokkaa rakennepuuta'
+    ListFiltered: 'Näytetään hakutulokset.'
     MENUTITLE: 'Muokkaa sivua'
     NEWPAGE: 'Uusi {pagetype}'
     PAGENOTEXISTS: 'Tätä sivua ei ole olemassa'
+    PAGES: 'Sivun tila'
     PAGETYPEANYOPT: Mikä tahansa
+    PAGETYPEOPT: 'Sivutyyppi'
     PUBALLCONFIRM: 'Julkaise jokainen sivu tällä sivustolla kopioiden luonnosten sisältö julkiselle sivustolle'
     PUBALLFUN: 'Julkaise kaikki -toiminto'
     PUBALLFUN2: "Painamalla tätä nappia, tekee se saman kuin kävisit painamassa joka sivulla \"julkaise\". Se on käytännöllinen, jos on tehnyt isoja muutoksia sisältöön, esim. kun sivusto luotiin."
@@ -104,6 +109,7 @@ fi:
     REMOVED: 'Poista ''{title}''{description} näkyvältä sivustolta'
     REMOVEDPAGE: '''{title}'' poistettiin julkaistulta sivustolta'
     REMOVEDPAGEFROMDRAFT: 'Poistettu ''%s'' luonnossivustolta'
+    RESTORE: 'Palauta luonnos'
     RESTORED: '''{title}'' palautettiin onnistuneesti'
     RESTORE_DESC: 'Palauta arkistoitu versio luonnokseksi'
     RESTORE_TO_ROOT: 'Palauta luonnos päätasolle'
@@ -116,7 +122,11 @@ fi:
     TabContent: Sisältö
     TabHistory: Historia
     TabSettings: Asetukset
+    TreeFiltered: 'Näytetään haun tulokset.'
+    TreeFilteredClear: Tyhjennä
   CMSMain_left_ss:
+    APPLY_FILTER: Hae
+    CLEAR_FILTER: Tyhjennä
     RESET: Nollaa
   CMSPageAddController:
     MENUTITLE: 'Lisää sivu'
@@ -148,6 +158,8 @@ fi:
     ListView: 'Listanäkymä'
     MENUTITLE: Sivut
     TreeView: 'Puunäkymä'
+  CMSPagesController_ContentToolbar_ss:
+    MULTISELECT: 'Sarjatehtävät'
   CMSPagesController_Tools_ss:
     FILTER: Suodata
   CMSSIteTreeFilter_PublishedPages:
@@ -156,11 +168,20 @@ fi:
     FILTERDATEFROM: Alkaen
     FILTERDATEHEADING: Pvm
     FILTERDATETO: Päättyen
+    FILTERLABELTEXT: Haku
     PAGEFILTERDATEHEADING: 'Viimeksi muokattu'
   CMSSettingsController:
     MENUTITLE: Asetukset
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Muokatut sivut'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Kaikki sivut, mukaan lukien arkistoidut'
   CMSSiteTreeFilter_Search:
     Title: 'Kaikki sivut'
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Arkistoidut sivut'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Luonnossivut'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Näkyvillä, mutta poistettu luonnoksista'
   ContentControl:
@@ -221,6 +242,7 @@ fi:
     DEFAULTSERVERERRORPAGETITLE: 'Palvelinvirhe'
     DESCRIPTION: 'Omat virheilmoitukset (sivuille, kuten "Sivua ei löytynyt")'
     ERRORFILEPROBLEM: 'Virhe avattaessa tiedostoa "{filename}" palvelimelle tallentamista varten. Tarkista tiedoston kirjoitusoikeudet.'
+    PLURALNAME: 'Virhesivut'
     SINGULARNAME: 'Virhesivu'
   File:
     Title: Nimi
@@ -245,6 +267,7 @@ fi:
     HASBEENSETUP: 'Sivu, joka ohjaa käyttäjän toiselle sivulle on valmis, mutta sivua, jolle käyttäjä ohjataan, ei ole.'
     HEADER: 'Tämä sivu ohjaa käyttäjän toiselle sivulle'
     OTHERURL: 'Toisen verkkosivuston URL-osoite'
+    PLURALNAME: 'Uudelleenohjaavat sivut'
     REDIRECTTO: 'Minne ohjataan?'
     REDIRECTTOEXTERNAL: 'Muu verkkosivusto'
     REDIRECTTOPAGE: 'Sivu verkkosivustollasi'
@@ -278,6 +301,7 @@ fi:
   SilverStripeNavigator:
     ARCHIVED: Arkistoitu
   SilverStripeNavigatorLink:
+    ShareInstructions: 'Jaa tämä sivu kopioimalla ja liittämällä alapuolella oleva linkki.'
     ShareLink: 'Jaa linkki'
   SilverStripeNavigatorLinkl:
     CloseLink: Sulje
@@ -412,5 +436,6 @@ fi:
     EditLink: muokkaa
     HEADER: 'Tämä on virtuaalisivu'
     HEADERWITHLINK: 'Tämä on virtuaalisivu, joka kopioi sisällön kohteesta "{title}" ({link})'
+    PLURALNAME: 'Virtuaalisivut'
     PageTypNotAllowedOnRoot: 'Alkuperäinen sivutyyppi "{type}" ei ole sallittu tämän virtuaalisen sivun päätasolla'
     SINGULARNAME: 'Virtuaalisivu'

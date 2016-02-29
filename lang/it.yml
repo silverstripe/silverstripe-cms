@@ -156,6 +156,7 @@ it:
     FILTERDATEFROM: Da
     FILTERDATEHEADING: Data
     FILTERDATETO: A
+    PAGEFILTERDATEHEADING: 'Ultima modifica'
   CMSSettingsController:
     MENUTITLE: Impostazioni
   CMSSiteTreeFilter_Search:
@@ -220,7 +221,10 @@ it:
     DEFAULTSERVERERRORPAGETITLE: 'Errore server'
     DESCRIPTION: 'Contenuto personalizzato per differenti casi di errore (es. "Pagina non trovata")'
     ERRORFILEPROBLEM: 'Errore nell''apertura del file "{filename}" per la scrittura. Controlla i permessi del file.'
+    PLURALNAME: 'Pagine di errore'
     SINGULARNAME: 'Pagine errore'
+  File:
+    Title: Titolo
   Folder:
     AddFolderButton: 'Aggiungi cartella'
     DELETEUNUSEDTHUMBNAILS: 'Elimina anteprime inutilizzate'
@@ -242,6 +246,7 @@ it:
     HASBEENSETUP: 'Una pagina di redirezione è stata configurata nonostante non vi sia alcun indirizzo a cui farla puntare'
     HEADER: 'Questa pagina redirigerà gli utenti su un''altra'
     OTHERURL: 'Altro indirizzo del sito web'
+    PLURALNAME: 'Pagine di redirezione'
     REDIRECTTO: 'Redirigi a'
     REDIRECTTOEXTERNAL: 'Un altro sito web'
     REDIRECTTOPAGE: 'Una pagina sul tuo sito web'
@@ -409,5 +414,6 @@ it:
     EditLink: modifica
     HEADER: 'Questa è una pagina virtuale'
     HEADERWITHLINK: 'Questa è una pagina virtuale copiata da "{title}" ({link})'
+    PLURALNAME: 'Pagine virtuali'
     PageTypNotAllowedOnRoot: 'Il tipo di pagina originale "{type}" non è consentito al primo livello per questa pagina virtuale'
     SINGULARNAME: 'Pagina virtuale'
