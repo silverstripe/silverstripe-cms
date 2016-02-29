@@ -71,6 +71,8 @@ lt:
     PUBLISH_PAGES: Publikuoti
     RESTORE: Atstatyti
     RESTORED_PAGES: 'Atstatyti %d puslapiai'
+    UNPUBLISHED_PAGES: 'Nebepublikuojami %d puslapiai'
+    UNPUBLISH_PAGES: Nepublikuoti
   CMSFileAddController:
     MENUTITLE: Bylos
   CMSMain:
@@ -96,7 +98,7 @@ lt:
     MENUTITLE: 'Redaguoti puslapį'
     NEWPAGE: 'Naujas {pagetype}'
     PAGENOTEXISTS: 'Šis puslapis neegzistuoja'
-    PAGES: Puslapiai
+    PAGES: 'Puslapio būsena'
     PAGETYPEANYOPT: Bet koks
     PAGETYPEOPT: 'Puslapio tipas'
     PUBALLCONFIRM: 'Prašome publikuoti kiekvieną svetainės puslapį, kopijuojant turinį į svetainę'
@@ -121,10 +123,10 @@ lt:
     TabHistory: Istorija
     TabSettings: Nustatymai
     TreeFiltered: 'Rodomi paieškos rezultatai'
-    TreeFilteredClear: 'Išvalyti filtrą'
+    TreeFilteredClear: Išvalyti filtrą
   CMSMain_left_ss:
-    APPLY_FILTER: 'Ieškoti'
-    CLEAR_FILTER: 'Išvalyti filtrą'
+    APPLY_FILTER: Ieškoti
+    CLEAR_FILTER: Išvalyti filtrą
     RESET: Atstatyti
   CMSPageAddController:
     MENUTITLE: 'Pridėti puslapį'
@@ -157,7 +159,7 @@ lt:
     MENUTITLE: Puslapiai
     TreeView: 'Medžio rodinys'
   CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Daugybinis pasirinkimas
+    MULTISELECT: 'Daugybinis pasirinkimas'
   CMSPagesController_Tools_ss:
     FILTER: Filtras
   CMSSIteTreeFilter_PublishedPages:
@@ -170,8 +172,16 @@ lt:
     PAGEFILTERDATEHEADING: 'Redaguota'
   CMSSettingsController:
     MENUTITLE: Nustatymai
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Pakeisti puslapiai'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Visi puslapiai, taip pat ir archyvuoti'
   CMSSiteTreeFilter_Search:
     Title: 'Visi puslapiai'
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Archyvuoti puslapiai'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Juodraštiniai puslapiai'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Publikuotas, bet pašalintas iš juodraščių'
   ContentControl:
@@ -291,6 +301,7 @@ lt:
   SilverStripeNavigator:
     ARCHIVED: Archyvuota
   SilverStripeNavigatorLink:
+    ShareInstructions: 'Norėdami pasidalinti šiuo puslapiu, kopijuokite žemiau esančią nuorodą.'
     ShareLink: 'Dalintis nuoroda'
   SilverStripeNavigatorLinkl:
     CloseLink: Uždaryti

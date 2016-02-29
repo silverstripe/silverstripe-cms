@@ -94,13 +94,10 @@ sk:
     DUPLICATEDWITHCHILDREN: 'Duplikované ''{title}'' a potomkovia úspešne'
     EMAIL: Pošli e-mailom
     EditTree: 'Editovať strom'
-    ListFiltered: 'Filtrovaný zoznam.'
     MENUTITLE: 'Upraviť stránku'
     NEWPAGE: 'Nová {pagetype}'
     PAGENOTEXISTS: 'Táto stránka neexistuje.'
-    PAGES: Stránky
     PAGETYPEANYOPT: Akákoľvek
-    PAGETYPEOPT: 'Typ stránky'
     PUBALLCONFIRM: 'Prosím, zverejnite všetky stránky webu, zkopírovaním obsahu na verejné'
     PUBALLFUN: 'Funkcia "Publikovať všetko"'
     PUBALLFUN2: "Stlačením tohto tlačidla vykonáte to isté ako keby ste navštívili každú stránku a stlačili \"publikuj\". Je určené na použite po rozsiahlych zmenách obsahu, napríklad keď bol web prvýkrát vytvorený."
@@ -122,11 +119,8 @@ sk:
     TabContent: Obsah
     TabHistory: História
     TabSettings: Nastavenia
-    TreeFiltered: 'Filtrované štruktúra.'
-    TreeFilteredClear: 'Vyčistiť filter'
   CMSMain_left_ss:
-    APPLY_FILTER: 'Použiť filter'
-    CLEAR_FILTER: 'Vyčistiť filter'
+    CLEAR_FILTER: Vyčistiť
     RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Pridať stránku'
@@ -158,8 +152,6 @@ sk:
     ListView: 'Zobraziť zoznam'
     MENUTITLE: Stránky
     TreeView: 'Zobraziť strom'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Multi-výber
   CMSPagesController_Tools_ss:
     FILTER: Filtrovať
   CMSSIteTreeFilter_PublishedPages:
@@ -168,7 +160,6 @@ sk:
     FILTERDATEFROM: Od
     FILTERDATEHEADING: Dátum
     FILTERDATETO: Do
-    FILTERLABELTEXT: Obsah
     PAGEFILTERDATEHEADING: 'Posledne zmenené'
   CMSSettingsController:
     MENUTITLE: Nastavenia
