@@ -10,7 +10,8 @@
   },
   "scripts": {
     "build": "gulp build",
-    "lock": "npm-shrinkwrap --dev"
+    "lock": "npm-shrinkwrap --dev",
+    "test": "standard"
   },
   "repository": {
     "type": "git",
@@ -45,5 +46,17 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "babel-eslint": "https://registry.npmjs.org/babel-eslint/-/babel-eslint-5.0.0.tgz",
+    "standard": "https://registry.npmjs.org/standard/-/standard-6.0.7.tgz"
+  },
+  "standard": {
+    "ignore": [
+      "**/thirdparty/**",
+      "**/dist/**",
+      "**/lang/**",
+      "**/bundles/**"
+    ]
   }
 }
