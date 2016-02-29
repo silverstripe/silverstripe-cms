@@ -71,8 +71,6 @@ it:
     PUBLISH_PAGES: Pubblica
     RESTORE: Ripristina
     RESTORED_PAGES: '%d pagine ripristinate'
-    UNPUBLISHED_PAGES: 'Nascoste %d pagine'
-    UNPUBLISH_PAGES: Nascondere
   CMSFileAddController:
     MENUTITLE: Files
   CMSMain:
@@ -94,13 +92,10 @@ it:
     DUPLICATEDWITHCHILDREN: '''{title}'' e figlie duplicate con successo'
     EMAIL: Email
     EditTree: 'Modifica albero'
-    ListFiltered: 'Visualizzazione risultati ricerca.'
     MENUTITLE: 'Modifica pagina'
     NEWPAGE: 'Nuova {pagetype}'
     PAGENOTEXISTS: 'Questa pagina non esiste'
-    PAGES: 'Stato pagina'
     PAGETYPEANYOPT: Qualsiasi
-    PAGETYPEOPT: 'Tipo di pagina'
     PUBALLCONFIRM: 'Per favore pubblica ogni singola pagina nel sito, copiando i contenuti da ''bozza'' a ''pubblicato''.'
     PUBALLFUN: 'Funzione "Pubblica tutto"'
     PUBALLFUN2: "Cliccare questo bottone equivale ad accedere a tutte le pagine e cliccare 'pubblica'. Tale bottone è inteso per essere utilizzato dopo aver apportato modifiche di massa ai contenuti, come nella prima pubblicazione del sito."
@@ -109,7 +104,6 @@ it:
     REMOVED: '''{title}'' {description} rimosso dal sito pubblico'
     REMOVEDPAGE: 'Eliminata ''{title}'' dal sito pubblicato'
     REMOVEDPAGEFROMDRAFT: 'Eliminata ''%s'' dal sito bozza'
-    RESTORE: 'Ripristinare bozza'
     RESTORED: 'Ripristinata ''{title}'' con successo'
     RESTORE_DESC: 'Ripristinare la versione archiviata nella bozza'
     RESTORE_TO_ROOT: 'Ripristinare bozza al primo livello'
@@ -122,11 +116,7 @@ it:
     TabContent: Contenuto
     TabHistory: Archivio
     TabSettings: Impostazioni
-    TreeFiltered: 'Visualizzazione risultati ricerca.'
-    TreeFilteredClear: Ripristina
   CMSMain_left_ss:
-    APPLY_FILTER: Cerca
-    CLEAR_FILTER: Ripristina
     RESET: Azzera
   CMSPageAddController:
     MENUTITLE: 'Aggiungi pagina'
@@ -158,8 +148,6 @@ it:
     ListView: 'Visualizzazione a lista'
     MENUTITLE: Pagine
     TreeView: 'Visualizzazione a albero'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: 'Azioni di gruppo'
   CMSPagesController_Tools_ss:
     FILTER: Filtra
   CMSSIteTreeFilter_PublishedPages:
@@ -168,20 +156,11 @@ it:
     FILTERDATEFROM: Da
     FILTERDATEHEADING: Data
     FILTERDATETO: A
-    FILTERLABELTEXT: Cerca
     PAGEFILTERDATEHEADING: 'Ultima modifica'
   CMSSettingsController:
     MENUTITLE: Impostazioni
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Pagine modificate'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Tutte le pagine, incluse quelle archiviate'
   CMSSiteTreeFilter_Search:
     Title: 'Tutte le pagine'
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Pagine archiviate'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Pagine bozza'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Live ma rimosse dalla bozza'
   ContentControl:
@@ -301,7 +280,6 @@ it:
   SilverStripeNavigator:
     ARCHIVED: Archiviato
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Per condividere questa pagina, copiare e incollare il link sottostante.'
     ShareLink: 'Link di condivisione'
   SilverStripeNavigatorLinkl:
     CloseLink: Chiudi

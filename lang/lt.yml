@@ -122,7 +122,7 @@ lt:
     TabContent: Turinys
     TabHistory: Istorija
     TabSettings: Nustatymai
-    TreeFiltered: 'Rodomi paieškos rezultatai.'
+    TreeFiltered: 'Rodomi paieškos rezultatai'
     TreeFilteredClear: Išvalyti filtrą
   CMSMain_left_ss:
     APPLY_FILTER: Ieškoti
