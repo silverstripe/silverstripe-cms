@@ -94,9 +94,7 @@ pl:
     MENUTITLE: 'Edytuj stronę'
     NEWPAGE: 'Nowa {pagetype}'
     PAGENOTEXISTS: 'Ta strona nie istnieje'
-    PAGES: Strony
     PAGETYPEANYOPT: Jakikolwiek
-    PAGETYPEOPT: 'Rodzaj strony'
     PUBALLCONFIRM: 'Opublikuj każdą stronę w witrynie'
     PUBALLFUN: '"Opublikuj wszystko"'
     PUBALLFUN2: "Naciśnięcie tego przycisku spowoduje przejście po wszystkich stronach i opublikowanie ich. Zazwyczaj używa się tego, gdy w witrynie było bardzo dużo zmian, na przykład gdy witryna została utworzona."
@@ -105,7 +103,6 @@ pl:
     REMOVED: 'Usunięto ''{title}''{description} z witryny'
     REMOVEDPAGE: 'Usunięto ''{title}'' z opublikowanej witryny'
     REMOVEDPAGEFROMDRAFT: '''%s'' usunięto ze szkiców'
-    RESTORE: 'Przywróć szkic'
     RESTORED: 'Pomyślnie przywrócono ''{title}'''
     RESTORE_DESC: 'Przywróć jako szkic'
     ROLLBACK: 'Wróć do tej wersji'
@@ -116,10 +113,7 @@ pl:
     TabContent: Zawartość
     TabHistory: Historia
     TabSettings: Opcje
-    TreeFilteredClear: 'Usuń filtr'
   CMSMain_left_ss:
-    APPLY_FILTER: 'Zastosuj filtr'
-    CLEAR_FILTER: 'Usuń filtr'
     RESET: Resetuj
   CMSPageAddController:
     MENUTITLE: 'Dodaj stronę'
@@ -151,8 +145,6 @@ pl:
     ListView: 'Widok listy'
     MENUTITLE: Strony
     TreeView: 'Widok drzewa'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Multi wybór
   CMSPagesController_Tools_ss:
     FILTER: Filtr
   CMSSIteTreeFilter_PublishedPages:
@@ -161,18 +153,11 @@ pl:
     FILTERDATEFROM: Od
     FILTERDATEHEADING: Data
     FILTERDATETO: Do
-    FILTERLABELTEXT: Zawartość
     PAGEFILTERDATEHEADING: 'Ostatnio edytowane'
   CMSSettingsController:
     MENUTITLE: Ustawienia
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Zmodyfikowane strony'
   CMSSiteTreeFilter_Search:
     Title: 'Wszystkie strony'
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Zarchiwizowane strony'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Szkice'
   ContentControl:
     NOTEWONTBESHOWN: 'Uwaga: ta strona nie będzie widoczna dla twoich odwiedzających  '
   ContentController:

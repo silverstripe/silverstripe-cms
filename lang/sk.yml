@@ -94,13 +94,13 @@ sk:
     DUPLICATEDWITHCHILDREN: 'Duplikované ''{title}'' a potomkovia úspešne'
     EMAIL: Pošli e-mailom
     EditTree: 'Editovať strom'
-    ListFiltered: 'Filtrovaný zoznam.'
+    ListFiltered: 'Zobrazenie výsledkov vyhľadávania.'
     MENUTITLE: 'Upraviť stránku'
     NEWPAGE: 'Nová {pagetype}'
     PAGENOTEXISTS: 'Táto stránka neexistuje.'
-    PAGES: Stránky
+    PAGES: 'Stav stránky'
     PAGETYPEANYOPT: Akákoľvek
-    PAGETYPEOPT: 'Typ stránky'
+    PAGETYPEOPT: 'Typ stránky:'
     PUBALLCONFIRM: 'Prosím, zverejnite všetky stránky webu, zkopírovaním obsahu na verejné'
     PUBALLFUN: 'Funkcia "Publikovať všetko"'
     PUBALLFUN2: "Stlačením tohto tlačidla vykonáte to isté ako keby ste navštívili každú stránku a stlačili \"publikuj\". Je určené na použite po rozsiahlych zmenách obsahu, napríklad keď bol web prvýkrát vytvorený."
@@ -122,11 +122,11 @@ sk:
     TabContent: Obsah
     TabHistory: História
     TabSettings: Nastavenia
-    TreeFiltered: 'Filtrované štruktúra.'
-    TreeFilteredClear: 'Vyčistiť filter'
+    TreeFiltered: 'Zobrazenie výsledkov vyhľadávania.'
+    TreeFilteredClear: Vyčistiť
   CMSMain_left_ss:
-    APPLY_FILTER: 'Použiť filter'
-    CLEAR_FILTER: 'Vyčistiť filter'
+    APPLY_FILTER: Hľadať
+    CLEAR_FILTER: Vyčistiť
     RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Pridať stránku'
@@ -159,7 +159,7 @@ sk:
     MENUTITLE: Stránky
     TreeView: 'Zobraziť strom'
   CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Multi-výber
+    MULTISELECT: 'Dávkové akcie'
   CMSPagesController_Tools_ss:
     FILTER: Filtrovať
   CMSSIteTreeFilter_PublishedPages:
@@ -168,7 +168,7 @@ sk:
     FILTERDATEFROM: Od
     FILTERDATEHEADING: Dátum
     FILTERDATETO: Do
-    FILTERLABELTEXT: Obsah
+    FILTERLABELTEXT: Hľadať
     PAGEFILTERDATEHEADING: 'Posledne zmenené'
   CMSSettingsController:
     MENUTITLE: Nastavenia
@@ -301,7 +301,7 @@ sk:
   SilverStripeNavigator:
     ARCHIVED: Archivované
   SilverStripeNavigatorLink:
-    ShareInstructions: 'K zdielaniu tejto stránky, zkopírujte a prilepte odkaz dolu.'
+    ShareInstructions: 'K zdielaniu tejto stránky, zkopírujte a vložte odkaz dolu.'
     ShareLink: 'Zdieľať odkaz'
   SilverStripeNavigatorLinkl:
     CloseLink: Zavrieť
