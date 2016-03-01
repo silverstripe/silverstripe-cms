@@ -588,7 +588,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	/**
 	 * @param int $id
 	 * @param FieldList $fields
-	 * @return CMSForm
+	 * @return Form
 	 */
 	public function getEditForm($id = null, $fields = null) {
 		if(!$id) $id = $this->currentPageID();
@@ -656,18 +656,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				$validator = new RequiredFields();
 			}
 
-			$form = CMSForm::create(
-				$this, "EditForm", $fields, $actions, $validator
-			)->setHTMLID('Form_EditForm');
-			$form->setResponseNegotiator($this->getResponseNegotiator());
-			$form->loadDataFrom($record);
-			$form->disableDefaultAction();
-			$form->addExtraClass('cms-edit-form');
-			$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 			// TODO Can't merge $FormAttributes in template at the moment
 			$form->addExtraClass('center ' . $this->BaseCSSClasses());
-			// if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
-			$form->setAttribute('data-pjax-fragment', 'CurrentForm');
 			// Set validation exemptions for specific actions
 			$form->setValidationExemptActions(array('restore', 'revert', 'deletefromlive', 'delete', 'unpublish', 'rollback', 'doRollback'));
 
@@ -684,10 +674,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$this->extend('updateEditForm', $form);
 			return $form;
 		} else if($id) {
-			$form = CMSForm::create( $this, "EditForm", new FieldList(
+			$form = Form::create( $this, "EditForm", new FieldList(
 				new LabelField('PageDoesntExistLabel',_t('CMSMain.PAGENOTEXISTS',"This page doesn't exist"))), new FieldList()
 			)->setHTMLID('Form_EditForm');
-			$form->setResponseNegotiator($this->getResponseNegotiator());
 			return $form;
 		}
 	}
@@ -842,14 +831,27 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			}
 		));
 
-		$listview = CMSForm::create(
+		$negotiator = $this->getResponseNegotiator();
+		$listview = Form::create(
 			$this,
 			'ListViewForm',
 			new FieldList($gridField),
 			new FieldList()
 		)->setHTMLID('Form_ListViewForm');
 		$listview->setAttribute('data-pjax-fragment', 'ListViewForm');
-		$listview->setResponseNegotiator($this->getResponseNegotiator());
+		$listview->setValidationResponseCallback(function() use ($negotiator, $listview) {
+			$request = $this->getRequest();
+			if($request->isAjax() && $negotiator) {
+				$listview->setupFormErrors();
+				$result = $listview->forTemplate();
+
+				return $negotiator->respond($request, array(
+					'CurrentForm' => function() use($result) {
+						return $result;
+					}
+				));
+			}
+		});
 
 		$this->extend('updateListView', $listview);
 

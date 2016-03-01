@@ -522,7 +522,7 @@ class CMSMainTest extends FunctionalTest {
 		$page = $this->objFromFixture('Page', 'page1');
 		$controller = new CMSMain();
 		$form = $controller->getEditForm($page->ID);
-		$this->assertInstanceOf("CMSForm", $form);
+		$this->assertInstanceOf("Form", $form);
 
 		// Ensure that the form will not "validate" on delete or "unpublish" actions.
 		$exemptActions = $form->getValidationExemptActions();
@@ -536,7 +536,7 @@ class CMSMainTest_ClassA extends Page implements TestOnly {
 }
 
 class CMSMainTest_ClassB extends Page implements TestOnly {
-	
+
 }
 
 class CMSMainTest_NotRoot extends Page implements TestOnly {
@@ -544,5 +544,5 @@ class CMSMainTest_NotRoot extends Page implements TestOnly {
 }
 
 class CMSMainTest_HiddenClass extends Page implements TestOnly, HiddenClass {
-	
+
 }

@@ -294,6 +294,20 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 		$form->setAttribute('data-pjax-fragment', 'CurrentForm');
 		$form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
 
+		// Optionally handle form submissions with 'X-Formschema-Request'
+		// which rely on having validation errors returned as structured data
+		$form->setValidationResponseCallback(function() use ($form) {
+			$request = $this->getRequest();
+			if($request->getHeader('X-Formschema-Request')) {
+				$data = $this->getSchemaForForm($form);
+				$response = new SS_HTTPResponse(Convert::raw2json($data));
+				$response->addHeader('Content-Type', 'application/json');
+				return $response;
+
+			}
+		});
+
+
 		$this->extend('updateEditForm', $form);
 
 		return $form;
@@ -417,7 +431,8 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 	}
 
 	public function AddForm() {
-		$form = CMSForm::create(
+		$negotiator = $this->getResponseNegotiator();
+		$form = Form::create(
 			$this,
 			'AddForm',
 			new FieldList(
@@ -430,7 +445,19 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 					->setTitle(_t('AssetAdmin.ActionAdd', 'Add folder'))
 			)
 		)->setHTMLID('Form_AddForm');
-		$form->setResponseNegotiator($this->getResponseNegotiator());
+		$form->setValidationResponseCallback(function() use ($negotiator, $form) {
+			$request = $this->getRequest();
+			if($request->isAjax() && $negotiator) {
+				$form->setupFormErrors();
+				$result = $form->forTemplate();
+
+				return $negotiator->respond($request, array(
+					'CurrentForm' => function() use($result) {
+						return $result;
+					}
+				));
+			}
+		});
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 		// TODO Can't merge $FormAttributes in template at the moment
 		$form->addExtraClass('add-form cms-add-form cms-edit-form cms-panel-padded center ' . $this->BaseCSSClasses());
