@@ -91,7 +91,7 @@ class CMSPageAddController extends CMSPageEditController {
 		// TODO Re-enable search once it allows for HTML title display,
 		// see http://open.silverstripe.org/ticket/7455
 		// $parentField->setShowSearch(true);
-		
+
 		$parentModeField->addExtraClass('parent-mode');
 
 		// CMSMain->currentPageID() automatically sets the homepage,
@@ -102,7 +102,7 @@ class CMSPageAddController extends CMSPageEditController {
 		} else {
 			$parentModeField->setValue('top');
 		}
-		
+
 		$actions = new FieldList(
 			FormAction::create("doAdd", _t('CMSMain.Create',"Create"))
 				->addExtraClass('ss-ui-action-constructive')->setAttribute('data-icon', 'accept')
@@ -111,9 +111,9 @@ class CMSPageAddController extends CMSPageEditController {
 				->addExtraClass('ss-ui-action-destructive ss-ui-action-cancel')
 				->setUseButtonTag(true)
 		);
-		
+
 		$this->extend('updatePageOptions', $fields);
-		
+
 		$form = CMSForm::create(
 			$this, "AddForm", $fields, $actions
 		)->setHTMLID('Form_AddForm');
@@ -140,7 +140,7 @@ class CMSPageAddController extends CMSPageEditController {
 
 		if(is_numeric($parentID) && $parentID > 0) $parentObj = DataObject::get_by_id("SiteTree", $parentID);
 		else $parentObj = null;
-		
+
 		if(!$parentObj || !$parentObj->ID) $parentID = 0;
 
 		if(!singleton($className)->canCreate(Member::currentUser(), array('Parent' => $parentObj))) {
@@ -148,9 +148,7 @@ class CMSPageAddController extends CMSPageEditController {
 		}
 
 		$record = $this->getNewItem("new-$className-$parentID".$suffix, false);
-		if(class_exists('Translatable') && $record->hasExtension('Translatable') && isset($data['Locale'])) {
-			$record->Locale = $data['Locale'];
-		}
+		$this->extend('updateDoAdd', $record, $form);
 
 		try {
 			$record->write();
@@ -167,7 +165,7 @@ class CMSPageAddController extends CMSPageEditController {
 			_t('CMSMain.PageAdded', 'Successfully created page')
 		);
 		Session::set("FormInfo.Form_EditForm.formError.type", 'good');
-		
+
 		return $this->redirect(Controller::join_links(singleton('CMSPageEditController')->Link('show'), $record->ID));
 	}
 
