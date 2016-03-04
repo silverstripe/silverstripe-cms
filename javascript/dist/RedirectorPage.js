@@ -26,7 +26,6 @@
 			onmatch: function onmatch() {
 				var self = $(this);
 				if (self.attr('checked')) this.toggle();
-
 				this._super();
 			},
 			onunmatch: function onunmatch() {

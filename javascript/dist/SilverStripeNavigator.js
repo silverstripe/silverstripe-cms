@@ -32,14 +32,17 @@
 			w.focus();
 			return false;
 		});
+
 		(0, _jQuery2.default)('#SilverStripeNavigatorLink').on('click', function (e) {
 			(0, _jQuery2.default)('#SilverStripeNavigatorLinkPopup').toggle();
 			return false;
 		});
+
 		(0, _jQuery2.default)('#SilverStripeNavigatorLinkPopup a.close').on('click', function (e) {
 			(0, _jQuery2.default)('#SilverStripeNavigatorLinkPopup').hide();
 			return false;
 		});
+
 		(0, _jQuery2.default)('#SilverStripeNavigatorLinkPopup input').on('focus', function (e) {
 			this.select();
 		});

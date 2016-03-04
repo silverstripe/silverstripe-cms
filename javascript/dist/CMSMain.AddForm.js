@@ -22,6 +22,10 @@
 	}
 
 	_jQuery2.default.entwine('ss', function ($) {
+		/**
+   * Reset the parent node selection if the type is
+   * set back to "toplevel page", to avoid submitting inconsistent state.
+   */
 		$(".cms-add-form .parent-mode :input").entwine({
 			onclick: function onclick(e) {
 				if (this.val() == 'top') {
@@ -31,9 +35,10 @@
 				}
 			}
 		});
+
 		$(".cms-add-form").entwine({
-			ParentID: 0,
-			ParentCache: {},
+			ParentID: 0, // Last selected parentID
+			ParentCache: {}, // Cache allowed children for each selected page
 			onadd: function onadd() {
 				var self = this;
 				this.find('#Form_AddForm_ParentID_Holder .TreeDropdownField').bind('change', function () {
@@ -53,6 +58,12 @@
 				cache[parentID] = children;
 				this.setParentCache(cache);
 			},
+			/**
+    * Limit page type selection based on parent selection.
+    * Select of root classes is pre-computed, but selections with a given parent
+    * are updated on-demand.
+    * Similar implementation to LeftAndMain.Tree.js.
+    */
 			updateTypeList: function updateTypeList() {
 				var hints = this.data('hints'),
 				    parentTree = this.find('#Form_AddForm_ParentID_Holder .TreeDropdownField'),
@@ -67,24 +78,26 @@
 				    disallowedChildren = [];
 
 				if (id) {
+					// Prevent interface operations
 					if (this.hasClass('loading')) return;
 					this.addClass('loading');
+
+					// Enable last parent ID to be re-selected from memory
 					this.setParentID(id);
 					if (!parentTree.getValue()) parentTree.setValue(id);
-					disallowedChildren = this.loadCachedChildren(id);
 
+					// Use cached data if available
+					disallowedChildren = this.loadCachedChildren(id);
 					if (disallowedChildren !== null) {
 						this.updateSelectionFilter(disallowedChildren, defaultChildClass);
 						this.removeClass('loading');
 						return;
 					}
-
 					$.ajax({
 						url: self.data('childfilter'),
-						data: {
-							'ParentID': id
-						},
+						data: { 'ParentID': id },
 						success: function success(data) {
+							// reload current form and tree
 							self.saveCachedChildren(id, data);
 							self.updateSelectionFilter(data, defaultChildClass);
 						},
@@ -92,41 +105,53 @@
 							self.removeClass('loading');
 						}
 					});
+
 					return false;
 				} else {
 					disallowedChildren = hint && typeof hint.disallowedChildren !== 'undefined' ? hint.disallowedChildren : [], this.updateSelectionFilter(disallowedChildren, defaultChildClass);
 				}
 			},
+			/**
+    * Update the selection filter with the given blacklist and default selection
+    *
+    * @param array disallowedChildren
+    * @param string defaultChildClass
+    */
 			updateSelectionFilter: function updateSelectionFilter(disallowedChildren, defaultChildClass) {
-				var allAllowed = null;
+				// Limit selection
+				var allAllowed = null; // troolian
 				this.find('#Form_AddForm_PageType li').each(function () {
 					var className = $(this).find('input').val(),
 					    isAllowed = $.inArray(className, disallowedChildren) === -1;
+
 					$(this).setEnabled(isAllowed);
 					if (!isAllowed) $(this).setSelected(false);
 					if (allAllowed === null) allAllowed = isAllowed;else allAllowed = allAllowed && isAllowed;
 				});
 
+				// Set default child selection, or fall back to first available option
 				if (defaultChildClass) {
 					var selectedEl = this.find('#Form_AddForm_PageType li input[value=' + defaultChildClass + ']').parents('li:first');
 				} else {
 					var selectedEl = this.find('#Form_AddForm_PageType li:not(.disabled):first');
 				}
-
 				selectedEl.setSelected(true);
 				selectedEl.siblings().setSelected(false);
+
+				// Disable the "Create" button if none of the pagetypes are available
 				var buttonState = this.find('#Form_AddForm_PageType li:not(.disabled)').length ? 'enable' : 'disable';
 				this.find('button[name=action_doAdd]').button(buttonState);
+
 				this.find('.message-restricted')[allAllowed ? 'hide' : 'show']();
 			}
 		});
+
 		$(".cms-add-form #Form_AddForm_PageType li").entwine({
 			onclick: function onclick(e) {
 				this.setSelected(true);
 			},
 			setSelected: function setSelected(bool) {
 				var input = this.find('input');
-
 				if (bool && !input.is(':disabled')) {
 					this.siblings().setSelected(false);
 					this.toggleClass('selected', true);
@@ -141,12 +166,14 @@
 				if (!bool) $(this).find('input').attr('disabled', 'disabled').removeAttr('checked');else $(this).find('input').removeAttr('disabled');
 			}
 		});
+
 		$(".cms-page-add-button").entwine({
 			onclick: function onclick(e) {
 				var tree = $('.cms-tree'),
 				    list = $('.cms-list'),
 				    parentId = 0;
 
+				// Choose parent ID either from tree or list view, depending which is visible
 				if (tree.is(':visible')) {
 					var selected = tree.jstree('get_selected');
 					parentId = selected ? $(selected[0]).data('id') : null;
@@ -155,12 +182,8 @@
 					if (state) parentId = parseInt(JSON.parse(state).ParentID, 10);
 				}
 
-				var data = {
-					selector: this.data('targetPanel'),
-					pjax: this.data('pjax')
-				},
+				var data = { selector: this.data('targetPanel'), pjax: this.data('pjax') },
 				    url;
-
 				if (parentId) {
 					extraParams = this.data('extraParams') ? this.data('extraParams') : '';
 					url = $.path.addSearchParams(i18n.sprintf(this.data('urlAddpage'), parentId), extraParams);
@@ -170,7 +193,12 @@
 
 				$('.cms-container').loadPanel(url, null, data);
 				e.preventDefault();
+
+				// Remove focussed state from button
 				this.blur();
+
+				// $('.cms-page-add-form-dialog').dialog('open');
+				// e.preventDefault();
 			}
 		});
 	});

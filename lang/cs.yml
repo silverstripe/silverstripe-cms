@@ -71,8 +71,8 @@ cs:
     PUBLISH_PAGES: Zveřejnit
     RESTORE: Obnovit
     RESTORED_PAGES: 'Obnoveno %d stránek'
-    UNPUBLISHED_PAGES: 'Nezveřejněné %d stránky'
-    UNPUBLISH_PAGES: Nezveřejnit
+    UNPUBLISHED_PAGES: 'Nezveřejněných %d stránek'
+    UNPUBLISH_PAGES: Nezveřejňovat
   CMSFileAddController:
     MENUTITLE: Soubory
   CMSMain:
@@ -94,11 +94,11 @@ cs:
     DUPLICATEDWITHCHILDREN: 'Duplikováno ''{title}'' a potomci úspěšně'
     EMAIL: E-mail
     EditTree: 'Upravit strom'
-    ListFiltered: 'Filtrovaný seznam.'
+    ListFiltered: 'Zobrazení výsledků vyhledávání.'
     MENUTITLE: 'Upravit stránku'
     NEWPAGE: 'Nová {pagetype}'
     PAGENOTEXISTS: 'Tato stránka neexistuje'
-    PAGES: Stránky
+    PAGES: 'Stav stránky'
     PAGETYPEANYOPT: Jakékoliv
     PAGETYPEOPT: 'Typ stránky'
     PUBALLCONFIRM: 'Prosím zveřejněte veškeré stránky z úschovny'
@@ -122,11 +122,11 @@ cs:
     TabContent: Obsah
     TabHistory: Historie
     TabSettings: Nastavení
-    TreeFiltered: 'Fltrovaná struktura.'
-    TreeFilteredClear: 'Vyčistit filtr'
+    TreeFiltered: 'Zobrazení výsledků vyhledávání.'
+    TreeFilteredClear: Vyčistit
   CMSMain_left_ss:
-    APPLY_FILTER: 'Použít filtr'
-    CLEAR_FILTER: 'Vyčistit filtr'
+    APPLY_FILTER: Hledat
+    CLEAR_FILTER: Vyčistit
     RESET: Resetovat
   CMSPageAddController:
     MENUTITLE: 'Přidat stránku'
@@ -159,7 +159,7 @@ cs:
     MENUTITLE: Stránky
     TreeView: 'Pohled strom'
   CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Multi-výběr
+    MULTISELECT: 'Dávkové akce'
   CMSPagesController_Tools_ss:
     FILTER: Filtr
   CMSSIteTreeFilter_PublishedPages:
@@ -168,7 +168,7 @@ cs:
     FILTERDATEFROM: Od
     FILTERDATEHEADING: Datum
     FILTERDATETO: Do
-    FILTERLABELTEXT: Obsah
+    FILTERLABELTEXT: Hledat
     PAGEFILTERDATEHEADING: 'Poslední změna'
   CMSSettingsController:
     MENUTITLE: Možnosti
