@@ -54,7 +54,7 @@ So that I can link to a external website or a page on my site
     When I select the "Download a file" radio button
     And I attach the file "testfile.jpg" to "file[Uploads][]" with HTML5
     And I press the "Insert link" button
-    Then the "Content" HTML field should contain "<a href="[file_link,id=3]" target="_blank">awesome</a>"
+    Then the "Content" HTML field should contain "<a href="[file_link,id=3]">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save draft" button
     # Check that the field is reset when adding another new link
