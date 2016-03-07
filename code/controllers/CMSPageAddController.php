@@ -113,14 +113,26 @@ class CMSPageAddController extends CMSPageEditController {
 		);
 		
 		$this->extend('updatePageOptions', $fields);
-		
-		$form = CMSForm::create( 
+
+		$negotiator = $this->getResponseNegotiator();
+		$form = Form::create(
 			$this, "AddForm", $fields, $actions
 		)->setHTMLID('Form_AddForm');
 		$form->setAttribute('data-hints', $this->SiteTreeHints());
 		$form->setAttribute('data-childfilter', $this->Link('childfilter'));
+		$form->setValidationResponseCallback(function() use ($negotiator, $form) {
+			$request = $this->getRequest();
+			if($request->isAjax() && $negotiator) {
+				$this->setupFormErrors();
+				$result = $this->forTemplate();
 
-		$form->setResponseNegotiator($this->getResponseNegotiator());
+				return $negotiator->respond($request, array(
+					'CurrentForm' => function() use($result) {
+						return $result;
+					}
+				));
+			}
+		});
 		$form->addExtraClass('cms-add-form stacked cms-content center cms-edit-form ' . $this->BaseCSSClasses());
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 
