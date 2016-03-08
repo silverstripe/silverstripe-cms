@@ -4,17 +4,17 @@
  * @subpackage filesystem
  */
 class Folder_UnusedAssetsField extends CompositeField {
-	
+
 	/**
 	 * @var Folder
 	 */
 	protected $folder;
-	
+
 	public function __construct($folder) {
 		$this->folder = $folder;
 		parent::__construct(new FieldList());
 	}
-		
+
 	public function getChildren() {
 		if($this->children->Count() == 0) {
 			$inlineFormAction = new InlineFormAction("delete_unused_thumbnails", _t('Folder.DELETEUNUSEDTHUMBNAILS', 'Delete unused thumbnails'));
@@ -32,7 +32,7 @@ class Folder_UnusedAssetsField extends CompositeField {
 		}
 		return $this->children;
 	}
-	
+
 	public function FieldHolder($properties = array()) {
 		$output = "";
 		foreach($this->getChildren() as $child) {

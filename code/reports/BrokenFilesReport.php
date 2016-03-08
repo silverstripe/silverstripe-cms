@@ -25,7 +25,7 @@ class BrokenFilesReport extends SS_Report {
 		$classFilter = array(
 			"\"ClassName\" IN ($classParams) AND \"HasBrokenFile\" = 1" => $classes
 		);
-		
+
 		$stage = isset($params['OnLive']) ? 'Live' : 'Stage';
 		return Versioned::get_by_stage('SiteTree', $stage, $classFilter);
 	}

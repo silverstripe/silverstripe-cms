@@ -68,7 +68,7 @@ class ErrorPage extends Page {
 		$errorPage = ErrorPage::get()
 			->filter(array(
 				"ErrorCode" => $statusCode
-			))->first(); 
+			))->first();
 
 		if($errorPage) {
 			Requirements::clear();
@@ -80,7 +80,7 @@ class ErrorPage extends Page {
 					DataModel::inst()
 				);
 		}
-		
+
 		// then fall back on a cached version
 		$content = self::get_content_for_errorcode($statusCode);
 		if($content) {

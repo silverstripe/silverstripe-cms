@@ -13,24 +13,24 @@
  * @subpackage search
  */
 class SearchForm extends Form {
-	
+
 	/**
 	 * @var int $pageLength How many results are shown per page.
 	 * Relies on pagination being implemented in the search results template.
 	 */
 	protected $pageLength = 10;
-	
+
 	/**
 	 * Classes to search
-	 */	
+	 */
  	protected $classesToSearch = array(
 		"SiteTree", "File"
 	);
-	
+
 	private static $casting = array(
 		'SearchQuery' => 'Text'
 	);
-	
+
 	/**
 	 *
 	 * @param Controller $controller
@@ -45,25 +45,25 @@ class SearchForm extends Form {
 				new TextField('Search', _t('SearchForm.SEARCH', 'Search')
 			));
 		}
-		
+
 		if(class_exists('Translatable') && singleton('SiteTree')->hasExtension('Translatable')) {
 			$fields->push(new HiddenField('searchlocale', 'searchlocale', Translatable::get_current_locale()));
 		}
-		
+
 		if(!$actions) {
 			$actions = new FieldList(
 				new FormAction("getResults", _t('SearchForm.GO', 'Go'))
 			);
 		}
-		
+
 		parent::__construct($controller, $name, $fields, $actions);
-		
+
 		$this->setFormMethod('get');
-		
+
 		$this->disableSecurityToken();
 	}
-	
-	
+
+
 	/**
 	 * Return a rendered version of this form.
 	 *
@@ -91,10 +91,10 @@ class SearchForm extends Form {
 		if($illegalClasses) {
 			user_error("SearchForm::classesToSearch() passed illegal classes '" . implode("', '", $illegalClasses) . "'.  At this stage, only File and SiteTree are allowed", E_USER_WARNING);
 		}
-		$legalClasses = array_intersect($classes, array('SiteTree', 'File'));		
+		$legalClasses = array_intersect($classes, array('SiteTree', 'File'));
 		$this->classesToSearch = $legalClasses;
 	}
-	
+
 	/**
 	 * Get the classes to search
 	 *
@@ -115,7 +115,7 @@ class SearchForm extends Form {
 	public function getResults($pageLength = null, $data = null){
 	 	// legacy usage: $data was defaulting to $_REQUEST, parameter not passed in doc.silverstripe.org tutorials
 		if(!isset($data) || !is_array($data)) $data = $_REQUEST;
-		
+
 		// set language (if present)
 		if(class_exists('Translatable')) {
 			if(singleton('SiteTree')->hasExtension('Translatable') && isset($data['searchlocale'])) {
@@ -142,23 +142,23 @@ class SearchForm extends Form {
 	 	$keywords = preg_replace_callback('/(^| )([^() ]+)( and )([^ ()]+)( |$)/i', $andProcessor, $keywords);
 		$keywords = preg_replace_callback('/(^| )(not )("[^"()]+")/i', $notProcessor, $keywords);
 		$keywords = preg_replace_callback('/(^| )(not )([^() ]+)( |$)/i', $notProcessor, $keywords);
-		
+
 		$keywords = $this->addStarsToKeywords($keywords);
 
 		if(!$pageLength) $pageLength = $this->pageLength;
 		$start = isset($_GET['start']) ? (int)$_GET['start'] : 0;
-		
+
 		if(strpos($keywords, '"') !== false || strpos($keywords, '+') !== false || strpos($keywords, '-') !== false || strpos($keywords, '*') !== false) {
 			$results = DB::get_conn()->searchEngine($this->classesToSearch, $keywords, $start, $pageLength, "\"Relevance\" DESC", "", true);
 		} else {
 			$results = DB::get_conn()->searchEngine($this->classesToSearch, $keywords, $start, $pageLength);
 		}
-		
+
 		// filter by permission
 		if($results) foreach($results as $result) {
 			if(!$result->canView()) $results->remove($result);
 		}
-		
+
 		// reset locale
 		if(class_exists('Translatable')) {
 			if(singleton('SiteTree')->hasExtension('Translatable') && isset($data['searchlocale'])) {
@@ -190,7 +190,7 @@ class SearchForm extends Form {
 		}
 		return implode(" ", $newWords);
 	}
-	
+
 	/**
 	 * Get the search query for display in a "You searched for ..." sentence.
 	 *
@@ -200,11 +200,11 @@ class SearchForm extends Form {
 	public function getSearchQuery($data = null) {
 		// legacy usage: $data was defaulting to $_REQUEST, parameter not passed in doc.silverstripe.org tutorials
 		if(!isset($data)) $data = $_REQUEST;
-		
+
 		// The form could be rendered without the search being done, so check for that.
 		if (isset($data['Search'])) return $data['Search'];
 	}
-	
+
 	/**
 	 * Set the maximum number of records shown on each page.
 	 *
@@ -213,7 +213,7 @@ class SearchForm extends Form {
 	public function setPageLength($length) {
 		$this->pageLength = $length;
 	}
-	
+
 	/**
 	 * @return int
 	 */

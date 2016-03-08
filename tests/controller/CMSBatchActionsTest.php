@@ -18,7 +18,7 @@ class CMSBatchActionsTest extends SapphireTest {
 		// Deleted / archived page
 		$archived = $this->objFromFixture('SiteTree', 'archived');
 		$archived->doArchive(); // should archive all children
-		
+
 		// Unpublished
 		$unpublished = $this->objFromFixture('SiteTree', 'unpublished');
 		$unpublished->doPublish();
@@ -103,7 +103,7 @@ class CMSBatchActionsTest extends SapphireTest {
 		$this->assertContains($this->idFromFixture('SiteTree', 'archivedx'), $applicable);
 		$this->assertContains($this->idFromFixture('SiteTree', 'archivedy'), $applicable);
 		$this->assertNotContains($this->idFromFixture('SiteTree', 'unpublished'), $applicable);
-		$this->assertNotContains($this->idFromFixture('SiteTree', 'modified'), $applicable);	
+		$this->assertNotContains($this->idFromFixture('SiteTree', 'modified'), $applicable);
 	}
 
 	public function testBatchRestore() {

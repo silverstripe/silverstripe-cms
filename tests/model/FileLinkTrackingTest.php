@@ -5,7 +5,7 @@
  */
 class FileLinkTrackingTest extends SapphireTest {
 	protected static $fixture_file = "FileLinkTrackingTest.yml";
-	
+
 	public function setUp() {
 		parent::setUp();
 
@@ -38,7 +38,7 @@ class FileLinkTrackingTest extends SapphireTest {
 		AssetStoreTest_SpyStore::reset();
 		parent::tearDown();
 	}
-	
+
 	public function testFileRenameUpdatesDraftAndPublishedPages() {
 		$page = $this->objFromFixture('Page', 'page1');
 		$page->doPublish();
@@ -52,7 +52,7 @@ class FileLinkTrackingTest extends SapphireTest {
 			'<img src="/assets/FileLinkTrackingTest/55b443b601/testscript-test-file.jpg"',
 			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = ?", array($page->ID))->value()
 		);
-		
+
 		$file = $this->objFromFixture('Image', 'file1');
 		$file->Name = 'renamed-test-file.jpg';
 		$file->write();
@@ -105,12 +105,12 @@ class FileLinkTrackingTest extends SapphireTest {
 		$svp->CopyContentFromID = $page->ID;
 		$svp->write();
 		$svp->doPublish();
-			
+
 		// Rename the file
 		$file = $this->objFromFixture('Image', 'file1');
 		$file->Name = 'renamed-test-file.jpg';
 		$file->write();
-		
+
 		// Verify that the draft virtual pages have the correct content
 		$this->assertContains(
 			'<img src="/assets/55b443b601/renamed-test-file.jpg"',
@@ -126,7 +126,7 @@ class FileLinkTrackingTest extends SapphireTest {
 			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = ?", array($svp->ID))->value()
 		);
 	}
-	
+
 	public function testLinkRewritingOnAPublishedPageDoesntMakeItEditedOnDraft() {
 		// Publish the source page
 		$page = $this->objFromFixture('Page', 'page1');
@@ -164,7 +164,7 @@ class FileLinkTrackingTest extends SapphireTest {
 		$file->Name = 'renamed-test-file-second-time.jpg';
 		$file->write();
 		$file->doPublish();
-		
+
 		// Confirm that the correct image is shown in both the draft and live site
 		$this->assertContains(
 			'<img src="/assets/FileLinkTrackingTest/55b443b601/renamed-test-file-second-time.jpg"',

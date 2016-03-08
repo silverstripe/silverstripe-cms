@@ -50,7 +50,7 @@ class CMSBatchAction_Unpublish extends CMSBatchAction {
  * @subpackage batchaction
  */
 class CMSBatchAction_Archive extends CMSBatchAction {
-	
+
 	public function getActionTitle() {
 		return _t('CMSBatchActions.ARCHIVE', 'Archive');
 	}
@@ -73,7 +73,7 @@ class CMSBatchAction_Archive extends CMSBatchAction {
  * @subpackage batchaction
  */
 class CMSBatchAction_Restore extends CMSBatchAction {
-	
+
 	public function getActionTitle() {
 		return _t('CMSBatchActions.RESTORE', 'Restore');
 	}
@@ -107,7 +107,7 @@ class CMSBatchAction_Restore extends CMSBatchAction {
 		if(!Permission::check(array("ADMIN", "SITETREE_EDIT_ALL"))) {
 			return array();
 		}
-		
+
 		// Get pages that exist in stage and remove them from the restore-able set
 		$stageIDs = Versioned::get_by_stage($this->managedClass, 'Stage')->column('ID');
 		return array_values(array_diff($ids, $stageIDs));
@@ -133,10 +133,10 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 			'deleted'=>array(),
 			'error'=>array()
 		);
-		
+
 		foreach($pages as $page) {
 			$id = $page->ID;
-			
+
 			// Perform the action
 			if($page->canDelete()) $page->delete();
 			else $status['error'][$page->ID] = true;
@@ -186,7 +186,7 @@ class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 		/** @var SiteTree $page */
 		foreach($pages as $page) {
 			$id = $page->ID;
-			
+
 			// Perform the action
 			if($page->canUnpublish()) {
 				$page->doUnpublish();

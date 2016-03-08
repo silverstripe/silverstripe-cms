@@ -10,7 +10,7 @@ interface CurrentPageIdentifier {
 	 * @return int
 	 */
 	public function currentPageID();
-	
+
 	/**
 	 * Check if the given DataObject is the current page.
 	 * @param DataObject $page The page to check.

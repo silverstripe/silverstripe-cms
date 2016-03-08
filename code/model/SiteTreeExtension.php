@@ -23,20 +23,20 @@ abstract class SiteTreeExtension extends DataExtension {
 	 */
 	public function onAfterPublish(&$original) {
 	}
-	
+
 	/**
 	 * Hook called before the page's {@link SiteTree::doUnpublish()} action is completed
 	 */
 	public function onBeforeUnpublish() {
 	}
-	
-	
+
+
 	/**
 	 * Hook called after the page's {@link SiteTree::doUnpublish()} action is completed
 	 */
 	public function onAfterUnpublish() {
 	}
-	
+
 	/**
 	 * Hook called to determine if a user may add children to this SiteTree object
 	 *
@@ -48,7 +48,7 @@ abstract class SiteTreeExtension extends DataExtension {
 	 */
 	public function canAddChildren($member) {
 	}
-	
+
 	/**
 	 * Hook called to determine if a user may publish this SiteTree object
 	 *
@@ -60,7 +60,7 @@ abstract class SiteTreeExtension extends DataExtension {
 	 */
 	public function canPublish($member) {
 	}
-	
+
 	/**
 	 * Hook called to modify the $base url of this page, with a given $action,
 	 * before {@link SiteTree::RelativeLink()} calls {@link Controller::join_links()}

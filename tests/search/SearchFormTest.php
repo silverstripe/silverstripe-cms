@@ -9,7 +9,7 @@
  * Because this manipulates the test database in severe ways, I've renamed the test to force it to run last...
  */
 class ZZZSearchFormTest extends FunctionalTest {
-	
+
 	protected static $fixture_file = 'SearchFormTest.yml';
 
 	protected $illegalExtensions = array(
@@ -17,12 +17,12 @@ class ZZZSearchFormTest extends FunctionalTest {
 	);
 
 	protected $mockController;
-	
+
 	public function waitUntilIndexingFinished() {
 		$schema = DB::get_schema();
 		if (method_exists($schema, 'waitUntilIndexingFinished')) $schema->waitUntilIndexingFinished();
 	}
-	
+
 	public function setUpOnce() {
 		// HACK Postgres doesn't refresh TSearch indexes when the schema changes after CREATE TABLE
 		// MySQL will need a different table type
@@ -32,16 +32,16 @@ class ZZZSearchFormTest extends FunctionalTest {
 		$this->resetDBSchema(true);
 		parent::setUpOnce();
 	}
-	
+
 	public function setUp() {
 		parent::setUp();
-		
+
 		$holderPage = $this->objFromFixture('SiteTree', 'searchformholder');
 		$this->mockController = new ContentController($holderPage);
-		
+
 		$this->waitUntilIndexingFinished();
 	}
-	
+
 	/**
 	 * @return Boolean
 	 */
@@ -55,28 +55,28 @@ class ZZZSearchFormTest extends FunctionalTest {
 		if(!$supports) $this->markTestSkipped('Fulltext not supported by DB driver or setup');
 		return $supports;
 	}
-	
+
 	public function testSearchFormTemplateCanBeChanged() {
 		if(!$this->checkFulltextSupport()) return;
 
 		$sf = new SearchForm($this->mockController, 'SearchForm');
-		
+
 		$sf->setTemplate('BlankPage');
-		
+
 		$this->assertContains(
 			'<body class="SearchForm Form RequestHandler BlankPage">',
 			$sf->forTemplate()
 		);
 	}
-	
+
 	public function testPublishedPagesMatchedByTitle() {
 		if(!$this->checkFulltextSupport()) return;
 
 		$sf = new SearchForm($this->mockController, 'SearchForm');
-	
+
 		$publishedPage = $this->objFromFixture('SiteTree', 'publicPublishedPage');
 		$publishedPage->publish('Stage', 'Live');
-		
+
 		$this->waitUntilIndexingFinished();
 		$results = $sf->getResults(null, array('Search'=>'publicPublishedPage'));
 		$this->assertContains(
@@ -85,7 +85,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 			'Published pages are found by searchform'
 		);
 	}
-	
+
 	public function testDoubleQuotesPublishedPagesMatchedByTitle() {
 		if(!$this->checkFulltextSupport()) return;
 
@@ -95,7 +95,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 		$publishedPage->Title = "finding butterflies";
 		$publishedPage->write();
 		$publishedPage->publish('Stage', 'Live');
-		
+
 		$this->waitUntilIndexingFinished();
 		$results = $sf->getResults(null, array('Search'=>'"finding butterflies"'));
 		$this->assertContains(
@@ -104,12 +104,12 @@ class ZZZSearchFormTest extends FunctionalTest {
 			'Published pages are found by searchform'
 		);
 	}
-	
+
 	public function testUnpublishedPagesNotIncluded() {
 		if(!$this->checkFulltextSupport()) return;
 
 		$sf = new SearchForm($this->mockController, 'SearchForm');
-		
+
 		$results = $sf->getResults(null, array('Search'=>'publicUnpublishedPage'));
 		$unpublishedPage = $this->objFromFixture('SiteTree', 'publicUnpublishedPage');
 		$this->assertNotContains(
@@ -118,12 +118,12 @@ class ZZZSearchFormTest extends FunctionalTest {
 			'Unpublished pages are not found by searchform'
 		);
 	}
-	
+
 	public function testPagesRestrictedToLoggedinUsersNotIncluded() {
 		if(!$this->checkFulltextSupport()) return;
 
 		$sf = new SearchForm($this->mockController, 'SearchForm');
-		
+
 		$page = $this->objFromFixture('SiteTree', 'restrictedViewLoggedInUsers');
 		$page->publish('Stage', 'Live');
 		$results = $sf->getResults(null, array('Search'=>'restrictedViewLoggedInUsers'));
@@ -132,7 +132,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 			$results->column('ID'),
 			'Page with "Restrict to logged in users" doesnt show without valid login'
 		);
-		
+
 		$member = $this->objFromFixture('Member', 'randomuser');
 		$member->logIn();
 		$results = $sf->getResults(null, array('Search'=>'restrictedViewLoggedInUsers'));
@@ -148,7 +148,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 		if(!$this->checkFulltextSupport()) return;
 
 		$sf = new SearchForm($this->mockController, 'SearchForm');
-		
+
 		$page = $this->objFromFixture('SiteTree', 'restrictedViewOnlyWebsiteUsers');
 		$page->publish('Stage', 'Live');
 		$results = $sf->getResults(null, array('Search'=>'restrictedViewOnlyWebsiteUsers'));
@@ -157,7 +157,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 			$results->column('ID'),
 			'Page with "Restrict to these users" doesnt show without valid login'
 		);
-		
+
 		$member = $this->objFromFixture('Member', 'randomuser');
 		$member->logIn();
 		$results = $sf->getResults(null, array('Search'=>'restrictedViewOnlyWebsiteUsers'));
@@ -167,7 +167,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 			'Page with "Restrict to these users" doesnt show if logged in user is not in the right group'
 		);
 		$member->logOut();
-		
+
 		$member = $this->objFromFixture('Member', 'websiteuser');
 		$member->logIn();
 		$results = $sf->getResults(null, array('Search'=>'restrictedViewOnlyWebsiteUsers'));
@@ -178,13 +178,13 @@ class ZZZSearchFormTest extends FunctionalTest {
 		);
 		$member->logOut();
 	}
-	
+
 	public function testInheritedRestrictedPagesNotIncluded() {
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 
 		$parent = $this->objFromFixture('SiteTree', 'restrictedViewLoggedInUsers');
 		$parent->publish('Stage', 'Live');
-		
+
 		$page = $this->objFromFixture('SiteTree', 'inheritRestrictedView');
 		$page->publish('Stage', 'Live');
 		$results = $sf->getResults(null, array('Search'=>'inheritRestrictedView'));
@@ -193,7 +193,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 			$results->column('ID'),
 			'Page inheriting "Restrict to loggedin users" doesnt show without valid login'
 		);
-		
+
 		$member = $this->objFromFixture('Member', 'websiteuser');
 		$member->logIn();
 		$results = $sf->getResults(null, array('Search'=>'inheritRestrictedView'));
@@ -204,12 +204,12 @@ class ZZZSearchFormTest extends FunctionalTest {
 		);
 		$member->logOut();
 	}
-	
+
 	public function testDisabledShowInSearchFlagNotIncludedForSiteTree() {
 		if(!$this->checkFulltextSupport()) return;
 
 		$sf = new SearchForm($this->mockController, 'SearchForm');
-		
+
 		$page = $this->objFromFixture('SiteTree', 'dontShowInSearchPage');
 		$results = $sf->getResults(null, array('Search'=>'dontShowInSearchPage'));
 		$this->assertNotContains(
@@ -218,12 +218,12 @@ class ZZZSearchFormTest extends FunctionalTest {
 			'Page with "Show in Search" disabled doesnt show'
 		);
 	}
-	
+
 	public function testDisabledShowInSearchFlagNotIncludedForFiles() {
 		if(!$this->checkFulltextSupport()) return;
 
 		$sf = new SearchForm($this->mockController, 'SearchForm');
-		
+
 		$dontShowInSearchFile = $this->objFromFixture('File', 'dontShowInSearchFile');
 		$dontShowInSearchFile->publish('Stage', 'Live');
 		$showInSearchFile = $this->objFromFixture('File', 'showInSearchFile');
@@ -235,7 +235,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 			$results->column('ID'),
 			'File with "Show in Search" disabled doesnt show'
 		);
-		
+
 		$results = $sf->getResults(null, array('Search'=>'showInSearchFile'));
 		$this->assertContains(
 			$showInSearchFile->ID,
@@ -252,17 +252,17 @@ class ZZZSearchFormTest extends FunctionalTest {
 		}
 
 		$sf = new SearchForm($this->mockController, 'SearchForm');
-		
+
 		$pageWithSpecialChars = $this->objFromFixture('SiteTree', 'pageWithSpecialChars');
 		$pageWithSpecialChars->publish('Stage', 'Live');
-		
+
 		$results = $sf->getResults(null, array('Search'=>'Brötchen'));
 		$this->assertContains(
 			$pageWithSpecialChars->ID,
 			$results->column('ID'),
 			'Published pages with umlauts in title are found'
 		);
-		
+
 		$results = $sf->getResults(null, array('Search'=>'Bäcker'));
 		$this->assertContains(
 			$pageWithSpecialChars->ID,

@@ -23,7 +23,7 @@ class BrokenVirtualPagesReport extends SS_Report {
 		$stage = isset($params['OnLive']) ? 'Live' : 'Stage';
 		return Versioned::get_by_stage('SiteTree', $stage, $classFilter);
 	}
-	
+
 	public function columns() {
 		return array(
 			"Title" => array(

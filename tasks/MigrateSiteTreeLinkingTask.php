@@ -6,11 +6,11 @@
  * @subpackage tasks
  */
 class MigrateSiteTreeLinkingTask extends BuildTask {
-	
+
 	protected $title = 'Migrate SiteTree Linking Task';
-	
+
 	protected $description = 'Rewrites plain internal HTML links into shortcode form, using existing link tracking information.';
-	
+
 	public function run($request) {
 		$pages = 0;
 		$links = 0;
@@ -25,7 +25,7 @@ class MigrateSiteTreeLinkingTask extends BuildTask {
 
 			foreach($tracking as $childID => $fieldName) {
 				$linked = DataObject::get_by_id('SiteTree', $childID);
-				
+
 				// TOOD: Replace in all HTMLText fields
 				$page->Content = preg_replace (
 					"/href *= *([\"']?){$linked->URLSegment}\/?/i",
@@ -34,17 +34,17 @@ class MigrateSiteTreeLinkingTask extends BuildTask {
 					-1,
 					$replaced
 				);
-				
+
 				if($replaced) {
 					$links += $replaced;
 				}
 			}
-			
+
 			$page->write();
 			$pages++;
 		}
-		
+
 		echo "Rewrote $links link(s) on $pages page(s) to use shortcodes.\n";
 	}
-	
+
 }

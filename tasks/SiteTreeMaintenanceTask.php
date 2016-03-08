@@ -7,7 +7,7 @@ class SiteTreeMaintenanceTask extends Controller {
 	private static $allowed_actions = array(
 		'*' => 'ADMIN'
 	);
-	
+
 	public function makelinksunique() {
 		$badURLs = "'" . implode("', '", DB::query("SELECT URLSegment, count(*) FROM SiteTree GROUP BY URLSegment HAVING count(*) > 1")->column()) . "'";
 		$pages = DataObject::get("SiteTree", "\"SiteTree\".\"URLSegment\" IN ($badURLs)");

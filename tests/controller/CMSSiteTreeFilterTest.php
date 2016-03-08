@@ -2,25 +2,25 @@
 class CMSSiteTreeFilterTest extends SapphireTest {
 
 	protected static $fixture_file = 'CMSSiteTreeFilterTest.yml';
-	
+
 	public function testSearchFilterEmpty() {
 		$page1 = $this->objFromFixture('Page', 'page1');
 		$page2 = $this->objFromFixture('Page', 'page2');
-	
+
 		$f = new CMSSiteTreeFilter_Search();
 		$results = $f->pagesIncluded();
-	
+
 		$this->assertTrue($f->isPageIncluded($page1));
 		$this->assertTrue($f->isPageIncluded($page2));
 	}
-	
+
 	public function testSearchFilterByTitle() {
 		$page1 = $this->objFromFixture('Page', 'page1');
 		$page2 = $this->objFromFixture('Page', 'page2');
-	
+
 		$f = new CMSSiteTreeFilter_Search(array('Title' => 'Page 1'));
 		$results = $f->pagesIncluded();
-	
+
 		$this->assertTrue($f->isPageIncluded($page1));
 		$this->assertFalse($f->isPageIncluded($page2));
 		$this->assertEquals(1, count($results));
@@ -29,14 +29,14 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 			$results[0]
 		);
 	}
-	
+
 	public function testIncludesParentsForNestedMatches() {
 		$parent = $this->objFromFixture('Page', 'page3');
 		$child = $this->objFromFixture('Page', 'page3b');
-	
+
 		$f = new CMSSiteTreeFilter_Search(array('Title' => 'Page 3b'));
 		$results = $f->pagesIncluded();
-	
+
 		$this->assertTrue($f->isPageIncluded($parent));
 		$this->assertTrue($f->isPageIncluded($child));
 		$this->assertEquals(1, count($results));
@@ -45,21 +45,21 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 			$results[0]
 		);
 	}
-	
+
 	public function testChangedPagesFilter() {
 		$unchangedPage = $this->objFromFixture('Page', 'page1');
 		$unchangedPage->doPublish();
-	
+
 		$changedPage = $this->objFromFixture('Page', 'page2');
 		$changedPage->Title = 'Original';
 		$changedPage->publish('Stage', 'Live');
 		$changedPage->Title = 'Changed';
 		$changedPage->write();
-	
+
 		// Check that only changed pages are returned
 		$f = new CMSSiteTreeFilter_ChangedPages(array('Term' => 'Changed'));
 		$results = $f->pagesIncluded();
-	
+
 		$this->assertTrue($f->isPageIncluded($changedPage));
 		$this->assertFalse($f->isPageIncluded($unchangedPage));
 		$this->assertEquals(1, count($results));
@@ -67,7 +67,7 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 			array('ID' => $changedPage->ID, 'ParentID' => 0),
 			$results[0]
 		);
-	
+
 		// Check that only changed pages are returned
 		$f = new CMSSiteTreeFilter_ChangedPages(array('Term' => 'No Matches'));
 		$results = $f->pagesIncluded();
@@ -84,7 +84,7 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 		$this->assertEquals(1, count($results));
 		$this->assertEquals(array('ID' => $changedPage->ID, 'ParentID' => 0), $results[0]);
 	}
-	
+
 	public function testDeletedPagesFilter() {
 		$deletedPage = $this->objFromFixture('Page', 'page2');
 		$deletedPage->publish('Stage', 'Live');
@@ -98,12 +98,12 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 
 		$f = new CMSSiteTreeFilter_DeletedPages(array('Term' => 'Page'));
 		$this->assertTrue($f->isPageIncluded($deletedPage));
-	
+
 		// Check that only changed pages are returned
 		$f = new CMSSiteTreeFilter_DeletedPages(array('Term' => 'No Matches'));
 		$this->assertFalse($f->isPageIncluded($deletedPage));
 	}
-	
+
 	public function testStatusDraftPagesFilter() {
 		$draftPage = $this->objFromFixture('Page', 'page4');
 		$draftPage->publish('Stage', 'Stage');
@@ -116,15 +116,15 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 		// Check draft page is shown
 		$f = new CMSSiteTreeFilter_StatusDraftPages(array('Term' => 'Page'));
 		$this->assertTrue($f->isPageIncluded($draftPage));
-		
+
 		// Check filter respects parameters
 		$f = new CMSSiteTreeFilter_StatusDraftPages(array('Term' => 'No Match'));
 		$this->assertEmpty($f->isPageIncluded($draftPage));
-		
+
 		// Ensures empty array returned if no data to show
 		$f = new CMSSiteTreeFilter_StatusDraftPages();
 		$draftPage->delete();
-		$this->assertEmpty($f->isPageIncluded($draftPage));		
+		$this->assertEmpty($f->isPageIncluded($draftPage));
 	}
 
 	public function testDateFromToLastSameDate() {
@@ -138,7 +138,7 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 		));
 		$this->assertTrue($filter->isPageIncluded($draftPage), 'Using the same date for from and to should show find that page');
 	}
-	
+
 	public function testStatusRemovedFromDraftFilter() {
 		$removedDraftPage = $this->objFromFixture('Page', 'page6');
 		$removedDraftPage->doPublish();
@@ -156,18 +156,18 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 		// Check filter is respected
 		$f = new CMSSiteTreeFilter_StatusRemovedFromDraftPages(array('LastEditedTo' => '1999-01-01 00:00'));
 		$this->assertEmpty($f->isPageIncluded($removedDraftPage));
-		
+
 		// Ensures empty array returned if no data to show
 		$f = new CMSSiteTreeFilter_StatusRemovedFromDraftPages();
 		$removedDraftPage->delete();
 		$this->assertEmpty($f->isPageIncluded($removedDraftPage));
 	}
-	
+
 	public function testStatusDeletedFilter() {
 		$deletedPage = $this->objFromFixture('Page', 'page7');
 		$deletedPage->publish('Stage', 'Live');
 		$deletedPageID = $deletedPage->ID;
-		
+
 		// Can't use straight $blah->delete() as that blows it away completely and test fails
 		$deletedPage->deleteFromStage('Live');
 		$deletedPage->deleteFromStage('Draft');
@@ -176,7 +176,7 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 		// Check deleted page is included
 		$f = new CMSSiteTreeFilter_StatusDeletedPages(array('Title' => 'Page'));
 		$this->assertTrue($f->isPageIncluded($checkParentExists));
-		
+
 		// Check filter is respected
 		$f = new CMSSiteTreeFilter_StatusDeletedPages(array('Title' => 'Bobby'));
 		$this->assertFalse($f->isPageIncluded($checkParentExists));

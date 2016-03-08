@@ -11,12 +11,12 @@
  */
 
 class SiteTreeURLSegmentField extends TextField {
-	
+
 	/**
 	 * @var string
 	 */
 	protected $helpText, $urlPrefix, $urlSuffix, $defaultUrl;
-	
+
 	private static $allowed_actions = array(
 		'suggest'
 	);
@@ -42,7 +42,7 @@ class SiteTreeURLSegmentField extends TextField {
 		Requirements::css(CMS_DIR . "/css/screen.css");
 		return parent::Field($properties);
 	}
-	
+
 	public function suggest($request) {
 		if(!$request->getVar('value')) {
 			return $this->httpError(405,
@@ -58,11 +58,11 @@ class SiteTreeURLSegmentField extends TextField {
 			$page->URLSegment = preg_replace('/-[0-9]+$/', null, $page->URLSegment) . '-' . $count;
 			$count++;
 		}
-		
+
 		Controller::curr()->getResponse()->addHeader('Content-Type', 'application/json');
 		return Convert::raw2json(array('value' => $page->URLSegment));
 	}
-		
+
 	/**
 	 * @return SiteTree
 	 */
@@ -70,7 +70,7 @@ class SiteTreeURLSegmentField extends TextField {
 		$idField = $this->getForm()->Fields()->dataFieldByName('ID');
 		return ($idField && $idField->Value()) ? DataObject::get_by_id('SiteTree', $idField->Value()) : singleton('SiteTree');
 	}
-	
+
 	/**
 	 * @param string $string The secondary text to show
 	 */
@@ -78,15 +78,15 @@ class SiteTreeURLSegmentField extends TextField {
 		$this->helpText = $string;
 		return $this;
 	}
-	
+
 	/**
 	 * @return string the secondary text to show in the template
 	 */
 	public function getHelpText(){
 		return $this->helpText;
-	
+
 	}
-	
+
 	/**
 	 * @param the url that prefixes the page url segment field
 	 */
@@ -94,14 +94,14 @@ class SiteTreeURLSegmentField extends TextField {
 		$this->urlPrefix = $url;
 		return $this;
 	}
-	
+
 	/**
 	 * @return the url prefixes the page url segment field to show in template
 	 */
 	public function getURLPrefix(){
 		return $this->urlPrefix;
 	}
-	
+
 	public function getURLSuffix() {
 		return $this->urlSuffix;
 	}
@@ -114,7 +114,7 @@ class SiteTreeURLSegmentField extends TextField {
 	public function getDefaultURL(){
 		return $this->defaultUrl;
 	}
-	
+
 	public function setDefaultURL($url) {
 		$this->defaultUrl = $url;
 		return $this;

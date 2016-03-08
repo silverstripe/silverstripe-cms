@@ -22,7 +22,7 @@ class RecentlyEditedReport extends SS_Report {
 		$threshold = strtotime('-14 days', SS_Datetime::now()->Format('U'));
 		return DataObject::get("SiteTree", "\"SiteTree\".\"LastEdited\" > '".date("Y-m-d H:i:s", $threshold)."'", "\"SiteTree\".\"LastEdited\" DESC");
 	}
-	
+
 	public function columns() {
 		return array(
 			"Title" => array(

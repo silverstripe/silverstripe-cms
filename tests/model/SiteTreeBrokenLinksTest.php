@@ -23,11 +23,11 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 
 	public function testBrokenLinksBetweenPages() {
 		$obj = $this->objFromFixture('Page','content');
-		
+
 		$obj->Content = '<a href="[sitetree_link,id=3423423]">this is a broken link</a>';
 		$obj->syncLinkTracking();
 		$this->assertTrue($obj->HasBrokenLink, 'Page has a broken link');
-		
+
 		$obj->Content = '<a href="[sitetree_link,id=' . $this->idFromFixture('Page','about') .']">this is not a broken link</a>';
 		$obj->syncLinkTracking();
 		$this->assertFalse($obj->HasBrokenLink, 'Page does NOT have a broken link');
@@ -49,11 +49,11 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 	public function testBrokenVirtualPages() {
 		$obj = $this->objFromFixture('Page','content');
 		$vp = new VirtualPage();
-		
+
 		$vp->CopyContentFromID = $obj->ID;
 		$vp->syncLinkTracking();
 		$this->assertFalse($vp->HasBrokenLink, 'Working virtual page is NOT marked as broken');
-		
+
 		$vp->CopyContentFromID = 12345678;
 		$vp->syncLinkTracking();
 		$this->assertTrue($vp->HasBrokenLink, 'Broken virtual page IS marked as such');
@@ -62,13 +62,13 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 	public function testBrokenInternalRedirectorPages() {
 		$obj = $this->objFromFixture('Page','content');
 		$rp = new RedirectorPage();
-		
+
 		$rp->RedirectionType = 'Internal';
-		
+
 		$rp->LinkToID = $obj->ID;
 		$rp->syncLinkTracking();
 		$this->assertFalse($rp->HasBrokenLink, 'Working redirector page is NOT marked as broken');
-		
+
 		$rp->LinkToID = 12345678;
 		$rp->syncLinkTracking();
 		$this->assertTrue($rp->HasBrokenLink, 'Broken redirector page IS marked as such');
@@ -94,7 +94,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 
 		$liveObj = Versioned::get_one_by_stage("SiteTree", "Live","\"SiteTree\".\"ID\" = $obj->ID");
 		$this->assertEquals(0, $liveObj->HasBrokenFile);
-		
+
 		// Delete the file
 		$file->delete();
 
@@ -112,14 +112,14 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 	public function testDeletingMarksBackLinkedPagesAsBroken() {
 		// Set up two published pages with a link from content -> about
 		$linkDest = $this->objFromFixture('Page','about');
-		
+
 		$linkSrc = $this->objFromFixture('Page','content');
 		$linkSrc->Content = "<p><a href=\"[sitetree_link,id=$linkDest->ID]\">about us</a></p>";
 		$linkSrc->write();
- 		
+
 		// Confirm no broken link
 		$this->assertEquals(0, (int)$linkSrc->HasBrokenLink);
-		
+
 		// Delete page from draft
 		$linkDestID = $linkDest->ID;
 		$linkDest->delete();
@@ -135,19 +135,19 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$this->markTestSkipped("Test disabled until versioned many_many implemented");
 
 		$this->logInWithPermission('ADMIN');
-		
+
 		// Set up two draft pages with a link from content -> about
 		$linkDest = $this->objFromFixture('Page','about');
 		// Ensure that it's not on the published site
 		$linkDest->doUnpublish();
-		
+
 		$linkSrc = $this->objFromFixture('Page','content');
 		$linkSrc->Content = "<p><a href=\"[sitetree_link,id=$linkDest->ID]\">about us</a></p>";
 		$linkSrc->write();
-		
+
 		// Publish the source of the link, while the dest is still unpublished.
 		$linkSrc->doPublish();
-		
+
 		// Verify that the link isn't broken on draft but is broken on published
 		$this->assertEquals(0, (int)$linkSrc->HasBrokenLink);
 		$this->assertEquals(1, DB::query("SELECT \"HasBrokenLink\" FROM \"SiteTree_Live\"
@@ -227,7 +227,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$rpLive = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree"."ID" = ' . $rp->ID);
 		$this->assertFalse((bool)$p2Live->HasBrokenLink);
 		$this->assertFalse((bool)$rpLive->HasBrokenLink);
-		
+
 	}
 
 	public function testRevertToLiveFixesBrokenLinks() {
@@ -266,7 +266,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		// Delete from draft and confirm that broken links are marked
 		$pID = $p->ID;
 		$p->delete();
-		
+
 		$vp->flushCache();
 		$vp = DataObject::get_by_id('SiteTree', $vp->ID);
 		$p2->flushCache();

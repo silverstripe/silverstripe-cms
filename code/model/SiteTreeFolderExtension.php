@@ -18,7 +18,7 @@ class SiteTreeFolderExtension extends DataExtension {
 		$usedFiles = array();
 		$where = '';
 		$classes = ClassInfo::subclassesFor('SiteTree');
-		
+
 		if($result->numRecords() > 0) {
 			while($nextResult = $result->next()) {
 				$where .= $nextResult['FileID'] . ',';
@@ -29,7 +29,7 @@ class SiteTreeFolderExtension extends DataExtension {
 			$query = new DataQuery($className);
 			$ids = $query->execute()->column();
 			if(!count($ids)) continue;
-			
+
 			foreach(singleton($className)->hasOne() as $relName => $joinClass) {
 				if($joinClass == 'Image' || $joinClass == 'File') {
 					$fieldName = $relName .'ID';
@@ -43,7 +43,7 @@ class SiteTreeFolderExtension extends DataExtension {
 				}
 			}
 		}
-		
+
 		if($usedFiles) {
  			return "\"File\".\"ID\" NOT IN (" . implode(', ', $usedFiles) . ") AND (\"ClassName\" = 'File' OR \"ClassName\" = 'Image')";
 
