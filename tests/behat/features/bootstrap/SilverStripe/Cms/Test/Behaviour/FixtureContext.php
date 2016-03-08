@@ -40,7 +40,7 @@ class FixtureContext extends \SilverStripe\BehatExtension\Context\FixtureContext
 		$obj->write();
 		$obj->publish('Stage', 'Live');
 	}
-	
+
 	/**
 	*
 	* Check if the user can edit a page

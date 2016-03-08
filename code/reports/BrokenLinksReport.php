@@ -11,7 +11,7 @@ class BrokenLinksReport extends SS_Report {
 	public function title() {
 		return _t('BrokenLinksReport.BROKENLINKS',"Broken links report");
 	}
-	
+
 	public function sourceRecords($params, $sort, $limit) {
 		$join = '';
 		$sortBrokenReason = false;
@@ -19,7 +19,7 @@ class BrokenLinksReport extends SS_Report {
 			$parts = explode(' ', $sort);
 			$field = $parts[0];
 			$direction = $parts[1];
-			
+
 			if($field == 'AbsoluteLink') {
 				$sort = 'URLSegment ' . $direction;
 			} elseif($field == 'Subsite.Title') {
@@ -38,13 +38,13 @@ class BrokenLinksReport extends SS_Report {
 		} else {
 			$ret = DataObject::get('SiteTree', $brokenFilter, $sort, $join, $limit);
 		}
-		
+
 		$returnSet = new ArrayList();
 		if ($ret) foreach($ret as $record) {
 			$reason = false;
 			$isRedirectorPage = in_array($record->ClassName, ClassInfo::subclassesFor('RedirectorPage'));
 			$isVirtualPage = in_array($record->ClassName, ClassInfo::subclassesFor('VirtualPage'));
-			
+
 			if ($isVirtualPage) {
 				if ($record->HasBrokenLink) {
 					$reason = _t('BrokenLinksReport.VirtualPageNonExistent', "virtual page pointing to non-existent page");
@@ -67,16 +67,16 @@ class BrokenLinksReport extends SS_Report {
 					$reasonCodes = array("BROKENFILE");
 				}
 			}
-			
+
 			if ($reason) {
 				if (isset($params['Reason']) && $params['Reason'] && !in_array($params['Reason'], $reasonCodes)) continue;
 				$record->BrokenReason = $reason;
 				$returnSet->push($record);
 			}
 		}
-		
+
 		if($sortBrokenReason) $returnSet = $returnSet->sort('BrokenReason', $direction);
-		
+
 		return $returnSet;
 	}
 	public function columns() {
@@ -85,7 +85,7 @@ class BrokenLinksReport extends SS_Report {
 		} else {
 			$dateTitle = _t('BrokenLinksReport.ColumnDateLastPublished', 'Date last published');
 		}
-		
+
 		$linkBase = singleton('CMSPageEditController')->Link('show');
 		$fields = array(
 			"Title" => array(
@@ -118,7 +118,7 @@ class BrokenLinksReport extends SS_Report {
 				}
 			)
 		);
-		
+
 		return $fields;
 	}
 	public function parameterFields() {

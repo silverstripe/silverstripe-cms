@@ -7,23 +7,23 @@
  */
 class RedirectorPage extends Page {
 	private static $description = 'Redirects to a different internal page';
-	
+
 	private static $db = array(
 		"RedirectionType" => "Enum('Internal,External','Internal')",
 		"ExternalURL" => "Varchar(2083)" // 2083 is the maximum length of a URL in Internet Explorer.
 	);
-	
+
 	private static $defaults = array(
 		"RedirectionType" => "Internal"
 	);
-	
+
 	private static $has_one = array(
 		"LinkTo" => "SiteTree",
 	);
-	
+
 	private static $many_many = array(
 	);
-	
+
 	/**
 	 * Returns this page if the redirect is external, otherwise
 	 * returns the target page.
@@ -34,9 +34,9 @@ class RedirectorPage extends Page {
 			return $this->LinkTo();
 		} else {
 			return $this;
-		}		
+		}
 	}
-	
+
 	/**
 	 * Return the the link that should be used for this redirector page, in navigation, etc.
 	 * If the redirectorpage has been appropriately configured, then it will return the redirection
@@ -47,7 +47,7 @@ class RedirectorPage extends Page {
 		if($link = $this->redirectionLink()) return $link;
 		else return $this->regularLink();
 	}
-	
+
 	/**
 	 * Return the normal link directly to this page.  Once you visit this link, a 30x redirection
 	 * will take you to your final destination.
@@ -55,7 +55,7 @@ class RedirectorPage extends Page {
 	public function regularLink($action = null) {
 		return parent::Link($action);
 	}
-	
+
 	/**
 	 * Return the link that we should redirect to.
 	 * Only return a value if there is a legal redirection destination.
@@ -65,7 +65,7 @@ class RedirectorPage extends Page {
 			if($this->ExternalURL) {
 				return $this->ExternalURL;
 			}
-			
+
 		} else {
 			$linkTo = $this->LinkToID ? DataObject::get_by_id("SiteTree", $this->LinkToID) : null;
 
@@ -74,7 +74,7 @@ class RedirectorPage extends Page {
 				// bad configuration
 				if($this->ID == $linkTo->ID) {
 					return null;
-			
+
 				// If we're linking to another redirectorpage then just return the URLSegment, to prevent a cycle of redirector
 				// pages from causing an infinite loop.  Instead, they will cause a 30x redirection loop in the browser, but
 				// this can be handled sufficiently gracefully by the browser.
@@ -88,7 +88,7 @@ class RedirectorPage extends Page {
 			}
 		}
 	}
-	
+
 	public function syncLinkTracking() {
 		if ($this->RedirectionType == 'Internal') {
 			if($this->LinkToID) {
@@ -118,13 +118,13 @@ class RedirectorPage extends Page {
 
 	public function getCMSFields() {
 		Requirements::javascript(CMS_DIR . '/javascript/dist/RedirectorPage.js');
-		
+
 		$fields = parent::getCMSFields();
 		$fields->removeByName('Content', true);
-		
+
 		// Remove all metadata fields, does not apply for redirector pages
 		$fields->removeByName('Metadata');
-		
+
 		$fields->addFieldsToTab('Root.Main',
 			array(
 				new HeaderField('RedirectorDescHeader',_t('RedirectorPage.HEADER', "This page will redirect users to another page")),
@@ -137,7 +137,7 @@ class RedirectorPage extends Page {
 					),
 					"Internal"
 				),
-				new TreeDropdownField(	
+				new TreeDropdownField(
 					"LinkToID",
 					_t('RedirectorPage.YOURPAGE', "Page on your website"),
 					"SiteTree"
@@ -145,10 +145,10 @@ class RedirectorPage extends Page {
 				new TextField("ExternalURL", _t('RedirectorPage.OTHERURL', "Other website URL"))
 			)
 		);
-		
+
 		return $fields;
 	}
-	
+
 	// Don't cache RedirectorPages
 	public function subPagesToCache() {
 		return array();
@@ -171,7 +171,7 @@ class RedirectorPage_Controller extends Page_Controller {
 			return;
 		}
 	}
-	
+
 	/**
 	 * If we ever get this far, it means that the redirection failed.
 	 */

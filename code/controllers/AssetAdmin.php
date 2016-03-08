@@ -254,7 +254,7 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 			new HiddenField('ID'),
 			$gridField
 		));
-		
+
 		// Tree view
 		$fields->addFieldsToTab('Root.TreeView', array(
 			clone $actionsComposite,

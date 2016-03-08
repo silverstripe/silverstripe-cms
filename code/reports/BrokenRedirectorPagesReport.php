@@ -13,7 +13,7 @@ class BrokenRedirectorPagesReport extends SS_Report {
 	public function group() {
 		return _t('SideReport.BrokenLinksGroupTitle', "Broken links reports");
 	}
-	
+
 	public function sourceRecords($params = null) {
 		$classes = ClassInfo::subclassesFor('RedirectorPage');
 		$classParams = DB::placeholders($classes);
@@ -23,7 +23,7 @@ class BrokenRedirectorPagesReport extends SS_Report {
 		$stage = isset($params['OnLive']) ? 'Live' : 'Stage';
 		return Versioned::get_by_stage('SiteTree', $stage, $classFilter);
 	}
-	
+
 	public function columns() {
 		return array(
 			"Title" => array(
@@ -32,7 +32,7 @@ class BrokenRedirectorPagesReport extends SS_Report {
 			),
 		);
 	}
-	
+
 	public function getParameterFields() {
 		return new FieldList(
 			new CheckboxField('OnLive', _t('SideReport.ParameterLiveCheckbox', 'Check live site'))

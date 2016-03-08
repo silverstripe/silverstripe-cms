@@ -22,16 +22,16 @@
  */
 //class RemoveOrphanedPagesTask extends BuildTask {
 class RemoveOrphanedPagesTask extends Controller {
-	
+
 	private static $allowed_actions = array(
 		'index' => 'ADMIN',
 		'Form' => 'ADMIN',
 		'run' => 'ADMIN',
 		'handleAction' => 'ADMIN',
 	);
-	
+
 	protected $title = 'Removed orphaned pages without existing parents from both stage and live';
-	
+
 	protected $description = "
 <p>
 Identify 'orphaned' pages which point to a parent
@@ -45,33 +45,33 @@ in the other stage:<br />
 - A stage child is orphaned if its parent was deleted from stage, but still exists on live
 </p>
 	";
-	
+
 	protected $orphanedSearchClass = 'SiteTree';
-	
+
 	public function Link() {
 		return $this->class;
 	}
-	
+
 	public function init() {
 		parent::init();
-		
+
 		if(!Permission::check('ADMIN')) {
 			return Security::permissionFailure($this);
 		}
 	}
-	
+
 	public function index() {
 		Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.js');
 		Requirements::customCSS('#OrphanIDs .middleColumn {width: auto;}');
 		Requirements::customCSS('#OrphanIDs label {display: inline;}');
-		
+
 		return $this->renderWith('BlankPage');
 	}
-	
+
 	public function Form() {
 		$fields = new FieldList();
 		$source = array();
-		
+
 		$fields->push(new HeaderField(
 			'Header',
 			_t('RemoveOrphanedPagesTask.HEADER', 'Remove all orphaned pages task')
@@ -80,7 +80,7 @@ in the other stage:<br />
 			'Description',
 			$this->description
 		));
-		
+
 		$orphans = $this->getOrphanedPages($this->orphanedSearchClass);
 		if($orphans) foreach($orphans as $orphan) {
 			$latestVersion = Versioned::get_latest_version($this->orphanedSearchClass, $orphan->ID);
@@ -107,7 +107,7 @@ in the other stage:<br />
 			);
 			$source[$orphan->ID] = $label;
 		}
-		
+
 		if($orphans && $orphans->Count()) {
 			$fields->push(new CheckboxSetField('OrphanIDs', false, $source));
 			$fields->push(new LiteralField(
@@ -157,7 +157,7 @@ in the other stage:<br />
 				)
 			));
 		}
-		
+
 		$form = new Form(
 			$this,
 			'Form',
@@ -166,23 +166,23 @@ in the other stage:<br />
 				new FormAction('doSubmit', _t('RemoveOrphanedPagesTask.BUTTONRUN', 'Run'))
 			)
 		);
-		
+
 		if(!$orphans || !$orphans->Count()) {
 			$form->makeReadonly();
 		}
-		
+
 		return $form;
 	}
-	
+
 	public function run($request) {
 		// @todo Merge with BuildTask functionality
 	}
-	
+
 	public function doSubmit($data, $form) {
 		set_time_limit(60*10); // 10 minutes
-		
+
 		if(!isset($data['OrphanIDs']) || !isset($data['OrphanOperation'])) return false;
-		
+
 		switch($data['OrphanOperation']) {
 			case 'remove':
 				$successIDs = $this->removeOrphans($data['OrphanIDs']);
@@ -193,7 +193,7 @@ in the other stage:<br />
 			default:
 				user_error(sprintf("Unknown operation: '%s'", $data['OrphanOperation']), E_USER_ERROR);
 		}
-		
+
 		$content = '';
 		if($successIDs) {
 			$content .= "<ul>";
@@ -204,13 +204,13 @@ in the other stage:<br />
 		} else {
 			$content = _t('RemoveOrphanedPagesTask.NONEREMOVED', 'None removed');
 		}
-		
+
 		return $this->customise(array(
 			'Content' => $content,
 			'Form' => ' '
 		))->renderWith('BlankPage');
 	}
-	
+
 	protected function removeOrphans($orphanIDs) {
 		$removedOrphans = array();
 		$orphanBaseClass = ClassInfo::baseDataClass($this->orphanedSearchClass);
@@ -240,14 +240,14 @@ in the other stage:<br />
 				unset($liveRecord);
 			}
 		}
-		
+
 		return $removedOrphans;
 	}
-	
+
 	protected function rebaseHolderTitle() {
 		return sprintf('Rebased Orphans (%s)', date('d/m/Y g:ia', time()));
 	}
-	
+
 	protected function rebaseOrphans($orphanIDs) {
 		$holder = new SiteTree();
 		$holder->ShowInMenus = 0;
@@ -255,7 +255,7 @@ in the other stage:<br />
 		$holder->ParentID = 0;
 		$holder->Title = $this->rebaseHolderTitle();
 		$holder->write();
-		
+
 		$removedOrphans = array();
 		$orphanBaseClass = ClassInfo::baseDataClass($this->orphanedSearchClass);
 		foreach($orphanIDs as $id) {
@@ -294,10 +294,10 @@ in the other stage:<br />
 				unset($stageRecord);
 			}
 		}
-		
+
 		return $removedOrphans;
 	}
-	
+
 	/**
 	 * Gets all orphans from "Stage" and "Live" stages.
 	 *
@@ -315,7 +315,7 @@ in the other stage:<br />
 		else $where = array($filter);
 		$where[] = array("\"$class\".\"ParentID\" != ?" => 0);
 		$where[] = '"Parents"."ID" IS NULL';
-		
+
 		$orphans = new ArrayList();
 		foreach(array('Stage', 'Live') as $stage) {
 			$joinByStage = $join;
@@ -331,9 +331,9 @@ in the other stage:<br />
 			)->leftJoin($table, "\"$table\".\"ParentID\" = \"Parents\".\"ID\"", "Parents");
 			$orphans->merge($stageOrphans);
 		}
-		
+
 		$orphans->removeDuplicates();
-	
+
 		return $orphans;
 	}
 }

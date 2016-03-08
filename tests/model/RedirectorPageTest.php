@@ -4,7 +4,7 @@ class RedirectorPageTest extends FunctionalTest {
 	protected static $fixture_file = 'RedirectorPageTest.yml';
 	protected static $use_draft_site = true;
 	protected $autoFollowRedirection = false;
-	
+
 	public function testGoodRedirectors() {
 		/* For good redirectors, the final destination URL will be returned */
 		$this->assertEquals("http://www.google.com", $this->objFromFixture('RedirectorPage','goodexternal')->Link());
@@ -39,7 +39,7 @@ class RedirectorPageTest extends FunctionalTest {
 		 * of the destination page - the middle-stop, so to speak.  That should redirect to the final destination */
 		$page = $this->objFromFixture('RedirectorPage','transitive');
 		$this->assertEquals(Director::baseURL() . 'good-internal/', $page->Link());
-		
+
 		$this->autoFollowRedirection = false;
 		$response = $this->get(Director::makeRelative($page->Link()));
 		$this->assertEquals(Director::baseURL() . "redirection-dest/", $response->getHeader("Location"));
