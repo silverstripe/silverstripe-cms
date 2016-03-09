@@ -28,7 +28,7 @@ class FileLinkTrackingTest extends SapphireTest {
 		$imageID = $this->idFromFixture('Image', 'file1');
 		$page = $this->objFromFixture('Page', 'page1');
 		$page->Content = sprintf(
-			'<p><img src="/assets/FileLinkTrackingTest/55b443b601/testscript-test-file.jpg" data-fileid="%d" /></p>',
+			'<p>[image src="/assets/FileLinkTrackingTest/55b443b601/testscript-test-file.jpg" id="%d"]</p>',
 			$imageID
 		);
 		$page->write();
@@ -39,20 +39,28 @@ class FileLinkTrackingTest extends SapphireTest {
 		parent::tearDown();
 	}
 
+	/**
+	 * Test uses global state through Versioned::set_reading_mode() since
+	 * the shortcode parser doesn't pass along the underlying DataObject
+	 * context, hence we can't call getSourceQueryParams().
+	 */
 	public function testFileRenameUpdatesDraftAndPublishedPages() {
 		$page = $this->objFromFixture('Page', 'page1');
 		$page->doPublish();
 
 		// Live and stage pages both have link to public file
+		Versioned::set_stage(Versioned::DRAFT);
 		$this->assertContains(
 			'<img src="/assets/FileLinkTrackingTest/55b443b601/testscript-test-file.jpg"',
-			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree\" WHERE \"ID\" = ?", array($page->ID))->value()
+			Page::get()->byID($page->ID)->dbObject('Content')->forTemplate()
 		);
+		Versioned::set_stage(Versioned::LIVE);
 		$this->assertContains(
 			'<img src="/assets/FileLinkTrackingTest/55b443b601/testscript-test-file.jpg"',
-			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = ?", array($page->ID))->value()
+			Page::get()->byID($page->ID)->dbObject('Content')->forTemplate()
 		);
 
+		Versioned::set_stage(Versioned::DRAFT);
 		$file = $this->objFromFixture('Image', 'file1');
 		$file->Name = 'renamed-test-file.jpg';
 		$file->write();
@@ -60,38 +68,43 @@ class FileLinkTrackingTest extends SapphireTest {
 		// Staged record now points to secure URL of renamed file, live record remains unchanged
 		// Note that the "secure" url doesn't have the "FileLinkTrackingTest" component because
 		// the mocked test location disappears for secure files.
+		Versioned::set_stage(Versioned::DRAFT);
 		$this->assertContains(
 			'<img src="/assets/55b443b601/renamed-test-file.jpg"',
-			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree\" WHERE \"ID\" = ?", array($page->ID))->value()
+			Page::get()->byID($page->ID)->dbObject('Content')->forTemplate()
 		);
+		Versioned::set_stage(Versioned::LIVE);
 		$this->assertContains(
 			'<img src="/assets/FileLinkTrackingTest/55b443b601/testscript-test-file.jpg"',
-			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = ?", array($page->ID))->value()
+			Page::get()->byID($page->ID)->dbObject('Content')->forTemplate()
 		);
 
 		// Publishing the file should result in a direct public link (indicated by "FileLinkTrackingTest")
 		// Although the old live page will still point to the old record.
 		// @todo - Ensure shortcodes are used with all images to prevent live records having broken links
 		$file->doPublish();
+		Versioned::set_stage(Versioned::DRAFT);
 		$this->assertContains(
 			'<img src="/assets/FileLinkTrackingTest/55b443b601/renamed-test-file.jpg"',
-			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree\" WHERE \"ID\" = ?", array($page->ID))->value()
+			Page::get()->byID($page->ID)->dbObject('Content')->forTemplate()
 		);
+		Versioned::set_stage(Versioned::LIVE);
 		$this->assertContains(
-			// Note: Broken link until shortcode-enabled
-			'<img src="/assets/FileLinkTrackingTest/55b443b601/testscript-test-file.jpg"',
-			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = ?", array($page->ID))->value()
+			'<img src="/assets/FileLinkTrackingTest/55b443b601/renamed-test-file.jpg"',
+			Page::get()->byID($page->ID)->dbObject('Content')->forTemplate()
 		);
 
-		// Publishing the page after publishing the asset will resolve any link issues
+		// Publishing the page after publishing the asset should retain linking
 		$page->doPublish();
+		Versioned::set_stage(Versioned::DRAFT);
 		$this->assertContains(
 			'<img src="/assets/FileLinkTrackingTest/55b443b601/renamed-test-file.jpg"',
-			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree\" WHERE \"ID\" = ?", array($page->ID))->value()
+			Page::get()->byID($page->ID)->dbObject('Content')->forTemplate()
 		);
+		Versioned::set_stage(Versioned::LIVE);
 		$this->assertContains(
 			'<img src="/assets/FileLinkTrackingTest/55b443b601/renamed-test-file.jpg"',
-			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = ?", array($page->ID))->value()
+			Page::get()->byID($page->ID)->dbObject('Content')->forTemplate()
 		);
 	}
 
@@ -112,20 +125,20 @@ class FileLinkTrackingTest extends SapphireTest {
 		$file->write();
 
 		// Verify that the draft virtual pages have the correct content
-		$svp = Versioned::get_by_stage('VirtualPage', Versioned::DRAFT)->byID($svp->ID);
+		Versioned::set_stage(Versioned::DRAFT);
 		$this->assertContains(
 			'<img src="/assets/55b443b601/renamed-test-file.jpg"',
-			$svp->Content
+			Page::get()->byID($page->ID)->dbObject('Content')->forTemplate()
 		);
 
 		// Publishing both file and page will update the live record
 		$file->doPublish();
 		$page->doPublish();
 
-		$svp = Versioned::get_by_stage('VirtualPage', Versioned::LIVE)->byID($svp->ID);
+		Versioned::set_stage(Versioned::LIVE);
 		$this->assertContains(
 			'<img src="/assets/FileLinkTrackingTest/55b443b601/renamed-test-file.jpg"',
-			$svp->Content
+			Page::get()->byID($page->ID)->dbObject('Content')->forTemplate()
 		);
 	}
 
@@ -151,11 +164,15 @@ class FileLinkTrackingTest extends SapphireTest {
 	public function testTwoFileRenamesInARowWork() {
 		$page = $this->objFromFixture('Page', 'page1');
 		$this->assertTrue($page->doPublish());
+
+		Versioned::set_stage(Versioned::LIVE);
 		$this->assertContains(
 			'<img src="/assets/FileLinkTrackingTest/55b443b601/testscript-test-file.jpg"',
-			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = ?", array($page->ID))->value());
+			Page::get()->byID($page->ID)->dbObject('Content')->forTemplate()
+		);
 
 		// Rename the file twice
+		Versioned::set_stage(Versioned::DRAFT);
 		$file = $this->objFromFixture('Image', 'file1');
 		$file->Name = 'renamed-test-file.jpg';
 		$file->write();
@@ -168,16 +185,18 @@ class FileLinkTrackingTest extends SapphireTest {
 		$file->doPublish();
 
 		// Confirm that the correct image is shown in both the draft and live site
+		Versioned::set_stage(Versioned::DRAFT);
 		$this->assertContains(
 			'<img src="/assets/FileLinkTrackingTest/55b443b601/renamed-test-file-second-time.jpg"',
-			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree\" WHERE \"ID\" = ?", array($page->ID))->value()
+			Page::get()->byID($page->ID)->dbObject('Content')->forTemplate()
 		);
 
 		// Publishing this record also updates live record
 		$page->doPublish();
+		Versioned::set_stage(Versioned::LIVE);
 		$this->assertContains(
 			'<img src="/assets/FileLinkTrackingTest/55b443b601/renamed-test-file-second-time.jpg"',
-			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = ?", array($page->ID))->value()
+			Page::get()->byID($page->ID)->dbObject('Content')->forTemplate()
 		);
 	}
 }

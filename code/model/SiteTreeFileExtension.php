@@ -124,43 +124,4 @@ class SiteTreeFileExtension extends DataExtension {
 			}
 		}
 	}
-
-	public function onAfterWrite() {
-		// Update any database references in the current stage
-		$this->updateLinks();
-	}
-
-	public function onAfterVersionedPublish() {
-		// Ensure that ->updateLinks is invoked on the draft record
-		// after ->doPublish() is invoked.
-		$this->updateLinks();
-	}
-
-	/**
-	 * Rewrite links to the $old file to now point to the $new file.
-	 *
-	 * @uses SiteTree->rewriteFileID()
-	 */
-	public function updateLinks() {
-		// Skip live stage
-		if(\Versioned::get_stage() === \Versioned::LIVE) {
-			return;
-		}
-
-		if(class_exists('Subsite')) {
-			Subsite::disable_subsite_filter(true);
-		}
-
-		$pages = $this->owner->BackLinkTracking();
-		if($pages) {
-			foreach($pages as $page) {
-				$page->rewriteFileLinks();
-			}
-		}
-
-		if(class_exists('Subsite')) {
-			Subsite::disable_subsite_filter(false);
-		}
-	}
-
 }

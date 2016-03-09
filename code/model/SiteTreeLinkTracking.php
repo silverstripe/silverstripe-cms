@@ -93,8 +93,6 @@ class SiteTreeLinkTracking extends DataExtension {
 	/**
 	 * Scrape the content of a field to detect anly links to local SiteTree pages or files
 	 *
-	 * @todo - Replace image tracking with shortcodes
-	 *
 	 * @param string $fieldName The name of the field on {@link @owner} to scrape
 	 */
 	public function trackLinksInField($fieldName) {
@@ -108,6 +106,11 @@ class SiteTreeLinkTracking extends DataExtension {
 
 		// Highlight broken links in the content.
 		foreach ($links as $link) {
+			// Skip links without domelements
+			if(!isset($link['DOMReference'])) {
+				continue;
+			}
+
 			$classStr = trim($link['DOMReference']->getAttribute('class'));
 			if (!$classStr) {
 				$classes = array();
@@ -142,6 +145,7 @@ class SiteTreeLinkTracking extends DataExtension {
 					break;
 
 				case 'file':
+				case 'image':
 					if ($link['Broken']) {
 						$record->HasBrokenFile = true;
 					} else {
@@ -154,22 +158,6 @@ class SiteTreeLinkTracking extends DataExtension {
 						$record->HasBrokenLink = true;
 					}
 					break;
-			}
-		}
-
-		// Add file tracking for image references
-		if($images = $htmlValue->getElementsByTagName('img')) foreach($images as $img) {
-			// {@see HtmlEditorField} for data-fileid source
-			$fileID = $img->getAttribute('data-fileid');
-			if(!$fileID) {
-				continue;
-			}
-
-			// Assuming a local file is linked, check if it's valid
-			if($image = File::get()->byID($fileID)) {
-				$linkedFiles[] = $image->ID;
-			} else {
-				$record->HasBrokenFile = true;
 			}
 		}
 
@@ -274,15 +262,15 @@ class SiteTreeLinkTracking_Parser {
 
 			// Link to a page on this site.
 			$matches = array();
-			if(preg_match('/\[sitetree_link(?:\s*|%20|,)?id=([0-9]+)\](#(.*))?/i', $href, $matches)) {
-				$page = DataObject::get_by_id('SiteTree', $matches[1]);
+			if(preg_match('/\[sitetree_link(?:\s*|%20|,)?id=(?<id>[0-9]+)\](#(?<anchor>.*))?/i', $href, $matches)) {
+				$page = DataObject::get_by_id('SiteTree', $matches['id']);
 				$broken = false;
 
 				if (!$page) {
 					// Page doesn't exist.
 					$broken = true;
-				} else if (!empty($matches[3])) {
-					$anchor = preg_quote($matches[3], '/');
+				} else if (!empty($matches['anchor'])) {
+					$anchor = preg_quote($matches['anchor'], '/');
 
 					if (!preg_match("/(name|id)=\"{$anchor}\"/", $page->Content)) {
 						// Broken anchor on the target page.
@@ -292,8 +280,8 @@ class SiteTreeLinkTracking_Parser {
 
 				$results[] = array(
 					'Type' => 'sitetree',
-					'Target' => $matches[1],
-					'Anchor' => empty($matches[3]) ? null : $matches[3],
+					'Target' => $matches['id'],
+					'Anchor' => empty($matches['anchor']) ? null : $matches['anchor'],
 					'DOMReference' => $link,
 					'Broken' => $broken
 				);
@@ -303,13 +291,13 @@ class SiteTreeLinkTracking_Parser {
 
 			// Link to a file on this site.
 			$matches = array();
-			if(preg_match('/\[file_link(?:\s*|%20|,)?id=([0-9]+)\]/i', $href, $matches)) {
+			if(preg_match('/\[file_link(?:\s*|%20|,)?id=(?<id>[0-9]+)/i', $href, $matches)) {
 				$results[] = array(
 					'Type' => 'file',
-					'Target' => $matches[1],
+					'Target' => $matches['id'],
 					'Anchor' => null,
 					'DOMReference' => $link,
-					'Broken' => !DataObject::get_by_id('File', $matches[1])
+					'Broken' => !DataObject::get_by_id('File', $matches['id'])
 				);
 
 				continue;
@@ -331,6 +319,19 @@ class SiteTreeLinkTracking_Parser {
 
 		}
 
+		// Find all [image ] shortcodes (will be inline, not inside attributes)
+		$content = $htmlValue->getContent();
+		if(preg_match_all('/\[image([^\]]+)\bid=(["])?(?<id>\d+)\D/i', $content, $matches)) {
+			foreach($matches['id'] as $id) {
+				$results[] = array(
+					'Type' => 'image',
+					'Target' => (int)$id,
+					'Anchor' => null,
+					'DOMReference' => null,
+					'Broken' => !DataObject::get_by_id('Image', (int)$id)
+				);
+			}
+		}
 		return $results;
 	}
 
