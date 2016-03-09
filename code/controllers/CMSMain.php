@@ -592,7 +592,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 */
 	public function getEditForm($id = null, $fields = null) {
 		if(!$id) $id = $this->currentPageID();
-		$form = parent::getEditForm($id);
+		$form = parent::getEditForm($id, $fields);
 
 		// TODO Duplicate record fetching (see parent implementation)
 		$record = $this->getRecord($id);
