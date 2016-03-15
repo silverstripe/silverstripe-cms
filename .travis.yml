@@ -1,17 +1,34 @@
-language: php 
-php: 
- - 5.3
+language: php
+
+sudo: false
 
 env:
- - DB=MYSQL CORE_RELEASE=2.4
- - DB=PGSQL CORE_RELEASE=2.4
+  global:
+    - CORE_RELEASE=2.4
+    - secure: "7V20Qk3bIG2AlTJaA5D/uzB8vUVvRwQp+xjRYUxlahtj9FcuqEV3HIyjwwJe0T6Z1bnRYuu28ZnCT2CfP9BBZ3FE7AwSZbPase9c0/at2qDJNqkvIdC1xZ1H6Fcy2LSwNB9wLQPe613ItVdanitEuwE41iowxBPslxUUTnwx7eY="
+    - secure: "f/GWlbnNri2YpCOrJfZl7tkhpMmcRVUbCdmb+beAY90gFBJQPHtljzf8M4KaCP0OkLOtRFuGoMFdIcpadl4J6IG1XP18IJNz+nKzCL/sJj/FF9y77RdMHWE9jr21G9ar5tywkn7JM6vrnTCY89OnHeQx67SKvxqX5CpVx+rdcEU="
+
+matrix:
+  include:
+    - php: 5.3
+      env: DB=MYSQL
+    - php: 5.3
+      env: DB=PGSQL
+    - php: 5.4
+      env: DB=MYSQL
+    - php: 5.5
+      env: DB=MYSQL
+    - php: 5.6
+      env: DB=MYSQL
 
 before_script:
+ - composer self-update || true
+ - phpenv rehash
  - git clone git://github.com/silverstripe-labs/silverstripe-travis-support.git ~/travis-support
  - php ~/travis-support/travis_setup.php --source `pwd` --target ~/builds/ss
  - cd ~/builds/ss
 
-script: 
+script:
  - vendor/bin/phpunit cms/tests
 
 branches:
@@ -19,10 +36,4 @@ branches:
     - 2.1
     - 2.2
     - 2.3
-    - post-2.4
     - translation-staging
-
-notifications:
-  irc:
-    channels:
-     - "irc.freenode.org#silverstripe"
