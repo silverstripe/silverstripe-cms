@@ -1191,6 +1191,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return $this->getResponseNegotiator()->respond($this->getRequest());
 	}
 
+	public function addtocampaign($data, $form) {
+		$handler = new AddToCampaignHandler($form, $data);
+		return $handler->handle();
+	}
+
 	/**
 	 * Batch Actions Handler
 	 */
