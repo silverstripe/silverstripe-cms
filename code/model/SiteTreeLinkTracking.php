@@ -28,11 +28,38 @@
  */
 class SiteTreeLinkTracking extends DataExtension {
 
-	public $parser;
+	/**
+	 * @var SiteTreeLinkTracking_Parser
+	 */
+	protected $parser;
 
+	/**
+	 * Inject parser for each page
+	 *
+	 * @var array
+	 * @config
+	 */
 	private static $dependencies = array(
-		'parser' => '%$SiteTreeLinkTracking_Parser'
+		'Parser' => '%$SiteTreeLinkTracking_Parser'
 	);
+
+	/**
+	 * Parser for link tracking
+	 *
+	 * @return SiteTreeLinkTracking_Parser
+	 */
+	public function getParser() {
+		return $this->parser;
+	}
+
+	/**
+	 * @param SiteTreeLinkTracking_Parser $parser
+	 * @return $this
+	 */
+	public function setParser($parser) {
+		$this->parser = $parser;
+		return $this;
+	}
 
 	private static $db = array(
 		"HasBrokenFile" => "Boolean",
@@ -178,7 +205,7 @@ class SiteTreeLinkTracking extends DataExtension {
 	 */
 	public function augmentSyncLinkTracking() {
 		// Skip live tracking
-		if(\Versioned::current_stage() == \Versioned::get_live_stage()) {
+		if(\Versioned::get_stage() == \Versioned::LIVE) {
 			return;
 		}
 

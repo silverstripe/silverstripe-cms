@@ -58,14 +58,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'childfilter',
 	);
 
-	/**
-	 * Enable legacy batch actions.
-	 * @deprecated since version 4.0
-	 * @var array
-	 * @config
-	 */
-	private static $enabled_legacy_actions = array();
-
 	public function init() {
 		// set reading lang
 		if(SiteTree::has_extension('Translatable') && !$this->getRequest()->isAjax()) {
@@ -92,25 +84,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		CMSBatchActionHandler::register('publish', 'CMSBatchAction_Publish');
 		CMSBatchActionHandler::register('unpublish', 'CMSBatchAction_Unpublish');
-
-
-		// Check legacy actions
-		$legacy = $this->config()->enabled_legacy_actions;
-
-		// Delete from live is unnecessary since we have unpublish which does the same thing
-		if(in_array('CMSBatchAction_DeleteFromLive', $legacy)) {
-			Deprecation::notice('4.0', 'Delete From Live is deprecated. Use Un-publish instead');
-			CMSBatchActionHandler::register('deletefromlive', 'CMSBatchAction_DeleteFromLive');
-		}
-
-		// Delete action
-		if(in_array('CMSBatchAction_Delete', $legacy)) {
-			Deprecation::notice('4.0', 'Delete from Stage is deprecated. Use Archive instead.');
-			CMSBatchActionHandler::register('delete', 'CMSBatchAction_Delete');
-		} else {
-			CMSBatchActionHandler::register('archive', 'CMSBatchAction_Archive');
-			CMSBatchActionHandler::register('restore', 'CMSBatchAction_Restore');
-		}
+		CMSBatchActionHandler::register('delete', 'CMSBatchAction_Delete');
+		CMSBatchActionHandler::register('archive', 'CMSBatchAction_Archive');
+		CMSBatchActionHandler::register('restore', 'CMSBatchAction_Restore');
 	}
 
 	public function index($request) {
@@ -555,7 +531,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			// Then, try getting a record from the live site
 			if(!$record) {
 				// $record = Versioned::get_one_by_stage($treeClass, "Live", "\"$treeClass\".\"ID\" = $id");
-				Versioned::reading_stage('Live');
+				Versioned::set_stage(Versioned::LIVE);
 				singleton($treeClass)->flushCache();
 
 				$record = DataObject::get_by_id($treeClass, $id);
@@ -872,6 +848,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	/**
 	 * Save and Publish page handler
+	 *
+	 * @param array $data
+	 * @param Form $form
+	 * @return SS_HTTPResponse
+	 * @throws SS_HTTPResponse_Exception
 	 */
 	public function save($data, $form) {
 		$className = $this->stat('tree_class');
@@ -879,19 +860,35 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// Existing or new record?
 		$id = $data['ID'];
 		if(substr($id,0,3) != 'new') {
+			/** @var SiteTree $record */
 			$record = DataObject::get_by_id($className, $id);
-			if($record && !$record->canEdit()) return Security::permissionFailure($this);
-			if(!$record || !$record->ID) throw new SS_HTTPResponse_Exception("Bad record ID #$id", 404);
+			// Check edit permissions
+			if($record && !$record->canEdit()) {
+				return Security::permissionFailure($this);
+			}
+			if(!$record || !$record->ID) {
+				throw new SS_HTTPResponse_Exception("Bad record ID #$id", 404);
+			}
 		} else {
-			if(!singleton($this->stat('tree_class'))->canCreate()) return Security::permissionFailure($this);
+			if(!$className::singleton()->canCreate()) {
+				return Security::permissionFailure($this);
+			}
 			$record = $this->getNewItem($id, false);
+		}
+
+		// Check publishing permissions
+		$doPublish = !empty($data['publish']);
+		if($record && $doPublish && !$record->canPublish()) {
+			return Security::permissionFailure($this);
 		}
 
 		// TODO Coupling to SiteTree
 		$record->HasBrokenLink = 0;
 		$record->HasBrokenFile = 0;
 
-		if (!$record->ObsoleteClassName) $record->writeWithoutVersion();
+		if (!$record->ObsoleteClassName) {
+			$record->writeWithoutVersion();
+		}
 
 		// Update the class instance if necessary
 		if(isset($data['ClassName']) && $data['ClassName'] != $record->ClassName) {
@@ -909,10 +906,22 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$record->write();
 
 		// If the 'Save & Publish' button was clicked, also publish the page
-		if (isset($data['publish']) && $data['publish'] == 1) {
+		if ($doPublish) {
 			$record->doPublish();
+			$message = _t(
+				'CMSMain.PUBLISHED',
+				"Published '{title}' successfully.",
+				['title' => $record->Title]
+			);
+		} else {
+			$message = _t(
+				'CMSMain.SAVED',
+				"Saved '{title}' successfully.",
+				['title' => $record->Title]
+			);
 		}
 
+		$this->getResponse()->addHeader('X-Status', rawurlencode($message));
 		return $this->getResponseNegotiator()->respond($this->getRequest());
 	}
 
@@ -968,97 +977,55 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 
 	/**
-	 * Delete the page from live. This means a page in draft mode might still exist.
-	 *
-	 * @see delete()
-	 */
-	public function deletefromlive($data, $form) {
-		Versioned::reading_stage('Live');
-
-		/** @var SiteTree $record */
-		$record = DataObject::get_by_id("SiteTree", $data['ID']);
-		if($record && !($record->canDelete() && $record->canUnpublish())) {
-			return Security::permissionFailure($this);
-		}
-
-		$descendantsRemoved = 0;
-		$recordTitle = $record->Title;
-
-		// before deleting the records, get the descendants of this tree
-		if($record) {
-			$descendantIDs = $record->getDescendantIDList();
-
-			// then delete them from the live site too
-			$descendantsRemoved = 0;
-			foreach( $descendantIDs as $descID )
-				/** @var SiteTree $descendant */
-				if( $descendant = DataObject::get_by_id('SiteTree', $descID) ) {
-					$descendant->doUnpublish();
-					$descendantsRemoved++;
-				}
-
-			// delete the record
-			$record->doUnpublish();
-		}
-
-		Versioned::reading_stage('Stage');
-
-		if(isset($descendantsRemoved)) {
-			$descRemoved = ' ' . _t(
-				'CMSMain.DESCREMOVED',
-				'and {count} descendants',
-				array('count' => $descendantsRemoved)
-			);
-		} else {
-			$descRemoved = '';
-		}
-
-		$this->getResponse()->addHeader(
-			'X-Status',
-			rawurlencode(
-				_t(
-					'CMSMain.REMOVED',
-					'Deleted \'{title}\'{description} from live site',
-					array('title' => $recordTitle, 'description' => $descRemoved)
-				)
-			)
-		);
-
-		// Even if the record has been deleted from stage and live, it can be viewed in "archive mode"
-		return $this->getResponseNegotiator()->respond($this->getRequest());
-	}
-
-	/**
 	 * Actually perform the publication step
+	 *
+	 * @param Versioned|DataObject $record
+	 * @return mixed
 	 */
 	public function performPublish($record) {
-		if($record && !$record->canPublish()) return Security::permissionFailure($this);
+		if($record && !$record->canPublish()) {
+			return Security::permissionFailure($this);
+		}
 
 		$record->doPublish();
 	}
 
 	/**
- 	 * Reverts a page by publishing it to live.
- 	 * Use {@link restorepage()} if you want to restore a page
- 	 * which was deleted from draft without publishing.
- 	 *
- 	 * @uses SiteTree->doRevertToLive()
+	 * Reverts a page by publishing it to live.
+	 * Use {@link restorepage()} if you want to restore a page
+	 * which was deleted from draft without publishing.
+	 *
+	 * @uses SiteTree->doRevertToLive()
+	 *
+	 * @param array $data
+	 * @param Form $form
+	 * @return SS_HTTPResponse
+	 * @throws SS_HTTPResponse_Exception
 	 */
 	public function revert($data, $form) {
-		if(!isset($data['ID'])) return new SS_HTTPResponse("Please pass an ID in the form content", 400);
+		if(!isset($data['ID'])) {
+			throw new SS_HTTPResponse_Exception("Please pass an ID in the form content", 400);
+		}
 
 		$id = (int) $data['ID'];
 		$restoredPage = Versioned::get_latest_version("SiteTree", $id);
-		if(!$restoredPage) 	return new SS_HTTPResponse("SiteTree #$id not found", 400);
+		if(!$restoredPage) {
+			throw new SS_HTTPResponse_Exception("SiteTree #$id not found", 400);
+		}
 
+		/** @var SiteTree $record */
 		$record = Versioned::get_one_by_stage('SiteTree', 'Live', array(
 			'"SiteTree_Live"."ID"' => $id
 		));
 
 		// a user can restore a page without publication rights, as it just adds a new draft state
 		// (this action should just be available when page has been "deleted from draft")
-		if($record && !$record->canEdit()) return Security::permissionFailure($this);
-		if(!$record || !$record->ID) throw new SS_HTTPResponse_Exception("Bad record ID #$id", 404);
+		if($record && !$record->canEdit()) {
+			return Security::permissionFailure($this);
+		}
+		if(!$record || !$record->ID) {
+			throw new SS_HTTPResponse_Exception("Bad record ID #$id", 404);
+		}
 
 		$record->doRevertToLive();
 
@@ -1077,14 +1044,23 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	/**
 	 * Delete the current page from draft stage.
+	 *
 	 * @see deletefromlive()
+	 *
+	 * @param array $data
+	 * @param Form $form
+	 * @return SS_HTTPResponse
+	 * @throws SS_HTTPResponse_Exception
 	 */
 	public function delete($data, $form) {
-		Deprecation::notice('4.0', 'Delete from stage is deprecated. Use archive instead');
 		$id = $data['ID'];
 		$record = DataObject::get_by_id("SiteTree", $id);
-		if($record && !$record->canDelete()) return Security::permissionFailure();
-		if(!$record || !$record->ID) throw new SS_HTTPResponse_Exception("Bad record ID #$id", 404);
+		if($record && !$record->canDelete()) {
+			return Security::permissionFailure();
+		}
+		if(!$record || !$record->ID) {
+			throw new SS_HTTPResponse_Exception("Bad record ID #$id", 404);
+		}
 
 		// Delete record
 		$record->delete();
@@ -1103,9 +1079,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 *
 	 * @param array $data
 	 * @param Form $form
+	 * @return SS_HTTPResponse
+	 * @throws SS_HTTPResponse_Exception
 	 */
 	public function archive($data, $form) {
 		$id = $data['ID'];
+		/** @var SiteTree $record */
 		$record = DataObject::get_by_id("SiteTree", $id);
 		if(!$record || !$record->exists()) {
 			throw new SS_HTTPResponse_Exception("Bad record ID #$id", 404);
@@ -1167,10 +1146,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	/**
 	 * Rolls a site back to a given version ID
 	 *
-	 * @param array
-	 * @param Form
-	 *
-	 * @return html
+	 * @param array $data
+	 * @param Form $form
+	 * @return SS_HTTPResponse
 	 */
 	public function doRollback($data, $form) {
 		$this->extend('onBeforeRollback', $data['ID']);
@@ -1178,8 +1156,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$id = (isset($data['ID'])) ? (int) $data['ID'] : null;
 		$version = (isset($data['Version'])) ? (int) $data['Version'] : null;
 
+		/** @var DataObject|Versioned $record */
 		$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-		if($record && !$record->canEdit()) return Security::permissionFailure($this);
+		if($record && !$record->canEdit()) {
+			return Security::permissionFailure($this);
+		}
 
 		if($version) {
 			$record->doRollbackTo($version);

@@ -9,7 +9,7 @@ class FileLinkTrackingTest extends SapphireTest {
 	public function setUp() {
 		parent::setUp();
 
-		Versioned::reading_stage('Stage');
+		Versioned::set_stage(Versioned::DRAFT);
 
 		AssetStoreTest_SpyStore::activate('FileLinkTrackingTest');
 		$this->logInWithPermission('ADMIN');
@@ -112,18 +112,20 @@ class FileLinkTrackingTest extends SapphireTest {
 		$file->write();
 
 		// Verify that the draft virtual pages have the correct content
+		$svp = Versioned::get_by_stage('VirtualPage', Versioned::DRAFT)->byID($svp->ID);
 		$this->assertContains(
 			'<img src="/assets/55b443b601/renamed-test-file.jpg"',
-			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree\" WHERE \"ID\" = ?", array($svp->ID))->value()
+			$svp->Content
 		);
 
 		// Publishing both file and page will update the live record
 		$file->doPublish();
 		$page->doPublish();
 
+		$svp = Versioned::get_by_stage('VirtualPage', Versioned::LIVE)->byID($svp->ID);
 		$this->assertContains(
 			'<img src="/assets/FileLinkTrackingTest/55b443b601/renamed-test-file.jpg"',
-			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = ?", array($svp->ID))->value()
+			$svp->Content
 		);
 	}
 

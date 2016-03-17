@@ -132,6 +132,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		"EditorGroups" => "Group",
 	);
 
+	private static $has_many = array(
+		"VirtualPages" => "VirtualPage.CopyContentFrom"
+	);
+
+	private static $owned_by = array(
+		"VirtualPages"
+	);
+
 	private static $casting = array(
 		"Breadcrumbs" => "HTMLText",
 		"LastEdited" => "SS_Datetime",
@@ -181,7 +189,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 	private static $extensions = array(
 		"Hierarchy",
-		"Versioned('Stage', 'Live')",
+		"Versioned",
 		"SiteTreeLinkTracking"
 	);
 
@@ -232,77 +240,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	private static $meta_generator = 'SilverStripe - http://silverstripe.org';
 
 	protected $_cache_statusFlags = null;
-
-	/**
-	 * Determines if the system should avoid orphaned pages
-	 * by deleting all children when the their parent is deleted (TRUE),
-	 * or rather preserve this data even if its not reachable through any navigation path (FALSE).
-	 *
-	 * @deprecated 4.0 Use the "SiteTree.enforce_strict_hierarchy" config setting instead
-	 * @param boolean
-	 */
-	static public function set_enforce_strict_hierarchy($to) {
-		Deprecation::notice('4.0', 'Use the "SiteTree.enforce_strict_hierarchy" config setting instead');
-		Config::inst()->update('SiteTree', 'enforce_strict_hierarchy', $to);
-	}
-
-	/**
-	 * @deprecated 4.0 Use the "SiteTree.enforce_strict_hierarchy" config setting instead
-	 * @return boolean
-	 */
-	static public function get_enforce_strict_hierarchy() {
-		Deprecation::notice('4.0', 'Use the "SiteTree.enforce_strict_hierarchy" config setting instead');
-		return Config::inst()->get('SiteTree', 'enforce_strict_hierarchy');
-	}
-
-	/**
-	 * Returns TRUE if nested URLs (e.g. page/sub-page/) are currently enabled on this site.
-	 *
-	 * @deprecated 4.0 Use the "SiteTree.nested_urls" config setting instead
-	 * @return bool
-	 */
-	static public function nested_urls() {
-		Deprecation::notice('4.0', 'Use the "SiteTree.nested_urls" config setting instead');
-		return Config::inst()->get('SiteTree', 'nested_urls');
-	}
-
-	/**
-	 * @deprecated 4.0 Use the "SiteTree.nested_urls" config setting instead
-	 */
-	static public function enable_nested_urls() {
-		Deprecation::notice('4.0', 'Use the "SiteTree.nested_urls" config setting instead');
-		Config::inst()->update('SiteTree', 'nested_urls', true);
-	}
-
-	/**
-	 * @deprecated 4.0 Use the "SiteTree.nested_urls" config setting instead
-	 */
-	static public function disable_nested_urls() {
-		Deprecation::notice('4.0', 'Use the "SiteTree.nested_urls" config setting instead');
-		Config::inst()->update('SiteTree', 'nested_urls', false);
-	}
-
-	/**
-	 * Set the (re)creation of default pages on /dev/build
-	 *
-	 * @deprecated 4.0 Use the "SiteTree.create_default_pages" config setting instead
-	 * @param bool $option
-	 */
-	static public function set_create_default_pages($option = true) {
-		Deprecation::notice('4.0', 'Use the "SiteTree.create_default_pages" config setting instead');
-		Config::inst()->update('SiteTree', 'create_default_pages', $option);
-	}
-
-	/**
-	 * Return true if default pages should be created on /dev/build.
-	 *
-	 * @deprecated 4.0 Use the "SiteTree.create_default_pages" config setting instead
-	 * @return bool
-	 */
-	static public function get_create_default_pages() {
-		Deprecation::notice('4.0', 'Use the "SiteTree.create_default_pages" config setting instead');
-		return Config::inst()->get('SiteTree', 'create_default_pages');
-	}
 
 	/**
 	 * Fetches the {@link SiteTree} object that maps to a link.
@@ -439,7 +376,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			   !($page = DataObject::get_by_id('SiteTree', $arguments['id']))         // Get the current page by ID.
 			&& !($page = Versioned::get_latest_version('SiteTree', $arguments['id'])) // Attempt link to old version.
 		) {
-			 return; // There were no suitable matches at all.
+			 return null; // There were no suitable matches at all.
 		}
 
 		$link = Convert::raw2att($page->Link());
@@ -538,9 +475,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string
 	 */
 	public function getAbsoluteLiveLink($includeStageEqualsLive = true) {
-		$oldStage = Versioned::current_stage();
-		Versioned::reading_stage('Live');
-		$live = Versioned::get_one_by_stage('SiteTree', 'Live', array(
+		$oldStage = Versioned::get_stage();
+		Versioned::set_stage(Versioned::LIVE);
+		$live = Versioned::get_one_by_stage('SiteTree', Versioned::LIVE, array(
 			'"SiteTree"."ID"' => $this->ID
 		));
 		if($live) {
@@ -550,7 +487,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$link = null;
 		}
 
-		Versioned::reading_stage($oldStage);
+		Versioned::set_stage($oldStage);
 		return $link;
 	}
 
@@ -1068,22 +1005,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 	/**
-	 * @deprecated
-	 */
-	public function canDeleteFromLive($member = null) {
-		Deprecation::notice('4.0', 'Use canUnpublish');
-
-		// Deprecated extension
-		$extended = $this->extendedCan('canDeleteFromLive', $member);
-		if($extended !== null) {
-			Deprecation::notice('4.0', 'Use canUnpublish in your extension instead');
-			return $extended;
-		}
-
-		return $this->canUnpublish($member);
-	}
-
-	/**
 	 * Stub method to get the site config, unless the current class can provide an alternate.
 	 *
 	 * @return SiteConfig
@@ -1531,26 +1452,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$this->extend('augmentSyncLinkTracking');
 	}
 
-	public function onAfterWrite() {
-		// Need to flush cache to avoid outdated versionnumber references
-		$this->flushCache();
-
-		$linkedPages = $this->VirtualPages();
-		if($linkedPages) {
-			// The only way after a write() call to determine if it was triggered by a writeWithoutVersion(),
-			// which we have to pass on to the virtual page writes as well.
-			$previous = ($this->Version > 1) ? Versioned::get_version($this->class, $this->ID, $this->Version-1) : null;
-			$withoutVersion = $this->getExtensionInstance('Versioned')->_nextWriteWithoutVersion;
-			foreach($linkedPages as $page) {
-				 $page->copyFrom($page->CopyContentFrom());
-				 if($withoutVersion) $page->writeWithoutVersion();
-				 else $page->write();
-			}
-		}
-
-		parent::onAfterWrite();
-	}
-
 	public function onBeforeDelete() {
 		parent::onBeforeDelete();
 
@@ -1693,7 +1594,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string
 	 */
 	public function getStageURLSegment() {
-		$stageRecord = Versioned::get_one_by_stage('SiteTree', 'Stage', array(
+		$stageRecord = Versioned::get_one_by_stage('SiteTree', Versioned::DRAFT, array(
 			'"SiteTree"."ID"' => $this->ID
 		));
 		return ($stageRecord) ? $stageRecord->URLSegment : null;
@@ -1705,7 +1606,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string
 	 */
 	public function getLiveURLSegment() {
-		$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', array(
+		$liveRecord = Versioned::get_one_by_stage('SiteTree', Versioned::LIVE, array(
 			'"SiteTree"."ID"' => $this->ID
 		));
 		return ($liveRecord) ? $liveRecord->URLSegment : null;
@@ -1720,7 +1621,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 */
 	public function rewriteFileLinks() {
 		// Skip live stage
-		if(\Versioned::current_stage() === \Versioned::get_live_stage()) {
+		if(\Versioned::get_stage() === \Versioned::LIVE) {
 			return;
 		}
 
@@ -1814,26 +1715,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return DataList
 	 */
 	public function VirtualPages() {
+		$pages = parent::VirtualPages();
 
-		// Ignore new records
-		if(!$this->ID) return null;
-
-		// Check subsite virtual pages
-		// @todo Refactor out subsite module specific code
-		if(class_exists('Subsite')) {
-			return Subsite::get_from_all_subsites('VirtualPage', array(
-				'"VirtualPage"."CopyContentFromID"' => $this->ID
-			));
+		// Disable subsite filter for these pages
+		if($pages instanceof DataList) {
+			return $pages->setDataQueryParam('Subsite.filter', false);
+		} else {
+			return $pages;
 		}
-
-		// Check existing virtualpages
-		if(class_exists('VirtualPage')) {
-			return VirtualPage::get()->where(array(
-				'"VirtualPage"."CopyContentFromID"' => $this->ID
-			));
-		}
-
-		return null;
 	}
 
 	/**
@@ -2213,7 +2102,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$rootTabSet->addExtraClass('ss-ui-action-tabset action-menus noborder');
 
 		// Render page information into the "more-options" drop-up, on the top.
-		$live = Versioned::get_one_by_stage('SiteTree', 'Live', array(
+		$live = Versioned::get_one_by_stage('SiteTree', Versioned::LIVE, array(
 			'"SiteTree"."ID"' => $this->ID
 		));
 		$moreOptions->push(
@@ -2226,7 +2115,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		);
 
 		// "readonly"/viewing version that isn't the current version of the record
-		$stageOrLiveRecord = Versioned::get_one_by_stage($this->class, Versioned::current_stage(), array(
+		$stageOrLiveRecord = Versioned::get_one_by_stage($this->class, Versioned::get_stage(), array(
 			'"SiteTree"."ID"' => $this->ID
 		));
 		if($stageOrLiveRecord && $stageOrLiveRecord->Version != $this->Version) {
@@ -2292,19 +2181,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					);
 				}
 			} else {
-				// Detect use of legacy actions
-				// {@see CMSMain::enabled_legacy_actions}
-				$legacy = CMSMain::config()->enabled_legacy_actions;
-				if(in_array('CMSBatchAction_Delete', $legacy)) {
-					Deprecation::notice('4.0', 'Delete from Stage is deprecated. Use Archive instead.');
-					if($this->canDelete()) {
-						// delete
-						$moreOptions->push(
-							FormAction::create('delete',_t('CMSMain.DELETE','Delete draft'))
-								->addExtraClass('delete ss-ui-action-destructive')
-						);
-					}
-				} elseif($this->canArchive()) {
+				if($this->canDelete()) {
+					// delete
+					$moreOptions->push(
+						FormAction::create('delete',_t('CMSMain.DELETE','Delete draft'))
+							->addExtraClass('delete ss-ui-action-destructive')
+					);
+				}
+				if($this->canArchive()) {
 					// "archive"
 					$moreOptions->push(
 						FormAction::create('archive',_t('CMSMain.ARCHIVE','Archive'))
@@ -2349,123 +2233,29 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		return $actions;
 	}
 
-	/**
-	 * Publish this page.
-	 *
-	 * @uses SiteTreeExtension->onBeforePublish()
-	 * @uses SiteTreeExtension->onAfterPublish()
-	 * @return bool True if published
-	 */
-	public function doPublish() {
-		if (!$this->canPublish()) return false;
-
-		$original = Versioned::get_one_by_stage("SiteTree", "Live", array(
-			'"SiteTree"."ID"' => $this->ID
-		));
-		if(!$original) $original = new SiteTree();
-
-		// Handle activities undertaken by extensions
-		$this->invokeWithExtensions('onBeforePublish', $original);
-		//$this->PublishedByID = Member::currentUser()->ID;
-		$this->write();
-		$this->publish("Stage", "Live");
-
+	public function onAfterPublish() {
+		// Force live sort order to match stage sort order
 		DB::prepared_query('UPDATE "SiteTree_Live"
 			SET "Sort" = (SELECT "SiteTree"."Sort" FROM "SiteTree" WHERE "SiteTree_Live"."ID" = "SiteTree"."ID")
 			WHERE EXISTS (SELECT "SiteTree"."Sort" FROM "SiteTree" WHERE "SiteTree_Live"."ID" = "SiteTree"."ID") AND "ParentID" = ?',
 			array($this->ParentID)
 		);
-
-		// Publish any virtual pages that might need publishing
-		$linkedPages = $this->VirtualPages();
-		if($linkedPages) foreach($linkedPages as $page) {
-			$page->copyFrom($page->CopyContentFrom());
-			$page->write();
-			if($page->getExistsOnLive()) $page->doPublish();
-		}
-
-		// Need to update pages linking to this one as no longer broken, on the live site
-		$origMode = Versioned::get_reading_mode();
-		Versioned::reading_stage('Live');
-		foreach($this->DependentPages(false) as $page) {
-			// $page->write() calls syncLinkTracking, which does all the hard work for us.
-			$page->write();
-		}
-		Versioned::set_reading_mode($origMode);
-
-		// Handle activities undertaken by extensions
-		$this->invokeWithExtensions('onAfterPublish', $original);
-
-		return true;
 	}
 
 	/**
-	 * Unpublish this page - remove it from the live site
-	 *
-	 * Overrides {@see Versioned::doUnpublish()}
-	 *
-	 * @uses SiteTreeExtension->onBeforeUnpublish()
-	 * @uses SiteTreeExtension->onAfterUnpublish()
+	 * Update draft dependant pages
 	 */
-	public function doUnpublish() {
-		if(!$this->canUnpublish()) return false;
-		if(!$this->ID) return false;
-
-		$this->invokeWithExtensions('onBeforeUnpublish', $this);
-
-		$origStage = Versioned::current_stage();
-		Versioned::reading_stage('Live');
-
-		// We should only unpublish virtualpages that exist on live
-		$virtualPages = $this->VirtualPages();
-
-		// This way our ID won't be unset
-		$clone = clone $this;
-		$clone->delete();
-
-		// Rewrite backlinks
-		$dependentPages = $this->DependentPages(false);
-		if($dependentPages) foreach($dependentPages as $page) {
-			// $page->write() calls syncLinkTracking, which does all the hard work for us.
-			$page->write();
-		}
-		Versioned::reading_stage($origStage);
-
-		// Unpublish any published virtual pages
-		if ($virtualPages) foreach($virtualPages as $vp) $vp->doUnpublish();
-
-		// If we're on the draft site, then we can update the status.
-		// Otherwise, these lines will resurrect an inappropriate record
-		if(DB::prepared_query("SELECT \"ID\" FROM \"SiteTree\" WHERE \"ID\" = ?", array($this->ID))->value()
-			&& Versioned::current_stage() != 'Live') {
-			$this->write();
-		}
-
-		$this->invokeWithExtensions('onAfterUnpublish', $this);
-
-		return true;
-	}
-
-	/**
-	 * Revert the draft changes: replace the draft content with the content on live
-	 */
-	public function doRevertToLive() {
-		$this->invokeWithExtensions('onBeforeRevertToLive', $this);
-
-		$this->publish("Live", "Stage", false);
-
-		// Use a clone to get the updates made by $this->publish
-		$clone = DataObject::get_by_id("SiteTree", $this->ID);
-		$clone->writeWithoutVersion();
+	public function onAfterRevertToLive() {
+		// Use an alias to get the updates made by $this->publish
+		/** @var SiteTree $stageSelf */
+		$stageSelf = Versioned::get_by_stage('SiteTree', Versioned::DRAFT)->byID($this->ID);
+		$stageSelf->writeWithoutVersion();
 
 		// Need to update pages linking to this one as no longer broken
-		foreach($this->DependentPages(false) as $page) {
-			// $page->write() calls syncLinkTracking, which does all the hard work for us.
-			$page->write();
+		foreach($stageSelf->DependentPages() as $page) {
+			/** @var SiteTree $page */
+			$page->writeWithoutVersion();
 		}
-
-		$this->invokeWithExtensions('onAfterRevertToLive', $this);
-		return true;
 	}
 
 	/**
@@ -2505,8 +2295,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			if(method_exists($conn, 'allowPrimaryKeyEditing')) $conn->allowPrimaryKeyEditing('SiteTree', false);
 		}
 
-		$oldStage = Versioned::current_stage();
-		Versioned::reading_stage('Stage');
+		$oldStage = Versioned::get_stage();
+		Versioned::set_stage(Versioned::DRAFT);
 		$this->forceChange();
 		$this->write();
 
@@ -2518,19 +2308,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$page->write();
 		}
 
-		Versioned::reading_stage($oldStage);
+		Versioned::set_stage($oldStage);
 
 		$this->invokeWithExtensions('onAfterRestoreToStage', $this);
 
 		return $result;
-	}
-
-	/**
-	 * @deprecated
-	 */
-	public function doDeleteFromLive() {
-		Deprecation::notice("4.0", "Use doUnpublish instead");
-		return $this->doUnpublish();
 	}
 
 	/**

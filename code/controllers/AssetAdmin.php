@@ -63,7 +63,7 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 	public function init() {
 		parent::init();
 
-		Versioned::reading_stage("Stage");
+		Versioned::set_stage(Versioned::DRAFT);
 
 		Requirements::javascript(CMS_DIR . "/javascript/dist/AssetAdmin.js");
 		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang', false, true);

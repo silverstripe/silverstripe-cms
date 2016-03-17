@@ -108,7 +108,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		$page3live = Versioned::get_one_by_stage('Page', 'Live', '"SiteTree"."ID" = ' . $page3->ID);
 
 		// assert hyperlink to page 1's new url exists
-		Versioned::reading_stage('Live');
+		Versioned::set_stage(Versioned::LIVE);
 		$links = HTTP::getLinksIn($page3live->obj('Content')->forTemplate());
 		$this->assertContains(Director::baseURL().'new-url-segment/', $links, 'Assert hyperlink to page 1\'s new url exists on page 3');
 	}
@@ -136,7 +136,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 
 		// assert hyperlink to page 1's current publish url exists
 		$page3live = Versioned::get_one_by_stage('Page', 'Live', '"SiteTree"."ID" = ' . $page3->ID);
-		Versioned::reading_stage('Live');
+		Versioned::set_stage(Versioned::LIVE);
 		$links = HTTP::getLinksIn($page3live->obj('Content')->forTemplate());
 		$this->assertContains(Director::baseURL().'page1/', $links, 'Assert hyperlink to page 1\'s current published url exists on page 3');
 
@@ -179,7 +179,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 
 		// assert page 3 on published site contains old page 1 url
 		$page3live = Versioned::get_one_by_stage('Page', 'Live', '"SiteTree"."ID" = ' . $page3->ID);
-		Versioned::reading_stage('Live');
+		Versioned::set_stage(Versioned::LIVE);
 		$links = HTTP::getLinksIn($page3live->obj('Content')->forTemplate());
 		$this->assertContains(Director::baseURL().'page1/', $links, 'Assert hyperlink to page 1\'s current published url exists on page 3');
 
@@ -223,7 +223,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 
 		// confirm that published link hasn't
 		$page2Live = Versioned::get_one_by_stage("Page", "Live", "\"SiteTree\".\"ID\" = $page2->ID");
-		Versioned::reading_stage('Live');
+		Versioned::set_stage(Versioned::LIVE);
 		$this->assertEquals('<p><a href="'.Director::baseURL().'page1/">Testing page 1 link</a></p>', $page2Live->obj('ExtraContent')->forTemplate());
 
 		// publish page1 and confirm that the link on the published page2 has now been updated

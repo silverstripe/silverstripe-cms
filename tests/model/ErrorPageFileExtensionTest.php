@@ -9,7 +9,7 @@ class ErrorPageFileExtensionTest extends SapphireTest {
     public function setUp() {
         parent::setUp();
         $this->versionedMode = Versioned::get_reading_mode();
-        Versioned::reading_stage('Stage');
+        Versioned::set_stage(Versioned::DRAFT);
         AssetStoreTest_SpyStore::activate('ErrorPageFileExtensionTest');
         $file = new File();
         $file->setFromString('dummy', 'dummy.txt');

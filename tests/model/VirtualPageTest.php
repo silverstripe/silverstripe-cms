@@ -30,28 +30,9 @@ class VirtualPageTest extends FunctionalTest {
 		// Ensure we always have permission to save/publish
 		$this->logInWithPermission("ADMIN");
 
-		$this->origInitiallyCopiedFields = VirtualPage::config()->initially_copied_fields;
-		Config::inst()->remove('VirtualPage', 'initially_copied_fields');
-		VirtualPage::config()->initially_copied_fields = array_merge(
-			$this->origInitiallyCopiedFields,
-			array('MyInitiallyCopiedField')
-		);
-
-		$this->origNonVirtualField = VirtualPage::config()->non_virtual_fields;
-		Config::inst()->remove('VirtualPage', 'non_virtual_fields');
-		VirtualPage::config()->non_virtual_fields = array_merge(
-			$this->origNonVirtualField,
-			array('MyNonVirtualField', 'MySharedNonVirtualField')
-		);
-	}
-
-	public function tearDown() {
-		parent::tearDown();
-
-		Config::inst()->remove('VirtualPage', 'initially_copied_fields');
-		Config::inst()->remove('VirtualPage', 'non_virtual_fields');
-		VirtualPage::config()->initially_copied_fields = $this->origInitiallyCopiedFields;
-		VirtualPage::config()->non_virtual_fields = $this->origNonVirtualField;
+		// Add extra fields
+		Config::inst()->update('VirtualPage', 'initially_copied_fields', array('MyInitiallyCopiedField'));
+		Config::inst()->update('VirtualPage', 'non_virtual_fields', array('MyNonVirtualField', 'MySharedNonVirtualField'));
 	}
 
 	/**
@@ -98,7 +79,7 @@ class VirtualPageTest extends FunctionalTest {
 
 		$master->doPublish();
 
-		Versioned::reading_stage("Live");
+		Versioned::set_stage(Versioned::LIVE);
 		$vp1 = DataObject::get_by_id("VirtualPage", $this->idFromFixture('VirtualPage', 'vp1'));
 		$vp2 = DataObject::get_by_id("VirtualPage", $this->idFromFixture('VirtualPage', 'vp2'));
 
@@ -111,7 +92,7 @@ class VirtualPageTest extends FunctionalTest {
 		$this->assertEquals("New menutitle", $vp2->MenuTitle);
 		$this->assertEquals("<p>New content</p>", $vp1->Content);
 		$this->assertEquals("<p>New content</p>", $vp2->Content);
-		Versioned::reading_stage("Stage");
+		Versioned::set_stage(Versioned::DRAFT);
 	}
 
 	/**
@@ -145,23 +126,36 @@ class VirtualPageTest extends FunctionalTest {
 		$p->write();
 		$p->doPublish();
 
-		// Don't publish this change - published page will still say 'published content'
-		$p->Content = "draft content";
-		$p->write();
-
+		// Virtual page has this content
 		$vp = new VirtualPage();
 		$vp->CopyContentFromID = $p->ID;
 		$vp->write();
 
 		$vp->doPublish();
 
+		// Don't publish this change - published page will still say 'published content'
+		$p->Content = "draft content";
+		$p->write();
+
 		// The draft content of the virtual page should say 'draft content'
-		$this->assertEquals('draft content',
-			DB::query('SELECT "Content" from "SiteTree" WHERE "ID" = ' . $vp->ID)->value());
+		/** @var VirtualPage $vpDraft */
+		$vpDraft = Versioned::get_by_stage("VirtualPage", Versioned::DRAFT)->byID($vp->ID);
+		$this->assertEquals('draft content', $vpDraft->CopyContentFrom()->Content);
+		$this->assertEquals('draft content', $vpDraft->Content);
 
 		// The published content of the virtual page should say 'published content'
-		$this->assertEquals('published content',
-			DB::query('SELECT "Content" from "SiteTree_Live" WHERE "ID" = ' . $vp->ID)->value());
+		/** @var VirtualPage $vpLive */
+		$vpLive = Versioned::get_by_stage("VirtualPage", Versioned::LIVE)->byID($vp->ID);
+		$this->assertEquals('published content', $vpLive->CopyContentFrom()->Content);
+		$this->assertEquals('published content', $vpLive->Content);
+
+		// Publishing the virtualpage should, however, trigger publishing of the live page
+		$vpDraft->doPublish();
+
+		// Everything is published live
+		$vpLive = Versioned::get_by_stage("VirtualPage", Versioned::LIVE)->byID($vp->ID);
+		$this->assertEquals('draft content', $vpLive->CopyContentFrom()->Content);
+		$this->assertEquals('draft content', $vpLive->Content);
 	}
 
 	public function testCantPublishVirtualPagesBeforeTheirSource() {
@@ -191,22 +185,36 @@ class VirtualPageTest extends FunctionalTest {
 		$p->Content = "test content";
 		$p->write();
 		$p->doPublish();
+		$pID = $p->ID;
 
 		$vp = new VirtualPage();
 		$vp->CopyContentFromID = $p->ID;
 		$vp->write();
-
-		// Delete the source page
 		$this->assertTrue($vp->canPublish());
-		$this->assertTrue($p->doUnpublish());
+		$this->assertTrue($vp->doPublish());
+
+		// Delete the source page semi-manually, without triggering
+		// the cascade publish back to the virtual page.
+		Versioned::set_stage(Versioned::LIVE);
+		$livePage = Versioned::get_by_stage('SiteTree', Versioned::LIVE)->byID($pID);
+		$livePage->delete();
+		Versioned::set_stage(Versioned::DRAFT);
 
 		// Confirm that we can unpublish, but not publish
+		$this->assertFalse($p->IsPublished(), 'Copied page has orphaned the virtual page on live');
+		$this->assertTrue($vp->isPublished(), 'Virtual page remains on live');
 		$this->assertTrue($vp->canUnpublish());
 		$this->assertFalse($vp->canPublish());
 
 		// Confirm that the action really works
 		$this->assertTrue($vp->doUnpublish());
-		$this->assertNull(DB::query("SELECT \"ID\" FROM \"SiteTree_Live\" WHERE \"ID\" = $vp->ID")->value());
+		$this->assertEquals(
+			0,
+			DB::prepared_query(
+				"SELECT count(*) FROM \"SiteTree_Live\" WHERE \"ID\" = ?",
+				array($vp->ID)
+			)->value()
+		);
 	}
 
 	public function testCanEdit() {
@@ -259,7 +267,6 @@ class VirtualPageTest extends FunctionalTest {
 
 		// VP is still orange after we publish
 		$p->doPublish();
-		$this->fixVersionNumberCache($vp);
 		$this->assertTrue($vp->getIsAddedToStage());
 
 		// A new VP created after P's initial construction
@@ -272,75 +279,26 @@ class VirtualPageTest extends FunctionalTest {
 		$p->Content = "new content";
 		$p->write();
 		$p->doPublish();
-		$this->fixVersionNumberCache($vp2);
 		$this->assertTrue($vp2->getIsAddedToStage());
 
 		// VP is now published
 		$vp->doPublish();
 
-		$this->fixVersionNumberCache($vp);
 		$this->assertTrue($vp->getExistsOnLive());
 		$this->assertFalse($vp->getIsModifiedOnStage());
 
-		// P edited, VP and P both go green
+		// P edited, P goes green. Change set interface should indicate to the user that the owned page has
+		// modifications, although the virtual page record itself will not appear as having pending changes.
 		$p->Content = "third content";
 		$p->write();
 
-		$this->fixVersionNumberCache($vp, $p);
 		$this->assertTrue($p->getIsModifiedOnStage());
-		$this->assertTrue($vp->getIsModifiedOnStage());
+		$this->assertFalse($vp->getIsModifiedOnStage());
 
 		// Publish, VP goes black
 		$p->doPublish();
-		$this->fixVersionNumberCache($vp);
 		$this->assertTrue($vp->getExistsOnLive());
 		$this->assertFalse($vp->getIsModifiedOnStage());
-	}
-
-	public function testVirtualPagesCreateVersionRecords() {
-		$source = $this->objFromFixture('Page', 'master');
-		$source->Title = "T0";
-		$source->write();
-		$source->doPublish();
-
-		// Creating a new VP to ensure that Version #s are out of alignment
-		$vp = new VirtualPage();
-		$vp->CopyContentFromID = $source->ID;
-		$vp->write();
-
-		$source->Title = "T1";
-		$source->write();
-		$source->Title = "T2";
-		$source->write();
-
-		$this->assertEquals($vp->ID, DB::query("SELECT \"RecordID\" FROM \"SiteTree_versions\"
-			WHERE \"RecordID\" = $vp->ID AND \"Title\" = 'T1'")->value());
-		$this->assertEquals($vp->ID, DB::query("SELECT \"RecordID\" FROM \"SiteTree_versions\"
-			WHERE \"RecordID\" = $vp->ID AND \"Title\" = 'T2'")->value());
-		$this->assertEquals($vp->ID, DB::query("SELECT \"RecordID\" FROM \"SiteTree_versions\"
-			WHERE \"RecordID\" = $vp->ID AND \"Version\" = $vp->Version")->value());
-
-		$vp->doPublish();
-
-		// Check that the published content is copied from the published page, with a legal
-		// version
-		$liveVersion = DB::query("SELECT \"Version\" FROM \"SiteTree_Live\" WHERE \"ID\" = $vp->ID")->value();
-
-		$this->assertEquals("T0", DB::query("SELECT \"Title\" FROM \"SiteTree_Live\"
-				WHERE \"ID\" = $vp->ID")->value());
-
-		// SiteTree_Live.Version should reference a legal entry in SiteTree_versions for the
-		// virtual page
-		$this->assertEquals("T0", DB::query("SELECT \"Title\" FROM \"SiteTree_versions\"
-				WHERE \"RecordID\" = $vp->ID AND \"Version\" = $liveVersion")->value());
-	}
-
-	public function fixVersionNumberCache($page) {
-		$pages = func_get_args();
-		foreach($pages as $p) {
-			Versioned::prepopulate_versionnumber_cache('SiteTree', 'Stage', array($p->ID));
-			Versioned::prepopulate_versionnumber_cache('SiteTree', 'Live', array($p->ID));
-		}
 	}
 
 	public function testUnpublishingSourcePageOfAVirtualPageAlsoUnpublishesVirtualPage() {
@@ -459,7 +417,6 @@ class VirtualPageTest extends FunctionalTest {
 		$virtual->CopyContentFromID = $original->ID;
 		$virtual->write();
 
-		$virtual->copyFrom($original);
 		// Using getField() to avoid side effects from an overloaded __get()
 		$this->assertEquals(
 			'original',
@@ -478,58 +435,10 @@ class VirtualPageTest extends FunctionalTest {
 
 		$original->MyInitiallyCopiedField = 'changed';
 		$original->write();
-		$virtual->copyFrom($original);
 		$this->assertEquals(
 			'original',
 			$virtual->MyInitiallyCopiedField,
 			'Fields listed in $initially_copied_fields are not copied on subsequent copyFrom() invocations'
-		);
-	}
-
-	public function testWriteWithoutVersion() {
-		$original = new SiteTree();
-		$original->write();
-		// Create a second version (different behaviour),
-		// as SiteTree->onAfterWrite() checks for Version == 1
-		$original->Title = 'prepare';
-		$original->write();
-		$originalVersion = $original->Version;
-
-		$virtual = new VirtualPage();
-		$virtual->CopyContentFromID = $original->ID;
-		$virtual->write();
-		// Create a second version, see above.
-		$virtual->Title = 'prepare';
-		$virtual->write();
-		$virtualVersion = $virtual->Version;
-
-		$virtual->Title = 'changed 1';
-		$virtual->writeWithoutVersion();
-		$this->assertEquals(
-			$virtual->Version,
-			$virtualVersion,
-			'writeWithoutVersion() on VirtualPage doesnt increment version'
-		);
-
-		$original->Title = 'changed 2';
-		$original->writeWithoutVersion();
-
-		DataObject::flush_and_destroy_cache();
-		$virtual = DataObject::get_by_id('VirtualPage', $virtual->ID, false);
-		$this->assertEquals(
-			$virtual->Version,
-			$virtualVersion,
-			'writeWithoutVersion() on original page doesnt increment version on related VirtualPage'
-		);
-
-		$original->Title = 'changed 3';
-		$original->write();
-		DataObject::flush_and_destroy_cache();
-		$virtual = DataObject::get_by_id('VirtualPage', $virtual->ID, false);
-		$this->assertGreaterThan(
-			$virtualVersion,
-			$virtual->Version,
-			'write() on original page does increment version on related VirtualPage'
 		);
 	}
 
@@ -562,50 +471,16 @@ class VirtualPageTest extends FunctionalTest {
 		if(!$isDetected) $this->fail('Fails validation with $can_be_root=false');
 	}
 
-	public function testPageTypeChangeDoesntKeepOrphanedVirtualPageRecord() {
-		$page = new SiteTree();
-		$page->write();
-		$page->publish('Stage', 'Live');
-
-		$virtual = new VirtualPageTest_VirtualPageSub();
-		$virtual->CopyContentFromID = $page->ID;
-		$virtual->write();
-		$virtual->publish('Stage', 'Live');
-
-		$nonVirtual = $virtual;
-		$nonVirtual->ClassName = 'VirtualPageTest_ClassA';
-		$nonVirtual->write(); // not publishing
-
-		$this->assertNotNull(
-			DB::query(sprintf('SELECT "ID" FROM "SiteTree" WHERE "ID" = %d', $nonVirtual->ID))->value(),
-			"Shared base database table entry exists after type change"
-		);
-		$this->assertNull(
-			DB::query(sprintf('SELECT "ID" FROM "VirtualPage" WHERE "ID" = %d', $nonVirtual->ID))->value(),
-			"Base database table entry no longer exists after type change"
-		);
-		$this->assertNull(
-			DB::query(sprintf('SELECT "ID" FROM "VirtualPageTest_VirtualPageSub" WHERE "ID" = %d', $nonVirtual->ID))->value(),
-			"Sub database table entry no longer exists after type change"
-		);
-		$this->assertNull(
-			DB::query(sprintf('SELECT "ID" FROM "VirtualPage_Live" WHERE "ID" = %d', $nonVirtual->ID))->value(),
-			"Base live database table entry no longer exists after type change"
-		);
-		$this->assertNull(
-			DB::query(sprintf('SELECT "ID" FROM "VirtualPageTest_VirtualPageSub_Live" WHERE "ID" = %d', $nonVirtual->ID))->value(),
-			"Sub live database table entry no longer exists after type change"
-		);
-	}
-
 	public function testPageTypeChangePropagatesToLive() {
 		$page = new SiteTree();
+		$page->Title = 'published title';
 		$page->MySharedNonVirtualField = 'original';
 		$page->write();
 		$page->publish('Stage', 'Live');
 
 		$virtual = new VirtualPageTest_VirtualPageSub();
 		$virtual->CopyContentFromID = $page->ID;
+		$virtual->MySharedNonVirtualField = 'virtual published field';
 		$virtual->write();
 		$virtual->publish('Stage', 'Live');
 
@@ -614,28 +489,38 @@ class VirtualPageTest extends FunctionalTest {
 		// but we want to test that it gets copied on class name change instead
 		$page->write();
 
+
 		$nonVirtual = $virtual;
 		$nonVirtual->ClassName = 'VirtualPageTest_ClassA';
 		$nonVirtual->MySharedNonVirtualField = 'changed on new type';
 		$nonVirtual->write(); // not publishing the page type change here
 
-		$this->assertEquals('original', $nonVirtual->Title,
+		// Stage record is changed to the new type and no longer acts as a virtual page
+		$nonVirtualStage = Versioned::get_one_by_stage('SiteTree', 'Stage', '"SiteTree"."ID" = ' . $nonVirtual->ID, false);
+		$this->assertNotNull($nonVirtualStage);
+		$this->assertEquals('VirtualPageTest_ClassA', $nonVirtualStage->ClassName);
+		$this->assertEquals('changed on new type', $nonVirtualStage->MySharedNonVirtualField);
+		$this->assertEquals('original', $nonVirtualStage->Title,
 			'Copies virtual fields from original draft into new instance on type change '
 		);
 
-		$nonVirtualLive = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree_Live"."ID" = ' . $nonVirtual->ID);
-		$this->assertNotNull($nonVirtualLive);
-		$this->assertEquals('VirtualPageTest_ClassA', $nonVirtualLive->ClassName);
-		$this->assertEquals('changed on new type', $nonVirtualLive->MySharedNonVirtualField);
+		// Virtual page on live keeps working as it should
+		$virtualLive = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree_Live"."ID" = ' . $virtual->ID, false);
+		$this->assertNotNull($virtualLive);
+		$this->assertEquals('VirtualPageTest_VirtualPageSub', $virtualLive->ClassName);
+		$this->assertEquals('virtual published field', $virtualLive->MySharedNonVirtualField);
+		$this->assertEquals('published title', $virtualLive->Title);
 
+		// Change live page
+		$page->Title = 'title changed on original';
 		$page->MySharedNonVirtualField = 'changed only on original';
 		$page->write();
 		$page->publish('Stage', 'Live');
 
-		$nonVirtualLive = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree_Live"."ID" = ' . $nonVirtual->ID, false);
-		$this->assertEquals('changed on new type', $nonVirtualLive->MySharedNonVirtualField,
-			'No field copying from previous original after page type changed'
-		);
+		// Virtual page only notices changes to virtualised fields (Title)
+		$virtualLive = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree_Live"."ID" = ' . $virtual->ID, false);
+		$this->assertEquals('virtual published field', $virtualLive->MySharedNonVirtualField);
+		$this->assertEquals('title changed on original', $virtualLive->Title);
 	}
 
 	public function testVirtualPageFindsCorrectCasting() {
