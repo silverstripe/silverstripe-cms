@@ -10,22 +10,22 @@ class AssetAdminTest extends SapphireTest {
 	public function setUp() {
 		parent::setUp();
 
+		AssetStoreTest_SpyStore::activate('AssetAdminTest');
+
 		if(!file_exists(ASSETS_PATH)) mkdir(ASSETS_PATH);
 
 		// Create a test folders for each of the fixture references
-		$folderIDs = $this->allFixtureIDs('Folder');
-		foreach($folderIDs as $folderID) {
-			$folder = DataObject::get_by_id('Folder', $folderID);
-			if(!file_exists(BASE_PATH."/$folder->Filename")) mkdir(BASE_PATH."/$folder->Filename");
+		foreach(File::get()->filter('ClassName', 'Folder') as $folder) {
+			/** @var Folder $folder */
+			$folder->doPublish();
 		}
 
 		// Create a test files for each of the fixture references
-		$fileIDs = $this->allFixtureIDs('File');
-		foreach($fileIDs as $fileID) {
-			$file = DataObject::get_by_id('File', $fileID);
-			$fh = fopen(BASE_PATH."/$file->Filename", "w");
-			fwrite($fh, str_repeat('x',1000000));
-			fclose($fh);
+		$content = str_repeat('x',1000000);
+		foreach(File::get()->exclude('ClassName', 'Folder') as $file) {
+			/** @var File $file */
+			$file->setFromString($content, $file->generateFilename());
+			$file->doPublish();
 		}
 	}
 

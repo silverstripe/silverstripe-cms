@@ -297,7 +297,7 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
 
 	public function isActive() {
 		return (
-			Versioned::current_stage() == 'Stage'
+			Versioned::get_stage() == 'Stage'
 			&& !(ClassInfo::exists('SiteTreeFutureState') && SiteTreeFutureState::get_future_datetime())
 			&& !$this->isArchived()
 		);
@@ -350,7 +350,7 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem {
 
 	public function isActive() {
 		return (
-			(!Versioned::current_stage() || Versioned::current_stage() == 'Live')
+			(!Versioned::get_stage() || Versioned::get_stage() == 'Live')
 			&& !$this->isArchived()
 		);
 	}

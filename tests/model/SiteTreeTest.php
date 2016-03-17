@@ -141,7 +141,7 @@ class SiteTreeTest extends SapphireTest {
 		$s->write();
 
 		$oldMode = Versioned::get_reading_mode();
-		Versioned::reading_stage('Live');
+		Versioned::set_stage(Versioned::LIVE);
 
 		$checkSiteTree = DataObject::get_one("SiteTree", array(
 			'"SiteTree"."URLSegment"' => 'get-one-test-page'
@@ -264,12 +264,12 @@ class SiteTreeTest extends SapphireTest {
 
 		// Check that if we restore while on the live site that the content still gets pushed to
 		// stage
-		Versioned::reading_stage('Live');
+		Versioned::set_stage(Versioned::LIVE);
 		$deletedPage = Versioned::get_latest_version('SiteTree', $page2ID);
 		$deletedPage->doRestoreToStage();
 		$this->assertFalse((bool)Versioned::get_one_by_stage("Page", "Live", "\"SiteTree\".\"ID\" = " . $page2ID));
 
-		Versioned::reading_stage('Stage');
+		Versioned::set_stage(Versioned::DRAFT);
 		$requeriedPage = DataObject::get_by_id("Page", $page2ID);
 		$this->assertEquals('Products', $requeriedPage->Title);
 		$this->assertEquals('Page', $requeriedPage->class);
@@ -383,12 +383,12 @@ class SiteTreeTest extends SapphireTest {
 
 		$parentPage->doUnpublish();
 
-		Versioned::reading_stage('Live');
+		Versioned::set_stage(Versioned::LIVE);
 
 		$this->assertFalse(DataObject::get_by_id('Page', $pageAbout->ID));
 		$this->assertTrue(DataObject::get_by_id('Page', $pageStaff->ID) instanceof Page);
 		$this->assertTrue(DataObject::get_by_id('Page', $pageStaffDuplicate->ID) instanceof Page);
-		Versioned::reading_stage('Stage');
+		Versioned::set_stage(Versioned::DRAFT);
 		Config::inst()->update('SiteTree', 'enforce_strict_hierarchy', true);
 	}
 
@@ -406,11 +406,11 @@ class SiteTreeTest extends SapphireTest {
 		$parentPage = $this->objFromFixture('Page', 'about');
 		$parentPage->doUnpublish();
 
-		Versioned::reading_stage('Live');
+		Versioned::set_stage(Versioned::LIVE);
 		$this->assertFalse(DataObject::get_by_id('Page', $pageAbout->ID));
 		$this->assertTrue(DataObject::get_by_id('Page', $pageStaff->ID) instanceof Page);
 		$this->assertTrue(DataObject::get_by_id('Page', $pageStaffDuplicate->ID) instanceof Page);
-		Versioned::reading_stage('Stage');
+		Versioned::set_stage(Versioned::DRAFT);
 		Config::inst()->update('SiteTree', 'enforce_strict_hierarchy', true);
 	}
 
@@ -427,11 +427,11 @@ class SiteTreeTest extends SapphireTest {
 		$parentPage = $this->objFromFixture('Page', 'about');
 		$parentPage->doUnpublish();
 
-		Versioned::reading_stage('Live');
+		Versioned::set_stage(Versioned::LIVE);
 		$this->assertFalse(DataObject::get_by_id('Page', $pageAbout->ID));
 		$this->assertFalse(DataObject::get_by_id('Page', $pageStaff->ID));
 		$this->assertFalse(DataObject::get_by_id('Page', $pageStaffDuplicate->ID));
-		Versioned::reading_stage('Stage');
+		Versioned::set_stage(Versioned::DRAFT);
 	}
 
 	/**
@@ -1115,7 +1115,7 @@ class SiteTreeTest extends SapphireTest {
 		$member->Groups()->add($group);
 
 		// both pages are viewable in stage
-		Versioned::reading_stage('Stage');
+		Versioned::set_stage(Versioned::DRAFT);
 		$about = $this->objFromFixture('Page', 'about');
 		$staff = $this->objFromFixture('Page', 'staff');
 		$this->assertFalse($about->isOrphaned());
@@ -1127,16 +1127,16 @@ class SiteTreeTest extends SapphireTest {
 		$staff->publish('Stage', 'Live');
 		$this->assertFalse($staff->isOrphaned());
 		$this->assertTrue($staff->canView($member));
-		Versioned::reading_stage('Live');
+		Versioned::set_stage(Versioned::LIVE);
 		$staff = $this->objFromFixture('Page', 'staff'); // Live copy of page
 		$this->assertTrue($staff->isOrphaned()); // because parent isn't published
 		$this->assertFalse($staff->canView($member));
 
 		// Publishing the parent page should restore visibility
-		Versioned::reading_stage('Stage');
+		Versioned::set_stage(Versioned::DRAFT);
 		$about = $this->objFromFixture('Page', 'about');
 		$about->publish('Stage', 'Live');
-		Versioned::reading_stage('Live');
+		Versioned::set_stage(Versioned::LIVE);
 		$staff = $this->objFromFixture('Page', 'staff');
 		$this->assertFalse($staff->isOrphaned());
 		$this->assertTrue($staff->canView($member));

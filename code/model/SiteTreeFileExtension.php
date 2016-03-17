@@ -109,7 +109,7 @@ class SiteTreeFileExtension extends DataExtension {
 	 */
 	public function onAfterDelete() {
 		// Skip live stage
-		if(\Versioned::current_stage() === \Versioned::get_live_stage()) {
+		if(\Versioned::get_stage() === Versioned::LIVE) {
 			return;
 		}
 
@@ -143,7 +143,7 @@ class SiteTreeFileExtension extends DataExtension {
 	 */
 	public function updateLinks() {
 		// Skip live stage
-		if(\Versioned::current_stage() === \Versioned::get_live_stage()) {
+		if(\Versioned::get_stage() === \Versioned::LIVE) {
 			return;
 		}
 

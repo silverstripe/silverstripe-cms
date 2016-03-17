@@ -11,6 +11,8 @@ class CMSBatchActionsTest extends SapphireTest {
 	public function setUp() {
 		parent::setUp();
 
+		$this->logInWithPermission('ADMIN');
+
 		// published page
 		$published = $this->objFromFixture('SiteTree', 'published');
 		$published->doPublish();

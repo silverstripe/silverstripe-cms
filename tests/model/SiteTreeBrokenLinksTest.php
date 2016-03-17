@@ -11,7 +11,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 	public function setUp() {
 		parent::setUp();
 
-		Versioned::reading_stage('Stage');
+		Versioned::set_stage(Versioned::DRAFT);
 		AssetStoreTest_SpyStore::activate('SiteTreeBrokenLinksTest');
 		$this->logInWithPermission('ADMIN');
 	}
