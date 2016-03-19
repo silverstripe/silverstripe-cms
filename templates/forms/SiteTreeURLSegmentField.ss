@@ -2,9 +2,11 @@
 	<a class="preview" href="$URL" target="_blank">
 		$URL
 	</a>
-	<button type="button" class="ss-ui-button ss-ui-button-small edit">
-		<% _t('URLSegmentField.Edit', 'Edit') %>
-	</button>
+	<% if not $IsReadonly %>
+		<button type="button" class="ss-ui-button ss-ui-button-small edit">
+			<% _t('URLSegmentField.Edit', 'Edit') %>
+		</button>
+	<% end_if %>
 </div>
 <div class="edit-holder">
 	<input $AttributesHTML />
