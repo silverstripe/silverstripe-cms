@@ -124,7 +124,7 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 		$editor = new HtmlEditorField('Content');
 		$file = $this->objFromFixture('Image', 'example_image');
 
-		$editor->setValue(sprintf('<img src="%s" data-fileid="%d" />', $file->getURL(), $file->ID));
+		$editor->setValue(sprintf('[image src="%s" id="%d"]', $file->getURL(), $file->ID));
 		$editor->saveInto($sitetree);
 		$sitetree->write();
 		$this->assertEquals(

@@ -1613,46 +1613,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 	/**
-	 * Rewrites any linked images on this page without creating a new version record.
-	 * Non-image files should be linked via shortcodes
-	 * Triggers the onRenameLinkedAsset action on extensions.
-	 *
-	 * @todo Implement image shortcodes and remove this feature
-	 */
-	public function rewriteFileLinks() {
-		// Skip live stage
-		if(\Versioned::get_stage() === \Versioned::LIVE) {
-			return;
-		}
-
-		// Update the content without actually creating a new version
-		foreach($this->db() as $fieldName => $fieldType) {
-			// Skip if non HTML or if empty
-			if ($fieldType !== 'HTMLText') {
-				continue;
-			}
-			$fieldValue = $this->{$fieldName};
-			if(empty($fieldValue)) {
-				continue;
-			}
-
-			// Regenerate content
-			$content = Image::regenerate_html_links($fieldValue);
-			if($content === $fieldValue) {
-				continue;
-			}
-
-			// Write content directly without updating linked assets
-			$table = ClassInfo::table_for_object_field($this, $fieldName);
-			$query = sprintf('UPDATE "%s" SET "%s" = ? WHERE "ID" = ?', $table, $fieldName);
-			DB::prepared_query($query, array($content, $this->ID));
-
-			// Update linked assets
-			$this->invokeWithExtensions('onRenameLinkedAsset');
-		}
-	}
-
-	/**
 	 * Returns the pages that depend on this page. This includes virtual pages, pages that link to it, etc.
 	 *
 	 * @param bool $includeVirtuals Set to false to exlcude virtual pages.
@@ -2181,13 +2141,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					);
 				}
 			} else {
-				if($this->canDelete()) {
-					// delete
-					$moreOptions->push(
-						FormAction::create('delete',_t('CMSMain.DELETE','Delete draft'))
-							->addExtraClass('delete ss-ui-action-destructive')
-					);
-				}
+					if($this->canDelete()) {
+						// delete
+						$moreOptions->push(
+							FormAction::create('delete',_t('CMSMain.DELETE','Delete draft'))
+								->addExtraClass('delete ss-ui-action-destructive')
+						);
+					}
 				if($this->canArchive()) {
 					// "archive"
 					$moreOptions->push(
@@ -2240,7 +2200,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			WHERE EXISTS (SELECT "SiteTree"."Sort" FROM "SiteTree" WHERE "SiteTree_Live"."ID" = "SiteTree"."ID") AND "ParentID" = ?',
 			array($this->ParentID)
 		);
-	}
+		}
 
 	/**
 	 * Update draft dependant pages

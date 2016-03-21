@@ -62,8 +62,8 @@ class SiteTreeLinkTrackingTest extends SapphireTest {
 	}
 
 	public function testHasBrokenFile() {
-		$this->assertTrue($this->pageIsBrokenFile('<img src="someurl.jpg" data-fileid="99999999" />'));
-		$this->assertFalse($this->pageIsBrokenFile('<img src="someurl.jpg" />'));
+		$this->assertTrue($this->pageIsBrokenFile('[image src="someurl.jpg" id="99999999"]'));
+		$this->assertFalse($this->pageIsBrokenFile('[image src="someurl.jpg"]'));
 	}
 
 	protected function pageIsBrokenFile($content) {

@@ -9,4 +9,4 @@ Page:
   page1:
     Title: page1
     URLSegment: page1
-    Content: '<p><img src="/assets/FileLinkTrackingTest/55b443b601/testscript-test-file.jpg" /></p>'
+    # Content is set via test setup
