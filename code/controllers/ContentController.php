@@ -1,4 +1,8 @@
 <?php
+
+use SilverStripe\Model\FieldType\DBVarchar;
+use SilverStripe\Model\FieldType\DBHTMLText;
+
 /**
  * The most common kind of controller; effectively a controller linked to a {@link DataObject}.
  *
@@ -413,8 +417,8 @@ HTML;
 	public function deleteinstallfiles() {
 		if(!Permission::check("ADMIN")) return Security::permissionFailure($this);
 
-		$title = new Varchar("Title");
-		$content = new HTMLText('Content');
+		$title = new DBVarchar("Title");
+		$content = new DBHTMLText('Content');
 
 		// We can't delete index.php as it might be necessary for URL routing without mod_rewrite.
 		// There's no safe way to detect usage of mod_rewrite across webservers,
