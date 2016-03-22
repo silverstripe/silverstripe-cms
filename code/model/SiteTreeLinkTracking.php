@@ -5,6 +5,8 @@
  * @subpackage model
  */
 
+use SilverStripe\Model\FieldType\DBHTMLText;
+
 /**
  * Adds tracking of links in any HTMLText fields which reference SiteTree or File items.
  *
@@ -205,11 +207,9 @@ class SiteTreeLinkTracking extends DataExtension {
 		$allFields = $this->owner->db();
 		$htmlFields = array();
 		foreach($allFields as $field => $fieldSpec) {
-			if(preg_match('/([^(]+)/', $fieldSpec, $matches)) {
-				$class = $matches[0];
-				if(class_exists($class)){
-					if($class == 'HTMLText' || is_subclass_of($class, 'HTMLText')) $htmlFields[] = $field;
-				}
+			$fieldObj = $this->owner->dbObject($field);
+			if($fieldObj instanceof DBHTMLText) {
+				$htmlFields[] = $field;
 			}
 		}
 

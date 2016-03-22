@@ -1,5 +1,7 @@
 <?php
 
+use SilverStripe\Model\FieldType\DBVarchar;
+
 class VirtualPageTest extends FunctionalTest {
 	protected static $fixture_file = 'VirtualPageTest.yml';
 	protected static $use_draft_site = false;
@@ -618,7 +620,7 @@ class VirtualPageTest_NotRoot extends Page implements TestOnly {
 	private static $can_be_root = false;
 }
 
-class VirtualPageTest_TestDBField extends Varchar implements TestOnly {
+class VirtualPageTest_TestDBField extends DBVarchar implements TestOnly {
 	public function forTemplate() {
 		return strtoupper($this->XML());
 	}
