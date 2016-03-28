@@ -760,9 +760,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 *
 	 * @param string $perm The permission to be checked, such as 'View'
 	 * @param Member $member The member whose permissions need checking. Defaults to the currently logged in user.
+	 * @param array $context Context argument for canCreate()
 	 * @return bool True if the the member is allowed to do the given action
 	 */
-	public function can($perm, $member = null) {
+	public function can($perm, $member = null, $context = array()) {
 		if(!$member || !(is_a($member, 'Member')) || is_numeric($member)) {
 			$member = Member::currentUserID();
 		}
