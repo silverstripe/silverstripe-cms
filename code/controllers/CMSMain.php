@@ -647,6 +647,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				$form->setFields($readonlyFields);
 			}
 
+			$form->Fields()->setForm($form);
+
 			$this->extend('updateEditForm', $form);
 			return $form;
 		} else if($id) {
