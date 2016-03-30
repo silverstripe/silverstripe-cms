@@ -22,22 +22,12 @@
 	}
 
 	_jQuery2.default.entwine('ss', function ($) {
-		/**
-   * Class: .field.urlsegment
-   *
-   * Provides enhanced functionality (read-only/edit switch) and
-   * input validation on the URLSegment field
-   */
 		$('.field.urlsegment:not(.readonly)').entwine({
-
-			// Roughly matches the field width including edit button
 			MaxPreviewLength: 55,
 
 			Ellipsis: '...',
 
 			onmatch: function onmatch() {
-				// Only initialize the field if it contains an editable field.
-				// This ensures we don't get bogus previews on readonly fields.
 				if (this.find(':text').length) this.toggleEdit(false);
 				this.redraw();
 
@@ -49,18 +39,13 @@
 				    url = decodeURI(field.data('prefix') + field.val()),
 				    previewUrl = url;
 
-				// Truncate URL if required (ignoring the suffix, retaining the full value)
 				if (url.length > this.getMaxPreviewLength()) {
 					previewUrl = this.getEllipsis() + url.substr(url.length - this.getMaxPreviewLength(), url.length);
 				}
 
-				// Transfer current value to holder
 				this.find('.preview').attr('href', encodeURI(url + field.data('suffix'))).text(previewUrl);
 			},
 
-			/**
-    * @param Boolean
-    */
 			toggleEdit: function toggleEdit(toggle) {
 				var field = this.find(':text');
 
@@ -68,15 +53,11 @@
 				this.find('.edit-holder')[toggle ? 'show' : 'hide']();
 
 				if (toggle) {
-					field.data("origval", field.val()); //retain current value for cancel
+					field.data("origval", field.val());
 					field.focus();
 				}
 			},
 
-			/**
-    * Commits the change of the URLSegment to the field
-    * Optional: pass in (String) to update the URLSegment
-    */
 			update: function update() {
 				var self = this,
 				    field = this.find(':text'),
@@ -98,21 +79,12 @@
 				}
 			},
 
-			/**
-    * Cancels any changes to the field
-    */
 			cancel: function cancel() {
 				var field = this.find(':text');
 				field.val(field.data("origval"));
 				this.toggleEdit(false);
 			},
 
-			/**
-    * Return a value matching the criteria.
-    *
-    * @param (String)
-    * @param (Function)
-    */
 			suggest: function suggest(val, callback) {
 				var self = this,
 				    field = self.find(':text'),

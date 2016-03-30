@@ -1,0 +1,5 @@
+docs/                 export-ignore
+javascript/src/       export ignore
+
+# Hide diffs
+javascript/dist/ -diff
