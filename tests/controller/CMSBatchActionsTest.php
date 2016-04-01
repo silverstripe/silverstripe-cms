@@ -15,7 +15,7 @@ class CMSBatchActionsTest extends SapphireTest {
 
 		// published page
 		$published = $this->objFromFixture('SiteTree', 'published');
-		$published->doPublish();
+		$published->publishSingle();
 
 		// Deleted / archived page
 		$archived = $this->objFromFixture('SiteTree', 'archived');
@@ -23,12 +23,12 @@ class CMSBatchActionsTest extends SapphireTest {
 
 		// Unpublished
 		$unpublished = $this->objFromFixture('SiteTree', 'unpublished');
-		$unpublished->doPublish();
+		$unpublished->publishSingle();
 		$unpublished->doUnpublish();
 
 		// Modified
 		$modified = $this->objFromFixture('SiteTree', 'modified');
-		$modified->doPublish();
+		$modified->publishSingle();
 		$modified->Title = 'modified2';
 		$modified->write();
 	}

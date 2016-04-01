@@ -75,7 +75,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 
 		$publishedPage = $this->objFromFixture('SiteTree', 'publicPublishedPage');
-		$publishedPage->publish('Stage', 'Live');
+		$publishedPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$this->waitUntilIndexingFinished();
 		$results = $sf->getResults(null, array('Search'=>'publicPublishedPage'));
@@ -94,7 +94,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 		$publishedPage = $this->objFromFixture('SiteTree', 'publicPublishedPage');
 		$publishedPage->Title = "finding butterflies";
 		$publishedPage->write();
-		$publishedPage->publish('Stage', 'Live');
+		$publishedPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$this->waitUntilIndexingFinished();
 		$results = $sf->getResults(null, array('Search'=>'"finding butterflies"'));
@@ -125,7 +125,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 
 		$page = $this->objFromFixture('SiteTree', 'restrictedViewLoggedInUsers');
-		$page->publish('Stage', 'Live');
+		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$results = $sf->getResults(null, array('Search'=>'restrictedViewLoggedInUsers'));
 		$this->assertNotContains(
 			$page->ID,
@@ -150,7 +150,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 
 		$page = $this->objFromFixture('SiteTree', 'restrictedViewOnlyWebsiteUsers');
-		$page->publish('Stage', 'Live');
+		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$results = $sf->getResults(null, array('Search'=>'restrictedViewOnlyWebsiteUsers'));
 		$this->assertNotContains(
 			$page->ID,
@@ -183,10 +183,10 @@ class ZZZSearchFormTest extends FunctionalTest {
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 
 		$parent = $this->objFromFixture('SiteTree', 'restrictedViewLoggedInUsers');
-		$parent->publish('Stage', 'Live');
+		$parent->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$page = $this->objFromFixture('SiteTree', 'inheritRestrictedView');
-		$page->publish('Stage', 'Live');
+		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$results = $sf->getResults(null, array('Search'=>'inheritRestrictedView'));
 		$this->assertNotContains(
 			$page->ID,
@@ -225,9 +225,9 @@ class ZZZSearchFormTest extends FunctionalTest {
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 
 		$dontShowInSearchFile = $this->objFromFixture('File', 'dontShowInSearchFile');
-		$dontShowInSearchFile->publish('Stage', 'Live');
+		$dontShowInSearchFile->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$showInSearchFile = $this->objFromFixture('File', 'showInSearchFile');
-		$showInSearchFile->publish('Stage', 'Live');
+		$showInSearchFile->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$results = $sf->getResults(null, array('Search'=>'dontShowInSearchFile'));
 		$this->assertNotContains(
@@ -254,7 +254,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 
 		$pageWithSpecialChars = $this->objFromFixture('SiteTree', 'pageWithSpecialChars');
-		$pageWithSpecialChars->publish('Stage', 'Live');
+		$pageWithSpecialChars->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$results = $sf->getResults(null, array('Search'=>'Brötchen'));
 		$this->assertContains(

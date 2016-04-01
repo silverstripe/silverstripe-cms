@@ -21,7 +21,7 @@ class FileLinkTrackingTest extends SapphireTest {
 			Filesystem::makeFolder(dirname($destPath));
 			file_put_contents($destPath, str_repeat('x', 1000000));
 			// Ensure files are published, thus have public urls
-			$file->doPublish();
+			$file->publishRecursive();
 		}
 
 		// Since we can't hard-code IDs, manually inject image tracking shortcode
@@ -46,7 +46,7 @@ class FileLinkTrackingTest extends SapphireTest {
 	 */
 	public function testFileRenameUpdatesDraftAndPublishedPages() {
 		$page = $this->objFromFixture('Page', 'page1');
-		$page->doPublish();
+		$page->publishRecursive();
 
 		// Live and stage pages both have link to public file
 		Versioned::set_stage(Versioned::DRAFT);
@@ -82,7 +82,7 @@ class FileLinkTrackingTest extends SapphireTest {
 		// Publishing the file should result in a direct public link (indicated by "FileLinkTrackingTest")
 		// Although the old live page will still point to the old record.
 		// @todo - Ensure shortcodes are used with all images to prevent live records having broken links
-		$file->doPublish();
+		$file->publishRecursive();
 		Versioned::set_stage(Versioned::DRAFT);
 		$this->assertContains(
 			'<img src="/assets/FileLinkTrackingTest/55b443b601/renamed-test-file.jpg"',
@@ -95,7 +95,7 @@ class FileLinkTrackingTest extends SapphireTest {
 		);
 
 		// Publishing the page after publishing the asset should retain linking
-		$page->doPublish();
+		$page->publishRecursive();
 		Versioned::set_stage(Versioned::DRAFT);
 		$this->assertContains(
 			'<img src="/assets/FileLinkTrackingTest/55b443b601/renamed-test-file.jpg"',
@@ -111,13 +111,13 @@ class FileLinkTrackingTest extends SapphireTest {
 	public function testFileLinkRewritingOnVirtualPages() {
 		// Publish the source page
 		$page = $this->objFromFixture('Page', 'page1');
-		$this->assertTrue($page->doPublish());
+		$this->assertTrue($page->publishRecursive());
 
 		// Create a virtual page from it, and publish that
 		$svp = new VirtualPage();
 		$svp->CopyContentFromID = $page->ID;
 		$svp->write();
-		$svp->doPublish();
+		$svp->publishRecursive();
 
 		// Rename the file
 		$file = $this->objFromFixture('Image', 'file1');
@@ -132,8 +132,8 @@ class FileLinkTrackingTest extends SapphireTest {
 		);
 
 		// Publishing both file and page will update the live record
-		$file->doPublish();
-		$page->doPublish();
+		$file->publishRecursive();
+		$page->publishRecursive();
 
 		Versioned::set_stage(Versioned::LIVE);
 		$this->assertContains(
@@ -145,7 +145,7 @@ class FileLinkTrackingTest extends SapphireTest {
 	public function testLinkRewritingOnAPublishedPageDoesntMakeItEditedOnDraft() {
 		// Publish the source page
 		$page = $this->objFromFixture('Page', 'page1');
-		$this->assertTrue($page->doPublish());
+		$this->assertTrue($page->publishRecursive());
 		$this->assertFalse($page->getIsModifiedOnStage());
 
 		// Rename the file
@@ -163,7 +163,7 @@ class FileLinkTrackingTest extends SapphireTest {
 
 	public function testTwoFileRenamesInARowWork() {
 		$page = $this->objFromFixture('Page', 'page1');
-		$this->assertTrue($page->doPublish());
+		$this->assertTrue($page->publishRecursive());
 
 		Versioned::set_stage(Versioned::LIVE);
 		$this->assertContains(
@@ -182,7 +182,7 @@ class FileLinkTrackingTest extends SapphireTest {
 		$file = DataObject::get_by_id('File', $file->ID);
 		$file->Name = 'renamed-test-file-second-time.jpg';
 		$file->write();
-		$file->doPublish();
+		$file->publishRecursive();
 
 		// Confirm that the correct image is shown in both the draft and live site
 		Versioned::set_stage(Versioned::DRAFT);
@@ -192,7 +192,7 @@ class FileLinkTrackingTest extends SapphireTest {
 		);
 
 		// Publishing this record also updates live record
-		$page->doPublish();
+		$page->publishRecursive();
 		Versioned::set_stage(Versioned::LIVE);
 		$this->assertContains(
 			'<img src="/assets/FileLinkTrackingTest/55b443b601/renamed-test-file-second-time.jpg"',

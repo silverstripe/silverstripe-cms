@@ -6,7 +6,7 @@ class ContentControllerSearchExtensionTest extends SapphireTest {
 		$page->URLSegment = 'whatever';
 		$page->Content = 'oh really?';
 		$page->write();
-		$page->publish('Stage', 'Live');
+		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$controller = new ContentController($page);
 		$form = $controller->SearchForm();
 

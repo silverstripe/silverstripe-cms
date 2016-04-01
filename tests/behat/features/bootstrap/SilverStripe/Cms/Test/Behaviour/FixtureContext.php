@@ -31,6 +31,7 @@ class FixtureContext extends \SilverStripe\BehatExtension\Context\FixtureContext
 		if (!$targetObj) $targetObj = $this->fixtureFactory->get($targetClass, $targetId);
 
 		$fields = array('LinkToID' => $targetObj->ID);
+		/** @var \RedirectorPage $obj */
 		$obj = $this->fixtureFactory->get($class, $id);
 		if ($obj) {
 			$obj->update($fields);
@@ -38,7 +39,7 @@ class FixtureContext extends \SilverStripe\BehatExtension\Context\FixtureContext
 			$obj = $this->fixtureFactory->createObject($class, $id, $fields);
 		}
 		$obj->write();
-		$obj->publish('Stage', 'Live');
+		$obj->copyVersionToStage(\Versioned::DRAFT, \Versioned::LIVE);
 	}
 
 	/**

@@ -25,7 +25,7 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$page = new SiteTreeActionsTest_Page();
 		$page->CanEditType = 'LoggedInUsers';
 		$page->write();
-		$page->doPublish();
+		$page->publishRecursive();
 
 		$actions = $page->getCMSActions();
 
@@ -47,7 +47,7 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$page->CanEditType = 'LoggedInUsers';
 		$page->write();
 		$pageID = $page->ID;
-		$page->doPublish();
+		$page->publishRecursive();
 		$page->deleteFromStage('Stage');
 
 		// Get the live version of the page
@@ -76,7 +76,7 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$page = new Page();
 		$page->CanEditType = 'LoggedInUsers';
 		$page->write();
-		$page->doPublish();
+		$page->publishRecursive();
 
 		$actions = $page->getCMSActions();
 
@@ -99,7 +99,7 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$page->CanEditType = 'LoggedInUsers';
 		$page->write();
 		$pageID = $page->ID;
-		$page->doPublish();
+		$page->publishRecursive();
 		$page->deleteFromStage('Stage');
 
 		// Get the live version of the page
@@ -126,7 +126,7 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$page = new Page();
 		$page->CanEditType = 'LoggedInUsers';
 		$page->write();
-		$page->doPublish();
+		$page->publishRecursive();
 		$page->Content = 'Changed on Stage';
 		$page->write();
 		$page->flushCache();

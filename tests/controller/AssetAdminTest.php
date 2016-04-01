@@ -17,7 +17,7 @@ class AssetAdminTest extends SapphireTest {
 		// Create a test folders for each of the fixture references
 		foreach(File::get()->filter('ClassName', 'Folder') as $folder) {
 			/** @var Folder $folder */
-			$folder->doPublish();
+			$folder->publishSingle();
 		}
 
 		// Create a test files for each of the fixture references
@@ -25,7 +25,7 @@ class AssetAdminTest extends SapphireTest {
 		foreach(File::get()->exclude('ClassName', 'Folder') as $file) {
 			/** @var File $file */
 			$file->setFromString($content, $file->generateFilename());
-			$file->doPublish();
+			$file->publishSingle();
 		}
 	}
 

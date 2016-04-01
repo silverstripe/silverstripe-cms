@@ -26,7 +26,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
 
 		$this->page->Content = "some further content";
 		$this->page->write();
-		$this->page->publish('Stage', 'Live');
+		$this->page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$this->versionPublishCheck = $this->page->Version;
 
 		$this->page->Content = "No, more changes please";
@@ -36,7 +36,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
 
 		$this->page->Title = "Final Change";
 		$this->page->write();
-		$this->page->publish('Stage', 'Live');
+		$this->page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$this->versionPublishCheck2 = $this->page->Version;
 	}
 

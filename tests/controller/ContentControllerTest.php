@@ -116,13 +116,13 @@ class ContentControllerTest extends FunctionalTest {
 		$linkedPage = new SiteTree();
 		$linkedPage->URLSegment = 'linked-page';
 		$linkedPage->write();
-		$linkedPage->publish('Stage', 'Live');
+		$linkedPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$page = new SiteTree();
 		$page->URLSegment = 'linking-page';
 		$page->Content = sprintf('<a href="[sitetree_link,id=%s]">Testlink</a>', $linkedPage->ID);
 		$page->write();
-		$page->publish('Stage', 'Live');
+		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$this->assertContains(
 			sprintf('<a href="%s">Testlink</a>', $linkedPage->Link()),
@@ -146,7 +146,7 @@ class ContentControllerTest extends FunctionalTest {
 			$page = new ContentControllerTestPageWithoutController();
 			$page->URLSegment = "test";
 			$page->write();
-			$page->publish("Stage", "Live");
+			$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 			$response = $self->get($page->RelativeLink());
 			$self->assertEquals("ContentControllerTestPageWithoutController", trim($response->getBody()));
@@ -155,7 +155,7 @@ class ContentControllerTest extends FunctionalTest {
 			$page = new ContentControllerTestPage();
 			$page->URLSegment = "test";
 			$page->write();
-			$page->publish("Stage", "Live");
+			$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 			$response = $self->get($page->RelativeLink());
 			$self->assertEquals("Page", trim($response->getBody()));
@@ -165,7 +165,7 @@ class ContentControllerTest extends FunctionalTest {
 			$page = new ContentControllerTestPage();
 			$page->URLSegment = "page-without-controller";
 			$page->write();
-			$page->publish("Stage", "Live");
+			$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 			$response = $self->get($page->RelativeLink("test"));
 			$self->assertEquals("ContentControllerTestPage_test", trim($response->getBody()));

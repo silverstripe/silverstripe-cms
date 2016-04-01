@@ -31,7 +31,7 @@ class ErrorPageTest extends FunctionalTest {
 	public function test404ErrorPage() {
 		$page = $this->objFromFixture('ErrorPage', '404');
 		// ensure that the errorpage exists as a physical file
-		$page->publish('Stage', 'Live');
+		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$response = $this->get('nonexistent-page');
 
@@ -57,7 +57,7 @@ class ErrorPageTest extends FunctionalTest {
 
 	public function testBehaviourOf403() {
 		$page = $this->objFromFixture('ErrorPage', '403');
-		$page->publish('Stage', 'Live');
+		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$response = $this->get($page->RelativeLink());
 
@@ -68,7 +68,7 @@ class ErrorPageTest extends FunctionalTest {
 	public function testSecurityError() {
 		// Generate 404 page
 		$page = $this->objFromFixture('ErrorPage', '404');
-		$page->publish('Stage', 'Live');
+		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		// Test invalid action
 		$response = $this->get('Security/nosuchaction');
@@ -88,8 +88,8 @@ class ErrorPageTest extends FunctionalTest {
 		$page->ErrorCode = 401;
 		$page->Title = 'Unauthorised';
 		$page->write();
-		$page->publish('Stage', 'Live');
-		$page->doPublish();
+		$page->copyVersionToStage('Stage', 'Live');
+		$page->publishRecursive();
 
 		// Static cache should now exist
 		$this->assertNotEmpty(ErrorPage::get_content_for_errorcode('401'));
@@ -108,7 +108,7 @@ class ErrorPageTest extends FunctionalTest {
 		$page->ErrorCode = 405;
 		$page->Title = 'Method Not Allowed';
 		$page->write();
-		$page->doPublish();
+		$page->publishRecursive();
 
 		// Dynamic content is available
 		$response = ErrorPage::response_for('405');

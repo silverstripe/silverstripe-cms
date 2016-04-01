@@ -110,7 +110,7 @@ class ErrorPage extends Page {
 				if(!$pageExists) {
 					$page = new ErrorPage($defaultData);
 					$page->write();
-					$page->publish('Stage', 'Live');
+					$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 				}
 
 				// Check if static files are enabled
@@ -227,8 +227,10 @@ class ErrorPage extends Page {
 	 *
 	 * @return bool True if published
 	 */
-	public function doPublish() {
-		if (!parent::doPublish()) return false;
+	public function publishSingle() {
+		if (!parent::publishSingle()) {
+			return false;
+		}
 		return $this->writeStaticPage();
 	}
 

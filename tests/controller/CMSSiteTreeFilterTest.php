@@ -48,11 +48,11 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 
 	public function testChangedPagesFilter() {
 		$unchangedPage = $this->objFromFixture('Page', 'page1');
-		$unchangedPage->doPublish();
+		$unchangedPage->publishRecursive();
 
 		$changedPage = $this->objFromFixture('Page', 'page2');
 		$changedPage->Title = 'Original';
-		$changedPage->publish('Stage', 'Live');
+		$changedPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$changedPage->Title = 'Changed';
 		$changedPage->write();
 
@@ -75,7 +75,7 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 
 		// If we roll back to an earlier version than what's on the published site, we should still show the changed
 		$changedPage->Title = 'Changed 2';
-		$changedPage->publish('Stage', 'Live');
+		$changedPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$changedPage->doRollbackTo(1);
 
 		$f = new CMSSiteTreeFilter_ChangedPages(array('Term' => 'Changed'));
@@ -87,7 +87,7 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 
 	public function testDeletedPagesFilter() {
 		$deletedPage = $this->objFromFixture('Page', 'page2');
-		$deletedPage->publish('Stage', 'Live');
+		$deletedPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$deletedPageID = $deletedPage->ID;
 		$deletedPage->delete();
 		$deletedPage = Versioned::get_one_by_stage(
@@ -106,7 +106,6 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 
 	public function testStatusDraftPagesFilter() {
 		$draftPage = $this->objFromFixture('Page', 'page4');
-		$draftPage->publish('Stage', 'Stage');
 		$draftPage = Versioned::get_one_by_stage(
 			'SiteTree',
 			'Stage',
@@ -141,7 +140,7 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 
 	public function testStatusRemovedFromDraftFilter() {
 		$removedDraftPage = $this->objFromFixture('Page', 'page6');
-		$removedDraftPage->doPublish();
+		$removedDraftPage->publishRecursive();
 		$removedDraftPage->deleteFromStage('Stage');
 		$removedDraftPage = Versioned::get_one_by_stage(
 			'SiteTree',
@@ -165,7 +164,7 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 
 	public function testStatusDeletedFilter() {
 		$deletedPage = $this->objFromFixture('Page', 'page7');
-		$deletedPage->publish('Stage', 'Live');
+		$deletedPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$deletedPageID = $deletedPage->ID;
 
 		// Can't use straight $blah->delete() as that blows it away completely and test fails

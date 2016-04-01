@@ -14,7 +14,7 @@ class ContentControllerPermissionsTest extends FunctionalTest {
 		$page = new Page();
 		$page->URLSegment = 'testpage';
 		$page->write();
-		$page->publish('Stage', 'Live');
+		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		// Add a stage-only version
 		$page->Content = "Version2";
