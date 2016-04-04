@@ -4,7 +4,6 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     uglify = require('gulp-uglify');
     gulpUtil = require('gulp-util'),
-    gulpif = require('gulp-if'),
     browserify = require('browserify'),
     babelify = require('babelify'),
     watchify = require('watchify'),
@@ -23,16 +22,24 @@ var PATHS = {
     CMS_JAVASCRIPT_DIST: './javascript/dist'
 };
 
-var browserifyOptions = {
-    cache: {},
-    packageCache: {},
-    poll: true,
-    plugin: [watchify]
-};
-
 var isDev = typeof process.env.npm_config_development !== 'undefined';
 
 process.env.NODE_ENV = isDev ? 'development' : 'production';
+
+var babelifyOptions = {
+    presets: ['es2015', 'es2015-ie', 'react'],
+    plugins: ['transform-object-assign'],
+	ignore: /(node_modules|thirdparty)/,
+	comments: false
+};
+
+const browserifyOptions = {};
+if (isDev) {
+  browserifyOptions.debug = true;
+  browserifyOptions.cache = {};
+  browserifyOptions.packageCache = {};
+  browserifyOptions.plugin = [watchify];
+}
 
 /**
  * Transforms the passed JavaScript files to UMD modules.
@@ -63,17 +70,6 @@ if (!semver.satisfies(process.versions.node, packageJson.engines.node)) {
     process.exit(1);
 }
 
-if (isDev) {
-    browserifyOptions.debug = true;
-}
-
-var babelifyOptions = {
-    presets: ['es2015', 'es2015-ie', 'react'],
-    plugins: ['transform-object-assign'],
-	ignore: /(node_modules|thirdparty)/,
-	comments: false
-};
-
 gulp.task('build', ['umd-cms', 'umd-watch', 'bundle-legacy']);
 
 gulp.task('bundle-legacy', function bundleLeftAndMain() {
@@ -91,7 +87,7 @@ gulp.task('bundle-legacy', function bundleLeftAndMain() {
 		.pipe(source(bundleFileName))
 		.pipe(buffer())
 		.pipe(sourcemaps.init({ loadMaps: true }))
-		.pipe(gulpif(!isDev, uglify()))
+		.pipe(uglify())
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(PATHS.CMS_JAVASCRIPT_DIST));
 });
@@ -101,5 +97,7 @@ gulp.task('umd-cms', function () {
 });
 
 gulp.task('umd-watch', function () {
-    gulp.watch(PATHS.CMS_JAVASCRIPT_SRC + '/*.js', ['umd-cms']);
+    if (isDev) {
+        gulp.watch(PATHS.CMS_JAVASCRIPT_SRC + '/*.js', ['umd-cms']);
+    }
 });
