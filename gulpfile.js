@@ -68,7 +68,8 @@ if (isDev) {
 }
 
 var babelifyOptions = {
-	presets: ['es2015', 'react'],
+    presets: ['es2015', 'es2015-ie', 'react'],
+    plugins: ['transform-object-assign'],
 	ignore: /(node_modules|thirdparty)/,
 	comments: false
 };
