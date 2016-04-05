@@ -68,7 +68,7 @@ class SiteTreePermissionsTest extends FunctionalTest {
 		$this->logInWithPermission("ADMIN");
 		$page = $this->objFromFixture('Page','restrictedEditOnlySubadminGroup');
 		$pageID = $page->ID;
-		$this->assertTrue($page->doPublish());
+		$this->assertTrue($page->publishRecursive());
 		$page->delete();
 
 		// Re-fetch the page from the live site
@@ -134,7 +134,7 @@ class SiteTreePermissionsTest extends FunctionalTest {
 
 		// Get page & make sure it exists on Live
 		$page = $this->objFromFixture('Page', 'standardpage');
-		$page->publish('Stage', 'Live');
+		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		// Then make sure there's a new version on Stage
 		$page->Title = 1;
@@ -382,7 +382,7 @@ class SiteTreePermissionsTest extends FunctionalTest {
 
 		$this->logInWithPermission("ADMIN");
 
-		$page->doPublish();
+		$page->publishRecursive();
 		$page->deleteFromStage('Stage');
 
 		// Get the live version of the page

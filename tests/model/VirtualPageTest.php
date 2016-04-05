@@ -67,7 +67,7 @@ class VirtualPageTest extends FunctionalTest {
 		$this->logInWithPermission('ADMIN');
 
 		$master = $this->objFromFixture('Page', 'master');
-		$master->doPublish();
+		$master->publishRecursive();
 
 		$master->Title = "New title";
 		$master->MenuTitle = "New menutitle";
@@ -76,10 +76,10 @@ class VirtualPageTest extends FunctionalTest {
 
 		$vp1 = DataObject::get_by_id("VirtualPage", $this->idFromFixture('VirtualPage', 'vp1'));
 		$vp2 = DataObject::get_by_id("VirtualPage", $this->idFromFixture('VirtualPage', 'vp2'));
-		$this->assertTrue($vp1->doPublish());
-		$this->assertTrue($vp2->doPublish());
+		$this->assertTrue($vp1->publishRecursive());
+		$this->assertTrue($vp2->publishRecursive());
 
-		$master->doPublish();
+		$master->publishRecursive();
 
 		Versioned::set_stage(Versioned::LIVE);
 		$vp1 = DataObject::get_by_id("VirtualPage", $this->idFromFixture('VirtualPage', 'vp1'));
@@ -126,14 +126,14 @@ class VirtualPageTest extends FunctionalTest {
 		$p = new Page();
 		$p->Content = "published content";
 		$p->write();
-		$p->doPublish();
+		$p->publishRecursive();
 
 		// Virtual page has this content
 		$vp = new VirtualPage();
 		$vp->CopyContentFromID = $p->ID;
 		$vp->write();
 
-		$vp->doPublish();
+		$vp->publishRecursive();
 
 		// Don't publish this change - published page will still say 'published content'
 		$p->Content = "draft content";
@@ -152,7 +152,7 @@ class VirtualPageTest extends FunctionalTest {
 		$this->assertEquals('published content', $vpLive->Content);
 
 		// Publishing the virtualpage should, however, trigger publishing of the live page
-		$vpDraft->doPublish();
+		$vpDraft->publishRecursive();
 
 		// Everything is published live
 		$vpLive = Versioned::get_by_stage("VirtualPage", Versioned::LIVE)->byID($vp->ID);
@@ -177,7 +177,7 @@ class VirtualPageTest extends FunctionalTest {
 		$this->assertFalse($vp->canPublish());
 
 		// Once the source page gets published, then we can publish
-		$p->doPublish();
+		$p->publishRecursive();
 		$this->assertTrue($vp->canPublish());
 	}
 
@@ -186,14 +186,14 @@ class VirtualPageTest extends FunctionalTest {
 		$p = new Page();
 		$p->Content = "test content";
 		$p->write();
-		$p->doPublish();
+		$p->publishRecursive();
 		$pID = $p->ID;
 
 		$vp = new VirtualPage();
 		$vp->CopyContentFromID = $p->ID;
 		$vp->write();
 		$this->assertTrue($vp->canPublish());
-		$this->assertTrue($vp->doPublish());
+		$this->assertTrue($vp->publishRecursive());
 
 		// Delete the source page semi-manually, without triggering
 		// the cascade publish back to the virtual page.
@@ -238,9 +238,9 @@ class VirtualPageTest extends FunctionalTest {
 
 	public function testCanView() {
 		$parentPage = $this->objFromFixture('Page', 'master3');
-		$parentPage->publish('Stage', 'Live');
+		$parentPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$virtualPage = $this->objFromFixture('VirtualPage', 'vp3');
-		$virtualPage->publish('Stage', 'Live');
+		$virtualPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$cindy = $this->objFromFixture('Member', 'cindy');
 		$alice = $this->objFromFixture('Member', 'alice');
 
@@ -268,7 +268,7 @@ class VirtualPageTest extends FunctionalTest {
 		$this->assertTrue($vp->getIsAddedToStage());
 
 		// VP is still orange after we publish
-		$p->doPublish();
+		$p->publishRecursive();
 		$this->assertTrue($vp->getIsAddedToStage());
 
 		// A new VP created after P's initial construction
@@ -280,11 +280,11 @@ class VirtualPageTest extends FunctionalTest {
 		// Also remains orange after a republish
 		$p->Content = "new content";
 		$p->write();
-		$p->doPublish();
+		$p->publishRecursive();
 		$this->assertTrue($vp2->getIsAddedToStage());
 
 		// VP is now published
-		$vp->doPublish();
+		$vp->publishRecursive();
 
 		$this->assertTrue($vp->getExistsOnLive());
 		$this->assertFalse($vp->getIsModifiedOnStage());
@@ -298,7 +298,7 @@ class VirtualPageTest extends FunctionalTest {
 		$this->assertFalse($vp->getIsModifiedOnStage());
 
 		// Publish, VP goes black
-		$p->doPublish();
+		$p->publishRecursive();
 		$this->assertTrue($vp->getExistsOnLive());
 		$this->assertFalse($vp->getIsModifiedOnStage());
 	}
@@ -308,11 +308,11 @@ class VirtualPageTest extends FunctionalTest {
 		$p = new Page();
 		$p->Title = "source";
 		$p->write();
-		$this->assertTrue($p->doPublish());
+		$this->assertTrue($p->publishRecursive());
 		$vp = new VirtualPage();
 		$vp->CopyContentFromID = $p->ID;
 		$vp->write();
-		$this->assertTrue($vp->doPublish());
+		$this->assertTrue($vp->publishRecursive());
 
 		// All is fine, the virtual page doesn't have a broken link
 		$this->assertFalse($vp->HasBrokenLink);
@@ -340,11 +340,11 @@ class VirtualPageTest extends FunctionalTest {
 		$p = new Page();
 		$p->Title = "source";
 		$p->write();
-		$this->assertTrue($p->doPublish());
+		$this->assertTrue($p->publishRecursive());
 		$vp = new VirtualPage();
 		$vp->CopyContentFromID = $p->ID;
 		$vp->write();
-		$this->assertTrue($vp->doPublish());
+		$this->assertTrue($vp->publishRecursive());
 
 		// All is fine, the virtual page doesn't have a broken link
 		$this->assertFalse($vp->HasBrokenLink);
@@ -478,13 +478,13 @@ class VirtualPageTest extends FunctionalTest {
 		$page->Title = 'published title';
 		$page->MySharedNonVirtualField = 'original';
 		$page->write();
-		$page->publish('Stage', 'Live');
+		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$virtual = new VirtualPageTest_VirtualPageSub();
 		$virtual->CopyContentFromID = $page->ID;
 		$virtual->MySharedNonVirtualField = 'virtual published field';
 		$virtual->write();
-		$virtual->publish('Stage', 'Live');
+		$virtual->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$page->Title = 'original'; // 'Title' is a virtual field
 		// Publication would causes the virtual field to copy through onBeforeWrite(),
@@ -517,7 +517,7 @@ class VirtualPageTest extends FunctionalTest {
 		$page->Title = 'title changed on original';
 		$page->MySharedNonVirtualField = 'changed only on original';
 		$page->write();
-		$page->publish('Stage', 'Live');
+		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		// Virtual page only notices changes to virtualised fields (Title)
 		$virtualLive = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree_Live"."ID" = ' . $virtual->ID, false);
@@ -584,11 +584,11 @@ class VirtualPageTest extends FunctionalTest {
 
 		$rp = new RedirectorPage(array('ExternalURL' => 'http://google.com', 'RedirectionType' => 'External'));
 		$rp->write();
-		$rp->doPublish();
+		$rp->publishRecursive();
 
 		$vp = new VirtualPage(array('URLSegment' => 'vptest', 'CopyContentFromID' => $rp->ID));
 		$vp->write();
-		$vp->doPublish();
+		$vp->publishRecursive();
 
 		$response = $this->get($vp->Link());
 		$this->assertEquals(301, $response->getStatusCode());

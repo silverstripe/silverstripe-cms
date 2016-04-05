@@ -86,8 +86,8 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		// publish page 1 & 3
 		$page1 = $this->objFromFixture('Page', 'page1');
 		$page3 = $this->objFromFixture('Page', 'page3');
-		$this->assertTrue($page1->doPublish());
-		$this->assertTrue($page3->doPublish());
+		$this->assertTrue($page1->publishRecursive());
+		$this->assertTrue($page3->publishRecursive());
 
 		// load pages from live
 		$page1live = Versioned::get_one_by_stage('Page', 'Live', '"SiteTree"."ID" = ' . $page1->ID);
@@ -120,8 +120,8 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		$page1 = $this->objFromFixture('Page', 'page1');
 		$page3 = $this->objFromFixture('Page', 'page3');
 
-		$this->assertTrue($page1->doPublish());
-		$this->assertTrue($page3->doPublish());
+		$this->assertTrue($page1->publishRecursive());
+		$this->assertTrue($page3->publishRecursive());
 
 		// load page 3 from live
 		$page3live = Versioned::get_one_by_stage('Page', 'Live', '"SiteTree"."ID" = ' . $page3->ID);
@@ -142,7 +142,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 
 
 		// publish page 1
-		$this->assertTrue($page1->doPublish());
+		$this->assertTrue($page1->publishRecursive());
 
 		// assert hyperlink to page 1's new published url exists
 		$page3live = Versioned::get_one_by_stage('Page', 'Live', '"SiteTree"."ID" = ' . $page3->ID);
@@ -156,8 +156,8 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		// publish page 1 & 3
 		$page1 = $this->objFromFixture('Page', 'page1');
 		$page3 = $this->objFromFixture('Page', 'page3');
-		$this->assertTrue($page1->doPublish());
-		$this->assertTrue($page3->doPublish());
+		$this->assertTrue($page1->publishRecursive());
+		$this->assertTrue($page3->publishRecursive());
 
 		// assert hyperlink to page 1's current url exists
 		$links = HTTP::getLinksIn($page3->obj('Content')->forTemplate());
@@ -175,7 +175,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		$this->assertContains(Director::baseURL().'new-url-segment/', $links, 'Assert hyperlink to page 1\'s current draft url exists on page 3');
 
 		// publish page 3
-		$this->assertTrue($page3->doPublish());
+		$this->assertTrue($page3->publishRecursive());
 
 		// assert page 3 on published site contains old page 1 url
 		$page3live = Versioned::get_one_by_stage('Page', 'Live', '"SiteTree"."ID" = ' . $page3->ID);
@@ -184,7 +184,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		$this->assertContains(Director::baseURL().'page1/', $links, 'Assert hyperlink to page 1\'s current published url exists on page 3');
 
 		// publish page 1
-		$this->assertTrue($page1->doPublish());
+		$this->assertTrue($page1->publishRecursive());
 
 		// assert page 3 on published site contains new page 1 url
 		$page3live = Versioned::get_one_by_stage('Page', 'Live', '"SiteTree"."ID" = ' . $page3->ID);
@@ -195,8 +195,8 @@ class SiteTreeBacklinksTest extends SapphireTest {
 	public function testLinkTrackingOnExtraContentFields() {
 		$page1 = $this->objFromFixture('Page', 'page1');
 		$page2 = $this->objFromFixture('Page', 'page2');
-		$page1->doPublish();
-		$page2->doPublish();
+		$page1->publishRecursive();
+		$page2->publishRecursive();
 
 		// assert backlink to page 2 doesn't exist
 		$this->assertNotContains($page2->ID, $page1->BackLinkTracking()->column('ID'), 'Assert backlink to page 2 doesn\'t exist');
@@ -204,7 +204,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		// add hyperlink to page 1 on page 2
 		$page2->ExtraContent .= '<p><a href="[sitetree_link,id='.$page1->ID.']">Testing page 1 link</a></p>';
 		$page2->write();
-		$page2->doPublish();
+		$page2->publishRecursive();
 
 		// assert backlink to page 2 exists
 		$this->assertContains($page2->ID, $page1->BackLinkTracking()->column('ID'), 'Assert backlink to page 2 exists');
@@ -227,7 +227,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		$this->assertEquals('<p><a href="'.Director::baseURL().'page1/">Testing page 1 link</a></p>', $page2Live->obj('ExtraContent')->forTemplate());
 
 		// publish page1 and confirm that the link on the published page2 has now been updated
-		$page1->doPublish();
+		$page1->publishRecursive();
 		$page2Live = Versioned::get_one_by_stage("Page", "Live", "\"SiteTree\".\"ID\" = $page2->ID");
 		$this->assertEquals('<p><a href="'.Director::baseURL().'page1-new-url/">Testing page 1 link</a></p>', $page2Live->obj('ExtraContent')->forTemplate());
 

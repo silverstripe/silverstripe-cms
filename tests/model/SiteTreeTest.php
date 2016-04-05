@@ -82,7 +82,7 @@ class SiteTreeTest extends SapphireTest {
 	 */
 	public function testPublishCopiesToLiveTable() {
 		$obj = $this->objFromFixture('Page','about');
-		$obj->publish('Stage', 'Live');
+		$obj->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$createdID = DB::query("SELECT \"ID\" FROM \"SiteTree_Live\" WHERE \"URLSegment\" = '$obj->URLSegment'")->value();
 		$this->assertEquals($obj->ID, $createdID);
@@ -97,13 +97,13 @@ class SiteTreeTest extends SapphireTest {
 		$obj = $this->objFromFixture('Page', 'about');
 		$obj->Title = "asdfasdf";
 		$obj->write();
-		$this->assertTrue($obj->doPublish());
+		$this->assertTrue($obj->publishRecursive());
 
 		$this->assertEquals('asdfasdf', DB::query("SELECT \"Title\" FROM \"SiteTree_Live\" WHERE \"ID\" = '$obj->ID'")->value());
 
 		$obj->Title = null;
 		$obj->write();
-		$this->assertTrue($obj->doPublish());
+		$this->assertTrue($obj->publishRecursive());
 
 		$this->assertNull(DB::query("SELECT \"Title\" FROM \"SiteTree_Live\" WHERE \"ID\" = '$obj->ID'")->value());
 
@@ -136,7 +136,7 @@ class SiteTreeTest extends SapphireTest {
 		$s->Title = "V1";
 		$s->URLSegment = "get-one-test-page";
 		$s->write();
-		$s->publish("Stage", "Live");
+		$s->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$s->Title = "V2";
 		$s->write();
 
@@ -153,7 +153,7 @@ class SiteTreeTest extends SapphireTest {
 
 	public function testChidrenOfRootAreTopLevelPages() {
 		$pages = SiteTree::get();
-		foreach($pages as $page) $page->publish('Stage', 'Live');
+		foreach($pages as $page) $page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		unset($pages);
 
 		/* If we create a new SiteTree object with ID = 0 */
@@ -201,7 +201,7 @@ class SiteTreeTest extends SapphireTest {
 		// published page
 		$publishedPage = new SiteTree();
 		$publishedPage->write();
-		$publishedPage->publish('Stage','Live');
+		$publishedPage->copyVersionToStage('Stage','Live');
 		$this->assertFalse($publishedPage->getIsDeletedFromStage());
 		$this->assertFalse($publishedPage->getIsAddedToStage());
 		$this->assertFalse($publishedPage->getIsModifiedOnStage());
@@ -210,7 +210,7 @@ class SiteTreeTest extends SapphireTest {
 		$deletedFromDraftPage = new SiteTree();
 		$deletedFromDraftPage->write();
 		$deletedFromDraftPageID = $deletedFromDraftPage->ID;
-		$deletedFromDraftPage->publish('Stage','Live');
+		$deletedFromDraftPage->copyVersionToStage('Stage','Live');
 		$deletedFromDraftPage->deleteFromStage('Stage');
 		$this->assertTrue($deletedFromDraftPage->getIsDeletedFromStage());
 		$this->assertFalse($deletedFromDraftPage->getIsAddedToStage());
@@ -219,7 +219,7 @@ class SiteTreeTest extends SapphireTest {
 		// published page, deleted from live
 		$deletedFromLivePage = new SiteTree();
 		$deletedFromLivePage->write();
-		$deletedFromLivePage->publish('Stage','Live');
+		$deletedFromLivePage->copyVersionToStage('Stage','Live');
 		$deletedFromLivePage->deleteFromStage('Stage');
 		$deletedFromLivePage->deleteFromStage('Live');
 		$this->assertTrue($deletedFromLivePage->getIsDeletedFromStage());
@@ -229,7 +229,7 @@ class SiteTreeTest extends SapphireTest {
 		// published page, modified
 		$modifiedOnDraftPage = new SiteTree();
 		$modifiedOnDraftPage->write();
-		$modifiedOnDraftPage->publish('Stage','Live');
+		$modifiedOnDraftPage->copyVersionToStage('Stage','Live');
 		$modifiedOnDraftPage->Content = 'modified';
 		$modifiedOnDraftPage->write();
 		$this->assertFalse($modifiedOnDraftPage->getIsDeletedFromStage());
@@ -331,10 +331,10 @@ class SiteTreeTest extends SapphireTest {
 
 		Config::inst()->update('SiteTree', 'nested_urls', true);
 
-		$child->publish('Stage', 'Live');
+		$child->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$parent->URLSegment = 'changed-on-live';
 		$parent->write();
-		$parent->publish('Stage', 'Live');
+		$parent->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$parent->URLSegment = 'changed-on-draft';
 		$parent->write();
 
@@ -373,11 +373,11 @@ class SiteTreeTest extends SapphireTest {
 		$this->logInWithPermission('ADMIN');
 
 		$pageAbout = $this->objFromFixture('Page', 'about');
-		$pageAbout->doPublish();
+		$pageAbout->publishRecursive();
 		$pageStaff = $this->objFromFixture('Page', 'staff');
-		$pageStaff->doPublish();
+		$pageStaff->publishRecursive();
 		$pageStaffDuplicate = $this->objFromFixture('Page', 'staffduplicate');
-		$pageStaffDuplicate->doPublish();
+		$pageStaffDuplicate->publishRecursive();
 
 		$parentPage = $this->objFromFixture('Page', 'about');
 
@@ -397,11 +397,11 @@ class SiteTreeTest extends SapphireTest {
 		$this->logInWithPermission('ADMIN');
 
 		$pageAbout = $this->objFromFixture('Page', 'about');
-		$pageAbout->doPublish();
+		$pageAbout->publishRecursive();
 		$pageStaff = $this->objFromFixture('Page', 'staff');
-		$pageStaff->doPublish();
+		$pageStaff->publishRecursive();
 		$pageStaffDuplicate = $this->objFromFixture('Page', 'staffduplicate');
-		$pageStaffDuplicate->doPublish();
+		$pageStaffDuplicate->publishRecursive();
 
 		$parentPage = $this->objFromFixture('Page', 'about');
 		$parentPage->doUnpublish();
@@ -418,11 +418,11 @@ class SiteTreeTest extends SapphireTest {
 		$this->logInWithPermission('ADMIN');
 
 		$pageAbout = $this->objFromFixture('Page', 'about');
-		$pageAbout->doPublish();
+		$pageAbout->publishRecursive();
 		$pageStaff = $this->objFromFixture('Page', 'staff');
-		$pageStaff->doPublish();
+		$pageStaff->publishRecursive();
 		$pageStaffDuplicate = $this->objFromFixture('Page', 'staffduplicate');
-		$pageStaffDuplicate->doPublish();
+		$pageStaffDuplicate->publishRecursive();
 
 		$parentPage = $this->objFromFixture('Page', 'about');
 		$parentPage->doUnpublish();
@@ -519,7 +519,7 @@ class SiteTreeTest extends SapphireTest {
 		$page = new Page();
 		$page->write();
 		$page->CanEditType = "Inherit";
-		$page->doPublish();
+		$page->publishRecursive();
 		$pageID = $page->ID;
 
 		// Lock down the site config
@@ -546,7 +546,7 @@ class SiteTreeTest extends SapphireTest {
 
 		// Publish the changes to the page
 		$this->objFromFixture('Member','admin')->logIn();
-		$page->doPublish();
+		$page->publishRecursive();
 
 		// Confirm that Member.editor can still edit the page
 		$this->objFromFixture('Member','editor')->logIn();
@@ -601,7 +601,7 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertEquals(0, $savedVersion['PublisherID']);
 
 		// Publish the page
-		$about->doPublish();
+		$about->publishRecursive();
 		$publishedVersion = DB::query("SELECT \"AuthorID\", \"PublisherID\" FROM \"SiteTree_versions\"
 			WHERE \"RecordID\" = $about->ID ORDER BY \"Version\" DESC")->first();
 
@@ -834,7 +834,7 @@ class SiteTreeTest extends SapphireTest {
 		$sitetree = DataObject::get_by_id('SiteTree', $sitetree->ID, false);
 		$this->assertEquals($sitetree->URLSegment, rawurlencode('brötchen'));
 
-		$sitetree->publish('Stage', 'Live');
+		$sitetree->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$sitetree = DataObject::get_by_id('SiteTree', $sitetree->ID, false);
 		$this->assertEquals($sitetree->URLSegment, rawurlencode('brötchen'));
 		$sitetreeLive = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree"."ID" = ' .$sitetree->ID, false);
@@ -1124,7 +1124,7 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertTrue($staff->canView($member));
 
 		// Publishing only the child page to live should orphan the live record, but not the staging one
-		$staff->publish('Stage', 'Live');
+		$staff->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$this->assertFalse($staff->isOrphaned());
 		$this->assertTrue($staff->canView($member));
 		Versioned::set_stage(Versioned::LIVE);
@@ -1135,7 +1135,7 @@ class SiteTreeTest extends SapphireTest {
 		// Publishing the parent page should restore visibility
 		Versioned::set_stage(Versioned::DRAFT);
 		$about = $this->objFromFixture('Page', 'about');
-		$about->publish('Stage', 'Live');
+		$about->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		Versioned::set_stage(Versioned::LIVE);
 		$staff = $this->objFromFixture('Page', 'staff');
 		$this->assertFalse($staff->isOrphaned());
@@ -1165,7 +1165,7 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertFalse($page->isPublished());
 
 		// Publish
-		$page->doPublish();
+		$page->publishRecursive();
 		$this->assertTrue($page->canAddChildren());
 		$this->assertFalse($page->getIsDeletedFromStage());
 		$this->assertTrue($page->isPublished());

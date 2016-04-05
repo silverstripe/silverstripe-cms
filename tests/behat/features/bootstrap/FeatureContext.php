@@ -40,7 +40,8 @@ class FeatureContext extends \SilverStripe\Framework\Test\Behaviour\FeatureConte
 		foreach(\ClassInfo::subclassesFor('SiteTree') as $id => $class) {
 			$blueprint = \Injector::inst()->create('FixtureBlueprint', $class);
 			$blueprint->addCallback('afterCreate', function($obj, $identifier, &$data, &$fixtures) {
-				$obj->publish('Stage', 'Live');
+				/** @var \SiteTree $obj */
+				$obj->copyVersionToStage(\Versioned::DRAFT, \Versioned::LIVE);
 			});
 			$factory->define($class, $blueprint);
 		}

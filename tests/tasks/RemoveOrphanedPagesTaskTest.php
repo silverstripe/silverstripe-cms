@@ -40,13 +40,13 @@ class RemoveOrphanedPagesTaskTest extends FunctionalTest {
 		parent::setUp();
 
 		$parent1_published = $this->objFromFixture('Page', 'parent1_published');
-		$parent1_published->publish('Stage', 'Live');
+		$parent1_published->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$child1_1_published = $this->objFromFixture('Page', 'child1_1_published');
-		$child1_1_published->publish('Stage', 'Live');
+		$child1_1_published->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$child1_2_published = $this->objFromFixture('Page', 'child1_2_published');
-		$child1_2_published->publish('Stage', 'Live');
+		$child1_2_published->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$child1_3_orphaned = $this->objFromFixture('Page', 'child1_3_orphaned');
 		$child1_3_orphaned->ParentID = 9999;
@@ -55,10 +55,10 @@ class RemoveOrphanedPagesTaskTest extends FunctionalTest {
 		$child1_4_orphaned_published = $this->objFromFixture('Page', 'child1_4_orphaned_published');
 		$child1_4_orphaned_published->ParentID = 9999;
 		$child1_4_orphaned_published->write();
-		$child1_4_orphaned_published->publish('Stage', 'Live');
+		$child1_4_orphaned_published->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$grandchild1_1_2_published = $this->objFromFixture('Page', 'grandchild1_1_2_published');
-		$grandchild1_1_2_published->publish('Stage', 'Live');
+		$grandchild1_1_2_published->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$grandchild1_1_3_orphaned = $this->objFromFixture('Page', 'grandchild1_1_3_orphaned');
 		$grandchild1_1_3_orphaned->ParentID = 9999;
@@ -69,10 +69,10 @@ class RemoveOrphanedPagesTaskTest extends FunctionalTest {
 		);
 		$grandchild1_1_4_orphaned_published->ParentID = 9999;
 		$grandchild1_1_4_orphaned_published->write();
-		$grandchild1_1_4_orphaned_published->publish('Stage', 'Live');
+		$grandchild1_1_4_orphaned_published->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$child2_1_published_orphaned = $this->objFromFixture('Page', 'child2_1_published_orphaned');
-		$child2_1_published_orphaned->publish('Stage', 'Live');
+		$child2_1_published_orphaned->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 	}
 
 	public function testGetOrphansByStage() {

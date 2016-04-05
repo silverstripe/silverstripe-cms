@@ -156,7 +156,7 @@ class CMSMainTest extends FunctionalTest {
 		// 	$page->write();
 		// 	$this->assertEquals("Test $class page", DB::query("SELECT \"Title\" FROM \"SiteTree\" WHERE \"ID\" = $page->ID")->value());
 
-		// 	$page->doPublish();
+		// 	$page->publishRecursive();
 		// 	$this->assertEquals("Test $class page", DB::query("SELECT \"Title\" FROM \"SiteTree_Live\" WHERE \"ID\" = $page->ID")->value());
 
 		// 	// Check that you can visit the page
@@ -214,7 +214,7 @@ class CMSMainTest extends FunctionalTest {
 		// Set up a page that is delete from live
 		$page = $this->objFromFixture('Page', 'page1');
 		$pageID = $page->ID;
-		$page->doPublish();
+		$page->publishRecursive();
 		$page->delete();
 
 		$response = $this->get('admin/pages/edit/show/' . $pageID);
@@ -236,7 +236,7 @@ class CMSMainTest extends FunctionalTest {
 		// Set up a page that is delete from live
 		$page1 = $this->objFromFixture('Page', 'page1');
 		$page1ID = $page1->ID;
-		$page1->doPublish();
+		$page1->publishRecursive();
 		$page1->delete();
 
 		$cmsMain = new CMSMain();
@@ -448,9 +448,9 @@ class CMSMainTest extends FunctionalTest {
 		$page1->doUnpublish();
 		$page1->delete();
 		// Live and draft
-		$page11->publish('Stage', 'Live');
+		$page11->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		// Live only
-		$page12->publish('Stage', 'Live');
+		$page12->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$page12->delete();
 
 		// Re-test all pages (stage)

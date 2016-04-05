@@ -11,7 +11,7 @@ class CMSBatchAction_Publish extends CMSBatchAction {
 	}
 
 	public function run(SS_List $pages) {
-		return $this->batchaction($pages, 'doPublish',
+		return $this->batchaction($pages, 'publishRecursive',
 			_t('CMSBatchActions.PUBLISHED_PAGES', 'Published %d pages, %d failures')
 		);
 	}

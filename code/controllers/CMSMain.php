@@ -909,7 +909,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		// If the 'Save & Publish' button was clicked, also publish the page
 		if ($doPublish) {
-			$record->doPublish();
+			$record->publishRecursive();
 			$message = _t(
 				'CMSMain.PUBLISHED',
 				"Published '{title}' successfully.",
@@ -989,7 +989,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			return Security::permissionFailure($this);
 		}
 
-		$record->doPublish();
+		$record->publishRecursive();
 	}
 
 	/**
@@ -1278,9 +1278,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$count = 0;
 			while($pages) {
 				foreach($pages as $page) {
-					if($page && !$page->canPublish()) return Security::permissionFailure($this);
+					if($page && !$page->canPublish()) {
+						return Security::permissionFailure($this);
+					}
 
-					$page->doPublish();
+					$page->publishRecursive();
 					$page->destroy();
 					unset($page);
 					$count++;

@@ -86,7 +86,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 			$file->ID
 		);
 		$obj->write();
-		$this->assertTrue($obj->doPublish());
+		$this->assertTrue($obj->publishRecursive());
 		// Confirm that it isn't marked as broken to begin with
 		$obj->flushCache();
 		$obj = DataObject::get_by_id("SiteTree", $obj->ID);
@@ -104,7 +104,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$this->assertEquals(1, $obj->HasBrokenFile);
 
 		// Publishing this page marks it as broken on live too
-		$obj->doPublish();
+		$obj->publishRecursive();
 		$liveObj = Versioned::get_one_by_stage("SiteTree", "Live", "\"SiteTree\".\"ID\" = $obj->ID");
 		$this->assertEquals(1, $liveObj->HasBrokenFile);
 	}
@@ -146,7 +146,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$linkSrc->write();
 
 		// Publish the source of the link, while the dest is still unpublished.
-		$linkSrc->doPublish();
+		$linkSrc->publishRecursive();
 
 		// Verify that the link isn't broken on draft but is broken on published
 		$this->assertEquals(0, (int)$linkSrc->HasBrokenLink);
@@ -161,14 +161,14 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$p->Title = "source";
 		$p->write();
 		$pageID = $p->ID;
-		$this->assertTrue($p->doPublish());
+		$this->assertTrue($p->publishRecursive());
 
 		// Content links are one kind of link to pages
 		$p2 = new Page();
 		$p2->Title = "regular link";
 		$p2->Content = "<a href=\"[sitetree_link,id=$p->ID]\">test</a>";
 		$p2->write();
-		$this->assertTrue($p2->doPublish());
+		$this->assertTrue($p2->publishRecursive());
 
 		// Virtual pages are another
 		$vp = new VirtualPage();
@@ -181,7 +181,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$rp->LinkType = 'Internal';
 		$rp->LinkToID = $p->ID;
 		$rp->write();
-		$this->assertTrue($rp->doPublish());
+		$this->assertTrue($rp->publishRecursive());
 
 		// Confirm that there are no broken links to begin with
 		$this->assertFalse($p2->HasBrokenLink);
@@ -222,7 +222,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$this->assertFalse((bool)$rp->HasBrokenLink);
 
 		// Publish and confirm that the p2 and RP broken links are fixed on published
-		$this->assertTrue($p->doPublish());
+		$this->assertTrue($p->publishRecursive());
 		$p2Live = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree"."ID" = ' . $p2->ID);
 		$rpLive = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree"."ID" = ' . $rp->ID);
 		$this->assertFalse((bool)$p2Live->HasBrokenLink);
@@ -236,14 +236,14 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$p->Title = "source";
 		$p->write();
 		$pageID = $p->ID;
-		$this->assertTrue($p->doPublish());
+		$this->assertTrue($p->publishRecursive());
 
 		// Content links are one kind of link to pages
 		$p2 = new Page();
 		$p2->Title = "regular link";
 		$p2->Content = "<a href=\"[sitetree_link,id=$p->ID]\">test</a>";
 		$p2->write();
-		$this->assertTrue($p2->doPublish());
+		$this->assertTrue($p2->publishRecursive());
 
 		// Virtual pages are another
 		$vp = new VirtualPage();
@@ -256,7 +256,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$rp->LinkType = 'Internal';
 		$rp->LinkToID = $p->ID;
 		$rp->write();
-		$this->assertTrue($rp->doPublish());
+		$this->assertTrue($rp->publishRecursive());
 
 		// Confirm that there are no broken links to begin with
 		$this->assertFalse($p2->HasBrokenLink);

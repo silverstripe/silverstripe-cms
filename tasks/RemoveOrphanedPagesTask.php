@@ -317,7 +317,7 @@ in the other stage:<br />
 		$where[] = '"Parents"."ID" IS NULL';
 
 		$orphans = new ArrayList();
-		foreach(array('Stage', 'Live') as $stage) {
+		foreach(array(Versioned::DRAFT, Versioned::LIVE) as $stage) {
 			$joinByStage = $join;
 			$table = $class;
 			$table .= ($stage == 'Live') ? '_Live' : '';

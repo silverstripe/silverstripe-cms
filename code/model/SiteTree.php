@@ -760,6 +760,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 *
 	 * @param string $perm The permission to be checked, such as 'View'
 	 * @param Member $member The member whose permissions need checking. Defaults to the currently logged in user.
+	 * @param array $context Context argument for canCreate()
 	 * @return bool True if the the member is allowed to do the given action
 	 */
 	public function can($perm, $member = null, $context = array()) {
@@ -1103,7 +1104,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 			$combinedStageResult = array();
 
-			foreach(array('Stage', 'Live') as $stage) {
+			foreach(array(Versioned::DRAFT, Versioned::LIVE) as $stage) {
 				// Start by filling the array with the pages that actually exist
 				$table = ($stage=='Stage') ? "SiteTree" : "SiteTree_$stage";
 
@@ -1354,7 +1355,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				$homepage->URLSegment = Config::inst()->get('RootURLController', 'default_homepage_link');
 				$homepage->Sort = 1;
 				$homepage->write();
-				$homepage->publish('Stage', 'Live');
+				$homepage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 				$homepage->flushCache();
 				DB::alteration_message('Home page created', 'created');
 			}
@@ -1365,7 +1366,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				$aboutus->Content = _t('SiteTree.DEFAULTABOUTCONTENT', '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>');
 				$aboutus->Sort = 2;
 				$aboutus->write();
-				$aboutus->publish('Stage', 'Live');
+				$aboutus->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 				$aboutus->flushCache();
 				DB::alteration_message('About Us page created', 'created');
 
@@ -1374,7 +1375,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				$contactus->Content = _t('SiteTree.DEFAULTCONTACTCONTENT', '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>');
 				$contactus->Sort = 3;
 				$contactus->write();
-				$contactus->publish('Stage', 'Live');
+				$contactus->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 				$contactus->flushCache();
 				DB::alteration_message('Contact Us page created', 'created');
 			}
@@ -2047,7 +2048,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return FieldList The available actions for this page.
 	 */
 	public function getCMSActions() {
-		$existsOnLive = $this->getExistsOnLive();
+		$existsOnLive = $this->isPublished();
 
 		// Major actions appear as buttons immediately visible as page actions.
 		$majorActions = CompositeField::create()->setName('MajorActions')->setTag('fieldset')->addExtraClass('ss-ui-buttonset noborder');
@@ -2099,7 +2100,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			);
 		}
 
-		if($this->stagesDiffer('Stage', 'Live') && !$this->getIsDeletedFromStage()) {
+		if($this->stagesDiffer(Versioned::DRAFT, Versioned::LIVE) && !$this->getIsDeletedFromStage()) {
 			if($this->isPublished() && $this->canEdit())	{
 				// "rollback"
 				$moreOptions->push(
@@ -2180,7 +2181,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			);
 
 			// Set up the initial state of the button to reflect the state of the underlying SiteTree object.
-			if($this->stagesDiffer('Stage', 'Live')) {
+			if($this->stagesDiffer(Versioned::DRAFT, Versioned::LIVE)) {
 				$publish->addExtraClass('ss-ui-alternate');
 			}
 		}
@@ -2441,7 +2442,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if(!$this->_cache_statusFlags || !$cached) {
 			$flags = array();
 			if($this->getIsDeletedFromStage()) {
-				if($this->getExistsOnLive()) {
+				if($this->isPublished()) {
 					$flags['removedfromdraft'] = array(
 						'text' => _t('SiteTree.REMOVEDFROMDRAFTSHORT', 'Removed from draft'),
 						'title' => _t('SiteTree.REMOVEDFROMDRAFTHELP', 'Page is published, but has been deleted from draft'),
@@ -2586,7 +2587,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if(!$this->ID) return true;
 		if($this->isNew()) return false;
 
-		$stageVersion = Versioned::get_versionnumber_by_stage('SiteTree', 'Stage', $this->ID);
+		$stageVersion = Versioned::get_versionnumber_by_stage('SiteTree', Versioned::DRAFT, $this->ID);
 
 		// Return true for both completely deleted pages and for pages just deleted from stage
 		return !($stageVersion);
@@ -2598,7 +2599,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return bool
 	 */
 	public function getExistsOnLive() {
-		return (bool)Versioned::get_versionnumber_by_stage('SiteTree', 'Live', $this->ID);
+		return $this->isPublished();
 	}
 
 	/**

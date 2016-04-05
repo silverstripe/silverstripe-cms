@@ -46,33 +46,33 @@ class ModelAsControllerTest extends FunctionalTest {
 		$level1->Title      = 'First Level';
 		$level1->URLSegment = 'level1';
 		$level1->write();
-		$level1->publish('Stage', 'Live');
+		$level1->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$level1->URLSegment = 'newlevel1';
 		$level1->write();
-		$level1->publish('Stage', 'Live');
+		$level1->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$level2 = new Page();
 		$level2->Title      = 'Second Level';
 		$level2->URLSegment = 'level2';
 		$level2->ParentID = $level1->ID;
 		$level2->write();
-		$level2->publish('Stage', 'Live');
+		$level2->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$level2->URLSegment = 'newlevel2';
 		$level2->write();
-		$level2->publish('Stage', 'Live');
+		$level2->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$level3 = New Page();
 		$level3->Title = "Level 3";
 		$level3->URLSegment = 'level3';
 		$level3->ParentID = $level2->ID;
 		$level3->write();
-		$level3->publish('Stage','Live');
+		$level3->copyVersionToStage('Stage','Live');
 
 		$level3->URLSegment = 'newlevel3';
 		$level3->write();
-		$level3->publish('Stage','Live');
+		$level3->copyVersionToStage('Stage','Live');
 	}
 
 	/**
@@ -125,39 +125,39 @@ class ModelAsControllerTest extends FunctionalTest {
 		$page->Title      = 'First Level';
 		$page->URLSegment = 'oldurl';
 		$page->write();
-		$page->publish('Stage', 'Live');
+		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$page->URLSegment = 'newurl';
 		$page->write();
-		$page->publish('Stage', 'Live');
+		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$page2 = new Page();
 		$page2->Title      = 'Second Level Page';
 		$page2->URLSegment = 'level2';
 		$page2->ParentID = $page->ID;
 		$page2->write();
-		$page2->publish('Stage', 'Live');
+		$page2->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$page3 = new Page();
 		$page3->Title      = 'Third Level Page';
 		$page3->URLSegment = 'level3';
 		$page3->ParentID = $page2->ID;
 		$page3->write();
-		$page3->publish('Stage', 'Live');
+		$page3->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$page4 = new Page();
 		$page4->Title      = 'Fourth Level Page';
 		$page4->URLSegment = 'level4';
 		$page4->ParentID = $page3->ID;
 		$page4->write();
-		$page4->publish('Stage', 'Live');
+		$page4->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$page5 = new Page();
 		$page5->Title      = 'Fifth Level Page';
 		$page5->URLSegment = 'level5';
 		$page5->ParentID = $page4->ID;
 		$page5->write();
-		$page5->publish('Stage', 'Live');
+		$page5->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		// Test that the redirect still works fine when trying to access the most nested page
 		$response = $this->get('oldurl/level2/level3/level4/level5/');
@@ -192,7 +192,7 @@ class ModelAsControllerTest extends FunctionalTest {
 			'URLSegment' => 'otherparent'
 		));
 		$otherParent->write();
-		$otherParent->publish('Stage', 'Live');
+		$otherParent->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$response = $this->get('level1/otherparent');
 		$this->assertEquals($response->getStatusCode(), 301);
@@ -235,7 +235,7 @@ class ModelAsControllerTest extends FunctionalTest {
 			'URLSegment' => 'level1'
 		));
 		$otherLevel1->write();
-		$otherLevel1->publish('Stage', 'Live');
+		$otherLevel1->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$response = $this->get('level1');
 		$this->assertEquals(
@@ -261,11 +261,11 @@ class ModelAsControllerTest extends FunctionalTest {
 		$page->Title      = 'First Level';
 		$page->URLSegment = 'oldurl';
 		$page->write();
-		$page->publish('Stage', 'Live');
+		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$page->URLSegment = 'newurl';
 		$page->write();
-		$page->publish('Stage', 'Live');
+		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$url = OldPageRedirector::find_old_page('oldurl');
 		$matchedPage = SiteTree::get_by_link($url);
@@ -276,11 +276,11 @@ class ModelAsControllerTest extends FunctionalTest {
 		$page2->URLSegment = 'oldpage2';
 		$page2->ParentID = $page->ID;
 		$page2->write();
-		$page2->publish('Stage', 'Live');
+		$page2->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$page2->URLSegment = 'newpage2';
 		$page2->write();
-		$page2->publish('Stage', 'Live');
+		$page2->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$url = OldPageRedirector::find_old_page('oldpage2',$page2->ParentID);
 		$matchedPage = SiteTree::get_by_link($url);
@@ -309,7 +309,7 @@ class ModelAsControllerTest extends FunctionalTest {
 		$published->Title = 'Published Page Under Draft Page';
 		$published->URLSegment = 'sub-root';
 		$published->write();
-		$published->publish('Stage', 'Live');
+		$published->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$response = $this->get('root/sub-root');
 
 		$this->assertEquals(
