@@ -10,7 +10,8 @@
   },
   "scripts": {
     "build": "gulp build",
-    "css": "gulp css"
+    "css": "gulp css",
+    "lock": "npm-shrinkwrap --dev"
   },
   "repository": {
     "type": "git",
@@ -46,7 +47,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.1",
     "gulp-util": "^3.0.7",
-    "npm-shrinkwrap": "^5.4.1",
+    "npm-shrinkwrap": "https://registry.npmjs.org/npm-shrinkwrap/-/npm-shrinkwrap-5.4.1.tgz",
     "semver": "^5.1.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
