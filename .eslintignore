@@ -1,0 +1,16 @@
+# Ignore dist files
+javascript/dist/
+
+# Ignore legacy files
+javascript/src/AssetAdmin.js
+javascript/src/CMSMain.AddForm.js
+javascript/src/CMSMain.EditForm.js
+javascript/src/CMSMain.Tree.js
+javascript/src/CMSMain.js
+javascript/src/CMSPageHistoryController.js
+javascript/src/RedirectorPage.js
+javascript/src/SilverStripeNavigator.js
+javascript/src/SiteTreeURLSegmentField.js
+
+# Ignore auto-generated language files
+javascript/lang/

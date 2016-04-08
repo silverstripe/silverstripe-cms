@@ -11,7 +11,8 @@
   "scripts": {
     "build": "gulp build",
     "css": "gulp css",
-    "lock": "npm-shrinkwrap --dev"
+    "lock": "npm-shrinkwrap --dev",
+    "lint": "eslint javascript"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,9 @@
     "babel-preset-react": "^6.5.0",
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
+    "eslint": "^2.7.0",
+    "eslint-config-airbnb": "^6.2.0",
+    "eslint-plugin-react": "^4.3.0",
     "event-stream": "^3.3.2",
     "glob": "^6.0.4",
     "gulp": "^3.9.0",
