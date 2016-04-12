@@ -250,7 +250,7 @@ class ErrorPage extends Page {
 		// if the page is published in a language other than default language,
 		// write a specific language version of the HTML page
 		$filePath = self::get_filepath_for_errorcode($this->ErrorCode, $this->Locale);
-		if (!file_put_contents($filePath, $errorContent)) {
+		if (file_put_contents($filePath, $errorContent) === false) {
 			$fileErrorText = _t(
 				'ErrorPage.ERRORFILEPROBLEM',
 				'Error opening file "{filename}" for writing. Please check file permissions.',
