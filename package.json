@@ -10,7 +10,9 @@
   },
   "scripts": {
     "build": "gulp build",
-    "lock": "npm-shrinkwrap --dev"
+    "css": "gulp css",
+    "lock": "npm-shrinkwrap --dev",
+    "lint": "eslint javascript"
   },
   "repository": {
     "type": "git",
@@ -27,14 +29,17 @@
   },
   "homepage": "https://github.com/silverstripe/silverstripe-cms#readme",
   "devDependencies": {
-    "babel-core": "^6.4.0",
-    "babel-plugin-transform-es2015-modules-umd": "^6.4.0",
+    "babel-core": "^6.7.4",
+    "babel-plugin-transform-es2015-modules-umd": "^6.6.5",
     "babel-plugin-transform-object-assign": "^6.5.0",
     "babel-preset-es2015": "^6.6.0",
     "babel-preset-es2015-ie": "^6.6.1",
     "babel-preset-react": "^6.5.0",
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
+    "eslint": "^2.7.0",
+    "eslint-config-airbnb": "^6.2.0",
+    "eslint-plugin-react": "^4.3.0",
     "event-stream": "^3.3.2",
     "glob": "^6.0.4",
     "gulp": "^3.9.0",
@@ -42,10 +47,11 @@
     "gulp-diff": "^1.0.0",
     "gulp-if": "^2.0.0",
     "gulp-notify": "^2.2.0",
+    "gulp-sass": "^2.2.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.1",
     "gulp-util": "^3.0.7",
-    "npm-shrinkwrap": "^5.4.1",
+    "npm-shrinkwrap": "https://registry.npmjs.org/npm-shrinkwrap/-/npm-shrinkwrap-5.4.1.tgz",
     "semver": "^5.1.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
