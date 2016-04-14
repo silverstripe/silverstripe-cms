@@ -29,7 +29,7 @@ $.entwine('ss', function($){
 			var self = this;
 
 			self.data('OrigVal', self.val());
-			
+
 			var form = self.closest('form');
 			var urlSegmentInput = $('input:text[name=URLSegment]', form);
 			var liveLinkInput = $('input[name=LiveLink]', form);
@@ -61,7 +61,7 @@ $.entwine('ss', function($){
 		onunmatch: function() {
 			this._super();
 		},
-		
+
 		/**
 		 * Function: updateRelatedFields
 		 *
@@ -80,7 +80,7 @@ $.entwine('ss', function($){
 				}
 			});
 		},
-		
+
 		/**
 		 * Function: updateURLSegment
 		 *
@@ -96,7 +96,7 @@ $.entwine('ss', function($){
 				updateURLFromTitle.hide();
 			}
 		},
-		
+
 		/**
 		 * Function: updateBreadcrumbLabel
 		 *
@@ -110,7 +110,7 @@ $.entwine('ss', function($){
 				panelCrumb.text(title);
 			}
 		},
-		
+
 		/**
 		 * Function: _addActions
 		 *
@@ -120,7 +120,7 @@ $.entwine('ss', function($){
 		_addActions: function() {
 			var self = this;
 			var	updateURLFromTitle;
-			
+
 			// update button
 			updateURLFromTitle = $('<button />', {
 				'class': 'update ss-ui-button-small',
@@ -131,7 +131,7 @@ $.entwine('ss', function($){
 					self.updateURLSegment(self.val());
 				}
 			});
-			
+
 			// insert elements
 			updateURLFromTitle.insertAfter(self);
 			updateURLFromTitle.hide();
@@ -150,10 +150,10 @@ $.entwine('ss', function($){
 			var self = this;
 			this.find(':input[name=ParentType]').bind('click', function(e) {self._toggleSelection(e);});
 			this.find('.TreeDropdownField').bind('change', function(e) {self._changeParentId(e);});
-			
+
 			this._changeParentId();
 			this._toggleSelection();
-			
+
 			this._super();
 		},
 		onunmatch: function() {
@@ -167,15 +167,22 @@ $.entwine('ss', function($){
 		 *  (Event) e
 		 */
 		_toggleSelection: function(e) {
-			var selected = this.find(':input[name=ParentType]:checked').val();
+			var selected = this.find(':input[name=ParentType]:checked').val(),
+				holder = this.find('#Form_EditForm_ParentID_Holder');
 			// reset parent id if 'root' radiobutton is selected
 			if(selected == 'root') this.find(':input[name=ParentID]').val(0);
 			// otherwise use the old value
 			else this.find(':input[name=ParentID]').val(this.find('#Form_EditForm_ParentType_subpage').data('parentIdValue'));
 			// toggle tree dropdown based on selection
-			this.find('#Form_EditForm_ParentID_Holder').toggle(selected != 'root');
+			if(selected != 'root') {
+				holder.slideDown(400, function() {
+					$(this).css('overflow', 'visible');
+				});
+			} else {
+				holder.slideUp();
+			}
 		},
-		
+
 		/**
 		 * Function: _changeParentId
 		 *
@@ -203,7 +210,7 @@ $.entwine('ss', function($){
 			if(this.attr('id') == 'CanViewType') dropdown = $('#Form_EditForm_ViewerGroups_Holder');
 			else if(this.attr('id') == 'CanEditType') dropdown = $('#Form_EditForm_EditorGroups_Holder');
 			else if(this.attr('id') == 'CanCreateTopLevelType') dropdown = $('#Form_EditForm_CreateTopLevelGroups_Holder');
-	
+
 			this.find('.optionset :input').bind('change', function(e) {
 				var wrapper = $(this).closest('.middleColumn').parent('div');
 				if(e.target.value == 'OnlyTheseUsers') {
@@ -212,20 +219,20 @@ $.entwine('ss', function($){
 				}
 				else {
 					wrapper.removeClass('remove-splitter');
-					dropdown['hide']();	
+					dropdown['hide']();
 				}
 			});
-	
+
 			// initial state
 			var currentVal = this.find('input[name=' + this.attr('id') + ']:checked').val();
 			dropdown[currentVal == 'OnlyTheseUsers' ? 'show' : 'hide']();
-			
+
 			this._super();
 		},
 		onunmatch: function() {
 			this._super();
 		}
-	});	
+	});
 
 	/**
 	 * Class: .cms-edit-form .Actions #Form_EditForm_action_print
@@ -258,7 +265,7 @@ $.entwine('ss', function($){
 	 * A "rollback" to a specific version needs user confirmation.
 	 */
 	$('.cms-edit-form .Actions #Form_EditForm_action_rollback').entwine({
-		
+
 		/**
 		 * Function: onclick
 		 *
@@ -289,7 +296,7 @@ $.entwine('ss', function($){
 	 * Informing the user about the archive action while requiring confirmation
 	 */
 	$('.cms-edit-form .Actions #Form_EditForm_action_archive').entwine({
-		
+
 		/**
 		 * Function: onclick
 		 *
@@ -316,7 +323,7 @@ $.entwine('ss', function($){
 	 * Informing the user about the archive action while requiring confirmation
 	 */
 	$('.cms-edit-form .Actions #Form_EditForm_action_restore').entwine({
-		
+
 		/**
 		 * Function: onclick
 		 *
@@ -346,7 +353,7 @@ $.entwine('ss', function($){
 	 * Informing the user about the delete from draft action while requiring confirmation
 	 */
 	$('.cms-edit-form .Actions #Form_EditForm_action_delete').entwine({
-		
+
 		/**
 		 * Function: onclick
 		 *
@@ -372,7 +379,7 @@ $.entwine('ss', function($){
 	 * Informing the user about the unpublish action while requiring confirmation
 	 */
 	$('.cms-edit-form .Actions #Form_EditForm_action_unpublish').entwine({
-		
+
 		/**
 		 * Function: onclick
 		 *

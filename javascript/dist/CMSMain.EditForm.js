@@ -132,11 +132,18 @@
 			},
 
 			_toggleSelection: function _toggleSelection(e) {
-				var selected = this.find(':input[name=ParentType]:checked').val();
+				var selected = this.find(':input[name=ParentType]:checked').val(),
+				    holder = this.find('#Form_EditForm_ParentID_Holder');
 
 				if (selected == 'root') this.find(':input[name=ParentID]').val(0);else this.find(':input[name=ParentID]').val(this.find('#Form_EditForm_ParentType_subpage').data('parentIdValue'));
 
-				this.find('#Form_EditForm_ParentID_Holder').toggle(selected != 'root');
+				if (selected != 'root') {
+					holder.slideDown(400, function () {
+						$(this).css('overflow', 'visible');
+					});
+				} else {
+					holder.slideUp();
+				}
 			},
 
 			_changeParentId: function _changeParentId(e) {
