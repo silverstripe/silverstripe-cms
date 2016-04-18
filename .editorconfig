@@ -13,12 +13,11 @@ trim_trailing_whitespace = true
 [*.md]
 trim_trailing_whitespace = false
 
-[*.yml]
+[*.{yml,js,json,css,scss}]
 indent_size = 2
 indent_style = space
 
 # Don't perform any clean-up on thirdparty files
-
 [thirdparty/**]
 trim_trailing_whitespace = false
 insert_final_newline = false
