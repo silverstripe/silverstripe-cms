@@ -37,9 +37,9 @@ class SiteTreeURLSegmentField extends TextField {
 	}
 
 	public function Field($properties = array()) {
-		Requirements::javascript(CMS_DIR . '/javascript/dist/SiteTreeURLSegmentField.js');
-		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang', false, true);
-		Requirements::css(CMS_DIR . "/css/screen.css");
+		Requirements::javascript(CMS_DIR . '/client/dist/js/SiteTreeURLSegmentField.js');
+		Requirements::add_i18n_javascript(CMS_DIR . '/client/src/lang', false, true);
+		Requirements::css(FRAMEWORK_ADMIN_DIR . '/client/dist/styles/bundle.css');
 		return parent::Field($properties);
 	}
 

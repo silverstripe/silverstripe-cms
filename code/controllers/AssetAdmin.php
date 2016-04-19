@@ -65,9 +65,9 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 
 		Versioned::set_stage(Versioned::DRAFT);
 
-		Requirements::javascript(CMS_DIR . "/javascript/dist/AssetAdmin.js");
-		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang', false, true);
-		Requirements::css(CMS_DIR . "/css/screen.css");
+		Requirements::javascript(CMS_DIR . "/client/dist/js/AssetAdmin.js");
+		Requirements::add_i18n_javascript(CMS_DIR . '/client/src/lang', false, true);
+		Requirements::css(CMS_DIR . '/client/dist/styles/bundle.css');
 		CMSBatchActionHandler::register('delete', 'AssetAdmin_DeleteBatchAction', 'Folder');
 	}
 
@@ -136,8 +136,8 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 	}
 
 	public function getEditForm($id = null, $fields = null) {
-		Requirements::javascript(FRAMEWORK_DIR . '/javascript/dist/AssetUploadField.js');
-		Requirements::css(FRAMEWORK_DIR . '/css/AssetUploadField.css');
+		Requirements::javascript(FRAMEWORK_DIR . '/client/dist/js/AssetUploadField.js');
+		Requirements::css(FRAMEWORK_DIR . '/client/dist/styles/AssetUploadField.css');
 
 		$form = parent::getEditForm($id, $fields);
 		$folder = ($id && is_numeric($id)) ? DataObject::get_by_id('Folder', $id, false) : $this->currentPage();
@@ -644,4 +644,3 @@ class AssetAdmin_DeleteBatchAction extends CMSBatchAction {
 		return Convert::raw2json($status);
 	}
 }
-

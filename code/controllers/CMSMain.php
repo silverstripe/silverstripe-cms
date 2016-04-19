@@ -66,19 +66,19 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		parent::init();
 
-		Requirements::css(CMS_DIR . '/css/screen.css');
+		Requirements::css(CMS_DIR . '/client/dist/styles/bundle.css');
 		Requirements::customCSS($this->generatePageIconsCss());
-		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang', false, true);
-		Requirements::javascript(CMS_DIR . '/javascript/dist/bundle-legacy.js', [
+		Requirements::add_i18n_javascript(CMS_DIR . '/client/src/lang', false, true);
+		Requirements::javascript(CMS_DIR . '/client/dist/js/bundle-legacy.js', [
 			'provides' => [
-				CMS_DIR . '/javascript/dist/CMSMain.AddForm.js',
-				CMS_DIR . '/javascript/dist/CMSMain.EditForm.js',
-				CMS_DIR . '/javascript/dist/CMSMain.js',
-				CMS_DIR . '/javascript/dist/CMSMain.Tree.js',
-				CMS_DIR . '/javascript/dist/CMSPageHistoryController.js',
-				CMS_DIR . '/javascript/dist/RedirectorPage.js',
-				CMS_DIR . '/javascript/dist/SilverStripeNavigator.js',
-				CMS_DIR . '/javascript/dist/SiteTreeURLSegmentField.js'
+				CMS_DIR . '/client/dist/js/CMSMain.AddForm.js',
+				CMS_DIR . '/client/dist/js/CMSMain.EditForm.js',
+				CMS_DIR . '/client/dist/js/CMSMain.js',
+				CMS_DIR . '/client/dist/js/CMSMain.Tree.js',
+				CMS_DIR . '/client/dist/js/CMSPageHistoryController.js',
+				CMS_DIR . '/client/dist/js/RedirectorPage.js',
+				CMS_DIR . '/client/dist/js/SilverStripeNavigator.js',
+				CMS_DIR . '/client/dist/js/SiteTreeURLSegmentField.js'
 			]
 		]);
 
