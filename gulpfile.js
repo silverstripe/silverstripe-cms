@@ -21,10 +21,10 @@ process.env.NODE_ENV = isDev ? 'development' : 'production';
 
 const PATHS = {
   MODULES: './node_modules',
-  CMS_JAVASCRIPT_SRC: './javascript/src',
-  CMS_JAVASCRIPT_DIST: './javascript/dist',
-  CMS_SCSS: './scss',
-  CMS_CSS: './css',
+  CMS_JS_SRC: './client/src',
+  CMS_JS_DIST: './client/dist/js',
+  CMS_CSS_SRC: './client/src/styles',
+  CMS_CSS_DIST: './client/dist/styles',
 };
 
 const babelifyOptions = {
@@ -82,7 +82,7 @@ gulp.task('bundle-legacy', function bundleLeftAndMain() {
   return browserify(Object.assign(
       {},
       browserifyOptions,
-      { entries: `${PATHS.CMS_JAVASCRIPT_SRC}/bundles/legacy.js` })
+      { entries: `${PATHS.CMS_JS_SRC}/bundles/legacy.js` })
   )
     .on('update', bundleLeftAndMain)
     .on('log', (msg) => gulpUtil.log('Finished', `bundled ${bundleFileName} ${msg}`))
@@ -97,30 +97,30 @@ gulp.task('bundle-legacy', function bundleLeftAndMain() {
     .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(uglify())
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(PATHS.CMS_JAVASCRIPT_DIST));
+    .pipe(gulp.dest(PATHS.CMS_JS_DIST));
 });
 
 gulp.task('umd-cms', () => { // eslint-disable-line
-  return transformToUmd(glob.sync(`${PATHS.CMS_JAVASCRIPT_SRC}/*.js`), PATHS.CMS_JAVASCRIPT_DIST);
+  return transformToUmd(glob.sync(`${PATHS.CMS_JS_SRC}/*.js`), PATHS.CMS_JS_DIST);
 });
 
 gulp.task('umd-watch', () => { // eslint-disable-line
   if (isDev) {
-    gulp.watch(`${PATHS.CMS_JAVASCRIPT_SRC}/*.js`, ['umd-cms']);
+    gulp.watch(`${PATHS.CMS_JS_SRC}/*.js`, ['umd-cms']);
   }
 });
 
 gulp.task('css', ['compile:css'], () => { // eslint-disable-line
   if (isDev) {
-    gulp.watch(`${PATHS.CMS_SCSS}/**/*.scss`, ['compile:css']);
-    gulp.watch(`${PATHS.CMS_JAVASCRIPT_SRC}/**/*.scss`, ['compile:css']);
+    gulp.watch(`${PATHS.CMS_CSS_SRC}/**/*.scss`, ['compile:css']);
+    gulp.watch(`${PATHS.CMS_JS_SRC}/**/*.scss`, ['compile:css']);
   }
 });
 
 gulp.task('compile:css', () => { // eslint-disable-line
   const outputStyle = isDev ? 'expanded' : 'compressed';
 
-  return gulp.src(`${PATHS.CMS_SCSS}/**/*.scss`)
+  return gulp.src(`${PATHS.CMS_CSS_SRC}/**/*.scss`)
     .pipe(sourcemaps.init())
     .pipe(sass({ outputStyle })
       .on('error', notify.onError({
@@ -128,5 +128,5 @@ gulp.task('compile:css', () => { // eslint-disable-line
       }))
   )
   .pipe(sourcemaps.write())
-  .pipe(gulp.dest(PATHS.CMS_CSS));
+  .pipe(gulp.dest(PATHS.CMS_CSS_DIST));
 });
