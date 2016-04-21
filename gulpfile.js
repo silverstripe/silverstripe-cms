@@ -89,7 +89,7 @@ gulp.task('bundle-legacy', function bundleLeftAndMain() {
     .transform(babelify, babelifyOptions)
     .external('jQuery')
     .external('i18n')
-    .external('router')
+    .external('lib/Router')
     .bundle()
     .on('error', notify.onError({ message: `${bundleFileName}: <%= error.message %>` }))
     .pipe(source(bundleFileName))
