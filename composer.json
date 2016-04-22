@@ -18,9 +18,9 @@
 	"require": {
 		"php": ">=5.3.3",
 		"composer/installers": "*",
-		"silverstripe/framework": "~3.3",
-		"silverstripe/reports": "~3.3",
-		"silverstripe/siteconfig": "~3.3"
+		"silverstripe/framework": "~3.4",
+		"silverstripe/reports": "~3.4",
+		"silverstripe/siteconfig": "~3.4"
 	},
 	"extra": {
 		"branch-alias": {
