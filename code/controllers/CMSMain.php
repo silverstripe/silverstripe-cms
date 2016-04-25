@@ -1,4 +1,6 @@
 <?php
+use SilverStripe\Model\FieldType\DBHTMLText;
+
 /**
  * The main "content" area of the CMS.
  *
@@ -1191,8 +1193,15 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return $this->getResponseNegotiator()->respond($this->getRequest());
 	}
 
+	/**
+	 * Action handler for adding pages to a campaign
+	 *
+	 * @param array $data
+	 * @param Form $form
+	 * @return DBHTMLText|SS_HTTPResponse
+	 */
 	public function addtocampaign($data, $form) {
-		$handler = new AddToCampaignHandler($form, $data);
+		$handler = AddToCampaignHandler::create($form, $data);
 		return $handler->handle();
 	}
 
