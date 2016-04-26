@@ -112,7 +112,7 @@ class BrokenLinksReport extends SS_Report {
 					$stageLink = $item->AbsoluteLink();
 					return sprintf('%s <a href="%s">%s</a>',
 						$stageLink,
-						$liveLink ? $liveLink : $stageLink . '?stage=Stage',
+						$liveLink ? $liveLink : Controller::join_links($stageLink, '?stage=Stage'),
 						$liveLink ? '(live)' : '(draft)'
 					);
 				}
