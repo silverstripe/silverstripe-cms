@@ -20,6 +20,7 @@ class SiteTreeLinkTrackingTest extends SapphireTest {
 
 		$this->assertFalse($this->isBroken('<a name="anchor">anchor</a>'));
 		$this->assertFalse($this->isBroken('<a id="anchor">anchor</a>'));
+		$this->assertTrue($this->isBroken('<a href="##anchor">anchor</a>'));
 
 		$page = new Page();
 		$page->Content = '<a name="yes-name-anchor">name</a><a id="yes-id-anchor">id</a>';
