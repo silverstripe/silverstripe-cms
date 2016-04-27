@@ -42,15 +42,25 @@ class RedirectorPage extends Page {
 	 * If the redirectorpage has been appropriately configured, then it will return the redirection
 	 * destination, to prevent unnecessary 30x redirections.  However, if it's misconfigured, then
 	 * it will return a link to itself, which will then display an error message.
+	 *
+	 * @param string $action
+	 * @return string
 	 */
-	public function Link() {
-		if($link = $this->redirectionLink()) return $link;
-		else return $this->regularLink();
+	public function Link($action = null) {
+		$link = $this->redirectionLink();
+		if($link) {
+			return $link;
+		} else {
+			return $this->regularLink($action);
+		}
 	}
 
 	/**
 	 * Return the normal link directly to this page.  Once you visit this link, a 30x redirection
 	 * will take you to your final destination.
+	 *
+	 * @param string $action
+	 * @return string
 	 */
 	public function regularLink($action = null) {
 		return parent::Link($action);

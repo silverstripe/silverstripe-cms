@@ -15,22 +15,15 @@
 class SilverStripeNavigator extends ViewableData {
 
 	/**
-	 * @var DataObject
+	 * @var DataObject|CMSPreviewable
 	 */
 	protected $record;
 
 	/**
-	 * @param DataObject $record
-	 * @throws InvalidArgumentException if record doesn't implement CMSPreviewable
+	 * @param DataObject|CMSPreviewable $record
 	 */
-	public function __construct($record) {
-		if(!in_array('CMSPreviewable', class_implements($record))) {
-			throw new InvalidArgumentException(sprintf(
-				'SilverStripeNavigator: Record of type %s doesn\'t implement CMSPreviewable',
-				get_class($record)
-			));
-		}
-
+	public function __construct(CMSPreviewable $record) {
+		parent::__construct();
 		$this->record = $record;
 	}
 
@@ -41,23 +34,23 @@ class SilverStripeNavigator extends ViewableData {
 		$items = array();
 
 		$classes = ClassInfo::subclassesFor('SilverStripeNavigatorItem');
-		array_shift($classes);
+		unset($classes['SilverStripeNavigatorItem']);
 
 		// Sort menu items according to priority
-		$i = 0;
 		foreach($classes as $class) {
-			// Skip base class
-			if($class == 'SilverStripeNavigatorItem') continue;
-
-			$i++;
+			/** @var SilverStripeNavigatorItem $item */
 			$item = new $class($this->record);
-			if(!$item->canView()) continue;
+			if(!$item->canView()) {
+				continue;
+			}
 
 			// This funny litle formula ensures that the first item added with the same priority will be left-most.
 			$priority = $item->getPriority() * 100 - 1;
 
 			// Ensure that we can have duplicates with the same (default) priority
-			while(isset($items[$priority])) $priority++;
+			while(isset($items[$priority])) {
+				$priority++;
+			}
 
 			$items[$priority] = $item;
 		}
@@ -68,15 +61,15 @@ class SilverStripeNavigator extends ViewableData {
 	}
 
 	/**
-	 * @return DataObject
+	 * @return DataObject|CMSPreviewable
 	 */
 	public function getRecord() {
 		return $this->record;
 	}
 
 	/**
-	 * @param DataObject $record
-	 * @return Array template data
+	 * @param DataObject|CMSPreviewable $record
+	 * @return array template data
 	 */
 	static public function get_for_record($record) {
 		$html = '';
@@ -105,17 +98,18 @@ class SilverStripeNavigator extends ViewableData {
  * @package cms
  * @subpackage content
  */
-class SilverStripeNavigatorItem extends ViewableData {
+abstract class SilverStripeNavigatorItem extends ViewableData {
 
 	/**
-	 * @param DataObject
+	 * @param DataObject|CMSPreviewable
 	 */
 	protected $record;
 
 	/**
-	 * @param DataObject
+	 * @param DataObject|CMSPreviewable $record
 	 */
-	public function __construct($record) {
+	public function __construct(CMSPreviewable $record) {
+		parent::__construct();
 		$this->record = $record;
 	}
 
@@ -123,16 +117,18 @@ class SilverStripeNavigatorItem extends ViewableData {
 	 * @return string HTML, mostly a link - but can be more complex as well.
 	 * For example, a "future state" item might show a date selector.
 	 */
-	public function getHTML() {}
+	abstract public function getHTML();
 
 	/**
 	* @return string
 	* Get the Title of an item
 	*/
-	public function getTitle() {}
+	abstract public function getTitle();
 
 	/**
 	 * Machine-friendly name.
+	 *
+	 * @return string
 	 */
 	public function getName() {
 		return substr(get_class($this), strpos(get_class($this), '_')+1);
@@ -180,7 +176,7 @@ class SilverStripeNavigatorItem extends ViewableData {
 	 * Filters items based on member permissions or other criteria,
 	 * such as if a state is generally available for the current record.
 	 *
-	 * @param Member
+	 * @param Member $member
 	 * @return Boolean
 	 */
 	public function canView($member = null) {
@@ -403,5 +399,4 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 	public function isActive() {
 		return $this->isArchived();
 	}
-	}
-
+}
