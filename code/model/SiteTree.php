@@ -2075,6 +2075,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			)
 		);
 
+		$moreOptions->push(AddToCampaignHandler_FormAction::create());
+
 		// "readonly"/viewing version that isn't the current version of the record
 		$stageOrLiveRecord = Versioned::get_one_by_stage($this->class, Versioned::get_stage(), array(
 			'"SiteTree"."ID"' => $this->ID
