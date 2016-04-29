@@ -133,4 +133,27 @@ class SiteTreeURLSegmentField extends TextField {
 		return Controller::join_links($this->getURLPrefix(), $this->Value(), $this->getURLSuffix());
 	}
 
+	public function performReadonlyTransformation() {
+		$newInst = parent::performReadonlyTransformation();
+		$newInst->helpText = $this->helpText;
+		$newInst->urlPrefix = $this->urlPrefix;
+		$newInst->urlSuffix = $this->urlSuffix;
+		$newInst->defaultUrl = $this->defaultUrl;
+		return $newInst;
+	}
+}
+
+
+/**
+ * Readonly version of a site tree URL segment field
+ *
+ * @package forms
+ * @subpackage fields-basic
+ */
+class SiteTreeURLSegmentField_Readonly extends SiteTreeURLSegmentField {
+	protected $readonly = true;
+
+	public function performReadonlyTransformation() {
+		return clone $this;
+	}
 }

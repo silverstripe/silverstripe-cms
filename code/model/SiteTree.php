@@ -1434,7 +1434,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$fieldsIgnoredByVersioning = array('HasBrokenLink', 'Status', 'HasBrokenFile', 'ToDo', 'VersionID', 'SaveCount');
 		$changedFields = array_keys($this->getChangedFields(true, 2));
 
-		// This more rigorous check is inline with the test that write() does to dedcide whether or not to write to the
+		// This more rigorous check is inline with the test that write() does to decide whether or not to write to the
 		// DB. We use that to avoid cluttering the system with a migrateVersion() call that doesn't get used
 		$oneChangedFields = array_keys($this->getChangedFields(true, 1));
 

@@ -306,12 +306,13 @@ class SiteTreeLinkTracking_Parser {
 			// Local anchor.
 			$matches = array();
 			if(preg_match('/^#(.*)/i', $href, $matches)) {
+				$anchor = preg_quote($matches[1], '#');
 				$results[] = array(
 					'Type' => 'localanchor',
 					'Target' => null,
 					'Anchor' => $matches[1],
 					'DOMReference' => $link,
-					'Broken' => !preg_match("#(name|id)=\"{$matches[1]}\"#", $htmlValue->getContent())
+					'Broken' => !preg_match("#(name|id)=\"{$anchor}\"#", $htmlValue->getContent())
 				);
 
 				continue;
