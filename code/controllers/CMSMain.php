@@ -1428,7 +1428,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 
 	public function providePermissions() {
-		$title = _t("CMSPagesController.MENUTITLE", LeftAndMain::menu_title_for_class('CMSPagesController'));
+		$title = CMSPagesController::menu_title();
 		return array(
 			"CMS_ACCESS_CMSMain" => array(
 				'name' => _t('CMSMain.ACCESS', "Access to '{title}' section", array('title' => $title)),

@@ -599,8 +599,17 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 		return $items;
 	}
 
+	public static function menu_title($class = null, $localised = true) {
+		// Deprecate this menu title if installed alongside new asset admin
+		if($localised && class_exists('SilverStripe\AssetAdmin\Controller\AssetAdmin')) {
+			// Don't conflict with legacy translations
+			return _t('AssetAdmin.CMSMENU_OLD', 'Files (old)');
+		}
+		return parent::menu_title(null, $localised);
+	}
+
 	public function providePermissions() {
-		$title = _t("AssetAdmin.MENUTITLE", LeftAndMain::menu_title_for_class($this->class));
+		$title = static::menu_title();
 		return array(
 			"CMS_ACCESS_AssetAdmin" => array(
 				'name' => _t('CMSMain.ACCESS', "Access to '{title}' section", array('title' => $title)),
