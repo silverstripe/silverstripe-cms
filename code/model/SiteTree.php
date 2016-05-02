@@ -424,10 +424,17 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 */
 	public function PreviewLink($action = null) {
 		if($this->hasMethod('alternatePreviewLink')) {
+			Deprecation::notice('5.0', 'Use updatePreviewLink or override PreviewLink method');
 			return $this->alternatePreviewLink($action);
-		} else {
-			return $this->AbsoluteLink($action);
 		}
+
+		$link = $this->AbsoluteLink($action);
+		$this->extend('updatePreviewLink', $link, $action);
+		return $link;
+	}
+
+	public function getMimeType() {
+		return 'text/html';
 	}
 
 	/**
@@ -497,7 +504,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string
 	 */
 	public function CMSEditLink() {
-		return Controller::join_links(singleton('CMSPageEditController')->Link('show'), $this->ID);
+		$link = Controller::join_links(
+			singleton('CMSPageEditController')->Link('show'),
+			$this->ID
+		);
+		return Director::absoluteURL($link);
 	}
 
 

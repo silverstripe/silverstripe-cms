@@ -44,9 +44,24 @@ class SilverStripeNavigatorTest extends SapphireTest {
 }
 
 class SilverStripeNavigatorTest_TestItem extends SilverStripeNavigatorItem implements TestOnly {
+	public function getTitle() {
+		return __CLASS__;
+	}
+	public function getHTML() {
+		return null;
+	}
 }
 
 class SilverStripeNavigatorTest_ProtectedTestItem extends SilverStripeNavigatorItem implements TestOnly {
+
+	public function getTitle() {
+		return __CLASS__;
+	}
+
+	public function getHTML() {
+		return null;
+	}
+
 	public function canView($member = null) {
 		if(!$member) $member = Member::currentUser();
 		return Permission::checkMember($member, 'ADMIN');

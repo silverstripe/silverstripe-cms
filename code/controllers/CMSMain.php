@@ -599,7 +599,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			}
 
 			// Added in-line to the form, but plucked into different view by LeftAndMain.Preview.js upon load
-			if(in_array('CMSPreviewable', class_implements($record)) && !$fields->fieldByName('SilverStripeNavigator')) {
+			if($record instanceof CMSPreviewable && !$fields->fieldByName('SilverStripeNavigator')) {
 				$navField = new LiteralField('SilverStripeNavigator', $this->getSilverStripeNavigator());
 				$navField->setAllowHTML(true);
 				$fields->push($navField);
