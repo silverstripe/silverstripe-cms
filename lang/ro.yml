@@ -296,9 +296,9 @@ ro:
     BUTTONUNPUBLISHDESC: 'Șterge pagina din site-ul publicat'
     Comments: Comentarii
     Content: Continut
-    DEFAULTABOUTCONTENT: '<p>Puteți completa pagina cu conținut propriu, sau o puteți șterge și să vă creați alte pagini.<br /></p>'
+    DEFAULTABOUTCONTENT: '<p>Puteți completa pagina cu conținut propriu, sau o puteți șterge și să vă creați alte pagini.</p>'
     DEFAULTABOUTTITLE: 'Despre Noi'
-    DEFAULTCONTACTCONTENT: '<p>Puteți completa pagina cu conținut propriu, sau o puteți șterge și să vă creați alte pagini.<br /></p>'
+    DEFAULTCONTACTCONTENT: '<p>Puteți completa pagina cu conținut propriu, sau o puteți șterge și să vă creați alte pagini.</p>'
     DEFAULTCONTACTTITLE: 'Contactați-ne'
     DEFAULTHOMETITLE: Acasă
     DELETEDPAGEHELP: 'Pagina nu mai este publicată'

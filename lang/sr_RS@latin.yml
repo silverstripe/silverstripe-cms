@@ -296,9 +296,9 @@ sr_RS@latin:
     BUTTONUNPUBLISHDESC: 'Ukloni ovu stranicu iz objavljenog sajta'
     Comments: Komentari
     Content: Sadržaj
-    DEFAULTABOUTCONTENT: '<p>Ovu stranicu možete popuniti Vašim sadržajem. Osim toga, možete je izbrisati i kreirati sopstvene stranice.<br /></p>'
+    DEFAULTABOUTCONTENT: '<p>Ovu stranicu možete popuniti Vašim sadržajem. Osim toga, možete je izbrisati i kreirati sopstvene stranice.</p>'
     DEFAULTABOUTTITLE: 'O nama'
-    DEFAULTCONTACTCONTENT: '<p>Ovu stranicu možete popuniti Vašim sadržajem. Osim toga, možete je izbrisati i kreirati sopstvene stranice.<br /></p>'
+    DEFAULTCONTACTCONTENT: '<p>Ovu stranicu možete popuniti Vašim sadržajem. Osim toga, možete je izbrisati i kreirati sopstvene stranice.</p>'
     DEFAULTCONTACTTITLE: 'Kontaktirajte nas'
     DEFAULTHOMETITLE: Početna stranica
     DELETEDPAGEHELP: 'Stranica nije više objavljena'
