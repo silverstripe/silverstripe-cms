@@ -71,6 +71,7 @@ de:
     PUBLISH_PAGES: Veröffentlichen
     RESTORE: Wiederherstellen
     RESTORED_PAGES: '%d Seiten wiederhergestellt'
+    UNPUBLISH_PAGES: Veröffentlichung zurücknehmen
   CMSFileAddController:
     MENUTITLE: Dateien
   CMSMain:
@@ -96,6 +97,7 @@ de:
     NEWPAGE: 'Neue {pagetype}'
     PAGENOTEXISTS: 'Diese Seite existiert nicht'
     PAGETYPEANYOPT: Alle
+    PAGETYPEOPT: 'Seitentyp'
     PUBALLCONFIRM: 'Veröffentlicht jede Seite des Seitenbaumes und kopiert den Inhalt von Entwurf zu Live.'
     PUBALLFUN: '"Alle veröffentlichen"-Funktion'
     PUBALLFUN2: "Dieser Button bewirkt dasselbe wie auf jeder Seite \"veröffentlichen\" zu wählen. Sie sollten diese Funktion nutzen, wenn grössere Inhaltsänderungen stattgefunden haben, zum Beispiel wenn die Seite erstellt wurde."
@@ -104,6 +106,7 @@ de:
     REMOVED: 'Lösche ''{title}''{description} von Live Umgebung'
     REMOVEDPAGE: '''{title}'' wurde von der veröffentlichten Site entfernt'
     REMOVEDPAGEFROMDRAFT: 'Lösche ''%s'' von der Entwurfs-Site'
+    RESTORE: 'Entwurf wiederherstellen'
     RESTORED: '''{title}'' wurde wiederhergestellt'
     RESTORE_DESC: 'Entwurf aus archivierter Version wiederherstellen'
     RESTORE_TO_ROOT: 'Entwurf in oberster Ebene wiederherstellen'
@@ -116,7 +119,10 @@ de:
     TabContent: Inhalt
     TabHistory: Historie
     TabSettings: Einstellungen
+    TreeFilteredClear: Zurücksetzen
   CMSMain_left_ss:
+    APPLY_FILTER: Suchen
+    CLEAR_FILTER: Zurücksetzen
     RESET: Zurücksetzen
   CMSPageAddController:
     MENUTITLE: 'Seite hinzufügen'
@@ -156,11 +162,14 @@ de:
     FILTERDATEFROM: Von
     FILTERDATEHEADING: Datum
     FILTERDATETO: Bis
+    FILTERLABELTEXT: Suchen
     PAGEFILTERDATEHEADING: 'Zuletzt bearbeitet'
   CMSSettingsController:
     MENUTITLE: Einstellungen
   CMSSiteTreeFilter_Search:
     Title: 'Alle Seiten'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Entwurfsseiten'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Veröffentlicht aber aus Entwurf entfernt'
   ContentControl:
