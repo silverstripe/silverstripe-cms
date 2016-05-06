@@ -32,7 +32,7 @@ class CMSPageAddController extends CMSPageEditController {
 			$pageTypes = array_merge(array('Page' => $pageTitle), $pageTypes);
 		}
 
-		$numericLabelTmpl = '<div class="field"><label class="left"><span class="step-label"><span class="flyout">%d</span><span class="arrow"></span><span class="title">%s</span></span></label></div>';
+		$numericLabelTmpl = '<div><label class="left"><span class="step-label"><span class="flyout">%d</span><span class="arrow"></span><span class="title">%s</span></span></label></div>';
 
 		$topTitle = _t('CMSPageAddController.ParentMode_top', 'Top level');
 		$childTitle = _t('CMSPageAddController.ParentMode_child', 'Under another page');
