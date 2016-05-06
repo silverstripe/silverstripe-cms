@@ -1254,8 +1254,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$pages = null;
 		}
 
-		$content = new HtmlEditorField('Content');
-		$download = new HtmlEditorField('Download');
+		$content = new HTMLEditorField('Content');
+		$download = new HTMLEditorField('Download');
 
 		foreach($newPageSet as $i => $page) {
 			$page->HasBrokenLink = 0;

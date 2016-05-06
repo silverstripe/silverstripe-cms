@@ -1,12 +1,12 @@
 <?php
-class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
-	protected static $fixture_file = 'SiteTreeHtmlEditorFieldTest.yml';
+class SiteTreeHTMLEditorFieldTest extends FunctionalTest {
+	protected static $fixture_file = 'SiteTreeHTMLEditorFieldTest.yml';
 
 	protected static $use_draft_site = true;
 
 	public function setUp() {
 		parent::setUp();
-		AssetStoreTest_SpyStore::activate('SiteTreeHtmlEditorFieldTest');
+		AssetStoreTest_SpyStore::activate('SiteTreeHTMLEditorFieldTest');
 		$this->logInWithPermission('ADMIN');
 
 		// Write file contents
@@ -25,7 +25,7 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 
 	public function testLinkTracking() {
 		$sitetree = $this->objFromFixture('SiteTree', 'home');
-		$editor   = new HtmlEditorField('Content');
+		$editor   = new HTMLEditorField('Content');
 
 		$aboutID   = $this->idFromFixture('SiteTree', 'about');
 		$contactID = $this->idFromFixture('SiteTree', 'contact');
@@ -64,7 +64,7 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 
 	public function testFileLinkTracking() {
 		$sitetree = $this->objFromFixture('SiteTree', 'home');
-		$editor   = new HtmlEditorField('Content');
+		$editor   = new HTMLEditorField('Content');
 		$fileID   = $this->idFromFixture('File', 'example_file');
 
 		$editor->setValue(sprintf(
@@ -98,7 +98,7 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 
 	public function testImageInsertion() {
 		$sitetree = new SiteTree();
-		$editor   = new HtmlEditorField('Content');
+		$editor   = new HTMLEditorField('Content');
 
 		$editor->setValue('<img src="assets/example.jpg" />');
 		$editor->saveInto($sitetree);
@@ -121,7 +121,7 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 
 	public function testImageTracking() {
 		$sitetree = $this->objFromFixture('SiteTree', 'home');
-		$editor = new HtmlEditorField('Content');
+		$editor = new HTMLEditorField('Content');
 		$file = $this->objFromFixture('Image', 'example_image');
 
 		$editor->setValue(sprintf('[image src="%s" id="%d"]', $file->getURL(), $file->ID));
@@ -144,7 +144,7 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 
 	public function testBrokenSiteTreeLinkTracking() {
 		$sitetree = new SiteTree();
-		$editor   = new HtmlEditorField('Content');
+		$editor   = new HTMLEditorField('Content');
 
 		$this->assertFalse((bool) $sitetree->HasBrokenLink);
 
@@ -167,7 +167,7 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 
 	public function testBrokenFileLinkTracking() {
 		$sitetree = new SiteTree();
-		$editor   = new HtmlEditorField('Content');
+		$editor   = new HTMLEditorField('Content');
 
 		$this->assertFalse((bool) $sitetree->HasBrokenFile);
 
