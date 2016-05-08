@@ -320,9 +320,9 @@ de:
     BUTTONUNPUBLISHDESC: 'Entferne diese Seite aus der veröffentlichten Website'
     Comments: Kommentare
     Content: Inhalt
-    DEFAULTABOUTCONTENT: '<p>Sie können diese Seite mit Ihren eigenen Inhalten füllen, oder sie löschen und Ihre eigenen Seiten erstellen.<br /></p>'
+    DEFAULTABOUTCONTENT: '<p>Sie können diese Seite mit Ihren eigenen Inhalten füllen, oder sie löschen und Ihre eigenen Seiten erstellen.</p>'
     DEFAULTABOUTTITLE: 'Über uns'
-    DEFAULTCONTACTCONTENT: '<p>Sie können diese Seite mit Ihren eigenen Inhalten füllen, oder sie löschen und Ihre eigenen Seiten erstellen.<br /></p>'
+    DEFAULTCONTACTCONTENT: '<p>Sie können diese Seite mit Ihren eigenen Inhalten füllen, oder sie löschen und Ihre eigenen Seiten erstellen.</p>'
     DEFAULTCONTACTTITLE: 'Kontakt'
     DEFAULTHOMECONTENT: '<p>Willkommen bei SilverStripe! Sie sehen hier die standard Homepage. Diese können Sie im <a href="admin/">CMS</a> bearbeiten.</p><p>Sie können auch die englische  <a href="http://docs.silverstripe.org">Dokumentation für Entwickler</a> lesen oder mit den <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lessons</a> lernen, wie Sie das CMS an Ihre Bedürfnisse anpassen.</p>'
     DEFAULTHOMETITLE: Startseite

@@ -320,9 +320,9 @@ pl:
     BUTTONUNPUBLISHDESC: 'Usuń tę stronę z opublikowanej witryny'
     Comments: Komentarze
     Content: Zawartość
-    DEFAULTABOUTCONTENT: '<p>Możesz wypełnić tę stronę własną treścią, usunąć ją i tworzyć własne strony.<br /></p>'
+    DEFAULTABOUTCONTENT: '<p>Możesz wypełnić tę stronę własną treścią, usunąć ją i tworzyć własne strony.</p>'
     DEFAULTABOUTTITLE: 'O nas'
-    DEFAULTCONTACTCONTENT: '<p>Możesz wypełnić tę stronę własną treścią, usunąć ją i tworzyć własne strony.<br /></p>'
+    DEFAULTCONTACTCONTENT: '<p>Możesz wypełnić tę stronę własną treścią, usunąć ją i tworzyć własne strony.</p>'
     DEFAULTCONTACTTITLE: 'Kontakt'
     DEFAULTHOMETITLE: Strona główna
     DELETEDPAGEHELP: 'Strona nie jest już opublikowana'

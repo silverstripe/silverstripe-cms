@@ -230,9 +230,9 @@ sl:
     BUTTONUNPUBLISHDESC: 'Umakni to stran iz objave'
     Comments: Komentarji
     Content: Vsebina
-    DEFAULTABOUTCONTENT: '<p>Na to stran lahko vnesete svojo vsebino ali pa jo izbrišete in sami ustvarjate strani po svoji meri.<br /></p>'
+    DEFAULTABOUTCONTENT: '<p>Na to stran lahko vnesete svojo vsebino ali pa jo izbrišete in sami ustvarjate strani po svoji meri.</p>'
     DEFAULTABOUTTITLE: 'O nas'
-    DEFAULTCONTACTCONTENT: '<p>Na to stran lahko vnesete svojo vsebino ali pa jo izbrišete in sami ustvarjate strani po svoji meri.<br /></p>'
+    DEFAULTCONTACTCONTENT: '<p>Na to stran lahko vnesete svojo vsebino ali pa jo izbrišete in sami ustvarjate strani po svoji meri.</p>'
     DEFAULTCONTACTTITLE: 'Kontakt'
     DEFAULTHOMETITLE: Domov
     DELETEDPAGEHELP: 'Stran ni več objavljena'

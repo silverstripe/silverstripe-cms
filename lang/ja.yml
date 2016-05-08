@@ -296,9 +296,9 @@ ja:
     BUTTONUNPUBLISHDESC: '公開サイトから取り除きました'
     Comments: コメント
     Content: コンテンツ
-    DEFAULTABOUTCONTENT: '<p>あなた自身、自由にページに書き込むことが出来、もちろん添削も自由に行えます。<br /></p>'
+    DEFAULTABOUTCONTENT: '<p>あなた自身、自由にページに書き込むことが出来、もちろん添削も自由に行えます。</p>'
     DEFAULTABOUTTITLE: '私たちについて'
-    DEFAULTCONTACTCONTENT: '<p>あなた自身、自由にページに書き込むことが出来、もちろん添削も自由に行えます。<br /></p>'
+    DEFAULTCONTACTCONTENT: '<p>あなた自身、自由にページに書き込むことが出来、もちろん添削も自由に行えます。</p>'
     DEFAULTCONTACTTITLE: '連絡はこちらまで'
     DEFAULTHOMETITLE: ホーム
     DELETEDPAGEHELP: 'このページは今は公開されていません。'

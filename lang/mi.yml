@@ -296,9 +296,9 @@ mi:
     BUTTONUNPUBLISHDESC: 'Tangohia tēnei whārangi i te pae kua whakaputaina'
     Comments: Ngā Tākupu
     Content: Ngā Ihirangi
-    DEFAULTABOUTCONTENT: '<p>Ka taea te whakakī i tēnei whārangi ki āu ake ihirangi, te muku rānei me te hanga i āu ake whārangi.<br /></p>'
+    DEFAULTABOUTCONTENT: '<p>Ka taea te whakakī i tēnei whārangi ki āu ake ihirangi, te muku rānei me te hanga i āu ake whārangi.</p>'
     DEFAULTABOUTTITLE: 'Mō Mātou'
-    DEFAULTCONTACTCONTENT: '<p>Ka taea te whakakī i tēnei whārangi ki āu ake ihirangi, te muku rānei me te hanga i āu ake whārangi.<br /></p>'
+    DEFAULTCONTACTCONTENT: '<p>Ka taea te whakakī i tēnei whārangi ki āu ake ihirangi, te muku rānei me te hanga i āu ake whārangi.</p>'
     DEFAULTCONTACTTITLE: 'Whakapā Mai'
     DEFAULTHOMETITLE: Kāinga
     DELETEDPAGEHELP: 'Kua kore e whakaputaina te whārangi'

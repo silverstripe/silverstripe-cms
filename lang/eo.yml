@@ -316,9 +316,9 @@ eo:
     BUTTONUNPUBLISHDESC: 'Forigi ĉi tiun paĝon de la publikigita retejo'
     Comments: Komentoj
     Content: Enhavo
-    DEFAULTABOUTCONTENT: '<p>Vi povas plenigi ĉi tiun paĝon per via materialo, aŭ forigi ĝin kaj krei viajn proprajn paĝojn.<br /></p>'
+    DEFAULTABOUTCONTENT: '<p>Vi povas plenigi ĉi tiun paĝon per via materialo, aŭ forigi ĝin kaj krei viajn proprajn paĝojn.</p>'
     DEFAULTABOUTTITLE: 'Pri ni'
-    DEFAULTCONTACTCONTENT: '<p>Vi povas plenigi ĉi tiun paĝon per via materialo, aŭ forigi ĝin kaj krei viajn proprajn paĝojn.<br /></p>'
+    DEFAULTCONTACTCONTENT: '<p>Vi povas plenigi ĉi tiun paĝon per via materialo, aŭ forigi ĝin kaj krei viajn proprajn paĝojn.</p>'
     DEFAULTCONTACTTITLE: 'Kontakti nin'
     DEFAULTHOMECONTENT: '<p>Bonvenon al SilverStripe! Jen la apriora hejmpaĝo. Vi povas redakti la paĝon malfermante je <a href="admin/">la CMS</a>.</p><p>Vi povas nun aliri la <a href="http://docs.silverstripe.org">dokumentaron por programistoj</a>, aŭ komenci la <a href="http://www.silverstripe.org/learn/lessons">SilverStripe-lecionojn</a>.</p>'
     DEFAULTHOMETITLE: Hejmo

@@ -1374,7 +1374,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			if(DB::query("SELECT COUNT(*) FROM \"SiteTree\"")->value() == 1) {
 				$aboutus = new Page();
 				$aboutus->Title = _t('SiteTree.DEFAULTABOUTTITLE', 'About Us');
-				$aboutus->Content = _t('SiteTree.DEFAULTABOUTCONTENT', '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>');
+				$aboutus->Content = _t('SiteTree.DEFAULTABOUTCONTENT', '<p>You can fill this page out with your own content, or delete it and create your own pages.</p>');
 				$aboutus->Sort = 2;
 				$aboutus->write();
 				$aboutus->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
@@ -1383,7 +1383,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 				$contactus = new Page();
 				$contactus->Title = _t('SiteTree.DEFAULTCONTACTTITLE', 'Contact Us');
-				$contactus->Content = _t('SiteTree.DEFAULTCONTACTCONTENT', '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>');
+				$contactus->Content = _t('SiteTree.DEFAULTCONTACTCONTENT', '<p>You can fill this page out with your own content, or delete it and create your own pages.</p>');
 				$contactus->Sort = 3;
 				$contactus->write();
 				$contactus->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
