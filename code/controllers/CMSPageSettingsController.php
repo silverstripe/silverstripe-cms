@@ -12,9 +12,9 @@ class CMSPageSettingsController extends CMSMain {
 	private static $session_namespace = 'CMSMain';
 
 	public function getEditForm($id = null, $fields = null) {
-		$record = $this->getRecord($id ? $id : $this->currentPageID());
+		$record = $this->getRecord($id ?: $this->currentPageID());
 
-		return parent::getEditForm($record, ($record) ? $record->getSettingsFields() : null);
+		return parent::getEditForm($id, ($record) ? $record->getSettingsFields() : null);
 	}
 
 	public function Breadcrumbs($unlinked = false) {
