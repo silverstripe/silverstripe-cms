@@ -70,7 +70,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		Requirements::css(CMS_DIR . '/client/dist/styles/bundle.css');
 		Requirements::customCSS($this->generatePageIconsCss());
-		Requirements::add_i18n_javascript(CMS_DIR . '/client/src/lang', false, true);
+		Requirements::add_i18n_javascript(CMS_DIR . '/client/lang', false, true);
 		Requirements::javascript(CMS_DIR . '/client/dist/js/bundle-legacy.js', [
 			'provides' => [
 				CMS_DIR . '/client/dist/js/CMSMain.AddForm.js',
