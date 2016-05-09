@@ -15,8 +15,16 @@
 			<% with $LastEdited %>
 				<td class="last-edited first-column" title="$Ago - $Nice">$Nice</td>
 			<% end_with %>
-			<td><% if $Author %>$Author.FirstName $Author.Surname.Initial<% else %><% _t('CMSPageHistoryController_versions_ss.UNKNOWN','Unknown') %><% end_if %></td>
-			<td class="last-column"><% if $Published %><% if $Publisher %>$Publisher.FirstName $Publisher.Surname.Initial<% else %><% _t('CMSPageHistoryController_versions_ss.UNKNOWN','Unknown') %><% end_if %><% else %><% _t('CMSPageHistoryController_versions_ss.NOTPUBLISHED','Not published') %><% end_if %></td>
+            <td>
+                <% if $Author %>$Author.FirstName $Author.Surname.Initial
+                <% else_if $DeletedAuthor %>$DeletedAuthor.FirstName $DeletedAuthor.Surname.Initial
+                <% else %><% _t('CMSPageHistoryController_versions_ss.UNKNOWN','Unknown') %><% end_if %>
+            </td>
+            <td class="last-column"><% if $Published %>
+                <% if $Publisher %>$Publisher.FirstName $Publisher.Surname.Initial
+                <% else_if $DeletedPublisher %>$DeletedPublisher.FirstName $DeletedPublisher.Surname.Initial
+                <% else %><% _t('CMSPageHistoryController_versions_ss.UNKNOWN','Unknown') %><% end_if %><% else %><% _t('CMSPageHistoryController_versions_ss.NOTPUBLISHED','Not published') %><% end_if %>
+            </td>
 		</tr>
 		<% end_loop %>
 	</tbody>

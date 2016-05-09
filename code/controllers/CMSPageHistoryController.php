@@ -209,6 +209,13 @@ class CMSPageHistoryController extends CMSMain {
 				foreach($versions as $k => $version) {
 					$active = false;
 
+                    if ($version->AuthorID && !$version->Author) {
+                        $version->DeletedAuthor = DataObject::get_by_id("DeletedMember", $version->AuthorID);
+                    }
+                    if ($version->PublisherID && !$version->Publisher) {
+                        $version->DeletedPublisher = DataObject::get_by_id("DeletedMember", $version->PublisherID);
+                    }
+
 					if($version->Version == $versionID || $version->Version == $otherVersionID) {
 						$active = true;
 
