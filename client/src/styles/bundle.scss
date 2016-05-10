@@ -1,15 +1,8 @@
-/**
- * This file is the central collection of included modules, links to custom SCSS files,
- * and any global SCSS variable definitions.
- *
- * DO NOT ADD stylesheet rules to this file directly!
- *
- * Note: By prefixing files with an underscore, they won't create individual CSS files.
- */
+// This file is the central collection of included modules, links to custom SCSS files,
+// and any global SCSS variable definitions.
+// DO NOT ADD stylesheet rules to this file directly!
+// Note: By prefixing files with an underscore, they won't create individual CSS files.
 
-/** -----------------------------
- * CMS Components
- * ------------------------------ */
-@import "CMSMain";
-@import "AssetAdmin";
-@import "ReportAdmin";
+@import "legacy/CMSMain";
+@import "legacy/AssetAdmin";
+@import "legacy/ReportAdmin";
