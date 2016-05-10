@@ -75,7 +75,6 @@ bg:
     MENUTITLE: 'Редактиране на страницата'
     PAGENOTEXISTS: 'Тази страница не съществува'
     PAGETYPEANYOPT: Всички
-    PAGETYPEOPT: 'Тип на страницата'
     PUBALLCONFIRM: 'Публикувай всяка страница в сайта'
     PUBALLFUN: '"Публикувай всичко" функционалност'
     PUBALLFUN2: "Натискайки този бутон все едно, публикувате всяка страница по отделно. Идеята е тази функционалност да се използва при мащабна редакция на съдържанието, като например случая когато сайта бива първоначално попълнен."
@@ -117,8 +116,6 @@ bg:
     ListView: 'Изглед в списък'
     MENUTITLE: Страници
     TreeView: 'Дървовиден изглед'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: 'Групови действия'
   CMSPagesController_Tools_ss:
     FILTER: Филтър
   CMSSIteTreeFilter_PublishedPages:
@@ -127,20 +124,11 @@ bg:
     FILTERDATEFROM: От
     FILTERDATEHEADING: Дата
     FILTERDATETO: До
-    FILTERLABELTEXT: Търсене
     PAGEFILTERDATEHEADING: 'Последна редакция'
   CMSSettingsController:
     MENUTITLE: Настройки
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Променени страници'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Всички страници вкл. архивираните'
   CMSSiteTreeFilter_Search:
     Title: 'Всички страници'
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Архивирани страници'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Чернови'
   ContentControl:
     NOTEWONTBESHOWN: 'Забележка: Това съобщение няма да се показва на Вашите посетители'
   ContentController:
@@ -249,7 +237,6 @@ bg:
   SilverStripeNavigator:
     ARCHIVED: Архивирани
   SilverStripeNavigatorLink:
-    ShareInstructions: 'За да споделите тази страница, копирайте следващата препратка.'
     ShareLink: 'Препратка за споделяне'
   SilverStripeNavigatorLinkl:
     CloseLink: Затвори

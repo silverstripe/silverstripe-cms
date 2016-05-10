@@ -181,7 +181,7 @@ cs:
   CMSSiteTreeFilter_StatusDeletedPages:
     Title: 'Archivované stránky'
   CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Konceptové stránky'
+    Title: 'Koncept stránek'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Živé, ale odstraněno z konceptu'
   ContentControl:
