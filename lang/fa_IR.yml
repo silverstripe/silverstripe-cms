@@ -88,10 +88,12 @@ fa_IR:
     DELETEFP: حذف کردن از منتشر شده های سایت
     EMAIL: پست الکترونیک
     EditTree: 'ویرایش درخت'
+    ListFiltered: 'نمایش نتایج جستجو'
     MENUTITLE: 'ویرایش صفحه'
     NEWPAGE: '{pagetype} جدید'
     PAGENOTEXISTS: 'این صفحه وجود ندارد'
     PAGETYPEANYOPT: هر
+    PAGETYPEOPT: 'نوع صفحه'
     PUBALLFUN: 'عملکرد "انتشار همه"'
     PageAdded: 'صفحه با موفقیت ایجاد شد'
     RESTORED: 'بازنشانی موفقیت‌آمیز ''{title}'''
@@ -102,6 +104,8 @@ fa_IR:
     TabHistory: تاریخچه
     TabSettings: تنظیمات
   CMSMain_left_ss:
+    APPLY_FILTER: جستجو
+    CLEAR_FILTER: پاک‌کردن
     RESET: تنظیم مجدد
   CMSPageAddController:
     MENUTITLE: 'افزودن صفحه'
@@ -181,7 +185,7 @@ fa_IR:
     429: '429 - درخواست‌های بسیار'
     500: '500 - خطای داخلی سرور'
     502: '502 - درگاه نادرست'
-    CODE: 'شماره ایراد'
+    CODE: 'کد خطا'
     DEFAULTERRORPAGETITLE: 'برگ پیدا نشد'
     DEFAULTSERVERERRORPAGECONTENT: '<p>با پوزش، در پردازش درخواست شما ایرادی بوجود آمد.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'خطای سرور'
@@ -345,4 +349,5 @@ fa_IR:
     DESCRIPTION: 'نمایش محتوای صفحه ی دیگر'
     EditLink: ویرایش
     HEADER: 'این یک صفحه مجازی است'
+    PLURALNAME: 'صفحات مجازی'
     SINGULARNAME: 'صفحه مجازی'

@@ -100,7 +100,7 @@ sk:
     PAGENOTEXISTS: 'Táto stránka neexistuje.'
     PAGES: 'Stav stránky'
     PAGETYPEANYOPT: Akákoľvek
-    PAGETYPEOPT: 'Typ stránky:'
+    PAGETYPEOPT: 'Typ stránky'
     PUBALLCONFIRM: 'Prosím, zverejnite všetky stránky webu, zkopírovaním obsahu na verejné'
     PUBALLFUN: 'Funkcia "Publikovať všetko"'
     PUBALLFUN2: "Stlačením tohto tlačidla vykonáte to isté ako keby ste navštívili každú stránku a stlačili \"publikuj\". Je určené na použite po rozsiahlych zmenách obsahu, napríklad keď bol web prvýkrát vytvorený."
