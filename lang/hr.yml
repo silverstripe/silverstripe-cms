@@ -2,7 +2,7 @@ hr:
   AssetAdmin:
     NEWFOLDER: Novi direktorij
   AssetAdmin_left_ss:
-    GO: Idi
+    GO: Kreni
   CMSMain:
     PAGENOTEXISTS: 'Stranica ne postoji'
     PUBALLCONFIRM: 'Molim objavi svaku stranicu, kopirajući sadržaj'
@@ -18,6 +18,8 @@ hr:
     REDIRECTTOEXTERNAL: 'Drugi web'
     REDIRECTTOPAGE: 'Stranicu na Vašom webu'
     YOURPAGE: 'Stranica na Vašem webu'
+  SearchForm:
+    GO: Kreni
   SideReport:
     EMPTYPAGES: 'Prazne stranice'
     LAST2WEEKS: 'Stranice mijenjane u zadnja 2 tjedna'
@@ -25,10 +27,10 @@ hr:
     ACCESSANYONE: Svi
     ACCESSHEADER: 'Tko može pregledavati ovu stranicu?'
     ACCESSLOGGEDIN: 'Samo prijavljeni korisnici'
-    ACCESSONLYTHESE: 'Samo slijedeći korisnici (odaberite s popisa)'
+    ACCESSONLYTHESE: 'Samo ovi korisnici (odaberite s popisa)'
     ALLOWCOMMENTS: 'Dozvoli komentare na stranici'
-    BUTTONCANCELDRAFT: 'Otkaži promjene na privremenoj stranici (draft)'
-    BUTTONCANCELDRAFTDESC: 'Obiriši privremenu stranicu i vrati na trenutno objavljenu'
+    BUTTONCANCELDRAFT: 'Otkaži promjene na radnoj verziji'
+    BUTTONCANCELDRAFTDESC: 'Obiriši radnu verziju i vrati na trenutno objavljenu verziju stranice'
     BUTTONUNPUBLISHDESC: 'Izbrišite ovu stranicu sa objavljene'
     Content: Sadržaj
     EDITANYONE: 'Svi koji se mogu prijaviti  u CMS'
