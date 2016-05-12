@@ -318,9 +318,7 @@ es:
     BUTTONUNPUBLISHDESC: 'Elimine esta página del sitio publicado'
     Comments: Comentarios
     Content: Contenido
-    DEFAULTABOUTCONTENT: '<p>Tú puedes rellenar esta página con tu propio contenido, o borrarla y crear tus propias páginas.<br />Aquí pondrías información sobre los dueños de tu página.</p>'
     DEFAULTABOUTTITLE: 'Sobre nosotros'
-    DEFAULTCONTACTCONTENT: '<p>Tú puedes rellenar esta página con tu propio contenido, o borrarla y crear tus propias páginas.<br />Aquí pondrías tu información de contacto.</p>'
     DEFAULTCONTACTTITLE: 'Contacta con nosotros'
     DEFAULTHOMECONTENT: '<p>¡Bienvenido a SilverStripe! Esta es la página de inicio por defecto. Tú puedes editar esta página abriendo <a href="admin/">el CMS</a>.</p><p>También puedes acceder a la  <a href="http://docs.silverstripe.org">documentación de desarrollo</a>, o comenzar con las<a href="http://www.silverstripe.org/learn/lessons">Lecciones de SilverStripe</a>.</p>'
     DEFAULTHOMETITLE: Inicio

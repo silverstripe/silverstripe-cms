@@ -296,9 +296,7 @@ zh:
     BUTTONUNPUBLISHDESC: '将该页面从已发布的站点中删除'
     Comments: 评论
     Content: 内容
-    DEFAULTABOUTCONTENT: '<p>您可以使用您自己的内容填充该页面，或者删除它并创建您自己的页面。</p>'
     DEFAULTABOUTTITLE: '关于我们'
-    DEFAULTCONTACTCONTENT: '<p>您可以使用您自己的内容填充该页面，或者删除它并创建您自己的页面。</p>'
     DEFAULTCONTACTTITLE: '联络我们'
     DEFAULTHOMETITLE: 首页
     DELETEDPAGEHELP: '页面已停止发布'

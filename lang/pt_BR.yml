@@ -73,9 +73,7 @@ pt_BR:
     BUTTONUNPUBLISHDESC: 'Remova esta página do site publicado'
     Comments: Comentários
     Content: Conteúdo
-    DEFAULTABOUTCONTENT: '<p>Você pode alimentar esta página com seu próprio conteúdo, ou excluir esta página e criar as suas proprias.</p>'
     DEFAULTABOUTTITLE: 'Sobre nós'
-    DEFAULTCONTACTCONTENT: '<p>Você pode alimentar esta página com seu próprio conteúdo, ou excluir esta página e criar as suas proprias.</p>'
     DEFAULTCONTACTTITLE: 'Contato'
     DEFAULTHOMETITLE: Página Inicial
     EDITANYONE: 'Qualquer pessoa que possa fazer log-in'

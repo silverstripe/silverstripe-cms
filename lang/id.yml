@@ -306,9 +306,7 @@ id:
     BUTTONUNPUBLISHDESC: 'Hapus laman ini dari situs terbit'
     Comments: Komen-komen
     Content: Konten
-    DEFAULTABOUTCONTENT: '<p>Anda dapat mengisi laman ini dengan konten Anda sendiri, atau menghapusnya dan membuat laman Anda sendiri.</p>'
     DEFAULTABOUTTITLE: 'Tentang Kami'
-    DEFAULTCONTACTCONTENT: '<p>Anda dapat mengisi laman ini dengan konten Anda sendiri, atau menghapusnya dan membuat laman Anda sendiri.</p>'
     DEFAULTCONTACTTITLE: 'Hubungi Kami'
     DEFAULTHOMETITLE: Beranda
     DELETEDPAGEHELP: 'Laman tidak lagi terbit'

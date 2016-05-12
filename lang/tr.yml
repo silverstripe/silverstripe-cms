@@ -166,9 +166,7 @@ tr:
     BUTTONUNPUBLISHDESC: 'Bu sayfayı yayından kaldır'
     Comments: Yorumlar
     Content: İçerik
-    DEFAULTABOUTCONTENT: '<p>Bu sayfayı kendi içeriğinizle doldurabilir, ya da bu sayfayı silip kendi sayfalarınızı oluşturabilirsiniz.</p>'
     DEFAULTABOUTTITLE: 'Hakkımızda'
-    DEFAULTCONTACTCONTENT: '<p>Bu sayfayı kendi içeriğinizle doldurabilir, ya da bu sayfayı silip kendi sayfalarınızı oluşturabilirsiniz.</p>'
     DEFAULTCONTACTTITLE: 'İletişim'
     DEFAULTHOMETITLE: Anasayfa
     DependtPageColumnLinkType: 'Link tipi'

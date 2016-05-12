@@ -100,7 +100,7 @@ sk:
     PAGENOTEXISTS: 'Táto stránka neexistuje.'
     PAGES: 'Stav stránky'
     PAGETYPEANYOPT: Akákoľvek
-    PAGETYPEOPT: 'Typ stránky:'
+    PAGETYPEOPT: 'Typ stránky'
     PUBALLCONFIRM: 'Prosím, zverejnite všetky stránky webu, zkopírovaním obsahu na verejné'
     PUBALLFUN: 'Funkcia "Publikovať všetko"'
     PUBALLFUN2: "Stlačením tohto tlačidla vykonáte to isté ako keby ste navštívili každú stránku a stlačili \"publikuj\". Je určené na použite po rozsiahlych zmenách obsahu, napríklad keď bol web prvýkrát vytvorený."
@@ -342,9 +342,7 @@ sk:
     BUTTONUNPUBLISHDESC: 'Odstrániť túto stránku z publikovaných na webe'
     Comments: Komentáre
     Content: Obsah
-    DEFAULTABOUTCONTENT: '<p>Túto stránku môžete vyplniť vlastným obsahom, alebo ju zmazať a vytvoriť vaše vlastné stránky.</p>'
     DEFAULTABOUTTITLE: 'O nás'
-    DEFAULTCONTACTCONTENT: '<p>Túto stránku môžete vyplniť vlastným obsahom, alebo ju zmazať a vytvoriť vaše vlastné stránky.</p>'
     DEFAULTCONTACTTITLE: 'Kontakt'
     DEFAULTHOMECONTENT: '<p>Vitajte v SilverStripe! Toto je základná domáca stránka. Môžte ju upraviť otvorením <a href="admin/">CMS</a>.</p><p>Môžte tiež vstúpiť k <a href="http://docs.silverstripe.org">dokumentácii vývojára</a>, alebo sa priučit na <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lekciách</a>.</p>'
     DEFAULTHOMETITLE: Domov

@@ -181,7 +181,7 @@ cs:
   CMSSiteTreeFilter_StatusDeletedPages:
     Title: 'Archivované stránky'
   CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Konceptové stránky'
+    Title: 'Koncept stránek'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Živé, ale odstraněno z konceptu'
   ContentControl:
@@ -342,9 +342,7 @@ cs:
     BUTTONUNPUBLISHDESC: 'Odstranit tuto stránku z publikovaných na webu'
     Comments: Komentáře
     Content: Obsah
-    DEFAULTABOUTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky. <br /> </p>'
     DEFAULTABOUTTITLE: 'O nás'
-    DEFAULTCONTACTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky. <br /> </p>'
     DEFAULTCONTACTTITLE: 'Kontaktujte nás'
     DEFAULTHOMECONTENT: '<p>Vítejte v SilverStripe! Toto je základní domácí stránka. Můžete ji upravit otevřením <a href="admin/">CMS</a>.</p><p>Můžete také nyní vstoupit  do <a href="http://docs.silverstripe.org">dokumentace vývojáře</a>, nebo se přiučit na <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lekcích</a>.</p>'
     DEFAULTHOMETITLE: Úvodní strana
