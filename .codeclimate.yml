@@ -1,0 +1,10 @@
+engines:
+  eslint:
+    enabled: true
+  scss-lint:
+    enabled: true
+ratings:
+  paths:
+  - client/src/**
+exclude_paths:
+- "client/dist/**"
