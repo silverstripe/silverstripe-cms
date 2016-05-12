@@ -145,6 +145,10 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 		$title = ($folder && $folder->isInDB()) ? $folder->Title : _t('AssetAdmin.FILES', 'Files');
 		$fields->push(new HiddenField('ID', false, $folder ? $folder->ID : null));
 
+		// Remove legacy previewable behaviour.
+		$form->removeExtraClass('cms-previewable');
+		$form->Fields()->removeByName('SilverStripeNavigator');
+
 		// File listing
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
 			new GridFieldToolbarHeader(),
