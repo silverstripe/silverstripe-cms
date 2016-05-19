@@ -71,9 +71,7 @@ ca:
     BUTTONUNPUBLISHDESC: 'Suprimeix aquesta pàgina del lloc publicat'
     Comments: Comentaris
     Content: Contingut
-    DEFAULTABOUTCONTENT: '<p>Podeu omplir aquesta pàgina amb el vostre propi contingut, o eliminar-la i crear les vostres pròpies pàgines.<br/></p>'
     DEFAULTABOUTTITLE: 'Sobre nosaltres'
-    DEFAULTCONTACTCONTENT: '<p>Podeu omplir aquesta pàgina amb el vostre propi contingut, o eliminar-la i crear les vostres pròpies pàgines.<br/></p>'
     DEFAULTCONTACTTITLE: 'Contacteu amb nosaltres'
     DEFAULTHOMETITLE: Portada
     EDITANYONE: 'Qualsevol que pot entrar al SGC'

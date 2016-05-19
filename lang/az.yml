@@ -67,9 +67,7 @@ az:
     BUTTONUNPUBLISHDESC: 'Bu səhifəni dərc olunmuş saytdan sil'
     Comments: Şərhlər
     Content: Məzmun
-    DEFAULTABOUTCONTENT: '<p>Siz bu səhifəni öz məzmununzla doldura bilər, ya da səhifəni silib və pz səhifələrinizi yarada bilərsiniz.<br /></p>'
     DEFAULTABOUTTITLE: 'Haqqımızda'
-    DEFAULTCONTACTCONTENT: '<p>Siz bu səhifəni öz məzmununzla doldura bilər, ya da səhifəni silib və pz səhifələrinizi yarada bilərsiniz.<br /></p>'
     DEFAULTCONTACTTITLE: 'Bizimlə əlaqə'
     DEFAULTHOMETITLE: Baş səhifə
     DependtPageColumnLinkType: 'Keçid növü'

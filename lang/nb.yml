@@ -315,9 +315,7 @@ nb:
     BUTTONUNPUBLISHDESC: 'Fjern denne siden fra det publiserte nettstedet'
     Comments: Kommentarer
     Content: Innhold
-    DEFAULTABOUTCONTENT: '<p>Du kan fylle denne siden med ditt eget innhold, eller du kan slette siden og lage dine egne sider.<br /></p>'
     DEFAULTABOUTTITLE: 'Om oss'
-    DEFAULTCONTACTCONTENT: '<p>Du kan fylle denne siden med ditt innhold, eller du kan slette siden og lage dine egne sider.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontakt oss'
     DEFAULTHOMECONTENT: '<p>Velkommen til SilverStripe! Dette er standard-forsiden. Du kan redigere denne ved å gå til <a href="admin/">publiseringssystemet</a>.</p><p>Du kan nå gå til <a href="http://docs.silverstripe.org">dokumentasjonen for utviklere</a>, eller begynne med <a href="http://www.silverstripe.org/learn/lessons">SilverStripe-leksjoner</a>.</p>'
     DEFAULTHOMETITLE: Hjem

@@ -102,7 +102,6 @@ fa_IR:
     TabHistory: تاریخچه
     TabSettings: تنظیمات
   CMSMain_left_ss:
-    CLEAR_FILTER: پاک‌کردن
     RESET: تنظیم مجدد
   CMSPageAddController:
     MENUTITLE: 'افزودن صفحه'
@@ -346,5 +345,4 @@ fa_IR:
     DESCRIPTION: 'نمایش محتوای صفحه ی دیگر'
     EditLink: ویرایش
     HEADER: 'این یک صفحه مجازی است'
-    PLURALNAME: 'صفحات مجازی'
     SINGULARNAME: 'صفحه مجازی'

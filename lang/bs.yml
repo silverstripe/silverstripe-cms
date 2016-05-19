@@ -98,9 +98,7 @@ bs:
     BUTTONCANCELDRAFTDESC: 'Izbrišite Vaš privremeni nacrt stranice i vratite se na trenutno objavljenu stranicu'
     BUTTONUNPUBLISH: Opozovi objavljivanje
     BUTTONUNPUBLISHDESC: 'Ukloni ovu stavku sa objavljene stranice'
-    DEFAULTABOUTCONTENT: '<p>Ovu stranicu možete popuniti sa vlastitim sadržajem, ili je izbrisati i kreirati svoje vlastite stranice.<br /></p>'
     DEFAULTABOUTTITLE: 'O nama'
-    DEFAULTCONTACTCONTENT: '<p>Ovu stranicu možete popuniti sa vlastitim sadržajem, ili je izbrisati i kreirati svoje vlastite stranice.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontaktirajte nas'
     DEFAULTHOMETITLE: Početna
     EDITANYONE: 'Svi korisnici koji se mogu prijaviti u CMS'

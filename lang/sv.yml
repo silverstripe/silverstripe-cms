@@ -315,9 +315,7 @@ sv:
     BUTTONUNPUBLISHDESC: 'Ta bort den här sidan från den publicerade sajten'
     Comments: Kommentarer
     Content: Innehåll
-    DEFAULTABOUTCONTENT: '<p>Du kan fylla den här sidan med ditt eget innehåll, eller radera den och skapa dina egna sidor.<br/></p>'
     DEFAULTABOUTTITLE: 'Om oss'
-    DEFAULTCONTACTCONTENT: '<p>Du kan fylla den här sidan med ditt eget innehåll, eller radera den och skapa dina egna sidor.<br/></p>'
     DEFAULTCONTACTTITLE: 'Kontakta oss'
     DEFAULTHOMECONTENT: '<p>Välkommen till SilverStripe!  Detta är hemsidan din startsida. Du kan ändra denna sida genom att gå till <a href="admin/">administrationsdelen</a>.</p><p> Du har tillgång till You can now access the <a href="http://docs.silverstripe.org">utvecklar dokumentationen</a>, eller börja med att titta på <a href="http://www.silverstripe.org/learn/lessons">SilverStripelektionerna</a>.</p>'
     DEFAULTHOMETITLE: Hem
