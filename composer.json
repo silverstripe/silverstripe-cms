@@ -22,11 +22,6 @@
 		"silverstripe/reports": "~3.3",
 		"silverstripe/siteconfig": "~3.3"
 	},
-	"extra": {
-		"branch-alias": {
-			"3.x-dev": "3.3.x-dev"
-		}
-	},
 	"autoload": {
 		"classmap": ["tests/behat/"]
 	},
