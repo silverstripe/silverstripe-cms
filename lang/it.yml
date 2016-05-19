@@ -221,7 +221,6 @@ it:
     DEFAULTSERVERERRORPAGETITLE: 'Errore server'
     DESCRIPTION: 'Contenuto personalizzato per differenti casi di errore (es. "Pagina non trovata")'
     ERRORFILEPROBLEM: 'Errore nell''apertura del file "{filename}" per la scrittura. Controlla i permessi del file.'
-    PLURALNAME: 'Pagine di errore'
     SINGULARNAME: 'Pagine errore'
   File:
     Title: Titolo
@@ -246,7 +245,6 @@ it:
     HASBEENSETUP: 'Una pagina di redirezione è stata configurata nonostante non vi sia alcun indirizzo a cui farla puntare'
     HEADER: 'Questa pagina redirigerà gli utenti su un''altra'
     OTHERURL: 'Altro indirizzo del sito web'
-    PLURALNAME: 'Pagine di redirezione'
     REDIRECTTO: 'Redirigi a'
     REDIRECTTOEXTERNAL: 'Un altro sito web'
     REDIRECTTOPAGE: 'Una pagina sul tuo sito web'
@@ -320,9 +318,7 @@ it:
     BUTTONUNPUBLISHDESC: 'Rimuovi questa pagina dal sito pubblicato'
     Comments: Commenti
     Content: Contenuto
-    DEFAULTABOUTCONTENT: '<p>Puoi riempire questa pagina con i tuoi contenuti, oppure cancellarla e creare le tue pagine.<br /></p>'
     DEFAULTABOUTTITLE: 'Chi siamo'
-    DEFAULTCONTACTCONTENT: '<p>Puoi riempire questa pagina con i tuoi contenuti, oppure cancellarla e creare le tue pagine.<br /></p>'
     DEFAULTCONTACTTITLE: 'Contattaci'
     DEFAULTHOMECONTENT: '<p>Benvenuto in SilverStripe! Questa è la home page di default. Puoi modificare questa pagina direttamente <a href="admin/">dal CMS</a>.</p><p>Puoi accedere alla <a href="http://docs.silverstripe.org">documentazione per gli sviluppatori</a> o partire dalle <a href="http://www.silverstripe.org/learn/lessons">lezioni di SilverStripe</a>.</p>'
     DEFAULTHOMETITLE: Home
@@ -414,6 +410,5 @@ it:
     EditLink: modifica
     HEADER: 'Questa è una pagina virtuale'
     HEADERWITHLINK: 'Questa è una pagina virtuale copiata da "{title}" ({link})'
-    PLURALNAME: 'Pagine virtuali'
     PageTypNotAllowedOnRoot: 'Il tipo di pagina originale "{type}" non è consentito al primo livello per questa pagina virtuale'
     SINGULARNAME: 'Pagina virtuale'

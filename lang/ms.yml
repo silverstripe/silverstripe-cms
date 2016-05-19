@@ -27,9 +27,7 @@ ms:
     BUTTONUNPUBLISH: Tidak diterbitkan
     BUTTONUNPUBLISHDESC: 'Hapus mukasurat ini dari laman sebenar'
     Content: Kandungan
-    DEFAULTABOUTCONTENT: '<p>Anda bole isikan kandungan anda sendiri ke dalam mukasurat ini. atau padamkannya dan hasilkan mukasurat yang baru untuk menggantikannya.<br /></p>'
     DEFAULTABOUTTITLE: 'Tentang Kami'
-    DEFAULTCONTACTCONTENT: '<p>Anda bole isikan kandungan anda sendiri ke dalam mukasurat ini. atau padamkannya dan hasilkan mukasurat yang baru untuk menggantikannya.<br /></p>'
     DEFAULTCONTACTTITLE: 'Hubungi Kami'
     DEFAULTHOMETITLE: Utama
     EDITANYONE: 'Sesiapa sahaja yang boleh mendaftar masuk ke CMS'

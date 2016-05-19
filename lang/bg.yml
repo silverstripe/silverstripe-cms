@@ -204,7 +204,6 @@ bg:
     HASBEENSETUP: 'Създадена е страница за пренасочване без да има накъде да се пренасочи.'
     HEADER: 'Тази страница ще пренасочи потребители към друга страница'
     OTHERURL: 'Друг уебсайт URL'
-    PLURALNAME: 'Пренасочващи страници'
     REDIRECTTO: 'Пренасочи към'
     REDIRECTTOEXTERNAL: 'Друг уебсайт'
     REDIRECTTOPAGE: 'Страница на вашият уебсайт'
@@ -277,9 +276,7 @@ bg:
     BUTTONUNPUBLISHDESC: 'Премахни тази страница от публикувания сайт'
     Comments: Коментари
     Content: Съдържание
-    DEFAULTABOUTCONTENT: '<p>Може да запълните тази страница със собствено съдържание, или да я изтриете и да създадете ваши собствени страници.<br /></p>'
     DEFAULTABOUTTITLE: 'За нас'
-    DEFAULTCONTACTCONTENT: '<p>Може да запълните тази страница със собствено съдържание, или да я изтриете и да създадете ваши собствени страници.<br /></p>'
     DEFAULTCONTACTTITLE: 'За контакт'
     DEFAULTHOMECONTENT: '<p>Това е съдържанието по подразбиране на началната страница. Можете да редактирате тази страница като влезете в <a href="admin/">СУС (CMS)</a>.</p><p>Също така можете да разгледате <a href="http://docs.silverstripe.org">документацията за разработчици</a> или да започнете с <a href="http://www.silverstripe.org/learn/lessons">уроците по SilverStripe</a>.</p>'
     DEFAULTHOMETITLE: Начало
