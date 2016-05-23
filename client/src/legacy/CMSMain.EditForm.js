@@ -235,12 +235,12 @@ $.entwine('ss', function($){
 	});
 
 	/**
-	 * Class: .cms-edit-form .Actions #Form_EditForm_action_print
+	 * Class: .cms-edit-form .btn-toolbar #Form_EditForm_action_print
 	 *
 	 * Open a printable representation of the form in a new window.
 	 * Used for readonly older versions of a specific page.
 	 */
-	$('.cms-edit-form .Actions #Form_EditForm_action_print').entwine({
+	$('.cms-edit-form .btn-toolbar #Form_EditForm_action_print').entwine({
 		/**
 		 * Function: onclick
 		 *
@@ -260,11 +260,11 @@ $.entwine('ss', function($){
 	});
 
 	/**
-	 * Class: .cms-edit-form .Actions #Form_EditForm_action_rollback
+	 * Class: .cms-edit-form .btn-toolbar #Form_EditForm_action_rollback
 	 *
 	 * A "rollback" to a specific version needs user confirmation.
 	 */
-	$('.cms-edit-form .Actions #Form_EditForm_action_rollback').entwine({
+	$('.cms-edit-form .btn-toolbar #Form_EditForm_action_rollback').entwine({
 
 		/**
 		 * Function: onclick
@@ -291,11 +291,11 @@ $.entwine('ss', function($){
 	});
 
 	/**
-	 * Class: .cms-edit-form .Actions #Form_EditForm_action_archive
+	 * Class: .cms-edit-form .btn-toolbar #Form_EditForm_action_archive
 	 *
 	 * Informing the user about the archive action while requiring confirmation
 	 */
-	$('.cms-edit-form .Actions #Form_EditForm_action_archive').entwine({
+	$('.cms-edit-form .btn-toolbar #Form_EditForm_action_archive').entwine({
 
 		/**
 		 * Function: onclick
@@ -318,11 +318,11 @@ $.entwine('ss', function($){
 	});
 
 	/**
-	 * Class: .cms-edit-form .Actions #Form_EditForm_action_restore
+	 * Class: .cms-edit-form .btn-toolbar #Form_EditForm_action_restore
 	 *
 	 * Informing the user about the archive action while requiring confirmation
 	 */
-	$('.cms-edit-form .Actions #Form_EditForm_action_restore').entwine({
+	$('.cms-edit-form .btn-toolbar #Form_EditForm_action_restore').entwine({
 
 		/**
 		 * Function: onclick
@@ -348,11 +348,11 @@ $.entwine('ss', function($){
 	});
 
 	/**
-	 * Class: .cms-edit-form .Actions #Form_EditForm_action_delete
+	 * Class: .cms-edit-form .btn-toolbar #Form_EditForm_action_delete
 	 *
 	 * Informing the user about the delete from draft action while requiring confirmation
 	 */
-	$('.cms-edit-form .Actions #Form_EditForm_action_delete').entwine({
+	$('.cms-edit-form .btn-toolbar #Form_EditForm_action_delete').entwine({
 
 		/**
 		 * Function: onclick
@@ -375,10 +375,10 @@ $.entwine('ss', function($){
 	});
 
 	/**
-	 * Class: .cms-edit-form .Actions #Form_EditForm_action_unpublish
+	 * Class: .cms-edit-form .btn-toolbar #Form_EditForm_action_unpublish
 	 * Informing the user about the unpublish action while requiring confirmation
 	 */
-	$('.cms-edit-form .Actions #Form_EditForm_action_unpublish').entwine({
+	$('.cms-edit-form .btn-toolbar #Form_EditForm_action_unpublish').entwine({
 
 		/**
 		 * Function: onclick
@@ -419,7 +419,7 @@ $.entwine('ss', function($){
 		}
 	});
 
-	$('.cms-edit-form .Actions button[name=action_publish]').entwine({
+	$('.cms-edit-form .btn-toolbar button[name=action_publish]').entwine({
 		/**
 		 * Bind to ssui.button event to trigger stylistic changes.
 		 */
@@ -433,7 +433,7 @@ $.entwine('ss', function($){
 		}
 	});
 
-	$('.cms-edit-form .Actions button[name=action_save]').entwine({
+	$('.cms-edit-form .btn-toolbar button[name=action_save]').entwine({
 		/**
 		 * Bind to ssui.button event to trigger stylistic changes.
 		 */

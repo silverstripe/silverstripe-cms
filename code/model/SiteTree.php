@@ -2062,7 +2062,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$existsOnLive = $this->isPublished();
 
 		// Major actions appear as buttons immediately visible as page actions.
-		$majorActions = CompositeField::create()->setName('MajorActions')->setTag('fieldset')->addExtraClass('ss-ui-buttonset noborder');
+		$majorActions = CompositeField::create()->setName('MajorActions')->setTag('fieldset')->addExtraClass('btn-group ss-ui-buttonset noborder');
 
 		// Minor options are hidden behind a drop-up and appear as links (although they are still FormActions).
 		$rootTabSet = new TabSet('ActionMenus');
