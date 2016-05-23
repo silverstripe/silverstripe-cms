@@ -1174,7 +1174,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				array('version' => $data['Version'])
 			);
 		} else {
-			$record->doRollbackTo('Live');
+			$record->doRevertToLive();
 			$message = _t(
 				'CMSMain.ROLLEDBACKPUBv2',"Rolled back to published version."
 			);
