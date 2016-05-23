@@ -106,6 +106,22 @@ class RootURLController extends Controller {
 		self::$cached_homepage_link = null;
 	}
 
+	protected function beforeHandleRequest(SS_HTTPRequest $request, DataModel $model) {
+		parent::beforeHandleRequest($request, $model);
+
+		self::$is_at_root = true;
+
+		if(!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
+			$this->getResponse()->redirect(Controller::join_links(
+				Director::absoluteBaseURL(),
+				'dev/build',
+				'?' . array(
+					'returnURL' => isset($_GET['url']) ? $_GET['url'] : null,
+				)
+			));
+		}
+	}
+
 	/**
 	 * @param SS_HTTPRequest $request
 	 * @param DataModel|null $model
@@ -113,24 +129,26 @@ class RootURLController extends Controller {
 	 */
 	public function handleRequest(SS_HTTPRequest $request, DataModel $model = null) {
 		self::$is_at_root = true;
-		$this->setDataModel($model);
+		$this->beforeHandleRequest($request, $model);
 
-		$this->pushCurrent();
-		$this->init();
+		if (!$this->getResponse()->isFinished()) {
+			if (!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
+				$this->getResponse()->redirect(Director::absoluteBaseURL() . 'dev/build?returnURL=' . (isset($_GET['url']) ? urlencode($_GET['url']) : null));
+				return $this->getResponse();
+			}
 
-		if(!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
-			$this->getResponse()->redirect(Director::absoluteBaseURL() . 'dev/build?returnURL=' . (isset($_GET['url']) ? urlencode($_GET['url']) : null));
-			return $this->getResponse();
+			$request->setUrl(self::get_homepage_link() . '/');
+			$request->match('$URLSegment//$Action', true);
+			$controller = new ModelAsController();
+
+			$response = $controller->handleRequest($request, $model);
+
+			$this->prepareResponse($response);
 		}
 
-		$request->setUrl(self::get_homepage_link() . '/');
-		$request->match('$URLSegment//$Action', true);
-		$controller = new ModelAsController();
+		$this->afterHandleRequest();
 
-		$result     = $controller->handleRequest($request, $model);
-
-		$this->popCurrent();
-		return $result;
+		return $this->getResponse();
 	}
 
 }

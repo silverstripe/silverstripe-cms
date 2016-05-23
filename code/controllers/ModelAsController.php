@@ -40,6 +40,20 @@ class ModelAsController extends Controller implements NestedController {
 		parent::init();
 	}
 
+	protected function beforeHandleRequest(SS_HTTPRequest $request, DataModel $model) {
+		parent::beforeHandleRequest($request, $model);
+		// If the database has not yet been created, redirect to the build page.
+		if(!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
+			$this->getResponse()->redirect(Controller::join_links(
+				Director::absoluteBaseURL(),
+				'dev/build',
+				'?' . array(
+					'returnURL' => isset($_GET['url']) ? $_GET['url'] : null,
+				)
+			));
+		}
+	}
+
 	/**
 	 * @uses ModelAsController::getNestedController()
 	 * @param SS_HTTPRequest $request
@@ -47,12 +61,7 @@ class ModelAsController extends Controller implements NestedController {
 	 * @return SS_HTTPResponse
 	 */
 	public function handleRequest(SS_HTTPRequest $request, DataModel $model) {
-		$this->setRequest($request);
-		$this->setDataModel($model);
-
-		$this->pushCurrent();
-		$this->getResponse();
-		$this->init();
+		$this->beforeHandleRequest($request, $model);
 
 		// If we had a redirection or something, halt processing.
 		if($this->getResponse()->isFinished()) {
