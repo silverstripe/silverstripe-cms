@@ -818,11 +818,16 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$member = Member::currentUserID();
 		}
 
-		if($member && Permission::checkMember($member, "ADMIN")) return true;
-
 		// Standard mechanism for accepting permission changes from extensions
 		$extended = $this->extendedCan('canAddChildren', $member);
-		if($extended !== null) return $extended;
+		if($extended !== null) {
+			return $extended;
+		}
+
+		// Default permissions
+		if($member && Permission::checkMember($member, "ADMIN")) {
+			return true;
+		}
 
 		return $this->canEdit($member) && $this->stat('allowed_children') != 'none';
 	}
@@ -848,18 +853,26 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$member = Member::currentUserID();
 		}
 
-		// admin override
-		if($member && Permission::checkMember($member, array("ADMIN", "SITETREE_VIEW_ALL"))) return true;
-
-		// Orphaned pages (in the current stage) are unavailable, except for admins via the CMS
-		if($this->isOrphaned()) return false;
-
 		// Standard mechanism for accepting permission changes from extensions
 		$extended = $this->extendedCan('canView', $member);
-		if($extended !== null) return $extended;
+		if($extended !== null) {
+			return $extended;
+		}
+
+		// admin override
+		if($member && Permission::checkMember($member, array("ADMIN", "SITETREE_VIEW_ALL"))) {
+			return true;
+		}
+
+		// Orphaned pages (in the current stage) are unavailable, except for admins via the CMS
+		if($this->isOrphaned()) {
+			return false;
+		}
 
 		// check for empty spec
-		if(!$this->CanViewType || $this->CanViewType == 'Anyone') return true;
+		if(!$this->CanViewType || $this->CanViewType == 'Anyone') {
+			return true;
+		}
 
 		// check for inherit
 		if($this->CanViewType == 'Inherit') {
@@ -873,7 +886,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 
 		// check for specific groups
-		if($member && is_numeric($member)) $member = DataObject::get_by_id('Member', $member);
+		if($member && is_numeric($member)) {
+			$member = DataObject::get_by_id('Member', $member);
+		}
 		if(
 			$this->CanViewType == 'OnlyTheseUsers'
 			&& $member
@@ -904,13 +919,16 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		else if(is_numeric($member)) $memberID = $member;
 		else $memberID = Member::currentUserID();
 
+		// Standard mechanism for accepting permission changes from extensions
+		$extended = $this->extendedCan('canDelete', $memberID);
+		if($extended !== null) {
+			return $extended;
+		}
+
+		// Default permission check
 		if($memberID && Permission::checkMember($memberID, array("ADMIN", "SITETREE_EDIT_ALL"))) {
 			return true;
 		}
-
-		// Standard mechanism for accepting permission changes from extensions
-		$extended = $this->extendedCan('canDelete', $memberID);
-		if($extended !== null) return $extended;
 
 		// Regular canEdit logic is handled by can_edit_multiple
 		$results = self::can_delete_multiple(array($this->ID), $memberID);
@@ -950,15 +968,15 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			return false;
 		}
 
-		// Check permission
-		if($member && Permission::checkMember($member, "ADMIN")) {
-			return true;
-		}
-
 		// Standard mechanism for accepting permission changes from extensions
 		$extended = $this->extendedCan(__FUNCTION__, $member, $context);
 		if($extended !== null) {
 			return $extended;
+		}
+
+		// Check permission
+		if($member && Permission::checkMember($member, "ADMIN")) {
+			return true;
 		}
 
 		// Fall over to inherited permissions
@@ -996,11 +1014,16 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		else if(is_numeric($member)) $memberID = $member;
 		else $memberID = Member::currentUserID();
 
-		if($memberID && Permission::checkMember($memberID, array("ADMIN", "SITETREE_EDIT_ALL"))) return true;
-
 		// Standard mechanism for accepting permission changes from extensions
 		$extended = $this->extendedCan('canEdit', $memberID);
-		if($extended !== null) return $extended;
+		if($extended !== null) {
+			return $extended;
+		}
+
+		// Default permissions
+		if($memberID && Permission::checkMember($memberID, array("ADMIN", "SITETREE_EDIT_ALL"))) {
+			return true;
+		}
 
 		if($this->ID) {
 			// Regular canEdit logic is handled by can_edit_multiple
