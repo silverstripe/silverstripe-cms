@@ -4,13 +4,13 @@
  * @subpackage tests
  */
 class SiteTreeTest extends SapphireTest {
-	
+
 	protected static $fixture_file = 'SiteTreeTest.yml';
 
 	protected $illegalExtensions = array(
 		'SiteTree' => array('SiteTreeSubsites', 'Translatable')
 	);
-	
+
 	protected $extraDataObjects = array(
 		'SiteTreeTest_ClassA',
 		'SiteTreeTest_ClassB',
@@ -27,7 +27,7 @@ class SiteTreeTest extends SapphireTest {
 	public function logOut() {
 		if($member = Member::currentUser()) $member->logOut();
 	}
-	
+
 	public function testCreateDefaultpages() {
 			$remove = SiteTree::get();
 			if($remove) foreach($remove as $page) $page->delete();
@@ -513,7 +513,7 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertFalse(singleton('SiteTreeTest_ClassA')->canCreate(null, array('Parent' => $parentB)));
 		$this->assertTrue(singleton('SiteTreeTest_ClassC')->canCreate(null, array('Parent' => $parentB)));
 	}
-	
+
 	public function testEditPermissionsOnDraftVsLive() {
 		// Create an inherit-permission page
 		$page = new Page();
@@ -709,7 +709,7 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertEquals($sitetree->URLSegment, 'new-page',
 			'Sets based on default title on first save'
 		);
-		
+
 		$sitetree->Title = 'Changed';
 		$sitetree->write();
 		$this->assertEquals($sitetree->URLSegment, 'changed',
@@ -1075,7 +1075,7 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertEquals($breadcrumbs->first()->Title, "Breadcrumbs 4", "First item should be Breadrcumbs 4.");
 		$this->assertEquals($breadcrumbs->last()->Title, "Breadcrumbs 5", "Breadcrumbs 5 should be last.");
 	}
-	
+
 	/**
 	 * Tests SiteTree::MetaTags
 	 * Note that this test makes no assumption on the closing of tags (other than <title></title>)
@@ -1181,6 +1181,18 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertFalse($page->isPublished());
 	}
 
+	public function testCanNot() {
+		// Test that
+		$this->logInWithPermission('ADMIN');
+		$page = new SiteTreeTest_AdminDenied();
+		$this->assertFalse($page->canCreate());
+		$this->assertFalse($page->canEdit());
+		$this->assertFalse($page->canDelete());
+		$this->assertFalse($page->canAddChildren());
+		$this->assertFalse($page->canPublish());
+		$this->assertFalse($page->canView());
+	}
+
 }
 
 /**#@+
@@ -1193,11 +1205,11 @@ class SiteTreeTest_PageNode_Controller extends Page_Controller implements TestOn
 
 class SiteTreeTest_Conflicted extends Page implements TestOnly { }
 class SiteTreeTest_Conflicted_Controller extends Page_Controller implements TestOnly {
-	
+
 	private static $allowed_actions = array (
 		'conflicted-action'
 	);
-	
+
 	public function hasActionTemplate($template) {
 		if($template == 'conflicted-template') {
 			return true;
@@ -1205,7 +1217,7 @@ class SiteTreeTest_Conflicted_Controller extends Page_Controller implements Test
 			return parent::hasActionTemplate($template);
 		}
 	}
-	
+
 }
 
 class SiteTreeTest_NullHtmlCleaner extends HTMLCleaner {
@@ -1217,7 +1229,7 @@ class SiteTreeTest_NullHtmlCleaner extends HTMLCleaner {
 class SiteTreeTest_ClassA extends Page implements TestOnly {
 
 	private static $need_permission = array('ADMIN', 'CMS_ACCESS_CMSMain');
-	
+
 	private static $allowed_children = array('SiteTreeTest_ClassB');
 }
 
@@ -1258,4 +1270,23 @@ class SiteTreeTest_Extension extends DataExtension implements TestOnly {
 		return false;
 	}
 
+}
+
+class SiteTreeTest_AdminDenied extends Page implements TestOnly {
+	private static $extensions = array(
+		'SiteTreeTest_AdminDeniedExtension'
+	);
+}
+
+
+/**
+ * An extension that can even deny actions to admins
+ */
+class SiteTreeTest_AdminDeniedExtension extends DataExtension implements TestOnly {
+	public function canCreate($member) { return false; }
+	public function canEdit($member) { return false; }
+	public function canDelete($member) { return false; }
+	public function canPublish() { return false; }
+	public function canAddChildren() { return false; }
+	public function canView() { return false; }
 }
