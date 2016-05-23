@@ -47,9 +47,9 @@ class ModelAsController extends Controller implements NestedController {
 			$this->getResponse()->redirect(Controller::join_links(
 				Director::absoluteBaseURL(),
 				'dev/build',
-				'?' . array(
+				'?' . http_build_query(array(
 					'returnURL' => isset($_GET['url']) ? $_GET['url'] : null,
-				)
+				))
 			));
 		}
 	}
