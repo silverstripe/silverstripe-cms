@@ -1,5 +1,5 @@
 <div class="cms-content-tools west cms-panel cms-panel-layout" data-expandOnClick="true" data-layout-type="border" id="cms-content-tools-CMSMain">
-	<div class="cms-panel-content center">
+	<div class="panel-scrollable--single-toolbar cms-panel-content center">
 		<div class="cms-content-filters">
 			$SearchForm
 		</div>
@@ -11,7 +11,7 @@
 	<div class="cms-panel-content-collapsed">
 		<h3 class="cms-panel-header">$SiteConfig.Title</h3>
 	</div>
-	<div class="cms-panel-toggle south">
+	<div class="toolbar toolbar--south cms-panel-toggle">
 		<a class="toggle-expand" href="#"><span>&raquo;</span></a>
 		<a class="toggle-collapse" href="#"><span>&laquo;</span></a>
 	</div>

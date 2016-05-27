@@ -1,6 +1,6 @@
 <form $FormAttributes data-layout-type="border">
 
-	<div class="cms-content-fields center">
+	<div class="panel-scrollable panel-scrollable--single-toolbar">
 		<% if $Message %>
 		<p id="{$FormName}_error" class="message $MessageType">$Message</p>
 		<% else %>
@@ -16,9 +16,9 @@
 		</fieldset>
 	</div>
 
-	<div class="cms-content-actions cms-content-controls south">
+	<div class="toolbar--south cms-content-actions cms-content-controls south">
 		<% if $Actions %>
-		<div class="Actions">
+		<div class="btn-toolbar">
 			<% loop $Actions %>
 				$Field
 			<% end_loop %>

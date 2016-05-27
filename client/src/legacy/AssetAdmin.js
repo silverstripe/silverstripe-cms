@@ -50,7 +50,7 @@ $.entwine('ss', function($){
 		}
 	});
 
-	$('.AssetAdmin.cms-edit-form .ss-gridfield .col-buttons .action.gridfield-button-delete, .AssetAdmin.cms-edit-form .Actions button.action.action-delete').entwine({
+	$('.AssetAdmin.cms-edit-form .ss-gridfield .col-buttons .action.gridfield-button-delete, .AssetAdmin.cms-edit-form .btn-toolbar button.action.action-delete').entwine({
 		onclick: function(e) {
 			var msg;
 			if(this.closest('.ss-gridfield-item').data('class') == 'Folder') {
@@ -58,8 +58,8 @@ $.entwine('ss', function($){
 			} else {
 				msg = i18n._t('TABLEFIELD.DELETECONFIRMMESSAGE');
 			}
-			if(!confirm(msg)) return false;	
-			
+			if(!confirm(msg)) return false;
+
 			this.getGridField().reload({data: [{name: this.attr('name'), value: this.val()}]});
 			e.preventDefault();
 			return false;
@@ -68,7 +68,7 @@ $.entwine('ss', function($){
 
 	$('.AssetAdmin.cms-edit-form :submit[name=action_delete]').entwine({
 		onclick: function(e) {
-			if(!confirm(i18n._t('AssetAdmin.ConfirmDelete'))) return false;	
+			if(!confirm(i18n._t('AssetAdmin.ConfirmDelete'))) return false;
 			else this._super(e);
 		}
 	});
@@ -93,7 +93,7 @@ $.entwine('ss', function($){
 	 * Class: #Form_SyncForm
 	 */
 	$('#Form_SyncForm').entwine({
-		
+
 		/**
 		 * Function: onsubmit
 		 *
@@ -120,7 +120,7 @@ $.entwine('ss', function($){
 					}});
 				}
 			});
-			
+
 			return false;
 		}
 	});
@@ -133,7 +133,7 @@ $.entwine('ss', function($){
 			$('.AssetAdmin.cms-edit-form .ss-gridfield').reload();
 		}
 	});
-	
+
 	$('.AssetAdmin .grid-levelup').entwine({
 		onmatch: function () {
 			this.closest('.ui-tabs-panel').find('.cms-actions-row').prepend(this);
