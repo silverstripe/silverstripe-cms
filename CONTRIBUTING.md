@@ -10,3 +10,10 @@ Or, for more detailed guidance, read one of the following pages:
  * [Providing code, whether it's creating a feature or fixing a bug](http://docs.silverstripe.org/en/3.2/contributing/code/)
  * [Writing and translating documentation](http://docs.silverstripe.org/en/3.2/contributing/translations/)
  * [Translating user-interface elements](http://docs.silverstripe.org/en/3.2/contributing/translation_process/)
+
+## Copyright
+
+**IMPORTANT: By supplying code to the SilverStripe core team in patches, tickets and pull requests, you agree to assign copyright of that code to SilverStripe Limited, on the condition that SilverStripe Limited releases that code under the BSD license.**
+
+We ask for this so that the ownership in the license is clear and unambiguous, and so that community involvement doesn't stop us from being able to continue supporting these projects. By releasing this code under a permissive license, this copyright assignment won't prevent you from using the code in any way you see fit.
+
