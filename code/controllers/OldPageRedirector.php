@@ -12,13 +12,18 @@ class OldPageRedirector extends Extension {
 	public function onBeforeHTTPError404($request) {
 		// We need to get the URL ourselves because $request->allParams() only has a max of 4 params
 		$params = preg_split('|/+|', $request->getURL());
+		$cleanURL = trim(Director::makeRelative($request->getURL(false), '/'));
 
 		$getvars = $request->getVars();
 		unset($getvars['url']);
 
 		$page = self::find_old_page($params);
+		$cleanPage = trim(Director::makeRelative($page), '/');
+		if (!$cleanPage) {
+			$cleanPage = Director::makeRelative(RootURLController::get_homepage_link());
+		}
 
-		if ($page) {
+		if ($page && $cleanPage != $cleanURL) {
 			$res = new SS_HTTPResponse();
 			$res->redirect(
 				Controller::join_links(
