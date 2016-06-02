@@ -1,4 +1,6 @@
 <?php
+use SilverStripe\Model\FieldType\DBField;
+
 /**
  * Utility class representing links to different views of a record
  * for CMS authors, usually for {@link SiteTree} objects with "stage" and "live" links.
@@ -192,13 +194,9 @@ abstract class SilverStripeNavigatorItem extends ViewableData {
 		if(!$this->record->hasExtension('Versioned')) return false;
 
 		if(!isset($this->record->_cached_isArchived)) {
-			$baseTable = ClassInfo::baseDataClass($this->record->class);
-			$currentDraft = Versioned::get_one_by_stage($baseTable, 'Stage', array(
-				"\"$baseTable\".\"ID\"" => $this->record->ID
-			));
-			$currentLive = Versioned::get_one_by_stage($baseTable, 'Live', array(
-				"\"$baseTable\".\"ID\"" => $this->record->ID
-			));
+			$baseClass = $this->record->baseClass();
+			$currentDraft = Versioned::get_by_stage($baseClass, Versioned::DRAFT)->byID($this->record->ID);
+			$currentLive = Versioned::get_by_stage($baseClass, Versioned::LIVE)->byID($this->record->ID);
 
 			$this->record->_cached_isArchived = (
 				(!$currentDraft || ($currentDraft && $this->record->Version != $currentDraft->Version))
@@ -300,10 +298,8 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
 	}
 
 	protected function getDraftPage() {
-		$baseTable = ClassInfo::baseDataClass($this->record->class);
-		return Versioned::get_one_by_stage($baseTable, 'Stage', array(
-			"\"$baseTable\".\"ID\"" => $this->record->ID
-		));
+		$baseClass = $this->record->baseClass();
+		return Versioned::get_by_stage($baseClass, Versioned::DRAFT)->byID($this->record->ID);
 	}
 }
 
@@ -352,10 +348,8 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem {
 	}
 
 	protected function getLivePage() {
-		$baseTable = ClassInfo::baseDataClass($this->record->class);
-		return Versioned::get_one_by_stage($baseTable, 'Live', array(
-			"\"$baseTable\".\"ID\"" => $this->record->ID
-		));
+		$baseClass = $this->record->baseClass();
+		return Versioned::get_by_stage($baseClass, Versioned::LIVE)->byID($this->record->ID);
 	}
 }
 
@@ -368,8 +362,8 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 	private static $priority = 40;
 
 	public function getHTML() {
-			$this->recordLink = $this->record->AbsoluteLink();
-			return "<a class=\"ss-ui-button". ($this->isActive() ? ' current' : '') ."\" href=\"$this->recordLink?archiveDate={$this->record->LastEdited}\" target=\"_blank\">". _t('ContentController.ARCHIVEDSITE', 'Preview version') ."</a>";
+		$this->recordLink = $this->record->AbsoluteLink();
+		return "<a class=\"ss-ui-button". ($this->isActive() ? ' current' : '') ."\" href=\"$this->recordLink?archiveDate={$this->record->LastEdited}\" target=\"_blank\">". _t('ContentController.ARCHIVEDSITE', 'Preview version') ."</a>";
 	}
 
 	public function getTitle() {

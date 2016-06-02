@@ -1,4 +1,6 @@
 <?php
+use SilverStripe\Model\FieldType\DBDatetime;
+
 /**
  * Identify "orphaned" pages which point to a parent
  * that no longer exists in a specific stage.
@@ -85,23 +87,18 @@ in the other stage:<br />
 		if($orphans) foreach($orphans as $orphan) {
 			$latestVersion = Versioned::get_latest_version($this->orphanedSearchClass, $orphan->ID);
 			$latestAuthor = DataObject::get_by_id('Member', $latestVersion->AuthorID);
-			$orphanBaseClass = ClassInfo::baseDataClass($this->orphanedSearchClass);
-			$stageRecord = Versioned::get_one_by_stage(
-				$this->orphanedSearchClass,
-				'Stage',
-				array("\"$orphanBaseClass\".\"ID\"" => $orphan->ID)
-			);
+			$orphanBaseTable = DataObject::getSchema()->baseDataTable($this->orphanedSearchClass);
 			$liveRecord = Versioned::get_one_by_stage(
 				$this->orphanedSearchClass,
 				'Live',
-				array("\"$orphanBaseClass\".\"ID\"" => $orphan->ID)
+				array("\"$orphanBaseTable\".\"ID\"" => $orphan->ID)
 			);
 			$label = sprintf(
 				'<a href="admin/pages/edit/show/%d">%s</a> <small>(#%d, Last Modified Date: %s, Last Modifier: %s, %s)</small>',
 				$orphan->ID,
 				$orphan->Title,
 				$orphan->ID,
-				Date::create($orphan->LastEdited)->Nice(),
+				$orphan->dbObject('LastEdited')->Nice(),
 				($latestAuthor) ? $latestAuthor->Title : 'unknown',
 				($liveRecord) ? 'is published' : 'not published'
 			);
@@ -124,7 +121,7 @@ in the other stage:<br />
 					_t('RemoveOrphanedPagesTask.UNSELECTALL', 'unselect all')
 				)
 			));
-			$fields->push(new OptionSetField(
+			$fields->push(new OptionsetField(
 				'OrphanOperation',
 				_t('RemoveOrphanedPagesTask.CHOOSEOPERATION', 'Choose operation:'),
 				array(
@@ -183,6 +180,7 @@ in the other stage:<br />
 
 		if(!isset($data['OrphanIDs']) || !isset($data['OrphanOperation'])) return false;
 
+		$successIDs = null;
 		switch($data['OrphanOperation']) {
 			case 'remove':
 				$successIDs = $this->removeOrphans($data['OrphanIDs']);
@@ -213,13 +211,13 @@ in the other stage:<br />
 
 	protected function removeOrphans($orphanIDs) {
 		$removedOrphans = array();
-		$orphanBaseClass = ClassInfo::baseDataClass($this->orphanedSearchClass);
+		$orphanBaseTable = DataObject::getSchema()->baseDataTable($this->orphanedSearchClass);
 		foreach($orphanIDs as $id) {
 			/** @var SiteTree $stageRecord */
 			$stageRecord = Versioned::get_one_by_stage(
 				$this->orphanedSearchClass,
-				'Stage',
-				array("\"$orphanBaseClass\".\"ID\"" => $id)
+				Versioned::DRAFT,
+				array("\"$orphanBaseTable\".\"ID\"" => $id)
 			);
 			if($stageRecord) {
 				$removedOrphans[$stageRecord->ID] = sprintf('Removed %s (#%d) from Stage', $stageRecord->Title, $stageRecord->ID);
@@ -230,8 +228,8 @@ in the other stage:<br />
 			/** @var SiteTree $liveRecord */
 			$liveRecord = Versioned::get_one_by_stage(
 				$this->orphanedSearchClass,
-				'Live',
-				array("\"$orphanBaseClass\".\"ID\"" => $id)
+				Versioned::LIVE,
+				array("\"$orphanBaseTable\".\"ID\"" => $id)
 			);
 			if($liveRecord) {
 				$removedOrphans[$liveRecord->ID] = sprintf('Removed %s (#%d) from Live', $liveRecord->Title, $liveRecord->ID);
@@ -257,12 +255,12 @@ in the other stage:<br />
 		$holder->write();
 
 		$removedOrphans = array();
-		$orphanBaseClass = ClassInfo::baseDataClass($this->orphanedSearchClass);
+		$orphanBaseTable = DataObject::getSchema()->baseDataTable($this->orphanedSearchClass);
 		foreach($orphanIDs as $id) {
 			$stageRecord = Versioned::get_one_by_stage(
 				$this->orphanedSearchClass,
 				'Stage',
-				array("\"$orphanBaseClass\".\"ID\"" => $id)
+				array("\"$orphanBaseTable\".\"ID\"" => $id)
 			);
 			if($stageRecord) {
 				$removedOrphans[$stageRecord->ID] = sprintf('Rebased %s (#%d)', $stageRecord->Title, $stageRecord->ID);
@@ -277,7 +275,7 @@ in the other stage:<br />
 			$liveRecord = Versioned::get_one_by_stage(
 				$this->orphanedSearchClass,
 				'Live',
-				array("\"$orphanBaseClass\".\"ID\"" => $id)
+				array("\"$orphanBaseTable\".\"ID\"" => $id)
 			);
 			if($liveRecord) {
 				$removedOrphans[$liveRecord->ID] = sprintf('Rebased %s (#%d)', $liveRecord->Title, $liveRecord->ID);
@@ -318,9 +316,8 @@ in the other stage:<br />
 
 		$orphans = new ArrayList();
 		foreach(array(Versioned::DRAFT, Versioned::LIVE) as $stage) {
-			$joinByStage = $join;
-			$table = $class;
-			$table .= ($stage == 'Live') ? '_Live' : '';
+			$table = DataObject::getSchema()->tableName($class);
+			$table .= ($stage == Versioned::LIVE) ? '_Live' : '';
 			$stageOrphans = Versioned::get_by_stage(
 				$class,
 				$stage,
