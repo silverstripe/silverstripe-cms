@@ -14,9 +14,9 @@
 	tr {
 		&.loading {
 			color: #999;
-			
+
 			td {
-				
+
 				&:hover {
 					cursor: none;
 				}
@@ -106,6 +106,7 @@
 
 	input.text {
 		width: 250px; // ensure there's enough room for buttons
+    float: left;
 	}
 
 	input.text, .cancel, .update, .edit {
