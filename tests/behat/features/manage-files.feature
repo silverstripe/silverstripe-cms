@@ -9,7 +9,7 @@ Feature: Manage files
     And a "image" "folder1/folder1-1/file2.jpg" was created "2010-01-01 12:00:00"
     And a "folder" "folder2"
     And I am logged in with "ADMIN" permissions
-    And I go to "/admin/assets"
+    And I go to "/admin/old-assets"
 
   @modal
   Scenario: I can add a new folder
@@ -54,7 +54,7 @@ Feature: Manage files
     And the "folder2" table should contain "file1"
 
   Scenario: I can see allowed extensions help
-    When I go to "/admin/assets/"
+    When I go to "/admin/old-assets/"
     And I click "Show allowed extensions" in the ".ss-uploadfield-view-allowed-extensions" element
     Then I should see "png,"
 
