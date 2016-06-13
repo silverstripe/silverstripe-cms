@@ -245,6 +245,7 @@ cs:
     DEFAULTSERVERERRORPAGETITLE: 'Chyba serveru'
     DESCRIPTION: 'Vlastní obsah pro různé případy chyb (např. "Stránka nenalezena")'
     ERRORFILEPROBLEM: 'Chyba otevření souboru "{filename}" pro zápis. Zkontrolujte oprávnění souboru, prosím.'
+    PLURALNAME: 'Chybová stránky'
     SINGULARNAME: 'Chybová stránka'
   File:
     Title: Název
@@ -269,6 +270,7 @@ cs:
     HASBEENSETUP: 'Přesměrovací stránka byla nastavena bez cíle.'
     HEADER: 'Tato stránka přesměruje uživatele na jinou stránku'
     OTHERURL: 'Jiná web adresa'
+    PLURALNAME: 'Přesměrovací stránky'
     REDIRECTTO: 'Přesměrovat na'
     REDIRECTTOEXTERNAL: 'Jiná web stránka'
     REDIRECTTOPAGE: 'Stránka na vašem webu'
@@ -343,7 +345,9 @@ cs:
     BUTTONUNPUBLISHDESC: 'Odstranit tuto stránku z publikovaných na webu'
     Comments: Komentáře
     Content: Obsah
+    DEFAULTABOUTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky. <br /> </p>'
     DEFAULTABOUTTITLE: 'O nás'
+    DEFAULTCONTACTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky. <br /> </p>'
     DEFAULTCONTACTTITLE: 'Kontaktujte nás'
     DEFAULTHOMECONTENT: '<p>Vítejte v SilverStripe! Toto je základní domácí stránka. Můžete ji upravit otevřením <a href="admin/">CMS</a>.</p><p>Můžete také nyní vstoupit  do <a href="http://docs.silverstripe.org">dokumentace vývojáře</a>, nebo se přiučit na <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lekcích</a>.</p>'
     DEFAULTHOMETITLE: Úvodní strana
@@ -435,5 +439,6 @@ cs:
     EditLink: editovat
     HEADER: 'Toto je virtuální stránka'
     HEADERWITHLINK: 'Toto je virtuální stránka, kopíruje se obsah z "{title}" ({link})'
+    PLURALNAME: 'Virtuální stránky'
     PageTypNotAllowedOnRoot: 'Původní stránka typu "{type}" není povolena na nejvyšší úrovni pro tuto virtuální stránku'
     SINGULARNAME: 'Virtuální stránka'
