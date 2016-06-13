@@ -947,9 +947,9 @@ class SiteTreeTest extends SapphireTest {
 		$valid = $classB->doValidate();
 		$this->assertFalse($valid->valid(), "Doesnt allow child on parents disallowing all children");
 
-		$classB->ParentID = $classC->ID;
+		$classB->ParentID = $classCext->ID;
 		$valid = $classB->doValidate();
-		$this->assertFalse($valid->valid(), "Doesnt allow child on parents disallowing all children");
+		$this->assertTrue($valid->valid(), "Extensions of allowed classes are incorrectly reported as invalid");
 
 		$classCext->ParentID = $classD->ID;
 		$valid = $classCext->doValidate();
