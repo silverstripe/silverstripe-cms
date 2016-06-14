@@ -337,9 +337,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// Create the Field list
 		$fields = new FieldList(
 			$content,
-			$dateGroup,
 			$pageFilter,
-			$pageClasses
+			$pageClasses,
+			$dateGroup
 		);
 
 		// Create the Search and Reset action
