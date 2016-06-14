@@ -482,7 +482,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string
 	 */
 	public function getAbsoluteLiveLink($includeStageEqualsLive = true) {
-		$oldStage = Versioned::get_stage();
+		$oldReadingMode = Versioned::get_reading_mode();
 		Versioned::set_stage(Versioned::LIVE);
 		$live = Versioned::get_one_by_stage('SiteTree', Versioned::LIVE, array(
 			'"SiteTree"."ID"' => $this->ID
@@ -494,7 +494,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$link = null;
 		}
 
-		Versioned::set_stage($oldStage);
+		Versioned::set_reading_mode($oldReadingMode);
 		return $link;
 	}
 
@@ -2292,7 +2292,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			if(method_exists($conn, 'allowPrimaryKeyEditing')) $conn->allowPrimaryKeyEditing('SiteTree', false);
 		}
 
-		$oldStage = Versioned::get_stage();
+		$oldReadingMode = Versioned::get_reading_mode();
 		Versioned::set_stage(Versioned::DRAFT);
 		$this->forceChange();
 		$this->write();
@@ -2305,7 +2305,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$page->write();
 		}
 
-		Versioned::set_stage($oldStage);
+		Versioned::set_reading_mode($oldReadingMode);
 
 		$this->invokeWithExtensions('onAfterRestoreToStage', $this);
 

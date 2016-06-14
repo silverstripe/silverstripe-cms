@@ -168,8 +168,8 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 		$deletedPageID = $deletedPage->ID;
 
 		// Can't use straight $blah->delete() as that blows it away completely and test fails
-		$deletedPage->deleteFromStage('Live');
-		$deletedPage->deleteFromStage('Draft');
+		$deletedPage->deleteFromStage(Versioned::LIVE);
+		$deletedPage->deleteFromStage(Versioned::DRAFT);
 		$checkParentExists = Versioned::get_latest_version('SiteTree', $deletedPageID);
 
 		// Check deleted page is included
