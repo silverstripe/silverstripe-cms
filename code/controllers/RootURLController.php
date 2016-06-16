@@ -1,4 +1,8 @@
 <?php
+
+use SilverStripe\ORM\DataModel;
+use SilverStripe\ORM\DB;
+
 /**
  * @package cms
  * @subpackage control

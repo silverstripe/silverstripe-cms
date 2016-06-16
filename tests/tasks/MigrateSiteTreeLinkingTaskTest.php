@@ -1,4 +1,7 @@
 <?php
+
+use SilverStripe\ORM\DataObject;
+
 /**
  * @package cms
  * @subpackage tests

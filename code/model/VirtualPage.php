@@ -1,4 +1,8 @@
 <?php
+
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\Versioning\Versioned;
+
 /**
 * Virtual Page creates an instance of a  page, with the same fields that the original page had, but readonly.
 * This allows you can have a page in mulitple places in the site structure, with different children without duplicating the content

@@ -1,4 +1,7 @@
 <?php
+
+use SilverStripe\ORM\Versioning\Versioned;
+
 /**
  * @package cms
  * @subpackage tests

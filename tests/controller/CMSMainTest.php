@@ -1,4 +1,10 @@
 <?php
+
+use SilverStripe\ORM\DB;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\ORM\HiddenClass;
+
 /**
  * @package cms
  * @subpackage tests

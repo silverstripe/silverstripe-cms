@@ -1,5 +1,13 @@
 <?php
-use SilverStripe\Model\FieldType\DBHTMLText;
+
+use SilverStripe\ORM\FieldType\DBHTMLText;
+use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\ORM\HiddenClass;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\DataList;
+use SilverStripe\ORM\DB;
+
 
 /**
  * The main "content" area of the CMS.
@@ -779,8 +787,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		$columns->setDisplayFields($fields);
 		$columns->setFieldCasting(array(
-			'Created' => 'SS_Datetime->Ago',
-			'LastEdited' => 'SS_Datetime->FormatFromSettings',
+			'Created' => 'DBDatetime->Ago',
+			'LastEdited' => 'DBDatetime->FormatFromSettings',
 			'getTreeTitle' => 'HTMLText'
 		));
 

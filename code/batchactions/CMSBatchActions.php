@@ -1,4 +1,9 @@
 <?php
+
+use SilverStripe\ORM\SS_List;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\Versioning\Versioned;
+
 /**
  * Publish items batch action.
  *

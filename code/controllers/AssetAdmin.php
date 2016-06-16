@@ -1,6 +1,10 @@
 <?php
 
 use SilverStripe\Filesystem\Storage\AssetNameGenerator;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\SS_List;
 
 /**
  * AssetAdmin is the 'file store' section of the CMS.
@@ -171,7 +175,7 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 			'Size' => _t('AssetAdmin.SIZE', 'Size'),
 		));
 		$columns->setFieldCasting(array(
-			'Created' => 'SS_Datetime->Nice'
+			'Created' => 'DBDatetime->Nice'
 		));
 		$gridField->setAttribute(
 			'data-url-folder-template',
@@ -484,7 +488,7 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 
 		// check addchildren permissions
 		if(
-			singleton($class)->hasExtension('Hierarchy')
+			singleton($class)->hasExtension('SilverStripe\ORM\Hierarchy\Hierarchy')
 			&& isset($data['ParentID'])
 			&& is_numeric($data['ParentID'])
 			&& $data['ParentID']

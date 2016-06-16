@@ -1,6 +1,13 @@
 <?php
 
-use SilverStripe\Model\FieldType\DBVarchar;
+
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\ORM\DB;
+use SilverStripe\ORM\ValidationException;
+use SilverStripe\ORM\FieldType\DBVarchar;
+use SilverStripe\ORM\DataExtension;
+
 
 class VirtualPageTest extends FunctionalTest {
 	protected static $fixture_file = 'VirtualPageTest.yml';

@@ -1,4 +1,8 @@
 <?php
+
+use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\ORM\DB;
+
 /**
  * Possible actions:
  * - action_save

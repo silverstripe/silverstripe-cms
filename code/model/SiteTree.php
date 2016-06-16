@@ -1,4 +1,14 @@
 <?php
+
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\Hierarchy\Hierarchy;
+use SilverStripe\ORM\ManyManyList;
+use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\DB;
+use SilverStripe\ORM\DataList;
+use SilverStripe\ORM\HiddenClass;
+
 /**
  * Basic data-object representing all pages within the site tree. All page types that live within the hierarchy should
  * inherit from this. In addition, it contains a number of static methods for querying the site tree and working with
@@ -142,8 +152,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 	private static $casting = array(
 		"Breadcrumbs" => "HTMLText",
-		"LastEdited" => "SS_Datetime",
-		"Created" => "SS_Datetime",
 		'Link' => 'Text',
 		'RelativeLink' => 'Text',
 		'AbsoluteLink' => 'Text',
@@ -188,8 +196,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	private static $description = 'Generic content page';
 
 	private static $extensions = array(
-		"Hierarchy",
-		"Versioned",
+		'SilverStripe\ORM\Hierarchy\Hierarchy',
+		'SilverStripe\ORM\Versioning\Versioned',
 		"SiteTreeLinkTracking"
 	);
 

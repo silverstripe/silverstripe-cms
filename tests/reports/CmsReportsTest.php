@@ -1,9 +1,12 @@
 <?php
+
+use SilverStripe\ORM\DB;
+use SilverStripe\ORM\FieldType\DBDatetime;
+
 /**
  * @package cms
  * @subpackage tests
  */
-
 class CmsReportsTest extends SapphireTest {
 
 	protected static $fixture_file = 'CmsReportsTest.yml';
@@ -48,7 +51,7 @@ class CmsReportsTest extends SapphireTest {
 	}
 
 	public function testRecentlyEdited() {
-		SS_Datetime::set_mock_now('31-06-2009 00:00:00');
+		DBDatetime::set_mock_now('31-06-2009 00:00:00');
 
 		$after = $this->objFromFixture('SiteTree', 'after');
 		$before = $this->objFromFixture('SiteTree', 'before');
@@ -60,7 +63,7 @@ class CmsReportsTest extends SapphireTest {
 		$this->assertContains($after->ID, $r->records(array())->column('ID'));
 		$this->assertNotContains($before->ID, $r->records(array())->column('ID'));
 
-		SS_DateTime::clear_mock_now();
+		DBDatetime::clear_mock_now();
 	}
 
 	/**

@@ -1,5 +1,8 @@
 <?php
 
+use SilverStripe\ORM\FieldType\DBDatetime;
+use SilverStripe\ORM\DataObject;
+
 /**
  * @package cms
  * @subpackage reports
@@ -19,7 +22,7 @@ class RecentlyEditedReport extends SS_Report {
 	}
 
 	public function sourceRecords($params = null) {
-		$threshold = strtotime('-14 days', SS_Datetime::now()->Format('U'));
+		$threshold = strtotime('-14 days', DBDatetime::now()->Format('U'));
 		return DataObject::get("SiteTree", "\"SiteTree\".\"LastEdited\" > '".date("Y-m-d H:i:s", $threshold)."'", "\"SiteTree\".\"LastEdited\" DESC");
 	}
 

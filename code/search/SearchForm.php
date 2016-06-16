@@ -1,4 +1,8 @@
 <?php
+
+use SilverStripe\ORM\DB;
+use SilverStripe\ORM\SS_List;
+
 /**
  * Standard basic search form which conducts a fulltext search on all {@link SiteTree}
  * objects.

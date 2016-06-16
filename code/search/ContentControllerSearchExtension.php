@@ -1,11 +1,13 @@
 <?php
+
+use SilverStripe\ORM\FieldType\DBField;
+
 /**
  * Extension to provide a search interface when applied to ContentController
  *
  * @package cms
  * @subpackage search
  */
-use SilverStripe\Model\FieldType\DBField;
 class ContentControllerSearchExtension extends Extension {
 	private static $allowed_actions = array(
 		'SearchForm',

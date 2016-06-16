@@ -1,5 +1,7 @@
 <?php
 
+use SilverStripe\ORM\DataObject;
+
 /**
  * Used to edit the SiteTree->URLSegment property, and suggest input based on the serverside rules
  * defined through {@link SiteTree->generateURLSegment()} and {@link URLSegmentFilter}.
@@ -9,7 +11,6 @@
  * @package cms
  * @subpackage forms
  */
-
 class SiteTreeURLSegmentField extends TextField {
 
 	/**
@@ -73,6 +74,7 @@ class SiteTreeURLSegmentField extends TextField {
 
 	/**
 	 * @param string $string The secondary text to show
+	 * @return $this
 	 */
 	public function setHelpText($string){
 		$this->helpText = $string;
@@ -88,7 +90,8 @@ class SiteTreeURLSegmentField extends TextField {
 	}
 
 	/**
-	 * @param the url that prefixes the page url segment field
+	 * @param string $url the url that prefixes the page url segment field
+	 * @return $this
 	 */
 	public function setURLPrefix($url){
 		$this->urlPrefix = $url;
@@ -96,7 +99,7 @@ class SiteTreeURLSegmentField extends TextField {
 	}
 
 	/**
-	 * @return the url prefixes the page url segment field to show in template
+	 * @return string the url prefixes the page url segment field to show in template
 	 */
 	public function getURLPrefix(){
 		return $this->urlPrefix;
@@ -107,7 +110,7 @@ class SiteTreeURLSegmentField extends TextField {
 	}
 
 	/**
-	 * @return Indicator for UI to respond to changes accurately,
+	 * @return string Indicator for UI to respond to changes accurately,
 	 * and auto-update the field value if changes to the default occur.
 	 * Does not set the field default value.
 	 */

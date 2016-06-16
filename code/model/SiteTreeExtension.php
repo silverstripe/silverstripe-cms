@@ -1,5 +1,7 @@
 <?php
 
+use SilverStripe\ORM\DataExtension;
+
 /**
  * Plug-ins for additional functionality in your SiteTree classes.
  *
