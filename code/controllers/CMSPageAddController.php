@@ -38,6 +38,16 @@ class CMSPageAddController extends CMSPageEditController {
 		$childTitle = _t('CMSPageAddController.ParentMode_child', 'Under another page');
 
 		$fields = new FieldList(
+			new LiteralField(
+				'RestrictedNote',
+				sprintf(
+					'<p class="message notice message-restricted">%s</p>',
+					_t(
+						'CMSMain.AddPageRestriction',
+						'Note: Some page types are not allowed for this selection'
+					)
+				)
+			),
 			$parentModeField = new SelectionGroup(
 				"ParentModeField",
 				array(
@@ -64,19 +74,9 @@ class CMSPageAddController extends CMSPageEditController {
 				sprintf($numericLabelTmpl, 2, _t('CMSMain.ChoosePageType', 'Choose page type')),
 				$pageTypes,
 				'Page'
-			),
-			new LiteralField(
-				'RestrictedNote',
-				sprintf(
-					'<p class="message notice message-restricted">%s</p>',
-					_t(
-						'CMSMain.AddPageRestriction',
-						'Note: Some page types are not allowed for this selection'
-					)
-				)
 			)
 		);
-        $parentModeField->setTitle(sprintf($numericLabelTmpl, 1, _t('CMSMain.ChoosePageParentMode', 'Choose where to create this page')));
+		$parentModeField->setTitle(sprintf($numericLabelTmpl, 1, _t('CMSMain.ChoosePageParentMode', 'Choose where to create this page')));
 		$parentField->setSearchFunction(function ($sourceObject, $labelField, $search) {
 			return DataObject::get(
 				$sourceObject,
