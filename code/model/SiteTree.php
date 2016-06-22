@@ -8,6 +8,11 @@ use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\HiddenClass;
+use SilverStripe\Security\Member;
+use SilverStripe\Security\Permission;
+use SilverStripe\Security\Group;
+use SilverStripe\Security\PermissionProvider;
+
 
 /**
  * Basic data-object representing all pages within the site tree. All page types that live within the hierarchy should
@@ -138,8 +143,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	);
 
 	private static $many_many = array(
-		"ViewerGroups" => "Group",
-		"EditorGroups" => "Group",
+		"ViewerGroups" => "SilverStripe\\Security\\Group",
+		"EditorGroups" => "SilverStripe\\Security\\Group",
 	);
 
 	private static $has_many = array(
@@ -783,7 +788,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return bool True if the the member is allowed to do the given action
 	 */
 	public function can($perm, $member = null, $context = array()) {
-		if(!$member || !(is_a($member, 'Member')) || is_numeric($member)) {
+		if(!$member || !($member instanceof Member) || is_numeric($member)) {
 			$member = Member::currentUserID();
 		}
 
@@ -822,7 +827,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			return false;
 		}
 
-		if(!$member || !(is_a($member, 'Member')) || is_numeric($member)) {
+		if(!$member || !($member instanceof Member) || is_numeric($member)) {
 			$member = Member::currentUserID();
 		}
 
@@ -857,7 +862,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return bool True if the current user can view this page
 	 */
 	public function canView($member = null) {
-		if(!$member || !(is_a($member, 'Member')) || is_numeric($member)) {
+		if(!$member || !($member instanceof Member) || is_numeric($member)) {
 			$member = Member::currentUserID();
 		}
 
@@ -895,7 +900,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		// check for specific groups
 		if($member && is_numeric($member)) {
-			$member = DataObject::get_by_id('Member', $member);
+			$member = DataObject::get_by_id('SilverStripe\\Security\\Member', $member);
 		}
 		if(
 			$this->CanViewType == 'OnlyTheseUsers'
@@ -965,7 +970,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return bool True if the current user can create pages on this class.
 	 */
 	public function canCreate($member = null, $context = array()) {
-		if(!$member || !(is_a($member, 'Member')) || is_numeric($member)) {
+		if(!$member || !(is_a($member, 'SilverStripe\\Security\\Member')) || is_numeric($member)) {
 			$member = Member::currentUserID();
 		}
 
@@ -1140,7 +1145,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			//$ids = array_keys(array_filter(self::can_view_multiple($ids, $memberID)));
 
 			// Get the groups that the given member belongs to
-			$groupIDs = DataObject::get_by_id('Member', $memberID)->Groups()->column("ID");
+			$groupIDs = DataObject::get_by_id('SilverStripe\\Security\\Member', $memberID)->Groups()->column("ID");
 			$SQL_groupList = implode(", ", $groupIDs);
 			if (!$SQL_groupList) $SQL_groupList = '0';
 

@@ -7,6 +7,12 @@ use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DB;
+use SilverStripe\Security\Member;
+use SilverStripe\Security\Security;
+use SilverStripe\Security\SecurityToken;
+use SilverStripe\Security\Permission;
+use SilverStripe\Security\PermissionProvider;
+
 
 
 /**
@@ -35,7 +41,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	private static $tree_class = "SiteTree";
 
-	private static $subitem_class = "Member";
+	private static $subitem_class = "SilverStripe\\Security\\Member";
 
 	/**
 	 * Amount of results showing on a single page.

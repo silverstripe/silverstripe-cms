@@ -1,26 +1,25 @@
-Group:
-   editors:
-      Title: Editors
-   admins:
-      Title: Administrators
+SilverStripe\Security\Group:
+  editors:
+    Title: Editors
+  admins:
+    Title: Administrators
 
-Permission:
-   admins:
-      Code: VIEW_DRAFT_CONTENT
-      Group: =>Group.admins
-   editors:
-      Group: =>Group.editors
+SilverStripe\Security\Permission:
+  admins:
+    Code: VIEW_DRAFT_CONTENT
+    Group: =>SilverStripe\Security\Group.admins
+  editors:
+    Group: =>SilverStripe\Security\Group.editors
 
-Member:
-   editor:
-      FirstName: Test
-      Surname: Editor
-      Groups: =>Group.editors
-   admin:
-      FirstName: Test
-      Surname: Administrator
-      Groups: =>Group.admins
-
+SilverStripe\Security\Member:
+  editor:
+    FirstName: Test
+    Surname: Editor
+    Groups: =>SilverStripe\Security\Group.editors
+  admin:
+    FirstName: Test
+    Surname: Administrator
+    Groups: =>SilverStripe\Security\Group.admins
 
 ContentControllerTest_Page:
   root_page:
@@ -42,5 +41,4 @@ ContentControllerTest_Page:
     Title: Contact Page
     URLSegment: contact
     CanViewType: OnlyTheseUsers
-    EditorGroups: =>Group.admins
-
+    EditorGroups: =>SilverStripe\Security\Group.admins

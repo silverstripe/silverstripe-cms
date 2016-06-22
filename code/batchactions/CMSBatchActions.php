@@ -3,6 +3,7 @@
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Security\Permission;
 
 /**
  * Publish items batch action.

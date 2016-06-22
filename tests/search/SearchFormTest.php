@@ -2,6 +2,9 @@
 
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\MSSQL\MSSQLDatabase;
+use SilverStripe\PostgreSQL\PostgreSQLDatabase;
+
 
 /**
  * @package cms
@@ -51,7 +54,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 	 */
 	protected function checkFulltextSupport() {
 		$conn = DB::get_conn();
-		if(class_exists('MSSQLDatabase') && $conn instanceof MSSQLDatabase) {
+		if(class_exists('SilverStripe\\MSSQL\\MSSQLDatabase') && $conn instanceof MSSQLDatabase) {
 			$supports = $conn->fullTextEnabled();
 		} else {
 			$supports = true;
@@ -137,7 +140,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 			'Page with "Restrict to logged in users" doesnt show without valid login'
 		);
 
-		$member = $this->objFromFixture('Member', 'randomuser');
+		$member = $this->objFromFixture('SilverStripe\\Security\\Member', 'randomuser');
 		$member->logIn();
 		$results = $sf->getResults(null, array('Search'=>'restrictedViewLoggedInUsers'));
 		$this->assertContains(
@@ -162,7 +165,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 			'Page with "Restrict to these users" doesnt show without valid login'
 		);
 
-		$member = $this->objFromFixture('Member', 'randomuser');
+		$member = $this->objFromFixture('SilverStripe\\Security\\Member', 'randomuser');
 		$member->logIn();
 		$results = $sf->getResults(null, array('Search'=>'restrictedViewOnlyWebsiteUsers'));
 		$this->assertNotContains(
@@ -172,7 +175,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 		);
 		$member->logOut();
 
-		$member = $this->objFromFixture('Member', 'websiteuser');
+		$member = $this->objFromFixture('SilverStripe\\Security\\Member', 'websiteuser');
 		$member->logIn();
 		$results = $sf->getResults(null, array('Search'=>'restrictedViewOnlyWebsiteUsers'));
 		$this->assertContains(
@@ -198,7 +201,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 			'Page inheriting "Restrict to loggedin users" doesnt show without valid login'
 		);
 
-		$member = $this->objFromFixture('Member', 'websiteuser');
+		$member = $this->objFromFixture('SilverStripe\\Security\\Member', 'websiteuser');
 		$member->logIn();
 		$results = $sf->getResults(null, array('Search'=>'inheritRestrictedView'));
 		$this->assertContains(
@@ -251,7 +254,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 	public function testSearchTitleAndContentWithSpecialCharacters() {
 		if(!$this->checkFulltextSupport()) return;
 
-		if(class_exists('PostgreSQLDatabase') && DB::get_conn() instanceof PostgreSQLDatabase) {
+		if(class_exists('SilverStripe\\PostgreSQL\\PostgreSQLDatabase') && DB::get_conn() instanceof PostgreSQLDatabase) {
 			$this->markTestSkipped("PostgreSQLDatabase doesn't support entity-encoded searches");
 		}
 

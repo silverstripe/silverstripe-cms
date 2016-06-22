@@ -2,6 +2,8 @@
 
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ValidationException;
+use SilverStripe\Security\Member;
+use SilverStripe\Security\Security;
 
 class CMSPageAddController extends CMSPageEditController {
 

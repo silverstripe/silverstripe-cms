@@ -8,6 +8,11 @@ use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\FieldType\DBVarchar;
 use SilverStripe\ORM\FieldType\DBHTMLText;
+use SilverStripe\Security\Security;
+use SilverStripe\Security\MemberAuthenticator;
+use SilverStripe\Security\Member;
+use SilverStripe\Security\Permission;
+
 
 
 /**
@@ -119,6 +124,7 @@ class ContentController extends Controller {
 		if($this->redirectedTo()) return;
 
 		// Check page permissions
+		/** @skipUpgrade */
 		if($this->dataRecord && $this->URLSegment != 'Security' && !$this->dataRecord->canView()) {
 			return Security::permissionFailure($this);
 		}
@@ -294,7 +300,7 @@ class ContentController extends Controller {
 				$logInMessage = sprintf(
 					'%s - <a href="%s">%s</a>' ,
 					_t('ContentController.NOTLOGGEDIN', 'Not logged in') ,
-					Config::inst()->get('Security', 'login_url'),
+					Security::config()->login_url,
 					_t('ContentController.LOGIN', 'Login') ."</a>"
 				);
 			}

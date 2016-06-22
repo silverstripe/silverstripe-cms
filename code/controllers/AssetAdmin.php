@@ -5,6 +5,9 @@ use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\SS_List;
+use SilverStripe\Security\Security;
+use SilverStripe\Security\PermissionProvider;
+
 
 /**
  * AssetAdmin is the 'file store' section of the CMS.

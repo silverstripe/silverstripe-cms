@@ -3,6 +3,9 @@
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ArrayList;
+use SilverStripe\Security\Permission;
+use SilverStripe\Security\Security;
+
 
 
 /**
@@ -90,7 +93,7 @@ in the other stage:<br />
 		$orphans = $this->getOrphanedPages($this->orphanedSearchClass);
 		if($orphans) foreach($orphans as $orphan) {
 			$latestVersion = Versioned::get_latest_version($this->orphanedSearchClass, $orphan->ID);
-			$latestAuthor = DataObject::get_by_id('Member', $latestVersion->AuthorID);
+			$latestAuthor = DataObject::get_by_id('SilverStripe\\Security\\Member', $latestVersion->AuthorID);
 			$orphanBaseTable = DataObject::getSchema()->baseDataTable($this->orphanedSearchClass);
 			$liveRecord = Versioned::get_one_by_stage(
 				$this->orphanedSearchClass,

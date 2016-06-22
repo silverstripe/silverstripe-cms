@@ -1,4 +1,7 @@
 <?php
+
+use SilverStripe\Security\Member;
+use SilverStripe\Security\Permission;
 /**
  * @package cms
  * @subpackage tests
@@ -25,8 +28,8 @@ class SilverStripeNavigatorTest extends SapphireTest {
 
 	public function testCanView() {
 		$page = $this->objFromFixture('Page', 'page1');
-		$admin = $this->objFromFixture('Member', 'admin');
-		$author = $this->objFromFixture('Member', 'assetsonlyuser');
+		$admin = $this->objFromFixture('SilverStripe\\Security\\Member', 'admin');
+		$author = $this->objFromFixture('SilverStripe\\Security\\Member', 'assetsonlyuser');
 		$navigator = new SilverStripeNavigator($page);
 
 		// TODO Shouldn't be necessary but SapphireTest logs in as ADMIN by default

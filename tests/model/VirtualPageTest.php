@@ -229,8 +229,8 @@ class VirtualPageTest extends FunctionalTest {
 	public function testCanEdit() {
 		$parentPage = $this->objFromFixture('Page', 'master3');
 		$virtualPage = $this->objFromFixture('VirtualPage', 'vp3');
-		$bob = $this->objFromFixture('Member', 'bob');
-		$andrew = $this->objFromFixture('Member', 'andrew');
+		$bob = $this->objFromFixture('SilverStripe\\Security\\Member', 'bob');
+		$andrew = $this->objFromFixture('SilverStripe\\Security\\Member', 'andrew');
 
 		// Bob can edit the mirrored page, but he shouldn't be able to edit the virtual page.
 		$this->logInAs($bob);
@@ -248,8 +248,8 @@ class VirtualPageTest extends FunctionalTest {
 		$parentPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$virtualPage = $this->objFromFixture('VirtualPage', 'vp3');
 		$virtualPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
-		$cindy = $this->objFromFixture('Member', 'cindy');
-		$alice = $this->objFromFixture('Member', 'alice');
+		$cindy = $this->objFromFixture('SilverStripe\\Security\\Member', 'cindy');
+		$alice = $this->objFromFixture('SilverStripe\\Security\\Member', 'alice');
 
 		// Cindy can see both pages
 		$this->logInAs($cindy);
