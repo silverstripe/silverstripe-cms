@@ -14,7 +14,7 @@ $.entwine('ss', function($){
 			}
 		}
 	});
-	
+
 	$(".cms-add-form").entwine({
 		ParentID: 0, // Last selected parentID
 		ParentCache: {}, // Cache allowed children for each selected page
@@ -67,11 +67,11 @@ $.entwine('ss', function($){
 				// Prevent interface operations
 				if(this.hasClass('loading')) return;
 				this.addClass('loading');
-				
+
 				// Enable last parent ID to be re-selected from memory
 				this.setParentID(id);
 				if(!parentTree.getValue()) parentTree.setValue(id);
-				
+
 				// Use cached data if available
 				disallowedChildren = this.loadCachedChildren(id);
 				if(disallowedChildren !== null) {
@@ -109,29 +109,29 @@ $.entwine('ss', function($){
 		updateSelectionFilter: function(disallowedChildren, defaultChildClass) {
 			// Limit selection
 			var allAllowed = null; // troolian
-			this.find('#Form_AddForm_PageType li').each(function() {
+			this.find('#Form_AddForm_PageType .radio').each(function() {
 				var className = $(this).find('input').val(),
 					isAllowed = ($.inArray(className, disallowedChildren) === -1);
-				
+
 				$(this).setEnabled(isAllowed);
 				if(!isAllowed) $(this).setSelected(false);
 				if(allAllowed === null) allAllowed = isAllowed;
 				else allAllowed = allAllowed && isAllowed;
 			});
-			
+
 			// Set default child selection, or fall back to first available option
 			if(defaultChildClass) {
 				var selectedEl = this
-					.find('#Form_AddForm_PageType li input[value=' + defaultChildClass + ']')
-					.parents('li:first');
+					.find('#Form_AddForm_PageType .radio input[value=' + defaultChildClass + ']')
+					.parents('.radio:first');
 			} else {
-				var selectedEl = this.find('#Form_AddForm_PageType li:not(.disabled):first');
+				var selectedEl = this.find('#Form_AddForm_PageType .radio:not(.disabled):first');
 			}
 			selectedEl.setSelected(true);
 			selectedEl.siblings().setSelected(false);
 
 			// Disable the "Create" button if none of the pagetypes are available
-			var buttonState = this.find('#Form_AddForm_PageType li:not(.disabled)').length
+			var buttonState = this.find('#Form_AddForm_PageType .radio:not(.disabled)').length
 				? 'enable'
 				: 'disable';
 			this.find('button[name=action_doAdd]').button(buttonState);
@@ -139,8 +139,8 @@ $.entwine('ss', function($){
 			this.find('.message-restricted')[allAllowed ? 'hide' : 'show']();
 		}
 	});
-	
-	$(".cms-add-form #Form_AddForm_PageType li").entwine({
+
+	$(".cms-add-form #Form_AddForm_PageType .radio").entwine({
 		onclick: function(e) {
 			this.setSelected(true);
 		},
@@ -174,7 +174,7 @@ $.entwine('ss', function($){
 				var state = list.find('input[name="Page[GridState]"]').val();
 				if(state) parentId = parseInt(JSON.parse(state).ParentID, 10);
 			}
-				
+
 			var data = {selector: this.data('targetPanel'),pjax: this.data('pjax')}, url;
 			if(parentId) {
 				extraParams = this.data('extraParams') ? this.data('extraParams') : '';
