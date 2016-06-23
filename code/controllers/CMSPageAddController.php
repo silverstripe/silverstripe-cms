@@ -38,16 +38,7 @@ class CMSPageAddController extends CMSPageEditController {
 		$childTitle = _t('CMSPageAddController.ParentMode_child', 'Under another page');
 
 		$fields = new FieldList(
-			new LiteralField(
-				'RestrictedNote',
-				sprintf(
-					'<p class="message notice message-restricted">%s</p>',
-					_t(
-						'CMSMain.AddPageRestriction',
-						'Note: Some page types are not allowed for this selection'
-					)
-				)
-			),
+
 			$parentModeField = new SelectionGroup(
 				"ParentModeField",
 				array(
@@ -66,6 +57,16 @@ class CMSPageAddController extends CMSPageEditController {
 							'TreeTitle'
 						),
 						$childTitle
+					)
+				)
+			),
+            new LiteralField(
+				'RestrictedNote',
+				sprintf(
+					'<p class="message notice message-restricted">%s</p>',
+					_t(
+						'CMSMain.AddPageRestriction',
+						'Note: Some page types are not allowed for this selection'
 					)
 				)
 			),
