@@ -1,4 +1,9 @@
 <?php
+
+use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\DB;
+
 /**
  * Tests {@see SiteTreeLinkTracking} broken links feature: LinkTracking
  *

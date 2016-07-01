@@ -1,4 +1,7 @@
 <?php
+
+use SilverStripe\ORM\Versioning\Versioned;
+
 /**
  * Base class for filtering the subtree for certain node statuses.
  *

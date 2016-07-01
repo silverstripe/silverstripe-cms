@@ -1,4 +1,7 @@
 <?php
+
+use SilverStripe\ORM\Versioning\Versioned;
+
 /**
  * <h2>Fixture tree</h2>
  * <code>

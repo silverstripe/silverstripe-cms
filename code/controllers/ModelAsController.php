@@ -1,4 +1,9 @@
 <?php
+
+use SilverStripe\ORM\DataModel;
+use SilverStripe\ORM\DB;
+use SilverStripe\ORM\DataObject;
+
 /**
  * ModelAsController deals with mapping the initial request to the first {@link SiteTree}/{@link ContentController}
  * pair, which are then used to handle the request.

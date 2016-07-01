@@ -1,5 +1,6 @@
 <?php
 
+use SilverStripe\ORM\Versioning\Versioned;
 
 /**
  * Tests CMS Specific subclasses of {@see CMSBatchAction}

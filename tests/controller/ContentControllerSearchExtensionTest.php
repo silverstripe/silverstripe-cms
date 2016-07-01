@@ -1,4 +1,7 @@
 <?php
+
+use SilverStripe\ORM\Versioning\Versioned;
+
 class ContentControllerSearchExtensionTest extends SapphireTest {
 
 	public function testCustomSearchFormClassesToTest() {
@@ -27,7 +30,7 @@ class ContentControllerSearchExtensionTest extends SapphireTest {
 	public function tearDownOnce() {
 		parent::tearDownOnce();
 
-		Config::inst()->update('File', 'create_table_options', array('MySQLDatabase' => 'ENGINE=InnoDB'));
+		Config::inst()->update('File', 'create_table_options', array('SilverStripe\ORM\Connect\MySQLDatabase' => 'ENGINE=InnoDB'));
 		File::remove_extension('FulltextSearchable');
 	}
 

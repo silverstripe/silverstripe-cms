@@ -1,10 +1,11 @@
 <?php
 
+use SilverStripe\ORM\Versioning\Versioned;
+
 /**
  * @package cms
  * @subpackage tests
  */
-
 class CMSPageHistoryControllerTest extends FunctionalTest {
 
 	protected static $fixture_file = 'CMSPageHistoryControllerTest.yml';

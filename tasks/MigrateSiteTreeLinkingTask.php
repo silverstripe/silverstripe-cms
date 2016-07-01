@@ -1,4 +1,9 @@
 <?php
+
+use SilverStripe\ORM\DataList;
+use SilverStripe\ORM\DB;
+use SilverStripe\ORM\DataObject;
+
 /**
  * Rewrites plain internal HTML links into shortcode form, using existing link tracking information.
  *

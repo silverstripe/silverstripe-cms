@@ -1,4 +1,11 @@
 <?php
+
+use SilverStripe\ORM\DB;
+use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\ValidationException;
+use SilverStripe\ORM\DataExtension;
+
 /**
  * @package cms
  * @subpackage tests

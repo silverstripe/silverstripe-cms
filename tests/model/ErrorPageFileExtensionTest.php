@@ -1,5 +1,7 @@
 <?php
 
+use SilverStripe\ORM\Versioning\Versioned;
+
 class ErrorPageFileExtensionTest extends SapphireTest {
 
 	protected static $fixture_file = 'ErrorPageTest.yml';

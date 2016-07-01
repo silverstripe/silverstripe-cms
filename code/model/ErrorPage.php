@@ -1,6 +1,10 @@
 <?php
 
 use SilverStripe\Filesystem\Storage\GeneratedAssetHandler;
+use SilverStripe\ORM\DataModel;
+use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\ORM\DB;
+
 /**
  * ErrorPage holds the content for the page of an error response.
  * Renders the page on each publish action into a static HTML file

@@ -1,5 +1,8 @@
 <?php
 
+use SilverStripe\ORM\DB;
+use SilverStripe\ORM\Versioning\Versioned;
+
 /**
  * @package cms
  * @subpackage reports

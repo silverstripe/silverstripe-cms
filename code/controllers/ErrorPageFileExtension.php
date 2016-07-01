@@ -1,5 +1,8 @@
 <?php
 
+use SilverStripe\ORM\DataExtension;
+use SilverStripe\ORM\DataObject;
+
 /**
  * Decorates {@see File} with ErrorPage support
  */

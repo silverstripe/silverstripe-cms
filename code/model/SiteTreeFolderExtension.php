@@ -1,5 +1,10 @@
 <?php
 
+use SilverStripe\ORM\DB;
+use SilverStripe\ORM\DataQuery;
+use SilverStripe\ORM\DataList;
+use SilverStripe\ORM\DataExtension;
+
 /**
  * @todo Cleanup, refactor, test this class
  *

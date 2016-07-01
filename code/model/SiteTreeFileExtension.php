@@ -1,5 +1,10 @@
 <?php
 
+use SilverStripe\ORM\ManyManyList;
+use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\DataExtension;
+
 /**
  * Extension applied to {@see File} object to track links to {@see SiteTree} records.
  *
@@ -109,7 +114,7 @@ class SiteTreeFileExtension extends DataExtension {
 	 */
 	public function onAfterDelete() {
 		// Skip live stage
-		if(\Versioned::get_stage() === Versioned::LIVE) {
+		if(Versioned::get_stage() === Versioned::LIVE) {
 			return;
 		}
 

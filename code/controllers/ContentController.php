@@ -1,7 +1,14 @@
 <?php
 
-use SilverStripe\Model\FieldType\DBVarchar;
-use SilverStripe\Model\FieldType\DBHTMLText;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\DataModel;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\FieldType\DBField;
+use SilverStripe\ORM\SS_List;
+use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\ORM\FieldType\DBVarchar;
+use SilverStripe\ORM\FieldType\DBHTMLText;
+
 
 /**
  * The most common kind of controller; effectively a controller linked to a {@link DataObject}.
@@ -313,7 +320,7 @@ HTML;
 		} else {
 			if($date = Versioned::current_archived_date()) {
 				Requirements::css(CMS_DIR . '/client/dist/styles/SilverStripeNavigator.css');
-				$dateObj = Datetime::create($date, null);
+				$dateObj = DBField::create_field('Datetime', $date);
 				// $dateObj->setVal($date);
 				return "<div id=\"SilverStripeNavigatorMessage\">". _t('ContentController.ARCHIVEDSITEFROM') ."<br>" . $dateObj->Nice() . "</div>";
 			}

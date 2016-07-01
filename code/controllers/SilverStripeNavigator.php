@@ -1,5 +1,10 @@
 <?php
-use SilverStripe\Model\FieldType\DBField;
+
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\SS_List;
+use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\ORM\FieldType\DBField;
 
 /**
  * Utility class representing links to different views of a record
@@ -191,7 +196,7 @@ abstract class SilverStripeNavigatorItem extends ViewableData {
 	 * @return boolean
 	 */
 	public function isArchived() {
-		if(!$this->record->hasExtension('Versioned')) return false;
+		if(!$this->record->hasExtension('SilverStripe\ORM\Versioning\Versioned')) return false;
 
 		if(!isset($this->record->_cached_isArchived)) {
 			$baseClass = $this->record->baseClass();
@@ -282,7 +287,7 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
 
 	public function canView($member = null) {
 		return (
-			$this->record->hasExtension('Versioned')
+			$this->record->hasExtension('SilverStripe\ORM\Versioning\Versioned')
 			&& $this->getDraftPage()
 			// Don't follow redirects in preview, they break the CMS editing form
 			&& !($this->record instanceof RedirectorPage)
@@ -333,7 +338,7 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem {
 
 	public function canView($member = null) {
 		return (
-			$this->record->hasExtension('Versioned')
+			$this->record->hasExtension('SilverStripe\ORM\Versioning\Versioned')
 			&& $this->getLivePage()
 			// Don't follow redirects in preview, they break the CMS editing form
 			&& !($this->record instanceof RedirectorPage)
@@ -383,7 +388,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 
 	public function canView($member = null) {
 		return (
-			$this->record->hasExtension('Versioned')
+			$this->record->hasExtension('SilverStripe\ORM\Versioning\Versioned')
 			&& $this->isArchived()
 			// Don't follow redirects in preview, they break the CMS editing form
 			&& !($this->record instanceof RedirectorPage)

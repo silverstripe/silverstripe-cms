@@ -1,5 +1,8 @@
 <?php
 
+use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\ORM\DataExtension;
+
 /**
  * Tests {@see SiteTreeLinkTracking} broken links feature: LinkTracking
  */

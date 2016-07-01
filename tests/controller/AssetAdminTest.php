@@ -1,5 +1,8 @@
 <?php
 
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\SS_List;
+
 /**
  * Tests {@see AssetAdmin}
  */
