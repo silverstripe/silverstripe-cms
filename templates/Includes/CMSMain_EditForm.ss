@@ -1,6 +1,6 @@
 <form $FormAttributes data-layout-type="border">
 
-	<div class="panel-scrollable panel-scrollable--single-toolbar">
+	<div class="cms-content-fields panel-scrollable panel-scrollable--single-toolbar">
 		<% if $Message %>
 		<p id="{$FormName}_error" class="message $MessageType">$Message</p>
 		<% else %>
