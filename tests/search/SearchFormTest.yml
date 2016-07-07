@@ -1,14 +1,14 @@
-Group:
+SilverStripe\Security\Group:
   websiteusers:
     Title: View certain restricted pages
-Member:
+SilverStripe\Security\Member:
   randomuser:
     Email: randomuser@test.com
     Password: test
   websiteuser:
     Email: websiteuser@test.com
     Password: test
-    Groups: =>Group.websiteusers
+    Groups: =>SilverStripe\Security\Group.websiteusers
 SiteTree:
   searchformholder:
     URLSegment: searchformholder
@@ -22,7 +22,7 @@ SiteTree:
     Title: restrictedViewLoggedInUsers
   restrictedViewOnlyWebsiteUsers:
     CanViewType: OnlyTheseUsers
-    ViewerGroups: =>Group.websiteusers
+    ViewerGroups: =>SilverStripe\Security\Group.websiteusers
     Title: restrictedViewOnlyWebsiteUsers
   inheritRestrictedView:
     CanViewType: Inherit

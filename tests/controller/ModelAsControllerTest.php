@@ -10,8 +10,6 @@ class ModelAsControllerTest extends FunctionalTest {
 
 	protected $usesDatabase = true;
 
-	protected static $fixture_file = 'ModelAsControllerTest.yml';
-
 	protected $autoFollowRedirection = false;
 
 	protected $orig = array();

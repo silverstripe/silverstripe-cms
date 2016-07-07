@@ -5,6 +5,9 @@ use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ValidationException;
 use SilverStripe\ORM\DataExtension;
+use SilverStripe\Security\Member;
+use SilverStripe\Security\Permission;
+use SilverStripe\Security\Group;
 
 /**
  * @package cms
@@ -459,7 +462,7 @@ class SiteTreeTest extends SapphireTest {
 	}
 
 	public function testEditPermissions() {
-		$editor = $this->objFromFixture("Member", "editor");
+		$editor = $this->objFromFixture("SilverStripe\\Security\\Member", "editor");
 
 		$home = $this->objFromFixture("Page", "home");
 		$staff = $this->objFromFixture("Page", "staff");
@@ -487,8 +490,8 @@ class SiteTreeTest extends SapphireTest {
 	public function testCanEditWithAccessToAllSections() {
 		$page = new Page();
 		$page->write();
-		$allSectionMember = $this->objFromFixture('Member', 'allsections');
-		$securityAdminMember = $this->objFromFixture('Member', 'securityadmin');
+		$allSectionMember = $this->objFromFixture('SilverStripe\\Security\\Member', 'allsections');
+		$securityAdminMember = $this->objFromFixture('SilverStripe\\Security\\Member', 'securityadmin');
 
 		$this->assertTrue($page->canEdit($allSectionMember));
 		$this->assertFalse($page->canEdit($securityAdminMember));
@@ -532,31 +535,31 @@ class SiteTreeTest extends SapphireTest {
 		// Lock down the site config
 		$sc = $page->SiteConfig;
 		$sc->CanEditType = 'OnlyTheseUsers';
-		$sc->EditorGroups()->add($this->idFromFixture('Group', 'admins'));
+		$sc->EditorGroups()->add($this->idFromFixture('SilverStripe\\Security\\Group', 'admins'));
 		$sc->write();
 
 		// Confirm that Member.editor can't edit the page
-		$this->objFromFixture('Member','editor')->logIn();
+		$this->objFromFixture('SilverStripe\\Security\\Member','editor')->logIn();
 		$this->assertFalse($page->canEdit());
 
 		// Change the page to be editable by Group.editors, but do not publish
-		$this->objFromFixture('Member','admin')->logIn();
+		$this->objFromFixture('SilverStripe\\Security\\Member','admin')->logIn();
 		$page->CanEditType = 'OnlyTheseUsers';
-		$page->EditorGroups()->add($this->idFromFixture('Group', 'editors'));
+		$page->EditorGroups()->add($this->idFromFixture('SilverStripe\\Security\\Group', 'editors'));
 		$page->write();
 		// Clear permission cache
 		SiteTree::on_db_reset();
 
 		// Confirm that Member.editor can now edit the page
-		$this->objFromFixture('Member','editor')->logIn();
+		$this->objFromFixture('SilverStripe\\Security\\Member','editor')->logIn();
 		$this->assertTrue($page->canEdit());
 
 		// Publish the changes to the page
-		$this->objFromFixture('Member','admin')->logIn();
+		$this->objFromFixture('SilverStripe\\Security\\Member','admin')->logIn();
 		$page->publishRecursive();
 
 		// Confirm that Member.editor can still edit the page
-		$this->objFromFixture('Member','editor')->logIn();
+		$this->objFromFixture('SilverStripe\\Security\\Member','editor')->logIn();
 		$this->assertTrue($page->canEdit());
     }
 
@@ -592,7 +595,7 @@ class SiteTreeTest extends SapphireTest {
 		if($member) {
 			$memberID = $member->ID;
 		} else {
-			$memberID = $this->idFromFixture("Member", "admin");
+			$memberID = $this->idFromFixture("SilverStripe\\Security\\Member", "admin");
 			Session::set("loggedInAs", $memberID);
 		}
 

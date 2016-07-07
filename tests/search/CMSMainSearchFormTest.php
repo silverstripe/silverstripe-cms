@@ -4,7 +4,7 @@ class CMSMainSearchFormTest extends FunctionalTest {
 	protected static $fixture_file = '../controller/CMSMainTest.yml';
 
 	public function testTitleFilter() {
-		$this->session()->inst_set('loggedInAs', $this->idFromFixture('Member', 'admin'));
+		$this->session()->inst_set('loggedInAs', $this->idFromFixture('SilverStripe\\Security\\Member', 'admin'));
 
 		$response = $this->get(
 			'admin/pages/SearchForm/?' .
