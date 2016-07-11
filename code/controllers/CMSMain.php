@@ -817,7 +817,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				$num = $item ? $item->numChildren() : null;
 				if($num) {
 					return sprintf(
-						'<a class="cms-panel-link list-children-link" data-pjax-target="ListViewForm,Breadcrumbs" href="%s">%s</a>',
+						'<a class="btn btn-secondary btn--no-text btn--icon-large font-icon-right-dir cms-panel-link list-children-link" data-pjax-target="ListViewForm,Breadcrumbs" href="%s"><span class="sr-only">%s child pages</span></a>',
 						Controller::join_links(
 							$controller->Link(),
 							sprintf("?ParentID=%d&view=list", (int)$item->ID)

@@ -31,7 +31,7 @@
 					return;
 				}
 
-				var grid = this.closest('.ss-gridfield');
+				var grid = this.closest('.grid-field');
 				if (this.data('class') == 'Folder') {
 					var url = grid.data('urlFolderTemplate').replace('%s', this.data('id'));
 					$('.cms-container').loadPanel(url);
@@ -42,7 +42,7 @@
 			}
 		});
 
-		$('.AssetAdmin.cms-edit-form .ss-gridfield .col-buttons .action.gridfield-button-delete, .AssetAdmin.cms-edit-form .btn-toolbar button.action.action-delete').entwine({
+		$('.AssetAdmin.cms-edit-form .grid-field .grid-field__col-compact .action.gridfield-button-delete, .AssetAdmin.cms-edit-form .btn-toolbar button.action.action-delete').entwine({
 			onclick: function onclick(e) {
 				var msg;
 				if (this.closest('.ss-gridfield-item').data('class') == 'Folder') {
@@ -100,7 +100,7 @@
 
 		$('.AssetAdmin.cms-edit-form .ss-uploadfield-item-progress').entwine({
 			onunmatch: function onunmatch() {
-				$('.AssetAdmin.cms-edit-form .ss-gridfield').reload();
+				$('.AssetAdmin.cms-edit-form .grid-field').reload();
 			}
 		});
 	});
