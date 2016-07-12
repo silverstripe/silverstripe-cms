@@ -534,6 +534,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			return $id;
 		}
 		else if($id && is_numeric($id)) {
+			$currentStage = Versioned::get_reading_mode();
+
 			if($this->getRequest()->getVar('Version')) {
 				$versionID = (int) $this->getRequest()->getVar('Version');
 			}
@@ -551,7 +553,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				singleton($treeClass)->flushCache();
 
 				$record = DataObject::get_by_id($treeClass, $id);
-				if($record) Versioned::set_reading_mode('');
 			}
 
 			// Then, try getting a deleted record
@@ -569,6 +570,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			/* if($record && SiteTree::has_extension('Translatable') && $record->Locale && $record->Locale != Translatable::get_current_locale()) {
 				$record = null;
 			}*/
+
+			// Set the reading mode back to what it was.
+			Versioned::set_reading_mode($currentStage);
 
 			return $record;
 
