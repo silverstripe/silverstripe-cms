@@ -626,26 +626,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 	/**
-	 * Create a duplicate of this node. Doesn't affect joined data - create a custom overloading of this if you need
-	 * such behaviour.
+	 * Reset Sort on duped page
 	 *
-	 * @param bool $doWrite Whether to write the new object before returning it
-	 * @return self The duplicated object
+	 * @param SiteTree $original
+	 * @param bool $doWrite
 	 */
-	 public function duplicate($doWrite = true) {
-
-		$page = parent::duplicate(false);
-		$page->Sort = 0;
-		$this->invokeWithExtensions('onBeforeDuplicate', $page);
-
-		if($doWrite) {
-			$page->write();
-
-			$page = $this->duplicateManyManyRelations($this, $page);
-		}
-		$this->invokeWithExtensions('onAfterDuplicate', $page);
-
-		return $page;
+	public function onBeforeDuplicate($original, $doWrite) {
+		$this->Sort = 0;
 	}
 
 	/**

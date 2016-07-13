@@ -378,6 +378,14 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertFalse(DataObject::get_by_id('Page', $pageStaffDuplicate->ID));
 	}
 
+	public function testDuplicate() {
+		$pageAbout = $this->objFromFixture('Page', 'about');
+		$dupe = $pageAbout->duplicate();
+		$this->assertEquals($pageAbout->Title, $dupe->Title);
+		$this->assertNotEquals($pageAbout->URLSegment, $dupe->URLSegment);
+		$this->assertNotEquals($pageAbout->Sort, $dupe->Sort);
+	}
+
 	public function testDeleteFromLiveOperatesRecursively() {
 		Config::inst()->update('SiteTree', 'enforce_strict_hierarchy', false);
 		$this->logInWithPermission('ADMIN');
