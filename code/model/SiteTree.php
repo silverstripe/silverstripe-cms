@@ -127,7 +127,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		"MenuTitle" => "Varchar(100)",
 		"Content" => "HTMLText",
 		"MetaDescription" => "Text",
-		"ExtraMeta" => "HTMLText('meta, link')",
+		"ExtraMeta" => "HTMLFragment(['whitelist' => ['meta', 'link']])",
 		"ShowInMenus" => "Boolean",
 		"ShowInSearch" => "Boolean",
 		"Sort" => "Int",
@@ -156,11 +156,15 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	);
 
 	private static $casting = array(
-		"Breadcrumbs" => "HTMLText",
+		"Breadcrumbs" => "HTMLFragment",
+		"LastEdited" => "Datetime",
+		"Created" => "Datetime",
 		'Link' => 'Text',
 		'RelativeLink' => 'Text',
 		'AbsoluteLink' => 'Text',
-		'TreeTitle' => 'HTMLText',
+		'CMSEditLink' => 'Text',
+		'TreeTitle' => 'HTMLFragment',
+		'MetaTags' => 'HTMLFragment',
 	);
 
 	private static $defaults = array(
@@ -685,7 +689,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @param boolean $unlinked Whether to link page titles.
 	 * @param boolean|string $stopAtPageType ClassName of a page to stop the upwards traversal.
 	 * @param boolean $showHidden Include pages marked with the attribute ShowInMenus = 0
-	 * @return HTMLText The breadcrumb trail.
+	 * @return string The breadcrumb trail.
 	 */
 	public function Breadcrumbs($maxDepth = 20, $unlinked = false, $stopAtPageType = false, $showHidden = false) {
 		$pages = $this->getBreadcrumbItems($maxDepth, $stopAtPageType, $showHidden);
@@ -762,6 +766,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 */
 	public function NestedTitle($level = 2, $separator = " - ") {
 		$item = $this;
+		$parts = [];
 		while($item && $level > 0) {
 			$parts[] = $item->Title;
 			$item = $item->Parent;
@@ -1058,10 +1063,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return SiteConfig
 	 */
 	public function getSiteConfig() {
-
-		if($this->hasMethod('alternateSiteConfig')) {
-			$altConfig = $this->alternateSiteConfig();
-			if($altConfig) return $altConfig;
+		$configs = $this->invokeWithExtensions('alternateSiteConfig');
+		foreach(array_filter($configs) as $config) {
+			return $config;
 		}
 
 		return SiteConfig::current_site_config();
@@ -1190,6 +1194,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					// then see which ones the user has permission on
 					$groupedByParent = array();
 					foreach($potentiallyInherited as $item) {
+						/** @var SiteTree $item */
 						if($item->ParentID) {
 							if(!isset($groupedByParent[$item->ParentID])) $groupedByParent[$item->ParentID] = array();
 							$groupedByParent[$item->ParentID][] = $item->ID;
@@ -1222,7 +1227,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			// Cache the results
  			if(empty(self::$cache_permissions[$cacheKey])) self::$cache_permissions[$cacheKey] = array();
  			self::$cache_permissions[$cacheKey] = $combinedStageResult + self::$cache_permissions[$cacheKey];
-
 			return $combinedStageResult;
 		} else {
 			return array();
@@ -1302,8 +1306,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			} else {
 				$deletable = $editableIDs;
 			}
-		} else {
-			$deletable = array();
 		}
 
 		// Convert the array of deletable IDs into a map of the original IDs with true/false as the value
@@ -1323,7 +1325,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	public function collateDescendants($condition, &$collator) {
 		if($children = $this->Children()) {
 			foreach($children as $item) {
-				if(eval("return $condition;")) $collator[] = $item;
+
+				if(eval("return $condition;")) {
+					$collator[] = $item;
+				}
+				/** @var SiteTree $item */
 				$item->collateDescendants($condition, $collator);
 			}
 			return true;
@@ -1339,23 +1345,29 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string The XHTML metatags
 	 */
 	public function MetaTags($includeTitle = true) {
-		$tags = "";
-		if($includeTitle === true || $includeTitle == 'true') {
-			$tags .= "<title>" . Convert::raw2xml($this->Title) . "</title>\n";
+		$tags = array();
+		if($includeTitle && strtolower($includeTitle) != 'false') {
+			$tags[] = FormField::create_tag('title', array(), $this->obj('Title')->forTemplate());
 		}
 
 		$generator = trim(Config::inst()->get('SiteTree', 'meta_generator'));
 		if (!empty($generator)) {
-			$tags .= "<meta name=\"generator\" content=\"" . Convert::raw2att($generator) . "\" />\n";
+			$tags[] = FormField::create_tag('meta', array(
+				'name' => 'generator',
+				'content' => $generator,
+			));
 		}
 
 		$charset = Config::inst()->get('ContentNegotiator', 'encoding');
-		$tags .= "<meta http-equiv=\"Content-type\" content=\"text/html; charset=$charset\" />\n";
+		$tags[] = FormField::create_tag('meta', array(
+			'http-equiv' => 'Content-Type',
+			'content' => 'text/html; charset=' . $charset,
+		));
 		if($this->MetaDescription) {
-			$tags .= "<meta name=\"description\" content=\"" . Convert::raw2att($this->MetaDescription) . "\" />\n";
-		}
-		if($this->ExtraMeta) {
-			$tags .= $this->ExtraMeta . "\n";
+			$tags[] = FormField::create_tag('meta', array(
+				'name' => 'description',
+				'content' => $this->MetaDescription,
+			));
 		}
 
 		if(Permission::check('CMS_ACCESS_CMSMain')
@@ -1363,8 +1375,19 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			&& !$this instanceof ErrorPage
 			&& $this->ID > 0
 		) {
-			$tags .= "<meta name=\"x-page-id\" content=\"{$this->ID}\" />\n";
-			$tags .= "<meta name=\"x-cms-edit-link\" content=\"" . $this->CMSEditLink() . "\" />\n";
+			$tags[] = FormField::create_tag('meta', array(
+				'name' => 'x-page-id',
+				'content' => $this->obj('ID')->forTemplate(),
+			));
+			$tags[] = FormField::create_tag('meta', array(
+				'name' => 'x-cms-edit-link',
+				'content' => $this->obj('CMSEditLink')->forTemplate(),
+			));
+		}
+
+		$tags = implode("\n", $tags);
+		if($this->ExtraMeta) {
+			$tags .= $this->obj('ExtraMeta')->forTemplate();
 		}
 
 		$this->extend('MetaTags', $tags);

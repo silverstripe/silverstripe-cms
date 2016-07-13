@@ -1093,11 +1093,11 @@ class SiteTreeTest extends SapphireTest {
 		// Test with title
 		$meta = $page->MetaTags();
 		$charset = Config::inst()->get('ContentNegotiator', 'encoding');
-		$this->assertContains('<meta http-equiv="Content-type" content="text/html; charset='.$charset.'"', $meta);
+		$this->assertContains('<meta http-equiv="Content-Type" content="text/html; charset='.$charset.'"', $meta);
 		$this->assertContains('<meta name="description" content="The &lt;br /&gt; and &lt;br&gt; tags"', $meta);
 		$this->assertContains('<link rel="canonical" href="http://www.mysite.com/html-and-xml"', $meta);
 		$this->assertContains('<meta name="x-page-id" content="'.$page->ID.'"', $meta);
-		$this->assertContains('<meta name="x-cms-edit-link" content="'.$page->CMSEditLink().'" />', $meta);
+		$this->assertContains('<meta name="x-cms-edit-link" content="'.$page->CMSEditLink().'"', $meta);
 		$this->assertContains('<title>HTML &amp; XML</title>', $meta);
 
 		// Test without title
