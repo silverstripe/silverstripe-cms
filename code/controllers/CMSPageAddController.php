@@ -1,6 +1,7 @@
 <?php
 
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\ValidationException;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
@@ -30,7 +31,7 @@ class CMSPageAddController extends CMSPageEditController {
 				$type->getField('AddAction'),
 				$type->getField('Description')
 			);
-			$pageTypes[$type->getField('ClassName')] = $html;
+			$pageTypes[$type->getField('ClassName')] = DBField::create_field('HTMLFragment', $html);
 		}
 		// Ensure generic page type shows on top
 		if(isset($pageTypes['Page'])) {
@@ -68,7 +69,10 @@ class CMSPageAddController extends CMSPageEditController {
 			),
 			$typeField = new OptionsetField(
 				"PageType",
-				sprintf($numericLabelTmpl, 2, _t('CMSMain.ChoosePageType', 'Choose page type')),
+				DBField::create_field(
+					'HTMLFragment',
+					sprintf($numericLabelTmpl, 2, _t('CMSMain.ChoosePageType', 'Choose page type'))
+				),
 				$pageTypes,
 				'Page'
 			),
@@ -84,14 +88,11 @@ class CMSPageAddController extends CMSPageEditController {
 			)
 		);
 		$parentField->setSearchFunction(function ($sourceObject, $labelField, $search) {
-			return DataObject::get(
-				$sourceObject,
-				sprintf(
-					"\"MenuTitle\" LIKE '%%%s%%' OR \"Title\" LIKE '%%%s%%'",
-					Convert::raw2sql($search),
-					Convert::raw2sql($search)
-				)
-			);
+			return DataObject::get($sourceObject)
+				->filterAny([
+					'MenuTitle:PartialMatch' => $search,
+					'Title:PartialMatch' => $search,
+				]);
 		});
 
 		// TODO Re-enable search once it allows for HTML title display,
