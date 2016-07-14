@@ -506,7 +506,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		));
 		if($live) {
 			$link = $live->AbsoluteLink();
-			if($includeStageEqualsLive) $link .= '?stage=Live';
+			if($includeStageEqualsLive) {
+				$link = Controller::join_links($link, '?stage=Live');
+			}
 		} else {
 			$link = null;
 		}
