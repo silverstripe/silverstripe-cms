@@ -183,8 +183,7 @@ class ContentControllerTest extends FunctionalTest {
 			$controller = new ContentController($page);
 			$viewer = $controller->getViewer('test');
 			$templateList = array('ContentControllerTestPage_test', 'Page');
-			$expected = SS_TemplateLoader::instance()->findTemplates($templateList, 'controllertest');
-			$self->assertEquals($expected, $viewer->templates());
+			$self->assertEquals(dirname(__FILE__).'/themes/controllertest/templates/ContentControllerTestPage_test.ss', $viewer->templates()['main']);
 		});
 	}
 
