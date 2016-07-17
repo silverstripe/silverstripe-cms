@@ -1206,6 +1206,27 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertFalse($page->canView());
 	}
 
+	public function testCanPublish() {
+		$page = new SiteTreeTest_ClassD();
+		Session::clear("loggedInAs");
+
+		// Test that false overrides any can_publish = true
+		SiteTreeTest_ExtensionA::$can_publish = true;
+		SiteTreeTest_ExtensionB::$can_publish = false;
+		$this->assertFalse($page->canPublish());
+		SiteTreeTest_ExtensionA::$can_publish = false;
+		SiteTreeTest_ExtensionB::$can_publish = true;
+		$this->assertFalse($page->canPublish());
+
+		// Test null extensions fall back to canEdit()
+		SiteTreeTest_ExtensionA::$can_publish = null;
+		SiteTreeTest_ExtensionB::$can_publish = null;
+		$page->canEditValue = true;
+		$this->assertTrue($page->canPublish());
+		$page->canEditValue = false;
+		$this->assertFalse($page->canPublish());
+	}
+
 }
 
 /**#@+
@@ -1258,6 +1279,20 @@ class SiteTreeTest_ClassC extends Page implements TestOnly {
 class SiteTreeTest_ClassD extends Page implements TestOnly {
 	// Only allows this class, no children classes
 	private static $allowed_children = array('*SiteTreeTest_ClassC');
+
+	private static $extensions = [
+		'SiteTreeTest_ExtensionA',
+		'SiteTreeTest_ExtensionB',
+	];
+
+	public $canEditValue = null;
+
+	public function canEdit($member = null)
+	{
+		return isset($this->canEditValue)
+			? $this->canEditValue
+			: parent::canEdit($member);
+	}
 }
 
 class SiteTreeTest_ClassCext extends SiteTreeTest_ClassC implements TestOnly {
@@ -1289,6 +1324,26 @@ class SiteTreeTest_AdminDenied extends Page implements TestOnly {
 	private static $extensions = array(
 		'SiteTreeTest_AdminDeniedExtension'
 	);
+}
+
+class SiteTreeTest_ExtensionA extends SiteTreeExtension implements TestOnly {
+
+	public static $can_publish = true;
+
+	public function canPublish($member)
+	{
+		return static::$can_publish;
+	}
+}
+
+class SiteTreeTest_ExtensionB extends SiteTreeExtension implements TestOnly {
+
+	public static $can_publish = true;
+
+	public function canPublish($member)
+	{
+		return static::$can_publish;
+	}
 }
 
 

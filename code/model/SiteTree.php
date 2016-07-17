@@ -906,6 +906,31 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 	/**
+	 * Check if this page can be published
+	 *
+	 * @param Member $member
+	 * @return bool
+	 */
+	public function canPublish($member = null) {
+		if(!$member) {
+			$member = Member::currentUser();
+		}
+
+		// Check extension
+		$extended = $this->extendedCan('canPublish', $member);
+		if($extended !== null) {
+			return $extended;
+		}
+
+		if(Permission::checkMember($member, "ADMIN")) {
+			return true;
+		}
+
+		// Default to relying on edit permission
+		return $this->canEdit($member);
+	}
+
+	/**
 	 * This function should return true if the current user can delete this page. It can be overloaded to customise the
 	 * security model for an application.
 	 *
