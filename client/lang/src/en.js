@@ -34,6 +34,7 @@
     "Tree.AddSubPage": "Add new page here",
     "Tree.Duplicate": "Duplicate",
     "Tree.EditPage": "Edit",
+    "Tree.ViewPage": "View",
     "Tree.ShowAsList": "Show children as list",
     "Tree.ThisPageAndSubpages": "This page and subpages",
     "Tree.ThisPageOnly": "This page only",
