@@ -1,4 +1,4 @@
-<% include CMSPagesController_ContentToolActions View='Tree' %>
+<% include SilverStripe\CMS\Controllers\CMSPagesController_ContentToolActions View='Tree' %>
 
 <div class="ss-dialog cms-page-add-form-dialog cms-dialog-content" id="cms-page-add-form" title="<% _t('CMSMain.AddNew', 'Add new page') %>">
 	$AddForm

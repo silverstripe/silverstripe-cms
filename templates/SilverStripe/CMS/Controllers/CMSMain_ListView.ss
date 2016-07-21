@@ -1,4 +1,4 @@
-<% include CMSPagesController_ContentToolActions %>
+<% include SilverStripe\CMS\Controllers\CMSPagesController_ContentToolActions %>
 
 <div class="ss-dialog cms-page-add-form-dialog cms-dialog-content" id="cms-page-add-form" title="<% _t('CMSMain.AddNew', 'Add new page') %>">
 	$AddForm
@@ -14,7 +14,7 @@
 
 		<div class="cms-list" data-url-list="$Link(getListViewHTML)">
 			$ListViewForm
-	</div>
+		</div>
 	</div>
 	<% else %>
 
