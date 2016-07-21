@@ -25,11 +25,11 @@ class MigrateSiteTreeLinkingTaskTest extends SapphireTest {
 		);
 		ob_end_clean();
 
-		$homeID   = $this->idFromFixture('SiteTree', 'home');
-		$aboutID  = $this->idFromFixture('SiteTree', 'about');
-		$staffID  = $this->idFromFixture('SiteTree', 'staff');
-		$actionID = $this->idFromFixture('SiteTree', 'action');
-		$hashID   = $this->idFromFixture('SiteTree', 'hash_link');
+		$homeID   = $this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'home');
+		$aboutID  = $this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'about');
+		$staffID  = $this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'staff');
+		$actionID = $this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'action');
+		$hashID   = $this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'hash_link');
 
 		$homeContent = sprintf (
 			'<a href="[sitetree_link,id=%d]">About</a><a href="[sitetree_link,id=%d]">Staff</a><a href="http://silverstripe.org/">External Link</a><a name="anchor"></a>',
@@ -57,25 +57,25 @@ class MigrateSiteTreeLinkingTaskTest extends SapphireTest {
 
 		$this->assertEquals (
 			$homeContent,
-			DataObject::get_by_id('SiteTree', $homeID)->Content,
+			DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $homeID)->Content,
 			'HTML URLSegment links are rewritten.'
 		);
 		$this->assertEquals (
 			$aboutContent,
-			DataObject::get_by_id('SiteTree', $aboutID)->Content
+			DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $aboutID)->Content
 		);
 		$this->assertEquals (
 			$staffContent,
-			DataObject::get_by_id('SiteTree', $staffID)->Content
+			DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $staffID)->Content
 		);
 		$this->assertEquals (
 			$actionContent,
-			DataObject::get_by_id('SiteTree', $actionID)->Content,
+			DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $actionID)->Content,
 			'Links to actions on pages are rewritten correctly.'
 		);
 		$this->assertEquals (
 			$hashLinkContent,
-			DataObject::get_by_id('SiteTree', $hashID)->Content,
+			DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $hashID)->Content,
 			'Hash/anchor links are correctly handled.'
 		);
 	}

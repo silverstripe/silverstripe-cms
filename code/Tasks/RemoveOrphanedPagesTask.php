@@ -5,6 +5,8 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\Security;
+use SilverStripe\CMS\Model\SiteTree;
+
 
 
 
@@ -55,7 +57,7 @@ in the other stage:<br />
 </p>
 	";
 
-	protected $orphanedSearchClass = 'SiteTree';
+	protected $orphanedSearchClass = 'SilverStripe\\CMS\\Model\\SiteTree';
 
 	public function init() {
 		parent::init();
@@ -309,7 +311,7 @@ in the other stage:<br />
 	 * @param int|array $limit
 	 * @return SS_List
 	 */
-	public function getOrphanedPages($class = 'SiteTree', $filter = array(), $sort = null, $join = null, $limit = null) {
+	public function getOrphanedPages($class = 'SilverStripe\\CMS\\Model\\SiteTree', $filter = array(), $sort = null, $join = null, $limit = null) {
 		// Alter condition
 		if(empty($filter)) $where = array();
 		elseif(is_array($filter)) $where = $filter;

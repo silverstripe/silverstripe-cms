@@ -1,5 +1,7 @@
 <?php
 
+namespace SilverStripe\CMS\Controllers;
+
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DataModel;
 use SilverStripe\ORM\ArrayList;
@@ -12,7 +14,23 @@ use SilverStripe\Security\Security;
 use SilverStripe\Security\MemberAuthenticator;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
+use Controller;
+use Page;
 
+use SiteConfig;
+use Config;
+use SS_HTTPRequest;
+use Translatable;
+use i18n;
+use SS_HTTPResponse;
+use SS_HTTPResponse_Exception;
+use Director;
+use Requirements;
+use Convert;
+use SSViewer;
+use ArrayData;
+use Session;
+use SilverStripe\CMS\Model\SiteTree;
 
 
 /**
@@ -38,7 +56,7 @@ class ContentController extends Controller {
 
 	protected $dataRecord;
 
-	private static $extensions = array('OldPageRedirector');
+	private static $extensions = array('SilverStripe\\CMS\\Controllers\\OldPageRedirector');
 
 	private static $allowed_actions = array(
 		'successfullyinstalled',
@@ -89,7 +107,7 @@ class ContentController extends Controller {
 		$parent = SiteTree::get_by_link($parentRef);
 
 		if(!$parent && is_numeric($parentRef)) {
-			$parent = DataObject::get_by_id('SiteTree', $parentRef);
+			$parent = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $parentRef);
 		}
 
 		if($parent) return $parent->Children();
@@ -119,7 +137,7 @@ class ContentController extends Controller {
 		}
 
 		if($this->dataRecord) $this->dataRecord->extend('contentcontrollerInit', $this);
-		else singleton('SiteTree')->extend('contentcontrollerInit', $this);
+		else singleton('SilverStripe\\CMS\\Model\\SiteTree')->extend('contentcontrollerInit', $this);
 
 		if($this->redirectedTo()) return;
 
@@ -382,11 +400,11 @@ HTML;
 
 		$templates = array_merge(
 			// Find templates by dataRecord
-			SSViewer::get_templates_by_class(get_class($this->dataRecord), $action, "SiteTree"),
+			SSViewer::get_templates_by_class(get_class($this->dataRecord), $action, "SilverStripe\\CMS\\Model\\SiteTree"),
 			// Next, we need to add templates for all controllers
 			SSViewer::get_templates_by_class(get_class($this), $action, "Controller"),
 			// Fail-over to the same for the "index" action
-			SSViewer::get_templates_by_class(get_class($this->dataRecord), "", "SiteTree"),
+			SSViewer::get_templates_by_class(get_class($this->dataRecord), "", "SilverStripe\\CMS\\Model\\SiteTree"),
 			SSViewer::get_templates_by_class(get_class($this), "", "Controller")
 		);
 

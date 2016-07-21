@@ -1,4 +1,12 @@
 <?php
+
+namespace SilverStripe\CMS\Controllers;
+
+use Extension;
+use Requirements;
+use ClassInfo;
+use Director;
+
 /**
  * Extension to include custom page icons
  *
@@ -20,7 +28,7 @@ class LeftAndMainPageIconsExtension extends Extension {
 	public function generatePageIconsCss() {
 		$css = '';
 
-		$classes = ClassInfo::subclassesFor('SiteTree');
+		$classes = ClassInfo::subclassesFor('SilverStripe\\CMS\\Model\\SiteTree');
 		foreach($classes as $class) {
 			$obj = singleton($class);
 			$iconSpec = $obj->stat('icon');

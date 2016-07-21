@@ -1,5 +1,7 @@
 <?php
 
+namespace SilverStripe\CMS\Controllers;
+
 use SilverStripe\Filesystem\Storage\AssetNameGenerator;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\Versioning\Versioned;
@@ -7,6 +9,49 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\Security\Security;
 use SilverStripe\Security\PermissionProvider;
+use LeftAndMain;
+use Session;
+use Requirements;
+use CMSBatchActionHandler;
+use File;
+use DateField;
+use HiddenField;
+use GridFieldConfig;
+use GridFieldToolbarHeader;
+use GridFieldSortableHeader;
+use GridFieldFilterHeader;
+use GridFieldDataColumns;
+use GridFieldPaginator;
+use GridFieldEditButton;
+use GridFieldDeleteAction;
+use GridFieldDetailForm;
+use GridFieldLevelup;
+use GridField;
+use Controller;
+use LiteralField;
+use TabSet;
+use Tab;
+use CompositeField;
+use UploadField;
+use FormField;
+use SS_HTTPResponse;
+use Convert;
+use SS_HTTPResponse_Exception;
+use HeaderField;
+use FieldGroup;
+use DropdownField;
+use CheckboxField;
+use FieldList;
+use FormAction;
+use Object;
+use Form;
+use TextField;
+use Folder;
+use Injector;
+use Director;
+use ArrayData;
+use CMSBatchAction;
+
 
 
 /**
@@ -75,7 +120,7 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 		Requirements::javascript(CMS_DIR . "/client/dist/js/AssetAdmin.js");
 		Requirements::add_i18n_javascript(CMS_DIR . '/client/lang', false, true);
 		Requirements::css(CMS_DIR . '/client/dist/styles/bundle.css');
-		CMSBatchActionHandler::register('delete', 'AssetAdmin_DeleteBatchAction', 'Folder');
+		CMSBatchActionHandler::register('delete', 'SilverStripe\\CMS\\Controllers\\AssetAdmin_DeleteBatchAction', 'Folder');
 	}
 
 	/**
@@ -154,7 +199,7 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 
 		// Remove legacy previewable behaviour.
 		$form->removeExtraClass('cms-previewable');
-		$form->Fields()->removeByName('SilverStripeNavigator');
+		$form->Fields()->removeByName('SilverStripe\\CMS\\Controllers\\SilverStripeNavigator');
 
 		// File listing
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
@@ -588,7 +633,7 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 
 		// The root element should explicitly point to the root node.
 		// Uses session state for current record otherwise.
-		$items[0]->Link = Controller::join_links(singleton('AssetAdmin')->Link('show'), 0);
+		$items[0]->Link = Controller::join_links(singleton('SilverStripe\\CMS\\Controllers\\AssetAdmin')->Link('show'), 0);
 
 		// If a search is in progress, don't show the path
 		if($this->getRequest()->requestVar('q')) {

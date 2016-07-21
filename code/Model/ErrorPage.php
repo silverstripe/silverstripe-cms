@@ -1,9 +1,23 @@
 <?php
 
+namespace SilverStripe\CMS\Model;
+
 use SilverStripe\Filesystem\Storage\GeneratedAssetHandler;
 use SilverStripe\ORM\DataModel;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\DB;
+use Page;
+use Requirements;
+use SilverStripe\CMS\Controllers\ModelAsController;
+use SS_HTTPRequest;
+use SS_HTTPResponse;
+use DropdownField;
+use File;
+use Config;
+use Director;
+use Injector;
+use Page_Controller;
+
 
 /**
  * ErrorPage holds the content for the page of an error response.
@@ -103,7 +117,7 @@ class ErrorPage extends Page {
 	public function requireDefaultRecords() {
 		parent::requireDefaultRecords();
 
-		if ($this->class === 'ErrorPage' && SiteTree::config()->create_default_pages) {
+		if ($this->class === 'SilverStripe\\CMS\\Model\\ErrorPage' && SiteTree::config()->create_default_pages) {
 
 			$defaultPages = $this->getDefaultRecords();
 

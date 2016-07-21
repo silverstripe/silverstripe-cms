@@ -1,6 +1,8 @@
 <?php
 
 use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\CMS\Model\ErrorPage;
+
 
 /**
  * @package cms
@@ -21,7 +23,7 @@ class ErrorPageTest extends FunctionalTest {
 		parent::setUp();
 		// Set temporary asset backend store
 		AssetStoreTest_SpyStore::activate('ErrorPageTest');
-		Config::inst()->update('ErrorPage', 'enable_static_file', true);
+		Config::inst()->update('SilverStripe\\CMS\\Model\\ErrorPage', 'enable_static_file', true);
 		Config::inst()->update('Director', 'environment_type', 'live');
 		$this->logInWithPermission('ADMIN');
 	}
@@ -32,7 +34,7 @@ class ErrorPageTest extends FunctionalTest {
 	}
 
 	public function test404ErrorPage() {
-		$page = $this->objFromFixture('ErrorPage', '404');
+		$page = $this->objFromFixture('SilverStripe\\CMS\\Model\\ErrorPage', '404');
 		// ensure that the errorpage exists as a physical file
 		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
@@ -49,7 +51,7 @@ class ErrorPageTest extends FunctionalTest {
 	}
 
 	public function testBehaviourOfShowInMenuAndShowInSearchFlags() {
-		$page = $this->objFromFixture('ErrorPage', '404');
+		$page = $this->objFromFixture('SilverStripe\\CMS\\Model\\ErrorPage', '404');
 
 		/* Don't show the error page in the menus */
 		$this->assertEquals($page->ShowInMenus, 0, 'Don\'t show the error page in the menus');
@@ -59,7 +61,7 @@ class ErrorPageTest extends FunctionalTest {
 	}
 
 	public function testBehaviourOf403() {
-		$page = $this->objFromFixture('ErrorPage', '403');
+		$page = $this->objFromFixture('SilverStripe\\CMS\\Model\\ErrorPage', '403');
 		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$response = $this->get($page->RelativeLink());
@@ -70,7 +72,7 @@ class ErrorPageTest extends FunctionalTest {
 
 	public function testSecurityError() {
 		// Generate 404 page
-		$page = $this->objFromFixture('ErrorPage', '404');
+		$page = $this->objFromFixture('SilverStripe\\CMS\\Model\\ErrorPage', '404');
 		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		// Test invalid action
@@ -104,7 +106,7 @@ class ErrorPageTest extends FunctionalTest {
 	 * Test fallback to file generation API with enable_static_file disabled
 	 */
 	public function testGeneratedFile() {
-		Config::inst()->update('ErrorPage', 'enable_static_file', false);
+		Config::inst()->update('SilverStripe\\CMS\\Model\\ErrorPage', 'enable_static_file', false);
 		$this->logInWithPermission('ADMIN');
 
 		$page = new ErrorPage();

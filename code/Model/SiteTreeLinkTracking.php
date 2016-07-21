@@ -1,17 +1,20 @@
 <?php
 
+namespace SilverStripe\CMS\Model;
+
 /**
  * @package cms
  * @subpackage model
  */
-
 
 use SilverStripe\ORM\ManyManyList;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DataObject;
-
+use Injector;
+use SS_HTMLValue;
+use Director;
 
 /**
  * Adds tracking of links in any HTMLText fields which reference SiteTree or File items.
@@ -75,7 +78,7 @@ class SiteTreeLinkTracking extends DataExtension {
 	);
 
 	private static $many_many = array(
-		"LinkTracking" => "SiteTree",
+		"LinkTracking" => "SilverStripe\\CMS\\Model\\SiteTree",
 		"ImageTracking" => "File"  // {@see SiteTreeFileExtension}
 	);
 
@@ -269,7 +272,7 @@ class SiteTreeLinkTracking_Parser {
 			// Link to a page on this site.
 			$matches = array();
 			if(preg_match('/\[sitetree_link(?:\s*|%20|,)?id=(?<id>[0-9]+)\](#(?<anchor>.*))?/i', $href, $matches)) {
-				$page = DataObject::get_by_id('SiteTree', $matches['id']);
+				$page = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $matches['id']);
 				$broken = false;
 
 				if (!$page) {

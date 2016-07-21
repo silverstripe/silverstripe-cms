@@ -1,8 +1,18 @@
 <?php
 
+namespace SilverStripe\CMS\Controllers;
+
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\Security\Security;
+use Form;
+use FieldList;
+use FormAction;
+use HiddenField;
+use Controller;
+use LiteralField;
+use ViewableData;
+use CheckboxField;
 
 /**
  * @package cms
@@ -15,7 +25,7 @@ class CMSPageHistoryController extends CMSMain {
 	private static $url_priority = 42;
 	private static $menu_title = 'History';
 	private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
-	private static $session_namespace = 'CMSMain';
+	private static $session_namespace = 'SilverStripe\\CMS\\Controllers\\CMSMain';
 
 	private static $allowed_actions = array(
 		'VersionsForm',
@@ -378,7 +388,7 @@ class CMSPageHistoryController extends CMSMain {
 		}
 
 		$id = $this->currentPageID();
-		$page = DataObject::get_by_id("SiteTree", $id);
+		$page = DataObject::get_by_id("SilverStripe\\CMS\\Model\\SiteTree", $id);
 
  		if($page && $page->exists()) {
 			if(!$page->canView()) {
@@ -388,8 +398,8 @@ class CMSPageHistoryController extends CMSMain {
 			$record = $page->compareVersions($fromVersion, $toVersion);
 		}
 
-		$fromVersionRecord = Versioned::get_version('SiteTree', $id, $fromVersion);
-		$toVersionRecord = Versioned::get_version('SiteTree', $id, $toVersion);
+		$fromVersionRecord = Versioned::get_version('SilverStripe\\CMS\\Model\\SiteTree', $id, $fromVersion);
+		$toVersionRecord = Versioned::get_version('SilverStripe\\CMS\\Model\\SiteTree', $id, $toVersion);
 
 		if(!$fromVersionRecord) {
 			user_error("Can't find version $fromVersion of page $id", E_USER_ERROR);

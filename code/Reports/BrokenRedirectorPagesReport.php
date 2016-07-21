@@ -1,7 +1,14 @@
 <?php
 
+namespace SilverStripe\CMS\Reports;
+
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\Versioning\Versioned;
+use SS_Report;
+use ClassInfo;
+use FieldList;
+use CheckboxField;
+use Deprecation;
 
 /**
  * @package cms
@@ -18,13 +25,13 @@ class BrokenRedirectorPagesReport extends SS_Report {
 	}
 
 	public function sourceRecords($params = null) {
-		$classes = ClassInfo::subclassesFor('RedirectorPage');
+		$classes = ClassInfo::subclassesFor('SilverStripe\\CMS\\Model\\RedirectorPage');
 		$classParams = DB::placeholders($classes);
 		$classFilter = array(
 			"\"ClassName\" IN ($classParams) AND \"HasBrokenLink\" = 1" => $classes
 		);
 		$stage = isset($params['OnLive']) ? 'Live' : 'Stage';
-		return Versioned::get_by_stage('SiteTree', $stage, $classFilter);
+		return Versioned::get_by_stage('SilverStripe\\CMS\\Model\\SiteTree', $stage, $classFilter);
 	}
 
 	public function columns() {
@@ -40,15 +47,5 @@ class BrokenRedirectorPagesReport extends SS_Report {
 		return new FieldList(
 			new CheckboxField('OnLive', _t('SideReport.ParameterLiveCheckbox', 'Check live site'))
 		);
-	}
-}
-
-/**
- * @deprecated 3.2..4.0
- */
-class SideReport_BrokenRedirectorPages extends BrokenRedirectorPagesReport {
-	public function __construct() {
-		Deprecation::notice('4.0', 'Use BrokenRedirectorPagesReport instead');
-		parent::__construct();
 	}
 }

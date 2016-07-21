@@ -39,7 +39,7 @@ class FeatureContext extends \SilverStripe\Framework\Test\Behaviour\FeatureConte
 
 		// Use blueprints which auto-publish all subclasses of SiteTree
 		$factory = $fixtureContext->getFixtureFactory();
-		foreach(\ClassInfo::subclassesFor('SiteTree') as $id => $class) {
+		foreach(\ClassInfo::subclassesFor('SilverStripe\\CMS\\Model\\SiteTree') as $id => $class) {
 			$blueprint = \Injector::inst()->create('FixtureBlueprint', $class);
 			$blueprint->addCallback('afterCreate', function($obj, $identifier, &$data, &$fixtures) {
 				/** @var \SiteTree $obj */

@@ -1,8 +1,15 @@
 <?php
 
+namespace SilverStripe\CMS\Reports;
+
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ArrayList;
+use SS_Report;
+use ClassInfo;
+use Controller;
+use FieldList;
+use DropdownField;
 
 /**
  * Content side-report listing pages with broken links
@@ -37,16 +44,16 @@ class BrokenLinksReport extends SS_Report {
 		);
 		$isLive = !isset($params['CheckSite']) || $params['CheckSite'] == 'Published';
 		if ($isLive) {
-			$ret = Versioned::get_by_stage('SiteTree', 'Live', $brokenFilter, $sort, $join, $limit);
+			$ret = Versioned::get_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', $brokenFilter, $sort, $join, $limit);
 		} else {
-			$ret = DataObject::get('SiteTree', $brokenFilter, $sort, $join, $limit);
+			$ret = DataObject::get('SilverStripe\\CMS\\Model\\SiteTree', $brokenFilter, $sort, $join, $limit);
 		}
 
 		$returnSet = new ArrayList();
 		if ($ret) foreach($ret as $record) {
 			$reason = false;
-			$isRedirectorPage = in_array($record->ClassName, ClassInfo::subclassesFor('RedirectorPage'));
-			$isVirtualPage = in_array($record->ClassName, ClassInfo::subclassesFor('VirtualPage'));
+			$isRedirectorPage = in_array($record->ClassName, ClassInfo::subclassesFor('SilverStripe\\CMS\\Model\\RedirectorPage'));
+			$isVirtualPage = in_array($record->ClassName, ClassInfo::subclassesFor('SilverStripe\\CMS\\Model\\VirtualPage'));
 
 			if ($isVirtualPage) {
 				if ($record->HasBrokenLink) {
@@ -89,7 +96,7 @@ class BrokenLinksReport extends SS_Report {
 			$dateTitle = _t('BrokenLinksReport.ColumnDateLastPublished', 'Date last published');
 		}
 
-		$linkBase = singleton('CMSPageEditController')->Link('show');
+		$linkBase = singleton('SilverStripe\\CMS\\Controllers\\CMSPageEditController')->Link('show');
 		$fields = array(
 			"Title" => array(
 				"title" => _t('BrokenLinksReport.PageName', 'Page name'),
@@ -142,16 +149,5 @@ class BrokenLinksReport extends SS_Report {
 				)
 			)
 		);
-	}
-}
-
-
-/**
- * @deprecated 3.2..4.0
- */
-class SideReport_BrokenLinks extends BrokenLinksReport {
-	public function __construct() {
-		Deprecation::notice('4.0', 'Use BrokenLinksReport instead');
-		parent::__construct();
 	}
 }

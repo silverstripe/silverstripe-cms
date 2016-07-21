@@ -1,6 +1,15 @@
 <?php
 
+namespace SilverStripe\CMS\Model;
+
 use SilverStripe\ORM\DataObject;
+use Page;
+use Requirements;
+use HeaderField;
+use OptionsetField;
+use TreeDropdownField;
+use TextField;
+use Page_Controller;
 
 /**
  * A redirector page redirects when the page is visited.
@@ -21,7 +30,7 @@ class RedirectorPage extends Page {
 	);
 
 	private static $has_one = array(
-		"LinkTo" => "SiteTree",
+		"LinkTo" => "SilverStripe\\CMS\\Model\\SiteTree",
 	);
 
 	private static $many_many = array(
@@ -80,7 +89,7 @@ class RedirectorPage extends Page {
 			}
 
 		} else {
-			$linkTo = $this->LinkToID ? DataObject::get_by_id("SiteTree", $this->LinkToID) : null;
+			$linkTo = $this->LinkToID ? DataObject::get_by_id("SilverStripe\\CMS\\Model\\SiteTree", $this->LinkToID) : null;
 
 			if($linkTo) {
 				// We shouldn't point to ourselves - that would create an infinite loop!  Return null since we have a
@@ -105,7 +114,7 @@ class RedirectorPage extends Page {
 	public function syncLinkTracking() {
 		if ($this->RedirectionType == 'Internal') {
 			if($this->LinkToID) {
-				$this->HasBrokenLink = DataObject::get_by_id('SiteTree', $this->LinkToID) ? false : true;
+				$this->HasBrokenLink = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $this->LinkToID) ? false : true;
 			} else {
 				// An incomplete redirector page definitely has a broken link
 				$this->HasBrokenLink = true;
@@ -153,7 +162,7 @@ class RedirectorPage extends Page {
 				new TreeDropdownField(
 					"LinkToID",
 					_t('RedirectorPage.YOURPAGE', "Page on your website"),
-					"SiteTree"
+					"SilverStripe\\CMS\\Model\\SiteTree"
 				),
 				new TextField("ExternalURL", _t('RedirectorPage.OTHERURL', "Other website URL"))
 			)

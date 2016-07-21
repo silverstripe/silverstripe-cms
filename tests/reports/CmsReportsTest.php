@@ -2,6 +2,14 @@
 
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\FieldType\DBDatetime;
+use SilverStripe\CMS\Reports\RecentlyEditedReport;
+use SilverStripe\CMS\Reports\BrokenLinksReport;
+use SilverStripe\CMS\Reports\BrokenFilesReport;
+use SilverStripe\CMS\Model\VirtualPage;
+use SilverStripe\CMS\Reports\BrokenVirtualPagesReport;
+use SilverStripe\CMS\Model\RedirectorPage;
+use SilverStripe\CMS\Reports\BrokenRedirectorPagesReport;
+
 
 /**
  * @package cms
@@ -20,8 +28,8 @@ class CmsReportsTest extends SapphireTest {
 		$afterThreshold = strtotime('-'.(self::$daysAgo-1).' days', strtotime('31-06-2009 00:00:00'));
 		$beforeThreshold = strtotime('-'.(self::$daysAgo+1).' days', strtotime('31-06-2009 00:00:00'));
 
-		$after = $this->objFromFixture('SiteTree', 'after');
-		$before = $this->objFromFixture('SiteTree', 'before');
+		$after = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'after');
+		$before = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'before');
 
 		DB::query("UPDATE \"SiteTree\" SET \"Created\"='2009-01-01 00:00:00', \"LastEdited\"='".date('Y-m-d H:i:s', $afterThreshold)."' WHERE \"ID\"='".$after->ID."'");
 		DB::query("UPDATE \"SiteTree\" SET \"Created\"='2009-01-01 00:00:00', \"LastEdited\"='".date('Y-m-d H:i:s', $beforeThreshold)."' WHERE \"ID\"='".$before->ID."'");
@@ -53,8 +61,8 @@ class CmsReportsTest extends SapphireTest {
 	public function testRecentlyEdited() {
 		DBDatetime::set_mock_now('31-06-2009 00:00:00');
 
-		$after = $this->objFromFixture('SiteTree', 'after');
-		$before = $this->objFromFixture('SiteTree', 'before');
+		$after = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'after');
+		$before = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'before');
 
 		$r = new RecentlyEditedReport();
 

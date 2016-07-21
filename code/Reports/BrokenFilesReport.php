@@ -1,7 +1,13 @@
 <?php
 
+namespace SilverStripe\CMS\Reports;
+
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\Versioning\Versioned;
+use SS_Report;
+use ClassInfo;
+use FieldList;
+use CheckboxField;
 
 /**
  * @package cms
@@ -20,9 +26,9 @@ class BrokenFilesReport extends SS_Report {
 	public function sourceRecords($params = null) {
 		// Get class names for page types that are not virtual pages or redirector pages
 		$classes = array_diff(
-			ClassInfo::subclassesFor('SiteTree'),
-			ClassInfo::subclassesFor('VirtualPage'),
-			ClassInfo::subclassesFor('RedirectorPage')
+			ClassInfo::subclassesFor('SilverStripe\\CMS\\Model\\SiteTree'),
+			ClassInfo::subclassesFor('SilverStripe\\CMS\\Model\\VirtualPage'),
+			ClassInfo::subclassesFor('SilverStripe\\CMS\\Model\\RedirectorPage')
 		);
 		$classParams = DB::placeholders($classes);
 		$classFilter = array(
@@ -30,7 +36,7 @@ class BrokenFilesReport extends SS_Report {
 		);
 
 		$stage = isset($params['OnLive']) ? 'Live' : 'Stage';
-		return Versioned::get_by_stage('SiteTree', $stage, $classFilter);
+		return Versioned::get_by_stage('SilverStripe\\CMS\\Model\\SiteTree', $stage, $classFilter);
 	}
 
 	public function columns() {
@@ -49,12 +55,3 @@ class BrokenFilesReport extends SS_Report {
 	}
 }
 
-/**
- * @deprecated 3.2..4.0
- */
-class SideReport_BrokenFiles extends BrokenFilesReport {
-	public function __construct() {
-		Deprecation::notice('4.0', 'Use BrokenFilesReport instead');
-		parent::__construct();
-	}
-}

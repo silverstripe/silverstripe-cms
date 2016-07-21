@@ -20,7 +20,7 @@ class MigrateSiteTreeLinkingTask extends BuildTask {
 		$pages = 0;
 		$links = 0;
 
-		$linkedPages = new DataList('SiteTree');
+		$linkedPages = new DataList('SilverStripe\\CMS\\Model\\SiteTree');
 		$linkedPages = $linkedPages->innerJoin('SiteTree_LinkTracking', '"SiteTree_LinkTracking"."SiteTreeID" = "SiteTree"."ID"');
 		if($linkedPages) foreach($linkedPages as $page) {
 			$tracking = DB::prepared_query(
@@ -29,7 +29,7 @@ class MigrateSiteTreeLinkingTask extends BuildTask {
 			)->map();
 
 			foreach($tracking as $childID => $fieldName) {
-				$linked = DataObject::get_by_id('SiteTree', $childID);
+				$linked = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $childID);
 
 				// TOOD: Replace in all HTMLText fields
 				$page->Content = preg_replace (

@@ -7,6 +7,10 @@ use SilverStripe\ORM\DB;
 use SilverStripe\ORM\ValidationException;
 use SilverStripe\ORM\FieldType\DBVarchar;
 use SilverStripe\ORM\DataExtension;
+use SilverStripe\CMS\Model\VirtualPage;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\CMS\Model\RedirectorPage;
+
 
 
 class VirtualPageTest extends FunctionalTest {
@@ -40,8 +44,8 @@ class VirtualPageTest extends FunctionalTest {
 		$this->logInWithPermission("ADMIN");
 
 		// Add extra fields
-		Config::inst()->update('VirtualPage', 'initially_copied_fields', array('MyInitiallyCopiedField'));
-		Config::inst()->update('VirtualPage', 'non_virtual_fields', array('MyNonVirtualField', 'MySharedNonVirtualField'));
+		Config::inst()->update('SilverStripe\\CMS\\Model\\VirtualPage', 'initially_copied_fields', array('MyInitiallyCopiedField'));
+		Config::inst()->update('SilverStripe\\CMS\\Model\\VirtualPage', 'non_virtual_fields', array('MyNonVirtualField', 'MySharedNonVirtualField'));
 	}
 
 	/**
@@ -55,8 +59,8 @@ class VirtualPageTest extends FunctionalTest {
 		$master->Content = "<p>New content</p>";
 		$master->write();
 
-		$vp1 = $this->objFromFixture('VirtualPage', 'vp1');
-		$vp2 = $this->objFromFixture('VirtualPage', 'vp2');
+		$vp1 = $this->objFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp1');
+		$vp2 = $this->objFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp2');
 
 		$this->assertEquals("New title", $vp1->Title);
 		$this->assertEquals("New title", $vp2->Title);
@@ -81,16 +85,16 @@ class VirtualPageTest extends FunctionalTest {
 		$master->Content = "<p>New content</p>";
 		$master->write();
 
-		$vp1 = DataObject::get_by_id("VirtualPage", $this->idFromFixture('VirtualPage', 'vp1'));
-		$vp2 = DataObject::get_by_id("VirtualPage", $this->idFromFixture('VirtualPage', 'vp2'));
+		$vp1 = DataObject::get_by_id("SilverStripe\\CMS\\Model\\VirtualPage", $this->idFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp1'));
+		$vp2 = DataObject::get_by_id("SilverStripe\\CMS\\Model\\VirtualPage", $this->idFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp2'));
 		$this->assertTrue($vp1->publishRecursive());
 		$this->assertTrue($vp2->publishRecursive());
 
 		$master->publishRecursive();
 
 		Versioned::set_stage(Versioned::LIVE);
-		$vp1 = DataObject::get_by_id("VirtualPage", $this->idFromFixture('VirtualPage', 'vp1'));
-		$vp2 = DataObject::get_by_id("VirtualPage", $this->idFromFixture('VirtualPage', 'vp2'));
+		$vp1 = DataObject::get_by_id("SilverStripe\\CMS\\Model\\VirtualPage", $this->idFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp1'));
+		$vp2 = DataObject::get_by_id("SilverStripe\\CMS\\Model\\VirtualPage", $this->idFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp2'));
 
 		$this->assertNotNull($vp1);
 		$this->assertNotNull($vp2);
@@ -148,13 +152,13 @@ class VirtualPageTest extends FunctionalTest {
 
 		// The draft content of the virtual page should say 'draft content'
 		/** @var VirtualPage $vpDraft */
-		$vpDraft = Versioned::get_by_stage("VirtualPage", Versioned::DRAFT)->byID($vp->ID);
+		$vpDraft = Versioned::get_by_stage("SilverStripe\\CMS\\Model\\VirtualPage", Versioned::DRAFT)->byID($vp->ID);
 		$this->assertEquals('draft content', $vpDraft->CopyContentFrom()->Content);
 		$this->assertEquals('draft content', $vpDraft->Content);
 
 		// The published content of the virtual page should say 'published content'
 		/** @var VirtualPage $vpLive */
-		$vpLive = Versioned::get_by_stage("VirtualPage", Versioned::LIVE)->byID($vp->ID);
+		$vpLive = Versioned::get_by_stage("SilverStripe\\CMS\\Model\\VirtualPage", Versioned::LIVE)->byID($vp->ID);
 		$this->assertEquals('published content', $vpLive->CopyContentFrom()->Content);
 		$this->assertEquals('published content', $vpLive->Content);
 
@@ -162,7 +166,7 @@ class VirtualPageTest extends FunctionalTest {
 		$vpDraft->publishRecursive();
 
 		// Everything is published live
-		$vpLive = Versioned::get_by_stage("VirtualPage", Versioned::LIVE)->byID($vp->ID);
+		$vpLive = Versioned::get_by_stage("SilverStripe\\CMS\\Model\\VirtualPage", Versioned::LIVE)->byID($vp->ID);
 		$this->assertEquals('draft content', $vpLive->CopyContentFrom()->Content);
 		$this->assertEquals('draft content', $vpLive->Content);
 	}
@@ -205,7 +209,7 @@ class VirtualPageTest extends FunctionalTest {
 		// Delete the source page semi-manually, without triggering
 		// the cascade publish back to the virtual page.
 		Versioned::set_stage(Versioned::LIVE);
-		$livePage = Versioned::get_by_stage('SiteTree', Versioned::LIVE)->byID($pID);
+		$livePage = Versioned::get_by_stage('SilverStripe\\CMS\\Model\\SiteTree', Versioned::LIVE)->byID($pID);
 		$livePage->delete();
 		Versioned::set_stage(Versioned::DRAFT);
 
@@ -228,7 +232,7 @@ class VirtualPageTest extends FunctionalTest {
 
 	public function testCanEdit() {
 		$parentPage = $this->objFromFixture('Page', 'master3');
-		$virtualPage = $this->objFromFixture('VirtualPage', 'vp3');
+		$virtualPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp3');
 		$bob = $this->objFromFixture('SilverStripe\\Security\\Member', 'bob');
 		$andrew = $this->objFromFixture('SilverStripe\\Security\\Member', 'andrew');
 
@@ -246,7 +250,7 @@ class VirtualPageTest extends FunctionalTest {
 	public function testCanView() {
 		$parentPage = $this->objFromFixture('Page', 'master3');
 		$parentPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
-		$virtualPage = $this->objFromFixture('VirtualPage', 'vp3');
+		$virtualPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp3');
 		$virtualPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$cindy = $this->objFromFixture('SilverStripe\\Security\\Member', 'cindy');
 		$alice = $this->objFromFixture('SilverStripe\\Security\\Member', 'alice');
@@ -329,16 +333,16 @@ class VirtualPageTest extends FunctionalTest {
 
 		// The draft VP still has the CopyContentFromID link
 		$vp->flushCache();
-		$vp = DataObject::get_by_id('SiteTree', $vp->ID);
+		$vp = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $vp->ID);
 		$this->assertEquals($p->ID, $vp->CopyContentFromID);
 
-		$vpLive = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree"."ID" = ' . $vp->ID);
+		$vpLive = Versioned::get_one_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', '"SiteTree"."ID" = ' . $vp->ID);
 		$this->assertNull($vpLive);
 
 		// Delete from draft, confirm that the virtual page has a broken link on the draft site
 		$p->delete();
 		$vp->flushCache();
-		$vp = DataObject::get_by_id('SiteTree', $vp->ID);
+		$vp = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $vp->ID);
 		$this->assertEquals(1, $vp->HasBrokenLink);
 	}
 
@@ -360,19 +364,19 @@ class VirtualPageTest extends FunctionalTest {
 		$pID = $p->ID;
 		$p->delete();
 		$vp->flushCache();
-		$vp = DataObject::get_by_id('SiteTree', $vp->ID);
+		$vp = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $vp->ID);
 		$this->assertEquals(1, $vp->HasBrokenLink);
 
 		// Delete the source page form live, confirm that the virtual page has also been unpublished
-		$pLive = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree"."ID" = ' . $pID);
+		$pLive = Versioned::get_one_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', '"SiteTree"."ID" = ' . $pID);
 		$this->assertTrue($pLive->doUnpublish());
-		$vpLive = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree"."ID" = ' . $vp->ID);
+		$vpLive = Versioned::get_one_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', '"SiteTree"."ID" = ' . $vp->ID);
 		$this->assertNull($vpLive);
 
 		// Delete from draft, confirm that the virtual page has a broken link on the draft site
 		$pLive->delete();
 		$vp->flushCache();
-		$vp = DataObject::get_by_id('SiteTree', $vp->ID);
+		$vp = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $vp->ID);
 		$this->assertEquals(1, $vp->HasBrokenLink);
 	}
 
@@ -465,7 +469,7 @@ class VirtualPageTest extends FunctionalTest {
 		$virtual->CopyContentFromID = $page->ID;
 		$virtual->write();
 
-		$virtual = DataObject::get_by_id('VirtualPage', $virtual->ID, false);
+		$virtual = DataObject::get_by_id('SilverStripe\\CMS\\Model\\VirtualPage', $virtual->ID, false);
 		$virtual->CopyContentFromID = $notRootPage->ID;
 		$virtual->flushCache();
 
@@ -505,7 +509,7 @@ class VirtualPageTest extends FunctionalTest {
 		$nonVirtual->write(); // not publishing the page type change here
 
 		// Stage record is changed to the new type and no longer acts as a virtual page
-		$nonVirtualStage = Versioned::get_one_by_stage('SiteTree', 'Stage', '"SiteTree"."ID" = ' . $nonVirtual->ID, false);
+		$nonVirtualStage = Versioned::get_one_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Stage', '"SiteTree"."ID" = ' . $nonVirtual->ID, false);
 		$this->assertNotNull($nonVirtualStage);
 		$this->assertEquals('VirtualPageTest_ClassA', $nonVirtualStage->ClassName);
 		$this->assertEquals('changed on new type', $nonVirtualStage->MySharedNonVirtualField);
@@ -514,7 +518,7 @@ class VirtualPageTest extends FunctionalTest {
 		);
 
 		// Virtual page on live keeps working as it should
-		$virtualLive = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree_Live"."ID" = ' . $virtual->ID, false);
+		$virtualLive = Versioned::get_one_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', '"SiteTree_Live"."ID" = ' . $virtual->ID, false);
 		$this->assertNotNull($virtualLive);
 		$this->assertEquals('VirtualPageTest_VirtualPageSub', $virtualLive->ClassName);
 		$this->assertEquals('virtual published field', $virtualLive->MySharedNonVirtualField);
@@ -527,7 +531,7 @@ class VirtualPageTest extends FunctionalTest {
 		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		// Virtual page only notices changes to virtualised fields (Title)
-		$virtualLive = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree_Live"."ID" = ' . $virtual->ID, false);
+		$virtualLive = Versioned::get_one_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', '"SiteTree_Live"."ID" = ' . $virtual->ID, false);
 		$this->assertEquals('virtual published field', $virtualLive->MySharedNonVirtualField);
 		$this->assertEquals('title changed on original', $virtualLive->Title);
 	}
@@ -585,7 +589,7 @@ class VirtualPageTest extends FunctionalTest {
 	}
 
 	public function testVirtualPagePointingToRedirectorPage() {
-		if (!class_exists('RedirectorPage')) {
+		if (!class_exists('SilverStripe\\CMS\\Model\\RedirectorPage')) {
 			$this->markTestSkipped('RedirectorPage required');
 		}
 
@@ -674,6 +678,6 @@ class VirtualPageTest_PageExtension extends DataExtension implements TestOnly {
 class VirtualPageTest_PageWithAllowedChildren extends Page implements TestOnly {
 	private static $allowed_children = array(
 		'VirtualPageTest_ClassA',
-		'VirtualPage'
+		'SilverStripe\\CMS\\Model\\VirtualPage'
 	);
 }

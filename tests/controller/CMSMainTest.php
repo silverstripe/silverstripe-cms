@@ -4,6 +4,9 @@ use SilverStripe\ORM\DB;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\HiddenClass;
+use SilverStripe\CMS\Controllers\CMSMain;
+use SilverStripe\CMS\Model\SiteTree;
+
 
 /**
  * @package cms
@@ -34,7 +37,7 @@ class CMSMainTest extends FunctionalTest {
 		$user->logIn();
 		$cache->clean(Zend_Cache::CLEANING_MODE_ALL);
 
-		$rawHints = singleton('CMSMain')->SiteTreeHints();
+		$rawHints = singleton('SilverStripe\\CMS\\Controllers\\CMSMain')->SiteTreeHints();
 		$this->assertNotNull($rawHints);
 
 		$rawHints = preg_replace('/^"(.*)"$/', '$1', Convert::xml2raw($rawHints));
@@ -125,7 +128,7 @@ class CMSMainTest extends FunctionalTest {
 		}
 
 		// Get the latest version of the redirector page
-		$pageID = $this->idFromFixture('RedirectorPage', 'page5');
+		$pageID = $this->idFromFixture('SilverStripe\\CMS\\Model\\RedirectorPage', 'page5');
 		$latestID = DB::prepared_query('select max("Version") from "RedirectorPage_versions" where "RecordID" = ?', array($pageID))->value();
 		$dsCount = DB::prepared_query('select count("Version") from "RedirectorPage_versions" where "RecordID" = ? and "Version"= ?', array($pageID, $latestID))->value();
 		$this->assertEquals(1, $dsCount, "Published page has no duplicate version records: it has " . $dsCount . " for version " . $latestID);
@@ -175,7 +178,7 @@ class CMSMainTest extends FunctionalTest {
 	 * Mostly, this is just checking that the method doesn't return an error
 	 */
 	public function testThatGetCMSFieldsWorksOnEveryPageType() {
-		$classes = ClassInfo::subclassesFor("SiteTree");
+		$classes = ClassInfo::subclassesFor("SilverStripe\\CMS\\Model\\SiteTree");
 		array_shift($classes);
 
 		foreach ($classes as $class) {
@@ -186,7 +189,7 @@ class CMSMainTest extends FunctionalTest {
 			$page->Title = "Test $class page";
 			$page->write();
 			$page->flushCache();
-			$page = DataObject::get_by_id("SiteTree", $page->ID);
+			$page = DataObject::get_by_id("SilverStripe\\CMS\\Model\\SiteTree", $page->ID);
 
 			$this->assertTrue($page->getCMSFields() instanceof FieldList);
 		}
@@ -195,7 +198,7 @@ class CMSMainTest extends FunctionalTest {
 	public function testCanPublishPageWithUnpublishedParentWithStrictHierarchyOff() {
 		$this->logInWithPermission('ADMIN');
 
-		Config::inst()->update('SiteTree', 'enforce_strict_hierarchy', true);
+		Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'enforce_strict_hierarchy', true);
 		$parentPage = $this->objFromFixture('Page', 'page3');
 		$childPage = $this->objFromFixture('Page', 'page1');
 
@@ -208,7 +211,7 @@ class CMSMainTest extends FunctionalTest {
 				$actions,
 				'Can publish a page with an unpublished parent with strict hierarchy off'
 		);
-		Config::inst()->update('SiteTree', 'enforce_strict_hierarchy', false);
+		Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'enforce_strict_hierarchy', false);
 	}
 
 	/**
@@ -225,10 +228,10 @@ class CMSMainTest extends FunctionalTest {
 
 		$response = $this->get('admin/pages/edit/show/' . $pageID);
 
-		$livePage = Versioned::get_one_by_stage("SiteTree", "Live", array(
+		$livePage = Versioned::get_one_by_stage("SilverStripe\\CMS\\Model\\SiteTree", "Live", array(
 				'"SiteTree"."ID"' => $pageID
 		));
-		$this->assertInstanceOf('SiteTree', $livePage);
+		$this->assertInstanceOf('SilverStripe\\CMS\\Model\\SiteTree', $livePage);
 		$this->assertTrue($livePage->canDelete());
 
 		// Check that the 'restore' button exists as a simple way of checking that the correct page is returned.
@@ -469,7 +472,7 @@ class CMSMainTest extends FunctionalTest {
 
 		// Test deleted page filter
 		$params = array(
-				'FilterClass' => 'CMSSiteTreeFilter_StatusDeletedPages'
+				'FilterClass' => 'SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_StatusDeletedPages'
 		);
 		$pages = $controller->getList($params);
 		$this->assertEquals(1, $pages->count());
@@ -480,7 +483,7 @@ class CMSMainTest extends FunctionalTest {
 
 		// Test live, but not on draft filter
 		$params = array(
-				'FilterClass' => 'CMSSiteTreeFilter_StatusRemovedFromDraftPages'
+				'FilterClass' => 'SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_StatusRemovedFromDraftPages'
 		);
 		$pages = $controller->getList($params);
 		$this->assertEquals(1, $pages->count());

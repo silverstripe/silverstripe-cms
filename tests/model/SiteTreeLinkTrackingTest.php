@@ -1,5 +1,7 @@
 <?php
 
+use SilverStripe\CMS\Model\SiteTreeLinkTracking_Parser;
+
 class SiteTreeLinkTrackingTest extends SapphireTest {
 
 	protected function isBroken($content) {

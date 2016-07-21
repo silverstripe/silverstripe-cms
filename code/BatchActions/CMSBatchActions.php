@@ -1,9 +1,14 @@
 <?php
 
+namespace SilverStripe\CMS\BatchActions;
+
+
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\Security\Permission;
+use CMSBatchAction;
+
 
 /**
  * Publish items batch action.
@@ -147,7 +152,7 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 
 			// check to see if the record exists on the live site,
 			// if it doesn't remove the tree node
-			$liveRecord = Versioned::get_one_by_stage( 'SiteTree', 'Live', array(
+			$liveRecord = Versioned::get_one_by_stage( 'SilverStripe\\CMS\\Model\\SiteTree', 'Live', array(
 				'"SiteTree"."ID"' => $id
 			));
 			if($liveRecord) {

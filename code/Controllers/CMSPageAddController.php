@@ -1,10 +1,26 @@
 <?php
 
+namespace SilverStripe\CMS\Controllers;
+
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\ValidationException;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
+use FieldList;
+use LiteralField;
+use SelectionGroup;
+use SelectionGroup_Item;
+use TreeDropdownField;
+use OptionsetField;
+use FormAction;
+use Form;
+
+use Session;
+use Controller;
+use SilverStripe\CMS\Model\SiteTree;
+
+
 
 class CMSPageAddController extends CMSPageEditController {
 
@@ -58,7 +74,7 @@ class CMSPageAddController extends CMSPageEditController {
 						$parentField = new TreeDropdownField(
 							"ParentID",
 							"",
-							'SiteTree',
+							'SilverStripe\\CMS\\Model\\SiteTree',
 							'ID',
 							'TreeTitle'
 						),
@@ -162,7 +178,7 @@ class CMSPageAddController extends CMSPageEditController {
 			if($page) $parentID = $page->ID;
 		}
 
-		if(is_numeric($parentID) && $parentID > 0) $parentObj = DataObject::get_by_id("SiteTree", $parentID);
+		if(is_numeric($parentID) && $parentID > 0) $parentObj = DataObject::get_by_id("SilverStripe\\CMS\\Model\\SiteTree", $parentID);
 		else $parentObj = null;
 
 		if(!$parentObj || !$parentObj->ID) $parentID = 0;
@@ -181,7 +197,7 @@ class CMSPageAddController extends CMSPageEditController {
 			return $this->getResponseNegotiator()->respond($this->getRequest());
 		}
 
-		$editController = singleton('CMSPageEditController');
+		$editController = singleton('SilverStripe\\CMS\\Controllers\\CMSPageEditController');
 		$editController->setCurrentPageID($record->ID);
 
 		Session::set(
@@ -190,11 +206,11 @@ class CMSPageAddController extends CMSPageEditController {
 		);
 		Session::set("FormInfo.Form_EditForm.formError.type", 'good');
 
-		return $this->redirect(Controller::join_links(singleton('CMSPageEditController')->Link('show'), $record->ID));
+		return $this->redirect(Controller::join_links(singleton('SilverStripe\\CMS\\Controllers\\CMSPageEditController')->Link('show'), $record->ID));
 	}
 
 	public function doCancel($data, $form) {
-		return $this->redirect(singleton('CMSMain')->Link());
+		return $this->redirect(singleton('SilverStripe\\CMS\\Controllers\\CMSMain')->Link());
 	}
 
 }

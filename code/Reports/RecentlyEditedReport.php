@@ -1,7 +1,10 @@
 <?php
 
+namespace SilverStripe\CMS\Reports;
+
 use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\ORM\DataObject;
+use SS_Report;
 
 /**
  * @package cms
@@ -23,7 +26,7 @@ class RecentlyEditedReport extends SS_Report {
 
 	public function sourceRecords($params = null) {
 		$threshold = strtotime('-14 days', DBDatetime::now()->Format('U'));
-		return DataObject::get("SiteTree", "\"SiteTree\".\"LastEdited\" > '".date("Y-m-d H:i:s", $threshold)."'", "\"SiteTree\".\"LastEdited\" DESC");
+		return DataObject::get("SilverStripe\\CMS\\Model\\SiteTree", "\"SiteTree\".\"LastEdited\" > '".date("Y-m-d H:i:s", $threshold)."'", "\"SiteTree\".\"LastEdited\" DESC");
 	}
 
 	public function columns() {
@@ -33,15 +36,5 @@ class RecentlyEditedReport extends SS_Report {
 				"link" => true,
 			),
 		);
-	}
-}
-
-/**
- * @deprecated 3.2..4.0
- */
-class SideReport_RecentlyEdited extends RecentlyEditedReport {
-	public function __construct() {
-		Deprecation::notice('4.0', 'Use RecentlyEditedReport instead');
-		parent::__construct();
 	}
 }

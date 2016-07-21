@@ -56,8 +56,8 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$page->deleteFromStage('Stage');
 
 		// Get the live version of the page
-		$page = Versioned::get_one_by_stage("SiteTree", "Live", "\"SiteTree\".\"ID\" = $pageID");
-		$this->assertInstanceOf("SiteTree", $page);
+		$page = Versioned::get_one_by_stage("SilverStripe\\CMS\\Model\\SiteTree", "Live", "\"SiteTree\".\"ID\" = $pageID");
+		$this->assertInstanceOf("SilverStripe\\CMS\\Model\\SiteTree", $page);
 
 		// Check that someone without the right permission can't delete the page
 		$editor = $this->objFromFixture('SilverStripe\\Security\\Member', 'cmsnodeleteeditor');
@@ -108,8 +108,8 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$page->deleteFromStage('Stage');
 
 		// Get the live version of the page
-		$page = Versioned::get_one_by_stage("SiteTree", "Live", "\"SiteTree\".\"ID\" = $pageID");
-		$this->assertInstanceOf('SiteTree', $page);
+		$page = Versioned::get_one_by_stage("SilverStripe\\CMS\\Model\\SiteTree", "Live", "\"SiteTree\".\"ID\" = $pageID");
+		$this->assertInstanceOf('SilverStripe\\CMS\\Model\\SiteTree', $page);
 
 		$actions = $page->getCMSActions();
 

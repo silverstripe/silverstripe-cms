@@ -1,6 +1,12 @@
 <?php
 
+namespace SilverStripe\CMS\Forms;
+
 use SilverStripe\ORM\DataObject;
+use TextField;
+use Requirements;
+use Controller;
+use Convert;
 
 /**
  * Used to edit the SiteTree->URLSegment property, and suggest input based on the serverside rules
@@ -69,7 +75,7 @@ class SiteTreeURLSegmentField extends TextField {
 	 */
 	public function getPage() {
 		$idField = $this->getForm()->Fields()->dataFieldByName('ID');
-		return ($idField && $idField->Value()) ? DataObject::get_by_id('SiteTree', $idField->Value()) : singleton('SiteTree');
+		return ($idField && $idField->Value()) ? DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $idField->Value()) : singleton('SilverStripe\\CMS\\Model\\SiteTree');
 	}
 
 	/**

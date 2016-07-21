@@ -1,5 +1,9 @@
 <?php
 
+namespace SilverStripe\CMS\Controllers;
+
+use SiteConfigLeftAndMain;
+
 /**
  * @deprecated 3.3.0
  *

@@ -2,6 +2,8 @@
 
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\SS_List;
+use SilverStripe\CMS\Controllers\AssetAdmin;
+
 
 /**
  * Tests {@see AssetAdmin}

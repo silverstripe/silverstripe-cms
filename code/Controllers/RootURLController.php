@@ -1,7 +1,20 @@
 <?php
 
+namespace SilverStripe\CMS\Controllers;
+
 use SilverStripe\ORM\DataModel;
 use SilverStripe\ORM\DB;
+use Controller;
+
+use SS_HTTPResponse;
+use Translatable;
+use Config;
+use Deprecation;
+use SS_HTTPRequest;
+use ClassInfo;
+use Director;
+use SilverStripe\CMS\Model\SiteTree;
+
 
 /**
  * @package cms
@@ -55,7 +68,7 @@ class RootURLController extends Controller {
 				) {
 					self::$cached_homepage_link = $link;
 				} else {
-					self::$cached_homepage_link = Config::inst()->get('RootURLController', 'default_homepage_link');
+					self::$cached_homepage_link = Config::inst()->get('SilverStripe\\CMS\\Controllers\\RootURLController', 'default_homepage_link');
 				}
 			}
 		}
@@ -72,7 +85,7 @@ class RootURLController extends Controller {
 	 */
 	static public function set_default_homepage_link($urlsegment = "home") {
 		Deprecation::notice('4.0', 'Use the "RootURLController.default_homepage_link" config setting instead');
-		Config::inst()->update('RootURLController', 'default_homepage_link', $urlsegment);
+		Config::inst()->update('SilverStripe\\CMS\\Controllers\\RootURLController', 'default_homepage_link', $urlsegment);
 	}
 
 	/**
@@ -83,7 +96,7 @@ class RootURLController extends Controller {
 	 */
 	static public function get_default_homepage_link() {
 		Deprecation::notice('4.0', 'Use the "RootURLController.default_homepage_link" config setting instead');
-		return Config::inst()->get('RootURLController', 'default_homepage_link');
+		return Config::inst()->get('SilverStripe\\CMS\\Controllers\\RootURLController', 'default_homepage_link');
 	}
 
 	/**
@@ -115,7 +128,7 @@ class RootURLController extends Controller {
 
 		self::$is_at_root = true;
 
-		if(!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
+		if(!DB::is_active() || !ClassInfo::hasTable('SilverStripe\\CMS\\Model\\SiteTree')) {
 			$this->getResponse()->redirect(Controller::join_links(
 				Director::absoluteBaseURL(),
 				'dev/build',
@@ -136,7 +149,7 @@ class RootURLController extends Controller {
 		$this->beforeHandleRequest($request, $model);
 
 		if (!$this->getResponse()->isFinished()) {
-			if (!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
+			if (!DB::is_active() || !ClassInfo::hasTable('SilverStripe\\CMS\\Model\\SiteTree')) {
 				$this->getResponse()->redirect(Director::absoluteBaseURL() . 'dev/build?returnURL=' . (isset($_GET['url']) ? urlencode($_GET['url']) : null));
 				return $this->getResponse();
 			}

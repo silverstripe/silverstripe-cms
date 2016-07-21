@@ -1,5 +1,7 @@
 <?php
 
+namespace SilverStripe\CMS\Model;
+
 use SilverStripe\ORM\DataObject;
 
 /**

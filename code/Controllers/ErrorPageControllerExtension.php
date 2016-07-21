@@ -1,5 +1,14 @@
 <?php
 
+namespace SilverStripe\CMS\Controllers;
+
+use Extension;
+
+use SS_HTTPRequest;
+use SS_HTTPResponse_Exception;
+use SilverStripe\CMS\Model\ErrorPage;
+
+
 /**
  * Enhances error handling for a controller with ErrorPage generated output
  *

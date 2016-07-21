@@ -1,6 +1,13 @@
 <?php
 
+namespace SilverStripe\CMS\Search;
+
 use SilverStripe\ORM\FieldType\DBField;
+use Extension;
+use FieldList;
+use TextField;
+use FormAction;
+use FulltextSearchable;
 
 /**
  * Extension to provide a search interface when applied to ContentController
@@ -30,7 +37,7 @@ class ContentControllerSearchExtension extends Extension {
 		$actions = new FieldList(
 			new FormAction('results', _t('SearchForm.GO', 'Go'))
 		);
-		$form = SearchForm::create($this->owner, 'SearchForm', $fields, $actions);
+		$form = SearchForm::create($this->owner, 'SilverStripe\\CMS\\Search\\SearchForm', $fields, $actions);
 		$form->classesToSearch(FulltextSearchable::get_searchable_classes());
 		return $form;
 	}

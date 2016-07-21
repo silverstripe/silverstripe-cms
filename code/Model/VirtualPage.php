@@ -1,8 +1,18 @@
 <?php
 
+namespace SilverStripe\CMS\Model;
+
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\Versioning\Versioned;
+use Page;
+use Convert;
 use SilverStripe\Security\Member;
+use TreeDropdownField;
+use ReadonlyTransformation;
+use LiteralField;
+use Page_Controller;
+use SilverStripe\CMS\Controllers\ModelAsController;
+
 
 /**
 * Virtual Page creates an instance of a  page, with the same fields that the original page had, but readonly.
@@ -56,7 +66,7 @@ class VirtualPage extends Page {
 	);
 
 	private static $has_one = array(
-		"CopyContentFrom" => "SiteTree",
+		"CopyContentFrom" => "SilverStripe\\CMS\\Model\\SiteTree",
 	);
 
 	private static $owns = array(
@@ -96,7 +106,7 @@ class VirtualPage extends Page {
 
 	public function setCopyContentFromID($val) {
 		// Sanity check to prevent pages virtualising other virtual pages
-		if($val && DataObject::get_by_id('SiteTree', $val) instanceof VirtualPage) {
+		if($val && DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $val) instanceof VirtualPage) {
 			$val = 0;
 		}
 		return $this->setField("CopyContentFromID", $val);
@@ -137,7 +147,7 @@ class VirtualPage extends Page {
 
 	public function syncLinkTracking() {
 		if($this->CopyContentFromID) {
-			$this->HasBrokenLink = !(bool) DataObject::get_by_id('SiteTree', $this->CopyContentFromID);
+			$this->HasBrokenLink = !(bool) DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $this->CopyContentFromID);
 		} else {
 			$this->HasBrokenLink = true;
 		}
@@ -166,7 +176,7 @@ class VirtualPage extends Page {
 		}
 
 		// Unpublished source
-		if(!Versioned::get_versionnumber_by_stage('SiteTree', 'Live', $this->CopyContentFromID)) {
+		if(!Versioned::get_versionnumber_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', $this->CopyContentFromID)) {
 			return false;
 		}
 
@@ -184,7 +194,7 @@ class VirtualPage extends Page {
 		$copyContentFromField = new TreeDropdownField(
 			"CopyContentFromID",
 			_t('VirtualPage.CHOOSE', "Linked Page"),
-			"SiteTree"
+			"SilverStripe\\CMS\\Model\\SiteTree"
 		);
 		// filter doesn't let you select children of virtual pages as as source page
 		//$copyContentFromField->setFilterFunction(create_function('$item', 'return !($item instanceof VirtualPage);'));
@@ -224,7 +234,7 @@ class VirtualPage extends Page {
 		}
 		if(
 			$this->CopyContentFromID
-			&& !Versioned::get_versionnumber_by_stage('SiteTree', 'Live', $this->CopyContentFromID)
+			&& !Versioned::get_versionnumber_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', $this->CopyContentFromID)
 		) {
 			$msgs[] = _t(
 				'SITETREE.VIRTUALPAGEDRAFTWARNING',
@@ -527,7 +537,7 @@ class VirtualPage_Controller extends Page_Controller {
 	{
 		// Check if we can safely call this method before passing it back
 		// to custom methods.
-		if ($this->getExtraMethodConfig($method)) {
+		if($this->getExtraMethodConfig($method)) {
 			return parent::__call($method, $args);
 		}
 

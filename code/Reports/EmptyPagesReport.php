@@ -1,5 +1,11 @@
 <?php
 
+namespace SilverStripe\CMS\Reports;
+
+use SS_Report;
+use SilverStripe\CMS\Model\SiteTree;
+use Deprecation;
+
 /**
  * @package cms
  * @subpackage reports
@@ -31,15 +37,5 @@ class EmptyPagesReport extends SS_Report {
 				"link" => true,
 			),
 		);
-	}
-}
-
-/**
- * @deprecated 3.2..4.0
- */
-class SideReport_EmptyPages extends EmptyPagesReport {
-	public function __construct() {
-		Deprecation::notice('4.0', 'Use EmptyPagesReport instead');
-		parent::__construct();
 	}
 }

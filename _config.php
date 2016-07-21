@@ -10,16 +10,16 @@ define('CMS_PATH', BASE_PATH . '/' . CMS_DIR);
 /**
  * Register the default internal shortcodes.
  */
-ShortcodeParser::get('default')->register('sitetree_link', array('SiteTree', 'link_shortcode_handler'));
+ShortcodeParser::get('default')->register('sitetree_link', array('SilverStripe\\CMS\\Model\\SiteTree', 'link_shortcode_handler'));
 
-File::add_extension('SiteTreeFileExtension');
+File::add_extension('SilverStripe\\CMS\\Model\\SiteTreeFileExtension');
 
 // TODO Remove once we can configure CMSMenu through static, nested configuration files
-CMSMenu::remove_menu_item('CMSMain');
-CMSMenu::remove_menu_item('CMSPageEditController');
-CMSMenu::remove_menu_item('CMSPageSettingsController');
-CMSMenu::remove_menu_item('CMSPageHistoryController');
+CMSMenu::remove_menu_item('SilverStripe\\CMS\\Controllers\\CMSMain');
+CMSMenu::remove_menu_item('SilverStripe\\CMS\\Controllers\\CMSPageEditController');
+CMSMenu::remove_menu_item('SilverStripe\\CMS\\Controllers\\CMSPageSettingsController');
+CMSMenu::remove_menu_item('SilverStripe\\CMS\\Controllers\\CMSPageHistoryController');
 CMSMenu::remove_menu_item('CMSPageReportsController');
-CMSMenu::remove_menu_item('CMSPageAddController');
+CMSMenu::remove_menu_item('SilverStripe\\CMS\\Controllers\\CMSPageAddController');
 
 CMSMenu::remove_menu_item("SiteConfigLeftAndMain");

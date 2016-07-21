@@ -2,6 +2,8 @@
 
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\CMS\Model\VirtualPage;
+
 
 /**
  * Tests link tracking to files and images.
@@ -157,8 +159,8 @@ class FileLinkTrackingTest extends SapphireTest {
 		$file->write();
 
 		// Caching hack
-		Versioned::prepopulate_versionnumber_cache('SiteTree', 'Stage', array($page->ID));
-		Versioned::prepopulate_versionnumber_cache('SiteTree', 'Live', array($page->ID));
+		Versioned::prepopulate_versionnumber_cache('SilverStripe\\CMS\\Model\\SiteTree', 'Stage', array($page->ID));
+		Versioned::prepopulate_versionnumber_cache('SilverStripe\\CMS\\Model\\SiteTree', 'Live', array($page->ID));
 
 		// Confirm that the page hasn't gone green.
 		$this->assertFalse($page->getIsModifiedOnStage());

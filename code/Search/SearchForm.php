@@ -1,7 +1,16 @@
 <?php
 
+namespace SilverStripe\CMS\Search;
+
+use Controller;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\SS_List;
+use Form;
+use FieldList;
+use TextField;
+use HiddenField;
+use Translatable;
+use FormAction;
 
 /**
  * Standard basic search form which conducts a fulltext search on all {@link SiteTree}
@@ -28,7 +37,7 @@ class SearchForm extends Form {
 	 * Classes to search
 	 */
  	protected $classesToSearch = array(
-		"SiteTree", "File"
+		"SilverStripe\\CMS\\Model\\SiteTree", "File"
 	);
 
 	private static $casting = array(
@@ -50,7 +59,7 @@ class SearchForm extends Form {
 			));
 		}
 
-		if(class_exists('Translatable') && singleton('SiteTree')->hasExtension('Translatable')) {
+		if(class_exists('Translatable') && singleton('SilverStripe\\CMS\\Model\\SiteTree')->hasExtension('Translatable')) {
 			$fields->push(new HiddenField('searchlocale', 'searchlocale', Translatable::get_current_locale()));
 		}
 
@@ -77,7 +86,7 @@ class SearchForm extends Form {
 	public function forTemplate() {
 		$return = $this->renderWith(array_merge(
 			(array)$this->getTemplate(),
-			array('SearchForm', 'Form')
+			array('SilverStripe\\CMS\\Search\\SearchForm', 'Form')
 		));
 
 		// Now that we're rendered, clear message
@@ -91,11 +100,11 @@ class SearchForm extends Form {
 	 * Currently you can only choose from "SiteTree" and "File", but a future version might improve this.
  	 */
 	public function classesToSearch($classes) {
-		$illegalClasses = array_diff($classes, array('SiteTree', 'File'));
+		$illegalClasses = array_diff($classes, array('SilverStripe\\CMS\\Model\\SiteTree', 'File'));
 		if($illegalClasses) {
 			user_error("SearchForm::classesToSearch() passed illegal classes '" . implode("', '", $illegalClasses) . "'.  At this stage, only File and SiteTree are allowed", E_USER_WARNING);
 		}
-		$legalClasses = array_intersect($classes, array('SiteTree', 'File'));
+		$legalClasses = array_intersect($classes, array('SilverStripe\\CMS\\Model\\SiteTree', 'File'));
 		$this->classesToSearch = $legalClasses;
 	}
 
@@ -122,7 +131,7 @@ class SearchForm extends Form {
 
 		// set language (if present)
 		if(class_exists('Translatable')) {
-			if(singleton('SiteTree')->hasExtension('Translatable') && isset($data['searchlocale'])) {
+			if(singleton('SilverStripe\\CMS\\Model\\SiteTree')->hasExtension('Translatable') && isset($data['searchlocale'])) {
 				if($data['searchlocale'] == "ALL") {
 					Translatable::disable_locale_filter();
 				} else {
@@ -165,7 +174,7 @@ class SearchForm extends Form {
 
 		// reset locale
 		if(class_exists('Translatable')) {
-			if(singleton('SiteTree')->hasExtension('Translatable') && isset($data['searchlocale'])) {
+			if(singleton('SilverStripe\\CMS\\Model\\SiteTree')->hasExtension('Translatable') && isset($data['searchlocale'])) {
 				if($data['searchlocale'] == "ALL") {
 					Translatable::enable_locale_filter();
 				} else {

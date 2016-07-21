@@ -1,9 +1,12 @@
 <?php
 
+namespace SilverStripe\CMS\Model;
+
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\DataQuery;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataExtension;
+use ClassInfo;
 
 /**
  * @todo Cleanup, refactor, test this class
@@ -22,7 +25,7 @@ class SiteTreeFolderExtension extends DataExtension {
 		$result = DB::query("SELECT DISTINCT \"FileID\" FROM \"SiteTree_ImageTracking\"");
 		$usedFiles = array();
 		$where = '';
-		$classes = ClassInfo::subclassesFor('SiteTree');
+		$classes = ClassInfo::subclassesFor('SilverStripe\\CMS\\Model\\SiteTree');
 
 		if($result->numRecords() > 0) {
 			while($nextResult = $result->next()) {

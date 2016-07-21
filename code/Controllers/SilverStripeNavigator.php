@@ -1,10 +1,21 @@
 <?php
 
+namespace SilverStripe\CMS\Controllers;
+
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\FieldType\DBField;
+use ViewableData;
+use CMSPreviewable;
+use ClassInfo;
+use LeftAndMain;
+use Controller;
+
+use SiteTreeFutureState;
+use SilverStripe\CMS\Model\RedirectorPage;
+
 
 /**
  * Utility class representing links to different views of a record
@@ -40,8 +51,8 @@ class SilverStripeNavigator extends ViewableData {
 	public function getItems() {
 		$items = array();
 
-		$classes = ClassInfo::subclassesFor('SilverStripeNavigatorItem');
-		unset($classes['SilverStripeNavigatorItem']);
+		$classes = ClassInfo::subclassesFor('SilverStripe\\CMS\\Controllers\\SilverStripeNavigatorItem');
+		unset($classes['SilverStripe\\CMS\\Controllers\\SilverStripeNavigatorItem']);
 
 		// Sort menu items according to priority
 		foreach($classes as $class) {

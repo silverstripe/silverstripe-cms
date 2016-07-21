@@ -1,6 +1,11 @@
 <?php
 
+namespace SilverStripe\CMS\Controllers;
+
 use SilverStripe\ORM\DataObject;
+use stdClass;
+use Controller;
+use ArrayData;
 
 /**
  * @package cms
@@ -12,7 +17,7 @@ class CMSPagesController extends CMSMain {
 	private static $url_priority = 40;
 	private static $menu_title = 'Pages';
 	private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
-	private static $session_namespace = 'CMSMain';
+	private static $session_namespace = 'SilverStripe\\CMS\\Controllers\\CMSMain';
 
 	public function LinkPreview() {
 		return false;
@@ -34,7 +39,7 @@ class CMSPagesController extends CMSMain {
 
 		//special case for building the breadcrumbs when calling the listchildren Pages ListView action
 		if($parentID = $this->getRequest()->getVar('ParentID')) {
-			$page = DataObject::get_by_id('SiteTree', $parentID);
+			$page = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $parentID);
 
 			//build a reversed list of the parent tree
 			$pages = array();
@@ -50,7 +55,7 @@ class CMSPagesController extends CMSMain {
 			));
 			foreach($pages as $page) {
 				$params['ParentID'] = $page->ID;
-				$item = new StdClass();
+				$item = new stdClass();
 				$item->Title = $page->Title;
 				$item->Link = Controller::join_links($this->Link(), '?' . http_build_query($params));
 				$items->push(new ArrayData($item));

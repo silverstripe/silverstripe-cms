@@ -1,6 +1,9 @@
 <?php
 
+namespace SilverStripe\CMS\Model;
+
 use SilverStripe\ORM\DataExtension;
+use SilverStripe\Security\Member;
 
 /**
  * Plug-ins for additional functionality in your SiteTree classes.

@@ -1,8 +1,25 @@
 <?php
 
+namespace SilverStripe\CMS\Controllers;
+
 use SilverStripe\ORM\DataModel;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\DataObject;
+use Controller;
+
+use ClassInfo;
+use Injector;
+use SS_HTTPRequest;
+use Director;
+use RequestHandler;
+use SS_HTTPResponse;
+use SS_HTTPResponse_Exception;
+use Exception;
+use Translatable;
+use Debug;
+use Deprecation;
+use SilverStripe\CMS\Model\SiteTree;
+
 
 /**
  * ModelAsController deals with mapping the initial request to the first {@link SiteTree}/{@link ContentController}
@@ -12,7 +29,7 @@ use SilverStripe\ORM\DataObject;
  * @subpackage control
  */
 class ModelAsController extends Controller implements NestedController {
-	private static $extensions = array('OldPageRedirector');
+	private static $extensions = array('SilverStripe\\CMS\\Controllers\\OldPageRedirector');
 
 	/**
 	 * Get the appropriate {@link ContentController} for handling a {@link SiteTree} object, link it to the object and
@@ -23,14 +40,14 @@ class ModelAsController extends Controller implements NestedController {
 	 * @return ContentController
 	 */
 	public static function controller_for(SiteTree $sitetree, $action = null) {
-		if ($sitetree->class == 'SiteTree') {
-			$controller = "ContentController";
+		if ($sitetree->class == 'SilverStripe\\CMS\\Model\\SiteTree') {
+			$controller = "SilverStripe\\CMS\\Controllers\\ContentController";
 		} else {
 			$ancestry = ClassInfo::ancestry($sitetree->class);
 			while ($class = array_pop($ancestry)) {
 				if (class_exists($class . "_Controller")) break;
 			}
-			$controller = ($class !== null) ? "{$class}_Controller" : "ContentController";
+			$controller = ($class !== null) ? "{$class}_Controller" : "SilverStripe\\CMS\\Controllers\\ContentController";
 		}
 
 		if($action && class_exists($controller . '_' . ucfirst($action))) {
@@ -41,14 +58,14 @@ class ModelAsController extends Controller implements NestedController {
 	}
 
 	public function init() {
-		singleton('SiteTree')->extend('modelascontrollerInit', $this);
+		singleton('SilverStripe\\CMS\\Model\\SiteTree')->extend('modelascontrollerInit', $this);
 		parent::init();
 	}
 
 	protected function beforeHandleRequest(SS_HTTPRequest $request, DataModel $model) {
 		parent::beforeHandleRequest($request, $model);
 		// If the database has not yet been created, redirect to the build page.
-		if(!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
+		if(!DB::is_active() || !ClassInfo::hasTable('SilverStripe\\CMS\\Model\\SiteTree')) {
 			$this->getResponse()->redirect(Controller::join_links(
 				Director::absoluteBaseURL(),
 				'dev/build',
@@ -75,7 +92,7 @@ class ModelAsController extends Controller implements NestedController {
 		}
 
 		// If the database has not yet been created, redirect to the build page.
-		if(!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
+		if(!DB::is_active() || !ClassInfo::hasTable('SilverStripe\\CMS\\Model\\SiteTree')) {
 			$this->getResponse()->redirect(Director::absoluteBaseURL() . 'dev/build?returnURL=' . (isset($_GET['url']) ? urlencode($_GET['url']) : null));
 			$this->popCurrent();
 
@@ -118,7 +135,7 @@ class ModelAsController extends Controller implements NestedController {
 		if(SiteTree::config()->nested_urls) {
 			$conditions[] = array('"SiteTree"."ParentID"' => 0);
 		}
-		$sitetree = DataObject::get_one('SiteTree', $conditions);
+		$sitetree = DataObject::get_one('SilverStripe\\CMS\\Model\\SiteTree', $conditions);
 
 		// Check translation module
 		// @todo Refactor out module specific code

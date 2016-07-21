@@ -1,9 +1,15 @@
 <?php
 
+namespace SilverStripe\CMS\Model;
+
 use SilverStripe\ORM\ManyManyList;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DataExtension;
+use FieldList;
+use ReadonlyField;
+use Convert;
+use Subsite;
 
 /**
  * Extension applied to {@see File} object to track links to {@see SiteTree} records.
@@ -123,7 +129,7 @@ class SiteTreeFileExtension extends DataExtension {
 		$brokenPageIDs = $this->owner->BackLinkTracking()->column("ID");
 		if($brokenPageIDs) {
 			// This will syncLinkTracking on the same stage as this file
-			$brokenPages = DataObject::get('SiteTree')->byIDs($brokenPageIDs);
+			$brokenPages = DataObject::get('SilverStripe\\CMS\\Model\\SiteTree')->byIDs($brokenPageIDs);
 			foreach($brokenPages as $brokenPage) {
 				$brokenPage->write();
 			}

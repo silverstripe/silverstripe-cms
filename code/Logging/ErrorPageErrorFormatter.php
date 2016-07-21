@@ -1,9 +1,11 @@
 <?php
 
-namespace SilverStripe\Cms\Logging;
+namespace SilverStripe\CMS\Logging;
 
-use ErrorPage;
+
 use SilverStripe\Framework\Logging\DebugViewFriendlyErrorFormatter;
+use SilverStripe\CMS\Model\ErrorPage;
+
 
 /**
  * Provides {@see ErrorPage}-gnostic error handling

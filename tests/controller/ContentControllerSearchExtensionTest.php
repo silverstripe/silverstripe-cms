@@ -1,6 +1,8 @@
 <?php
 
 use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\CMS\Controllers\ContentController;
+
 
 class ContentControllerSearchExtensionTest extends SapphireTest {
 
@@ -13,7 +15,7 @@ class ContentControllerSearchExtensionTest extends SapphireTest {
 		$controller = new ContentController($page);
 		$form = $controller->SearchForm();
 
-		if (get_class($form) == 'SearchForm') $this->assertEquals(array('File'), $form->getClassesToSearch());
+		if (get_class($form) == 'SilverStripe\\CMS\\Search\\SearchForm') $this->assertEquals(array('File'), $form->getClassesToSearch());
 	}
 
 	public function setUpOnce() {

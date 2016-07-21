@@ -1,6 +1,17 @@
 <?php
 
+namespace SilverStripe\CMS\Controllers;
+
 use SilverStripe\ORM\Queries\SQLSelect;
+use Extension;
+use Director;
+use SS_HTTPRequest;
+use SS_HTTPResponse;
+use Controller;
+use SS_HTTPResponse_Exception;
+
+use SilverStripe\CMS\Model\SiteTree;
+
 
 class OldPageRedirector extends Extension {
 
