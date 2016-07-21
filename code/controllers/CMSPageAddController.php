@@ -26,7 +26,7 @@ class CMSPageAddController extends CMSPageEditController {
 	public function AddForm() {
 		$pageTypes = array();
 		foreach($this->PageTypes() as $type) {
-			$html = sprintf('<span class="page-icon class-%s"></span><strong class="title">%s</strong><span class="description">%s</span>',
+			$html = sprintf('<span class="page-icon class-%s"></span><span class="title">%s</span><span class="form__field-description">%s</span>',
 				$type->getField('ClassName'),
 				$type->getField('AddAction'),
 				$type->getField('Description')
@@ -39,13 +39,12 @@ class CMSPageAddController extends CMSPageEditController {
 			$pageTypes = array_merge(array('Page' => $pageTitle), $pageTypes);
 		}
 
-		$numericLabelTmpl = '<div><label class="left"><span class="step-label"><span class="flyout">%d</span><span class="arrow"></span><span class="title">%s</span></span></label></div>';
+		$numericLabelTmpl = '<span class="step-label"><span class="flyout">Step %d. </span><span class="title">%s</span></span>';
 
 		$topTitle = _t('CMSPageAddController.ParentMode_top', 'Top level');
 		$childTitle = _t('CMSPageAddController.ParentMode_child', 'Under another page');
 
 		$fields = new FieldList(
-			new LiteralField('PageModeHeader', sprintf($numericLabelTmpl, 1, _t('CMSMain.ChoosePageParentMode', 'Choose where to create this page'))),
 			$parentModeField = new SelectionGroup(
 				"ParentModeField",
 				array(
@@ -67,15 +66,6 @@ class CMSPageAddController extends CMSPageEditController {
 					)
 				)
 			),
-			$typeField = new OptionsetField(
-				"PageType",
-				DBField::create_field(
-					'HTMLFragment',
-					sprintf($numericLabelTmpl, 2, _t('CMSMain.ChoosePageType', 'Choose page type'))
-				),
-				$pageTypes,
-				'Page'
-			),
 			new LiteralField(
 				'RestrictedNote',
 				sprintf(
@@ -85,8 +75,21 @@ class CMSPageAddController extends CMSPageEditController {
 						'Note: Some page types are not allowed for this selection'
 					)
 				)
+			),
+			$typeField = new OptionsetField(
+				"PageType",
+				DBField::create_field(
+					'HTMLFragment',
+					sprintf($numericLabelTmpl, 2, _t('CMSMain.ChoosePageType', 'Choose page type'))
+				),
+				$pageTypes,
+				'Page'
 			)
 		);
+
+		// TODO Insert page step title
+		$parentModeField->setTitle(sprintf($numericLabelTmpl, 1, _t('CMSMain.ChoosePageParentMode', 'Choose where to create this page')));
+
 		$parentField->setSearchFunction(function ($sourceObject, $labelField, $search) {
 			return DataObject::get($sourceObject)
 				->filterAny([
@@ -140,7 +143,7 @@ class CMSPageAddController extends CMSPageEditController {
 				));
 			}
 		});
-		$form->addExtraClass('cms-add-form stacked cms-content center cms-edit-form ' . $this->BaseCSSClasses());
+		$form->addExtraClass('cms-add-form cms-content center cms-edit-form ' . $this->BaseCSSClasses());
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 
 		return $form;
