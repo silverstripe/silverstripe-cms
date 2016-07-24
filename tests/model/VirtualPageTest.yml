@@ -45,6 +45,10 @@ Page:
     CanEditType: OnlyTheseUsers
     CanViewType: Inherit
     EditorGroups: =>SilverStripe\Security\Group.bobgroup
+VirtualPageTest_ClassA:
+  pagea:
+    Title: 'Page A'
+    Content: '<p>Content</p>'
 VirtualPage:
   vp1:
     Title: vp1
@@ -61,3 +65,6 @@ VirtualPage:
     CanViewType: OnlyTheseUsers
     EditorGroups: =>SilverStripe\Security\Group.andrewgroup
     ViewerGroups: =>SilverStripe\Security\Group.cindygroup
+  vp4:
+    CopyContentFrom: =>VirtualPageTest_ClassA.pagea
+    Title: 'vp4'

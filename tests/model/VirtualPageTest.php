@@ -601,6 +601,17 @@ class VirtualPageTest extends FunctionalTest {
 		$this->assertEquals(301, $response->getStatusCode());
 		$this->assertEquals('http://google.com', $response->getHeader('Location'));
 	}
+
+	public function testMethod() {
+		$virtualPage = $this->objFromFixture('VirtualPage', 'vp4');
+		$controller = ModelAsController::controller_for($virtualPage);
+
+		$this->assertInstanceOf('VirtualPage_Controller', $controller);
+		$this->assertTrue($controller->hasMethod('testMethod'));
+		$this->assertEquals('hello', $controller->testMethod());
+		$this->assertTrue($controller->hasMethod('modelMethod'));
+		$this->assertEquals('hi there', $controller->modelMethod());
+	}
 }
 
 class VirtualPageTest_ClassA extends Page implements TestOnly {
@@ -613,6 +624,16 @@ class VirtualPageTest_ClassA extends Page implements TestOnly {
 	);
 
 	private static $allowed_children = array('VirtualPageTest_ClassB');
+
+	public function modelMethod() {
+		return 'hi there';
+	}
+}
+
+class VirtualPageTest_ClassA_Controller extends Page_Controller implements TestOnly {
+	public function testMethod() {
+		return 'hello';
+	}
 }
 
 class VirtualPageTest_ClassB extends Page implements TestOnly {
