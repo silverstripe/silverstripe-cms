@@ -386,9 +386,12 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 			return "<div id=\"SilverStripeNavigatorMessage\" title=\"". _t('ContentControl.NOTEWONTBESHOWN', 'Note: this message will not be shown to your visitors') ."\">". _t('ContentController.ARCHIVEDSITEFROM', 'Archived site from') ."<br>" . $dateObj->Nice() . "</div>";
 		}
 	}
-	
+
 	public function getLink() {
-		return $this->record->PreviewLink() . '?archiveDate=' . urlencode($this->record->LastEdited);
+		return Controller::join_links(
+			$this->record->PreviewLink(),
+			'?archiveDate=' . urlencode($this->record->LastEdited)
+		);
 	}
 	
 	public function canView($member = null) {
