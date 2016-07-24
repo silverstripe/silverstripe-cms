@@ -1464,17 +1464,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				DB::alteration_message('Contact Us page created', 'created');
 			}
 		}
-
-		// schema migration
-		// @todo Move to migration task once infrastructure is implemented
-		if($this->class == 'SiteTree') {
-			$conn = DB::get_schema();
-			// only execute command if fields haven't been renamed to _obsolete_<fieldname> already by the task
-			if($conn->hasField('SiteTree' ,'Viewers')) {
-				$task = new UpgradeSiteTreePermissionSchemaTask();
-				$task->run(new SS_HTTPRequest('GET','/'));
-			}
-		}
 	}
 
 	protected function onBeforeWrite() {
