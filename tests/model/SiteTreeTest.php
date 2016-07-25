@@ -4,13 +4,13 @@
  * @subpackage tests
  */
 class SiteTreeTest extends SapphireTest {
-	
+
 	protected static $fixture_file = 'SiteTreeTest.yml';
 
 	protected $illegalExtensions = array(
 		'SiteTree' => array('SiteTreeSubsites', 'Translatable')
 	);
-	
+
 	protected $extraDataObjects = array(
 		'SiteTreeTest_ClassA',
 		'SiteTreeTest_ClassB',
@@ -27,7 +27,7 @@ class SiteTreeTest extends SapphireTest {
 	public function logOut() {
 		if($member = Member::currentUser()) $member->logOut();
 	}
-	
+
 	public function testCreateDefaultpages() {
 			$remove = SiteTree::get();
 			if($remove) foreach($remove as $page) $page->delete();
@@ -513,7 +513,7 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertFalse(singleton('SiteTreeTest_ClassA')->canCreate(null, array('Parent' => $parentB)));
 		$this->assertTrue(singleton('SiteTreeTest_ClassC')->canCreate(null, array('Parent' => $parentB)));
 	}
-	
+
 	public function testEditPermissionsOnDraftVsLive() {
 		// Create an inherit-permission page
 		$page = new Page();
@@ -709,7 +709,7 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertEquals($sitetree->URLSegment, 'new-page',
 			'Sets based on default title on first save'
 		);
-		
+
 		$sitetree->Title = 'Changed';
 		$sitetree->write();
 		$this->assertEquals($sitetree->URLSegment, 'changed',
@@ -889,42 +889,72 @@ class SiteTreeTest extends SapphireTest {
 		);
 	}
 
-	public function testAllowedChildren() {
+    /**
+     * Tests that core subclasses of SiteTree are included in allowedChildren() by default, but not instances of
+     * HiddenClass
+     */
+    public function testAllowedChildrenContainsCoreSubclassesButNotHiddenClass()
+    {
 		$page = new SiteTree();
+        $allowedChildren = $page->allowedChildren();
+
 		$this->assertContains(
-			'VirtualPage',
-			$page->allowedChildren(),
-			'Includes core subclasses by default'
-		);
+            'VirtualPage',
+            $allowedChildren,
+            'Includes core subclasses by default'
+        );
 
-		$classA = new SiteTreeTest_ClassA();
-		$this->assertEquals(
-			array('SiteTreeTest_ClassB'),
-			$classA->allowedChildren(),
-			'Direct setting of allowed children'
-		);
+        $this->assertNotContains(
+            'SiteTreeTest_ClassE',
+            $allowedChildren,
+            'HiddenClass instances should not be returned'
+        );
+    }
 
-		$classB = new SiteTreeTest_ClassB();
-		$this->assertEquals(
-			array('SiteTreeTest_ClassC', 'SiteTreeTest_ClassCext'),
-			$classB->allowedChildren(),
-			'Includes subclasses'
-		);
-
-		$classD = new SiteTreeTest_ClassD();
-		$this->assertEquals(
-			array('SiteTreeTest_ClassC'),
-			$classD->allowedChildren(),
-			'Excludes subclasses if class is prefixed by an asterisk'
-		);
-
-		$classC = new SiteTreeTest_ClassC();
-		$this->assertEquals(
-			array(),
-			$classC->allowedChildren(),
-			'Null setting'
-		);
+    /**
+     * Tests that various types of SiteTree classes will or will not be returned from the allowedChildren method
+     * @dataProvider allowedChildrenProvider
+     * @param string $className
+     * @param array  $expected
+     * @param string $assertionMessage
+     */
+	public function testAllowedChildren($className, $expected, $assertionMessage)
+    {
+		$class = new $className;
+		$this->assertEquals($expected, $class->allowedChildren(), $assertionMessage);
 	}
+
+    /**
+     * @return array
+     */
+    public function allowedChildrenProvider()
+    {
+        return array(
+            array(
+                // Class name
+                'SiteTreeTest_ClassA',
+                // Expected
+                array('SiteTreeTest_ClassB'),
+                // Assertion message
+                'Direct setting of allowed children'
+            ),
+            array(
+                'SiteTreeTest_ClassB',
+                array('SiteTreeTest_ClassC', 'SiteTreeTest_ClassCext'),
+                'Includes subclasses'
+            ),
+            array(
+                'SiteTreeTest_ClassC',
+                array(),
+                'Null setting'
+            ),
+            array(
+                'SiteTreeTest_ClassD',
+                array('SiteTreeTest_ClassC'),
+                'Excludes subclasses if class is prefixed by an asterisk'
+            )
+        );
+    }
 
 	public function testAllowedChildrenValidation() {
 		$page = new SiteTree();
@@ -1075,7 +1105,7 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertEquals($breadcrumbs->first()->Title, "Breadcrumbs 4", "First item should be Breadrcumbs 4.");
 		$this->assertEquals($breadcrumbs->last()->Title, "Breadcrumbs 5", "Breadcrumbs 5 should be last.");
 	}
-	
+
 	/**
 	 * Tests SiteTree::MetaTags
 	 * Note that this test makes no assumption on the closing of tags (other than <title></title>)
@@ -1193,11 +1223,11 @@ class SiteTreeTest_PageNode_Controller extends Page_Controller implements TestOn
 
 class SiteTreeTest_Conflicted extends Page implements TestOnly { }
 class SiteTreeTest_Conflicted_Controller extends Page_Controller implements TestOnly {
-	
+
 	private static $allowed_actions = array (
 		'conflicted-action'
 	);
-	
+
 	public function hasActionTemplate($template) {
 		if($template == 'conflicted-template') {
 			return true;
@@ -1205,7 +1235,7 @@ class SiteTreeTest_Conflicted_Controller extends Page_Controller implements Test
 			return parent::hasActionTemplate($template);
 		}
 	}
-	
+
 }
 
 class SiteTreeTest_NullHtmlCleaner extends HTMLCleaner {
@@ -1217,7 +1247,7 @@ class SiteTreeTest_NullHtmlCleaner extends HTMLCleaner {
 class SiteTreeTest_ClassA extends Page implements TestOnly {
 
 	private static $need_permission = array('ADMIN', 'CMS_ACCESS_CMSMain');
-	
+
 	private static $allowed_children = array('SiteTreeTest_ClassB');
 }
 
@@ -1233,6 +1263,10 @@ class SiteTreeTest_ClassC extends Page implements TestOnly {
 class SiteTreeTest_ClassD extends Page implements TestOnly {
 	// Only allows this class, no children classes
 	private static $allowed_children = array('*SiteTreeTest_ClassC');
+}
+
+class SiteTreeTest_ClassE extends Page implements TestOnly, HiddenClass {
+
 }
 
 class SiteTreeTest_ClassCext extends SiteTreeTest_ClassC implements TestOnly {
