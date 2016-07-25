@@ -314,7 +314,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function SearchForm() {
 		// Create the fields
 		$content = new TextField('q[Term]', _t('CMSSearch.FILTERLABELTEXT', 'Search'));
-		$dateHeader = new HeaderField('q[Date]', _t('CMSSearch.PAGEFILTERDATEHEADING', 'Last edited'), 4);
 		$dateFrom = new DateField(
 			'q[LastEditedFrom]',
 			_t('CMSSearch.FILTERDATEFROM', 'From')
@@ -339,11 +338,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		// Group the Datefields
 		$dateGroup = new FieldGroup(
-			$dateHeader,
 			$dateFrom,
 			$dateTo
 		);
-		$dateGroup->setFieldHolderTemplate('FieldGroup_DefaultFieldHolder')->addExtraClass('stacked');
+		$dateGroup->setTitle('Last Edited', _t('CMSSearch.PAGEFILTERDATEHEADING', 'Last edited'));
 
 		// Create the Field list
 		$fields = new FieldList(
