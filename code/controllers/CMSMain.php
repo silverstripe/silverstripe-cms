@@ -53,7 +53,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	private static $allowed_actions = array(
 		'archive',
-		'buildbrokenlinks',
 		'deleteitems',
 		'DeleteItemsForm',
 		'dialog',
@@ -1267,42 +1266,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 */
 	public function BatchActionList() {
 		return $this->batchactions()->batchActionList();
-	}
-
-	public function buildbrokenlinks($request) {
-		// Protect against CSRF on destructive action
-		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
-
-		increase_time_limit_to();
-		increase_memory_limit_to();
-
-		if($this->urlParams['ID']) {
-			$newPageSet[] = DataObject::get_by_id("Page", $this->urlParams['ID']);
-		} else {
-			$pages = DataObject::get("Page");
-			foreach($pages as $page) $newPageSet[] = $page;
-			$pages = null;
-		}
-
-		$content = new HTMLEditorField('Content');
-		$download = new HTMLEditorField('Download');
-
-		foreach($newPageSet as $i => $page) {
-			$page->HasBrokenLink = 0;
-			$page->HasBrokenFile = 0;
-
-			$content->setValue($page->Content);
-			$content->saveInto($page);
-
-			$download->setValue($page->Download);
-			$download->saveInto($page);
-
-			echo "<li>$page->Title (link:$page->HasBrokenLink, file:$page->HasBrokenFile)";
-
-			$page->writeWithoutVersion();
-			$page->destroy();
-			$newPageSet[$i] = null;
-		}
 	}
 
 	public function publishall($request) {
