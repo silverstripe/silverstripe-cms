@@ -128,11 +128,6 @@ class ContentController extends Controller {
 		if($this->dataRecord && $this->URLSegment != 'Security' && !$this->dataRecord->canView()) {
 			return Security::permissionFailure($this);
 		}
-
-		// Use theme from the site config
-		if(($config = SiteConfig::current_site_config()) && $config->Theme) {
-			Config::inst()->update('SSViewer', 'theme', $config->Theme);
-		}
 	}
 
 	/**
