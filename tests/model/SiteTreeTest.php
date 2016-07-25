@@ -5,6 +5,7 @@ use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ValidationException;
 use SilverStripe\ORM\DataExtension;
+use SilverStripe\ORM\HiddenClass;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\Group;
@@ -903,42 +904,72 @@ class SiteTreeTest extends SapphireTest {
 		);
 	}
 
-	public function testAllowedChildren() {
+    /**
+     * Tests that core subclasses of SiteTree are included in allowedChildren() by default, but not instances of
+     * HiddenClass
+     */
+    public function testAllowedChildrenContainsCoreSubclassesButNotHiddenClass()
+    {
 		$page = new SiteTree();
+        $allowedChildren = $page->allowedChildren();
+
 		$this->assertContains(
-			'VirtualPage',
-			$page->allowedChildren(),
-			'Includes core subclasses by default'
-		);
+            'VirtualPage',
+            $allowedChildren,
+            'Includes core subclasses by default'
+        );
 
-		$classA = new SiteTreeTest_ClassA();
-		$this->assertEquals(
-			array('SiteTreeTest_ClassB'),
-			$classA->allowedChildren(),
-			'Direct setting of allowed children'
-		);
+        $this->assertNotContains(
+            'SiteTreeTest_ClassE',
+            $allowedChildren,
+            'HiddenClass instances should not be returned'
+        );
+    }
 
-		$classB = new SiteTreeTest_ClassB();
-		$this->assertEquals(
-			array('SiteTreeTest_ClassC', 'SiteTreeTest_ClassCext'),
-			$classB->allowedChildren(),
-			'Includes subclasses'
-		);
-
-		$classD = new SiteTreeTest_ClassD();
-		$this->assertEquals(
-			array('SiteTreeTest_ClassC'),
-			$classD->allowedChildren(),
-			'Excludes subclasses if class is prefixed by an asterisk'
-		);
-
-		$classC = new SiteTreeTest_ClassC();
-		$this->assertEquals(
-			array(),
-			$classC->allowedChildren(),
-			'Null setting'
-		);
+    /**
+     * Tests that various types of SiteTree classes will or will not be returned from the allowedChildren method
+     * @dataProvider allowedChildrenProvider
+     * @param string $className
+     * @param array  $expected
+     * @param string $assertionMessage
+     */
+	public function testAllowedChildren($className, $expected, $assertionMessage)
+    {
+		$class = new $className;
+		$this->assertEquals($expected, $class->allowedChildren(), $assertionMessage);
 	}
+
+    /**
+     * @return array
+     */
+    public function allowedChildrenProvider()
+    {
+        return array(
+            array(
+                // Class name
+                'SiteTreeTest_ClassA',
+                // Expected
+                array('SiteTreeTest_ClassB'),
+                // Assertion message
+                'Direct setting of allowed children'
+            ),
+            array(
+                'SiteTreeTest_ClassB',
+                array('SiteTreeTest_ClassC', 'SiteTreeTest_ClassCext'),
+                'Includes subclasses'
+            ),
+            array(
+                'SiteTreeTest_ClassC',
+                array(),
+                'Null setting'
+            ),
+            array(
+                'SiteTreeTest_ClassD',
+                array('SiteTreeTest_ClassC'),
+                'Excludes subclasses if class is prefixed by an asterisk'
+            )
+        );
+    }
 
 	public function testAllowedChildrenValidation() {
 		$page = new SiteTree();
@@ -1293,6 +1324,10 @@ class SiteTreeTest_ClassD extends Page implements TestOnly {
 			? $this->canEditValue
 			: parent::canEdit($member);
 	}
+}
+
+class SiteTreeTest_ClassE extends Page implements TestOnly, HiddenClass {
+
 }
 
 class SiteTreeTest_ClassCext extends SiteTreeTest_ClassC implements TestOnly {
