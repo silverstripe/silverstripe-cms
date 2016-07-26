@@ -54,8 +54,6 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 			return $this->getRequest()->requestVar('ID');
 		} elseif (is_numeric($this->urlParams['ID'])) {
 			return $this->urlParams['ID'];
-		} elseif(Session::get("{$this->class}.currentPage")) {
-			return Session::get("{$this->class}.currentPage");
 		} else {
 			return 0;
 		}
@@ -517,13 +515,24 @@ JS
 	 * Custom currentPage() method to handle opening the 'root' folder
 	 */
 	public function currentPage() {
+		$folder = null;
 		$id = $this->currentPageID();
 		if($id && is_numeric($id) && $id > 0) {
-			$folder = DataObject::get_by_id('Folder', $id);
-			if($folder && $folder->isInDB()) {
-				return $folder;
+			$folder = Folder::get()->byID($id);
+		}
+		// Detect current folder in gridfield item edit view
+		if (!$folder) {
+			$paramID = $this->getRequest()->param('ID');
+			if (is_numeric($paramID) && $file = File::get()->byID($paramID)) {
+				$folder = $file->Parent();
 			}
 		}
+
+		if($folder && $folder->isInDB()) {
+			return $folder;
+		}
+
+		// Fallback to root
 		$this->setCurrentPageID(null);
 		return new Folder();
 	}
