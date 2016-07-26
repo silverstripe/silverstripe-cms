@@ -87,8 +87,10 @@ class CMSPageAddController extends CMSPageEditController {
 			)
 		);
 
-		// TODO Insert page step title
-		$parentModeField->setTitle(sprintf($numericLabelTmpl, 1, _t('CMSMain.ChoosePageParentMode', 'Choose where to create this page')));
+		$parentModeField->setTitle(DBField::create_field(
+			'HTMLFragment',
+			sprintf($numericLabelTmpl, 1, _t('CMSMain.ChoosePageParentMode', 'Choose where to create this page'))
+		));
 
 		$parentField->setSearchFunction(function ($sourceObject, $labelField, $search) {
 			return DataObject::get($sourceObject)
