@@ -20,6 +20,7 @@ $.entwine('ss', function($){
     ParentCache: {}, // Cache allowed children for each selected page
     onadd: function() {
       var self = this;
+      // See SelectionGroup.js for logic which hides / shows ParentID
       this.find('#Form_AddForm_ParentID_Holder .TreeDropdownField').bind('change', function() {
         self.updateTypeList();
       });
