@@ -2,9 +2,9 @@
 	<thead>
 		<tr>
 			<th class="ui-helper-hidden"></th>
-			<th><% _t('CMSPageHistoryController_versions_ss.WHEN','When') %></th>
+			<th class="first-column"><% _t('CMSPageHistoryController_versions_ss.WHEN','When') %></th>
 			<th><% _t('CMSPageHistoryController_versions_ss.AUTHOR','Author') %></th>
-			<th><% _t('CMSPageHistoryController_versions_ss.PUBLISHER','Publisher') %></th>
+			<th class="last-column"><% _t('CMSPageHistoryController_versions_ss.PUBLISHER','Publisher') %></th>
 		</tr>
 	</thead>
 
