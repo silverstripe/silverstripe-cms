@@ -47,18 +47,28 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 	);
 
 	/**
-	 * Return fake-ID "root" if no ID is found (needed to upload files into the root-folder)
+	 * Return fake-ID 0 (root) if no ID is found (needed to upload files into the root-folder)
 	 */
 	public function currentPageID() {
-		if(is_numeric($this->getRequest()->requestVar('ID')))	{
-			return $this->getRequest()->requestVar('ID');
-		} elseif (is_numeric($this->urlParams['ID'])) {
-			return $this->urlParams['ID'];
-		} elseif(Session::get("{$this->class}.currentPage")) {
-			return Session::get("{$this->class}.currentPage");
-		} else {
-			return 0;
+		$id = 0;
+		$request = $this->getRequest();
+		if(is_numeric($request->requestVar('ID')))	{
+			$id = $request->requestVar('ID');
+		} elseif (is_numeric($request->param('ID'))) {
+			$id = $request->param('ID');
 		}
+
+		// Detect current folder in gridfield item edit view
+		if ($id && $id > 0) {
+			if (!Folder::get()->filter('ID', $id)->exists()) {
+				$file = File::get()->byID($id);
+				$id = ($file) ? $file->ParentID : 0;
+			}
+		}
+
+		$id = (int)$id;
+		$this->setCurrentPageID($id);
+		return $id;
 	}
 
 	/**
@@ -153,8 +163,9 @@ JS
 	}
 
 	public function getEditForm($id = null, $fields = null) {
+
 		$form = parent::getEditForm($id, $fields);
-		$folder = ($id && is_numeric($id)) ? DataObject::get_by_id('Folder', $id, false) : $this->currentPage();
+		$folder = $this->currentPage();
 		$fields = $form->Fields();
 		$title = ($folder && $folder->isInDB()) ? $folder->Title : _t('AssetAdmin.FILES', 'Files');
 		$fields->push(new HiddenField('ID', false, $folder ? $folder->ID : null));
@@ -338,8 +349,8 @@ JS
 		if($record && !$record->canDelete()) return Security::permissionFailure();
 		if(!$record || !$record->ID) throw new SS_HTTPResponse_Exception("Bad record ID #" . (int)$data['ID'], 404);
 		$parentID = $record->ParentID;
+		$this->setCurrentPageID($parentID);
 		$record->delete();
-		$this->setCurrentPageID(null);
 
 		$this->getResponse()->addHeader('X-Status', rawurlencode(_t('LeftAndMain.DELETED', 'Deleted.')));
 		$this->getResponse()->addHeader('X-Pjax', 'Content');
@@ -518,12 +529,13 @@ JS
 	 */
 	public function currentPage() {
 		$id = $this->currentPageID();
-		if($id && is_numeric($id) && $id > 0) {
-			$folder = DataObject::get_by_id('Folder', $id);
-			if($folder && $folder->isInDB()) {
+		if ($id > 0) {
+			$folder = Folder::get()->byID($id);
+			if ($folder && $folder->isInDB()) {
 				return $folder;
 			}
 		}
+		// Fallback to root
 		$this->setCurrentPageID(null);
 		return new Folder();
 	}
