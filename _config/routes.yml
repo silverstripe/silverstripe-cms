@@ -6,7 +6,6 @@ After: '#rootroutes'
 Director:
   rules:
     '': 'RootURLController'
-    'StaticExporter//$Action/$ID/$OtherID': 'StaticExporter'
     'RemoveOrphanedPagesTask//$Action/$ID/$OtherID': 'RemoveOrphanedPagesTask'
     'SiteTreeMaintenanceTask//$Action/$ID/$OtherID': 'SiteTreeMaintenanceTask'
     '$URLSegment//$Action/$ID/$OtherID': 'ModelAsController'
