@@ -57,10 +57,6 @@ in the other stage:<br />
 
 	protected $orphanedSearchClass = 'SiteTree';
 
-	public function Link() {
-		return $this->class;
-	}
-
 	public function init() {
 		parent::init();
 
