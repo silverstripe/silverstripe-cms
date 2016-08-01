@@ -166,7 +166,7 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 			new GridFieldEditButton(),
 			new GridFieldDeleteAction(),
 			new GridFieldDetailForm(),
-			GridFieldLevelup::create($folder->ID)->setLinkSpec('admin/assets/show/%d')
+			GridFieldLevelup::create($folder->ID)->setLinkSpec($this->Link('show') . '/%d')
 		);
 
 		$gridField = GridField::create('File', $title, $this->getList(), $gridFieldConfig);

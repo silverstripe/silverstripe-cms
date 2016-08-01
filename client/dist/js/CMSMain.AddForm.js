@@ -1,179 +1,193 @@
 (function (global, factory) {
-	if (typeof define === "function" && define.amd) {
-		define('ss.CMSMain.AddForm', ['jQuery'], factory);
-	} else if (typeof exports !== "undefined") {
-		factory(require('jQuery'));
-	} else {
-		var mod = {
-			exports: {}
-		};
-		factory(global.jQuery);
-		global.ssCMSMainAddForm = mod.exports;
-	}
+  if (typeof define === "function" && define.amd) {
+    define('ss.CMSMain.AddForm', ['jQuery'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jQuery'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery);
+    global.ssCMSMainAddForm = mod.exports;
+  }
 })(this, function (_jQuery) {
-	'use strict';
+  'use strict';
 
-	var _jQuery2 = _interopRequireDefault(_jQuery);
+  var _jQuery2 = _interopRequireDefault(_jQuery);
 
-	function _interopRequireDefault(obj) {
-		return obj && obj.__esModule ? obj : {
-			default: obj
-		};
-	}
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+      default: obj
+    };
+  }
 
-	_jQuery2.default.entwine('ss', function ($) {
-		$(".cms-add-form .parent-mode :input").entwine({
-			onclick: function onclick(e) {
-				if (this.val() == 'top') {
-					var parentField = this.closest('form').find('#Form_AddForm_ParentID_Holder .TreeDropdownField');
-					parentField.setValue('');
-					parentField.setTitle('');
-				}
-			}
-		});
+  _jQuery2.default.entwine('ss', function ($) {
+    $(".cms-add-form .parent-mode :input").entwine({
+      onclick: function onclick(e) {
+        if (this.val() == 'top') {
+          var parentField = this.closest('form').find('#Form_AddForm_ParentID_Holder .TreeDropdownField');
+          parentField.setValue('');
+          parentField.setTitle('');
+        }
+      }
+    });
 
-		$(".cms-add-form").entwine({
-			ParentID: 0,
-			ParentCache: {},
-			onadd: function onadd() {
-				var self = this;
-				this.find('#Form_AddForm_ParentID_Holder .TreeDropdownField').bind('change', function () {
-					self.updateTypeList();
-				});
-				this.find(".SelectionGroup.parent-mode").bind('change', function () {
-					self.updateTypeList();
-				});
-				this.updateTypeList();
-			},
-			loadCachedChildren: function loadCachedChildren(parentID) {
-				var cache = this.getParentCache();
-				if (typeof cache[parentID] !== 'undefined') return cache[parentID];else return null;
-			},
-			saveCachedChildren: function saveCachedChildren(parentID, children) {
-				var cache = this.getParentCache();
-				cache[parentID] = children;
-				this.setParentCache(cache);
-			},
+    $(".cms-add-form").entwine({
+      ParentID: 0,
+      ParentCache: {},
+      onadd: function onadd() {
+        var self = this;
 
-			updateTypeList: function updateTypeList() {
-				var hints = this.data('hints'),
-				    parentTree = this.find('#Form_AddForm_ParentID_Holder .TreeDropdownField'),
-				    parentMode = this.find("input[name=ParentModeField]:checked").val(),
-				    metadata = parentTree.data('metadata'),
-				    id = metadata && parentMode === 'child' ? parentTree.getValue() || this.getParentID() : null,
-				    newClassName = metadata ? metadata.ClassName : null,
-				    hintKey = newClassName && parentMode === 'child' ? newClassName : 'Root',
-				    hint = typeof hints[hintKey] !== 'undefined' ? hints[hintKey] : null,
-				    self = this,
-				    defaultChildClass = hint && typeof hint.defaultChild !== 'undefined' ? hint.defaultChild : null,
-				    disallowedChildren = [];
+        this.find('#Form_AddForm_ParentID_Holder .TreeDropdownField').bind('change', function () {
+          self.updateTypeList();
+        });
+        this.find(".SelectionGroup.parent-mode").bind('change', function () {
+          self.updateTypeList();
+        });
+        this.updateTypeList();
+      },
+      loadCachedChildren: function loadCachedChildren(parentID) {
+        var cache = this.getParentCache();
+        if (typeof cache[parentID] !== 'undefined') return cache[parentID];else return null;
+      },
+      saveCachedChildren: function saveCachedChildren(parentID, children) {
+        var cache = this.getParentCache();
+        cache[parentID] = children;
+        this.setParentCache(cache);
+      },
 
-				if (id) {
-					if (this.hasClass('loading')) return;
-					this.addClass('loading');
+      updateTypeList: function updateTypeList() {
+        var hints = this.data('hints'),
+            parentTree = this.find('#Form_AddForm_ParentID_Holder .TreeDropdownField'),
+            parentMode = this.find("input[name=ParentModeField]:checked").val(),
+            metadata = parentTree.data('metadata'),
+            id = metadata && parentMode === 'child' ? parentTree.getValue() || this.getParentID() : null,
+            newClassName = metadata ? metadata.ClassName : null,
+            hintKey = newClassName && parentMode === 'child' ? newClassName : 'Root',
+            hint = typeof hints[hintKey] !== 'undefined' ? hints[hintKey] : null,
+            self = this,
+            defaultChildClass = hint && typeof hint.defaultChild !== 'undefined' ? hint.defaultChild : null,
+            disallowedChildren = [];
 
-					this.setParentID(id);
-					if (!parentTree.getValue()) parentTree.setValue(id);
+        if (id) {
+          if (this.hasClass('loading')) return;
+          this.addClass('loading');
 
-					disallowedChildren = this.loadCachedChildren(id);
-					if (disallowedChildren !== null) {
-						this.updateSelectionFilter(disallowedChildren, defaultChildClass);
-						this.removeClass('loading');
-						return;
-					}
-					$.ajax({
-						url: self.data('childfilter'),
-						data: { 'ParentID': id },
-						success: function success(data) {
-							self.saveCachedChildren(id, data);
-							self.updateSelectionFilter(data, defaultChildClass);
-						},
-						complete: function complete() {
-							self.removeClass('loading');
-						}
-					});
+          this.setParentID(id);
+          if (!parentTree.getValue()) parentTree.setValue(id);
 
-					return false;
-				} else {
-					disallowedChildren = hint && typeof hint.disallowedChildren !== 'undefined' ? hint.disallowedChildren : [], this.updateSelectionFilter(disallowedChildren, defaultChildClass);
-				}
-			},
+          disallowedChildren = this.loadCachedChildren(id);
+          if (disallowedChildren !== null) {
+            this.updateSelectionFilter(disallowedChildren, defaultChildClass);
+            this.removeClass('loading');
+            return;
+          }
+          $.ajax({
+            url: self.data('childfilter'),
+            data: { 'ParentID': id },
+            success: function success(data) {
+              self.saveCachedChildren(id, data);
+              self.updateSelectionFilter(data, defaultChildClass);
+            },
+            complete: function complete() {
+              self.removeClass('loading');
+            }
+          });
 
-			updateSelectionFilter: function updateSelectionFilter(disallowedChildren, defaultChildClass) {
-				var allAllowed = null;
-				this.find('#Form_AddForm_PageType li').each(function () {
-					var className = $(this).find('input').val(),
-					    isAllowed = $.inArray(className, disallowedChildren) === -1;
+          return false;
+        } else {
+          disallowedChildren = hint && typeof hint.disallowedChildren !== 'undefined' ? hint.disallowedChildren : [];
+          this.updateSelectionFilter(disallowedChildren, defaultChildClass);
+        }
+      },
 
-					$(this).setEnabled(isAllowed);
-					if (!isAllowed) $(this).setSelected(false);
-					if (allAllowed === null) allAllowed = isAllowed;else allAllowed = allAllowed && isAllowed;
-				});
+      updateSelectionFilter: function updateSelectionFilter(disallowedChildren, defaultChildClass) {
+        var allAllowed = null;
+        this.find('#Form_AddForm_PageType div.radio').each(function () {
+          var className = $(this).find('input').val(),
+              isAllowed = $.inArray(className, disallowedChildren) === -1;
 
-				if (defaultChildClass) {
-					var selectedEl = this.find('#Form_AddForm_PageType li input[value=' + defaultChildClass + ']').parents('li:first');
-				} else {
-					var selectedEl = this.find('#Form_AddForm_PageType li:not(.disabled):first');
-				}
-				selectedEl.setSelected(true);
-				selectedEl.siblings().setSelected(false);
+          $(this).setEnabled(isAllowed);
+          if (!isAllowed) {
+            $(this).setSelected(false);
+          }
+          if (allAllowed === null) {
+            allAllowed = isAllowed;
+          } else {
+            allAllowed = allAllowed && isAllowed;
+          }
+        });
 
-				var buttonState = this.find('#Form_AddForm_PageType li:not(.disabled)').length ? 'enable' : 'disable';
-				this.find('button[name=action_doAdd]').button(buttonState);
+        if (defaultChildClass) {
+          var selectedEl = this.find('#Form_AddForm_PageType div.radio input[value=' + defaultChildClass + ']').parents('li:first');
+        } else {
+          var selectedEl = this.find('#Form_AddForm_PageType div.radio:not(.disabled):first');
+        }
+        selectedEl.setSelected(true);
+        selectedEl.siblings().setSelected(false);
 
-				this.find('.message-restricted')[allAllowed ? 'hide' : 'show']();
-			}
-		});
+        var buttonState = this.find('#Form_AddForm_PageType div.radio:not(.disabled)').length ? 'enable' : 'disable';
+        this.find('button[name=action_doAdd]').button(buttonState);
 
-		$(".cms-add-form #Form_AddForm_PageType li").entwine({
-			onclick: function onclick(e) {
-				this.setSelected(true);
-			},
-			setSelected: function setSelected(bool) {
-				var input = this.find('input');
-				if (bool && !input.is(':disabled')) {
-					this.siblings().setSelected(false);
-					this.toggleClass('selected', true);
-					input.prop('checked', true);
-				} else {
-					this.toggleClass('selected', false);
-					input.prop('checked', false);
-				}
-			},
-			setEnabled: function setEnabled(bool) {
-				$(this).toggleClass('disabled', !bool);
-				if (!bool) $(this).find('input').attr('disabled', 'disabled').removeAttr('checked');else $(this).find('input').removeAttr('disabled');
-			}
-		});
+        this.find('.message-restricted')[allAllowed ? 'hide' : 'show']();
+      }
+    });
 
-		$(".cms-page-add-button").entwine({
-			onclick: function onclick(e) {
-				var tree = $('.cms-tree'),
-				    list = $('.cms-list'),
-				    parentId = 0;
+    $(".cms-add-form #Form_AddForm_PageType div.radio").entwine({
+      onclick: function onclick(e) {
+        this.setSelected(true);
+      },
+      setSelected: function setSelected(bool) {
+        var input = this.find('input');
+        if (bool && !input.is(':disabled')) {
+          this.siblings().setSelected(false);
+          this.toggleClass('selected', true);
+          input.prop('checked', true);
+        } else {
+          this.toggleClass('selected', false);
+          input.prop('checked', false);
+        }
+      },
+      setEnabled: function setEnabled(bool) {
+        $(this).toggleClass('disabled', !bool);
+        if (!bool) {
+          $(this).find('input').attr('disabled', 'disabled').removeAttr('checked');
+        } else {
+          $(this).find('input').removeAttr('disabled');
+        }
+      }
+    });
 
-				if (tree.is(':visible')) {
-					var selected = tree.jstree('get_selected');
-					parentId = selected ? $(selected[0]).data('id') : null;
-				} else {
-					var state = list.find('input[name="Page[GridState]"]').val();
-					if (state) parentId = parseInt(JSON.parse(state).ParentID, 10);
-				}
+    $(".cms-content-addpage-button").entwine({
+      onclick: function onclick(e) {
+        var tree = $('.cms-tree'),
+            list = $('.cms-list'),
+            parentId = 0,
+            extraParams;
 
-				var data = { selector: this.data('targetPanel'), pjax: this.data('pjax') },
-				    url;
-				if (parentId) {
-					extraParams = this.data('extraParams') ? this.data('extraParams') : '';
-					url = $.path.addSearchParams(i18n.sprintf(this.data('urlAddpage'), parentId), extraParams);
-				} else {
-					url = this.attr('href');
-				}
+        if (tree.is(':visible')) {
+          var selected = tree.jstree('get_selected');
+          parentId = selected ? $(selected[0]).data('id') : null;
+        } else {
+          var state = list.find('input[name="Page[GridState]"]').val();
+          if (state) {
+            parentId = parseInt(JSON.parse(state).ParentID, 10);
+          }
+        }
 
-				$('.cms-container').loadPanel(url, null, data);
-				e.preventDefault();
+        var data = { selector: this.data('targetPanel'), pjax: this.data('pjax') },
+            url;
+        if (parentId) {
+          extraParams = this.data('extraParams') ? this.data('extraParams') : '';
+          url = $.path.addSearchParams(i18n.sprintf(this.data('urlAddpage'), parentId), extraParams);
+        } else {
+          url = this.attr('href');
+        }
+        $('.cms-container').loadPanel(url, null, data);
+        e.preventDefault();
 
-				this.blur();
-			}
-		});
-	});
+        this.blur();
+      }
+    });
+  });
 });

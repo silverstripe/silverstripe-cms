@@ -42,7 +42,7 @@
 			}
 		});
 
-		$('.AssetAdmin.cms-edit-form .ss-gridfield .col-buttons .action.gridfield-button-delete, .AssetAdmin.cms-edit-form .Actions button.action.action-delete').entwine({
+		$('.AssetAdmin.cms-edit-form .ss-gridfield .col-buttons .action.gridfield-button-delete, .AssetAdmin.cms-edit-form .btn-toolbar button.action.action-delete').entwine({
 			onclick: function onclick(e) {
 				var msg;
 				if (this.closest('.ss-gridfield-item').data('class') == 'Folder') {
@@ -101,12 +101,6 @@
 		$('.AssetAdmin.cms-edit-form .ss-uploadfield-item-progress').entwine({
 			onunmatch: function onunmatch() {
 				$('.AssetAdmin.cms-edit-form .ss-gridfield').reload();
-			}
-		});
-
-		$('.AssetAdmin .grid-levelup').entwine({
-			onmatch: function onmatch() {
-				this.closest('.ui-tabs-panel').find('.cms-actions-row').prepend(this);
 			}
 		});
 	});
