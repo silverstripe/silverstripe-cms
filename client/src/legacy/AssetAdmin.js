@@ -133,10 +133,4 @@ $.entwine('ss', function($){
 			$('.AssetAdmin.cms-edit-form .ss-gridfield').reload();
 		}
 	});
-
-	$('.AssetAdmin .grid-levelup').entwine({
-		onmatch: function () {
-			this.closest('.ui-tabs-panel').find('.cms-actions-row').prepend(this);
-		}
-	})
 });

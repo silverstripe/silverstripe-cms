@@ -101,12 +101,15 @@ gulp.task('bundle-legacy', function bundleLeftAndMain() {
 });
 
 gulp.task('umd-cms', () => { // eslint-disable-line
-  return transformToUmd(glob.sync(`${PATHS.CMS_JS_SRC}/*.js`), PATHS.CMS_JS_DIST);
+  return transformToUmd(glob.sync(
+    `${PATHS.CMS_JS_SRC}/**/*.js`,
+    { ignore: `${PATHS.CMS_JS_SRC}/bundles/*` }
+  ), PATHS.CMS_JS_DIST);
 });
 
 gulp.task('umd-watch', () => { // eslint-disable-line
   if (isDev) {
-    gulp.watch(`${PATHS.CMS_JS_SRC}/*.js`, ['umd-cms']);
+    gulp.watch(`${PATHS.CMS_JS_SRC}/**/*.js`, ['umd-cms']);
   }
 });
 

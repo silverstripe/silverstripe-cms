@@ -179,7 +179,7 @@
 			}
 		});
 
-		$('.cms-edit-form .Actions #Form_EditForm_action_print').entwine({
+		$('.cms-edit-form .btn-toolbar #Form_EditForm_action_print').entwine({
 			onclick: function onclick(e) {
 				var printURL = $(this[0].form).attr('action').replace(/\?.*$/, '') + '/printable/' + $(':input[name=ID]', this[0].form).val();
 				if (printURL.substr(0, 7) != 'http://') printURL = $('base').attr('href') + printURL;
@@ -190,7 +190,7 @@
 			}
 		});
 
-		$('.cms-edit-form .Actions #Form_EditForm_action_rollback').entwine({
+		$('.cms-edit-form .btn-toolbar #Form_EditForm_action_rollback').entwine({
 			onclick: function onclick(e) {
 				var form = this.parents('form:first'),
 				    version = form.find(':input[name=Version]').val(),
@@ -208,7 +208,7 @@
 			}
 		});
 
-		$('.cms-edit-form .Actions #Form_EditForm_action_archive').entwine({
+		$('.cms-edit-form .btn-toolbar #Form_EditForm_action_archive').entwine({
 			onclick: function onclick(e) {
 				var form = this.parents('form:first'),
 				    version = form.find(':input[name=Version]').val(),
@@ -222,7 +222,7 @@
 			}
 		});
 
-		$('.cms-edit-form .Actions #Form_EditForm_action_restore').entwine({
+		$('.cms-edit-form .btn-toolbar #Form_EditForm_action_restore').entwine({
 			onclick: function onclick(e) {
 				var form = this.parents('form:first'),
 				    version = form.find(':input[name=Version]').val(),
@@ -237,7 +237,7 @@
 			}
 		});
 
-		$('.cms-edit-form .Actions #Form_EditForm_action_delete').entwine({
+		$('.cms-edit-form .btn-toolbar #Form_EditForm_action_delete').entwine({
 			onclick: function onclick(e) {
 				var form = this.parents('form:first'),
 				    version = form.find(':input[name=Version]').val(),
@@ -251,7 +251,7 @@
 			}
 		});
 
-		$('.cms-edit-form .Actions #Form_EditForm_action_unpublish').entwine({
+		$('.cms-edit-form .btn-toolbar #Form_EditForm_action_unpublish').entwine({
 			onclick: function onclick(e) {
 				var form = this.parents('form:first'),
 				    version = form.find(':input[name=Version]').val(),
@@ -280,7 +280,7 @@
 			}
 		});
 
-		$('.cms-edit-form .Actions button[name=action_publish]').entwine({
+		$('.cms-edit-form .btn-toolbar button[name=action_publish]').entwine({
 			onbuttonafterrefreshalternate: function onbuttonafterrefreshalternate() {
 				if (this.button('option', 'showingAlternate')) {
 					this.addClass('ss-ui-action-constructive');
@@ -290,7 +290,7 @@
 			}
 		});
 
-		$('.cms-edit-form .Actions button[name=action_save]').entwine({
+		$('.cms-edit-form .btn-toolbar button[name=action_save]').entwine({
 			onbuttonafterrefreshalternate: function onbuttonafterrefreshalternate() {
 				if (this.button('option', 'showingAlternate')) {
 					this.addClass('ss-ui-action-constructive');
