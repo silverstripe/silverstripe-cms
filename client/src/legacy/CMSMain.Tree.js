@@ -40,16 +40,18 @@ $.entwine('ss.tree', function($){
 			config.contextmenu = {
 				'items': function(node) {
 
-					var menuitems = {
-							'edit': {
-								'label': i18n._t('Tree.EditPage', 'Edit page', 100, 'Used in the context menu when right-clicking on a page node in the CMS tree'),
-								'action': function(obj) {
-									$('.cms-container').entwine('.ss').loadPanel(i18n.sprintf(
-										self.data('urlEditpage'), obj.data('id')
-									));
-								}
+			var menuitems = {
+						edit: {
+							'label': (node.hasClass('edit-disabled')) ?
+								 i18n._t('Tree.EditPage', 'Edit page', 100, 'Used in the context menu when right-clicking on a page node in the CMS tree')
+								 : i18n._t('Tree.ViewPage', 'View page', 100, 'Used in the context menu when right-clicking on a page node in the CMS tree'),
+							'action': function(obj) {
+								$('.cms-container').entwine('.ss').loadPanel(i18n.sprintf(
+									self.data('urlEditpage'), obj.data('id')
+								));
 							}
-						};
+						}
+					};
 
 					// Add "show as list"
 					if(!node.hasClass('nochildren')) {
@@ -97,32 +99,34 @@ $.entwine('ss.tree', function($){
 							};
 					}
 
-					menuitems['duplicate'] = {
-						'label': i18n._t('Tree.Duplicate'),
-						'submenu': [
-							{
-								'label': i18n._t('Tree.ThisPageOnly'),
-								'action': function(obj) {
-									$('.cms-container').entwine('.ss').loadPanel(
-										$.path.addSearchParams(
-											i18n.sprintf(self.data('urlDuplicate'), obj.data('id')),
-											self.data('extraParams')
-										)
-									);
+					if (!node.hasClass('edit-disabled')) {
+						menuitems['duplicate'] = {
+							'label':   i18n._t('Tree.Duplicate'),
+							'submenu': [
+								{
+									'label':  i18n._t('Tree.ThisPageOnly'),
+									'action': function (obj) {
+										$('.cms-container').entwine('.ss').loadPanel(
+											$.path.addSearchParams(
+												i18n.sprintf(self.data('urlDuplicate'), obj.data('id')),
+												self.data('extraParams')
+											)
+										);
+									}
+								}, {
+									'label':  i18n._t('Tree.ThisPageAndSubpages'),
+									'action': function (obj) {
+										$('.cms-container').entwine('.ss').loadPanel(
+											$.path.addSearchParams(
+												i18n.sprintf(self.data('urlDuplicatewithchildren'), obj.data('id')),
+												self.data('extraParams')
+											)
+										);
+									}
 								}
-							},{
-								'label': i18n._t('Tree.ThisPageAndSubpages'),
-								'action': function(obj) {
-									$('.cms-container').entwine('.ss').loadPanel(
-										$.path.addSearchParams(
-											i18n.sprintf(self.data('urlDuplicatewithchildren'), obj.data('id')),
-											self.data('extraParams')
-										)
-									);
-								}
-							}
-						]
-					};
+							]
+						};
+					}
 
 					return menuitems;
 				}
