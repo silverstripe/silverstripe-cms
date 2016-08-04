@@ -1,9 +1,12 @@
 tr:
   AssetAdmin:
+    ADDFILES: 'Dosyaları ekle'
     ActionAdd: 'Klasör ekle'
     AppCategoryArchive: Arşiv
     AppCategoryAudio: Ses
+    AppCategoryDocument: Belge
     AppCategoryImage: Görüntü
+    AppCategoryVideo: Video
     FILES: Dosyalar
     Filetype: 'Dosya türü'
     NEWFOLDER: YeniKlasör
@@ -166,9 +169,7 @@ tr:
     BUTTONUNPUBLISHDESC: 'Bu sayfayı yayından kaldır'
     Comments: Yorumlar
     Content: İçerik
-    DEFAULTABOUTCONTENT: '<p>Bu sayfayı kendi içeriğinizle doldurabilir, ya da bu sayfayı silip kendi sayfalarınızı oluşturabilirsiniz.<br /></p>'
     DEFAULTABOUTTITLE: 'Hakkımızda'
-    DEFAULTCONTACTCONTENT: '<p>Bu sayfayı kendi içeriğinizle doldurabilir, ya da bu sayfayı silip kendi sayfalarınızı oluşturabilirsiniz.<br /></p>'
     DEFAULTCONTACTTITLE: 'İletişim'
     DEFAULTHOMETITLE: Anasayfa
     DependtPageColumnLinkType: 'Link tipi'

@@ -223,9 +223,7 @@ uk:
     BUTTONUNPUBLISHDESC: 'Видалити цю сторінку з опублікованого'
     Comments: Коментарі
     Content: Контент
-    DEFAULTABOUTCONTENT: '<p>Ви можете заповнити цю сторінку власним вмістом або видалити її та створити інші сторінки.<br /></p>'
     DEFAULTABOUTTITLE: 'Про нас'
-    DEFAULTCONTACTCONTENT: '<p>Ви можете заповнити цю сторінку власним вмістом або видалити її та створити інші сторінки.<br /></p>'
     DEFAULTCONTACTTITLE: 'Контакти'
     DEFAULTHOMETITLE: Домівка
     DELETEDPAGEHELP: 'Сторінка вже не є опублікованою'

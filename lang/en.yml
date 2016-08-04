@@ -9,6 +9,7 @@ en:
     AppCategoryImage: Image
     AppCategoryVideo: Video
     BackToFolder: 'Back to folder'
+    CMSMENU_OLD: 'Files (old)'
     CREATED: Date
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
@@ -104,6 +105,7 @@ en:
     PUBALLCONFIRM: 'Please publish every page in the site, copying content stage to live'
     PUBALLFUN: '"Publish All" functionality'
     PUBALLFUN2: "Pressing this button will do the equivalent of going to every page and pressing \"publish\".  It's\n				intended to be used after there have been massive edits of the content, such as when the site was\n				first built."
+    PUBLISHED: 'Published ''{title}'' successfully.'
     PUBPAGES: 'Done: Published {count} pages'
     PageAdded: 'Successfully created page'
     REMOVED: 'Deleted ''{title}''{description} from live site'
@@ -118,6 +120,7 @@ en:
     ROLLEDBACKPUBv2: 'Rolled back to published version.'
     ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
     SAVE: Save
+    SAVED: 'Saved ''{title}'' successfully.'
     SAVEDRAFT: 'Save draft'
     TabContent: Content
     TabHistory: History

@@ -299,9 +299,7 @@ ru:
     BUTTONUNPUBLISHDESC: 'Удалить эту страницу с опубликованного сайта'
     Comments: Комментарии
     Content: Наполнение сайта
-    DEFAULTABOUTCONTENT: '<p>Вы можете добавить на эту страницу собственные материалы или удалить ее и создать новые страницы.<br /></p>'
     DEFAULTABOUTTITLE: 'О нас'
-    DEFAULTCONTACTCONTENT: '<p>Вы можете заполнить эту страницу собственным содержимым или удалить ее и создать новые страницы.<br /></p>'
     DEFAULTCONTACTTITLE: 'Контакты'
     DEFAULTHOMETITLE: Главная
     DELETEDPAGEHELP: 'Страница больше не является опубликованной'

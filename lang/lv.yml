@@ -90,9 +90,7 @@ lv:
     BUTTONUNPUBLISHDESC: 'Izņemt šo lapu no publicētās vietnes'
     Comments: Komentāri
     Content: Saturs
-    DEFAULTABOUTCONTENT: '<p>Jūs variet aizpildīt šo lapu ar savu saturu, vai dzēst šo lapu un izveidot savas lapas.<br /></p>'
     DEFAULTABOUTTITLE: 'Par mums'
-    DEFAULTCONTACTCONTENT: '<p>Jūs variet aizpildīt šo lapu ar savu saturu, vai dzēst šo lapu un izveidot savas lapas.<br /></p>'
     DEFAULTCONTACTTITLE: 'Sazinieties ar mums'
     DEFAULTHOMETITLE: Sākums
     DEPENDENT_NOTE: 'Sekojošās lapas ir atkarīgas no šīs lapas. Tās var būt virtuālās lapas, novirzītājlapas, un lapas, kas satur saites.'

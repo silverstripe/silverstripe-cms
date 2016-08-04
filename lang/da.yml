@@ -247,9 +247,7 @@ da:
     BUTTONUNPUBLISHDESC: 'Fjern denne side fra det udgivne websted'
     Comments: Kommentarer
     Content: Indhold
-    DEFAULTABOUTCONTENT: '<p>Du kan udfylde denne side med dit eget indhold, eller slette den og oprette dine egne sider.<br /></p>'
     DEFAULTABOUTTITLE: 'Om os'
-    DEFAULTCONTACTCONTENT: '<p>Du kan udfylde denne side med dit eget indhold, eller slette den og oprette dine egne sider.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontakt os'
     DEFAULTHOMETITLE: Forside
     DELETEDPAGEHELP: 'Siden er ikke længere udgiven'

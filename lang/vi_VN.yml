@@ -24,9 +24,7 @@ vi_VN:
     BUTTONCANCELDRAFTDESC: 'Xóa khỏi mục nháp và khôi phục lại trang gốc'
     BUTTONUNPUBLISH: Ẩn
     BUTTONUNPUBLISHDESC: 'Xóa trang này khỏi trang hoạt động'
-    DEFAULTABOUTCONTENT: '<p>Bạn có thể điền vào thông tin trang này với nội dung của bạn, hoặc xóa trang này và tạo một trang riêng phù hợp hơn.<br /></p>'
     DEFAULTABOUTTITLE: 'Giới thiệu'
-    DEFAULTCONTACTCONTENT: '<p>Bạn có thể điền vào thông tin trang này với nội dung của bạn, hoặc xóa trang này và tạo một trang riêng phù hợp hơn.<br /></p>'
     DEFAULTCONTACTTITLE: 'Liên hệ'
     DEFAULTHOMETITLE: Trang chủ
     EDITANYONE: 'Bất cứ ai có thể đăng nhập vào phần quản lý'

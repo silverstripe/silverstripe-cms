@@ -1,15 +1,193 @@
 hr:
   AssetAdmin:
+    ADDFILES: 'Dodaj datoteke'
+    ActionAdd: 'Dodaj direktorij'
+    AppCategoryArchive: Arhiva
+    AppCategoryAudio: Zvuk
+    AppCategoryDocument: Dokument
+    AppCategoryFlash: Flash
+    AppCategoryImage: Slika
+    AppCategoryVideo: Video
+    BackToFolder: 'Povratak na direktorij'
+    CMSMENU_OLD: 'Datoteke (stare)'
+    CREATED: Datum
+    CurrentFolderOnly: 'Ograničiti na trenutni direktorij?'
+    DetailsView: Detalji
+    FILES: Datoteke
+    FILESYSTEMSYNC: 'Sinkroniziraj datoteke'
+    FILESYSTEMSYNCTITLE: 'Ažurirajte CMS bazu podataka datoteka na sustavu datoteka. Korisno kada su nove datoteke prenesene izvan CMS, npr putem FTP-a.'
+    FROMTHEINTERNET: 'Sa interneta'
+    FROMYOURCOMPUTER: 'Sa računala'
+    Filetype: 'Tip datoteke'
+    ListView: 'Prikaz popisa'
+    MENUTITLE: Datoteke
     NEWFOLDER: Novi direktorij
+    SIZE: Veličina
+    THUMBSDELETED: '{count} neiskorištenih sličica su izbrisane'
+    TreeView: 'Prikaz kao stablo'
+    Upload: Prenesi
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Obriši direktorije'
+  AssetAdmin_Tools:
+    FILTER: Filter
   AssetAdmin_left_ss:
     GO: Kreni
+  AssetTableField:
+    BACKLINKCOUNT: 'Korišteno na:'
+    PAGES: stranica(e)
+  BackLink_Button_ss:
+    Back: Nazad
+  BrokenLinksReport:
+    Any: bilo koji
+    BROKENLINKS: 'Izvješće prekinutih linkova'
+    CheckSite: 'Pregledaj stranicu'
+    CheckSiteDropdownDraft: 'Predložak'
+    CheckSiteDropdownPublished: 'Objavljena stranica'
+    ColumnDateLastModified: 'Datum zadnjeg uređivanja'
+    ColumnDateLastPublished: 'Datum zadnje objave'
+    ColumnProblemType: 'Tip greške'
+    ColumnURL: Link
+    HasBrokenFile: 'ima neispravnu datoteku'
+    HasBrokenLink: 'ima neispravan link'
+    HasBrokenLinkAndFile: 'ima neispravan link i datoteku'
+    HoverTitleEditPage: 'Uredi stranicu'
+    PageName: 'Ime stranice'
+    ReasonDropdown: 'Greška za provjeru'
+    ReasonDropdownBROKENFILE: 'Neispravna datoteka'
+    ReasonDropdownBROKENLINK: 'Neispravan link'
+  CMSAddPageController:
+    Title: 'Dodaj stranicu'
+  CMSBatchActions:
+    ARCHIVE: Arhiviraj
+    ARCHIVED_PAGES: 'Arhivirano ''%d'' stranica'
+    DELETE_DRAFT_PAGES: 'Izbriši stranicu sa objavljene'
+    DELETE_PAGES: 'Izbriši stranicu sa objavljene'
+    PUBLISH_PAGES: Objavi
+    RESTORE: Povrati
+    RESTORED_PAGES: 'Vraćeno ''%d'' stranica'
+  CMSFileAddController:
+    MENUTITLE: Datoteke
   CMSMain:
+    ARCHIVE: Arhiviraj
+    ARCHIVEDPAGE: 'Arhivirane stranice ''%s'''
+    AddNew: 'Dodaj novu stranicu'
+    AddNewButton: 'Dodaj novi'
+    AddPageRestriction: 'Napomena: neke vrste stranica nisu dozvoljene za ovu sekciju'
+    Cancel: Odustani
+    ChoosePageParentMode: 'Odaberite gdje želite kreirati ovu stranicu'
+    ChoosePageType: 'Odaberi vrstu stranice'
+    Create: Kreiraj
+    DELETE: 'Obriši nacrt'
+    DELETEFP: Obriši
+    EMAIL: Email
+    EditTree: 'Uredi stablo stranice'
+    MENUTITLE: 'Uredi stranicu'
+    NEWPAGE: 'Novi {pagetype}'
     PAGENOTEXISTS: 'Stranica ne postoji'
+    PAGETYPEANYOPT: Bilo koji
     PUBALLCONFIRM: 'Molim objavi svaku stranicu, kopirajući sadržaj'
     PUBALLFUN: '"Objavi sve"'
     PUBALLFUN2: "Ovaj gumb radi isto što i klikanje na \"objavi\" gumbe za svaku stranicu posebno. Koristi se nakon velikih promjena u sadržaju, kao npr. kod prve objave stranice."
+    PUBLISHED: 'Uspješno objavljen ''{title}'''
+    PageAdded: 'Uspješno kreirane stranice'
+    REMOVED: 'Obrisan ''{title}''{description} sa objavljene stranice'
+    REMOVEDPAGE: 'Uklonjen ''{title}'' sa objavljene stranice'
+    REMOVEDPAGEFROMDRAFT: 'Uklonjen ''%s'' sa nacrtne stranice'
     ROLLBACK: 'Vrati na ovu verziju'
-    SAVE: Snimi
+    SAVE: Spremi
+    SAVED: 'Uspješno spremljen ''{title}'''
+    SAVEDRAFT: 'Spremiti nacrt'
+    TabContent: Sadržaj
+    TabHistory: Povijest
+    TabSettings: Postavke
+  CMSMain_left_ss:
+    CLEAR_FILTER: Očisti
+    RESET: Resetiraj
+  CMSPageAddController:
+    MENUTITLE: 'Dodaj stranicu'
+  CMSPageEditController:
+    MENUTITLE: 'Uredi stranicu'
+  CMSPageHistoryController:
+    MENUTITLE: Povijest
+    REVERTTOTHISVERSION: 'Vrati na ovu verziju'
+    SHOWUNPUBLISHED: 'Prikaži neobjavljene verzije'
+    SHOWVERSION: 'Prikaži verzije'
+    VIEW: prikaži
+  CMSPageHistoryController_versions_ss:
+    AUTHOR: Autor
+    NOTPUBLISHED: 'Nije objavljeno'
+    PUBLISHER: Izdavač
+    UNKNOWN: Nepoznato
+    WHEN: Kada
+  CMSPageSettingsController:
+    MENUTITLE: 'Uredi stranicu'
+  CMSPagesController:
+    GalleryView: 'Pregled kao galerija'
+    ListView: 'Pregled kao popis'
+    MENUTITLE: Stranice
+    TreeView: 'Prikaz kao stablo'
+  CMSPagesController_Tools_ss:
+    FILTER: Filter
+  CMSSIteTreeFilter_PublishedPages:
+    Title: 'Objavljene stranice'
+  CMSSearch:
+    FILTERDATEFROM: Od
+    FILTERDATEHEADING: Datum
+    FILTERDATETO: Do
+    PAGEFILTERDATEHEADING: 'Zadnje uređeno'
+  CMSSettingsController:
+    MENUTITLE: Postavke
+  CMSSiteTreeFilter_Search:
+    Title: 'Sve stranice'
+  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'Objavljeno ali uklonito iz predloška'
+  ContentController:
+    CMS: CMS
+    DRAFT: Predložak
+    DRAFTSITE: 'Predložak'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'Mora biti prijavljeni u CMS da bi ste vidjeli neobjavljeni ili ahivirani sadržaj. <a href="%s">Kliknite ovdje za povratak na objavljenu stranicu.</a>'
+    Email: Email
+    INSTALL_SUCCESS: 'Instalacija uspješna!'
+    InstallFilesDeleted: 'Instalacijske datoteke su uspješno obrisane.'
+    InstallSuccessCongratulations: 'SilverStripe je uspješno instaliran!'
+    LOGGEDINAS: 'Prijavi se kao'
+    LOGIN: Prijavi
+    LOGOUT: 'Odjava'
+    NOTLOGGEDIN: 'Niste prijavljeni'
+    PUBLISHED: Objavljeno
+    PUBLISHEDSITE: 'Objavljena stranica'
+    Password: Lozinka
+    PostInstallTutorialIntro: 'Ova web stranica je pojednostavljena verzija SilverStripe 3 stranice. Kako bi ste nadogradili, pogledajte {link}.'
+    UnableDeleteInstall: 'Nemoguće obrisati instalacijske datoteke. Molimo obrišite datoteke ručno'
+    VIEWPAGEIN: 'Pregledaj stranice u:'
+  ErrorPage:
+    400: '400 - loš zahtjev'
+    401: '401 - neovlašten'
+    403: '403 - zabranjen'
+    404: '404 - nije pronađeno'
+    405: '405 - metoda nije dozvoljena'
+    406: '406 - neprihvatljivo'
+    407: '407 - potrebna Proxy autentičnost'
+    408: '408 - zahtjev pauziran'
+    500: '500 - interna serverska greška'
+    501: '501 - nije implementirano'
+    CODE: 'Kod pogreške'
+    DEFAULTERRORPAGETITLE: 'Stranica nije pronađena'
+    DEFAULTSERVERERRORPAGETITLE: 'Serverska greška'
+    PLURALNAME: 'Stranice greške'
+    SINGULARNAME: 'Stranica greške'
+  File:
+    Title: Naslov
+  Folder:
+    AddFolderButton: 'Dodaj direktorij'
+    DELETEUNUSEDTHUMBNAILS: 'Obriši nekorištene sličice'
+    UNUSEDFILESTITLE: 'Nekorištene datoteke'
+    UNUSEDTHUMBNAILSTITLE: 'Nekorištene sličice'
+    UploadFilesButton: Prenesi
+  LeftAndMain:
+    DELETED: Obrisano.
+    PreviewButton: Pregled
+    SAVEDUP: Spremljeno
   RedirectorPage:
     HASBEENSETUP: 'Stranica za preusjeravanje nema postavljenog preusmjeravanja'
     HEADER: 'Ova stranica preusmjeriti će korisnike na drugu stranicu'
@@ -18,41 +196,125 @@ hr:
     REDIRECTTOEXTERNAL: 'Drugi web'
     REDIRECTTOPAGE: 'Stranicu na Vašom webu'
     YOURPAGE: 'Stranica na Vašem webu'
+  ReportAdmin:
+    MENUTITLE: Izvještaji
+    ReportTitle: Naslov
   SearchForm:
     GO: Kreni
+    SEARCH: Traži
+    SearchResults: 'Rezultati pretraživanja'
   SideReport:
-    EMPTYPAGES: 'Prazne stranice'
+    ContentGroupTitle: 'Sadržajni izvještaji'
+    EMPTYPAGES: 'Stranice bez sadržaja'
     LAST2WEEKS: 'Stranice mijenjane u zadnja 2 tjedna'
+    OtherGroupTitle: Ostali
+    ParameterLiveCheckbox: 'Pregledaj objavljenu stranicu'
+    REPEMPTY: '{title} izvještaj je prazan.'
+  SilverStripeNavigator:
+    ARCHIVED: Arhivirano
+  SilverStripeNavigatorLink:
+    ShareLink: 'Podijeli link'
+  SilverStripeNavigatorLinkl:
+    CloseLink: Zatvori
+  SiteConfig:
+    DEFAULTTHEME: '(koristi predloženu temu)'
+    EDITHEADER: 'Tko može uređivati stranice na ovom webu?'
+    EDIT_PERMISSION: 'Upravljaj konfiguracijom weba'
+    PLURALNAME: 'Konfiguracije weba'
+    SINGULARNAME: 'Konfiguracija weba'
+    SITENAMEDEFAULT: 'Naziv vašeg weba'
+    SITETAGLINE: 'Slogan weba'
+    SITETITLE: 'Naziv weba'
+    TABACCESS: Pristup
+    TABMAIN: Osnovno
+    TAGLINEDEFAULT: 'vaš slogan ovdje'
+    THEME: Tema
+    TOPLEVELCREATE: 'Tko može kreirati stranice u rootu?'
+    VIEWHEADER: 'Tko može pregledavati stranice?'
   SiteTree:
     ACCESSANYONE: Svi
     ACCESSHEADER: 'Tko može pregledavati ovu stranicu?'
     ACCESSLOGGEDIN: 'Samo prijavljeni korisnici'
     ACCESSONLYTHESE: 'Samo ovi korisnici (odaberite s popisa)'
+    ADDEDTODRAFTHELP: 'Stranica nije objavljena'
+    ADDEDTODRAFTSHORT: Predložak
     ALLOWCOMMENTS: 'Dozvoli komentare na stranici'
+    APPEARSVIRTUALPAGES: 'Ovaj sadržaj se pojavljuje na virtualnim stranicama u {title} sekcijama.'
+    ARCHIVEDPAGEHELP: 'Stranica je uklonjena iz neobjavljenog i objavljenog stanja'
+    ARCHIVEDPAGESHORT: Arhivirano
+    BUTTONARCHIVEDESC: 'Odjavi i pošalji u arhivu'
     BUTTONCANCELDRAFT: 'Otkaži promjene na radnoj verziji'
-    BUTTONCANCELDRAFTDESC: 'Obiriši radnu verziju i vrati na trenutno objavljenu verziju stranice'
+    BUTTONCANCELDRAFTDESC: 'Obriši radnu verziju i vrati na trenutno objavljenu verziju stranice'
+    BUTTONPUBLISHED: Objavljeno
+    BUTTONSAVED: Spremljeno
+    BUTTONSAVEPUBLISH: 'Spremi i objavi'
+    BUTTONUNPUBLISH: Odjavi
     BUTTONUNPUBLISHDESC: 'Izbrišite ovu stranicu sa objavljene'
+    Comments: Komentari
     Content: Sadržaj
+    DEFAULTABOUTTITLE: 'O nama'
+    DEFAULTCONTACTTITLE: 'Kontakt'
+    DEFAULTHOMETITLE: Početna
+    DELETEDPAGEHELP: 'Stranica više nije objavljena'
+    DELETEDPAGESHORT: Obrisano
+    DESCRIPTION: 'Obična sadržajna stranica'
+    DependtPageColumnLinkType: 'Tip linka'
+    DependtPageColumnURL: Link
     EDITANYONE: 'Svi koji se mogu prijaviti  u CMS'
     EDITHEADER: 'Tko može uređivati unutar CMSa?'
     EDITONLYTHESE: 'Samo slijedeći korisnici (odaberite s popisa)'
+    EDIT_ALL_DESCRIPTION: 'Uredi bilo koju stranicu'
     HASBROKENLINKS: 'Ova stranica ima pogrešne linkove'
     HTMLEDITORTITLE: Sadržaj
+    INHERIT: 'Naslijedi od matične stranice'
+    LASTPUBLISHED: 'Zadnje objavljeno'
+    LASTSAVED: 'Zadnje spremljeno'
+    LASTUPDATED: 'Zadnje osvježeno'
+    LINKCHANGENOTE: 'Mijenjanjem linka ove stranice također će utjecati na linkove svih povezanih stranica.'
     MENUTITLE: 'Oznaka navigacije'
-    METADESC: 'Opis'
-    METAEXTRA: 'Podešeni Meta Tagovi'
+    METADESC: 'Meta opis'
+    METAEXTRA: 'Prilagođeni Meta tagovi'
+    MODIFIEDONDRAFTHELP: 'Stranica ima neobjavljenih promjena'
+    MODIFIEDONDRAFTSHORT: Izmjenjeno
+    MetadataToggle: Metapodaci
+    MoreOptions: 'Više opcija'
+    NOTPUBLISHED: 'Nije objavljeno'
     PAGETITLE: 'Ime stranice'
     PAGETYPE: 'Vrsta stranice'
+    PARENTID: 'Matična stranica'
+    PARENTTYPE_ROOT: 'Nadstranica'
+    PARENTTYPE_SUBPAGE: 'Podstranica ispod matične stranice'
+    PLURALNAME: Stranice
+    REMOVEDFROMDRAFTSHORT: 'Uklonjen sa predložaka'
     SHOWINMENUS: 'Pokaži u izbornicima?'
     SHOWINSEARCH: 'Pokaži u tražilici?'
+    SINGULARNAME: Stranica
     TABBEHAVIOUR: Karakteristike
     TABCONTENT: 'Sadržaj'
+    TABDEPENDENT: 'Zavisne stranice'
     TOPLEVEL: 'Sadržaj stranice (Top Level)'
     URLSegment: 'Dio URLa'
-    has_one_Parent: 'Roditeljska stranica'
+    VIEW_ALL_DESCRIPTION: 'Pregled bilo koje stranice'
+    VIEW_DRAFT_CONTENT: 'Pregled neobjavljenog sadržaja'
+    Visibility: Vidljivost
+    has_one_Parent: 'Matična stranica'
+  SiteTreeFileExtension:
+    EDIT: Uredi
+  SiteTreeURLSegmentField:
+    EMPTY: 'Molimo unesite dio URLa ili kliknite odustani'
+    HelpChars: 'Posebni znakovi se automatski pretvaraju ili uklanjaju.'
+  URLSegmentField:
+    Cancel: Odustani
+    Edit: Uredi
+    OK: Ok
   ViewArchivedEmail_ss:
-    CANACCESS: 'Na slijedećem linku možete pristupiti arhiviranoj stranici:'
+    CANACCESS: 'Na sljedećem linku možete pristupiti arhiviranoj stranici:'
     HAVEASKED: 'Zatražili ste sadržaj naše stranice '
   VirtualPage:
+    CHOOSE: 'Povezane stranice'
+    DESCRIPTION: 'Prikazuje sadržaj druge stranice'
+    EditLink: uredi
     HEADER: 'Ovo je virtualna stranica'
+    HEADERWITHLINK: 'Ova virtualna stranica kopira sadržaj sa  "{title}" ({link})'
+    PLURALNAME: 'Virtualne stranice'
     SINGULARNAME: 'Virtualna stranica'

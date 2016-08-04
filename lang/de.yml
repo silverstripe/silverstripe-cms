@@ -9,6 +9,7 @@ de:
     AppCategoryImage: Bild
     AppCategoryVideo: Video
     BackToFolder: 'Zurück zum Ordner'
+    CMSMENU_OLD: 'Alte Dateien'
     CREATED: Datum
     CurrentFolderOnly: 'Auf den aktuellen Ordner beschränken?'
     DetailsView: Details
@@ -99,6 +100,7 @@ de:
     PUBALLCONFIRM: 'Veröffentlicht jede Seite des Seitenbaumes und kopiert den Inhalt von Entwurf zu Live.'
     PUBALLFUN: '"Alle veröffentlichen"-Funktion'
     PUBALLFUN2: "Dieser Button bewirkt dasselbe wie auf jeder Seite \"veröffentlichen\" zu wählen. Sie sollten diese Funktion nutzen, wenn grössere Inhaltsänderungen stattgefunden haben, zum Beispiel wenn die Seite erstellt wurde."
+    PUBLISHED: '''{title}'' wurde erfolgreich veröffentlicht.'
     PUBPAGES: 'Abgeschlossen: {count} Seiten wurden veröffentlicht'
     PageAdded: 'Seite erfolgreich erstellt'
     REMOVED: 'Lösche ''{title}''{description} von Live Umgebung'
@@ -112,11 +114,13 @@ de:
     ROLLEDBACKPUBv2: 'Veröffentlichte Version wiederhergestellt'
     ROLLEDBACKVERSIONv2: 'Version #%d wiederhergestellt.'
     SAVE: Speichern
+    SAVED: '''{title}'' erfolgreich gespeichert.'
     SAVEDRAFT: 'Entwurf speichern'
     TabContent: Inhalt
     TabHistory: Historie
     TabSettings: Einstellungen
   CMSMain_left_ss:
+    CLEAR_FILTER: Zurücksetzen
     RESET: Zurücksetzen
   CMSPageAddController:
     MENUTITLE: 'Seite hinzufügen'
@@ -221,7 +225,6 @@ de:
     DEFAULTSERVERERRORPAGETITLE: 'Serverfehler'
     DESCRIPTION: 'Spezieller Inhalt für andere Fehlerfälle (z.B. "Seite nicht gefunden")'
     ERRORFILEPROBLEM: 'Die Datei "{filename}" konnte nicht zum Schreiben geöffnet werden. Bitte überprüfen Sie die Dateiberechtigungen.'
-    PLURALNAME: 'Fehlerseite'
     SINGULARNAME: 'Fehlerseite'
   File:
     Title: Titel
@@ -246,7 +249,6 @@ de:
     HASBEENSETUP: 'Eine Weiterleitungsseite wurde erstellt ohne das eine Weiterleitung definiert wurde.'
     HEADER: 'Diese Seite wird Nutzer auf eine andere Seite weiterleiten'
     OTHERURL: 'Andere Webseiten URL'
-    PLURALNAME: 'Weiterleitungsseite'
     REDIRECTTO: 'Weiterleiten zu'
     REDIRECTTOEXTERNAL: 'Andere Website'
     REDIRECTTOPAGE: 'Eine Seite auf Ihrer Website'
@@ -414,6 +416,5 @@ de:
     EditLink: Bearbeiten
     HEADER: 'Dies ist eine virtuelle Seite'
     HEADERWITHLINK: 'Dies ist eine virtuelle Seite, die den Inhalt von "{title}" ({link}) kopiert'
-    PLURALNAME: 'Virtuelle Seite'
     PageTypNotAllowedOnRoot: 'Der ursprüngliche Seitentyp "{type}" ist nicht zulässig für diese virtuelle Seite. '
     SINGULARNAME: 'Virtuelle Seite'
