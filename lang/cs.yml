@@ -9,6 +9,7 @@ cs:
     AppCategoryImage: Obrázek
     AppCategoryVideo: Video
     BackToFolder: 'Zpět na složku'
+    CMSMENU_OLD: 'Soubory (staré)'
     CREATED: Datum
     CurrentFolderOnly: 'Omezit na aktuální složku?'
     DetailsView: Podrobnosti
@@ -99,6 +100,7 @@ cs:
     PUBALLCONFIRM: 'Prosím zveřejněte veškeré stránky z úschovny'
     PUBALLFUN: 'Funkce "Publikovat vše"'
     PUBALLFUN2: "Stisknutí tohoto tlačítka se rovná zveřejnění každé jednotlivé stránky. Toto tlačítko má být použito, pokud se vyskytly rozsáhlé úpravy obsahu, jako např. když poprvé sestavujete stránky."
+    PUBLISHED: 'Publikováno ''{title}'' úspěšně'
     PUBPAGES: 'Hotovo: Zveřejněno {count} stránek'
     PageAdded: 'Stránka vytvořena úspěšně'
     REMOVED: 'Smazáno ''{title}''{description} z webu'
@@ -112,6 +114,7 @@ cs:
     ROLLEDBACKPUBv2: 'Vráceno zpět na zveřejněnou verzi.'
     ROLLEDBACKVERSIONv2: 'Vráceno zpět na verzi #%d.'
     SAVE: Uložit
+    SAVED: 'Uloženo ''{title}'' úspěšně'
     SAVEDRAFT: 'Uložit koncept'
     TabContent: Obsah
     TabHistory: Historie
@@ -222,7 +225,7 @@ cs:
     DEFAULTSERVERERRORPAGETITLE: 'Chyba serveru'
     DESCRIPTION: 'Vlastní obsah pro různé případy chyb (např. "Stránka nenalezena")'
     ERRORFILEPROBLEM: 'Chyba otevření souboru "{filename}" pro zápis. Zkontrolujte oprávnění souboru, prosím.'
-    PLURALNAME: 'Chybové stránky'
+    PLURALNAME: 'Chybová stránky'
     SINGULARNAME: 'Chybová stránka'
   File:
     Title: Název

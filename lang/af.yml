@@ -83,9 +83,7 @@ af:
     BUTTONUNPUBLISH: Onpubliseer
     BUTTONUNPUBLISHDESC: 'Verwyder hierdie bladsy van die gepubliseerde werf'
     Content: Inhoud
-    DEFAULTABOUTCONTENT: '<p>U kan hierdie bladsy invul met u eie inhoud, of dit verwyder en u eie bladsye skep.<br /></p>'
     DEFAULTABOUTTITLE: 'Oor Ons'
-    DEFAULTCONTACTCONTENT: '<p>U kan hierdie bladsy invul met u eie inhoud, of dit verwyder en u eie bladsye skep.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontak Ons'
     DEFAULTHOMETITLE: Huis
     EDITANYONE: 'Enige iemand wat in die IBS kan inteken'

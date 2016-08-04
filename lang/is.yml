@@ -47,9 +47,7 @@ is:
     BUTTONUNPUBLISHDESC: 'Fjarlægja þessa síðu úr birtum síðum'
     Comments: Athugasemdir
     Content: Efni
-    DEFAULTABOUTCONTENT: '<p>Þú getur fyllt út þessa síðu með þínu efni eða eytt henni og búið til þína eigin síðu.<br/></p>'
     DEFAULTABOUTTITLE: 'Um okkur'
-    DEFAULTCONTACTCONTENT: '<p>Þú getur fyllt út þessa síðu með þínu efni  eða eytt því og búið til þína eigin síður<br/></p>'
     DEFAULTCONTACTTITLE: 'Hafa samband'
     DEFAULTHOMETITLE: Heim
     EDITANYONE: 'Allir þeir sem geta innskráð sig í kerfið'

@@ -301,9 +301,7 @@ nl:
     BUTTONUNPUBLISHDESC: 'Deze pagina verwijderen uit de gepubliceerde site'
     Comments: Commentaar
     Content: Inhoud
-    DEFAULTABOUTCONTENT: '<p>Je kan deze pagina van je eigen inhoud voorzien of de pagina verwijderen en een nieuwe aanmaken.</p>'
     DEFAULTABOUTTITLE: 'Over Ons'
-    DEFAULTCONTACTCONTENT: '<p>Je kan deze pagina vullen met je eigen inhoud, of ze verwijderen en je eigen pagina''s aanmaken.</p>'
     DEFAULTCONTACTTITLE: 'Contact'
     DEFAULTHOMETITLE: Home
     DELETEDPAGEHELP: 'Deze pagina is niet langer gepubliceerd'
