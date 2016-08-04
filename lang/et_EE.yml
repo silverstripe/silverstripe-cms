@@ -282,9 +282,7 @@ et_EE:
     BUTTONUNPUBLISHDESC: 'Eemalda see lehekülg avalikult saidilt'
     Comments: Komentaarid
     Content: Sisu
-    DEFAULTABOUTCONTENT: '<p>Saad selle lehe sisu muuta või selle lehe kustutada.<br /></p>'
     DEFAULTABOUTTITLE: 'Meist'
-    DEFAULTCONTACTCONTENT: '<p>võid selle lehe sisu muuta või selle ära kustutada.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontakt'
     DEFAULTHOMETITLE: Avaleht
     DELETEDPAGEHELP: 'Leht ei ole enam avaldatud'

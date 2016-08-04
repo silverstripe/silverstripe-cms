@@ -221,7 +221,6 @@ lt:
     DEFAULTSERVERERRORPAGETITLE: 'Tarnybinės stoties klaida'
     DESCRIPTION: 'Specifinis turinys, įvairioms klaidoms apibūdinti (Pvz.: "Puslapis nerastas")'
     ERRORFILEPROBLEM: 'Klaida atveriant rašymui bylą "{filename}". Prašome patikrinti bylų leidimus.'
-    PLURALNAME: 'Klaidos puslapiai'
     SINGULARNAME: 'Klaidos puslapis'
   File:
     Title: Pavadinimas
@@ -246,7 +245,6 @@ lt:
     HASBEENSETUP: 'Nukreipimo puslapis neturintis nukreipimo.'
     HEADER: 'Šis puslapis nukreips lankytojus į kitą puslapį'
     OTHERURL: 'Kitos svetainės URL adresas'
-    PLURALNAME: 'Nukreipimo puslapiai'
     REDIRECTTO: 'Nukreipti į'
     REDIRECTTOEXTERNAL: 'Kita svetainė'
     REDIRECTTOPAGE: 'Puslapis Jūsų svetainėje'
@@ -320,9 +318,7 @@ lt:
     BUTTONUNPUBLISHDESC: 'Pašalinti šį puslapį iš publikuojamos svetainės'
     Comments: Komentarai
     Content: Turinys
-    DEFAULTABOUTCONTENT: '<p>Jūs galite į šį puslapį patalpinti savo norimą turinį. Taip pat galite šį puslapį ištrinti ir sukurti visiškai naujus puslapius.<br /></p>'
     DEFAULTABOUTTITLE: 'Apie mus'
-    DEFAULTCONTACTCONTENT: '<p>Jūs galite į šį puslapį patalpinti savo norimą turinį. Taip pat galite šį puslapį ištrinti ir sukurti visiškai naujus puslapius.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontaktai'
     DEFAULTHOMECONTENT: '<p>Sveiki atvykę į SilverStripe! Tai yra pagrindinis puslapis. Jūs galite redaguoti šį puslapį atsidarę <a href="admin/">TVS</a>. Dabar galite naudotis <a href="http://doc.silverstripe.com">programuotojų dokumentacija</a>, arba pradėti nuo <a href = "http://doc.silverstripe.com/doku.php?id=tutorials">SilverStripe pamokų.</a></p>'
     DEFAULTHOMETITLE: Pradžia
@@ -414,6 +410,5 @@ lt:
     EditLink: redaguoti
     HEADER: 'Tai yra virtualus puslapis'
     HEADERWITHLINK: 'Tai yra virtualus puslapis su turiniu iš puslapio "{title}" ({link})'
-    PLURALNAME: 'Virtualūs puslapiai'
     PageTypNotAllowedOnRoot: 'Norimas puslapio tipas "{type}" neleidžiamas šiam virtualiam puslapiui šakniniame lygmenyje.'
     SINGULARNAME: 'Virtualus puslapis'

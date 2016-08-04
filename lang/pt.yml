@@ -275,9 +275,7 @@ pt:
     BUTTONUNPUBLISHDESC: 'Remover esta página do site publicado'
     Comments: Comentários
     Content: Conteúdo
-    DEFAULTABOUTCONTENT: '<p>Pode preencher esta página com o seu próprio conteúdo, ou apagá-la e criar as suas próprias páginas.</p>'
     DEFAULTABOUTTITLE: 'Quem Somos'
-    DEFAULTCONTACTCONTENT: '<p>Pode preencher esta página com o seu próprio conteúdo, ou apagá-la e criar as suas próprias páginas.</p>'
     DEFAULTCONTACTTITLE: 'Contacte-nos'
     DEFAULTHOMETITLE: Página Principal
     DELETEDPAGEHELP: 'A página nunca mais será publicada'
