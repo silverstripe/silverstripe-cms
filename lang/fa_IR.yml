@@ -116,7 +116,6 @@ fa_IR:
     TabHistory: تاریخچه
     TabSettings: تنظیمات
   CMSMain_left_ss:
-    CLEAR_FILTER: پاک‌کردن
     RESET: تنظیم مجدد
   CMSPageAddController:
     MENUTITLE: 'افزودن صفحه'

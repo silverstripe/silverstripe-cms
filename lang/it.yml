@@ -120,7 +120,6 @@ it:
     TabHistory: Archivio
     TabSettings: Impostazioni
   CMSMain_left_ss:
-    CLEAR_FILTER: Ripristina
     RESET: Azzera
   CMSPageAddController:
     MENUTITLE: 'Aggiungi pagina'
