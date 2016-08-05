@@ -216,7 +216,6 @@ pl:
     DEFAULTSERVERERRORPAGETITLE: 'Błąd serwera'
     DESCRIPTION: 'Własna zawartość dla różnych błędów (np. "Strona nie została znaleziona")'
     ERRORFILEPROBLEM: 'Błąd podczas otwierania pliku "{filename}". Proszę sprawdzić uprawnienia do plików.'
-    PLURALNAME: 'Strony błędów'
     SINGULARNAME: 'Strona błędów'
   File:
     Title: Tytuł
@@ -241,7 +240,6 @@ pl:
     HASBEENSETUP: 'Strona przekierowująca została ustawiona bez celu, do którego ma przekierowywać.'
     HEADER: 'Ta strona przeniesie użytkowników na inną stronę'
     OTHERURL: 'Adres URL innej strony'
-    PLURALNAME: 'Strony przekierowujące'
     REDIRECTTO: 'Przenieś do'
     REDIRECTTOEXTERNAL: 'Inna strona'
     REDIRECTTOPAGE: 'Strona na Twojej witrynie'
@@ -313,9 +311,7 @@ pl:
     BUTTONUNPUBLISHDESC: 'Usuń tę stronę z opublikowanej witryny'
     Comments: Komentarze
     Content: Zawartość
-    DEFAULTABOUTCONTENT: '<p>Możesz wypełnić tę stronę własną treścią, usunąć ją i tworzyć własne strony.<br /></p>'
     DEFAULTABOUTTITLE: 'O nas'
-    DEFAULTCONTACTCONTENT: '<p>Możesz wypełnić tę stronę własną treścią, usunąć ją i tworzyć własne strony.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontakt'
     DEFAULTHOMETITLE: Strona główna
     DELETEDPAGEHELP: 'Strona nie jest już opublikowana'
@@ -405,6 +401,5 @@ pl:
     EditLink: edytuj
     HEADER: 'To jest wirtualna strona'
     HEADERWITHLINK: 'Strona wirtualna odzwierciedlająca treść "{title}" ({link})'
-    PLURALNAME: 'Strony wirtualne'
     PageTypNotAllowedOnRoot: '"{type}" nie jest dozwolona dla głównego poziomu wirtualnej strony'
     SINGULARNAME: 'Wirtualna Strona'

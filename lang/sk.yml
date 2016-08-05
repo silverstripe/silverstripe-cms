@@ -9,6 +9,7 @@ sk:
     AppCategoryImage: Obrázok
     AppCategoryVideo: Video
     BackToFolder: 'Späť na priečinok'
+    CMSMENU_OLD: 'Súbory (staré)'
     CREATED: Dátum
     CurrentFolderOnly: 'Obmedziť na aktuálny priečinok?'
     DetailsView: Detaily
@@ -99,6 +100,7 @@ sk:
     PUBALLCONFIRM: 'Prosím, zverejnite všetky stránky webu, zkopírovaním obsahu na verejné'
     PUBALLFUN: 'Funkcia "Publikovať všetko"'
     PUBALLFUN2: "Stlačením tohto tlačidla vykonáte to isté ako keby ste navštívili každú stránku a stlačili \"publikuj\". Je určené na použite po rozsiahlych zmenách obsahu, napríklad keď bol web prvýkrát vytvorený."
+    PUBLISHED: 'Uverejnené "{title}" úspešne.'
     PUBPAGES: 'Hotovo: Publikované {count} stránky'
     PageAdded: 'Stránka vytvorená úspešne'
     REMOVED: 'Smazané ''{title}''{description} z webu'
@@ -112,6 +114,7 @@ sk:
     ROLLEDBACKPUBv2: 'Vrátené späť na zverejnenú verziu.'
     ROLLEDBACKVERSIONv2: 'Vrátené späť na verziu #%d.'
     SAVE: Uložiť
+    SAVED: 'Uložené ''{title}'' úspešne.'
     SAVEDRAFT: 'Uložiť koncept'
     TabContent: Obsah
     TabHistory: História

@@ -85,9 +85,7 @@ zh_TW:
     BUTTONUNPUBLISHDESC: '從正式發布站移除'
     Comments: 意見
     Content: 內容
-    DEFAULTABOUTCONTENT: '<p>您可以用您自己的內容填入本網頁, 或是刪除它並建立您自己的網頁<br /></p>'
     DEFAULTABOUTTITLE: '關於我們'
-    DEFAULTCONTACTCONTENT: '<p>您可以用您自己的內容填入本網頁, 或是刪除它並建立您自己的網頁<br /></p>'
     DEFAULTCONTACTTITLE: '連絡我們'
     DEFAULTHOMETITLE: 首頁
     DELETEDPAGESHORT: 已刪除

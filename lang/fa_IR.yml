@@ -9,6 +9,7 @@ fa_IR:
     AppCategoryImage: تصویر
     AppCategoryVideo: ویدئو
     BackToFolder: 'بازگشت به پوشه'
+    CMSMENU_OLD: 'فایل‌ها (قدیمی)'
     CREATED: تاریخ
     CurrentFolderOnly: 'محدود به پوشه‌ی کنونی؟'
     DetailsView: جزییات
@@ -86,17 +87,30 @@ fa_IR:
     Create: ایجاد
     DELETE: 'حذف پیش‌نویس'
     DELETEFP: حذف کردن از منتشر شده های سایت
+    DESCREMOVED: 'و {count} فرزندان'
+    DUPLICATED: '''{title}'' باموفقیت دونسخه شد'
+    DUPLICATEDWITHCHILDREN: '''{title}'' و زیرمجموعه‌های آن با موفقیت دونسخه شد'
     EMAIL: پست الکترونیک
     EditTree: 'ویرایش درخت'
     MENUTITLE: 'ویرایش صفحه'
     NEWPAGE: '{pagetype} جدید'
     PAGENOTEXISTS: 'این صفحه وجود ندارد'
     PAGETYPEANYOPT: هر
+    PUBALLCONFIRM: 'لطفاً تمامی صفحات موجود در این سایت را منتشر کن، کپی‌کردن محتوای استیج به لایو'
     PUBALLFUN: 'عملکرد "انتشار همه"'
+    PUBLISHED: 'انتشار موفقیت‌آمیز ''{title}'''
+    PUBPAGES: 'انجام شد: انتشار {count} صفحه'
     PageAdded: 'صفحه با موفقیت ایجاد شد'
+    REMOVED: 'حذف ''{title}''{description} از سایت لایو'
+    REMOVEDPAGE: 'حذف ''{title}'' از سایت منتشر شده'
+    REMOVEDPAGEFROMDRAFT: 'حذف ''%s'' از سایت پیش‌نویس'
     RESTORED: 'بازنشانی موفقیت‌آمیز ''{title}'''
+    RESTORE_DESC: 'بازنشانی نسخه‌ی بایگانی‌شده در پیش‌نویس'
     ROLLBACK: 'بازگردانی به این نسخه'
+    ROLLEDBACKPUBv2: 'بازگردانی به نسخه‌ی منتشرشده.'
+    ROLLEDBACKVERSIONv2: 'بازگردانی به نسخه‌ی #%d.'
     SAVE: ذخیره
+    SAVED: 'دخیره‌سازی ''{title}'' باموفقیت انجام شد.'
     SAVEDRAFT: 'ذخیره پیش‌نویس'
     TabContent: محتوا
     TabHistory: تاریخچه
@@ -149,6 +163,8 @@ fa_IR:
     Title: 'تمامی صفحات'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'زنده اما حذف‌شده از پیش‌نویس'
+  ContentControl:
+    NOTEWONTBESHOWN: 'یادداشت: این پیام به بازدیدکنندگان شما نمایش داده نمی‌شود'
   ContentController:
     ARCHIVEDSITE: 'نسخه پیش‌نمایش'
     ARCHIVEDSITEFROM: 'سایت بایگانی شده از'
@@ -167,6 +183,9 @@ fa_IR:
     PUBLISHED: منتشر شده
     PUBLISHEDSITE: 'سایت منتشر شده'
     Password: رمز عبور
+    PostInstallTutorialIntro: 'این وب‌سایت یک نسخه‌ی ساده‌شده از یک سایت سیلوراسترایپ ۳ است. برای گسترش آن، لطفاً به {link} نگاهی بیاندازید.'
+    StartEditing: 'شما می‌توانید با گشودن <a href="{link}">سی‌ام‌اس</a> آغاز به ویرایش محتوا کنید.'
+    UnableDeleteInstall: 'ناتوان از حذف فایل‌های نصبی. لطفاً فایل‌های زیر را بصورت دستی حذف نمایید'
     VIEWPAGEIN: 'مشاهده صفحه در'
   ErrorPage:
     400: '400 - درخواست نادرست'
@@ -175,17 +194,33 @@ fa_IR:
     404: '404 - یافت نشد'
     405: '405 - روش مجاز نیست'
     406: '406 - پذیرفتنی نیست'
+    407: '407 - نیاز به تصدیق پراکسی است'
     408: '408 - زمان درخواست گذشت'
     409: '409 - تضاد'
     410: '410 - از دست رفت'
+    411: '411 - طول مورد نیاز است'
     412: '412 - پیش شرط درست نبود'
+    413: '413 - موجودیت درخواست بسیار بزرگ است'
+    414: '414 - نشانی اینترنتی در خواست شده بسیار طولانی است'
+    415: '415 - نوع رسانه پشتیبانی نمی‌شود'
+    416: '416 - محدوده‌ی درخواست شده رضایت‌پذیر نیست'
+    417: '417 - انتظار با شکست مواجه شده است'
+    422: '422 - موجودیت غیرقابل پردازش'
     429: '429 - درخواست‌های بسیار'
     500: '500 - خطای داخلی سرور'
+    501: '501 - اجرا نشده'
     502: '502 - درگاه نادرست'
+    503: '503 - سرویس در دسترس نیست'
+    504: '504 - وقفه‌ در درگاه'
+    505: '505 - نگارش HTTP پشتیبانی نمی‌شود'
     CODE: 'کد خطا'
+    DEFAULTERRORPAGECONTENT: '<p>متاسفانه، به‌نظر می‌رسد شما در تلاش برای دستیابی به صفحه‌ای هستید که وجود ندارد.</p><p>لطفاً نشانی اینترنتی را از جهت وجود خطای نگارشی بررسی و مجدداً تلاش نمایید.</p>'
     DEFAULTERRORPAGETITLE: 'برگ پیدا نشد'
     DEFAULTSERVERERRORPAGECONTENT: '<p>با پوزش، در پردازش درخواست شما ایرادی بوجود آمد.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'خطای سرور'
+    DESCRIPTION: 'محتوای دلخواه برای وضعیت‌های گوناگون خطا (به عنوان مثال "صفحه یافت نشد")'
+    ERRORFILEPROBLEM: 'خطا در بازکردن فایل "{filename}" جهت نگارش. لطفاً اجازه‌های دسترسی فایل را بررسی نمایید.'
+    PLURALNAME: 'صفحات خطا'
     SINGULARNAME: 'صفحه‌ی خطا'
   File:
     Title: عنوان
@@ -209,6 +244,7 @@ fa_IR:
     DESCRIPTION: 'به صفحه‌ی داخلی دیگری هدایت می‌کند'
     HEADER: 'این صفحه کاربران را به صفحه‌ای دیگر هدایت می‌کند'
     OTHERURL: 'نشانی تارگاه دیگر'
+    PLURALNAME: 'صفحات هدایت‌گر'
     REDIRECTTO: 'بازگردانی به'
     REDIRECTTOEXTERNAL: 'یک تارگاه دیگر'
     REDIRECTTOPAGE: 'یک برگ روی تارگاه شما'
@@ -219,6 +255,9 @@ fa_IR:
     ReportTitle: عنوان
   ReportAdminForm:
     FILTERBY: 'فیلتر به وسیله'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'لطفاً صفحه‌ی پیوند‌شده را ذخیره نمایید تا صفحه‌ی مجازی انتشار یابد'
+    VIRTUALPAGEWARNING: 'لطفاً یک صفحه‌ی پیوند‌شده را انتخاب نموده و ذخیره نمایید تا این صفحه بتواند منتشر شود'
   SearchForm:
     GO: برو
     SEARCH: جستجو
@@ -226,6 +265,8 @@ fa_IR:
   SideReport:
     BROKENFILES: 'صفحات دارای فایل معیوب'
     BROKENLINKS: 'صفحات دارای پیوند معیوب'
+    BROKENREDIRECTORPAGES: 'صفحات ارجاعی اشاره‌کننده به صفحات حذف شده'
+    BROKENVIRTUALPAGES: 'صفحات مجازی اشاره‌کننده به صفحات حذف شده'
     BrokenLinksGroupTitle: 'گزارش پیوندهای معیوب'
     ContentGroupTitle: 'گزارشات محتوا'
     EMPTYPAGES: 'صفحات بدون مطلب'
@@ -266,6 +307,7 @@ fa_IR:
     ARCHIVEDPAGESHORT: بایگانی شده
     BUTTONARCHIVEDESC: 'عدم انتشار و ارسال به بایگانی'
     BUTTONCANCELDRAFT: 'لغو تغییرات پیش‌نویس'
+    BUTTONCANCELDRAFTDESC: 'حذف پیش‌نویس و بازگردانی به نسخه‌ی منتشر‌شده‌ی کنونی'
     BUTTONPUBLISHED: منتشر شده
     BUTTONSAVED: ذخیره شده
     BUTTONSAVEPUBLISH: 'ذخیره و انتشار'
@@ -273,7 +315,9 @@ fa_IR:
     BUTTONUNPUBLISHDESC: 'حذف این صفحه از سایت منتشر شده'
     Comments: دیدگاه‌ها
     Content: درون مایه
+    DEFAULTABOUTCONTENT: '<p>می‌توانید این صفحه را با درج محتوای خود ویرایش نمایید، یا آن‌را حذف و صفحات خود را ایجاد نمایید.<br /></p>'
     DEFAULTABOUTTITLE: 'درباره ما'
+    DEFAULTCONTACTCONTENT: '<p>می‌توانید این صفحه را با درج محتوای خود ویرایش نمایید، یا آن‌را حذف و صفحات خود را ایجاد نمایید.<br /></p>'
     DEFAULTCONTACTTITLE: 'تماس با ما'
     DEFAULTHOMECONTENT: '<p>به سیلوراسترایپ خوش آمدید! این صفحه اصلی پیش فرض است. میتوانید این صفحه را با بازکردن <a href="admin/">سامانه مدیریت محتوا</a> ویرایش نمایید.</p><p>میتوانید به<a href="http://docs.silverstripe.org">مستندات توسعه دهندگان</a> دسترسی یابید، و یا <a href="http://www.silverstripe.org/learn/lessons">درس های سیلوراسترایپ</a> را آغاز نمایید.</p>'
     DEFAULTHOMETITLE: خانه
@@ -305,16 +349,22 @@ fa_IR:
     MetadataToggle: متاداده
     MoreOptions: 'گزینه‌های بیشتر'
     NOTPUBLISHED: 'منتشر نشده'
+    OBSOLETECLASS: 'این صفحه از نوع منسوخ شده {type} است. ذخیره‌سازی سبب نوگردانی مدل آن شده و ممکن است داده‌هایی از دست برود'
     PAGELOCATION: 'موقعیت صفحه'
     PAGETITLE: 'نام برگ'
     PAGETYPE: 'نوع برگ'
     PARENTID: 'برگ مادر'
     PARENTTYPE: 'جایگاه برگ'
     PARENTTYPE_ROOT: 'صفحه‌ی سطح بالا'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'مدیریت اجازه‌های دسترسی به محتوا'
     PLURALNAME: صفحات
+    PageTypNotAllowedOnRoot: 'وجود نوع صفحه‌ی "{type}" در بخش ریشه‌ی سایت مجاز نیست.'
+    PageTypeNotAllowed: 'وجود نوع صفحه‌ی "{type}" به عنوان فرزند این صفحه‌ی والد مجاز نیست.'
+    REMOVEDFROMDRAFTHELP: 'صفحه منتشر شده، اما از پیش‌نویس حذف گردیده است'
     REMOVEDFROMDRAFTSHORT: 'حذف شده از پیش‌نویس'
     REMOVE_INSTALL_WARNING: 'هشدار: به دلایل امنیتی بایستی فایل install.php را از این سیلوراسترایپ نصب شده حذف نمایید.'
     REORGANISE_DESCRIPTION: 'تغییر ساختار سایت'
+    REORGANISE_HELP: 'مرتب‌سازی صفحات در این لیست درختی از طریق برداشتن و انداختن.'
     SHOWINMENUS: 'نمایش در منوها؟'
     SHOWINSEARCH: 'نمایش در جستجو ؟'
     SINGULARNAME: صفحه
@@ -334,6 +384,9 @@ fa_IR:
     many_many_LinkTracking: 'ردیابی پیوند'
   SiteTreeFileExtension:
     EDIT: ویرایش
+  SiteTreeURLSegmentField:
+    EMPTY: 'لطفاً یک بخش نشانی اینترنتی را درج نمایید یا روی لغو کلیک کنید.'
+    HelpChars: 'کاراکترهای ویژه به‌طور خودکار تبدیل یا حذف می‌شوند.'
   URLSegmentField:
     Cancel: لغو
     Edit: ویرایش

@@ -61,20 +61,27 @@ ja:
   CMSAddPageController:
     Title: 'ページを追加'
   CMSBatchActions:
+    ARCHIVE: アーカイブ
+    ARCHIVED_PAGES: '%dページをアーカイブしました'
     DELETED_DRAFT_PAGES: '%dページを下書きサイトから削除しましたが、%dページの削除に失敗しました。'
     DELETED_PAGES: '%dページを公開サイトから削除しましたが、%dページの削除に失敗しました。'
     DELETE_DRAFT_PAGES: '下書きサイトから削除'
     DELETE_PAGES: '公開サイトから削除'
     PUBLISHED_PAGES: '%dページを公開しましたが、%dページの公開に失敗しました。'
     PUBLISH_PAGES: 公開
+    RESTORE: 復元
+    RESTORED_PAGES: '%dページを復元しました'
   CMSFileAddController:
     MENUTITLE: ファイル
   CMSMain:
     ACCESS: '''{title}'' セクションにアクセス'
     ACCESS_HELP: 'ページツリーとコンテンツを含むセクションの閲覧を許可します。　表示および編集の権限は、ページの特定のドロップダウンだけでなく、独立した"コンテンツの権限"を介して処理することができます。'
+    ARCHIVE: アーカイブ
+    ARCHIVEDPAGE: '''%s''ページがアーカイブされました'
     AddNew: '新しいページを追加'
     AddNewButton: '新しく追加'
     AddPageRestriction: '注：一部の種類のページは、この選択には含まれていません'
+    Cancel: キャンセル
     ChoosePageParentMode: 'このページを作成する場所を選択'
     ChoosePageType: 'ページの種類を選択'
     Create: 作成
@@ -107,6 +114,7 @@ ja:
     TabHistory: 履歴
     TabSettings: 設定
   CMSMain_left_ss:
+    CLEAR_FILTER: クリア
     RESET: リセット
   CMSPageAddController:
     MENUTITLE: 'ページを追加'
@@ -140,10 +148,13 @@ ja:
     TreeView: 'ツリー表示'
   CMSPagesController_Tools_ss:
     FILTER: フィルタ
+  CMSSIteTreeFilter_PublishedPages:
+    Title: '公開済みページ'
   CMSSearch:
     FILTERDATEFROM: 開始日
     FILTERDATEHEADING: 日付
     FILTERDATETO: 終了日
+    PAGEFILTERDATEHEADING: '最後に編集された'
   CMSSettingsController:
     MENUTITLE: 設定
   CMSSiteTreeFilter_Search:
@@ -191,6 +202,8 @@ ja:
     415: '415 - サポートされていないメディアです'
     416: '416 - リクエストの長さが満たされていません'
     417: '417 - 期待には沿えませんでした'
+    422: '422 - 処理できないエンティティ'
+    429: '429 - リクエスト過多'
     500: '500 - 本質的なサーバーエラーです'
     501: '501 - 実施できません'
     502: '502 - Gatewayとして正しくありません'
@@ -204,7 +217,10 @@ ja:
     DEFAULTSERVERERRORPAGETITLE: 'サーバーエラー'
     DESCRIPTION: 'それぞれのエラーケースに対してカスタムコンテンツを表示する(例:"ページがありません")'
     ERRORFILEPROBLEM: '書き込み用のファイル"{filename}"を開く際にエラーが発生しました。　ファイルの権限を確認してください。'
+    PLURALNAME: 'エラーページ'
     SINGULARNAME: 'エラーページ'
+  File:
+    Title: タイトル
   Folder:
     AddFolderButton: 'フォルダの追加'
     DELETEUNUSEDTHUMBNAILS: '未使用のサムネイルを削除'
@@ -226,6 +242,7 @@ ja:
     HASBEENSETUP: '転送URLを含むページには、転送先がない状態で設定されています。'
     HEADER: 'このページをユーザーを変更して他のページにしますか？'
     OTHERURL: '他のウェブサイトのURL'
+    PLURALNAME: 'リダイレクトページ'
     REDIRECTTO: '変更は'
     REDIRECTTOEXTERNAL: '他のウェブサイト'
     REDIRECTTOPAGE: '貴方のウェブサイトを表示します'
@@ -287,6 +304,8 @@ ja:
     ADDEDTODRAFTSHORT: 下書き
     ALLOWCOMMENTS: 'コメントを許可しますか？'
     APPEARSVIRTUALPAGES: 'このコンテンツは{title}として仮想ページにおいても表示されます。'
+    ARCHIVEDPAGESHORT: アーカイブされました
+    BUTTONARCHIVEDESC: '非公開にし、アーカイブに送られました'
     BUTTONCANCELDRAFT: '草稿の編集内容を取り消します'
     BUTTONCANCELDRAFTDESC: '草稿と前回公開されたページを削除します'
     BUTTONPUBLISHED: 公開された
@@ -296,9 +315,7 @@ ja:
     BUTTONUNPUBLISHDESC: '公開サイトから取り除きました'
     Comments: コメント
     Content: コンテンツ
-    DEFAULTABOUTCONTENT: '<p>あなた自身、自由にページに書き込むことが出来、もちろん添削も自由に行えます。<br /></p>'
     DEFAULTABOUTTITLE: '私たちについて'
-    DEFAULTCONTACTCONTENT: '<p>あなた自身、自由にページに書き込むことが出来、もちろん添削も自由に行えます。<br /></p>'
     DEFAULTCONTACTTITLE: '連絡はこちらまで'
     DEFAULTHOMETITLE: ホーム
     DELETEDPAGEHELP: 'このページは今は公開されていません。'
@@ -370,6 +387,8 @@ ja:
     many_many_BackLinkTracking: 'リンク元を追跡'
     many_many_ImageTracking: '画像へのリンクを追跡'
     many_many_LinkTracking: 'リンクを追跡'
+  SiteTreeFileExtension:
+    EDIT: 編集
   SiteTreeURLSegmentField:
     EMPTY: 'URLのセグメントを入力または中止をクリックする'
     HelpChars: '特殊文字は自動的に変換されたか取り除かれました'
@@ -386,5 +405,6 @@ ja:
     EditLink: 編集
     HEADER: 'これがバーチャルページです'
     HEADERWITHLINK: 'これは "{title}" ({link}) からコンテンツをコピーしている仮想ページです'
+    PLURALNAME: '仮想ページ'
     PageTypNotAllowedOnRoot: 'この仮想ページに対して元のページの種類{type}はルートレベルに配置されることが許可されていません。'
     SINGULARNAME: '仮想ページ'

@@ -140,9 +140,7 @@ es_AR:
     BUTTONUNPUBLISHDESC: 'Quitar ésta página del sitio público'
     Comments: Comentarios
     Content: Contenido
-    DEFAULTABOUTCONTENT: '<p>Puedes llenar esta páigna con tu propio contenido, o eliminarla y crear tus propias páginas.<br /></p>'
     DEFAULTABOUTTITLE: 'de Nosotros'
-    DEFAULTCONTACTCONTENT: '<p>Puedes llenar esta página con tu propio contenido, o eliminarla y crear tus propias páginas.<br /></p>'
     DEFAULTCONTACTTITLE: 'Contactenos'
     DEFAULTHOMETITLE: Inicio
     DEPENDENT_NOTE: 'Las siguientes páginas dependen de esta página. Esto incluye páginas virtuales, páginas de redireccionamiento y páginas con enlaces de contenido.'

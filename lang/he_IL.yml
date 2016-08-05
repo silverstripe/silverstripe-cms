@@ -275,9 +275,7 @@ he_IL:
     BUTTONUNPUBLISHDESC: 'הסרת עמוד זה מהאתר שפורסם'
     Comments: תגובות
     Content: תוכן
-    DEFAULTABOUTCONTENT: '<p>ניתן למלא עמוד זה בתוכן שלך, או למחוק אותו וליצור עמודים משלך.<br /></p>'
     DEFAULTABOUTTITLE: 'על אודותינו'
-    DEFAULTCONTACTCONTENT: '<p>ניתן למלא עמוד זה בתוכן משלך, או למחוק אותו וליצור עמודים משלך.<br /></p>'
     DEFAULTCONTACTTITLE: 'יצירת קשר'
     DEFAULTHOMETITLE: דף הבית
     DELETEDPAGEHELP: 'העמוד אינו מפורסם עוד'
