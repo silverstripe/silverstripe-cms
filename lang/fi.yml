@@ -72,8 +72,6 @@ fi:
     PUBLISH_PAGES: Julkaise
     RESTORE: Palauta
     RESTORED_PAGES: 'Palautettu %d sivua'
-    UNPUBLISHED_PAGES: 'Poistettiin näkyvistä %d sivua'
-    UNPUBLISH_PAGES: Poista näkyvistä
   CMSFileAddController:
     MENUTITLE: Tiedostot
   CMSMain:
@@ -95,13 +93,10 @@ fi:
     DUPLICATEDWITHCHILDREN: '''{title}'' ja alasivu monistettiin onnistuneesti'
     EMAIL: Sähköposti
     EditTree: 'Muokkaa rakennepuuta'
-    ListFiltered: 'Näytetään haun tulokset.'
     MENUTITLE: 'Muokkaa sivua'
     NEWPAGE: 'Uusi {pagetype}'
     PAGENOTEXISTS: 'Tätä sivua ei ole olemassa'
-    PAGES: 'Sivun tila'
     PAGETYPEANYOPT: Mikä tahansa
-    PAGETYPEOPT: 'Sivun tyyppi'
     PUBALLCONFIRM: 'Julkaise jokainen sivu tällä sivustolla kopioiden luonnosten sisältö julkiselle sivustolle'
     PUBALLFUN: 'Julkaise kaikki -toiminto'
     PUBALLFUN2: "Painamalla tätä nappia, tekee se saman kuin kävisit painamassa joka sivulla \"julkaise\". Se on käytännöllinen, jos on tehnyt isoja muutoksia sisältöön, esim. kun sivusto luotiin."
@@ -111,7 +106,6 @@ fi:
     REMOVED: 'Poista ''{title}''{description} näkyvältä sivustolta'
     REMOVEDPAGE: '''{title}'' poistettiin julkaistulta sivustolta'
     REMOVEDPAGEFROMDRAFT: 'Poistettu ''%s'' luonnossivustolta'
-    RESTORE: 'Palauta luonnos'
     RESTORED: '''{title}'' palautettiin onnistuneesti'
     RESTORE_DESC: 'Palauta arkistoitu versio luonnokseksi'
     RESTORE_TO_ROOT: 'Palauta luonnos päätasolle'
@@ -125,11 +119,7 @@ fi:
     TabContent: Sisältö
     TabHistory: Historia
     TabSettings: Asetukset
-    TreeFiltered: 'Näytetään haun tulokset.'
-    TreeFilteredClear: Tyhjennä
   CMSMain_left_ss:
-    APPLY_FILTER: Etsi
-    CLEAR_FILTER: Tyhjennä
     RESET: Nollaa
   CMSPageAddController:
     MENUTITLE: 'Lisää sivu'
@@ -161,8 +151,6 @@ fi:
     ListView: 'Listanäkymä'
     MENUTITLE: Sivut
     TreeView: 'Puunäkymä'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: 'Sarjatoiminnot'
   CMSPagesController_Tools_ss:
     FILTER: Suodata
   CMSSIteTreeFilter_PublishedPages:
@@ -171,20 +159,11 @@ fi:
     FILTERDATEFROM: Alkaen
     FILTERDATEHEADING: Pvm
     FILTERDATETO: Päättyen
-    FILTERLABELTEXT: Haku
     PAGEFILTERDATEHEADING: 'Viimeksi muokattu'
   CMSSettingsController:
     MENUTITLE: Asetukset
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Muokatut sivut'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Kaikki sivut, mukaan lukien arkistoidut'
   CMSSiteTreeFilter_Search:
     Title: 'Kaikki sivut'
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Arkistoidut sivut'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Vedokset'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Näkyvillä, mutta poistettu luonnoksista'
   ContentControl:
@@ -304,7 +283,6 @@ fi:
   SilverStripeNavigator:
     ARCHIVED: Arkistoitu
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Jakaaksesi tämä sivu, kopioi ja liitä oheinen linkki.'
     ShareLink: 'Jaa linkki'
   SilverStripeNavigatorLinkl:
     CloseLink: Sulje
@@ -354,7 +332,7 @@ fi:
     DELETEDPAGEHELP: 'Sivu ei ole enää julkaistuna'
     DELETEDPAGESHORT: Poistettu
     DEPENDENT_NOTE: 'Seuraavat sivut riippuvat tästä sivusta. Tämä pitää sisällään virtuaaliset sivut, uudelleenohjaussivut ja sivut sisältölinkkien kanssa.'
-    DESCRIPTION: 'Yleinen sisältösivu'
+    DESCRIPTION: 'Yleissisältösivu'
     DependtPageColumnLinkType: 'Linkin tyyppi'
     DependtPageColumnURL: URL
     EDITANYONE: 'Jokainen, joka voi kirjautua sisään CMS:ään.'
