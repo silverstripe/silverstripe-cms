@@ -120,7 +120,6 @@ fi:
     TabHistory: Historia
     TabSettings: Asetukset
   CMSMain_left_ss:
-    CLEAR_FILTER: Tyhjennä
     RESET: Nollaa
   CMSPageAddController:
     MENUTITLE: 'Lisää sivu'
