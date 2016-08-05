@@ -398,4 +398,5 @@ fa_IR:
     DESCRIPTION: 'نمایش محتوای صفحه ی دیگر'
     EditLink: ویرایش
     HEADER: 'این یک صفحه مجازی است'
+    PLURALNAME: 'صفحات مجازی'
     SINGULARNAME: 'صفحه مجازی'
