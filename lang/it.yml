@@ -9,6 +9,7 @@ it:
     AppCategoryImage: Immagine
     AppCategoryVideo: Video
     BackToFolder: 'Torna alla cartella'
+    CMSMENU_OLD: 'Files (vecchio)'
     CREATED: Data creazione
     CurrentFolderOnly: 'Limita alla cartella corrente?'
     DetailsView: Dettagli
@@ -76,7 +77,7 @@ it:
   CMSMain:
     ACCESS: 'Accesso alla sezione ''{title}'''
     ACCESS_HELP: 'Consente la visualizzazione della sezione con l''albero delle pagine e i contenuti. I permessi di visualizzazione e modifica possono essere gestiti attraverso menù a tendina specifici della pagina, come dai separati "Permessi sui contenuti".'
-    ARCHIVE: Archiviare
+    ARCHIVE: Archivia
     ARCHIVEDPAGE: 'Pagina ''%s'' archiviata'
     AddNew: 'Aggiungi nuova pagina'
     AddNewButton: 'Aggiungi nuova'
@@ -99,6 +100,7 @@ it:
     PUBALLCONFIRM: 'Per favore pubblica ogni singola pagina nel sito, copiando i contenuti da ''bozza'' a ''pubblicato''.'
     PUBALLFUN: 'Funzione "Pubblica tutto"'
     PUBALLFUN2: "Cliccare questo bottone equivale ad accedere a tutte le pagine e cliccare 'pubblica'. Tale bottone è inteso per essere utilizzato dopo aver apportato modifiche di massa ai contenuti, come nella prima pubblicazione del sito."
+    PUBLISHED: 'Pubblicata ''{title}'' con successo.'
     PUBPAGES: 'Fatto: Pubblicate {count} pagine'
     PageAdded: 'Pagina creata con successo'
     REMOVED: '''{title}'' {description} rimosso dal sito pubblico'
@@ -112,7 +114,8 @@ it:
     ROLLEDBACKPUBv2: 'Ripristinata la versione pubblicata.'
     ROLLEDBACKVERSIONv2: 'Ripristinata la versione #%d.'
     SAVE: Salva
-    SAVEDRAFT: 'Bozza salvata'
+    SAVED: '''{title}'' salvata correttamente.'
+    SAVEDRAFT: 'Salva bozza'
     TabContent: Contenuto
     TabHistory: Archivio
     TabSettings: Impostazioni
@@ -221,6 +224,7 @@ it:
     DEFAULTSERVERERRORPAGETITLE: 'Errore server'
     DESCRIPTION: 'Contenuto personalizzato per differenti casi di errore (es. "Pagina non trovata")'
     ERRORFILEPROBLEM: 'Errore nell''apertura del file "{filename}" per la scrittura. Controlla i permessi del file.'
+    PLURALNAME: 'Pagine Errore'
     SINGULARNAME: 'Pagine errore'
   File:
     Title: Titolo

@@ -1,9 +1,12 @@
 tr:
   AssetAdmin:
+    ADDFILES: 'Dosyaları ekle'
     ActionAdd: 'Klasör ekle'
     AppCategoryArchive: Arşiv
     AppCategoryAudio: Ses
+    AppCategoryDocument: Belge
     AppCategoryImage: Görüntü
+    AppCategoryVideo: Video
     FILES: Dosyalar
     Filetype: 'Dosya türü'
     NEWFOLDER: YeniKlasör
