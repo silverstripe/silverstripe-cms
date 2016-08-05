@@ -71,8 +71,6 @@ bg:
     PUBLISH_PAGES: Публикувай
     RESTORE: Възстанови
     RESTORED_PAGES: 'Бяха възстановени %d страници'
-    UNPUBLISHED_PAGES: 'Бяха премахнати от публикация %d страници'
-    UNPUBLISH_PAGES: Премахни от публикация
   CMSFileAddController:
     MENUTITLE: Файлове
   CMSMain:
@@ -93,13 +91,10 @@ bg:
     DUPLICATEDWITHCHILDREN: '''{title}'' и под-страниците бяха успешно дублирани'
     EMAIL: Ел. поща
     EditTree: 'Редактиране на дървото'
-    ListFiltered: 'Резултат от търсенето'
     MENUTITLE: 'Редактиране на страницата'
     NEWPAGE: 'Нова страница {pagetype}'
     PAGENOTEXISTS: 'Тази страница не съществува'
-    PAGES: 'Статус на страницата'
     PAGETYPEANYOPT: Всички
-    PAGETYPEOPT: 'Тип на страницата'
     PUBALLCONFIRM: 'Публикувай всяка страница в сайта'
     PUBALLFUN: 'Функционалност "Публикувай всичко"'
     PUBALLFUN2: "Натискайки този бутон все едно, публикувате всяка страница по отделно. Идеята е тази функционалност да се използва при мащабна редакция на съдържанието, като например случая когато сайта бива първоначално попълнен."
@@ -108,7 +103,6 @@ bg:
     PageAdded: 'Страницата беше създадена успешно'
     REMOVEDPAGE: 'Страница ''{title}'' беше премахната от публикувания сайт'
     REMOVEDPAGEFROMDRAFT: 'Премахната(и) ''%s'' от черновите'
-    RESTORE: 'Възстанови чернова'
     RESTORED: 'Успешно възтановен/а ''{title}'''
     RESTORE_DESC: 'Възстанови архивираната версия до чернова'
     RESTORE_TO_ROOT: 'Възстанови черновата на най-високо ниво'
@@ -122,11 +116,7 @@ bg:
     TabContent: Съдържание
     TabHistory: История
     TabSettings: Настройки
-    TreeFiltered: 'Резултат от търсенето'
-    TreeFilteredClear: Изчисти
   CMSMain_left_ss:
-    APPLY_FILTER: Търси
-    CLEAR_FILTER: Изчисти
     RESET: Нулирай
   CMSPageAddController:
     MENUTITLE: 'Добави страница'
@@ -158,8 +148,6 @@ bg:
     ListView: 'Изглед в списък'
     MENUTITLE: Страници
     TreeView: 'Дървовиден изглед'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: 'Групови действия'
   CMSPagesController_Tools_ss:
     FILTER: Филтър
   CMSSIteTreeFilter_PublishedPages:
@@ -168,20 +156,11 @@ bg:
     FILTERDATEFROM: От
     FILTERDATEHEADING: Дата
     FILTERDATETO: До
-    FILTERLABELTEXT: Търсене
     PAGEFILTERDATEHEADING: 'Последна редакция'
   CMSSettingsController:
     MENUTITLE: Настройки
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Променени страници'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Всички страници, вкл. архивираните'
   CMSSiteTreeFilter_Search:
     Title: 'Всички страници'
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Архивирани страници'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Чернови'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Страници, чиито чернови са били изтрити'
   ContentControl:
