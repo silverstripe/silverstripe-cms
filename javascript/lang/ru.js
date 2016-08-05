@@ -33,7 +33,6 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "CMSMain.Archive": "Вы действительно хотите отправить в архив эту страницу и все вложенные страницы?\n\nЭта страница и все вложенные страницы будут сняты с публикации и отправлены в архив.",
     "CMSMain.ConfirmRestoreFromLive": "Are you sure you want to revert draft to when the page was last published?",
     "CMSMain.DeleteFromDraft": "Are you sure you want to remove your page from the draft site?\n\nThis page will remain on the published site.",
-    "CMSMain.Restore": "Are you sure you want to restore this page from archive?",
     "CMSMain.Restore": "Вы действительно хотите восстановить эту страницу из архива?",
     "CMSMain.RestoreToRoot": "Are you sure you want to restore this page from archive?\n\nBecause the parent page is not available this will be restored to the top level.",
     "CMSMain.RollbackToVersion": "Вы действительно хотите восстановить версию #%s этой страницы?",
