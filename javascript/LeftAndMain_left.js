@@ -269,6 +269,8 @@ TreeNodeAPI.prototype = {
 	 */
 	oncontextmenu: function(event) {
 		if(TreeContextMenu) {
+			// lazy loading TreeContextMenu items, so that we can use i18n
+			if (TreeContextMenu.init) TreeContextMenu.init();
 			if(!event) event = window.event;
 			createContextMenu(event, this, TreeContextMenu);
 			Event.stop(event);
