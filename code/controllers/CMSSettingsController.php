@@ -30,7 +30,10 @@ class CMSSettingsController extends LeftAndMain {
 		$form->addExtraClass('cms-edit-form cms-panel-padded center');
 		// don't add data-pjax-fragment=CurrentForm, its added in the content template instead
 
-		if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
+		// Tab nav in CMS is rendered through separate template
+		if($form->Fields()->hasTabset()) {
+			$form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet')->removeExtraClass('ss-tabset');
+		}
 		$form->setHTMLID('Form_EditForm');
 		$form->loadDataFrom($siteConfig);
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));

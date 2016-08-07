@@ -294,7 +294,9 @@ JS
 		// TODO Can't merge $FormAttributes in template at the moment
 		$form->addExtraClass('cms-edit-form cms-panel-padded center ' . $this->BaseCSSClasses());
 		$form->setAttribute('data-pjax-fragment', 'CurrentForm');
-		$form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
+		
+		// Tab nav in CMS is rendered through separate template
+		$form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet')->removeExtraClass('ss-tabset');
 
 		$this->extend('updateEditForm', $form);
 
