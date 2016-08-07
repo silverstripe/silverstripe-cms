@@ -1892,11 +1892,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			(self::nested_urls() && $this->ParentID ? $this->Parent()->RelativeLink(true) : null)
 		);
 		
-		
-		
-		$url = (strlen($baseLink) > 36) ? "..." .substr($baseLink, -32) : $baseLink;
 		$urlsegment = new SiteTreeURLSegmentField("URLSegment", $this->fieldLabel('URLSegment'));
-		$urlsegment->setURLPrefix($url);
+		$urlsegment->setBaseLink($baseLink);
 		$helpText = (self::nested_urls() && count($this->Children())) ? $this->fieldLabel('LinkChangeNote') : '';
 		if(!URLSegmentFilter::$default_allow_multibyte) {
 			$helpText .= $helpText ? '<br />' : '';
