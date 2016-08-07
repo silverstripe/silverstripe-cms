@@ -435,7 +435,7 @@ class LeftAndMain extends Controller {
 					$linkingmode = "current";
 				
 				// default menu is the one with a blank {@link url_segment}
-				} else if(singleton($menuItem->controller)->stat('url_segment') == '') {
+				} else if($menuItem->controller && singleton($menuItem->controller)->stat('url_segment') == '') {
 					if($this->Link() == $this->stat('url_base').'/') $linkingmode = "current";
 
 				} else {
@@ -446,7 +446,7 @@ class LeftAndMain extends Controller {
 			// already set in CMSMenu::populate_menu(), but from a static pre-controller
 			// context, so doesn't respect the current user locale in _t() calls - as a workaround,
 			// we simply call LeftAndMain::menu_title_for_class() again if we're dealing with a controller
-			if($menuItem->controller) {
+			if(empty($menuItem->title) && $menuItem->controller) {
 				$defaultTitle = LeftAndMain::menu_title_for_class($menuItem->controller);
 				$title = _t("{$menuItem->controller}.MENUTITLE", $defaultTitle);
 			} else {
