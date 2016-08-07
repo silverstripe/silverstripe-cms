@@ -364,7 +364,7 @@ $(document).ready(function() {
 				if(!this.future || !this.future.length) {
 				    $('#Form_EditForm_action_goForward, #Form_ResultsForm_action_goForward').hide();
 			    }
-				if(!this.history || this.history.length <= 1) {
+				if(!this.history || this.history.length < 1) {
 				    $('#Form_EditForm_action_goBack, #Form_ResultsForm_action_goBack').hide();
 				
 					// we don't need save and delete button on result form
