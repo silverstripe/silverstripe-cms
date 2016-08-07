@@ -1211,6 +1211,18 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertFalse($page->isPublished());
 	}
 
+	public function testCanNot() {
+		// Test that
+		$this->logInWithPermission('ADMIN');
+		$page = new SiteTreeTest_AdminDenied();
+		$this->assertFalse($page->canCreate());
+		$this->assertFalse($page->canEdit());
+		$this->assertFalse($page->canDelete());
+		$this->assertFalse($page->canAddChildren());
+		$this->assertFalse($page->canPublish());
+		$this->assertFalse($page->canView());
+	}
+
 }
 
 /**#@+
@@ -1292,4 +1304,23 @@ class SiteTreeTest_Extension extends DataExtension implements TestOnly {
 		return false;
 	}
 
+}
+
+class SiteTreeTest_AdminDenied extends Page implements TestOnly {
+	private static $extensions = array(
+		'SiteTreeTest_AdminDeniedExtension'
+	);
+}
+
+
+/**
+ * An extension that can even deny actions to admins
+ */
+class SiteTreeTest_AdminDeniedExtension extends DataExtension implements TestOnly {
+	public function canCreate($member) { return false; }
+	public function canEdit($member) { return false; }
+	public function canDelete($member) { return false; }
+	public function canPublish() { return false; }
+	public function canAddChildren() { return false; }
+	public function canView() { return false; }
 }
