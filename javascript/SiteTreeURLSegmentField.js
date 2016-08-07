@@ -96,9 +96,11 @@
 				if (currentVal != updateVal) {
 					self.addClass('loading');
 					self.suggest(updateVal, function(data) {
-						var newVal = decodeURIComponent(data.value);
-						field.val(newVal);
-						self.edit(title);
+						var newVal = data.value;
+						if (newVal) {
+							field.val(decodeURIComponent(newVal));
+							self.edit(title);
+						}
 						self.removeClass('loading');
 					});
 				} else {
@@ -137,11 +139,13 @@
 					url = urlParts.hrefNoSearch + '/field/' + field.attr('name') + '/suggest/?value=' + encodeURIComponent(val);
 				if(urlParts.search) url += '&' + urlParts.search.replace(/^\?/, '');
 
-				$.get(
-					url,
-					function(data) {callback.apply(this, arguments);}
-				);
-				
+				$.ajax({
+					url: url,
+					complete: function(xmlhttp, status) {
+						xmlhttp.statusText = xmlhttp.responseText;
+						callback.apply(this, arguments);
+					}
+				});
 			},
 			
 			/**
