@@ -235,6 +235,30 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	private static $meta_generator = 'SilverStripe - http://silverstripe.org';
 
 	protected $_cache_statusFlags = null;
+
+	/**
+	 * CSS Class to use for links matching the currently viewed page.
+	 *
+	 * @config
+	 * @var string
+	 */
+	private static $linking_mode_current = 'current';
+
+	/**
+	 * CSS Class to use for links matching the currently viewed page.
+	 *
+	 * @config
+	 * @var string
+	 */
+	private static $linking_mode_section = 'section';
+
+	/**
+	 * CSS Class to use for links matching the currently viewed page.
+	 *
+	 * @config
+	 * @var string
+	 */
+	private static $linking_mode_link = 'link';
 	
 	/**
 	 * Determines if the system should avoid orphaned pages
@@ -622,7 +646,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string
 	 */
 	public function LinkOrCurrent() {
-		return $this->isCurrent() ? 'current' : 'link';
+		return $this->isCurrent()
+            ? $this->config()->get('SiteTree', 'linking_mode_current')
+            : $this->config()->get('SiteTree', 'linking_mode_link');
 	}
 	
 	/**
@@ -631,7 +657,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string
 	 */
 	public function LinkOrSection() {
-		return $this->isSection() ? 'section' : 'link';
+		return $this->isSection()
+            ? $this->config()->get('SiteTree', 'linking_mode_section')
+            : $this->config()->get('SiteTree', 'linking_mode_link');
 	}
 	
 	/**
@@ -642,11 +670,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 */
 	public function LinkingMode() {
 		if($this->isCurrent()) {
-			return 'current';
+			return $this->config()->get('SiteTree', 'linking_mode_current');
 		} elseif($this->isSection()) {
-			return 'section';
+			return $this->config()->get('SiteTree', 'linking_mode_section');
 		} else {
-			return 'link';
+			return $this->config()->get('SiteTree', 'linking_mode_link');
 		}
 	}
 	
