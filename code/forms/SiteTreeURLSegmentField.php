@@ -25,6 +25,9 @@ class SiteTreeURLSegmentField extends TextField {
 		return rawurldecode($this->value);
 	}
 
+	public function FullValue() {
+		return $this->baseLink.$this->value;
+	}
 	public function Field($properties = array()) {
 		Requirements::javascript(CMS_DIR . '/javascript/SiteTreeURLSegmentField.js');
 		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang', false, true);
