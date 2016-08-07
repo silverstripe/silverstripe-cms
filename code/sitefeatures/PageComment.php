@@ -101,7 +101,7 @@ class PageComment extends DataObject {
 	}
 	
 	
-	function RSSTitle() {
+	function getRSSTitle() {
 		return sprintf(
 			_t('PageComment.COMMENTBY', "Comment by '%s' on %s", PR_MEDIUM, 'Name, Page Title'),
 			Convert::raw2xml($this->getRSSName()),

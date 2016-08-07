@@ -140,7 +140,7 @@ TreeAPI.prototype = {
 	setNodeTitle : function(idx, title) {
 		this.performOnTreeNode(idx, function(treeNode) {
 			var aTag = treeNode.getElementsByTagName('a')[0];
-			aTag.innerHTML = title;
+			aTag.innerHTML = title.escapeHTML();
 		});
 	},
 
