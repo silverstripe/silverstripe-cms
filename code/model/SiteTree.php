@@ -493,6 +493,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return bool
 	 */
 	public function isCurrent() {
+		if($this->class != Director::get_current_page()->class) return false;
 		return $this->ID ? $this->ID == Director::get_current_page()->ID : $this === Director::get_current_page();
 	}
 	
