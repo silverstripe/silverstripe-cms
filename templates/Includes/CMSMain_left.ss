@@ -73,6 +73,7 @@
 
 					<input type="hidden" name="csvIDs" />
 					<input type="hidden" name="SecurityID" value="$SecurityID" />
+					<input type="hidden" name="locale" id='batchactions_options_locale' value="$Locale" />
 					<div id="actionParams"></div>
 					<div>
 						<select id="choose_batch_action">
