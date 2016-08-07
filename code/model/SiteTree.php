@@ -120,6 +120,27 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @var string
 	 */
 	private static $hide_ancestor = null;
+	
+	/**
+	 * @see \SiteTree::LinkingMode, \SiteTree::LinkOrSection, \SiteTree::LinkOrCurrent
+	 * @config
+	 * @var string
+	 */
+	private static $link_css_class = 'link';
+
+	/**
+	 * @see \SiteTree::LinkingMode, \SiteTree::LinkOrSection, \SiteTree::LinkOrCurrent
+	 * @config
+	 * @var string
+	 */
+	private static $current_css_class = 'current';
+
+	/**
+	 * @see \SiteTree::LinkingMode, \SiteTree::LinkOrSection, \SiteTree::LinkOrCurrent
+	 * @config
+	 * @var string
+	 */
+	private static $section_css_class = 'section';
 
 	private static $db = array(
 		"URLSegment" => "Varchar(255)",
@@ -583,7 +604,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string
 	 */
 	public function LinkOrCurrent() {
-		return $this->isCurrent() ? 'current' : 'link';
+		return $this->isCurrent() ? self::config()->current_css_class : self::config()->link_css_class;
 	}
 
 	/**
@@ -592,7 +613,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string
 	 */
 	public function LinkOrSection() {
-		return $this->isSection() ? 'section' : 'link';
+		return $this->isSection() ? self::config()->section_css_class : self::config()->link_css_class;
 	}
 
 	/**
@@ -603,12 +624,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 */
 	public function LinkingMode() {
 		if($this->isCurrent()) {
-			return 'current';
+			return self::config()->current_css_class;
 		} elseif($this->isSection()) {
-			return 'section';
-		} else {
-			return 'link';
+			return self::config()->section_css_class;
 		}
+		return self::config()->link_css_class;
 	}
 
 	/**
