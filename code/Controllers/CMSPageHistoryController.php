@@ -2,7 +2,9 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-use SilverStripe\ORM\DataObject;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\ORM\FieldType\DBField;
+use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\Security\Security;
 use Form;
@@ -11,6 +13,8 @@ use FormAction;
 use HiddenField;
 use Controller;
 use LiteralField;
+use SS_HTTPRequest;
+use SS_HTTPResponse;
 use ViewableData;
 use CheckboxField;
 
@@ -21,11 +25,14 @@ use CheckboxField;
 class CMSPageHistoryController extends CMSMain {
 
 	private static $url_segment = 'pages/history';
+
 	private static $url_rule = '/$Action/$ID/$VersionID/$OtherVersionID';
+
 	private static $url_priority = 42;
+
 	private static $menu_title = 'History';
+
 	private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
-	private static $session_namespace = 'SilverStripe\\CMS\\Controllers\\CMSMain';
 
 	private static $allowed_actions = array(
 		'VersionsForm',
@@ -172,7 +179,7 @@ class CMSPageHistoryController extends CMSMain {
 
 		$fields->addFieldToTab('Root.Main',
 			new LiteralField('CurrentlyViewingMessage', $this->customise(array(
-				'Content' => $message,
+				'Content' => DBField::create_field('HTMLFragment', $message),
 				'Classes' => 'notice'
 			))->renderWith(array('CMSMain_notice'))),
 			"Title"
@@ -237,7 +244,7 @@ class CMSPageHistoryController extends CMSMain {
 
 			$versionsHtml = $vd->customise(array(
 				'Versions' => $versions
-			))->renderWith('CMSPageHistoryController_versions');
+			))->renderWith($this->getTemplatesWithSuffix('_versions'));
 		}
 
 		$fields = new FieldList(
@@ -265,9 +272,11 @@ class CMSPageHistoryController extends CMSMain {
 		);
 
 		// Use <button> to allow full jQuery UI styling
-		foreach($actions->dataFields() as $action) $action->setUseButtonTag(true);
+		foreach($actions->dataFields() as $action) {
+			/** @var FormAction $action */
+			$action->setUseButtonTag(true);
+		}
 
-		$negotiator = $this->getResponseNegotiator();
 		$form = Form::create(
 			$this,
 			'VersionsForm',
@@ -289,16 +298,16 @@ class CMSPageHistoryController extends CMSMain {
 	/**
 	 * Process the {@link VersionsForm} compare function between two pages.
 	 *
-	 * @param array
-	 * @param Form
-	 *
-	 * @return html
+	 * @param array $data
+	 * @param Form $form
+	 * @return SS_HTTPResponse|DBHTMLText
 	 */
 	public function doCompare($data, $form) {
 		$versions = $data['Versions'];
-		if(count($versions) < 2) return null;
+		if(count($versions) < 2) {
+			return null;
+		}
 
-		$id = $this->currentPageID();
 		$version1 = array_shift($versions);
 		$version2 = array_shift($versions);
 
@@ -315,7 +324,7 @@ class CMSPageHistoryController extends CMSMain {
 		}
 
 		// non javascript, redirect the user to the page
-		$this->redirect(Controller::join_links(
+		return $this->redirect(Controller::join_links(
 			$this->Link('compare'),
 			$version1,
 			$version2
@@ -329,7 +338,7 @@ class CMSPageHistoryController extends CMSMain {
 	 * @param array
 	 * @param Form
 	 *
-	 * @return html
+	 * @return DBHTMLText|SS_HTTPResponse
 	 */
 	public function doShowVersion($data, $form) {
 		$versionID = null;
@@ -338,8 +347,11 @@ class CMSPageHistoryController extends CMSMain {
 			$versionID  = array_shift($data['Versions']);
 		}
 
-		if(!$versionID) return;
+		if(!$versionID) {
+			return null;
+		}
 
+		$request = $this->getRequest();
 		if($request->isAjax()) {
 			return $this->customise(array(
 				"EditForm" => $this->ShowVersionForm($versionID)
@@ -350,7 +362,7 @@ class CMSPageHistoryController extends CMSMain {
 		}
 
 		// non javascript, redirect the user to the page
-		$this->redirect(Controller::join_links(
+		return $this->redirect(Controller::join_links(
 			$this->Link('version'),
 			$versionID
 		));
@@ -383,12 +395,13 @@ class CMSPageHistoryController extends CMSMain {
 			$fromVersion = $versionID;
 		}
 
-		if(!$toVersion || !$toVersion) {
-			return false;
+		if(!$toVersion || !$fromVersion) {
+			return null;
 		}
 
 		$id = $this->currentPageID();
-		$page = DataObject::get_by_id("SilverStripe\\CMS\\Model\\SiteTree", $id);
+		/** @var SiteTree $page */
+		$page = SiteTree::get()->byID($id);
 
  		if($page && $page->exists()) {
 			if(!$page->canView()) {
@@ -409,31 +422,30 @@ class CMSPageHistoryController extends CMSMain {
 			user_error("Can't find version $toVersion of page $id", E_USER_ERROR);
 		}
 
-		if(isset($record)) {
-			$form = $this->getEditForm($id, null, null, true);
-			$form->setActions(new FieldList());
-			$form->addExtraClass('compare');
+		if(!$record) {
+			return null;
+		}
+		$form = $this->getEditForm($id, null, null, true);
+		$form->setActions(new FieldList());
+		$form->addExtraClass('compare');
 
-			// Comparison views shouldn't be editable.
-			// Its important to convert fields *before* loading data,
-			// as the comparison output is HTML and not valid values for the various field types
-			$readonlyFields = $form->Fields()->makeReadonly();
-			$form->setFields($readonlyFields);
+		// Comparison views shouldn't be editable.
+		// Its important to convert fields *before* loading data,
+		// as the comparison output is HTML and not valid values for the various field types
+		$readonlyFields = $form->Fields()->makeReadonly();
+		$form->setFields($readonlyFields);
 
-			$form->loadDataFrom($record);
-			$form->loadDataFrom(array(
-				"ID" => $id,
-				"Version" => $fromVersion,
-			));
+		$form->loadDataFrom($record);
+		$form->loadDataFrom(array(
+			"ID" => $id,
+			"Version" => $fromVersion,
+		));
 
-			foreach($form->Fields()->dataFields() as $field) {
-				$field->dontEscape = true;
-			}
-
-			return $form;
+		foreach($form->Fields()->dataFields() as $field) {
+			$field->dontEscape = true;
 		}
 
-        	return false;
+		return $form;
 	}
 
 	public function Breadcrumbs($unlinked = false) {

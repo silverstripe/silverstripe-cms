@@ -10,6 +10,8 @@ use SilverStripe\ORM\DataExtension;
 use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\CMS\Model\RedirectorPage;
+use SilverStripe\CMS\Controllers\ModelAsController;
+
 
 
 
@@ -30,11 +32,11 @@ class VirtualPageTest extends FunctionalTest {
 	);
 
 	protected $illegalExtensions = array(
-		'SiteTree' => array('SiteTreeSubsites', 'Translatable')
+		'SilverStripe\\CMS\\Model\\SiteTree' => array('SiteTreeSubsites', 'Translatable')
 	);
 
 	protected $requiredExtensions = array(
-		'SiteTree' => array('VirtualPageTest_PageExtension')
+		'SilverStripe\\CMS\\Model\\SiteTree' => array('VirtualPageTest_PageExtension')
 	);
 
 	public function setUp() {
@@ -607,10 +609,10 @@ class VirtualPageTest extends FunctionalTest {
 	}
 
 	public function testMethod() {
-		$virtualPage = $this->objFromFixture('VirtualPage', 'vp4');
+		$virtualPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp4');
 		$controller = ModelAsController::controller_for($virtualPage);
 
-		$this->assertInstanceOf('VirtualPage_Controller', $controller);
+		$this->assertInstanceOf('SilverStripe\\CMS\\Model\\VirtualPage_Controller', $controller);
 		$this->assertTrue($controller->hasMethod('testMethod'));
 		$this->assertEquals('hello', $controller->testMethod());
 		$this->assertTrue($controller->hasMethod('modelMethod'));

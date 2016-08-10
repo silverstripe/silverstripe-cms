@@ -7,6 +7,7 @@ namespace SilverStripe\CMS\Model;
  * @subpackage model
  */
 
+use DOMElement;
 use SilverStripe\ORM\ManyManyList;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\FieldType\DBHTMLText;
@@ -83,7 +84,7 @@ class SiteTreeLinkTracking extends DataExtension {
 	);
 
 	private static $belongs_many_many = array(
-		"BackLinkTracking" => "SiteTree.LinkTracking"
+		"BackLinkTracking" => "SilverStripe\\CMS\\Model\\SiteTree.LinkTracking"
 	);
 
 	/**
@@ -122,7 +123,9 @@ class SiteTreeLinkTracking extends DataExtension {
 				continue;
 			}
 
-			$classStr = trim($link['DOMReference']->getAttribute('class'));
+			/** @var DOMElement $domReference */
+			$domReference = $link['DOMReference'];
+			$classStr = trim($domReference->getAttribute('class'));
 			if (!$classStr) {
 				$classes = array();
 			} else {
@@ -137,9 +140,9 @@ class SiteTreeLinkTracking extends DataExtension {
 			}
 
 			if (!empty($classes)) {
-				$link['DOMReference']->setAttribute('class', implode(' ', $classes));
+				$domReference->setAttribute('class', implode(' ', $classes));
 			} else {
-				$link['DOMReference']->removeAttribute('class');
+				$domReference->removeAttribute('class');
 			}
 		}
 		$record->$fieldName = $htmlValue->getContent();
@@ -249,10 +252,14 @@ class SiteTreeLinkTracking_Parser {
 		$results = array();
 
 		$links = $htmlValue->getElementsByTagName('a');
-		if(!$links) return $results;
+		if(!$links) {
+			return $results;
+		}
 
 		foreach($links as $link) {
-			if (!$link->hasAttribute('href')) continue;
+			if (!$link->hasAttribute('href')) {
+				continue;
+			}
 
 			$href = Director::makeRelative($link->getAttribute('href'));
 

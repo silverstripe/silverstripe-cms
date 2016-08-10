@@ -1,7 +1,12 @@
 <?php
 
+namespace SilverStripe\CMS\Tasks;
+
+
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\DataObject;
+use Controller;
+
 
 /**
  * @package cms
@@ -36,5 +41,10 @@ class SiteTreeMaintenanceTask extends Controller {
 			}
 			die();
 		}
+	}
+
+	public function Link($action = null)
+	{
+		return Controller::join_links('SiteTreeMaintenanceTask', $action, '/');
 	}
 }

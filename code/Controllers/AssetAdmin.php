@@ -199,7 +199,8 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 
 		// Remove legacy previewable behaviour.
 		$form->removeExtraClass('cms-previewable');
-		$form->Fields()->removeByName('SilverStripe\\CMS\\Controllers\\SilverStripeNavigator');
+		/** @skipUpgrade */
+		$form->Fields()->removeByName('SilverStripeNavigator');
 
 		// File listing
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
@@ -633,7 +634,7 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 
 		// The root element should explicitly point to the root node.
 		// Uses session state for current record otherwise.
-		$items[0]->Link = Controller::join_links(singleton('SilverStripe\\CMS\\Controllers\\AssetAdmin')->Link('show'), 0);
+		$items[0]->Link = Controller::join_links($this->Link('show'), 0);
 
 		// If a search is in progress, don't show the path
 		if($this->getRequest()->requestVar('q')) {

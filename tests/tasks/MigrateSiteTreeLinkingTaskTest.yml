@@ -1,4 +1,4 @@
-SiteTree:
+SilverStripe\CMS\Model\SiteTree:
   home:
     Title: Home Page
     URLSegment: home
@@ -11,7 +11,7 @@ SiteTree:
     Title: Staff
     URLSegment: staff
     Content: '<a href="home/">Home</a><a href="about">About</a>'
-    Parent: =>SiteTree.about
+    Parent: =>SilverStripe\CMS\Model\SiteTree.about
   action:
     Title: Action Link
     URLSegment: action
@@ -30,38 +30,38 @@ SiteTree:
 
 SiteTree_LinkTracking:
   home_about:
-    SiteTreeID: =>SiteTree.home
-    ChildID: =>SiteTree.about
+    SiteTreeID: =>SilverStripe\CMS\Model\SiteTree.home
+    ChildID: =>SilverStripe\CMS\Model\SiteTree.about
     FieldName: Content
   home_staff:
-    SiteTreeID: =>SiteTree.home
-    ChildID: =>SiteTree.staff
+    SiteTreeID: =>SilverStripe\CMS\Model\SiteTree.home
+    ChildID: =>SilverStripe\CMS\Model\SiteTree.staff
     FieldName: Content
   about_home:
-    SiteTreeID: =>SiteTree.about
-    ChildID: =>SiteTree.home
+    SiteTreeID: =>SilverStripe\CMS\Model\SiteTree.about
+    ChildID: =>SilverStripe\CMS\Model\SiteTree.home
     FieldName: Content
   about_staff:
-    SiteTreeID: =>SiteTree.about
-    ChildID: =>SiteTree.staff
+    SiteTreeID: =>SilverStripe\CMS\Model\SiteTree.about
+    ChildID: =>SilverStripe\CMS\Model\SiteTree.staff
     FieldName: Content
   staff_home:
-    SiteTreeID: =>SiteTree.staff
-    ChildID: =>SiteTree.home
+    SiteTreeID: =>SilverStripe\CMS\Model\SiteTree.staff
+    ChildID: =>SilverStripe\CMS\Model\SiteTree.home
     FieldName: Content
   staff_about:
-    SiteTreeID: =>SiteTree.staff
-    ChildID: =>SiteTree.about
+    SiteTreeID: =>SilverStripe\CMS\Model\SiteTree.staff
+    ChildID: =>SilverStripe\CMS\Model\SiteTree.about
     FieldName: Content
   action_home:
-    SiteTreeID: =>SiteTree.action
-    ChildID: =>SiteTree.home
+    SiteTreeID: =>SilverStripe\CMS\Model\SiteTree.action
+    ChildID: =>SilverStripe\CMS\Model\SiteTree.home
     FieldName: Content
   hash_link_home:
-    SiteTreeID: =>SiteTree.hash_link
-    ChildID: =>SiteTree.home
+    SiteTreeID: =>SilverStripe\CMS\Model\SiteTree.hash_link
+    ChildID: =>SilverStripe\CMS\Model\SiteTree.home
     FieldName: Content
   hash_link_about:
-    SiteTreeID: =>SiteTree.hash_link
-    ChildID: =>SiteTree.about
+    SiteTreeID: =>SilverStripe\CMS\Model\SiteTree.hash_link
+    ChildID: =>SilverStripe\CMS\Model\SiteTree.about
     FieldName: Content

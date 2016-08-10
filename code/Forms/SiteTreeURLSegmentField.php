@@ -2,7 +2,8 @@
 
 namespace SilverStripe\CMS\Forms;
 
-use SilverStripe\ORM\DataObject;
+use SilverStripe\CMS\Model\SiteTree;
+use SS_HTTPRequest;
 use TextField;
 use Requirements;
 use Controller;
@@ -50,6 +51,10 @@ class SiteTreeURLSegmentField extends TextField {
 		return parent::Field($properties);
 	}
 
+	/**
+	 * @param SS_HTTPRequest $request
+	 * @return string
+	 */
 	public function suggest($request) {
 		if(!$request->getVar('value')) {
 			return $this->httpError(405,
@@ -75,7 +80,9 @@ class SiteTreeURLSegmentField extends TextField {
 	 */
 	public function getPage() {
 		$idField = $this->getForm()->Fields()->dataFieldByName('ID');
-		return ($idField && $idField->Value()) ? DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $idField->Value()) : singleton('SilverStripe\\CMS\\Model\\SiteTree');
+		return ($idField && $idField->Value())
+			? SiteTree::get()->byID($idField->Value())
+			: SiteTree::singleton();
 	}
 
 	/**

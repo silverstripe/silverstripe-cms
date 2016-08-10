@@ -2,6 +2,9 @@
 
 namespace SilverStripe\CMS\Controllers;
 
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\ORM\DataList;
+use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\Versioning\Versioned;
 use Object;
 use LeftAndMain_SearchFilter;
@@ -25,8 +28,10 @@ use DateField;
 abstract class CMSSiteTreeFilter extends Object implements LeftAndMain_SearchFilter {
 
 	/**
-	 * @var Array Search parameters, mostly properties on {@link SiteTree}.
+	 * Search parameters, mostly properties on {@link SiteTree}.
 	 * Caution: Unescaped data.
+	 *
+	 * @var array
 	 */
 	protected $params = array();
 
@@ -48,7 +53,7 @@ abstract class CMSSiteTreeFilter extends Object implements LeftAndMain_SearchFil
 	protected $_cache_highlight_ids = null;
 
 	/**
-	 * @var Array
+	 * @var array
 	 */
 	protected $_cache_expanded = array();
 
@@ -113,6 +118,8 @@ abstract class CMSSiteTreeFilter extends Object implements LeftAndMain_SearchFil
 		if(!empty($this->_cache_highlight_ids[$page->ID])) {
 			return 'filtered-item';
 		}
+
+		return null;
 	}
 
 	/**
@@ -177,7 +184,7 @@ abstract class CMSSiteTreeFilter extends Object implements LeftAndMain_SearchFil
 	 * @return DataList Filtered query
 	 */
 	protected function applyDefaultFilters($query) {
-		$sng = singleton('SilverStripe\\CMS\\Model\\SiteTree');
+		$sng = SiteTree::singleton();
 		foreach($this->params as $name => $val) {
 			if(empty($val)) continue;
 
@@ -221,7 +228,7 @@ abstract class CMSSiteTreeFilter extends Object implements LeftAndMain_SearchFil
 	/**
 	 * Maps a list of pages to an array of associative arrays with ID and ParentID keys
 	 *
-	 * @param DataList $pages
+	 * @param SS_List $pages
 	 * @return array
 	 */
 	protected function mapIDs($pages) {
@@ -270,7 +277,7 @@ class CMSSiteTreeFilter_PublishedPages extends CMSSiteTreeFilter {
 	public function getFilteredPages() {
 		$pages = Versioned::get_including_deleted('SilverStripe\\CMS\\Model\\SiteTree');
 		$pages = $this->applyDefaultFilters($pages);
-		$pages = $pages->filterByCallback(function($page) {
+		$pages = $pages->filterByCallback(function(SiteTree $page) {
 			return $page->getExistsOnLive();
 		});
 		return $pages;
@@ -349,7 +356,7 @@ class CMSSiteTreeFilter_StatusRemovedFromDraftPages extends CMSSiteTreeFilter {
 	public function getFilteredPages() {
 		$pages = Versioned::get_including_deleted('SilverStripe\\CMS\\Model\\SiteTree');
 		$pages = $this->applyDefaultFilters($pages);
-		$pages = $pages->filterByCallback(function($page) {
+		$pages = $pages->filterByCallback(function(SiteTree $page) {
 			// If page is removed from stage but not live
 			return $page->getIsDeletedFromStage() && $page->getExistsOnLive();
 		});
@@ -378,7 +385,7 @@ class CMSSiteTreeFilter_StatusDraftPages extends CMSSiteTreeFilter {
 	public function getFilteredPages() {
 		$pages = Versioned::get_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Stage');
 		$pages = $this->applyDefaultFilters($pages);
-		$pages = $pages->filterByCallback(function($page) {
+		$pages = $pages->filterByCallback(function(SiteTree $page) {
 			// If page exists on stage but not on live
 			return (!$page->getIsDeletedFromStage() && $page->getIsAddedToStage());
 		});
@@ -418,7 +425,7 @@ class CMSSiteTreeFilter_StatusDeletedPages extends CMSSiteTreeFilter {
 		$pages = Versioned::get_including_deleted('SilverStripe\\CMS\\Model\\SiteTree');
 		$pages = $this->applyDefaultFilters($pages);
 
-		$pages = $pages->filterByCallback(function($page) {
+		$pages = $pages->filterByCallback(function(SiteTree $page) {
 			// Doesn't exist on either stage or live
 			return $page->getIsDeletedFromStage() && !$page->getExistsOnLive();
 		});

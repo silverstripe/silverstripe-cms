@@ -2,6 +2,8 @@
 
 namespace SilverStripe\CMS\Model;
 
+use Exception;
+use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\Versioning\Versioned;
 use Page;
@@ -76,6 +78,8 @@ class VirtualPage extends Page {
 	private static $db = array(
 		"VersionID" => "Int",
 	);
+
+	private static $table_name = 'VirtualPage';
 
 	/**
 	 * Generates the array of fields required for the page type.

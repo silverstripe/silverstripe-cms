@@ -10,6 +10,7 @@ use SilverStripe\ORM\DataObject;
  * @subpackage model
  */
 interface CurrentPageIdentifier {
+
 	/**
 	 * Get the current page ID.
 	 * @return int

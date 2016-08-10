@@ -2,6 +2,7 @@
 
 namespace SilverStripe\CMS\Controllers;
 
+use NestedController;
 use SilverStripe\ORM\DataModel;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\DataObject;
@@ -29,6 +30,7 @@ use SilverStripe\CMS\Model\SiteTree;
  * @subpackage control
  */
 class ModelAsController extends Controller implements NestedController {
+
 	private static $extensions = array('SilverStripe\\CMS\\Controllers\\OldPageRedirector');
 
 	/**
@@ -65,7 +67,8 @@ class ModelAsController extends Controller implements NestedController {
 	protected function beforeHandleRequest(SS_HTTPRequest $request, DataModel $model) {
 		parent::beforeHandleRequest($request, $model);
 		// If the database has not yet been created, redirect to the build page.
-		if(!DB::is_active() || !ClassInfo::hasTable('SilverStripe\\CMS\\Model\\SiteTree')) {
+		/** @skipUpgrade */
+		if(!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
 			$this->getResponse()->redirect(Controller::join_links(
 				Director::absoluteBaseURL(),
 				'dev/build',
@@ -92,7 +95,8 @@ class ModelAsController extends Controller implements NestedController {
 		}
 
 		// If the database has not yet been created, redirect to the build page.
-		if(!DB::is_active() || !ClassInfo::hasTable('SilverStripe\\CMS\\Model\\SiteTree')) {
+		/** @skipUpgrade */
+		if(!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
 			$this->getResponse()->redirect(Director::absoluteBaseURL() . 'dev/build?returnURL=' . (isset($_GET['url']) ? urlencode($_GET['url']) : null));
 			$this->popCurrent();
 
@@ -135,6 +139,7 @@ class ModelAsController extends Controller implements NestedController {
 		if(SiteTree::config()->nested_urls) {
 			$conditions[] = array('"SiteTree"."ParentID"' => 0);
 		}
+		/** @var SiteTree $sitetree */
 		$sitetree = DataObject::get_one('SilverStripe\\CMS\\Model\\SiteTree', $conditions);
 
 		// Check translation module
@@ -166,7 +171,7 @@ class ModelAsController extends Controller implements NestedController {
 	static public function find_old_page($URLSegment, $parent = null, $ignoreNestedURLs = false) {
 		Deprecation::notice('4.0', 'Use OldPageRedirector::find_old_page instead');
 		if ($parent) {
-			$parent = SiteTree::get()->byId($parent);
+			$parent = SiteTree::get()->byID($parent);
 		}
 		$url = OldPageRedirector::find_old_page(array($URLSegment), $parent);
 		return SiteTree::get_by_link($url);

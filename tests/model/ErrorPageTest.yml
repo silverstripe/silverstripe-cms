@@ -1,4 +1,4 @@
-ErrorPage:
+SilverStripe\CMS\Model\ErrorPage:
   404:
     Title: Page Not Found
     URLSegment: page-not-found

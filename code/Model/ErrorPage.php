@@ -2,6 +2,7 @@
 
 namespace SilverStripe\CMS\Model;
 
+use FieldList;
 use SilverStripe\Filesystem\Storage\GeneratedAssetHandler;
 use SilverStripe\ORM\DataModel;
 use SilverStripe\ORM\Versioning\Versioned;
@@ -43,6 +44,8 @@ class ErrorPage extends Page {
 		"ShowInSearch" => 0
 	);
 
+	private static $table_name = 'ErrorPage';
+
 	private static $allowed_children = array();
 
 	private static $description = 'Custom content for different error cases (e.g. "Page not found")';
@@ -83,6 +86,7 @@ class ErrorPage extends Page {
 	 */
 	public static function response_for($statusCode) {
 		// first attempt to dynamically generate the error page
+		/** @var ErrorPage $errorPage */
 		$errorPage = ErrorPage::get()
 			->filter(array(
 				"ErrorCode" => $statusCode
@@ -107,6 +111,8 @@ class ErrorPage extends Page {
 			$response->setBody($content);
 			return $response;
 		}
+
+		return null;
 	}
 
 	/**
@@ -114,50 +120,62 @@ class ErrorPage extends Page {
 	 * instance of ErrorPage with a 404 and 500 error code. If there is not,
 	 * one is created when the DB is built.
 	 */
-	public function requireDefaultRecords() {
+	public function requireDefaultRecords()
+	{
 		parent::requireDefaultRecords();
 
-		if ($this->class === 'SilverStripe\\CMS\\Model\\ErrorPage' && SiteTree::config()->create_default_pages) {
+		// Only run on ErrorPage class directly, not subclasses
+		if ($this->class !== 'SilverStripe\\CMS\\Model\\ErrorPage' || !SiteTree::config()->create_default_pages) {
+			return;
+		}
 
-			$defaultPages = $this->getDefaultRecords();
+		$defaultPages = $this->getDefaultRecords();
 
-			foreach($defaultPages as $defaultData) {
-				$code = $defaultData['ErrorCode'];
-				$page = ErrorPage::get()->filter('ErrorCode', $code)->first();
-				$pageExists = !empty($page);
-				if(!$pageExists) {
-					$page = new ErrorPage($defaultData);
-					$page->write();
-					$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
-				}
+		foreach ($defaultPages as $defaultData) {
+			$this->requireDefaultRecordFixture($defaultData);
+		}
+	}
 
-				// Check if static files are enabled
-				if(!self::config()->enable_static_file) {
-					continue;
-				}
+	/**
+	 * Build default record from specification fixture
+	 *
+	 * @param array $defaultData
+	 */
+	protected function requireDefaultRecordFixture($defaultData) {
+		$code = $defaultData['ErrorCode'];
+		$page = ErrorPage::get()->filter('ErrorCode', $code)->first();
+		$pageExists = !empty($page);
+		if(!$pageExists) {
+			$page = new ErrorPage($defaultData);
+			$page->write();
+			$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
+		}
 
-				// Ensure this page has cached error content
-				$success = true;
-				if(!$page->hasStaticPage()) {
-					// Update static content
-					$success = $page->writeStaticPage();
-				} elseif($pageExists) {
-					// If page exists and already has content, no alteration_message is displayed
-					continue;
-				}
+		// Check if static files are enabled
+		if(!self::config()->enable_static_file) {
+			return;
+		}
 
-				if($success) {
-					DB::alteration_message(
-						sprintf('%s error page created', $code),
-						'created'
-					);
-				} else {
-					DB::alteration_message(
-						sprintf('%s error page could not be created. Please check permissions', $code),
-						'error'
-					);
-				}
-			}
+		// Ensure this page has cached error content
+		$success = true;
+		if(!$page->hasStaticPage()) {
+			// Update static content
+			$success = $page->writeStaticPage();
+		} elseif($pageExists) {
+			// If page exists and already has content, no alteration_message is displayed
+			return;
+		}
+
+		if($success) {
+			DB::alteration_message(
+				sprintf('%s error page created', $code),
+				'created'
+			);
+		} else {
+			DB::alteration_message(
+				sprintf('%s error page could not be created. Please check permissions', $code),
+				'error'
+			);
 		}
 	}
 

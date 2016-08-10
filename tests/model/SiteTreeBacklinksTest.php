@@ -10,7 +10,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 	protected static $fixture_file = "SiteTreeBacklinksTest.yml";
 
 	protected $requiredExtensions = array(
-		'SiteTree' => array('SiteTreeBacklinksTest_DOD'),
+		'SilverStripe\\CMS\\Model\\SiteTree' => array('SiteTreeBacklinksTest_DOD'),
 	);
 
 	public function setUp() {

@@ -5,6 +5,7 @@ namespace SilverStripe\CMS\Controllers;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DataModel;
 use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\Versioning\Versioned;
@@ -67,11 +68,15 @@ class ContentController extends Controller {
 	/**
 	 * The ContentController will take the URLSegment parameter from the URL and use that to look
 	 * up a SiteTree record.
+	 *
+	 * @param SiteTree $dataRecord
 	 */
 	public function __construct($dataRecord = null) {
 		if(!$dataRecord) {
 			$dataRecord = new Page();
-			if($this->hasMethod("Title")) $dataRecord->Title = $this->Title();
+			if($this->hasMethod("Title")) {
+				$dataRecord->Title = $this->Title();
+			}
 			$dataRecord->URLSegment = get_class($this);
 			$dataRecord->ID = -1;
 		}
@@ -110,7 +115,10 @@ class ContentController extends Controller {
 			$parent = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $parentRef);
 		}
 
-		if($parent) return $parent->Children();
+		if($parent) {
+			return $parent->Children();
+		}
+		return null;
 	}
 
 	/**
@@ -125,9 +133,11 @@ class ContentController extends Controller {
 		parent::init();
 
 		// If we've accessed the homepage as /home/, then we should redirect to /.
-		if($this->dataRecord && $this->dataRecord instanceof SiteTree
-			 	&& RootURLController::should_be_on_root($this->dataRecord) && (!isset($this->urlParams['Action']) || !$this->urlParams['Action'] )
-				&& !$_POST && !$_FILES && !$this->redirectedTo() ) {
+		if( $this->dataRecord instanceof SiteTree
+			&& RootURLController::should_be_on_root($this->dataRecord)
+			&& (!isset($this->urlParams['Action']) || !$this->urlParams['Action'] )
+			&& !$_POST && !$_FILES && !$this->redirectedTo()
+		) {
 			$getVars = $_GET;
 			unset($getVars['url']);
 			if($getVars) $url = "?" . http_build_query($getVars);
@@ -136,15 +146,19 @@ class ContentController extends Controller {
 			return;
 		}
 
-		if($this->dataRecord) $this->dataRecord->extend('contentcontrollerInit', $this);
-		else singleton('SilverStripe\\CMS\\Model\\SiteTree')->extend('contentcontrollerInit', $this);
+		if($this->dataRecord) {
+			$this->dataRecord->extend('contentcontrollerInit', $this);
+		} else {
+			SiteTree::singleton()->extend('contentcontrollerInit', $this);
+		}
 
 		if($this->redirectedTo()) return;
 
 		// Check page permissions
 		/** @skipUpgrade */
 		if($this->dataRecord && $this->URLSegment != 'Security' && !$this->dataRecord->canView()) {
-			return Security::permissionFailure($this);
+			Security::permissionFailure($this);
+			return;
 		}
 	}
 
@@ -158,6 +172,7 @@ class ContentController extends Controller {
 	 * @throws SS_HTTPResponse_Exception
 	 */
 	public function handleRequest(SS_HTTPRequest $request, DataModel $model) {
+		/** @var SiteTree $child */
 		$child  = null;
 		$action = $request->param('Action');
 		$this->setDataModel($model);
@@ -169,7 +184,7 @@ class ContentController extends Controller {
 			// See ModelAdController->getNestedController() for similar logic
 			if(class_exists('Translatable')) Translatable::disable_locale_filter();
 			// look for a page with this URLSegment
-			$child = $this->model->SiteTree->filter(array(
+			$child = SiteTree::get()->filter(array(
 				'ParentID' => $this->ID,
 				'URLSegment' => rawurlencode($action)
 			))->first();
@@ -188,7 +203,11 @@ class ContentController extends Controller {
 			// a potentially nested URL chain.
 			if(class_exists('Translatable')) {
 				$locale = $request->getVar('locale');
-				if($locale && i18n::validate_locale($locale) && $this->dataRecord && $this->dataRecord->Locale != $locale) {
+				if( $locale
+					&& i18n::validate_locale($locale)
+					&& $this->dataRecord
+					&& $this->dataRecord->Locale != $locale
+				) {
 					$translation = $this->dataRecord->getTranslation($locale);
 					if($translation) {
 						$response = new SS_HTTPResponse();
@@ -252,7 +271,7 @@ class ContentController extends Controller {
 			$stack = array($parent);
 
 			if($parent) {
-				while($parent = $parent->Parent) {
+				while(($parent = $parent->Parent()) && $parent->exists()) {
 					array_unshift($stack, $parent);
 				}
 			}
@@ -339,11 +358,15 @@ HTML;
 		} else {
 			if($date = Versioned::current_archived_date()) {
 				Requirements::css(CMS_DIR . '/client/dist/styles/SilverStripeNavigator.css');
+				/** @var DBDatetime $dateObj */
 				$dateObj = DBField::create_field('Datetime', $date);
 				// $dateObj->setVal($date);
-				return "<div id=\"SilverStripeNavigatorMessage\">". _t('ContentController.ARCHIVEDSITEFROM') ."<br>" . $dateObj->Nice() . "</div>";
+				return "<div id=\"SilverStripeNavigatorMessage\">" .
+					_t('ContentController.ARCHIVEDSITEFROM') .
+					"<br>" . $dateObj->Nice() . "</div>";
 			}
 		}
+		return null;
 	}
 
 	public function SiteConfig() {

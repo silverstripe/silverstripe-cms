@@ -83,7 +83,7 @@ class CMSMainTest extends FunctionalTest {
 		$pageB->write();
 
 		// Check query
-		$response = $this->get('CMSMain/childfilter?ParentID=' . $pageA->ID);
+		$response = $this->get('admin/pages/childfilter?ParentID=' . $pageA->ID);
 		$children = json_decode($response->getBody());
 		$this->assertFalse($response->isError());
 
@@ -483,7 +483,7 @@ class CMSMainTest extends FunctionalTest {
 
 		// Test live, but not on draft filter
 		$params = array(
-				'FilterClass' => 'SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_StatusRemovedFromDraftPages'
+			'FilterClass' => 'SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_StatusRemovedFromDraftPages'
 		);
 		$pages = $controller->getList($params);
 		$this->assertEquals(1, $pages->count());
@@ -494,7 +494,7 @@ class CMSMainTest extends FunctionalTest {
 
 		// Test live pages filter
 		$params = array(
-				'FilterClass' => 'CMSSIteTreeFilter_PublishedPages'
+			'FilterClass' => 'SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_PublishedPages'
 		);
 		$pages = $controller->getList($params);
 		$this->assertEquals(2, $pages->count());

@@ -2,10 +2,8 @@
 
 namespace SilverStripe\CMS\Logging;
 
-
 use SilverStripe\Framework\Logging\DebugViewFriendlyErrorFormatter;
 use SilverStripe\CMS\Model\ErrorPage;
-
 
 /**
  * Provides {@see ErrorPage}-gnostic error handling

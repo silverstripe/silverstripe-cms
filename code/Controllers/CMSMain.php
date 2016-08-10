@@ -2,7 +2,9 @@
 
 namespace SilverStripe\CMS\Controllers;
 
+use ResetFormAction;
 use SilverStripe\ORM\FieldType\DBHTMLText;
+use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\HiddenClass;
 use SilverStripe\ORM\ArrayList;
@@ -17,6 +19,7 @@ use SilverStripe\Security\PermissionProvider;
 use LeftAndMain;
 
 
+use SS_HTTPRequest;
 use Translatable;
 use Requirements;
 use CMSBatchActionHandler;
@@ -90,6 +93,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	private static $tree_class = "SilverStripe\\CMS\\Model\\SiteTree";
 
 	private static $subitem_class = "SilverStripe\\Security\\Member";
+
+	private static $session_namespace = 'SilverStripe\\CMS\\Controllers\\CMSMain';
 
 	/**
 	 * Amount of results showing on a single page.
@@ -230,7 +235,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 
 	public function LinkPages() {
-		return singleton('SilverStripe\\CMS\\Controllers\\CMSPagesController')->Link();
+		return CMSPagesController::singleton()->Link();
 	}
 
 	public function LinkPagesWithSearch() {
@@ -238,37 +243,43 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 
 	public function LinkTreeView() {
-		return $this->LinkWithSearch(singleton('SilverStripe\\CMS\\Controllers\\CMSMain')->Link('treeview'));
+		return $this->LinkWithSearch($this->Link('treeview'));
 	}
 
 	public function LinkListView() {
-		return $this->LinkWithSearch(singleton('SilverStripe\\CMS\\Controllers\\CMSMain')->Link('listview'));
+		return $this->LinkWithSearch($this->Link('listview'));
 	}
 
 	public function LinkGalleryView() {
-		return $this->LinkWithSearch(singleton('SilverStripe\\CMS\\Controllers\\CMSMain')->Link('galleryview'));
+		return $this->LinkWithSearch($this->Link('galleryview'));
 	}
 
 	public function LinkPageEdit($id = null) {
-		if(!$id) $id = $this->currentPageID();
+		if(!$id) {
+			$id = $this->currentPageID();
+		}
 		return $this->LinkWithSearch(
-			Controller::join_links(singleton('SilverStripe\\CMS\\Controllers\\CMSPageEditController')->Link('show'), $id)
+			Controller::join_links(CMSPageEditController::singleton()->Link('show'), $id)
 		);
 	}
 
 	public function LinkPageSettings() {
 		if($id = $this->currentPageID()) {
 			return $this->LinkWithSearch(
-				Controller::join_links(singleton('SilverStripe\\CMS\\Controllers\\CMSPageSettingsController')->Link('show'), $id)
+				Controller::join_links(CMSPageSettingsController::singleton()->Link('show'), $id)
 			);
+		} else {
+			return null;
 		}
 	}
 
 	public function LinkPageHistory() {
 		if($id = $this->currentPageID()) {
 			return $this->LinkWithSearch(
-				Controller::join_links(singleton('SilverStripe\\CMS\\Controllers\\CMSPageHistoryController')->Link('show'), $id)
+				Controller::join_links(CMSPageHistoryController::singleton()->Link('show'), $id)
 			);
+		} else {
+			return null;
 		}
 	}
 
@@ -287,7 +298,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 
 	public function LinkPageAdd($extra = null, $placeholders = null) {
-		$link = singleton("SilverStripe\\CMS\\Controllers\\CMSPageAddController")->Link();
+		$link = CMSPageAddController::singleton()->Link();
 		$this->extend('updateLinkPageAdd', $link);
 
 		if($extra) {
@@ -403,16 +414,18 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$actions = new FieldList(
 			FormAction::create('doSearch',  _t('CMSMain_left_ss.APPLY_FILTER', 'Search'))
 				->addExtraClass('ss-ui-action-constructive'),
-			Object::create('ResetFormAction', 'clear', _t('CMSMain_left_ss.CLEAR_FILTER', 'Clear'))
+			ResetFormAction::create('clear', _t('CMSMain_left_ss.CLEAR_FILTER', 'Clear'))
 		);
 
 		// Use <button> to allow full jQuery UI styling on the all of the Actions
 		foreach($actions->dataFields() as $action) {
+			/** @var FormAction $action */
 			$action->setUseButtonTag(true);
 		}
 
 		// Create the form
-		$form = Form::create($this, 'SilverStripe\\CMS\\Search\\SearchForm', $fields, $actions)
+		/** @skipUpgrade */
+		$form = Form::create($this, 'SearchForm', $fields, $actions)
 			->addExtraClass('cms-search-form')
 			->setFormMethod('GET')
 			->setFormAction($this->Link())
@@ -436,7 +449,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	protected function getPageTypes() {
 		$pageTypes = array();
 		foreach(SiteTree::page_type_classes() as $pageTypeClass) {
-			$pageTypes[$pageTypeClass] = _t($pageTypeClass.'.SINGULARNAME', $pageTypeClass);
+			$pageTypes[$pageTypeClass] = SiteTree::singleton($pageTypeClass)->i18n_singular_name();
 		}
 		asort($pageTypes);
 		return $pageTypes;
@@ -472,14 +485,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$json = '';
 		$classes = SiteTree::page_type_classes();
 
-	 	$cacheCanCreate = array();
-	 	foreach($classes as $class) $cacheCanCreate[$class] = singleton($class)->canCreate();
+		$cacheCanCreate = array();
+		foreach($classes as $class) $cacheCanCreate[$class] = singleton($class)->canCreate();
 
-	 	// Generate basic cache key. Too complex to encompass all variations
-	 	$cache = SS_Cache::factory('CMSMain_SiteTreeHints');
-	 	$cacheKey = md5(implode('_', array(Member::currentUserID(), implode(',', $cacheCanCreate), implode(',', $classes))));
-	 	if($this->getRequest()->getVar('flush')) $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
-	 	$json = $cache->load($cacheKey);
+		// Generate basic cache key. Too complex to encompass all variations
+		$cache = SS_Cache::factory('CMSMain_SiteTreeHints');
+		$cacheKey = md5(implode('_', array(Member::currentUserID(), implode(',', $cacheCanCreate), implode(',', $classes))));
+		if($this->getRequest()->getVar('flush')) $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
+		$json = $cache->load($cacheKey);
 	 	if(!$json) {
 			$def['Root'] = array();
 			$def['Root']['disallowedChildren'] = array();
@@ -544,22 +557,27 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		foreach($classes as $class) {
 			$instance = singleton($class);
 
-			if($instance instanceof HiddenClass) continue;
+			if($instance instanceof HiddenClass) {
+				continue;
+			}
 
 			// skip this type if it is restricted
-			if($instance->stat('need_permission') && !$this->can(singleton($class)->stat('need_permission'))) continue;
+			if($instance->stat('need_permission') && !$this->can(singleton($class)->stat('need_permission'))) {
+				continue;
+			}
 
 			$addAction = $instance->i18n_singular_name();
 
 			// Get description (convert 'Page' to 'SiteTree' for correct localization lookups)
-			$description = _t((($class == 'Page') ? 'SilverStripe\\CMS\\Model\\SiteTree' : $class) . '.DESCRIPTION');
+			$i18nClass = ($class == 'Page') ? 'SilverStripe\\CMS\\Model\\SiteTree' : $class;
+			$description = _t($i18nClass . '.DESCRIPTION');
 
 			if(!$description) {
 				$description = $instance->uninherited('description');
 			}
 
 			if($class == 'Page' && !$description) {
-				$description = singleton('SilverStripe\\CMS\\Model\\SiteTree')->uninherited('description');
+				$description = SiteTree::singleton()->uninherited('description');
 			}
 
 			$result->push(new ArrayData(array(
@@ -674,8 +692,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			}
 
 			// Added in-line to the form, but plucked into different view by LeftAndMain.Preview.js upon load
-			if($record instanceof CMSPreviewable && !$fields->fieldByName('SilverStripe\\CMS\\Controllers\\SilverStripeNavigator')) {
-				$navField = new LiteralField('SilverStripe\\CMS\\Controllers\\SilverStripeNavigator', $this->getSilverStripeNavigator());
+			/** @skipUpgrade */
+			if($record instanceof CMSPreviewable && !$fields->fieldByName('SilverStripeNavigator')) {
+				$navField = new LiteralField('SilverStripeNavigator', $this->getSilverStripeNavigator());
 				$navField->setAllowHTML(true);
 				$fields->push($navField);
 			}
@@ -878,7 +897,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				return sprintf(
 					'<a class="action-detail" href="%s">%s</a>',
 					Controller::join_links(
-						singleton('SilverStripe\\CMS\\Controllers\\CMSPageEditController')->Link('show'),
+						CMSPageEditController::singleton()->Link('show'),
 						(int)$item->ID
 					),
 					$item->TreeTitle // returns HTML, does its own escaping
@@ -1133,7 +1152,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 */
 	public function delete($data, $form) {
 		$id = $data['ID'];
-		$record = DataObject::get_by_id("SilverStripe\\CMS\\Model\\SiteTree", $id);
+		$record = SiteTree::get()->byID($id);
 		if($record && !$record->canDelete()) {
 			return Security::permissionFailure();
 		}
@@ -1164,7 +1183,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function archive($data, $form) {
 		$id = $data['ID'];
 		/** @var SiteTree $record */
-		$record = DataObject::get_by_id("SilverStripe\\CMS\\Model\\SiteTree", $id);
+		$record = SiteTree::get()->byID($id);
 		if(!$record || !$record->exists()) {
 			throw new SS_HTTPResponse_Exception("Bad record ID #$id", 404);
 		}
@@ -1260,7 +1279,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// Can be used in different contexts: In normal page edit view, in which case the redirect won't have any effect.
 		// Or in history view, in which case a revert causes the CMS to re-load the edit view.
 		// The X-Pjax header forces a "full" content refresh on redirect.
-		$url = Controller::join_links(singleton('SilverStripe\\CMS\\Controllers\\CMSPageEditController')->Link('show'), $record->ID);
+		$url = Controller::join_links(CMSPageEditController::singleton()->Link('show'), $record->ID);
 		$this->getResponse()->addHeader('X-ControllerURL', $url);
 		$this->getRequest()->addHeader('X-Pjax', 'Content');
 		$this->getResponse()->addHeader('X-Pjax', 'Content');
@@ -1327,7 +1346,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
 
 			$start = 0;
-			$pages = DataObject::get("SilverStripe\\CMS\\Model\\SiteTree", "", "", "", "$start,30");
+			$pages = SiteTree::get()->limit("$start,30");
 			$count = 0;
 			while($pages) {
 				foreach($pages as $page) {
@@ -1341,9 +1360,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 					$count++;
 					$response .= "<li>$count</li>";
 				}
-				if($pages->Count() > 29) {
+				if($pages->count() > 29) {
 					$start += 30;
-					$pages = DataObject::get("SilverStripe\\CMS\\Model\\SiteTree", "", "", "", "$start,30");
+					$pages = SiteTree::get()->limit("$start,30");
 				} else {
 					break;
 				}
@@ -1401,7 +1420,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
 
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
-			$page = DataObject::get_by_id("SilverStripe\\CMS\\Model\\SiteTree", $id);
+			$page = SiteTree::get()->byID($id);
 			if($page && (!$page->canEdit() || !$page->canCreate(null, array('Parent' => $page->Parent())))) {
 				return Security::permissionFailure($this);
 			}
@@ -1423,7 +1442,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 					array('title' => $newPage->Title)
 				))
 			);
-			$url = Controller::join_links(singleton('SilverStripe\\CMS\\Controllers\\CMSPageEditController')->Link('show'), $newPage->ID);
+			$url = Controller::join_links(CMSPageEditController::singleton()->Link('show'), $newPage->ID);
 			$this->getResponse()->addHeader('X-ControllerURL', $url);
 			$this->getRequest()->addHeader('X-Pjax', 'Content');
 			$this->getResponse()->addHeader('X-Pjax', 'Content');
@@ -1439,7 +1458,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
 		increase_time_limit_to();
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
-			$page = DataObject::get_by_id("SilverStripe\\CMS\\Model\\SiteTree", $id);
+			$page = SiteTree::get()->byID($id);
 			if($page && (!$page->canEdit() || !$page->canCreate(null, array('Parent' => $page->Parent())))) {
 				return Security::permissionFailure($this);
 			}
@@ -1455,7 +1474,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 					array('title' => $newPage->Title)
 				))
 			);
-			$url = Controller::join_links(singleton('SilverStripe\\CMS\\Controllers\\CMSPageEditController')->Link('show'), $newPage->ID);
+			$url = Controller::join_links(CMSPageEditController::singleton()->Link('show'), $newPage->ID);
 			$this->getResponse()->addHeader('X-ControllerURL', $url);
 			$this->getRequest()->addHeader('X-Pjax', 'Content');
 			$this->getResponse()->addHeader('X-Pjax', 'Content');

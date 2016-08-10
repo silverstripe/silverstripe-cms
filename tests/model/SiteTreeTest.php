@@ -22,7 +22,7 @@ class SiteTreeTest extends SapphireTest {
 	protected static $fixture_file = 'SiteTreeTest.yml';
 
 	protected $illegalExtensions = array(
-		'SiteTree' => array('SiteTreeSubsites', 'Translatable')
+		'SilverStripe\\CMS\\Model\\SiteTree' => array('SiteTreeSubsites', 'Translatable')
 	);
 
 	protected $extraDataObjects = array(
@@ -724,19 +724,19 @@ class SiteTreeTest extends SapphireTest {
 			array('pagetype' => $sitetree->i18n_singular_name())
 		);
 		$sitetree->write();
-		$this->assertEquals($sitetree->URLSegment, 'new-page',
+		$this->assertEquals('new-page', $sitetree->URLSegment,
 			'Sets based on default title on first save'
 		);
 
 		$sitetree->Title = 'Changed';
 		$sitetree->write();
-		$this->assertEquals($sitetree->URLSegment, 'changed',
+		$this->assertEquals('changed', $sitetree->URLSegment,
 			'Auto-updates when set to default title'
 		);
 
 		$sitetree->Title = 'Changed again';
 		$sitetree->write();
-		$this->assertEquals($sitetree->URLSegment, 'changed',
+		$this->assertEquals('changed', $sitetree->URLSegment,
 			'Does not auto-update once title has been changed'
 		);
 	}
@@ -757,13 +757,13 @@ class SiteTreeTest extends SapphireTest {
 
 		$sitetree->Title = 'Changed';
 		$sitetree->write();
-		$this->assertEquals($sitetree->URLSegment, 'changed',
+		$this->assertEquals('changed', $sitetree->URLSegment,
 			'Auto-updates when set to default title'
 		);
 
 		$sitetree->Title = 'Changed again';
 		$sitetree->write();
-		$this->assertEquals($sitetree->URLSegment, 'changed',
+		$this->assertEquals('changed', $sitetree->URLSegment,
 			'Does not auto-update once title has been changed'
 		);
 
@@ -1108,7 +1108,7 @@ class SiteTreeTest extends SapphireTest {
 
 	public function testGetBreadcrumbItems() {
 		$page = $this->objFromFixture("Page", "breadcrumbs");
-		$this->assertEquals($page->getBreadcrumbItems()->count(), 1, "Only display current page.");
+		$this->assertEquals(1, $page->getBreadcrumbItems()->count(), "Only display current page.");
 
 		// Test breadcrumb order
 		$page = $this->objFromFixture("Page", "breadcrumbs5");

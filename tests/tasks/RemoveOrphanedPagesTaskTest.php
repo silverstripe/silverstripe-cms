@@ -88,7 +88,7 @@ class RemoveOrphanedPagesTaskTest extends FunctionalTest {
 		);
 		$child2_1_published_orphaned = $this->objFromFixture('Page', 'child2_1_published_orphaned');
 
-		$task = singleton('RemoveOrphanedPagesTask');
+		$task = singleton('SilverStripe\\CMS\\Tasks\\RemoveOrphanedPagesTask');
 		$orphans = $task->getOrphanedPages();
 		$orphanIDs = $orphans->column('ID');
 		sort($orphanIDs);

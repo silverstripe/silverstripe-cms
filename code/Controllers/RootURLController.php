@@ -2,10 +2,10 @@
 
 namespace SilverStripe\CMS\Controllers;
 
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\ORM\DataModel;
 use SilverStripe\ORM\DB;
 use Controller;
-
 use SS_HTTPResponse;
 use Translatable;
 use Config;
@@ -13,7 +13,6 @@ use Deprecation;
 use SS_HTTPRequest;
 use ClassInfo;
 use Director;
-use SilverStripe\CMS\Model\SiteTree;
 
 
 /**
@@ -109,7 +108,10 @@ class RootURLController extends Controller {
 	static public function should_be_on_root(SiteTree $page) {
 		if(!self::$is_at_root && self::get_homepage_link() == trim($page->RelativeLink(true), '/')) {
 			return !(
-				class_exists('Translatable') && $page->hasExtension('Translatable') && $page->Locale && $page->Locale != Translatable::default_locale()
+				class_exists('Translatable')
+					&& $page->hasExtension('Translatable')
+					&& $page->Locale
+					&& $page->Locale != Translatable::default_locale()
 			);
 		}
 
@@ -128,7 +130,8 @@ class RootURLController extends Controller {
 
 		self::$is_at_root = true;
 
-		if(!DB::is_active() || !ClassInfo::hasTable('SilverStripe\\CMS\\Model\\SiteTree')) {
+		/** @skipUpgrade */
+		if(!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
 			$this->getResponse()->redirect(Controller::join_links(
 				Director::absoluteBaseURL(),
 				'dev/build',
@@ -149,7 +152,8 @@ class RootURLController extends Controller {
 		$this->beforeHandleRequest($request, $model);
 
 		if (!$this->getResponse()->isFinished()) {
-			if (!DB::is_active() || !ClassInfo::hasTable('SilverStripe\\CMS\\Model\\SiteTree')) {
+			/** @skipUpgrade */
+			if (!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
 				$this->getResponse()->redirect(Director::absoluteBaseURL() . 'dev/build?returnURL=' . (isset($_GET['url']) ? urlencode($_GET['url']) : null));
 				return $this->getResponse();
 			}

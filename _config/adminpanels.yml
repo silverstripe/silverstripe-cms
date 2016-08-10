@@ -1,2 +1,2 @@
 AdminRootController:
-  default_panel: 'CMSPagesController'
+  default_panel: 'SilverStripe\CMS\Controllers\CMSPagesController'

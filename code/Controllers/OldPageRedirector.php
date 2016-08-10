@@ -3,14 +3,13 @@
 namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\ORM\Queries\SQLSelect;
+use SilverStripe\CMS\Model\SiteTree;
 use Extension;
 use Director;
 use SS_HTTPRequest;
 use SS_HTTPResponse;
 use Controller;
 use SS_HTTPResponse_Exception;
-
-use SilverStripe\CMS\Model\SiteTree;
 
 
 class OldPageRedirector extends Extension {
@@ -25,7 +24,7 @@ class OldPageRedirector extends Extension {
 	public function onBeforeHTTPError404($request) {
 		// We need to get the URL ourselves because $request->allParams() only has a max of 4 params
 		$params = preg_split('|/+|', $request->getURL());
-		$cleanURL = trim(Director::makeRelative($request->getURL(false), '/'));
+		$cleanURL = trim(Director::makeRelative($request->getURL(false)), '/');
 
 		$getvars = $request->getVars();
 		unset($getvars['url']);
@@ -57,14 +56,17 @@ class OldPageRedirector extends Extension {
 	 * @return string|boolean False, or the new URL
 	 */
 	static public function find_old_page($params, $parent = null, $redirect = false) {
-		$parent = is_numeric($parent) ? SiteTree::get()->byId($parent) : $parent;
+		$parent = is_numeric($parent) ? SiteTree::get()->byID($parent) : $parent;
 		$params = (array)$params;
 		$URL = rawurlencode(array_shift($params));
-		if (empty($URL)) { return false; }
+		if (empty($URL)) {
+			return false;
+		}
+		/** @var SiteTree $page */
 		if ($parent) {
-			$page = SiteTree::get()->filter(array('ParentID' => $parent->ID, 'URLSegment' => $URL))->First();
+			$page = SiteTree::get()->filter(array('ParentID' => $parent->ID, 'URLSegment' => $URL))->first();
 		} else {
-			$page = SiteTree::get()->filter(array('URLSegment' => $URL))->First();
+			$page = SiteTree::get()->filter(array('URLSegment' => $URL))->first();
 		}
 
 		if (!$page) {

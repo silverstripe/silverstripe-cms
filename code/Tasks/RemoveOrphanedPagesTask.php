@@ -1,11 +1,25 @@
 <?php
 
+namespace SilverStripe\CMS\Tasks;
+
+
+use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\Security;
 use SilverStripe\CMS\Model\SiteTree;
+use Controller;
+use Requirements;
+use FieldList;
+use HeaderField;
+use LiteralField;
+use CheckboxSetField;
+use OptionsetField;
+use Form;
+use FormAction;
+
 
 
 
@@ -67,6 +81,11 @@ in the other stage:<br />
 		}
 	}
 
+	public function Link($action = null)
+	{
+		return Controller::join_links('RemoveOrphanedPagesTask', $action, '/');
+	}
+
 	public function index() {
 		Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.js');
 		Requirements::customCSS('#OrphanIDs .middleColumn {width: auto;}');
@@ -110,7 +129,7 @@ in the other stage:<br />
 			$source[$orphan->ID] = $label;
 		}
 
-		if($orphans && $orphans->Count()) {
+		if($orphans && $orphans->count()) {
 			$fields->push(new CheckboxSetField('OrphanIDs', false, $source));
 			$fields->push(new LiteralField(
 				'SelectAllLiteral',
@@ -169,7 +188,7 @@ in the other stage:<br />
 			)
 		);
 
-		if(!$orphans || !$orphans->Count()) {
+		if(!$orphans || !$orphans->count()) {
 			$form->makeReadonly();
 		}
 
@@ -313,15 +332,19 @@ in the other stage:<br />
 	 */
 	public function getOrphanedPages($class = 'SilverStripe\\CMS\\Model\\SiteTree', $filter = array(), $sort = null, $join = null, $limit = null) {
 		// Alter condition
-		if(empty($filter)) $where = array();
-		elseif(is_array($filter)) $where = $filter;
-		else $where = array($filter);
-		$where[] = array("\"$class\".\"ParentID\" != ?" => 0);
+		$table = DataObject::getSchema()->tableName($class);
+		if(empty($filter)) {
+			$where = array();
+		} elseif(is_array($filter)) {
+			$where = $filter;
+		} else {
+			$where = array($filter);
+		}
+		$where[] = array("\"{$table}\".\"ParentID\" != ?" => 0);
 		$where[] = '"Parents"."ID" IS NULL';
 
 		$orphans = new ArrayList();
 		foreach(array(Versioned::DRAFT, Versioned::LIVE) as $stage) {
-			$table = DataObject::getSchema()->tableName($class);
 			$table .= ($stage == Versioned::LIVE) ? '_Live' : '';
 			$stageOrphans = Versioned::get_by_stage(
 				$class,

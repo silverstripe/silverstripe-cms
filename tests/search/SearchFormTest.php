@@ -23,7 +23,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 	protected static $fixture_file = 'SearchFormTest.yml';
 
 	protected $illegalExtensions = array(
-		'SiteTree' => array('SiteTreeSubsites', 'Translatable')
+		'SilverStripe\\CMS\\Model\\SiteTree' => array('SiteTreeSubsites', 'Translatable')
 	);
 
 	protected $mockController;

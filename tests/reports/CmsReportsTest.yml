@@ -1,5 +1,5 @@
-SiteTree:
-    after:
-        Title: after
-    before:
-        Title: before
+SilverStripe\CMS\Model\SiteTree:
+  after:
+    Title: after
+  before:
+    Title: before

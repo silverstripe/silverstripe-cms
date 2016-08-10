@@ -178,10 +178,15 @@ class CMSPageAddController extends CMSPageEditController {
 			if($page) $parentID = $page->ID;
 		}
 
-		if(is_numeric($parentID) && $parentID > 0) $parentObj = DataObject::get_by_id("SilverStripe\\CMS\\Model\\SiteTree", $parentID);
-		else $parentObj = null;
+		if(is_numeric($parentID) && $parentID > 0) {
+			$parentObj = SiteTree::get()->byID($parentID);
+		} else {
+			$parentObj = null;
+		}
 
-		if(!$parentObj || !$parentObj->ID) $parentID = 0;
+		if(!$parentObj || !$parentObj->ID) {
+			$parentID = 0;
+		}
 
 		if(!singleton($className)->canCreate(Member::currentUser(), array('Parent' => $parentObj))) {
 			return Security::permissionFailure($this);
@@ -197,7 +202,7 @@ class CMSPageAddController extends CMSPageEditController {
 			return $this->getResponseNegotiator()->respond($this->getRequest());
 		}
 
-		$editController = singleton('SilverStripe\\CMS\\Controllers\\CMSPageEditController');
+		$editController = CMSPageEditController::singleton();
 		$editController->setCurrentPageID($record->ID);
 
 		Session::set(
@@ -206,11 +211,10 @@ class CMSPageAddController extends CMSPageEditController {
 		);
 		Session::set("FormInfo.Form_EditForm.formError.type", 'good');
 
-		return $this->redirect(Controller::join_links(singleton('SilverStripe\\CMS\\Controllers\\CMSPageEditController')->Link('show'), $record->ID));
+		return $this->redirect(Controller::join_links($editController->Link('show'), $record->ID));
 	}
 
 	public function doCancel($data, $form) {
-		return $this->redirect(singleton('SilverStripe\\CMS\\Controllers\\CMSMain')->Link());
+		return $this->redirect(CMSMain::singleton()->Link());
 	}
-
 }

@@ -2,6 +2,7 @@
 
 namespace SilverStripe\CMS\Model;
 
+use File;
 use SilverStripe\ORM\ManyManyList;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\DataObject;
@@ -27,7 +28,7 @@ use Subsite;
 class SiteTreeFileExtension extends DataExtension {
 
 	private static $belongs_many_many = array(
-		'BackLinkTracking' => 'SiteTree.ImageTracking' // {@see SiteTreeLinkTracking}
+		'BackLinkTracking' => 'SilverStripe\\CMS\\Model\\SiteTree.ImageTracking' // {@see SiteTreeLinkTracking}
 	);
 
 	/**
@@ -42,14 +43,14 @@ class SiteTreeFileExtension extends DataExtension {
 
 	public function updateCMSFields(FieldList $fields) {
 		$fields->insertAfter(
+			'LastEdited',
 			ReadonlyField::create(
 				'BackLinkCount',
 				_t('AssetTableField.BACKLINKCOUNT', 'Used on:'),
-				$this->BackLinkTracking()->Count() . ' ' . _t('AssetTableField.PAGES', 'page(s)')
+				$this->BackLinkTracking()->count() . ' ' . _t('AssetTableField.PAGES', 'page(s)')
 			)
 				->addExtraClass('cms-description-toggle')
-				->setDescription($this->BackLinkHTMLList()),
-			'LastEdited'
+				->setDescription($this->BackLinkHTMLList())
 		);
 	}
 
@@ -104,12 +105,12 @@ class SiteTreeFileExtension extends DataExtension {
 	/**
 	 * @todo Unnecessary shortcut for AssetTableField, coupled with cms module.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function BackLinkTrackingCount() {
 		$pages = $this->owner->BackLinkTracking();
 		if($pages) {
-			return $pages->Count();
+			return $pages->count();
 		} else {
 			return 0;
 		}

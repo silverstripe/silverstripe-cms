@@ -12,7 +12,6 @@ mappings:
   CMSPageHistoryController: SilverStripe\CMS\Controllers\CMSPageHistoryController
   CMSPagesController: SilverStripe\CMS\Controllers\CMSPagesController
   CMSPageSettingsController: SilverStripe\CMS\Controllers\CMSPageSettingsController
-  CMSSettingsController: SilverStripe\CMS\Controllers\CMSSettingsController
   CMSSiteTreeFilter: SilverStripe\CMS\Controllers\CMSSiteTreeFilter
   CMSSiteTreeFilter_PublishedPages: SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages
   CMSSiteTreeFilter_DeletedPages: SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages
@@ -26,7 +25,6 @@ mappings:
   ErrorPageFileExtension: SilverStripe\CMS\Controllers\ErrorPageFileExtension
   LeftAndMainPageIconsExtension: SilverStripe\CMS\Controllers\LeftAndMainPageIconsExtension
   ModelAsController: SilverStripe\CMS\Controllers\ModelAsController
-  NestedController: SilverStripe\CMS\Controllers\NestedController
   OldPageRedirector: SilverStripe\CMS\Controllers\OldPageRedirector
   RootURLController: SilverStripe\CMS\Controllers\RootURLController
   SilverStripeNavigator: SilverStripe\CMS\Controllers\SilverStripeNavigator
@@ -35,7 +33,6 @@ mappings:
   SilverStripeNavigatorItem_StageLink: SilverStripe\CMS\Controllers\SilverStripeNavigatorItem_StageLink
   SilverStripeNavigatorItem_LiveLink: SilverStripe\CMS\Controllers\SilverStripeNavigatorItem_LiveLink
   SilverStripeNavigatorItem_ArchiveLink: SilverStripe\CMS\Controllers\SilverStripeNavigatorItem_ArchiveLink
-  Folder_UnusedAssetsField: SilverStripe\CMS\Forms\Folder_UnusedAssetsField
   SiteTreeURLSegmentField: SilverStripe\CMS\Forms\SiteTreeURLSegmentField
   SiteTreeURLSegmentField_Readonly: SilverStripe\CMS\Forms\SiteTreeURLSegmentField_Readonly
   CurrentPageIdentifier: SilverStripe\CMS\Model\CurrentPageIdentifier
@@ -65,3 +62,6 @@ mappings:
   SideReport_RecentlyEdited: SilverStripe\CMS\Reports\SideReport_RecentlyEdited
   ContentControllerSearchExtension: SilverStripe\CMS\Search\ContentControllerSearchExtension
   SearchForm: SilverStripe\CMS\Search\SearchForm
+  MigrateSiteTreeLinkingTask: SilverStripe\CMS\Tasks\MigrateSiteTreeLinkingTask
+  RemoveOrphanedPagesTask: SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask
+  SiteTreeMaintenanceTask: SilverStripe\CMS\Tasks\SiteTreeMaintenanceTask

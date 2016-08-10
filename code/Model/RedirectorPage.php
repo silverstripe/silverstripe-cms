@@ -2,7 +2,6 @@
 
 namespace SilverStripe\CMS\Model;
 
-use SilverStripe\ORM\DataObject;
 use Page;
 use Requirements;
 use HeaderField;
@@ -16,6 +15,11 @@ use Page_Controller;
  *
  * @package cms
  * @subpackage content
+ *
+ * @property string $RedirectionType Either 'Internal' or 'External'
+ * @property string $ExternalURL URL to redirect to if $RedirectionType is 'External'
+ * @property int $LinkToID
+ * @method SiteTree LinkTo() Page to link to if $RedirectionType is 'Internal'
  */
 class RedirectorPage extends Page {
 	private static $description = 'Redirects to an internal page or an external URL';
@@ -33,8 +37,7 @@ class RedirectorPage extends Page {
 		"LinkTo" => "SilverStripe\\CMS\\Model\\SiteTree",
 	);
 
-	private static $many_many = array(
-	);
+	private static $table_name = 'RedirectorPage';
 
 	/**
 	 * Returns this page if the redirect is external, otherwise
@@ -83,38 +86,39 @@ class RedirectorPage extends Page {
 	 * Only return a value if there is a legal redirection destination.
 	 */
 	public function redirectionLink() {
+		// Check external redirect
 		if($this->RedirectionType == 'External') {
-			if($this->ExternalURL) {
-				return $this->ExternalURL;
-			}
-
-		} else {
-			$linkTo = $this->LinkToID ? DataObject::get_by_id("SilverStripe\\CMS\\Model\\SiteTree", $this->LinkToID) : null;
-
-			if($linkTo) {
-				// We shouldn't point to ourselves - that would create an infinite loop!  Return null since we have a
-				// bad configuration
-				if($this->ID == $linkTo->ID) {
-					return null;
-
-				// If we're linking to another redirectorpage then just return the URLSegment, to prevent a cycle of redirector
-				// pages from causing an infinite loop.  Instead, they will cause a 30x redirection loop in the browser, but
-				// this can be handled sufficiently gracefully by the browser.
-				} elseif($linkTo instanceof RedirectorPage) {
-					return $linkTo->regularLink();
-
-				// For all other pages, just return the link of the page.
-				} else {
-					return $linkTo->Link();
-				}
-			}
+			return $this->ExternalURL ?: null;
 		}
+
+		// Check internal redirect
+		/** @var SiteTree $linkTo */
+		$linkTo = $this->LinkToID ? SiteTree::get()->byID($this->LinkToID) : null;
+		if (empty($linkTo)) {
+			return null;
+		}
+
+		// We shouldn't point to ourselves - that would create an infinite loop!  Return null since we have a
+		// bad configuration
+		if($this->ID == $linkTo->ID) {
+			return null;
+		}
+
+		// If we're linking to another redirectorpage then just return the URLSegment, to prevent a cycle of redirector
+		// pages from causing an infinite loop.  Instead, they will cause a 30x redirection loop in the browser, but
+		// this can be handled sufficiently gracefully by the browser.
+		if($linkTo instanceof RedirectorPage) {
+			return $linkTo->regularLink();
+		}
+
+		// For all other pages, just return the link of the page.
+		return $linkTo->Link();
 	}
 
 	public function syncLinkTracking() {
 		if ($this->RedirectionType == 'Internal') {
 			if($this->LinkToID) {
-				$this->HasBrokenLink = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $this->LinkToID) ? false : true;
+				$this->HasBrokenLink = SiteTree::get()->byID($this->LinkToID) ? false : true;
 			} else {
 				// An incomplete redirector page definitely has a broken link
 				$this->HasBrokenLink = true;
@@ -188,9 +192,10 @@ class RedirectorPage_Controller extends Page_Controller {
 		parent::init();
 
 		// Check we don't already have a redirect code set
-		if(!$this->getResponse()->isFinished() && $link = $this->redirectionLink()) {
+		/** @var RedirectorPage $page */
+		$page = $this->data();
+		if(!$this->getResponse()->isFinished() && $link = $page->redirectionLink()) {
 			$this->redirect($link, 301);
-			return;
 		}
 	}
 

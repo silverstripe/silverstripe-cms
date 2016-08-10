@@ -1,6 +1,8 @@
 <?php
 
 use SilverStripe\ORM\DataObject;
+use SilverStripe\CMS\Tasks\MigrateSiteTreeLinkingTask;
+
 
 /**
  * @package cms

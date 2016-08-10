@@ -16,7 +16,7 @@ class SiteTreePermissionsTest extends FunctionalTest {
 	protected static $fixture_file = "SiteTreePermissionsTest.yml";
 
 	protected $illegalExtensions = array(
-		'SiteTree' => array('SiteTreeSubsites')
+		'SilverStripe\\CMS\\Model\\SiteTree' => array('SiteTreeSubsites')
 	);
 
 	public function setUp() {
