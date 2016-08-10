@@ -2,6 +2,7 @@
 
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Security\Member;
 
 /**
 * Virtual Page creates an instance of a  page, with the same fields that the original page had, but readonly.
@@ -9,6 +10,7 @@ use SilverStripe\ORM\Versioning\Versioned;
 * Note: This Only duplicates $db fields and not the $has_one etc..
  *
  * @method SiteTree CopyContentFrom()
+ * @property int $CopyContentFromID
  *
 * @package cms
 */
@@ -317,7 +319,7 @@ class VirtualPage extends Page {
 		unset($this->components['CopyContentFrom']);
 
 		// Update ImageTracking
-		$this->ImageTracking()->setByIdList($this->CopyContentFrom()->ImageTracking()->column('ID'));
+		$this->ImageTracking()->setByIDList($this->CopyContentFrom()->ImageTracking()->column('ID'));
 	}
 
 	/**
@@ -338,11 +340,14 @@ class VirtualPage extends Page {
 	public function __get($field) {
 		if(parent::hasMethod($funcName = "get$field")) {
 			return $this->$funcName();
-		} else if(parent::hasField($field) || ($field === 'ID' && !$this->exists())) {
+		}
+		if(parent::hasField($field) || ($field === 'ID' && !$this->exists())) {
 			return $this->getField($field);
-		} elseif(($copy = $this->CopyContentFrom()) && $copy->exists()) {
+		}
+		if(($copy = $this->CopyContentFrom()) && $copy->exists()) {
 			return $copy->$field;
 		}
+		return null;
 	}
 
 	public function getField($field) {
@@ -386,7 +391,7 @@ class VirtualPage extends Page {
 		if(parent::hasMethod($method)) {
 			return parent::__call($method, $args);
 		} else {
-			return call_user_func_array(array($this->copyContentFrom(), $method), $args);
+			return call_user_func_array(array($this->CopyContentFrom(), $method), $args);
 		}
 	}
 
@@ -447,11 +452,38 @@ class VirtualPage_Controller extends Page_Controller {
 		'loadcontentall' => 'ADMIN',
 	);
 
+	/**
+	 * Backup of virtualised controller
+	 *
+	 * @var ContentController
+	 */
+	protected $virtualController = null;
+
+	/**
+	 * Get virtual controller
+	 *
+	 * @return ContentController
+	 */
+	protected function getVirtualisedController() {
+		if($this->virtualController) {
+			return $this->virtualController;
+		}
+
+		// Validate virtualised model
+		/** @var VirtualPage $page */
+		$page = $this->data();
+		$virtualisedPage = $page->CopyContentFrom();
+		if (!$virtualisedPage || !$virtualisedPage->exists()) {
+			return null;
+		}
+
+		// Create controller using standard mechanism
+		$this->virtualController = ModelAsController::controller_for($virtualisedPage);
+		return $this->virtualController;
+	}
+
 	public function getViewer($action) {
-		$originalClass = get_class($this->CopyContentFrom());
-		if ($originalClass == 'SiteTree') $name = 'Page_Controller';
-		else $name = $originalClass."_Controller";
-		$controller = new $name();
+		$controller = $this->getVirtualisedController() ?: $this;
 		return $controller->getViewer($action);
 	}
 
@@ -473,15 +505,13 @@ class VirtualPage_Controller extends Page_Controller {
 	 * @return bool
 	 */
 	public function hasMethod($method) {
-		$haveIt = parent::hasMethod($method);
-		if (!$haveIt) {
-			$originalClass = get_class($this->CopyContentFrom());
-			if ($originalClass == 'SiteTree') $name = 'ContentController';
-			else $name = $originalClass."_Controller";
-			$controller = new $name($this->dataRecord->copyContentFrom());
-			$haveIt = $controller->hasMethod($method);
-		}
-		return $haveIt;
+		if(parent::hasMethod($method)) {
+			return true;
+		};
+
+		// Fallback
+		$controller = $this->getVirtualisedController();
+		return $controller && $controller->hasMethod($method);
 	}
 
 	/**
@@ -493,23 +523,24 @@ class VirtualPage_Controller extends Page_Controller {
 	 *
 	 * @throws Exception Any error other than a 'no method' error.
 	 */
-	public function __call($method, $args) {
+	public function __call($method, $args)
+	{
 		// Check if we can safely call this method before passing it back
 		// to custom methods.
-		if($this->getExtraMethodConfig($method)) {
+		if ($this->getExtraMethodConfig($method)) {
 			return parent::__call($method, $args);
 		}
 
 		// Pass back to copied page
-		$original = $this->copyContentFrom();
-		$controller = ModelAsController::controller_for($original);
+		$controller = $this->getVirtualisedController();
+		if(!$controller) {
+			return null;
+		}
 
 		// Ensure request/response data is available on virtual controller
 		$controller->setRequest($this->getRequest());
-		$controller->response = $this->response; // @todo - replace with getter/setter in 3.3
+		$controller->setResponse($this->getResponse());
 
 		return call_user_func_array(array($controller, $method), $args);
 	}
 }
-
-
