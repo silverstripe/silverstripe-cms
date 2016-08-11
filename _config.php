@@ -25,5 +25,3 @@ CMSMenu::remove_menu_class('SilverStripe\\CMS\\Controllers\\CMSPageEditControlle
 CMSMenu::remove_menu_class('SilverStripe\\CMS\\Controllers\\CMSPageSettingsController');
 CMSMenu::remove_menu_class('SilverStripe\\CMS\\Controllers\\CMSPageHistoryController');
 CMSMenu::remove_menu_class('SilverStripe\\CMS\\Controllers\\CMSPageAddController');
-
-CMSMenu::remove_menu_item("SiteConfigLeftAndMain");

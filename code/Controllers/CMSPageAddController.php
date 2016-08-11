@@ -11,11 +11,11 @@ use FieldList;
 use LiteralField;
 use SelectionGroup;
 use SelectionGroup_Item;
+use SS_HTTPResponse;
 use TreeDropdownField;
 use OptionsetField;
 use FormAction;
 use Form;
-
 use Session;
 use Controller;
 use SilverStripe\CMS\Model\SiteTree;
@@ -151,8 +151,8 @@ class CMSPageAddController extends CMSPageEditController {
 		$form->setValidationResponseCallback(function() use ($negotiator, $form) {
 			$request = $this->getRequest();
 			if($request->isAjax() && $negotiator) {
-				$this->setupFormErrors();
-				$result = $this->forTemplate();
+				$form->setupFormErrors();
+				$result = $form->forTemplate();
 
 				return $negotiator->respond($request, array(
 					'CurrentForm' => function() use($result) {
@@ -167,6 +167,11 @@ class CMSPageAddController extends CMSPageEditController {
 		return $form;
 	}
 
+	/**
+	 * @param array $data
+	 * @param Form $form
+	 * @return SS_HTTPResponse
+	 */
 	public function doAdd($data, $form) {
 		$className = isset($data['PageType']) ? $data['PageType'] : "Page";
 		$parentID = isset($data['ParentID']) ? (int)$data['ParentID'] : 0;

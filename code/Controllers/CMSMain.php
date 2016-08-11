@@ -2,8 +2,9 @@
 
 namespace SilverStripe\CMS\Controllers;
 
+use FormField;
+use Injector;
 use ResetFormAction;
-use SilverStripe\Admin\CMSPreviewable;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\Versioning\Versioned;
@@ -17,36 +18,33 @@ use SilverStripe\Security\Security;
 use SilverStripe\Security\SecurityToken;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\PermissionProvider;
-use SilverStripe\Admin\CMSBatchActionHandler;
 use SilverStripe\Admin\AdminRootController;
-use SilverStripe\Admin\AddToCampaignHandler;
 use SilverStripe\Admin\LeftAndMain;
-
-
+use SilverStripe\Admin\CMSBatchActionHandler;
+use SilverStripe\Admin\CMSPreviewable;
+use SilverStripe\Admin\AddToCampaignHandler;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\CMS\Model\RedirectorPage;
+use SilverStripe\CMS\Model\CurrentPageIdentifier;
 use SS_HTTPRequest;
+use TabSet;
 use Translatable;
 use Requirements;
-use CMSBatchActionHandler;
 use Controller;
-use AdminRootController;
 use Director;
 use Page;
-
 use TextField;
-use HeaderField;
 use DateField;
 use DropdownField;
 use FieldGroup;
 use FieldList;
 use FormAction;
-use Object;
 use Form;
 use SS_Cache;
 use Zend_Cache;
 use Convert;
 use ArrayData;
 use HiddenField;
-use CMSPreviewable;
 use LiteralField;
 use RequiredFields;
 use LabelField;
@@ -59,16 +57,7 @@ use GridFieldLevelup;
 use GridField;
 use SS_HTTPResponse_Exception;
 use Session;
-use AddToCampaignHandler;
-use HTMLEditorField;
 use SS_HTTPResponse;
-use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\CMS\Model\RedirectorPage;
-use SilverStripe\CMS\Model\CurrentPageIdentifier;
-
-
-
-
 
 /**
  * The main "content" area of the CMS.
@@ -79,6 +68,8 @@ use SilverStripe\CMS\Model\CurrentPageIdentifier;
  * @package cms
  * @subpackage controller
  * @todo Create some base classes to contain the generic functionality that will be replicated.
+ *
+ * @mixin LeftAndMainPageIconsExtension
  */
 class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionProvider {
 
@@ -99,6 +90,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	private static $subitem_class = "SilverStripe\\Security\\Member";
 
 	private static $session_namespace = 'SilverStripe\\CMS\\Controllers\\CMSMain';
+
+	private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
 
 	/**
 	 * Amount of results showing on a single page.
@@ -176,7 +169,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function index($request) {
 		// In case we're not showing a specific record, explicitly remove any session state,
 		// to avoid it being highlighted in the tree, and causing an edit form to show.
-		if(!$request->param('Action')) $this->setCurrentPageId(null);
+		if(!$request->param('Action')) {
+			$this->setCurrentPageID(null);
+		}
 
 		return parent::index($request);
 	}
@@ -203,6 +198,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	/**
 	 * Overloads the LeftAndMain::ShowView. Allows to pass a page as a parameter, so we are able
 	 * to switch view also for archived versions.
+	 *
+	 * @param SiteTree $page
+	 * @return array
 	 */
 	public function SwitchView($page = null) {
 		if(!$page) {
@@ -230,7 +228,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function Link($action = null) {
 		$link = Controller::join_links(
 			AdminRootController::admin_url(),
-			$this->stat('url_segment', true), // in case we want to change the segment
+			$this->stat('url_segment'), // in case we want to change the segment
 			'/', // trailing slash needed if $action is null!
 			"$action"
 		);
@@ -404,7 +402,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$dateFrom,
 			$dateTo
 		);
-		$dateGroup->setTitle('Last Edited', _t('CMSSearch.PAGEFILTERDATEHEADING', 'Last edited'));
+		$dateGroup->setTitle(_t('CMSSearch.PAGEFILTERDATEHEADING', 'Last edited'));
 
 		// Create the Field list
 		$fields = new FieldList(
@@ -422,6 +420,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		);
 
 		// Use <button> to allow full jQuery UI styling on the all of the Actions
+		/** @var FormAction $action */
 		foreach($actions->dataFields() as $action) {
 			/** @var FormAction $action */
 			$action->setUseButtonTag(true);
@@ -486,7 +485,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * @return string Serialized JSON
 	 */
 	public function SiteTreeHints() {
-		$json = '';
 		$classes = SiteTree::page_type_classes();
 
 	 	$cacheCanCreate = array();
@@ -495,7 +493,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 	// Generate basic cache key. Too complex to encompass all variations
 	 	$cache = SS_Cache::factory('CMSMain_SiteTreeHints');
 	 	$cacheKey = md5(implode('_', array(Member::currentUserID(), implode(',', $cacheCanCreate), implode(',', $classes))));
-	 	if($this->getRequest()->getVar('flush')) $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
+	 	if($this->getRequest()->getVar('flush')) {
+	 		$cache->clean(Zend_Cache::CLEANING_MODE_ALL);
+		}
 	 	$json = $cache->load($cacheKey);
 	 	if(!$json) {
 			$def['Root'] = array();
@@ -710,7 +710,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				$actions = $record->getCMSActions();
 
 				// Find and remove action menus that have no actions.
-				if ($actions && $actions->Count()) {
+				if ($actions && $actions->count()) {
+					/** @var TabSet $tabset */
 					$tabset = $actions->fieldByName('ActionMenus');
 					if ($tabset) {
 						foreach ($tabset->getChildren() as $tab) {
@@ -724,7 +725,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 			// Use <button> to allow full jQuery UI styling
 			$actionsFlattened = $actions->dataFields();
-			if($actionsFlattened) foreach($actionsFlattened as $action) $action->setUseButtonTag(true);
+			if($actionsFlattened) {
+				/** @var FormAction $action */
+				foreach($actionsFlattened as $action) {
+					$action->setUseButtonTag(true);
+				}
+			}
 
 			if($record->hasMethod('getCMSValidator')) {
 				$validator = $record->getCMSValidator();
@@ -844,6 +850,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		}
 	}
 
+	/**
+	 * @return Form
+	 */
 	public function ListViewForm() {
 		$params = $this->getRequest()->requestVar('q');
 		$list = $this->getList($params, $parentID = $this->getRequest()->requestVar('ParentID'));
@@ -860,6 +869,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			);
 		}
 		$gridField = new GridField('Page','Pages', $list, $gridFieldConfig);
+		/** @var GridFieldDataColumns $columns */
 		$columns = $gridField->getConfig()->getComponentByType('GridFieldDataColumns');
 
 		// Don't allow navigating into children nodes on filtered lists
@@ -868,7 +878,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			'singular_name' => _t('SiteTree.PAGETYPE'),
 			'LastEdited' => _t('SiteTree.LASTUPDATED', 'Last Updated'),
 		);
-		$gridField->getConfig()->getComponentByType('GridFieldSortableHeader')->setFieldSorting(array('getTreeTitle' => 'Title'));
+		/** @var GridFieldSortableHeader $sortableHeader */
+		$sortableHeader = $gridField->getConfig()->getComponentByType('GridFieldSortableHeader');
+		$sortableHeader->setFieldSorting(array('getTreeTitle' => 'Title'));
 		$gridField->getState()->ParentID = $parentID;
 
 		if(!$params) {
@@ -885,6 +897,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$controller = $this;
 		$columns->setFieldFormatting(array(
 			'listChildrenLink' => function($value, &$item) use($controller) {
+				/** @var SiteTree $item */
 				$num = $item ? $item->numChildren() : null;
 				if($num) {
 					return sprintf(
@@ -1029,12 +1042,17 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	/**
 	 * @uses LeftAndMainExtension->augmentNewSiteTreeItem()
+	 *
+	 * @param int|string $id
+	 * @param bool $setID
+	 * @return mixed|DataObject
+	 * @throws SS_HTTPResponse_Exception
 	 */
 	public function getNewItem($id, $setID = true) {
 		$parentClass = $this->stat('tree_class');
 		list($dummy, $className, $parentID, $suffix) = array_pad(explode('-',$id),4,null);
 
-		if(!is_subclass_of($className, $parentClass) && strcasecmp($className, $parentClass) != 0) {
+		if (!is_a($className, $parentClass, true)) {
 			$response = Security::permissionFailure($this);
 			if (!$response) {
 				$response = $this->getResponse();
@@ -1042,8 +1060,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			throw new SS_HTTPResponse_Exception($response);
 		}
 
-		$newItem = new $className();
-
+		/** @var SiteTree $newItem */
+		$newItem = Injector::inst()->create($className);
 		if( !$suffix ) {
 			$sessionTag = "NewItems." . $parentID . "." . $className;
 			if(Session::get($sessionTag)) {
@@ -1236,7 +1254,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 
 	/**
-	 * @return array
+	 * @return SS_HTTPResponse
 	 */
 	public function rollback() {
 		return $this->doRollback(array(
@@ -1318,6 +1336,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$SNG_action = singleton($batchAction);
 			if ($SNG_action->canView() && $fieldset = $SNG_action->getParameterFields()) {
 				$formHtml = '';
+				/** @var FormField $field */
 				foreach($fieldset as $field) {
 					$formHtml .= $field->Field();
 				}
@@ -1353,6 +1372,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$pages = SiteTree::get()->limit("$start,30");
 			$count = 0;
 			while($pages) {
+				/** @var SiteTree $page */
 				foreach($pages as $page) {
 					if($page && !$page->canPublish()) {
 						return Security::permissionFailure($this);
@@ -1377,7 +1397,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$token = SecurityToken::inst();
 			$fields = new FieldList();
 			$token->updateFieldSet($fields);
-			$tokenField = $fields->First();
+			$tokenField = $fields->first();
 			$tokenHtml = ($tokenField) ? $tokenField->FieldHolder() : '';
 			$response .= '<h1>' . _t('CMSMain.PUBALLFUN','"Publish All" functionality') . '</h1>
 				<p>' . _t('CMSMain.PUBALLFUN2', 'Pressing this button will do the equivalent of going to every page and pressing "publish".  It\'s
@@ -1395,6 +1415,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	/**
 	 * Restore a completely deleted page from the SiteTree_versions table.
+	 *
+	 * @param array $data
+	 * @param Form $form
+	 * @return SS_HTTPResponse
 	 */
 	public function restore($data, $form) {
 		if(!isset($data['ID']) || !is_numeric($data['ID'])) {
@@ -1402,8 +1426,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		}
 
 		$id = (int)$data['ID'];
+		/** @var SiteTree $restoredPage */
 		$restoredPage = Versioned::get_latest_version("SilverStripe\\CMS\\Model\\SiteTree", $id);
-		if(!$restoredPage) 	return new SS_HTTPResponse("SiteTree #$id not found", 400);
+		if(!$restoredPage) {
+			return new SS_HTTPResponse("SiteTree #$id not found", 400);
+		}
 
 		$restoredPage = $restoredPage->doRestoreToStage();
 
@@ -1424,6 +1451,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
 
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
+			/** @var SiteTree $page */
 			$page = SiteTree::get()->byID($id);
 			if($page && (!$page->canEdit() || !$page->canCreate(null, array('Parent' => $page->Parent())))) {
 				return Security::permissionFailure($this);
@@ -1462,6 +1490,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
 		increase_time_limit_to();
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
+			/** @var SiteTree $page */
 			$page = SiteTree::get()->byID($id);
 			if($page && (!$page->canEdit() || !$page->canCreate(null, array('Parent' => $page->Parent())))) {
 				return Security::permissionFailure($this);

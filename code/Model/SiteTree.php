@@ -82,8 +82,8 @@ use SilverStripe\Admin\CMSPreviewable;
  * @property string CanViewType Type of restriction for viewing this object.
  * @property string CanEditType Type of restriction for editing this object.
  *
- * @method ManyManyList ViewerGroups List of groups that can view this object.
- * @method ManyManyList EditorGroups List of groups that can edit this object.
+ * @method ManyManyList ViewerGroups() List of groups that can view this object.
+ * @method ManyManyList EditorGroups() List of groups that can edit this object.
  * @method SiteTree Parent()
  *
  * @mixin Hierarchy
@@ -403,8 +403,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	public static function page_type_classes() {
 		$classes = ClassInfo::getValidSubClasses();
 
-		$baseClassIndex = array_search('SilverStripe\\CMS\\Model\\SiteTree', $classes);
-		if($baseClassIndex !== FALSE) unset($classes[$baseClassIndex]);
+		$baseClassIndex = array_search(__CLASS__, $classes);
+		if($baseClassIndex !== false) {
+			unset($classes[$baseClassIndex]);
+		}
 
 		$kill_ancestors = array();
 
@@ -448,6 +450,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			return null;
 		}
 
+		/** @var SiteTree $page */
 		if (
 			   !($page = DataObject::get_by_id(__CLASS__, $arguments['id']))         // Get the current page by ID.
 			&& !($page = Versioned::get_latest_version(__CLASS__, $arguments['id'])) // Attempt link to old version.
@@ -1925,9 +1928,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				$dependentPages
 			);
 			/** @var GridFieldDataColumns $dataColumns */
-			$dataColumns = $dependentTable
-				->getConfig()
-				->getComponentByType('GridFieldDataColumns');
+			$dataColumns = $dependentTable->getConfig()->getComponentByType('GridFieldDataColumns');
 			$dataColumns
 				->setDisplayFields($dependentColumns)
 				->setFieldFormatting(array(

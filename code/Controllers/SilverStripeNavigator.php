@@ -4,6 +4,7 @@ namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\FieldType\DBField;
@@ -13,8 +14,6 @@ use ClassInfo;
 use Controller;
 use SilverStripe\Admin\CMSPreviewable;
 use SilverStripe\Admin\LeftAndMain;
-
-
 use SiteTreeFutureState;
 use SilverStripe\CMS\Model\RedirectorPage;
 
@@ -393,6 +392,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 
 	public function getMessage() {
 		if($date = Versioned::current_archived_date()) {
+			/** @var DBDatetime $dateObj */
 			$dateObj = DBField::create_field('Datetime', $date);
 			return "<div id=\"SilverStripeNavigatorMessage\" title=\"". _t('ContentControl.NOTEWONTBESHOWN', 'Note: this message will not be shown to your visitors') ."\">". _t('ContentController.ARCHIVEDSITEFROM', 'Archived site from') ."<br>" . $dateObj->Nice() . "</div>";
 		}

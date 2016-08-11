@@ -1,4 +1,4 @@
-LeftAndMain:
+SilverStripe\Admin\LeftAndMain:
   extensions:
     - SilverStripe\CMS\Controllers\LeftAndMainPageIconsExtension
 Controller:

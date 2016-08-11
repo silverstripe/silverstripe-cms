@@ -7,7 +7,6 @@ use SilverStripe\ORM\DataModel;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\DataObject;
 use Controller;
-
 use ClassInfo;
 use Injector;
 use SS_HTTPRequest;

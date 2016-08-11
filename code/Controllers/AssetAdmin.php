@@ -2,16 +2,22 @@
 
 namespace SilverStripe\CMS\Controllers;
 
+use SearchContext;
+use SearchFilter;
 use SilverStripe\Filesystem\Storage\AssetNameGenerator;
 use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\DataList;
+use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\Security\Security;
 use SilverStripe\Security\PermissionProvider;
+use SilverStripe\Admin\CMSBatchAction;
+use SilverStripe\Admin\CMSBatchActionHandler;
+use SilverStripe\Admin\LeftAndMain;
 use Session;
 use Requirements;
-use CMSBatchActionHandler;
 use File;
 use DateField;
 use HiddenField;
@@ -28,6 +34,7 @@ use GridFieldLevelup;
 use GridField;
 use Controller;
 use LiteralField;
+use SS_HTTPRequest;
 use TabSet;
 use Tab;
 use CompositeField;
@@ -49,10 +56,6 @@ use Folder;
 use Injector;
 use Director;
 use ArrayData;
-use CMSBatchAction;
-use SilverStripe\Admin\CMSBatchActionHandler;
-use SilverStripe\Admin\LeftAndMain;
-use SilverStripe\Admin\CMSBatchAction;
 
 
 
@@ -97,6 +100,8 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 		'getsubtree'
 	);
 
+	private static $required_permission_codes = 'CMS_ACCESS_AssetAdmin';
+
 	/**
 	 * Return fake-ID "root" if no ID is found (needed to upload files into the root-folder)
 	 */
@@ -139,6 +144,7 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 		// Overwrite name filter to search both Name and Title attributes
 		$context->removeFilterByName('Name');
 		$params = $this->getRequest()->requestVar('q');
+		/** @var DataList $list */
 		$list = $context->getResults($params);
 
 		// Don't filter list when a detail view is requested,
@@ -219,6 +225,7 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 		);
 
 		$gridField = GridField::create('File', $title, $this->getList(), $gridFieldConfig);
+		/** @var GridFieldDataColumns $columns */
 		$columns = $gridField->getConfig()->getComponentByType('GridFieldDataColumns');
 		$columns->setDisplayFields(array(
 			'StripThumbnail' => '',
@@ -256,14 +263,14 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 		// Move existing fields to a "details" tab, unless they've already been tabbed out through extensions.
 		// Required to keep Folder->getCMSFields() simple and reuseable,
 		// without any dependencies into AssetAdmin (e.g. useful for "add folder" views).
-		if(!$fields->hasTabset()) {
+		if(!$fields->hasTabSet()) {
 			$tabs = new TabSet('Root',
 				$tabList = new Tab('ListView', _t('AssetAdmin.ListView', 'List View')),
 				$tabTree = new Tab('TreeView', _t('AssetAdmin.TreeView', 'Tree View'))
 			);
 			$tabList->addExtraClass("content-listview cms-tabset-icon list");
 			$tabTree->addExtraClass("content-treeview cms-tabset-icon tree");
-			if($fields->Count() && $folder && $folder->isInDB()) {
+			if($fields->count() && $folder && $folder->isInDB()) {
 				$tabs->push($tabDetails = new Tab('DetailsView', _t('AssetAdmin.DetailsView', 'Details')));
 				$tabDetails->addExtraClass("content-galleryview cms-tabset-icon edit");
 				foreach($fields as $field) {
@@ -373,6 +380,10 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 		return $form;
 	}
 
+	/**
+	 * @param SS_HTTPRequest $request
+	 * @return DBHTMLText
+	 */
 	public function addfolder($request) {
 		$obj = $this->customise(array(
 			'EditForm' => $this->AddForm()
@@ -413,12 +424,14 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 	 * @return SearchContext
 	 */
 	public function getSearchContext() {
-		$context = singleton('File')->getDefaultSearchContext();
+		$context = File::singleton()->getDefaultSearchContext();
 
 		// Namespace fields, for easier detection if a search is present
+		/** @var FormField $field */
 		foreach($context->getFields() as $field) {
 			$field->setName(sprintf('q[%s]', $field->getName()));
 		}
+		/** @var SearchFilter $filter */
 		foreach($context->getFilters() as $filter) {
 			$filter->setFullName(sprintf('q[%s]', $filter->getFullName()));
 		}
@@ -529,6 +542,10 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 	 * Add a new group and return its details suitable for ajax.
 	 *
 	 * @todo Move logic into Folder class, and use LeftAndMain->doAdd() default implementation.
+	 *
+	 * @param array $data
+	 * @param Form $form
+	 * @return SS_HTTPResponse|string
 	 */
 	public function doAdd($data, $form) {
 		$class = $this->stat('tree_class');
@@ -539,6 +556,7 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 		}
 
 		// check addchildren permissions
+		/** @var File $parentRecord */
 		if(
 			singleton($class)->hasExtension('SilverStripe\ORM\Hierarchy\Hierarchy')
 			&& isset($data['ParentID'])
