@@ -1,5 +1,7 @@
 <?php
 
+use SilverStripe\Admin\CMSMenu;
+
 /**
  * - CMS_DIR: Path relative to webroot, e.g. "cms"
  * - CMS_PATH: Absolute filepath, e.g. "/var/www/my-webroot/cms"

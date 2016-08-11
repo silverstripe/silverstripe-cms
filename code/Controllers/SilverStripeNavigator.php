@@ -9,10 +9,11 @@ use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\Security\Member;
 use ViewableData;
-use CMSPreviewable;
 use ClassInfo;
-use LeftAndMain;
 use Controller;
+use SilverStripe\Admin\CMSPreviewable;
+use SilverStripe\Admin\LeftAndMain;
+
 
 use SiteTreeFutureState;
 use SilverStripe\CMS\Model\RedirectorPage;
@@ -222,7 +223,7 @@ abstract class SilverStripeNavigatorItem extends ViewableData {
 				(!$currentDraft || ($currentDraft && $this->record->Version != $currentDraft->Version))
 				&& (!$currentLive || ($currentLive && $this->record->Version != $currentLive->Version))
 			);
-		}
+}
 
 		return $this->record->_cached_isArchived;
 	}

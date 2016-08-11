@@ -19,7 +19,6 @@ use SilverStripe\Security\Permission;
 use SilverStripe\Security\Group;
 use SilverStripe\Security\PermissionProvider;
 use i18nEntityProvider;
-use CMSPreviewable;
 use Director;
 use SilverStripe\CMS\Controllers\RootURLController;
 use ClassInfo;
@@ -52,9 +51,11 @@ use TreeDropdownField;
 use FieldGroup;
 use CheckboxField;
 use ListboxField;
-use AddToCampaignHandler_FormAction;
 use FormAction;
 use i18n;
+use SilverStripe\Admin\AddToCampaignHandler_FormAction;
+use SilverStripe\Admin\CMSPreviewable;
+
 
 /**
  * Basic data-object representing all pages within the site tree. All page types that live within the hierarchy should
@@ -352,13 +353,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				foreach($alternatives as $alternative) {
 					if($alternative) {
 						$sitetree = $alternative;
-					}
+			}
 				}
 			}
 
 			if(!$sitetree) {
 				return null;
-			}
+		}
 		}
 
 		// Check if we have any more URL parts to parse.
@@ -437,8 +438,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * Replace a "[sitetree_link id=n]" shortcode with a link to the page with the corresponding ID.
 	 *
-	 * @param array $arguments
-	 * @param string $content
+	 * @param array      $arguments
+	 * @param string     $content
 	 * @param ShortcodeParser $parser
 	 * @return string
 	 */
@@ -609,7 +610,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$currentPage = Director::get_current_page();
 		if ($currentPage instanceof ContentController) {
 			$currentPage = $currentPage->data();
-		}
+	}
 		if($currentPage instanceof SiteTree) {
 			return $currentPage === $this || $currentPage->ID === $this->ID;
 		}
@@ -1467,7 +1468,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 
 		if(Permission::check('CMS_ACCESS_CMSMain')
-			&& in_array('CMSPreviewable', class_implements($this))
 			&& !$this instanceof ErrorPage
 			&& $this->ID > 0
 		) {
@@ -1552,7 +1552,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				DB::alteration_message('Contact Us page created', 'created');
 			}
 		}
-		}
+	}
 
 	protected function onBeforeWrite() {
 		parent::onBeforeWrite();
@@ -1877,10 +1877,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					if($parentPage && $parentPage->exists()) {
 						$link = Convert::raw2att($parentPage->CMSEditLink());
 						$title = Convert::raw2xml($parentPage->Title);
-					} else {
+						} else {
 						$link = CMSPageEditController::singleton()->Link('show');
 						$title = _t('SiteTree.TOPLEVEL', 'Site Content (Top Level)');
-					}
+						}
 					$parentPageLinks[] = "<a class=\"cmsEditlink\" href=\"{$link}\">{$title}</a>";
 				}
 

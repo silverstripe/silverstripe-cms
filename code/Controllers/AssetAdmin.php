@@ -9,7 +9,6 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\Security\Security;
 use SilverStripe\Security\PermissionProvider;
-use LeftAndMain;
 use Session;
 use Requirements;
 use CMSBatchActionHandler;
@@ -51,6 +50,10 @@ use Injector;
 use Director;
 use ArrayData;
 use CMSBatchAction;
+use SilverStripe\Admin\CMSBatchActionHandler;
+use SilverStripe\Admin\LeftAndMain;
+use SilverStripe\Admin\CMSBatchAction;
+
 
 
 

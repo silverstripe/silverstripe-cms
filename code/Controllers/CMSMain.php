@@ -3,6 +3,7 @@
 namespace SilverStripe\CMS\Controllers;
 
 use ResetFormAction;
+use SilverStripe\Admin\CMSPreviewable;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\Versioning\Versioned;
@@ -16,7 +17,10 @@ use SilverStripe\Security\Security;
 use SilverStripe\Security\SecurityToken;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\PermissionProvider;
-use LeftAndMain;
+use SilverStripe\Admin\CMSBatchActionHandler;
+use SilverStripe\Admin\AdminRootController;
+use SilverStripe\Admin\AddToCampaignHandler;
+use SilverStripe\Admin\LeftAndMain;
 
 
 use SS_HTTPRequest;
@@ -485,14 +489,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$json = '';
 		$classes = SiteTree::page_type_classes();
 
-		$cacheCanCreate = array();
-		foreach($classes as $class) $cacheCanCreate[$class] = singleton($class)->canCreate();
+	 	$cacheCanCreate = array();
+	 	foreach($classes as $class) $cacheCanCreate[$class] = singleton($class)->canCreate();
 
-		// Generate basic cache key. Too complex to encompass all variations
-		$cache = SS_Cache::factory('CMSMain_SiteTreeHints');
-		$cacheKey = md5(implode('_', array(Member::currentUserID(), implode(',', $cacheCanCreate), implode(',', $classes))));
-		if($this->getRequest()->getVar('flush')) $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
-		$json = $cache->load($cacheKey);
+	 	// Generate basic cache key. Too complex to encompass all variations
+	 	$cache = SS_Cache::factory('CMSMain_SiteTreeHints');
+	 	$cacheKey = md5(implode('_', array(Member::currentUserID(), implode(',', $cacheCanCreate), implode(',', $classes))));
+	 	if($this->getRequest()->getVar('flush')) $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
+	 	$json = $cache->load($cacheKey);
 	 	if(!$json) {
 			$def['Root'] = array();
 			$def['Root']['disallowedChildren'] = array();
@@ -734,7 +738,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$form->setValidationExemptActions(array('restore', 'revert', 'deletefromlive', 'delete', 'unpublish', 'rollback', 'doRollback'));
 
 			// Announce the capability so the frontend can decide whether to allow preview or not.
-			if(in_array('CMSPreviewable', class_implements($record))) {
+			if ($record instanceof CMSPreviewable) {
 				$form->addExtraClass('cms-previewable');
 			}
 

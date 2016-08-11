@@ -7,9 +7,10 @@ use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\Versioning\Versioned;
 use Object;
-use LeftAndMain_SearchFilter;
 use ClassInfo;
 use DateField;
+use SilverStripe\Admin\LeftAndMain_SearchFilter;
+
 
 /**
  * Base class for filtering the subtree for certain node statuses.
