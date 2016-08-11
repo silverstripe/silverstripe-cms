@@ -1,6 +1,13 @@
 <?php
 
 use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search;
+use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages;
+use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages;
+use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDraftPages;
+use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages;
+use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages;
+
 
 class CMSSiteTreeFilterTest extends SapphireTest {
 
@@ -94,7 +101,7 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 		$deletedPageID = $deletedPage->ID;
 		$deletedPage->delete();
 		$deletedPage = Versioned::get_one_by_stage(
-			'SiteTree',
+			'SilverStripe\\CMS\\Model\\SiteTree',
 			'Live',
 			array('"SiteTree_Live"."ID"' => $deletedPageID)
 		);
@@ -110,7 +117,7 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 	public function testStatusDraftPagesFilter() {
 		$draftPage = $this->objFromFixture('Page', 'page4');
 		$draftPage = Versioned::get_one_by_stage(
-			'SiteTree',
+			'SilverStripe\\CMS\\Model\\SiteTree',
 			'Stage',
 			sprintf('"SiteTree"."ID" = %d', $draftPage->ID)
 		);
@@ -146,7 +153,7 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 		$removedDraftPage->publishRecursive();
 		$removedDraftPage->deleteFromStage('Stage');
 		$removedDraftPage = Versioned::get_one_by_stage(
-			'SiteTree',
+			'SilverStripe\\CMS\\Model\\SiteTree',
 			'Live',
 			sprintf('"SiteTree"."ID" = %d', $removedDraftPage->ID)
 		);
@@ -173,7 +180,7 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 		// Can't use straight $blah->delete() as that blows it away completely and test fails
 		$deletedPage->deleteFromStage(Versioned::LIVE);
 		$deletedPage->deleteFromStage(Versioned::DRAFT);
-		$checkParentExists = Versioned::get_latest_version('SiteTree', $deletedPageID);
+		$checkParentExists = Versioned::get_latest_version('SilverStripe\\CMS\\Model\\SiteTree', $deletedPageID);
 
 		// Check deleted page is included
 		$f = new CMSSiteTreeFilter_StatusDeletedPages(array('Title' => 'Page'));

@@ -1,6 +1,10 @@
 <?php
 
 use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\CMS\Controllers\RootURLController;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\CMS\Controllers\ContentController;
+
 
 /**
  * @package cms
@@ -20,7 +24,7 @@ class ContentControllerTest extends FunctionalTest {
 
 	public function testNestedPages() {
 		RootURLController::reset();
-		Config::inst()->update('SiteTree', 'nested_urls', true);
+		Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'nested_urls', true);
 
 		$this->assertEquals('Home Page', $this->get('/')->getBody());
 		$this->assertEquals('Home Page', $this->get('/home/index/')->getBody());
@@ -56,7 +60,7 @@ class ContentControllerTest extends FunctionalTest {
 	public function testChildrenOf() {
 		$controller = new ContentController();
 
-		Config::inst()->update('SiteTree', 'nested_urls', true);
+		Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'nested_urls', true);
 
 		$this->assertEquals(1, $controller->ChildrenOf('/')->Count());
 		$this->assertEquals(1, $controller->ChildrenOf('/home/')->Count());
@@ -72,7 +76,7 @@ class ContentControllerTest extends FunctionalTest {
 	}
 
 	public function testDeepNestedURLs() {
-		Config::inst()->update('SiteTree', 'nested_urls', true);
+		Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'nested_urls', true);
 
 		$page = new Page();
 		$page->URLSegment = 'base-page';

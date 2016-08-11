@@ -6,4 +6,4 @@ Except:
 ---
 Injector:
   FriendlyErrorFormatter:
-    class: SilverStripe\Cms\Logging\ErrorPageErrorFormatter
+    class: SilverStripe\CMS\Logging\ErrorPageErrorFormatter

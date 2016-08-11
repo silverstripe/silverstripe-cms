@@ -11,7 +11,7 @@ class CMSMainSearchFormTest extends FunctionalTest {
 			http_build_query(array(
 				'q' => array(
 					'Title' => 'Page 10',
-					'FilterClass' => 'CMSSiteTreeFilter_Search',
+					'FilterClass' => 'SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_Search',
 				),
 				'action_doSearch' => true
 			))

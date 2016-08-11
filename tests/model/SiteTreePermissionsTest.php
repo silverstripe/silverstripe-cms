@@ -2,6 +2,8 @@
 
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\Security\Member;
+use SilverStripe\CMS\Model\SiteTree;
+
 
 /**
  * @package cms
@@ -14,7 +16,7 @@ class SiteTreePermissionsTest extends FunctionalTest {
 	protected static $fixture_file = "SiteTreePermissionsTest.yml";
 
 	protected $illegalExtensions = array(
-		'SiteTree' => array('SiteTreeSubsites')
+		'SilverStripe\\CMS\\Model\\SiteTree' => array('SiteTreeSubsites')
 	);
 
 	public function setUp() {
@@ -76,7 +78,7 @@ class SiteTreePermissionsTest extends FunctionalTest {
 		$page->delete();
 
 		// Re-fetch the page from the live site
- 		$page = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree\".\"ID\" = $pageID");
+ 		$page = Versioned::get_one_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', "\"SiteTree\".\"ID\" = $pageID");
 
 		// subadmin has edit rights on that page
 		$member = $this->objFromFixture('SilverStripe\\Security\\Member','subadmin');
@@ -124,7 +126,7 @@ class SiteTreePermissionsTest extends FunctionalTest {
 		$page->delete();
 
 		// We'll need to resurrect the page from the version cache to test this case
-		$page = Versioned::get_latest_version('SiteTree', $pageID);
+		$page = Versioned::get_latest_version('SilverStripe\\CMS\\Model\\SiteTree', $pageID);
 
 		// subadmin had edit rights on that page, but now it's gone
 		$member = $this->objFromFixture('SilverStripe\\Security\\Member','subadmin');
@@ -390,7 +392,7 @@ class SiteTreePermissionsTest extends FunctionalTest {
 		$page->deleteFromStage('Stage');
 
 		// Get the live version of the page
-		$page = Versioned::get_one_by_stage("SiteTree", "Live", "\"SiteTree\".\"ID\" = $pageID");
+		$page = Versioned::get_one_by_stage("SilverStripe\\CMS\\Model\\SiteTree", "Live", "\"SiteTree\".\"ID\" = $pageID");
 		$this->assertTrue(is_object($page), 'Versioned::get_one_by_stage() is returning an object');
 
 		// subadmin users

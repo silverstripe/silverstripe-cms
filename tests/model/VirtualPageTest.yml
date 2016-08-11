@@ -49,7 +49,7 @@ VirtualPageTest_ClassA:
   pagea:
     Title: 'Page A'
     Content: '<p>Content</p>'
-VirtualPage:
+SilverStripe\CMS\Model\VirtualPage:
   vp1:
     Title: vp1
     CopyContentFrom: =>Page.master

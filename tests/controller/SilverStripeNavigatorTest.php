@@ -2,6 +2,9 @@
 
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
+use SilverStripe\CMS\Controllers\SilverStripeNavigator;
+use SilverStripe\CMS\Controllers\SilverStripeNavigatorItem;
+
 /**
  * @package cms
  * @subpackage tests
@@ -17,7 +20,7 @@ class SilverStripeNavigatorTest extends SapphireTest {
 
 		$items = $navigator->getItems();
 		$classes = array_map('get_class', $items->toArray());
-		$this->assertContains('SilverStripeNavigatorItem_StageLink', $classes,
+		$this->assertContains('SilverStripe\\CMS\\Controllers\\SilverStripeNavigatorItem_StageLink', $classes,
 			'Adds default classes'
 		);
 

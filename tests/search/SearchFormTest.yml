@@ -9,7 +9,7 @@ SilverStripe\Security\Member:
     Email: websiteuser@test.com
     Password: test
     Groups: =>SilverStripe\Security\Group.websiteusers
-SiteTree:
+SilverStripe\CMS\Model\SiteTree:
   searchformholder:
     URLSegment: searchformholder
     Title: searchformholder
@@ -26,7 +26,7 @@ SiteTree:
     Title: restrictedViewOnlyWebsiteUsers
   inheritRestrictedView:
     CanViewType: Inherit
-    Parent: =>SiteTree.restrictedViewLoggedInUsers
+    Parent: =>SilverStripe\CMS\Model\SiteTree.restrictedViewLoggedInUsers
     Title: inheritRestrictedView
   dontShowInSearchPage:
     Title: dontShowInSearchPage

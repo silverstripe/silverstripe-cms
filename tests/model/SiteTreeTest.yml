@@ -117,12 +117,12 @@ SiteTreeTest_Conflicted:
   parent:
     Title: Parent
 
-ErrorPage:
+SilverStripe\CMS\Model\ErrorPage:
   404:
     Title: Page not Found
     ErrorCode: 404
 
-RedirectorPage:
+SilverStripe\CMS\Model\RedirectorPage:
   external:
     Title: External
     URLSegment: external

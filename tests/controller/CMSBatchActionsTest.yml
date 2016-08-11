@@ -1,4 +1,4 @@
-SiteTree:
+SilverStripe\CMS\Model\SiteTree:
   published:
     Title: Published
   archived:
@@ -9,7 +9,7 @@ SiteTree:
     Title: modified1
   archivedx:
     Title: 'Archived: Child1'
-    Parent: =>SiteTree.archived
+    Parent: =>SilverStripe\CMS\Model\SiteTree.archived
   archivedy:
     Title: 'Archived: Child2'
-    Parent: =>SiteTree.archived
+    Parent: =>SilverStripe\CMS\Model\SiteTree.archived

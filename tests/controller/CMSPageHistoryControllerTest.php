@@ -1,6 +1,8 @@
 <?php
 
 use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\CMS\Controllers\CMSPageHistoryController;
+
 
 /**
  * @package cms

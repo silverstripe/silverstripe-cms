@@ -1,4 +1,4 @@
-SiteTree:
+SilverStripe\CMS\Model\SiteTree:
   home:
     Title: Home Page
   about:

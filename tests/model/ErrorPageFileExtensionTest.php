@@ -26,11 +26,11 @@ class ErrorPageFileExtensionTest extends SapphireTest {
 
     public function testErrorPage() {
         // Get and publish records
-        $notFoundPage = $this->objFromFixture('ErrorPage', '404');
+        $notFoundPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\ErrorPage', '404');
         $notFoundPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
         $notFoundLink = $notFoundPage->Link();
 
-        $disallowedPage = $this->objFromFixture('ErrorPage', '403');
+        $disallowedPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\ErrorPage', '403');
         $disallowedPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
         $disallowedLink = $disallowedPage->Link();
 

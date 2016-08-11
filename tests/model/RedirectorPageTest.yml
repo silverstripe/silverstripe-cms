@@ -3,7 +3,7 @@ Page:
     Title: Redirection Dest
     URLSegment: redirection-dest
 
-RedirectorPage:
+SilverStripe\CMS\Model\RedirectorPage:
   goodexternal:
     Title: Good External
     URLSegment: good-external
@@ -30,10 +30,10 @@ RedirectorPage:
   reflexive:
     Title: Reflexive
     RedirectionType: Internal
-    LinkTo: =>RedirectorPage.reflexive
+    LinkTo: =>SilverStripe\CMS\Model\RedirectorPage.reflexive
     URLSegment: reflexive
   transitive:
     Title: Transitive
     RedirectionType: Internal
-    LinkTo: =>RedirectorPage.goodinternal
+    LinkTo: =>SilverStripe\CMS\Model\RedirectorPage.goodinternal
     URLSegment: transitive

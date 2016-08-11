@@ -135,7 +135,7 @@ SiteConfig_CreateTopLevelGroups:
   createtoplevelgroups1:
     SiteConfigID: =>SiteConfig.siteconfig1
     GroupID: =>SilverStripe\Security\Group.rooteditusers
-RedirectorPage:
+SilverStripe\CMS\Model\RedirectorPage:
   page5:
     Title: Page 5
     RedirectionType: External

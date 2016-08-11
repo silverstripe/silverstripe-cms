@@ -10,6 +10,7 @@ use SilverStripe\BehatExtension\Context\SilverStripeContext,
 	SilverStripe\Framework\Test\Behaviour\CmsUiContext,
 	SilverStripe\Cms\Test\Behaviour,
 	SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\CMS\Model\SiteTree;
 
 
 /**
@@ -39,10 +40,10 @@ class FeatureContext extends \SilverStripe\Framework\Test\Behaviour\FeatureConte
 
 		// Use blueprints which auto-publish all subclasses of SiteTree
 		$factory = $fixtureContext->getFixtureFactory();
-		foreach(\ClassInfo::subclassesFor('SiteTree') as $id => $class) {
+		foreach(\ClassInfo::subclassesFor('SilverStripe\\CMS\\Model\\SiteTree') as $id => $class) {
 			$blueprint = \Injector::inst()->create('FixtureBlueprint', $class);
 			$blueprint->addCallback('afterCreate', function($obj, $identifier, &$data, &$fixtures) {
-				/** @var \SiteTree $obj */
+				/** @var SiteTree $obj */
 				$obj->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 			});
 			$factory->define($class, $blueprint);

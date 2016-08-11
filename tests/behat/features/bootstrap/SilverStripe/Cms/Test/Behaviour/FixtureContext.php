@@ -26,7 +26,7 @@ class FixtureContext extends \SilverStripe\BehatExtension\Context\FixtureContext
 	 * @Given /^(?:(an|a|the) )"(?<type>[^"]+)" "(?<id>[^"]+)" (:?which )?redirects to (?:(an|a|the) )"(?<targetType>[^"]+)" "(?<targetId>[^"]+)"$/
 	 */
 	public function stepCreateRedirectorPage($type, $id, $targetType, $targetId) {
-		$class = 'RedirectorPage';
+		$class = 'SilverStripe\\CMS\\Model\\RedirectorPage';
 		$targetClass = $this->convertTypeToClass($targetType);
 
 		$targetObj = $this->fixtureFactory->get($targetClass, $targetId);

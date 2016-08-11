@@ -1,0 +1,6 @@
+---
+Name: cmslegacy
+---
+SilverStripe\ORM\DatabaseAdmin:
+  classname_value_remapping:
+   SiteTree: 'SilverStripe\CMS\Model\SiteTree'

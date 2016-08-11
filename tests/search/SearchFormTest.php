@@ -4,6 +4,9 @@ use SilverStripe\ORM\DB;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\MSSQL\MSSQLDatabase;
 use SilverStripe\PostgreSQL\PostgreSQLDatabase;
+use SilverStripe\CMS\Controllers\ContentController;
+use SilverStripe\CMS\Search\SearchForm;
+
 
 
 /**
@@ -20,7 +23,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 	protected static $fixture_file = 'SearchFormTest.yml';
 
 	protected $illegalExtensions = array(
-		'SiteTree' => array('SiteTreeSubsites', 'Translatable')
+		'SilverStripe\\CMS\\Model\\SiteTree' => array('SiteTreeSubsites', 'Translatable')
 	);
 
 	protected $mockController;
@@ -43,7 +46,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 	public function setUp() {
 		parent::setUp();
 
-		$holderPage = $this->objFromFixture('SiteTree', 'searchformholder');
+		$holderPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'searchformholder');
 		$this->mockController = new ContentController($holderPage);
 
 		$this->waitUntilIndexingFinished();
@@ -66,7 +69,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 	public function testSearchFormTemplateCanBeChanged() {
 		if(!$this->checkFulltextSupport()) return;
 
-		$sf = new SearchForm($this->mockController, 'SearchForm');
+		$sf = new SearchForm($this->mockController, 'SilverStripe\\CMS\\Search\\SearchForm');
 
 		$sf->setTemplate('BlankPage');
 
@@ -79,9 +82,9 @@ class ZZZSearchFormTest extends FunctionalTest {
 	public function testPublishedPagesMatchedByTitle() {
 		if(!$this->checkFulltextSupport()) return;
 
-		$sf = new SearchForm($this->mockController, 'SearchForm');
+		$sf = new SearchForm($this->mockController, 'SilverStripe\\CMS\\Search\\SearchForm');
 
-		$publishedPage = $this->objFromFixture('SiteTree', 'publicPublishedPage');
+		$publishedPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'publicPublishedPage');
 		$publishedPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$this->waitUntilIndexingFinished();
@@ -96,9 +99,9 @@ class ZZZSearchFormTest extends FunctionalTest {
 	public function testDoubleQuotesPublishedPagesMatchedByTitle() {
 		if(!$this->checkFulltextSupport()) return;
 
-		$sf = new SearchForm($this->mockController, 'SearchForm');
+		$sf = new SearchForm($this->mockController, 'SilverStripe\\CMS\\Search\\SearchForm');
 
-		$publishedPage = $this->objFromFixture('SiteTree', 'publicPublishedPage');
+		$publishedPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'publicPublishedPage');
 		$publishedPage->Title = "finding butterflies";
 		$publishedPage->write();
 		$publishedPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
@@ -115,10 +118,10 @@ class ZZZSearchFormTest extends FunctionalTest {
 	public function testUnpublishedPagesNotIncluded() {
 		if(!$this->checkFulltextSupport()) return;
 
-		$sf = new SearchForm($this->mockController, 'SearchForm');
+		$sf = new SearchForm($this->mockController, 'SilverStripe\\CMS\\Search\\SearchForm');
 
 		$results = $sf->getResults(null, array('Search'=>'publicUnpublishedPage'));
-		$unpublishedPage = $this->objFromFixture('SiteTree', 'publicUnpublishedPage');
+		$unpublishedPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'publicUnpublishedPage');
 		$this->assertNotContains(
 			$unpublishedPage->ID,
 			$results->column('ID'),
@@ -129,9 +132,9 @@ class ZZZSearchFormTest extends FunctionalTest {
 	public function testPagesRestrictedToLoggedinUsersNotIncluded() {
 		if(!$this->checkFulltextSupport()) return;
 
-		$sf = new SearchForm($this->mockController, 'SearchForm');
+		$sf = new SearchForm($this->mockController, 'SilverStripe\\CMS\\Search\\SearchForm');
 
-		$page = $this->objFromFixture('SiteTree', 'restrictedViewLoggedInUsers');
+		$page = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'restrictedViewLoggedInUsers');
 		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$results = $sf->getResults(null, array('Search'=>'restrictedViewLoggedInUsers'));
 		$this->assertNotContains(
@@ -154,9 +157,9 @@ class ZZZSearchFormTest extends FunctionalTest {
 	public function testPagesRestrictedToSpecificGroupNotIncluded() {
 		if(!$this->checkFulltextSupport()) return;
 
-		$sf = new SearchForm($this->mockController, 'SearchForm');
+		$sf = new SearchForm($this->mockController, 'SilverStripe\\CMS\\Search\\SearchForm');
 
-		$page = $this->objFromFixture('SiteTree', 'restrictedViewOnlyWebsiteUsers');
+		$page = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'restrictedViewOnlyWebsiteUsers');
 		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$results = $sf->getResults(null, array('Search'=>'restrictedViewOnlyWebsiteUsers'));
 		$this->assertNotContains(
@@ -187,12 +190,12 @@ class ZZZSearchFormTest extends FunctionalTest {
 	}
 
 	public function testInheritedRestrictedPagesNotIncluded() {
-		$sf = new SearchForm($this->mockController, 'SearchForm');
+		$sf = new SearchForm($this->mockController, 'SilverStripe\\CMS\\Search\\SearchForm');
 
-		$parent = $this->objFromFixture('SiteTree', 'restrictedViewLoggedInUsers');
+		$parent = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'restrictedViewLoggedInUsers');
 		$parent->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
-		$page = $this->objFromFixture('SiteTree', 'inheritRestrictedView');
+		$page = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'inheritRestrictedView');
 		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		$results = $sf->getResults(null, array('Search'=>'inheritRestrictedView'));
 		$this->assertNotContains(
@@ -215,9 +218,9 @@ class ZZZSearchFormTest extends FunctionalTest {
 	public function testDisabledShowInSearchFlagNotIncludedForSiteTree() {
 		if(!$this->checkFulltextSupport()) return;
 
-		$sf = new SearchForm($this->mockController, 'SearchForm');
+		$sf = new SearchForm($this->mockController, 'SilverStripe\\CMS\\Search\\SearchForm');
 
-		$page = $this->objFromFixture('SiteTree', 'dontShowInSearchPage');
+		$page = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'dontShowInSearchPage');
 		$results = $sf->getResults(null, array('Search'=>'dontShowInSearchPage'));
 		$this->assertNotContains(
 			$page->ID,
@@ -229,7 +232,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 	public function testDisabledShowInSearchFlagNotIncludedForFiles() {
 		if(!$this->checkFulltextSupport()) return;
 
-		$sf = new SearchForm($this->mockController, 'SearchForm');
+		$sf = new SearchForm($this->mockController, 'SilverStripe\\CMS\\Search\\SearchForm');
 
 		$dontShowInSearchFile = $this->objFromFixture('File', 'dontShowInSearchFile');
 		$dontShowInSearchFile->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
@@ -258,9 +261,9 @@ class ZZZSearchFormTest extends FunctionalTest {
 			$this->markTestSkipped("PostgreSQLDatabase doesn't support entity-encoded searches");
 		}
 
-		$sf = new SearchForm($this->mockController, 'SearchForm');
+		$sf = new SearchForm($this->mockController, 'SilverStripe\\CMS\\Search\\SearchForm');
 
-		$pageWithSpecialChars = $this->objFromFixture('SiteTree', 'pageWithSpecialChars');
+		$pageWithSpecialChars = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'pageWithSpecialChars');
 		$pageWithSpecialChars->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$results = $sf->getResults(null, array('Search'=>'Brötchen'));
