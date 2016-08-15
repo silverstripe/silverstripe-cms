@@ -72,8 +72,6 @@ ru:
     PUBLISH_PAGES: Опубликовать
     RESTORE: Восстановить
     RESTORED_PAGES: 'Восстановлено %d страниц'
-    UNPUBLISHED_PAGES: 'Отменена публикация %d страниц'
-    UNPUBLISH_PAGES: Отмена публикации
   CMSFileAddController:
     MENUTITLE: Файлы
   CMSMain:
@@ -95,13 +93,10 @@ ru:
     DUPLICATEDWITHCHILDREN: 'Копия ''{title}'' и дочерних элементов создана'
     EMAIL: Email
     EditTree: 'Редактировать дерево'
-    ListFiltered: 'Результаты поиска'
     MENUTITLE: 'Править страницу'
     NEWPAGE: 'Новая {pagetype}'
     PAGENOTEXISTS: 'Страница не существует'
-    PAGES: 'Статус страницы'
     PAGETYPEANYOPT: Любой
-    PAGETYPEOPT: 'Тип страницы'
     PUBALLCONFIRM: 'Пожалуйста, опубликуйте каждую страницу сайта, перенося содержимое из чернового режима в опубликованный'
     PUBALLFUN: 'Функция "Опубликовать все"'
     PUBALLFUN2: "Нажатие этой кнопки выполнит ту же функцию, что и нажатие кнопки \"Опубликовать\" для каждой отдельной страницы. Данная функция предназначена для использования после значительных изменений содержимого, например, в момент создания нового сайта."
@@ -111,7 +106,6 @@ ru:
     REMOVED: 'Страница ''{title}''{description} удалена с опубликованного сайта'
     REMOVEDPAGE: 'Страница ''{title}'' удалена с опубликованного сайта'
     REMOVEDPAGEFROMDRAFT: 'Страница ''%s'' удалена с чернового сайта'
-    RESTORE: 'Восстановить черновик'
     RESTORED: '''{title}'' успешно восстановлен'
     RESTORE_DESC: 'Восстановить архивную версию в черновик'
     RESTORE_TO_ROOT: 'Восстановить черновик в корень сайта'
@@ -125,11 +119,7 @@ ru:
     TabContent: Содержимое
     TabHistory: История
     TabSettings: Настройки
-    TreeFiltered: 'Результаты поиска'
-    TreeFilteredClear: Сбросить
   CMSMain_left_ss:
-    APPLY_FILTER: Поиск
-    CLEAR_FILTER: Сбросить
     RESET: Восстановить
   CMSPageAddController:
     MENUTITLE: 'Добавить страницу'
@@ -161,8 +151,6 @@ ru:
     ListView: 'Обзор списка'
     MENUTITLE: Страницы
     TreeView: 'Обзор дерева'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: 'Действия'
   CMSPagesController_Tools_ss:
     FILTER: Фильтр
   CMSSIteTreeFilter_PublishedPages:
@@ -171,20 +159,11 @@ ru:
     FILTERDATEFROM: От
     FILTERDATEHEADING: Дата
     FILTERDATETO: До
-    FILTERLABELTEXT: Поиск
     PAGEFILTERDATEHEADING: 'Последнее изменение'
   CMSSettingsController:
     MENUTITLE: Настройки
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Изменённые страницы'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Все страницы, включая архивные'
   CMSSiteTreeFilter_Search:
     Title: 'Все страницы'
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Архивные страницы'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Черновики'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Опубликовано, но удалено из черновика'
   ContentControl:
@@ -304,7 +283,6 @@ ru:
   SilverStripeNavigator:
     ARCHIVED: Архивные
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Для того чтобы поделиться данной страницей скопируйте ссылку ниже '
     ShareLink: 'Поделиться ссылкой'
   SilverStripeNavigatorLinkl:
     CloseLink: Закрыть

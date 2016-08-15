@@ -72,8 +72,6 @@ hr:
     PUBLISH_PAGES: Objavi
     RESTORE: Povrati
     RESTORED_PAGES: 'Vraćeno ''%d'' stranica'
-    UNPUBLISHED_PAGES: 'Odjavljeno %d stranica'
-    UNPUBLISH_PAGES: Odjavi
   CMSFileAddController:
     MENUTITLE: Datoteke
   CMSMain:
@@ -94,13 +92,10 @@ hr:
     DUPLICATEDWITHCHILDREN: 'Dupliciran ''{title}''  i podstranice uspješno'
     EMAIL: Email
     EditTree: 'Uredi stablo stranice'
-    ListFiltered: 'Prikazujem rezultate pretraživanja.'
     MENUTITLE: 'Uredi stranicu'
     NEWPAGE: 'Novi {pagetype}'
     PAGENOTEXISTS: 'Stranica ne postoji'
-    PAGES: 'Status stranice'
     PAGETYPEANYOPT: Bilo koji
-    PAGETYPEOPT: 'Tip stranice'
     PUBALLCONFIRM: 'Molim objavi svaku stranicu, kopirajući sadržaj'
     PUBALLFUN: '"Objavi sve"'
     PUBALLFUN2: "Ovaj gumb radi isto što i klikanje na \"objavi\" gumbe za svaku stranicu posebno. Koristi se nakon velikih promjena u sadržaju, kao npr. kod prve objave stranice."
@@ -110,7 +105,6 @@ hr:
     REMOVED: 'Obrisan ''{title}''{description} sa objavljene stranice'
     REMOVEDPAGE: 'Uklonjen ''{title}'' sa objavljene stranice'
     REMOVEDPAGEFROMDRAFT: 'Uklonjen ''%s'' sa nacrtne stranice'
-    RESTORE: 'Povrati nacrt'
     RESTORED: 'Vraćeno ''{title}'' uspješno'
     RESTORE_TO_ROOT: 'Povrati nacrt na najviši nivo'
     ROLLBACK: 'Vrati na ovu verziju'
@@ -122,11 +116,7 @@ hr:
     TabContent: Sadržaj
     TabHistory: Povijest
     TabSettings: Postavke
-    TreeFiltered: 'Prikazujem rezultate pretraživanja.'
-    TreeFilteredClear: Očisti
   CMSMain_left_ss:
-    APPLY_FILTER: Traži
-    CLEAR_FILTER: Očisti
     RESET: Resetiraj
   CMSPageAddController:
     MENUTITLE: 'Dodaj stranicu'
@@ -158,8 +148,6 @@ hr:
     ListView: 'Pregled kao popis'
     MENUTITLE: Stranice
     TreeView: 'Prikaz kao stablo'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: 'Skupne radnje'
   CMSPagesController_Tools_ss:
     FILTER: Filter
   CMSSIteTreeFilter_PublishedPages:
@@ -168,12 +156,9 @@ hr:
     FILTERDATEFROM: Od
     FILTERDATEHEADING: Datum
     FILTERDATETO: Do
-    FILTERLABELTEXT: Traži
     PAGEFILTERDATEHEADING: 'Zadnje uređeno'
   CMSSettingsController:
     MENUTITLE: Postavke
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Izmjenjene stranice'
   CMSSiteTreeFilter_Search:
     Title: 'Sve stranice'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:

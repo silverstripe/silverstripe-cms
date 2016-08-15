@@ -69,7 +69,6 @@ nl:
     PUBLISHED_PAGES: '%d pagina''s gepubliceerd'
     PUBLISH_PAGES: Publiceer
     RESTORE: Herstel
-    UNPUBLISH_PAGES: Publicatie intrekken
   CMSFileAddController:
     MENUTITLE: Bestanden
   CMSMain:
@@ -143,8 +142,6 @@ nl:
     ListView: 'Lijstweergave'
     MENUTITLE: Pagina's
     TreeView: 'Hierarchische weergave'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: 'Meervoudige actie'
   CMSPagesController_Tools_ss:
     FILTER: Filteren
   CMSSearch:
