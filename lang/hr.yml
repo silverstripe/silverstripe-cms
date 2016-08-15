@@ -55,19 +55,29 @@ hr:
     ReasonDropdown: 'Greška za provjeru'
     ReasonDropdownBROKENFILE: 'Neispravna datoteka'
     ReasonDropdownBROKENLINK: 'Neispravan link'
+    ReasonDropdownRPBROKENLINK: 'Preusmjeravanje pokazuje na nepostojeću stranicu'
+    ReasonDropdownVPBROKENLINK: 'Virtualna stranica ukazuje na nepostojeću stranicu'
+    RedirectorNonExistent: 'stranica za preusmjeravanje pokazuje na nepostojeću stranicu'
+    VirtualPageNonExistent: 'virtualna stranica ukazuje na nepostojeću stranicu'
   CMSAddPageController:
     Title: 'Dodaj stranicu'
   CMSBatchActions:
     ARCHIVE: Arhiviraj
     ARCHIVED_PAGES: 'Arhivirano ''%d'' stranica'
+    DELETED_DRAFT_PAGES: 'Obrisano %d stranica s nacrtne stranice, %d neuspješno'
+    DELETED_PAGES: 'Obrisano %d stranica s objavljene stranice, %d neuspješno'
     DELETE_DRAFT_PAGES: 'Izbriši stranicu sa objavljene'
     DELETE_PAGES: 'Izbriši stranicu sa objavljene'
+    PUBLISHED_PAGES: 'Objavljeno %d stranica, %d neuspješno'
     PUBLISH_PAGES: Objavi
     RESTORE: Povrati
     RESTORED_PAGES: 'Vraćeno ''%d'' stranica'
+    UNPUBLISHED_PAGES: 'Odjavljeno %d stranica'
+    UNPUBLISH_PAGES: Odjavi
   CMSFileAddController:
     MENUTITLE: Datoteke
   CMSMain:
+    ACCESS: 'Pristup ''{title}'' sekciji'
     ARCHIVE: Arhiviraj
     ARCHIVEDPAGE: 'Arhivirane stranice ''%s'''
     AddNew: 'Dodaj novu stranicu'
@@ -79,40 +89,62 @@ hr:
     Create: Kreiraj
     DELETE: 'Obriši nacrt'
     DELETEFP: Obriši
+    DESCREMOVED: 'i {count} potomaka'
+    DUPLICATED: 'Dupliciran ''{title}'' uspješno'
+    DUPLICATEDWITHCHILDREN: 'Dupliciran ''{title}''  i podstranice uspješno'
     EMAIL: Email
     EditTree: 'Uredi stablo stranice'
+    ListFiltered: 'Prikazujem rezultate pretraživanja.'
     MENUTITLE: 'Uredi stranicu'
     NEWPAGE: 'Novi {pagetype}'
     PAGENOTEXISTS: 'Stranica ne postoji'
+    PAGES: 'Status stranice'
     PAGETYPEANYOPT: Bilo koji
+    PAGETYPEOPT: 'Tip stranice'
     PUBALLCONFIRM: 'Molim objavi svaku stranicu, kopirajući sadržaj'
     PUBALLFUN: '"Objavi sve"'
     PUBALLFUN2: "Ovaj gumb radi isto što i klikanje na \"objavi\" gumbe za svaku stranicu posebno. Koristi se nakon velikih promjena u sadržaju, kao npr. kod prve objave stranice."
     PUBLISHED: 'Uspješno objavljen ''{title}'''
+    PUBPAGES: 'Gotovo: Objavljeno {count} stranica'
     PageAdded: 'Uspješno kreirane stranice'
     REMOVED: 'Obrisan ''{title}''{description} sa objavljene stranice'
     REMOVEDPAGE: 'Uklonjen ''{title}'' sa objavljene stranice'
     REMOVEDPAGEFROMDRAFT: 'Uklonjen ''%s'' sa nacrtne stranice'
+    RESTORE: 'Povrati nacrt'
+    RESTORED: 'Vraćeno ''{title}'' uspješno'
+    RESTORE_TO_ROOT: 'Povrati nacrt na najviši nivo'
     ROLLBACK: 'Vrati na ovu verziju'
+    ROLLEDBACKPUBv2: 'Vraćeno na objavljenu verziju'
+    ROLLEDBACKVERSIONv2: 'Vraćeno na verziju #%d.'
     SAVE: Spremi
     SAVED: 'Uspješno spremljen ''{title}'''
     SAVEDRAFT: 'Spremiti nacrt'
     TabContent: Sadržaj
     TabHistory: Povijest
     TabSettings: Postavke
+    TreeFiltered: 'Prikazujem rezultate pretraživanja.'
+    TreeFilteredClear: Očisti
   CMSMain_left_ss:
+    APPLY_FILTER: Traži
     CLEAR_FILTER: Očisti
     RESET: Resetiraj
   CMSPageAddController:
     MENUTITLE: 'Dodaj stranicu'
+    ParentMode_child: 'Ispod druge stranice'
+    ParentMode_top: 'Najviši nivo'
   CMSPageEditController:
     MENUTITLE: 'Uredi stranicu'
   CMSPageHistoryController:
+    COMPAREMODE: 'Način usporedbe (odaberi dva)'
+    COMPAREVERSIONS: 'Usporedi verzije'
+    COMPARINGVERSION: 'Uspoređujem verzije {version1} i {version2}.'
     MENUTITLE: Povijest
     REVERTTOTHISVERSION: 'Vrati na ovu verziju'
     SHOWUNPUBLISHED: 'Prikaži neobjavljene verzije'
     SHOWVERSION: 'Prikaži verzije'
     VIEW: prikaži
+    VIEWINGLATEST: 'Trenutno pregledavam zadnju verziju.'
+    VIEWINGVERSION: 'Trenutno pregledavam verziju {version}.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
     NOTPUBLISHED: 'Nije objavljeno'
@@ -126,6 +158,8 @@ hr:
     ListView: 'Pregled kao popis'
     MENUTITLE: Stranice
     TreeView: 'Prikaz kao stablo'
+  CMSPagesController_ContentToolbar_ss:
+    MULTISELECT: 'Skupne radnje'
   CMSPagesController_Tools_ss:
     FILTER: Filter
   CMSSIteTreeFilter_PublishedPages:
@@ -134,9 +168,12 @@ hr:
     FILTERDATEFROM: Od
     FILTERDATEHEADING: Datum
     FILTERDATETO: Do
+    FILTERLABELTEXT: Traži
     PAGEFILTERDATEHEADING: 'Zadnje uređeno'
   CMSSettingsController:
     MENUTITLE: Postavke
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Izmjenjene stranice'
   CMSSiteTreeFilter_Search:
     Title: 'Sve stranice'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
@@ -169,6 +206,9 @@ hr:
     406: '406 - neprihvatljivo'
     407: '407 - potrebna Proxy autentičnost'
     408: '408 - zahtjev pauziran'
+    409: '409 - Sukob'
+    410: '410 - Nestala'
+    411: '411 - obavezna dužina'
     500: '500 - interna serverska greška'
     501: '501 - nije implementirano'
     CODE: 'Kod pogreške'
@@ -188,6 +228,11 @@ hr:
     DELETED: Obrisano.
     PreviewButton: Pregled
     SAVEDUP: Spremljeno
+    SearchResults: 'Rezultati pretraživanja'
+  Permission:
+    CMS_ACCESS_CATEGORY: 'CMS pristup'
+  Permissions:
+    CONTENT_CATEGORY: 'Sadržajne dozvole'
   RedirectorPage:
     HASBEENSETUP: 'Stranica za preusjeravanje nema postavljenog preusmjeravanja'
     HEADER: 'Ova stranica preusmjeriti će korisnike na drugu stranicu'
@@ -199,6 +244,8 @@ hr:
   ReportAdmin:
     MENUTITLE: Izvještaji
     ReportTitle: Naslov
+  ReportAdminForm:
+    FILTERBY: 'Filtriraj po'
   SearchForm:
     GO: Kreni
     SEARCH: Traži
