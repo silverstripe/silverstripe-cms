@@ -68,6 +68,7 @@ nl:
     DELETE_PAGES: 'Verwijder van gepubliceerde site'
     PUBLISHED_PAGES: '%d pagina''s gepubliceerd'
     PUBLISH_PAGES: Publiceer
+    RESTORE: Herstel
   CMSFileAddController:
     MENUTITLE: Bestanden
   CMSMain:

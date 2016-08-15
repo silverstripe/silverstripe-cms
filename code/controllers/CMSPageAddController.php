@@ -24,7 +24,7 @@ class CMSPageAddController extends CMSPageEditController {
 				$type->getField('AddAction'),
 				$type->getField('Description')
 			);
-			$pageTypes[$type->getField('ClassName')] = $html;
+			$pageTypes[$type->getField('ClassName')] = DBField::create_field('HTMLText', $html);
 		}
 		// Ensure generic page type shows on top
 		if(isset($pageTypes['Page'])) {
