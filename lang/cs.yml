@@ -120,7 +120,6 @@ cs:
     TabHistory: Historie
     TabSettings: Nastavení
   CMSMain_left_ss:
-    CLEAR_FILTER: Vyčistit
     RESET: Resetovat
   CMSPageAddController:
     MENUTITLE: 'Přidat stránku'

@@ -120,7 +120,6 @@ eo:
     TabHistory: Historio
     TabSettings: Agordoj
   CMSMain_left_ss:
-    CLEAR_FILTER: Vakigi
     RESET: Restartigi
   CMSPageAddController:
     MENUTITLE: 'Enmeti paĝon'
