@@ -114,7 +114,6 @@ ja:
     TabHistory: 履歴
     TabSettings: 設定
   CMSMain_left_ss:
-    CLEAR_FILTER: クリア
     RESET: リセット
   CMSPageAddController:
     MENUTITLE: 'ページを追加'
