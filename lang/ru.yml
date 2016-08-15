@@ -120,7 +120,6 @@ ru:
     TabHistory: История
     TabSettings: Настройки
   CMSMain_left_ss:
-    CLEAR_FILTER: Сбросить
     RESET: Восстановить
   CMSPageAddController:
     MENUTITLE: 'Добавить страницу'
