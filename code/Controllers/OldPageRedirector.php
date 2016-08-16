@@ -11,7 +11,6 @@ use SS_HTTPResponse;
 use Controller;
 use SS_HTTPResponse_Exception;
 
-
 class OldPageRedirector extends Extension {
 
 	/**

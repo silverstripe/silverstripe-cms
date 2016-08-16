@@ -17,7 +17,6 @@ use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
 use Controller;
 use Page;
-
 use SiteConfig;
 use SS_HTTPRequest;
 use Translatable;

@@ -158,18 +158,3 @@ class SiteTreeURLSegmentField extends TextField {
 		return $newInst;
 	}
 }
-
-
-/**
- * Readonly version of a site tree URL segment field
- *
- * @package forms
- * @subpackage fields-basic
- */
-class SiteTreeURLSegmentField_Readonly extends SiteTreeURLSegmentField {
-	protected $readonly = true;
-
-	public function performReadonlyTransformation() {
-		return clone $this;
-	}
-}

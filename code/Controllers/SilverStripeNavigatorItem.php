@@ -1,0 +1,141 @@
+<?php
+namespace SilverStripe\CMS\Controllers;
+
+use SilverStripe\Admin\CMSPreviewable;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Security\Member;
+use ViewableData;
+
+/**
+ * Navigator items are links that appear in the $SilverStripeNavigator bar.
+ * To add an item, extend this class - it will be automatically picked up.
+ * When instanciating items manually, please ensure to call {@link canView()}.
+ *
+ * @package cms
+ * @subpackage content
+ */
+abstract class SilverStripeNavigatorItem extends ViewableData
+{
+
+	/**
+	 * @param DataObject|CMSPreviewable
+	 */
+	protected $record;
+
+	/** @var string */
+	protected $recordLink;
+
+	/**
+	 * @param DataObject|CMSPreviewable $record
+	 */
+	public function __construct(CMSPreviewable $record)
+	{
+		parent::__construct();
+		$this->record = $record;
+	}
+
+	/**
+	 * @return string HTML, mostly a link - but can be more complex as well.
+	 * For example, a "future state" item might show a date selector.
+	 */
+	abstract public function getHTML();
+
+	/**
+	 * @return string
+	 * Get the Title of an item
+	 */
+	abstract public function getTitle();
+
+	/**
+	 * Machine-friendly name.
+	 *
+	 * @return string
+	 */
+	public function getName()
+	{
+		return substr(get_class($this), strpos(get_class($this), '_') + 1);
+	}
+
+	/**
+	 * Optional link to a specific view of this record.
+	 * Not all items are simple links, please use {@link getHTML()}
+	 * to represent an item in markup unless you know what you're doing.
+	 *
+	 * @return string
+	 */
+	public function getLink()
+	{
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getMessage()
+	{
+	}
+
+	/**
+	 * @return DataObject
+	 */
+	public function getRecord()
+	{
+		return $this->record;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getPriority()
+	{
+		return $this->stat('priority');
+	}
+
+	/**
+	 * As items might convey different record states like a "stage" or "live" table,
+	 * an item can be active (showing the record in this state).
+	 *
+	 * @return boolean
+	 */
+	public function isActive()
+	{
+		return false;
+	}
+
+	/**
+	 * Filters items based on member permissions or other criteria,
+	 * such as if a state is generally available for the current record.
+	 *
+	 * @param Member $member
+	 * @return Boolean
+	 */
+	public function canView($member = null)
+	{
+		return true;
+	}
+
+	/**
+	 * Counts as "archived" if the current record is a different version from both live and draft.
+	 *
+	 * @return boolean
+	 */
+	public function isArchived()
+	{
+		if (!$this->record->hasExtension('SilverStripe\ORM\Versioning\Versioned')) {
+			return false;
+		}
+
+		if (!isset($this->record->_cached_isArchived)) {
+			$baseClass = $this->record->baseClass();
+			$currentDraft = Versioned::get_by_stage($baseClass, Versioned::DRAFT)->byID($this->record->ID);
+			$currentLive = Versioned::get_by_stage($baseClass, Versioned::LIVE)->byID($this->record->ID);
+
+			$this->record->_cached_isArchived = (
+				(!$currentDraft || ($currentDraft && $this->record->Version != $currentDraft->Version))
+				&& (!$currentLive || ($currentLive && $this->record->Version != $currentLive->Version))
+			);
+		}
+
+		return $this->record->_cached_isArchived;
+	}
+}
