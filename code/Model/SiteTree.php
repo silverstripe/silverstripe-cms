@@ -19,7 +19,6 @@ use SilverStripe\Security\Permission;
 use SilverStripe\Security\Group;
 use SilverStripe\Security\PermissionProvider;
 use i18nEntityProvider;
-use CMSPreviewable;
 use Director;
 use SilverStripe\CMS\Controllers\RootURLController;
 use ClassInfo;
@@ -52,9 +51,11 @@ use TreeDropdownField;
 use FieldGroup;
 use CheckboxField;
 use ListboxField;
-use AddToCampaignHandler_FormAction;
 use FormAction;
 use i18n;
+use SilverStripe\Admin\AddToCampaignHandler_FormAction;
+use SilverStripe\Admin\CMSPreviewable;
+
 
 /**
  * Basic data-object representing all pages within the site tree. All page types that live within the hierarchy should
@@ -81,8 +82,8 @@ use i18n;
  * @property string CanViewType Type of restriction for viewing this object.
  * @property string CanEditType Type of restriction for editing this object.
  *
- * @method ManyManyList ViewerGroups List of groups that can view this object.
- * @method ManyManyList EditorGroups List of groups that can edit this object.
+ * @method ManyManyList ViewerGroups() List of groups that can view this object.
+ * @method ManyManyList EditorGroups() List of groups that can edit this object.
  * @method SiteTree Parent()
  *
  * @mixin Hierarchy
@@ -352,13 +353,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				foreach($alternatives as $alternative) {
 					if($alternative) {
 						$sitetree = $alternative;
-					}
+			}
 				}
 			}
 
 			if(!$sitetree) {
 				return null;
-			}
+		}
 		}
 
 		// Check if we have any more URL parts to parse.
@@ -402,8 +403,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	public static function page_type_classes() {
 		$classes = ClassInfo::getValidSubClasses();
 
-		$baseClassIndex = array_search('SilverStripe\\CMS\\Model\\SiteTree', $classes);
-		if($baseClassIndex !== FALSE) unset($classes[$baseClassIndex]);
+		$baseClassIndex = array_search(__CLASS__, $classes);
+		if($baseClassIndex !== false) {
+			unset($classes[$baseClassIndex]);
+		}
 
 		$kill_ancestors = array();
 
@@ -437,8 +440,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * Replace a "[sitetree_link id=n]" shortcode with a link to the page with the corresponding ID.
 	 *
-	 * @param array $arguments
-	 * @param string $content
+	 * @param array      $arguments
+	 * @param string     $content
 	 * @param ShortcodeParser $parser
 	 * @return string
 	 */
@@ -447,6 +450,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			return null;
 		}
 
+		/** @var SiteTree $page */
 		if (
 			   !($page = DataObject::get_by_id(__CLASS__, $arguments['id']))         // Get the current page by ID.
 			&& !($page = Versioned::get_latest_version(__CLASS__, $arguments['id'])) // Attempt link to old version.
@@ -609,7 +613,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$currentPage = Director::get_current_page();
 		if ($currentPage instanceof ContentController) {
 			$currentPage = $currentPage->data();
-		}
+	}
 		if($currentPage instanceof SiteTree) {
 			return $currentPage === $this || $currentPage->ID === $this->ID;
 		}
@@ -1467,7 +1471,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 
 		if(Permission::check('CMS_ACCESS_CMSMain')
-			&& in_array('CMSPreviewable', class_implements($this))
 			&& !$this instanceof ErrorPage
 			&& $this->ID > 0
 		) {
@@ -1552,7 +1555,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				DB::alteration_message('Contact Us page created', 'created');
 			}
 		}
-		}
+	}
 
 	protected function onBeforeWrite() {
 		parent::onBeforeWrite();
@@ -1877,10 +1880,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					if($parentPage && $parentPage->exists()) {
 						$link = Convert::raw2att($parentPage->CMSEditLink());
 						$title = Convert::raw2xml($parentPage->Title);
-					} else {
+						} else {
 						$link = CMSPageEditController::singleton()->Link('show');
 						$title = _t('SiteTree.TOPLEVEL', 'Site Content (Top Level)');
-					}
+						}
 					$parentPageLinks[] = "<a class=\"cmsEditlink\" href=\"{$link}\">{$title}</a>";
 				}
 
@@ -1925,9 +1928,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				$dependentPages
 			);
 			/** @var GridFieldDataColumns $dataColumns */
-			$dataColumns = $dependentTable
-				->getConfig()
-				->getComponentByType('GridFieldDataColumns');
+			$dataColumns = $dependentTable->getConfig()->getComponentByType('GridFieldDataColumns');
 			$dataColumns
 				->setDisplayFields($dependentColumns)
 				->setFieldFormatting(array(

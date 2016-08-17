@@ -1,37 +1,40 @@
 {
-	"name": "silverstripe/cms",
-	"type": "silverstripe-module",
-	"description": "The SilverStripe Content Management System",
-	"homepage": "http://silverstripe.org",
-	"license": "BSD-3-Clause",
-	"keywords": ["silverstripe", "cms"],
-	"authors": [
-		{
-			"name": "SilverStripe",
-			"homepage": "http://silverstripe.com"
-		},
-		{
-			"name": "The SilverStripe Community",
-			"homepage": "http://silverstripe.org"
-		}
-	],
-	"require": {
-		"php": ">=5.5.0",
-		"composer/installers": "*",
-		"silverstripe/framework": "^4.0",
-		"silverstripe/reports": "^4.0",
-		"silverstripe/siteconfig": "^4.0"
-	},
-	"require-dev": {
-		"phpunit/PHPUnit": "~4.8"
-	},
-	"extra": {
-		"branch-alias": {
-			"dev-master": "4.0.x-dev"
-		}
-	},
-	"autoload": {
-		"classmap": ["tests/behat/"]
-	},
-	"minimum-stability": "dev"
+  "name": "silverstripe/cms",
+  "type": "silverstripe-module",
+  "description": "The SilverStripe Content Management System",
+  "homepage": "http://silverstripe.org",
+  "license": "BSD-3-Clause",
+  "keywords": ["silverstripe", "cms"],
+  "authors": [
+    {
+      "name": "SilverStripe",
+      "homepage": "http://silverstripe.com"
+    },
+    {
+      "name": "The SilverStripe Community",
+      "homepage": "http://silverstripe.org"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "composer/installers": "*",
+    "silverstripe/framework": "^4.0",
+    "silverstripe/reports": "^4.0",
+    "silverstripe/siteconfig": "^4.0"
+  },
+  "require-dev": {
+    "phpunit/PHPUnit": "~4.8"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "4.0.x-dev"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "SilverStripe\\CMS\\": "code/"
+    },
+    "classmap": ["tests/behat/"]
+  },
+  "minimum-stability": "dev"
 }

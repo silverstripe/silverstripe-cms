@@ -2,7 +2,7 @@
 
 	<div class="cms-content-header north">
 		<div class="cms-content-header-info">
-			<% include CMSBreadcrumbs %>
+			<% include SilverStripe\\Admin\\CMSBreadcrumbs %>
 		</div>
 
 		<div class="cms-content-header-tabs">

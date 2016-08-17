@@ -403,6 +403,7 @@ class CMSPageHistoryController extends CMSMain {
 		/** @var SiteTree $page */
 		$page = SiteTree::get()->byID($id);
 
+		$record = null;
  		if($page && $page->exists()) {
 			if(!$page->canView()) {
 				return Security::permissionFailure($this);

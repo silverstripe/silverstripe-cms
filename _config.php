@@ -1,5 +1,7 @@
 <?php
 
+use SilverStripe\Admin\CMSMenu;
+
 /**
  * - CMS_DIR: Path relative to webroot, e.g. "cms"
  * - CMS_PATH: Absolute filepath, e.g. "/var/www/my-webroot/cms"
@@ -23,5 +25,3 @@ CMSMenu::remove_menu_class('SilverStripe\\CMS\\Controllers\\CMSPageEditControlle
 CMSMenu::remove_menu_class('SilverStripe\\CMS\\Controllers\\CMSPageSettingsController');
 CMSMenu::remove_menu_class('SilverStripe\\CMS\\Controllers\\CMSPageHistoryController');
 CMSMenu::remove_menu_class('SilverStripe\\CMS\\Controllers\\CMSPageAddController');
-
-CMSMenu::remove_menu_item("SiteConfigLeftAndMain");

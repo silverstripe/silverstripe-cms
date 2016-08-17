@@ -4,7 +4,7 @@
 	<div class="cms-content-header north">
 		<div class="cms-content-header-info">
 			<% with $Controller %>
-				<% include CMSBreadcrumbs %>
+				<% include SilverStripe\\Admin\\CMSBreadcrumbs %>
 			<% end_with %>
 		</div>
 

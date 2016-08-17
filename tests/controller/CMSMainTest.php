@@ -6,6 +6,8 @@ use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\HiddenClass;
 use SilverStripe\CMS\Controllers\CMSMain;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Admin\CMSBatchActionHandler;
+
 
 
 /**

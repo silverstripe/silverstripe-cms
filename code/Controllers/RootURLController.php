@@ -14,7 +14,6 @@ use SS_HTTPRequest;
 use ClassInfo;
 use Director;
 
-
 /**
  * @package cms
  * @subpackage control
