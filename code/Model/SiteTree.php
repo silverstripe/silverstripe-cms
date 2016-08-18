@@ -1518,7 +1518,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		// default pages
 		if($this->class == __CLASS__ && $this->config()->create_default_pages) {
 			if(!SiteTree::get_by_link(RootURLController::config()->default_homepage_link)) {
-				$homepage = new Page();
+				$homepage = Injector::inst()->get('Page');
 				$homepage->Title = _t('SiteTree.DEFAULTHOMETITLE', 'Home');
 				$homepage->Content = _t('SiteTree.DEFAULTHOMECONTENT', '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>.</p><p>You can now access the <a href="http://docs.silverstripe.org">developer documentation</a>, or begin the <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lessons</a>.</p>');
 				$homepage->URLSegment = RootURLController::config()->default_homepage_link;
@@ -1530,7 +1530,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			}
 
 			if(DB::query("SELECT COUNT(*) FROM \"SiteTree\"")->value() == 1) {
-				$aboutus = new Page();
+				$aboutus = Injector::inst()->get('Page');
 				$aboutus->Title = _t('SiteTree.DEFAULTABOUTTITLE', 'About Us');
 				$aboutus->Content = _t(
 					'SiteTree.DEFAULTABOUTCONTENT',
@@ -1542,7 +1542,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				$aboutus->flushCache();
 				DB::alteration_message('About Us page created', 'created');
 
-				$contactus = new Page();
+				$contactus = Injector::inst()->get('Page');
 				$contactus->Title = _t('SiteTree.DEFAULTCONTACTTITLE', 'Contact Us');
 				$contactus->Content = _t(
 					'SiteTree.DEFAULTCONTACTCONTENT',
