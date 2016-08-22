@@ -24,6 +24,9 @@ class ErrorPageControllerExtension extends Extension {
 	 * @throws SS_HTTPResponse_Exception
 	 */
 	public function onBeforeHTTPError($statusCode, $request) {
+		if (\Director::is_ajax()) {
+			return;
+		}
 		$response = ErrorPage::response_for($statusCode);
 		if($response) {
 			throw new SS_HTTPResponse_Exception($response, $statusCode);
