@@ -44,7 +44,7 @@ class OldPageRedirector extends Extension {
 	 * @return string|boolean False, or the new URL
 	 */
 	static public function find_old_page($params, $parent = null, $redirect = false) {
-		$parent = is_numeric($parent) ? SiteTree::get()->byId($parent) : $parent;	
+		$parent = is_numeric($parent) ? SiteTree::get()->byId($parent) : $parent;
 		$params = (array)$params;
 		$URL = rawurlencode(array_shift($params));
 		if (empty($URL)) { return false; }
@@ -55,26 +55,20 @@ class OldPageRedirector extends Extension {
 		}
 
 		if (!$page) {
-			// If we haven't found a candidate, lets resort to finding an old page with this URL segment
-			$oldFilter = array(
-				'"SiteTree_versions"."URLSegment"' => $URL,
-				'"SiteTree_versions"."WasPublished"' => true
-			);
-			if($parent) {
-				$oldFilter[] = array('"SiteTree_versions"."ParentID"' => $parent->ID);
-			}
-			$query = new SQLSelect(
-				'"RecordID"',
-				'"SiteTree_versions"',
-				$oldFilter,
-				'"LastEdited" DESC',
-				null,
-				null,
-				1
-			);
-			$record = $query->execute()->first();
-			if ($record) {
-				$page = SiteTree::get()->byID($record['RecordID']);
+			// If we haven't found a candidate, resort to finding a previously published page version with this URL segment
+			$oldRecords = DataList::create('SiteTree')
+				->filter(array(
+					'URLSegment' => $URL,
+					'WasPublished' => 1
+				))
+				->sort('"LastEdited" DESC')
+				->setDataQueryParam("Versioned.mode", 'all_versions');
+
+			if($parent) $oldRecords->filter(array('ParentID' => $parent->ID));
+
+			$page = $oldRecords->first();
+
+			if ($page) {
 				$redirect = true;
 			}
 		}
