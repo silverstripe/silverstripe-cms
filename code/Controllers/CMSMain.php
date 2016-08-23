@@ -102,6 +102,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	private static $page_length = 15;
 
 	private static $allowed_actions = array(
+		'AddToCampaignForm',
 		'archive',
 		'deleteitems',
 		'DeleteItemsForm',
@@ -1312,12 +1313,32 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	/**
 	 * Action handler for adding pages to a campaign
 	 *
+	 * @param SS_HTTPRequest
+	 * @return DBHTMLText|SS_HTTPResponse
+	 */
+	public function AddToCampaignForm($request) {
+		$data = $request->postVars();
+
+		if (!$data['Campaign']) {
+			$this->httpError(400, _t(
+				'AddToCampaign.ErrorCampaignNotSelected',
+				'There was no campaign selected to be added to'
+			));
+			return null;
+		}
+		$handler = AddToCampaignHandler::create($this, $data);
+		return $handler->handle();
+	}
+
+	/**
+	 * Action handler for adding pages to a campaign
+	 *
 	 * @param array $data
 	 * @param Form $form
 	 * @return DBHTMLText|SS_HTTPResponse
 	 */
 	public function addtocampaign($data, $form) {
-		$handler = AddToCampaignHandler::create($form, $data);
+		$handler = AddToCampaignHandler::create($this, $data);
 		return $handler->handle();
 	}
 
