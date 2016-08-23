@@ -8,6 +8,17 @@ use SilverStripe\ORM\HiddenClass;
 use SilverStripe\CMS\Controllers\CMSMain;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Admin\CMSBatchActionHandler;
+use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\Core\SS_Cache;
+use SilverStripe\Core\Convert;
+use SilverStripe\Core\ClassInfo;
+use SilverStripe\Dev\TestOnly;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Dev\CSSContentParser;
+use SilverStripe\Control\SS_HTTPResponse_Exception;
+use SilverStripe\Dev\FunctionalTest;
+
 
 
 
@@ -25,7 +36,7 @@ class CMSMainTest extends FunctionalTest {
 		parent::setUp();
 
 		// Clear automatically created siteconfigs (in case one was created outside of the specified fixtures).
-		$ids = $this->allFixtureIDs('SiteConfig');
+		$ids = $this->allFixtureIDs('SilverStripe\\SiteConfig\\SiteConfig');
 		if($ids) {
 			foreach(SiteConfig::get()->exclude('ID', $ids) as $config) {
 				$config->delete();
@@ -534,7 +545,7 @@ class CMSMainTest extends FunctionalTest {
 		$page = $this->objFromFixture('Page', 'page1');
 		$controller = new CMSMain();
 		$form = $controller->getEditForm($page->ID);
-		$this->assertInstanceOf("Form", $form);
+		$this->assertInstanceOf("SilverStripe\\Forms\\Form", $form);
 
 		// Ensure that the form will not "validate" on delete or "unpublish" actions.
 		$exemptActions = $form->getValidationExemptActions();

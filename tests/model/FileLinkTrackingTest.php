@@ -3,6 +3,10 @@
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\CMS\Model\VirtualPage;
+use SilverStripe\Assets\File;
+use SilverStripe\Assets\Filesystem;
+use SilverStripe\Dev\SapphireTest;
+
 
 
 /**
@@ -20,7 +24,7 @@ class FileLinkTrackingTest extends SapphireTest {
 		$this->logInWithPermission('ADMIN');
 
 		// Write file contents
-		$files = File::get()->exclude('ClassName', 'Folder');
+		$files = File::get()->exclude('ClassName', 'SilverStripe\\Assets\\Folder');
 		foreach($files as $file) {
 			$destPath = AssetStoreTest_SpyStore::getLocalPath($file);
 			Filesystem::makeFolder(dirname($destPath));
@@ -30,7 +34,7 @@ class FileLinkTrackingTest extends SapphireTest {
 		}
 
 		// Since we can't hard-code IDs, manually inject image tracking shortcode
-		$imageID = $this->idFromFixture('Image', 'file1');
+		$imageID = $this->idFromFixture('SilverStripe\\Assets\\Image', 'file1');
 		$page = $this->objFromFixture('Page', 'page1');
 		$page->Content = sprintf(
 			'<p>[image src="/assets/FileLinkTrackingTest/55b443b601/testscript-test-file.jpg" id="%d"]</p>',
@@ -66,7 +70,7 @@ class FileLinkTrackingTest extends SapphireTest {
 		);
 
 		Versioned::set_stage(Versioned::DRAFT);
-		$file = $this->objFromFixture('Image', 'file1');
+		$file = $this->objFromFixture('SilverStripe\\Assets\\Image', 'file1');
 		$file->Name = 'renamed-test-file.jpg';
 		$file->write();
 
@@ -125,7 +129,7 @@ class FileLinkTrackingTest extends SapphireTest {
 		$svp->publishRecursive();
 
 		// Rename the file
-		$file = $this->objFromFixture('Image', 'file1');
+		$file = $this->objFromFixture('SilverStripe\\Assets\\Image', 'file1');
 		$file->Name = 'renamed-test-file.jpg';
 		$file->write();
 
@@ -154,7 +158,7 @@ class FileLinkTrackingTest extends SapphireTest {
 		$this->assertFalse($page->getIsModifiedOnStage());
 
 		// Rename the file
-		$file = $this->objFromFixture('Image', 'file1');
+		$file = $this->objFromFixture('SilverStripe\\Assets\\Image', 'file1');
 		$file->Name = 'renamed-test-file.jpg';
 		$file->write();
 
@@ -178,13 +182,13 @@ class FileLinkTrackingTest extends SapphireTest {
 
 		// Rename the file twice
 		Versioned::set_stage(Versioned::DRAFT);
-		$file = $this->objFromFixture('Image', 'file1');
+		$file = $this->objFromFixture('SilverStripe\\Assets\\Image', 'file1');
 		$file->Name = 'renamed-test-file.jpg';
 		$file->write();
 
 		// TODO Workaround for bug in DataObject->getChangedFields(), which returns stale data,
 		// and influences File->updateFilesystem()
-		$file = DataObject::get_by_id('File', $file->ID);
+		$file = DataObject::get_by_id('SilverStripe\\Assets\\File', $file->ID);
 		$file->Name = 'renamed-test-file-second-time.jpg';
 		$file->write();
 		$file->publishRecursive();

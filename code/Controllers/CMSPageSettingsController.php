@@ -2,9 +2,6 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-/**
- * @package cms
- */
 class CMSPageSettingsController extends CMSMain {
 
 	private static $url_segment = 'pages/settings';

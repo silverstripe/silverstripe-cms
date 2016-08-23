@@ -2,60 +2,59 @@
 
 namespace SilverStripe\CMS\Model;
 
-use GridFieldDataColumns;
-use ShortcodeParser;
+use Page;
+use SilverStripe\Admin\AddToCampaignHandler_FormAction;
+use SilverStripe\Admin\CMSPreviewable;
 use SilverStripe\CMS\Controllers\CMSPageEditController;
 use SilverStripe\CMS\Controllers\ContentController;
+use SilverStripe\CMS\Controllers\ModelAsController;
+use SilverStripe\CMS\Controllers\RootURLController;
+use SilverStripe\CMS\Forms\SiteTreeURLSegmentField;
+use SilverStripe\Control\Controller;
+use SilverStripe\Control\Director;
+use SilverStripe\Core\ClassInfo;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Core\Convert;
+use SilverStripe\Dev\Deprecation;
+use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\CompositeField;
+use SilverStripe\Forms\DropdownField;
+use SilverStripe\Forms\FieldGroup;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\FormAction;
+use SilverStripe\Forms\FormField;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldDataColumns;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+use SilverStripe\Forms\ListboxField;
+use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\OptionsetField;
+use SilverStripe\Forms\Tab;
+use SilverStripe\Forms\TabSet;
+use SilverStripe\Forms\TextareaField;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\ToggleCompositeField;
+use SilverStripe\Forms\TreeDropdownField;
+use SilverStripe\i18n\i18n;
+use SilverStripe\i18n\i18nEntityProvider;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\DB;
+use SilverStripe\ORM\HiddenClass;
 use SilverStripe\ORM\Hierarchy\Hierarchy;
 use SilverStripe\ORM\ManyManyList;
 use SilverStripe\ORM\Versioning\Versioned;
-use SilverStripe\ORM\ArrayList;
-use SilverStripe\ORM\DB;
-use SilverStripe\ORM\DataList;
-use SilverStripe\ORM\HiddenClass;
+use SilverStripe\Security\Group;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
-use SilverStripe\Security\Group;
 use SilverStripe\Security\PermissionProvider;
-use i18nEntityProvider;
-use Director;
-use SilverStripe\CMS\Controllers\RootURLController;
-use ClassInfo;
-use Convert;
-use Controller;
-use Deprecation;
-use SSViewer;
-use ArrayData;
-use SiteConfig;
-use FormField;
-use Config;
-use Page;
-use URLSegmentFilter;
-use SilverStripe\CMS\Controllers\ModelAsController;
+use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\View\ArrayData;
+use SilverStripe\View\Parsers\ShortcodeParser;
+use SilverStripe\View\Parsers\URLSegmentFilter;
+use SilverStripe\View\SSViewer;
 use Subsite;
-use LiteralField;
-use GridField;
-use SilverStripe\CMS\Forms\SiteTreeURLSegmentField;
-use FieldList;
-use TabSet;
-use Tab;
-use TextField;
-use HTMLEditorField;
-use ToggleCompositeField;
-use TextareaField;
-use DropdownField;
-use CompositeField;
-use OptionsetField;
-use TreeDropdownField;
-use FieldGroup;
-use CheckboxField;
-use ListboxField;
-use FormAction;
-use i18n;
-use SilverStripe\Admin\AddToCampaignHandler_FormAction;
-use SilverStripe\Admin\CMSPreviewable;
-
 
 /**
  * Basic data-object representing all pages within the site tree. All page types that live within the hierarchy should
@@ -89,8 +88,6 @@ use SilverStripe\Admin\CMSPreviewable;
  * @mixin Hierarchy
  * @mixin Versioned
  * @mixin SiteTreeLinkTracking
- *
- * @package cms
  */
 class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvider,CMSPreviewable {
 
@@ -251,8 +248,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	private static $description = 'Generic content page';
 
 	private static $extensions = array(
-		'SilverStripe\ORM\Hierarchy\Hierarchy',
-		'SilverStripe\ORM\Versioning\Versioned',
+		'SilverStripe\\ORM\\Hierarchy\\Hierarchy',
+		'SilverStripe\\ORM\\Versioning\\Versioned',
 		"SilverStripe\\CMS\\Model\\SiteTreeLinkTracking"
 	);
 
@@ -1458,7 +1455,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			));
 		}
 
-		$charset = Config::inst()->get('ContentNegotiator', 'encoding');
+		$charset = Config::inst()->get('SilverStripe\\Control\\ContentNegotiator', 'encoding');
 		$tags[] = FormField::create_tag('meta', array(
 			'http-equiv' => 'Content-Type',
 			'content' => 'text/html; charset=' . $charset,
@@ -1704,7 +1701,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 
 		if(!self::config()->nested_urls || !$this->ParentID) {
-			if(class_exists($this->URLSegment) && is_subclass_of($this->URLSegment, 'RequestHandler')) return false;
+			if(class_exists($this->URLSegment) && is_subclass_of($this->URLSegment, 'SilverStripe\\Control\\RequestHandler')) return false;
 		}
 
 		// Filters by url, id, and parent
@@ -1928,7 +1925,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				$dependentPages
 			);
 			/** @var GridFieldDataColumns $dataColumns */
-			$dataColumns = $dependentTable->getConfig()->getComponentByType('GridFieldDataColumns');
+			$dataColumns = $dependentTable->getConfig()->getComponentByType('SilverStripe\\Forms\\GridField\\GridFieldDataColumns');
 			$dataColumns
 				->setDisplayFields($dependentColumns)
 				->setFieldFormatting(array(
@@ -1963,7 +1960,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$helpText = (self::config()->nested_urls && $this->Children()->count())
 			? $this->fieldLabel('LinkChangeNote')
 			: '';
-		if(!Config::inst()->get('URLSegmentFilter', 'default_allow_multibyte')) {
+		if(!Config::inst()->get('SilverStripe\\View\\Parsers\\URLSegmentFilter', 'default_allow_multibyte')) {
 			$helpText .= $helpText ? '<br />' : '';
 			$helpText .= _t('SiteTreeURLSegmentField.HelpChars', ' Special characters are automatically converted or removed.');
 		}
@@ -2035,12 +2032,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				"Warning: You should remove install.php from this SilverStripe install for security reasons.")
 				. "</p>"), "Title");
 		}
-
-		// Backwards compat: Rewrite nested "Content" tabs to toplevel
-		$fields->setTabPathRewrites(array(
-			'/^Root\.Content\.Main$/' => 'Root.Main',
-			'/^Root\.Content\.([^.]+)$/' => 'Root.\\1',
-		));
 
 		if(self::$runCMSFieldsExtensions) {
 			$this->extend('updateCMSFields', $fields);
@@ -2237,12 +2228,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$live = Versioned::get_one_by_stage('SilverStripe\\CMS\\Model\\SiteTree', Versioned::LIVE, array(
 			'"SiteTree"."ID"' => $this->ID
 		));
+		$infoTemplate = SSViewer::get_templates_by_class(get_class($this), '_Information', __CLASS__);
 		$moreOptions->push(
 			new LiteralField('Information',
 				$this->customise(array(
 					'Live' => $live,
 					'ExistsOnLive' => $existsOnLive
-				))->renderWith('SiteTree_Information')
+				))->renderWith($infoTemplate)
 			)
 		);
 
@@ -2253,7 +2245,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			'"SiteTree"."ID"' => $this->ID
 		));
 		if($stageOrLiveRecord && $stageOrLiveRecord->Version != $this->Version) {
-			$moreOptions->push(FormAction::create('email', _t('CMSMain.EMAIL', 'Email')));
+			$moreOptions->push(FormAction::create('email', _t('CMSMain.EMAIL', 'SilverStripe\\Control\\Email\\Email')));
 			$moreOptions->push(FormAction::create('rollback', _t('CMSMain.ROLLBACK', 'Roll back to this version')));
 
 			$actions = new FieldList(array($majorActions, $rootTabSet));

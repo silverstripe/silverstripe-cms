@@ -8,9 +8,6 @@ use SilverStripe\Admin\CMSBatchAction;
 
 /**
  * Delete items batch action.
- *
- * @package cms
- * @subpackage batchaction
  */
 class CMSBatchAction_Delete extends CMSBatchAction {
 	public function getActionTitle() {

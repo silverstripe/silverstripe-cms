@@ -3,20 +3,17 @@
 namespace SilverStripe\CMS\Forms;
 
 use SilverStripe\CMS\Model\SiteTree;
-use SS_HTTPRequest;
-use TextField;
-use Requirements;
-use Controller;
-use Convert;
+use SilverStripe\Control\Controller;
+use SilverStripe\Control\SS_HTTPRequest;
+use SilverStripe\Core\Convert;
+use SilverStripe\Forms\TextField;
+use SilverStripe\View\Requirements;
 
 /**
  * Used to edit the SiteTree->URLSegment property, and suggest input based on the serverside rules
  * defined through {@link SiteTree->generateURLSegment()} and {@link URLSegmentFilter}.
  *
  * Note: The actual conversion for saving the value takes place in the model layer.
- *
- * @package cms
- * @subpackage forms
  */
 class SiteTreeURLSegmentField extends TextField {
 

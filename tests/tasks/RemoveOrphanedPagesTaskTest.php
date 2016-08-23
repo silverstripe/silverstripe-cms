@@ -1,6 +1,8 @@
 <?php
 
 use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Dev\FunctionalTest;
+
 
 /**
  * <h2>Fixture tree</h2>

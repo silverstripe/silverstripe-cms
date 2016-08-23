@@ -8,9 +8,6 @@ use SilverStripe\ORM\Versioning\Versioned;
 
 /**
  * Filters pages which have a status "Draft".
- *
- * @package cms
- * @subpackage content
  */
 class CMSSiteTreeFilter_StatusDraftPages extends CMSSiteTreeFilter
 {

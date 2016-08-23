@@ -2,23 +2,21 @@
 
 namespace SilverStripe\CMS\Model;
 
-use FieldList;
-use SilverStripe\Filesystem\Storage\GeneratedAssetHandler;
+use SilverStripe\Assets\Storage\GeneratedAssetHandler;
+use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataModel;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\DB;
-use Page;
-use Requirements;
 use SilverStripe\CMS\Controllers\ModelAsController;
-use SS_HTTPRequest;
-use SS_HTTPResponse;
-use DropdownField;
-use File;
-use Config;
-use Director;
-use Injector;
-use Page_Controller;
-
+use SilverStripe\View\Requirements;
+use SilverStripe\Control\SS_HTTPRequest;
+use SilverStripe\Control\SS_HTTPResponse;
+use SilverStripe\Forms\DropdownField;
+use SilverStripe\Assets\File;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Control\Director;
+use SilverStripe\Core\Injector\Injector;
+use Page;
 
 /**
  * ErrorPage holds the content for the page of an error response.
@@ -31,7 +29,6 @@ use Page_Controller;
  * @see Debug::friendlyError()
  *
  * @property int $ErrorCode HTTP Error code
- * @package cms
  */
 class ErrorPage extends Page {
 
@@ -299,7 +296,7 @@ class ErrorPage extends Page {
 
 		// Run the page (reset the theme, it might've been disabled by LeftAndMain::init())
 		Config::nest();
-		Config::inst()->update('SSViewer', 'theme_enabled', true);
+		Config::inst()->update('SilverStripe\\View\\SSViewer', 'theme_enabled', true);
 		$response = Director::test(Director::makeRelative($this->Link()));
 		Config::unnest();
 		$errorContent = $response->getBody();

@@ -1,4 +1,4 @@
-SiteConfig:
+SilverStripe\SiteConfig\SiteConfig:
   default:
     Title: My test site
     Tagline: There is no doubt this is a great test site

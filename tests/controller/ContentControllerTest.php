@@ -4,7 +4,10 @@ use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\CMS\Controllers\RootURLController;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\CMS\Controllers\ContentController;
-
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Control\Director;
+use SilverStripe\Control\SS_HTTPResponse_Exception;
+use SilverStripe\Dev\FunctionalTest;
 
 /**
  * @package cms

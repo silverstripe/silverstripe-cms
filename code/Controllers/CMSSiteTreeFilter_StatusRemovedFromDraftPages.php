@@ -8,9 +8,6 @@ use SilverStripe\ORM\Versioning\Versioned;
 
 /**
  * Filters pages which have a status "Removed from Draft".
- *
- * @package cms
- * @subpackage content
  */
 class CMSSiteTreeFilter_StatusRemovedFromDraftPages extends CMSSiteTreeFilter
 {

@@ -2,17 +2,13 @@
 
 namespace SilverStripe\CMS\Reports;
 
+use SilverStripe\Core\ClassInfo;
+use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Reports\SS_Report;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\Versioning\Versioned;
-use SS_Report;
-use ClassInfo;
-use FieldList;
-use CheckboxField;
 
-/**
- * @package cms
- * @subpackage reports
- */
 class BrokenFilesReport extends SS_Report {
 
 	public function title() {

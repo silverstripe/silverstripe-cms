@@ -1,6 +1,9 @@
 <?php
 
 use SilverStripe\Admin\CMSMenu;
+use SilverStripe\View\Parsers\ShortcodeParser;
+use SilverStripe\Assets\File;
+
 
 /**
  * - CMS_DIR: Path relative to webroot, e.g. "cms"

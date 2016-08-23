@@ -2,16 +2,13 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-use Extension;
-use Requirements;
-use ClassInfo;
-use Director;
+use SilverStripe\View\Requirements;
+use SilverStripe\Core\ClassInfo;
+use SilverStripe\Control\Director;
+use SilverStripe\Core\Extension;
 
 /**
  * Extension to include custom page icons
- *
- * @package cms
- * @subpackage controller
  */
 class LeftAndMainPageIconsExtension extends Extension {
 

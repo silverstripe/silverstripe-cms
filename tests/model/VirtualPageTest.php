@@ -11,6 +11,10 @@ use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Controllers\ModelAsController;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Dev\FunctionalTest;
+use SilverStripe\Dev\TestOnly;
+
 
 
 

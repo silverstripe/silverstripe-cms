@@ -1,14 +1,10 @@
 <?php
 namespace SilverStripe\CMS\Controllers;
 
-use Controller;
 use SilverStripe\CMS\Model\RedirectorPage;
+use SilverStripe\Control\Controller;
 use SilverStripe\ORM\Versioning\Versioned;
 
-/**
- * @package cms
- * @subpackage content
- */
 class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem
 {
 	/** @config */

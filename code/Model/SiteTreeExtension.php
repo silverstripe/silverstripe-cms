@@ -7,9 +7,6 @@ use SilverStripe\Security\Member;
 
 /**
  * Plug-ins for additional functionality in your SiteTree classes.
- *
- * @package cms
- * @subpackage model
  */
 abstract class SiteTreeExtension extends DataExtension {
 

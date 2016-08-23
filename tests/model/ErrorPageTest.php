@@ -2,6 +2,9 @@
 
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\CMS\Model\ErrorPage;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Dev\FunctionalTest;
+
 
 
 /**
@@ -24,7 +27,7 @@ class ErrorPageTest extends FunctionalTest {
 		// Set temporary asset backend store
 		AssetStoreTest_SpyStore::activate('ErrorPageTest');
 		Config::inst()->update('SilverStripe\\CMS\\Model\\ErrorPage', 'enable_static_file', true);
-		Config::inst()->update('Director', 'environment_type', 'live');
+		Config::inst()->update('SilverStripe\\Control\\Director', 'environment_type', 'live');
 		$this->logInWithPermission('ADMIN');
 	}
 

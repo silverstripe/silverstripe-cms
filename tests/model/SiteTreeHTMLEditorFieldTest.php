@@ -1,6 +1,12 @@
 <?php
 
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Assets\File;
+use SilverStripe\Assets\Filesystem;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+use SilverStripe\Dev\CSSContentParser;
+use SilverStripe\Dev\FunctionalTest;
+
 class SiteTreeHTMLEditorFieldTest extends FunctionalTest {
 	protected static $fixture_file = 'SiteTreeHTMLEditorFieldTest.yml';
 
@@ -12,7 +18,7 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest {
 		$this->logInWithPermission('ADMIN');
 
 		// Write file contents
-		$files = File::get()->exclude('ClassName', 'Folder');
+		$files = File::get()->exclude('ClassName', 'SilverStripe\\Assets\\Folder');
 		foreach($files as $file) {
 			$destPath = AssetStoreTest_SpyStore::getLocalPath($file);
 			Filesystem::makeFolder(dirname($destPath));
@@ -67,7 +73,7 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest {
 	public function testFileLinkTracking() {
 		$sitetree = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'home');
 		$editor   = new HTMLEditorField('Content');
-		$fileID   = $this->idFromFixture('File', 'example_file');
+		$fileID   = $this->idFromFixture('SilverStripe\\Assets\\File', 'example_file');
 
 		$editor->setValue(sprintf(
 			'<p><a href="[file_link,id=%d]">Example File</a></p>',
@@ -124,7 +130,7 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest {
 	public function testImageTracking() {
 		$sitetree = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'home');
 		$editor = new HTMLEditorField('Content');
-		$file = $this->objFromFixture('Image', 'example_image');
+		$file = $this->objFromFixture('SilverStripe\\Assets\\Image', 'example_image');
 
 		$editor->setValue(sprintf('[image src="%s" id="%d"]', $file->getURL(), $file->ID));
 		$editor->saveInto($sitetree);
@@ -181,7 +187,7 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest {
 
 		$editor->setValue(sprintf (
 			'<p><a href="[file_link,id=%d]">Working Link</a></p>',
-			$this->idFromFixture('File', 'example_file')
+			$this->idFromFixture('SilverStripe\\Assets\\File', 'example_file')
 		));
 		$sitetree->HasBrokenFile = false;
 		$editor->saveInto($sitetree);

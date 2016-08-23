@@ -6,6 +6,8 @@ use SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Archive;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Restore;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Dev\SapphireTest;
+
 
 
 /**

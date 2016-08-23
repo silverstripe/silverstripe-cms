@@ -7,9 +7,6 @@ use SilverStripe\ORM\SS_List;
 
 /**
  * Unpublish items batch action.
- *
- * @package cms
- * @subpackage batchaction
  */
 class CMSBatchAction_Unpublish extends CMSBatchAction
 {

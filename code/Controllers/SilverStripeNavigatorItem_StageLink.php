@@ -1,16 +1,12 @@
 <?php
 namespace SilverStripe\CMS\Controllers;
 
-use ClassInfo;
-use Controller;
 use SilverStripe\CMS\Model\RedirectorPage;
+use SilverStripe\Control\Controller;
+use SilverStripe\Core\ClassInfo;
 use SilverStripe\ORM\Versioning\Versioned;
 use SiteTreeFutureState;
 
-/**
- * @package cms
- * @subpackage content
- */
 class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem
 {
 	/** @config */

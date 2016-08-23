@@ -1,14 +1,10 @@
 <?php
 namespace SilverStripe\CMS\Controllers;
 
-use Controller;
 use SilverStripe\Admin\LeftAndMain;
 use SilverStripe\CMS\Model\RedirectorPage;
+use SilverStripe\Control\Controller;
 
-/**
- * @package cms
- * @subpackage content
- */
 class SilverStripeNavigatorItem_CMSLink extends SilverStripeNavigatorItem
 {
 	/** @config */

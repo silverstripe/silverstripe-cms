@@ -6,8 +6,6 @@ use SilverStripe\ORM\DataObject;
 
 /**
  * This interface lets us set up objects that will tell us what the current page is.
- * @package cms
- * @subpackage model
  */
 interface CurrentPageIdentifier {
 

@@ -2,18 +2,16 @@
 
 namespace SilverStripe\CMS\Search;
 
+use SilverStripe\Control\SS_HTTPRequest;
+use SilverStripe\Core\Extension;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\FormAction;
 use SilverStripe\ORM\FieldType\DBField;
-use Extension;
-use FieldList;
-use TextField;
-use FormAction;
-use FulltextSearchable;
+use SilverStripe\ORM\Search\FulltextSearchable;
 
 /**
  * Extension to provide a search interface when applied to ContentController
- *
- * @package cms
- * @subpackage search
  */
 class ContentControllerSearchExtension extends Extension {
 	private static $allowed_actions = array(

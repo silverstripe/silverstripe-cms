@@ -4,6 +4,11 @@ use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\CMS\Controllers\OldPageRedirector;
 use SilverStripe\CMS\Controllers\RootURLController;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Control\Director;
+use SilverStripe\Control\Controller;
+use SilverStripe\Dev\FunctionalTest;
+
 
 
 /**

@@ -2,14 +2,12 @@
 
 namespace SilverStripe\CMS\Controllers;
 
+use SilverStripe\Admin\CMSPreviewable;
+use SilverStripe\Core\ClassInfo;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\SS_List;
-use ViewableData;
-use ClassInfo;
-use SilverStripe\Admin\CMSPreviewable;
-use SiteTreeFutureState;
-
+use SilverStripe\View\ViewableData;
 
 /**
  * Utility class representing links to different views of a record
@@ -20,9 +18,6 @@ use SiteTreeFutureState;
  * New item types can be defined by extending the {@link SilverStripeNavigatorItem} class,
  * for example the "cmsworkflow" module defines a new "future state" item with a date selector
  * to view embargoed data at a future point in time. So the item doesn't always have to be a simple link.
- *
- * @package cms
- * @subpackage content
  */
 class SilverStripeNavigator extends ViewableData {
 

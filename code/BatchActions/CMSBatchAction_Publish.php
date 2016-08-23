@@ -7,9 +7,6 @@ use SilverStripe\ORM\SS_List;
 
 /**
  * Publish items batch action.
- *
- * @package cms
- * @subpackage batchaction
  */
 class CMSBatchAction_Publish extends CMSBatchAction
 {

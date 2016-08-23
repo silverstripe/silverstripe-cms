@@ -3,21 +3,17 @@
 namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Control\Controller;
+use SilverStripe\Control\Director;
+use SilverStripe\Control\SS_HTTPRequest;
+use SilverStripe\Control\SS_HTTPResponse;
+use SilverStripe\Core\ClassInfo;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Dev\Deprecation;
 use SilverStripe\ORM\DataModel;
 use SilverStripe\ORM\DB;
-use Controller;
-use SS_HTTPResponse;
 use Translatable;
-use Config;
-use Deprecation;
-use SS_HTTPRequest;
-use ClassInfo;
-use Director;
 
-/**
- * @package cms
- * @subpackage control
- */
 class RootURLController extends Controller {
 
 	/**

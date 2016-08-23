@@ -1,9 +1,9 @@
 <?php
 namespace SilverStripe\CMS\Model;
 
-use Director;
+use SilverStripe\Control\Director;
 use SilverStripe\ORM\DataObject;
-use SS_HTMLValue;
+use SilverStripe\View\Parsers\SS_HTMLValue;
 
 /**
  * A helper object for extracting information about links.
@@ -27,6 +27,7 @@ class SiteTreeLinkTracking_Parser
 	{
 		$results = array();
 
+		// @todo - Should be calling getElementsByTagName on DOMDocument?
 		$links = $htmlValue->getElementsByTagName('a');
 		if (!$links) {
 			return $results;
@@ -91,7 +92,7 @@ class SiteTreeLinkTracking_Parser
 					'Target' => $matches['id'],
 					'Anchor' => null,
 					'DOMReference' => $link,
-					'Broken' => !DataObject::get_by_id('File', $matches['id'])
+					'Broken' => !DataObject::get_by_id('SilverStripe\\Assets\\File', $matches['id'])
 				);
 
 				continue;
@@ -123,7 +124,7 @@ class SiteTreeLinkTracking_Parser
 					'Target' => (int)$id,
 					'Anchor' => null,
 					'DOMReference' => null,
-					'Broken' => !DataObject::get_by_id('Image', (int)$id)
+					'Broken' => !DataObject::get_by_id('SilverStripe\\Assets\\Image', (int)$id)
 				);
 			}
 		}

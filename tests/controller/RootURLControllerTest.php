@@ -2,6 +2,9 @@
 
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\CMS\Controllers\RootURLController;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Dev\SapphireTest;
+
 /**
  * @package cms
  * @subpackage tests

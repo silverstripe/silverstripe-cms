@@ -2,30 +2,23 @@
 
 namespace SilverStripe\CMS\Model;
 
-use Exception;
-use SilverStripe\CMS\Controllers\ContentController;
+use SilverStripe\Core\Convert;
+use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\ReadonlyTransformation;
+use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\Versioning\Versioned;
-use Page;
-use Convert;
 use SilverStripe\Security\Member;
-use TreeDropdownField;
-use ReadonlyTransformation;
-use LiteralField;
-use Page_Controller;
-use SilverStripe\CMS\Controllers\ModelAsController;
-
+use Page;
 
 /**
-* Virtual Page creates an instance of a  page, with the same fields that the original page had, but readonly.
-* This allows you can have a page in mulitple places in the site structure, with different children without duplicating the content
-* Note: This Only duplicates $db fields and not the $has_one etc..
+ * Virtual Page creates an instance of a  page, with the same fields that the original page had, but readonly.
+ * This allows you can have a page in mulitple places in the site structure, with different children without duplicating the content
+ * Note: This Only duplicates $db fields and not the $has_one etc..
  *
  * @method SiteTree CopyContentFrom()
  * @property int $CopyContentFromID
- *
-* @package cms
-*/
+ */
 class VirtualPage extends Page {
 
 	private static $description = 'Displays the content of another page';

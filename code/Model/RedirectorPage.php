@@ -2,19 +2,15 @@
 
 namespace SilverStripe\CMS\Model;
 
+use SilverStripe\Forms\HeaderField;
+use SilverStripe\Forms\OptionsetField;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\TreeDropdownField;
+use SilverStripe\View\Requirements;
 use Page;
-use Requirements;
-use HeaderField;
-use OptionsetField;
-use TreeDropdownField;
-use TextField;
-use Page_Controller;
 
 /**
  * A redirector page redirects when the page is visited.
- *
- * @package cms
- * @subpackage content
  *
  * @property string $RedirectionType Either 'Internal' or 'External'
  * @property string $ExternalURL URL to redirect to if $RedirectionType is 'External'

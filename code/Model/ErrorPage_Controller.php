@@ -1,15 +1,14 @@
 <?php
 namespace SilverStripe\CMS\Model;
 
-use Page_Controller;
 use SilverStripe\ORM\DataModel;
-use SS_HTTPRequest;
-use SS_HTTPResponse;
+use SilverStripe\Control\SS_HTTPRequest;
+use SilverStripe\Control\SS_HTTPResponse;
+use Page_Controller;
+
 
 /**
  * Controller for ErrorPages.
- *
- * @package cms
  */
 class ErrorPage_Controller extends Page_Controller
 {

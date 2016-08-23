@@ -2,20 +2,17 @@
 
 namespace SilverStripe\CMS\Tasks;
 
-
+use SilverStripe\Dev\BuildTask;
 use SilverStripe\ORM\DataList;
-use SilverStripe\ORM\DB;
 use SilverStripe\ORM\DataObject;
-use BuildTask;
-
+use SilverStripe\ORM\DB;
 
 /**
  * Rewrites plain internal HTML links into shortcode form, using existing link tracking information.
- *
- * @package cms
- * @subpackage tasks
  */
 class MigrateSiteTreeLinkingTask extends BuildTask {
+
+	private static $segment = 'MigrateSiteTreeLinkingTask';
 
 	protected $title = 'Migrate SiteTree Linking Task';
 

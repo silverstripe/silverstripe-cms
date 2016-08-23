@@ -6,9 +6,6 @@ use SilverStripe\ORM\Versioning\Versioned;
 
 /**
  * Gets all pages which have changed on stage.
- *
- * @package cms
- * @subpackage content
  */
 class CMSSiteTreeFilter_ChangedPages extends CMSSiteTreeFilter
 {

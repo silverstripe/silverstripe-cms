@@ -4,10 +4,6 @@ namespace SilverStripe\CMS\Controllers;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\Versioning\Versioned;
 
-/**
- * @package cms
- * @subpackage content
- */
 class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter
 {
 
