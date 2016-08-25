@@ -41,9 +41,10 @@ class ContentController extends Controller {
 			$dataRecord->URLSegment = get_class($this);
 			$dataRecord->ID = -1;
 		}
-		
+
 		$this->dataRecord = $dataRecord;
 		$this->failover = $this->dataRecord;
+
 		parent::__construct();
 	}
 	
@@ -87,42 +88,58 @@ class ContentController extends Controller {
 
 	public function init() {
 		parent::init();
-		
+
+		$recordExists = ($this->dataRecord && $this->dataRecord->exists());
+
 		// If we've accessed the homepage as /home/, then we should redirect to /.
-		if($this->dataRecord && $this->dataRecord instanceof SiteTree
-			 	&& RootURLController::should_be_on_root($this->dataRecord) && (!isset($this->urlParams['Action']) || !$this->urlParams['Action'] ) 
-				&& !$_POST && !$_FILES && !$this->redirectedTo() ) {
-			$getVars = $_GET;
+		if(
+			$recordExists
+			&& RootURLController::should_be_on_root($this->dataRecord)
+			&& !$this->request->param('Action')
+			&& !$this->request->postVars()
+			&& !$this->redirectedTo()
+		) {
+			$getVars = $this->getRequest()->getVars();
 			unset($getVars['url']);
-			if($getVars) $url = "?" . http_build_query($getVars);
-			else $url = "";
+			if($getVars) {
+				$url = "?" . http_build_query($getVars);
+			} else {
+				$url = "";
+			}
 			$this->redirect($url, 301);
 			return;
 		}
-		
-		if($this->dataRecord) $this->dataRecord->extend('contentcontrollerInit', $this);
-		else singleton('SiteTree')->extend('contentcontrollerInit', $this);
 
-		if($this->redirectedTo()) return;
+		// Run extension hooks
+		if($recordExists) {
+			$this->dataRecord->extend('contentcontrollerInit', $this);
+		} else {
+			singleton('SiteTree')->extend('contentcontrollerInit', $this);
+		}
+		if($this->redirectedTo()) {
+			// Check if any extension hooks have caused a redirection
+			return;
+		}
 
-		// Check page permissions
+		// Check page permissions (even if record isn't in database)
 		if($this->dataRecord && $this->URLSegment != 'Security' && !$this->dataRecord->canView()) {
 			return Security::permissionFailure($this);
 		}
 
 		// Draft/Archive security check - only CMS users should be able to look at stage/archived content
 		if(
-			$this->URLSegment != 'Security' 
+			$recordExists
+			&& $this->URLSegment != 'Security' 
 			&& !Session::get('unsecuredDraftSite') 
 			&& (
 				Versioned::current_archived_date() 
 				|| (Versioned::current_stage() && Versioned::current_stage() != 'Live')
 			)
 		) {
-			if(!$this->dataRecord->canViewStage(Versioned::current_archived_date() ? 'Stage' : Versioned::current_stage())) {
+			$canView = $this->dataRecord->canViewStage(Versioned::current_archived_date() ? 'Stage' : Versioned::current_stage());
+			if(!$canView) {
 				Session::clear('currentStage');
 				Session::clear('archiveDate');
-				
 				$permissionMessage = sprintf(
 					_t(
 						"ContentController.DRAFT_SITE_ACCESS_RESTRICTION",
@@ -134,15 +151,14 @@ class ContentController extends Controller {
 
 				return Security::permissionFailure($this, $permissionMessage);
 			}
-
 		}
-		
+
 		// Use theme from the site config
 		if(($config = SiteConfig::current_site_config()) && $config->Theme) {
 			Config::inst()->update('SSViewer', 'theme', $config->Theme);
 		}
 	}
-	
+
 	/**
 	 * This acts the same as {@link Controller::handleRequest()}, but if an action cannot be found this will attempt to
 	 * fall over to a child controller in order to provide functionality for nested URLs.
