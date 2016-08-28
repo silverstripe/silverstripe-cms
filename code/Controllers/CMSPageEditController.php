@@ -51,7 +51,6 @@ class CMSPageEditController extends CMSMain {
 		if (!is_null($results)) {
 			$request = $this->getRequest();
 			if($request->getHeader('X-Formschema-Request')) {
-				$handler->setShowTitle(false);
 				$data = $this->getSchemaForForm($handler->Form($record));
 				$data['message'] = $results;
 
@@ -105,7 +104,6 @@ class CMSPageEditController extends CMSMain {
 		}
 
 		$handler = AddToCampaignHandler::create($this, $record);
-		$handler->setShowTitle(false);
 		return $handler->Form($record);
 	}
 
