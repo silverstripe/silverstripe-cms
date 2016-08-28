@@ -22,7 +22,6 @@ use SilverStripe\Admin\AdminRootController;
 use SilverStripe\Admin\LeftAndMain;
 use SilverStripe\Admin\CMSBatchActionHandler;
 use SilverStripe\Admin\CMSPreviewable;
-use SilverStripe\Admin\AddToCampaignHandler;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\CurrentPageIdentifier;
@@ -1307,18 +1306,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$this->getResponse()->addHeader('X-Pjax', 'Content');
 
 		return $this->getResponseNegotiator()->respond($this->getRequest());
-	}
-
-	/**
-	 * Action handler for adding pages to a campaign
-	 *
-	 * @param array $data
-	 * @param Form $form
-	 * @return DBHTMLText|SS_HTTPResponse
-	 */
-	public function addtocampaign($data, $form) {
-		$handler = AddToCampaignHandler::create($form, $data);
-		return $handler->handle();
 	}
 
 	/**
