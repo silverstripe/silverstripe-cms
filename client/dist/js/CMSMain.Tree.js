@@ -60,8 +60,8 @@
 					'items': function items(node) {
 
 						var menuitems = {
-							'edit': {
-								'label': _i18n2.default._t('Tree.EditPage', 'Edit page', 100, 'Used in the context menu when right-clicking on a page node in the CMS tree'),
+							edit: {
+								'label': node.hasClass('edit-disabled') ? _i18n2.default._t('Tree.EditPage', 'Edit page', 100, 'Used in the context menu when right-clicking on a page node in the CMS tree') : _i18n2.default._t('Tree.ViewPage', 'View page', 100, 'Used in the context menu when right-clicking on a page node in the CMS tree'),
 								'action': function action(obj) {
 									$('.cms-container').entwine('.ss').loadPanel(_i18n2.default.sprintf(self.data('urlEditpage'), obj.data('id')));
 								}
@@ -101,20 +101,22 @@
 							};
 						}
 
-						menuitems['duplicate'] = {
-							'label': _i18n2.default._t('Tree.Duplicate'),
-							'submenu': [{
-								'label': _i18n2.default._t('Tree.ThisPageOnly'),
-								'action': function action(obj) {
-									$('.cms-container').entwine('.ss').loadPanel($.path.addSearchParams(_i18n2.default.sprintf(self.data('urlDuplicate'), obj.data('id')), self.data('extraParams')));
-								}
-							}, {
-								'label': _i18n2.default._t('Tree.ThisPageAndSubpages'),
-								'action': function action(obj) {
-									$('.cms-container').entwine('.ss').loadPanel($.path.addSearchParams(_i18n2.default.sprintf(self.data('urlDuplicatewithchildren'), obj.data('id')), self.data('extraParams')));
-								}
-							}]
-						};
+						if (!node.hasClass('edit-disabled')) {
+							menuitems['duplicate'] = {
+								'label': _i18n2.default._t('Tree.Duplicate'),
+								'submenu': [{
+									'label': _i18n2.default._t('Tree.ThisPageOnly'),
+									'action': function action(obj) {
+										$('.cms-container').entwine('.ss').loadPanel($.path.addSearchParams(_i18n2.default.sprintf(self.data('urlDuplicate'), obj.data('id')), self.data('extraParams')));
+									}
+								}, {
+									'label': _i18n2.default._t('Tree.ThisPageAndSubpages'),
+									'action': function action(obj) {
+										$('.cms-container').entwine('.ss').loadPanel($.path.addSearchParams(_i18n2.default.sprintf(self.data('urlDuplicatewithchildren'), obj.data('id')), self.data('extraParams')));
+									}
+								}]
+							};
+						}
 
 						return menuitems;
 					}
