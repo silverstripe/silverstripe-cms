@@ -105,9 +105,6 @@ SilverStripe\Security\Member:
     Email: admin@example.com
     Password: ZXXlkwecxz2390232233
     Groups: =>SilverStripe\Security\Group.admin
-  assetsonlyuser:
-    Email: assetsonlyuser@test.com
-    Groups: =>SilverStripe\Security\Group.assetsonly
   allcmssectionsuser:
     Email: allcmssectionsuser@test.com
     Groups: =>SilverStripe\Security\Group.allcmssections
@@ -118,9 +115,6 @@ SilverStripe\Security\Permission:
   admin:
     Code: ADMIN
     GroupID: =>SilverStripe\Security\Group.admin
-  assetsonly:
-    Code: CMS_ACCESS_AssetAdmin
-    GroupID: =>SilverStripe\Security\Group.assetsonly
   allcmssections:
     Code: CMS_ACCESS_LeftAndMain
     GroupID: =>SilverStripe\Security\Group.allcmssections

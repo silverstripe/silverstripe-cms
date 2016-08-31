@@ -4,8 +4,6 @@ mappings:
   CMSBatchAction_Archive: SilverStripe\CMS\BatchActions\CMSBatchAction_Archive
   CMSBatchAction_Restore: SilverStripe\CMS\BatchActions\CMSBatchAction_Restore
   CMSBatchAction_Delete: SilverStripe\CMS\BatchActions\CMSBatchAction_Delete
-  AssetAdmin: SilverStripe\CMS\Controllers\AssetAdmin
-  AssetAdmin_DeleteBatchAction: SilverStripe\CMS\Controllers\AssetAdmin_DeleteBatchAction
   CMSMain: SilverStripe\CMS\Controllers\CMSMain
   CMSPageAddController: SilverStripe\CMS\Controllers\CMSPageAddController
   CMSPageEditController: SilverStripe\CMS\Controllers\CMSPageEditController

@@ -32,11 +32,10 @@ class SilverStripeNavigatorTest extends SapphireTest {
 	public function testCanView() {
 		$page = $this->objFromFixture('Page', 'page1');
 		$admin = $this->objFromFixture('SilverStripe\\Security\\Member', 'admin');
-		$author = $this->objFromFixture('SilverStripe\\Security\\Member', 'assetsonlyuser');
 		$navigator = new SilverStripeNavigator($page);
 
 		// TODO Shouldn't be necessary but SapphireTest logs in as ADMIN by default
-		$this->logInWithPermission('CMS_ACCESS_AssetAdmin');
+		$this->logInWithPermission('CMS_ACCESS_CMSMain');
 		$items = $navigator->getItems();
 		$classes = array_map('get_class', $items->toArray());
 		$this->assertNotContains('SilverStripeNavigatorTest_ProtectedTestItem', $classes);
