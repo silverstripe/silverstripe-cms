@@ -16,7 +16,7 @@ So that I can link to a external website or a page on my site
   Scenario: I can link to an internal page
     Given I select "awesome" in the "Content" HTML field
     And I press the "Insert Link" HTML field button
-    When I select the "Page on the site" radio button
+    When I select the "Link to a page on this site" radio button
     And I fill in the "internal" dropdown with "Home"
     And I fill in "my desc" for "Link description"
     And I press the "Insert" button
@@ -28,7 +28,7 @@ So that I can link to a external website or a page on my site
   Scenario: I can link to an anchor in an internal page
     Given I select "awesome" in the "Content" HTML field
     And I press the "Insert Link" HTML field button
-    And I select the "Page on the site" radio button
+    And I select the "Link to a page on this site" radio button
     And I fill in the "internal" dropdown with "Details"
     And I wait for 1 second
     And I select "youranchor" from "Form_EditorToolbarLinkForm_AnchorSelector"
@@ -40,7 +40,7 @@ So that I can link to a external website or a page on my site
   Scenario: I can link to an external URL
     Given I select "awesome" in the "Content" HTML field
     And I press the "Insert Link" HTML field button
-    When I select the "Another website" radio button
+    When I select the "Link to another website" radio button
     And I fill in "http://silverstripe.org" for "URL"
     And I check "Open link in a new window"
     And I press the "Insert" button
@@ -51,7 +51,7 @@ So that I can link to a external website or a page on my site
   Scenario: I can link to a file
     Given I select "awesome" in the "Content" HTML field
     When I press the "Insert Link" HTML field button
-    When I select the "Download a file" radio button
+    When I select the "Link to download a file" radio button
     And I attach the file "testfile.jpg" to "file[Uploads][]" with HTML5
     And I press the "Insert" button
     Then the "Content" HTML field should contain "<a href="[file_link,id=4]">awesome</a>"
@@ -66,7 +66,7 @@ So that I can link to a external website or a page on my site
     Given I fill in the "Content" HTML field with "<p>My awesome content<a name='myanchor'></a></p>"
     And I select "awesome" in the "Content" HTML field
     When I press the "Insert Link" HTML field button
-    When I select the "Anchor on this page" radio button
+    When I select the "Link to an anchor on this page" radio button
     And I select "myanchor" from "Form_EditorToolbarLinkForm_AnchorSelector"
     And I press the "Insert" button
     Then the "Content" HTML field should contain "<a href="#myanchor">awesome</a>"
