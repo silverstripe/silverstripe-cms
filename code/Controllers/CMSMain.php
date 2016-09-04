@@ -178,7 +178,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function getResponseNegotiator() {
 		$negotiator = parent::getResponseNegotiator();
 		$controller = $this;
-		$negotiator->setCallback('ListViewForm', function() use(&$controller) {
+		$negotiator->setCallback('ListViewForm', function() use($controller) {
 			return $controller->ListViewForm()->forTemplate();
 		});
 		return $negotiator;
