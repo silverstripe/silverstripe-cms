@@ -2,6 +2,7 @@
 
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\ValidationException;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\HiddenClass;
 use SilverStripe\CMS\Controllers\CMSMain;
@@ -540,13 +541,57 @@ class CMSMainTest extends FunctionalTest {
 		$this->assertContains("delete", $exemptActions);
 		$this->assertContains("unpublish", $exemptActions);
 	}
+
+	/**
+	 * Test that changed classes save with the correct class name
+	 */
+	public function testChangeClass() {
+		$this->logInWithPermission('ADMIN');
+		$cms = new CMSMain();
+		$page = new CMSMainTest_ClassA();
+		$page->Title = 'Class A';
+		$page->write();
+
+		$form = $cms->getEditForm($page->ID);
+		$form->loadDataFrom(['ClassName' => 'CMSMainTest_ClassB']);
+		$result = $cms->save([
+			'ID' => $page->ID,
+			'ClassName' => 'CMSMainTest_ClassB'
+		], $form);
+		$this->assertEquals(200, $result->getStatusCode());
+
+		$newPage = SiteTree::get()->byID($page->ID);
+
+		$this->assertInstanceOf('CMSMainTest_ClassB', $newPage);
+		$this->assertEquals('CMSMainTest_ClassB', $newPage->ClassName);
+		$this->assertEquals('Class A', $newPage->Title);
+
+	}
 }
 
 class CMSMainTest_ClassA extends Page implements TestOnly {
 	private static $allowed_children = array('CMSMainTest_ClassB');
+
+	protected function onBeforeWrite()
+	{
+		parent::onBeforeWrite();
+
+		if ($this->ClassName !== __CLASS__) {
+			throw new ValidationException("Class saved with incorrect ClassName");
+		}
+	}
 }
 
 class CMSMainTest_ClassB extends Page implements TestOnly {
+
+	protected function onBeforeWrite()
+	{
+		parent::onBeforeWrite();
+
+		if ($this->ClassName !== __CLASS__) {
+			throw new ValidationException("Class saved with incorrect ClassName");
+		}
+	}
 
 }
 

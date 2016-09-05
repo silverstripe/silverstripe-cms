@@ -1006,12 +1006,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		// Update the class instance if necessary
 		if(isset($data['ClassName']) && $data['ClassName'] != $record->ClassName) {
-			$newClassName = $record->ClassName;
-			// The records originally saved attribute was overwritten by $form->saveInto($record) before.
-			// This is necessary for newClassInstance() to work as expected, and trigger change detection
-			// on the ClassName attribute
-			$record->setClassName($data['ClassName']);
-			// Replace $record with a new instance
+			// Replace $record with a new instance of the new class
+			$newClassName = $data['ClassName'];
 			$record = $record->newClassInstance($newClassName);
 		}
 
