@@ -422,9 +422,8 @@ class VirtualPage extends Page {
 	public function __call($method, $args) {
 		if(parent::hasMethod($method)) {
 			return parent::__call($method, $args);
-		} else {
-			return call_user_func_array(array($this->copyContentFrom(), $method), $args);
 		}
+		return call_user_func_array(array($this->copyContentFrom(), $method), $args);
 	}
 
 	/**
@@ -477,6 +476,8 @@ class VirtualPage_Controller extends Page_Controller {
 	private static $allowed_actions = array(
 		'loadcontentall' => 'ADMIN',
 	);
+
+	private static $virtual_methods;
 	
 	/**
 	 * Reloads the content if the version is different ;-)
@@ -502,6 +503,7 @@ class VirtualPage_Controller extends Page_Controller {
 	 * We can't load the content without an ID or record to copy it from.
 	 */
 	public function init(){
+		self::$virtual_methods = Config::inst()->get('VirtualPage','virtual_methods');
 		if(isset($this->record) && $this->record->ID){
 			if($this->record->VersionID != $this->failover->CopyContentFrom()->Version){
 				$this->reloadContent();
@@ -549,7 +551,11 @@ class VirtualPage_Controller extends Page_Controller {
 	 * @throws Exception Any error other than a 'no method' error.
 	 */
 	public function __call($method, $args) {
+
 		try {
+			if(self::$virtual_methods && in_array($method, self::$virtual_methods)){
+				throw new Exception("",2175);
+			}
 			return parent::__call($method, $args);
 		} catch (Exception $e) {
 			// Hack... detect exception type. We really should use exception subclasses.
@@ -563,6 +569,5 @@ class VirtualPage_Controller extends Page_Controller {
 			return call_user_func_array(array($controller, $method), $args);
 		}
 	}
+
 }
-
-
