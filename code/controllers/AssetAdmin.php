@@ -7,15 +7,6 @@
  * @subpackage assets
  */
 class AssetAdmin extends LeftAndMain implements PermissionProvider{
-
-	private static $url_segment = 'assets';
-	
-	private static $url_rule = '/$Action/$ID';
-	
-	private static $menu_title = 'Files';
-
-	private static $tree_class = 'Folder';
-	
 	/**
 	 * Amount of results showing on a single page.
 	 *
@@ -23,28 +14,6 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 	 * @var int
 	 */
 	private static $page_length = 15;
-	
-	/**
-	 * @config
-	 * @see Upload->allowedMaxFileSize
-	 * @var int
-	 */
-	private static $allowed_max_file_size;
-	
-	private static $allowed_actions = array(
-		'addfolder',
-		'delete',
-		'AddForm',
-		'DeleteItemsForm',
-		'SearchForm',
-		'getsubtree',
-		'movemarked',
-		'removefile',
-		'savefile',
-		'deleteUnusedThumbnails' => 'ADMIN',
-		'doSync',
-		'filter',
-	);
 	
 	/**
 	 * Return fake-ID "root" if no ID is found (needed to upload files into the root-folder)
@@ -270,8 +239,7 @@ JS
 			)->addExtraClass('cms-content-toolbar field'),
 			$gridField
 		));
-		
-		$treeField = new LiteralField('Tree', '');
+
 		// Tree view
 		$fields->addFieldsToTab('Root.TreeView', array(
 			clone $actionsComposite,
@@ -431,7 +399,6 @@ JS
 	}
 	
 	public function AddForm() {
-		$folder = singleton('Folder');
 		$form = CMSForm::create( 
 			$this,
 			'AddForm',
@@ -592,7 +559,6 @@ JS
 			array('count' => $count)
 		);
 		$this->response->addHeader('X-Status', rawurlencode($message));
-		return;
 	}
 	
 	/**

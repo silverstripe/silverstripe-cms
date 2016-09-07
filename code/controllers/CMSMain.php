@@ -10,23 +10,6 @@
  * @todo Create some base classes to contain the generic functionality that will be replicated.
  */
 class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionProvider {
-	
-	private static $url_segment = 'pages';
-	
-	private static $url_rule = '/$Action/$ID/$OtherID';
-	
-	// Maintain a lower priority than other administration sections
-	// so that Director does not think they are actions of CMSMain
-	private static $url_priority = 39;
-	
-	private static $menu_title = 'Edit Page';
-	
-	private static $menu_priority = 10;
-	
-	private static $tree_class = "SiteTree";
-	
-	private static $subitem_class = "Member";
-	
 	/**
 	 * Amount of results showing on a single page.
 	 *
@@ -34,28 +17,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * @var int
 	 */
 	private static $page_length = 15;
-	
-	private static $allowed_actions = array(
-		'buildbrokenlinks',
-		'deleteitems',
-		'DeleteItemsForm',
-		'dialog',
-		'duplicate',
-		'duplicatewithchildren',
-		'publishall',
-		'publishitems',
-		'PublishItemsForm',
-		'submit',
-		'EditForm',
-		'SearchForm',
-		'SiteTreeAsUL',
-		'getshowdeletedsubtree',
-		'batchactions',
-		'treeview',
-		'listview',
-		'ListViewForm',
-		'childfilter',
-	);
 	
 	public function init() {
 		// set reading lang
@@ -393,7 +354,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * @return String Serialized JSON
 	 */
 	public function SiteTreeHints() {
-		$json = '';
 		$classes = SiteTree::page_type_classes();
 
 	 	$cacheCanCreate = array();
@@ -573,11 +533,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		if($record && !$record->canView()) return Security::permissionFailure($this);
 
 		if(!$fields) $fields = $form->Fields();
-		$actions = $form->Actions();
 
 		if($record) {
 			$deletedFromStage = $record->IsDeletedFromStage;
-			$deleteFromLive = !$record->ExistsOnLive;
 
 			$fields->push($idField = new HiddenField("ID", false, $id));
 			// Necessary for different subsites
@@ -959,11 +917,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Versioned::reading_stage('Live');
 		$record = DataObject::get_by_id("SiteTree", $data['ID']);
 		if($record && !($record->canDelete() && $record->canDeleteFromLive())) return Security::permissionFailure($this);
-		
-		$descRemoved = '';
+
 		$descendantsRemoved = 0;
 		$recordTitle = $record->Title;
-		$recordID = $record->ID;
 		
 		// before deleting the records, get the descendants of this tree
 		if($record) {
@@ -1069,9 +1025,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		);
 		if($record && !$record->canDelete()) return Security::permissionFailure();
 		if(!$record || !$record->ID) throw new SS_HTTPResponse_Exception("Bad record ID #$id", 404);
-		
-		// save ID and delete record
-		$recordID = $record->ID;
+
 		$record->delete();
 
 		$this->response->addHeader(
@@ -1196,16 +1150,23 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	
 	public function buildbrokenlinks($request) {
 		// Protect against CSRF on destructive action
-		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+		if(!SecurityToken::inst()->checkRequest($request)) {
+      $this->httpError(400);
+      return;
+    }
 		
 		increase_time_limit_to();
 		increase_memory_limit_to();
-		
+
+    $newPageSet = array();
+
 		if($this->urlParams['ID']) {
 			$newPageSet[] = DataObject::get_by_id("Page", $this->urlParams['ID']);
 		} else {
 			$pages = DataObject::get("Page");
-			foreach($pages as $page) $newPageSet[] = $page;
+			foreach($pages as $page) {
+        $newPageSet[] = $page;
+      }
 			$pages = null;
 		}
 
@@ -1240,7 +1201,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		if(isset($this->requestParams['confirm'])) {
 			// Protect against CSRF on destructive action
-			if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+			if(!SecurityToken::inst()->checkRequest($request)) {
+        $this->httpError(400);
+        return null;
+      }
 			
 			$start = 0;
 			$pages = DataObject::get("SiteTree", "", "", "", "$start,30");
@@ -1312,7 +1276,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	public function duplicate($request) {
 		// Protect against CSRF on destructive action
-		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+		if(!SecurityToken::inst()->checkRequest($request)) {
+      $this->httpError(400);
+      return null;
+    }
 		
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
 			$page = DataObject::get_by_id("SiteTree", $id);
@@ -1350,7 +1317,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	public function duplicatewithchildren($request) {
 		// Protect against CSRF on destructive action
-		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+		if(!SecurityToken::inst()->checkRequest($request)) {
+      $this->httpError(400);
+      return null;
+    }
 		increase_time_limit_to();
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
 			$page = DataObject::get_by_id("SiteTree", $id);
