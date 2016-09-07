@@ -14,15 +14,6 @@ class CMSSettingsController extends LeftAndMain {
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.EditForm.js');
 	}
 
-	public function getResponseNegotiator() {
-		$neg = parent::getResponseNegotiator();
-		$controller = $this;
-		$neg->setCallback('CurrentForm', function() use(&$controller) {
-			return $controller->renderWith($controller->getTemplatesWithSuffix('_Content'));
-		});
-		return $neg;
-	}
-
 	/**
 	 * @param null $id Not used.
 	 * @param null $fields Not used.
@@ -39,12 +30,12 @@ class CMSSettingsController extends LeftAndMain {
 		$navField->setAllowHTML(true);
 
 		$actions = $siteConfig->getCMSActions();
-		$form = CMSForm::create( 
+		$form = CMSForm::create(
 			$this, 'EditForm', $fields, $actions
 		)->setHTMLID('Form_EditForm');
 		$form->setResponseNegotiator($this->getResponseNegotiator());
 		$form->addExtraClass('cms-content center cms-edit-form');
-		// don't add data-pjax-fragment=CurrentForm, its added in the content template instead
+		$form->setAttribute('data-pjax-fragment', 'CurrentForm');
 
 		if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
 		$form->setHTMLID('Form_EditForm');
@@ -88,7 +79,8 @@ class CMSSettingsController extends LeftAndMain {
 		}
 		
 		$this->response->addHeader('X-Status', rawurlencode(_t('LeftAndMain.SAVEDUP', 'Saved.')));
-		return $this->getResponseNegotiator()->respond($this->request);
+	
+		return $form->forTemplate();
 	}
 	
 	public function LinkPreview() {
