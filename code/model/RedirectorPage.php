@@ -10,7 +10,8 @@ class RedirectorPage extends Page {
 	
 	private static $db = array(
 		"RedirectionType" => "Enum('Internal,External','Internal')",
-		"ExternalURL" => "Varchar(2083)" // 2083 is the maximum length of a URL in Internet Explorer.
+		"ExternalURL" => "Varchar(2083)", // 2083 is the maximum length of a URL in Internet Explorer.
+        "NewTab" => "Boolean"
 	);
 	
 	private static $defaults = array(
@@ -138,7 +139,8 @@ class RedirectorPage extends Page {
 					_t('RedirectorPage.YOURPAGE', "Page on your website"), 
 					"SiteTree"
 				),
-				new TextField("ExternalURL", _t('RedirectorPage.OTHERURL', "Other website URL"))
+				new TextField("ExternalURL", _t('RedirectorPage.OTHERURL', "Other website URL")),
+                new CheckboxField('NewTab','Open in a new browser window')
 			)
 		);
 		
@@ -149,6 +151,15 @@ class RedirectorPage extends Page {
 	public function subPagesToCache() {
 		return array();
 	}
+
+    public function target(){
+        if ($this->NewTab)
+        {
+            return "target='_blank'";
+        }
+        else{
+            return '';}
+    }
 }
 
 /**
