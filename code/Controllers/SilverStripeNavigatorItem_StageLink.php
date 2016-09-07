@@ -19,11 +19,13 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem
 	public function getHTML()
 	{
 		$draftPage = $this->getDraftPage();
-		if ($draftPage) {
-			$this->recordLink = Controller::join_links($draftPage->AbsoluteLink(), "?stage=Stage");
-			return "<a " . ($this->isActive() ? 'class="current" ' : '') . "href=\"$this->recordLink\">" . _t('ContentController.DRAFTSITE',
-				'Draft Site') . "</a>";
-		}
+        if (!$draftPage) {
+            return null;
+        }
+        $linkClass = $this->isActive() ? 'class="current" ' : '';
+        $linkTitle = _t('ContentController.DRAFTSITE', 'Draft Site');
+        $recordLink = Convert::raw2att(Controller::join_links($draftPage->AbsoluteLink(), "?stage=Stage"));
+        return "<a {$linkClass} href=\"$recordLink\">$linkTitle</a>";
 	}
 
 	public function getTitle()

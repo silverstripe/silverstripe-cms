@@ -16,8 +16,6 @@ class ModelAsControllerTest extends FunctionalTest {
 
 	protected $autoFollowRedirection = false;
 
-	protected $orig = array();
-
 	/**
 	 * New tests require nested urls to be enabled, but the site might not
 	 * support nested URLs.
@@ -26,23 +24,7 @@ class ModelAsControllerTest extends FunctionalTest {
 	 */
 	public function setUp() {
 		parent::setUp();
-
-		$this->orig['nested_urls'] = SiteTree::config()->nested_urls;
 		Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'nested_urls', true);
-	}
-
-	/**
-	 * New tests require nested urls to be enabled, but the site might not
-	 * support nested URLs.
-	 * This setup will enable nested-urls for this test and resets the state
-	 * after the tests have been performed.
-	 */
-	public function tearDown() {
-
-		if (isset($this->orig['nested_urls']) && !$this->orig['nested_urls']) {
-			SiteTree::config()->nested_urls = false;
-		}
-		parent::tearDown();
 	}
 
 

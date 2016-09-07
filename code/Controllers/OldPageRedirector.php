@@ -49,7 +49,7 @@ class OldPageRedirector extends Extension {
 	 * Attempt to find an old/renamed page from some given the URL as an array
 	 *
 	 * @param array $params The array of URL, e.g. /foo/bar as array('foo', 'bar')
-	 * @param SiteTree $parent The current parent in the recursive flow
+	 * @param SiteTree|null $parent The current parent in the recursive flow
 	 * @param boolean $redirect Whether we've found an old page worthy of a redirect
 	 *
 	 * @return string|boolean False, or the new URL
@@ -61,34 +61,28 @@ class OldPageRedirector extends Extension {
 		if (empty($URL)) {
 			return false;
 		}
-		/** @var SiteTree $page */
+		$pages = SiteTree::get()->filter(array(
+			'URLSegment' => $URL,
+		));
 		if ($parent) {
-			$page = SiteTree::get()->filter(array('ParentID' => $parent->ID, 'URLSegment' => $URL))->first();
-		} else {
-			$page = SiteTree::get()->filter(array('URLSegment' => $URL))->first();
+			$pages = $pages->filter(array(
+				'ParentID' => $parent->ID,
+			));
 		}
+		$page = $pages->first();
 
 		if (!$page) {
 			// If we haven't found a candidate, lets resort to finding an old page with this URL segment
-			$oldFilter = array(
-				'"SiteTree_versions"."URLSegment"' => $URL,
-				'"SiteTree_versions"."WasPublished"' => true
-			);
-			if($parent) {
-				$oldFilter[] = array('"SiteTree_versions"."ParentID"' => $parent->ID);
-			}
-			$query = new SQLSelect(
-				'"RecordID"',
-				'"SiteTree_versions"',
-				$oldFilter,
-				'"LastEdited" DESC',
-				null,
-				null,
-				1
-			);
-			$record = $query->execute()->first();
+			$pages = $pages
+				->filter(array(
+					'WasPublished' => true,
+				))
+				->sort('LastEdited', 'DESC')
+				->setDataQueryParam("Versioned.mode", 'all_versions');
+
+			$record = $pages->first();
 			if ($record) {
-				$page = SiteTree::get()->byID($record['RecordID']);
+				$page = SiteTree::get()->byID($record->RecordID);
 				$redirect = true;
 			}
 		}

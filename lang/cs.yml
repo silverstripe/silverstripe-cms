@@ -73,7 +73,7 @@ cs:
     RESTORE: Obnovit
     RESTORED_PAGES: 'Obnoveno %d stránek'
     UNPUBLISHED_PAGES: 'Nezveřejněných %d stránek'
-    UNPUBLISH_PAGES: Nezveřejňovat
+    UNPUBLISH_PAGES: Nezveřejnit
   CMSFileAddController:
     MENUTITLE: Soubory
   CMSMain:

@@ -17,11 +17,14 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem
 	public function getHTML()
 	{
 		$livePage = $this->getLivePage();
-		if ($livePage) {
-			$this->recordLink = Controller::join_links($livePage->AbsoluteLink(), "?stage=Live");
-			return "<a " . ($this->isActive() ? 'class="current" ' : '') . "href=\"$this->recordLink\">" . _t('ContentController.PUBLISHEDSITE',
-				'Published Site') . "</a>";
-		}
+        if (!$livePage) {
+            return null;
+        }
+
+        $linkClass = $this->isActive() ? 'class="current" ' : '';
+        $linkTitle = _t('ContentController.PUBLISHEDSITE', 'Published Site');
+        $recordLink = Convert::raw2att(Controller::join_links($livePage->AbsoluteLink(), "?stage=Live"));
+        return "<a {$linkClass} href=\"$recordLink\">$linkTitle</a>";
 	}
 
 	public function getTitle()

@@ -2073,7 +2073,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						$this->getClassDropdown()
 					),
 					$parentTypeSelector = new CompositeField(
-						new OptionsetField("ParentType", _t("SiteTree.PAGELOCATION", "Page location"), array(
+						$parentType = new OptionsetField("ParentType", _t("SiteTree.PAGELOCATION", "Page location"), array(
 							"root" => _t("SiteTree.PARENTTYPE_ROOT", "Top-level page"),
 							"subpage" => _t("SiteTree.PARENTTYPE_SUBPAGE", "Sub-page underneath a parent page"),
 						)),
@@ -2107,6 +2107,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			)
 		);
 
+		$parentType->addExtraClass('noborder');
 		$visibility->setTitle($this->fieldLabel('Visibility'));
 
 
