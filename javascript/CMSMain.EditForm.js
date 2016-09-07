@@ -38,8 +38,9 @@
 						var title = self.val();
 						self.data('OrigVal', title);
 
-						// Criteria for defining a "new" page
-						if ((urlSegmentInput.val().indexOf('new') == 0) && liveLinkInput.val() == '') {
+						// Message class now indicates if it's a new page, old solution was language-dependent
+						// Drawback: URL still auto-updates if page is saved/published but not reloaded
+						if ($('.message.new').length) {
 							self.updateURLSegment(title);
 						} else {
 							$('.update', self.parent()).show();
