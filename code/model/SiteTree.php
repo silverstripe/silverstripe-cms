@@ -1835,6 +1835,26 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			return null;
 		}
 	}
+	
+	/**
+	 * List of callbacks to pass FieldList of fields to prior extending
+	 * updateCMSFields
+	 *
+	 * @var array[callable]
+	 */
+	protected $beforeExtendingCMSFieldsCallbacks = array();
+	
+	/**
+	 * Allows user code to update CMS fields prior to extensions having
+	 * updateCMSFields called on them. This should be called prior to
+	 * parent::getCMSFields()
+	 * 
+	 * @param callable $callback The callback to which the parent FieldList will be
+	 * passed before extensions are processed.
+	 */
+	protected function beforeExtendingCMSFields($callback) {
+		$this->beforeExtendingCMSFieldsCallbacks[] = $callback;
+	}
 
 	/**
 	 * Returns a FieldList with which to create the main editing form.
@@ -2016,6 +2036,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			'/^Root\.Content\.Main$/' => 'Root.Main',
 			'/^Root\.Content\.([^.]+)$/' => 'Root.\\1',
 		));
+		
+		foreach(array_reverse($this->beforeExtendingCMSFieldsCallbacks) as $callback) {
+			call_user_func($callback, $fields);
+		}
+		$this->beforeExtendingCMSFieldsCallbacks = array();
 		
 		if(self::$runCMSFieldsExtensions) {
 			$this->extend('updateCMSFields', $fields);
