@@ -757,6 +757,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$list = $this->getList($params, $parentID = $this->request->requestVar('ParentID'));
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(			
 			new GridFieldSortableHeader(),
+			new GridFieldFilterHeader(),
 			new GridFieldDataColumns(),
 			new GridFieldPaginator(self::config()->page_length)
 		);
