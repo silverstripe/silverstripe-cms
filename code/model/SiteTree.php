@@ -1089,12 +1089,12 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 */
 	public function canPublish($member = null) {
 		if(!$member || !(is_a($member, 'Member')) || is_numeric($member)) $member = Member::currentUser();
-		
-		if($member && Permission::checkMember($member, "ADMIN")) return true;
 
 		// Standard mechanism for accepting permission changes from extensions
 		$extended = $this->extendedCan('canPublish', $member);
 		if($extended !== null) return $extended;
+		
+		if($member && Permission::checkMember($member, "ADMIN")) return true;
 
 		// Normal case - fail over to canEdit()
 		return $this->canEdit($member);
