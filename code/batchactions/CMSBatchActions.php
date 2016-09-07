@@ -130,3 +130,22 @@ class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 		return $this->applicablePagesHelper($ids, 'canDelete', false, true);
 	}
 }
+
+/**
+ * Restore (undelete) items batch action. This is useful if you perform the 
+ * CMSBatchAction_Delete batch action.
+ *
+ * @package cms
+ * @subpackage batchaction
+ */
+class CMSBatchAction_Restore extends CMSBatchAction {
+	public function getActionTitle() {
+		return _t('CMSBatchActions.RESTORE_PAGES', 'Restore deleted pages');
+	}
+
+	public function run(SS_List $pages) {
+		return $this->batchaction($pages, 'doRevertToLive',
+			_t('CMSBatchActions.RESTORED_PAGES', 'Restored %d pages')
+		);
+	}
+}

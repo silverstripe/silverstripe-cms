@@ -90,6 +90,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		CMSBatchActionHandler::register('unpublish', 'CMSBatchAction_Unpublish');
 		CMSBatchActionHandler::register('delete', 'CMSBatchAction_Delete');
 		CMSBatchActionHandler::register('deletefromlive', 'CMSBatchAction_DeleteFromLive');
+		CMSBatchActionHandler::register('restore', 'CMSBatchAction_Restore');
 	}
 
 	public function index($request) {
