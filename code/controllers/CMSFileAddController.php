@@ -26,6 +26,7 @@ class CMSFileAddController extends LeftAndMain {
 		if($id && is_numeric($id) && $id > 0) {
 			$folder = DataObject::get_by_id('Folder', $id);
 			if($folder && $folder->exists()) {
+				Session::set("{$this->class}.currentPage", $id);
 				return $folder;
 			}
 		}
