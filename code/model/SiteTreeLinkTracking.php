@@ -69,6 +69,12 @@ class SiteTreeLinkTracking extends DataExtension {
 					}
 				} else if($href == '' || $href[0] == '/') {
 					$record->HasBrokenLink = true;
+				} else if(stristr($href, '#')) {
+					// Deals-to broken anchors (Links with no anchor)
+					$find = preg_replace("/^(.+)?#(.+)+$/","$2", $href);
+					if(!preg_match("#(name|id)=\"{$find}\"#", $record->$field)) {
+						$record->HasBrokenLink = true;
+					}
 				}
 			}
 		}

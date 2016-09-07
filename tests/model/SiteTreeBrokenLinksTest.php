@@ -144,7 +144,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 
 	
 	public function testRestoreFixesBrokenLinks() {
-		// Create page and virutal page
+		// Create page and virtual page
 		$p = new Page();
 		$p->Title = "source";
 		$p->write();
@@ -286,6 +286,19 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		// This is something that we know to be broken
 		//$this->assertFalse($vp->IsModifiedOnStage);
 
+	}
+
+	public function testBrokenAnchorLinksInAPage() {
+		$obj = $this->objFromFixture('Page','content');
+		$origContent = $obj->Content;
+
+		$obj->Content = $origContent . '<a href="#no-anchor-here">this links to a non-existent in-page anchor or skiplink</a>';
+		$obj->syncLinkTracking();
+		$this->assertTrue($obj->HasBrokenLink, 'Page has a broken anchor/skiplink');
+
+		$obj->Content = $origContent . '<a href="#yes-anchor-here">this links to an existent in-page anchor/skiplink</a>';
+		$obj->syncLinkTracking();
+		$this->assertFalse($obj->HasBrokenLink, 'Page doesn\'t have a broken anchor or skiplink');
 	}
 }
 
