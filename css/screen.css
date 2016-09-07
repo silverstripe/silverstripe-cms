@@ -30,6 +30,8 @@
 
 #Form_EditForm #Title .update { margin-left: 7px; }
 
+.ui-accordion .description { padding: 12px; }
+
 .cms .AssetAdmin .cms-content-fields { overflow: hidden; }
 .cms .AssetAdmin .cms-content-fields .cms-edit-form.AssetAdmin { overflow-y: auto; }
 .cms .AssetAdmin .cms-content-fields .cms-content-tools .cms-panel-content { overflow: hidden; }
