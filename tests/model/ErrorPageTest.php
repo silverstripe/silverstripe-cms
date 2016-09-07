@@ -64,9 +64,9 @@ class ErrorPageTest extends FunctionalTest {
 	public function testBehaviourOf403() {
 		$page = $this->objFromFixture('ErrorPage', '403');
 		$page->publish('Stage', 'Live');
-		
-		$response = $this->get($page->Link());
-		
+
+		$response = $this->get($page->RelativeLink());
+
 		$this->assertEquals($response->getStatusCode(), '403');
 		$this->assertNotNull($response->getBody(), 'We have body text from the error page');
 	}
