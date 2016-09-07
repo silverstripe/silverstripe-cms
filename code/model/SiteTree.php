@@ -1206,7 +1206,19 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			
 			$combinedStageResult = array();
 
-			foreach(array('Stage', 'Live') as $stage) {
+			$stage = Versioned::get_reading_mode();
+			switch ($stage) {
+				case 'Stage.Stage':
+				case 'Stage.':
+				case '':
+					$stage = 'Stage';
+					break;
+				//case '':
+				default:
+					$stage = 'Live';
+					break;
+			}
+			//foreach(array('Stage', 'Live') as $stage) {
 				// Start by filling the array with the pages that actually exist
 				$table = ($stage=='Stage') ? "SiteTree" : "SiteTree_$stage";
 				
@@ -1261,7 +1273,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				
 				$combinedStageResult = $combinedStageResult + $result;
 				
-			}
+			//}
 		}
 
 		if(isset($combinedStageResult)) {
