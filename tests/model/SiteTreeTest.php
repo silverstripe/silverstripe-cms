@@ -192,17 +192,17 @@ class SiteTreeTest extends SapphireTest {
 		// newly created page
 		$createdPage = new SiteTree();
 		$createdPage->write();
-		$this->assertFalse($createdPage->IsDeletedFromStage);
-		$this->assertTrue($createdPage->IsAddedToStage);
-		$this->assertTrue($createdPage->IsModifiedOnStage);
+		$this->assertFalse($createdPage->getIsDeletedFromStage());
+		$this->assertTrue($createdPage->getIsAddedToStage());
+		$this->assertTrue($createdPage->getIsModifiedOnStage());
 
 		// published page
 		$publishedPage = new SiteTree();
 		$publishedPage->write();
 		$publishedPage->publish('Stage','Live');
-		$this->assertFalse($publishedPage->IsDeletedFromStage);
-		$this->assertFalse($publishedPage->IsAddedToStage);
-		$this->assertFalse($publishedPage->IsModifiedOnStage);
+		$this->assertFalse($publishedPage->getIsDeletedFromStage());
+		$this->assertFalse($publishedPage->getIsAddedToStage());
+		$this->assertFalse($publishedPage->getIsModifiedOnStage());
 
 		// published page, deleted from stage
 		$deletedFromDraftPage = new SiteTree();
@@ -210,9 +210,9 @@ class SiteTreeTest extends SapphireTest {
 		$deletedFromDraftPageID = $deletedFromDraftPage->ID;
 		$deletedFromDraftPage->publish('Stage','Live');
 		$deletedFromDraftPage->deleteFromStage('Stage');
-		$this->assertTrue($deletedFromDraftPage->IsDeletedFromStage);
-		$this->assertFalse($deletedFromDraftPage->IsAddedToStage);
-		$this->assertFalse($deletedFromDraftPage->IsModifiedOnStage);
+		$this->assertTrue($deletedFromDraftPage->getIsDeletedFromStage());
+		$this->assertFalse($deletedFromDraftPage->getIsAddedToStage());
+		$this->assertFalse($deletedFromDraftPage->getIsModifiedOnStage());
 
 		// published page, deleted from live
 		$deletedFromLivePage = new SiteTree();
@@ -220,9 +220,9 @@ class SiteTreeTest extends SapphireTest {
 		$deletedFromLivePage->publish('Stage','Live');
 		$deletedFromLivePage->deleteFromStage('Stage');
 		$deletedFromLivePage->deleteFromStage('Live');
-		$this->assertTrue($deletedFromLivePage->IsDeletedFromStage);
-		$this->assertFalse($deletedFromLivePage->IsAddedToStage);
-		$this->assertFalse($deletedFromLivePage->IsModifiedOnStage);
+		$this->assertTrue($deletedFromLivePage->getIsDeletedFromStage());
+		$this->assertFalse($deletedFromLivePage->getIsAddedToStage());
+		$this->assertFalse($deletedFromLivePage->getIsModifiedOnStage());
 
 		// published page, modified
 		$modifiedOnDraftPage = new SiteTree();
@@ -230,9 +230,9 @@ class SiteTreeTest extends SapphireTest {
 		$modifiedOnDraftPage->publish('Stage','Live');
 		$modifiedOnDraftPage->Content = 'modified';
 		$modifiedOnDraftPage->write();
-		$this->assertFalse($modifiedOnDraftPage->IsDeletedFromStage);
-		$this->assertFalse($modifiedOnDraftPage->IsAddedToStage);
-		$this->assertTrue($modifiedOnDraftPage->IsModifiedOnStage);
+		$this->assertFalse($modifiedOnDraftPage->getIsDeletedFromStage());
+		$this->assertFalse($modifiedOnDraftPage->getIsAddedToStage());
+		$this->assertTrue($modifiedOnDraftPage->getIsModifiedOnStage());
 	}
 
 	/**

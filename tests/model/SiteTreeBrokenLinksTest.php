@@ -280,11 +280,11 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$this->assertFalse((bool)$rp->HasBrokenLink);
 
 		// However, the page isn't marked as modified on stage
-		$this->assertFalse($p2->IsModifiedOnStage);
-		$this->assertFalse($rp->IsModifiedOnStage);
+		$this->assertFalse($p2->getIsModifiedOnStage());
+		$this->assertFalse($rp->getIsModifiedOnStage());
 
 		// This is something that we know to be broken
-		//$this->assertFalse($vp->IsModifiedOnStage);
+		//$this->assertFalse($vp->getIsModifiedOnStage());
 
 	}
 }

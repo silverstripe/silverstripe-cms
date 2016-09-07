@@ -247,7 +247,7 @@ class CMSSIteTreeFilter_PublishedPages extends CMSSiteTreeFilter {
 		$pages = Versioned::get_including_deleted('SiteTree');
 		$pages = $this->applyDefaultFilters($pages);
 		$pages = $pages->filterByCallback(function($page) {
-			return $page->ExistsOnLive;
+			return $page->getExistsOnLive();
 		});
 		return $pages;
 	}
@@ -327,7 +327,7 @@ class CMSSiteTreeFilter_StatusRemovedFromDraftPages extends CMSSiteTreeFilter {
 		$pages = $this->applyDefaultFilters($pages);
 		$pages = $pages->filterByCallback(function($page) {
 			// If page is removed from stage but not live
-			return $page->IsDeletedFromStage && $page->ExistsOnLive;
+			return $page->getIsDeletedFromStage() && $page->getExistsOnLive();
 		});
 		return $pages;
 	}	
@@ -356,7 +356,7 @@ class CMSSiteTreeFilter_StatusDraftPages extends CMSSiteTreeFilter {
 		$pages = $this->applyDefaultFilters($pages);
 		$pages = $pages->filterByCallback(function($page) {
 			// If page exists on stage but not on live
-			return (!$page->IsDeletedFromStage && $page->IsAddedToStage);
+			return (!$page->getIsDeletedFromStage() && $page->getIsAddedToStage());
 		});
 		return $pages;
 	}	
@@ -396,7 +396,7 @@ class CMSSiteTreeFilter_StatusDeletedPages extends CMSSiteTreeFilter {
 
 		$pages = $pages->filterByCallback(function($page) {
 			// Doesn't exist on either stage or live
-			return $page->IsDeletedFromStage && !$page->ExistsOnLive;
+			return $page->getIsDeletedFromStage() && !$page->getExistsOnLive();
 		});
 		return $pages;
 	}	

@@ -210,46 +210,46 @@ class VirtualPageTest extends SapphireTest {
 		$vp->write();
 
 		// VP is oragne
-		$this->assertTrue($vp->IsAddedToStage);
+		$this->assertTrue($vp->getIsAddedToStage());
 
 		// VP is still orange after we publish
 		$p->doPublish();
 		$this->fixVersionNumberCache($vp);
-		$this->assertTrue($vp->IsAddedToStage);
+		$this->assertTrue($vp->getIsAddedToStage());
 		
 		// A new VP created after P's initial construction
 		$vp2 = new VirtualPage();
 		$vp2->CopyContentFromID = $p->ID;
 		$vp2->write();
-		$this->assertTrue($vp2->IsAddedToStage);
+		$this->assertTrue($vp2->getIsAddedToStage());
 		
 		// Also remains orange after a republish
 		$p->Content = "new content";
 		$p->write();
 		$p->doPublish();
 		$this->fixVersionNumberCache($vp2);
-		$this->assertTrue($vp2->IsAddedToStage);
+		$this->assertTrue($vp2->getIsAddedToStage());
 		
 		// VP is now published
 		$vp->doPublish();
 
 		$this->fixVersionNumberCache($vp);
-		$this->assertTrue($vp->ExistsOnLive);
-		$this->assertFalse($vp->IsModifiedOnStage);
+		$this->assertTrue($vp->getExistsOnLive());
+		$this->assertFalse($vp->getIsModifiedOnStage());
 		
 		// P edited, VP and P both go green
 		$p->Content = "third content";
 		$p->write();
 
 		$this->fixVersionNumberCache($vp, $p);
-		$this->assertTrue($p->IsModifiedOnStage);
-		$this->assertTrue($vp->IsModifiedOnStage);
+		$this->assertTrue($p->getIsModifiedOnStage());
+		$this->assertTrue($vp->getIsModifiedOnStage());
 
 		// Publish, VP goes black
 		$p->doPublish();
 		$this->fixVersionNumberCache($vp);
-		$this->assertTrue($vp->ExistsOnLive);
-		$this->assertFalse($vp->IsModifiedOnStage);
+		$this->assertTrue($vp->getExistsOnLive());
+		$this->assertFalse($vp->getIsModifiedOnStage());
 	}
 	
 	public function testVirtualPagesCreateVersionRecords() {
