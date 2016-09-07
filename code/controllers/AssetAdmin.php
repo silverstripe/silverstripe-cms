@@ -30,6 +30,13 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 	 * @var int
 	 */
 	private static $allowed_max_file_size;
+
+	/**
+	 * @config
+	 * Allow disabling the assets tree view in CMS
+	 * @var boolean
+	 */
+	private static $show_tree_view = true;
 	
 	private static $allowed_actions = array(
 		'addfolder',
@@ -240,11 +247,9 @@ JS
 		// without any dependencies into AssetAdmin (e.g. useful for "add folder" views).
 		if(!$fields->hasTabset()) {
 			$tabs = new TabSet('Root', 
-				$tabList = new Tab('ListView', _t('AssetAdmin.ListView', 'List View')),
-				$tabTree = new Tab('TreeView', _t('AssetAdmin.TreeView', 'Tree View'))
+				$tabList = new Tab('ListView', _t('AssetAdmin.ListView', 'List View'))
 			);
 			$tabList->addExtraClass("content-listview cms-tabset-icon list");
-			$tabTree->addExtraClass("content-treeview cms-tabset-icon tree");
 			if($fields->Count() && $folder->exists()) {
 				$tabs->push($tabDetails = new Tab('DetailsView', _t('AssetAdmin.DetailsView', 'Details')));
 				$tabDetails->addExtraClass("content-galleryview cms-tabset-icon edit");
@@ -270,25 +275,33 @@ JS
 			)->addExtraClass('cms-content-toolbar field'),
 			$gridField
 		));
-		
-		$treeField = new LiteralField('Tree', '');
+
 		// Tree view
-		$fields->addFieldsToTab('Root.TreeView', array(
-			clone $actionsComposite,
-			// TODO Replace with lazy loading on client to avoid performance hit of rendering potentially unused views
-			new LiteralField(
-				'Tree',
-				FormField::create_tag(
-					'div', 
-					array(
-						'class' => 'cms-tree', 
-						'data-url-tree' => $this->Link('getsubtree'), 
-						'data-url-savetreenode' => $this->Link('savetreenode')
-					),
-					$this->SiteTreeAsUL()
+		if(self::config()->show_tree_view){
+			$tabs->insertAfter(
+				$tabTree = new Tab('TreeView', _t('AssetAdmin.TreeView', 'Tree View')),
+				"ListView"
+			);
+			$tabTree->addExtraClass("content-treeview cms-tabset-icon tree");
+			$treeField = new LiteralField('Tree', '');
+			
+			$fields->addFieldsToTab('Root.TreeView', array(
+				clone $actionsComposite,
+				// TODO Replace with lazy loading on client to avoid performance hit of rendering potentially unused views
+				new LiteralField(
+					'Tree',
+					FormField::create_tag(
+						'div', 
+						array(
+							'class' => 'cms-tree', 
+							'data-url-tree' => $this->Link('getsubtree'), 
+							'data-url-savetreenode' => $this->Link('savetreenode')
+						),
+						$this->SiteTreeAsUL()
+					)
 				)
-			)
-		));
+			));
+		}
 
 		// Move actions to "details" tab (they don't make sense on list/tree view)
 		$actions = $form->Actions();
