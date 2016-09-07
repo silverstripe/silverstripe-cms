@@ -721,6 +721,25 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return HTMLText The breadcrumb trail.
 	 */
 	public function Breadcrumbs($maxDepth = 20, $unlinked = false, $stopAtPageType = false, $showHidden = false) {
+		$template = new SSViewer('BreadcrumbsTemplate');
+		return $template->process($this->customise(new ArrayData(array(
+			'Pages' => $this->getBreadcrumbItems($maxDepth, $stopAtPageType, $showHidden),
+			"Unlinked" => $unlinked,
+		))));
+	}
+
+
+	/**
+	 * Return a list of page breadcrumbs.
+	 *
+	 *
+	 * @param int $maxDepth The maximum depth to traverse.
+	 * @param string $stopAtPageType ClassName of a page to stop the upwards traversal.
+	 * @param boolean $showHidden Include pages marked with the attribute ShowInMenus = 0 
+	 *
+	 * @return ArrayList 
+	 */
+	public function getBreadcrumbItems($maxDepth = 20, $stopAtPageType = false, $showHidden = false) {
 		$page = $this;
 		$pages = array();
 		
@@ -728,20 +747,17 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$page  
  			&& (!$maxDepth || count($pages) < $maxDepth) 
  			&& (!$stopAtPageType || $page->ClassName != $stopAtPageType)
- 		) {
+		) {
 			if($showHidden || $page->ShowInMenus || ($page->ID == $this->ID)) { 
 				$pages[] = $page;
 			}
 			
 			$page = $page->Parent;
 		}
-		
-		$template = new SSViewer('BreadcrumbsTemplate');
-		
-		return $template->process($this->customise(new ArrayData(array(
-			'Pages' => new ArrayList(array_reverse($pages))
-		))));
+
+		return new ArrayList(array_reverse($pages));
 	}
+
 
 	/**
 	 * Make this page a child of another page.
