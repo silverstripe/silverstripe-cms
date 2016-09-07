@@ -15,7 +15,7 @@ class ContentControllerSearchExtension extends Extension {
 	 * Site search form
 	 */
 	public function SearchForm() {
-		$searchText =  _t('SearchForm.SEARCH', 'Search');
+		$searchText =  '';
 
 		if($this->owner->request && $this->owner->request->getVar('Search')) {
 			$searchText = $this->owner->request->getVar('Search');
