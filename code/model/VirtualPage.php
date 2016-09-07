@@ -494,6 +494,18 @@ class VirtualPage_Controller extends Page_Controller {
 		$controller = new $name();
 		return $controller->getViewer($action);
 	}
+
+	public function getCanonicalController() {
+		$canonicalClass = get_class($this->CopyContentFrom());
+		if ($canonicalClass == 'SiteTree') $canonicalControllerName = 'Page_Controller';
+		else $canonicalControllerName = $canonicalClass."_Controller";
+		if (class_exists($canonicalControllerName)) {
+			return new $canonicalControllerName();
+		} else {
+			return null;
+		}
+		
+	}
 	
 	/**
 	 * When the virtualpage is loaded, check to see if the versions are the same
@@ -509,6 +521,9 @@ class VirtualPage_Controller extends Page_Controller {
 			}
 		}
 		parent::init();
+		if ($canonicalController = $this->getCanonicalController()) {
+			$canonicalController->init();
+		}
 	}
 
 	public function loadcontentall() {
