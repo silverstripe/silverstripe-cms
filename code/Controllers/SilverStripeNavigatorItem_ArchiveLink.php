@@ -1,8 +1,9 @@
 <?php
 namespace SilverStripe\CMS\Controllers;
 
-use Controller;
 use SilverStripe\CMS\Model\RedirectorPage;
+use SilverStripe\Control\Controller;
+use SilverStripe\Core\Convert;
 use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\Versioning\Versioned;
@@ -34,7 +35,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem
         if (empty($date)) {
             return null;
         }
-        /** @var SS_Datetime $dateObj */
+        /** @var DBDatetime $dateObj */
         $dateObj = DBField::create_field('Datetime', $date);
         $title = _t('ContentControl.NOTEWONTBESHOWN', 'Note: this message will not be shown to your visitors');
         return "<div id=\"SilverStripeNavigatorMessage\" title=\"{$title}\">"
