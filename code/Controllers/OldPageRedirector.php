@@ -9,7 +9,6 @@ use SilverStripe\Control\SS_HTTPRequest;
 use SilverStripe\Control\SS_HTTPResponse;
 use SilverStripe\Control\SS_HTTPResponse_Exception;
 use SilverStripe\Core\Extension;
-use SilverStripe\ORM\Queries\SQLSelect;
 
 class OldPageRedirector extends Extension {
 

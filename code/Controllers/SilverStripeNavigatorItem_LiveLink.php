@@ -3,6 +3,7 @@ namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\Control\Controller;
+use SilverStripe\Core\Convert;
 use SilverStripe\ORM\Versioning\Versioned;
 
 class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem

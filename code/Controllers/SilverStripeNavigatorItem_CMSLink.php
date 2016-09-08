@@ -1,4 +1,5 @@
 <?php
+
 namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\Admin\LeftAndMain;
