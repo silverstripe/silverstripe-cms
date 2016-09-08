@@ -5,8 +5,6 @@ use Page_Controller;
 
 /**
  * Controller for the {@link RedirectorPage}.
- * @package cms
- * @subpackage content
  */
 class RedirectorPage_Controller extends Page_Controller
 {

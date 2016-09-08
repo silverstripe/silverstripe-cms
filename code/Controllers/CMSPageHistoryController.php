@@ -3,25 +3,21 @@
 namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Control\Controller;
+use SilverStripe\Control\SS_HTTPRequest;
+use SilverStripe\Control\SS_HTTPResponse;
+use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\Form;
+use SilverStripe\Forms\FormAction;
+use SilverStripe\Forms\HiddenField;
+use SilverStripe\Forms\LiteralField;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\Security\Security;
-use Form;
-use FieldList;
-use FormAction;
-use HiddenField;
-use Controller;
-use LiteralField;
-use SS_HTTPRequest;
-use SS_HTTPResponse;
-use ViewableData;
-use CheckboxField;
+use SilverStripe\View\ViewableData;
 
-/**
- * @package cms
- * @subpackage controllers
- */
 class CMSPageHistoryController extends CMSMain {
 
 	private static $url_segment = 'pages/history';
@@ -181,7 +177,7 @@ class CMSPageHistoryController extends CMSMain {
 			new LiteralField('CurrentlyViewingMessage', $this->customise(array(
 				'Content' => DBField::create_field('HTMLFragment', $message),
 				'Classes' => 'notice'
-			))->renderWith(array('CMSMain_notice'))),
+			))->renderWith($this->getTemplatesWithSuffix('_notice'))),
 			"Title"
 		);
 

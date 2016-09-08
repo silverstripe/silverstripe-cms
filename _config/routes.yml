@@ -3,7 +3,7 @@ Name: modelascontrollerroutes
 Before: '*'
 After: '#rootroutes'
 ---
-Director:
+SilverStripe\Control\Director:
   rules:
     '': 'SilverStripe\CMS\Controllers\RootURLController'
     'RemoveOrphanedPagesTask//$Action/$ID/$OtherID': 'SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask'
@@ -13,6 +13,6 @@ Director:
 Name: legacycmsroutes
 After: '#adminroutes'
 ---
-Director:
+SilverStripe\Control\Director:
   rules:
     'admin/cms': '->admin/pages'

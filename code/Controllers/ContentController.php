@@ -2,35 +2,34 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-use SilverStripe\ORM\DataObject;
-use SilverStripe\ORM\DataModel;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Control\Controller;
+use SilverStripe\Control\Director;
+use SilverStripe\Control\Session;
+use SilverStripe\Control\SS_HTTPRequest;
+use SilverStripe\Control\SS_HTTPResponse;
+use SilverStripe\Control\SS_HTTPResponse_Exception;
+use SilverStripe\Core\Convert;
+use SilverStripe\i18n\i18n;
 use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\DataModel;
+use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\ORM\FieldType\DBField;
+use SilverStripe\ORM\FieldType\DBHTMLText;
+use SilverStripe\ORM\FieldType\DBVarchar;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\Versioning\Versioned;
-use SilverStripe\ORM\FieldType\DBVarchar;
-use SilverStripe\ORM\FieldType\DBHTMLText;
-use SilverStripe\Security\Security;
-use SilverStripe\Security\MemberAuthenticator;
 use SilverStripe\Security\Member;
+use SilverStripe\Security\MemberAuthenticator;
 use SilverStripe\Security\Permission;
-use Controller;
+use SilverStripe\Security\Security;
+use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\View\ArrayData;
+use SilverStripe\View\Requirements;
+use SilverStripe\View\SSViewer;
 use Page;
-use SiteConfig;
-use SS_HTTPRequest;
 use Translatable;
-use i18n;
-use SS_HTTPResponse;
-use SS_HTTPResponse_Exception;
-use Director;
-use Requirements;
-use Convert;
-use SSViewer;
-use ArrayData;
-use Session;
-use SilverStripe\CMS\Model\SiteTree;
-
 
 /**
  * The most common kind of controller; effectively a controller linked to a {@link DataObject}.
@@ -47,9 +46,6 @@ use SilverStripe\CMS\Model\SiteTree;
  * a controller based on the URLSegment action variable, by looking in the SiteTree table.
  *
  * @todo Can this be used for anything other than SiteTree controllers?
- *
- * @package cms
- * @subpackage control
  */
 class ContentController extends Controller {
 
@@ -423,10 +419,10 @@ HTML;
 			// Find templates by dataRecord
 			SSViewer::get_templates_by_class(get_class($this->dataRecord), $action, "SilverStripe\\CMS\\Model\\SiteTree"),
 			// Next, we need to add templates for all controllers
-			SSViewer::get_templates_by_class(get_class($this), $action, "Controller"),
+			SSViewer::get_templates_by_class(get_class($this), $action, "SilverStripe\\Control\\Controller"),
 			// Fail-over to the same for the "index" action
 			SSViewer::get_templates_by_class(get_class($this->dataRecord), "", "SilverStripe\\CMS\\Model\\SiteTree"),
-			SSViewer::get_templates_by_class(get_class($this), "", "Controller")
+			SSViewer::get_templates_by_class(get_class($this), "", "SilverStripe\\Control\\Controller")
 		);
 
 		return new SSViewer($templates);

@@ -2,14 +2,14 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-use SilverStripe\ORM\Queries\SQLSelect;
 use SilverStripe\CMS\Model\SiteTree;
-use Extension;
-use Director;
-use SS_HTTPRequest;
-use SS_HTTPResponse;
-use Controller;
-use SS_HTTPResponse_Exception;
+use SilverStripe\Control\Controller;
+use SilverStripe\Control\Director;
+use SilverStripe\Control\SS_HTTPRequest;
+use SilverStripe\Control\SS_HTTPResponse;
+use SilverStripe\Control\SS_HTTPResponse_Exception;
+use SilverStripe\Core\Extension;
+use SilverStripe\ORM\Queries\SQLSelect;
 
 class OldPageRedirector extends Extension {
 

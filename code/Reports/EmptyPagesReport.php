@@ -2,14 +2,9 @@
 
 namespace SilverStripe\CMS\Reports;
 
-use SS_Report;
 use SilverStripe\CMS\Model\SiteTree;
-use Deprecation;
+use SilverStripe\Reports\SS_Report;
 
-/**
- * @package cms
- * @subpackage reports
- */
 class EmptyPagesReport extends SS_Report {
 
 	public function title() {

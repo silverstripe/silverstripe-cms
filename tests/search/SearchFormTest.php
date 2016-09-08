@@ -6,6 +6,9 @@ use SilverStripe\MSSQL\MSSQLDatabase;
 use SilverStripe\PostgreSQL\PostgreSQLDatabase;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\CMS\Search\SearchForm;
+use SilverStripe\ORM\Search\FulltextSearchable;
+use SilverStripe\Dev\FunctionalTest;
+
 
 
 
@@ -234,9 +237,9 @@ class ZZZSearchFormTest extends FunctionalTest {
 
 		$sf = new SearchForm($this->mockController, 'SilverStripe\\CMS\\Search\\SearchForm');
 
-		$dontShowInSearchFile = $this->objFromFixture('File', 'dontShowInSearchFile');
+		$dontShowInSearchFile = $this->objFromFixture('SilverStripe\\Assets\\File', 'dontShowInSearchFile');
 		$dontShowInSearchFile->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
-		$showInSearchFile = $this->objFromFixture('File', 'showInSearchFile');
+		$showInSearchFile = $this->objFromFixture('SilverStripe\\Assets\\File', 'showInSearchFile');
 		$showInSearchFile->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		$results = $sf->getResults(null, array('Search'=>'dontShowInSearchFile'));

@@ -5,15 +5,12 @@ use SilverStripe\Admin\CMSPreviewable;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\Security\Member;
-use ViewableData;
+use SilverStripe\View\ViewableData;
 
 /**
  * Navigator items are links that appear in the $SilverStripeNavigator bar.
  * To add an item, extend this class - it will be automatically picked up.
  * When instanciating items manually, please ensure to call {@link canView()}.
- *
- * @package cms
- * @subpackage content
  */
 abstract class SilverStripeNavigatorItem extends ViewableData
 {
@@ -66,6 +63,7 @@ abstract class SilverStripeNavigatorItem extends ViewableData
 	 */
 	public function getLink()
 	{
+		return null;
 	}
 
 	/**
@@ -73,6 +71,7 @@ abstract class SilverStripeNavigatorItem extends ViewableData
 	 */
 	public function getMessage()
 	{
+		return null;
 	}
 
 	/**

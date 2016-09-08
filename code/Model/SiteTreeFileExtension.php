@@ -2,14 +2,14 @@
 
 namespace SilverStripe\CMS\Model;
 
-use File;
+use SilverStripe\Assets\File;
+use SilverStripe\Core\Convert;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\ReadonlyField;
+use SilverStripe\ORM\DataExtension;
+use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ManyManyList;
 use SilverStripe\ORM\Versioning\Versioned;
-use SilverStripe\ORM\DataObject;
-use SilverStripe\ORM\DataExtension;
-use FieldList;
-use ReadonlyField;
-use Convert;
 use Subsite;
 
 /**
@@ -21,9 +21,6 @@ use Subsite;
  * only be enabled for the Stage record.
  *
  * @property File $owner
- *
- * @package cms
- * @subpackage model
  */
 class SiteTreeFileExtension extends DataExtension {
 

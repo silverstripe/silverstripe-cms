@@ -2,6 +2,8 @@
 
 use SilverStripe\ORM\DataObject;
 use SilverStripe\CMS\Tasks\MigrateSiteTreeLinkingTask;
+use SilverStripe\Dev\SapphireTest;
+
 
 
 /**

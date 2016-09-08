@@ -1,12 +1,12 @@
 SilverStripe\Admin\LeftAndMain:
   extensions:
     - SilverStripe\CMS\Controllers\LeftAndMainPageIconsExtension
-Controller:
+SilverStripe\Control\Controller:
   extensions:
     - SilverStripe\CMS\Controllers\ErrorPageControllerExtension
-Form:
+SilverStripe\Forms\Form:
   extensions:
     - SilverStripe\CMS\Controllers\ErrorPageControllerExtension
-File:
+SilverStripe\Assets\File:
   extensions:
     - SilverStripe\CMS\Controllers\ErrorPageFileExtension

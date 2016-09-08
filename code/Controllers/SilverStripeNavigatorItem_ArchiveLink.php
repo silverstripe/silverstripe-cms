@@ -7,10 +7,6 @@ use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\Versioning\Versioned;
 
-/**
- * @package cms
- * @subpackage content
- */
 class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem
 {
 	/** @config */

@@ -2,9 +2,12 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-use Convert;
 use SilverStripe\Admin\AddToCampaignHandler;
-use SS_HTTPResponse;
+use SilverStripe\Control\SS_HTTPRequest;
+use SilverStripe\Control\SS_HTTPResponse;
+use SilverStripe\Core\Convert;
+use SilverStripe\Forms\Form;
+use SilverStripe\ORM\FieldType\DBHTMLText;
 
 /**
  * @package cms
@@ -48,18 +51,19 @@ class CMSPageEditController extends CMSMain {
 
 		$handler = AddToCampaignHandler::create($this, $record);
 		$results = $handler->addToCampaign($record, $data['Campaign']);
-		if (!is_null($results)) {
-			$request = $this->getRequest();
-			if($request->getHeader('X-Formschema-Request')) {
-				$data = $this->getSchemaForForm($handler->Form($record));
-				$data['message'] = $results;
-
-				$response = new SS_HTTPResponse(Convert::raw2json($data));
-				$response->addHeader('Content-Type', 'application/json');
-				return $response;
-			}
-			return $results;
+		if (is_null($results)) {
+			return null;
 		}
+		$request = $this->getRequest();
+		if($request->getHeader('X-Formschema-Request')) {
+			$data = $this->getSchemaForForm($handler->Form($record));
+			$data['message'] = $results;
+
+			$response = new SS_HTTPResponse(Convert::raw2json($data));
+			$response->addHeader('Content-Type', 'application/json');
+			return $response;
+		}
+		return $results;
 	}
 
 	/**

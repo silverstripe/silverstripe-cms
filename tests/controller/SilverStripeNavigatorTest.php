@@ -4,6 +4,9 @@ use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
 use SilverStripe\CMS\Controllers\SilverStripeNavigator;
 use SilverStripe\CMS\Controllers\SilverStripeNavigatorItem;
+use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Dev\TestOnly;
+
 
 /**
  * @package cms

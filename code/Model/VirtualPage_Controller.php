@@ -1,14 +1,13 @@
 <?php
 namespace SilverStripe\CMS\Model;
 
-use Exception;
-use Page_Controller;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\CMS\Controllers\ModelAsController;
+use Exception;
+use Page_Controller;
 
 /**
  * Controller for the virtual page.
- * @package cms
  */
 class VirtualPage_Controller extends Page_Controller
 {
@@ -50,8 +49,11 @@ class VirtualPage_Controller extends Page_Controller
 
 	public function getViewer($action)
 	{
-		$controller = $this->getVirtualisedController() ?: $this;
-		return $controller->getViewer($action);
+		$controller = $this->getVirtualisedController();
+		if($controller) {
+			return $controller->getViewer($action);
+		}
+		return parent::getViewer($action);
 	}
 
 	/**

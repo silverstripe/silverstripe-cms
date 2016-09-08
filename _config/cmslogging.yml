@@ -4,6 +4,6 @@ After: '#live-logging'
 Except:
   environment: dev
 ---
-Injector:
+SilverStripe\Core\Injector\Injector:
   FriendlyErrorFormatter:
     class: SilverStripe\CMS\Logging\ErrorPageErrorFormatter

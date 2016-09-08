@@ -11,6 +11,17 @@ use SilverStripe\Security\Permission;
 use SilverStripe\Security\Group;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\CMS\Model\SiteTreeExtension;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\Control\Session;
+use SilverStripe\View\Parsers\ShortcodeParser;
+use SilverStripe\Control\Director;
+use SilverStripe\i18n\i18n;
+use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Dev\TestOnly;
+use SilverStripe\View\Parsers\HTMLCleaner;
+use SilverStripe\View\Parsers\Diff;
+
 
 
 /**
@@ -81,7 +92,7 @@ class SiteTreeTest extends SapphireTest {
 			'product3' => 'another-product-2',
 			'product4' => 'another-product-3',
 			'object'   => 'object',
-			'controller' => 'controller-2',
+			'controller' => 'controller',
 			'numericonly' => '1930',
 		);
 
@@ -806,7 +817,7 @@ class SiteTreeTest extends SapphireTest {
 	 */
 	public function testValidURLSegmentClassNameConflicts() {
 		$sitetree = new SiteTree();
-		$sitetree->URLSegment = 'Controller';
+		$sitetree->URLSegment = 'SilverStripe\\Control\\Controller';
 
 		$this->assertFalse($sitetree->validURLSegment(), 'Class name conflicts are recognised');
 	}
@@ -846,8 +857,8 @@ class SiteTreeTest extends SapphireTest {
 	}
 
 	public function testURLSegmentMultiByte() {
-		$origAllow = Config::inst()->get('URLSegmentFilter', 'default_allow_multibyte');
-		Config::inst()->update('URLSegmentFilter', 'default_allow_multibyte', true);
+		$origAllow = Config::inst()->get('SilverStripe\\View\\Parsers\\URLSegmentFilter', 'default_allow_multibyte');
+		Config::inst()->update('SilverStripe\\View\\Parsers\\URLSegmentFilter', 'default_allow_multibyte', true);
 		$sitetree = new SiteTree();
 		$sitetree->write();
 
@@ -862,7 +873,7 @@ class SiteTreeTest extends SapphireTest {
 		$sitetreeLive = Versioned::get_one_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', '"SiteTree"."ID" = ' .$sitetree->ID, false);
 		$this->assertEquals($sitetreeLive->URLSegment, rawurlencode('brötchen'));
 
-		Config::inst()->update('URLSegmentFilter', 'default_allow_multibyte', $origAllow);
+		Config::inst()->update('SilverStripe\\View\\Parsers\\URLSegmentFilter', 'default_allow_multibyte', $origAllow);
 	}
 
 	public function testVersionsAreCreated() {
@@ -1134,7 +1145,7 @@ class SiteTreeTest extends SapphireTest {
 
 		// Test with title
 		$meta = $page->MetaTags();
-		$charset = Config::inst()->get('ContentNegotiator', 'encoding');
+		$charset = Config::inst()->get('SilverStripe\\Control\\ContentNegotiator', 'encoding');
 		$this->assertContains('<meta http-equiv="Content-Type" content="text/html; charset='.$charset.'"', $meta);
 		$this->assertContains('<meta name="description" content="The &lt;br /&gt; and &lt;br&gt; tags"', $meta);
 		$this->assertContains('<link rel="canonical" href="http://www.mysite.com/html-and-xml"', $meta);

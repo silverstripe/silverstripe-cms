@@ -7,6 +7,8 @@ use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages;
 use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDraftPages;
 use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages;
 use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages;
+use SilverStripe\Dev\SapphireTest;
+
 
 
 class CMSSiteTreeFilterTest extends SapphireTest {

@@ -3,6 +3,10 @@
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\Security\Member;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Control\SS_HTTPResponse_Exception;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Dev\FunctionalTest;
+
 
 
 /**
@@ -405,7 +409,7 @@ class SiteTreePermissionsTest extends FunctionalTest {
 
 	public function testInheritCanViewFromSiteConfig() {
 		$page = $this->objFromFixture('Page', 'inheritWithNoParent');
-		$siteconfig = $this->objFromFixture('SiteConfig', 'default');
+		$siteconfig = $this->objFromFixture('SilverStripe\\SiteConfig\\SiteConfig', 'default');
 		$editor = $this->objFromFixture('SilverStripe\\Security\\Member', 'editor');
 		$editorGroup = $this->objFromFixture('SilverStripe\\Security\\Group', 'editorgroup');
 
@@ -430,7 +434,7 @@ class SiteTreePermissionsTest extends FunctionalTest {
 
 	public function testInheritCanEditFromSiteConfig() {
 		$page = $this->objFromFixture('Page', 'inheritWithNoParent');
-		$siteconfig = $this->objFromFixture('SiteConfig', 'default');
+		$siteconfig = $this->objFromFixture('SilverStripe\\SiteConfig\\SiteConfig', 'default');
 		$editor = $this->objFromFixture('SilverStripe\\Security\\Member', 'editor');
 		$user = $this->objFromFixture('SilverStripe\\Security\\Member', 'websiteuser');
 		$editorGroup = $this->objFromFixture('SilverStripe\\Security\\Group', 'editorgroup');

@@ -7,9 +7,6 @@ use SilverStripe\ORM\SS_List;
 
 /**
  * Archives a page, removing it from both live and stage
- *
- * @package cms
- * @subpackage batchaction
  */
 class CMSBatchAction_Archive extends CMSBatchAction
 {

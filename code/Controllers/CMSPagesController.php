@@ -3,14 +3,11 @@
 namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Control\Controller;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\View\ArrayData;
 use stdClass;
-use Controller;
-use ArrayData;
 
-/**
- * @package cms
- */
 class CMSPagesController extends CMSMain {
 
 	private static $url_segment = 'pages';

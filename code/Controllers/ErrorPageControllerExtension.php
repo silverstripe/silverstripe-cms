@@ -2,17 +2,14 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-use Extension;
-use SS_HTTPRequest;
-use SS_HTTPResponse_Exception;
 use SilverStripe\CMS\Model\ErrorPage;
-
+use SilverStripe\Control\Director;
+use SilverStripe\Control\SS_HTTPRequest;
+use SilverStripe\Control\SS_HTTPResponse_Exception;
+use SilverStripe\Core\Extension;
 
 /**
  * Enhances error handling for a controller with ErrorPage generated output
- *
- * @package cms
- * @subpackage controller
  */
 class ErrorPageControllerExtension extends Extension {
 
@@ -24,7 +21,7 @@ class ErrorPageControllerExtension extends Extension {
 	 * @throws SS_HTTPResponse_Exception
 	 */
 	public function onBeforeHTTPError($statusCode, $request) {
-		if (\Director::is_ajax()) {
+		if (Director::is_ajax()) {
 			return;
 		}
 		$response = ErrorPage::response_for($statusCode);

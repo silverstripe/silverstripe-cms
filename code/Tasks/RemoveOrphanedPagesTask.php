@@ -2,27 +2,22 @@
 
 namespace SilverStripe\CMS\Tasks;
 
-
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Control\Controller;
+use SilverStripe\Forms\CheckboxSetField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\Form;
+use SilverStripe\Forms\FormAction;
+use SilverStripe\Forms\HeaderField;
+use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\OptionsetField;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\Versioning\Versioned;
-use SilverStripe\ORM\DataObject;
-use SilverStripe\ORM\ArrayList;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\Security;
-use SilverStripe\CMS\Model\SiteTree;
-use Controller;
-use Requirements;
-use FieldList;
-use HeaderField;
-use LiteralField;
-use CheckboxSetField;
-use OptionsetField;
-use Form;
-use FormAction;
-
-
-
-
+use SilverStripe\View\Requirements;
 
 /**
  * Identify "orphaned" pages which point to a parent
@@ -41,11 +36,7 @@ use FormAction;
  * before and after orphan removal.
  *
  * @author Ingo Schommer (<firstname>@silverstripe.com), SilverStripe Ltd.
- *
- * @package cms
- * @subpackage tasks
  */
-//class RemoveOrphanedPagesTask extends BuildTask {
 class RemoveOrphanedPagesTask extends Controller {
 
 	private static $allowed_actions = array(
@@ -77,12 +68,13 @@ in the other stage:<br />
 		parent::init();
 
 		if(!Permission::check('ADMIN')) {
-			return Security::permissionFailure($this);
+			Security::permissionFailure($this);
 		}
 	}
 
 	public function Link($action = null)
 	{
+		/** @skipUpgrade */
 		return Controller::join_links('RemoveOrphanedPagesTask', $action, '/');
 	}
 
@@ -109,6 +101,7 @@ in the other stage:<br />
 
 		$orphans = $this->getOrphanedPages($this->orphanedSearchClass);
 		if($orphans) foreach($orphans as $orphan) {
+			/** @var SiteTree $latestVersion */
 			$latestVersion = Versioned::get_latest_version($this->orphanedSearchClass, $orphan->ID);
 			$latestAuthor = DataObject::get_by_id('SilverStripe\\Security\\Member', $latestVersion->AuthorID);
 			$orphanBaseTable = DataObject::getSchema()->baseDataTable($this->orphanedSearchClass);
@@ -181,7 +174,7 @@ in the other stage:<br />
 
 		$form = new Form(
 			$this,
-			'Form',
+			'SilverStripe\\Forms\\Form',
 			$fields,
 			new FieldList(
 				new FormAction('doSubmit', _t('RemoveOrphanedPagesTask.BUTTONRUN', 'Run'))
@@ -281,6 +274,7 @@ in the other stage:<br />
 		$removedOrphans = array();
 		$orphanBaseTable = DataObject::getSchema()->baseDataTable($this->orphanedSearchClass);
 		foreach($orphanIDs as $id) {
+			/** @var SiteTree $stageRecord */
 			$stageRecord = Versioned::get_one_by_stage(
 				$this->orphanedSearchClass,
 				'Stage',
@@ -296,6 +290,7 @@ in the other stage:<br />
 				$stageRecord->destroy();
 				//unset($stageRecord);
 			}
+			/** @var SiteTree $liveRecord */
 			$liveRecord = Versioned::get_one_by_stage(
 				$this->orphanedSearchClass,
 				'Live',
@@ -307,7 +302,9 @@ in the other stage:<br />
 				$liveRecord->ShowInMenus = 0;
 				$liveRecord->ShowInSearch = 0;
 				$liveRecord->write();
-				if(!$stageRecord) $liveRecord->doRestoreToStage();
+				if(!$stageRecord) {
+					$liveRecord->doRestoreToStage();
+				}
 				$liveRecord->doUnpublish();
 				$liveRecord->destroy();
 				unset($liveRecord);

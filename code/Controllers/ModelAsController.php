@@ -2,31 +2,27 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-use NestedController;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Control\Controller;
+use SilverStripe\Control\Director;
+use SilverStripe\Control\NestedController;
+use SilverStripe\Control\RequestHandler;
+use SilverStripe\Control\SS_HTTPRequest;
+use SilverStripe\Control\SS_HTTPResponse;
+use SilverStripe\Control\SS_HTTPResponse_Exception;
+use SilverStripe\Core\ClassInfo;
+use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Dev\Debug;
+use SilverStripe\Dev\Deprecation;
 use SilverStripe\ORM\DataModel;
-use SilverStripe\ORM\DB;
 use SilverStripe\ORM\DataObject;
-use Controller;
-use ClassInfo;
-use Injector;
-use SS_HTTPRequest;
-use Director;
-use RequestHandler;
-use SS_HTTPResponse;
-use SS_HTTPResponse_Exception;
+use SilverStripe\ORM\DB;
 use Exception;
 use Translatable;
-use Debug;
-use Deprecation;
-use SilverStripe\CMS\Model\SiteTree;
-
 
 /**
  * ModelAsController deals with mapping the initial request to the first {@link SiteTree}/{@link ContentController}
  * pair, which are then used to handle the request.
- *
- * @package cms
- * @subpackage control
  */
 class ModelAsController extends Controller implements NestedController {
 
@@ -46,9 +42,13 @@ class ModelAsController extends Controller implements NestedController {
 		} else {
 			$ancestry = ClassInfo::ancestry($sitetree->class);
 			while ($class = array_pop($ancestry)) {
-				if (class_exists($class . "_Controller")) break;
+				if (class_exists($class . "_Controller")) {
+					break;
+				}
 			}
-			$controller = ($class !== null) ? "{$class}_Controller" : "SilverStripe\\CMS\\Controllers\\ContentController";
+			$controller = ($class !== null)
+				? "{$class}_Controller"
+				: "SilverStripe\\CMS\\Controllers\\ContentController";
 		}
 
 		if($action && class_exists($controller . '_' . ucfirst($action))) {

@@ -2,16 +2,10 @@
 
 namespace SilverStripe\CMS\Tasks;
 
-
+use SilverStripe\Control\Controller;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\DataObject;
-use Controller;
 
-
-/**
- * @package cms
- * @subpackage tasks
- */
 class SiteTreeMaintenanceTask extends Controller {
 	private static $allowed_actions = array(
 		'*' => 'ADMIN'
@@ -45,6 +39,7 @@ class SiteTreeMaintenanceTask extends Controller {
 
 	public function Link($action = null)
 	{
+		/** @skipUpgrade */
 		return Controller::join_links('SiteTreeMaintenanceTask', $action, '/');
 	}
 }

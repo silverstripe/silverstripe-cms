@@ -4,12 +4,8 @@ namespace SilverStripe\CMS\Reports;
 
 use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\ORM\DataObject;
-use SS_Report;
+use SilverStripe\Reports\SS_Report;
 
-/**
- * @package cms
- * @subpackage reports
- */
 class RecentlyEditedReport extends SS_Report {
 
 	public function title() {

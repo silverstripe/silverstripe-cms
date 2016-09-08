@@ -2,25 +2,23 @@
 
 namespace SilverStripe\CMS\Controllers;
 
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Control\Controller;
+use SilverStripe\Control\Session;
+use SilverStripe\Control\SS_HTTPResponse;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\Form;
+use SilverStripe\Forms\FormAction;
+use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\OptionsetField;
+use SilverStripe\Forms\SelectionGroup;
+use SilverStripe\Forms\SelectionGroup_Item;
+use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\ValidationException;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
-use FieldList;
-use LiteralField;
-use SelectionGroup;
-use SelectionGroup_Item;
-use SS_HTTPResponse;
-use TreeDropdownField;
-use OptionsetField;
-use FormAction;
-use Form;
-use Session;
-use Controller;
-use SilverStripe\CMS\Model\SiteTree;
-
-
 
 class CMSPageAddController extends CMSPageEditController {
 
@@ -160,6 +158,7 @@ class CMSPageAddController extends CMSPageEditController {
 					}
 				));
 			}
+			return null;
 		});
 		$form->addExtraClass('cms-add-form cms-content center cms-edit-form ' . $this->BaseCSSClasses());
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));

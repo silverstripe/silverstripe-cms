@@ -2,61 +2,59 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-use FormField;
-use Injector;
-use ResetFormAction;
-use SilverStripe\ORM\FieldType\DBHTMLText;
-use SilverStripe\ORM\SS_List;
-use SilverStripe\ORM\Versioning\Versioned;
-use SilverStripe\ORM\HiddenClass;
-use SilverStripe\ORM\ArrayList;
-use SilverStripe\ORM\DataObject;
-use SilverStripe\ORM\DataList;
-use SilverStripe\ORM\DB;
-use SilverStripe\Security\Member;
-use SilverStripe\Security\Security;
-use SilverStripe\Security\SecurityToken;
-use SilverStripe\Security\Permission;
-use SilverStripe\Security\PermissionProvider;
 use SilverStripe\Admin\AdminRootController;
-use SilverStripe\Admin\LeftAndMain;
 use SilverStripe\Admin\CMSBatchActionHandler;
 use SilverStripe\Admin\CMSPreviewable;
-use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\CMS\Model\RedirectorPage;
+use SilverStripe\Admin\LeftAndMain;
 use SilverStripe\CMS\Model\CurrentPageIdentifier;
-use SS_HTTPRequest;
-use TabSet;
+use SilverStripe\CMS\Model\RedirectorPage;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Control\Controller;
+use SilverStripe\Control\Director;
+use SilverStripe\Control\Session;
+use SilverStripe\Control\SS_HTTPResponse;
+use SilverStripe\Control\SS_HTTPResponse_Exception;
+use SilverStripe\Core\Convert;
+use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Core\SS_Cache;
+use SilverStripe\Forms\DateField;
+use SilverStripe\Forms\DropdownField;
+use SilverStripe\Forms\FieldGroup;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\Form;
+use SilverStripe\Forms\FormAction;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldConfig;
+use SilverStripe\Forms\GridField\GridFieldDataColumns;
+use SilverStripe\Forms\GridField\GridFieldLevelup;
+use SilverStripe\Forms\GridField\GridFieldPaginator;
+use SilverStripe\Forms\GridField\GridFieldSortableHeader;
+use SilverStripe\Forms\HiddenField;
+use SilverStripe\Forms\LabelField;
+use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\RequiredFields;
+use SilverStripe\Forms\ResetFormAction;
+use SilverStripe\Forms\TextField;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\DataList;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\DB;
+use SilverStripe\ORM\FieldType\DBHTMLText;
+use SilverStripe\ORM\HiddenClass;
+use SilverStripe\ORM\SS_List;
+use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Security\Member;
+use SilverStripe\Security\Permission;
+use SilverStripe\Security\PermissionProvider;
+use SilverStripe\Security\Security;
+use SilverStripe\Security\SecurityToken;
+use SilverStripe\View\ArrayData;
+use SilverStripe\View\Requirements;
 use Translatable;
-use Requirements;
-use Controller;
-use Director;
 use Page;
-use TextField;
-use DateField;
-use DropdownField;
-use FieldGroup;
-use FieldList;
-use FormAction;
-use Form;
-use SS_Cache;
 use Zend_Cache;
-use Convert;
-use ArrayData;
-use HiddenField;
-use LiteralField;
-use RequiredFields;
-use LabelField;
 use InvalidArgumentException;
-use GridFieldConfig;
-use GridFieldSortableHeader;
-use GridFieldDataColumns;
-use GridFieldPaginator;
-use GridFieldLevelup;
-use GridField;
-use SS_HTTPResponse_Exception;
-use Session;
-use SS_HTTPResponse;
+
 
 /**
  * The main "content" area of the CMS.
@@ -64,8 +62,6 @@ use SS_HTTPResponse;
  * This class creates a 2-frame layout - left-tree and right-form - to sit beneath the main
  * admin menu.
  *
- * @package cms
- * @subpackage controller
  * @todo Create some base classes to contain the generic functionality that will be replicated.
  *
  * @mixin LeftAndMainPageIconsExtension
@@ -869,7 +865,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		}
 		$gridField = new GridField('Page','Pages', $list, $gridFieldConfig);
 		/** @var GridFieldDataColumns $columns */
-		$columns = $gridField->getConfig()->getComponentByType('GridFieldDataColumns');
+		$columns = $gridField->getConfig()->getComponentByType('SilverStripe\\Forms\\GridField\\GridFieldDataColumns');
 
 		// Don't allow navigating into children nodes on filtered lists
 		$fields = array(
@@ -878,7 +874,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			'LastEdited' => _t('SiteTree.LASTUPDATED', 'Last Updated'),
 		);
 		/** @var GridFieldSortableHeader $sortableHeader */
-		$sortableHeader = $gridField->getConfig()->getComponentByType('GridFieldSortableHeader');
+		$sortableHeader = $gridField->getConfig()->getComponentByType('SilverStripe\\Forms\\GridField\\GridFieldSortableHeader');
 		$sortableHeader->setFieldSorting(array('getTreeTitle' => 'Title'));
 		$gridField->getState()->ParentID = $parentID;
 

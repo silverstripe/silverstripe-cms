@@ -11,8 +11,6 @@ use SilverStripe\Security\Permission;
 
 /**
  * Batch restore of pages
- * @package cms
- * @subpackage batchaction
  */
 class CMSBatchAction_Restore extends CMSBatchAction
 {

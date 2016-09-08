@@ -9,6 +9,10 @@ use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\CMS\Reports\BrokenVirtualPagesReport;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Reports\BrokenRedirectorPagesReport;
+use SilverStripe\Reports\SS_Report;
+use SilverStripe\Assets\File;
+use SilverStripe\Dev\SapphireTest;
+
 
 
 /**

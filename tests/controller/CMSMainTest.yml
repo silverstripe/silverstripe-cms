@@ -121,13 +121,13 @@ SilverStripe\Security\Permission:
   allcmssections2:
     Code: CMS_ACCESS_LeftAndMain
     GroupID: =>SilverStripe\Security\Group.rooteditusers
-SiteConfig:
+SilverStripe\SiteConfig\SiteConfig:
   siteconfig1:
     EditorGroups: =>SilverStripe\Security\Group.rooteditusers
     CanCreateTopLevelType: 'OnlyTheseUsers'
 SiteConfig_CreateTopLevelGroups:
   createtoplevelgroups1:
-    SiteConfigID: =>SiteConfig.siteconfig1
+    SiteConfigID: =>SilverStripe\SiteConfig\SiteConfig.siteconfig1
     GroupID: =>SilverStripe\Security\Group.rooteditusers
 SilverStripe\CMS\Model\RedirectorPage:
   page5:

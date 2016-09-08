@@ -8,9 +8,6 @@ use SilverStripe\ORM\Versioning\Versioned;
 
 /**
  * Filters pages which have a status "Deleted".
- *
- * @package cms
- * @subpackage content
  */
 class CMSSiteTreeFilter_StatusDeletedPages extends CMSSiteTreeFilter
 {

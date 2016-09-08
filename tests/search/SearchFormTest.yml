@@ -34,7 +34,7 @@ SilverStripe\CMS\Model\SiteTree:
   pageWithSpecialChars:
     Title: Brötchen
     Content: Frisch vom B&auml;cker
-File:
+SilverStripe\Assets\File:
   showInSearchFile:
     Title: showInSearchFile
     ShowInSearch: 1

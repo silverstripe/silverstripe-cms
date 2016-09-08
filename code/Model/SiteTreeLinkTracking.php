@@ -2,20 +2,12 @@
 
 namespace SilverStripe\CMS\Model;
 
-/**
- * @package cms
- * @subpackage model
- */
-
-use DOMElement;
+use SilverStripe\Core\Injector\Injector;
+use SilverStripe\ORM\DataExtension;
+use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\ManyManyList;
 use SilverStripe\ORM\Versioning\Versioned;
-use SilverStripe\ORM\FieldType\DBHTMLText;
-use SilverStripe\ORM\DataExtension;
-use SilverStripe\ORM\DataObject;
-use Injector;
-use SS_HTMLValue;
-use Director;
+use DOMElement;
 
 /**
  * Adds tracking of links in any HTMLText fields which reference SiteTree or File items.
@@ -80,7 +72,7 @@ class SiteTreeLinkTracking extends DataExtension {
 
 	private static $many_many = array(
 		"LinkTracking" => "SilverStripe\\CMS\\Model\\SiteTree",
-		"ImageTracking" => "File"  // {@see SiteTreeFileExtension}
+		"ImageTracking" => "SilverStripe\\Assets\\File"  // {@see SiteTreeFileExtension}
 	);
 
 	private static $belongs_many_many = array(

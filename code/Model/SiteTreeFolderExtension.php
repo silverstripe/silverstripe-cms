@@ -2,17 +2,14 @@
 
 namespace SilverStripe\CMS\Model;
 
+use SilverStripe\Core\ClassInfo;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\DataQuery;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataExtension;
-use ClassInfo;
 
 /**
  * @todo Cleanup, refactor, test this class
- *
- * @package cms
- * @subpackage model
  */
 class SiteTreeFolderExtension extends DataExtension {
 
@@ -39,14 +36,14 @@ class SiteTreeFolderExtension extends DataExtension {
 			if(!count($ids)) continue;
 
 			foreach(singleton($className)->hasOne() as $relName => $joinClass) {
-				if($joinClass == 'Image' || $joinClass == 'File') {
+				if($joinClass == 'SilverStripe\\Assets\\Image' || $joinClass == 'SilverStripe\\Assets\\File') {
 					$fieldName = $relName .'ID';
 					$query = DataList::create($className)->where("$fieldName > 0");
 					$query->distinct = true;
 					$query->select(array($fieldName));
 					$usedFiles = array_merge($usedFiles, $query->execute()->column());
 
-				} elseif($joinClass == 'Folder') {
+				} elseif($joinClass == 'SilverStripe\\Assets\\Folder') {
  					// @todo
 				}
 			}

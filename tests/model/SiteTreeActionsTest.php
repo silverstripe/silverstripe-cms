@@ -3,6 +3,9 @@
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\DB;
 use SilverStripe\Security\Permission;
+use SilverStripe\Dev\FunctionalTest;
+use SilverStripe\Dev\TestOnly;
+
 
 /**
  * Possible actions:

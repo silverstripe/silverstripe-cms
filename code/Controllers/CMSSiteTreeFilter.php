@@ -2,15 +2,14 @@
 
 namespace SilverStripe\CMS\Controllers;
 
+use SilverStripe\Admin\LeftAndMain_SearchFilter;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Core\ClassInfo;
+use SilverStripe\Core\Object;
+use SilverStripe\Forms\DateField;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\Versioning\Versioned;
-use Object;
-use ClassInfo;
-use DateField;
-use SilverStripe\Admin\LeftAndMain_SearchFilter;
-
 
 /**
  * Base class for filtering the subtree for certain node statuses.
@@ -22,9 +21,6 @@ use SilverStripe\Admin\LeftAndMain_SearchFilter;
  * If you wish to make a more complex tree, you can overload includeInTree($page) to return true/
  * false depending on whether the given page should be included. Note that you will need to include
  * parent helper pages yourself.
- *
- * @package cms
- * @subpackage content
  */
 abstract class CMSSiteTreeFilter extends Object implements LeftAndMain_SearchFilter {
 

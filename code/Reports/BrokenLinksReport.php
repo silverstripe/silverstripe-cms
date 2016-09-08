@@ -2,19 +2,19 @@
 
 namespace SilverStripe\CMS\Reports;
 
+use SilverStripe\CMS\Controllers\CMSPageEditController;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Control\Controller;
+use SilverStripe\Core\ClassInfo;
+use SilverStripe\Forms\DropdownField;
+use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ArrayList;
-use SS_Report;
-use ClassInfo;
-use Controller;
-use FieldList;
-use DropdownField;
+use SilverStripe\Reports\SS_Report;
 
 /**
  * Content side-report listing pages with broken links
- * @package cms
- * @subpackage content
  */
 class BrokenLinksReport extends SS_Report {
 
@@ -55,6 +55,7 @@ class BrokenLinksReport extends SS_Report {
 			$isRedirectorPage = in_array($record->ClassName, ClassInfo::subclassesFor('SilverStripe\\CMS\\Model\\RedirectorPage'));
 			$isVirtualPage = in_array($record->ClassName, ClassInfo::subclassesFor('SilverStripe\\CMS\\Model\\VirtualPage'));
 
+			$reasonCodes = [];
 			if ($isVirtualPage) {
 				if ($record->HasBrokenLink) {
 					$reason = _t('BrokenLinksReport.VirtualPageNonExistent', "virtual page pointing to non-existent page");
@@ -79,7 +80,9 @@ class BrokenLinksReport extends SS_Report {
 			}
 
 			if ($reason) {
-				if (isset($params['Reason']) && $params['Reason'] && !in_array($params['Reason'], $reasonCodes)) continue;
+				if (isset($params['Reason']) && $params['Reason'] && !in_array($params['Reason'], $reasonCodes)) {
+					continue;
+				}
 				$record->BrokenReason = $reason;
 				$returnSet->push($record);
 			}
@@ -96,7 +99,7 @@ class BrokenLinksReport extends SS_Report {
 			$dateTitle = _t('BrokenLinksReport.ColumnDateLastPublished', 'Date last published');
 		}
 
-		$linkBase = singleton('SilverStripe\\CMS\\Controllers\\CMSPageEditController')->Link('show');
+		$linkBase = CMSPageEditController::singleton()->Link('show');
 		$fields = array(
 			"Title" => array(
 				"title" => _t('BrokenLinksReport.PageName', 'Page name'),
@@ -118,6 +121,7 @@ class BrokenLinksReport extends SS_Report {
 			'AbsoluteLink' => array(
 				'title' => _t('BrokenLinksReport.ColumnURL', 'URL'),
 				'formatting' => function($value, $item) {
+					/** @var SiteTree $item */
 					$liveLink = $item->AbsoluteLiveLink;
 					$stageLink = $item->AbsoluteLink();
 					return sprintf('%s <a href="%s">%s</a>',

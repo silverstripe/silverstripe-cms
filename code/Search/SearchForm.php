@@ -2,15 +2,16 @@
 
 namespace SilverStripe\CMS\Search;
 
-use Controller;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Control\Controller;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\Form;
+use SilverStripe\Forms\FormAction;
+use SilverStripe\Forms\HiddenField;
+use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\SS_List;
-use Form;
-use FieldList;
-use TextField;
-use HiddenField;
 use Translatable;
-use FormAction;
 
 /**
  * Standard basic search form which conducts a fulltext search on all {@link SiteTree}
@@ -22,8 +23,6 @@ use FormAction;
  * with {@link Translatable::get_current_locale()} when then form is constructed.
  *
  * @see Use ModelController and SearchContext for a more generic search implementation based around DataObject
- * @package cms
- * @subpackage search
  */
 class SearchForm extends Form {
 
@@ -37,7 +36,8 @@ class SearchForm extends Form {
 	 * Classes to search
 	 */
  	protected $classesToSearch = array(
-		"SilverStripe\\CMS\\Model\\SiteTree", "File"
+		"SilverStripe\\CMS\\Model\\SiteTree",
+		"SilverStripe\\Assets\\File"
 	);
 
 	private static $casting = array(
@@ -59,7 +59,9 @@ class SearchForm extends Form {
 			));
 		}
 
-		if(class_exists('Translatable') && singleton('SilverStripe\\CMS\\Model\\SiteTree')->hasExtension('Translatable')) {
+		if(class_exists('Translatable')
+			&& SiteTree::singleton()->hasExtension('Translatable')
+		) {
 			$fields->push(new HiddenField('searchlocale', 'searchlocale', Translatable::get_current_locale()));
 		}
 
@@ -86,7 +88,7 @@ class SearchForm extends Form {
 	public function forTemplate() {
 		$return = $this->renderWith(array_merge(
 			(array)$this->getTemplate(),
-			array('SilverStripe\\CMS\\Search\\SearchForm', 'Form')
+			array('SilverStripe\\CMS\\Search\\SearchForm', 'SilverStripe\\Forms\\Form')
 		));
 
 		// Now that we're rendered, clear message
@@ -98,13 +100,20 @@ class SearchForm extends Form {
 	/**
 	 * Set the classes to search.
 	 * Currently you can only choose from "SiteTree" and "File", but a future version might improve this.
- 	 */
+	 *
+	 * @param array $classes
+	 */
 	public function classesToSearch($classes) {
-		$illegalClasses = array_diff($classes, array('SilverStripe\\CMS\\Model\\SiteTree', 'File'));
+		$supportedClasses = array('SilverStripe\\CMS\\Model\\SiteTree', 'SilverStripe\\Assets\\File');
+		$illegalClasses = array_diff($classes, $supportedClasses);
 		if($illegalClasses) {
-			user_error("SearchForm::classesToSearch() passed illegal classes '" . implode("', '", $illegalClasses) . "'.  At this stage, only File and SiteTree are allowed", E_USER_WARNING);
+			user_error(
+				"SearchForm::classesToSearch() passed illegal classes '" . implode("', '", $illegalClasses)
+				. "'.  At this stage, only File and SiteTree are allowed",
+				E_USER_WARNING
+			);
 		}
-		$legalClasses = array_intersect($classes, array('SilverStripe\\CMS\\Model\\SiteTree', 'File'));
+		$legalClasses = array_intersect($classes, $supportedClasses);
 		$this->classesToSearch = $legalClasses;
 	}
 
@@ -131,7 +140,7 @@ class SearchForm extends Form {
 
 		// set language (if present)
 		if(class_exists('Translatable')) {
-			if(singleton('SilverStripe\\CMS\\Model\\SiteTree')->hasExtension('Translatable') && isset($data['searchlocale'])) {
+			if(SiteTree::singleton()->hasExtension('Translatable') && isset($data['searchlocale'])) {
 				if($data['searchlocale'] == "ALL") {
 					Translatable::disable_locale_filter();
 				} else {
@@ -174,7 +183,7 @@ class SearchForm extends Form {
 
 		// reset locale
 		if(class_exists('Translatable')) {
-			if(singleton('SilverStripe\\CMS\\Model\\SiteTree')->hasExtension('Translatable') && isset($data['searchlocale'])) {
+			if(SiteTree::singleton()->hasExtension('Translatable') && isset($data['searchlocale'])) {
 				if($data['searchlocale'] == "ALL") {
 					Translatable::enable_locale_filter();
 				} else {
@@ -190,6 +199,7 @@ class SearchForm extends Form {
 		if(!trim($keywords)) return "";
 		// Add * to each keyword
 		$splitWords = preg_split("/ +/" , trim($keywords));
+		$newWords = [];
 		while(list($i,$word) = each($splitWords)) {
 			if($word[0] == '"') {
 				while(list($i,$subword) = each($splitWords)) {
@@ -212,10 +222,16 @@ class SearchForm extends Form {
 	 */
 	public function getSearchQuery($data = null) {
 		// legacy usage: $data was defaulting to $_REQUEST, parameter not passed in doc.silverstripe.org tutorials
-		if(!isset($data)) $data = $_REQUEST;
+		if(!isset($data)) {
+			$data = $_REQUEST;
+		}
 
 		// The form could be rendered without the search being done, so check for that.
-		if (isset($data['Search'])) return $data['Search'];
+		if (isset($data['Search'])) {
+			return $data['Search'];
+		}
+
+		return null;
 	}
 
 	/**

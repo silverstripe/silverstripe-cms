@@ -11,9 +11,6 @@ use SilverStripe\ORM\Versioning\Versioned;
  * pages that is currently published.
  *
  * Note that this does not check canView permissions that might hide pages from certain visitors
- *
- * @package cms
- * @subpackage content
  */
 class CMSSiteTreeFilter_PublishedPages extends CMSSiteTreeFilter
 {

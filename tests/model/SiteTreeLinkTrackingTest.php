@@ -1,6 +1,10 @@
 <?php
 
 use SilverStripe\CMS\Model\SiteTreeLinkTracking_Parser;
+use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Assets\File;
+use SilverStripe\Dev\SapphireTest;
+
 
 class SiteTreeLinkTrackingTest extends SapphireTest {
 

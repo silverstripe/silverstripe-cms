@@ -2,6 +2,13 @@
 
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\DataExtension;
+use SilverStripe\Control\HTTP;
+use SilverStripe\Control\Director;
+use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+use SilverStripe\Dev\TestOnly;
+
 
 /**
  * Tests {@see SiteTreeLinkTracking} broken links feature: LinkTracking

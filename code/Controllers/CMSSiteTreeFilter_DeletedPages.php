@@ -8,9 +8,6 @@ use SilverStripe\ORM\Versioning\Versioned;
  * Works a bit different than the other filters:
  * Shows all pages *including* those deleted from stage and live.
  * It does not filter out pages still existing in the different stages.
- *
- * @package cms
- * @subpackage content
  */
 class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter
 {

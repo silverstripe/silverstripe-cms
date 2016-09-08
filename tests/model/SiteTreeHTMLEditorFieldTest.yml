@@ -6,13 +6,13 @@ SilverStripe\CMS\Model\SiteTree:
   contact:
     Title: Contact Us
 
-File:
+SilverStripe\Assets\File:
   example_file:
     FileFilename: example.pdf
     FileHash: 55b443b60176235ef09801153cca4e6da7494a0c
     Name: example.pdf
 
-Image:
+SilverStripe\Assets\Image:
   example_image:
     FileFilename: example.jpg
     FileHash: 55b443b60176235ef09801153cca4e6da7494a0c
