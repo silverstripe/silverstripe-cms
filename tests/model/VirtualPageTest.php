@@ -1,6 +1,5 @@
 <?php
 
-
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\DB;
@@ -14,10 +13,6 @@ use SilverStripe\CMS\Controllers\ModelAsController;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Dev\TestOnly;
-
-
-
-
 
 class VirtualPageTest extends FunctionalTest {
 	protected static $fixture_file = 'VirtualPageTest.yml';
@@ -616,11 +611,17 @@ class VirtualPageTest extends FunctionalTest {
 		$virtualPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp4');
 		$controller = ModelAsController::controller_for($virtualPage);
 
-		$this->assertInstanceOf('SilverStripe\\CMS\\Model\\VirtualPage_Controller', $controller);
+		$this->assertInstanceOf('VirtualPageTest_ClassA_Controller', $controller);
 		$this->assertTrue($controller->hasMethod('testMethod'));
 		$this->assertEquals('hello', $controller->testMethod());
 		$this->assertTrue($controller->hasMethod('modelMethod'));
 		$this->assertEquals('hi there', $controller->modelMethod());
+	}
+
+	public function testAllowedActions() {
+		$virtualPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp4');
+		$controller = ModelAsController::controller_for($virtualPage);
+		$this->assertContains('testaction', $controller->allowedActions());
 	}
 }
 
@@ -641,6 +642,10 @@ class VirtualPageTest_ClassA extends Page implements TestOnly {
 }
 
 class VirtualPageTest_ClassA_Controller extends Page_Controller implements TestOnly {
+	private static $allowed_actions = [
+		'testaction'
+	];
+
 	public function testMethod() {
 		return 'hello';
 	}
