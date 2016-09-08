@@ -9,7 +9,7 @@ use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\CMS\Reports\BrokenVirtualPagesReport;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Reports\BrokenRedirectorPagesReport;
-use SilverStripe\Reports\SS_Report;
+use SilverStripe\Reports\Report;
 use SilverStripe\Assets\File;
 use SilverStripe\Dev\SapphireTest;
 
@@ -92,7 +92,7 @@ class CmsReportsTest extends SapphireTest {
 
 		// Retrieve the broken links side report.
 
-		$reports = SS_Report::get_reports();
+		$reports = Report::get_reports();
 		$brokenLinksReport = null;
 		foreach($reports as $report) {
 			if($report instanceof BrokenLinksReport) {
@@ -155,7 +155,7 @@ class CmsReportsTest extends SapphireTest {
 
 		// Retrieve the broken files side report.
 
-		$reports = SS_Report::get_reports();
+		$reports = Report::get_reports();
 		$brokenFilesReport = null;
 		foreach($reports as $report) {
 			if($report instanceof BrokenFilesReport) {
@@ -221,7 +221,7 @@ class CmsReportsTest extends SapphireTest {
 
 		// Retrieve the broken virtual pages side report.
 
-		$reports = SS_Report::get_reports();
+		$reports = Report::get_reports();
 		$brokenVirtualPagesReport = null;
 		foreach($reports as $report) {
 			if($report instanceof BrokenVirtualPagesReport) {
@@ -289,7 +289,7 @@ class CmsReportsTest extends SapphireTest {
 
 		// Retrieve the broken redirector pages side report.
 
-		$reports = SS_Report::get_reports();
+		$reports = Report::get_reports();
 		$brokenRedirectorPagesReport = null;
 		foreach($reports as $report) {
 			if($report instanceof BrokenRedirectorPagesReport) {

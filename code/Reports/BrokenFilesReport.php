@@ -5,11 +5,11 @@ namespace SilverStripe\CMS\Reports;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\Reports\SS_Report;
+use SilverStripe\Reports\Report;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\Versioning\Versioned;
 
-class BrokenFilesReport extends SS_Report {
+class BrokenFilesReport extends Report {
 
 	public function title() {
 		return _t('SideReport.BROKENFILES',"Pages with broken files");

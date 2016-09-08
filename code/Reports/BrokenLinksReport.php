@@ -11,12 +11,12 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ArrayList;
-use SilverStripe\Reports\SS_Report;
+use SilverStripe\Reports\Report;
 
 /**
  * Content side-report listing pages with broken links
  */
-class BrokenLinksReport extends SS_Report {
+class BrokenLinksReport extends Report {
 
 	public function title() {
 		return _t('BrokenLinksReport.BROKENLINKS',"Broken links report");

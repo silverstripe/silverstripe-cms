@@ -5,7 +5,7 @@ namespace SilverStripe\CMS\Controllers;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Session;
-use SilverStripe\Control\SS_HTTPResponse;
+use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
@@ -169,7 +169,7 @@ class CMSPageAddController extends CMSPageEditController {
 	/**
 	 * @param array $data
 	 * @param Form $form
-	 * @return SS_HTTPResponse
+	 * @return HTTPResponse
 	 */
 	public function doAdd($data, $form) {
 		$className = isset($data['PageType']) ? $data['PageType'] : "Page";

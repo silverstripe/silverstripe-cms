@@ -4,8 +4,8 @@ namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
-use SilverStripe\Control\SS_HTTPRequest;
-use SilverStripe\Control\SS_HTTPResponse;
+use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
@@ -56,7 +56,7 @@ class CMSPageHistoryController extends CMSMain {
 	}
 
 	/**
-	 * @param SS_HTTPRequest $request
+	 * @param HTTPRequest $request
 	 * @return array
 	 */
 	public function show($request) {
@@ -75,7 +75,7 @@ class CMSPageHistoryController extends CMSMain {
 	}
 
 	/**
-	 * @param SS_HTTPRequest $request
+	 * @param HTTPRequest $request
 	 * @return array
 	 */
 	public function compare($request) {
@@ -296,7 +296,7 @@ class CMSPageHistoryController extends CMSMain {
 	 *
 	 * @param array $data
 	 * @param Form $form
-	 * @return SS_HTTPResponse|DBHTMLText
+	 * @return HTTPResponse|DBHTMLText
 	 */
 	public function doCompare($data, $form) {
 		$versions = $data['Versions'];
@@ -334,7 +334,7 @@ class CMSPageHistoryController extends CMSMain {
 	 * @param array
 	 * @param Form
 	 *
-	 * @return DBHTMLText|SS_HTTPResponse
+	 * @return DBHTMLText|HTTPResponse
 	 */
 	public function doShowVersion($data, $form) {
 		$versionID = null;

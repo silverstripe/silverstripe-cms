@@ -7,9 +7,9 @@ use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\Versioning\Versioned;
-use SilverStripe\Reports\SS_Report;
+use SilverStripe\Reports\Report;
 
-class BrokenRedirectorPagesReport extends SS_Report {
+class BrokenRedirectorPagesReport extends Report {
 
 	public function title() {
 		return _t('SideReport.BROKENREDIRECTORPAGES', 'RedirectorPages pointing to deleted pages');

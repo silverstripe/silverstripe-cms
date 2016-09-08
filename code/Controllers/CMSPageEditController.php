@@ -3,8 +3,8 @@
 namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\Admin\AddToCampaignHandler;
-use SilverStripe\Control\SS_HTTPRequest;
-use SilverStripe\Control\SS_HTTPResponse;
+use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Core\Convert;
 use SilverStripe\Forms\Form;
 use SilverStripe\ORM\FieldType\DBHTMLText;
@@ -42,7 +42,7 @@ class CMSPageEditController extends CMSMain {
 	 *
 	 * @param array $data
 	 * @param Form $form
-	 * @return DBHTMLText|SS_HTTPResponse
+	 * @return DBHTMLText|HTTPResponse
 	 */
 	public function addtocampaign($data, $form)
 	{
@@ -59,7 +59,7 @@ class CMSPageEditController extends CMSMain {
 			$data = $this->getSchemaForForm($handler->Form($record));
 			$data['message'] = $results;
 
-			$response = new SS_HTTPResponse(Convert::raw2json($data));
+			$response = new HTTPResponse(Convert::raw2json($data));
 			$response->addHeader('Content-Type', 'application/json');
 			return $response;
 		}
@@ -69,7 +69,7 @@ class CMSPageEditController extends CMSMain {
 	/**
 	 * Url handler for add to campaign form
 	 *
-	 * @param SS_HTTPRequest $request
+	 * @param HTTPRequest $request
 	 * @return Form
 	 */
 	public function AddToCampaignForm($request)

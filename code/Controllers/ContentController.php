@@ -6,9 +6,9 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
 use SilverStripe\Control\Session;
-use SilverStripe\Control\SS_HTTPRequest;
-use SilverStripe\Control\SS_HTTPResponse;
-use SilverStripe\Control\SS_HTTPResponse_Exception;
+use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Control\HTTPResponse;
+use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Convert;
 use SilverStripe\i18n\i18n;
 use SilverStripe\ORM\ArrayList;
@@ -160,12 +160,12 @@ class ContentController extends Controller {
 	 * This acts the same as {@link Controller::handleRequest()}, but if an action cannot be found this will attempt to
 	 * fall over to a child controller in order to provide functionality for nested URLs.
 	 *
-	 * @param SS_HTTPRequest $request
+	 * @param HTTPRequest $request
 	 * @param DataModel $model
-	 * @return SS_HTTPResponse
-	 * @throws SS_HTTPResponse_Exception
+	 * @return HTTPResponse
+	 * @throws HTTPResponse_Exception
 	 */
-	public function handleRequest(SS_HTTPRequest $request, DataModel $model) {
+	public function handleRequest(HTTPRequest $request, DataModel $model) {
 		/** @var SiteTree $child */
 		$child  = null;
 		$action = $request->param('Action');
@@ -204,9 +204,9 @@ class ContentController extends Controller {
 				) {
 					$translation = $this->dataRecord->getTranslation($locale);
 					if($translation) {
-						$response = new SS_HTTPResponse();
+						$response = new HTTPResponse();
 						$response->redirect($translation->Link(), 301);
-						throw new SS_HTTPResponse_Exception($response);
+						throw new HTTPResponse_Exception($response);
 					}
 				}
 			}
@@ -217,7 +217,7 @@ class ContentController extends Controller {
 				$response = parent::handleRequest($request, $model);
 
 				Director::set_current_page(null);
-			} catch(SS_HTTPResponse_Exception $e) {
+			} catch(HTTPResponse_Exception $e) {
 				$this->popCurrent();
 
 				Director::set_current_page(null);

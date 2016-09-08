@@ -4,7 +4,7 @@ namespace SilverStripe\CMS\Forms;
 
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
-use SilverStripe\Control\SS_HTTPRequest;
+use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Convert;
 use SilverStripe\Forms\TextField;
 use SilverStripe\View\Requirements;
@@ -49,7 +49,7 @@ class SiteTreeURLSegmentField extends TextField {
 	}
 
 	/**
-	 * @param SS_HTTPRequest $request
+	 * @param HTTPRequest $request
 	 * @return string
 	 */
 	public function suggest($request) {
