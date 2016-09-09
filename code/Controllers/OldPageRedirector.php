@@ -5,9 +5,9 @@ namespace SilverStripe\CMS\Controllers;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
-use SilverStripe\Control\SS_HTTPRequest;
-use SilverStripe\Control\SS_HTTPResponse;
-use SilverStripe\Control\SS_HTTPResponse_Exception;
+use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Control\HTTPResponse;
+use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Extension;
 
 class OldPageRedirector extends Extension {
@@ -16,8 +16,8 @@ class OldPageRedirector extends Extension {
 	 * On every URL that generates a 404, we'll capture it here and see if we can
 	 * find an old URL that it should be redirecting to.
 	 *
-	 * @param SS_HTTPRequest $request The request object
-	 * @throws SS_HTTPResponse_Exception
+	 * @param HTTPRequest $request The request object
+	 * @throws HTTPResponse_Exception
 	 */
 	public function onBeforeHTTPError404($request) {
 		// We need to get the URL ourselves because $request->allParams() only has a max of 4 params
@@ -34,13 +34,13 @@ class OldPageRedirector extends Extension {
 		}
 
 		if ($page && $cleanPage != $cleanURL) {
-			$res = new SS_HTTPResponse();
+			$res = new HTTPResponse();
 			$res->redirect(
 				Controller::join_links(
 					$page,
 					($getvars) ? '?' . http_build_query($getvars) : null
 				), 301);
-			throw new SS_HTTPResponse_Exception($res);
+			throw new HTTPResponse_Exception($res);
 		}
 	}
 

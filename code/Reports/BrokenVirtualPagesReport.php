@@ -7,9 +7,9 @@ use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\Versioning\Versioned;
-use SilverStripe\Reports\SS_Report;
+use SilverStripe\Reports\Report;
 
-class BrokenVirtualPagesReport extends SS_Report {
+class BrokenVirtualPagesReport extends Report {
 
 	public function title() {
 		return _t('SideReport.BROKENVIRTUALPAGES', 'VirtualPages pointing to deleted pages');

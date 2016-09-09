@@ -3,9 +3,9 @@
 namespace SilverStripe\CMS\Reports;
 
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\Reports\SS_Report;
+use SilverStripe\Reports\Report;
 
-class EmptyPagesReport extends SS_Report {
+class EmptyPagesReport extends Report {
 
 	public function title() {
 		return _t('SideReport.EMPTYPAGES',"Pages with no content");

@@ -3,7 +3,7 @@
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\Security\Member;
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\Control\SS_HTTPResponse_Exception;
+use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\FunctionalTest;
 
@@ -52,7 +52,7 @@ class SiteTreePermissionsTest extends FunctionalTest {
 		// should be prompted for a login
 		try {
 			$response = $this->get($page->URLSegment . '?stage=Stage');
-		} catch(SS_HTTPResponse_Exception $responseException) {
+		} catch(HTTPResponse_Exception $responseException) {
 			$response = $responseException->getResponse();
 		}
 		$this->assertEquals($response->getStatusCode(), '302');

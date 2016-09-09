@@ -9,8 +9,8 @@ use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\DB;
 use SilverStripe\CMS\Controllers\ModelAsController;
 use SilverStripe\View\Requirements;
-use SilverStripe\Control\SS_HTTPRequest;
-use SilverStripe\Control\SS_HTTPResponse;
+use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Assets\File;
 use SilverStripe\Core\Config\Config;
@@ -73,13 +73,13 @@ class ErrorPage extends Page {
 	}
 
 	/**
-	 * Get a {@link SS_HTTPResponse} to response to a HTTP error code if an
+	 * Get a {@link HTTPResponse} to response to a HTTP error code if an
 	 * {@link ErrorPage} for that code is present. First tries to serve it
 	 * through the standard SilverStripe request method. Falls back to a static
 	 * file generated when the user hit's save and publish in the CMS
 	 *
 	 * @param int $statusCode
-	 * @return SS_HTTPResponse
+	 * @return HTTPResponse
 	 */
 	public static function response_for($statusCode) {
 		// first attempt to dynamically generate the error page
@@ -95,7 +95,7 @@ class ErrorPage extends Page {
 
 			return ModelAsController::controller_for($errorPage)
 				->handleRequest(
-					new SS_HTTPRequest('GET', ''),
+					new HTTPRequest('GET', ''),
 					DataModel::inst()
 				);
 		}
@@ -103,7 +103,7 @@ class ErrorPage extends Page {
 		// then fall back on a cached version
 		$content = self::get_content_for_errorcode($statusCode);
 		if($content) {
-			$response = new SS_HTTPResponse();
+			$response = new HTTPResponse();
 			$response->setStatusCode($statusCode);
 			$response->setBody($content);
 			return $response;

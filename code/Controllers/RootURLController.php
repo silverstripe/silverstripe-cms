@@ -5,8 +5,8 @@ namespace SilverStripe\CMS\Controllers;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
-use SilverStripe\Control\SS_HTTPRequest;
-use SilverStripe\Control\SS_HTTPResponse;
+use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\Deprecation;
@@ -120,7 +120,7 @@ class RootURLController extends Controller {
 		self::$cached_homepage_link = null;
 	}
 
-	protected function beforeHandleRequest(SS_HTTPRequest $request, DataModel $model) {
+	protected function beforeHandleRequest(HTTPRequest $request, DataModel $model) {
 		parent::beforeHandleRequest($request, $model);
 
 		self::$is_at_root = true;
@@ -138,11 +138,11 @@ class RootURLController extends Controller {
 	}
 
 	/**
-	 * @param SS_HTTPRequest $request
+	 * @param HTTPRequest $request
 	 * @param DataModel|null $model
-	 * @return SS_HTTPResponse
+	 * @return HTTPResponse
 	 */
-	public function handleRequest(SS_HTTPRequest $request, DataModel $model = null) {
+	public function handleRequest(HTTPRequest $request, DataModel $model = null) {
 		self::$is_at_root = true;
 		$this->beforeHandleRequest($request, $model);
 

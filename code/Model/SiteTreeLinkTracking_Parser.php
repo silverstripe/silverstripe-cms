@@ -3,7 +3,7 @@ namespace SilverStripe\CMS\Model;
 
 use SilverStripe\Control\Director;
 use SilverStripe\ORM\DataObject;
-use SilverStripe\View\Parsers\SS_HTMLValue;
+use SilverStripe\View\Parsers\HTMLValue;
 
 /**
  * A helper object for extracting information about links.
@@ -15,7 +15,7 @@ class SiteTreeLinkTracking_Parser
 	 * Finds the links that are of interest for the link tracking automation. Checks for brokenness and attaches
 	 * extracted metadata so consumers can decide what to do with the DOM element (provided as DOMReference).
 	 *
-	 * @param SS_HTMLValue $htmlValue Object to parse the links from.
+	 * @param HTMLValue $htmlValue Object to parse the links from.
 	 * @return array Associative array containing found links with the following field layout:
 	 *        Type: string, name of the link type
 	 *        Target: any, a reference to the target object, depends on the Type
@@ -23,7 +23,7 @@ class SiteTreeLinkTracking_Parser
 	 *        DOMReference: DOMElement, reference to the link to apply changes.
 	 *        Broken: boolean, a flag highlighting whether the link should be treated as broken.
 	 */
-	public function process(SS_HTMLValue $htmlValue)
+	public function process(HTMLValue $htmlValue)
 	{
 		$results = array();
 

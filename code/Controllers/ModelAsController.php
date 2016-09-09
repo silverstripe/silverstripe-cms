@@ -7,9 +7,9 @@ use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
 use SilverStripe\Control\NestedController;
 use SilverStripe\Control\RequestHandler;
-use SilverStripe\Control\SS_HTTPRequest;
-use SilverStripe\Control\SS_HTTPResponse;
-use SilverStripe\Control\SS_HTTPResponse_Exception;
+use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Control\HTTPResponse;
+use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Dev\Debug;
@@ -63,7 +63,7 @@ class ModelAsController extends Controller implements NestedController {
 		parent::init();
 	}
 
-	protected function beforeHandleRequest(SS_HTTPRequest $request, DataModel $model) {
+	protected function beforeHandleRequest(HTTPRequest $request, DataModel $model) {
 		parent::beforeHandleRequest($request, $model);
 		// If the database has not yet been created, redirect to the build page.
 		/** @skipUpgrade */
@@ -80,11 +80,11 @@ class ModelAsController extends Controller implements NestedController {
 
 	/**
 	 * @uses ModelAsController::getNestedController()
-	 * @param SS_HTTPRequest $request
+	 * @param HTTPRequest $request
 	 * @param DataModel $model
-	 * @return SS_HTTPResponse
+	 * @return HTTPResponse
 	 */
-	public function handleRequest(SS_HTTPRequest $request, DataModel $model) {
+	public function handleRequest(HTTPRequest $request, DataModel $model) {
 		$this->beforeHandleRequest($request, $model);
 
 		// If we had a redirection or something, halt processing.
@@ -107,11 +107,11 @@ class ModelAsController extends Controller implements NestedController {
 
 			if($result instanceof RequestHandler) {
 				$result = $result->handleRequest($this->getRequest(), $model);
-			} else if(!($result instanceof SS_HTTPResponse)) {
+			} else if(!($result instanceof HTTPResponse)) {
 				user_error("ModelAsController::getNestedController() returned bad object type '" .
 					get_class($result)."'", E_USER_WARNING);
 			}
-		} catch(SS_HTTPResponse_Exception $responseException) {
+		} catch(HTTPResponse_Exception $responseException) {
 			$result = $responseException->getResponse();
 		}
 

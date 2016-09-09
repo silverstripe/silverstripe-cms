@@ -1,7 +1,7 @@
 <?php
 
 use SilverStripe\ORM\Versioning\Versioned;
-use SilverStripe\Control\SS_HTTPResponse_Exception;
+use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\FunctionalTest;
 
@@ -35,7 +35,7 @@ class ContentControllerPermissionsTest extends FunctionalTest {
 
 		try {
 			$response = $this->get('/testpage/?stage=Stage');
-		} catch(SS_HTTPResponse_Exception $responseException) {
+		} catch(HTTPResponse_Exception $responseException) {
 			$response = $responseException->getResponse();
 		}
 		// should redirect to login

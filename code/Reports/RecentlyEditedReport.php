@@ -4,9 +4,9 @@ namespace SilverStripe\CMS\Reports;
 
 use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\ORM\DataObject;
-use SilverStripe\Reports\SS_Report;
+use SilverStripe\Reports\Report;
 
-class RecentlyEditedReport extends SS_Report {
+class RecentlyEditedReport extends Report {
 
 	public function title() {
 		return _t('SideReport.LAST2WEEKS',"Pages edited in the last 2 weeks");

@@ -9,14 +9,14 @@ use SilverStripe\CMS\Controllers\CMSMain;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Admin\CMSBatchActionHandler;
 use SilverStripe\SiteConfig\SiteConfig;
-use SilverStripe\Core\SS_Cache;
+use SilverStripe\Core\Cache;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Dev\TestOnly;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\CSSContentParser;
-use SilverStripe\Control\SS_HTTPResponse_Exception;
+use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Dev\FunctionalTest;
 
 
@@ -45,7 +45,7 @@ class CMSMainTest extends FunctionalTest {
 	}
 
 	function testSiteTreeHints() {
-		$cache = SS_Cache::factory('CMSMain_SiteTreeHints');
+		$cache = Cache::factory('CMSMain_SiteTreeHints');
 		// Login as user with root creation privileges
 		$user = $this->objFromFixture('SilverStripe\\Security\\Member', 'rootedituser');
 		$user->logIn();
@@ -443,7 +443,7 @@ class CMSMainTest extends FunctionalTest {
 			$id = 'new-Member-0';
 			$member = $controller->getNewItem($id, false);
 			$this->fail('Should not be able to create a Member object');
-		} catch (SS_HTTPResponse_Exception $e) {
+		} catch (HTTPResponse_Exception $e) {
 			$this->assertEquals($controller->getResponse()->getStatusCode(), 302);
 		}
 	}
