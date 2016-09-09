@@ -1,5 +1,5 @@
 <div class="cms-content-tools west cms-panel cms-panel-layout" data-expandOnClick="true" data-layout-type="border" id="cms-content-tools-CMSMain">
-	<div class="panel-scrollable--single-toolbar cms-panel-content center">
+	<div class="panel panel--padded panel--scrollable panel--single-toolbar cms-panel-content center">
 		<div class="cms-content-filters">
 			$SearchForm
 		</div>

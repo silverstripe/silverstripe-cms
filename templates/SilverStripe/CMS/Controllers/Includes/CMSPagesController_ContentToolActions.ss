@@ -1,4 +1,4 @@
-<div class="cms-content-toolbar">
+<div class="toolbar toolbar--content cms-content-toolbar">
 	<div class="cms-actions-buttons-row">
 		<a class="ss-ui-button cms-content-addpage-button tool-button font-icon-plus" href="$LinkPageAdd" data-url-addpage="{$LinkPageAdd('', 'ParentID=%s')}"><% _t('CMSMain.AddNewButton', 'Add new') %></a>
 

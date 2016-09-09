@@ -13,7 +13,7 @@
 				</div>
 			</div>
 
-			<div class="panel-scrollable panel-scrollable--double-toolbar container-fluid cms-panel-padded">
+			<div class="panel panel--padded panel--scrollable panel--double-toolbar container-fluid cms-panel-padded">
 				<% if $Message %>
 				<p id="{$FormName}_error" class="message $MessageType">$Message</p>
 				<% else %>
