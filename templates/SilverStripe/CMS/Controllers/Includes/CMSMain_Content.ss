@@ -7,19 +7,19 @@
 			<% include SilverStripe\\Admin\\CMSBreadcrumbs %>
 
 			<div class="cms-content-header-tabs">
-				<ul class="cms-tabset-nav-primary">
-					<li class="content-treeview<% if $class == 'SilverStripe\\CMS\\Controllers\\CMSPageEditController' %> ui-tabs-active<% end_if %>">
-						<a href="$LinkPageEdit" class="cms-panel-link" title="Form_EditForm" data-href="$LinkPageEdit">
+				<ul class="cms-tabset-nav-primary nav nav-tabs">
+					<li class="nav-item content-treeview<% if $class == 'SilverStripe\\CMS\\Controllers\\CMSPageEditController' %> ui-tabs-active<% end_if %>">
+						<a href="$LinkPageEdit" class="nav-link cms-panel-link" title="Form_EditForm" data-href="$LinkPageEdit">
 							<% _t('CMSMain.TabContent', 'Content') %>
 						</a>
 					</li>
-					<li class="content-listview<% if $class == 'SilverStripe\\CMS\\Controllers\\CMSPageSettingsController' %> ui-tabs-active<% end_if %>">
-						<a href="$LinkPageSettings" class="cms-panel-link" title="Form_EditForm" data-href="$LinkPageSettings">
+					<li class="nav-item content-listview<% if $class == 'SilverStripe\\CMS\\Controllers\\CMSPageSettingsController' %> ui-tabs-active<% end_if %>">
+						<a href="$LinkPageSettings" class="nav-link cms-panel-link" title="Form_EditForm" data-href="$LinkPageSettings">
 							<% _t('CMSMain.TabSettings', 'Settings') %>
 						</a>
 					</li>
-					<li class="content-listview<% if $class == 'SilverStripe\\CMS\\Controllers\\CMSPageHistoryController' %> ui-tabs-active<% end_if %>">
-						<a href="$LinkPageHistory" class="cms-panel-link" title="Form_EditForm" data-href="$LinkPageHistory">
+					<li class="nav-item content-listview<% if $class == 'SilverStripe\\CMS\\Controllers\\CMSPageHistoryController' %> ui-tabs-active<% end_if %>">
+						<a href="$LinkPageHistory" class="nav-link cms-panel-link" title="Form_EditForm" data-href="$LinkPageHistory">
 							<% _t('CMSMain.TabHistory', 'History') %>
 						</a>
 					</li>
