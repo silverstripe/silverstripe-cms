@@ -79,7 +79,7 @@ in the other stage:<br />
 	}
 
 	public function index() {
-		Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.js');
+		Requirements::javascript('http://code.jquery.com/jquery-1.7.2.min.js');
 		Requirements::customCSS('#OrphanIDs .middleColumn {width: auto;}');
 		Requirements::customCSS('#OrphanIDs label {display: inline;}');
 

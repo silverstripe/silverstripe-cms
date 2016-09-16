@@ -310,7 +310,7 @@ class ContentController extends Controller {
 		if(Director::isDev() || Permission::check('CMS_ACCESS_CMSMain') || Permission::check('VIEW_DRAFT_CONTENT')) {
 			if($this->dataRecord) {
 				Requirements::css(CMS_DIR . '/client/dist/styles/SilverStripeNavigator.css');
-				Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.js');
+				Requirements::javascript(ADMIN_THIRDPARTY_DIR . '/jquery/jquery.js');
 				Requirements::javascript(CMS_DIR . '/client/dist/js/SilverStripeNavigator.js');
 
 				$return = $nav = SilverStripeNavigator::get_for_record($this->dataRecord);
