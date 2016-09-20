@@ -421,6 +421,9 @@ en:
     many_many_ImageTracking: 'Image Tracking'
     many_many_LinkTracking: 'Link Tracking'
   SiteTreeFileExtension:
+    TITLE_INDEX: '#'
+    TITLE_USED_ON: 'Used On'
+    TITLE_TYPE: 'Type'
     BACKLINK_LIST_DESCRIPTION: 'This list shows all pages where the file has been added through a WYSIWYG editor.'
     EDIT: Edit
   SiteTreeURLSegmentField:

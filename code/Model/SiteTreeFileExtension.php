@@ -10,6 +10,7 @@ use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ManyManyList;
 use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\View\SSViewer;
 use Subsite;
 
 /**
@@ -38,6 +39,10 @@ class SiteTreeFileExtension extends DataExtension {
 		'BackLinkTracking'
 	);
 
+	private static $casting = array(
+		'BackLinkHTMLList' => 'HTMLFragment'
+	);
+
 	public function updateCMSFields(FieldList $fields) {
 		$fields->insertAfter(
 			'LastEdited',
@@ -57,25 +62,9 @@ class SiteTreeFileExtension extends DataExtension {
 	 * @return string
 	 */
 	public function BackLinkHTMLList() {
-		$html = '<em>' . _t(
-			'SiteTreeFileExtension.BACKLINK_LIST_DESCRIPTION',
-			'This list shows all pages where the file has been added through a WYSIWYG editor.'
-		) . '</em>';
+		$viewer = new SSViewer(["type" => "Includes", __CLASS__ . "_description"]);
 
-		$html .= '<ul>';
-		foreach ($this->BackLinkTracking() as $backLink) {
-			// Add the page link and CMS link
-			$html .= sprintf(
-				'<li><a href="%s" target="_blank">%s</a> &ndash; <a href="%s">%s</a></li>',
-				Convert::raw2att($backLink->Link()),
-				Convert::raw2xml($backLink->MenuTitle),
-				Convert::raw2att($backLink->CMSEditLink()),
-				_t('SiteTreeFileExtension.EDIT', 'Edit')
-			);
-		}
-		$html .= '</ul>';
-
-		return $html;
+		return $viewer->process($this->owner);
 	}
 
 	/**
