@@ -39,6 +39,10 @@ class SiteTreeFileExtension extends DataExtension {
 		'BackLinkTracking'
 	);
 
+	private static $casting = array(
+		'BackLinkHTMLList' => 'HTMLFragment'
+	);
+
 	public function updateCMSFields(FieldList $fields) {
 		$fields->insertAfter(
 			'LastEdited',
@@ -60,7 +64,7 @@ class SiteTreeFileExtension extends DataExtension {
 	public function BackLinkHTMLList() {
 		$viewer = new SSViewer(["type" => "Includes", __CLASS__ . "_description"]);
 
-		return $viewer->process($this->owner)->forTemplate();
+		return $viewer->process($this->owner);
 	}
 
 	/**
