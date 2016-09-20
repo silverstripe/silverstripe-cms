@@ -1,10 +1,10 @@
 <div class="cms-content-tools west cms-panel cms-panel-layout" data-expandOnClick="true" data-layout-type="border" id="cms-content-tools-CMSMain">
-	<div class="panel-scrollable--single-toolbar cms-panel-content center">
+	<div class="panel panel--scrollable panel--single-toolbar cms-panel-content center">
 		<div class="cms-content-filters">
 			$SearchForm
 		</div>
 
-		<div class="cms-content-view cms-tree-view-sidebar cms-panel-deferred" id="cms-content-treeview" data-url="$LinkTreeView">
+		<div class="panel panel--padded cms-content-view cms-tree-view-sidebar cms-panel-deferred" id="cms-content-treeview" data-url="$LinkTreeView">
 			<%-- Lazy-loaded via ajax --%>
 		</div>
 	</div>
