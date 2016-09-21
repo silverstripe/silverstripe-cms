@@ -20,7 +20,7 @@
 		<% if $Actions %>
 		<div class="btn-toolbar">
 			<% loop $Actions %>
-				$Field
+				$FieldHolder
 			<% end_loop %>
 				<% if $Controller.LinkPreview %>
 			<a href="$Controller.LinkPreview" target="_cmsPreview" class="cms-preview-toggle-link ss-ui-button" data-icon="preview">
