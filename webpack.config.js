@@ -25,8 +25,9 @@ const SUPPORTED_BROWSERS = [
 
 module.exports = {
   entry: {
-    'bundle-legacy': `${PATHS.CMS_JS_SRC}/bundles/legacy.js`,
-//    SilverStripeNavigator: `${PATHS.CMS_CSS_SRC}/SilverStripeNavigator.scss`,
+    bundle: `${PATHS.CMS_JS_SRC}/bundles/bundle.js`,
+    // See https://github.com/webpack/webpack/issues/300#issuecomment-45313650
+    SilverStripeNavigator: [`${PATHS.CMS_JS_SRC}/legacy/SilverStripeNavigator.js`],
   },
   resolve: {
     modulesDirectories: [PATHS.CMS_JS_SRC, PATHS.MODULES],
