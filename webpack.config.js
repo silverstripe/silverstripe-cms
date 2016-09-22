@@ -57,7 +57,7 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract([
-          'css?sourceMap&minimize',
+          'css?sourceMap&minimize&-core&discardComments',
           'postcss?sourceMap',
           'resolve-url',
           'sass?sourceMap',
@@ -68,7 +68,7 @@ module.exports = {
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract([
-          'css?sourceMap&minimize',
+          'css?sourceMap&minimize&-core&discardComments',
           'postcss?sourceMap',
           'resolve-url',
         ], {
@@ -98,6 +98,12 @@ module.exports = {
       compress: {
         unused: false,
         warnings: false,
+      },
+      output: {
+        beautify: false,
+        semicolons: false,
+        comments: false,
+        max_line_len: 200,
       },
     }),
     new ExtractTextPlugin('styles/bundle.css', { allChunks: true }),
