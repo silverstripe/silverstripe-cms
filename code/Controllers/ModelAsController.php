@@ -37,25 +37,13 @@ class ModelAsController extends Controller implements NestedController {
 	 * @return ContentController
 	 */
 	public static function controller_for(SiteTree $sitetree, $action = null) {
-		if ($sitetree->class == 'SilverStripe\\CMS\\Model\\SiteTree') {
-			$controller = "SilverStripe\\CMS\\Controllers\\ContentController";
-		} else {
-			$ancestry = ClassInfo::ancestry($sitetree->class);
-			while ($class = array_pop($ancestry)) {
-				if (class_exists($class . "_Controller")) {
-					break;
-				}
-			}
-			$controller = ($class !== null)
-				? "{$class}_Controller"
-				: "SilverStripe\\CMS\\Controllers\\ContentController";
-		}
+		$controller = $sitetree->getControllerName();
 
-		if($action && class_exists($controller . '_' . ucfirst($action))) {
+		if ($action && class_exists($controller . '_' . ucfirst($action))) {
 			$controller = $controller . '_' . ucfirst($action);
 		}
 
-		return class_exists($controller) ? Injector::inst()->create($controller, $sitetree) : $sitetree;
+		return Injector::inst()->create($controller, $sitetree);
 	}
 
 	public function init() {

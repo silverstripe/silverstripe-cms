@@ -2713,6 +2713,26 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 	/**
+	 * @return string
+	 */
+	public function getControllerName() {
+		if ($this->class === SiteTree::class) {
+			$controller = ContentController::class;
+		} else {
+			$ancestry = ClassInfo::ancestry($this->class);
+			while ($class = array_pop($ancestry)) {
+				if (class_exists($class . "_Controller")) {
+					break;
+				}
+			}
+
+			$controller = ($class !== null) ? "{$class}_Controller" : ContentController::class;
+		}
+
+		return $controller;
+	}
+
+	/**
 	 * Return the CSS classes to apply to this node in the CMS tree.
 	 *
 	 * @param string $numChildrenMethod

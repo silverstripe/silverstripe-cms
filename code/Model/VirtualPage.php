@@ -415,24 +415,6 @@ class VirtualPage extends Page {
 	}
 
 	/**
-	 * Overwrite to also check for method on the original data object
-	 *
-	 * @param string $method
-	 * @return bool
-	 */
-	public function hasMethod($method) {
-		if(parent::hasMethod($method)) {
-			return true;
-		}
-		// Don't call property setters on copied page
-		if(stripos($method, 'set') === 0) {
-			return false;
-		}
-		$copy = $this->CopyContentFrom();
-		return $copy && $copy->exists() && $copy->hasMethod($method);
-	}
-
-	/**
 	 * Return the "casting helper" (a piece of PHP code that when evaluated creates a casted value object) for a field
 	 * on this object.
 	 *
@@ -445,6 +427,30 @@ class VirtualPage extends Page {
 			return $helper;
 		}
 		return parent::castingHelper($field);
+	}
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function allMethodNames($custom = false) {
+ 		$methods = parent::allMethodNames($custom);
+
+ 		if ($copy = $this->CopyContentFrom()) {
+ 			$methods = array_merge($methods, $copy->allMethodNames($custom));
+ 		}
+
+ 		return $methods;
+ 	}
+
+ 	/**
+	 * {@inheritdoc}
+	 */
+	public function getControllerName() {
+		if ($copy = $this->CopyContentFrom()) {
+			return $copy->getControllerName();
+		}
+
+		return parent::getControllerName();
 	}
 
 }
