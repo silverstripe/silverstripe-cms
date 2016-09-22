@@ -1,2 +1,88 @@
-#cms-page-history-versions tr.loading{color:#999}#cms-page-history-versions tr.loading td:hover{cursor:none}#cms-page-history-versions td:hover{cursor:pointer}.CMSPageHistoryController ins{background-color:#dfd;padding:2px;text-decoration:none}.CMSPageHistoryController del{background-color:#fdd;padding:2px;color:#f44}#cms-content-listview .cms-tree-expand-trigger,#cms-content-treeview .cms-tree-expand-trigger{display:none}.cms-content-tools #cms-content-treeview .cms-content-toolbar{border-bottom:none;box-shadow:none;margin-bottom:0}.cms-content-tools #cms-content-treeview .cms-tree-expand-trigger{display:block;float:left;margin:0 0 2px}.cms-content-tools #cms-content-treeview .cms-tree-expand-trigger span.ui-button-text{padding-right:8px}.cms-content-tools #cms-content-treeview .cms-tree .badge{display:none}.cms-content-tools #cms-content-treeview .cms-tree .jstree-clicked>.text>.badge,.cms-content-tools #cms-content-treeview .cms-tree a:hover>.text>.badge{display:inline-block}.field.urlsegment.loading{background:url(../images/loading.gif) no-repeat 162px 8px}.field.urlsegment .preview{padding-top:8px;display:inline-block}.field.urlsegment input.text{width:250px;float:left}.field.urlsegment .cancel,.field.urlsegment .edit,.field.urlsegment .update,.field.urlsegment input.text{margin-right:8px}.field.urlsegment .help{margin-left:0}.field.urlsegment .edit-holder{display:none}.field.urlsegment .edit-holder .form__field-description{clear:both}#Form_EditForm #Title .update{margin-left:7px}
+#cms-page-history-versions tr.loading{
+  color:#999;
+}
+
+#cms-page-history-versions tr.loading td:hover{
+  cursor:none;
+}
+
+#cms-page-history-versions td:hover{
+  cursor:pointer;
+}
+
+.CMSPageHistoryController ins{
+  background-color:#dfd;
+  padding:2px;
+  text-decoration:none;
+}
+
+.CMSPageHistoryController del{
+  background-color:#fdd;
+  padding:2px;
+  color:#f44;
+}
+
+#cms-content-listview .cms-tree-expand-trigger,#cms-content-treeview .cms-tree-expand-trigger{
+  display:none;
+}
+
+.cms-content-tools #cms-content-treeview .cms-content-toolbar{
+  border-bottom:none;
+  box-shadow:none;
+  margin-bottom:0;
+}
+
+.cms-content-tools #cms-content-treeview .cms-tree-expand-trigger{
+  display:block;
+  float:left;
+  margin:0 0 2px;
+}
+
+.cms-content-tools #cms-content-treeview .cms-tree-expand-trigger span.ui-button-text{
+  padding-right:8px;
+}
+
+.cms-content-tools #cms-content-treeview .cms-tree .badge{
+  display:none;
+}
+
+.cms-content-tools #cms-content-treeview .cms-tree .jstree-clicked>.text>.badge,.cms-content-tools #cms-content-treeview .cms-tree a:hover>.text>.badge{
+  display:inline-block;
+}
+
+.field.urlsegment.loading{
+  background:url(../images/loading.gif) no-repeat 162px 8px;
+}
+
+.field.urlsegment .preview{
+  padding-top:8px;
+  display:inline-block;
+}
+
+.field.urlsegment input.text{
+  width:250px;
+  float:left;
+}
+
+.field.urlsegment .cancel,.field.urlsegment .edit,.field.urlsegment .update,.field.urlsegment input.text{
+  margin-right:8px;
+}
+
+.field.urlsegment .help{
+  margin-left:0;
+}
+
+.field.urlsegment .edit-holder{
+  display:none;
+}
+
+.field.urlsegment .edit-holder .form__field-description{
+  clear:both;
+}
+
+#Form_EditForm #Title .update{
+  margin-left:7px;
+}
+
+
 /*# sourceMappingURL=bundle.css.map*/
