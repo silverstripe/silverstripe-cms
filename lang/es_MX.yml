@@ -32,7 +32,6 @@ es_MX:
   CMSMain:
     DELETE: 'Eliminar del boceto del sitio'
     DELETEFP: Eliminar del sitio público
-    EMAIL: Correo Electrónico
     PAGENOTEXISTS: 'Esta página no existe'
     PUBALLCONFIRM: 'Por favor publique todas las páginas del sitio, copiando el contenido del boceto al sitio público'
     PUBALLFUN: 'Funcionalidad "Publicar todo"'

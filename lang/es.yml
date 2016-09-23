@@ -90,7 +90,6 @@ es:
     DESCREMOVED: 'y {count} descendientes'
     DUPLICATED: 'Duplicado'
     DUPLICATEDWITHCHILDREN: 'Duplicado con hijos'
-    EMAIL: E-mail
     EditTree: 'Editar árbol'
     MENUTITLE: 'Editar página'
     NEWPAGE: 'Nuevo {pagetype}'

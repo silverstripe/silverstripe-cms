@@ -79,7 +79,6 @@ th:
     DELETE: 'ลบออกจากเว็บไซต์ฉบับร่าง'
     DELETEFP: ลบ
     DESCREMOVED: 'และ {count} รายการลูก'
-    EMAIL: อีเมล
     EditTree: 'แก้ไขรายการแบบ Tree'
     MENUTITLE: 'แก้ไขหน้าเว็บ'
     NEWPAGE: 'ใหม่ {pagetype}'

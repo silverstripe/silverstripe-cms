@@ -44,6 +44,7 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "Tree.ShowAsList": "Whakaatu tamariki hei rārangi",
     "Tree.ThisPageAndSubpages": "Tēnei whārangi me ngā whārangi iti",
     "Tree.ThisPageOnly": "Tēnei whārangi anake",
+    "Tree.ViewPage": "View",
     "URLSEGMENT.Cancel": "Whakakore",
     "URLSEGMENT.Edit": "Whakatika",
     "URLSEGMENT.OK": "ĀE",

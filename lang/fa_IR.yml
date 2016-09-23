@@ -90,7 +90,6 @@ fa_IR:
     DESCREMOVED: 'و {count} فرزندان'
     DUPLICATED: '''{title}'' باموفقیت دونسخه شد'
     DUPLICATEDWITHCHILDREN: '''{title}'' و زیرمجموعه‌های آن با موفقیت دونسخه شد'
-    EMAIL: پست الکترونیک
     EditTree: 'ویرایش درخت'
     MENUTITLE: 'ویرایش صفحه'
     NEWPAGE: '{pagetype} جدید'
@@ -314,9 +313,7 @@ fa_IR:
     BUTTONUNPUBLISHDESC: 'حذف این صفحه از سایت منتشر شده'
     Comments: دیدگاه‌ها
     Content: درون مایه
-    DEFAULTABOUTCONTENT: '<p>می‌توانید این صفحه را با درج محتوای خود ویرایش نمایید، یا آن‌را حذف و صفحات خود را ایجاد نمایید.<br /></p>'
     DEFAULTABOUTTITLE: 'درباره ما'
-    DEFAULTCONTACTCONTENT: '<p>می‌توانید این صفحه را با درج محتوای خود ویرایش نمایید، یا آن‌را حذف و صفحات خود را ایجاد نمایید.<br /></p>'
     DEFAULTCONTACTTITLE: 'تماس با ما'
     DEFAULTHOMECONTENT: '<p>به سیلوراسترایپ خوش آمدید! این صفحه اصلی پیش فرض است. میتوانید این صفحه را با بازکردن <a href="admin/">سامانه مدیریت محتوا</a> ویرایش نمایید.</p><p>میتوانید به<a href="http://docs.silverstripe.org">مستندات توسعه دهندگان</a> دسترسی یابید، و یا <a href="http://www.silverstripe.org/learn/lessons">درس های سیلوراسترایپ</a> را آغاز نمایید.</p>'
     DEFAULTHOMETITLE: خانه

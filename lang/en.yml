@@ -93,7 +93,7 @@ en:
     DESCREMOVED: 'and {count} descendants'
     DUPLICATED: 'Duplicated ''{title}'' successfully'
     DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
-    EMAIL: Email
+    EMAIL: SilverStripe\\Control\\Email\\Email
     EditTree: 'Edit Tree'
     ListFiltered: 'Showing search results.'
     MENUTITLE: 'Edit Page'
@@ -151,6 +151,7 @@ en:
   CMSPageHistoryController_versions_ss:
     AUTHOR: Author
     NOTPUBLISHED: 'Not published'
+    PREVIEW: 'Website preview'
     PUBLISHER: Publisher
     UNKNOWN: Unknown
     WHEN: When
@@ -276,6 +277,16 @@ en:
     REDIRECTTOPAGE: 'A page on your website'
     SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Page on your website'
+  RemoveOrphanedPagesTask:
+    BUTTONRUN: Run
+    CHOOSEOPERATION: 'Choose operation:'
+    DELETEWARNING: 'Warning: These operations are not reversible. Please handle with care.'
+    HEADER: 'Remove all orphaned pages task'
+    NONEFOUND: 'No orphans found'
+    NONEREMOVED: 'None removed'
+    OPERATION_REMOVE: 'Remove selected from all stages (WARNING: Will destroy all selected pages from both stage and live)'
+    SELECTALL: 'select all'
+    UNSELECTALL: 'unselect all'
   ReportAdmin:
     MENUTITLE: Reports
     ReportTitle: Title
@@ -308,6 +319,32 @@ en:
     ShareLink: 'Share link'
   SilverStripeNavigatorLinkl:
     CloseLink: Close
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Add page'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Edit Page'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    MENUTITLE: History
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Edit Page'
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    MENUTITLE: Pages
+  SilverStripe\CMS\Model\ErrorPage:
+    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
+    PLURALNAME: 'Error Pages'
+    SINGULARNAME: 'Error Page'
+  SilverStripe\CMS\Model\RedirectorPage:
+    DESCRIPTION: 'Redirects to an internal page or an external URL'
+    PLURALNAME: 'Redirector Pages'
+    SINGULARNAME: 'Redirector Page'
+  SilverStripe\CMS\Model\SiteTree:
+    DESCRIPTION: 'Generic content page'
+    PLURALNAME: 'Site Trees'
+    SINGULARNAME: 'Site Tree'
+  SilverStripe\CMS\Model\VirtualPage:
+    DESCRIPTION: 'Displays the content of another page'
+    PLURALNAME: 'Virtual Pages'
+    SINGULARNAME: 'Virtual Page'
   SiteConfig:
     DEFAULTTHEME: '(Use default theme)'
     EDITHEADER: 'Who can edit pages on this site?'
@@ -372,6 +409,8 @@ en:
     LASTSAVED: 'Last saved'
     LASTUPDATED: 'Last Updated'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
+    LINKSALREADYUNIQUE: ' {url} is already unique'
+    LINKSCHANGEDTO: ' changed {url1} -> {url2}'
     MENUTITLE: 'Navigation label'
     METADESC: 'Meta Description'
     METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
@@ -421,11 +460,11 @@ en:
     many_many_ImageTracking: 'Image Tracking'
     many_many_LinkTracking: 'Link Tracking'
   SiteTreeFileExtension:
-    TITLE_INDEX: '#'
-    TITLE_USED_ON: 'Used On'
-    TITLE_TYPE: 'Type'
     BACKLINK_LIST_DESCRIPTION: 'This list shows all pages where the file has been added through a WYSIWYG editor.'
     EDIT: Edit
+    TITLE_INDEX: '#'
+    TITLE_TYPE: Type
+    TITLE_USED_ON: 'Used on'
   SiteTreeURLSegmentField:
     EMPTY: 'Please enter a URL Segment or click cancel'
     HelpChars: ' Special characters are automatically converted or removed.'

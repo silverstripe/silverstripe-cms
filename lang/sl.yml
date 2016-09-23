@@ -67,7 +67,6 @@ sl:
     Create: Ustvari
     DELETE: 'Izbriši z osnutka spletnega mesta'
     DELETEFP: Izbriši z objavljenega spletnega mesta
-    EMAIL: E-naslov
     EditTree: 'Uredi drevesno strukturo'
     MENUTITLE: 'Uredi stran'
     NEWPAGE: 'Nov {pagetype}'

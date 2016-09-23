@@ -90,7 +90,6 @@ sv:
     DESCREMOVED: 'och {count} ättlingar'
     DUPLICATED: 'Duplicerade ''{title}'' utan problem'
     DUPLICATEDWITHCHILDREN: 'Duplicerade ''{title}'' och undersidor utan problem'
-    EMAIL: E-post
     EditTree: 'Redigera trädet'
     MENUTITLE: 'Redigera sida'
     NEWPAGE: 'Ny {pagetype}'

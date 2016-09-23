@@ -83,7 +83,6 @@ ar:
     DESCREMOVED: 'و {count} منحدر منه'
     DUPLICATED: 'تكرار ''{title}'' بنجاح'
     DUPLICATEDWITHCHILDREN: 'تكرار ''{title}'' والتوابع بنجاح'
-    EMAIL: البريد الإلكتروني
     EditTree: 'تعديل الهيكل'
     MENUTITLE: 'حرر الصفحة'
     NEWPAGE: '{pagetype} جديد'

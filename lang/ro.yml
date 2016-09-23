@@ -83,7 +83,6 @@ ro:
     DESCREMOVED: 'și {count} descendenți'
     DUPLICATED: '''{title}'' duplicat cu succes'
     DUPLICATEDWITHCHILDREN: '''{title}'' și descendenții săi duplicați cu succes'
-    EMAIL: E-mail
     EditTree: 'Editare structură arbore'
     MENUTITLE: 'Editează pagina'
     NEWPAGE: '{pagetype} nouă'

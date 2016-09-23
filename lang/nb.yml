@@ -90,7 +90,6 @@ nb:
     DESCREMOVED: 'og {count} undersider.'
     DUPLICATED: 'Vellykket duplisering av "{title}".'
     DUPLICATEDWITHCHILDREN: 'Vellykket duplisering av "{title}" og undersider.'
-    EMAIL: Epost
     EditTree: 'Rediger treet'
     MENUTITLE: 'Rediger side'
     NEWPAGE: 'Ny {pagetype}'

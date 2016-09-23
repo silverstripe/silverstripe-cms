@@ -6,7 +6,6 @@ ca:
   CMSMain:
     DELETE: 'Suprimeix del lloc esborrany'
     DELETEFP: Suprimeix del lloc publicat
-    EMAIL: Correu electrònic
     PAGENOTEXISTS: 'Aquesta pàgina no existeix'
     PUBALLCONFIRM: 'Publica cada pàgina del lloc web, copiant el contingut cap a la versió publicada'
     PUBALLFUN: 'Funcionalitat de "Publica-ho tot"'

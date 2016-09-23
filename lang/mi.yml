@@ -83,7 +83,6 @@ mi:
     DESCREMOVED: 'me ngā uri {count}'
     DUPLICATED: 'I momoho te tārite i ''{title}'''
     DUPLICATEDWITHCHILDREN: 'I momoho te tārite i ''{title}'' me ngā tamariki'
-    EMAIL: Īmēra
     EditTree: 'Whakatika Rākau'
     MENUTITLE: 'Whakatika Whārangi'
     NEWPAGE: '{pagetype} hou'

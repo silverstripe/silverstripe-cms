@@ -44,6 +44,7 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "Tree.ShowAsList": "Prikaži otroke kot seznam",
     "Tree.ThisPageAndSubpages": "To stran in podstrani",
     "Tree.ThisPageOnly": "Samo to stran",
+    "Tree.ViewPage": "View",
     "URLSEGMENT.Cancel": "Prekliči",
     "URLSEGMENT.Edit": "Uredi",
     "URLSEGMENT.OK": "OK",

@@ -83,7 +83,6 @@ sr:
     DESCREMOVED: 'и {count} потомака'
     DUPLICATED: '''{title}'' успешно дуплиран'
     DUPLICATEDWITHCHILDREN: '''{title}'' и деца успешно дуплирани'
-    EMAIL: Е-пошта
     EditTree: 'Измени стабло'
     MENUTITLE: 'Измени страницу'
     NEWPAGE: 'Нова {pagetype}'

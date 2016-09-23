@@ -75,7 +75,6 @@ hu:
     DESCREMOVED: 'és {count} gyerek'
     DUPLICATED: '''{title}'' sikeresen duplikálva'
     DUPLICATEDWITHCHILDREN: '''{title}'' és oldalai sikeresen duplikálva'
-    EMAIL: E-mail
     EditTree: 'Menüszerkeszet módosítása'
     MENUTITLE: 'Oldal szerkesztése'
     NEWPAGE: 'Új {pagetype}'

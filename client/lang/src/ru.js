@@ -37,6 +37,7 @@
     "Tree.ShowAsList": "Показать страницы в виде списка",
     "Tree.ThisPageAndSubpages": "Вместе с вложенными страницами",
     "Tree.ThisPageOnly": "Только этой страницы",
+    "Tree.ViewPage": "View",
     "URLSEGMENT.Cancel": "Отмена",
     "URLSEGMENT.Edit": "Изменить",
     "URLSEGMENT.OK": "ОК",

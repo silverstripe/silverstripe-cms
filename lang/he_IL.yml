@@ -80,7 +80,6 @@ he_IL:
     DELETE: 'מחיקה מאתר הטיוטה'
     DELETEFP: מחיקה
     DESCREMOVED: 'ו־{count} צאצאים'
-    EMAIL: דוא״ל
     EditTree: 'עריכת העץ'
     MENUTITLE: 'עריכת העמוד'
     NEWPAGE: '{pagetype} חדש'

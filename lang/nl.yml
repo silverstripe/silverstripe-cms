@@ -87,7 +87,6 @@ nl:
     DESCREMOVED: 'en {count} onderliggende'
     DUPLICATED: '''{title}'' met succes gedupliceerd'
     DUPLICATEDWITHCHILDREN: '''{title}'' en onderliggende items met succes gedupliceerd'
-    EMAIL: E-mail
     EditTree: 'Paginastructuur aanpassen'
     MENUTITLE: 'Wijzig pagina'
     NEWPAGE: 'Nieuwe {pagetype}'

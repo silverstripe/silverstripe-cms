@@ -83,7 +83,6 @@ sr_RS@latin:
     DESCREMOVED: 'i {count} potomaka'
     DUPLICATED: '''{title}'' uspešno dupliran'
     DUPLICATEDWITHCHILDREN: '''{title}'' i deca uspešno duplirani'
-    EMAIL: E-pošta
     EditTree: 'Izmeni stablo'
     MENUTITLE: 'Izmeni stranicu'
     NEWPAGE: 'Nova {pagetype}'

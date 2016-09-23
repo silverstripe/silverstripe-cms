@@ -44,6 +44,7 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "Tree.ShowAsList": "Rodyti žemesnius pusl. kaip sąrašą",
     "Tree.ThisPageAndSubpages": "Šį puslapį ir visus po juo",
     "Tree.ThisPageOnly": "Tik šį puslapį",
+    "Tree.ViewPage": "View",
     "URLSEGMENT.Cancel": "Atšaukti",
     "URLSEGMENT.Edit": "Redaguoti",
     "URLSEGMENT.OK": "Gerai",

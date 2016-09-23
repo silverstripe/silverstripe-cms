@@ -90,7 +90,6 @@ hr:
     DESCREMOVED: 'i {count} potomaka'
     DUPLICATED: 'Dupliciran ''{title}'' uspješno'
     DUPLICATEDWITHCHILDREN: 'Dupliciran ''{title}''  i podstranice uspješno'
-    EMAIL: Email
     EditTree: 'Uredi stablo stranice'
     MENUTITLE: 'Uredi stranicu'
     NEWPAGE: 'Novi {pagetype}'

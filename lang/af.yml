@@ -40,7 +40,6 @@ af:
     Any: Enige
     BROKENLINKS: 'Gebreekte skakels verslag'
   CMSMain:
-    EMAIL: Epos
     PAGENOTEXISTS: 'Hierdie bladsy bestaan nie'
     PUBALLCONFIRM: 'Publiseer asseblief elke bladsy in die werf en kopieër inhoud fase na lewendig'
     PUBALLFUN2: "Pressing this button will do the equivalent of going to every page and pressing \"publish\".  It's\n\t\t\t\tintended to be used after there have been massive edits of the content, such as when the site was\n\t\t\t\tfirst built.\n"

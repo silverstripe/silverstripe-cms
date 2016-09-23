@@ -35,7 +35,6 @@ bs:
   CMSMain:
     Create: Kreiraj
     DELETE: 'Izbriši sa privremenog nacrta stranice'
-    EMAIL: E-mail
     PAGENOTEXISTS: 'Ova stranica ne postoji'
     PUBALLCONFIRM: 'Molimo, objavite svaku stavku na ovoj stranici, kopiranjem sadržaja na aktivnu stranicu'
     PUBALLFUN: 'Funkcija "Objavi sve"'

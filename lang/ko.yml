@@ -84,7 +84,6 @@ ko:
     DESCREMOVED: '그리고 {count} 파생'
     DUPLICATED: '''{title}''의 복제가 완료되었습니다.'
     DUPLICATEDWITHCHILDREN: '''{title}'' 와 그 하위에대한 복제가 완료되었습니다'
-    EMAIL: 이메일
     EditTree: '트리를 편집'
     MENUTITLE: '페이지 편집'
     NEWPAGE: '새로운 {pagetype}'

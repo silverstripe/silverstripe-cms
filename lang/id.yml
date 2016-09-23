@@ -88,7 +88,6 @@ id:
     DESCREMOVED: 'dan {count} turunannya'
     DUPLICATED: '''{title}'' berhasil diduplikasi'
     DUPLICATEDWITHCHILDREN: '''{title}'' dan turunannya berhasil diduplikasi'
-    EMAIL: Surel
     EditTree: 'Edit Struktur'
     MENUTITLE: 'Edit Laman'
     NEWPAGE: '{pagetype} baru'

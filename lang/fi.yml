@@ -91,7 +91,6 @@ fi:
     DESCREMOVED: 'ja {count} alasivua'
     DUPLICATED: '''{title}''  monistettu onnistuneesti'
     DUPLICATEDWITHCHILDREN: '''{title}'' ja alasivu monistettiin onnistuneesti'
-    EMAIL: Sähköposti
     EditTree: 'Muokkaa rakennepuuta'
     MENUTITLE: 'Muokkaa sivua'
     NEWPAGE: 'Uusi {pagetype}'

@@ -6,7 +6,6 @@ fo:
   CMSMain:
     DELETE: 'Strika frá kladdu heimasíðuni'
     DELETEFP: Strika frá tí almennu heimasíðuni
-    EMAIL: Teldupostur
     PAGENOTEXISTS: 'Hendan síðan finst ikki.'
     PUBALLCONFIRM: 'Vinarliga almenna kunngerð allar síðurnar á heimasíðuni,  avrita innihaldsstøðið til beinleiðis'
     PUBALLFUN: '"Ger alt alment" funka'

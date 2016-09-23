@@ -11,7 +11,6 @@ zh_TW:
     PUBLISHED_PAGES: '已出版 %d 網頁, %d 失敗'
     PUBLISH_PAGES: 出版
   CMSMain:
-    EMAIL: 電子郵件
     PAGENOTEXISTS: '這頁不存在'
     PUBALLCONFIRM: '請發布所有網頁'
     PUBALLFUN: '"全部發布" 功能'

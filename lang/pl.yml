@@ -89,7 +89,6 @@ pl:
     DESCREMOVED: 'i {count} potomków'
     DUPLICATED: 'Duplikowanie ''{title}'' zakończone powodzeniem'
     DUPLICATEDWITHCHILDREN: 'Duplikowanie ''{title}'' oraz podstron zakończone powodzeniem'
-    EMAIL: Email
     EditTree: 'Edytuj drzewko'
     MENUTITLE: 'Edytuj stronę'
     NEWPAGE: 'Nowa {pagetype}'

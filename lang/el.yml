@@ -70,7 +70,6 @@ el:
     ChoosePageType: 'Επιλέξτε τύπο σελίδας'
     Create: Δημιουργία
     DELETEFP: Διαγραφή
-    EMAIL: Email
     EditTree: 'Επεξεργασία Δένδρου'
     MENUTITLE: 'Επεξεργασία Σελίδας'
     NEWPAGE: 'Νέο {pagetype}'

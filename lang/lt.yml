@@ -90,7 +90,6 @@ lt:
     DESCREMOVED: 'ir {count} jam priklausantys'
     DUPLICATED: 'Puslapis ''{title}'' kopijuotas sėkmingai'
     DUPLICATEDWITHCHILDREN: 'Puslapis ''{title}'' , bei jo vaikai kopijuoti sėkmingai'
-    EMAIL: E. paštas
     EditTree: 'Redaguoti medį'
     MENUTITLE: 'Redaguoti puslapį'
     NEWPAGE: 'Naujas {pagetype}'

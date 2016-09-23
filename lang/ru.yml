@@ -72,6 +72,8 @@ ru:
     PUBLISH_PAGES: Опубликовать
     RESTORE: Восстановить
     RESTORED_PAGES: 'Восстановлено %d страниц'
+    UNPUBLISHED_PAGES: 'Отменена публикация %d страниц'
+    UNPUBLISH_PAGES: Отмена публикации
   CMSFileAddController:
     MENUTITLE: Файлы
   CMSMain:
@@ -91,8 +93,8 @@ ru:
     DESCREMOVED: 'и {count} страниц нижнего уровня'
     DUPLICATED: 'Копия ''{title}'' создана'
     DUPLICATEDWITHCHILDREN: 'Копия ''{title}'' и дочерних элементов создана'
-    EMAIL: Email
     EditTree: 'Редактировать дерево'
+    ListFiltered: 'Результаты поиска.'
     MENUTITLE: 'Править страницу'
     NEWPAGE: 'Новая {pagetype}'
     PAGENOTEXISTS: 'Страница не существует'
@@ -323,9 +325,7 @@ ru:
     BUTTONUNPUBLISHDESC: 'Удалить эту страницу с опубликованного сайта'
     Comments: Комментарии
     Content: Наполнение сайта
-    DEFAULTABOUTCONTENT: '<p>Вы можете заполнить эту страницу собственным содержимым или удалить ее и создать новые страницы.<br /></p>'
     DEFAULTABOUTTITLE: 'О нас'
-    DEFAULTCONTACTCONTENT: '<p>Вы можете добавить на эту страницу собственные материалы или удалить ее и создать новые страницы.<br /></p>'
     DEFAULTCONTACTTITLE: 'Контакты'
     DEFAULTHOMECONTENT: '<p>Добро пожаловать в SilverStripe! Это стандартная домашняя страница. Вы можете изменить её перейдя по ссылке в <a href="admin/">the CMS</a>.</p><p>Документация для разработчиков доступна <a href="http://docs.silverstripe.org">здесь</a>, видео-уроки по SilverStripe находятся <a href="http://www.silverstripe.org/learn/lessons">здесь</a>.</p>'
     DEFAULTHOMETITLE: Главная

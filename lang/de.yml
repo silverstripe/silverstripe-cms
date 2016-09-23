@@ -91,7 +91,6 @@ de:
     DESCREMOVED: 'und {count} untergeordnete Seiten'
     DUPLICATED: '''{title}''  wurde erfolgreich dupliziert'
     DUPLICATEDWITHCHILDREN: '''{title}'' und alle Unterseiten wurden erfolgreich dupliziert'
-    EMAIL: E-Mail
     EditTree: 'Seitenbaum bearbeiten'
     MENUTITLE: 'Seite bearbeiten'
     NEWPAGE: 'Neue {pagetype}'

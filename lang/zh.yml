@@ -83,7 +83,6 @@ zh:
     DESCREMOVED: '和{count}子页'
     DUPLICATED: '成功复制‘{title}’'
     DUPLICATEDWITHCHILDREN: '成功复制‘{title}’及其子页面'
-    EMAIL: 电子邮件
     EditTree: '编辑树'
     MENUTITLE: '编辑页面'
     NEWPAGE: '新建{pagetype}'

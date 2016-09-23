@@ -80,7 +80,6 @@ et_EE:
     DELETE: 'Kustuta mustand'
     DELETEFP: Kustuta avaldatud leht
     DESCREMOVED: 'ja {count} järglast'
-    EMAIL: E-post
     EditTree: 'Redigeeri'
     MENUTITLE: 'Redigeeri lehte'
     NEWPAGE: 'Uus {pagetype}'

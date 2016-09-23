@@ -89,7 +89,6 @@ bg:
     DELETEFP: Изтрии
     DUPLICATED: '''{title}'' беше успешно дублирана'
     DUPLICATEDWITHCHILDREN: '''{title}'' и под-страниците бяха успешно дублирани'
-    EMAIL: Ел. поща
     EditTree: 'Редактиране на дървото'
     MENUTITLE: 'Редактиране на страницата'
     NEWPAGE: 'Нова страница {pagetype}'

@@ -37,7 +37,6 @@ tr:
     Create: Oluştur
     DELETE: 'Taslak siteden kaldır'
     DELETEFP: Yayındaki siteden kaldır
-    EMAIL: Eposta
     MENUTITLE: 'Sayfayı düzenle'
     PAGENOTEXISTS: 'Sayfa bulunamadı'
     PUBALLCONFIRM: 'Lütfen taslak sitedeki tüm sayfaları yayınlanmakta olan siteye kopyalayıp yayınla.'

@@ -90,7 +90,6 @@ fr:
     DESCREMOVED: 'et {count} descendants'
     DUPLICATED: '''{title}'' dupliqué avec succès'
     DUPLICATEDWITHCHILDREN: '''{title}'' et ses enfants dupliqués avec succès'
-    EMAIL: Email
     EditTree: 'Editer l''arbre'
     MENUTITLE: 'Éditer la page'
     NEWPAGE: 'Nouveau {pagetype}'

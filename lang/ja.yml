@@ -90,7 +90,6 @@ ja:
     DESCREMOVED: 'そして {count} 派生'
     DUPLICATED: '''{title}'' の複製が完了しました'
     DUPLICATEDWITHCHILDREN: '''{title}'' と子の複製が完了しました'
-    EMAIL: Eメール
     EditTree: 'ツリーを編集'
     MENUTITLE: 'ページを編集'
     NEWPAGE: '新しい {pagetype}'
