@@ -35,7 +35,8 @@ class ContentControllerSearchExtension extends Extension {
 		$actions = new FieldList(
 			new FormAction('results', _t('SearchForm.GO', 'Go'))
 		);
-		$form = SearchForm::create($this->owner, 'SilverStripe\\CMS\\Search\\SearchForm', $fields, $actions);
+		/** @skipUpgrade */
+		$form = SearchForm::create($this->owner, 'SearchForm', $fields, $actions);
 		$form->classesToSearch(FulltextSearchable::get_searchable_classes());
 		return $form;
 	}

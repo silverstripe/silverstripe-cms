@@ -78,25 +78,6 @@ class SearchForm extends Form {
 		$this->disableSecurityToken();
 	}
 
-
-	/**
-	 * Return a rendered version of this form.
-	 *
-	 * This is returned when you access a form as $FormObject rather
-	 * than <% with FormObject %>
-	 */
-	public function forTemplate() {
-		$return = $this->renderWith(array_merge(
-			(array)$this->getTemplate(),
-			array('SilverStripe\\CMS\\Search\\SearchForm', 'SilverStripe\\Forms\\Form')
-		));
-
-		// Now that we're rendered, clear message
-		$this->clearMessage();
-
-		return $return;
-	}
-
 	/**
 	 * Set the classes to search.
 	 * Currently you can only choose from "SiteTree" and "File", but a future version might improve this.
