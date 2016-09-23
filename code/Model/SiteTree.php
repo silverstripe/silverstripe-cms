@@ -2713,20 +2713,27 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 	/**
+	 * Find the controller name by our convention of {$ModelClass}_Controller
+	 *
 	 * @return string
 	 */
 	public function getControllerName() {
-		if ($this->class === SiteTree::class) {
-			$controller = ContentController::class;
-		} else {
-			$ancestry = ClassInfo::ancestry($this->class);
-			while ($class = array_pop($ancestry)) {
-				if (class_exists($class . "_Controller")) {
-					break;
-				}
-			}
+		//default controller for SiteTree objects
+		$controller = ContentController::class;
 
-			$controller = ($class !== null) ? "{$class}_Controller" : ContentController::class;
+		//go through the ancestry for this class looking for
+		$ancestry = ClassInfo::ancestry($this->class);
+		// loop over the array going from the deepest descendant (ie: the current class) to SiteTree
+		while ($class = array_pop($ancestry)) {
+			//we don't need to go any deeper than the SiteTree class
+			if ($class == SiteTree::class) {
+				break;
+			}
+			//if we have a class of "{$ClassName}_Controller" then we found our controller
+			if (class_exists($candidate = sprintf('%s_Controller', $class))) {
+				$controller = $candidate;
+				break;
+			}
 		}
 
 		return $controller;
