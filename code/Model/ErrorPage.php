@@ -122,7 +122,7 @@ class ErrorPage extends Page {
 		parent::requireDefaultRecords();
 
 		// Only run on ErrorPage class directly, not subclasses
-		if ($this->class !== 'SilverStripe\\CMS\\Model\\ErrorPage' || !SiteTree::config()->create_default_pages) {
+		if (get_class($this) !== 'SilverStripe\\CMS\\Model\\ErrorPage' || !SiteTree::config()->create_default_pages) {
 			return;
 		}
 

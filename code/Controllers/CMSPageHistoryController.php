@@ -314,7 +314,7 @@ class CMSPageHistoryController extends CMSMain {
 			return $this->customise(array(
 				"EditForm" => $form
 			))->renderWith(array(
-				$this->class . '_EditForm',
+				get_class($this) . '_EditForm',
 				'LeftAndMain_Content'
 			));
 		}
@@ -352,7 +352,7 @@ class CMSPageHistoryController extends CMSMain {
 			return $this->customise(array(
 				"EditForm" => $this->ShowVersionForm($versionID)
 			))->renderWith(array(
-				$this->class . '_EditForm',
+				get_class($this) . '_EditForm',
 				'LeftAndMain_Content'
 			));
 		}
