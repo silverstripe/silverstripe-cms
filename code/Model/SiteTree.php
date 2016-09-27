@@ -1513,7 +1513,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		parent::requireDefaultRecords();
 
 		// default pages
-		if($this->class == __CLASS__ && $this->config()->create_default_pages) {
+		if(get_class($this) == __CLASS__ && $this->config()->create_default_pages) {
 			if(!SiteTree::get_by_link(RootURLController::config()->default_homepage_link)) {
 				$homepage = new Page();
 				$homepage->Title = _t('SiteTree.DEFAULTHOMETITLE', 'Home');
@@ -2160,7 +2160,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return array
 	 */
 	public function fieldLabels($includerelations = true) {
-		$cacheKey = $this->class . '_' . $includerelations;
+		$cacheKey = get_class($this) . '_' . $includerelations;
 		if(!isset(self::$_cache_field_labels[$cacheKey])) {
 			$labels = parent::fieldLabels($includerelations);
 			$labels['Title'] = _t('SiteTree.PAGETITLE', "Page name");
@@ -2244,7 +2244,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$moreOptions->push(AddToCampaignHandler_FormAction::create());
 
 		// "readonly"/viewing version that isn't the current version of the record
-		$stageOrLiveRecord = Versioned::get_one_by_stage($this->class, Versioned::get_stage(), array(
+		$stageOrLiveRecord = Versioned::get_one_by_stage(get_class($this), Versioned::get_stage(), array(
 			'"SiteTree"."ID"' => $this->ID
 		));
 		if($stageOrLiveRecord && $stageOrLiveRecord->Version != $this->Version) {
@@ -2722,7 +2722,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$controller = ContentController::class;
 
 		//go through the ancestry for this class looking for
-		$ancestry = ClassInfo::ancestry($this->class);
+		$ancestry = ClassInfo::ancestry(get_class($this));
 		// loop over the array going from the deepest descendant (ie: the current class) to SiteTree
 		while ($class = array_pop($ancestry)) {
 			//we don't need to go any deeper than the SiteTree class
@@ -2746,7 +2746,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string
 	 */
 	public function CMSTreeClasses($numChildrenMethod="numChildren") {
-		$classes = sprintf('class-%s', $this->class);
+		$classes = sprintf('class-%s', get_class($this));
 		if($this->HasBrokenFile || $this->HasBrokenLink) {
 			$classes .= " BrokenLink";
 		}
@@ -2897,9 +2897,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		// Convert 'Page' to 'SiteTree' for correct localization lookups
 		/** @skipUpgrade */
 		// @todo When we namespace translations, change 'SiteTree' to FQN of the class
-		$class = ($this->class == 'Page' || $this->class === __CLASS__)
+		$class = (get_class($this) == 'Page' || get_class($this) === __CLASS__)
 			? 'SiteTree'
-			: $this->class;
+			: get_class($this);
 		return _t($class.'.SINGULARNAME', $this->singular_name());
 	}
 
@@ -2915,7 +2915,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if(isset($entities['Page.SINGULARNAME'])) $entities['Page.SINGULARNAME'][3] = CMS_DIR;
 		if(isset($entities['Page.PLURALNAME'])) $entities['Page.PLURALNAME'][3] = CMS_DIR;
 
-		$entities[$this->class . '.DESCRIPTION'] = array(
+		$entities[get_class($this) . '.DESCRIPTION'] = array(
 			$this->stat('description'),
 			'Description of the page type (shown in the "add page" dialog)'
 		);

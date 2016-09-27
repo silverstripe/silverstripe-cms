@@ -141,7 +141,7 @@ class ModelAsController extends Controller implements NestedController {
 		if(class_exists('Translatable') && $sitetree->Locale) Translatable::set_current_locale($sitetree->Locale);
 
 		if(isset($_REQUEST['debug'])) {
-			Debug::message("Using record #$sitetree->ID of type $sitetree->class with link {$sitetree->Link()}");
+			Debug::message("Using record #$sitetree->ID of type " . get_class($sitetree) . " with link {$sitetree->Link()}");
 		}
 
 		return self::controller_for($sitetree, $this->getRequest()->param('Action'));
