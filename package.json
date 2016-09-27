@@ -12,7 +12,7 @@
     "build": "webpack",
     "watch": "webpack -w",
     "lock": "npm-shrinkwrap --dev",
-    "lint": "eslint javascript"
+    "lint": "eslint client/src & sass-lint -v"
   },
   "repository": {
     "type": "git",
@@ -47,6 +47,7 @@
     "npm-shrinkwrap": "https://registry.npmjs.org/npm-shrinkwrap/-/npm-shrinkwrap-6.0.2.tgz",
     "postcss-loader": "^0.10.1",
     "resolve-url-loader": "^1.6.0",
+    "sass-lint": "^1.9.1",
     "sass-loader": "^4.0.0",
     "semver": "^5.1.0",
     "url-loader": "^0.5.7",
