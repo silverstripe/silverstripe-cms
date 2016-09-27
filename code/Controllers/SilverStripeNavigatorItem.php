@@ -52,7 +52,7 @@ abstract class SilverStripeNavigatorItem extends ViewableData
 	 */
 	public function getName()
 	{
-		return substr(get_class($this), strpos(get_class($this), '_') + 1);
+		return substr(static::class, strpos(static::class, '_') + 1);
 	}
 
 	/**

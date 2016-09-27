@@ -71,7 +71,7 @@ class ContentController extends Controller {
 			if($this->hasMethod("Title")) {
 				$dataRecord->Title = $this->Title();
 			}
-			$dataRecord->URLSegment = get_class($this);
+			$dataRecord->URLSegment = static::class;
 			$dataRecord->ID = -1;
 		}
 
@@ -419,10 +419,10 @@ HTML;
 			// Find templates by dataRecord
 			SSViewer::get_templates_by_class(get_class($this->dataRecord), $action, "SilverStripe\\CMS\\Model\\SiteTree"),
 			// Next, we need to add templates for all controllers
-			SSViewer::get_templates_by_class(get_class($this), $action, "SilverStripe\\Control\\Controller"),
+			SSViewer::get_templates_by_class(static::class, $action, "SilverStripe\\Control\\Controller"),
 			// Fail-over to the same for the "index" action
 			SSViewer::get_templates_by_class(get_class($this->dataRecord), "", "SilverStripe\\CMS\\Model\\SiteTree"),
-			SSViewer::get_templates_by_class(get_class($this), "", "SilverStripe\\Control\\Controller")
+			SSViewer::get_templates_by_class(static::class, "", "SilverStripe\\Control\\Controller")
 		);
 
 		return new SSViewer($templates);

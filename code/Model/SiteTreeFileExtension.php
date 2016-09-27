@@ -62,7 +62,7 @@ class SiteTreeFileExtension extends DataExtension {
 	 * @return string
 	 */
 	public function BackLinkHTMLList() {
-		$viewer = new SSViewer(["type" => "Includes", __CLASS__ . "_description"]);
+		$viewer = new SSViewer(["type" => "Includes", self::class . "_description"]);
 
 		return $viewer->process($this->owner);
 	}

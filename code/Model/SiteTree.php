@@ -330,12 +330,12 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$conditions[] = array('"SiteTree"."ParentID"' => 0);
 		}
 		/** @var SiteTree $sitetree */
-		$sitetree = DataObject::get_one(__CLASS__, $conditions, $cache);
+		$sitetree = DataObject::get_one(self::class, $conditions, $cache);
 
 		/// Fall back on a unique URLSegment for b/c.
 		if(	!$sitetree
 			&& self::config()->nested_urls
-			&& $sitetree = DataObject::get_one(__CLASS__, array(
+			&& $sitetree = DataObject::get_one(self::class, array(
 				'"SiteTree"."URLSegment"' => $URLSegment
 			), $cache)
 		) {
@@ -400,7 +400,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	public static function page_type_classes() {
 		$classes = ClassInfo::getValidSubClasses();
 
-		$baseClassIndex = array_search(__CLASS__, $classes);
+		$baseClassIndex = array_search(self::class, $classes);
 		if($baseClassIndex !== false) {
 			unset($classes[$baseClassIndex]);
 		}
@@ -449,8 +449,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		/** @var SiteTree $page */
 		if (
-			   !($page = DataObject::get_by_id(__CLASS__, $arguments['id']))         // Get the current page by ID.
-			&& !($page = Versioned::get_latest_version(__CLASS__, $arguments['id'])) // Attempt link to old version.
+			   !($page = DataObject::get_by_id(self::class, $arguments['id']))         // Get the current page by ID.
+			&& !($page = Versioned::get_latest_version(self::class, $arguments['id'])) // Attempt link to old version.
 		) {
 			 return null; // There were no suitable matches at all.
 		}
@@ -531,7 +531,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$parent = $this->Parent();
 			// If page is removed select parent from version history (for archive page view)
 			if((!$parent || !$parent->exists()) && $this->getIsDeletedFromStage()) {
-				$parent = Versioned::get_latest_version(__CLASS__, $this->ParentID);
+				$parent = Versioned::get_latest_version(self::class, $this->ParentID);
 			}
 			$base = $parent->RelativeLink($this->URLSegment);
 		} elseif(!$action && $this->URLSegment == RootURLController::get_homepage_link()) {
@@ -562,7 +562,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$oldReadingMode = Versioned::get_reading_mode();
 		Versioned::set_stage(Versioned::LIVE);
 		/** @var SiteTree $live */
-		$live = Versioned::get_one_by_stage(__CLASS__, Versioned::LIVE, array(
+		$live = Versioned::get_one_by_stage(self::class, Versioned::LIVE, array(
 			'"SiteTree"."ID"' => $this->ID
 		));
 		if($live) {
@@ -1070,7 +1070,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		// Check parent (custom canCreate option for SiteTree)
 		// Block children not allowed for this parent type
 		$parent = isset($context['Parent']) ? $context['Parent'] : null;
-		if($parent && !in_array(get_class($this), $parent->allowedChildren())) {
+		if($parent && !in_array(static::class, $parent->allowedChildren())) {
 			return false;
 		}
 
@@ -1170,7 +1170,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 */
 	static public function prepopulate_permission_cache($permission = 'CanEditType', $ids, $batchCallback = null) {
 		if(!$batchCallback) {
-			$batchCallback = __CLASS__ . "::can_{$permission}_multiple";
+			$batchCallback = self::class . "::can_{$permission}_multiple";
 		}
 
 		if(is_callable($batchCallback)) {
@@ -1447,7 +1447,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$tags[] = FormField::create_tag('title', array(), $this->obj('Title')->forTemplate());
 		}
 
-		$generator = trim(Config::inst()->get(__CLASS__, 'meta_generator'));
+		$generator = trim(Config::inst()->get(self::class, 'meta_generator'));
 		if (!empty($generator)) {
 			$tags[] = FormField::create_tag('meta', array(
 				'name' => 'generator',
@@ -1513,7 +1513,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		parent::requireDefaultRecords();
 
 		// default pages
-		if(get_class($this) == __CLASS__ && $this->config()->create_default_pages) {
+		if(static::class == self::class && $this->config()->create_default_pages) {
 			if(!SiteTree::get_by_link(RootURLController::config()->default_homepage_link)) {
 				$homepage = new Page();
 				$homepage->Title = _t('SiteTree.DEFAULTHOMETITLE', 'Home');
@@ -2160,7 +2160,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return array
 	 */
 	public function fieldLabels($includerelations = true) {
-		$cacheKey = get_class($this) . '_' . $includerelations;
+		$cacheKey = static::class . '_' . $includerelations;
 		if(!isset(self::$_cache_field_labels[$cacheKey])) {
 			$labels = parent::fieldLabels($includerelations);
 			$labels['Title'] = _t('SiteTree.PAGETITLE', "Page name");
@@ -2231,7 +2231,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$live = Versioned::get_one_by_stage('SilverStripe\\CMS\\Model\\SiteTree', Versioned::LIVE, array(
 			'"SiteTree"."ID"' => $this->ID
 		));
-		$infoTemplate = SSViewer::get_templates_by_class(get_class($this), '_Information', __CLASS__);
+		$infoTemplate = SSViewer::get_templates_by_class(static::class, '_Information', self::class);
 		$moreOptions->push(
 			new LiteralField('Information',
 				$this->customise(array(
@@ -2244,7 +2244,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$moreOptions->push(AddToCampaignHandler_FormAction::create());
 
 		// "readonly"/viewing version that isn't the current version of the record
-		$stageOrLiveRecord = Versioned::get_one_by_stage(get_class($this), Versioned::get_stage(), array(
+		$stageOrLiveRecord = Versioned::get_one_by_stage(static::class, Versioned::get_stage(), array(
 			'"SiteTree"."ID"' => $this->ID
 		));
 		if($stageOrLiveRecord && $stageOrLiveRecord->Version != $this->Version) {
@@ -2430,7 +2430,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$this->write();
 
 		/** @var SiteTree $result */
-		$result = DataObject::get_by_id(__CLASS__, $this->ID);
+		$result = DataObject::get_by_id(self::class, $this->ID);
 
 		// Need to update pages linking to this one as no longer broken
 		foreach($result->DependentPages(false) as $page) {
@@ -2722,7 +2722,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$controller = ContentController::class;
 
 		//go through the ancestry for this class looking for
-		$ancestry = ClassInfo::ancestry(get_class($this));
+		$ancestry = ClassInfo::ancestry(static::class);
 		// loop over the array going from the deepest descendant (ie: the current class) to SiteTree
 		while ($class = array_pop($ancestry)) {
 			//we don't need to go any deeper than the SiteTree class
@@ -2746,7 +2746,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string
 	 */
 	public function CMSTreeClasses($numChildrenMethod="numChildren") {
-		$classes = sprintf('class-%s', get_class($this));
+		$classes = sprintf('class-%s', static::class);
 		if($this->HasBrokenFile || $this->HasBrokenLink) {
 			$classes .= " BrokenLink";
 		}
@@ -2897,9 +2897,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		// Convert 'Page' to 'SiteTree' for correct localization lookups
 		/** @skipUpgrade */
 		// @todo When we namespace translations, change 'SiteTree' to FQN of the class
-		$class = (get_class($this) == 'Page' || get_class($this) === __CLASS__)
+		$class = (static::class == 'Page' || static::class === self::class)
 			? 'SiteTree'
-			: get_class($this);
+			: static::class;
 		return _t($class.'.SINGULARNAME', $this->singular_name());
 	}
 
@@ -2915,7 +2915,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if(isset($entities['Page.SINGULARNAME'])) $entities['Page.SINGULARNAME'][3] = CMS_DIR;
 		if(isset($entities['Page.PLURALNAME'])) $entities['Page.PLURALNAME'][3] = CMS_DIR;
 
-		$entities[get_class($this) . '.DESCRIPTION'] = array(
+		$entities[static::class . '.DESCRIPTION'] = array(
 			$this->stat('description'),
 			'Description of the page type (shown in the "add page" dialog)'
 		);

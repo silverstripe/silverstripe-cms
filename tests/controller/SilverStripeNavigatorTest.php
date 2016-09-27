@@ -53,7 +53,7 @@ class SilverStripeNavigatorTest extends SapphireTest {
 
 class SilverStripeNavigatorTest_TestItem extends SilverStripeNavigatorItem implements TestOnly {
 	public function getTitle() {
-		return __CLASS__;
+		return self::class;
 	}
 	public function getHTML() {
 		return null;
@@ -63,7 +63,7 @@ class SilverStripeNavigatorTest_TestItem extends SilverStripeNavigatorItem imple
 class SilverStripeNavigatorTest_ProtectedTestItem extends SilverStripeNavigatorItem implements TestOnly {
 
 	public function getTitle() {
-		return __CLASS__;
+		return self::class;
 	}
 
 	public function getHTML() {
