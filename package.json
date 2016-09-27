@@ -44,7 +44,7 @@
     "file-loader": "^0.9.0",
     "glob": "^6.0.4",
     "node-sass": "^3.8.0",
-    "npm-shrinkwrap": "https://registry.npmjs.org/npm-shrinkwrap/-/npm-shrinkwrap-5.4.1.tgz",
+    "npm-shrinkwrap": "https://registry.npmjs.org/npm-shrinkwrap/-/npm-shrinkwrap-6.0.2.tgz",
     "postcss-loader": "^0.10.1",
     "resolve-url-loader": "^1.6.0",
     "sass-loader": "^4.0.0",
