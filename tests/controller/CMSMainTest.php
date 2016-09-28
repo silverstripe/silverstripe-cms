@@ -587,7 +587,7 @@ class CMSMainTest_ClassA extends Page implements TestOnly {
 	{
 		parent::onBeforeWrite();
 
-		if ($this->ClassName !== __CLASS__) {
+		if ($this->ClassName !== self::class) {
 			throw new ValidationException("Class saved with incorrect ClassName");
 		}
 	}
@@ -599,7 +599,7 @@ class CMSMainTest_ClassB extends Page implements TestOnly {
 	{
 		parent::onBeforeWrite();
 
-		if ($this->ClassName !== __CLASS__) {
+		if ($this->ClassName !== self::class) {
 			throw new ValidationException("Class saved with incorrect ClassName");
 		}
 	}
