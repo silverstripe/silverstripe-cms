@@ -160,7 +160,7 @@ class CMSPageAddController extends CMSPageEditController {
 			}
 			return null;
 		});
-		$form->addExtraClass('cms-add-form cms-content center cms-edit-form ' . $this->BaseCSSClasses());
+		$form->addExtraClass('flexbox-area-grow fill-height cms-add-form cms-content cms-edit-form ' . $this->BaseCSSClasses());
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 
 		return $form;

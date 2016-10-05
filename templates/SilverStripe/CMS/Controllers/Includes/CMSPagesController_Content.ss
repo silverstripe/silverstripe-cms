@@ -1,4 +1,4 @@
-<div id="pages-controller-cms-content" class="cms-content flexbox-area-grow cms-tabset $BaseCSSClasses" data-layout-type="border" data-pjax-fragment="Content">
+<div id="pages-controller-cms-content" class="flexbox-area-grow fill-height cms-content cms-tabset $BaseCSSClasses" data-layout-type="border" data-pjax-fragment="Content">
 
 	<div class="cms-content-header north">
 		<div class="cms-content-header-info">

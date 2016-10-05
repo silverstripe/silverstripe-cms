@@ -1,7 +1,7 @@
-<div class="cms-content center $BaseCSSClasses" data-layout-type="border" data-pjax-fragment="Content">
+<div class="flexbox-area-grow cms-content $BaseCSSClasses" data-layout-type="border" data-pjax-fragment="Content">
 	<% with $AddForm %>
 		<form $FormAttributes data-layout-type="border">
-			<div class="toolbar--north container-fluid">
+			<div class="toolbar toolbar--north">
 				<div class="toolbar__navigation">
 					<ol class="breadcrumb">
 						<li class="breadcrumb__item breadcrumb__item--last">
@@ -13,7 +13,7 @@
 				</div>
 			</div>
 
-			<div class="panel panel--padded panel--scrollable panel--double-toolbar container-fluid cms-panel-padded">
+			<div class="panel panel--padded panel--scrollable flexbox-area-grow">
 				<% if $Message %>
 				<p id="{$FormName}_error" class="message $MessageType">$Message</p>
 				<% else %>
