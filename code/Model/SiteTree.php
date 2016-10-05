@@ -530,7 +530,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if($this->ParentID && self::config()->nested_urls) {
 			$parent = $this->Parent();
 			// If page is removed select parent from version history (for archive page view)
-			if((!$parent || !$parent->exists()) && $this->getIsDeletedFromStage()) {
+			if((!$parent || !$parent->exists()) && !$this->isOnDraft()) {
 				$parent = Versioned::get_latest_version(self::class, $this->ParentID);
 			}
 			$base = $parent->RelativeLink($this->URLSegment);
@@ -891,7 +891,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 */
 	public function canAddChildren($member = null) {
 		// Disable adding children to archived pages
-		if($this->getIsDeletedFromStage()) {
+		if(!$this->isOnDraft()) {
 			return false;
 		}
 
@@ -2259,7 +2259,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			return $actions;
 		}
 
-		if($this->isPublished() && $this->canPublish() && !$this->getIsDeletedFromStage() && $this->canUnpublish()) {
+		if($this->isPublished() && $this->canPublish() && $this->isOnDraft() && $this->canUnpublish()) {
 			// "unpublish"
 			$moreOptions->push(
 				FormAction::create('unpublish', _t('SiteTree.BUTTONUNPUBLISH', 'Unpublish'), 'delete')
@@ -2268,8 +2268,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			);
 		}
 
-		if($this->stagesDiffer(Versioned::DRAFT, Versioned::LIVE) && !$this->getIsDeletedFromStage()) {
-			if($this->isPublished() && $this->canEdit())	{
+		if($this->stagesDiffer(Versioned::DRAFT, Versioned::LIVE) && $this->isOnDraft()) {
+			if($this->isPublished() && $this->canEdit()) {
 				// "rollback"
 				$moreOptions->push(
 					FormAction::create('rollback', _t('SiteTree.BUTTONCANCELDRAFT', 'Cancel draft changes'), 'delete')
@@ -2279,7 +2279,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 
 		if($this->canEdit()) {
-			if($this->getIsDeletedFromStage()) {
+			if(!$this->isOnDraft()) {
 				// The usual major actions are not available, so we provide alternatives here.
 				if($existsOnLive) {
 					// "restore"
@@ -2339,7 +2339,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			}
 		}
 
-		if($this->canPublish() && !$this->getIsDeletedFromStage()) {
+		if($this->canPublish() && $this->isOnDraft()) {
 			// "publish", as with "save", it supports an alternate state to show when action is needed.
 			$majorActions->push(
 				$publish = FormAction::create('publish', _t('SiteTree.BUTTONPUBLISHED', 'Published'))
@@ -2394,8 +2394,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 */
 	protected function isParentArchived() {
 		if($parentID = $this->ParentID) {
-			$parentPage = Versioned::get_latest_version("SilverStripe\\CMS\\Model\\SiteTree", $parentID);
-			if(!$parentPage || $parentPage->IsDeletedFromStage) {
+			/** @var SiteTree $parentPage */
+			$parentPage = Versioned::get_latest_version(self::class, $parentID);
+			if(!$parentPage || !$parentPage->isOnDraft()) {
 				return true;
 			}
 		}
@@ -2614,24 +2615,22 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	public function getStatusFlags($cached = true) {
 		if(!$this->_cache_statusFlags || !$cached) {
 			$flags = array();
-			if($this->getIsDeletedFromStage()) {
-				if($this->isPublished()) {
-					$flags['removedfromdraft'] = array(
-						'text' => _t('SiteTree.REMOVEDFROMDRAFTSHORT', 'Removed from draft'),
-						'title' => _t('SiteTree.REMOVEDFROMDRAFTHELP', 'Page is published, but has been deleted from draft'),
-					);
-				} else {
-					$flags['archived'] = array(
-						'text' => _t('SiteTree.ARCHIVEDPAGESHORT', 'Archived'),
-						'title' => _t('SiteTree.ARCHIVEDPAGEHELP', 'Page is removed from draft and live'),
-					);
-				}
-			} else if($this->getIsAddedToStage()) {
+			if($this->isOnLiveOnly()) {
+				$flags['removedfromdraft'] = array(
+					'text' => _t('SiteTree.ONLIVEONLYSHORT', 'On live only'),
+					'title' => _t('SiteTree.ONLIVEONLYSHORTHELP', 'Page is published, but has been deleted from draft'),
+				);
+			} elseif ($this->isArchived()) {
+				$flags['archived'] = array(
+					'text' => _t('SiteTree.ARCHIVEDPAGESHORT', 'Archived'),
+					'title' => _t('SiteTree.ARCHIVEDPAGEHELP', 'Page is removed from draft and live'),
+				);
+			} else if($this->isOnDraftOnly()) {
 				$flags['addedtodraft'] = array(
 					'text' => _t('SiteTree.ADDEDTODRAFTSHORT', 'Draft'),
 					'title' => _t('SiteTree.ADDEDTODRAFTHELP', "Page has not been published yet")
 				);
-			} else if($this->getIsModifiedOnStage()) {
+			} else if($this->isModifiedOnDraft()) {
 				$flags['modified'] = array(
 					'text' => _t('SiteTree.MODIFIEDONDRAFTSHORT', 'Modified'),
 					'title' => _t('SiteTree.MODIFIEDONDRAFTHELP', 'Page has unpublished changes'),
@@ -2775,66 +2774,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$classes .= $this->markingClasses($numChildrenMethod);
 
 		return $classes;
-	}
-
-	/**
-	 * Compares current draft with live version, and returns true if no draft version of this page exists  but the page
-	 * is still published (eg, after triggering "Delete from draft site" in the CMS).
-	 *
-	 * @return bool
-	 */
-	public function getIsDeletedFromStage() {
-		if(!$this->ID) return true;
-		if($this->isNew()) return false;
-
-		$stageVersion = Versioned::get_versionnumber_by_stage('SilverStripe\\CMS\\Model\\SiteTree', Versioned::DRAFT, $this->ID);
-
-		// Return true for both completely deleted pages and for pages just deleted from stage
-		return !($stageVersion);
-	}
-
-	/**
-	 * Return true if this page exists on the live site
-	 *
-	 * @return bool
-	 */
-	public function getExistsOnLive() {
-		return $this->isPublished();
-	}
-
-	/**
-	 * Compares current draft with live version, and returns true if these versions differ, meaning there have been
-	 * unpublished changes to the draft site.
-	 *
-	 * @return bool
-	 */
-	public function getIsModifiedOnStage() {
-		// New unsaved pages could be never be published
-		if($this->isNew()) return false;
-
-		$stageVersion = Versioned::get_versionnumber_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Stage', $this->ID);
-		$liveVersion =	Versioned::get_versionnumber_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', $this->ID);
-
-		$isModified = ($stageVersion && $stageVersion != $liveVersion);
-		$this->extend('getIsModifiedOnStage', $isModified);
-
-		return $isModified;
-	}
-
-	/**
-	 * Compares current draft with live version, and returns true if no live version exists, meaning the page was never
-	 * published.
-	 *
-	 * @return bool
-	 */
-	public function getIsAddedToStage() {
-		// New unsaved pages could be never be published
-		if($this->isNew()) return false;
-
-		$stageVersion = Versioned::get_versionnumber_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Stage', $this->ID);
-		$liveVersion =	Versioned::get_versionnumber_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', $this->ID);
-
-		return ($stageVersion && !$liveVersion);
 	}
 
 	/**

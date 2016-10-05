@@ -29,7 +29,7 @@ class CMSSiteTreeFilter_StatusDraftPages extends CMSSiteTreeFilter
 		$pages = $this->applyDefaultFilters($pages);
 		$pages = $pages->filterByCallback(function (SiteTree $page) {
 			// If page exists on stage but not on live
-			return (!$page->getIsDeletedFromStage() && $page->getIsAddedToStage());
+			return $page->isOnDraftOnly();
 		});
 		return $pages;
 	}
