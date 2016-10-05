@@ -140,7 +140,8 @@ s=r["default"].sprintf(this.data("linkTmplShow"),i,l)
 t(".cms-container").loadPanel(s,"",{pjax:"CurrentForm"})}}),t("#Form_VersionsForm input[name=ShowUnpublished]").entwine({onmatch:function a(){this.toggle(),this._super()},onunmatch:function o(){this._super()
 
 },onchange:function s(){this.toggle()},toggle:function d(){var e=t(this),n=e.parents("form")
-e.attr("checked")?n.find("tr[data-published=false]").show():n.find("tr[data-published=false]").hide()._unselect()}}),t("#Form_VersionsForm tbody tr").entwine({onclick:function l(t){var e,n
+e.attr("checked")?n.find("tr[data-published=false]").css("display",""):n.find("tr[data-published=false]").css("display","none")._unselect()}}),t("#Form_VersionsForm tbody tr").entwine({onclick:function l(t){
+var e,n
 return e=this.parents("form").find(":input[name=CompareMode]").attr("checked"),n=this.siblings(".active"),e&&this.hasClass("active")?void this._unselect():e?n.length>1?alert(r["default"]._t("ONLYSELECTTWO","You can only compare two versions at this time.")):(this._select(),
 void(1==n.length&&this.parents("form").submit())):(this._select(),n._unselect(),this.parents("form").submit(),void 0)},_unselect:function c(){this.removeClass("active"),this.find(":input[type=checkbox]").attr("checked",!1)
 

@@ -96,9 +96,9 @@ $.entwine('ss', function($){
 			var form = self.parents('form');
 
 			if(self.attr('checked')) {
-				form.find('tr[data-published=false]').show();
+				form.find('tr[data-published=false]').css('display', '');
 			} else {
-				form.find("tr[data-published=false]").hide()._unselect();
+				form.find("tr[data-published=false]").css('display', 'none')._unselect();
 			}
 		}
 	});
