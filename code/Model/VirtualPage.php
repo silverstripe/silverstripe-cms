@@ -87,7 +87,7 @@ class VirtualPage extends Page {
 		}
 
 		// Diff db with non-virtual fields
-		$fields = array_keys($record->db());
+		$fields = array_keys(static::getSchema()->fieldSpecs($record));
 		$nonVirtualFields = $this->getNonVirtualisedFields();
 		return array_diff($fields, $nonVirtualFields);
 	}
