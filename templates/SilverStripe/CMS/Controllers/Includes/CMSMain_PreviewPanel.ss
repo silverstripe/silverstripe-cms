@@ -1,6 +1,6 @@
 <div class="cms-preview fill-height" data-layout-type="border">
-	<div class="preview-note"><span><!-- --></span><%t CMSPageHistoryController_versions_ss.PREVIEW 'Website preview' %></div>
 	<div class="panel panel--scrollable flexbox-area-grow">
+		<div class="preview-note"><span><!-- --></span><%t CMSPageHistoryController_versions_ss.PREVIEW 'Website preview' %></div>
 		<div class="preview-device-outer">
 			<div class="preview-device-inner">
 				<iframe src="about:blank" class="center" name="cms-preview-iframe"></iframe>
