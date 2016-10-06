@@ -4,6 +4,7 @@ namespace SilverStripe\CMS\Model;
 
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\ORM\DataExtension;
+use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\ManyManyList;
 use SilverStripe\ORM\Versioning\Versioned;
@@ -168,7 +169,10 @@ class SiteTreeLinkTracking extends DataExtension {
 		}
 
 		// Update the "LinkTracking" many_many
-		if($record->ID && $record->manyManyComponent('LinkTracking') && ($tracker = $record->LinkTracking())) {
+		if($record->ID
+			&& $record->getSchema()->manyManyComponent(get_class($record), 'LinkTracking')
+			&& ($tracker = $record->LinkTracking())
+		) {
 			$tracker->removeByFilter(array(
 				sprintf('"FieldName" = ? AND "%s" = ?', $tracker->getForeignKey())
 					=> array($fieldName, $record->ID)
@@ -180,7 +184,10 @@ class SiteTreeLinkTracking extends DataExtension {
 		}
 
 		// Update the "ImageTracking" many_many
-		if($record->ID && $record->manyManyComponent('ImageTracking') && ($tracker = $record->ImageTracking())) {
+		if($record->ID
+			&& $record->getSchema()->manyManyComponent(get_class($record), 'ImageTracking')
+			&& ($tracker = $record->ImageTracking())
+		) {
 			$tracker->removeByFilter(array(
 				sprintf('"FieldName" = ? AND "%s" = ?', $tracker->getForeignKey())
 					=> array($fieldName, $record->ID)
@@ -208,7 +215,7 @@ class SiteTreeLinkTracking extends DataExtension {
 		$this->owner->HasBrokenFile = false;
 
 		// Build a list of HTMLText fields
-		$allFields = $this->owner->db();
+		$allFields = DataObject::getSchema()->fieldSpecs($this->owner);
 		$htmlFields = array();
 		foreach($allFields as $field => $fieldSpec) {
 			$fieldObj = $this->owner->dbObject($field);

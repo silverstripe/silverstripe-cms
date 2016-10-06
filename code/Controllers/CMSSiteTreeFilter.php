@@ -8,6 +8,7 @@ use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Object;
 use SilverStripe\Forms\DateField;
 use SilverStripe\ORM\DataList;
+use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\Versioning\Versioned;
 
@@ -212,8 +213,9 @@ abstract class CMSSiteTreeFilter extends Object implements LeftAndMain_SearchFil
 					break;
 
 				default:
-					if($sng->hasDatabaseField($name)) {
-						$filter = $sng->dbObject($name)->defaultSearchFilter();
+					$field = $sng->dbObject($name);
+					if($field) {
+						$filter = $field->defaultSearchFilter();
 						$filter->setValue($val);
 						$query = $query->alterDataQuery(array($filter, 'apply'));
 					}
