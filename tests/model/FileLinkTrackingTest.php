@@ -153,21 +153,18 @@ class FileLinkTrackingTest extends SapphireTest {
 
 	public function testLinkRewritingOnAPublishedPageDoesntMakeItEditedOnDraft() {
 		// Publish the source page
+		/** @var Page $page */
 		$page = $this->objFromFixture('Page', 'page1');
 		$this->assertTrue($page->publishRecursive());
-		$this->assertFalse($page->getIsModifiedOnStage());
+		$this->assertFalse($page->isModifiedOnDraft());
 
 		// Rename the file
 		$file = $this->objFromFixture('SilverStripe\\Assets\\Image', 'file1');
 		$file->Name = 'renamed-test-file.jpg';
 		$file->write();
 
-		// Caching hack
-		Versioned::prepopulate_versionnumber_cache('SilverStripe\\CMS\\Model\\SiteTree', 'Stage', array($page->ID));
-		Versioned::prepopulate_versionnumber_cache('SilverStripe\\CMS\\Model\\SiteTree', 'Live', array($page->ID));
-
 		// Confirm that the page hasn't gone green.
-		$this->assertFalse($page->getIsModifiedOnStage());
+		$this->assertFalse($page->isModifiedOnDraft());
 	}
 
 	public function testTwoFileRenamesInARowWork() {

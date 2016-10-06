@@ -28,7 +28,7 @@ class CMSSiteTreeFilter_StatusRemovedFromDraftPages extends CMSSiteTreeFilter
 		$pages = $this->applyDefaultFilters($pages);
 		$pages = $pages->filterByCallback(function (SiteTree $page) {
 			// If page is removed from stage but not live
-			return $page->getIsDeletedFromStage() && $page->getExistsOnLive();
+			return $page->isOnLiveOnly();
 		});
 		return $pages;
 	}

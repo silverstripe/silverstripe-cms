@@ -40,7 +40,7 @@ class CMSSiteTreeFilter_StatusDeletedPages extends CMSSiteTreeFilter
 
 		$pages = $pages->filterByCallback(function (SiteTree $page) {
 			// Doesn't exist on either stage or live
-			return $page->getIsDeletedFromStage() && !$page->getExistsOnLive();
+			return $page->isArchived();
 		});
 		return $pages;
 	}

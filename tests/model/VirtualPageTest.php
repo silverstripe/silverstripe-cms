@@ -277,42 +277,42 @@ class VirtualPageTest extends FunctionalTest {
 		$vp->write();
 
 		// VP is oragne
-		$this->assertTrue($vp->getIsAddedToStage());
+		$this->assertTrue($vp->isOnDraftOnly());
 
 		// VP is still orange after we publish
 		$p->publishRecursive();
-		$this->assertTrue($vp->getIsAddedToStage());
+		$this->assertTrue($vp->isOnDraftOnly());
 
 		// A new VP created after P's initial construction
 		$vp2 = new VirtualPage();
 		$vp2->CopyContentFromID = $p->ID;
 		$vp2->write();
-		$this->assertTrue($vp2->getIsAddedToStage());
+		$this->assertTrue($vp2->isOnDraftOnly());
 
 		// Also remains orange after a republish
 		$p->Content = "new content";
 		$p->write();
 		$p->publishRecursive();
-		$this->assertTrue($vp2->getIsAddedToStage());
+		$this->assertTrue($vp2->isOnDraftOnly());
 
 		// VP is now published
 		$vp->publishRecursive();
 
-		$this->assertTrue($vp->getExistsOnLive());
-		$this->assertFalse($vp->getIsModifiedOnStage());
+		$this->assertTrue($vp->isPublished());
+		$this->assertFalse($vp->isModifiedOnDraft());
 
 		// P edited, P goes green. Change set interface should indicate to the user that the owned page has
 		// modifications, although the virtual page record itself will not appear as having pending changes.
 		$p->Content = "third content";
 		$p->write();
 
-		$this->assertTrue($p->getIsModifiedOnStage());
-		$this->assertFalse($vp->getIsModifiedOnStage());
+		$this->assertTrue($p->isModifiedOnDraft());
+		$this->assertFalse($vp->isModifiedOnDraft());
 
 		// Publish, VP goes black
 		$p->publishRecursive();
-		$this->assertTrue($vp->getExistsOnLive());
-		$this->assertFalse($vp->getIsModifiedOnStage());
+		$this->assertTrue($vp->isPublished());
+		$this->assertFalse($vp->isModifiedOnDraft());
 	}
 
 	public function testUnpublishingSourcePageOfAVirtualPageAlsoUnpublishesVirtualPage() {

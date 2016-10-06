@@ -44,7 +44,7 @@ class CMSSiteTreeFilter_PublishedPages extends CMSSiteTreeFilter
 		$pages = Versioned::get_including_deleted('SilverStripe\\CMS\\Model\\SiteTree');
 		$pages = $this->applyDefaultFilters($pages);
 		$pages = $pages->filterByCallback(function (SiteTree $page) {
-			return $page->getExistsOnLive();
+			return $page->isPublished();
 		});
 		return $pages;
 	}

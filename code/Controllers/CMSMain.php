@@ -664,7 +664,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$actions = $form->Actions();
 
 		if($record) {
-			$deletedFromStage = $record->getIsDeletedFromStage();
+			$deletedFromStage = !$record->isOnDraft();
 
 			$fields->push($idField = new HiddenField("ID", false, $id));
 			// Necessary for different subsites
