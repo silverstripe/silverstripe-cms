@@ -1,4 +1,4 @@
-<div class="cms-preview fill-height" data-layout-type="border">
+<div class="cms-preview fill-height flexbox-area-grow" data-layout-type="border">
 	<div class="panel panel--scrollable flexbox-area-grow">
 		<div class="preview-note"><span><!-- --></span><%t CMSPageHistoryController_versions_ss.PREVIEW 'Website preview' %></div>
 		<div class="preview-device-outer">
@@ -8,4 +8,5 @@
 		</div>
 	</div>
 	<div class="toolbar toolbar--south cms-content-controls cms-preview-controls"></div>
+	<div class="cms-preview-overlay ui-widget-overlay-light"></div>
 </div>
