@@ -10,6 +10,7 @@ use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Convert;
+use SilverStripe\Core\Injector\Injector;
 use SilverStripe\i18n\i18n;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataModel;
@@ -67,7 +68,7 @@ class ContentController extends Controller {
 	 */
 	public function __construct($dataRecord = null) {
 		if(!$dataRecord) {
-			$dataRecord = new Page();
+			$dataRecord = Injector::inst()->create('Page');
 			if($this->hasMethod("Title")) {
 				$dataRecord->Title = $this->Title();
 			}
