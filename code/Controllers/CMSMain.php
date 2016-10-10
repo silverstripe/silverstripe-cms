@@ -734,6 +734,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			if ($record instanceof CMSPreviewable) {
 				$form->addExtraClass('cms-previewable');
 			}
+			$form->addExtraClass('fill-height flexbox-area-grow');
 
 			if(!$record->canEdit() || $deletedFromStage) {
 				$readonlyFields = $form->Fields()->makeReadonly();
