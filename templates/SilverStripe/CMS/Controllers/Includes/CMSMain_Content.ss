@@ -1,4 +1,4 @@
-<div id="pages-controller-cms-content" class="has-panel cms-content center cms-tabset $BaseCSSClasses" data-layout-type="border" data-pjax-fragment="Content" data-ignore-tab-state="true">
+<div id="pages-controller-cms-content" class="has-panel cms-content flexbox-area-grow fill-height cms-tabset $BaseCSSClasses" data-layout-type="border" data-pjax-fragment="Content" data-ignore-tab-state="true">
 
 	<div class="cms-content-header north">
 
@@ -42,8 +42,9 @@
 		</div>
 	</div>
 
-	$Tools
-
-	$EditForm
+	<div class="flexbox-area-grow fill-width">
+		$Tools
+		$EditForm
+	</div>
 
 </div>
