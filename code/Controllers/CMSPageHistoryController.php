@@ -16,6 +16,7 @@ use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\Security\Security;
+use SilverStripe\View\ArrayData;
 use SilverStripe\View\ViewableData;
 
 class CMSPageHistoryController extends CMSMain {
@@ -174,7 +175,7 @@ class CMSPageHistoryController extends CMSMain {
 		}
 
 		$fields->addFieldToTab('Root.Main',
-			new LiteralField('CurrentlyViewingMessage', $this->customise(array(
+			new LiteralField('CurrentlyViewingMessage', ArrayData::create(array(
 				'Content' => DBField::create_field('HTMLFragment', $message),
 				'Classes' => 'notice'
 			))->renderWith($this->getTemplatesWithSuffix('_notice'))),
