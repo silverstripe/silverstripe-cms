@@ -394,7 +394,7 @@ class CMSPageHistoryController extends CMSMain {
 		}
 
 		if(isset($record)) {
-			$form = $this->getEditForm($id, null, null, true);
+			$form = $this->getEditForm($id, null, $fromVersion, $toVersion);
 			$form->setActions(new FieldList());
 			$form->addExtraClass('compare');
 			
