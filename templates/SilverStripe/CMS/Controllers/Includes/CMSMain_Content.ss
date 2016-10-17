@@ -1,50 +1,37 @@
-<div id="pages-controller-cms-content" class="has-panel cms-content flexbox-area-grow fill-height cms-tabset $BaseCSSClasses" data-layout-type="border" data-pjax-fragment="Content" data-ignore-tab-state="true">
+<div id="pages-controller-cms-content" class="has-panel cms-content flexbox-area-grow fill-height $BaseCSSClasses" data-layout-type="border" data-pjax-fragment="Content" data-ignore-tab-state="true">
+	<div class="fill-width flexbox-area-grow">
+		$Tools
 
-	<div class="cms-content-header north">
+		<div class="fill-height flexbox-area-grow">
+			<div class="cms-content-header north">
+				<div class="cms-content-header-nav fill-width">
+		  <% include SilverStripe\\Admin\\CMSBreadcrumbs %>
 
-
-		<div class="cms-content-header-nav">
-			<% include SilverStripe\\Admin\\CMSBreadcrumbs %>
-
-			<div class="cms-content-header-tabs">
-				<ul class="cms-tabset-nav-primary nav nav-tabs">
-					<li class="nav-item content-treeview<% if $class == 'SilverStripe\\CMS\\Controllers\\CMSPageEditController' %> ui-tabs-active<% end_if %>">
-						<a href="$LinkPageEdit" class="nav-link cms-panel-link" title="Form_EditForm" data-href="$LinkPageEdit">
-							<% _t('CMSMain.TabContent', 'Content') %>
-						</a>
-					</li>
-					<li class="nav-item content-listview<% if $class == 'SilverStripe\\CMS\\Controllers\\CMSPageSettingsController' %> ui-tabs-active<% end_if %>">
-						<a href="$LinkPageSettings" class="nav-link cms-panel-link" title="Form_EditForm" data-href="$LinkPageSettings">
-							<% _t('CMSMain.TabSettings', 'Settings') %>
-						</a>
-					</li>
-					<li class="nav-item content-listview<% if $class == 'SilverStripe\\CMS\\Controllers\\CMSPageHistoryController' %> ui-tabs-active<% end_if %>">
-						<a href="$LinkPageHistory" class="nav-link cms-panel-link" title="Form_EditForm" data-href="$LinkPageHistory">
-							<% _t('CMSMain.TabHistory', 'History') %>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-
-		<div class="cms-content-header-info">
-			<div class="section-heading">
-				<% include SilverStripe\\Admin\\CMSSectionIcon %>
-				<span class="section-label"><a href="$LinkPages">{$MenuCurrentItem.Title}</a></span>
-			</div>
-
-			<div class="view-controls">
-				<button id="filters-button" class="icon-button font-icon-search no-text" title="<% _t('CMSPagesController_Tools_ss.FILTER', 'Filter') %>"></button>
-				<div class="icon-button-group">
-					<a href="$LinkPages#cms-content-treeview" class="icon-button font-icon-tree active" title="<% _t('CMSPagesController.TreeView', 'Tree View') %>"></a><a href="$LinkPages#cms-content-listview" class="icon-button font-icon-list" title="<% _t('CMSPagesController.ListView', 'List View') %>"></a>
+					<div class="cms-content-header-tabs cms-tabset">
+						<ul class="cms-tabset-nav-primary nav nav-tabs">
+							<li class="nav-item content-treeview<% if $class == 'SilverStripe\\CMS\\Controllers\\CMSPageEditController' %> ui-tabs-active<% end_if %>">
+								<a href="$LinkPageEdit" class="nav-link cms-panel-link" title="Form_EditForm" data-href="$LinkPageEdit">
+				  <% _t('CMSMain.TabContent', 'Content') %>
+								</a>
+							</li>
+							<li class="nav-item content-listview<% if $class == 'SilverStripe\\CMS\\Controllers\\CMSPageSettingsController' %> ui-tabs-active<% end_if %>">
+								<a href="$LinkPageSettings" class="nav-link cms-panel-link" title="Form_EditForm" data-href="$LinkPageSettings">
+				  <% _t('CMSMain.TabSettings', 'Settings') %>
+								</a>
+							</li>
+							<li class="nav-item content-listview<% if $class == 'SilverStripe\\CMS\\Controllers\\CMSPageHistoryController' %> ui-tabs-active<% end_if %>">
+								<a href="$LinkPageHistory" class="nav-link cms-panel-link" title="Form_EditForm" data-href="$LinkPageHistory">
+				  <% _t('CMSMain.TabHistory', 'History') %>
+								</a>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
+
+			<div class="flexbox-area-grow fill-width">
+				$EditForm
+			</div>
 		</div>
 	</div>
-
-	<div class="flexbox-area-grow fill-width">
-		$Tools
-		$EditForm
-	</div>
-
 </div>
