@@ -348,33 +348,6 @@ $.entwine('ss', function($){
 	});
 
 	/**
-	 * Class: .cms-edit-form .btn-toolbar #Form_EditForm_action_delete
-	 *
-	 * Informing the user about the delete from draft action while requiring confirmation
-	 */
-	$('.cms-edit-form .btn-toolbar #Form_EditForm_action_delete').entwine({
-
-		/**
-		 * Function: onclick
-		 *
-		 * Parameters:
-		 *  (Event) e
-		 */
-		onclick: function(e) {
-			var form = this.parents('form:first'), version = form.find(':input[name=Version]').val(), message = '';
-			message = i18n.sprintf(
-				i18n._t('CMSMain.DeleteFromDraft'),
-				version
-			);
-			if(confirm(message)) {
-				return this._super(e);
-			} else {
-				return false;
-			}
-		}
-	});
-
-	/**
 	 * Class: .cms-edit-form .btn-toolbar #Form_EditForm_action_unpublish
 	 * Informing the user about the unpublish action while requiring confirmation
 	 */

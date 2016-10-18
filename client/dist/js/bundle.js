@@ -74,22 +74,20 @@ onclick:function g(t){var e=this.parents("form:first"),n=e.find(":input[name=Ver
 return i=r["default"].sprintf(r["default"]._t("CMSMain.Archive"),n),!!confirm(i)&&this._super(t)}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_restore").entwine({onclick:function _(t){var e=this.parents("form:first"),n=e.find(":input[name=Version]").val(),i="",a=this.data("toRoot")
 
 
-return i=r["default"].sprintf(r["default"]._t(a?"CMSMain.RestoreToRoot":"CMSMain.Restore"),n),!!confirm(i)&&this._super(t)}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_delete").entwine({onclick:function b(t){
+return i=r["default"].sprintf(r["default"]._t(a?"CMSMain.RestoreToRoot":"CMSMain.Restore"),n),!!confirm(i)&&this._super(t)}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_unpublish").entwine({onclick:function b(t){
 var e=this.parents("form:first"),n=e.find(":input[name=Version]").val(),i=""
-return i=r["default"].sprintf(r["default"]._t("CMSMain.DeleteFromDraft"),n),!!confirm(i)&&this._super(t)}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_unpublish").entwine({onclick:function w(t){
-var e=this.parents("form:first"),n=e.find(":input[name=Version]").val(),i=""
-return i=r["default"].sprintf(r["default"]._t("CMSMain.Unpublish"),n),!!confirm(i)&&this._super(t)}}),t(".cms-edit-form.changed").entwine({onmatch:function C(t){this.find("button[name=action_save]").button("option","showingAlternate",!0),
-this.find("button[name=action_publish]").button("option","showingAlternate",!0),this._super(t)},onunmatch:function F(t){var e=this.find("button[name=action_save]")
+return i=r["default"].sprintf(r["default"]._t("CMSMain.Unpublish"),n),!!confirm(i)&&this._super(t)}}),t(".cms-edit-form.changed").entwine({onmatch:function w(t){this.find("button[name=action_save]").button("option","showingAlternate",!0),
+this.find("button[name=action_publish]").button("option","showingAlternate",!0),this._super(t)},onunmatch:function C(t){var e=this.find("button[name=action_save]")
 e.data("button")&&e.button("option","showingAlternate",!1)
 var n=this.find("button[name=action_publish]")
-n.data("button")&&n.button("option","showingAlternate",!1),this._super(t)}}),t(".cms-edit-form .btn-toolbar button[name=action_publish]").entwine({onbuttonafterrefreshalternate:function P(){this.button("option","showingAlternate")?this.addClass("ss-ui-action-constructive"):this.removeClass("ss-ui-action-constructive")
+n.data("button")&&n.button("option","showingAlternate",!1),this._super(t)}}),t(".cms-edit-form .btn-toolbar button[name=action_publish]").entwine({onbuttonafterrefreshalternate:function F(){this.button("option","showingAlternate")?this.addClass("ss-ui-action-constructive"):this.removeClass("ss-ui-action-constructive")
 
-}}),t(".cms-edit-form .btn-toolbar button[name=action_save]").entwine({onbuttonafterrefreshalternate:function T(){this.button("option","showingAlternate")?this.addClass("ss-ui-action-constructive"):this.removeClass("ss-ui-action-constructive")
+}}),t(".cms-edit-form .btn-toolbar button[name=action_save]").entwine({onbuttonafterrefreshalternate:function P(){this.button("option","showingAlternate")?this.addClass("ss-ui-action-constructive"):this.removeClass("ss-ui-action-constructive")
 
-}}),t('.cms-edit-form.CMSPageSettingsController input[name="ParentType"]:checked').entwine({onmatch:function S(){this.redraw(),this._super()},onunmatch:function k(){this._super()},redraw:function x(){var e=t(".cms-edit-form.CMSPageSettingsController #Form_EditForm_ParentID_Holder")
+}}),t('.cms-edit-form.CMSPageSettingsController input[name="ParentType"]:checked').entwine({onmatch:function T(){this.redraw(),this._super()},onunmatch:function S(){this._super()},redraw:function x(){var e=t(".cms-edit-form.CMSPageSettingsController #Form_EditForm_ParentID_Holder")
 
 
-"Form_EditForm_ParentType_root"==t(this).attr("id")?e.slideUp():e.slideDown()},onclick:function E(){this.redraw()}}),"Form_EditForm_ParentType_root"==t('.cms-edit-form.CMSPageSettingsController input[name="ParentType"]:checked').attr("id")&&t(".cms-edit-form.CMSPageSettingsController #Form_EditForm_ParentID_Holder").hide()
+"Form_EditForm_ParentType_root"==t(this).attr("id")?e.slideUp():e.slideDown()},onclick:function k(){this.redraw()}}),"Form_EditForm_ParentType_root"==t('.cms-edit-form.CMSPageSettingsController input[name="ParentType"]:checked').attr("id")&&t(".cms-edit-form.CMSPageSettingsController #Form_EditForm_ParentID_Holder").hide()
 
 })},function(t,e){t.exports=i18n},function(t,e,n){"use strict"
 function i(t){return t&&t.__esModule?t:{"default":t}}var a=n(2),o=i(a)

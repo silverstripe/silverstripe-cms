@@ -36,7 +36,7 @@ class CMSMainTest extends FunctionalTest {
 		parent::setUp();
 
 		// Clear automatically created siteconfigs (in case one was created outside of the specified fixtures).
-		$ids = $this->allFixtureIDs('SilverStripe\\SiteConfig\\SiteConfig');
+		$ids = $this->allFixtureIDs(SiteConfig::class);
 		if($ids) {
 			foreach(SiteConfig::get()->exclude('ID', $ids) as $config) {
 				$config->delete();
@@ -120,8 +120,8 @@ class CMSMainTest extends FunctionalTest {
 	 * @todo Test the results of a publication better
 	 */
 	public function testPublish() {
-		$page1 = $this->objFromFixture('Page', "page1");
-		$page2 = $this->objFromFixture('Page', "page2");
+		$page1 = $this->objFromFixture(Page::class, "page1");
+		$page2 = $this->objFromFixture(Page::class, "page2");
 		$this->session()->inst_set('loggedInAs', $this->idFromFixture('SilverStripe\\Security\\Member', 'admin'));
 
 		$response = $this->get('admin/pages/publishall?confirm=1');
@@ -129,8 +129,6 @@ class CMSMainTest extends FunctionalTest {
 				'Done: Published 30 pages',
 				$response->getBody()
 		);
-
-		$actions = CMSBatchActionHandler::config()->batch_actions;
 
 		// Some modules (e.g., cmsworkflow) will remove this action
 		$actions = CMSBatchActionHandler::config()->batch_actions;
@@ -213,8 +211,8 @@ class CMSMainTest extends FunctionalTest {
 		$this->logInWithPermission('ADMIN');
 
 		Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'enforce_strict_hierarchy', true);
-		$parentPage = $this->objFromFixture('Page', 'page3');
-		$childPage = $this->objFromFixture('Page', 'page1');
+		$parentPage = $this->objFromFixture(Page::class, 'page3');
+		$childPage = $this->objFromFixture(Page::class, 'page1');
 
 		$parentPage->doUnpublish();
 		$childPage->doUnpublish();
@@ -235,7 +233,7 @@ class CMSMainTest extends FunctionalTest {
 		$this->session()->inst_set('loggedInAs', $this->idFromFixture('SilverStripe\\Security\\Member', 'admin'));
 
 		// Set up a page that is delete from live
-		$page = $this->objFromFixture('Page', 'page1');
+		$page = $this->objFromFixture(Page::class, 'page1');
 		$pageID = $page->ID;
 		$page->publishRecursive();
 		$page->delete();
@@ -256,8 +254,10 @@ class CMSMainTest extends FunctionalTest {
 	 * Test CMSMain::getRecord()
 	 */
 	public function testGetRecord() {
+		$this->logInWithPermission('ADMIN');
+
 		// Set up a page that is delete from live
-		$page1 = $this->objFromFixture('Page', 'page1');
+		$page1 = $this->objFromFixture(Page::class, 'page1');
 		$page1ID = $page1->ID;
 		$page1->publishRecursive();
 		$page1->delete();
@@ -410,8 +410,8 @@ class CMSMainTest extends FunctionalTest {
 	}
 
 	public function testBreadcrumbs() {
-		$page3 = $this->objFromFixture('Page', 'page3');
-		$page31 = $this->objFromFixture('Page', 'page31');
+		$page3 = $this->objFromFixture(Page::class, 'page3');
+		$page31 = $this->objFromFixture(Page::class, 'page31');
 		$adminuser = $this->objFromFixture('SilverStripe\\Security\\Member', 'admin');
 		$this->session()->inst_set('loggedInAs', $adminuser->ID);
 
@@ -463,10 +463,10 @@ class CMSMainTest extends FunctionalTest {
 		);
 
 		// Change state of tree
-		$page1 = $this->objFromFixture('Page', 'page1');
-		$page3 = $this->objFromFixture('Page', 'page3');
-		$page11 = $this->objFromFixture('Page', 'page11');
-		$page12 = $this->objFromFixture('Page', 'page12');
+		$page1 = $this->objFromFixture(Page::class, 'page1');
+		$page3 = $this->objFromFixture(Page::class, 'page3');
+		$page11 = $this->objFromFixture(Page::class, 'page11');
+		$page12 = $this->objFromFixture(Page::class, 'page12');
 		// Deleted
 		$page1->doUnpublish();
 		$page1->delete();
@@ -542,7 +542,7 @@ class CMSMainTest extends FunctionalTest {
 		$this->loginWithPermission('ADMIN');
 
 		// Get a associated with a fixture page.
-		$page = $this->objFromFixture('Page', 'page1');
+		$page = $this->objFromFixture(Page::class, 'page1');
 		$controller = new CMSMain();
 		$form = $controller->getEditForm($page->ID);
 		$this->assertInstanceOf("SilverStripe\\Forms\\Form", $form);
