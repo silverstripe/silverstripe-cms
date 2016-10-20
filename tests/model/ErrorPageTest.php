@@ -64,13 +64,19 @@ class ErrorPageTest extends FunctionalTest {
 	public function testBehaviourOf403() {
 		$page = $this->objFromFixture('ErrorPage', '403');
 		$page->publish('Stage', 'Live');
-		
-		$response = $this->get($page->RelativeLink());
-		
-		$this->assertEquals($response->getStatusCode(), '403');
-		$this->assertNotNull($response->getBody(), 'We have body text from the error page');
+
+		try {
+			$controller = singleton('ContentController');
+			$controller->httpError(403);
+			$this->fail('Expected exception to be thrown');
+		}
+		catch(SS_HTTPResponse_Exception $e) {
+			$response = $e->getResponse();
+			$this->assertEquals($response->getStatusCode(), '403');
+			$this->assertNotNull($response->getBody(), 'We have body text from the error page');
+		}
 	}
-	
+
 	public function testSecurityError() {
 		// Generate 404 page
 		$page = $this->objFromFixture('ErrorPage', '404');
