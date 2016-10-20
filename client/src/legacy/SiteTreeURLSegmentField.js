@@ -19,7 +19,7 @@ $.entwine('ss', function($) {
 			// This ensures we don't get bogus previews on readonly fields.
 			if(this.find(':text').length) this.toggleEdit(false);
 			this.redraw();
-			
+
 			this._super();
 		},
 
@@ -34,7 +34,7 @@ $.entwine('ss', function($) {
 			}
 
 			// Transfer current value to holder
-			this.find('.preview').attr('href', encodeURI(url + field.data('suffix'))).text(previewUrl);
+			this.find('.URL-link').attr('href', encodeURI(url + field.data('suffix'))).text(previewUrl);
 		},
 
 		/**
@@ -51,7 +51,7 @@ $.entwine('ss', function($) {
 				field.focus();
 			}
 		},
-		
+
 		/**
 		 * Commits the change of the URLSegment to the field
 		 * Optional: pass in (String) to update the URLSegment
@@ -62,7 +62,7 @@ $.entwine('ss', function($) {
 				currentVal = field.data('origval'),
 				title = arguments[0],
 				updateVal = (title && title !== "") ? title : field.val();
-			
+
 			if (currentVal != updateVal) {
 				this.addClass('loading');
 				this.suggest(updateVal, function(data) {
@@ -76,7 +76,7 @@ $.entwine('ss', function($) {
 				this.redraw();
 			}
 		},
-		
+
 		/**
 		 * Cancels any changes to the field
 		 */
