@@ -157,7 +157,7 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$p->write();
 
 		// Looking at the old version, the ability to rollback to that version is available
-		$version = DB::query('SELECT "Version" FROM "SiteTree_versions" WHERE "Content" = \'test page first version\'')->value();
+		$version = DB::query('SELECT "Version" FROM "SiteTree_Versions" WHERE "Content" = \'test page first version\'')->value();
 		$old = Versioned::get_version('Page', $p->ID, $version);
 		$actions = $old->getCMSActions();
 		$this->assertNull($actions->dataFieldByName('action_save'));

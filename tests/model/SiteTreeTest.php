@@ -651,14 +651,14 @@ class SiteTreeTest extends SapphireTest {
 		$about->write();
 
 		// Check the version created
-		$savedVersion = DB::query("SELECT \"AuthorID\", \"PublisherID\" FROM \"SiteTree_versions\"
+		$savedVersion = DB::query("SELECT \"AuthorID\", \"PublisherID\" FROM \"SiteTree_Versions\"
 			WHERE \"RecordID\" = $about->ID ORDER BY \"Version\" DESC")->first();
 		$this->assertEquals($memberID, $savedVersion['AuthorID']);
 		$this->assertEquals(0, $savedVersion['PublisherID']);
 
 		// Publish the page
 		$about->publishRecursive();
-		$publishedVersion = DB::query("SELECT \"AuthorID\", \"PublisherID\" FROM \"SiteTree_versions\"
+		$publishedVersion = DB::query("SELECT \"AuthorID\", \"PublisherID\" FROM \"SiteTree_Versions\"
 			WHERE \"RecordID\" = $about->ID ORDER BY \"Version\" DESC")->first();
 
 		// Check the version created
