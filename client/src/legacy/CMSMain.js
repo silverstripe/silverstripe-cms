@@ -24,6 +24,19 @@ $.entwine('ss', function ($) {
 		}
 	});
 
+  // Customise tree / list view pjax tab loading
+  // See $('.cms .cms-panel-link') in LeftAndMain.js
+  $('.cms .cms-panel-link.page-view-link').entwine({
+    onclick: function(e){
+      // Toggle 'active' flag
+      this.siblings().removeClass('active');
+      this.addClass('active');
+      // Does pjax load
+      return this._super(e);
+    }
+  });
+
+
 	$('.cms-content-toolbar').entwine({
 
 		onmatch: function () {
