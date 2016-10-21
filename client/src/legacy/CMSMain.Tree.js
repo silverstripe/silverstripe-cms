@@ -163,17 +163,4 @@ $.entwine('ss.tree', function($){
 			window.location = location.protocol + '//' + location.host + location.pathname;
 		}
 	});
-
-	$('.cms-tree-filtered').entwine({
-		onmatch: function () {
-			var self = this,
-				setHeight = function () {
-					var height = $('.cms-content-tools .cms-panel-content').height() - self.parent().siblings('.cms-content-toolbar').outerHeight(true);
-					self.css('height', height + 'px');
-				};
-
-			setHeight();
-			$(window).on('resize', window.ss.debounce(setHeight, 300));
-		}
-	});
 });

@@ -6,7 +6,7 @@
 
 $ExtraTreeTools
 
-<div class="center">
+<div class="flexbox-area-grow">
 	<% if $TreeIsFiltered %>
 	<div class="cms-tree-filtered cms-notice">
 		<strong><% _t('CMSMain.TreeFiltered', 'Showing search results.') %></strong>

@@ -20,10 +20,10 @@
 		</div>
 	</div>
 
-	<div class="cms-content-fields center ui-widget-content cms-panel-padded">
+	<div class="cms-content-fields center ui-widget-content cms-panel-padded flexbox-area-grow fill-height">
 		$Tools
 
-		<div class="cms-content-view cms-panel-deferred" id="cms-content-treeview" data-url="$LinkTreeView" data-deferred-no-cache="true">
+		<div class="cms-content-view cms-panel-deferred fill-height flexbox-display" id="cms-content-treeview" data-url="$LinkTreeView" data-deferred-no-cache="true">
 			<%-- Lazy-loaded via ajax --%>
 		</div>
 
