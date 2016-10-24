@@ -18,12 +18,16 @@
   "require": {
     "php": ">=5.5.0",
     "composer/installers": "*",
-    "silverstripe/framework": "^4.0",
-    "silverstripe/reports": "^4.0",
-    "silverstripe/siteconfig": "^4.0"
+    "silverstripe/framework": "^4.0@dev",
+    "silverstripe/reports": "^4.0@dev",
+    "silverstripe/siteconfig": "^4.0@dev"
   },
   "require-dev": {
-    "phpunit/PHPUnit": "~4.8"
+    "phpunit/PHPUnit": "~4.8",
+    "silverstripe/behat-extension": "^2.1.0",
+    "silverstripe/serve": "dev-master",
+    "silverstripe/testsession": "^2.0.0-alpha3",
+    "se/selenium-server-standalone": "2.41.0"
   },
   "extra": {
     "branch-alias": {
@@ -36,5 +40,5 @@
     },
     "classmap": ["tests/behat/"]
   },
-  "minimum-stability": "dev"
+  "minimum-stability": "stable"
 }
