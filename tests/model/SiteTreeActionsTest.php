@@ -1,7 +1,9 @@
 <?php
 
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\DB;
+use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Dev\TestOnly;
@@ -13,7 +15,6 @@ use SilverStripe\Dev\TestOnly;
  * - action_publish
  * - action_unpublish
  * - action_archive
- * - action_deletefromlive
  * - action_rollback
  * - action_revert
  *
@@ -25,29 +26,37 @@ class SiteTreeActionsTest extends FunctionalTest {
 	protected static $fixture_file = 'SiteTreeActionsTest.yml';
 
 	public function testActionsReadonly() {
-		if(class_exists('SiteTreeCMSWorkflow')) return true;
+		if(class_exists('SiteTreeCMSWorkflow')) {
+			$this->markTestSkipped('Skip if SiteTreeCMSWorkflow installed');
+		}
 
-		$readonlyEditor = $this->objFromFixture('SilverStripe\\Security\\Member', 'cmsreadonlyeditor');
-		$this->session()->inst_set('loggedInAs', $readonlyEditor->ID);
-
+		// Publish record
+		$this->logInWithPermission('ADMIN');
 		$page = new SiteTreeActionsTest_Page();
 		$page->CanEditType = 'LoggedInUsers';
 		$page->write();
 		$page->publishRecursive();
 
+		// Log in as another user
+		$readonlyEditor = $this->objFromFixture(Member::class, 'cmsreadonlyeditor');
+		$this->session()->inst_set('loggedInAs', $readonlyEditor->ID);
+
+		// Reload latest version
+		$page = Page::get()->byID($page->ID);
 		$actions = $page->getCMSActions();
 
 		$this->assertNull($actions->dataFieldByName('action_save'));
 		$this->assertNull($actions->dataFieldByName('action_publish'));
 		$this->assertNull($actions->dataFieldByName('action_unpublish'));
-		$this->assertNull($actions->dataFieldByName('action_delete'));
-		$this->assertNull($actions->dataFieldByName('action_deletefromlive'));
+		$this->assertNull($actions->dataFieldByName('action_archive'));
 		$this->assertNull($actions->dataFieldByName('action_rollback'));
 		$this->assertNull($actions->dataFieldByName('action_revert'));
 	}
 
 	public function testActionsNoDeletePublishedRecord() {
-		if(class_exists('SiteTreeCMSWorkflow')) return true;
+		if(class_exists('SiteTreeCMSWorkflow')) {
+			$this->markTestSkipped('Skip if SiteTreeCMSWorkflow installed');
+		}
 
 		$this->logInWithPermission('ADMIN');
 
@@ -56,35 +65,43 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$page->write();
 		$pageID = $page->ID;
 		$page->publishRecursive();
-		$page->deleteFromStage('Stage');
+		$page->deleteFromStage(Versioned::DRAFT);
 
 		// Get the live version of the page
-		$page = Versioned::get_one_by_stage("SilverStripe\\CMS\\Model\\SiteTree", "Live", "\"SiteTree\".\"ID\" = $pageID");
-		$this->assertInstanceOf("SilverStripe\\CMS\\Model\\SiteTree", $page);
+		$page = Versioned::get_one_by_stage(SiteTree::class, "Live", "\"SiteTree\".\"ID\" = $pageID");
+		$this->assertInstanceOf(SiteTree::class, $page);
 
 		// Check that someone without the right permission can't delete the page
-		$editor = $this->objFromFixture('SilverStripe\\Security\\Member', 'cmsnodeleteeditor');
+		$editor = $this->objFromFixture(Member::class, 'cmsnodeleteeditor');
 		$this->session()->inst_set('loggedInAs', $editor->ID);
 
 		$actions = $page->getCMSActions();
-		$this->assertNull($actions->dataFieldByName('action_deletefromlive'));
+		$this->assertNull($actions->dataFieldByName('action_archive'));
 
 		// Check that someone with the right permission can delete the page
- 		$this->objFromFixture('SilverStripe\\Security\\Member', 'cmseditor')->logIn();
+		/** @var Member $member */
+		$member = $this->objFromFixture(Member::class, 'cmseditor');
+		$member->logIn();
 		$actions = $page->getCMSActions();
-		$this->assertNotNull($actions->dataFieldByName('action_deletefromlive'));
+		$this->assertNotNull($actions->dataFieldByName('action_archive'));
 	}
 
 	public function testActionsPublishedRecord() {
-		if(class_exists('SiteTreeCMSWorkflow')) return true;
+		if(class_exists('SiteTreeCMSWorkflow')) {
+			$this->markTestSkipped('Skip if SiteTreeCMSWorkflow installed');
+		}
 
-		$author = $this->objFromFixture('SilverStripe\\Security\\Member', 'cmseditor');
+		$author = $this->objFromFixture(Member::class, 'cmseditor');
 		$this->session()->inst_set('loggedInAs', $author->ID);
 
+		/** @var Page $page */
 		$page = new Page();
 		$page->CanEditType = 'LoggedInUsers';
 		$page->write();
 		$page->publishRecursive();
+
+		// Reload latest version
+		$page = Page::get()->byID($page->ID);
 
 		$actions = $page->getCMSActions();
 
@@ -92,64 +109,74 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$this->assertNotNull($actions->dataFieldByName('action_publish'));
 		$this->assertNotNull($actions->dataFieldByName('action_unpublish'));
 		$this->assertNotNull($actions->dataFieldByName('action_archive'));
-		$this->assertNull($actions->dataFieldByName('action_deletefromlive'));
 		$this->assertNull($actions->dataFieldByName('action_rollback'));
 		$this->assertNull($actions->dataFieldByName('action_revert'));
 	}
 
 	public function testActionsDeletedFromStageRecord() {
-		if(class_exists('SiteTreeCMSWorkflow')) return true;
+		if(class_exists('SiteTreeCMSWorkflow')) {
+			$this->markTestSkipped('Skip if SiteTreeCMSWorkflow installed');
+		}
 
-		$author = $this->objFromFixture('SilverStripe\\Security\\Member', 'cmseditor');
+		$author = $this->objFromFixture(Member::class, 'cmseditor');
 		$this->session()->inst_set('loggedInAs', $author->ID);
 
 		$page = new Page();
 		$page->CanEditType = 'LoggedInUsers';
 		$page->write();
+		$this->assertTrue($page->canPublish());
 		$pageID = $page->ID;
 		$page->publishRecursive();
 		$page->deleteFromStage('Stage');
 
 		// Get the live version of the page
-		$page = Versioned::get_one_by_stage("SilverStripe\\CMS\\Model\\SiteTree", "Live", "\"SiteTree\".\"ID\" = $pageID");
-		$this->assertInstanceOf('SilverStripe\\CMS\\Model\\SiteTree', $page);
+		$page = Versioned::get_one_by_stage(SiteTree::class, "Live", "\"SiteTree\".\"ID\" = $pageID");
+		$this->assertInstanceOf(SiteTree::class, $page);
 
 		$actions = $page->getCMSActions();
 
 		$this->assertNull($actions->dataFieldByName('action_save'));
 		$this->assertNull($actions->dataFieldByName('action_publish'));
 		$this->assertNull($actions->dataFieldByName('action_unpublish'));
-		$this->assertNull($actions->dataFieldByName('action_archive'));
-		$this->assertNotNull($actions->dataFieldByName('action_deletefromlive'));
+		$this->assertNotNull($actions->dataFieldByName('action_archive'));
 		$this->assertNull($actions->dataFieldByName('action_rollback'));
 		$this->assertNotNull($actions->dataFieldByName('action_revert'));
 	}
 
 	public function testActionsChangedOnStageRecord() {
-		if(class_exists('SiteTreeCMSWorkflow')) return true;
+		if(class_exists('SiteTreeCMSWorkflow')) {
+			$this->markTestSkipped('Skip if SiteTreeCMSWorkflow installed');
+		}
 
-		$author = $this->objFromFixture('SilverStripe\\Security\\Member', 'cmseditor');
+		$author = $this->objFromFixture(Member::class, 'cmseditor');
 		$this->session()->inst_set('loggedInAs', $author->ID);
 
 		$page = new Page();
 		$page->CanEditType = 'LoggedInUsers';
 		$page->write();
+		$this->assertTrue($page->canPublish());
 		$page->publishRecursive();
 		$page->Content = 'Changed on Stage';
 		$page->write();
 		$page->flushCache();
+
+		// Reload latest version
+		$page = Page::get()->byID($page->ID);
 
 		$actions = $page->getCMSActions();
 		$this->assertNotNull($actions->dataFieldByName('action_save'));
 		$this->assertNotNull($actions->dataFieldByName('action_publish'));
 		$this->assertNotNull($actions->dataFieldByName('action_unpublish'));
 		$this->assertNotNull($actions->dataFieldByName('action_archive'));
-		$this->assertNull($actions->dataFieldByName('action_deletefromlive'));
 		$this->assertNotNull($actions->dataFieldByName('action_rollback'));
 		$this->assertNull($actions->dataFieldByName('action_revert'));
 	}
 
 	public function testActionsViewingOldVersion() {
+		if(class_exists('SiteTreeCMSWorkflow')) {
+			$this->markTestSkipped('Skip if SiteTreeCMSWorkflow installed');
+		}
+
 		$p = new Page();
 		$p->Content = 'test page first version';
 		$p->write();
@@ -157,13 +184,12 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$p->write();
 
 		// Looking at the old version, the ability to rollback to that version is available
-		$version = DB::query('SELECT "Version" FROM "SiteTree_versions" WHERE "Content" = \'test page first version\'')->value();
+		$version = DB::query('SELECT "Version" FROM "SiteTree_Versions" WHERE "Content" = \'test page first version\'')->value();
 		$old = Versioned::get_version('Page', $p->ID, $version);
 		$actions = $old->getCMSActions();
 		$this->assertNull($actions->dataFieldByName('action_save'));
 		$this->assertNull($actions->dataFieldByName('action_publish'));
 		$this->assertNull($actions->dataFieldByName('action_unpublish'));
-		$this->assertNull($actions->dataFieldByName('action_archive'));
 		$this->assertNotNull($actions->dataFieldByName('action_email'));
 		$this->assertNotNull($actions->dataFieldByName('action_rollback'));
 	}

@@ -366,7 +366,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		// Traverse down the remaining URL segments and grab the relevant SiteTree objects.
 		foreach($parts as $segment) {
-			$next = DataObject::get_one('SilverStripe\\CMS\\Model\\SiteTree', array(
+			$next = DataObject::get_one(self::class, array(
 					'"SiteTree"."URLSegment"' => $segment,
 					'"SiteTree"."ParentID"' => $sitetree->ID
 				),
@@ -1722,7 +1722,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 
 		// Check existence
-		$existingPage = DataObject::get_one('SilverStripe\\CMS\\Model\\SiteTree', $filter);
+		$existingPage = DataObject::get_one(self::class, $filter);
 		if ($existingPage) return false;
 
 		return !($existingPage);
@@ -1758,7 +1758,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string
 	 */
 	public function getStageURLSegment() {
-		$stageRecord = Versioned::get_one_by_stage('SilverStripe\\CMS\\Model\\SiteTree', Versioned::DRAFT, array(
+		$stageRecord = Versioned::get_one_by_stage(self::class, Versioned::DRAFT, array(
 			'"SiteTree"."ID"' => $this->ID
 		));
 		return ($stageRecord) ? $stageRecord->URLSegment : null;
@@ -1770,7 +1770,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string
 	 */
 	public function getLiveURLSegment() {
-		$liveRecord = Versioned::get_one_by_stage('SilverStripe\\CMS\\Model\\SiteTree', Versioned::LIVE, array(
+		$liveRecord = Versioned::get_one_by_stage(self::class, Versioned::LIVE, array(
 			'"SiteTree"."ID"' => $this->ID
 		));
 		return ($liveRecord) ? $liveRecord->URLSegment : null;
@@ -2068,7 +2068,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 							"root" => _t("SiteTree.PARENTTYPE_ROOT", "Top-level page"),
 							"subpage" => _t("SiteTree.PARENTTYPE_SUBPAGE", "Sub-page underneath a parent page"),
 						)),
-						$parentIDField = new TreeDropdownField("ParentID", $this->fieldLabel('ParentID'), 'SilverStripe\\CMS\\Model\\SiteTree', 'ID', 'MenuTitle')
+						$parentIDField = new TreeDropdownField("ParentID", $this->fieldLabel('ParentID'), self::class, 'ID', 'MenuTitle')
 					),
 					$visibility = new FieldGroup(
 						new CheckboxField("ShowInMenus", $this->fieldLabel('ShowInMenus')),
@@ -2211,11 +2211,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return FieldList The available actions for this page.
 	 */
 	public function getCMSActions() {
-		$existsOnLive = $this->isPublished();
+		// Get status of page
+		$isOnDraft = $this->isOnDraft();
+		$isPublished = $this->isPublished();
+		$stagesDiffer = $this->stagesDiffer(Versioned::DRAFT, Versioned::LIVE);
 
 		// Major actions appear as buttons immediately visible as page actions.
-		$majorActions = CompositeField::create()
-			->setName('MajorActions');
+		$majorActions = CompositeField::create()->setName('MajorActions');
 		$majorActions->setFieldHolderTemplate(get_class($majorActions) . '_holder_buttongroup');
 
 		// Minor options are hidden behind a drop-up and appear as links (although they are still FormActions).
@@ -2228,39 +2230,38 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$rootTabSet->addExtraClass('ss-ui-action-tabset action-menus noborder');
 
 		// Render page information into the "more-options" drop-up, on the top.
-		$live = Versioned::get_one_by_stage('SilverStripe\\CMS\\Model\\SiteTree', Versioned::LIVE, array(
-			'"SiteTree"."ID"' => $this->ID
-		));
+		$liveRecord = Versioned::get_by_stage(self::class, Versioned::LIVE)->byID($this->ID);
 		$infoTemplate = SSViewer::get_templates_by_class(static::class, '_Information', self::class);
 		$moreOptions->push(
 			new LiteralField('Information',
 				$this->customise(array(
-					'Live' => $live,
-					'ExistsOnLive' => $existsOnLive
+					'Live' => $liveRecord,
+					'ExistsOnLive' => $isPublished
 				))->renderWith($infoTemplate)
 			)
 		);
-
 		$moreOptions->push(AddToCampaignHandler_FormAction::create());
 
 		// "readonly"/viewing version that isn't the current version of the record
-		$stageOrLiveRecord = Versioned::get_one_by_stage(static::class, Versioned::get_stage(), array(
-			'"SiteTree"."ID"' => $this->ID
-		));
-		if($stageOrLiveRecord && $stageOrLiveRecord->Version != $this->Version) {
-			$moreOptions->push(FormAction::create('email', _t('CMSMain.EMAIL', 'SilverStripe\\Control\\Email\\Email')));
+		$stageRecord = Versioned::get_by_stage(static::class, Versioned::DRAFT)->byID($this->ID);
+		/** @skipUpgrade */
+		if($stageRecord && $stageRecord->Version != $this->Version) {
+			$moreOptions->push(FormAction::create('email', _t('CMSMain.EMAIL', 'Email')));
 			$moreOptions->push(FormAction::create('rollback', _t('CMSMain.ROLLBACK', 'Roll back to this version')));
-
 			$actions = new FieldList(array($majorActions, $rootTabSet));
 
 			// getCMSActions() can be extended with updateCMSActions() on a extension
 			$this->extend('updateCMSActions', $actions);
-
 			return $actions;
 		}
 
-		if($this->isPublished() && $this->canPublish() && $this->isOnDraft() && $this->canUnpublish()) {
-			// "unpublish"
+		// Check permissions
+		$canPublish = $this->canPublish();
+		$canUnpublish = $this->canUnpublish();
+		$canEdit = $this->canEdit();
+
+		// "unpublish"
+		if($isPublished && $canPublish && $isOnDraft && $canUnpublish) {
 			$moreOptions->push(
 				FormAction::create('unpublish', _t('SiteTree.BUTTONUNPUBLISH', 'Unpublish'), 'delete')
 					->setDescription(_t('SiteTree.BUTTONUNPUBLISHDESC', 'Remove this page from the published site'))
@@ -2268,78 +2269,69 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			);
 		}
 
-		if($this->stagesDiffer(Versioned::DRAFT, Versioned::LIVE) && $this->isOnDraft()) {
-			if($this->isPublished() && $this->canEdit()) {
-				// "rollback"
-				$moreOptions->push(
-					FormAction::create('rollback', _t('SiteTree.BUTTONCANCELDRAFT', 'Cancel draft changes'), 'delete')
-						->setDescription(_t('SiteTree.BUTTONCANCELDRAFTDESC', 'Delete your draft and revert to the currently published page'))
-				);
-			}
+		// "rollback"
+		if($isOnDraft && $isPublished && $canEdit && $stagesDiffer) {
+			$moreOptions->push(
+				FormAction::create('rollback', _t('SiteTree.BUTTONCANCELDRAFT', 'Cancel draft changes'))
+					->setDescription(_t(
+						'SiteTree.BUTTONCANCELDRAFTDESC',
+						'Delete your draft and revert to the currently published page'
+					))
+			);
 		}
 
-		if($this->canEdit()) {
-			if(!$this->isOnDraft()) {
-				// The usual major actions are not available, so we provide alternatives here.
-				if($existsOnLive) {
-					// "restore"
-					$majorActions->push(FormAction::create('revert',_t('CMSMain.RESTORE','Restore')));
-					if($this->canDelete() && $this->canUnpublish()) {
-						// "delete from live"
-						$majorActions->push(
-							FormAction::create('deletefromlive',_t('CMSMain.DELETEFP','Delete'))
-								->addExtraClass('ss-ui-action-destructive')
-						);
-					}
-				} else {
-					// Determine if we should force a restore to root (where once it was a subpage)
-					$restoreToRoot = $this->isParentArchived();
-
-					// "restore"
-					$title = $restoreToRoot
-						? _t('CMSMain.RESTORE_TO_ROOT','Restore draft at top level')
-						: _t('CMSMain.RESTORE','Restore draft');
-					$description = $restoreToRoot
-						? _t('CMSMain.RESTORE_TO_ROOT_DESC','Restore the archived version to draft as a top level page')
-						: _t('CMSMain.RESTORE_DESC', 'Restore the archived version to draft');
-					$majorActions->push(
-						FormAction::create('restore', $title)
-							->setDescription($description)
-							->setAttribute('data-to-root', $restoreToRoot)
-							->setAttribute('data-icon', 'decline')
-					);
-				}
-			} else {
-					if($this->canDelete()) {
-						// delete
-						$moreOptions->push(
-							FormAction::create('delete',_t('CMSMain.DELETE','Delete draft'))
-								->addExtraClass('delete ss-ui-action-destructive')
-						);
-					}
-				if($this->canArchive()) {
-					// "archive"
-					$moreOptions->push(
-						FormAction::create('archive',_t('CMSMain.ARCHIVE','Archive'))
-							->setDescription(_t(
-								'SiteTree.BUTTONARCHIVEDESC',
-								'Unpublish and send to archive'
-							))
-							->addExtraClass('delete ss-ui-action-destructive')
-					);
-				}
-
-				// "save", supports an alternate state that is still clickable, but notifies the user that the action is not needed.
-				$majorActions->push(
-					FormAction::create('save', _t('SiteTree.BUTTONSAVED', 'Saved'))
-						->setAttribute('data-icon', 'accept')
-						->setAttribute('data-icon-alternate', 'addpage')
-						->setAttribute('data-text-alternate', _t('CMSMain.SAVEDRAFT','Save draft'))
-				);
-			}
+		// "restore"
+		if($canEdit && !$isOnDraft && $isPublished) {
+			$majorActions->push(FormAction::create('revert',_t('CMSMain.RESTORE','Restore')));
 		}
 
-		if($this->canPublish() && $this->isOnDraft()) {
+		// Check if we can restore a deleted page
+		// Note: It would be nice to have a canRestore() permission at some point
+		if($canEdit && !$isOnDraft && !$isPublished) {
+			// Determine if we should force a restore to root (where once it was a subpage)
+			$restoreToRoot = $this->isParentArchived();
+
+			// "restore"
+			$title = $restoreToRoot
+				? _t('CMSMain.RESTORE_TO_ROOT','Restore draft at top level')
+				: _t('CMSMain.RESTORE','Restore draft');
+			$description = $restoreToRoot
+				? _t('CMSMain.RESTORE_TO_ROOT_DESC','Restore the archived version to draft as a top level page')
+				: _t('CMSMain.RESTORE_DESC', 'Restore the archived version to draft');
+			$majorActions->push(
+				FormAction::create('restore', $title)
+					->setDescription($description)
+					->setAttribute('data-to-root', $restoreToRoot)
+					->setAttribute('data-icon', 'decline')
+			);
+		}
+
+		// If a page is on any stage it can be archived
+		if (($isOnDraft || $isPublished) && $this->canArchive()) {
+			$title = $isPublished
+				? _t('CMSMain.UNPUBLISH_AND_ARCHIVE', 'Unpublish and archive')
+				: _t('CMSMain.ARCHIVE', 'Archive');
+			$moreOptions->push(
+				FormAction::create('archive', $title)
+					->addExtraClass('delete ss-ui-action-destructive')
+					->setDescription(_t(
+						'SiteTree.BUTTONDELETEDESC',
+						'Remove from draft/live and send to archive'
+					))
+			);
+		}
+
+		// "save", supports an alternate state that is still clickable, but notifies the user that the action is not needed.
+		if ($canEdit && $isOnDraft) {
+			$majorActions->push(
+				FormAction::create('save', _t('SiteTree.BUTTONSAVED', 'Saved'))
+					->setAttribute('data-icon', 'accept')
+					->setAttribute('data-icon-alternate', 'addpage')
+					->setAttribute('data-text-alternate', _t('CMSMain.SAVEDRAFT','Save draft'))
+			);
+		}
+
+		if($canPublish && $isOnDraft) {
 			// "publish", as with "save", it supports an alternate state to show when action is needed.
 			$majorActions->push(
 				$publish = FormAction::create('publish', _t('SiteTree.BUTTONPUBLISHED', 'Published'))
@@ -2349,7 +2341,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			);
 
 			// Set up the initial state of the button to reflect the state of the underlying SiteTree object.
-			if($this->stagesDiffer(Versioned::DRAFT, Versioned::LIVE)) {
+			if($stagesDiffer) {
 				$publish->addExtraClass('ss-ui-alternate');
 			}
 		}
@@ -2377,7 +2369,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	public function onAfterRevertToLive() {
 		// Use an alias to get the updates made by $this->publish
 		/** @var SiteTree $stageSelf */
-		$stageSelf = Versioned::get_by_stage('SilverStripe\\CMS\\Model\\SiteTree', Versioned::DRAFT)->byID($this->ID);
+		$stageSelf = Versioned::get_by_stage(self::class, Versioned::DRAFT)->byID($this->ID);
 		$stageSelf->writeWithoutVersion();
 
 		// Need to update pages linking to this one as no longer broken
@@ -2420,9 +2412,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		// create an empty record
 		if(!DB::prepared_query("SELECT \"ID\" FROM \"SiteTree\" WHERE \"ID\" = ?", array($this->ID))->value()) {
 			$conn = DB::get_conn();
-			if(method_exists($conn, 'allowPrimaryKeyEditing')) $conn->allowPrimaryKeyEditing('SilverStripe\\CMS\\Model\\SiteTree', true);
+			if(method_exists($conn, 'allowPrimaryKeyEditing')) $conn->allowPrimaryKeyEditing(self::class, true);
 			DB::prepared_query("INSERT INTO \"SiteTree\" (\"ID\") VALUES (?)", array($this->ID));
-			if(method_exists($conn, 'allowPrimaryKeyEditing')) $conn->allowPrimaryKeyEditing('SilverStripe\\CMS\\Model\\SiteTree', false);
+			if(method_exists($conn, 'allowPrimaryKeyEditing')) $conn->allowPrimaryKeyEditing(self::class, false);
 		}
 
 		$oldReadingMode = Versioned::get_reading_mode();
