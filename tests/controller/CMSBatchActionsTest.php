@@ -1,14 +1,12 @@
 <?php
 
+use SilverStripe\CMS\BatchActions\CMSBatchAction_Archive;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Publish;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish;
-use SilverStripe\CMS\BatchActions\CMSBatchAction_Archive;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Restore;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Dev\SapphireTest;
-
-
 
 /**
  * Tests CMS Specific subclasses of {@see CMSBatchAction}
@@ -23,20 +21,20 @@ class CMSBatchActionsTest extends SapphireTest {
 		$this->logInWithPermission('ADMIN');
 
 		// published page
-		$published = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'published');
+		$published = $this->objFromFixture(SiteTree::class, 'published');
 		$published->publishSingle();
 
 		// Deleted / archived page
-		$archived = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'archived');
+		$archived = $this->objFromFixture(SiteTree::class, 'archived');
 		$archived->doArchive(); // should archive all children
 
 		// Unpublished
-		$unpublished = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'unpublished');
+		$unpublished = $this->objFromFixture(SiteTree::class, 'unpublished');
 		$unpublished->publishSingle();
 		$unpublished->doUnpublish();
 
 		// Modified
-		$modified = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'modified');
+		$modified = $this->objFromFixture(SiteTree::class, 'modified');
 		$modified->publishSingle();
 		$modified->Title = 'modified2';
 		$modified->write();
@@ -47,18 +45,18 @@ class CMSBatchActionsTest extends SapphireTest {
 	 */
 	public function testBatchPublishApplicable() {
 		$this->logInWithPermission('ADMIN');
-		$pages = Versioned::get_including_deleted('SilverStripe\\CMS\\Model\\SiteTree');
+		$pages = Versioned::get_including_deleted(SiteTree::class);
 		$ids = $pages->column('ID');
 		$action = new CMSBatchAction_Publish();
 
 		// Test applicable pages
 		$applicable = $action->applicablePages($ids);
-		$this->assertContains($this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'published'), $applicable);
-		$this->assertNotContains($this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'archived'), $applicable);
-		$this->assertNotContains($this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'archivedx'), $applicable);
-		$this->assertNotContains($this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'archivedy'), $applicable);
-		$this->assertContains($this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'unpublished'), $applicable);
-		$this->assertContains($this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'modified'), $applicable);
+		$this->assertContains($this->idFromFixture(SiteTree::class, 'published'), $applicable);
+		$this->assertNotContains($this->idFromFixture(SiteTree::class, 'archived'), $applicable);
+		$this->assertNotContains($this->idFromFixture(SiteTree::class, 'archivedx'), $applicable);
+		$this->assertNotContains($this->idFromFixture(SiteTree::class, 'archivedy'), $applicable);
+		$this->assertContains($this->idFromFixture(SiteTree::class, 'unpublished'), $applicable);
+		$this->assertContains($this->idFromFixture(SiteTree::class, 'modified'), $applicable);
 	}
 
 
@@ -67,35 +65,35 @@ class CMSBatchActionsTest extends SapphireTest {
 	 */
 	public function testBatchUnpublishApplicable() {
 		$this->logInWithPermission('ADMIN');
-		$pages = Versioned::get_including_deleted('SilverStripe\\CMS\\Model\\SiteTree');
+		$pages = Versioned::get_including_deleted(SiteTree::class);
 		$ids = $pages->column('ID');
 		$action = new CMSBatchAction_Unpublish();
 
 		// Test applicable page
 		$applicable = $action->applicablePages($ids);
-		$this->assertContains($this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'published'), $applicable);
-		$this->assertNotContains($this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'archived'), $applicable);
-		$this->assertNotContains($this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'archivedx'), $applicable);
-		$this->assertNotContains($this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'archivedy'), $applicable);
-		$this->assertNotContains($this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'unpublished'), $applicable);
-		$this->assertContains($this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'modified'), $applicable);
+		$this->assertContains($this->idFromFixture(SiteTree::class, 'published'), $applicable);
+		$this->assertNotContains($this->idFromFixture(SiteTree::class, 'archived'), $applicable);
+		$this->assertNotContains($this->idFromFixture(SiteTree::class, 'archivedx'), $applicable);
+		$this->assertNotContains($this->idFromFixture(SiteTree::class, 'archivedy'), $applicable);
+		$this->assertNotContains($this->idFromFixture(SiteTree::class, 'unpublished'), $applicable);
+		$this->assertContains($this->idFromFixture(SiteTree::class, 'modified'), $applicable);
 	}
 
 	/**
-	 * Test which pages can be archived via batch actions
+	 * Test which pages can be archived via delete batch actions
 	 */
-	public function testBatchArchiveApplicable() {
+	public function testBatchDeleteApplicable() {
 		$this->logInWithPermission('ADMIN');
-		$pages = Versioned::get_including_deleted('SilverStripe\\CMS\\Model\\SiteTree');
+		$pages = Versioned::get_including_deleted(SiteTree::class);
 		$ids = $pages->column('ID');
 		$action = new CMSBatchAction_Archive();
 
 		// Test applicable pages
 		$applicable = $action->applicablePages($ids);
-		$this->assertContains($this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'published'), $applicable);
-		$this->assertNotContains($this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'archived'), $applicable);
-		$this->assertContains($this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'unpublished'), $applicable);
-		$this->assertContains($this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'modified'), $applicable);
+		$this->assertContains($this->idFromFixture(SiteTree::class, 'published'), $applicable);
+		$this->assertNotContains($this->idFromFixture(SiteTree::class, 'archived'), $applicable);
+		$this->assertContains($this->idFromFixture(SiteTree::class, 'unpublished'), $applicable);
+		$this->assertContains($this->idFromFixture(SiteTree::class, 'modified'), $applicable);
 	}
 
 	/**
@@ -103,27 +101,27 @@ class CMSBatchActionsTest extends SapphireTest {
 	 */
 	public function testBatchRestoreApplicable() {
 		$this->logInWithPermission('ADMIN');
-		$pages = Versioned::get_including_deleted('SilverStripe\\CMS\\Model\\SiteTree');
+		$pages = Versioned::get_including_deleted(SiteTree::class);
 		$ids = $pages->column('ID');
 		$action = new CMSBatchAction_Restore();
 
 		// Test applicable pages
 		$applicable = $action->applicablePages($ids);
-		$this->assertNotContains($this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'published'), $applicable);
-		$this->assertContains($this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'archived'), $applicable);
-		$this->assertContains($this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'archivedx'), $applicable);
-		$this->assertContains($this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'archivedy'), $applicable);
-		$this->assertNotContains($this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'unpublished'), $applicable);
-		$this->assertNotContains($this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'modified'), $applicable);
+		$this->assertNotContains($this->idFromFixture(SiteTree::class, 'published'), $applicable);
+		$this->assertContains($this->idFromFixture(SiteTree::class, 'archived'), $applicable);
+		$this->assertContains($this->idFromFixture(SiteTree::class, 'archivedx'), $applicable);
+		$this->assertContains($this->idFromFixture(SiteTree::class, 'archivedy'), $applicable);
+		$this->assertNotContains($this->idFromFixture(SiteTree::class, 'unpublished'), $applicable);
+		$this->assertNotContains($this->idFromFixture(SiteTree::class, 'modified'), $applicable);
 	}
 
 	public function testBatchRestore() {
 		$this->logInWithPermission('ADMIN');
-		$pages = Versioned::get_including_deleted('SilverStripe\\CMS\\Model\\SiteTree');
+		$pages = Versioned::get_including_deleted(SiteTree::class);
 		$action = new CMSBatchAction_Restore();
-		$archivedID = $this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'archived');
-		$archivedxID = $this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'archivedx');
-		$archivedyID = $this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'archivedy');
+		$archivedID = $this->idFromFixture(SiteTree::class, 'archived');
+		$archivedxID = $this->idFromFixture(SiteTree::class, 'archivedx');
+		$archivedyID = $this->idFromFixture(SiteTree::class, 'archivedy');
 
 		// Just restore one child
 		$list = $pages->filter('RecordID', $archivedxID);

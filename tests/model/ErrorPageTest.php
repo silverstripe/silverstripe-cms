@@ -93,10 +93,10 @@ class ErrorPageTest extends FunctionalTest {
 
 		// Write new 401 page
 		$page = new ErrorPage();
+		$page->Title = '401 Error';
 		$page->ErrorCode = 401;
 		$page->Title = 'Unauthorised';
 		$page->write();
-		$page->copyVersionToStage('Stage', 'Live');
 		$page->publishRecursive();
 
 		// Static cache should now exist
