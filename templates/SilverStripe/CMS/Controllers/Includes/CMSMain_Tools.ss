@@ -19,7 +19,7 @@
 			$SearchForm
 		</div>
 
-		<div class="panel panel--padded flexbox-area-grow fill-height cms-content-view cms-tree-view-sidebar cms-panel-deferred" id="cms-content-treeview" data-url="$LinkTreeView">
+		<div class="panel panel--padded panel--scrollable flexbox-area-grow fill-height cms-content-view cms-tree-view-sidebar cms-panel-deferred" id="cms-content-treeview" data-url="$LinkTreeView">
 			<%-- Lazy-loaded via ajax --%>
 		</div>
 	</div>
