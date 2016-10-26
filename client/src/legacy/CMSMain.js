@@ -31,6 +31,11 @@ $.entwine('ss', function ($) {
       // Toggle 'active' flag
       this.siblings().removeClass('active');
       this.addClass('active');
+
+      // Toggle 'view' parameter in search form to keep same view type
+      var viewField = $(".cms-content-filters input[type='hidden'][name='view']");
+      viewField.val($(this).data('view'));
+
       // Does pjax load
       return this._super(e);
     }

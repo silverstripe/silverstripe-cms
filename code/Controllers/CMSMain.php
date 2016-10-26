@@ -435,12 +435,16 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		);
 		$dateGroup->setTitle(_t('CMSSearch.PAGEFILTERDATEHEADING', 'Last edited'));
 
+		// view mode
+		$viewMode = HiddenField::create('view', false, $this->ViewState());
+
 		// Create the Field list
 		$fields = new FieldList(
 			$content,
 			$pageFilter,
 			$pageClasses,
-			$dateGroup
+			$dateGroup,
+			$viewMode
 		);
 
 		// Create the Search and Reset action
@@ -817,12 +821,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * @return string
 	 */
 	public function ViewState() {
-		$view = $this->getRequest()->getVar('view');
-		if ($view) {
-			$mode = "{$view}view";
-		} else {
-			$mode = $this->getRequest()->param('Action');
-		}
+		$mode = $this->getRequest()->requestVar('view')
+			?: $this->getRequest()->param('Action');
 		switch($mode) {
 			case 'listview':
 			case 'treeview':
@@ -914,7 +914,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		);
 		if($parentID){
 			$linkSpec = $this->Link();
-			$linkSpec = $linkSpec . (strstr($linkSpec, '?') ? '&' : '?') . 'ParentID=%d&view=list';
+			$linkSpec = $linkSpec . (strstr($linkSpec, '?') ? '&' : '?') . 'ParentID=%d&view=listview';
 			$gridFieldConfig->addComponent(
 				GridFieldLevelup::create($parentID)
 					->setLinkSpec($linkSpec)
@@ -957,7 +957,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 						'<a class="btn btn-secondary btn--no-text btn--icon-large font-icon-right-dir cms-panel-link list-children-link" data-pjax-target="ListViewForm,Breadcrumbs" href="%s"><span class="sr-only">%s child pages</span></a>',
 						Controller::join_links(
 							$controller->Link(),
-							sprintf("?ParentID=%d&view=list", (int)$item->ID)
+							sprintf("?ParentID=%d&view=listview", (int)$item->ID)
 						),
 						$num
 					);

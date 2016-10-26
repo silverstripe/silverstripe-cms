@@ -92,8 +92,10 @@ n.data("button")&&n.button("option","showingAlternate",!1),this._super(t)}}),t("
 })},function(t,e){t.exports=i18n},function(t,e,n){"use strict"
 function i(t){return t&&t.__esModule?t:{"default":t}}var a=n(2),o=i(a)
 o["default"].entwine("ss",function(t){t(".cms-content-header-info").entwine({"from .cms-panel":{ontoggle:function e(t){var e=this.closest(".cms-content").find(t.target)
-0!==e.length&&this.parent()[e.hasClass("collapsed")?"addClass":"removeClass"]("collapsed")}}}),t(".cms .cms-panel-link.page-view-link").entwine({onclick:function n(t){return this.siblings().removeClass("active"),
-this.addClass("active"),this._super(t)}}),t(".cms-content-toolbar").entwine({onmatch:function i(){var e=this
+0!==e.length&&this.parent()[e.hasClass("collapsed")?"addClass":"removeClass"]("collapsed")}}}),t(".cms .cms-panel-link.page-view-link").entwine({onclick:function n(e){this.siblings().removeClass("active"),
+this.addClass("active")
+var n=t(".cms-content-filters input[type='hidden'][name='view']")
+return n.val(t(this).data("view")),this._super(e)}}),t(".cms-content-toolbar").entwine({onmatch:function i(){var e=this
 this._super(),t.each(this.find(".cms-actions-buttons-row .tool-button"),function(){var n=t(this),i=n.data("toolid"),a=n.hasClass("active")
 void 0!==i&&(n.data("active",!1).removeClass("active"),t("#"+i).hide(),e.bindActionButtonEvents(n))})},onunmatch:function a(){var e=this
 this._super(),t.each(this.find(".cms-actions-buttons-row .tool-button"),function(){var n=t(this)
