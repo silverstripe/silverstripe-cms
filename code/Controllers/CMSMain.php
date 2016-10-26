@@ -6,6 +6,10 @@ use SilverStripe\Admin\AdminRootController;
 use SilverStripe\Admin\CMSBatchActionHandler;
 use SilverStripe\Admin\CMSPreviewable;
 use SilverStripe\Admin\LeftAndMain;
+use SilverStripe\CMS\BatchActions\CMSBatchAction_Archive;
+use SilverStripe\CMS\BatchActions\CMSBatchAction_Publish;
+use SilverStripe\CMS\BatchActions\CMSBatchAction_Restore;
+use SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish;
 use SilverStripe\CMS\Model\CurrentPageIdentifier;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
@@ -82,9 +86,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	private static $menu_priority = 10;
 
-	private static $tree_class = "SilverStripe\\CMS\\Model\\SiteTree";
+	private static $tree_class = SiteTree::class;
 
-	private static $subitem_class = "SilverStripe\\Security\\Member";
+	private static $subitem_class = Member::class;
 
 	private static $session_namespace = 'SilverStripe\\CMS\\Controllers\\CMSMain';
 
@@ -146,11 +150,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Requirements::customCSS($this->generatePageIconsCss());
 		Requirements::add_i18n_javascript(CMS_DIR . '/client/lang', false, true);
 
-		CMSBatchActionHandler::register('publish', 'SilverStripe\\CMS\\BatchActions\\CMSBatchAction_Publish');
-		CMSBatchActionHandler::register('unpublish', 'SilverStripe\\CMS\\BatchActions\\CMSBatchAction_Unpublish');
-		CMSBatchActionHandler::register('delete', 'SilverStripe\\CMS\\BatchActions\\CMSBatchAction_Delete');
-		CMSBatchActionHandler::register('archive', 'SilverStripe\\CMS\\BatchActions\\CMSBatchAction_Archive');
-		CMSBatchActionHandler::register('restore', 'SilverStripe\\CMS\\BatchActions\\CMSBatchAction_Restore');
+		CMSBatchActionHandler::register('restore', CMSBatchAction_Restore::class);
+		CMSBatchActionHandler::register('archive', CMSBatchAction_Archive::class);
+		CMSBatchActionHandler::register('unpublish', CMSBatchAction_Unpublish::class);
+		CMSBatchActionHandler::register('publish', CMSBatchAction_Publish::class);
 	}
 
 	public function index($request) {
@@ -324,8 +327,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 */
 	public function SiteTreeAsUL() {
 		// Pre-cache sitetree version numbers for querying efficiency
-		Versioned::prepopulate_versionnumber_cache("SilverStripe\\CMS\\Model\\SiteTree", "Stage");
-		Versioned::prepopulate_versionnumber_cache("SilverStripe\\CMS\\Model\\SiteTree", "Live");
+		Versioned::prepopulate_versionnumber_cache(SiteTree::class, "Stage");
+		Versioned::prepopulate_versionnumber_cache(SiteTree::class, "Live");
 		$html = $this->getSiteTreeFor($this->stat('tree_class'));
 
 		$this->extend('updateSiteTreeAsUL', $html);
@@ -1114,7 +1117,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		}
 
 		$id = (int) $data['ID'];
-		$restoredPage = Versioned::get_latest_version("SilverStripe\\CMS\\Model\\SiteTree", $id);
+		$restoredPage = Versioned::get_latest_version(SiteTree::class, $id);
 		if(!$restoredPage) {
 			throw new HTTPResponse_Exception("SiteTree #$id not found", 400);
 		}
@@ -1401,7 +1404,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		$id = (int)$data['ID'];
 		/** @var SiteTree $restoredPage */
-		$restoredPage = Versioned::get_latest_version("SilverStripe\\CMS\\Model\\SiteTree", $id);
+		$restoredPage = Versioned::get_latest_version(SiteTree::class, $id);
 		if(!$restoredPage) {
 			return new HTTPResponse("SiteTree #$id not found", 400);
 		}

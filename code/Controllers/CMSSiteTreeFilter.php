@@ -5,7 +5,6 @@ namespace SilverStripe\CMS\Controllers;
 use SilverStripe\Admin\LeftAndMain_SearchFilter;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Core\ClassInfo;
-use SilverStripe\Core\Object;
 use SilverStripe\Forms\DateField;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
@@ -23,7 +22,9 @@ use SilverStripe\ORM\Versioning\Versioned;
  * false depending on whether the given page should be included. Note that you will need to include
  * parent helper pages yourself.
  */
-abstract class CMSSiteTreeFilter extends Object implements LeftAndMain_SearchFilter {
+abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter {
+
+	use \SilverStripe\Core\Injector\Injectable;
 
 	/**
 	 * Search parameters, mostly properties on {@link SiteTree}.
@@ -95,8 +96,6 @@ abstract class CMSSiteTreeFilter extends Object implements LeftAndMain_SearchFil
 
 	public function __construct($params = null) {
 		if($params) $this->params = $params;
-
-		parent::__construct();
 	}
 
 	public function getChildrenMethod() {
