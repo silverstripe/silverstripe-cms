@@ -2215,6 +2215,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$isPublished = $this->isPublished();
 		$stagesDiffer = $this->stagesDiffer(Versioned::DRAFT, Versioned::LIVE);
 
+		// Check permissions
+		$canPublish = $this->canPublish();
+		$canUnpublish = $this->canUnpublish();
+		$canEdit = $this->canEdit();
+
 		// Major actions appear as buttons immediately visible as page actions.
 		$majorActions = CompositeField::create()->setName('MajorActions');
 		$majorActions->setFieldHolderTemplate(get_class($majorActions) . '_holder_buttongroup');
@@ -2239,7 +2244,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				))->renderWith($infoTemplate)
 			)
 		);
-		$moreOptions->push(AddToCampaignHandler_FormAction::create());
+
+		// Add to campaign option if not-archived and has publish permission
+		if (($isPublished || $isOnDraft) && $canPublish) {
+			$moreOptions->push(AddToCampaignHandler_FormAction::create());
+		}
 
 		// "readonly"/viewing version that isn't the current version of the record
 		$stageRecord = Versioned::get_by_stage(static::class, Versioned::DRAFT)->byID($this->ID);
@@ -2253,11 +2262,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$this->extend('updateCMSActions', $actions);
 			return $actions;
 		}
-
-		// Check permissions
-		$canPublish = $this->canPublish();
-		$canUnpublish = $this->canUnpublish();
-		$canEdit = $this->canEdit();
 
 		// "unpublish"
 		if($isPublished && $canPublish && $isOnDraft && $canUnpublish) {
