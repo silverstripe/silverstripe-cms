@@ -453,7 +453,10 @@ HTML;
 
 		return array(
 			"Title" =>  _t("ContentController.INSTALL_SUCCESS", "Installation Successful!"),
-			"Content" => $data->renderWith('Install_successfullyinstalled'),
+			"Content" => $data->renderWith([
+				'type' => 'Includes',
+				'Install_successfullyinstalled'
+			]),
 		);
 	}
 
