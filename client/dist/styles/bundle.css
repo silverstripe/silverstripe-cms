@@ -10,6 +10,10 @@
   cursor:pointer;
 }
 
+.CMSPageHistoryController{
+  overflow:hidden;
+}
+
 .CMSPageHistoryController ins{
   background-color:#dfd;
   padding:2px;

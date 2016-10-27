@@ -31,6 +31,8 @@
 }
 
 .CMSPageHistoryController {
+	overflow: hidden; // Fixes weird bug for double scroll in history area on browser resize
+
 	ins {
 		background-color: #DFD;
 		padding: 2px;
