@@ -1,5 +1,6 @@
 docs/                 export-ignore
 javascript/src/       export ignore
+behat.yml             export ignore
 
 # Hide diffs
 javascript/dist/ -diff
