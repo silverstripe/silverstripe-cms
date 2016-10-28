@@ -24,13 +24,6 @@ class CMSPagesController extends CMSMain {
 		return false;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function ViewState() {
-		return $this->getRequest()->getVar('view');
-	}
-
 	public function isCurrentPage(DataObject $record) {
 		return false;
 	}

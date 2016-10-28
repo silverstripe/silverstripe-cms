@@ -46,6 +46,7 @@ use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
+use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\HiddenClass;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\Versioning\Versioned;
@@ -131,6 +132,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'Link' => 'Text',
 		'ListViewForm' => 'HTMLFragment',
 		'ExtraTreeTools' => 'HTMLFragment',
+		'PageList' => 'HTMLFragment',
+		'PageListSidebar' => 'HTMLFragment',
 		'SiteTreeHints' => 'HTMLFragment',
 		'SecurityID' => 'Text',
 		'SiteTreeAsUL' => 'HTMLFragment',
@@ -168,11 +171,41 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	public function getResponseNegotiator() {
 		$negotiator = parent::getResponseNegotiator();
-		$controller = $this;
-		$negotiator->setCallback('ListViewForm', function() use($controller) {
-			return $controller->ListViewForm()->forTemplate();
+
+		// ListViewForm
+		$negotiator->setCallback('ListViewForm', function()  {
+			return $this->ListViewForm()->forTemplate();
 		});
+
+		// PageList view
+		$negotiator->setCallback('Content-PageList', function () {
+			return $this->PageList()->forTemplate();
+		});
+
+		// PageList view for edit controller
+		$negotiator->setCallback('Content-PageList-Sidebar', function() {
+			return $this->PageListSidebar()->forTemplate();
+		});
+
 		return $negotiator;
+	}
+
+	/**
+	 * Get pages listing area
+	 *
+	 * @return DBHTMLText
+	 */
+	public function PageList() {
+		return $this->renderWith($this->getTemplatesWithSuffix('_PageList'));
+	}
+
+	/**
+	 * Page list view for edit-form
+	 *
+	 * @return DBHTMLText
+	 */
+	public function PageListSidebar() {
+		return $this->renderWith($this->getTemplatesWithSuffix('_PageList_Sidebar'));
 	}
 
 	/**
@@ -234,16 +267,24 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return $this->LinkWithSearch($this->LinkPages());
 	}
 
+	/**
+	 * Get link to tree view
+	 *
+	 * @return string
+	 */
 	public function LinkTreeView() {
-		return $this->LinkWithSearch($this->Link('treeview'));
+		// Tree view is just default link to main pages section (no /treeview suffix)
+		return $this->LinkWithSearch(CMSMain::singleton()->Link());
 	}
 
+	/**
+	 * Get link to list view
+	 *
+	 * @return string
+	 */
 	public function LinkListView() {
-		return $this->LinkWithSearch($this->Link('listview'));
-	}
-
-	public function LinkGalleryView() {
-		return $this->LinkWithSearch($this->Link('galleryview'));
+		// Note : Force redirect to top level page controller
+		return $this->LinkWithSearch(CMSMain::singleton()->Link('listview'));
 	}
 
 	public function LinkPageEdit($id = null) {
@@ -394,12 +435,16 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		);
 		$dateGroup->setTitle(_t('CMSSearch.PAGEFILTERDATEHEADING', 'Last edited'));
 
+		// view mode
+		$viewMode = HiddenField::create('view', false, $this->ViewState());
+
 		// Create the Field list
 		$fields = new FieldList(
 			$content,
 			$pageFilter,
 			$pageClasses,
-			$dateGroup
+			$dateGroup,
+			$viewMode
 		);
 
 		// Create the Search and Reset action
@@ -761,7 +806,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * @return string HTML
 	 */
 	public function treeview($request) {
-		return $this->renderWith($this->getTemplatesWithSuffix('_TreeView'));
+		return $this->getResponseNegotiator()->respond($request);
 	}
 
 	/**
@@ -769,7 +814,22 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * @return string HTML
 	 */
 	public function listview($request) {
-		return $this->renderWith($this->getTemplatesWithSuffix('_ListView'));
+		return $this->getResponseNegotiator()->respond($request);
+	}
+
+	/**
+	 * @return string
+	 */
+	public function ViewState() {
+		$mode = $this->getRequest()->requestVar('view')
+			?: $this->getRequest()->param('Action');
+		switch($mode) {
+			case 'listview':
+			case 'treeview':
+				return $mode;
+			default:
+				return 'treeview';
+		}
 	}
 
 	/**
@@ -854,7 +914,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		);
 		if($parentID){
 			$linkSpec = $this->Link();
-			$linkSpec = $linkSpec . (strstr($linkSpec, '?') ? '&' : '?') . 'ParentID=%d&view=list';
+			$linkSpec = $linkSpec . (strstr($linkSpec, '?') ? '&' : '?') . 'ParentID=%d&view=listview';
 			$gridFieldConfig->addComponent(
 				GridFieldLevelup::create($parentID)
 					->setLinkSpec($linkSpec)
@@ -897,7 +957,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 						'<a class="btn btn-secondary btn--no-text btn--icon-large font-icon-right-dir cms-panel-link list-children-link" data-pjax-target="ListViewForm,Breadcrumbs" href="%s"><span class="sr-only">%s child pages</span></a>',
 						Controller::join_links(
 							$controller->Link(),
-							sprintf("?ParentID=%d&view=list", (int)$item->ID)
+							sprintf("?ParentID=%d&view=listview", (int)$item->ID)
 						),
 						$num
 					);
