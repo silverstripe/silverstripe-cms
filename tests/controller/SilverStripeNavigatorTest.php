@@ -15,7 +15,7 @@ use SilverStripe\Dev\TestOnly;
 
 class SilverStripeNavigatorTest extends SapphireTest {
 
-	protected static $fixture_file = 'cms/tests/controller/CMSMainTest.yml';
+	protected static $fixture_file = 'CMSMainTest.yml';
 
 	public function testGetItems() {
 		$page = $this->objFromFixture('Page', 'page1');
