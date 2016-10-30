@@ -72,18 +72,3 @@ Feature: Insert an image into a page
     And the "Content" HTML field should contain "My alt"
     # Required to avoid "unsaved changed" browser dialog
     Then I press the "Save draft" button
-
-  # TODO This needs to support using drag handles, as we no longer have 'Width' or 'Height' input fields
-  @todo
-  Scenario: I can edit dimensions of an existing image
-    Given the "page" "About us" contains "<img src=assets/folder1/3d0ef6ec37/file1.jpg>"
-    And I reload the current page
-    When I highlight "<img src=assets/folder1/3d0ef6ec37/file1.jpg>" in the "Content" HTML field
-    And I press the "Insert Media" HTML field button
-    Then I should see "file1.jpg"
-    When I fill in "Width" with "10"
-    When I fill in "Height" with "20"
-    And I press the "Insert" button
-    Then the "Content" HTML field should contain "<img src=assets/folder1/3d0ef6ec37/file1.jpg width=10 height=20>"
-    # Required to avoid "unsaved changed" browser dialog
-    Then I press the "Save draft" button
