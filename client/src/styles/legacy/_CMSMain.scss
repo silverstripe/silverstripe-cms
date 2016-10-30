@@ -49,6 +49,10 @@
     max-width: 100%;
     height: auto;
   }
+
+	.cms-content-tools.collapsed {
+		overflow: hidden;
+	}
 }
 
 /** --------------------------------------------

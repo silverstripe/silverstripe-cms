@@ -31,6 +31,10 @@
   height:auto;
 }
 
+.CMSPageHistoryController .cms-content-tools.collapsed{
+  overflow:hidden;
+}
+
 #cms-content-listview .cms-tree-expand-trigger,#cms-content-treeview .cms-tree-expand-trigger{
   display:none;
 }
