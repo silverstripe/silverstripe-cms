@@ -153,7 +153,7 @@ t("#Form_EditForm_LinkToID_Holder").show()):(t("#Form_EditForm_ExternalURL_Holde
 function i(t){return t&&t.__esModule?t:{"default":t}}var a=n(2),o=i(a)
 o["default"].entwine("ss",function(t){t(".field.urlsegment:not(.readonly)").entwine({MaxPreviewLength:55,Ellipsis:"...",onmatch:function e(){this.find(":text").length&&this.toggleEdit(!1),this.redraw(),
 this._super()},redraw:function n(){var t=this.find(":text"),e=decodeURI(t.data("prefix")+t.val()),n=e
-e.length>this.getMaxPreviewLength()&&(n=this.getEllipsis()+e.substr(e.length-this.getMaxPreviewLength(),e.length)),this.find(".preview").attr("href",encodeURI(e+t.data("suffix"))).text(n)},toggleEdit:function i(t){
+e.length>this.getMaxPreviewLength()&&(n=this.getEllipsis()+e.substr(e.length-this.getMaxPreviewLength(),e.length)),this.find(".URL-link").attr("href",encodeURI(e+t.data("suffix"))).text(n)},toggleEdit:function i(t){
 var e=this.find(":text")
 this.find(".preview-holder")[t?"hide":"show"](),this.find(".edit-holder")[t?"show":"hide"](),t&&(e.data("origval",e.val()),e.focus())},update:function a(){var t=this,e=this.find(":text"),n=e.data("origval"),i=arguments[0],a=i&&""!==i?i:e.val()
 

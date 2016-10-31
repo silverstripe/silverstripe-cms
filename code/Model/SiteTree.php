@@ -1961,7 +1961,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			? $this->fieldLabel('LinkChangeNote')
 			: '';
 		if(!Config::inst()->get('SilverStripe\\View\\Parsers\\URLSegmentFilter', 'default_allow_multibyte')) {
-			$helpText .= $helpText ? '<br />' : '';
 			$helpText .= _t('SiteTreeURLSegmentField.HelpChars', ' Special characters are automatically converted or removed.');
 		}
 		$urlsegment->setHelpText($helpText);

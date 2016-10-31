@@ -7,9 +7,8 @@
 		</div>
 	</div>
 
-	<div class="cms-content-fields center ui-widget-content cms-panel-padded flexbox-area-grow fill-height">
+	<div class="flexbox-area-grow fill-height cms-content-fields ui-widget-content cms-panel-padded">
 		$Tools
 		$PageList
 	</div>
-
 </div>

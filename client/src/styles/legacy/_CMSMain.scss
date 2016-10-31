@@ -31,6 +31,8 @@
 }
 
 .CMSPageHistoryController {
+	overflow: hidden; // Fixes weird bug for double scroll in history area on browser resize
+
 	ins {
 		background-color: #DFD;
 		padding: 2px;
@@ -41,6 +43,15 @@
 		background-color: #FDD;
 		padding: 2px;
 		color: darken(#FDD, 30%);
+	}
+
+  .htmleditorfield.readonly img {
+    max-width: 100%;
+    height: auto;
+  }
+
+	.cms-content-tools.collapsed {
+		overflow: hidden;
 	}
 }
 
@@ -99,7 +110,7 @@
 		background: url(../../images/loading.gif) no-repeat 162px 8px;
 	}
 
-	.preview {
+	.URL-link {
 		padding-top: 8px;
 		display: inline-block;
 	}
