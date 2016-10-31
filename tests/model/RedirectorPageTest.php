@@ -13,6 +13,12 @@ class RedirectorPageTest extends FunctionalTest {
 	protected static $use_draft_site = true;
 	protected $autoFollowRedirection = false;
 
+	public function setUp()
+	{
+		parent::setUp();
+		Director::config()->update('alternate_base_url', 'http://www.mysite.com/');
+	}
+
 	public function testGoodRedirectors() {
 		/* For good redirectors, the final destination URL will be returned */
 		$this->assertEquals("http://www.google.com", $this->objFromFixture('SilverStripe\\CMS\\Model\\RedirectorPage','goodexternal')->Link());

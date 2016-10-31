@@ -2,11 +2,15 @@ default:
   context:
     class: SilverStripe\Cms\Test\Behaviour\FeatureContext
   extensions:
-    SilverStripe\BehatExtension\Extension: ~
+    SilverStripe\BehatExtension\Extension:
+      framework_path: framework
+      bootstrap_file: "tests/behat/serve-bootstrap.php"
     Behat\MinkExtension\Extension:
-      # Adjust this to your local environment
-      base_url:  http://localhost/
-      files_path: %behat.paths.features%/files/
+      # Designed to run using the below
+      # `vendor/bin/serve --bootstrap-file tests/behat/serve-bootstrap.php`
+      # `vendor/bin/selenium-server-standalone -Dwebdriver.firefox.bin="/Applications/Firefox31.app/Contents/MacOS/firefox-bin"`
+      base_url:  http://localhost:8080/
+      files_path: %behat.paths.base%/framework/tests/behat/features/files/
       default_session: selenium2
       javascript_session: selenium2
       selenium2:
