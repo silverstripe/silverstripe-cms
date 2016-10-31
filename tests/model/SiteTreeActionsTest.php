@@ -45,6 +45,7 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$page = Page::get()->byID($page->ID);
 		$actions = $page->getCMSActions();
 
+		$this->assertNull($actions->dataFieldByName('action_addtocampaign'));
 		$this->assertNull($actions->dataFieldByName('action_save'));
 		$this->assertNull($actions->dataFieldByName('action_publish'));
 		$this->assertNull($actions->dataFieldByName('action_unpublish'));
@@ -105,6 +106,7 @@ class SiteTreeActionsTest extends FunctionalTest {
 
 		$actions = $page->getCMSActions();
 
+		$this->assertNotNull($actions->dataFieldByName('action_addtocampaign'));
 		$this->assertNotNull($actions->dataFieldByName('action_save'));
 		$this->assertNotNull($actions->dataFieldByName('action_publish'));
 		$this->assertNotNull($actions->dataFieldByName('action_unpublish'));
@@ -135,6 +137,8 @@ class SiteTreeActionsTest extends FunctionalTest {
 
 		$actions = $page->getCMSActions();
 
+		// Theoretically allow deletions to be staged via add to campaign
+		$this->assertNotNull($actions->dataFieldByName('action_addtocampaign'));
 		$this->assertNull($actions->dataFieldByName('action_save'));
 		$this->assertNull($actions->dataFieldByName('action_publish'));
 		$this->assertNull($actions->dataFieldByName('action_unpublish'));
@@ -164,6 +168,7 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$page = Page::get()->byID($page->ID);
 
 		$actions = $page->getCMSActions();
+		$this->assertNotNull($actions->dataFieldByName('action_addtocampaign'));
 		$this->assertNotNull($actions->dataFieldByName('action_save'));
 		$this->assertNotNull($actions->dataFieldByName('action_publish'));
 		$this->assertNotNull($actions->dataFieldByName('action_unpublish'));
@@ -187,6 +192,7 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$version = DB::query('SELECT "Version" FROM "SiteTree_Versions" WHERE "Content" = \'test page first version\'')->value();
 		$old = Versioned::get_version('Page', $p->ID, $version);
 		$actions = $old->getCMSActions();
+		$this->assertNull($actions->dataFieldByName('action_addtocampaign'));
 		$this->assertNull($actions->dataFieldByName('action_save'));
 		$this->assertNull($actions->dataFieldByName('action_publish'));
 		$this->assertNull($actions->dataFieldByName('action_unpublish'));
