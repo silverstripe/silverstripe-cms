@@ -462,6 +462,9 @@ cs:
   SiteTreeFileExtension:
     BACKLINK_LIST_DESCRIPTION: 'Seznam zobrazuje všechny stránky, kde byl soubor přidán pomocí WYSIWYG editoru.'
     EDIT: Editovat
+    TITLE_INDEX: '#'
+    TITLE_TYPE: Typ
+    TITLE_USED_ON: 'Použito na'
   SiteTreeURLSegmentField:
     EMPTY: 'Zadejte prosím URL segment nebo klikněte zrušit'
     HelpChars: 'Zvláštní znaky jsou automaticky zkonvertovány nebo odstraněny'

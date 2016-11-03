@@ -37,7 +37,7 @@
     "Tree.ShowAsList": "Vidigi idojn kiel liston",
     "Tree.ThisPageAndSubpages": "Ĉi tiu paĝo kaj subpaĝoj",
     "Tree.ThisPageOnly": "Nur ĉi tiu paĝo",
-    "Tree.ViewPage": "View",
+    "Tree.ViewPage": "Vido",
     "URLSEGMENT.Cancel": "Rezigni",
     "URLSEGMENT.Edit": "Redakti",
     "URLSEGMENT.OK": "Akcepti",

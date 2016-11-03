@@ -93,6 +93,7 @@ eo:
     DESCREMOVED: 'kaj {count} posteuloj'
     DUPLICATED: 'Sukcese duobligis je ''{title}'''
     DUPLICATEDWITHCHILDREN: 'Sukcese duobligis je ''{title}'' kaj idoj'
+    EMAIL: SilverStripe\\regilo\\retpoŝto\\retpoŝto
     EditTree: 'Redakta arbo'
     ListFiltered: 'Vidigas rezultojn de serĉo.'
     MENUTITLE: 'Redakti paĝon'
@@ -150,6 +151,7 @@ eo:
   CMSPageHistoryController_versions_ss:
     AUTHOR: Aŭtoro
     NOTPUBLISHED: 'Nepublikigita'
+    PREVIEW: 'Antaŭvido de retejo'
     PUBLISHER: Publikiginto
     UNKNOWN: Nekonata
     WHEN: Kiam
@@ -275,6 +277,16 @@ eo:
     REDIRECTTOPAGE: 'Paĝo en via retejo'
     SINGULARNAME: 'Alidirekta paĝo'
     YOURPAGE: 'Paĝo en via retejo'
+  RemoveOrphanedPagesTask:
+    BUTTONRUN: Ruli
+    CHOOSEOPERATION: 'Elekti agon:'
+    DELETEWARNING: 'Averto: ĉi tiuj agoj ne estas inversigeblaj. Bonvolu zorgi.'
+    HEADER: 'Forigi taskon forigi ĉiujn orfajn paĝojn'
+    NONEFOUND: 'Ne trovis orfojn'
+    NONEREMOVED: 'Forigis nenion'
+    OPERATION_REMOVE: 'Forigi elektitajn el ĉiuj stadioj. (AVERTO: detruos ĉiujn elektitajn paĝojn el kaj stadio kaj publika)'
+    SELECTALL: 'elekti ĉion'
+    UNSELECTALL: 'malelekti ĉion'
   ReportAdmin:
     MENUTITLE: Raportoj
     ReportTitle: Titolo
@@ -307,6 +319,32 @@ eo:
     ShareLink: 'Komunigi ligilon'
   SilverStripeNavigatorLinkl:
     CloseLink: Fermi
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Enmeti paĝon'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Redakti paĝon'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    MENUTITLE: Historio
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Redakti paĝon'
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    MENUTITLE: Paĝoj
+  SilverStripe\CMS\Model\ErrorPage:
+    DESCRIPTION: 'Propra enhavo por diversaj okazoj de eraro (ekzemple, "Ne trovis paĝon")'
+    PLURALNAME: 'Paĝoj pri eraroj'
+    SINGULARNAME: 'Paĝo pri eraroj'
+  SilverStripe\CMS\Model\RedirectorPage:
+    DESCRIPTION: 'Alidirektas al interna paĝo aŭ ekstera URL'
+    PLURALNAME: 'Paĝoj pri alidirekto'
+    SINGULARNAME: 'Paĝo pri alidirekto'
+  SilverStripe\CMS\Model\SiteTree:
+    DESCRIPTION: 'Paĝo por ĝenerala enhavo'
+    PLURALNAME: 'Retejaj arboj'
+    SINGULARNAME: 'Reteja arbo'
+  SilverStripe\CMS\Model\VirtualPage:
+    DESCRIPTION: 'Vidigas la enhavon de alia paĝo'
+    PLURALNAME: 'Virtualaj paĝoj'
+    SINGULARNAME: 'Virtuala paĝo'
   SiteConfig:
     DEFAULTTHEME: '(Uzi aprioran etoson)'
     EDITHEADER: 'Kiu povas redakti paĝojn en ĉi tiu retejo?'
@@ -344,7 +382,9 @@ eo:
     BUTTONUNPUBLISHDESC: 'Forigi ĉi tiun paĝon de la publikigita retejo'
     Comments: Komentoj
     Content: Enhavo
+    DEFAULTABOUTCONTENT: '<p>Vi povas plenigi ĉi tiun paĝon per via materialo, aŭ forigi ĝin kaj krei viajn proprajn paĝojn.<br /></p>'
     DEFAULTABOUTTITLE: 'Pri ni'
+    DEFAULTCONTACTCONTENT: '<p>Vi povas plenigi ĉi tiun paĝon per via materialo, aŭ forigi ĝin kaj krei viajn proprajn paĝojn.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontakti nin'
     DEFAULTHOMECONTENT: '<p>Bonvenon al SilverStripe! Jen la apriora hejmpaĝo. Vi povas redakti la paĝon malfermante je <a href="admin/">la CMS</a>.</p><p>Vi povas nun aliri la <a href="http://docs.silverstripe.org">dokumentaron por programistoj</a>, aŭ komenci la <a href="http://www.silverstripe.org/learn/lessons">SilverStripe-lecionojn</a>.</p>'
     DEFAULTHOMETITLE: Hejmo
@@ -369,6 +409,8 @@ eo:
     LASTSAVED: 'Laste konservita'
     LASTUPDATED: 'Lastfoje ĝisdatigita'
     LINKCHANGENOTE: 'Ŝanĝi la ligilon de ĉi tiu paĝo ankaŭ influas la ligilojn de ĉiuj idaj paĝoj.'
+    LINKSALREADYUNIQUE: '{url} jam estas unika'
+    LINKSCHANGEDTO: 'ŝanĝis {url1} -> {url2}'
     MENUTITLE: 'Navigada etikedo'
     METADESC: 'Metapriskribo'
     METADESCHELP: 'Serĉiloj uzas ĉi tiun enhavon por vidigi serĉajn rezultojn (kvankam ĝi ne influos ilian rangon).'
@@ -420,6 +462,9 @@ eo:
   SiteTreeFileExtension:
     BACKLINK_LIST_DESCRIPTION: 'Ĉi tiu listo vidigas ĉiujn paĝojn kie la dosiero estas enmetita per la faksimila redaktilo.'
     EDIT: Redakti
+    TITLE_INDEX: '#'
+    TITLE_TYPE: Tipo
+    TITLE_USED_ON: 'Uzita je'
   SiteTreeURLSegmentField:
     EMPTY: 'Bonvolu enigi URL-segmenton aŭ alklaki al Rezigni'
     HelpChars: 'Aŭtomate konvertas aŭ forigas specialajn signojn.'

@@ -13,6 +13,8 @@ en:
     CREATED: Date
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
+    ErrorItemPermissionDenied: 'It seems you don''t have the necessary permissions to add {ObjectTitle} to a campaign'
+    ErrorNotFound: 'That {Type} couldn''t be found'
     FILES: Files
     FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
@@ -61,6 +63,9 @@ en:
     VirtualPageNonExistent: 'virtual page pointing to non-existent page'
   CMSAddPageController:
     Title: 'Add page'
+  CMSBatchAction_Archive:
+    RESULT: 'Deleted %d pages from draft and live, and sent them to the archive'
+    TITLE: 'Unpublish and archive'
   CMSBatchActions:
     ARCHIVE: Archive
     ARCHIVED_PAGES: 'Archived %d pages'
@@ -93,7 +98,7 @@ en:
     DESCREMOVED: 'and {count} descendants'
     DUPLICATED: 'Duplicated ''{title}'' successfully'
     DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
-    EMAIL: SilverStripe\\Control\\Email\\Email
+    EMAIL: Email
     EditTree: 'Edit Tree'
     ListFiltered: 'Showing search results.'
     MENUTITLE: 'Edit Page'
@@ -127,6 +132,7 @@ en:
     TabSettings: Settings
     TreeFiltered: 'Showing search results.'
     TreeFilteredClear: Clear
+    UNPUBLISH_AND_ARCHIVE: 'Unpublish and archive'
   CMSMain_left_ss:
     APPLY_FILTER: Search
     CLEAR_FILTER: Clear
@@ -375,6 +381,7 @@ en:
     BUTTONARCHIVEDESC: 'Unpublish and send to archive'
     BUTTONCANCELDRAFT: 'Cancel draft changes'
     BUTTONCANCELDRAFTDESC: 'Delete your draft and revert to the currently published page'
+    BUTTONDELETEDESC: 'Remove from draft/live and send to archive'
     BUTTONPUBLISHED: Published
     BUTTONSAVED: Saved
     BUTTONSAVEPUBLISH: 'Save & publish'
@@ -422,6 +429,8 @@ en:
     MoreOptions: 'More options'
     NOTPUBLISHED: 'Not published'
     OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
+    ONLIVEONLYSHORT: 'On live only'
+    ONLIVEONLYSHORTHELP: 'Page is published, but has been deleted from draft'
     PAGELOCATION: 'Page location'
     PAGETITLE: 'Page name'
     PAGETYPE: 'Page type'

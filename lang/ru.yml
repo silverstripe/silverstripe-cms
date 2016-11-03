@@ -93,12 +93,15 @@ ru:
     DESCREMOVED: 'и {count} страниц нижнего уровня'
     DUPLICATED: 'Копия ''{title}'' создана'
     DUPLICATEDWITHCHILDREN: 'Копия ''{title}'' и дочерних элементов создана'
+    EMAIL: Email
     EditTree: 'Редактировать дерево'
     ListFiltered: 'Результаты поиска.'
     MENUTITLE: 'Править страницу'
     NEWPAGE: 'Новая {pagetype}'
     PAGENOTEXISTS: 'Страница не существует'
+    PAGES: 'Статус страницы'
     PAGETYPEANYOPT: Любой
+    PAGETYPEOPT: 'Тип страницы'
     PUBALLCONFIRM: 'Пожалуйста, опубликуйте каждую страницу сайта, перенося содержимое из чернового режима в опубликованный'
     PUBALLFUN: 'Функция "Опубликовать все"'
     PUBALLFUN2: "Нажатие этой кнопки выполнит ту же функцию, что и нажатие кнопки \"Опубликовать\" для каждой отдельной страницы. Данная функция предназначена для использования после значительных изменений содержимого, например, в момент создания нового сайта."
@@ -108,6 +111,7 @@ ru:
     REMOVED: 'Страница ''{title}''{description} удалена с опубликованного сайта'
     REMOVEDPAGE: 'Страница ''{title}'' удалена с опубликованного сайта'
     REMOVEDPAGEFROMDRAFT: 'Страница ''%s'' удалена с чернового сайта'
+    RESTORE: 'Восстановить черновик'
     RESTORED: '''{title}'' успешно восстановлен'
     RESTORE_DESC: 'Восстановить архивную версию в черновик'
     RESTORE_TO_ROOT: 'Восстановить черновик в корень сайта'
@@ -121,7 +125,11 @@ ru:
     TabContent: Содержимое
     TabHistory: История
     TabSettings: Настройки
+    TreeFiltered: 'Результаты поиска.'
+    TreeFilteredClear: Сбросить
   CMSMain_left_ss:
+    APPLY_FILTER: Поиск
+    CLEAR_FILTER: Сбросить
     RESET: Восстановить
   CMSPageAddController:
     MENUTITLE: 'Добавить страницу'
@@ -143,6 +151,7 @@ ru:
   CMSPageHistoryController_versions_ss:
     AUTHOR: Автор
     NOTPUBLISHED: 'Не издавалось'
+    PREVIEW: 'Предпросмотр сайта'
     PUBLISHER: Издатель
     UNKNOWN: Неизвестно
     WHEN: Когда
@@ -153,6 +162,8 @@ ru:
     ListView: 'Обзор списка'
     MENUTITLE: Страницы
     TreeView: 'Обзор дерева'
+  CMSPagesController_ContentToolbar_ss:
+    MULTISELECT: 'Действия'
   CMSPagesController_Tools_ss:
     FILTER: Фильтр
   CMSSIteTreeFilter_PublishedPages:
@@ -161,11 +172,20 @@ ru:
     FILTERDATEFROM: От
     FILTERDATEHEADING: Дата
     FILTERDATETO: До
+    FILTERLABELTEXT: Поиск
     PAGEFILTERDATEHEADING: 'Последнее изменение'
   CMSSettingsController:
     MENUTITLE: Настройки
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Изменённые страницы'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Все страницы, включая архивные'
   CMSSiteTreeFilter_Search:
     Title: 'Все страницы'
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Архивные страницы'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Черновики'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Опубликовано, но удалено из черновика'
   ContentControl:
@@ -257,6 +277,16 @@ ru:
     REDIRECTTOPAGE: 'Страницу вашего сайта'
     SINGULARNAME: 'Страница перенаправления'
     YOURPAGE: 'Страница вашего сайта'
+  RemoveOrphanedPagesTask:
+    BUTTONRUN: Старт
+    CHOOSEOPERATION: 'Выберите операцию:'
+    DELETEWARNING: 'Внимание: Эти операции невозможно отменить. Используйте с осторожностью.'
+    HEADER: 'Удалить все несвязанные страницы'
+    NONEFOUND: 'Несвязанные страницы не найдены'
+    NONEREMOVED: 'Ничего не удалено'
+    OPERATION_REMOVE: 'Удалить все версии выбранного (ВНИМАНИЕ: Это действие удалит все выбранные страниц из черновиков и с опубликованного сайта)'
+    SELECTALL: 'выбрать все'
+    UNSELECTALL: 'снять выделение со всех'
   ReportAdmin:
     MENUTITLE: Отчеты
     ReportTitle: Название
@@ -285,9 +315,36 @@ ru:
   SilverStripeNavigator:
     ARCHIVED: Архивные
   SilverStripeNavigatorLink:
+    ShareInstructions: 'Для того чтобы поделиться данной страницей скопируйте ссылку ниже. '
     ShareLink: 'Поделиться ссылкой'
   SilverStripeNavigatorLinkl:
     CloseLink: Закрыть
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Добавить страницу'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Редактировать страницу'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    MENUTITLE: История
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Редактировать Страницу'
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    MENUTITLE: Страницы
+  SilverStripe\CMS\Model\ErrorPage:
+    DESCRIPTION: 'Пользовательские страницы ошибок (например, "Страница не найдена")'
+    PLURALNAME: 'Страницы ошибок'
+    SINGULARNAME: 'Страница ошибки'
+  SilverStripe\CMS\Model\RedirectorPage:
+    DESCRIPTION: 'Перенаправление на другую внутреннюю или внешнюю страницу'
+    PLURALNAME: 'Страницы перенаправления'
+    SINGULARNAME: 'Страница перенаправления'
+  SilverStripe\CMS\Model\SiteTree:
+    DESCRIPTION: 'Обычная страница'
+    PLURALNAME: 'Древа Страниц'
+    SINGULARNAME: 'Древо Страниц'
+  SilverStripe\CMS\Model\VirtualPage:
+    DESCRIPTION: 'Отображает содержимое другой страницы'
+    PLURALNAME: 'Виртуальные Страницы'
+    SINGULARNAME: 'Виртуальная Страница'
   SiteConfig:
     DEFAULTTHEME: '(Использовать тему по умолчанию)'
     EDITHEADER: 'Кто может редактировать страницы на этом сайте?'
@@ -325,7 +382,9 @@ ru:
     BUTTONUNPUBLISHDESC: 'Удалить эту страницу с опубликованного сайта'
     Comments: Комментарии
     Content: Наполнение сайта
+    DEFAULTABOUTCONTENT: '<p>Вы можете добавить своё собственное содержимое на эту страницу, удалить её или создать свои собственные страницы.</p>'
     DEFAULTABOUTTITLE: 'О нас'
+    DEFAULTCONTACTCONTENT: '<p>Вы можете добавить своё собственное содержимое на эту страницу, удалить её или создать свои собственные страницы.</p>'
     DEFAULTCONTACTTITLE: 'Контакты'
     DEFAULTHOMECONTENT: '<p>Добро пожаловать в SilverStripe! Это стандартная домашняя страница. Вы можете изменить её перейдя по ссылке в <a href="admin/">the CMS</a>.</p><p>Документация для разработчиков доступна <a href="http://docs.silverstripe.org">здесь</a>, видео-уроки по SilverStripe находятся <a href="http://www.silverstripe.org/learn/lessons">здесь</a>.</p>'
     DEFAULTHOMETITLE: Главная
@@ -350,6 +409,8 @@ ru:
     LASTSAVED: 'Дата сохранения'
     LASTUPDATED: 'Последнее обновление'
     LINKCHANGENOTE: 'Изменение ссылки на эту страницу повлияет и на ссылки всех дочерних страниц.'
+    LINKSALREADYUNIQUE: '{url} уже уникален'
+    LINKSCHANGEDTO: 'изменен {url1} -> {url2}'
     MENUTITLE: 'Метка в навигации'
     METADESC: 'Описание'
     METADESCHELP: 'Поисковые системы используют этот контент для отображения результатов поиска (однако на рейтинг страницы он не влияет).'
@@ -401,6 +462,9 @@ ru:
   SiteTreeFileExtension:
     BACKLINK_LIST_DESCRIPTION: 'В этом списке находятся все страницы где есть файл добавленный с помощью визуального редактора.'
     EDIT: Изменить
+    TITLE_INDEX: '№'
+    TITLE_TYPE: Тип
+    TITLE_USED_ON: 'Используется на'
   SiteTreeURLSegmentField:
     EMPTY: 'Задайте адрес страницы или нажмите "Отмена"'
     HelpChars: 'Спецсимволы автоматически конвертируются или удаляются.'

@@ -69,6 +69,7 @@ nl:
     PUBLISHED_PAGES: '%d pagina''s gepubliceerd'
     PUBLISH_PAGES: Publiceer
     RESTORE: Herstel
+    UNPUBLISH_PAGES: Publicatie intrekken
   CMSFileAddController:
     MENUTITLE: Bestanden
   CMSMain:
@@ -110,6 +111,7 @@ nl:
     TabHistory: Geschiedenis
     TabSettings: Instellingen
   CMSMain_left_ss:
+    APPLY_FILTER: Zoeken
     RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Pagina toevoegen'
@@ -147,6 +149,7 @@ nl:
     FILTERDATEFROM: Van
     FILTERDATEHEADING: Datum
     FILTERDATETO: Tot
+    FILTERLABELTEXT: Zoeken
   CMSSettingsController:
     MENUTITLE: Instellingen
   CMSSiteTreeFilter_Search:
@@ -210,6 +213,8 @@ nl:
     DESCRIPTION: 'Aangepaste tekst voor verschillende foutmeldingen (bv. "Pagina niet gevonden")'
     ERRORFILEPROBLEM: 'Fout: "{filename}" kan niet geopend worden om te schrijven. Controleer alstublieft de bestandspermissies.'
     SINGULARNAME: 'Foutpagina'
+  File:
+    Title: Titel
   Folder:
     AddFolderButton: 'Map toevoegen'
     DELETEUNUSEDTHUMBNAILS: 'Verwijder ongebruikte miniatuurafbeeldingen'
@@ -267,6 +272,19 @@ nl:
     ShareLink: 'Deel een link'
   SilverStripeNavigatorLinkl:
     CloseLink: Sluiten
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Pagina toevoegen'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Bewerk pagina'
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Bewerk pagina'
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    MENUTITLE: Pagina 's
+  SilverStripe\CMS\Model\ErrorPage:
+    SINGULARNAME: 'Foutpagina'
+  SilverStripe\CMS\Model\VirtualPage:
+    PLURALNAME: 'Virtuele pagina''s'
+    SINGULARNAME: 'Virtuele pagina'
   SiteConfig:
     DEFAULTTHEME: '(Gebruik standaard thema)'
     EDITHEADER: 'Wie kan pagina''s op de site wijzigen?'
@@ -373,6 +391,8 @@ nl:
     many_many_BackLinkTracking: 'Backlinks traceren'
     many_many_ImageTracking: 'Afbeeldingen traceren'
     many_many_LinkTracking: 'Links traceren'
+  SiteTreeFileExtension:
+    EDIT: Bewerken
   SiteTreeURLSegmentField:
     EMPTY: 'Vul een URL segment in of klik op annuleren'
     HelpChars: 'Speciale tekens worden automatische omgezet of verwijderd.'
@@ -389,5 +409,6 @@ nl:
     EditLink: wijzigen
     HEADER: 'Dit is een virtuele pagina'
     HEADERWITHLINK: 'Dit is een virtuele pagina met de inhoud van "{title}" ({link})'
+    PLURALNAME: 'Virtuele pagina''s'
     PageTypNotAllowedOnRoot: 'Voor deze virtuele pagina is het originele paginatype "{type}" niet toegestaan op het hoogste niveau.'
     SINGULARNAME: 'Virtuele pagina'
