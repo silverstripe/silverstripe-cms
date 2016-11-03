@@ -390,6 +390,39 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertStringEndsWith('changed-on-live/my-staff/?stage=Live', $child->getAbsoluteLiveLink());
 	}
 
+	public function testDuplicateChildrenRetainSort() {
+		$parent = new Page();
+		$parent->Title = 'Parent';
+		$parent->write();
+
+		$child1 = new Page();
+		$child1->ParentID = $parent->ID;
+		$child1->Title = 'Child 1';
+		$child1->Sort = 2;
+		$child1->write();
+
+		$child2 = new Page();
+		$child2->ParentID = $parent->ID;
+		$child2->Title = 'Child 2';
+		$child2->Sort = 1;
+		$child2->write();
+
+		$duplicateParent = $parent->duplicateWithChildren();
+		$duplicateChildren = $duplicateParent->AllChildren()->toArray();
+		$this->assertCount(2, $duplicateChildren);
+
+		$duplicateChild2 = array_shift($duplicateChildren);
+		$duplicateChild1 = array_shift($duplicateChildren);
+
+
+		$this->assertEquals('Child 1', $duplicateChild1->Title);
+		$this->assertEquals('Child 2', $duplicateChild2->Title);
+
+		// assertGreaterThan works by having the LOWER value first
+		$this->assertGreaterThan($duplicateChild2->Sort, $duplicateChild1->Sort);
+
+	}
+
 	public function testDeleteFromStageOperatesRecursively() {
 		Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'enforce_strict_hierarchy', false);
 		$pageAbout = $this->objFromFixture('Page', 'about');

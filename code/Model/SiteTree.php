@@ -720,9 +720,12 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		if($children) {
 			/** @var SiteTree $child */
+			$sort = 0;
 			foreach($children as $child) {
 				$childClone = $child->duplicateWithChildren();
 				$childClone->ParentID = $clone->ID;
+				//retain sort order by manually setting sort values
+				$childClone->Sort = ++$sort;
 				$childClone->write();
 			}
 		}
