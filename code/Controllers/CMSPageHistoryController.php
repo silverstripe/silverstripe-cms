@@ -174,13 +174,12 @@ class CMSPageHistoryController extends CMSMain {
 			}
 		}
 
-		$fields->addFieldToTab('Root.Main',
-			new LiteralField('CurrentlyViewingMessage', ArrayData::create(array(
-				'Content' => DBField::create_field('HTMLFragment', $message),
-				'Classes' => 'notice'
-			))->renderWith($this->getTemplatesWithSuffix('_notice'))),
-			"Title"
-		);
+        $fields->fieldByName('Root.Main')->unshift(
+            new LiteralField('CurrentlyViewingMessage', ArrayData::create(array(
+                'Content' => DBField::create_field('HTMLFragment', $message),
+                'Classes' => 'notice'
+            ))->renderWith($this->getTemplatesWithSuffix('_notice')))
+        );
 
 		$form->setFields($fields->makeReadonly());
 		$form->loadDataFrom(array(
