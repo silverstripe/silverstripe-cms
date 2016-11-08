@@ -1,5 +1,5 @@
 <div class="cms-preview fill-height flexbox-area-grow" data-layout-type="border">
-	<div class="panel panel--scrollable flexbox-area-grow fill-height">
+	<div class="panel flexbox-area-grow fill-height">
 		<div class="preview-note"><span><!-- --></span><%t CMSPageHistoryController_versions_ss.PREVIEW 'Website preview' %></div>
 		<div class="preview__device">
 			<div class="preview-device-outer">
