@@ -37,12 +37,10 @@ tr:
     Create: Oluştur
     DELETE: 'Taslak siteden kaldır'
     DELETEFP: Yayındaki siteden kaldır
-    EMAIL: Eposta
     MENUTITLE: 'Sayfayı düzenle'
     PAGENOTEXISTS: 'Sayfa bulunamadı'
     PUBALLCONFIRM: 'Lütfen taslak sitedeki tüm sayfaları yayınlanmakta olan siteye kopyalayıp yayınla.'
     PUBALLFUN: '"Hepsini Yayınla" özelliği'
-    PUBALLFUN2: "Bu butona bastığınız zaman, tüm sayfaları tek tek açıp \"yayınla\" butonuna basmışsınız gibi işlem yapılacaktır.  Bunun amacı sitede toplu miktarda içerik düzenleyip eklediyseniz (örneğin sitenin ilk yayınlanması gibi) size kolaylık sağlamaktır."
     PageAdded: 'Sayfa başarıyla oluşturuldu'
     REMOVEDPAGEFROMDRAFT: '''%s'' taslak siteden silindi'
     ROLLBACK: 'Bu sürüme geri dön'

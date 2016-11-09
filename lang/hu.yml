@@ -75,7 +75,6 @@ hu:
     DESCREMOVED: 'és {count} gyerek'
     DUPLICATED: '''{title}'' sikeresen duplikálva'
     DUPLICATEDWITHCHILDREN: '''{title}'' és oldalai sikeresen duplikálva'
-    EMAIL: E-mail
     EditTree: 'Menüszerkeszet módosítása'
     MENUTITLE: 'Oldal szerkesztése'
     NEWPAGE: 'Új {pagetype}'
@@ -83,7 +82,6 @@ hu:
     PAGETYPEANYOPT: Egyéb
     PUBALLCONFIRM: 'Minden oldal publikálása, fázistartalmak kitevése'
     PUBALLFUN: '"Összes publikálása" funkció'
-    PUBALLFUN2: "Ennek a gombnak a megnyomásával ugyanazt érheted el, mintha az összes oldalon megnyomnád a publikálás gombot. Akkor célszerű használni, ha a tartalom nagy változáson ment keresztül, mint például az oldal kezdeti felépítésénél."
     PUBPAGES: '{count} oldalt publikált'
     PageAdded: 'Oldal sikeresen létrehozva'
     REMOVED: '''{title}{description}'' törölve az éles oldalról'

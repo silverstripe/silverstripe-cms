@@ -62,13 +62,11 @@ gl_ES:
     Create: Crear
     DELETE: 'Eliminar borrador'
     DELETEFP: Eliminar
-    EMAIL: Correo-e
     MENUTITLE: 'Editar Páxina'
     PAGENOTEXISTS: 'Esta páxina non existe'
     PAGETYPEANYOPT: Ningún
     PUBALLCONFIRM: 'Por favor publica toda a páxina no sitio, copiando o contido a contorna de produción'
     PUBALLFUN: 'Funcionalidade "Publicar Todo"'
-    PUBALLFUN2: "Premendo este botón farás o equivalente de ir a todas as páxinas e premer en \"publicar\". \nIsto está pensado para facer un uso masivo despois das edicións de contido, por exemplo \ncando o sitio foi construído por primeira vez."
     REMOVEDPAGEFROMDRAFT: 'Eliminado ''%s''  do borrador do sitio'
     ROLLBACK: 'Desfacer a esta versión'
     SAVE: Gardar

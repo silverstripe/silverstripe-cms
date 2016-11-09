@@ -83,7 +83,6 @@ mi:
     DESCREMOVED: 'me ngā uri {count}'
     DUPLICATED: 'I momoho te tārite i ''{title}'''
     DUPLICATEDWITHCHILDREN: 'I momoho te tārite i ''{title}'' me ngā tamariki'
-    EMAIL: Īmēra
     EditTree: 'Whakatika Rākau'
     MENUTITLE: 'Whakatika Whārangi'
     NEWPAGE: '{pagetype} hou'
@@ -91,7 +90,6 @@ mi:
     PAGETYPEANYOPT: Ko tētahi
     PUBALLCONFIRM: 'Whakaputaina koa i ia whārangi i te pae me te tārua i te content stage kia ora ai.'
     PUBALLFUN: 'Te taumahinga "Whakaputaina Katoatia"'
-    PUBALLFUN2: "Ko te pēhi i tēnei pātene he taurite ki te haere ki ia whārangi me te pēhi i te \"whakaputaina\". Ko te tikanga, ka whakamahia tēnei pātene i muri ake i te mahi whakatikatika kua maha ngā tinihanga, pērā i te wā i hangaia tuatahi mai te pae. "
     PUBPAGES: 'Kua oti: I whakaputaina ngā whārangi {count}'
     PageAdded: 'I momoho te hanga whārangi'
     REMOVED: 'I mukua te ''{title}''{description} i te pae ora'

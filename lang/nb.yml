@@ -90,7 +90,6 @@ nb:
     DESCREMOVED: 'og {count} undersider.'
     DUPLICATED: 'Vellykket duplisering av "{title}".'
     DUPLICATEDWITHCHILDREN: 'Vellykket duplisering av "{title}" og undersider.'
-    EMAIL: Epost
     EditTree: 'Rediger treet'
     MENUTITLE: 'Rediger side'
     NEWPAGE: 'Ny {pagetype}'
@@ -98,7 +97,6 @@ nb:
     PAGETYPEANYOPT: Hvilken som helst
     PUBALLCONFIRM: 'Vennligst publiser hver eneste side på nettstedet, og kopier innhold til aktivt nettsted'
     PUBALLFUN: 'Funksjonalitet for "Publiser alle"'
-    PUBALLFUN2: "Å trykke på denne knappen er det samme som å gå på hver side og trykke \"publiser\". Den er ment for å bli brukt etter at det har blitt gjort massive endringer av innholdet, som for eksempel når siden først ble laget."
     PUBPAGES: 'Ferdig: Publiserte {count} sider.'
     PageAdded: 'Siden ble opprettet.'
     REMOVED: 'Slettet "{title}" {description} fra publisert nettsted.'

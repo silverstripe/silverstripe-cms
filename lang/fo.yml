@@ -6,11 +6,9 @@ fo:
   CMSMain:
     DELETE: 'Strika frá kladdu heimasíðuni'
     DELETEFP: Strika frá tí almennu heimasíðuni
-    EMAIL: Teldupostur
     PAGENOTEXISTS: 'Hendan síðan finst ikki.'
     PUBALLCONFIRM: 'Vinarliga almenna kunngerð allar síðurnar á heimasíðuni,  avrita innihaldsstøðið til beinleiðis'
     PUBALLFUN: '"Ger alt alment" funka'
-    PUBALLFUN2: "Við at trýsta á knøttin við tað sama henda, sum at fara inn á allar síðurnar og trýsta á \"Ger alment\". Endamálið við knøttunum er at hann skal brúkast, tá ið nógv innihald er blivið broytt, t.d. á einari nýggjari heimasíðu."
     REMOVEDPAGEFROMDRAFT: 'Strikaði ''%s'' frá kladdu heimasíðuni'
     ROLLBACK: 'Far aftur til hesa útgávuna'
     SAVE: Goym

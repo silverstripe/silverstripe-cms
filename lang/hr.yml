@@ -90,7 +90,6 @@ hr:
     DESCREMOVED: 'i {count} potomaka'
     DUPLICATED: 'Dupliciran ''{title}'' uspješno'
     DUPLICATEDWITHCHILDREN: 'Dupliciran ''{title}''  i podstranice uspješno'
-    EMAIL: Email
     EditTree: 'Uredi stablo stranice'
     MENUTITLE: 'Uredi stranicu'
     NEWPAGE: 'Novi {pagetype}'
@@ -98,7 +97,6 @@ hr:
     PAGETYPEANYOPT: Bilo koji
     PUBALLCONFIRM: 'Molim objavi svaku stranicu, kopirajući sadržaj'
     PUBALLFUN: '"Objavi sve"'
-    PUBALLFUN2: "Ovaj gumb radi isto što i klikanje na \"objavi\" gumbe za svaku stranicu posebno. Koristi se nakon velikih promjena u sadržaju, kao npr. kod prve objave stranice."
     PUBLISHED: 'Uspješno objavljen ''{title}'''
     PUBPAGES: 'Gotovo: Objavljeno {count} stranica'
     PageAdded: 'Uspješno kreirane stranice'

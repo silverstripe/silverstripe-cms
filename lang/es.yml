@@ -90,7 +90,6 @@ es:
     DESCREMOVED: 'y {count} descendientes'
     DUPLICATED: 'Duplicado'
     DUPLICATEDWITHCHILDREN: 'Duplicado con hijos'
-    EMAIL: E-mail
     EditTree: 'Editar árbol'
     MENUTITLE: 'Editar página'
     NEWPAGE: 'Nuevo {pagetype}'
@@ -98,7 +97,6 @@ es:
     PAGETYPEANYOPT: Cualquiera
     PUBALLCONFIRM: 'Por favor publica todas las páginas del sitio, copiando el contenido del borrador al sitio público'
     PUBALLFUN: 'Función "Publicar Todo"'
-    PUBALLFUN2: "Pulsando este botón es el equivalente de ir a cada página y pulsar \"Publicar\". Está pensado para ser usado en ediciones masivas del contenido, por ejemplo cuando el sitio se construye por primera vez."
     PUBPAGES: 'Hecho: Publicadas {count} páginas'
     PageAdded: 'Página creada correctamente'
     REMOVED: 'Removido'

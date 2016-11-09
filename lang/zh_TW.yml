@@ -11,11 +11,9 @@ zh_TW:
     PUBLISHED_PAGES: '已出版 %d 網頁, %d 失敗'
     PUBLISH_PAGES: 出版
   CMSMain:
-    EMAIL: 電子郵件
     PAGENOTEXISTS: '這頁不存在'
     PUBALLCONFIRM: '請發布所有網頁'
     PUBALLFUN: '"全部發布" 功能'
-    PUBALLFUN2: "按下這個按鈕就是如同到每頁按「發布」。當有很多內容更變時，這個功能可以省時。"
     ROLLBACK: '回複到這個的版本'
     SAVE: 儲存
   CMSPageHistoryController:

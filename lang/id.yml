@@ -88,7 +88,6 @@ id:
     DESCREMOVED: 'dan {count} turunannya'
     DUPLICATED: '''{title}'' berhasil diduplikasi'
     DUPLICATEDWITHCHILDREN: '''{title}'' dan turunannya berhasil diduplikasi'
-    EMAIL: Surel
     EditTree: 'Edit Struktur'
     MENUTITLE: 'Edit Laman'
     NEWPAGE: '{pagetype} baru'
@@ -96,7 +95,6 @@ id:
     PAGETYPEANYOPT: Lain
     PUBALLCONFIRM: 'Mohon terbitkan semua laman pada situs'
     PUBALLFUN: 'Fungsi "Terbitkan Semua"'
-    PUBALLFUN2: "Menekan tombol ini sama dengan membuka semua laman dan menerbitkannya. Hal ini \n\t\t\t\tditujukan untuk dilakukan setelah ada banyak pengeditan konten, misalnya saat situs pertama kali \n\t\t\t\tdiinstal."
     PUBPAGES: 'Selesai: {count} laman terbit'
     PageAdded: 'Laman berhasil dibuat'
     REMOVED: 'Dihapus ''{title}''{description} dari situs langsung'

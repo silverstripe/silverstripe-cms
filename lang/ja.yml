@@ -90,7 +90,6 @@ ja:
     DESCREMOVED: 'そして {count} 派生'
     DUPLICATED: '''{title}'' の複製が完了しました'
     DUPLICATEDWITHCHILDREN: '''{title}'' と子の複製が完了しました'
-    EMAIL: Eメール
     EditTree: 'ツリーを編集'
     MENUTITLE: 'ページを編集'
     NEWPAGE: '新しい {pagetype}'
@@ -98,7 +97,6 @@ ja:
     PAGETYPEANYOPT: 何でも
     PUBALLCONFIRM: 'コンテンツのステージをコピーして配信するために、サイト内のすべてのページを公開してください'
     PUBALLFUN: '"すべてを公開" 機能'
-    PUBALLFUN2: "このボタンを押すことはすべてのページへ移動して\"公開\"を押すことと同じです。この機能は、サイトをはじめて作成した時など多くのコンテンツの編集がある場合に利用されることを想定されています。"
     PUBPAGES: '完了: {count}ページを公開しました'
     PageAdded: 'ページの作成に成功'
     REMOVED: 'この配信サイトから ''{title}''{description} を削除しました'

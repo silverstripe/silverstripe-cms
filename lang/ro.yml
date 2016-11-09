@@ -83,7 +83,6 @@ ro:
     DESCREMOVED: 'și {count} descendenți'
     DUPLICATED: '''{title}'' duplicat cu succes'
     DUPLICATEDWITHCHILDREN: '''{title}'' și descendenții săi duplicați cu succes'
-    EMAIL: E-mail
     EditTree: 'Editare structură arbore'
     MENUTITLE: 'Editează pagina'
     NEWPAGE: '{pagetype} nouă'
@@ -91,7 +90,6 @@ ro:
     PAGETYPEANYOPT: Oricare
     PUBALLCONFIRM: 'Vă rugăm publicați toate paginile din site, copiind conținutul curent în live'
     PUBALLFUN: 'Funcționalitatea "Publică Tot" '
-    PUBALLFUN2: "Apăsând acest buton se v-a face echivalentul apăsării pe fiecare pagină a butonului \"publicare\". Este\n\t\t\t\tintenționat să fie folosit după ce s-au făcut editări masive de conținut, precum când site-ul a fost\n\t\t\t\tprima oară construit."
     PUBPAGES: 'Finalizat: Publicate {count} pagini'
     PageAdded: 'Pagină creată cu succes'
     REMOVED: 'Șterge ''{title}''{description} din site-ul live'

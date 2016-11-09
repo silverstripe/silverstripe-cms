@@ -90,7 +90,6 @@ sv:
     DESCREMOVED: 'och {count} ättlingar'
     DUPLICATED: 'Duplicerade ''{title}'' utan problem'
     DUPLICATEDWITHCHILDREN: 'Duplicerade ''{title}'' och undersidor utan problem'
-    EMAIL: E-post
     EditTree: 'Redigera trädet'
     MENUTITLE: 'Redigera sida'
     NEWPAGE: 'Ny {pagetype}'
@@ -98,7 +97,6 @@ sv:
     PAGETYPEANYOPT: Vilken som helst
     PUBALLCONFIRM: 'Publicera alla sidor på sajten och kopiera dem till "live"'
     PUBALLFUN: '"Publicera alla"-funktion'
-    PUBALLFUN2: "Ett klick på den här knappen är samma sak som att gå till varje sida och klicka på \"Publicera\". Tanken är att den ska användas efter stora uppdateringar av innehållet på sidan, som när den skapas."
     PUBPAGES: 'Klar: Publicerade {count} sidor'
     PageAdded: 'Lyckades skapa sida'
     REMOVED: 'Tog bort ''{title}''{description} från den publicerade sajten'

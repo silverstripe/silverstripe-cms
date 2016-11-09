@@ -5,11 +5,9 @@ zh_CN:
     GO: 执行
   CMSMain:
     DELETE: '从测试网站中删除'
-    EMAIL: 电子邮件
     PAGENOTEXISTS: '该网页不存在'
     PUBALLCONFIRM: '请发布该站的每一网页，这样，预备发布站上的内容就会复制到正式发布站上'
     PUBALLFUN: '“全部发布“功能'
-    PUBALLFUN2: "按下这一按键将等同于逐一发布每一网页。此功能适用于被大量编辑过的网页，如在网站被第一次使用时。"
     REMOVEDPAGEFROMDRAFT: '已从测试站点删除 ''%s'''
     ROLLBACK: '恢复到这一版本'
     SAVE: 保存

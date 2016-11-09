@@ -6,11 +6,9 @@ pt_BR:
   CMSMain:
     DELETE: 'Excluir do site de rascunho'
     DELETEFP: Excluir do site ativo
-    EMAIL: E-mail
     PAGENOTEXISTS: 'Esta página não existe'
     PUBALLCONFIRM: 'Por favor publique todas as páginas no site, copiando content stage to live'
     PUBALLFUN: 'Funcionalidade "Publicar Tudo"'
-    PUBALLFUN2: "Apertar este botão equivale a ir em cada página individualmente e clicar em \"Publicar\". Serve para ser usado em situações em que foram editadas grandes quantidades de conteúdo, como por exemplo quando o site foi inicialmente construído."
     REMOVEDPAGEFROMDRAFT: 'Removido ''%s''  do site de rascunho'
     ROLLBACK: 'Reverter para esta versão'
     SAVE: Salvar

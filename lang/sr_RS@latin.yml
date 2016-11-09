@@ -83,7 +83,6 @@ sr_RS@latin:
     DESCREMOVED: 'i {count} potomaka'
     DUPLICATED: '''{title}'' uspešno dupliran'
     DUPLICATEDWITHCHILDREN: '''{title}'' i deca uspešno duplirani'
-    EMAIL: E-pošta
     EditTree: 'Izmeni stablo'
     MENUTITLE: 'Izmeni stranicu'
     NEWPAGE: 'Nova {pagetype}'
@@ -91,7 +90,6 @@ sr_RS@latin:
     PAGETYPEANYOPT: Bilo koja
     PUBALLCONFIRM: 'Objavite svaku stranu na ovom sajtu kopiranjem sadržaj na živ sajt.'
     PUBALLFUN: 'Funkcija „Objavi sve“ '
-    PUBALLFUN2: "Pritiskom na ovo dugme postići ćete isto što i odlaskom na svaku stranu i pritiskanjem dugmeta „Objavi“ . Namenjena je za korišćene nakon velikih izmena sadržaja kao kada se sajt prvi put objavljuje."
     PUBPAGES: 'Urađeno: Objavljeno {count} stranica'
     PageAdded: 'Uspešno kreirana stranica'
     REMOVED: 'Sa objavljenog sajta obrisana je stranica ''{title}''{description}'

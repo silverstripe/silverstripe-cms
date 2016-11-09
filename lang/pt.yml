@@ -87,7 +87,6 @@ pt:
     PAGETYPEANYOPT: Qualquer
     PUBALLCONFIRM: 'Por favor, publique cada uma das páginas do site, copiando o conteúdo para a versão publicada'
     PUBALLFUN: 'funcionalidade "Publicar tudo"'
-    PUBALLFUN2: "Ao pressionar este botão fará o equivalente a ir a cada página e pressionar o botão \"publicar\". É aconselhado a sua utilização quando existem muitas edições de diferentes páginas ou então quando o site se encontra disponível para ser publicado para o público em geral."
     PUBPAGES: 'Concluído: Publicadas {count} páginas'
     PageAdded: 'Página criada com sucesso'
     REMOVEDPAGE: 'Remover ''{title}'' do site publicado'

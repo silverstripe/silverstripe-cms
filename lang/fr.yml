@@ -90,7 +90,6 @@ fr:
     DESCREMOVED: 'et {count} descendants'
     DUPLICATED: '''{title}'' dupliqué avec succès'
     DUPLICATEDWITHCHILDREN: '''{title}'' et ses enfants dupliqués avec succès'
-    EMAIL: Email
     EditTree: 'Editer l''arbre'
     MENUTITLE: 'Éditer la page'
     NEWPAGE: 'Nouveau {pagetype}'
@@ -98,7 +97,6 @@ fr:
     PAGETYPEANYOPT: Tous
     PUBALLCONFIRM: 'Publier chaque page du site en copiant le contenu à partir du site brouillon s''il vous plaît'
     PUBALLFUN: 'Fonctionnalité "Tout Publier"'
-    PUBALLFUN2: "Presser ce boutton fera la même chose que d'aller sur chaque page et d'appuer sur \"publier\"."
     PUBPAGES: '{count} pages ont été correctement publiées'
     PageAdded: 'La page a été créée avec succès '
     REMOVED: '''{title}''{description} supprimé du site live'

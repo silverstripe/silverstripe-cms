@@ -35,11 +35,9 @@ bs:
   CMSMain:
     Create: Kreiraj
     DELETE: 'Izbriši sa privremenog nacrta stranice'
-    EMAIL: E-mail
     PAGENOTEXISTS: 'Ova stranica ne postoji'
     PUBALLCONFIRM: 'Molimo, objavite svaku stavku na ovoj stranici, kopiranjem sadržaja na aktivnu stranicu'
     PUBALLFUN: 'Funkcija "Objavi sve"'
-    PUBALLFUN2: "Pritiskom na ovu tipku ostvarit ćete isti rezultat kao i odlaskom na svaku stranicu i pritiskom na tipku \"Objavi\". Namjenjena je za korištenje nakon velikih izmjena sadržaja (npr, prilikom početka izrade web stranice)."
     REMOVEDPAGEFROMDRAFT: 'Uklonjeno ''%s'' sa privremenog nacrta stranice'
     ROLLBACK: 'Vrati na ovo izdanje'
     SAVE: Snimi

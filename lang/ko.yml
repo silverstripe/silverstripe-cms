@@ -84,7 +84,6 @@ ko:
     DESCREMOVED: '그리고 {count} 파생'
     DUPLICATED: '''{title}''의 복제가 완료되었습니다.'
     DUPLICATEDWITHCHILDREN: '''{title}'' 와 그 하위에대한 복제가 완료되었습니다'
-    EMAIL: 이메일
     EditTree: '트리를 편집'
     MENUTITLE: '페이지 편집'
     NEWPAGE: '새로운 {pagetype}'
@@ -92,7 +91,6 @@ ko:
     PAGETYPEANYOPT: 아무거나
     PUBALLCONFIRM: '콘텐츠의 스테이지를 복사하고 전달하기 위해 사이트의 모든 페이지를 공개합니다'
     PUBALLFUN: ' "모두 공개"기능'
-    PUBALLFUN2: "이 버튼을 누르면 모든 페이지로 이동하고 \"공개\"를 눌러도 됩니다. 이 기능은 사이트를 처음 만들 때 등 많은 컨텐츠를 편집하는 경우에 이용될 것같습니다."
     PUBPAGES: '완료: {count} 페이지를 공개했습니다'
     PageAdded: '페이지를 만드는 데 성공'
     REMOVED: '이 전달 사이트에서''{title}''{description}을 제거했습니다.'

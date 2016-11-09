@@ -93,15 +93,16 @@ sk:
     DESCREMOVED: 'a {count} potomkov'
     DUPLICATED: 'Duplikované ''{title}'' úspešne'
     DUPLICATEDWITHCHILDREN: 'Duplikované ''{title}'' a potomkovia úspešne'
-    EMAIL: Pošli e-mailom
     EditTree: 'Editovať strom'
+    ListFiltered: 'Zobrazenie výsledkov vyhľadávania.'
     MENUTITLE: 'Upraviť stránku'
     NEWPAGE: 'Nová {pagetype}'
     PAGENOTEXISTS: 'Táto stránka neexistuje.'
+    PAGES: 'Stav stránky'
     PAGETYPEANYOPT: Akákoľvek
+    PAGETYPEOPT: 'Typ stránky'
     PUBALLCONFIRM: 'Prosím, zverejnite všetky stránky webu, zkopírovaním obsahu na verejné'
     PUBALLFUN: 'Funkcia "Publikovať všetko"'
-    PUBALLFUN2: "Stlačením tohto tlačidla vykonáte to isté ako keby ste navštívili každú stránku a stlačili \"publikuj\". Je určené na použite po rozsiahlych zmenách obsahu, napríklad keď bol web prvýkrát vytvorený."
     PUBLISHED: 'Uverejnené "{title}" úspešne.'
     PUBPAGES: 'Hotovo: Publikované {count} stránky'
     PageAdded: 'Stránka vytvorená úspešne'
@@ -122,6 +123,7 @@ sk:
     TabContent: Obsah
     TabHistory: História
     TabSettings: Nastavenia
+    TreeFiltered: 'Zobrazenie výsledkov vyhľadávania.'
     TreeFilteredClear: Vyčistiť
   CMSMain_left_ss:
     APPLY_FILTER: Hľadať
@@ -147,6 +149,7 @@ sk:
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
     NOTPUBLISHED: 'Nepublikovaná'
+    PREVIEW: 'Náhľad webu'
     PUBLISHER: Vydavateľ
     UNKNOWN: Neznáma
     WHEN: Keď
@@ -272,6 +275,16 @@ sk:
     REDIRECTTOPAGE: 'Stránka na vašom webe'
     SINGULARNAME: 'Presmerovacia stránka'
     YOURPAGE: 'Stránka na vašom webe'
+  RemoveOrphanedPagesTask:
+    BUTTONRUN: Bež
+    CHOOSEOPERATION: 'Vyberte operáciu:'
+    DELETEWARNING: 'Upozornenie: Tieto operácie sú nezvratné. Prosím buďte opatrní.'
+    HEADER: 'Odstrániť všetky sirotčie stránky'
+    NONEFOUND: 'Žiadni nájdení sirotkovia'
+    NONEREMOVED: 'Nič odstránené'
+    OPERATION_REMOVE: 'Odstrániť označené zo všetkých konceptov (Upozornenie: Búdú zničené všetky označené stránky z koncept a živé)'
+    SELECTALL: 'označiť všetko'
+    UNSELECTALL: 'odznačiť všetko'
   ReportAdmin:
     MENUTITLE: Výkazy
     ReportTitle: Titulok
@@ -304,6 +317,32 @@ sk:
     ShareLink: 'Zdieľať odkaz'
   SilverStripeNavigatorLinkl:
     CloseLink: Zavrieť
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Pridať stránku'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Upraviť stránku'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    MENUTITLE: História
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Upraviť stránku'
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    MENUTITLE: Stránky
+  SilverStripe\CMS\Model\ErrorPage:
+    DESCRIPTION: 'Vlastný obsah pre rôzne prípady chýb (napr. "Stránka nenájdená")'
+    PLURALNAME: 'Chybové stránky'
+    SINGULARNAME: 'Chybová stránka'
+  SilverStripe\CMS\Model\RedirectorPage:
+    DESCRIPTION: 'Presmeruje na internú stránku alebo na externé URL'
+    PLURALNAME: 'Presmerovacie stránky'
+    SINGULARNAME: 'Presmerovacia stránka'
+  SilverStripe\CMS\Model\SiteTree:
+    DESCRIPTION: 'Obyčajná stránka s vlastným obsahom.'
+    PLURALNAME: 'Štruktúry webu'
+    SINGULARNAME: 'Štruktúra webu'
+  SilverStripe\CMS\Model\VirtualPage:
+    DESCRIPTION: 'Zobrazí obsah inej stránky'
+    PLURALNAME: 'Virtuálne stránky'
+    SINGULARNAME: 'Virtuálna stránka'
   SiteConfig:
     DEFAULTTHEME: '(Použi predvolenú tému)'
     EDITHEADER: 'Kto môže editovať stránky na tomto webe?'
@@ -341,9 +380,7 @@ sk:
     BUTTONUNPUBLISHDESC: 'Odstrániť túto stránku z publikovaných na webe'
     Comments: Komentáre
     Content: Obsah
-    DEFAULTABOUTCONTENT: '<p>Túto stránku môžete vyplniť vlastným obsahom, alebo ju zmazať a vytvoriť vaše vlastné stránky.<br /></p>'
     DEFAULTABOUTTITLE: 'O nás'
-    DEFAULTCONTACTCONTENT: '<p>Túto stránku môžete vyplniť vlastným obsahom, alebo ju zmazať a vytvoriť vaše vlastné stránky.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontakt'
     DEFAULTHOMECONTENT: '<p>Vitajte v SilverStripe! Toto je základná domáca stránka. Môžte ju upraviť otvorením <a href="admin/">CMS</a>.</p><p>Môžte tiež vstúpiť k <a href="http://docs.silverstripe.org">dokumentácii vývojára</a>, alebo sa priučit na <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lekciách</a>.</p>'
     DEFAULTHOMETITLE: Domov
@@ -368,6 +405,8 @@ sk:
     LASTSAVED: 'Posledne uložené'
     LASTUPDATED: 'Posledne aktualizované'
     LINKCHANGENOTE: 'Zmenenie odkazu tejto stránky ovplyvní tiež odkazy všetkých podstránok.'
+    LINKSALREADYUNIQUE: ' {url} je vždy unikátne'
+    LINKSCHANGEDTO: ' zmenené {url1} -> {url2}'
     MENUTITLE: 'Navigačná menovka'
     METADESC: 'Meta Popis'
     METADESCHELP: 'Vyhľadávače používajú tento obsah pre zobrazovanie výsledkov vyhľadávania (aj keď to nebude mať vplyv na ich hodnotenie).'
@@ -419,6 +458,9 @@ sk:
   SiteTreeFileExtension:
     BACKLINK_LIST_DESCRIPTION: 'Zoznam zobrazuje všetky stránky, kde bol súbor pridaný pomocou WYSIWYG editora.'
     EDIT: Editovať
+    TITLE_INDEX: '#'
+    TITLE_TYPE: Typ
+    TITLE_USED_ON: 'Použité na'
   SiteTreeURLSegmentField:
     EMPTY: 'Zadajte prosím URL segment alebo kliknite zrušiť'
     HelpChars: 'Špeciálne znaky sú automaticky zkonvertované alebo ostránené.'

@@ -36,7 +36,6 @@ es_AR:
     PAGENOTEXISTS: 'Esta página no existe'
     PUBALLCONFIRM: 'Por favor publica todas las páginas del sitio, copiando el contenido del boceto al sitio público'
     PUBALLFUN: 'Funcionalidad "Publicar Todo"'
-    PUBALLFUN2: "Pulsar este botón hará el equivalente de ir a cada página y pulsar \"Publicar\". Está pensado para ser usado en edición masiva de contenido, por ejemplo cuando se construye el sitio por primera vez."
     REMOVEDPAGEFROMDRAFT: 'Quitados ''%s'' del borrador del sitio'
     ROLLBACK: 'Restaurar a ésta versión'
     SAVE: Guardar

@@ -90,7 +90,6 @@ lt:
     DESCREMOVED: 'ir {count} jam priklausantys'
     DUPLICATED: 'Puslapis ''{title}'' kopijuotas sėkmingai'
     DUPLICATEDWITHCHILDREN: 'Puslapis ''{title}'' , bei jo vaikai kopijuoti sėkmingai'
-    EMAIL: E. paštas
     EditTree: 'Redaguoti medį'
     MENUTITLE: 'Redaguoti puslapį'
     NEWPAGE: 'Naujas {pagetype}'
@@ -98,7 +97,6 @@ lt:
     PAGETYPEANYOPT: Bet koks
     PUBALLCONFIRM: 'Prašome publikuoti kiekvieną svetainės puslapį, kopijuojant turinį į svetainę'
     PUBALLFUN: '"Publikuoti viską" funkcionalumas'
-    PUBALLFUN2: "Paspaudus šį mygtuką, bus publikuotas kiekvienas puslapis svetainėje. Tai naudotina, kai padaromi dideli pakeitimai svetainės turinyje, pavyzdžiui ką tik sukūrus svetainę."
     PUBPAGES: 'Įvykdyta: Publikuoti {count} puslapiai'
     PageAdded: 'Puslapis sėkmingai sukurtas'
     REMOVED: 'Iš publikuojamos svetainės ištrintas ''{title}''{description}'

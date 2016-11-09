@@ -80,7 +80,6 @@ et_EE:
     DELETE: 'Kustuta mustand'
     DELETEFP: Kustuta avaldatud leht
     DESCREMOVED: 'ja {count} järglast'
-    EMAIL: E-post
     EditTree: 'Redigeeri'
     MENUTITLE: 'Redigeeri lehte'
     NEWPAGE: 'Uus {pagetype}'
@@ -88,7 +87,6 @@ et_EE:
     PAGETYPEANYOPT: Kõik
     PUBALLCONFIRM: 'Palun avaldage iga leht selles saidis'
     PUBALLFUN: '"Avalda Kõik" funktsionaalsus'
-    PUBALLFUN2: "Sellele nupule vajutamine on sama, kui käia igal lehel ja vajutada igal lehel \"Avalda\" nuppu. Nuppu on soovitatav kasutada, kui oled muutnud mitmeid lehti - see salvestab igal lehel toimunud muudatused."
     PUBPAGES: 'Valmis: {count} lehte avaldatud'
     PageAdded: 'Lehekülje loomine õnnestus'
     REMOVEDPAGE: 'Leht ''{title}'' eemaldati avaldatud saitide hulgast'

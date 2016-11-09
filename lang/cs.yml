@@ -93,7 +93,6 @@ cs:
     DESCREMOVED: 'a {count} potomků'
     DUPLICATED: 'Duplikováno ''{title}'' úspěšně'
     DUPLICATEDWITHCHILDREN: 'Duplikováno ''{title}'' a potomci úspěšně'
-    EMAIL: E-mail
     EditTree: 'Upravit strom'
     ListFiltered: 'Zobrazení výsledků vyhledávání.'
     MENUTITLE: 'Upravit stránku'
@@ -104,7 +103,6 @@ cs:
     PAGETYPEOPT: 'Typ stránky'
     PUBALLCONFIRM: 'Prosím zveřejněte veškeré stránky z úschovny'
     PUBALLFUN: 'Funkce "Publikovat vše"'
-    PUBALLFUN2: "Stisknutí tohoto tlačítka se rovná zveřejnění každé jednotlivé stránky. Toto tlačítko má být použito, pokud se vyskytly rozsáhlé úpravy obsahu, jako např. když poprvé sestavujete stránky."
     PUBLISHED: 'Publikováno ''{title}'' úspěšně'
     PUBPAGES: 'Hotovo: Zveřejněno {count} stránek'
     PageAdded: 'Stránka vytvořena úspěšně'
@@ -151,6 +149,7 @@ cs:
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
     NOTPUBLISHED: 'Nezveřejněno'
+    PREVIEW: 'Náhled webu'
     PUBLISHER: Vydavatel
     UNKNOWN: Neznámý
     WHEN: Když
@@ -276,6 +275,16 @@ cs:
     REDIRECTTOPAGE: 'Stránka na vašem webu'
     SINGULARNAME: 'Přesměrovací stránka'
     YOURPAGE: 'Stránka na vašem webu'
+  RemoveOrphanedPagesTask:
+    BUTTONRUN: Běž
+    CHOOSEOPERATION: 'Vyberte operaci:'
+    DELETEWARNING: 'Upozornění: Tyto operace jsou nezvratné. Prosím buďte opatrní.'
+    HEADER: 'Odstranit všechny osiřelé stránky'
+    NONEFOUND: 'Nenalezeni žádní sirotci'
+    NONEREMOVED: 'Neodebráno nic'
+    OPERATION_REMOVE: 'Odstranit označené ze všech konceptů (Upozornění: Budou zničeny všechny označené stránky z obou koncept a živé)'
+    SELECTALL: 'označit vše'
+    UNSELECTALL: 'odznačit vše'
   ReportAdmin:
     MENUTITLE: Výkazy
     ReportTitle: Titulek
@@ -308,6 +317,32 @@ cs:
     ShareLink: 'Sdílet odkaz'
   SilverStripeNavigatorLinkl:
     CloseLink: Zavřít
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Přidat stránku'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Upravit stránku'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    MENUTITLE: Historie
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Upravit stránku'
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    MENUTITLE: Stránky
+  SilverStripe\CMS\Model\ErrorPage:
+    DESCRIPTION: 'Vlastní obsah pro různé případy chyb (např. "Stránka nenalezena")'
+    PLURALNAME: 'Chybové stránky'
+    SINGULARNAME: 'Chybová stránka'
+  SilverStripe\CMS\Model\RedirectorPage:
+    DESCRIPTION: 'Přesměruje na interní stránku nebo na externí URL'
+    PLURALNAME: 'Přesměrovací stránky'
+    SINGULARNAME: 'Přesměrovací stránka'
+  SilverStripe\CMS\Model\SiteTree:
+    DESCRIPTION: 'Obecný obsah stránky'
+    PLURALNAME: 'Struktury webu'
+    SINGULARNAME: 'Struktura webu'
+  SilverStripe\CMS\Model\VirtualPage:
+    DESCRIPTION: 'Zobrazí obsah jiné stránky'
+    PLURALNAME: 'Virtuální stránky'
+    SINGULARNAME: 'Virtuální stránka'
   SiteConfig:
     DEFAULTTHEME: '(Použít implicitní tému)'
     EDITHEADER: 'Kdo může editovat stránky tohoto webu?'
@@ -345,9 +380,7 @@ cs:
     BUTTONUNPUBLISHDESC: 'Odstranit tuto stránku z publikovaných na webu'
     Comments: Komentáře
     Content: Obsah
-    DEFAULTABOUTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky. <br /> </p>'
     DEFAULTABOUTTITLE: 'O nás'
-    DEFAULTCONTACTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky. <br /> </p>'
     DEFAULTCONTACTTITLE: 'Kontaktujte nás'
     DEFAULTHOMECONTENT: '<p>Vítejte v SilverStripe! Toto je základní domácí stránka. Můžete ji upravit otevřením <a href="admin/">CMS</a>.</p><p>Můžete také nyní vstoupit  do <a href="http://docs.silverstripe.org">dokumentace vývojáře</a>, nebo se přiučit na <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lekcích</a>.</p>'
     DEFAULTHOMETITLE: Úvodní strana
@@ -372,6 +405,8 @@ cs:
     LASTSAVED: 'Posledně uloženo'
     LASTUPDATED: 'Poslední změna'
     LINKCHANGENOTE: 'Změnění tohoto odkazu stránky, bude mít také vliv na odkazy podřízených stránek.'
+    LINKSALREADYUNIQUE: ' {url} je vždy unikátní'
+    LINKSCHANGEDTO: ' změněno {url1} -> {url2}'
     MENUTITLE: 'Navigační popisek'
     METADESC: 'Popis'
     METADESCHELP: 'Krátký popis/perex, který při vyplnění mohou vyhledávače využít ve výsledcích vyhledávání. I když tento popisek nemá přímý vliv na hodnocení stránky, tak může zvýšit míru prokliku (CTR).'
@@ -423,6 +458,9 @@ cs:
   SiteTreeFileExtension:
     BACKLINK_LIST_DESCRIPTION: 'Seznam zobrazuje všechny stránky, kde byl soubor přidán pomocí WYSIWYG editoru.'
     EDIT: Editovat
+    TITLE_INDEX: '#'
+    TITLE_TYPE: Typ
+    TITLE_USED_ON: 'Použito na'
   SiteTreeURLSegmentField:
     EMPTY: 'Zadejte prosím URL segment nebo klikněte zrušit'
     HelpChars: 'Zvláštní znaky jsou automaticky zkonvertovány nebo odstraněny'

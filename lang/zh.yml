@@ -83,7 +83,6 @@ zh:
     DESCREMOVED: '和{count}子页'
     DUPLICATED: '成功复制‘{title}’'
     DUPLICATEDWITHCHILDREN: '成功复制‘{title}’及其子页面'
-    EMAIL: 电子邮件
     EditTree: '编辑树'
     MENUTITLE: '编辑页面'
     NEWPAGE: '新建{pagetype}'
@@ -91,7 +90,6 @@ zh:
     PAGETYPEANYOPT: 任何
     PUBALLCONFIRM: '请发布站点上的所有页面，将内容复制到线上'
     PUBALLFUN: '“全部发布”功能'
-    PUBALLFUN2: "按下此按钮将做相当于跳转到每一页，然后按下“发布”。拟用于对内容进行了大量编辑工作之时，例如站点初建时。"
     PUBPAGES: '完成：已发布{count}个页面'
     PageAdded: '成功创建页面'
     REMOVED: '从线上站点删除‘{title}''{description}'

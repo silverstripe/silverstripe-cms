@@ -32,11 +32,9 @@ es_MX:
   CMSMain:
     DELETE: 'Eliminar del boceto del sitio'
     DELETEFP: Eliminar del sitio público
-    EMAIL: Correo Electrónico
     PAGENOTEXISTS: 'Esta página no existe'
     PUBALLCONFIRM: 'Por favor publique todas las páginas del sitio, copiando el contenido del boceto al sitio público'
     PUBALLFUN: 'Funcionalidad "Publicar todo"'
-    PUBALLFUN2: "Al precionar este botón hará el equivalente de ir a cada página y precionar \"Publicar\". Está pensado para ser usado en edición masiva de contenido, por ejemplo cuando se construye el sitio por primera vez."
     REMOVEDPAGEFROMDRAFT: 'Se ha eliminado ''%s'' del boceto del sitio'
     ROLLBACK: 'Restaurar a ésta versión'
     SAVE: Guardar
