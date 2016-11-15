@@ -6,6 +6,8 @@ use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\Assets\File;
 use SilverStripe\Assets\Filesystem;
 use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Assets\Tests\Storage\AssetStoreTest\TestAssetStore;
+
 
 
 
@@ -20,13 +22,13 @@ class FileLinkTrackingTest extends SapphireTest {
 
 		Versioned::set_stage(Versioned::DRAFT);
 
-		AssetStoreTest_SpyStore::activate('FileLinkTrackingTest');
+		TestAssetStore::activate('FileLinkTrackingTest');
 		$this->logInWithPermission('ADMIN');
 
 		// Write file contents
 		$files = File::get()->exclude('ClassName', 'SilverStripe\\Assets\\Folder');
 		foreach($files as $file) {
-			$destPath = AssetStoreTest_SpyStore::getLocalPath($file);
+			$destPath = TestAssetStore::getLocalPath($file);
 			Filesystem::makeFolder(dirname($destPath));
 			file_put_contents($destPath, str_repeat('x', 1000000));
 			// Ensure files are published, thus have public urls
@@ -44,7 +46,7 @@ class FileLinkTrackingTest extends SapphireTest {
 	}
 
 	public function tearDown() {
-		AssetStoreTest_SpyStore::reset();
+		TestAssetStore::reset();
 		parent::tearDown();
 	}
 
