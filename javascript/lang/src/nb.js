@@ -37,6 +37,7 @@
     "Tree.ShowAsList": "Vis undersider som en liste",
     "Tree.ThisPageAndSubpages": "Denne siden og undersider",
     "Tree.ThisPageOnly": "Bare denne siden",
+    "Tree.ViewPage": "View",
     "URLSEGMENT.Cancel": "Avbryt",
     "URLSEGMENT.Edit": "Rediger",
     "URLSEGMENT.OK": "OK",

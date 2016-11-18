@@ -37,9 +37,10 @@
     "Tree.ShowAsList": "Prikaži otroke kot seznam",
     "Tree.ThisPageAndSubpages": "To stran in podstrani",
     "Tree.ThisPageOnly": "Samo to stran",
+    "Tree.ViewPage": "Pogled",
     "URLSEGMENT.Cancel": "Prekliči",
     "URLSEGMENT.Edit": "Uredi",
     "URLSEGMENT.OK": "OK",
-    "URLSEGMENT.UpdateURL": "Update URL",
+    "URLSEGMENT.UpdateURL": "Posodobi URL",
     "WidgetAreaEditor.TOOMANY": "Ups, dosegli ste največje možno število gradnikov na tem področju"
 }

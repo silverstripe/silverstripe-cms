@@ -44,6 +44,7 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "Tree.ShowAsList": "Näytä alasivut listana",
     "Tree.ThisPageAndSubpages": "Tämä sivu ja alasivut",
     "Tree.ThisPageOnly": "Vain tämä sivu",
+    "Tree.ViewPage": "View",
     "URLSEGMENT.Cancel": "Peruuta",
     "URLSEGMENT.Edit": "Muokkaa",
     "URLSEGMENT.OK": "OK",

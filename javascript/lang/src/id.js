@@ -37,6 +37,7 @@
     "Tree.ShowAsList": "Tampilkan turunan sebagai daftar",
     "Tree.ThisPageAndSubpages": "Laman dan sublaman ini",
     "Tree.ThisPageOnly": "Hanya laman ini",
+    "Tree.ViewPage": "View",
     "URLSEGMENT.Cancel": "Batal",
     "URLSEGMENT.Edit": "Edit",
     "URLSEGMENT.OK": "OK",
