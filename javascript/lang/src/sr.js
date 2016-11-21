@@ -37,6 +37,7 @@
     "Tree.ShowAsList": "Прикажу децу у виду листе",
     "Tree.ThisPageAndSubpages": "Ова страница и подстранице",
     "Tree.ThisPageOnly": "Само ова страница",
+    "Tree.ViewPage": "View",
     "URLSEGMENT.Cancel": "Одустани",
     "URLSEGMENT.Edit": "Измени",
     "URLSEGMENT.OK": "У реду",
