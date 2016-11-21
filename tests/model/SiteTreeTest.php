@@ -838,7 +838,7 @@ class SiteTreeTest extends SapphireTest {
 	}
 
 	/**
-	 * @covers SiteTree::validURLSegment
+	 * @covers SilverStripe\CMS\Model\SiteTree::validURLSegment
 	 */
 	public function testValidURLSegmentURLSegmentConflicts() {
 		$sitetree = new SiteTree();
@@ -869,7 +869,7 @@ class SiteTreeTest extends SapphireTest {
 	}
 
 	/**
-	 * @covers SiteTree::validURLSegment
+	 * @covers SilverStripe\CMS\Model\SiteTree::validURLSegment
 	 */
 	public function testValidURLSegmentClassNameConflicts() {
 		$sitetree = new SiteTree();
@@ -879,7 +879,7 @@ class SiteTreeTest extends SapphireTest {
 	}
 
 	/**
-	 * @covers SiteTree::validURLSegment
+	 * @covers SilverStripe\CMS\Model\SiteTree::validURLSegment
 	 */
 	public function testValidURLSegmentControllerConflicts() {
 		Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'nested_urls', true);
