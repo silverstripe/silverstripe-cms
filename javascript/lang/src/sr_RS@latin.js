@@ -37,6 +37,7 @@
     "Tree.ShowAsList": "Prikažu decu u vidu liste",
     "Tree.ThisPageAndSubpages": "Ova stranica i podstranice",
     "Tree.ThisPageOnly": "Samo ova stranica",
+    "Tree.ViewPage": "View",
     "URLSEGMENT.Cancel": "Odustani",
     "URLSEGMENT.Edit": "Izmeni",
     "URLSEGMENT.OK": "U redu",

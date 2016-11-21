@@ -37,6 +37,7 @@
     "Tree.ShowAsList": "子どもをリストで表示する",
     "Tree.ThisPageAndSubpages": "このページとサブページ",
     "Tree.ThisPageOnly": "このページのみ",
+    "Tree.ViewPage": "View",
     "URLSEGMENT.Cancel": "キャンセル",
     "URLSEGMENT.Edit": "編集",
     "URLSEGMENT.OK": "OK",

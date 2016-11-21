@@ -37,6 +37,7 @@
     "Tree.ShowAsList": "Näytä alasivut listana",
     "Tree.ThisPageAndSubpages": "Tämä sivu ja alasivut",
     "Tree.ThisPageOnly": "Vain tämä sivu",
+    "Tree.ViewPage": "Näytä",
     "URLSEGMENT.Cancel": "Peruuta",
     "URLSEGMENT.Edit": "Muokkaa",
     "URLSEGMENT.OK": "OK",

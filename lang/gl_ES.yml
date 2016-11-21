@@ -1,23 +1,23 @@
 gl_ES:
   AssetAdmin:
-    ADDFILES: 'Engadir Ficheiros'
-    ActionAdd: 'Engadir cartafol'
+    ADDFILES: "Engadir Ficheiros"
+    ActionAdd: "Engadir cartafol"
     AppCategoryArchive: Arquivo
     AppCategoryImage: Imaxe
-    BackToFolder: 'Retornar ao cartafol'
+    BackToFolder: "Retornar ao cartafol"
     CREATED: Data
-    CurrentFolderOnly: 'Limitar ao cartafol actual?'
+    CurrentFolderOnly: "Limitar ao cartafol actual?"
     DetailsView: Detalles
-    FROMTHEINTERNET: 'Dende a Internet'
-    FROMYOURCOMPUTER: 'Dende o teu Computador'
-    Filetype: 'Tipo ficheiro'
-    ListView: 'Vista en Listado'
+    FROMTHEINTERNET: "Dende a Internet"
+    FROMYOURCOMPUTER: "Dende o teu Computador"
+    Filetype: "Tipo ficheiro"
+    ListView: "Vista en Listado"
     MENUTITLE: Ficheiros
     SIZE: Tamaño
-    TreeView: 'Vista en Árbore'
+    TreeView: "Vista en Árbore"
     Upload: Subir
   AssetAdmin_DeleteBatchAction:
-    TITLE: 'Eliminar cartafoles'
+    TITLE: "Eliminar cartafoles"
   AssetAdmin_Tools:
     FILTER: Filtro
   AssetAdmin_left_ss:
@@ -26,51 +26,49 @@ gl_ES:
     Back: Atrás
   BrokenLinksReport:
     Any: Ningún
-    BROKENLINKS: 'Informe de ligazóns rotas'
-    CheckSite: 'Probar o sitio'
-    CheckSiteDropdownDraft: 'Sitio Borrador'
-    CheckSiteDropdownPublished: 'Sitio Publicado'
-    ColumnDateLastModified: 'Data de modificación'
-    ColumnDateLastPublished: 'Data da última publicación'
-    ColumnProblemType: 'Tipo de problema'
-    HasBrokenFile: 'rompeu o ficheiro'
-    HasBrokenLink: 'ten ligazón rota'
-    HasBrokenLinkAndFile: 'rompeu a ligazón e o ficheiro'
-    HoverTitleEditPage: 'Editar Páxina'
-    PageName: 'Nome da páxina'
-    ReasonDropdown: 'Problema para comprobar'
-    ReasonDropdownBROKENFILE: 'Ficheiro roto'
-    ReasonDropdownBROKENLINK: 'Ligazón rota'
-    ReasonDropdownRPBROKENLINK: 'O redirector está apuntando a unha páxina inexistente'
-    ReasonDropdownVPBROKENLINK: 'A páxina virtual está apuntando a unha páxina inexistente'
-    RedirectorNonExistent: 'o redirector está apuntando a unha páxina inexistente'
-    VirtualPageNonExistent: 'a páxina virtual está apuntando a unha páxina inexistente'
+    BROKENLINKS: "Informe de ligazóns rotas"
+    CheckSite: "Probar o sitio"
+    CheckSiteDropdownDraft: "Sitio Borrador"
+    CheckSiteDropdownPublished: "Sitio Publicado"
+    ColumnDateLastModified: "Data de modificación"
+    ColumnDateLastPublished: "Data da última publicación"
+    ColumnProblemType: "Tipo de problema"
+    HasBrokenFile: "rompeu o ficheiro"
+    HasBrokenLink: "ten ligazón rota"
+    HasBrokenLinkAndFile: "rompeu a ligazón e o ficheiro"
+    HoverTitleEditPage: "Editar Páxina"
+    PageName: "Nome da páxina"
+    ReasonDropdown: "Problema para comprobar"
+    ReasonDropdownBROKENFILE: "Ficheiro roto"
+    ReasonDropdownBROKENLINK: "Ligazón rota"
+    ReasonDropdownRPBROKENLINK: "O redirector está apuntando a unha páxina inexistente"
+    ReasonDropdownVPBROKENLINK: "A páxina virtual está apuntando a unha páxina inexistente"
+    RedirectorNonExistent: "o redirector está apuntando a unha páxina inexistente"
+    VirtualPageNonExistent: "a páxina virtual está apuntando a unha páxina inexistente"
   CMSAddPageController:
-    Title: 'Engadir páxina'
+    Title: "Engadir páxina"
   CMSBatchActions:
-    DELETE_DRAFT_PAGES: 'Eliminar do sitio borrador'
-    DELETE_PAGES: 'Eliminar do sitio publicado'
-    PUBLISHED_PAGES: '%d páxinas publicadas, %d erros'
+    DELETE_DRAFT_PAGES: "Eliminar do sitio borrador"
+    DELETE_PAGES: "Eliminar do sitio publicado"
+    PUBLISHED_PAGES: "%d páxinas publicadas, %d erros"
     PUBLISH_PAGES: Publicar
   CMSFileAddController:
     MENUTITLE: Ficheiros
   CMSMain:
-    AddNew: 'Engadir nova páxina'
-    AddNewButton: 'Engadir novo'
-    ChoosePageParentMode: 'Escoller donde crear esta páxina'
-    ChoosePageType: 'Escoller tipo de páxina'
+    AddNew: "Engadir nova páxina"
+    AddNewButton: "Engadir novo"
+    ChoosePageParentMode: "Escoller donde crear esta páxina"
+    ChoosePageType: "Escoller tipo de páxina"
     Create: Crear
-    DELETE: 'Eliminar borrador'
+    DELETE: "Eliminar borrador"
     DELETEFP: Eliminar
-    EMAIL: Correo-e
-    MENUTITLE: 'Editar Páxina'
-    PAGENOTEXISTS: 'Esta páxina non existe'
+    MENUTITLE: "Editar Páxina"
+    PAGENOTEXISTS: "Esta páxina non existe"
     PAGETYPEANYOPT: Ningún
-    PUBALLCONFIRM: 'Por favor publica toda a páxina no sitio, copiando o contido a contorna de produción'
-    PUBALLFUN: 'Funcionalidade "Publicar Todo"'
-    PUBALLFUN2: "Premendo este botón farás o equivalente de ir a todas as páxinas e premer en \"publicar\". \nIsto está pensado para facer un uso masivo despois das edicións de contido, por exemplo \ncando o sitio foi construído por primeira vez."
-    REMOVEDPAGEFROMDRAFT: 'Eliminado ''%s''  do borrador do sitio'
-    ROLLBACK: 'Desfacer a esta versión'
+    PUBALLCONFIRM: "Por favor publica toda a páxina no sitio, copiando o contido a contorna de produción"
+    PUBALLFUN: "Funcionalidade \"Publicar Todo\""
+    REMOVEDPAGEFROMDRAFT: "Eliminado '%s'  do borrador do sitio"
+    ROLLBACK: "Desfacer a esta versión"
     SAVE: Gardar
     TabContent: Contido
     TabHistory: Historial
@@ -78,170 +76,170 @@ gl_ES:
   CMSMain_left_ss:
     RESET: Reiniciar
   CMSPageAddController:
-    MENUTITLE: 'Engadir páxina'
-    ParentMode_child: 'Baixo outra páxina'
-    ParentMode_top: 'Nivel superior'
+    MENUTITLE: "Engadir páxina"
+    ParentMode_child: "Baixo outra páxina"
+    ParentMode_top: "Nivel superior"
   CMSPageEditController:
-    MENUTITLE: 'Editar Páxina'
+    MENUTITLE: "Editar Páxina"
   CMSPageHistoryController:
-    COMPAREMODE: 'Modo comparación (seleccionar dúas)'
-    COMPAREVERSIONS: 'Comparar Versións'
+    COMPAREMODE: "Modo comparación (seleccionar dúas)"
+    COMPAREVERSIONS: "Comparar Versións"
     MENUTITLE: Historial
-    REVERTTOTHISVERSION: 'Retornar a esta versión'
-    SHOWUNPUBLISHED: 'Amosar versións sen publicar'
-    SHOWVERSION: 'Amosar Versión'
+    REVERTTOTHISVERSION: "Retornar a esta versión"
+    SHOWUNPUBLISHED: "Amosar versións sen publicar"
+    SHOWVERSION: "Amosar Versión"
     VIEW: ver
   CMSPageHistoryController_versions_ss:
-    NOTPUBLISHED: 'Non publicado'
+    NOTPUBLISHED: "Non publicado"
     PUBLISHER: Editor
     UNKNOWN: Descoñecido
     WHEN: Cando
   CMSPageSettingsController:
-    MENUTITLE: 'Editar Páxina'
+    MENUTITLE: "Editar Páxina"
   CMSPagesController:
-    GalleryView: 'Vista en Galería'
-    ListView: 'Vista en Listado'
+    GalleryView: "Vista en Galería"
+    ListView: "Vista en Listado"
     MENUTITLE: Páxinas
-    TreeView: 'Vista en Árbore'
+    TreeView: "Vista en Árbore"
   CMSPagesController_Tools_ss:
     FILTER: Filtro
   CMSSettingsController:
     MENUTITLE: Configuracións
   CMSSiteTreeFilter_Search:
-    Title: 'Todas as páxinas'
+    Title: "Todas as páxinas"
   ContentControl:
-    NOTEWONTBESHOWN: 'Nota: esta mensaxe non se amosará aos visitantes'
+    NOTEWONTBESHOWN: "Nota: esta mensaxe non se amosará aos visitantes"
   ContentController:
-    ARCHIVEDSITEFROM: 'Sitio arquivado dende'
-    DRAFTSITE: 'Sitio Borrador'
-    LOGGEDINAS: 'Iniciada sesión como'
-    LOGIN: Iniciar sesión
-    LOGOUT: 'Pechar sesión'
-    NOTLOGGEDIN: 'Sen iniciar sesión'
-    PUBLISHEDSITE: 'Sitio Publicado'
-    VIEWPAGEIN: 'Ver a Páxina en:'
+    ARCHIVEDSITEFROM: "Sitio arquivado dende"
+    DRAFTSITE: "Sitio Borrador"
+    LOGGEDINAS: "Iniciada sesión como"
+    LOGIN: "Iniciar sesión"
+    LOGOUT: "Pechar sesión"
+    NOTLOGGEDIN: "Sen iniciar sesión"
+    PUBLISHEDSITE: "Sitio Publicado"
+    VIEWPAGEIN: "Ver a Páxina en:"
   ErrorPage:
-    CODE: 'Código de erro'
-    DEFAULTERRORPAGECONTENT: '<p>Sintoo, parece que estabas tratando de acceder a unha página que non existe.</p><p>Por favor, comproba o enderezo da URL que estaba tratando de acceder e volva tentalo.</p>'
-    DEFAULTERRORPAGETITLE: 'Páxina non atopada'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Sintoo, houbo un problema coa xestión da túa petición.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Erro Servidor'
+    CODE: "Código de erro"
+    DEFAULTERRORPAGECONTENT: "<p>Sintoo, parece que estabas tratando de acceder a unha página que non existe.</p><p>Por favor, comproba o enderezo da URL que estaba tratando de acceder e volva tentalo.</p>"
+    DEFAULTERRORPAGETITLE: "Páxina non atopada"
+    DEFAULTSERVERERRORPAGECONTENT: "<p>Sintoo, houbo un problema coa xestión da túa petición.</p>"
+    DEFAULTSERVERERRORPAGETITLE: "Erro Servidor"
   Folder:
-    AddFolderButton: 'Engadir cartafol'
-    DELETEUNUSEDTHUMBNAILS: 'Eliminar as miniaturas sen usar'
-    UNUSEDFILESTITLE: 'Ficheiros sen usar'
-    UNUSEDTHUMBNAILSTITLE: 'Miniaturas sen usar'
+    AddFolderButton: "Engadir cartafol"
+    DELETEUNUSEDTHUMBNAILS: "Eliminar as miniaturas sen usar"
+    UNUSEDFILESTITLE: "Ficheiros sen usar"
+    UNUSEDTHUMBNAILSTITLE: "Miniaturas sen usar"
     UploadFilesButton: Subir
   LeftAndMain:
     PreviewButton: Previsualizar
-    SearchResults: 'Resultados Busca'
+    SearchResults: "Resultados Busca"
   Permission:
-    CMS_ACCESS_CATEGORY: 'Acceso CMS'
+    CMS_ACCESS_CATEGORY: "Acceso CMS"
   Permissions:
-    CONTENT_CATEGORY: 'Permisos do Contido'
-    PERMISSIONS_CATEGORY: 'Roles e permisos de acceso'
+    CONTENT_CATEGORY: "Permisos do Contido"
+    PERMISSIONS_CATEGORY: "Roles e permisos de acceso"
   RedirectorPage:
-    DESCRIPTION: 'Redireccións a unha páxina interna diferente'
-    HEADER: 'Esta páxina redirixirá os usuarios a outra páxina'
-    OTHERURL: 'Outra URL do sitio web'
-    REDIRECTTO: 'Redirixir a'
-    REDIRECTTOEXTERNAL: 'Outro sitio web'
-    REDIRECTTOPAGE: 'Unha páxina no teu sitio web'
-    YOURPAGE: 'Páxina no teu sitio web'
+    DESCRIPTION: "Redireccións a unha páxina interna diferente"
+    HEADER: "Esta páxina redirixirá os usuarios a outra páxina"
+    OTHERURL: "Outra URL do sitio web"
+    REDIRECTTO: "Redirixir a"
+    REDIRECTTOEXTERNAL: "Outro sitio web"
+    REDIRECTTOPAGE: "Unha páxina no teu sitio web"
+    YOURPAGE: "Páxina no teu sitio web"
   ReportAdmin:
     MENUTITLE: Informes
   ReportAdminForm:
-    FILTERBY: 'Filtrar por'
+    FILTERBY: "Filtrar por"
   SideReport:
-    BROKENFILES: 'Páxinas con ficheiros rotos'
-    BROKENLINKS: 'Páxinas con ligazóns rotas'
-    BROKENREDIRECTORPAGES: 'RedirectorPages apuntando a páxinas eliminadas'
-    BROKENVIRTUALPAGES: 'VirtualPages apuntando a páxinas eliminadas'
-    BrokenLinksGroupTitle: 'Informes de ligazóns rotas'
-    ContentGroupTitle: 'Informes do Contido'
-    EMPTYPAGES: 'Páxinas sen contido'
-    LAST2WEEKS: 'Páxinas editadas nas 2 últimas semanas'
+    BROKENFILES: "Páxinas con ficheiros rotos"
+    BROKENLINKS: "Páxinas con ligazóns rotas"
+    BROKENREDIRECTORPAGES: "RedirectorPages apuntando a páxinas eliminadas"
+    BROKENVIRTUALPAGES: "VirtualPages apuntando a páxinas eliminadas"
+    BrokenLinksGroupTitle: "Informes de ligazóns rotas"
+    ContentGroupTitle: "Informes do Contido"
+    EMPTYPAGES: "Páxinas sen contido"
+    LAST2WEEKS: "Páxinas editadas nas 2 últimas semanas"
     OtherGroupTitle: Outro
-    ParameterLiveCheckbox: 'Probar o sitio en vivo'
+    ParameterLiveCheckbox: "Probar o sitio en vivo"
   SilverStripeNavigatorLink:
-    ShareLink: 'Ligazón compartir'
+    ShareLink: "Ligazón compartir"
   SilverStripeNavigatorLinkl:
     CloseLink: Pechar
   SiteConfig:
-    DEFAULTTHEME: '(Usar tema por defecto)'
-    EDITHEADER: 'Quen pode editar neste sitio?'
-    EDIT_PERMISSION: 'Xestionar a configuración do sitio'
-    SITENAMEDEFAULT: 'O nome do teu Sitio'
-    SITETAGLINE: 'Eslogan do sitio'
-    SITETITLE: 'Título do Sitio'
+    DEFAULTTHEME: "(Usar tema por defecto)"
+    EDITHEADER: "Quen pode editar neste sitio?"
+    EDIT_PERMISSION: "Xestionar a configuración do sitio"
+    SITENAMEDEFAULT: "O nome do teu Sitio"
+    SITETAGLINE: "Eslogan do sitio"
+    SITETITLE: "Título do Sitio"
     TABACCESS: Acceder
     TABMAIN: Principal
-    TAGLINEDEFAULT: 'o teu eslogan aquí'
+    TAGLINEDEFAULT: "o teu eslogan aquí"
     THEME: Tema
-    TOPLEVELCREATE: 'Quen pode crear as páxinas na raíz do sitio?'
-    VIEWHEADER: 'Quen pode ver as páxinas neste sitio?'
+    TOPLEVELCREATE: "Quen pode crear as páxinas na raíz do sitio?"
+    VIEWHEADER: "Quen pode ver as páxinas neste sitio?"
   SiteTree:
     ACCESSANYONE: Ninguén
-    ACCESSHEADER: 'Quen pode ver esta páxina?'
-    ACCESSLOGGEDIN: 'Usuarios con sesión iniciada'
-    ACCESSONLYTHESE: 'Só esta xente (escoller da lista)'
-    ALLOWCOMMENTS: 'Permitir comentario nesta páxina?'
-    BUTTONCANCELDRAFT: 'Cancelar cambios do borrador'
-    BUTTONCANCELDRAFTDESC: 'Eliminar o borrador e revertir a páxina publicada actualmente'
-    BUTTONUNPUBLISH: Sen publicar
-    BUTTONUNPUBLISHDESC: 'Eliminar esta páxina do sitio publicado'
+    ACCESSHEADER: "Quen pode ver esta páxina?"
+    ACCESSLOGGEDIN: "Usuarios con sesión iniciada"
+    ACCESSONLYTHESE: "Só esta xente (escoller da lista)"
+    ALLOWCOMMENTS: "Permitir comentario nesta páxina?"
+    BUTTONCANCELDRAFT: "Cancelar cambios do borrador"
+    BUTTONCANCELDRAFTDESC: "Eliminar o borrador e revertir a páxina publicada actualmente"
+    BUTTONUNPUBLISH: "Sen publicar"
+    BUTTONUNPUBLISHDESC: "Eliminar esta páxina do sitio publicado"
     Comments: Comentarios
     Content: Contido
-    DEFAULTABOUTTITLE: 'Sobre nós'
-    DEFAULTCONTACTTITLE: 'Contactarnos'
+    DEFAULTABOUTTITLE: "Sobre nós"
+    DEFAULTCONTACTTITLE: Contactarnos
     DEFAULTHOMETITLE: Inicio
     DELETEDPAGESHORT: Eliminado
-    DESCRIPTION: 'Páxina de contido xenérico'
-    DependtPageColumnLinkType: 'Tipo de ligazón'
-    EDITANYONE: 'Ningún pode iniciar sesión no CMS'
-    EDITHEADER: 'Quen pode editar esta páxina?'
-    EDITONLYTHESE: 'Só esta xente (escoller da lista)'
-    EDITORGROUPS: 'Grupos Editor'
-    EDIT_ALL_DESCRIPTION: 'Editar calquer páxina'
-    Editors: 'Grupos dos Editores'
-    HASBROKENLINKS: 'Esta páxina ten ligazóns rotas.'
+    DESCRIPTION: "Páxina de contido xenérico"
+    DependtPageColumnLinkType: "Tipo de ligazón"
+    EDITANYONE: "Ningún pode iniciar sesión no CMS"
+    EDITHEADER: "Quen pode editar esta páxina?"
+    EDITONLYTHESE: "Só esta xente (escoller da lista)"
+    EDITORGROUPS: "Grupos Editor"
+    EDIT_ALL_DESCRIPTION: "Editar calquer páxina"
+    Editors: "Grupos dos Editores"
+    HASBROKENLINKS: "Esta páxina ten ligazóns rotas."
     HTMLEDITORTITLE: Contido
-    INHERIT: 'Herdado da páxina pai'
-    LASTUPDATED: 'Último Actualizado'
-    MENUTITLE: 'Etiqueta Navegación'
-    METADESC: 'Meta Descrición'
-    METAEXTRA: 'Personalizar Meta Tags'
+    INHERIT: "Herdado da páxina pai"
+    LASTUPDATED: "Último Actualizado"
+    MENUTITLE: "Etiqueta Navegación"
+    METADESC: "Meta Descrición"
+    METAEXTRA: "Personalizar Meta Tags"
     MODIFIEDONDRAFTSHORT: Modificado
-    PAGELOCATION: 'Localización da páxina'
-    PAGETITLE: 'Nome da páxina'
-    PAGETYPE: 'Tipo de Páxina'
-    PARENTID: 'Páxina pai'
-    PARENTTYPE: 'Localización da páxina'
-    PARENTTYPE_ROOT: 'Páxina nivel alto'
-    PERMISSION_GRANTACCESS_DESCRIPTION: 'Xestionar dereitos de acceso para o contido'
-    REMOVEDFROMDRAFTSHORT: 'Eliminado do borrador'
-    REMOVE_INSTALL_WARNING: 'Coidado: Deberías eliminar install.php da instalación deste Silverstripe por razóns de seguridade.'
-    REORGANISE_DESCRIPTION: 'Cambiar a estrutura do sitio'
-    REORGANISE_HELP: 'Reorganizar as páxinas na árbore do sitio a través de arrastrar e soltar.'
-    SHOWINMENUS: 'Amosar nos menús?'
-    SHOWINSEARCH: 'Amosar na busca?'
+    PAGELOCATION: "Localización da páxina"
+    PAGETITLE: "Nome da páxina"
+    PAGETYPE: "Tipo de Páxina"
+    PARENTID: "Páxina pai"
+    PARENTTYPE: "Localización da páxina"
+    PARENTTYPE_ROOT: "Páxina nivel alto"
+    PERMISSION_GRANTACCESS_DESCRIPTION: "Xestionar dereitos de acceso para o contido"
+    REMOVEDFROMDRAFTSHORT: "Eliminado do borrador"
+    REMOVE_INSTALL_WARNING: "Coidado: Deberías eliminar install.php da instalación deste Silverstripe por razóns de seguridade."
+    REORGANISE_DESCRIPTION: "Cambiar a estrutura do sitio"
+    REORGANISE_HELP: "Reorganizar as páxinas na árbore do sitio a través de arrastrar e soltar."
+    SHOWINMENUS: "Amosar nos menús?"
+    SHOWINSEARCH: "Amosar na busca?"
     TABBEHAVIOUR: Comportamento
-    TABCONTENT: 'Contido Principal'
-    TABDEPENDENT: 'Páxinas dependentes'
-    TOPLEVEL: 'Contido do Sitio (Nivel Superior)'
-    TOPLEVELCREATORGROUPS: 'Creadores de nivel superior'
-    URLSegment: 'Segmento URL'
-    VIEWERGROUPS: 'Visor Grupos'
-    VIEW_ALL_DESCRIPTION: 'Ver calquera páxina'
-    VIEW_DRAFT_CONTENT: 'Ver contido do borrador'
+    TABCONTENT: "Contido Principal"
+    TABDEPENDENT: "Páxinas dependentes"
+    TOPLEVEL: "Contido do Sitio (Nivel Superior)"
+    TOPLEVELCREATORGROUPS: "Creadores de nivel superior"
+    URLSegment: "Segmento URL"
+    VIEWERGROUPS: "Visor Grupos"
+    VIEW_ALL_DESCRIPTION: "Ver calquera páxina"
+    VIEW_DRAFT_CONTENT: "Ver contido do borrador"
     Visibility: Visibilidade
-    has_one_Parent: 'Páxina pai'
-    many_many_ImageTracking: 'Imaxe de Seguemento'
-    many_many_LinkTracking: 'Ligazón de Seguemento'
+    has_one_Parent: "Páxina pai"
+    many_many_ImageTracking: "Imaxe de Seguemento"
+    many_many_LinkTracking: "Ligazón de Seguemento"
   ViewArchivedEmail_ss:
-    CANACCESS: 'Podes acceder ao sitio arquivado nesta ligazón:'
-    HAVEASKED: 'Solicitaches ver o contido do sitio sobre'
+    CANACCESS: "Podes acceder ao sitio arquivado nesta ligazón:"
+    HAVEASKED: "Solicitaches ver o contido do sitio sobre"
   VirtualPage:
-    DESCRIPTION: 'Visualizar o contido doutra páxina'
-    HEADER: 'Esta é unha páxina virtual'
-    SINGULARNAME: 'Páxina Virtual'
+    DESCRIPTION: "Visualizar o contido doutra páxina"
+    HEADER: "Esta é unha páxina virtual"
+    SINGULARNAME: "Páxina Virtual"

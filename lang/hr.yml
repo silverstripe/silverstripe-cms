@@ -1,352 +1,475 @@
 hr:
   AssetAdmin:
-    ADDFILES: 'Dodaj datoteke'
-    ActionAdd: 'Dodaj direktorij'
+    ADDFILES: "Dodaj datoteke"
+    ActionAdd: "Dodaj direktorij"
     AppCategoryArchive: Arhiva
     AppCategoryAudio: Zvuk
     AppCategoryDocument: Dokument
     AppCategoryFlash: Flash
     AppCategoryImage: Slika
     AppCategoryVideo: Video
-    BackToFolder: 'Povratak na direktorij'
-    CMSMENU_OLD: 'Datoteke (stare)'
+    BackToFolder: "Povratak na direktorij"
+    CMSMENU_OLD: "Datoteke (stare)"
     CREATED: Datum
-    CurrentFolderOnly: 'Ograničiti na trenutni direktorij?'
+    CurrentFolderOnly: "Ograničiti na trenutni direktorij?"
     DetailsView: Detalji
+    ErrorItemPermissionDenied: "Izgleda kako nemate potrebna prava za dodati {ObjectTitle} na kampanju"
+    ErrorNotFound: "{Type} nije pronađen"
     FILES: Datoteke
-    FILESYSTEMSYNC: 'Sinkroniziraj datoteke'
-    FILESYSTEMSYNCTITLE: 'Ažurirajte CMS bazu podataka datoteka na sustavu datoteka. Korisno kada su nove datoteke prenesene izvan CMS, npr putem FTP-a.'
-    FROMTHEINTERNET: 'Sa interneta'
-    FROMYOURCOMPUTER: 'Sa računala'
-    Filetype: 'Tip datoteke'
-    ListView: 'Prikaz popisa'
+    FILESYSTEMSYNC: "Sinkroniziraj datoteke"
+    FILESYSTEMSYNCTITLE: "Ažurirajte CMS bazu podataka datoteka na sustavu datoteka. Korisno kada su nove datoteke prenesene izvan CMS, npr putem FTP-a."
+    FROMTHEINTERNET: "Sa interneta"
+    FROMYOURCOMPUTER: "Sa računala"
+    Filetype: "Tip datoteke"
+    ListView: "Prikaz popisa"
     MENUTITLE: Datoteke
-    NEWFOLDER: Novi direktorij
+    NEWFOLDER: "Novi direktorij"
     SIZE: Veličina
-    THUMBSDELETED: '{count} neiskorištenih sličica su izbrisane'
-    TreeView: 'Prikaz kao stablo'
+    THUMBSDELETED: "{count} neiskorištenih sličica su izbrisane"
+    TreeView: "Prikaz kao stablo"
     Upload: Prenesi
   AssetAdmin_DeleteBatchAction:
-    TITLE: 'Obriši direktorije'
+    TITLE: "Obriši direktorije"
   AssetAdmin_Tools:
     FILTER: Filter
   AssetAdmin_left_ss:
     GO: Kreni
   AssetTableField:
-    BACKLINKCOUNT: 'Korišteno na:'
+    BACKLINKCOUNT: "Korišteno na:"
     PAGES: stranica(e)
   BackLink_Button_ss:
     Back: Nazad
   BrokenLinksReport:
-    Any: bilo koji
-    BROKENLINKS: 'Izvješće prekinutih linkova'
-    CheckSite: 'Pregledaj stranicu'
-    CheckSiteDropdownDraft: 'Predložak'
-    CheckSiteDropdownPublished: 'Objavljena stranica'
-    ColumnDateLastModified: 'Datum zadnjeg uređivanja'
-    ColumnDateLastPublished: 'Datum zadnje objave'
-    ColumnProblemType: 'Tip greške'
+    Any: "bilo koji"
+    BROKENLINKS: "Izvješće prekinutih linkova"
+    CheckSite: "Pregledaj stranicu"
+    CheckSiteDropdownDraft: Predložak
+    CheckSiteDropdownPublished: "Objavljena stranica"
+    ColumnDateLastModified: "Datum zadnjeg uređivanja"
+    ColumnDateLastPublished: "Datum zadnje objave"
+    ColumnProblemType: "Tip greške"
     ColumnURL: Link
-    HasBrokenFile: 'ima neispravnu datoteku'
-    HasBrokenLink: 'ima neispravan link'
-    HasBrokenLinkAndFile: 'ima neispravan link i datoteku'
-    HoverTitleEditPage: 'Uredi stranicu'
-    PageName: 'Ime stranice'
-    ReasonDropdown: 'Greška za provjeru'
-    ReasonDropdownBROKENFILE: 'Neispravna datoteka'
-    ReasonDropdownBROKENLINK: 'Neispravan link'
-    ReasonDropdownRPBROKENLINK: 'Preusmjeravanje pokazuje na nepostojeću stranicu'
-    ReasonDropdownVPBROKENLINK: 'Virtualna stranica ukazuje na nepostojeću stranicu'
-    RedirectorNonExistent: 'stranica za preusmjeravanje pokazuje na nepostojeću stranicu'
-    VirtualPageNonExistent: 'virtualna stranica ukazuje na nepostojeću stranicu'
+    HasBrokenFile: "ima neispravnu datoteku"
+    HasBrokenLink: "ima neispravan link"
+    HasBrokenLinkAndFile: "ima neispravan link i datoteku"
+    HoverTitleEditPage: "Uredi stranicu"
+    PageName: "Ime stranice"
+    ReasonDropdown: "Greška za provjeru"
+    ReasonDropdownBROKENFILE: "Neispravna datoteka"
+    ReasonDropdownBROKENLINK: "Neispravan link"
+    ReasonDropdownRPBROKENLINK: "Preusmjeravanje pokazuje na nepostojeću stranicu"
+    ReasonDropdownVPBROKENLINK: "Virtualna stranica ukazuje na nepostojeću stranicu"
+    RedirectorNonExistent: "stranica za preusmjeravanje pokazuje na nepostojeću stranicu"
+    VirtualPageNonExistent: "virtualna stranica ukazuje na nepostojeću stranicu"
   CMSAddPageController:
-    Title: 'Dodaj stranicu'
+    Title: "Dodaj stranicu"
+  CMSBatchAction_Archive:
+    RESULT: "Obrisano %d stranica u statusu nacrt i objavljeno, i poslani u arhivu"
+    TITLE: "Odjavi i arhiviraj"
   CMSBatchActions:
     ARCHIVE: Arhiviraj
-    ARCHIVED_PAGES: 'Arhivirano ''%d'' stranica'
-    DELETED_DRAFT_PAGES: 'Obrisano %d stranica s nacrtne stranice, %d neuspješno'
-    DELETED_PAGES: 'Obrisano %d stranica s objavljene stranice, %d neuspješno'
-    DELETE_DRAFT_PAGES: 'Izbriši stranicu sa objavljene'
-    DELETE_PAGES: 'Izbriši stranicu sa objavljene'
-    PUBLISHED_PAGES: 'Objavljeno %d stranica, %d neuspješno'
+    ARCHIVED_PAGES: "Arhivirano '%d' stranica"
+    DELETED_DRAFT_PAGES: "Obrisano %d stranica s nacrtne stranice, %d neuspješno"
+    DELETED_PAGES: "Obrisano %d stranica s objavljene stranice, %d neuspješno"
+    DELETE_DRAFT_PAGES: "Izbriši stranicu sa objavljene"
+    DELETE_PAGES: "Izbriši stranicu sa objavljene"
+    PUBLISHED_PAGES: "Objavljeno %d stranica, %d neuspješno"
     PUBLISH_PAGES: Objavi
     RESTORE: Povrati
-    RESTORED_PAGES: 'Vraćeno ''%d'' stranica'
+    RESTORED_PAGES: "Vraćeno '%d' stranica"
+    UNPUBLISHED_PAGES: "Neobjavljeno %d stranica"
+    UNPUBLISH_PAGES: Neobjavi
   CMSFileAddController:
     MENUTITLE: Datoteke
   CMSMain:
-    ACCESS: 'Pristup ''{title}'' sekciji'
+    ACCESS: "Pristup '{title}' sekciji"
+    ACCESS_HELP: "Dozvoli pregledavati sekcije sadržanog stabla i sadržaja strancie. Dozvole za pregled i uređivanje mogu se mijenjati putem stranicama specifičnim padajućim izbornicima kao i posebnim \"Sadržajnim dozvolama\"."
     ARCHIVE: Arhiviraj
-    ARCHIVEDPAGE: 'Arhivirane stranice ''%s'''
-    AddNew: 'Dodaj novu stranicu'
-    AddNewButton: 'Dodaj novi'
-    AddPageRestriction: 'Napomena: neke vrste stranica nisu dozvoljene za ovu sekciju'
+    ARCHIVEDPAGE: "Arhivirane stranice '%s'"
+    AddNew: "Dodaj novu stranicu"
+    AddNewButton: "Dodaj novi"
+    AddPageRestriction: "Napomena: neke vrste stranica nisu dozvoljene za ovu sekciju"
     Cancel: Odustani
-    ChoosePageParentMode: 'Odaberite gdje želite kreirati ovu stranicu'
-    ChoosePageType: 'Odaberi vrstu stranice'
+    ChoosePageParentMode: "Odaberite gdje želite kreirati ovu stranicu"
+    ChoosePageType: "Odaberi vrstu stranice"
     Create: Kreiraj
-    DELETE: 'Obriši nacrt'
+    DELETE: "Obriši nacrt"
     DELETEFP: Obriši
-    DESCREMOVED: 'i {count} potomaka'
-    DUPLICATED: 'Dupliciran ''{title}'' uspješno'
-    DUPLICATEDWITHCHILDREN: 'Dupliciran ''{title}''  i podstranice uspješno'
+    DESCREMOVED: "i {count} potomaka"
+    DUPLICATED: "Dupliciran '{title}' uspješno"
+    DUPLICATEDWITHCHILDREN: "Dupliciran '{title}'  i podstranice uspješno"
     EMAIL: Email
-    EditTree: 'Uredi stablo stranice'
-    MENUTITLE: 'Uredi stranicu'
-    NEWPAGE: 'Novi {pagetype}'
-    PAGENOTEXISTS: 'Stranica ne postoji'
-    PAGETYPEANYOPT: Bilo koji
-    PUBALLCONFIRM: 'Molim objavi svaku stranicu, kopirajući sadržaj'
-    PUBALLFUN: '"Objavi sve"'
-    PUBALLFUN2: "Ovaj gumb radi isto što i klikanje na \"objavi\" gumbe za svaku stranicu posebno. Koristi se nakon velikih promjena u sadržaju, kao npr. kod prve objave stranice."
-    PUBLISHED: 'Uspješno objavljen ''{title}'''
-    PUBPAGES: 'Gotovo: Objavljeno {count} stranica'
-    PageAdded: 'Uspješno kreirane stranice'
-    REMOVED: 'Obrisan ''{title}''{description} sa objavljene stranice'
-    REMOVEDPAGE: 'Uklonjen ''{title}'' sa objavljene stranice'
-    REMOVEDPAGEFROMDRAFT: 'Uklonjen ''%s'' sa nacrtne stranice'
-    RESTORED: 'Vraćeno ''{title}'' uspješno'
-    RESTORE_TO_ROOT: 'Povrati nacrt na najviši nivo'
-    ROLLBACK: 'Vrati na ovu verziju'
-    ROLLEDBACKPUBv2: 'Vraćeno na objavljenu verziju'
-    ROLLEDBACKVERSIONv2: 'Vraćeno na verziju #%d.'
+    EditTree: "Uredi stablo stranice"
+    ListFiltered: "Filtrirana lista."
+    MENUTITLE: "Uredi stranicu"
+    NEWPAGE: "Novi {pagetype}"
+    PAGENOTEXISTS: "Stranica ne postoji"
+    PAGES: Stranice
+    PAGETYPEANYOPT: "Bilo koji"
+    PAGETYPEOPT: "Tip stranice"
+    PUBALLCONFIRM: "Molim objavi svaku stranicu, kopirajući sadržaj"
+    PUBALLFUN: "\"Objavi sve\""
+    PUBALLFUN2: |-
+        Klikom na ovaj gumb identično je kao i odlaziti na svaku stranicu i kliknuti "objavi". Namjenjen
+        je za korištenje ako ima puno promjena na sadržaju, poput u trenutku kad je stranica
+        prvi put napravljena.
+    PUBLISHED: "Uspješno objavljen '{title}'"
+    PUBPAGES: "Gotovo: Objavljeno {count} stranica"
+    PageAdded: "Uspješno kreirane stranice"
+    REMOVED: "Obrisan '{title}'{description} sa objavljene stranice"
+    REMOVEDPAGE: "Uklonjen '{title}' sa objavljene stranice"
+    REMOVEDPAGEFROMDRAFT: "Uklonjen '%s' sa nacrtne stranice"
+    RESTORE: Povrati
+    RESTORED: "Vraćeno '{title}' uspješno"
+    RESTORE_DESC: "Vrati arhiviranu verziju u nacrt"
+    RESTORE_TO_ROOT: "Povrati nacrt na najviši nivo"
+    RESTORE_TO_ROOT_DESC: "Povrati arhiviranu verziju u nacrt na najviši nivo"
+    ROLLBACK: "Vrati na ovu verziju"
+    ROLLEDBACKPUBv2: "Vraćeno na objavljenu verziju"
+    ROLLEDBACKVERSIONv2: "Vraćeno na verziju #%d."
     SAVE: Spremi
-    SAVED: 'Uspješno spremljen ''{title}'''
-    SAVEDRAFT: 'Spremiti nacrt'
+    SAVED: "Uspješno spremljen '{title}'"
+    SAVEDRAFT: "Spremiti nacrt"
     TabContent: Sadržaj
     TabHistory: Povijest
     TabSettings: Postavke
+    TreeFiltered: "Filtrirano stablo."
+    TreeFilteredClear: "Očisti filter"
+    UNPUBLISH_AND_ARCHIVE: "Odjavi i arhiviraj"
   CMSMain_left_ss:
+    APPLY_FILTER: "Primjeni filter"
+    CLEAR_FILTER: Očisti
     RESET: Resetiraj
   CMSPageAddController:
-    MENUTITLE: 'Dodaj stranicu'
-    ParentMode_child: 'Ispod druge stranice'
-    ParentMode_top: 'Najviši nivo'
+    MENUTITLE: "Dodaj stranicu"
+    ParentMode_child: "Ispod druge stranice"
+    ParentMode_top: "Najviši nivo"
   CMSPageEditController:
-    MENUTITLE: 'Uredi stranicu'
+    MENUTITLE: "Uredi stranicu"
   CMSPageHistoryController:
-    COMPAREMODE: 'Način usporedbe (odaberi dva)'
-    COMPAREVERSIONS: 'Usporedi verzije'
-    COMPARINGVERSION: 'Uspoređujem verzije {version1} i {version2}.'
+    COMPAREMODE: "Način usporedbe (odaberi dva)"
+    COMPAREVERSIONS: "Usporedi verzije"
+    COMPARINGVERSION: "Uspoređujem verzije {version1} i {version2}."
     MENUTITLE: Povijest
-    REVERTTOTHISVERSION: 'Vrati na ovu verziju'
-    SHOWUNPUBLISHED: 'Prikaži neobjavljene verzije'
-    SHOWVERSION: 'Prikaži verzije'
+    REVERTTOTHISVERSION: "Vrati na ovu verziju"
+    SHOWUNPUBLISHED: "Prikaži neobjavljene verzije"
+    SHOWVERSION: "Prikaži verzije"
     VIEW: prikaži
-    VIEWINGLATEST: 'Trenutno pregledavam zadnju verziju.'
-    VIEWINGVERSION: 'Trenutno pregledavam verziju {version}.'
+    VIEWINGLATEST: "Trenutno pregledavam zadnju verziju."
+    VIEWINGVERSION: "Trenutno pregledavam verziju {version}."
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
-    NOTPUBLISHED: 'Nije objavljeno'
+    NOTPUBLISHED: "Nije objavljeno"
+    PREVIEW: "Pregled web-stranice"
     PUBLISHER: Izdavač
     UNKNOWN: Nepoznato
     WHEN: Kada
   CMSPageSettingsController:
-    MENUTITLE: 'Uredi stranicu'
+    MENUTITLE: "Uredi stranicu"
   CMSPagesController:
-    GalleryView: 'Pregled kao galerija'
-    ListView: 'Pregled kao popis'
+    GalleryView: "Pregled kao galerija"
+    ListView: "Pregled kao popis"
     MENUTITLE: Stranice
-    TreeView: 'Prikaz kao stablo'
+    TreeView: "Prikaz kao stablo"
+  CMSPagesController_ContentToolbar_ss:
+    MULTISELECT: "Višestruki izbor"
   CMSPagesController_Tools_ss:
     FILTER: Filter
   CMSSIteTreeFilter_PublishedPages:
-    Title: 'Objavljene stranice'
+    Title: "Objavljene stranice"
   CMSSearch:
     FILTERDATEFROM: Od
     FILTERDATEHEADING: Datum
     FILTERDATETO: Do
-    PAGEFILTERDATEHEADING: 'Zadnje uređeno'
+    FILTERLABELTEXT: Sadržaj
+    PAGEFILTERDATEHEADING: "Zadnje uređeno"
   CMSSettingsController:
     MENUTITLE: Postavke
+  CMSSiteTreeFilter_ChangedPages:
+    Title: "Promjenjene stranice"
+  CMSSiteTreeFilter_DeletedPages:
+    Title: "Sve stranice, uključujući obrisane"
   CMSSiteTreeFilter_Search:
-    Title: 'Sve stranice'
+    Title: "Sve stranice"
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: "Obrisane stranice"
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: "Neobjavljene nacrtne stranice"
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
-    Title: 'Objavljeno ali uklonito iz predloška'
+    Title: "Objavljeno ali uklonito iz predloška"
+  ContentControl:
+    NOTEWONTBESHOWN: "Napomena: ova poruka neće biti prikazana vašim posjetiteljima"
   ContentController:
+    ARCHIVEDSITE: "Pregledna verzija"
+    ARCHIVEDSITEFROM: "Arhivirana stranica iz"
     CMS: CMS
     DRAFT: Predložak
-    DRAFTSITE: 'Predložak'
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Mora biti prijavljeni u CMS da bi ste vidjeli neobjavljeni ili ahivirani sadržaj. <a href="%s">Kliknite ovdje za povratak na objavljenu stranicu.</a>'
+    DRAFTSITE: Predložak
+    DRAFT_SITE_ACCESS_RESTRICTION: "Mora biti prijavljeni u CMS da bi ste vidjeli neobjavljeni ili ahivirani sadržaj. <a href=\"%s\">Kliknite ovdje za povratak na objavljenu stranicu.</a>"
     Email: Email
-    INSTALL_SUCCESS: 'Instalacija uspješna!'
-    InstallFilesDeleted: 'Instalacijske datoteke su uspješno obrisane.'
-    InstallSuccessCongratulations: 'SilverStripe je uspješno instaliran!'
-    LOGGEDINAS: 'Prijavi se kao'
+    INSTALL_SUCCESS: "Instalacija uspješna!"
+    InstallFilesDeleted: "Instalacijske datoteke su uspješno obrisane."
+    InstallSecurityWarning: "Zbog sigurnosnih razloga trebali bi ste obrisati instalacijske datoteke, osima ako planirate reinstalaciju kasnije (<em>zahtjeva administracijsku prijavu, pogledaj iznad</em>). Web server sada treba samo dozvole pisanja na \"assets\" direktorij, pa možete maknuti pravo pisanja sa svih drugih direktorija. <a href=\"{link}\" style=\"text-align: center;\">kliknite ovjde za brisanje instalacijskih datoteka.</a>"
+    InstallSuccessCongratulations: "SilverStripe je uspješno instaliran!"
+    LOGGEDINAS: "Prijavi se kao"
     LOGIN: Prijavi
-    LOGOUT: 'Odjava'
-    NOTLOGGEDIN: 'Niste prijavljeni'
+    LOGOUT: Odjava
+    NOTLOGGEDIN: "Niste prijavljeni"
     PUBLISHED: Objavljeno
-    PUBLISHEDSITE: 'Objavljena stranica'
+    PUBLISHEDSITE: "Objavljena stranica"
     Password: Lozinka
-    PostInstallTutorialIntro: 'Ova web stranica je pojednostavljena verzija SilverStripe 3 stranice. Kako bi ste nadogradili, pogledajte {link}.'
-    UnableDeleteInstall: 'Nemoguće obrisati instalacijske datoteke. Molimo obrišite datoteke ručno'
-    VIEWPAGEIN: 'Pregledaj stranice u:'
+    PostInstallTutorialIntro: "Ova web stranica je pojednostavljena verzija SilverStripe 3 stranice. Kako bi ste nadogradili, pogledajte {link}."
+    StartEditing: "Možete početi uređivati vaš sadržaj otvarajući <a href=\"{link}\">CMS sučelje</a>."
+    UnableDeleteInstall: "Nemoguće obrisati instalacijske datoteke. Molimo obrišite datoteke ručno"
+    VIEWPAGEIN: "Pregledaj stranice u:"
   ErrorPage:
-    400: '400 - loš zahtjev'
-    401: '401 - neovlašten'
-    403: '403 - zabranjen'
-    404: '404 - nije pronađeno'
-    405: '405 - metoda nije dozvoljena'
-    406: '406 - neprihvatljivo'
-    407: '407 - potrebna Proxy autentičnost'
-    408: '408 - zahtjev pauziran'
-    409: '409 - Sukob'
-    410: '410 - Nestala'
-    411: '411 - obavezna dužina'
-    500: '500 - interna serverska greška'
-    501: '501 - nije implementirano'
-    CODE: 'Kod pogreške'
-    DEFAULTERRORPAGETITLE: 'Stranica nije pronađena'
-    DEFAULTSERVERERRORPAGETITLE: 'Serverska greška'
-    PLURALNAME: 'Stranice greške'
-    SINGULARNAME: 'Stranica greške'
+    400: "400 - loš zahtjev"
+    401: "401 - neovlašten"
+    403: "403 - zabranjen"
+    404: "404 - nije pronađeno"
+    405: "405 - metoda nije dozvoljena"
+    406: "406 - neprihvatljivo"
+    407: "407 - potrebna Proxy autentičnost"
+    408: "408 - zahtjev pauziran"
+    409: "409 - Sukob"
+    410: "410 - Nestala"
+    411: "411 - obavezna dužina"
+    412: "412 - preduvjet nije uspio"
+    413: "413 - zatražen entitet prevelik"
+    414: "414 - zatraženi URI predug"
+    415: "415 - nepodržan multimedijalni tip"
+    416: "416 - opseg zahtjeva nije zadovoljavajući"
+    417: "417 - očekivanje nije uspjelo"
+    500: "500 - interna serverska greška"
+    501: "501 - nije implementirano"
+    CODE: "Kod pogreške"
+    DEFAULTERRORPAGECONTENT: "<p>Nažalost, čini se kako pokušavate pristupiti stranici koja ne postoji.</p><p>Molimo provjerite jeste li upisali točan URL i pokušajte ponovo.</p>"
+    DEFAULTERRORPAGETITLE: "Stranica nije pronađena"
+    DEFAULTSERVERERRORPAGECONTENT: "<p>Nažalost, dogodio se problem prilikom rukovanja vašim zahtjevom.</p>"
+    DEFAULTSERVERERRORPAGETITLE: "Serverska greška"
+    DESCRIPTION: "Prilagođeni sadržaj za različite slučajeve grešaka (npr. \"Stranica nije pronađena\")"
+    ERRORFILEPROBLEM: "Greška otvaranja datoteke \"{filename}\" za pisanje. Molimo provjerite prava datoteke."
+    PLURALNAME: "Stranice greške"
+    SINGULARNAME: "Stranica greške"
   File:
     Title: Naslov
   Folder:
-    AddFolderButton: 'Dodaj direktorij'
-    DELETEUNUSEDTHUMBNAILS: 'Obriši nekorištene sličice'
-    UNUSEDFILESTITLE: 'Nekorištene datoteke'
-    UNUSEDTHUMBNAILSTITLE: 'Nekorištene sličice'
+    AddFolderButton: "Dodaj direktorij"
+    DELETEUNUSEDTHUMBNAILS: "Obriši nekorištene sličice"
+    UNUSEDFILESTITLE: "Nekorištene datoteke"
+    UNUSEDTHUMBNAILSTITLE: "Nekorištene sličice"
     UploadFilesButton: Prenesi
   LeftAndMain:
     DELETED: Obrisano.
     PreviewButton: Pregled
     SAVEDUP: Spremljeno
-    SearchResults: 'Rezultati pretraživanja'
+    SearchResults: "Rezultati pretraživanja"
   Permission:
-    CMS_ACCESS_CATEGORY: 'CMS pristup'
+    CMS_ACCESS_CATEGORY: "CMS pristup"
   Permissions:
-    CONTENT_CATEGORY: 'Sadržajne dozvole'
+    CONTENT_CATEGORY: "Sadržajne dozvole"
+    PERMISSIONS_CATEGORY: "Uloge i prava pristupa"
   RedirectorPage:
-    HASBEENSETUP: 'Stranica za preusjeravanje nema postavljenog preusmjeravanja'
-    HEADER: 'Ova stranica preusmjeriti će korisnike na drugu stranicu'
-    OTHERURL: 'URL drugog weba'
-    REDIRECTTO: 'Preusmjeri na'
-    REDIRECTTOEXTERNAL: 'Drugi web'
-    REDIRECTTOPAGE: 'Stranicu na Vašom webu'
-    YOURPAGE: 'Stranica na Vašem webu'
+    DESCRIPTION: "Preusmjerava na drugu internu stranicu"
+    HASBEENSETUP: "Stranica za preusjeravanje nema postavljenog preusmjeravanja"
+    HEADER: "Ova stranica preusmjeriti će korisnike na drugu stranicu"
+    OTHERURL: "URL drugog weba"
+    PLURALNAME: "Preusmjeravajuće stranice"
+    REDIRECTTO: "Preusmjeri na"
+    REDIRECTTOEXTERNAL: "Drugi web"
+    REDIRECTTOPAGE: "Stranicu na Vašom webu"
+    SINGULARNAME: "Preusmjeravajuća stranica"
+    YOURPAGE: "Stranica na Vašem webu"
+  RemoveOrphanedPagesTask:
+    BUTTONRUN: Pokreni
+    CHOOSEOPERATION: "Odaberite operaciju:"
+    DELETEWARNING: "Upozorenje: ove operacije nije moguće poništiti. Molimo pažljivo rukovati."
+    HEADER: "Ukloni se zadatke stranica siročadi"
+    NONEFOUND: "Siročad nisu pronađena"
+    NONEREMOVED: "Nijedan uklonjen"
+    OPERATION_REMOVE: "Ukloni označeno sa svih stanja (UPOZORENJE: to će uništiti sve označene stranice s nacrta i objavljeno)"
+    SELECTALL: "označi sve"
+    UNSELECTALL: "odznači sve"
   ReportAdmin:
     MENUTITLE: Izvještaji
     ReportTitle: Naslov
   ReportAdminForm:
-    FILTERBY: 'Filtriraj po'
+    FILTERBY: "Filtriraj po"
   SearchForm:
     GO: Kreni
     SEARCH: Traži
-    SearchResults: 'Rezultati pretraživanja'
+    SearchResults: "Rezultati pretraživanja"
   SideReport:
-    ContentGroupTitle: 'Sadržajni izvještaji'
-    EMPTYPAGES: 'Stranice bez sadržaja'
-    LAST2WEEKS: 'Stranice mijenjane u zadnja 2 tjedna'
+    BROKENFILES: "Stranice s neispravnim datotekama"
+    BROKENLINKS: "Stranice s neispravnim linkovima"
+    BROKENREDIRECTORPAGES: "Preusmjeravanje pokazuje na obrisane stranice"
+    BROKENVIRTUALPAGES: "Virtualne stranice pokazuje na obrisane stranice"
+    BrokenLinksGroupTitle: "Izvješće prekinutih linkova"
+    ContentGroupTitle: "Sadržajni izvještaji"
+    EMPTYPAGES: "Stranice bez sadržaja"
+    LAST2WEEKS: "Stranice mijenjane u zadnja 2 tjedna"
     OtherGroupTitle: Ostali
-    ParameterLiveCheckbox: 'Pregledaj objavljenu stranicu'
-    REPEMPTY: '{title} izvještaj je prazan.'
+    ParameterLiveCheckbox: "Pregledaj objavljenu stranicu"
+    REPEMPTY: "{title} izvještaj je prazan."
   SilverStripeNavigator:
     ARCHIVED: Arhivirano
   SilverStripeNavigatorLink:
-    ShareLink: 'Podijeli link'
+    ShareLink: "Podijeli link"
   SilverStripeNavigatorLinkl:
     CloseLink: Zatvori
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: "Dodaj stranicu"
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: "Uredi stranicu"
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    MENUTITLE: Povijest
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: "Uredi stranicu"
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    MENUTITLE: Stranice
+  SilverStripe\CMS\Model\ErrorPage:
+    DESCRIPTION: "Prilagođeni sadržaj za različite slučajeve grešaka (npr. \"Stranica nije pronađena\")"
+    PLURALNAME: "Stranice greške"
+    SINGULARNAME: "Stranica greške"
+  SilverStripe\CMS\Model\RedirectorPage:
+    DESCRIPTION: "Preusmjerava na internu stranicu ili vanjski URL"
+    PLURALNAME: "Preusmjeravajuće stranice"
+    SINGULARNAME: "Preusmjeravajuća stranica"
+  SilverStripe\CMS\Model\SiteTree:
+    DESCRIPTION: "Obična sadržajna stranica"
+    PLURALNAME: "Stabla stranice"
+    SINGULARNAME: "Stablo stranice"
+  SilverStripe\CMS\Model\VirtualPage:
+    DESCRIPTION: "Prikazuje sadržaj druge stranice"
+    PLURALNAME: "Virtualne stranice"
+    SINGULARNAME: "Virtualna stranica"
   SiteConfig:
-    DEFAULTTHEME: '(koristi predloženu temu)'
-    EDITHEADER: 'Tko može uređivati stranice na ovom webu?'
-    EDIT_PERMISSION: 'Upravljaj konfiguracijom weba'
-    PLURALNAME: 'Konfiguracije weba'
-    SINGULARNAME: 'Konfiguracija weba'
-    SITENAMEDEFAULT: 'Naziv vašeg weba'
-    SITETAGLINE: 'Slogan weba'
-    SITETITLE: 'Naziv weba'
+    DEFAULTTHEME: "(koristi predloženu temu)"
+    EDITHEADER: "Tko može uređivati stranice na ovom webu?"
+    EDIT_PERMISSION: "Upravljaj konfiguracijom weba"
+    EDIT_PERMISSION_HELP: "Mogućnost uređivanja globalnog pristupa postavki/top-nivo stranica dozvola."
+    PLURALNAME: "Konfiguracije weba"
+    SINGULARNAME: "Konfiguracija weba"
+    SITENAMEDEFAULT: "Naziv vašeg weba"
+    SITETAGLINE: "Slogan weba"
+    SITETITLE: "Naziv weba"
     TABACCESS: Pristup
     TABMAIN: Osnovno
-    TAGLINEDEFAULT: 'vaš slogan ovdje'
+    TAGLINEDEFAULT: "vaš slogan ovdje"
     THEME: Tema
-    TOPLEVELCREATE: 'Tko može kreirati stranice u rootu?'
-    VIEWHEADER: 'Tko može pregledavati stranice?'
+    TOPLEVELCREATE: "Tko može kreirati stranice u rootu?"
+    VIEWHEADER: "Tko može pregledavati stranice?"
   SiteTree:
     ACCESSANYONE: Svi
-    ACCESSHEADER: 'Tko može pregledavati ovu stranicu?'
-    ACCESSLOGGEDIN: 'Samo prijavljeni korisnici'
-    ACCESSONLYTHESE: 'Samo ovi korisnici (odaberite s popisa)'
-    ADDEDTODRAFTHELP: 'Stranica nije objavljena'
+    ACCESSHEADER: "Tko može pregledavati ovu stranicu?"
+    ACCESSLOGGEDIN: "Samo prijavljeni korisnici"
+    ACCESSONLYTHESE: "Samo ovi korisnici (odaberite s popisa)"
+    ADDEDTODRAFTHELP: "Stranica nije objavljena"
     ADDEDTODRAFTSHORT: Predložak
-    ALLOWCOMMENTS: 'Dozvoli komentare na stranici'
-    APPEARSVIRTUALPAGES: 'Ovaj sadržaj se pojavljuje na virtualnim stranicama u {title} sekcijama.'
-    ARCHIVEDPAGEHELP: 'Stranica je uklonjena iz neobjavljenog i objavljenog stanja'
+    ALLOWCOMMENTS: "Dozvoli komentare na stranici"
+    APPEARSVIRTUALPAGES: "Ovaj sadržaj se pojavljuje na virtualnim stranicama u {title} sekcijama."
+    ARCHIVEDPAGEHELP: "Stranica je uklonjena iz neobjavljenog i objavljenog stanja"
     ARCHIVEDPAGESHORT: Arhivirano
-    BUTTONARCHIVEDESC: 'Odjavi i pošalji u arhivu'
-    BUTTONCANCELDRAFT: 'Otkaži promjene na radnoj verziji'
-    BUTTONCANCELDRAFTDESC: 'Obriši radnu verziju i vrati na trenutno objavljenu verziju stranice'
+    BUTTONARCHIVEDESC: "Odjavi i pošalji u arhivu"
+    BUTTONCANCELDRAFT: "Otkaži promjene na radnoj verziji"
+    BUTTONCANCELDRAFTDESC: "Obriši radnu verziju i vrati na trenutno objavljenu verziju stranice"
+    BUTTONDELETEDESC: "Ukloni iz nacrta/objavljeno i pošalji u arhivu"
     BUTTONPUBLISHED: Objavljeno
     BUTTONSAVED: Spremljeno
-    BUTTONSAVEPUBLISH: 'Spremi i objavi'
+    BUTTONSAVEPUBLISH: "Spremi i objavi"
     BUTTONUNPUBLISH: Odjavi
-    BUTTONUNPUBLISHDESC: 'Izbrišite ovu stranicu sa objavljene'
+    BUTTONUNPUBLISHDESC: "Izbrišite ovu stranicu sa objavljene"
     Comments: Komentari
     Content: Sadržaj
-    DEFAULTABOUTTITLE: 'O nama'
-    DEFAULTCONTACTTITLE: 'Kontakt'
+    DEFAULTABOUTCONTENT: "<p>Možete popuniti ovu stranicu s Vašim sadržajem, ili obrisati je i kreirati novu stranicu.<br /></p>"
+    DEFAULTABOUTTITLE: "O nama"
+    DEFAULTCONTACTCONTENT: "<p>Možete popuniti ovu stranicu s Vašim sadržajem, ili obrisati je i kreirati novu stranicu.<br /></p>"
+    DEFAULTCONTACTTITLE: Kontakt
+    DEFAULTHOMECONTENT: "<p>Dobrodošli na SilverStripe! Ovo je zadana početna stranica. Možete je urediti otvarajući <a href=\"admin/\"> CMS</a>.</p><p>Možete pristupiti  <a href=\"http://docs.silverstripe.org\">razvojnoj dokumentaciji</a>, ili početi <a href=\"http://www.silverstripe.org/learn/lessons\">SilverStripe lekcije</a>.</p>"
     DEFAULTHOMETITLE: Početna
-    DELETEDPAGEHELP: 'Stranica više nije objavljena'
+    DELETEDPAGEHELP: "Stranica više nije objavljena"
     DELETEDPAGESHORT: Obrisano
-    DESCRIPTION: 'Obična sadržajna stranica'
-    DependtPageColumnLinkType: 'Tip linka'
+    DESCRIPTION: "Obična sadržajna stranica"
+    DependtPageColumnLinkType: "Tip linka"
     DependtPageColumnURL: Link
-    EDITANYONE: 'Svi koji se mogu prijaviti  u CMS'
-    EDITHEADER: 'Tko može uređivati unutar CMSa?'
-    EDITONLYTHESE: 'Samo slijedeći korisnici (odaberite s popisa)'
-    EDIT_ALL_DESCRIPTION: 'Uredi bilo koju stranicu'
-    HASBROKENLINKS: 'Ova stranica ima pogrešne linkove'
+    EDITANYONE: "Svi koji se mogu prijaviti  u CMS"
+    EDITHEADER: "Tko može uređivati unutar CMSa?"
+    EDITONLYTHESE: "Samo slijedeći korisnici (odaberite s popisa)"
+    EDIT_ALL_DESCRIPTION: "Uredi bilo koju stranicu"
+    HASBROKENLINKS: "Ova stranica ima pogrešne linkove"
     HTMLEDITORTITLE: Sadržaj
-    INHERIT: 'Naslijedi od matične stranice'
-    LASTPUBLISHED: 'Zadnje objavljeno'
-    LASTSAVED: 'Zadnje spremljeno'
-    LASTUPDATED: 'Zadnje osvježeno'
-    LINKCHANGENOTE: 'Mijenjanjem linka ove stranice također će utjecati na linkove svih povezanih stranica.'
-    MENUTITLE: 'Oznaka navigacije'
-    METADESC: 'Meta opis'
-    METAEXTRA: 'Prilagođeni Meta tagovi'
-    MODIFIEDONDRAFTHELP: 'Stranica ima neobjavljenih promjena'
+    INHERIT: "Naslijedi od matične stranice"
+    LASTPUBLISHED: "Zadnje objavljeno"
+    LASTSAVED: "Zadnje spremljeno"
+    LASTUPDATED: "Zadnje osvježeno"
+    LINKCHANGENOTE: "Mijenjanjem linka ove stranice također će utjecati na linkove svih povezanih stranica."
+    LINKSALREADYUNIQUE: "{url} je već jedinstven"
+    LINKSCHANGEDTO: "promjenio {url1} -> {url2}"
+    MENUTITLE: "Oznaka navigacije"
+    METADESC: "Meta opis"
+    METAEXTRA: "Prilagođeni Meta tagovi"
+    MODIFIEDONDRAFTHELP: "Stranica ima neobjavljenih promjena"
     MODIFIEDONDRAFTSHORT: Izmjenjeno
     MetadataToggle: Metapodaci
-    MoreOptions: 'Više opcija'
-    NOTPUBLISHED: 'Nije objavljeno'
-    PAGETITLE: 'Ime stranice'
-    PAGETYPE: 'Vrsta stranice'
-    PARENTID: 'Matična stranica'
-    PARENTTYPE_ROOT: 'Nadstranica'
-    PARENTTYPE_SUBPAGE: 'Podstranica ispod matične stranice'
+    MoreOptions: "Više opcija"
+    NOTPUBLISHED: "Nije objavljeno"
+    ONLIVEONLYSHORT: "Samo na objavljenom"
+    ONLIVEONLYSHORTHELP: "Stranica je objavljena, ali je obrisana s nacrta"
+    PAGELOCATION: "Lokacija stranice"
+    PAGETITLE: "Ime stranice"
+    PAGETYPE: "Vrsta stranice"
+    PARENTID: "Matična stranica"
+    PARENTTYPE: "Lokacija stranice"
+    PARENTTYPE_ROOT: Nadstranica
+    PARENTTYPE_SUBPAGE: "Podstranica ispod matične stranice"
+    PERMISSION_GRANTACCESS_DESCRIPTION: "Upravljaj prava pristupa za sadržaj"
     PLURALNAME: Stranice
-    REMOVEDFROMDRAFTSHORT: 'Uklonjen sa predložaka'
-    SHOWINMENUS: 'Pokaži u izbornicima?'
-    SHOWINSEARCH: 'Pokaži u tražilici?'
+    REMOVEDFROMDRAFTHELP: "Stranica je objavljena, ali je obrisana s nacrta"
+    REMOVEDFROMDRAFTSHORT: "Uklonjen sa predložaka"
+    REMOVE_INSTALL_WARNING: "Upozorenje: trebali bi ste ukloniti install.php sa ove SilverStripe instalacije zbog sigurnosnih razloga."
+    REORGANISE_DESCRIPTION: "Promjeni strukturu stranice"
+    REORGANISE_HELP: "Premjesti stranice u stablu stranice sa povuci i spusti metodom."
+    SHOWINMENUS: "Pokaži u izbornicima?"
+    SHOWINSEARCH: "Pokaži u tražilici?"
     SINGULARNAME: Stranica
     TABBEHAVIOUR: Karakteristike
-    TABCONTENT: 'Sadržaj'
-    TABDEPENDENT: 'Zavisne stranice'
-    TOPLEVEL: 'Sadržaj stranice (Top Level)'
-    URLSegment: 'Dio URLa'
-    VIEW_ALL_DESCRIPTION: 'Pregled bilo koje stranice'
-    VIEW_DRAFT_CONTENT: 'Pregled neobjavljenog sadržaja'
+    TABCONTENT: Sadržaj
+    TABDEPENDENT: "Zavisne stranice"
+    TOPLEVEL: "Sadržaj stranice (Top Level)"
+    TOPLEVELCREATORGROUPS: "Kreatori najviši nivo"
+    URLSegment: "Dio URLa"
+    VIEWERGROUPS: "Grupe preglednika"
+    VIEW_ALL_DESCRIPTION: "Pregled bilo koje stranice"
+    VIEW_ALL_HELP: "Mogućnost pregleda bilo koje stranice, neovisno o postavkama na Pristup tabu. Zahtjeva \"Pristup na 'Stranice' sekciju\" dozvolu"
+    VIEW_DRAFT_CONTENT: "Pregled neobjavljenog sadržaja"
+    Viewers: "Grupe preglednika"
     Visibility: Vidljivost
-    has_one_Parent: 'Matična stranica'
+    has_one_Parent: "Matična stranica"
+    many_many_BackLinkTracking: "Praćenje Backlinkova"
+    many_many_ImageTracking: "Praćenje slika"
+    many_many_LinkTracking: "Praćenje linkova"
   SiteTreeFileExtension:
+    BACKLINK_LIST_DESCRIPTION: "Ova lista pokazuje sve stranice gdje je datoteka dodana kroz WYSIWYG editor."
     EDIT: Uredi
+    TITLE_INDEX: "#"
+    TITLE_TYPE: Tip
+    TITLE_USED_ON: "Korišteno na"
   SiteTreeURLSegmentField:
-    EMPTY: 'Molimo unesite dio URLa ili kliknite odustani'
-    HelpChars: 'Posebni znakovi se automatski pretvaraju ili uklanjaju.'
+    EMPTY: "Molimo unesite dio URLa ili kliknite odustani"
+    HelpChars: "Posebni znakovi se automatski pretvaraju ili uklanjaju."
   URLSegmentField:
     Cancel: Odustani
     Edit: Uredi
     OK: Ok
   ViewArchivedEmail_ss:
-    CANACCESS: 'Na sljedećem linku možete pristupiti arhiviranoj stranici:'
-    HAVEASKED: 'Zatražili ste sadržaj naše stranice '
+    CANACCESS: "Na sljedećem linku možete pristupiti arhiviranoj stranici:"
+    HAVEASKED: "Zatražili ste sadržaj naše stranice "
   VirtualPage:
-    CHOOSE: 'Povezane stranice'
-    DESCRIPTION: 'Prikazuje sadržaj druge stranice'
+    CHOOSE: "Povezane stranice"
+    DESCRIPTION: "Prikazuje sadržaj druge stranice"
     EditLink: uredi
-    HEADER: 'Ovo je virtualna stranica'
-    HEADERWITHLINK: 'Ova virtualna stranica kopira sadržaj sa  "{title}" ({link})'
-    PLURALNAME: 'Virtualne stranice'
-    SINGULARNAME: 'Virtualna stranica'
+    HEADER: "Ovo je virtualna stranica"
+    HEADERWITHLINK: "Ova virtualna stranica kopira sadržaj sa  \"{title}\" ({link})"
+    PLURALNAME: "Virtualne stranice"
+    PageTypNotAllowedOnRoot: "Originalni tip stranice  \"{type}\" nije dozvoljen na prvom nivu ove virtualne stranice"
+    SINGULARNAME: "Virtualna stranica"

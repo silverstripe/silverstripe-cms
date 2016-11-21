@@ -37,6 +37,7 @@
     "Tree.ShowAsList": "Zobraziť potomkov ako zoznam",
     "Tree.ThisPageAndSubpages": "Túto stránku a podstránky",
     "Tree.ThisPageOnly": "Iba túto stránku",
+    "Tree.ViewPage": "Zobraziť",
     "URLSEGMENT.Cancel": "Zrušiť",
     "URLSEGMENT.Edit": "Editovať",
     "URLSEGMENT.OK": "OK",

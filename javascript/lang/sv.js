@@ -44,6 +44,7 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "Tree.ShowAsList": "Visa undersidor som lista",
     "Tree.ThisPageAndSubpages": "Denna sida och undersidor",
     "Tree.ThisPageOnly": "Endast denna sida",
+    "Tree.ViewPage": "View",
     "URLSEGMENT.Cancel": "Avbryt",
     "URLSEGMENT.Edit": "Redigera",
     "URLSEGMENT.OK": "OK",
