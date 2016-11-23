@@ -49,6 +49,7 @@ use SilverStripe\ORM\DB;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\HiddenClass;
 use SilverStripe\ORM\SS_List;
+use SilverStripe\ORM\ValidationResult;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
@@ -983,12 +984,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			new FieldList()
 		)->setHTMLID('Form_ListViewForm');
 		$listview->setAttribute('data-pjax-fragment', 'ListViewForm');
-		$listview->setValidationResponseCallback(function() use ($negotiator, $listview) {
+		$listview->setValidationResponseCallback(function(ValidationResult $errors) use ($negotiator, $listview) {
 			$request = $this->getRequest();
 			if($request->isAjax() && $negotiator) {
-				$listview->setupFormErrors();
 				$result = $listview->forTemplate();
-
 				return $negotiator->respond($request, array(
 					'CurrentForm' => function() use($result) {
 						return $result;

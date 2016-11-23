@@ -1057,27 +1057,27 @@ class SiteTreeTest extends SapphireTest {
 
 		$classB->ParentID = $page->ID;
 		$valid = $classB->doValidate();
-		$this->assertTrue($valid->valid(), "Does allow children on unrestricted parent");
+		$this->assertTrue($valid->isValid(), "Does allow children on unrestricted parent");
 
 		$classB->ParentID = $classA->ID;
 		$valid = $classB->doValidate();
-		$this->assertTrue($valid->valid(), "Does allow child specifically allowed by parent");
+		$this->assertTrue($valid->isValid(), "Does allow child specifically allowed by parent");
 
 		$classC->ParentID = $classA->ID;
 		$valid = $classC->doValidate();
-		$this->assertFalse($valid->valid(), "Doesnt allow child on parents specifically restricting children");
+		$this->assertFalse($valid->isValid(), "Doesnt allow child on parents specifically restricting children");
 
 		$classB->ParentID = $classC->ID;
 		$valid = $classB->doValidate();
-		$this->assertFalse($valid->valid(), "Doesnt allow child on parents disallowing all children");
+		$this->assertFalse($valid->isValid(), "Doesnt allow child on parents disallowing all children");
 
 		$classB->ParentID = $classCext->ID;
 		$valid = $classB->doValidate();
-		$this->assertTrue($valid->valid(), "Extensions of allowed classes are incorrectly reported as invalid");
+		$this->assertTrue($valid->isValid(), "Extensions of allowed classes are incorrectly reported as invalid");
 
 		$classCext->ParentID = $classD->ID;
 		$valid = $classCext->doValidate();
-		$this->assertFalse($valid->valid(), "Doesnt allow child where only parent class is allowed on parent node, and asterisk prefixing is used");
+		$this->assertFalse($valid->isValid(), "Doesnt allow child where only parent class is allowed on parent node, and asterisk prefixing is used");
 	}
 
 	public function testClassDropdown() {

@@ -7,6 +7,7 @@ use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\ReadonlyTransformation;
 use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\ValidationResult;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\Security\Member;
 use Page;
@@ -305,12 +306,13 @@ class VirtualPage extends Page {
 		// "Can be root" validation
 		$orig = $this->CopyContentFrom();
 		if($orig && $orig->exists() && !$orig->stat('can_be_root') && !$this->ParentID) {
-			$result->error(
+			$result->addError(
 				_t(
 					'VirtualPage.PageTypNotAllowedOnRoot',
 					'Original page type "{type}" is not allowed on the root level for this virtual page',
 					array('type' => $orig->i18n_singular_name())
 				),
+				ValidationResult::TYPE_ERROR,
 				'CAN_BE_ROOT_VIRTUAL'
 			);
 		}

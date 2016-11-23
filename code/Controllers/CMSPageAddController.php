@@ -17,6 +17,7 @@ use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\ValidationException;
+use SilverStripe\ORM\ValidationResult;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
 
@@ -146,12 +147,10 @@ class CMSPageAddController extends CMSPageEditController {
 		)->setHTMLID('Form_AddForm');
 		$form->setAttribute('data-hints', $this->SiteTreeHints());
 		$form->setAttribute('data-childfilter', $this->Link('childfilter'));
-		$form->setValidationResponseCallback(function() use ($negotiator, $form) {
+		$form->setValidationResponseCallback(function(ValidationResult $errors) use ($negotiator, $form) {
 			$request = $this->getRequest();
 			if($request->isAjax() && $negotiator) {
-				$form->setupFormErrors();
 				$result = $form->forTemplate();
-
 				return $negotiator->respond($request, array(
 					'CurrentForm' => function() use($result) {
 						return $result;
@@ -198,13 +197,7 @@ class CMSPageAddController extends CMSPageEditController {
 
 		$record = $this->getNewItem("new-$className-$parentID".$suffix, false);
 		$this->extend('updateDoAdd', $record, $form);
-
-		try {
-			$record->write();
-		} catch(ValidationException $ex) {
-			$form->sessionMessage($ex->getResult()->message(), 'bad');
-			return $this->getResponseNegotiator()->respond($this->getRequest());
-		}
+		$record->write();
 
 		$editController = CMSPageEditController::singleton();
 		$editController->setCurrentPageID($record->ID);
