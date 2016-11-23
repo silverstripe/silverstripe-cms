@@ -4,6 +4,8 @@ use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\CMS\Model\ErrorPage;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\FunctionalTest;
+use SilverStripe\Assets\Tests\Storage\AssetStoreTest\TestAssetStore;
+
 
 
 
@@ -25,14 +27,14 @@ class ErrorPageTest extends FunctionalTest {
 	public function setUp() {
 		parent::setUp();
 		// Set temporary asset backend store
-		AssetStoreTest_SpyStore::activate('ErrorPageTest');
+		TestAssetStore::activate('ErrorPageTest');
 		Config::inst()->update('SilverStripe\\CMS\\Model\\ErrorPage', 'enable_static_file', true);
 		Config::inst()->update('SilverStripe\\Control\\Director', 'environment_type', 'live');
 		$this->logInWithPermission('ADMIN');
 	}
 
 	public function tearDown() {
-		AssetStoreTest_SpyStore::reset();
+		TestAssetStore::reset();
 		parent::tearDown();
 	}
 
@@ -88,7 +90,7 @@ class ErrorPageTest extends FunctionalTest {
 	public function testStaticCaching() {
 		// Test new error code does not have static content
 		$this->assertEmpty(ErrorPage::get_content_for_errorcode('401'));
-		$expectedErrorPagePath = AssetStoreTest_SpyStore::base_path() . '/error-401.html';
+		$expectedErrorPagePath = TestAssetStore::base_path() . '/error-401.html';
 		$this->assertFileNotExists($expectedErrorPagePath, 'Error page is not automatically cached');
 
 		// Write new 401 page
@@ -101,7 +103,7 @@ class ErrorPageTest extends FunctionalTest {
 
 		// Static cache should now exist
 		$this->assertNotEmpty(ErrorPage::get_content_for_errorcode('401'));
-		$expectedErrorPagePath = AssetStoreTest_SpyStore::base_path() . '/error-401.html';
+		$expectedErrorPagePath = TestAssetStore::base_path() . '/error-401.html';
 		$this->assertFileExists($expectedErrorPagePath, 'Error page is cached');
 	}
 
@@ -126,7 +128,7 @@ class ErrorPageTest extends FunctionalTest {
 
 		// Static content is not available
 		$this->assertEmpty(ErrorPage::get_content_for_errorcode('405'));
-		$expectedErrorPagePath = AssetStoreTest_SpyStore::base_path() . '/error-405.html';
+		$expectedErrorPagePath = TestAssetStore::base_path() . '/error-405.html';
 		$this->assertFileNotExists($expectedErrorPagePath, 'Error page is not cached in static location');
 	}
 }

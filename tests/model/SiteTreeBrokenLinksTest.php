@@ -7,6 +7,8 @@ use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\Assets\File;
 use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Assets\Tests\Storage\AssetStoreTest\TestAssetStore;
+
 
 
 
@@ -23,12 +25,12 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		parent::setUp();
 
 		Versioned::set_stage(Versioned::DRAFT);
-		AssetStoreTest_SpyStore::activate('SiteTreeBrokenLinksTest');
+		TestAssetStore::activate('SiteTreeBrokenLinksTest');
 		$this->logInWithPermission('ADMIN');
 	}
 
 	public function tearDown() {
-		AssetStoreTest_SpyStore::reset();
+		TestAssetStore::reset();
 		parent::tearDown();
 	}
 

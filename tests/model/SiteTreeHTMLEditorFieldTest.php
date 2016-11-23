@@ -6,6 +6,8 @@ use SilverStripe\Assets\Filesystem;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Dev\CSSContentParser;
 use SilverStripe\Dev\FunctionalTest;
+use SilverStripe\Assets\Tests\Storage\AssetStoreTest\TestAssetStore;
+
 
 class SiteTreeHTMLEditorFieldTest extends FunctionalTest {
 	protected static $fixture_file = 'SiteTreeHTMLEditorFieldTest.yml';
@@ -14,20 +16,20 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest {
 
 	public function setUp() {
 		parent::setUp();
-		AssetStoreTest_SpyStore::activate('SiteTreeHTMLEditorFieldTest');
+		TestAssetStore::activate('SiteTreeHTMLEditorFieldTest');
 		$this->logInWithPermission('ADMIN');
 
 		// Write file contents
 		$files = File::get()->exclude('ClassName', 'SilverStripe\\Assets\\Folder');
 		foreach($files as $file) {
-			$destPath = AssetStoreTest_SpyStore::getLocalPath($file);
+			$destPath = TestAssetStore::getLocalPath($file);
 			Filesystem::makeFolder(dirname($destPath));
 			file_put_contents($destPath, str_repeat('x', 1000000));
 		}
 	}
 
 	public function tearDown() {
-		AssetStoreTest_SpyStore::reset();
+		TestAssetStore::reset();
 		parent::tearDown();
 	}
 
