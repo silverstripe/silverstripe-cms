@@ -37,6 +37,7 @@
     "Tree.ShowAsList": "Gyerekoldalak lista nézetben",
     "Tree.ThisPageAndSubpages": "Csak ez az oldal és az alatta levő oldalak",
     "Tree.ThisPageOnly": "Csak ez az oldal",
+    "Tree.ViewPage": "View",
     "URLSEGMENT.Cancel": "Mégsem",
     "URLSEGMENT.Edit": "Szerkeszt",
     "URLSEGMENT.OK": "OK",

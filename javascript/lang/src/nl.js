@@ -37,6 +37,7 @@
     "Tree.ShowAsList": "Toon onderliggende pagina's als lijst",
     "Tree.ThisPageAndSubpages": "Deze pagina en subpagina's",
     "Tree.ThisPageOnly": "Enkel deze pagina",
+    "Tree.ViewPage": "View",
     "URLSEGMENT.Cancel": "Annuleren",
     "URLSEGMENT.Edit": "Aanpassen",
     "URLSEGMENT.OK": "OK",

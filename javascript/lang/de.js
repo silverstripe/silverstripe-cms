@@ -44,6 +44,7 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "Tree.ShowAsList": "Kinder als LIste zeigen",
     "Tree.ThisPageAndSubpages": "Diese Seite und Unterseiten",
     "Tree.ThisPageOnly": "Nur diese Seite",
+    "Tree.ViewPage": "Anzeigen",
     "URLSEGMENT.Cancel": "Abbrechen",
     "URLSEGMENT.Edit": "Bearbeiten",
     "URLSEGMENT.OK": "OK",

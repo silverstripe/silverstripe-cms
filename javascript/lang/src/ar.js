@@ -37,6 +37,7 @@
     "Tree.ShowAsList": "أعرض التوابع في شكل قائمة",
     "Tree.ThisPageAndSubpages": "هذه الصفحة وصفحات فرعية",
     "Tree.ThisPageOnly": "هذه الصفحة فقط",
+    "Tree.ViewPage": "View",
     "URLSEGMENT.Cancel": "إلغاء",
     "URLSEGMENT.Edit": "تحرير",
     "URLSEGMENT.OK": "موافق",

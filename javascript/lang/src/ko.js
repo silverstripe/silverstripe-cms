@@ -37,6 +37,7 @@
     "Tree.ShowAsList": "하위 목록으로 표시",
     "Tree.ThisPageAndSubpages": "이 페이지와 하위 페이지",
     "Tree.ThisPageOnly": "이 페이지만",
+    "Tree.ViewPage": "View",
     "URLSEGMENT.Cancel": "취소",
     "URLSEGMENT.Edit": "편집",
     "URLSEGMENT.OK": "OK",
