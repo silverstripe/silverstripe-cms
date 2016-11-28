@@ -545,6 +545,10 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertTrue(singleton('SiteTreeTest_ClassA')->canCreate(null));
 		$this->assertFalse(singleton('SiteTreeTest_ClassA')->canCreate(null, array('Parent' => $parentB)));
 		$this->assertTrue(singleton('SiteTreeTest_ClassC')->canCreate(null, array('Parent' => $parentB)));
+
+		// Test creation underneath a parent which doesn't exist in the database. This should
+		// fall back to checking whether the user can create pages at the root of the site
+		$this->assertTrue(singleton('SiteTree')->canCreate(null, array('Parent' => singleton('SiteTree'))));
 	}
 
 	public function testEditPermissionsOnDraftVsLive() {
