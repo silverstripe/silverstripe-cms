@@ -44,7 +44,7 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "Tree.ShowAsList": "Prikaži podstranice kao listu",
     "Tree.ThisPageAndSubpages": "Ova stranica i podstranice",
     "Tree.ThisPageOnly": "Samo ova stranica",
-    "Tree.ViewPage": "View",
+    "Tree.ViewPage": "Pregled",
     "URLSEGMENT.Cancel": "Odustani",
     "URLSEGMENT.Edit": "Uredi",
     "URLSEGMENT.OK": "Ok",
