@@ -37,6 +37,7 @@
     "Tree.ShowAsList": "Show children as list",
     "Tree.ThisPageAndSubpages": "Þessi síða og undirsíður",
     "Tree.ThisPageOnly": "Aðeins þessi síða",
+    "Tree.ViewPage": "View",
     "URLSEGMENT.Cancel": "Hætta við",
     "URLSEGMENT.Edit": "Breyta",
     "URLSEGMENT.OK": "Allt í lagi",

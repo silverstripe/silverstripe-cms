@@ -37,6 +37,7 @@
     "Tree.ShowAsList": "Afişare fii în format listă",
     "Tree.ThisPageAndSubpages": "Această pagină cu subpagini",
     "Tree.ThisPageOnly": "Doar această pagină",
+    "Tree.ViewPage": "View",
     "URLSEGMENT.Cancel": "Renunţare",
     "URLSEGMENT.Edit": "Editare",
     "URLSEGMENT.OK": "OK",

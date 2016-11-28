@@ -44,6 +44,7 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "Tree.ShowAsList": "将儿童显示为列表",
     "Tree.ThisPageAndSubpages": "本页和子页面",
     "Tree.ThisPageOnly": "仅该页",
+    "Tree.ViewPage": "View",
     "URLSEGMENT.Cancel": "取消",
     "URLSEGMENT.Edit": "编辑",
     "URLSEGMENT.OK": "确定",
