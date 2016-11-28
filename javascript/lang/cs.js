@@ -44,6 +44,7 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "Tree.ShowAsList": "Zobrazit potomky jako seznam",
     "Tree.ThisPageAndSubpages": "Tuto stránku a podstránky",
     "Tree.ThisPageOnly": "Pouze tuto stránku",
+    "Tree.ViewPage": "Zobrazit",
     "URLSEGMENT.Cancel": "Storno",
     "URLSEGMENT.Edit": "Editovat",
     "URLSEGMENT.OK": "OK",
