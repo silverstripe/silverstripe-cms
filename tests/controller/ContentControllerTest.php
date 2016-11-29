@@ -13,7 +13,8 @@ use SilverStripe\Dev\FunctionalTest;
  * @package cms
  * @subpackage tests
  */
-class ContentControllerTest extends FunctionalTest {
+class ContentControllerTest extends FunctionalTest
+{
 
     protected static $fixture_file = 'ContentControllerTest.yml';
 
@@ -25,7 +26,8 @@ class ContentControllerTest extends FunctionalTest {
      * Test that nested pages, basic actions, and nested/non-nested URL switching works properly
      */
 
-    public function testNestedPages() {
+    public function testNestedPages()
+    {
         RootURLController::reset();
         Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'nested_urls', true);
 
@@ -60,7 +62,8 @@ class ContentControllerTest extends FunctionalTest {
     /**
      * Tests {@link ContentController::ChildrenOf()}
      */
-    public function testChildrenOf() {
+    public function testChildrenOf()
+    {
         $controller = new ContentController();
 
         Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'nested_urls', true);
@@ -78,14 +81,15 @@ class ContentControllerTest extends FunctionalTest {
         $this->assertEquals(0, $controller->ChildrenOf('/third-level/')->Count());
     }
 
-    public function testDeepNestedURLs() {
+    public function testDeepNestedURLs()
+    {
         Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'nested_urls', true);
 
         $page = new Page();
         $page->URLSegment = 'base-page';
         $page->write();
 
-        for($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $parentID = $page->ID;
 
             $page = new ContentControllerTest_Page();
@@ -102,13 +106,14 @@ class ContentControllerTest extends FunctionalTest {
         SiteTree::config()->nested_urls = false;
     }
 
-    public function testViewDraft(){
+    public function testViewDraft()
+    {
 
         // test when user does not have permission, should get login form
         $this->logInWithPermission('EDITOR');
         try {
             $response = $this->get('/contact/?stage=Stage');
-        } catch(HTTPResponse_Exception $responseException) {
+        } catch (HTTPResponse_Exception $responseException) {
             $response = $responseException->getResponse();
         }
 
@@ -118,11 +123,10 @@ class ContentControllerTest extends FunctionalTest {
         // test when user does have permission, should show page title and header ok.
         $this->logInWithPermission('ADMIN');
         $this->assertEquals('200', $this->get('/contact/?stage=Stage')->getstatusCode());
-
-
     }
 
-    public function testLinkShortcodes() {
+    public function testLinkShortcodes()
+    {
         $linkedPage = new SiteTree();
         $linkedPage->URLSegment = 'linked-page';
         $linkedPage->write();
@@ -147,10 +151,11 @@ class ContentControllerTest extends FunctionalTest {
      *
      * @covers SilverStripe\CMS\Controllers\ContentController::getViewer()
     **/
-    public function testGetViewer() {
+    public function testGetViewer()
+    {
 
         $self = $this;
-        $this->useTestTheme(dirname(__FILE__), 'controllertest', function() use ($self) {
+        $this->useTestTheme(dirname(__FILE__), 'controllertest', function () use ($self) {
 
             // Test a page without a controller (ContentControllerTest_PageWithoutController.ss)
             $page = new ContentControllerTestPageWithoutController();
@@ -193,38 +198,50 @@ class ContentControllerTest extends FunctionalTest {
             $self->assertEquals(dirname(__FILE__).'/themes/controllertest/templates/ContentControllerTestPage_test.ss', $viewer->templates()['main']);
         });
     }
+}
+
+class ContentControllerTest_Page extends Page
+{
 
 }
 
-class ContentControllerTest_Page extends Page {  }
-
-class ContentControllerTest_Page_Controller extends Page_Controller {
+class ContentControllerTest_Page_Controller extends Page_Controller
+{
 
     private static $allowed_actions = array (
         'second_index'
     );
 
-    public function index() {
+    public function index()
+    {
         return $this->Title;
     }
 
-    public function second_index() {
+    public function second_index()
+    {
         return $this->index();
     }
-
 }
 
 // For testing templates
-class ContentControllerTestPageWithoutController extends Page { }
+class ContentControllerTestPageWithoutController extends Page
+{
 
-class ContentControllerTestPage extends Page { }
-class ContentControllerTestPage_Controller extends Page_Controller {
+}
+
+class ContentControllerTestPage extends Page
+{
+
+}
+class ContentControllerTestPage_Controller extends Page_Controller
+{
     private static $allowed_actions = array(
         "test",
         "testwithouttemplate"
     );
 
-    function testwithouttemplate() {
+    function testwithouttemplate()
+    {
         return array();
     }
 }

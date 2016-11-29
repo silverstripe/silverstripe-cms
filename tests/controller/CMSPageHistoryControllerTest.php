@@ -4,20 +4,20 @@ use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\CMS\Controllers\CMSPageHistoryController;
 use SilverStripe\Dev\FunctionalTest;
 
-
-
 /**
  * @package cms
  * @subpackage tests
  */
-class CMSPageHistoryControllerTest extends FunctionalTest {
+class CMSPageHistoryControllerTest extends FunctionalTest
+{
 
     protected static $fixture_file = 'CMSPageHistoryControllerTest.yml';
 
     private $versionUnpublishedCheck, $versionPublishCheck, $versionUnpublishedCheck2;
     private $page;
 
-    public function setUp() {
+    public function setUp()
+    {
         parent::setUp();
 
         $this->loginWithPermission('ADMIN');
@@ -45,7 +45,8 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
         $this->versionPublishCheck2 = $this->page->Version;
     }
 
-    public function testGetEditForm() {
+    public function testGetEditForm()
+    {
         $controller = new CMSPageHistoryController();
 
         // should get the latest version which we cannot rollback to
@@ -89,7 +90,8 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
      * @todo should be less tied to cms theme.
      * @todo check highlighting for comparing pages.
      */
-    public function testVersionsForm() {
+    public function testVersionsForm()
+    {
         $history = $this->get('admin/pages/history/show/'. $this->page->ID);
         $form = $this->cssParser()->getBySelector('#Form_VersionsForm');
 
@@ -106,7 +108,8 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
         $this->assertEquals(4, count($rows));
     }
 
-    public function testVersionsFormTableContainsInformation() {
+    public function testVersionsFormTableContainsInformation()
+    {
         $history = $this->get('admin/pages/history/show/'. $this->page->ID);
         $form = $this->cssParser()->getBySelector('#Form_VersionsForm');
         $rows = $form[0]->xpath("fieldset/table/tbody/tr");
@@ -120,7 +123,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
 
         // goes the reverse order that we created in setUp()
         $i = 0;
-        foreach($rows as $tr) {
+        foreach ($rows as $tr) {
             // data-link must be present for the javascript to load new
             $this->assertContains($expected[$i]['status'], (string) $tr->attributes()->class);
             $i++;
@@ -131,7 +134,8 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
         $this->assertThat((string) $rows[1]->attributes()->class, $this->logicalNot($this->stringContains('active')));
     }
 
-    public function testVersionsFormSelectsUnpublishedCheckbox() {
+    public function testVersionsFormSelectsUnpublishedCheckbox()
+    {
         $history = $this->get('admin/pages/history/show/'. $this->page->ID);
         $checkbox = $this->cssParser()->getBySelector('#Form_VersionsForm_ShowUnpublished');
 

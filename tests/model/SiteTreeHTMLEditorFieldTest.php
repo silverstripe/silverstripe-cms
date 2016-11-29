@@ -8,32 +8,35 @@ use SilverStripe\Dev\CSSContentParser;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Assets\Tests\Storage\AssetStoreTest\TestAssetStore;
 
-
-class SiteTreeHTMLEditorFieldTest extends FunctionalTest {
+class SiteTreeHTMLEditorFieldTest extends FunctionalTest
+{
     protected static $fixture_file = 'SiteTreeHTMLEditorFieldTest.yml';
 
     protected static $use_draft_site = true;
 
-    public function setUp() {
+    public function setUp()
+    {
         parent::setUp();
         TestAssetStore::activate('SiteTreeHTMLEditorFieldTest');
         $this->logInWithPermission('ADMIN');
 
         // Write file contents
         $files = File::get()->exclude('ClassName', 'SilverStripe\\Assets\\Folder');
-        foreach($files as $file) {
+        foreach ($files as $file) {
             $destPath = TestAssetStore::getLocalPath($file);
             Filesystem::makeFolder(dirname($destPath));
             file_put_contents($destPath, str_repeat('x', 1000000));
         }
     }
 
-    public function tearDown() {
+    public function tearDown()
+    {
         TestAssetStore::reset();
         parent::tearDown();
     }
 
-    public function testLinkTracking() {
+    public function testLinkTracking()
+    {
         $sitetree = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'home');
         $editor   = new HTMLEditorField('Content');
 
@@ -45,12 +48,12 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest {
         $sitetree->write();
         $this->assertEquals(array($aboutID => $aboutID), $sitetree->LinkTracking()->getIdList(), 'Basic link tracking works.');
 
-        $editor->setValue (
+        $editor->setValue(
             "<a href=\"[sitetree_link,id=$aboutID]\"></a><a href=\"[sitetree_link,id=$contactID]\"></a>"
         );
         $editor->saveInto($sitetree);
         $sitetree->write();
-        $this->assertEquals (
+        $this->assertEquals(
             array($aboutID => $aboutID, $contactID => $contactID),
             $sitetree->LinkTracking()->getIdList(),
             'Tracking works on multiple links'
@@ -72,7 +75,8 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest {
         );
     }
 
-    public function testFileLinkTracking() {
+    public function testFileLinkTracking()
+    {
         $sitetree = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'home');
         $editor   = new HTMLEditorField('Content');
         $fileID   = $this->idFromFixture('SilverStripe\\Assets\\File', 'example_file');
@@ -83,8 +87,10 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest {
         ));
         $editor->saveInto($sitetree);
         $sitetree->write();
-        $this->assertEquals (
-            array($fileID => $fileID), $sitetree->ImageTracking()->getIDList(), 'Links to assets are tracked.'
+        $this->assertEquals(
+            array($fileID => $fileID),
+            $sitetree->ImageTracking()->getIDList(),
+            'Links to assets are tracked.'
         );
 
         $editor->setValue(null);
@@ -106,7 +112,8 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest {
         );
     }
 
-    public function testImageInsertion() {
+    public function testImageInsertion()
+    {
         $sitetree = new SiteTree();
         $editor   = new HTMLEditorField('Content');
 
@@ -129,7 +136,8 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest {
         $this->assertEquals('bar', (string)$xml[0]['title'], 'Title tags are preserved.');
     }
 
-    public function testImageTracking() {
+    public function testImageTracking()
+    {
         $sitetree = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'home');
         $editor = new HTMLEditorField('Content');
         $file = $this->objFromFixture('SilverStripe\\Assets\\Image', 'example_image');
@@ -152,7 +160,8 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest {
         );
     }
 
-    public function testBrokenSiteTreeLinkTracking() {
+    public function testBrokenSiteTreeLinkTracking()
+    {
         $sitetree = new SiteTree();
         $editor   = new HTMLEditorField('Content');
 
@@ -164,7 +173,7 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest {
 
         $this->assertTrue($sitetree->HasBrokenLink);
 
-        $editor->setValue(sprintf (
+        $editor->setValue(sprintf(
             '<p><a href="[sitetree_link,id=%d]">Working Link</a></p>',
             $this->idFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'home')
         ));
@@ -175,7 +184,8 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest {
         $this->assertFalse((bool) $sitetree->HasBrokenLink);
     }
 
-    public function testBrokenFileLinkTracking() {
+    public function testBrokenFileLinkTracking()
+    {
         $sitetree = new SiteTree();
         $editor   = new HTMLEditorField('Content');
 
@@ -187,7 +197,7 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest {
 
         $this->assertTrue($sitetree->HasBrokenFile);
 
-        $editor->setValue(sprintf (
+        $editor->setValue(sprintf(
             '<p><a href="[file_link,id=%d]">Working Link</a></p>',
             $this->idFromFixture('SilverStripe\\Assets\\File', 'example_file')
         ));
@@ -197,5 +207,4 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest {
 
         $this->assertFalse((bool) $sitetree->HasBrokenFile);
     }
-
 }

@@ -1,11 +1,14 @@
 <?php
 
 use SilverStripe\Dev\FunctionalTest;
-class CMSMainSearchFormTest extends FunctionalTest {
+
+class CMSMainSearchFormTest extends FunctionalTest
+{
 
     protected static $fixture_file = '../controller/CMSMainTest.yml';
 
-    public function testTitleFilter() {
+    public function testTitleFilter()
+    {
         $this->session()->inst_set('loggedInAs', $this->idFromFixture('SilverStripe\\Security\\Member', 'admin'));
 
         $response = $this->get(
@@ -26,11 +29,14 @@ class CMSMainSearchFormTest extends FunctionalTest {
         $this->assertContains('Page 1', $titles[0]);
     }
 
-    protected function getPageTitles() {
+    protected function getPageTitles()
+    {
         $titles = array();
         $links = $this->cssParser()->getBySelector('li.class-Page a');
-        if($links) foreach($links as $link) {
-            $titles[] = preg_replace('/\n/', ' ', $link->asXML());
+        if ($links) {
+            foreach ($links as $link) {
+                $titles[] = preg_replace('/\n/', ' ', $link->asXML());
+            }
         }
         return $titles;
     }

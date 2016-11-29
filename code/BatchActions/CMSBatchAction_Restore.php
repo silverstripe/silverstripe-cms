@@ -35,7 +35,9 @@ class CMSBatchAction_Restore extends CMSBatchAction
         $pages = new ArrayList($pageArray);
 
         // Restore
-        return $this->batchaction($pages, 'doRestoreToStage',
+        return $this->batchaction(
+            $pages,
+            'doRestoreToStage',
             _t('CMSBatchActions.RESTORED_PAGES', 'Restored %d pages')
         );
     }

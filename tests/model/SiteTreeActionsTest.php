@@ -8,7 +8,6 @@ use SilverStripe\Security\Permission;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Dev\TestOnly;
 
-
 /**
  * Possible actions:
  * - action_save
@@ -21,12 +20,14 @@ use SilverStripe\Dev\TestOnly;
  * @package cms
  * @subpackage tests
  */
-class SiteTreeActionsTest extends FunctionalTest {
+class SiteTreeActionsTest extends FunctionalTest
+{
 
     protected static $fixture_file = 'SiteTreeActionsTest.yml';
 
-    public function testActionsReadonly() {
-        if(class_exists('SiteTreeCMSWorkflow')) {
+    public function testActionsReadonly()
+    {
+        if (class_exists('SiteTreeCMSWorkflow')) {
             $this->markTestSkipped('Skip if SiteTreeCMSWorkflow installed');
         }
 
@@ -54,8 +55,9 @@ class SiteTreeActionsTest extends FunctionalTest {
         $this->assertNull($actions->dataFieldByName('action_revert'));
     }
 
-    public function testActionsNoDeletePublishedRecord() {
-        if(class_exists('SiteTreeCMSWorkflow')) {
+    public function testActionsNoDeletePublishedRecord()
+    {
+        if (class_exists('SiteTreeCMSWorkflow')) {
             $this->markTestSkipped('Skip if SiteTreeCMSWorkflow installed');
         }
 
@@ -87,8 +89,9 @@ class SiteTreeActionsTest extends FunctionalTest {
         $this->assertNotNull($actions->dataFieldByName('action_archive'));
     }
 
-    public function testActionsPublishedRecord() {
-        if(class_exists('SiteTreeCMSWorkflow')) {
+    public function testActionsPublishedRecord()
+    {
+        if (class_exists('SiteTreeCMSWorkflow')) {
             $this->markTestSkipped('Skip if SiteTreeCMSWorkflow installed');
         }
 
@@ -115,8 +118,9 @@ class SiteTreeActionsTest extends FunctionalTest {
         $this->assertNull($actions->dataFieldByName('action_revert'));
     }
 
-    public function testActionsDeletedFromStageRecord() {
-        if(class_exists('SiteTreeCMSWorkflow')) {
+    public function testActionsDeletedFromStageRecord()
+    {
+        if (class_exists('SiteTreeCMSWorkflow')) {
             $this->markTestSkipped('Skip if SiteTreeCMSWorkflow installed');
         }
 
@@ -147,8 +151,9 @@ class SiteTreeActionsTest extends FunctionalTest {
         $this->assertNotNull($actions->dataFieldByName('action_revert'));
     }
 
-    public function testActionsChangedOnStageRecord() {
-        if(class_exists('SiteTreeCMSWorkflow')) {
+    public function testActionsChangedOnStageRecord()
+    {
+        if (class_exists('SiteTreeCMSWorkflow')) {
             $this->markTestSkipped('Skip if SiteTreeCMSWorkflow installed');
         }
 
@@ -177,8 +182,9 @@ class SiteTreeActionsTest extends FunctionalTest {
         $this->assertNull($actions->dataFieldByName('action_revert'));
     }
 
-    public function testActionsViewingOldVersion() {
-        if(class_exists('SiteTreeCMSWorkflow')) {
+    public function testActionsViewingOldVersion()
+    {
+        if (class_exists('SiteTreeCMSWorkflow')) {
             $this->markTestSkipped('Skip if SiteTreeCMSWorkflow installed');
         }
 
@@ -199,15 +205,17 @@ class SiteTreeActionsTest extends FunctionalTest {
         $this->assertNotNull($actions->dataFieldByName('action_email'));
         $this->assertNotNull($actions->dataFieldByName('action_rollback'));
     }
-
 }
 
-class SiteTreeActionsTest_Page extends Page implements TestOnly {
-    public function canEdit($member = null) {
+class SiteTreeActionsTest_Page extends Page implements TestOnly
+{
+    public function canEdit($member = null)
+    {
         return Permission::checkMember($member, 'SiteTreeActionsTest_Page_CANEDIT');
     }
 
-    public function canDelete($member = null) {
+    public function canDelete($member = null)
+    {
         return Permission::checkMember($member, 'SiteTreeActionsTest_Page_CANDELETE');
     }
 }

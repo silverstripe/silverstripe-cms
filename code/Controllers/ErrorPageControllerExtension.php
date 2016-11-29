@@ -11,7 +11,8 @@ use SilverStripe\Core\Extension;
 /**
  * Enhances error handling for a controller with ErrorPage generated output
  */
-class ErrorPageControllerExtension extends Extension {
+class ErrorPageControllerExtension extends Extension
+{
 
     /**
      * Used by {@see RequestHandler::httpError}
@@ -20,12 +21,13 @@ class ErrorPageControllerExtension extends Extension {
      * @param HTTPRequest $request
      * @throws HTTPResponse_Exception
      */
-    public function onBeforeHTTPError($statusCode, $request) {
+    public function onBeforeHTTPError($statusCode, $request)
+    {
         if (Director::is_ajax()) {
             return;
         }
         $response = ErrorPage::response_for($statusCode);
-        if($response) {
+        if ($response) {
             throw new HTTPResponse_Exception($response, $statusCode);
         }
     }

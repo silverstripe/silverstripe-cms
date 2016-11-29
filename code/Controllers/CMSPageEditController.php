@@ -12,7 +12,8 @@ use SilverStripe\ORM\FieldType\DBHTMLText;
 /**
  * @package cms
  */
-class CMSPageEditController extends CMSMain {
+class CMSPageEditController extends CMSMain
+{
 
     private static $url_segment = 'pages/edit';
 
@@ -28,7 +29,7 @@ class CMSPageEditController extends CMSMain {
 
     public function getClientConfig()
     {
-        return array_merge( parent::getClientConfig(), [
+        return array_merge(parent::getClientConfig(), [
             'form' => [
                 'AddToCampaignForm' => [
                     'schemaUrl' => $this->Link('schema/AddToCampaignForm')
@@ -55,7 +56,7 @@ class CMSPageEditController extends CMSMain {
             return null;
         }
         $request = $this->getRequest();
-        if($request->getHeader('X-Formschema-Request')) {
+        if ($request->getHeader('X-Formschema-Request')) {
             $data = $this->getSchemaForForm($handler->Form($record));
             $data['message'] = $results;
 
@@ -110,5 +111,4 @@ class CMSPageEditController extends CMSMain {
         $handler = AddToCampaignHandler::create($this, $record);
         return $handler->Form($record);
     }
-
 }

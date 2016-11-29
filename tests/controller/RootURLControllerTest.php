@@ -9,10 +9,12 @@ use SilverStripe\Dev\SapphireTest;
  * @package cms
  * @subpackage tests
  */
-class RootURLControllerTest extends SapphireTest {
+class RootURLControllerTest extends SapphireTest
+{
     protected static $fixture_file = 'RootURLControllerTest.yml';
 
-    public function testGetHomepageLink() {
+    public function testGetHomepageLink()
+    {
         $default = $this->objFromFixture('Page', 'home');
 
         SiteTree::config()->nested_urls = false;
@@ -20,5 +22,4 @@ class RootURLControllerTest extends SapphireTest {
         Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'nested_urls', true);
         $this->assertEquals('home', RootURLController::get_homepage_link());
     }
-
 }

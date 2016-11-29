@@ -5,18 +5,19 @@ use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\FunctionalTest;
 
-
 /**
  * @package cms
  * @subpackage tests
  */
-class ContentControllerPermissionsTest extends FunctionalTest {
+class ContentControllerPermissionsTest extends FunctionalTest
+{
 
     protected $usesDatabase = true;
 
     protected $autoFollowRedirection = false;
 
-    public function testCanViewStage() {
+    public function testCanViewStage()
+    {
         // Create a new page
         $page = new Page();
         $page->URLSegment = 'testpage';
@@ -35,7 +36,7 @@ class ContentControllerPermissionsTest extends FunctionalTest {
 
         try {
             $response = $this->get('/testpage/?stage=Stage');
-        } catch(HTTPResponse_Exception $responseException) {
+        } catch (HTTPResponse_Exception $responseException) {
             $response = $responseException->getResponse();
         }
         // should redirect to login
@@ -50,6 +51,4 @@ class ContentControllerPermissionsTest extends FunctionalTest {
         $response = $this->get('/testpage/?stage=Stage');
         $this->assertEquals($response->getStatusCode(), 200, 'Doesnt redirect to login, but shows page for authenticated user');
     }
-
-
 }

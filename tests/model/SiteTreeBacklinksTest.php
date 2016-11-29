@@ -9,18 +9,19 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Dev\TestOnly;
 
-
 /**
  * Tests {@see SiteTreeLinkTracking} broken links feature: LinkTracking
  */
-class SiteTreeBacklinksTest extends SapphireTest {
+class SiteTreeBacklinksTest extends SapphireTest
+{
     protected static $fixture_file = "SiteTreeBacklinksTest.yml";
 
     protected $requiredExtensions = array(
         'SilverStripe\\CMS\\Model\\SiteTree' => array('SiteTreeBacklinksTest_DOD'),
     );
 
-    public function setUp() {
+    public function setUp()
+    {
         parent::setUp();
 
         // Log in as admin so that we don't run into permission issues.  That's not what we're
@@ -28,7 +29,8 @@ class SiteTreeBacklinksTest extends SapphireTest {
         $this->logInWithPermission('ADMIN');
     }
 
-    public function testSavingPageWithLinkAddsBacklink() {
+    public function testSavingPageWithLinkAddsBacklink()
+    {
         // load page 1
         $page1 = $this->objFromFixture('Page', 'page1');
 
@@ -47,7 +49,8 @@ class SiteTreeBacklinksTest extends SapphireTest {
         $this->assertContains($page2->ID, $page1->BackLinkTracking()->column('ID'), 'Assert backlink to page 2 exists');
     }
 
-    public function testRemovingLinkFromPageRemovesBacklink() {
+    public function testRemovingLinkFromPageRemovesBacklink()
+    {
         // load page 1
         $page1 = $this->objFromFixture('Page', 'page1');
 
@@ -66,7 +69,8 @@ class SiteTreeBacklinksTest extends SapphireTest {
         $this->assertNotContains($page3->ID, $page1->BackLinkTracking()->column('ID'), 'Assert backlink to page 3 doesn\'t exist');
     }
 
-    public function testChangingUrlOnDraftSiteRewritesLink() {
+    public function testChangingUrlOnDraftSiteRewritesLink()
+    {
         // load page 1
         $page1 = $this->objFromFixture('Page', 'page1');
 
@@ -90,7 +94,8 @@ class SiteTreeBacklinksTest extends SapphireTest {
         $this->assertContains(Director::baseURL().'new-url-segment/', $links, 'Assert hyperlink to page 1\'s new url exists on page 3');
     }
 
-    public function testChangingUrlOnLiveSiteRewritesLink() {
+    public function testChangingUrlOnLiveSiteRewritesLink()
+    {
         $this->markTestSkipped("Test disabled until versioned many_many implemented");
 
         // publish page 1 & 3
@@ -123,7 +128,8 @@ class SiteTreeBacklinksTest extends SapphireTest {
         $this->assertContains(Director::baseURL().'new-url-segment/', $links, 'Assert hyperlink to page 1\'s new url exists on page 3');
     }
 
-    public function testPublishingPageWithModifiedUrlRewritesLink() {
+    public function testPublishingPageWithModifiedUrlRewritesLink()
+    {
         $this->markTestSkipped("Test disabled until versioned many_many implemented");
 
         // publish page 1 & 3
@@ -160,7 +166,8 @@ class SiteTreeBacklinksTest extends SapphireTest {
         $this->assertContains(Director::baseURL().'new-url-segment/', $links, 'Assert hyperlink to page 1\'s new published url exists on page 3');
     }
 
-    public function testPublishingPageWithModifiedLinksRewritesLinks() {
+    public function testPublishingPageWithModifiedLinksRewritesLinks()
+    {
         $this->markTestSkipped("Test disabled until versioned many_many implemented");
 
         // publish page 1 & 3
@@ -202,7 +209,8 @@ class SiteTreeBacklinksTest extends SapphireTest {
         $this->assertContains(Director::baseURL().'new-url-segment/', $links, 'Assert hyperlink to page 1\'s current published url exists on page 3');
     }
 
-    public function testLinkTrackingOnExtraContentFields() {
+    public function testLinkTrackingOnExtraContentFields()
+    {
         $page1 = $this->objFromFixture('Page', 'page1');
         $page2 = $this->objFromFixture('Page', 'page2');
         $page1->publishRecursive();
@@ -249,17 +257,17 @@ class SiteTreeBacklinksTest extends SapphireTest {
         // assert backlink to page 2 no longer exists
         $this->assertNotContains($page2->ID, $page1->BackLinkTracking()->column('ID'), 'Assert backlink to page 2 has been removed');
     }
-
 }
 
-class SiteTreeBacklinksTest_DOD extends DataExtension implements TestOnly {
+class SiteTreeBacklinksTest_DOD extends DataExtension implements TestOnly
+{
 
     private static $db = array(
         'ExtraContent' => 'HTMLText',
     );
 
-    public function updateCMSFields(FieldList $fields) {
+    public function updateCMSFields(FieldList $fields)
+    {
         $fields->addFieldToTab("Root.Content", new HTMLEditorField("ExtraContent"));
     }
 }
-

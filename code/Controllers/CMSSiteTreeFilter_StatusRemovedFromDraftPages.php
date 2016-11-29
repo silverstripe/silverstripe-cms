@@ -12,7 +12,7 @@ use SilverStripe\ORM\Versioning\Versioned;
 class CMSSiteTreeFilter_StatusRemovedFromDraftPages extends CMSSiteTreeFilter
 {
 
-    static public function title()
+    public static function title()
     {
         return _t('CMSSiteTreeFilter_StatusRemovedFromDraftPages.Title', 'Live but removed from draft');
     }

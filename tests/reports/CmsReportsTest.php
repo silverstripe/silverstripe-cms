@@ -13,19 +13,19 @@ use SilverStripe\Reports\Report;
 use SilverStripe\Assets\File;
 use SilverStripe\Dev\SapphireTest;
 
-
-
 /**
  * @package cms
  * @subpackage tests
  */
-class CmsReportsTest extends SapphireTest {
+class CmsReportsTest extends SapphireTest
+{
 
     protected static $fixture_file = 'CmsReportsTest.yml';
 
     private static $daysAgo = 14;
 
-    public function setUp() {
+    public function setUp()
+    {
         parent::setUp();
 
         // set the dates by hand: impossible to set via yml
@@ -47,7 +47,8 @@ class CmsReportsTest extends SapphireTest {
      *  @parameter boolean
      */
 
-    public function isReportBroken($report, $isDraftBroken, $isPublishedBroken) {
+    public function isReportBroken($report, $isDraftBroken, $isPublishedBroken)
+    {
 
         $class = get_class($report);
 
@@ -62,7 +63,8 @@ class CmsReportsTest extends SapphireTest {
         $isPublishedBroken ? $this->assertTrue($results, "{$class} has NOT returned the correct PUBLISHED results, as NO pages were found.") : $this->assertFalse($results, "{$class} has NOT returned the correct PUBLISHED results, as pages were found.");
     }
 
-    public function testRecentlyEdited() {
+    public function testRecentlyEdited()
+    {
         DBDatetime::set_mock_now('31-06-2009 00:00:00');
 
         $after = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'after');
@@ -82,7 +84,8 @@ class CmsReportsTest extends SapphireTest {
      *  Test the broken links side report.
      */
 
-    public function testBrokenLinks() {
+    public function testBrokenLinks()
+    {
 
         // Create a "draft" page with a broken link.
 
@@ -94,15 +97,15 @@ class CmsReportsTest extends SapphireTest {
 
         $reports = Report::get_reports();
         $brokenLinksReport = null;
-        foreach($reports as $report) {
-            if($report instanceof BrokenLinksReport) {
+        foreach ($reports as $report) {
+            if ($report instanceof BrokenLinksReport) {
                 $brokenLinksReport = $report;
                 break;
             }
         }
 
         // Determine that the report exists, otherwise it has been excluded.
-        if(!$brokenLinksReport){
+        if (!$brokenLinksReport) {
             $this->markTestSkipped('BrokenLinksReport is not an available report');
             return;
         }
@@ -145,7 +148,8 @@ class CmsReportsTest extends SapphireTest {
      *  Test the broken files side report.
      */
 
-    public function testBrokenFiles() {
+    public function testBrokenFiles()
+    {
 
         // Create a "draft" page with a broken file.
 
@@ -157,15 +161,15 @@ class CmsReportsTest extends SapphireTest {
 
         $reports = Report::get_reports();
         $brokenFilesReport = null;
-        foreach($reports as $report) {
-            if($report instanceof BrokenFilesReport) {
+        foreach ($reports as $report) {
+            if ($report instanceof BrokenFilesReport) {
                 $brokenFilesReport = $report;
                 break;
             }
         }
 
         // Determine that the report exists, otherwise it has been excluded.
-        if(!$brokenFilesReport){
+        if (!$brokenFilesReport) {
             $this->markTestSkipped('BrokenFilesReport is not an available report');
             return;
         }
@@ -211,7 +215,8 @@ class CmsReportsTest extends SapphireTest {
      *  Test the broken virtual pages side report.
      */
 
-    public function testBrokenVirtualPages() {
+    public function testBrokenVirtualPages()
+    {
 
         // Create a "draft" virtual page with a broken link.
 
@@ -223,15 +228,15 @@ class CmsReportsTest extends SapphireTest {
 
         $reports = Report::get_reports();
         $brokenVirtualPagesReport = null;
-        foreach($reports as $report) {
-            if($report instanceof BrokenVirtualPagesReport) {
+        foreach ($reports as $report) {
+            if ($report instanceof BrokenVirtualPagesReport) {
                 $brokenVirtualPagesReport = $report;
                 break;
             }
         }
 
         // Determine that the report exists, otherwise it has been excluded.
-        if(!$brokenVirtualPagesReport){
+        if (!$brokenVirtualPagesReport) {
             $this->markTestSkipped('BrokenFilesReport is not an available report');
             return;
         }
@@ -278,7 +283,8 @@ class CmsReportsTest extends SapphireTest {
      *  Test the broken redirector pages side report.
      */
 
-    public function testBrokenRedirectorPages() {
+    public function testBrokenRedirectorPages()
+    {
 
         // Create a "draft" redirector page with a broken link.
 
@@ -291,15 +297,15 @@ class CmsReportsTest extends SapphireTest {
 
         $reports = Report::get_reports();
         $brokenRedirectorPagesReport = null;
-        foreach($reports as $report) {
-            if($report instanceof BrokenRedirectorPagesReport) {
+        foreach ($reports as $report) {
+            if ($report instanceof BrokenRedirectorPagesReport) {
                 $brokenRedirectorPagesReport = $report;
                 break;
             }
         }
 
         // Determine that the report exists, otherwise it has been excluded.
-        if(!$brokenRedirectorPagesReport){
+        if (!$brokenRedirectorPagesReport) {
             $this->markTestSkipped('BrokenRedirectorPagesReport is not an available report');
             return;
         }
@@ -341,5 +347,4 @@ class CmsReportsTest extends SapphireTest {
 
         $this->isReportBroken($brokenRedirectorPagesReport, false, false);
     }
-
 }

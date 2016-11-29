@@ -10,9 +10,11 @@ use SilverStripe\Core\Extension;
 /**
  * Extension to include custom page icons
  */
-class LeftAndMainPageIconsExtension extends Extension {
+class LeftAndMainPageIconsExtension extends Extension
+{
 
-    public function init() {
+    public function init()
+    {
         Requirements::customCSS($this->generatePageIconsCss());
     }
 
@@ -22,15 +24,16 @@ class LeftAndMainPageIconsExtension extends Extension {
      *
      * @return string CSS
      */
-    public function generatePageIconsCss() {
+    public function generatePageIconsCss()
+    {
         $css = '';
 
         $classes = ClassInfo::subclassesFor('SilverStripe\\CMS\\Model\\SiteTree');
-        foreach($classes as $class) {
+        foreach ($classes as $class) {
             $obj = singleton($class);
             $iconSpec = $obj->stat('icon');
 
-            if(!$iconSpec) {
+            if (!$iconSpec) {
                 continue;
             }
 
@@ -38,13 +41,13 @@ class LeftAndMainPageIconsExtension extends Extension {
             $iconFile = (is_array($iconSpec)) ? $iconSpec[0] : $iconSpec;
 
             // Legacy support: Add file extension if none exists
-            if(!pathinfo($iconFile, PATHINFO_EXTENSION)) {
+            if (!pathinfo($iconFile, PATHINFO_EXTENSION)) {
                 $iconFile .= '-file.gif';
             }
 
             $selector = ".page-icon.class-$class, li.class-$class > a .jstree-pageicon";
 
-            if(Director::fileExists($iconFile)) {
+            if (Director::fileExists($iconFile)) {
                 $css .= "$selector { background: transparent url('$iconFile') 0 0 no-repeat; }\n";
             } else {
                 // Support for more sophisticated rules, e.g. sprited icons
@@ -54,5 +57,4 @@ class LeftAndMainPageIconsExtension extends Extension {
 
         return $css;
     }
-
 }

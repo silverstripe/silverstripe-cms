@@ -8,7 +8,8 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\View\ArrayData;
 use stdClass;
 
-class CMSPagesController extends CMSMain {
+class CMSPagesController extends CMSMain
+{
 
     private static $url_segment = 'pages';
 
@@ -20,24 +21,27 @@ class CMSPagesController extends CMSMain {
 
     private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
 
-    public function LinkPreview() {
+    public function LinkPreview()
+    {
         return false;
     }
 
-    public function isCurrentPage(DataObject $record) {
+    public function isCurrentPage(DataObject $record)
+    {
         return false;
     }
 
-    public function Breadcrumbs($unlinked = false) {
+    public function Breadcrumbs($unlinked = false)
+    {
         $items = parent::Breadcrumbs($unlinked);
 
         //special case for building the breadcrumbs when calling the listchildren Pages ListView action
-        if($parentID = $this->getRequest()->getVar('ParentID')) {
+        if ($parentID = $this->getRequest()->getVar('ParentID')) {
             $page = SiteTree::get()->byID($parentID);
 
             //build a reversed list of the parent tree
             $pages = array();
-            while($page) {
+            while ($page) {
                 array_unshift($pages, $page); //add to start of array so that array is in reverse order
                 $page = $page->Parent;
             }
@@ -47,7 +51,7 @@ class CMSPagesController extends CMSMain {
                 'view' => $this->getRequest()->getVar('view'),
                 'q' => $this->getRequest()->getVar('q')
             ));
-            foreach($pages as $page) {
+            foreach ($pages as $page) {
                 $params['ParentID'] = $page->ID;
                 $item = new stdClass();
                 $item->Title = $page->Title;
@@ -57,6 +61,5 @@ class CMSPagesController extends CMSMain {
         }
 
         return $items;
-
     }
 }

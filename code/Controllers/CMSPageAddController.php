@@ -20,7 +20,8 @@ use SilverStripe\ORM\ValidationException;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
 
-class CMSPageAddController extends CMSPageEditController {
+class CMSPageAddController extends CMSPageEditController
+{
 
     private static $url_segment = 'pages/add';
     private static $url_rule = '/$Action/$ID/$OtherID';
@@ -37,10 +38,12 @@ class CMSPageAddController extends CMSPageEditController {
     /**
      * @return Form
      */
-    public function AddForm() {
+    public function AddForm()
+    {
         $pageTypes = array();
-        foreach($this->PageTypes() as $type) {
-            $html = sprintf('<span class="page-icon class-%s"></span><span class="title">%s</span><span class="form__field-description">%s</span>',
+        foreach ($this->PageTypes() as $type) {
+            $html = sprintf(
+                '<span class="page-icon class-%s"></span><span class="title">%s</span><span class="form__field-description">%s</span>',
                 $type->getField('ClassName'),
                 $type->getField('AddAction'),
                 $type->getField('Description')
@@ -48,7 +51,7 @@ class CMSPageAddController extends CMSPageEditController {
             $pageTypes[$type->getField('ClassName')] = DBField::create_field('HTMLFragment', $html);
         }
         // Ensure generic page type shows on top
-        if(isset($pageTypes['Page'])) {
+        if (isset($pageTypes['Page'])) {
             $pageTitle = $pageTypes['Page'];
             $pageTypes = array_merge(array('Page' => $pageTitle), $pageTypes);
         }
@@ -122,7 +125,7 @@ class CMSPageAddController extends CMSPageEditController {
 
         // CMSMain->currentPageID() automatically sets the homepage,
         // which we need to counteract in the default selection (which should default to root, ID=0)
-        if($parentID = $this->getRequest()->getVar('ParentID')) {
+        if ($parentID = $this->getRequest()->getVar('ParentID')) {
             $parentModeField->setValue('child');
             $parentField->setValue((int)$parentID);
         } else {
@@ -130,10 +133,10 @@ class CMSPageAddController extends CMSPageEditController {
         }
 
         $actions = new FieldList(
-            FormAction::create("doAdd", _t('CMSMain.Create',"Create"))
+            FormAction::create("doAdd", _t('CMSMain.Create', "Create"))
                 ->addExtraClass('ss-ui-action-constructive')->setAttribute('data-icon', 'accept')
                 ->setUseButtonTag(true),
-            FormAction::create("doCancel", _t('CMSMain.Cancel',"Cancel"))
+            FormAction::create("doCancel", _t('CMSMain.Cancel', "Cancel"))
                 ->addExtraClass('ss-ui-action-destructive ss-ui-action-cancel')
                 ->setUseButtonTag(true)
         );
@@ -142,18 +145,21 @@ class CMSPageAddController extends CMSPageEditController {
 
         $negotiator = $this->getResponseNegotiator();
         $form = Form::create(
-            $this, "AddForm", $fields, $actions
+            $this,
+            "AddForm",
+            $fields,
+            $actions
         )->setHTMLID('Form_AddForm');
         $form->setAttribute('data-hints', $this->SiteTreeHints());
         $form->setAttribute('data-childfilter', $this->Link('childfilter'));
-        $form->setValidationResponseCallback(function() use ($negotiator, $form) {
+        $form->setValidationResponseCallback(function () use ($negotiator, $form) {
             $request = $this->getRequest();
-            if($request->isAjax() && $negotiator) {
+            if ($request->isAjax() && $negotiator) {
                 $form->setupFormErrors();
                 $result = $form->forTemplate();
 
                 return $negotiator->respond($request, array(
-                    'CurrentForm' => function() use($result) {
+                    'CurrentForm' => function () use ($result) {
                         return $result;
                     }
                 ));
@@ -171,28 +177,31 @@ class CMSPageAddController extends CMSPageEditController {
      * @param Form $form
      * @return HTTPResponse
      */
-    public function doAdd($data, $form) {
+    public function doAdd($data, $form)
+    {
         $className = isset($data['PageType']) ? $data['PageType'] : "Page";
         $parentID = isset($data['ParentID']) ? (int)$data['ParentID'] : 0;
 
         $suffix = isset($data['Suffix']) ? "-" . $data['Suffix'] : null;
 
-        if(!$parentID && isset($data['Parent'])) {
+        if (!$parentID && isset($data['Parent'])) {
             $page = SiteTree::get_by_link($data['Parent']);
-            if($page) $parentID = $page->ID;
+            if ($page) {
+                $parentID = $page->ID;
+            }
         }
 
-        if(is_numeric($parentID) && $parentID > 0) {
+        if (is_numeric($parentID) && $parentID > 0) {
             $parentObj = SiteTree::get()->byID($parentID);
         } else {
             $parentObj = null;
         }
 
-        if(!$parentObj || !$parentObj->ID) {
+        if (!$parentObj || !$parentObj->ID) {
             $parentID = 0;
         }
 
-        if(!singleton($className)->canCreate(Member::currentUser(), array('Parent' => $parentObj))) {
+        if (!singleton($className)->canCreate(Member::currentUser(), array('Parent' => $parentObj))) {
             return Security::permissionFailure($this);
         }
 
@@ -201,7 +210,7 @@ class CMSPageAddController extends CMSPageEditController {
 
         try {
             $record->write();
-        } catch(ValidationException $ex) {
+        } catch (ValidationException $ex) {
             $form->sessionMessage($ex->getResult()->message(), 'bad');
             return $this->getResponseNegotiator()->respond($this->getRequest());
         }
@@ -218,7 +227,8 @@ class CMSPageAddController extends CMSPageEditController {
         return $this->redirect(Controller::join_links($editController->Link('show'), $record->ID));
     }
 
-    public function doCancel($data, $form) {
+    public function doCancel($data, $form)
+    {
         return $this->redirect(CMSMain::singleton()->Link());
     }
 }

@@ -31,7 +31,8 @@ use DOMElement;
  * @method ManyManyList ImageTracking() List of Images linked on this page.
  * @method ManyManyList BackLinkTracking List of site pages that link to this page.
  */
-class SiteTreeLinkTracking extends DataExtension {
+class SiteTreeLinkTracking extends DataExtension
+{
 
     /**
      * @var SiteTreeLinkTracking_Parser
@@ -53,7 +54,8 @@ class SiteTreeLinkTracking extends DataExtension {
      *
      * @return SiteTreeLinkTracking_Parser
      */
-    public function getParser() {
+    public function getParser()
+    {
         return $this->parser;
     }
 
@@ -61,7 +63,8 @@ class SiteTreeLinkTracking extends DataExtension {
      * @param SiteTreeLinkTracking_Parser $parser
      * @return $this
      */
-    public function setParser($parser) {
+    public function setParser($parser)
+    {
         $this->parser = $parser;
         return $this;
     }
@@ -100,7 +103,8 @@ class SiteTreeLinkTracking extends DataExtension {
      *
      * @param string $fieldName The name of the field on {@link @owner} to scrape
      */
-    public function trackLinksInField($fieldName) {
+    public function trackLinksInField($fieldName)
+    {
         $record = $this->owner;
 
         $linkedPages = array();
@@ -112,7 +116,7 @@ class SiteTreeLinkTracking extends DataExtension {
         // Highlight broken links in the content.
         foreach ($links as $link) {
             // Skip links without domelements
-            if(!isset($link['DOMReference'])) {
+            if (!isset($link['DOMReference'])) {
                 continue;
             }
 
@@ -169,7 +173,7 @@ class SiteTreeLinkTracking extends DataExtension {
         }
 
         // Update the "LinkTracking" many_many
-        if($record->ID
+        if ($record->ID
             && $record->getSchema()->manyManyComponent(get_class($record), 'LinkTracking')
             && ($tracker = $record->LinkTracking())
         ) {
@@ -178,13 +182,15 @@ class SiteTreeLinkTracking extends DataExtension {
                     => array($fieldName, $record->ID)
             ));
 
-            if($linkedPages) foreach($linkedPages as $item) {
-                $tracker->add($item, array('FieldName' => $fieldName));
+            if ($linkedPages) {
+                foreach ($linkedPages as $item) {
+                    $tracker->add($item, array('FieldName' => $fieldName));
+                }
             }
         }
 
         // Update the "ImageTracking" many_many
-        if($record->ID
+        if ($record->ID
             && $record->getSchema()->manyManyComponent(get_class($record), 'ImageTracking')
             && ($tracker = $record->ImageTracking())
         ) {
@@ -193,8 +199,10 @@ class SiteTreeLinkTracking extends DataExtension {
                     => array($fieldName, $record->ID)
             ));
 
-            if($linkedFiles) foreach($linkedFiles as $item) {
-                $tracker->add($item, array('FieldName' => $fieldName));
+            if ($linkedFiles) {
+                foreach ($linkedFiles as $item) {
+                    $tracker->add($item, array('FieldName' => $fieldName));
+                }
             }
         }
     }
@@ -204,9 +212,10 @@ class SiteTreeLinkTracking extends DataExtension {
      *
      * @todo Support versioned many_many for per-stage page link tracking
      */
-    public function augmentSyncLinkTracking() {
+    public function augmentSyncLinkTracking()
+    {
         // Skip live tracking
-        if(Versioned::get_stage() == Versioned::LIVE) {
+        if (Versioned::get_stage() == Versioned::LIVE) {
             return;
         }
 
@@ -217,14 +226,14 @@ class SiteTreeLinkTracking extends DataExtension {
         // Build a list of HTMLText fields
         $allFields = DataObject::getSchema()->fieldSpecs($this->owner);
         $htmlFields = array();
-        foreach($allFields as $field => $fieldSpec) {
+        foreach ($allFields as $field => $fieldSpec) {
             $fieldObj = $this->owner->dbObject($field);
-            if($fieldObj instanceof DBHTMLText) {
+            if ($fieldObj instanceof DBHTMLText) {
                 $htmlFields[] = $field;
             }
         }
 
-        foreach($htmlFields as $field) {
+        foreach ($htmlFields as $field) {
             $this->trackLinksInField($field);
         }
     }

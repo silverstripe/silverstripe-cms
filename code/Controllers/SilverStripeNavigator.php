@@ -19,7 +19,8 @@ use SilverStripe\View\ViewableData;
  * for example the "cmsworkflow" module defines a new "future state" item with a date selector
  * to view embargoed data at a future point in time. So the item doesn't always have to be a simple link.
  */
-class SilverStripeNavigator extends ViewableData {
+class SilverStripeNavigator extends ViewableData
+{
 
     /**
      * @var DataObject|CMSPreviewable
@@ -29,7 +30,8 @@ class SilverStripeNavigator extends ViewableData {
     /**
      * @param DataObject|CMSPreviewable $record
      */
-    public function __construct(CMSPreviewable $record) {
+    public function __construct(CMSPreviewable $record)
+    {
         parent::__construct();
         $this->record = $record;
     }
@@ -37,17 +39,18 @@ class SilverStripeNavigator extends ViewableData {
     /**
      * @return SS_List of SilverStripeNavigatorItem
      */
-    public function getItems() {
+    public function getItems()
+    {
         $items = array();
 
         $classes = ClassInfo::subclassesFor('SilverStripe\\CMS\\Controllers\\SilverStripeNavigatorItem');
         unset($classes['SilverStripe\\CMS\\Controllers\\SilverStripeNavigatorItem']);
 
         // Sort menu items according to priority
-        foreach($classes as $class) {
+        foreach ($classes as $class) {
             /** @var SilverStripeNavigatorItem $item */
             $item = new $class($this->record);
-            if(!$item->canView()) {
+            if (!$item->canView()) {
                 continue;
             }
 
@@ -55,7 +58,7 @@ class SilverStripeNavigator extends ViewableData {
             $priority = $item->getPriority() * 100 - 1;
 
             // Ensure that we can have duplicates with the same (default) priority
-            while(isset($items[$priority])) {
+            while (isset($items[$priority])) {
                 $priority++;
             }
 
@@ -70,7 +73,8 @@ class SilverStripeNavigator extends ViewableData {
     /**
      * @return DataObject|CMSPreviewable
      */
-    public function getRecord() {
+    public function getRecord()
+    {
         return $this->record;
     }
 
@@ -78,16 +82,21 @@ class SilverStripeNavigator extends ViewableData {
      * @param DataObject|CMSPreviewable $record
      * @return array template data
      */
-    static public function get_for_record($record) {
+    public static function get_for_record($record)
+    {
         $html = '';
         $message = '';
         $navigator = new SilverStripeNavigator($record);
         $items = $navigator->getItems();
-        foreach($items as $item) {
+        foreach ($items as $item) {
             $text = $item->getHTML();
-            if($text) $html .= $text;
+            if ($text) {
+                $html .= $text;
+            }
             $newMessage = $item->getMessage();
-            if($newMessage && $item->isActive()) $message = $newMessage;
+            if ($newMessage && $item->isActive()) {
+                $message = $newMessage;
+            }
         }
 
         return array(

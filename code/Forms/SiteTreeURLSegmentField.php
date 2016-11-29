@@ -15,7 +15,8 @@ use SilverStripe\View\Requirements;
  *
  * Note: The actual conversion for saving the value takes place in the model layer.
  */
-class SiteTreeURLSegmentField extends TextField {
+class SiteTreeURLSegmentField extends TextField
+{
 
     /**
      * @var string
@@ -26,11 +27,13 @@ class SiteTreeURLSegmentField extends TextField {
         'suggest'
     );
 
-    public function Value() {
+    public function Value()
+    {
         return rawurldecode($this->value);
     }
 
-    public function getAttributes() {
+    public function getAttributes()
+    {
         return array_merge(
             parent::getAttributes(),
             array(
@@ -41,7 +44,8 @@ class SiteTreeURLSegmentField extends TextField {
         );
     }
 
-    public function Field($properties = array()) {
+    public function Field($properties = array())
+    {
         return parent::Field($properties);
     }
 
@@ -49,9 +53,11 @@ class SiteTreeURLSegmentField extends TextField {
      * @param HTTPRequest $request
      * @return string
      */
-    public function suggest($request) {
-        if(!$request->getVar('value')) {
-            return $this->httpError(405,
+    public function suggest($request)
+    {
+        if (!$request->getVar('value')) {
+            return $this->httpError(
+                405,
                 _t('SiteTreeURLSegmentField.EMPTY', 'Please enter a URL Segment or click cancel')
             );
         }
@@ -60,7 +66,7 @@ class SiteTreeURLSegmentField extends TextField {
         // Same logic as SiteTree->onBeforeWrite
         $page->URLSegment = $page->generateURLSegment($request->getVar('value'));
         $count = 2;
-        while(!$page->validURLSegment()) {
+        while (!$page->validURLSegment()) {
             $page->URLSegment = preg_replace('/-[0-9]+$/', null, $page->URLSegment) . '-' . $count;
             $count++;
         }
@@ -72,7 +78,8 @@ class SiteTreeURLSegmentField extends TextField {
     /**
      * @return SiteTree
      */
-    public function getPage() {
+    public function getPage()
+    {
         $idField = $this->getForm()->Fields()->dataFieldByName('ID');
         return ($idField && $idField->Value())
             ? SiteTree::get()->byID($idField->Value())
@@ -83,7 +90,8 @@ class SiteTreeURLSegmentField extends TextField {
      * @param string $string The secondary text to show
      * @return $this
      */
-    public function setHelpText($string){
+    public function setHelpText($string)
+    {
         $this->helpText = $string;
         return $this;
     }
@@ -91,16 +99,17 @@ class SiteTreeURLSegmentField extends TextField {
     /**
      * @return string the secondary text to show in the template
      */
-    public function getHelpText(){
+    public function getHelpText()
+    {
         return $this->helpText;
-
     }
 
     /**
      * @param string $url the url that prefixes the page url segment field
      * @return $this
      */
-    public function setURLPrefix($url){
+    public function setURLPrefix($url)
+    {
         $this->urlPrefix = $url;
         return $this;
     }
@@ -108,11 +117,13 @@ class SiteTreeURLSegmentField extends TextField {
     /**
      * @return string the url prefixes the page url segment field to show in template
      */
-    public function getURLPrefix(){
+    public function getURLPrefix()
+    {
         return $this->urlPrefix;
     }
 
-    public function getURLSuffix() {
+    public function getURLSuffix()
+    {
         return $this->urlSuffix;
     }
 
@@ -121,29 +132,35 @@ class SiteTreeURLSegmentField extends TextField {
      * and auto-update the field value if changes to the default occur.
      * Does not set the field default value.
      */
-    public function getDefaultURL(){
+    public function getDefaultURL()
+    {
         return $this->defaultUrl;
     }
 
-    public function setDefaultURL($url) {
+    public function setDefaultURL($url)
+    {
         $this->defaultUrl = $url;
         return $this;
     }
 
-    public function setURLSuffix($suffix) {
+    public function setURLSuffix($suffix)
+    {
         $this->urlSuffix = $suffix;
         return $this;
     }
 
-    public function Type() {
+    public function Type()
+    {
         return 'text urlsegment';
     }
 
-    public function getURL() {
+    public function getURL()
+    {
         return Controller::join_links($this->getURLPrefix(), $this->Value(), $this->getURLSuffix());
     }
 
-    public function performReadonlyTransformation() {
+    public function performReadonlyTransformation()
+    {
         $newInst = parent::performReadonlyTransformation();
         $newInst->helpText = $this->helpText;
         $newInst->urlPrefix = $this->urlPrefix;

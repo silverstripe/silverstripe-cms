@@ -47,7 +47,8 @@ use Translatable;
  *
  * @todo Can this be used for anything other than SiteTree controllers?
  */
-class ContentController extends Controller {
+class ContentController extends Controller
+{
 
     protected $dataRecord;
 
@@ -65,10 +66,11 @@ class ContentController extends Controller {
      *
      * @param SiteTree $dataRecord
      */
-    public function __construct($dataRecord = null) {
-        if(!$dataRecord) {
+    public function __construct($dataRecord = null)
+    {
+        if (!$dataRecord) {
             $dataRecord = new Page();
-            if($this->hasMethod("Title")) {
+            if ($this->hasMethod("Title")) {
                 $dataRecord->Title = $this->Title();
             }
             $dataRecord->URLSegment = static::class;
@@ -89,7 +91,8 @@ class ContentController extends Controller {
      * @param string|null $action Action to link to.
      * @return string
      */
-    public function Link($action = null) {
+    public function Link($action = null)
+    {
         return $this->data()->Link(($action ? $action : true));
     }
 
@@ -102,14 +105,15 @@ class ContentController extends Controller {
      * @param string|int $parentRef
      * @return SS_List
      */
-    public function ChildrenOf($parentRef) {
+    public function ChildrenOf($parentRef)
+    {
         $parent = SiteTree::get_by_link($parentRef);
 
-        if(!$parent && is_numeric($parentRef)) {
+        if (!$parent && is_numeric($parentRef)) {
             $parent = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $parentRef);
         }
 
-        if($parent) {
+        if ($parent) {
             return $parent->Children();
         }
         return null;
@@ -119,38 +123,45 @@ class ContentController extends Controller {
      * @param string $link
      * @return SiteTree
      */
-    public function Page($link) {
+    public function Page($link)
+    {
         return SiteTree::get_by_link($link);
     }
 
-    public function init() {
+    public function init()
+    {
         parent::init();
 
         // If we've accessed the homepage as /home/, then we should redirect to /.
-        if( $this->dataRecord instanceof SiteTree
+        if ($this->dataRecord instanceof SiteTree
             && RootURLController::should_be_on_root($this->dataRecord)
             && (!isset($this->urlParams['Action']) || !$this->urlParams['Action'] )
             && !$_POST && !$_FILES && !$this->redirectedTo()
         ) {
             $getVars = $_GET;
             unset($getVars['url']);
-            if($getVars) $url = "?" . http_build_query($getVars);
-            else $url = "";
+            if ($getVars) {
+                $url = "?" . http_build_query($getVars);
+            } else {
+                $url = "";
+            }
             $this->redirect($url, 301);
             return;
         }
 
-        if($this->dataRecord) {
+        if ($this->dataRecord) {
             $this->dataRecord->extend('contentcontrollerInit', $this);
         } else {
             SiteTree::singleton()->extend('contentcontrollerInit', $this);
         }
 
-        if($this->redirectedTo()) return;
+        if ($this->redirectedTo()) {
+            return;
+        }
 
         // Check page permissions
         /** @skipUpgrade */
-        if($this->dataRecord && $this->URLSegment != 'Security' && !$this->dataRecord->canView()) {
+        if ($this->dataRecord && $this->URLSegment != 'Security' && !$this->dataRecord->canView()) {
             Security::permissionFailure($this);
             return;
         }
@@ -165,7 +176,8 @@ class ContentController extends Controller {
      * @return HTTPResponse
      * @throws HTTPResponse_Exception
      */
-    public function handleRequest(HTTPRequest $request, DataModel $model) {
+    public function handleRequest(HTTPRequest $request, DataModel $model)
+    {
         /** @var SiteTree $child */
         $child  = null;
         $action = $request->param('Action');
@@ -174,19 +186,23 @@ class ContentController extends Controller {
         // If nested URLs are enabled, and there is no action handler for the current request then attempt to pass
         // control to a child controller. This allows for the creation of chains of controllers which correspond to a
         // nested URL.
-        if($action && SiteTree::config()->nested_urls && !$this->hasAction($action)) {
+        if ($action && SiteTree::config()->nested_urls && !$this->hasAction($action)) {
             // See ModelAdController->getNestedController() for similar logic
-            if(class_exists('Translatable')) Translatable::disable_locale_filter();
+            if (class_exists('Translatable')) {
+                Translatable::disable_locale_filter();
+            }
             // look for a page with this URLSegment
             $child = SiteTree::get()->filter(array(
                 'ParentID' => $this->ID,
                 'URLSegment' => rawurlencode($action)
             ))->first();
-            if(class_exists('Translatable')) Translatable::enable_locale_filter();
+            if (class_exists('Translatable')) {
+                Translatable::enable_locale_filter();
+            }
         }
 
         // we found a page with this URLSegment.
-        if($child) {
+        if ($child) {
             $request->shiftAllParams();
             $request->shift();
 
@@ -195,15 +211,15 @@ class ContentController extends Controller {
             // If a specific locale is requested, and it doesn't match the page found by URLSegment,
             // look for a translation and redirect (see #5001). Only happens on the last child in
             // a potentially nested URL chain.
-            if(class_exists('Translatable')) {
+            if (class_exists('Translatable')) {
                 $locale = $request->getVar('locale');
-                if( $locale
+                if ($locale
                     && i18n::validate_locale($locale)
                     && $this->dataRecord
                     && $this->dataRecord->Locale != $locale
                 ) {
                     $translation = $this->dataRecord->getTranslation($locale);
-                    if($translation) {
+                    if ($translation) {
                         $response = new HTTPResponse();
                         $response->redirect($translation->Link(), 301);
                         throw new HTTPResponse_Exception($response);
@@ -217,7 +233,7 @@ class ContentController extends Controller {
                 $response = parent::handleRequest($request, $model);
 
                 Director::set_current_page(null);
-            } catch(HTTPResponse_Exception $e) {
+            } catch (HTTPResponse_Exception $e) {
                 $this->popCurrent();
 
                 Director::set_current_page(null);
@@ -234,7 +250,8 @@ class ContentController extends Controller {
      *
      * @return string
      */
-    public function project() {
+    public function project()
+    {
         global $project;
         return $project;
     }
@@ -242,7 +259,8 @@ class ContentController extends Controller {
     /**
      * Returns the associated database record
      */
-    public function data() {
+    public function data()
+    {
         return $this->dataRecord;
     }
 
@@ -253,33 +271,35 @@ class ContentController extends Controller {
      * @param int $level Menu level to return.
      * @return ArrayList
      */
-    public function getMenu($level = 1) {
-        if($level == 1) {
+    public function getMenu($level = 1)
+    {
+        if ($level == 1) {
             $result = SiteTree::get()->filter(array(
                 "ShowInMenus" => 1,
                 "ParentID" => 0
             ));
-
         } else {
             $parent = $this->data();
             $stack = array($parent);
 
-            if($parent) {
-                while(($parent = $parent->Parent()) && $parent->exists()) {
+            if ($parent) {
+                while (($parent = $parent->Parent()) && $parent->exists()) {
                     array_unshift($stack, $parent);
                 }
             }
 
-            if(isset($stack[$level-2])) $result = $stack[$level-2]->Children();
+            if (isset($stack[$level-2])) {
+                $result = $stack[$level-2]->Children();
+            }
         }
 
         $visible = array();
 
         // Remove all entries the can not be viewed by the current user
         // We might need to create a show in menu permission
-        if(isset($result)) {
-            foreach($result as $page) {
-                if($page->canView()) {
+        if (isset($result)) {
+            foreach ($result as $page) {
+                if ($page->canView()) {
                     $visible[] = $page;
                 }
             }
@@ -288,7 +308,8 @@ class ContentController extends Controller {
         return new ArrayList($visible);
     }
 
-    public function Menu($level) {
+    public function Menu($level)
+    {
         return $this->getMenu($level);
     }
 
@@ -298,17 +319,19 @@ class ContentController extends Controller {
      * @todo Check if here should be returned just the default log-in form or
      *       all available log-in forms (also OpenID...)
      */
-    public function LoginForm() {
+    public function LoginForm()
+    {
         return MemberAuthenticator::get_login_form($this);
     }
 
-    public function SilverStripeNavigator() {
+    public function SilverStripeNavigator()
+    {
         $member = Member::currentUser();
         $items = '';
         $message = '';
 
-        if(Director::isDev() || Permission::check('CMS_ACCESS_CMSMain') || Permission::check('VIEW_DRAFT_CONTENT')) {
-            if($this->dataRecord) {
+        if (Director::isDev() || Permission::check('CMS_ACCESS_CMSMain') || Permission::check('VIEW_DRAFT_CONTENT')) {
+            if ($this->dataRecord) {
                 Requirements::css(CMS_DIR . '/client/dist/styles/SilverStripeNavigator.css');
                 Requirements::javascript(ADMIN_THIRDPARTY_DIR . '/jquery/jquery.js');
                 Requirements::javascript(CMS_DIR . '/client/dist/js/SilverStripeNavigator.js');
@@ -318,14 +341,14 @@ class ContentController extends Controller {
                 $message = $return['message'];
             }
 
-            if($member) {
+            if ($member) {
                 $firstname = Convert::raw2xml($member->FirstName);
                 $surname = Convert::raw2xml($member->Surname);
                 $logInMessage = _t('ContentController.LOGGEDINAS', 'Logged in as') ." {$firstname} {$surname} - <a href=\"Security/logout\">". _t('ContentController.LOGOUT', 'Log out'). "</a>";
             } else {
                 $logInMessage = sprintf(
-                    '%s - <a href="%s">%s</a>' ,
-                    _t('ContentController.NOTLOGGEDIN', 'Not logged in') ,
+                    '%s - <a href="%s">%s</a>',
+                    _t('ContentController.NOTLOGGEDIN', 'Not logged in'),
                     Security::config()->login_url,
                     _t('ContentController.LOGIN', 'Login') ."</a>"
                 );
@@ -350,7 +373,7 @@ HTML;
 
         // On live sites we should still see the archived message
         } else {
-            if($date = Versioned::current_archived_date()) {
+            if ($date = Versioned::current_archived_date()) {
                 Requirements::css(CMS_DIR . '/client/dist/styles/SilverStripeNavigator.css');
                 /** @var DBDatetime $dateObj */
                 $dateObj = DBField::create_field('Datetime', $date);
@@ -363,8 +386,9 @@ HTML;
         return null;
     }
 
-    public function SiteConfig() {
-        if(method_exists($this->dataRecord, 'getSiteConfig')) {
+    public function SiteConfig()
+    {
+        if (method_exists($this->dataRecord, 'getSiteConfig')) {
             return $this->dataRecord->getSiteConfig();
         } else {
             return SiteConfig::current_site_config();
@@ -382,10 +406,11 @@ HTML;
      *
      * @return string
      */
-    public function ContentLocale() {
-        if($this->dataRecord && $this->dataRecord->hasExtension('Translatable')) {
+    public function ContentLocale()
+    {
+        if ($this->dataRecord && $this->dataRecord->hasExtension('Translatable')) {
             $locale = $this->dataRecord->Locale;
-        } elseif(class_exists('Translatable') && SiteTree::has_extension('Translatable')) {
+        } elseif (class_exists('Translatable') && SiteTree::has_extension('Translatable')) {
             $locale = Translatable::get_current_locale();
         } else {
             $locale = i18n::get_locale();
@@ -402,9 +427,10 @@ HTML;
      *
      * @return SSViewer
      */
-    public function getViewer($action) {
+    public function getViewer($action)
+    {
         // Manually set templates should be dealt with by Controller::getViewer()
-        if(isset($this->templates[$action]) && $this->templates[$action]
+        if (isset($this->templates[$action]) && $this->templates[$action]
             || (isset($this->templates['index']) && $this->templates['index'])
             || $this->template
         ) {
@@ -412,8 +438,11 @@ HTML;
         }
 
         // Prepare action for template search
-        if($action == "index") $action = "";
-        else $action = '_' . $action;
+        if ($action == "index") {
+            $action = "";
+        } else {
+            $action = '_' . $action;
+        }
 
         $templates = array_merge(
             // Find templates by dataRecord
@@ -432,14 +461,15 @@ HTML;
     /**
      * This action is called by the installation system
      */
-    public function successfullyinstalled() {
+    public function successfullyinstalled()
+    {
         // Return 410 Gone if this site is not actually a fresh installation
         if (!file_exists(BASE_PATH . '/install.php')) {
             $this->httpError(410);
         }
 
         // TODO Allow this to work when allow_url_fopen=0
-        if(isset($_SESSION['StatsID']) && $_SESSION['StatsID']) {
+        if (isset($_SESSION['StatsID']) && $_SESSION['StatsID']) {
             $url = 'http://ss2stat.silverstripe.com/Installation/installed?ID=' . $_SESSION['StatsID'];
             @file_get_contents($url);
         }
@@ -460,8 +490,11 @@ HTML;
         );
     }
 
-    public function deleteinstallfiles() {
-        if(!Permission::check("ADMIN")) return Security::permissionFailure($this);
+    public function deleteinstallfiles()
+    {
+        if (!Permission::check("ADMIN")) {
+            return Security::permissionFailure($this);
+        }
 
         $title = new DBVarchar("Title");
         $content = new DBHTMLText('Content');
@@ -477,12 +510,12 @@ HTML;
         );
 
         $unsuccessful = new ArrayList();
-        foreach($installfiles as $installfile) {
-            if(file_exists(BASE_PATH . '/' . $installfile)) {
+        foreach ($installfiles as $installfile) {
+            if (file_exists(BASE_PATH . '/' . $installfile)) {
                 @unlink(BASE_PATH . '/' . $installfile);
             }
 
-            if(file_exists(BASE_PATH . '/' . $installfile)) {
+            if (file_exists(BASE_PATH . '/' . $installfile)) {
                 $unsuccessful->push(new ArrayData(array('File' => $installfile)));
             }
         }

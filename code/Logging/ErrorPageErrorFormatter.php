@@ -9,17 +9,19 @@ use SilverStripe\Logging\DebugViewFriendlyErrorFormatter;
 /**
  * Provides {@see ErrorPage}-gnostic error handling
  */
-class ErrorPageErrorFormatter extends DebugViewFriendlyErrorFormatter {
+class ErrorPageErrorFormatter extends DebugViewFriendlyErrorFormatter
+{
 
-    public function output($statusCode) {
+    public function output($statusCode)
+    {
         // Ajax content is plain-text only
-        if(Director::is_ajax()) {
+        if (Director::is_ajax()) {
             return $this->getTitle();
         }
 
         // Determine if cached ErrorPage content is available
         $content = ErrorPage::get_content_for_errorcode($statusCode);
-        if($content) {
+        if ($content) {
             return $content;
         }
 

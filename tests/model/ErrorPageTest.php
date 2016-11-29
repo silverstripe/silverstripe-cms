@@ -6,14 +6,12 @@ use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Assets\Tests\Storage\AssetStoreTest\TestAssetStore;
 
-
-
-
 /**
  * @package cms
  * @subpackage tests
  */
-class ErrorPageTest extends FunctionalTest {
+class ErrorPageTest extends FunctionalTest
+{
 
     protected static $fixture_file = 'ErrorPageTest.yml';
 
@@ -24,7 +22,8 @@ class ErrorPageTest extends FunctionalTest {
      */
     protected $tmpAssetsPath = '';
 
-    public function setUp() {
+    public function setUp()
+    {
         parent::setUp();
         // Set temporary asset backend store
         TestAssetStore::activate('ErrorPageTest');
@@ -33,12 +32,14 @@ class ErrorPageTest extends FunctionalTest {
         $this->logInWithPermission('ADMIN');
     }
 
-    public function tearDown() {
+    public function tearDown()
+    {
         TestAssetStore::reset();
         parent::tearDown();
     }
 
-    public function test404ErrorPage() {
+    public function test404ErrorPage()
+    {
         $page = $this->objFromFixture('SilverStripe\\CMS\\Model\\ErrorPage', '404');
         // ensure that the errorpage exists as a physical file
         $page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
@@ -55,7 +56,8 @@ class ErrorPageTest extends FunctionalTest {
         $this->assertEquals($response->getStatusDescription(), 'Not Found', 'Status message of the HTTResponse for error page is "Not found"');
     }
 
-    public function testBehaviourOfShowInMenuAndShowInSearchFlags() {
+    public function testBehaviourOfShowInMenuAndShowInSearchFlags()
+    {
         $page = $this->objFromFixture('SilverStripe\\CMS\\Model\\ErrorPage', '404');
 
         /* Don't show the error page in the menus */
@@ -65,7 +67,8 @@ class ErrorPageTest extends FunctionalTest {
         $this->assertEquals($page->ShowInSearch, 0, 'Don\'t show the error page in search');
     }
 
-    public function testBehaviourOf403() {
+    public function testBehaviourOf403()
+    {
         $page = $this->objFromFixture('SilverStripe\\CMS\\Model\\ErrorPage', '403');
         $page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
@@ -75,7 +78,8 @@ class ErrorPageTest extends FunctionalTest {
         $this->assertNotNull($response->getBody(), 'We have body text from the error page');
     }
 
-    public function testSecurityError() {
+    public function testSecurityError()
+    {
         // Generate 404 page
         $page = $this->objFromFixture('SilverStripe\\CMS\\Model\\ErrorPage', '404');
         $page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
@@ -87,7 +91,8 @@ class ErrorPageTest extends FunctionalTest {
         $this->assertContains('text/html', $response->getHeader('Content-Type'));
     }
 
-    public function testStaticCaching() {
+    public function testStaticCaching()
+    {
         // Test new error code does not have static content
         $this->assertEmpty(ErrorPage::get_content_for_errorcode('401'));
         $expectedErrorPagePath = TestAssetStore::base_path() . '/error-401.html';
@@ -110,7 +115,8 @@ class ErrorPageTest extends FunctionalTest {
     /**
      * Test fallback to file generation API with enable_static_file disabled
      */
-    public function testGeneratedFile() {
+    public function testGeneratedFile()
+    {
         Config::inst()->update('SilverStripe\\CMS\\Model\\ErrorPage', 'enable_static_file', false);
         $this->logInWithPermission('ADMIN');
 

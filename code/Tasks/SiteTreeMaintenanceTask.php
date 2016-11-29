@@ -6,27 +6,28 @@ use SilverStripe\Control\Controller;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\DataObject;
 
-class SiteTreeMaintenanceTask extends Controller {
+class SiteTreeMaintenanceTask extends Controller
+{
     private static $allowed_actions = array(
         '*' => 'ADMIN'
     );
 
-    public function makelinksunique() {
+    public function makelinksunique()
+    {
         $badURLs = "'" . implode("', '", DB::query("SELECT URLSegment, count(*) FROM SiteTree GROUP BY URLSegment HAVING count(*) > 1")->column()) . "'";
         $pages = DataObject::get("SilverStripe\\CMS\\Model\\SiteTree", "\"SiteTree\".\"URLSegment\" IN ($badURLs)");
 
-        foreach($pages as $page) {
+        foreach ($pages as $page) {
             echo "<li>$page->Title: ";
             $urlSegment = $page->URLSegment;
             $page->write();
-            if($urlSegment != $page->URLSegment) {
+            if ($urlSegment != $page->URLSegment) {
                 echo _t(
                     'SiteTree.LINKSCHANGEDTO',
                     " changed {url1} -> {url2}",
                     array('url1' => $urlSegment, 'url2' => $page->URLSegment)
                 );
-            }
-            else {
+            } else {
                 echo _t(
                     'SiteTree.LINKSALREADYUNIQUE',
                     " {url} is already unique",

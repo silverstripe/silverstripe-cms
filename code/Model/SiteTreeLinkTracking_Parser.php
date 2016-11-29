@@ -112,7 +112,6 @@ class SiteTreeLinkTracking_Parser
 
                 continue;
             }
-
         }
 
         // Find all [image ] shortcodes (will be inline, not inside attributes)
@@ -130,5 +129,4 @@ class SiteTreeLinkTracking_Parser
         }
         return $results;
     }
-
 }

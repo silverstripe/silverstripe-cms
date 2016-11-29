@@ -8,14 +8,16 @@ use SilverStripe\Security\Member;
 /**
  * Plug-ins for additional functionality in your SiteTree classes.
  */
-abstract class SiteTreeExtension extends DataExtension {
+abstract class SiteTreeExtension extends DataExtension
+{
 
     /**
      * Hook called before the page's {@link Versioned::publishSingle()} action is completed
      *
      * @param SiteTree &$original The current Live SiteTree record prior to publish
      */
-    public function onBeforePublish(&$original) {
+    public function onBeforePublish(&$original)
+    {
     }
 
     /**
@@ -23,20 +25,23 @@ abstract class SiteTreeExtension extends DataExtension {
      *
      * @param SiteTree &$original The current Live SiteTree record prior to publish
      */
-    public function onAfterPublish(&$original) {
+    public function onAfterPublish(&$original)
+    {
     }
 
     /**
      * Hook called before the page's {@link Versioned::doUnpublish()} action is completed
      */
-    public function onBeforeUnpublish() {
+    public function onBeforeUnpublish()
+    {
     }
 
 
     /**
      * Hook called after the page's {@link SiteTree::doUnpublish()} action is completed
      */
-    public function onAfterUnpublish() {
+    public function onAfterUnpublish()
+    {
     }
 
     /**
@@ -48,7 +53,8 @@ abstract class SiteTreeExtension extends DataExtension {
      * logged in user
      * @return boolean|null Return false to deny rights, or null to yield to default
      */
-    public function canAddChildren($member) {
+    public function canAddChildren($member)
+    {
     }
 
     /**
@@ -60,7 +66,8 @@ abstract class SiteTreeExtension extends DataExtension {
      * logged in user
      * @return boolean|null Return false to deny rights, or null to yield to default
      */
-    public function canPublish($member) {
+    public function canPublish($member)
+    {
     }
 
     /**
@@ -74,7 +81,7 @@ abstract class SiteTreeExtension extends DataExtension {
      * (Legacy support) If this is true, then do not reduce the 'home' urlsegment
      * to an empty link
      */
-    public function updateRelativeLink(&$base, &$action) {
+    public function updateRelativeLink(&$base, &$action)
+    {
     }
-
 }

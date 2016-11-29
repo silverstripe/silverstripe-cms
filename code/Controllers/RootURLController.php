@@ -14,7 +14,8 @@ use SilverStripe\ORM\DataModel;
 use SilverStripe\ORM\DB;
 use Translatable;
 
-class RootURLController extends Controller {
+class RootURLController extends Controller
+{
 
     /**
      * @var bool
@@ -38,25 +39,27 @@ class RootURLController extends Controller {
      *
      * @return string
      */
-    static public function get_homepage_link() {
-        if(!self::$cached_homepage_link) {
+    public static function get_homepage_link()
+    {
+        if (!self::$cached_homepage_link) {
             // @todo Move to 'homepagefordomain' module
-            if(class_exists('HomepageForDomainExtension')) {
+            if (class_exists('HomepageForDomainExtension')) {
                 $host       = str_replace('www.', null, $_SERVER['HTTP_HOST']);
                 $candidates = SiteTree::get()->where(array(
                     '"SiteTree"."HomepageForDomain" LIKE ?' => "%$host%"
                 ));
-                if($candidates) foreach($candidates as $candidate) {
-                    if(preg_match('/(,|^) *' . preg_quote($host) . ' *(,|$)/', $candidate->HomepageForDomain)) {
-                        self::$cached_homepage_link = trim($candidate->RelativeLink(true), '/');
+                if ($candidates) {
+                    foreach ($candidates as $candidate) {
+                        if (preg_match('/(,|^) *' . preg_quote($host) . ' *(,|$)/', $candidate->HomepageForDomain)) {
+                            self::$cached_homepage_link = trim($candidate->RelativeLink(true), '/');
+                        }
                     }
                 }
             }
 
-            if(!self::$cached_homepage_link) {
+            if (!self::$cached_homepage_link) {
                 // TODO Move to 'translatable' module
-                if (
-                    class_exists('Translatable')
+                if (class_exists('Translatable')
                     && SiteTree::has_extension('Translatable')
                     && $link = Translatable::get_homepage_link_by_locale(Translatable::get_current_locale())
                 ) {
@@ -77,7 +80,8 @@ class RootURLController extends Controller {
      * @deprecated 4.0 Use the "RootURLController.default_homepage_link" config setting instead
      * @param string $urlsegment the URL segment for your home page
      */
-    static public function set_default_homepage_link($urlsegment = "home") {
+    public static function set_default_homepage_link($urlsegment = "home")
+    {
         Deprecation::notice('4.0', 'Use the "RootURLController.default_homepage_link" config setting instead');
         Config::inst()->update('SilverStripe\\CMS\\Controllers\\RootURLController', 'default_homepage_link', $urlsegment);
     }
@@ -88,7 +92,8 @@ class RootURLController extends Controller {
      * @deprecated 4.0 Use the "RootURLController.default_homepage_link" config setting instead
      * @return string
      */
-    static public function get_default_homepage_link() {
+    public static function get_default_homepage_link()
+    {
         Deprecation::notice('4.0', 'Use the "RootURLController.default_homepage_link" config setting instead');
         return Config::inst()->get('SilverStripe\\CMS\\Controllers\\RootURLController', 'default_homepage_link');
     }
@@ -100,8 +105,9 @@ class RootURLController extends Controller {
      * @param SiteTree $page
      * @return bool
      */
-    static public function should_be_on_root(SiteTree $page) {
-        if(!self::$is_at_root && self::get_homepage_link() == trim($page->RelativeLink(true), '/')) {
+    public static function should_be_on_root(SiteTree $page)
+    {
+        if (!self::$is_at_root && self::get_homepage_link() == trim($page->RelativeLink(true), '/')) {
             return !(
                 class_exists('Translatable')
                     && $page->hasExtension('Translatable')
@@ -116,17 +122,19 @@ class RootURLController extends Controller {
     /**
      * Resets the cached homepage link value - useful for testing.
      */
-    static public function reset() {
+    public static function reset()
+    {
         self::$cached_homepage_link = null;
     }
 
-    protected function beforeHandleRequest(HTTPRequest $request, DataModel $model) {
+    protected function beforeHandleRequest(HTTPRequest $request, DataModel $model)
+    {
         parent::beforeHandleRequest($request, $model);
 
         self::$is_at_root = true;
 
         /** @skipUpgrade */
-        if(!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
+        if (!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
             $this->getResponse()->redirect(Controller::join_links(
                 Director::absoluteBaseURL(),
                 'dev/build',
@@ -142,7 +150,8 @@ class RootURLController extends Controller {
      * @param DataModel|null $model
      * @return HTTPResponse
      */
-    public function handleRequest(HTTPRequest $request, DataModel $model = null) {
+    public function handleRequest(HTTPRequest $request, DataModel $model = null)
+    {
         self::$is_at_root = true;
         $this->beforeHandleRequest($request, $model);
 
@@ -166,5 +175,4 @@ class RootURLController extends Controller {
 
         return $this->getResponse();
     }
-
 }

@@ -9,9 +9,6 @@ use SilverStripe\CMS\Search\SearchForm;
 use SilverStripe\ORM\Search\FulltextSearchable;
 use SilverStripe\Dev\FunctionalTest;
 
-
-
-
 /**
  * @package cms
  * @subpackage testing
@@ -21,7 +18,8 @@ use SilverStripe\Dev\FunctionalTest;
  *
  * Because this manipulates the test database in severe ways, I've renamed the test to force it to run last...
  */
-class ZZZSearchFormTest extends FunctionalTest {
+class ZZZSearchFormTest extends FunctionalTest
+{
 
     protected static $fixture_file = 'SearchFormTest.yml';
 
@@ -31,12 +29,16 @@ class ZZZSearchFormTest extends FunctionalTest {
 
     protected $mockController;
 
-    public function waitUntilIndexingFinished() {
+    public function waitUntilIndexingFinished()
+    {
         $schema = DB::get_schema();
-        if (method_exists($schema, 'waitUntilIndexingFinished')) $schema->waitUntilIndexingFinished();
+        if (method_exists($schema, 'waitUntilIndexingFinished')) {
+            $schema->waitUntilIndexingFinished();
+        }
     }
 
-    public function setUpOnce() {
+    public function setUpOnce()
+    {
         // HACK Postgres doesn't refresh TSearch indexes when the schema changes after CREATE TABLE
         // MySQL will need a different table type
         self::kill_temp_db();
@@ -46,7 +48,8 @@ class ZZZSearchFormTest extends FunctionalTest {
         parent::setUpOnce();
     }
 
-    public function setUp() {
+    public function setUp()
+    {
         parent::setUp();
 
         $holderPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'searchformholder');
@@ -58,19 +61,25 @@ class ZZZSearchFormTest extends FunctionalTest {
     /**
      * @return Boolean
      */
-    protected function checkFulltextSupport() {
+    protected function checkFulltextSupport()
+    {
         $conn = DB::get_conn();
-        if(class_exists('SilverStripe\\MSSQL\\MSSQLDatabase') && $conn instanceof MSSQLDatabase) {
+        if (class_exists('SilverStripe\\MSSQL\\MSSQLDatabase') && $conn instanceof MSSQLDatabase) {
             $supports = $conn->fullTextEnabled();
         } else {
             $supports = true;
         }
-        if(!$supports) $this->markTestSkipped('Fulltext not supported by DB driver or setup');
+        if (!$supports) {
+            $this->markTestSkipped('Fulltext not supported by DB driver or setup');
+        }
         return $supports;
     }
 
-    public function testSearchFormTemplateCanBeChanged() {
-        if(!$this->checkFulltextSupport()) return;
+    public function testSearchFormTemplateCanBeChanged()
+    {
+        if (!$this->checkFulltextSupport()) {
+            return;
+        }
 
         $sf = new SearchForm($this->mockController, 'SilverStripe\\CMS\\Search\\SearchForm');
 
@@ -82,8 +91,11 @@ class ZZZSearchFormTest extends FunctionalTest {
         );
     }
 
-    public function testPublishedPagesMatchedByTitle() {
-        if(!$this->checkFulltextSupport()) return;
+    public function testPublishedPagesMatchedByTitle()
+    {
+        if (!$this->checkFulltextSupport()) {
+            return;
+        }
 
         $sf = new SearchForm($this->mockController, 'SilverStripe\\CMS\\Search\\SearchForm');
 
@@ -99,8 +111,11 @@ class ZZZSearchFormTest extends FunctionalTest {
         );
     }
 
-    public function testDoubleQuotesPublishedPagesMatchedByTitle() {
-        if(!$this->checkFulltextSupport()) return;
+    public function testDoubleQuotesPublishedPagesMatchedByTitle()
+    {
+        if (!$this->checkFulltextSupport()) {
+            return;
+        }
 
         $sf = new SearchForm($this->mockController, 'SilverStripe\\CMS\\Search\\SearchForm');
 
@@ -118,8 +133,11 @@ class ZZZSearchFormTest extends FunctionalTest {
         );
     }
 
-    public function testUnpublishedPagesNotIncluded() {
-        if(!$this->checkFulltextSupport()) return;
+    public function testUnpublishedPagesNotIncluded()
+    {
+        if (!$this->checkFulltextSupport()) {
+            return;
+        }
 
         $sf = new SearchForm($this->mockController, 'SilverStripe\\CMS\\Search\\SearchForm');
 
@@ -132,8 +150,11 @@ class ZZZSearchFormTest extends FunctionalTest {
         );
     }
 
-    public function testPagesRestrictedToLoggedinUsersNotIncluded() {
-        if(!$this->checkFulltextSupport()) return;
+    public function testPagesRestrictedToLoggedinUsersNotIncluded()
+    {
+        if (!$this->checkFulltextSupport()) {
+            return;
+        }
 
         $sf = new SearchForm($this->mockController, 'SilverStripe\\CMS\\Search\\SearchForm');
 
@@ -157,8 +178,11 @@ class ZZZSearchFormTest extends FunctionalTest {
         $member->logOut();
     }
 
-    public function testPagesRestrictedToSpecificGroupNotIncluded() {
-        if(!$this->checkFulltextSupport()) return;
+    public function testPagesRestrictedToSpecificGroupNotIncluded()
+    {
+        if (!$this->checkFulltextSupport()) {
+            return;
+        }
 
         $sf = new SearchForm($this->mockController, 'SilverStripe\\CMS\\Search\\SearchForm');
 
@@ -192,7 +216,8 @@ class ZZZSearchFormTest extends FunctionalTest {
         $member->logOut();
     }
 
-    public function testInheritedRestrictedPagesNotIncluded() {
+    public function testInheritedRestrictedPagesNotIncluded()
+    {
         $sf = new SearchForm($this->mockController, 'SilverStripe\\CMS\\Search\\SearchForm');
 
         $parent = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'restrictedViewLoggedInUsers');
@@ -218,8 +243,11 @@ class ZZZSearchFormTest extends FunctionalTest {
         $member->logOut();
     }
 
-    public function testDisabledShowInSearchFlagNotIncludedForSiteTree() {
-        if(!$this->checkFulltextSupport()) return;
+    public function testDisabledShowInSearchFlagNotIncludedForSiteTree()
+    {
+        if (!$this->checkFulltextSupport()) {
+            return;
+        }
 
         $sf = new SearchForm($this->mockController, 'SilverStripe\\CMS\\Search\\SearchForm');
 
@@ -232,8 +260,11 @@ class ZZZSearchFormTest extends FunctionalTest {
         );
     }
 
-    public function testDisabledShowInSearchFlagNotIncludedForFiles() {
-        if(!$this->checkFulltextSupport()) return;
+    public function testDisabledShowInSearchFlagNotIncludedForFiles()
+    {
+        if (!$this->checkFulltextSupport()) {
+            return;
+        }
 
         $sf = new SearchForm($this->mockController, 'SilverStripe\\CMS\\Search\\SearchForm');
 
@@ -257,10 +288,13 @@ class ZZZSearchFormTest extends FunctionalTest {
         );
     }
 
-    public function testSearchTitleAndContentWithSpecialCharacters() {
-        if(!$this->checkFulltextSupport()) return;
+    public function testSearchTitleAndContentWithSpecialCharacters()
+    {
+        if (!$this->checkFulltextSupport()) {
+            return;
+        }
 
-        if(class_exists('SilverStripe\\PostgreSQL\\PostgreSQLDatabase') && DB::get_conn() instanceof PostgreSQLDatabase) {
+        if (class_exists('SilverStripe\\PostgreSQL\\PostgreSQLDatabase') && DB::get_conn() instanceof PostgreSQLDatabase) {
             $this->markTestSkipped("PostgreSQLDatabase doesn't support entity-encoded searches");
         }
 

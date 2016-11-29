@@ -27,15 +27,22 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem
 
     public function getTitle()
     {
-        return _t('ContentController.DRAFT', 'Draft',
-            'Used for the Switch between draft and published view mode. Needs to be a short label');
+        return _t(
+            'ContentController.DRAFT',
+            'Draft',
+            'Used for the Switch between draft and published view mode. Needs to be a short label'
+        );
     }
 
     public function getMessage()
     {
-        return "<div id=\"SilverStripeNavigatorMessage\" title=\"" . _t('ContentControl.NOTEWONTBESHOWN',
-            'Note: this message will not be shown to your visitors') . "\">" . _t('ContentController.DRAFTSITE',
-            'Draft Site') . "</div>";
+        return "<div id=\"SilverStripeNavigatorMessage\" title=\"" . _t(
+            'ContentControl.NOTEWONTBESHOWN',
+            'Note: this message will not be shown to your visitors'
+        ) . "\">" . _t(
+            'ContentController.DRAFTSITE',
+            'Draft Site'
+        ) . "</div>";
     }
 
     public function getLink()

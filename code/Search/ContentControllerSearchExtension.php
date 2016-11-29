@@ -13,7 +13,8 @@ use SilverStripe\ORM\Search\FulltextSearchable;
 /**
  * Extension to provide a search interface when applied to ContentController
  */
-class ContentControllerSearchExtension extends Extension {
+class ContentControllerSearchExtension extends Extension
+{
     private static $allowed_actions = array(
         'SearchForm',
         'results',
@@ -22,10 +23,11 @@ class ContentControllerSearchExtension extends Extension {
     /**
      * Site search form
      */
-    public function SearchForm() {
+    public function SearchForm()
+    {
         $searchText =  _t('SearchForm.SEARCH', 'Search');
 
-        if($this->owner->getRequest() && $this->owner->getRequest()->getVar('Search')) {
+        if ($this->owner->getRequest() && $this->owner->getRequest()->getVar('Search')) {
             $searchText = $this->owner->getRequest()->getVar('Search');
         }
 
@@ -48,7 +50,8 @@ class ContentControllerSearchExtension extends Extension {
      * @param SearchForm $form The form instance that was submitted
      * @param HTTPRequest $request Request generated for this action
      */
-    public function results($data, $form, $request) {
+    public function results($data, $form, $request)
+    {
         $data = array(
             'Results' => $form->getResults(),
             'Query' => DBField::create_field('Text', $form->getSearchQuery()),

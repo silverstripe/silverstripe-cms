@@ -7,4 +7,3 @@ require FRAMEWORK_PATH . '/tests/bootstrap/environment.php';
 require __DIR__ . '/bootstrap/mysite.php';
 require FRAMEWORK_PATH . '/tests/bootstrap/mysite.php';
 require FRAMEWORK_PATH . '/tests/bootstrap/phpunit.php';
-

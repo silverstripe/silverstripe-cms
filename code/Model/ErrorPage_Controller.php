@@ -6,7 +6,6 @@ use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use Page_Controller;
 
-
 /**
  * Controller for ErrorPages.
  */

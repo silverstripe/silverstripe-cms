@@ -19,7 +19,8 @@ use Page;
  * @method SiteTree CopyContentFrom()
  * @property int $CopyContentFromID
  */
-class VirtualPage extends Page {
+class VirtualPage extends Page
+{
 
     private static $description = 'Displays the content of another page';
 
@@ -79,10 +80,11 @@ class VirtualPage extends Page {
      *
      * @return array
      */
-    public function getVirtualFields() {
+    public function getVirtualFields()
+    {
         // Check if copied page exists
         $record = $this->CopyContentFrom();
-        if(!$record || !$record->exists()) {
+        if (!$record || !$record->exists()) {
             return array();
         }
 
@@ -97,21 +99,24 @@ class VirtualPage extends Page {
      *
      * @return array
      */
-    public function getNonVirtualisedFields() {
+    public function getNonVirtualisedFields()
+    {
         return array_merge($this->config()->non_virtual_fields, $this->config()->initially_copied_fields);
     }
 
-    public function setCopyContentFromID($val) {
+    public function setCopyContentFromID($val)
+    {
         // Sanity check to prevent pages virtualising other virtual pages
-        if($val && DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $val) instanceof VirtualPage) {
+        if ($val && DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $val) instanceof VirtualPage) {
             $val = 0;
         }
         return $this->setField("CopyContentFromID", $val);
     }
 
-    public function ContentSource() {
+    public function ContentSource()
+    {
         $copied = $this->CopyContentFrom();
-        if($copied && $copied->exists()) {
+        if ($copied && $copied->exists()) {
             return $copied;
         }
         return $this;
@@ -124,7 +129,8 @@ class VirtualPage extends Page {
      * @param boolean $includeTitle Show default <title>-tag, set to false for custom templating
      * @return string The XHTML metatags
      */
-    public function MetaTags($includeTitle = true) {
+    public function MetaTags($includeTitle = true)
+    {
         $tags = parent::MetaTags($includeTitle);
         $copied = $this->CopyContentFrom();
         if ($copied && $copied->exists()) {
@@ -134,16 +140,18 @@ class VirtualPage extends Page {
         return $tags;
     }
 
-    public function allowedChildren() {
+    public function allowedChildren()
+    {
         $copy = $this->CopyContentFrom();
-        if($copy && $copy->exists()) {
+        if ($copy && $copy->exists()) {
             return $copy->allowedChildren();
         }
         return array();
     }
 
-    public function syncLinkTracking() {
-        if($this->CopyContentFromID) {
+    public function syncLinkTracking()
+    {
+        if ($this->CopyContentFromID) {
             $this->HasBrokenLink = !(bool) DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $this->CopyContentFromID);
         } else {
             $this->HasBrokenLink = true;
@@ -156,7 +164,8 @@ class VirtualPage extends Page {
      * @param Member $member Member to check
      * @return bool
      */
-    public function canPublish($member = null) {
+    public function canPublish($member = null)
+    {
         return $this->isPublishable() && parent::canPublish($member);
     }
 
@@ -166,14 +175,15 @@ class VirtualPage extends Page {
      *
      * Note that isPublishable doesn't affect ete from live, only publish.
      */
-    public function isPublishable() {
+    public function isPublishable()
+    {
         // No source
-        if(!$this->CopyContentFrom() || !$this->CopyContentFrom()->ID) {
+        if (!$this->CopyContentFrom() || !$this->CopyContentFrom()->ID) {
             return false;
         }
 
         // Unpublished source
-        if(!Versioned::get_versionnumber_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', $this->CopyContentFromID)) {
+        if (!Versioned::get_versionnumber_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', $this->CopyContentFromID)) {
             return false;
         }
 
@@ -184,7 +194,8 @@ class VirtualPage extends Page {
     /**
      * Generate the CMS fields from the fields from the original page.
      */
-    public function getCMSFields() {
+    public function getCMSFields()
+    {
         $fields = parent::getCMSFields();
 
         // Setup the linking to the original page.
@@ -197,11 +208,12 @@ class VirtualPage extends Page {
         //$copyContentFromField->setFilterFunction(create_function('$item', 'return !($item instanceof VirtualPage);'));
 
         // Setup virtual fields
-        if($virtualFields = $this->getVirtualFields()) {
+        if ($virtualFields = $this->getVirtualFields()) {
             $roTransformation = new ReadonlyTransformation();
-            foreach($virtualFields as $virtualField) {
-                if($fields->dataFieldByName($virtualField))
+            foreach ($virtualFields as $virtualField) {
+                if ($fields->dataFieldByName($virtualField)) {
                     $fields->replaceField($virtualField, $fields->dataFieldByName($virtualField)->transform($roTransformation));
+                }
             }
         }
 
@@ -210,7 +222,7 @@ class VirtualPage extends Page {
         $fields->addFieldToTab("Root.Main", $copyContentFromField, "Title");
 
         // Create links back to the original object in the CMS
-        if($this->CopyContentFrom()->exists()) {
+        if ($this->CopyContentFrom()->exists()) {
             $link = "<a class=\"cmsEditlink\" href=\"admin/pages/edit/show/$this->CopyContentFromID\">"
                 . _t('VirtualPage.EditLink', 'edit')
                 . "</a>";
@@ -229,8 +241,7 @@ class VirtualPage extends Page {
                 'Please choose a linked page and save first in order to publish this page'
             );
         }
-        if(
-            $this->CopyContentFromID
+        if ($this->CopyContentFromID
             && !Versioned::get_versionnumber_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', $this->CopyContentFromID)
         ) {
             $msgs[] = _t(
@@ -239,7 +250,8 @@ class VirtualPage extends Page {
             );
         }
 
-        $fields->addFieldToTab("Root.Main",
+        $fields->addFieldToTab(
+            "Root.Main",
             new LiteralField(
                 'VirtualPageMessage',
                 '<div class="message notice">' . implode('. ', $msgs) . '.</div>'
@@ -250,7 +262,8 @@ class VirtualPage extends Page {
         return $fields;
     }
 
-    public function onBeforeWrite() {
+    public function onBeforeWrite()
+    {
         parent::onBeforeWrite();
         $this->refreshFromCopied();
     }
@@ -258,38 +271,41 @@ class VirtualPage extends Page {
     /**
      * Copy any fields from the copied record to bootstrap /backup
      */
-    protected function refreshFromCopied() {
+    protected function refreshFromCopied()
+    {
         // Skip if copied record isn't available
         $source = $this->CopyContentFrom();
-        if(!$source || !$source->exists()) {
+        if (!$source || !$source->exists()) {
             return;
         }
 
         // We also want to copy certain, but only if we're copying the source page for the first
         // time. After this point, the user is free to customise these for the virtual page themselves.
-        if($this->isChanged('CopyContentFromID', 2) && $this->CopyContentFromID) {
+        if ($this->isChanged('CopyContentFromID', 2) && $this->CopyContentFromID) {
             foreach (self::config()->initially_copied_fields as $fieldName) {
                 $this->$fieldName = $source->$fieldName;
             }
         }
 
         // Copy fields to the original record in case the class type changes
-        foreach($this->getVirtualFields() as $virtualField) {
+        foreach ($this->getVirtualFields() as $virtualField) {
             $this->$virtualField = $source->$virtualField;
         }
     }
 
-    public function getSettingsFields() {
+    public function getSettingsFields()
+    {
         $fields = parent::getSettingsFields();
-        if(!$this->CopyContentFrom()->exists()) {
-            $fields->addFieldToTab("Root.Settings",
+        if (!$this->CopyContentFrom()->exists()) {
+            $fields->addFieldToTab(
+                "Root.Settings",
                 new LiteralField(
                     'VirtualPageWarning',
                     '<div class="message notice">'
                      . _t(
-                            'SITETREE.VIRTUALPAGEWARNINGSETTINGS',
-                            'Please choose a linked page in the main content fields in order to publish'
-                        )
+                         'SITETREE.VIRTUALPAGEWARNINGSETTINGS',
+                         'Please choose a linked page in the main content fields in order to publish'
+                     )
                     . '</div>'
                 ),
                 'ClassName'
@@ -299,12 +315,13 @@ class VirtualPage extends Page {
         return $fields;
     }
 
-    public function validate() {
+    public function validate()
+    {
         $result = parent::validate();
 
         // "Can be root" validation
         $orig = $this->CopyContentFrom();
-        if($orig && $orig->exists() && !$orig->stat('can_be_root') && !$this->ParentID) {
+        if ($orig && $orig->exists() && !$orig->stat('can_be_root') && !$this->ParentID) {
             $result->error(
                 _t(
                     'VirtualPage.PageTypNotAllowedOnRoot',
@@ -318,9 +335,12 @@ class VirtualPage extends Page {
         return $result;
     }
 
-    public function updateImageTracking() {
+    public function updateImageTracking()
+    {
         // Doesn't work on unsaved records
-        if(!$this->ID) return;
+        if (!$this->ID) {
+            return;
+        }
 
         // Remove CopyContentFrom() from the cache
         unset($this->components['CopyContentFrom']);
@@ -333,7 +353,8 @@ class VirtualPage extends Page {
      * @param string $numChildrenMethod
      * @return string
      */
-    public function CMSTreeClasses($numChildrenMethod="numChildren") {
+    public function CMSTreeClasses($numChildrenMethod = "numChildren")
+    {
         return parent::CMSTreeClasses($numChildrenMethod) . ' VirtualPage-' . $this->CopyContentFrom()->ClassName;
     }
 
@@ -344,21 +365,23 @@ class VirtualPage extends Page {
      * @param string $field
      * @return mixed
      */
-    public function __get($field) {
-        if(parent::hasMethod($funcName = "get$field")) {
+    public function __get($field)
+    {
+        if (parent::hasMethod($funcName = "get$field")) {
             return $this->$funcName();
         }
-        if(parent::hasField($field) || ($field === 'ID' && !$this->exists())) {
+        if (parent::hasField($field) || ($field === 'ID' && !$this->exists())) {
             return $this->getField($field);
         }
-        if(($copy = $this->CopyContentFrom()) && $copy->exists()) {
+        if (($copy = $this->CopyContentFrom()) && $copy->exists()) {
             return $copy->$field;
         }
         return null;
     }
 
-    public function getField($field) {
-        if($this->isFieldVirtualised($field)) {
+    public function getField($field)
+    {
+        if ($this->isFieldVirtualised($field)) {
             return $this->CopyContentFrom()->getField($field);
         }
         return parent::getField($field);
@@ -370,16 +393,17 @@ class VirtualPage extends Page {
      * @param string $field
      * @return bool
      */
-    public function isFieldVirtualised($field) {
+    public function isFieldVirtualised($field)
+    {
         // Don't defer if field is non-virtualised
         $ignore = $this->getNonVirtualisedFields();
-        if(in_array($field, $ignore)) {
+        if (in_array($field, $ignore)) {
             return false;
         }
 
         // Don't defer if no virtual page
         $copied = $this->CopyContentFrom();
-        if(!$copied || !$copied->exists()) {
+        if (!$copied || !$copied->exists()) {
             return false;
         }
 
@@ -394,8 +418,9 @@ class VirtualPage extends Page {
      * @param string $args
      * @return mixed
      */
-    public function __call($method, $args) {
-        if(parent::hasMethod($method)) {
+    public function __call($method, $args)
+    {
+        if (parent::hasMethod($method)) {
             return parent::__call($method, $args);
         } else {
             return call_user_func_array(array($this->CopyContentFrom(), $method), $args);
@@ -406,8 +431,9 @@ class VirtualPage extends Page {
      * @param string $field
      * @return bool
      */
-    public function hasField($field) {
-        if(parent::hasField($field)) {
+    public function hasField($field)
+    {
+        if (parent::hasField($field)) {
             return true;
         }
         $copy = $this->CopyContentFrom();
@@ -421,9 +447,10 @@ class VirtualPage extends Page {
      * @param string $field
      * @return string
      */
-    public function castingHelper($field) {
+    public function castingHelper($field)
+    {
         $copy = $this->CopyContentFrom();
-        if($copy && $copy->exists() && ($helper = $copy->castingHelper($field))) {
+        if ($copy && $copy->exists() && ($helper = $copy->castingHelper($field))) {
             return $helper;
         }
         return parent::castingHelper($field);
@@ -432,7 +459,8 @@ class VirtualPage extends Page {
     /**
      * {@inheritdoc}
      */
-    public function allMethodNames($custom = false) {
+    public function allMethodNames($custom = false)
+    {
         $methods = parent::allMethodNames($custom);
 
         if ($copy = $this->CopyContentFrom()) {
@@ -445,12 +473,12 @@ class VirtualPage extends Page {
     /**
      * {@inheritdoc}
      */
-    public function getControllerName() {
+    public function getControllerName()
+    {
         if ($copy = $this->CopyContentFrom()) {
             return $copy->getControllerName();
         }
 
         return parent::getControllerName();
     }
-
 }

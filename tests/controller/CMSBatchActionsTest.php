@@ -11,11 +11,13 @@ use SilverStripe\Dev\SapphireTest;
 /**
  * Tests CMS Specific subclasses of {@see CMSBatchAction}
  */
-class CMSBatchActionsTest extends SapphireTest {
+class CMSBatchActionsTest extends SapphireTest
+{
 
     protected static $fixture_file = 'CMSBatchActionsTest.yml';
 
-    public function setUp() {
+    public function setUp()
+    {
         parent::setUp();
 
         $this->logInWithPermission('ADMIN');
@@ -43,7 +45,8 @@ class CMSBatchActionsTest extends SapphireTest {
     /**
      * Test which pages can be published via batch actions
      */
-    public function testBatchPublishApplicable() {
+    public function testBatchPublishApplicable()
+    {
         $this->logInWithPermission('ADMIN');
         $pages = Versioned::get_including_deleted(SiteTree::class);
         $ids = $pages->column('ID');
@@ -63,7 +66,8 @@ class CMSBatchActionsTest extends SapphireTest {
     /**
      * Test which pages can be unpublished via batch actions
      */
-    public function testBatchUnpublishApplicable() {
+    public function testBatchUnpublishApplicable()
+    {
         $this->logInWithPermission('ADMIN');
         $pages = Versioned::get_including_deleted(SiteTree::class);
         $ids = $pages->column('ID');
@@ -82,7 +86,8 @@ class CMSBatchActionsTest extends SapphireTest {
     /**
      * Test which pages can be archived via delete batch actions
      */
-    public function testBatchDeleteApplicable() {
+    public function testBatchDeleteApplicable()
+    {
         $this->logInWithPermission('ADMIN');
         $pages = Versioned::get_including_deleted(SiteTree::class);
         $ids = $pages->column('ID');
@@ -99,7 +104,8 @@ class CMSBatchActionsTest extends SapphireTest {
     /**
      * Test restore batch actions
      */
-    public function testBatchRestoreApplicable() {
+    public function testBatchRestoreApplicable()
+    {
         $this->logInWithPermission('ADMIN');
         $pages = Versioned::get_including_deleted(SiteTree::class);
         $ids = $pages->column('ID');
@@ -115,7 +121,8 @@ class CMSBatchActionsTest extends SapphireTest {
         $this->assertNotContains($this->idFromFixture(SiteTree::class, 'modified'), $applicable);
     }
 
-    public function testBatchRestore() {
+    public function testBatchRestore()
+    {
         $this->logInWithPermission('ADMIN');
         $pages = Versioned::get_including_deleted(SiteTree::class);
         $action = new CMSBatchAction_Restore();
@@ -166,5 +173,4 @@ class CMSBatchActionsTest extends SapphireTest {
         $this->assertEquals($archivedID, $archivedy->ParentID); // Not restored to root, but to the parent
         $this->assertEquals(0, $archived->ParentID); // Root stays root
     }
-
 }

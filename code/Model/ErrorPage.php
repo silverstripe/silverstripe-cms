@@ -30,7 +30,8 @@ use Page;
  *
  * @property int $ErrorCode HTTP Error code
  */
-class ErrorPage extends Page {
+class ErrorPage extends Page
+{
 
     private static $db = array(
         "ErrorCode" => "Int",
@@ -68,7 +69,8 @@ class ErrorPage extends Page {
      *
      * @return boolean
      */
-    public function canAddChildren($member = null) {
+    public function canAddChildren($member = null)
+    {
         return false;
     }
 
@@ -81,7 +83,8 @@ class ErrorPage extends Page {
      * @param int $statusCode
      * @return HTTPResponse
      */
-    public static function response_for($statusCode) {
+    public static function response_for($statusCode)
+    {
         // first attempt to dynamically generate the error page
         /** @var ErrorPage $errorPage */
         $errorPage = ErrorPage::get()
@@ -89,7 +92,7 @@ class ErrorPage extends Page {
                 "ErrorCode" => $statusCode
             ))->first();
 
-        if($errorPage) {
+        if ($errorPage) {
             Requirements::clear();
             Requirements::clear_combined_files();
 
@@ -102,7 +105,7 @@ class ErrorPage extends Page {
 
         // then fall back on a cached version
         $content = self::get_content_for_errorcode($statusCode);
-        if($content) {
+        if ($content) {
             $response = new HTTPResponse();
             $response->setStatusCode($statusCode);
             $response->setBody($content);
@@ -138,32 +141,33 @@ class ErrorPage extends Page {
      *
      * @param array $defaultData
      */
-    protected function requireDefaultRecordFixture($defaultData) {
+    protected function requireDefaultRecordFixture($defaultData)
+    {
         $code = $defaultData['ErrorCode'];
         $page = ErrorPage::get()->filter('ErrorCode', $code)->first();
         $pageExists = !empty($page);
-        if(!$pageExists) {
+        if (!$pageExists) {
             $page = new ErrorPage($defaultData);
             $page->write();
             $page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
         }
 
         // Check if static files are enabled
-        if(!self::config()->enable_static_file) {
+        if (!self::config()->enable_static_file) {
             return;
         }
 
         // Ensure this page has cached error content
         $success = true;
-        if(!$page->hasStaticPage()) {
+        if (!$page->hasStaticPage()) {
             // Update static content
             $success = $page->writeStaticPage();
-        } elseif($pageExists) {
+        } elseif ($pageExists) {
             // If page exists and already has content, no alteration_message is displayed
             return;
         }
 
-        if($success) {
+        if ($success) {
             DB::alteration_message(
                 sprintf('%s error page created', $code),
                 'created'
@@ -182,7 +186,8 @@ class ErrorPage extends Page {
      *
      * @return array
      */
-    protected function getDefaultRecords() {
+    protected function getDefaultRecords()
+    {
         $data = array(
             array(
                 'ErrorCode' => 404,
@@ -211,7 +216,8 @@ class ErrorPage extends Page {
     /**
      * @return FieldList
      */
-    public function getCMSFields() {
+    public function getCMSFields()
+    {
         $fields = parent::getCMSFields();
 
         $fields->addFieldToTab(
@@ -260,7 +266,8 @@ class ErrorPage extends Page {
      *
      * @return bool True if published
      */
-    public function publishSingle() {
+    public function publishSingle()
+    {
         if (!parent::publishSingle()) {
             return false;
         }
@@ -272,8 +279,9 @@ class ErrorPage extends Page {
      *
      * @return bool
      */
-    protected function hasStaticPage() {
-        if(!self::config()->enable_static_file) {
+    protected function hasStaticPage()
+    {
+        if (!self::config()->enable_static_file) {
             return false;
         }
 
@@ -289,8 +297,9 @@ class ErrorPage extends Page {
      *
      * @return true if the page write was successful
      */
-    public function writeStaticPage() {
-        if(!self::config()->enable_static_file) {
+    public function writeStaticPage()
+    {
+        if (!self::config()->enable_static_file) {
             return false;
         }
 
@@ -317,7 +326,8 @@ class ErrorPage extends Page {
      *
      * @return array
      */
-    public function fieldLabels($includerelations = true) {
+    public function fieldLabels($includerelations = true)
+    {
         $labels = parent::fieldLabels($includerelations);
         $labels['ErrorCode'] = _t('ErrorPage.CODE', "Error code");
 
@@ -330,8 +340,9 @@ class ErrorPage extends Page {
      * @param int $statusCode A HTTP Statuscode, typically 404 or 500
      * @return string|null
      */
-    public static function get_content_for_errorcode($statusCode) {
-        if(!self::config()->enable_static_file) {
+    public static function get_content_for_errorcode($statusCode)
+    {
+        if (!self::config()->enable_static_file) {
             return null;
         }
 
@@ -352,8 +363,9 @@ class ErrorPage extends Page {
      * @param ErrorPage $instance Optional instance to use for name generation
      * @return string
      */
-    protected static function get_error_filename($statusCode, $instance = null) {
-        if(!$instance) {
+    protected static function get_error_filename($statusCode, $instance = null)
+    {
+        if (!$instance) {
             $instance = ErrorPage::singleton();
         }
         // Allow modules to extend this filename (e.g. for multi-domain, translatable)
@@ -368,15 +380,16 @@ class ErrorPage extends Page {
      *
      * @return string
      */
-    protected function getErrorFilename() {
+    protected function getErrorFilename()
+    {
         return self::get_error_filename($this->ErrorCode, $this);
     }
 
     /**
      * @return GeneratedAssetHandler
      */
-    protected static function get_asset_handler() {
+    protected static function get_asset_handler()
+    {
         return Injector::inst()->get('GeneratedAssetHandler');
     }
 }
-

@@ -22,7 +22,8 @@ use SilverStripe\ORM\Versioning\Versioned;
  * false depending on whether the given page should be included. Note that you will need to include
  * parent helper pages yourself.
  */
-abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter {
+abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
+{
 
     use \SilverStripe\Core\Injector\Injectable;
 
@@ -71,7 +72,8 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter {
      *
      * @return array
      */
-    public static function get_all_filters() {
+    public static function get_all_filters()
+    {
         // get all filter instances
         $filters = ClassInfo::subclassesFor('SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter');
 
@@ -80,12 +82,12 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter {
 
         // add filters to map
         $filterMap = array();
-        foreach($filters as $filter) {
+        foreach ($filters as $filter) {
             $filterMap[$filter] = $filter::title();
         }
 
         // Ensure that 'all pages' filter is on top position and everything else is sorted alphabetically
-        uasort($filterMap, function($a, $b) {
+        uasort($filterMap, function ($a, $b) {
             return ($a === CMSSiteTreeFilter_Search::title())
                 ? -1
                 : strcasecmp($a, $b);
@@ -94,25 +96,31 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter {
         return $filterMap;
     }
 
-    public function __construct($params = null) {
-        if($params) $this->params = $params;
+    public function __construct($params = null)
+    {
+        if ($params) {
+            $this->params = $params;
+        }
     }
 
-    public function getChildrenMethod() {
+    public function getChildrenMethod()
+    {
         return $this->childrenMethod;
     }
 
-    public function getNumChildrenMethod() {
+    public function getNumChildrenMethod()
+    {
         return $this->numChildrenMethod;
     }
 
-    public function getPageClasses($page) {
-        if($this->_cache_ids === NULL) {
+    public function getPageClasses($page)
+    {
+        if ($this->_cache_ids === null) {
             $this->populateIDs();
         }
 
         // If directly selected via filter, apply highlighting
-        if(!empty($this->_cache_highlight_ids[$page->ID])) {
+        if (!empty($this->_cache_highlight_ids[$page->ID])) {
             return 'filtered-item';
         }
 
@@ -130,7 +138,8 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter {
     /**
      * @return array Map of Page IDs to their respective ParentID values.
      */
-    public function pagesIncluded() {
+    public function pagesIncluded()
+    {
         return $this->mapIDs($this->getFilteredPages());
     }
 
@@ -138,27 +147,29 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter {
      * Populate the IDs of the pages returned by pagesIncluded(), also including
      * the necessary parent helper pages.
      */
-    protected function populateIDs() {
+    protected function populateIDs()
+    {
         $parents = array();
         $this->_cache_ids = array();
         $this->_cache_highlight_ids = array();
 
-        if($pages = $this->pagesIncluded()) {
-
+        if ($pages = $this->pagesIncluded()) {
             // And keep a record of parents we don't need to get
             // parents of themselves, as well as IDs to mark
-            foreach($pages as $pageArr) {
+            foreach ($pages as $pageArr) {
                 $parents[$pageArr['ParentID']] = true;
                 $this->_cache_ids[$pageArr['ID']] = true;
                 $this->_cache_highlight_ids[$pageArr['ID']] = true;
             }
 
-            while(!empty($parents)) {
-                $q = Versioned::get_including_deleted('SilverStripe\\CMS\\Model\\SiteTree', '"RecordID" in ('.implode(',',array_keys($parents)).')');
+            while (!empty($parents)) {
+                $q = Versioned::get_including_deleted('SilverStripe\\CMS\\Model\\SiteTree', '"RecordID" in ('.implode(',', array_keys($parents)).')');
                 $list = $q->map('ID', 'ParentID');
                 $parents = array();
-                foreach($list as $id => $parentID) {
-                    if ($parentID) $parents[$parentID] = true;
+                foreach ($list as $id => $parentID) {
+                    if ($parentID) {
+                        $parents[$parentID] = true;
+                    }
                     $this->_cache_ids[$id] = true;
                     $this->_cache_expanded[$id] = true;
                 }
@@ -166,8 +177,9 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter {
         }
     }
 
-    public function isPageIncluded($page) {
-        if($this->_cache_ids === NULL) {
+    public function isPageIncluded($page)
+    {
+        if ($this->_cache_ids === null) {
             $this->populateIDs();
         }
 
@@ -180,12 +192,15 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter {
      * @param DataList $query Unfiltered query
      * @return DataList Filtered query
      */
-    protected function applyDefaultFilters($query) {
+    protected function applyDefaultFilters($query)
+    {
         $sng = SiteTree::singleton();
-        foreach($this->params as $name => $val) {
-            if(empty($val)) continue;
+        foreach ($this->params as $name => $val) {
+            if (empty($val)) {
+                continue;
+            }
 
-            switch($name) {
+            switch ($name) {
                 case 'Term':
                     $query = $query->filterAny(array(
                         'URLSegment:PartialMatch' => $val,
@@ -206,14 +221,14 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter {
                     break;
 
                 case 'ClassName':
-                    if($val != 'All') {
+                    if ($val != 'All') {
                         $query = $query->filter('ClassName', $val);
                     }
                     break;
 
                 default:
                     $field = $sng->dbObject($name);
-                    if($field) {
+                    if ($field) {
                         $filter = $field->defaultSearchFilter();
                         $filter->setValue($val);
                         $query = $query->alterDataQuery(array($filter, 'apply'));
@@ -229,10 +244,13 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter {
      * @param SS_List $pages
      * @return array
      */
-    protected function mapIDs($pages) {
+    protected function mapIDs($pages)
+    {
         $ids = array();
-        if($pages) foreach($pages as $page) {
-            $ids[] = array('ID' => $page->ID, 'ParentID' => $page->ParentID);
+        if ($pages) {
+            foreach ($pages as $page) {
+                $ids[] = array('ID' => $page->ID, 'ParentID' => $page->ParentID);
+            }
         }
         return $ids;
     }

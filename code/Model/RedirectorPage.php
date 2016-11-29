@@ -17,7 +17,8 @@ use Page;
  * @property int $LinkToID
  * @method SiteTree LinkTo() Page to link to if $RedirectionType is 'Internal'
  */
-class RedirectorPage extends Page {
+class RedirectorPage extends Page
+{
     private static $description = 'Redirects to an internal page or an external URL';
 
     private static $db = array(
@@ -40,8 +41,9 @@ class RedirectorPage extends Page {
      * returns the target page.
      * @return SiteTree
      */
-    public function ContentSource() {
-        if($this->RedirectionType == 'Internal') {
+    public function ContentSource()
+    {
+        if ($this->RedirectionType == 'Internal') {
             return $this->LinkTo();
         } else {
             return $this;
@@ -57,9 +59,10 @@ class RedirectorPage extends Page {
      * @param string $action
      * @return string
      */
-    public function Link($action = null) {
+    public function Link($action = null)
+    {
         $link = $this->redirectionLink();
-        if($link) {
+        if ($link) {
             return $link;
         } else {
             return $this->regularLink($action);
@@ -73,7 +76,8 @@ class RedirectorPage extends Page {
      * @param string $action
      * @return string
      */
-    public function regularLink($action = null) {
+    public function regularLink($action = null)
+    {
         return parent::Link($action);
     }
 
@@ -81,9 +85,10 @@ class RedirectorPage extends Page {
      * Return the link that we should redirect to.
      * Only return a value if there is a legal redirection destination.
      */
-    public function redirectionLink() {
+    public function redirectionLink()
+    {
         // Check external redirect
-        if($this->RedirectionType == 'External') {
+        if ($this->RedirectionType == 'External') {
             return $this->ExternalURL ?: null;
         }
 
@@ -96,14 +101,14 @@ class RedirectorPage extends Page {
 
         // We shouldn't point to ourselves - that would create an infinite loop!  Return null since we have a
         // bad configuration
-        if($this->ID == $linkTo->ID) {
+        if ($this->ID == $linkTo->ID) {
             return null;
         }
 
         // If we're linking to another redirectorpage then just return the URLSegment, to prevent a cycle of redirector
         // pages from causing an infinite loop.  Instead, they will cause a 30x redirection loop in the browser, but
         // this can be handled sufficiently gracefully by the browser.
-        if($linkTo instanceof RedirectorPage) {
+        if ($linkTo instanceof RedirectorPage) {
             return $linkTo->regularLink();
         }
 
@@ -111,9 +116,10 @@ class RedirectorPage extends Page {
         return $linkTo->Link();
     }
 
-    public function syncLinkTracking() {
+    public function syncLinkTracking()
+    {
         if ($this->RedirectionType == 'Internal') {
-            if($this->LinkToID) {
+            if ($this->LinkToID) {
                 $this->HasBrokenLink = SiteTree::get()->byID($this->LinkToID) ? false : true;
             } else {
                 // An incomplete redirector page definitely has a broken link
@@ -125,12 +131,12 @@ class RedirectorPage extends Page {
         }
     }
 
-    public function onBeforeWrite() {
+    public function onBeforeWrite()
+    {
         parent::onBeforeWrite();
 
         // Prefix the URL with "http://" if no prefix is found
-        if(
-            $this->ExternalURL
+        if ($this->ExternalURL
             && !parse_url($this->ExternalURL, PHP_URL_SCHEME)
             && !preg_match('#^//#', $this->ExternalURL)
         ) {
@@ -138,7 +144,8 @@ class RedirectorPage extends Page {
         }
     }
 
-    public function getCMSFields() {
+    public function getCMSFields()
+    {
         Requirements::javascript(CMS_DIR . '/client/dist/js/RedirectorPage.js');
 
         $fields = parent::getCMSFields();
@@ -147,9 +154,10 @@ class RedirectorPage extends Page {
         // Remove all metadata fields, does not apply for redirector pages
         $fields->removeByName('Metadata');
 
-        $fields->addFieldsToTab('Root.Main',
+        $fields->addFieldsToTab(
+            'Root.Main',
             array(
-                new HeaderField('RedirectorDescHeader',_t('RedirectorPage.HEADER', "This page will redirect users to another page")),
+                new HeaderField('RedirectorDescHeader', _t('RedirectorPage.HEADER', "This page will redirect users to another page")),
                 new OptionsetField(
                     "RedirectionType",
                     _t('RedirectorPage.REDIRECTTO', "Redirect to"),
@@ -172,7 +180,8 @@ class RedirectorPage extends Page {
     }
 
     // Don't cache RedirectorPages
-    public function subPagesToCache() {
+    public function subPagesToCache()
+    {
         return array();
     }
 }

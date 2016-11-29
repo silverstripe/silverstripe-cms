@@ -9,13 +9,12 @@ use SilverStripe\Control\Director;
 use SilverStripe\Control\Controller;
 use SilverStripe\Dev\FunctionalTest;
 
-
-
 /**
  * @package cms
  * @subpackage tests
  */
-class ModelAsControllerTest extends FunctionalTest {
+class ModelAsControllerTest extends FunctionalTest
+{
 
     protected $usesDatabase = true;
 
@@ -27,13 +26,15 @@ class ModelAsControllerTest extends FunctionalTest {
      * This setup will enable nested-urls for this test and resets the state
      * after the tests have been performed.
      */
-    public function setUp() {
+    public function setUp()
+    {
         parent::setUp();
         Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'nested_urls', true);
     }
 
 
-    protected function generateNestedPagesFixture() {
+    protected function generateNestedPagesFixture()
+    {
         $level1 = new Page();
         $level1->Title      = 'First Level';
         $level1->URLSegment = 'level1';
@@ -55,16 +56,16 @@ class ModelAsControllerTest extends FunctionalTest {
         $level2->write();
         $level2->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
-        $level3 = New Page();
+        $level3 = new Page();
         $level3->Title = "Level 3";
         $level3->URLSegment = 'level3';
         $level3->ParentID = $level2->ID;
         $level3->write();
-        $level3->copyVersionToStage('Stage','Live');
+        $level3->copyVersionToStage('Stage', 'Live');
 
         $level3->URLSegment = 'newlevel3';
         $level3->write();
-        $level3->copyVersionToStage('Stage','Live');
+        $level3->copyVersionToStage('Stage', 'Live');
     }
 
     /**
@@ -77,12 +78,13 @@ class ModelAsControllerTest extends FunctionalTest {
      * Original: level1/level2/level3
      * Republished as: newlevel1/newlevel2/newlevel3
      */
-    public function testRedirectsNestedRenamedPages(){
+    public function testRedirectsNestedRenamedPages()
+    {
         $this->generateNestedPagesFixture();
 
         // check a first level URLSegment
         $response = $this->get('level1/action');
-        $this->assertEquals($response->getStatusCode(),301);
+        $this->assertEquals($response->getStatusCode(), 301);
         $this->assertEquals(
             Controller::join_links(Director::baseURL() . 'newlevel1/action'),
             $response->getHeader('Location')
@@ -90,7 +92,7 @@ class ModelAsControllerTest extends FunctionalTest {
 
         // check second level URLSegment
         $response = $this->get('newlevel1/level2');
-        $this->assertEquals($response->getStatusCode(),301 );
+        $this->assertEquals($response->getStatusCode(), 301);
         $this->assertEquals(
             Controller::join_links(Director::baseURL() . 'newlevel1/newlevel2/'),
             $response->getHeader('Location')
@@ -112,7 +114,8 @@ class ModelAsControllerTest extends FunctionalTest {
      * Original: /oldurl/level2/level3/level4/level5
      * New: /newurl/level2/level3/level4/level5
      */
-    public function testHeavilyNestedRenamedRedirectedPages() {
+    public function testHeavilyNestedRenamedRedirectedPages()
+    {
         $page = new Page();
         $page->Title      = 'First Level';
         $page->URLSegment = 'oldurl';
@@ -161,23 +164,29 @@ class ModelAsControllerTest extends FunctionalTest {
     }
 
 
-    public function testRedirectionForPreNestedurlsBookmarks(){
+    public function testRedirectionForPreNestedurlsBookmarks()
+    {
         $this->generateNestedPagesFixture();
 
         // Up-to-date URLs will be redirected to the appropriate subdirectory
         $response = $this->get('newlevel3');
         $this->assertEquals(301, $response->getStatusCode());
-        $this->assertEquals(Director::baseURL() . 'newlevel1/newlevel2/newlevel3/',
-            $response->getHeader("Location"));
+        $this->assertEquals(
+            Director::baseURL() . 'newlevel1/newlevel2/newlevel3/',
+            $response->getHeader("Location")
+        );
 
         // So will the legacy ones
         $response = $this->get('level3');
         $this->assertEquals(301, $response->getStatusCode());
-        $this->assertEquals(Director::baseURL() . 'newlevel1/newlevel2/newlevel3/',
-            $response->getHeader("Location"));
+        $this->assertEquals(
+            Director::baseURL() . 'newlevel1/newlevel2/newlevel3/',
+            $response->getHeader("Location")
+        );
     }
 
-    public function testDoesntRedirectToNestedChildrenOutsideOfOwnHierarchy() {
+    public function testDoesntRedirectToNestedChildrenOutsideOfOwnHierarchy()
+    {
         $this->generateNestedPagesFixture();
 
         $otherParent = new Page(array(
@@ -202,7 +211,8 @@ class ModelAsControllerTest extends FunctionalTest {
      * NOTE: This test requires nested_urls
      *
      */
-    public function testRedirectsNestedRenamedPagesWithGetParameters() {
+    public function testRedirectsNestedRenamedPagesWithGetParameters()
+    {
         $this->generateNestedPagesFixture();
 
         // check third level URLSegment
@@ -219,7 +229,8 @@ class ModelAsControllerTest extends FunctionalTest {
      * NOTE: This test requires nested_urls
      *
      */
-    public function testDoesntRedirectToNestedRenamedPageWhenNewExists() {
+    public function testDoesntRedirectToNestedRenamedPageWhenNewExists()
+    {
         $this->generateNestedPagesFixture();
 
         $otherLevel1 = new Page(array(
@@ -248,7 +259,8 @@ class ModelAsControllerTest extends FunctionalTest {
      * NOTE: This test requires nested_urls
      *
      */
-    public function testFindOldPage(){
+    public function testFindOldPage()
+    {
         $page = new Page();
         $page->Title      = 'First Level';
         $page->URLSegment = 'oldurl';
@@ -261,7 +273,7 @@ class ModelAsControllerTest extends FunctionalTest {
 
         $url = OldPageRedirector::find_old_page('oldurl');
         $matchedPage = SiteTree::get_by_link($url);
-        $this->assertEquals('First Level',$matchedPage->Title);
+        $this->assertEquals('First Level', $matchedPage->Title);
 
         $page2 = new Page();
         $page2->Title      = 'Second Level Page';
@@ -274,11 +286,11 @@ class ModelAsControllerTest extends FunctionalTest {
         $page2->write();
         $page2->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
-        $url = OldPageRedirector::find_old_page('oldpage2',$page2->ParentID);
+        $url = OldPageRedirector::find_old_page('oldpage2', $page2->ParentID);
         $matchedPage = SiteTree::get_by_link($url);
-        $this->assertEquals('Second Level Page',$matchedPage->Title);
+        $this->assertEquals('Second Level Page', $matchedPage->Title);
 
-        $url = OldPageRedirector::find_old_page('oldpage2',$page2->ID);
+        $url = OldPageRedirector::find_old_page('oldpage2', $page2->ID);
         $matchedPage = SiteTree::get_by_link($url);
         $this->assertEquals(false, $matchedPage);
     }
@@ -288,7 +300,8 @@ class ModelAsControllerTest extends FunctionalTest {
      *
      * NOTE: This test requires nested_urls
      */
-    public function testChildOfDraft() {
+    public function testChildOfDraft()
+    {
         RootURLController::reset();
         Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'nested_urls', true);
 
@@ -305,10 +318,9 @@ class ModelAsControllerTest extends FunctionalTest {
         $response = $this->get('root/sub-root');
 
         $this->assertEquals(
-        $response->getStatusCode(),
+            $response->getStatusCode(),
             404,
             'The page should not be found since its parent has not been published, in this case http://<yousitename>/root/sub-root or http://<yousitename>/sub-root'
         );
     }
-
 }

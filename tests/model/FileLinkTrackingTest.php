@@ -8,16 +8,15 @@ use SilverStripe\Assets\Filesystem;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Assets\Tests\Storage\AssetStoreTest\TestAssetStore;
 
-
-
-
 /**
  * Tests link tracking to files and images.
  */
-class FileLinkTrackingTest extends SapphireTest {
+class FileLinkTrackingTest extends SapphireTest
+{
     protected static $fixture_file = "FileLinkTrackingTest.yml";
 
-    public function setUp() {
+    public function setUp()
+    {
         parent::setUp();
 
         Versioned::set_stage(Versioned::DRAFT);
@@ -27,7 +26,7 @@ class FileLinkTrackingTest extends SapphireTest {
 
         // Write file contents
         $files = File::get()->exclude('ClassName', 'SilverStripe\\Assets\\Folder');
-        foreach($files as $file) {
+        foreach ($files as $file) {
             $destPath = TestAssetStore::getLocalPath($file);
             Filesystem::makeFolder(dirname($destPath));
             file_put_contents($destPath, str_repeat('x', 1000000));
@@ -45,7 +44,8 @@ class FileLinkTrackingTest extends SapphireTest {
         $page->write();
     }
 
-    public function tearDown() {
+    public function tearDown()
+    {
         TestAssetStore::reset();
         parent::tearDown();
     }
@@ -55,7 +55,8 @@ class FileLinkTrackingTest extends SapphireTest {
      * the shortcode parser doesn't pass along the underlying DataObject
      * context, hence we can't call getSourceQueryParams().
      */
-    public function testFileRenameUpdatesDraftAndPublishedPages() {
+    public function testFileRenameUpdatesDraftAndPublishedPages()
+    {
         $page = $this->objFromFixture('Page', 'page1');
         $page->publishRecursive();
 
@@ -119,7 +120,8 @@ class FileLinkTrackingTest extends SapphireTest {
         );
     }
 
-    public function testFileLinkRewritingOnVirtualPages() {
+    public function testFileLinkRewritingOnVirtualPages()
+    {
         // Publish the source page
         $page = $this->objFromFixture('Page', 'page1');
         $this->assertTrue($page->publishRecursive());
@@ -153,7 +155,8 @@ class FileLinkTrackingTest extends SapphireTest {
         );
     }
 
-    public function testLinkRewritingOnAPublishedPageDoesntMakeItEditedOnDraft() {
+    public function testLinkRewritingOnAPublishedPageDoesntMakeItEditedOnDraft()
+    {
         // Publish the source page
         /** @var Page $page */
         $page = $this->objFromFixture('Page', 'page1');
@@ -169,7 +172,8 @@ class FileLinkTrackingTest extends SapphireTest {
         $this->assertFalse($page->isModifiedOnDraft());
     }
 
-    public function testTwoFileRenamesInARowWork() {
+    public function testTwoFileRenamesInARowWork()
+    {
         $page = $this->objFromFixture('Page', 'page1');
         $this->assertTrue($page->publishRecursive());
 
@@ -208,5 +212,3 @@ class FileLinkTrackingTest extends SapphireTest {
         );
     }
 }
-
-

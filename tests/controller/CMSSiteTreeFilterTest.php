@@ -9,13 +9,13 @@ use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages;
 use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages;
 use SilverStripe\Dev\SapphireTest;
 
-
-
-class CMSSiteTreeFilterTest extends SapphireTest {
+class CMSSiteTreeFilterTest extends SapphireTest
+{
 
     protected static $fixture_file = 'CMSSiteTreeFilterTest.yml';
 
-    public function testSearchFilterEmpty() {
+    public function testSearchFilterEmpty()
+    {
         $page1 = $this->objFromFixture('Page', 'page1');
         $page2 = $this->objFromFixture('Page', 'page2');
 
@@ -26,7 +26,8 @@ class CMSSiteTreeFilterTest extends SapphireTest {
         $this->assertTrue($f->isPageIncluded($page2));
     }
 
-    public function testSearchFilterByTitle() {
+    public function testSearchFilterByTitle()
+    {
         $page1 = $this->objFromFixture('Page', 'page1');
         $page2 = $this->objFromFixture('Page', 'page2');
 
@@ -42,7 +43,8 @@ class CMSSiteTreeFilterTest extends SapphireTest {
         );
     }
 
-    public function testIncludesParentsForNestedMatches() {
+    public function testIncludesParentsForNestedMatches()
+    {
         $parent = $this->objFromFixture('Page', 'page3');
         $child = $this->objFromFixture('Page', 'page3b');
 
@@ -58,7 +60,8 @@ class CMSSiteTreeFilterTest extends SapphireTest {
         );
     }
 
-    public function testChangedPagesFilter() {
+    public function testChangedPagesFilter()
+    {
         $unchangedPage = $this->objFromFixture('Page', 'page1');
         $unchangedPage->publishRecursive();
 
@@ -97,7 +100,8 @@ class CMSSiteTreeFilterTest extends SapphireTest {
         $this->assertEquals(array('ID' => $changedPage->ID, 'ParentID' => 0), $results[0]);
     }
 
-    public function testDeletedPagesFilter() {
+    public function testDeletedPagesFilter()
+    {
         $deletedPage = $this->objFromFixture('Page', 'page2');
         $deletedPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
         $deletedPageID = $deletedPage->ID;
@@ -116,7 +120,8 @@ class CMSSiteTreeFilterTest extends SapphireTest {
         $this->assertFalse($f->isPageIncluded($deletedPage));
     }
 
-    public function testStatusDraftPagesFilter() {
+    public function testStatusDraftPagesFilter()
+    {
         $draftPage = $this->objFromFixture('Page', 'page4');
         $draftPage = Versioned::get_one_by_stage(
             'SilverStripe\\CMS\\Model\\SiteTree',
@@ -138,19 +143,21 @@ class CMSSiteTreeFilterTest extends SapphireTest {
         $this->assertEmpty($f->isPageIncluded($draftPage));
     }
 
-    public function testDateFromToLastSameDate() {
+    public function testDateFromToLastSameDate()
+    {
         $draftPage = $this->objFromFixture('Page', 'page4');
         // Grab the date
         $date = substr($draftPage->LastEdited, 0, 10);
         // Filter with that date
-        $filter = New CMSSiteTreeFilter_Search(array(
+        $filter = new CMSSiteTreeFilter_Search(array(
             'LastEditedFrom' => $date,
             'LastEditedTo' => $date
         ));
         $this->assertTrue($filter->isPageIncluded($draftPage), 'Using the same date for from and to should show find that page');
     }
 
-    public function testStatusRemovedFromDraftFilter() {
+    public function testStatusRemovedFromDraftFilter()
+    {
         $removedDraftPage = $this->objFromFixture('Page', 'page6');
         $removedDraftPage->publishRecursive();
         $removedDraftPage->deleteFromStage('Stage');
@@ -174,7 +181,8 @@ class CMSSiteTreeFilterTest extends SapphireTest {
         $this->assertEmpty($f->isPageIncluded($removedDraftPage));
     }
 
-    public function testStatusDeletedFilter() {
+    public function testStatusDeletedFilter()
+    {
         $deletedPage = $this->objFromFixture('Page', 'page7');
         $deletedPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
         $deletedPageID = $deletedPage->ID;

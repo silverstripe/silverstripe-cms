@@ -2,7 +2,8 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-class CMSPageSettingsController extends CMSMain {
+class CMSPageSettingsController extends CMSMain
+{
 
     private static $url_segment = 'pages/settings';
 
@@ -12,16 +13,17 @@ class CMSPageSettingsController extends CMSMain {
 
     private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
 
-    public function getEditForm($id = null, $fields = null) {
+    public function getEditForm($id = null, $fields = null)
+    {
         $record = $this->getRecord($id ?: $this->currentPageID());
 
         return parent::getEditForm($id, ($record) ? $record->getSettingsFields() : null);
     }
 
-    public function Breadcrumbs($unlinked = false) {
+    public function Breadcrumbs($unlinked = false)
+    {
         $crumbs = parent::Breadcrumbs($unlinked);
         $crumbs[0]->Title = _t('CMSPagesController.MENUTITLE');
         return $crumbs;
     }
-
 }

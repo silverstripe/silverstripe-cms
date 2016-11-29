@@ -37,7 +37,8 @@ use SilverStripe\View\Requirements;
  *
  * @author Ingo Schommer (<firstname>@silverstripe.com), SilverStripe Ltd.
  */
-class RemoveOrphanedPagesTask extends Controller {
+class RemoveOrphanedPagesTask extends Controller
+{
 
     private static $allowed_actions = array(
         'index' => 'ADMIN',
@@ -64,10 +65,11 @@ in the other stage:<br />
 
     protected $orphanedSearchClass = 'SilverStripe\\CMS\\Model\\SiteTree';
 
-    public function init() {
+    public function init()
+    {
         parent::init();
 
-        if(!Permission::check('ADMIN')) {
+        if (!Permission::check('ADMIN')) {
             Security::permissionFailure($this);
         }
     }
@@ -78,7 +80,8 @@ in the other stage:<br />
         return Controller::join_links('RemoveOrphanedPagesTask', $action, '/');
     }
 
-    public function index() {
+    public function index()
+    {
         Requirements::javascript('http://code.jquery.com/jquery-1.7.2.min.js');
         Requirements::customCSS('#OrphanIDs .middleColumn {width: auto;}');
         Requirements::customCSS('#OrphanIDs label {display: inline;}');
@@ -86,7 +89,8 @@ in the other stage:<br />
         return $this->renderWith('BlankPage');
     }
 
-    public function Form() {
+    public function Form()
+    {
         $fields = new FieldList();
         $source = array();
 
@@ -100,29 +104,31 @@ in the other stage:<br />
         ));
 
         $orphans = $this->getOrphanedPages($this->orphanedSearchClass);
-        if($orphans) foreach($orphans as $orphan) {
-            /** @var SiteTree $latestVersion */
-            $latestVersion = Versioned::get_latest_version($this->orphanedSearchClass, $orphan->ID);
-            $latestAuthor = DataObject::get_by_id('SilverStripe\\Security\\Member', $latestVersion->AuthorID);
-            $orphanBaseTable = DataObject::getSchema()->baseDataTable($this->orphanedSearchClass);
-            $liveRecord = Versioned::get_one_by_stage(
-                $this->orphanedSearchClass,
-                'Live',
-                array("\"$orphanBaseTable\".\"ID\"" => $orphan->ID)
-            );
-            $label = sprintf(
-                '<a href="admin/pages/edit/show/%d">%s</a> <small>(#%d, Last Modified Date: %s, Last Modifier: %s, %s)</small>',
-                $orphan->ID,
-                $orphan->Title,
-                $orphan->ID,
-                $orphan->dbObject('LastEdited')->Nice(),
-                ($latestAuthor) ? $latestAuthor->Title : 'unknown',
-                ($liveRecord) ? 'is published' : 'not published'
-            );
-            $source[$orphan->ID] = $label;
+        if ($orphans) {
+            foreach ($orphans as $orphan) {
+                        /** @var SiteTree $latestVersion */
+                $latestVersion = Versioned::get_latest_version($this->orphanedSearchClass, $orphan->ID);
+                $latestAuthor = DataObject::get_by_id('SilverStripe\\Security\\Member', $latestVersion->AuthorID);
+                $orphanBaseTable = DataObject::getSchema()->baseDataTable($this->orphanedSearchClass);
+                $liveRecord = Versioned::get_one_by_stage(
+                    $this->orphanedSearchClass,
+                    'Live',
+                    array("\"$orphanBaseTable\".\"ID\"" => $orphan->ID)
+                );
+                            $label = sprintf(
+                                '<a href="admin/pages/edit/show/%d">%s</a> <small>(#%d, Last Modified Date: %s, Last Modifier: %s, %s)</small>',
+                                $orphan->ID,
+                                $orphan->Title,
+                                $orphan->ID,
+                                $orphan->dbObject('LastEdited')->Nice(),
+                                ($latestAuthor) ? $latestAuthor->Title : 'unknown',
+                                ($liveRecord) ? 'is published' : 'not published'
+                            );
+                            $source[$orphan->ID] = $label;
+            }
         }
 
-        if($orphans && $orphans->count()) {
+        if ($orphans && $orphans->count()) {
             $fields->push(new CheckboxSetField('OrphanIDs', false, $source));
             $fields->push(new LiteralField(
                 'SelectAllLiteral',
@@ -155,7 +161,8 @@ in the other stage:<br />
             ));
             $fields->push(new LiteralField(
                 'Warning',
-                sprintf('<p class="message">%s</p>',
+                sprintf(
+                    '<p class="message">%s</p>',
                     _t(
                         'RemoveOrphanedPagesTask.DELETEWARNING',
                         'Warning: These operations are not reversible. Please handle with care.'
@@ -181,24 +188,28 @@ in the other stage:<br />
             )
         );
 
-        if(!$orphans || !$orphans->count()) {
+        if (!$orphans || !$orphans->count()) {
             $form->makeReadonly();
         }
 
         return $form;
     }
 
-    public function run($request) {
+    public function run($request)
+    {
         // @todo Merge with BuildTask functionality
     }
 
-    public function doSubmit($data, $form) {
+    public function doSubmit($data, $form)
+    {
         set_time_limit(60*10); // 10 minutes
 
-        if(!isset($data['OrphanIDs']) || !isset($data['OrphanOperation'])) return false;
+        if (!isset($data['OrphanIDs']) || !isset($data['OrphanOperation'])) {
+            return false;
+        }
 
         $successIDs = null;
-        switch($data['OrphanOperation']) {
+        switch ($data['OrphanOperation']) {
             case 'remove':
                 $successIDs = $this->removeOrphans($data['OrphanIDs']);
                 break;
@@ -210,9 +221,9 @@ in the other stage:<br />
         }
 
         $content = '';
-        if($successIDs) {
+        if ($successIDs) {
             $content .= "<ul>";
-            foreach($successIDs as $id => $label) {
+            foreach ($successIDs as $id => $label) {
                 $content .= sprintf('<li>%s</li>', $label);
             }
             $content .= "</ul>";
@@ -226,17 +237,18 @@ in the other stage:<br />
         ))->renderWith('BlankPage');
     }
 
-    protected function removeOrphans($orphanIDs) {
+    protected function removeOrphans($orphanIDs)
+    {
         $removedOrphans = array();
         $orphanBaseTable = DataObject::getSchema()->baseDataTable($this->orphanedSearchClass);
-        foreach($orphanIDs as $id) {
+        foreach ($orphanIDs as $id) {
             /** @var SiteTree $stageRecord */
             $stageRecord = Versioned::get_one_by_stage(
                 $this->orphanedSearchClass,
                 Versioned::DRAFT,
                 array("\"$orphanBaseTable\".\"ID\"" => $id)
             );
-            if($stageRecord) {
+            if ($stageRecord) {
                 $removedOrphans[$stageRecord->ID] = sprintf('Removed %s (#%d) from Stage', $stageRecord->Title, $stageRecord->ID);
                 $stageRecord->delete();
                 $stageRecord->destroy();
@@ -248,7 +260,7 @@ in the other stage:<br />
                 Versioned::LIVE,
                 array("\"$orphanBaseTable\".\"ID\"" => $id)
             );
-            if($liveRecord) {
+            if ($liveRecord) {
                 $removedOrphans[$liveRecord->ID] = sprintf('Removed %s (#%d) from Live', $liveRecord->Title, $liveRecord->ID);
                 $liveRecord->doUnpublish();
                 $liveRecord->destroy();
@@ -259,11 +271,13 @@ in the other stage:<br />
         return $removedOrphans;
     }
 
-    protected function rebaseHolderTitle() {
+    protected function rebaseHolderTitle()
+    {
         return sprintf('Rebased Orphans (%s)', date('d/m/Y g:ia', time()));
     }
 
-    protected function rebaseOrphans($orphanIDs) {
+    protected function rebaseOrphans($orphanIDs)
+    {
         $holder = new SiteTree();
         $holder->ShowInMenus = 0;
         $holder->ShowInSearch = 0;
@@ -273,14 +287,14 @@ in the other stage:<br />
 
         $removedOrphans = array();
         $orphanBaseTable = DataObject::getSchema()->baseDataTable($this->orphanedSearchClass);
-        foreach($orphanIDs as $id) {
+        foreach ($orphanIDs as $id) {
             /** @var SiteTree $stageRecord */
             $stageRecord = Versioned::get_one_by_stage(
                 $this->orphanedSearchClass,
                 'Stage',
                 array("\"$orphanBaseTable\".\"ID\"" => $id)
             );
-            if($stageRecord) {
+            if ($stageRecord) {
                 $removedOrphans[$stageRecord->ID] = sprintf('Rebased %s (#%d)', $stageRecord->Title, $stageRecord->ID);
                 $stageRecord->ParentID = $holder->ID;
                 $stageRecord->ShowInMenus = 0;
@@ -296,20 +310,20 @@ in the other stage:<br />
                 'Live',
                 array("\"$orphanBaseTable\".\"ID\"" => $id)
             );
-            if($liveRecord) {
+            if ($liveRecord) {
                 $removedOrphans[$liveRecord->ID] = sprintf('Rebased %s (#%d)', $liveRecord->Title, $liveRecord->ID);
                 $liveRecord->ParentID = $holder->ID;
                 $liveRecord->ShowInMenus = 0;
                 $liveRecord->ShowInSearch = 0;
                 $liveRecord->write();
-                if(!$stageRecord) {
+                if (!$stageRecord) {
                     $liveRecord->doRestoreToStage();
                 }
                 $liveRecord->doUnpublish();
                 $liveRecord->destroy();
                 unset($liveRecord);
             }
-            if($stageRecord) {
+            if ($stageRecord) {
                 unset($stageRecord);
             }
         }
@@ -327,12 +341,13 @@ in the other stage:<br />
      * @param int|array $limit
      * @return SS_List
      */
-    public function getOrphanedPages($class = 'SilverStripe\\CMS\\Model\\SiteTree', $filter = array(), $sort = null, $join = null, $limit = null) {
+    public function getOrphanedPages($class = 'SilverStripe\\CMS\\Model\\SiteTree', $filter = array(), $sort = null, $join = null, $limit = null)
+    {
         // Alter condition
         $table = DataObject::getSchema()->tableName($class);
-        if(empty($filter)) {
+        if (empty($filter)) {
             $where = array();
-        } elseif(is_array($filter)) {
+        } elseif (is_array($filter)) {
             $where = $filter;
         } else {
             $where = array($filter);
@@ -341,7 +356,7 @@ in the other stage:<br />
         $where[] = '"Parents"."ID" IS NULL';
 
         $orphans = new ArrayList();
-        foreach(array(Versioned::DRAFT, Versioned::LIVE) as $stage) {
+        foreach (array(Versioned::DRAFT, Versioned::LIVE) as $stage) {
             $table .= ($stage == Versioned::LIVE) ? '_Live' : '';
             $stageOrphans = Versioned::get_by_stage(
                 $class,

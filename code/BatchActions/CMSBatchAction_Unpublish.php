@@ -17,7 +17,9 @@ class CMSBatchAction_Unpublish extends CMSBatchAction
 
     public function run(SS_List $pages)
     {
-        return $this->batchaction($pages, 'doUnpublish',
+        return $this->batchaction(
+            $pages,
+            'doUnpublish',
             _t('CMSBatchActions.UNPUBLISHED_PAGES', 'Unpublished %d pages')
         );
     }

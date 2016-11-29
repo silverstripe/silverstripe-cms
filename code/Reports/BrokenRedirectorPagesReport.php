@@ -9,17 +9,21 @@ use SilverStripe\ORM\DB;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\Reports\Report;
 
-class BrokenRedirectorPagesReport extends Report {
+class BrokenRedirectorPagesReport extends Report
+{
 
-    public function title() {
+    public function title()
+    {
         return _t('SideReport.BROKENREDIRECTORPAGES', 'RedirectorPages pointing to deleted pages');
     }
 
-    public function group() {
+    public function group()
+    {
         return _t('SideReport.BrokenLinksGroupTitle', "Broken links reports");
     }
 
-    public function sourceRecords($params = null) {
+    public function sourceRecords($params = null)
+    {
         $classes = ClassInfo::subclassesFor('SilverStripe\\CMS\\Model\\RedirectorPage');
         $classParams = DB::placeholders($classes);
         $classFilter = array(
@@ -29,7 +33,8 @@ class BrokenRedirectorPagesReport extends Report {
         return Versioned::get_by_stage('SilverStripe\\CMS\\Model\\SiteTree', $stage, $classFilter);
     }
 
-    public function columns() {
+    public function columns()
+    {
         return array(
             "Title" => array(
                 "title" => "Title", // todo: use NestedTitle(2)
@@ -38,7 +43,8 @@ class BrokenRedirectorPagesReport extends Report {
         );
     }
 
-    public function getParameterFields() {
+    public function getParameterFields()
+    {
         return new FieldList(
             new CheckboxField('OnLive', _t('SideReport.ParameterLiveCheckbox', 'Check live site'))
         );

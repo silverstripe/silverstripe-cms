@@ -23,7 +23,8 @@ use Subsite;
  *
  * @property File $owner
  */
-class SiteTreeFileExtension extends DataExtension {
+class SiteTreeFileExtension extends DataExtension
+{
 
     private static $belongs_many_many = array(
         'BackLinkTracking' => 'SilverStripe\\CMS\\Model\\SiteTree.ImageTracking' // {@see SiteTreeLinkTracking}
@@ -43,7 +44,8 @@ class SiteTreeFileExtension extends DataExtension {
         'BackLinkHTMLList' => 'HTMLFragment'
     );
 
-    public function updateCMSFields(FieldList $fields) {
+    public function updateCMSFields(FieldList $fields)
+    {
         $fields->insertAfter(
             'LastEdited',
             ReadonlyField::create(
@@ -61,7 +63,8 @@ class SiteTreeFileExtension extends DataExtension {
      *
      * @return string
      */
-    public function BackLinkHTMLList() {
+    public function BackLinkHTMLList()
+    {
         $viewer = new SSViewer(["type" => "Includes", self::class . "_description"]);
 
         return $viewer->process($this->owner);
@@ -72,8 +75,9 @@ class SiteTreeFileExtension extends DataExtension {
      *
      * @return ManyManyList
      */
-    public function BackLinkTracking() {
-        if(class_exists("Subsite")){
+    public function BackLinkTracking()
+    {
+        if (class_exists("Subsite")) {
             $rememberSubsiteFilter = Subsite::$disable_subsite_filter;
             Subsite::disable_subsite_filter(true);
         }
@@ -81,7 +85,7 @@ class SiteTreeFileExtension extends DataExtension {
         $links = $this->owner->getManyManyComponents('BackLinkTracking');
         $this->owner->extend('updateBackLinkTracking', $links);
 
-        if(class_exists("Subsite")){
+        if (class_exists("Subsite")) {
             Subsite::disable_subsite_filter($rememberSubsiteFilter);
         }
 
@@ -93,9 +97,10 @@ class SiteTreeFileExtension extends DataExtension {
      *
      * @return int
      */
-    public function BackLinkTrackingCount() {
+    public function BackLinkTrackingCount()
+    {
         $pages = $this->owner->BackLinkTracking();
-        if($pages) {
+        if ($pages) {
             return $pages->count();
         } else {
             return 0;
@@ -105,19 +110,20 @@ class SiteTreeFileExtension extends DataExtension {
     /**
      * Updates link tracking in the current stage.
      */
-    public function onAfterDelete() {
+    public function onAfterDelete()
+    {
         // Skip live stage
-        if(Versioned::get_stage() === Versioned::LIVE) {
+        if (Versioned::get_stage() === Versioned::LIVE) {
             return;
         }
 
         // We query the explicit ID list, because BackLinkTracking will get modified after the stage
         // site does its thing
         $brokenPageIDs = $this->owner->BackLinkTracking()->column("ID");
-        if($brokenPageIDs) {
+        if ($brokenPageIDs) {
             // This will syncLinkTracking on the same stage as this file
             $brokenPages = DataObject::get('SilverStripe\\CMS\\Model\\SiteTree')->byIDs($brokenPageIDs);
-            foreach($brokenPages as $brokenPage) {
+            foreach ($brokenPages as $brokenPage) {
                 $brokenPage->write();
             }
         }

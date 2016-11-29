@@ -44,5 +44,4 @@ class SilverStripeNavigatorItem_CMSLink extends SilverStripeNavigatorItem
             && !($this->record instanceof RedirectorPage)
         );
     }
-
 }

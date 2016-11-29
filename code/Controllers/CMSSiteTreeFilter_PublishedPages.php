@@ -18,7 +18,7 @@ class CMSSiteTreeFilter_PublishedPages extends CMSSiteTreeFilter
     /**
      * @return string
      */
-    static public function title()
+    public static function title()
     {
         return _t('CMSSIteTreeFilter_PublishedPages.Title', "Published pages");
     }

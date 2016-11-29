@@ -12,7 +12,7 @@ use SilverStripe\ORM\Versioning\Versioned;
 class CMSSiteTreeFilter_StatusDraftPages extends CMSSiteTreeFilter
 {
 
-    static public function title()
+    public static function title()
     {
         return _t('CMSSiteTreeFilter_StatusDraftPages.Title', 'Draft pages');
     }

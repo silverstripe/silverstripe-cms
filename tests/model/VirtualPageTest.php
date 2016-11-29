@@ -14,7 +14,8 @@ use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Dev\TestOnly;
 
-class VirtualPageTest extends FunctionalTest {
+class VirtualPageTest extends FunctionalTest
+{
     protected static $fixture_file = 'VirtualPageTest.yml';
     protected static $use_draft_site = false;
     protected $autoFollowRedirection = false;
@@ -38,7 +39,8 @@ class VirtualPageTest extends FunctionalTest {
         'SilverStripe\\CMS\\Model\\SiteTree' => array('VirtualPageTest_PageExtension')
     );
 
-    public function setUp() {
+    public function setUp()
+    {
         parent::setUp();
 
         // Ensure we always have permission to save/publish
@@ -53,7 +55,8 @@ class VirtualPageTest extends FunctionalTest {
      * Test that, after you update the source page of a virtual page, all the virtual pages
      * are updated
      */
-    public function testEditingSourcePageUpdatesVirtualPages() {
+    public function testEditingSourcePageUpdatesVirtualPages()
+    {
         $master = $this->objFromFixture('Page', 'master');
         $master->Title = "New title";
         $master->MenuTitle = "New menutitle";
@@ -75,7 +78,8 @@ class VirtualPageTest extends FunctionalTest {
      * Test that, after you publish the source page of a virtual page, all the already published
      * virtual pages are published
      */
-    public function testPublishingSourcePagePublishesAlreadyPublishedVirtualPages() {
+    public function testPublishingSourcePagePublishesAlreadyPublishedVirtualPages()
+    {
         $this->logInWithPermission('ADMIN');
 
         $master = $this->objFromFixture('Page', 'master');
@@ -112,7 +116,8 @@ class VirtualPageTest extends FunctionalTest {
     /**
      * Test that virtual pages get the content from the master page when they are created.
      */
-    public function testNewVirtualPagesGrabTheContentFromTheirMaster() {
+    public function testNewVirtualPagesGrabTheContentFromTheirMaster()
+    {
         $vp = new VirtualPage();
         $vp->write();
 
@@ -134,7 +139,8 @@ class VirtualPageTest extends FunctionalTest {
      * This means that when you publish them, they should show the published content of the source
      * page, not the draft content at the time when you clicked 'publish' in the CMS.
      */
-    public function testPublishingAVirtualPageCopiedPublishedContentNotDraftContent() {
+    public function testPublishingAVirtualPageCopiedPublishedContentNotDraftContent()
+    {
         $p = new Page();
         $p->Content = "published content";
         $p->write();
@@ -172,7 +178,8 @@ class VirtualPageTest extends FunctionalTest {
         $this->assertEquals('draft content', $vpLive->Content);
     }
 
-    public function testCantPublishVirtualPagesBeforeTheirSource() {
+    public function testCantPublishVirtualPagesBeforeTheirSource()
+    {
         // An unpublished source page
         $p = new Page();
         $p->Content = "test content";
@@ -193,7 +200,8 @@ class VirtualPageTest extends FunctionalTest {
         $this->assertTrue($vp->canPublish());
     }
 
-    public function testCanDeleteOrphanedVirtualPagesFromLive() {
+    public function testCanDeleteOrphanedVirtualPagesFromLive()
+    {
         // An unpublished source page
         $p = new Page();
         $p->Content = "test content";
@@ -231,7 +239,8 @@ class VirtualPageTest extends FunctionalTest {
         );
     }
 
-    public function testCanEdit() {
+    public function testCanEdit()
+    {
         $parentPage = $this->objFromFixture('Page', 'master3');
         $virtualPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp3');
         $bob = $this->objFromFixture('SilverStripe\\Security\\Member', 'bob');
@@ -248,7 +257,8 @@ class VirtualPageTest extends FunctionalTest {
         $this->assertTrue($virtualPage->canEdit());
     }
 
-    public function testCanView() {
+    public function testCanView()
+    {
         $parentPage = $this->objFromFixture('Page', 'master3');
         $parentPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
         $virtualPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp3');
@@ -267,7 +277,8 @@ class VirtualPageTest extends FunctionalTest {
         $this->assertFalse($virtualPage->canView());
     }
 
-    public function testVirtualPagesArentInappropriatelyPublished() {
+    public function testVirtualPagesArentInappropriatelyPublished()
+    {
         // Fixture
         $p = new Page();
         $p->Content = "test content";
@@ -315,7 +326,8 @@ class VirtualPageTest extends FunctionalTest {
         $this->assertFalse($vp->isModifiedOnDraft());
     }
 
-    public function testUnpublishingSourcePageOfAVirtualPageAlsoUnpublishesVirtualPage() {
+    public function testUnpublishingSourcePageOfAVirtualPageAlsoUnpublishesVirtualPage()
+    {
         // Create page and virutal page
         $p = new Page();
         $p->Title = "source";
@@ -347,7 +359,8 @@ class VirtualPageTest extends FunctionalTest {
         $this->assertEquals(1, $vp->HasBrokenLink);
     }
 
-    public function testDeletingFromLiveSourcePageOfAVirtualPageAlsoUnpublishesVirtualPage() {
+    public function testDeletingFromLiveSourcePageOfAVirtualPageAlsoUnpublishesVirtualPage()
+    {
         // Create page and virutal page
         $p = new Page();
         $p->Title = "source";
@@ -384,7 +397,8 @@ class VirtualPageTest extends FunctionalTest {
     /**
      * Base functionality tested in {@link SiteTreeTest->testAllowedChildrenValidation()}.
      */
-    public function testAllowedChildrenLimitedOnVirtualPages() {
+    public function testAllowedChildrenLimitedOnVirtualPages()
+    {
         $classA = new SiteTreeTest_ClassA();
         $classA->write();
         $classB = new SiteTreeTest_ClassB();
@@ -407,7 +421,8 @@ class VirtualPageTest extends FunctionalTest {
         $this->assertFalse($valid->valid(), "Doesn't allow child linked to virtual page type disallowed by parent");
     }
 
-    public function testGetVirtualFields() {
+    public function testGetVirtualFields()
+    {
         // Needs association with an original, otherwise will just return the "base" virtual fields
         $page = new VirtualPageTest_ClassA();
         $page->write();
@@ -420,7 +435,8 @@ class VirtualPageTest extends FunctionalTest {
         $this->assertNotContains('MyInitiallyCopiedField', $virtual->getVirtualFields());
     }
 
-    public function testCopyFrom() {
+    public function testCopyFrom()
+    {
         $original = new VirtualPageTest_ClassA();
         $original->MyInitiallyCopiedField = 'original';
         $original->MyVirtualField = 'original';
@@ -456,7 +472,8 @@ class VirtualPageTest extends FunctionalTest {
         );
     }
 
-    public function testCanBeRoot() {
+    public function testCanBeRoot()
+    {
         $page = new SiteTree();
         $page->ParentID = 0;
         $page->write();
@@ -477,15 +494,18 @@ class VirtualPageTest extends FunctionalTest {
         $isDetected = false;
         try {
             $virtual->write();
-        } catch(ValidationException $e) {
+        } catch (ValidationException $e) {
             $this->assertContains('is not allowed on the root level', $e->getMessage());
             $isDetected = true;
         }
 
-        if(!$isDetected) $this->fail('Fails validation with $can_be_root=false');
+        if (!$isDetected) {
+            $this->fail('Fails validation with $can_be_root=false');
+        }
     }
 
-    public function testPageTypeChangePropagatesToLive() {
+    public function testPageTypeChangePropagatesToLive()
+    {
         $page = new SiteTree();
         $page->Title = 'published title';
         $page->MySharedNonVirtualField = 'original';
@@ -514,7 +534,9 @@ class VirtualPageTest extends FunctionalTest {
         $this->assertNotNull($nonVirtualStage);
         $this->assertEquals('VirtualPageTest_ClassA', $nonVirtualStage->ClassName);
         $this->assertEquals('changed on new type', $nonVirtualStage->MySharedNonVirtualField);
-        $this->assertEquals('original', $nonVirtualStage->Title,
+        $this->assertEquals(
+            'original',
+            $nonVirtualStage->Title,
             'Copies virtual fields from original draft into new instance on type change '
         );
 
@@ -537,7 +559,8 @@ class VirtualPageTest extends FunctionalTest {
         $this->assertEquals('title changed on original', $virtualLive->Title);
     }
 
-    public function testVirtualPageFindsCorrectCasting() {
+    public function testVirtualPageFindsCorrectCasting()
+    {
         $page = new VirtualPageTest_ClassA();
         $page->CastingTest = "Some content";
         $page->write();
@@ -549,7 +572,8 @@ class VirtualPageTest extends FunctionalTest {
         $this->assertEquals('SOME CONTENT', $virtual->obj('CastingTest')->forTemplate());
     }
 
-    public function testVirtualPageAsAnAllowedChild() {
+    public function testVirtualPageAsAnAllowedChild()
+    {
         $parentPage = new VirtualPageTest_PageWithAllowedChildren();
         $parentPage->write();
 
@@ -562,7 +586,7 @@ class VirtualPageTest extends FunctionalTest {
         $childVirtualPage->ParentID = $parentPage->ID;
         try {
             $childVirtualPage->write();
-        } catch(ValidationException $e) {
+        } catch (ValidationException $e) {
             $this->fail('Failed to write VirtualPage when it is an allowed child');
         }
 
@@ -570,7 +594,7 @@ class VirtualPageTest extends FunctionalTest {
         $childVirtualPage->CopyContentFromID = $childPage->ID;
         try {
             $childVirtualPage->write();
-        } catch(ValidationException $e) {
+        } catch (ValidationException $e) {
             $this->fail('Failed to write VirtualPage when it is linked to an allowed child');
         }
 
@@ -581,15 +605,18 @@ class VirtualPageTest extends FunctionalTest {
         $isDetected = false;
         try {
             $childVirtualPage->write();
-        } catch(ValidationException $e) {
+        } catch (ValidationException $e) {
             $this->assertContains('not allowed as child of this parent page', $e->getMessage());
             $isDetected = true;
         }
 
-        if(!$isDetected) $this->fail("Shouldn't be allowed to write a VirtualPage that links to a disallowed child");
+        if (!$isDetected) {
+            $this->fail("Shouldn't be allowed to write a VirtualPage that links to a disallowed child");
+        }
     }
 
-    public function testVirtualPagePointingToRedirectorPage() {
+    public function testVirtualPagePointingToRedirectorPage()
+    {
         if (!class_exists('SilverStripe\\CMS\\Model\\RedirectorPage')) {
             $this->markTestSkipped('RedirectorPage required');
         }
@@ -607,7 +634,8 @@ class VirtualPageTest extends FunctionalTest {
         $this->assertEquals('http://google.com', $response->getHeader('Location'));
     }
 
-    public function testMethod() {
+    public function testMethod()
+    {
         $virtualPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp4');
         $controller = ModelAsController::controller_for($virtualPage);
 
@@ -618,14 +646,16 @@ class VirtualPageTest extends FunctionalTest {
         $this->assertEquals('hi there', $controller->modelMethod());
     }
 
-    public function testAllowedActions() {
+    public function testAllowedActions()
+    {
         $virtualPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp4');
         $controller = ModelAsController::controller_for($virtualPage);
         $this->assertContains('testaction', $controller->allowedActions());
     }
 }
 
-class VirtualPageTest_ClassA extends Page implements TestOnly {
+class VirtualPageTest_ClassA extends Page implements TestOnly
+{
 
     private static $db = array(
         'MyInitiallyCopiedField' => 'Text',
@@ -636,46 +666,56 @@ class VirtualPageTest_ClassA extends Page implements TestOnly {
 
     private static $allowed_children = array('VirtualPageTest_ClassB');
 
-    public function modelMethod() {
+    public function modelMethod()
+    {
         return 'hi there';
     }
 }
 
-class VirtualPageTest_ClassA_Controller extends Page_Controller implements TestOnly {
+class VirtualPageTest_ClassA_Controller extends Page_Controller implements TestOnly
+{
     private static $allowed_actions = [
         'testaction'
     ];
 
-    public function testMethod() {
+    public function testMethod()
+    {
         return 'hello';
     }
 }
 
-class VirtualPageTest_ClassB extends Page implements TestOnly {
+class VirtualPageTest_ClassB extends Page implements TestOnly
+{
     private static $allowed_children = array('VirtualPageTest_ClassC');
 }
 
-class VirtualPageTest_ClassC extends Page implements TestOnly {
+class VirtualPageTest_ClassC extends Page implements TestOnly
+{
     private static $allowed_children = array();
 }
 
-class VirtualPageTest_NotRoot extends Page implements TestOnly {
+class VirtualPageTest_NotRoot extends Page implements TestOnly
+{
     private static $can_be_root = false;
 }
 
-class VirtualPageTest_TestDBField extends DBVarchar implements TestOnly {
-    public function forTemplate() {
+class VirtualPageTest_TestDBField extends DBVarchar implements TestOnly
+{
+    public function forTemplate()
+    {
         return strtoupper($this->XML());
     }
 }
 
-class VirtualPageTest_VirtualPageSub extends VirtualPage implements TestOnly {
+class VirtualPageTest_VirtualPageSub extends VirtualPage implements TestOnly
+{
     private static $db = array(
         'MyProperty' => 'Varchar',
     );
 }
 
-class VirtualPageTest_PageExtension extends DataExtension implements TestOnly {
+class VirtualPageTest_PageExtension extends DataExtension implements TestOnly
+{
 
     private static $db = array(
         // These fields are just on an extension to simulate shared properties between Page and VirtualPage.
@@ -683,10 +723,10 @@ class VirtualPageTest_PageExtension extends DataExtension implements TestOnly {
         'MySharedVirtualField' => 'Text',
         'MySharedNonVirtualField' => 'Text',
     );
-
 }
 
-class VirtualPageTest_PageWithAllowedChildren extends Page implements TestOnly {
+class VirtualPageTest_PageWithAllowedChildren extends Page implements TestOnly
+{
     private static $allowed_children = array(
         'VirtualPageTest_ClassA',
         'SilverStripe\\CMS\\Model\\VirtualPage'

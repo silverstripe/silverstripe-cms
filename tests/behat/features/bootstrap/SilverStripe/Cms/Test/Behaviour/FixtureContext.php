@@ -2,22 +2,22 @@
 
 namespace SilverStripe\Cms\Test\Behaviour;
 
-use Behat\Behat\Context\ClosuredContextInterface,
-    Behat\Behat\Context\TranslatedContextInterface,
-    Behat\Behat\Context\BehatContext,
-    Behat\Behat\Context\Step,
-    Behat\Behat\Event\StepEvent,
-    Behat\Behat\Exception\PendingException,
-    Behat\Mink\Driver\Selenium2Driver,
-    Behat\Gherkin\Node\PyStringNode,
-    Behat\Gherkin\Node\TableNode,
-    SilverStripe\ORM\Versioning\Versioned;
-
+use Behat\Behat\Context\ClosuredContextInterface;
+use Behat\Behat\Context\TranslatedContextInterface;
+use Behat\Behat\Context\BehatContext;
+use Behat\Behat\Context\Step;
+use Behat\Behat\Event\StepEvent;
+use Behat\Behat\Exception\PendingException;
+use Behat\Mink\Driver\Selenium2Driver;
+use Behat\Gherkin\Node\PyStringNode;
+use Behat\Gherkin\Node\TableNode;
+use SilverStripe\ORM\Versioning\Versioned;
 
 /**
  * Context used to create fixtures in the SilverStripe ORM.
  */
-class FixtureContext extends \SilverStripe\BehatExtension\Context\FixtureContext {
+class FixtureContext extends \SilverStripe\BehatExtension\Context\FixtureContext
+{
 
     /**
      * Find or create a redirector page and link to another existing page.
@@ -25,12 +25,15 @@ class FixtureContext extends \SilverStripe\BehatExtension\Context\FixtureContext
      *
      * @Given /^(?:(an|a|the) )"(?<type>[^"]+)" "(?<id>[^"]+)" (:?which )?redirects to (?:(an|a|the) )"(?<targetType>[^"]+)" "(?<targetId>[^"]+)"$/
      */
-    public function stepCreateRedirectorPage($type, $id, $targetType, $targetId) {
+    public function stepCreateRedirectorPage($type, $id, $targetType, $targetId)
+    {
         $class = 'SilverStripe\\CMS\\Model\\RedirectorPage';
         $targetClass = $this->convertTypeToClass($targetType);
 
         $targetObj = $this->fixtureFactory->get($targetClass, $targetId);
-        if (!$targetObj) $targetObj = $this->fixtureFactory->get($targetClass, $targetId);
+        if (!$targetObj) {
+            $targetObj = $this->fixtureFactory->get($targetClass, $targetId);
+        }
 
         $fields = array('LinkToID' => $targetObj->ID);
         /** @var \RedirectorPage $obj */
@@ -53,7 +56,8 @@ class FixtureContext extends \SilverStripe\BehatExtension\Context\FixtureContext
     *
     * @Then /^pages should( not? |\s*)be editable by "([^"]*)"$/
     */
-    public function pagesShouldBeEditableBy($negative, $member){
+    public function pagesShouldBeEditableBy($negative, $member)
+    {
         $page = \Page::get()->First();
 
         return array(

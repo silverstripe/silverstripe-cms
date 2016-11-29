@@ -26,15 +26,22 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem
 
     public function getTitle()
     {
-        return _t('ContentController.PUBLISHED', 'Published',
-            'Used for the Switch between draft and published view mode. Needs to be a short label');
+        return _t(
+            'ContentController.PUBLISHED',
+            'Published',
+            'Used for the Switch between draft and published view mode. Needs to be a short label'
+        );
     }
 
     public function getMessage()
     {
-        return "<div id=\"SilverStripeNavigatorMessage\" title=\"" . _t('ContentControl.NOTEWONTBESHOWN',
-            'Note: this message will not be shown to your visitors') . "\">" . _t('ContentController.PUBLISHEDSITE',
-            'Published Site') . "</div>";
+        return "<div id=\"SilverStripeNavigatorMessage\" title=\"" . _t(
+            'ContentControl.NOTEWONTBESHOWN',
+            'Note: this message will not be shown to your visitors'
+        ) . "\">" . _t(
+            'ContentController.PUBLISHEDSITE',
+            'Published Site'
+        ) . "</div>";
     }
 
     public function getLink()

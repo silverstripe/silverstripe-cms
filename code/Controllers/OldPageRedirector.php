@@ -10,7 +10,8 @@ use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Extension;
 
-class OldPageRedirector extends Extension {
+class OldPageRedirector extends Extension
+{
 
     /**
      * On every URL that generates a 404, we'll capture it here and see if we can
@@ -19,7 +20,8 @@ class OldPageRedirector extends Extension {
      * @param HTTPRequest $request The request object
      * @throws HTTPResponse_Exception
      */
-    public function onBeforeHTTPError404($request) {
+    public function onBeforeHTTPError404($request)
+    {
         // We need to get the URL ourselves because $request->allParams() only has a max of 4 params
         $params = preg_split('|/+|', $request->getURL());
         $cleanURL = trim(Director::makeRelative($request->getURL(false)), '/');
@@ -39,7 +41,9 @@ class OldPageRedirector extends Extension {
                 Controller::join_links(
                     $page,
                     ($getvars) ? '?' . http_build_query($getvars) : null
-                ), 301);
+                ),
+                301
+            );
             throw new HTTPResponse_Exception($res);
         }
     }
@@ -53,7 +57,8 @@ class OldPageRedirector extends Extension {
      *
      * @return string|boolean False, or the new URL
      */
-    static public function find_old_page($params, $parent = null, $redirect = false) {
+    public static function find_old_page($params, $parent = null, $redirect = false)
+    {
         $parent = is_numeric($parent) ? SiteTree::get()->byID($parent) : $parent;
         $params = (array)$params;
         $URL = rawurlencode(array_shift($params));
@@ -109,4 +114,3 @@ class OldPageRedirector extends Extension {
         return false;
     }
 }
-
