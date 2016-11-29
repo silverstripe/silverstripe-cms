@@ -17,6 +17,10 @@
 		<exclude name="Squiz.Classes.ValidClassName.NotCamelCaps" />
 		<exclude name="Generic.Files.LineLength.TooLong" />
 		<exclude name="PEAR.Functions.ValidDefaultValue.NotAtEnd" />
+
+        <!-- remove this once tests have been namespaced and PSR-4'd -->
+        <exclude name="PSR1.Classes.ClassDeclaration.MissingNamespace" />
+        <exclude name="PSR1.Classes.ClassDeclaration.MultipleClasses" />
 	</rule>
 
 	<!-- PHP-PEG generated file not intended for human consumption -->
