@@ -40,5 +40,8 @@
     },
     "classmap": ["tests/behat/"]
   },
+  "scripts": {
+    "lint": "phpcs --standard=tests/phpcs/ruleset.xml code/ tests/"
+  },
   "minimum-stability": "stable"
 }
