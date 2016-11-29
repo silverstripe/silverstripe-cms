@@ -7,10 +7,10 @@ namespace SilverStripe\CMS\Forms;
  */
 class SiteTreeURLSegmentField_Readonly extends SiteTreeURLSegmentField
 {
-	protected $readonly = true;
+    protected $readonly = true;
 
-	public function performReadonlyTransformation()
-	{
-		return clone $this;
-	}
+    public function performReadonlyTransformation()
+    {
+        return clone $this;
+    }
 }

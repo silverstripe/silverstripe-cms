@@ -10,17 +10,17 @@ use SilverStripe\ORM\Versioning\Versioned;
 class CMSSiteTreeFilter_ChangedPages extends CMSSiteTreeFilter
 {
 
-	static public function title()
-	{
-		return _t('CMSSiteTreeFilter_ChangedPages.Title', "Modified pages");
-	}
+    public static function title()
+    {
+        return _t('CMSSiteTreeFilter_ChangedPages.Title', "Modified pages");
+    }
 
-	public function getFilteredPages()
-	{
-		$pages = Versioned::get_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Stage');
-		$pages = $this->applyDefaultFilters($pages)
-			->leftJoin('SiteTree_Live', '"SiteTree_Live"."ID" = "SiteTree"."ID"')
-			->where('"SiteTree"."Version" <> "SiteTree_Live"."Version"');
-		return $pages;
-	}
+    public function getFilteredPages()
+    {
+        $pages = Versioned::get_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Stage');
+        $pages = $this->applyDefaultFilters($pages)
+            ->leftJoin('SiteTree_Live', '"SiteTree_Live"."ID" = "SiteTree"."ID"')
+            ->where('"SiteTree"."Version" <> "SiteTree_Live"."Version"');
+        return $pages;
+    }
 }

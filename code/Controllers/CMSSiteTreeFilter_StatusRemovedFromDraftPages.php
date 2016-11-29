@@ -12,24 +12,24 @@ use SilverStripe\ORM\Versioning\Versioned;
 class CMSSiteTreeFilter_StatusRemovedFromDraftPages extends CMSSiteTreeFilter
 {
 
-	static public function title()
-	{
-		return _t('CMSSiteTreeFilter_StatusRemovedFromDraftPages.Title', 'Live but removed from draft');
-	}
+    public static function title()
+    {
+        return _t('CMSSiteTreeFilter_StatusRemovedFromDraftPages.Title', 'Live but removed from draft');
+    }
 
-	/**
-	 * Filters out all pages who's status is set to "Removed from draft".
-	 *
-	 * @return SS_List
-	 */
-	public function getFilteredPages()
-	{
-		$pages = Versioned::get_including_deleted('SilverStripe\\CMS\\Model\\SiteTree');
-		$pages = $this->applyDefaultFilters($pages);
-		$pages = $pages->filterByCallback(function (SiteTree $page) {
-			// If page is removed from stage but not live
-			return $page->isOnLiveOnly();
-		});
-		return $pages;
-	}
+    /**
+     * Filters out all pages who's status is set to "Removed from draft".
+     *
+     * @return SS_List
+     */
+    public function getFilteredPages()
+    {
+        $pages = Versioned::get_including_deleted('SilverStripe\\CMS\\Model\\SiteTree');
+        $pages = $this->applyDefaultFilters($pages);
+        $pages = $pages->filterByCallback(function (SiteTree $page) {
+            // If page is removed from stage but not live
+            return $page->isOnLiveOnly();
+        });
+        return $pages;
+    }
 }
