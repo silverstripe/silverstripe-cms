@@ -13,20 +13,20 @@ use SilverStripe\Core\Extension;
  */
 class ErrorPageControllerExtension extends Extension {
 
-	/**
-	 * Used by {@see RequestHandler::httpError}
-	 *
-	 * @param int $statusCode
-	 * @param HTTPRequest $request
-	 * @throws HTTPResponse_Exception
-	 */
-	public function onBeforeHTTPError($statusCode, $request) {
-		if (Director::is_ajax()) {
-			return;
-		}
-		$response = ErrorPage::response_for($statusCode);
-		if($response) {
-			throw new HTTPResponse_Exception($response, $statusCode);
-		}
-	}
+    /**
+     * Used by {@see RequestHandler::httpError}
+     *
+     * @param int $statusCode
+     * @param HTTPRequest $request
+     * @throws HTTPResponse_Exception
+     */
+    public function onBeforeHTTPError($statusCode, $request) {
+        if (Director::is_ajax()) {
+            return;
+        }
+        $response = ErrorPage::response_for($statusCode);
+        if($response) {
+            throw new HTTPResponse_Exception($response, $statusCode);
+        }
+    }
 }

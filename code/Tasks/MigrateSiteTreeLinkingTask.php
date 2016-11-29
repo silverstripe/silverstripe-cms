@@ -12,46 +12,46 @@ use SilverStripe\ORM\DB;
  */
 class MigrateSiteTreeLinkingTask extends BuildTask {
 
-	private static $segment = 'MigrateSiteTreeLinkingTask';
+    private static $segment = 'MigrateSiteTreeLinkingTask';
 
-	protected $title = 'Migrate SiteTree Linking Task';
+    protected $title = 'Migrate SiteTree Linking Task';
 
-	protected $description = 'Rewrites plain internal HTML links into shortcode form, using existing link tracking information.';
+    protected $description = 'Rewrites plain internal HTML links into shortcode form, using existing link tracking information.';
 
-	public function run($request) {
-		$pages = 0;
-		$links = 0;
+    public function run($request) {
+        $pages = 0;
+        $links = 0;
 
-		$linkedPages = new DataList('SilverStripe\\CMS\\Model\\SiteTree');
-		$linkedPages = $linkedPages->innerJoin('SiteTree_LinkTracking', '"SiteTree_LinkTracking"."SiteTreeID" = "SiteTree"."ID"');
-		if($linkedPages) foreach($linkedPages as $page) {
-			$tracking = DB::prepared_query(
-				'SELECT "ChildID", "FieldName" FROM "SiteTree_LinkTracking" WHERE "SiteTreeID" = ?',
-				array($page->ID)
-			)->map();
+        $linkedPages = new DataList('SilverStripe\\CMS\\Model\\SiteTree');
+        $linkedPages = $linkedPages->innerJoin('SiteTree_LinkTracking', '"SiteTree_LinkTracking"."SiteTreeID" = "SiteTree"."ID"');
+        if($linkedPages) foreach($linkedPages as $page) {
+            $tracking = DB::prepared_query(
+                'SELECT "ChildID", "FieldName" FROM "SiteTree_LinkTracking" WHERE "SiteTreeID" = ?',
+                array($page->ID)
+            )->map();
 
-			foreach($tracking as $childID => $fieldName) {
-				$linked = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $childID);
+            foreach($tracking as $childID => $fieldName) {
+                $linked = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $childID);
 
-				// TOOD: Replace in all HTMLText fields
-				$page->Content = preg_replace (
-					"/href *= *([\"']?){$linked->URLSegment}\/?/i",
-					"href=$1[sitetree_link,id={$linked->ID}]",
-					$page->Content,
-					-1,
-					$replaced
-				);
+                // TOOD: Replace in all HTMLText fields
+                $page->Content = preg_replace (
+                    "/href *= *([\"']?){$linked->URLSegment}\/?/i",
+                    "href=$1[sitetree_link,id={$linked->ID}]",
+                    $page->Content,
+                    -1,
+                    $replaced
+                );
 
-				if($replaced) {
-					$links += $replaced;
-				}
-			}
+                if($replaced) {
+                    $links += $replaced;
+                }
+            }
 
-			$page->write();
-			$pages++;
-		}
+            $page->write();
+            $pages++;
+        }
 
-		echo "Rewrote $links link(s) on $pages page(s) to use shortcodes.\n";
-	}
+        echo "Rewrote $links link(s) on $pages page(s) to use shortcodes.\n";
+    }
 
 }

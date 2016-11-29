@@ -10,20 +10,20 @@ use SilverStripe\ORM\SS_List;
  */
 class CMSBatchAction_Publish extends CMSBatchAction
 {
-	public function getActionTitle()
-	{
-		return _t('CMSBatchActions.PUBLISH_PAGES', 'Publish');
-	}
+    public function getActionTitle()
+    {
+        return _t('CMSBatchActions.PUBLISH_PAGES', 'Publish');
+    }
 
-	public function run(SS_List $pages)
-	{
-		return $this->batchaction($pages, 'publishRecursive',
-			_t('CMSBatchActions.PUBLISHED_PAGES', 'Published %d pages, %d failures')
-		);
-	}
+    public function run(SS_List $pages)
+    {
+        return $this->batchaction($pages, 'publishRecursive',
+            _t('CMSBatchActions.PUBLISHED_PAGES', 'Published %d pages, %d failures')
+        );
+    }
 
-	public function applicablePages($ids)
-	{
-		return $this->applicablePagesHelper($ids, 'canPublish', true, false);
-	}
+    public function applicablePages($ids)
+    {
+        return $this->applicablePagesHelper($ids, 'canPublish', true, false);
+    }
 }

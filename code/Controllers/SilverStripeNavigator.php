@@ -21,78 +21,78 @@ use SilverStripe\View\ViewableData;
  */
 class SilverStripeNavigator extends ViewableData {
 
-	/**
-	 * @var DataObject|CMSPreviewable
-	 */
-	protected $record;
+    /**
+     * @var DataObject|CMSPreviewable
+     */
+    protected $record;
 
-	/**
-	 * @param DataObject|CMSPreviewable $record
-	 */
-	public function __construct(CMSPreviewable $record) {
-		parent::__construct();
-		$this->record = $record;
-	}
+    /**
+     * @param DataObject|CMSPreviewable $record
+     */
+    public function __construct(CMSPreviewable $record) {
+        parent::__construct();
+        $this->record = $record;
+    }
 
-	/**
-	 * @return SS_List of SilverStripeNavigatorItem
-	 */
-	public function getItems() {
-		$items = array();
+    /**
+     * @return SS_List of SilverStripeNavigatorItem
+     */
+    public function getItems() {
+        $items = array();
 
-		$classes = ClassInfo::subclassesFor('SilverStripe\\CMS\\Controllers\\SilverStripeNavigatorItem');
-		unset($classes['SilverStripe\\CMS\\Controllers\\SilverStripeNavigatorItem']);
+        $classes = ClassInfo::subclassesFor('SilverStripe\\CMS\\Controllers\\SilverStripeNavigatorItem');
+        unset($classes['SilverStripe\\CMS\\Controllers\\SilverStripeNavigatorItem']);
 
-		// Sort menu items according to priority
-		foreach($classes as $class) {
-			/** @var SilverStripeNavigatorItem $item */
-			$item = new $class($this->record);
-			if(!$item->canView()) {
-				continue;
-			}
+        // Sort menu items according to priority
+        foreach($classes as $class) {
+            /** @var SilverStripeNavigatorItem $item */
+            $item = new $class($this->record);
+            if(!$item->canView()) {
+                continue;
+            }
 
-			// This funny litle formula ensures that the first item added with the same priority will be left-most.
-			$priority = $item->getPriority() * 100 - 1;
+            // This funny litle formula ensures that the first item added with the same priority will be left-most.
+            $priority = $item->getPriority() * 100 - 1;
 
-			// Ensure that we can have duplicates with the same (default) priority
-			while(isset($items[$priority])) {
-				$priority++;
-			}
+            // Ensure that we can have duplicates with the same (default) priority
+            while(isset($items[$priority])) {
+                $priority++;
+            }
 
-			$items[$priority] = $item;
-		}
-		ksort($items);
+            $items[$priority] = $item;
+        }
+        ksort($items);
 
-		// Drop the keys and let the ArrayList handle the numbering, so $First, $Last and others work properly.
-		return new ArrayList(array_values($items));
-	}
+        // Drop the keys and let the ArrayList handle the numbering, so $First, $Last and others work properly.
+        return new ArrayList(array_values($items));
+    }
 
-	/**
-	 * @return DataObject|CMSPreviewable
-	 */
-	public function getRecord() {
-		return $this->record;
-	}
+    /**
+     * @return DataObject|CMSPreviewable
+     */
+    public function getRecord() {
+        return $this->record;
+    }
 
-	/**
-	 * @param DataObject|CMSPreviewable $record
-	 * @return array template data
-	 */
-	static public function get_for_record($record) {
-		$html = '';
-		$message = '';
-		$navigator = new SilverStripeNavigator($record);
-		$items = $navigator->getItems();
-		foreach($items as $item) {
-			$text = $item->getHTML();
-			if($text) $html .= $text;
-			$newMessage = $item->getMessage();
-			if($newMessage && $item->isActive()) $message = $newMessage;
-		}
+    /**
+     * @param DataObject|CMSPreviewable $record
+     * @return array template data
+     */
+    static public function get_for_record($record) {
+        $html = '';
+        $message = '';
+        $navigator = new SilverStripeNavigator($record);
+        $items = $navigator->getItems();
+        foreach($items as $item) {
+            $text = $item->getHTML();
+            if($text) $html .= $text;
+            $newMessage = $item->getMessage();
+            if($newMessage && $item->isActive()) $message = $newMessage;
+        }
 
-		return array(
-			'items' => $html,
-			'message' => $message
-		);
-	}
+        return array(
+            'items' => $html,
+            'message' => $message
+        );
+    }
 }

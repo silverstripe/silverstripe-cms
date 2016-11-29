@@ -33,199 +33,199 @@ use DOMElement;
  */
 class SiteTreeLinkTracking extends DataExtension {
 
-	/**
-	 * @var SiteTreeLinkTracking_Parser
-	 */
-	protected $parser;
+    /**
+     * @var SiteTreeLinkTracking_Parser
+     */
+    protected $parser;
 
-	/**
-	 * Inject parser for each page
-	 *
-	 * @var array
-	 * @config
-	 */
-	private static $dependencies = array(
-		'Parser' => '%$SiteTreeLinkTracking_Parser'
-	);
+    /**
+     * Inject parser for each page
+     *
+     * @var array
+     * @config
+     */
+    private static $dependencies = array(
+        'Parser' => '%$SiteTreeLinkTracking_Parser'
+    );
 
-	/**
-	 * Parser for link tracking
-	 *
-	 * @return SiteTreeLinkTracking_Parser
-	 */
-	public function getParser() {
-		return $this->parser;
-	}
+    /**
+     * Parser for link tracking
+     *
+     * @return SiteTreeLinkTracking_Parser
+     */
+    public function getParser() {
+        return $this->parser;
+    }
 
-	/**
-	 * @param SiteTreeLinkTracking_Parser $parser
-	 * @return $this
-	 */
-	public function setParser($parser) {
-		$this->parser = $parser;
-		return $this;
-	}
+    /**
+     * @param SiteTreeLinkTracking_Parser $parser
+     * @return $this
+     */
+    public function setParser($parser) {
+        $this->parser = $parser;
+        return $this;
+    }
 
-	private static $db = array(
-		"HasBrokenFile" => "Boolean",
-		"HasBrokenLink" => "Boolean"
-	);
+    private static $db = array(
+        "HasBrokenFile" => "Boolean",
+        "HasBrokenLink" => "Boolean"
+    );
 
-	private static $many_many = array(
-		"LinkTracking" => "SilverStripe\\CMS\\Model\\SiteTree",
-		"ImageTracking" => "SilverStripe\\Assets\\File"  // {@see SiteTreeFileExtension}
-	);
+    private static $many_many = array(
+        "LinkTracking" => "SilverStripe\\CMS\\Model\\SiteTree",
+        "ImageTracking" => "SilverStripe\\Assets\\File"  // {@see SiteTreeFileExtension}
+    );
 
-	private static $belongs_many_many = array(
-		"BackLinkTracking" => "SilverStripe\\CMS\\Model\\SiteTree.LinkTracking"
-	);
+    private static $belongs_many_many = array(
+        "BackLinkTracking" => "SilverStripe\\CMS\\Model\\SiteTree.LinkTracking"
+    );
 
-	/**
-	 * Tracked images are considered owned by this page
-	 *
-	 * @config
-	 * @var array
-	 */
-	private static $owns = array(
-		"ImageTracking"
-	);
+    /**
+     * Tracked images are considered owned by this page
+     *
+     * @config
+     * @var array
+     */
+    private static $owns = array(
+        "ImageTracking"
+    );
 
-	private static $many_many_extraFields = array(
-		"LinkTracking" => array("FieldName" => "Varchar"),
-		"ImageTracking" => array("FieldName" => "Varchar")
-	);
+    private static $many_many_extraFields = array(
+        "LinkTracking" => array("FieldName" => "Varchar"),
+        "ImageTracking" => array("FieldName" => "Varchar")
+    );
 
-	/**
-	 * Scrape the content of a field to detect anly links to local SiteTree pages or files
-	 *
-	 * @param string $fieldName The name of the field on {@link @owner} to scrape
-	 */
-	public function trackLinksInField($fieldName) {
-		$record = $this->owner;
+    /**
+     * Scrape the content of a field to detect anly links to local SiteTree pages or files
+     *
+     * @param string $fieldName The name of the field on {@link @owner} to scrape
+     */
+    public function trackLinksInField($fieldName) {
+        $record = $this->owner;
 
-		$linkedPages = array();
-		$linkedFiles = array();
+        $linkedPages = array();
+        $linkedFiles = array();
 
-		$htmlValue = Injector::inst()->create('HTMLValue', $record->$fieldName);
-		$links = $this->parser->process($htmlValue);
+        $htmlValue = Injector::inst()->create('HTMLValue', $record->$fieldName);
+        $links = $this->parser->process($htmlValue);
 
-		// Highlight broken links in the content.
-		foreach ($links as $link) {
-			// Skip links without domelements
-			if(!isset($link['DOMReference'])) {
-				continue;
-			}
+        // Highlight broken links in the content.
+        foreach ($links as $link) {
+            // Skip links without domelements
+            if(!isset($link['DOMReference'])) {
+                continue;
+            }
 
-			/** @var DOMElement $domReference */
-			$domReference = $link['DOMReference'];
-			$classStr = trim($domReference->getAttribute('class'));
-			if (!$classStr) {
-				$classes = array();
-			} else {
-				$classes = explode(' ', $classStr);
-			}
+            /** @var DOMElement $domReference */
+            $domReference = $link['DOMReference'];
+            $classStr = trim($domReference->getAttribute('class'));
+            if (!$classStr) {
+                $classes = array();
+            } else {
+                $classes = explode(' ', $classStr);
+            }
 
-			// Add or remove the broken class from the link, depending on the link status.
-			if ($link['Broken']) {
-				$classes = array_unique(array_merge($classes, array('ss-broken')));
-			} else {
-				$classes = array_diff($classes, array('ss-broken'));
-			}
+            // Add or remove the broken class from the link, depending on the link status.
+            if ($link['Broken']) {
+                $classes = array_unique(array_merge($classes, array('ss-broken')));
+            } else {
+                $classes = array_diff($classes, array('ss-broken'));
+            }
 
-			if (!empty($classes)) {
-				$domReference->setAttribute('class', implode(' ', $classes));
-			} else {
-				$domReference->removeAttribute('class');
-			}
-		}
-		$record->$fieldName = $htmlValue->getContent();
+            if (!empty($classes)) {
+                $domReference->setAttribute('class', implode(' ', $classes));
+            } else {
+                $domReference->removeAttribute('class');
+            }
+        }
+        $record->$fieldName = $htmlValue->getContent();
 
-		// Populate link tracking for internal links & links to asset files.
-		foreach ($links as $link) {
-			switch ($link['Type']) {
-				case 'sitetree':
-					if ($link['Broken']) {
-						$record->HasBrokenLink = true;
-					} else {
-						$linkedPages[] = $link['Target'];
-					}
-					break;
+        // Populate link tracking for internal links & links to asset files.
+        foreach ($links as $link) {
+            switch ($link['Type']) {
+                case 'sitetree':
+                    if ($link['Broken']) {
+                        $record->HasBrokenLink = true;
+                    } else {
+                        $linkedPages[] = $link['Target'];
+                    }
+                    break;
 
-				case 'file':
-				case 'image':
-					if ($link['Broken']) {
-						$record->HasBrokenFile = true;
-					} else {
-						$linkedFiles[] = $link['Target'];
-					}
-					break;
+                case 'file':
+                case 'image':
+                    if ($link['Broken']) {
+                        $record->HasBrokenFile = true;
+                    } else {
+                        $linkedFiles[] = $link['Target'];
+                    }
+                    break;
 
-				default:
-					if ($link['Broken']) {
-						$record->HasBrokenLink = true;
-					}
-					break;
-			}
-		}
+                default:
+                    if ($link['Broken']) {
+                        $record->HasBrokenLink = true;
+                    }
+                    break;
+            }
+        }
 
-		// Update the "LinkTracking" many_many
-		if($record->ID
-			&& $record->getSchema()->manyManyComponent(get_class($record), 'LinkTracking')
-			&& ($tracker = $record->LinkTracking())
-		) {
-			$tracker->removeByFilter(array(
-				sprintf('"FieldName" = ? AND "%s" = ?', $tracker->getForeignKey())
-					=> array($fieldName, $record->ID)
-			));
+        // Update the "LinkTracking" many_many
+        if($record->ID
+            && $record->getSchema()->manyManyComponent(get_class($record), 'LinkTracking')
+            && ($tracker = $record->LinkTracking())
+        ) {
+            $tracker->removeByFilter(array(
+                sprintf('"FieldName" = ? AND "%s" = ?', $tracker->getForeignKey())
+                    => array($fieldName, $record->ID)
+            ));
 
-			if($linkedPages) foreach($linkedPages as $item) {
-				$tracker->add($item, array('FieldName' => $fieldName));
-			}
-		}
+            if($linkedPages) foreach($linkedPages as $item) {
+                $tracker->add($item, array('FieldName' => $fieldName));
+            }
+        }
 
-		// Update the "ImageTracking" many_many
-		if($record->ID
-			&& $record->getSchema()->manyManyComponent(get_class($record), 'ImageTracking')
-			&& ($tracker = $record->ImageTracking())
-		) {
-			$tracker->removeByFilter(array(
-				sprintf('"FieldName" = ? AND "%s" = ?', $tracker->getForeignKey())
-					=> array($fieldName, $record->ID)
-			));
+        // Update the "ImageTracking" many_many
+        if($record->ID
+            && $record->getSchema()->manyManyComponent(get_class($record), 'ImageTracking')
+            && ($tracker = $record->ImageTracking())
+        ) {
+            $tracker->removeByFilter(array(
+                sprintf('"FieldName" = ? AND "%s" = ?', $tracker->getForeignKey())
+                    => array($fieldName, $record->ID)
+            ));
 
-			if($linkedFiles) foreach($linkedFiles as $item) {
-				$tracker->add($item, array('FieldName' => $fieldName));
-			}
-		}
-	}
+            if($linkedFiles) foreach($linkedFiles as $item) {
+                $tracker->add($item, array('FieldName' => $fieldName));
+            }
+        }
+    }
 
-	/**
-	 * Find HTMLText fields on {@link owner} to scrape for links that need tracking
-	 *
-	 * @todo Support versioned many_many for per-stage page link tracking
-	 */
-	public function augmentSyncLinkTracking() {
-		// Skip live tracking
-		if(Versioned::get_stage() == Versioned::LIVE) {
-			return;
-		}
+    /**
+     * Find HTMLText fields on {@link owner} to scrape for links that need tracking
+     *
+     * @todo Support versioned many_many for per-stage page link tracking
+     */
+    public function augmentSyncLinkTracking() {
+        // Skip live tracking
+        if(Versioned::get_stage() == Versioned::LIVE) {
+            return;
+        }
 
-		// Reset boolean broken flags
-		$this->owner->HasBrokenLink = false;
-		$this->owner->HasBrokenFile = false;
+        // Reset boolean broken flags
+        $this->owner->HasBrokenLink = false;
+        $this->owner->HasBrokenFile = false;
 
-		// Build a list of HTMLText fields
-		$allFields = DataObject::getSchema()->fieldSpecs($this->owner);
-		$htmlFields = array();
-		foreach($allFields as $field => $fieldSpec) {
-			$fieldObj = $this->owner->dbObject($field);
-			if($fieldObj instanceof DBHTMLText) {
-				$htmlFields[] = $field;
-			}
-		}
+        // Build a list of HTMLText fields
+        $allFields = DataObject::getSchema()->fieldSpecs($this->owner);
+        $htmlFields = array();
+        foreach($allFields as $field => $fieldSpec) {
+            $fieldObj = $this->owner->dbObject($field);
+            if($fieldObj instanceof DBHTMLText) {
+                $htmlFields[] = $field;
+            }
+        }
 
-		foreach($htmlFields as $field) {
-			$this->trackLinksInField($field);
-		}
-	}
+        foreach($htmlFields as $field) {
+            $this->trackLinksInField($field);
+        }
+    }
 }

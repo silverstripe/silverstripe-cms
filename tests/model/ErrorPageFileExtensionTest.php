@@ -11,7 +11,7 @@ use SilverStripe\Assets\Tests\Storage\AssetStoreTest\TestAssetStore;
 
 class ErrorPageFileExtensionTest extends SapphireTest {
 
-	protected static $fixture_file = 'ErrorPageTest.yml';
+    protected static $fixture_file = 'ErrorPageTest.yml';
 
     protected $versionedMode = null;
 
