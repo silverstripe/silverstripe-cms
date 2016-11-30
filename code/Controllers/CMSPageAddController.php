@@ -131,10 +131,10 @@ class CMSPageAddController extends CMSPageEditController {
 
 		$actions = new FieldList(
 			FormAction::create("doAdd", _t('CMSMain.Create',"Create"))
-				->addExtraClass('ss-ui-action-constructive')->setAttribute('data-icon', 'accept')
+				->addExtraClass('btn-primary font-icon-plus-circled')
 				->setUseButtonTag(true),
 			FormAction::create("doCancel", _t('CMSMain.Cancel',"Cancel"))
-				->addExtraClass('ss-ui-action-destructive ss-ui-action-cancel')
+				->addExtraClass('btn-secondary')
 				->setUseButtonTag(true)
 		);
 
