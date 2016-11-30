@@ -2322,7 +2322,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				: _t('CMSMain.ARCHIVE', 'Archive');
 			$moreOptions->push(
 				FormAction::create('archive', $title)
-					->addExtraClass('delete ss-ui-action-destructive')
+					->addExtraClass('delete btn btn-secondary')
 					->setDescription(_t(
 						'SiteTree.BUTTONDELETEDESC',
 						'Remove from draft/live and send to archive'
@@ -2334,8 +2334,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if ($canEdit && $isOnDraft) {
 			$majorActions->push(
 				FormAction::create('save', _t('SiteTree.BUTTONSAVED', 'Saved'))
-					->setAttribute('data-icon', 'accept')
-					->setAttribute('data-icon-alternate', 'addpage')
+					->addExtraClass('btn-primary font-icon-check-mark')
+					->setUseButtonTag(true)
 					->setAttribute('data-text-alternate', _t('CMSMain.SAVEDRAFT','Save draft'))
 			);
 		}
@@ -2344,14 +2344,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			// "publish", as with "save", it supports an alternate state to show when action is needed.
 			$majorActions->push(
 				$publish = FormAction::create('publish', _t('SiteTree.BUTTONPUBLISHED', 'Published'))
-					->setAttribute('data-icon', 'accept')
-					->setAttribute('data-icon-alternate', 'disk')
+					->addExtraClass('font-icon-check-mark-2')
+					->setUseButtonTag(true)
 					->setAttribute('data-text-alternate', _t('SiteTree.BUTTONSAVEPUBLISH', 'Save & publish'))
 			);
 
 			// Set up the initial state of the button to reflect the state of the underlying SiteTree object.
 			if($stagesDiffer) {
-				$publish->addExtraClass('ss-ui-alternate');
+				$publish->addExtraClass('btn-primary');
 			}
 		}
 

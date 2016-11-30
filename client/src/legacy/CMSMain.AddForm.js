@@ -137,10 +137,11 @@ $.entwine('ss', function($){
       selectedEl.siblings().setSelected(false);
 
       // Disable the "Create" button if none of the pagetypes are available
-      var buttonState = this.find('#Form_AddForm_PageType div.radio:not(.disabled)').length
-        ? 'enable'
-        : 'disable';
-      this.find('button[name=action_doAdd]').button(buttonState);
+      if(this.find('#Form_AddForm_PageType div.radio:not(.disabled)').length) {
+        this.find('button[name=action_doAdd]').removeAttr('disabled');
+      } else {
+        this.find('button[name=action_doAdd]').addAttr('disabled');
+      }
 
       this.find('.message-restricted')[allAllowed ? 'hide' : 'show']();
     }
