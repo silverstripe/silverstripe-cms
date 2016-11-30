@@ -27,7 +27,7 @@ Feature: Manage files
     Given I click on "folder1" in the "Files" table
     And I press the "Upload" button
     And I attach the file "testfile.jpg" to "AssetUploadField" with HTML5
-    And I wait for 5 seconds
+    And I wait until I see "File upload completed!"
     And I press the "Back to folder" button
     Then the "folder1" table should contain "testfile"
 
