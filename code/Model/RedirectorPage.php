@@ -6,7 +6,6 @@ use SilverStripe\Forms\HeaderField;
 use SilverStripe\Forms\OptionsetField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\TreeDropdownField;
-use SilverStripe\View\Requirements;
 use Page;
 
 /**
@@ -139,8 +138,6 @@ class RedirectorPage extends Page {
 	}
 
 	public function getCMSFields() {
-		Requirements::javascript(CMS_DIR . '/client/dist/js/RedirectorPage.js');
-
 		$fields = parent::getCMSFields();
 		$fields->removeByName('Content', true);
 
