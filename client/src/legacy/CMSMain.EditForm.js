@@ -379,15 +379,51 @@ $.entwine('ss', function($){
 	 */
 	$('.cms-edit-form.changed').entwine({
 		onmatch: function(e) {
-			this.find('button[name=action_save]').attr('data-showingAlternate', true);
-			this.find('button[name=action_publish]').attr('data-showingAlternate', true);
+			var save = this.find('button[name=action_save]');
+
+      save
+        .removeClass('btn-secondary-outline')
+        .addClass('btn-primary');
+
+      if(save.attr('data-text-alternate')) {
+        save.attr('data-text-standard', save.attr('data-text-alternate'));
+        save.text(save.attr('data-text-alternate'));
+      }
+
+			var publish = this.find('button[name=action_publish]')
+
+      publish
+        .removeClass('btn-secondary-outline')
+        .addClass('btn-primary');
+
+      if(publish.attr('data-text-alternate')) {
+        publish.attr('data-text-standard', publish.attr('data-text-alternate'));
+        publish.text(publish.attr('data-text-alternate'));
+      }
+
 			this._super(e);
 		},
 		onunmatch: function(e) {
-			var saveButton = this.find('button[name=action_save]');
-			if(saveButton.data('button')) saveButton.attr('data-showingAlternate', false);
-			var publishButton = this.find('button[name=action_publish]');
-			if(publishButton.data('button')) publishButton.attr('data-showingAlternate', false);
+     var save = this.find('button[name=action_save]')
+
+     save
+        .addClass('btn-secondary-outline')
+        .removeClass('btn-primary');
+
+      if(save.attr('data-text-standard')) {
+        save.text(save.attr('data-text-standard'));
+      }
+
+      var publish = this.find('button[name=action_publish]');
+
+      publish
+        .addClass('btn-secondary-outline')
+        .removeClass('btn-primary');
+
+      if(publish.attr('data-text-standard')) {
+        publish.text(publish.attr('data-text-standard'));
+      }
+
 			this._super(e);
 		}
 	});

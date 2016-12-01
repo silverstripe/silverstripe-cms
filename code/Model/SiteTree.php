@@ -2253,7 +2253,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		// Add to campaign option if not-archived and has publish permission
 		if (($isPublished || $isOnDraft) && $canPublish) {
-			$moreOptions->push(AddToCampaignHandler_FormAction::create());
+			$moreOptions->push(
+				AddToCampaignHandler_FormAction::create()
+					->removeExtraClass('btn-primary')
+					->addExtraClass('btn-secondary')
+				);
 		}
 
 		// "readonly"/viewing version that isn't the current version of the record
@@ -2274,7 +2278,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$moreOptions->push(
 				FormAction::create('unpublish', _t('SiteTree.BUTTONUNPUBLISH', 'Unpublish'), 'delete')
 					->setDescription(_t('SiteTree.BUTTONUNPUBLISHDESC', 'Remove this page from the published site'))
-					->addExtraClass('ss-ui-action-destructive')
+					->addExtraClass('btn-secondary')
 			);
 		}
 
@@ -2286,6 +2290,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						'SiteTree.BUTTONCANCELDRAFTDESC',
 						'Delete your draft and revert to the currently published page'
 					))
+					->addExtraClass('btn-secondary')
 			);
 		}
 
@@ -2334,7 +2339,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if ($canEdit && $isOnDraft) {
 			$majorActions->push(
 				FormAction::create('save', _t('SiteTree.BUTTONSAVED', 'Saved'))
-					->addExtraClass('btn-primary font-icon-check-mark')
+					->addExtraClass('btn-secondary-outline font-icon-save')
 					->setUseButtonTag(true)
 					->setAttribute('data-text-alternate', _t('CMSMain.SAVEDRAFT','Save draft'))
 			);
@@ -2344,7 +2349,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			// "publish", as with "save", it supports an alternate state to show when action is needed.
 			$majorActions->push(
 				$publish = FormAction::create('publish', _t('SiteTree.BUTTONPUBLISHED', 'Published'))
-					->addExtraClass('font-icon-check-mark-2')
+					->addExtraClass('btn-secondary-outline font-icon-rocket')
+					->setAttribute('data-btn-alternative', 'btn-primary')
 					->setUseButtonTag(true)
 					->setAttribute('data-text-alternate', _t('SiteTree.BUTTONSAVEPUBLISH', 'Save & publish'))
 			);
@@ -2352,6 +2358,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			// Set up the initial state of the button to reflect the state of the underlying SiteTree object.
 			if($stagesDiffer) {
 				$publish->addExtraClass('btn-primary');
+				$publish->setTitle(_t('SiteTree.BUTTONSAVEPUBLISH', 'Save & publish'));
+				$publish->removeExtraClass('btn-secondary-outline');
 			}
 		}
 
