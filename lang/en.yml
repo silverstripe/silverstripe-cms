@@ -77,8 +77,8 @@ en:
     PUBLISH_PAGES: Publish
     RESTORE: Restore
     RESTORED_PAGES: "Restored %d pages"
-    UNPUBLISHED_PAGES: "Un-published %d pages"
-    UNPUBLISH_PAGES: Un-publish
+    UNPUBLISHED_PAGES: "Unpublished %d pages"
+    UNPUBLISH_PAGES: Unpublish
   CMSFileAddController:
     MENUTITLE: Files
   CMSMain:
@@ -100,26 +100,23 @@ en:
     DUPLICATEDWITHCHILDREN: "Duplicated '{title}' and children successfully"
     EMAIL: Email
     EditTree: "Edit Tree"
-    ListFiltered: "Filtered list."
+    ListFiltered: "Showing search results."
     MENUTITLE: "Edit Page"
     NEWPAGE: "New {pagetype}"
     PAGENOTEXISTS: "This page doesn't exist"
-    PAGES: Pages
+    PAGES: "Page status"
     PAGETYPEANYOPT: Any
-    PAGETYPEOPT: "Page Type"
+    PAGETYPEOPT: "Page type"
     PUBALLCONFIRM: "Please publish every page in the site, copying content stage to live"
     PUBALLFUN: "\"Publish All\" functionality"
-    PUBALLFUN2: |-
-        Pressing this button will do the equivalent of going to every page and pressing "publish".  It's
-        intended to be used after there have been massive edits of the content, such as when the site was
-        first built.
+    PUBALLFUN2: "Pressing this button will do the equivalent of going to every page and pressing \"publish\".  It's intended to be used after there have been massive edits of the content, such as when the site was first built."
     PUBLISHED: "Published '{title}' successfully."
     PUBPAGES: "Done: Published {count} pages"
     PageAdded: "Successfully created page"
     REMOVED: "Deleted '{title}'{description} from live site"
     REMOVEDPAGE: "Removed '{title}' from the published site"
     REMOVEDPAGEFROMDRAFT: "Removed '%s' from the draft site"
-    RESTORE: Restore
+    RESTORE: "Restore draft"
     RESTORED: "Restored '{title}' successfully"
     RESTORE_DESC: "Restore the archived version to draft"
     RESTORE_TO_ROOT: "Restore draft at top level"
@@ -133,11 +130,11 @@ en:
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
-    TreeFiltered: "Filtered tree."
-    TreeFilteredClear: "Clear filter"
+    TreeFiltered: "Showing search results."
+    TreeFilteredClear: Clear
     UNPUBLISH_AND_ARCHIVE: "Unpublish and archive"
   CMSMain_left_ss:
-    APPLY_FILTER: "Apply Filter"
+    APPLY_FILTER: Search
     CLEAR_FILTER: Clear
     RESET: Reset
   CMSPageAddController:
@@ -172,7 +169,7 @@ en:
     MENUTITLE: Pages
     TreeView: "Tree View"
   CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: Multi-selection
+    MULTISELECT: "Batch actions"
   CMSPagesController_Tools_ss:
     FILTER: Filter
   CMSSIteTreeFilter_PublishedPages:
@@ -181,20 +178,20 @@ en:
     FILTERDATEFROM: From
     FILTERDATEHEADING: Date
     FILTERDATETO: To
-    FILTERLABELTEXT: Content
+    FILTERLABELTEXT: Search
     PAGEFILTERDATEHEADING: "Last edited"
   CMSSettingsController:
     MENUTITLE: Settings
   CMSSiteTreeFilter_ChangedPages:
-    Title: "Changed pages"
+    Title: "Modified pages"
   CMSSiteTreeFilter_DeletedPages:
-    Title: "All pages, including deleted"
+    Title: "All pages, including archived"
   CMSSiteTreeFilter_Search:
     Title: "All pages"
   CMSSiteTreeFilter_StatusDeletedPages:
-    Title: "Deleted pages"
+    Title: "Archived pages"
   CMSSiteTreeFilter_StatusDraftPages:
-    Title: "Draft unpublished pages"
+    Title: "Draft pages"
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: "Live but removed from draft"
   ContentControl:
@@ -324,7 +321,7 @@ en:
   SilverStripeNavigator:
     ARCHIVED: Archived
   SilverStripeNavigatorLink:
-    ShareInstructions: "To share a this to this page, copy and paste the link below."
+    ShareInstructions: "To share this page, copy and paste the link below."
     ShareLink: "Share link"
   SilverStripeNavigatorLinkl:
     CloseLink: Close

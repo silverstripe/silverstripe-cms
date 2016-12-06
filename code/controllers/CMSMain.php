@@ -1317,10 +1317,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$token->updateFieldSet($fields);
 			$tokenField = $fields->First();
 			$tokenHtml = ($tokenField) ? $tokenField->FieldHolder() : '';
+			$publishAllDescription = _t(
+				'CMSMain.PUBALLFUN2',
+				'Pressing this button will do the equivalent of going to every page and pressing "publish".  '
+				. 'It\'s intended to be used after there have been massive edits of the content, such as when '
+				. 'the site was first built.'
+			);
 			$response .= '<h1>' . _t('CMSMain.PUBALLFUN','"Publish All" functionality') . '</h1>
-				<p>' . _t('CMSMain.PUBALLFUN2', 'Pressing this button will do the equivalent of going to every page and pressing "publish".  It\'s
-				intended to be used after there have been massive edits of the content, such as when the site was
-				first built.') . '</p>
+				<p>' . $publishAllDescription . '</p>
 				<form method="post" action="publishall">
 					<input type="submit" name="confirm" value="'
 					. _t('CMSMain.PUBALLCONFIRM',"Please publish every page in the site, copying content stage to live",'Confirmation button') .'" />'
