@@ -1,6 +1,13 @@
 ## SilverStripe CMS
 
-[![Build Status](https://secure.travis-ci.org/silverstripe/silverstripe-cms.png?branch=master)](http://travis-ci.org/silverstripe/silverstripe-cms)
+[![Build Status](https://api.travis-ci.org/silverstripe/silverstripe-cms.svg?branch=master)](https://travis-ci.org/silverstripe/silverstripe-cms)
+[![Latest Stable Version](https://poser.pugx.org/silverstripe/cms/version.svg)](http://www.silverstripe.org/stable-download/)
+[![Latest Unstable Version](https://poser.pugx.org/silverstripe/cms/v/unstable.svg)](https://packagist.org/packages/silverstripe/cms)
+[![codecov](https://codecov.io/gh/silverstripe/silverstripe-cms/branch/master/graph/badge.svg)](https://codecov.io/gh/silverstripe/silverstripe-cms)
+[![Total Downloads](https://poser.pugx.org/silverstripe/cms/downloads.svg)](https://packagist.org/packages/silverstripe/cms)
+[![License](https://poser.pugx.org/silverstripe/cms/license.svg)](https://github.com/silverstripe/silverstripe-cms#license)
+[![Dependency Status](https://www.versioneye.com/php/silverstripe:cms/badge.svg)](https://www.versioneye.com/php/silverstripe:cms)
+[![Reference Status](https://www.versioneye.com/php/silverstripe:cms/reference_badge.svg?style=flat)](https://www.versioneye.com/php/silverstripe:cms/references)
 ![helpfulrobot](https://helpfulrobot.io/silverstripe/cms/badge)
 
 PHP5 Content Management System (CMS), see [http://silverstripe.org](http://silverstripe.org). Requires the [`framework`](http://github.com/silverstripe/silverstripe-framework) module and a [`silverstripe-installer`](http://github.com/silverstripe/silverstripe-installer) base project.

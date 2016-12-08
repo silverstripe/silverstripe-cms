@@ -11,7 +11,7 @@ use SilverStripe\Assets\File;
  */
 define('CMS_PATH', realpath(__DIR__));
 if(strpos(CMS_PATH, BASE_PATH) === 0) {
-	define('CMS_DIR', trim(substr(CMS_PATH, strlen(BASE_PATH)), '/'));
+	define('CMS_DIR', trim(substr(CMS_PATH, strlen(BASE_PATH)), DIRECTORY_SEPARATOR));
 } else {
 	throw new Exception("Path error: CMS_PATH " . CMS_PATH . " not within BASE_PATH " . BASE_PATH);
 }
