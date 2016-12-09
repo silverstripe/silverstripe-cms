@@ -44,6 +44,7 @@ use SilverStripe\ORM\DB;
 use SilverStripe\ORM\HiddenClass;
 use SilverStripe\ORM\Hierarchy\Hierarchy;
 use SilverStripe\ORM\ManyManyList;
+use SilverStripe\ORM\ValidationResult;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\Security\Group;
 use SilverStripe\Security\Member;
@@ -1661,12 +1662,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				? $this->CopyContentFrom()
 				: $this;
 			if(!in_array($subject->ClassName, $allowed)) {
-				$result->error(
+				$result->addError(
 					_t(
 						'SiteTree.PageTypeNotAllowed',
 						'Page type "{type}" not allowed as child of this parent page',
 						array('type' => $subject->i18n_singular_name())
 					),
+					ValidationResult::TYPE_ERROR,
 					'ALLOWED_CHILDREN'
 				);
 			}
@@ -1674,12 +1676,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		// "Can be root" validation
 		if(!$this->stat('can_be_root') && !$this->ParentID) {
-			$result->error(
+			$result->addError(
 				_t(
 					'SiteTree.PageTypNotAllowedOnRoot',
 					'Page type "{type}" is not allowed on the root level',
 					array('type' => $this->i18n_singular_name())
 				),
+				ValidationResult::TYPE_ERROR,
 				'CAN_BE_ROOT'
 			);
 		}

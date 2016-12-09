@@ -3,6 +3,7 @@
 namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\Admin\AddToCampaignHandler;
+use SilverStripe\Control\Controller;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Core\Convert;
@@ -54,15 +55,14 @@ class CMSPageEditController extends CMSMain {
 		if (is_null($results)) {
 			return null;
 		}
-		$request = $this->getRequest();
-		if($request->getHeader('X-Formschema-Request')) {
-			$data = $this->getSchemaForForm($handler->Form($record));
-			$data['message'] = $results;
 
-			$response = new HTTPResponse(Convert::raw2json($data));
-			$response->addHeader('Content-Type', 'application/json');
-			return $response;
+		if($this->getSchemaRequested()) {
+			// Send extra "message" data with schema response
+			$extraData = ['message' => $results];
+			$schemaId = Controller::join_links($this->Link('schema/AddToCampaignForm'), $id);
+			return $this->getSchemaResponse($schemaId, $form, null, $extraData);
 		}
+
 		return $results;
 	}
 
