@@ -1,5 +1,5 @@
 <div class="view-controls">
-	<button id="filters-button" class="btn btn-secondary icon-button font-icon-search no-text" title="<% _t('CMSPagesController_Tools_ss.FILTER', 'Filter') %>"></button>
+	<button id="filters-button" class="btn btn-secondary icon-button font-icon-search btn--icon-large no-text" title="<% _t('CMSPagesController_Tools_ss.FILTER', 'Filter') %>"></button>
 	<div class="icon-button-group">
 		<%-- Change to data-pjax-target="Content-PageList" to enable in-edit listview --%>
 		<a class="cms-panel-link icon-button font-icon-tree page-view-link <% if $ViewState == 'treeview' %>active<% end_if %>"
