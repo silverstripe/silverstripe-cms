@@ -2339,7 +2339,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if ($canEdit && $isOnDraft) {
 			$majorActions->push(
 				FormAction::create('save', _t('SiteTree.BUTTONSAVED', 'Saved'))
-					->addExtraClass('btn-secondary-outline font-icon-save')
+					->addExtraClass('btn-secondary-outline font-icon-check-mark')
+					->setAttribute('data-btn-alternative', 'btn-primary font-icon-save')
 					->setUseButtonTag(true)
 					->setAttribute('data-text-alternate', _t('CMSMain.SAVEDRAFT','Save draft'))
 			);
@@ -2349,17 +2350,17 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			// "publish", as with "save", it supports an alternate state to show when action is needed.
 			$majorActions->push(
 				$publish = FormAction::create('publish', _t('SiteTree.BUTTONPUBLISHED', 'Published'))
-					->addExtraClass('btn-secondary-outline font-icon-rocket')
-					->setAttribute('data-btn-alternative', 'btn-primary')
+					->addExtraClass('btn-secondary-outline font-icon-check-mark')
+					->setAttribute('data-btn-alternative', 'btn-primary font-icon-rocket')
 					->setUseButtonTag(true)
 					->setAttribute('data-text-alternate', _t('SiteTree.BUTTONSAVEPUBLISH', 'Save & publish'))
 			);
 
 			// Set up the initial state of the button to reflect the state of the underlying SiteTree object.
 			if($stagesDiffer) {
-				$publish->addExtraClass('btn-primary');
+				$publish->addExtraClass('btn-primary font-icon-rocket');
 				$publish->setTitle(_t('SiteTree.BUTTONSAVEPUBLISH', 'Save & publish'));
-				$publish->removeExtraClass('btn-secondary-outline');
+				$publish->removeExtraClass('btn-secondary-outline font-icon-check-mark');
 			}
 		}
 
