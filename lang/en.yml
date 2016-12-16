@@ -76,9 +76,9 @@ en:
     PUBLISHED_PAGES: 'Published %d pages, %d failures'
     PUBLISH_PAGES: Publish
     RESTORE: Restore
-    RESTORED_PAGES: 'Restored %d pages'
-    UNPUBLISHED_PAGES: 'Unpublished %d pages'
-    UNPUBLISH_PAGES: Unpublish
+    RESTORED_PAGES: "Restored %d pages"
+    UNPUBLISHED_PAGES: "Un-published %d pages"
+    UNPUBLISH_PAGES: Un-publish
   CMSFileAddController:
     MENUTITLE: Files
   CMSMain:
@@ -99,12 +99,12 @@ en:
     DUPLICATED: 'Duplicated ''{title}'' successfully'
     DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
     EMAIL: Email
-    EditTree: 'Edit Tree'
-    ListFiltered: 'Showing search results.'
-    MENUTITLE: 'Edit Page'
-    NEWPAGE: 'New {pagetype}'
-    PAGENOTEXISTS: 'This page doesn''t exist'
-    PAGES: 'Page status'
+    EditTree: "Edit Tree"
+    ListFiltered: "Filtered list."
+    MENUTITLE: "Edit Page"
+    NEWPAGE: "New {pagetype}"
+    PAGENOTEXISTS: "This page doesn't exist"
+    PAGES: Pages
     PAGETYPEANYOPT: Any
     PAGETYPEOPT: 'Page type'
     PUBALLCONFIRM: 'Please publish every page in the site, copying content stage to live'
