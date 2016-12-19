@@ -2340,7 +2340,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$majorActions->push(
 				FormAction::create('save', _t('SiteTree.BUTTONSAVED', 'Saved'))
 					->addExtraClass('btn-secondary-outline font-icon-check-mark')
-					->setAttribute('data-btn-alternative', 'btn-primary font-icon-save')
+					->setAttribute('data-btn-alternate', 'btn action btn-primary font-icon-save')
 					->setUseButtonTag(true)
 					->setAttribute('data-text-alternate', _t('CMSMain.SAVEDRAFT','Save draft'))
 			);
@@ -2351,7 +2351,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$majorActions->push(
 				$publish = FormAction::create('publish', _t('SiteTree.BUTTONPUBLISHED', 'Published'))
 					->addExtraClass('btn-secondary-outline font-icon-check-mark')
-					->setAttribute('data-btn-alternative', 'btn-primary font-icon-rocket')
+					->setAttribute('data-btn-alternate', 'btn action btn-primary font-icon-rocket')
 					->setUseButtonTag(true)
 					->setAttribute('data-text-alternate', _t('SiteTree.BUTTONSAVEPUBLISH', 'Save & publish'))
 			);

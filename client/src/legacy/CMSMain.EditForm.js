@@ -377,51 +377,63 @@ $.entwine('ss', function($){
 	 * Enable save buttons upon detecting changes to content.
 	 * "changed" class is added by jQuery.changetracker.
 	 */
-	$('.cms-edit-form.changed').entwine({
-		onmatch: function(e) {
-			var save = this.find('button[name=action_save]');
+  $('.cms-edit-form.changed').entwine({
+    onmatch: function(e) {
+      var save = this.find('button[name=action_save]');
+
+      if(save.attr('data-text-alternate')) {
+        save.attr('data-text-standard', save.text());
+        save.text(save.attr('data-text-alternate'));
+      }
+
+      if(save.attr('data-btn-alternate')) {
+        save.attr('data-btn-standard', save.attr('class'));
+        save.attr('class', save.attr('data-btn-alternate'));
+      }
+
 
       save
         .removeClass('btn-secondary-outline')
         .addClass('btn-primary');
 
-      if(save.attr('data-text-alternate')) {
-        save.attr('data-text-standard', save.attr('data-text-alternate'));
-        save.text(save.attr('data-text-alternate'));
-      }
-
 			var publish = this.find('button[name=action_publish]')
-
-      publish
-        .removeClass('btn-secondary-outline')
-        .addClass('btn-primary');
 
       if(publish.attr('data-text-alternate')) {
         publish.attr('data-text-standard', publish.attr('data-text-alternate'));
         publish.text(publish.attr('data-text-alternate'));
       }
 
+      if(publish.attr('data-btn-alternate')) {
+        publish.attr('data-btn-standard', publish.attr('class'));
+        publish.attr('class', publish.attr('data-btn-alternate'));
+      }
+
+      publish
+        .removeClass('btn-secondary-outline')
+        .addClass('btn-primary');
+
+
 			this._super(e);
 		},
 		onunmatch: function(e) {
-     var save = this.find('button[name=action_save]')
-
-     save
-        .addClass('btn-secondary-outline')
-        .removeClass('btn-primary');
+      var save = this.find('button[name=action_save]')
 
       if(save.attr('data-text-standard')) {
         save.text(save.attr('data-text-standard'));
       }
 
-      var publish = this.find('button[name=action_publish]');
+      if(save.attr('data-btn-standard')) {
+        save.attr('class', save.attr('data-btn-standard'));
+      }
 
-      publish
-        .addClass('btn-secondary-outline')
-        .removeClass('btn-primary');
+      var publish = this.find('button[name=action_publish]');
 
       if(publish.attr('data-text-standard')) {
         publish.text(publish.attr('data-text-standard'));
+      }
+
+      if(publish.attr('data-btn-standard')) {
+        publish.attr('class', publish.attr('data-btn-standard'));
       }
 
 			this._super(e);
