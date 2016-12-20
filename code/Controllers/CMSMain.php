@@ -85,6 +85,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	private static $menu_title = 'Edit Page';
 
+	private static $menu_icon_class = 'font-icon-sitemap'; 
+
 	private static $menu_priority = 10;
 
 	private static $tree_class = SiteTree::class;
