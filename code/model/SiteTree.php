@@ -2217,6 +2217,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 */
 	public function getCMSActions() {
 		$existsOnLive = $this->getExistsOnLive();
+		$numChildren = count($this->getDescendantIDList());
 
 		// Major actions appear as buttons immediately visible as page actions.
 		$majorActions = CompositeField::create()->setName('MajorActions')->setTag('fieldset')->addExtraClass('ss-ui-buttonset noborder');
@@ -2265,6 +2266,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				FormAction::create('unpublish', _t('SiteTree.BUTTONUNPUBLISH', 'Unpublish'), 'delete')
 					->setDescription(_t('SiteTree.BUTTONUNPUBLISHDESC', 'Remove this page from the published site'))
 					->addExtraClass('ss-ui-action-destructive')
+					->setAttribute('data-num-children', $numChildren)
 			);
 		}
 
