@@ -77,8 +77,6 @@ it:
     PUBLISH_PAGES: Pubblica
     RESTORE: Ripristina
     RESTORED_PAGES: "%d pagine ripristinate"
-    UNPUBLISHED_PAGES: "Annullata la pubblicazione di %d pagine"
-    UNPUBLISH_PAGES: "Annulla pubblicazione"
   CMSFileAddController:
     MENUTITLE: Files
   CMSMain:
@@ -100,13 +98,10 @@ it:
     DUPLICATEDWITHCHILDREN: "'{title}' e figlie duplicate con successo"
     EMAIL: E-mail
     EditTree: "Modifica albero"
-    ListFiltered: "Lista filtrata."
     MENUTITLE: "Modifica pagina"
     NEWPAGE: "Nuova {pagetype}"
     PAGENOTEXISTS: "Questa pagina non esiste"
-    PAGES: Pagine
     PAGETYPEANYOPT: Qualsiasi
-    PAGETYPEOPT: "Tipo di pagina"
     PUBALLCONFIRM: "Per favore pubblica ogni singola pagina nel sito, copiando i contenuti da 'bozza' a 'pubblicato'."
     PUBALLFUN: "Funzione \"Pubblica tutto\""
     PUBLISHED: "Pubblicata '{title}' con successo."
@@ -115,7 +110,6 @@ it:
     REMOVED: "'{title}' {description} rimosso dal sito pubblico"
     REMOVEDPAGE: "Eliminata '{title}' dal sito pubblicato"
     REMOVEDPAGEFROMDRAFT: "Eliminata '%s' dal sito bozza"
-    RESTORE: Ripristina
     RESTORED: "Ripristinata '{title}' con successo"
     RESTORE_DESC: "Ripristinare la versione archiviata nella bozza"
     RESTORE_TO_ROOT: "Ripristinare bozza al primo livello"
@@ -129,11 +123,8 @@ it:
     TabContent: Contenuto
     TabHistory: Archivio
     TabSettings: Impostazioni
-    TreeFiltered: "Albero filtrato."
-    TreeFilteredClear: "Azzera filtro"
     UNPUBLISH_AND_ARCHIVE: "Annulla pubblicazione e archivia"
   CMSMain_left_ss:
-    APPLY_FILTER: "Applica filtro"
     CLEAR_FILTER: Annulla
     RESET: Azzera
   CMSPageAddController:
@@ -167,8 +158,6 @@ it:
     ListView: "Visualizzazione a lista"
     MENUTITLE: Pagine
     TreeView: "Visualizzazione a albero"
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: "Selezione multipla"
   CMSPagesController_Tools_ss:
     FILTER: Filtra
   CMSSIteTreeFilter_PublishedPages:
@@ -177,20 +166,11 @@ it:
     FILTERDATEFROM: Da
     FILTERDATEHEADING: Data
     FILTERDATETO: A
-    FILTERLABELTEXT: Contenuto
     PAGEFILTERDATEHEADING: "Ultima modifica"
   CMSSettingsController:
     MENUTITLE: Impostazioni
-  CMSSiteTreeFilter_ChangedPages:
-    Title: "Pagine modificate"
-  CMSSiteTreeFilter_DeletedPages:
-    Title: "Tutte le pagine, incluse le eliminate"
   CMSSiteTreeFilter_Search:
     Title: "Tutte le pagine"
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: "Pagine eliminate"
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: "Pagine bozza non pubblicate"
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: "Live ma rimosse dalla bozza"
   ContentControl:
@@ -320,7 +300,6 @@ it:
   SilverStripeNavigator:
     ARCHIVED: Archiviato
   SilverStripeNavigatorLink:
-    ShareInstructions: "Per condividere questa pagina, copia e incolla il link sottostante."
     ShareLink: "Link di condivisione"
   SilverStripeNavigatorLinkl:
     CloseLink: Chiudi
