@@ -77,8 +77,6 @@ hr:
     PUBLISH_PAGES: Objavi
     RESTORE: Povrati
     RESTORED_PAGES: "Vraćeno '%d' stranica"
-    UNPUBLISHED_PAGES: "Neobjavljeno %d stranica"
-    UNPUBLISH_PAGES: Neobjavi
   CMSFileAddController:
     MENUTITLE: Datoteke
   CMSMain:
@@ -100,26 +98,18 @@ hr:
     DUPLICATEDWITHCHILDREN: "Dupliciran '{title}'  i podstranice uspješno"
     EMAIL: Email
     EditTree: "Uredi stablo stranice"
-    ListFiltered: "Filtrirana lista."
     MENUTITLE: "Uredi stranicu"
     NEWPAGE: "Novi {pagetype}"
     PAGENOTEXISTS: "Stranica ne postoji"
-    PAGES: Stranice
     PAGETYPEANYOPT: "Bilo koji"
-    PAGETYPEOPT: "Tip stranice"
     PUBALLCONFIRM: "Molim objavi svaku stranicu, kopirajući sadržaj"
     PUBALLFUN: "\"Objavi sve\""
-    PUBALLFUN2: |-
-        Klikom na ovaj gumb identično je kao i odlaziti na svaku stranicu i kliknuti "objavi". Namjenjen
-        je za korištenje ako ima puno promjena na sadržaju, poput u trenutku kad je stranica
-        prvi put napravljena.
     PUBLISHED: "Uspješno objavljen '{title}'"
     PUBPAGES: "Gotovo: Objavljeno {count} stranica"
     PageAdded: "Uspješno kreirane stranice"
     REMOVED: "Obrisan '{title}'{description} sa objavljene stranice"
     REMOVEDPAGE: "Uklonjen '{title}' sa objavljene stranice"
     REMOVEDPAGEFROMDRAFT: "Uklonjen '%s' sa nacrtne stranice"
-    RESTORE: Povrati
     RESTORED: "Vraćeno '{title}' uspješno"
     RESTORE_DESC: "Vrati arhiviranu verziju u nacrt"
     RESTORE_TO_ROOT: "Povrati nacrt na najviši nivo"
@@ -133,11 +123,8 @@ hr:
     TabContent: Sadržaj
     TabHistory: Povijest
     TabSettings: Postavke
-    TreeFiltered: "Filtrirano stablo."
-    TreeFilteredClear: "Očisti filter"
     UNPUBLISH_AND_ARCHIVE: "Odjavi i arhiviraj"
   CMSMain_left_ss:
-    APPLY_FILTER: "Primjeni filter"
     CLEAR_FILTER: Očisti
     RESET: Resetiraj
   CMSPageAddController:
@@ -171,8 +158,6 @@ hr:
     ListView: "Pregled kao popis"
     MENUTITLE: Stranice
     TreeView: "Prikaz kao stablo"
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: "Višestruki izbor"
   CMSPagesController_Tools_ss:
     FILTER: Filter
   CMSSIteTreeFilter_PublishedPages:
@@ -181,20 +166,11 @@ hr:
     FILTERDATEFROM: Od
     FILTERDATEHEADING: Datum
     FILTERDATETO: Do
-    FILTERLABELTEXT: Sadržaj
     PAGEFILTERDATEHEADING: "Zadnje uređeno"
   CMSSettingsController:
     MENUTITLE: Postavke
-  CMSSiteTreeFilter_ChangedPages:
-    Title: "Promjenjene stranice"
-  CMSSiteTreeFilter_DeletedPages:
-    Title: "Sve stranice, uključujući obrisane"
   CMSSiteTreeFilter_Search:
     Title: "Sve stranice"
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: "Obrisane stranice"
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: "Neobjavljene nacrtne stranice"
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: "Objavljeno ali uklonito iz predloška"
   ContentControl:
