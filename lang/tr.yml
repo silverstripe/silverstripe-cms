@@ -1,49 +1,49 @@
 tr:
   AssetAdmin:
-    ADDFILES: 'Dosyaları ekle'
-    ActionAdd: 'Klasör ekle'
+    ADDFILES: "Dosyaları ekle"
+    ActionAdd: "Klasör ekle"
     AppCategoryArchive: Arşiv
     AppCategoryAudio: Ses
     AppCategoryDocument: Belge
     AppCategoryImage: Görüntü
     AppCategoryVideo: Video
     FILES: Dosyalar
-    Filetype: 'Dosya türü'
+    Filetype: "Dosya türü"
     NEWFOLDER: YeniKlasör
   AssetAdmin_DeleteBatchAction:
-    TITLE: 'Klasörleri sil'
+    TITLE: "Klasörleri sil"
   AssetAdmin_left_ss:
     GO: Git
   AssetTableField:
     PAGES: sayfa(lar)
   BrokenLinksReport:
-    CheckSite: 'Siteyi kontrol et'
-    HasBrokenLink: 'kırık link var'
-    HoverTitleEditPage: 'Sayfayı düzenle'
-    PageName: 'Sayfa ismi'
-    ReasonDropdownBROKENLINK: 'Kırık link'
+    CheckSite: "Siteyi kontrol et"
+    HasBrokenLink: "kırık link var"
+    HoverTitleEditPage: "Sayfayı düzenle"
+    PageName: "Sayfa ismi"
+    ReasonDropdownBROKENLINK: "Kırık link"
   CMSAddPageController:
-    Title: 'Sayfa ekle'
+    Title: "Sayfa ekle"
   CMSBatchActions:
-    DELETE_PAGES: 'Yayındaki siteden sil'
+    DELETE_PAGES: "Yayındaki siteden sil"
     PUBLISH_PAGES: Yayınla
   CMSFileAddController:
     MENUTITLE: Dosyalar
   CMSMain:
-    AddNew: 'Yeni sayfa ekle'
-    AddNewButton: 'Yeni ekle'
-    ChoosePageParentMode: 'Sayfanın nereye oluşturulacağını seç'
-    ChoosePageType: 'Sayfa tipini seç'
+    AddNew: "Yeni sayfa ekle"
+    AddNewButton: "Yeni ekle"
+    ChoosePageParentMode: "Sayfanın nereye oluşturulacağını seç"
+    ChoosePageType: "Sayfa tipini seç"
     Create: Oluştur
-    DELETE: 'Taslak siteden kaldır'
-    DELETEFP: Yayındaki siteden kaldır
-    MENUTITLE: 'Sayfayı düzenle'
-    PAGENOTEXISTS: 'Sayfa bulunamadı'
-    PUBALLCONFIRM: 'Lütfen taslak sitedeki tüm sayfaları yayınlanmakta olan siteye kopyalayıp yayınla.'
-    PUBALLFUN: '"Hepsini Yayınla" özelliği'
-    PageAdded: 'Sayfa başarıyla oluşturuldu'
-    REMOVEDPAGEFROMDRAFT: '''%s'' taslak siteden silindi'
-    ROLLBACK: 'Bu sürüme geri dön'
+    DELETE: "Taslak siteden kaldır"
+    DELETEFP: "Yayındaki siteden kaldır"
+    MENUTITLE: "Sayfayı düzenle"
+    PAGENOTEXISTS: "Sayfa bulunamadı"
+    PUBALLCONFIRM: "Lütfen taslak sitedeki tüm sayfaları yayınlanmakta olan siteye kopyalayıp yayınla."
+    PUBALLFUN: "\"Hepsini Yayınla\" özelliği"
+    PageAdded: "Sayfa başarıyla oluşturuldu"
+    REMOVEDPAGEFROMDRAFT: "'%s' taslak siteden silindi"
+    ROLLBACK: "Bu sürüme geri dön"
     SAVE: Kaydet
     TabContent: İçerik
     TabHistory: Geçmiş
@@ -51,162 +51,162 @@ tr:
   CMSMain_left_ss:
     RESET: Sıfırla
   CMSPageAddController:
-    MENUTITLE: 'Sayfa ekle'
+    MENUTITLE: "Sayfa ekle"
   CMSPageEditController:
-    MENUTITLE: 'Sayfayı Düzenle'
+    MENUTITLE: "Sayfayı Düzenle"
   CMSPageHistoryController:
-    COMPAREVERSIONS: 'Versiyonları karşılaştır'
+    COMPAREVERSIONS: "Versiyonları karşılaştır"
     MENUTITLE: Geçmiş
   CMSPageHistoryController_versions_ss:
     AUTHOR: Yazar
-    NOTPUBLISHED: 'Yayınlanmamış'
+    NOTPUBLISHED: Yayınlanmamış
     PUBLISHER: Yayınlayan
     UNKNOWN: Bilinmeyen
-    WHEN: Ne zaman
+    WHEN: "Ne zaman"
   CMSPageSettingsController:
-    MENUTITLE: 'Sayfayı düzenle'
+    MENUTITLE: "Sayfayı düzenle"
   CMSPagesController:
-    GalleryView: 'Galeri Görünümü'
+    GalleryView: "Galeri Görünümü"
     MENUTITLE: Sayfalar
   CMSPagesController_Tools_ss:
     FILTER: Filtre
   CMSSettingsController:
     MENUTITLE: Ayarlar
   CMSSiteTreeFilter_Search:
-    Title: 'Tüm sayfalar'
+    Title: "Tüm sayfalar"
   ContentControl:
-    NOTEWONTBESHOWN: 'Not: Bu mesaj ziyaretçilerinize gösterilmeyecektir.'
+    NOTEWONTBESHOWN: "Not: Bu mesaj ziyaretçilerinize gösterilmeyecektir."
   ContentController:
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Taslak veya arşivlenmiş içeriği görebilmek için CMS şifrenizle giriş yapmış olmanız gerekmektedir. <a href="%s">Yayınlanmış siteye geri dönmek için buraya tıklayın.</a>'
+    DRAFT_SITE_ACCESS_RESTRICTION: "Taslak veya arşivlenmiş içeriği görebilmek için CMS şifrenizle giriş yapmış olmanız gerekmektedir. <a href=\"%s\">Yayınlanmış siteye geri dönmek için buraya tıklayın.</a>"
     Email: Eposta
-    INSTALL_SUCCESS: 'Kurulum Başarılı!'
-    InstallFilesDeleted: 'Kurulum dosyaları başarıyla silindi.'
-    InstallSuccessCongratulations: 'SilverStripe başarıyla kuruldu!'
-    LOGOUT: 'Çıkış Yap'
+    INSTALL_SUCCESS: "Kurulum Başarılı!"
+    InstallFilesDeleted: "Kurulum dosyaları başarıyla silindi."
+    InstallSuccessCongratulations: "SilverStripe başarıyla kuruldu!"
+    LOGOUT: "Çıkış Yap"
     Password: Parola
   ErrorPage:
-    400: '400 - Hatalı İstek'
-    401: '401 - Erişim Engellenmiş'
-    403: '403 - Yasak'
-    404: '404 - Bulunamadı'
-    405: '405 - Bilinmeyen Metod'
-    406: '406 - İstemciye Uygun Cevap Bulunamadı'
-    407: '407 - Yetkili Sunucu Erişim Hatası'
-    408: '408 - İstek Zaman Aşımı Hatası'
-    409: '409 - Çakışma'
-    410: '410 - En Saçma HTTP Hatası'
-    411: '411 - Uzunluk Belirtilmemiş'
-    412: '412 - Önşart Hatası'
-    413: '413 - İstek Çok Büyük'
-    414: '414 - İstek-URI Çok Uzun'
-    415: '415 - Desteklenmeyen Medya Tipi'
-    416: '416 - İstek Aralığı Tatmin Edici Değil'
-    417: '417 - Beklenti Hatası'
-    500: '500 - Dahili Sunucu Hatası'
-    501: '501 - Uygulanmamış'
-    502: '502 - Hatalı Arayapı'
-    503: '503 - Servis Mevcut Değil'
-    504: '504 - Arayapı Zaman Aşımı'
-    505: '505 - HTTP Versiyonu Desteklenmiyor'
-    CODE: 'Hata kodu'
-    DEFAULTERRORPAGECONTENT: '<p>Varolmayan bir sayfaya ulaşmaya çalışıyorsunuz.</p><p>Lütfen ulaşmak istediğiniz URL''i kontrol edip tekrar deneyiniz.</p>'
-    DEFAULTERRORPAGETITLE: 'Sayfa bulunamadı'
+    400: "400 - Hatalı İstek"
+    401: "401 - Erişim Engellenmiş"
+    403: "403 - Yasak"
+    404: "404 - Bulunamadı"
+    405: "405 - Bilinmeyen Metod"
+    406: "406 - İstemciye Uygun Cevap Bulunamadı"
+    407: "407 - Yetkili Sunucu Erişim Hatası"
+    408: "408 - İstek Zaman Aşımı Hatası"
+    409: "409 - Çakışma"
+    410: "410 - En Saçma HTTP Hatası"
+    411: "411 - Uzunluk Belirtilmemiş"
+    412: "412 - Önşart Hatası"
+    413: "413 - İstek Çok Büyük"
+    414: "414 - İstek-URI Çok Uzun"
+    415: "415 - Desteklenmeyen Medya Tipi"
+    416: "416 - İstek Aralığı Tatmin Edici Değil"
+    417: "417 - Beklenti Hatası"
+    500: "500 - Dahili Sunucu Hatası"
+    501: "501 - Uygulanmamış"
+    502: "502 - Hatalı Arayapı"
+    503: "503 - Servis Mevcut Değil"
+    504: "504 - Arayapı Zaman Aşımı"
+    505: "505 - HTTP Versiyonu Desteklenmiyor"
+    CODE: "Hata kodu"
+    DEFAULTERRORPAGECONTENT: "<p>Varolmayan bir sayfaya ulaşmaya çalışıyorsunuz.</p><p>Lütfen ulaşmak istediğiniz URL'i kontrol edip tekrar deneyiniz.</p>"
+    DEFAULTERRORPAGETITLE: "Sayfa bulunamadı"
   Folder:
-    DELETEUNUSEDTHUMBNAILS: 'Kullanılmamış thumbnail leri sil'
-    UNUSEDFILESTITLE: 'Kullanılmamış dosyalar'
-    UNUSEDTHUMBNAILSTITLE: 'Kullanılmamış thumbnail ler'
+    DELETEUNUSEDTHUMBNAILS: "Kullanılmamış thumbnail leri sil"
+    UNUSEDFILESTITLE: "Kullanılmamış dosyalar"
+    UNUSEDTHUMBNAILSTITLE: "Kullanılmamış thumbnail ler"
   LeftAndMain:
     DELETED: Silindi.
     SAVEDUP: Kaydedildi.
   Permission:
-    CMS_ACCESS_CATEGORY: 'CMS Erişimi'
+    CMS_ACCESS_CATEGORY: "CMS Erişimi"
   RedirectorPage:
-    DESCRIPTION: 'Başka iç sayfaya yönlendir'
-    HASBEENSETUP: 'Yönlendirilecek yeri olmayan bir yönlendirme sayfası ayarlandı.'
-    HEADER: 'Bu sayfa, kullanıcıları başka bir sayfaya yönlendirir'
-    OTHERURL: 'Başka bir siteye ait URL'
-    REDIRECTTO: 'Şuraya yönlendir'
-    REDIRECTTOEXTERNAL: 'Başka bir site'
-    REDIRECTTOPAGE: 'Web sitenizdeki bir sayfa'
-    YOURPAGE: 'Web sitenizdeki bir sayfa'
+    DESCRIPTION: "Başka iç sayfaya yönlendir"
+    HASBEENSETUP: "Yönlendirilecek yeri olmayan bir yönlendirme sayfası ayarlandı."
+    HEADER: "Bu sayfa, kullanıcıları başka bir sayfaya yönlendirir"
+    OTHERURL: "Başka bir siteye ait URL"
+    REDIRECTTO: "Şuraya yönlendir"
+    REDIRECTTOEXTERNAL: "Başka bir site"
+    REDIRECTTOPAGE: "Web sitenizdeki bir sayfa"
+    YOURPAGE: "Web sitenizdeki bir sayfa"
   ReportAdmin:
     MENUTITLE: Raporlar
   SearchForm:
     GO: Git
     SEARCH: Ara
   SideReport:
-    BROKENFILES: 'Kırık link bulunan sayfalar'
-    BROKENLINKS: 'Kırık link bulunan sayfalar'
-    BrokenLinksGroupTitle: 'Kırık linki rapor et'
-    ContentGroupTitle: 'İçerik raporları'
-    EMPTYPAGES: 'Boş sayfalar'
-    LAST2WEEKS: 'Son 2 haftada düzenlenmiş sayfalar'
+    BROKENFILES: "Kırık link bulunan sayfalar"
+    BROKENLINKS: "Kırık link bulunan sayfalar"
+    BrokenLinksGroupTitle: "Kırık linki rapor et"
+    ContentGroupTitle: "İçerik raporları"
+    EMPTYPAGES: "Boş sayfalar"
+    LAST2WEEKS: "Son 2 haftada düzenlenmiş sayfalar"
     OtherGroupTitle: Diğeri
-    ParameterLiveCheckbox: 'Yayındaki siteyi kontrol et'
+    ParameterLiveCheckbox: "Yayındaki siteyi kontrol et"
   SilverStripeNavigatorLink:
-    ShareLink: 'Linki paylaş'
+    ShareLink: "Linki paylaş"
   SilverStripeNavigatorLinkl:
     CloseLink: Kapat
   SiteConfig:
-    DEFAULTTHEME: '(Varsayılan temayı kullan)'
-    SITENAMEDEFAULT: 'Site Adınız'
-    SITETITLE: 'Site başlığı'
+    DEFAULTTHEME: "(Varsayılan temayı kullan)"
+    SITENAMEDEFAULT: "Site Adınız"
+    SITETITLE: "Site başlığı"
     TABACCESS: Erişim
     TABMAIN: Ana
     THEME: Tema
   SiteTree:
     ACCESSANYONE: Herkes
-    ACCESSHEADER: 'Bu sayfayı kimler görüntüleyebilir?'
-    ACCESSLOGGEDIN: 'Giriş yapmış kullanıcılar'
-    ACCESSONLYTHESE: 'Sadece bu kişiler (listeden seçiniz)'
+    ACCESSHEADER: "Bu sayfayı kimler görüntüleyebilir?"
+    ACCESSLOGGEDIN: "Giriş yapmış kullanıcılar"
+    ACCESSONLYTHESE: "Sadece bu kişiler (listeden seçiniz)"
     ADDEDTODRAFTSHORT: Taslak
-    ALLOWCOMMENTS: 'Bu sayfada yorumlara izin verilsin mi?'
-    BUTTONCANCELDRAFT: 'Taslak değikliklerini iptal et'
-    BUTTONCANCELDRAFTDESC: 'Taslağı sil ve şu an yayında olan sayfaya geri döndür'
-    BUTTONUNPUBLISH: Yayından kaldır
-    BUTTONUNPUBLISHDESC: 'Bu sayfayı yayından kaldır'
+    ALLOWCOMMENTS: "Bu sayfada yorumlara izin verilsin mi?"
+    BUTTONCANCELDRAFT: "Taslak değikliklerini iptal et"
+    BUTTONCANCELDRAFTDESC: "Taslağı sil ve şu an yayında olan sayfaya geri döndür"
+    BUTTONUNPUBLISH: "Yayından kaldır"
+    BUTTONUNPUBLISHDESC: "Bu sayfayı yayından kaldır"
     Comments: Yorumlar
     Content: İçerik
-    DEFAULTABOUTTITLE: 'Hakkımızda'
-    DEFAULTCONTACTTITLE: 'İletişim'
+    DEFAULTABOUTTITLE: Hakkımızda
+    DEFAULTCONTACTTITLE: İletişim
     DEFAULTHOMETITLE: Anasayfa
-    DependtPageColumnLinkType: 'Link tipi'
-    EDITANYONE: 'CMS''e giriş yapabilen herkes'
-    EDITHEADER: 'Bu sayfayı kimler düzenleyebilir?'
-    EDITONLYTHESE: 'Sadece bu kişiler (listeden seçiniz)'
-    Editors: 'Editör Grupları'
-    HASBROKENLINKS: 'Bu sayfada hatalı linkler var.'
+    DependtPageColumnLinkType: "Link tipi"
+    EDITANYONE: "CMS'e giriş yapabilen herkes"
+    EDITHEADER: "Bu sayfayı kimler düzenleyebilir?"
+    EDITONLYTHESE: "Sadece bu kişiler (listeden seçiniz)"
+    Editors: "Editör Grupları"
+    HASBROKENLINKS: "Bu sayfada hatalı linkler var."
     HTMLEDITORTITLE: İçerik
-    INHERIT: 'Üst sayfadan kalan'
-    LASTUPDATED: 'Son Güncellenen'
-    MENUTITLE: 'Navigasyon etiketi'
-    METADESC: 'Tanım'
-    METAEXTRA: 'Kişisel Meta Etiketleri'
+    INHERIT: "Üst sayfadan kalan"
+    LASTUPDATED: "Son Güncellenen"
+    MENUTITLE: "Navigasyon etiketi"
+    METADESC: Tanım
+    METAEXTRA: "Kişisel Meta Etiketleri"
     MODIFIEDONDRAFTSHORT: Değiştirilmiş
-    PAGETITLE: 'Sayfa ismi'
-    PAGETYPE: 'Sayfa tipi'
-    PARENTID: 'Ana sayfa'
-    PARENTTYPE: 'Sayfa konumu'
-    PARENTTYPE_ROOT: 'Üst seviye sayfa'
-    PERMISSION_GRANTACCESS_DESCRIPTION: 'Grupların işlem ve düzenlemelerinin kontrolü'
-    REMOVEDFROMDRAFTHELP: 'Sayfa yayınlandı ve taslaklardan silindi'
-    REORGANISE_DESCRIPTION: 'Site yapısını değiştir'
-    REORGANISE_HELP: 'Site ağacının sürükle&bırak şeklinde tekrardan düzenle'
-    SHOWINMENUS: 'Menülerde gösterilsin mi?'
-    SHOWINSEARCH: 'Aramalarda gösterilsin mi?'
+    PAGETITLE: "Sayfa ismi"
+    PAGETYPE: "Sayfa tipi"
+    PARENTID: "Ana sayfa"
+    PARENTTYPE: "Sayfa konumu"
+    PARENTTYPE_ROOT: "Üst seviye sayfa"
+    PERMISSION_GRANTACCESS_DESCRIPTION: "Grupların işlem ve düzenlemelerinin kontrolü"
+    REMOVEDFROMDRAFTHELP: "Sayfa yayınlandı ve taslaklardan silindi"
+    REORGANISE_DESCRIPTION: "Site yapısını değiştir"
+    REORGANISE_HELP: "Site ağacının sürükle&bırak şeklinde tekrardan düzenle"
+    SHOWINMENUS: "Menülerde gösterilsin mi?"
+    SHOWINSEARCH: "Aramalarda gösterilsin mi?"
     TABBEHAVIOUR: Davranış
-    TABCONTENT: 'İçerik'
-    TOPLEVEL: 'Site İçeriği (Üst Seviye)'
-    URLSegment: 'URL Kısmı'
-    Viewers: 'Görüntüleyici Grupları'
+    TABCONTENT: İçerik
+    TOPLEVEL: "Site İçeriği (Üst Seviye)"
+    URLSegment: "URL Kısmı"
+    Viewers: "Görüntüleyici Grupları"
     Visibility: Görünürlük
-    has_one_Parent: 'Üst Sayfa'
-    many_many_BackLinkTracking: 'Geri bağlantı izi'
-    many_many_ImageTracking: 'İmaj izi'
-    many_many_LinkTracking: 'Bağlantı izi'
+    has_one_Parent: "Üst Sayfa"
+    many_many_BackLinkTracking: "Geri bağlantı izi"
+    many_many_ImageTracking: "İmaj izi"
+    many_many_LinkTracking: "Bağlantı izi"
   ViewArchivedEmail_ss:
-    CANACCESS: 'Arşivdeki siteye şu bağlantıdan erişebilirsiniz:'
-    HAVEASKED: 'Şu tarihe kadar olan site içeriğini görüntülemek istediniz:'
+    CANACCESS: "Arşivdeki siteye şu bağlantıdan erişebilirsiniz:"
+    HAVEASKED: "Şu tarihe kadar olan site içeriğini görüntülemek istediniz:"
   VirtualPage:
-    HEADER: 'Bu sanal bir sayfadır'
-    SINGULARNAME: 'Sanal Sayfa'
+    HEADER: "Bu sanal bir sayfadır"
+    SINGULARNAME: "Sanal Sayfa"

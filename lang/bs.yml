@@ -1,121 +1,121 @@
 bs:
   AssetAdmin:
-    ADDFILES: 'Dodaj datoteke'
-    ActionAdd: 'Kreiraj direktorij'
+    ADDFILES: "Dodaj datoteke"
+    ActionAdd: "Kreiraj direktorij"
     AppCategoryArchive: Arhiva
     AppCategoryAudio: Audio
     AppCategoryDocument: Dokument
-    BackToFolder: 'Nazad na direktorij'
+    BackToFolder: "Nazad na direktorij"
     CREATED: Datum
-    CurrentFolderOnly: 'Limitiraj na trenutni direktorij?'
+    CurrentFolderOnly: "Limitiraj na trenutni direktorij?"
     DetailsView: Detalji
     FILES: Datoteke
-    FILESYSTEMSYNC: 'Sinhroniziraj datoteke'
-    FROMTHEINTERNET: 'Sa interneta'
-    FROMYOURCOMPUTER: 'Sa Vašeg kompijutera'
-    Filetype: 'Tip datoteke'
+    FILESYSTEMSYNC: "Sinhroniziraj datoteke"
+    FROMTHEINTERNET: "Sa interneta"
+    FROMYOURCOMPUTER: "Sa Vašeg kompijutera"
+    Filetype: "Tip datoteke"
     MENUTITLE: Datoteke
     NEWFOLDER: NoviDirektorij
     SIZE: Veličina
-    THUMBSDELETED: '{count} nekorištenih je obrisano'
+    THUMBSDELETED: "{count} nekorištenih je obrisano"
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
-    TITLE: 'Izbriši direktorije'
+    TITLE: "Izbriši direktorije"
   AssetAdmin_Tools:
     FILTER: Filter
   AssetAdmin_left_ss:
     GO: Idi
   AssetTableField:
-    BACKLINKCOUNT: 'Korišteno ovdje:'
+    BACKLINKCOUNT: "Korišteno ovdje:"
     PAGES: strana(ice)
   BackLink_Button_ss:
     Back: Nazad
   BrokenLinksReport:
-    Any: Bilo koji
+    Any: "Bilo koji"
   CMSMain:
     Create: Kreiraj
-    DELETE: 'Izbriši sa privremenog nacrta stranice'
-    PAGENOTEXISTS: 'Ova stranica ne postoji'
-    PUBALLCONFIRM: 'Molimo, objavite svaku stavku na ovoj stranici, kopiranjem sadržaja na aktivnu stranicu'
-    PUBALLFUN: 'Funkcija "Objavi sve"'
-    REMOVEDPAGEFROMDRAFT: 'Uklonjeno ''%s'' sa privremenog nacrta stranice'
-    ROLLBACK: 'Vrati na ovo izdanje'
+    DELETE: "Izbriši sa privremenog nacrta stranice"
+    PAGENOTEXISTS: "Ova stranica ne postoji"
+    PUBALLCONFIRM: "Molimo, objavite svaku stavku na ovoj stranici, kopiranjem sadržaja na aktivnu stranicu"
+    PUBALLFUN: "Funkcija \"Objavi sve\""
+    REMOVEDPAGEFROMDRAFT: "Uklonjeno '%s' sa privremenog nacrta stranice"
+    ROLLBACK: "Vrati na ovo izdanje"
     SAVE: Snimi
   ErrorPage:
-    400: '400 - Pogrešan zahtjev'
-    401: '401 - Neovlašteno'
-    403: '403 - Zabranjeno'
-    404: '404 - Nije pronađeno'
-    405: '405 - Metoda nije dozvoljena'
-    406: '406 - NIje prihvatljivo'
-    407: '407 - Potrebna proxy ovjera'
-    408: '408 - Zahtjev zaustavljen'
-    409: '409 - Konflikt'
-    410: '410 - Nestalo'
-    411: '411 - Potrebna dužina'
-    412: '412 - Neuspjela pretpostavka'
-    413: '413 - Preveliki entitet zahtjeva'
-    414: '414 - Predug URI zahtjeva'
-    415: '415 - Tip medija nije podržan'
-    416: '416 - Opseg zahtjeva nije zadovoljavajući'
-    417: '417 - Neuspješno očekivanje'
-    500: '500 - INterna greška na serveru'
-    501: '501 - Nije realizirano'
-    502: '502 - Pogrešan gateway'
-    503: '503 - Nedostupan servis '
-    504: '504 - Gateway zaustavljen'
-    505: '505 - HTTP izdanje nije podržano'
-    CODE: 'Kod greške'
-    DEFAULTERRORPAGECONTENT: '<p>Žao nam je, pokušali ste pristupiti stranici koja ne postoji.</p><p>Molimo provjerite da li ste ispravno ukucali URL kojem ste pokušali pristupiti i pokušajte ponovo.</p>'
-    DEFAULTERRORPAGETITLE: 'Stranica nije pronađena'
+    400: "400 - Pogrešan zahtjev"
+    401: "401 - Neovlašteno"
+    403: "403 - Zabranjeno"
+    404: "404 - Nije pronađeno"
+    405: "405 - Metoda nije dozvoljena"
+    406: "406 - NIje prihvatljivo"
+    407: "407 - Potrebna proxy ovjera"
+    408: "408 - Zahtjev zaustavljen"
+    409: "409 - Konflikt"
+    410: "410 - Nestalo"
+    411: "411 - Potrebna dužina"
+    412: "412 - Neuspjela pretpostavka"
+    413: "413 - Preveliki entitet zahtjeva"
+    414: "414 - Predug URI zahtjeva"
+    415: "415 - Tip medija nije podržan"
+    416: "416 - Opseg zahtjeva nije zadovoljavajući"
+    417: "417 - Neuspješno očekivanje"
+    500: "500 - INterna greška na serveru"
+    501: "501 - Nije realizirano"
+    502: "502 - Pogrešan gateway"
+    503: "503 - Nedostupan servis "
+    504: "504 - Gateway zaustavljen"
+    505: "505 - HTTP izdanje nije podržano"
+    CODE: "Kod greške"
+    DEFAULTERRORPAGECONTENT: "<p>Žao nam je, pokušali ste pristupiti stranici koja ne postoji.</p><p>Molimo provjerite da li ste ispravno ukucali URL kojem ste pokušali pristupiti i pokušajte ponovo.</p>"
+    DEFAULTERRORPAGETITLE: "Stranica nije pronađena"
   Folder:
-    DELETEUNUSEDTHUMBNAILS: 'Izbriši neiskorištene sličice'
-    UNUSEDFILESTITLE: 'Neiskorištene datoteke'
-    UNUSEDTHUMBNAILSTITLE: 'Neiskorištene sličice'
+    DELETEUNUSEDTHUMBNAILS: "Izbriši neiskorištene sličice"
+    UNUSEDFILESTITLE: "Neiskorištene datoteke"
+    UNUSEDTHUMBNAILSTITLE: "Neiskorištene sličice"
   RedirectorPage:
-    HASBEENSETUP: 'Stranica za preusmjeravanje je podešena bez odredišta.'
-    HEADER: 'Ova stranica će preusmjeriti korisnike na drugu stranicu'
-    OTHERURL: 'URL druge web stranice'
-    REDIRECTTO: 'Preusmjeri na'
-    REDIRECTTOEXTERNAL: 'Drugu web stranicu'
-    REDIRECTTOPAGE: 'Na stavku na Vašoj web stranici'
-    YOURPAGE: 'Stavku na Vašoj web stranici'
+    HASBEENSETUP: "Stranica za preusmjeravanje je podešena bez odredišta."
+    HEADER: "Ova stranica će preusmjeriti korisnike na drugu stranicu"
+    OTHERURL: "URL druge web stranice"
+    REDIRECTTO: "Preusmjeri na"
+    REDIRECTTOEXTERNAL: "Drugu web stranicu"
+    REDIRECTTOPAGE: "Na stavku na Vašoj web stranici"
+    YOURPAGE: "Stavku na Vašoj web stranici"
   SearchForm:
     GO: Idi
     SEARCH: Pretraga
   SideReport:
-    EMPTYPAGES: 'Prazne stranice'
-    LAST2WEEKS: 'Izmjenjene stranice u posljednje 2 sedmice'
+    EMPTYPAGES: "Prazne stranice"
+    LAST2WEEKS: "Izmjenjene stranice u posljednje 2 sedmice"
   SiteTree:
-    ACCESSANYONE: Svi korisnici
-    ACCESSHEADER: 'Ko može pregledati ovu stavku na mojoj stranici?'
-    ACCESSLOGGEDIN: 'Prijavljeni korisnici'
-    ACCESSONLYTHESE: 'Samo ovi korisnici (izaberite sa popisa)'
-    ALLOWCOMMENTS: 'Dozvoli komentare na ovoj stranici?'
-    BUTTONCANCELDRAFT: 'Poništi promjene privremenog nacrta stranice'
-    BUTTONCANCELDRAFTDESC: 'Izbrišite Vaš privremeni nacrt stranice i vratite se na trenutno objavljenu stranicu'
-    BUTTONUNPUBLISH: Opozovi objavljivanje
-    BUTTONUNPUBLISHDESC: 'Ukloni ovu stavku sa objavljene stranice'
-    DEFAULTABOUTTITLE: 'O nama'
-    DEFAULTCONTACTTITLE: 'Kontaktirajte nas'
+    ACCESSANYONE: "Svi korisnici"
+    ACCESSHEADER: "Ko može pregledati ovu stavku na mojoj stranici?"
+    ACCESSLOGGEDIN: "Prijavljeni korisnici"
+    ACCESSONLYTHESE: "Samo ovi korisnici (izaberite sa popisa)"
+    ALLOWCOMMENTS: "Dozvoli komentare na ovoj stranici?"
+    BUTTONCANCELDRAFT: "Poništi promjene privremenog nacrta stranice"
+    BUTTONCANCELDRAFTDESC: "Izbrišite Vaš privremeni nacrt stranice i vratite se na trenutno objavljenu stranicu"
+    BUTTONUNPUBLISH: "Opozovi objavljivanje"
+    BUTTONUNPUBLISHDESC: "Ukloni ovu stavku sa objavljene stranice"
+    DEFAULTABOUTTITLE: "O nama"
+    DEFAULTCONTACTTITLE: "Kontaktirajte nas"
     DEFAULTHOMETITLE: Početna
-    EDITANYONE: 'Svi korisnici koji se mogu prijaviti u CMS'
-    EDITHEADER: 'Ko može izmijeniti ovu stavku unutar CMS-a?'
-    EDITONLYTHESE: 'Samo ovi korisnici (izaberite sa popisa)'
-    HASBROKENLINKS: 'Ova stranica ima neispravnih linkova.'
+    EDITANYONE: "Svi korisnici koji se mogu prijaviti u CMS"
+    EDITHEADER: "Ko može izmijeniti ovu stavku unutar CMS-a?"
+    EDITONLYTHESE: "Samo ovi korisnici (izaberite sa popisa)"
+    HASBROKENLINKS: "Ova stranica ima neispravnih linkova."
     HTMLEDITORTITLE: Sadržaj
-    MENUTITLE: 'Oznaka navigacije'
-    METADESC: 'Opis'
-    METAEXTRA: 'Prilagođene Meta oznake'
-    PAGETITLE: 'Ime stranice'
-    PAGETYPE: 'Tip stranice'
-    SHOWINMENUS: 'Prikaži u izbornicima?'
-    SHOWINSEARCH: 'Prikaži u pretrazi?'
+    MENUTITLE: "Oznaka navigacije"
+    METADESC: Opis
+    METAEXTRA: "Prilagođene Meta oznake"
+    PAGETITLE: "Ime stranice"
+    PAGETYPE: "Tip stranice"
+    SHOWINMENUS: "Prikaži u izbornicima?"
+    SHOWINSEARCH: "Prikaži u pretrazi?"
     TABBEHAVIOUR: Ponašanje
-    TABCONTENT: 'Sadržaj'
-    TOPLEVEL: 'Sadržaj stranice (Glavni nivo)'
+    TABCONTENT: Sadržaj
+    TOPLEVEL: "Sadržaj stranice (Glavni nivo)"
   ViewArchivedEmail_ss:
-    CANACCESS: 'Arhiviranoj stranici možete pristupiti korištenjem ovog linka:'
-    HAVEASKED: 'Zahtjevali ste pregled sadržaja naše stranice na'
+    CANACCESS: "Arhiviranoj stranici možete pristupiti korištenjem ovog linka:"
+    HAVEASKED: "Zahtjevali ste pregled sadržaja naše stranice na"
   VirtualPage:
-    HEADER: 'Ovo je virtualna stranica'
+    HEADER: "Ovo je virtualna stranica"
