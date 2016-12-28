@@ -6,6 +6,7 @@ use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Assets\Tests\Storage\AssetStoreTest\TestAssetStore;
+use SilverStripe\Control\HTTPResponse_Exception;
 
 /**
  * @package cms
@@ -71,7 +72,7 @@ class ErrorPageTest extends FunctionalTest {
 			$controller = singleton(ContentController::class);
 			$controller->httpError(403); $this->fail('Expected exception to be thrown');
 		}
-		catch(SS_HTTPResponse_Exception $e) {
+		catch(HTTPResponse_Exception $e) {
 			$response = $e->getResponse();$this->assertEquals($response->getStatusCode(), '403');
 			$this->assertNotNull($response->getBody(), 'We have body text from the error page');
 		}
