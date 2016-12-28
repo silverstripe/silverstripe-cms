@@ -12,6 +12,7 @@ addons:
 
 env:
   global:
+    - TRAVIS_NODE_VERSION="4"
     - CORE_RELEASE=4
 
 matrix:
