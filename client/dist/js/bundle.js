@@ -12,7 +12,7 @@ this.find("#Form_AddForm_ParentID_Holder .TreeDropdownField").bind("change",func
 
 },loadCachedChildren:function i(t){var e=this.getParentCache()
 return"undefined"!=typeof e[t]?e[t]:null},saveCachedChildren:function a(t,e){var n=this.getParentCache()
-n[t]=e,this.setParentCache(n)},updateTypeList:function o(){var e=this.data("hints"),n=this.find("#Form_AddForm_ParentID_Holder .TreeDropdownField"),i=this.find("input[name=ParentModeField]:checked").val(),a=n.data("metadata"),o=a&&"child"===i?n.getValue()||this.getParentID():null,s=a?a.ClassName:null,r=s&&"child"===i?s:"Root",d="undefined"!=typeof e[r]?e[r]:null,l=this,c=d&&"undefined"!=typeof d.defaultChild?d.defaultChild:null,u=[]
+n[t]=e,this.setParentCache(n)},updateTypeList:function o(){var e=this.data("hints"),n=this.find("#Form_AddForm_ParentID_Holder .TreeDropdownField"),i=this.find("input[name=ParentModeField]:checked").val(),a=n.data("metadata"),o=a&&"child"===i?n.getValue()||this.getParentID():null,s=a?a.ClassName:null,r=s&&"child"===i&&o?s:"Root",d="undefined"!=typeof e[r]?e[r]:null,l=this,c=d&&"undefined"!=typeof d.defaultChild?d.defaultChild:null,u=[]
 
 
 if(o){if(this.hasClass("loading"))return

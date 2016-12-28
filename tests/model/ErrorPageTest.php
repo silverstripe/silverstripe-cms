@@ -69,10 +69,14 @@ class ErrorPageTest extends FunctionalTest {
 		$page = $this->objFromFixture('SilverStripe\\CMS\\Model\\ErrorPage', '403');
 		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
-		$response = $this->get($page->RelativeLink());
-
-		$this->assertEquals($response->getStatusCode(), '403');
-		$this->assertNotNull($response->getBody(), 'We have body text from the error page');
+		try {
+			$controller = singleton('ContentController');
+			$controller->httpError(403); $this->fail('Expected exception to be thrown');
+		}
+		catch(SS_HTTPResponse_Exception $e) {
+			$response = $e->getResponse();$this->assertEquals($response->getStatusCode(), '403');
+			$this->assertNotNull($response->getBody(), 'We have body text from the error page');
+		}
 	}
 
 	public function testSecurityError() {

@@ -12,12 +12,7 @@ addons:
 
 env:
   global:
-    - TRAVIS_NODE_VERSION="4"
-    - CORE_RELEASE=master
-    - ARTIFACTS_REGION=us-east-1
-    - ARTIFACTS_BUCKET=silverstripe-travis-artifacts
-    - secure: "uql39x7U1QSn1PXeGCgkREOWt9avvedfNI/CF5ESeSnlpuLLKVmZcQ4V1kCO0/0K0WbBb9tMyC4we6KDccZFwhqPqmFD2q0m76CISz8eduEWoSU1HFfWzkGKfUbe1sVWZtr/zqLjrjrbXKxwnieK2HxXEw9nUmMLCUXvg9gShiQ="
-    - secure: "0AL85od1+sMZ/cDyIcehVTGULy0n7IaYmVqJ2mDjbmcRkBx/LwTB9nWxcAgQmP0jt01N6Bjwy2vpBwmR0r0nOJYkUpHOv63F0qkhYVjjLRffwhw7nGbKW4HViTLfF0AfZaj3IErGsEWzpTbo0QOZvHI1OsWPTbQEIXyuZPV9nBk="
+    - CORE_RELEASE=4
 
 matrix:
   include:
@@ -61,7 +56,7 @@ script:
  - "if [ \"$PHPUNIT_COVERAGE_TEST\" = \"1\" ]; then bash <(curl -s https://codecov.io/bash) -f coverage.xml; fi"
 
 after_failure:
- - php ~/travis-support/travis_upload_artifacts.php --if-env BEHAT_TEST,ARTIFACTS_BUCKET,ARTIFACTS_KEY,ARTIFACTS_SECRET --target-path $TRAVIS_REPO_SLUG/$TRAVIS_BUILD_ID/$TRAVIS_JOB_ID --artifacts-base-url https://s3.amazonaws.com/$ARTIFACTS_BUCKET/
+ - php ~/travis-support/travis_upload_artifacts.php --if-env BEHAT_TEST,ARTIFACTS_KEY --target-path $TRAVIS_REPO_SLUG/$TRAVIS_BUILD_ID/$TRAVIS_JOB_ID --artifacts-base-url https://s3.amazonaws.com/$ARTIFACTS_BUCKET/
 
 branches:
   except:

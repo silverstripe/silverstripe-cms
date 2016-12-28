@@ -54,7 +54,7 @@ $.entwine('ss', function($){
           ? (parentTree.getValue() || this.getParentID())
           : null,
         newClassName = metadata ? metadata.ClassName : null,
-        hintKey = (newClassName && parentMode === 'child')
+        hintKey = (newClassName && parentMode === 'child' && id)
           ? newClassName
           : 'Root',
         hint = (typeof hints[hintKey] !== 'undefined') ? hints[hintKey] : null,

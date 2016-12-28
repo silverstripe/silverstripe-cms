@@ -1090,7 +1090,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 
 		// Fall over to inherited permissions
-		if($parent) {
+		if($parent && $parent->exists()) {
 			return $parent->canAddChildren($member);
 		} else {
 			// This doesn't necessarily mean we are creating a root page, but that
