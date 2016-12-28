@@ -2,12 +2,10 @@
 
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\CMS\Model\ErrorPage;
+use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Assets\Tests\Storage\AssetStoreTest\TestAssetStore;
-
-
-
 
 /**
  * @package cms
@@ -70,7 +68,7 @@ class ErrorPageTest extends FunctionalTest {
 		$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
 		try {
-			$controller = singleton('ContentController');
+			$controller = singleton(ContentController::class);
 			$controller->httpError(403); $this->fail('Expected exception to be thrown');
 		}
 		catch(SS_HTTPResponse_Exception $e) {
