@@ -143,7 +143,7 @@ class ErrorPage extends Page {
 		$page = ErrorPage::get()->filter('ErrorCode', $code)->first();
 		$pageExists = !empty($page);
 		if(!$pageExists) {
-			$page = new ErrorPage($defaultData);
+			$page = Injector::inst()->create(self::class, $defaultData);
 			$page->write();
 			$page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 		}

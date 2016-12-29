@@ -15,6 +15,7 @@ use SilverStripe\Control\Director;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Convert;
+use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\CompositeField;
@@ -1519,11 +1520,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		// default pages
 		if(static::class == self::class && $this->config()->create_default_pages) {
 			if(!SiteTree::get_by_link(RootURLController::config()->default_homepage_link)) {
-				$homepage = new Page();
-				$homepage->Title = _t('SiteTree.DEFAULTHOMETITLE', 'Home');
-				$homepage->Content = _t('SiteTree.DEFAULTHOMECONTENT', '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>.</p><p>You can now access the <a href="http://docs.silverstripe.org">developer documentation</a>, or begin the <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lessons</a>.</p>');
-				$homepage->URLSegment = RootURLController::config()->default_homepage_link;
-				$homepage->Sort = 1;
+				$homepageData = array(
+					'Title' => _t('SiteTree.DEFAULTHOMETITLE', 'Home'),
+					'Content' => _t('SiteTree.DEFAULTHOMECONTENT', '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>.</p><p>You can now access the <a href="http://docs.silverstripe.org">developer documentation</a>, or begin the <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lessons</a>.</p>'),
+					'URLSegment' => RootURLController::config()->default_homepage_link,
+					'Sort' => 1
+				);
+				$homepage = Injector::inst()->create('Page', $homepageData);
 				$homepage->write();
 				$homepage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 				$homepage->flushCache();
@@ -1531,25 +1534,31 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			}
 
 			if(DB::query("SELECT COUNT(*) FROM \"SiteTree\"")->value() == 1) {
-				$aboutus = new Page();
-				$aboutus->Title = _t('SiteTree.DEFAULTABOUTTITLE', 'About Us');
-				$aboutus->Content = _t(
-					'SiteTree.DEFAULTABOUTCONTENT',
-					'<p>You can fill this page out with your own content, or delete it and create your own pages.</p>'
+				// Create an About Us page
+				$aboutusData = array(
+					'Title'   => _t('SiteTree.DEFAULTABOUTTITLE', 'About Us'),
+					'Content' => _t(
+						'SiteTree.DEFAULTABOUTCONTENT',
+						'<p>You can fill this page out with your own content, or delete it and create your own pages.</p>'
+					),
+					'Sort'    => 2
 				);
-				$aboutus->Sort = 2;
+				$aboutus = Injector::inst()->create('Page', $aboutusData);
 				$aboutus->write();
 				$aboutus->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 				$aboutus->flushCache();
 				DB::alteration_message('About Us page created', 'created');
 
-				$contactus = new Page();
-				$contactus->Title = _t('SiteTree.DEFAULTCONTACTTITLE', 'Contact Us');
-				$contactus->Content = _t(
-					'SiteTree.DEFAULTCONTACTCONTENT',
-					'<p>You can fill this page out with your own content, or delete it and create your own pages.</p>'
+				// Create a Contact Us page
+				$contactusData = array(
+					'Title'   => _t('SiteTree.DEFAULTCONTACTTITLE', 'Contact Us'),
+					'Content' => _t(
+						'SiteTree.DEFAULTCONTACTCONTENT',
+						'<p>You can fill this page out with your own content, or delete it and create your own pages.</p>'
+					),
+					'Sort'    => 3
 				);
-				$contactus->Sort = 3;
+				$contactus = Injector::inst()->create('Page', $contactusData);
 				$contactus->write();
 				$contactus->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 				$contactus->flushCache();
