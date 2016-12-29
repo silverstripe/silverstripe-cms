@@ -17,12 +17,11 @@ use SilverStripe\Control\Session;
 use SilverStripe\View\Parsers\ShortcodeParser;
 use SilverStripe\Control\Director;
 use SilverStripe\i18n\i18n;
+use SilverStripe\Dev\Deprecation;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Dev\TestOnly;
 use SilverStripe\View\Parsers\HTMLCleaner;
 use SilverStripe\View\Parsers\Diff;
-
-
 
 /**
  * @package cms
@@ -1334,6 +1333,54 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertFalse($page->canPublish());
 	}
 
+	/**
+	 * Test that the controller name for a SiteTree instance can be gathered by appending "Controller" to the SiteTree
+	 * class name in a PSR-2 compliant manner.
+	 */
+	public function testGetControllerName()
+	{
+		$class = new Page;
+		$this->assertSame('PageController', $class->getControllerName());
+	}
+
+	/**
+	 * Test that underscored class names (legacy) are still supported, but raise a deprecation notice. The exception and
+	 * manual catching is in place to ensure that we can (A) detect that a deprecation notice was raised and (B) that
+	 * we can restore the old error handling after catching the exception we threw from this test. Simply asserting that
+	 * an exception is thrown will not allow further logic to execute after the exception is thrown.
+	 */
+	public function testGetControllerNameWithUnderscoresIsSupported()
+	{
+		$defaultEnabled = Deprecation::get_enabled();
+		Deprecation::set_enabled(true);
+		Deprecation::notification_version('4.0.0');
+
+		// Catch user_errors thrown by deprecation
+		set_error_handler(
+			function ($errno, $errstr) {
+				throw new \Exception($errstr);
+			},
+			E_USER_DEPRECATED
+		);
+
+		$class = new SiteTreeTest_LegacyControllerName;
+		$notice = '';
+		try {
+			$this->assertSame('SiteTreeTest_LegacyControllerName_Controller', $class->getControllerName());
+		} catch (\Exception $ex) {
+			$notice = $ex->getMessage();
+		}
+		restore_error_handler();
+
+		$this->assertContains(
+			'Underscored controller class names are deprecated. Use "MyController" instead '
+			. 'of "My_Controller".',
+			$notice,
+			'A deprecation notice should have been raised.'
+		);
+		Deprecation::set_enabled($defaultEnabled);
+	}
+
 }
 
 /**#@+
@@ -1341,18 +1388,18 @@ class SiteTreeTest extends SapphireTest {
  */
 
 class SiteTreeTest_PageNode extends Page implements TestOnly { }
-class SiteTreeTest_PageNode_Controller extends Page_Controller implements TestOnly {
+class SiteTreeTest_PageNodeController extends PageController implements TestOnly {
 }
 
 class SiteTreeTest_Conflicted extends Page implements TestOnly { }
-class SiteTreeTest_Conflicted_Controller extends Page_Controller implements TestOnly {
+class SiteTreeTest_ConflictedController extends PageController implements TestOnly {
 
 	private static $allowed_actions = array (
 		'conflicted-action'
 	);
 
 	public function hasActionTemplate($template) {
-		if($template == 'conflicted-template') {
+		if ($template == 'conflicted-template') {
 			return true;
 		} else {
 			return parent::hasActionTemplate($template);
@@ -1467,4 +1514,17 @@ class SiteTreeTest_AdminDeniedExtension extends DataExtension implements TestOnl
 	public function canDelete($member) { return false; }
 	public function canAddChildren() { return false; }
 	public function canView() { return false; }
+}
+
+/**
+ * An empty SiteTree instance with a controller to test that legacy controller names can still be loaded
+ */
+class SiteTreeTest_LegacyControllerName extends Page implements TestOnly
+{
+
+}
+
+class SiteTreeTest_LegacyControllerName_Controller extends PageController implements TestOnly
+{
+
 }

@@ -2713,7 +2713,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 	/**
-	 * Find the controller name by our convention of {$ModelClass}_Controller
+	 * Find the controller name by our convention of {$ModelClass}Controller
 	 *
 	 * @return string
 	 */
@@ -2729,8 +2729,17 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			if ($class == SiteTree::class) {
 				break;
 			}
-			//if we have a class of "{$ClassName}_Controller" then we found our controller
-			if (class_exists($candidate = sprintf('%s_Controller', $class))) {
+			// If we have a class of "{$ClassName}Controller" then we found our controller
+			if (class_exists($candidate = sprintf('%sController', $class))) {
+				$controller = $candidate;
+				break;
+			} elseif (class_exists($candidate = sprintf('%s_Controller', $class))) {
+				// Support the legacy underscored filename, but raise a deprecation notice
+				Deprecation::notice(
+					'4.0',
+					'Underscored controller class names are deprecated. Use "MyController" instead of "My_Controller".',
+					Deprecation::SCOPE_GLOBAL
+				);
 				$controller = $candidate;
 				break;
 			}
