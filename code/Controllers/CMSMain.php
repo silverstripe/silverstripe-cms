@@ -59,7 +59,6 @@ use SilverStripe\Security\SecurityToken;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
 use Translatable;
-use Page;
 use Zend_Cache;
 use InvalidArgumentException;
 
@@ -352,7 +351,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function LinkPreview() {
 		$record = $this->getRecord($this->currentPageID());
 		$baseLink = Director::absoluteBaseURL();
-		if ($record && $record instanceof Page) {
+		if ($record && $record instanceof SiteTree) {
 			// if we are an external redirector don't show a link
 			if ($record instanceof RedirectorPage && $record->RedirectionType == 'External') {
 				$baseLink = false;
