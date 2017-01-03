@@ -28,7 +28,6 @@ use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
 use SilverStripe\View\SSViewer;
-use Page;
 use Translatable;
 
 /**
@@ -67,7 +66,7 @@ class ContentController extends Controller {
 	 */
 	public function __construct($dataRecord = null) {
 		if(!$dataRecord) {
-			$dataRecord = new Page();
+			$dataRecord = new SiteTree();
 			if($this->hasMethod("Title")) {
 				$dataRecord->Title = $this->Title();
 			}
@@ -277,7 +276,7 @@ class ContentController extends Controller {
 
 		// Remove all entries the can not be viewed by the current user
 		// We might need to create a show in menu permission
- 		if(isset($result)) {
+		if(isset($result)) {
 			foreach($result as $page) {
 				if($page->canView()) {
 					$visible[] = $page;
