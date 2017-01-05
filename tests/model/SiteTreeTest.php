@@ -17,7 +17,6 @@ use SilverStripe\Control\Session;
 use SilverStripe\View\Parsers\ShortcodeParser;
 use SilverStripe\Control\Director;
 use SilverStripe\i18n\i18n;
-use SilverStripe\Dev\Deprecation;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Dev\TestOnly;
 use SilverStripe\View\Parsers\HTMLCleaner;
@@ -1344,41 +1343,12 @@ class SiteTreeTest extends SapphireTest {
 	}
 
 	/**
-	 * Test that underscored class names (legacy) are still supported, but raise a deprecation notice. The exception and
-	 * manual catching is in place to ensure that we can (A) detect that a deprecation notice was raised and (B) that
-	 * we can restore the old error handling after catching the exception we threw from this test. Simply asserting that
-	 * an exception is thrown will not allow further logic to execute after the exception is thrown.
+	 * Test that underscored class names (legacy) are still supported (deprecation notice is issued though).
 	 */
 	public function testGetControllerNameWithUnderscoresIsSupported()
 	{
-		$defaultEnabled = Deprecation::get_enabled();
-		Deprecation::set_enabled(true);
-		Deprecation::notification_version('4.0.0');
-
-		// Catch user_errors thrown by deprecation
-		set_error_handler(
-			function ($errno, $errstr) {
-				throw new \Exception($errstr);
-			},
-			E_USER_DEPRECATED
-		);
-
 		$class = new SiteTreeTest_LegacyControllerName;
-		$notice = '';
-		try {
-			$this->assertSame('SiteTreeTest_LegacyControllerName_Controller', $class->getControllerName());
-		} catch (\Exception $ex) {
-			$notice = $ex->getMessage();
-		}
-		restore_error_handler();
-
-		$this->assertContains(
-			'Underscored controller class names are deprecated. Use "MyController" instead '
-			. 'of "My_Controller".',
-			$notice,
-			'A deprecation notice should have been raised.'
-		);
-		Deprecation::set_enabled($defaultEnabled);
+		$this->assertSame('SiteTreeTest_LegacyControllerName_Controller', $class->getControllerName());
 	}
 
 }

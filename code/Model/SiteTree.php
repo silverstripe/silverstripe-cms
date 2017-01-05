@@ -2736,7 +2736,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			} elseif (class_exists($candidate = sprintf('%s_Controller', $class))) {
 				// Support the legacy underscored filename, but raise a deprecation notice
 				Deprecation::notice(
-					'4.0',
+					'5.0',
 					'Underscored controller class names are deprecated. Use "MyController" instead of "My_Controller".',
 					Deprecation::SCOPE_GLOBAL
 				);
