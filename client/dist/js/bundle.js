@@ -118,7 +118,7 @@ action:function c(n){t(".cms-container").entwine(".ss").loadPanel(r["default"].s
 n.hasClass("nochildren")||(i.showaslist={label:r["default"]._t("Tree.ShowAsList"),action:function u(n){t(".cms-container").entwine(".ss").loadPanel(e.data("urlListview")+"&ParentID="+n.data("id"),null,{
 tabState:{"pages-controller-cms-content":{tabSelector:".content-listview"}}})}})
 var a=n.data("pagetype"),o=n.data("id"),s=n.find(">a .item").data("allowedchildren"),d={},l=!1
-return t.each(s,function(n,i){l=!0,d["allowedchildren-"+n]={label:'<span class="jstree-pageicon"></span>'+i,_class:"class-"+n,action:function a(i){t(".cms-container").entwine(".ss").loadPanel(t.path.addSearchParams(r["default"].sprintf(e.data("urlAddpage"),o,n),e.data("extraParams")))
+return t.each(s,function(n,i){l=!0,d["allowedchildren-"+n]={label:'<span class="jstree-pageicon"></span>'+i,_class:"class-"+n.replace(/\\/g,"-").toLowerCase(),action:function a(i){t(".cms-container").entwine(".ss").loadPanel(t.path.addSearchParams(r["default"].sprintf(e.data("urlAddpage"),o,n),e.data("extraParams")))
 
 }}}),l&&(i.addsubpage={label:r["default"]._t("Tree.AddSubPage","Add page under this page",100,"Used in the context menu when right-clicking on a page node in the CMS tree"),submenu:d}),n.hasClass("edit-disabled")||(i.duplicate={
 label:r["default"]._t("Tree.Duplicate"),submenu:[{label:r["default"]._t("Tree.ThisPageOnly"),action:function h(n){t(".cms-container").entwine(".ss").loadPanel(t.path.addSearchParams(r["default"].sprintf(e.data("urlDuplicate"),n.data("id")),e.data("extraParams")))
