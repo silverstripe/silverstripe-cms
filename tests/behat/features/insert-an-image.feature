@@ -65,7 +65,7 @@ Feature: Insert an image into a page
     Given I press the "Insert Media" HTML field button
     And I fill in the "ParentID" dropdown with "folder1"
     And I click on "file1" in the "Files" table
-    And I press the "Edit" button
+    And I press the "Edit this file" button
     When I fill in "Alternative text (alt)" with "My alt"
     And I press the "Insert" button
     Then the "Content" HTML field should contain "file1__Resampled.jpg"

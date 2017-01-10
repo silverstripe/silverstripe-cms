@@ -22,7 +22,7 @@ Feature: Edit a page
     When I fill in "Title" with "About Us!"
     And I fill in the "Content" HTML field with "<p>my new content</p>"
     And I press the "Save draft" button
-    Then I should see "Saved" in the "button#Form_EditForm_action_save" element
+    Then I should see the "Saved" button
 
     When I click on "About Us" in the tree
     Then the "Title" field should contain "About Us!"

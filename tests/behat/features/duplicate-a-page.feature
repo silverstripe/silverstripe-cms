@@ -20,5 +20,6 @@ Feature: Duplicate a page
 
 		When I fill in "Title" with "Duplicate Page"
 		And I press the "Save & publish" button
+		And I wait for 1 second
 		Then I should see "Page1" in the tree
 		And I should see "Duplicate Page" in the tree
