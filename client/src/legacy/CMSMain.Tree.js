@@ -80,7 +80,7 @@ $.entwine('ss.tree', function($){
 						hasAllowedChildren = true;
 						menuAllowedChildren["allowedchildren-" + klass ] = {
 							'label': '<span class="jstree-pageicon"></span>' + title,
-							'_class': 'class-' + klass,
+							'_class': 'class-' + klass.replace(/\\/g, '-').toLowerCase(),
 							'action': function(obj) {
 								$('.cms-container').entwine('.ss').loadPanel(
 									$.path.addSearchParams(

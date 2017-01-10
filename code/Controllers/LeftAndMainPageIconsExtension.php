@@ -4,6 +4,7 @@ namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\View\Requirements;
 use SilverStripe\Core\ClassInfo;
+use SilverStripe\Core\Convert;
 use SilverStripe\Control\Director;
 use SilverStripe\Core\Extension;
 
@@ -42,6 +43,7 @@ class LeftAndMainPageIconsExtension extends Extension {
 				$iconFile .= '-file.gif';
 			}
 
+			$class = Convert::raw2htmlclass($class);
 			$selector = ".page-icon.class-$class, li.class-$class > a .jstree-pageicon";
 
 			if(Director::fileExists($iconFile)) {
