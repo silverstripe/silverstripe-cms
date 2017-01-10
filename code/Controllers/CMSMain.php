@@ -339,7 +339,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		}
 
 		if($placeholders) {
-			$link .= (strpos($link, '?') === false ? "?$placeholders" : "&amp;$placeholders");
+			$link .= (strpos($link, '?') === false ? "?$placeholders" : "&$placeholders");
 		}
 
 		return $link;
