@@ -22,8 +22,6 @@ use SilverStripe\Dev\TestOnly;
 use SilverStripe\View\Parsers\HTMLCleaner;
 use SilverStripe\View\Parsers\Diff;
 
-
-
 /**
  * @package cms
  * @subpackage tests
@@ -1334,6 +1332,25 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertFalse($page->canPublish());
 	}
 
+	/**
+	 * Test that the controller name for a SiteTree instance can be gathered by appending "Controller" to the SiteTree
+	 * class name in a PSR-2 compliant manner.
+	 */
+	public function testGetControllerName()
+	{
+		$class = new Page;
+		$this->assertSame('PageController', $class->getControllerName());
+	}
+
+	/**
+	 * Test that underscored class names (legacy) are still supported (deprecation notice is issued though).
+	 */
+	public function testGetControllerNameWithUnderscoresIsSupported()
+	{
+		$class = new SiteTreeTest_LegacyControllerName;
+		$this->assertSame('SiteTreeTest_LegacyControllerName_Controller', $class->getControllerName());
+	}
+
 }
 
 /**#@+
@@ -1341,18 +1358,18 @@ class SiteTreeTest extends SapphireTest {
  */
 
 class SiteTreeTest_PageNode extends Page implements TestOnly { }
-class SiteTreeTest_PageNode_Controller extends Page_Controller implements TestOnly {
+class SiteTreeTest_PageNodeController extends PageController implements TestOnly {
 }
 
 class SiteTreeTest_Conflicted extends Page implements TestOnly { }
-class SiteTreeTest_Conflicted_Controller extends Page_Controller implements TestOnly {
+class SiteTreeTest_ConflictedController extends PageController implements TestOnly {
 
 	private static $allowed_actions = array (
 		'conflicted-action'
 	);
 
 	public function hasActionTemplate($template) {
-		if($template == 'conflicted-template') {
+		if ($template == 'conflicted-template') {
 			return true;
 		} else {
 			return parent::hasActionTemplate($template);
@@ -1467,4 +1484,17 @@ class SiteTreeTest_AdminDeniedExtension extends DataExtension implements TestOnl
 	public function canDelete($member) { return false; }
 	public function canAddChildren() { return false; }
 	public function canView() { return false; }
+}
+
+/**
+ * An empty SiteTree instance with a controller to test that legacy controller names can still be loaded
+ */
+class SiteTreeTest_LegacyControllerName extends Page implements TestOnly
+{
+
+}
+
+class SiteTreeTest_LegacyControllerName_Controller extends PageController implements TestOnly
+{
+
 }

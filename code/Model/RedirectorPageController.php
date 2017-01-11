@@ -1,12 +1,12 @@
 <?php
 namespace SilverStripe\CMS\Model;
 
-use Page_Controller;
+use PageController;
 
 /**
  * Controller for the {@link RedirectorPage}.
  */
-class RedirectorPage_Controller extends Page_Controller
+class RedirectorPageController extends PageController
 {
 
 	public function init()

@@ -1,7 +1,7 @@
 <?php
 
 use SilverStripe\CMS\Model\RedirectorPage;
-use SilverStripe\CMS\Model\RedirectorPage_Controller;
+use SilverStripe\CMS\Model\RedirectorPageController;
 use SilverStripe\Control\Director;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Core\Extension;
@@ -81,17 +81,17 @@ class RedirectorPageTest extends FunctionalTest {
 	}
 
 	/**
-	 * Test that we can trigger a redirection before RedirectorPage_Controller::init() is called
+	 * Test that we can trigger a redirection before RedirectorPageController::init() is called
 	 */
 	public function testRedirectRespectsFinishedResponse() {
 		$page = $this->objFromFixture('SilverStripe\\CMS\\Model\\RedirectorPage', 'goodinternal');
-		RedirectorPage_Controller::add_extension('RedirectorPageTest_RedirectExtension');
+		RedirectorPageController::add_extension('RedirectorPageTest_RedirectExtension');
 
 		$response = $this->get($page->regularLink());
 		$this->assertEquals(302, $response->getStatusCode());
 		$this->assertEquals('/foo', $response->getHeader('Location'));
 
-		RedirectorPage_Controller::remove_extension('RedirectorPageTest_RedirectExtension');
+		RedirectorPageController::remove_extension('RedirectorPageTest_RedirectExtension');
 	}
 
 }

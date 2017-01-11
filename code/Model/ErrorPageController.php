@@ -4,13 +4,13 @@ namespace SilverStripe\CMS\Model;
 use SilverStripe\ORM\DataModel;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
-use Page_Controller;
+use PageController;
 
 
 /**
  * Controller for ErrorPages.
  */
-class ErrorPage_Controller extends Page_Controller
+class ErrorPageController extends PageController
 {
 
 	/**

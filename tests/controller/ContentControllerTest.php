@@ -198,7 +198,7 @@ class ContentControllerTest extends FunctionalTest {
 
 class ContentControllerTest_Page extends Page {  }
 
-class ContentControllerTest_Page_Controller extends Page_Controller {
+class ContentControllerTest_PageController extends PageController {
 
 	private static $allowed_actions = array (
 		'second_index'
@@ -218,10 +218,10 @@ class ContentControllerTest_Page_Controller extends Page_Controller {
 class ContentControllerTestPageWithoutController extends Page { }
 
 class ContentControllerTestPage extends Page { }
-class ContentControllerTestPage_Controller extends Page_Controller {
+class ContentControllerTestPageController extends PageController {
 	private static $allowed_actions = array(
-		"test",
-		"testwithouttemplate"
+		'test',
+		'testwithouttemplate'
 	);
 
 	function testwithouttemplate() {

@@ -611,7 +611,7 @@ class VirtualPageTest extends FunctionalTest {
 		$virtualPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp4');
 		$controller = ModelAsController::controller_for($virtualPage);
 
-		$this->assertInstanceOf('VirtualPageTest_ClassA_Controller', $controller);
+		$this->assertInstanceOf('VirtualPageTest_ClassAController', $controller);
 		$this->assertTrue($controller->hasMethod('testMethod'));
 		$this->assertEquals('hello', $controller->testMethod());
 		$this->assertTrue($controller->hasMethod('modelMethod'));
@@ -641,7 +641,7 @@ class VirtualPageTest_ClassA extends Page implements TestOnly {
 	}
 }
 
-class VirtualPageTest_ClassA_Controller extends Page_Controller implements TestOnly {
+class VirtualPageTest_ClassAController extends PageController implements TestOnly {
 	private static $allowed_actions = [
 		'testaction'
 	];

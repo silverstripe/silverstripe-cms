@@ -35,9 +35,9 @@ mappings:
   SiteTreeURLSegmentField_Readonly: SilverStripe\CMS\Forms\SiteTreeURLSegmentField_Readonly
   CurrentPageIdentifier: SilverStripe\CMS\Model\CurrentPageIdentifier
   ErrorPage: SilverStripe\CMS\Model\ErrorPage
-  ErrorPage_Controller: SilverStripe\CMS\Model\ErrorPage_Controller
+  ErrorPage_Controller: SilverStripe\CMS\Model\ErrorPageController
   RedirectorPage: SilverStripe\CMS\Model\RedirectorPage
-  RedirectorPage_Controller: SilverStripe\CMS\Model\RedirectorPage_Controller
+  RedirectorPage_Controller: SilverStripe\CMS\Model\RedirectorPageController
   SiteTree: SilverStripe\CMS\Model\SiteTree
   SiteTreeExtension: SilverStripe\CMS\Model\SiteTreeExtension
   SiteTreeFileExtension: SilverStripe\CMS\Model\SiteTreeFileExtension
@@ -45,7 +45,6 @@ mappings:
   SiteTreeLinkTracking: SilverStripe\CMS\Model\SiteTreeLinkTracking
   SiteTreeLinkTracking_Parser: SilverStripe\CMS\Model\SiteTreeLinkTracking_Parser
   VirtualPage: SilverStripe\CMS\Model\VirtualPage
-  VirtualPage_Controller: SilverStripe\CMS\Model\VirtualPage_Controller
   BrokenFilesReport: SilverStripe\CMS\Reports\BrokenFilesReport
   SideReport_BrokenFiles: SilverStripe\CMS\Reports\SideReport_BrokenFiles
   BrokenLinksReport: SilverStripe\CMS\Reports\BrokenLinksReport
