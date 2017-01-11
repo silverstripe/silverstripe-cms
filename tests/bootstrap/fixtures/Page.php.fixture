@@ -1,20 +1,8 @@
 <?php
 
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\CMS\Controllers\ContentController;
 
 class Page extends SiteTree
-{
-}
-
-class PageController extends ContentController
-{
-}
-
-/**
- * Deprecated: Used for backwards compatibility between modules
- */
-class Page_Controller extends ContentController
 {
 
 }
