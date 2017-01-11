@@ -85,6 +85,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	private static $menu_title = 'Edit Page';
 
+	private static $menu_icon_class = 'font-icon-sitemap'; 
+
 	private static $menu_priority = 10;
 
 	private static $tree_class = SiteTree::class;
@@ -450,8 +452,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// Create the Search and Reset action
 		$actions = new FieldList(
 			FormAction::create('doSearch',  _t('CMSMain_left_ss.APPLY_FILTER', 'Search'))
-				->addExtraClass('ss-ui-action-constructive'),
+				->addExtraClass('btn btn-primary'),
 			ResetFormAction::create('clear', _t('CMSMain_left_ss.CLEAR_FILTER', 'Clear'))
+				->addExtraClass('btn btn-secondary')
 		);
 
 		// Use <button> to allow full jQuery UI styling on the all of the Actions

@@ -377,17 +377,65 @@ $.entwine('ss', function($){
 	 * Enable save buttons upon detecting changes to content.
 	 * "changed" class is added by jQuery.changetracker.
 	 */
-	$('.cms-edit-form.changed').entwine({
-		onmatch: function(e) {
-			this.find('button[name=action_save]').button('option', 'showingAlternate', true);
-			this.find('button[name=action_publish]').button('option', 'showingAlternate', true);
+  $('.cms-edit-form.changed').entwine({
+    onmatch: function(e) {
+      var save = this.find('button[name=action_save]');
+
+      if(save.attr('data-text-alternate')) {
+        save.attr('data-text-standard', save.text());
+        save.text(save.attr('data-text-alternate'));
+      }
+
+      if(save.attr('data-btn-alternate')) {
+        save.attr('data-btn-standard', save.attr('class'));
+        save.attr('class', save.attr('data-btn-alternate'));
+      }
+
+
+      save
+        .removeClass('btn-secondary-outline')
+        .addClass('btn-primary');
+
+			var publish = this.find('button[name=action_publish]')
+
+      if(publish.attr('data-text-alternate')) {
+        publish.attr('data-text-standard', publish.attr('data-text-alternate'));
+        publish.text(publish.attr('data-text-alternate'));
+      }
+
+      if(publish.attr('data-btn-alternate')) {
+        publish.attr('data-btn-standard', publish.attr('class'));
+        publish.attr('class', publish.attr('data-btn-alternate'));
+      }
+
+      publish
+        .removeClass('btn-secondary-outline')
+        .addClass('btn-primary');
+
+
 			this._super(e);
 		},
 		onunmatch: function(e) {
-			var saveButton = this.find('button[name=action_save]');
-			if(saveButton.data('button')) saveButton.button('option', 'showingAlternate', false);
-			var publishButton = this.find('button[name=action_publish]');
-			if(publishButton.data('button')) publishButton.button('option', 'showingAlternate', false);
+      var save = this.find('button[name=action_save]')
+
+      if(save.attr('data-text-standard')) {
+        save.text(save.attr('data-text-standard'));
+      }
+
+      if(save.attr('data-btn-standard')) {
+        save.attr('class', save.attr('data-btn-standard'));
+      }
+
+      var publish = this.find('button[name=action_publish]');
+
+      if(publish.attr('data-text-standard')) {
+        publish.text(publish.attr('data-text-standard'));
+      }
+
+      if(publish.attr('data-btn-standard')) {
+        publish.attr('class', publish.attr('data-btn-standard'));
+      }
+
 			this._super(e);
 		}
 	});
@@ -397,11 +445,13 @@ $.entwine('ss', function($){
 		 * Bind to ssui.button event to trigger stylistic changes.
 		 */
 		onbuttonafterrefreshalternate: function() {
-			if (this.button('option', 'showingAlternate')) {
-				this.addClass('ss-ui-action-constructive');
+			if (this.data('showingAlternate')) {
+				this.addClass('btn-primary');
+        this.removeClass('btn-secondary');
 			}
 			else {
-				this.removeClass('ss-ui-action-constructive');
+				this.removeClass('btn-primary');
+        this.addClass('btn-secondary');
 			}
 		}
 	});
@@ -411,11 +461,13 @@ $.entwine('ss', function($){
 		 * Bind to ssui.button event to trigger stylistic changes.
 		 */
 		onbuttonafterrefreshalternate: function() {
-			if (this.button('option', 'showingAlternate')) {
-				this.addClass('ss-ui-action-constructive');
+			if (this.data('showingAlternate')) {
+				this.addClass('btn-primary');
+        this.removeClass('btn-secondary');
 			}
 			else {
-				this.removeClass('ss-ui-action-constructive');
+				this.removeClass('btn-primary');
+        this.addClass('btn-secondary');
 			}
 		}
 	});

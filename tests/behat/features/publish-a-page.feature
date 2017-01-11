@@ -18,7 +18,7 @@ Feature: Publish a page
     And I go to "/admin/pages"
     And I should see "My Page" in the tree
     And I click on "My Page" in the tree
-    And I press the "Publish" button
+    And I press the "Save & publish" button
 
     Then I press the "Log out" button
     And I go to "/my-page"
@@ -33,22 +33,22 @@ Feature: Publish a page
     And I click on "My Page" in the tree
 
     When I click "More options" in the "#ActionMenus" element
-    Then I should not see "Unpublish" in the "#ActionMenus_MoreOptions" element
-    And I should see "Not published" in the "#ActionMenus_MoreOptions" element
-    And I should see "Archive" in the "#ActionMenus_MoreOptions" element
+    Then I should see "Not published" in the "#ActionMenus_MoreOptions" element
+    And I should not see an "Unpublish" button
+    And I should see an "Archive" button
     And I should see a "Save & publish" button
     And I should see a "Saved" button
 
     When I fill in the "Content" HTML field with "<p>my new content</p>"
     And I click "More options" in the "#ActionMenus" element
-    Then I should not see "Unpublish" in the "#ActionMenus_MoreOptions" element
+    Then I should not see an "Unpublish" button
     And I should see a "Save & publish" button
     And I should see a "Save draft" button
 
-    When I press the "Publish" button
+    When I press the "Save & publish" button
     And I click "More options" in the "#ActionMenus" element
-    Then I should see "Unpublish" in the "#ActionMenus_MoreOptions" element
-    And I should see "Archive" in the "#ActionMenus_MoreOptions" element
+    Then I should see an "Unpublish" button
+    And I should see an "Unpublish and archive" button
     And I should see a "Published" button
     And I should see a "Saved" button
 
@@ -76,13 +76,13 @@ Feature: Publish a page
     And I go to "/admin/pages"
     And I should see "My Page" in the tree
     And I click on "My Page" in the tree
-    And I press the "Publish" button
+    And I press the "Save & publish" button
     And I click "More options" in the "#ActionMenus" element
-    Then I should see "Unpublish" in the "#ActionMenus_MoreOptions" element
+    Then I should see an "Unpublish" button
 
     When I press the "Unpublish" button, confirming the dialog
     And I click "More options" in the "#ActionMenus" element
-    Then I should see "Archive" in the "#ActionMenus_MoreOptions" element
+    Then I should see an "Archive" button
 
     When I press the "Archive" button, confirming the dialog
     Then I should see a "Restore" button
