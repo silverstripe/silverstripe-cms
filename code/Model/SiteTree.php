@@ -1719,20 +1719,18 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$filter['"SiteTree"."ParentID"'] = $this->ParentID ? $this->ParentID : 0;
 		}
 
-		$votes = array_filter(
+		// If any of the extensions return `0` consider the segment invalid
+		$extensionResponses = array_filter(
 			(array)$this->extend('augmentValidURLSegment'),
-			function($v) {return !is_null($v);}
+			function($response) {return !is_null($response);}
 		);
-		if($votes) {
-			return min($votes);
+		if($extensionResponses) {
+			return min($extensionResponses);
 		}
 
 		// Check existence
-		$existingPage = DataObject::get_one(self::class, $filter);
-		if ($existingPage) return false;
-
-		return !($existingPage);
-		}
+		return !DataObject::get(self::class, $filter)->exists();
+	}
 
 	/**
 	 * Generate a URL segment based on the title provided.
