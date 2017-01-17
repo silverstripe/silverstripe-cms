@@ -2536,8 +2536,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				// Otherwise, the class and all its subclasses are allowed.
 				if(substr($candidate,0,1) == '*') {
 					$allowedChildren[] = substr($candidate,1);
-				} else {
-					$subclasses = ClassInfo::subclassesFor($candidate);
+				} elseif ($subclasses = ClassInfo::subclassesFor($candidate)) {
 					foreach($subclasses as $subclass) {
 						if ($subclass == 'SiteTree_root' || singleton($subclass) instanceof HiddenClass) {
 							continue;
