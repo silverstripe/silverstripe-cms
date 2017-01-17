@@ -2,7 +2,7 @@ sr:
   AssetAdmin:
     ADDFILES: 'Додај датотеке'
     ActionAdd: 'Додај фасциклу'
-    AppCategoryArchive: Архива
+    AppCategoryArchive: 'Архива'
     AppCategoryAudio: Аудио
     AppCategoryDocument: Документ
     AppCategoryFlash: Flash
@@ -20,7 +20,7 @@ sr:
     Filetype: 'Тип датотеке'
     ListView: 'Приказ у виду листе'
     MENUTITLE: Датотеке
-    NEWFOLDER: Нова фасцикла
+    NEWFOLDER: 'Нова фасцикла'
     SIZE: Величина
     THUMBSDELETED: '{count} некоришћених сличицâ је обрисано'
     TreeView: 'Преглед у виду стабла'
@@ -37,7 +37,7 @@ sr:
   BackLink_Button_ss:
     Back: Назад
   BrokenLinksReport:
-    Any: Било који
+    Any: 'Било који'
     BROKENLINKS: 'Извештај о оштећеним линковима'
     CheckSite: 'Провери сајт'
     CheckSiteDropdownDraft: 'Нарцт сајта'
@@ -87,10 +87,9 @@ sr:
     MENUTITLE: 'Измени страницу'
     NEWPAGE: 'Нова {pagetype}'
     PAGENOTEXISTS: 'Ова страница не постоји'
-    PAGETYPEANYOPT: Било која
+    PAGETYPEANYOPT: 'Било која'
     PUBALLCONFIRM: 'Објавите сваку страну на овом сајту копирањем садржај на жив сајт.'
     PUBALLFUN: 'Функција „Објави све“ '
-    PUBALLFUN2: "Притиском на ово дугме постићи ћете исто што и одласком на сваку страну и притискањем дугмета „Објави“ . Намењена је за коришћење након великих измена садржаја као када се сајт први пут објављује."
     PUBPAGES: 'Урађено: Објављено {count} страница'
     PageAdded: 'Успешно креирана страница'
     REMOVED: 'Са објављеног сајта обрисана је страница ''{title}''{description}'
@@ -106,7 +105,7 @@ sr:
     TabHistory: Историја
     TabSettings: Подешавања
   CMSMain_left_ss:
-    RESET: Врати у пређашње стање
+    RESET: 'Врати у пређашње стање'
   CMSPageAddController:
     MENUTITLE: 'Додај страницу'
     ParentMode_child: 'Као подстраницу друге странице'
@@ -126,7 +125,7 @@ sr:
     VIEWINGVERSION: 'Тренутно је приказана верзија {version}.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Аутор
-    NOTPUBLISHED: 'Необјављено'
+    NOTPUBLISHED: Необјављено
     PUBLISHER: Објављивач
     UNKNOWN: Непознато
     WHEN: Датум
@@ -163,7 +162,7 @@ sr:
     InstallSuccessCongratulations: 'SilverStripe је успешно инсталиран!'
     LOGGEDINAS: 'Пријављен као'
     LOGIN: Пријава
-    LOGOUT: 'Одјава'
+    LOGOUT: Одјава
     NOTLOGGEDIN: 'Нисте пријављени'
     PUBLISHED: Објаљено
     PUBLISHEDSITE: 'Објављени сајт'
@@ -212,7 +211,7 @@ sr:
     UploadFilesButton: Постави
   LeftAndMain:
     DELETED: Избрисано.
-    PreviewButton: Претходни преглед
+    PreviewButton: 'Претходни преглед'
     SAVEDUP: Сачувано.
     SearchResults: 'Резултати претраживања'
   Permission:
@@ -256,7 +255,7 @@ sr:
     ParameterLiveCheckbox: 'Провери објављени сајт'
     REPEMPTY: 'Извештај {title} је празан.'
   SilverStripeNavigator:
-    ARCHIVED: Архивирано
+    ARCHIVED: 'Архивирано'
   SilverStripeNavigatorLink:
     ShareLink: 'Подели линк'
   SilverStripeNavigatorLinkl:
@@ -269,7 +268,7 @@ sr:
     PLURALNAME: 'Конфигурације сајта'
     SINGULARNAME: 'Конфигурација сајта'
     SITENAMEDEFAULT: 'Назив сајта'
-    SITETAGLINE: 'Слоган'
+    SITETAGLINE: Слоган
     SITETITLE: 'Наслов сајта'
     TABACCESS: Приступ
     TABMAIN: Главно
@@ -291,13 +290,13 @@ sr:
     BUTTONPUBLISHED: Објаљено
     BUTTONSAVED: Сачувано.
     BUTTONSAVEPUBLISH: 'Сачувај и објави'
-    BUTTONUNPUBLISH: Поништи објаву
+    BUTTONUNPUBLISH: 'Поништи објаву'
     BUTTONUNPUBLISHDESC: 'Уклони ову страницу из објављеног сајта'
     Comments: Коментари
     Content: Садржај
     DEFAULTABOUTTITLE: 'О нама'
     DEFAULTCONTACTTITLE: 'Контактирајте нас'
-    DEFAULTHOMETITLE: Почетна страница
+    DEFAULTHOMETITLE: 'Почетна страница'
     DELETEDPAGEHELP: 'Страница није више објављена'
     DELETEDPAGESHORT: Избрисано
     DEPENDENT_NOTE: 'Следеће странице зависе од ове странице. Ово подразумева витруелне странице, странице за преусмеравање и странице са линковима на садржај.'
@@ -320,15 +319,15 @@ sr:
     LASTUPDATED: 'Последњи пут ажурирано'
     LINKCHANGENOTE: 'Промена линка ове странице утицаће, такође, на линкове свих подстраница.'
     MENUTITLE: 'Натпис за навигацију'
-    METADESC: 'Опис'
+    METADESC: Опис
     METADESCHELP: 'Претраживачке машине користе овај садржај за приказ резултата претраживања (ипак, он не утиче на рејтинг странице).'
     METAEXTRA: 'Прилагођене мета ознаке'
     METAEXTRAHELP: 'HTML ознаке за додатне мета информације. На пример, &lt;meta name="audience" content="all" /&gt;'
     MODIFIEDONDRAFTHELP: 'Страница садржи необјављене измене'
     MODIFIEDONDRAFTSHORT: Измењено
-    MetadataToggle: Мета подаци
+    MetadataToggle: 'Мета подаци'
     MoreOptions: 'Више опција'
-    NOTPUBLISHED: 'Необјављено'
+    NOTPUBLISHED: Необјављено
     OBSOLETECLASS: 'Тип ове странице: {type} није више шодржан. Ако сачувате страницу њен тип ће бити промењен, па можете изгубити своје податке'
     PAGELOCATION: 'Локација странице'
     PAGETITLE: 'Назив странице'
@@ -373,7 +372,7 @@ sr:
   URLSegmentField:
     Cancel: Одустани
     Edit: Измени
-    OK: У реду
+    OK: 'У реду'
   ViewArchivedEmail_ss:
     CANACCESS: 'Можете да приступите архивираном садржају на овом линку:'
     HAVEASKED: 'Замољени сте да погледате садржај овог сајта'

@@ -34,7 +34,7 @@ el:
     BACKLINKCOUNT: 'Χρησιμοποιείται σε:'
     PAGES: σελίδες
   BackLink_Button_ss:
-    Back: Πίσω
+    Back: 'Πίσω'
   BrokenLinksReport:
     Any: Οποιοδήποτε
     BROKENLINKS: 'Αναφορά ανενεργών συνδέσμων'
@@ -48,7 +48,7 @@ el:
     HasBrokenLink: 'έχει ανενεργό σύνδεσμο '
     HasBrokenLinkAndFile: 'έχει ανενεργό σύνδεσμο και αρχείο'
     HoverTitleEditPage: 'Επεξεργασία σελίδας'
-    PageName: 'Σελίδα'
+    PageName: Σελίδα
     ReasonDropdown: 'Πρόβλημα για έλεγχο'
     ReasonDropdownBROKENFILE: 'Ανενεργό αρχείο '
     ReasonDropdownBROKENLINK: 'Ανενεργός σύνδεσμος '
@@ -60,15 +60,15 @@ el:
     Title: 'Προσθήκη σελίδας'
   CMSBatchActions:
     DELETED_PAGES: 'Διαγράφηκαν %d σελίδες απο τις δημοσιευμένες, με %d αποτυχίες'
-    PUBLISH_PAGES: Δημοσίευση
+    PUBLISH_PAGES: 'Δημοσίευση'
   CMSFileAddController:
     MENUTITLE: Αρχεία
   CMSMain:
     AddNew: 'Προσθήκη σελίδας'
     AddNewButton: 'Προσθήκη'
-    Cancel: Άκυρο
+    Cancel: 'Άκυρο'
     ChoosePageType: 'Επιλέξτε τύπο σελίδας'
-    Create: Δημιουργία
+    Create: 'Δημιουργία'
     DELETEFP: Διαγραφή
     EditTree: 'Επεξεργασία Δένδρου'
     MENUTITLE: 'Επεξεργασία Σελίδας'
@@ -78,10 +78,10 @@ el:
     PUBALLFUN: 'Λειτουργία "Δημοσίευση Όλων"'
     PUBPAGES: 'Ολοκληρώθηκε: Δημοσίευση {count} σελίδων'
     PageAdded: 'Η σελίδα δημιουργήθηκε με επιτυχία'
-    SAVE: Αποθήκευση
-    TabContent: Περιεχόμενο
+    SAVE: 'Αποθήκευση'
+    TabContent: 'Περιεχόμενο'
     TabHistory: Ιστορικό
-    TabSettings: Ρυθμίσεις
+    TabSettings: 'Ρυθμίσεις'
   CMSMain_left_ss:
     RESET: Επαναφορά
   CMSPageAddController:
@@ -98,7 +98,7 @@ el:
     SHOWVERSION: 'Προβολή Έκδοσης'
     VIEW: προβολή
   CMSPageHistoryController_versions_ss:
-    AUTHOR: Συγγραφέας
+    AUTHOR: 'Συγγραφέας'
     NOTPUBLISHED: 'δεν έχει δημοσιευθεί'
     PUBLISHER: Εκδότης
     UNKNOWN: Άγνωστο
@@ -116,7 +116,7 @@ el:
     FILTERDATEHEADING: Ημερομηνία
     FILTERDATETO: Έως
   CMSSettingsController:
-    MENUTITLE: Ρυθμίσεις
+    MENUTITLE: 'Ρυθμίσεις'
   CMSSiteTreeFilter_Search:
     Title: 'Όλες οι σελίδες'
   ContentController:
@@ -125,9 +125,9 @@ el:
     INSTALL_SUCCESS: 'Η Εγκατάσταση ήταν επιτυχής!'
     LOGGEDINAS: 'Συνδεδεμένος ως'
     LOGIN: Σύνδεση
-    LOGOUT: 'Αποσύνδεση'
+    LOGOUT: Αποσύνδεση
     NOTLOGGEDIN: 'Δεν έχετε συνδεθεί'
-    PUBLISHED: Δημοσιευμένο
+    PUBLISHED: 'Δημοσιευμένο'
     Password: Κωδικός
     VIEWPAGEIN: 'Προβολή Σελίδας σε:'
   ErrorPage:
@@ -143,9 +143,9 @@ el:
     UNUSEDTHUMBNAILSTITLE: 'Αχρησιμοποίητα εικονίδια'
     UploadFilesButton: Μεταφόρτωση
   LeftAndMain:
-    DELETED: Έγινε Διαγραφή.
-    PreviewButton: Προεπισκόπιση
-    SAVEDUP: Έγινε Αποθήκευση.
+    DELETED: 'Έγινε Διαγραφή.'
+    PreviewButton: 'Προεπισκόπιση'
+    SAVEDUP: 'Έγινε Αποθήκευση.'
     SearchResults: 'Αναζήτηση Αποτελεσμάτων'
   Permission:
     CMS_ACCESS_CATEGORY: 'Πρόσβαση στο CMS'
@@ -179,9 +179,9 @@ el:
     SINGULARNAME: 'Ρύθμιση Ιστότοπου'
     SITENAMEDEFAULT: 'Όνομα Ιστότοπου'
     SITETITLE: 'Τίτλος ιστοτόπου'
-    TABACCESS: Πρόσβαση
+    TABACCESS: 'Πρόσβαση'
     TABMAIN: Βασικό
-    THEME: Θεματική παραλλαγή
+    THEME: 'Θεματική παραλλαγή'
     TOPLEVELCREATE: 'Ποιος μπορεί να δημιουργεί σελίδες στην ρίζα του ιστοτόπου;'
     VIEWHEADER: 'Ποιος μπορεί να βλέπει σελίδες σε αυτόν τον ιστότοπο;'
   SiteTree:
@@ -190,27 +190,27 @@ el:
     ACCESSLOGGEDIN: 'Συνδεδεμένοι χρήστες'
     ADDEDTODRAFTHELP: 'Η σελίδα δεν έχει δημοσιευθεί ακόμη'
     ALLOWCOMMENTS: 'Να επιτρέπονται σχόλια σε αυτή τη σελίδα;'
-    BUTTONPUBLISHED: Δημοσιευμένο
+    BUTTONPUBLISHED: 'Δημοσιευμένο'
     BUTTONSAVED: Αποθηκεύτηκε
     BUTTONSAVEPUBLISH: 'Αποθήκευση & δημοσίευση'
     BUTTONUNPUBLISHDESC: 'Αφαίρεση αυτής της σελίδας απο τις δημοσιευμένες'
     Comments: Σχόλια
-    Content: Περιεχόμενο
+    Content: 'Περιεχόμενο'
     DEFAULTABOUTTITLE: 'Ποιοί είμαστε'
-    DEFAULTCONTACTTITLE: 'Επικοινωνία'
+    DEFAULTCONTACTTITLE: Επικοινωνία
     DEFAULTHOMETITLE: Αρχική
     DELETEDPAGEHELP: 'Η σελίδα δεν είναι πλέον δημοσιευμένη'
-    DELETEDPAGESHORT: Έγινε Διαγραφή
+    DELETEDPAGESHORT: 'Έγινε Διαγραφή'
     DESCRIPTION: 'Σελίδα γενικού περιεχομένου'
     DependtPageColumnLinkType: 'Τύπος συνδέσμου'
-    DependtPageColumnURL: Διεύθυνση URL
+    DependtPageColumnURL: 'Διεύθυνση URL'
     EDITHEADER: 'Ποιος μπορεί να επεξεργαστεί αυτή τη σελίδα;'
     EDITONLYTHESE: 'Μόνο αυτοί οι χρήστες (επιλέξτε από τη λίστα)'
     EDITORGROUPS: 'Ομάδες Συντακτών'
     Editors: 'Ομάδες Συντακτών'
     GroupPlaceholder: 'Κάντε κλικ για επιλογή ομάδας'
     HASBROKENLINKS: 'Αυτή η σελίδα έχει ανενεργούς συνδέσμους '
-    HTMLEDITORTITLE: Περιεχόμενο
+    HTMLEDITORTITLE: 'Περιεχόμενο'
     LASTPUBLISHED: 'Τελευταία δημοσίευση'
     LASTSAVED: 'Τελευταία αποθήκευση'
     LASTUPDATED: 'Τελευταία Ενημέρωση'
@@ -231,7 +231,7 @@ el:
     SHOWINMENUS: 'Να φαίνεται στα μενού;'
     SHOWINSEARCH: 'Να φαίνεται στην αναζήτηση'
     SINGULARNAME: Σελίδα
-    TABBEHAVIOUR: Συμπεριφορά
+    TABBEHAVIOUR: 'Συμπεριφορά'
     TABCONTENT: 'Κυρίως Περιεχόμενο'
     TABDEPENDENT: 'Εξαρτώμενες σελίδες '
     URLSegment: 'Τμήμα διεύθυνσης URL'
@@ -241,7 +241,7 @@ el:
   SiteTreeURLSegmentField:
     EMPTY: 'Παρακαλώ εισάγεται ένα τμήμα διεύθυνσης URL ή πατήστε άκυρο'
   URLSegmentField:
-    Cancel: Άκυρο
+    Cancel: 'Άκυρο'
     Edit: Επεξεργασία
     OK: ΟΚ
   ViewArchivedEmail_ss:

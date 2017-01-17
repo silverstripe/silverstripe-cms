@@ -20,7 +20,7 @@ ro:
     Filetype: 'Tip fişier'
     ListView: 'Vizualizare listă'
     MENUTITLE: Fişiere
-    NEWFOLDER: Dosar nou
+    NEWFOLDER: 'Dosar nou'
     SIZE: Mărime
     THUMBSDELETED: '{count} pictograme nefolosite au fost șterse'
     TreeView: 'Vizualizare arborescentă'
@@ -90,7 +90,6 @@ ro:
     PAGETYPEANYOPT: Oricare
     PUBALLCONFIRM: 'Vă rugăm publicați toate paginile din site, copiind conținutul curent în live'
     PUBALLFUN: 'Funcționalitatea "Publică Tot" '
-    PUBALLFUN2: "Apăsând acest buton se v-a face echivalentul apăsării pe fiecare pagină a butonului \"publicare\". Este\n\t\t\t\tintenționat să fie folosit după ce s-au făcut editări masive de conținut, precum când site-ul a fost\n\t\t\t\tprima oară construit."
     PUBPAGES: 'Finalizat: Publicate {count} pagini'
     PageAdded: 'Pagină creată cu succes'
     REMOVED: 'Șterge ''{title}''{description} din site-ul live'
@@ -126,7 +125,7 @@ ro:
     VIEWINGVERSION: 'Vizualizarea versiunii {version}.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
-    NOTPUBLISHED: 'Nepublicat'
+    NOTPUBLISHED: Nepublicat
     PUBLISHER: Redactor
     UNKNOWN: Necunoscut
     WHEN: Când
@@ -140,7 +139,7 @@ ro:
   CMSPagesController_Tools_ss:
     FILTER: Filtru
   CMSSearch:
-    FILTERDATEFROM: De la
+    FILTERDATEFROM: 'De la'
     FILTERDATEHEADING: Data
     FILTERDATETO: La
   CMSSettingsController:
@@ -163,8 +162,8 @@ ro:
     InstallSuccessCongratulations: 'Silverstripe a fost instalat cu succes!'
     LOGGEDINAS: 'Logat ca'
     LOGIN: Login
-    LOGOUT: 'Logout'
-    NOTLOGGEDIN: 'Ne-loginat'
+    LOGOUT: Logout
+    NOTLOGGEDIN: Ne-loginat
     PUBLISHED: Publicat
     PUBLISHEDSITE: 'Site publicat'
     Password: Parolă
@@ -296,7 +295,7 @@ ro:
     Comments: Comentarii
     Content: Continut
     DEFAULTABOUTTITLE: 'Despre Noi'
-    DEFAULTCONTACTTITLE: 'Contactați-ne'
+    DEFAULTCONTACTTITLE: Contactați-ne
     DEFAULTHOMETITLE: Acasă
     DELETEDPAGEHELP: 'Pagina nu mai este publicată'
     DELETEDPAGESHORT: Șters
@@ -320,7 +319,7 @@ ro:
     LASTUPDATED: 'Ultimul actualizat'
     LINKCHANGENOTE: 'Schimbarea link-urilor din pagină v-a afecta și link-urile din toți descendenții.'
     MENUTITLE: 'Etichetă navigare'
-    METADESC: 'Descriere'
+    METADESC: Descriere
     METADESCHELP: 'Motoarele de căutare folosesc acest conținut pentru a afișa rezultatele căutării (deși nu v-a influența nota acestuia)'
     METAEXTRA: 'Etichetă Meta preferențială'
     METAEXTRAHELP: 'Etichetele HTML pentru informațiile meta adiționale. De exemplu &lt;meta name="numePreferat" content="conținut preferențial aici" /&gt;'
@@ -328,7 +327,7 @@ ro:
     MODIFIEDONDRAFTSHORT: Modificat
     MetadataToggle: Metadata
     MoreOptions: 'Mai multe opțiuni'
-    NOTPUBLISHED: 'Nepublicat'
+    NOTPUBLISHED: Nepublicat
     OBSOLETECLASS: 'Această pagină este de un tip {type} scos din uz. Salvând se va reseta tipul și se pot pierde datele'
     PAGELOCATION: 'Locația pagini'
     PAGETITLE: 'Nume pagină'

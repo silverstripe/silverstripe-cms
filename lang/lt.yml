@@ -5,13 +5,13 @@ lt:
     AppCategoryArchive: Archyvas
     AppCategoryAudio: Garsas
     AppCategoryDocument: Dokumentas
-    AppCategoryFlash: Flash byla
+    AppCategoryFlash: 'Flash byla'
     AppCategoryImage: Paveikslėlis
-    AppCategoryVideo: Video byla
+    AppCategoryVideo: 'Video byla'
     BackToFolder: 'Atgal į katalogą'
     CREATED: Data
     CurrentFolderOnly: 'Apriboti iki šio katalogo?'
-    DetailsView: Detalesnė informacija
+    DetailsView: 'Detalesnė informacija'
     FILES: Bylos
     FILESYSTEMSYNC: 'Sinchronizuoti bylas'
     FILESYSTEMSYNCTITLE: 'Atnaujinti TVS bylų sarašo duomenų bazę. Naudotina, kai naujos bylos buvo įkeltos naudojant trečios šalies programinę įrangą, pvz. FTP.'
@@ -20,7 +20,7 @@ lt:
     Filetype: 'Bylos tipas'
     ListView: 'Sąrašo rodinys'
     MENUTITLE: Bylos
-    NEWFOLDER: Naujas katalogas
+    NEWFOLDER: 'Naujas katalogas'
     SIZE: Dydis
     THUMBSDELETED: 'Ištrinta {count} nenaudojamų paveikslėlių miniatiūrų.'
     TreeView: 'Medžio rodinys'
@@ -37,15 +37,15 @@ lt:
   BackLink_Button_ss:
     Back: Atgal
   BrokenLinksReport:
-    Any: Bet kurias
+    Any: 'Bet kurias'
     BROKENLINKS: 'Sugadintų nuorodų ataskaita'
     CheckSite: 'Patikrinti svetainę'
     CheckSiteDropdownDraft: 'Juodraštinė svetainė'
     CheckSiteDropdownPublished: 'Publikuojama svetainė'
-    ColumnDateLastModified: 'Redaguota'
-    ColumnDateLastPublished: 'Publikuota'
+    ColumnDateLastModified: Redaguota
+    ColumnDateLastPublished: Publikuota
     ColumnProblemType: 'Problemos tipas'
-    ColumnURL: URL adresas
+    ColumnURL: 'URL adresas'
     HasBrokenFile: 'turi sugadintą bylą'
     HasBrokenLink: 'turi sugadintą nuorodą'
     HasBrokenLinkAndFile: 'turi sugadintą nuorodą ir bylą'
@@ -94,10 +94,9 @@ lt:
     MENUTITLE: 'Redaguoti puslapį'
     NEWPAGE: 'Naujas {pagetype}'
     PAGENOTEXISTS: 'Šis puslapis neegzistuoja'
-    PAGETYPEANYOPT: Bet koks
+    PAGETYPEANYOPT: 'Bet koks'
     PUBALLCONFIRM: 'Prašome publikuoti kiekvieną svetainės puslapį, kopijuojant turinį į svetainę'
     PUBALLFUN: '"Publikuoti viską" funkcionalumas'
-    PUBALLFUN2: "Paspaudus šį mygtuką, bus publikuotas kiekvienas puslapis svetainėje. Tai naudotina, kai padaromi dideli pakeitimai svetainės turinyje, pavyzdžiui ką tik sukūrus svetainę."
     PUBPAGES: 'Įvykdyta: Publikuoti {count} puslapiai'
     PageAdded: 'Puslapis sėkmingai sukurtas'
     REMOVED: 'Iš publikuojamos svetainės ištrintas ''{title}''{description}'
@@ -136,7 +135,7 @@ lt:
     VIEWINGVERSION: 'Dabar peržiūrima versija {version}.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autorius
-    NOTPUBLISHED: 'Nepublikuotas'
+    NOTPUBLISHED: Nepublikuotas
     PUBLISHER: Publikavo
     UNKNOWN: Nežinoma
     WHEN: Kada
@@ -155,7 +154,7 @@ lt:
     FILTERDATEFROM: Nuo
     FILTERDATEHEADING: Data
     FILTERDATETO: Iki
-    PAGEFILTERDATEHEADING: 'Redaguota'
+    PAGEFILTERDATEHEADING: Redaguota
   CMSSettingsController:
     MENUTITLE: Nustatymai
   CMSSiteTreeFilter_Search:
@@ -171,15 +170,15 @@ lt:
     DRAFT: Juodraštis
     DRAFTSITE: 'Juodraštinė svetainė'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Jūs turite prisijungti su savo TVS slaptažodžiu, kad galėtumėte peržiūrėti juodraščio arba archyvo turinį.<a href="%s">Spauskite čia, norėdami grįžti į svetainę</a>.'
-    Email: E. paštas
+    Email: 'E. paštas'
     INSTALL_SUCCESS: 'Įdiegta sėkmingai!'
     InstallFilesDeleted: 'Įdiegimo bylos pašalintos sėkmingai.'
     InstallSecurityWarning: 'Saugumo sumetimais Jūs turėtumėte ištrinti įdiegimo bylas, nebent vėliau planuojate diegimo procesą atlikti iš naujo (<em>bus reikalinga administravimo prieiga, žiūrėkite viršuje</em>). Web serveris turi turėti rašymo teises "assets" katalogui, kitiems katalogams tokių teisių nereikia. <a href="{link}" style="text-align: center;">Spauskite čia jei norite ištrinti įdiegimo bylas</a>'
     InstallSuccessCongratulations: 'SilverStripe sėkmingai įdiegta!'
     LOGGEDINAS: 'Prisijungėte kaip '
     LOGIN: Prisijungti
-    LOGOUT: 'Atsijungti'
-    NOTLOGGEDIN: 'Neprisijungęs'
+    LOGOUT: Atsijungti
+    NOTLOGGEDIN: Neprisijungęs
     PUBLISHED: Publikuota
     PUBLISHEDSITE: 'Publikuojama svetainė'
     Password: Slaptažodis
@@ -297,7 +296,7 @@ lt:
     TOPLEVELCREATE: 'Kas gali kurti puslapius pagrindiniame svetainės lygmenyje?'
     VIEWHEADER: 'Kas gali matyti puslapius šioje svetainėje?'
   SiteTree:
-    ACCESSANYONE: Bet kas
+    ACCESSANYONE: 'Bet kas'
     ACCESSHEADER: 'Kas gali matyti šį puslapį?'
     ACCESSLOGGEDIN: 'Prisijungę vartotojai'
     ACCESSONLYTHESE: 'Tik šie žmonės (pasirinkite iš sąrašo)'
@@ -318,7 +317,7 @@ lt:
     Comments: Komentarai
     Content: Turinys
     DEFAULTABOUTTITLE: 'Apie mus'
-    DEFAULTCONTACTTITLE: 'Kontaktai'
+    DEFAULTCONTACTTITLE: Kontaktai
     DEFAULTHOMECONTENT: '<p>Sveiki atvykę į SilverStripe! Tai yra pagrindinis puslapis. Jūs galite redaguoti šį puslapį atsidarę <a href="admin/">TVS</a>. Dabar galite naudotis <a href="http://doc.silverstripe.com">programuotojų dokumentacija</a>, arba pradėti nuo <a href = "http://doc.silverstripe.com/doku.php?id=tutorials">SilverStripe pamokų.</a></p>'
     DEFAULTHOMETITLE: Pradžia
     DELETEDPAGEHELP: 'Puslapis nebepublikuojamas'
@@ -326,7 +325,7 @@ lt:
     DEPENDENT_NOTE: 'Šiam puslapiui priklauso šie puslapiai. Tai gali būti virtualūs, nukreipiantys puslapiai, bei puslapiai, rodantys kitų puslapių turinį.'
     DESCRIPTION: 'Standartinio turinio puslapis'
     DependtPageColumnLinkType: 'Nuorodos tipas'
-    DependtPageColumnURL: URL adresas
+    DependtPageColumnURL: 'URL adresas'
     EDITANYONE: 'Bet kuris prisijungęs prie TVS'
     EDITHEADER: 'Kas gali redaguoti šį puslapį?'
     EDITONLYTHESE: 'Tik šie žmonės (pasirinkite iš sąrašo)'
@@ -338,9 +337,9 @@ lt:
     HASBROKENLINKS: 'Šiame puslapyje yra nebegaliojančių nuorodų.'
     HTMLEDITORTITLE: Turinys
     INHERIT: 'Paveldėti iš pradinio puslapio'
-    LASTPUBLISHED: 'Publikuota'
-    LASTSAVED: 'Išsaugota'
-    LASTUPDATED: 'Atnaujinta'
+    LASTPUBLISHED: Publikuota
+    LASTSAVED: Išsaugota
+    LASTUPDATED: Atnaujinta
     LINKCHANGENOTE: 'Keičiant šio puslapio nuorodą, keisis ir jam priklausančių puslapių nuorodos.'
     MENUTITLE: 'Navigacijos pavadinimas'
     METADESC: 'Meta aprašymas'
@@ -351,7 +350,7 @@ lt:
     MODIFIEDONDRAFTSHORT: Pakeistas
     MetadataToggle: Metaduomenys
     MoreOptions: 'Daugiau pasirinkimų'
-    NOTPUBLISHED: 'Nepublikuotas'
+    NOTPUBLISHED: Nepublikuotas
     OBSOLETECLASS: 'Šis puslapio tipas {type} neegzistuoja. Išsaugojus bus pakeistas tipas ir galite prarasti duomenis'
     PAGELOCATION: 'Puslapio vieta'
     PAGETITLE: 'Puslapio pavadinimas'

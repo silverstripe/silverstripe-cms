@@ -6,7 +6,7 @@ he_IL:
     AppCategoryAudio: שמע
     AppCategoryDocument: מסמך
     AppCategoryFlash: פלאש
-    AppCategoryImage: תמונה
+    AppCategoryImage: 'תמונה'
     AppCategoryVideo: וידאו
     BackToFolder: 'חזרה לתיקייה'
     CREATED: תאריך
@@ -20,7 +20,7 @@ he_IL:
     Filetype: 'סוג הקובץ'
     ListView: 'תצוגת רשימה'
     MENUTITLE: קבצים
-    NEWFOLDER: תיקייה חדשה
+    NEWFOLDER: 'תיקייה חדשה'
     SIZE: גודל
     THUMBSDELETED: '{count} תמונות ממוזערות שלא היו בשימוש נמחקו'
     TreeView: 'תצוגת עץ'
@@ -28,7 +28,7 @@ he_IL:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'למחוק תיקיות'
   AssetAdmin_Tools:
-    FILTER: מסנן
+    FILTER: 'מסנן'
   AssetAdmin_left_ss:
     GO: לעבור
   AssetTableField:
@@ -87,7 +87,6 @@ he_IL:
     PAGETYPEANYOPT: כלשהם
     PUBALLCONFIRM: 'פרסום העמודים באתר, תוך העתקת כל הטיוטות לגרסה הסופית'
     PUBALLFUN: 'פרסום הכול'
-    PUBALLFUN2: "לחיצה על כפתור זה מקבילה לאישור פרסום על כל העמודים באתר. הכפתור נועד לאישורים גורפים שבאו בעקבות עריכה נרחבת באתר דוגמת ההגדרות הראשוניות בעת יצירת אתר זה"
     PUBPAGES: 'בוצע: פורסמו {count} עמודים'
     PageAdded: 'העמוד נוצר בהצלחה'
     REMOVEDPAGE: '''{title}'' הוסר מהאתר שפורסם'
@@ -117,10 +116,10 @@ he_IL:
     VIEW: צפייה
     VIEWINGVERSION: 'הגרסה הנוכחית המופיעה {version}.'
   CMSPageHistoryController_versions_ss:
-    AUTHOR: נוצר על ידי
+    AUTHOR: 'נוצר על ידי'
     NOTPUBLISHED: 'לא פורסם'
-    PUBLISHER: פורסם על ידי
-    UNKNOWN: לא ידוע
+    PUBLISHER: 'פורסם על ידי'
+    UNKNOWN: 'לא ידוע'
     WHEN: מתי
   CMSPageSettingsController:
     MENUTITLE: 'עריכת העמוד'
@@ -130,7 +129,7 @@ he_IL:
     MENUTITLE: עמודים
     TreeView: 'תצוגת עץ'
   CMSPagesController_Tools_ss:
-    FILTER: מסנן
+    FILTER: 'מסנן'
   CMSSearch:
     FILTERDATEFROM: מ־
     FILTERDATEHEADING: תאריך
@@ -152,8 +151,8 @@ he_IL:
     InstallSecurityWarning: 'מטעמי אבטחה עליך למחוק כעת את קובצי ההתקנה, אלמלא תכניותיך הן להתקין מחדש מאוחר יותר (<em>נדרשת כניסת מנהל, פרטים להלן</em>). שרת האינטרנט יזדקק רק לעת עתה לגישה לכתיבה לתיקייה „assets“, ניתן להסיר את גישת הכתיבה מכל שאר התיקיות. <a href="{link}" style="text-align: center;">יש ללחוץ כאן כדי למחוק את קובצי ההתקנה.</a>'
     InstallSuccessCongratulations: 'מערכת ה־SilverStripe הותקנה בהצלחה!'
     LOGGEDINAS: 'נכנסת בשם'
-    LOGIN: כניסה
-    LOGOUT: 'יציאה'
+    LOGIN: 'כניסה'
+    LOGOUT: יציאה
     NOTLOGGEDIN: 'לא נכנסת'
     PUBLISHEDSITE: 'אתר שפורסם'
     Password: ססמה
@@ -199,9 +198,9 @@ he_IL:
     UNUSEDTHUMBNAILSTITLE: 'תמונות ממוזערות שאינן בשימוש'
     UploadFilesButton: העלאה
   LeftAndMain:
-    DELETED: נמחק.
-    PreviewButton: תצוגה מקדימה
-    SAVEDUP: נשמר.
+    DELETED: 'נמחק.'
+    PreviewButton: 'תצוגה מקדימה'
+    SAVEDUP: 'נשמר.'
     SearchResults: 'תוצאות החיפוש'
   Permission:
     CMS_ACCESS_CATEGORY: 'גישה ל־CMS'
@@ -256,11 +255,11 @@ he_IL:
     TABACCESS: גישה
     TABMAIN: ראשי
     TAGLINEDEFAULT: 'שורת התיוג שלך כאן'
-    THEME: ערכת עיצוב
+    THEME: 'ערכת עיצוב'
     TOPLEVELCREATE: 'מי יכול ליצור עמודים בראש האתר?'
     VIEWHEADER: 'מי יכול לצפות בעמודים באתר זה?'
   SiteTree:
-    ACCESSANYONE: כל אחד
+    ACCESSANYONE: 'כל אחד'
     ACCESSHEADER: 'מי יכול לצפות בעמוד זה?'
     ACCESSLOGGEDIN: 'משתמשים שנכנסו'
     ACCESSONLYTHESE: 'רק האנשים האלה (יש לבחור מהרשימה)'
@@ -270,15 +269,15 @@ he_IL:
     APPEARSVIRTUALPAGES: 'תוכן זה מופיע גם בעמודים הווירטואליים באגפים של {title}.'
     BUTTONCANCELDRAFT: 'ביטול שינויי הטיוטה'
     BUTTONCANCELDRAFTDESC: 'למחוק את הטיוטה שלך ולהחזיר לעמוד הנוכחי שפורסם'
-    BUTTONUNPUBLISH: ביטול הפרסום
+    BUTTONUNPUBLISH: 'ביטול הפרסום'
     BUTTONUNPUBLISHDESC: 'הסרת עמוד זה מהאתר שפורסם'
     Comments: תגובות
     Content: תוכן
     DEFAULTABOUTTITLE: 'על אודותינו'
     DEFAULTCONTACTTITLE: 'יצירת קשר'
-    DEFAULTHOMETITLE: דף הבית
+    DEFAULTHOMETITLE: 'דף הבית'
     DELETEDPAGEHELP: 'העמוד אינו מפורסם עוד'
-    DELETEDPAGESHORT: נמחק
+    DELETEDPAGESHORT: 'נמחק'
     DEPENDENT_NOTE: 'העמודים הבאים תלויים בעמוד זה. בין אלו נכללים, עמודים וירטואליים, עמודי הפנייה ועמודים עם קישורי תוכן.'
     DESCRIPTION: 'דף תוכן גנרי'
     DependtPageColumnLinkType: 'סוג הקישור'
@@ -296,13 +295,13 @@ he_IL:
     LASTUPDATED: 'עודכן לאחרונה'
     LINKCHANGENOTE: 'החלפת הקישורים בעמוד זה ישפיע גם על הקישורים של כל העמודים הצאצאים.'
     MENUTITLE: 'תווית ניווט'
-    METADESC: 'תיאור'
+    METADESC: תיאור
     METADESCHELP: 'מנועי החיפוש משתמשים בתוכן זה כדי להציג תוצאות חיפוש (למרות שלא תהיה לכך השפעה על הדירוג שלהם).'
     METAEXTRA: 'תגי על נוספים'
     METAEXTRAHELP: 'תגיות HTML לנתוני על נוספים. לדוגמה &lt;meta name="שם_מותאם_אישית" content="התוכן שלך כאן" /&gt;'
     MODIFIEDONDRAFTHELP: 'בעמוד יש שינויים שלא פורסמו'
-    MODIFIEDONDRAFTSHORT: השתנה
-    MetadataToggle: נתוני על
+    MODIFIEDONDRAFTSHORT: 'השתנה'
+    MetadataToggle: 'נתוני על'
     PAGELOCATION: 'מיקום העמוד'
     PAGETITLE: 'שם הדף'
     PAGETYPE: 'סוג דף'
@@ -323,7 +322,7 @@ he_IL:
     SHOWINMENUS: 'להציג בתפריטים?'
     SHOWINSEARCH: 'לכלול בחיפוש?'
     SINGULARNAME: עמוד
-    TABBEHAVIOUR: התנהגות
+    TABBEHAVIOUR: 'התנהגות'
     TABCONTENT: 'תוכן ראשי'
     TABDEPENDENT: 'עמודים תלויים'
     TOPLEVEL: 'תוכן האתר (רמה עליונה)'
@@ -334,7 +333,7 @@ he_IL:
     VIEW_DRAFT_CONTENT: 'צפייה בתוכן טיוטה'
     VIEW_DRAFT_CONTENT_HELP: 'חל על צפייה בעמודים מחוץ ל־CMD במצב טיוטה. חיוני לצורך שיתוף פעולה עם גורמים חיצוניים שאין להם גישה ל־CMS.'
     Viewers: 'קבוצות צופים'
-    Visibility: אופן הצגה
+    Visibility: 'אופן הצגה'
     has_one_Parent: 'דף הורה'
     many_many_BackLinkTracking: 'מעקב אחרי קישור חוזר'
     many_many_ImageTracking: 'מעקב אחר תמונה'

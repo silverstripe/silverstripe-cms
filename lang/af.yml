@@ -2,7 +2,7 @@ af:
   AssetAdmin:
     ADDFILES: 'Voeg lêers by'
     ActionAdd: 'Voeg dossier by'
-    AppCategoryArchive: Stoor in argiewe
+    AppCategoryArchive: 'Stoor in argiewe'
     AppCategoryAudio: Klank
     AppCategoryDocument: Dokument
     AppCategoryFlash: Flash
@@ -20,17 +20,17 @@ af:
     Filetype: 'Lêer tipe'
     ListView: 'Lys aansig'
     MENUTITLE: Lêers
-    NEWFOLDER: Nuwe Dossier
+    NEWFOLDER: 'Nuwe Dossier'
     SIZE: Groote
     THUMBSDELETED: '{count} ongebruikte duimnaelsketse was verwyder'
     TreeView: 'Boom aansig'
-    Upload: Laai op
+    Upload: 'Laai op'
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Verwyder dossiere'
   AssetAdmin_Tools:
     FILTER: Filtreer
   AssetAdmin_left_ss:
-    GO: Gaan voort
+    GO: 'Gaan voort'
   AssetTableField:
     BACKLINKCOUNT: 'Gebruik op:'
     PAGES: bladsy(e)
@@ -42,7 +42,6 @@ af:
   CMSMain:
     PAGENOTEXISTS: 'Hierdie bladsy bestaan nie'
     PUBALLCONFIRM: 'Publiseer asseblief elke bladsy in die werf en kopieër inhoud fase na lewendig'
-    PUBALLFUN2: "Pressing this button will do the equivalent of going to every page and pressing \"publish\".  It's\n\t\t\t\tintended to be used after there have been massive edits of the content, such as when the site was\n\t\t\t\tfirst built.\n"
     ROLLBACK: 'Rol terug na hierdie weergawe'
   CMSPagesController:
     MENUTITLE: CMSPagesController
@@ -70,11 +69,11 @@ af:
   SilverStripeNavigatorLink:
     ShareLink: 'Deel skakel'
   SilverStripeNavigatorLinkl:
-    CloseLink: Maak toe
+    CloseLink: 'Maak toe'
   SiteConfig:
     DEFAULTTHEME: '(Gebruik verstek tema)'
   SiteTree:
-    ACCESSANYONE: Enige iemand
+    ACCESSANYONE: 'Enige iemand'
     ACCESSHEADER: 'Wie mag hierdie bladsy sien?'
     ACCESSLOGGEDIN: 'Ingetekende gebruikers'
     ACCESSONLYTHESE: 'Slegs hierdie mense (kies uit lys)'
@@ -97,7 +96,7 @@ af:
     PARENTTYPE_SUBPAGE: 'Sub-bladsy onder ''n ouer bladsy (kies onder)'
     REORGANISE_DESCRIPTION: 'Verander werf struktuur'
     SHOWINSEARCH: 'Wys in soektog?'
-    TABCONTENT: 'Inhoud'
+    TABCONTENT: Inhoud
     has_one_Parent: 'Ouer Bladsy'
   ViewArchivedEmail_ss:
     HAVEASKED: 'U het gevra om die inhoud van ons werf te sien op'

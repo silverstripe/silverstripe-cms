@@ -67,7 +67,6 @@ gl_ES:
     PAGETYPEANYOPT: Ningún
     PUBALLCONFIRM: 'Por favor publica toda a páxina no sitio, copiando o contido a contorna de produción'
     PUBALLFUN: 'Funcionalidade "Publicar Todo"'
-    PUBALLFUN2: "Premendo este botón farás o equivalente de ir a todas as páxinas e premer en \"publicar\". \nIsto está pensado para facer un uso masivo despois das edicións de contido, por exemplo \ncando o sitio foi construído por primeira vez."
     REMOVEDPAGEFROMDRAFT: 'Eliminado ''%s''  do borrador do sitio'
     ROLLBACK: 'Desfacer a esta versión'
     SAVE: Gardar
@@ -114,7 +113,7 @@ gl_ES:
     ARCHIVEDSITEFROM: 'Sitio arquivado dende'
     DRAFTSITE: 'Sitio Borrador'
     LOGGEDINAS: 'Iniciada sesión como'
-    LOGIN: Iniciar sesión
+    LOGIN: 'Iniciar sesión'
     LOGOUT: 'Pechar sesión'
     NOTLOGGEDIN: 'Sen iniciar sesión'
     PUBLISHEDSITE: 'Sitio Publicado'
@@ -187,12 +186,12 @@ gl_ES:
     ALLOWCOMMENTS: 'Permitir comentario nesta páxina?'
     BUTTONCANCELDRAFT: 'Cancelar cambios do borrador'
     BUTTONCANCELDRAFTDESC: 'Eliminar o borrador e revertir a páxina publicada actualmente'
-    BUTTONUNPUBLISH: Sen publicar
+    BUTTONUNPUBLISH: 'Sen publicar'
     BUTTONUNPUBLISHDESC: 'Eliminar esta páxina do sitio publicado'
     Comments: Comentarios
     Content: Contido
     DEFAULTABOUTTITLE: 'Sobre nós'
-    DEFAULTCONTACTTITLE: 'Contactarnos'
+    DEFAULTCONTACTTITLE: Contactarnos
     DEFAULTHOMETITLE: Inicio
     DELETEDPAGESHORT: Eliminado
     DESCRIPTION: 'Páxina de contido xenérico'

@@ -20,7 +20,7 @@ sr_RS@latin:
     Filetype: 'Tip datoteke'
     ListView: 'Prikaz u vidu liste'
     MENUTITLE: Datoteke
-    NEWFOLDER: Nova fascikla
+    NEWFOLDER: 'Nova fascikla'
     SIZE: Veličina
     THUMBSDELETED: '{count} nekorišćenih sličicâ je obrisano'
     TreeView: 'Pregled u vidu stabla'
@@ -37,7 +37,7 @@ sr_RS@latin:
   BackLink_Button_ss:
     Back: Nazad
   BrokenLinksReport:
-    Any: Bilo koji
+    Any: 'Bilo koji'
     BROKENLINKS: 'Izveštaj o oštećenim linkovima'
     CheckSite: 'Proveri sajt'
     CheckSiteDropdownDraft: 'Narct sajta'
@@ -87,10 +87,9 @@ sr_RS@latin:
     MENUTITLE: 'Izmeni stranicu'
     NEWPAGE: 'Nova {pagetype}'
     PAGENOTEXISTS: 'Ova stranica ne postoji'
-    PAGETYPEANYOPT: Bilo koja
+    PAGETYPEANYOPT: 'Bilo koja'
     PUBALLCONFIRM: 'Objavite svaku stranu na ovom sajtu kopiranjem sadržaj na živ sajt.'
     PUBALLFUN: 'Funkcija „Objavi sve“ '
-    PUBALLFUN2: "Pritiskom na ovo dugme postići ćete isto što i odlaskom na svaku stranu i pritiskanjem dugmeta „Objavi“ . Namenjena je za korišćene nakon velikih izmena sadržaja kao kada se sajt prvi put objavljuje."
     PUBPAGES: 'Urađeno: Objavljeno {count} stranica'
     PageAdded: 'Uspešno kreirana stranica'
     REMOVED: 'Sa objavljenog sajta obrisana je stranica ''{title}''{description}'
@@ -106,7 +105,7 @@ sr_RS@latin:
     TabHistory: Istorija
     TabSettings: Podešavanja
   CMSMain_left_ss:
-    RESET: Vrati u pređašnje stanje
+    RESET: 'Vrati u pređašnje stanje'
   CMSPageAddController:
     MENUTITLE: 'Dodaj stranicu'
     ParentMode_child: 'Kao podstranicu druge stranice'
@@ -126,7 +125,7 @@ sr_RS@latin:
     VIEWINGVERSION: 'Trenutno je prikazana verzija {version}.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
-    NOTPUBLISHED: 'Neobjavljeno'
+    NOTPUBLISHED: Neobjavljeno
     PUBLISHER: Objavljivač
     UNKNOWN: Nepoznato
     WHEN: Datum
@@ -163,7 +162,7 @@ sr_RS@latin:
     InstallSuccessCongratulations: 'SilverStripe je uspešno instaliran!'
     LOGGEDINAS: 'Prijavljen kao'
     LOGIN: Prijava
-    LOGOUT: 'Odjava'
+    LOGOUT: Odjava
     NOTLOGGEDIN: 'Niste prijavljeni'
     PUBLISHED: Objaljeno
     PUBLISHEDSITE: 'Objavljeni sajt'
@@ -212,7 +211,7 @@ sr_RS@latin:
     UploadFilesButton: Postavi
   LeftAndMain:
     DELETED: Izbrisano.
-    PreviewButton: Prethodni pregled
+    PreviewButton: 'Prethodni pregled'
     SAVEDUP: Sačuvano.
     SearchResults: 'Rezultati pretraživanja'
   Permission:
@@ -269,7 +268,7 @@ sr_RS@latin:
     PLURALNAME: 'Konfiguracije sajta'
     SINGULARNAME: 'Konfiguracija sajta'
     SITENAMEDEFAULT: 'Naziv sajta'
-    SITETAGLINE: 'Slogan'
+    SITETAGLINE: Slogan
     SITETITLE: 'Naslov sajta'
     TABACCESS: Pristup
     TABMAIN: Glavno
@@ -291,13 +290,13 @@ sr_RS@latin:
     BUTTONPUBLISHED: Objaljeno
     BUTTONSAVED: Sačuvano.
     BUTTONSAVEPUBLISH: 'Sačuvaj i objavi'
-    BUTTONUNPUBLISH: Poništi objavu
+    BUTTONUNPUBLISH: 'Poništi objavu'
     BUTTONUNPUBLISHDESC: 'Ukloni ovu stranicu iz objavljenog sajta'
     Comments: Komentari
     Content: Sadržaj
     DEFAULTABOUTTITLE: 'O nama'
     DEFAULTCONTACTTITLE: 'Kontaktirajte nas'
-    DEFAULTHOMETITLE: Početna stranica
+    DEFAULTHOMETITLE: 'Početna stranica'
     DELETEDPAGEHELP: 'Stranica nije više objavljena'
     DELETEDPAGESHORT: Izbrisano
     DEPENDENT_NOTE: 'Sledeće stranice zavise od ove stranice. Ovo podrazumeva vitruelne stranice, stranice za preusmeravanje i stranice sa linkovima na sadržaj.'
@@ -320,15 +319,15 @@ sr_RS@latin:
     LASTUPDATED: 'Poslednji put ažurirano'
     LINKCHANGENOTE: 'Promena linka ove stranice uticaće, takođe, na linkove svih podstranica.'
     MENUTITLE: 'Natpis za navigaciju'
-    METADESC: 'Opis'
+    METADESC: Opis
     METADESCHELP: 'Pretraživačke mašine koriste ovaj sadržaj za prikaz rezultata pretraživanja (ipak, on ne utiče na rejting stranice).'
     METAEXTRA: 'Prilagođene meta oznake'
     METAEXTRAHELP: 'HTML oznake za dodatne meta informacije. Na primer, &lt;meta name="audience" content="all" /&gt;'
     MODIFIEDONDRAFTHELP: 'Stranica sadrži neobjavljene izmene'
     MODIFIEDONDRAFTSHORT: Izmenjeno
-    MetadataToggle: Meta podaci
+    MetadataToggle: 'Meta podaci'
     MoreOptions: 'Više opcija'
-    NOTPUBLISHED: 'Neobjavljeno'
+    NOTPUBLISHED: Neobjavljeno
     OBSOLETECLASS: 'Tip ove stranice: {type} nije više podržan. Ako sačuvate stranicu njen tip će biti promenjen, pa možete izgubiti svoje podatke'
     PAGELOCATION: 'Lokacija stranice'
     PAGETITLE: 'Naziv stranice'
@@ -373,7 +372,7 @@ sr_RS@latin:
   URLSegmentField:
     Cancel: Odustani
     Edit: Izmeni
-    OK: U redu
+    OK: 'U redu'
   ViewArchivedEmail_ss:
     CANACCESS: 'Možete da pristupite arhiviranom sadržaju na ovom linku:'
     HAVEASKED: 'Zamoljeni ste da pogledate sadržaj ovog sajta'

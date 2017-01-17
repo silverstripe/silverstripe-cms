@@ -1,6 +1,6 @@
 es_MX:
   AssetAdmin:
-    NEWFOLDER: Nueva Carpeta
+    NEWFOLDER: 'Nueva Carpeta'
   AssetAdmin_left_ss:
     GO: Ir
   BrokenLinksReport:
@@ -31,11 +31,10 @@ es_MX:
     PUBLISH_PAGES: Publicar
   CMSMain:
     DELETE: 'Eliminar del boceto del sitio'
-    DELETEFP: Eliminar del sitio público
+    DELETEFP: 'Eliminar del sitio público'
     PAGENOTEXISTS: 'Esta página no existe'
     PUBALLCONFIRM: 'Por favor publique todas las páginas del sitio, copiando el contenido del boceto al sitio público'
     PUBALLFUN: 'Funcionalidad "Publicar todo"'
-    PUBALLFUN2: "Al precionar este botón hará el equivalente de ir a cada página y precionar \"Publicar\". Está pensado para ser usado en edición masiva de contenido, por ejemplo cuando se construye el sitio por primera vez."
     REMOVEDPAGEFROMDRAFT: 'Se ha eliminado ''%s'' del boceto del sitio'
     ROLLBACK: 'Restaurar a ésta versión'
     SAVE: Guardar
@@ -45,7 +44,7 @@ es_MX:
     ARCHIVEDSITEFROM: 'Sito archivado de'
     DRAFTSITE: 'Proyecto del Sitio'
     LOGGEDINAS: 'Conectado cómo'
-    LOGIN: Iniciar sesión
+    LOGIN: 'Iniciar sesión'
     LOGOUT: 'Cerrar sesión'
     NOTLOGGEDIN: 'No ha iniciado sesión'
     PUBLISHEDSITE: 'Sitio Publicado'
@@ -135,12 +134,12 @@ es_MX:
     ALLOWCOMMENTS: '¿Permitir comentarios en ésta página?'
     BUTTONCANCELDRAFT: 'Cancelar cambios al boceto'
     BUTTONCANCELDRAFTDESC: 'Eliminar el boceto y regresar a la página publicada actualmente'
-    BUTTONUNPUBLISH: Ocultar al público
+    BUTTONUNPUBLISH: 'Ocultar al público'
     BUTTONUNPUBLISHDESC: 'Quitar ésta página del sitio público'
     Comments: Comentarios
     Content: Contenido
     DEFAULTABOUTTITLE: 'Sobre nosotros'
-    DEFAULTCONTACTTITLE: 'Contacto'
+    DEFAULTCONTACTTITLE: Contacto
     DEFAULTHOMETITLE: Inicio
     DEPENDENT_NOTE: 'Las siguientes páginas depender de esta página. Esto incluye páginas virtuales, redirección de páginas y páginas con enlaces de contenido.'
     DependtPageColumnLinkType: 'Tipo de enlace'
@@ -155,7 +154,7 @@ es_MX:
     HTMLEDITORTITLE: Contenido
     INHERIT: 'Hereda de la página ascendiente'
     MENUTITLE: 'Etiqueta de navegación'
-    METADESC: 'Descripción'
+    METADESC: Descripción
     METAEXTRA: 'Etiquetas meta personalizadas'
     PAGELOCATION: 'Ubicación de la página'
     PAGETITLE: 'Nombre de página'
@@ -169,7 +168,7 @@ es_MX:
     SHOWINMENUS: '¿Mostrar en menús?'
     SHOWINSEARCH: '¿Mostrar en búsqueda?'
     TABBEHAVIOUR: Compotamiento
-    TABCONTENT: 'Contenido'
+    TABCONTENT: Contenido
     TABDEPENDENT: 'Páginas dependientes'
     TOPLEVEL: 'Contenido del sitio (Nivel Superior)'
     TOPLEVELCREATORGROUPS: 'Creadores de nivel superior'

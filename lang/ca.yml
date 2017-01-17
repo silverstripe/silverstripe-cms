@@ -5,11 +5,10 @@ ca:
     GO: Vés
   CMSMain:
     DELETE: 'Suprimeix del lloc esborrany'
-    DELETEFP: Suprimeix del lloc publicat
+    DELETEFP: 'Suprimeix del lloc publicat'
     PAGENOTEXISTS: 'Aquesta pàgina no existeix'
     PUBALLCONFIRM: 'Publica cada pàgina del lloc web, copiant el contingut cap a la versió publicada'
     PUBALLFUN: 'Funcionalitat de "Publica-ho tot"'
-    PUBALLFUN2: "Prémer aquest botó farà l'equivalent a anar a cada pàgina i prémer \"Publica\". És pràctic d'usar quan hi ha hagut edicions massives del contingut, com ara quan el lloc web s'ha fet per primer cop."
     REMOVEDPAGEFROMDRAFT: 'S''ha suprimit  ''%s'' del lloc esborrany'
     ROLLBACK: 'Torna a aquesta versió'
     SAVE: Desa
@@ -81,7 +80,7 @@ ca:
     HTMLEDITORTITLE: Contingut
     INHERIT: 'Hereda de la pàgina pare'
     MENUTITLE: 'Etiqueta de navegació'
-    METADESC: 'Descripció'
+    METADESC: Descripció
     METAEXTRA: 'Etiquetes Meta personalitzades'
     PAGETITLE: 'Nom de la pàgina'
     PAGETYPE: 'Tipus de pàgina'
@@ -89,7 +88,7 @@ ca:
     SHOWINMENUS: 'Mostra als menús?'
     SHOWINSEARCH: 'Mostra en cerques?'
     TABBEHAVIOUR: Comportament
-    TABCONTENT: 'Contingut'
+    TABCONTENT: Contingut
     TOPLEVEL: 'Contingut del lloc (Nivell principal)'
     URLSegment: 'Segment URL'
     Viewers: 'Grups de visitadors'

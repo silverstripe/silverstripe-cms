@@ -3,37 +3,37 @@ ar:
     ADDFILES: 'أضف الملفات'
     ActionAdd: 'أضف مجلد'
     AppCategoryArchive: الأرشيف
-    AppCategoryAudio: سمعي
+    AppCategoryAudio: 'سمعي'
     AppCategoryDocument: وثيقة
-    AppCategoryFlash: أخبار خاطفة
+    AppCategoryFlash: 'أخبار خاطفة'
     AppCategoryImage: صورة
     AppCategoryVideo: فيديو
     BackToFolder: 'العودة الى المجلد'
     CREATED: التاريخ
     CurrentFolderOnly: 'الحصر للمجلد الحالي؟'
     DetailsView: التفاصيل
-    FILES: الملفات
+    FILES: 'الملفات'
     FILESYSTEMSYNC: 'مزامنة الملفات'
     FILESYSTEMSYNCTITLE: 'تحديث إدخالات الملفات لقاعدة بيانات CMS على نظام الملفات. مفيد عندما يكون قد تم تحميل ملفات جديدة من خارج  نظام إدارة المحتوى CMS، على سبيل المثال من خلال FTP.'
     FROMTHEINTERNET: 'من الإنترنت'
     FROMYOURCOMPUTER: 'من حاسوبك'
     Filetype: 'نوع الملف'
     ListView: 'عرض القائمة'
-    MENUTITLE: الملفات
-    NEWFOLDER: مجلد جديد
-    SIZE: الحجم
+    MENUTITLE: 'الملفات'
+    NEWFOLDER: 'مجلد جديد'
+    SIZE: 'الحجم'
     THUMBSDELETED: 'تم حذف {count} صور مصغرة غير المستخدمة'
     TreeView: 'عرض الشجرة'
-    Upload: تحميل
+    Upload: 'تحميل'
   AssetAdmin_DeleteBatchAction:
     TITLE: 'احذف المجلدات'
   AssetAdmin_Tools:
-    FILTER: مصفاة
+    FILTER: 'مصفاة'
   AssetAdmin_left_ss:
     GO: اذهب
   AssetTableField:
     BACKLINKCOUNT: 'مستعمل في:'
-    PAGES: صفحة (صفحات)
+    PAGES: 'صفحة (صفحات)'
   BackLink_Button_ss:
     Back: الرجوع
   BrokenLinksReport:
@@ -68,7 +68,7 @@ ar:
     PUBLISHED_PAGES: '%d من الصفحات المنشورة'
     PUBLISH_PAGES: النشر
   CMSFileAddController:
-    MENUTITLE: ملفات
+    MENUTITLE: 'ملفات'
   CMSMain:
     ACCESS: 'النفاذ إلى القسم ''{title}'''
     ACCESS_HELP: 'سماح بعرض لقسم يحتوي على صفحة الشجرة والمحتوى. يمكن التعامل معها عرض وتحرير الأذونات من خلال القائمه المنسدله للروابط محددة صفحة، فضلا عن فصل "أذونات المحتوى".'
@@ -79,7 +79,7 @@ ar:
     ChoosePageType: 'اختر نوع الصفحة'
     Create: خلق
     DELETE: 'حذف من مسودة الموقع'
-    DELETEFP: حذف من الموقع المنشور
+    DELETEFP: 'حذف من الموقع المنشور'
     DESCREMOVED: 'و {count} منحدر منه'
     DUPLICATED: 'تكرار ''{title}'' بنجاح'
     DUPLICATEDWITHCHILDREN: 'تكرار ''{title}'' والتوابع بنجاح'
@@ -90,7 +90,6 @@ ar:
     PAGETYPEANYOPT: أي
     PUBALLCONFIRM: 'فضلاً قم بنشر كل صفحة من صفحات الموقع'
     PUBALLFUN: '"نشر الجميع"خاصية '
-    PUBALLFUN2: "الضغط على هذا الزر يعني الذهاب لكل صفحة و نشرها.  It's\nintended to be used after there have been massive edits of the content, such as when the site was\nfirst built.\n"
     PUBPAGES: 'تمّ: نشر {count} صفحات'
     PageAdded: 'تم إنشاء الصفحة بنجاح'
     REMOVED: 'حذف ''{title}''{description} من الموقع الحي'
@@ -102,11 +101,11 @@ ar:
     ROLLEDBACKVERSIONv2: 'التراجع إلى النسخة #%d.'
     SAVE: حفظ
     SAVEDRAFT: 'احفظ المسودة'
-    TabContent: المحتوى
+    TabContent: 'المحتوى'
     TabHistory: السوابق
     TabSettings: الإعدادات
   CMSMain_left_ss:
-    RESET: إعادة الوضع الأصلي
+    RESET: 'إعادة الوضع الأصلي'
   CMSPageAddController:
     MENUTITLE: 'أضف صفحة'
     ParentMode_child: 'تحت صفحة أخرى'
@@ -128,8 +127,8 @@ ar:
     AUTHOR: الكاتب
     NOTPUBLISHED: 'غير منشور'
     PUBLISHER: الناشر
-    UNKNOWN: غير معروف
-    WHEN: متى
+    UNKNOWN: 'غير معروف'
+    WHEN: 'متى'
   CMSPageSettingsController:
     MENUTITLE: 'تحرير صفحة'
   CMSPagesController:
@@ -138,10 +137,10 @@ ar:
     MENUTITLE: الصفحات
     TreeView: 'عرض الشجرة'
   CMSPagesController_Tools_ss:
-    FILTER: مصفاة
+    FILTER: 'مصفاة'
   CMSSearch:
-    FILTERDATEFROM: من
-    FILTERDATEHEADING: موعد
+    FILTERDATEFROM: 'من'
+    FILTERDATEHEADING: 'موعد'
     FILTERDATETO: إلى
   CMSSettingsController:
     MENUTITLE: الإعدادات
@@ -152,22 +151,22 @@ ar:
   ContentController:
     ARCHIVEDSITE: 'إصدار المعاينة'
     ARCHIVEDSITEFROM: 'موقع تمت أرشفته منذ'
-    CMS: نظام إدارة المحتوى
-    DRAFT: المسودّة
+    CMS: 'نظام إدارة المحتوى'
+    DRAFT: 'المسودّة'
     DRAFTSITE: 'موقع في المسودة'
     DRAFT_SITE_ACCESS_RESTRICTION: 'يجب عليك تسجيل الدخول باستخدام كلمة مرور CMS الخاصة بك من أجل عرض مشاريع المحتوى أو المحتوى المؤرشف. <a href="%s">انقر هنا للرجوع إلى الموقع المنشور.</a>'
-    Email: البريد الإلكتروني
+    Email: 'البريد الإلكتروني'
     INSTALL_SUCCESS: 'تم التثبيت بنجاح!'
     InstallFilesDeleted: 'تم حذف ملفات التثبيت بنجاح.'
     InstallSecurityWarning: 'لأسباب أمنية يجب عليك الآن حذف ملفات التثبيت، إلا إذا كنت تخطط لإعادة التثبيت في وقت لاحق (<em>يتطلب تسجيل الدخول كمسؤول، انظر أعلاه </em>). ملقم الويب أيضا يحتاج الآن إلى حق الكتابة في مجلد "الأصول"، يمكنك إزالة حق الكتابة من جميع المجلدات الأخرى. <a href="{link}" style="text-align: center;">اضغط هنا لحذف ملفات التثبيت.</a>'
     InstallSuccessCongratulations: 'قد تمّ تثبيت SilverStripe بنجاح!'
     LOGGEDINAS: 'الدخول كـ'
     LOGIN: الدخول
-    LOGOUT: 'الخروج'
+    LOGOUT: الخروج
     NOTLOGGEDIN: 'لم يتم تسجيل الدخول'
-    PUBLISHED: تمّ النشر
+    PUBLISHED: 'تمّ النشر'
     PUBLISHEDSITE: 'موقع منشور'
-    Password: كلمة السر
+    Password: 'كلمة السر'
     PostInstallTutorialIntro: 'هذا الموقع هو نسخة مبسطة من موقع سيلفر سترايب 3. لإلقاء نظرة على النسخة المفصلة، يرجى إلقاء نظرة على {link}.'
     StartEditing: 'يمكنك البدء في تحرير المحتوى الخاص بك عن طريق فتح  <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'غير ممكن حذف ملفات التثبيت. يرجى حذف الملفات التالية يدويا'
@@ -209,11 +208,11 @@ ar:
     DELETEUNUSEDTHUMBNAILS: 'حذف المصغرات غير المستخدمة'
     UNUSEDFILESTITLE: 'الملفات غير المستخدمة'
     UNUSEDTHUMBNAILSTITLE: 'المصغرات غير المستخدمة'
-    UploadFilesButton: تحميل
+    UploadFilesButton: 'تحميل'
   LeftAndMain:
     DELETED: حذفت.
-    PreviewButton: عرض مسبق
-    SAVEDUP: تم الحفظ.
+    PreviewButton: 'عرض مسبق'
+    SAVEDUP: 'تم الحفظ.'
     SearchResults: 'نتائج البحث'
   Permission:
     CMS_ACCESS_CATEGORY: 'الوصل لنظام إدارة المحتوى'
@@ -256,7 +255,7 @@ ar:
     ParameterLiveCheckbox: 'التأكد من حيوية الموقع'
     REPEMPTY: 'التقرير {title} فارغ.'
   SilverStripeNavigator:
-    ARCHIVED: المؤرشف
+    ARCHIVED: 'المؤرشف'
   SilverStripeNavigatorLink:
     ShareLink: 'رابط مشترك'
   SilverStripeNavigatorLinkl:
@@ -274,32 +273,32 @@ ar:
     TABACCESS: الوصول
     TABMAIN: الرئيسي
     TAGLINEDEFAULT: 'علامتك هنا'
-    THEME: الثيم
+    THEME: 'الثيم'
     TOPLEVELCREATE: 'من يستطيع إنشاء صفحات في جذر الموقع؟'
     VIEWHEADER: 'من يستطيع عرض الصفحات على هذا الموقع؟...'
   SiteTree:
-    ACCESSANYONE: الجميع
+    ACCESSANYONE: 'الجميع'
     ACCESSHEADER: 'من يستطيع مشاهدة هذه الصفحة ؟'
     ACCESSLOGGEDIN: 'الأعضاء المسجلين'
     ACCESSONLYTHESE: 'فقط هؤلاء الأشخاص ( اختر من القائمة)'
     ADDEDTODRAFTHELP: 'لم تنشر الصفحة بعد'
-    ADDEDTODRAFTSHORT: المسودة
+    ADDEDTODRAFTSHORT: 'المسودة'
     ALLOWCOMMENTS: 'السماح بالتعليقات في هذه الصفحة ؟'
     APPEARSVIRTUALPAGES: 'يظهر هذا المحتوى أيضا على الصفحات الافتراضية في أقسام {title}.'
     BUTTONCANCELDRAFT: 'إلغاء التغييرات في المسودة'
     BUTTONCANCELDRAFTDESC: 'إلغاء المسودة و العودة إلى الموقع المنشور حالياً'
     BUTTONPUBLISHED: نشرت
-    BUTTONSAVED: تم الحفظ
+    BUTTONSAVED: 'تم الحفظ'
     BUTTONSAVEPUBLISH: 'احفظ وانشر'
-    BUTTONUNPUBLISH: غير منشور
+    BUTTONUNPUBLISH: 'غير منشور'
     BUTTONUNPUBLISHDESC: 'حذف هذه الصفحة من الموقع المنشور'
     Comments: التعليقات
-    Content: المحتوى
-    DEFAULTABOUTTITLE: 'حول'
+    Content: 'المحتوى'
+    DEFAULTABOUTTITLE: حول
     DEFAULTCONTACTTITLE: 'اتصل بنا'
     DEFAULTHOMETITLE: الرئيسة
     DELETEDPAGEHELP: 'لم تعد الصفحة المنشورة'
-    DELETEDPAGESHORT: المحذوف
+    DELETEDPAGESHORT: 'المحذوف'
     DEPENDENT_NOTE: 'الصفحات التالية تعتمد على هذه الصفحة. وهذا يشمل صفحات الظاهري، وصفحات معيد التوجيه، والصفحات التي تحتوي على روابط المحتوى.'
     DESCRIPTION: 'صفحة المحتوى العام'
     DependtPageColumnLinkType: 'نوع الرابط'
@@ -313,20 +312,20 @@ ar:
     Editors: 'مجموعات المحررين'
     GroupPlaceholder: 'انقر لاختيار المجموعة'
     HASBROKENLINKS: 'هذه الصفحة تحتوي على روابط معطوبة'
-    HTMLEDITORTITLE: محتوى
+    HTMLEDITORTITLE: 'محتوى'
     INHERIT: 'استيراد من الصفحة المرجعية'
     LASTPUBLISHED: 'آخر منشور'
     LASTSAVED: 'آخر محفوظ'
     LASTUPDATED: 'أخر تحديث'
     LINKCHANGENOTE: 'تغيير هذا وصلة رابط الصفحة سوف تؤثر أيضًا على الوصلات لجميع صفحات الفرعية.'
     MENUTITLE: 'القائمة'
-    METADESC: 'الوصف'
+    METADESC: الوصف
     METADESCHELP: 'تستخدم محركات البحث هذا المحتوى لعرض نتائج البحث (على الرغم من أنها لن تؤثر على ترتيبها).'
     METAEXTRA: 'تخصيص Meta Tags'
     METAEXTRAHELP: 'علامات HTML لبيانات وصفية إضافية. على سبيل المثال <meta name="customName" content="your custom content here" />'
     MODIFIEDONDRAFTHELP: 'تحتوي الصفحة على تغييرات غير منشورة'
-    MODIFIEDONDRAFTSHORT: تم التعديل
-    MetadataToggle: البيانات الوصفية
+    MODIFIEDONDRAFTSHORT: 'تم التعديل'
+    MetadataToggle: 'البيانات الوصفية'
     MoreOptions: 'خيارات أخرى'
     NOTPUBLISHED: 'غير منشورة'
     OBSOLETECLASS: 'إنّ نوع {type} لهذه الصفحة بال. سيعيد حفظها تجديد نوعها وقد تفقد البيانات'
@@ -362,7 +361,7 @@ ar:
     VIEW_DRAFT_CONTENT: 'عرض مسودة المحتوى'
     VIEW_DRAFT_CONTENT_HELP: 'ينطبق على عرض صفحات خارج اتفاقية إدارة  محتوى الموقع في وضع المسودة. مفيدة للمتعاونين من الخارجين بدون الحصول على اتفاقية إدارة محتوى الموقع'
     Viewers: 'مجموعات المشاهدين'
-    Visibility: مدي الرؤية
+    Visibility: 'مدي الرؤية'
     has_one_Parent: 'الصفحة الرئيسة'
     many_many_BackLinkTracking: 'متابعة التعقيبات'
     many_many_ImageTracking: 'متابعة الصور'
@@ -373,7 +372,7 @@ ar:
   URLSegmentField:
     Cancel: إلغاء
     Edit: حرر
-    OK: موافق
+    OK: 'موافق'
   ViewArchivedEmail_ss:
     CANACCESS: 'يمكنك الدخول إلى أرشيف الموقع عن طريق الرابط التالي :'
     HAVEASKED: 'تم طلب مشاهدة محتوى الموقع في'

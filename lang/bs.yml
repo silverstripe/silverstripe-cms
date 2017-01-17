@@ -31,14 +31,13 @@ bs:
   BackLink_Button_ss:
     Back: Nazad
   BrokenLinksReport:
-    Any: Bilo koji
+    Any: 'Bilo koji'
   CMSMain:
     Create: Kreiraj
     DELETE: 'Izbriši sa privremenog nacrta stranice'
     PAGENOTEXISTS: 'Ova stranica ne postoji'
     PUBALLCONFIRM: 'Molimo, objavite svaku stavku na ovoj stranici, kopiranjem sadržaja na aktivnu stranicu'
     PUBALLFUN: 'Funkcija "Objavi sve"'
-    PUBALLFUN2: "Pritiskom na ovu tipku ostvarit ćete isti rezultat kao i odlaskom na svaku stranicu i pritiskom na tipku \"Objavi\". Namjenjena je za korištenje nakon velikih izmjena sadržaja (npr, prilikom početka izrade web stranice)."
     REMOVEDPAGEFROMDRAFT: 'Uklonjeno ''%s'' sa privremenog nacrta stranice'
     ROLLBACK: 'Vrati na ovo izdanje'
     SAVE: Snimi
@@ -88,14 +87,14 @@ bs:
     EMPTYPAGES: 'Prazne stranice'
     LAST2WEEKS: 'Izmjenjene stranice u posljednje 2 sedmice'
   SiteTree:
-    ACCESSANYONE: Svi korisnici
+    ACCESSANYONE: 'Svi korisnici'
     ACCESSHEADER: 'Ko može pregledati ovu stavku na mojoj stranici?'
     ACCESSLOGGEDIN: 'Prijavljeni korisnici'
     ACCESSONLYTHESE: 'Samo ovi korisnici (izaberite sa popisa)'
     ALLOWCOMMENTS: 'Dozvoli komentare na ovoj stranici?'
     BUTTONCANCELDRAFT: 'Poništi promjene privremenog nacrta stranice'
     BUTTONCANCELDRAFTDESC: 'Izbrišite Vaš privremeni nacrt stranice i vratite se na trenutno objavljenu stranicu'
-    BUTTONUNPUBLISH: Opozovi objavljivanje
+    BUTTONUNPUBLISH: 'Opozovi objavljivanje'
     BUTTONUNPUBLISHDESC: 'Ukloni ovu stavku sa objavljene stranice'
     DEFAULTABOUTTITLE: 'O nama'
     DEFAULTCONTACTTITLE: 'Kontaktirajte nas'
@@ -106,14 +105,14 @@ bs:
     HASBROKENLINKS: 'Ova stranica ima neispravnih linkova.'
     HTMLEDITORTITLE: Sadržaj
     MENUTITLE: 'Oznaka navigacije'
-    METADESC: 'Opis'
+    METADESC: Opis
     METAEXTRA: 'Prilagođene Meta oznake'
     PAGETITLE: 'Ime stranice'
     PAGETYPE: 'Tip stranice'
     SHOWINMENUS: 'Prikaži u izbornicima?'
     SHOWINSEARCH: 'Prikaži u pretrazi?'
     TABBEHAVIOUR: Ponašanje
-    TABCONTENT: 'Sadržaj'
+    TABCONTENT: Sadržaj
     TOPLEVEL: 'Sadržaj stranice (Glavni nivo)'
   ViewArchivedEmail_ss:
     CANACCESS: 'Arhiviranoj stranici možete pristupiti korištenjem ovog linka:'

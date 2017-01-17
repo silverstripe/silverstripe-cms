@@ -13,6 +13,8 @@ fa_IR:
     CREATED: تاریخ
     CurrentFolderOnly: 'محدود به پوشه‌ی کنونی؟'
     DetailsView: جزییات
+    ErrorItemPermissionDenied: 'به نظر می‌رسد شما دسترسی‌های لازم برای افزودن {ObjectTitle} به کمپین را ندارید'
+    ErrorNotFound: 'این {Type} یافت نشد'
     FILES: فایل‌ها
     FILESYSTEMSYNC: 'همگام‌سازی فایل‌ها'
     FILESYSTEMSYNCTITLE: 'به روز رسانی مداخل پایگاه داده CMS از فایل‌های روی فایل‌سیستم. مفید برای وقتی که فایل‌های جدید خارج از CMS بارگذاری شده‌اند، مثلاً از طریقFTP.'
@@ -21,8 +23,8 @@ fa_IR:
     Filetype: 'نوع فایل'
     ListView: 'نمایش لیستی'
     MENUTITLE: فایل‌ها
-    NEWFOLDER: پوشه جديد
-    SIZE: حجم
+    NEWFOLDER: 'پوشه جديد'
+    SIZE: 'حجم'
     THUMBSDELETED: '{count} تصویر انگشتی بلااستفاده حذف گردید'
     TreeView: 'نمایش درختی'
     Upload: بارگذاری
@@ -55,12 +57,15 @@ fa_IR:
     ReasonDropdown: 'مشکل در بررسی'
     ReasonDropdownBROKENFILE: 'فایل معیوب'
     ReasonDropdownBROKENLINK: 'پیوند معیوب'
-    ReasonDropdownRPBROKENLINK: 'صفحه ارجاعی به صفحه ناموجود اشاره دارد'
+    ReasonDropdownRPBROKENLINK: 'صفحه هدایت‌گر به صفحه ناموجود اشاره دارد'
     ReasonDropdownVPBROKENLINK: 'صفحه مجازی به صفحه ناموجود اشاره دارد'
-    RedirectorNonExistent: 'صفحه ارجاعی به صفحه ناموجود اشاره دارد'
+    RedirectorNonExistent: 'صفحه هدایت‌گر به صفحه ناموجود اشاره دارد'
     VirtualPageNonExistent: 'صفحه مجازی به صفحه ناموجود اشاره دارد'
   CMSAddPageController:
     Title: 'اضافه کردن صفحه'
+  CMSBatchAction_Archive:
+    RESULT: 'حذف %d صفحه از سایت پیش‌نویس و زنده، و ارسال آنها به آرشیو'
+    TITLE: 'عدم انتشار و بایگانی'
   CMSBatchActions:
     ARCHIVE: بایگانی
     ARCHIVED_PAGES: 'بایگانی %d صفحه'
@@ -72,6 +77,8 @@ fa_IR:
     PUBLISH_PAGES: انتشار
     RESTORE: بازنشاندن
     RESTORED_PAGES: 'بازنشاندن %d صفحه'
+    UNPUBLISHED_PAGES: 'عدم انتشار %d صفحه'
+    UNPUBLISH_PAGES: 'عدم انتشار'
   CMSFileAddController:
     MENUTITLE: فایل‌ها
   CMSMain:
@@ -79,22 +86,26 @@ fa_IR:
     ARCHIVE: بایگانی
     ARCHIVEDPAGE: 'صفحه بایگانی شده ''%s'''
     AddNew: 'افزودن صفحه جدید'
-    AddNewButton: 'جدید'
+    AddNewButton: جدید
     AddPageRestriction: 'یادداشت: برخی انواع صفحه برای این انتخاب مجاز نیستند.'
     Cancel: لغو
     ChoosePageParentMode: 'انتخاب کنید کجا این صفحه ایجاد شود'
     ChoosePageType: 'انتخاب نوع صفحه'
     Create: ایجاد
     DELETE: 'حذف پیش‌نویس'
-    DELETEFP: حذف کردن از منتشر شده های سایت
+    DELETEFP: 'حذف کردن از منتشر شده های سایت'
     DESCREMOVED: 'و {count} فرزندان'
     DUPLICATED: '''{title}'' باموفقیت دونسخه شد'
     DUPLICATEDWITHCHILDREN: '''{title}'' و زیرمجموعه‌های آن با موفقیت دونسخه شد'
+    EMAIL: 'ایمیل'
     EditTree: 'ویرایش درخت'
+    ListFiltered: 'نمایش نتایج جستجو'
     MENUTITLE: 'ویرایش صفحه'
     NEWPAGE: '{pagetype} جدید'
     PAGENOTEXISTS: 'این صفحه وجود ندارد'
+    PAGES: 'وضعیت صفحه'
     PAGETYPEANYOPT: هر
+    PAGETYPEOPT: 'نوع صفحه'
     PUBALLCONFIRM: 'لطفاً تمامی صفحات موجود در این سایت را منتشر کن، کپی‌کردن محتوای استیج به لایو'
     PUBALLFUN: 'عملکرد "انتشار همه"'
     PUBLISHED: 'انتشار موفقیت‌آمیز ''{title}'''
@@ -103,19 +114,27 @@ fa_IR:
     REMOVED: 'حذف ''{title}''{description} از سایت لایو'
     REMOVEDPAGE: 'حذف ''{title}'' از سایت منتشر شده'
     REMOVEDPAGEFROMDRAFT: 'حذف ''%s'' از سایت پیش‌نویس'
+    RESTORE: 'بازنشانی پیش‌نویس'
     RESTORED: 'بازنشانی موفقیت‌آمیز ''{title}'''
     RESTORE_DESC: 'بازنشانی نسخه‌ی بایگانی‌شده در پیش‌نویس'
+    RESTORE_TO_ROOT: 'بازنشانی پیش‌نویس در سطح بالا'
+    RESTORE_TO_ROOT_DESC: 'بازنشانی نسخه‌ی بایگانی‌شده به پیش‌نویس به عنوان یک صفحه‌ی سطح بالا'
     ROLLBACK: 'بازگردانی به این نسخه'
     ROLLEDBACKPUBv2: 'بازگردانی به نسخه‌ی منتشرشده.'
     ROLLEDBACKVERSIONv2: 'بازگردانی به نسخه‌ی #%d.'
     SAVE: ذخیره
     SAVED: 'دخیره‌سازی ''{title}'' باموفقیت انجام شد.'
     SAVEDRAFT: 'ذخیره پیش‌نویس'
-    TabContent: محتوا
+    TabContent: 'محتوا'
     TabHistory: تاریخچه
-    TabSettings: تنظیمات
+    TabSettings: 'تنظیمات'
+    TreeFiltered: 'نمایش نتایج جستجو'
+    TreeFilteredClear: پاک‌کردن
+    UNPUBLISH_AND_ARCHIVE: 'عدم انتشار و بایگانی'
   CMSMain_left_ss:
-    RESET: تنظیم مجدد
+    APPLY_FILTER: جستجو
+    CLEAR_FILTER: پاک‌کردن
+    RESET: 'تنظیم مجدد'
   CMSPageAddController:
     MENUTITLE: 'افزودن صفحه'
     ParentMode_child: 'زیر صفحه‌ی دیگر'
@@ -130,15 +149,16 @@ fa_IR:
     REVERTTOTHISVERSION: 'بازگشت به این نسخه'
     SHOWUNPUBLISHED: 'نمایش نسخه‌های منتشر نشده'
     SHOWVERSION: 'نمایش ویرایش'
-    VIEW: نمایش
+    VIEW: 'نمایش'
     VIEWINGLATEST: 'در حال حاضر آخرین نسخه را مشاهده می‌کنید.'
     VIEWINGVERSION: 'در حال حاضر نسخه {version} را مشاهده می‌کنید.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: ناشر
     NOTPUBLISHED: 'منتشر نشده'
-    PUBLISHER: منتشر کننده
-    UNKNOWN: نامشخص
-    WHEN: چه وقت
+    PREVIEW: 'پیش‌نمایش وب‌سایت'
+    PUBLISHER: 'منتشر کننده'
+    UNKNOWN: 'نامشخص'
+    WHEN: 'چه وقت'
   CMSPageSettingsController:
     MENUTITLE: 'ویرایش صفحه'
   CMSPagesController:
@@ -146,6 +166,8 @@ fa_IR:
     ListView: 'نمایش لیستی'
     MENUTITLE: صفحات
     TreeView: 'نمایش درختی'
+  CMSPagesController_ContentToolbar_ss:
+    MULTISELECT: 'عملکردهای دسته'
   CMSPagesController_Tools_ss:
     FILTER: پالایش
   CMSSIteTreeFilter_PublishedPages:
@@ -154,11 +176,20 @@ fa_IR:
     FILTERDATEFROM: از
     FILTERDATEHEADING: تاریخ
     FILTERDATETO: تا
+    FILTERLABELTEXT: جستجو
     PAGEFILTERDATEHEADING: 'آخرین ویرایش'
   CMSSettingsController:
-    MENUTITLE: تنظیمات
+    MENUTITLE: 'تنظیمات'
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'صفحات تغییر یافته'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'تمامی صفحات، شامل بایگانی شده'
   CMSSiteTreeFilter_Search:
     Title: 'تمامی صفحات'
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'صفحات بایگانی شده'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'صفحات پیش‌نویس'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'زنده اما حذف‌شده از پیش‌نویس'
   ContentControl:
@@ -170,17 +201,18 @@ fa_IR:
     DRAFT: پیش‌نویس
     DRAFTSITE: 'سایت پیش‌نویس'
     DRAFT_SITE_ACCESS_RESTRICTION: 'برای نمایش پیش‌نویس یا محتوای آرشیو شده باید با رمز عبور سی‌ام‌اس خود وارد شوید. <a href="%s">اینجا را کلیک کنید</a> تا به سایت منتشر‌شده بازگردید.'
-    Email: ای‌میل
+    Email: 'ای‌میل'
     INSTALL_SUCCESS: 'نصب موفقیت‌آمیز!'
     InstallFilesDeleted: 'فایل‌های نصبی با موفقیت حذف شدند.'
+    InstallSecurityWarning: 'به دلایل امنیتی باید هم‌اکنون فایل‌های نصبی را حذف نمایید، مگر قصد دارید بعداً دوباره نصب نمایید (<em>نیازمند ورود مدیر سایت، بالا را ببینید</em>). وب‌سرور همچنین هم‌اکنون نیازمند دسترسی نگاشتن به پوشه‌ی «دارایی‌ها» ("assets") است، می‌توانید دسترسی نگاشتن را از دیگر پوشه‌ها بردارید. <a href="{link}" style="text-align: center;">اینجا را کلیک کنید تا فایل‌های نصبی حذف شوند.</a>'
     InstallSuccessCongratulations: 'سیلوراسترایپ با موفقیت نصب شد!'
     LOGGEDINAS: 'وارد شده تحت عنوان'
     LOGIN: ورود
-    LOGOUT: 'خروج'
+    LOGOUT: خروج
     NOTLOGGEDIN: 'وارد نشده'
-    PUBLISHED: منتشر شده
+    PUBLISHED: 'منتشر شده'
     PUBLISHEDSITE: 'سایت منتشر شده'
-    Password: رمز عبور
+    Password: 'رمز عبور'
     PostInstallTutorialIntro: 'این وب‌سایت یک نسخه‌ی ساده‌شده از یک سایت سیلوراسترایپ ۳ است. برای گسترش آن، لطفاً به {link} نگاهی بیاندازید.'
     StartEditing: 'شما می‌توانید با گشودن <a href="{link}">سی‌ام‌اس</a> آغاز به ویرایش محتوا کنید.'
     UnableDeleteInstall: 'ناتوان از حذف فایل‌های نصبی. لطفاً فایل‌های زیر را بصورت دستی حذف نمایید'
@@ -229,9 +261,9 @@ fa_IR:
     UNUSEDTHUMBNAILSTITLE: 'تصاویر انگشتی بلااستفاده'
     UploadFilesButton: بارگذاری
   LeftAndMain:
-    DELETED: حذف شده
-    PreviewButton: پیش‌نمایش
-    SAVEDUP: ذخیره شده
+    DELETED: 'حذف شده'
+    PreviewButton: 'پیش‌نمایش'
+    SAVEDUP: 'ذخیره شده'
     SearchResults: 'نتایج جستجو'
   Permission:
     CMS_ACCESS_CATEGORY: 'دسترسی CMS'
@@ -240,6 +272,7 @@ fa_IR:
     PERMISSIONS_CATEGORY: 'مجوز دسترسی ها و وظایف'
   RedirectorPage:
     DESCRIPTION: 'به صفحه‌ی داخلی دیگری هدایت می‌کند'
+    HASBEENSETUP: 'یک صفحه‌ی هدایت‌گر ایجاد گردیده است بدون این‌که به جایی ارجاع داشته باشد.'
     HEADER: 'این صفحه کاربران را به صفحه‌ای دیگر هدایت می‌کند'
     OTHERURL: 'نشانی تارگاه دیگر'
     PLURALNAME: 'صفحات هدایت‌گر'
@@ -248,6 +281,15 @@ fa_IR:
     REDIRECTTOPAGE: 'یک برگ روی تارگاه شما'
     SINGULARNAME: 'صفحه هدایت‌گر'
     YOURPAGE: 'برگ روی تارگاه شما'
+  RemoveOrphanedPagesTask:
+    BUTTONRUN: اجرا
+    CHOOSEOPERATION: 'انتخاب عملیات:'
+    DELETEWARNING: 'هشدار: این عملیات‌ها قابل بازگشت نیستند. لطفاً با دقت اعمال نمایید.'
+    HEADER: 'ماموریت حذف تمامی صفحات یتیم‌شده'
+    NONEFOUND: 'هیچ یتیم‌شده‌ای یافت نشد'
+    NONEREMOVED: 'هیچ‌کدام حذف نگشت'
+    SELECTALL: 'انتخاب همه'
+    UNSELECTALL: 'لغو انتخاب همه'
   ReportAdmin:
     MENUTITLE: گزارشات
     ReportTitle: عنوان
@@ -256,6 +298,7 @@ fa_IR:
   SITETREE:
     VIRTUALPAGEDRAFTWARNING: 'لطفاً صفحه‌ی پیوند‌شده را ذخیره نمایید تا صفحه‌ی مجازی انتشار یابد'
     VIRTUALPAGEWARNING: 'لطفاً یک صفحه‌ی پیوند‌شده را انتخاب نموده و ذخیره نمایید تا این صفحه بتواند منتشر شود'
+    VIRTUALPAGEWARNINGSETTINGS: 'جهت انتشار، لطفاً یک صفحه‌ی لینک‌شده از فیلدهای محتوای اصلی انتخاب کنید'
   SearchForm:
     GO: برو
     SEARCH: جستجو
@@ -263,7 +306,7 @@ fa_IR:
   SideReport:
     BROKENFILES: 'صفحات دارای فایل معیوب'
     BROKENLINKS: 'صفحات دارای پیوند معیوب'
-    BROKENREDIRECTORPAGES: 'صفحات ارجاعی اشاره‌کننده به صفحات حذف شده'
+    BROKENREDIRECTORPAGES: 'صفحات هدایت‌گر اشاره‌کننده به صفحات حذف شده'
     BROKENVIRTUALPAGES: 'صفحات مجازی اشاره‌کننده به صفحات حذف شده'
     BrokenLinksGroupTitle: 'گزارش پیوندهای معیوب'
     ContentGroupTitle: 'گزارشات محتوا'
@@ -273,11 +316,36 @@ fa_IR:
     ParameterLiveCheckbox: 'بررسی سایت به صورت زنده'
     REPEMPTY: 'گزارش {title} خالی است.'
   SilverStripeNavigator:
-    ARCHIVED: بایگانی شده
+    ARCHIVED: 'بایگانی شده'
   SilverStripeNavigatorLink:
+    ShareInstructions: 'جهت به‌اشتراک‌گذاری این صفحه، لینک زیر را کپی و پیست نمایید.'
     ShareLink: 'پیوند اشتراک‌گذاری'
   SilverStripeNavigatorLinkl:
     CloseLink: بستن
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'افزودن صفحه'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'ویرایش صفحه'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    MENUTITLE: تاریخچه
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'ویرایش صفحه'
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    MENUTITLE: صفحات
+  SilverStripe\CMS\Model\ErrorPage:
+    PLURALNAME: 'صفحات خطا'
+    SINGULARNAME: 'صفحه‌ی خطا'
+  SilverStripe\CMS\Model\RedirectorPage:
+    PLURALNAME: 'صفحات هدایت‌گر'
+    SINGULARNAME: 'صفحه هدایت‌گر'
+  SilverStripe\CMS\Model\SiteTree:
+    DESCRIPTION: 'صفحه محتوای عمومی'
+    PLURALNAME: 'لیست‌های درختی سایت'
+    SINGULARNAME: 'لیست درختی سایت'
+  SilverStripe\CMS\Model\VirtualPage:
+    DESCRIPTION: 'نمایش‌دهنده‌ی محتوای صفحه‌ی دیگر'
+    PLURALNAME: 'صفحات مجازی'
+    SINGULARNAME: 'صفحه مجازی'
   SiteConfig:
     DEFAULTTHEME: '(استفاده از پوسته پیشفرض)'
     EDITHEADER: 'چه کسی میتواند صفحات را در این سایت ویرایش کند؟'
@@ -294,35 +362,37 @@ fa_IR:
     TOPLEVELCREATE: 'چه کسی میتواند صفحه جدیدی در ریشه(root) سایت ایجاد کند؟'
     VIEWHEADER: 'چه کسی میتواند صفحات سایت را مشاهده کند؟'
   SiteTree:
-    ACCESSANYONE: همه
+    ACCESSANYONE: 'همه'
     ACCESSHEADER: 'چه کسی بتواند این صفحه را مشاهده کنید ؟'
     ACCESSLOGGEDIN: 'کاربران وارد شده'
     ACCESSONLYTHESE: 'فقط این افراد (انتخاب از لیست)'
     ADDEDTODRAFTHELP: 'این صفحه تاکنون منتشر نشده است'
     ADDEDTODRAFTSHORT: پیش‌نویس
     ALLOWCOMMENTS: 'پذیرفتن نظرات در این صفحه ؟'
+    APPEARSVIRTUALPAGES: 'این محتوا همچنین در صفحات مجازی در بخش‌های {title}.'
     ARCHIVEDPAGEHELP: 'صفحه از پیش‌نویس و زنده حذف گردید'
-    ARCHIVEDPAGESHORT: بایگانی شده
+    ARCHIVEDPAGESHORT: 'بایگانی شده'
     BUTTONARCHIVEDESC: 'عدم انتشار و ارسال به بایگانی'
     BUTTONCANCELDRAFT: 'لغو تغییرات پیش‌نویس'
     BUTTONCANCELDRAFTDESC: 'حذف پیش‌نویس و بازگردانی به نسخه‌ی منتشر‌شده‌ی کنونی'
-    BUTTONPUBLISHED: منتشر شده
-    BUTTONSAVED: ذخیره شده
+    BUTTONDELETEDESC: 'حذف از پیش‌نویس/زنده و ارسال به بایگانی'
+    BUTTONPUBLISHED: 'منتشر شده'
+    BUTTONSAVED: 'ذخیره شده'
     BUTTONSAVEPUBLISH: 'ذخیره و انتشار'
-    BUTTONUNPUBLISH: عدم انتشار
+    BUTTONUNPUBLISH: 'عدم انتشار'
     BUTTONUNPUBLISHDESC: 'حذف این صفحه از سایت منتشر شده'
     Comments: دیدگاه‌ها
-    Content: درون مایه
+    Content: 'درون مایه'
     DEFAULTABOUTTITLE: 'درباره ما'
     DEFAULTCONTACTTITLE: 'تماس با ما'
     DEFAULTHOMECONTENT: '<p>به سیلوراسترایپ خوش آمدید! این صفحه اصلی پیش فرض است. میتوانید این صفحه را با بازکردن <a href="admin/">سامانه مدیریت محتوا</a> ویرایش نمایید.</p><p>میتوانید به<a href="http://docs.silverstripe.org">مستندات توسعه دهندگان</a> دسترسی یابید، و یا <a href="http://www.silverstripe.org/learn/lessons">درس های سیلوراسترایپ</a> را آغاز نمایید.</p>'
     DEFAULTHOMETITLE: خانه
     DELETEDPAGEHELP: 'صفحه دیگر منتشر شده نیست'
-    DELETEDPAGESHORT: حذف شده
-    DEPENDENT_NOTE: 'صفحات زیر وابسته به این صفحه هستند. شامل صفحات مجازی، انتقال دهنده و صفحاتی با محتوای لینک'
+    DELETEDPAGESHORT: 'حذف شده'
+    DEPENDENT_NOTE: 'صفحات زیر وابسته به این صفحه هستند. شامل صفحات مجازی، هدایت‌گر و صفحاتی با محتوای لینک'
     DESCRIPTION: 'صفحه محتوای عمومی'
     DependtPageColumnLinkType: 'نوع پیوند'
-    DependtPageColumnURL: نشانی اینترنتی
+    DependtPageColumnURL: 'نشانی اینترنتی'
     EDITANYONE: 'هر کسی بتواند به سیستم مدیریت محتوا وارد شود'
     EDITHEADER: 'چه کسی بتواند این صفحه را ویرایش کند ؟'
     EDITONLYTHESE: 'فقط این افراد (انتخاب از لیست)'
@@ -331,21 +401,23 @@ fa_IR:
     Editors: 'گروه‌های ویرایشگران'
     GroupPlaceholder: 'برای انتخاب گروه کلیک کنید'
     HASBROKENLINKS: 'این صفحه دارای پیوند معیوب است.'
-    HTMLEDITORTITLE: درون‌مایه
+    HTMLEDITORTITLE: 'درون‌مایه'
     INHERIT: 'از صفحه والد ارث ببر'
     LASTPUBLISHED: 'آخرین انتشار'
     LASTSAVED: 'آخرین ذخیره‌سازی'
     LASTUPDATED: 'آخرین به روزرسانی'
+    LINKSALREADYUNIQUE: '{url} هم‌اکنون نیز یکتا است'
     MENUTITLE: 'برچسب ناوبری'
-    METADESC: 'توضیحات'
+    METADESC: توضیحات
     METADESCHELP: 'موتورهای جستجو از این محتوا در نمایش نتایج جستجو بهره‌می‌برند (اگرچه تأثیری در رتبه‌بندی ندارد).'
     METAEXTRA: 'متا تگ‌های اختصاصی'
     MODIFIEDONDRAFTHELP: 'صفحه دارای تغییرات منتشر نشده است'
-    MODIFIEDONDRAFTSHORT: تغییر یافته
-    MetadataToggle: متاداده
+    MODIFIEDONDRAFTSHORT: 'تغییر یافته'
+    MetadataToggle: 'متاداده'
     MoreOptions: 'گزینه‌های بیشتر'
     NOTPUBLISHED: 'منتشر نشده'
     OBSOLETECLASS: 'این صفحه از نوع منسوخ شده {type} است. ذخیره‌سازی سبب نوگردانی مدل آن شده و ممکن است داده‌هایی از دست برود'
+    ONLIVEONLYSHORT: 'تنها در زنده'
     PAGELOCATION: 'موقعیت صفحه'
     PAGETITLE: 'نام برگ'
     PAGETYPE: 'نوع برگ'
@@ -368,6 +440,7 @@ fa_IR:
     TABCONTENT: 'مطلب'
     TABDEPENDENT: 'صفحات وابسته'
     TOPLEVEL: 'محتوای سایت (سطح بالا)'
+    TOPLEVELCREATORGROUPS: 'خالقین رده بالا'
     URLSegment: 'بخش آدرس URL'
     VIEWERGROUPS: 'گروه‌های مشاهده‌کنندگان'
     VIEW_ALL_DESCRIPTION: 'مشاهده هر صفحه‌ای'
@@ -379,7 +452,11 @@ fa_IR:
     many_many_ImageTracking: 'ردیابی تصویر'
     many_many_LinkTracking: 'ردیابی پیوند'
   SiteTreeFileExtension:
+    BACKLINK_LIST_DESCRIPTION: 'این لیست نشان‌دهنده‌ی تمامی صفحاتی است که فایل توسط یک ویرایشگر ویزی‌ویگ (WYSIWYG) افزوده شده است.'
     EDIT: ویرایش
+    TITLE_INDEX: '#'
+    TITLE_TYPE: نوع
+    TITLE_USED_ON: 'استفاده شده در'
   SiteTreeURLSegmentField:
     EMPTY: 'لطفاً یک بخش نشانی اینترنتی را درج نمایید یا روی لغو کلیک کنید.'
     HelpChars: 'کاراکترهای ویژه به‌طور خودکار تبدیل یا حذف می‌شوند.'
@@ -392,7 +469,7 @@ fa_IR:
     HAVEASKED: 'شما خواسته اید که درون‌مایه تارگاه ما را ببینید در'
   VirtualPage:
     CHOOSE: 'صفحه ارجاعی'
-    DESCRIPTION: 'نمایش محتوای صفحه ی دیگر'
+    DESCRIPTION: 'نمایش‌دهنده‌ی محتوای صفحه‌ی دیگر'
     EditLink: ویرایش
     HEADER: 'این یک صفحه مجازی است'
     PLURALNAME: 'صفحات مجازی'

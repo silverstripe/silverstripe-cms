@@ -2,7 +2,7 @@ uk:
   AssetAdmin:
     ADDFILES: 'Додати файли'
     ActionAdd: 'Додати папку'
-    AppCategoryArchive: Архівувати
+    AppCategoryArchive: 'Архівувати'
     AppCategoryAudio: Аудіо
     AppCategoryImage: Зображення
     AppCategoryVideo: Відео
@@ -17,8 +17,8 @@ uk:
     Filetype: 'Тип файлу'
     ListView: 'У вигляді списку'
     MENUTITLE: Файли
-    NEWFOLDER: Нова Тека
-    SIZE: Розмір
+    NEWFOLDER: 'Нова Тека'
+    SIZE: 'Розмір'
     THUMBSDELETED: '{count} невикористаних ескізів було видалено'
     TreeView: 'У вигляді дерева'
     Upload: Завантажити
@@ -79,7 +79,6 @@ uk:
     PAGETYPEANYOPT: Будь-який
     PUBALLCONFIRM: 'Будь ласка, опублікуйте кожну сторінку. Для цього перенесіть проміжний варіант до існуючого.'
     PUBALLFUN: 'Дія "Опублікувати все"'
-    PUBALLFUN2: "Натиснувши цю кнопку Ви зробите те ж саме, що й перейшовши до кожної сторінки та натиснувши \"Публікувати\". Це внесено для тих випадків, коли Ви маєте намір маштабно змінити вміст, наприклад, після першого створення сайту."
     PageAdded: 'Сторінка успішно створена'
     REMOVEDPAGE: '''{title}'' видалено з публічного сайту'
     REMOVEDPAGEFROMDRAFT: 'Видалено ''%s'' з чорнового сайту'
@@ -132,7 +131,7 @@ uk:
     InstallFilesDeleted: 'Інсталяційні файли були успішно видалені.'
     LOGGEDINAS: 'Залогований як '
     LOGIN: Логін
-    LOGOUT: 'Вилогуватися'
+    LOGOUT: Вилогуватися
     NOTLOGGEDIN: 'Не залогований'
     PUBLISHEDSITE: 'Публічний сайт'
     Password: Пароль
@@ -204,11 +203,11 @@ uk:
     TABACCESS: Доступ
     TABMAIN: Головна
     TAGLINEDEFAULT: 'тут ваш слоган'
-    THEME: Тема оформлення
+    THEME: 'Тема оформлення'
     TOPLEVELCREATE: 'Хто може створювати сторінки верхнього рівня на сайті?'
     VIEWHEADER: 'Хто може переглядати сторінки на цьому сайті?'
   SiteTree:
-    ACCESSANYONE: Будь-хто
+    ACCESSANYONE: 'Будь-хто'
     ACCESSHEADER: 'Хто може переглядати цю сторінку?'
     ACCESSLOGGEDIN: 'Тільки ті, що увійшли'
     ACCESSONLYTHESE: 'Тільки ці люди (виберіть зі списку)'
@@ -218,12 +217,12 @@ uk:
     APPEARSVIRTUALPAGES: 'Цей вміст також відображається на віртуальній сторінці в розділі {title}.'
     BUTTONCANCELDRAFT: 'Відмінити зміни чернетки'
     BUTTONCANCELDRAFTDESC: 'Видалити черентку та повернутися до теперішнього опублікованого варіанту'
-    BUTTONUNPUBLISH: Відміна публікування
+    BUTTONUNPUBLISH: 'Відміна публікування'
     BUTTONUNPUBLISHDESC: 'Видалити цю сторінку з опублікованого'
     Comments: Коментарі
     Content: Контент
     DEFAULTABOUTTITLE: 'Про нас'
-    DEFAULTCONTACTTITLE: 'Контакти'
+    DEFAULTCONTACTTITLE: Контакти
     DEFAULTHOMETITLE: Домівка
     DELETEDPAGEHELP: 'Сторінка вже не є опублікованою'
     DELETEDPAGESHORT: Видалений
@@ -242,7 +241,7 @@ uk:
     LASTUPDATED: 'Останнє оновлення'
     LINKCHANGENOTE: 'Зміна адреси цієї сторінки вплине на адреси всіх дочірніх сторінок'
     MENUTITLE: 'Мітка навігації'
-    METADESC: 'Опис'
+    METADESC: Опис
     METAEXTRA: 'Власні Мета-теги'
     MODIFIEDONDRAFTHELP: 'Сторінка має неопубліковані зміни'
     MODIFIEDONDRAFTSHORT: Змінений
@@ -265,7 +264,7 @@ uk:
     SHOWINMENUS: 'Показувати у навігації?'
     SHOWINSEARCH: 'Показувати у пошуку?'
     TABBEHAVIOUR: Поводження
-    TABCONTENT: 'Вміст'
+    TABCONTENT: Вміст
     TABDEPENDENT: 'Залежні сторінки'
     TOPLEVEL: 'Вміст Сайту (Верхній Рівень)'
     TOPLEVELCREATORGROUPS: 'Автори найвищого рівня'

@@ -2,7 +2,7 @@ bg:
   AssetAdmin:
     ADDFILES: 'Добави файлове'
     ActionAdd: 'Добави директория'
-    AppCategoryArchive: Архив
+    AppCategoryArchive: 'Архив'
     AppCategoryAudio: Аудио
     AppCategoryDocument: Документ
     AppCategoryFlash: Флаш
@@ -10,7 +10,7 @@ bg:
     AppCategoryVideo: Видео
     BackToFolder: 'Обратно към директорията'
     CMSMENU_OLD: 'Файлове (стара версия)'
-    CREATED: Дата на създаване
+    CREATED: 'Дата на създаване'
     CurrentFolderOnly: 'Ограничи в текущата директория?'
     DetailsView: Детайли
     FILES: Файлове
@@ -21,8 +21,8 @@ bg:
     Filetype: 'Тип на файла'
     ListView: 'Изглед в списък'
     MENUTITLE: Файлове
-    NEWFOLDER: Нова директория
-    SIZE: Размер
+    NEWFOLDER: 'Нова директория'
+    SIZE: 'Размер'
     TreeView: 'Дървовиден изглед'
     Upload: Качване
   AssetAdmin_DeleteBatchAction:
@@ -40,12 +40,12 @@ bg:
     Any: Всички
     BROKENLINKS: 'Списък на развалени линкове'
     CheckSite: 'Провери сайта'
-    CheckSiteDropdownDraft: 'Чернови'
+    CheckSiteDropdownDraft: Чернови
     CheckSiteDropdownPublished: 'Публикувани страници'
     ColumnDateLastModified: 'Дата на последна промяна'
     ColumnDateLastPublished: 'Дата на последно публикуване'
     ColumnProblemType: 'Тип на проблема'
-    ColumnURL: Неработещи линкове
+    ColumnURL: 'Неработещи линкове'
     HasBrokenFile: 'има развален файл'
     HasBrokenLink: 'има развален линк'
     HasBrokenLinkAndFile: 'има развален линк и файл'
@@ -61,7 +61,7 @@ bg:
   CMSAddPageController:
     Title: 'Добави страница'
   CMSBatchActions:
-    ARCHIVE: Архив
+    ARCHIVE: 'Архив'
     ARCHIVED_PAGES: 'Бяха архивирани %d страници'
     DELETED_DRAFT_PAGES: 'Публикувани %d страници от черновата на сайта, %d грешки'
     DELETED_PAGES: 'Публикувани %d страници, %d грешки'
@@ -76,7 +76,7 @@ bg:
   CMSMain:
     ACCESS: 'Достъп до ''{title}'' секция'
     ACCESS_HELP: 'Разреши излгед на раздела съдържащ структурното дърво и съдържанието. Правата за достъп и редактиране могат да бъдат променени през падащи менюта (dropdowns), както и чрез отделни права на съдържанието'
-    ARCHIVE: Архив
+    ARCHIVE: 'Архив'
     ARCHIVEDPAGE: 'Страница ''%s'' беше архивирана'
     AddNew: 'Добави страница'
     AddNewButton: 'Добави нова страница'
@@ -96,7 +96,6 @@ bg:
     PAGETYPEANYOPT: Всички
     PUBALLCONFIRM: 'Публикувай всяка страница в сайта'
     PUBALLFUN: 'Функционалност "Публикувай всичко"'
-    PUBALLFUN2: "Натискайки този бутон все едно, публикувате всяка страница по отделно. Идеята е тази функционалност да се използва при мащабна редакция на съдържанието, като например случая когато сайта бива първоначално попълнен."
     PUBLISHED: 'Страница ''{title}'' беше успешно публикувана.'
     PUBPAGES: 'Готово. Публикувани бяха {count} страница/и'
     PageAdded: 'Страницата беше създадена успешно'
@@ -136,8 +135,8 @@ bg:
     VIEWINGVERSION: 'Версия {version}.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Автор
-    NOTPUBLISHED: 'Непубликувани'
-    PUBLISHER: Публикувана от
+    NOTPUBLISHED: Непубликувани
+    PUBLISHER: 'Публикувана от'
     UNKNOWN: Неизвестно
     WHEN: Кога
   CMSPageSettingsController:
@@ -167,16 +166,16 @@ bg:
   ContentController:
     ARCHIVEDSITE: 'Преглед на версията'
     ARCHIVEDSITEFROM: 'Архивиран сайт от'
-    CMS: СУС (CMS)
+    CMS: 'СУС (CMS)'
     DRAFT: Чернова
-    DRAFTSITE: 'Чернови'
+    DRAFTSITE: Чернови
     DRAFT_SITE_ACCESS_RESTRICTION: 'Трябва да влезете с вашата CMS парола, за да видите черновата или архивираното съдържание. <a href="%s">Натиснете тук, за да се върнете обратно към публикувания сайт.</a>'
-    Email: Ел. поща
+    Email: 'Ел. поща'
     INSTALL_SUCCESS: 'Инсталацията премина успешно.'
     InstallFilesDeleted: 'Инсталационните файлове са успешно изтрити.'
     InstallSuccessCongratulations: 'SilverStripe беше инсталиран успешно!'
     LOGGEDINAS: 'Влязъл като'
-    LOGIN: Вход
+    LOGIN: 'Вход'
     LOGOUT: 'Изход'
     NOTLOGGEDIN: 'Извън системата'
     PUBLISHED: Публикувана
@@ -249,7 +248,7 @@ bg:
     SINGULARNAME: 'Пренасочваща страница'
     YOURPAGE: 'Страница на вашият уебсайт'
   ReportAdmin:
-    MENUTITLE: Отчети за съдържание
+    MENUTITLE: 'Отчети за съдържание'
     ReportTitle: Заглавие
   ReportAdminForm:
     FILTERBY: 'Филтрирай по'
@@ -273,7 +272,7 @@ bg:
     ParameterLiveCheckbox: 'Провери реалния сайт'
     REPEMPTY: 'Отчетът {title}  е празен'
   SilverStripeNavigator:
-    ARCHIVED: Архивирани
+    ARCHIVED: 'Архивирани'
   SilverStripeNavigatorLink:
     ShareLink: 'Препратка за споделяне'
   SilverStripeNavigatorLinkl:
@@ -290,7 +289,7 @@ bg:
     SITETITLE: 'Заглавие на сайта'
     TABACCESS: Достъп
     TABMAIN: Съдържание
-    TAGLINEDEFAULT: 'Подзаглавие'
+    TAGLINEDEFAULT: Подзаглавие
     THEME: Тема
     TOPLEVELCREATE: 'Кой може да създава най-високо ниво страници?'
     VIEWHEADER: 'Кой може да достъпи страницата?'
@@ -304,14 +303,14 @@ bg:
     ALLOWCOMMENTS: 'Разрешавате ли коментари на тази страница?'
     APPEARSVIRTUALPAGES: 'Съдържанието присъства във виртуалните страници в секция {title}.'
     ARCHIVEDPAGEHELP: 'Страницата е премахната от сайта и от черновите'
-    ARCHIVEDPAGESHORT: Архивирани
+    ARCHIVEDPAGESHORT: 'Архивирани'
     BUTTONARCHIVEDESC: 'Премахни от публикация и запиши в архива'
     BUTTONCANCELDRAFT: 'Отмени промените в черновата'
     BUTTONCANCELDRAFTDESC: 'Изтрий черновата и отиди на текущата публикувана страница'
     BUTTONPUBLISHED: Публикувана
     BUTTONSAVED: Записана
     BUTTONSAVEPUBLISH: 'Запиши и публикувай'
-    BUTTONUNPUBLISH: Премахни от публикация
+    BUTTONUNPUBLISH: 'Премахни от публикация'
     BUTTONUNPUBLISHDESC: 'Премахни тази страница от публикувания сайт'
     Comments: Коментари
     Content: Съдържание
@@ -341,15 +340,15 @@ bg:
     LASTUPDATED: 'Последна промяна'
     LINKCHANGENOTE: 'Промяната на адреса на тази страница, ще повлияе на адресите на всички подстраници на тази страница'
     MENUTITLE: 'Етикет на навигация'
-    METADESC: 'Описание'
+    METADESC: Описание
     METADESCHELP: 'Търсачките използват това съдържание при показване на резултатите от търсенето (въпреки, че това няма да повлияе на тяхното класиране).'
     METAEXTRA: 'Собствени етикети'
     METAEXTRAHELP: 'HTML тагове за допълнителна meta информация. Например &lt;meta name="customName" content="вашето съдържание" /&gt;'
     MODIFIEDONDRAFTHELP: 'По страницата са правени промени, които не са публикувани'
     MODIFIEDONDRAFTSHORT: Променен
-    MetadataToggle: Meta данни за страницата
+    MetadataToggle: 'Meta данни за страницата'
     MoreOptions: 'Още действия'
-    NOTPUBLISHED: 'Непубликувана'
+    NOTPUBLISHED: Непубликувана
     OBSOLETECLASS: 'Страницата е от тип {type}, който вече не съществува. Записването ѝ ще нулира типа ѝ и можа да загубите данни.'
     PAGELOCATION: 'Местонахождение на страницата'
     PAGETITLE: 'Име на страница'
@@ -357,7 +356,7 @@ bg:
     PARENTID: 'Страница родител'
     PARENTTYPE: 'Местонахождение на страницата'
     PARENTTYPE_ROOT: 'Страница от най-високо ниво в йерархията'
-    PARENTTYPE_SUBPAGE: 'Подстраница'
+    PARENTTYPE_SUBPAGE: Подстраница
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Управление на правата за достъп до съдържанието'
     PERMISSION_GRANTACCESS_HELP: 'Разреши настройката на специфични ограничения за достъп в раздела "Страници"'
     PLURALNAME: Страници
@@ -372,7 +371,7 @@ bg:
     SHOWINSEARCH: 'Покажи в търсене?'
     SINGULARNAME: Страница
     TABBEHAVIOUR: Поведение
-    TABCONTENT: 'Съдържание'
+    TABCONTENT: Съдържание
     TABDEPENDENT: 'Зависими страници'
     TOPLEVEL: 'Съдържание на сайта (Top level)'
     TOPLEVELCREATORGROUPS: 'Автори на страници от най-високо ниво'

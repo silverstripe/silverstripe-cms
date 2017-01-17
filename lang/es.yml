@@ -86,9 +86,9 @@ es:
     ChoosePageType: 'Elegir tipo de página'
     Create: Crear
     DELETE: 'Eliminar del borrador de la web'
-    DELETEFP: Eliminar de la web publicada
+    DELETEFP: 'Eliminar de la web publicada'
     DESCREMOVED: 'y {count} descendientes'
-    DUPLICATED: 'Duplicado'
+    DUPLICATED: Duplicado
     DUPLICATEDWITHCHILDREN: 'Duplicado con hijos'
     EditTree: 'Editar árbol'
     MENUTITLE: 'Editar página'
@@ -97,10 +97,9 @@ es:
     PAGETYPEANYOPT: Cualquiera
     PUBALLCONFIRM: 'Por favor publica todas las páginas del sitio, copiando el contenido del borrador al sitio público'
     PUBALLFUN: 'Función "Publicar Todo"'
-    PUBALLFUN2: "Pulsando este botón es el equivalente de ir a cada página y pulsar \"Publicar\". Está pensado para ser usado en ediciones masivas del contenido, por ejemplo cuando el sitio se construye por primera vez."
     PUBPAGES: 'Hecho: Publicadas {count} páginas'
     PageAdded: 'Página creada correctamente'
-    REMOVED: 'Removido'
+    REMOVED: Removido
     REMOVEDPAGE: 'Eliminado ''{title}'' del sitio publicado'
     REMOVEDPAGEFROMDRAFT: 'Borrado ''%s''%s desde el sitio no publicado'
     RESTORED: 'Restablecido ''{title}'' correctamente'
@@ -108,7 +107,7 @@ es:
     RESTORE_TO_ROOT: 'Recuperar borrador al nivel superior'
     RESTORE_TO_ROOT_DESC: 'Recuperar la versión archivada del borrador como de nivel superior'
     ROLLBACK: 'Restaurar esta versión'
-    ROLLEDBACKPUBv2: 'Restaurado'
+    ROLLEDBACKPUBv2: Restaurado
     ROLLEDBACKVERSIONv2: 'Versión #%d restaurada'
     SAVE: Guardar
     SAVEDRAFT: 'Guardar borrador'
@@ -137,7 +136,7 @@ es:
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
     NOTPUBLISHED: 'Sin publicar'
-    PUBLISHER: Publicado por
+    PUBLISHER: 'Publicado por'
     UNKNOWN: Desconocido
     WHEN: Cuando
   CMSPageSettingsController:
@@ -171,14 +170,14 @@ es:
     DRAFT: Borrador
     DRAFTSITE: 'Sitio en Borrador'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Debe iniciar sesión para poder acceder a los contenidos archivados o al borrador. <a href="%s">De un click aquí para regresar al sitio publicado.</a>'
-    Email: Correo electrónico
+    Email: 'Correo electrónico'
     INSTALL_SUCCESS: '¡Instalación Correcta!'
     InstallFilesDeleted: 'Los archivos de instalación han sido borrados correctamente.'
     InstallSecurityWarning: 'Por razones de seguridad ahora debes eliminar los archivos de instalación, a menos que estés planeando reinstalar más tarde (<em>requiere inicio de sesión de administrador, ver arriba</em>). El servidor web ahora tan sólo necesita acceso de escritura a la carpeta "assets", puedes quitar el acceso de escritura de todas las demás carpetas. <a href="{link}" style="text-align: center;">Haz clic aquí para borrar los archivos de instalación.</a>'
     InstallSuccessCongratulations: '¡SilverStripe ha sido instalado con éxito!'
     LOGGEDINAS: 'Conectado como'
-    LOGIN: Iniciar sesión
-    LOGOUT: 'Desconectar'
+    LOGIN: 'Iniciar sesión'
+    LOGOUT: Desconectar
     NOTLOGGEDIN: 'No conectado'
     PUBLISHED: Publicado
     PUBLISHEDSITE: 'Sitio Publicado'
@@ -313,7 +312,7 @@ es:
     BUTTONPUBLISHED: Publicado
     BUTTONSAVED: Guardado
     BUTTONSAVEPUBLISH: 'Guardar y publicar'
-    BUTTONUNPUBLISH: Sin Publicar
+    BUTTONUNPUBLISH: 'Sin Publicar'
     BUTTONUNPUBLISHDESC: 'Elimine esta página del sitio publicado'
     Comments: Comentarios
     Content: Contenido
@@ -326,7 +325,7 @@ es:
     DEPENDENT_NOTE: 'Las siguientes páginas dependen de esta página. Esto incluye páginas virtuales, páginas de redireccionamiento, y las páginas con enlaces de contenido.'
     DESCRIPTION: 'Página genérica de contenido'
     DependtPageColumnLinkType: 'Tipo de enlace'
-    DependtPageColumnURL: Depende de
+    DependtPageColumnURL: 'Depende de'
     EDITANYONE: 'Cualquiera que pueda iniciar sesión en el CMS'
     EDITHEADER: '¿Quién puede editar esta página?'
     EDITONLYTHESE: 'Solo estas personas (elija de la lista)'
@@ -334,7 +333,7 @@ es:
     EDIT_ALL_DESCRIPTION: 'Editar cualquier página'
     EDIT_ALL_HELP: 'Posibilidad de editar cualquier página en el sitio, independientemente de la configuración de la pestaña de Acceso. Requiere permiso "Acceso a la sección ''Páginas''"'
     Editors: 'Grupo de Editores'
-    GroupPlaceholder: 'Grupo'
+    GroupPlaceholder: Grupo
     HASBROKENLINKS: 'Esta página contiene enlaces rotos.'
     HTMLEDITORTITLE: Contenido
     INHERIT: 'Heredar de página padre'
@@ -343,7 +342,7 @@ es:
     LASTUPDATED: 'Última actualización'
     LINKCHANGENOTE: 'Cambio el enlace de esta página también afectará a los enlaces de todas las páginas hijas.'
     MENUTITLE: 'Etiqueta de Navegación'
-    METADESC: 'Descripción'
+    METADESC: Descripción
     METADESCHELP: 'Los motores de búsqueda usan este contenido para mostrar resultados de búsqueda (aunque no influirá en su ranking).'
     METAEXTRA: 'Meta Tags Personalizadas'
     METAEXTRAHELP: 'Etiquetas HTML para meta información adicional. Por ejemplo &lt;meta name="nombrePersonalizado" content="tu contenido personalizado aquí" /&gt;'
@@ -374,7 +373,7 @@ es:
     SHOWINSEARCH: '¿Mostrar en la búsqueda?'
     SINGULARNAME: Página
     TABBEHAVIOUR: Comportamiento
-    TABCONTENT: 'Contenido'
+    TABCONTENT: Contenido
     TABDEPENDENT: 'Páginas dependientes'
     TOPLEVEL: 'Contenido del Sitio (Top Level)'
     TOPLEVELCREATORGROUPS: 'Creadores de nivel superior'
@@ -394,7 +393,7 @@ es:
     BACKLINK_LIST_DESCRIPTION: 'Esta lista muestra todas las páginas que han sido añadidas mediante un editor WYSIWYG.'
     EDIT: Editar
   SiteTreeURLSegmentField:
-    EMPTY: 'Vacío'
+    EMPTY: Vacío
     HelpChars: 'Los caracteres especiales son automáticamente convertidos o eliminados.'
   URLSegmentField:
     Cancel: Cancelar
@@ -404,7 +403,7 @@ es:
     CANACCESS: 'Puede acceder al sitio archivado con este enlace:'
     HAVEASKED: 'Ha pedido ver el contenido de nuestro sitio el'
   VirtualPage:
-    CHOOSE: 'Seleccionar'
+    CHOOSE: Seleccionar
     DESCRIPTION: 'Muestra el contenido de otra página'
     EditLink: Editar
     HEADER: 'Esta es una página virtual'

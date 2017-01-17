@@ -17,13 +17,13 @@ nl:
     FILESYSTEMSYNCTITLE: 'Zoek naar nieuwe of verwijderde bestanden op de schijf, om de database van het CMS bij te werken. Dit is nodig als er bestanden via FTP (of andere wijze) zijn toegevoegd.'
     FROMTHEINTERNET: 'Van het internet'
     FROMYOURCOMPUTER: 'Vanaf computer'
-    Filetype: 'Bestandstype'
-    ListView: 'Lijstweergave'
+    Filetype: Bestandstype
+    ListView: Lijstweergave
     MENUTITLE: Bestanden
-    NEWFOLDER: Nieuwe map
+    NEWFOLDER: 'Nieuwe map'
     SIZE: Omvang
     THUMBSDELETED: '{count} ongebruikte miniatuurafbeeldingen zijn verwijderd'
-    TreeView: 'Boomstructuur'
+    TreeView: Boomstructuur
     Upload: Uploaden
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Verwijder mappen'
@@ -44,13 +44,13 @@ nl:
     CheckSiteDropdownPublished: 'Gepubliceerde site'
     ColumnDateLastModified: 'Laatste wijzigingsdatum'
     ColumnDateLastPublished: 'Laatste publicatiedatum'
-    ColumnProblemType: 'Probleemtype'
+    ColumnProblemType: Probleemtype
     ColumnURL: URL
     HasBrokenFile: 'heeft verbroken bestand'
     HasBrokenLink: 'heeft verbroken link'
     HasBrokenLinkAndFile: 'heeft verbroken link en bestand'
     HoverTitleEditPage: 'Wijzig pagina'
-    PageName: 'Paginanaam'
+    PageName: Paginanaam
     ReasonDropdown: 'Te controleren probleem'
     ReasonDropdownBROKENFILE: 'Verbroken bestand'
     ReasonDropdownBROKENLINK: 'Verbroken link'
@@ -69,7 +69,6 @@ nl:
     PUBLISHED_PAGES: '%d pagina''s gepubliceerd'
     PUBLISH_PAGES: Publiceer
     RESTORE: Herstel
-    UNPUBLISH_PAGES: Publicatie intrekken
   CMSFileAddController:
     MENUTITLE: Bestanden
   CMSMain:
@@ -77,7 +76,7 @@ nl:
     ACCESS_HELP: 'Bevoegdheid om paginastructuur en inhoud te bekijken. Bekijk- en bewerkingstoestemmingen kunnen worden toegekend met pagina-specifieke menu''s en het aparte "Inhoudsmachtigingen".'
     ARCHIVE: Archief
     AddNew: 'Voeg nieuwe pagina toe'
-    AddNewButton: 'Nieuw'
+    AddNewButton: Nieuw
     AddPageRestriction: 'Opmerking: Sommige paginatypes zijn niet toegestaan ​​voor deze selectie'
     Cancel: Annuleren
     ChoosePageParentMode: 'Kies waar u deze pagina wilt aanmaken'
@@ -95,7 +94,6 @@ nl:
     PAGETYPEANYOPT: Elke
     PUBALLCONFIRM: 'Publiceer elke pagina van de site: dit kopieert de inhoud van de concept site naar de live site'
     PUBALLFUN: '"Publiceer alles" functionaliteit'
-    PUBALLFUN2: "Op deze knop klikken heeft hetzelfde resultaat als bij elke pagina's op \"Publiceer\" te klikken. Het is bedoeld om te gebruiken wanneer er erg grote inhoudsaanpassingen gebeurd zijn, bijvoorbeeld wanneer een nieuwe site voor het eerst gebouwd wordt."
     PUBPAGES: 'Gereed: {count} pagina''s gepubliceerd'
     PageAdded: 'Pagina met succes aangemaakt'
     REMOVED: '''{title}''{description} verwijderd van de live site'
@@ -111,7 +109,6 @@ nl:
     TabHistory: Geschiedenis
     TabSettings: Instellingen
   CMSMain_left_ss:
-    APPLY_FILTER: Zoeken
     RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Pagina toevoegen'
@@ -140,8 +137,8 @@ nl:
     MENUTITLE: 'Wijzig pagina'
   CMSPagesController:
     GalleryView: 'Album weergave'
-    ListView: 'Lijstweergave'
-    MENUTITLE: Pagina's
+    ListView: Lijstweergave
+    MENUTITLE: 'Pagina''s'
     TreeView: 'Hierarchische weergave'
   CMSPagesController_Tools_ss:
     FILTER: Filteren
@@ -149,7 +146,6 @@ nl:
     FILTERDATEFROM: Van
     FILTERDATEHEADING: Datum
     FILTERDATETO: Tot
-    FILTERLABELTEXT: Zoeken
   CMSSettingsController:
     MENUTITLE: Instellingen
   CMSSiteTreeFilter_Search:
@@ -170,7 +166,7 @@ nl:
     InstallSuccessCongratulations: 'SilverStripe is geïnstalleerd!'
     LOGGEDINAS: 'Ingelogd als'
     LOGIN: Inloggen
-    LOGOUT: 'Uitloggen'
+    LOGOUT: Uitloggen
     NOTLOGGEDIN: 'Niet ingelogd'
     PUBLISHED: Gepubliceerd
     PUBLISHEDSITE: 'Gepubliceerde site'
@@ -205,14 +201,14 @@ nl:
     503: '503 - Service niet beschikbaar'
     504: '504 - Gateway Timeout'
     505: '505 - HTTP versie niet ondersteund'
-    CODE: 'Foutcode'
+    CODE: Foutcode
     DEFAULTERRORPAGECONTENT: '<p>Helaas, de pagina die u zocht lijkt niet (meer) te bestaan.</p><p>Controleer of de juiste URL is gebruikt en probeer het opnieuw.</p>'
     DEFAULTERRORPAGETITLE: 'Pagina niet gevonden'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Helaas, er was een probleem bij het verwerken van je verzoek.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Probleem met de server'
     DESCRIPTION: 'Aangepaste tekst voor verschillende foutmeldingen (bv. "Pagina niet gevonden")'
     ERRORFILEPROBLEM: 'Fout: "{filename}" kan niet geopend worden om te schrijven. Controleer alstublieft de bestandspermissies.'
-    SINGULARNAME: 'Foutpagina'
+    SINGULARNAME: Foutpagina
   File:
     Title: Titel
   Folder:
@@ -223,13 +219,13 @@ nl:
     UploadFilesButton: Uploaden
   LeftAndMain:
     DELETED: Verwijderd.
-    PreviewButton: Voorbeeld bekijken
+    PreviewButton: 'Voorbeeld bekijken'
     SAVEDUP: Opgeslagen.
-    SearchResults: 'Zoekresultaten'
+    SearchResults: Zoekresultaten
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS toegang'
   Permissions:
-    CONTENT_CATEGORY: 'Inhoudsrechten'
+    CONTENT_CATEGORY: Inhoudsrechten
     PERMISSIONS_CATEGORY: 'Rollen en toegangsrechten'
   RedirectorPage:
     DESCRIPTION: 'Verwijst naar een andere pagina op deze site'
@@ -239,7 +235,7 @@ nl:
     REDIRECTTO: 'Doorverwijzen naar'
     REDIRECTTOEXTERNAL: 'Een andere website'
     REDIRECTTOPAGE: 'Een pagina op deze website'
-    SINGULARNAME: 'Verwijzingspagina'
+    SINGULARNAME: Verwijzingspagina
     YOURPAGE: 'Pagina op deze website'
   ReportAdmin:
     MENUTITLE: Rapporten
@@ -253,14 +249,14 @@ nl:
   SearchForm:
     GO: Zoeken
     SEARCH: Zoeken
-    SearchResults: 'Zoekresultaten'
+    SearchResults: Zoekresultaten
   SideReport:
     BROKENFILES: 'Pagina''s met verbroken bestanden'
     BROKENLINKS: 'Pagina''s met verbroken links'
     BROKENREDIRECTORPAGES: 'Verwijzingspagina''s die naar verwijderde pagina''s verwijzen'
     BROKENVIRTUALPAGES: 'Virtuele pagina''s die naar verwijderde pagina''s verwijzen'
     BrokenLinksGroupTitle: 'Rapport van verbroken links'
-    ContentGroupTitle: 'Inhoudsrapporten'
+    ContentGroupTitle: Inhoudsrapporten
     EMPTYPAGES: 'Lege pagina''s'
     LAST2WEEKS: 'Pagina''s gewijzigd in de laatste twee weken'
     OtherGroupTitle: Andere
@@ -279,9 +275,9 @@ nl:
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Bewerk pagina'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: Pagina 's
+    MENUTITLE: 'Pagina ''s'
   SilverStripe\CMS\Model\ErrorPage:
-    SINGULARNAME: 'Foutpagina'
+    SINGULARNAME: Foutpagina
   SilverStripe\CMS\Model\VirtualPage:
     PLURALNAME: 'Virtuele pagina''s'
     SINGULARNAME: 'Virtuele pagina'
@@ -315,26 +311,26 @@ nl:
     BUTTONPUBLISHED: Gepubliceerd
     BUTTONSAVED: Opgeslagen
     BUTTONSAVEPUBLISH: 'Opslaan & publiceren'
-    BUTTONUNPUBLISH: Publicatie intrekken
+    BUTTONUNPUBLISH: 'Publicatie intrekken'
     BUTTONUNPUBLISHDESC: 'Deze pagina verwijderen uit de gepubliceerde site'
     Comments: Commentaar
     Content: Inhoud
     DEFAULTABOUTTITLE: 'Over Ons'
-    DEFAULTCONTACTTITLE: 'Contact'
+    DEFAULTCONTACTTITLE: Contact
     DEFAULTHOMETITLE: Home
     DELETEDPAGEHELP: 'Deze pagina is niet langer gepubliceerd'
     DELETEDPAGESHORT: Verwijderd
     DEPENDENT_NOTE: 'De volgende pagina''s zijn afhankelijk van deze pagina. Hieronder vallen virtuele pagina''s, verwijzingspagina''s en pagina''s met links in hun inhoud.'
     DESCRIPTION: 'Algemene inhoud pagina'
-    DependtPageColumnLinkType: 'Linktype'
+    DependtPageColumnLinkType: Linktype
     DependtPageColumnURL: URL
     EDITANYONE: 'Iedereen die kan inloggen in het CMS'
     EDITHEADER: 'Wie kan deze pagina wijzigen?'
     EDITONLYTHESE: 'Alleen deze gebruikers (kies uit de lijst)'
-    EDITORGROUPS: 'Redacteursgroepen'
+    EDITORGROUPS: Redacteursgroepen
     EDIT_ALL_DESCRIPTION: 'Kan elke pagina wijzigen'
     EDIT_ALL_HELP: 'Bevoegdheid om alle pagina''s op de site te wijzigen, onafhankelijk van de instellingen in het ''Toegang'' tabblad. Vereist "Toegang tot site inhoud" rechten'
-    Editors: 'Redacteursgroepen'
+    Editors: Redacteursgroepen
     GroupPlaceholder: 'Klik om de groep te selecteren'
     HASBROKENLINKS: 'Deze pagina heeft verbroken links.'
     HTMLEDITORTITLE: Inhoud
@@ -363,7 +359,7 @@ nl:
     PARENTTYPE_SUBPAGE: 'Subpagina onder een bovenliggende pagina'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Beheer toegangsrechten voor inhoud'
     PERMISSION_GRANTACCESS_HELP: 'Bevoegdheid om pagina specifieke toegangsrechten in de "Pagina''s" sectie te wijzigen.'
-    PLURALNAME: Pagina's
+    PLURALNAME: 'Pagina''s'
     PageTypNotAllowedOnRoot: 'Paginatype "{type}" is niet toegestaan op het hoogste niveau'
     PageTypeNotAllowed: 'Pagina type "{type}" mag niet ondergeschikt zijn aan deze bovenliggende pagina'
     REMOVEDFROMDRAFTHELP: 'Deze pagina is gepubliceerd, maar verwijderd uit de concept site'
@@ -375,17 +371,17 @@ nl:
     SHOWINSEARCH: 'Weergeven in zoeken?'
     SINGULARNAME: Pagina
     TABBEHAVIOUR: Gedrag
-    TABCONTENT: 'Hoofdinhoud'
+    TABCONTENT: Hoofdinhoud
     TABDEPENDENT: 'Afhankelijke pagina''s'
     TOPLEVEL: 'Site inhoud (hoogste niveau)'
     TOPLEVELCREATORGROUPS: 'Hoogste niveau auteurs'
     URLSegment: 'URL segment'
-    VIEWERGROUPS: 'Bekijkersgroepen'
+    VIEWERGROUPS: Bekijkersgroepen
     VIEW_ALL_DESCRIPTION: 'Kan iedere pagina op de website bekijken, ongeacht de specifieke pagina instelling'
     VIEW_ALL_HELP: 'Bevoegdheid om alle pagina''s op de site te wijzigen, onafhankelijk van de instellingen in het ''Toegang'' tabblad. Vereist "Toegang tot site inhoud" rechten'
     VIEW_DRAFT_CONTENT: 'Bekijk concept inhoud'
     VIEW_DRAFT_CONTENT_HELP: 'Bevoegdheid om pagina''s buiten het CMS in concept mode te bekijken. Nuttig voor externe medewerkers zonder CMS toegang.'
-    Viewers: 'Bekijkersgroepen'
+    Viewers: Bekijkersgroepen
     Visibility: Zichtbaarheid
     has_one_Parent: 'Bovenliggende pagina'
     many_many_BackLinkTracking: 'Backlinks traceren'

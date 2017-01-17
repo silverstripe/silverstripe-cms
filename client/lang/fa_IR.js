@@ -44,7 +44,7 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "Tree.ShowAsList": "نمایش فرزندان به صورت لیست",
     "Tree.ThisPageAndSubpages": "این صفحه و صفحات زیرمجموعه",
     "Tree.ThisPageOnly": "فقط این صفحه",
-    "Tree.ViewPage": "View",
+    "Tree.ViewPage": "نمایش",
     "URLSEGMENT.Cancel": "لغو",
     "URLSEGMENT.Edit": "ویرایش",
     "URLSEGMENT.OK": "تایید",

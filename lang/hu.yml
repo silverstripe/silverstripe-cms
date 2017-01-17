@@ -12,12 +12,12 @@ hu:
     CurrentFolderOnly: 'Csak mappán belül?'
     DetailsView: Részletek
     FILES: Állományok
-    FROMTHEINTERNET: 'Internetről'
-    FROMYOURCOMPUTER: 'Számítógépéről'
+    FROMTHEINTERNET: Internetről
+    FROMYOURCOMPUTER: Számítógépéről
     Filetype: 'Állomány típusa'
     ListView: 'Lista nézet'
     MENUTITLE: Állományok
-    NEWFOLDER: Új mappa
+    NEWFOLDER: 'Új mappa'
     SIZE: Méret
     TreeView: '"Fa" nézet'
     Upload: Feltöltés
@@ -47,7 +47,7 @@ hu:
     HasBrokenLinkAndFile: 'Hibás link és fájl'
     HoverTitleEditPage: 'Oldal szerkesztése'
     PageName: 'Oldal neve'
-    ReasonDropdown: 'Ellenőrizendő'
+    ReasonDropdown: Ellenőrizendő
     ReasonDropdownBROKENFILE: 'Hibás állomány'
     ReasonDropdownBROKENLINK: 'Hibás hivatkozás'
     ReasonDropdownRPBROKENLINK: '"Redirector" oldal nem létező oldalra hivatkozik'
@@ -82,7 +82,6 @@ hu:
     PAGETYPEANYOPT: Egyéb
     PUBALLCONFIRM: 'Minden oldal publikálása, fázistartalmak kitevése'
     PUBALLFUN: '"Összes publikálása" funkció'
-    PUBALLFUN2: "Ennek a gombnak a megnyomásával ugyanazt érheted el, mintha az összes oldalon megnyomnád a publikálás gombot. Akkor célszerű használni, ha a tartalom nagy változáson ment keresztül, mint például az oldal kezdeti felépítésénél."
     PUBPAGES: '{count} oldalt publikált'
     PageAdded: 'Oldal sikeresen létrehozva'
     REMOVED: '''{title}{description}'' törölve az éles oldalról'
@@ -130,9 +129,9 @@ hu:
   CMSPagesController_Tools_ss:
     FILTER: Szűrő
   CMSSearch:
-    FILTERDATEFROM: -tól
+    FILTERDATEFROM: '-tól'
     FILTERDATEHEADING: Dátum
-    FILTERDATETO: -ig
+    FILTERDATETO: '-ig'
   CMSSettingsController:
     MENUTITLE: Beállítások
   CMSSiteTreeFilter_Search:
@@ -141,7 +140,7 @@ hu:
     NOTEWONTBESHOWN: 'Megjegyzés: ez az üzenet a látogatók számára nem jelenik meg'
   ContentController:
     ARCHIVEDSITE: 'Előnézeti verzió'
-    ARCHIVEDSITEFROM: 'Archiválva'
+    ARCHIVEDSITEFROM: Archiválva
     CMS: Tartalomkezelő
     DRAFT: Piszkozat
     DRAFTSITE: 'Vázlat oldal'
@@ -152,8 +151,8 @@ hu:
     InstallSuccessCongratulations: 'A SilverStripe sikeresen telepítve lett!'
     LOGGEDINAS: 'Bejelentkezve, mint'
     LOGIN: Bejelentkezés
-    LOGOUT: 'Kijelentkezés'
-    NOTLOGGEDIN: 'Kijelentkezett'
+    LOGOUT: Kijelentkezés
+    NOTLOGGEDIN: Kijelentkezett
     PUBLISHED: Publikált
     PUBLISHEDSITE: 'Publikált oldal'
     Password: Jelszó
@@ -171,7 +170,7 @@ hu:
     409: '409 - Konfliktus'
     410: '410 - Kapcsolat bontva'
     411: '411 - Hossz kötelező'
-    CODE: 'Hibakód'
+    CODE: Hibakód
     DEFAULTERRORPAGETITLE: 'Az oldal nem található'
     DEFAULTSERVERERRORPAGETITLE: 'Szerver hiba'
     SINGULARNAME: 'Hiba oldal'
@@ -185,7 +184,7 @@ hu:
     DELETED: Törölve.
     PreviewButton: Előnézet
     SAVEDUP: Elmentve.
-    SearchResults: 'Találatok'
+    SearchResults: Találatok
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS hozzáférés'
   Permissions:
@@ -205,11 +204,11 @@ hu:
     MENUTITLE: Jelentések
     ReportTitle: Cím
   ReportAdminForm:
-    FILTERBY: 'Szűrés'
+    FILTERBY: Szűrés
   SearchForm:
     GO: Mehet
     SEARCH: Keresés
-    SearchResults: 'Találatok'
+    SearchResults: Találatok
   SideReport:
     BROKENFILES: 'Oldalak hibás fájl hivatkozásokkal'
     BROKENLINKS: 'Oldalak hibás hivatkozásokkal'
@@ -255,12 +254,12 @@ hu:
     BUTTONPUBLISHED: Publikálva
     BUTTONSAVED: Elmentve
     BUTTONSAVEPUBLISH: 'Ment és publikál'
-    BUTTONUNPUBLISH: Publikálás visszavonása
+    BUTTONUNPUBLISH: 'Publikálás visszavonása'
     BUTTONUNPUBLISHDESC: 'Oldal eltávolítása a publikált oldalról'
     Comments: Kommentárok
     Content: Tartalom
-    DEFAULTABOUTTITLE: 'Rólunk'
-    DEFAULTCONTACTTITLE: 'Kapcsolat'
+    DEFAULTABOUTTITLE: Rólunk
+    DEFAULTCONTACTTITLE: Kapcsolat
     DEFAULTHOMETITLE: Kezdőlap
     DELETEDPAGEHELP: 'Az oldal nincs publikálva'
     DELETEDPAGESHORT: Törölve
@@ -281,7 +280,7 @@ hu:
     LASTSAVED: 'Utoljára frissítve'
     LASTUPDATED: 'Utoljára frissítve'
     MENUTITLE: 'Navigációs cimke'
-    METADESC: 'Leírás'
+    METADESC: Leírás
     METAEXTRA: 'Saját meta címkék'
     MODIFIEDONDRAFTHELP: 'Az oldal egyes módosításai nincsenek publikálva'
     MODIFIEDONDRAFTSHORT: Változtatva
@@ -294,7 +293,7 @@ hu:
     PARENTID: 'Szülő oldal'
     PARENTTYPE: 'Oldal helyzete'
     PARENTTYPE_ROOT: 'Felső szintű oldal'
-    PARENTTYPE_SUBPAGE: 'Aloldal'
+    PARENTTYPE_SUBPAGE: Aloldal
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Tartalom hozzáférését szabályozza'
     PLURALNAME: Oldalak
     PageTypNotAllowedOnRoot: 'A "{type}" oldal nem helyezkedhet el a gyökér szintjén'
@@ -308,7 +307,7 @@ hu:
     SHOWINSEARCH: 'Látható legyen a keresésben?'
     SINGULARNAME: Oldal
     TABBEHAVIOUR: Viselkedés
-    TABCONTENT: 'Tartalom'
+    TABCONTENT: Tartalom
     TABDEPENDENT: 'Kapcsolodó oldalak'
     TOPLEVEL: 'Oldaltartalom (legfelső szint)'
     TOPLEVELCREATORGROUPS: 'A legfelső szinten új elemeket létrehozhatnak'

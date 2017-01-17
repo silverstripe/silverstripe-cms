@@ -13,6 +13,8 @@ eo:
     CREATED: Dato
     CurrentFolderOnly: 'Limigo de aktuala dosierujo'
     DetailsView: Detaloj
+    ErrorItemPermissionDenied: 'Ŝajnas ke vi ne havas la bezonatajn permesojn por aldoni je {ObjectTitle} al kampanjo'
+    ErrorNotFound: 'Ne eblis trovi tiun {Type}'
     FILES: Dosieroj
     FILESYSTEMSYNC: 'Sinkronigaj dosieroj'
     FILESYSTEMSYNCTITLE: 'Aktualigi la CMS-datumbazerojn de dosieroj en la dosiera sistemo. Utile kiam novaj dosieroj estas alŝutitaj ekster la CMS, ekzemple per FTP.'
@@ -21,7 +23,7 @@ eo:
     Filetype: 'Tipo de dosiero'
     ListView: 'Lista vido'
     MENUTITLE: Dosieroj
-    NEWFOLDER: Nova dosierujo
+    NEWFOLDER: 'Nova dosierujo'
     SIZE: Grando
     THUMBSDELETED: '{count} neuzitaj miniaturoj estas forigitaj'
     TreeView: 'Arba vido'
@@ -45,7 +47,7 @@ eo:
     CheckSiteDropdownPublished: 'Publika retejo'
     ColumnDateLastModified: 'Dato de lasta modifo'
     ColumnDateLastPublished: 'Dato de lasta publikigo'
-    ColumnProblemType: 'Problemtipo'
+    ColumnProblemType: Problemtipo
     ColumnURL: URL
     HasBrokenFile: 'havas rompitan dosieron'
     HasBrokenLink: 'havas rompitan ligilon'
@@ -61,6 +63,9 @@ eo:
     VirtualPageNonExistent: 'virtuala paĝo direktanta al neekzistanta paĝo'
   CMSAddPageController:
     Title: 'Enmeti paĝon'
+  CMSBatchAction_Archive:
+    RESULT: 'Forigis %d paĝojn el malneta kaj publika, kaj sendis ilin al la arĥivo'
+    TITLE: 'Malpublikigi kaj sendi al arkivo'
   CMSBatchActions:
     ARCHIVE: Arkivo
     ARCHIVED_PAGES: 'Enarkivigis %d paĝojn'
@@ -72,8 +77,6 @@ eo:
     PUBLISH_PAGES: Publikigi
     RESTORE: Restaŭri
     RESTORED_PAGES: 'Restaŭris %d paĝojn'
-    UNPUBLISHED_PAGES: 'Malpublikigitaj %d paĝoj'
-    UNPUBLISH_PAGES: Malpublikigi
   CMSFileAddController:
     MENUTITLE: Dosieroj
   CMSMain:
@@ -93,25 +96,20 @@ eo:
     DESCREMOVED: 'kaj {count} posteuloj'
     DUPLICATED: 'Sukcese duobligis je ''{title}'''
     DUPLICATEDWITHCHILDREN: 'Sukcese duobligis je ''{title}'' kaj idoj'
-    EMAIL: SilverStripe\\regilo\\retpoŝto\\retpoŝto
+    EMAIL: Retpoŝto
     EditTree: 'Redakta arbo'
-    ListFiltered: 'Vidigas rezultojn de serĉo.'
     MENUTITLE: 'Redakti paĝon'
     NEWPAGE: 'Nova {pagetype}'
     PAGENOTEXISTS: 'Ĉi tiu paĝo ne ekzistas'
-    PAGES: 'Paĝa stato'
     PAGETYPEANYOPT: Ajna
-    PAGETYPEOPT: 'Tipo de paĝo'
     PUBALLCONFIRM: 'Bonvolu eldoni ĉiun paĝon en la retejo, kopiante enhavan stadion al la publika'
     PUBALLFUN: 'Funkcio "Eldoni Ĉiujn"'
-    PUBALLFUN2: "Premi ĉi tiun butonon estas same kiel viziti al ĉiu paĝo kaj premi je \"eldoni\". La intenco estas ke oni uzu ĝin post multnombraj redaktoj de la enhavo, ekzemple kiam oni unue konstruis la retejon."
     PUBLISHED: 'Sukcese publikigis je ''{title}'''
     PUBPAGES: 'Farite: publikigis {count} paĝojn'
     PageAdded: 'Sukcese kreis paĝon'
     REMOVED: 'Forigis je ''{title}''{description} el la publikigita retejo'
     REMOVEDPAGE: 'Forigis je ''{title}'' el la publikigita retejo'
     REMOVEDPAGEFROMDRAFT: 'Forigis je ''%s'' el la malneta retejo'
-    RESTORE: 'Restaŭri malneton'
     RESTORED: 'Sukcese restaŭris je ''{title}'''
     RESTORE_DESC: 'Restaŭri la enarkivigitan version al malneto'
     RESTORE_TO_ROOT: 'Restaŭri malneton ĉe la supra nivelo'
@@ -125,11 +123,8 @@ eo:
     TabContent: Enhavo
     TabHistory: Historio
     TabSettings: Agordoj
-    TreeFiltered: 'Vidigas rezultojn de serĉo.'
-    TreeFilteredClear: Vakigi
+    UNPUBLISH_AND_ARCHIVE: 'Malpublikigi kaj sendi al arkivo'
   CMSMain_left_ss:
-    APPLY_FILTER: Serĉi
-    CLEAR_FILTER: Vakigi
     RESET: Restartigi
   CMSPageAddController:
     MENUTITLE: 'Enmeti paĝon'
@@ -150,7 +145,7 @@ eo:
     VIEWINGVERSION: 'Aktuale vidiĝas versio {version}.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Aŭtoro
-    NOTPUBLISHED: 'Nepublikigita'
+    NOTPUBLISHED: Nepublikigita
     PREVIEW: 'Antaŭvido de retejo'
     PUBLISHER: Publikiginto
     UNKNOWN: Nekonata
@@ -162,8 +157,6 @@ eo:
     ListView: 'Lista vido'
     MENUTITLE: Paĝoj
     TreeView: 'Arba vido'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: 'Staplaj agoj'
   CMSPagesController_Tools_ss:
     FILTER: Filtri
   CMSSIteTreeFilter_PublishedPages:
@@ -172,20 +165,11 @@ eo:
     FILTERDATEFROM: De
     FILTERDATEHEADING: Dato
     FILTERDATETO: Al
-    FILTERLABELTEXT: Serĉi
     PAGEFILTERDATEHEADING: 'Laste redaktita'
   CMSSettingsController:
     MENUTITLE: Agordoj
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Ŝanĝitaj paĝoj'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Ĉiuj paĝoj, inkluzive enarkivigitajn'
   CMSSiteTreeFilter_Search:
     Title: 'Ĉiuj paĝoj'
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Enarkivigitaj paĝoj'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Malnetaj paĝoj'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Publikaj sed forigitaj el malneto'
   ContentControl:
@@ -204,7 +188,7 @@ eo:
     InstallSuccessCongratulations: 'SilverStripe estas sukcese instalita!'
     LOGGEDINAS: 'Ensalutis kiel'
     LOGIN: Ensaluti
-    LOGOUT: 'Elsaluti'
+    LOGOUT: Elsaluti
     NOTLOGGEDIN: 'Ne ensalutinte'
     PUBLISHED: Publikigita
     PUBLISHEDSITE: 'Publikigita retejo'
@@ -239,7 +223,7 @@ eo:
     503: '503 - Servo nehavebla'
     504: '504 - Kluza tempolimo'
     505: '505 - HTTP-Versio ne subtenata'
-    CODE: 'Erarokodo'
+    CODE: Erarokodo
     DEFAULTERRORPAGECONTENT: '<p>Bedaŭrinde, ŝajne vi provis aliri paĝon kiu ne ekzistas.</p><p>Bonvole kontrolu la literumadon de la URL alirota kaj provu denove.</p>'
     DEFAULTERRORPAGETITLE: 'Ne trovis paĝon'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Bedaŭrinde, estis problemo pri via peto.</p>'
@@ -262,9 +246,9 @@ eo:
     SAVEDUP: Konservita.
     SearchResults: 'Serĉaj rezultoj'
   Permission:
-    CMS_ACCESS_CATEGORY: 'CMS-aliro'
+    CMS_ACCESS_CATEGORY: CMS-aliro
   Permissions:
-    CONTENT_CATEGORY: 'Enhavopermesoj'
+    CONTENT_CATEGORY: Enhavopermesoj
     PERMISSIONS_CATEGORY: 'Roloj kaj aliraj permesoj'
   RedirectorPage:
     DESCRIPTION: 'Alidirektas al malsama interna paĝo'
@@ -315,7 +299,6 @@ eo:
   SilverStripeNavigator:
     ARCHIVED: Enarkivigita
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Por kunhavigi ĉi tiun paĝon, kopiu kaj engluigu la ligilon sube.'
     ShareLink: 'Komunigi ligilon'
   SilverStripeNavigatorLinkl:
     CloseLink: Fermi
@@ -375,6 +358,7 @@ eo:
     BUTTONARCHIVEDESC: 'Malpublikigi kaj sendi al arkivo'
     BUTTONCANCELDRAFT: 'Nuligi malnetajn ŝanĝojn'
     BUTTONCANCELDRAFTDESC: 'Forigi vian malneton kaj reveni al la aktuale eldonita paĝo'
+    BUTTONDELETEDESC: 'Forigi el malneta aŭ publika, kaj sendi ilin al la arĥivo'
     BUTTONPUBLISHED: Publikigita
     BUTTONSAVED: Konservita
     BUTTONSAVEPUBLISH: 'Konservi kaj publikigi'
@@ -382,9 +366,7 @@ eo:
     BUTTONUNPUBLISHDESC: 'Forigi ĉi tiun paĝon de la publikigita retejo'
     Comments: Komentoj
     Content: Enhavo
-    DEFAULTABOUTCONTENT: '<p>Vi povas plenigi ĉi tiun paĝon per via materialo, aŭ forigi ĝin kaj krei viajn proprajn paĝojn.<br /></p>'
     DEFAULTABOUTTITLE: 'Pri ni'
-    DEFAULTCONTACTCONTENT: '<p>Vi povas plenigi ĉi tiun paĝon per via materialo, aŭ forigi ĝin kaj krei viajn proprajn paĝojn.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontakti nin'
     DEFAULTHOMECONTENT: '<p>Bonvenon al SilverStripe! Jen la apriora hejmpaĝo. Vi povas redakti la paĝon malfermante je <a href="admin/">la CMS</a>.</p><p>Vi povas nun aliri la <a href="http://docs.silverstripe.org">dokumentaron por programistoj</a>, aŭ komenci la <a href="http://www.silverstripe.org/learn/lessons">SilverStripe-lecionojn</a>.</p>'
     DEFAULTHOMETITLE: Hejmo
@@ -412,7 +394,7 @@ eo:
     LINKSALREADYUNIQUE: '{url} jam estas unika'
     LINKSCHANGEDTO: 'ŝanĝis {url1} -> {url2}'
     MENUTITLE: 'Navigada etikedo'
-    METADESC: 'Metapriskribo'
+    METADESC: Metapriskribo
     METADESCHELP: 'Serĉiloj uzas ĉi tiun enhavon por vidigi serĉajn rezultojn (kvankam ĝi ne influos ilian rangon).'
     METAEXTRA: 'Propraj Meta-etikedoj '
     METAEXTRAHELP: 'HTML-etikedoj por plua metainformo. Ekzemple &lt;meta name="customName" content="via propra enhavo ĉi tie" /&gt;'
@@ -422,6 +404,8 @@ eo:
     MoreOptions: 'Pliaj agordoj'
     NOTPUBLISHED: 'Ne publikigita'
     OBSOLETECLASS: 'Ĉi tiu paĝo estas de malaktuala tipo {type}. Konservi ĝin reagordos ĝian tipon kaj vi eble perdos datumojn.'
+    ONLIVEONLYSHORT: 'Nur ĉe publika'
+    ONLIVEONLYSHORTHELP: 'Paĝo estas publikigita, sed ĝi estas forigita el malneto'
     PAGELOCATION: 'Situo de paĝo'
     PAGETITLE: 'Nomo de paĝo'
     PAGETYPE: 'Tipo de paĝo'
@@ -447,7 +431,7 @@ eo:
     TABDEPENDENT: 'Dependaj paĝoj'
     TOPLEVEL: 'Enhavo de Retejo (Supra Nivelo)'
     TOPLEVELCREATORGROUPS: 'Supranivelaj kreiloj'
-    URLSegment: 'URL-segmento'
+    URLSegment: URL-segmento
     VIEWERGROUPS: 'Grupoj de vidantoj'
     VIEW_ALL_DESCRIPTION: 'Vidigi ajnan paĝon'
     VIEW_ALL_HELP: 'Povo vidigi ajnan paĝon en la retejo, senkonsidere la agordaĵojn en la langeto Aliro. Bezonatas la permeso "Aliro al sekcio ''Paĝoj''"'

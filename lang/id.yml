@@ -84,7 +84,7 @@ id:
     ChoosePageType: 'Pilih jenis laman'
     Create: Buat
     DELETE: 'Hapus dari situs draft'
-    DELETEFP: Hapus dari situs yang telah diterbitkan
+    DELETEFP: 'Hapus dari situs yang telah diterbitkan'
     DESCREMOVED: 'dan {count} turunannya'
     DUPLICATED: '''{title}'' berhasil diduplikasi'
     DUPLICATEDWITHCHILDREN: '''{title}'' dan turunannya berhasil diduplikasi'
@@ -95,7 +95,6 @@ id:
     PAGETYPEANYOPT: Lain
     PUBALLCONFIRM: 'Mohon terbitkan semua laman pada situs'
     PUBALLFUN: 'Fungsi "Terbitkan Semua"'
-    PUBALLFUN2: "Menekan tombol ini sama dengan membuka semua laman dan menerbitkannya. Hal ini \n\t\t\t\tditujukan untuk dilakukan setelah ada banyak pengeditan konten, misalnya saat situs pertama kali \n\t\t\t\tdiinstal."
     PUBPAGES: 'Selesai: {count} laman terbit'
     PageAdded: 'Laman berhasil dibuat'
     REMOVED: 'Dihapus ''{title}''{description} dari situs langsung'
@@ -136,7 +135,7 @@ id:
     AUTHOR: Penulis
     NOTPUBLISHED: 'Batal terbit'
     PUBLISHER: Penerbit
-    UNKNOWN: Tidak diketahui
+    UNKNOWN: 'Tidak diketahui'
     WHEN: Ketika
   CMSPageSettingsController:
     MENUTITLE: 'Edit Laman'
@@ -171,11 +170,11 @@ id:
     InstallSuccessCongratulations: 'SilverStripe telah berhasil diinstal!'
     LOGGEDINAS: 'Masuk sebagai'
     LOGIN: Masuk
-    LOGOUT: 'Keluar'
+    LOGOUT: Keluar
     NOTLOGGEDIN: 'Tidak masuk'
     PUBLISHED: Terbit
     PUBLISHEDSITE: 'Situs Terbit'
-    Password: Kata kunci
+    Password: 'Kata kunci'
     PostInstallTutorialIntro: 'Situs ini adalah versi sederhana dari situs SilverStripe 3. Untuk meningkatkannya, mohon kunjungi {link}.'
     StartEditing: 'Anda dapat mulai mengedit konten dengan membuka <a href="{link}">CMS</a>.'
     UnableDeleteInstall: 'Gagal menghapus berkas-berkas penginstalan. Mohon lakukan penghapusan berkas-berkas berikut ini secara manual.'
@@ -282,13 +281,13 @@ id:
     SITETAGLINE: 'Slogan Situs'
     SITETITLE: 'Judul Situs'
     TABACCESS: Akses
-    TABMAIN: Tab Utama
+    TABMAIN: 'Tab Utama'
     TAGLINEDEFAULT: 'slogan situsmu disini'
     THEME: Tema
     TOPLEVELCREATE: 'Siapa yang dapat membuat laman utama yang baru?'
     VIEWHEADER: 'Siapa yang dapat menampilkan laman pada situs ini?'
   SiteTree:
-    ACCESSANYONE: Siapa saja
+    ACCESSANYONE: 'Siapa saja'
     ACCESSHEADER: 'Siapa yang dapat melihat laman ini?'
     ACCESSLOGGEDIN: 'User yang masuk'
     ACCESSONLYTHESE: 'Hanya orang ini saja (pilih dari daftar)'
@@ -330,7 +329,7 @@ id:
     LASTUPDATED: 'Terakhir diperbarui'
     LINKCHANGENOTE: 'Mengganti tautan laman ini akan mempengaruhi semua tautan pada laman terkait.'
     MENUTITLE: 'Label navigasi'
-    METADESC: 'Deskripsi'
+    METADESC: Deskripsi
     METADESCHELP: 'Mesin pencari menggunakan konten ini untuk menampilkan hasil pencarian (meskipun tidak mempengaruhi pemeringkatan situs).'
     METAEXTRA: 'Penanda Meta'
     METAEXTRAHELP: 'Penanda HTML untuk informasi meta tambahan. Contohnya &lt;meta name="namaMeta" content="konten Anda di sini" /&gt;'

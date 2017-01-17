@@ -19,9 +19,9 @@ cs:
     FROMTHEINTERNET: 'Z internetu'
     FROMYOURCOMPUTER: 'Z vašeho počítače'
     Filetype: 'Typ souboru'
-    ListView: 'Seznam'
+    ListView: Seznam
     MENUTITLE: Soubory
-    NEWFOLDER: Nová složka
+    NEWFOLDER: 'Nová složka'
     SIZE: Velikost
     THUMBSDELETED: '{count} nepoužitých miniatur bylo smazáno'
     TreeView: 'Zobrazit strom'
@@ -72,8 +72,6 @@ cs:
     PUBLISH_PAGES: Zveřejnit
     RESTORE: Obnovit
     RESTORED_PAGES: 'Obnoveno %d stránek'
-    UNPUBLISHED_PAGES: 'Nezveřejněných %d stránek'
-    UNPUBLISH_PAGES: Nezveřejnit
   CMSFileAddController:
     MENUTITLE: Soubory
   CMSMain:
@@ -89,29 +87,23 @@ cs:
     ChoosePageType: 'Vyberte typ stránky'
     Create: Vytvořit
     DELETE: 'Smazat koncept'
-    DELETEFP: Smazat z publikovaných stránek
+    DELETEFP: 'Smazat z publikovaných stránek'
     DESCREMOVED: 'a {count} potomků'
     DUPLICATED: 'Duplikováno ''{title}'' úspěšně'
     DUPLICATEDWITHCHILDREN: 'Duplikováno ''{title}'' a potomci úspěšně'
-    EMAIL: SilverStripe\\Control\\Email\\Email
     EditTree: 'Upravit strom'
-    ListFiltered: 'Zobrazení výsledků vyhledávání.'
     MENUTITLE: 'Upravit stránku'
     NEWPAGE: 'Nová {pagetype}'
     PAGENOTEXISTS: 'Tato stránka neexistuje'
-    PAGES: 'Stav stránky'
     PAGETYPEANYOPT: Jakékoliv
-    PAGETYPEOPT: 'Typ stránky'
     PUBALLCONFIRM: 'Prosím zveřejněte veškeré stránky z úschovny'
     PUBALLFUN: 'Funkce "Publikovat vše"'
-    PUBALLFUN2: "Stisknutí tohoto tlačítka se rovná zveřejnění každé jednotlivé stránky. Toto tlačítko má být použito, pokud se vyskytly rozsáhlé úpravy obsahu, jako např. když poprvé sestavujete stránky."
     PUBLISHED: 'Publikováno ''{title}'' úspěšně'
     PUBPAGES: 'Hotovo: Zveřejněno {count} stránek'
     PageAdded: 'Stránka vytvořena úspěšně'
     REMOVED: 'Smazáno ''{title}''{description} z webu'
     REMOVEDPAGE: 'Odstraněno ''{title}'' ze zveřejněného webu'
     REMOVEDPAGEFROMDRAFT: 'Odstraněno ''%s'' z konceptu webu'
-    RESTORE: 'Obnovit koncept'
     RESTORED: 'Obnoveno ''{title}'' úspěšně'
     RESTORE_DESC: 'Obnovit archivovanou verzi na koncept'
     RESTORE_TO_ROOT: 'Obnovit koncept do nejvyšší úrovně'
@@ -125,11 +117,7 @@ cs:
     TabContent: Obsah
     TabHistory: Historie
     TabSettings: Nastavení
-    TreeFiltered: 'Zobrazení výsledků vyhledávání.'
-    TreeFilteredClear: Vyčistit
   CMSMain_left_ss:
-    APPLY_FILTER: Hledat
-    CLEAR_FILTER: Vyčistit
     RESET: Resetovat
   CMSPageAddController:
     MENUTITLE: 'Přidat stránku'
@@ -150,7 +138,7 @@ cs:
     VIEWINGVERSION: 'Právě prohlížíte verzi číslo {version}.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
-    NOTPUBLISHED: 'Nezveřejněno'
+    NOTPUBLISHED: Nezveřejněno
     PREVIEW: 'Náhled webu'
     PUBLISHER: Vydavatel
     UNKNOWN: Neznámý
@@ -162,8 +150,6 @@ cs:
     ListView: 'Pohled seznam'
     MENUTITLE: Stránky
     TreeView: 'Pohled strom'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: 'Dávkové akce'
   CMSPagesController_Tools_ss:
     FILTER: Filtr
   CMSSIteTreeFilter_PublishedPages:
@@ -172,20 +158,11 @@ cs:
     FILTERDATEFROM: Od
     FILTERDATEHEADING: Datum
     FILTERDATETO: Do
-    FILTERLABELTEXT: Hledat
     PAGEFILTERDATEHEADING: 'Poslední změna'
   CMSSettingsController:
     MENUTITLE: Možnosti
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Upravené stránky'
-  CMSSiteTreeFilter_DeletedPages:
-    Title: 'Všechny stránky, včetně archivovaných'
   CMSSiteTreeFilter_Search:
     Title: 'Všechny stránky'
-  CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Archivované stránky'
-  CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Koncept stránek'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Živé, ale odstraněno z konceptu'
   ContentControl:
@@ -204,7 +181,7 @@ cs:
     InstallSuccessCongratulations: 'SilverStripe byl nainstalován úspěšně!'
     LOGGEDINAS: 'Přihlášen jako'
     LOGIN: Přihlášení
-    LOGOUT: 'Odhlášení'
+    LOGOUT: Odhlášení
     NOTLOGGEDIN: 'Není přihlášen'
     PUBLISHED: Zveřejněno
     PUBLISHEDSITE: 'Zveřejnen web'
@@ -315,7 +292,6 @@ cs:
   SilverStripeNavigator:
     ARCHIVED: Archivováno
   SilverStripeNavigatorLink:
-    ShareInstructions: 'K zdílení této stránky, zkopírujte a vložte odkaz dole.'
     ShareLink: 'Sdílet odkaz'
   SilverStripeNavigatorLinkl:
     CloseLink: Zavřít
@@ -382,12 +358,10 @@ cs:
     BUTTONUNPUBLISHDESC: 'Odstranit tuto stránku z publikovaných na webu'
     Comments: Komentáře
     Content: Obsah
-    DEFAULTABOUTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky.</p>'
     DEFAULTABOUTTITLE: 'O nás'
-    DEFAULTCONTACTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky.</p>'
     DEFAULTCONTACTTITLE: 'Kontaktujte nás'
     DEFAULTHOMECONTENT: '<p>Vítejte v SilverStripe! Toto je základní domácí stránka. Můžete ji upravit otevřením <a href="admin/">CMS</a>.</p><p>Můžete také nyní vstoupit  do <a href="http://docs.silverstripe.org">dokumentace vývojáře</a>, nebo se přiučit na <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lekcích</a>.</p>'
-    DEFAULTHOMETITLE: Úvodní strana
+    DEFAULTHOMETITLE: 'Úvodní strana'
     DELETEDPAGEHELP: 'Stránka už není více zveřejněna'
     DELETEDPAGESHORT: Smazáno
     DEPENDENT_NOTE: 'Následující stránky závisí na této stránce. Tyto obsahují virtuální stránky, přesměrovací stránky a stránky s odkazy obsahu.'
@@ -412,7 +386,7 @@ cs:
     LINKSALREADYUNIQUE: ' {url} je vždy unikátní'
     LINKSCHANGEDTO: ' změněno {url1} -> {url2}'
     MENUTITLE: 'Navigační popisek'
-    METADESC: 'Popis'
+    METADESC: Popis
     METADESCHELP: 'Krátký popis/perex, který při vyplnění mohou vyhledávače využít ve výsledcích vyhledávání. I když tento popisek nemá přímý vliv na hodnocení stránky, tak může zvýšit míru prokliku (CTR).'
     METAEXTRA: 'Vlastní meta tagy'
     METAEXTRAHELP: 'HTML tagy pro další meta informace. Například &lt;meta name="vlastnínazev" content="vlastní obsah zde" /&gt;'
@@ -420,7 +394,7 @@ cs:
     MODIFIEDONDRAFTSHORT: Upraveno
     MetadataToggle: Metadata
     MoreOptions: 'Více voleb'
-    NOTPUBLISHED: 'Nezveřejněno'
+    NOTPUBLISHED: Nezveřejněno
     OBSOLETECLASS: 'Tato stránka je zastaralého typu {type}. Uložení zpúsobí zrušení svého typu a múžete tak ztratit data'
     PAGELOCATION: 'Umístění stránky'
     PAGETITLE: 'Název stránky'
@@ -443,7 +417,7 @@ cs:
     SHOWINSEARCH: 'Zobrazovat ve vyhledávání?'
     SINGULARNAME: Stránka
     TABBEHAVIOUR: Chování
-    TABCONTENT: 'Obsah'
+    TABCONTENT: Obsah
     TABDEPENDENT: 'Závislé stránky'
     TOPLEVEL: 'Obsah Webu (Nejvyšší úroveň)'
     TOPLEVELCREATORGROUPS: 'Tvůrci nejvyšší úrovně'

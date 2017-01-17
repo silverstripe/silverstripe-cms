@@ -2,29 +2,29 @@ ko:
   AssetAdmin:
     ADDFILES: '파일 추가'
     ActionAdd: '폴더 추가'
-    AppCategoryArchive: 저장소
+    AppCategoryArchive: '저장소'
     AppCategoryAudio: 오디오
     AppCategoryDocument: 문서
     AppCategoryFlash: Flash
     AppCategoryImage: 이미지
     AppCategoryVideo: 동영상
     BackToFolder: '폴더로 이동'
-    CREATED: 날짜
+    CREATED: '날짜'
     CurrentFolderOnly: '이 폴더에 한정하시겠습니까?'
     DetailsView: 상세보기
     FILES: 파일
     FILESYSTEMSYNC: '동기화 파일'
     FILESYSTEMSYNCTITLE: '파일에 대한 CMS 데이터베이스 항목을 업데이트합니다. 예로, FTP 등 CMS 이외를 통해 파일을 업로드 한 경우에 유용합니다.'
-    FROMTHEINTERNET: '인터넷으로부터'
-    FROMYOURCOMPUTER: '컴퓨터로부터'
+    FROMTHEINTERNET: 인터넷으로부터
+    FROMYOURCOMPUTER: 컴퓨터로부터
     Filetype: '파일 형식'
-    ListView: '목록보기'
+    ListView: 목록보기
     MENUTITLE: 파일
-    NEWFOLDER: 새 폴더
+    NEWFOLDER: '새 폴더'
     SIZE: 사이즈
     THUMBSDELETED: '{count}개의 사용하지 않은 이미지를 제거했습니다'
-    TreeView: '트리보기'
-    Upload: 업로드
+    TreeView: 트리보기
+    Upload: '업로드'
   AssetAdmin_DeleteBatchAction:
     TITLE: '폴더를 삭제'
   AssetAdmin_Tools:
@@ -78,9 +78,9 @@ ko:
     Cancel: 취소
     ChoosePageParentMode: '이 페이지를 만들 위치를 선택'
     ChoosePageType: '페이지 유형을 선택'
-    Create: 새로 만들기
+    Create: '새로 만들기'
     DELETE: '초안 삭제'
-    DELETEFP: 삭제
+    DELETEFP: '삭제'
     DESCREMOVED: '그리고 {count} 파생'
     DUPLICATED: '''{title}''의 복제가 완료되었습니다.'
     DUPLICATEDWITHCHILDREN: '''{title}'' 와 그 하위에대한 복제가 완료되었습니다'
@@ -91,7 +91,6 @@ ko:
     PAGETYPEANYOPT: 아무거나
     PUBALLCONFIRM: '콘텐츠의 스테이지를 복사하고 전달하기 위해 사이트의 모든 페이지를 공개합니다'
     PUBALLFUN: ' "모두 공개"기능'
-    PUBALLFUN2: "이 버튼을 누르면 모든 페이지로 이동하고 \"공개\"를 눌러도 됩니다. 이 기능은 사이트를 처음 만들 때 등 많은 컨텐츠를 편집하는 경우에 이용될 것같습니다."
     PUBPAGES: '완료: {count} 페이지를 공개했습니다'
     PageAdded: '페이지를 만드는 데 성공'
     REMOVED: '이 전달 사이트에서''{title}''{description}을 제거했습니다.'
@@ -101,13 +100,13 @@ ko:
     ROLLBACK: '이 버전으로 복원'
     ROLLEDBACKPUBv2: '공개된 버전으로 롤백되었습니다.'
     ROLLEDBACKVERSIONv2: '#%d. 버전으로 롤백'
-    SAVE: 저장
+    SAVE: '저장'
     SAVEDRAFT: '임시 저장'
-    TabContent: 컨텐츠
+    TabContent: '컨텐츠'
     TabHistory: 기록
-    TabSettings: 설정
+    TabSettings: '설정'
   CMSMain_left_ss:
-    RESET: 리셋
+    RESET: '리셋'
   CMSPageAddController:
     MENUTITLE: '페이지 추가'
     ParentMode_child: '다른 페이지 아래에 작성'
@@ -127,25 +126,25 @@ ko:
     VIEWINGVERSION: '현재 {version}버젼을 보고 있는 중.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: 작성자
-    NOTPUBLISHED: '미공개'
+    NOTPUBLISHED: 미공개
     PUBLISHER: 게시자
-    UNKNOWN: 알 수 없슴
-    WHEN: 언제
+    UNKNOWN: '알 수 없슴'
+    WHEN: '언제'
   CMSPageSettingsController:
     MENUTITLE: '페이지 편집'
   CMSPagesController:
-    GalleryView: '갤러리보기'
-    ListView: '목록보기'
+    GalleryView: 갤러리보기
+    ListView: 목록보기
     MENUTITLE: 페이지
-    TreeView: '트리보기'
+    TreeView: 트리보기
   CMSPagesController_Tools_ss:
     FILTER: 필터
   CMSSearch:
     FILTERDATEFROM: 시작일
-    FILTERDATEHEADING: 날짜
-    FILTERDATETO: 종료일
+    FILTERDATEHEADING: '날짜'
+    FILTERDATETO: '종료일'
   CMSSettingsController:
-    MENUTITLE: 설정
+    MENUTITLE: '설정'
   CMSSiteTreeFilter_Search:
     Title: '전체 페이지'
   ContentControl:
@@ -212,11 +211,11 @@ ko:
     DELETEUNUSEDTHUMBNAILS: '사용하지 않는 썸네일을 삭제'
     UNUSEDFILESTITLE: '사용하지 않는 파일'
     UNUSEDTHUMBNAILSTITLE: '사용되지 않는 썸네일'
-    UploadFilesButton: 업로드
+    UploadFilesButton: '업로드'
   LeftAndMain:
-    DELETED: 삭제됨.
+    DELETED: '삭제됨.'
     PreviewButton: 미리보기
-    SAVEDUP: 저장됨.
+    SAVEDUP: '저장됨.'
     SearchResults: '검색 결과'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS에 액세스'
@@ -228,14 +227,14 @@ ko:
     HASBEENSETUP: '다른곳으로 리다이렉트되지않고 리다이렉터 페이지가 설치되었습니다.'
     HEADER: '이 페이지는 다른 페이지로 사용자들을 이동시킵니다.'
     OTHERURL: '다른 웹사이트 URL'
-    REDIRECTTO: '변경'
+    REDIRECTTO: 변경
     REDIRECTTOEXTERNAL: '다른 웹사이트'
     REDIRECTTOPAGE: '당신의 웹사이트의 페이지'
     SINGULARNAME: '리디렉션 페이지'
     YOURPAGE: '당신의 웹사이트의 페이지'
   ReportAdmin:
-    MENUTITLE: 보고서
-    ReportTitle: 제목
+    MENUTITLE: '보고서'
+    ReportTitle: '제목'
   ReportAdminForm:
     FILTERBY: '에 의해 필터'
   SITETREE:
@@ -274,10 +273,10 @@ ko:
     SITENAMEDEFAULT: '사이트 이름'
     SITETAGLINE: '사이트의 태그라인/슬로건'
     SITETITLE: '사이트 제목'
-    TABACCESS: 액세스 권한
+    TABACCESS: '액세스 권한'
     TABMAIN: 메인
     TAGLINEDEFAULT: '사이트의 태그라인을 여기에 입력'
-    THEME: 테마
+    THEME: '테마'
     TOPLEVELCREATE: '누가 사이트의 루트에서 페이지를 생성할 수 있나?'
     VIEWHEADER: '누가 이 사이트에서 페이지를 볼 수 있나?'
   SiteTree:
@@ -292,17 +291,17 @@ ko:
     BUTTONCANCELDRAFT: '초안의 편집 내용을 취소합니다'
     BUTTONCANCELDRAFTDESC: '초안을 삭제하고 현재 공개된 페이지로 돌아갑니다.'
     BUTTONPUBLISHED: 게시됨
-    BUTTONSAVED: 저장됨
+    BUTTONSAVED: '저장됨'
     BUTTONSAVEPUBLISH: '저장 및 게시'
     BUTTONUNPUBLISH: 비공개
     BUTTONUNPUBLISHDESC: '게시된 사이트로부터 이 페이지를 삭제'
     Comments: 코멘트
     Content: 내용
     DEFAULTABOUTTITLE: '회사 소개'
-    DEFAULTCONTACTTITLE: '연락처'
+    DEFAULTCONTACTTITLE: 연락처
     DEFAULTHOMETITLE: 홈
     DELETEDPAGEHELP: '이 문서는 더이상 공개되지 않습니다.'
-    DELETEDPAGESHORT: 삭제됨
+    DELETEDPAGESHORT: '삭제됨'
     DEPENDENT_NOTE: '다음 페이지들은 이 페이지에 의존합니다. 여기에는 가상 페이지 리디렉터 페이지 콘텐츠 링크가있는 페이지가 포함되어 있습니다.'
     DESCRIPTION: '일반 콘텐츠 페이지'
     DependtPageColumnLinkType: '링크 종류'
@@ -328,8 +327,8 @@ ko:
     METAEXTRA: '메타 태그를 사용자 정의'
     METAEXTRAHELP: '추가 메타 정보에 대한 HTML 태그입니다. 예를 들어, &lt; meta name = "사용자 이름" content = "여기에 사용자 지정 콘텐츠" /&gt;'
     MODIFIEDONDRAFTHELP: '페이지는 게시되지 않은 변경들을 가지고 있습니다.'
-    MODIFIEDONDRAFTSHORT: 수정됨
-    MetadataToggle: 메타 데이터
+    MODIFIEDONDRAFTSHORT: '수정됨'
+    MetadataToggle: '메타 데이터'
     MoreOptions: '추가 옵션'
     NOTPUBLISHED: '공개되지 않습니다'
     OBSOLETECLASS: '이 페이지는 사용되지 않는 타입 {type}입니다. 저장하면 그 타입이 재설정되고 데이터를 잃을 수 있습니다'
@@ -365,7 +364,7 @@ ko:
     VIEW_DRAFT_CONTENT: '초안 내용 보기'
     VIEW_DRAFT_CONTENT_HELP: '초안 모드에 있는 CMS 외부 페이지들 보기에 적용됩니다. CMS를 접근하지 않고도 외부에서 공동 작업자에게 적합합니다.'
     Viewers: '방문자 그룹'
-    Visibility: 볼 수 있슴
+    Visibility: '볼 수 있슴'
     has_one_Parent: '상위 페이지'
     many_many_BackLinkTracking: '원본을 추적'
     many_many_ImageTracking: '이미지 링크 추적'

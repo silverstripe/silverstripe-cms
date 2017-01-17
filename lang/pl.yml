@@ -20,7 +20,7 @@ pl:
     Filetype: 'Typ pliku'
     ListView: 'Widok listy'
     MENUTITLE: Pliki
-    NEWFOLDER: Nowy katalog
+    NEWFOLDER: 'Nowy katalog'
     SIZE: Rozmiar
     THUMBSDELETED: '{count} nieuzywane miniatury zostały usunięte'
     TreeView: 'Widok drzewa'
@@ -45,7 +45,7 @@ pl:
     ColumnDateLastModified: 'Data ostatniej modyfikacji'
     ColumnDateLastPublished: 'Data ostatniej publikacji'
     ColumnProblemType: 'Rodzaj problemu'
-    ColumnURL: Adres URL
+    ColumnURL: 'Adres URL'
     HasBrokenFile: 'ma uszkodzony plik'
     HasBrokenLink: 'ma uszkodzony link'
     HasBrokenLinkAndFile: 'ma uszkodzony link oraz plik'
@@ -85,7 +85,7 @@ pl:
     ChoosePageType: 'Wybierz rodzaj strony'
     Create: Utwórz
     DELETE: 'Usuń szkic'
-    DELETEFP: Usuń z opublikowanej witryny
+    DELETEFP: 'Usuń z opublikowanej witryny'
     DESCREMOVED: 'i {count} potomków'
     DUPLICATED: 'Duplikowanie ''{title}'' zakończone powodzeniem'
     DUPLICATEDWITHCHILDREN: 'Duplikowanie ''{title}'' oraz podstron zakończone powodzeniem'
@@ -96,7 +96,6 @@ pl:
     PAGETYPEANYOPT: Jakikolwiek
     PUBALLCONFIRM: 'Opublikuj każdą stronę w witrynie'
     PUBALLFUN: '"Opublikuj wszystko"'
-    PUBALLFUN2: "Naciśnięcie tego przycisku spowoduje przejście po wszystkich stronach i opublikowanie ich. Zazwyczaj używa się tego, gdy w witrynie było bardzo dużo zmian, na przykład gdy witryna została utworzona."
     PUBPAGES: 'Zrobiono:  Opublikowano {count} stron'
     PageAdded: 'Pomyślnie utworzono stronę'
     REMOVED: 'Usunięto ''{title}''{description} z witryny'
@@ -133,7 +132,7 @@ pl:
     VIEWINGVERSION: 'Obecnie oglądasz wersję {version}.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
-    NOTPUBLISHED: 'Nieopublikowana'
+    NOTPUBLISHED: Nieopublikowana
     PUBLISHER: Edytor
     UNKNOWN: Nieznany
     WHEN: Kiedy
@@ -162,18 +161,18 @@ pl:
   ContentController:
     ARCHIVEDSITE: 'Podgląd wersji'
     ARCHIVEDSITEFROM: 'Zarchiwizowana witryna od'
-    CMS: System Zarządzania Treścią
+    CMS: 'System Zarządzania Treścią'
     DRAFT: Szkic
     DRAFTSITE: 'Szkic witryny'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Musisz zalogować się za pomocą swojego hasła do CMSa, aby obejrzeć nieopublikowaną i zarchiwizowaną treść. <a href="%s">Kliknij tutaj aby powrócić do opublikowanej strony.</a>'
-    Email: Adres e-mail
+    Email: 'Adres e-mail'
     INSTALL_SUCCESS: 'Instalacja przebiegła pomyślnie'
     InstallFilesDeleted: 'Pliki instalacyjne zostały pomyślnie usunięte'
     InstallSecurityWarning: 'Dla bezpieczeństwa powinieneś skasować pliki instalacyjne, chyba że planujesz reinstalację w późniejszym czasie (<em>wymaga zalogowania się jako admin, patrz wyżej</em>). Serwer potrzebuje teraz tylko dostępu do folderu "assets", możesz usunąć dostęp do innych folderów. <a href="{link}" style="text-align: center;">Kliknij tutaj aby usunąć pliki instalacyjne.</a>'
     InstallSuccessCongratulations: 'SilverStripe został zainstalowany!'
     LOGGEDINAS: 'Zalogowany jako'
     LOGIN: Zaloguj
-    LOGOUT: 'Wyloguj'
+    LOGOUT: Wyloguj
     NOTLOGGEDIN: 'Nie zalogowany'
     PUBLISHED: Opublikowano
     PUBLISHEDSITE: 'Opublikowana witryna'
@@ -226,7 +225,7 @@ pl:
     UploadFilesButton: Prześlij
   LeftAndMain:
     DELETED: Usunięty
-    PreviewButton: Podgląd
+    PreviewButton: 'Podgląd'
     SAVEDUP: Zapisane
     SearchResults: 'Wyniki wyszukiwania'
   Permission:
@@ -311,14 +310,14 @@ pl:
     Comments: Komentarze
     Content: Zawartość
     DEFAULTABOUTTITLE: 'O nas'
-    DEFAULTCONTACTTITLE: 'Kontakt'
-    DEFAULTHOMETITLE: Strona główna
+    DEFAULTCONTACTTITLE: Kontakt
+    DEFAULTHOMETITLE: 'Strona główna'
     DELETEDPAGEHELP: 'Strona nie jest już opublikowana'
     DELETEDPAGESHORT: Usunięty
     DEPENDENT_NOTE: 'Poniższe strony są zależne od tej (łącznie z wirtualnymi stronami, stronami przekierowującymi oraz stronami z treścią).'
     DESCRIPTION: 'Zwykła strona'
     DependtPageColumnLinkType: 'Typ linku'
-    DependtPageColumnURL: Adres internetowy
+    DependtPageColumnURL: 'Adres internetowy'
     EDITANYONE: 'Każdy to jest zalogowany w systemie CMS'
     EDITHEADER: 'Kto może edytować wewnątrz systemu CMS?'
     EDITONLYTHESE: 'Tylko Ci ludzi (wybierz z listy)'
@@ -335,15 +334,15 @@ pl:
     LASTUPDATED: 'Ostania zmiana'
     LINKCHANGENOTE: 'Zmiana linku na aktualnej stronie skutkuje zmianą w linkach stron potomnych.'
     MENUTITLE: 'Sekcja nawigacji'
-    METADESC: 'Opis'
-    METADESCHELP: 'Wyszukiwarki internetowe używają tej treści w wynikach wyszukiwania (ta treść nie wpłynie na ich pozycjonowanie)'
+    METADESC: Opis
+    METADESCHELP: "Wyszukiwarki internetowe używają tej treści w wynikach wyszukiwania (ta treść\_nie wpłynie na ich pozycjonowanie)"
     METAEXTRA: 'Własne meta tagi'
     METAEXTRAHELP: 'HTML zawierający dodatkowe metainformacje, n.p. &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Na stronie znajdują się nieopublikowane zmiany'
     MODIFIEDONDRAFTSHORT: Zmodyfikowana
     MetadataToggle: Metadane
     MoreOptions: 'Więcej opcji'
-    NOTPUBLISHED: 'Nieopublikowana'
+    NOTPUBLISHED: Nieopublikowana
     OBSOLETECLASS: 'Ta strona jest przestarzałego typu {type}. Zapisanie jej spowoduje zmianę typu przez co możesz stracić dane'
     PAGELOCATION: 'Lokalizacja strony'
     PAGETITLE: 'Nazwa strony'
@@ -366,7 +365,7 @@ pl:
     SHOWINSEARCH: 'Pokazuj w wyszukiwarce?'
     SINGULARNAME: Strona
     TABBEHAVIOUR: Zachowanie
-    TABCONTENT: 'Zawartość'
+    TABCONTENT: Zawartość
     TABDEPENDENT: 'Strony zależne'
     TOPLEVEL: 'Zawartość witryny (główny poziom)'
     TOPLEVELCREATORGROUPS: 'Twórcy najwyższego szczebla'
@@ -399,6 +398,6 @@ pl:
     DESCRIPTION: 'Wyświetla zawartość innej strony'
     EditLink: edytuj
     HEADER: 'To jest wirtualna strona'
-    HEADERWITHLINK: 'Strona wirtualna odzwierciedlająca treść "{title}" ({link})'
+    HEADERWITHLINK: "Strona wirtualna odzwierciedlająca treść\_\"{title}\" ({link})"
     PageTypNotAllowedOnRoot: '"{type}" nie jest dozwolona dla głównego poziomu wirtualnej strony'
     SINGULARNAME: 'Wirtualna Strona'
