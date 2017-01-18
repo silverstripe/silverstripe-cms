@@ -143,8 +143,11 @@
  * ----------------------------------------------------------------- */
 .field.urlsegment {
 
-	&.loading {
-		background: url(../../images/loading.gif) no-repeat 162px 8px;
+	&.loading .form__field-label {
+		background-image: url(../../images/loading.gif);
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 20px;
 	}
 
 	.URL-link {
