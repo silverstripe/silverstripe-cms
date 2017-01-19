@@ -23,7 +23,7 @@
     "CMSMAIN.SELECTONEPAGE": "Молимо Вас да изаберете бар 1 страницу.",
     "CMSMAIN.URLSEGMENTVALIDATION": "URL-ови могу садржати само слова, бројеве и повлаке.",
     "CMSMAIN.WARNINGSAVEPAGESBEFOREADDING": "Морате снимити страницу пре него што јој можете додати подстранице",
-    "CMSMain.Archive": "Are you sure you want to archive this page and all of its children pages?\n\nThis page and all of its children will be unpublished and sent to the archive.",
+    "CMSMain.Archive": "Are you sure you want to archive this page?\n\nThis page will be unpublished and sent to the archive, any children will be orphaned.",
     "CMSMain.ConfirmRestoreFromLive": "Are you sure you want to revert draft to when the page was last published?",
     "CMSMain.DeleteFromDraft": "Are you sure you want to remove your page from the draft site?\n\nThis page will remain on the published site.",
     "CMSMain.Restore": "Are you sure you want to restore this page from archive?",

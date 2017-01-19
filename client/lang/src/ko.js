@@ -23,7 +23,7 @@
     "CMSMAIN.SELECTONEPAGE": "최소한 1 페이지 선택하십시오.",
     "CMSMAIN.URLSEGMENTVALIDATION": "URL은 알파벳 문자나 숫자, 하이픈만으로 구성됩니다.",
     "CMSMAIN.WARNINGSAVEPAGESBEFOREADDING": "하위 페이지를 추가하기 전에 페이지를 저장해야합니다.",
-    "CMSMain.Archive": "Are you sure you want to archive this page and all of its children pages?\n\nThis page and all of its children will be unpublished and sent to the archive.",
+    "CMSMain.Archive": "Are you sure you want to archive this page?\n\nThis page will be unpublished and sent to the archive, any children will be orphaned.",
     "CMSMain.ConfirmRestoreFromLive": "Are you sure you want to revert draft to when the page was last published?",
     "CMSMain.DeleteFromDraft": "Are you sure you want to remove your page from the draft site?\n\nThis page will remain on the published site.",
     "CMSMain.Restore": "Are you sure you want to restore this page from archive?",
