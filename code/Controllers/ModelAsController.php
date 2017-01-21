@@ -46,7 +46,7 @@ class ModelAsController extends Controller implements NestedController {
 		return Injector::inst()->create($controller, $sitetree);
 	}
 
-	public function init() {
+	protected function init() {
 		singleton('SilverStripe\\CMS\\Model\\SiteTree')->extend('modelascontrollerInit', $this);
 		parent::init();
 	}

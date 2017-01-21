@@ -141,7 +141,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'SiteTreeAsUL' => 'HTMLFragment',
 	);
 
-	public function init() {
+	protected function init() {
 		// set reading lang
 		if(SiteTree::has_extension('Translatable') && !$this->getRequest()->isAjax()) {
 			Translatable::choose_site_locale(array_keys(Translatable::get_existing_content_languages('SilverStripe\\CMS\\Model\\SiteTree')));
