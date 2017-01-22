@@ -37,7 +37,7 @@ class ModelAsController extends Controller implements NestedController {
 	 * @return ContentController
 	 */
 	public static function controller_for(SiteTree $sitetree, $action = null) {
-		$controller = $sitetree->getControllerName();
+		$controller = $sitetree->getFrontendControllerName();
 
 		if ($action && class_exists($controller . '_' . ucfirst($action))) {
 			$controller = $controller . '_' . ucfirst($action);

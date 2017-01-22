@@ -242,6 +242,15 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	private static $icon = null;
 
 	/**
+	 * Specify the fully qualfied class name for this model's controller. If not provided, the default behaviour
+	 * will be used (Fully\Qualified\PageController)
+	 *
+	 * @config
+	 * @var string
+	 */
+	private static $frontend_controller = null;
+
+	/**
 	 * @config
 	 * @var string Description of the class functionality, typically shown to a user
 	 * when selecting which page type to create. Translated through {@link provideI18nEntities()}.
@@ -2752,6 +2761,21 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 
 		return $controller;
+	}
+
+	/**
+	 * Find the frontend controller name, which can be the current fully qualified class name
+	 * with Controller or _Controller added to it within the same namespace, or a customised
+	 * filename as per the $frontend_controller configuration option.
+	 *
+	 * @return string
+	 */
+	public function getFrontendControllerName()
+	{
+		if ($customController = $this->config()->frontend_controller) {
+			return (string) $customController;
+		}
+		return $this->getControllerName();
 	}
 
 	/**

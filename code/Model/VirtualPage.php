@@ -455,4 +455,16 @@ class VirtualPage extends Page {
 		return parent::getControllerName();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	public function getFrontendControllerName()
+	{
+		if ($copy = $this->CopyContentFrom()) {
+			return $copy->getFrontendControllerName();
+		}
+
+		return parent::getFrontendControllerName();
+	}
+
 }
