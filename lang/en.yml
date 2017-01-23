@@ -338,18 +338,30 @@ en:
   SilverStripe\CMS\Model\ErrorPage:
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     PLURALNAME: 'Error Pages'
+    PLURALS:
+      one: 'An Error Page'
+      other: '{count} Error Pages'
     SINGULARNAME: 'Error Page'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Redirects to an internal page or an external URL'
     PLURALNAME: 'Redirector Pages'
+    PLURALS:
+      one: 'A Redirector Page'
+      other: '{count} Redirector Pages'
     SINGULARNAME: 'Redirector Page'
   SilverStripe\CMS\Model\SiteTree:
     DESCRIPTION: 'Generic content page'
-    PLURALNAME: 'Site Trees'
-    SINGULARNAME: 'Site Tree'
+    PLURALNAME: Pages
+    PLURALS:
+      one: 'A Page'
+      other: '{count} Pages'
+    SINGULARNAME: Page
   SilverStripe\CMS\Model\VirtualPage:
     DESCRIPTION: 'Displays the content of another page'
     PLURALNAME: 'Virtual Pages'
+    PLURALS:
+      one: 'A Virtual Page'
+      other: '{count} Virtual Pages'
     SINGULARNAME: 'Virtual Page'
   SiteConfig:
     DEFAULTTHEME: '(Use default theme)'
