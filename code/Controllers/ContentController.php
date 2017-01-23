@@ -122,7 +122,7 @@ class ContentController extends Controller {
 		return SiteTree::get_by_link($link);
 	}
 
-	public function init() {
+	protected function init() {
 		parent::init();
 
 		// If we've accessed the homepage as /home/, then we should redirect to /.

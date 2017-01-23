@@ -64,7 +64,7 @@ in the other stage:<br />
 
 	protected $orphanedSearchClass = 'SilverStripe\\CMS\\Model\\SiteTree';
 
-	public function init() {
+	protected function init() {
 		parent::init();
 
 		if(!Permission::check('ADMIN')) {
