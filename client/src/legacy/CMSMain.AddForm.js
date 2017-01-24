@@ -140,7 +140,7 @@ $.entwine('ss', function($){
       if(this.find('#Form_AddForm_PageType div.radio:not(.disabled)').length) {
         this.find('button[name=action_doAdd]').removeAttr('disabled');
       } else {
-        this.find('button[name=action_doAdd]').addAttr('disabled');
+        this.find('button[name=action_doAdd]').attr('disabled', 'disabled');
       }
 
       this.find('.message-restricted')[allAllowed ? 'hide' : 'show']();
