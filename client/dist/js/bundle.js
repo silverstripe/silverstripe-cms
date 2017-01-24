@@ -22,7 +22,7 @@ this.updateSelectionFilter(u,c)},updateSelectionFilter:function r(e,n){var a=nul
 if(this.find("#Form_AddForm_PageType div.radio").each(function(){var n=t(this).find("input").val(),i=t.inArray(n,e)===-1
 t(this).setEnabled(i),i||t(this).setSelected(!1),a=null===a?i:a&&i}),n)var i=this.find("#Form_AddForm_PageType div.radio input[value="+n+"]").parents("li:first")
 else var i=this.find("#Form_AddForm_PageType div.radio:not(.disabled):first")
-i.setSelected(!0),i.siblings().setSelected(!1),this.find("#Form_AddForm_PageType div.radio:not(.disabled)").length?this.find("button[name=action_doAdd]").removeAttr("disabled"):this.find("button[name=action_doAdd]").addAttr("disabled"),
+i.setSelected(!0),i.siblings().setSelected(!1),this.find("#Form_AddForm_PageType div.radio:not(.disabled)").length?this.find("button[name=action_doAdd]").removeAttr("disabled"):this.find("button[name=action_doAdd]").attr("disabled","disabled"),
 this.find(".message-restricted")[a?"hide":"show"]()}}),t(".cms-add-form #Form_AddForm_PageType div.radio").entwine({onclick:function o(t){this.setSelected(!0)},setSelected:function d(t){var e=this.find("input")
 
 
