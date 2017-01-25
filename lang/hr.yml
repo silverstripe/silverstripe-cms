@@ -357,9 +357,7 @@ hr:
     BUTTONUNPUBLISHDESC: "Izbrišite ovu stranicu sa objavljene"
     Comments: Komentari
     Content: Sadržaj
-    DEFAULTABOUTCONTENT: "<p>Možete popuniti ovu stranicu s Vašim sadržajem, ili obrisati je i kreirati novu stranicu.<br /></p>"
     DEFAULTABOUTTITLE: "O nama"
-    DEFAULTCONTACTCONTENT: "<p>Možete popuniti ovu stranicu s Vašim sadržajem, ili obrisati je i kreirati novu stranicu.<br /></p>"
     DEFAULTCONTACTTITLE: Kontakt
     DEFAULTHOMECONTENT: "<p>Dobrodošli na SilverStripe! Ovo je zadana početna stranica. Možete je urediti otvarajući <a href=\"admin/\"> CMS</a>.</p><p>Možete pristupiti  <a href=\"http://docs.silverstripe.org\">razvojnoj dokumentaciji</a>, ili početi <a href=\"http://www.silverstripe.org/learn/lessons\">SilverStripe lekcije</a>.</p>"
     DEFAULTHOMETITLE: Početna

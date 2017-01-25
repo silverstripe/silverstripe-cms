@@ -117,6 +117,8 @@ fa_IR:
     RESTORE: "بازنشانی پیش‌نویس"
     RESTORED: "بازنشانی موفقیت‌آمیز '{title}'"
     RESTORE_DESC: "بازنشانی نسخه‌ی بایگانی‌شده در پیش‌نویس"
+    RESTORE_TO_ROOT: "بازنشانی پیش‌نویس در سطح بالا"
+    RESTORE_TO_ROOT_DESC: "بازنشانی نسخه‌ی بایگانی‌شده به پیش‌نویس به عنوان یک صفحه‌ی سطح بالا"
     ROLLBACK: "بازگردانی به این نسخه"
     ROLLEDBACKPUBv2: "بازگردانی به نسخه‌ی منتشرشده."
     ROLLEDBACKVERSIONv2: "بازگردانی به نسخه‌ی #%d."
@@ -164,6 +166,8 @@ fa_IR:
     ListView: "نمایش لیستی"
     MENUTITLE: صفحات
     TreeView: "نمایش درختی"
+  CMSPagesController_ContentToolbar_ss:
+    MULTISELECT: "عملکردهای دسته"
   CMSPagesController_Tools_ss:
     FILTER: پالایش
   CMSSIteTreeFilter_PublishedPages:
@@ -294,6 +298,7 @@ fa_IR:
   SITETREE:
     VIRTUALPAGEDRAFTWARNING: "لطفاً صفحه‌ی پیوند‌شده را ذخیره نمایید تا صفحه‌ی مجازی انتشار یابد"
     VIRTUALPAGEWARNING: "لطفاً یک صفحه‌ی پیوند‌شده را انتخاب نموده و ذخیره نمایید تا این صفحه بتواند منتشر شود"
+    VIRTUALPAGEWARNINGSETTINGS: "جهت انتشار، لطفاً یک صفحه‌ی لینک‌شده از فیلدهای محتوای اصلی انتخاب کنید"
   SearchForm:
     GO: برو
     SEARCH: جستجو
@@ -364,11 +369,13 @@ fa_IR:
     ADDEDTODRAFTHELP: "این صفحه تاکنون منتشر نشده است"
     ADDEDTODRAFTSHORT: پیش‌نویس
     ALLOWCOMMENTS: "پذیرفتن نظرات در این صفحه ؟"
+    APPEARSVIRTUALPAGES: "این محتوا همچنین در صفحات مجازی در بخش‌های {title}."
     ARCHIVEDPAGEHELP: "صفحه از پیش‌نویس و زنده حذف گردید"
     ARCHIVEDPAGESHORT: "بایگانی شده"
     BUTTONARCHIVEDESC: "عدم انتشار و ارسال به بایگانی"
     BUTTONCANCELDRAFT: "لغو تغییرات پیش‌نویس"
     BUTTONCANCELDRAFTDESC: "حذف پیش‌نویس و بازگردانی به نسخه‌ی منتشر‌شده‌ی کنونی"
+    BUTTONDELETEDESC: "حذف از پیش‌نویس/زنده و ارسال به بایگانی"
     BUTTONPUBLISHED: "منتشر شده"
     BUTTONSAVED: "ذخیره شده"
     BUTTONSAVEPUBLISH: "ذخیره و انتشار"
@@ -433,6 +440,7 @@ fa_IR:
     TABCONTENT: مطلب
     TABDEPENDENT: "صفحات وابسته"
     TOPLEVEL: "محتوای سایت (سطح بالا)"
+    TOPLEVELCREATORGROUPS: "خالقین رده بالا"
     URLSegment: "بخش آدرس URL"
     VIEWERGROUPS: "گروه‌های مشاهده‌کنندگان"
     VIEW_ALL_DESCRIPTION: "مشاهده هر صفحه‌ای"
