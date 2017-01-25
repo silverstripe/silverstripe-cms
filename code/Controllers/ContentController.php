@@ -491,7 +491,10 @@ HTML;
 			'Password' => Convert::raw2xml(Session::get('password')),
 			'UnsuccessfulFiles' => $unsuccessful
 		));
-		$content->setValue($data->renderWith('Install_deleteinstallfiles'));
+		$content->setValue($data->renderWith([
+			'type' => 'Includes',
+			'Install_deleteinstallfiles'
+		]));
 
 		return array(
 			"Title" => $title,
