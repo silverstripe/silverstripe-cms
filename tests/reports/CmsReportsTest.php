@@ -1,5 +1,6 @@
 <?php
 
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\CMS\Reports\RecentlyEditedReport;
@@ -32,8 +33,8 @@ class CmsReportsTest extends SapphireTest
         $afterThreshold = strtotime('-'.(self::$daysAgo-1).' days', strtotime('31-06-2009 00:00:00'));
         $beforeThreshold = strtotime('-'.(self::$daysAgo+1).' days', strtotime('31-06-2009 00:00:00'));
 
-        $after = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'after');
-        $before = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'before');
+        $after = $this->objFromFixture(SiteTree::class, 'after');
+        $before = $this->objFromFixture(SiteTree::class, 'before');
 
         DB::query("UPDATE \"SiteTree\" SET \"Created\"='2009-01-01 00:00:00', \"LastEdited\"='".date('Y-m-d H:i:s', $afterThreshold)."' WHERE \"ID\"='".$after->ID."'");
         DB::query("UPDATE \"SiteTree\" SET \"Created\"='2009-01-01 00:00:00', \"LastEdited\"='".date('Y-m-d H:i:s', $beforeThreshold)."' WHERE \"ID\"='".$before->ID."'");
@@ -65,10 +66,10 @@ class CmsReportsTest extends SapphireTest
 
     public function testRecentlyEdited()
     {
-        DBDatetime::set_mock_now('31-06-2009 00:00:00');
+        DBDatetime::set_mock_now('2009-06-30 00:00:00');
 
-        $after = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'after');
-        $before = $this->objFromFixture('SilverStripe\\CMS\\Model\\SiteTree', 'before');
+        $after = $this->objFromFixture(SiteTree::class, 'after');
+        $before = $this->objFromFixture(SiteTree::class, 'before');
 
         $r = new RecentlyEditedReport();
 

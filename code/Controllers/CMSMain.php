@@ -433,12 +433,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             'q[LastEditedFrom]',
             _t('CMSSearch.FILTERDATEFROM', 'From')
         );
-        $dateFrom->setConfig('showcalendar', true);
+        $dateFrom->setShowCalendar(true);
         $dateTo = new DateField(
             'q[LastEditedTo]',
             _t('CMSSearch.FILTERDATETO', 'To')
         );
-        $dateTo->setConfig('showcalendar', true);
+        $dateTo->setShowCalendar(true);
         $pageFilter = new DropdownField(
             'q[FilterClass]',
             _t('CMSMain.PAGES', 'Page status'),

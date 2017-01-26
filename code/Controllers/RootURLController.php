@@ -9,12 +9,13 @@ use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Config;
+use SilverStripe\Core\Resettable;
 use SilverStripe\Dev\Deprecation;
 use SilverStripe\ORM\DataModel;
 use SilverStripe\ORM\DB;
 use Translatable;
 
-class RootURLController extends Controller
+class RootURLController extends Controller implements Resettable
 {
 
     /**

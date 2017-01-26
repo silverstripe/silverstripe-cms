@@ -17,6 +17,7 @@ use SilverStripe\Control\RequestHandler;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Convert;
+use SilverStripe\Core\Resettable;
 use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\CompositeField;
@@ -92,7 +93,7 @@ use Subsite;
  * @mixin Versioned
  * @mixin SiteTreeLinkTracking
  */
-class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvider, CMSPreviewable
+class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvider, CMSPreviewable, Resettable
 {
 
     /**
@@ -2687,7 +2688,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             // If we're in translation mode, the link between the translated pagetype title and the actual classname
             // might not be obvious, so we add it in parantheses. Example: class "RedirectorPage" has the title
             // "Weiterleitung" in German, so it shows up as "Weiterleitung (RedirectorPage)"
-            if (i18n::get_lang_from_locale(i18n::get_locale()) != 'en') {
+            if (i18n::getData()->langFromLocale(i18n::get_locale()) != 'en') {
                 $result[$class] = $result[$class] .  " ({$class})";
             }
         }
