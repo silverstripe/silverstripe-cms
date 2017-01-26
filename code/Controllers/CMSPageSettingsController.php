@@ -20,7 +20,7 @@ class CMSPageSettingsController extends CMSMain {
 
 	public function Breadcrumbs($unlinked = false) {
 		$crumbs = parent::Breadcrumbs($unlinked);
-		$crumbs[0]->Title = _t('CMSPagesController.MENUTITLE');
+		$crumbs[0]->Title = _t('CMSPagesController.MENUTITLE', 'Pages');
 		return $crumbs;
 	}
 

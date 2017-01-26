@@ -355,7 +355,7 @@ HTML;
 				$dateObj = DBField::create_field('Datetime', $date);
 				// $dateObj->setVal($date);
 				return "<div id=\"SilverStripeNavigatorMessage\">" .
-					_t('ContentController.ARCHIVEDSITEFROM') .
+					_t('ContentController.ARCHIVEDSITEFROM', 'Archived site from') .
 					"<br>" . $dateObj->Nice() . "</div>";
 			}
 		}

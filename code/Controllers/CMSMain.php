@@ -85,7 +85,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	private static $menu_title = 'Edit Page';
 
-	private static $menu_icon_class = 'font-icon-sitemap'; 
+	private static $menu_icon_class = 'font-icon-sitemap';
 
 	private static $menu_priority = 10;
 
@@ -597,8 +597,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$result = new ArrayList();
 
 		foreach($classes as $class) {
-			$instance = singleton($class);
-
+            $instance = SiteTree::singleton($class);
 			if($instance instanceof HiddenClass) {
 				continue;
 			}
@@ -608,27 +607,16 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				continue;
 			}
 
-			$addAction = $instance->i18n_singular_name();
-
-			// Get description (convert 'Page' to 'SiteTree' for correct localization lookups)
-			$i18nClass = ($class == 'Page') ? 'SilverStripe\\CMS\\Model\\SiteTree' : $class;
-			$description = _t($i18nClass . '.DESCRIPTION');
-
-			if(!$description) {
-				$description = $instance->uninherited('description');
-			}
-
-			if($class == 'Page' && !$description) {
-				$description = SiteTree::singleton()->uninherited('description');
-			}
+			$singularName = $instance->i18n_singular_name();
+			$description = $instance->i18n_description();
 
 			$result->push(new ArrayData(array(
 				'ClassName' => $class,
-				'AddAction' => $addAction,
+				'AddAction' => $singularName,
 				'Description' => $description,
 				// TODO Sprite support
 				'IconURL' => $instance->stat('icon'),
-				'Title' => singleton($class)->i18n_singular_name(),
+				'Title' => $singularName,
 			)));
 		}
 
@@ -931,7 +919,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// Don't allow navigating into children nodes on filtered lists
 		$fields = array(
 			'getTreeTitle' => _t('SiteTree.PAGETITLE', 'Page Title'),
-			'singular_name' => _t('SiteTree.PAGETYPE'),
+			'singular_name' => _t('SiteTree.PAGETYPE', 'Page Type'),
 			'LastEdited' => _t('SiteTree.LASTUPDATED', 'Last Updated'),
 		);
 		/** @var GridFieldSortableHeader $sortableHeader */

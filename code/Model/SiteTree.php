@@ -10,8 +10,10 @@ use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\CMS\Controllers\ModelAsController;
 use SilverStripe\CMS\Controllers\RootURLController;
 use SilverStripe\CMS\Forms\SiteTreeURLSegmentField;
+use SilverStripe\Control\ContentNegotiator;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
+use SilverStripe\Control\RequestHandler;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Convert;
@@ -106,7 +108,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @config
 	 * @var array
 	 */
-	private static $allowed_children = array("SilverStripe\\CMS\\Model\\SiteTree");
+	private static $allowed_children = [
+		self::class
+	];
 
 	/**
 	 * The default child class for this page.
@@ -185,8 +189,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	);
 
 	private static $many_many = array(
-		"ViewerGroups" => "SilverStripe\\Security\\Group",
-		"EditorGroups" => "SilverStripe\\Security\\Group",
+		"ViewerGroups" => Group::class,
+		"EditorGroups" => Group::class,
 	);
 
 	private static $has_many = array(
@@ -241,18 +245,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 */
 	private static $icon = null;
 
-	/**
-	 * @config
-	 * @var string Description of the class functionality, typically shown to a user
-	 * when selecting which page type to create. Translated through {@link provideI18nEntities()}.
-	 */
-	private static $description = 'Generic content page';
-
-	private static $extensions = array(
-		'SilverStripe\\ORM\\Hierarchy\\Hierarchy',
-		'SilverStripe\\ORM\\Versioning\\Versioned',
-		"SilverStripe\\CMS\\Model\\SiteTreeLinkTracking"
-	);
+	private static $extensions = [
+		Hierarchy::class,
+		Versioned::class,
+		SiteTreeLinkTracking::class,
+	];
 
 	private static $searchable_fields = array(
 		'Title',
@@ -303,6 +300,46 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	protected $_cache_statusFlags = null;
 
 	/**
+	 * Plural form for SiteTree / Page classes. Not inherited by subclasses.
+	 *
+	 * @config
+	 * @var string
+	 */
+	private static $base_plural_name = 'Pages';
+
+	/**
+	 * Plural form for SiteTree / Page classes. Not inherited by subclasses.
+	 *
+	 * @config
+	 * @var string
+	 */
+	private static $base_singular_name = 'Page';
+
+	/**
+	 * Description of the class functionality, typically shown to a user
+	 * when selecting which page type to create. Translated through {@link provideI18nEntities()}.
+	 *
+	 * @see SiteTree::description()
+	 * @see SiteTree::i18n_description()
+	 *
+	 * @config
+	 * @var string
+	 */
+	private static $description = null;
+
+	/**
+	 * Description for Page and SiteTree classes, but not inherited by subclasses.
+	 * override SiteTree::$description in subclasses instead.
+	 *
+	 * @see SiteTree::description()
+	 * @see SiteTree::i18n_description()
+	 *
+	 * @config
+	 * @var string
+	 */
+	private static $base_description = 'Generic content page';
+
+	/**
 	 * Fetches the {@link SiteTree} object that maps to a link.
 	 *
 	 * If you have enabled {@link SiteTree::config()->nested_urls} on this site, then you can use a nested link such as
@@ -315,7 +352,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @param bool   $cache True (default) to use caching, false to force a fresh search from the database
 	 * @return SiteTree
 	 */
-	static public function get_by_link($link, $cache = true) {
+	public static function get_by_link($link, $cache = true) {
 		if(trim($link, '/')) {
 			$link = trim(Director::makeRelative($link), '/');
 		} else {
@@ -819,7 +856,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 */
 	public function getParent() {
 		if ($parentID = $this->getField("ParentID")) {
-			return DataObject::get_by_id("SilverStripe\\CMS\\Model\\SiteTree", $parentID);
+			return DataObject::get_by_id(self::class, $parentID);
 		}
 		return null;
 	}
@@ -1459,7 +1496,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			));
 		}
 
-		$charset = Config::inst()->get('SilverStripe\\Control\\ContentNegotiator', 'encoding');
+		$charset = ContentNegotiator::config()->get('encoding');
 		$tags[] = FormField::create_tag('meta', array(
 			'http-equiv' => 'Content-Type',
 			'content' => 'text/html; charset=' . $charset,
@@ -1573,6 +1610,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		// If there is no URLSegment set, generate one from Title
 		$defaultSegment = $this->generateURLSegment(_t(
 			'CMSMain.NEWPAGE',
+			'New {pagetype}',
 			array('pagetype' => $this->i18n_singular_name())
 		));
 		if((!$this->URLSegment || $this->URLSegment == $defaultSegment) && $this->Title) {
@@ -1707,7 +1745,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 
 		if(!self::config()->nested_urls || !$this->ParentID) {
-			if(class_exists($this->URLSegment) && is_subclass_of($this->URLSegment, 'SilverStripe\\Control\\RequestHandler')) return false;
+			if(class_exists($this->URLSegment) && is_subclass_of($this->URLSegment, RequestHandler::class)) {
+				return false;
+			}
 		}
 
 		// Filters by url, id, and parent
@@ -1959,6 +1999,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			->setURLPrefix($baseLink)
 			->setDefaultURL($this->generateURLSegment(_t(
 				'CMSMain.NEWPAGE',
+				'New {pagetype}',
 				array('pagetype' => $this->i18n_singular_name())
 			)));
 		$helpText = (self::config()->nested_urls && $this->Children()->count())
@@ -2844,18 +2885,55 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 	/**
-	 * Return the translated Singular name.
+	 * Default singular name for page / sitetree
 	 *
 	 * @return string
 	 */
-	public function i18n_singular_name() {
-		// Convert 'Page' to 'SiteTree' for correct localization lookups
-		/** @skipUpgrade */
-		// @todo When we namespace translations, change 'SiteTree' to FQN of the class
-		$class = (static::class == 'Page' || static::class === self::class)
-			? 'SiteTree'
-			: static::class;
-		return _t($class.'.SINGULARNAME', $this->singular_name());
+	public function singular_name() {
+		$base = in_array(static::class, [Page::class, self::class]);
+		if ($base) {
+			return $this->stat('base_singular_name');
+		}
+		return parent::singular_name();
+	}
+
+	/**
+	 * Default plural name for page / sitetree
+	 *
+	 * @return string
+	 */
+	public function plural_name() {
+		$base = in_array(static::class, [Page::class, self::class]);
+		if ($base) {
+			return $this->stat('base_plural_name');
+		}
+		return parent::plural_name();
+	}
+
+	/**
+	 * Get description for this page
+	 *
+	 * @return string|null
+	 */
+	public function description() {
+		$base = in_array(static::class, [Page::class, self::class]);
+		if ($base) {
+			return $this->stat('base_description');
+		}
+		return $this->stat('description');
+	}
+
+	/**
+	 * Get localised description for this page
+	 *
+	 * @return string|null
+	 */
+	public function i18n_description() {
+		$description = $this->description();
+		if ($description) {
+			return _t(static::class.'.DESCRIPTION', $description);
+		}
+		return null;
 	}
 
 	/**
@@ -2867,17 +2945,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	public function provideI18nEntities() {
 		$entities = parent::provideI18nEntities();
 
-		if(isset($entities['Page.SINGULARNAME'])) $entities['Page.SINGULARNAME'][3] = CMS_DIR;
-		if(isset($entities['Page.PLURALNAME'])) $entities['Page.PLURALNAME'][3] = CMS_DIR;
-
-		$entities[static::class . '.DESCRIPTION'] = array(
-			$this->stat('description'),
-			'Description of the page type (shown in the "add page" dialog)'
-		);
-
-		$entities['SiteTree.SINGULARNAME'][0] = 'Page';
-		$entities['SiteTree.PLURALNAME'][0] = 'Pages';
-
+		// Add optional description
+		$description = $this->description();
+		if ($description) {
+			$entities[static::class . '.DESCRIPTION'] = $description;
+		}
 		return $entities;
 	}
 
@@ -2897,8 +2969,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		self::$cache_permissions = array();
 	}
 
-	static public function on_db_reset() {
+	public static function on_db_reset() {
 		self::$cache_permissions = array();
 	}
-
 }

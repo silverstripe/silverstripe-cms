@@ -314,8 +314,8 @@ de:
     SINGULARNAME: Weiterleitungsseite
   SilverStripe\CMS\Model\SiteTree:
     DESCRIPTION: 'Allgemeine Inhaltsseite'
-    PLURALNAME: Seitenbäume
-    SINGULARNAME: Seitenbaum
+    PLURALNAME: Seiten
+    SINGULARNAME: Seite
   SilverStripe\CMS\Model\VirtualPage:
     DESCRIPTION: 'Zeigt den Inhalt einer anderen Seite an'
     PLURALNAME: 'Virtuelle Seiten'

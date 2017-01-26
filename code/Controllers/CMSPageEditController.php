@@ -2,7 +2,9 @@
 
 namespace SilverStripe\CMS\Controllers;
 
+use Page;
 use SilverStripe\Admin\AddToCampaignHandler;
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
@@ -86,14 +88,14 @@ class CMSPageEditController extends CMSMain {
 	public function getAddToCampaignForm($id)
 	{
 		// Get record-specific fields
-		$record = \Page::get()->byID($id);
+		$record = SiteTree::get()->byID($id);
 
 		if (!$record) {
 			$this->httpError(404, _t(
 				'AssetAdmin.ErrorNotFound',
 				'That {Type} couldn\'t be found',
 				'',
-				['Type' => _t('SiteTree.SINGULARNAME')]
+				['Type' => Page::singleton()->i18n_singular_name()]
 			));
 			return null;
 		}
@@ -102,7 +104,7 @@ class CMSPageEditController extends CMSMain {
 				'AssetAdmin.ErrorItemPermissionDenied',
 				'It seems you don\'t have the necessary permissions to add {ObjectTitle} to a campaign',
 				'',
-				['ObjectTitle' => _t('SiteTree.SINGULARNAME')]
+				['ObjectTitle' => Page::singleton()->i18n_singular_name()]
 			));
 			return null;
 		}
