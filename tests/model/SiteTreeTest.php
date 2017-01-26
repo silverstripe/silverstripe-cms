@@ -1351,6 +1351,21 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertSame('SiteTreeTest_LegacyControllerName_Controller', $class->getControllerName());
 	}
 
+	/**
+	 * Test that the frontend controller name can be customised with configuration, or fall back to the default
+	 */
+	public function testGetFrontendControllerName()
+	{
+		Config::nest();
+
+		$customController = 'Vendor\\Package\\Controllers\\PageController';
+		Config::inst()->update(Page::class, 'frontend_controller', $customController);
+		$this->assertSame($customController, (new Page)->getFrontendControllerName());
+
+		Config::unnest();
+		$this->assertSame(PageController::class, (new Page)->getFrontendControllerName());
+	}
+
 }
 
 /**#@+
