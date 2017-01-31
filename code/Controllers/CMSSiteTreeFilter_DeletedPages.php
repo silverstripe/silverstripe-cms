@@ -12,25 +12,25 @@ use SilverStripe\ORM\Versioning\Versioned;
 class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter
 {
 
-	/**
-	 * @var string
-	 */
-	protected $childrenMethod = "AllHistoricalChildren";
+    /**
+     * @var string
+     */
+    protected $childrenMethod = "AllHistoricalChildren";
 
-	/**
-	 * @var string
-	 */
-	protected $numChildrenMethod = 'numHistoricalChildren';
+    /**
+     * @var string
+     */
+    protected $numChildrenMethod = 'numHistoricalChildren';
 
-	static public function title()
-	{
-		return _t('CMSSiteTreeFilter_DeletedPages.Title', "All pages, including archived");
-	}
+    public static function title()
+    {
+        return _t('CMSSiteTreeFilter_DeletedPages.Title', "All pages, including archived");
+    }
 
-	public function getFilteredPages()
-	{
-		$pages = Versioned::get_including_deleted('SilverStripe\\CMS\\Model\\SiteTree');
-		$pages = $this->applyDefaultFilters($pages);
-		return $pages;
-	}
+    public function getFilteredPages()
+    {
+        $pages = Versioned::get_including_deleted('SilverStripe\\CMS\\Model\\SiteTree');
+        $pages = $this->applyDefaultFilters($pages);
+        return $pages;
+    }
 }

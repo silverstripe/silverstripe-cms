@@ -34,6 +34,9 @@
       "dev-master": "4.0.x-dev"
     }
   },
+  "scripts": {
+    "lint": "phpcs -s code/ tests/"
+  },
   "autoload": {
     "psr-4": {
       "SilverStripe\\CMS\\": "code/"
