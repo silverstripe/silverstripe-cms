@@ -109,8 +109,8 @@ sk:
     PUBLISHED: "Uverejnené \"{title}\" úspešne."
     PUBPAGES: "Hotovo: Publikované {count} stránky"
     PageAdded: "Stránka vytvorená úspešne"
-    REMOVED: "Smazané '{title}'{description} z webu"
-    REMOVEDPAGE: "Smazané '{title}' z verejného webu"
+    REMOVED: "Zmazané '{title}'{description} z webu"
+    REMOVEDPAGE: "Zmazané '{title}' z verejného webu"
     REMOVEDPAGEFROMDRAFT: "Odstránené '%s' z konceptu webu"
     RESTORE: "Obnoviť koncept"
     RESTORED: "Obnovené '{title}' úspešne"
@@ -257,7 +257,7 @@ sk:
     UNUSEDTHUMBNAILSTITLE: "Nepoužité miniatúry"
     UploadFilesButton: Nahrať
   LeftAndMain:
-    DELETED: Smazané.
+    DELETED: Zmazané.
     PreviewButton: Zobrazenie
     SAVEDUP: Uložené.
     SearchResults: "Výsledky vyhľadávania"
@@ -303,7 +303,7 @@ sk:
   SideReport:
     BROKENFILES: "Stránky z poškodenými súbormi"
     BROKENLINKS: "Stránky z poškodenými odkazmi"
-    BROKENREDIRECTORPAGES: "Presmerovacie stránky ukazujú na smazané stránky"
+    BROKENREDIRECTORPAGES: "Presmerovacie stránky ukazujú na zmazané stránky"
     BROKENVIRTUALPAGES: "Virtuálne stránky odkazujú na vymazané stránky"
     BrokenLinksGroupTitle: "Výkazy porušených odkazov"
     ContentGroupTitle: "Výkazy obsahu"
@@ -386,7 +386,7 @@ sk:
     DEFAULTHOMECONTENT: "<p>Vitajte v SilverStripe! Toto je základná domáca stránka. Môžte ju upraviť otvorením <a href=\"admin/\">CMS</a>.</p><p>Môžte tiež vstúpiť k <a href=\"http://docs.silverstripe.org\">dokumentácii vývojára</a>, alebo sa priučit na <a href=\"http://www.silverstripe.org/learn/lessons\">SilverStripe lekciách</a>.</p>"
     DEFAULTHOMETITLE: Domov
     DELETEDPAGEHELP: "Stránka už nie je viacej zverejnená"
-    DELETEDPAGESHORT: Smazané
+    DELETEDPAGESHORT: Zmazané
     DEPENDENT_NOTE: "Nasledujúce stránky sú závislé na tejto stránke. To zahŕňa virtuálne stránky, presmerovacie stránky a stránky s odkazmi obsahu."
     DESCRIPTION: "Obyčajná jednoduchá stránka s vlastným obsahom."
     DependtPageColumnLinkType: "Typ odkazu"
