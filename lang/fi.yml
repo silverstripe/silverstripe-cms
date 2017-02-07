@@ -109,6 +109,7 @@ fi:
     PAGETYPEOPT: "Sivun tyyppi"
     PUBALLCONFIRM: "Julkaise jokainen sivu tällä sivustolla kopioiden luonnosten sisältö julkiselle sivustolle"
     PUBALLFUN: "Julkaise kaikki -toiminto"
+    PUBALLFUN2: "Tämän nappulan painaminen on verrattavissa jokaisella sivulla \"Julkaise\" toiminnon käyttämiseen. Tarkoituksen mukaisinta on käyttää tätä toimintoa määrällisesti isojen sisältömuutosten jälkeen."
     PUBLISHED: "Julkaistiin '{title}' onnistuneesti."
     PUBPAGES: "Valmis: julkaistiin {count} sivu(a)"
     PageAdded: "Sivun luonti onnistui"
@@ -388,9 +389,9 @@ fi:
     BUTTONUNPUBLISHDESC: "Poista tämä sivu julkaistulta sivustolta"
     Comments: Kommentit
     Content: Sisältö
-    DEFAULTABOUTCONTENT: "<p>Voit täyttää tämän sivun omalla sisällölläsi tai poistaa sen ja luoda omia sivujasi.<br /></p>"
+    DEFAULTABOUTCONTENT: "<p>Voit täyttää tämän sivun omalla sisällölläsi tai poistaa sen ja luoda uusia sivuja.<br /></p>"
     DEFAULTABOUTTITLE: "Tietoa meistä"
-    DEFAULTCONTACTCONTENT: "<p>Voit täyttää tämän sivun omalla sisällölläsi tai poistaa sen ja luoda omia sivujasi.<br /></p>"
+    DEFAULTCONTACTCONTENT: "<p>Voit täyttää tämän sivun omalla sisällölläsi tai poistaa sen ja luoda omia sivuja.<br /></p>"
     DEFAULTCONTACTTITLE: "Ota yhteyttä meihin"
     DEFAULTHOMECONTENT: "<p>Tervetuloa käyttämään SilverStripe-järjestelmää! Tämä on oletus etusivu. Voit muokata tätä sivua avaamalla <a href=\"admin/\">ylläpidon</a>.</p><p>Voit tutustua <a href=\"http://docs.silverstripe.org\">kehittäjädokumentaatioon</a>, tai tutustua<a href=\"http://www.silverstripe.org/learn/lessons\">SilverStripe-koulutusmateriaaliin</a>.</p>"
     DEFAULTHOMETITLE: Koti
