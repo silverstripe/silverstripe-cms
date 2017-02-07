@@ -13,6 +13,8 @@ sk:
     CREATED: Dátum
     CurrentFolderOnly: "Obmedziť na aktuálny priečinok?"
     DetailsView: Detaily
+    ErrorItemPermissionDenied: "Zdá sa, že nemáte potrebné oprávnenia na pridanie {ObjectTitle} ku kampani."
+    ErrorNotFound: "{Type} nemožno nájsť"
     FILES: Súbory
     FILESYSTEMSYNC: "Synchronizovať súbory"
     FILESYSTEMSYNCTITLE: "Aktualizuje záznamy súborov databázy CMS na súborovom systéme. Užitočné, keď sú nové súbory nahrané mimo CMS, napr cez FTP."
@@ -62,6 +64,7 @@ sk:
   CMSAddPageController:
     Title: "Pridať stránku"
   CMSBatchAction_Archive:
+    RESULT: "Vymazaných %d stránok z konceptu a publikovania a presunuté do archívu."
     TITLE: "Nezverejniť a archivovať"
   CMSBatchActions:
     ARCHIVE: Archivovať
@@ -106,6 +109,7 @@ sk:
     PAGETYPEOPT: "Typ stránky"
     PUBALLCONFIRM: "Prosím, zverejnite všetky stránky webu, zkopírovaním obsahu na verejné"
     PUBALLFUN: "Funkcia \"Publikovať všetko\""
+    PUBALLFUN2: "Stlačením tohto tlačidla vykonáte to isté ako keby ste navštívili každú stránku a stlačili \"Zverejniť\". Je určené na použite po rozsiahlych zmenách obsahu, napríklad keď bol web prvýkrát vytvorený."
     PUBLISHED: "Uverejnené \"{title}\" úspešne."
     PUBPAGES: "Hotovo: Publikované {count} stránky"
     PageAdded: "Stránka vytvorená úspešne"
@@ -179,15 +183,17 @@ sk:
   CMSSettingsController:
     MENUTITLE: Nastavenia
   CMSSiteTreeFilter_ChangedPages:
-    Title: "Upravené stránky"
+    Title: "Zmenené stránky"
   CMSSiteTreeFilter_DeletedPages:
     Title: "Všetky stránky, vrátane archivovaných"
   CMSSiteTreeFilter_Search:
     Title: "Všetky stránky"
   CMSSiteTreeFilter_StatusDeletedPages:
     Title: "Archivované stránky"
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: "Nezverejnené stránky"
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
-    Title: "Živé, ale odstránené z konceptu"
+    Title: "Publikované, ale odstránené z konceptu"
   ContentControl:
     NOTEWONTBESHOWN: "Poznámka: Táto správa sa nebude zobrazovať vašim návštevníkom"
   ContentController:
@@ -284,7 +290,7 @@ sk:
     HEADER: "Odstrániť všetky osamotené stránky"
     NONEFOUND: "Žiadni nájdení sirotkovia"
     NONEREMOVED: "Nič odstránené"
-    OPERATION_REMOVE: "Odstrániť označené zo všetkých konceptov (Upozornenie: Búdú zničené všetky označené stránky z koncept a živé)"
+    OPERATION_REMOVE: "Odstrániť označené zo všetkých stupňov (Upozornenie: Budú zničené všetky označené stránky z konceptu a publikovania)"
     SELECTALL: "označiť všetko"
     UNSELECTALL: "odznačiť všetko"
   ReportAdmin:
@@ -310,11 +316,12 @@ sk:
     EMPTYPAGES: "Prázdne stránky"
     LAST2WEEKS: "Stránky upravené počas posledných 2 týždňov"
     OtherGroupTitle: Ostatné
-    ParameterLiveCheckbox: "Skontolovať živú stránku"
+    ParameterLiveCheckbox: "Skontolovať publikovanú stránku"
     REPEMPTY: "{title} výkaz je prázdny."
   SilverStripeNavigator:
     ARCHIVED: Archivované
   SilverStripeNavigatorLink:
+    ShareInstructions: "Na zdieľaniu tejto stránky skopírujte a vložte odkaz nižšie."
     ShareLink: "Zdieľať odkaz"
   SilverStripeNavigatorLinkl:
     CloseLink: Zavrieť
@@ -374,6 +381,7 @@ sk:
     BUTTONARCHIVEDESC: "Nezverejniť a odoslať do archívu"
     BUTTONCANCELDRAFT: "Zrušiť zmeny v koncepte"
     BUTTONCANCELDRAFTDESC: "Vymazať návrh a vrátiť sa k aktuálne zverejnenej stránke"
+    BUTTONDELETEDESC: "Odstrániť z konceptu/publikovania a presunúť do archívu"
     BUTTONPUBLISHED: Publikované
     BUTTONSAVED: Uložené
     BUTTONSAVEPUBLISH: "Uložiť a zverejniť"
@@ -381,7 +389,9 @@ sk:
     BUTTONUNPUBLISHDESC: "Odstrániť túto stránku z publikovaných na webe"
     Comments: Komentáre
     Content: Obsah
+    DEFAULTABOUTCONTENT: "<p>Túto stránku môžete vyplniť vlastným obsahom, alebo ju zmazať a vytvoriť vaše vlastné stránky.</p>"
     DEFAULTABOUTTITLE: "O nás"
+    DEFAULTCONTACTCONTENT: "<p>Túto stránku môžete vyplniť vlastným obsahom, alebo ju zmazať a vytvoriť vaše vlastné stránky.</p>"
     DEFAULTCONTACTTITLE: Kontakt
     DEFAULTHOMECONTENT: "<p>Vitajte v SilverStripe! Toto je základná domáca stránka. Môžte ju upraviť otvorením <a href=\"admin/\">CMS</a>.</p><p>Môžte tiež vstúpiť k <a href=\"http://docs.silverstripe.org\">dokumentácii vývojára</a>, alebo sa priučit na <a href=\"http://www.silverstripe.org/learn/lessons\">SilverStripe lekciách</a>.</p>"
     DEFAULTHOMETITLE: Domov
@@ -419,6 +429,8 @@ sk:
     MoreOptions: "Viacej volieb"
     NOTPUBLISHED: Nepublikované
     OBSOLETECLASS: "Táto stránka je zastaralého typu {type}. Uloženie spôsobí zrušenie jeho typu a vy môžte stratiť dáta"
+    ONLIVEONLYSHORT: "Len publikované"
+    ONLIVEONLYSHORTHELP: "Stránka je zverejnená, ale bola odstránená z konceptu"
     PAGELOCATION: "Pozícia stránky"
     PAGETITLE: "Názov stránky"
     PAGETYPE: "Typ stránky"
