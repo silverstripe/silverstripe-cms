@@ -2335,7 +2335,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $labels['ParentID'] = _t('SiteTree.PARENTID', "Parent page");
             $labels['ShowInMenus'] =_t('SiteTree.SHOWINMENUS', "Show in menus?");
             $labels['ShowInSearch'] = _t('SiteTree.SHOWINSEARCH', "Show in search?");
-            $labels['ProvideComments'] = _t('SiteTree.ALLOWCOMMENTS', "Allow comments on this page?");
             $labels['ViewerGroups'] = _t('SiteTree.VIEWERGROUPS', "Viewer Groups");
             $labels['EditorGroups'] = _t('SiteTree.EDITORGROUPS', "Editor Groups");
             $labels['URLSegment'] = _t('SiteTree.URLSegment', 'URL Segment', 'URL for this page');
