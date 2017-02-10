@@ -120,6 +120,13 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     ];
 
     /**
+     * Used as a cache for `self::allowedChildren()`
+     * Drastically reduces admin page load when there are a lot of page types
+     * @var array
+     */
+    protected static $_allowedChildren = array();
+
+    /**
      * The default child class for this page.
      * Note: Value might be cached, see {@link $allowed_chilren}.
      *
@@ -2459,6 +2466,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function allowedChildren()
     {
+        if (isset(static::$_allowedChildren[$this->ClassName])) {
+            return static::$_allowedChildren[$this->ClassName];
+        }
         // Get config based on old FIRST_SET rules
         $candidates = null;
         $class = get_class($this);
@@ -2489,7 +2499,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 }
             }
         }
-        return $allowedChildren;
+
+        return static::$_allowedChildren[$this->ClassName] = $allowedChildren;
     }
 
     /**
