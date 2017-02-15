@@ -213,7 +213,7 @@ class ContentController extends Controller
             if (class_exists('Translatable')) {
                 $locale = $request->getVar('locale');
                 if ($locale
-                    && i18n::validate_locale($locale)
+                    && i18n::getData()->validate($locale)
                     && $this->dataRecord
                     && $this->dataRecord->Locale != $locale
                 ) {
