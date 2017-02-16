@@ -2697,7 +2697,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					$allowedChildren[] = substr($candidate,1);
 				} elseif ($subclasses = ClassInfo::subclassesFor($candidate)) {
 					foreach($subclasses as $subclass) {
-						if ($subclass == 'SiteTree_root' || singleton($subclass) instanceof HiddenClass) {
+						if ($subclass == 'SiteTree_root' || ClassInfo::classImplements($subclass, 'HiddenPage')) {
 							continue;
 						}
 						$allowedChildren[] = $subclass;
