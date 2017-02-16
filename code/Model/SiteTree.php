@@ -1573,7 +1573,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             ));
         }
 
-        $charset = ContentNegotiator::config()->get('encoding');
+        $charset = ContentNegotiator::config()->uninherited('encoding');
         $tags[] = FormField::create_tag('meta', array(
             'http-equiv' => 'Content-Type',
             'content' => 'text/html; charset=' . $charset,
