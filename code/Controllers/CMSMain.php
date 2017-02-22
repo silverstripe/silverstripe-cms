@@ -21,7 +21,7 @@ use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\Injector\Injector;
-use SilverStripe\Core\Cache;
+use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldGroup;
@@ -59,7 +59,6 @@ use SilverStripe\Security\SecurityToken;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
 use Translatable;
-use Zend_Cache;
 use InvalidArgumentException;
 
 /**
@@ -556,12 +555,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         }
 
         // Generate basic cache key. Too complex to encompass all variations
-        $cache = Cache::factory('CMSMain_SiteTreeHints');
+        $cache = Injector::inst()->get(CacheInterface::class . '.CMSMain_SiteTreeHints');
         $cacheKey = md5(implode('_', array(Member::currentUserID(), implode(',', $cacheCanCreate), implode(',', $classes))));
         if ($this->getRequest()->getVar('flush')) {
-            $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
+            $cache->clear();
         }
-        $json = $cache->load($cacheKey);
+        $json = $cache->get($cacheKey);
         if (!$json) {
             $def['Root'] = array();
             $def['Root']['disallowedChildren'] = array();
@@ -608,7 +607,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             $this->extend('updateSiteTreeHints', $def);
 
             $json = Convert::raw2json($def);
-            $cache->save($json, $cacheKey);
+            $cache->set($cacheKey, $json);
         }
         return $json;
     }

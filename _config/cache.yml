@@ -1,0 +1,9 @@
+---
+After:
+  - '#corecache'
+---
+SilverStripe\Core\Injector\Injector:
+  Psr\SimpleCache\CacheInterface.CMSMain_SiteTreeHints:
+    factory: SilverStripe\Core\Cache\CacheFactory
+    constructor:
+      namespace: "CMSMain_SiteTreeHints"
