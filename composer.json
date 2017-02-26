@@ -43,5 +43,5 @@
     },
     "classmap": ["tests/behat/"]
   },
-  "minimum-stability": "stable"
+  "minimum-stability": "dev"
 }
