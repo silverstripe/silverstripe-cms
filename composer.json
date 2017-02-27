@@ -20,14 +20,17 @@
     "composer/installers": "*",
     "silverstripe/framework": "^4.0@dev",
     "silverstripe/reports": "^4.0@dev",
-    "silverstripe/siteconfig": "^4.0@dev"
+    "silverstripe/siteconfig": "^4.0@dev",
+    "silverstripe/asset-admin": "^1.0@dev"
   },
   "require-dev": {
     "phpunit/PHPUnit": "~4.8",
-    "silverstripe/behat-extension": "^2.1.0",
+    "silverstripe/behat-extension": "^2.3.1",
     "silverstripe/serve": "dev-master",
-    "silverstripe/testsession": "^2.0.0-alpha3",
-    "se/selenium-server-standalone": "2.41.0"
+    "silverstripe/testsession": "^2.0.0-alpha4",
+    "se/selenium-server-standalone": "2.41.0",
+    "symfony/cache": "^3.3@dev",
+    "silverstripe/config": "^1@dev"
   },
   "extra": {
     "branch-alias": {
@@ -42,6 +45,5 @@
       "SilverStripe\\CMS\\": "code/"
     },
     "classmap": ["tests/behat/"]
-  },
-  "minimum-stability": "dev"
+  }
 }
