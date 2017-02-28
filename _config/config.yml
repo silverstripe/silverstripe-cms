@@ -10,3 +10,4 @@ SilverStripe\Forms\Form:
 SilverStripe\Assets\File:
   extensions:
     - SilverStripe\CMS\Controllers\ErrorPageFileExtension
+    - SilverStripe\CMS\Model\SiteTreeFileExtension
