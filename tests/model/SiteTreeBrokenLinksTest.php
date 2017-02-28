@@ -1,5 +1,6 @@
 <?php
 
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
@@ -98,6 +99,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         $file->setFromString('test', 'test-file.txt');
         $file->write();
 
+        /** @var Page $obj */
         $obj = $this->objFromFixture('Page', 'content');
         $obj->Content = sprintf(
             '<p><a href="[file_link,id=%d]">Working Link</a></p>',
@@ -106,24 +108,23 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         $obj->write();
         $this->assertTrue($obj->publishRecursive());
         // Confirm that it isn't marked as broken to begin with
-        $obj->flushCache();
-        $obj = DataObject::get_by_id("SilverStripe\\CMS\\Model\\SiteTree", $obj->ID);
+
+        $obj = SiteTree::get()->byID($obj->ID);
         $this->assertEquals(0, $obj->HasBrokenFile);
 
-        $liveObj = Versioned::get_one_by_stage("SilverStripe\\CMS\\Model\\SiteTree", "Live", "\"SiteTree\".\"ID\" = $obj->ID");
+        $liveObj = Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, "\"SiteTree\".\"ID\" = $obj->ID");
         $this->assertEquals(0, $liveObj->HasBrokenFile);
 
         // Delete the file
         $file->delete();
 
         // Confirm that it is marked as broken in stage
-        $obj->flushCache();
-        $obj = DataObject::get_by_id("SilverStripe\\CMS\\Model\\SiteTree", $obj->ID);
+        $obj = SiteTree::get()->byID($obj->ID);
         $this->assertEquals(1, $obj->HasBrokenFile);
 
         // Publishing this page marks it as broken on live too
         $obj->publishRecursive();
-        $liveObj = Versioned::get_one_by_stage("SilverStripe\\CMS\\Model\\SiteTree", "Live", "\"SiteTree\".\"ID\" = $obj->ID");
+        $liveObj = Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, "\"SiteTree\".\"ID\" = $obj->ID");
         $this->assertEquals(1, $liveObj->HasBrokenFile);
     }
 

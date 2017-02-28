@@ -102,7 +102,10 @@ class VirtualPage extends Page
      */
     public function getNonVirtualisedFields()
     {
-        return array_merge($this->config()->non_virtual_fields, $this->config()->initially_copied_fields);
+        return array_merge(
+            VirtualPage::config()->non_virtual_fields,
+            VirtualPage::config()->initially_copied_fields
+        );
     }
 
     public function setCopyContentFromID($val)
@@ -417,7 +420,7 @@ class VirtualPage extends Page
      * Pass unrecognized method calls on to the original data object
      *
      * @param string $method
-     * @param string $args
+     * @param array $args
      * @return mixed
      */
     public function __call($method, $args)
