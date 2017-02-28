@@ -7,10 +7,12 @@ use SilverStripe\Control\Controller;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\HiddenField;
+use SilverStripe\Forms\HTMLReadonlyField;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
@@ -450,22 +452,17 @@ class CMSPageHistoryController extends CMSMain
         $form->setActions(new FieldList());
         $form->addExtraClass('compare');
 
-        // Comparison views shouldn't be editable.
-        // Its important to convert fields *before* loading data,
-        // as the comparison output is HTML and not valid values for the various field types
-        $readonlyFields = $form->Fields()->makeReadonly();
-        $form->setFields($readonlyFields);
-
         $form->loadDataFrom($record);
         $form->loadDataFrom(array(
             "ID" => $id,
             "Version" => $fromVersion,
         ));
-
-        foreach ($form->Fields()->dataFields() as $field) {
-            $field->dontEscape = true;
-        }
-
+    
+        // Comparison views shouldn't be editable.
+        // As the comparison output is HTML and not valid values for the various field types
+        $readonlyFields = $this->transformReadonly($form->Fields());
+        $form->setFields($readonlyFields);
+        
         return $form;
     }
 
@@ -474,5 +471,20 @@ class CMSPageHistoryController extends CMSMain
         $crumbs = parent::Breadcrumbs($unlinked);
         $crumbs[0]->Title = _t('CMSPagesController.MENUTITLE', 'Pages');
         return $crumbs;
+    }
+    
+    public function transformReadonly(FieldList $fields)
+    {
+        foreach($fields as &$field) {
+            if ($field instanceof CompositeField) {
+                $subfields = $this->transformReadonly($field->FieldList());
+                $field->setChildren($subfields);
+            }
+            if ($field->hasData() && !$field instanceof HiddenField) {
+                $newField = $field->castedCopy(HTMLReadonlyField::class);
+                $fields->replaceField($field->getName(), $newField);
+            }
+        }
+        return $fields;
     }
 }
