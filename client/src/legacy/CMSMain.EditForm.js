@@ -202,37 +202,39 @@ $.entwine('ss', function($){
 	 * Toggle display of group dropdown in "access" tab,
 	 * based on selection of radiobuttons.
 	 */
-	$('.cms-edit-form #CanViewType, .cms-edit-form #CanEditType, .cms-edit-form #CanCreateTopLevelType').entwine({
-		// Constructor: onmatch
-		onmatch: function() {
-			// TODO Decouple
-			var dropdown;
-			if(this.attr('id') == 'CanViewType') dropdown = $('#Form_EditForm_ViewerGroups_Holder');
-			else if(this.attr('id') == 'CanEditType') dropdown = $('#Form_EditForm_EditorGroups_Holder');
-			else if(this.attr('id') == 'CanCreateTopLevelType') dropdown = $('#Form_EditForm_CreateTopLevelGroups_Holder');
+  $('.cms-edit-form [name="CanViewType"], ' +
+    '.cms-edit-form [name="CanEditType"], ' +
+    '.cms-edit-form #CanCreateTopLevelType').entwine({
+    onmatch: function () {
+      if (this.val() === 'OnlyTheseUsers') {
+        if (this.is(':checked')) {
+          this.showList(true);
+        } else {
+          this.hideList(true);
+        }
+      }
+    },
+    onchange: function (e) {
+      if (e.target.value === 'OnlyTheseUsers') {
+        this.showList();
+      } else {
+        this.hideList();
+      }
+    },
+    showList: function (instant) {
+      let holder = this.closest('.field');
 
-			this.find('.optionset :input').bind('change', function(e) {
-				var wrapper = $(this).closest('.middleColumn').parent('div');
-				if(e.target.value == 'OnlyTheseUsers') {
-					wrapper.addClass('remove-splitter');
-					dropdown['show']();
-				}
-				else {
-					wrapper.removeClass('remove-splitter');
-					dropdown['hide']();
-				}
-			});
+      holder.addClass('field--merge-below');
+      holder.next().filter('.listbox')[instant ? 'show' : 'slideDown']();
+    },
+    hideList: function (instant) {
+      let holder = this.closest('.field');
 
-			// initial state
-			var currentVal = this.find('input[name=' + this.attr('id') + ']:checked').val();
-			dropdown[currentVal == 'OnlyTheseUsers' ? 'show' : 'hide']();
-
-			this._super();
-		},
-		onunmatch: function() {
-			this._super();
-		}
-	});
+      holder.next().filter('.listbox')[instant ? 'hide' : 'slideUp'](() => {
+        holder.removeClass('field--merge-below');
+      });
+    }
+  });
 
 	/**
 	 * Class: .cms-edit-form .btn-toolbar #Form_EditForm_action_print

@@ -9,10 +9,10 @@
     "node": "4.x"
   },
   "scripts": {
-    "build": "webpack",
-    "watch": "webpack -w",
+    "build": "webpack --progress",
+    "watch": "webpack -w --progress",
     "lock": "npm-shrinkwrap --dev",
-    "lint": "eslint client/src & sass-lint -v"
+    "lint": "eslint client/src && sass-lint -v"
   },
   "repository": {
     "type": "git",
