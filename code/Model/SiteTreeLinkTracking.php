@@ -2,6 +2,7 @@
 
 namespace SilverStripe\CMS\Model;
 
+use SilverStripe\Assets\File;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DataObject;
@@ -75,8 +76,8 @@ class SiteTreeLinkTracking extends DataExtension
     );
 
     private static $many_many = array(
-        "LinkTracking" => "SilverStripe\\CMS\\Model\\SiteTree",
-        "ImageTracking" => "SilverStripe\\Assets\\File"  // {@see SiteTreeFileExtension}
+        "LinkTracking" => SiteTree::class,
+        "ImageTracking" => File::class,  // {@see SiteTreeFileExtension}
     );
 
     private static $belongs_many_many = array(
