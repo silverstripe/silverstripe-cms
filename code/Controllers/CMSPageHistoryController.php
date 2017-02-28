@@ -457,12 +457,12 @@ class CMSPageHistoryController extends CMSMain
             "ID" => $id,
             "Version" => $fromVersion,
         ));
-    
+
         // Comparison views shouldn't be editable.
         // As the comparison output is HTML and not valid values for the various field types
         $readonlyFields = $this->transformReadonly($form->Fields());
         $form->setFields($readonlyFields);
-        
+
         return $form;
     }
 
@@ -472,18 +472,21 @@ class CMSPageHistoryController extends CMSMain
         $crumbs[0]->Title = _t('CMSPagesController.MENUTITLE', 'Pages');
         return $crumbs;
     }
-    
+
+    /**
+     * Replace all data fields with HTML readonly fields to display diff
+     *
+     * @param FieldList $fields
+     * @return FieldList
+     */
     public function transformReadonly(FieldList $fields)
     {
-        foreach($fields as &$field) {
-            if ($field instanceof CompositeField) {
-                $subfields = $this->transformReadonly($field->FieldList());
-                $field->setChildren($subfields);
+        foreach ($fields->dataFields() as $field) {
+            if ($field instanceof HiddenField) {
+                continue;
             }
-            if ($field->hasData() && !$field instanceof HiddenField) {
-                $newField = $field->castedCopy(HTMLReadonlyField::class);
-                $fields->replaceField($field->getName(), $newField);
-            }
+            $newField = $field->castedCopy(HTMLReadonlyField::class);
+            $fields->replaceField($field->getName(), $newField);
         }
         return $fields;
     }
