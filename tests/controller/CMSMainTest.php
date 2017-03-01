@@ -1,5 +1,6 @@
 <?php
 
+use SilverStripe\Core\Injector\Injector;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ValidationException;
@@ -9,7 +10,7 @@ use SilverStripe\CMS\Controllers\CMSMain;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Admin\CMSBatchActionHandler;
 use SilverStripe\SiteConfig\SiteConfig;
-use SilverStripe\Core\Cache;
+use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Dev\TestOnly;
@@ -45,11 +46,11 @@ class CMSMainTest extends FunctionalTest
 
     public function testSiteTreeHints()
     {
-        $cache = Cache::factory('CMSMain_SiteTreeHints');
+        $cache = Injector::inst()->get(CacheInterface::class . '.CMSMain_SiteTreeHints');
         // Login as user with root creation privileges
         $user = $this->objFromFixture('SilverStripe\\Security\\Member', 'rootedituser');
         $user->logIn();
-        $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
+        $cache->clear();
 
         $rawHints = singleton('SilverStripe\\CMS\\Controllers\\CMSMain')->SiteTreeHints();
         $this->assertNotNull($rawHints);

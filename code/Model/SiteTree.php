@@ -995,7 +995,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             return true;
         }
 
-        return $this->canEdit($member) && $this->stat('allowed_children') != 'none';
+        return $this->canEdit($member) && $this->stat('allowed_children') !== 'none';
     }
 
     /**
@@ -1160,7 +1160,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function canCreate($member = null, $context = array())
     {
-        if (!$member || !(is_a($member, 'SilverStripe\\Security\\Member')) || is_numeric($member)) {
+        if (!$member || !(is_a($member, Member::class)) || is_numeric($member)) {
             $member = Member::currentUserID();
         }
 
@@ -1573,7 +1573,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             ));
         }
 
-        $charset = ContentNegotiator::config()->get('encoding');
+        $charset = ContentNegotiator::config()->uninherited('encoding');
         $tags[] = FormField::create_tag('meta', array(
             'http-equiv' => 'Content-Type',
             'content' => 'text/html; charset=' . $charset,
@@ -2713,25 +2713,36 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function allowedChildren()
     {
-        $allowedChildren = array();
-        $candidates = $this->stat('allowed_children');
-        if ($candidates && $candidates != "none" && $candidates != "SiteTree_root") {
-            foreach ($candidates as $candidate) {
-                // If a classname is prefixed by "*", such as "*Page", then only that class is allowed - no subclasses.
-                // Otherwise, the class and all its subclasses are allowed.
-                if (substr($candidate, 0, 1) == '*') {
-                    $allowedChildren[] = substr($candidate, 1);
-                } elseif ($subclasses = ClassInfo::subclassesFor($candidate)) {
-                    foreach ($subclasses as $subclass) {
-                        if ($subclass == 'SiteTree_root' || singleton($subclass) instanceof HiddenClass) {
-                            continue;
-                        }
-                        $allowedChildren[] = $subclass;
+        // Get config based on old FIRST_SET rules
+        $candidates = null;
+        $class = get_class($this);
+        while ($class) {
+            if (Config::inst()->exists($class, 'allowed_children', Config::UNINHERITED)) {
+                $candidates = Config::inst()->get($class, 'allowed_children', Config::UNINHERITED);
+                break;
+            }
+            $class = get_parent_class($class);
+        }
+        if (!$candidates || $candidates === 'none' || $candidates === 'SiteTree_root') {
+            return [];
+        }
+
+        // Parse candidate list
+        $allowedChildren = [];
+        foreach ($candidates as $candidate) {
+            // If a classname is prefixed by "*", such as "*Page", then only that class is allowed - no subclasses.
+            // Otherwise, the class and all its subclasses are allowed.
+            if (substr($candidate, 0, 1) == '*') {
+                $allowedChildren[] = substr($candidate, 1);
+            } elseif ($subclasses = ClassInfo::subclassesFor($candidate)) {
+                foreach ($subclasses as $subclass) {
+                    if ($subclass == 'SiteTree_root' || singleton($subclass) instanceof HiddenClass) {
+                        continue;
                     }
+                    $allowedChildren[] = $subclass;
                 }
             }
         }
-
         return $allowedChildren;
     }
 
