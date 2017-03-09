@@ -2,8 +2,10 @@
 
 namespace SilverStripe\CMS\Search;
 
+use BadMethodCallException;
+use SilverStripe\Assets\File;
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\Control\Controller;
+use SilverStripe\Control\RequestHandler;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
@@ -26,19 +28,22 @@ use Translatable;
  */
 class SearchForm extends Form
 {
-
     /**
-     * @var int $pageLength How many results are shown per page.
+     * How many results are shown per page.
      * Relies on pagination being implemented in the search results template.
+     *
+     * @var int
      */
     protected $pageLength = 10;
 
     /**
      * Classes to search
+     *
+     * @var array
      */
     protected $classesToSearch = array(
-        "SilverStripe\\CMS\\Model\\SiteTree",
-        "SilverStripe\\Assets\\File"
+        SiteTree::class,
+        File::class
     );
 
     private static $casting = array(
@@ -46,15 +51,20 @@ class SearchForm extends Form
     );
 
     /**
-     *
-     * @param Controller $controller
+     * @skipUpgrade
+     * @param RequestHandler $controller
      * @param string $name The name of the form (used in URL addressing)
      * @param FieldList $fields Optional, defaults to a single field named "Search". Search logic needs to be customized
      *  if fields are added to the form.
      * @param FieldList $actions Optional, defaults to a single field named "Go".
      */
-    public function __construct($controller, $name, $fields = null, $actions = null)
-    {
+    public function __construct(
+        RequestHandler $controller = null,
+        $name = 'SearchForm',
+        FieldList $fields = null,
+        FieldList $actions = null
+    ) {
+    
         if (!$fields) {
             $fields = new FieldList(
                 new TextField('Search', _t('SearchForm.SEARCH', 'Search'))
@@ -69,7 +79,7 @@ class SearchForm extends Form
 
         if (!$actions) {
             $actions = new FieldList(
-                new FormAction("getResults", _t('SearchForm.GO', 'Go'))
+                new FormAction("results", _t('SearchForm.GO', 'Go'))
             );
         }
 
@@ -88,13 +98,12 @@ class SearchForm extends Form
      */
     public function classesToSearch($classes)
     {
-        $supportedClasses = array('SilverStripe\\CMS\\Model\\SiteTree', 'SilverStripe\\Assets\\File');
+        $supportedClasses = array(SiteTree::class, File::class);
         $illegalClasses = array_diff($classes, $supportedClasses);
         if ($illegalClasses) {
-            user_error(
+            throw new BadMethodCallException(
                 "SearchForm::classesToSearch() passed illegal classes '" . implode("', '", $illegalClasses)
-                . "'.  At this stage, only File and SiteTree are allowed",
-                E_USER_WARNING
+                . "'.  At this stage, only File and SiteTree are allowed"
             );
         }
         $legalClasses = array_intersect($classes, $supportedClasses);
@@ -112,34 +121,33 @@ class SearchForm extends Form
     }
 
     /**
-     * Return dataObjectSet of the results using $_REQUEST to get info from form.
+     * Return dataObjectSet of the results using current request to get info from form.
      * Wraps around {@link searchEngine()}.
      *
-     * @param int $pageLength DEPRECATED 2.3 Use SearchForm->pageLength
-     * @param array $data Request data as an associative array. Should contain at least a key 'Search' with all searched keywords.
      * @return SS_List
      */
-    public function getResults($pageLength = null, $data = null)
+    public function getResults()
     {
-        // legacy usage: $data was defaulting to $_REQUEST, parameter not passed in doc.silverstripe.org tutorials
-        if (!isset($data) || !is_array($data)) {
-            $data = $_REQUEST;
-        }
+        // Get request data from request handler
+        $request = $this->getRequestHandler()->getRequest();
 
         // set language (if present)
+        $locale = null;
+        $origLocale = null;
         if (class_exists('Translatable')) {
-            if (SiteTree::singleton()->hasExtension('Translatable') && isset($data['searchlocale'])) {
-                if ($data['searchlocale'] == "ALL") {
+            $locale = $request->requestVar('searchlocale');
+            if (SiteTree::singleton()->hasExtension('Translatable') && $locale) {
+                if ($locale === "ALL") {
                     Translatable::disable_locale_filter();
                 } else {
                     $origLocale = Translatable::get_current_locale();
 
-                    Translatable::set_current_locale($data['searchlocale']);
+                    Translatable::set_current_locale($locale);
                 }
             }
         }
 
-        $keywords = $data['Search'];
+        $keywords = $request->requestVar('Search');
 
         $andProcessor = create_function('$matches', '
 	 		return " +" . $matches[2] . " +" . $matches[4] . " ";
@@ -155,10 +163,8 @@ class SearchForm extends Form
 
         $keywords = $this->addStarsToKeywords($keywords);
 
-        if (!$pageLength) {
-            $pageLength = $this->pageLength;
-        }
-        $start = isset($_GET['start']) ? (int)$_GET['start'] : 0;
+        $pageLength = $this->getPageLength();
+        $start = $request->requestVar('start') ?: 0;
 
         if (strpos($keywords, '"') !== false || strpos($keywords, '+') !== false || strpos($keywords, '-') !== false || strpos($keywords, '*') !== false) {
             $results = DB::get_conn()->searchEngine($this->classesToSearch, $keywords, $start, $pageLength, "\"Relevance\" DESC", "", true);
@@ -177,8 +183,8 @@ class SearchForm extends Form
 
         // reset locale
         if (class_exists('Translatable')) {
-            if (SiteTree::singleton()->hasExtension('Translatable') && isset($data['searchlocale'])) {
-                if ($data['searchlocale'] == "ALL") {
+            if (SiteTree::singleton()->hasExtension('Translatable') && $locale) {
+                if ($locale == "ALL") {
                     Translatable::enable_locale_filter();
                 } else {
                     Translatable::set_current_locale($origLocale);
@@ -216,22 +222,11 @@ class SearchForm extends Form
     /**
      * Get the search query for display in a "You searched for ..." sentence.
      *
-     * @param array $data
      * @return string
      */
-    public function getSearchQuery($data = null)
+    public function getSearchQuery()
     {
-        // legacy usage: $data was defaulting to $_REQUEST, parameter not passed in doc.silverstripe.org tutorials
-        if (!isset($data)) {
-            $data = $_REQUEST;
-        }
-
-        // The form could be rendered without the search being done, so check for that.
-        if (isset($data['Search'])) {
-            return $data['Search'];
-        }
-
-        return null;
+        return $this->getRequestHandler()->getRequest()->requestVar('Search');
     }
 
     /**
