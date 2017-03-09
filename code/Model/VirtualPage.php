@@ -103,8 +103,8 @@ class VirtualPage extends Page
     public function getNonVirtualisedFields()
     {
         return array_merge(
-            VirtualPage::config()->non_virtual_fields,
-            VirtualPage::config()->initially_copied_fields
+            self::config()->non_virtual_fields,
+            self::config()->initially_copied_fields
         );
     }
 
