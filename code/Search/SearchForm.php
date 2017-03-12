@@ -64,7 +64,6 @@ class SearchForm extends Form
         FieldList $fields = null,
         FieldList $actions = null
     ) {
-    
         if (!$fields) {
             $fields = new FieldList(
                 new TextField('Search', _t('SearchForm.SEARCH', 'Search'))
@@ -166,11 +165,12 @@ class SearchForm extends Form
         $pageLength = $this->getPageLength();
         $start = $request->requestVar('start') ?: 0;
 
-        if (strpos($keywords, '"') !== false || strpos($keywords, '+') !== false || strpos($keywords, '-') !== false || strpos($keywords, '*') !== false) {
-            $results = DB::get_conn()->searchEngine($this->classesToSearch, $keywords, $start, $pageLength, "\"Relevance\" DESC", "", true);
-        } else {
-            $results = DB::get_conn()->searchEngine($this->classesToSearch, $keywords, $start, $pageLength);
-        }
+        $booleanSearch =
+            strpos($keywords, '"') !== false ||
+            strpos($keywords, '+') !== false ||
+            strpos($keywords, '-') !== false ||
+            strpos($keywords, '*') !== false;
+        $results = DB::get_conn()->searchEngine($this->classesToSearch, $keywords, $start, $pageLength, "\"Relevance\" DESC", "", $booleanSearch);
 
         // filter by permission
         if ($results) {
