@@ -4,7 +4,7 @@ namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\Admin\AdminRootController;
 use SilverStripe\Admin\CMSBatchActionHandler;
-use SilverStripe\Admin\CMSPreviewable;
+use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\Admin\LeftAndMain;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Archive;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Publish;
