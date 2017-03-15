@@ -2,7 +2,7 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-use SilverStripe\Admin\CMSPreviewable;
+use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\Security\Member;

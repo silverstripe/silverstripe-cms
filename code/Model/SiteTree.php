@@ -4,7 +4,7 @@ namespace SilverStripe\CMS\Model;
 
 use Page;
 use SilverStripe\Admin\AddToCampaignHandler_FormAction;
-use SilverStripe\Admin\CMSPreviewable;
+use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\CMS\Controllers\CMSPageEditController;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\CMS\Controllers\ModelAsController;
