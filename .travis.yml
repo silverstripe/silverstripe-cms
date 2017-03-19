@@ -33,7 +33,6 @@ matrix:
       env: DB=MYSQL PDO=1 PHPUNIT_TEST=1
 
 before_script:
- - composer self-update || true
  - "if [ \"$PHPCS_TEST\" = \"1\" ]; then pyrus install pear/PHP_CodeSniffer; fi"
  - phpenv rehash
  - phpenv config-rm xdebug.ini
