@@ -18,10 +18,8 @@ env:
 matrix:
   include:
     - php: 5.6
-      env: DB=MYSQL PHPUNIT_COVERAGE_TEST=1
-    - php: 5.5
       env: DB=PGSQL PHPUNIT_TEST=1
-    - php: 5.5
+    - php: 5.6
       env: DB=SQLITE PHPUNIT_TEST=1
     - php: 5.6
       env: DB=MYSQL PDO=1 PHPUNIT_TEST=1 PHPCS_TEST=1
@@ -35,7 +33,6 @@ matrix:
       env: DB=MYSQL PDO=1 PHPUNIT_TEST=1
 
 before_script:
- - composer self-update || true
  - "if [ \"$PHPCS_TEST\" = \"1\" ]; then pyrus install pear/PHP_CodeSniffer; fi"
  - phpenv rehash
  - phpenv config-rm xdebug.ini

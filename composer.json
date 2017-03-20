@@ -16,7 +16,6 @@
     }
   ],
   "require": {
-    "php": ">=5.5.0",
     "composer/installers": "*",
     "silverstripe/framework": "^4.0@dev",
     "silverstripe/admin": "^1.0@dev",
