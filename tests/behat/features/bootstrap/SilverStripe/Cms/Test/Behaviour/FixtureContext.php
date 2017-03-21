@@ -11,7 +11,7 @@ use Behat\Behat\Exception\PendingException;
 use Behat\Mink\Driver\Selenium2Driver;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 
 /**
  * Context used to create fixtures in the SilverStripe ORM.

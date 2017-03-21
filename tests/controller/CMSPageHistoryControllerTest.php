@@ -5,7 +5,7 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\HTMLReadonlyField;
 use SilverStripe\Forms\TextField;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\CMS\Controllers\CMSPageHistoryController;
 use SilverStripe\Dev\FunctionalTest;
 
@@ -157,12 +157,12 @@ class CMSPageHistoryControllerTest extends FunctionalTest
         $this->assertThat($checkbox[0], $this->logicalNot($this->isNull()));
         $this->assertEquals('checked', (string) $checkbox[0]->attributes()->checked);
     }
-    
+
     public function testTransformReadonly()
     {
         /** @var CMSPageHistoryController $history */
         $history = singleton(CMSPageHistoryController::class);
-        
+
         $fieldList = FieldList::create([
             FieldGroup::create('group', [
                 TextField::create('childField', 'child field'),
@@ -170,9 +170,9 @@ class CMSPageHistoryControllerTest extends FunctionalTest
             TextField::create('field', 'field', 'My <del>value</del><ins>change</ins>'),
             HiddenField::create('hiddenField', 'hidden field'),
         ]);
-        
+
         $newList = $history->transformReadonly($fieldList);
-    
+
         $field = $newList->dataFieldByName('field');
         $this->assertTrue($field instanceof HTMLReadonlyField);
         $this->assertContains('<ins>', $field->forTemplate());

@@ -2,7 +2,7 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 
 /**
  * Works a bit different than the other filters:

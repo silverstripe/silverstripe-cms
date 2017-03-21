@@ -14,6 +14,7 @@ env:
   global:
     - TRAVIS_NODE_VERSION="4"
     - CORE_RELEASE=4
+    - COMPOSER_ROOT_VERSION="4.0.x-dev"
 
 matrix:
   include:
@@ -38,12 +39,12 @@ before_script:
  - phpenv config-rm xdebug.ini
  - echo 'memory_limit = 2G' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
  - composer install --prefer-dist
+ - composer require silverstripe/framework:4.0.x-dev silverstripe/config:1.0.x-dev silverstripe/admin:1.0.x-dev silverstripe/assets:1.0.x-dev silverstripe/versioned:1.0.x-dev --prefer-dist
  - "if [ \"$DB\" = \"PGSQL\" ]; then composer require silverstripe/postgresql:2.0.x-dev --prefer-dist; fi"
  - "if [ \"$DB\" = \"SQLITE\" ]; then composer require silverstripe/sqlite3:2.0.x-dev --prefer-dist; fi"
  - "php ./tests/bootstrap/mysite.php"
  - "export DISPLAY=\":99\""
  - "export XVFBARGS=\":99 -ac -screen 0 1024x768x16\""
- - "export COMPOSER_ROOT_VERSION=4.0.x-dev"
  - "if [ \"$NPM_TEST\" = \"1\" ]; then (nvm install $TRAVIS_NODE_VERSION && npm install --silent && npm run build); fi"
  - "if [ \"$BEHAT_TEST\" = \"1\" ]; then sh -e /etc/init.d/xvfb start; sleep 3; fi"
  - "if [ \"$BEHAT_TEST\" = \"1\" ]; then (vendor/bin/selenium-server-standalone > selenium.log 2>&1 &); fi"

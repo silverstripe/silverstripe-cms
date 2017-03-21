@@ -1,6 +1,6 @@
 <?php
 
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\CMS\Model\ErrorPage;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\Core\Config\Config;

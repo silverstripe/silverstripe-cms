@@ -8,7 +8,7 @@ use SilverStripe\Forms\ReadonlyTransformation;
 use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ValidationResult;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\Security\Member;
 use Page;
 

@@ -9,7 +9,7 @@ use SilverStripe\Forms\DateField;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\SS_List;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 
 /**
  * Base class for filtering the subtree for certain node statuses.

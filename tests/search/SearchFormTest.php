@@ -6,7 +6,7 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\ORM\DB;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\MSSQL\MSSQLDatabase;
 use SilverStripe\PostgreSQL\PostgreSQLDatabase;
 use SilverStripe\CMS\Controllers\ContentController;

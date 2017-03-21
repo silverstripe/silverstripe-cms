@@ -9,7 +9,7 @@ use SilverStripe\BehatExtension\Context\FixtureContext;
 use SilverStripe\Framework\Test\Behaviour\CmsFormsContext;
 use SilverStripe\Framework\Test\Behaviour\CmsUiContext;
 use SilverStripe\Cms\Test\Behaviour;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Injector\Injector;
