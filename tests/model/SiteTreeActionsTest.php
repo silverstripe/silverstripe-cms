@@ -1,7 +1,7 @@
 <?php
 
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\ORM\DB;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;

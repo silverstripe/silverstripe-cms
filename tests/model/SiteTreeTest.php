@@ -6,7 +6,7 @@ use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\Control\ContentNegotiator;
 use SilverStripe\Control\Controller;
 use SilverStripe\ORM\DB;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ValidationException;
 use SilverStripe\ORM\DataExtension;
@@ -339,7 +339,7 @@ class SiteTreeTest extends SapphireTest
         Versioned::set_stage(Versioned::LIVE);
         $deletedPage = Versioned::get_latest_version(SiteTree::class, $page2ID);
         $deletedPage->doRestoreToStage();
-        $this->assertFalse((bool)Versioned::get_one_by_stage("Page", "Live", "\"SiteTree\".\"ID\" = " . $page2ID));
+        $this->assertFalse((bool)Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, "\"SiteTree\".\"ID\" = " . $page2ID));
 
         Versioned::set_stage(Versioned::DRAFT);
         $requeriedPage = DataObject::get_by_id("Page", $page2ID);
@@ -994,7 +994,7 @@ class SiteTreeTest extends SapphireTest
         $sitetree->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
         $sitetree = DataObject::get_by_id(SiteTree::class, $sitetree->ID, false);
         $this->assertEquals($sitetree->URLSegment, rawurlencode('brötchen'));
-        $sitetreeLive = Versioned::get_one_by_stage(SiteTree::class, 'Live', '"SiteTree"."ID" = ' .$sitetree->ID, false);
+        $sitetreeLive = Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, '"SiteTree"."ID" = ' .$sitetree->ID, false);
         $this->assertEquals($sitetreeLive->URLSegment, rawurlencode('brötchen'));
     }
 

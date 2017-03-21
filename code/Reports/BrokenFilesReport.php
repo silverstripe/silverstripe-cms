@@ -7,7 +7,7 @@ use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Reports\Report;
 use SilverStripe\ORM\DB;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 
 class BrokenFilesReport extends Report
 {

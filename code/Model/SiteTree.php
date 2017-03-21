@@ -48,7 +48,7 @@ use SilverStripe\ORM\HiddenClass;
 use SilverStripe\ORM\Hierarchy\Hierarchy;
 use SilverStripe\ORM\ManyManyList;
 use SilverStripe\ORM\ValidationResult;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\Security\Group;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
@@ -1057,7 +1057,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         // check for specific groups
         if ($member && is_numeric($member)) {
-            $member = DataObject::get_by_id('SilverStripe\\Security\\Member', $member);
+            $member = DataObject::get_by_id(Member::class, $member);
         }
         if ($this->CanViewType == 'OnlyTheseUsers'
             && $member
@@ -1352,7 +1352,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
             // Get the groups that the given member belongs to
             /** @var Member $member */
-            $member = DataObject::get_by_id('SilverStripe\\Security\\Member', $memberID);
+            $member = DataObject::get_by_id(Member::class, $memberID);
             $groupIDs = $member->Groups()->column("ID");
             $SQL_groupList = implode(", ", $groupIDs);
             if (!$SQL_groupList) {

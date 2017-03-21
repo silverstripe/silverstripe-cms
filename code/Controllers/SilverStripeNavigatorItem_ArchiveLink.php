@@ -6,7 +6,7 @@ use SilverStripe\Control\Controller;
 use SilverStripe\Core\Convert;
 use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\ORM\FieldType\DBField;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 
 class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem
 {
@@ -54,7 +54,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem
     public function canView($member = null)
     {
         return (
-            $this->record->hasExtension('SilverStripe\ORM\Versioning\Versioned')
+            $this->record->hasExtension(Versioned::class)
             && $this->isArchived()
             // Don't follow redirects in preview, they break the CMS editing form
             && !($this->record instanceof RedirectorPage)

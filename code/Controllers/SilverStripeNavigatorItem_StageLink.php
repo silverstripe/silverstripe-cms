@@ -5,7 +5,7 @@ use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\Control\Controller;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Convert;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SiteTreeFutureState;
 
 class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem
@@ -58,7 +58,7 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem
     public function canView($member = null)
     {
         return (
-            $this->record->hasExtension('SilverStripe\ORM\Versioning\Versioned')
+            $this->record->hasExtension(Versioned::class)
             && $this->getDraftPage()
             // Don't follow redirects in preview, they break the CMS editing form
             && !($this->record instanceof RedirectorPage)

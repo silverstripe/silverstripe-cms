@@ -1,6 +1,6 @@
 <?php
 
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\Assets\File;
 use SilverStripe\Control\Session;
 use SilverStripe\View\Parsers\ShortcodeParser;
