@@ -3,7 +3,7 @@
 namespace SilverStripe\CMS\Model;
 
 use Page;
-use SilverStripe\Admin\AddToCampaignHandler_FormAction;
+use SilverStripe\CampaignAdmin\AddToCampaignHandler_FormAction;
 use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\CMS\Controllers\CMSPageEditController;
 use SilverStripe\CMS\Controllers\ContentController;

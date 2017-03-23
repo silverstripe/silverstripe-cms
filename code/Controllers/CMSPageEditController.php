@@ -3,7 +3,7 @@
 namespace SilverStripe\CMS\Controllers;
 
 use Page;
-use SilverStripe\Admin\AddToCampaignHandler;
+use SilverStripe\CampaignAdmin\AddToCampaignHandler;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\HTTPRequest;
