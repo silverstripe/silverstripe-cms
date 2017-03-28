@@ -18,6 +18,7 @@
   "require": {
     "composer/installers": "*",
     "silverstripe/admin": "^1.0@dev",
+    "silverstripe/campaign-admin": "^1@dev",
     "silverstripe/framework": "^4.0@dev",
     "silverstripe/reports": "^4.0@dev",
     "silverstripe/siteconfig": "^4.0@dev",
