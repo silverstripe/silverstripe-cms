@@ -321,8 +321,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Description of the class functionality, typically shown to a user
      * when selecting which page type to create. Translated through {@link provideI18nEntities()}.
      *
-     * @see SiteTree::description()
-     * @see SiteTree::i18n_description()
+     * @see SiteTree::classDescription()
+     * @see SiteTree::i18n_classDescription()
      *
      * @config
      * @var string
@@ -333,8 +333,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Description for Page and SiteTree classes, but not inherited by subclasses.
      * override SiteTree::$description in subclasses instead.
      *
-     * @see SiteTree::description()
-     * @see SiteTree::i18n_description()
+     * @see SiteTree::classDescription()
+     * @see SiteTree::i18n_classDescription()
      *
      * @config
      * @var string
@@ -3085,11 +3085,11 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
-     * Get description for this page
+     * Get description for this page type
      *
      * @return string|null
      */
-    public function description()
+    public function classDescription()
     {
         $base = in_array(static::class, [Page::class, self::class]);
         if ($base) {
@@ -3103,9 +3103,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      *
      * @return string|null
      */
-    public function i18n_description()
+    public function i18n_classDescription()
     {
-        $description = $this->description();
+        $description = $this->classDescription();
         if ($description) {
             return _t(static::class.'.DESCRIPTION', $description);
         }
@@ -3123,7 +3123,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $entities = parent::provideI18nEntities();
 
         // Add optional description
-        $description = $this->description();
+        $description = $this->classDescription();
         if ($description) {
             $entities[static::class . '.DESCRIPTION'] = $description;
         }
