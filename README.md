@@ -19,7 +19,7 @@ and [installation from source](http://doc.silverstripe.org/framework/en/installa
 
 ## Bugtracker ##
 
-Bugs are tracked on [github.com](https://github.com/silverstripe/silverstripe-cms/issues). 
+Bugs are tracked on [github.com](https://github.com/silverstripe/silverstripe-cms/issues).
 Please read our [issue reporting guidelines](http://doc.silverstripe.org/framework/en/misc/contributing/issues).
 
 ## Development and Contribution ##
@@ -35,3 +35,8 @@ If you would like to make changes to the SilverStripe core codebase, we have an 
  * [Bugtracker: Installer](https://github.com/silverstripe/silverstripe-installer/issues)
  * [Forums](http://silverstripe.org/forums)
  * [Developer Mailinglist](https://groups.google.com/forum/#!forum/silverstripe-dev)
+
+## Archive warning message change ##
+
+Old archive message: 'Are you sure you want to archive this page and all of its children pages? This page and all of its children will be unpublished and sent to the archive.'
+New archive message: 'Are you sure you want to archive this page? This page will be unpublished and sent to the archive, any children will be orphaned.'

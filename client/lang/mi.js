@@ -30,7 +30,7 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "CMSMAIN.SELECTONEPAGE": "Kōwhiria kotahi whārangi i te iti rawa.",
     "CMSMAIN.URLSEGMENTVALIDATION": "Ka taea anake ngā pūāhua, ngā mati me ngā tohuhono i ngā PRO.",
     "CMSMAIN.WARNINGSAVEPAGESBEFOREADDING": "Me tiaki i te whārangi i mua i te tāpiri tamariki ki raro",
-    "CMSMain.Archive": "Are you sure you want to archive this page and all of its children pages?\n\nThis page and all of its children will be unpublished and sent to the archive.",
+    "CMSMain.Archive": "Are you sure you want to archive this page?\n\nThis page will be unpublished and sent to the archive, any children will be orphaned.",
     "CMSMain.ConfirmRestoreFromLive": "Are you sure you want to revert draft to when the page was last published?",
     "CMSMain.DeleteFromDraft": "Are you sure you want to remove your page from the draft site?\n\nThis page will remain on the published site.",
     "CMSMain.Restore": "Are you sure you want to restore this page from archive?",
