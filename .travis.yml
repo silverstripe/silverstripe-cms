@@ -53,8 +53,8 @@ before_script:
 script:
  - "if [ \"$PHPUNIT_TEST\" = \"1\" ]; then vendor/bin/phpunit tests flush=1; fi"
  - "if [ \"$BEHAT_TEST\" = \"1\" ]; then vendor/bin/behat .; fi"
- - "if [ \"$NPM_TEST\" = \"1\" ]; then git diff-files --quiet -w; fi"
- - "if [ \"$NPM_TEST\" = \"1\" ]; then git diff -w --no-color; fi"
+ - "if [ \"$NPM_TEST\" = \"1\" ]; then git diff-files --quiet -w --relative=client; fi"
+ - "if [ \"$NPM_TEST\" = \"1\" ]; then git diff -w --no-color --relative=client; fi"
  - "if [ \"$NPM_TEST\" = \"1\" ]; then (nvm use $TRAVIS_NODE_VERSION && npm run lint); fi"
  - "if [ \"$PHPUNIT_COVERAGE_TEST\" = \"1\" ]; then vendor/bin/phpunit tests flush=1 --coverage-clover=coverage.xml; fi"
  - "if [ \"$PHPUNIT_COVERAGE_TEST\" = \"1\" ]; then bash <(curl -s https://codecov.io/bash) -f coverage.xml; fi"
