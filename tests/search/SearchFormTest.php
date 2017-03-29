@@ -29,7 +29,7 @@ class ZZZSearchFormTest extends FunctionalTest
 
     protected static $fixture_file = 'SearchFormTest.yml';
 
-    protected $illegalExtensions = array(
+    protected static $illegal_extensions = array(
         SiteTree::class => array('SiteTreeSubsites', 'Translatable')
     );
 
@@ -46,16 +46,16 @@ class ZZZSearchFormTest extends FunctionalTest
         }
     }
 
-    public function setUpOnce()
+    public static function setUpBeforeClass()
     {
         // HACK Postgres doesn't refresh TSearch indexes when the schema changes after CREATE TABLE
         // MySQL will need a different table type
-        self::kill_temp_db();
+        static::kill_temp_db();
         Config::modify();
         FulltextSearchable::enable();
-        self::create_temp_db();
-        $this->resetDBSchema(true);
-        parent::setUpOnce();
+        static::create_temp_db();
+        static::resetDBSchema(true);
+        parent::setUpBeforeClass();
     }
 
     public function setUp()

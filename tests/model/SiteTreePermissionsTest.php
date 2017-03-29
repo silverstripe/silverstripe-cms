@@ -20,7 +20,7 @@ class SiteTreePermissionsTest extends FunctionalTest
 {
     protected static $fixture_file = "SiteTreePermissionsTest.yml";
 
-    protected $illegalExtensions = array(
+    protected static $illegal_extensions = array(
         SiteTree::class => array('SiteTreeSubsites')
     );
 

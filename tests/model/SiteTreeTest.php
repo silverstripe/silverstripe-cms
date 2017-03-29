@@ -37,11 +37,11 @@ class SiteTreeTest extends SapphireTest
 
     protected static $fixture_file = 'SiteTreeTest.yml';
 
-    protected $illegalExtensions = array(
-        SiteTree::class => array('SiteTreeSubsites', 'Translatable')
+    protected static $illegal_extensions = array(
+        SiteTree::class => array('SiteTreeSubsites', 'Translatable'),
     );
 
-    protected $extraDataObjects = array(
+    protected static $extra_dataobjects = array(
         SiteTreeTest_ClassA::class,
         SiteTreeTest_ClassB::class,
         SiteTreeTest_ClassC::class,
