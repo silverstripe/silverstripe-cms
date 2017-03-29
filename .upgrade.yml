@@ -62,3 +62,4 @@ mappings:
   MigrateSiteTreeLinkingTask: SilverStripe\CMS\Tasks\MigrateSiteTreeLinkingTask
   RemoveOrphanedPagesTask: SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask
   SiteTreeMaintenanceTask: SilverStripe\CMS\Tasks\SiteTreeMaintenanceTask
+  LeftAndMain_TreeNode: SilverStripe\CMS\Controllers\CMSTreeNode

@@ -5,9 +5,9 @@ namespace SilverStripe\CMS\Controllers;
 use SilverStripe\Admin\LeftAndMain_SearchFilter;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Core\ClassInfo;
+use SilverStripe\Core\Injector\Injectable;
 use SilverStripe\Forms\DateField;
 use SilverStripe\ORM\DataList;
-use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\Versioned\Versioned;
 
@@ -24,8 +24,7 @@ use SilverStripe\Versioned\Versioned;
  */
 abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
 {
-
-    use \SilverStripe\Core\Injector\Injectable;
+    use Injectable;
 
     /**
      * Search parameters, mostly properties on {@link SiteTree}.
