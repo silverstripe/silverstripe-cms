@@ -20,7 +20,7 @@ class VirtualPageTest extends FunctionalTest
     protected static $use_draft_site = false;
     protected $autoFollowRedirection = false;
 
-    protected $extraDataObjects = array(
+    protected static $extra_dataobjects = [
         'VirtualPageTest_ClassA',
         'VirtualPageTest_ClassB',
         'VirtualPageTest_ClassC',
@@ -29,15 +29,15 @@ class VirtualPageTest extends FunctionalTest
         'VirtualPageTest_PageWithAllowedChildren',
         'VirtualPageTest_TestDBField',
         'VirtualPageTest_VirtualPageSub',
-    );
+    ];
 
-    protected $illegalExtensions = array(
+    protected static $illegal_extensions = [
         SiteTree::class => array('SiteTreeSubsites', 'Translatable')
-    );
+    ];
 
-    protected $requiredExtensions = array(
+    protected static $required_extensions = [
         SiteTree::class => array('VirtualPageTest_PageExtension')
-    );
+    ];
 
     public function setUp()
     {
