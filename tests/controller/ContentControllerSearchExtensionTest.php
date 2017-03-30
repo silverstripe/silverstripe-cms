@@ -25,9 +25,9 @@ class ContentControllerSearchExtensionTest extends SapphireTest
         }
     }
 
-    public function setUpOnce()
+    public static function setUpBeforeClass()
     {
-        parent::setUpOnce();
+        parent::setUpBeforeClass();
 
         FulltextSearchable::enable('SilverStripe\\Assets\\File');
     }
@@ -37,9 +37,9 @@ class ContentControllerSearchExtensionTest extends SapphireTest
      * properly at the end of the test. This becomes apparent when a later test tries to
      * ALTER TABLE File and add fulltext indexes with the InnoDB table type.
      */
-    public function tearDownOnce()
+    public static function tearDownAfterClass()
     {
-        parent::tearDownOnce();
+        parent::tearDownAfterClass();
 
         Config::inst()->update('SilverStripe\\Assets\\File', 'create_table_options', array('SilverStripe\ORM\Connect\MySQLDatabase' => 'ENGINE=InnoDB'));
         File::remove_extension('SilverStripe\\ORM\\Search\\FulltextSearchable');
