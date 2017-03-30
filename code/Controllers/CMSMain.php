@@ -636,7 +636,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             }
 
             $singularName = $instance->i18n_singular_name();
-            $description = $instance->i18n_description();
+            $description = $instance->i18n_classDescription();
 
             $result->push(new ArrayData(array(
                 'ClassName' => $class,
