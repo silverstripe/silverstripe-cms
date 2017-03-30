@@ -25,7 +25,7 @@
     "silverstripe/versioned": "^1.0@dev"
   },
   "require-dev": {
-    "phpunit/PHPUnit": "~4.8",
+    "phpunit/phpunit": "^5.7",
     "silverstripe/behat-extension": "^2.1.0",
     "silverstripe/serve": "dev-master",
     "silverstripe/testsession": "^2.0.0-alpha3",
