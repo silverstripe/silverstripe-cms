@@ -306,11 +306,11 @@ $.entwine('ss', function($){
 		 *  (Event) e
 		 */
 		onclick: function(e) {
-			var form = this.parents('form:first'), version = form.find(':input[name=Version]').val(), message = '';
-			message = i18n.sprintf(
-				i18n._t('CMSMain.Archive'),
-				version
-			);
+			var form = this.parents('form:first'), message = '';
+			message = form.find('input[name=ArchiveWarningMessage')
+				.val()
+				.replace(/\\n/g, '\n');
+
 			if(confirm(message)) {
 				return this._super(e);
 			} else {
