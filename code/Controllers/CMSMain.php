@@ -744,45 +744,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             $fields->push($liveLinkField = new HiddenField("AbsoluteLink", false, $record->AbsoluteLink()));
             $fields->push($liveLinkField = new HiddenField("LiveLink"));
             $fields->push($stageLinkField = new HiddenField("StageLink"));
-            $fields->push($archiveWarningMsg = new HiddenField("ArchiveWarningMessage"));
+            $fields->push($archiveWarningMsgField = new HiddenField("ArchiveWarningMessage"));
             $fields->push(new HiddenField("TreeTitle", false, $record->TreeTitle));
 
-            // Get all page's descendants
-            $record->collateDescendants(true, $descendants);
-            if (!$descendants) {
-                $descendants = [];
-            }
-
-            // Get all campaigns that the page and its descendants belong to
-            $inChangeSetIDs = ChangeSetItem::get_for_object($record)->column('ChangeSetID');
-
-            foreach ($descendants as $page) {
-                $inChangeSetIDs = array_merge($inChangeSetIDs, ChangeSetItem::get_for_object($page)->column('ChangeSetID'));
-            }
-
-            if (count($inChangeSetIDs) > 0) {
-                $inChangeSets = ChangeSet::get()->filter(['ID' => $inChangeSetIDs, 'State' => ChangeSet::STATE_OPEN]);
-            } else {
-                $inChangeSets = new ArrayList();
-            }
-
-            if (count($descendants) > 0 && $inChangeSets->count() > 0) {
-                $archiveWarningTerm = 'CMSMain.ArchiveWarningWithChildrenAndCampaigns';
-                $archiveWarningTransDefault = 'Warning: This page and all of its child pages will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?';
-            } else if (count($descendants) > 0) {
-                $archiveWarningTerm = 'CMSMain.ArchiveWarningWithChildren';
-                $archiveWarningTransDefault = 'Warning: This page and all of its child pages will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?';
-            } else if ($inChangeSets->count() > 0) {
-                $archiveWarningTerm = 'CMSMain.ArchiveWarningWithCampaigns';
-                $archiveWarningTransDefault = 'Warning: This page will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?';
-            } else {
-                $archiveWarningTerm = 'CMSMain.ArchiveWarning';
-                $archiveWarningTransDefault = 'Warning: This page will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?';
-            }
-
-            $numCampaigns = ChangeSet::singleton()->i18n_pluralise($inChangeSets->count());
-            $numCampaigns = mb_strtolower($numCampaigns);
-            $archiveWarningMsg->setValue(_t($archiveWarningTerm, $archiveWarningTransDefault, [ 'NumCampaigns' => $numCampaigns ]));
+            $archiveWarningMsgField->setValue($this->getArchiveWarningMessage($record));
 
             if ($record->ID && is_numeric($record->ID)) {
                 $liveLink = $record->getAbsoluteLiveLink();
@@ -866,6 +831,43 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             ), new FieldList())->setHTMLID('Form_EditForm');
             return $form;
         }
+    }
+
+    protected function getArchiveWarningMessage($record)
+    {
+        // Get all page's descendants
+        $record->collateDescendants(true, $descendants);
+        if (!$descendants) {
+            $descendants = [];
+        }
+
+        // Get all campaigns that the page and its descendants belong to
+        $inChangeSetIDs = ChangeSetItem::get_for_object($record)->column('ChangeSetID');
+
+        foreach ($descendants as $page) {
+            $inChangeSetIDs = array_merge($inChangeSetIDs, ChangeSetItem::get_for_object($page)->column('ChangeSetID'));
+        }
+
+        if (count($inChangeSetIDs) > 0) {
+            $inChangeSets = ChangeSet::get()->filter(['ID' => $inChangeSetIDs, 'State' => ChangeSet::STATE_OPEN]);
+        } else {
+            $inChangeSets = new ArrayList();
+        }
+
+        $numCampaigns = ChangeSet::singleton()->i18n_pluralise($inChangeSets->count());
+        $numCampaigns = mb_strtolower($numCampaigns);
+
+        if (count($descendants) > 0 && $inChangeSets->count() > 0) {
+            $archiveWarningMsg = _t('CMSMain.ArchiveWarningWithChildrenAndCampaigns', 'Warning: This page and all of its child pages will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?', [ 'NumCampaigns' => $numCampaigns ]);
+        } elseif (count($descendants) > 0) {
+            $archiveWarningMsg = _t('CMSMain.ArchiveWarningWithChildren', 'Warning: This page and all of its child pages will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?');
+        } elseif ($inChangeSets->count() > 0) {
+            $archiveWarningMsg = _t('CMSMain.ArchiveWarningWithCampaigns', 'Warning: This page will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?', [ 'NumCampaigns' => $numCampaigns ]);
+        } else {
+            $archiveWarningMsg = _t('CMSMain.ArchiveWarning', 'Warning: This page will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?');
+        }
+
+        return $archiveWarningMsg;
     }
 
     /**
