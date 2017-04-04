@@ -420,6 +420,24 @@ class VirtualPage extends Page {
 		}
 	}
 	
+
+	/**
+	 * Allow attributes on the master page to pass
+	 * through to the virtual page
+	 *
+	 * @param string $field
+	 * @return mixed
+	 */
+	public function __isset($field) {
+		if(parent::hasMethod($funcName = "get$field")) {
+			return true;
+		} else if(parent::hasField($field) || ($field === 'ID' && !$this->exists())) {
+			return true;
+		} else {
+			return $this->CopyContentFrom()->__isset($field);
+		}
+	}
+
 	/**
 	 * Pass unrecognized method calls on to the original data object
 	 *
@@ -441,13 +459,11 @@ class VirtualPage extends Page {
 	 */
 	public function hasField($field) {
 		return (
-			array_key_exists($field, $this->record)
-			|| $this->hasDatabaseField($field)
-			|| array_key_exists($field, $this->db()) // Needed for composite fields
-			|| parent::hasMethod("get{$field}")
+			parent::hasField($field)
 			|| $this->CopyContentFrom()->hasField($field)
 		);
-	}	
+	}
+
 	/**
 	 * Overwrite to also check for method on the original data object
 	 *
@@ -455,8 +471,10 @@ class VirtualPage extends Page {
 	 * @return bool
 	 */
 	public function hasMethod($method) {
-		if(parent::hasMethod($method)) return true;
-		return $this->copyContentFrom()->hasMethod($method);
+		return (
+			parent::hasMethod($method)
+			|| $this->CopyContentFrom()->hasMethod($method)
+		);
 	}
 
 	/**
