@@ -416,7 +416,7 @@ class VirtualPage extends Page {
 		} else if(parent::hasField($field) || ($field === 'ID' && !$this->exists())) {
 			return $this->getField($field);
 		} else {
-			return $this->copyContentFrom()->$field;
+			return $this->CopyContentFrom()->$field;
 		}
 	}
 	
@@ -449,7 +449,7 @@ class VirtualPage extends Page {
 		if(parent::hasMethod($method)) {
 			return parent::__call($method, $args);
 		} else {
-			return call_user_func_array(array($this->copyContentFrom(), $method), $args);
+			return call_user_func_array(array($this->CopyContentFrom(), $method), $args);
 		}
 	}
 
@@ -485,8 +485,8 @@ class VirtualPage extends Page {
 	 * @return string
 	 */
 	public function castingHelper($field) {
-		if($this->copyContentFrom()) {
-			return $this->copyContentFrom()->castingHelper($field);
+		if($this->CopyContentFrom()) {
+			return $this->CopyContentFrom()->castingHelper($field);
 		} else {
 			return parent::castingHelper($field);
 		}
@@ -560,7 +560,7 @@ class VirtualPage_Controller extends Page_Controller {
 			$originalClass = get_class($this->CopyContentFrom());
 			if ($originalClass == 'SiteTree') $name = 'ContentController';
 			else $name = $originalClass."_Controller";
-			$controller = new $name($this->dataRecord->copyContentFrom());
+			$controller = new $name($this->dataRecord->CopyContentFrom());
 			$haveIt = $controller->hasMethod($method);
 		}
 		return $haveIt;
@@ -585,7 +585,7 @@ class VirtualPage_Controller extends Page_Controller {
 				throw $e;
 			}
 
-			$original = $this->copyContentFrom();
+			$original = $this->CopyContentFrom();
 			$controller = ModelAsController::controller_for($original);
 
 			// Ensure request/response data is available on virtual controller
