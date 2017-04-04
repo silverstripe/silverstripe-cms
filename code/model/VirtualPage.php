@@ -12,7 +12,7 @@ class VirtualPage extends Page {
 	public static $virtualFields;
 	
 	/**
-	 * @var Array Define fields that are not virtual - the virtual page must define these fields themselves.
+	 * @var array Define fields that are not virtual - the virtual page must define these fields themselves.
 	 * Note that anything in {@link self::config()->initially_copied_fields} is implicitly included in this list.
 	 */
 	private static $non_virtual_fields = array(
@@ -30,7 +30,7 @@ class VirtualPage extends Page {
 	);
 	
 	/**
-	 * @var Array Define fields that are initially copied to virtual pages but left modifiable after that.
+	 * @var array Define fields that are initially copied to virtual pages but left modifiable after that.
 	 */
 	private static $initially_copied_fields = array(
 		'ShowInMenus',
