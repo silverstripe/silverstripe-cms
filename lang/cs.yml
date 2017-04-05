@@ -315,8 +315,6 @@ cs:
     SINGULARNAME: 'Přesměrovací stránka'
   SilverStripe\CMS\Model\SiteTree:
     DESCRIPTION: 'Obecný obsah stránky'
-    PLURALNAME: 'Struktury webu'
-    SINGULARNAME: 'Struktura webu'
   SilverStripe\CMS\Model\VirtualPage:
     DESCRIPTION: 'Zobrazí obsah jiné stránky'
     PLURALNAME: 'Virtuální stránky'

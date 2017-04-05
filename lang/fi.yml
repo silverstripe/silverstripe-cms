@@ -345,8 +345,6 @@ fi:
     SINGULARNAME: 'Uudelleenohjaava sivu'
   SilverStripe\CMS\Model\SiteTree:
     DESCRIPTION: 'Yleinen sisältösivu'
-    PLURALNAME: Hakemistopuut
-    SINGULARNAME: Hakemistopuu
   SilverStripe\CMS\Model\VirtualPage:
     DESCRIPTION: 'Näyttää toisen sivun sisällön'
     PLURALNAME: Virtuaalisivut
@@ -389,9 +387,7 @@ fi:
     BUTTONUNPUBLISHDESC: 'Poista tämä sivu julkaistulta sivustolta'
     Comments: Kommentit
     Content: Sisältö
-    DEFAULTABOUTCONTENT: '<p>Voit täyttää tämän sivun omalla sisällölläsi tai poistaa sen ja luoda uusia sivuja.<br /></p>'
     DEFAULTABOUTTITLE: 'Tietoa meistä'
-    DEFAULTCONTACTCONTENT: '<p>Voit täyttää tämän sivun omalla sisällölläsi tai poistaa sen ja luoda omia sivuja.<br /></p>'
     DEFAULTCONTACTTITLE: 'Ota yhteyttä meihin'
     DEFAULTHOMECONTENT: '<p>Tervetuloa käyttämään SilverStripe-järjestelmää! Tämä on oletus etusivu. Voit muokata tätä sivua avaamalla <a href="admin/">ylläpidon</a>.</p><p>Voit tutustua <a href="http://docs.silverstripe.org">kehittäjädokumentaatioon</a>, tai tutustua<a href="http://www.silverstripe.org/learn/lessons">SilverStripe-koulutusmateriaaliin</a>.</p>'
     DEFAULTHOMETITLE: Koti

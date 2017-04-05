@@ -323,8 +323,6 @@ it:
     SINGULARNAME: 'Pagina di reindirizzamento'
   SilverStripe\CMS\Model\SiteTree:
     DESCRIPTION: 'Pagina di contenuto generico'
-    PLURALNAME: 'Alberi del sito'
-    SINGULARNAME: 'Albero del sito'
   SilverStripe\CMS\Model\VirtualPage:
     DESCRIPTION: 'Mostra il contenuto di un''altra pagina'
     PLURALNAME: 'Pagine virtuali'

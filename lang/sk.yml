@@ -345,8 +345,6 @@ sk:
     SINGULARNAME: 'Presmerovacia stránka'
   SilverStripe\CMS\Model\SiteTree:
     DESCRIPTION: 'Obyčajná stránka s vlastným obsahom.'
-    PLURALNAME: 'Štruktúry webu'
-    SINGULARNAME: 'Štruktúra webu'
   SilverStripe\CMS\Model\VirtualPage:
     DESCRIPTION: 'Zobrazí obsah inej stránky'
     PLURALNAME: 'Virtuálne stránky'
@@ -389,9 +387,7 @@ sk:
     BUTTONUNPUBLISHDESC: 'Odstrániť túto stránku z publikovaných na webe'
     Comments: Komentáre
     Content: Obsah
-    DEFAULTABOUTCONTENT: '<p>Túto stránku môžete vyplniť vlastným obsahom, alebo ju zmazať a vytvoriť vaše vlastné stránky.</p>'
     DEFAULTABOUTTITLE: 'O nás'
-    DEFAULTCONTACTCONTENT: '<p>Túto stránku môžete vyplniť vlastným obsahom, alebo ju zmazať a vytvoriť vaše vlastné stránky.</p>'
     DEFAULTCONTACTTITLE: Kontakt
     DEFAULTHOMECONTENT: '<p>Vitajte v SilverStripe! Toto je základná domáca stránka. Môžte ju upraviť otvorením <a href="admin/">CMS</a>.</p><p>Môžte tiež vstúpiť k <a href="http://docs.silverstripe.org">dokumentácii vývojára</a>, alebo sa priučit na <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lekciách</a>.</p>'
     DEFAULTHOMETITLE: Domov
@@ -437,7 +433,7 @@ sk:
     PARENTID: 'Nadradená stránka'
     PARENTTYPE: 'Pozícia stránky'
     PARENTTYPE_ROOT: 'Stránka najvyššej úrovne'
-    PARENTTYPE_SUBPAGE: 'Podstránka pod rodičovskou stránkov'
+    PARENTTYPE_SUBPAGE: 'Podstránka pod rodičovskou stránkou'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Spravovať prístupové práva pre obsah'
     PERMISSION_GRANTACCESS_HELP: 'Povoliť nastavenie obmedzenia pre stránku v sekcií "Stránky".'
     PLURALNAME: Stránky

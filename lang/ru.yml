@@ -315,8 +315,6 @@ ru:
     SINGULARNAME: 'Страница перенаправления'
   SilverStripe\CMS\Model\SiteTree:
     DESCRIPTION: 'Обычная страница'
-    PLURALNAME: 'Древа Страниц'
-    SINGULARNAME: 'Древо Страниц'
   SilverStripe\CMS\Model\VirtualPage:
     DESCRIPTION: 'Отображает содержимое другой страницы'
     PLURALNAME: 'Виртуальные Страницы'
