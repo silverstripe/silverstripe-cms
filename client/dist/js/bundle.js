@@ -68,7 +68,7 @@ return"http://"!=a.substr(0,7)&&(a=t("base").attr("href")+a),window.open(a,"prin
 
 return i=a?r.default.sprintf(r.default._t("CMSMain.RollbackToVersion"),a):r.default._t("CMSMain.ConfirmRestoreFromLive"),!!confirm(i)&&this._super(e)}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_archive").entwine({
 onclick:function t(e){var n=this.parents("form:first"),a=""
-return a=n.find("input[name=ArchiveWarningMessage").val().replace(/\\n/g,"\n"),!!confirm(a)&&this._super(e)}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_restore").entwine({onclick:function t(e){
+return a=n.find("input[name=ArchiveWarningMessage]").val().replace(/\\n/g,"\n"),!!confirm(a)&&this._super(e)}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_restore").entwine({onclick:function t(e){
 var n=this.parents("form:first"),a=n.find(":input[name=Version]").val(),i="",s=this.data("toRoot")
 return i=r.default.sprintf(r.default._t(s?"CMSMain.RestoreToRoot":"CMSMain.Restore"),a),!!confirm(i)&&this._super(e)}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_unpublish").entwine({onclick:function t(e){
 var n=this.parents("form:first"),a=n.find(":input[name=Version]").val(),i=""

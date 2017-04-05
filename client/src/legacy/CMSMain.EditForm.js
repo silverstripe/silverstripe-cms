@@ -307,7 +307,7 @@ $.entwine('ss', function($){
 		 */
 		onclick: function(e) {
 			var form = this.parents('form:first'), message = '';
-			message = form.find('input[name=ArchiveWarningMessage')
+			message = form.find('input[name=ArchiveWarningMessage]')
 				.val()
 				.replace(/\\n/g, '\n');
 
