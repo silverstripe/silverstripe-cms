@@ -23,7 +23,6 @@
     "CMSMAIN.SELECTONEPAGE": "Please select at least 1 page.",
     "CMSMAIN.URLSEGMENTVALIDATION": "URLs can only be made up of letters, digits and hyphens.",
     "CMSMAIN.WARNINGSAVEPAGESBEFOREADDING": "You have to save a page before adding children underneath it",
-    "CMSMain.Archive": "Are you sure you want to archive this page and all of its children pages?\n\nThis page and all of its children will be unpublished and sent to the archive.",
     "CMSMain.ConfirmRestoreFromLive": "Are you sure you want to revert draft to when the page was last published?",
     "CMSMain.DeleteFromDraft": "Are you sure you want to remove your page from the draft site?\n\nThis page will remain on the published site.",
     "CMSMain.Restore": "Are you sure you want to restore this page from archive?",
