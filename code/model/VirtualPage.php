@@ -528,8 +528,8 @@ class VirtualPage_Controller extends Page_Controller {
 	 * We can't load the content without an ID or record to copy it from.
 	 */
 	public function init(){
-		if(isset($this->record) && $this->record->ID){
-			if($this->record->VersionID != $this->failover->CopyContentFrom()->Version){
+		if(isset($this->record) && $this->record['ID']){
+			if($this->record['VersionID'] != $this->failover->CopyContentFrom()->Version){
 				$this->reloadContent();
 				$this->VersionID = $this->failover->CopyContentFrom()->VersionID;
 			}
