@@ -15,6 +15,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	private static $url_rule = '/$Action/$ID/$OtherID';
 
+	private static $url_handlers = array(
+		'EditForm/$ID' => 'EditForm',
+	);
+
 	// Maintain a lower priority than other administration sections
 	// so that Director does not think they are actions of CMSMain
 	private static $url_priority = 39;
@@ -65,6 +69,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * @config
 	 */
 	private static $enabled_legacy_actions = array();
+
+	/**
+	 * The page id for this request
+	 *
+	 * @var int|null
+	 */
+	protected $pageID = null;
 
 	public function init() {
 		// set reading lang
@@ -593,6 +604,29 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 
 	/**
+	 * Ensuring we set the current page id from the $ID url parameter.
+	 *
+	 * @param SS_HTTPRequest $request
+	 *
+	 * @return Form
+	 */
+	public function EditForm($request = null) {
+		// set page ID from request
+		if ($request) {
+			// validate id is present
+			$id = $request->param('ID');
+
+			if (!isset($id)) {
+				return $this->httpError(400);
+			}
+
+			$this->setCurrentPageID($id);
+		}
+
+		return $this->getEditForm();
+	}
+
+	/**
 	 * @param int $id
 	 * @param FieldList $fields
 	 * @return CMSForm
@@ -689,6 +723,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				$readonlyFields = $form->Fields()->makeReadonly();
 				$form->setFields($readonlyFields);
 			}
+
+			// update form action to include $pageID
+			$form->setFormAction(Controller::join_links($form->FormAction(), $id));
 
 			$this->extend('updateEditForm', $form);
 			return $form;
@@ -866,8 +903,25 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return $listview;
 	}
 
+	/**
+	 * Set the page id into $pageID rather than into {@link Session}.
+	 *
+	 * @param string|int $id
+	 *
+	 * @return void
+	 */
+	public function setCurrentPageID($id) {
+		$id = (int)$id;
+		$this->pageID = $id;
+	}
+
+	/**
+	 * Get the page id from this request
+	 *
+	 * @return int
+	 */
 	public function currentPageID() {
-		$id = parent::currentPageID();
+		$id = $this->pageID;
 
 		$this->extend('updateCurrentPageID', $id);
 
