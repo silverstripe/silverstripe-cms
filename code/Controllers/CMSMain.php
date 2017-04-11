@@ -495,7 +495,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $nodeThresholdLeaf = SiteTree::config()->get('node_threshold_leaf');
         if ($nodeThresholdLeaf && !$filterFunction) {
             $nodeCountCallback = function ($parent, $numChildren) use (&$controller, $nodeThresholdLeaf) {
-                if ( !$parent->ID || $numChildren <= $nodeThresholdLeaf) {
+                if (!$parent->ID || $numChildren <= $nodeThresholdLeaf) {
                     return null;
                 }
                 return sprintf(

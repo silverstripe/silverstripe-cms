@@ -126,5 +126,4 @@ class CMSTreeTest extends FunctionalTest
         $data = json_decode($result->getBody(), true);
         $this->assertEquals(0, count($data));
     }
-
 }
