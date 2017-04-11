@@ -725,7 +725,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			}
 
 			// update form action to include $pageID
-			$form->setFormAction(Controller::join_links($form->FormAction(), $id));
+			$form->setFormAction(Controller::join_links(
+				$this->Link(),
+				$form->getName(),
+				$id
+			));
 
 			$this->extend('updateEditForm', $form);
 			return $form;

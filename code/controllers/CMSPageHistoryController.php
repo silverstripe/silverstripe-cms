@@ -241,7 +241,12 @@ class CMSPageHistoryController extends CMSMain {
 
 		$form->removeExtraClass('cms-content');
 
-		$form->setFormAction(Controller::join_links($form->FormAction(), $id, $versionID));
+		$form->setFormAction(Controller::join_links(
+			$this->Link(),
+			$form->getName(),
+			$id,
+			$versionID
+		));
 
 		return $form;
 	}
@@ -323,6 +328,89 @@ class CMSPageHistoryController extends CMSMain {
 			->addExtraClass('cms-versions-form') // placeholder, necessary for $.metadata() to work
 			->setAttribute('data-link-tmpl-compare', Controller::join_links($this->Link('compare'), '%s', '%s', '%s'))
 			->setAttribute('data-link-tmpl-show', Controller::join_links($this->Link('show'), '%s', '%s'));
+
+		return $form;
+	}
+
+	/**
+	 * Process the {@link VersionsForm} compare function between two pages.
+	 *
+	 * @param array
+	 * @param Form
+	 *
+	 * @return html
+	 */
+	public function doCompare($data, $form) {
+		$versions = $data['Versions'];
+		if(count($versions) < 2) return null;
+
+		$id = $this->currentPageID();
+		$version1 = array_shift($versions);
+		$version2 = array_shift($versions);
+
+		$form = $this->CompareVersionsForm($version1, $version2);
+
+		// javascript solution, render into template
+		if($this->getRequest()->isAjax()) {
+			return $this->customise(array(
+				"EditForm" => $form
+			))->renderWith(array(
+				$this->class . '_EditForm',
+				'LeftAndMain_Content'
+			));
+		}
+
+		// non javascript, redirect the user to the page
+		$this->redirect(Controller::join_links(
+			$this->Link('compare'),
+			$version1,
+			$version2
+		));
+	}
+
+	/**
+	 * Process the {@link VersionsForm} show version function. Only requires
+	 * one page to be selected.
+	 *
+	 * @param array
+	 * @param Form
+	 *
+	 * @return html
+	 */
+	public function doShowVersion($data, $form) {
+		$versionID = null;
+
+		if(isset($data['Versions']) && is_array($data['Versions'])) {
+			$versionID  = array_shift($data['Versions']);
+		}
+
+		if(!$versionID) return;
+
+		if($request->isAjax()) {
+			return $this->customise(array(
+				"EditForm" => $this->ShowVersionForm($versionID)
+			))->renderWith(array(
+				$this->class . '_EditForm',
+				'LeftAndMain_Content'
+			));
+		}
+
+		// non javascript, redirect the user to the page
+		$this->redirect(Controller::join_links(
+			$this->Link('version'),
+			$versionID
+		));
+	}
+
+	/**
+	 * @param int|null $versionID
+	 * @return Form
+	 */
+	public function ShowVersionForm($versionID = null) {
+		if(!$versionID) return null;
+
+		$id = $this->currentPageID();
+		$form = $this->getEditForm($id, null, $versionID);
 
 		return $form;
 	}
