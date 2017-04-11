@@ -30,7 +30,7 @@ matrix:
       env: NPM_TEST=1
     - php: 7.0
       env: DB=MYSQL PHPUNIT_TEST=1
-    - php: 7.1
+    - php: 7.1.2
       env: DB=MYSQL PDO=1 PHPUNIT_TEST=1
 
 before_script:
