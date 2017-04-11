@@ -5,7 +5,7 @@ namespace SilverStripe\CMS\Model;
 use SilverStripe\Assets\Storage\GeneratedAssetHandler;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataModel;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\ORM\DB;
 use SilverStripe\CMS\Controllers\ModelAsController;
 use SilverStripe\View\Requirements;

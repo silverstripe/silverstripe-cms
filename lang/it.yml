@@ -323,8 +323,6 @@ it:
     SINGULARNAME: 'Pagina di reindirizzamento'
   SilverStripe\CMS\Model\SiteTree:
     DESCRIPTION: 'Pagina di contenuto generico'
-    PLURALNAME: 'Alberi del sito'
-    SINGULARNAME: 'Albero del sito'
   SilverStripe\CMS\Model\VirtualPage:
     DESCRIPTION: 'Mostra il contenuto di un''altra pagina'
     PLURALNAME: 'Pagine virtuali'
@@ -367,9 +365,7 @@ it:
     BUTTONUNPUBLISHDESC: 'Rimuovi questa pagina dal sito pubblicato'
     Comments: Commenti
     Content: Contenuto
-    DEFAULTABOUTCONTENT: '<p>Puoi riempire questa pagina con il tuo contenuto, o eliminarlo e creare le tue pagine.<br /></p>'
     DEFAULTABOUTTITLE: 'Chi siamo'
-    DEFAULTCONTACTCONTENT: '<p>Puoi riempire questa pagina con i tuoi contenuti, oppure eliminarla e creare le tue pagine.<br /></p>'
     DEFAULTCONTACTTITLE: Contattaci
     DEFAULTHOMECONTENT: '<p>Benvenuto in SilverStripe! Questa è la home page di default. Puoi modificare questa pagina direttamente <a href="admin/">dal CMS</a>.</p><p>Puoi accedere alla <a href="http://docs.silverstripe.org">documentazione per gli sviluppatori</a> o partire dalle <a href="http://www.silverstripe.org/learn/lessons">lezioni di SilverStripe</a>.</p>'
     DEFAULTHOMETITLE: Home

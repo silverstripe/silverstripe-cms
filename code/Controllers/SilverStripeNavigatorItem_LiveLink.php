@@ -4,7 +4,7 @@ namespace SilverStripe\CMS\Controllers;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\Control\Controller;
 use SilverStripe\Core\Convert;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 
 class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem
 {
@@ -52,7 +52,7 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem
     public function canView($member = null)
     {
         return (
-            $this->record->hasExtension('SilverStripe\ORM\Versioning\Versioned')
+            $this->record->hasExtension(Versioned::class)
             && $this->getLivePage()
             // Don't follow redirects in preview, they break the CMS editing form
             && !($this->record instanceof RedirectorPage)

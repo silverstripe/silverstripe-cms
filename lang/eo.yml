@@ -77,6 +77,8 @@ eo:
     PUBLISH_PAGES: Publikigi
     RESTORE: Restaŭri
     RESTORED_PAGES: 'Restaŭris %d paĝojn'
+    UNPUBLISHED_PAGES: 'Nepublikigitaj %d paĝoj'
+    UNPUBLISH_PAGES: Malpublikigi
   CMSFileAddController:
     MENUTITLE: Dosieroj
   CMSMain:
@@ -98,18 +100,23 @@ eo:
     DUPLICATEDWITHCHILDREN: 'Sukcese duobligis je ''{title}'' kaj idoj'
     EMAIL: Retpoŝto
     EditTree: 'Redakta arbo'
+    ListFiltered: 'Vidigas rezultojn de serĉo.'
     MENUTITLE: 'Redakti paĝon'
     NEWPAGE: 'Nova {pagetype}'
     PAGENOTEXISTS: 'Ĉi tiu paĝo ne ekzistas'
+    PAGES: 'Stato de paĝo'
     PAGETYPEANYOPT: Ajna
+    PAGETYPEOPT: 'Tipo de paĝo'
     PUBALLCONFIRM: 'Bonvolu eldoni ĉiun paĝon en la retejo, kopiante enhavan stadion al la publika'
     PUBALLFUN: 'Funkcio "Eldoni Ĉiujn"'
+    PUBALLFUN2: 'Premi ĉi tiun butonon faros same kiel iri al ĉiu paĝo kaj premi je "Publikigi". Oni celas ke ĝi uziĝu post multaj redaktoj de la enhavo, ekzemple kiam la retejo estis unue konstruita.'
     PUBLISHED: 'Sukcese publikigis je ''{title}'''
     PUBPAGES: 'Farite: publikigis {count} paĝojn'
     PageAdded: 'Sukcese kreis paĝon'
     REMOVED: 'Forigis je ''{title}''{description} el la publikigita retejo'
     REMOVEDPAGE: 'Forigis je ''{title}'' el la publikigita retejo'
     REMOVEDPAGEFROMDRAFT: 'Forigis je ''%s'' el la malneta retejo'
+    RESTORE: 'Restaŭri malneton'
     RESTORED: 'Sukcese restaŭris je ''{title}'''
     RESTORE_DESC: 'Restaŭri la enarkivigitan version al malneto'
     RESTORE_TO_ROOT: 'Restaŭri malneton ĉe la supra nivelo'
@@ -123,8 +130,12 @@ eo:
     TabContent: Enhavo
     TabHistory: Historio
     TabSettings: Agordoj
+    TreeFiltered: 'Vidigas rezultojn de serĉo.'
+    TreeFilteredClear: Vakigi
     UNPUBLISH_AND_ARCHIVE: 'Malpublikigi kaj sendi al arkivo'
   CMSMain_left_ss:
+    APPLY_FILTER: Serĉi
+    CLEAR_FILTER: Vakigi
     RESET: Restartigi
   CMSPageAddController:
     MENUTITLE: 'Enmeti paĝon'
@@ -157,6 +168,8 @@ eo:
     ListView: 'Lista vido'
     MENUTITLE: Paĝoj
     TreeView: 'Arba vido'
+  CMSPagesController_ContentToolbar_ss:
+    MULTISELECT: 'Staplaj agoj'
   CMSPagesController_Tools_ss:
     FILTER: Filtri
   CMSSIteTreeFilter_PublishedPages:
@@ -165,11 +178,20 @@ eo:
     FILTERDATEFROM: De
     FILTERDATEHEADING: Dato
     FILTERDATETO: Al
+    FILTERLABELTEXT: Serĉi
     PAGEFILTERDATEHEADING: 'Laste redaktita'
   CMSSettingsController:
     MENUTITLE: Agordoj
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Ŝanĝitaj paĝoj'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Ĉiuj paĝoj, inkluzive enarkivigitajn'
   CMSSiteTreeFilter_Search:
     Title: 'Ĉiuj paĝoj'
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Enarkivigitaj paĝoj'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Malnetaj paĝoj'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Publikaj sed forigitaj el malneto'
   ContentControl:
@@ -299,6 +321,7 @@ eo:
   SilverStripeNavigator:
     ARCHIVED: Enarkivigita
   SilverStripeNavigatorLink:
+    ShareInstructions: 'Por kunhavigi ĉi tiun paĝon, kopiu kaj algluu la suban ligilon.'
     ShareLink: 'Komunigi ligilon'
   SilverStripeNavigatorLinkl:
     CloseLink: Fermi
@@ -322,8 +345,6 @@ eo:
     SINGULARNAME: 'Paĝo pri alidirekto'
   SilverStripe\CMS\Model\SiteTree:
     DESCRIPTION: 'Paĝo por ĝenerala enhavo'
-    PLURALNAME: 'Retejaj arboj'
-    SINGULARNAME: 'Reteja arbo'
   SilverStripe\CMS\Model\VirtualPage:
     DESCRIPTION: 'Vidigas la enhavon de alia paĝo'
     PLURALNAME: 'Virtualaj paĝoj'

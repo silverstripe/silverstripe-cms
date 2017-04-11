@@ -1,5 +1,6 @@
 <?php
 
+use SilverStripe\CMS\Controllers\SilverStripeNavigatorItem_StageLink;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
 use SilverStripe\CMS\Controllers\SilverStripeNavigator;
@@ -25,7 +26,7 @@ class SilverStripeNavigatorTest extends SapphireTest
         $items = $navigator->getItems();
         $classes = array_map('get_class', $items->toArray());
         $this->assertContains(
-            'SilverStripe\\CMS\\Controllers\\SilverStripeNavigatorItem_StageLink',
+            SilverStripeNavigatorItem_StageLink::class,
             $classes,
             'Adds default classes'
         );
@@ -40,7 +41,7 @@ class SilverStripeNavigatorTest extends SapphireTest
     public function testCanView()
     {
         $page = $this->objFromFixture('Page', 'page1');
-        $admin = $this->objFromFixture('SilverStripe\\Security\\Member', 'admin');
+        $admin = $this->objFromFixture(Member::class, 'admin');
         $navigator = new SilverStripeNavigator($page);
 
         // TODO Shouldn't be necessary but SapphireTest logs in as ADMIN by default

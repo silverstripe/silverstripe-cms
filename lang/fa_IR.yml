@@ -340,8 +340,6 @@ fa_IR:
     SINGULARNAME: 'صفحه هدایت‌گر'
   SilverStripe\CMS\Model\SiteTree:
     DESCRIPTION: 'صفحه محتوای عمومی'
-    PLURALNAME: 'لیست‌های درختی سایت'
-    SINGULARNAME: 'لیست درختی سایت'
   SilverStripe\CMS\Model\VirtualPage:
     DESCRIPTION: 'نمایش‌دهنده‌ی محتوای صفحه‌ی دیگر'
     PLURALNAME: 'صفحات مجازی'

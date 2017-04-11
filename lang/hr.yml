@@ -77,6 +77,8 @@ hr:
     PUBLISH_PAGES: Objavi
     RESTORE: Povrati
     RESTORED_PAGES: 'Vraćeno ''%d'' stranica'
+    UNPUBLISHED_PAGES: 'Neobjavljene %d stranice'
+    UNPUBLISH_PAGES: Odjavi
   CMSFileAddController:
     MENUTITLE: Datoteke
   CMSMain:
@@ -98,18 +100,23 @@ hr:
     DUPLICATEDWITHCHILDREN: 'Dupliciran ''{title}''  i podstranice uspješno'
     EMAIL: Email
     EditTree: 'Uredi stablo stranice'
+    ListFiltered: 'Prikazujem rezultate pretraživanja.'
     MENUTITLE: 'Uredi stranicu'
     NEWPAGE: 'Novi {pagetype}'
     PAGENOTEXISTS: 'Stranica ne postoji'
+    PAGES: 'Status stranice'
     PAGETYPEANYOPT: 'Bilo koji'
+    PAGETYPEOPT: 'Tip stranice'
     PUBALLCONFIRM: 'Molim objavi svaku stranicu, kopirajući sadržaj'
     PUBALLFUN: '"Objavi sve"'
+    PUBALLFUN2: 'Pritiskom na ovaj gumb će učiniti isto kao i ide na svakoj stranici i pritiskom na "objavi". Namijenjen da se koristi nakon što je došlo do masivne promjene u sadržaju, kao kada je prvi put napravljena.'
     PUBLISHED: 'Uspješno objavljen ''{title}'''
     PUBPAGES: 'Gotovo: Objavljeno {count} stranica'
     PageAdded: 'Uspješno kreirane stranice'
     REMOVED: 'Obrisan ''{title}''{description} sa objavljene stranice'
     REMOVEDPAGE: 'Uklonjen ''{title}'' sa objavljene stranice'
     REMOVEDPAGEFROMDRAFT: 'Uklonjen ''%s'' sa nacrtne stranice'
+    RESTORE: 'Povrati nacrt'
     RESTORED: 'Vraćeno ''{title}'' uspješno'
     RESTORE_DESC: 'Vrati arhiviranu verziju u nacrt'
     RESTORE_TO_ROOT: 'Povrati nacrt na najviši nivo'
@@ -123,8 +130,11 @@ hr:
     TabContent: Sadržaj
     TabHistory: Povijest
     TabSettings: Postavke
+    TreeFiltered: 'Prikazujem rezultate pretraživanja.'
+    TreeFilteredClear: Očisti
     UNPUBLISH_AND_ARCHIVE: 'Odjavi i arhiviraj'
   CMSMain_left_ss:
+    APPLY_FILTER: Traži
     CLEAR_FILTER: Očisti
     RESET: Resetiraj
   CMSPageAddController:
@@ -158,6 +168,8 @@ hr:
     ListView: 'Pregled kao popis'
     MENUTITLE: Stranice
     TreeView: 'Prikaz kao stablo'
+  CMSPagesController_ContentToolbar_ss:
+    MULTISELECT: 'Grupne radnje'
   CMSPagesController_Tools_ss:
     FILTER: Filter
   CMSSIteTreeFilter_PublishedPages:
@@ -166,11 +178,20 @@ hr:
     FILTERDATEFROM: Od
     FILTERDATEHEADING: Datum
     FILTERDATETO: Do
+    FILTERLABELTEXT: Traži
     PAGEFILTERDATEHEADING: 'Zadnje uređeno'
   CMSSettingsController:
     MENUTITLE: Postavke
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Izmjenjene stranice'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Sve stranice, uključujući arhivirane'
   CMSSiteTreeFilter_Search:
     Title: 'Sve stranice'
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Arhivirane stranice'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Nacrtne stranice'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Objavljeno ali uklonito iz predloška'
   ContentControl:
@@ -216,8 +237,14 @@ hr:
     415: '415 - nepodržan multimedijalni tip'
     416: '416 - opseg zahtjeva nije zadovoljavajući'
     417: '417 - očekivanje nije uspjelo'
+    422: '422 - ne mogu obraditi entitet'
+    429: '429 - previše zahtjeva'
     500: '500 - interna serverska greška'
     501: '501 - nije implementirano'
+    502: '502 - Loš pristupnik'
+    503: '503 - servis nedostupan'
+    504: '504 - Pristupnik pauziran'
+    505: '505 - HTTP verzija nije podržana'
     CODE: 'Kod pogreške'
     DEFAULTERRORPAGECONTENT: '<p>Nažalost, čini se kako pokušavate pristupiti stranici koja ne postoji.</p><p>Molimo provjerite jeste li upisali točan URL i pokušajte ponovo.</p>'
     DEFAULTERRORPAGETITLE: 'Stranica nije pronađena'
@@ -271,6 +298,10 @@ hr:
     ReportTitle: Naslov
   ReportAdminForm:
     FILTERBY: 'Filtriraj po'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Molimo objavite povezanu stranicu kako bi objavili virtualnu stranicu'
+    VIRTUALPAGEWARNING: 'Molimo odaberite povezanu stranicu i spremite kako bi objavili ovu stranicu'
+    VIRTUALPAGEWARNINGSETTINGS: 'Molimo odaberite povezanu stranicu u glavnom sadržajnom polju kako bi ste je objavili'
   SearchForm:
     GO: Kreni
     SEARCH: Traži
@@ -290,6 +321,7 @@ hr:
   SilverStripeNavigator:
     ARCHIVED: Arhivirano
   SilverStripeNavigatorLink:
+    ShareInstructions: 'Za dijeljenje ove stranice, kopirajte i zalijepite link ispod.'
     ShareLink: 'Podijeli link'
   SilverStripeNavigatorLinkl:
     CloseLink: Zatvori
@@ -313,8 +345,8 @@ hr:
     SINGULARNAME: 'Preusmjeravajuća stranica'
   SilverStripe\CMS\Model\SiteTree:
     DESCRIPTION: 'Obična sadržajna stranica'
-    PLURALNAME: 'Stabla stranice'
-    SINGULARNAME: 'Stablo stranice'
+    PLURALNAME: Stranice
+    SINGULARNAME: Stranica
   SilverStripe\CMS\Model\VirtualPage:
     DESCRIPTION: 'Prikazuje sadržaj druge stranice'
     PLURALNAME: 'Virtualne stranice'
@@ -357,21 +389,26 @@ hr:
     BUTTONUNPUBLISHDESC: 'Izbrišite ovu stranicu sa objavljene'
     Comments: Komentari
     Content: Sadržaj
-    DEFAULTABOUTCONTENT: '<p>Možete popuniti ovu stranicu s Vašim sadržajem, ili obrisati je i kreirati novu stranicu.<br /></p>'
+    DEFAULTABOUTCONTENT: '<p>Možete popuniti ovu stranicu s Vašim sadržajem, ili obrisati je i kreirati novu stranicu.</p>'
     DEFAULTABOUTTITLE: 'O nama'
-    DEFAULTCONTACTCONTENT: '<p>Možete popuniti ovu stranicu s Vašim sadržajem, ili obrisati je i kreirati novu stranicu.<br /></p>'
+    DEFAULTCONTACTCONTENT: '<p>Možete popuniti ovu stranicu s Vašim sadržajem, ili obrisati je i kreirati novu stranicu.</p>'
     DEFAULTCONTACTTITLE: Kontakt
     DEFAULTHOMECONTENT: '<p>Dobrodošli na SilverStripe! Ovo je zadana početna stranica. Možete je urediti otvarajući <a href="admin/"> CMS</a>.</p><p>Možete pristupiti  <a href="http://docs.silverstripe.org">razvojnoj dokumentaciji</a>, ili početi <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lekcije</a>.</p>'
     DEFAULTHOMETITLE: Početna
     DELETEDPAGEHELP: 'Stranica više nije objavljena'
     DELETEDPAGESHORT: Obrisano
+    DEPENDENT_NOTE: 'Sljedeće stranice zavise o ovoj stranici. To uključuje virtualne stranice, preusmjeravajuće stranice i stranice s sadržajnim linkovima.'
     DESCRIPTION: 'Obična sadržajna stranica'
     DependtPageColumnLinkType: 'Tip linka'
     DependtPageColumnURL: Link
     EDITANYONE: 'Svi koji se mogu prijaviti  u CMS'
     EDITHEADER: 'Tko može uređivati unutar CMSa?'
     EDITONLYTHESE: 'Samo slijedeći korisnici (odaberite s popisa)'
+    EDITORGROUPS: 'Urednička grupa'
     EDIT_ALL_DESCRIPTION: 'Uredi bilo koju stranicu'
+    EDIT_ALL_HELP: 'Mogućnost uređivanja bilo koje stranice, neovisno o postavkama na Pristup tabu. Zahtjeva "Pristup na ''Stranice'' sekciju" dozvolu'
+    Editors: 'Uredničke grupe'
+    GroupPlaceholder: 'Klikni da obabereš grupu'
     HASBROKENLINKS: 'Ova stranica ima pogrešne linkove'
     HTMLEDITORTITLE: Sadržaj
     INHERIT: 'Naslijedi od matične stranice'

@@ -6,13 +6,13 @@
     "test": "tests"
   },
   "engines": {
-    "node": "4.x"
+    "node": "^6.x"
   },
   "scripts": {
-    "build": "webpack",
-    "watch": "webpack -w",
+    "build": "webpack --bail --progress",
+    "watch": "webpack --watch --config ./webpack-dev.config.js --progress",
     "lock": "npm-shrinkwrap --dev",
-    "lint": "eslint client/src & sass-lint -v"
+    "lint": "eslint client/src && sass-lint -v"
   },
   "repository": {
     "type": "git",

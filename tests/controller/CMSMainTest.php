@@ -1,15 +1,16 @@
 <?php
 
+use SilverStripe\Core\Injector\Injector;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ValidationException;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\ORM\HiddenClass;
 use SilverStripe\CMS\Controllers\CMSMain;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Admin\CMSBatchActionHandler;
 use SilverStripe\SiteConfig\SiteConfig;
-use SilverStripe\Core\Cache;
+use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Dev\TestOnly;
@@ -45,11 +46,11 @@ class CMSMainTest extends FunctionalTest
 
     public function testSiteTreeHints()
     {
-        $cache = Cache::factory('CMSMain_SiteTreeHints');
+        $cache = Injector::inst()->get(CacheInterface::class . '.CMSMain_SiteTreeHints');
         // Login as user with root creation privileges
         $user = $this->objFromFixture('SilverStripe\\Security\\Member', 'rootedituser');
         $user->logIn();
-        $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
+        $cache->clear();
 
         $rawHints = singleton('SilverStripe\\CMS\\Controllers\\CMSMain')->SiteTreeHints();
         $this->assertNotNull($rawHints);
@@ -249,7 +250,7 @@ class CMSMainTest extends FunctionalTest
 
         $response = $this->get('admin/pages/edit/show/' . $pageID);
 
-        $livePage = Versioned::get_one_by_stage("SilverStripe\\CMS\\Model\\SiteTree", "Live", array(
+        $livePage = Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, array(
                 '"SiteTree"."ID"' => $pageID
         ));
         $this->assertInstanceOf('SilverStripe\\CMS\\Model\\SiteTree', $livePage);

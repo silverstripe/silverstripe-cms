@@ -3,174 +3,168 @@ var i=n[a]={exports:{},id:a,loaded:!1}
 return t[a].call(i.exports,i,i.exports,e),i.loaded=!0,i.exports}var n={}
 return e.m=t,e.c=n,e.p="",e(0)}([function(t,e,n){"use strict"
 n(3),n(4),n(6),n(7),n(8),n(9),n(10),n(11)},,function(t,e){t.exports=jQuery},function(t,e,n){"use strict"
-function a(t){return t&&t.__esModule?t:{"default":t}}var i=n(2),s=a(i)
-s["default"].entwine("ss",function(t){t(".cms-add-form .parent-mode :input").entwine({onclick:function e(t){if("top"==this.val()){var e=this.closest("form").find("#Form_AddForm_ParentID_Holder .TreeDropdownField")
+function a(t){return t&&t.__esModule?t:{default:t}}var i=n(2),s=a(i)
+s.default.entwine("ss",function(t){t(".cms-add-form .parent-mode :input").entwine({onclick:function t(e){if("top"==this.val()){var n=this.closest("form").find("#Form_AddForm_ParentID_Holder .TreeDropdownField")
 
 
-e.setValue(""),e.setTitle("")}}}),t(".cms-add-form").entwine({ParentID:0,ParentCache:{},onadd:function n(){var t=this
-this.find("#Form_AddForm_ParentID_Holder .TreeDropdownField").bind("change",function(){t.updateTypeList()}),this.find(".SelectionGroup.parent-mode").bind("change",function(){t.updateTypeList()}),this.updateTypeList()
+n.setValue(""),n.setTitle("")}}}),t(".cms-add-form").entwine({ParentID:0,ParentCache:{},onadd:function t(){var e=this
+this.find("#Form_AddForm_ParentID_Holder .TreeDropdownField").bind("change",function(){e.updateTypeList()}),this.find(".SelectionGroup.parent-mode").bind("change",function(){e.updateTypeList()}),this.updateTypeList()
 
-},loadCachedChildren:function a(t){var e=this.getParentCache()
-return"undefined"!=typeof e[t]?e[t]:null},saveCachedChildren:function i(t,e){var n=this.getParentCache()
-n[t]=e,this.setParentCache(n)},updateTypeList:function s(){var e=this.data("hints"),n=this.find("#Form_AddForm_ParentID_Holder .TreeDropdownField"),a=this.find("input[name=ParentModeField]:checked").val(),i=n.data("metadata"),s=i&&"child"===a?n.getValue()||this.getParentID():null,r=i?i.ClassName:null,o=r&&"child"===a&&s?r:"Root",d="undefined"!=typeof e[o]?e[o]:null,l=this,c=d&&"undefined"!=typeof d.defaultChild?d.defaultChild:null,u=[]
-
-
-if(s){if(this.hasClass("loading"))return
-return this.addClass("loading"),this.setParentID(s),n.getValue()||n.setValue(s),u=this.loadCachedChildren(s),null!==u?(this.updateSelectionFilter(u,c),void this.removeClass("loading")):(t.ajax({url:l.data("childfilter"),
-data:{ParentID:s},success:function h(t){l.saveCachedChildren(s,t),l.updateSelectionFilter(t,c)},complete:function f(){l.removeClass("loading")}}),!1)}u=d&&"undefined"!=typeof d.disallowedChildren?d.disallowedChildren:[],
-this.updateSelectionFilter(u,c)},updateSelectionFilter:function r(e,n){var a=null
-if(this.find("#Form_AddForm_PageType div.radio").each(function(){var n=t(this).find("input").val(),i=t.inArray(n,e)===-1
-t(this).setEnabled(i),i||t(this).setSelected(!1),a=null===a?i:a&&i}),n)var i=this.find("#Form_AddForm_PageType div.radio input[value="+n+"]").parents("li:first")
-else var i=this.find("#Form_AddForm_PageType div.radio:not(.disabled):first")
-i.setSelected(!0),i.siblings().setSelected(!1),this.find("#Form_AddForm_PageType div.radio:not(.disabled)").length?this.find("button[name=action_doAdd]").removeAttr("disabled"):this.find("button[name=action_doAdd]").attr("disabled","disabled"),
-this.find(".message-restricted")[a?"hide":"show"]()}}),t(".cms-add-form #Form_AddForm_PageType div.radio").entwine({onclick:function o(t){this.setSelected(!0)},setSelected:function d(t){var e=this.find("input")
+},loadCachedChildren:function t(e){var n=this.getParentCache()
+return"undefined"!=typeof n[e]?n[e]:null},saveCachedChildren:function t(e,n){var a=this.getParentCache()
+a[e]=n,this.setParentCache(a)},updateTypeList:function e(){var n=this.data("hints"),a=this.find("#Form_AddForm_ParentID_Holder .TreeDropdownField"),i=this.find("input[name=ParentModeField]:checked").val(),s=a.data("metadata"),o=s&&"child"===i?a.getValue()||this.getParentID():null,r=s?s.ClassName:null,d=r&&"child"===i&&o?r:"Root",l="undefined"!=typeof n[d]?n[d]:null,c=this,u=l&&"undefined"!=typeof l.defaultChild?l.defaultChild:null,h=[]
 
 
-t&&!e.is(":disabled")?(this.siblings().setSelected(!1),this.toggleClass("selected",!0),e.prop("checked",!0)):(this.toggleClass("selected",!1),e.prop("checked",!1))},setEnabled:function l(e){t(this).toggleClass("disabled",!e),
-e?t(this).find("input").removeAttr("disabled"):t(this).find("input").attr("disabled","disabled").removeAttr("checked")}}),t(".cms-content-addpage-button").entwine({onclick:function c(e){var n=t(".cms-tree"),a=t(".cms-list"),i=0,s
+if(o){if(this.hasClass("loading"))return
+return this.addClass("loading"),this.setParentID(o),a.getValue()||a.setValue(o),h=this.loadCachedChildren(o),null!==h?(this.updateSelectionFilter(h,u),void this.removeClass("loading")):(t.ajax({url:c.data("childfilter"),
+data:{ParentID:o},success:function t(e){c.saveCachedChildren(o,e),c.updateSelectionFilter(e,u)},complete:function t(){c.removeClass("loading")}}),!1)}h=l&&"undefined"!=typeof l.disallowedChildren?l.disallowedChildren:[],
+this.updateSelectionFilter(h,u)},updateSelectionFilter:function e(n,a){var i=null
+if(this.find("#Form_AddForm_PageType div.radio").each(function(){var e=t(this).find("input").val(),a=t.inArray(e,n)===-1
+t(this).setEnabled(a),a||t(this).setSelected(!1),i=null===i?a:i&&a}),a)var s=this.find("#Form_AddForm_PageType div.radio input[value="+a+"]").parents("li:first")
+else var s=this.find("#Form_AddForm_PageType div.radio:not(.disabled):first")
+s.setSelected(!0),s.siblings().setSelected(!1),this.find("#Form_AddForm_PageType div.radio:not(.disabled)").length?this.find("button[name=action_doAdd]").removeAttr("disabled"):this.find("button[name=action_doAdd]").attr("disabled","disabled"),
+this.find(".message-restricted")[i?"hide":"show"]()}}),t(".cms-add-form #Form_AddForm_PageType div.radio").entwine({onclick:function t(e){this.setSelected(!0)},setSelected:function t(e){var n=this.find("input")
 
 
-if(n.is(":visible")){var r=n.jstree("get_selected")
-i=r?t(r[0]).data("id"):null}else{var o=a.find('input[name="Page[GridState]"]').val()
-o&&(i=parseInt(JSON.parse(o).ParentID,10))}var d={selector:this.data("targetPanel"),pjax:this.data("pjax")},l
-i?(s=this.data("extraParams")?this.data("extraParams"):"",l=t.path.addSearchParams(i18n.sprintf(this.data("urlAddpage"),i),s)):l=this.attr("href"),t(".cms-container").loadPanel(l,null,d),e.preventDefault(),
+e&&!n.is(":disabled")?(this.siblings().setSelected(!1),this.toggleClass("selected",!0),n.prop("checked",!0)):(this.toggleClass("selected",!1),n.prop("checked",!1))},setEnabled:function e(n){t(this).toggleClass("disabled",!n),
+n?t(this).find("input").removeAttr("disabled"):t(this).find("input").attr("disabled","disabled").removeAttr("checked")}}),t(".cms-content-addpage-button").entwine({onclick:function e(n){var a=t(".cms-tree"),i=t(".cms-list"),s=0,o
+
+
+if(a.is(":visible")){var r=a.jstree("get_selected")
+s=r?t(r[0]).data("id"):null}else{var d=i.find('input[name="Page[GridState]"]').val()
+d&&(s=parseInt(JSON.parse(d).ParentID,10))}var l={selector:this.data("targetPanel"),pjax:this.data("pjax")},c
+s?(o=this.data("extraParams")?this.data("extraParams"):"",c=t.path.addSearchParams(i18n.sprintf(this.data("urlAddpage"),s),o)):c=this.attr("href"),t(".cms-container").loadPanel(c,null,l),n.preventDefault(),
 this.blur()}})})},function(t,e,n){"use strict"
-function a(t){return t&&t.__esModule?t:{"default":t}}var i=n(2),s=a(i),r=n(5),o=a(r)
-s["default"].entwine("ss",function(t){t(".cms-edit-form :input[name=ClassName]").entwine({onchange:function e(){alert(o["default"]._t("CMSMAIN.ALERTCLASSNAME"))}}),t(".cms-edit-form input[name=Title]").entwine({
-onmatch:function n(){var e=this
-e.data("OrigVal",e.val())
-var n=e.closest("form"),a=t("input:text[name=URLSegment]",n),i=t("input[name=LiveLink]",n)
-a.length>0&&(e._addActions(),this.bind("change",function(n){var s=e.data("OrigVal"),r=e.val()
-e.data("OrigVal",r),0===a.val().indexOf(a.data("defaultUrl"))&&""==i.val()?e.updateURLSegment(r):t(".update",e.parent()).show(),e.updateRelatedFields(r,s),e.updateBreadcrumbLabel(r)})),this._super()},onunmatch:function a(){
-this._super()},updateRelatedFields:function i(e,n){this.parents("form").find("input[name=MetaTitle], input[name=MenuTitle]").each(function(){var a=t(this)
-a.val()==n&&(a.val(e),a.updatedRelatedFields&&a.updatedRelatedFields())})},updateURLSegment:function s(e){var n=t("input:text[name=URLSegment]",this.closest("form")),a=n.closest(".field.urlsegment"),i=t(".update",this.parent())
+function a(t){return t&&t.__esModule?t:{default:t}}var i=n(2),s=a(i),o=n(5),r=a(o)
+s.default.entwine("ss",function(t){t(".cms-edit-form :input[name=ClassName]").entwine({onchange:function t(){alert(r.default._t("CMSMAIN.ALERTCLASSNAME"))}}),t(".cms-edit-form input[name=Title]").entwine({
+onmatch:function e(){var n=this
+n.data("OrigVal",n.val())
+var a=n.closest("form"),i=t("input:text[name=URLSegment]",a),s=t("input[name=LiveLink]",a)
+i.length>0&&(n._addActions(),this.bind("change",function(e){var a=n.data("OrigVal"),o=n.val()
+n.data("OrigVal",o),0===i.val().indexOf(i.data("defaultUrl"))&&""==s.val()?n.updateURLSegment(o):t(".update",n.parent()).show(),n.updateRelatedFields(o,a),n.updateBreadcrumbLabel(o)})),this._super()},onunmatch:function t(){
+this._super()},updateRelatedFields:function e(n,a){this.parents("form").find("input[name=MetaTitle], input[name=MenuTitle]").each(function(){var e=t(this)
+e.val()==a&&(e.val(n),e.updatedRelatedFields&&e.updatedRelatedFields())})},updateURLSegment:function e(n){var a=t("input:text[name=URLSegment]",this.closest("form")),i=a.closest(".field.urlsegment"),s=t(".update",this.parent())
 
 
-a.update(e),i.is(":visible")&&i.hide()},updateBreadcrumbLabel:function r(e){var n=t(".cms-edit-form input[name=ID]").val(),a=t("span.cms-panel-link.crumb")
-e&&""!=e&&a.text(e)},_addActions:function d(){var e=this,n
-n=t("<button />",{"class":"update ss-ui-button-small",text:o["default"]._t("URLSEGMENT.UpdateURL"),type:"button",click:function a(t){t.preventDefault(),e.updateURLSegment(e.val())}}),n.insertAfter(e),n.hide()
+i.update(n),s.is(":visible")&&s.hide()},updateBreadcrumbLabel:function e(n){var a=t(".cms-edit-form input[name=ID]").val(),i=t("span.cms-panel-link.crumb")
+n&&""!=n&&i.text(n)},_addActions:function e(){var n=this,a
+a=t("<button />",{class:"update ss-ui-button-small",text:r.default._t("URLSEGMENT.UpdateURL"),type:"button",click:function t(e){e.preventDefault(),n.updateURLSegment(n.val())}}),a.insertAfter(n),a.hide()
 
-}}),t(".cms-edit-form .parentTypeSelector").entwine({onmatch:function l(){var t=this
-this.find(":input[name=ParentType]").bind("click",function(e){t._toggleSelection(e)}),this.find(".TreeDropdownField").bind("change",function(e){t._changeParentId(e)}),this._changeParentId(),this._toggleSelection(),
-this._super()},onunmatch:function c(){this._super()},_toggleSelection:function u(e){var n=this.find(":input[name=ParentType]:checked").val(),a=this.find("#Form_EditForm_ParentID_Holder")
-"root"==n?this.find(":input[name=ParentID]").val(0):this.find(":input[name=ParentID]").val(this.find("#Form_EditForm_ParentType_subpage").data("parentIdValue")),"root"!=n?a.slideDown(400,function(){t(this).css("overflow","visible")
+}}),t(".cms-edit-form .parentTypeSelector").entwine({onmatch:function t(){var e=this
+this.find(":input[name=ParentType]").bind("click",function(t){e._toggleSelection(t)}),this.find(".TreeDropdownField").bind("change",function(t){e._changeParentId(t)}),this._changeParentId(),this._toggleSelection(),
+this._super()},onunmatch:function t(){this._super()},_toggleSelection:function e(n){var a=this.find(":input[name=ParentType]:checked").val(),i=this.find("#Form_EditForm_ParentID_Holder")
+"root"==a?this.find(":input[name=ParentID]").val(0):this.find(":input[name=ParentID]").val(this.find("#Form_EditForm_ParentType_subpage").data("parentIdValue")),"root"!=a?i.slideDown(400,function(){t(this).css("overflow","visible")
 
-}):a.slideUp()},_changeParentId:function h(t){var e=this.find(":input[name=ParentID]").val()
-this.find("#Form_EditForm_ParentType_subpage").data("parentIdValue",e)}}),t(".cms-edit-form #CanViewType, .cms-edit-form #CanEditType, .cms-edit-form #CanCreateTopLevelType").entwine({onmatch:function f(){
-var e
-"CanViewType"==this.attr("id")?e=t("#Form_EditForm_ViewerGroups_Holder"):"CanEditType"==this.attr("id")?e=t("#Form_EditForm_EditorGroups_Holder"):"CanCreateTopLevelType"==this.attr("id")&&(e=t("#Form_EditForm_CreateTopLevelGroups_Holder")),
-this.find(".optionset :input").bind("change",function(n){var a=t(this).closest(".middleColumn").parent("div")
-"OnlyTheseUsers"==n.target.value?(a.addClass("remove-splitter"),e.show()):(a.removeClass("remove-splitter"),e.hide())})
-var n=this.find("input[name="+this.attr("id")+"]:checked").val()
-e["OnlyTheseUsers"==n?"show":"hide"](),this._super()},onunmatch:function m(){this._super()}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_print").entwine({onclick:function p(e){var n=t(this[0].form).attr("action").replace(/\?.*$/,"")+"/printable/"+t(":input[name=ID]",this[0].form).val()
+}):i.slideUp()},_changeParentId:function t(e){var n=this.find(":input[name=ParentID]").val()
+this.find("#Form_EditForm_ParentType_subpage").data("parentIdValue",n)}}),t('.cms-edit-form [name="CanViewType"], .cms-edit-form [name="CanEditType"], .cms-edit-form #CanCreateTopLevelType').entwine({onmatch:function t(){
+"OnlyTheseUsers"===this.val()&&(this.is(":checked")?this.showList(!0):this.hideList(!0))},onchange:function t(e){"OnlyTheseUsers"===e.target.value?this.showList():this.hideList()},showList:function t(e){
+var n=this.closest(".field")
+n.addClass("field--merge-below"),n.next().filter(".listbox")[e?"show":"slideDown"]()},hideList:function t(e){var n=this.closest(".field")
+n.next().filter(".listbox")[e?"hide":"slideUp"](function(){n.removeClass("field--merge-below")})}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_print").entwine({onclick:function e(n){var a=t(this[0].form).attr("action").replace(/\?.*$/,"")+"/printable/"+t(":input[name=ID]",this[0].form).val()
 
 
-return"http://"!=n.substr(0,7)&&(n=t("base").attr("href")+n),window.open(n,"printable"),!1}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_rollback").entwine({onclick:function v(t){var e=this.parents("form:first"),n=e.find(":input[name=Version]").val(),a=""
+return"http://"!=a.substr(0,7)&&(a=t("base").attr("href")+a),window.open(a,"printable"),!1}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_rollback").entwine({onclick:function t(e){var n=this.parents("form:first"),a=n.find(":input[name=Version]").val(),i=""
 
 
-return a=n?o["default"].sprintf(o["default"]._t("CMSMain.RollbackToVersion"),n):o["default"]._t("CMSMain.ConfirmRestoreFromLive"),!!confirm(a)&&this._super(t)}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_archive").entwine({
-onclick:function g(t){var e=this.parents("form:first"),n=e.find(":input[name=Version]").val(),a=""
-return a=o["default"].sprintf(o["default"]._t("CMSMain.Archive"),n),!!confirm(a)&&this._super(t)}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_restore").entwine({onclick:function _(t){var e=this.parents("form:first"),n=e.find(":input[name=Version]").val(),a="",i=this.data("toRoot")
+return i=a?r.default.sprintf(r.default._t("CMSMain.RollbackToVersion"),a):r.default._t("CMSMain.ConfirmRestoreFromLive"),!!confirm(i)&&this._super(e)}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_archive").entwine({
+onclick:function t(e){var n=this.parents("form:first"),a=""
+return a=n.find("input[name=ArchiveWarningMessage]").val().replace(/\\n/g,"\n"),!!confirm(a)&&this._super(e)}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_restore").entwine({onclick:function t(e){
+var n=this.parents("form:first"),a=n.find(":input[name=Version]").val(),i="",s=this.data("toRoot")
+return i=r.default.sprintf(r.default._t(s?"CMSMain.RestoreToRoot":"CMSMain.Restore"),a),!!confirm(i)&&this._super(e)}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_unpublish").entwine({onclick:function t(e){
+var n=this.parents("form:first"),a=n.find(":input[name=Version]").val(),i=""
+return i=r.default.sprintf(r.default._t("CMSMain.Unpublish"),a),!!confirm(i)&&this._super(e)}}),t(".cms-edit-form.changed").entwine({onmatch:function t(e){var n=this.find("button[name=action_save]")
+n.attr("data-text-alternate")&&(n.attr("data-text-standard",n.text()),n.text(n.attr("data-text-alternate"))),n.attr("data-btn-alternate")&&(n.attr("data-btn-standard",n.attr("class")),n.attr("class",n.attr("data-btn-alternate"))),
+n.removeClass("btn-secondary-outline").addClass("btn-primary")
+var a=this.find("button[name=action_publish]")
+a.attr("data-text-alternate")&&(a.attr("data-text-standard",a.attr("data-text-alternate")),a.text(a.attr("data-text-alternate"))),a.attr("data-btn-alternate")&&(a.attr("data-btn-standard",a.attr("class")),
+a.attr("class",a.attr("data-btn-alternate"))),a.removeClass("btn-secondary-outline").addClass("btn-primary"),this._super(e)},onunmatch:function t(e){var n=this.find("button[name=action_save]")
+n.attr("data-text-standard")&&n.text(n.attr("data-text-standard")),n.attr("data-btn-standard")&&n.attr("class",n.attr("data-btn-standard"))
+var a=this.find("button[name=action_publish]")
+a.attr("data-text-standard")&&a.text(a.attr("data-text-standard")),a.attr("data-btn-standard")&&a.attr("class",a.attr("data-btn-standard")),this._super(e)}}),t(".cms-edit-form .btn-toolbar button[name=action_publish]").entwine({
+onbuttonafterrefreshalternate:function t(){this.data("showingAlternate")?(this.addClass("btn-primary"),this.removeClass("btn-secondary")):(this.removeClass("btn-primary"),this.addClass("btn-secondary"))
 
+}}),t(".cms-edit-form .btn-toolbar button[name=action_save]").entwine({onbuttonafterrefreshalternate:function t(){this.data("showingAlternate")?(this.addClass("btn-primary"),this.removeClass("btn-secondary")):(this.removeClass("btn-primary"),
+this.addClass("btn-secondary"))}}),t('.cms-edit-form.CMSPageSettingsController input[name="ParentType"]:checked').entwine({onmatch:function t(){this.redraw(),this._super()},onunmatch:function t(){this._super()
 
-return a=o["default"].sprintf(o["default"]._t(i?"CMSMain.RestoreToRoot":"CMSMain.Restore"),n),!!confirm(a)&&this._super(t)}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_unpublish").entwine({onclick:function b(t){
-var e=this.parents("form:first"),n=e.find(":input[name=Version]").val(),a=""
-return a=o["default"].sprintf(o["default"]._t("CMSMain.Unpublish"),n),!!confirm(a)&&this._super(t)}}),t(".cms-edit-form.changed").entwine({onmatch:function w(t){var e=this.find("button[name=action_save]")
-
-
-e.attr("data-text-alternate")&&(e.attr("data-text-standard",e.text()),e.text(e.attr("data-text-alternate"))),e.attr("data-btn-alternate")&&(e.attr("data-btn-standard",e.attr("class")),e.attr("class",e.attr("data-btn-alternate"))),
-e.removeClass("btn-secondary-outline").addClass("btn-primary")
-var n=this.find("button[name=action_publish]")
-n.attr("data-text-alternate")&&(n.attr("data-text-standard",n.attr("data-text-alternate")),n.text(n.attr("data-text-alternate"))),n.attr("data-btn-alternate")&&(n.attr("data-btn-standard",n.attr("class")),
-n.attr("class",n.attr("data-btn-alternate"))),n.removeClass("btn-secondary-outline").addClass("btn-primary"),this._super(t)},onunmatch:function C(t){var e=this.find("button[name=action_save]")
-e.attr("data-text-standard")&&e.text(e.attr("data-text-standard")),e.attr("data-btn-standard")&&e.attr("class",e.attr("data-btn-standard"))
-var n=this.find("button[name=action_publish]")
-n.attr("data-text-standard")&&n.text(n.attr("data-text-standard")),n.attr("data-btn-standard")&&n.attr("class",n.attr("data-btn-standard")),this._super(t)}}),t(".cms-edit-form .btn-toolbar button[name=action_publish]").entwine({
-onbuttonafterrefreshalternate:function F(){this.data("showingAlternate")?(this.addClass("btn-primary"),this.removeClass("btn-secondary")):(this.removeClass("btn-primary"),this.addClass("btn-secondary"))
-
-}}),t(".cms-edit-form .btn-toolbar button[name=action_save]").entwine({onbuttonafterrefreshalternate:function x(){this.data("showingAlternate")?(this.addClass("btn-primary"),this.removeClass("btn-secondary")):(this.removeClass("btn-primary"),
-this.addClass("btn-secondary"))}}),t('.cms-edit-form.CMSPageSettingsController input[name="ParentType"]:checked').entwine({onmatch:function P(){this.redraw(),this._super()},onunmatch:function T(){this._super()
-
-},redraw:function y(){var e=t(".cms-edit-form.CMSPageSettingsController #Form_EditForm_ParentID_Holder")
-"Form_EditForm_ParentType_root"==t(this).attr("id")?e.slideUp():e.slideDown()},onclick:function S(){this.redraw()}}),"Form_EditForm_ParentType_root"==t('.cms-edit-form.CMSPageSettingsController input[name="ParentType"]:checked').attr("id")&&t(".cms-edit-form.CMSPageSettingsController #Form_EditForm_ParentID_Holder").hide()
+},redraw:function e(){var n=t(".cms-edit-form.CMSPageSettingsController #Form_EditForm_ParentID_Holder")
+"Form_EditForm_ParentType_root"==t(this).attr("id")?n.slideUp():n.slideDown()},onclick:function t(){this.redraw()}}),"Form_EditForm_ParentType_root"==t('.cms-edit-form.CMSPageSettingsController input[name="ParentType"]:checked').attr("id")&&t(".cms-edit-form.CMSPageSettingsController #Form_EditForm_ParentID_Holder").hide()
 
 })},function(t,e){t.exports=i18n},function(t,e,n){"use strict"
-function a(t){return t&&t.__esModule?t:{"default":t}}var i=n(2),s=a(i)
-s["default"].entwine("ss",function(t){t(".cms-content-header-info").entwine({"from .cms-panel":{ontoggle:function e(t){var e=this.closest(".cms-content").find(t.target)
-0!==e.length&&this.parent()[e.hasClass("collapsed")?"addClass":"removeClass"]("collapsed")}}}),t(".cms .cms-panel-link.page-view-link").entwine({onclick:function n(e){this.siblings().removeClass("active"),
+function a(t){return t&&t.__esModule?t:{default:t}}var i=n(2),s=a(i)
+s.default.entwine("ss",function(t){t(".cms-content-header-info").entwine({"from .cms-panel":{ontoggle:function t(e){var n=this.closest(".cms-content").find(e.target)
+0!==n.length&&this.parent()[n.hasClass("collapsed")?"addClass":"removeClass"]("collapsed")}}}),t(".cms .cms-panel-link.page-view-link").entwine({onclick:function e(n){this.siblings().removeClass("active"),
 this.addClass("active")
-var n=t(".cms-content-filters input[type='hidden'][name='view']")
-return n.val(t(this).data("view")),this._super(e)}}),t(".cms-content-toolbar").entwine({onmatch:function a(){var e=this
-this._super(),t.each(this.find(".cms-actions-buttons-row .tool-button"),function(){var n=t(this),a=n.data("toolid"),i=n.hasClass("active")
-void 0!==a&&(n.data("active",!1).removeClass("active"),t("#"+a).hide(),e.bindActionButtonEvents(n))})},onunmatch:function i(){var e=this
-this._super(),t.each(this.find(".cms-actions-buttons-row .tool-button"),function(){var n=t(this)
-e.unbindActionButtonEvents(n)})},bindActionButtonEvents:function s(t){var e=this
-t.on("click.cmsContentToolbar",function(n){e.showHideTool(t)})},unbindActionButtonEvents:function r(t){t.off(".cmsContentToolbar")},showHideTool:function o(e){var n=e.data("active"),a=e.data("toolid"),i=t("#"+a)
+var a=t(".cms-content-filters input[type='hidden'][name='view']")
+return a.val(t(this).data("view")),this._super(n)}}),t(".cms-content-toolbar").entwine({onmatch:function e(){var n=this
+this._super(),t.each(this.find(".cms-actions-buttons-row .tool-button"),function(){var e=t(this),a=e.data("toolid"),i=e.hasClass("active")
+void 0!==a&&(e.data("active",!1).removeClass("active"),t("#"+a).hide(),n.bindActionButtonEvents(e))})},onunmatch:function e(){var n=this
+this._super(),t.each(this.find(".cms-actions-buttons-row .tool-button"),function(){var e=t(this)
+n.unbindActionButtonEvents(e)})},bindActionButtonEvents:function t(e){var n=this
+e.on("click.cmsContentToolbar",function(t){n.showHideTool(e)})},unbindActionButtonEvents:function t(e){e.off(".cmsContentToolbar")},showHideTool:function e(n){var a=n.data("active"),i=n.data("toolid"),s=t("#"+i)
 
 
 t.each(this.find(".cms-actions-buttons-row .tool-button"),function(){var e=t(this),n=t("#"+e.data("toolid"))
-e.data("toolid")!==a&&(n.hide(),e.data("active",!1))}),e[n?"removeClass":"addClass"]("active"),i[n?"hide":"show"](),e.data("active",!n)}})})},function(t,e,n){"use strict"
-function a(t){return t&&t.__esModule?t:{"default":t}}var i=n(2),s=a(i),r=n(5),o=a(r)
-s["default"].entwine("ss.tree",function(t){t(".cms-tree").entwine({fromDocument:{"oncontext_show.vakata":function e(t){this.adjustContextClass()}},adjustContextClass:function n(){var e=t("#vakata-contextmenu").find("ul ul")
+e.data("toolid")!==i&&(n.hide(),e.data("active",!1))}),n[a?"removeClass":"addClass"]("active"),s[a?"hide":"show"](),n.data("active",!a)}})})},function(t,e,n){"use strict"
+function a(t){return t&&t.__esModule?t:{default:t}}var i=n(2),s=a(i),o=n(5),r=a(o)
+s.default.entwine("ss.tree",function(t){t(".cms-tree").entwine({fromDocument:{"oncontext_show.vakata":function t(e){this.adjustContextClass()}},adjustContextClass:function e(){var n=t("#vakata-contextmenu").find("ul ul")
 
 
-e.each(function(n){var a="1",i=t(e[n]).find("li").length
-i>20?a="3":i>10&&(a="2"),t(e[n]).addClass("col-"+a).removeClass("right"),t(e[n]).find("li").on("mouseenter",function(e){t(this).parent("ul").removeClass("right")})})},getTreeConfig:function a(){var e=this,n=this._super(),a=this.getHints()
+n.each(function(e){var a="1",i=t(n[e]).find("li").length
+i>20?a="3":i>10&&(a="2"),t(n[e]).addClass("col-"+a).removeClass("right"),t(n[e]).find("li").on("mouseenter",function(e){t(this).parent("ul").removeClass("right")})})},getTreeConfig:function e(){var n=this,a=this._super(),i=this.getHints()
 
 
-return n.plugins.push("contextmenu"),n.contextmenu={items:function i(n){var a={edit:{label:n.hasClass("edit-disabled")?o["default"]._t("Tree.EditPage","Edit page",100,"Used in the context menu when right-clicking on a page node in the CMS tree"):o["default"]._t("Tree.ViewPage","View page",100,"Used in the context menu when right-clicking on a page node in the CMS tree"),
-action:function c(n){t(".cms-container").entwine(".ss").loadPanel(o["default"].sprintf(e.data("urlEditpage"),n.data("id")))}}}
-n.hasClass("nochildren")||(a.showaslist={label:o["default"]._t("Tree.ShowAsList"),action:function u(n){t(".cms-container").entwine(".ss").loadPanel(e.data("urlListview")+"&ParentID="+n.data("id"),null,{
-tabState:{"pages-controller-cms-content":{tabSelector:".content-listview"}}})}})
-var i=n.data("pagetype"),s=n.data("id"),r=n.find(">a .item").data("allowedchildren"),d={},l=!1
-return t.each(r,function(n,a){l=!0,d["allowedchildren-"+n]={label:'<span class="jstree-pageicon"></span>'+a,_class:"class-"+n,action:function i(a){t(".cms-container").entwine(".ss").loadPanel(t.path.addSearchParams(o["default"].sprintf(e.data("urlAddpage"),s,n),e.data("extraParams")))
+return a.plugins.push("contextmenu"),a.contextmenu={items:function e(a){var i={edit:{label:a.hasClass("edit-disabled")?r.default._t("Tree.EditPage","Edit page",100,"Used in the context menu when right-clicking on a page node in the CMS tree"):r.default._t("Tree.ViewPage","View page",100,"Used in the context menu when right-clicking on a page node in the CMS tree"),
+action:function e(a){t(".cms-container").entwine(".ss").loadPanel(r.default.sprintf(n.data("urlEditpage"),a.data("id")))}}}
+a.hasClass("nochildren")||(i.showaslist={label:r.default._t("Tree.ShowAsList"),action:function e(a){t(".cms-container").entwine(".ss").loadPanel(n.data("urlListview")+"&ParentID="+a.data("id"),null,{tabState:{
+"pages-controller-cms-content":{tabSelector:".content-listview"}}})}})
+var s=a.data("pagetype"),o=a.data("id"),d=a.find(">a .item").data("allowedchildren"),l={},c=!1
+return t.each(d,function(e,a){c=!0,l["allowedchildren-"+e]={label:'<span class="jstree-pageicon"></span>'+a,_class:"class-"+e,action:function a(i){t(".cms-container").entwine(".ss").loadPanel(t.path.addSearchParams(r.default.sprintf(n.data("urlAddpage"),o,e),n.data("extraParams")))
 
-}}}),l&&(a.addsubpage={label:o["default"]._t("Tree.AddSubPage","Add page under this page",100,"Used in the context menu when right-clicking on a page node in the CMS tree"),submenu:d}),n.hasClass("edit-disabled")||(a.duplicate={
-label:o["default"]._t("Tree.Duplicate"),submenu:[{label:o["default"]._t("Tree.ThisPageOnly"),action:function h(n){t(".cms-container").entwine(".ss").loadPanel(t.path.addSearchParams(o["default"].sprintf(e.data("urlDuplicate"),n.data("id")),e.data("extraParams")))
+}}}),c&&(i.addsubpage={label:r.default._t("Tree.AddSubPage","Add page under this page",100,"Used in the context menu when right-clicking on a page node in the CMS tree"),submenu:l}),a.hasClass("edit-disabled")||(i.duplicate={
+label:r.default._t("Tree.Duplicate"),submenu:[{label:r.default._t("Tree.ThisPageOnly"),action:function e(a){t(".cms-container").entwine(".ss").loadPanel(t.path.addSearchParams(r.default.sprintf(n.data("urlDuplicate"),a.data("id")),n.data("extraParams")))
 
-}},{label:o["default"]._t("Tree.ThisPageAndSubpages"),action:function f(n){t(".cms-container").entwine(".ss").loadPanel(t.path.addSearchParams(o["default"].sprintf(e.data("urlDuplicatewithchildren"),n.data("id")),e.data("extraParams")))
+}},{label:r.default._t("Tree.ThisPageAndSubpages"),action:function e(a){t(".cms-container").entwine(".ss").loadPanel(t.path.addSearchParams(r.default.sprintf(n.data("urlDuplicatewithchildren"),a.data("id")),n.data("extraParams")))
 
-}}]}),a}},n}}),t(".cms-tree a.jstree-clicked").entwine({onmatch:function i(){var t=this,e=t.parents(".cms-panel-content"),n;(t.offset().top<0||t.offset().top>e.height()-t.height())&&(n=e.scrollTop()+t.offset().top+e.height()/2,
-e.animate({scrollTop:n},"slow"))}}),t(".cms-tree-filtered .clear-filter").entwine({onclick:function s(){window.location=location.protocol+"//"+location.host+location.pathname}})})},function(t,e,n){"use strict"
+}}]}),i}},a}}),t(".cms-tree a.jstree-clicked").entwine({onmatch:function t(){var e=this,n=e.parents(".cms-panel-content"),a;(e.offset().top<0||e.offset().top>n.height()-e.height())&&(a=n.scrollTop()+e.offset().top+n.height()/2,
+n.animate({scrollTop:a},"slow"))}}),t(".cms-tree-filtered .clear-filter").entwine({onclick:function t(){window.location=location.protocol+"//"+location.host+location.pathname}})})},function(t,e,n){"use strict"
 
 
-function a(t){return t&&t.__esModule?t:{"default":t}}var i=n(2),s=a(i),r=n(5),o=a(r)
-s["default"].entwine("ss",function(t){t("#Form_VersionsForm").entwine({onmatch:function e(){this._super()},onunmatch:function n(){this._super()},onsubmit:function a(e,n){e.preventDefault()
-var a,i=this
-if(a=this.find(":input[name=ID]").val(),!a)return!1
-var s,r,d,l,c,u,h
-if(u=this.find(":input[name=CompareMode]").is(":checked"),d=this.find("table input[type=checkbox]").filter(":checked"),u){if(2!=d.length)return!1
-l=d.eq(0).val(),c=d.eq(1).val(),s=this.find(":submit[name=action_doCompare]"),r=o["default"].sprintf(this.data("linkTmplCompare"),a,c,l)}else l=d.eq(0).val(),s=this.find(":submit[name=action_doShowVersion]"),
-r=o["default"].sprintf(this.data("linkTmplShow"),a,l)
-t(".cms-container").loadPanel(r,"",{pjax:"CurrentForm"})}}),t("#Form_VersionsForm input[name=ShowUnpublished]").entwine({onmatch:function i(){this.toggle(),this._super()},onunmatch:function s(){this._super()
+function a(t){return t&&t.__esModule?t:{default:t}}var i=n(2),s=a(i),o=n(5),r=a(o)
+s.default.entwine("ss",function(t){t("#Form_VersionsForm").entwine({onmatch:function t(){this._super()},onunmatch:function t(){this._super()},onsubmit:function e(n,a){n.preventDefault()
+var i,s=this
+if(i=this.find(":input[name=ID]").val(),!i)return!1
+var o,d,l,c,u,h,f
+if(h=this.find(":input[name=CompareMode]").is(":checked"),l=this.find("table input[type=checkbox]").filter(":checked"),h){if(2!=l.length)return!1
+c=l.eq(0).val(),u=l.eq(1).val(),o=this.find(":submit[name=action_doCompare]"),d=r.default.sprintf(this.data("linkTmplCompare"),i,u,c)}else c=l.eq(0).val(),o=this.find(":submit[name=action_doShowVersion]"),
+d=r.default.sprintf(this.data("linkTmplShow"),i,c)
+t(".cms-container").loadPanel(d,"",{pjax:"CurrentForm"})}}),t("#Form_VersionsForm input[name=ShowUnpublished]").entwine({onmatch:function t(){this.toggle(),this._super()},onunmatch:function t(){this._super()
 
-},onchange:function r(){this.toggle()},toggle:function d(){var e=t(this),n=e.parents("form")
-e.attr("checked")?n.find("tr[data-published=false]").css("display",""):n.find("tr[data-published=false]").css("display","none")._unselect()}}),t("#Form_VersionsForm tbody tr").entwine({onclick:function l(t){
-var e,n
-return e=this.parents("form").find(":input[name=CompareMode]").attr("checked"),n=this.siblings(".active"),e&&this.hasClass("active")?void this._unselect():e?n.length>1?alert(o["default"]._t("ONLYSELECTTWO","You can only compare two versions at this time.")):(this._select(),
-void(1==n.length&&this.parents("form").submit())):(this._select(),n._unselect(),this.parents("form").submit(),void 0)},_unselect:function c(){this.removeClass("active"),this.find(":input[type=checkbox]").attr("checked",!1)
+},onchange:function t(){this.toggle()},toggle:function e(){var n=t(this),a=n.parents("form")
+n.attr("checked")?a.find("tr[data-published=false]").css("display",""):a.find("tr[data-published=false]").css("display","none")._unselect()}}),t("#Form_VersionsForm tbody tr").entwine({onclick:function t(e){
+var n,a
+return n=this.parents("form").find(":input[name=CompareMode]").attr("checked"),a=this.siblings(".active"),n&&this.hasClass("active")?void this._unselect():n?a.length>1?alert(r.default._t("ONLYSELECTTWO","You can only compare two versions at this time.")):(this._select(),
+void(1==a.length&&this.parents("form").submit())):(this._select(),a._unselect(),this.parents("form").submit(),void 0)},_unselect:function t(){this.removeClass("active"),this.find(":input[type=checkbox]").attr("checked",!1)
 
-},_select:function u(){this.addClass("active"),this.find(":input[type=checkbox]").attr("checked",!0)}})})},function(t,e,n){"use strict"
-function a(t){return t&&t.__esModule?t:{"default":t}}var i=n(2),s=a(i)
-s["default"].entwine("ss",function(t){t("#Form_EditForm_RedirectionType input").entwine({onmatch:function e(){var e=t(this)
-e.attr("checked")&&this.toggle(),this._super()},onunmatch:function n(){this._super()},onclick:function a(){this.toggle()},toggle:function i(){"Internal"==t(this).attr("value")?(t("#Form_EditForm_ExternalURL_Holder").hide(),
+},_select:function t(){this.addClass("active"),this.find(":input[type=checkbox]").attr("checked",!0)}})})},function(t,e,n){"use strict"
+function a(t){return t&&t.__esModule?t:{default:t}}var i=n(2),s=a(i)
+s.default.entwine("ss",function(t){t("#Form_EditForm_RedirectionType input").entwine({onmatch:function e(){var n=t(this)
+n.attr("checked")&&this.toggle(),this._super()},onunmatch:function t(){this._super()},onclick:function t(){this.toggle()},toggle:function e(){"Internal"==t(this).attr("value")?(t("#Form_EditForm_ExternalURL_Holder").hide(),
 t("#Form_EditForm_LinkToID_Holder").show()):(t("#Form_EditForm_ExternalURL_Holder").show(),t("#Form_EditForm_LinkToID_Holder").hide())}})})},function(t,e,n){"use strict"
-function a(t){return t&&t.__esModule?t:{"default":t}}var i=n(2),s=a(i)
-s["default"].entwine("ss",function(t){t(".field.urlsegment:not(.readonly)").entwine({MaxPreviewLength:55,Ellipsis:"...",onmatch:function e(){this.find(":text").length&&this.toggleEdit(!1),this.redraw(),
-this._super()},redraw:function n(){var t=this.find(":text"),e=decodeURI(t.data("prefix")+t.val()),n=e
-e.length>this.getMaxPreviewLength()&&(n=this.getEllipsis()+e.substr(e.length-this.getMaxPreviewLength(),e.length)),this.find(".URL-link").attr("href",encodeURI(e+t.data("suffix"))).text(n)},toggleEdit:function a(t){
+function a(t){return t&&t.__esModule?t:{default:t}}var i=n(2),s=a(i)
+s.default.entwine("ss",function(t){t(".field.urlsegment:not(.readonly)").entwine({MaxPreviewLength:55,Ellipsis:"...",onmatch:function t(){this.find(":text").length&&this.toggleEdit(!1),this.redraw(),this._super()
+
+},redraw:function t(){var e=this.find(":text"),n=decodeURI(e.data("prefix")+e.val()),a=n
+n.length>this.getMaxPreviewLength()&&(a=this.getEllipsis()+n.substr(n.length-this.getMaxPreviewLength(),n.length)),this.find(".URL-link").attr("href",encodeURI(n+e.data("suffix"))).text(a)},toggleEdit:function t(e){
+var n=this.find(":text")
+this.find(".preview-holder")[e?"hide":"show"](),this.find(".edit-holder")[e?"show":"hide"](),e&&(n.data("origval",n.val()),n.focus())},update:function t(){var e=this,n=this.find(":text"),a=n.data("origval"),i=arguments[0],s=i&&""!==i?i:n.val()
+
+
+a!=s?(this.addClass("loading"),this.suggest(s,function(t){n.val(decodeURIComponent(t.value)),e.toggleEdit(!1),e.removeClass("loading"),e.redraw()})):(this.toggleEdit(!1),this.redraw())},cancel:function t(){
 var e=this.find(":text")
-this.find(".preview-holder")[t?"hide":"show"](),this.find(".edit-holder")[t?"show":"hide"](),t&&(e.data("origval",e.val()),e.focus())},update:function i(){var t=this,e=this.find(":text"),n=e.data("origval"),a=arguments[0],i=a&&""!==a?a:e.val()
+e.val(e.data("origval")),this.toggleEdit(!1)},suggest:function e(n,a){var i=this,s=i.find(":text"),o=t.path.parseUrl(i.closest("form").attr("action")),r=o.hrefNoSearch+"/field/"+s.attr("name")+"/suggest/?value="+encodeURIComponent(n)
 
 
-n!=i?(this.addClass("loading"),this.suggest(i,function(n){e.val(decodeURIComponent(n.value)),t.toggleEdit(!1),t.removeClass("loading"),t.redraw()})):(this.toggleEdit(!1),this.redraw())},cancel:function s(){
-var t=this.find(":text")
-t.val(t.data("origval")),this.toggleEdit(!1)},suggest:function r(e,n){var a=this,i=a.find(":text"),s=t.path.parseUrl(a.closest("form").attr("action")),r=s.hrefNoSearch+"/field/"+i.attr("name")+"/suggest/?value="+encodeURIComponent(e)
+o.search&&(r+="&"+o.search.replace(/^\?/,"")),t.ajax({url:r,success:function t(e){a.apply(this,arguments)},error:function t(e,n){e.statusText=e.responseText},complete:function t(){i.removeClass("loading")
 
-
-s.search&&(r+="&"+s.search.replace(/^\?/,"")),t.ajax({url:r,success:function o(t){n.apply(this,arguments)},error:function d(t,e){t.statusText=t.responseText},complete:function l(){a.removeClass("loading")
-
-}})}}),t(".field.urlsegment .edit").entwine({onclick:function o(t){t.preventDefault(),this.closest(".field").toggleEdit(!0)}}),t(".field.urlsegment .update").entwine({onclick:function d(t){t.preventDefault(),
-this.closest(".field").update()}}),t(".field.urlsegment .cancel").entwine({onclick:function l(t){t.preventDefault(),this.closest(".field").cancel()}})})},function(t,e){}])
-
-//# sourceMappingURL=bundle.js.map
+}})}}),t(".field.urlsegment .edit").entwine({onclick:function t(e){e.preventDefault(),this.closest(".field").toggleEdit(!0)}}),t(".field.urlsegment .update").entwine({onclick:function t(e){e.preventDefault(),
+this.closest(".field").update()}}),t(".field.urlsegment .cancel").entwine({onclick:function t(e){e.preventDefault(),this.closest(".field").cancel()}})})},function(t,e){}])

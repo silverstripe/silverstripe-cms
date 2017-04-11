@@ -1,7 +1,7 @@
 <?php
 
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Archive;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Publish;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Restore;

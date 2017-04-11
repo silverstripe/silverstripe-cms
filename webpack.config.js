@@ -23,89 +23,134 @@ const SUPPORTED_BROWSERS = [
   'Opera >= 12',
 ];
 
-module.exports = {
-  entry: {
-    bundle: `${PATHS.CMS_JS_SRC}/bundles/bundle.js`,
-    // See https://github.com/webpack/webpack/issues/300#issuecomment-45313650
-    SilverStripeNavigator: [`${PATHS.CMS_JS_SRC}/legacy/SilverStripeNavigator.js`],
-  },
-  resolve: {
-    modulesDirectories: [PATHS.CMS_JS_SRC, PATHS.MODULES],
-  },
-  output: {
-    path: './client/dist',
-    filename: 'js/[name].js',
-  },
-  externals: {
-    i18n: 'i18n',
-    jQuery: 'jQuery',
-    'lib/Router': 'Router',
-  },
-  devtool: 'source-map',
-  module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        exclude: /(node_modules|thirdparty)/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015', 'react'],
-          plugins: ['transform-object-assign'/* , 'transform-object-rest-spread' */],
-          comments: false,
+module.exports = [
+  {
+    entry: {
+      bundle: `${PATHS.CMS_JS_SRC}/bundles/bundle.js`,
+      // See https://github.com/webpack/webpack/issues/300#issuecomment-45313650
+      SilverStripeNavigator: [`${PATHS.CMS_JS_SRC}/legacy/SilverStripeNavigator.js`],
+    },
+    resolve: {
+      modulesDirectories: [PATHS.CMS_JS_SRC, PATHS.MODULES],
+    },
+    output: {
+      path: './client/dist',
+      filename: 'js/[name].js',
+    },
+    externals: {
+      i18n: 'i18n',
+      jQuery: 'jQuery',
+      'lib/Router': 'Router',
+    },
+    module: {
+      loaders: [
+        {
+          test: /\.js$/,
+          exclude: /(node_modules|thirdparty)/,
+          loader: 'babel',
+          query: {
+            presets: ['es2015', 'react'],
+            plugins: ['transform-object-assign'/* , 'transform-object-rest-spread' */],
+            comments: false,
+          },
         },
-      },
-      {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract([
-          'css?sourceMap&minimize&-core&discardComments',
-          'postcss?sourceMap',
-          'resolve-url',
-          'sass?sourceMap',
-        ], {
-          publicPath: '../', // needed because bundle.css is in a subfolder
-        }),
-      },
-      {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract([
-          'css?sourceMap&minimize&-core&discardComments',
-          'postcss?sourceMap',
-          'resolve-url',
-        ], {
-          publicPath: '../', // needed because bundle.css is in a subfolder
-        }),
-      },
-      {
-        test: /\.(png|gif|jpg|svg)$/,
-        loader: 'file?name=images/[name].[ext]',
-      },
-      {
-        test: /\.(woff|eot|ttf)$/,
-        loader: 'file?name=fonts/[name].[ext]',
-      },
+        {
+          test: /\.scss$/,
+          loader: ExtractTextPlugin.extract([
+            'css?sourceMap&minimize&-core&discardComments',
+            'postcss?sourceMap',
+            'resolve-url',
+            'sass?sourceMap',
+          ], {
+            publicPath: '../', // needed because bundle.css is in a subfolder
+          }),
+        },
+        {
+          test: /\.css$/,
+          loader: ExtractTextPlugin.extract([
+            'css?sourceMap&minimize&-core&discardComments',
+            'postcss?sourceMap',
+            'resolve-url',
+          ], {
+            publicPath: '../', // needed because bundle.css is in a subfolder
+          }),
+        },
+        {
+          test: /\.(png|gif|jpg|svg)$/,
+          loader: 'file?name=images/[name].[ext]',
+        },
+        {
+          test: /\.(woff|eot|ttf)$/,
+          loader: 'file?name=fonts/[name].[ext]',
+        },
+      ],
+    },
+    postcss: [
+      autoprefixer({ browsers: SUPPORTED_BROWSERS }),
+    ],
+    plugins: [
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'ss.i18n': 'i18n',
+      }),
+      new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          unused: false,
+          warnings: false,
+        },
+        output: {
+          beautify: false,
+          semicolons: false,
+          comments: false,
+          max_line_len: 200,
+        },
+      }),
+      new ExtractTextPlugin('styles/bundle.css', { allChunks: true }),
     ],
   },
-  postcss: [
-    autoprefixer({ browsers: SUPPORTED_BROWSERS }),
-  ],
-  plugins: [
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'ss.i18n': 'i18n',
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        unused: false,
-        warnings: false,
-      },
-      output: {
-        beautify: false,
-        semicolons: false,
-        comments: false,
-        max_line_len: 200,
-      },
-    }),
-    new ExtractTextPlugin('styles/bundle.css', { allChunks: true }),
-  ],
-};
+  {
+    name: 'css',
+    entry: {
+      'SilverStripeNavigator': `${PATHS.CMS_CSS_SRC}/SilverStripeNavigator.scss`,
+    },
+    output: {
+      path: 'client/dist/styles',
+      filename: '[name].css',
+    },
+    module: {
+      loaders: [
+        {
+          test: /\.scss$/,
+          loader: ExtractTextPlugin.extract([
+            'css?sourceMap&minimize&-core&discardComments',
+            'postcss?sourceMap',
+            'resolve-url',
+            'sass?sourceMap',
+          ]),
+        },
+        {
+          test: /\.css$/,
+          loader: ExtractTextPlugin.extract([
+            'css?sourceMap&minimize&-core&discardComments',
+            'postcss?sourceMap',
+          ]),
+        },
+        {
+          test: /\.(png|gif|jpg|svg)$/,
+          loader: `url?limit=10000&name=../images/[name].[ext]`,
+        },
+        {
+          test: /\.(woff|eot|ttf)$/,
+          loader: `file?name=../fonts/[name].[ext]`,
+        },
+      ],
+    },
+    postcss: [
+      autoprefixer({ browsers: SUPPORTED_BROWSERS }),
+    ],
+    plugins: [
+      new ExtractTextPlugin('[name].css', { allChunks: true }),
+    ],
+  },
+];

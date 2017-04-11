@@ -1,44 +1,10 @@
 en:
   AssetAdmin:
-    ADDFILES: 'Add Files'
-    ActionAdd: 'Add folder'
-    AppCategoryArchive: Archive
-    AppCategoryAudio: Audio
-    AppCategoryDocument: Document
-    AppCategoryFlash: Flash
-    AppCategoryImage: Image
-    AppCategoryVideo: Video
-    BackToFolder: 'Back to folder'
-    CMSMENU_OLD: 'Files (old)'
-    CREATED: Date
-    CurrentFolderOnly: 'Limit to current folder?'
-    DetailsView: Details
     ErrorItemPermissionDenied: 'It seems you don''t have the necessary permissions to add {ObjectTitle} to a campaign'
     ErrorNotFound: 'That {Type} couldn''t be found'
-    FILES: Files
-    FILESYSTEMSYNC: 'Sync files'
-    FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
-    FROMTHEINTERNET: 'From the internet'
-    FROMYOURCOMPUTER: 'From your computer'
-    Filetype: 'File type'
-    ListView: 'List View'
-    MENUTITLE: Files
-    NEWFOLDER: NewFolder
-    SIZE: Size
-    THUMBSDELETED: '{count} unused thumbnails have been deleted'
-    TreeView: 'Tree View'
-    Upload: Upload
-  AssetAdmin_DeleteBatchAction:
-    TITLE: 'Delete folders'
-  AssetAdmin_Tools:
-    FILTER: Filter
-  AssetAdmin_left_ss:
-    GO: Go
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
     PAGES: page(s)
-  BackLink_Button_ss:
-    Back: Back
   BrokenLinksReport:
     Any: Any
     BROKENLINKS: 'Broken links report'
@@ -67,20 +33,12 @@ en:
     RESULT: 'Deleted %d pages from draft and live, and sent them to the archive'
     TITLE: 'Unpublish and archive'
   CMSBatchActions:
-    ARCHIVE: Archive
-    ARCHIVED_PAGES: 'Archived %d pages'
-    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
-    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
-    DELETE_DRAFT_PAGES: 'Delete from draft site'
-    DELETE_PAGES: 'Delete from published site'
     PUBLISHED_PAGES: 'Published %d pages, %d failures'
     PUBLISH_PAGES: Publish
     RESTORE: Restore
     RESTORED_PAGES: 'Restored %d pages'
     UNPUBLISHED_PAGES: 'Unpublished %d pages'
     UNPUBLISH_PAGES: Unpublish
-  CMSFileAddController:
-    MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
@@ -93,15 +51,10 @@ en:
     ChoosePageParentMode: 'Choose where to create this page'
     ChoosePageType: 'Choose page type'
     Create: Create
-    DELETE: 'Delete draft'
-    DELETEFP: Delete
-    DESCREMOVED: 'and {count} descendants'
     DUPLICATED: 'Duplicated ''{title}'' successfully'
     DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
     EMAIL: Email
-    EditTree: 'Edit Tree'
     ListFiltered: 'Showing search results.'
-    MENUTITLE: 'Edit Page'
     NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'This page doesn''t exist'
     PAGES: 'Page status'
@@ -113,7 +66,6 @@ en:
     PUBLISHED: 'Published ''{title}'' successfully.'
     PUBPAGES: 'Done: Published {count} pages'
     PageAdded: 'Successfully created page'
-    REMOVED: 'Deleted ''{title}''{description} from live site'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: 'Removed ''%s'' from the draft site'
     RESTORE: 'Restore draft'
@@ -124,7 +76,6 @@ en:
     ROLLBACK: 'Roll back to this version'
     ROLLEDBACKPUBv2: 'Rolled back to published version.'
     ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
-    SAVE: Save
     SAVED: 'Saved ''{title}'' successfully.'
     SAVEDRAFT: 'Save draft'
     TabContent: Content
@@ -133,21 +84,19 @@ en:
     TreeFiltered: 'Showing search results.'
     TreeFilteredClear: Clear
     UNPUBLISH_AND_ARCHIVE: 'Unpublish and archive'
+    ArchiveWarning: 'Warning: This page will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?'
+    ArchiveWarningWithChildren: 'Warning: This page and all of its child pages will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?'
+    ArchiveWarningWithCampaigns: 'Warning: This page will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?'
+    ArchiveWarningWithChildrenAndCampaigns: 'Warning: This page and all of its child pages will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?'
   CMSMain_left_ss:
     APPLY_FILTER: Search
     CLEAR_FILTER: Clear
-    RESET: Reset
   CMSPageAddController:
-    MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
     ParentMode_top: 'Top level'
-  CMSPageEditController:
-    MENUTITLE: 'Edit Page'
   CMSPageHistoryController:
     COMPAREMODE: 'Compare mode (select two)'
     COMPAREVERSIONS: 'Compare Versions'
-    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
-    MENUTITLE: History
     REVERTTOTHISVERSION: 'Revert to this version'
     SHOWUNPUBLISHED: 'Show unpublished versions'
     SHOWVERSION: 'Show Version'
@@ -161,10 +110,7 @@ en:
     PUBLISHER: Publisher
     UNKNOWN: Unknown
     WHEN: When
-  CMSPageSettingsController:
-    MENUTITLE: 'Edit Page'
   CMSPagesController:
-    GalleryView: 'Gallery View'
     ListView: 'List View'
     MENUTITLE: Pages
     TreeView: 'Tree View'
@@ -176,12 +122,9 @@ en:
     Title: 'Published pages'
   CMSSearch:
     FILTERDATEFROM: From
-    FILTERDATEHEADING: Date
     FILTERDATETO: To
     FILTERLABELTEXT: Search
     PAGEFILTERDATEHEADING: 'Last edited'
-  CMSSettingsController:
-    MENUTITLE: Settings
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Modified pages'
   CMSSiteTreeFilter_DeletedPages:
@@ -202,7 +145,6 @@ en:
     CMS: CMS
     DRAFT: Draft
     DRAFTSITE: 'Draft Site'
-    DRAFT_SITE_ACCESS_RESTRICTION: 'You must log in with your CMS password in order to view the draft or archived content. <a href="%s">Click here to go back to the published site.</a>'
     Email: Email
     INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'Installation files have been successfully deleted.'
@@ -250,38 +192,16 @@ en:
     DEFAULTERRORPAGETITLE: 'Page not found'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Server error'
-    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
-    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
-    PLURALNAME: 'Error Pages'
-    SINGULARNAME: 'Error Page'
-  File:
-    Title: Title
-  Folder:
-    AddFolderButton: 'Add folder'
-    DELETEUNUSEDTHUMBNAILS: 'Delete unused thumbnails'
-    UNUSEDFILESTITLE: 'Unused files'
-    UNUSEDTHUMBNAILSTITLE: 'Unused thumbnails'
-    UploadFilesButton: Upload
-  LeftAndMain:
-    DELETED: Deleted.
-    PreviewButton: Preview
-    SAVEDUP: Saved.
-    SearchResults: 'Search Results'
-  Permission:
-    CMS_ACCESS_CATEGORY: 'CMS Access'
   Permissions:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
   RedirectorPage:
-    DESCRIPTION: 'Redirects to a different internal page'
     HASBEENSETUP: 'A redirector page has been set up without anywhere to redirect to.'
     HEADER: 'This page will redirect users to another page'
     OTHERURL: 'Other website URL'
-    PLURALNAME: 'Redirector Pages'
     REDIRECTTO: 'Redirect to'
     REDIRECTTOEXTERNAL: 'Another website'
     REDIRECTTOPAGE: 'A page on your website'
-    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Page on your website'
   RemoveOrphanedPagesTask:
     BUTTONRUN: Run
@@ -293,11 +213,6 @@ en:
     OPERATION_REMOVE: 'Remove selected from all stages (WARNING: Will destroy all selected pages from both stage and live)'
     SELECTALL: 'select all'
     UNSELECTALL: 'unselect all'
-  ReportAdmin:
-    MENUTITLE: Reports
-    ReportTitle: Title
-  ReportAdminForm:
-    FILTERBY: 'Filter by'
   SITETREE:
     VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
     VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
@@ -308,23 +223,15 @@ en:
     SearchResults: 'Search Results'
   SideReport:
     BROKENFILES: 'Pages with broken files'
-    BROKENLINKS: 'Pages with broken links'
     BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
     BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
     BrokenLinksGroupTitle: 'Broken links reports'
     ContentGroupTitle: 'Content reports'
     EMPTYPAGES: 'Pages with no content'
     LAST2WEEKS: 'Pages edited in the last 2 weeks'
-    OtherGroupTitle: Other
     ParameterLiveCheckbox: 'Check live site'
-    REPEMPTY: 'The {title} report is empty.'
   SilverStripeNavigator:
     ARCHIVED: Archived
-  SilverStripeNavigatorLink:
-    ShareInstructions: 'To share this page, copy and paste the link below.'
-    ShareLink: 'Share link'
-  SilverStripeNavigatorLinkl:
-    CloseLink: Close
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Add page'
   SilverStripe\CMS\Controllers\CMSPageEditController:
@@ -363,22 +270,6 @@ en:
       one: 'A Virtual Page'
       other: '{count} Virtual Pages'
     SINGULARNAME: 'Virtual Page'
-  SiteConfig:
-    DEFAULTTHEME: '(Use default theme)'
-    EDITHEADER: 'Who can edit pages on this site?'
-    EDIT_PERMISSION: 'Manage site configuration'
-    EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
-    SITENAMEDEFAULT: 'Your Site Name'
-    SITETAGLINE: 'Site Tagline/Slogan'
-    SITETITLE: 'Site title'
-    TABACCESS: Access
-    TABMAIN: Main
-    TAGLINEDEFAULT: 'your tagline here'
-    THEME: Theme
-    TOPLEVELCREATE: 'Who can create pages in the root of the site?'
-    VIEWHEADER: 'Who can view pages on this site?'
   SiteTree:
     ACCESSANYONE: Anyone
     ACCESSHEADER: 'Who can view this page?'
@@ -386,11 +277,9 @@ en:
     ACCESSONLYTHESE: 'Only these people (choose from list)'
     ADDEDTODRAFTHELP: 'Page has not been published yet'
     ADDEDTODRAFTSHORT: Draft
-    ALLOWCOMMENTS: 'Allow comments on this page?'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     ARCHIVEDPAGEHELP: 'Page is removed from draft and live'
     ARCHIVEDPAGESHORT: Archived
-    BUTTONARCHIVEDESC: 'Unpublish and send to archive'
     BUTTONCANCELDRAFT: 'Cancel draft changes'
     BUTTONCANCELDRAFTDESC: 'Delete your draft and revert to the currently published page'
     BUTTONDELETEDESC: 'Remove from draft/live and send to archive'
@@ -407,10 +296,7 @@ en:
     DEFAULTCONTACTTITLE: 'Contact Us'
     DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>.</p><p>You can now access the <a href="http://docs.silverstripe.org">developer documentation</a>, or begin the <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lessons</a>.</p>'
     DEFAULTHOMETITLE: Home
-    DELETEDPAGEHELP: 'Page is no longer published'
-    DELETEDPAGESHORT: Deleted
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
-    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
     EDITANYONE: 'Anyone who can log-in to the CMS'
@@ -452,22 +338,17 @@ en:
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
-    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
-    REMOVEDFROMDRAFTSHORT: 'Removed from draft'
     REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
     REORGANISE_DESCRIPTION: 'Change site structure'
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'Show in menus?'
     SHOWINSEARCH: 'Show in search?'
-    SINGULARNAME: Page
     TABBEHAVIOUR: Behavior
     TABCONTENT: 'Main Content'
     TABDEPENDENT: 'Dependent pages'
     TOPLEVEL: 'Site Content (Top Level)'
-    TOPLEVELCREATORGROUPS: 'Top level creators'
     URLSegment: 'URL Segment'
     VIEWERGROUPS: 'Viewer Groups'
     VIEW_ALL_DESCRIPTION: 'View any page'
@@ -481,8 +362,6 @@ en:
     many_many_ImageTracking: 'Image Tracking'
     many_many_LinkTracking: 'Link Tracking'
   SiteTreeFileExtension:
-    BACKLINK_LIST_DESCRIPTION: 'This list shows all pages where the file has been added through a WYSIWYG editor.'
-    EDIT: Edit
     TITLE_INDEX: '#'
     TITLE_TYPE: Type
     TITLE_USED_ON: 'Used on'
@@ -498,10 +377,7 @@ en:
     HAVEASKED: 'You have asked to view the content of our site on'
   VirtualPage:
     CHOOSE: 'Linked Page'
-    DESCRIPTION: 'Displays the content of another page'
     EditLink: edit
     HEADER: 'This is a virtual page'
     HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
-    PLURALNAME: 'Virtual Pages'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
-    SINGULARNAME: 'Virtual Page'

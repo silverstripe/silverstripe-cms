@@ -19,7 +19,7 @@ use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\FieldType\DBVarchar;
 use SilverStripe\ORM\SS_List;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\MemberAuthenticator;
 use SilverStripe\Security\Permission;
@@ -213,7 +213,7 @@ class ContentController extends Controller
             if (class_exists('Translatable')) {
                 $locale = $request->getVar('locale');
                 if ($locale
-                    && i18n::validate_locale($locale)
+                    && i18n::getData()->validate($locale)
                     && $this->dataRecord
                     && $this->dataRecord->Locale != $locale
                 ) {

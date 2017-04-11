@@ -1,7 +1,12 @@
 <?php
 
+use SilverStripe\CMS\Model\ErrorPage;
+use SilverStripe\CMS\Model\RedirectorPage;
+use SilverStripe\CMS\Model\VirtualPage;
+use SilverStripe\Control\ContentNegotiator;
+use SilverStripe\Control\Controller;
 use SilverStripe\ORM\DB;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ValidationException;
 use SilverStripe\ORM\DataExtension;
@@ -21,6 +26,7 @@ use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Dev\TestOnly;
 use SilverStripe\View\Parsers\HTMLCleaner;
 use SilverStripe\View\Parsers\Diff;
+use SilverStripe\View\Parsers\URLSegmentFilter;
 
 /**
  * @package cms
@@ -31,18 +37,18 @@ class SiteTreeTest extends SapphireTest
 
     protected static $fixture_file = 'SiteTreeTest.yml';
 
-    protected $illegalExtensions = array(
-        'SilverStripe\\CMS\\Model\\SiteTree' => array('SiteTreeSubsites', 'Translatable')
+    protected static $illegal_extensions = array(
+        SiteTree::class => array('SiteTreeSubsites', 'Translatable'),
     );
 
-    protected $extraDataObjects = array(
-        'SiteTreeTest_ClassA',
-        'SiteTreeTest_ClassB',
-        'SiteTreeTest_ClassC',
-        'SiteTreeTest_ClassD',
-        'SiteTreeTest_ClassCext',
-        'SiteTreeTest_NotRoot',
-        'SiteTreeTest_StageStatusInherit',
+    protected static $extra_dataobjects = array(
+        SiteTreeTest_ClassA::class,
+        SiteTreeTest_ClassB::class,
+        SiteTreeTest_ClassC::class,
+        SiteTreeTest_ClassD::class,
+        SiteTreeTest_ClassCext::class,
+        SiteTreeTest_NotRoot::class,
+        SiteTreeTest_StageStatusInherit::class,
     );
 
     /**
@@ -68,14 +74,14 @@ class SiteTreeTest extends SapphireTest
 
             // Disable the creation
             SiteTree::config()->create_default_pages = false;
-            singleton('SilverStripe\\CMS\\Model\\SiteTree')->requireDefaultRecords();
+            singleton(SiteTree::class)->requireDefaultRecords();
 
             // The table should still be empty
             $this->assertEquals(DB::query('SELECT COUNT("ID") FROM "SiteTree"')->value(), 0);
 
             // Enable the creation
             SiteTree::config()->create_default_pages = true;
-            singleton('SilverStripe\\CMS\\Model\\SiteTree')->requireDefaultRecords();
+            singleton(SiteTree::class)->requireDefaultRecords();
 
             // The table should now have three rows (home, about-us, contact-us)
             $this->assertEquals(DB::query('SELECT COUNT("ID") FROM "SiteTree"')->value(), 3);
@@ -151,7 +157,7 @@ class SiteTreeTest extends SapphireTest
         $child->Title = 'Page Title';
         $child->setParent($parent);
 
-        $this->assertInstanceOf("SilverStripe\\CMS\\Model\\SiteTree", $child->Parent);
+        $this->assertInstanceOf(SiteTree::class, $child->Parent);
         $this->assertEquals("Section Title", $child->Parent->Title);
     }
 
@@ -180,7 +186,7 @@ class SiteTreeTest extends SapphireTest
         $oldMode = Versioned::get_reading_mode();
         Versioned::set_stage(Versioned::LIVE);
 
-        $checkSiteTree = DataObject::get_one("SilverStripe\\CMS\\Model\\SiteTree", array(
+        $checkSiteTree = DataObject::get_one(SiteTree::class, array(
             '"SiteTree"."URLSegment"' => 'get-one-test-page'
         ));
         $this->assertEquals("V1", $checkSiteTree->Title);
@@ -312,7 +318,7 @@ class SiteTreeTest extends SapphireTest
         $page->delete();
         $this->assertTrue(!DataObject::get_by_id("Page", $pageID));
 
-        $deletedPage = Versioned::get_latest_version('SilverStripe\\CMS\\Model\\SiteTree', $pageID);
+        $deletedPage = Versioned::get_latest_version(SiteTree::class, $pageID);
         $resultPage = $deletedPage->doRestoreToStage();
 
         $requeriedPage = DataObject::get_by_id("Page", $pageID);
@@ -331,9 +337,9 @@ class SiteTreeTest extends SapphireTest
         // Check that if we restore while on the live site that the content still gets pushed to
         // stage
         Versioned::set_stage(Versioned::LIVE);
-        $deletedPage = Versioned::get_latest_version('SilverStripe\\CMS\\Model\\SiteTree', $page2ID);
+        $deletedPage = Versioned::get_latest_version(SiteTree::class, $page2ID);
         $deletedPage->doRestoreToStage();
-        $this->assertFalse((bool)Versioned::get_one_by_stage("Page", "Live", "\"SiteTree\".\"ID\" = " . $page2ID));
+        $this->assertFalse((bool)Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, "\"SiteTree\".\"ID\" = " . $page2ID));
 
         Versioned::set_stage(Versioned::DRAFT);
         $requeriedPage = DataObject::get_by_id("Page", $page2ID);
@@ -347,7 +353,7 @@ class SiteTreeTest extends SapphireTest
         $about    = $this->objFromFixture('Page', 'about');
         $staff    = $this->objFromFixture('Page', 'staff');
         $product  = $this->objFromFixture('Page', 'product1');
-        $notFound = $this->objFromFixture('SilverStripe\\CMS\\Model\\ErrorPage', '404');
+        $notFound = $this->objFromFixture(ErrorPage::class, '404');
 
         SiteTree::config()->nested_urls = false;
 
@@ -358,7 +364,7 @@ class SiteTreeTest extends SapphireTest
         $this->assertEquals($product->ID, SiteTree::get_by_link($product->Link(), false)->ID);
         $this->assertEquals($notFound->ID, SiteTree::get_by_link($notFound->Link(), false)->ID);
 
-        Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'nested_urls', true);
+        Config::inst()->update(SiteTree::class, 'nested_urls', true);
 
         $this->assertEquals($home->ID, SiteTree::get_by_link('/', false)->ID);
         $this->assertEquals($home->ID, SiteTree::get_by_link('/home/', false)->ID);
@@ -379,7 +385,7 @@ class SiteTreeTest extends SapphireTest
         $about    = $this->objFromFixture('Page', 'about');
         $staff    = $this->objFromFixture('Page', 'staff');
 
-        Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'nested_urls', true);
+        Config::inst()->update(SiteTree::class, 'nested_urls', true);
 
         $this->assertEquals('about-us/', $about->RelativeLink(), 'Matches URLSegment on top level without parameters');
         $this->assertEquals('about-us/my-staff/', $staff->RelativeLink(), 'Matches URLSegment plus parent on second level without parameters');
@@ -400,7 +406,7 @@ class SiteTreeTest extends SapphireTest
         $parent = $this->objFromFixture('Page', 'about');
         $child = $this->objFromFixture('Page', 'staff');
 
-        Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'nested_urls', true);
+        Config::inst()->update(SiteTree::class, 'nested_urls', true);
 
         $child->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
         $parent->URLSegment = 'changed-on-live';
@@ -448,7 +454,7 @@ class SiteTreeTest extends SapphireTest
 
     public function testDeleteFromStageOperatesRecursively()
     {
-        Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'enforce_strict_hierarchy', false);
+        Config::inst()->update(SiteTree::class, 'enforce_strict_hierarchy', false);
         $pageAbout = $this->objFromFixture('Page', 'about');
         $pageStaff = $this->objFromFixture('Page', 'staff');
         $pageStaffDuplicate = $this->objFromFixture('Page', 'staffduplicate');
@@ -458,7 +464,7 @@ class SiteTreeTest extends SapphireTest
         $this->assertFalse(DataObject::get_by_id('Page', $pageAbout->ID));
         $this->assertTrue(DataObject::get_by_id('Page', $pageStaff->ID) instanceof Page);
         $this->assertTrue(DataObject::get_by_id('Page', $pageStaffDuplicate->ID) instanceof Page);
-        Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'enforce_strict_hierarchy', true);
+        Config::inst()->update(SiteTree::class, 'enforce_strict_hierarchy', true);
     }
 
     public function testDeleteFromStageOperatesRecursivelyStrict()
@@ -485,7 +491,7 @@ class SiteTreeTest extends SapphireTest
 
     public function testDeleteFromLiveOperatesRecursively()
     {
-        Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'enforce_strict_hierarchy', false);
+        Config::inst()->update(SiteTree::class, 'enforce_strict_hierarchy', false);
         $this->logInWithPermission('ADMIN');
 
         $pageAbout = $this->objFromFixture('Page', 'about');
@@ -505,12 +511,12 @@ class SiteTreeTest extends SapphireTest
         $this->assertTrue(DataObject::get_by_id('Page', $pageStaff->ID) instanceof Page);
         $this->assertTrue(DataObject::get_by_id('Page', $pageStaffDuplicate->ID) instanceof Page);
         Versioned::set_stage(Versioned::DRAFT);
-        Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'enforce_strict_hierarchy', true);
+        Config::inst()->update(SiteTree::class, 'enforce_strict_hierarchy', true);
     }
 
     public function testUnpublishDoesNotDeleteChildrenWithLooseHierachyOn()
     {
-        Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'enforce_strict_hierarchy', false);
+        Config::inst()->update(SiteTree::class, 'enforce_strict_hierarchy', false);
         $this->logInWithPermission('ADMIN');
 
         $pageAbout = $this->objFromFixture('Page', 'about');
@@ -528,7 +534,7 @@ class SiteTreeTest extends SapphireTest
         $this->assertTrue(DataObject::get_by_id('Page', $pageStaff->ID) instanceof Page);
         $this->assertTrue(DataObject::get_by_id('Page', $pageStaffDuplicate->ID) instanceof Page);
         Versioned::set_stage(Versioned::DRAFT);
-        Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'enforce_strict_hierarchy', true);
+        Config::inst()->update(SiteTree::class, 'enforce_strict_hierarchy', true);
     }
 
     public function testDeleteFromLiveOperatesRecursivelyStrict()
@@ -572,7 +578,7 @@ class SiteTreeTest extends SapphireTest
 
     public function testEditPermissions()
     {
-        $editor = $this->objFromFixture("SilverStripe\\Security\\Member", "editor");
+        $editor = $this->objFromFixture(Member::class, "editor");
 
         $home = $this->objFromFixture("Page", "home");
         $staff = $this->objFromFixture("Page", "staff");
@@ -601,8 +607,8 @@ class SiteTreeTest extends SapphireTest
     {
         $page = new Page();
         $page->write();
-        $allSectionMember = $this->objFromFixture('SilverStripe\\Security\\Member', 'allsections');
-        $securityAdminMember = $this->objFromFixture('SilverStripe\\Security\\Member', 'securityadmin');
+        $allSectionMember = $this->objFromFixture(Member::class, 'allsections');
+        $securityAdminMember = $this->objFromFixture(Member::class, 'securityadmin');
 
         $this->assertTrue($page->canEdit($allSectionMember));
         $this->assertFalse($page->canEdit($securityAdminMember));
@@ -612,28 +618,28 @@ class SiteTreeTest extends SapphireTest
     {
         // Test logged out users cannot create
         $this->logOut();
-        $this->assertFalse(singleton('SilverStripe\\CMS\\Model\\SiteTree')->canCreate());
+        $this->assertFalse(singleton(SiteTree::class)->canCreate());
 
         // Login with another permission
         $this->logInWithPermission('DUMMY');
-        $this->assertFalse(singleton('SilverStripe\\CMS\\Model\\SiteTree')->canCreate());
+        $this->assertFalse(singleton(SiteTree::class)->canCreate());
 
         // Login with basic CMS permission
         $perms = SiteConfig::config()->required_permission;
         $this->logInWithPermission(reset($perms));
-        $this->assertTrue(singleton('SilverStripe\\CMS\\Model\\SiteTree')->canCreate());
+        $this->assertTrue(singleton(SiteTree::class)->canCreate());
 
         // Test creation underneath a parent which this user doesn't have access to
         $parent = $this->objFromFixture('Page', 'about');
-        $this->assertFalse(singleton('SilverStripe\\CMS\\Model\\SiteTree')->canCreate(null, array('Parent' => $parent)));
+        $this->assertFalse(singleton(SiteTree::class)->canCreate(null, array('Parent' => $parent)));
 
         // Test creation underneath a parent which doesn't allow a certain child
         $parentB = new SiteTreeTest_ClassB();
         $parentB->Title = 'Only Allows SiteTreeTest_ClassC';
         $parentB->write();
-        $this->assertTrue(singleton('SiteTreeTest_ClassA')->canCreate(null));
-        $this->assertFalse(singleton('SiteTreeTest_ClassA')->canCreate(null, array('Parent' => $parentB)));
-        $this->assertTrue(singleton('SiteTreeTest_ClassC')->canCreate(null, array('Parent' => $parentB)));
+        $this->assertTrue(singleton(SiteTreeTest_ClassA::class)->canCreate(null));
+        $this->assertFalse(singleton(SiteTreeTest_ClassA::class)->canCreate(null, array('Parent' => $parentB)));
+        $this->assertTrue(singleton(SiteTreeTest_ClassC::class)->canCreate(null, array('Parent' => $parentB)));
 
         // Test creation underneath a parent which doesn't exist in the database. This should
         // fall back to checking whether the user can create pages at the root of the site
@@ -652,31 +658,31 @@ class SiteTreeTest extends SapphireTest
         // Lock down the site config
         $sc = $page->SiteConfig;
         $sc->CanEditType = 'OnlyTheseUsers';
-        $sc->EditorGroups()->add($this->idFromFixture('SilverStripe\\Security\\Group', 'admins'));
+        $sc->EditorGroups()->add($this->idFromFixture(Group::class, 'admins'));
         $sc->write();
 
         // Confirm that Member.editor can't edit the page
-        $this->objFromFixture('SilverStripe\\Security\\Member', 'editor')->logIn();
+        $this->objFromFixture(Member::class, 'editor')->logIn();
         $this->assertFalse($page->canEdit());
 
         // Change the page to be editable by Group.editors, but do not publish
-        $this->objFromFixture('SilverStripe\\Security\\Member', 'admin')->logIn();
+        $this->objFromFixture(Member::class, 'admin')->logIn();
         $page->CanEditType = 'OnlyTheseUsers';
-        $page->EditorGroups()->add($this->idFromFixture('SilverStripe\\Security\\Group', 'editors'));
+        $page->EditorGroups()->add($this->idFromFixture(Group::class, 'editors'));
         $page->write();
         // Clear permission cache
         SiteTree::on_db_reset();
 
         // Confirm that Member.editor can now edit the page
-        $this->objFromFixture('SilverStripe\\Security\\Member', 'editor')->logIn();
+        $this->objFromFixture(Member::class, 'editor')->logIn();
         $this->assertTrue($page->canEdit());
 
         // Publish the changes to the page
-        $this->objFromFixture('SilverStripe\\Security\\Member', 'admin')->logIn();
+        $this->objFromFixture(Member::class, 'admin')->logIn();
         $page->publishRecursive();
 
         // Confirm that Member.editor can still edit the page
-        $this->objFromFixture('SilverStripe\\Security\\Member', 'editor')->logIn();
+        $this->objFromFixture(Member::class, 'editor')->logIn();
         $this->assertTrue($page->canEdit());
     }
 
@@ -714,7 +720,7 @@ class SiteTreeTest extends SapphireTest
         if ($member) {
             $memberID = $member->ID;
         } else {
-            $memberID = $this->idFromFixture("SilverStripe\\Security\\Member", "admin");
+            $memberID = $this->idFromFixture(Member::class, "admin");
             Session::set("loggedInAs", $memberID);
         }
 
@@ -742,10 +748,10 @@ class SiteTreeTest extends SapphireTest
     public function testLinkShortcodeHandler()
     {
         $aboutPage = $this->objFromFixture('Page', 'about');
-        $redirectPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\RedirectorPage', 'external');
+        $redirectPage = $this->objFromFixture(RedirectorPage::class, 'external');
 
         $parser = new ShortcodeParser();
-        $parser->register('sitetree_link', array('SilverStripe\\CMS\\Model\\SiteTree', 'link_shortcode_handler'));
+        $parser->register('sitetree_link', array(SiteTree::class, 'link_shortcode_handler'));
 
         $aboutShortcode = sprintf('[sitetree_link,id=%d]', $aboutPage->ID);
         $aboutEnclosed  = sprintf('[sitetree_link,id=%d]Example Content[/sitetree_link]', $aboutPage->ID);
@@ -782,7 +788,7 @@ class SiteTreeTest extends SapphireTest
     public function testIsCurrent()
     {
         $aboutPage = $this->objFromFixture('Page', 'about');
-        $errorPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\ErrorPage', '404');
+        $errorPage = $this->objFromFixture(ErrorPage::class, '404');
 
         Director::set_current_page($aboutPage);
         $this->assertTrue($aboutPage->isCurrent(), 'Assert that basic isSection checks works.');
@@ -794,7 +800,7 @@ class SiteTreeTest extends SapphireTest
 
         Director::set_current_page($aboutPage);
         $this->assertTrue(
-            DataObject::get_one('SilverStripe\\CMS\\Model\\SiteTree', array(
+            DataObject::get_one(SiteTree::class, array(
                 '"SiteTree"."Title"' => 'About Us'
             ))->isCurrent(),
             'Assert that isCurrent works on another instance with the same ID.'
@@ -912,7 +918,7 @@ class SiteTreeTest extends SapphireTest
         $sitetree->URLSegment = 'home';
         $this->assertFalse($sitetree->validURLSegment(), 'Conflicts are still recognised with a ParentID value');
 
-        Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'nested_urls', true);
+        Config::inst()->update(SiteTree::class, 'nested_urls', true);
 
         $sitetree->ParentID   = 0;
         $sitetree->URLSegment = 'home';
@@ -933,7 +939,7 @@ class SiteTreeTest extends SapphireTest
     public function testValidURLSegmentClassNameConflicts()
     {
         $sitetree = new SiteTree();
-        $sitetree->URLSegment = 'SilverStripe\\Control\\Controller';
+        $sitetree->URLSegment = Controller::class;
 
         $this->assertFalse($sitetree->validURLSegment(), 'Class name conflicts are recognised');
     }
@@ -943,7 +949,7 @@ class SiteTreeTest extends SapphireTest
      */
     public function testValidURLSegmentControllerConflicts()
     {
-        Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'nested_urls', true);
+        Config::inst()->update(SiteTree::class, 'nested_urls', true);
 
         $sitetree = new SiteTree();
         $sitetree->ParentID = $this->idFromFixture('SiteTreeTest_Conflicted', 'parent');
@@ -976,23 +982,20 @@ class SiteTreeTest extends SapphireTest
 
     public function testURLSegmentMultiByte()
     {
-        $origAllow = Config::inst()->get('SilverStripe\\View\\Parsers\\URLSegmentFilter', 'default_allow_multibyte');
-        Config::inst()->update('SilverStripe\\View\\Parsers\\URLSegmentFilter', 'default_allow_multibyte', true);
+        URLSegmentFilter::config()->set('default_allow_multibyte', true);
         $sitetree = new SiteTree();
         $sitetree->write();
 
         $sitetree->URLSegment = 'brötchen';
         $sitetree->write();
-        $sitetree = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $sitetree->ID, false);
+        $sitetree = DataObject::get_by_id(SiteTree::class, $sitetree->ID, false);
         $this->assertEquals($sitetree->URLSegment, rawurlencode('brötchen'));
 
         $sitetree->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
-        $sitetree = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $sitetree->ID, false);
+        $sitetree = DataObject::get_by_id(SiteTree::class, $sitetree->ID, false);
         $this->assertEquals($sitetree->URLSegment, rawurlencode('brötchen'));
-        $sitetreeLive = Versioned::get_one_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', '"SiteTree"."ID" = ' .$sitetree->ID, false);
+        $sitetreeLive = Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, '"SiteTree"."ID" = ' .$sitetree->ID, false);
         $this->assertEquals($sitetreeLive->URLSegment, rawurlencode('brötchen'));
-
-        Config::inst()->update('SilverStripe\\View\\Parsers\\URLSegmentFilter', 'default_allow_multibyte', $origAllow);
     }
 
     public function testVersionsAreCreated()
@@ -1025,11 +1028,11 @@ class SiteTreeTest extends SapphireTest
     public function testPageTypeClasses()
     {
         $classes = SiteTree::page_type_classes();
-        $this->assertNotContains('SilverStripe\\CMS\\Model\\SiteTree', $classes, 'Page types do not include base class');
+        $this->assertNotContains(SiteTree::class, $classes, 'Page types do not include base class');
         $this->assertContains('Page', $classes, 'Page types do contain subclasses');
 
         // Testing what happens in an incorrect config value is set - hide_ancestor should be a string
-        Config::inst()->update('SiteTreeTest_ClassA', 'hide_ancestor', true);
+        Config::inst()->update(SiteTreeTest_ClassA::class, 'hide_ancestor', true);
         $newClasses = SiteTree::page_type_classes();
         $this->assertEquals(
             $classes,
@@ -1048,13 +1051,13 @@ class SiteTreeTest extends SapphireTest
         $allowedChildren = $page->allowedChildren();
 
         $this->assertContains(
-            'SilverStripe\\CMS\\Model\\VirtualPage',
+            VirtualPage::class,
             $allowedChildren,
             'Includes core subclasses by default'
         );
 
         $this->assertNotContains(
-            'SiteTreeTest_ClassE',
+            SiteTreeTest_ClassE::class,
             $allowedChildren,
             'HiddenClass instances should not be returned'
         );
@@ -1078,31 +1081,31 @@ class SiteTreeTest extends SapphireTest
      */
     public function allowedChildrenProvider()
     {
-        return array(
-            array(
+        return [
+            [
                 // Class name
-                'SiteTreeTest_ClassA',
+                SiteTreeTest_ClassA::class,
                 // Expected
-            array('SiteTreeTest_ClassB'),
+                [ SiteTreeTest_ClassB::class ],
                 // Assertion message
-            'Direct setting of allowed children'
-            ),
-            array(
-                'SiteTreeTest_ClassB',
-            array('SiteTreeTest_ClassC', 'SiteTreeTest_ClassCext'),
-            'Includes subclasses'
-            ),
-            array(
-                'SiteTreeTest_ClassC',
-                array(),
+                'Direct setting of allowed children'
+            ],
+            [
+                SiteTreeTest_ClassB::class,
+                [ SiteTreeTest_ClassC::class, SiteTreeTest_ClassCext::class ],
+                'Includes subclasses'
+            ],
+            [
+                SiteTreeTest_ClassC::class,
+                [],
                 'Null setting'
-            ),
-            array(
-                'SiteTreeTest_ClassD',
-            array('SiteTreeTest_ClassC'),
-            'Excludes subclasses if class is prefixed by an asterisk'
-            )
-        );
+            ],
+            [
+                SiteTreeTest_ClassD::class,
+                [SiteTreeTest_ClassC::class],
+                'Excludes subclasses if class is prefixed by an asterisk'
+            ]
+        ];
     }
 
     public function testAllowedChildrenValidation()
@@ -1152,13 +1155,13 @@ class SiteTreeTest extends SapphireTest
         $method->setAccessible(true);
 
         Session::set("loggedInAs", null);
-        $this->assertArrayNotHasKey('SiteTreeTest_ClassA', $method->invoke($sitetree));
+        $this->assertArrayNotHasKey(SiteTreeTest_ClassA::class, $method->invoke($sitetree));
 
         $this->loginWithPermission('ADMIN');
-        $this->assertArrayHasKey('SiteTreeTest_ClassA', $method->invoke($sitetree));
+        $this->assertArrayHasKey(SiteTreeTest_ClassA::class, $method->invoke($sitetree));
 
         $this->loginWithPermission('CMS_ACCESS_CMSMain');
-        $this->assertArrayHasKey('SiteTreeTest_ClassA', $method->invoke($sitetree));
+        $this->assertArrayHasKey(SiteTreeTest_ClassA::class, $method->invoke($sitetree));
 
         Session::set("loggedInAs", null);
     }
@@ -1214,7 +1217,7 @@ class SiteTreeTest extends SapphireTest
 
     public function testMetaTagGeneratorDisabling()
     {
-        $generator = Config::inst()->get('SilverStripe\\CMS\\Model\\SiteTree', 'meta_generator');
+        $generator = Config::inst()->get(SiteTree::class, 'meta_generator');
 
         $page = new SiteTreeTest_PageNode();
 
@@ -1226,7 +1229,7 @@ class SiteTreeTest extends SapphireTest
         );
 
         // test proper escaping of quotes in attribute value
-        Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'meta_generator', 'Generator with "quotes" in it');
+        Config::inst()->update(SiteTree::class, 'meta_generator', 'Generator with "quotes" in it');
         $meta = $page->MetaTags();
         $this->assertEquals(
             1,
@@ -1235,7 +1238,7 @@ class SiteTreeTest extends SapphireTest
         );
 
         // test empty generator - no tag should appear at all
-        Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'meta_generator', '');
+        Config::inst()->update(SiteTree::class, 'meta_generator', '');
         $meta = $page->MetaTags();
         $this->assertEquals(
             0,
@@ -1244,7 +1247,7 @@ class SiteTreeTest extends SapphireTest
         );
 
         // reset original value
-        Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'meta_generator', $generator);
+        Config::inst()->update(SiteTree::class, 'meta_generator', $generator);
     }
 
 
@@ -1278,7 +1281,7 @@ class SiteTreeTest extends SapphireTest
 
         // Test with title
         $meta = $page->MetaTags();
-        $charset = Config::inst()->get('SilverStripe\\Control\\ContentNegotiator', 'encoding');
+        $charset = Config::inst()->get(ContentNegotiator::class, 'encoding');
         $this->assertContains('<meta http-equiv="Content-Type" content="text/html; charset='.$charset.'"', $meta);
         $this->assertContains('<meta name="description" content="The &lt;br /&gt; and &lt;br&gt; tags"', $meta);
         $this->assertContains('<link rel="canonical" href="http://www.mysite.com/html-and-xml"', $meta);
@@ -1473,16 +1476,20 @@ class SiteTreeTest_NullHtmlCleaner extends HTMLCleaner
 
 class SiteTreeTest_ClassA extends Page implements TestOnly
 {
+    private static $need_permission = [
+        'ADMIN',
+        'CMS_ACCESS_CMSMain'
+    ];
 
-    private static $need_permission = array('ADMIN', 'CMS_ACCESS_CMSMain');
-
-    private static $allowed_children = array('SiteTreeTest_ClassB');
+    private static $allowed_children = [
+        SiteTreeTest_ClassB::class
+    ];
 }
 
 class SiteTreeTest_ClassB extends Page implements TestOnly
 {
     // Also allowed subclasses
-    private static $allowed_children = array('SiteTreeTest_ClassC');
+    private static $allowed_children = array(SiteTreeTest_ClassC::class);
 }
 
 class SiteTreeTest_ClassC extends Page implements TestOnly
@@ -1518,7 +1525,7 @@ class SiteTreeTest_ClassE extends Page implements TestOnly, HiddenClass
 class SiteTreeTest_ClassCext extends SiteTreeTest_ClassC implements TestOnly
 {
     // Override SiteTreeTest_ClassC definitions
-    private static $allowed_children = array('SiteTreeTest_ClassB');
+    private static $allowed_children = array(SiteTreeTest_ClassB::class);
 }
 
 class SiteTreeTest_NotRoot extends Page implements TestOnly

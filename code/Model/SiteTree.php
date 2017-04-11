@@ -3,8 +3,8 @@
 namespace SilverStripe\CMS\Model;
 
 use Page;
-use SilverStripe\Admin\AddToCampaignHandler_FormAction;
-use SilverStripe\Admin\CMSPreviewable;
+use SilverStripe\CampaignAdmin\AddToCampaignHandler_FormAction;
+use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\CMS\Controllers\CMSPageEditController;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\CMS\Controllers\ModelAsController;
@@ -17,6 +17,7 @@ use SilverStripe\Control\RequestHandler;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Convert;
+use SilverStripe\Core\Resettable;
 use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\CompositeField;
@@ -47,7 +48,7 @@ use SilverStripe\ORM\HiddenClass;
 use SilverStripe\ORM\Hierarchy\Hierarchy;
 use SilverStripe\ORM\ManyManyList;
 use SilverStripe\ORM\ValidationResult;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\Security\Group;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
@@ -92,7 +93,7 @@ use Subsite;
  * @mixin Versioned
  * @mixin SiteTreeLinkTracking
  */
-class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvider, CMSPreviewable
+class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvider, CMSPreviewable, Resettable
 {
 
     /**
@@ -320,8 +321,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Description of the class functionality, typically shown to a user
      * when selecting which page type to create. Translated through {@link provideI18nEntities()}.
      *
-     * @see SiteTree::description()
-     * @see SiteTree::i18n_description()
+     * @see SiteTree::classDescription()
+     * @see SiteTree::i18n_classDescription()
      *
      * @config
      * @var string
@@ -332,8 +333,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Description for Page and SiteTree classes, but not inherited by subclasses.
      * override SiteTree::$description in subclasses instead.
      *
-     * @see SiteTree::description()
-     * @see SiteTree::i18n_description()
+     * @see SiteTree::classDescription()
+     * @see SiteTree::i18n_classDescription()
      *
      * @config
      * @var string
@@ -994,7 +995,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             return true;
         }
 
-        return $this->canEdit($member) && $this->stat('allowed_children') != 'none';
+        return $this->canEdit($member) && $this->stat('allowed_children') !== 'none';
     }
 
     /**
@@ -1056,7 +1057,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         // check for specific groups
         if ($member && is_numeric($member)) {
-            $member = DataObject::get_by_id('SilverStripe\\Security\\Member', $member);
+            $member = DataObject::get_by_id(Member::class, $member);
         }
         if ($this->CanViewType == 'OnlyTheseUsers'
             && $member
@@ -1159,7 +1160,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function canCreate($member = null, $context = array())
     {
-        if (!$member || !(is_a($member, 'SilverStripe\\Security\\Member')) || is_numeric($member)) {
+        if (!$member || !(is_a($member, Member::class)) || is_numeric($member)) {
             $member = Member::currentUserID();
         }
 
@@ -1351,7 +1352,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
             // Get the groups that the given member belongs to
             /** @var Member $member */
-            $member = DataObject::get_by_id('SilverStripe\\Security\\Member', $memberID);
+            $member = DataObject::get_by_id(Member::class, $memberID);
             $groupIDs = $member->Groups()->column("ID");
             $SQL_groupList = implode(", ", $groupIDs);
             if (!$SQL_groupList) {
@@ -1572,7 +1573,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             ));
         }
 
-        $charset = ContentNegotiator::config()->get('encoding');
+        $charset = ContentNegotiator::config()->uninherited('encoding');
         $tags[] = FormField::create_tag('meta', array(
             'http-equiv' => 'Content-Type',
             'content' => 'text/html; charset=' . $charset,
@@ -2687,7 +2688,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             // If we're in translation mode, the link between the translated pagetype title and the actual classname
             // might not be obvious, so we add it in parantheses. Example: class "RedirectorPage" has the title
             // "Weiterleitung" in German, so it shows up as "Weiterleitung (RedirectorPage)"
-            if (i18n::get_lang_from_locale(i18n::get_locale()) != 'en') {
+            if (i18n::getData()->langFromLocale(i18n::get_locale()) != 'en') {
                 $result[$class] = $result[$class] .  " ({$class})";
             }
         }
@@ -2712,25 +2713,36 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function allowedChildren()
     {
-        $allowedChildren = array();
-        $candidates = $this->stat('allowed_children');
-        if ($candidates && $candidates != "none" && $candidates != "SiteTree_root") {
-            foreach ($candidates as $candidate) {
-                // If a classname is prefixed by "*", such as "*Page", then only that class is allowed - no subclasses.
-                // Otherwise, the class and all its subclasses are allowed.
-                if (substr($candidate, 0, 1) == '*') {
-                    $allowedChildren[] = substr($candidate, 1);
-                } elseif ($subclasses = ClassInfo::subclassesFor($candidate)) {
-                    foreach ($subclasses as $subclass) {
-                        if ($subclass == 'SiteTree_root' || singleton($subclass) instanceof HiddenClass) {
-                            continue;
-                        }
-                        $allowedChildren[] = $subclass;
+        // Get config based on old FIRST_SET rules
+        $candidates = null;
+        $class = get_class($this);
+        while ($class) {
+            if (Config::inst()->exists($class, 'allowed_children', Config::UNINHERITED)) {
+                $candidates = Config::inst()->get($class, 'allowed_children', Config::UNINHERITED);
+                break;
+            }
+            $class = get_parent_class($class);
+        }
+        if (!$candidates || $candidates === 'none' || $candidates === 'SiteTree_root') {
+            return [];
+        }
+
+        // Parse candidate list
+        $allowedChildren = [];
+        foreach ($candidates as $candidate) {
+            // If a classname is prefixed by "*", such as "*Page", then only that class is allowed - no subclasses.
+            // Otherwise, the class and all its subclasses are allowed.
+            if (substr($candidate, 0, 1) == '*') {
+                $allowedChildren[] = substr($candidate, 1);
+            } elseif ($subclasses = ClassInfo::subclassesFor($candidate)) {
+                foreach ($subclasses as $subclass) {
+                    if ($subclass == 'SiteTree_root' || singleton($subclass) instanceof HiddenClass) {
+                        continue;
                     }
+                    $allowedChildren[] = $subclass;
                 }
             }
         }
-
         return $allowedChildren;
     }
 
@@ -3073,11 +3085,11 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
-     * Get description for this page
+     * Get description for this page type
      *
      * @return string|null
      */
-    public function description()
+    public function classDescription()
     {
         $base = in_array(static::class, [Page::class, self::class]);
         if ($base) {
@@ -3091,9 +3103,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      *
      * @return string|null
      */
-    public function i18n_description()
+    public function i18n_classDescription()
     {
-        $description = $this->description();
+        $description = $this->classDescription();
         if ($description) {
             return _t(static::class.'.DESCRIPTION', $description);
         }
@@ -3111,7 +3123,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $entities = parent::provideI18nEntities();
 
         // Add optional description
-        $description = $this->description();
+        $description = $this->classDescription();
         if ($description) {
             $entities[static::class . '.DESCRIPTION'] = $description;
         }

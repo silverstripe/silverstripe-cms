@@ -5,4 +5,4 @@ After: '/i18n#basei18n'
 ---
 SilverStripe\i18n\i18n:
   module_priority:
-    - cms
+    - silverstripe\cms

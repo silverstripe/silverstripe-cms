@@ -2,9 +2,9 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-use SilverStripe\Admin\CMSPreviewable;
+use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\ORM\DataObject;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\Security\Member;
 use SilverStripe\View\ViewableData;
 
@@ -121,7 +121,7 @@ abstract class SilverStripeNavigatorItem extends ViewableData
      */
     public function isArchived()
     {
-        if (!$this->record->hasExtension('SilverStripe\ORM\Versioning\Versioned')) {
+        if (!$this->record->hasExtension(Versioned::class)) {
             return false;
         }
 

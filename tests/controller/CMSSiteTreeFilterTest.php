@@ -1,6 +1,7 @@
 <?php
 
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search;
 use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages;
 use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages;
@@ -190,7 +191,7 @@ class CMSSiteTreeFilterTest extends SapphireTest
         // Can't use straight $blah->delete() as that blows it away completely and test fails
         $deletedPage->deleteFromStage(Versioned::LIVE);
         $deletedPage->deleteFromStage(Versioned::DRAFT);
-        $checkParentExists = Versioned::get_latest_version('SilverStripe\\CMS\\Model\\SiteTree', $deletedPageID);
+        $checkParentExists = Versioned::get_latest_version(SiteTree::class, $deletedPageID);
 
         // Check deleted page is included
         $f = new CMSSiteTreeFilter_StatusDeletedPages(array('Title' => 'Page'));

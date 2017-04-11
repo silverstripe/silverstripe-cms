@@ -1,6 +1,8 @@
 <?php
 
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Security\Group;
+use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\Security\Member;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\HTTPResponse_Exception;
@@ -18,8 +20,8 @@ class SiteTreePermissionsTest extends FunctionalTest
 {
     protected static $fixture_file = "SiteTreePermissionsTest.yml";
 
-    protected $illegalExtensions = array(
-        'SilverStripe\\CMS\\Model\\SiteTree' => array('SiteTreeSubsites')
+    protected static $illegal_extensions = array(
+        SiteTree::class => array('SiteTreeSubsites')
     );
 
     public function setUp()
@@ -87,7 +89,7 @@ class SiteTreePermissionsTest extends FunctionalTest
         $page = Versioned::get_one_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', "\"SiteTree\".\"ID\" = $pageID");
 
         // subadmin has edit rights on that page
-        $member = $this->objFromFixture('SilverStripe\\Security\\Member', 'subadmin');
+        $member = $this->objFromFixture(Member::class, 'subadmin');
         $member->logIn();
 
         // Test can_edit_multiple
@@ -110,7 +112,7 @@ class SiteTreePermissionsTest extends FunctionalTest
         $page->doUnpublish();
 
         // subadmin has edit rights on that page
-        $member = $this->objFromFixture('SilverStripe\\Security\\Member', 'subadmin');
+        $member = $this->objFromFixture(Member::class, 'subadmin');
         $member->logIn();
 
         // Test can_edit_multiple
@@ -137,7 +139,7 @@ class SiteTreePermissionsTest extends FunctionalTest
         $page = Versioned::get_latest_version('SilverStripe\\CMS\\Model\\SiteTree', $pageID);
 
         // subadmin had edit rights on that page, but now it's gone
-        $member = $this->objFromFixture('SilverStripe\\Security\\Member', 'subadmin');
+        $member = $this->objFromFixture(Member::class, 'subadmin');
         $member->logIn();
 
         $this->assertFalse($page->canEdit());
@@ -155,8 +157,8 @@ class SiteTreePermissionsTest extends FunctionalTest
         $page->Title = 1;
         $page->write();
 
-        $editor = $this->objFromFixture('SilverStripe\\Security\\Member', 'editor');
-        $websiteuser = $this->objFromFixture('SilverStripe\\Security\\Member', 'websiteuser');
+        $editor = $this->objFromFixture(Member::class, 'editor');
+        $websiteuser = $this->objFromFixture(Member::class, 'websiteuser');
 
         $this->assertTrue($page->canViewStage('Live', $websiteuser));
         $this->assertFalse($page->canViewStage('Stage', $websiteuser));
@@ -171,7 +173,7 @@ class SiteTreePermissionsTest extends FunctionalTest
     {
         $page = $this->objFromFixture('Page', 'standardpage');
 
-        $subadminuser = $this->objFromFixture('SilverStripe\\Security\\Member', 'subadmin');
+        $subadminuser = $this->objFromFixture(Member::class, 'subadmin');
         $this->session()->inst_set('loggedInAs', $subadminuser->ID);
         $fields = $page->getSettingsFields();
         $this->assertFalse(
@@ -183,7 +185,7 @@ class SiteTreePermissionsTest extends FunctionalTest
             'Users with SITETREE_GRANT_ACCESS permission can change "edit" permissions in cms fields'
         );
 
-        $editoruser = $this->objFromFixture('SilverStripe\\Security\\Member', 'editor');
+        $editoruser = $this->objFromFixture(Member::class, 'editor');
         $this->session()->inst_set('loggedInAs', $editoruser->ID);
         $fields = $page->getSettingsFields();
         $this->assertTrue(
@@ -216,7 +218,7 @@ class SiteTreePermissionsTest extends FunctionalTest
         );
 
         // website users
-        $websiteuser = $this->objFromFixture('SilverStripe\\Security\\Member', 'websiteuser');
+        $websiteuser = $this->objFromFixture(Member::class, 'websiteuser');
         $this->assertTrue(
             $page->canView($websiteuser),
             'Authenticated members can view a page marked as "Viewable for any logged in users" even if they dont have access to the CMS'
@@ -249,7 +251,7 @@ class SiteTreePermissionsTest extends FunctionalTest
         );
 
         // subadmin users
-        $subadminuser = $this->objFromFixture('SilverStripe\\Security\\Member', 'subadmin');
+        $subadminuser = $this->objFromFixture(Member::class, 'subadmin');
         $this->assertFalse(
             $page->canView($subadminuser),
             'Authenticated members cant view a page marked as "Viewable by these groups" if theyre not in the listed groups'
@@ -264,7 +266,7 @@ class SiteTreePermissionsTest extends FunctionalTest
         $this->session()->inst_set('loggedInAs', null);
 
         // website users
-        $websiteuser = $this->objFromFixture('SilverStripe\\Security\\Member', 'websiteuser');
+        $websiteuser = $this->objFromFixture(Member::class, 'websiteuser');
         $this->assertTrue(
             $page->canView($websiteuser),
             'Authenticated members can view a page marked as "Viewable by these groups" if theyre in the listed groups'
@@ -290,7 +292,7 @@ class SiteTreePermissionsTest extends FunctionalTest
         );
 
         // website users
-        $websiteuser = $this->objFromFixture('SilverStripe\\Security\\Member', 'websiteuser');
+        $websiteuser = $this->objFromFixture(Member::class, 'websiteuser');
         $websiteuser->logIn();
         $this->assertFalse(
             $page->canEdit($websiteuser),
@@ -298,7 +300,7 @@ class SiteTreePermissionsTest extends FunctionalTest
         );
 
         // subadmin users
-        $subadminuser = $this->objFromFixture('SilverStripe\\Security\\Member', 'subadmin');
+        $subadminuser = $this->objFromFixture(Member::class, 'subadmin');
         $this->assertTrue(
             $page->canEdit($subadminuser),
             'Authenticated members can edit a page marked as "Editable by logged in users" if they have cms permissions and belong to any of these groups'
@@ -316,14 +318,14 @@ class SiteTreePermissionsTest extends FunctionalTest
         );
 
         // subadmin users
-        $subadminuser = $this->objFromFixture('SilverStripe\\Security\\Member', 'subadmin');
+        $subadminuser = $this->objFromFixture(Member::class, 'subadmin');
         $this->assertTrue(
             $page->canEdit($subadminuser),
             'Authenticated members can view a page marked as "Editable by these groups" if theyre in the listed groups'
         );
 
         // website users
-        $websiteuser = $this->objFromFixture('SilverStripe\\Security\\Member', 'websiteuser');
+        $websiteuser = $this->objFromFixture(Member::class, 'websiteuser');
         $this->assertFalse(
             $page->canEdit($websiteuser),
             'Authenticated members cant edit a page marked as "Editable by these groups" if theyre not in the listed groups'
@@ -349,7 +351,7 @@ class SiteTreePermissionsTest extends FunctionalTest
         );
 
         // subadmin users
-        $subadminuser = $this->objFromFixture('SilverStripe\\Security\\Member', 'subadmin');
+        $subadminuser = $this->objFromFixture(Member::class, 'subadmin');
         $this->assertTrue(
             $childPage->canView($subadminuser),
             'Authenticated members can view a page marked as "Viewable by these groups" if theyre in the listed groups by inherited permission'
@@ -376,7 +378,7 @@ class SiteTreePermissionsTest extends FunctionalTest
         );
 
         // subadmin users
-        $subadminuser = $this->objFromFixture('SilverStripe\\Security\\Member', 'subadmin');
+        $subadminuser = $this->objFromFixture(Member::class, 'subadmin');
         $this->assertTrue(
             $childPage->canEdit($subadminuser),
             'Authenticated members can edit a page marked as "Editable by these groups" if theyre in the listed groups by inherited permission'
@@ -410,11 +412,11 @@ class SiteTreePermissionsTest extends FunctionalTest
         $page->deleteFromStage('Stage');
 
         // Get the live version of the page
-        $page = Versioned::get_one_by_stage("SilverStripe\\CMS\\Model\\SiteTree", "Live", "\"SiteTree\".\"ID\" = $pageID");
+        $page = Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, "\"SiteTree\".\"ID\" = $pageID");
         $this->assertTrue(is_object($page), 'Versioned::get_one_by_stage() is returning an object');
 
         // subadmin users
-        $subadminuser = $this->objFromFixture('SilverStripe\\Security\\Member', 'subadmin');
+        $subadminuser = $this->objFromFixture(Member::class, 'subadmin');
         $this->assertTrue(
             $page->canEdit($subadminuser),
             'Authenticated members can edit a page that was deleted from stage and marked as "Editable by logged in users" if they have cms permissions and belong to any of these groups'
@@ -424,9 +426,9 @@ class SiteTreePermissionsTest extends FunctionalTest
     public function testInheritCanViewFromSiteConfig()
     {
         $page = $this->objFromFixture('Page', 'inheritWithNoParent');
-        $siteconfig = $this->objFromFixture('SilverStripe\\SiteConfig\\SiteConfig', 'default');
-        $editor = $this->objFromFixture('SilverStripe\\Security\\Member', 'editor');
-        $editorGroup = $this->objFromFixture('SilverStripe\\Security\\Group', 'editorgroup');
+        $siteconfig = $this->objFromFixture(SiteConfig::class, 'default');
+        $editor = $this->objFromFixture(Member::class, 'editor');
+        $editorGroup = $this->objFromFixture(Group::class, 'editorgroup');
 
         $siteconfig->CanViewType = 'Anyone';
         $siteconfig->write();
@@ -450,10 +452,10 @@ class SiteTreePermissionsTest extends FunctionalTest
     public function testInheritCanEditFromSiteConfig()
     {
         $page = $this->objFromFixture('Page', 'inheritWithNoParent');
-        $siteconfig = $this->objFromFixture('SilverStripe\\SiteConfig\\SiteConfig', 'default');
-        $editor = $this->objFromFixture('SilverStripe\\Security\\Member', 'editor');
-        $user = $this->objFromFixture('SilverStripe\\Security\\Member', 'websiteuser');
-        $editorGroup = $this->objFromFixture('SilverStripe\\Security\\Group', 'editorgroup');
+        $siteconfig = $this->objFromFixture(SiteConfig::class, 'default');
+        $editor = $this->objFromFixture(Member::class, 'editor');
+        $user = $this->objFromFixture(Member::class, 'websiteuser');
+        $editorGroup = $this->objFromFixture(Group::class, 'editorgroup');
 
         $siteconfig->CanEditType = 'LoggedInUsers';
         $siteconfig->write();

@@ -9,9 +9,12 @@ es:
     AppCategoryImage: Imagen
     AppCategoryVideo: Vídeo
     BackToFolder: 'Volver a la carpeta'
+    CMSMENU_OLD: 'Archivos (viejos)'
     CREATED: Fecha
     CurrentFolderOnly: '¿Límite a la carpeta actual?'
     DetailsView: Detalles
+    ErrorItemPermissionDenied: 'Parece que no tienes los permisos necesarios para añadir {ObjectTitle} a una campaña'
+    ErrorNotFound: 'Ese {Type} no pudo ser encontrado'
     FILES: Archivos
     FILESYSTEMSYNC: 'Sincronizar archivos'
     FILESYSTEMSYNCTITLE: 'Actualizar las entradas de base de datos del CMS de archivos en el sistema de archivos. Es útil cuando los nuevos archivos se han subido desde fuera del CMS, p.e., a través de FTP.'
@@ -60,6 +63,9 @@ es:
     VirtualPageNonExistent: 'página virtual apuntando a una página que no existe'
   CMSAddPageController:
     Title: 'Añadir página'
+  CMSBatchAction_Archive:
+    RESULT: 'Eliminadas %d páginas desde el borrador y publicadas, y enviadas al archivo'
+    TITLE: 'Despublicar y archivar'
   CMSBatchActions:
     ARCHIVE: Archivar
     ARCHIVED_PAGES: '%d páginas archivadas'
@@ -71,6 +77,8 @@ es:
     PUBLISH_PAGES: Publicar
     RESTORE: Restaurar
     RESTORED_PAGES: '%d páginas restauradas'
+    UNPUBLISHED_PAGES: '%d páginas despublicadas'
+    UNPUBLISH_PAGES: Despublicar
   CMSFileAddController:
     MENUTITLE: Archivos
   CMSMain:
@@ -90,18 +98,25 @@ es:
     DESCREMOVED: 'y {count} descendientes'
     DUPLICATED: Duplicado
     DUPLICATEDWITHCHILDREN: 'Duplicado con hijos'
+    EMAIL: 'Correo electrónico'
     EditTree: 'Editar árbol'
+    ListFiltered: 'Mostrando resultados de la búsqueda.'
     MENUTITLE: 'Editar página'
     NEWPAGE: 'Nuevo {pagetype}'
     PAGENOTEXISTS: 'Esta página no existe'
+    PAGES: 'Estado de página'
     PAGETYPEANYOPT: Cualquiera
+    PAGETYPEOPT: 'Tipo de página'
     PUBALLCONFIRM: 'Por favor publica todas las páginas del sitio, copiando el contenido del borrador al sitio público'
     PUBALLFUN: 'Función "Publicar Todo"'
+    PUBALLFUN2: 'Presionando este botón haremos el equivalente a ir a cada página y pulsar "publicar". Está destinado a ser utilizado después de haber habido ediciones masivas del contenido, como cuando el sitio fue construido por primera vez.'
+    PUBLISHED: '''{title}'' publicado satisfactoriamente.'
     PUBPAGES: 'Hecho: Publicadas {count} páginas'
     PageAdded: 'Página creada correctamente'
     REMOVED: Removido
     REMOVEDPAGE: 'Eliminado ''{title}'' del sitio publicado'
     REMOVEDPAGEFROMDRAFT: 'Borrado ''%s''%s desde el sitio no publicado'
+    RESTORE: 'Restaurar borrador'
     RESTORED: 'Restablecido ''{title}'' correctamente'
     RESTORE_DESC: 'Recuperar la versión archivada del borrador'
     RESTORE_TO_ROOT: 'Recuperar borrador al nivel superior'
@@ -110,11 +125,17 @@ es:
     ROLLEDBACKPUBv2: Restaurado
     ROLLEDBACKVERSIONv2: 'Versión #%d restaurada'
     SAVE: Guardar
+    SAVED: '''{title}'' guardado satisfactoriamente.'
     SAVEDRAFT: 'Guardar borrador'
     TabContent: Contenido
     TabHistory: Historial
     TabSettings: Ajustes
+    TreeFiltered: 'Mostrando resultados de la búsqueda.'
+    TreeFilteredClear: Limpiar
+    UNPUBLISH_AND_ARCHIVE: 'Despublicar y archivar'
   CMSMain_left_ss:
+    APPLY_FILTER: Buscar
+    CLEAR_FILTER: Limpiar
     RESET: Restablecer
   CMSPageAddController:
     MENUTITLE: 'Añadir página'
@@ -136,6 +157,7 @@ es:
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
     NOTPUBLISHED: 'Sin publicar'
+    PREVIEW: 'Previsualizar Sitio Web'
     PUBLISHER: 'Publicado por'
     UNKNOWN: Desconocido
     WHEN: Cuando
@@ -146,6 +168,8 @@ es:
     ListView: 'Vista como lista'
     MENUTITLE: Páginas
     TreeView: 'Ver como árbol'
+  CMSPagesController_ContentToolbar_ss:
+    MULTISELECT: 'Acciones por lotes'
   CMSPagesController_Tools_ss:
     FILTER: Filtro
   CMSSIteTreeFilter_PublishedPages:
@@ -154,11 +178,20 @@ es:
     FILTERDATEFROM: De
     FILTERDATEHEADING: Fecha
     FILTERDATETO: Hasta
+    FILTERLABELTEXT: Buscar
     PAGEFILTERDATEHEADING: 'Última actualización'
   CMSSettingsController:
     MENUTITLE: Ajustes
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Páginas modificadas'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Todas las páginas, incluidas las archivadas'
   CMSSiteTreeFilter_Search:
     Title: 'Todas las paginas'
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Páginas archivadas'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Páginas en borrador'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Publicada, pero eliminada de los borradores'
   ContentControl:
@@ -219,6 +252,7 @@ es:
     DEFAULTSERVERERRORPAGETITLE: 'Error de servidor'
     DESCRIPTION: 'Contenido personalizado para los distintos casos de error (p.e. "Página no encontrada")'
     ERRORFILEPROBLEM: 'Error abriendo el archivo "{filename}" para escritura. Por favor comprueba los permisos del archivo.'
+    PLURALNAME: 'Páginas de error'
     SINGULARNAME: 'Página de error'
   File:
     Title: Título
@@ -243,11 +277,22 @@ es:
     HASBEENSETUP: 'Se ha establecido una página redireccionadora sin ningún sitio al cual redireccionar.'
     HEADER: 'Esta página redireccionará a los usuarios a otra página'
     OTHERURL: 'Otra dirección URL de un sitio web'
+    PLURALNAME: 'Páginas de redirección'
     REDIRECTTO: 'Redireccionar a'
     REDIRECTTOEXTERNAL: 'Otro sitio web'
     REDIRECTTOPAGE: 'Una página en su sitio web'
     SINGULARNAME: 'Página de redirección apuntando a una página que no existe'
     YOURPAGE: 'Página en su sitio web'
+  RemoveOrphanedPagesTask:
+    BUTTONRUN: Ejecutar
+    CHOOSEOPERATION: 'Elegir operación:'
+    DELETEWARNING: 'Advertencia: Estas operaciones no son reversibles. Por favor, manejese con precaución.'
+    HEADER: 'Tarea de eliminar todas las páginas huérfanas'
+    NONEFOUND: 'No se han encontrado huérfanos'
+    NONEREMOVED: 'Ninguno eliminado'
+    OPERATION_REMOVE: 'Eliminar seleccionado de todas los escenarios (ADVERTENCIA: Destruirá todas las páginas seleccionadas de ambos escenarios y en vivo)'
+    SELECTALL: 'seleccionar todo'
+    UNSELECTALL: 'deselecciona todo'
   ReportAdmin:
     MENUTITLE: Informes
     ReportTitle: Título
@@ -276,9 +321,48 @@ es:
   SilverStripeNavigator:
     ARCHIVED: Archivado
   SilverStripeNavigatorLink:
+    ShareInstructions: 'Para compartir esta página, copie y pegue el siguiente enlace.'
     ShareLink: 'Compartir enlace'
   SilverStripeNavigatorLinkl:
     CloseLink: Cerrar
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Añadir página'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Editar página'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    MENUTITLE: Historial
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Editar página'
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    MENUTITLE: Páginas
+  SilverStripe\CMS\Model\ErrorPage:
+    DESCRIPTION: 'Contenido personalizado para los distintos casos de error (p.e. "Página no encontrada")'
+    PLURALNAME: 'Páginas de error'
+    PLURALS:
+      one: 'Una Página de error'
+      other: '{count} Páginas de error'
+    SINGULARNAME: 'Página de error'
+  SilverStripe\CMS\Model\RedirectorPage:
+    DESCRIPTION: 'Redirecciona a una página interna o a una URL externa'
+    PLURALNAME: 'Páginas de redirección'
+    PLURALS:
+      one: 'Una Página de redirección'
+      other: '{count} Páginas de redirección'
+    SINGULARNAME: 'Página de redirección'
+  SilverStripe\CMS\Model\SiteTree:
+    DESCRIPTION: 'Página de contenido genérico'
+    PLURALNAME: Páginas
+    PLURALS:
+      one: 'Una Página'
+      other: '{count} Páginas'
+    SINGULARNAME: Página
+  SilverStripe\CMS\Model\VirtualPage:
+    DESCRIPTION: 'Muestra el contenido de otra página'
+    PLURALNAME: 'Páginas virtuales'
+    PLURALS:
+      one: 'Una Página Virtuales'
+      other: '{count} Páginas Virtuales'
+    SINGULARNAME: 'Página Virtual'
   SiteConfig:
     DEFAULTTHEME: '(Usar tema por defecto)'
     EDITHEADER: '¿Quién puede editar páginas en este sitio?'
@@ -309,6 +393,7 @@ es:
     BUTTONARCHIVEDESC: 'Ocultar y mandar al archivo'
     BUTTONCANCELDRAFT: 'Cancelar los cambios en el borrador'
     BUTTONCANCELDRAFTDESC: 'Elimine el borrador y regrese a la página que se encuentra publicada actualmente'
+    BUTTONDELETEDESC: 'Eliminar desde el borrador/publicadas y enviar al archivo'
     BUTTONPUBLISHED: Publicado
     BUTTONSAVED: Guardado
     BUTTONSAVEPUBLISH: 'Guardar y publicar'
@@ -316,7 +401,9 @@ es:
     BUTTONUNPUBLISHDESC: 'Elimine esta página del sitio publicado'
     Comments: Comentarios
     Content: Contenido
+    DEFAULTABOUTCONTENT: '<p>Puede llenar esta página con su propio contenido, o eliminarla y crear sus propias páginas.</p>'
     DEFAULTABOUTTITLE: 'Sobre nosotros'
+    DEFAULTCONTACTCONTENT: '<p>Puede llenar esta página con su propio contenido, o eliminarla y crear sus propias páginas.</p>'
     DEFAULTCONTACTTITLE: 'Contacta con nosotros'
     DEFAULTHOMECONTENT: '<p>¡Bienvenido a SilverStripe! Esta es la página de inicio por defecto. Tú puedes editar esta página abriendo <a href="admin/">el CMS</a>.</p><p>También puedes acceder a la  <a href="http://docs.silverstripe.org">documentación de desarrollo</a>, o comenzar con las<a href="http://www.silverstripe.org/learn/lessons">Lecciones de SilverStripe</a>.</p>'
     DEFAULTHOMETITLE: Inicio
@@ -341,6 +428,8 @@ es:
     LASTSAVED: 'Última vez que se guardó'
     LASTUPDATED: 'Última actualización'
     LINKCHANGENOTE: 'Cambio el enlace de esta página también afectará a los enlaces de todas las páginas hijas.'
+    LINKSALREADYUNIQUE: '{url} ya es único'
+    LINKSCHANGEDTO: ' cambiado {url1} -> {url2}'
     MENUTITLE: 'Etiqueta de Navegación'
     METADESC: Descripción
     METADESCHELP: 'Los motores de búsqueda usan este contenido para mostrar resultados de búsqueda (aunque no influirá en su ranking).'
@@ -352,6 +441,8 @@ es:
     MoreOptions: 'Más opciones'
     NOTPUBLISHED: 'No publicado'
     OBSOLETECLASS: 'Clase obsoleta'
+    ONLIVEONLYSHORT: 'Solo en vivo'
+    ONLIVEONLYSHORTHELP: 'La página está publicada, pero ha sido eliminada de borrador'
     PAGELOCATION: 'Localización de la página'
     PAGETITLE: 'Nombre de la página'
     PAGETYPE: 'Tipo de Página'
@@ -392,6 +483,9 @@ es:
   SiteTreeFileExtension:
     BACKLINK_LIST_DESCRIPTION: 'Esta lista muestra todas las páginas que han sido añadidas mediante un editor WYSIWYG.'
     EDIT: Editar
+    TITLE_INDEX: '#'
+    TITLE_TYPE: Tipo
+    TITLE_USED_ON: 'Usado en:'
   SiteTreeURLSegmentField:
     EMPTY: Vacío
     HelpChars: 'Los caracteres especiales son automáticamente convertidos o eliminados.'
@@ -408,5 +502,6 @@ es:
     EditLink: Editar
     HEADER: 'Esta es una página virtual'
     HEADERWITHLINK: 'Título con link'
+    PLURALNAME: 'Páginas virtuales'
     PageTypNotAllowedOnRoot: 'Tipo de página original "{type}" no se permite en el nivel raíz para esta página virtual'
     SINGULARNAME: 'Página Virtual'
