@@ -434,17 +434,17 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         // Provide better defaults from filter
         $filter = $this->getSearchFilter();
         if ($filter) {
-        if (!$childrenMethod) {
+            if (!$childrenMethod) {
                 $childrenMethod = $filter->getChildrenMethod();
-        }
-        if (!$numChildrenMethod) {
+            }
+            if (!$numChildrenMethod) {
                 $numChildrenMethod = $filter->getNumChildrenMethod();
             }
             if (!$filterFunction) {
-            $filterFunction = function ($node) use ($filter) {
-                return $filter->isPageIncluded($node);
-            };
-        }
+                $filterFunction = function ($node) use ($filter) {
+                    return $filter->isPageIncluded($node);
+                };
+            }
         }
 
         // Build set from node and begin marking
@@ -495,12 +495,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 'listViewLink' => Controller::join_links(
                     $linkWithSearch,
                     '?view=listview&ParentID=' . $node->ID
-                    ),
+                ),
                 'rootTitle' => $rootTitle,
                 'extraClass' => $this->getTreeNodeClasses($node),
             ];
-            };
-        }
+        };
+    }
 
     /**
      * Get extra CSS classes for a page's tree node
