@@ -112,7 +112,7 @@ class SearchForm extends Form {
 	 * @param array $data Request data as an associative array. Should contain at least a key 'Search' with all searched keywords.
 	 * @return SS_List
 	 */
-	public function getResults($pageLength = null, $data = null){
+	public function getResults($pageLength = null, $data = null, $sort = "\"Relevance\" DESC", $filter = ""){
 	 	// legacy usage: $data was defaulting to $_REQUEST, parameter not passed in doc.silverstripe.org tutorials
 		if(!isset($data) || !is_array($data)) $data = $_REQUEST;
 		
@@ -149,7 +149,7 @@ class SearchForm extends Form {
 		$start = isset($_GET['start']) ? (int)$_GET['start'] : 0;
 		
 		if(strpos($keywords, '"') !== false || strpos($keywords, '+') !== false || strpos($keywords, '-') !== false || strpos($keywords, '*') !== false) {
-			$results = DB::get_conn()->searchEngine($this->classesToSearch, $keywords, $start, $pageLength, "\"Relevance\" DESC", "", true);
+			$results = DB::get_conn()->searchEngine($this->classesToSearch, $keywords, $start, $pageLength, $sort, $filter, true);
 		} else {
 			$results = DB::get_conn()->searchEngine($this->classesToSearch, $keywords, $start, $pageLength);
 		}
