@@ -25,6 +25,7 @@ class ContentController extends Controller {
 	private static $extensions = array('OldPageRedirector');
 
 	private static $allowed_actions = array(
+		'admin',
 		'successfullyinstalled',
 		'deleteinstallfiles', // secured through custom code
 		'LoginForm'
@@ -464,5 +465,27 @@ HTML;
 			"Title" => $title,
 			"Content" => $content,
 		);
+	}
+
+	/**
+	 * Redirect the user to the admin section for this page
+	 *
+	 * @return SS_HTTPResponse
+	 */
+	public function admin() {
+		// Verify record exists
+		$record = $this->data();
+		if(!$record || !$record->exists()) {
+			return $this->httpError(404);
+		}
+
+		// Check permissions
+		if(!$record->canEdit()) {
+			return Security::permissionFailure(
+				$this,
+				_t('ContentController.EDITPAGE', 'Please log in to edit this page')
+			);
+		}
+		return $this->redirect($record->CMSEditLink());
 	}
 }
