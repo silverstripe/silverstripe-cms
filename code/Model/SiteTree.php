@@ -46,6 +46,7 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\HiddenClass;
 use SilverStripe\ORM\Hierarchy\Hierarchy;
+use SilverStripe\ORM\Hierarchy\MarkedSet;
 use SilverStripe\ORM\ManyManyList;
 use SilverStripe\ORM\ValidationResult;
 use SilverStripe\Versioned\Versioned;
@@ -2966,10 +2967,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     /**
      * Return the CSS classes to apply to this node in the CMS tree.
      *
-     * @param string $numChildrenMethod
      * @return string
      */
-    public function CMSTreeClasses($numChildrenMethod = "numChildren")
+    public function CMSTreeClasses()
     {
         $classes = sprintf('class-%s', static::class);
         if ($this->HasBrokenFile || $this->HasBrokenLink) {
@@ -2991,13 +2991,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         if (!$this->ShowInMenus) {
             $classes .= " notinmenu";
         }
-
-        //TODO: Add integration
-        /*
-		if($this->hasExtension('Translatable') && $controller->Locale != Translatable::default_locale() && !$this->isTranslation())
-			$classes .= " untranslated ";
-		*/
-        $classes .= $this->markingClasses($numChildrenMethod);
 
         return $classes;
     }

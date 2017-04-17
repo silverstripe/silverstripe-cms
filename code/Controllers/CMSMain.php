@@ -4,6 +4,7 @@ namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\Admin\AdminRootController;
 use SilverStripe\Admin\CMSBatchActionHandler;
+use SilverStripe\Admin\LeftAndMain_SearchFilter;
 use SilverStripe\Admin\LeftAndMainFormRequestHandler;
 use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\Forms\Tab;
@@ -50,6 +51,7 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\HiddenClass;
+use SilverStripe\ORM\Hierarchy\MarkedSet;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\ValidationResult;
 use SilverStripe\SiteConfig\SiteConfig;
@@ -429,132 +431,112 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $filterFunction = null,
         $nodeCountThreshold = 30
     ) {
-
-        // Filter criteria
+        // Provide better defaults from filter
         $filter = $this->getSearchFilter();
-
-        // Default childrenMethod and numChildrenMethod
+        if ($filter) {
         if (!$childrenMethod) {
-            $childrenMethod = ($filter && $filter->getChildrenMethod())
-            ? $filter->getChildrenMethod()
-            : 'AllChildrenIncludingDeleted';
+                $childrenMethod = $filter->getChildrenMethod();
         }
-
         if (!$numChildrenMethod) {
-            $numChildrenMethod = 'numChildren';
-            if ($filter && $filter->getNumChildrenMethod()) {
                 $numChildrenMethod = $filter->getNumChildrenMethod();
             }
-        }
-        if (!$filterFunction && $filter) {
+            if (!$filterFunction) {
             $filterFunction = function ($node) use ($filter) {
                 return $filter->isPageIncluded($node);
             };
         }
-
-        // Get the tree root
-        $record = ($rootID) ? $this->getRecord($rootID) : null;
-        $obj = $record ? $record : singleton($className);
-
-        // Get the current page
-        // NOTE: This *must* be fetched before markPartialTree() is called, as this
-        // causes the Hierarchy::$marked cache to be flushed (@see CMSMain::getRecord)
-        // which means that deleted pages stored in the marked tree would be removed
-        $currentPage = $this->currentPage();
-
-        // Mark the nodes of the tree to return
-        if ($filterFunction) {
-            $obj->setMarkingFilterFunction($filterFunction);
         }
 
-        $obj->markPartialTree($nodeCountThreshold, $this, $childrenMethod, $numChildrenMethod);
+        // Build set from node and begin marking
+        $record = ($rootID) ? $this->getRecord($rootID) : null;
+        $rootNode = $record ? $record : DataObject::singleton($className);
+        $markingSet = MarkedSet::create($rootNode, $childrenMethod, $numChildrenMethod, $nodeCountThreshold);
+
+        // Set filter function
+        if ($filterFunction) {
+            $markingSet->setMarkingFilterFunction($filterFunction);
+        }
+
+        // Mark tree from this node
+        $markingSet->markPartialTree();
 
         // Ensure current page is exposed
+        $currentPage = $this->currentPage();
         if ($currentPage) {
-            $obj->markToExpose($currentPage);
+            $markingSet->markToExpose($currentPage);
         }
 
+        // Pre-cache permissions
         SiteTree::prepopulate_permission_cache(
             'CanEditType',
-            $obj->markedNodeIDs(),
+            $markingSet->markedNodeIDs(),
             [ SiteTree::class, 'can_edit_multiple']
         );
 
-        // getChildrenAsUL is a flexible and complex way of traversing the tree
-        $controller = $this;
-        $recordController = CMSPageEditController::singleton();
-        $titleFn = function (&$child, $numChildrenMethod) use (&$controller, &$recordController, $filter) {
-            $link = Controller::join_links($recordController->Link("show"), $child->ID);
-            $node = CMSTreeNode::create($child, $link, $controller->isCurrentPage($child), $numChildrenMethod, $filter);
-            return $node->forTemplate();
-        };
+        // Render using full-subtree template
+        return $markingSet->renderChildren(
+            [ self::class . '_SubTree', 'type' => 'Includes' ],
+            $this->getTreeNodeCustomisations()
+        );
+    }
 
-        // Limit the amount of nodes shown for performance reasons.
-        // Skip the check if we're filtering the tree, since its not clear how many children will
-        // match the filter criteria until they're queried (and matched up with previously marked nodes).
-        $nodeThresholdLeaf = SiteTree::config()->get('node_threshold_leaf');
-        if ($nodeThresholdLeaf && !$filterFunction) {
-            $nodeCountCallback = function ($parent, $numChildren) use (&$controller, $nodeThresholdLeaf) {
-                if (!$parent->ID || $numChildren <= $nodeThresholdLeaf) {
-                    return null;
-                }
-                return sprintf(
-                    '<ul><li class="readonly"><span class="item">'
-                        . '%s (<a href="%s" class="cms-panel-link" data-pjax-target="Content">%s</a>)'
-                        . '</span></li></ul>',
-                    _t('LeftAndMain.TooManyPages', 'Too many pages'),
-                    Controller::join_links(
-                        $controller->LinkWithSearch($controller->Link()),
-                        '?view=listview&ParentID=' . $parent->ID
+
+    /**
+     * Get callback to determine template customisations for nodes
+     *
+     * @return callable
+     */
+    protected function getTreeNodeCustomisations()
+    {
+        $rootTitle = $this->getCMSTreeTitle();
+        $linkWithSearch = $this->LinkWithSearch($this->Link());
+        return function (SiteTree $node) use ($linkWithSearch, $rootTitle) {
+            return [
+                'listViewLink' => Controller::join_links(
+                    $linkWithSearch,
+                    '?view=listview&ParentID=' . $node->ID
                     ),
-                    _t(
-                        'LeftAndMain.ShowAsList',
-                        'show as list',
-                        'Show large amount of pages in list instead of tree view'
-                    )
-                );
+                'rootTitle' => $rootTitle,
+                'extraClass' => $this->getTreeNodeClasses($node),
+            ];
             };
-        } else {
-            $nodeCountCallback = null;
         }
 
-        // If the amount of pages exceeds the node thresholds set, use the callback
-        $html = null;
-        if ($obj->ParentID && $nodeCountCallback) {
-            $html = $nodeCountCallback($obj, $obj->$numChildrenMethod());
+    /**
+     * Get extra CSS classes for a page's tree node
+     *
+     * @param SiteTree $node
+     * @return string
+     */
+    public function getTreeNodeClasses(SiteTree $node)
+    {
+        // Get classes from object
+        $classes = $node->CMSTreeClasses();
+
+        // Flag as current
+        if ($this->isCurrentPage($node)) {
+            $classes .= ' current';
         }
 
-        // Otherwise return the actual tree (which might still filter leaf thresholds on children)
-        if (!$html) {
-            $html = $obj->getChildrenAsUL(
-                "",
-                $titleFn,
-                CMSPagesController::singleton(),
-                true,
-                $childrenMethod,
-                $numChildrenMethod,
-                $nodeCountThreshold,
-                $nodeCountCallback
-            );
-        }
-
-        // Wrap the root if needs be.
-        if (!$rootID) {
-            // This lets us override the tree title with an extension
-            if ($this->hasMethod('getCMSTreeTitle') && $customTreeTitle = $this->getCMSTreeTitle()) {
-                $treeTitle = $customTreeTitle;
-            } elseif (class_exists(SiteConfig::class)) {
-                $siteConfig = SiteConfig::current_site_config();
-                $treeTitle =  Convert::raw2xml($siteConfig->Title);
-            } else {
-                $treeTitle = '...';
+        // Get status flag classes
+        $flags = $node->getStatusFlags();
+        if ($flags) {
+            $statuses = array_keys($flags);
+            foreach ($statuses as $s) {
+                $classes .= ' status-' . $s;
             }
-
-            $html = "<ul><li id=\"record-0\" data-id=\"0\" class=\"Root nodelete\"><strong>$treeTitle</strong>"
-                . $html . "</li></ul>";
         }
 
-        return $html;
+        // Get additional filter classes
+        $filter = $this->getSearchFilter();
+        if ($filter && ($filterClasses = $filter->getPageClasses($node))) {
+            if (is_array($filterClasses)) {
+                $filterClasses = implode(' ', $filterClasses);
+            }
+            $classes .= ' ' . $filterClasses;
+        }
+
+        return trim($classes);
     }
 
     /**
@@ -604,7 +586,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             if (!$record) {
                 continue; // In case a page is no longer available
             }
-            $recordController = CMSPageEditController::singleton();
+
+            // Create marking set with sole marked root
+            $markingSet = MarkedSet::create($record);
+            $markingSet->setMarkingFilterFunction(function () {
+                return false;
+            });
+            $markingSet->markUnexpanded($record);
 
             // Find the next & previous nodes, for proper positioning (Sort isn't good enough - it's not a raw offset)
             // TODO: These methods should really be in hierarchy - for a start it assumes Sort exists
@@ -624,8 +612,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                     ->first();
             }
 
-            $link = Controller::join_links($recordController->Link("show"), $record->ID);
-            $html = CMSTreeNode::create($record, $link, $this->isCurrentPage($record))->forTemplate(). '</li>';
+            // Render using single node template
+            $html = $markingSet->renderChildren(
+                [ self::class . '_TreeNode', 'type' => 'Includes'],
+                $this->getTreeNodeCustomisations()
+            );
 
             $data[$id] = array(
                 'html' => $html,
@@ -2086,5 +2077,17 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 'sort' => -99 // below "CMS_ACCESS_LeftAndMain", but above everything else
             )
         );
+    }
+
+    /**
+     * Get title for root CMS node
+     *
+     * @return string
+     */
+    protected function getCMSTreeTitle()
+    {
+        $rootTitle = SiteConfig::current_site_config()->Title;
+        $this->extend('updateCMSTreeTitle', $rootTitle);
+        return $rootTitle;
     }
 }

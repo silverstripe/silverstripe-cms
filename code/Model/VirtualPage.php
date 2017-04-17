@@ -7,6 +7,7 @@ use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\ReadonlyTransformation;
 use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\Hierarchy\MarkedSet;
 use SilverStripe\ORM\ValidationResult;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\Security\Member;
@@ -354,13 +355,9 @@ class VirtualPage extends Page
         $this->ImageTracking()->setByIDList($this->CopyContentFrom()->ImageTracking()->column('ID'));
     }
 
-    /**
-     * @param string $numChildrenMethod
-     * @return string
-     */
-    public function CMSTreeClasses($numChildrenMethod = "numChildren")
+    public function CMSTreeClasses()
     {
-        return parent::CMSTreeClasses($numChildrenMethod) . ' VirtualPage-' . $this->CopyContentFrom()->ClassName;
+        return parent::CMSTreeClasses() . ' VirtualPage-' . $this->CopyContentFrom()->ClassName;
     }
 
     /**
