@@ -1,5 +1,5 @@
 pt:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Usado em:'
     PAGES: página(s)
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -23,9 +23,10 @@ pt:
     ReasonDropdownVPBROKENLINK: 'Página Virtual apontando para página inexistente'
     RedirectorNonExistent: 'A página redirecciona para uma que não existe'
     VirtualPageNonExistent: 'Página Virtual apontando para página inexistente'
-  CMSAddPageController:
-    Title: 'Adicionar página'
-  CMSBatchActions:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    ParentMode_child: 'Por cima de outra página'
+    ParentMode_top: 'Nível de topo'
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Publicadas %d páginas, %d falhas'
     PUBLISH_PAGES: Publicar
   SilverStripe\CMS\Controllers\CMSMain:
@@ -56,37 +57,20 @@ pt:
     TabContent: Conteúdo
     TabHistory: Histórico
     TabSettings: Configurações
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: 'Por cima de outra página'
-    ParentMode_top: 'Nível de topo'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 'Modo de comparação (selecione duas)'
-    COMPAREVERSIONS: 'Comparar versões'
-    REVERTTOTHISVERSION: 'Reverter para esta versão'
-    SHOWUNPUBLISHED: 'Mostrar versões não publicadas'
-    SHOWVERSION: 'Mostrar versão'
-    VIEW: ver
-    VIEWINGLATEST: 'Atualmente está a ver a última versão'
-    VIEWINGVERSION: 'Actualmente está a ver a versão nº {version}.'
-  CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
     NOTPUBLISHED: 'Não publicada'
     PUBLISHER: Publicador
     UNKNOWN: Desconhecido
     WHEN: Quando
   SilverStripe\CMS\Controllers\CMSPagesController:
-    ListView: 'Vista em lista'
-    MENUTITLE: Páginas
-    TreeView: 'Vista em árvore'
-  CMSPagesController_Tools_ss:
     FILTER: Filtrar
-  CMSSearch:
-    FILTERDATEFROM: De
-    FILTERDATETO: Para
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Ir
+    SEARCH: Procurar
+    SearchResults: 'Resultados da pesquisa'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Todas as páginas'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Nota: Esta mensagem não vai ser apresentada aos visitantes'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: Pré-visualização
     ARCHIVEDSITEFROM: 'Arquivar o site de'
@@ -131,7 +115,7 @@ pt:
     DEFAULTERRORPAGETITLE: 'Página não encontrada'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Desculpe, ocorreu um problema no processamento do seu pedido</p>'
     DEFAULTSERVERERRORPAGETITLE: '500 - Erro do servidor'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Permissões de conteúdo'
     PERMISSIONS_CATEGORY: 'Regras e permissões de acesso'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -142,11 +126,7 @@ pt:
     REDIRECTTOEXTERNAL: 'Outro site'
     REDIRECTTOPAGE: 'Uma página no seu site'
     YOURPAGE: 'Página no seu site'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Ir
-    SEARCH: Procurar
-    SearchResults: 'Resultados da pesquisa'
-  SideReport:
+  SilverStripe\Reports\SideReport:
     BROKENFILES: 'Páginas com ficheiros corrompidos'
     BROKENREDIRECTORPAGES: 'As páginas redireccionadas apontam para páginas apagadas'
     BROKENVIRTUALPAGES: 'Página virtuais apontam para páginas apagadas'
@@ -221,11 +201,9 @@ pt:
     many_many_ImageTracking: 'Rastreamento de imagens'
     many_many_LinkTracking: 'Rastreamento de links'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    HelpChars: 'Os caracteres especiais são automaticamente convertido ou removidos.'
-  URLSegmentField:
     Cancel: 'Cancelar '
     Edit: Editar
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Pode aceder aos arquivos do site a partir deste link:'
     HAVEASKED: 'Pediu para ver o conteúdo do nosso site na'
   SilverStripe\CMS\Model\VirtualPage:

@@ -792,14 +792,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function SearchForm()
     {
         // Create the fields
-        $content = new TextField('q[Term]', _t('CMSSearch.FILTERLABELTEXT', 'Search'));
+        $content = new TextField('q[Term]', _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERLABELTEXT', 'Search'));
         $dateFrom = new DateField(
             'q[LastEditedFrom]',
-            _t('CMSSearch.FILTERDATEFROM', 'From')
+            _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERDATEFROM', 'From')
         );
         $dateTo = new DateField(
             'q[LastEditedTo]',
-            _t('CMSSearch.FILTERDATETO', 'To')
+            _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERDATETO', 'To')
         );
         $pageFilter = new DropdownField(
             'q[FilterClass]',
@@ -818,7 +818,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             $dateFrom,
             $dateTo
         );
-        $dateGroup->setTitle(_t('CMSSearch.PAGEFILTERDATEHEADING', 'Last edited'));
+        $dateGroup->setTitle(_t('SilverStripe\\CMS\\Search\\SearchForm.PAGEFILTERDATEHEADING', 'Last edited'));
 
         // view mode
         $viewMode = HiddenField::create('view', false, $this->ViewState());
@@ -834,9 +834,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         // Create the Search and Reset action
         $actions = new FieldList(
-            FormAction::create('doSearch', _t('CMSMain_left_ss.APPLY_FILTER', 'Search'))
+            FormAction::create('doSearch', _t('SilverStripe\\CMS\\Controllers\\CMSMain.APPLY_FILTER', 'Search'))
                 ->addExtraClass('btn btn-primary'),
-            ResetFormAction::create('clear', _t('CMSMain_left_ss.CLEAR_FILTER', 'Clear'))
+            ResetFormAction::create('clear', _t('SilverStripe\\CMS\\Controllers\\CMSMain.CLEAR_FILTER', 'Clear'))
                 ->addExtraClass('btn btn-secondary')
         );
 

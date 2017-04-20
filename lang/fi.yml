@@ -1,8 +1,5 @@
 fi:
-  AssetAdmin:
-    ErrorItemPermissionDenied: 'Vaikuttaa siltä, ettei sinulla ole oikeuksia lisätä kampanjaan kohdetta {ObjectTitle}'
-    ErrorNotFound: '{Type} ei löytynyt'
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Linkitetty:'
     PAGES: sivu(t)
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -27,12 +24,12 @@ fi:
     ReasonDropdownVPBROKENLINK: 'Virtuaalinen sivu osoittaa olemattomalle sivulle'
     RedirectorNonExistent: 'uudelleenohjaava sivu osoittaa olemattomalle sivulle'
     VirtualPageNonExistent: 'virtuaalinen sivu osoittaa olemattomalle sivulle'
-  CMSAddPageController:
-    Title: 'Lisää sivu'
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Lisää sivu'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Poistettiin %d sivua luonnoksista ja julkaistuista sivuista sekä arkistoitiin'
     TITLE: 'Poista näkyviltä ja arkistoi'
-  CMSBatchActions:
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Julkaistu %d sivua, %d epäonnistumista'
     PUBLISH_PAGES: Julkaise
     RESTORE: Palauta
@@ -40,77 +37,18 @@ fi:
     UNPUBLISHED_PAGES: 'Poistettiin näkyvistä %d sivua'
     UNPUBLISH_PAGES: 'Poista näkyvistä'
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Pääsy ''{title}'' -osioon'
-    ACCESS_HELP: 'Oikeuttaa näkemään osion, joka sisältää sivurakenteen ja sisällön. Katselu- ja muokkausoikeuksia voidaan käsitellä sivukohtaisten pudotusvalikoiden kautta, kuten myös erillisestä "Sisällön oikeudet"-kohdasta.'
-    ARCHIVE: Arkistoi
-    ARCHIVEDPAGE: 'Arkistoitiin sivu ''%s'''
-    AddNew: 'Lisää uusi sivu'
-    AddNewButton: 'Lisää uusi'
-    AddPageRestriction: 'Huomio: Tietyt sivutyypit eivät ole sallittuja valitun sivutyypin alle.'
-    Cancel: Peruuta
-    ChoosePageParentMode: 'Valitse kohde, minne sivu luodaan'
-    ChoosePageType: 'Valitse sivutyyppi'
-    Create: Luo
-    DUPLICATED: '''{title}''  monistettu onnistuneesti'
-    DUPLICATEDWITHCHILDREN: '''{title}'' ja alasivu monistettiin onnistuneesti'
-    EMAIL: Sähköposti
-    ListFiltered: 'Näytetään haun tulokset.'
-    NEWPAGE: 'Uusi {pagetype}'
-    PAGENOTEXISTS: 'Tätä sivua ei ole olemassa'
-    PAGES: 'Sivun tila'
-    PAGETYPEANYOPT: 'Mikä tahansa'
-    PAGETYPEOPT: 'Sivun tyyppi'
-    PUBALLCONFIRM: 'Julkaise jokainen sivu tällä sivustolla kopioiden luonnosten sisältö julkiselle sivustolle'
-    PUBALLFUN: 'Julkaise kaikki -toiminto'
-    PUBALLFUN2: 'Tämän nappulan painaminen on verrattavissa jokaisella sivulla "Julkaise" toiminnon käyttämiseen. Tarkoituksen mukaisinta on käyttää tätä toimintoa määrällisesti isojen sisältömuutosten jälkeen.'
-    PUBLISHED: 'Julkaistiin ''{title}'' onnistuneesti.'
-    PUBPAGES: 'Valmis: julkaistiin {count} sivu(a)'
-    PageAdded: 'Sivun luonti onnistui'
-    REMOVEDPAGE: '''{title}'' poistettiin julkaistulta sivustolta'
-    REMOVEDPAGEFROMDRAFT: 'Poistettu ''%s'' luonnossivustolta'
-    RESTORE: 'Palauta luonnos'
-    RESTORED: '''{title}'' palautettiin onnistuneesti'
-    RESTORE_DESC: 'Palauta arkistoitu versio luonnokseksi'
-    RESTORE_TO_ROOT: 'Palauta luonnos päätasolle'
-    RESTORE_TO_ROOT_DESC: 'Palauta arkistoitu versio luonnoksena päätason sivuksi'
-    ROLLBACK: 'Siirry takaisin tähän versioon.'
-    ROLLEDBACKPUBv2: 'Palattiin takaisin julkaistuun versioon'
-    ROLLEDBACKVERSIONv2: 'Palautettu versioon #%d.'
-    SAVED: 'Tallennettiin ''{title}'' onnistuneesti.'
-    SAVEDRAFT: 'Tallenna luonnos'
-    TabContent: Sisältö
-    TabHistory: Historia
-    TabSettings: Asetukset
-    TreeFiltered: 'Näytetään hakutulokset.'
-    TreeFilteredClear: Tyhjennä
-    UNPUBLISH_AND_ARCHIVE: 'Poista näkyviltä ja arkistoi'
-  CMSMain_left_ss:
     APPLY_FILTER: Haku
     CLEAR_FILTER: Tyhjennä
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    MENUTITLE: 'Lisää sivu'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    MENUTITLE: Historia
-  CMSPageHistoryController_versions_ss:
-    AUTHOR: Tekijä
-    NOTPUBLISHED: Julkaisematon
-    PREVIEW: 'Sivuston esikatselu'
-    PUBLISHER: Julkaisija
-    UNKNOWN: Tuntematon
-    WHEN: Milloin
-  SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: Sivut
-  CMSPagesController_ContentToolbar_ss:
     MULTISELECT: Massatoiminnot
-  CMSPagesController_Tools_ss:
+  SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Suodata
-  CMSSIteTreeFilter_PublishedPages:
+  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Julkaistut sivut'
-  CMSSearch:
-    FILTERDATEFROM: Alkaen
-    FILTERDATETO: Päättyen
-    FILTERLABELTEXT: Haku
-    PAGEFILTERDATEHEADING: 'Viimeksi muokattu'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Suorita
+    SEARCH: Haku
+    SearchResults: Hakutulokset
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Muokatut sivut'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
@@ -123,8 +61,6 @@ fi:
     Title: Luonnossivut
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Näkyvillä, mutta poistettu luonnoksista'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Huomaa: tätä viestiä ei näytetä vierailijoille'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Esikatselu versio'
     ARCHIVEDSITEFROM: 'Arkistoitu sivusto lähteestä:'
@@ -151,7 +87,7 @@ fi:
     DESCRIPTION: 'Omat virheilmoitukset (sivuille, kuten "Sivua ei löytynyt")'
     PLURALNAME: Virhesivut
     SINGULARNAME: Virhesivu
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Sisällön käyttöoikeudet'
     PERMISSIONS_CATEGORY: 'Roolit ja käyttöoikeudet'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -168,29 +104,6 @@ fi:
     OPERATION_REMOVE: 'Poista kaikki valitut kaikilta julkaisutasoilta (VAROITUS: Tämä poistaa kaikki julkaisua odottavat sekä julkaistut sivut)'
     SELECTALL: 'valitse kaikki'
     UNSELECTALL: 'poista valinta kaikista'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Ole hyvä ja julkaise linkitetty sivu, jotta virtuaalisivun julkaisu on mahdollista'
-    VIRTUALPAGEWARNING: 'Ole hyvä ja valitse linkitetty sivu ja tallenna se ensin, jotta tämän sivun julkaiseminen olisi mahdollista'
-    VIRTUALPAGEWARNINGSETTINGS: 'Ole hyvä ja valitse linkitetty sivu sisältö kentästä, jotta julkaisu on mahdollista'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Suorita
-    SEARCH: Haku
-    SearchResults: Hakutulokset
-  SideReport:
-    BROKENFILES: 'Sivut joissa rikkinäisiä tiedostoja'
-    BROKENREDIRECTORPAGES: 'Uudelleenohjatut sivut, jotka osoittavat poistettuihin sivuhin'
-    BROKENVIRTUALPAGES: 'Virtuaaliset sivut, jotka osoittavat poistettuihin sivuihin'
-    BrokenLinksGroupTitle: 'Rikkinäisten linkkien raportit'
-    ContentGroupTitle: Sisältöraportit
-    EMPTYPAGES: 'Sivut, joilla ei ole sisältöä'
-    LAST2WEEKS: 'Sivut, joita on muokattu viimeisen kahden viikon aikana'
-    ParameterLiveCheckbox: 'Tarkista live-sivusto'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: Arkistoitu
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Muokkaa sivua'
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Muokkaa sivua'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Jokainen
     ACCESSHEADER: 'Ketkä saavat katsoa tätä sivua?'
@@ -280,6 +193,21 @@ fi:
     many_many_BackLinkTracking: 'Käänteinen seuranta'
     many_many_ImageTracking: 'Kuvan seuranta'
     many_many_LinkTracking: 'Linkin seuranta'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Sivut joissa rikkinäisiä tiedostoja'
+    BROKENREDIRECTORPAGES: 'Uudelleenohjatut sivut, jotka osoittavat poistettuihin sivuhin'
+    BROKENVIRTUALPAGES: 'Virtuaaliset sivut, jotka osoittavat poistettuihin sivuihin'
+    BrokenLinksGroupTitle: 'Rikkinäisten linkkien raportit'
+    ContentGroupTitle: Sisältöraportit
+    EMPTYPAGES: 'Sivut, joilla ei ole sisältöä'
+    LAST2WEEKS: 'Sivut, joita on muokattu viimeisen kahden viikon aikana'
+    ParameterLiveCheckbox: 'Tarkista live-sivusto'
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: Arkistoitu
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Muokkaa sivua'
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Muokkaa sivua'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Linkitetty sivu'
     EditLink: muokkaa
@@ -291,12 +219,9 @@ fi:
     TITLE_TYPE: Tyyppi
     TITLE_USED_ON: Käytössä
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Anna URL-osoite tai napsauta peruuta'
-    HelpChars: 'Erikoismerkit muunnetaan tai poistetaan automaattisesti.'
-  URLSegmentField:
     Cancel: Peruuta
     Edit: Muokkaa
     OK: OK
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Pääset arkistoidulle sivulle tällä linkillä:'
     HAVEASKED: 'Sinua on pyydetty katsomaan sivun sisältöä '

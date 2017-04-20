@@ -39,5 +39,5 @@ vi_VN:
     SHOWINSEARCH: 'Hiển thị khi tìm kiếm?'
     TABBEHAVIOUR: 'Hoạt động'
     TABCONTENT: 'Thông tin'
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     HAVEASKED: 'Bạn được mời để xem nội dung của web chúng tôi trên'

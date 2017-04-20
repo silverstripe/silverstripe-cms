@@ -1,5 +1,5 @@
 zh:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 应用于：
     PAGES: 单个或多个页面
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -24,9 +24,10 @@ zh:
     ReasonDropdownVPBROKENLINK: 虚拟页面指向的页面不存在
     RedirectorNonExistent: '页面重定向工具指向的页面不存在'
     VirtualPageNonExistent: 虚拟页面指向的页面不存在
-  CMSAddPageController:
-    Title: '添加页面'
-  CMSBatchActions:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    ParentMode_child: '根据另一个页面'
+    ParentMode_top: 顶层
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: '发布 %d 个页面， %d 个失败'
     PUBLISH_PAGES: 发布
   SilverStripe\CMS\Controllers\CMSMain:
@@ -57,37 +58,20 @@ zh:
     TabContent: '内容'
     TabHistory: 历史记录
     TabSettings: 设置
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: '根据另一个页面'
-    ParentMode_top: 顶层
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 比较模式（选择两个）
-    COMPAREVERSIONS: 版本比较
-    REVERTTOTHISVERSION: 恢复到这个版本
-    SHOWUNPUBLISHED: 显示未发布的版本
-    SHOWVERSION: 显示版本
-    VIEW: 查看
-    VIEWINGLATEST: 当前正在查看最新版本。
-    VIEWINGVERSION: '当前正在查看版本{version}。'
-  CMSPageHistoryController_versions_ss:
     AUTHOR: '作者'
     NOTPUBLISHED: 未发布
     PUBLISHER: '发布者'
     UNKNOWN: 未知的
     WHEN: 何时
   SilverStripe\CMS\Controllers\CMSPagesController:
-    ListView: 列表视图
-    MENUTITLE: 页面
-    TreeView: '树视图'
-  CMSPagesController_Tools_ss:
     FILTER: 过滤器
-  CMSSearch:
-    FILTERDATEFROM: 从
-    FILTERDATETO: 到
+  SilverStripe\CMS\Search\SearchForm:
+    GO: 到
+    SEARCH: 搜索
+    SearchResults: 搜索结果
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 所有页面
-  ContentControl:
-    NOTEWONTBESHOWN: '备注：该消息将不会展示给您的浏览者'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 预览版本
     ARCHIVEDSITEFROM: 存档站点从
@@ -139,7 +123,7 @@ zh:
     DEFAULTERRORPAGETITLE: 未发现页面
     DEFAULTSERVERERRORPAGECONTENT: '<p>对不起，处理您的请求时发生错误。</p>'
     DEFAULTSERVERERRORPAGETITLE: 服务器错误
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: '内容权限'
     PERMISSIONS_CATEGORY: 角色及访问权限
   SilverStripe\CMS\Model\RedirectorPage:
@@ -150,25 +134,6 @@ zh:
     REDIRECTTOEXTERNAL: 另一个网站
     REDIRECTTOPAGE: 您网站上的一个页面
     YOURPAGE: 您网站的页面
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 请发布链接的页面，以发布虚拟页面
-    VIRTUALPAGEWARNING: '请先选择一个链接的页面并保存，以发布该页面'
-    VIRTUALPAGEWARNINGSETTINGS: '请在主目录栏选择一个链接的页面以待发布'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: 到
-    SEARCH: 搜索
-    SearchResults: 搜索结果
-  SideReport:
-    BROKENFILES: '页面含有无效文件的'
-    BROKENREDIRECTORPAGES: '重定向页面指向了已删除页面'
-    BROKENVIRTUALPAGES: '虚拟页面指向了已删除页面'
-    BrokenLinksGroupTitle: '无效链接报告'
-    ContentGroupTitle: '内容报告'
-    EMPTYPAGES: '无内容页面'
-    LAST2WEEKS: '过去2周内编辑过的页面'
-    ParameterLiveCheckbox: 检查线上站点
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: 已存档
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 任何人
     ACCESSHEADER: 谁可以查看该页面？
@@ -250,14 +215,22 @@ zh:
     many_many_BackLinkTracking: 后连接跟踪
     many_many_ImageTracking: 图像跟踪
     many_many_LinkTracking: 链接跟踪
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: '页面含有无效文件的'
+    BROKENREDIRECTORPAGES: '重定向页面指向了已删除页面'
+    BROKENVIRTUALPAGES: '虚拟页面指向了已删除页面'
+    BrokenLinksGroupTitle: '无效链接报告'
+    ContentGroupTitle: '内容报告'
+    EMPTYPAGES: '无内容页面'
+    LAST2WEEKS: '过去2周内编辑过的页面'
+    ParameterLiveCheckbox: 检查线上站点
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: 已存档
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: '请输入一个URL分类或点击“取消”'
-    HelpChars: '特殊字符已自动转换或删除。'
-  URLSegmentField:
     Cancel: 取消
     Edit: 编辑
     OK: 确认
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 您可以通过该链接访问存档站点：
     HAVEASKED: '请您查看我们网站的内容在'
   SilverStripe\CMS\Model\VirtualPage:

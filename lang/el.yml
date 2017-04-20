@@ -1,5 +1,5 @@
 el:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Χρησιμοποιείται σε:'
     PAGES: σελίδες
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -23,9 +23,10 @@ el:
     ReasonDropdownVPBROKENLINK: 'Η εικονική σελίδα αντιστοιχεί σε ανύπαρκτη σελίδα'
     RedirectorNonExistent: 'η σελίδα ανακατεύθυνσης αντιστοιχεί σε ανύπαρκτη σελίδα'
     VirtualPageNonExistent: 'η εικονική σελίδα αντιστοιχεί σε ανύπαρκτη σελίδα'
-  CMSAddPageController:
-    Title: 'Προσθήκη σελίδας'
-  CMSBatchActions:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    ParentMode_child: 'Κάτω από άλλη σελίδα'
+    ParentMode_top: 'Επίπεδο κορυφής'
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISH_PAGES: 'Δημοσίευση'
   SilverStripe\CMS\Controllers\CMSMain:
     AddNew: 'Προσθήκη σελίδας'
@@ -42,29 +43,18 @@ el:
     TabContent: 'Περιεχόμενο'
     TabHistory: Ιστορικό
     TabSettings: 'Ρυθμίσεις'
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: 'Κάτω από άλλη σελίδα'
-    ParentMode_top: 'Επίπεδο κορυφής'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREVERSIONS: 'Σύγκριση Εκδόσεων'
-    REVERTTOTHISVERSION: 'Επαναφορά σε αυτήν την έκδοση'
-    SHOWVERSION: 'Προβολή Έκδοσης'
-    VIEW: προβολή
-  CMSPageHistoryController_versions_ss:
     AUTHOR: 'Συγγραφέας'
     NOTPUBLISHED: 'δεν έχει δημοσιευθεί'
     PUBLISHER: Εκδότης
     UNKNOWN: Άγνωστο
     WHEN: Όταν
   SilverStripe\CMS\Controllers\CMSPagesController:
-    ListView: 'Προβολή Λίστας'
-    MENUTITLE: Σελίδες
-    TreeView: 'Προβολή Δέντρου'
-  CMSPagesController_Tools_ss:
     FILTER: Φίλτρο
-  CMSSearch:
-    FILTERDATEFROM: Από
-    FILTERDATETO: Έως
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Μετάβαση
+    SEARCH: Αναζήτηση
+    SearchResults: 'Αποτελέσματα Αναζήτησης'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Όλες οι σελίδες'
   SilverStripe\CMS\Controllers\ContentController:
@@ -83,17 +73,13 @@ el:
     CODE: 'Κωδικός σφάλματος'
     DEFAULTERRORPAGETITLE: 'Η σελίδα δεν βρέθηκε'
     DEFAULTSERVERERRORPAGETITLE: 'Σφάλμα διακομιστή'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Δικαιώματα περιεχόμενου'
     PERMISSIONS_CATEGORY: 'Ρόλοι και δικαιώματα'
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Αυτή η σελίδα θα ανακατευθύνει τους χρήστες σε μια άλλη σελίδα'
     REDIRECTTO: 'Ανακατεύθυνση σε'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Μετάβαση
-    SEARCH: Αναζήτηση
-    SearchResults: 'Αποτελέσματα Αναζήτησης'
-  SideReport:
+  SilverStripe\Reports\SideReport:
     BrokenLinksGroupTitle: 'Αναφορές ανενεργών συνδέσμων'
     ContentGroupTitle: 'Αναφορές περιεχομένου'
     EMPTYPAGES: 'Σελίδες χωρίς περιεχόμενο'
@@ -148,12 +134,10 @@ el:
     Visibility: Ορατότητα
     has_one_Parent: 'Γονική Σελίδα'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Παρακαλώ εισάγεται ένα τμήμα διεύθυνσης URL ή πατήστε άκυρο'
-  URLSegmentField:
     Cancel: 'Άκυρο'
     Edit: Επεξεργασία
     OK: ΟΚ
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Μπορείτε να δείτε τον αρχειοθετημένο ιστότοπο εδώ:'
     HAVEASKED: 'Επιθυμείται να εμφανιστεί το περιεχόμενο του ιστοχώρου σας την '
   SilverStripe\CMS\Model\VirtualPage:

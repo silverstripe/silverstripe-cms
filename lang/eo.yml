@@ -1,8 +1,5 @@
 eo:
-  AssetAdmin:
-    ErrorItemPermissionDenied: 'Ŝajnas ke vi ne havas la bezonatajn permesojn por aldoni je {ObjectTitle} al kampanjo'
-    ErrorNotFound: 'Ne eblis trovi tiun {Type}'
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Uzite ĉe:'
     PAGES: paĝo(j)
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -27,12 +24,12 @@ eo:
     ReasonDropdownVPBROKENLINK: 'Virtuala paĝo direktanta al neekzistanta paĝo'
     RedirectorNonExistent: 'alidirekta paĝo direktanta al neekzistanta paĝo'
     VirtualPageNonExistent: 'virtuala paĝo direktanta al neekzistanta paĝo'
-  CMSAddPageController:
-    Title: 'Enmeti paĝon'
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Enmeti paĝon'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Forigis %d paĝojn el malneta kaj publika, kaj sendis ilin al la arĥivo'
     TITLE: 'Malpublikigi kaj sendi al arkivo'
-  CMSBatchActions:
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Publikigis %d paĝojn, %d malsukcesojn'
     PUBLISH_PAGES: Publikigi
     RESTORE: Restaŭri
@@ -40,77 +37,18 @@ eo:
     UNPUBLISHED_PAGES: 'Nepublikigitaj %d paĝoj'
     UNPUBLISH_PAGES: Malpublikigi
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Aliro al sekcio ''{title}'''
-    ACCESS_HELP: 'Permesi vidigi la sekcion kiu enhavas paĝarbon kaj enhavon. Vidigaj kaj redaktaj permesoj estas trakteblaj per paĝspecifaj fallistoj, kaj ankaŭ la apartaj "Enhavaj permesoj".'
-    ARCHIVE: Enarkivigi
-    ARCHIVEDPAGE: 'Enarkivigis paĝon ''%s'''
-    AddNew: 'Aldoni novan paĝon'
-    AddNewButton: 'Aldoni novan'
-    AddPageRestriction: 'Noto: iuj tipoj de paĝoj ne estas permesataj por ĉi tiu elektaĵo.'
-    Cancel: Rezigni
-    ChoosePageParentMode: 'Elekti kie krei ĉi tiun paĝon'
-    ChoosePageType: 'Elekti tipon de paĝo'
-    Create: Krei
-    DUPLICATED: 'Sukcese duobligis je ''{title}'''
-    DUPLICATEDWITHCHILDREN: 'Sukcese duobligis je ''{title}'' kaj idoj'
-    EMAIL: Retpoŝto
-    ListFiltered: 'Vidigas rezultojn de serĉo.'
-    NEWPAGE: 'Nova {pagetype}'
-    PAGENOTEXISTS: 'Ĉi tiu paĝo ne ekzistas'
-    PAGES: 'Stato de paĝo'
-    PAGETYPEANYOPT: Ajna
-    PAGETYPEOPT: 'Tipo de paĝo'
-    PUBALLCONFIRM: 'Bonvolu eldoni ĉiun paĝon en la retejo, kopiante enhavan stadion al la publika'
-    PUBALLFUN: 'Funkcio "Eldoni Ĉiujn"'
-    PUBALLFUN2: 'Premi ĉi tiun butonon faros same kiel iri al ĉiu paĝo kaj premi je "Publikigi". Oni celas ke ĝi uziĝu post multaj redaktoj de la enhavo, ekzemple kiam la retejo estis unue konstruita.'
-    PUBLISHED: 'Sukcese publikigis je ''{title}'''
-    PUBPAGES: 'Farite: publikigis {count} paĝojn'
-    PageAdded: 'Sukcese kreis paĝon'
-    REMOVEDPAGE: 'Forigis je ''{title}'' el la publikigita retejo'
-    REMOVEDPAGEFROMDRAFT: 'Forigis je ''%s'' el la malneta retejo'
-    RESTORE: 'Restaŭri malneton'
-    RESTORED: 'Sukcese restaŭris je ''{title}'''
-    RESTORE_DESC: 'Restaŭri la enarkivigitan version al malneto'
-    RESTORE_TO_ROOT: 'Restaŭri malneton ĉe la supra nivelo'
-    RESTORE_TO_ROOT_DESC: 'Restaŭri la enarkivigitan version al malneto kiel supranivela paĝo'
-    ROLLBACK: 'Malfari al ĉi tiu versio'
-    ROLLEDBACKPUBv2: 'Malfaris ŝanĝojn ĝis la publikigita versio.'
-    ROLLEDBACKVERSIONv2: 'Malfaris ŝanĝojn ĝis versio #%d.'
-    SAVED: 'Sukcese konservis je ''{title}'''
-    SAVEDRAFT: 'Konservi malneton'
-    TabContent: Enhavo
-    TabHistory: Historio
-    TabSettings: Agordoj
-    TreeFiltered: 'Vidigas rezultojn de serĉo.'
-    TreeFilteredClear: Vakigi
-    UNPUBLISH_AND_ARCHIVE: 'Malpublikigi kaj sendi al arkivo'
-  CMSMain_left_ss:
     APPLY_FILTER: Serĉi
     CLEAR_FILTER: Vakigi
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    MENUTITLE: 'Enmeti paĝon'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    MENUTITLE: Historio
-  CMSPageHistoryController_versions_ss:
-    AUTHOR: Aŭtoro
-    NOTPUBLISHED: Nepublikigita
-    PREVIEW: 'Antaŭvido de retejo'
-    PUBLISHER: Publikiginto
-    UNKNOWN: Nekonata
-    WHEN: Kiam
-  SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: Paĝoj
-  CMSPagesController_ContentToolbar_ss:
     MULTISELECT: 'Staplaj agoj'
-  CMSPagesController_Tools_ss:
+  SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filtri
-  CMSSIteTreeFilter_PublishedPages:
+  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Publikigitaj paĝoj'
-  CMSSearch:
-    FILTERDATEFROM: De
-    FILTERDATETO: Al
-    FILTERLABELTEXT: Serĉi
-    PAGEFILTERDATEHEADING: 'Laste redaktita'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Ek
+    SEARCH: Serĉi
+    SearchResults: 'Serĉaj rezultoj'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Ŝanĝitaj paĝoj'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
@@ -123,8 +61,6 @@ eo:
     Title: 'Malnetaj paĝoj'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Publikaj sed forigitaj el malneto'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Notu: ne vidigos ĉi tiun mesaĝon al viaj vizitantoj'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Antaŭvida versio'
     ARCHIVEDSITEFROM: 'Enarkivigita retejo el'
@@ -151,7 +87,7 @@ eo:
     DESCRIPTION: 'Propra enhavo por diversaj okazoj de eraro (ekzemple, "Ne trovis paĝon")'
     PLURALNAME: 'Paĝoj pri eraroj'
     SINGULARNAME: 'Paĝo pri eraroj'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: Enhavopermesoj
     PERMISSIONS_CATEGORY: 'Roloj kaj aliraj permesoj'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -168,29 +104,6 @@ eo:
     OPERATION_REMOVE: 'Forigi elektitajn el ĉiuj stadioj. (AVERTO: detruos ĉiujn elektitajn paĝojn el kaj stadio kaj publika)'
     SELECTALL: 'elekti ĉion'
     UNSELECTALL: 'malelekti ĉion'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Bonvolu publikigi la ligitan paĝon por publikigi la virtualan paĝon'
-    VIRTUALPAGEWARNING: 'Bonvolu elekti ligitan paĝon kaj unue konservi ĝin por publikigi ĉi tiun paĝon'
-    VIRTUALPAGEWARNINGSETTINGS: 'Bonvolu elekti ligitan paĝon en la ĉefaj enhavaj kampoj por publikigi'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Ek
-    SEARCH: Serĉi
-    SearchResults: 'Serĉaj rezultoj'
-  SideReport:
-    BROKENFILES: 'Paĝoj kun rompitaj dosieroj'
-    BROKENREDIRECTORPAGES: 'Redirektaj paĝoj indikantaj forigitajn paĝojn'
-    BROKENVIRTUALPAGES: 'VirtualajPaĝoj indikantaj forigitajn paĝojn'
-    BrokenLinksGroupTitle: 'Raporto pri rompitaj ligiloj'
-    ContentGroupTitle: 'Raportoj pri enhavo'
-    EMPTYPAGES: 'Malplenaj paĝoj'
-    LAST2WEEKS: 'Paĝoj redaktitaj dum la lastaj 2 semajnoj'
-    ParameterLiveCheckbox: 'Kontroli publikan retejon'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: Enarkivigita
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Redakti paĝon'
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Redakti paĝon'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Iu
     ACCESSHEADER: 'Kiuj povas vidi ĉi tiun paĝon?'
@@ -282,6 +195,21 @@ eo:
     many_many_BackLinkTracking: 'Spuri retroligilojn'
     many_many_ImageTracking: 'Spuri Bildojn'
     many_many_LinkTracking: 'Spuri Ligilojn'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Paĝoj kun rompitaj dosieroj'
+    BROKENREDIRECTORPAGES: 'Redirektaj paĝoj indikantaj forigitajn paĝojn'
+    BROKENVIRTUALPAGES: 'VirtualajPaĝoj indikantaj forigitajn paĝojn'
+    BrokenLinksGroupTitle: 'Raporto pri rompitaj ligiloj'
+    ContentGroupTitle: 'Raportoj pri enhavo'
+    EMPTYPAGES: 'Malplenaj paĝoj'
+    LAST2WEEKS: 'Paĝoj redaktitaj dum la lastaj 2 semajnoj'
+    ParameterLiveCheckbox: 'Kontroli publikan retejon'
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: Enarkivigita
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Redakti paĝon'
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Redakti paĝon'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Ligita paĝo'
     EditLink: redakti
@@ -293,12 +221,9 @@ eo:
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Uzita je'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Bonvolu enigi URL-segmenton aŭ alklaki al Rezigni'
-    HelpChars: 'Aŭtomate konvertas aŭ forigas specialajn signojn.'
-  URLSegmentField:
     Cancel: Rezigni
     Edit: Redakti
     OK: Akcepti
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Vi povas aliri la enarkivigitan retejon je ĉi tiu ligilo:'
     HAVEASKED: 'Vi petis vidi la enhavon de nia retejo en'

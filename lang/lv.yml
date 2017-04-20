@@ -1,6 +1,4 @@
 lv:
-  ContentControl:
-    NOTEWONTBESHOWN: 'Piezīme: šī ziņa nebūs redzama Jūsu apmeklētājiem'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITEFROM: 'Arhivēta vietne no'
     DRAFTSITE: 'Melnrakstu vietne'
@@ -37,7 +35,7 @@ lv:
     CODE: 'Kļūdas kods'
     DEFAULTERRORPAGECONTENT: '<p>Atvainojiet, šķiet, ka lapa kurai mēģinat piekļūt neeksistē.</p><p>Lūdzu pārliecinieties par pareizrakstību URL, kuram vēlaties piekļūt400.</p>'
     DEFAULTERRORPAGETITLE: 'Lapa nav atrasta'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Satura atļaujas'
     PERMISSIONS_CATEGORY: 'Lomu un piekļuves atļaujas'
   SilverStripe\CMS\Model\RedirectorPage:

@@ -1,5 +1,5 @@
 ja:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 以下で使用される：
     PAGES: ページ
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -24,9 +24,10 @@ ja:
     ReasonDropdownVPBROKENLINK: 存在しないページを指している仮想ページ
     RedirectorNonExistent: 存在しないページを指しているリダイレクトページ
     VirtualPageNonExistent: 存在しないページを指している仮想ページ
-  CMSAddPageController:
-    Title: 'ページを追加'
-  CMSBatchActions:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    ParentMode_child: 他のページの下に作成
+    ParentMode_top: 最上位層
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: '%dページを公開しましたが、%dページの公開に失敗しました。'
     PUBLISH_PAGES: '公開'
     RESTORE: '復元'
@@ -62,40 +63,22 @@ ja:
     TabContent: コンテンツ
     TabHistory: 履歴
     TabSettings: 設定
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: 他のページの下に作成
-    ParentMode_top: 最上位層
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 比較モード（２つを選択）
-    COMPAREVERSIONS: バージョンの比較
-    REVERTTOTHISVERSION: このバージョンに戻す
-    SHOWUNPUBLISHED: '公開されていないバージョンを表示'
-    SHOWVERSION: バージョンを表示
-    VIEW: 表示
-    VIEWINGLATEST: 現在最新のバージョンを表示。
-    VIEWINGVERSION: '現在表示しているバージョンは{version}です。'
-  CMSPageHistoryController_versions_ss:
     AUTHOR: '作成者'
     NOTPUBLISHED: '未公開'
     PUBLISHER: パブリッシャー
     UNKNOWN: 不明
     WHEN: いつ
   SilverStripe\CMS\Controllers\CMSPagesController:
-    ListView: 一覧表示
-    MENUTITLE: ページ
-    TreeView: ツリー表示
-  CMSPagesController_Tools_ss:
     FILTER: フィルタ
-  CMSSIteTreeFilter_PublishedPages:
+  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: '公開済みページ'
-  CMSSearch:
-    FILTERDATEFROM: 開始日
-    FILTERDATETO: 終了日
-    PAGEFILTERDATEHEADING: 最後に編集された
+  SilverStripe\CMS\Search\SearchForm:
+    GO: 開始
+    SEARCH: 検索
+    SearchResults: 検索結果
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: '全ページ'
-  ContentControl:
-    NOTEWONTBESHOWN: '注：このメッセージは、あなたの訪問者に表示されません'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: プレビュー版
     ARCHIVEDSITEFROM: からアーカイブされたサイト
@@ -149,7 +132,7 @@ ja:
     DEFAULTERRORPAGETITLE: ページが見つかりません
     DEFAULTSERVERERRORPAGECONTENT: '<p>申し訳ございません。あなたのリクエストを処理中に問題が起きました。</p>'
     DEFAULTSERVERERRORPAGETITLE: サーバーエラー
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: コンテンツに関する権限
     PERMISSIONS_CATEGORY: 役割とアクセス権限
   SilverStripe\CMS\Model\RedirectorPage:
@@ -160,25 +143,6 @@ ja:
     REDIRECTTOEXTERNAL: 他のウェブサイト
     REDIRECTTOPAGE: 貴方のウェブサイトを表示します
     YOURPAGE: 貴方のウェブサイトを表示します
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: '仮想ページを公開するためにリンクしたページを公開してください'
-    VIRTUALPAGEWARNING: 'このページを公開するために、リンク先のページを選択して最初に保存してください'
-    VIRTUALPAGEWARNINGSETTINGS: '公開するために、主なコンテンツの分野からリンク先のページを選択してください'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: 開始
-    SEARCH: 検索
-    SearchResults: 検索結果
-  SideReport:
-    BROKENFILES: 壊れているファイルがあるページ
-    BROKENREDIRECTORPAGES: リダイレクトしたページが削除されています
-    BROKENVIRTUALPAGES: '削除されたページを参照している仮想ページ'
-    BrokenLinksGroupTitle: 壊れているリンクのレポート
-    ContentGroupTitle: コンテンツのレポート
-    EMPTYPAGES: 空のページ
-    LAST2WEEKS: '過去２週間以内に編集されたページ'
-    ParameterLiveCheckbox: 'ライブ配信のサイトをチェックする'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: アーカイブされた
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 誰でも
     ACCESSHEADER: このページを閲覧できる人
@@ -261,14 +225,22 @@ ja:
     many_many_BackLinkTracking: 'リンク元を追跡'
     many_many_ImageTracking: 画像へのリンクを追跡
     many_many_LinkTracking: リンクを追跡
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 壊れているファイルがあるページ
+    BROKENREDIRECTORPAGES: リダイレクトしたページが削除されています
+    BROKENVIRTUALPAGES: '削除されたページを参照している仮想ページ'
+    BrokenLinksGroupTitle: 壊れているリンクのレポート
+    ContentGroupTitle: コンテンツのレポート
+    EMPTYPAGES: 空のページ
+    LAST2WEEKS: '過去２週間以内に編集されたページ'
+    ParameterLiveCheckbox: 'ライブ配信のサイトをチェックする'
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: アーカイブされた
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'URLのセグメントを入力または中止をクリックする'
-    HelpChars: 特殊文字は自動的に変換されたか取り除かれました
-  URLSegmentField:
     Cancel: 中止
     Edit: 編集
     OK: OK
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: アーカイブされたサイトには次のリンクでアクセス可能です：
     HAVEASKED: あなたは私達のサイトのコンテンツを閲覧するように求められています
   SilverStripe\CMS\Model\VirtualPage:

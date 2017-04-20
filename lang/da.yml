@@ -1,5 +1,5 @@
 da:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Brugt på:'
     PAGES: side(r)
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -23,9 +23,10 @@ da:
     ReasonDropdownVPBROKENLINK: 'Virtuel side der peger på en side der ikke findes'
     RedirectorNonExistent: 'Viderestillende side der peger på en side der ikke findes'
     VirtualPageNonExistent: 'Virtuel side der peger på en side der ikke findes'
-  CMSAddPageController:
-    Title: 'Tilføj side'
-  CMSBatchActions:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    ParentMode_child: 'Under en anden side'
+    ParentMode_top: 'Højeste niveau'
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Publiserede %d sider'
     PUBLISH_PAGES: Publisér
   SilverStripe\CMS\Controllers\CMSMain:
@@ -51,36 +52,20 @@ da:
     TabContent: Indhold
     TabHistory: Historik
     TabSettings: Indstillinger
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: 'Under en anden side'
-    ParentMode_top: 'Højeste niveau'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 'Sammenligningstilstand (vælg to)'
-    COMPAREVERSIONS: 'Sammenlign versioner'
-    REVERTTOTHISVERSION: 'Genskab denne version'
-    SHOWUNPUBLISHED: 'Vis versioner der ikke er udgivne'
-    SHOWVERSION: 'Vis version'
-    VIEW: Visning
-    VIEWINGVERSION: 'Lige nu vises version {version}.'
-  CMSPageHistoryController_versions_ss:
     AUTHOR: Forfatter
     NOTPUBLISHED: 'Ikke udgivet'
     PUBLISHER: Udgiver
     UNKNOWN: Ukendt
     WHEN: Hvornår
   SilverStripe\CMS\Controllers\CMSPagesController:
-    ListView: Listevisning
-    MENUTITLE: Sider
-    TreeView: Trævisning
-  CMSPagesController_Tools_ss:
     FILTER: Filtre
-  CMSSearch:
-    FILTERDATEFROM: Fra
-    FILTERDATETO: Til
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Send
+    SEARCH: Søg
+    SearchResults: Søgeresultater
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Alle sider'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Bemærk: denne besked bliver ikke vist til dine besøgende '
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITEFROM: 'Arkiveret side fra'
     DRAFTSITE: Kladdeside
@@ -101,7 +86,7 @@ da:
     DEFAULTERRORPAGETITLE: 'Siden blev ikke fundet'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Der opstod desværre et problem med at håndtere din forespørgsel.</p>'
     DEFAULTSERVERERRORPAGETITLE: Serverfejl
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: Indholdsrettigheder
     PERMISSIONS_CATEGORY: 'Roller og adgangstilladelser'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -112,11 +97,7 @@ da:
     REDIRECTTOEXTERNAL: 'Et andet websted'
     REDIRECTTOPAGE: 'En side på dit websted'
     YOURPAGE: 'Side på dit websted'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Send
-    SEARCH: Søg
-    SearchResults: Søgeresultater
-  SideReport:
+  SilverStripe\Reports\SideReport:
     BROKENFILES: 'Sider med ødelagt filer'
     BROKENREDIRECTORPAGES: 'Viderestillingssider der henviser til slettede sider'
     BROKENVIRTUALPAGES: 'Virtuelle sider der henviser til slettede sider'
@@ -191,7 +172,7 @@ da:
     many_many_LinkTracking: 'Sporing af links'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Specialkarakterer bliver automatisk konverteret eller fjernet.'
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Du kan tilgå¨den arkiverede side på dette link:'
     HAVEASKED: 'Du har spurgt om at se indholdet af vores side på'
   SilverStripe\CMS\Model\VirtualPage:

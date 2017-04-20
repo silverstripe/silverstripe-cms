@@ -1,5 +1,5 @@
 nl:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Gebruikt op:'
     PAGES: pagina(s)
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -24,9 +24,9 @@ nl:
     ReasonDropdownVPBROKENLINK: 'Virtuele pagina verwijst naar niet bestaande pagina'
     RedirectorNonExistent: 'verwijzingspagina wijst naar niet bestaande pagina'
     VirtualPageNonExistent: 'virtuele pagina verwijst naar niet bestaande pagina'
-  CMSAddPageController:
-    Title: 'Pagina toevoegen'
-  CMSBatchActions:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Pagina toevoegen'
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: '%d pagina''s gepubliceerd'
     PUBLISH_PAGES: Publiceer
     RESTORE: Herstel
@@ -60,34 +60,20 @@ nl:
     TabContent: Inhoud
     TabHistory: Geschiedenis
     TabSettings: Instellingen
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    MENUTITLE: 'Pagina toevoegen'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 'Vergelijken (selecteer 2)'
-    COMPAREVERSIONS: 'Vergelijk versies'
-    REVERTTOTHISVERSION: 'Deze versie terugzetten'
-    SHOWUNPUBLISHED: 'Toon nog niet gepubliceerde versies'
-    SHOWVERSION: 'Toon versie'
-    VIEW: toon
-    VIEWINGLATEST: 'U bekijkt nu de laatste versie.'
-    VIEWINGVERSION: 'U bekijkt nu versie {version}.'
-  CMSPageHistoryController_versions_ss:
     AUTHOR: Auteur
     NOTPUBLISHED: 'Niet gepubliceerd'
     PUBLISHER: Publiceerder
     UNKNOWN: Onbekend
     WHEN: Wanneer
   SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: 'Pagina ''s'
-  CMSPagesController_Tools_ss:
     FILTER: Filteren
-  CMSSearch:
-    FILTERDATEFROM: Van
-    FILTERDATETO: Tot
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Zoeken
+    SEARCH: Zoeken
+    SearchResults: Zoekresultaten
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Alle pagina''s'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Merk op: dit bericht is niet zichtbaar voor uw bezoekers'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Voorbeeld van versie bekijken'
     ARCHIVEDSITEFROM: 'Gearchiveerde site van'
@@ -112,7 +98,7 @@ nl:
     VIEWPAGEIN: 'Bekijk pagina in:'
   SilverStripe\CMS\Model\ErrorPage:
     SINGULARNAME: Foutpagina
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: Inhoudsrechten
     PERMISSIONS_CATEGORY: 'Rollen en toegangsrechten'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -123,35 +109,6 @@ nl:
     REDIRECTTOEXTERNAL: 'Een andere website'
     REDIRECTTOPAGE: 'Een pagina op deze website'
     YOURPAGE: 'Pagina op deze website'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'U dient eerst de gekoppelde pagina te publiceren voordat u de virtuele pagina publiceert.'
-    VIRTUALPAGEWARNING: 'U dient eerst een gekoppelde pagina te selecteren en op te slaan voordat u deze pagina kunt publiceren.'
-    VIRTUALPAGEWARNINGSETTINGS: 'U dient een gekoppelde pagina te selecteren op het hoofdscherm voordat u kunt publiceren.'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Zoeken
-    SEARCH: Zoeken
-    SearchResults: Zoekresultaten
-  SideReport:
-    BROKENFILES: 'Pagina''s met verbroken bestanden'
-    BROKENREDIRECTORPAGES: 'Verwijzingspagina''s die naar verwijderde pagina''s verwijzen'
-    BROKENVIRTUALPAGES: 'Virtuele pagina''s die naar verwijderde pagina''s verwijzen'
-    BrokenLinksGroupTitle: 'Rapport van verbroken links'
-    ContentGroupTitle: Inhoudsrapporten
-    EMPTYPAGES: 'Lege pagina''s'
-    LAST2WEEKS: 'Pagina''s gewijzigd in de laatste twee weken'
-    ParameterLiveCheckbox: 'Controleer gepubliceerde site'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: Gearchiveerd
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Bewerk pagina'
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Bewerk pagina'
-  SilverStripe\CMS\Model\VirtualPage:
-    CHOOSE: 'Gekoppelde pagina'
-    EditLink: wijzigen
-    HEADER: 'Dit is een virtuele pagina'
-    HEADERWITHLINK: 'Dit is een virtuele pagina met de inhoud van "{title}" ({link})'
-    PageTypNotAllowedOnRoot: 'Voor deze virtuele pagina is het originele paginatype "{type}" niet toegestaan op het hoogste niveau.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Iedereen
     ACCESSHEADER: 'Wie kan deze pagina bekijken?'
@@ -233,13 +190,31 @@ nl:
     many_many_BackLinkTracking: 'Backlinks traceren'
     many_many_ImageTracking: 'Afbeeldingen traceren'
     many_many_LinkTracking: 'Links traceren'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Pagina''s met verbroken bestanden'
+    BROKENREDIRECTORPAGES: 'Verwijzingspagina''s die naar verwijderde pagina''s verwijzen'
+    BROKENVIRTUALPAGES: 'Virtuele pagina''s die naar verwijderde pagina''s verwijzen'
+    BrokenLinksGroupTitle: 'Rapport van verbroken links'
+    ContentGroupTitle: Inhoudsrapporten
+    EMPTYPAGES: 'Lege pagina''s'
+    LAST2WEEKS: 'Pagina''s gewijzigd in de laatste twee weken'
+    ParameterLiveCheckbox: 'Controleer gepubliceerde site'
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: Gearchiveerd
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Bewerk pagina'
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Bewerk pagina'
+  SilverStripe\CMS\Model\VirtualPage:
+    CHOOSE: 'Gekoppelde pagina'
+    EditLink: wijzigen
+    HEADER: 'Dit is een virtuele pagina'
+    HEADERWITHLINK: 'Dit is een virtuele pagina met de inhoud van "{title}" ({link})'
+    PageTypNotAllowedOnRoot: 'Voor deze virtuele pagina is het originele paginatype "{type}" niet toegestaan op het hoogste niveau.'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Vul een URL segment in of klik op annuleren'
-    HelpChars: 'Speciale tekens worden automatische omgezet of verwijderd.'
-  URLSegmentField:
     Cancel: Annuleer
     Edit: Wijzigen
     OK: OK
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'U kunt de gearchiveerde site bekijken via deze link:'
     HAVEASKED: 'U heeft gevraagd de inhoud van onze site te bekijken op'

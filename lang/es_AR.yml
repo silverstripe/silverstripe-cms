@@ -20,7 +20,7 @@ es_AR:
     ReasonDropdownVPBROKENLINK: 'Página virtual apuntando a una página no existente'
     RedirectorNonExistent: 'la página de redireccionamiento apunta a una página inexistente'
     VirtualPageNonExistent: 'página virtual apuntando a una página no existente'
-  CMSBatchActions:
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Se publicaron %d páginas, %d fallas'
     PUBLISH_PAGES: Publicar
   SilverStripe\CMS\Controllers\CMSMain:
@@ -30,8 +30,6 @@ es_AR:
     PUBALLFUN: 'Funcionalidad "Publicar Todo"'
     REMOVEDPAGEFROMDRAFT: 'Quitados ''%s'' del borrador del sitio'
     ROLLBACK: 'Restaurar a ésta versión'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Nota: este mensage no se mostrará a sus visitantes'
   SilverStripe\CMS\Controllers\ContentController:
     DRAFTSITE: 'Sitio borrador'
     LOGGEDINAS: 'Conectado como'
@@ -67,7 +65,7 @@ es_AR:
     CODE: 'Código de Error'
     DEFAULTERRORPAGECONTENT: '<p>Disculpa, parece que estás tratando de ingresar a una página que no existe.</p><p>Por favor verifica la escritura de la URL que deseas visitar e inténtalo de nuevo.</p>'
     DEFAULTERRORPAGETITLE: 'Página inexistente'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Permisos de contenido'
     PERMISSIONS_CATEGORY: 'Roles y permisos de acceso'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -82,7 +80,7 @@ es_AR:
     GO: Ir
     SEARCH: Buscar
     SearchResults: 'Resultados de la búsqueda'
-  SideReport:
+  SilverStripe\Reports\SideReport:
     BROKENFILES: 'Páginas con archivos rotos'
     BROKENREDIRECTORPAGES: 'RedirectorPages apunta a páginas eliminadas'
     BROKENVIRTUALPAGES: 'VirtualPages apunta a páginas eliminadas'
@@ -143,7 +141,7 @@ es_AR:
     many_many_BackLinkTracking: 'Seguimiento de Backlink'
     many_many_ImageTracking: 'Seguimiento de Imágen'
     many_many_LinkTracking: 'Seguimiento de Enlace'
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Puedes acceder al sitio archivado con este enlace:'
     HAVEASKED: 'Has solicitado ver el contenido de nuestro sitio en'
   SilverStripe\CMS\Model\VirtualPage:

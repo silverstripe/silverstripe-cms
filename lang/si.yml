@@ -27,7 +27,7 @@ si:
     REDIRECTTOEXTERNAL: 'වෙනත් වෙබ් අඩවි'
     REDIRECTTOPAGE: 'ඔබේ අඩවියේ පිටුවක්'
     YOURPAGE: 'ඔබේ අඩවියේ පිටුවක්'
-  SideReport:
+  SilverStripe\Reports\SideReport:
     EMPTYPAGES: 'හිස් පිටු'
     LAST2WEEKS: 'අවසාන සති 2 තුල වෙනස්  කරන ලද පිටු'
   SilverStripe\CMS\Model\SiteTree:
@@ -59,7 +59,7 @@ si:
     TOPLEVEL: 'අන්ර්ගතය'
     URLSegment: 'URL කොටස'
     has_one_Parent: 'මවු පිටුව'
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'මෙම බැදීමෙන් පැරනි අඩවියට ප්රවිෂ්ට විය හැක'
     HAVEASKED: 'ඹබට අපගේ වෙබ් අඩවිය නිරීක්ශනය කරන ලෙස ඉල්ලා ඇත'
   SilverStripe\CMS\Model\VirtualPage:

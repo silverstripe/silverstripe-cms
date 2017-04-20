@@ -1,5 +1,5 @@
 de:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Verwendet auf:'
     PAGES: Seite(n)
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -24,11 +24,11 @@ de:
     ReasonDropdownVPBROKENLINK: 'Virtuelle Seite, die auf eine nicht vorhandene Seite verweist'
     RedirectorNonExistent: 'Weiterleitung, die auf eine nicht vorhandene Seite verweist'
     VirtualPageNonExistent: 'Virtuelle Seite, die auf eine nicht vorhandene Seite verweist'
-  CMSAddPageController:
-    Title: 'Seite hinzufügen'
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Seite hinzufügen'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     TITLE: 'Veröffentlichung zurücknehmen und archivieren'
-  CMSBatchActions:
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: '%d Seiten veröffentlicht, %d Fehler'
     PUBLISH_PAGES: Veröffentlichen
     RESTORE: Wiederherstellen
@@ -71,11 +71,7 @@ de:
     TabHistory: Historie
     TabSettings: Einstellungen
     UNPUBLISH_AND_ARCHIVE: 'Veröffentlichung zurücknehmen und archivieren'
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    MENUTITLE: 'Seite hinzufügen'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    MENUTITLE: Historie
-  CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
     NOTPUBLISHED: 'Nicht veröffentlicht'
     PREVIEW: 'Vorschau der Webseite'
@@ -83,21 +79,17 @@ de:
     UNKNOWN: Unbekannt
     WHEN: Wann
   SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: Seiten
-  CMSPagesController_Tools_ss:
     FILTER: Filter
-  CMSSIteTreeFilter_PublishedPages:
+  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Veröffentlichte Seiten'
-  CMSSearch:
-    FILTERDATEFROM: Von
-    FILTERDATETO: Bis
-    PAGEFILTERDATEHEADING: 'Zuletzt bearbeitet'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Los
+    SEARCH: Suche
+    SearchResults: Suchergebnisse
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Alle Seiten'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Veröffentlicht aber aus Entwurf entfernt'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Achtung: Diese Nachricht wird Ihren Besuchern nicht gezeigt.'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: Vorschauversion
     ARCHIVEDSITEFROM: 'Site archiviert von'
@@ -124,7 +116,7 @@ de:
     DESCRIPTION: 'Spezieller Inhalt für andere Fehlerfälle (z.B. "Seite nicht gefunden")'
     PLURALNAME: Fehlerseiten
     SINGULARNAME: Fehlerseite
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: Inhaltsberechtigungen
     PERMISSIONS_CATEGORY: 'Rollen- und Zugriffsberechtigungen'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -136,29 +128,6 @@ de:
     NONEREMOVED: 'Keine entfernt'
     SELECTALL: 'alle auswählen'
     UNSELECTALL: 'Auswahl aufheben'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Bitte veröffentlichen Sie die vernküpfte Seite um die virtuelle Seite zu veröffentlichen'
-    VIRTUALPAGEWARNING: 'Um diese Seite veröffentlichen zu können müssen Sie zu erst eine verknüpfte Seite auswählen'
-    VIRTUALPAGEWARNINGSETTINGS: 'Um diese Seite veröffentlichen zu können müssen Sie zu erst eine verknüpfte Seite im Reiter "Haupt-Inhalt" auswählen'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Los
-    SEARCH: Suche
-    SearchResults: Suchergebnisse
-  SideReport:
-    BROKENFILES: 'Seiten mit defekten Dateiverknüpfungen'
-    BROKENREDIRECTORPAGES: 'Weiterleitungen, die auf gelöschte Seiten verweisen'
-    BROKENVIRTUALPAGES: 'Virtuelle Seiten, die auf gelöschte Seiten verweisen'
-    BrokenLinksGroupTitle: 'Defekte Links'
-    ContentGroupTitle: Inhaltsberichte
-    EMPTYPAGES: 'Leere Seiten'
-    LAST2WEEKS: 'Seiten die in den letzten zwei Wochen bearbeitet wurden'
-    ParameterLiveCheckbox: 'Veröffentlichte Seite überprüfen'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: Archiviert
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Seite bearbeiten'
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Seite bearbeiten'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Jeder
     ACCESSHEADER: 'Wer kann diese Seite auf meiner Website ansehen?'
@@ -245,6 +214,21 @@ de:
     many_many_BackLinkTracking: Rückverweis-Verfolgung
     many_many_ImageTracking: Bild-Verfolgung
     many_many_LinkTracking: Link-Verfolgung
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Seiten mit defekten Dateiverknüpfungen'
+    BROKENREDIRECTORPAGES: 'Weiterleitungen, die auf gelöschte Seiten verweisen'
+    BROKENVIRTUALPAGES: 'Virtuelle Seiten, die auf gelöschte Seiten verweisen'
+    BrokenLinksGroupTitle: 'Defekte Links'
+    ContentGroupTitle: Inhaltsberichte
+    EMPTYPAGES: 'Leere Seiten'
+    LAST2WEEKS: 'Seiten die in den letzten zwei Wochen bearbeitet wurden'
+    ParameterLiveCheckbox: 'Veröffentlichte Seite überprüfen'
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: Archiviert
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Seite bearbeiten'
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Seite bearbeiten'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Verknüpfte Seite'
     EditLink: Bearbeiten
@@ -256,12 +240,9 @@ de:
     TITLE_TYPE: Typ
     TITLE_USED_ON: 'Verwendet auf'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Bitte geben Sie ein URL-Segment ein oder drücken Sie auf Abbrechen'
-    HelpChars: 'Sonderzeichen werden automatisch umgewandelt oder entfernt.'
-  URLSegmentField:
     Cancel: Abbrechen
     Edit: Bearbeiten
     OK: OK
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Sie können unter folgendem Verweis auf die archivierte Seite zugreifen:'
     HAVEASKED: 'Sie haben darum gebeten, den Inhalt unserer Site zu sehen, am'

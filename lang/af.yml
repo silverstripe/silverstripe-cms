@@ -1,5 +1,5 @@
 af:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Gebruik op:'
     PAGES: bladsy(e)
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -16,10 +16,10 @@ af:
     502: '502 - Slegte Deurgang'
     503: '503 - Diens Nie Beskikbaar'
     505: '505 - HTTP Weergawe Nie Ondersteun'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Inhoud permissies'
     PERMISSIONS_CATEGORY: 'Rolle en toegang permissies'
-  SideReport:
+  SilverStripe\Reports\SideReport:
     BROKENFILES: 'Bladsye met gebreekte lêers'
     BrokenLinksGroupTitle: 'Gebreekte skakels verslae'
     ContentGroupTitle: 'Inhoud verslae'
@@ -49,7 +49,7 @@ af:
     SHOWINSEARCH: 'Wys in soektog?'
     TABCONTENT: Inhoud
     has_one_Parent: 'Ouer Bladsy'
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     HAVEASKED: 'U het gevra om die inhoud van ons werf te sien op'
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Hierdie is ''n virtuele bladsy'

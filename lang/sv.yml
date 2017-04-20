@@ -1,5 +1,5 @@
 sv:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Använd på:'
     PAGES: sida(-or)
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -24,9 +24,10 @@ sv:
     ReasonDropdownVPBROKENLINK: 'Virtuell sida pekar på icke-existerande sida'
     RedirectorNonExistent: 'omdirigeringssida pekar på en icke-existerande sida'
     VirtualPageNonExistent: 'virtuell sida pekar på icke-existerande sida'
-  CMSAddPageController:
-    Title: 'Skapa sida'
-  CMSBatchActions:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    ParentMode_child: 'Under en annan sida'
+    ParentMode_top: Toppnivå
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Publicerade %d sidor, %d misslyckades'
     PUBLISH_PAGES: Publicera
     RESTORE: 'Återskapa'
@@ -65,41 +66,24 @@ sv:
     TabContent: Innehåll
     TabHistory: Historia
     TabSettings: Inställningar
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: 'Under en annan sida'
-    ParentMode_top: Toppnivå
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 'Jämföringsläge (välj två)'
-    COMPAREVERSIONS: 'Jämför versioner'
-    REVERTTOTHISVERSION: 'Ändra till denna version'
-    SHOWUNPUBLISHED: 'Visa opublicerade versioner'
-    SHOWVERSION: 'Visa version'
-    VIEW: 'Titta på'
-    VIEWINGLATEST: 'Nu visas den senaste versionen.'
-    VIEWINGVERSION: 'Nu visas version {version}.'
-  CMSPageHistoryController_versions_ss:
     AUTHOR: Författare
     NOTPUBLISHED: 'Ej publicerad'
     PUBLISHER: Utgivare
     UNKNOWN: Okänd
     WHEN: När
   SilverStripe\CMS\Controllers\CMSPagesController:
-    ListView: Listvy
-    MENUTITLE: Sidor
-    TreeView: Trädvy
-  CMSPagesController_Tools_ss:
     FILTER: Filter
-  CMSSIteTreeFilter_PublishedPages:
+  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Publicerade sidor'
-  CMSSearch:
-    FILTERDATEFROM: Från
-    FILTERDATETO: Till
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Kör
+    SEARCH: Sök
+    SearchResults: Sökresultat
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Alla sidor'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Live men borttagen från utkast'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Observera: Detta meddelande kommer inte att visas för besökarna'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Utkast version'
     ARCHIVEDSITEFROM: 'Arkiverad sajt från'
@@ -153,7 +137,7 @@ sv:
     DEFAULTERRORPAGETITLE: 'Sidan hittades inte'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Ursäkta, ett fel uppstod vid hanteringen av din förfrågan.</p>'
     DEFAULTSERVERERRORPAGETITLE: Serverfel
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: Innehållsåtkomst
     PERMISSIONS_CATEGORY: 'Roller och åtkomst'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -164,25 +148,6 @@ sv:
     REDIRECTTOEXTERNAL: 'En annan sajt'
     REDIRECTTOPAGE: 'En sida på din sajt'
     YOURPAGE: 'Sida på din sajt'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Publicera den länkade sidan för att kunna publicera den virtuella sidan'
-    VIRTUALPAGEWARNING: 'Välj en länkad sida och spara först för att kunna publicera den här sidan'
-    VIRTUALPAGEWARNINGSETTINGS: 'Välj en länkad sida i huvudinnehållsfälten för att kunna publicera'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Kör
-    SEARCH: Sök
-    SearchResults: Sökresultat
-  SideReport:
-    BROKENFILES: 'Sidor med trasiga filer'
-    BROKENREDIRECTORPAGES: 'Omdirigeringssidor som pekar på raderade sidor'
-    BROKENVIRTUALPAGES: 'Virtuella sidor som pekar på raderade sidor'
-    BrokenLinksGroupTitle: 'Rapport för trasiga länkar'
-    ContentGroupTitle: Innehållsrapport
-    EMPTYPAGES: 'Tomma sidor'
-    LAST2WEEKS: 'Sidor som har redigerats de senaste 2 veckorna'
-    ParameterLiveCheckbox: 'Kontrollera live sajt'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: Arkiverad
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Alla
     ACCESSHEADER: 'Vem kan se den här sidan?'
@@ -267,14 +232,22 @@ sv:
     many_many_BackLinkTracking: 'Spåra inlänkar'
     many_many_ImageTracking: 'Spåra bild'
     many_many_LinkTracking: 'Spåra länk'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Sidor med trasiga filer'
+    BROKENREDIRECTORPAGES: 'Omdirigeringssidor som pekar på raderade sidor'
+    BROKENVIRTUALPAGES: 'Virtuella sidor som pekar på raderade sidor'
+    BrokenLinksGroupTitle: 'Rapport för trasiga länkar'
+    ContentGroupTitle: Innehållsrapport
+    EMPTYPAGES: 'Tomma sidor'
+    LAST2WEEKS: 'Sidor som har redigerats de senaste 2 veckorna'
+    ParameterLiveCheckbox: 'Kontrollera live sajt'
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: Arkiverad
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Ange ett URL-segment eller klicka på avbryt'
-    HelpChars: 'Specialtecken konverteras eller tas bort'
-  URLSegmentField:
     Cancel: Avbryt
     Edit: Redigera
     OK: OK
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Du kan komma åt den arkiverade sajten med denna länk:'
     HAVEASKED: 'Du har efterfrågat att se innehållet på vår sajt på'
   SilverStripe\CMS\Model\VirtualPage:

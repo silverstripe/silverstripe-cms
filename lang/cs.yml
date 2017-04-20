@@ -1,5 +1,5 @@
 cs:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Použito na:'
     PAGES: stránka(y)
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -24,9 +24,9 @@ cs:
     ReasonDropdownVPBROKENLINK: 'Virtuální stránka ukazuje na neexistující stránku'
     RedirectorNonExistent: 'přesměrovací stránka ukazuje na neexistující stránku'
     VirtualPageNonExistent: 'virtuální stránka ukazuje na neexistující stránku'
-  CMSAddPageController:
-    Title: 'Přidat stránku'
-  CMSBatchActions:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Přidat stránku'
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Zveřejněných %d stránek, %d selhání'
     PUBLISH_PAGES: Zveřejnit
     RESTORE: Obnovit
@@ -67,11 +67,7 @@ cs:
     TabContent: Obsah
     TabHistory: Historie
     TabSettings: Nastavení
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    MENUTITLE: 'Přidat stránku'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    MENUTITLE: Historie
-  CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
     NOTPUBLISHED: Nezveřejněno
     PREVIEW: 'Náhled webu'
@@ -79,21 +75,17 @@ cs:
     UNKNOWN: Neznámý
     WHEN: Když
   SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: Stránky
-  CMSPagesController_Tools_ss:
     FILTER: Filtr
-  CMSSIteTreeFilter_PublishedPages:
+  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Zveřejněné stránky'
-  CMSSearch:
-    FILTERDATEFROM: Od
-    FILTERDATETO: Do
-    PAGEFILTERDATEHEADING: 'Poslední změna'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Hledat
+    SEARCH: Hledat
+    SearchResults: 'Výsledky hledání'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Všechny stránky'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Živé, ale odstraněno z konceptu'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Poznámka: tato zpráva nebude zobrazena vašim návštěvníkům'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Náhled verze'
     ARCHIVEDSITEFROM: 'Archivován web z'
@@ -120,7 +112,7 @@ cs:
     DESCRIPTION: 'Vlastní obsah pro různé případy chyb (např. "Stránka nenalezena")'
     PLURALNAME: 'Chybové stránky'
     SINGULARNAME: 'Chybová stránka'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Oprávnění obsahu'
     PERMISSIONS_CATEGORY: 'Role a přístupová práva'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -137,29 +129,6 @@ cs:
     OPERATION_REMOVE: 'Odstranit označené ze všech konceptů (Upozornění: Budou zničeny všechny označené stránky z obou koncept a živé)'
     SELECTALL: 'označit vše'
     UNSELECTALL: 'odznačit vše'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Zveřejněte prosím odkazovanou stránku pro zveřejnění virtuální stránky'
-    VIRTUALPAGEWARNING: 'Zvolte prosím odkazovanou stránku a předem uložte před zveřejněním této stránky'
-    VIRTUALPAGEWARNINGSETTINGS: 'Zvolte prosím odkazovanou stránku v polích hlavního obsahu pro zveřejnění'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Hledat
-    SEARCH: Hledat
-    SearchResults: 'Výsledky hledání'
-  SideReport:
-    BROKENFILES: 'Stránky s porušenými soubory'
-    BROKENREDIRECTORPAGES: 'Přesměrovací stránky ukazují na smazané stránky'
-    BROKENVIRTUALPAGES: 'VirualPages ukazuje na smazané stránky'
-    BrokenLinksGroupTitle: 'Výkazy porušených odkazů'
-    ContentGroupTitle: 'Výkazy obsahu'
-    EMPTYPAGES: 'Stránky bez obsahu'
-    LAST2WEEKS: 'Stránky upravené během posledních 2 týdnů'
-    ParameterLiveCheckbox: 'Zkontrolovat web'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: Archivováno
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Upravit stránku'
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Upravit stránku'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Kdokoliv
     ACCESSHEADER: 'Kdo může tuto stránku prohlížet?'
@@ -246,6 +215,21 @@ cs:
     many_many_BackLinkTracking: 'Stopování zpětných odkazů'
     many_many_ImageTracking: 'Stopování obrázku'
     many_many_LinkTracking: 'Stopování odkazu'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Stránky s porušenými soubory'
+    BROKENREDIRECTORPAGES: 'Přesměrovací stránky ukazují na smazané stránky'
+    BROKENVIRTUALPAGES: 'VirualPages ukazuje na smazané stránky'
+    BrokenLinksGroupTitle: 'Výkazy porušených odkazů'
+    ContentGroupTitle: 'Výkazy obsahu'
+    EMPTYPAGES: 'Stránky bez obsahu'
+    LAST2WEEKS: 'Stránky upravené během posledních 2 týdnů'
+    ParameterLiveCheckbox: 'Zkontrolovat web'
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: Archivováno
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Upravit stránku'
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Upravit stránku'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Odkazovaná stránka'
     EditLink: editovat
@@ -257,12 +241,9 @@ cs:
     TITLE_TYPE: Typ
     TITLE_USED_ON: 'Použito na'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Zadejte prosím URL segment nebo klikněte zrušit'
-    HelpChars: 'Zvláštní znaky jsou automaticky zkonvertovány nebo odstraněny'
-  URLSegmentField:
     Cancel: Storno
     Edit: Editovat
     OK: Ok
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Můžete přistupovat k archivu pomocí tohoto odkazu:'
     HAVEASKED: 'Požadovali jste prohlížet obsah našich stránek během'

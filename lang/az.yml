@@ -1,6 +1,4 @@
 az:
-  ContentControl:
-    NOTEWONTBESHOWN: 'Qeyd: Bu mesaj ziyarətçilər üçün görünməyəcək'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITEFROM: 'Arxivləşmiş sayt'
     DRAFTSITE: 'Qaralama sayt'
@@ -15,7 +13,7 @@ az:
     CODE: 'Səhv kodu'
     DEFAULTERRORPAGECONTENT: '<P> Üzr istəyirik, görünür siz mövcud olan səhifəyə giriş əldə etməyə cəhd edirdiniz. </p><p>Xahiş sizin giriş əldə etməyə və bir daha sınaqdan keçirməyə cəhd etdiyiniz URL-i yoxlayasınız </p>'
     DEFAULTERRORPAGETITLE: 'Səhifə tapılmadı'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Məzmun səlahiyyətləri'
     PERMISSIONS_CATEGORY: İcazələr
   SilverStripe\CMS\Model\RedirectorPage:

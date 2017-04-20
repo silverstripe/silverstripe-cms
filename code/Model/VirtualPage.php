@@ -242,7 +242,7 @@ class VirtualPage extends Page
         } else {
             $msgs[] = _t('SilverStripe\\CMS\\Model\\VirtualPage.HEADER', "This is a virtual page");
             $msgs[] = _t(
-                'SITETREE.VIRTUALPAGEWARNING',
+                'SilverStripe\\CMS\\Model\\SiteTree.VIRTUALPAGEWARNING',
                 'Please choose a linked page and save first in order to publish this page'
             );
         }
@@ -250,7 +250,7 @@ class VirtualPage extends Page
             && !Versioned::get_versionnumber_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', $this->CopyContentFromID)
         ) {
             $msgs[] = _t(
-                'SITETREE.VIRTUALPAGEDRAFTWARNING',
+                'SilverStripe\\CMS\\Model\\SiteTree.VIRTUALPAGEDRAFTWARNING',
                 'Please publish the linked page in order to publish the virtual page'
             );
         }
@@ -308,7 +308,7 @@ class VirtualPage extends Page
                     'VirtualPageWarning',
                     '<div class="message notice">'
                      . _t(
-                         'SITETREE.VIRTUALPAGEWARNINGSETTINGS',
+                         'SilverStripe\\CMS\\Model\\SiteTree.VIRTUALPAGEWARNINGSETTINGS',
                          'Please choose a linked page in the main content fields in order to publish'
                      )
                     . '</div>'

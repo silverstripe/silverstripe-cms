@@ -1,5 +1,5 @@
 ar:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'مستعمل في:'
     PAGES: 'صفحة (صفحات)'
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -24,9 +24,10 @@ ar:
     ReasonDropdownVPBROKENLINK: 'الصفحة الظاهرية تشير الى صفحة غير موجودة..'
     RedirectorNonExistent: 'معيد توجيه الصفحة يشير الى صفحة غير موجودة..'
     VirtualPageNonExistent: 'الصفحة الظاهرية تشير الى صفحة غير موجودة..'
-  CMSAddPageController:
-    Title: 'أضف صفحة'
-  CMSBatchActions:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    ParentMode_child: 'تحت صفحة أخرى'
+    ParentMode_top: 'أعلى مستوى'
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: '%d من الصفحات المنشورة'
     PUBLISH_PAGES: النشر
   SilverStripe\CMS\Controllers\CMSMain:
@@ -57,37 +58,20 @@ ar:
     TabContent: 'المحتوى'
     TabHistory: السوابق
     TabSettings: الإعدادات
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: 'تحت صفحة أخرى'
-    ParentMode_top: 'أعلى مستوى'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 'وضع المقارنة (حدد اثنين)'
-    COMPAREVERSIONS: 'قارن الإصدارات'
-    REVERTTOTHISVERSION: 'العودة إلى هذا الإصدار'
-    SHOWUNPUBLISHED: 'عرض الإصدارات الغير منشورة'
-    SHOWVERSION: 'اعرض الإصدار'
-    VIEW: عرض
-    VIEWINGLATEST: 'يقع حاليا عرض أحدث إصدار.'
-    VIEWINGVERSION: 'يقع حاليا عرض إصدار  {version}.'
-  CMSPageHistoryController_versions_ss:
     AUTHOR: الكاتب
     NOTPUBLISHED: 'غير منشور'
     PUBLISHER: الناشر
     UNKNOWN: 'غير معروف'
     WHEN: 'متى'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    ListView: 'عرض القائمة'
-    MENUTITLE: الصفحات
-    TreeView: 'عرض الشجرة'
-  CMSPagesController_Tools_ss:
     FILTER: 'مصفاة'
-  CMSSearch:
-    FILTERDATEFROM: 'من'
-    FILTERDATETO: إلى
+  SilverStripe\CMS\Search\SearchForm:
+    GO: اذهب
+    SEARCH: بحث
+    SearchResults: 'نتائج البحث'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'كل الصفحات'
-  ContentControl:
-    NOTEWONTBESHOWN: 'تنبيه: هذه الرسالة لن يتم عرضها لزوار موقعك'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'إصدار المعاينة'
     ARCHIVEDSITEFROM: 'موقع تمت أرشفته منذ'
@@ -139,7 +123,7 @@ ar:
     DEFAULTERRORPAGETITLE: 'الصفحة غير موجودة'
     DEFAULTSERVERERRORPAGECONTENT: '<p>عذرا، كانت هناك مشكلة في التعامل مع طلبك.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'خطأ في الملقم'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'تصاريح المحتوى'
     PERMISSIONS_CATEGORY: 'تصريح الدخول والقواعد'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -150,25 +134,6 @@ ar:
     REDIRECTTOEXTERNAL: 'موقع آخر'
     REDIRECTTOPAGE: 'صفحة في موقعك الشخصي'
     YOURPAGE: 'صفحة في موقعك الشخصي'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'يرجى نشر الصفحة المرتبطة من أجل نشر الصفحة الافتراضية'
-    VIRTUALPAGEWARNING: 'يرجى اختيار صفحة مرتبطة وقم بالحفظ أولا من أجل نشر هذه الصفحة'
-    VIRTUALPAGEWARNINGSETTINGS: 'يرجى اختيار صفحة مرتبطة في مجالات المحتوى الرئيسي من أجل النشر'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: اذهب
-    SEARCH: بحث
-    SearchResults: 'نتائج البحث'
-  SideReport:
-    BROKENFILES: 'صفحات مع ملفات مكسورة'
-    BROKENREDIRECTORPAGES: 'معيد التوجيه الصفحات يشير إلى صفحات محذوفة'
-    BROKENVIRTUALPAGES: 'الصفحات الظاهرية تشير إالى صفحات محذوفة'
-    BrokenLinksGroupTitle: 'تقارير الروابط المكسورة'
-    ContentGroupTitle: 'تقارير المحتوى'
-    EMPTYPAGES: 'صفحات فارغة'
-    LAST2WEEKS: 'صفحات تم تعديلها في آخر أسبوعين'
-    ParameterLiveCheckbox: 'التأكد من حيوية الموقع'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: 'المؤرشف'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'الجميع'
     ACCESSHEADER: 'من يستطيع مشاهدة هذه الصفحة ؟'
@@ -250,14 +215,22 @@ ar:
     many_many_BackLinkTracking: 'متابعة التعقيبات'
     many_many_ImageTracking: 'متابعة الصور'
     many_many_LinkTracking: 'متابعة الروابط'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'صفحات مع ملفات مكسورة'
+    BROKENREDIRECTORPAGES: 'معيد التوجيه الصفحات يشير إلى صفحات محذوفة'
+    BROKENVIRTUALPAGES: 'الصفحات الظاهرية تشير إالى صفحات محذوفة'
+    BrokenLinksGroupTitle: 'تقارير الروابط المكسورة'
+    ContentGroupTitle: 'تقارير المحتوى'
+    EMPTYPAGES: 'صفحات فارغة'
+    LAST2WEEKS: 'صفحات تم تعديلها في آخر أسبوعين'
+    ParameterLiveCheckbox: 'التأكد من حيوية الموقع'
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: 'المؤرشف'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'الرجاء إدخال مقطع URL أو انقر فوق إلغاء الأمر'
-    HelpChars: 'يتم تلقائيا تحويل الأحرف الخاصة أو إزالتها.'
-  URLSegmentField:
     Cancel: إلغاء
     Edit: حرر
     OK: 'موافق'
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'يمكنك الدخول إلى أرشيف الموقع عن طريق الرابط التالي :'
     HAVEASKED: 'تم طلب مشاهدة محتوى الموقع في'
   SilverStripe\CMS\Model\VirtualPage:

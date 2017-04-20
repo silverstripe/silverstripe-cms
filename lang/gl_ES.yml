@@ -20,9 +20,10 @@ gl_ES:
     ReasonDropdownVPBROKENLINK: 'A páxina virtual está apuntando a unha páxina inexistente'
     RedirectorNonExistent: 'o redirector está apuntando a unha páxina inexistente'
     VirtualPageNonExistent: 'a páxina virtual está apuntando a unha páxina inexistente'
-  CMSAddPageController:
-    Title: 'Engadir páxina'
-  CMSBatchActions:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    ParentMode_child: 'Baixo outra páxina'
+    ParentMode_top: 'Nivel superior'
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: '%d páxinas publicadas, %d erros'
     PUBLISH_PAGES: Publicar
   SilverStripe\CMS\Controllers\CMSMain:
@@ -40,31 +41,15 @@ gl_ES:
     TabContent: Contido
     TabHistory: Historial
     TabSettings: Configuracións
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: 'Baixo outra páxina'
-    ParentMode_top: 'Nivel superior'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 'Modo comparación (seleccionar dúas)'
-    COMPAREVERSIONS: 'Comparar Versións'
-    REVERTTOTHISVERSION: 'Retornar a esta versión'
-    SHOWUNPUBLISHED: 'Amosar versións sen publicar'
-    SHOWVERSION: 'Amosar Versión'
-    VIEW: ver
-  CMSPageHistoryController_versions_ss:
     NOTPUBLISHED: 'Non publicado'
     PUBLISHER: Editor
     UNKNOWN: Descoñecido
     WHEN: Cando
   SilverStripe\CMS\Controllers\CMSPagesController:
-    ListView: 'Vista en Listado'
-    MENUTITLE: Páxinas
-    TreeView: 'Vista en Árbore'
-  CMSPagesController_Tools_ss:
     FILTER: Filtro
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Todas as páxinas'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Nota: esta mensaxe non se amosará aos visitantes'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITEFROM: 'Sitio arquivado dende'
     DRAFTSITE: 'Sitio Borrador'
@@ -80,7 +65,7 @@ gl_ES:
     DEFAULTERRORPAGETITLE: 'Páxina non atopada'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Sintoo, houbo un problema coa xestión da túa petición.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Erro Servidor'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Permisos do Contido'
     PERMISSIONS_CATEGORY: 'Roles e permisos de acceso'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -90,7 +75,7 @@ gl_ES:
     REDIRECTTOEXTERNAL: 'Outro sitio web'
     REDIRECTTOPAGE: 'Unha páxina no teu sitio web'
     YOURPAGE: 'Páxina no teu sitio web'
-  SideReport:
+  SilverStripe\Reports\SideReport:
     BROKENFILES: 'Páxinas con ficheiros rotos'
     BROKENREDIRECTORPAGES: 'RedirectorPages apuntando a páxinas eliminadas'
     BROKENVIRTUALPAGES: 'VirtualPages apuntando a páxinas eliminadas'
@@ -152,7 +137,7 @@ gl_ES:
     has_one_Parent: 'Páxina pai'
     many_many_ImageTracking: 'Imaxe de Seguemento'
     many_many_LinkTracking: 'Ligazón de Seguemento'
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Podes acceder ao sitio arquivado nesta ligazón:'
     HAVEASKED: 'Solicitaches ver o contido do sitio sobre'
   SilverStripe\CMS\Model\VirtualPage:

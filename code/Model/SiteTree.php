@@ -3019,30 +3019,30 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             'SITETREE_GRANT_ACCESS' => array(
                 'name' => _t('SilverStripe\\CMS\\Model\\SiteTree.PERMISSION_GRANTACCESS_DESCRIPTION', 'Manage access rights for content'),
                 'help' => _t('SilverStripe\\CMS\\Model\\SiteTree.PERMISSION_GRANTACCESS_HELP', 'Allow setting of page-specific access restrictions in the "Pages" section.'),
-                'category' => _t('Permissions.PERMISSIONS_CATEGORY', 'Roles and access permissions'),
+                'category' => _t('SilverStripe\\Security\\Permission.PERMISSIONS_CATEGORY', 'Roles and access permissions'),
                 'sort' => 100
             ),
             'SITETREE_VIEW_ALL' => array(
                 'name' => _t('SilverStripe\\CMS\\Model\\SiteTree.VIEW_ALL_DESCRIPTION', 'View any page'),
-                'category' => _t('Permissions.CONTENT_CATEGORY', 'Content permissions'),
+                'category' => _t('SilverStripe\\Security\\Permission.CONTENT_CATEGORY', 'Content permissions'),
                 'sort' => -100,
                 'help' => _t('SilverStripe\\CMS\\Model\\SiteTree.VIEW_ALL_HELP', 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to \'Pages\' section" permission')
             ),
             'SITETREE_EDIT_ALL' => array(
                 'name' => _t('SilverStripe\\CMS\\Model\\SiteTree.EDIT_ALL_DESCRIPTION', 'Edit any page'),
-                'category' => _t('Permissions.CONTENT_CATEGORY', 'Content permissions'),
+                'category' => _t('SilverStripe\\Security\\Permission.CONTENT_CATEGORY', 'Content permissions'),
                 'sort' => -50,
                 'help' => _t('SilverStripe\\CMS\\Model\\SiteTree.EDIT_ALL_HELP', 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to \'Pages\' section" permission')
             ),
             'SITETREE_REORGANISE' => array(
                 'name' => _t('SilverStripe\\CMS\\Model\\SiteTree.REORGANISE_DESCRIPTION', 'Change site structure'),
-                'category' => _t('Permissions.CONTENT_CATEGORY', 'Content permissions'),
+                'category' => _t('SilverStripe\\Security\\Permission.CONTENT_CATEGORY', 'Content permissions'),
                 'help' => _t('SilverStripe\\CMS\\Model\\SiteTree.REORGANISE_HELP', 'Rearrange pages in the site tree through drag&drop.'),
                 'sort' => 100
             ),
             'VIEW_DRAFT_CONTENT' => array(
                 'name' => _t('SilverStripe\\CMS\\Model\\SiteTree.VIEW_DRAFT_CONTENT', 'View draft content'),
-                'category' => _t('Permissions.CONTENT_CATEGORY', 'Content permissions'),
+                'category' => _t('SilverStripe\\Security\\Permission.CONTENT_CATEGORY', 'Content permissions'),
                 'help' => _t('SilverStripe\\CMS\\Model\\SiteTree.VIEW_DRAFT_CONTENT_HELP', 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'),
                 'sort' => 100
             )

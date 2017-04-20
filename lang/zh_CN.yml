@@ -15,7 +15,7 @@ zh_CN:
     REDIRECTTOEXTERNAL: 另一网站
     REDIRECTTOPAGE: 您网站中的一个网页
     YOURPAGE: 您网站中的网页
-  SideReport:
+  SilverStripe\Reports\SideReport:
     EMPTYPAGES: 空白页
     LAST2WEEKS: '在过去2周内编辑过的网页'
   SilverStripe\CMS\Model\SiteTree:
@@ -44,7 +44,7 @@ zh_CN:
     TABBEHAVIOUR: 行为特点
     TABCONTENT: '内容'
     TOPLEVEL: '网站内容（顶层）'
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: '您可通过这个链接进入已归挡的网页：'
     HAVEASKED: '在%s,您要求浏览我们网站'
   SilverStripe\CMS\Model\VirtualPage:

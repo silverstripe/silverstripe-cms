@@ -1,8 +1,5 @@
 fa_IR:
-  AssetAdmin:
-    ErrorItemPermissionDenied: 'به نظر می‌رسد شما دسترسی‌های لازم برای افزودن {ObjectTitle} به کمپین را ندارید'
-    ErrorNotFound: 'این {Type} یافت نشد'
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'استفاده شده در:'
     PAGES: صفحه(ها)
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -27,12 +24,12 @@ fa_IR:
     ReasonDropdownVPBROKENLINK: 'صفحه مجازی به صفحه ناموجود اشاره دارد'
     RedirectorNonExistent: 'صفحه هدایت‌گر به صفحه ناموجود اشاره دارد'
     VirtualPageNonExistent: 'صفحه مجازی به صفحه ناموجود اشاره دارد'
-  CMSAddPageController:
-    Title: 'اضافه کردن صفحه'
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'افزودن صفحه'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'حذف %d صفحه از سایت پیش‌نویس و زنده، و ارسال آنها به آرشیو'
     TITLE: 'عدم انتشار و بایگانی'
-  CMSBatchActions:
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'انتشار %d صفحه، %d عدم موفقیت'
     PUBLISH_PAGES: انتشار
     RESTORE: بازنشاندن
@@ -40,75 +37,18 @@ fa_IR:
     UNPUBLISHED_PAGES: 'عدم انتشار %d صفحه'
     UNPUBLISH_PAGES: 'عدم انتشار'
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'دسترسی به بخش ''{title}'''
-    ARCHIVE: بایگانی
-    ARCHIVEDPAGE: 'صفحه بایگانی شده ''%s'''
-    AddNew: 'افزودن صفحه جدید'
-    AddNewButton: جدید
-    AddPageRestriction: 'یادداشت: برخی انواع صفحه برای این انتخاب مجاز نیستند.'
-    Cancel: لغو
-    ChoosePageParentMode: 'انتخاب کنید کجا این صفحه ایجاد شود'
-    ChoosePageType: 'انتخاب نوع صفحه'
-    Create: ایجاد
-    DUPLICATED: '''{title}'' باموفقیت دونسخه شد'
-    DUPLICATEDWITHCHILDREN: '''{title}'' و زیرمجموعه‌های آن با موفقیت دونسخه شد'
-    EMAIL: 'ایمیل'
-    ListFiltered: 'نمایش نتایج جستجو'
-    NEWPAGE: '{pagetype} جدید'
-    PAGENOTEXISTS: 'این صفحه وجود ندارد'
-    PAGES: 'وضعیت صفحه'
-    PAGETYPEANYOPT: هر
-    PAGETYPEOPT: 'نوع صفحه'
-    PUBALLCONFIRM: 'لطفاً تمامی صفحات موجود در این سایت را منتشر کن، کپی‌کردن محتوای استیج به لایو'
-    PUBALLFUN: 'عملکرد "انتشار همه"'
-    PUBLISHED: 'انتشار موفقیت‌آمیز ''{title}'''
-    PUBPAGES: 'انجام شد: انتشار {count} صفحه'
-    PageAdded: 'صفحه با موفقیت ایجاد شد'
-    REMOVEDPAGE: 'حذف ''{title}'' از سایت منتشر شده'
-    REMOVEDPAGEFROMDRAFT: 'حذف ''%s'' از سایت پیش‌نویس'
-    RESTORE: 'بازنشانی پیش‌نویس'
-    RESTORED: 'بازنشانی موفقیت‌آمیز ''{title}'''
-    RESTORE_DESC: 'بازنشانی نسخه‌ی بایگانی‌شده در پیش‌نویس'
-    RESTORE_TO_ROOT: 'بازنشانی پیش‌نویس در سطح بالا'
-    RESTORE_TO_ROOT_DESC: 'بازنشانی نسخه‌ی بایگانی‌شده به پیش‌نویس به عنوان یک صفحه‌ی سطح بالا'
-    ROLLBACK: 'بازگردانی به این نسخه'
-    ROLLEDBACKPUBv2: 'بازگردانی به نسخه‌ی منتشرشده.'
-    ROLLEDBACKVERSIONv2: 'بازگردانی به نسخه‌ی #%d.'
-    SAVED: 'دخیره‌سازی ''{title}'' باموفقیت انجام شد.'
-    SAVEDRAFT: 'ذخیره پیش‌نویس'
-    TabContent: 'محتوا'
-    TabHistory: تاریخچه
-    TabSettings: 'تنظیمات'
-    TreeFiltered: 'نمایش نتایج جستجو'
-    TreeFilteredClear: پاک‌کردن
-    UNPUBLISH_AND_ARCHIVE: 'عدم انتشار و بایگانی'
-  CMSMain_left_ss:
     APPLY_FILTER: جستجو
     CLEAR_FILTER: پاک‌کردن
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    MENUTITLE: 'افزودن صفحه'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    MENUTITLE: تاریخچه
-  CMSPageHistoryController_versions_ss:
-    AUTHOR: ناشر
-    NOTPUBLISHED: 'منتشر نشده'
-    PREVIEW: 'پیش‌نمایش وب‌سایت'
-    PUBLISHER: 'منتشر کننده'
-    UNKNOWN: 'نامشخص'
-    WHEN: 'چه وقت'
-  SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: صفحات
-  CMSPagesController_ContentToolbar_ss:
     MULTISELECT: 'عملکردهای دسته'
-  CMSPagesController_Tools_ss:
+  SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: پالایش
-  CMSSIteTreeFilter_PublishedPages:
+  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'صفحات منتشر شده'
-  CMSSearch:
-    FILTERDATEFROM: از
-    FILTERDATETO: تا
-    FILTERLABELTEXT: جستجو
-    PAGEFILTERDATEHEADING: 'آخرین ویرایش'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: برو
+    SEARCH: جستجو
+    SearchResults: 'نتایج جستجو'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'صفحات تغییر یافته'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
@@ -121,8 +61,6 @@ fa_IR:
     Title: 'صفحات پیش‌نویس'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'زنده اما حذف‌شده از پیش‌نویس'
-  ContentControl:
-    NOTEWONTBESHOWN: 'یادداشت: این پیام به بازدیدکنندگان شما نمایش داده نمی‌شود'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'نسخه پیش‌نمایش'
     ARCHIVEDSITEFROM: 'سایت بایگانی شده از'
@@ -148,7 +86,7 @@ fa_IR:
   SilverStripe\CMS\Model\ErrorPage:
     PLURALNAME: 'صفحات خطا'
     SINGULARNAME: 'صفحه‌ی خطا'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'دسترسی محتوا'
     PERMISSIONS_CATEGORY: 'مجوز دسترسی ها و وظایف'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -163,29 +101,6 @@ fa_IR:
     NONEREMOVED: 'هیچ‌کدام حذف نگشت'
     SELECTALL: 'انتخاب همه'
     UNSELECTALL: 'لغو انتخاب همه'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'لطفاً صفحه‌ی پیوند‌شده را ذخیره نمایید تا صفحه‌ی مجازی انتشار یابد'
-    VIRTUALPAGEWARNING: 'لطفاً یک صفحه‌ی پیوند‌شده را انتخاب نموده و ذخیره نمایید تا این صفحه بتواند منتشر شود'
-    VIRTUALPAGEWARNINGSETTINGS: 'جهت انتشار، لطفاً یک صفحه‌ی لینک‌شده از فیلدهای محتوای اصلی انتخاب کنید'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: برو
-    SEARCH: جستجو
-    SearchResults: 'نتایج جستجو'
-  SideReport:
-    BROKENFILES: 'صفحات دارای فایل معیوب'
-    BROKENREDIRECTORPAGES: 'صفحات هدایت‌گر اشاره‌کننده به صفحات حذف شده'
-    BROKENVIRTUALPAGES: 'صفحات مجازی اشاره‌کننده به صفحات حذف شده'
-    BrokenLinksGroupTitle: 'گزارش پیوندهای معیوب'
-    ContentGroupTitle: 'گزارشات محتوا'
-    EMPTYPAGES: 'صفحات بدون مطلب'
-    LAST2WEEKS: 'صفحات ویرایش شده در 2 هفته گذشته'
-    ParameterLiveCheckbox: 'بررسی سایت به صورت زنده'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: 'بایگانی شده'
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'ویرایش صفحه'
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'ویرایش صفحه'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'همه'
     ACCESSHEADER: 'چه کسی بتواند این صفحه را مشاهده کنید ؟'
@@ -266,6 +181,21 @@ fa_IR:
     many_many_BackLinkTracking: 'ردیابی بک‌لینک'
     many_many_ImageTracking: 'ردیابی تصویر'
     many_many_LinkTracking: 'ردیابی پیوند'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'صفحات دارای فایل معیوب'
+    BROKENREDIRECTORPAGES: 'صفحات هدایت‌گر اشاره‌کننده به صفحات حذف شده'
+    BROKENVIRTUALPAGES: 'صفحات مجازی اشاره‌کننده به صفحات حذف شده'
+    BrokenLinksGroupTitle: 'گزارش پیوندهای معیوب'
+    ContentGroupTitle: 'گزارشات محتوا'
+    EMPTYPAGES: 'صفحات بدون مطلب'
+    LAST2WEEKS: 'صفحات ویرایش شده در 2 هفته گذشته'
+    ParameterLiveCheckbox: 'بررسی سایت به صورت زنده'
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: 'بایگانی شده'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'ویرایش صفحه'
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'ویرایش صفحه'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'صفحه ارجاعی'
     EditLink: ویرایش
@@ -275,12 +205,9 @@ fa_IR:
     TITLE_TYPE: نوع
     TITLE_USED_ON: 'استفاده شده در'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'لطفاً یک بخش نشانی اینترنتی را درج نمایید یا روی لغو کلیک کنید.'
-    HelpChars: 'کاراکترهای ویژه به‌طور خودکار تبدیل یا حذف می‌شوند.'
-  URLSegmentField:
     Cancel: لغو
     Edit: ویرایش
     OK: تایید
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'شما می‌توانید با این لینک به سایت آرشیو‌شده دسترسی یابید:'
     HAVEASKED: 'شما خواسته اید که درون‌مایه تارگاه ما را ببینید در'

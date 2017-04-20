@@ -45,7 +45,7 @@ pt_BR:
   SilverStripe\CMS\Search\SearchForm:
     GO: Ir
     SEARCH: Buscar
-  SideReport:
+  SilverStripe\Reports\SideReport:
     EMPTYPAGES: 'Páginas em branco'
     LAST2WEEKS: 'Páginas editadas nas últimas 2 semanas'
   SilverStripe\CMS\Model\SiteTree:
@@ -88,7 +88,7 @@ pt_BR:
     many_many_BackLinkTracking: 'Gerenciar Backlink '
     many_many_ImageTracking: 'Gerenciar Imagem'
     many_many_LinkTracking: 'Gerenciar Link'
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Pode aceder ao site arquivado através deste link:'
     HAVEASKED: 'Você pediu para ver o conteúdo do nosso site em'
   SilverStripe\CMS\Model\VirtualPage:

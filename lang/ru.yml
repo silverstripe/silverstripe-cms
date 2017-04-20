@@ -1,5 +1,5 @@
 ru:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Используется на:'
     PAGES: страниц(а)
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -24,9 +24,9 @@ ru:
     ReasonDropdownVPBROKENLINK: 'Виртуальная страница указывает на несуществующую страницу'
     RedirectorNonExistent: 'страница перенаправления указывает на несуществующую страницу'
     VirtualPageNonExistent: 'виртуальная страница указывает на несуществующую страницу'
-  CMSAddPageController:
-    Title: 'Добавить страницу'
-  CMSBatchActions:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Добавить страницу'
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Опубликовано %d страниц, %d ошибок'
     PUBLISH_PAGES: Опубликовать
     RESTORE: Восстановить
@@ -67,11 +67,7 @@ ru:
     TabContent: Содержимое
     TabHistory: История
     TabSettings: Настройки
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    MENUTITLE: 'Добавить страницу'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    MENUTITLE: История
-  CMSPageHistoryController_versions_ss:
     AUTHOR: Автор
     NOTPUBLISHED: 'Не издавалось'
     PREVIEW: 'Предпросмотр сайта'
@@ -79,21 +75,17 @@ ru:
     UNKNOWN: Неизвестно
     WHEN: Когда
   SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: Страницы
-  CMSPagesController_Tools_ss:
     FILTER: Фильтр
-  CMSSIteTreeFilter_PublishedPages:
+  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Опубликованные страницы'
-  CMSSearch:
-    FILTERDATEFROM: От
-    FILTERDATETO: До
-    PAGEFILTERDATEHEADING: 'Последнее изменение'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Выполн.
+    SEARCH: Поиск
+    SearchResults: 'Результаты поиска'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Все страницы'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Опубликовано, но удалено из черновика'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Внимание: это сообщение не будет показано посетителям'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Версия для просмотра'
     ARCHIVEDSITEFROM: 'Архив сайта от'
@@ -120,7 +112,7 @@ ru:
     DESCRIPTION: 'Пользовательские страницы ошибок (например, "Страница не найдена")'
     PLURALNAME: 'Страницы ошибок'
     SINGULARNAME: 'Страница ошибки'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Права доступа к содержимому'
     PERMISSIONS_CATEGORY: 'Роли и права доступа'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -137,29 +129,6 @@ ru:
     OPERATION_REMOVE: 'Удалить все версии выбранного (ВНИМАНИЕ: Это действие удалит все выбранные страниц из черновиков и с опубликованного сайта)'
     SELECTALL: 'выбрать все'
     UNSELECTALL: 'снять выделение со всех'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Для опубликования виртуальной страницы опубликуйте связанную страницу'
-    VIRTUALPAGEWARNING: 'Для опубликования этой страницы выберите связанную страницу и сохраните изменения'
-    VIRTUALPAGEWARNINGSETTINGS: 'Для опубликования выберите связанную страницу из области основного содержимого'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Выполн.
-    SEARCH: Поиск
-    SearchResults: 'Результаты поиска'
-  SideReport:
-    BROKENFILES: 'Страницы с ошибочными файлами'
-    BROKENREDIRECTORPAGES: 'Страницы перенаправления, указывающие на удаленные страницы'
-    BROKENVIRTUALPAGES: 'Виртуальные страницы, указывающие на удаленные страницы'
-    BrokenLinksGroupTitle: 'Отчеты об ошибочных ссылках'
-    ContentGroupTitle: 'Отчеты по контенту'
-    EMPTYPAGES: 'Пустые страницы'
-    LAST2WEEKS: 'Страницы, которые редактировались в последние 2 недели'
-    ParameterLiveCheckbox: 'Проверить опубликованный сайт'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: 'Архивные'
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Редактировать страницу'
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Редактировать Страницу'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Все
     ACCESSHEADER: 'Кто может просматривать эту страницу на моем сайте?'
@@ -246,6 +215,21 @@ ru:
     many_many_BackLinkTracking: 'Отслеживание обратных ссылок'
     many_many_ImageTracking: 'Отслеживание изображений'
     many_many_LinkTracking: 'Отслеживание ссылок'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Страницы с ошибочными файлами'
+    BROKENREDIRECTORPAGES: 'Страницы перенаправления, указывающие на удаленные страницы'
+    BROKENVIRTUALPAGES: 'Виртуальные страницы, указывающие на удаленные страницы'
+    BrokenLinksGroupTitle: 'Отчеты об ошибочных ссылках'
+    ContentGroupTitle: 'Отчеты по контенту'
+    EMPTYPAGES: 'Пустые страницы'
+    LAST2WEEKS: 'Страницы, которые редактировались в последние 2 недели'
+    ParameterLiveCheckbox: 'Проверить опубликованный сайт'
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: 'Архивные'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Редактировать страницу'
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Редактировать Страницу'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Связанная страница'
     EditLink: редактировать
@@ -257,12 +241,9 @@ ru:
     TITLE_TYPE: Тип
     TITLE_USED_ON: 'Используется на'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Задайте адрес страницы или нажмите "Отмена"'
-    HelpChars: 'Спецсимволы автоматически конвертируются или удаляются.'
-  URLSegmentField:
     Cancel: Отмена
     Edit: 'Редактировать'
     OK: ОК
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Вы можете посмотреть архивную версию сайта по этой ссылке:'
     HAVEASKED: 'Вы запросили просмотр содержимого нашего сайта за'

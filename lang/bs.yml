@@ -1,5 +1,5 @@
 bs:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Korišteno ovdje:'
     PAGES: strana(ice)
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -49,7 +49,7 @@ bs:
   SilverStripe\CMS\Search\SearchForm:
     GO: Idi
     SEARCH: Pretraga
-  SideReport:
+  SilverStripe\Reports\SideReport:
     EMPTYPAGES: 'Prazne stranice'
     LAST2WEEKS: 'Izmjenjene stranice u posljednje 2 sedmice'
   SilverStripe\CMS\Model\SiteTree:
@@ -79,7 +79,7 @@ bs:
     TABBEHAVIOUR: Ponašanje
     TABCONTENT: Sadržaj
     TOPLEVEL: 'Sadržaj stranice (Glavni nivo)'
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Arhiviranoj stranici možete pristupiti korištenjem ovog linka:'
     HAVEASKED: 'Zahtjevali ste pregled sadržaja naše stranice na'
   SilverStripe\CMS\Model\VirtualPage:

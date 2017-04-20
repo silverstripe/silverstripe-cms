@@ -18,7 +18,7 @@ fo:
   SilverStripe\CMS\Search\SearchForm:
     GO: Víðari
     SEARCH: Leita
-  SideReport:
+  SilverStripe\Reports\SideReport:
     EMPTYPAGES: 'Tómar síður'
     LAST2WEEKS: 'Síður broyttar seinastu 2 vikurnar'
   SilverStripe\CMS\Model\SiteTree:
@@ -50,6 +50,6 @@ fo:
     TABCONTENT: Innihald
     TOPLEVEL: 'Heimasíðu innihald (Fyrsta støði)'
     has_one_Parent: Yvirsíða
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Tú kann fáa atgongd til arkiv heimasíðuna her:'
     HAVEASKED: 'Tú mást fáa loyvi, fyri at kunna síggja innihaldið á okkara heimasíðu á'

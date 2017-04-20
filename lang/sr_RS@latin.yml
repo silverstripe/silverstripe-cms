@@ -1,5 +1,5 @@
 sr_RS@latin:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Koristi se na:'
     PAGES: stranici(a)
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -24,9 +24,10 @@ sr_RS@latin:
     ReasonDropdownVPBROKENLINK: 'Virtuelna stranica koja pokazuje na nepostojeću stranicu'
     RedirectorNonExistent: 'stranica za preusmerivanje koja pokazuje na nepostojeću stranicu'
     VirtualPageNonExistent: 'virtuelna stranica koja pokazuje na nepostojeću stranicu'
-  CMSAddPageController:
-    Title: 'Dodaj stranicu'
-  CMSBatchActions:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    ParentMode_child: 'Kao podstranicu druge stranice'
+    ParentMode_top: 'Vršni nivo'
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Objavljeno %d stranica. Nije uspelo objavljivanje %d stranica.'
     PUBLISH_PAGES: Objavi
   SilverStripe\CMS\Controllers\CMSMain:
@@ -57,37 +58,20 @@ sr_RS@latin:
     TabContent: Sadržaj
     TabHistory: Istorija
     TabSettings: Podešavanja
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: 'Kao podstranicu druge stranice'
-    ParentMode_top: 'Vršni nivo'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 'Režim poređenja (izaberi dva)'
-    COMPAREVERSIONS: 'Uporedi verzije'
-    REVERTTOTHISVERSION: 'Vrati na ovu verziju'
-    SHOWUNPUBLISHED: 'Prikaži neobjavljene verzije'
-    SHOWVERSION: 'Prikaži verziju'
-    VIEW: pregled
-    VIEWINGLATEST: 'Trenutno se prikazuje poslednja verzija.'
-    VIEWINGVERSION: 'Trenutno je prikazana verzija {version}.'
-  CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
     NOTPUBLISHED: Neobjavljeno
     PUBLISHER: Objavljivač
     UNKNOWN: Nepoznato
     WHEN: Datum
   SilverStripe\CMS\Controllers\CMSPagesController:
-    ListView: 'Prikaz u vidu liste'
-    MENUTITLE: Stranice
-    TreeView: 'Prikaz u vidu stabla'
-  CMSPagesController_Tools_ss:
     FILTER: Filter
-  CMSSearch:
-    FILTERDATEFROM: Od
-    FILTERDATETO: Za
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Idi
+    SEARCH: Pretraži
+    SearchResults: 'Rezultati pretraživanja'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Sve stranice'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Napomena: ova poruka neće biti prikazana posetiocima'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Verzija za prethodni pregled'
     ARCHIVEDSITEFROM: 'Arhivirani sajt iz'
@@ -139,7 +123,7 @@ sr_RS@latin:
     DEFAULTERRORPAGETITLE: 'Stranica nije pronađena'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Izvinjavamo se, postoji problem pri obradi Vašeg zahteva.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Greška servera'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Dozvolje za sadržaj'
     PERMISSIONS_CATEGORY: 'Uloge i dozvole za pristup'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -150,25 +134,6 @@ sr_RS@latin:
     REDIRECTTOEXTERNAL: 'Drugi veb sajt'
     REDIRECTTOPAGE: 'Stranicu na Vašem veb sajtu'
     YOURPAGE: 'Stranica na Vašem veb sajtu'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Molimo vas da objavite povezanu stranicu, kako bi virtuelna stranica bila objavljena'
-    VIRTUALPAGEWARNING: 'Molimo Vas da izaberete povezanu stranicu i sačuvate izmenu pre nego što objavite ovu stranicu'
-    VIRTUALPAGEWARNINGSETTINGS: 'Molimo Vas da izaberete povezanu stranicu u poljima glavnog sadržaja da bi ste objavili'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Idi
-    SEARCH: Pretraži
-    SearchResults: 'Rezultati pretraživanja'
-  SideReport:
-    BROKENFILES: 'Stranice sa oštećenim datotekama'
-    BROKENREDIRECTORPAGES: 'Stranice za preusmerivanje koje pokazuju na izbrisane stranice'
-    BROKENVIRTUALPAGES: 'Virtuelne stranice koja pokazuju na izbrisane stranice'
-    BrokenLinksGroupTitle: 'Izveštaj o oštećenim linkovima'
-    ContentGroupTitle: 'Izveštaji o sadržaju'
-    EMPTYPAGES: 'Prazne stranice'
-    LAST2WEEKS: 'Stranice menjane u zadnje 2 nedelje'
-    ParameterLiveCheckbox: 'Proveri objavljeni sajt'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: Arhivirano
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Svako
     ACCESSHEADER: 'Ko može da vidi ovu stranicu?'
@@ -250,14 +215,22 @@ sr_RS@latin:
     many_many_BackLinkTracking: 'Praćenje povratnih linkova'
     many_many_ImageTracking: 'Praćenje slika'
     many_many_LinkTracking: 'Praćenje linkova'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Stranice sa oštećenim datotekama'
+    BROKENREDIRECTORPAGES: 'Stranice za preusmerivanje koje pokazuju na izbrisane stranice'
+    BROKENVIRTUALPAGES: 'Virtuelne stranice koja pokazuju na izbrisane stranice'
+    BrokenLinksGroupTitle: 'Izveštaj o oštećenim linkovima'
+    ContentGroupTitle: 'Izveštaji o sadržaju'
+    EMPTYPAGES: 'Prazne stranice'
+    LAST2WEEKS: 'Stranice menjane u zadnje 2 nedelje'
+    ParameterLiveCheckbox: 'Proveri objavljeni sajt'
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: Arhivirano
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Molimo Vas da unesete segment URL-a ili kliknete na Odustani'
-    HelpChars: 'Specijalni karakteri su automatski konvertovani ili uklonjeni.'
-  URLSegmentField:
     Cancel: Odustani
     Edit: Izmeni
     OK: 'U redu'
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Možete da pristupite arhiviranom sadržaju na ovom linku:'
     HAVEASKED: 'Zamoljeni ste da pogledate sadržaj ovog sajta'
   SilverStripe\CMS\Model\VirtualPage:

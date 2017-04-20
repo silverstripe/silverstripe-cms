@@ -1,5 +1,5 @@
 nb:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Brukt på:'
     PAGES: side(r)
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -24,9 +24,10 @@ nb:
     ReasonDropdownVPBROKENLINK: 'Virtuell side peker til ikke-eksisterende side'
     RedirectorNonExistent: 'omdirigeringsside peker til ikke-eksisterende side'
     VirtualPageNonExistent: 'Virtuell side peker til ikke-eksisterende side'
-  CMSAddPageController:
-    Title: 'Legg til side'
-  CMSBatchActions:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    ParentMode_child: 'Under en annen side'
+    ParentMode_top: Toppnivå
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Publiserte %d sider, %d feilet.'
     PUBLISH_PAGES: Publiser
     RESTORE: Gjenopprett
@@ -65,41 +66,24 @@ nb:
     TabContent: Innhold
     TabHistory: Historikk
     TabSettings: Innstillinger
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: 'Under en annen side'
-    ParentMode_top: Toppnivå
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 'Sammenlign modus (velg to)'
-    COMPAREVERSIONS: 'Sammenlign versjoner'
-    REVERTTOTHISVERSION: 'Tilbakestill til denne versjonen'
-    SHOWUNPUBLISHED: 'Vis upubliserte versjoner'
-    SHOWVERSION: 'Vis versjon'
-    VIEW: Visning
-    VIEWINGLATEST: 'Viser den nyeste versjonen.'
-    VIEWINGVERSION: 'Viser versjon {version}.'
-  CMSPageHistoryController_versions_ss:
     AUTHOR: Forfatter
     NOTPUBLISHED: 'Ikke publisert'
     PUBLISHER: Utgiver
     UNKNOWN: Ukjent
     WHEN: Når
   SilverStripe\CMS\Controllers\CMSPagesController:
-    ListView: Listevisning
-    MENUTITLE: Sider
-    TreeView: Trevisning
-  CMSPagesController_Tools_ss:
     FILTER: Filter
-  CMSSIteTreeFilter_PublishedPages:
+  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Publiserte sider'
-  CMSSearch:
-    FILTERDATEFROM: Fra
-    FILTERDATETO: Til
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Utfør
+    SEARCH: Søk
+    SearchResults: Søkeresultater
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Alle sider'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Publisert men fjernet fra utkast'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Merk: denne beskjeden vil ikke være synlig for besøkende'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Forhåndsvis versjon'
     ARCHIVEDSITEFROM: 'Arkivert nettsted fra '
@@ -153,7 +137,7 @@ nb:
     DEFAULTERRORPAGETITLE: 'Siden ble ikke funnet'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Beklager, det oppstod et problem under utføringen.</p>'
     DEFAULTSERVERERRORPAGETITLE: Serverfeil
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: Innholdstillatelser
     PERMISSIONS_CATEGORY: 'Rolle- og tilgangstillatelser'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -164,25 +148,6 @@ nb:
     REDIRECTTOEXTERNAL: 'Et annet nettsted'
     REDIRECTTOPAGE: 'En side på nettstedet'
     YOURPAGE: 'Side på ditt nettsted'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Vennligst publiser den lenkede siden for å publisere den virtuelle siden'
-    VIRTUALPAGEWARNING: 'Vennligst velg en lenket side og lagre først for å publisere denne siden'
-    VIRTUALPAGEWARNINGSETTINGS: 'Vennligst velg en lenket side i hovedinnholdsfeltene for å publisere siden'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Utfør
-    SEARCH: Søk
-    SearchResults: Søkeresultater
-  SideReport:
-    BROKENFILES: 'Sider med ødelagte lenker'
-    BROKENREDIRECTORPAGES: 'Omdirigeringssider som peker til slettede sider'
-    BROKENVIRTUALPAGES: 'Virtuelle sider som peker til slettede sider'
-    BrokenLinksGroupTitle: 'Rapport over ødelagte lenker'
-    ContentGroupTitle: Innholdsrapporter
-    EMPTYPAGES: 'Sider uten innhold'
-    LAST2WEEKS: 'Sider endret i de siste 2 ukene'
-    ParameterLiveCheckbox: 'Sjekk aktivt nettsted'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: Arkivert
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Alle
     ACCESSHEADER: 'Hvem kan se denne siden?'
@@ -267,14 +232,22 @@ nb:
     many_many_BackLinkTracking: Referansesporing
     many_many_ImageTracking: Bildesporing
     many_many_LinkTracking: Lenkesporing
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Sider med ødelagte lenker'
+    BROKENREDIRECTORPAGES: 'Omdirigeringssider som peker til slettede sider'
+    BROKENVIRTUALPAGES: 'Virtuelle sider som peker til slettede sider'
+    BrokenLinksGroupTitle: 'Rapport over ødelagte lenker'
+    ContentGroupTitle: Innholdsrapporter
+    EMPTYPAGES: 'Sider uten innhold'
+    LAST2WEEKS: 'Sider endret i de siste 2 ukene'
+    ParameterLiveCheckbox: 'Sjekk aktivt nettsted'
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: Arkivert
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Vennligst skriv inn adressesegment eller trykk avbryt.'
-    HelpChars: 'Spesialtegn blir automatisk konvertert eller fjernet.'
-  URLSegmentField:
     Cancel: Avbryt
     Edit: Rediger
     OK: OK
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Du kan besøke det arkiverte nettstedet med denne lenken:'
     HAVEASKED: 'Du har bedt om å vise innholdet på nettstedet vårt på '
   SilverStripe\CMS\Model\VirtualPage:

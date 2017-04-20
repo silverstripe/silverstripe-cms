@@ -1,5 +1,5 @@
 et_EE:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Kasutatakse:'
     PAGES: 'leht (lehed)'
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -24,9 +24,10 @@ et_EE:
     ReasonDropdownVPBROKENLINK: 'Virtuaalne leht suunab olematule lehele'
     RedirectorNonExistent: 'ümbersuunamisleht suunab olematule lehele'
     VirtualPageNonExistent: 'virtuaalne leht suunab olematule lehele'
-  CMSAddPageController:
-    Title: 'Lisa leht'
-  CMSBatchActions:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    ParentMode_child: 'Teise lehe all'
+    ParentMode_top: 'Kõrgem tase'
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Avaldatud %d lehte, %d tõrget'
     PUBLISH_PAGES: Avalda
   SilverStripe\CMS\Controllers\CMSMain:
@@ -52,35 +53,19 @@ et_EE:
     TabContent: Sisu
     TabHistory: Ajalugu
     TabSettings: Seaded
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: 'Teise lehe all'
-    ParentMode_top: 'Kõrgem tase'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 'Võrdlusrežiim (valige kaks)'
-    COMPAREVERSIONS: 'Võrdle versioone'
-    REVERTTOTHISVERSION: 'Taasta valitud versioon'
-    SHOWUNPUBLISHED: 'Näita ka avaldamata versioone'
-    SHOWVERSION: 'Näita versiooni'
-    VIEW: vaade
-    VIEWINGVERSION: 'Hetkel kuvatud versioon {version}.'
-  CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
     NOTPUBLISHED: Avaldamata
     PUBLISHER: Avaldaja
     UNKNOWN: Tundmatu
   SilverStripe\CMS\Controllers\CMSPagesController:
-    ListView: Loendivaade
-    MENUTITLE: Lehed
-    TreeView: Puuvaade
-  CMSPagesController_Tools_ss:
     FILTER: Filtreeri
-  CMSSearch:
-    FILTERDATEFROM: Alates
-    FILTERDATETO: Kuni
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Mine
+    SEARCH: Otsi
+    SearchResults: Otsingutulemused
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Kõik lehed'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Märkus. Seda teadet ei kuvata lehe külastajatele'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Eelvaate versioon'
     ARCHIVEDSITEFROM: 'Arhiveeritud sait asukohast'
@@ -130,7 +115,7 @@ et_EE:
     DEFAULTERRORPAGETITLE: 'Lehekülge ei leitud'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Vabandust, teie taotluse töötlemisel ilmnes probleem.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Serveri viga'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Sisu õigused'
     PERMISSIONS_CATEGORY: 'Rollid ja juurdepääsuõigused'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -141,11 +126,7 @@ et_EE:
     REDIRECTTOEXTERNAL: 'Teisele veebisaidile'
     REDIRECTTOPAGE: 'Leheküljele sinu veebisaidil'
     YOURPAGE: 'Lehekülg sinu veebisaidil'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Mine
-    SEARCH: Otsi
-    SearchResults: Otsingutulemused
-  SideReport:
+  SilverStripe\Reports\SideReport:
     BROKENFILES: 'Katkiste failidega lehed'
     BROKENREDIRECTORPAGES: 'Ümbersuunamislehed, mis suunavad kustutatud lehtedele'
     BROKENVIRTUALPAGES: 'Virtuaallehed, mis suunavad kustutatud lehtedele'
@@ -234,10 +215,8 @@ et_EE:
     many_many_ImageTracking: 'Pildi jälgimine'
     many_many_LinkTracking: 'Lingi jälgimine'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    HelpChars: 'Erimärgid teisendatakse või eemaldatakse automaatselt.'
-  URLSegmentField:
     Edit: Redigeeri
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Arhiveeritud lehele pääsed ligi selle lingi kaudu:'
     HAVEASKED: 'Soovid vaadata meie lehe sisu kuupäeval'
   SilverStripe\CMS\Model\VirtualPage:

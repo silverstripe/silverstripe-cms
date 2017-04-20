@@ -37,7 +37,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem
         }
         /** @var DBDatetime $dateObj */
         $dateObj = DBField::create_field('Datetime', $date);
-        $title = _t('ContentControl.NOTEWONTBESHOWN', 'Note: this message will not be shown to your visitors');
+        $title = _t('SilverStripe\\CMS\\Controllers\\ContentController.NOTEWONTBESHOWN', 'Note: this message will not be shown to your visitors');
         return "<div id=\"SilverStripeNavigatorMessage\" title=\"{$title}\">"
             . _t('SilverStripe\\CMS\\Controllers\\ContentController.ARCHIVEDSITEFROM', 'Archived site from')
             . "<br />" . $dateObj->Nice() . "</div>";

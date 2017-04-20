@@ -1,5 +1,5 @@
 bg:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Използвано от:'
     PAGES: Страница/и
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -24,9 +24,10 @@ bg:
     ReasonDropdownVPBROKENLINK: 'Виртуална страница, сочеща към несъществуваща страница'
     RedirectorNonExistent: 'Страница за пренасочване, сочеща към несъществуваща страница'
     VirtualPageNonExistent: 'Виртуална страница, сочеща към несъществуваща страница'
-  CMSAddPageController:
-    Title: 'Добави страница'
-  CMSBatchActions:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    ParentMode_child: 'Под друга страница'
+    ParentMode_top: 'Най-високо ниво'
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Публикувани %d страници, %d грешки'
     PUBLISH_PAGES: Публикувай
     RESTORE: Възстанови
@@ -67,42 +68,24 @@ bg:
     TabContent: Съдържание
     TabHistory: История
     TabSettings: Настройки
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: 'Под друга страница'
-    ParentMode_top: 'Най-високо ниво'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 'Режим на сравнение (Избери два)'
-    COMPAREVERSIONS: 'Сравни версиите'
-    REVERTTOTHISVERSION: 'Върни към тази версия'
-    SHOWUNPUBLISHED: 'Покажи непублекуваната версия'
-    SHOWVERSION: 'Покажи версията'
-    VIEW: Изглед
-    VIEWINGLATEST: 'Последна версия'
-    VIEWINGVERSION: 'Версия {version}.'
-  CMSPageHistoryController_versions_ss:
     AUTHOR: Автор
     NOTPUBLISHED: Непубликувани
     PUBLISHER: 'Публикувана от'
     UNKNOWN: Неизвестно
     WHEN: Кога
   SilverStripe\CMS\Controllers\CMSPagesController:
-    ListView: 'Изглед в списък'
-    MENUTITLE: Страници
-    TreeView: 'Дървовиден изглед'
-  CMSPagesController_Tools_ss:
     FILTER: Филтър
-  CMSSIteTreeFilter_PublishedPages:
+  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Публикувани страници'
-  CMSSearch:
-    FILTERDATEFROM: От
-    FILTERDATETO: До
-    PAGEFILTERDATEHEADING: 'Последна редакция'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Давай
+    SEARCH: Търси
+    SearchResults: 'Резултати от търсенето'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Всички страници'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Страници, чиито чернови са били изтрити'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Забележка: Това съобщение няма да се показва на Вашите посетители'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Преглед на версията'
     ARCHIVEDSITEFROM: 'Архивиран сайт от'
@@ -154,7 +137,7 @@ bg:
     DEFAULTERRORPAGETITLE: 'Страницата не беше намерена'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Проблем при изпълнението на заявката.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Сървърна грешка'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Права по съдържанието'
     PERMISSIONS_CATEGORY: 'Роли и права за достъп'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -165,24 +148,6 @@ bg:
     REDIRECTTOEXTERNAL: 'Друг уебсайт'
     REDIRECTTOPAGE: 'Страница на вашият уебсайт'
     YOURPAGE: 'Страница на вашият уебсайт'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Моля, публикувайте свързаните страници, за да бъдат публикувани и виртуалните.'
-    VIRTUALPAGEWARNING: 'Моля, първо изберете свързана страница и запишете, за да можете да публикувате тази страница.'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Давай
-    SEARCH: Търси
-    SearchResults: 'Резултати от търсенето'
-  SideReport:
-    BROKENFILES: 'Страници с несъществуващи файлове'
-    BROKENREDIRECTORPAGES: 'Пренасочващи страници, които сочат към изтрити страници'
-    BROKENVIRTUALPAGES: 'Виртуални страници, които сочат към изтрити страници'
-    BrokenLinksGroupTitle: 'Отчет за страници съдържащи невалидни препратки.'
-    ContentGroupTitle: 'Отчети за съдържание'
-    EMPTYPAGES: 'Страници без съдържание'
-    LAST2WEEKS: 'Страници редактирани през последните 2 седмици'
-    ParameterLiveCheckbox: 'Провери реалния сайт'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: 'Архивирани'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Всеки
     ACCESSHEADER: 'Кой има достъп до тази страница на моят сайт?'
@@ -265,9 +230,20 @@ bg:
     many_many_BackLinkTracking: 'Следене на "обратни линкове"'
     many_many_ImageTracking: 'Следене на снимките'
     many_many_LinkTracking: 'Следене на линовете'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Страници с несъществуващи файлове'
+    BROKENREDIRECTORPAGES: 'Пренасочващи страници, които сочат към изтрити страници'
+    BROKENVIRTUALPAGES: 'Виртуални страници, които сочат към изтрити страници'
+    BrokenLinksGroupTitle: 'Отчет за страници съдържащи невалидни препратки.'
+    ContentGroupTitle: 'Отчети за съдържание'
+    EMPTYPAGES: 'Страници без съдържание'
+    LAST2WEEKS: 'Страници редактирани през последните 2 седмици'
+    ParameterLiveCheckbox: 'Провери реалния сайт'
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: 'Архивирани'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Специалните символи са автоматично конвертирани или изтрити.'
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Можете да достигнете архивирания сайт, чрез тази връзка'
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Това е виртуална страница'

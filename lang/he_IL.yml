@@ -1,5 +1,5 @@
 he_IL:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'נעשה שימוש בתאריך:'
     PAGES: עמוד/ים
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -24,9 +24,10 @@ he_IL:
     ReasonDropdownVPBROKENLINK: 'עמוד וירטואלי שמצביע לעמוד שלא קיים'
     RedirectorNonExistent: 'עמוד הפניה שמפנה לעמוד שלא קיים'
     VirtualPageNonExistent: 'עמוד וירטואלי שמצביע לעמוד שלא קיים'
-  CMSAddPageController:
-    Title: 'הוספת עמוד'
-  CMSBatchActions:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    ParentMode_child: 'תחת עמוד אחר'
+    ParentMode_top: 'רמה עליונה'
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'פורסמו %d עמודים, %d שגיאות'
     PUBLISH_PAGES: פרסום
   SilverStripe\CMS\Controllers\CMSMain:
@@ -51,36 +52,20 @@ he_IL:
     TabContent: תוכן
     TabHistory: היסטורייה
     TabSettings: הגדרות
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: 'תחת עמוד אחר'
-    ParentMode_top: 'רמה עליונה'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 'מצב השוואה (יש לבחור שניים)'
-    COMPAREVERSIONS: 'השוואת גרסאות'
-    REVERTTOTHISVERSION: 'חזרה לגרסה זו'
-    SHOWUNPUBLISHED: 'הצגת גרסאות שלא פוסרמו'
-    SHOWVERSION: 'הצגת הגרסה'
-    VIEW: צפייה
-    VIEWINGVERSION: 'הגרסה הנוכחית המופיעה {version}.'
-  CMSPageHistoryController_versions_ss:
     AUTHOR: 'נוצר על ידי'
     NOTPUBLISHED: 'לא פורסם'
     PUBLISHER: 'פורסם על ידי'
     UNKNOWN: 'לא ידוע'
     WHEN: מתי
   SilverStripe\CMS\Controllers\CMSPagesController:
-    ListView: 'תצוגת רשימה'
-    MENUTITLE: עמודים
-    TreeView: 'תצוגת עץ'
-  CMSPagesController_Tools_ss:
     FILTER: 'מסנן'
-  CMSSearch:
-    FILTERDATEFROM: מ־
-    FILTERDATETO: עד
+  SilverStripe\CMS\Search\SearchForm:
+    GO: לעבור
+    SEARCH: חיפוש
+    SearchResults: 'תוצאות החיפוש'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'כל העמודים'
-  ContentControl:
-    NOTEWONTBESHOWN: 'לתשומת לבך: הודעה זו לא תוצג למבקריך'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'הצגה מקדימה של הגרסה'
     ARCHIVEDSITEFROM: 'אתר ארכיון מהתאריך'
@@ -128,7 +113,7 @@ he_IL:
     DEFAULTERRORPAGETITLE: 'הדף המבוקש לא נמצא'
     DEFAULTSERVERERRORPAGECONTENT: '<p>אירעה תקלה בעת הטיפול בבקשתך, עמך הסליחה.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'שגיאת שרת'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'הרשאות התוכן'
     PERMISSIONS_CATEGORY: 'תפקידים והרשאות גישה'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -139,11 +124,7 @@ he_IL:
     REDIRECTTOEXTERNAL: 'אתר אחר'
     REDIRECTTOPAGE: 'עמוד באתר שלך'
     YOURPAGE: 'עמוד באתר שלך'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: לעבור
-    SEARCH: חיפוש
-    SearchResults: 'תוצאות החיפוש'
-  SideReport:
+  SilverStripe\Reports\SideReport:
     BROKENFILES: 'עמודים עם קבצים שבורים'
     BROKENREDIRECTORPAGES: 'עמודי הפנייה שמצביעים לעמודים שנמחקו'
     BROKENVIRTUALPAGES: 'עמודים וירטואליים שמצביעים לעמודים שנמחקו'
@@ -225,7 +206,7 @@ he_IL:
     many_many_LinkTracking: 'מעקב אחר קישורים'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: ' תווים מיוחדים מומרים אוטומטית או שהם מוסרים.'
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'ניתן להיכנס לארכיון האתר בקישור הזה:'
     HAVEASKED: 'ביקשת לצפות בתוכן האתר שלנו תחת'
   SilverStripe\CMS\Model\VirtualPage:

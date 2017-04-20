@@ -1,8 +1,5 @@
 es:
-  AssetAdmin:
-    ErrorItemPermissionDenied: 'Parece que no tienes los permisos necesarios para añadir {ObjectTitle} a una campaña'
-    ErrorNotFound: 'Ese {Type} no pudo ser encontrado'
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Usado en:'
     PAGES: página(s)
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -27,12 +24,12 @@ es:
     ReasonDropdownVPBROKENLINK: 'Página virtual apuntando a una página que no existe'
     RedirectorNonExistent: 'página de redirección apuntando a una página que no existe'
     VirtualPageNonExistent: 'página virtual apuntando a una página que no existe'
-  CMSAddPageController:
-    Title: 'Añadir página'
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Añadir página'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Eliminadas %d páginas desde el borrador y publicadas, y enviadas al archivo'
     TITLE: 'Despublicar y archivar'
-  CMSBatchActions:
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Publicadas %d páginas, %d fallos'
     PUBLISH_PAGES: Publicar
     RESTORE: Restaurar
@@ -40,77 +37,18 @@ es:
     UNPUBLISHED_PAGES: '%d páginas despublicadas'
     UNPUBLISH_PAGES: Despublicar
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Acceso a la sección ''{title}'''
-    ACCESS_HELP: 'Permitir la visualización de la sección que contiene el árbol de la página y el contenido. Ver y editar permisos puede ser gestionado a través de menús desplegables específicos de las páginas, así como los "permisos de contenido" separados.'
-    ARCHIVE: Archivar
-    ARCHIVEDPAGE: '''%s'' páginas archivadas'
-    AddNew: 'Añadir nueva página'
-    AddNewButton: 'Añadir nuevo'
-    AddPageRestriction: 'Agregar restricción a la página'
-    Cancel: Cancelar
-    ChoosePageParentMode: 'Elegir donde crear esta página'
-    ChoosePageType: 'Elegir tipo de página'
-    Create: Crear
-    DUPLICATED: Duplicado
-    DUPLICATEDWITHCHILDREN: 'Duplicado con hijos'
-    EMAIL: 'Correo electrónico'
-    ListFiltered: 'Mostrando resultados de la búsqueda.'
-    NEWPAGE: 'Nuevo {pagetype}'
-    PAGENOTEXISTS: 'Esta página no existe'
-    PAGES: 'Estado de página'
-    PAGETYPEANYOPT: Cualquiera
-    PAGETYPEOPT: 'Tipo de página'
-    PUBALLCONFIRM: 'Por favor publica todas las páginas del sitio, copiando el contenido del borrador al sitio público'
-    PUBALLFUN: 'Función "Publicar Todo"'
-    PUBALLFUN2: 'Presionando este botón haremos el equivalente a ir a cada página y pulsar "publicar". Está destinado a ser utilizado después de haber habido ediciones masivas del contenido, como cuando el sitio fue construido por primera vez.'
-    PUBLISHED: '''{title}'' publicado satisfactoriamente.'
-    PUBPAGES: 'Hecho: Publicadas {count} páginas'
-    PageAdded: 'Página creada correctamente'
-    REMOVEDPAGE: 'Eliminado ''{title}'' del sitio publicado'
-    REMOVEDPAGEFROMDRAFT: 'Borrado ''%s''%s desde el sitio no publicado'
-    RESTORE: 'Restaurar borrador'
-    RESTORED: 'Restablecido ''{title}'' correctamente'
-    RESTORE_DESC: 'Recuperar la versión archivada del borrador'
-    RESTORE_TO_ROOT: 'Recuperar borrador al nivel superior'
-    RESTORE_TO_ROOT_DESC: 'Recuperar la versión archivada del borrador como de nivel superior'
-    ROLLBACK: 'Restaurar esta versión'
-    ROLLEDBACKPUBv2: Restaurado
-    ROLLEDBACKVERSIONv2: 'Versión #%d restaurada'
-    SAVED: '''{title}'' guardado satisfactoriamente.'
-    SAVEDRAFT: 'Guardar borrador'
-    TabContent: Contenido
-    TabHistory: Historial
-    TabSettings: Ajustes
-    TreeFiltered: 'Mostrando resultados de la búsqueda.'
-    TreeFilteredClear: Limpiar
-    UNPUBLISH_AND_ARCHIVE: 'Despublicar y archivar'
-  CMSMain_left_ss:
     APPLY_FILTER: Buscar
     CLEAR_FILTER: Limpiar
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    MENUTITLE: 'Añadir página'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    MENUTITLE: Historial
-  CMSPageHistoryController_versions_ss:
-    AUTHOR: Autor
-    NOTPUBLISHED: 'Sin publicar'
-    PREVIEW: 'Previsualizar Sitio Web'
-    PUBLISHER: 'Publicado por'
-    UNKNOWN: Desconocido
-    WHEN: Cuando
-  SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: Páginas
-  CMSPagesController_ContentToolbar_ss:
     MULTISELECT: 'Acciones por lotes'
-  CMSPagesController_Tools_ss:
+  SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filtro
-  CMSSIteTreeFilter_PublishedPages:
+  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Páginas publicadas'
-  CMSSearch:
-    FILTERDATEFROM: De
-    FILTERDATETO: Hasta
-    FILTERLABELTEXT: Buscar
-    PAGEFILTERDATEHEADING: 'Última actualización'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: IR
+    SEARCH: Buscar
+    SearchResults: 'Resultados de la búsqueda'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Páginas modificadas'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
@@ -123,8 +61,6 @@ es:
     Title: 'Páginas en borrador'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Publicada, pero eliminada de los borradores'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Nota: este mensaje no se mostrará a tus visitantes'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Vista previa de la versión'
     ARCHIVEDSITEFROM: 'Sitio archivado desde'
@@ -154,7 +90,7 @@ es:
       one: 'Una Página de error'
       other: '{count} Páginas de error'
     SINGULARNAME: 'Página de error'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Permisos de contenido'
     PERMISSIONS_CATEGORY: 'Permisos de roles y accesos'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -174,29 +110,6 @@ es:
     OPERATION_REMOVE: 'Eliminar seleccionado de todas los escenarios (ADVERTENCIA: Destruirá todas las páginas seleccionadas de ambos escenarios y en vivo)'
     SELECTALL: 'seleccionar todo'
     UNSELECTALL: 'deselecciona todo'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Esta página es un borrador de página virtual'
-    VIRTUALPAGEWARNING: 'Esta es una página virtual'
-    VIRTUALPAGEWARNINGSETTINGS: 'Configuración de página virtual'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: IR
-    SEARCH: Buscar
-    SearchResults: 'Resultados de la búsqueda'
-  SideReport:
-    BROKENFILES: 'Páginas con archivos rotos'
-    BROKENREDIRECTORPAGES: 'Páginas de redirección apuntando a páginas borradas'
-    BROKENVIRTUALPAGES: 'Páginas Virtuales apuntando a páginas borradas'
-    BrokenLinksGroupTitle: 'Informes de enlaces rotos'
-    ContentGroupTitle: 'Informes de contenido'
-    EMPTYPAGES: 'Páginas vacías'
-    LAST2WEEKS: 'Páginas editadas en las últimas 2 semanas'
-    ParameterLiveCheckbox: 'Comprobar sitio activo'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: Archivado
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Editar página'
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Editar página'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Cualquiera
     ACCESSHEADER: '¿Quién puede ver esta página?'
@@ -288,6 +201,21 @@ es:
     many_many_BackLinkTracking: 'Rastreo de Backlinks'
     many_many_ImageTracking: 'Rastreo de Imágenes'
     many_many_LinkTracking: 'Rastreo de Enlaces'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Páginas con archivos rotos'
+    BROKENREDIRECTORPAGES: 'Páginas de redirección apuntando a páginas borradas'
+    BROKENVIRTUALPAGES: 'Páginas Virtuales apuntando a páginas borradas'
+    BrokenLinksGroupTitle: 'Informes de enlaces rotos'
+    ContentGroupTitle: 'Informes de contenido'
+    EMPTYPAGES: 'Páginas vacías'
+    LAST2WEEKS: 'Páginas editadas en las últimas 2 semanas'
+    ParameterLiveCheckbox: 'Comprobar sitio activo'
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: Archivado
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Editar página'
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Editar página'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: Seleccionar
     EditLink: Editar
@@ -299,12 +227,9 @@ es:
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Usado en:'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: Vacío
-    HelpChars: 'Los caracteres especiales son automáticamente convertidos o eliminados.'
-  URLSegmentField:
     Cancel: Cancelar
     Edit: Editar
     OK: Ok
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Puede acceder al sitio archivado con este enlace:'
     HAVEASKED: 'Ha pedido ver el contenido de nuestro sitio el'

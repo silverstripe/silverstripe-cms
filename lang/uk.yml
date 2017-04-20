@@ -1,5 +1,5 @@
 uk:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Використовується в:'
     PAGES: сторінка(и)
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -23,9 +23,10 @@ uk:
     ReasonDropdownVPBROKENLINK: 'Віртуальна сторінка що вказує на неіснуючу сторінку'
     RedirectorNonExistent: 'сторінка-перенаправлення що вказує на неіснуючу сторінку'
     VirtualPageNonExistent: 'віртуальна сторінка що вказує на неіснуючу сторінку'
-  CMSAddPageController:
-    Title: 'Додати сторінку'
-  CMSBatchActions:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    ParentMode_child: 'Під іншою сторінкою'
+    ParentMode_top: 'Вищий рівень'
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Опубліковано %d сторінок, %d навдач'
     PUBLISH_PAGES: Опублікувати
   SilverStripe\CMS\Controllers\CMSMain:
@@ -47,31 +48,20 @@ uk:
     TabContent: Вміст
     TabHistory: Історія
     TabSettings: Налаштування
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: 'Під іншою сторінкою'
-    ParentMode_top: 'Вищий рівень'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 'Режим порівняння (виберіть два)'
-    COMPAREVERSIONS: 'Порівняти версії'
-    REVERTTOTHISVERSION: 'Відновити цю версію'
-    SHOWUNPUBLISHED: 'Показати неопубліковані версії'
-    SHOWVERSION: 'Показати версію'
-    VIEW: вигляд
-    VIEWINGVERSION: 'Переглядається версія {version}.'
-  CMSPageHistoryController_versions_ss:
     AUTHOR: Автор
     NOTPUBLISHED: 'Не опубліковано'
     PUBLISHER: Видавець
     UNKNOWN: Невідомий
     WHEN: Коли
-  CMSPagesController_Tools_ss:
+  SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Фільтр
-  CMSSearch:
-    FILTERDATEFROM: Від
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Уперед
+    SEARCH: Пошук
+    SearchResults: 'Результати пошуку'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Всі сторінки'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Примітка: це повідомлення не буде відображатися для відвідувачів'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITEFROM: 'Заархівований сайт з'
     DRAFTSITE: 'Чорновий сайт'
@@ -91,7 +81,7 @@ uk:
     DEFAULTERRORPAGETITLE: 'Сторінку не знайдено'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Вибачте, під час опрацювання вашого запиту сталася помилка.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Помилка сервера'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Дозволи вмісту'
     PERMISSIONS_CATEGORY: 'Ролі та дозволи доступу'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -102,11 +92,7 @@ uk:
     REDIRECTTOEXTERNAL: 'Інший сайт'
     REDIRECTTOPAGE: 'Сторінку на Вашому сайті'
     YOURPAGE: 'Сторінки на Вашому сайті'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Уперед
-    SEARCH: Пошук
-    SearchResults: 'Результати пошуку'
-  SideReport:
+  SilverStripe\Reports\SideReport:
     BROKENFILES: 'Сторінки з пошкодженими файлами'
     BROKENREDIRECTORPAGES: 'Сторінки-перенаправлення вказують на видалені сторінки'
     BROKENVIRTUALPAGES: 'Віртуальні сторінки вказують на видалені сторінки'
@@ -184,7 +170,7 @@ uk:
     many_many_LinkTracking: 'Відстеження посилань'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Спеціальні символи автоматично перетворені або видалені.'
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Ви можете перейти до архівного сайту за посиланням:'
     HAVEASKED: 'Ви надіслали запит на перегляд вмісту нашої сторінки'
   SilverStripe\CMS\Model\VirtualPage:

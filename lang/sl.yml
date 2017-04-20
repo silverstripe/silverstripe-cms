@@ -1,8 +1,5 @@
 sl:
-  AssetAdmin:
-    ErrorItemPermissionDenied: 'Izgleda, da nimate ustreznih pravic, da bi dodali {ObjectTitle} v kampanjo'
-    ErrorNotFound: 'Tip: {Type} ne obstaja'
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Uporabljeno na:'
     PAGES: Stran/Strani
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -27,11 +24,11 @@ sl:
     ReasonDropdownVPBROKENLINK: 'Navidezna stran, ki kaže na neobstoječo stran'
     RedirectorNonExistent: 'preusmerjevalna stran, ki kaže na neobstoječo stran'
     VirtualPageNonExistent: 'navidezna stran, ki kaže na neobstoječo stran'
-  CMSAddPageController:
-    Title: 'Dodaj stran'
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Dodaj stran'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     TITLE: 'Odstrani iz objave in arhiviraj'
-  CMSBatchActions:
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Objavljenih je bilo %d strani. (Število napak %d)'
     PUBLISH_PAGES: Objavi
     RESTORE: Obnovi
@@ -64,32 +61,24 @@ sl:
     TabHistory: Zgodovina
     TabSettings: Nastavitve
     UNPUBLISH_AND_ARCHIVE: 'Odstrani iz objave in arhiviraj'
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    MENUTITLE: 'Dodaj stran'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    MENUTITLE: Zgodovina
-  CMSPageHistoryController_versions_ss:
     AUTHOR: Avtor
     NOTPUBLISHED: 'Ni objavljeno'
     PREVIEW: 'Predogled spletnega mesta'
     UNKNOWN: Neznano
     WHEN: Kdaj
   SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: 'Seznam strani'
-  CMSPagesController_Tools_ss:
     FILTER: Filter
-  CMSSIteTreeFilter_PublishedPages:
+  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Objavljene strani'
-  CMSSearch:
-    FILTERDATEFROM: Od
-    FILTERDATETO: Do
-    PAGEFILTERDATEHEADING: 'Nazadnje spremenjeno'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Pojdi
+    SEARCH: Išči
+    SearchResults: 'Rezultati iskanja'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Vse strani'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Objavljeno, vendar odstranjeno iz ostnutka'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Opomba: neprijavljeni obiskovalci spletnega mesta tega obvestila ne bodo videli.'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Predogled različice'
     ARCHIVEDSITEFROM: 'Arhivirana različica iz'
@@ -112,7 +101,7 @@ sl:
   SilverStripe\CMS\Model\ErrorPage:
     PLURALNAME: 'Strani z napakami'
     SINGULARNAME: 'Stran z napako'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Nastavitve dovoljenj za upravljanje z vsebino'
     PERMISSIONS_CATEGORY: 'Vloge in dovoljenja za dostop'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -123,11 +112,7 @@ sl:
     CHOOSEOPERATION: 'Izberi operacijo:'
     SELECTALL: 'izberi vse'
     UNSELECTALL: 'odstrani vse'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Pojdi
-    SEARCH: Išči
-    SearchResults: 'Rezultati iskanja'
-  SideReport:
+  SilverStripe\Reports\SideReport:
     BROKENFILES: 'Strani s poškodovanimi datotekami'
     BROKENREDIRECTORPAGES: 'Preusmerjene strani, ki kažejo izbrisane strani'
     BROKENVIRTUALPAGES: 'Navidezne strani, ki kažejo izbrisane strani'
@@ -231,12 +216,9 @@ sl:
     TITLE_TYPE: Tip
     TITLE_USED_ON: 'Uporabljeno na'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Prosim vnesite URL segment ali kliknite prekliči'
-    HelpChars: 'Posebni znaki so samodejno spremenjeni ali odstranjeni.'
-  URLSegmentField:
     Cancel: Prekliči
     Edit: Uredi
     OK: 'V redu'
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Do arhvirane različice spletnega mesta lahko dostopate na naslovu:'
     HAVEASKED: 'Za vpogled v vsebino našega spletnega mesta ste zaprosili'

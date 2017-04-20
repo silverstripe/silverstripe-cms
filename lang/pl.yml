@@ -1,5 +1,5 @@
 pl:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Używany na:'
     PAGES: stron(y)
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -24,9 +24,10 @@ pl:
     ReasonDropdownVPBROKENLINK: 'Strona wirtualna wskazuje na nieistniejącą stronę'
     RedirectorNonExistent: 'strona przekierowująca wskazuje na nieistniejącą stronę'
     VirtualPageNonExistent: 'strona wirtualna wskazuje na nieistniejącą stronę'
-  CMSAddPageController:
-    Title: 'Dodaj stronę'
-  CMSBatchActions:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    ParentMode_child: 'Pod inną stroną'
+    ParentMode_top: 'Główny poziom'
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Opublikowano %d stron, %d się nie powiodło'
     PUBLISH_PAGES: Opublikuj
     RESTORE: Przywróć
@@ -62,40 +63,22 @@ pl:
     TabContent: Zawartość
     TabHistory: Historia
     TabSettings: Opcje
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: 'Pod inną stroną'
-    ParentMode_top: 'Główny poziom'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 'Tryb porównywania (wybierz dwie)'
-    COMPAREVERSIONS: 'Porównaj wersje'
-    REVERTTOTHISVERSION: 'Wróć do tej wersji'
-    SHOWUNPUBLISHED: 'Pokaż nieopublikowane wersje'
-    SHOWVERSION: 'Pokaż wersję'
-    VIEW: zobacz
-    VIEWINGLATEST: 'Obecnie oglądasz najnowszą wersję'
-    VIEWINGVERSION: 'Obecnie oglądasz wersję {version}.'
-  CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
     NOTPUBLISHED: Nieopublikowana
     PUBLISHER: Edytor
     UNKNOWN: Nieznany
     WHEN: Kiedy
   SilverStripe\CMS\Controllers\CMSPagesController:
-    ListView: 'Widok listy'
-    MENUTITLE: Strony
-    TreeView: 'Widok drzewa'
-  CMSPagesController_Tools_ss:
     FILTER: Filtr
-  CMSSIteTreeFilter_PublishedPages:
+  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Opublikowane strony'
-  CMSSearch:
-    FILTERDATEFROM: Od
-    FILTERDATETO: Do
-    PAGEFILTERDATEHEADING: 'Ostatnio edytowane'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Przejdź
+    SEARCH: Szukaj
+    SearchResults: 'Wyniki wyszukiwania'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Wszystkie strony'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Uwaga: ta strona nie będzie widoczna dla twoich odwiedzających  '
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Podgląd wersji'
     ARCHIVEDSITEFROM: 'Zarchiwizowana witryna od'
@@ -149,7 +132,7 @@ pl:
     DEFAULTERRORPAGETITLE: 'Nie znaleziono strony'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Wystąpił problem z obsługą Twojego żądania.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Błąd serwera'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Uprawnienie edycji treści'
     PERMISSIONS_CATEGORY: 'Uprawnienia ról i dostępu'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -160,25 +143,6 @@ pl:
     REDIRECTTOEXTERNAL: 'Inna strona'
     REDIRECTTOPAGE: 'Strona na Twojej witrynie'
     YOURPAGE: 'Strona na Twojej witrynie'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Aby opublikować stronę wirtualną opublikuj stronę powiązaną'
-    VIRTUALPAGEWARNING: 'Aby opublikować tą stronę najpierw wybierz stronę powiązaną i zapisz zmiany'
-    VIRTUALPAGEWARNINGSETTINGS: 'Aby opublikować wybierz stronę powiązaną w sekcji głównej'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Przejdź
-    SEARCH: Szukaj
-    SearchResults: 'Wyniki wyszukiwania'
-  SideReport:
-    BROKENFILES: 'Strony z uszkodzonymi plikami'
-    BROKENREDIRECTORPAGES: 'Strony przekierowania wskazujące na usunięte strony'
-    BROKENVIRTUALPAGES: 'Wirtualne strony wskazujące na usunięte strony'
-    BrokenLinksGroupTitle: 'Raporty o uszkodzonych linkach'
-    ContentGroupTitle: 'Treść raportów'
-    EMPTYPAGES: 'Strony bez zawartości'
-    LAST2WEEKS: 'Strony edytowane w ciągu 2 ostatnich tygodni'
-    ParameterLiveCheckbox: 'Sprawdź witrynę'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: Zarchiwizowane
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Ktokolwiek
     ACCESSHEADER: 'Kto może zobaczyć tę stronę?'
@@ -261,14 +225,22 @@ pl:
     many_many_BackLinkTracking: 'Śledzenie backlinków'
     many_many_ImageTracking: 'Śledzenie obrazków'
     many_many_LinkTracking: 'Śledzenie linków'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Strony z uszkodzonymi plikami'
+    BROKENREDIRECTORPAGES: 'Strony przekierowania wskazujące na usunięte strony'
+    BROKENVIRTUALPAGES: 'Wirtualne strony wskazujące na usunięte strony'
+    BrokenLinksGroupTitle: 'Raporty o uszkodzonych linkach'
+    ContentGroupTitle: 'Treść raportów'
+    EMPTYPAGES: 'Strony bez zawartości'
+    LAST2WEEKS: 'Strony edytowane w ciągu 2 ostatnich tygodni'
+    ParameterLiveCheckbox: 'Sprawdź witrynę'
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: Zarchiwizowane
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Proszę podać część adresu lub kliknąć anuluj'
-    HelpChars: 'Znaki specjalne są automatycznie konwertowane lub usuwane.'
-  URLSegmentField:
     Cancel: Anuluj
     Edit: Edytuj
     OK: OK
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Dostęp do zarchiwizowanej witryny:'
     HAVEASKED: 'Poprosiłeś o obejrzenie treści naszej strony na'
   SilverStripe\CMS\Model\VirtualPage:

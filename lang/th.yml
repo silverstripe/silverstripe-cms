@@ -1,5 +1,5 @@
 th:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'ถูกใช้งานเมื่อ:'
     PAGES: หน้า
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -23,9 +23,10 @@ th:
     ReasonDropdownVPBROKENLINK: หน้าเว็บจำลองชี้ไปยังหน้าเว็บที่ไม่มีอยู่ในระบบ
     RedirectorNonExistent: หน้าเว็บเปลี่ยนเส้นทางชี้ไปที่หน้าเว็บที่ไม่มีอยู่ในระบบ
     VirtualPageNonExistent: หน้าเว็บจำลองชี้ไปที่หน้าเว็บที่ไม่มีอยู่ในระบบ
-  CMSAddPageController:
-    Title: เพิ่มหน้า
-  CMSBatchActions:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    ParentMode_child: อยู่ใต้หน้าอื่นๆ
+    ParentMode_top: ระดับสูงสุด
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'เผยแพร่แล้ว %d หน้า, ล้วเหลว %d'
     PUBLISH_PAGES: เผยแพร่
   SilverStripe\CMS\Controllers\CMSMain:
@@ -50,29 +51,16 @@ th:
     TabContent: เนื้อหา
     TabHistory: ประวัติย้อนหลัง
     TabSettings: ตั้งค่า
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: อยู่ใต้หน้าอื่นๆ
-    ParentMode_top: ระดับสูงสุด
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 'โหมดเปรียบเทียบ (เลือกสองรายการ)'
-    COMPAREVERSIONS: เปรียบเทียบรุ่น
-    REVERTTOTHISVERSION: ย้อนกลับไปที่รุ่นนี้
-    SHOWUNPUBLISHED: แสดงรุ่นที่ระงับการเผยแพร่ไว้
-    SHOWVERSION: แสดงข้อมูลรุ่น
-    VIEW: มุมมอง
-    VIEWINGVERSION: 'ขณะนี้กำลังเปิดดูในรุ่น {version}.'
-  CMSPageHistoryController_versions_ss:
     AUTHOR: ผู้แต่ง
     NOTPUBLISHED: ยังไม่ได้เผยแพร่
     PUBLISHER: ผู้เผยแพร่
     UNKNOWN: ไม่ทราบ
     WHEN: เมื่อ
-  CMSPagesController_Tools_ss:
+  SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: ตัวกรองข้อมูล
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: หน้าทั้งหมด
-  ContentControl:
-    NOTEWONTBESHOWN: 'หมายเหตุ: ข้อความนี้จะไม่ถูกนำไปแสดงให้ผู้เยี่ยมชมเว็บไซต์ของคุณเห็น'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: รุ่นสำหรับดูตัวอย่าง
     ARCHIVEDSITEFROM: เว็บไซต์ที่จัดเก็บไว้ถาวรจาก
@@ -120,7 +108,7 @@ th:
     DEFAULTERRORPAGETITLE: ไม่พบหน้าที่ต้องการ
     DEFAULTSERVERERRORPAGECONTENT: '<p>ขออภัย, เกิดข้อผิดพลาดบางประการในการจัดการตามคำร้องขอของคุณ</p>'
     DEFAULTSERVERERRORPAGETITLE: เซิร์ฟเวอร์เกิดข้อผิดพลาด
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: สิทธิ์อนุญาตของเนื้อหา
     PERMISSIONS_CATEGORY: บทบาทและสิทธิ์อนุญาตการเข้าถึง
   SilverStripe\CMS\Model\RedirectorPage:
@@ -133,7 +121,7 @@ th:
     YOURPAGE: หน้าเว็บที่อยู่บนเว็บไซต์ของคุณ
   SilverStripe\CMS\Search\SearchForm:
     SearchResults: ผลการค้นหา
-  SideReport:
+  SilverStripe\Reports\SideReport:
     BROKENFILES: หน้าเว็บที่มีไฟล์เสีย
     BROKENREDIRECTORPAGES: เปลี่ยนเส้นทางหน้าเว็บที่ชี้ไปที่หน้าเว็บที่ถูกลบแล้ว
     BROKENVIRTUALPAGES: หน้าเว็บจำลองชี้ไปที่หน้าเว็บที่ถูกลบทิ้งไปแล้ว
@@ -213,7 +201,7 @@ th:
     many_many_LinkTracking: แกะรอยลิงก์
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: ตัวอักษรพิเศษได้ถูกแปลงค่าหรือลบออกโดยอัตโนมัติแล้ว
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'คุณสามารถเข้าถึงเว็บไซต์รุ่นย้อนหลังได้จากลิงก์นี้:'
     HAVEASKED: คุณได้ร้องขอเพื่อเปิดดูเนื้อหาในเว็บไซต์ของเราเมื่อ
   SilverStripe\CMS\Model\VirtualPage:

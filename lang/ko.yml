@@ -1,5 +1,5 @@
 ko:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: '다음에서 사용중 '
     PAGES: 페이지
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -24,9 +24,10 @@ ko:
     ReasonDropdownVPBROKENLINK: '존재하지 않는 페이지를 가리키는 가상 페이지'
     RedirectorNonExistent: '존재하지 않는 페이지를 가리키는 리디렉션 페이지'
     VirtualPageNonExistent: '존재하지 않는 페이지를 가리키는 가상 페이지'
-  CMSAddPageController:
-    Title: '페이지 추가'
-  CMSBatchActions:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    ParentMode_child: '다른 페이지 아래에 작성'
+    ParentMode_top: '최상위 계층'
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: '%d페이지를 공개하고, %d페이지는 공개에서 실패했습니다.'
     PUBLISH_PAGES: 공개
   SilverStripe\CMS\Controllers\CMSMain:
@@ -58,37 +59,20 @@ ko:
     TabContent: '컨텐츠'
     TabHistory: 기록
     TabSettings: '설정'
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: '다른 페이지 아래에 작성'
-    ParentMode_top: '최상위 계층'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: '비교 모드 (2개 선택)'
-    COMPAREVERSIONS: '버전 비교'
-    REVERTTOTHISVERSION: '이 버전으로 복원'
-    SHOWUNPUBLISHED: '공개되지 않은 버전을 표시'
-    SHOWVERSION: '버전을 표시'
-    VIEW: 표시
-    VIEWINGLATEST: '현재 최신 버전을 보고있는 중.'
-    VIEWINGVERSION: '현재 {version}버젼을 보고 있는 중.'
-  CMSPageHistoryController_versions_ss:
     AUTHOR: 작성자
     NOTPUBLISHED: 미공개
     PUBLISHER: 게시자
     UNKNOWN: '알 수 없슴'
     WHEN: '언제'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    ListView: 목록보기
-    MENUTITLE: 페이지
-    TreeView: 트리보기
-  CMSPagesController_Tools_ss:
     FILTER: 필터
-  CMSSearch:
-    FILTERDATEFROM: 시작일
-    FILTERDATETO: '종료일'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: 시작
+    SEARCH: 검색
+    SearchResults: '검색 결과'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: '전체 페이지'
-  ContentControl:
-    NOTEWONTBESHOWN: '설명: 이 메시지는 당신의 방문자에 표시되지 않습니다'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: '미리보기 버젼'
     ARCHIVEDSITEFROM: '로부터 보관된 사이트'
@@ -142,7 +126,7 @@ ko:
     DEFAULTERRORPAGETITLE: '페이지를 찾을 수 없습니다'
     DEFAULTSERVERERRORPAGECONTENT: '<p> 죄송합니다. 귀하의 요청을 처리하는 동안 문제가 발생했습니다. </p>'
     DEFAULTSERVERERRORPAGETITLE: '서버 오류'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: '콘텐츠에 관한 권한'
     PERMISSIONS_CATEGORY: '역할과 접근권한'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -153,25 +137,6 @@ ko:
     REDIRECTTOEXTERNAL: '다른 웹사이트'
     REDIRECTTOPAGE: '당신의 웹사이트의 페이지'
     YOURPAGE: '당신의 웹사이트의 페이지'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: '가상 페이지를 게시하기 위해 링크된 페이지를 공개합니다'
-    VIRTUALPAGEWARNING: '이 페이지를 게시하기 위해 링크된 페이지를 선택하여 먼저 저장하십시오'
-    VIRTUALPAGEWARNINGSETTINGS: '공개하기 위해 주요 콘텐츠 분야에서 링크된 페이지를 선택하십시오'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: 시작
-    SEARCH: 검색
-    SearchResults: '검색 결과'
-  SideReport:
-    BROKENFILES: '손상된 파일이 있는 페이지'
-    BROKENREDIRECTORPAGES: '리디렉션된 페이지가 삭제됩니다'
-    BROKENVIRTUALPAGES: '삭제된 페이지를 참조하는 가상 페이지'
-    BrokenLinksGroupTitle: '깨진 링크에 관한 보고서'
-    ContentGroupTitle: '콘텐츠의 보고서'
-    EMPTYPAGES: '빈 페이지'
-    LAST2WEEKS: '지난 2 주 이내에 편집된 페이지'
-    ParameterLiveCheckbox: '라이브 사이트를 확인'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: 보관됨
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 누구나
     ACCESSHEADER: '누가 이 페이지를 볼 수 있나?'
@@ -253,14 +218,22 @@ ko:
     many_many_BackLinkTracking: '원본을 추적'
     many_many_ImageTracking: '이미지 링크 추적'
     many_many_LinkTracking: '링크 추적'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: '손상된 파일이 있는 페이지'
+    BROKENREDIRECTORPAGES: '리디렉션된 페이지가 삭제됩니다'
+    BROKENVIRTUALPAGES: '삭제된 페이지를 참조하는 가상 페이지'
+    BrokenLinksGroupTitle: '깨진 링크에 관한 보고서'
+    ContentGroupTitle: '콘텐츠의 보고서'
+    EMPTYPAGES: '빈 페이지'
+    LAST2WEEKS: '지난 2 주 이내에 편집된 페이지'
+    ParameterLiveCheckbox: '라이브 사이트를 확인'
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: 보관됨
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'URL 세그먼트를 입력 또는 중지를 클릭'
-    HelpChars: '특수 문자는 자동으로 변환되었는지 제거되었습니다'
-  URLSegmentField:
     Cancel: 취소
     Edit: 편집
     OK: OK
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: '아카이브된 사이트에 다음 링크에 액세스 할 수 있습니다 : '
     HAVEASKED: '당신은 우리의 사이트의 콘텐츠를 보려고 요청했습니다.'
   SilverStripe\CMS\Model\VirtualPage:

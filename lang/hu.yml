@@ -1,5 +1,5 @@
 hu:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Felhasználva:'
     PAGES: oldal(ak)
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -23,9 +23,10 @@ hu:
     ReasonDropdownRPBROKENLINK: '"Redirector" oldal nem létező oldalra hivatkozik'
     ReasonDropdownVPBROKENLINK: 'Virtuális oldal nem létező oldalra hivatkozik'
     VirtualPageNonExistent: 'a virtuális oldal egy nem létező oldalra hivatkozik'
-  CMSAddPageController:
-    Title: 'Oldal hozzáadása'
-  CMSBatchActions:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    ParentMode_child: 'Másik oldal alatt'
+    ParentMode_top: 'Felső szint'
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: '%d oldal publikálva, %d hibás'
     PUBLISH_PAGES: Publikálni
   SilverStripe\CMS\Controllers\CMSMain:
@@ -54,37 +55,20 @@ hu:
     TabContent: Tartalom
     TabHistory: Történet
     TabSettings: Beállítások
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: 'Másik oldal alatt'
-    ParentMode_top: 'Felső szint'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 'Összehasonlítás (select two)'
-    COMPAREVERSIONS: 'Verziók összehasonlítása'
-    REVERTTOTHISVERSION: 'Visszatérés erre a verzióra'
-    SHOWUNPUBLISHED: 'Publikálatlan verziók megjelenítése'
-    SHOWVERSION: 'Verzió megtekintése'
-    VIEW: megtekintés
-    VIEWINGLATEST: 'Jelenleg ez az utolsó verzió'
-    VIEWINGVERSION: 'Verziószám: {version}'
-  CMSPageHistoryController_versions_ss:
     AUTHOR: Szerző
     NOTPUBLISHED: 'Nincs publikálva'
     PUBLISHER: Szerző
     UNKNOWN: Ismeretlen
     WHEN: Mikor
   SilverStripe\CMS\Controllers\CMSPagesController:
-    ListView: 'Lista nézet'
-    MENUTITLE: Oldalak
-    TreeView: 'Fa nézet'
-  CMSPagesController_Tools_ss:
     FILTER: Szűrő
-  CMSSearch:
-    FILTERDATEFROM: '-tól'
-    FILTERDATETO: '-ig'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Mehet
+    SEARCH: Keresés
+    SearchResults: Találatok
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Összes oldal'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Megjegyzés: ez az üzenet a látogatók számára nem jelenik meg'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Előnézeti verzió'
     ARCHIVEDSITEFROM: Archiválva
@@ -119,7 +103,7 @@ hu:
     CODE: Hibakód
     DEFAULTERRORPAGETITLE: 'Az oldal nem található'
     DEFAULTSERVERERRORPAGETITLE: 'Szerver hiba'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Tartalommal kapcsolatos jogosultságok'
     PERMISSIONS_CATEGORY: 'Szerepkörök kés jogosultságok'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -130,11 +114,7 @@ hu:
     REDIRECTTOEXTERNAL: 'Egy másik weboldal'
     REDIRECTTOPAGE: 'Egy oldal a weblapodon'
     YOURPAGE: 'Oldal a weblapodon'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Mehet
-    SEARCH: Keresés
-    SearchResults: Találatok
-  SideReport:
+  SilverStripe\Reports\SideReport:
     BROKENFILES: 'Oldalak hibás fájl hivatkozásokkal'
     BROKENREDIRECTORPAGES: 'RedirectorPage-ek törölt oldalakra hivatkoznak'
     BROKENVIRTUALPAGES: 'VirtualPages törölt oldalakra mutatnak'
@@ -217,13 +197,10 @@ hu:
     many_many_ImageTracking: 'Kép követése'
     many_many_LinkTracking: 'Link követés'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Írjon be egy URL szegmenst, vagy kattitson a "mégse" feliratra'
-    HelpChars: 'A speciális karakterek automatikusan konvertálódnak vagy törlődnek.'
-  URLSegmentField:
     Cancel: Mégsem
     Edit: Szerkeszt
     OK: OK
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Az archivált oldalt elérheted ezen a linken:'
     HAVEASKED: 'Azt kérted, hogy megnézhesd a honlapunk tartalmát ekkor:'
   SilverStripe\CMS\Model\VirtualPage:

@@ -36,7 +36,7 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem
     public function getMessage()
     {
         return "<div id=\"SilverStripeNavigatorMessage\" title=\"" . _t(
-            'ContentControl.NOTEWONTBESHOWN',
+            'SilverStripe\\CMS\\Controllers\\ContentController.NOTEWONTBESHOWN',
             'Note: this message will not be shown to your visitors'
         ) . "\">" . _t(
             'SilverStripe\\CMS\\Controllers\\ContentController.PUBLISHEDSITE',

@@ -50,8 +50,8 @@ class SiteTreeFileExtension extends DataExtension
             'LastEdited',
             ReadonlyField::create(
                 'BackLinkCount',
-                _t('AssetTableField.BACKLINKCOUNT', 'Used on:'),
-                $this->BackLinkTracking()->count() . ' ' . _t('AssetTableField.PAGES', 'page(s)')
+                _t('SilverStripe\\AssetAdmin\\Controller\\AssetAdmin.BACKLINKCOUNT', 'Used on:'),
+                $this->BackLinkTracking()->count() . ' ' . _t('SilverStripe\\AssetAdmin\\Controller\\AssetAdmin.PAGES', 'page(s)')
             )
                 ->addExtraClass('cms-description-toggle')
                 ->setDescription($this->BackLinkHTMLList())

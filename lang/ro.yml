@@ -1,5 +1,5 @@
 ro:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Folosit la'
     PAGES: pagină(pagini)
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -24,9 +24,10 @@ ro:
     ReasonDropdownVPBROKENLINK: 'Pagina virtuală indică spre o pagină inexistentă'
     RedirectorNonExistent: 'pagina de redirectare indică spre o pagină inexistentă'
     VirtualPageNonExistent: 'pagina virtuală indică spre o pagină inexistentă'
-  CMSAddPageController:
-    Title: 'Adăugare pagină'
-  CMSBatchActions:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    ParentMode_child: 'Sub altă pagină'
+    ParentMode_top: 'Nivel top'
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: '%d pagini publicate, %d erori'
     PUBLISH_PAGES: Publicare
   SilverStripe\CMS\Controllers\CMSMain:
@@ -57,37 +58,20 @@ ro:
     TabContent: Conținut
     TabHistory: Istorie
     TabSettings: Setări
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: 'Sub altă pagină'
-    ParentMode_top: 'Nivel top'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 'Mod comparare (selectează 2)'
-    COMPAREVERSIONS: 'Compară Versiunile'
-    REVERTTOTHISVERSION: 'Revernire la versiune'
-    SHOWUNPUBLISHED: 'Afișează versiunile nepublicate'
-    SHOWVERSION: 'Afișează Versiune'
-    VIEW: Vizualizare
-    VIEWINGLATEST: 'Vizualizare curentă a ultimii versiuni.'
-    VIEWINGVERSION: 'Vizualizarea versiunii {version}.'
-  CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
     NOTPUBLISHED: Nepublicat
     PUBLISHER: Redactor
     UNKNOWN: Necunoscut
     WHEN: Când
   SilverStripe\CMS\Controllers\CMSPagesController:
-    ListView: 'View listă'
-    MENUTITLE: Pagini
-    TreeView: 'View Arbore'
-  CMSPagesController_Tools_ss:
     FILTER: Filtru
-  CMSSearch:
-    FILTERDATEFROM: 'De la'
-    FILTERDATETO: La
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Start
+    SEARCH: Căutare
+    SearchResults: 'Rezultate căutare'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Toate paginile'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Notă: acest mesaj nu v-a fi afișat vizitatorilor'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Previzualizare versiune'
     ARCHIVEDSITEFROM: 'Site arhivat din'
@@ -139,7 +123,7 @@ ro:
     DEFAULTERRORPAGETITLE: 'Pagină negasită'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Ne pare rău, s-a petrecut o problemă la procesarea solicitării dumeavoastre.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Eroare de server'
-  Permissions:
+  SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Permisiuni de conținut'
     PERMISSIONS_CATEGORY: 'Permisiuni de rol și acces'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -150,25 +134,6 @@ ro:
     REDIRECTTOEXTERNAL: 'Alt website'
     REDIRECTTOPAGE: 'O pagină de pe website-ul dumneavoastră'
     YOURPAGE: 'Pagină de pe website-ul dumneavoastră'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Vă rugăm selectați o pagină referențiată pentru a publica pagina virtuală'
-    VIRTUALPAGEWARNING: 'Vă rugăm selectați o pagină referențiată și salvați înainte pentru a publica pagina'
-    VIRTUALPAGEWARNINGSETTINGS: 'Vă rugăm selectați o pagină referențiată în câmpurile de conținut principal pentru a publica'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Start
-    SEARCH: Căutare
-    SearchResults: 'Rezultate căutare'
-  SideReport:
-    BROKENFILES: 'Pagini cu fișiere incorecte'
-    BROKENREDIRECTORPAGES: 'Pagini referitoare indică spre pagini șterse'
-    BROKENVIRTUALPAGES: 'Pagini virtuale indică spre pagini șterse'
-    BrokenLinksGroupTitle: 'Raport referințe nefuncționale'
-    ContentGroupTitle: 'Rapoarte conținut'
-    EMPTYPAGES: 'Pagini fără conținut'
-    LAST2WEEKS: 'Pagini editate în ultimele 2 săptămâni'
-    ParameterLiveCheckbox: 'Verifică site live'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: Arhivă
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Oricine
     ACCESSHEADER: 'Cine poate vizualiza această pagină pe site-ul meu?'
@@ -250,14 +215,22 @@ ro:
     many_many_BackLinkTracking: 'Urmărire link invers'
     many_many_ImageTracking: 'Urmărire Imagine'
     many_many_LinkTracking: 'Urmărire Link'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Pagini cu fișiere incorecte'
+    BROKENREDIRECTORPAGES: 'Pagini referitoare indică spre pagini șterse'
+    BROKENVIRTUALPAGES: 'Pagini virtuale indică spre pagini șterse'
+    BrokenLinksGroupTitle: 'Raport referințe nefuncționale'
+    ContentGroupTitle: 'Rapoarte conținut'
+    EMPTYPAGES: 'Pagini fără conținut'
+    LAST2WEEKS: 'Pagini editate în ultimele 2 săptămâni'
+    ParameterLiveCheckbox: 'Verifică site live'
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: Arhivă
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Vă rugăm introduceți un Segment URL sau apăsați anulează'
-    HelpChars: 'Caracterele speciale sunt convertite automat sau șterse'
-  URLSegmentField:
     Cancel: Anulare
     Edit: Editează
     OK: OK
-  ViewArchivedEmail_ss:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
     CANACCESS: 'Puteți accesa site-ul arhivat la link-ul:'
     HAVEASKED: 'Ați cerut să vizualizați conținutul site-ului la'
   SilverStripe\CMS\Model\VirtualPage:
