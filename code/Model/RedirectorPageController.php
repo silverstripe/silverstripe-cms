@@ -27,7 +27,7 @@ class RedirectorPageController extends PageController
     public function Content()
     {
         return "<p class=\"message-setupWithoutRedirect\">" .
-        _t('RedirectorPage.HASBEENSETUP', 'A redirector page has been set up without anywhere to redirect to.') .
+        _t('SilverStripe\\CMS\\Model\\RedirectorPage.HASBEENSETUP', 'A redirector page has been set up without anywhere to redirect to.') .
         "</p>";
     }
 }

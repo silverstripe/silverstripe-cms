@@ -20,7 +20,7 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem
             return null;
         }
         $linkClass = $this->isActive() ? 'class="current" ' : '';
-        $linkTitle = _t('ContentController.DRAFTSITE', 'Draft Site');
+        $linkTitle = _t('SilverStripe\\CMS\\Controllers\\ContentController.DRAFTSITE', 'Draft Site');
         $recordLink = Convert::raw2att(Controller::join_links($draftPage->AbsoluteLink(), "?stage=Stage"));
         return "<a {$linkClass} href=\"$recordLink\">$linkTitle</a>";
     }
@@ -28,7 +28,7 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem
     public function getTitle()
     {
         return _t(
-            'ContentController.DRAFT',
+            'SilverStripe\\CMS\\Controllers\\ContentController.DRAFT',
             'Draft',
             'Used for the Switch between draft and published view mode. Needs to be a short label'
         );
@@ -40,7 +40,7 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem
             'ContentControl.NOTEWONTBESHOWN',
             'Note: this message will not be shown to your visitors'
         ) . "\">" . _t(
-            'ContentController.DRAFTSITE',
+            'SilverStripe\\CMS\\Controllers\\ContentController.DRAFTSITE',
             'Draft Site'
         ) . "</div>";
     }

@@ -1,12 +1,11 @@
 vi_VN:
-  CMSMain:
+  SilverStripe\CMS\Controllers\CMSMain:
     PAGENOTEXISTS: 'Không tìm thấy trang này.'
-    SAVE: Lưu
-  ErrorPage:
+  SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Mã lỗi'
     DEFAULTERRORPAGECONTENT: '<p>Bạn truy cập vào một trang không tồn tại</p><p>Xin vui lòng kiểm tra lại đường dẩn hoặc quay lại trang chủ</p>'
     DEFAULTERRORPAGETITLE: 'Không tìm thấy'
-  RedirectorPage:
+  SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Một trang di chuyển chưa cấu hình đích di chuyển đến.'
     HEADER: 'Trang này sẽ di chuyển người dùng đến một trang khác'
     OTHERURL: 'Đường dẩn website khác'
@@ -14,12 +13,11 @@ vi_VN:
     REDIRECTTOEXTERNAL: 'Website khác'
     REDIRECTTOPAGE: 'Một trang trên website'
     YOURPAGE: Trang
-  SiteTree:
+  SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'Bất cứ ai'
     ACCESSHEADER: 'Ai có thể xem trang này ?'
     ACCESSLOGGEDIN: 'Người dùng đã đăng nhập'
     ACCESSONLYTHESE: 'Chỉ những người sau đây (chọn từ danh sách)'
-    ALLOWCOMMENTS: 'Cho phép bình luận trên trang này?'
     BUTTONCANCELDRAFT: 'Hủy thay đổi nháp'
     BUTTONCANCELDRAFTDESC: 'Xóa khỏi mục nháp và khôi phục lại trang gốc'
     BUTTONUNPUBLISH: Ẩn

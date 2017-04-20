@@ -1,22 +1,7 @@
 tr:
-  AssetAdmin:
-    ADDFILES: 'Dosyaları ekle'
-    ActionAdd: 'Klasör ekle'
-    AppCategoryArchive: Arşiv
-    AppCategoryAudio: Ses
-    AppCategoryDocument: Belge
-    AppCategoryImage: Görüntü
-    AppCategoryVideo: Video
-    FILES: Dosyalar
-    Filetype: 'Dosya türü'
-    NEWFOLDER: YeniKlasör
-  AssetAdmin_DeleteBatchAction:
-    TITLE: 'Klasörleri sil'
-  AssetAdmin_left_ss:
-    GO: Git
   AssetTableField:
     PAGES: sayfa(lar)
-  BrokenLinksReport:
+  SilverStripe\CMS\Reports\BrokenLinksReport:
     CheckSite: 'Siteyi kontrol et'
     HasBrokenLink: 'kırık link var'
     HoverTitleEditPage: 'Sayfayı düzenle'
@@ -25,66 +10,46 @@ tr:
   CMSAddPageController:
     Title: 'Sayfa ekle'
   CMSBatchActions:
-    DELETE_PAGES: 'Yayındaki siteden sil'
     PUBLISH_PAGES: Yayınla
-  CMSFileAddController:
-    MENUTITLE: Dosyalar
-  CMSMain:
+  SilverStripe\CMS\Controllers\CMSMain:
     AddNew: 'Yeni sayfa ekle'
     AddNewButton: 'Yeni ekle'
     ChoosePageParentMode: 'Sayfanın nereye oluşturulacağını seç'
     ChoosePageType: 'Sayfa tipini seç'
     Create: Oluştur
-    DELETE: 'Taslak siteden kaldır'
-    DELETEFP: 'Yayındaki siteden kaldır'
-    MENUTITLE: 'Sayfayı düzenle'
     PAGENOTEXISTS: 'Sayfa bulunamadı'
     PUBALLCONFIRM: 'Lütfen taslak sitedeki tüm sayfaları yayınlanmakta olan siteye kopyalayıp yayınla.'
     PUBALLFUN: '"Hepsini Yayınla" özelliği'
     PageAdded: 'Sayfa başarıyla oluşturuldu'
     REMOVEDPAGEFROMDRAFT: '''%s'' taslak siteden silindi'
     ROLLBACK: 'Bu sürüme geri dön'
-    SAVE: Kaydet
     TabContent: İçerik
     TabHistory: Geçmiş
     TabSettings: Ayarlar
-  CMSMain_left_ss:
-    RESET: Sıfırla
-  CMSPageAddController:
-    MENUTITLE: 'Sayfa ekle'
-  CMSPageEditController:
-    MENUTITLE: 'Sayfayı Düzenle'
-  CMSPageHistoryController:
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
     COMPAREVERSIONS: 'Versiyonları karşılaştır'
-    MENUTITLE: Geçmiş
   CMSPageHistoryController_versions_ss:
     AUTHOR: Yazar
     NOTPUBLISHED: Yayınlanmamış
     PUBLISHER: Yayınlayan
     UNKNOWN: Bilinmeyen
     WHEN: 'Ne zaman'
-  CMSPageSettingsController:
-    MENUTITLE: 'Sayfayı düzenle'
-  CMSPagesController:
-    GalleryView: 'Galeri Görünümü'
+  SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: Sayfalar
   CMSPagesController_Tools_ss:
     FILTER: Filtre
-  CMSSettingsController:
-    MENUTITLE: Ayarlar
-  CMSSiteTreeFilter_Search:
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Tüm sayfalar'
   ContentControl:
     NOTEWONTBESHOWN: 'Not: Bu mesaj ziyaretçilerinize gösterilmeyecektir.'
-  ContentController:
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Taslak veya arşivlenmiş içeriği görebilmek için CMS şifrenizle giriş yapmış olmanız gerekmektedir. <a href="%s">Yayınlanmış siteye geri dönmek için buraya tıklayın.</a>'
+  SilverStripe\CMS\Controllers\ContentController:
     Email: Eposta
     INSTALL_SUCCESS: 'Kurulum Başarılı!'
     InstallFilesDeleted: 'Kurulum dosyaları başarıyla silindi.'
     InstallSuccessCongratulations: 'SilverStripe başarıyla kuruldu!'
     LOGOUT: 'Çıkış Yap'
     Password: Parola
-  ErrorPage:
+  SilverStripe\CMS\Model\ErrorPage:
     400: '400 - Hatalı İstek'
     401: '401 - Erişim Engellenmiş'
     403: '403 - Yasak'
@@ -111,17 +76,7 @@ tr:
     CODE: 'Hata kodu'
     DEFAULTERRORPAGECONTENT: '<p>Varolmayan bir sayfaya ulaşmaya çalışıyorsunuz.</p><p>Lütfen ulaşmak istediğiniz URL''i kontrol edip tekrar deneyiniz.</p>'
     DEFAULTERRORPAGETITLE: 'Sayfa bulunamadı'
-  Folder:
-    DELETEUNUSEDTHUMBNAILS: 'Kullanılmamış thumbnail leri sil'
-    UNUSEDFILESTITLE: 'Kullanılmamış dosyalar'
-    UNUSEDTHUMBNAILSTITLE: 'Kullanılmamış thumbnail ler'
-  LeftAndMain:
-    DELETED: Silindi.
-    SAVEDUP: Kaydedildi.
-  Permission:
-    CMS_ACCESS_CATEGORY: 'CMS Erişimi'
-  RedirectorPage:
-    DESCRIPTION: 'Başka iç sayfaya yönlendir'
+  SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Yönlendirilecek yeri olmayan bir yönlendirme sayfası ayarlandı.'
     HEADER: 'Bu sayfa, kullanıcıları başka bir sayfaya yönlendirir'
     OTHERURL: 'Başka bir siteye ait URL'
@@ -129,38 +84,22 @@ tr:
     REDIRECTTOEXTERNAL: 'Başka bir site'
     REDIRECTTOPAGE: 'Web sitenizdeki bir sayfa'
     YOURPAGE: 'Web sitenizdeki bir sayfa'
-  ReportAdmin:
-    MENUTITLE: Raporlar
-  SearchForm:
+  SilverStripe\CMS\Search\SearchForm:
     GO: Git
     SEARCH: Ara
   SideReport:
     BROKENFILES: 'Kırık link bulunan sayfalar'
-    BROKENLINKS: 'Kırık link bulunan sayfalar'
     BrokenLinksGroupTitle: 'Kırık linki rapor et'
     ContentGroupTitle: 'İçerik raporları'
     EMPTYPAGES: 'Boş sayfalar'
     LAST2WEEKS: 'Son 2 haftada düzenlenmiş sayfalar'
-    OtherGroupTitle: Diğeri
     ParameterLiveCheckbox: 'Yayındaki siteyi kontrol et'
-  SilverStripeNavigatorLink:
-    ShareLink: 'Linki paylaş'
-  SilverStripeNavigatorLinkl:
-    CloseLink: Kapat
-  SiteConfig:
-    DEFAULTTHEME: '(Varsayılan temayı kullan)'
-    SITENAMEDEFAULT: 'Site Adınız'
-    SITETITLE: 'Site başlığı'
-    TABACCESS: Erişim
-    TABMAIN: Ana
-    THEME: Tema
-  SiteTree:
+  SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Herkes
     ACCESSHEADER: 'Bu sayfayı kimler görüntüleyebilir?'
     ACCESSLOGGEDIN: 'Giriş yapmış kullanıcılar'
     ACCESSONLYTHESE: 'Sadece bu kişiler (listeden seçiniz)'
     ADDEDTODRAFTSHORT: Taslak
-    ALLOWCOMMENTS: 'Bu sayfada yorumlara izin verilsin mi?'
     BUTTONCANCELDRAFT: 'Taslak değikliklerini iptal et'
     BUTTONCANCELDRAFTDESC: 'Taslağı sil ve şu an yayında olan sayfaya geri döndür'
     BUTTONUNPUBLISH: 'Yayından kaldır'
@@ -189,7 +128,6 @@ tr:
     PARENTTYPE: 'Sayfa konumu'
     PARENTTYPE_ROOT: 'Üst seviye sayfa'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Grupların işlem ve düzenlemelerinin kontrolü'
-    REMOVEDFROMDRAFTHELP: 'Sayfa yayınlandı ve taslaklardan silindi'
     REORGANISE_DESCRIPTION: 'Site yapısını değiştir'
     REORGANISE_HELP: 'Site ağacının sürükle&bırak şeklinde tekrardan düzenle'
     SHOWINMENUS: 'Menülerde gösterilsin mi?'
@@ -207,6 +145,5 @@ tr:
   ViewArchivedEmail_ss:
     CANACCESS: 'Arşivdeki siteye şu bağlantıdan erişebilirsiniz:'
     HAVEASKED: 'Şu tarihe kadar olan site içeriğini görüntülemek istediniz:'
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Bu sanal bir sayfadır'
-    SINGULARNAME: 'Sanal Sayfa'

@@ -1,24 +1,15 @@
 ast:
-  AssetAdmin:
-    SIZE: Tamañu
-  CMSPageHistoryController:
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
     COMPAREVERSIONS: 'Comparar les versiones'
-    MENUTITLE: Historial
     SHOWVERSION: 'Mostrar la versión'
-  CMSPageSettingsController:
-    MENUTITLE: 'Editar la páxina'
-  CMSPagesController:
+  SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: Páxines
-  ContentController:
+  SilverStripe\CMS\Controllers\ContentController:
     Password: Contraseña
-  ErrorPage:
+  SilverStripe\CMS\Model\ErrorPage:
     DEFAULTERRORPAGETITLE: 'Páxina non alcontrada'
     DEFAULTSERVERERRORPAGETITLE: 'Error del servidor'
-  LeftAndMain:
-    SearchResults: 'Resultaos de la busca'
-  SilverStripeNavigatorLinkl:
-    CloseLink: Zarrar
-  SiteTree:
+  SilverStripe\CMS\Model\SiteTree:
     Content: Conteníu
     HTMLEDITORTITLE: Conteníu
     PAGETYPE: 'Triba de páxina'
@@ -26,7 +17,5 @@ ast:
     PARENTTYPE: 'Llocalización de la páxina'
     URLSegment: 'Segmentu URL'
     has_one_Parent: 'Páxina padre'
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Esto ye una páxina virtual'
-    PLURALNAME: 'Páxines virtuales'
-    SINGULARNAME: 'Páxina virtual'

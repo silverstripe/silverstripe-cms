@@ -1,38 +1,8 @@
 hu:
-  AssetAdmin:
-    ADDFILES: 'Állomány hozzáadása'
-    ActionAdd: 'Mappa hozzáadása'
-    AppCategoryArchive: Archív
-    AppCategoryAudio: Audió
-    AppCategoryDocument: Dokumentum
-    AppCategoryImage: Kép
-    AppCategoryVideo: Videó
-    BackToFolder: 'Vissza a mappába'
-    CREATED: Dátum
-    CurrentFolderOnly: 'Csak mappán belül?'
-    DetailsView: Részletek
-    FILES: Állományok
-    FROMTHEINTERNET: Internetről
-    FROMYOURCOMPUTER: Számítógépéről
-    Filetype: 'Állomány típusa'
-    ListView: 'Lista nézet'
-    MENUTITLE: Állományok
-    NEWFOLDER: 'Új mappa'
-    SIZE: Méret
-    TreeView: '"Fa" nézet'
-    Upload: Feltöltés
-  AssetAdmin_DeleteBatchAction:
-    TITLE: 'Mappák törlése'
-  AssetAdmin_Tools:
-    FILTER: Szűrő
-  AssetAdmin_left_ss:
-    GO: Mehet
   AssetTableField:
     BACKLINKCOUNT: 'Felhasználva:'
     PAGES: oldal(ak)
-  BackLink_Button_ss:
-    Back: Vissza
-  BrokenLinksReport:
+  SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Bármely
     BROKENLINKS: 'Hibás linkek listája'
     CheckSite: 'Oldal ellenőrzése'
@@ -56,27 +26,17 @@ hu:
   CMSAddPageController:
     Title: 'Oldal hozzáadása'
   CMSBatchActions:
-    DELETED_PAGES: '%d oldal törölve a publikáltak közül, %d hibás'
-    DELETE_DRAFT_PAGES: 'Törlés a vázlatokból'
-    DELETE_PAGES: 'Törlés a publikált oldalakból'
     PUBLISHED_PAGES: '%d oldal publikálva, %d hibás'
     PUBLISH_PAGES: Publikálni
-  CMSFileAddController:
-    MENUTITLE: Állományok
-  CMSMain:
+  SilverStripe\CMS\Controllers\CMSMain:
     AddNew: 'Új oldal hozzáadása'
     AddNewButton: 'Új hozzáadása'
     Cancel: Mégsem
     ChoosePageParentMode: 'Adja meg az oldal létrehozásának helyét'
     ChoosePageType: 'Válassza ki az oldal típusát'
     Create: Létrehozni
-    DELETE: 'Vázlat törlése'
-    DELETEFP: Törlés
-    DESCREMOVED: 'és {count} gyerek'
     DUPLICATED: '''{title}'' sikeresen duplikálva'
     DUPLICATEDWITHCHILDREN: '''{title}'' és oldalai sikeresen duplikálva'
-    EditTree: 'Menüszerkeszet módosítása'
-    MENUTITLE: 'Oldal szerkesztése'
     NEWPAGE: 'Új {pagetype}'
     PAGENOTEXISTS: 'Ez az oldal nem létezik.'
     PAGETYPEANYOPT: Egyéb
@@ -84,29 +44,22 @@ hu:
     PUBALLFUN: '"Összes publikálása" funkció'
     PUBPAGES: '{count} oldalt publikált'
     PageAdded: 'Oldal sikeresen létrehozva'
-    REMOVED: '''{title}{description}'' törölve az éles oldalról'
     REMOVEDPAGE: '''{title}'' törölve a publikált oldalról'
     REMOVEDPAGEFROMDRAFT: '''%s'' törlése a piszkozatoldalról'
     RESTORED: '''{title}'' sikeresen helyreállítva'
     ROLLBACK: 'Visszaállítás ehhez a verzióhoz'
     ROLLEDBACKPUBv2: 'Visszatérés a publikált verzióhoz.'
     ROLLEDBACKVERSIONv2: '#%d verzió beállítva.'
-    SAVE: Mentés
     SAVEDRAFT: 'Piszkozat mentése'
     TabContent: Tartalom
     TabHistory: Történet
     TabSettings: Beállítások
-  CMSPageAddController:
-    MENUTITLE: 'Oldal hozzáadása'
+  SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Másik oldal alatt'
     ParentMode_top: 'Felső szint'
-  CMSPageEditController:
-    MENUTITLE: 'Oldal szerkesztése'
-  CMSPageHistoryController:
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
     COMPAREMODE: 'Összehasonlítás (select two)'
     COMPAREVERSIONS: 'Verziók összehasonlítása'
-    COMPARINGVERSION: '{version1} és {version2} verziók összehaonlítása. '
-    MENUTITLE: Történet
     REVERTTOTHISVERSION: 'Visszatérés erre a verzióra'
     SHOWUNPUBLISHED: 'Publikálatlan verziók megjelenítése'
     SHOWVERSION: 'Verzió megtekintése'
@@ -119,10 +72,7 @@ hu:
     PUBLISHER: Szerző
     UNKNOWN: Ismeretlen
     WHEN: Mikor
-  CMSPageSettingsController:
-    MENUTITLE: 'Oldal szerkesztése'
-  CMSPagesController:
-    GalleryView: 'Galéria nézet'
+  SilverStripe\CMS\Controllers\CMSPagesController:
     ListView: 'Lista nézet'
     MENUTITLE: Oldalak
     TreeView: 'Fa nézet'
@@ -130,21 +80,17 @@ hu:
     FILTER: Szűrő
   CMSSearch:
     FILTERDATEFROM: '-tól'
-    FILTERDATEHEADING: Dátum
     FILTERDATETO: '-ig'
-  CMSSettingsController:
-    MENUTITLE: Beállítások
-  CMSSiteTreeFilter_Search:
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Összes oldal'
   ContentControl:
     NOTEWONTBESHOWN: 'Megjegyzés: ez az üzenet a látogatók számára nem jelenik meg'
-  ContentController:
+  SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Előnézeti verzió'
     ARCHIVEDSITEFROM: Archiválva
     CMS: Tartalomkezelő
     DRAFT: Piszkozat
     DRAFTSITE: 'Vázlat oldal'
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Be kell jelentkezned a CMS jelszavaddal, hogy megtekinthesd a piszkozatot vagy az archivált tartalmat. <a href="%s">A publikált oldalra való visszatéréshez kattints ide.</a>'
     Email: E-mail
     INSTALL_SUCCESS: 'Sikeres telepítés!'
     InstallFilesDeleted: 'A telepítő állományok sikeresen tőrőlve lettek.'
@@ -158,7 +104,7 @@ hu:
     Password: Jelszó
     UnableDeleteInstall: 'A telepítő állományok törlése nem sikerült. Kérjük törölje az alábbi állományokat kézzel.'
     VIEWPAGEIN: 'Oldal megtekintése'
-  ErrorPage:
+  SilverStripe\CMS\Model\ErrorPage:
     400: '400 - Hibás kérés'
     401: '401 - Jogosulatlan kérés'
     403: '403 - Tiltott hozzáférés'
@@ -173,82 +119,39 @@ hu:
     CODE: Hibakód
     DEFAULTERRORPAGETITLE: 'Az oldal nem található'
     DEFAULTSERVERERRORPAGETITLE: 'Szerver hiba'
-    SINGULARNAME: 'Hiba oldal'
-  Folder:
-    AddFolderButton: 'Mappa hozzáadása'
-    DELETEUNUSEDTHUMBNAILS: 'Nem használt bélyegképek törlése'
-    UNUSEDFILESTITLE: 'Nem használt állományok'
-    UNUSEDTHUMBNAILSTITLE: 'Nem használt bélyegképek'
-    UploadFilesButton: Feltöltés
-  LeftAndMain:
-    DELETED: Törölve.
-    PreviewButton: Előnézet
-    SAVEDUP: Elmentve.
-    SearchResults: Találatok
-  Permission:
-    CMS_ACCESS_CATEGORY: 'CMS hozzáférés'
   Permissions:
     CONTENT_CATEGORY: 'Tartalommal kapcsolatos jogosultságok'
     PERMISSIONS_CATEGORY: 'Szerepkörök kés jogosultságok'
-  RedirectorPage:
-    DESCRIPTION: 'Átirányít belső oldalra'
+  SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Egy átirányító oldal került létrehozásra, anélkül hogy lenne hova átirányítania.'
     HEADER: 'Ez az oldal egy másik oldalra fogja írányítani a felhasználókat'
     OTHERURL: 'Egy másik weboldal URL-je '
     REDIRECTTO: 'Átirányítás ide:'
     REDIRECTTOEXTERNAL: 'Egy másik weboldal'
     REDIRECTTOPAGE: 'Egy oldal a weblapodon'
-    SINGULARNAME: 'Átirányító oldal'
     YOURPAGE: 'Oldal a weblapodon'
-  ReportAdmin:
-    MENUTITLE: Jelentések
-    ReportTitle: Cím
-  ReportAdminForm:
-    FILTERBY: Szűrés
-  SearchForm:
+  SilverStripe\CMS\Search\SearchForm:
     GO: Mehet
     SEARCH: Keresés
     SearchResults: Találatok
   SideReport:
     BROKENFILES: 'Oldalak hibás fájl hivatkozásokkal'
-    BROKENLINKS: 'Oldalak hibás hivatkozásokkal'
     BROKENREDIRECTORPAGES: 'RedirectorPage-ek törölt oldalakra hivatkoznak'
     BROKENVIRTUALPAGES: 'VirtualPages törölt oldalakra mutatnak'
     BrokenLinksGroupTitle: 'Hibás linkek listája'
     ContentGroupTitle: 'Tartalommal kapcsolatos riportok'
     EMPTYPAGES: 'Üres oldalak'
     LAST2WEEKS: 'Elmúlt 2 héten belül szerkesztett oldalak'
-    OtherGroupTitle: Más
     ParameterLiveCheckbox: 'Éles oldal megtekintése'
-    REPEMPTY: 'A {title} riport üres.'
-  SilverStripeNavigator:
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archiválva
-  SilverStripeNavigatorLink:
-    ShareLink: 'Hivatkozás megosztása'
-  SilverStripeNavigatorLinkl:
-    CloseLink: Bezár
-  SiteConfig:
-    DEFAULTTHEME: '(Alap téma használata)'
-    EDITHEADER: 'A webhely oldalai módosíthajtja'
-    EDIT_PERMISSION: 'Webhely konfiguráció'
-    PLURALNAME: 'Oldal konfigurációk'
-    SINGULARNAME: 'Oldal konfiguráció'
-    SITENAMEDEFAULT: 'Az oldal neve'
-    SITETAGLINE: 'Webhely címsora'
-    SITETITLE: 'Oldal címe'
-    TABACCESS: Hozzáférés
-    TABMAIN: Fő
-    THEME: Témák
-    TOPLEVELCREATE: 'A webhely legfelső szintjén oldalakat hozhat létre'
-    VIEWHEADER: 'A webhely oldalait olvashatják'
-  SiteTree:
+  SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Mindenki
     ACCESSHEADER: 'Ki láthatja ezt az oldalt a weblapon?'
     ACCESSLOGGEDIN: 'Bejelentkezett felhasználók'
     ACCESSONLYTHESE: 'Csak ezen emberek (válassz a listából)'
     ADDEDTODRAFTHELP: 'Az oldal jelenleg még nincs publikálva.'
     ADDEDTODRAFTSHORT: Vázlat
-    ALLOWCOMMENTS: 'Megjegyzések engedélyezése ezen az oldalon?'
     BUTTONCANCELDRAFT: 'Piszkozaton végzett változtatások visszavonása'
     BUTTONCANCELDRAFTDESC: 'Piszkozat törlése, és vissztérés a jelenleg publikált oldalra'
     BUTTONPUBLISHED: Publikálva
@@ -261,9 +164,6 @@ hu:
     DEFAULTABOUTTITLE: Rólunk
     DEFAULTCONTACTTITLE: Kapcsolat
     DEFAULTHOMETITLE: Kezdőlap
-    DELETEDPAGEHELP: 'Az oldal nincs publikálva'
-    DELETEDPAGESHORT: Törölve
-    DESCRIPTION: 'Egyszerű oldal'
     DependtPageColumnLinkType: 'Hivatkozás típusa'
     DependtPageColumnURL: Link
     EDITANYONE: 'Bárki, aki be tud jelentkezni a CMS-be'
@@ -295,22 +195,17 @@ hu:
     PARENTTYPE_ROOT: 'Felső szintű oldal'
     PARENTTYPE_SUBPAGE: Aloldal
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Tartalom hozzáférését szabályozza'
-    PLURALNAME: Oldalak
     PageTypNotAllowedOnRoot: 'A "{type}" oldal nem helyezkedhet el a gyökér szintjén'
     PageTypeNotAllowed: 'A "{type}" oldal nem helyezkedhet el a kiválasztott szülő alá'
-    REMOVEDFROMDRAFTHELP: 'Az oldal publikálva lett, de törölve lett a vázlatok közül'
-    REMOVEDFROMDRAFTSHORT: 'Törölve a vázlatokból'
     REMOVE_INSTALL_WARNING: 'Figyelmeztetés: Törölje az install.php állományt a Silverstripe telepítéséből. '
     REORGANISE_DESCRIPTION: 'Oldal szerkezetének megváltoztatása'
     REORGANISE_HELP: 'Az oldalak sorrendje egérrel átrendezhető.'
     SHOWINMENUS: 'Látható legyen a menükben?'
     SHOWINSEARCH: 'Látható legyen a keresésben?'
-    SINGULARNAME: Oldal
     TABBEHAVIOUR: Viselkedés
     TABCONTENT: Tartalom
     TABDEPENDENT: 'Kapcsolodó oldalak'
     TOPLEVEL: 'Oldaltartalom (legfelső szint)'
-    TOPLEVELCREATORGROUPS: 'A legfelső szinten új elemeket létrehozhatnak'
     URLSegment: 'URL szegmens'
     VIEWERGROUPS: 'Olvasási joggal rendelkező csoportok'
     VIEW_ALL_DESCRIPTION: 'Bármely oldal megtekintése'
@@ -321,7 +216,7 @@ hu:
     many_many_BackLinkTracking: 'Backlink követés'
     many_many_ImageTracking: 'Kép követése'
     many_many_LinkTracking: 'Link követés'
-  SiteTreeURLSegmentField:
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Írjon be egy URL szegmenst, vagy kattitson a "mégse" feliratra'
     HelpChars: 'A speciális karakterek automatikusan konvertálódnak vagy törlődnek.'
   URLSegmentField:
@@ -331,8 +226,7 @@ hu:
   ViewArchivedEmail_ss:
     CANACCESS: 'Az archivált oldalt elérheted ezen a linken:'
     HAVEASKED: 'Azt kérted, hogy megnézhesd a honlapunk tartalmát ekkor:'
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Hivatkozott oldal'
     EditLink: szerkeszt
     HEADER: 'Ez egy virtuális oldal'
-    SINGULARNAME: 'Virtuális oldal'

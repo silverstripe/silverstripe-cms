@@ -191,18 +191,18 @@ class ErrorPage extends Page
         $data = array(
             array(
                 'ErrorCode' => 404,
-                'Title' => _t('ErrorPage.DEFAULTERRORPAGETITLE', 'Page not found'),
+                'Title' => _t('SilverStripe\\CMS\\Model\\ErrorPage.DEFAULTERRORPAGETITLE', 'Page not found'),
                 'Content' => _t(
-                    'ErrorPage.DEFAULTERRORPAGECONTENT',
+                    'SilverStripe\\CMS\\Model\\ErrorPage.DEFAULTERRORPAGECONTENT',
                     '<p>Sorry, it seems you were trying to access a page that doesn\'t exist.</p>'
                     . '<p>Please check the spelling of the URL you were trying to access and try again.</p>'
                 )
             ),
             array(
                 'ErrorCode' => 500,
-                'Title' => _t('ErrorPage.DEFAULTSERVERERRORPAGETITLE', 'Server error'),
+                'Title' => _t('SilverStripe\\CMS\\Model\\ErrorPage.DEFAULTSERVERERRORPAGETITLE', 'Server error'),
                 'Content' => _t(
-                    'ErrorPage.DEFAULTSERVERERRORPAGECONTENT',
+                    'SilverStripe\\CMS\\Model\\ErrorPage.DEFAULTSERVERERRORPAGECONTENT',
                     '<p>Sorry, there was a problem with handling your request.</p>'
                 )
             )
@@ -226,31 +226,31 @@ class ErrorPage extends Page
                 "ErrorCode",
                 $this->fieldLabel('ErrorCode'),
                 array(
-                    400 => _t('ErrorPage.400', '400 - Bad Request'),
-                    401 => _t('ErrorPage.401', '401 - Unauthorized'),
-                    403 => _t('ErrorPage.403', '403 - Forbidden'),
-                    404 => _t('ErrorPage.404', '404 - Not Found'),
-                    405 => _t('ErrorPage.405', '405 - Method Not Allowed'),
-                    406 => _t('ErrorPage.406', '406 - Not Acceptable'),
-                    407 => _t('ErrorPage.407', '407 - Proxy Authentication Required'),
-                    408 => _t('ErrorPage.408', '408 - Request Timeout'),
-                    409 => _t('ErrorPage.409', '409 - Conflict'),
-                    410 => _t('ErrorPage.410', '410 - Gone'),
-                    411 => _t('ErrorPage.411', '411 - Length Required'),
-                    412 => _t('ErrorPage.412', '412 - Precondition Failed'),
-                    413 => _t('ErrorPage.413', '413 - Request Entity Too Large'),
-                    414 => _t('ErrorPage.414', '414 - Request-URI Too Long'),
-                    415 => _t('ErrorPage.415', '415 - Unsupported Media Type'),
-                    416 => _t('ErrorPage.416', '416 - Request Range Not Satisfiable'),
-                    417 => _t('ErrorPage.417', '417 - Expectation Failed'),
-                    422 => _t('ErrorPage.422', '422 - Unprocessable Entity'),
-                    429 => _t('ErrorPage.429', '429 - Too Many Requests'),
-                    500 => _t('ErrorPage.500', '500 - Internal Server Error'),
-                    501 => _t('ErrorPage.501', '501 - Not Implemented'),
-                    502 => _t('ErrorPage.502', '502 - Bad Gateway'),
-                    503 => _t('ErrorPage.503', '503 - Service Unavailable'),
-                    504 => _t('ErrorPage.504', '504 - Gateway Timeout'),
-                    505 => _t('ErrorPage.505', '505 - HTTP Version Not Supported'),
+                    400 => _t('SilverStripe\\CMS\\Model\\ErrorPage.400', '400 - Bad Request'),
+                    401 => _t('SilverStripe\\CMS\\Model\\ErrorPage.401', '401 - Unauthorized'),
+                    403 => _t('SilverStripe\\CMS\\Model\\ErrorPage.403', '403 - Forbidden'),
+                    404 => _t('SilverStripe\\CMS\\Model\\ErrorPage.404', '404 - Not Found'),
+                    405 => _t('SilverStripe\\CMS\\Model\\ErrorPage.405', '405 - Method Not Allowed'),
+                    406 => _t('SilverStripe\\CMS\\Model\\ErrorPage.406', '406 - Not Acceptable'),
+                    407 => _t('SilverStripe\\CMS\\Model\\ErrorPage.407', '407 - Proxy Authentication Required'),
+                    408 => _t('SilverStripe\\CMS\\Model\\ErrorPage.408', '408 - Request Timeout'),
+                    409 => _t('SilverStripe\\CMS\\Model\\ErrorPage.409', '409 - Conflict'),
+                    410 => _t('SilverStripe\\CMS\\Model\\ErrorPage.410', '410 - Gone'),
+                    411 => _t('SilverStripe\\CMS\\Model\\ErrorPage.411', '411 - Length Required'),
+                    412 => _t('SilverStripe\\CMS\\Model\\ErrorPage.412', '412 - Precondition Failed'),
+                    413 => _t('SilverStripe\\CMS\\Model\\ErrorPage.413', '413 - Request Entity Too Large'),
+                    414 => _t('SilverStripe\\CMS\\Model\\ErrorPage.414', '414 - Request-URI Too Long'),
+                    415 => _t('SilverStripe\\CMS\\Model\\ErrorPage.415', '415 - Unsupported Media Type'),
+                    416 => _t('SilverStripe\\CMS\\Model\\ErrorPage.416', '416 - Request Range Not Satisfiable'),
+                    417 => _t('SilverStripe\\CMS\\Model\\ErrorPage.417', '417 - Expectation Failed'),
+                    422 => _t('SilverStripe\\CMS\\Model\\ErrorPage.422', '422 - Unprocessable Entity'),
+                    429 => _t('SilverStripe\\CMS\\Model\\ErrorPage.429', '429 - Too Many Requests'),
+                    500 => _t('SilverStripe\\CMS\\Model\\ErrorPage.500', '500 - Internal Server Error'),
+                    501 => _t('SilverStripe\\CMS\\Model\\ErrorPage.501', '501 - Not Implemented'),
+                    502 => _t('SilverStripe\\CMS\\Model\\ErrorPage.502', '502 - Bad Gateway'),
+                    503 => _t('SilverStripe\\CMS\\Model\\ErrorPage.503', '503 - Service Unavailable'),
+                    504 => _t('SilverStripe\\CMS\\Model\\ErrorPage.504', '504 - Gateway Timeout'),
+                    505 => _t('SilverStripe\\CMS\\Model\\ErrorPage.505', '505 - HTTP Version Not Supported'),
                 )
             ),
             "Content"
@@ -329,7 +329,7 @@ class ErrorPage extends Page
     public function fieldLabels($includerelations = true)
     {
         $labels = parent::fieldLabels($includerelations);
-        $labels['ErrorCode'] = _t('ErrorPage.CODE', "Error code");
+        $labels['ErrorCode'] = _t('SilverStripe\\CMS\\Model\\ErrorPage.CODE', "Error code");
 
         return $labels;
     }

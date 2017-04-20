@@ -23,13 +23,13 @@ class SiteTreeMaintenanceTask extends Controller
             $page->write();
             if ($urlSegment != $page->URLSegment) {
                 echo _t(
-                    'SiteTree.LINKSCHANGEDTO',
+                    'SilverStripe\\CMS\\Model\\SiteTree.LINKSCHANGEDTO',
                     " changed {url1} -> {url2}",
                     array('url1' => $urlSegment, 'url2' => $page->URLSegment)
                 );
             } else {
                 echo _t(
-                    'SiteTree.LINKSALREADYUNIQUE',
+                    'SilverStripe\\CMS\\Model\\SiteTree.LINKSALREADYUNIQUE',
                     " {url} is already unique",
                     array('url' => $urlSegment)
                 );

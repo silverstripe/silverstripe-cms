@@ -654,7 +654,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             return $this->httpError(
                 403,
                 _t(
-                    'LeftAndMain.CANT_REORGANISE',
+                    'SilverStripe\\Admin\\LeftAndMain.CANT_REORGANISE',
                     "You do not have permission to rearange the site tree. Your change was not saved."
                 )
             );
@@ -674,7 +674,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             return $this->httpError(
                 500,
                 _t(
-                    'LeftAndMain.PLEASESAVE',
+                    'SilverStripe\\Admin\\LeftAndMain.PLEASESAVE',
                     "Please Save Page: This page could not be updated because it hasn't been saved yet."
                 )
             );
@@ -686,7 +686,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             return $this->httpError(
                 403,
                 _t(
-                    'LeftAndMain.CANT_REORGANISE',
+                    'SilverStripe\\Admin\\LeftAndMain.CANT_REORGANISE',
                     "You do not have permission to alter Top level pages. Your change was not saved."
                 )
             );
@@ -718,7 +718,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
             $this->getResponse()->addHeader(
                 'X-Status',
-                rawurlencode(_t('LeftAndMain.REORGANISATIONSUCCESSFUL', 'Reorganised the site tree successfully.'))
+                rawurlencode(_t('SilverStripe\\Admin\\LeftAndMain.REORGANISATIONSUCCESSFUL', 'Reorganised the site tree successfully.'))
             );
         }
 
@@ -746,7 +746,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
             $this->getResponse()->addHeader(
                 'X-Status',
-                rawurlencode(_t('LeftAndMain.REORGANISATIONSUCCESSFUL', 'Reorganised the site tree successfully.'))
+                rawurlencode(_t('SilverStripe\\Admin\\LeftAndMain.REORGANISATIONSUCCESSFUL', 'Reorganised the site tree successfully.'))
             );
         }
 
@@ -803,15 +803,15 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         );
         $pageFilter = new DropdownField(
             'q[FilterClass]',
-            _t('CMSMain.PAGES', 'Page status'),
+            _t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGES', 'Page status'),
             CMSSiteTreeFilter::get_all_filters()
         );
         $pageClasses = new DropdownField(
             'q[ClassName]',
-            _t('CMSMain.PAGETYPEOPT', 'Page type', 'Dropdown for limiting search to a page type'),
+            _t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGETYPEOPT', 'Page type', 'Dropdown for limiting search to a page type'),
             $this->getPageTypes()
         );
-        $pageClasses->setEmptyString(_t('CMSMain.PAGETYPEANYOPT', 'Any'));
+        $pageClasses->setEmptyString(_t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGETYPEANYOPT', 'Any'));
 
         // Group the Datefields
         $dateGroup = new FieldGroup(
@@ -1210,7 +1210,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function EmptyForm()
     {
         $fields = new FieldList(
-            new LabelField('PageDoesntExistLabel', _t('CMSMain.PAGENOTEXISTS', "This page doesn't exist"))
+            new LabelField('PageDoesntExistLabel', _t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGENOTEXISTS', "This page doesn't exist"))
         );
         $form = parent::EmptyForm();
         $form->setFields($fields);
@@ -1249,13 +1249,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $numCampaigns = mb_strtolower($numCampaigns);
 
         if (count($descendants) > 0 && $inChangeSets->count() > 0) {
-            $archiveWarningMsg = _t('CMSMain.ArchiveWarningWithChildrenAndCampaigns', 'Warning: This page and all of its child pages will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?', [ 'NumCampaigns' => $numCampaigns ]);
+            $archiveWarningMsg = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarningWithChildrenAndCampaigns', 'Warning: This page and all of its child pages will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?', [ 'NumCampaigns' => $numCampaigns ]);
         } elseif (count($descendants) > 0) {
-            $archiveWarningMsg = _t('CMSMain.ArchiveWarningWithChildren', 'Warning: This page and all of its child pages will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?');
+            $archiveWarningMsg = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarningWithChildren', 'Warning: This page and all of its child pages will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?');
         } elseif ($inChangeSets->count() > 0) {
-            $archiveWarningMsg = _t('CMSMain.ArchiveWarningWithCampaigns', 'Warning: This page will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?', [ 'NumCampaigns' => $numCampaigns ]);
+            $archiveWarningMsg = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarningWithCampaigns', 'Warning: This page will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?', [ 'NumCampaigns' => $numCampaigns ]);
         } else {
-            $archiveWarningMsg = _t('CMSMain.ArchiveWarning', 'Warning: This page will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?');
+            $archiveWarningMsg = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarning', 'Warning: This page will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?');
         }
 
         return $archiveWarningMsg;
@@ -1400,9 +1400,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         // Don't allow navigating into children nodes on filtered lists
         $fields = array(
-            'getTreeTitle' => _t('SiteTree.PAGETITLE', 'Page Title'),
-            'singular_name' => _t('SiteTree.PAGETYPE', 'Page Type'),
-            'LastEdited' => _t('SiteTree.LASTUPDATED', 'Last Updated'),
+            'getTreeTitle' => _t('SilverStripe\\CMS\\Model\\SiteTree.PAGETITLE', 'Page Title'),
+            'singular_name' => _t('SilverStripe\\CMS\\Model\\SiteTree.PAGETYPE', 'Page Type'),
+            'LastEdited' => _t('SilverStripe\\CMS\\Model\\SiteTree.LASTUPDATED', 'Last Updated'),
         );
         /** @var GridFieldSortableHeader $sortableHeader */
         $sortableHeader = $gridField->getConfig()->getComponentByType('SilverStripe\\Forms\\GridField\\GridFieldSortableHeader');
@@ -1546,13 +1546,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if ($doPublish) {
             $record->publishRecursive();
             $message = _t(
-                'CMSMain.PUBLISHED',
+                'SilverStripe\\CMS\\Controllers\\CMSMain.PUBLISHED',
                 "Published '{title}' successfully.",
                 ['title' => $record->Title]
             );
         } else {
             $message = _t(
-                'CMSMain.SAVED',
+                'SilverStripe\\CMS\\Controllers\\CMSMain.SAVED',
                 "Saved '{title}' successfully.",
                 ['title' => $record->Title]
             );
@@ -1598,7 +1598,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         }
 
         $newItem->Title = _t(
-            'CMSMain.NEWPAGE',
+            'SilverStripe\\CMS\\Controllers\\CMSMain.NEWPAGE',
             "New {pagetype}",
             'followed by a page type title',
             array('pagetype' => singleton($className)->i18n_singular_name())
@@ -1680,7 +1680,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $this->getResponse()->addHeader(
             'X-Status',
             rawurlencode(_t(
-                'CMSMain.RESTORED',
+                'SilverStripe\\CMS\\Controllers\\CMSMain.RESTORED',
                 "Restored '{title}' successfully",
                 'Param %s is a title',
                 array('title' => $record->Title)
@@ -1716,7 +1716,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         $this->getResponse()->addHeader(
             'X-Status',
-            rawurlencode(sprintf(_t('CMSMain.REMOVEDPAGEFROMDRAFT', "Removed '%s' from the draft site"), $record->Title))
+            rawurlencode(sprintf(_t('SilverStripe\\CMS\\Controllers\\CMSMain.REMOVEDPAGEFROMDRAFT', "Removed '%s' from the draft site"), $record->Title))
         );
 
         // Even if the record has been deleted from stage and live, it can be viewed in "archive mode"
@@ -1748,7 +1748,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         $this->getResponse()->addHeader(
             'X-Status',
-            rawurlencode(sprintf(_t('CMSMain.ARCHIVEDPAGE', "Archived page '%s'"), $record->Title))
+            rawurlencode(sprintf(_t('SilverStripe\\CMS\\Controllers\\CMSMain.ARCHIVEDPAGE', "Archived page '%s'"), $record->Title))
         );
 
         // Even if the record has been deleted from stage and live, it can be viewed in "archive mode"
@@ -1779,7 +1779,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         $this->getResponse()->addHeader(
             'X-Status',
-            rawurlencode(_t('CMSMain.REMOVEDPAGE', "Removed '{title}' from the published site", array('title' => $record->Title)))
+            rawurlencode(_t('SilverStripe\\CMS\\Controllers\\CMSMain.REMOVEDPAGE', "Removed '{title}' from the published site", array('title' => $record->Title)))
         );
 
         return $this->getResponseNegotiator()->respond($this->getRequest());
@@ -1819,14 +1819,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if ($version) {
             $record->doRollbackTo($version);
             $message = _t(
-                'CMSMain.ROLLEDBACKVERSIONv2',
+                'SilverStripe\\CMS\\Controllers\\CMSMain.ROLLEDBACKVERSIONv2',
                 "Rolled back to version #%d.",
                 array('version' => $data['Version'])
             );
         } else {
             $record->doRevertToLive();
             $message = _t(
-                'CMSMain.ROLLEDBACKPUBv2',
+                'SilverStripe\\CMS\\Controllers\\CMSMain.ROLLEDBACKPUBv2',
                 "Rolled back to published version."
             );
         }
@@ -1922,7 +1922,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                     break;
                 }
             }
-            $response .= _t('CMSMain.PUBPAGES', "Done: Published {count} pages", array('count' => $count));
+            $response .= _t('SilverStripe\\CMS\\Controllers\\CMSMain.PUBPAGES', "Done: Published {count} pages", array('count' => $count));
         } else {
             $token = SecurityToken::inst();
             $fields = new FieldList();
@@ -1930,16 +1930,16 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             $tokenField = $fields->first();
             $tokenHtml = ($tokenField) ? $tokenField->FieldHolder() : '';
             $publishAllDescription = _t(
-                'CMSMain.PUBALLFUN2',
+                'SilverStripe\\CMS\\Controllers\\CMSMain.PUBALLFUN2',
                 'Pressing this button will do the equivalent of going to every page and pressing "publish".  '
                 . 'It\'s intended to be used after there have been massive edits of the content, such as when '
                 . 'the site was first built.'
             );
-            $response .= '<h1>' . _t('CMSMain.PUBALLFUN', '"Publish All" functionality') . '</h1>
+            $response .= '<h1>' . _t('SilverStripe\\CMS\\Controllers\\CMSMain.PUBALLFUN', '"Publish All" functionality') . '</h1>
 				<p>' . $publishAllDescription . '</p>
 				<form method="post" action="publishall">
 					<input type="submit" name="confirm" value="'
-                    . _t('CMSMain.PUBALLCONFIRM', "Please publish every page in the site, copying content stage to live", 'Confirmation button') .'" />'
+                    . _t('SilverStripe\\CMS\\Controllers\\CMSMain.PUBALLCONFIRM', "Please publish every page in the site, copying content stage to live", 'Confirmation button') .'" />'
                     . $tokenHtml .
                 '</form>';
         }
@@ -1972,7 +1972,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $this->getResponse()->addHeader(
             'X-Status',
             rawurlencode(_t(
-                'CMSMain.RESTORED',
+                'SilverStripe\\CMS\\Controllers\\CMSMain.RESTORED',
                 "Restored '{title}' successfully",
                 array('title' => $restoredPage->Title)
             ))
@@ -2009,7 +2009,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             $this->getResponse()->addHeader(
                 'X-Status',
                 rawurlencode(_t(
-                    'CMSMain.DUPLICATED',
+                    'SilverStripe\\CMS\\Controllers\\CMSMain.DUPLICATED',
                     "Duplicated '{title}' successfully",
                     array('title' => $newPage->Title)
                 ))
@@ -2047,7 +2047,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             $this->getResponse()->addHeader(
                 'X-Status',
                 rawurlencode(_t(
-                    'CMSMain.DUPLICATEDWITHCHILDREN',
+                    'SilverStripe\\CMS\\Controllers\\CMSMain.DUPLICATEDWITHCHILDREN',
                     "Duplicated '{title}' and children successfully",
                     array('title' => $newPage->Title)
                 ))
@@ -2068,10 +2068,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $title = CMSPagesController::menu_title();
         return array(
             "CMS_ACCESS_CMSMain" => array(
-                'name' => _t('CMSMain.ACCESS', "Access to '{title}' section", array('title' => $title)),
-                'category' => _t('Permission.CMS_ACCESS_CATEGORY', 'CMS Access'),
+                'name' => _t('SilverStripe\\CMS\\Controllers\\CMSMain.ACCESS', "Access to '{title}' section", array('title' => $title)),
+                'category' => _t('SilverStripe\\Security\\Permission.CMS_ACCESS_CATEGORY', 'CMS Access'),
                 'help' => _t(
-                    'CMSMain.ACCESS_HELP',
+                    'SilverStripe\\CMS\\Controllers\\CMSMain.ACCESS_HELP',
                     'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
                 ),
                 'sort' => -99 // below "CMS_ACCESS_LeftAndMain", but above everything else

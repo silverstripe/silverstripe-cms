@@ -1,42 +1,8 @@
 ja:
-  AssetAdmin:
-    ADDFILES: 'ファイルを追加'
-    ActionAdd: 'フォルダを追加'
-    AppCategoryArchive: アーカイブ
-    AppCategoryAudio: 音楽
-    AppCategoryDocument: 文書
-    AppCategoryFlash: Flash
-    AppCategoryImage: 画像
-    AppCategoryVideo: 動画
-    BackToFolder: フォルダへ戻る
-    CREATED: 日付
-    CurrentFolderOnly: 'このフォルダに限定しますか?'
-    DetailsView: 詳細
-    FILES: ファイル
-    FILESYSTEMSYNC: 同期ファイル
-    FILESYSTEMSYNCTITLE: 'ファイルに関するCMSデータベースエントリーを更新する。例えば、FTPなどCMS以外を経由してファイルをアップロードした場合に便利です。'
-    FROMTHEINTERNET: インターネットから
-    FROMYOURCOMPUTER: コンピュータから
-    Filetype: ファイルの種類
-    ListView: リスト表示
-    MENUTITLE: ファイル
-    NEWFOLDER: 新しいフォルダ
-    SIZE: サイズ
-    THUMBSDELETED: '{count}個の未使用のサムネイルを削除しました'
-    TreeView: ツリー表示
-    Upload: アップロード
-  AssetAdmin_DeleteBatchAction:
-    TITLE: フォルダを削除
-  AssetAdmin_Tools:
-    FILTER: フィルタ
-  AssetAdmin_left_ss:
-    GO: Go
   AssetTableField:
     BACKLINKCOUNT: 以下で使用される：
     PAGES: ページ
-  BackLink_Button_ss:
-    Back: 戻る
-  BrokenLinksReport:
+  SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: 何でも
     BROKENLINKS: 壊れたリンクのレポート
     CheckSite: サイトをチェックする
@@ -61,19 +27,11 @@ ja:
   CMSAddPageController:
     Title: 'ページを追加'
   CMSBatchActions:
-    ARCHIVE: アーカイブ
-    ARCHIVED_PAGES: '%dページをアーカイブしました'
-    DELETED_DRAFT_PAGES: '%dページを下書きサイトから削除しましたが、%dページの削除に失敗しました。'
-    DELETED_PAGES: '%dページを公開サイトから削除しましたが、%dページの削除に失敗しました。'
-    DELETE_DRAFT_PAGES: 下書きサイトから削除
-    DELETE_PAGES: '公開サイトから削除'
     PUBLISHED_PAGES: '%dページを公開しましたが、%dページの公開に失敗しました。'
     PUBLISH_PAGES: '公開'
     RESTORE: '復元'
     RESTORED_PAGES: '%dページを復元しました'
-  CMSFileAddController:
-    MENUTITLE: ファイル
-  CMSMain:
+  SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: '''{title}'' セクションにアクセス'
     ACCESS_HELP: 'ページツリーとコンテンツを含むセクションの閲覧を許可します。　表示および編集の権限は、ページの特定のドロップダウンだけでなく、独立した"コンテンツの権限"を介して処理することができます。'
     ARCHIVE: アーカイブ
@@ -85,13 +43,8 @@ ja:
     ChoosePageParentMode: 'このページを作成する場所を選択'
     ChoosePageType: ページの種類を選択
     Create: 作成
-    DELETE: ドラフトサイトから削除
-    DELETEFP: '公開サイトから削除'
-    DESCREMOVED: 'そして {count} 派生'
     DUPLICATED: '''{title}'' の複製が完了しました'
     DUPLICATEDWITHCHILDREN: '''{title}'' と子の複製が完了しました'
-    EditTree: ツリーを編集
-    MENUTITLE: ページを編集
     NEWPAGE: '新しい {pagetype}'
     PAGENOTEXISTS: このページは存在しません
     PAGETYPEANYOPT: 何でも
@@ -99,31 +52,22 @@ ja:
     PUBALLFUN: '"すべてを公開" 機能'
     PUBPAGES: '完了: {count}ページを公開しました'
     PageAdded: ページの作成に成功
-    REMOVED: 'この配信サイトから ''{title}''{description} を削除しました'
     REMOVEDPAGE: '''{title}''を公開されているサイトから削除しました'
     REMOVEDPAGEFROMDRAFT: '%sを下書きサイトから削除しました'
     RESTORED: '{title}を復旧しました'
     ROLLBACK: このバージョンへ戻す
     ROLLEDBACKPUBv2: '公開されたバージョンにロールバックされました。'
     ROLLEDBACKVERSIONv2: '#%d. のバージョンにロールバック'
-    SAVE: 保存
     SAVEDRAFT: 下書きを保存
     TabContent: コンテンツ
     TabHistory: 履歴
     TabSettings: 設定
-  CMSMain_left_ss:
-    RESET: リセット
-  CMSPageAddController:
-    MENUTITLE: 'ページを追加'
+  SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 他のページの下に作成
     ParentMode_top: 最上位層
-  CMSPageEditController:
-    MENUTITLE: ページの編集
-  CMSPageHistoryController:
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
     COMPAREMODE: 比較モード（２つを選択）
     COMPAREVERSIONS: バージョンの比較
-    COMPARINGVERSION: '{version1}と{version2}を比較しています。'
-    MENUTITLE: 履歴
     REVERTTOTHISVERSION: このバージョンに戻す
     SHOWUNPUBLISHED: '公開されていないバージョンを表示'
     SHOWVERSION: バージョンを表示
@@ -136,10 +80,7 @@ ja:
     PUBLISHER: パブリッシャー
     UNKNOWN: 不明
     WHEN: いつ
-  CMSPageSettingsController:
-    MENUTITLE: ページの編集
-  CMSPagesController:
-    GalleryView: ギャラリー表示
+  SilverStripe\CMS\Controllers\CMSPagesController:
     ListView: 一覧表示
     MENUTITLE: ページ
     TreeView: ツリー表示
@@ -149,22 +90,18 @@ ja:
     Title: '公開済みページ'
   CMSSearch:
     FILTERDATEFROM: 開始日
-    FILTERDATEHEADING: 日付
     FILTERDATETO: 終了日
     PAGEFILTERDATEHEADING: 最後に編集された
-  CMSSettingsController:
-    MENUTITLE: 設定
-  CMSSiteTreeFilter_Search:
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: '全ページ'
   ContentControl:
     NOTEWONTBESHOWN: '注：このメッセージは、あなたの訪問者に表示されません'
-  ContentController:
+  SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: プレビュー版
     ARCHIVEDSITEFROM: からアーカイブされたサイト
     CMS: CMS
     DRAFT: 下書き
     DRAFTSITE: 下書きサイト
-    DRAFT_SITE_ACCESS_RESTRICTION: '草案かアーカイブされた内容を見るためにはログインしてください。<a href="%s">公開サイトにもどるにはコチラをクリックしてください。</a>'
     Email: Eメール
     INSTALL_SUCCESS: インストールに成功！
     InstallFilesDeleted: インストール関連ファイルは正しく削除されました
@@ -181,7 +118,7 @@ ja:
     StartEditing: '<a href="{link}">the CMS</a> を開いて、あなたのコンテンツの編集を開始することができます。'
     UnableDeleteInstall: 'インストールファイルを削除することができませんでした。次のファイルを手動で削除してください。'
     VIEWPAGEIN: 以下からページを表示する：
-  ErrorPage:
+  SilverStripe\CMS\Model\ErrorPage:
     400: '400 - 不適格な要求です'
     401: '401 - 許可されていません'
     403: '403 - 禁止されています'
@@ -212,97 +149,45 @@ ja:
     DEFAULTERRORPAGETITLE: ページが見つかりません
     DEFAULTSERVERERRORPAGECONTENT: '<p>申し訳ございません。あなたのリクエストを処理中に問題が起きました。</p>'
     DEFAULTSERVERERRORPAGETITLE: サーバーエラー
-    DESCRIPTION: 'それぞれのエラーケースに対してカスタムコンテンツを表示する(例:"ページがありません")'
-    ERRORFILEPROBLEM: '書き込み用のファイル"{filename}"を開く際にエラーが発生しました。　ファイルの権限を確認してください。'
-    PLURALNAME: エラーページ
-    SINGULARNAME: エラーページ
-  File:
-    Title: タイトル
-  Folder:
-    AddFolderButton: 'フォルダの追加'
-    DELETEUNUSEDTHUMBNAILS: '未使用のサムネイルを削除'
-    UNUSEDFILESTITLE: 未使用のファイル
-    UNUSEDTHUMBNAILSTITLE: '未使用のサムネイル'
-    UploadFilesButton: アップロード
-  LeftAndMain:
-    DELETED: 削除済
-    PreviewButton: プレビュー
-    SAVEDUP: 保存済
-    SearchResults: 検索結果
-  Permission:
-    CMS_ACCESS_CATEGORY: CMSへのアクセス
   Permissions:
     CONTENT_CATEGORY: コンテンツに関する権限
     PERMISSIONS_CATEGORY: 役割とアクセス権限
-  RedirectorPage:
-    DESCRIPTION: '別の内部ページにリダイレクト'
+  SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: '転送URLを含むページには、転送先がない状態で設定されています。'
     HEADER: このページをユーザーを変更して他のページにしますか？
     OTHERURL: 他のウェブサイトのURL
-    PLURALNAME: リダイレクトページ
     REDIRECTTO: 変更は
     REDIRECTTOEXTERNAL: 他のウェブサイト
     REDIRECTTOPAGE: 貴方のウェブサイトを表示します
-    SINGULARNAME: リダイレクトページ
     YOURPAGE: 貴方のウェブサイトを表示します
-  ReportAdmin:
-    MENUTITLE: レポート
-    ReportTitle: タイトル
-  ReportAdminForm:
-    FILTERBY: によってフィルター
   SITETREE:
     VIRTUALPAGEDRAFTWARNING: '仮想ページを公開するためにリンクしたページを公開してください'
     VIRTUALPAGEWARNING: 'このページを公開するために、リンク先のページを選択して最初に保存してください'
     VIRTUALPAGEWARNINGSETTINGS: '公開するために、主なコンテンツの分野からリンク先のページを選択してください'
-  SearchForm:
+  SilverStripe\CMS\Search\SearchForm:
     GO: 開始
     SEARCH: 検索
     SearchResults: 検索結果
   SideReport:
     BROKENFILES: 壊れているファイルがあるページ
-    BROKENLINKS: リンク切れのページ
     BROKENREDIRECTORPAGES: リダイレクトしたページが削除されています
     BROKENVIRTUALPAGES: '削除されたページを参照している仮想ページ'
     BrokenLinksGroupTitle: 壊れているリンクのレポート
     ContentGroupTitle: コンテンツのレポート
     EMPTYPAGES: 空のページ
     LAST2WEEKS: '過去２週間以内に編集されたページ'
-    OtherGroupTitle: その他
     ParameterLiveCheckbox: 'ライブ配信のサイトをチェックする'
-    REPEMPTY: '{title}のレポートは空です'
-  SilverStripeNavigator:
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: アーカイブされた
-  SilverStripeNavigatorLink:
-    ShareLink: '共有リンク'
-  SilverStripeNavigatorLinkl:
-    CloseLink: 閉じる
-  SiteConfig:
-    DEFAULTTHEME: (デフォルトのテーマを利用)
-    EDITHEADER: このサイト上でページを編集できる人
-    EDIT_PERMISSION: サイト設定の管理
-    EDIT_PERMISSION_HELP: グローバルアクセスの設定/トップレベルのページのアクセス許可を編集する機能。
-    PLURALNAME: サイトの設定
-    SINGULARNAME: サイトの設定
-    SITENAMEDEFAULT: サイト名
-    SITETAGLINE: サイトのキャッチコピー
-    SITETITLE: サイトタイトル
-    TABACCESS: アクセス権限
-    TABMAIN: メイン
-    TAGLINEDEFAULT: 'サイトのキャッチフレーズをここに入力'
-    THEME: テーマ
-    TOPLEVELCREATE: サイトのルートにおいてページを作成できる人
-    VIEWHEADER: このサイト上でページを閲覧できる人
-  SiteTree:
+  SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 誰でも
     ACCESSHEADER: このページを閲覧できる人
     ACCESSLOGGEDIN: ログインしたユーザ
     ACCESSONLYTHESE: 'この人達だけ (リストから選択してください)'
     ADDEDTODRAFTHELP: 'ページはまだ公開されていません'
     ADDEDTODRAFTSHORT: 下書き
-    ALLOWCOMMENTS: コメントを許可しますか？
     APPEARSVIRTUALPAGES: 'このコンテンツは{title}として仮想ページにおいても表示されます。'
     ARCHIVEDPAGESHORT: アーカイブされました
-    BUTTONARCHIVEDESC: '非公開にし、アーカイブに送られました'
     BUTTONCANCELDRAFT: '草稿の編集内容を取り消します'
     BUTTONCANCELDRAFTDESC: '草稿と前回公開されたページを削除します'
     BUTTONPUBLISHED: '公開された'
@@ -315,10 +200,7 @@ ja:
     DEFAULTABOUTTITLE: 私たちについて
     DEFAULTCONTACTTITLE: 連絡はこちらまで
     DEFAULTHOMETITLE: 'ホーム'
-    DELETEDPAGEHELP: 'このページは今は公開されていません。'
-    DELETEDPAGESHORT: 削除済
     DEPENDENT_NOTE: 以下のページでは、このページに依存します。　これには仮想ページ、リダイレクタページ、コンテンツのリンクを持つページが含まれています。
-    DESCRIPTION: 通常のコンテンツページ
     DependtPageColumnLinkType: リンクの種類
     DependtPageColumnURL: URL
     EDITANYONE: 誰でもCMSにログインが可能
@@ -356,22 +238,17 @@ ja:
     PARENTTYPE_SUBPAGE: 親ページの下にあるサブページ
     PERMISSION_GRANTACCESS_DESCRIPTION: コンテンツへのアクセス権限を編集
     PERMISSION_GRANTACCESS_HELP: '"ページ"セクションでページ固有のアクセス制限の設定を許可します。'
-    PLURALNAME: ページ
     PageTypNotAllowedOnRoot: 'ページタイプ"{type}"は最上位層のページになることができません'
     PageTypeNotAllowed: 'ページタイプ"{type}"はこの親ページの子になることができません'
-    REMOVEDFROMDRAFTHELP: 'ページが公開されていますが、下書きから削除されています'
-    REMOVEDFROMDRAFTSHORT: 下書きから削除されました
     REMOVE_INSTALL_WARNING: '警告: セキュリティ上の理由から、SilverStripeのインストール先にあるinstall.phpを削除してください。'
     REORGANISE_DESCRIPTION: 'サイト構造を変更'
     REORGANISE_HELP: 'サイトツリー内のページをドラッグ・アンド・ドロップで再編集'
     SHOWINMENUS: メニューに表示しますか？
     SHOWINSEARCH: 検索に表示しますか？
-    SINGULARNAME: ページ
     TABBEHAVIOUR: 動作
     TABCONTENT: コンテンツ
     TABDEPENDENT: 依存ページ
     TOPLEVEL: 'サイトの内容 (最上位層)'
-    TOPLEVELCREATORGROUPS: '最上位層のページ作成者'
     URLSegment: URLセグメント
     VIEWERGROUPS: ビューアのグループ
     VIEW_ALL_DESCRIPTION: すべてのページを閲覧
@@ -384,9 +261,7 @@ ja:
     many_many_BackLinkTracking: 'リンク元を追跡'
     many_many_ImageTracking: 画像へのリンクを追跡
     many_many_LinkTracking: リンクを追跡
-  SiteTreeFileExtension:
-    EDIT: 編集
-  SiteTreeURLSegmentField:
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'URLのセグメントを入力または中止をクリックする'
     HelpChars: 特殊文字は自動的に変換されたか取り除かれました
   URLSegmentField:
@@ -396,12 +271,9 @@ ja:
   ViewArchivedEmail_ss:
     CANACCESS: アーカイブされたサイトには次のリンクでアクセス可能です：
     HAVEASKED: あなたは私達のサイトのコンテンツを閲覧するように求められています
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: リンクされたページ
-    DESCRIPTION: 別のページのコンテンツを表示
     EditLink: 編集
     HEADER: これがバーチャルページです
     HEADERWITHLINK: 'これは "{title}" ({link}) からコンテンツをコピーしている仮想ページです'
-    PLURALNAME: 仮想ページ
     PageTypNotAllowedOnRoot: 'この仮想ページに対して元のページの種類{type}はルートレベルに配置されることが許可されていません。'
-    SINGULARNAME: 仮想ページ

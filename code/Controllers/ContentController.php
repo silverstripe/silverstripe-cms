@@ -343,16 +343,16 @@ class ContentController extends Controller
             if ($member) {
                 $firstname = Convert::raw2xml($member->FirstName);
                 $surname = Convert::raw2xml($member->Surname);
-                $logInMessage = _t('ContentController.LOGGEDINAS', 'Logged in as') ." {$firstname} {$surname} - <a href=\"Security/logout\">". _t('ContentController.LOGOUT', 'Log out'). "</a>";
+                $logInMessage = _t('SilverStripe\\CMS\\Controllers\\ContentController.LOGGEDINAS', 'Logged in as') ." {$firstname} {$surname} - <a href=\"Security/logout\">". _t('SilverStripe\\CMS\\Controllers\\ContentController.LOGOUT', 'Log out'). "</a>";
             } else {
                 $logInMessage = sprintf(
                     '%s - <a href="%s">%s</a>',
-                    _t('ContentController.NOTLOGGEDIN', 'Not logged in'),
+                    _t('SilverStripe\\CMS\\Controllers\\ContentController.NOTLOGGEDIN', 'Not logged in'),
                     Security::config()->login_url,
-                    _t('ContentController.LOGIN', 'Login') ."</a>"
+                    _t('SilverStripe\\CMS\\Controllers\\ContentController.LOGIN', 'Login') ."</a>"
                 );
             }
-            $viewPageIn = _t('ContentController.VIEWPAGEIN', 'View Page in:');
+            $viewPageIn = _t('SilverStripe\\CMS\\Controllers\\ContentController.VIEWPAGEIN', 'View Page in:');
 
             return <<<HTML
 				<div id="SilverStripeNavigator">
@@ -378,7 +378,7 @@ HTML;
                 $dateObj = DBField::create_field('Datetime', $date);
                 // $dateObj->setVal($date);
                 return "<div id=\"SilverStripeNavigatorMessage\">" .
-                    _t('ContentController.ARCHIVEDSITEFROM', 'Archived site from') .
+                    _t('SilverStripe\\CMS\\Controllers\\ContentController.ARCHIVEDSITEFROM', 'Archived site from') .
                     "<br>" . $dateObj->Nice() . "</div>";
             }
         }
@@ -481,7 +481,7 @@ HTML;
         ));
 
         return array(
-            "Title" =>  _t("ContentController.INSTALL_SUCCESS", "Installation Successful!"),
+            "Title" =>  _t("SilverStripe\\CMS\\Controllers\\ContentController.INSTALL_SUCCESS", "Installation Successful!"),
             "Content" => $data->renderWith([
                 'type' => 'Includes',
                 'Install_successfullyinstalled'

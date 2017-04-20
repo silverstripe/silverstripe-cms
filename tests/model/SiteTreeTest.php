@@ -836,7 +836,7 @@ class SiteTreeTest extends SapphireTest
     {
         $sitetree = new SiteTree();
         $sitetree->Title = _t(
-            'CMSMain.NEWPAGE',
+            'SilverStripe\\CMS\\Controllers\\CMSMain.NEWPAGE',
             'New {pagetype}',
             array('pagetype' => $sitetree->i18n_singular_name())
         );
@@ -871,7 +871,7 @@ class SiteTreeTest extends SapphireTest
 
         $sitetree = new SiteTree();
         $sitetree->Title = _t(
-            'CMSMain.NEWPAGE',
+            'SilverStripe\\CMS\\Controllers\\CMSMain.NEWPAGE',
             'New {pagetype}',
             array('pagetype' => $sitetree->i18n_singular_name())
         );

@@ -154,22 +154,22 @@ class RedirectorPage extends Page
         $fields->addFieldsToTab(
             'Root.Main',
             array(
-                new HeaderField('RedirectorDescHeader', _t('RedirectorPage.HEADER', "This page will redirect users to another page")),
+                new HeaderField('RedirectorDescHeader', _t('SilverStripe\\CMS\\Model\\RedirectorPage.HEADER', "This page will redirect users to another page")),
                 new OptionsetField(
                     "RedirectionType",
-                    _t('RedirectorPage.REDIRECTTO', "Redirect to"),
+                    _t('SilverStripe\\CMS\\Model\\RedirectorPage.REDIRECTTO', "Redirect to"),
                     array(
-                        "Internal" => _t('RedirectorPage.REDIRECTTOPAGE', "A page on your website"),
-                        "External" => _t('RedirectorPage.REDIRECTTOEXTERNAL', "Another website"),
+                        "Internal" => _t('SilverStripe\\CMS\\Model\\RedirectorPage.REDIRECTTOPAGE', "A page on your website"),
+                        "External" => _t('SilverStripe\\CMS\\Model\\RedirectorPage.REDIRECTTOEXTERNAL', "Another website"),
                     ),
                     "Internal"
                 ),
                 new TreeDropdownField(
                     "LinkToID",
-                    _t('RedirectorPage.YOURPAGE', "Page on your website"),
+                    _t('SilverStripe\\CMS\\Model\\RedirectorPage.YOURPAGE', "Page on your website"),
                     "SilverStripe\\CMS\\Model\\SiteTree"
                 ),
-                new TextField("ExternalURL", _t('RedirectorPage.OTHERURL', "Other website URL"))
+                new TextField("ExternalURL", _t('SilverStripe\\CMS\\Model\\RedirectorPage.OTHERURL', "Other website URL"))
             )
         );
 

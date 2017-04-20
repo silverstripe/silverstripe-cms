@@ -1,11 +1,7 @@
 lv:
-  CMSMain:
-    DELETE: 'Dzēst no melnrakstu vietnes'
-    DELETEFP: 'Dzēst no publicētās vietnes'
-    SAVE: Saglabāt
   ContentControl:
     NOTEWONTBESHOWN: 'Piezīme: šī ziņa nebūs redzama Jūsu apmeklētājiem'
-  ContentController:
+  SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITEFROM: 'Arhivēta vietne no'
     DRAFTSITE: 'Melnrakstu vietne'
     LOGGEDINAS: 'Pieslēdzies kā'
@@ -14,7 +10,7 @@ lv:
     NOTLOGGEDIN: 'Nav pieslēdzies'
     PUBLISHEDSITE: 'Publicētā vietne'
     VIEWPAGEIN: 'Skatīt lapu:'
-  ErrorPage:
+  SilverStripe\CMS\Model\ErrorPage:
     400: '400 - Nekorekts pieprasījums'
     401: '401 - Neautorizēts'
     403: '403 - Aizliegts'
@@ -41,14 +37,10 @@ lv:
     CODE: 'Kļūdas kods'
     DEFAULTERRORPAGECONTENT: '<p>Atvainojiet, šķiet, ka lapa kurai mēģinat piekļūt neeksistē.</p><p>Lūdzu pārliecinieties par pareizrakstību URL, kuram vēlaties piekļūt400.</p>'
     DEFAULTERRORPAGETITLE: 'Lapa nav atrasta'
-  Folder:
-    DELETEUNUSEDTHUMBNAILS: 'Dzēst neizmantotos sīktēlus'
-    UNUSEDFILESTITLE: 'Neizmanotie faili'
-    UNUSEDTHUMBNAILSTITLE: 'Neizmantotie sīktēli'
   Permissions:
     CONTENT_CATEGORY: 'Satura atļaujas'
     PERMISSIONS_CATEGORY: 'Lomu un piekļuves atļaujas'
-  RedirectorPage:
+  SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Novirzītājlapa ir uzstādīta bez norādes uz kurieni novirzīt.'
     HEADER: 'Šī lapa novirzīs lietotājus uz citu lapu '
     OTHERURL: 'Citas tīmekļa vietnes URL'
@@ -56,34 +48,15 @@ lv:
     REDIRECTTOEXTERNAL: 'Cita tīmekļa vietni'
     REDIRECTTOPAGE: 'Tīmekļa vietnes lapu'
     YOURPAGE: 'Tīmekļa vietnes lapa'
-  SearchForm:
+  SilverStripe\CMS\Search\SearchForm:
     GO: Aiziet
     SEARCH: Meklēt
     SearchResults: 'Meklēšanas rezultāti'
-  SilverStripeNavigatorLink:
-    ShareLink: 'Koplietot saiti'
-  SilverStripeNavigatorLinkl:
-    CloseLink: Aizvērt
-  SiteConfig:
-    DEFAULTTHEME: '(Lietot noklusēto tēmu)'
-    EDITHEADER: 'Kurš var labot šīs vietnes lapas?'
-    EDIT_PERMISSION: 'Pārvaldīt vietnes konfigurāciju'
-    EDIT_PERMISSION_HELP: 'Iespēja labot globālus piekļuves uzstādījumus/augstākā līmeņa lapu atļaujas.'
-    SITENAMEDEFAULT: 'Jūsu vietnes nosaukums'
-    SITETAGLINE: 'Vietnes apakšvirsraksts/sauklis'
-    SITETITLE: 'Vietnes nosaukums'
-    TABACCESS: 'Piekļuves tiesības'
-    TABMAIN: Sākums
-    TAGLINEDEFAULT: Apakšvirsraksts/sauklis
-    THEME: Tēma
-    TOPLEVELCREATE: 'Kurš drīkst izveidot lapas vietnes saknes direktorijā?'
-    VIEWHEADER: 'Kurš drīkst aplūkot lapas šajā vietnē?'
-  SiteTree:
+  SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Ikviens
     ACCESSHEADER: 'Kas drīkst aplūkot šo lapu?'
     ACCESSLOGGEDIN: 'Pieslēgušies lietotāji'
     ACCESSONLYTHESE: 'Tikai šie lietotāji (izvēlieties no saraksta)'
-    ALLOWCOMMENTS: 'Atļaut pievienot komentārus šai lapai ?'
     BUTTONCANCELDRAFT: 'Atcelt melnraksta izmaiņas'
     BUTTONCANCELDRAFTDESC: 'Dzēst melnrakstu un atstatīt uz šobrīd publicēto lapu'
     BUTTONUNPUBLISH: Nebpublicēt
@@ -126,7 +99,6 @@ lv:
     TABCONTENT: Saturs
     TABDEPENDENT: 'Atkarīgās lapas'
     TOPLEVEL: 'Vietnes Saturs (Augšējais līmenis)'
-    TOPLEVELCREATORGROUPS: 'Augstākā līmeņa veidotāji'
     URLSegment: 'URL Segments'
     VIEWERGROUPS: 'Skatītāju grupas'
     VIEW_ALL_DESCRIPTION: 'Skatī jebkuru lapu'
@@ -137,6 +109,5 @@ lv:
     many_many_BackLinkTracking: 'Atpakaļsaišu izsekošana'
     many_many_ImageTracking: 'Attēlu izsekošana'
     many_many_LinkTracking: 'Saišu izsekošana'
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Šī ir virtuāla lapa'
-    SINGULARNAME: 'Virtuālās lapa'
