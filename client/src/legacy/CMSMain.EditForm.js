@@ -232,7 +232,7 @@ $.entwine('ss', function($){
 
       holder.next().filter('.listbox')[instant ? 'hide' : 'slideUp'](() => {
         holder.removeClass('field--merge-below');
-      });
+      }).css('overflow','visible'); // jquery adding overflow:hidden in hide, this will break listbox display
     }
   });
 

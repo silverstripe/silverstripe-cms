@@ -60,9 +60,8 @@ this.find("#Form_EditForm_ParentType_subpage").data("parentIdValue",n)}}),t('.cm
 "OnlyTheseUsers"===this.val()&&(this.is(":checked")?this.showList(!0):this.hideList(!0))},onchange:function t(e){"OnlyTheseUsers"===e.target.value?this.showList():this.hideList()},showList:function t(e){
 var n=this.closest(".field")
 n.addClass("field--merge-below"),n.next().filter(".listbox")[e?"show":"slideDown"]()},hideList:function t(e){var n=this.closest(".field")
-n.next().filter(".listbox")[e?"hide":"slideUp"](function(){n.removeClass("field--merge-below")})}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_print").entwine({onclick:function e(n){var a=t(this[0].form).attr("action").replace(/\?.*$/,"")+"/printable/"+t(":input[name=ID]",this[0].form).val()
-
-
+n.next().filter(".listbox")[e?"hide":"slideUp"](function(){n.removeClass("field--merge-below")}).css("overflow","visible")}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_print").entwine({onclick:function e(n){
+var a=t(this[0].form).attr("action").replace(/\?.*$/,"")+"/printable/"+t(":input[name=ID]",this[0].form).val()
 return"http://"!=a.substr(0,7)&&(a=t("base").attr("href")+a),window.open(a,"printable"),!1}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_rollback").entwine({onclick:function t(e){var n=this.parents("form:first"),a=n.find(":input[name=Version]").val(),i=""
 
 
