@@ -25,6 +25,7 @@ const SUPPORTED_BROWSERS = [
 
 module.exports = [
   {
+    name: 'js',
     entry: {
       bundle: `${PATHS.CMS_JS_SRC}/bundles/bundle.js`,
       // See https://github.com/webpack/webpack/issues/300#issuecomment-45313650

@@ -1,4 +1,3 @@
-
 /**
  * File: CMSMain.EditForm.js
  */
@@ -222,17 +221,22 @@ $.entwine('ss', function($){
       }
     },
     showList: function (instant) {
-      let holder = this.closest('.field');
+      const holder = this.closest('.field');
+      const list = holder.next().filter('.listbox');
 
       holder.addClass('field--merge-below');
-      holder.next().filter('.listbox')[instant ? 'show' : 'slideDown']();
+      list[instant ? 'show' : 'slideDown'](() => {
+        // jquery adding overflow:hidden in hide, this will break listbox display
+        list.css('overflow','visible');
+      });
     },
     hideList: function (instant) {
-      let holder = this.closest('.field');
+      const holder = this.closest('.field');
+      const list = holder.next().filter('.listbox');
 
-      holder.next().filter('.listbox')[instant ? 'hide' : 'slideUp'](() => {
+      list[instant ? 'hide' : 'slideUp'](() => {
         holder.removeClass('field--merge-below');
-      });
+     }).css('overflow','hidden');
     }
   });
 
