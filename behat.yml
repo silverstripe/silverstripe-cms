@@ -1,37 +1,27 @@
 default:
-  context:
-    class: SilverStripe\Cms\Test\Behaviour\FeatureContext
+  suites:
+    cms:
+      paths:
+        - %paths.modules.cms%/tests/behat/features
+      contexts:
+        - SilverStripe\Framework\Tests\Behaviour\FeatureContext
+        - SilverStripe\Framework\Tests\Behaviour\CmsFormsContext
+        - SilverStripe\Framework\Tests\Behaviour\CmsUiContext
+        - SilverStripe\BehatExtension\Context\BasicContext
+        - SilverStripe\BehatExtension\Context\EmailContext
+        - SilverStripe\CMS\Tests\Behaviour\LoginContext
+        - SilverStripe\CMS\Tests\Behaviour\ThemeContext
+        - SilverStripe\CMS\Tests\Behaviour\FixtureContext:
+        # Note: double indent for args is intentional
+            - %paths.modules.cms%/tests/behat/features/files/
+
   extensions:
-    SilverStripe\BehatExtension\Extension:
-      framework_path: framework
-      bootstrap_file: "tests/behat/serve-bootstrap.php"
-    Behat\MinkExtension\Extension:
-      # Designed to run using the below
-      # `vendor/bin/serve --bootstrap-file tests/behat/serve-bootstrap.php`
-      # `vendor/bin/selenium-server-standalone -Dwebdriver.firefox.bin="/Applications/Firefox31.app/Contents/MacOS/firefox-bin"`
-      base_url:  http://localhost:8080/
-      files_path: %behat.paths.base%/framework/tests/behat/features/files/
+    SilverStripe\BehatExtension\MinkExtension:
       default_session: selenium2
       javascript_session: selenium2
       selenium2:
         browser: firefox
 
-# Alternative profile, use with "vendor/bin/behat --profile chrome"
-chrome:
-  extensions:
-    Behat\MinkExtension\Extension:
-      selenium2:
-        browser: chrome
-
-# Saucelabs.com sample setup, use with "vendor/bin/behat --profile saucelabs"
-saucelabs:
-  extensions:
-    Behat\MinkExtension\Extension:
-      selenium2:
-        browser: firefox
-        # Add your own username and API token here
-        wd_host: <user>:<api-token>@ondemand.saucelabs.com/wd/hub
-        capabilities:
-          platform: "Windows 2008"
-          browser: "firefox"
-          version: "15"
+    SilverStripe\BehatExtension\Extension:
+      screenshot_path: %behat.paths.base%/tests/behat/artifacts/screenshots
+      bootstrap_file: "tests/behat/serve-bootstrap.php"

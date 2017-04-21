@@ -1,22 +1,16 @@
 <?php
 
-namespace SilverStripe\Cms\Test\Behaviour;
+namespace SilverStripe\CMS\Tests\Behaviour;
 
-use Behat\Behat\Context\ClosuredContextInterface;
-use Behat\Behat\Context\TranslatedContextInterface;
-use Behat\Behat\Context\BehatContext;
-use Behat\Behat\Context\Step;
-use Behat\Behat\Event\StepEvent;
-use Behat\Behat\Exception\PendingException;
-use Behat\Mink\Driver\Selenium2Driver;
-use Behat\Gherkin\Node\PyStringNode;
-use Behat\Gherkin\Node\TableNode;
+use Behat\Behat\Context\Context;
+use SilverStripe\BehatExtension\Context\MainContextAwareTrait;
 
 /**
  * Context used to create fixtures in the SilverStripe ORM.
  */
-class ThemeContext extends BehatContext
+class ThemeContext implements Context
 {
+    use MainContextAwareTrait;
 
     protected $restoreFiles = array();
     protected $restoreDirectories = array();
@@ -25,6 +19,7 @@ class ThemeContext extends BehatContext
      * Create a test theme
      *
      * @Given /^a theme "(?<theme>[^"]+)"/
+     * @param string $theme
      */
     public function stepCreateTheme($theme)
     {
@@ -41,6 +36,9 @@ class ThemeContext extends BehatContext
      * Create a template within a test theme
      *
      * @Given /^a template "(?<template>[^"]+)" in theme "(?<theme>[^"]+)" with content "(?<content>[^"]+)"/
+     * @param string $template
+     * @param string $theme
+     * @param string $content
      */
     public function stepCreateTemplate($template, $theme, $content)
     {

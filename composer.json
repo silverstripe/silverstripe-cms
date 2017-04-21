@@ -26,9 +26,9 @@
   },
   "require-dev": {
     "phpunit/phpunit": "^5.7",
-    "silverstripe/behat-extension": "^2.1.0",
+    "silverstripe/behat-extension": "^3",
     "silverstripe/serve": "dev-master",
-    "silverstripe/testsession": "^2.0.0-alpha3",
+    "silverstripe/testsession": "^3",
     "se/selenium-server-standalone": "2.41.0"
   },
   "extra": {
@@ -41,9 +41,9 @@
   },
   "autoload": {
     "psr-4": {
-      "SilverStripe\\CMS\\": "code/"
-    },
-    "classmap": ["tests/behat/"]
+      "SilverStripe\\CMS\\": "code/",
+      "SilverStripe\\CMS\\Tests\\Behaviour\\": "tests/behat/src/"
+    }
   },
   "minimum-stability": "dev"
 }

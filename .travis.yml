@@ -52,7 +52,7 @@ before_script:
 
 script:
  - "if [ \"$PHPUNIT_TEST\" = \"1\" ]; then vendor/bin/phpunit tests flush=1; fi"
- - "if [ \"$BEHAT_TEST\" = \"1\" ]; then vendor/bin/behat .; fi"
+ - "if [ \"$BEHAT_TEST\" = \"1\" ]; then vendor/bin/behat @cms; fi"
  - "if [ \"$NPM_TEST\" = \"1\" ]; then git diff-files --quiet -w --relative=client; fi"
  - "if [ \"$NPM_TEST\" = \"1\" ]; then git diff -w --no-color --relative=client; fi"
  - "if [ \"$NPM_TEST\" = \"1\" ]; then (nvm use $TRAVIS_NODE_VERSION && npm run lint); fi"
