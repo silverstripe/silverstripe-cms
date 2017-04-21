@@ -1,46 +1,16 @@
 bs:
-  AssetAdmin:
-    ADDFILES: "Dodaj datoteke"
-    ActionAdd: "Kreiraj direktorij"
-    AppCategoryArchive: Arhiva
-    AppCategoryAudio: Audio
-    AppCategoryDocument: Dokument
-    BackToFolder: "Nazad na direktorij"
-    CREATED: Datum
-    CurrentFolderOnly: "Limitiraj na trenutni direktorij?"
-    DetailsView: Detalji
-    FILES: Datoteke
-    FILESYSTEMSYNC: "Sinhroniziraj datoteke"
-    FROMTHEINTERNET: "Sa interneta"
-    FROMYOURCOMPUTER: "Sa Vašeg kompijutera"
-    Filetype: "Tip datoteke"
-    MENUTITLE: Datoteke
-    NEWFOLDER: NoviDirektorij
-    SIZE: Veličina
-    THUMBSDELETED: "{count} nekorištenih je obrisano"
-    Upload: Upload
-  AssetAdmin_DeleteBatchAction:
-    TITLE: "Izbriši direktorije"
-  AssetAdmin_Tools:
-    FILTER: Filter
-  AssetAdmin_left_ss:
-    GO: Idi
   AssetTableField:
     BACKLINKCOUNT: "Korišteno ovdje:"
     PAGES: strana(ice)
-  BackLink_Button_ss:
-    Back: Nazad
   BrokenLinksReport:
     Any: "Bilo koji"
   CMSMain:
     Create: Kreiraj
-    DELETE: "Izbriši sa privremenog nacrta stranice"
     PAGENOTEXISTS: "Ova stranica ne postoji"
     PUBALLCONFIRM: "Molimo, objavite svaku stavku na ovoj stranici, kopiranjem sadržaja na aktivnu stranicu"
     PUBALLFUN: "Funkcija \"Objavi sve\""
     REMOVEDPAGEFROMDRAFT: "Uklonjeno '%s' sa privremenog nacrta stranice"
     ROLLBACK: "Vrati na ovo izdanje"
-    SAVE: Snimi
   ErrorPage:
     400: "400 - Pogrešan zahtjev"
     401: "401 - Neovlašteno"
@@ -68,10 +38,6 @@ bs:
     CODE: "Kod greške"
     DEFAULTERRORPAGECONTENT: "<p>Žao nam je, pokušali ste pristupiti stranici koja ne postoji.</p><p>Molimo provjerite da li ste ispravno ukucali URL kojem ste pokušali pristupiti i pokušajte ponovo.</p>"
     DEFAULTERRORPAGETITLE: "Stranica nije pronađena"
-  Folder:
-    DELETEUNUSEDTHUMBNAILS: "Izbriši neiskorištene sličice"
-    UNUSEDFILESTITLE: "Neiskorištene datoteke"
-    UNUSEDTHUMBNAILSTITLE: "Neiskorištene sličice"
   RedirectorPage:
     HASBEENSETUP: "Stranica za preusmjeravanje je podešena bez odredišta."
     HEADER: "Ova stranica će preusmjeriti korisnike na drugu stranicu"
@@ -91,7 +57,6 @@ bs:
     ACCESSHEADER: "Ko može pregledati ovu stavku na mojoj stranici?"
     ACCESSLOGGEDIN: "Prijavljeni korisnici"
     ACCESSONLYTHESE: "Samo ovi korisnici (izaberite sa popisa)"
-    ALLOWCOMMENTS: "Dozvoli komentare na ovoj stranici?"
     BUTTONCANCELDRAFT: "Poništi promjene privremenog nacrta stranice"
     BUTTONCANCELDRAFTDESC: "Izbrišite Vaš privremeni nacrt stranice i vratite se na trenutno objavljenu stranicu"
     BUTTONUNPUBLISH: "Opozovi objavljivanje"

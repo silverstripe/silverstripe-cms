@@ -1,40 +1,7 @@
 el:
-  AssetAdmin:
-    ADDFILES: "Προσθήκη Αρχείων"
-    ActionAdd: "Προσθήκη φακέλου"
-    AppCategoryArchive: Αρχείο
-    AppCategoryAudio: Ήχος
-    AppCategoryDocument: Έγγραφο
-    AppCategoryImage: Εικόνα
-    AppCategoryVideo: Βίντεο
-    BackToFolder: "Πίσω στο φάκελο"
-    CREATED: Ημερομηνία
-    CurrentFolderOnly: "Μόνο στον τρέχοντα φάκελο;"
-    DetailsView: Λεπτομέρειες
-    FILES: Αρχεία
-    FILESYSTEMSYNC: "Συγχρονισμός αρχείων"
-    FILESYSTEMSYNCTITLE: "Ενημέρωση των καταχωρήσεων της βάσης δεδομένων του CMS για αρχεία τα οποία υπάρχουν στο σύστημα. Χρήσιμο όταν οι νέα αρχεία έχουν φορτωθεί εκτός CMS, π.χ. μέσω FTP."
-    FROMTHEINTERNET: "Από το Internet"
-    FROMYOURCOMPUTER: "Από τον υπολογιστή σας"
-    Filetype: "Τύπος αρχείου"
-    ListView: "Προβολή Λίστας"
-    MENUTITLE: Αρχεία
-    NEWFOLDER: ΝέοςΦάκελος
-    SIZE: Μέγεθος
-    THUMBSDELETED: "{count} αχρησιμοποίητα εικονίδια έχουν διαγραφεί"
-    TreeView: "Προβολή Δέντρου"
-    Upload: Μεταφόρτωση
-  AssetAdmin_DeleteBatchAction:
-    TITLE: "Διαγραφή φακέλων"
-  AssetAdmin_Tools:
-    FILTER: Φίλτρο
-  AssetAdmin_left_ss:
-    GO: Μετάβαση
   AssetTableField:
     BACKLINKCOUNT: "Χρησιμοποιείται σε:"
     PAGES: σελίδες
-  BackLink_Button_ss:
-    Back: Πίσω
   BrokenLinksReport:
     Any: Οποιοδήποτε
     BROKENLINKS: "Αναφορά ανενεργών συνδέσμων"
@@ -59,41 +26,27 @@ el:
   CMSAddPageController:
     Title: "Προσθήκη σελίδας"
   CMSBatchActions:
-    DELETED_PAGES: "Διαγράφηκαν %d σελίδες απο τις δημοσιευμένες, με %d αποτυχίες"
     PUBLISH_PAGES: Δημοσίευση
-  CMSFileAddController:
-    MENUTITLE: Αρχεία
   CMSMain:
     AddNew: "Προσθήκη σελίδας"
     AddNewButton: Προσθήκη
     Cancel: Άκυρο
     ChoosePageType: "Επιλέξτε τύπο σελίδας"
     Create: Δημιουργία
-    DELETEFP: Διαγραφή
-    EditTree: "Επεξεργασία Δένδρου"
-    MENUTITLE: "Επεξεργασία Σελίδας"
     NEWPAGE: "Νέο {pagetype}"
     PAGENOTEXISTS: "Αυτή η σελίδα δεν υπάρχει"
     PAGETYPEANYOPT: Οποιοδήποτε
     PUBALLFUN: "Λειτουργία \"Δημοσίευση Όλων\""
     PUBPAGES: "Ολοκληρώθηκε: Δημοσίευση {count} σελίδων"
     PageAdded: "Η σελίδα δημιουργήθηκε με επιτυχία"
-    SAVE: Αποθήκευση
     TabContent: Περιεχόμενο
     TabHistory: Ιστορικό
     TabSettings: Ρυθμίσεις
-  CMSMain_left_ss:
-    RESET: Επαναφορά
   CMSPageAddController:
-    MENUTITLE: "Προσθήκη σελίδας"
     ParentMode_child: "Κάτω από άλλη σελίδα"
     ParentMode_top: "Επίπεδο κορυφής"
-  CMSPageEditController:
-    MENUTITLE: "Επεξεργασία Σελίδας"
   CMSPageHistoryController:
     COMPAREVERSIONS: "Σύγκριση Εκδόσεων"
-    COMPARINGVERSION: "Σύγκριση Εκδόσεων {version1} και {version2}."
-    MENUTITLE: Ιστορικό
     REVERTTOTHISVERSION: "Επαναφορά σε αυτήν την έκδοση"
     SHOWVERSION: "Προβολή Έκδοσης"
     VIEW: προβολή
@@ -103,8 +56,6 @@ el:
     PUBLISHER: Εκδότης
     UNKNOWN: Άγνωστο
     WHEN: Όταν
-  CMSPageSettingsController:
-    MENUTITLE: "Επεξεργασία Σελίδας"
   CMSPagesController:
     ListView: "Προβολή Λίστας"
     MENUTITLE: Σελίδες
@@ -113,10 +64,7 @@ el:
     FILTER: Φίλτρο
   CMSSearch:
     FILTERDATEFROM: Από
-    FILTERDATEHEADING: Ημερομηνία
     FILTERDATETO: Έως
-  CMSSettingsController:
-    MENUTITLE: Ρυθμίσεις
   CMSSiteTreeFilter_Search:
     Title: "Όλες οι σελίδες"
   ContentController:
@@ -135,32 +83,12 @@ el:
     CODE: "Κωδικός σφάλματος"
     DEFAULTERRORPAGETITLE: "Η σελίδα δεν βρέθηκε"
     DEFAULTSERVERERRORPAGETITLE: "Σφάλμα διακομιστή"
-    SINGULARNAME: "Σελίδα Σφάλματος"
-  Folder:
-    AddFolderButton: "Προσθήκη φακέλου"
-    DELETEUNUSEDTHUMBNAILS: "Διαγραφή αχρησιμοποίητων εικονιδίων"
-    UNUSEDFILESTITLE: "Αχρησιμοποίητα αρχεία"
-    UNUSEDTHUMBNAILSTITLE: "Αχρησιμοποίητα εικονίδια"
-    UploadFilesButton: Μεταφόρτωση
-  LeftAndMain:
-    DELETED: "Έγινε Διαγραφή."
-    PreviewButton: Προεπισκόπιση
-    SAVEDUP: "Έγινε Αποθήκευση."
-    SearchResults: "Αναζήτηση Αποτελεσμάτων"
-  Permission:
-    CMS_ACCESS_CATEGORY: "Πρόσβαση στο CMS"
   Permissions:
     CONTENT_CATEGORY: "Δικαιώματα περιεχόμενου"
     PERMISSIONS_CATEGORY: "Ρόλοι και δικαιώματα"
   RedirectorPage:
-    DESCRIPTION: "Κάνει ανακατεύθυνση σε μια διαφορετική εσωτερική σελίδα"
     HEADER: "Αυτή η σελίδα θα ανακατευθύνει τους χρήστες σε μια άλλη σελίδα"
     REDIRECTTO: "Ανακατεύθυνση σε"
-  ReportAdmin:
-    MENUTITLE: Αναφορές
-    ReportTitle: Τίτλος
-  ReportAdminForm:
-    FILTERBY: "Φίλτρο κατά"
   SearchForm:
     GO: Μετάβαση
     SEARCH: Αναζήτηση
@@ -169,27 +97,13 @@ el:
     BrokenLinksGroupTitle: "Αναφορές ανενεργών συνδέσμων"
     ContentGroupTitle: "Αναφορές περιεχομένου"
     EMPTYPAGES: "Σελίδες χωρίς περιεχόμενο"
-    OtherGroupTitle: Άλλο
   SilverStripeNavigator:
     ARCHIVED: Αρχειοθετημένο
-  SilverStripeNavigatorLinkl:
-    CloseLink: Κλείσιμο
-  SiteConfig:
-    PLURALNAME: "Ρύθμισεις Ιστότοπου"
-    SINGULARNAME: "Ρύθμιση Ιστότοπου"
-    SITENAMEDEFAULT: "Όνομα Ιστότοπου"
-    SITETITLE: "Τίτλος ιστοτόπου"
-    TABACCESS: Πρόσβαση
-    TABMAIN: Βασικό
-    THEME: "Θεματική παραλλαγή"
-    TOPLEVELCREATE: "Ποιος μπορεί να δημιουργεί σελίδες στην ρίζα του ιστοτόπου;"
-    VIEWHEADER: "Ποιος μπορεί να βλέπει σελίδες σε αυτόν τον ιστότοπο;"
   SiteTree:
     ACCESSANYONE: Οποιοσδήποτε
     ACCESSHEADER: "Ποιος μπορεί να δεί αυτή τη σελίδα;"
     ACCESSLOGGEDIN: "Συνδεδεμένοι χρήστες"
     ADDEDTODRAFTHELP: "Η σελίδα δεν έχει δημοσιευθεί ακόμη"
-    ALLOWCOMMENTS: "Να επιτρέπονται σχόλια σε αυτή τη σελίδα;"
     BUTTONPUBLISHED: Δημοσιευμένο
     BUTTONSAVED: Αποθηκεύτηκε
     BUTTONSAVEPUBLISH: "Αποθήκευση & δημοσίευση"
@@ -199,9 +113,6 @@ el:
     DEFAULTABOUTTITLE: "Ποιοί είμαστε"
     DEFAULTCONTACTTITLE: Επικοινωνία
     DEFAULTHOMETITLE: Αρχική
-    DELETEDPAGEHELP: "Η σελίδα δεν είναι πλέον δημοσιευμένη"
-    DELETEDPAGESHORT: "Έγινε Διαγραφή"
-    DESCRIPTION: "Σελίδα γενικού περιεχομένου"
     DependtPageColumnLinkType: "Τύπος συνδέσμου"
     DependtPageColumnURL: "Διεύθυνση URL"
     EDITHEADER: "Ποιος μπορεί να επεξεργαστεί αυτή τη σελίδα;"
@@ -226,11 +137,9 @@ el:
     PAGETYPE: "Τύπος σελίδας"
     PARENTID: "Γονική Σελίδα"
     PARENTTYPE: "Θέση σελίδας"
-    PLURALNAME: Σελίδες
     REORGANISE_DESCRIPTION: "Αλλαγή δομής του ιστοτόπου "
     SHOWINMENUS: "Να φαίνεται στα μενού;"
     SHOWINSEARCH: "Να φαίνεται στην αναζήτηση"
-    SINGULARNAME: Σελίδα
     TABBEHAVIOUR: Συμπεριφορά
     TABCONTENT: "Κυρίως Περιεχόμενο"
     TABDEPENDENT: "Εξαρτώμενες σελίδες "
@@ -249,7 +158,5 @@ el:
     HAVEASKED: "Επιθυμείται να εμφανιστεί το περιεχόμενο του ιστοχώρου σας την "
   VirtualPage:
     CHOOSE: "Συνδεδεμένη σελίδα"
-    DESCRIPTION: "Εμφανίζει το περιεχόμενο μιας άλλης σελίδας"
     EditLink: επεξεργασία
     HEADER: "Αυτή είναι μια εικονική σελίδα"
-    SINGULARNAME: "Εικονική Σελίδα"

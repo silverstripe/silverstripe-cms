@@ -1,41 +1,7 @@
 nb:
-  AssetAdmin:
-    ADDFILES: "Legg til filer"
-    ActionAdd: "Legg til mappe"
-    AppCategoryArchive: Arkiv
-    AppCategoryAudio: Lyd
-    AppCategoryDocument: Dokument
-    AppCategoryFlash: Flash
-    AppCategoryImage: Bilde
-    AppCategoryVideo: Video
-    BackToFolder: "Tilbake til mappe"
-    CREATED: Dato
-    CurrentFolderOnly: "Begrens til nåværende mappe"
-    DetailsView: Detaljer
-    FILES: Filer
-    FILESYSTEMSYNC: "Synkroniser filer"
-    FILESYSTEMSYNCTITLE: "Oppdaterer publiseringssystemets database av filene på nettstedet. Nyttig når nye filer har blitt lastet opp utenfor publiseringssystemet, for eksempel gjennom FTP."
-    FROMTHEINTERNET: "Fra internett"
-    FROMYOURCOMPUTER: "Fra din PC"
-    Filetype: Filtype
-    ListView: Listevisning
-    MENUTITLE: Filer
-    NEWFOLDER: "Ny mappe"
-    SIZE: Størrelse
-    THUMBSDELETED: "{count} ubrukte miniatyrbilder har blitt slettet."
-    TreeView: Trevisning
-    Upload: "Last opp"
-  AssetAdmin_DeleteBatchAction:
-    TITLE: "Slett mapper"
-  AssetAdmin_Tools:
-    FILTER: Filter
-  AssetAdmin_left_ss:
-    GO: Utfør
   AssetTableField:
     BACKLINKCOUNT: "Brukt på:"
     PAGES: side(r)
-  BackLink_Button_ss:
-    Back: Tilbake
   BrokenLinksReport:
     Any: "Hvilken som helst"
     BROKENLINKS: "Rapport over ødelagte lenker"
@@ -61,18 +27,10 @@ nb:
   CMSAddPageController:
     Title: "Legg til side"
   CMSBatchActions:
-    ARCHIVE: Arkiv
-    ARCHIVED_PAGES: "Arkiverte %d sider"
-    DELETED_DRAFT_PAGES: "Slettet %d sider fra utkastnettstedet, %d feilet."
-    DELETED_PAGES: "Slettet %d sider fra det publiserte nettstedet, %d feilet."
-    DELETE_DRAFT_PAGES: "Slett fra utkastnettsted."
-    DELETE_PAGES: "Slett fra publisert side"
     PUBLISHED_PAGES: "Publiserte %d sider, %d feilet."
     PUBLISH_PAGES: Publiser
     RESTORE: Gjenopprett
     RESTORED_PAGES: "Gjenopprettet %d sider"
-  CMSFileAddController:
-    MENUTITLE: Filer
   CMSMain:
     ACCESS: "Adgang til seksjon for '{title}'"
     ACCESS_HELP: "Lar deg se seksjonen som inneholder sidetreet og annet innhold. Tillatelser for å vise og redigere kan behandles gjennom sidespesifikke nedtrekkslister, så vel som  separate \"Innholdstillatelser\"."
@@ -85,13 +43,8 @@ nb:
     ChoosePageParentMode: "Velg hvor du vil opprette siden"
     ChoosePageType: "Velg sidetype"
     Create: Opprett
-    DELETE: "Slett utkast"
-    DELETEFP: Slett
-    DESCREMOVED: "og {count} undersider."
     DUPLICATED: "Vellykket duplisering av \"{title}\"."
     DUPLICATEDWITHCHILDREN: "Vellykket duplisering av \"{title}\" og undersider."
-    EditTree: "Rediger treet"
-    MENUTITLE: "Rediger side"
     NEWPAGE: "Ny {pagetype}"
     PAGENOTEXISTS: "Siden eksisterer ikke"
     PAGETYPEANYOPT: "Hvilken som helst"
@@ -99,7 +52,6 @@ nb:
     PUBALLFUN: "Funksjonalitet for \"Publiser alle\""
     PUBPAGES: "Ferdig: Publiserte {count} sider."
     PageAdded: "Siden ble opprettet."
-    REMOVED: "Slettet \"{title}\" {description} fra publisert nettsted."
     REMOVEDPAGE: "Fjernet \"{title}\" fra det publiserte nettstedet"
     REMOVEDPAGEFROMDRAFT: "Fjernet '%s'  fra utkastnettstedet"
     RESTORED: "Vellykket gjenoppretting av \"{title}\"."
@@ -109,24 +61,16 @@ nb:
     ROLLBACK: "Tilbakestill til denne versjonen"
     ROLLEDBACKPUBv2: "Tilbakestilte til den publiserte versjonen."
     ROLLEDBACKVERSIONv2: "Tilbakestile til versjon #%d."
-    SAVE: Lagre
     SAVEDRAFT: "Lagre utkast"
     TabContent: Innhold
     TabHistory: Historikk
     TabSettings: Innstillinger
-  CMSMain_left_ss:
-    RESET: Tilbakestill
   CMSPageAddController:
-    MENUTITLE: "Legg til side"
     ParentMode_child: "Under en annen side"
     ParentMode_top: Toppnivå
-  CMSPageEditController:
-    MENUTITLE: "Rediger side"
   CMSPageHistoryController:
     COMPAREMODE: "Sammenlign modus (velg to)"
     COMPAREVERSIONS: "Sammenlign versjoner"
-    COMPARINGVERSION: "Sammenligner versjon {version1} og {version2}."
-    MENUTITLE: Historie
     REVERTTOTHISVERSION: "Tilbakestill til denne versjonen"
     SHOWUNPUBLISHED: "Vis upubliserte versjoner"
     SHOWVERSION: "Vis versjon"
@@ -139,10 +83,7 @@ nb:
     PUBLISHER: Utgiver
     UNKNOWN: Ukjent
     WHEN: Når
-  CMSPageSettingsController:
-    MENUTITLE: "Rediger siden"
   CMSPagesController:
-    GalleryView: Gallerivisning
     ListView: Listevisning
     MENUTITLE: Sider
     TreeView: Trevisning
@@ -152,10 +93,7 @@ nb:
     Title: "Publiserte sider"
   CMSSearch:
     FILTERDATEFROM: Fra
-    FILTERDATEHEADING: Dato
     FILTERDATETO: Til
-  CMSSettingsController:
-    MENUTITLE: Innstillinger
   CMSSiteTreeFilter_Search:
     Title: "Alle sider"
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
@@ -168,7 +106,6 @@ nb:
     CMS: Publiseringssystem
     DRAFT: Utkast
     DRAFTSITE: Utkastnettsted
-    DRAFT_SITE_ACCESS_RESTRICTION: "Du må være logget inn i kontrollpanelet for å se utkast eller det arkiverte innholdet. <a href=\"%s\">Klikk her for å gå tilbake til den publiserte versjonen.</a>"
     Email: Epost
     INSTALL_SUCCESS: "Installasjonen var vellykket!"
     InstallFilesDeleted: "Vellykket sletting av installasjonsfilene."
@@ -216,40 +153,17 @@ nb:
     DEFAULTERRORPAGETITLE: "Siden ble ikke funnet"
     DEFAULTSERVERERRORPAGECONTENT: "<p>Beklager, det oppstod et problem under utføringen.</p>"
     DEFAULTSERVERERRORPAGETITLE: Serverfeil
-    DESCRIPTION: "Egendefinert innhold for forskjellige feilsituasjoner (f.eks \"Siden ble ikke funnet\")"
-    ERRORFILEPROBLEM: "Feil ved åpning av filen \"{filename}\". Vennligst sjekk filtillatelser."
-    SINGULARNAME: Feilside
-  Folder:
-    AddFolderButton: "Legg til mappe"
-    DELETEUNUSEDTHUMBNAILS: "Slett miniatyrbilder som ikke er i bruk"
-    UNUSEDFILESTITLE: "Filer ikke i bruk"
-    UNUSEDTHUMBNAILSTITLE: "Miniatyrbilder ikke i bruk"
-    UploadFilesButton: "Last opp"
-  LeftAndMain:
-    DELETED: Slettet.
-    PreviewButton: Forhåndsvisning
-    SAVEDUP: Lagret.
-    SearchResults: Søkeresultater
-  Permission:
-    CMS_ACCESS_CATEGORY: "Tilgang til publiseringssystemet"
   Permissions:
     CONTENT_CATEGORY: Innholdstillatelser
     PERMISSIONS_CATEGORY: "Rolle- og tilgangstillatelser"
   RedirectorPage:
-    DESCRIPTION: "Omdirigerer til en annen intern side"
     HASBEENSETUP: "En omdirigeringssside har blitt satt opp uten et mål å omdirigere til."
     HEADER: "Denne siden vil omdirigere brukere til en annen side"
     OTHERURL: "Nettadresse til et annet nettsted"
     REDIRECTTO: "Omdiriger til"
     REDIRECTTOEXTERNAL: "Et annet nettsted"
     REDIRECTTOPAGE: "En side på nettstedet"
-    SINGULARNAME: Omdirigeringsside
     YOURPAGE: "Side på ditt nettsted"
-  ReportAdmin:
-    MENUTITLE: Rapporter
-    ReportTitle: Tittel
-  ReportAdminForm:
-    FILTERBY: "Filtrer på "
   SITETREE:
     VIRTUALPAGEDRAFTWARNING: "Vennligst publiser den lenkede siden for å publisere den virtuelle siden"
     VIRTUALPAGEWARNING: "Vennligst velg en lenket side og lagre først for å publisere denne siden"
@@ -260,38 +174,15 @@ nb:
     SearchResults: Søkeresultater
   SideReport:
     BROKENFILES: "Sider med ødelagte lenker"
-    BROKENLINKS: "Sider med ødelagte lenker"
     BROKENREDIRECTORPAGES: "Omdirigeringssider som peker til slettede sider"
     BROKENVIRTUALPAGES: "Virtuelle sider som peker til slettede sider"
     BrokenLinksGroupTitle: "Rapport over ødelagte lenker"
     ContentGroupTitle: Innholdsrapporter
     EMPTYPAGES: "Sider uten innhold"
     LAST2WEEKS: "Sider endret i de siste 2 ukene"
-    OtherGroupTitle: Andre
     ParameterLiveCheckbox: "Sjekk aktivt nettsted"
-    REPEMPTY: "Rapporten for {title} er tom."
   SilverStripeNavigator:
     ARCHIVED: Arkivert
-  SilverStripeNavigatorLink:
-    ShareLink: "Del lenke"
-  SilverStripeNavigatorLinkl:
-    CloseLink: Lukk
-  SiteConfig:
-    DEFAULTTHEME: "(Bruk standard utseende)"
-    EDITHEADER: "Hvem kan redigere sider på dette nettstedet?"
-    EDIT_PERMISSION: "Behandle nettstedskonfigurasjon"
-    EDIT_PERMISSION_HELP: "Lar deg endre globale adgangsinnstillinger og tillatelser for toppnivåsider."
-    PLURALNAME: Nettstedskonfigurasjoner
-    SINGULARNAME: Nettstedskonfigurasjon
-    SITENAMEDEFAULT: Nettstedsnavn
-    SITETAGLINE: "Slagord for nettstedet"
-    SITETITLE: "Tittel for nettstedet"
-    TABACCESS: Tilgang
-    TABMAIN: Hovedinnstillinger
-    TAGLINEDEFAULT: "slagordet ditt her"
-    THEME: Utseende
-    TOPLEVELCREATE: "Hvem kan opprette toppnivåsider på dette nettstedet?"
-    VIEWHEADER: "Hvem kan se sider på dette nettstedet?"
   SiteTree:
     ACCESSANYONE: Alle
     ACCESSHEADER: "Hvem kan se denne siden?"
@@ -299,11 +190,9 @@ nb:
     ACCESSONLYTHESE: "Bare disse personene (velg fra listen)"
     ADDEDTODRAFTHELP: "Siden har ikke blitt publisert ennå"
     ADDEDTODRAFTSHORT: Utkast
-    ALLOWCOMMENTS: "Tillat kommentarer på denne siden?"
     APPEARSVIRTUALPAGES: "Dette innholdet opptrer også i {title}-seksjonene til de virtuelle sidene."
     ARCHIVEDPAGEHELP: "Siden er publisert og fjernet fra utkast"
     ARCHIVEDPAGESHORT: Arkivert
-    BUTTONARCHIVEDESC: "Avpubliser og arkiver"
     BUTTONCANCELDRAFT: "Avbryt endringer i utkast"
     BUTTONCANCELDRAFTDESC: "Slett utkast og gå tilbake til publisert versjon av denne siden"
     BUTTONPUBLISHED: Publisert
@@ -317,10 +206,7 @@ nb:
     DEFAULTCONTACTTITLE: "Kontakt oss"
     DEFAULTHOMECONTENT: "<p>Velkommen til SilverStripe! Dette er standard-forsiden. Du kan redigere denne ved å gå til <a href=\"admin/\">publiseringssystemet</a>.</p><p>Du kan nå gå til <a href=\"http://docs.silverstripe.org\">dokumentasjonen for utviklere</a>, eller begynne med <a href=\"http://www.silverstripe.org/learn/lessons\">SilverStripe-leksjoner</a>.</p>"
     DEFAULTHOMETITLE: Hjem
-    DELETEDPAGEHELP: "Siden er ikke lenger publisert."
-    DELETEDPAGESHORT: Slettet
     DEPENDENT_NOTE: "De følgende sidene avhenger av denne siden. Dette inkluderer virtuelle sider, omdirigeringssider og sider med innholdslenker."
-    DESCRIPTION: "Generisk innholdsside"
     DependtPageColumnLinkType: Lenketype
     DependtPageColumnURL: URL
     EDITANYONE: "Alle som kan logge inn til kontrollpanelet"
@@ -358,22 +244,17 @@ nb:
     PARENTTYPE_SUBPAGE: Underside
     PERMISSION_GRANTACCESS_DESCRIPTION: "Kontroller hvilke grupper som har tilgang til eller kan endre sidene"
     PERMISSION_GRANTACCESS_HELP: "Tillat tilordning av restriksjoner på sidenivå i sideseksjonen."
-    PLURALNAME: Sider
     PageTypNotAllowedOnRoot: "Sidetypen \"{type}\" er ikke tillatt på toppnivå"
     PageTypeNotAllowed: "Sidetypen \"{type}\" er ikke tillatt som underside til denne siden."
-    REMOVEDFROMDRAFTHELP: "Siden er publisert, men har blitt slettet fra utkastet."
-    REMOVEDFROMDRAFTSHORT: "Fjernet fra utkast"
     REMOVE_INSTALL_WARNING: "Advarsel: Du bør fjerne installer.php fra SilverStripe-installasjonen av sikkerhetsgrunner."
     REORGANISE_DESCRIPTION: "Endre nettstedets struktur"
     REORGANISE_HELP: "Omorganiser sidene i sidetreet ved hjelp av dra-og-slipp."
     SHOWINMENUS: "Vis i menyer?"
     SHOWINSEARCH: "Vis i søk?"
-    SINGULARNAME: Side
     TABBEHAVIOUR: Adferd
     TABCONTENT: Innhold
     TABDEPENDENT: Undersider
     TOPLEVEL: "Nettstedets innhold (toppnivå)"
-    TOPLEVELCREATORGROUPS: Toppnivåopprettere
     URLSegment: Adressesegment
     VIEWERGROUPS: Publikumsgrupper
     VIEW_ALL_DESCRIPTION: "Se på hvilken som helst side"
@@ -386,9 +267,6 @@ nb:
     many_many_BackLinkTracking: Referansesporing
     many_many_ImageTracking: Bildesporing
     many_many_LinkTracking: Lenkesporing
-  SiteTreeFileExtension:
-    BACKLINK_LIST_DESCRIPTION: "Denne liste viser alle sider med filer lastet opp gjennom en WYSIWYG-editor."
-    EDIT: Rediger
   SiteTreeURLSegmentField:
     EMPTY: "Vennligst skriv inn adressesegment eller trykk avbryt."
     HelpChars: "Spesialtegn blir automatisk konvertert eller fjernet."
@@ -401,9 +279,7 @@ nb:
     HAVEASKED: "Du har bedt om å vise innholdet på nettstedet vårt på "
   VirtualPage:
     CHOOSE: "Lenket side"
-    DESCRIPTION: "Viser innholdet av en annen side"
     EditLink: rediger
     HEADER: "Dette er en virituell side"
     HEADERWITHLINK: "Dette er en virtuell side som kopierer innhold fra \"{title}\" ({link})"
     PageTypNotAllowedOnRoot: "Originaltypen \"{type}\" er ikke tillatt på toppnivået for denne virtuelle siden."
-    SINGULARNAME: "Virtuell side"

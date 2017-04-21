@@ -1,44 +1,10 @@
 eo:
   AssetAdmin:
-    ADDFILES: "Enmeti dosierojn"
-    ActionAdd: "Aldoni dosierujon"
-    AppCategoryArchive: Arkivo
-    AppCategoryAudio: Sono
-    AppCategoryDocument: Dokumento
-    AppCategoryFlash: Flash
-    AppCategoryImage: Bildo
-    AppCategoryVideo: Video
-    BackToFolder: "Retroe al dosierujo"
-    CMSMENU_OLD: "Dosieroj (malnovaj)"
-    CREATED: Dato
-    CurrentFolderOnly: "Limigo de aktuala dosierujo"
-    DetailsView: Detaloj
     ErrorItemPermissionDenied: "Ŝajnas ke vi ne havas la bezonatajn permesojn por aldoni je {ObjectTitle} al kampanjo"
     ErrorNotFound: "Ne eblis trovi tiun {Type}"
-    FILES: Dosieroj
-    FILESYSTEMSYNC: "Sinkronigaj dosieroj"
-    FILESYSTEMSYNCTITLE: "Aktualigi la CMS-datumbazerojn de dosieroj en la dosiera sistemo. Utile kiam novaj dosieroj estas alŝutitaj ekster la CMS, ekzemple per FTP."
-    FROMTHEINTERNET: "De la interreto"
-    FROMYOURCOMPUTER: "El via komputilo"
-    Filetype: "Tipo de dosiero"
-    ListView: "Lista vido"
-    MENUTITLE: Dosieroj
-    NEWFOLDER: "Nova dosierujo"
-    SIZE: Grando
-    THUMBSDELETED: "{count} neuzitaj miniaturoj estas forigitaj"
-    TreeView: "Arba vido"
-    Upload: Alŝuti
-  AssetAdmin_DeleteBatchAction:
-    TITLE: "Forigi dosierujojn"
-  AssetAdmin_Tools:
-    FILTER: Filtrilo
-  AssetAdmin_left_ss:
-    GO: Ek
   AssetTableField:
     BACKLINKCOUNT: "Uzite ĉe:"
     PAGES: paĝo(j)
-  BackLink_Button_ss:
-    Back: Retro
   BrokenLinksReport:
     Any: Ajna
     BROKENLINKS: "Raporto pri rompitaj ligiloj"
@@ -67,20 +33,12 @@ eo:
     RESULT: "Forigis %d paĝojn el malneta kaj publika, kaj sendis ilin al la arĥivo"
     TITLE: "Malpublikigi kaj sendi al arkivo"
   CMSBatchActions:
-    ARCHIVE: Arkivo
-    ARCHIVED_PAGES: "Enarkivigis %d paĝojn"
-    DELETED_DRAFT_PAGES: "Forigis %d paĝojn el malneta retejo, %d malsukcesoj"
-    DELETED_PAGES: "Forigis %d paĝojn el publikigita retejo, %d malsukcesoj"
-    DELETE_DRAFT_PAGES: "Forigi el malneta retejo"
-    DELETE_PAGES: "Forigi el publikigita retejo"
     PUBLISHED_PAGES: "Publikigis %d paĝojn, %d malsukcesojn"
     PUBLISH_PAGES: Publikigi
     RESTORE: Restaŭri
     RESTORED_PAGES: "Restaŭris %d paĝojn"
     UNPUBLISHED_PAGES: "Nepublikigitaj %d paĝoj"
     UNPUBLISH_PAGES: Malpublikigi
-  CMSFileAddController:
-    MENUTITLE: Dosieroj
   CMSMain:
     ACCESS: "Aliro al sekcio '{title}'"
     ACCESS_HELP: "Permesi vidigi la sekcion kiu enhavas paĝarbon kaj enhavon. Vidigaj kaj redaktaj permesoj estas trakteblaj per paĝspecifaj fallistoj, kaj ankaŭ la apartaj \"Enhavaj permesoj\"."
@@ -93,15 +51,10 @@ eo:
     ChoosePageParentMode: "Elekti kie krei ĉi tiun paĝon"
     ChoosePageType: "Elekti tipon de paĝo"
     Create: Krei
-    DELETE: "Forigi la malnetan"
-    DELETEFP: Forigi
-    DESCREMOVED: "kaj {count} posteuloj"
     DUPLICATED: "Sukcese duobligis je '{title}'"
     DUPLICATEDWITHCHILDREN: "Sukcese duobligis je '{title}' kaj idoj"
     EMAIL: Retpoŝto
-    EditTree: "Redakta arbo"
     ListFiltered: "Vidigas rezultojn de serĉo."
-    MENUTITLE: "Redakti paĝon"
     NEWPAGE: "Nova {pagetype}"
     PAGENOTEXISTS: "Ĉi tiu paĝo ne ekzistas"
     PAGES: "Stato de paĝo"
@@ -113,7 +66,6 @@ eo:
     PUBLISHED: "Sukcese publikigis je '{title}'"
     PUBPAGES: "Farite: publikigis {count} paĝojn"
     PageAdded: "Sukcese kreis paĝon"
-    REMOVED: "Forigis je '{title}'{description} el la publikigita retejo"
     REMOVEDPAGE: "Forigis je '{title}' el la publikigita retejo"
     REMOVEDPAGEFROMDRAFT: "Forigis je '%s' el la malneta retejo"
     RESTORE: "Restaŭri malneton"
@@ -124,7 +76,6 @@ eo:
     ROLLBACK: "Malfari al ĉi tiu versio"
     ROLLEDBACKPUBv2: "Malfaris ŝanĝojn ĝis la publikigita versio."
     ROLLEDBACKVERSIONv2: "Malfaris ŝanĝojn ĝis versio #%d."
-    SAVE: Konservi
     SAVED: "Sukcese konservis je '{title}'"
     SAVEDRAFT: "Konservi malneton"
     TabContent: Enhavo
@@ -136,18 +87,12 @@ eo:
   CMSMain_left_ss:
     APPLY_FILTER: Serĉi
     CLEAR_FILTER: Vakigi
-    RESET: Restartigi
   CMSPageAddController:
-    MENUTITLE: "Enmeti paĝon"
     ParentMode_child: "Sub alia paĝo"
     ParentMode_top: "Supra nivelo"
-  CMSPageEditController:
-    MENUTITLE: "Redakti paĝon"
   CMSPageHistoryController:
     COMPAREMODE: "Kompara reĝimo (elektu du)"
     COMPAREVERSIONS: "Kompari versiojn"
-    COMPARINGVERSION: "Komparas versiojn {version1} kaj {version2}."
-    MENUTITLE: Historio
     REVERTTOTHISVERSION: "Malfari al ĉi tiu versio"
     SHOWUNPUBLISHED: "Vidigi nepublikigitajn versiojn"
     SHOWVERSION: "Vidigi version"
@@ -161,10 +106,7 @@ eo:
     PUBLISHER: Publikiginto
     UNKNOWN: Nekonata
     WHEN: Kiam
-  CMSPageSettingsController:
-    MENUTITLE: "Redakti paĝon"
   CMSPagesController:
-    GalleryView: "Galeria vido"
     ListView: "Lista vido"
     MENUTITLE: Paĝoj
     TreeView: "Arba vido"
@@ -176,12 +118,9 @@ eo:
     Title: "Publikigitaj paĝoj"
   CMSSearch:
     FILTERDATEFROM: De
-    FILTERDATEHEADING: Dato
     FILTERDATETO: Al
     FILTERLABELTEXT: Serĉi
     PAGEFILTERDATEHEADING: "Laste redaktita"
-  CMSSettingsController:
-    MENUTITLE: Agordoj
   CMSSiteTreeFilter_ChangedPages:
     Title: "Ŝanĝitaj paĝoj"
   CMSSiteTreeFilter_DeletedPages:
@@ -202,7 +141,6 @@ eo:
     CMS: CMS
     DRAFT: Malneta
     DRAFTSITE: "Malneta retejo"
-    DRAFT_SITE_ACCESS_RESTRICTION: "Vi devas ensaluti per via CMS-pasvorto por vidi la projektan aŭ enarkivigitan enhavon.  <a href=\"%s\">Alklaku ĉi tie por reiri al la publika retejo.</a>"
     Email: Retpoŝto
     INSTALL_SUCCESS: "Instalis sukcese!"
     InstallFilesDeleted: "Sukcesis forigi instalajn dosierojn."
@@ -250,38 +188,16 @@ eo:
     DEFAULTERRORPAGETITLE: "Ne trovis paĝon"
     DEFAULTSERVERERRORPAGECONTENT: "<p>Bedaŭrinde, estis problemo pri via peto.</p>"
     DEFAULTSERVERERRORPAGETITLE: "Servila eraro"
-    DESCRIPTION: "Propra enhavo por diversaj kazoj de eraro (ekzemple, \"Ne trovis paĝon\")"
-    ERRORFILEPROBLEM: "Eraro okazis malfermante dosieron \"{filename}\" por skribi. Bonvolu kontroli permesojn."
-    PLURALNAME: "Prieraraj paĝoj"
-    SINGULARNAME: "Prierara paĝo"
-  File:
-    Title: Titolo
-  Folder:
-    AddFolderButton: "Aldoni dosierujon"
-    DELETEUNUSEDTHUMBNAILS: "Forigi neuzitajn miniaturojn"
-    UNUSEDFILESTITLE: "Neuzitaj dosieroj"
-    UNUSEDTHUMBNAILSTITLE: "Neuzitaj miniaturoj"
-    UploadFilesButton: Alŝuti
-  LeftAndMain:
-    DELETED: Forigita.
-    PreviewButton: Aspekto
-    SAVEDUP: Konservita.
-    SearchResults: "Serĉaj rezultoj"
-  Permission:
-    CMS_ACCESS_CATEGORY: CMS-aliro
   Permissions:
     CONTENT_CATEGORY: Enhavopermesoj
     PERMISSIONS_CATEGORY: "Roloj kaj aliraj permesoj"
   RedirectorPage:
-    DESCRIPTION: "Alidirektas al malsama interna paĝo"
     HASBEENSETUP: "Alidirekta paĝo estis agordita sen ie al kie alidirekti."
     HEADER: "Ĉi tiu paĝo redirektos uzantojn al alia paĝo"
     OTHERURL: "URL de alia retejo"
-    PLURALNAME: "Alidirektaj paĝoj"
     REDIRECTTO: "Alidirekti al"
     REDIRECTTOEXTERNAL: "Alia retejo"
     REDIRECTTOPAGE: "Paĝo en via retejo"
-    SINGULARNAME: "Alidirekta paĝo"
     YOURPAGE: "Paĝo en via retejo"
   RemoveOrphanedPagesTask:
     BUTTONRUN: Ruli
@@ -293,11 +209,6 @@ eo:
     OPERATION_REMOVE: "Forigi elektitajn el ĉiuj stadioj. (AVERTO: detruos ĉiujn elektitajn paĝojn el kaj stadio kaj publika)"
     SELECTALL: "elekti ĉion"
     UNSELECTALL: "malelekti ĉion"
-  ReportAdmin:
-    MENUTITLE: Raportoj
-    ReportTitle: Titolo
-  ReportAdminForm:
-    FILTERBY: "Filtri laŭ"
   SITETREE:
     VIRTUALPAGEDRAFTWARNING: "Bonvolu publikigi la ligitan paĝon por publikigi la virtualan paĝon"
     VIRTUALPAGEWARNING: "Bonvolu elekti ligitan paĝon kaj unue konservi ĝin por publikigi ĉi tiun paĝon"
@@ -308,23 +219,15 @@ eo:
     SearchResults: "Serĉaj rezultoj"
   SideReport:
     BROKENFILES: "Paĝoj kun rompitaj dosieroj"
-    BROKENLINKS: "Paĝoj kun rompitaj ligiloj"
     BROKENREDIRECTORPAGES: "Redirektaj paĝoj indikantaj forigitajn paĝojn"
     BROKENVIRTUALPAGES: "VirtualajPaĝoj indikantaj forigitajn paĝojn"
     BrokenLinksGroupTitle: "Raporto pri rompitaj ligiloj"
     ContentGroupTitle: "Raportoj pri enhavo"
     EMPTYPAGES: "Malplenaj paĝoj"
     LAST2WEEKS: "Paĝoj redaktitaj dum la lastaj 2 semajnoj"
-    OtherGroupTitle: Alia
     ParameterLiveCheckbox: "Kontroli publikan retejon"
-    REPEMPTY: "La raporto {title} estas malplena."
   SilverStripeNavigator:
     ARCHIVED: Enarkivigita
-  SilverStripeNavigatorLink:
-    ShareInstructions: "Por kunhavigi ĉi tiun paĝon, kopiu kaj algluu la suban ligilon."
-    ShareLink: "Komunigi ligilon"
-  SilverStripeNavigatorLinkl:
-    CloseLink: Fermi
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: "Enmeti paĝon"
   SilverStripe\CMS\Controllers\CMSPageEditController:
@@ -345,28 +248,12 @@ eo:
     SINGULARNAME: "Paĝo pri alidirekto"
   SilverStripe\CMS\Model\SiteTree:
     DESCRIPTION: "Paĝo por ĝenerala enhavo"
-    PLURALNAME: "Retejaj arboj"
-    SINGULARNAME: "Reteja arbo"
+    PLURALNAME: Paĝoj
+    SINGULARNAME: Paĝo
   SilverStripe\CMS\Model\VirtualPage:
     DESCRIPTION: "Vidigas la enhavon de alia paĝo"
     PLURALNAME: "Virtualaj paĝoj"
     SINGULARNAME: "Virtuala paĝo"
-  SiteConfig:
-    DEFAULTTHEME: "(Uzi aprioran etoson)"
-    EDITHEADER: "Kiu povas redakti paĝojn en ĉi tiu retejo?"
-    EDIT_PERMISSION: "Agordi konfiguron de retejo"
-    EDIT_PERMISSION_HELP: "Eblo agordi ĉieajn alirajn agordojn/supronivelajn paĝajn permesojn."
-    PLURALNAME: "Retejaj agordaroj"
-    SINGULARNAME: "Agordi retejon"
-    SITENAMEDEFAULT: "Nomo de via retejo"
-    SITETAGLINE: "Slogano de retejo"
-    SITETITLE: "Titolo de retejo"
-    TABACCESS: Aliro
-    TABMAIN: Ĉefa
-    TAGLINEDEFAULT: "jen via slogano"
-    THEME: Etoso
-    TOPLEVELCREATE: "Kiu povas krei paĝojn en la radiko de la retejo?"
-    VIEWHEADER: "Kiu povas vidigi paĝojn en ĉi tiu retejo?"
   SiteTree:
     ACCESSANYONE: Iu
     ACCESSHEADER: "Kiuj povas vidi ĉi tiun paĝon?"
@@ -374,11 +261,9 @@ eo:
     ACCESSONLYTHESE: "Nur ĉi tiuj homoj (elektu el listo)"
     ADDEDTODRAFTHELP: "Paĝo ankoraŭ estas ne publikigita"
     ADDEDTODRAFTSHORT: Malneto
-    ALLOWCOMMENTS: "Permesi rimarkojn en ĉi tiu paĝo?"
     APPEARSVIRTUALPAGES: "Ĉi tiu enhavo ankaŭ aperas en la virtualaj paĝoj en la sekcioj {title}."
     ARCHIVEDPAGEHELP: "Paĝo estas forigita el malneta kaj publika"
     ARCHIVEDPAGESHORT: Enarkivigita
-    BUTTONARCHIVEDESC: "Malpublikigi kaj sendi al arkivo"
     BUTTONCANCELDRAFT: "Nuligi malnetajn ŝanĝojn"
     BUTTONCANCELDRAFTDESC: "Forigi vian malneton kaj reveni al la aktuale eldonita paĝo"
     BUTTONDELETEDESC: "Forigi el malneta aŭ publika, kaj sendi ilin al la arĥivo"
@@ -389,16 +274,13 @@ eo:
     BUTTONUNPUBLISHDESC: "Forigi ĉi tiun paĝon de la publikigita retejo"
     Comments: Komentoj
     Content: Enhavo
-    DEFAULTABOUTCONTENT: "<p>Vi povas plenigi ĉi tiun paĝon per via materialo, aŭ forigi ĝin kaj krei viajn proprajn paĝojn.<br /></p>"
+    DEFAULTABOUTCONTENT: "<p>Vi povas plenigi ĉi tiun paĝon per via materialo, aŭ forigi ĝin kaj krei viajn proprajn paĝojn.</p>"
     DEFAULTABOUTTITLE: "Pri ni"
-    DEFAULTCONTACTCONTENT: "<p>Vi povas plenigi ĉi tiun paĝon per via materialo, aŭ forigi ĝin kaj krei viajn proprajn paĝojn.<br /></p>"
+    DEFAULTCONTACTCONTENT: "<p>Vi povas plenigi ĉi tiun paĝon per via materialo, aŭ forigi ĝin kaj krei viajn proprajn paĝojn.</p>"
     DEFAULTCONTACTTITLE: "Kontakti nin"
     DEFAULTHOMECONTENT: "<p>Bonvenon al SilverStripe! Jen la apriora hejmpaĝo. Vi povas redakti la paĝon malfermante je <a href=\"admin/\">la CMS</a>.</p><p>Vi povas nun aliri la <a href=\"http://docs.silverstripe.org\">dokumentaron por programistoj</a>, aŭ komenci la <a href=\"http://www.silverstripe.org/learn/lessons\">SilverStripe-lecionojn</a>.</p>"
     DEFAULTHOMETITLE: Hejmo
-    DELETEDPAGEHELP: "Paĝo ne plu estas publikigita"
-    DELETEDPAGESHORT: Forigita
     DEPENDENT_NOTE: "La sekvaj paĝoj dependas de ĉi tiu paĝo. Tio inkluzivas virtualajn paĝojn, alidirektajn paĝojn, kaj paĝojn kun enhavaj ligiloj."
-    DESCRIPTION: "Ĝenerala paĝo por enhavo"
     DependtPageColumnLinkType: "Ligila tipo"
     DependtPageColumnURL: URL
     EDITANYONE: "Tiu, kiu povas ensaluti en la CMS"
@@ -440,22 +322,17 @@ eo:
     PARENTTYPE_SUBPAGE: "Subpaĝo sub patra paĝo"
     PERMISSION_GRANTACCESS_DESCRIPTION: "Regi alirajn rajtojn por enhavo"
     PERMISSION_GRANTACCESS_HELP: "Permesi agordi paĝspecifajn alirajn limigojn en la sekcio \"Paĝoj\"."
-    PLURALNAME: Paĝoj
     PageTypNotAllowedOnRoot: "Paĝa tipo \"{type}\" ne estas permesita ĉe la radika nivelo"
     PageTypeNotAllowed: "Paĝa tipo \"{type}\" ne estas permesita kiel ido de ĉi tiu patra paĝo"
-    REMOVEDFROMDRAFTHELP: "Paĝo estas publikigita, sed ĝi estas forigita el malneto"
-    REMOVEDFROMDRAFTSHORT: "Forigita el malneta"
     REMOVE_INSTALL_WARNING: "Averto: vi devus forigi je install.php el ĉi tiu Silverstripe-instalaĵo por sekureco."
     REORGANISE_DESCRIPTION: "Reorganizi la retejan arbon"
     REORGANISE_HELP: "Rearanĝi paĝojn en la reteja arbo per ŝovado."
     SHOWINMENUS: "Vidigi en menuoj?"
     SHOWINSEARCH: "Vidigi en serĉo?"
-    SINGULARNAME: Paĝo
     TABBEHAVIOUR: Konduto
     TABCONTENT: "Ĉefa enhavo"
     TABDEPENDENT: "Dependaj paĝoj"
     TOPLEVEL: "Enhavo de Retejo (Supra Nivelo)"
-    TOPLEVELCREATORGROUPS: "Supranivelaj kreiloj"
     URLSegment: URL-segmento
     VIEWERGROUPS: "Grupoj de vidantoj"
     VIEW_ALL_DESCRIPTION: "Vidigi ajnan paĝon"
@@ -469,8 +346,6 @@ eo:
     many_many_ImageTracking: "Spuri Bildojn"
     many_many_LinkTracking: "Spuri Ligilojn"
   SiteTreeFileExtension:
-    BACKLINK_LIST_DESCRIPTION: "Ĉi tiu listo vidigas ĉiujn paĝojn kie la dosiero estas enmetita per la faksimila redaktilo."
-    EDIT: Redakti
     TITLE_INDEX: "#"
     TITLE_TYPE: Tipo
     TITLE_USED_ON: "Uzita je"
@@ -486,10 +361,7 @@ eo:
     HAVEASKED: "Vi petis vidi la enhavon de nia retejo en"
   VirtualPage:
     CHOOSE: "Ligita paĝo"
-    DESCRIPTION: "Vidigas la enhavon de alia paĝo"
     EditLink: redakti
     HEADER: "Ĉi tiu estas virtuala paĝo"
     HEADERWITHLINK: "Ĉi tiu estas virtuala paĝo kopianta enhavon el \"{title}\" ({link})"
-    PLURALNAME: "Virtualaj paĝoj"
     PageTypNotAllowedOnRoot: "Origina paĝa tipo \"{type}\" ne estas permesita ĉe la root-nivelo por ĉi tiu virtuala paĝo."
-    SINGULARNAME: "Virtuala paĝo"

@@ -1,24 +1,15 @@
 fo:
-  AssetAdmin:
-    NEWFOLDER: "Nýggj skjátta"
-  AssetAdmin_left_ss:
-    GO: Víðari
   CMSMain:
-    DELETE: "Strika frá kladdu heimasíðuni"
-    DELETEFP: "Strika frá tí almennu heimasíðuni"
     PAGENOTEXISTS: "Hendan síðan finst ikki."
     PUBALLCONFIRM: "Vinarliga almenna kunngerð allar síðurnar á heimasíðuni,  avrita innihaldsstøðið til beinleiðis"
     PUBALLFUN: "\"Ger alt alment\" funka"
     REMOVEDPAGEFROMDRAFT: "Strikaði '%s' frá kladdu heimasíðuni"
     ROLLBACK: "Far aftur til hesa útgávuna"
-    SAVE: Goym
   ErrorPage:
     404: "404 - Ikki funnin"
     411: "411 - Longd er kravd"
     CODE: Feilkota
     DEFAULTERRORPAGETITLE: "Síðan var ikki funnin"
-  Folder:
-    UNUSEDFILESTITLE: "Óbrúktar fílur"
   RedirectorPage:
     REDIRECTTO: "Víðarisend til"
     REDIRECTTOEXTERNAL: "Onnur heimasíðu"
@@ -35,7 +26,6 @@ fo:
     ACCESSHEADER: "Hvør skal kunna síggja hesa síðuna?"
     ACCESSLOGGEDIN: "Innritaðir brúkarar"
     ACCESSONLYTHESE: "Bert hesi fólkini (vel fra yvirliti)"
-    ALLOWCOMMENTS: "Loyv viðmerkingum á hesari síðuni?"
     BUTTONCANCELDRAFT: "Avlýs kladdu broytingarnar"
     BUTTONCANCELDRAFTDESC: "Strika tína kladdu, og far aftur til tí nuverandi almennu síðuna"
     BUTTONUNPUBLISH: "Óalmenna kunngerð"

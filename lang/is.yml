@@ -1,8 +1,4 @@
 is:
-  CMSMain:
-    DELETE: "Eyða úr drögum"
-    DELETEFP: "Eyða úr birtum síðum"
-    SAVE: Vista
   ContentController:
     LOGGEDINAS: "Innskráður sem"
     LOGIN: Innskrá
@@ -14,10 +10,6 @@ is:
     CODE: "Villu númer"
     DEFAULTERRORPAGECONTENT: "<p>Afsakið, það virðist vera að þú ert að reyna opna síðu sem er ekki til.</p><p>Vinsamlegast athugaðu hvort að slóðin sé rétt skrifuð og prófaðu aftur</p>"
     DEFAULTERRORPAGETITLE: "Síða fannst ekki"
-  Folder:
-    DELETEUNUSEDTHUMBNAILS: "Eyða ónotuðum smámyndum"
-    UNUSEDFILESTITLE: "Ónotaðar skrár"
-    UNUSEDTHUMBNAILSTITLE: "Ónotaðar smámyndir"
   RedirectorPage:
     HEADER: "Þessi síða mun áframsenda notendur á aðra síðu"
     OTHERURL: "Slóð á aðra heimasíðu"
@@ -29,18 +21,11 @@ is:
     GO: Framkvæma
     SEARCH: Leita
     SearchResults: "Leitar niðurstaða"
-  SilverStripeNavigatorLinkl:
-    CloseLink: Loka
-  SiteConfig:
-    SITENAMEDEFAULT: "Nafn síðunnar"
-    SITETITLE: "Titill síðunnar"
-    THEME: Þema
   SiteTree:
     ACCESSANYONE: Allir
     ACCESSHEADER: "Hver má skoða þessa síðu á heimasíðunni minni?"
     ACCESSLOGGEDIN: "Innskráðir notendur"
     ACCESSONLYTHESE: "Aðeins þetta fólk (veldu úr listanum)"
-    ALLOWCOMMENTS: "Leyfa lesendum að skrifa athugasemdir á þessa síðu?"
     BUTTONCANCELDRAFT: "Hætta við breytingar á drögum"
     BUTTONCANCELDRAFTDESC: "Eyða drögunum þínum og fara aftur ál núverandi bitar síðu"
     BUTTONUNPUBLISH: "Taka úr birtingu"
@@ -70,4 +55,3 @@ is:
     has_one_Parent: "Yfir síða"
   VirtualPage:
     HEADER: "Þetta er sýndarsíða"
-    SINGULARNAME: "Sýndar síða"

@@ -1,16 +1,10 @@
 si:
-  AssetAdmin:
-    NEWFOLDER: "අලත් ගොනුවක්"
-  AssetAdmin_left_ss:
-    GO: යන්න
   CMSMain:
-    DELETE: "කටු අඩවියෙන් මකන්න"
     PAGENOTEXISTS: "මෙම  පිටුව තවදුරටත් නොපවතී"
     PUBALLCONFIRM: "අඩවියේ ඇති සියලු පිටු, වේදිකාවට පිටපත් කර ප්රසිද්ධ කරන්න"
     PUBALLFUN: "සියලු ක්රම වේද ප්රසිද්ධ කරන ලදී"
     REMOVEDPAGEFROMDRAFT: "කටු අඩවියෙන් '%s' මකන ලදී"
     ROLLBACK: "මෙම සංස්රනය ඉවත් කරනන්න"
-    SAVE: "සේවි කරන්න"
   ErrorPage:
     400: "400 - දුර්වල ඉල්ළීමක්"
     401: "401 - බල රහිත"
@@ -25,8 +19,6 @@ si:
     CODE: "වැරදි කේතය"
     DEFAULTERRORPAGECONTENT: "<p>කණගාටුයි,ඔබ නොමැති පිටුවකට යාමට උත්සාහ කරයි. </p><p>ඔබට යාමට අවශ්ය URL එකෙහි අක්ෂර පරීක්ෂා කර නැවත උත්සාහ කරන්න.</p>"
     DEFAULTERRORPAGETITLE: "පිටුව නොලැබුනි"
-  Folder:
-    UNUSEDFILESTITLE: "භාවිතා නොකළ ගොනු"
   RedirectorPage:
     HASBEENSETUP: "යොමු කිරීමේ පිටුව කිසිවකට යොමු නොකරයි"
     HEADER: "මෙම පිටුව පරිබෝඡකයන් වෙනත් යොමු කරයි"
@@ -43,7 +35,6 @@ si:
     ACCESSHEADER: "මෙම පිටුව බැලිය හැකි අය"
     ACCESSLOGGEDIN: "ප්රවිෂ්ටව සිටින පරිශීලකයින්"
     ACCESSONLYTHESE: "මේ අය පමනක් (ලයිස්තුවෙන් තෝරන්න)"
-    ALLOWCOMMENTS: "විචාර කිරීමට හැක"
     BUTTONCANCELDRAFT: "කටු වෙනස් කිරීම් අවලංගු කරන්න"
     BUTTONCANCELDRAFTDESC: "කටු සටහන මකා, දැනට ප්රසිද්ධ පිටුවට ඵකතු කරන්න"
     BUTTONUNPUBLISH: "අප්රසිද්ධ කරන්න"
@@ -73,4 +64,3 @@ si:
     HAVEASKED: "ඹබට අපගේ වෙබ් අඩවිය නිරීක්ශනය කරන ලෙස ඉල්ලා ඇත"
   VirtualPage:
     HEADER: "මෙය මනඃකල්පිත පිටුවකි"
-    SINGULARNAME: "මනඃකල්පිත පිටුව"
