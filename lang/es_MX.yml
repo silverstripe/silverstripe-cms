@@ -1,8 +1,4 @@
 es_MX:
-  AssetAdmin:
-    NEWFOLDER: "Nueva Carpeta"
-  AssetAdmin_left_ss:
-    GO: Ir
   BrokenLinksReport:
     Any: Cualquiera
     BROKENLINKS: "Informe de enlaces rotos"
@@ -25,19 +21,14 @@ es_MX:
     RedirectorNonExistent: "la redirección de página apunta a una página inexistente"
     VirtualPageNonExistent: "la página virtual apunta a una página inexistente"
   CMSBatchActions:
-    DELETE_DRAFT_PAGES: "Eliminar del boceto del sitio"
-    DELETE_PAGES: "Eliminada del sito público"
     PUBLISHED_PAGES: "Se publicaron %d páginas, %d fallos"
     PUBLISH_PAGES: Publicar
   CMSMain:
-    DELETE: "Eliminar del boceto del sitio"
-    DELETEFP: "Eliminar del sitio público"
     PAGENOTEXISTS: "Esta página no existe"
     PUBALLCONFIRM: "Por favor publique todas las páginas del sitio, copiando el contenido del boceto al sitio público"
     PUBALLFUN: "Funcionalidad \"Publicar todo\""
     REMOVEDPAGEFROMDRAFT: "Se ha eliminado '%s' del boceto del sitio"
     ROLLBACK: "Restaurar a ésta versión"
-    SAVE: Guardar
   ContentControl:
     NOTEWONTBESHOWN: "Nota: este mensaje no será mostrado a sus visitantes"
   ContentController:
@@ -76,12 +67,6 @@ es_MX:
     CODE: "Código de Error"
     DEFAULTERRORPAGECONTENT: "<p>Disculpe, parece que está tratando de ingresar a una página que no existe.</p><p>Por favor verifique la URL que desea visitar e inténtelo de nuevo.</p>"
     DEFAULTERRORPAGETITLE: "Página inexistente"
-  Folder:
-    DELETEUNUSEDTHUMBNAILS: "Eliminar  miniaturas de imágenes sin utilizar"
-    UNUSEDFILESTITLE: "Archivo sin utilizar"
-    UNUSEDTHUMBNAILSTITLE: "Miniaturas de imágenes sin utilizar"
-  Permission:
-    CMS_ACCESS_CATEGORY: "Acceder al CMS"
   Permissions:
     CONTENT_CATEGORY: "Permisos de contenido"
     PERMISSIONS_CATEGORY: "Roles y permisos de acceso"
@@ -93,45 +78,24 @@ es_MX:
     REDIRECTTOEXTERNAL: "Otro sitio web"
     REDIRECTTOPAGE: "Una página en tu sitio web"
     YOURPAGE: "Página en tu sitio web"
-  ReportAdminForm:
-    FILTERBY: "Filtrar por"
   SearchForm:
     GO: Ir
     SEARCH: Buscar
     SearchResults: "Resultados de la búsqueda"
   SideReport:
     BROKENFILES: "Páginas con archivos en mal estado"
-    BROKENLINKS: "Páginas con enlaces rotos"
     BROKENREDIRECTORPAGES: "La redirección de página está apuntando a páginas eliminadas"
     BROKENVIRTUALPAGES: "Las páginas virtuales están apuntando a páginas eliminadas"
     BrokenLinksGroupTitle: "Informe de enlaces rotos"
     ContentGroupTitle: "Informe de contenido"
     EMPTYPAGES: "Páginas vacías"
     LAST2WEEKS: "Páginas editadas en las últimas 2 semanas"
-    OtherGroupTitle: Otro
     ParameterLiveCheckbox: "Comprobar el sitio vivo"
-  SilverStripeNavigatorLink:
-    ShareLink: "Compartir enlace"
-  SilverStripeNavigatorLinkl:
-    CloseLink: Cerrar
-  SiteConfig:
-    DEFAULTTHEME: "(Usar tema predeterminado)"
-    EDITHEADER: "¿Quién puede editar páginas en este sitio?"
-    EDIT_PERMISSION: "Administrar la configuración del sitio"
-    SITENAMEDEFAULT: "Nombre de su sitio"
-    SITETAGLINE: "Lema/Slogan del Sitio"
-    SITETITLE: "Título del sitio"
-    TABACCESS: Acceso
-    TABMAIN: Principal
-    TAGLINEDEFAULT: "su lema aquí"
-    THEME: Tema
-    VIEWHEADER: "¿Quién puede ver las páginas en este sitio?"
   SiteTree:
     ACCESSANYONE: Cualquiera
     ACCESSHEADER: "¿Quién puede ver ésta página?"
     ACCESSLOGGEDIN: "Usuarios registrados"
     ACCESSONLYTHESE: "Únicamente estas personas (seleccione de la lista)"
-    ALLOWCOMMENTS: "¿Permitir comentarios en ésta página?"
     BUTTONCANCELDRAFT: "Cancelar cambios al boceto"
     BUTTONCANCELDRAFTDESC: "Eliminar el boceto y regresar a la página publicada actualmente"
     BUTTONUNPUBLISH: "Ocultar al público"
@@ -171,7 +135,6 @@ es_MX:
     TABCONTENT: Contenido
     TABDEPENDENT: "Páginas dependientes"
     TOPLEVEL: "Contenido del sitio (Nivel Superior)"
-    TOPLEVELCREATORGROUPS: "Creadores de nivel superior"
     URLSegment: "Segmento de la URL"
     VIEWERGROUPS: "Ver grupos"
     VIEW_ALL_DESCRIPTION: "Ver cualquier página"
@@ -186,4 +149,3 @@ es_MX:
     HAVEASKED: "Has solicitado ver el contenido de nuestro sitio en"
   VirtualPage:
     HEADER: "Esta es una página virtual"
-    SINGULARNAME: "Página virtual"

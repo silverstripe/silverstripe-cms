@@ -1,13 +1,5 @@
 zh_TW:
-  AssetAdmin:
-    NEWFOLDER: 新資料夾
-  AssetAdmin_left_ss:
-    GO: 執行
-  BackLink_Button_ss:
-    Back: 返回
   CMSBatchActions:
-    DELETE_DRAFT_PAGES: 從草稿網站刪除
-    DELETE_PAGES: 從已出版網站刪除
     PUBLISHED_PAGES: "已出版 %d 網頁, %d 失敗"
     PUBLISH_PAGES: 出版
   CMSMain:
@@ -15,11 +7,9 @@ zh_TW:
     PUBALLCONFIRM: 請發布所有網頁
     PUBALLFUN: "\"全部發布\" 功能"
     ROLLBACK: 回複到這個的版本
-    SAVE: 儲存
   CMSPageHistoryController:
     COMPAREMODE: 比較模式(選擇兩個)
     COMPAREVERSIONS: 比較版本
-    MENUTITLE: 歷史
     REVERTTOTHISVERSION: 回復到此版本
     SHOWUNPUBLISHED: 顯示未出版的版本
     SHOWVERSION: 顯示版本
@@ -30,15 +20,10 @@ zh_TW:
     PUBLISHER: 發行者
     UNKNOWN: 未知的
     WHEN: 何時
-  CMSPageSettingsController:
-    MENUTITLE: 編輯網頁
   CMSPagesController:
-    GalleryView: 圖庫瀏覽
     ListView: 清單瀏覽
     MENUTITLE: 網頁
     TreeView: 樹狀瀏覽
-  CMSSettingsController:
-    MENUTITLE: 設定值
   CMSSiteTreeFilter_Search:
     Title: 所有網頁
   ContentControl:
@@ -49,14 +34,7 @@ zh_TW:
     DEFAULTERRORPAGETITLE: 未發現網頁
     DEFAULTSERVERERRORPAGECONTENT: "<p>抱歉, 處裡您的要求發生一個問題</p>"
     DEFAULTSERVERERRORPAGETITLE: 伺服器錯誤
-  Folder:
-    AddFolderButton: 新增資料夾
-    DELETEUNUSEDTHUMBNAILS: 刪除未使用的縮圖
-    UNUSEDFILESTITLE: 未使用的檔案
-    UNUSEDTHUMBNAILSTITLE: 未使用的縮圖
-    UploadFilesButton: 上傳
   RedirectorPage:
-    DESCRIPTION: 重新導向到一個內部不同的網頁
     HASBEENSETUP: 沒有任何地方被重新導向的一個重新導向網頁已被設定.
     HEADER: 本網頁將重新導向用戶至別的網頁
     OTHERURL: 其他網站網址
@@ -67,16 +45,11 @@ zh_TW:
   SideReport:
     EMPTYPAGES: 空頁
     LAST2WEEKS: 網頁在過去兩個禮拜有被更改過
-  SilverStripeNavigatorLink:
-    ShareLink: 分享鏈結
-  SilverStripeNavigatorLinkl:
-    CloseLink: 關閉
   SiteTree:
     ACCESSANYONE: 所有人
     ACCESSHEADER: 誰可以瀏覽這頁？
     ACCESSLOGGEDIN: 已登入的使用者
     ACCESSONLYTHESE: 只有這些人(從清單選擇)
-    ALLOWCOMMENTS: 允許留言嗎？
     BUTTONCANCELDRAFT: 取消草稿更變
     BUTTONCANCELDRAFTDESC: 刪除草稿並回複到正式發布的版本
     BUTTONUNPUBLISH: 取消發布
@@ -86,7 +59,6 @@ zh_TW:
     DEFAULTABOUTTITLE: 關於我們
     DEFAULTCONTACTTITLE: 連絡我們
     DEFAULTHOMETITLE: 首頁
-    DELETEDPAGESHORT: 已刪除
     DEPENDENT_NOTE: "以下的網頁是依附在本網頁的. 這包含了虛擬網頁, 重新導向網頁, 以及有內容鏈結的網頁."
     DependtPageColumnLinkType: 鏈結類型
     DependtPageColumnURL: 網址
@@ -115,7 +87,6 @@ zh_TW:
     PARENTTYPE_SUBPAGE: 在母頁下面的次頁
     PERMISSION_GRANTACCESS_DESCRIPTION: 管理內容的存取權限
     PERMISSION_GRANTACCESS_HELP: 允許設定在"網頁"部分的網頁-特定存取限制.
-    REMOVEDFROMDRAFTSHORT: 從草稿移除
     REMOVE_INSTALL_WARNING: "警告: 為了安全理由你應該從SilverStripe的安裝中移除install.php."
     REORGANISE_DESCRIPTION: 改變網站結構
     REORGANISE_HELP: "經由 拉&放 於網站樹狀架構內重新安排網頁."
@@ -125,7 +96,6 @@ zh_TW:
     TABCONTENT: 內容
     TABDEPENDENT: 依賴網頁
     TOPLEVEL: "網站內容 (高層)"
-    TOPLEVELCREATORGROUPS: 頂級創作者
     URLSegment: 網址分類
     VIEWERGROUPS: 瀏覽者群組
     VIEW_ALL_DESCRIPTION: 瀏覽任何網頁
@@ -141,6 +111,4 @@ zh_TW:
     CANACCESS: 您可以利用哲格連結到已歸檔站：
     HAVEASKED: 您要瀏覽這一天的網站內容：
   VirtualPage:
-    DESCRIPTION: 顯示其他網頁的內容
     HEADER: 這是一個虛擬網頁
-    SINGULARNAME: 虛擬網頁

@@ -1,41 +1,7 @@
 ar:
-  AssetAdmin:
-    ADDFILES: "أضف الملفات"
-    ActionAdd: "أضف مجلد"
-    AppCategoryArchive: الأرشيف
-    AppCategoryAudio: سمعي
-    AppCategoryDocument: وثيقة
-    AppCategoryFlash: "أخبار خاطفة"
-    AppCategoryImage: صورة
-    AppCategoryVideo: فيديو
-    BackToFolder: "العودة الى المجلد"
-    CREATED: التاريخ
-    CurrentFolderOnly: "الحصر للمجلد الحالي؟"
-    DetailsView: التفاصيل
-    FILES: الملفات
-    FILESYSTEMSYNC: "مزامنة الملفات"
-    FILESYSTEMSYNCTITLE: "تحديث إدخالات الملفات لقاعدة بيانات CMS على نظام الملفات. مفيد عندما يكون قد تم تحميل ملفات جديدة من خارج  نظام إدارة المحتوى CMS، على سبيل المثال من خلال FTP."
-    FROMTHEINTERNET: "من الإنترنت"
-    FROMYOURCOMPUTER: "من حاسوبك"
-    Filetype: "نوع الملف"
-    ListView: "عرض القائمة"
-    MENUTITLE: الملفات
-    NEWFOLDER: "مجلد جديد"
-    SIZE: الحجم
-    THUMBSDELETED: "تم حذف {count} صور مصغرة غير المستخدمة"
-    TreeView: "عرض الشجرة"
-    Upload: تحميل
-  AssetAdmin_DeleteBatchAction:
-    TITLE: "احذف المجلدات"
-  AssetAdmin_Tools:
-    FILTER: مصفاة
-  AssetAdmin_left_ss:
-    GO: اذهب
   AssetTableField:
     BACKLINKCOUNT: "مستعمل في:"
     PAGES: "صفحة (صفحات)"
-  BackLink_Button_ss:
-    Back: الرجوع
   BrokenLinksReport:
     Any: أي
     BROKENLINKS: "تقرير الروابط المكسورة"
@@ -61,14 +27,8 @@ ar:
   CMSAddPageController:
     Title: "أضف صفحة"
   CMSBatchActions:
-    DELETED_DRAFT_PAGES: "حذفت %d صفحات من مسودة الموقع، %d من الإخفاقات"
-    DELETED_PAGES: "قد تم مسح d% من الصفحات من الموقع المنشور, d% من الإخفاقات"
-    DELETE_DRAFT_PAGES: "حذف من مسودة الموقع"
-    DELETE_PAGES: "حذف من الصفحة المنشورة"
     PUBLISHED_PAGES: "%d من الصفحات المنشورة"
     PUBLISH_PAGES: النشر
-  CMSFileAddController:
-    MENUTITLE: ملفات
   CMSMain:
     ACCESS: "النفاذ إلى القسم '{title}'"
     ACCESS_HELP: "سماح بعرض لقسم يحتوي على صفحة الشجرة والمحتوى. يمكن التعامل معها عرض وتحرير الأذونات من خلال القائمه المنسدله للروابط محددة صفحة، فضلا عن فصل \"أذونات المحتوى\"."
@@ -78,13 +38,8 @@ ar:
     ChoosePageParentMode: "اختر مكان إنشاء هذه الصفحة"
     ChoosePageType: "اختر نوع الصفحة"
     Create: خلق
-    DELETE: "حذف من مسودة الموقع"
-    DELETEFP: "حذف من الموقع المنشور"
-    DESCREMOVED: "و {count} منحدر منه"
     DUPLICATED: "تكرار '{title}' بنجاح"
     DUPLICATEDWITHCHILDREN: "تكرار '{title}' والتوابع بنجاح"
-    EditTree: "تعديل الهيكل"
-    MENUTITLE: "حرر الصفحة"
     NEWPAGE: "{pagetype} جديد"
     PAGENOTEXISTS: "هذه الصفحة غير موجودة"
     PAGETYPEANYOPT: أي
@@ -92,31 +47,22 @@ ar:
     PUBALLFUN: "\"نشر الجميع\"خاصية "
     PUBPAGES: "تمّ: نشر {count} صفحات"
     PageAdded: "تم إنشاء الصفحة بنجاح"
-    REMOVED: "حذف '{title}'{description} من الموقع الحي"
     REMOVEDPAGE: "أزيل '{title}' من الموقع المنشور"
     REMOVEDPAGEFROMDRAFT: "'%s' محذوف من مسودة الموقع"
     RESTORED: "استعادة '{title}' بنجاح"
     ROLLBACK: "عودة إلى هذا الإصدار"
     ROLLEDBACKPUBv2: "التراجع إلى النسخة المنشورة."
     ROLLEDBACKVERSIONv2: "التراجع إلى النسخة #%d."
-    SAVE: حفظ
     SAVEDRAFT: "احفظ المسودة"
     TabContent: المحتوى
     TabHistory: السوابق
     TabSettings: الإعدادات
-  CMSMain_left_ss:
-    RESET: "إعادة الوضع الأصلي"
   CMSPageAddController:
-    MENUTITLE: "أضف صفحة"
     ParentMode_child: "تحت صفحة أخرى"
     ParentMode_top: "أعلى مستوى"
-  CMSPageEditController:
-    MENUTITLE: "تحرير الصفحة"
   CMSPageHistoryController:
     COMPAREMODE: "وضع المقارنة (حدد اثنين)"
     COMPAREVERSIONS: "قارن الإصدارات"
-    COMPARINGVERSION: "مقارنة الإصدارين {version1} و {version2}."
-    MENUTITLE: السجل
     REVERTTOTHISVERSION: "العودة إلى هذا الإصدار"
     SHOWUNPUBLISHED: "عرض الإصدارات الغير منشورة"
     SHOWVERSION: "اعرض الإصدار"
@@ -129,10 +75,7 @@ ar:
     PUBLISHER: الناشر
     UNKNOWN: "غير معروف"
     WHEN: متى
-  CMSPageSettingsController:
-    MENUTITLE: "تحرير صفحة"
   CMSPagesController:
-    GalleryView: "مشاهدة المعرض"
     ListView: "عرض القائمة"
     MENUTITLE: الصفحات
     TreeView: "عرض الشجرة"
@@ -140,10 +83,7 @@ ar:
     FILTER: مصفاة
   CMSSearch:
     FILTERDATEFROM: من
-    FILTERDATEHEADING: موعد
     FILTERDATETO: إلى
-  CMSSettingsController:
-    MENUTITLE: الإعدادات
   CMSSiteTreeFilter_Search:
     Title: "كل الصفحات"
   ContentControl:
@@ -154,7 +94,6 @@ ar:
     CMS: "نظام إدارة المحتوى"
     DRAFT: المسودّة
     DRAFTSITE: "موقع في المسودة"
-    DRAFT_SITE_ACCESS_RESTRICTION: "يجب عليك تسجيل الدخول باستخدام كلمة مرور CMS الخاصة بك من أجل عرض مشاريع المحتوى أو المحتوى المؤرشف. <a href=\"%s\">انقر هنا للرجوع إلى الموقع المنشور.</a>"
     Email: "البريد الإلكتروني"
     INSTALL_SUCCESS: "تم التثبيت بنجاح!"
     InstallFilesDeleted: "تم حذف ملفات التثبيت بنجاح."
@@ -200,40 +139,17 @@ ar:
     DEFAULTERRORPAGETITLE: "الصفحة غير موجودة"
     DEFAULTSERVERERRORPAGECONTENT: "<p>عذرا، كانت هناك مشكلة في التعامل مع طلبك.</p>"
     DEFAULTSERVERERRORPAGETITLE: "خطأ في الملقم"
-    DESCRIPTION: "محتوى مخصص للحالات المختلفة من الأخطاء (على سبيل المثال \"الصفحة غير موجودة\")"
-    ERRORFILEPROBLEM: "خطأ في فتح الملف \"{filename}\" للكتابة. يرجى التحقق من تراخيص ملف."
-    SINGULARNAME: "صفحة الأخطاء"
-  Folder:
-    AddFolderButton: "أضف مجلد"
-    DELETEUNUSEDTHUMBNAILS: "حذف المصغرات غير المستخدمة"
-    UNUSEDFILESTITLE: "الملفات غير المستخدمة"
-    UNUSEDTHUMBNAILSTITLE: "المصغرات غير المستخدمة"
-    UploadFilesButton: تحميل
-  LeftAndMain:
-    DELETED: حذفت.
-    PreviewButton: "عرض مسبق"
-    SAVEDUP: "تم الحفظ."
-    SearchResults: "نتائج البحث"
-  Permission:
-    CMS_ACCESS_CATEGORY: "الوصل لنظام إدارة المحتوى"
   Permissions:
     CONTENT_CATEGORY: "تصاريح المحتوى"
     PERMISSIONS_CATEGORY: "تصريح الدخول والقواعد"
   RedirectorPage:
-    DESCRIPTION: "إعادة التوجيه إلى صفحة داخلية مختلفة"
     HASBEENSETUP: "صفحة التحويل تم تهيئتها بدون تحديد وجهة التحويل"
     HEADER: "هذه الصفحة سوف تقوم بتحويل الأعضاء إلى صفحة أخرى"
     OTHERURL: "رابط موقع آخر"
     REDIRECTTO: "تحويل إلى"
     REDIRECTTOEXTERNAL: "موقع آخر"
     REDIRECTTOPAGE: "صفحة في موقعك الشخصي"
-    SINGULARNAME: "معيد توجيه الصفحة"
     YOURPAGE: "صفحة في موقعك الشخصي"
-  ReportAdmin:
-    MENUTITLE: التقارير
-    ReportTitle: العنوان
-  ReportAdminForm:
-    FILTERBY: "فرز عبر"
   SITETREE:
     VIRTUALPAGEDRAFTWARNING: "يرجى نشر الصفحة المرتبطة من أجل نشر الصفحة الافتراضية"
     VIRTUALPAGEWARNING: "يرجى اختيار صفحة مرتبطة وقم بالحفظ أولا من أجل نشر هذه الصفحة"
@@ -244,38 +160,15 @@ ar:
     SearchResults: "نتائج البحث"
   SideReport:
     BROKENFILES: "صفحات مع ملفات مكسورة"
-    BROKENLINKS: "صفحات مع روباط مكسورة"
     BROKENREDIRECTORPAGES: "معيد التوجيه الصفحات يشير إلى صفحات محذوفة"
     BROKENVIRTUALPAGES: "الصفحات الظاهرية تشير إالى صفحات محذوفة"
     BrokenLinksGroupTitle: "تقارير الروابط المكسورة"
     ContentGroupTitle: "تقارير المحتوى"
     EMPTYPAGES: "صفحات فارغة"
     LAST2WEEKS: "صفحات تم تعديلها في آخر أسبوعين"
-    OtherGroupTitle: أخرى
     ParameterLiveCheckbox: "التأكد من حيوية الموقع"
-    REPEMPTY: "التقرير {title} فارغ."
   SilverStripeNavigator:
     ARCHIVED: المؤرشف
-  SilverStripeNavigatorLink:
-    ShareLink: "رابط مشترك"
-  SilverStripeNavigatorLinkl:
-    CloseLink: إغلاق
-  SiteConfig:
-    DEFAULTTHEME: "( استخدام الثيم الافتراضي )"
-    EDITHEADER: "من يستطيع تحرير الصفحات الموجودة على هذا الموقع؟"
-    EDIT_PERMISSION: "إدارة إعدادات الموقع"
-    EDIT_PERMISSION_HELP: "القدرة على تحرير إعدادات الوصول العالمي / أذونات صفحة المستوى الأعلى."
-    PLURALNAME: "تكوينات الموقع"
-    SINGULARNAME: "تهيئة الموقع"
-    SITENAMEDEFAULT: "اسم عنوان موقعك"
-    SITETAGLINE: "علامة / شعار الموقع"
-    SITETITLE: "عنوان الموقع"
-    TABACCESS: الوصول
-    TABMAIN: الرئيسي
-    TAGLINEDEFAULT: "علامتك هنا"
-    THEME: الثيم
-    TOPLEVELCREATE: "من يستطيع إنشاء صفحات في جذر الموقع؟"
-    VIEWHEADER: "من يستطيع عرض الصفحات على هذا الموقع؟..."
   SiteTree:
     ACCESSANYONE: الجميع
     ACCESSHEADER: "من يستطيع مشاهدة هذه الصفحة ؟"
@@ -283,7 +176,6 @@ ar:
     ACCESSONLYTHESE: "فقط هؤلاء الأشخاص ( اختر من القائمة)"
     ADDEDTODRAFTHELP: "لم تنشر الصفحة بعد"
     ADDEDTODRAFTSHORT: المسودة
-    ALLOWCOMMENTS: "السماح بالتعليقات في هذه الصفحة ؟"
     APPEARSVIRTUALPAGES: "يظهر هذا المحتوى أيضا على الصفحات الافتراضية في أقسام {title}."
     BUTTONCANCELDRAFT: "إلغاء التغييرات في المسودة"
     BUTTONCANCELDRAFTDESC: "إلغاء المسودة و العودة إلى الموقع المنشور حالياً"
@@ -297,10 +189,7 @@ ar:
     DEFAULTABOUTTITLE: حول
     DEFAULTCONTACTTITLE: "اتصل بنا"
     DEFAULTHOMETITLE: الرئيسة
-    DELETEDPAGEHELP: "لم تعد الصفحة المنشورة"
-    DELETEDPAGESHORT: المحذوف
     DEPENDENT_NOTE: "الصفحات التالية تعتمد على هذه الصفحة. وهذا يشمل صفحات الظاهري، وصفحات معيد التوجيه، والصفحات التي تحتوي على روابط المحتوى."
-    DESCRIPTION: "صفحة المحتوى العام"
     DependtPageColumnLinkType: "نوع الرابط"
     DependtPageColumnURL: رابط
     EDITANYONE: "أي شخص "
@@ -338,22 +227,17 @@ ar:
     PARENTTYPE_SUBPAGE: "صفحة فرعية أسفل صفحة رئيسية (اختر أدناه)"
     PERMISSION_GRANTACCESS_DESCRIPTION: "التحكم في المجموعات التي لها صلاحية الدخول أو التعديل على صفحات محددة"
     PERMISSION_GRANTACCESS_HELP: "السماح بضع القيود على الوصول صفحة محددة في قسم \"الصفحات\"."
-    PLURALNAME: الصفحات
     PageTypNotAllowedOnRoot: "نوع الصفحة \"{type}\" غير مسموح به على مستوى الجذر"
     PageTypeNotAllowed: "نوع الصفحة  \"{type}\" لا يسمح به كتابع لهذه الصفحة الرئيسية"
-    REMOVEDFROMDRAFTHELP: "تم نشر الصفحة، ولكن تم حذفها من المسودة"
-    REMOVEDFROMDRAFTSHORT: "حذف من المسودّة"
     REMOVE_INSTALL_WARNING: "تحذير: يجب إزالة install.php من هذا التثبيت SilverStripe وذلك لأسباب أمنية."
     REORGANISE_DESCRIPTION: "Can reorganise the site tree"
     REORGANISE_HELP: "إعادة ترتيب الصفحات في  شجرة الموقع من خلال السحب والإسقاط."
     SHOWINMENUS: "عرض في قوائم ؟"
     SHOWINSEARCH: "عرض في البحث ؟"
-    SINGULARNAME: الصفحة
     TABBEHAVIOUR: الشسلوك
     TABCONTENT: المحتوى
     TABDEPENDENT: "الصفحات المعتدة"
     TOPLEVEL: "محتوى الموقع ( مستوى أعلى )"
-    TOPLEVELCREATORGROUPS: "منشيء المستوى الأعلى"
     URLSegment: "جزء رابط الموقع"
     VIEWERGROUPS: "مجموعات الزوار"
     VIEW_ALL_DESCRIPTION: "Can view any page on the site, bypassing page specific security"
@@ -378,9 +262,7 @@ ar:
     HAVEASKED: "تم طلب مشاهدة محتوى الموقع في"
   VirtualPage:
     CHOOSE: "الصفحة المرتبطة"
-    DESCRIPTION: "يعرض محتوى صفحة أخرى"
     EditLink: حرر
     HEADER: "هذه صفحة افتراضية"
     HEADERWITHLINK: "هذه صفحة افتراضية تنسخ المحتوى من \"{title}\" ({link})"
     PageTypNotAllowedOnRoot: "نوع الصفحة الأصلية \"{type}\"غير مسموح به على مستوى الجذر لهذه الصفحة الافتراضية"
-    SINGULARNAME: "الصفحة الافتراضية"
