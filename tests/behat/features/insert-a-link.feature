@@ -1,4 +1,4 @@
-@assets
+@assets @retry
 Feature: Insert links into a page
 As a cms author
 I want to insert a link into my content
@@ -30,7 +30,6 @@ So that I can link to a external website or a page on my site
     And I press the "Insert Link" HTML field button
     And I select the "Link to a page on this site" radio button
     And I fill in the "internal" dropdown with "Details"
-    And I wait for 1 second
     And I select "youranchor" from "Form_EditorToolbarLinkForm_AnchorSelector"
     And I press the "Insert" button
     Then the "Content" HTML field should contain "<a href="[sitetree_link,id=3]#youranchor">awesome</a>"
