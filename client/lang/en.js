@@ -49,5 +49,5 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "URLSEGMENT.OK": "OK",
     "URLSEGMENT.UpdateURL": "Update URL",
     "WidgetAreaEditor.TOOMANY": "Sorry, you have reached the maximum number of widgets in this area"
-});
+  });
 }

@@ -13,7 +13,7 @@ $.entwine('ss', function($){
 	$('.cms-edit-form :input[name=ClassName]').entwine({
 		// Function: onchange
 		onchange: function() {
-			alert(i18n._t('CMSMAIN.ALERTCLASSNAME'));
+			alert(i18n._t('CMS.ALERTCLASSNAME'));
 		}
 	});
 
@@ -123,7 +123,7 @@ $.entwine('ss', function($){
 			// update button
 			updateURLFromTitle = $('<button />', {
 				'class': 'update ss-ui-button-small',
-				'text': i18n._t('URLSEGMENT.UpdateURL'),
+				'text': i18n._t('CMS.UpdateURL'),
 				'type': 'button',
 				'click': function(e) {
 					e.preventDefault();
@@ -282,11 +282,11 @@ $.entwine('ss', function($){
 			var form = this.parents('form:first'), version = form.find(':input[name=Version]').val(), message = '';
 			if(version) {
 				message = i18n.sprintf(
-					i18n._t('CMSMain.RollbackToVersion'),
+					i18n._t('CMS.RollbackToVersion'),
 					version
 				);
 			} else {
-				message = i18n._t('CMSMain.ConfirmRestoreFromLive');
+				message = i18n._t('CMS.ConfirmRestoreFromLive');
 			}
 			if(confirm(message)) {
 				return this._super(e);
@@ -342,7 +342,7 @@ $.entwine('ss', function($){
 				message = '',
 				toRoot = this.data('toRoot');
 			message = i18n.sprintf(
-				i18n._t(toRoot ? 'CMSMain.RestoreToRoot' : 'CMSMain.Restore'),
+				i18n._t(toRoot ? 'CMS.RestoreToRoot' : 'CMS.Restore'),
 				version
 			);
 			if(confirm(message)) {
@@ -368,7 +368,7 @@ $.entwine('ss', function($){
 		onclick: function(e) {
 			var form = this.parents('form:first'), version = form.find(':input[name=Version]').val(), message = '';
 			message = i18n.sprintf(
-				i18n._t('CMSMain.Unpublish'),
+				i18n._t('CMS.Unpublish'),
 				version
 			);
 			if(confirm(message)) {

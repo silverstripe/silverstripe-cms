@@ -43,8 +43,8 @@ $.entwine('ss.tree', function($){
 			var menuitems = {
 						edit: {
 							'label': (node.hasClass('edit-disabled')) ?
-								 i18n._t('Tree.EditPage', 'Edit page', 100, 'Used in the context menu when right-clicking on a page node in the CMS tree')
-								 : i18n._t('Tree.ViewPage', 'View page', 100, 'Used in the context menu when right-clicking on a page node in the CMS tree'),
+								 i18n._t('CMS.EditPage', 'Edit page', 100, 'Used in the context menu when right-clicking on a page node in the CMS tree')
+								 : i18n._t('CMS.ViewPage', 'View page', 100, 'Used in the context menu when right-clicking on a page node in the CMS tree'),
 							'action': function(obj) {
 								$('.cms-container').entwine('.ss').loadPanel(i18n.sprintf(
 									self.data('urlEditpage'), obj.data('id')
@@ -56,7 +56,7 @@ $.entwine('ss.tree', function($){
 					// Add "show as list"
 					if(!node.hasClass('nochildren')) {
 						menuitems['showaslist'] = {
-							'label': i18n._t('Tree.ShowAsList'),
+							'label': i18n._t('CMS.ShowAsList'),
 							'action': function(obj) {
 								$('.cms-container').entwine('.ss').loadPanel(
 									self.data('urlListview') + '&ParentID=' + obj.data('id'),
@@ -94,17 +94,17 @@ $.entwine('ss.tree', function($){
 
 					if(hasAllowedChildren) {
 						menuitems['addsubpage'] = {
-								'label': i18n._t('Tree.AddSubPage', 'Add page under this page', 100, 'Used in the context menu when right-clicking on a page node in the CMS tree'),
+								'label': i18n._t('CMS.AddSubPage', 'Add page under this page', 100, 'Used in the context menu when right-clicking on a page node in the CMS tree'),
 								'submenu': menuAllowedChildren
 							};
 					}
 
 					if (!node.hasClass('edit-disabled')) {
 						menuitems['duplicate'] = {
-							'label':   i18n._t('Tree.Duplicate'),
+							'label':   i18n._t('CMS.Duplicate'),
 							'submenu': [
 								{
-									'label':  i18n._t('Tree.ThisPageOnly'),
+									'label':  i18n._t('CMS.ThisPageOnly'),
 									'action': function (obj) {
 										$('.cms-container').entwine('.ss').loadPanel(
 											$.path.addSearchParams(
@@ -114,7 +114,7 @@ $.entwine('ss.tree', function($){
 										);
 									}
 								}, {
-									'label':  i18n._t('Tree.ThisPageAndSubpages'),
+									'label':  i18n._t('CMS.ThisPageAndSubpages'),
 									'action': function (obj) {
 										$('.cms-container').entwine('.ss').loadPanel(
 											$.path.addSearchParams(
