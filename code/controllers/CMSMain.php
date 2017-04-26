@@ -627,23 +627,25 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 
 	/**
-	 * @param int $id
+	 * @param int|SiteTree $idOrRecord ID of record or record instance
 	 * @param FieldList $fields
 	 * @return CMSForm
 	 */
-	public function getEditForm($id = null, $fields = null) {
-
-		if(!$id) $id = $this->currentPageID();
-		$form = parent::getEditForm($id);
+	public function getEditForm($idOrRecord = null, $fields = null) {
+		if(!$idOrRecord) {
+	 		$idOrRecord = $this->currentPageID();
+		}
+		$form = parent::getEditForm($idOrRecord);
 
 		// TODO Duplicate record fetching (see parent implementation)
-		$record = $this->getRecord($id);
+		$record = $this->getRecord($idOrRecord);
 		if($record && !$record->canView()) return Security::permissionFailure($this);
 
 		if(!$fields) $fields = $form->Fields();
 		$actions = $form->Actions();
 
 		if($record) {
+			$id = $record->ID;
 			$deletedFromStage = $record->getIsDeletedFromStage();
 			$deleteFromLive = !$record->getExistsOnLive();
 
@@ -733,7 +735,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 			$this->extend('updateEditForm', $form);
 			return $form;
-		} else if($id) {
+		} else if($idOrRecord) {
 			$form = CMSForm::create( $this, "EditForm", new FieldList(
 				new LabelField('PageDoesntExistLabel',_t('CMSMain.PAGENOTEXISTS',"This page doesn't exist"))), new FieldList()
 			)->setHTMLID('Form_EditForm');
@@ -917,6 +919,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function setCurrentPageID($id) {
 		$id = (int)$id;
 		$this->pageID = $id;
+		parent::setCurrentPageID($id);
 	}
 
 	/**
@@ -925,7 +928,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * @return int
 	 */
 	public function currentPageID() {
-		$id = $this->pageID;
+		$id = $this->pageID ?: parent::currentPageID();
 
 		$this->extend('updateCurrentPageID', $id);
 
