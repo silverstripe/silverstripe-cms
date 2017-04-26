@@ -689,6 +689,16 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				$readonlyFields = $form->Fields()->makeReadonly();
 				$form->setFields($readonlyFields);
 			}
+			
+			// retain stored session information if a CSRF error timeout was triggered
+			$data = Session::get("FormInfo.{$form->FormName()}.data");
+			$message = $form->Message();
+			// check against error, and whether data exists in the session
+			// and override the form data if so.
+			if($message === _t("Form.CSRF_EXPIRED_MESSAGE", "Your session has expired. Please re-submit the form.")
+				&& $data) {
+				$form->loadDataFrom($data);
+			}
 
 			$this->extend('updateEditForm', $form);
 			return $form;
