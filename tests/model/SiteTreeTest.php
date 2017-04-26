@@ -770,19 +770,19 @@ class SiteTreeTest extends SapphireTest {
 			array('pagetype' => $sitetree->i18n_singular_name())
 		);
 		$sitetree->write();
-		$this->assertEquals($sitetree->URLSegment, 'neue-seite',
+		$this->assertEquals('neue-site-tree', $sitetree->URLSegment,
 			'Sets based on default title on first save'
 		);
 
 		$sitetree->Title = 'Changed';
 		$sitetree->write();
-		$this->assertEquals($sitetree->URLSegment, 'changed',
+		$this->assertEquals('changed', $sitetree->URLSegment,
 			'Auto-updates when set to default title'
 		);
 
 		$sitetree->Title = 'Changed again';
 		$sitetree->write();
-		$this->assertEquals($sitetree->URLSegment, 'changed',
+		$this->assertEquals('changed', $sitetree->URLSegment,
 			'Does not auto-update once title has been changed'
 		);
 
