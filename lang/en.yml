@@ -1,241 +1,237 @@
 en:
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Used on:'
-    PAGES: page(s)
-  SilverStripe\CMS\Reports\BrokenLinksReport:
-    Any: Any
-    BROKENLINKS: 'Broken links report'
-    CheckSite: 'Check site'
-    CheckSiteDropdownDraft: 'Draft Site'
-    CheckSiteDropdownPublished: 'Published Site'
-    ColumnDateLastModified: 'Date last modified'
-    ColumnDateLastPublished: 'Date last published'
-    ColumnProblemType: 'Problem type'
-    ColumnURL: URL
-    HasBrokenFile: 'has broken file'
-    HasBrokenLink: 'has broken link'
-    HasBrokenLinkAndFile: 'has broken link and file'
-    HoverTitleEditPage: 'Edit page'
-    PageName: 'Page name'
-    ReasonDropdown: 'Problem to check'
-    ReasonDropdownBROKENFILE: 'Broken file'
-    ReasonDropdownBROKENLINK: 'Broken link'
-    ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
-    ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
-    RedirectorNonExistent: 'redirector page pointing to non-existent page'
-    VirtualPageNonExistent: 'virtual page pointing to non-existent page'
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    MENUTITLE: 'Add page'
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
-    RESULT: 'Deleted %d pages from draft and live, and sent them to the archive'
-    TITLE: 'Unpublish and archive'
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Published %d pages, %d failures'
-    PUBLISH_PAGES: Publish
-    RESTORE: Restore
-    RESTORED_PAGES: 'Restored %d pages'
-    UNPUBLISHED_PAGES: 'Unpublished %d pages'
-    UNPUBLISH_PAGES: Unpublish
-  SilverStripe\CMS\Controllers\CMSMain:
-    APPLY_FILTER: Search
-    CLEAR_FILTER: Clear
-  SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    MULTISELECT: 'Batch actions'
-  SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Filter
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Published pages'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Go
-    SEARCH: Search
-    SearchResults: 'Search Results'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
-    Title: 'Modified pages'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
-    Title: 'All pages, including archived'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
-    Title: 'All pages'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Archived pages'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Draft pages'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
-    Title: 'Live but removed from draft'
-  SilverStripe\CMS\Controllers\ContentController:
-    ARCHIVEDSITE: 'Preview version'
-    ARCHIVEDSITEFROM: 'Archived site from'
-    CMS: CMS
-    DRAFT: Draft
-    DRAFTSITE: 'Draft Site'
-    Email: Email
-    INSTALL_SUCCESS: 'Installation Successful!'
-    InstallFilesDeleted: 'Installation files have been successfully deleted.'
-    InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
-    LOGGEDINAS: 'Logged in as'
-    LOGIN: Login
-    LOGOUT: 'Log out'
-    NOTLOGGEDIN: 'Not logged in'
-    PUBLISHED: Published
-    PUBLISHEDSITE: 'Published Site'
-    Password: Password
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
-    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
-    VIEWPAGEIN: 'View Page in:'
-  SilverStripe\CMS\Model\ErrorPage:
-    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
-    PLURALNAME: 'Error Pages'
-    PLURALS:
-      one: 'An Error Page'
-      other: '{count} Error Pages'
-    SINGULARNAME: 'Error Page'
-  SilverStripe\Admin\LeftAndMain:
-    CANT_REORGANISE: 'You do not have permission to alter Top level pages. Your change was not saved.'
-    PLEASESAVE: 'Please Save Page: This page could not be updated because it hasn''t been saved yet.'
-    REORGANISATIONSUCCESSFUL: 'Reorganised the site tree successfully.'
-    ShowAsList: 'show as list'
-    TooManyPages: 'Too many pages'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Content permissions'
-    PERMISSIONS_CATEGORY: 'Roles and access permissions'
-  SilverStripe\CMS\Model\RedirectorPage:
-    DESCRIPTION: 'Redirects to an internal page or an external URL'
-    PLURALNAME: 'Redirector Pages'
-    PLURALS:
-      one: 'A Redirector Page'
-      other: '{count} Redirector Pages'
-    SINGULARNAME: 'Redirector Page'
-  SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask:
-    BUTTONRUN: Run
-    CHOOSEOPERATION: 'Choose operation:'
-    DELETEWARNING: 'Warning: These operations are not reversible. Please handle with care.'
-    HEADER: 'Remove all orphaned pages task'
-    NONEFOUND: 'No orphans found'
-    NONEREMOVED: 'None removed'
-    OPERATION_REMOVE: 'Remove selected from all stages (WARNING: Will destroy all selected pages from both stage and live)'
-    SELECTALL: 'select all'
-    UNSELECTALL: 'unselect all'
-  SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: Anyone
-    ACCESSHEADER: 'Who can view this page?'
-    ACCESSLOGGEDIN: 'Logged-in users'
-    ACCESSONLYTHESE: 'Only these people (choose from list)'
-    ADDEDTODRAFTHELP: 'Page has not been published yet'
-    ADDEDTODRAFTSHORT: Draft
-    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
-    ARCHIVEDPAGEHELP: 'Page is removed from draft and live'
-    ARCHIVEDPAGESHORT: Archived
-    BUTTONCANCELDRAFT: 'Cancel draft changes'
-    BUTTONCANCELDRAFTDESC: 'Delete your draft and revert to the currently published page'
-    BUTTONDELETEDESC: 'Remove from draft/live and send to archive'
-    BUTTONPUBLISHED: Published
-    BUTTONSAVED: Saved
-    BUTTONSAVEPUBLISH: 'Save & publish'
-    BUTTONUNPUBLISH: Unpublish
-    BUTTONUNPUBLISHDESC: 'Remove this page from the published site'
-    Comments: Comments
-    Content: Content
-    DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.</p>'
-    DEFAULTABOUTTITLE: 'About Us'
-    DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.</p>'
-    DEFAULTCONTACTTITLE: 'Contact Us'
-    DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>.</p><p>You can now access the <a href="http://docs.silverstripe.org">developer documentation</a>, or begin the <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lessons</a>.</p>'
-    DEFAULTHOMETITLE: Home
-    DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
-    DependtPageColumnLinkType: 'Link type'
-    DependtPageColumnURL: URL
-    EDITANYONE: 'Anyone who can log-in to the CMS'
-    EDITHEADER: 'Who can edit this page?'
-    EDITONLYTHESE: 'Only these people (choose from list)'
-    EDITORGROUPS: 'Editor Groups'
-    EDIT_ALL_DESCRIPTION: 'Edit any page'
-    EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
-    Editors: 'Editors Groups'
-    GroupPlaceholder: 'Click to select group'
-    HASBROKENLINKS: 'This page has broken links.'
-    HTMLEDITORTITLE: Content
-    INHERIT: 'Inherit from parent page'
-    LASTPUBLISHED: 'Last published'
-    LASTSAVED: 'Last saved'
-    LASTUPDATED: 'Last Updated'
-    LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
-    LINKSALREADYUNIQUE: ' {url} is already unique'
-    LINKSCHANGEDTO: ' changed {url1} -> {url2}'
-    MENUTITLE: 'Navigation label'
-    METADESC: 'Meta Description'
-    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
-    METAEXTRA: 'Custom Meta Tags'
-    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
-    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
-    MODIFIEDONDRAFTSHORT: Modified
-    MetadataToggle: Metadata
-    MoreOptions: 'More options'
-    NOTPUBLISHED: 'Not published'
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
-    ONLIVEONLYSHORT: 'On live only'
-    ONLIVEONLYSHORTHELP: 'Page is published, but has been deleted from draft'
-    PAGELOCATION: 'Page location'
-    PAGETITLE: 'Page name'
-    PAGETYPE: 'Page type'
-    PARENTID: 'Parent page'
-    PARENTTYPE: 'Page location'
-    PARENTTYPE_ROOT: 'Top-level page'
-    PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
-    PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
-    PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
-    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
-    REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
-    REORGANISE_DESCRIPTION: 'Change site structure'
-    REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
-    SHOWINMENUS: 'Show in menus?'
-    SHOWINSEARCH: 'Show in search?'
-    TABBEHAVIOUR: Behavior
-    TABCONTENT: 'Main Content'
-    TABDEPENDENT: 'Dependent pages'
-    TOPLEVEL: 'Site Content (Top Level)'
-    URLSegment: 'URL Segment'
-    VIEWERGROUPS: 'Viewer Groups'
-    VIEW_ALL_DESCRIPTION: 'View any page'
-    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
-    VIEW_DRAFT_CONTENT: 'View draft content'
-    VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
-    Viewers: 'Viewers Groups'
-    Visibility: Visibility
-    has_one_Parent: 'Parent Page'
-    many_many_BackLinkTracking: 'Backlink Tracking'
-    many_many_ImageTracking: 'Image Tracking'
-    many_many_LinkTracking: 'Link Tracking'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Pages with broken files'
-    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
-    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
-    BrokenLinksGroupTitle: 'Broken links reports'
-    ContentGroupTitle: 'Content reports'
-    EMPTYPAGES: 'Pages with no content'
-    LAST2WEEKS: 'Pages edited in the last 2 weeks'
-    ParameterLiveCheckbox: 'Check live site'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: Archived
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Edit Page'
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Edit Page'
-  SilverStripe\CMS\Model\VirtualPage:
-    CHOOSE: 'Linked Page'
-    EditLink: edit
-    HEADER: 'This is a virtual page'
-    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
-    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
-  SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
-    TITLE_TYPE: Type
-    TITLE_USED_ON: 'Used on'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Cancel: Cancel
-    Edit: Edit
-    OK: OK
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'You can access the archived site at this link:'
-    HAVEASKED: 'You have asked to view the content of our site on'
+    SilverStripe\Admin\CMSBatchAction:
+        PUBLISHED_PAGES: 'Published %d pages, %d failures'
+        PUBLISH_PAGES: Publish
+        RESTORE: Restore
+        RESTORED_PAGES: 'Restored %d pages'
+        UNPUBLISHED_PAGES: 'Unpublished %d pages'
+        UNPUBLISH_PAGES: Unpublish
+    SilverStripe\Admin\LeftAndMain:
+        CANT_REORGANISE: 'You do not have permission to alter Top level pages. Your change was not saved.'
+        PLEASESAVE: 'Please Save Page: This page could not be updated because it hasn''t been saved yet.'
+        REORGANISATIONSUCCESSFUL: 'Reorganised the site tree successfully.'
+        ShowAsList: 'show as list'
+        TooManyPages: 'Too many pages'
+    SilverStripe\AssetAdmin\Controller\AssetAdmin:
+        BACKLINKCOUNT: 'Used on:'
+        PAGES: page(s)
+    SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
+        RESULT: 'Deleted %d pages from draft and live, and sent them to the archive'
+        TITLE: 'Unpublish and archive'
+    SilverStripe\CMS\Controllers\CMSMain:
+        APPLY_FILTER: Search
+        CLEAR_FILTER: Clear
+    SilverStripe\CMS\Controllers\CMSPageAddController:
+        MENUTITLE: 'Add page'
+    SilverStripe\CMS\Controllers\CMSPageEditController:
+        MENUTITLE: 'Edit Page'
+    SilverStripe\CMS\Controllers\CMSPageHistoryController:
+        MULTISELECT: 'Batch actions'
+    SilverStripe\CMS\Controllers\CMSPageSettingsController:
+        MENUTITLE: 'Edit Page'
+    SilverStripe\CMS\Controllers\CMSPagesController:
+        FILTER: Filter
+    SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
+        Title: 'Published pages'
+    SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
+        Title: 'Modified pages'
+    SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
+        Title: 'All pages, including archived'
+    SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
+        Title: 'All pages'
+    SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
+        Title: 'Archived pages'
+    SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDraftPages:
+        Title: 'Draft pages'
+    SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+        Title: 'Live but removed from draft'
+    SilverStripe\CMS\Controllers\ContentController:
+        ARCHIVEDSITE: 'Preview version'
+        ARCHIVEDSITEFROM: 'Archived site from'
+        CMS: CMS
+        DRAFT: Draft
+        DRAFTSITE: 'Draft Site'
+        Email: Email
+        INSTALL_SUCCESS: 'Installation Successful!'
+        InstallFilesDeleted: 'Installation files have been successfully deleted.'
+        InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
+        InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
+        LOGGEDINAS: 'Logged in as'
+        LOGIN: Login
+        LOGOUT: 'Log out'
+        NOTLOGGEDIN: 'Not logged in'
+        PUBLISHED: Published
+        PUBLISHEDSITE: 'Published Site'
+        Password: Password
+        PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+        StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
+        UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
+        VIEWPAGEIN: 'View Page in:'
+    SilverStripe\CMS\Controllers\SilverStripeNavigator:
+        ARCHIVED: Archived
+    SilverStripe\CMS\Email\ViewArchivedmail.ss:
+        CANACCESS: 'You can access the archived site at this link:'
+        HAVEASKED: 'You have asked to view the content of our site on'
+    SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+        Cancel: Cancel
+        Edit: Edit
+        OK: OK
+    SilverStripe\CMS\Model\ErrorPage:
+        DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
+        PLURALNAME: 'Error Pages'
+        PLURALS: { one: 'An Error Page', other: '{count} Error Pages' }
+        SINGULARNAME: 'Error Page'
+    SilverStripe\CMS\Model\RedirectorPage:
+        DESCRIPTION: 'Redirects to an internal page or an external URL'
+        PLURALNAME: 'Redirector Pages'
+        PLURALS: { one: 'A Redirector Page', other: '{count} Redirector Pages' }
+        SINGULARNAME: 'Redirector Page'
+    SilverStripe\CMS\Model\SiteTree:
+        ACCESSANYONE: Anyone
+        ACCESSHEADER: 'Who can view this page?'
+        ACCESSLOGGEDIN: 'Logged-in users'
+        ACCESSONLYTHESE: 'Only these people (choose from list)'
+        ADDEDTODRAFTHELP: 'Page has not been published yet'
+        ADDEDTODRAFTSHORT: Draft
+        APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
+        ARCHIVEDPAGEHELP: 'Page is removed from draft and live'
+        ARCHIVEDPAGESHORT: Archived
+        BUTTONCANCELDRAFT: 'Cancel draft changes'
+        BUTTONCANCELDRAFTDESC: 'Delete your draft and revert to the currently published page'
+        BUTTONDELETEDESC: 'Remove from draft/live and send to archive'
+        BUTTONPUBLISHED: Published
+        BUTTONSAVED: Saved
+        BUTTONSAVEPUBLISH: 'Save & publish'
+        BUTTONUNPUBLISH: Unpublish
+        BUTTONUNPUBLISHDESC: 'Remove this page from the published site'
+        Comments: Comments
+        Content: Content
+        DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.</p>'
+        DEFAULTABOUTTITLE: 'About Us'
+        DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.</p>'
+        DEFAULTCONTACTTITLE: 'Contact Us'
+        DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>.</p><p>You can now access the <a href="http://docs.silverstripe.org">developer documentation</a>, or begin the <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lessons</a>.</p>'
+        DEFAULTHOMETITLE: Home
+        DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+        DependtPageColumnLinkType: 'Link type'
+        DependtPageColumnURL: URL
+        EDITANYONE: 'Anyone who can log-in to the CMS'
+        EDITHEADER: 'Who can edit this page?'
+        EDITONLYTHESE: 'Only these people (choose from list)'
+        EDITORGROUPS: 'Editor Groups'
+        EDIT_ALL_DESCRIPTION: 'Edit any page'
+        EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
+        Editors: 'Editors Groups'
+        GroupPlaceholder: 'Click to select group'
+        HASBROKENLINKS: 'This page has broken links.'
+        HTMLEDITORTITLE: Content
+        INHERIT: 'Inherit from parent page'
+        LASTPUBLISHED: 'Last published'
+        LASTSAVED: 'Last saved'
+        LASTUPDATED: 'Last Updated'
+        LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
+        LINKSALREADYUNIQUE: ' {url} is already unique'
+        LINKSCHANGEDTO: ' changed {url1} -> {url2}'
+        MENUTITLE: 'Navigation label'
+        METADESC: 'Meta Description'
+        METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
+        METAEXTRA: 'Custom Meta Tags'
+        METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
+        MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
+        MODIFIEDONDRAFTSHORT: Modified
+        MetadataToggle: Metadata
+        MoreOptions: 'More options'
+        NOTPUBLISHED: 'Not published'
+        OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
+        ONLIVEONLYSHORT: 'On live only'
+        ONLIVEONLYSHORTHELP: 'Page is published, but has been deleted from draft'
+        PAGELOCATION: 'Page location'
+        PAGETITLE: 'Page name'
+        PAGETYPE: 'Page type'
+        PARENTID: 'Parent page'
+        PARENTTYPE: 'Page location'
+        PARENTTYPE_ROOT: 'Top-level page'
+        PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
+        PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
+        PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
+        PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
+        PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
+        REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
+        REORGANISE_DESCRIPTION: 'Change site structure'
+        REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
+        SHOWINMENUS: 'Show in menus?'
+        SHOWINSEARCH: 'Show in search?'
+        TABBEHAVIOUR: Behavior
+        TABCONTENT: 'Main Content'
+        TABDEPENDENT: 'Dependent pages'
+        TOPLEVEL: 'Site Content (Top Level)'
+        URLSegment: 'URL Segment'
+        VIEWERGROUPS: 'Viewer Groups'
+        VIEW_ALL_DESCRIPTION: 'View any page'
+        VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
+        VIEW_DRAFT_CONTENT: 'View draft content'
+        VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
+        Viewers: 'Viewers Groups'
+        Visibility: Visibility
+        has_one_Parent: 'Parent Page'
+        many_many_BackLinkTracking: 'Backlink Tracking'
+        many_many_ImageTracking: 'Image Tracking'
+        many_many_LinkTracking: 'Link Tracking'
+    SilverStripe\CMS\Model\SiteTreeFileExtension:
+        TITLE_INDEX: '#'
+        TITLE_TYPE: Type
+        TITLE_USED_ON: 'Used on'
+    SilverStripe\CMS\Model\VirtualPage:
+        CHOOSE: 'Linked Page'
+        EditLink: edit
+        HEADER: 'This is a virtual page'
+        HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
+        PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
+    SilverStripe\CMS\Reports\BrokenLinksReport:
+        Any: Any
+        BROKENLINKS: 'Broken links report'
+        CheckSite: 'Check site'
+        CheckSiteDropdownDraft: 'Draft Site'
+        CheckSiteDropdownPublished: 'Published Site'
+        ColumnDateLastModified: 'Date last modified'
+        ColumnDateLastPublished: 'Date last published'
+        ColumnProblemType: 'Problem type'
+        ColumnURL: URL
+        HasBrokenFile: 'has broken file'
+        HasBrokenLink: 'has broken link'
+        HasBrokenLinkAndFile: 'has broken link and file'
+        HoverTitleEditPage: 'Edit page'
+        PageName: 'Page name'
+        ReasonDropdown: 'Problem to check'
+        ReasonDropdownBROKENFILE: 'Broken file'
+        ReasonDropdownBROKENLINK: 'Broken link'
+        ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
+        ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
+        RedirectorNonExistent: 'redirector page pointing to non-existent page'
+        VirtualPageNonExistent: 'virtual page pointing to non-existent page'
+    SilverStripe\CMS\Search\SearchForm:
+        GO: Go
+        SEARCH: Search
+        SearchResults: 'Search Results'
+    SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask:
+        BUTTONRUN: Run
+        CHOOSEOPERATION: 'Choose operation:'
+        DELETEWARNING: 'Warning: These operations are not reversible. Please handle with care.'
+        HEADER: 'Remove all orphaned pages task'
+        NONEFOUND: 'No orphans found'
+        NONEREMOVED: 'None removed'
+        OPERATION_REMOVE: 'Remove selected from all stages (WARNING: Will destroy all selected pages from both stage and live)'
+        SELECTALL: 'select all'
+        UNSELECTALL: 'unselect all'
+    SilverStripe\Reports\SideReport:
+        BROKENFILES: 'Pages with broken files'
+        BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
+        BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
+        BrokenLinksGroupTitle: 'Broken links reports'
+        ContentGroupTitle: 'Content reports'
+        EMPTYPAGES: 'Pages with no content'
+        LAST2WEEKS: 'Pages edited in the last 2 weeks'
+        ParameterLiveCheckbox: 'Check live site'
+    SilverStripe\Security\Permission:
+        CONTENT_CATEGORY: 'Content permissions'
+        PERMISSIONS_CATEGORY: 'Roles and access permissions'
