@@ -1,5 +1,5 @@
 {
-    "CMS.ALERTCLASSNAME": "\u0422\u0438\u043f\u044a\u0442 \u043d\u0430 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430\u0442\u0430 \u0449\u0435 \u0431\u044a\u0434\u0435 \u043e\u0431\u043d\u043e\u0432\u0435\u043d, \u0441\u043b\u0435\u0434 \u043a\u0430\u0442\u043e \u0442\u044f \u0431\u044a\u0434\u0435 \u0437\u0430\u043f\u0438\u0441\u0430\u043d\u0430",
+    "CMS.ALERTCLASSNAME": "Типът на страницата ще бъде обновен, след като тя бъде записана",
     "CMS.ConfirmRestoreFromLive": "Are you sure you want to revert draft to when the page was last published?",
     "CMS.Restore": "Are you sure you want to restore this page from archive?",
     "CMS.RestoreToRoot": "Are you sure you want to restore this page from archive?\n\nBecause the parent page is not available this will be restored to the top level.",

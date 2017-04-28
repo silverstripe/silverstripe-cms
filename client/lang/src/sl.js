@@ -8,7 +8,7 @@
     "CMS.AddSubPage": "Dodaj novo stran tukaj",
     "CMS.Duplicate": "Podvoji",
     "CMS.EditPage": "Uredi",
-    "CMS.ShowAsList": "Prika\u017ei otroke kot seznam",
+    "CMS.ShowAsList": "Prikaži otroke kot seznam",
     "CMS.ThisPageAndSubpages": "To stran in podstrani",
     "CMS.ThisPageOnly": "Samo to stran",
     "CMS.ViewPage": "Pogled",

@@ -1,5 +1,5 @@
 {
-    "CMS.ALERTCLASSNAME": "Sidetypen vil bare bli oppdatert n\u00e5r siden blir lagret",
+    "CMS.ALERTCLASSNAME": "Sidetypen vil bare bli oppdatert når siden blir lagret",
     "CMS.ConfirmRestoreFromLive": "Are you sure you want to revert draft to when the page was last published?",
     "CMS.Restore": "Are you sure you want to restore this page from archive?",
     "CMS.RestoreToRoot": "Are you sure you want to restore this page from archive?\n\nBecause the parent page is not available this will be restored to the top level.",
