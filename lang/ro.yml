@@ -1,8 +1,8 @@
 ro:
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
+  AssetTableField:
     BACKLINKCOUNT: 'Folosit la'
     PAGES: pagină(pagini)
-  SilverStripe\CMS\Reports\BrokenLinksReport:
+  BrokenLinksReport:
     Any: Oricare
     BROKENLINKS: 'Raport cu link-uri nefuncţionale'
     CheckSite: 'Verificare site'
@@ -24,13 +24,12 @@ ro:
     ReasonDropdownVPBROKENLINK: 'Pagina virtuală indică spre o pagină inexistentă'
     RedirectorNonExistent: 'pagina de redirectare indică spre o pagină inexistentă'
     VirtualPageNonExistent: 'pagina virtuală indică spre o pagină inexistentă'
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: 'Sub altă pagină'
-    ParentMode_top: 'Nivel top'
-  SilverStripe\Admin\CMSBatchAction:
+  CMSAddPageController:
+    Title: 'Adăugare pagină'
+  CMSBatchActions:
     PUBLISHED_PAGES: '%d pagini publicate, %d erori'
     PUBLISH_PAGES: Publicare
-  SilverStripe\CMS\Controllers\CMSMain:
+  CMSMain:
     ACCESS: 'Acces la secţiunea ''{title}'' '
     ACCESS_HELP: 'Permite vizualizarea secțiunii cu arborele de pagini și conținut. Permisiunile de vizualizare și editare pot fi setate specific prin meniul vertical din pagini sau separat în "Permisiuni de conținut". '
     AddNew: 'Adăugaţi o pagină nouă'
@@ -58,21 +57,38 @@ ro:
     TabContent: Conținut
     TabHistory: Istorie
     TabSettings: Setări
-  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+  CMSPageAddController:
+    ParentMode_child: 'Sub altă pagină'
+    ParentMode_top: 'Nivel top'
+  CMSPageHistoryController:
+    COMPAREMODE: 'Mod comparare (selectează 2)'
+    COMPAREVERSIONS: 'Compară Versiunile'
+    REVERTTOTHISVERSION: 'Revernire la versiune'
+    SHOWUNPUBLISHED: 'Afișează versiunile nepublicate'
+    SHOWVERSION: 'Afișează Versiune'
+    VIEW: Vizualizare
+    VIEWINGLATEST: 'Vizualizare curentă a ultimii versiuni.'
+    VIEWINGVERSION: 'Vizualizarea versiunii {version}.'
+  CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
-    NOTPUBLISHED: Nepublicat
+    NOTPUBLISHED: 'Nepublicat'
     PUBLISHER: Redactor
     UNKNOWN: Necunoscut
     WHEN: Când
-  SilverStripe\CMS\Controllers\CMSPagesController:
+  CMSPagesController:
+    ListView: 'View listă'
+    MENUTITLE: Pagini
+    TreeView: 'View Arbore'
+  CMSPagesController_Tools_ss:
     FILTER: Filtru
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Start
-    SEARCH: Căutare
-    SearchResults: 'Rezultate căutare'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
+  CMSSearch:
+    FILTERDATEFROM: De la
+    FILTERDATETO: La
+  CMSSiteTreeFilter_Search:
     Title: 'Toate paginile'
-  SilverStripe\CMS\Controllers\ContentController:
+  ContentControl:
+    NOTEWONTBESHOWN: 'Notă: acest mesaj nu v-a fi afișat vizitatorilor'
+  ContentController:
     ARCHIVEDSITE: 'Previzualizare versiune'
     ARCHIVEDSITEFROM: 'Site arhivat din'
     CMS: CMS
@@ -85,8 +101,8 @@ ro:
     InstallSuccessCongratulations: 'Silverstripe a fost instalat cu succes!'
     LOGGEDINAS: 'Logat ca'
     LOGIN: Login
-    LOGOUT: Logout
-    NOTLOGGEDIN: Ne-loginat
+    LOGOUT: 'Logout'
+    NOTLOGGEDIN: 'Ne-loginat'
     PUBLISHED: Publicat
     PUBLISHEDSITE: 'Site publicat'
     Password: Parolă
@@ -94,7 +110,7 @@ ro:
     StartEditing: 'Puteți începe editarea conținutului deschizând <a href="{link}">CMS-ul</a>.'
     UnableDeleteInstall: 'Fișierele de instalare nu pot fi șterse. Vă rugăm ștergeți fișierele următore manual'
     VIEWPAGEIN: 'Vizualizează pagina în:'
-  SilverStripe\CMS\Model\ErrorPage:
+  ErrorPage:
     400: '400 - Solicitare greșită'
     401: '401 - Neautorizat'
     403: '403 - Interzis'
@@ -123,10 +139,10 @@ ro:
     DEFAULTERRORPAGETITLE: 'Pagină negasită'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Ne pare rău, s-a petrecut o problemă la procesarea solicitării dumeavoastre.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Eroare de server'
-  SilverStripe\Security\Permission:
+  Permissions:
     CONTENT_CATEGORY: 'Permisiuni de conținut'
     PERMISSIONS_CATEGORY: 'Permisiuni de rol și acces'
-  SilverStripe\CMS\Model\RedirectorPage:
+  RedirectorPage:
     HASBEENSETUP: 'O pagină referitoare a fost creată fără a direcționa către ceva'
     HEADER: 'Pagina v-a redirecționa utilizatorii către altă pagină'
     OTHERURL: 'URL-ul altui website'
@@ -134,7 +150,26 @@ ro:
     REDIRECTTOEXTERNAL: 'Alt website'
     REDIRECTTOPAGE: 'O pagină de pe website-ul dumneavoastră'
     YOURPAGE: 'Pagină de pe website-ul dumneavoastră'
-  SilverStripe\CMS\Model\SiteTree:
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Vă rugăm selectați o pagină referențiată pentru a publica pagina virtuală'
+    VIRTUALPAGEWARNING: 'Vă rugăm selectați o pagină referențiată și salvați înainte pentru a publica pagina'
+    VIRTUALPAGEWARNINGSETTINGS: 'Vă rugăm selectați o pagină referențiată în câmpurile de conținut principal pentru a publica'
+  SearchForm:
+    GO: Start
+    SEARCH: Căutare
+    SearchResults: 'Rezultate căutare'
+  SideReport:
+    BROKENFILES: 'Pagini cu fișiere incorecte'
+    BROKENREDIRECTORPAGES: 'Pagini referitoare indică spre pagini șterse'
+    BROKENVIRTUALPAGES: 'Pagini virtuale indică spre pagini șterse'
+    BrokenLinksGroupTitle: 'Raport referințe nefuncționale'
+    ContentGroupTitle: 'Rapoarte conținut'
+    EMPTYPAGES: 'Pagini fără conținut'
+    LAST2WEEKS: 'Pagini editate în ultimele 2 săptămâni'
+    ParameterLiveCheckbox: 'Verifică site live'
+  SilverStripeNavigator:
+    ARCHIVED: Arhivă
+  SiteTree:
     ACCESSANYONE: Oricine
     ACCESSHEADER: 'Cine poate vizualiza această pagină pe site-ul meu?'
     ACCESSLOGGEDIN: 'Utilizatorii autentificaţi'
@@ -152,7 +187,7 @@ ro:
     Comments: Comentarii
     Content: Continut
     DEFAULTABOUTTITLE: 'Despre Noi'
-    DEFAULTCONTACTTITLE: Contactați-ne
+    DEFAULTCONTACTTITLE: 'Contactați-ne'
     DEFAULTHOMETITLE: Acasă
     DEPENDENT_NOTE: 'Următoarele pagini depind de această pagină. Include și pagini virtuale, pagini redirecționate, și pagini cu link-uri către conținut.'
     DependtPageColumnLinkType: 'Tip referintă'
@@ -173,7 +208,7 @@ ro:
     LASTUPDATED: 'Ultimul actualizat'
     LINKCHANGENOTE: 'Schimbarea link-urilor din pagină v-a afecta și link-urile din toți descendenții.'
     MENUTITLE: 'Etichetă navigare'
-    METADESC: Descriere
+    METADESC: 'Descriere'
     METADESCHELP: 'Motoarele de căutare folosesc acest conținut pentru a afișa rezultatele căutării (deși nu v-a influența nota acestuia)'
     METAEXTRA: 'Etichetă Meta preferențială'
     METAEXTRAHELP: 'Etichetele HTML pentru informațiile meta adiționale. De exemplu &lt;meta name="numePreferat" content="conținut preferențial aici" /&gt;'
@@ -181,7 +216,7 @@ ro:
     MODIFIEDONDRAFTSHORT: Modificat
     MetadataToggle: Metadata
     MoreOptions: 'Mai multe opțiuni'
-    NOTPUBLISHED: Nepublicat
+    NOTPUBLISHED: 'Nepublicat'
     OBSOLETECLASS: 'Această pagină este de un tip {type} scos din uz. Salvând se va reseta tipul și se pot pierde datele'
     PAGELOCATION: 'Locația pagini'
     PAGETITLE: 'Nume pagină'
@@ -215,25 +250,17 @@ ro:
     many_many_BackLinkTracking: 'Urmărire link invers'
     many_many_ImageTracking: 'Urmărire Imagine'
     many_many_LinkTracking: 'Urmărire Link'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Pagini cu fișiere incorecte'
-    BROKENREDIRECTORPAGES: 'Pagini referitoare indică spre pagini șterse'
-    BROKENVIRTUALPAGES: 'Pagini virtuale indică spre pagini șterse'
-    BrokenLinksGroupTitle: 'Raport referințe nefuncționale'
-    ContentGroupTitle: 'Rapoarte conținut'
-    EMPTYPAGES: 'Pagini fără conținut'
-    LAST2WEEKS: 'Pagini editate în ultimele 2 săptămâni'
-    ParameterLiveCheckbox: 'Verifică site live'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: Arhivă
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+  SiteTreeURLSegmentField:
+    EMPTY: 'Vă rugăm introduceți un Segment URL sau apăsați anulează'
+    HelpChars: 'Caracterele speciale sunt convertite automat sau șterse'
+  URLSegmentField:
     Cancel: Anulare
     Edit: Editează
     OK: OK
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
+  ViewArchivedEmail_ss:
     CANACCESS: 'Puteți accesa site-ul arhivat la link-ul:'
     HAVEASKED: 'Ați cerut să vizualizați conținutul site-ului la'
-  SilverStripe\CMS\Model\VirtualPage:
+  VirtualPage:
     CHOOSE: 'Pagina referință'
     EditLink: editare
     HEADER: 'Aceasta este o pagină virtuală '

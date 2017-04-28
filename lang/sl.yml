@@ -1,8 +1,11 @@
 sl:
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
+  AssetAdmin:
+    ErrorItemPermissionDenied: 'Izgleda, da nimate ustreznih pravic, da bi dodali {ObjectTitle} v kampanjo'
+    ErrorNotFound: 'Tip: {Type} ne obstaja'
+  AssetTableField:
     BACKLINKCOUNT: 'Uporabljeno na:'
     PAGES: Stran/Strani
-  SilverStripe\CMS\Reports\BrokenLinksReport:
+  BrokenLinksReport:
     Any: Poljuben
     BROKENLINKS: 'Poročilo o nedelujočih povezavah'
     CheckSite: 'Preveri na spletnem mestu'
@@ -24,16 +27,16 @@ sl:
     ReasonDropdownVPBROKENLINK: 'Navidezna stran, ki kaže na neobstoječo stran'
     RedirectorNonExistent: 'preusmerjevalna stran, ki kaže na neobstoječo stran'
     VirtualPageNonExistent: 'navidezna stran, ki kaže na neobstoječo stran'
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    MENUTITLE: 'Dodaj stran'
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
+  CMSAddPageController:
+    Title: 'Dodaj stran'
+  CMSBatchAction_Archive:
     TITLE: 'Odstrani iz objave in arhiviraj'
-  SilverStripe\Admin\CMSBatchAction:
+  CMSBatchActions:
     PUBLISHED_PAGES: 'Objavljenih je bilo %d strani. (Število napak %d)'
     PUBLISH_PAGES: Objavi
     RESTORE: Obnovi
     RESTORED_PAGES: 'Obnovljene %d strani'
-  SilverStripe\CMS\Controllers\CMSMain:
+  CMSMain:
     ACCESS: 'Dostop do razdelka ''{title}'' '
     ACCESS_HELP: 'Dovoli vpogled  sklop z drevesno strukturo in vsebino. Pravice za ogled in urejanje je možno urejati prek dropdown-seznamov za vsako posamezno stran, ali pa ločeno v sklopu Nastavitve pravic za upravljanje z vsebino (Content permissions). '
     ARCHIVE: Arhiv
@@ -61,25 +64,39 @@ sl:
     TabHistory: Zgodovina
     TabSettings: Nastavitve
     UNPUBLISH_AND_ARCHIVE: 'Odstrani iz objave in arhiviraj'
-  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+  CMSPageAddController:
+    ParentMode_top: 'Stran na prvem nivoju'
+  CMSPageHistoryController:
+    COMPAREMODE: 'Način primerjanja (izberite dve)'
+    COMPAREVERSIONS: 'Primerjaj različice'
+    REVERTTOTHISVERSION: 'Povrni v to različico'
+    SHOWUNPUBLISHED: 'Pokaži neobjavljeno različico'
+    SHOWVERSION: 'Pokaži različico'
+    VIEW: prikaz
+    VIEWINGVERSION: 'Trenutno prikazana različica {version}.'
+  CMSPageHistoryController_versions_ss:
     AUTHOR: Avtor
     NOTPUBLISHED: 'Ni objavljeno'
     PREVIEW: 'Predogled spletnega mesta'
     UNKNOWN: Neznano
     WHEN: Kdaj
-  SilverStripe\CMS\Controllers\CMSPagesController:
+  CMSPagesController:
+    MENUTITLE: Strani
+  CMSPagesController_Tools_ss:
     FILTER: Filter
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
+  CMSSIteTreeFilter_PublishedPages:
     Title: 'Objavljene strani'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Pojdi
-    SEARCH: Išči
-    SearchResults: 'Rezultati iskanja'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
+  CMSSearch:
+    FILTERDATEFROM: Od
+    FILTERDATETO: Do
+    PAGEFILTERDATEHEADING: 'Nazadnje spremenjeno'
+  CMSSiteTreeFilter_Search:
     Title: 'Vse strani'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Objavljeno, vendar odstranjeno iz ostnutka'
-  SilverStripe\CMS\Controllers\ContentController:
+  ContentControl:
+    NOTEWONTBESHOWN: 'Opomba: neprijavljeni obiskovalci spletnega mesta tega obvestila ne bodo videli.'
+  ContentController:
     ARCHIVEDSITE: 'Predogled različice'
     ARCHIVEDSITEFROM: 'Arhivirana različica iz'
     CMS: CMS
@@ -91,28 +108,65 @@ sl:
     InstallSuccessCongratulations: 'SilverStripe je bil uspešno nameščen!'
     LOGGEDINAS: 'Prijavljen-a kot'
     LOGIN: Prijava
-    LOGOUT: Odjava
-    NOTLOGGEDIN: Neprijavljen-a
+    LOGOUT: 'Odjava'
+    NOTLOGGEDIN: 'Neprijavljen-a'
     PUBLISHEDSITE: 'Objavljeno spletno mesto'
     Password: Geslo
     PostInstallTutorialIntro: 'To spletno mesto je poenostavljena različica spletnega mesta SilverStripe 3. Za razširjeno različico, prosim, obiščite {link}.'
     UnableDeleteInstall: 'Namestitvenih datotek ni bilo mogoče izbrisati. Prosim, spodnje datoteke izbrišite ročno.'
     VIEWPAGEIN: 'Ogled strani v:'
-  SilverStripe\CMS\Model\ErrorPage:
-    PLURALNAME: 'Strani z napakami'
-    SINGULARNAME: 'Stran z napako'
-  SilverStripe\Security\Permission:
+  ErrorPage:
+    400: 'Napaka 400'
+    401: 'Napaka 401: Nimate dovoljena za dostop'
+    403: 'Napaka 403: Nimate dovoljena za dostop'
+    404: 'Napaka 404: Iskana stran ni na voljo'
+    405: 'Napaka 405: Neveljavna metoda'
+    406: 'Napaka 406: Vsebine ni možno prejeti'
+    407: '407: Zahtevana je avtentikacija prek proxy-strežnika'
+    408: 'Napaka 408: Zahtevek za dostop je potekel'
+    409: 'Napaka 409: Težave zaradi kolizije zahtevkov'
+    410: 'Napaka 410: Iskana stran verjetno ne obstaja več'
+    411: 'Napaka 411: Dolžina vsebine ni znana'
+    412: 'Napaka 412: Strežnik ne ustreza zahtevanim pogojem'
+    413: 'Napaka 413: Zahtevek je preobsežen'
+    414: 'Napaka 414: Iskan URI-naslov je predolg'
+    415: 'Napaka 415: Zahtevanega tipa vsebine ni možno prikazati'
+    416: 'Napaka 416: Zahteva po obsegu vsebine, ki ga ni možno doseči'
+    417: 'Napaka 417: Strežnik ne ustreza vpisanim zahtevam'
+    422: 'Napaka 422 - Unprocessable Entity'
+    429: 'Napaka 429 - Preveč zahtevkov'
+    500: 'Napaka 500: Napaka na strežniku'
+    501: 'Napaka 501: Strežnik ne more izvesti zahtevka'
+    502: 'Napaka 502: Dostop ni dovoljen'
+    503: 'Napaka 503: Dostop trenutno ni možen'
+    504: 'Napaka 504: Čas za dostop je potekel'
+    505: 'Napaka 505: Strežnik ne podpira HTTP-različice zahtevka'
+    CODE: 'Napačna koda'
+    DEFAULTERRORPAGECONTENT: '<p>Morda ste zahtevali dostop do strani, ki ne obstaja?</p><p>Za vsak slučaj preverite vpisani URL-naslov in poskusite ponovno.</p>'
+    DEFAULTERRORPAGETITLE: 'Strani ni mogoče najti'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Oprostite, pri vaši zahtevi je prišlo do težave.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Napaka na strežniku'
+  Permissions:
     CONTENT_CATEGORY: 'Nastavitve dovoljenj za upravljanje z vsebino'
     PERMISSIONS_CATEGORY: 'Vloge in dovoljenja za dostop'
-  SilverStripe\CMS\Model\RedirectorPage:
-    PLURALNAME: 'Preusmeritvene strani'
-    SINGULARNAME: 'Preusmeritvena stran'
-  SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask:
+  RedirectorPage:
+    HASBEENSETUP: 'Nastavljena preusmeritev še nima določenega cilja.'
+    HEADER: 'Ta stran bo preusmerila uporabnike na drugo stran'
+    OTHERURL: 'URL druge spletne strani'
+    REDIRECTTO: 'Preusmeri na'
+    REDIRECTTOEXTERNAL: 'Druga spletna stran'
+    REDIRECTTOPAGE: 'Stran na tvojem spletnem mestu'
+    YOURPAGE: 'Stran na tvojem spletnem mestu'
+  RemoveOrphanedPagesTask:
     BUTTONRUN: Zaženi
     CHOOSEOPERATION: 'Izberi operacijo:'
     SELECTALL: 'izberi vse'
     UNSELECTALL: 'odstrani vse'
-  SilverStripe\Reports\SideReport:
+  SearchForm:
+    GO: Pojdi
+    SEARCH: Išči
+    SearchResults: 'Rezultati iskanja'
+  SideReport:
     BROKENFILES: 'Strani s poškodovanimi datotekami'
     BROKENREDIRECTORPAGES: 'Preusmerjene strani, ki kažejo izbrisane strani'
     BROKENVIRTUALPAGES: 'Navidezne strani, ki kažejo izbrisane strani'
@@ -121,17 +175,28 @@ sl:
     EMPTYPAGES: 'Strani brez vsebine'
     LAST2WEEKS: 'Strani, spremenjene v zadnjih 2 tednih'
     ParameterLiveCheckbox: 'Preveri na objavljenem spletnem mestu'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+  SilverStripeNavigator:
     ARCHIVED: Arhivirano
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Dodaj stran'
   SilverStripe\CMS\Controllers\CMSPageEditController:
     MENUTITLE: 'Uredi stran'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    MENUTITLE: Zgodovina
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Uredi stran'
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    MENUTITLE: Seznam strani
+  SilverStripe\CMS\Model\ErrorPage:
+    PLURALNAME: 'Strani z napakami'
+    SINGULARNAME: 'Stran z napako'
+  SilverStripe\CMS\Model\RedirectorPage:
+    PLURALNAME: 'Preusmeritvene strani'
+    SINGULARNAME: 'Preusmeritvena stran'
   SilverStripe\CMS\Model\VirtualPage:
-    CHOOSE: 'Povezana stran'
-    EditLink: uredi
-    HEADER: 'To je navidezna stran'
-  SilverStripe\CMS\Model\SiteTree:
+    PLURALNAME: 'Virtualne strani'
+    SINGULARNAME: 'Virtualna stran'
+  SiteTree:
     ACCESSANYONE: Vsakdo
     ACCESSHEADER: 'Kdo lahko vidi to stran?'
     ACCESSLOGGEDIN: 'Prijavljeni uporabniki'
@@ -144,12 +209,12 @@ sl:
     BUTTONPUBLISHED: Objavljeno
     BUTTONSAVED: Shranjeno
     BUTTONSAVEPUBLISH: 'Shrani in objavi'
-    BUTTONUNPUBLISH: 'Umakni iz objave'
+    BUTTONUNPUBLISH: Umakni iz objave
     BUTTONUNPUBLISHDESC: 'Umakni to stran iz objave'
     Comments: Komentarji
     Content: Vsebina
     DEFAULTABOUTTITLE: 'O nas'
-    DEFAULTCONTACTTITLE: Kontakt
+    DEFAULTCONTACTTITLE: 'Kontakt'
     DEFAULTHOMETITLE: Domov
     DEPENDENT_NOTE: 'Naslednje strani so odvisne od vsebine tukaj (vključuje navidezne strani, preusmerjevalne strani in strani s povezavami v vsebini)'
     DependtPageColumnLinkType: 'Tip povezave'
@@ -172,7 +237,7 @@ sl:
     LINKSALREADYUNIQUE: '{url} je že v uporabi'
     LINKSCHANGEDTO: 'spremenba {url1} -> {url2}'
     MENUTITLE: 'Naziv navigacije'
-    METADESC: Opis
+    METADESC: 'Opis'
     METADESCHELP: 'Iskalniki to vsebino uporabljajo pri prikazu rezultatov. (Vsebina nima vpliva na vrstni red prikaza med zadetki v iskalniku.)'
     METAEXTRA: 'Meta tagi po meri'
     MODIFIEDONDRAFTHELP: 'Stran vsebuje še neobjavljene spremembe.'
@@ -197,13 +262,13 @@ sl:
     SHOWINMENUS: 'Pokaži v meniju?'
     SHOWINSEARCH: 'Pokaži v iskalniku?'
     TABBEHAVIOUR: Vedenje
-    TABCONTENT: Vsebina
+    TABCONTENT: 'Vsebina'
     TABDEPENDENT: 'Odvisne strani'
     TOPLEVEL: 'Vsebina Strani (Zgornja Stopnja)'
     URLSegment: 'URL naslov strani'
     VIEWERGROUPS: 'Skupine obiskovalcev'
     VIEW_ALL_DESCRIPTION: 'Prikaz vse strani'
-    VIEW_DRAFT_CONTENT: Predogled.
+    VIEW_DRAFT_CONTENT: 'Predogled.'
     VIEW_DRAFT_CONTENT_HELP: 'Ogled osnutka vsebine za uporabnike brez dostopa do vmesnika.'
     Viewers: 'Skupine obiskovalcev (viewers)'
     Visibility: Vidnost
@@ -211,14 +276,21 @@ sl:
     many_many_BackLinkTracking: 'Spremljanje povezav "nazaj"'
     many_many_ImageTracking: 'Spremljanje slik'
     many_many_LinkTracking: 'Spremljanje povezav'
-  SilverStripe\CMS\Model\SiteTreeFileExtension:
+  SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tip
     TITLE_USED_ON: 'Uporabljeno na'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+  SiteTreeURLSegmentField:
+    EMPTY: 'Prosim vnesite URL segment ali kliknite prekliči'
+    HelpChars: 'Posebni znaki so samodejno spremenjeni ali odstranjeni.'
+  URLSegmentField:
     Cancel: Prekliči
     Edit: Uredi
-    OK: 'V redu'
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
+    OK: V redu
+  ViewArchivedEmail_ss:
     CANACCESS: 'Do arhvirane različice spletnega mesta lahko dostopate na naslovu:'
     HAVEASKED: 'Za vpogled v vsebino našega spletnega mesta ste zaprosili'
+  VirtualPage:
+    CHOOSE: 'Povezana stran'
+    EditLink: uredi
+    HEADER: 'To je navidezna stran'

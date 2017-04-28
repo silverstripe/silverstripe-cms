@@ -1,21 +1,21 @@
 da:
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
+  AssetTableField:
     BACKLINKCOUNT: 'Brugt på:'
     PAGES: side(r)
-  SilverStripe\CMS\Reports\BrokenLinksReport:
+  BrokenLinksReport:
     Any: Alle
     BROKENLINKS: 'Rapport over brudte links'
     CheckSite: 'Undersøg websted'
-    CheckSiteDropdownDraft: Kladdeside
+    CheckSiteDropdownDraft: 'Kladdeside'
     CheckSiteDropdownPublished: 'Udgivet side'
     ColumnDateLastModified: 'Dato for seneste ændring'
     ColumnDateLastPublished: 'Dato for seneste udgivelse'
-    ColumnProblemType: Problemtype
+    ColumnProblemType: 'Problemtype'
     HasBrokenFile: 'har en ødelagt fil'
     HasBrokenLink: 'har et dårligt link'
     HasBrokenLinkAndFile: 'har et dårligt link og en ødelagt fil'
     HoverTitleEditPage: 'Rediger siden'
-    PageName: Sidenavn
+    PageName: 'Sidenavn'
     ReasonDropdown: 'Problem der skal undersøges'
     ReasonDropdownBROKENFILE: 'Ødelagt fil'
     ReasonDropdownBROKENLINK: 'Dårligt link'
@@ -23,13 +23,12 @@ da:
     ReasonDropdownVPBROKENLINK: 'Virtuel side der peger på en side der ikke findes'
     RedirectorNonExistent: 'Viderestillende side der peger på en side der ikke findes'
     VirtualPageNonExistent: 'Virtuel side der peger på en side der ikke findes'
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: 'Under en anden side'
-    ParentMode_top: 'Højeste niveau'
-  SilverStripe\Admin\CMSBatchAction:
+  CMSAddPageController:
+    Title: 'Tilføj side'
+  CMSBatchActions:
     PUBLISHED_PAGES: 'Publiserede %d sider'
     PUBLISH_PAGES: Publisér
-  SilverStripe\CMS\Controllers\CMSMain:
+  CMSMain:
     ACCESS: 'Adgang til ''{title}'' sektionen'
     ACCESS_HELP: 'Tillad visning af den sektion, som indeholder sidetræet og indhold. Visnings- og redigeringstilladelser kan håndteres gennem sidespecifikke rullemenuer, såvel som de enkelte "Inholdstilladelser".'
     ARCHIVE: Arkiv
@@ -52,27 +51,43 @@ da:
     TabContent: Indhold
     TabHistory: Historik
     TabSettings: Indstillinger
-  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+  CMSPageAddController:
+    ParentMode_child: 'Under en anden side'
+    ParentMode_top: 'Højeste niveau'
+  CMSPageHistoryController:
+    COMPAREMODE: 'Sammenligningstilstand (vælg to)'
+    COMPAREVERSIONS: 'Sammenlign versioner'
+    REVERTTOTHISVERSION: 'Genskab denne version'
+    SHOWUNPUBLISHED: 'Vis versioner der ikke er udgivne'
+    SHOWVERSION: 'Vis version'
+    VIEW: Visning
+    VIEWINGVERSION: 'Lige nu vises version {version}.'
+  CMSPageHistoryController_versions_ss:
     AUTHOR: Forfatter
     NOTPUBLISHED: 'Ikke udgivet'
     PUBLISHER: Udgiver
     UNKNOWN: Ukendt
     WHEN: Hvornår
-  SilverStripe\CMS\Controllers\CMSPagesController:
+  CMSPagesController:
+    ListView: 'Listevisning'
+    MENUTITLE: Sider
+    TreeView: 'Trævisning'
+  CMSPagesController_Tools_ss:
     FILTER: Filtre
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Send
-    SEARCH: Søg
-    SearchResults: Søgeresultater
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
+  CMSSearch:
+    FILTERDATEFROM: Fra
+    FILTERDATETO: Til
+  CMSSiteTreeFilter_Search:
     Title: 'Alle sider'
-  SilverStripe\CMS\Controllers\ContentController:
+  ContentControl:
+    NOTEWONTBESHOWN: 'Bemærk: denne besked bliver ikke vist til dine besøgende '
+  ContentController:
     ARCHIVEDSITEFROM: 'Arkiveret side fra'
-    DRAFTSITE: Kladdeside
+    DRAFTSITE: 'Kladdeside'
     InstallFilesDeleted: 'Installationsfilerne blev slettet korrekt.'
     InstallSecurityWarning: 'Af sikkerhedmæssige årsager bør du slette installationsfilerne, medmindre du planlægger at installere igen på et senere tidspunkt (<em>kræver admin login, se det ovenstående</em>). Webserveren behøver også kun skriverettigheder til mappen "assets", du kan fjerne skriverettigheder til alle de andre mapper. <a href="{link}" style="text-align: center;">Klik her for at slette installationsfilerne.</a>'
     LOGGEDINAS: 'Logget på som'
-    LOGIN: 'Log ind'
+    LOGIN: Log ind
     LOGOUT: 'Log ud'
     NOTLOGGEDIN: 'Ikke logget ind'
     PUBLISHED: Udgivet
@@ -80,16 +95,16 @@ da:
     Password: Adgangskode
     UnableDeleteInstall: 'Var ikke i stand til at slette installationsfilerne. Slet venligst filerne herunder manuelt.'
     VIEWPAGEIN: 'Vis side i:'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: Fejlkode
+  ErrorPage:
+    CODE: 'Fejlkode'
     DEFAULTERRORPAGECONTENT: '<p>Det lader til at du har forsøgt at få vist en side som ikke findes</p><p>Undersøg venligst om URL''en er korrekt stavet og forsøg derefter igen.</p>'
     DEFAULTERRORPAGETITLE: 'Siden blev ikke fundet'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Der opstod desværre et problem med at håndtere din forespørgsel.</p>'
-    DEFAULTSERVERERRORPAGETITLE: Serverfejl
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: Indholdsrettigheder
+    DEFAULTSERVERERRORPAGETITLE: 'Serverfejl'
+  Permissions:
+    CONTENT_CATEGORY: 'Indholdsrettigheder'
     PERMISSIONS_CATEGORY: 'Roller og adgangstilladelser'
-  SilverStripe\CMS\Model\RedirectorPage:
+  RedirectorPage:
     HASBEENSETUP: 'En omdirigeringsside er blevet sat op, uden et sted at omdirigere til.'
     HEADER: 'Denne side omdirigerer besøgende til en anden side'
     OTHERURL: 'Andet websteds URL'
@@ -97,16 +112,20 @@ da:
     REDIRECTTOEXTERNAL: 'Et andet websted'
     REDIRECTTOPAGE: 'En side på dit websted'
     YOURPAGE: 'Side på dit websted'
-  SilverStripe\Reports\SideReport:
+  SearchForm:
+    GO: Send
+    SEARCH: Søg
+    SearchResults: 'Søgeresultater'
+  SideReport:
     BROKENFILES: 'Sider med ødelagt filer'
     BROKENREDIRECTORPAGES: 'Viderestillingssider der henviser til slettede sider'
     BROKENVIRTUALPAGES: 'Virtuelle sider der henviser til slettede sider'
     BrokenLinksGroupTitle: 'Rapporteringer om links der ikke virker'
-    ContentGroupTitle: Indholdsrapporter
+    ContentGroupTitle: 'Indholdsrapporter'
     EMPTYPAGES: 'Tomme sider'
     LAST2WEEKS: 'Sider ændret indenfor de sidste 2 uger'
     ParameterLiveCheckbox: 'Tjek det udgivne websted'
-  SilverStripe\CMS\Model\SiteTree:
+  SiteTree:
     ACCESSANYONE: Enhver
     ACCESSHEADER: 'Hvem kan se denne side?'
     ACCESSLOGGEDIN: 'Brugere der er logget ind'
@@ -119,33 +138,33 @@ da:
     BUTTONPUBLISHED: Udgivet
     BUTTONSAVED: Gemt
     BUTTONSAVEPUBLISH: 'Gem & udgiv'
-    BUTTONUNPUBLISH: 'Annuller udgivelse'
+    BUTTONUNPUBLISH: Annuller udgivelse
     BUTTONUNPUBLISHDESC: 'Fjern denne side fra det udgivne websted'
     Comments: Kommentarer
     Content: Indhold
     DEFAULTABOUTTITLE: 'Om os'
     DEFAULTCONTACTTITLE: 'Kontakt os'
     DEFAULTHOMETITLE: Forside
-    DependtPageColumnLinkType: Linktype
+    DependtPageColumnLinkType: 'Linktype'
     EDITANYONE: 'Enhver der kan logge ind på CMS'
     EDITHEADER: 'Hvem kan redigere denne side ?'
     EDITONLYTHESE: 'Kun disse personer (vælg fra liste)'
-    EDITORGROUPS: Redaktionsgrupper
+    EDITORGROUPS: 'Redaktionsgrupper'
     EDIT_ALL_DESCRIPTION: 'Rediger enhver side'
     HASBROKENLINKS: 'Denne side har links der ikke virker.'
     HTMLEDITORTITLE: Indhold
     INHERIT: 'Nedarv fra overliggende side'
     LASTUPDATED: 'Sidst opdateret'
     LINKCHANGENOTE: 'Ved at ændre denne sides link, ændrer du også linket til alle underliggende sider.'
-    MENUTITLE: Navigationsetiket
-    METADESC: Meta-beskrivelse
+    MENUTITLE: 'Navigationsetiket'
+    METADESC: 'Meta-beskrivelse'
     METAEXTRA: 'Brugerdefinerede Meta Tags'
     MODIFIEDONDRAFTHELP: 'Siden har ikke-udgivne ændringer'
     MODIFIEDONDRAFTSHORT: Ændret
-    PAGETITLE: Sidenavn
-    PAGETYPE: Sidetype
+    PAGETITLE: 'Sidenavn'
+    PAGETYPE: 'Sidetype'
     PARENTID: 'Overliggende side'
-    PARENTTYPE: Sideplacering
+    PARENTTYPE: 'Sideplacering'
     PARENTTYPE_ROOT: 'Side på højeste niveau'
     PARENTTYPE_SUBPAGE: 'Underside fra en overliggende side'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Administrer adgangsrettigheder for indhold'
@@ -161,20 +180,20 @@ da:
     TABCONTENT: 'Primært indhold'
     TABDEPENDENT: 'Afhængige sider'
     TOPLEVEL: 'Sideindhold (Top niveau)'
-    VIEWERGROUPS: Visningsgrupper
+    VIEWERGROUPS: 'Visningsgrupper'
     VIEW_ALL_DESCRIPTION: 'Vis enhver side'
     VIEW_DRAFT_CONTENT: 'Vis indhold af kladde'
-    Viewers: Visningsgrupper
+    Viewers: 'Visningsgrupper'
     Visibility: Synlighed
     has_one_Parent: 'Overliggende side'
     many_many_BackLinkTracking: 'Bagud rettet sporing '
     many_many_ImageTracking: 'Sporing af billeder'
     many_many_LinkTracking: 'Sporing af links'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+  SiteTreeURLSegmentField:
     HelpChars: 'Specialkarakterer bliver automatisk konverteret eller fjernet.'
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
+  ViewArchivedEmail_ss:
     CANACCESS: 'Du kan tilgå¨den arkiverede side på dette link:'
     HAVEASKED: 'Du har spurgt om at se indholdet af vores side på'
-  SilverStripe\CMS\Model\VirtualPage:
+  VirtualPage:
     HEADER: 'Dette er en virtuel side'
     PageTypNotAllowedOnRoot: 'Original side type "{type}" er ikke tilladt på rodniveau for denne virtuelle side'

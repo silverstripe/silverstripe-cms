@@ -1,5 +1,5 @@
 es_AR:
-  SilverStripe\CMS\Reports\BrokenLinksReport:
+  BrokenLinksReport:
     Any: Cualquiera
     BROKENLINKS: 'Informe de enlaces rotos'
     CheckSite: 'Verificar el sitio'
@@ -20,25 +20,27 @@ es_AR:
     ReasonDropdownVPBROKENLINK: 'Página virtual apuntando a una página no existente'
     RedirectorNonExistent: 'la página de redireccionamiento apunta a una página inexistente'
     VirtualPageNonExistent: 'página virtual apuntando a una página no existente'
-  SilverStripe\Admin\CMSBatchAction:
+  CMSBatchActions:
     PUBLISHED_PAGES: 'Se publicaron %d páginas, %d fallas'
     PUBLISH_PAGES: Publicar
-  SilverStripe\CMS\Controllers\CMSMain:
+  CMSMain:
     ACCESS_HELP: 'Permitir la visualización de la sección que contiene el árbol de páginas y el contenido. Ver y editar permisos que se pueden manejar mediante listas desplegables específicas de la página, así como el apartado "Permisos del contenido".'
     PAGENOTEXISTS: 'Esta página no existe'
     PUBALLCONFIRM: 'Por favor publica todas las páginas del sitio, copiando el contenido del boceto al sitio público'
     PUBALLFUN: 'Funcionalidad "Publicar Todo"'
     REMOVEDPAGEFROMDRAFT: 'Quitados ''%s'' del borrador del sitio'
     ROLLBACK: 'Restaurar a ésta versión'
-  SilverStripe\CMS\Controllers\ContentController:
+  ContentControl:
+    NOTEWONTBESHOWN: 'Nota: este mensage no se mostrará a sus visitantes'
+  ContentController:
     DRAFTSITE: 'Sitio borrador'
     LOGGEDINAS: 'Conectado como'
-    LOGIN: 'Iniciar sesión'
-    LOGOUT: Desconectarse
+    LOGIN: Iniciar sesión
+    LOGOUT: 'Desconectarse'
     NOTLOGGEDIN: 'No conectado'
     PUBLISHEDSITE: 'Sitio publicado'
     VIEWPAGEIN: 'Ver página en:'
-  SilverStripe\CMS\Model\ErrorPage:
+  ErrorPage:
     400: '400 - Petición Incorrecta'
     401: '401 - No estás autorizado'
     403: '403 - Acceso Restringido'
@@ -65,10 +67,10 @@ es_AR:
     CODE: 'Código de Error'
     DEFAULTERRORPAGECONTENT: '<p>Disculpa, parece que estás tratando de ingresar a una página que no existe.</p><p>Por favor verifica la escritura de la URL que deseas visitar e inténtalo de nuevo.</p>'
     DEFAULTERRORPAGETITLE: 'Página inexistente'
-  SilverStripe\Security\Permission:
+  Permissions:
     CONTENT_CATEGORY: 'Permisos de contenido'
     PERMISSIONS_CATEGORY: 'Roles y permisos de acceso'
-  SilverStripe\CMS\Model\RedirectorPage:
+  RedirectorPage:
     HASBEENSETUP: 'Se ha instalado una página de redirección  sin algún lugar a donde redireccionar.'
     HEADER: 'Esta página dirigirá al usuarios a otra página'
     OTHERURL: 'Otro URL del sitio web'
@@ -76,11 +78,11 @@ es_AR:
     REDIRECTTOEXTERNAL: 'Otro sitio web'
     REDIRECTTOPAGE: 'Una página en tu sitio web'
     YOURPAGE: 'Página en tu sitio web'
-  SilverStripe\CMS\Search\SearchForm:
+  SearchForm:
     GO: Ir
     SEARCH: Buscar
     SearchResults: 'Resultados de la búsqueda'
-  SilverStripe\Reports\SideReport:
+  SideReport:
     BROKENFILES: 'Páginas con archivos rotos'
     BROKENREDIRECTORPAGES: 'RedirectorPages apunta a páginas eliminadas'
     BROKENVIRTUALPAGES: 'VirtualPages apunta a páginas eliminadas'
@@ -89,19 +91,19 @@ es_AR:
     EMPTYPAGES: 'Páginas sin contenido'
     LAST2WEEKS: 'Páginas editadas en las últimas 2 semanas'
     ParameterLiveCheckbox: 'Verificar el sitio en vivo'
-  SilverStripe\CMS\Model\SiteTree:
+  SiteTree:
     ACCESSANYONE: Cualquiera
     ACCESSHEADER: '¿Quién puede ver ésta página?'
     ACCESSLOGGEDIN: 'Usuarios registrados'
     ACCESSONLYTHESE: 'Únicamente estas personas (selecciona de la lista)'
     BUTTONCANCELDRAFT: 'Cancelar cambios al borrador'
     BUTTONCANCELDRAFTDESC: 'Eliminar el borrador y regresar a la página actualmente publicada'
-    BUTTONUNPUBLISH: 'No Publicar'
+    BUTTONUNPUBLISH: No Publicar
     BUTTONUNPUBLISHDESC: 'Quitar ésta página del sitio público'
     Comments: Comentarios
     Content: Contenido
     DEFAULTABOUTTITLE: 'de Nosotros'
-    DEFAULTCONTACTTITLE: Contactenos
+    DEFAULTCONTACTTITLE: 'Contactenos'
     DEFAULTHOMETITLE: Inicio
     DEPENDENT_NOTE: 'Las siguientes páginas dependen de esta página. Esto incluye páginas virtuales, páginas de redireccionamiento y páginas con enlaces de contenido.'
     DependtPageColumnLinkType: 'Tipo de enlace'
@@ -116,7 +118,7 @@ es_AR:
     INHERIT: 'heredar de página superior'
     LINKCHANGENOTE: 'Cambiar este enlace de la página también afectará los enlaces de todas las páginas dependientes.'
     MENUTITLE: 'Etiqueta de navegación'
-    METADESC: Descripción
+    METADESC: 'Descripción'
     METAEXTRA: 'Etiquetas Meta Personalizadas'
     PAGELOCATION: 'Ubicación de la página'
     PAGETITLE: 'Nombre de página'
@@ -130,7 +132,7 @@ es_AR:
     SHOWINMENUS: '¿Mostrar en menús?'
     SHOWINSEARCH: '¿Mostrar en búsqueda?'
     TABBEHAVIOUR: Compotamiento
-    TABCONTENT: Contenido
+    TABCONTENT: 'Contenido'
     TABDEPENDENT: 'Páginas dependientes'
     TOPLEVEL: 'Contenido del Sitio (Nivel Superior)'
     URLSegment: 'Segmento del URL'
@@ -141,8 +143,8 @@ es_AR:
     many_many_BackLinkTracking: 'Seguimiento de Backlink'
     many_many_ImageTracking: 'Seguimiento de Imágen'
     many_many_LinkTracking: 'Seguimiento de Enlace'
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
+  ViewArchivedEmail_ss:
     CANACCESS: 'Puedes acceder al sitio archivado con este enlace:'
     HAVEASKED: 'Has solicitado ver el contenido de nuestro sitio en'
-  SilverStripe\CMS\Model\VirtualPage:
+  VirtualPage:
     HEADER: 'Esta es una página virtual'

@@ -1,9 +1,9 @@
 sr_RS@latin:
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
+  AssetTableField:
     BACKLINKCOUNT: 'Koristi se na:'
     PAGES: stranici(a)
-  SilverStripe\CMS\Reports\BrokenLinksReport:
-    Any: 'Bilo koji'
+  BrokenLinksReport:
+    Any: Bilo koji
     BROKENLINKS: 'Izveštaj o oštećenim linkovima'
     CheckSite: 'Proveri sajt'
     CheckSiteDropdownDraft: 'Narct sajta'
@@ -24,13 +24,12 @@ sr_RS@latin:
     ReasonDropdownVPBROKENLINK: 'Virtuelna stranica koja pokazuje na nepostojeću stranicu'
     RedirectorNonExistent: 'stranica za preusmerivanje koja pokazuje na nepostojeću stranicu'
     VirtualPageNonExistent: 'virtuelna stranica koja pokazuje na nepostojeću stranicu'
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: 'Kao podstranicu druge stranice'
-    ParentMode_top: 'Vršni nivo'
-  SilverStripe\Admin\CMSBatchAction:
+  CMSAddPageController:
+    Title: 'Dodaj stranicu'
+  CMSBatchActions:
     PUBLISHED_PAGES: 'Objavljeno %d stranica. Nije uspelo objavljivanje %d stranica.'
     PUBLISH_PAGES: Objavi
-  SilverStripe\CMS\Controllers\CMSMain:
+  CMSMain:
     ACCESS: 'Pristup ''{title}'' sekciji'
     ACCESS_HELP: 'Dozvoljava pregled sekcije koja sadrži stablo stranica i sadržaj. Dozvole za pregled i uređivanje mogu se podesiti putem specifičnih padajućih listi pojedinačnih stranica, kao i putem "Dozvole za sadržaj".'
     AddNew: 'Dodaj novu stranicu'
@@ -43,7 +42,7 @@ sr_RS@latin:
     DUPLICATEDWITHCHILDREN: '''{title}'' i deca uspešno duplirani'
     NEWPAGE: 'Nova {pagetype}'
     PAGENOTEXISTS: 'Ova stranica ne postoji'
-    PAGETYPEANYOPT: 'Bilo koja'
+    PAGETYPEANYOPT: Bilo koja
     PUBALLCONFIRM: 'Objavite svaku stranu na ovom sajtu kopiranjem sadržaj na živ sajt.'
     PUBALLFUN: 'Funkcija „Objavi sve“ '
     PUBPAGES: 'Urađeno: Objavljeno {count} stranica'
@@ -58,21 +57,38 @@ sr_RS@latin:
     TabContent: Sadržaj
     TabHistory: Istorija
     TabSettings: Podešavanja
-  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+  CMSPageAddController:
+    ParentMode_child: 'Kao podstranicu druge stranice'
+    ParentMode_top: 'Vršni nivo'
+  CMSPageHistoryController:
+    COMPAREMODE: 'Režim poređenja (izaberi dva)'
+    COMPAREVERSIONS: 'Uporedi verzije'
+    REVERTTOTHISVERSION: 'Vrati na ovu verziju'
+    SHOWUNPUBLISHED: 'Prikaži neobjavljene verzije'
+    SHOWVERSION: 'Prikaži verziju'
+    VIEW: pregled
+    VIEWINGLATEST: 'Trenutno se prikazuje poslednja verzija.'
+    VIEWINGVERSION: 'Trenutno je prikazana verzija {version}.'
+  CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
-    NOTPUBLISHED: Neobjavljeno
+    NOTPUBLISHED: 'Neobjavljeno'
     PUBLISHER: Objavljivač
     UNKNOWN: Nepoznato
     WHEN: Datum
-  SilverStripe\CMS\Controllers\CMSPagesController:
+  CMSPagesController:
+    ListView: 'Prikaz u vidu liste'
+    MENUTITLE: Stranice
+    TreeView: 'Prikaz u vidu stabla'
+  CMSPagesController_Tools_ss:
     FILTER: Filter
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Idi
-    SEARCH: Pretraži
-    SearchResults: 'Rezultati pretraživanja'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
+  CMSSearch:
+    FILTERDATEFROM: Od
+    FILTERDATETO: Za
+  CMSSiteTreeFilter_Search:
     Title: 'Sve stranice'
-  SilverStripe\CMS\Controllers\ContentController:
+  ContentControl:
+    NOTEWONTBESHOWN: 'Napomena: ova poruka neće biti prikazana posetiocima'
+  ContentController:
     ARCHIVEDSITE: 'Verzija za prethodni pregled'
     ARCHIVEDSITEFROM: 'Arhivirani sajt iz'
     CMS: CMS
@@ -85,7 +101,7 @@ sr_RS@latin:
     InstallSuccessCongratulations: 'SilverStripe je uspešno instaliran!'
     LOGGEDINAS: 'Prijavljen kao'
     LOGIN: Prijava
-    LOGOUT: Odjava
+    LOGOUT: 'Odjava'
     NOTLOGGEDIN: 'Niste prijavljeni'
     PUBLISHED: Objaljeno
     PUBLISHEDSITE: 'Objavljeni sajt'
@@ -94,7 +110,7 @@ sr_RS@latin:
     StartEditing: 'Možete započeti sa izmenama sadržaja otvaranjem <a href="{link}">CMS-a</a>.'
     UnableDeleteInstall: 'Instalacione datoteke ne mogu biti izbrisane. Ručno izbrišite sledeće datoteke:'
     VIEWPAGEIN: 'Prikaži stranicu u:'
-  SilverStripe\CMS\Model\ErrorPage:
+  ErrorPage:
     400: '400 - Loš zahtev'
     401: '401 - Neautorizovano'
     403: '403 - Zabranjeno'
@@ -123,10 +139,10 @@ sr_RS@latin:
     DEFAULTERRORPAGETITLE: 'Stranica nije pronađena'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Izvinjavamo se, postoji problem pri obradi Vašeg zahteva.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Greška servera'
-  SilverStripe\Security\Permission:
+  Permissions:
     CONTENT_CATEGORY: 'Dozvolje za sadržaj'
     PERMISSIONS_CATEGORY: 'Uloge i dozvole za pristup'
-  SilverStripe\CMS\Model\RedirectorPage:
+  RedirectorPage:
     HASBEENSETUP: 'Stranici za preusmeravanje nije podešeno odredište na koje preusmerava.'
     HEADER: 'Ova stranica će preusmeriti korisnike na drugu stranicu'
     OTHERURL: 'URL drugog veb sajta'
@@ -134,7 +150,26 @@ sr_RS@latin:
     REDIRECTTOEXTERNAL: 'Drugi veb sajt'
     REDIRECTTOPAGE: 'Stranicu na Vašem veb sajtu'
     YOURPAGE: 'Stranica na Vašem veb sajtu'
-  SilverStripe\CMS\Model\SiteTree:
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Molimo vas da objavite povezanu stranicu, kako bi virtuelna stranica bila objavljena'
+    VIRTUALPAGEWARNING: 'Molimo Vas da izaberete povezanu stranicu i sačuvate izmenu pre nego što objavite ovu stranicu'
+    VIRTUALPAGEWARNINGSETTINGS: 'Molimo Vas da izaberete povezanu stranicu u poljima glavnog sadržaja da bi ste objavili'
+  SearchForm:
+    GO: Idi
+    SEARCH: Pretraži
+    SearchResults: 'Rezultati pretraživanja'
+  SideReport:
+    BROKENFILES: 'Stranice sa oštećenim datotekama'
+    BROKENREDIRECTORPAGES: 'Stranice za preusmerivanje koje pokazuju na izbrisane stranice'
+    BROKENVIRTUALPAGES: 'Virtuelne stranice koja pokazuju na izbrisane stranice'
+    BrokenLinksGroupTitle: 'Izveštaj o oštećenim linkovima'
+    ContentGroupTitle: 'Izveštaji o sadržaju'
+    EMPTYPAGES: 'Prazne stranice'
+    LAST2WEEKS: 'Stranice menjane u zadnje 2 nedelje'
+    ParameterLiveCheckbox: 'Proveri objavljeni sajt'
+  SilverStripeNavigator:
+    ARCHIVED: Arhivirano
+  SiteTree:
     ACCESSANYONE: Svako
     ACCESSHEADER: 'Ko može da vidi ovu stranicu?'
     ACCESSLOGGEDIN: 'Prijavljeni korisnici'
@@ -147,13 +182,13 @@ sr_RS@latin:
     BUTTONPUBLISHED: Objaljeno
     BUTTONSAVED: Sačuvano.
     BUTTONSAVEPUBLISH: 'Sačuvaj i objavi'
-    BUTTONUNPUBLISH: 'Poništi objavu'
+    BUTTONUNPUBLISH: Poništi objavu
     BUTTONUNPUBLISHDESC: 'Ukloni ovu stranicu iz objavljenog sajta'
     Comments: Komentari
     Content: Sadržaj
     DEFAULTABOUTTITLE: 'O nama'
     DEFAULTCONTACTTITLE: 'Kontaktirajte nas'
-    DEFAULTHOMETITLE: 'Početna stranica'
+    DEFAULTHOMETITLE: Početna stranica
     DEPENDENT_NOTE: 'Sledeće stranice zavise od ove stranice. Ovo podrazumeva vitruelne stranice, stranice za preusmeravanje i stranice sa linkovima na sadržaj.'
     DependtPageColumnLinkType: 'Tip linka'
     DependtPageColumnURL: URL
@@ -173,15 +208,15 @@ sr_RS@latin:
     LASTUPDATED: 'Poslednji put ažurirano'
     LINKCHANGENOTE: 'Promena linka ove stranice uticaće, takođe, na linkove svih podstranica.'
     MENUTITLE: 'Natpis za navigaciju'
-    METADESC: Opis
+    METADESC: 'Opis'
     METADESCHELP: 'Pretraživačke mašine koriste ovaj sadržaj za prikaz rezultata pretraživanja (ipak, on ne utiče na rejting stranice).'
     METAEXTRA: 'Prilagođene meta oznake'
     METAEXTRAHELP: 'HTML oznake za dodatne meta informacije. Na primer, &lt;meta name="audience" content="all" /&gt;'
     MODIFIEDONDRAFTHELP: 'Stranica sadrži neobjavljene izmene'
     MODIFIEDONDRAFTSHORT: Izmenjeno
-    MetadataToggle: 'Meta podaci'
+    MetadataToggle: Meta podaci
     MoreOptions: 'Više opcija'
-    NOTPUBLISHED: Neobjavljeno
+    NOTPUBLISHED: 'Neobjavljeno'
     OBSOLETECLASS: 'Tip ove stranice: {type} nije više podržan. Ako sačuvate stranicu njen tip će biti promenjen, pa možete izgubiti svoje podatke'
     PAGELOCATION: 'Lokacija stranice'
     PAGETITLE: 'Naziv stranice'
@@ -215,25 +250,17 @@ sr_RS@latin:
     many_many_BackLinkTracking: 'Praćenje povratnih linkova'
     many_many_ImageTracking: 'Praćenje slika'
     many_many_LinkTracking: 'Praćenje linkova'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Stranice sa oštećenim datotekama'
-    BROKENREDIRECTORPAGES: 'Stranice za preusmerivanje koje pokazuju na izbrisane stranice'
-    BROKENVIRTUALPAGES: 'Virtuelne stranice koja pokazuju na izbrisane stranice'
-    BrokenLinksGroupTitle: 'Izveštaj o oštećenim linkovima'
-    ContentGroupTitle: 'Izveštaji o sadržaju'
-    EMPTYPAGES: 'Prazne stranice'
-    LAST2WEEKS: 'Stranice menjane u zadnje 2 nedelje'
-    ParameterLiveCheckbox: 'Proveri objavljeni sajt'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: Arhivirano
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+  SiteTreeURLSegmentField:
+    EMPTY: 'Molimo Vas da unesete segment URL-a ili kliknete na Odustani'
+    HelpChars: 'Specijalni karakteri su automatski konvertovani ili uklonjeni.'
+  URLSegmentField:
     Cancel: Odustani
     Edit: Izmeni
-    OK: 'U redu'
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
+    OK: U redu
+  ViewArchivedEmail_ss:
     CANACCESS: 'Možete da pristupite arhiviranom sadržaju na ovom linku:'
     HAVEASKED: 'Zamoljeni ste da pogledate sadržaj ovog sajta'
-  SilverStripe\CMS\Model\VirtualPage:
+  VirtualPage:
     CHOOSE: 'Povezana stranica'
     EditLink: izmeni
     HEADER: 'Ovo je virtuelna stranica'

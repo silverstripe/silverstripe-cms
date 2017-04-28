@@ -1,14 +1,16 @@
 lv:
-  SilverStripe\CMS\Controllers\ContentController:
+  ContentControl:
+    NOTEWONTBESHOWN: 'Piezīme: šī ziņa nebūs redzama Jūsu apmeklētājiem'
+  ContentController:
     ARCHIVEDSITEFROM: 'Arhivēta vietne no'
     DRAFTSITE: 'Melnrakstu vietne'
     LOGGEDINAS: 'Pieslēdzies kā'
     LOGIN: Pieslēgties
-    LOGOUT: Atslēgties
+    LOGOUT: 'Atslēgties'
     NOTLOGGEDIN: 'Nav pieslēdzies'
     PUBLISHEDSITE: 'Publicētā vietne'
     VIEWPAGEIN: 'Skatīt lapu:'
-  SilverStripe\CMS\Model\ErrorPage:
+  ErrorPage:
     400: '400 - Nekorekts pieprasījums'
     401: '401 - Neautorizēts'
     403: '403 - Aizliegts'
@@ -35,10 +37,10 @@ lv:
     CODE: 'Kļūdas kods'
     DEFAULTERRORPAGECONTENT: '<p>Atvainojiet, šķiet, ka lapa kurai mēģinat piekļūt neeksistē.</p><p>Lūdzu pārliecinieties par pareizrakstību URL, kuram vēlaties piekļūt400.</p>'
     DEFAULTERRORPAGETITLE: 'Lapa nav atrasta'
-  SilverStripe\Security\Permission:
+  Permissions:
     CONTENT_CATEGORY: 'Satura atļaujas'
     PERMISSIONS_CATEGORY: 'Lomu un piekļuves atļaujas'
-  SilverStripe\CMS\Model\RedirectorPage:
+  RedirectorPage:
     HASBEENSETUP: 'Novirzītājlapa ir uzstādīta bez norādes uz kurieni novirzīt.'
     HEADER: 'Šī lapa novirzīs lietotājus uz citu lapu '
     OTHERURL: 'Citas tīmekļa vietnes URL'
@@ -46,11 +48,11 @@ lv:
     REDIRECTTOEXTERNAL: 'Cita tīmekļa vietni'
     REDIRECTTOPAGE: 'Tīmekļa vietnes lapu'
     YOURPAGE: 'Tīmekļa vietnes lapa'
-  SilverStripe\CMS\Search\SearchForm:
+  SearchForm:
     GO: Aiziet
     SEARCH: Meklēt
     SearchResults: 'Meklēšanas rezultāti'
-  SilverStripe\CMS\Model\SiteTree:
+  SiteTree:
     ACCESSANYONE: Ikviens
     ACCESSHEADER: 'Kas drīkst aplūkot šo lapu?'
     ACCESSLOGGEDIN: 'Pieslēgušies lietotāji'
@@ -78,7 +80,7 @@ lv:
     INHERIT: 'Mantot no vecāka lapas'
     LINKCHANGENOTE: 'Izmainot šīs lapas saiti, tiks izmainītas saites arī visām tās bērnu lapām.'
     MENUTITLE: 'Navigācijas virsraksts'
-    METADESC: Apraksts
+    METADESC: 'Apraksts'
     METAEXTRA: 'Lietotāja Meta-tagi'
     PAGELOCATION: 'Lapas adrese'
     PAGETITLE: 'Lapas nosaukums'
@@ -94,7 +96,7 @@ lv:
     SHOWINMENUS: 'Rādīt izvēlnēs?'
     SHOWINSEARCH: 'Rādīt meklēšanas rezultātos?'
     TABBEHAVIOUR: Uzvedība
-    TABCONTENT: Saturs
+    TABCONTENT: 'Saturs'
     TABDEPENDENT: 'Atkarīgās lapas'
     TOPLEVEL: 'Vietnes Saturs (Augšējais līmenis)'
     URLSegment: 'URL Segments'
@@ -107,5 +109,5 @@ lv:
     many_many_BackLinkTracking: 'Atpakaļsaišu izsekošana'
     many_many_ImageTracking: 'Attēlu izsekošana'
     many_many_LinkTracking: 'Saišu izsekošana'
-  SilverStripe\CMS\Model\VirtualPage:
+  VirtualPage:
     HEADER: 'Šī ir virtuāla lapa'

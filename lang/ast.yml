@@ -1,15 +1,15 @@
 ast:
-  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+  CMSPageHistoryController:
     COMPAREVERSIONS: 'Comparar les versiones'
     SHOWVERSION: 'Mostrar la versión'
-  SilverStripe\CMS\Controllers\CMSPagesController:
+  CMSPagesController:
     MENUTITLE: Páxines
-  SilverStripe\CMS\Controllers\ContentController:
+  ContentController:
     Password: Contraseña
-  SilverStripe\CMS\Model\ErrorPage:
+  ErrorPage:
     DEFAULTERRORPAGETITLE: 'Páxina non alcontrada'
     DEFAULTSERVERERRORPAGETITLE: 'Error del servidor'
-  SilverStripe\CMS\Model\SiteTree:
+  SiteTree:
     Content: Conteníu
     HTMLEDITORTITLE: Conteníu
     PAGETYPE: 'Triba de páxina'
@@ -17,5 +17,5 @@ ast:
     PARENTTYPE: 'Llocalización de la páxina'
     URLSegment: 'Segmentu URL'
     has_one_Parent: 'Páxina padre'
-  SilverStripe\CMS\Model\VirtualPage:
+  VirtualPage:
     HEADER: 'Esto ye una páxina virtual'

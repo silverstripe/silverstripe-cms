@@ -1,3 +1,3 @@
 it_IT:
-  SilverStripe\CMS\Model\SiteTree:
+  SiteTree:
     Comments: Commenti

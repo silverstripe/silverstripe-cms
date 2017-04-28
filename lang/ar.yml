@@ -1,8 +1,8 @@
 ar:
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
+  AssetTableField:
     BACKLINKCOUNT: 'مستعمل في:'
-    PAGES: 'صفحة (صفحات)'
-  SilverStripe\CMS\Reports\BrokenLinksReport:
+    PAGES: صفحة (صفحات)
+  BrokenLinksReport:
     Any: أي
     BROKENLINKS: 'تقرير الروابط المكسورة'
     CheckSite: 'اختيار الموقع'
@@ -24,13 +24,12 @@ ar:
     ReasonDropdownVPBROKENLINK: 'الصفحة الظاهرية تشير الى صفحة غير موجودة..'
     RedirectorNonExistent: 'معيد توجيه الصفحة يشير الى صفحة غير موجودة..'
     VirtualPageNonExistent: 'الصفحة الظاهرية تشير الى صفحة غير موجودة..'
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: 'تحت صفحة أخرى'
-    ParentMode_top: 'أعلى مستوى'
-  SilverStripe\Admin\CMSBatchAction:
+  CMSAddPageController:
+    Title: 'أضف صفحة'
+  CMSBatchActions:
     PUBLISHED_PAGES: '%d من الصفحات المنشورة'
     PUBLISH_PAGES: النشر
-  SilverStripe\CMS\Controllers\CMSMain:
+  CMSMain:
     ACCESS: 'النفاذ إلى القسم ''{title}'''
     ACCESS_HELP: 'سماح بعرض لقسم يحتوي على صفحة الشجرة والمحتوى. يمكن التعامل معها عرض وتحرير الأذونات من خلال القائمه المنسدله للروابط محددة صفحة، فضلا عن فصل "أذونات المحتوى".'
     AddNew: 'أضف صفحة جديدة'
@@ -55,46 +54,63 @@ ar:
     ROLLEDBACKPUBv2: 'التراجع إلى النسخة المنشورة.'
     ROLLEDBACKVERSIONv2: 'التراجع إلى النسخة #%d.'
     SAVEDRAFT: 'احفظ المسودة'
-    TabContent: 'المحتوى'
+    TabContent: المحتوى
     TabHistory: السوابق
     TabSettings: الإعدادات
-  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+  CMSPageAddController:
+    ParentMode_child: 'تحت صفحة أخرى'
+    ParentMode_top: 'أعلى مستوى'
+  CMSPageHistoryController:
+    COMPAREMODE: 'وضع المقارنة (حدد اثنين)'
+    COMPAREVERSIONS: 'قارن الإصدارات'
+    REVERTTOTHISVERSION: 'العودة إلى هذا الإصدار'
+    SHOWUNPUBLISHED: 'عرض الإصدارات الغير منشورة'
+    SHOWVERSION: 'اعرض الإصدار'
+    VIEW: عرض
+    VIEWINGLATEST: 'يقع حاليا عرض أحدث إصدار.'
+    VIEWINGVERSION: 'يقع حاليا عرض إصدار  {version}.'
+  CMSPageHistoryController_versions_ss:
     AUTHOR: الكاتب
     NOTPUBLISHED: 'غير منشور'
     PUBLISHER: الناشر
-    UNKNOWN: 'غير معروف'
-    WHEN: 'متى'
-  SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: 'مصفاة'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: اذهب
-    SEARCH: بحث
-    SearchResults: 'نتائج البحث'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
+    UNKNOWN: غير معروف
+    WHEN: متى
+  CMSPagesController:
+    ListView: 'عرض القائمة'
+    MENUTITLE: الصفحات
+    TreeView: 'عرض الشجرة'
+  CMSPagesController_Tools_ss:
+    FILTER: مصفاة
+  CMSSearch:
+    FILTERDATEFROM: من
+    FILTERDATETO: إلى
+  CMSSiteTreeFilter_Search:
     Title: 'كل الصفحات'
-  SilverStripe\CMS\Controllers\ContentController:
+  ContentControl:
+    NOTEWONTBESHOWN: 'تنبيه: هذه الرسالة لن يتم عرضها لزوار موقعك'
+  ContentController:
     ARCHIVEDSITE: 'إصدار المعاينة'
     ARCHIVEDSITEFROM: 'موقع تمت أرشفته منذ'
-    CMS: 'نظام إدارة المحتوى'
-    DRAFT: 'المسودّة'
+    CMS: نظام إدارة المحتوى
+    DRAFT: المسودّة
     DRAFTSITE: 'موقع في المسودة'
-    Email: 'البريد الإلكتروني'
+    Email: البريد الإلكتروني
     INSTALL_SUCCESS: 'تم التثبيت بنجاح!'
     InstallFilesDeleted: 'تم حذف ملفات التثبيت بنجاح.'
     InstallSecurityWarning: 'لأسباب أمنية يجب عليك الآن حذف ملفات التثبيت، إلا إذا كنت تخطط لإعادة التثبيت في وقت لاحق (<em>يتطلب تسجيل الدخول كمسؤول، انظر أعلاه </em>). ملقم الويب أيضا يحتاج الآن إلى حق الكتابة في مجلد "الأصول"، يمكنك إزالة حق الكتابة من جميع المجلدات الأخرى. <a href="{link}" style="text-align: center;">اضغط هنا لحذف ملفات التثبيت.</a>'
     InstallSuccessCongratulations: 'قد تمّ تثبيت SilverStripe بنجاح!'
     LOGGEDINAS: 'الدخول كـ'
     LOGIN: الدخول
-    LOGOUT: الخروج
+    LOGOUT: 'الخروج'
     NOTLOGGEDIN: 'لم يتم تسجيل الدخول'
-    PUBLISHED: 'تمّ النشر'
+    PUBLISHED: تمّ النشر
     PUBLISHEDSITE: 'موقع منشور'
-    Password: 'كلمة السر'
+    Password: كلمة السر
     PostInstallTutorialIntro: 'هذا الموقع هو نسخة مبسطة من موقع سيلفر سترايب 3. لإلقاء نظرة على النسخة المفصلة، يرجى إلقاء نظرة على {link}.'
     StartEditing: 'يمكنك البدء في تحرير المحتوى الخاص بك عن طريق فتح  <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'غير ممكن حذف ملفات التثبيت. يرجى حذف الملفات التالية يدويا'
     VIEWPAGEIN: 'مشاهدة الصفحة في:'
-  SilverStripe\CMS\Model\ErrorPage:
+  ErrorPage:
     400: '400 - طلب خاطئ'
     401: '401 - غير مصرح'
     403: '403 - ممنوع'
@@ -123,10 +139,10 @@ ar:
     DEFAULTERRORPAGETITLE: 'الصفحة غير موجودة'
     DEFAULTSERVERERRORPAGECONTENT: '<p>عذرا، كانت هناك مشكلة في التعامل مع طلبك.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'خطأ في الملقم'
-  SilverStripe\Security\Permission:
+  Permissions:
     CONTENT_CATEGORY: 'تصاريح المحتوى'
     PERMISSIONS_CATEGORY: 'تصريح الدخول والقواعد'
-  SilverStripe\CMS\Model\RedirectorPage:
+  RedirectorPage:
     HASBEENSETUP: 'صفحة التحويل تم تهيئتها بدون تحديد وجهة التحويل'
     HEADER: 'هذه الصفحة سوف تقوم بتحويل الأعضاء إلى صفحة أخرى'
     OTHERURL: 'رابط موقع آخر'
@@ -134,24 +150,43 @@ ar:
     REDIRECTTOEXTERNAL: 'موقع آخر'
     REDIRECTTOPAGE: 'صفحة في موقعك الشخصي'
     YOURPAGE: 'صفحة في موقعك الشخصي'
-  SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: 'الجميع'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'يرجى نشر الصفحة المرتبطة من أجل نشر الصفحة الافتراضية'
+    VIRTUALPAGEWARNING: 'يرجى اختيار صفحة مرتبطة وقم بالحفظ أولا من أجل نشر هذه الصفحة'
+    VIRTUALPAGEWARNINGSETTINGS: 'يرجى اختيار صفحة مرتبطة في مجالات المحتوى الرئيسي من أجل النشر'
+  SearchForm:
+    GO: اذهب
+    SEARCH: بحث
+    SearchResults: 'نتائج البحث'
+  SideReport:
+    BROKENFILES: 'صفحات مع ملفات مكسورة'
+    BROKENREDIRECTORPAGES: 'معيد التوجيه الصفحات يشير إلى صفحات محذوفة'
+    BROKENVIRTUALPAGES: 'الصفحات الظاهرية تشير إالى صفحات محذوفة'
+    BrokenLinksGroupTitle: 'تقارير الروابط المكسورة'
+    ContentGroupTitle: 'تقارير المحتوى'
+    EMPTYPAGES: 'صفحات فارغة'
+    LAST2WEEKS: 'صفحات تم تعديلها في آخر أسبوعين'
+    ParameterLiveCheckbox: 'التأكد من حيوية الموقع'
+  SilverStripeNavigator:
+    ARCHIVED: المؤرشف
+  SiteTree:
+    ACCESSANYONE: الجميع
     ACCESSHEADER: 'من يستطيع مشاهدة هذه الصفحة ؟'
     ACCESSLOGGEDIN: 'الأعضاء المسجلين'
     ACCESSONLYTHESE: 'فقط هؤلاء الأشخاص ( اختر من القائمة)'
     ADDEDTODRAFTHELP: 'لم تنشر الصفحة بعد'
-    ADDEDTODRAFTSHORT: 'المسودة'
+    ADDEDTODRAFTSHORT: المسودة
     APPEARSVIRTUALPAGES: 'يظهر هذا المحتوى أيضا على الصفحات الافتراضية في أقسام {title}.'
     BUTTONCANCELDRAFT: 'إلغاء التغييرات في المسودة'
     BUTTONCANCELDRAFTDESC: 'إلغاء المسودة و العودة إلى الموقع المنشور حالياً'
     BUTTONPUBLISHED: نشرت
-    BUTTONSAVED: 'تم الحفظ'
+    BUTTONSAVED: تم الحفظ
     BUTTONSAVEPUBLISH: 'احفظ وانشر'
-    BUTTONUNPUBLISH: 'غير منشور'
+    BUTTONUNPUBLISH: غير منشور
     BUTTONUNPUBLISHDESC: 'حذف هذه الصفحة من الموقع المنشور'
     Comments: التعليقات
-    Content: 'المحتوى'
-    DEFAULTABOUTTITLE: حول
+    Content: المحتوى
+    DEFAULTABOUTTITLE: 'حول'
     DEFAULTCONTACTTITLE: 'اتصل بنا'
     DEFAULTHOMETITLE: الرئيسة
     DEPENDENT_NOTE: 'الصفحات التالية تعتمد على هذه الصفحة. وهذا يشمل صفحات الظاهري، وصفحات معيد التوجيه، والصفحات التي تحتوي على روابط المحتوى.'
@@ -166,20 +201,20 @@ ar:
     Editors: 'مجموعات المحررين'
     GroupPlaceholder: 'انقر لاختيار المجموعة'
     HASBROKENLINKS: 'هذه الصفحة تحتوي على روابط معطوبة'
-    HTMLEDITORTITLE: 'محتوى'
+    HTMLEDITORTITLE: محتوى
     INHERIT: 'استيراد من الصفحة المرجعية'
     LASTPUBLISHED: 'آخر منشور'
     LASTSAVED: 'آخر محفوظ'
     LASTUPDATED: 'أخر تحديث'
     LINKCHANGENOTE: 'تغيير هذا وصلة رابط الصفحة سوف تؤثر أيضًا على الوصلات لجميع صفحات الفرعية.'
     MENUTITLE: 'القائمة'
-    METADESC: الوصف
+    METADESC: 'الوصف'
     METADESCHELP: 'تستخدم محركات البحث هذا المحتوى لعرض نتائج البحث (على الرغم من أنها لن تؤثر على ترتيبها).'
     METAEXTRA: 'تخصيص Meta Tags'
     METAEXTRAHELP: 'علامات HTML لبيانات وصفية إضافية. على سبيل المثال <meta name="customName" content="your custom content here" />'
     MODIFIEDONDRAFTHELP: 'تحتوي الصفحة على تغييرات غير منشورة'
-    MODIFIEDONDRAFTSHORT: 'تم التعديل'
-    MetadataToggle: 'البيانات الوصفية'
+    MODIFIEDONDRAFTSHORT: تم التعديل
+    MetadataToggle: البيانات الوصفية
     MoreOptions: 'خيارات أخرى'
     NOTPUBLISHED: 'غير منشورة'
     OBSOLETECLASS: 'إنّ نوع {type} لهذه الصفحة بال. سيعيد حفظها تجديد نوعها وقد تفقد البيانات'
@@ -210,30 +245,22 @@ ar:
     VIEW_DRAFT_CONTENT: 'عرض مسودة المحتوى'
     VIEW_DRAFT_CONTENT_HELP: 'ينطبق على عرض صفحات خارج اتفاقية إدارة  محتوى الموقع في وضع المسودة. مفيدة للمتعاونين من الخارجين بدون الحصول على اتفاقية إدارة محتوى الموقع'
     Viewers: 'مجموعات المشاهدين'
-    Visibility: 'مدي الرؤية'
+    Visibility: مدي الرؤية
     has_one_Parent: 'الصفحة الرئيسة'
     many_many_BackLinkTracking: 'متابعة التعقيبات'
     many_many_ImageTracking: 'متابعة الصور'
     many_many_LinkTracking: 'متابعة الروابط'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'صفحات مع ملفات مكسورة'
-    BROKENREDIRECTORPAGES: 'معيد التوجيه الصفحات يشير إلى صفحات محذوفة'
-    BROKENVIRTUALPAGES: 'الصفحات الظاهرية تشير إالى صفحات محذوفة'
-    BrokenLinksGroupTitle: 'تقارير الروابط المكسورة'
-    ContentGroupTitle: 'تقارير المحتوى'
-    EMPTYPAGES: 'صفحات فارغة'
-    LAST2WEEKS: 'صفحات تم تعديلها في آخر أسبوعين'
-    ParameterLiveCheckbox: 'التأكد من حيوية الموقع'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: 'المؤرشف'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+  SiteTreeURLSegmentField:
+    EMPTY: 'الرجاء إدخال مقطع URL أو انقر فوق إلغاء الأمر'
+    HelpChars: 'يتم تلقائيا تحويل الأحرف الخاصة أو إزالتها.'
+  URLSegmentField:
     Cancel: إلغاء
     Edit: حرر
-    OK: 'موافق'
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
+    OK: موافق
+  ViewArchivedEmail_ss:
     CANACCESS: 'يمكنك الدخول إلى أرشيف الموقع عن طريق الرابط التالي :'
     HAVEASKED: 'تم طلب مشاهدة محتوى الموقع في'
-  SilverStripe\CMS\Model\VirtualPage:
+  VirtualPage:
     CHOOSE: 'الصفحة المرتبطة'
     EditLink: حرر
     HEADER: 'هذه صفحة افتراضية'
