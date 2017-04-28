@@ -21,7 +21,7 @@ class BrokenLinksReport extends Report
 
     public function title()
     {
-        return _t('BrokenLinksReport.BROKENLINKS', "Broken links report");
+        return _t('SilverStripe\\CMS\\Reports\\BrokenLinksReport.BROKENLINKS', "Broken links report");
     }
 
     public function sourceRecords($params, $sort, $limit)
@@ -62,23 +62,23 @@ class BrokenLinksReport extends Report
                 $reasonCodes = [];
                 if ($isVirtualPage) {
                     if ($record->HasBrokenLink) {
-                        $reason = _t('BrokenLinksReport.VirtualPageNonExistent', "virtual page pointing to non-existent page");
+                        $reason = _t('SilverStripe\\CMS\\Reports\\BrokenLinksReport.VirtualPageNonExistent', "virtual page pointing to non-existent page");
                         $reasonCodes = array("VPBROKENLINK");
                     }
                 } elseif ($isRedirectorPage) {
                     if ($record->HasBrokenLink) {
-                        $reason = _t('BrokenLinksReport.RedirectorNonExistent', "redirector page pointing to non-existent page");
+                        $reason = _t('SilverStripe\\CMS\\Reports\\BrokenLinksReport.RedirectorNonExistent', "redirector page pointing to non-existent page");
                         $reasonCodes = array("RPBROKENLINK");
                     }
                 } else {
                     if ($record->HasBrokenLink && $record->HasBrokenFile) {
-                        $reason = _t('BrokenLinksReport.HasBrokenLinkAndFile', "has broken link and file");
+                        $reason = _t('SilverStripe\\CMS\\Reports\\BrokenLinksReport.HasBrokenLinkAndFile', "has broken link and file");
                         $reasonCodes = array("BROKENFILE", "BROKENLINK");
                     } elseif ($record->HasBrokenLink && !$record->HasBrokenFile) {
-                        $reason = _t('BrokenLinksReport.HasBrokenLink', "has broken link");
+                        $reason = _t('SilverStripe\\CMS\\Reports\\BrokenLinksReport.HasBrokenLink', "has broken link");
                         $reasonCodes = array("BROKENLINK");
                     } elseif (!$record->HasBrokenLink && $record->HasBrokenFile) {
-                        $reason = _t('BrokenLinksReport.HasBrokenFile', "has broken file");
+                        $reason = _t('SilverStripe\\CMS\\Reports\\BrokenLinksReport.HasBrokenFile', "has broken file");
                         $reasonCodes = array("BROKENFILE");
                     }
                 }
@@ -102,20 +102,20 @@ class BrokenLinksReport extends Report
     public function columns()
     {
         if (isset($_REQUEST['filters']['CheckSite']) && $_REQUEST['filters']['CheckSite'] == 'Draft') {
-            $dateTitle = _t('BrokenLinksReport.ColumnDateLastModified', 'Date last modified');
+            $dateTitle = _t('SilverStripe\\CMS\\Reports\\BrokenLinksReport.ColumnDateLastModified', 'Date last modified');
         } else {
-            $dateTitle = _t('BrokenLinksReport.ColumnDateLastPublished', 'Date last published');
+            $dateTitle = _t('SilverStripe\\CMS\\Reports\\BrokenLinksReport.ColumnDateLastPublished', 'Date last published');
         }
 
         $linkBase = CMSPageEditController::singleton()->Link('show');
         $fields = array(
             "Title" => array(
-                "title" => _t('BrokenLinksReport.PageName', 'Page name'),
+                "title" => _t('SilverStripe\\CMS\\Reports\\BrokenLinksReport.PageName', 'Page name'),
                 'formatting' => function ($value, $item) use ($linkBase) {
                     return sprintf(
                         '<a href="%s" title="%s">%s</a>',
                         Controller::join_links($linkBase, $item->ID),
-                        _t('BrokenLinksReport.HoverTitleEditPage', 'Edit page'),
+                        _t('SilverStripe\\CMS\\Reports\\BrokenLinksReport.HoverTitleEditPage', 'Edit page'),
                         $value
                     );
                 }
@@ -125,10 +125,10 @@ class BrokenLinksReport extends Report
                 'casting' => 'DBDatetime->Full'
             ),
             "BrokenReason" => array(
-                "title" => _t('BrokenLinksReport.ColumnProblemType', "Problem type")
+                "title" => _t('SilverStripe\\CMS\\Reports\\BrokenLinksReport.ColumnProblemType', "Problem type")
             ),
             'AbsoluteLink' => array(
-                'title' => _t('BrokenLinksReport.ColumnURL', 'URL'),
+                'title' => _t('SilverStripe\\CMS\\Reports\\BrokenLinksReport.ColumnURL', 'URL'),
                 'formatting' => function ($value, $item) {
                     /** @var SiteTree $item */
                     $liveLink = $item->AbsoluteLiveLink;
@@ -148,19 +148,19 @@ class BrokenLinksReport extends Report
     public function parameterFields()
     {
         return new FieldList(
-            new DropdownField('CheckSite', _t('BrokenLinksReport.CheckSite', 'Check site'), array(
-                'Published' => _t('BrokenLinksReport.CheckSiteDropdownPublished', 'Published Site'),
-                'Draft' => _t('BrokenLinksReport.CheckSiteDropdownDraft', 'Draft Site')
+            new DropdownField('CheckSite', _t('SilverStripe\\CMS\\Reports\\BrokenLinksReport.CheckSite', 'Check site'), array(
+                'Published' => _t('SilverStripe\\CMS\\Reports\\BrokenLinksReport.CheckSiteDropdownPublished', 'Published Site'),
+                'Draft' => _t('SilverStripe\\CMS\\Reports\\BrokenLinksReport.CheckSiteDropdownDraft', 'Draft Site')
             )),
             new DropdownField(
                 'Reason',
-                _t('BrokenLinksReport.ReasonDropdown', 'Problem to check'),
+                _t('SilverStripe\\CMS\\Reports\\BrokenLinksReport.ReasonDropdown', 'Problem to check'),
                 array(
-                    '' => _t('BrokenLinksReport.Any', 'Any'),
-                    'BROKENFILE' => _t('BrokenLinksReport.ReasonDropdownBROKENFILE', 'Broken file'),
-                    'BROKENLINK' => _t('BrokenLinksReport.ReasonDropdownBROKENLINK', 'Broken link'),
-                    'VPBROKENLINK' => _t('BrokenLinksReport.ReasonDropdownVPBROKENLINK', 'Virtual page pointing to non-existent page'),
-                    'RPBROKENLINK' => _t('BrokenLinksReport.ReasonDropdownRPBROKENLINK', 'Redirector page pointing to non-existent page'),
+                    '' => _t('SilverStripe\\CMS\\Reports\\BrokenLinksReport.Any', 'Any'),
+                    'BROKENFILE' => _t('SilverStripe\\CMS\\Reports\\BrokenLinksReport.ReasonDropdownBROKENFILE', 'Broken file'),
+                    'BROKENLINK' => _t('SilverStripe\\CMS\\Reports\\BrokenLinksReport.ReasonDropdownBROKENLINK', 'Broken link'),
+                    'VPBROKENLINK' => _t('SilverStripe\\CMS\\Reports\\BrokenLinksReport.ReasonDropdownVPBROKENLINK', 'Virtual page pointing to non-existent page'),
+                    'RPBROKENLINK' => _t('SilverStripe\\CMS\\Reports\\BrokenLinksReport.ReasonDropdownRPBROKENLINK', 'Redirector page pointing to non-existent page'),
                 )
             )
         );

@@ -199,7 +199,7 @@ class CMSPageHistoryController extends CMSMain
         $actions = new FieldList(
             $revert = FormAction::create(
                 'doRollback',
-                _t('CMSPageHistoryController.REVERTTOTHISVERSION', 'Revert to this version')
+                _t('SilverStripe\\CMS\\Controllers\\CMSPageHistoryController.REVERTTOTHISVERSION', 'Revert to this version')
             )->setUseButtonTag(true)
         );
         $actions->setForm($form);
@@ -218,10 +218,10 @@ class CMSPageHistoryController extends CMSMain
                 $id
             );
 
-            $view = _t('CMSPageHistoryController.VIEW', "view");
+            $view = _t('SilverStripe\\CMS\\Controllers\\CMSPageHistoryController.VIEW', "view");
 
             $message = _t(
-                'CMSPageHistoryController.COMPARINGVERSION',
+                'SilverStripe\\CMS\\Controllers\\CMSPageHistoryController.COMPARINGVERSION',
                 "Comparing versions {version1} and {version2}.",
                 array(
                     'version1' => sprintf('%s (<a href="%s">%s</a>)', $versionID, Controller::join_links($link, $versionID), $view),
@@ -232,10 +232,10 @@ class CMSPageHistoryController extends CMSMain
             $revert->setReadonly(true);
         } else {
             if ($record->isLatestVersion()) {
-                $message = _t('CMSPageHistoryController.VIEWINGLATEST', 'Currently viewing the latest version.');
+                $message = _t('SilverStripe\\CMS\\Controllers\\CMSPageHistoryController.VIEWINGLATEST', 'Currently viewing the latest version.');
             } else {
                 $message = _t(
-                    'CMSPageHistoryController.VIEWINGVERSION',
+                    'SilverStripe\\CMS\\Controllers\\CMSPageHistoryController.VIEWINGVERSION',
                     "Currently viewing version {version}.",
                     array('version' => $versionID)
                 );
@@ -324,12 +324,12 @@ class CMSPageHistoryController extends CMSMain
         $fields = new FieldList(
             new CheckboxField(
                 'ShowUnpublished',
-                _t('CMSPageHistoryController.SHOWUNPUBLISHED', 'Show unpublished versions'),
+                _t('SilverStripe\\CMS\\Controllers\\CMSPageHistoryController.SHOWUNPUBLISHED', 'Show unpublished versions'),
                 $showUnpublishedChecked
             ),
             new CheckboxField(
                 'CompareMode',
-                _t('CMSPageHistoryController.COMPAREMODE', 'Compare mode (select two)'),
+                _t('SilverStripe\\CMS\\Controllers\\CMSPageHistoryController.COMPAREMODE', 'Compare mode (select two)'),
                 $compareModeChecked
             ),
             new LiteralField('VersionsHtml', $versionsHtml),
@@ -421,7 +421,7 @@ class CMSPageHistoryController extends CMSMain
     public function Breadcrumbs($unlinked = false)
     {
         $crumbs = parent::Breadcrumbs($unlinked);
-        $crumbs[0]->Title = _t('CMSPagesController.MENUTITLE', 'Pages');
+        $crumbs[0]->Title = _t('SilverStripe\\CMS\\Controllers\\CMSPagesController.MENUTITLE', 'Pages');
         return $crumbs;
     }
 

@@ -36,7 +36,7 @@ d&&(s=parseInt(JSON.parse(d).ParentID,10))}var l={selector:this.data("targetPane
 s?(o=this.data("extraParams")?this.data("extraParams"):"",c=t.path.addSearchParams(i18n.sprintf(this.data("urlAddpage"),s),o)):c=this.attr("href"),t(".cms-container").loadPanel(c,null,l),n.preventDefault(),
 this.blur()}})})},function(t,e,n){"use strict"
 function a(t){return t&&t.__esModule?t:{default:t}}var i=n(2),s=a(i),o=n(5),r=a(o)
-s.default.entwine("ss",function(t){t(".cms-edit-form :input[name=ClassName]").entwine({onchange:function t(){alert(r.default._t("CMSMAIN.ALERTCLASSNAME"))}}),t(".cms-edit-form input[name=Title]").entwine({
+s.default.entwine("ss",function(t){t(".cms-edit-form :input[name=ClassName]").entwine({onchange:function t(){alert(r.default._t("CMS.ALERTCLASSNAME"))}}),t(".cms-edit-form input[name=Title]").entwine({
 onmatch:function e(){var n=this
 n.data("OrigVal",n.val())
 var a=n.closest("form"),i=t("input:text[name=URLSegment]",a),s=t("input[name=LiveLink]",a)
@@ -48,9 +48,8 @@ e.val()==a&&(e.val(n),e.updatedRelatedFields&&e.updatedRelatedFields())})},updat
 
 i.update(n),s.is(":visible")&&s.hide()},updateBreadcrumbLabel:function e(n){var a=t(".cms-edit-form input[name=ID]").val(),i=t("span.cms-panel-link.crumb")
 n&&""!=n&&i.text(n)},_addActions:function e(){var n=this,a
-a=t("<button />",{class:"update ss-ui-button-small",text:r.default._t("URLSEGMENT.UpdateURL"),type:"button",click:function t(e){e.preventDefault(),n.updateURLSegment(n.val())}}),a.insertAfter(n),a.hide()
-
-}}),t(".cms-edit-form .parentTypeSelector").entwine({onmatch:function t(){var e=this
+a=t("<button />",{class:"update ss-ui-button-small",text:r.default._t("CMS.UpdateURL"),type:"button",click:function t(e){e.preventDefault(),n.updateURLSegment(n.val())}}),a.insertAfter(n),a.hide()}}),t(".cms-edit-form .parentTypeSelector").entwine({
+onmatch:function t(){var e=this
 this.find(":input[name=ParentType]").bind("click",function(t){e._toggleSelection(t)}),this.find(".TreeDropdownField").bind("change",function(t){e._changeParentId(t)}),this._changeParentId(),this._toggleSelection(),
 this._super()},onunmatch:function t(){this._super()},_toggleSelection:function e(n){var a=this.find(":input[name=ParentType]:checked").val(),i=this.find("#Form_EditForm_ParentID_Holder")
 "root"==a?this.find(":input[name=ParentID]").val(0):this.find(":input[name=ParentID]").val(this.find("#Form_EditForm_ParentType_subpage").data("parentIdValue")),"root"!=a?i.slideDown(400,function(){t(this).css("overflow","visible")
@@ -66,13 +65,13 @@ a[e?"hide":"slideUp"](function(){n.removeClass("field--merge-below")}).css("over
 return"http://"!=a.substr(0,7)&&(a=t("base").attr("href")+a),window.open(a,"printable"),!1}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_rollback").entwine({onclick:function t(e){var n=this.parents("form:first"),a=n.find(":input[name=Version]").val(),i=""
 
 
-return i=a?r.default.sprintf(r.default._t("CMSMain.RollbackToVersion"),a):r.default._t("CMSMain.ConfirmRestoreFromLive"),!!confirm(i)&&this._super(e)}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_archive").entwine({
+return i=a?r.default.sprintf(r.default._t("CMS.RollbackToVersion"),a):r.default._t("CMS.ConfirmRestoreFromLive"),!!confirm(i)&&this._super(e)}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_archive").entwine({
 onclick:function t(e){var n=this.parents("form:first"),a=""
 return a=n.find("input[name=ArchiveWarningMessage]").val().replace(/\\n/g,"\n"),!!confirm(a)&&this._super(e)}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_restore").entwine({onclick:function t(e){
 var n=this.parents("form:first"),a=n.find(":input[name=Version]").val(),i="",s=this.data("toRoot")
-return i=r.default.sprintf(r.default._t(s?"CMSMain.RestoreToRoot":"CMSMain.Restore"),a),!!confirm(i)&&this._super(e)}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_unpublish").entwine({onclick:function t(e){
+return i=r.default.sprintf(r.default._t(s?"CMS.RestoreToRoot":"CMS.Restore"),a),!!confirm(i)&&this._super(e)}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_unpublish").entwine({onclick:function t(e){
 var n=this.parents("form:first"),a=n.find(":input[name=Version]").val(),i=""
-return i=r.default.sprintf(r.default._t("CMSMain.Unpublish"),a),!!confirm(i)&&this._super(e)}}),t(".cms-edit-form.changed").entwine({onmatch:function t(e){var n=this.find("button[name=action_save]")
+return i=r.default.sprintf(r.default._t("CMS.Unpublish"),a),!!confirm(i)&&this._super(e)}}),t(".cms-edit-form.changed").entwine({onmatch:function t(e){var n=this.find("button[name=action_save]")
 n.attr("data-text-alternate")&&(n.attr("data-text-standard",n.text()),n.text(n.attr("data-text-alternate"))),n.attr("data-btn-alternate")&&(n.attr("data-btn-standard",n.attr("class")),n.attr("class",n.attr("data-btn-alternate"))),
 n.removeClass("btn-secondary-outline").addClass("btn-primary")
 var a=this.find("button[name=action_publish]")
@@ -113,17 +112,17 @@ n.each(function(e){var a="1",i=t(n[e]).find("li").length
 i>20?a="3":i>10&&(a="2"),t(n[e]).addClass("col-"+a).removeClass("right"),t(n[e]).find("li").on("mouseenter",function(e){t(this).parent("ul").removeClass("right")})})},getTreeConfig:function e(){var n=this,a=this._super(),i=this.getHints()
 
 
-return a.plugins.push("contextmenu"),a.contextmenu={items:function e(a){var i={edit:{label:a.hasClass("edit-disabled")?r.default._t("Tree.EditPage","Edit page",100,"Used in the context menu when right-clicking on a page node in the CMS tree"):r.default._t("Tree.ViewPage","View page",100,"Used in the context menu when right-clicking on a page node in the CMS tree"),
+return a.plugins.push("contextmenu"),a.contextmenu={items:function e(a){var i={edit:{label:a.hasClass("edit-disabled")?r.default._t("CMS.EditPage","Edit page",100,"Used in the context menu when right-clicking on a page node in the CMS tree"):r.default._t("CMS.ViewPage","View page",100,"Used in the context menu when right-clicking on a page node in the CMS tree"),
 action:function e(a){t(".cms-container").entwine(".ss").loadPanel(r.default.sprintf(n.data("urlEditpage"),a.data("id")))}}}
-a.hasClass("nochildren")||(i.showaslist={label:r.default._t("Tree.ShowAsList"),action:function e(a){t(".cms-container").entwine(".ss").loadPanel(n.data("urlListview")+"&ParentID="+a.data("id"),null,{tabState:{
+a.hasClass("nochildren")||(i.showaslist={label:r.default._t("CMS.ShowAsList"),action:function e(a){t(".cms-container").entwine(".ss").loadPanel(n.data("urlListview")+"&ParentID="+a.data("id"),null,{tabState:{
 "pages-controller-cms-content":{tabSelector:".content-listview"}}})}})
 var s=a.data("pagetype"),o=a.data("id"),d=a.find(">a .item").data("allowedchildren"),l={},c=!1
 return t.each(d,function(e,a){c=!0,l["allowedchildren-"+e]={label:'<span class="jstree-pageicon"></span>'+a,_class:"class-"+e,action:function a(i){t(".cms-container").entwine(".ss").loadPanel(t.path.addSearchParams(r.default.sprintf(n.data("urlAddpage"),o,e),n.data("extraParams")))
 
-}}}),c&&(i.addsubpage={label:r.default._t("Tree.AddSubPage","Add page under this page",100,"Used in the context menu when right-clicking on a page node in the CMS tree"),submenu:l}),a.hasClass("edit-disabled")||(i.duplicate={
-label:r.default._t("Tree.Duplicate"),submenu:[{label:r.default._t("Tree.ThisPageOnly"),action:function e(a){t(".cms-container").entwine(".ss").loadPanel(t.path.addSearchParams(r.default.sprintf(n.data("urlDuplicate"),a.data("id")),n.data("extraParams")))
+}}}),c&&(i.addsubpage={label:r.default._t("CMS.AddSubPage","Add page under this page",100,"Used in the context menu when right-clicking on a page node in the CMS tree"),submenu:l}),a.hasClass("edit-disabled")||(i.duplicate={
+label:r.default._t("CMS.Duplicate"),submenu:[{label:r.default._t("CMS.ThisPageOnly"),action:function e(a){t(".cms-container").entwine(".ss").loadPanel(t.path.addSearchParams(r.default.sprintf(n.data("urlDuplicate"),a.data("id")),n.data("extraParams")))
 
-}},{label:r.default._t("Tree.ThisPageAndSubpages"),action:function e(a){t(".cms-container").entwine(".ss").loadPanel(t.path.addSearchParams(r.default.sprintf(n.data("urlDuplicatewithchildren"),a.data("id")),n.data("extraParams")))
+}},{label:r.default._t("CMS.ThisPageAndSubpages"),action:function e(a){t(".cms-container").entwine(".ss").loadPanel(t.path.addSearchParams(r.default.sprintf(n.data("urlDuplicatewithchildren"),a.data("id")),n.data("extraParams")))
 
 }}]}),i}},a}}),t(".cms-tree a.jstree-clicked").entwine({onmatch:function t(){var e=this,n=e.parents(".cms-panel-content"),a;(e.offset().top<0||e.offset().top>n.height()-e.height())&&(a=n.scrollTop()+e.offset().top+n.height()/2,
 n.animate({scrollTop:a},"slow"))}}),t(".cms-tree-filtered .clear-filter").entwine({onclick:function t(){window.location=location.protocol+"//"+location.host+location.pathname}})})},function(t,e,n){"use strict"
@@ -142,7 +141,7 @@ t(".cms-container").loadPanel(d,"",{pjax:"CurrentForm"})}}),t("#Form_VersionsFor
 },onchange:function t(){this.toggle()},toggle:function e(){var n=t(this),a=n.parents("form")
 n.attr("checked")?a.find("tr[data-published=false]").css("display",""):a.find("tr[data-published=false]").css("display","none")._unselect()}}),t("#Form_VersionsForm tbody tr").entwine({onclick:function t(e){
 var n,a
-return n=this.parents("form").find(":input[name=CompareMode]").attr("checked"),a=this.siblings(".active"),n&&this.hasClass("active")?void this._unselect():n?a.length>1?alert(r.default._t("ONLYSELECTTWO","You can only compare two versions at this time.")):(this._select(),
+return n=this.parents("form").find(":input[name=CompareMode]").attr("checked"),a=this.siblings(".active"),n&&this.hasClass("active")?void this._unselect():n?a.length>1?alert(r.default._t("CMS.ONLYSELECTTWO","You can only compare two versions at this time.")):(this._select(),
 void(1==a.length&&this.parents("form").submit())):(this._select(),a._unselect(),this.parents("form").submit(),void 0)},_unselect:function t(){this.removeClass("active"),this.find(":input[type=checkbox]").attr("checked",!1)
 
 },_select:function t(){this.addClass("active"),this.find(":input[type=checkbox]").attr("checked",!0)}})})},function(t,e,n){"use strict"

@@ -1,47 +1,21 @@
 bs:
-  AssetAdmin:
-    ADDFILES: 'Dodaj datoteke'
-    ActionAdd: 'Kreiraj direktorij'
-    AppCategoryArchive: Arhiva
-    AppCategoryAudio: Audio
-    AppCategoryDocument: Dokument
-    BackToFolder: 'Nazad na direktorij'
-    CREATED: Datum
-    CurrentFolderOnly: 'Limitiraj na trenutni direktorij?'
-    DetailsView: Detalji
-    FILES: Datoteke
-    FILESYSTEMSYNC: 'Sinhroniziraj datoteke'
-    FROMTHEINTERNET: 'Sa interneta'
-    FROMYOURCOMPUTER: 'Sa Vašeg kompijutera'
-    Filetype: 'Tip datoteke'
-    MENUTITLE: Datoteke
-    NEWFOLDER: NoviDirektorij
-    SIZE: Veličina
-    THUMBSDELETED: '{count} nekorištenih je obrisano'
-    Upload: Upload
-  AssetAdmin_DeleteBatchAction:
-    TITLE: 'Izbriši direktorije'
-  AssetAdmin_Tools:
-    FILTER: Filter
-  AssetAdmin_left_ss:
-    GO: Idi
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Korišteno ovdje:'
     PAGES: strana(ice)
-  BackLink_Button_ss:
-    Back: Nazad
-  BrokenLinksReport:
-    Any: 'Bilo koji'
-  CMSMain:
+  SilverStripe\CMS\Controllers\CMSMain:
     Create: Kreiraj
-    DELETE: 'Izbriši sa privremenog nacrta stranice'
     PAGENOTEXISTS: 'Ova stranica ne postoji'
     PUBALLCONFIRM: 'Molimo, objavite svaku stavku na ovoj stranici, kopiranjem sadržaja na aktivnu stranicu'
     PUBALLFUN: 'Funkcija "Objavi sve"'
     REMOVEDPAGEFROMDRAFT: 'Uklonjeno ''%s'' sa privremenog nacrta stranice'
     ROLLBACK: 'Vrati na ovo izdanje'
-    SAVE: Snimi
-  ErrorPage:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
+    CANACCESS: 'Arhiviranoj stranici možete pristupiti korištenjem ovog linka:'
+    HAVEASKED: 'Zahtjevali ste pregled sadržaja naše stranice na'
+  SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'Kod greške'
+    DEFAULTERRORPAGECONTENT: '<p>Žao nam je, pokušali ste pristupiti stranici koja ne postoji.</p><p>Molimo provjerite da li ste ispravno ukucali URL kojem ste pokušali pristupiti i pokušajte ponovo.</p>'
+    DEFAULTERRORPAGETITLE: 'Stranica nije pronađena'
     400: '400 - Pogrešan zahtjev'
     401: '401 - Neovlašteno'
     403: '403 - Zabranjeno'
@@ -65,14 +39,7 @@ bs:
     503: '503 - Nedostupan servis '
     504: '504 - Gateway zaustavljen'
     505: '505 - HTTP izdanje nije podržano'
-    CODE: 'Kod greške'
-    DEFAULTERRORPAGECONTENT: '<p>Žao nam je, pokušali ste pristupiti stranici koja ne postoji.</p><p>Molimo provjerite da li ste ispravno ukucali URL kojem ste pokušali pristupiti i pokušajte ponovo.</p>'
-    DEFAULTERRORPAGETITLE: 'Stranica nije pronađena'
-  Folder:
-    DELETEUNUSEDTHUMBNAILS: 'Izbriši neiskorištene sličice'
-    UNUSEDFILESTITLE: 'Neiskorištene datoteke'
-    UNUSEDTHUMBNAILSTITLE: 'Neiskorištene sličice'
-  RedirectorPage:
+  SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Stranica za preusmjeravanje je podešena bez odredišta.'
     HEADER: 'Ova stranica će preusmjeriti korisnike na drugu stranicu'
     OTHERURL: 'URL druge web stranice'
@@ -80,18 +47,11 @@ bs:
     REDIRECTTOEXTERNAL: 'Drugu web stranicu'
     REDIRECTTOPAGE: 'Na stavku na Vašoj web stranici'
     YOURPAGE: 'Stavku na Vašoj web stranici'
-  SearchForm:
-    GO: Idi
-    SEARCH: Pretraga
-  SideReport:
-    EMPTYPAGES: 'Prazne stranice'
-    LAST2WEEKS: 'Izmjenjene stranice u posljednje 2 sedmice'
-  SiteTree:
+  SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'Svi korisnici'
     ACCESSHEADER: 'Ko može pregledati ovu stavku na mojoj stranici?'
     ACCESSLOGGEDIN: 'Prijavljeni korisnici'
     ACCESSONLYTHESE: 'Samo ovi korisnici (izaberite sa popisa)'
-    ALLOWCOMMENTS: 'Dozvoli komentare na ovoj stranici?'
     BUTTONCANCELDRAFT: 'Poništi promjene privremenog nacrta stranice'
     BUTTONCANCELDRAFTDESC: 'Izbrišite Vaš privremeni nacrt stranice i vratite se na trenutno objavljenu stranicu'
     BUTTONUNPUBLISH: 'Opozovi objavljivanje'
@@ -114,8 +74,13 @@ bs:
     TABBEHAVIOUR: Ponašanje
     TABCONTENT: Sadržaj
     TOPLEVEL: 'Sadržaj stranice (Glavni nivo)'
-  ViewArchivedEmail_ss:
-    CANACCESS: 'Arhiviranoj stranici možete pristupiti korištenjem ovog linka:'
-    HAVEASKED: 'Zahtjevali ste pregled sadržaja naše stranice na'
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Ovo je virtualna stranica'
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    Any: 'Bilo koji'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Idi
+    SEARCH: Pretraga
+  SilverStripe\Reports\SideReport:
+    EMPTYPAGES: 'Prazne stranice'
+    LAST2WEEKS: 'Izmjenjene stranice u posljednje 2 sedmice'

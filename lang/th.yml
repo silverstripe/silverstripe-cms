@@ -1,74 +1,11 @@
 th:
-  AssetAdmin:
-    ADDFILES: เพิ่มไฟล์
-    ActionAdd: เพิ่มโฟลเดอร์
-    AppCategoryArchive: รายการ
-    AppCategoryAudio: ไฟล์เสียง
-    AppCategoryDocument: เอกสาร
-    AppCategoryFlash: แฟลช
-    AppCategoryImage: 'รูปภาพ'
-    AppCategoryVideo: วีดีโอ
-    BackToFolder: ย้อนกลับไปที่โฟลเดอร์
-    CREATED: วันที่
-    CurrentFolderOnly: 'จำกัดเฉพาะโฟลเดอร์นี้?'
-    DetailsView: รายละเอียด
-    FILES: ไฟล์
-    FILESYSTEMSYNC: ผสานไฟล์
-    FILESYSTEMSYNCTITLE: 'อัพเดทรายการไฟลในฐานข้อมูล CMS ในระบบไฟล์ มีประโยชน์สำหรับการอัพโหลดไฟล์ใหม่นอกระบบ CMS เช่น ผ่านทาง FTP'
-    FROMTHEINTERNET: จากอินเทอร์เน็ต
-    FROMYOURCOMPUTER: จากเครื่องคอมพิวเตอร์ของคุณ
-    Filetype: ชนิดของไฟล์
-    ListView: มุมมองแบบแสดงรายการ
-    MENUTITLE: ไฟล์
-    NEWFOLDER: สร้างโฟลเดอร์ใหม่
-    SIZE: ขนาด
-    THUMBSDELETED: '{count} รูปย่อที่ไม่ได้ถูกใช้งานได้ถูกลบทิ้งแล้ว'
-    TreeView: 'มุมมองแบบ Tree'
-    Upload: อัพโหลด
-  AssetAdmin_DeleteBatchAction:
-    TITLE: ลบโฟลเดอร์
-  AssetAdmin_Tools:
-    FILTER: ตัวกรองข้อมูล
-  AssetAdmin_left_ss:
-    GO: ไป
-  AssetTableField:
-    BACKLINKCOUNT: 'ถูกใช้งานเมื่อ:'
-    PAGES: หน้า
-  BackLink_Button_ss:
-    Back: ย้อนกลับ
-  BrokenLinksReport:
-    Any: ใดๆก็ได้
-    BROKENLINKS: รายงานลิงค์เสีย
-    CheckSite: ตรวจเว็บไซต์
-    CheckSiteDropdownDraft: เว็บไซต์ฉบับร่าง
-    CheckSiteDropdownPublished: เว็บไซต์ที่เผยแพร่แล้ว
-    ColumnDateLastModified: วันที่แก้ไขล่าสุด
-    ColumnDateLastPublished: วันที่เผยแพร่ล่าสุด
-    ColumnProblemType: 'ประเภทปัญหา'
-    HasBrokenFile: มีไฟล์เสีย
-    HasBrokenLink: มีลิงค์เสีย
-    HasBrokenLinkAndFile: มีลิงค์เสียและไฟล์เสีย
-    HoverTitleEditPage: แก้ไขหน้าเว็บ
-    PageName: ชื่อของหน้าเว็บ
-    ReasonDropdown: ปัญหาที่ต้องตรวจสอบ
-    ReasonDropdownBROKENFILE: ไฟล์เสีย
-    ReasonDropdownBROKENLINK: ลิงค์เสีย
-    ReasonDropdownRPBROKENLINK: หน้าเว็บเปลี่ยนเส้นทางชี้ไปที่หน้าเว็บที่ไม่มีอยู่ในระบบ
-    ReasonDropdownVPBROKENLINK: หน้าเว็บจำลองชี้ไปยังหน้าเว็บที่ไม่มีอยู่ในระบบ
-    RedirectorNonExistent: หน้าเว็บเปลี่ยนเส้นทางชี้ไปที่หน้าเว็บที่ไม่มีอยู่ในระบบ
-    VirtualPageNonExistent: หน้าเว็บจำลองชี้ไปที่หน้าเว็บที่ไม่มีอยู่ในระบบ
-  CMSAddPageController:
-    Title: เพิ่มหน้า
-  CMSBatchActions:
-    DELETED_DRAFT_PAGES: 'ลบ %d หน้าจากเว็บไซต์ฉบับร่างแล้ว, ล้มเหลว %d'
-    DELETED_PAGES: 'ลบ %d หน้าจากเว็บไซต์ที่เผยแพร่อยู่แล้ว ล้มเหลว %d'
-    DELETE_DRAFT_PAGES: ลบออกจากเว็บไซต์ฉบับร่าง
-    DELETE_PAGES: ลบออกจากเว็บไซต์ที่เผยแพร่อยู่
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'เผยแพร่แล้ว %d หน้า, ล้วเหลว %d'
     PUBLISH_PAGES: เผยแพร่
-  CMSFileAddController:
-    MENUTITLE: ไฟล์
-  CMSMain:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
+    BACKLINKCOUNT: 'ถูกใช้งานเมื่อ:'
+    PAGES: หน้า
+  SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'เข้าถึงเซ็กชั่น ''{title}'''
     ACCESS_HELP: 'อนุญาตให้เปิดดูส่วนของเซ็กชั่นที่บรรจุรายการหน้าเว็บแบบทรีและเนื้อหาได้ สิทธิ์ในการเปิดดูและแก้ไขสามารถจัดการได้ผ่านทางหน้าเว็บทีระบุอยู่ในเมนูแบบดรอปดาวน์ เช่นเดียวกับ "สิทธิ์อนุญาตของเนื้อหา" ที่แยกออกมาต่างหากด้วยเช่นกัน'
     AddNew: เพิ่มหน้าใหม่
@@ -76,11 +13,6 @@ th:
     ChoosePageParentMode: เลือกว่าต้องการสร้างหน้าเว็บนี้ไว้ที่ไหน
     ChoosePageType: 'เลือกประเภทของหน้าเว็บ'
     Create: สร้าง
-    DELETE: ลบออกจากเว็บไซต์ฉบับร่าง
-    DELETEFP: ลบ
-    DESCREMOVED: 'และ {count} รายการลูก'
-    EditTree: 'แก้ไขรายการแบบ Tree'
-    MENUTITLE: แก้ไขหน้าเว็บ
     NEWPAGE: 'ใหม่ {pagetype}'
     PAGENOTEXISTS: ไม่มีหน้านี้อยู่
     PAGETYPEANYOPT: 'ประเภทใดก็ได้'
@@ -92,53 +24,34 @@ th:
     REMOVEDPAGEFROMDRAFT: 'ลบ ''%s'' ออกจากเว็บไซต์ฉบับร่างแล้ว'
     RESTORED: 'เรียกคืนค่า ''{title}'' เสร็จเรียบร้อยแล้ว'
     ROLLBACK: ย้อนกลับไปที่รุ่นนี้
-    SAVE: บันทึก
     TabContent: เนื้อหา
     TabHistory: ประวัติย้อนหลัง
     TabSettings: ตั้งค่า
-  CMSMain_left_ss:
-    RESET: รีเซ็ต
-  CMSPageAddController:
-    MENUTITLE: เพิ่มหน้า
+  SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: อยู่ใต้หน้าอื่นๆ
     ParentMode_top: ระดับสูงสุด
-  CMSPageEditController:
-    MENUTITLE: แก้ไขหน้าเว็บ
-  CMSPageHistoryController:
+    Title: เพิ่มหน้า
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    AUTHOR: ผู้แต่ง
     COMPAREMODE: 'โหมดเปรียบเทียบ (เลือกสองรายการ)'
     COMPAREVERSIONS: เปรียบเทียบรุ่น
-    COMPARINGVERSION: 'กำลังเปรียบเทียบรุ่น {version1} และ {version2}.'
-    MENUTITLE: ประวัติย้อนหลัง
+    NOTPUBLISHED: ยังไม่ได้เผยแพร่
+    PUBLISHER: ผู้เผยแพร่
     REVERTTOTHISVERSION: ย้อนกลับไปที่รุ่นนี้
     SHOWUNPUBLISHED: แสดงรุ่นที่ระงับการเผยแพร่ไว้
     SHOWVERSION: แสดงข้อมูลรุ่น
+    UNKNOWN: ไม่ทราบ
     VIEW: มุมมอง
     VIEWINGVERSION: 'ขณะนี้กำลังเปิดดูในรุ่น {version}.'
-  CMSPageHistoryController_versions_ss:
-    AUTHOR: ผู้แต่ง
-    NOTPUBLISHED: ยังไม่ได้เผยแพร่
-    PUBLISHER: ผู้เผยแพร่
-    UNKNOWN: ไม่ทราบ
     WHEN: เมื่อ
-  CMSPageSettingsController:
-    MENUTITLE: แก้ไขหน้าเว็บ
-  CMSPagesController:
-    GalleryView: มุมมองแบบแกลอรี่
-  CMSPagesController_Tools_ss:
+  SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: ตัวกรองข้อมูล
-  CMSSearch:
-    FILTERDATEHEADING: วันที่
-  CMSSettingsController:
-    MENUTITLE: ตั้งค่า
-  CMSSiteTreeFilter_Search:
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: หน้าทั้งหมด
-  ContentControl:
-    NOTEWONTBESHOWN: 'หมายเหตุ: ข้อความนี้จะไม่ถูกนำไปแสดงให้ผู้เยี่ยมชมเว็บไซต์ของคุณเห็น'
-  ContentController:
+  SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: รุ่นสำหรับดูตัวอย่าง
     ARCHIVEDSITEFROM: เว็บไซต์ที่จัดเก็บไว้ถาวรจาก
     DRAFTSITE: เว็บไซต์ฉบับร่าง
-    DRAFT_SITE_ACCESS_RESTRICTION: 'คุณต้องเข้าสู่ระบบด้วยรหัสผ่าน CMS ของคุณ หากต้องการเปิดดูฉบับร่าง หรือเนื้อหาย้อนหลัง.  <a href="%s">คลิกที่นี่เพื่อย้อนกลับไปที่เว็บไซต์ที่เผยแพร่อยู่.</a>'
     Email: อีเมล
     INSTALL_SUCCESS: การติดตั้งเสร็จสมบูรณ์
     InstallFilesDeleted: ไฟล์ติดตั้งได้ถูกลบทิ้งเรียบร้อยแล้ว
@@ -147,13 +60,24 @@ th:
     LOGGEDINAS: เข้าสู่ระบบในชื่อ
     LOGIN: เข้าสู่ระบบ
     LOGOUT: ออกจากระบบ
+    NOTEWONTBESHOWN: 'หมายเหตุ: ข้อความนี้จะไม่ถูกนำไปแสดงให้ผู้เยี่ยมชมเว็บไซต์ของคุณเห็น'
     NOTLOGGEDIN: ยังไม่ได้เข้าสู่ระบบ
     PUBLISHEDSITE: เว็บไซต์ที่เผยแพร่อยู่
     Password: รหัสผ่าน
     PostInstallTutorialIntro: 'เว็บไซต์นี้เป็นรุ่นอย่างง่ายของเว็บไซต์ที่สร้างจากรุ่น SiverStripe 3 หากต้องการขยายขีดความสามารถ กรุณาเข้าไปที่ {link}'
     UnableDeleteInstall: 'ไม่สามารถลบไฟล์ติดตั้งได้ กรุณาลบไฟล์ดังกล่าวด้านล่างด้วยตนเอง'
     VIEWPAGEIN: 'เปิดดูหน้าเว็บใน:'
-  ErrorPage:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
+    CANACCESS: 'คุณสามารถเข้าถึงเว็บไซต์รุ่นย้อนหลังได้จากลิงก์นี้:'
+    HAVEASKED: คุณได้ร้องขอเพื่อเปิดดูเนื้อหาในเว็บไซต์ของเราเมื่อ
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    HelpChars: ตัวอักษรพิเศษได้ถูกแปลงค่าหรือลบออกโดยอัตโนมัติแล้ว
+  SilverStripe\CMS\Model\ErrorPage:
+    CODE: รหัสข้อผิดพลาด
+    DEFAULTERRORPAGECONTENT: '<p>ขออภัย, แต่คุณดูเหมือนกำลังพยายามที่จะเข้าถึงหน้าเว็บที่ไม่มีอยู่ในระบบ.</p><p>กรุณาตรวจสอบการสะกดคำของ URL ของหน้าเว็บที่คุณพยายามจะเข้าถึงแล้วลองใหม่อีกครั้ง.</p>'
+    DEFAULTERRORPAGETITLE: ไม่พบหน้าที่ต้องการ
+    DEFAULTSERVERERRORPAGECONTENT: '<p>ขออภัย, เกิดข้อผิดพลาดบางประการในการจัดการตามคำร้องขอของคุณ</p>'
+    DEFAULTSERVERERRORPAGETITLE: เซิร์ฟเวอร์เกิดข้อผิดพลาด
     400: '400 - ข้อความร้องขอที่ส่งมามีความผิดพลาดทางไวยากรณ์ หรือไม่สามารถทำตามการร้องขอนั้นได้'
     401: '401 - ไม่สามารถยืนยันตัวบุคคลได้'
     403: '403 - ไม่สามารถดำเนินการตามที่ร้องขอได้'
@@ -177,85 +101,21 @@ th:
     503: '503 - เครื่องแม่ข่ายยังไม่ให้บริการในปัจจุบัน '
     504: '504 - หมดเวลารอรับข้อมูลจากเครื่องแม่ข่ายที่กำลังทำหน้าที่เป็นเกตเวย์หรือพร็อกซี่'
     505: '505 - เครื่องแม่ข่ายไม่รองรับรุ่นของเอชทีทีพีที่ใช้ในข้อความร้องขอ'
-    CODE: รหัสข้อผิดพลาด
-    DEFAULTERRORPAGECONTENT: '<p>ขออภัย, แต่คุณดูเหมือนกำลังพยายามที่จะเข้าถึงหน้าเว็บที่ไม่มีอยู่ในระบบ.</p><p>กรุณาตรวจสอบการสะกดคำของ URL ของหน้าเว็บที่คุณพยายามจะเข้าถึงแล้วลองใหม่อีกครั้ง.</p>'
-    DEFAULTERRORPAGETITLE: ไม่พบหน้าที่ต้องการ
-    DEFAULTSERVERERRORPAGECONTENT: '<p>ขออภัย, เกิดข้อผิดพลาดบางประการในการจัดการตามคำร้องขอของคุณ</p>'
-    DEFAULTSERVERERRORPAGETITLE: เซิร์ฟเวอร์เกิดข้อผิดพลาด
-    DESCRIPTION: 'กำหนดเนื้อหาเองสำหรับข้อผิดพลาดต่างๆ (e.g. "ไม่พบหน้าเว็บที่ต้องการ")'
-    ERRORFILEPROBLEM: 'เกิดข้อผิดพลาดในการเปิดไฟล์ "{filename}" เพื่อเขียนข้อมูล. กรุณาตรวจสอบสิทธิ์.'
-    SINGULARNAME: หน้าเว็บแสดงข้อผิดพลาด
-  Folder:
-    AddFolderButton: เพิ่มโฟลเดอร์
-    DELETEUNUSEDTHUMBNAILS: ลบรูปย่อที่ไม่ได้ใช้งาน
-    UNUSEDFILESTITLE: ไฟล์ที่ไม่ได้ใช้งาน
-    UNUSEDTHUMBNAILSTITLE: รูปย่อที่ไม่ได้ใช้งาน
-    UploadFilesButton: อัพโหลด
-  LeftAndMain:
-    DELETED: ถูกลบแล้ว
-    SAVEDUP: บันทึกแล้ว
-  Permission:
-    CMS_ACCESS_CATEGORY: 'การเข้าถึง CMS'
-  Permissions:
-    CONTENT_CATEGORY: สิทธิ์อนุญาตของเนื้อหา
-    PERMISSIONS_CATEGORY: บทบาทและสิทธิ์อนุญาตการเข้าถึง
-  RedirectorPage:
-    DESCRIPTION: 'เปลี่ยนเส้นทางไปยังหน้าเว็บภายในอื่นๆ'
+  SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: หน้าเว็บที่มีการเปลี่ยนเส้นทางซึ่งได้รับการตั้งค่าโดยปราศจากตำแหน่งปลายทางที่ต้องการเปลี่ยนเส้นทางไป
     HEADER: หน้าเว็บนี้จะเปลี่ยนเส้นทางผู้ใช้งานไปยังหน้าเว็บอื่นๆ
     OTHERURL: 'ที่อยู่ URL ของเว็บไซต์อื่นๆ'
     REDIRECTTO: เปลี่ยนเส้นทางไปที่
     REDIRECTTOEXTERNAL: เว็บไซต์อื่นๆ
     REDIRECTTOPAGE: หน้าเว็บในเว็บไซต์ของคุณ
-    SINGULARNAME: หน้าเว็บเปลี่ยนเส้นทาง
     YOURPAGE: หน้าเว็บที่อยู่บนเว็บไซต์ของคุณ
-  ReportAdmin:
-    MENUTITLE: รายงาน
-    ReportTitle: หัวเรื่อง
-  ReportAdminForm:
-    FILTERBY: แสดงข้อมูลตาม
-  SearchForm:
-    SearchResults: ผลการค้นหา
-  SideReport:
-    BROKENFILES: หน้าเว็บที่มีไฟล์เสีย
-    BROKENLINKS: หน้าเว็บที่มีลิงค์เสีย
-    BROKENREDIRECTORPAGES: เปลี่ยนเส้นทางหน้าเว็บที่ชี้ไปที่หน้าเว็บที่ถูกลบแล้ว
-    BROKENVIRTUALPAGES: หน้าเว็บจำลองชี้ไปที่หน้าเว็บที่ถูกลบทิ้งไปแล้ว
-    BrokenLinksGroupTitle: รายงานลิงค์เสีย
-    ContentGroupTitle: รายงานเกี่ยวกับเนื้อหา
-    EMPTYPAGES: หน้าเว็บที่ยังไม่มีเนื้อหา
-    LAST2WEEKS: 'หน้าเว็บที่ถูกแก้ไขใน 2 สัปดาห์ล่าสุด'
-    OtherGroupTitle: อื่นๆ
-    ParameterLiveCheckbox: ดูเว็บไซต์แบบสดๆ
-    REPEMPTY: 'รายงาน {title} ยังว่างอยู่'
-  SilverStripeNavigatorLink:
-    ShareLink: ลิงก์ที่ต้องการแชร์
-  SilverStripeNavigatorLinkl:
-    CloseLink: ปิด
-  SiteConfig:
-    DEFAULTTHEME: (ใช้ชุดธีมเริ่มต้น)
-    EDITHEADER: 'ใครสามารถแก้ไขหน้าเว็บบนเว็บไซต์นี้ได้บ้าง?'
-    EDIT_PERMISSION: การจัดการการกำหนดค่าของเว็บไซต์
-    EDIT_PERMISSION_HELP: สามารถแก้ไขการตั้งค่าการเข้าถึงระบบโดยรวมได้/แก้ไขสิทธิ์หน้าเว็บในระดับสูงสุดได้
-    PLURALNAME: กำหนดค่าเว็บไซต์
-    SINGULARNAME: กำหนดค่าเว็บไซต์
-    SITENAMEDEFAULT: ชื่อเว็บไซต์ของคุณ
-    SITETAGLINE: สโลแกนของเว็บไซต์
-    SITETITLE: ชื่อเว็บไซต์
-    TABACCESS: เข้าถึง
-    TABMAIN: หน้าหลัก
-    TAGLINEDEFAULT: กรอกสโลแกนของคุณลงที่นี่
-    THEME: ชุดธีม
-    TOPLEVELCREATE: 'ใครบ้างที่สามารถสร้างหน้าเว็บที่ตำแหน่ง root ของเว็บไซต์ได้?'
-    VIEWHEADER: 'ใครบ้่างที่สามารถเปิดดูหน้าเว็บบนเว็บไซต์นี้ได้?'
-  SiteTree:
+  SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: ทุกคน
     ACCESSHEADER: 'ใครบ้างที่สามารถเปิดดูหน้านี้ได้?'
     ACCESSLOGGEDIN: ผู้ใช้งานที่อยู่ในระบบ
     ACCESSONLYTHESE: 'เฉพาะบุคคลเหล่านี้เท่านั้น (เลือกจากรายการ)'
     ADDEDTODRAFTHELP: หน้าเว็บยังไม่ได้ถูกเผยแพร่
     ADDEDTODRAFTSHORT: ฉบับร่าง
-    ALLOWCOMMENTS: 'อนุญาตให้แสดงความเห็นในหน้านีหรือไม่?'
     APPEARSVIRTUALPAGES: 'เนื้อหานี้ปรากฏอยู่ในหน้าเว็บจำลองในส่วนของ {title} ด้วยเช่นกัน'
     BUTTONCANCELDRAFT: ยกเลิกการเปลี่ยนแปลงในฉบับร่าง
     BUTTONCANCELDRAFTDESC: ลบฉบับร่างของคุณแล้วย้อนกลับไปใช้หน้าเว็บที่เผยแพร่อยู่ในขณะนี้
@@ -266,10 +126,7 @@ th:
     DEFAULTABOUTTITLE: เกี่ยวกับเรา
     DEFAULTCONTACTTITLE: ติดต่อเรา
     DEFAULTHOMETITLE: หน้าแรก
-    DELETEDPAGEHELP: หน้าเว็บไม่ได้ถูกเผยแพร่อีกต่อไปแล้ว
-    DELETEDPAGESHORT: ถูกลบ
     DEPENDENT_NOTE: 'หน้าเว็บต่อไปนี้อาศัยหน้าเว็บนี้เป็นตัวอ้างอิง ซึ่งได้แก่หน้าเว็บจำลอง, หน้าเว็บที่เปลี่ยนเส้นทาง, และหน้าเว็บที่มีลิงก์เนื้อหาอยู่ด้วย'
-    DESCRIPTION: หน้าเนื้อหาทั่วไป
     DependtPageColumnLinkType: ชนิดของลิงค์
     EDITANYONE: 'ทุกคนสามารถเข้าสู่ระบบของ CMS ได้ทั้งหมด'
     EDITHEADER: 'ใครสามารถแก้ไขหน้านี้ได้บ้าง?'
@@ -299,22 +156,17 @@ th:
     PARENTTYPE_SUBPAGE: หน้าเว็บย่อยที่อยู่ใต้หน้าเว็บแม่
     PERMISSION_GRANTACCESS_DESCRIPTION: การจัดการสิทธิ์การเข้าถึงเนื้อหา
     PERMISSION_GRANTACCESS_HELP: 'อนุญาตให้มีการตั้งค่าข้อจำกัดในการเข้าถึงหน้าเว็บเฉพาะหน้าได้จากส่วนของ "หน้าเว็บ"'
-    PLURALNAME: หน้า
     PageTypNotAllowedOnRoot: 'ประเภทของหน้าเว็บ "{type}" ไม่ได้รับอนุญาตให้สามารถใช้งานได้ที่ตำแหน่ง root'
     PageTypeNotAllowed: 'ชนิดของหน้าเว็บ "{type}" ไม่ได้รับอนุญาตให้ใช้เป็นหน้าเว็บลูกของหน้าเว็บแม่นี้'
-    REMOVEDFROMDRAFTHELP: 'หน้าเว็บถูกเผยแพร่แล้ว แต่ถูกลบออกจากฉบับร่างด้วยเช่นกัน'
-    REMOVEDFROMDRAFTSHORT: ลบออกจากฉบับร่าง
     REMOVE_INSTALL_WARNING: 'คำเตือน: คุณควรลบไฟล์ install.php ออกหลังการติดตั้ง SilverStripe เพื่อความปลอดภัย'
     REORGANISE_DESCRIPTION: เปลี่ยนโครงสร้างเว็บไซต์
     REORGANISE_HELP: จัดเรียงหน้าเว็บที่อยู่ในแผนผังเว็บไซต์แบบต้นไม้โดยการลากและวาง
     SHOWINMENUS: 'แสดงในเมนู?'
     SHOWINSEARCH: 'แสดงในผลลัพธ์ของการค้นหาหรือไม่?'
-    SINGULARNAME: หน้า
     TABBEHAVIOUR: พฤติกรรม
     TABCONTENT: เนื้อหา
     TABDEPENDENT: หน้าย่อย
     TOPLEVEL: 'เนื้อหาเว็บไซต์ (ระดับสูงสุด)'
-    TOPLEVELCREATORGROUPS: ผู้สร้างระดับสูงสุด
     URLSegment: 'ส่วนการจัดการ URL'
     VIEWERGROUPS: กลุ่มผู้ชม
     VIEW_ALL_DESCRIPTION: เปิดดูหน้าเว็บใดก็ได้
@@ -326,13 +178,41 @@ th:
     many_many_BackLinkTracking: แกะรอยลิงก์ย้อนกลับ
     many_many_ImageTracking: 'แกะรอยรูปภาพ'
     many_many_LinkTracking: แกะรอยลิงก์
-  SiteTreeURLSegmentField:
-    HelpChars: ตัวอักษรพิเศษได้ถูกแปลงค่าหรือลบออกโดยอัตโนมัติแล้ว
-  ViewArchivedEmail_ss:
-    CANACCESS: 'คุณสามารถเข้าถึงเว็บไซต์รุ่นย้อนหลังได้จากลิงก์นี้:'
-    HAVEASKED: คุณได้ร้องขอเพื่อเปิดดูเนื้อหาในเว็บไซต์ของเราเมื่อ
-  VirtualPage:
-    DESCRIPTION: แสดงเนื้อหาของหน้าเว็บอื่นๆ
+  SilverStripe\CMS\Model\VirtualPage:
     HEADER: นี่เป็นหน้าเว็บจำลอง
     PageTypNotAllowedOnRoot: 'ชนิดของหน้าเว็บดั้งเดิม "{type}" ไม่ได้รับอนุญาตให้ใช้งานกับหน้าเว็บจำลองที่ตำแหน่ง root'
-    SINGULARNAME: หน้าจำลอง
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    Any: ใดๆก็ได้
+    BROKENLINKS: รายงานลิงค์เสีย
+    CheckSite: ตรวจเว็บไซต์
+    CheckSiteDropdownDraft: เว็บไซต์ฉบับร่าง
+    CheckSiteDropdownPublished: เว็บไซต์ที่เผยแพร่แล้ว
+    ColumnDateLastModified: วันที่แก้ไขล่าสุด
+    ColumnDateLastPublished: วันที่เผยแพร่ล่าสุด
+    ColumnProblemType: 'ประเภทปัญหา'
+    HasBrokenFile: มีไฟล์เสีย
+    HasBrokenLink: มีลิงค์เสีย
+    HasBrokenLinkAndFile: มีลิงค์เสียและไฟล์เสีย
+    HoverTitleEditPage: แก้ไขหน้าเว็บ
+    PageName: ชื่อของหน้าเว็บ
+    ReasonDropdown: ปัญหาที่ต้องตรวจสอบ
+    ReasonDropdownBROKENFILE: ไฟล์เสีย
+    ReasonDropdownBROKENLINK: ลิงค์เสีย
+    ReasonDropdownRPBROKENLINK: หน้าเว็บเปลี่ยนเส้นทางชี้ไปที่หน้าเว็บที่ไม่มีอยู่ในระบบ
+    ReasonDropdownVPBROKENLINK: หน้าเว็บจำลองชี้ไปยังหน้าเว็บที่ไม่มีอยู่ในระบบ
+    RedirectorNonExistent: หน้าเว็บเปลี่ยนเส้นทางชี้ไปที่หน้าเว็บที่ไม่มีอยู่ในระบบ
+    VirtualPageNonExistent: หน้าเว็บจำลองชี้ไปที่หน้าเว็บที่ไม่มีอยู่ในระบบ
+  SilverStripe\CMS\Search\SearchForm:
+    SearchResults: ผลการค้นหา
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: หน้าเว็บที่มีไฟล์เสีย
+    BROKENREDIRECTORPAGES: เปลี่ยนเส้นทางหน้าเว็บที่ชี้ไปที่หน้าเว็บที่ถูกลบแล้ว
+    BROKENVIRTUALPAGES: หน้าเว็บจำลองชี้ไปที่หน้าเว็บที่ถูกลบทิ้งไปแล้ว
+    BrokenLinksGroupTitle: รายงานลิงค์เสีย
+    ContentGroupTitle: รายงานเกี่ยวกับเนื้อหา
+    EMPTYPAGES: หน้าเว็บที่ยังไม่มีเนื้อหา
+    LAST2WEEKS: 'หน้าเว็บที่ถูกแก้ไขใน 2 สัปดาห์ล่าสุด'
+    ParameterLiveCheckbox: ดูเว็บไซต์แบบสดๆ
+  SilverStripe\Security\Permission:
+    CONTENT_CATEGORY: สิทธิ์อนุญาตของเนื้อหา
+    PERMISSIONS_CATEGORY: บทบาทและสิทธิ์อนุญาตการเข้าถึง

@@ -1,69 +1,11 @@
 uk:
-  AssetAdmin:
-    ADDFILES: 'Додати файли'
-    ActionAdd: 'Додати папку'
-    AppCategoryArchive: 'Архівувати'
-    AppCategoryAudio: Аудіо
-    AppCategoryImage: Зображення
-    AppCategoryVideo: Відео
-    BackToFolder: 'Повернутися до папки'
-    CREATED: Дата
-    CurrentFolderOnly: 'Обмежити до поточної папки?'
-    DetailsView: Деталі
-    FILES: Файли
-    FILESYSTEMSYNCTITLE: 'Оновлення бази даних файлів у файловій системі. Корисно, коли нові файли були завантажені поза CMS, наприклад, через FTP.'
-    FROMTHEINTERNET: 'З інтернету'
-    FROMYOURCOMPUTER: 'З мого комп''ютера'
-    Filetype: 'Тип файлу'
-    ListView: 'У вигляді списку'
-    MENUTITLE: Файли
-    NEWFOLDER: 'Нова Тека'
-    SIZE: 'Розмір'
-    THUMBSDELETED: '{count} невикористаних ескізів було видалено'
-    TreeView: 'У вигляді дерева'
-    Upload: Завантажити
-  AssetAdmin_DeleteBatchAction:
-    TITLE: 'Видалені папки'
-  AssetAdmin_Tools:
-    FILTER: Фільтр
-  AssetAdmin_left_ss:
-    GO: Уперед
-  AssetTableField:
-    BACKLINKCOUNT: 'Використовується в:'
-    PAGES: сторінка(и)
-  BackLink_Button_ss:
-    Back: Назад
-  BrokenLinksReport:
-    Any: Будь-який
-    BROKENLINKS: 'Звіт про биті посилання'
-    CheckSite: 'Перевірити сайт'
-    CheckSiteDropdownDraft: 'Чорновий сайт'
-    CheckSiteDropdownPublished: 'Публічний сайт'
-    ColumnDateLastModified: 'Дата останньої зміни'
-    ColumnDateLastPublished: 'Дата останньої публікації'
-    ColumnProblemType: 'Тип проблеми'
-    HasBrokenFile: 'Має битий файл'
-    HasBrokenLink: 'має бите посилання'
-    HasBrokenLinkAndFile: 'має бите посилання та файл'
-    HoverTitleEditPage: 'Редагувати сторінку'
-    PageName: 'Назва сторінки'
-    ReasonDropdown: 'Проблема для перевірки'
-    ReasonDropdownBROKENFILE: 'Битий файл'
-    ReasonDropdownBROKENLINK: 'Бите посилання'
-    ReasonDropdownRPBROKENLINK: 'Cторінка-перенаправлення що вказує на неіснуючу сторінку'
-    ReasonDropdownVPBROKENLINK: 'Віртуальна сторінка що вказує на неіснуючу сторінку'
-    RedirectorNonExistent: 'сторінка-перенаправлення що вказує на неіснуючу сторінку'
-    VirtualPageNonExistent: 'віртуальна сторінка що вказує на неіснуючу сторінку'
-  CMSAddPageController:
-    Title: 'Додати сторінку'
-  CMSBatchActions:
-    DELETE_DRAFT_PAGES: 'Видалити з чорнового сайту'
-    DELETE_PAGES: 'Видалити з опублікованого сайту'
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Опубліковано %d сторінок, %d навдач'
     PUBLISH_PAGES: Опублікувати
-  CMSFileAddController:
-    MENUTITLE: Файли
-  CMSMain:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
+    BACKLINKCOUNT: 'Використовується в:'
+    PAGES: сторінка(и)
+  SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Доступ до секції ''{title}'' '
     ACCESS_HELP: 'Дозволити перегляд розділу, що містить дерево сторінок і зміст. Дозволами на перегляд та редагування, а також окремими дозволами на контент, можна керувати на відповідних сторінках.'
     AddNew: 'Додати нову сторінку'
@@ -71,10 +13,6 @@ uk:
     ChoosePageParentMode: 'Виберіть де створити цю сторінку'
     ChoosePageType: 'Виберіть тип сторінки'
     Create: Створити
-    DELETE: 'Видалити з чорнового сайту'
-    DELETEFP: Видалити
-    DESCREMOVED: 'і {count} нащадків'
-    MENUTITLE: 'Редагувати сторінку'
     PAGENOTEXISTS: 'Ця сторінка не існує'
     PAGETYPEANYOPT: Будь-який
     PUBALLCONFIRM: 'Будь ласка, опублікуйте кожну сторінку. Для цього перенесіть проміжний варіант до існуючого.'
@@ -83,85 +21,56 @@ uk:
     REMOVEDPAGE: '''{title}'' видалено з публічного сайту'
     REMOVEDPAGEFROMDRAFT: 'Видалено ''%s'' з чорнового сайту'
     ROLLBACK: 'Повернутися до цієї версії'
-    SAVE: Зберегти
     TabContent: Вміст
     TabHistory: Історія
     TabSettings: Налаштування
-  CMSMain_left_ss:
-    RESET: Відновити
-  CMSPageAddController:
-    MENUTITLE: 'Додати сторінку'
+  SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Під іншою сторінкою'
     ParentMode_top: 'Вищий рівень'
-  CMSPageEditController:
-    MENUTITLE: 'Редагувати сторінку'
-  CMSPageHistoryController:
+    Title: 'Додати сторінку'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    AUTHOR: Автор
     COMPAREMODE: 'Режим порівняння (виберіть два)'
     COMPAREVERSIONS: 'Порівняти версії'
-    COMPARINGVERSION: 'Порівняння версій {version1} та {version2}.'
-    MENUTITLE: Історія
+    NOTPUBLISHED: 'Не опубліковано'
+    PUBLISHER: Видавець
     REVERTTOTHISVERSION: 'Відновити цю версію'
     SHOWUNPUBLISHED: 'Показати неопубліковані версії'
     SHOWVERSION: 'Показати версію'
+    UNKNOWN: Невідомий
     VIEW: вигляд
     VIEWINGVERSION: 'Переглядається версія {version}.'
-  CMSPageHistoryController_versions_ss:
-    AUTHOR: Автор
-    NOTPUBLISHED: 'Не опубліковано'
-    PUBLISHER: Видавець
-    UNKNOWN: Невідомий
     WHEN: Коли
-  CMSPageSettingsController:
-    MENUTITLE: 'Редагувати сторінку'
-  CMSPagesController_Tools_ss:
+  SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Фільтр
-  CMSSearch:
-    FILTERDATEFROM: Від
-  CMSSettingsController:
-    MENUTITLE: Налаштування
-  CMSSiteTreeFilter_Search:
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Всі сторінки'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Примітка: це повідомлення не буде відображатися для відвідувачів'
-  ContentController:
+  SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITEFROM: 'Заархівований сайт з'
     DRAFTSITE: 'Чорновий сайт'
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Ви повинні увійти у систему для перегляду чернетки даного матеріалу. <a href="%s">Натсиніть для переходу на опублікований матеріал.</a>'
     Email: Е-пошта
     InstallFilesDeleted: 'Інсталяційні файли були успішно видалені.'
     LOGGEDINAS: 'Залогований як '
     LOGIN: Логін
     LOGOUT: Вилогуватися
+    NOTEWONTBESHOWN: 'Примітка: це повідомлення не буде відображатися для відвідувачів'
     NOTLOGGEDIN: 'Не залогований'
     PUBLISHEDSITE: 'Публічний сайт'
     Password: Пароль
     UnableDeleteInstall: 'Не вдається видалити інсталяційні файли. Будь ласка, видаліть вручну наведені нижче файли'
     VIEWPAGEIN: 'Переглянути сторінку в:'
-  ErrorPage:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
+    CANACCESS: 'Ви можете перейти до архівного сайту за посиланням:'
+    HAVEASKED: 'Ви надіслали запит на перегляд вмісту нашої сторінки'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    HelpChars: 'Спеціальні символи автоматично перетворені або видалені.'
+  SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Код помилки'
     DEFAULTERRORPAGECONTENT: '<p>Вибачте, але такої сторінки не існує.</p><p>Перевірте, будь-ласка, правильність URL та спробуйте ще раз.</p>'
     DEFAULTERRORPAGETITLE: 'Сторінку не знайдено'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Вибачте, під час опрацювання вашого запиту сталася помилка.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Помилка сервера'
-    DESCRIPTION: 'Власний вміст для різних випадків помилки (наприклад, "Сторінку не знайдено")'
-    ERRORFILEPROBLEM: 'Помилка при відкритті файлу "{filename}" для запису. Перевірте, будь-ласка, дозволи на файл.'
-  Folder:
-    AddFolderButton: 'Додати папку'
-    DELETEUNUSEDTHUMBNAILS: 'Видалити невикористані ескізи'
-    UNUSEDFILESTITLE: 'Невикористані файли'
-    UNUSEDTHUMBNAILSTITLE: 'Невикористані ескізи'
-    UploadFilesButton: Завантажити
-  LeftAndMain:
-    DELETED: Видалено
-    SAVEDUP: Збережено.
-    SearchResults: 'Результати пошуку'
-  Permission:
-    CMS_ACCESS_CATEGORY: 'Доступ до CMS'
-  Permissions:
-    CONTENT_CATEGORY: 'Дозволи вмісту'
-    PERMISSIONS_CATEGORY: 'Ролі та дозволи доступу'
-  RedirectorPage:
-    DESCRIPTION: 'Перенаправлення на іншу внутрішню сторінку'
+  SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Сторінка перенаправлення була встановлена без указання цілі перенаправлення'
     HEADER: 'Ця сторінка перенаправляє користувачів на іншу сторінку'
     OTHERURL: 'URL іншого сайту'
@@ -169,51 +78,13 @@ uk:
     REDIRECTTOEXTERNAL: 'Інший сайт'
     REDIRECTTOPAGE: 'Сторінку на Вашому сайті'
     YOURPAGE: 'Сторінки на Вашому сайті'
-  ReportAdmin:
-    MENUTITLE: Звіти
-  ReportAdminForm:
-    FILTERBY: 'Фільтр по'
-  SearchForm:
-    GO: Уперед
-    SEARCH: Пошук
-    SearchResults: 'Результати пошуку'
-  SideReport:
-    BROKENFILES: 'Сторінки з пошкодженими файлами'
-    BROKENLINKS: 'Сторінки з битими посиланнями'
-    BROKENREDIRECTORPAGES: 'Сторінки-перенаправлення вказують на видалені сторінки'
-    BROKENVIRTUALPAGES: 'Віртуальні сторінки вказують на видалені сторінки'
-    BrokenLinksGroupTitle: 'Звіт про биті посилання'
-    ContentGroupTitle: 'Звіти про вміст'
-    EMPTYPAGES: 'Порожні сторінки'
-    LAST2WEEKS: 'Сторінки, відредаговані за останні два тижні'
-    OtherGroupTitle: Інше
-    ParameterLiveCheckbox: 'Перевірити робочий сайт'
-  SilverStripeNavigatorLink:
-    ShareLink: 'Поділитися посиланням'
-  SilverStripeNavigatorLinkl:
-    CloseLink: Закрити
-  SiteConfig:
-    DEFAULTTHEME: '(Використовувати тему за замовчуванням)'
-    EDITHEADER: 'Хто може редагувати сторінки на цьому сайті?'
-    EDIT_PERMISSION: 'Керувати конфігурацією сайту'
-    EDIT_PERMISSION_HELP: 'Можливість редагування глобальних налаштувань доступу / дозволів сторінок верхнього рівня.'
-    SITENAMEDEFAULT: 'Назва Вашого Сайту'
-    SITETAGLINE: 'Гасло сайту'
-    SITETITLE: 'Заголовок сайту'
-    TABACCESS: Доступ
-    TABMAIN: Головна
-    TAGLINEDEFAULT: 'тут ваш слоган'
-    THEME: 'Тема оформлення'
-    TOPLEVELCREATE: 'Хто може створювати сторінки верхнього рівня на сайті?'
-    VIEWHEADER: 'Хто може переглядати сторінки на цьому сайті?'
-  SiteTree:
+  SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'Будь-хто'
     ACCESSHEADER: 'Хто може переглядати цю сторінку?'
     ACCESSLOGGEDIN: 'Тільки ті, що увійшли'
     ACCESSONLYTHESE: 'Тільки ці люди (виберіть зі списку)'
     ADDEDTODRAFTHELP: 'Сторінка ще не опублікована'
     ADDEDTODRAFTSHORT: Чорновий
-    ALLOWCOMMENTS: 'Дозволити коментувати на цій сторінці?'
     APPEARSVIRTUALPAGES: 'Цей вміст також відображається на віртуальній сторінці в розділі {title}.'
     BUTTONCANCELDRAFT: 'Відмінити зміни чернетки'
     BUTTONCANCELDRAFTDESC: 'Видалити черентку та повернутися до теперішнього опублікованого варіанту'
@@ -224,8 +95,6 @@ uk:
     DEFAULTABOUTTITLE: 'Про нас'
     DEFAULTCONTACTTITLE: Контакти
     DEFAULTHOMETITLE: Домівка
-    DELETEDPAGEHELP: 'Сторінка вже не є опублікованою'
-    DELETEDPAGESHORT: Видалений
     DEPENDENT_NOTE: 'Наступні сторінки залежать від цієї сторінки. Вони включають віртуальні сторінки, сторінки переадресації і сторінки з посиланням у змісті'
     DependtPageColumnLinkType: 'Тип посилання'
     EDITANYONE: 'Будь-хто, хто може увійти до системи'
@@ -256,8 +125,6 @@ uk:
     PERMISSION_GRANTACCESS_HELP: 'Дозволити встановлювати обмеження доступу окремо для кожної сторінки в розділі "Сторінки"'
     PageTypNotAllowedOnRoot: 'Сторінки типу "{type}" не можуть бути кореневими'
     PageTypeNotAllowed: 'Не дозоволяється створювати сторінки типу "{type}" як дочірні сторінки цієї сторінки'
-    REMOVEDFROMDRAFTHELP: 'Сторінка опублікована, але видалена з чорнового сайту'
-    REMOVEDFROMDRAFTSHORT: 'Видалено ''%s'' з чорнового сайту'
     REMOVE_INSTALL_WARNING: 'Увага: Ви повинні видалити install.php з цієї установки SilverStripe з міркувань безпеки.'
     REORGANISE_DESCRIPTION: 'Змінити структуру сайту'
     REORGANISE_HELP: 'Переставляти сторінки в дереві сайту за допомогою drag&drop'
@@ -267,7 +134,6 @@ uk:
     TABCONTENT: Вміст
     TABDEPENDENT: 'Залежні сторінки'
     TOPLEVEL: 'Вміст Сайту (Верхній Рівень)'
-    TOPLEVELCREATORGROUPS: 'Автори найвищого рівня'
     URLSegment: 'URL адреса'
     VIEWERGROUPS: 'Групи глядачів'
     VIEW_ALL_DESCRIPTION: 'Перегляд будь-якої сторінки'
@@ -279,13 +145,44 @@ uk:
     many_many_BackLinkTracking: 'Відстеження зворотних посилань'
     many_many_ImageTracking: 'Відстеження зображень'
     many_many_LinkTracking: 'Відстеження посилань'
-  SiteTreeURLSegmentField:
-    HelpChars: 'Спеціальні символи автоматично перетворені або видалені.'
-  ViewArchivedEmail_ss:
-    CANACCESS: 'Ви можете перейти до архівного сайту за посиланням:'
-    HAVEASKED: 'Ви надіслали запит на перегляд вмісту нашої сторінки'
-  VirtualPage:
-    DESCRIPTION: 'Відображення вмісту іншої сторінки'
+  SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Це віртуальна сторінка'
     PageTypNotAllowedOnRoot: 'Тип сторінки "{type}" не допускається на кореневому рівні для цієї віртуальної сторінки'
-    SINGULARNAME: 'Віртуальна сторінка'
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    Any: Будь-який
+    BROKENLINKS: 'Звіт про биті посилання'
+    CheckSite: 'Перевірити сайт'
+    CheckSiteDropdownDraft: 'Чорновий сайт'
+    CheckSiteDropdownPublished: 'Публічний сайт'
+    ColumnDateLastModified: 'Дата останньої зміни'
+    ColumnDateLastPublished: 'Дата останньої публікації'
+    ColumnProblemType: 'Тип проблеми'
+    HasBrokenFile: 'Має битий файл'
+    HasBrokenLink: 'має бите посилання'
+    HasBrokenLinkAndFile: 'має бите посилання та файл'
+    HoverTitleEditPage: 'Редагувати сторінку'
+    PageName: 'Назва сторінки'
+    ReasonDropdown: 'Проблема для перевірки'
+    ReasonDropdownBROKENFILE: 'Битий файл'
+    ReasonDropdownBROKENLINK: 'Бите посилання'
+    ReasonDropdownRPBROKENLINK: 'Cторінка-перенаправлення що вказує на неіснуючу сторінку'
+    ReasonDropdownVPBROKENLINK: 'Віртуальна сторінка що вказує на неіснуючу сторінку'
+    RedirectorNonExistent: 'сторінка-перенаправлення що вказує на неіснуючу сторінку'
+    VirtualPageNonExistent: 'віртуальна сторінка що вказує на неіснуючу сторінку'
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERDATEFROM: Від
+    GO: Уперед
+    SEARCH: Пошук
+    SearchResults: 'Результати пошуку'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Сторінки з пошкодженими файлами'
+    BROKENREDIRECTORPAGES: 'Сторінки-перенаправлення вказують на видалені сторінки'
+    BROKENVIRTUALPAGES: 'Віртуальні сторінки вказують на видалені сторінки'
+    BrokenLinksGroupTitle: 'Звіт про биті посилання'
+    ContentGroupTitle: 'Звіти про вміст'
+    EMPTYPAGES: 'Порожні сторінки'
+    LAST2WEEKS: 'Сторінки, відредаговані за останні два тижні'
+    ParameterLiveCheckbox: 'Перевірити робочий сайт'
+  SilverStripe\Security\Permission:
+    CONTENT_CATEGORY: 'Дозволи вмісту'
+    PERMISSIONS_CATEGORY: 'Ролі та дозволи доступу'

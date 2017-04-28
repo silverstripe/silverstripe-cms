@@ -1,55 +1,30 @@
 es_AR:
-  AssetAdmin:
-    NEWFOLDER: 'Nueva Carpeta'
-  AssetAdmin_left_ss:
-    GO: Ir
-  BrokenLinksReport:
-    Any: Cualquiera
-    BROKENLINKS: 'Informe de enlaces rotos'
-    CheckSite: 'Verificar el sitio'
-    CheckSiteDropdownDraft: 'Sitio borrador'
-    CheckSiteDropdownPublished: 'Sitio publicado'
-    ColumnDateLastModified: 'Fecha de última modificación'
-    ColumnDateLastPublished: 'Fecha de última publicación'
-    ColumnProblemType: 'Tipo de problema'
-    HasBrokenFile: 'tiene un archivo roto'
-    HasBrokenLink: 'tiene un enlace roto'
-    HasBrokenLinkAndFile: 'tiene enlace y archivo rotos'
-    HoverTitleEditPage: 'Editar página'
-    PageName: 'Nombre de página'
-    ReasonDropdown: 'Problema para verificar'
-    ReasonDropdownBROKENFILE: 'Archivo roto'
-    ReasonDropdownBROKENLINK: 'Enlace roto'
-    ReasonDropdownRPBROKENLINK: 'La página de redireccionamiento apunta a una página inexistente'
-    ReasonDropdownVPBROKENLINK: 'Página virtual apuntando a una página no existente'
-    RedirectorNonExistent: 'la página de redireccionamiento apunta a una página inexistente'
-    VirtualPageNonExistent: 'página virtual apuntando a una página no existente'
-  CMSBatchActions:
-    DELETE_DRAFT_PAGES: 'Eliminado del sitio borrador'
-    DELETE_PAGES: 'Eliminar del sitio publicado'
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Se publicaron %d páginas, %d fallas'
     PUBLISH_PAGES: Publicar
-  CMSMain:
+  SilverStripe\CMS\Controllers\CMSMain:
     ACCESS_HELP: 'Permitir la visualización de la sección que contiene el árbol de páginas y el contenido. Ver y editar permisos que se pueden manejar mediante listas desplegables específicas de la página, así como el apartado "Permisos del contenido".'
-    DELETE: 'Eliminar del sitio borrador'
-    DELETEFP: 'Eliminar del sitio publicado'
     PAGENOTEXISTS: 'Esta página no existe'
     PUBALLCONFIRM: 'Por favor publica todas las páginas del sitio, copiando el contenido del boceto al sitio público'
     PUBALLFUN: 'Funcionalidad "Publicar Todo"'
     REMOVEDPAGEFROMDRAFT: 'Quitados ''%s'' del borrador del sitio'
     ROLLBACK: 'Restaurar a ésta versión'
-    SAVE: Guardar
-  ContentControl:
-    NOTEWONTBESHOWN: 'Nota: este mensage no se mostrará a sus visitantes'
-  ContentController:
+  SilverStripe\CMS\Controllers\ContentController:
     DRAFTSITE: 'Sitio borrador'
     LOGGEDINAS: 'Conectado como'
     LOGIN: 'Iniciar sesión'
     LOGOUT: Desconectarse
+    NOTEWONTBESHOWN: 'Nota: este mensage no se mostrará a sus visitantes'
     NOTLOGGEDIN: 'No conectado'
     PUBLISHEDSITE: 'Sitio publicado'
     VIEWPAGEIN: 'Ver página en:'
-  ErrorPage:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
+    CANACCESS: 'Puedes acceder al sitio archivado con este enlace:'
+    HAVEASKED: 'Has solicitado ver el contenido de nuestro sitio en'
+  SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'Código de Error'
+    DEFAULTERRORPAGECONTENT: '<p>Disculpa, parece que estás tratando de ingresar a una página que no existe.</p><p>Por favor verifica la escritura de la URL que deseas visitar e inténtalo de nuevo.</p>'
+    DEFAULTERRORPAGETITLE: 'Página inexistente'
     400: '400 - Petición Incorrecta'
     401: '401 - No estás autorizado'
     403: '403 - Acceso Restringido'
@@ -73,19 +48,7 @@ es_AR:
     503: '503 - Fuera de Servicio'
     504: '504 - Tiempo Excedido en Puerta de Acceso'
     505: '505 - Versión HTTP Sin Soporte'
-    CODE: 'Código de Error'
-    DEFAULTERRORPAGECONTENT: '<p>Disculpa, parece que estás tratando de ingresar a una página que no existe.</p><p>Por favor verifica la escritura de la URL que deseas visitar e inténtalo de nuevo.</p>'
-    DEFAULTERRORPAGETITLE: 'Página inexistente'
-  Folder:
-    DELETEUNUSEDTHUMBNAILS: 'Eliminar  miniaturas sin utilizar'
-    UNUSEDFILESTITLE: 'Archivos sin utilizar'
-    UNUSEDTHUMBNAILSTITLE: 'Miniaturas sin utilizar'
-  Permission:
-    CMS_ACCESS_CATEGORY: 'Acceso al CMS'
-  Permissions:
-    CONTENT_CATEGORY: 'Permisos de contenido'
-    PERMISSIONS_CATEGORY: 'Roles y permisos de acceso'
-  RedirectorPage:
+  SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Se ha instalado una página de redirección  sin algún lugar a donde redireccionar.'
     HEADER: 'Esta página dirigirá al usuarios a otra página'
     OTHERURL: 'Otro URL del sitio web'
@@ -93,46 +56,11 @@ es_AR:
     REDIRECTTOEXTERNAL: 'Otro sitio web'
     REDIRECTTOPAGE: 'Una página en tu sitio web'
     YOURPAGE: 'Página en tu sitio web'
-  ReportAdminForm:
-    FILTERBY: 'Filtrar por'
-  SearchForm:
-    GO: Ir
-    SEARCH: Buscar
-    SearchResults: 'Resultados de la búsqueda'
-  SideReport:
-    BROKENFILES: 'Páginas con archivos rotos'
-    BROKENLINKS: 'Páginas con enlaces rotos'
-    BROKENREDIRECTORPAGES: 'RedirectorPages apunta a páginas eliminadas'
-    BROKENVIRTUALPAGES: 'VirtualPages apunta a páginas eliminadas'
-    BrokenLinksGroupTitle: 'Informes de enlaces rotos'
-    ContentGroupTitle: 'Informes del contenido'
-    EMPTYPAGES: 'Páginas sin contenido'
-    LAST2WEEKS: 'Páginas editadas en las últimas 2 semanas'
-    OtherGroupTitle: Otro
-    ParameterLiveCheckbox: 'Verificar el sitio en vivo'
-  SilverStripeNavigatorLink:
-    ShareLink: 'Compartir enlace'
-  SilverStripeNavigatorLinkl:
-    CloseLink: Cerrar
-  SiteConfig:
-    DEFAULTTHEME: '(Usar tema por defecto)'
-    EDITHEADER: '¿Quien puede editar páginas en este sitio?'
-    EDIT_PERMISSION: 'Administrar la configuración del sitio'
-    SITENAMEDEFAULT: 'Nombre de su sitio'
-    SITETAGLINE: 'Lema/slogan del sitio'
-    SITETITLE: 'Título del sitio'
-    TABACCESS: Acceso
-    TABMAIN: Principal
-    TAGLINEDEFAULT: 'su lema aquí'
-    THEME: Tema
-    TOPLEVELCREATE: '¿Quien puede crear páginas en la raíz del sitio?'
-    VIEWHEADER: '¿Quien puede ver páginas en este sitio?'
-  SiteTree:
+  SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Cualquiera
     ACCESSHEADER: '¿Quién puede ver ésta página?'
     ACCESSLOGGEDIN: 'Usuarios registrados'
     ACCESSONLYTHESE: 'Únicamente estas personas (selecciona de la lista)'
-    ALLOWCOMMENTS: '¿Permitir comentarios en ésta página?'
     BUTTONCANCELDRAFT: 'Cancelar cambios al borrador'
     BUTTONCANCELDRAFTDESC: 'Eliminar el borrador y regresar a la página actualmente publicada'
     BUTTONUNPUBLISH: 'No Publicar'
@@ -172,7 +100,6 @@ es_AR:
     TABCONTENT: Contenido
     TABDEPENDENT: 'Páginas dependientes'
     TOPLEVEL: 'Contenido del Sitio (Nivel Superior)'
-    TOPLEVELCREATORGROUPS: 'Creadores de alto nivel'
     URLSegment: 'Segmento del URL'
     VIEW_ALL_DESCRIPTION: 'Ver cualquier página'
     VIEW_DRAFT_CONTENT: 'Ver contenido borrador'
@@ -181,9 +108,42 @@ es_AR:
     many_many_BackLinkTracking: 'Seguimiento de Backlink'
     many_many_ImageTracking: 'Seguimiento de Imágen'
     many_many_LinkTracking: 'Seguimiento de Enlace'
-  ViewArchivedEmail_ss:
-    CANACCESS: 'Puedes acceder al sitio archivado con este enlace:'
-    HAVEASKED: 'Has solicitado ver el contenido de nuestro sitio en'
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Esta es una página virtual'
-    SINGULARNAME: 'Página Virtual'
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    Any: Cualquiera
+    BROKENLINKS: 'Informe de enlaces rotos'
+    CheckSite: 'Verificar el sitio'
+    CheckSiteDropdownDraft: 'Sitio borrador'
+    CheckSiteDropdownPublished: 'Sitio publicado'
+    ColumnDateLastModified: 'Fecha de última modificación'
+    ColumnDateLastPublished: 'Fecha de última publicación'
+    ColumnProblemType: 'Tipo de problema'
+    HasBrokenFile: 'tiene un archivo roto'
+    HasBrokenLink: 'tiene un enlace roto'
+    HasBrokenLinkAndFile: 'tiene enlace y archivo rotos'
+    HoverTitleEditPage: 'Editar página'
+    PageName: 'Nombre de página'
+    ReasonDropdown: 'Problema para verificar'
+    ReasonDropdownBROKENFILE: 'Archivo roto'
+    ReasonDropdownBROKENLINK: 'Enlace roto'
+    ReasonDropdownRPBROKENLINK: 'La página de redireccionamiento apunta a una página inexistente'
+    ReasonDropdownVPBROKENLINK: 'Página virtual apuntando a una página no existente'
+    RedirectorNonExistent: 'la página de redireccionamiento apunta a una página inexistente'
+    VirtualPageNonExistent: 'página virtual apuntando a una página no existente'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Ir
+    SEARCH: Buscar
+    SearchResults: 'Resultados de la búsqueda'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Páginas con archivos rotos'
+    BROKENREDIRECTORPAGES: 'RedirectorPages apunta a páginas eliminadas'
+    BROKENVIRTUALPAGES: 'VirtualPages apunta a páginas eliminadas'
+    BrokenLinksGroupTitle: 'Informes de enlaces rotos'
+    ContentGroupTitle: 'Informes del contenido'
+    EMPTYPAGES: 'Páginas sin contenido'
+    LAST2WEEKS: 'Páginas editadas en las últimas 2 semanas'
+    ParameterLiveCheckbox: 'Verificar el sitio en vivo'
+  SilverStripe\Security\Permission:
+    CONTENT_CATEGORY: 'Permisos de contenido'
+    PERMISSIONS_CATEGORY: 'Roles y permisos de acceso'

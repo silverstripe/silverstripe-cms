@@ -20,7 +20,7 @@ class CMSSiteTreeFilter_PublishedPages extends CMSSiteTreeFilter
      */
     public static function title()
     {
-        return _t('CMSSIteTreeFilter_PublishedPages.Title', "Published pages");
+        return _t('SilverStripe\\CMS\\Controllers\\CMSSIteTreeFilter_PublishedPages.Title', "Published pages");
     }
 
     /**

@@ -1,41 +1,28 @@
 fo:
-  AssetAdmin:
-    NEWFOLDER: 'Nýggj skjátta'
-  AssetAdmin_left_ss:
-    GO: Víðari
-  CMSMain:
-    DELETE: 'Strika frá kladdu heimasíðuni'
-    DELETEFP: 'Strika frá tí almennu heimasíðuni'
+  SilverStripe\CMS\Controllers\CMSMain:
     PAGENOTEXISTS: 'Hendan síðan finst ikki.'
     PUBALLCONFIRM: 'Vinarliga almenna kunngerð allar síðurnar á heimasíðuni,  avrita innihaldsstøðið til beinleiðis'
     PUBALLFUN: '"Ger alt alment" funka'
     REMOVEDPAGEFROMDRAFT: 'Strikaði ''%s'' frá kladdu heimasíðuni'
     ROLLBACK: 'Far aftur til hesa útgávuna'
-    SAVE: Goym
-  ErrorPage:
-    404: '404 - Ikki funnin'
-    411: '411 - Longd er kravd'
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
+    CANACCESS: 'Tú kann fáa atgongd til arkiv heimasíðuna her:'
+    HAVEASKED: 'Tú mást fáa loyvi, fyri at kunna síggja innihaldið á okkara heimasíðu á'
+  SilverStripe\CMS\Model\ErrorPage:
     CODE: Feilkota
     DEFAULTERRORPAGETITLE: 'Síðan var ikki funnin'
-  Folder:
-    UNUSEDFILESTITLE: 'Óbrúktar fílur'
-  RedirectorPage:
+    404: '404 - Ikki funnin'
+    411: '411 - Longd er kravd'
+  SilverStripe\CMS\Model\RedirectorPage:
     REDIRECTTO: 'Víðarisend til'
     REDIRECTTOEXTERNAL: 'Onnur heimasíðu'
     REDIRECTTOPAGE: 'Ein síða á tínari heimasíðu'
     YOURPAGE: 'Síða á tínari heimasíðu'
-  SearchForm:
-    GO: Víðari
-    SEARCH: Leita
-  SideReport:
-    EMPTYPAGES: 'Tómar síður'
-    LAST2WEEKS: 'Síður broyttar seinastu 2 vikurnar'
-  SiteTree:
+  SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Øll
     ACCESSHEADER: 'Hvør skal kunna síggja hesa síðuna?'
     ACCESSLOGGEDIN: 'Innritaðir brúkarar'
     ACCESSONLYTHESE: 'Bert hesi fólkini (vel fra yvirliti)'
-    ALLOWCOMMENTS: 'Loyv viðmerkingum á hesari síðuni?'
     BUTTONCANCELDRAFT: 'Avlýs kladdu broytingarnar'
     BUTTONCANCELDRAFTDESC: 'Strika tína kladdu, og far aftur til tí nuverandi almennu síðuna'
     BUTTONUNPUBLISH: 'Óalmenna kunngerð'
@@ -60,6 +47,9 @@ fo:
     TABCONTENT: Innihald
     TOPLEVEL: 'Heimasíðu innihald (Fyrsta støði)'
     has_one_Parent: Yvirsíða
-  ViewArchivedEmail_ss:
-    CANACCESS: 'Tú kann fáa atgongd til arkiv heimasíðuna her:'
-    HAVEASKED: 'Tú mást fáa loyvi, fyri at kunna síggja innihaldið á okkara heimasíðu á'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Víðari
+    SEARCH: Leita
+  SilverStripe\Reports\SideReport:
+    EMPTYPAGES: 'Tómar síður'
+    LAST2WEEKS: 'Síður broyttar seinastu 2 vikurnar'

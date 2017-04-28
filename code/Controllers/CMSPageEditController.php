@@ -92,7 +92,7 @@ class CMSPageEditController extends CMSMain
 
         if (!$record) {
             $this->httpError(404, _t(
-                'AssetAdmin.ErrorNotFound',
+                'SilverStripe\\AssetAdmin\\Controller\\AssetAdmin.ErrorNotFound',
                 'That {Type} couldn\'t be found',
                 '',
                 ['Type' => Page::singleton()->i18n_singular_name()]
@@ -101,7 +101,7 @@ class CMSPageEditController extends CMSMain
         }
         if (!$record->canView()) {
             $this->httpError(403, _t(
-                'AssetAdmin.ErrorItemPermissionDenied',
+                'SilverStripe\\AssetAdmin\\Controller\\AssetAdmin.ErrorItemPermissionDenied',
                 'It seems you don\'t have the necessary permissions to add {ObjectTitle} to a campaign',
                 '',
                 ['ObjectTitle' => Page::singleton()->i18n_singular_name()]

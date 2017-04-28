@@ -58,8 +58,8 @@ class CMSPageAddController extends CMSPageEditController
 
         $numericLabelTmpl = '<span class="step-label"><span class="flyout">Step %d. </span><span class="title">%s</span></span>';
 
-        $topTitle = _t('CMSPageAddController.ParentMode_top', 'Top level');
-        $childTitle = _t('CMSPageAddController.ParentMode_child', 'Under another page');
+        $topTitle = _t('SilverStripe\\CMS\\Controllers\\CMSPageAddController.ParentMode_top', 'Top level');
+        $childTitle = _t('SilverStripe\\CMS\\Controllers\\CMSPageAddController.ParentMode_child', 'Under another page');
 
         $fields = new FieldList(
             $parentModeField = new SelectionGroup(
@@ -88,7 +88,7 @@ class CMSPageAddController extends CMSPageEditController
                 sprintf(
                     '<p class="message notice message-restricted">%s</p>',
                     _t(
-                        'CMSMain.AddPageRestriction',
+                        'SilverStripe\\CMS\\Controllers\\CMSMain.AddPageRestriction',
                         'Note: Some page types are not allowed for this selection'
                     )
                 )
@@ -97,7 +97,7 @@ class CMSPageAddController extends CMSPageEditController
                 "PageType",
                 DBField::create_field(
                     'HTMLFragment',
-                    sprintf($numericLabelTmpl, 2, _t('CMSMain.ChoosePageType', 'Choose page type'))
+                    sprintf($numericLabelTmpl, 2, _t('SilverStripe\\CMS\\Controllers\\CMSMain.ChoosePageType', 'Choose page type'))
                 ),
                 $pageTypes,
                 'Page'
@@ -106,7 +106,7 @@ class CMSPageAddController extends CMSPageEditController
 
         $parentModeField->setTitle(DBField::create_field(
             'HTMLFragment',
-            sprintf($numericLabelTmpl, 1, _t('CMSMain.ChoosePageParentMode', 'Choose where to create this page'))
+            sprintf($numericLabelTmpl, 1, _t('SilverStripe\\CMS\\Controllers\\CMSMain.ChoosePageParentMode', 'Choose where to create this page'))
         ));
 
         $parentField->setSearchFunction(function ($sourceObject, $labelField, $search) {
@@ -133,10 +133,10 @@ class CMSPageAddController extends CMSPageEditController
         }
 
         $actions = new FieldList(
-            FormAction::create("doAdd", _t('CMSMain.Create', "Create"))
+            FormAction::create("doAdd", _t('SilverStripe\\CMS\\Controllers\\CMSMain.Create', "Create"))
                 ->addExtraClass('btn-primary font-icon-plus-circled')
                 ->setUseButtonTag(true),
-            FormAction::create("doCancel", _t('CMSMain.Cancel', "Cancel"))
+            FormAction::create("doCancel", _t('SilverStripe\\CMS\\Controllers\\CMSMain.Cancel', "Cancel"))
                 ->addExtraClass('btn-secondary')
                 ->setUseButtonTag(true)
         );
@@ -212,7 +212,7 @@ class CMSPageAddController extends CMSPageEditController
 
         Session::set(
             "FormInfo.Form_EditForm.formError.message",
-            _t('CMSMain.PageAdded', 'Successfully created page')
+            _t('SilverStripe\\CMS\\Controllers\\CMSMain.PageAdded', 'Successfully created page')
         );
         Session::set("FormInfo.Form_EditForm.formError.type", 'good');
 

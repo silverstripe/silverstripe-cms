@@ -96,7 +96,7 @@ in the other stage:<br />
 
         $fields->push(new HeaderField(
             'Header',
-            _t('RemoveOrphanedPagesTask.HEADER', 'Remove all orphaned pages task')
+            _t('SilverStripe\\CMS\\Tasks\\RemoveOrphanedPagesTask.HEADER', 'Remove all orphaned pages task')
         ));
         $fields->push(new LiteralField(
             'Description',
@@ -134,28 +134,28 @@ in the other stage:<br />
                 'SelectAllLiteral',
                 sprintf(
                     '<p><a href="#" onclick="javascript:jQuery(\'#Form_Form_OrphanIDs :checkbox\').attr(\'checked\', \'checked\'); return false;">%s</a>&nbsp;',
-                    _t('RemoveOrphanedPagesTask.SELECTALL', 'select all')
+                    _t('SilverStripe\\CMS\\Tasks\\RemoveOrphanedPagesTask.SELECTALL', 'select all')
                 )
             ));
             $fields->push(new LiteralField(
                 'UnselectAllLiteral',
                 sprintf(
                     '<a href="#" onclick="javascript:jQuery(\'#Form_Form_OrphanIDs :checkbox\').attr(\'checked\', \'\'); return false;">%s</a></p>',
-                    _t('RemoveOrphanedPagesTask.UNSELECTALL', 'unselect all')
+                    _t('SilverStripe\\CMS\\Tasks\\RemoveOrphanedPagesTask.UNSELECTALL', 'unselect all')
                 )
             ));
             $fields->push(new OptionsetField(
                 'OrphanOperation',
-                _t('RemoveOrphanedPagesTask.CHOOSEOPERATION', 'Choose operation:'),
+                _t('SilverStripe\\CMS\\Tasks\\RemoveOrphanedPagesTask.CHOOSEOPERATION', 'Choose operation:'),
                 array(
                     'rebase' => _t(
-                        'RemoveOrphanedPagesTask.OPERATION_REBASE',
+                        'SilverStripe\\CMS\\Tasks\\RemoveOrphanedPagesTask.OPERATION_REBASE',
                         sprintf(
                             'Rebase selected to a new holder page "%s" and unpublish. None of these pages will show up for website visitors.',
                             $this->rebaseHolderTitle()
                         )
                     ),
-                    'remove' => _t('RemoveOrphanedPagesTask.OPERATION_REMOVE', 'Remove selected from all stages (WARNING: Will destroy all selected pages from both stage and live)'),
+                    'remove' => _t('SilverStripe\\CMS\\Tasks\\RemoveOrphanedPagesTask.OPERATION_REMOVE', 'Remove selected from all stages (WARNING: Will destroy all selected pages from both stage and live)'),
                 ),
                 'rebase'
             ));
@@ -164,7 +164,7 @@ in the other stage:<br />
                 sprintf(
                     '<p class="message">%s</p>',
                     _t(
-                        'RemoveOrphanedPagesTask.DELETEWARNING',
+                        'SilverStripe\\CMS\\Tasks\\RemoveOrphanedPagesTask.DELETEWARNING',
                         'Warning: These operations are not reversible. Please handle with care.'
                     )
                 )
@@ -174,7 +174,7 @@ in the other stage:<br />
                 'NotFoundLabel',
                 sprintf(
                     '<p class="message">%s</p>',
-                    _t('RemoveOrphanedPagesTask.NONEFOUND', 'No orphans found')
+                    _t('SilverStripe\\CMS\\Tasks\\RemoveOrphanedPagesTask.NONEFOUND', 'No orphans found')
                 )
             ));
         }
@@ -184,7 +184,7 @@ in the other stage:<br />
             'SilverStripe\\Forms\\Form',
             $fields,
             new FieldList(
-                new FormAction('doSubmit', _t('RemoveOrphanedPagesTask.BUTTONRUN', 'Run'))
+                new FormAction('doSubmit', _t('SilverStripe\\CMS\\Tasks\\RemoveOrphanedPagesTask.BUTTONRUN', 'Run'))
             )
         );
 
@@ -228,7 +228,7 @@ in the other stage:<br />
             }
             $content .= "</ul>";
         } else {
-            $content = _t('RemoveOrphanedPagesTask.NONEREMOVED', 'None removed');
+            $content = _t('SilverStripe\\CMS\\Tasks\\RemoveOrphanedPagesTask.NONEREMOVED', 'None removed');
         }
 
         return $this->customise(array(

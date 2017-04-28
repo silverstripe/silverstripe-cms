@@ -206,7 +206,7 @@ class VirtualPage extends Page
         // Setup the linking to the original page.
         $copyContentFromField = new TreeDropdownField(
             "CopyContentFromID",
-            _t('VirtualPage.CHOOSE', "Linked Page"),
+            _t('SilverStripe\\CMS\\Model\\VirtualPage.CHOOSE', "Linked Page"),
             "SilverStripe\\CMS\\Model\\SiteTree"
         );
         // filter doesn't let you select children of virtual pages as as source page
@@ -229,10 +229,10 @@ class VirtualPage extends Page
         // Create links back to the original object in the CMS
         if ($this->CopyContentFrom()->exists()) {
             $link = "<a class=\"cmsEditlink\" href=\"admin/pages/edit/show/$this->CopyContentFromID\">"
-                . _t('VirtualPage.EditLink', 'edit')
+                . _t('SilverStripe\\CMS\\Model\\VirtualPage.EditLink', 'edit')
                 . "</a>";
             $msgs[] = _t(
-                'VirtualPage.HEADERWITHLINK',
+                'SilverStripe\\CMS\\Model\\VirtualPage.HEADERWITHLINK',
                 "This is a virtual page copying content from \"{title}\" ({link})",
                 array(
                     'title' => $this->CopyContentFrom()->obj('Title'),
@@ -240,9 +240,9 @@ class VirtualPage extends Page
                 )
             );
         } else {
-            $msgs[] = _t('VirtualPage.HEADER', "This is a virtual page");
+            $msgs[] = _t('SilverStripe\\CMS\\Model\\VirtualPage.HEADER', "This is a virtual page");
             $msgs[] = _t(
-                'SITETREE.VIRTUALPAGEWARNING',
+                'SilverStripe\\CMS\\Model\\SiteTree.VIRTUALPAGEWARNING',
                 'Please choose a linked page and save first in order to publish this page'
             );
         }
@@ -250,7 +250,7 @@ class VirtualPage extends Page
             && !Versioned::get_versionnumber_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', $this->CopyContentFromID)
         ) {
             $msgs[] = _t(
-                'SITETREE.VIRTUALPAGEDRAFTWARNING',
+                'SilverStripe\\CMS\\Model\\SiteTree.VIRTUALPAGEDRAFTWARNING',
                 'Please publish the linked page in order to publish the virtual page'
             );
         }
@@ -308,7 +308,7 @@ class VirtualPage extends Page
                     'VirtualPageWarning',
                     '<div class="message notice">'
                      . _t(
-                         'SITETREE.VIRTUALPAGEWARNINGSETTINGS',
+                         'SilverStripe\\CMS\\Model\\SiteTree.VIRTUALPAGEWARNINGSETTINGS',
                          'Please choose a linked page in the main content fields in order to publish'
                      )
                     . '</div>'
@@ -329,7 +329,7 @@ class VirtualPage extends Page
         if ($orig && $orig->exists() && !$orig->stat('can_be_root') && !$this->ParentID) {
             $result->addError(
                 _t(
-                    'VirtualPage.PageTypNotAllowedOnRoot',
+                    'SilverStripe\\CMS\\Model\\VirtualPage.PageTypNotAllowedOnRoot',
                     'Original page type "{type}" is not allowed on the root level for this virtual page',
                     array('type' => $orig->i18n_singular_name())
                 ),

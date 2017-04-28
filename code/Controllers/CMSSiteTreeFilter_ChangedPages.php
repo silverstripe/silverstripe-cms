@@ -12,7 +12,7 @@ class CMSSiteTreeFilter_ChangedPages extends CMSSiteTreeFilter
 
     public static function title()
     {
-        return _t('CMSSiteTreeFilter_ChangedPages.Title', "Modified pages");
+        return _t('SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_ChangedPages.Title', "Modified pages");
     }
 
     public function getFilteredPages()

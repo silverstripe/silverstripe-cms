@@ -1,52 +1,37 @@
 en:
-  AssetAdmin:
-    ErrorItemPermissionDenied: 'It seems you don''t have the necessary permissions to add {ObjectTitle} to a campaign'
-    ErrorNotFound: 'That {Type} couldn''t be found'
-  AssetTableField:
-    BACKLINKCOUNT: 'Used on:'
-    PAGES: page(s)
-  BrokenLinksReport:
-    Any: Any
-    BROKENLINKS: 'Broken links report'
-    CheckSite: 'Check site'
-    CheckSiteDropdownDraft: 'Draft Site'
-    CheckSiteDropdownPublished: 'Published Site'
-    ColumnDateLastModified: 'Date last modified'
-    ColumnDateLastPublished: 'Date last published'
-    ColumnProblemType: 'Problem type'
-    ColumnURL: URL
-    HasBrokenFile: 'has broken file'
-    HasBrokenLink: 'has broken link'
-    HasBrokenLinkAndFile: 'has broken link and file'
-    HoverTitleEditPage: 'Edit page'
-    PageName: 'Page name'
-    ReasonDropdown: 'Problem to check'
-    ReasonDropdownBROKENFILE: 'Broken file'
-    ReasonDropdownBROKENLINK: 'Broken link'
-    ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
-    ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
-    RedirectorNonExistent: 'redirector page pointing to non-existent page'
-    VirtualPageNonExistent: 'virtual page pointing to non-existent page'
-  CMSAddPageController:
-    Title: 'Add page'
-  CMSBatchAction_Archive:
-    RESULT: 'Deleted %d pages from draft and live, and sent them to the archive'
-    TITLE: 'Unpublish and archive'
-  CMSBatchActions:
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Published %d pages, %d failures'
     PUBLISH_PAGES: Publish
     RESTORE: Restore
     RESTORED_PAGES: 'Restored %d pages'
     UNPUBLISHED_PAGES: 'Unpublished %d pages'
     UNPUBLISH_PAGES: Unpublish
-  CMSMain:
+  SilverStripe\Admin\LeftAndMain:
+    CANT_REORGANISE: 'You do not have permission to alter Top level pages. Your change was not saved.'
+    PLEASESAVE: 'Please Save Page: This page could not be updated because it hasn''t been saved yet.'
+    REORGANISATIONSUCCESSFUL: 'Reorganised the site tree successfully.'
+    ShowAsList: 'show as list'
+    TooManyPages: 'Too many pages'
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
+    BACKLINKCOUNT: 'Used on:'
+    PAGES: page(s)
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
+    RESULT: 'Deleted %d pages from draft and live, and sent them to the archive'
+    TITLE: 'Unpublish and archive'
+  SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Access to ''{title}'' section'
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
+    APPLY_FILTER: Search
     ARCHIVE: Archive
     ARCHIVEDPAGE: 'Archived page ''%s'''
     AddNew: 'Add new page'
     AddNewButton: 'Add new'
     AddPageRestriction: 'Note: Some page types are not allowed for this selection'
+    ArchiveWarning: 'Warning: This page will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?'
+    ArchiveWarningWithCampaigns: 'Warning: This page will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?'
+    ArchiveWarningWithChildren: 'Warning: This page and all of its child pages will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?'
+    ArchiveWarningWithChildrenAndCampaigns: 'Warning: This page and all of its child pages will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?'
+    CLEAR_FILTER: Clear
     Cancel: Cancel
     ChoosePageParentMode: 'Choose where to create this page'
     ChoosePageType: 'Choose page type'
@@ -84,62 +69,50 @@ en:
     TreeFiltered: 'Showing search results.'
     TreeFilteredClear: Clear
     UNPUBLISH_AND_ARCHIVE: 'Unpublish and archive'
-    ArchiveWarning: 'Warning: This page will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?'
-    ArchiveWarningWithChildren: 'Warning: This page and all of its child pages will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?'
-    ArchiveWarningWithCampaigns: 'Warning: This page will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?'
-    ArchiveWarningWithChildrenAndCampaigns: 'Warning: This page and all of its child pages will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?'
-  CMSMain_left_ss:
-    APPLY_FILTER: Search
-    CLEAR_FILTER: Clear
-  CMSPageAddController:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
     ParentMode_top: 'Top level'
-  CMSPageHistoryController:
-    COMPAREMODE: 'Compare mode (select two)'
-    COMPAREVERSIONS: 'Compare Versions'
-    REVERTTOTHISVERSION: 'Revert to this version'
-    SHOWUNPUBLISHED: 'Show unpublished versions'
-    SHOWVERSION: 'Show Version'
-    VIEW: view
-    VIEWINGLATEST: 'Currently viewing the latest version.'
-    VIEWINGVERSION: 'Currently viewing version {version}.'
-  CMSPageHistoryController_versions_ss:
+    Title: 'Add page'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Edit Page'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Author
+    COMPAREMODE: 'Compare mode (select two)'
+    MENUTITLE: History
+    MULTISELECT: 'Batch actions'
     NOTPUBLISHED: 'Not published'
     PREVIEW: 'Website preview'
     PUBLISHER: Publisher
+    REVERTTOTHISVERSION: 'Revert to this version'
+    SHOWUNPUBLISHED: 'Show unpublished versions'
     UNKNOWN: Unknown
+    VIEW: view
+    VIEWINGLATEST: 'Currently viewing the latest version.'
+    VIEWINGVERSION: 'Currently viewing version {version}.'
     WHEN: When
-  CMSPagesController:
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Edit Page'
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: Filter
     ListView: 'List View'
     MENUTITLE: Pages
     TreeView: 'Tree View'
-  CMSPagesController_ContentToolbar_ss:
-    MULTISELECT: 'Batch actions'
-  CMSPagesController_Tools_ss:
-    FILTER: Filter
-  CMSSIteTreeFilter_PublishedPages:
+  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Published pages'
-  CMSSearch:
-    FILTERDATEFROM: From
-    FILTERDATETO: To
-    FILTERLABELTEXT: Search
-    PAGEFILTERDATEHEADING: 'Last edited'
-  CMSSiteTreeFilter_ChangedPages:
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Modified pages'
-  CMSSiteTreeFilter_DeletedPages:
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including archived'
-  CMSSiteTreeFilter_Search:
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'All pages'
-  CMSSiteTreeFilter_StatusDeletedPages:
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
     Title: 'Archived pages'
-  CMSSiteTreeFilter_StatusDraftPages:
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDraftPages:
     Title: 'Draft pages'
-  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Live but removed from draft'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
-  ContentController:
+  SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
@@ -153,6 +126,7 @@ en:
     LOGGEDINAS: 'Logged in as'
     LOGIN: Login
     LOGOUT: 'Log out'
+    NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
     NOTLOGGEDIN: 'Not logged in'
     PUBLISHED: Published
     PUBLISHEDSITE: 'Published Site'
@@ -161,7 +135,29 @@ en:
     StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'View Page in:'
-  ErrorPage:
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: Archived
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
+    CANACCESS: 'You can access the archived site at this link:'
+    HAVEASKED: 'You have asked to view the content of our site on'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Cancel: Cancel
+    EMPTY: 'Please enter a URL Segment or click cancel'
+    Edit: Edit
+    HelpChars: ' Special characters are automatically converted or removed.'
+    OK: OK
+  SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'Error code'
+    DEFAULTERRORPAGECONTENT: '<p>Sorry, it seems you were trying to access a page that doesn''t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>'
+    DEFAULTERRORPAGETITLE: 'Page not found'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Server error'
+    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
+    PLURALNAME: 'Error Pages'
+    PLURALS:
+      one: 'An Error Page'
+      other: '{count} Error Pages'
+    SINGULARNAME: 'Error Page'
     400: '400 - Bad Request'
     401: '401 - Unauthorized'
     403: '403 - Forbidden'
@@ -187,90 +183,21 @@ en:
     503: '503 - Service Unavailable'
     504: '504 - Gateway Timeout'
     505: '505 - HTTP Version Not Supported'
-    CODE: 'Error code'
-    DEFAULTERRORPAGECONTENT: '<p>Sorry, it seems you were trying to access a page that doesn''t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>'
-    DEFAULTERRORPAGETITLE: 'Page not found'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Server error'
-  Permissions:
-    CONTENT_CATEGORY: 'Content permissions'
-    PERMISSIONS_CATEGORY: 'Roles and access permissions'
-  RedirectorPage:
+  SilverStripe\CMS\Model\RedirectorPage:
+    DESCRIPTION: 'Redirects to an internal page or an external URL'
     HASBEENSETUP: 'A redirector page has been set up without anywhere to redirect to.'
     HEADER: 'This page will redirect users to another page'
     OTHERURL: 'Other website URL'
-    REDIRECTTO: 'Redirect to'
-    REDIRECTTOEXTERNAL: 'Another website'
-    REDIRECTTOPAGE: 'A page on your website'
-    YOURPAGE: 'Page on your website'
-  RemoveOrphanedPagesTask:
-    BUTTONRUN: Run
-    CHOOSEOPERATION: 'Choose operation:'
-    DELETEWARNING: 'Warning: These operations are not reversible. Please handle with care.'
-    HEADER: 'Remove all orphaned pages task'
-    NONEFOUND: 'No orphans found'
-    NONEREMOVED: 'None removed'
-    OPERATION_REMOVE: 'Remove selected from all stages (WARNING: Will destroy all selected pages from both stage and live)'
-    SELECTALL: 'select all'
-    UNSELECTALL: 'unselect all'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
-    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
-    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
-  SearchForm:
-    GO: Go
-    SEARCH: Search
-    SearchResults: 'Search Results'
-  SideReport:
-    BROKENFILES: 'Pages with broken files'
-    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
-    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
-    BrokenLinksGroupTitle: 'Broken links reports'
-    ContentGroupTitle: 'Content reports'
-    EMPTYPAGES: 'Pages with no content'
-    LAST2WEEKS: 'Pages edited in the last 2 weeks'
-    ParameterLiveCheckbox: 'Check live site'
-  SilverStripeNavigator:
-    ARCHIVED: Archived
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    MENUTITLE: 'Add page'
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Edit Page'
-  SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    MENUTITLE: History
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Edit Page'
-  SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: Pages
-  SilverStripe\CMS\Model\ErrorPage:
-    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
-    PLURALNAME: 'Error Pages'
-    PLURALS:
-      one: 'An Error Page'
-      other: '{count} Error Pages'
-    SINGULARNAME: 'Error Page'
-  SilverStripe\CMS\Model\RedirectorPage:
-    DESCRIPTION: 'Redirects to an internal page or an external URL'
     PLURALNAME: 'Redirector Pages'
     PLURALS:
       one: 'A Redirector Page'
       other: '{count} Redirector Pages'
+    REDIRECTTO: 'Redirect to'
+    REDIRECTTOEXTERNAL: 'Another website'
+    REDIRECTTOPAGE: 'A page on your website'
     SINGULARNAME: 'Redirector Page'
+    YOURPAGE: 'Page on your website'
   SilverStripe\CMS\Model\SiteTree:
-    DESCRIPTION: 'Generic content page'
-    PLURALNAME: Pages
-    PLURALS:
-      one: 'A Page'
-      other: '{count} Pages'
-    SINGULARNAME: Page
-  SilverStripe\CMS\Model\VirtualPage:
-    DESCRIPTION: 'Displays the content of another page'
-    PLURALNAME: 'Virtual Pages'
-    PLURALS:
-      one: 'A Virtual Page'
-      other: '{count} Virtual Pages'
-    SINGULARNAME: 'Virtual Page'
-  SiteTree:
     ACCESSANYONE: Anyone
     ACCESSHEADER: 'Who can view this page?'
     ACCESSLOGGEDIN: 'Logged-in users'
@@ -297,6 +224,7 @@ en:
     DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>.</p><p>You can now access the <a href="http://docs.silverstripe.org">developer documentation</a>, or begin the <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lessons</a>.</p>'
     DEFAULTHOMETITLE: Home
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
     EDITANYONE: 'Anyone who can log-in to the CMS'
@@ -338,6 +266,10 @@ en:
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
+    PLURALNAME: Pages
+    PLURALS:
+      one: 'A Page'
+      other: '{count} Pages'
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
@@ -345,6 +277,7 @@ en:
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'Show in menus?'
     SHOWINSEARCH: 'Show in search?'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Behavior
     TABCONTENT: 'Main Content'
     TABDEPENDENT: 'Dependent pages'
@@ -355,29 +288,80 @@ en:
     VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     VIEW_DRAFT_CONTENT: 'View draft content'
     VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
+    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
+    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
+    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
     Viewers: 'Viewers Groups'
     Visibility: Visibility
     has_one_Parent: 'Parent Page'
     many_many_BackLinkTracking: 'Backlink Tracking'
     many_many_ImageTracking: 'Image Tracking'
     many_many_LinkTracking: 'Link Tracking'
-  SiteTreeFileExtension:
+  SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Type
     TITLE_USED_ON: 'Used on'
-  SiteTreeURLSegmentField:
-    EMPTY: 'Please enter a URL Segment or click cancel'
-    HelpChars: ' Special characters are automatically converted or removed.'
-  URLSegmentField:
-    Cancel: Cancel
-    Edit: Edit
-    OK: OK
-  ViewArchivedEmail_ss:
-    CANACCESS: 'You can access the archived site at this link:'
-    HAVEASKED: 'You have asked to view the content of our site on'
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Linked Page'
+    DESCRIPTION: 'Displays the content of another page'
     EditLink: edit
     HEADER: 'This is a virtual page'
     HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
+    PLURALNAME: 'Virtual Pages'
+    PLURALS:
+      one: 'A Virtual Page'
+      other: '{count} Virtual Pages'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
+    SINGULARNAME: 'Virtual Page'
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    Any: Any
+    BROKENLINKS: 'Broken links report'
+    CheckSite: 'Check site'
+    CheckSiteDropdownDraft: 'Draft Site'
+    CheckSiteDropdownPublished: 'Published Site'
+    ColumnDateLastModified: 'Date last modified'
+    ColumnDateLastPublished: 'Date last published'
+    ColumnProblemType: 'Problem type'
+    ColumnURL: URL
+    HasBrokenFile: 'has broken file'
+    HasBrokenLink: 'has broken link'
+    HasBrokenLinkAndFile: 'has broken link and file'
+    HoverTitleEditPage: 'Edit page'
+    PageName: 'Page name'
+    ReasonDropdown: 'Problem to check'
+    ReasonDropdownBROKENFILE: 'Broken file'
+    ReasonDropdownBROKENLINK: 'Broken link'
+    ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
+    ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
+    RedirectorNonExistent: 'redirector page pointing to non-existent page'
+    VirtualPageNonExistent: 'virtual page pointing to non-existent page'
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERDATEFROM: From
+    FILTERDATETO: To
+    FILTERLABELTEXT: Search
+    GO: Go
+    PAGEFILTERDATEHEADING: 'Last edited'
+    SEARCH: Search
+    SearchResults: 'Search Results'
+  SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask:
+    BUTTONRUN: Run
+    CHOOSEOPERATION: 'Choose operation:'
+    DELETEWARNING: 'Warning: These operations are not reversible. Please handle with care.'
+    HEADER: 'Remove all orphaned pages task'
+    NONEFOUND: 'No orphans found'
+    NONEREMOVED: 'None removed'
+    OPERATION_REMOVE: 'Remove selected from all stages (WARNING: Will destroy all selected pages from both stage and live)'
+    SELECTALL: 'select all'
+    UNSELECTALL: 'unselect all'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Pages with broken files'
+    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
+    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
+    BrokenLinksGroupTitle: 'Broken links reports'
+    ContentGroupTitle: 'Content reports'
+    EMPTYPAGES: 'Pages with no content'
+    LAST2WEEKS: 'Pages edited in the last 2 weeks'
+    ParameterLiveCheckbox: 'Check live site'
+  SilverStripe\Security\Permission:
+    CONTENT_CATEGORY: 'Content permissions'
+    PERMISSIONS_CATEGORY: 'Roles and access permissions'

@@ -16,7 +16,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem
     public function getHTML()
     {
         $linkClass = $this->isActive() ? 'ss-ui-button current' : 'ss-ui-button';
-        $linkTitle = _t('ContentController.ARCHIVEDSITE', 'Preview version');
+        $linkTitle = _t('SilverStripe\\CMS\\Controllers\\ContentController.ARCHIVEDSITE', 'Preview version');
         $recordLink = Convert::raw2att(Controller::join_links(
             $this->record->AbsoluteLink(),
             '?archiveDate=' . urlencode($this->record->LastEdited)
@@ -26,7 +26,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem
 
     public function getTitle()
     {
-        return _t('SilverStripeNavigator.ARCHIVED', 'Archived');
+        return _t('SilverStripe\\CMS\\Controllers\\SilverStripeNavigator.ARCHIVED', 'Archived');
     }
 
     public function getMessage()
@@ -37,9 +37,9 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem
         }
         /** @var DBDatetime $dateObj */
         $dateObj = DBField::create_field('Datetime', $date);
-        $title = _t('ContentControl.NOTEWONTBESHOWN', 'Note: this message will not be shown to your visitors');
+        $title = _t('SilverStripe\\CMS\\Controllers\\ContentController.NOTEWONTBESHOWN', 'Note: this message will not be shown to your visitors');
         return "<div id=\"SilverStripeNavigatorMessage\" title=\"{$title}\">"
-            . _t('ContentController.ARCHIVEDSITEFROM', 'Archived site from')
+            . _t('SilverStripe\\CMS\\Controllers\\ContentController.ARCHIVEDSITEFROM', 'Archived site from')
             . "<br />" . $dateObj->Nice() . "</div>";
     }
 

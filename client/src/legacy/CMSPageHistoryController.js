@@ -134,7 +134,7 @@ $.entwine('ss', function($){
 			else if(compare) {
 				// check if we have already selected more than two.
 				if(selected.length > 1) {
-					return alert(i18n._t('ONLYSELECTTWO', 'You can only compare two versions at this time.'));
+					return alert(i18n._t('CMS.ONLYSELECTTWO', 'You can only compare two versions at this time.'));
 				}
 			
 				this._select();

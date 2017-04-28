@@ -17,7 +17,7 @@ class CMSBatchAction_Restore extends CMSBatchAction
 
     public function getActionTitle()
     {
-        return _t('CMSBatchActions.RESTORE', 'Restore');
+        return _t('SilverStripe\\Admin\\CMSBatchAction.RESTORE', 'Restore');
     }
 
     public function run(SS_List $pages)
@@ -38,7 +38,7 @@ class CMSBatchAction_Restore extends CMSBatchAction
         return $this->batchaction(
             $pages,
             'doRestoreToStage',
-            _t('CMSBatchActions.RESTORED_PAGES', 'Restored %d pages')
+            _t('SilverStripe\\Admin\\CMSBatchAction.RESTORED_PAGES', 'Restored %d pages')
         );
     }
 
