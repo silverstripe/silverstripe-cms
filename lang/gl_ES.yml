@@ -1,31 +1,8 @@
 gl_ES:
-  BrokenLinksReport:
-    Any: Ningún
-    BROKENLINKS: 'Informe de ligazóns rotas'
-    CheckSite: 'Probar o sitio'
-    CheckSiteDropdownDraft: 'Sitio Borrador'
-    CheckSiteDropdownPublished: 'Sitio Publicado'
-    ColumnDateLastModified: 'Data de modificación'
-    ColumnDateLastPublished: 'Data da última publicación'
-    ColumnProblemType: 'Tipo de problema'
-    HasBrokenFile: 'rompeu o ficheiro'
-    HasBrokenLink: 'ten ligazón rota'
-    HasBrokenLinkAndFile: 'rompeu a ligazón e o ficheiro'
-    HoverTitleEditPage: 'Editar Páxina'
-    PageName: 'Nome da páxina'
-    ReasonDropdown: 'Problema para comprobar'
-    ReasonDropdownBROKENFILE: 'Ficheiro roto'
-    ReasonDropdownBROKENLINK: 'Ligazón rota'
-    ReasonDropdownRPBROKENLINK: 'O redirector está apuntando a unha páxina inexistente'
-    ReasonDropdownVPBROKENLINK: 'A páxina virtual está apuntando a unha páxina inexistente'
-    RedirectorNonExistent: 'o redirector está apuntando a unha páxina inexistente'
-    VirtualPageNonExistent: 'a páxina virtual está apuntando a unha páxina inexistente'
-  CMSAddPageController:
-    Title: 'Engadir páxina'
-  CMSBatchActions:
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: '%d páxinas publicadas, %d erros'
     PUBLISH_PAGES: Publicar
-  CMSMain:
+  SilverStripe\CMS\Controllers\CMSMain:
     AddNew: 'Engadir nova páxina'
     AddNewButton: 'Engadir novo'
     ChoosePageParentMode: 'Escoller donde crear esta páxina'
@@ -40,78 +17,67 @@ gl_ES:
     TabContent: Contido
     TabHistory: Historial
     TabSettings: Configuracións
-  CMSPageAddController:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Baixo outra páxina'
     ParentMode_top: 'Nivel superior'
-  CMSPageHistoryController:
+    Title: 'Engadir páxina'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
     COMPAREMODE: 'Modo comparación (seleccionar dúas)'
     COMPAREVERSIONS: 'Comparar Versións'
+    NOTPUBLISHED: 'Non publicado'
+    PUBLISHER: Editor
     REVERTTOTHISVERSION: 'Retornar a esta versión'
     SHOWUNPUBLISHED: 'Amosar versións sen publicar'
     SHOWVERSION: 'Amosar Versión'
-    VIEW: ver
-  CMSPageHistoryController_versions_ss:
-    NOTPUBLISHED: 'Non publicado'
-    PUBLISHER: Editor
     UNKNOWN: Descoñecido
+    VIEW: ver
     WHEN: Cando
-  CMSPagesController:
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: Filtro
     ListView: 'Vista en Listado'
     MENUTITLE: Páxinas
     TreeView: 'Vista en Árbore'
-  CMSPagesController_Tools_ss:
-    FILTER: Filtro
-  CMSSiteTreeFilter_Search:
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Todas as páxinas'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Nota: esta mensaxe non se amosará aos visitantes'
-  ContentController:
+  SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITEFROM: 'Sitio arquivado dende'
     DRAFTSITE: 'Sitio Borrador'
     LOGGEDINAS: 'Iniciada sesión como'
-    LOGIN: Iniciar sesión
+    LOGIN: 'Iniciar sesión'
     LOGOUT: 'Pechar sesión'
+    NOTEWONTBESHOWN: 'Nota: esta mensaxe non se amosará aos visitantes'
     NOTLOGGEDIN: 'Sen iniciar sesión'
     PUBLISHEDSITE: 'Sitio Publicado'
     VIEWPAGEIN: 'Ver a Páxina en:'
-  ErrorPage:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
+    CANACCESS: 'Podes acceder ao sitio arquivado nesta ligazón:'
+    HAVEASKED: 'Solicitaches ver o contido do sitio sobre'
+  SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Código de erro'
     DEFAULTERRORPAGECONTENT: '<p>Sintoo, parece que estabas tratando de acceder a unha página que non existe.</p><p>Por favor, comproba o enderezo da URL que estaba tratando de acceder e volva tentalo.</p>'
     DEFAULTERRORPAGETITLE: 'Páxina non atopada'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Sintoo, houbo un problema coa xestión da túa petición.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Erro Servidor'
-  Permissions:
-    CONTENT_CATEGORY: 'Permisos do Contido'
-    PERMISSIONS_CATEGORY: 'Roles e permisos de acceso'
-  RedirectorPage:
+  SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Esta páxina redirixirá os usuarios a outra páxina'
     OTHERURL: 'Outra URL do sitio web'
     REDIRECTTO: 'Redirixir a'
     REDIRECTTOEXTERNAL: 'Outro sitio web'
     REDIRECTTOPAGE: 'Unha páxina no teu sitio web'
     YOURPAGE: 'Páxina no teu sitio web'
-  SideReport:
-    BROKENFILES: 'Páxinas con ficheiros rotos'
-    BROKENREDIRECTORPAGES: 'RedirectorPages apuntando a páxinas eliminadas'
-    BROKENVIRTUALPAGES: 'VirtualPages apuntando a páxinas eliminadas'
-    BrokenLinksGroupTitle: 'Informes de ligazóns rotas'
-    ContentGroupTitle: 'Informes do Contido'
-    EMPTYPAGES: 'Páxinas sen contido'
-    LAST2WEEKS: 'Páxinas editadas nas 2 últimas semanas'
-    ParameterLiveCheckbox: 'Probar o sitio en vivo'
-  SiteTree:
+  SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Ninguén
     ACCESSHEADER: 'Quen pode ver esta páxina?'
     ACCESSLOGGEDIN: 'Usuarios con sesión iniciada'
     ACCESSONLYTHESE: 'Só esta xente (escoller da lista)'
     BUTTONCANCELDRAFT: 'Cancelar cambios do borrador'
     BUTTONCANCELDRAFTDESC: 'Eliminar o borrador e revertir a páxina publicada actualmente'
-    BUTTONUNPUBLISH: Sen publicar
+    BUTTONUNPUBLISH: 'Sen publicar'
     BUTTONUNPUBLISHDESC: 'Eliminar esta páxina do sitio publicado'
     Comments: Comentarios
     Content: Contido
     DEFAULTABOUTTITLE: 'Sobre nós'
-    DEFAULTCONTACTTITLE: 'Contactarnos'
+    DEFAULTCONTACTTITLE: Contactarnos
     DEFAULTHOMETITLE: Inicio
     DependtPageColumnLinkType: 'Tipo de ligazón'
     EDITANYONE: 'Ningún pode iniciar sesión no CMS'
@@ -152,8 +118,38 @@ gl_ES:
     has_one_Parent: 'Páxina pai'
     many_many_ImageTracking: 'Imaxe de Seguemento'
     many_many_LinkTracking: 'Ligazón de Seguemento'
-  ViewArchivedEmail_ss:
-    CANACCESS: 'Podes acceder ao sitio arquivado nesta ligazón:'
-    HAVEASKED: 'Solicitaches ver o contido do sitio sobre'
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Esta é unha páxina virtual'
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    Any: Ningún
+    BROKENLINKS: 'Informe de ligazóns rotas'
+    CheckSite: 'Probar o sitio'
+    CheckSiteDropdownDraft: 'Sitio Borrador'
+    CheckSiteDropdownPublished: 'Sitio Publicado'
+    ColumnDateLastModified: 'Data de modificación'
+    ColumnDateLastPublished: 'Data da última publicación'
+    ColumnProblemType: 'Tipo de problema'
+    HasBrokenFile: 'rompeu o ficheiro'
+    HasBrokenLink: 'ten ligazón rota'
+    HasBrokenLinkAndFile: 'rompeu a ligazón e o ficheiro'
+    HoverTitleEditPage: 'Editar Páxina'
+    PageName: 'Nome da páxina'
+    ReasonDropdown: 'Problema para comprobar'
+    ReasonDropdownBROKENFILE: 'Ficheiro roto'
+    ReasonDropdownBROKENLINK: 'Ligazón rota'
+    ReasonDropdownRPBROKENLINK: 'O redirector está apuntando a unha páxina inexistente'
+    ReasonDropdownVPBROKENLINK: 'A páxina virtual está apuntando a unha páxina inexistente'
+    RedirectorNonExistent: 'o redirector está apuntando a unha páxina inexistente'
+    VirtualPageNonExistent: 'a páxina virtual está apuntando a unha páxina inexistente'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Páxinas con ficheiros rotos'
+    BROKENREDIRECTORPAGES: 'RedirectorPages apuntando a páxinas eliminadas'
+    BROKENVIRTUALPAGES: 'VirtualPages apuntando a páxinas eliminadas'
+    BrokenLinksGroupTitle: 'Informes de ligazóns rotas'
+    ContentGroupTitle: 'Informes do Contido'
+    EMPTYPAGES: 'Páxinas sen contido'
+    LAST2WEEKS: 'Páxinas editadas nas 2 últimas semanas'
+    ParameterLiveCheckbox: 'Probar o sitio en vivo'
+  SilverStripe\Security\Permission:
+    CONTENT_CATEGORY: 'Permisos do Contido'
+    PERMISSIONS_CATEGORY: 'Roles e permisos de acceso'

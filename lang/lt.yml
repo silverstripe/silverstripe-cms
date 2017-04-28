@@ -1,37 +1,13 @@
 lt:
-  AssetTableField:
-    BACKLINKCOUNT: 'Naudojama:'
-    PAGES: puslapis(-iai)
-  BrokenLinksReport:
-    Any: Bet kurias
-    BROKENLINKS: 'Sugadintų nuorodų ataskaita'
-    CheckSite: 'Patikrinti svetainę'
-    CheckSiteDropdownDraft: 'Juodraštinė svetainė'
-    CheckSiteDropdownPublished: 'Publikuojama svetainė'
-    ColumnDateLastModified: 'Redaguota'
-    ColumnDateLastPublished: 'Publikuota'
-    ColumnProblemType: 'Problemos tipas'
-    ColumnURL: URL adresas
-    HasBrokenFile: 'turi sugadintą bylą'
-    HasBrokenLink: 'turi sugadintą nuorodą'
-    HasBrokenLinkAndFile: 'turi sugadintą nuorodą ir bylą'
-    HoverTitleEditPage: 'Redaguoti puslapį'
-    PageName: 'Puslapio pavadinimas'
-    ReasonDropdown: 'Tikrinti problemas'
-    ReasonDropdownBROKENFILE: 'Sugadinta byla'
-    ReasonDropdownBROKENLINK: 'Sugadinta nuoroda'
-    ReasonDropdownRPBROKENLINK: 'Peradresuojantis puslapis veda į neegzistuojantį puslapį'
-    ReasonDropdownVPBROKENLINK: 'Virtualus puslapis veda į neegzistuojantį puslapį'
-    RedirectorNonExistent: 'Peradresuojantis puslapis veda į neegzistuojantį puslapį'
-    VirtualPageNonExistent: 'virtualus puslapis veda į neegzistuojantį puslapį'
-  CMSAddPageController:
-    Title: 'Pridėti puslapį'
-  CMSBatchActions:
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Publikuoti %d puslapiai, %d klaidų.'
     PUBLISH_PAGES: Publikuoti
     RESTORE: Atstatyti
     RESTORED_PAGES: 'Atstatyti %d puslapiai'
-  CMSMain:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
+    BACKLINKCOUNT: 'Naudojama:'
+    PAGES: puslapis(-iai)
+  SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Priėjimas prie ''{title}'' dalies'
     ACCESS_HELP: 'Leisti peržiūrėti svetainės medžio ir turinio skiltį. Peržiūros, bei redagavimo leidimai gali būti pakeisti per iškrentančius pasirinkimus ir per atskirus "Turinio leidimai".'
     ARCHIVE: Archyvas
@@ -47,7 +23,7 @@ lt:
     DUPLICATEDWITHCHILDREN: 'Puslapis ''{title}'' , bei jo vaikai kopijuoti sėkmingai'
     NEWPAGE: 'Naujas {pagetype}'
     PAGENOTEXISTS: 'Šis puslapis neegzistuoja'
-    PAGETYPEANYOPT: Bet koks
+    PAGETYPEANYOPT: 'Bet koks'
     PUBALLCONFIRM: 'Prašome publikuoti kiekvieną svetainės puslapį, kopijuojant turinį į svetainę'
     PUBALLFUN: '"Publikuoti viską" funkcionalumas'
     PUBPAGES: 'Įvykdyta: Publikuoti {count} puslapiai'
@@ -65,57 +41,51 @@ lt:
     TabContent: Turinys
     TabHistory: Istorija
     TabSettings: Nustatymai
-  CMSPageAddController:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Po kitu puslapiu'
     ParentMode_top: 'Aukščiausias lygmuo'
-  CMSPageHistoryController:
+    Title: 'Pridėti puslapį'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    AUTHOR: Autorius
     COMPAREMODE: 'Palyginimo režimas (pasirinkite du)'
     COMPAREVERSIONS: 'Palyginti versijas'
+    NOTPUBLISHED: Nepublikuotas
+    PUBLISHER: Publikavo
     REVERTTOTHISVERSION: 'Palikti šią versiją'
     SHOWUNPUBLISHED: 'Rodyti nepublikuojamas versijas'
     SHOWVERSION: 'Rodyti versiją'
+    UNKNOWN: Nežinoma
     VIEW: peržiūrėti
     VIEWINGLATEST: 'Dabar peržiūrima naujausia versija.'
     VIEWINGVERSION: 'Dabar peržiūrima versija {version}.'
-  CMSPageHistoryController_versions_ss:
-    AUTHOR: Autorius
-    NOTPUBLISHED: 'Nepublikuotas'
-    PUBLISHER: Publikavo
-    UNKNOWN: Nežinoma
     WHEN: Kada
-  CMSPagesController:
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: Filtras
     ListView: 'Sąrašo rodinys'
     MENUTITLE: Puslapiai
     TreeView: 'Medžio rodinys'
-  CMSPagesController_Tools_ss:
-    FILTER: Filtras
-  CMSSIteTreeFilter_PublishedPages:
+  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Publikuoti puslapiai'
-  CMSSearch:
-    FILTERDATEFROM: Nuo
-    FILTERDATETO: Iki
-    PAGEFILTERDATEHEADING: 'Redaguota'
-  CMSSiteTreeFilter_Search:
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Visi puslapiai'
-  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Publikuotas, bet pašalintas iš juodraščių'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Pastaba: ši žinutė nebus rodoma jūsų lankytojams'
-  ContentController:
+  SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Peržiūrėti versiją'
     ARCHIVEDSITEFROM: 'Archyvuota svetainė iš'
     CMS: TVS
     DRAFT: Juodraštis
     DRAFTSITE: 'Juodraštinė svetainė'
-    Email: E. paštas
+    Email: 'E. paštas'
     INSTALL_SUCCESS: 'Įdiegta sėkmingai!'
     InstallFilesDeleted: 'Įdiegimo bylos pašalintos sėkmingai.'
     InstallSecurityWarning: 'Saugumo sumetimais Jūs turėtumėte ištrinti įdiegimo bylas, nebent vėliau planuojate diegimo procesą atlikti iš naujo (<em>bus reikalinga administravimo prieiga, žiūrėkite viršuje</em>). Web serveris turi turėti rašymo teises "assets" katalogui, kitiems katalogams tokių teisių nereikia. <a href="{link}" style="text-align: center;">Spauskite čia jei norite ištrinti įdiegimo bylas</a>'
     InstallSuccessCongratulations: 'SilverStripe sėkmingai įdiegta!'
     LOGGEDINAS: 'Prisijungėte kaip '
     LOGIN: Prisijungti
-    LOGOUT: 'Atsijungti'
-    NOTLOGGEDIN: 'Neprisijungęs'
+    LOGOUT: Atsijungti
+    NOTEWONTBESHOWN: 'Pastaba: ši žinutė nebus rodoma jūsų lankytojams'
+    NOTLOGGEDIN: Neprisijungęs
     PUBLISHED: Publikuota
     PUBLISHEDSITE: 'Publikuojama svetainė'
     Password: Slaptažodis
@@ -123,7 +93,23 @@ lt:
     StartEditing: 'Jūs galite pradėti redaguoti turinį atsidarę <a href="{link}">TVS</a>.'
     UnableDeleteInstall: 'Nepavyko ištrinti įdiegimo bylų. Prašome pašalinti bylas rankiniu būdu.'
     VIEWPAGEIN: 'Peržiūrėti puslapį:'
-  ErrorPage:
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: Archyvuota
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
+    CANACCESS: 'Jūs galite atverti suarchyvuotą svetainę paspaudę šią nuorodą:'
+    HAVEASKED: 'Jūs norėjote peržiūrėti turinį mūsų svetainėje '
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Cancel: Atšaukti
+    EMPTY: 'Prašome įvesti URL dalį arba spauskite atšaukti'
+    Edit: Redaguoti
+    HelpChars: 'Specialūs simboliai automatiškai pakeičiami arba pašalinami.'
+    OK: Gerai
+  SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'Klaidos kodas'
+    DEFAULTERRORPAGECONTENT: "\t\n<p>Atsiprašome, atrodo, kad Jūs bandėte patekti į puslapį, kuris neegzistuoja.</p><p>Prašome patikrinti URL adresą ir pabandyti dar kartą.</p>\n"
+    DEFAULTERRORPAGETITLE: 'Puslapis nerastas'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Apgailestaujame, tačiau apdorojant užklausą įvyko klaida.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Tarnybinės stoties klaida'
     400: '400 - Bloga užklausa'
     401: '401 - Leidimas neduotas'
     403: '403 - Uždrausta'
@@ -149,15 +135,7 @@ lt:
     503: '503 - Servisas nepasiekiamas'
     504: '504 - Viršytas laiko limitas'
     505: '505 - Nepalaikoma HTTP versija'
-    CODE: 'Klaidos kodas'
-    DEFAULTERRORPAGECONTENT: "\t\n<p>Atsiprašome, atrodo, kad Jūs bandėte patekti į puslapį, kuris neegzistuoja.</p><p>Prašome patikrinti URL adresą ir pabandyti dar kartą.</p>\n"
-    DEFAULTERRORPAGETITLE: 'Puslapis nerastas'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Apgailestaujame, tačiau apdorojant užklausą įvyko klaida.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Tarnybinės stoties klaida'
-  Permissions:
-    CONTENT_CATEGORY: 'Turinio teisės'
-    PERMISSIONS_CATEGORY: 'Rolės ir priėjimo leidimai'
-  RedirectorPage:
+  SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Nukreipimo puslapis neturintis nukreipimo.'
     HEADER: 'Šis puslapis nukreips lankytojus į kitą puslapį'
     OTHERURL: 'Kitos svetainės URL adresas'
@@ -165,27 +143,8 @@ lt:
     REDIRECTTOEXTERNAL: 'Kita svetainė'
     REDIRECTTOPAGE: 'Puslapis Jūsų svetainėje'
     YOURPAGE: 'Puslapį Jūsų svetainėje'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Norėdami publikuoti virtualų puslapį, turite publikuoti prijungtą puslapį.'
-    VIRTUALPAGEWARNING: 'Norėdami publikuoti šį puslapį, turite pasirinkti prijungtą puslapį.'
-    VIRTUALPAGEWARNINGSETTINGS: 'Norėdami publikuoti šį puslapį, turite pasirinkti prijungtą puslapį pagrindiniuose turinio laukuose'
-  SearchForm:
-    GO: Vykdyti
-    SEARCH: Ieškoti
-    SearchResults: 'Paieškos rezultatai'
-  SideReport:
-    BROKENFILES: 'Puslapiai su sugadintomis bylomis'
-    BROKENREDIRECTORPAGES: 'Nukreipiantieji puslapiai, kurie nukreipia į ištrintus puslapius'
-    BROKENVIRTUALPAGES: 'Virtualūs puslapiai, vedantys į ištrintus puslapius'
-    BrokenLinksGroupTitle: 'Neveikiančių nuorodų ataskaitos'
-    ContentGroupTitle: 'Turinio ataskaitos'
-    EMPTYPAGES: 'Puslapiai be turinio'
-    LAST2WEEKS: 'Paskutines 2 savaites keisti puslapiai'
-    ParameterLiveCheckbox: 'Patikrinti publikuojamą svetainę'
-  SilverStripeNavigator:
-    ARCHIVED: Archyvuota
-  SiteTree:
-    ACCESSANYONE: Bet kas
+  SilverStripe\CMS\Model\SiteTree:
+    ACCESSANYONE: 'Bet kas'
     ACCESSHEADER: 'Kas gali matyti šį puslapį?'
     ACCESSLOGGEDIN: 'Prisijungę vartotojai'
     ACCESSONLYTHESE: 'Tik šie žmonės (pasirinkite iš sąrašo)'
@@ -204,12 +163,12 @@ lt:
     Comments: Komentarai
     Content: Turinys
     DEFAULTABOUTTITLE: 'Apie mus'
-    DEFAULTCONTACTTITLE: 'Kontaktai'
+    DEFAULTCONTACTTITLE: Kontaktai
     DEFAULTHOMECONTENT: '<p>Sveiki atvykę į SilverStripe! Tai yra pagrindinis puslapis. Jūs galite redaguoti šį puslapį atsidarę <a href="admin/">TVS</a>. Dabar galite naudotis <a href="http://doc.silverstripe.com">programuotojų dokumentacija</a>, arba pradėti nuo <a href = "http://doc.silverstripe.com/doku.php?id=tutorials">SilverStripe pamokų.</a></p>'
     DEFAULTHOMETITLE: Pradžia
     DEPENDENT_NOTE: 'Šiam puslapiui priklauso šie puslapiai. Tai gali būti virtualūs, nukreipiantys puslapiai, bei puslapiai, rodantys kitų puslapių turinį.'
     DependtPageColumnLinkType: 'Nuorodos tipas'
-    DependtPageColumnURL: URL adresas
+    DependtPageColumnURL: 'URL adresas'
     EDITANYONE: 'Bet kuris prisijungęs prie TVS'
     EDITHEADER: 'Kas gali redaguoti šį puslapį?'
     EDITONLYTHESE: 'Tik šie žmonės (pasirinkite iš sąrašo)'
@@ -221,9 +180,9 @@ lt:
     HASBROKENLINKS: 'Šiame puslapyje yra nebegaliojančių nuorodų.'
     HTMLEDITORTITLE: Turinys
     INHERIT: 'Paveldėti iš pradinio puslapio'
-    LASTPUBLISHED: 'Publikuota'
-    LASTSAVED: 'Išsaugota'
-    LASTUPDATED: 'Atnaujinta'
+    LASTPUBLISHED: Publikuota
+    LASTSAVED: Išsaugota
+    LASTUPDATED: Atnaujinta
     LINKCHANGENOTE: 'Keičiant šio puslapio nuorodą, keisis ir jam priklausančių puslapių nuorodos.'
     MENUTITLE: 'Navigacijos pavadinimas'
     METADESC: 'Meta aprašymas'
@@ -234,7 +193,7 @@ lt:
     MODIFIEDONDRAFTSHORT: Pakeistas
     MetadataToggle: Metaduomenys
     MoreOptions: 'Daugiau pasirinkimų'
-    NOTPUBLISHED: 'Nepublikuotas'
+    NOTPUBLISHED: Nepublikuotas
     OBSOLETECLASS: 'Šis puslapio tipas {type} neegzistuoja. Išsaugojus bus pakeistas tipas ir galite prarasti duomenis'
     PAGELOCATION: 'Puslapio vieta'
     PAGETITLE: 'Puslapio pavadinimas'
@@ -262,25 +221,59 @@ lt:
     VIEW_ALL_HELP: 'Galimybė peržiūrėti bet kurį puslapį svetainėje, nepriklausomai nuo "Priėjimo/Leidimų" skyriaus nustatymų. Būtinas leidimas "Prieiti prie ''Puslapių''"'
     VIEW_DRAFT_CONTENT: 'Peržiūrėti juodraščio turinį'
     VIEW_DRAFT_CONTENT_HELP: 'Pritaikoma puslapių peržiūrai be TVS pagalbos juodraščio režime. Naudinga bendradarbiaujant su redaktoriais be TVS prieigos.'
+    VIRTUALPAGEDRAFTWARNING: 'Norėdami publikuoti virtualų puslapį, turite publikuoti prijungtą puslapį.'
+    VIRTUALPAGEWARNING: 'Norėdami publikuoti šį puslapį, turite pasirinkti prijungtą puslapį.'
+    VIRTUALPAGEWARNINGSETTINGS: 'Norėdami publikuoti šį puslapį, turite pasirinkti prijungtą puslapį pagrindiniuose turinio laukuose'
     Viewers: 'Lankytojų grupės'
     Visibility: Matomumas
     has_one_Parent: 'Po puslapiu'
     many_many_BackLinkTracking: 'Atgalinis stebėjimas'
     many_many_ImageTracking: 'Paveikslėlių sekimas'
     many_many_LinkTracking: 'Nuorodos sekimas'
-  SiteTreeURLSegmentField:
-    EMPTY: 'Prašome įvesti URL dalį arba spauskite atšaukti'
-    HelpChars: 'Specialūs simboliai automatiškai pakeičiami arba pašalinami.'
-  URLSegmentField:
-    Cancel: Atšaukti
-    Edit: Redaguoti
-    OK: Gerai
-  ViewArchivedEmail_ss:
-    CANACCESS: 'Jūs galite atverti suarchyvuotą svetainę paspaudę šią nuorodą:'
-    HAVEASKED: 'Jūs norėjote peržiūrėti turinį mūsų svetainėje '
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Prijungtas puslapis'
     EditLink: redaguoti
     HEADER: 'Tai yra virtualus puslapis'
     HEADERWITHLINK: 'Tai yra virtualus puslapis su turiniu iš puslapio "{title}" ({link})'
     PageTypNotAllowedOnRoot: 'Norimas puslapio tipas "{type}" neleidžiamas šiam virtualiam puslapiui šakniniame lygmenyje.'
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    Any: 'Bet kurias'
+    BROKENLINKS: 'Sugadintų nuorodų ataskaita'
+    CheckSite: 'Patikrinti svetainę'
+    CheckSiteDropdownDraft: 'Juodraštinė svetainė'
+    CheckSiteDropdownPublished: 'Publikuojama svetainė'
+    ColumnDateLastModified: Redaguota
+    ColumnDateLastPublished: Publikuota
+    ColumnProblemType: 'Problemos tipas'
+    ColumnURL: 'URL adresas'
+    HasBrokenFile: 'turi sugadintą bylą'
+    HasBrokenLink: 'turi sugadintą nuorodą'
+    HasBrokenLinkAndFile: 'turi sugadintą nuorodą ir bylą'
+    HoverTitleEditPage: 'Redaguoti puslapį'
+    PageName: 'Puslapio pavadinimas'
+    ReasonDropdown: 'Tikrinti problemas'
+    ReasonDropdownBROKENFILE: 'Sugadinta byla'
+    ReasonDropdownBROKENLINK: 'Sugadinta nuoroda'
+    ReasonDropdownRPBROKENLINK: 'Peradresuojantis puslapis veda į neegzistuojantį puslapį'
+    ReasonDropdownVPBROKENLINK: 'Virtualus puslapis veda į neegzistuojantį puslapį'
+    RedirectorNonExistent: 'Peradresuojantis puslapis veda į neegzistuojantį puslapį'
+    VirtualPageNonExistent: 'virtualus puslapis veda į neegzistuojantį puslapį'
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERDATEFROM: Nuo
+    FILTERDATETO: Iki
+    GO: Vykdyti
+    PAGEFILTERDATEHEADING: Redaguota
+    SEARCH: Ieškoti
+    SearchResults: 'Paieškos rezultatai'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Puslapiai su sugadintomis bylomis'
+    BROKENREDIRECTORPAGES: 'Nukreipiantieji puslapiai, kurie nukreipia į ištrintus puslapius'
+    BROKENVIRTUALPAGES: 'Virtualūs puslapiai, vedantys į ištrintus puslapius'
+    BrokenLinksGroupTitle: 'Neveikiančių nuorodų ataskaitos'
+    ContentGroupTitle: 'Turinio ataskaitos'
+    EMPTYPAGES: 'Puslapiai be turinio'
+    LAST2WEEKS: 'Paskutines 2 savaites keisti puslapiai'
+    ParameterLiveCheckbox: 'Patikrinti publikuojamą svetainę'
+  SilverStripe\Security\Permission:
+    CONTENT_CATEGORY: 'Turinio teisės'
+    PERMISSIONS_CATEGORY: 'Rolės ir priėjimo leidimai'

@@ -1,37 +1,13 @@
 pl:
-  AssetTableField:
-    BACKLINKCOUNT: 'Używany na:'
-    PAGES: stron(y)
-  BrokenLinksReport:
-    Any: Jakikolwiek
-    BROKENLINKS: 'Raport uszkodzonych linków'
-    CheckSite: 'Sprawdź witrynę'
-    CheckSiteDropdownDraft: 'Szkic witryny'
-    CheckSiteDropdownPublished: 'Opublikowana witryna'
-    ColumnDateLastModified: 'Data ostatniej modyfikacji'
-    ColumnDateLastPublished: 'Data ostatniej publikacji'
-    ColumnProblemType: 'Rodzaj problemu'
-    ColumnURL: Adres URL
-    HasBrokenFile: 'ma uszkodzony plik'
-    HasBrokenLink: 'ma uszkodzony link'
-    HasBrokenLinkAndFile: 'ma uszkodzony link oraz plik'
-    HoverTitleEditPage: 'Edytuj stronę'
-    PageName: 'Nazwa strony'
-    ReasonDropdown: 'Problem do sprawdzenia'
-    ReasonDropdownBROKENFILE: 'Uszkodzony plik'
-    ReasonDropdownBROKENLINK: 'Uszkodzony link'
-    ReasonDropdownRPBROKENLINK: 'Strona przekierowująca wskazuje na nieistniejącą stronę'
-    ReasonDropdownVPBROKENLINK: 'Strona wirtualna wskazuje na nieistniejącą stronę'
-    RedirectorNonExistent: 'strona przekierowująca wskazuje na nieistniejącą stronę'
-    VirtualPageNonExistent: 'strona wirtualna wskazuje na nieistniejącą stronę'
-  CMSAddPageController:
-    Title: 'Dodaj stronę'
-  CMSBatchActions:
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Opublikowano %d stron, %d się nie powiodło'
     PUBLISH_PAGES: Opublikuj
     RESTORE: Przywróć
     RESTORED_PAGES: 'Przywrócono %d stron'
-  CMSMain:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
+    BACKLINKCOUNT: 'Używany na:'
+    PAGES: stron(y)
+  SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Dostęp do sekcji ''{title}'''
     ACCESS_HELP: 'Zezwala na oglądanie sekcji zawierających drzewo stron oraz treść. Prawo Przeglądaj i edytuj może być obsługiwane przez pola wyboru dostępne na stronach oraz poprzez zakładkę uprawnień.'
     ARCHIVE: Archiwizuj
@@ -62,54 +38,48 @@ pl:
     TabContent: Zawartość
     TabHistory: Historia
     TabSettings: Opcje
-  CMSPageAddController:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Pod inną stroną'
     ParentMode_top: 'Główny poziom'
-  CMSPageHistoryController:
+    Title: 'Dodaj stronę'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    AUTHOR: Autor
     COMPAREMODE: 'Tryb porównywania (wybierz dwie)'
     COMPAREVERSIONS: 'Porównaj wersje'
+    NOTPUBLISHED: Nieopublikowana
+    PUBLISHER: Edytor
     REVERTTOTHISVERSION: 'Wróć do tej wersji'
     SHOWUNPUBLISHED: 'Pokaż nieopublikowane wersje'
     SHOWVERSION: 'Pokaż wersję'
+    UNKNOWN: Nieznany
     VIEW: zobacz
     VIEWINGLATEST: 'Obecnie oglądasz najnowszą wersję'
     VIEWINGVERSION: 'Obecnie oglądasz wersję {version}.'
-  CMSPageHistoryController_versions_ss:
-    AUTHOR: Autor
-    NOTPUBLISHED: 'Nieopublikowana'
-    PUBLISHER: Edytor
-    UNKNOWN: Nieznany
     WHEN: Kiedy
-  CMSPagesController:
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: Filtr
     ListView: 'Widok listy'
     MENUTITLE: Strony
     TreeView: 'Widok drzewa'
-  CMSPagesController_Tools_ss:
-    FILTER: Filtr
-  CMSSIteTreeFilter_PublishedPages:
+  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Opublikowane strony'
-  CMSSearch:
-    FILTERDATEFROM: Od
-    FILTERDATETO: Do
-    PAGEFILTERDATEHEADING: 'Ostatnio edytowane'
-  CMSSiteTreeFilter_Search:
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Wszystkie strony'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Uwaga: ta strona nie będzie widoczna dla twoich odwiedzających  '
-  ContentController:
+  SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Podgląd wersji'
     ARCHIVEDSITEFROM: 'Zarchiwizowana witryna od'
-    CMS: System Zarządzania Treścią
+    CMS: 'System Zarządzania Treścią'
     DRAFT: Szkic
     DRAFTSITE: 'Szkic witryny'
-    Email: Adres e-mail
+    Email: 'Adres e-mail'
     INSTALL_SUCCESS: 'Instalacja przebiegła pomyślnie'
     InstallFilesDeleted: 'Pliki instalacyjne zostały pomyślnie usunięte'
     InstallSecurityWarning: 'Dla bezpieczeństwa powinieneś skasować pliki instalacyjne, chyba że planujesz reinstalację w późniejszym czasie (<em>wymaga zalogowania się jako admin, patrz wyżej</em>). Serwer potrzebuje teraz tylko dostępu do folderu "assets", możesz usunąć dostęp do innych folderów. <a href="{link}" style="text-align: center;">Kliknij tutaj aby usunąć pliki instalacyjne.</a>'
     InstallSuccessCongratulations: 'SilverStripe został zainstalowany!'
     LOGGEDINAS: 'Zalogowany jako'
     LOGIN: Zaloguj
-    LOGOUT: 'Wyloguj'
+    LOGOUT: Wyloguj
+    NOTEWONTBESHOWN: 'Uwaga: ta strona nie będzie widoczna dla twoich odwiedzających  '
     NOTLOGGEDIN: 'Nie zalogowany'
     PUBLISHED: Opublikowano
     PUBLISHEDSITE: 'Opublikowana witryna'
@@ -118,7 +88,23 @@ pl:
     StartEditing: 'Możesz zacząć edytować Twoją stronę otwierając <a href="{link}">CMS</a>.'
     UnableDeleteInstall: 'Nie można usunąć plików instalacyjnych. Proszę usunąć je ręcznie'
     VIEWPAGEIN: 'Zobacz stronę w:'
-  ErrorPage:
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: Zarchiwizowane
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
+    CANACCESS: 'Dostęp do zarchiwizowanej witryny:'
+    HAVEASKED: 'Poprosiłeś o obejrzenie treści naszej strony na'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Cancel: Anuluj
+    EMPTY: 'Proszę podać część adresu lub kliknąć anuluj'
+    Edit: Edytuj
+    HelpChars: 'Znaki specjalne są automatycznie konwertowane lub usuwane.'
+    OK: OK
+  SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'Kod błędu'
+    DEFAULTERRORPAGECONTENT: '<p>Niestety, próbujesz wejść na stronę, która nie istnieje.</p><p>Sprawdź pisownię adresu URL i spróbuj ponownie.</p>'
+    DEFAULTERRORPAGETITLE: 'Nie znaleziono strony'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Wystąpił problem z obsługą Twojego żądania.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Błąd serwera'
     400: '400 - Nieprawidłowe zapytanie'
     401: '401 - Nieautoryzowany dostęp'
     403: '403 - Zabroniony'
@@ -144,15 +130,7 @@ pl:
     503: '503 - Usługa niedostępna'
     504: '504 - Przekroczony czas bramy'
     505: '505 - Wersja HTTP nie obsługiwana'
-    CODE: 'Kod błędu'
-    DEFAULTERRORPAGECONTENT: '<p>Niestety, próbujesz wejść na stronę, która nie istnieje.</p><p>Sprawdź pisownię adresu URL i spróbuj ponownie.</p>'
-    DEFAULTERRORPAGETITLE: 'Nie znaleziono strony'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Wystąpił problem z obsługą Twojego żądania.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Błąd serwera'
-  Permissions:
-    CONTENT_CATEGORY: 'Uprawnienie edycji treści'
-    PERMISSIONS_CATEGORY: 'Uprawnienia ról i dostępu'
-  RedirectorPage:
+  SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Strona przekierowująca została ustawiona bez celu, do którego ma przekierowywać.'
     HEADER: 'Ta strona przeniesie użytkowników na inną stronę'
     OTHERURL: 'Adres URL innej strony'
@@ -160,26 +138,7 @@ pl:
     REDIRECTTOEXTERNAL: 'Inna strona'
     REDIRECTTOPAGE: 'Strona na Twojej witrynie'
     YOURPAGE: 'Strona na Twojej witrynie'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Aby opublikować stronę wirtualną opublikuj stronę powiązaną'
-    VIRTUALPAGEWARNING: 'Aby opublikować tą stronę najpierw wybierz stronę powiązaną i zapisz zmiany'
-    VIRTUALPAGEWARNINGSETTINGS: 'Aby opublikować wybierz stronę powiązaną w sekcji głównej'
-  SearchForm:
-    GO: Przejdź
-    SEARCH: Szukaj
-    SearchResults: 'Wyniki wyszukiwania'
-  SideReport:
-    BROKENFILES: 'Strony z uszkodzonymi plikami'
-    BROKENREDIRECTORPAGES: 'Strony przekierowania wskazujące na usunięte strony'
-    BROKENVIRTUALPAGES: 'Wirtualne strony wskazujące na usunięte strony'
-    BrokenLinksGroupTitle: 'Raporty o uszkodzonych linkach'
-    ContentGroupTitle: 'Treść raportów'
-    EMPTYPAGES: 'Strony bez zawartości'
-    LAST2WEEKS: 'Strony edytowane w ciągu 2 ostatnich tygodni'
-    ParameterLiveCheckbox: 'Sprawdź witrynę'
-  SilverStripeNavigator:
-    ARCHIVED: Zarchiwizowane
-  SiteTree:
+  SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Ktokolwiek
     ACCESSHEADER: 'Kto może zobaczyć tę stronę?'
     ACCESSLOGGEDIN: 'Tylko zarejestrowani użytkownicy'
@@ -198,11 +157,11 @@ pl:
     Comments: Komentarze
     Content: Zawartość
     DEFAULTABOUTTITLE: 'O nas'
-    DEFAULTCONTACTTITLE: 'Kontakt'
-    DEFAULTHOMETITLE: Strona główna
+    DEFAULTCONTACTTITLE: Kontakt
+    DEFAULTHOMETITLE: 'Strona główna'
     DEPENDENT_NOTE: 'Poniższe strony są zależne od tej (łącznie z wirtualnymi stronami, stronami przekierowującymi oraz stronami z treścią).'
     DependtPageColumnLinkType: 'Typ linku'
-    DependtPageColumnURL: Adres internetowy
+    DependtPageColumnURL: 'Adres internetowy'
     EDITANYONE: 'Każdy to jest zalogowany w systemie CMS'
     EDITHEADER: 'Kto może edytować wewnątrz systemu CMS?'
     EDITONLYTHESE: 'Tylko Ci ludzi (wybierz z listy)'
@@ -219,15 +178,15 @@ pl:
     LASTUPDATED: 'Ostania zmiana'
     LINKCHANGENOTE: 'Zmiana linku na aktualnej stronie skutkuje zmianą w linkach stron potomnych.'
     MENUTITLE: 'Sekcja nawigacji'
-    METADESC: 'Opis'
-    METADESCHELP: 'Wyszukiwarki internetowe używają tej treści w wynikach wyszukiwania (ta treść nie wpłynie na ich pozycjonowanie)'
+    METADESC: Opis
+    METADESCHELP: "Wyszukiwarki internetowe używają tej treści w wynikach wyszukiwania (ta treść\_nie wpłynie na ich pozycjonowanie)"
     METAEXTRA: 'Własne meta tagi'
     METAEXTRAHELP: 'HTML zawierający dodatkowe metainformacje, n.p. &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Na stronie znajdują się nieopublikowane zmiany'
     MODIFIEDONDRAFTSHORT: Zmodyfikowana
     MetadataToggle: Metadane
     MoreOptions: 'Więcej opcji'
-    NOTPUBLISHED: 'Nieopublikowana'
+    NOTPUBLISHED: Nieopublikowana
     OBSOLETECLASS: 'Ta strona jest przestarzałego typu {type}. Zapisanie jej spowoduje zmianę typu przez co możesz stracić dane'
     PAGELOCATION: 'Lokalizacja strony'
     PAGETITLE: 'Nazwa strony'
@@ -246,7 +205,7 @@ pl:
     SHOWINMENUS: 'Pokazuj w menu?'
     SHOWINSEARCH: 'Pokazuj w wyszukiwarce?'
     TABBEHAVIOUR: Zachowanie
-    TABCONTENT: 'Zawartość'
+    TABCONTENT: Zawartość
     TABDEPENDENT: 'Strony zależne'
     TOPLEVEL: 'Zawartość witryny (główny poziom)'
     URLSegment: 'Segment adresu URL'
@@ -255,25 +214,59 @@ pl:
     VIEW_ALL_HELP: 'Uprawenienie do przeglądania wszystkich stron w witrynie, bez wzlędu na szczegółowe ustawienia w ich zakładkach Dostęp. Wymaga uprawenienia "Dostęp do sekcji ''Strony''" '
     VIEW_DRAFT_CONTENT: 'Obejrzyj szkic treści'
     VIEW_DRAFT_CONTENT_HELP: 'Stosowane do oglądania szkiców stron poza systemem CMS. Przydatne w przypadku zewnętrznych współpracowników nie mających dostępu do CMS.'
+    VIRTUALPAGEDRAFTWARNING: 'Aby opublikować stronę wirtualną opublikuj stronę powiązaną'
+    VIRTUALPAGEWARNING: 'Aby opublikować tą stronę najpierw wybierz stronę powiązaną i zapisz zmiany'
+    VIRTUALPAGEWARNINGSETTINGS: 'Aby opublikować wybierz stronę powiązaną w sekcji głównej'
     Viewers: 'Grupy przeglądających'
     Visibility: Widoczność
     has_one_Parent: 'Strona Nadrzędna'
     many_many_BackLinkTracking: 'Śledzenie backlinków'
     many_many_ImageTracking: 'Śledzenie obrazków'
     many_many_LinkTracking: 'Śledzenie linków'
-  SiteTreeURLSegmentField:
-    EMPTY: 'Proszę podać część adresu lub kliknąć anuluj'
-    HelpChars: 'Znaki specjalne są automatycznie konwertowane lub usuwane.'
-  URLSegmentField:
-    Cancel: Anuluj
-    Edit: Edytuj
-    OK: OK
-  ViewArchivedEmail_ss:
-    CANACCESS: 'Dostęp do zarchiwizowanej witryny:'
-    HAVEASKED: 'Poprosiłeś o obejrzenie treści naszej strony na'
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Linkowana strona'
     EditLink: edytuj
     HEADER: 'To jest wirtualna strona'
-    HEADERWITHLINK: 'Strona wirtualna odzwierciedlająca treść "{title}" ({link})'
+    HEADERWITHLINK: "Strona wirtualna odzwierciedlająca treść\_\"{title}\" ({link})"
     PageTypNotAllowedOnRoot: '"{type}" nie jest dozwolona dla głównego poziomu wirtualnej strony'
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    Any: Jakikolwiek
+    BROKENLINKS: 'Raport uszkodzonych linków'
+    CheckSite: 'Sprawdź witrynę'
+    CheckSiteDropdownDraft: 'Szkic witryny'
+    CheckSiteDropdownPublished: 'Opublikowana witryna'
+    ColumnDateLastModified: 'Data ostatniej modyfikacji'
+    ColumnDateLastPublished: 'Data ostatniej publikacji'
+    ColumnProblemType: 'Rodzaj problemu'
+    ColumnURL: 'Adres URL'
+    HasBrokenFile: 'ma uszkodzony plik'
+    HasBrokenLink: 'ma uszkodzony link'
+    HasBrokenLinkAndFile: 'ma uszkodzony link oraz plik'
+    HoverTitleEditPage: 'Edytuj stronę'
+    PageName: 'Nazwa strony'
+    ReasonDropdown: 'Problem do sprawdzenia'
+    ReasonDropdownBROKENFILE: 'Uszkodzony plik'
+    ReasonDropdownBROKENLINK: 'Uszkodzony link'
+    ReasonDropdownRPBROKENLINK: 'Strona przekierowująca wskazuje na nieistniejącą stronę'
+    ReasonDropdownVPBROKENLINK: 'Strona wirtualna wskazuje na nieistniejącą stronę'
+    RedirectorNonExistent: 'strona przekierowująca wskazuje na nieistniejącą stronę'
+    VirtualPageNonExistent: 'strona wirtualna wskazuje na nieistniejącą stronę'
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERDATEFROM: Od
+    FILTERDATETO: Do
+    GO: Przejdź
+    PAGEFILTERDATEHEADING: 'Ostatnio edytowane'
+    SEARCH: Szukaj
+    SearchResults: 'Wyniki wyszukiwania'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Strony z uszkodzonymi plikami'
+    BROKENREDIRECTORPAGES: 'Strony przekierowania wskazujące na usunięte strony'
+    BROKENVIRTUALPAGES: 'Wirtualne strony wskazujące na usunięte strony'
+    BrokenLinksGroupTitle: 'Raporty o uszkodzonych linkach'
+    ContentGroupTitle: 'Treść raportów'
+    EMPTYPAGES: 'Strony bez zawartości'
+    LAST2WEEKS: 'Strony edytowane w ciągu 2 ostatnich tygodni'
+    ParameterLiveCheckbox: 'Sprawdź witrynę'
+  SilverStripe\Security\Permission:
+    CONTENT_CATEGORY: 'Uprawnienie edycji treści'
+    PERMISSIONS_CATEGORY: 'Uprawnienia ról i dostępu'

@@ -1,31 +1,22 @@
 af:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Gebruik op:'
     PAGES: bladsy(e)
-  BrokenLinksReport:
-    Any: Enige
-    BROKENLINKS: 'Gebreekte skakels verslag'
-  CMSMain:
+  SilverStripe\CMS\Controllers\CMSMain:
     PAGENOTEXISTS: 'Hierdie bladsy bestaan nie'
     PUBALLCONFIRM: 'Publiseer asseblief elke bladsy in die werf en kopieër inhoud fase na lewendig'
     ROLLBACK: 'Rol terug na hierdie weergawe'
-  CMSPagesController:
+  SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: CMSPagesController
-  ErrorPage:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
+    HAVEASKED: 'U het gevra om die inhoud van ons werf te sien op'
+  SilverStripe\CMS\Model\ErrorPage:
     501: '501 - Nie Geimplementeer'
     502: '502 - Slegte Deurgang'
     503: '503 - Diens Nie Beskikbaar'
     505: '505 - HTTP Weergawe Nie Ondersteun'
-  Permissions:
-    CONTENT_CATEGORY: 'Inhoud permissies'
-    PERMISSIONS_CATEGORY: 'Rolle en toegang permissies'
-  SideReport:
-    BROKENFILES: 'Bladsye met gebreekte lêers'
-    BrokenLinksGroupTitle: 'Gebreekte skakels verslae'
-    ContentGroupTitle: 'Inhoud verslae'
-    ParameterLiveCheckbox: 'Kies lewendige werf'
-  SiteTree:
-    ACCESSANYONE: Enige iemand
+  SilverStripe\CMS\Model\SiteTree:
+    ACCESSANYONE: 'Enige iemand'
     ACCESSHEADER: 'Wie mag hierdie bladsy sien?'
     ACCESSLOGGEDIN: 'Ingetekende gebruikers'
     ACCESSONLYTHESE: 'Slegs hierdie mense (kies uit lys)'
@@ -47,9 +38,18 @@ af:
     PARENTTYPE_SUBPAGE: 'Sub-bladsy onder ''n ouer bladsy (kies onder)'
     REORGANISE_DESCRIPTION: 'Verander werf struktuur'
     SHOWINSEARCH: 'Wys in soektog?'
-    TABCONTENT: 'Inhoud'
+    TABCONTENT: Inhoud
     has_one_Parent: 'Ouer Bladsy'
-  ViewArchivedEmail_ss:
-    HAVEASKED: 'U het gevra om die inhoud van ons werf te sien op'
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Hierdie is ''n virtuele bladsy'
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    Any: Enige
+    BROKENLINKS: 'Gebreekte skakels verslag'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Bladsye met gebreekte lêers'
+    BrokenLinksGroupTitle: 'Gebreekte skakels verslae'
+    ContentGroupTitle: 'Inhoud verslae'
+    ParameterLiveCheckbox: 'Kies lewendige werf'
+  SilverStripe\Security\Permission:
+    CONTENT_CATEGORY: 'Inhoud permissies'
+    PERMISSIONS_CATEGORY: 'Rolle en toegang permissies'

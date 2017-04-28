@@ -1,37 +1,13 @@
 cs:
-  AssetTableField:
-    BACKLINKCOUNT: 'Použito na:'
-    PAGES: stránka(y)
-  BrokenLinksReport:
-    Any: Jakékoliv
-    BROKENLINKS: 'Výkaz porušených odkazů'
-    CheckSite: 'Zkontrolovat web'
-    CheckSiteDropdownDraft: 'Koncept webu'
-    CheckSiteDropdownPublished: 'Zveřejněný web'
-    ColumnDateLastModified: 'Datum poslední změny'
-    ColumnDateLastPublished: 'Datum posledního zveřejnění'
-    ColumnProblemType: 'Problém typu'
-    ColumnURL: URL
-    HasBrokenFile: 'porušen soubor'
-    HasBrokenLink: 'porušen odkaz'
-    HasBrokenLinkAndFile: 'porušen odkaz a soubor'
-    HoverTitleEditPage: 'Editovat stránku'
-    PageName: 'Název stránky'
-    ReasonDropdown: 'Problém ke kontrole'
-    ReasonDropdownBROKENFILE: 'Porušen soubor'
-    ReasonDropdownBROKENLINK: 'Porušen odkaz'
-    ReasonDropdownRPBROKENLINK: 'Přesměrovací stránka ukazuje na neexistující stránku'
-    ReasonDropdownVPBROKENLINK: 'Virtuální stránka ukazuje na neexistující stránku'
-    RedirectorNonExistent: 'přesměrovací stránka ukazuje na neexistující stránku'
-    VirtualPageNonExistent: 'virtuální stránka ukazuje na neexistující stránku'
-  CMSAddPageController:
-    Title: 'Přidat stránku'
-  CMSBatchActions:
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Zveřejněných %d stránek, %d selhání'
     PUBLISH_PAGES: Zveřejnit
     RESTORE: Obnovit
     RESTORED_PAGES: 'Obnoveno %d stránek'
-  CMSMain:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
+    BACKLINKCOUNT: 'Použito na:'
+    PAGES: stránka(y)
+  SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Přístup k ''{title}'' sekci'
     ACCESS_HELP: 'Povolit prohlížení sekce obsahující strukturu a obsah webu. Oprávnění na prohlížení a úpravu mohou být nastavena skrze menu pro samostatnou stránku, také jako jednotlivé oprávnění pro obsah.'
     ARCHIVE: Archív
@@ -67,44 +43,43 @@ cs:
     TabContent: Obsah
     TabHistory: Historie
     TabSettings: Nastavení
-  CMSPageAddController:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Přidat stránku'
     ParentMode_child: 'Pod jinou stránku'
     ParentMode_top: 'Nejvyšší úroveň'
-  CMSPageHistoryController:
+    Title: 'Přidat stránku'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Upravit stránku'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    AUTHOR: Autor
     COMPAREMODE: 'Porovnávací mód (vyberte dva)'
     COMPAREVERSIONS: 'Porovnat verze'
+    MENUTITLE: Historie
+    NOTPUBLISHED: Nezveřejněno
+    PREVIEW: 'Náhled webu'
+    PUBLISHER: Vydavatel
     REVERTTOTHISVERSION: 'Zpět na tuto verzi'
     SHOWUNPUBLISHED: 'Zobrazit nezveřejněné verze'
     SHOWVERSION: 'Zobrazit verzi'
+    UNKNOWN: Neznámý
     VIEW: zobrazit
     VIEWINGLATEST: 'Právě se zobrazuje poslední verze.'
     VIEWINGVERSION: 'Právě prohlížíte verzi číslo {version}.'
-  CMSPageHistoryController_versions_ss:
-    AUTHOR: Autor
-    NOTPUBLISHED: 'Nezveřejněno'
-    PREVIEW: 'Náhled webu'
-    PUBLISHER: Vydavatel
-    UNKNOWN: Neznámý
     WHEN: Když
-  CMSPagesController:
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Upravit stránku'
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: Filtr
     ListView: 'Pohled seznam'
     MENUTITLE: Stránky
     TreeView: 'Pohled strom'
-  CMSPagesController_Tools_ss:
-    FILTER: Filtr
-  CMSSIteTreeFilter_PublishedPages:
+  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Zveřejněné stránky'
-  CMSSearch:
-    FILTERDATEFROM: Od
-    FILTERDATETO: Do
-    PAGEFILTERDATEHEADING: 'Poslední změna'
-  CMSSiteTreeFilter_Search:
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Všechny stránky'
-  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Živé, ale odstraněno z konceptu'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Poznámka: tato zpráva nebude zobrazena vašim návštěvníkům'
-  ContentController:
+  SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Náhled verze'
     ARCHIVEDSITEFROM: 'Archivován web z'
     CMS: CMS
@@ -117,7 +92,8 @@ cs:
     InstallSuccessCongratulations: 'SilverStripe byl nainstalován úspěšně!'
     LOGGEDINAS: 'Přihlášen jako'
     LOGIN: Přihlášení
-    LOGOUT: 'Odhlášení'
+    LOGOUT: Odhlášení
+    NOTEWONTBESHOWN: 'Poznámka: tato zpráva nebude zobrazena vašim návštěvníkům'
     NOTLOGGEDIN: 'Není přihlášen'
     PUBLISHED: Zveřejněno
     PUBLISHEDSITE: 'Zveřejnen web'
@@ -126,102 +102,63 @@ cs:
     StartEditing: 'Můžete začít editovat váš obsah otevřením <a href="{link}">CMS</a>.'
     UnableDeleteInstall: 'Nelze smazat instalační soubory. Prosím, odstraňte soubory níže ručně'
     VIEWPAGEIN: 'Zobrazit stránku v:'
-  ErrorPage:
-    400: '400 - Špatný požadavek'
-    401: '401 - Neautorizováno'
-    403: '403 - Zakázáno'
-    404: '404 - Nenalezeno'
-    405: '405 - Metoda není povolena'
-    406: '406 - Není přijatelná'
-    407: '407 - Požadována proxy autentizace'
-    408: '408 - Vypršel čas požadavku'
-    409: '409 - Konflikt'
-    410: '410 - Uplynulý'
-    411: '411 - Požadována délka'
-    412: '412 - Nezdařená podmínka'
-    413: '413 - Žádost je moc velká'
-    414: '414 - Vyžádání URI trvá moc dlouho'
-    415: '415 - Nepodporovaný typ média'
-    416: '416 - Vyžádaný rozsah není dostatečný'
-    417: '417 - Očekávání se nezdařilo'
-    422: '422 - Nezpracovatelná entita'
-    429: '429 - Příliš mnoho požadavků'
-    500: '500 - Interní chyba serveru'
-    501: '501 - Není implementováno'
-    502: '502 - Špatná Gateway'
-    503: '503 - Nedostupná služba'
-    504: '504 - Vypršel čas Gateway'
-    505: '505 - HTTP verze není podporována'
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: Archivováno
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
+    CANACCESS: 'Můžete přistupovat k archivu pomocí tohoto odkazu:'
+    HAVEASKED: 'Požadovali jste prohlížet obsah našich stránek během'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Cancel: Storno
+    EMPTY: 'Zadejte prosím URL segment nebo klikněte zrušit'
+    Edit: Editovat
+    HelpChars: 'Zvláštní znaky jsou automaticky zkonvertovány nebo odstraněny'
+    OK: Ok
+  SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Chybový kód'
+    DESCRIPTION: 'Vlastní obsah pro různé případy chyb (např. "Stránka nenalezena")'
+    PLURALNAME: 'Chybové stránky'
+    SINGULARNAME: 'Chybová stránka'
+    0: '400 - Špatný požadavek'
     DEFAULTERRORPAGECONTENT: '<p>Omlouváme se, zdá se, že jste se pokoušeli o přístup na stránku, která neexistuje.</p><p>Zkontrolujte prosím pravopis požadované URL adresy, ke které jste se pokoušeli přistoupit a zkuste to znovu.</p>'
     DEFAULTERRORPAGETITLE: 'Stránka nenelazena'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Promiňte, nastal problém s obsloužením vaší žádosti.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Chyba serveru'
-  Permissions:
-    CONTENT_CATEGORY: 'Oprávnění obsahu'
-    PERMISSIONS_CATEGORY: 'Role a přístupová práva'
-  RedirectorPage:
+    1: '401 - Neautorizováno'
+    2: '403 - Zakázáno'
+    3: '404 - Nenalezeno'
+    4: '405 - Metoda není povolena'
+    5: '406 - Není přijatelná'
+    6: '407 - Požadována proxy autentizace'
+    7: '408 - Vypršel čas požadavku'
+    8: '409 - Konflikt'
+    9: '410 - Uplynulý'
+    10: '411 - Požadována délka'
+    11: '412 - Nezdařená podmínka'
+    12: '413 - Žádost je moc velká'
+    13: '414 - Vyžádání URI trvá moc dlouho'
+    14: '415 - Nepodporovaný typ média'
+    15: '416 - Vyžádaný rozsah není dostatečný'
+    16: '417 - Očekávání se nezdařilo'
+    17: '422 - Nezpracovatelná entita'
+    18: '429 - Příliš mnoho požadavků'
+    19: '500 - Interní chyba serveru'
+    20: '501 - Není implementováno'
+    21: '502 - Špatná Gateway'
+    22: '503 - Nedostupná služba'
+    23: '504 - Vypršel čas Gateway'
+    24: '505 - HTTP verze není podporována'
+  SilverStripe\CMS\Model\RedirectorPage:
+    DESCRIPTION: 'Přesměruje na interní stránku nebo na externí URL'
     HASBEENSETUP: 'Přesměrovací stránka byla nastavena bez cíle.'
     HEADER: 'Tato stránka přesměruje uživatele na jinou stránku'
     OTHERURL: 'Jiná web adresa'
+    PLURALNAME: 'Přesměrovací stránky'
     REDIRECTTO: 'Přesměrovat na'
     REDIRECTTOEXTERNAL: 'Jiná web stránka'
     REDIRECTTOPAGE: 'Stránka na vašem webu'
-    YOURPAGE: 'Stránka na vašem webu'
-  RemoveOrphanedPagesTask:
-    BUTTONRUN: Běž
-    CHOOSEOPERATION: 'Vyberte operaci:'
-    DELETEWARNING: 'Upozornění: Tyto operace jsou nezvratné. Prosím buďte opatrní.'
-    HEADER: 'Odstranit všechny osiřelé stránky'
-    NONEFOUND: 'Nenalezeni žádní sirotci'
-    NONEREMOVED: 'Neodebráno nic'
-    OPERATION_REMOVE: 'Odstranit označené ze všech konceptů (Upozornění: Budou zničeny všechny označené stránky z obou koncept a živé)'
-    SELECTALL: 'označit vše'
-    UNSELECTALL: 'odznačit vše'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Zveřejněte prosím odkazovanou stránku pro zveřejnění virtuální stránky'
-    VIRTUALPAGEWARNING: 'Zvolte prosím odkazovanou stránku a předem uložte před zveřejněním této stránky'
-    VIRTUALPAGEWARNINGSETTINGS: 'Zvolte prosím odkazovanou stránku v polích hlavního obsahu pro zveřejnění'
-  SearchForm:
-    GO: Hledat
-    SEARCH: Hledat
-    SearchResults: 'Výsledky hledání'
-  SideReport:
-    BROKENFILES: 'Stránky s porušenými soubory'
-    BROKENREDIRECTORPAGES: 'Přesměrovací stránky ukazují na smazané stránky'
-    BROKENVIRTUALPAGES: 'VirualPages ukazuje na smazané stránky'
-    BrokenLinksGroupTitle: 'Výkazy porušených odkazů'
-    ContentGroupTitle: 'Výkazy obsahu'
-    EMPTYPAGES: 'Stránky bez obsahu'
-    LAST2WEEKS: 'Stránky upravené během posledních 2 týdnů'
-    ParameterLiveCheckbox: 'Zkontrolovat web'
-  SilverStripeNavigator:
-    ARCHIVED: Archivováno
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    MENUTITLE: 'Přidat stránku'
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Upravit stránku'
-  SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    MENUTITLE: Historie
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Upravit stránku'
-  SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: Stránky
-  SilverStripe\CMS\Model\ErrorPage:
-    DESCRIPTION: 'Vlastní obsah pro různé případy chyb (např. "Stránka nenalezena")'
-    PLURALNAME: 'Chybové stránky'
-    SINGULARNAME: 'Chybová stránka'
-  SilverStripe\CMS\Model\RedirectorPage:
-    DESCRIPTION: 'Přesměruje na interní stránku nebo na externí URL'
-    PLURALNAME: 'Přesměrovací stránky'
     SINGULARNAME: 'Přesměrovací stránka'
+    YOURPAGE: 'Stránka na vašem webu'
   SilverStripe\CMS\Model\SiteTree:
-    DESCRIPTION: 'Obecný obsah stránky'
-  SilverStripe\CMS\Model\VirtualPage:
-    DESCRIPTION: 'Zobrazí obsah jiné stránky'
-    PLURALNAME: 'Virtuální stránky'
-    SINGULARNAME: 'Virtuální stránka'
-  SiteTree:
     ACCESSANYONE: Kdokoliv
     ACCESSHEADER: 'Kdo může tuto stránku prohlížet?'
     ACCESSLOGGEDIN: 'Přihlášení uživatelé'
@@ -243,8 +180,9 @@ cs:
     DEFAULTABOUTTITLE: 'O nás'
     DEFAULTCONTACTTITLE: 'Kontaktujte nás'
     DEFAULTHOMECONTENT: '<p>Vítejte v SilverStripe! Toto je základní domácí stránka. Můžete ji upravit otevřením <a href="admin/">CMS</a>.</p><p>Můžete také nyní vstoupit  do <a href="http://docs.silverstripe.org">dokumentace vývojáře</a>, nebo se přiučit na <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lekcích</a>.</p>'
-    DEFAULTHOMETITLE: Úvodní strana
+    DEFAULTHOMETITLE: 'Úvodní strana'
     DEPENDENT_NOTE: 'Následující stránky závisí na této stránce. Tyto obsahují virtuální stránky, přesměrovací stránky a stránky s odkazy obsahu.'
+    DESCRIPTION: 'Obecný obsah stránky'
     DependtPageColumnLinkType: 'Typ odkazu'
     DependtPageColumnURL: URL
     EDITANYONE: 'Kdokoliv, kdo se do CMS může přihlásit'
@@ -265,7 +203,7 @@ cs:
     LINKSALREADYUNIQUE: ' {url} je vždy unikátní'
     LINKSCHANGEDTO: ' změněno {url1} -> {url2}'
     MENUTITLE: 'Navigační popisek'
-    METADESC: 'Popis'
+    METADESC: Popis
     METADESCHELP: 'Krátký popis/perex, který při vyplnění mohou vyhledávače využít ve výsledcích vyhledávání. I když tento popisek nemá přímý vliv na hodnocení stránky, tak může zvýšit míru prokliku (CTR).'
     METAEXTRA: 'Vlastní meta tagy'
     METAEXTRAHELP: 'HTML tagy pro další meta informace. Například &lt;meta name="vlastnínazev" content="vlastní obsah zde" /&gt;'
@@ -273,7 +211,7 @@ cs:
     MODIFIEDONDRAFTSHORT: Upraveno
     MetadataToggle: Metadata
     MoreOptions: 'Více voleb'
-    NOTPUBLISHED: 'Nezveřejněno'
+    NOTPUBLISHED: Nezveřejněno
     OBSOLETECLASS: 'Tato stránka je zastaralého typu {type}. Uložení zpúsobí zrušení svého typu a múžete tak ztratit data'
     PAGELOCATION: 'Umístění stránky'
     PAGETITLE: 'Název stránky'
@@ -292,7 +230,7 @@ cs:
     SHOWINMENUS: 'Zobrazovat v menu?'
     SHOWINSEARCH: 'Zobrazovat ve vyhledávání?'
     TABBEHAVIOUR: Chování
-    TABCONTENT: 'Obsah'
+    TABCONTENT: Obsah
     TABDEPENDENT: 'Závislé stránky'
     TOPLEVEL: 'Obsah Webu (Nejvyšší úroveň)'
     URLSegment: 'Segment URL'
@@ -301,29 +239,76 @@ cs:
     VIEW_ALL_HELP: 'Možnost zobrazit libovolnou stránku na webu, bez ohledu na nastevení kartě Přístup. Vyžaduje povolení "Přístup k  sekci ''Stránky''"'
     VIEW_DRAFT_CONTENT: 'Zobrazit obsah konceptu'
     VIEW_DRAFT_CONTENT_HELP: 'Vztahuje se na prohlížení stránek mimo CMS, v koncept módu. Užitečné pro externí spolupracovníky bez přístupu do CMS.'
+    VIRTUALPAGEDRAFTWARNING: 'Zveřejněte prosím odkazovanou stránku pro zveřejnění virtuální stránky'
+    VIRTUALPAGEWARNING: 'Zvolte prosím odkazovanou stránku a předem uložte před zveřejněním této stránky'
+    VIRTUALPAGEWARNINGSETTINGS: 'Zvolte prosím odkazovanou stránku v polích hlavního obsahu pro zveřejnění'
     Viewers: 'Skupiny návštěvníků'
     Visibility: Viditelnost
     has_one_Parent: 'Rodičovská stránka'
     many_many_BackLinkTracking: 'Stopování zpětných odkazů'
     many_many_ImageTracking: 'Stopování obrázku'
     many_many_LinkTracking: 'Stopování odkazu'
-  SiteTreeFileExtension:
+  SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Typ
     TITLE_USED_ON: 'Použito na'
-  SiteTreeURLSegmentField:
-    EMPTY: 'Zadejte prosím URL segment nebo klikněte zrušit'
-    HelpChars: 'Zvláštní znaky jsou automaticky zkonvertovány nebo odstraněny'
-  URLSegmentField:
-    Cancel: Storno
-    Edit: Editovat
-    OK: Ok
-  ViewArchivedEmail_ss:
-    CANACCESS: 'Můžete přistupovat k archivu pomocí tohoto odkazu:'
-    HAVEASKED: 'Požadovali jste prohlížet obsah našich stránek během'
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Odkazovaná stránka'
+    DESCRIPTION: 'Zobrazí obsah jiné stránky'
     EditLink: editovat
     HEADER: 'Toto je virtuální stránka'
     HEADERWITHLINK: 'Toto je virtuální stránka, kopíruje se obsah z "{title}" ({link})'
+    PLURALNAME: 'Virtuální stránky'
     PageTypNotAllowedOnRoot: 'Původní stránka typu "{type}" není povolena na nejvyšší úrovni pro tuto virtuální stránku'
+    SINGULARNAME: 'Virtuální stránka'
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    Any: Jakékoliv
+    BROKENLINKS: 'Výkaz porušených odkazů'
+    CheckSite: 'Zkontrolovat web'
+    CheckSiteDropdownDraft: 'Koncept webu'
+    CheckSiteDropdownPublished: 'Zveřejněný web'
+    ColumnDateLastModified: 'Datum poslední změny'
+    ColumnDateLastPublished: 'Datum posledního zveřejnění'
+    ColumnProblemType: 'Problém typu'
+    ColumnURL: URL
+    HasBrokenFile: 'porušen soubor'
+    HasBrokenLink: 'porušen odkaz'
+    HasBrokenLinkAndFile: 'porušen odkaz a soubor'
+    HoverTitleEditPage: 'Editovat stránku'
+    PageName: 'Název stránky'
+    ReasonDropdown: 'Problém ke kontrole'
+    ReasonDropdownBROKENFILE: 'Porušen soubor'
+    ReasonDropdownBROKENLINK: 'Porušen odkaz'
+    ReasonDropdownRPBROKENLINK: 'Přesměrovací stránka ukazuje na neexistující stránku'
+    ReasonDropdownVPBROKENLINK: 'Virtuální stránka ukazuje na neexistující stránku'
+    RedirectorNonExistent: 'přesměrovací stránka ukazuje na neexistující stránku'
+    VirtualPageNonExistent: 'virtuální stránka ukazuje na neexistující stránku'
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERDATEFROM: Od
+    FILTERDATETO: Do
+    GO: Hledat
+    PAGEFILTERDATEHEADING: 'Poslední změna'
+    SEARCH: Hledat
+    SearchResults: 'Výsledky hledání'
+  SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask:
+    BUTTONRUN: Běž
+    CHOOSEOPERATION: 'Vyberte operaci:'
+    DELETEWARNING: 'Upozornění: Tyto operace jsou nezvratné. Prosím buďte opatrní.'
+    HEADER: 'Odstranit všechny osiřelé stránky'
+    NONEFOUND: 'Nenalezeni žádní sirotci'
+    NONEREMOVED: 'Neodebráno nic'
+    OPERATION_REMOVE: 'Odstranit označené ze všech konceptů (Upozornění: Budou zničeny všechny označené stránky z obou koncept a živé)'
+    SELECTALL: 'označit vše'
+    UNSELECTALL: 'odznačit vše'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Stránky s porušenými soubory'
+    BROKENREDIRECTORPAGES: 'Přesměrovací stránky ukazují na smazané stránky'
+    BROKENVIRTUALPAGES: 'VirualPages ukazuje na smazané stránky'
+    BrokenLinksGroupTitle: 'Výkazy porušených odkazů'
+    ContentGroupTitle: 'Výkazy obsahu'
+    EMPTYPAGES: 'Stránky bez obsahu'
+    LAST2WEEKS: 'Stránky upravené během posledních 2 týdnů'
+    ParameterLiveCheckbox: 'Zkontrolovat web'
+  SilverStripe\Security\Permission:
+    CONTENT_CATEGORY: 'Oprávnění obsahu'
+    PERMISSIONS_CATEGORY: 'Role a přístupová práva'

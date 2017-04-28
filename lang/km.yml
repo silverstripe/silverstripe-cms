@@ -1,7 +1,7 @@
 km:
-  SiteTree:
+  SilverStripe\CMS\Model\SiteTree:
     Content: មាតិការ
     HTMLEDITORTITLE: អត្ថបទ
-    PAGETYPE: 'ប្រភេទទំព័រ'
+    PAGETYPE: ប្រភេទទំព័រ
     URLSegment: 'កំណាត់ URL'
-    has_one_Parent: 'ទំព័រមេ'
+    has_one_Parent: ទំព័រមេ

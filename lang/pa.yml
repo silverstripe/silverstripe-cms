@@ -1,17 +1,17 @@
 pa:
-  RedirectorPage:
+  SilverStripe\CMS\Model\RedirectorPage:
     OTHERURL: 'ਹੋਰ ਵੈੱਬ-ਸਾਈਟ URL'
     REDIRECTTOEXTERNAL: 'ਦੂਸਰੀ ਵੈੱਬ-ਸਾਈਟ '
     REDIRECTTOPAGE: 'ਇੱਕ ਪੰਨਾ ਤੁਹਾਡੀ ਵੈੱਬ-ਸਾਈਟ ਤੇ '
     YOURPAGE: 'ਇੱਕ ਪੰਨਾ ਤੁਹਾਡੀ ਵੈੱਬ-ਸਾਈਟ ਤੇ '
-  SiteTree:
+  SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: "ਕੋਈ ਵੀ\t"
     ACCESSHEADER: 'Who can view this page on my site?'
     BUTTONCANCELDRAFT: 'ਕੱਚੀਆ ਤਬਦੀਲੀਆਂ ਨੰੂ ਰੱਦ ਕਰੋ'
     BUTTONUNPUBLISH: 'ਅਣਛਾਪੋ       '
     EDITHEADER: 'Who can edit this inside the CMS?'
     HTMLEDITORTITLE: ਸਮਾਨ
-    METADESC: 'ਵਰਣਨ'
+    METADESC: ਵਰਣਨ
     PAGETITLE: "ਪੰਨੇ ਦਾ ਨਾਂ\t"
     PAGETYPE: 'ਸਫ਼ੇ ਦੀ ਿਕਸਮ  '
     SHOWINMENUS: 'menus ਿਵੱਚ ਿਦਖਾਉ?'
@@ -19,5 +19,5 @@ pa:
     TABBEHAVIOUR: ਵਰਤਾਉ
     TABCONTENT: 'ਸਮਾਨ '
     TOPLEVEL: 'ਸਾਈਟ ਦਾ ਸਮਾਨ (Top Level)'
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'ਇਹ ਇੱਕ virtual ਪੰਨਾ ਹੈ।'

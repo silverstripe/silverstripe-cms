@@ -1,14 +1,14 @@
 en_GB:
-  ContentController:
+  SilverStripe\CMS\Controllers\ContentController:
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually.'
-  ErrorPage:
-    401: '401 - Unauthorised'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    HelpChars: 'Special characters are automatically converted or removed.'
+  SilverStripe\CMS\Model\ErrorPage:
     DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem handling your request.</p>'
-  SiteTree:
+    401: '401 - Unauthorised'
+  SilverStripe\CMS\Model\SiteTree:
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages and pages with content links.'
-    METADESC: 'Description'
+    METADESC: Description
     METADESCHELP: 'Search engines use this content when displaying search results (although it will not influence their ranking).'
     TABBEHAVIOUR: Behaviour
-    TABCONTENT: 'Content'
-  SiteTreeURLSegmentField:
-    HelpChars: 'Special characters are automatically converted or removed.'
+    TABCONTENT: Content

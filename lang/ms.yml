@@ -1,10 +1,10 @@
 ms:
-  ErrorPage:
-    417: '417 - kegagalan expectation'
+  SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Kod kesilapan'
     DEFAULTERRORPAGECONTENT: '<p>Minta maaf, rupa-rupanya anda ingin mencapai halaman yang tidak wujud</p><p>Sila semak ejaan URL yang anda ingin mencapai dan cuba semula</p>'
     DEFAULTERRORPAGETITLE: 'Halaman tidak wujud'
-  RedirectorPage:
+    417: '417 - kegagalan expectation'
+  SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Mukasurat pengalih destinasi dihasilkan tanpa menyatakan destinasi alihan.'
     HEADER: 'Mukasurat ini akan mengalih pengguna ke mukasurat lain'
     OTHERURL: 'URL laman web lain'
@@ -12,14 +12,14 @@ ms:
     REDIRECTTOEXTERNAL: 'Laman web lain'
     REDIRECTTOPAGE: 'Tambah halaman ke laman anda'
     YOURPAGE: 'Halaman di laman anda'
-  SiteTree:
-    ACCESSANYONE: Sesiapa sahaja
+  SilverStripe\CMS\Model\SiteTree:
+    ACCESSANYONE: 'Sesiapa sahaja'
     ACCESSHEADER: 'Siapa yang boleh melihat mukasurat ini?'
     ACCESSLOGGEDIN: 'Pengguna berdaftar masuk'
     ACCESSONLYTHESE: 'Hanya pengguna berikut (pilih dari senarai)'
     BUTTONCANCELDRAFT: 'Batalkan perubahan ke atas draf'
     BUTTONCANCELDRAFTDESC: 'Hapus draf dan kembalikan ke mukasurat asal yang telah diterbitkan'
-    BUTTONUNPUBLISH: Tidak diterbitkan
+    BUTTONUNPUBLISH: 'Tidak diterbitkan'
     BUTTONUNPUBLISHDESC: 'Hapus mukasurat ini dari laman sebenar'
     Content: Kandungan
     DEFAULTABOUTTITLE: 'Tentang Kami'
@@ -31,16 +31,16 @@ ms:
     HASBROKENLINKS: 'Mukasurat ini mengandungi pautan bermasalah.'
     HTMLEDITORTITLE: Kandungan
     MENUTITLE: 'Label navigasi'
-    METADESC: 'Keterangan'
+    METADESC: Keterangan
     METAEXTRA: 'Label-meta khas'
     PAGETITLE: 'Nama halaman'
     PAGETYPE: 'Jenis halaman'
     SHOWINMENUS: 'Paparkan di menu?'
     SHOWINSEARCH: 'Paparkan di carian?'
     TABBEHAVIOUR: Perilaku
-    TABCONTENT: 'Kandungan'
+    TABCONTENT: Kandungan
     TOPLEVEL: 'Kandungan Laman (Peringkat Atas)'
     URLSegment: 'Segmen URL'
     has_one_Parent: 'Halaman Induk'
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Ini adalah mukasurat maya'

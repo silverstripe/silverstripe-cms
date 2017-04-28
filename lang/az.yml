@@ -1,49 +1,41 @@
 az:
-  ContentControl:
-    NOTEWONTBESHOWN: 'Qeyd: Bu mesaj ziyarətçilər üçün görünməyəcək'
-  ContentController:
+  SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITEFROM: 'Arxivləşmiş sayt'
     DRAFTSITE: 'Qaralama sayt'
     LOGGEDINAS: 'Kimi daxil olmusan'
-    LOGIN: Daxil ol
-    LOGOUT: 'Çıxış'
+    LOGIN: 'Daxil ol'
+    LOGOUT: Çıxış
+    NOTEWONTBESHOWN: 'Qeyd: Bu mesaj ziyarətçilər üçün görünməyəcək'
     NOTLOGGEDIN: 'Daxil olmayıb'
     PUBLISHEDSITE: 'Dərc olunmuş sayt'
     VIEWPAGEIN: 'Səhifəni göstər:'
-  ErrorPage:
-    501: '501 - Implementasiya olunmayıb'
+  SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Səhv kodu'
     DEFAULTERRORPAGECONTENT: '<P> Üzr istəyirik, görünür siz mövcud olan səhifəyə giriş əldə etməyə cəhd edirdiniz. </p><p>Xahiş sizin giriş əldə etməyə və bir daha sınaqdan keçirməyə cəhd etdiyiniz URL-i yoxlayasınız </p>'
     DEFAULTERRORPAGETITLE: 'Səhifə tapılmadı'
-  Permissions:
-    CONTENT_CATEGORY: 'Məzmun səlahiyyətləri'
-    PERMISSIONS_CATEGORY: 'İcazələr'
-  RedirectorPage:
+    501: '501 - Implementasiya olunmayıb'
+  SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Yönləndirmə səhifəsinə yönlənmə istiqaməti verilməyib.'
     HEADER: 'Bu səhifə istifadəçiləri başqa səhifəyə yönləndirəcək'
     OTHERURL: 'Başqa Web saytın URL-i'
-    REDIRECTTO: 'Yönləndir'
+    REDIRECTTO: Yönləndir
     REDIRECTTOEXTERNAL: 'Başqa Web sayt'
     REDIRECTTOPAGE: 'web səhifənizdə olan səhifə'
     YOURPAGE: 'Web saytınızda olan səhifə'
-  SearchForm:
-    GO: Göndər
-    SEARCH: Axtar
-    SearchResults: 'Axtarış nəticələri'
-  SiteTree:
-    ACCESSANYONE: Hər kəs
+  SilverStripe\CMS\Model\SiteTree:
+    ACCESSANYONE: 'Hər kəs'
     ACCESSHEADER: 'Bu səhifəyə kimlər baxa bilər?'
     ACCESSLOGGEDIN: 'Daxil olmuş istifadəçilər'
     ACCESSONLYTHESE: 'Yalnız aşağıdakılar(siyahıdan seçin)'
     BUTTONCANCELDRAFT: 'Qaralama dəyişiklikləri imtina et'
     BUTTONCANCELDRAFTDESC: 'Qaralamanı sil və cari dərc olunmuş versiyaya qaytar'
-    BUTTONUNPUBLISH: Dərci ləğv et
+    BUTTONUNPUBLISH: 'Dərci ləğv et'
     BUTTONUNPUBLISHDESC: 'Bu səhifəni dərc olunmuş saytdan sil'
     Comments: Şərhlər
     Content: Məzmun
-    DEFAULTABOUTTITLE: 'Haqqımızda'
+    DEFAULTABOUTTITLE: Haqqımızda
     DEFAULTCONTACTTITLE: 'Bizimlə əlaqə'
-    DEFAULTHOMETITLE: Baş səhifə
+    DEFAULTHOMETITLE: 'Baş səhifə'
     DependtPageColumnLinkType: 'Keçid növü'
     EDITANYONE: 'CMS-ə login olan hər kəs'
     EDITHEADER: 'Bu səhifəni kimlər deyişə bilər?'
@@ -66,7 +58,7 @@ az:
     SHOWINMENUS: 'Menyularda görünsün?'
     SHOWINSEARCH: 'Axtarışda görünsün?'
     TABBEHAVIOUR: Davranış
-    TABCONTENT: 'Məzmun'
+    TABCONTENT: Məzmun
     TABDEPENDENT: 'Asılı səhifələr'
     TOPLEVEL: 'Saytın məzmunu (yuxarı səviyyə)'
     URLSegment: 'URL seqmenti'
@@ -75,5 +67,12 @@ az:
     has_one_Parent: 'Valideyn səhifəsi'
     many_many_ImageTracking: 'Şəkil izləmə'
     many_many_LinkTracking: 'Keçidin izlənməsi'
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Bu virtual səhifədir'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Göndər
+    SEARCH: Axtar
+    SearchResults: 'Axtarış nəticələri'
+  SilverStripe\Security\Permission:
+    CONTENT_CATEGORY: 'Məzmun səlahiyyətləri'
+    PERMISSIONS_CATEGORY: İcazələr

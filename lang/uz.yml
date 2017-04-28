@@ -1,5 +1,5 @@
 uz:
-  CMSMain:
+  SilverStripe\CMS\Controllers\CMSMain:
     PAGENOTEXISTS: 'Bu sahifa mavjud emas.'
     PUBALLCONFIRM: 'Iltimos, saytdagi bor hamma sahifalarni chop eting. '
     PUBALLFUN: '"Hammasi chop etish" funktsiyasi'

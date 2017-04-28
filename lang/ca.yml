@@ -1,11 +1,17 @@
 ca:
-  CMSMain:
+  SilverStripe\CMS\Controllers\CMSMain:
     PAGENOTEXISTS: 'Aquesta pàgina no existeix'
     PUBALLCONFIRM: 'Publica cada pàgina del lloc web, copiant el contingut cap a la versió publicada'
     PUBALLFUN: 'Funcionalitat de "Publica-ho tot"'
     REMOVEDPAGEFROMDRAFT: 'S''ha suprimit  ''%s'' del lloc esborrany'
     ROLLBACK: 'Torna a aquesta versió'
-  ErrorPage:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
+    CANACCESS: 'Podeu accedir al lloc arxivat en aquesta adreça:'
+    HAVEASKED: 'Heu demanat de veure el contingut del nostre lloc el'
+  SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'Codi d''error'
+    DEFAULTERRORPAGECONTENT: '<p>Sembla que intenteu accedir a una pàgina que no existeix.</p><p>Si us plau, reviseu com heu escrit la URL que intenteu accedir i proveu-ho de nou.</p>'
+    DEFAULTERRORPAGETITLE: 'Pàgina no trobada'
     400: '400 - Mala petició'
     401: '401 - Sense autorització'
     403: '403 - Prohibit'
@@ -29,10 +35,7 @@ ca:
     503: '503 - Servei no disponible'
     504: '504 - Temps excedit de la pasarel·la'
     505: '505 - Versió HTTP no suportada'
-    CODE: 'Codi d''error'
-    DEFAULTERRORPAGECONTENT: '<p>Sembla que intenteu accedir a una pàgina que no existeix.</p><p>Si us plau, reviseu com heu escrit la URL que intenteu accedir i proveu-ho de nou.</p>'
-    DEFAULTERRORPAGETITLE: 'Pàgina no trobada'
-  RedirectorPage:
+  SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'S''ha definit una pàgina redirectora sense cap lloc on redirigir.'
     HEADER: 'Aquesta pàgina redirigirà usuaris a una altra pàgina'
     OTHERURL: 'URL del lloc web'
@@ -40,13 +43,7 @@ ca:
     REDIRECTTOEXTERNAL: 'Un altre lloc web'
     REDIRECTTOPAGE: 'Una pàgina del vostre lloc web'
     YOURPAGE: 'Pàgina del vostre lloc web'
-  SearchForm:
-    GO: Vés
-    SEARCH: Cerca
-  SideReport:
-    EMPTYPAGES: 'Pàgines buides'
-    LAST2WEEKS: 'Pàgines editades les dues darreres setmanes'
-  SiteTree:
+  SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Qualsevol
     ACCESSHEADER: 'Qui pot veure aquesta pàgina al meu lloc web?'
     ACCESSLOGGEDIN: 'Usuaris connectats'
@@ -68,7 +65,7 @@ ca:
     HTMLEDITORTITLE: Contingut
     INHERIT: 'Hereda de la pàgina pare'
     MENUTITLE: 'Etiqueta de navegació'
-    METADESC: 'Descripció'
+    METADESC: Descripció
     METAEXTRA: 'Etiquetes Meta personalitzades'
     PAGETITLE: 'Nom de la pàgina'
     PAGETYPE: 'Tipus de pàgina'
@@ -76,7 +73,7 @@ ca:
     SHOWINMENUS: 'Mostra als menús?'
     SHOWINSEARCH: 'Mostra en cerques?'
     TABBEHAVIOUR: Comportament
-    TABCONTENT: 'Contingut'
+    TABCONTENT: Contingut
     TOPLEVEL: 'Contingut del lloc (Nivell principal)'
     URLSegment: 'Segment URL'
     Viewers: 'Grups de visitadors'
@@ -84,8 +81,11 @@ ca:
     many_many_BackLinkTracking: 'Seguiment d''enllaços retroactius'
     many_many_ImageTracking: 'Seguiment d''imatges'
     many_many_LinkTracking: 'Seguiment d''enllaços'
-  ViewArchivedEmail_ss:
-    CANACCESS: 'Podeu accedir al lloc arxivat en aquesta adreça:'
-    HAVEASKED: 'Heu demanat de veure el contingut del nostre lloc el'
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Aquesta és una pàgina virtual'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Vés
+    SEARCH: Cerca
+  SilverStripe\Reports\SideReport:
+    EMPTYPAGES: 'Pàgines buides'
+    LAST2WEEKS: 'Pàgines editades les dues darreres setmanes'

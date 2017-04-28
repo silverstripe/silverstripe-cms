@@ -1,17 +1,9 @@
 tr:
-  AssetTableField:
-    PAGES: sayfa(lar)
-  BrokenLinksReport:
-    CheckSite: 'Siteyi kontrol et'
-    HasBrokenLink: 'kırık link var'
-    HoverTitleEditPage: 'Sayfayı düzenle'
-    PageName: 'Sayfa ismi'
-    ReasonDropdownBROKENLINK: 'Kırık link'
-  CMSAddPageController:
-    Title: 'Sayfa ekle'
-  CMSBatchActions:
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISH_PAGES: Yayınla
-  CMSMain:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
+    PAGES: sayfa(lar)
+  SilverStripe\CMS\Controllers\CMSMain:
     AddNew: 'Yeni sayfa ekle'
     AddNewButton: 'Yeni ekle'
     ChoosePageParentMode: 'Sayfanın nereye oluşturulacağını seç'
@@ -26,30 +18,35 @@ tr:
     TabContent: İçerik
     TabHistory: Geçmiş
     TabSettings: Ayarlar
-  CMSPageHistoryController:
-    COMPAREVERSIONS: 'Versiyonları karşılaştır'
-  CMSPageHistoryController_versions_ss:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    Title: 'Sayfa ekle'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Yazar
-    NOTPUBLISHED: 'Yayınlanmamış'
+    COMPAREVERSIONS: 'Versiyonları karşılaştır'
+    NOTPUBLISHED: Yayınlanmamış
     PUBLISHER: Yayınlayan
     UNKNOWN: Bilinmeyen
-    WHEN: Ne zaman
-  CMSPagesController:
-    MENUTITLE: Sayfalar
-  CMSPagesController_Tools_ss:
+    WHEN: 'Ne zaman'
+  SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filtre
-  CMSSiteTreeFilter_Search:
+    MENUTITLE: Sayfalar
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Tüm sayfalar'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Not: Bu mesaj ziyaretçilerinize gösterilmeyecektir.'
-  ContentController:
+  SilverStripe\CMS\Controllers\ContentController:
     Email: Eposta
     INSTALL_SUCCESS: 'Kurulum Başarılı!'
     InstallFilesDeleted: 'Kurulum dosyaları başarıyla silindi.'
     InstallSuccessCongratulations: 'SilverStripe başarıyla kuruldu!'
     LOGOUT: 'Çıkış Yap'
+    NOTEWONTBESHOWN: 'Not: Bu mesaj ziyaretçilerinize gösterilmeyecektir.'
     Password: Parola
-  ErrorPage:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
+    CANACCESS: 'Arşivdeki siteye şu bağlantıdan erişebilirsiniz:'
+    HAVEASKED: 'Şu tarihe kadar olan site içeriğini görüntülemek istediniz:'
+  SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'Hata kodu'
+    DEFAULTERRORPAGECONTENT: '<p>Varolmayan bir sayfaya ulaşmaya çalışıyorsunuz.</p><p>Lütfen ulaşmak istediğiniz URL''i kontrol edip tekrar deneyiniz.</p>'
+    DEFAULTERRORPAGETITLE: 'Sayfa bulunamadı'
     400: '400 - Hatalı İstek'
     401: '401 - Erişim Engellenmiş'
     403: '403 - Yasak'
@@ -73,10 +70,7 @@ tr:
     503: '503 - Servis Mevcut Değil'
     504: '504 - Arayapı Zaman Aşımı'
     505: '505 - HTTP Versiyonu Desteklenmiyor'
-    CODE: 'Hata kodu'
-    DEFAULTERRORPAGECONTENT: '<p>Varolmayan bir sayfaya ulaşmaya çalışıyorsunuz.</p><p>Lütfen ulaşmak istediğiniz URL''i kontrol edip tekrar deneyiniz.</p>'
-    DEFAULTERRORPAGETITLE: 'Sayfa bulunamadı'
-  RedirectorPage:
+  SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Yönlendirilecek yeri olmayan bir yönlendirme sayfası ayarlandı.'
     HEADER: 'Bu sayfa, kullanıcıları başka bir sayfaya yönlendirir'
     OTHERURL: 'Başka bir siteye ait URL'
@@ -84,17 +78,7 @@ tr:
     REDIRECTTOEXTERNAL: 'Başka bir site'
     REDIRECTTOPAGE: 'Web sitenizdeki bir sayfa'
     YOURPAGE: 'Web sitenizdeki bir sayfa'
-  SearchForm:
-    GO: Git
-    SEARCH: Ara
-  SideReport:
-    BROKENFILES: 'Kırık link bulunan sayfalar'
-    BrokenLinksGroupTitle: 'Kırık linki rapor et'
-    ContentGroupTitle: 'İçerik raporları'
-    EMPTYPAGES: 'Boş sayfalar'
-    LAST2WEEKS: 'Son 2 haftada düzenlenmiş sayfalar'
-    ParameterLiveCheckbox: 'Yayındaki siteyi kontrol et'
-  SiteTree:
+  SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Herkes
     ACCESSHEADER: 'Bu sayfayı kimler görüntüleyebilir?'
     ACCESSLOGGEDIN: 'Giriş yapmış kullanıcılar'
@@ -102,12 +86,12 @@ tr:
     ADDEDTODRAFTSHORT: Taslak
     BUTTONCANCELDRAFT: 'Taslak değikliklerini iptal et'
     BUTTONCANCELDRAFTDESC: 'Taslağı sil ve şu an yayında olan sayfaya geri döndür'
-    BUTTONUNPUBLISH: Yayından kaldır
+    BUTTONUNPUBLISH: 'Yayından kaldır'
     BUTTONUNPUBLISHDESC: 'Bu sayfayı yayından kaldır'
     Comments: Yorumlar
     Content: İçerik
-    DEFAULTABOUTTITLE: 'Hakkımızda'
-    DEFAULTCONTACTTITLE: 'İletişim'
+    DEFAULTABOUTTITLE: Hakkımızda
+    DEFAULTCONTACTTITLE: İletişim
     DEFAULTHOMETITLE: Anasayfa
     DependtPageColumnLinkType: 'Link tipi'
     EDITANYONE: 'CMS''e giriş yapabilen herkes'
@@ -119,7 +103,7 @@ tr:
     INHERIT: 'Üst sayfadan kalan'
     LASTUPDATED: 'Son Güncellenen'
     MENUTITLE: 'Navigasyon etiketi'
-    METADESC: 'Tanım'
+    METADESC: Tanım
     METAEXTRA: 'Kişisel Meta Etiketleri'
     MODIFIEDONDRAFTSHORT: Değiştirilmiş
     PAGETITLE: 'Sayfa ismi'
@@ -133,7 +117,7 @@ tr:
     SHOWINMENUS: 'Menülerde gösterilsin mi?'
     SHOWINSEARCH: 'Aramalarda gösterilsin mi?'
     TABBEHAVIOUR: Davranış
-    TABCONTENT: 'İçerik'
+    TABCONTENT: İçerik
     TOPLEVEL: 'Site İçeriği (Üst Seviye)'
     URLSegment: 'URL Kısmı'
     Viewers: 'Görüntüleyici Grupları'
@@ -142,8 +126,21 @@ tr:
     many_many_BackLinkTracking: 'Geri bağlantı izi'
     many_many_ImageTracking: 'İmaj izi'
     many_many_LinkTracking: 'Bağlantı izi'
-  ViewArchivedEmail_ss:
-    CANACCESS: 'Arşivdeki siteye şu bağlantıdan erişebilirsiniz:'
-    HAVEASKED: 'Şu tarihe kadar olan site içeriğini görüntülemek istediniz:'
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Bu sanal bir sayfadır'
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    CheckSite: 'Siteyi kontrol et'
+    HasBrokenLink: 'kırık link var'
+    HoverTitleEditPage: 'Sayfayı düzenle'
+    PageName: 'Sayfa ismi'
+    ReasonDropdownBROKENLINK: 'Kırık link'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Git
+    SEARCH: Ara
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Kırık link bulunan sayfalar'
+    BrokenLinksGroupTitle: 'Kırık linki rapor et'
+    ContentGroupTitle: 'İçerik raporları'
+    EMPTYPAGES: 'Boş sayfalar'
+    LAST2WEEKS: 'Son 2 haftada düzenlenmiş sayfalar'
+    ParameterLiveCheckbox: 'Yayındaki siteyi kontrol et'

@@ -1,17 +1,21 @@
 bs:
-  AssetTableField:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Korišteno ovdje:'
     PAGES: strana(ice)
-  BrokenLinksReport:
-    Any: Bilo koji
-  CMSMain:
+  SilverStripe\CMS\Controllers\CMSMain:
     Create: Kreiraj
     PAGENOTEXISTS: 'Ova stranica ne postoji'
     PUBALLCONFIRM: 'Molimo, objavite svaku stavku na ovoj stranici, kopiranjem sadržaja na aktivnu stranicu'
     PUBALLFUN: 'Funkcija "Objavi sve"'
     REMOVEDPAGEFROMDRAFT: 'Uklonjeno ''%s'' sa privremenog nacrta stranice'
     ROLLBACK: 'Vrati na ovo izdanje'
-  ErrorPage:
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
+    CANACCESS: 'Arhiviranoj stranici možete pristupiti korištenjem ovog linka:'
+    HAVEASKED: 'Zahtjevali ste pregled sadržaja naše stranice na'
+  SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'Kod greške'
+    DEFAULTERRORPAGECONTENT: '<p>Žao nam je, pokušali ste pristupiti stranici koja ne postoji.</p><p>Molimo provjerite da li ste ispravno ukucali URL kojem ste pokušali pristupiti i pokušajte ponovo.</p>'
+    DEFAULTERRORPAGETITLE: 'Stranica nije pronađena'
     400: '400 - Pogrešan zahtjev'
     401: '401 - Neovlašteno'
     403: '403 - Zabranjeno'
@@ -35,10 +39,7 @@ bs:
     503: '503 - Nedostupan servis '
     504: '504 - Gateway zaustavljen'
     505: '505 - HTTP izdanje nije podržano'
-    CODE: 'Kod greške'
-    DEFAULTERRORPAGECONTENT: '<p>Žao nam je, pokušali ste pristupiti stranici koja ne postoji.</p><p>Molimo provjerite da li ste ispravno ukucali URL kojem ste pokušali pristupiti i pokušajte ponovo.</p>'
-    DEFAULTERRORPAGETITLE: 'Stranica nije pronađena'
-  RedirectorPage:
+  SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Stranica za preusmjeravanje je podešena bez odredišta.'
     HEADER: 'Ova stranica će preusmjeriti korisnike na drugu stranicu'
     OTHERURL: 'URL druge web stranice'
@@ -46,20 +47,14 @@ bs:
     REDIRECTTOEXTERNAL: 'Drugu web stranicu'
     REDIRECTTOPAGE: 'Na stavku na Vašoj web stranici'
     YOURPAGE: 'Stavku na Vašoj web stranici'
-  SearchForm:
-    GO: Idi
-    SEARCH: Pretraga
-  SideReport:
-    EMPTYPAGES: 'Prazne stranice'
-    LAST2WEEKS: 'Izmjenjene stranice u posljednje 2 sedmice'
-  SiteTree:
-    ACCESSANYONE: Svi korisnici
+  SilverStripe\CMS\Model\SiteTree:
+    ACCESSANYONE: 'Svi korisnici'
     ACCESSHEADER: 'Ko može pregledati ovu stavku na mojoj stranici?'
     ACCESSLOGGEDIN: 'Prijavljeni korisnici'
     ACCESSONLYTHESE: 'Samo ovi korisnici (izaberite sa popisa)'
     BUTTONCANCELDRAFT: 'Poništi promjene privremenog nacrta stranice'
     BUTTONCANCELDRAFTDESC: 'Izbrišite Vaš privremeni nacrt stranice i vratite se na trenutno objavljenu stranicu'
-    BUTTONUNPUBLISH: Opozovi objavljivanje
+    BUTTONUNPUBLISH: 'Opozovi objavljivanje'
     BUTTONUNPUBLISHDESC: 'Ukloni ovu stavku sa objavljene stranice'
     DEFAULTABOUTTITLE: 'O nama'
     DEFAULTCONTACTTITLE: 'Kontaktirajte nas'
@@ -70,17 +65,22 @@ bs:
     HASBROKENLINKS: 'Ova stranica ima neispravnih linkova.'
     HTMLEDITORTITLE: Sadržaj
     MENUTITLE: 'Oznaka navigacije'
-    METADESC: 'Opis'
+    METADESC: Opis
     METAEXTRA: 'Prilagođene Meta oznake'
     PAGETITLE: 'Ime stranice'
     PAGETYPE: 'Tip stranice'
     SHOWINMENUS: 'Prikaži u izbornicima?'
     SHOWINSEARCH: 'Prikaži u pretrazi?'
     TABBEHAVIOUR: Ponašanje
-    TABCONTENT: 'Sadržaj'
+    TABCONTENT: Sadržaj
     TOPLEVEL: 'Sadržaj stranice (Glavni nivo)'
-  ViewArchivedEmail_ss:
-    CANACCESS: 'Arhiviranoj stranici možete pristupiti korištenjem ovog linka:'
-    HAVEASKED: 'Zahtjevali ste pregled sadržaja naše stranice na'
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Ovo je virtualna stranica'
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    Any: 'Bilo koji'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Idi
+    SEARCH: Pretraga
+  SilverStripe\Reports\SideReport:
+    EMPTYPAGES: 'Prazne stranice'
+    LAST2WEEKS: 'Izmjenjene stranice u posljednje 2 sedmice'

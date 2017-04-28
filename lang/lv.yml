@@ -1,16 +1,18 @@
 lv:
-  ContentControl:
-    NOTEWONTBESHOWN: 'Piezīme: šī ziņa nebūs redzama Jūsu apmeklētājiem'
-  ContentController:
+  SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITEFROM: 'Arhivēta vietne no'
     DRAFTSITE: 'Melnrakstu vietne'
     LOGGEDINAS: 'Pieslēdzies kā'
     LOGIN: Pieslēgties
-    LOGOUT: 'Atslēgties'
+    LOGOUT: Atslēgties
+    NOTEWONTBESHOWN: 'Piezīme: šī ziņa nebūs redzama Jūsu apmeklētājiem'
     NOTLOGGEDIN: 'Nav pieslēdzies'
     PUBLISHEDSITE: 'Publicētā vietne'
     VIEWPAGEIN: 'Skatīt lapu:'
-  ErrorPage:
+  SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'Kļūdas kods'
+    DEFAULTERRORPAGECONTENT: '<p>Atvainojiet, šķiet, ka lapa kurai mēģinat piekļūt neeksistē.</p><p>Lūdzu pārliecinieties par pareizrakstību URL, kuram vēlaties piekļūt400.</p>'
+    DEFAULTERRORPAGETITLE: 'Lapa nav atrasta'
     400: '400 - Nekorekts pieprasījums'
     401: '401 - Neautorizēts'
     403: '403 - Aizliegts'
@@ -34,13 +36,7 @@ lv:
     503: '503 - Serviss uz laiku nav pieejams'
     504: '504 - Beidzies vārtejas pieprasījuma laiks'
     505: '505 - Šī HTTP protokola versija netiek atbalstīta.'
-    CODE: 'Kļūdas kods'
-    DEFAULTERRORPAGECONTENT: '<p>Atvainojiet, šķiet, ka lapa kurai mēģinat piekļūt neeksistē.</p><p>Lūdzu pārliecinieties par pareizrakstību URL, kuram vēlaties piekļūt400.</p>'
-    DEFAULTERRORPAGETITLE: 'Lapa nav atrasta'
-  Permissions:
-    CONTENT_CATEGORY: 'Satura atļaujas'
-    PERMISSIONS_CATEGORY: 'Lomu un piekļuves atļaujas'
-  RedirectorPage:
+  SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Novirzītājlapa ir uzstādīta bez norādes uz kurieni novirzīt.'
     HEADER: 'Šī lapa novirzīs lietotājus uz citu lapu '
     OTHERURL: 'Citas tīmekļa vietnes URL'
@@ -48,11 +44,7 @@ lv:
     REDIRECTTOEXTERNAL: 'Cita tīmekļa vietni'
     REDIRECTTOPAGE: 'Tīmekļa vietnes lapu'
     YOURPAGE: 'Tīmekļa vietnes lapa'
-  SearchForm:
-    GO: Aiziet
-    SEARCH: Meklēt
-    SearchResults: 'Meklēšanas rezultāti'
-  SiteTree:
+  SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Ikviens
     ACCESSHEADER: 'Kas drīkst aplūkot šo lapu?'
     ACCESSLOGGEDIN: 'Pieslēgušies lietotāji'
@@ -80,7 +72,7 @@ lv:
     INHERIT: 'Mantot no vecāka lapas'
     LINKCHANGENOTE: 'Izmainot šīs lapas saiti, tiks izmainītas saites arī visām tās bērnu lapām.'
     MENUTITLE: 'Navigācijas virsraksts'
-    METADESC: 'Apraksts'
+    METADESC: Apraksts
     METAEXTRA: 'Lietotāja Meta-tagi'
     PAGELOCATION: 'Lapas adrese'
     PAGETITLE: 'Lapas nosaukums'
@@ -96,7 +88,7 @@ lv:
     SHOWINMENUS: 'Rādīt izvēlnēs?'
     SHOWINSEARCH: 'Rādīt meklēšanas rezultātos?'
     TABBEHAVIOUR: Uzvedība
-    TABCONTENT: 'Saturs'
+    TABCONTENT: Saturs
     TABDEPENDENT: 'Atkarīgās lapas'
     TOPLEVEL: 'Vietnes Saturs (Augšējais līmenis)'
     URLSegment: 'URL Segments'
@@ -109,5 +101,12 @@ lv:
     many_many_BackLinkTracking: 'Atpakaļsaišu izsekošana'
     many_many_ImageTracking: 'Attēlu izsekošana'
     many_many_LinkTracking: 'Saišu izsekošana'
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Šī ir virtuāla lapa'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Aiziet
+    SEARCH: Meklēt
+    SearchResults: 'Meklēšanas rezultāti'
+  SilverStripe\Security\Permission:
+    CONTENT_CATEGORY: 'Satura atļaujas'
+    PERMISSIONS_CATEGORY: 'Lomu un piekļuves atļaujas'

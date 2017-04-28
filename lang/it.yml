@@ -1,43 +1,18 @@
 it:
-  AssetAdmin:
-    ErrorItemPermissionDenied: 'Sembra tu non abbia i necessari permessi per aggiungere {ObjectTitle} ad una campagna'
-    ErrorNotFound: 'Questo {Type} non può essere trovato'
-  AssetTableField:
-    BACKLINKCOUNT: 'Usato in:'
-    PAGES: pagina/e
-  BrokenLinksReport:
-    Any: Qualsiasi
-    BROKENLINKS: 'Rapporto link non funzionanti'
-    CheckSite: 'Verifica sito'
-    CheckSiteDropdownDraft: 'Sito Bozza'
-    CheckSiteDropdownPublished: 'Sito Pubblicato'
-    ColumnDateLastModified: 'Data ultima modifica'
-    ColumnDateLastPublished: 'Data ultima pubblicazione'
-    ColumnProblemType: 'Tipo problema'
-    ColumnURL: URL
-    HasBrokenFile: 'ha un file non funzionante'
-    HasBrokenLink: 'ha un link non funzionante'
-    HasBrokenLinkAndFile: 'ha link e file non funzionanti'
-    HoverTitleEditPage: 'Modifica pagina'
-    PageName: 'Nome pagina'
-    ReasonDropdown: 'Problemi da verificare'
-    ReasonDropdownBROKENFILE: 'File non funzionante'
-    ReasonDropdownBROKENLINK: 'Link non funzionante'
-    ReasonDropdownRPBROKENLINK: 'Pagina di redirezione che punta a una pagina che non esiste'
-    ReasonDropdownVPBROKENLINK: 'Pagina virtuale che punta a una pagina che non esiste'
-    RedirectorNonExistent: 'pagina di redirezione che punta a una pagina che non esiste'
-    VirtualPageNonExistent: 'pagina virtuale che punta a una pagina che non esiste'
-  CMSAddPageController:
-    Title: 'Aggiungi pagina'
-  CMSBatchAction_Archive:
-    RESULT: 'Eliminate %d pagine da bozza e live, e spedite all''archivio'
-    TITLE: 'Annulla la pubblicazione e archivia'
-  CMSBatchActions:
+  SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Pubblicate %d pagine, %d non a buon fine'
     PUBLISH_PAGES: Pubblica
     RESTORE: Ripristina
     RESTORED_PAGES: '%d pagine ripristinate'
-  CMSMain:
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
+    BACKLINKCOUNT: 'Usato in:'
+    ErrorItemPermissionDenied: 'Sembra tu non abbia i necessari permessi per aggiungere {ObjectTitle} ad una campagna'
+    ErrorNotFound: 'Questo {Type} non può essere trovato'
+    PAGES: pagina/e
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
+    RESULT: 'Eliminate %d pagine da bozza e live, e spedite all''archivio'
+    TITLE: 'Annulla la pubblicazione e archivia'
+  SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Accesso alla sezione ''{title}'''
     ACCESS_HELP: 'Consente la visualizzazione della sezione con l''albero delle pagine e i contenuti. I permessi di visualizzazione e modifica possono essere gestiti attraverso menù a tendina specifici della pagina, come dai separati "Permessi sui contenuti".'
     ARCHIVE: Archivia
@@ -45,6 +20,7 @@ it:
     AddNew: 'Aggiungi nuova pagina'
     AddNewButton: 'Aggiungi nuova'
     AddPageRestriction: 'Nota: alcuni tipi di pagina non sono permessi in questa sezione'
+    CLEAR_FILTER: Annulla
     Cancel: Annulla
     ChoosePageParentMode: 'Scegli dove creare questa pagina'
     ChoosePageType: 'Scegli tipo di pagina'
@@ -75,46 +51,43 @@ it:
     TabHistory: Archivio
     TabSettings: Impostazioni
     UNPUBLISH_AND_ARCHIVE: 'Annulla pubblicazione e archivia'
-  CMSMain_left_ss:
-    CLEAR_FILTER: Annulla
-  CMSPageAddController:
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Aggiungi pagina'
     ParentMode_child: 'Sotto un''altra pagina'
     ParentMode_top: 'Primo livello'
-  CMSPageHistoryController:
+    Title: 'Aggiungi pagina'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Modifica pagina'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    AUTHOR: Autore
     COMPAREMODE: 'Modalità confronto (selezionane due)'
     COMPAREVERSIONS: 'Confronta versioni'
-    REVERTTOTHISVERSION: 'Ripristina a questa versione'
-    SHOWUNPUBLISHED: 'Mostra versioni nascoste'
-    SHOWVERSION: 'Mostra versione'
-    VIEW: vista
-    VIEWINGLATEST: 'Attualmente visualizzata ultima versione.'
-    VIEWINGVERSION: 'Versione attualmente visualizzata {version}.'
-  CMSPageHistoryController_versions_ss:
-    AUTHOR: Autore
+    MENUTITLE: Storico
     NOTPUBLISHED: 'Non pubblicato'
     PREVIEW: 'Anteprima sito'
     PUBLISHER: Editore
+    REVERTTOTHISVERSION: 'Ripristina a questa versione'
+    SHOWUNPUBLISHED: 'Mostra versioni nascoste'
+    SHOWVERSION: 'Mostra versione'
     UNKNOWN: Sconosciuto
+    VIEW: vista
+    VIEWINGLATEST: 'Attualmente visualizzata ultima versione.'
+    VIEWINGVERSION: 'Versione attualmente visualizzata {version}.'
     WHEN: Quando
-  CMSPagesController:
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Modifica pagina'
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: Filtra
     ListView: 'Visualizzazione a lista'
     MENUTITLE: Pagine
     TreeView: 'Visualizzazione a albero'
-  CMSPagesController_Tools_ss:
-    FILTER: Filtra
-  CMSSIteTreeFilter_PublishedPages:
+  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Pagine pubblicate'
-  CMSSearch:
-    FILTERDATEFROM: Da
-    FILTERDATETO: A
-    PAGEFILTERDATEHEADING: 'Ultima modifica'
-  CMSSiteTreeFilter_Search:
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Tutte le pagine'
-  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Live ma rimosse dalla bozza'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Nota: questo messaggio non verrà mostrato ai visitatori'
-  ContentController:
+  SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Anteprima versione'
     ARCHIVEDSITEFROM: 'Sito archiviato da'
     CMS: CMS
@@ -127,7 +100,8 @@ it:
     InstallSuccessCongratulations: 'SilverStripe è stato installato con successo!'
     LOGGEDINAS: 'Sei collegato come'
     LOGIN: Accedi
-    LOGOUT: 'Disconnetti'
+    LOGOUT: Disconnetti
+    NOTEWONTBESHOWN: 'Nota: questo messaggio non verrà mostrato ai visitatori'
     NOTLOGGEDIN: 'Non connesso'
     PUBLISHED: Pubblicato
     PUBLISHEDSITE: 'Sito pubblicato'
@@ -136,102 +110,63 @@ it:
     StartEditing: 'Puoi iniziare a modificare i contenuti del sito aprendo <a href="{link}">il CMS</a>.'
     UnableDeleteInstall: 'Impossibile eliminare i file di installazione. Cancella manualmente i file sotto indicati'
     VIEWPAGEIN: 'Mostra pagina in:'
-  ErrorPage:
-    400: '400 - Richiesta errata'
-    401: '401 - Non Autorizzato'
-    403: '403 - Accesso Negato'
-    404: '404 - Non Trovato'
-    405: '405 - Metodo non permesso'
-    406: '406 - Non accettabile'
-    407: '407 - Autenticazione Proxy necessaria'
-    408: '408 - Timeout della richiesta'
-    409: '409 - Conflitto'
-    410: '410 - Risorsa non più esistente'
-    411: '411 - Lunghezza necessaria'
-    412: '412 - Precondizione fallita'
-    413: '413 - Richiesta troppo grande'
-    414: '414 - URI di richiesta troppo lunga'
-    415: '415 - Tipo di media non supportato'
-    416: '416 - Intervallo di richiesta non soddisfacibile'
-    417: '417 - Attesa fallita'
-    422: '422 - Entità non elaborabile'
-    429: '429 - Troppe richieste'
-    500: '500 - Errore Interno del Server'
-    501: '501 - Non implementato'
-    502: '502 - Gateway errato'
-    503: '503 - Servizio non Disponibile'
-    504: '504 - Timeout del gateway'
-    505: '505 - Versione HTTP non supportata'
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: Archiviato
+  SilverStripe\CMS\Email\ViewArchivedmail.ss:
+    CANACCESS: 'Puoi accedere al sito archiviato da questo indirizzo:'
+    HAVEASKED: 'Hai chiesto di visualizzare il contenuto del nostro sito il'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Cancel: Annulla
+    EMPTY: 'Perfavore inserisci un segmento URL o clicca cancella'
+    Edit: Modifica
+    HelpChars: 'I caratteri speciali sono automaticamente convertiti o eliminati.'
+    OK: OK
+  SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Codice di errore'
+    DESCRIPTION: 'Contenuto personalizzato per i diversi casi d''errore (per esempio "Pagina non trovata")'
+    PLURALNAME: 'Pagine di errore'
+    SINGULARNAME: 'Pagina di errore'
+    0: '400 - Richiesta errata'
     DEFAULTERRORPAGECONTENT: '<p>Spiacente, sembra che tu cercassi di accedere ad una pagina che non esiste.</p><p>Controlla che l''URL a cui stavi cercando di accedere sia corretto e prova di nuovo.</p>'
     DEFAULTERRORPAGETITLE: 'Pagina non trovata'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Spiacenti, c''è stato un problema con la gestione della tua richiesta.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Errore server'
-  Permissions:
-    CONTENT_CATEGORY: 'Permessi sui contenuti'
-    PERMISSIONS_CATEGORY: 'Ruoli e permessi d''accesso'
-  RedirectorPage:
+    1: '401 - Non Autorizzato'
+    2: '403 - Accesso Negato'
+    3: '404 - Non Trovato'
+    4: '405 - Metodo non permesso'
+    5: '406 - Non accettabile'
+    6: '407 - Autenticazione Proxy necessaria'
+    7: '408 - Timeout della richiesta'
+    8: '409 - Conflitto'
+    9: '410 - Risorsa non più esistente'
+    10: '411 - Lunghezza necessaria'
+    11: '412 - Precondizione fallita'
+    12: '413 - Richiesta troppo grande'
+    13: '414 - URI di richiesta troppo lunga'
+    14: '415 - Tipo di media non supportato'
+    15: '416 - Intervallo di richiesta non soddisfacibile'
+    16: '417 - Attesa fallita'
+    17: '422 - Entità non elaborabile'
+    18: '429 - Troppe richieste'
+    19: '500 - Errore Interno del Server'
+    20: '501 - Non implementato'
+    21: '502 - Gateway errato'
+    22: '503 - Servizio non Disponibile'
+    23: '504 - Timeout del gateway'
+    24: '505 - Versione HTTP non supportata'
+  SilverStripe\CMS\Model\RedirectorPage:
+    DESCRIPTION: 'Reinoltra ad una pagina interna o una URL esterna'
     HASBEENSETUP: 'Una pagina di redirezione è stata configurata nonostante non vi sia alcun indirizzo a cui farla puntare'
     HEADER: 'Questa pagina redirigerà gli utenti su un''altra'
     OTHERURL: 'Altro indirizzo del sito web'
+    PLURALNAME: 'Pagine di reindirizzamento'
     REDIRECTTO: 'Redirigi a'
     REDIRECTTOEXTERNAL: 'Un altro sito web'
     REDIRECTTOPAGE: 'Una pagina sul tuo sito web'
-    YOURPAGE: 'Pagina sul tuo sito web'
-  RemoveOrphanedPagesTask:
-    BUTTONRUN: Esegui
-    CHOOSEOPERATION: 'Scegli operazione:'
-    DELETEWARNING: 'Attenzione: queste modifiche non sono reversibili. Maneggiare con cura.'
-    HEADER: 'Compito di rimozione di tutte le pagine orfane.'
-    NONEFOUND: 'Nessun orfano trovato'
-    NONEREMOVED: 'Nessuno rimosso'
-    OPERATION_REMOVE: 'Rimuove le pagine selezionate da tutti gli stage (ATTENZIONE: Distruggerà le pagine selezionate sia da stage che da live)'
-    SELECTALL: 'seleziona tutto'
-    UNSELECTALL: 'deseleziona tutto'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Perfavore pubblica la pagina linkata per poter pubblicare la pagina virtuale.'
-    VIRTUALPAGEWARNING: 'Perfavore scegli una pagina da linkare e salvala per poter pubblicare questa pagina.'
-    VIRTUALPAGEWARNINGSETTINGS: 'Perfavore scegli una pagina da linkare nel campo "Contenuto" per poter pubblicare.'
-  SearchForm:
-    GO: Vai
-    SEARCH: Cerca
-    SearchResults: 'Risultati della ricerca'
-  SideReport:
-    BROKENFILES: 'Pagine con file non funzionanti'
-    BROKENREDIRECTORPAGES: 'Pagina di redirezione che puntano a pagine eliminate'
-    BROKENVIRTUALPAGES: 'Pagine virtuali che puntano a pagine eliminate'
-    BrokenLinksGroupTitle: 'Rapporto link non funzionanti'
-    ContentGroupTitle: 'Rapporti sui contenuti'
-    EMPTYPAGES: 'Pagine vuote'
-    LAST2WEEKS: 'Pagine modificate nelle ultime 2 settimane'
-    ParameterLiveCheckbox: 'Verifica sito pubblicato'
-  SilverStripeNavigator:
-    ARCHIVED: Archiviato
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    MENUTITLE: 'Aggiungi pagina'
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Modifica pagina'
-  SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    MENUTITLE: Storico
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Modifica pagina'
-  SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: Pagine
-  SilverStripe\CMS\Model\ErrorPage:
-    DESCRIPTION: 'Contenuto personalizzato per i diversi casi d''errore (per esempio "Pagina non trovata")'
-    PLURALNAME: 'Pagine di errore'
-    SINGULARNAME: 'Pagina di errore'
-  SilverStripe\CMS\Model\RedirectorPage:
-    DESCRIPTION: 'Reinoltra ad una pagina interna o una URL esterna'
-    PLURALNAME: 'Pagine di reindirizzamento'
     SINGULARNAME: 'Pagina di reindirizzamento'
+    YOURPAGE: 'Pagina sul tuo sito web'
   SilverStripe\CMS\Model\SiteTree:
-    DESCRIPTION: 'Pagina di contenuto generico'
-  SilverStripe\CMS\Model\VirtualPage:
-    DESCRIPTION: 'Mostra il contenuto di un''altra pagina'
-    PLURALNAME: 'Pagine virtuali'
-    SINGULARNAME: 'Pagina virtuale'
-  SiteTree:
     ACCESSANYONE: Chiunque
     ACCESSHEADER: 'Chi può vedere questa pagina?'
     ACCESSLOGGEDIN: 'Utenti autenticati'
@@ -252,10 +187,11 @@ it:
     Comments: Commenti
     Content: Contenuto
     DEFAULTABOUTTITLE: 'Chi siamo'
-    DEFAULTCONTACTTITLE: 'Contattaci'
+    DEFAULTCONTACTTITLE: Contattaci
     DEFAULTHOMECONTENT: '<p>Benvenuto in SilverStripe! Questa è la home page di default. Puoi modificare questa pagina direttamente <a href="admin/">dal CMS</a>.</p><p>Puoi accedere alla <a href="http://docs.silverstripe.org">documentazione per gli sviluppatori</a> o partire dalle <a href="http://www.silverstripe.org/learn/lessons">lezioni di SilverStripe</a>.</p>'
     DEFAULTHOMETITLE: Home
     DEPENDENT_NOTE: 'Le seguenti pagine dipendono da questa pagina. Queste includono pagine virtuali, pagine di redirezione e pagine con link nel contenuto.'
+    DESCRIPTION: 'Pagina di contenuto generico'
     DependtPageColumnLinkType: 'Tipo di link'
     DependtPageColumnURL: URL
     EDITANYONE: 'Chiunque può autenticarsi al CMS'
@@ -276,7 +212,7 @@ it:
     LINKSALREADYUNIQUE: '{url} è già unica'
     LINKSCHANGEDTO: 'cambiato {url1} -> {url2}'
     MENUTITLE: 'Etichetta di navigazione'
-    METADESC: 'Descrizione'
+    METADESC: Descrizione
     METADESCHELP: 'I motori di ricerca utilizzano questo contenuto per visualizzare i risultati (ma non ne influenza la posizione)'
     METAEXTRA: 'Meta tag personalizzati'
     METAEXTRAHELP: 'Tag HTML per meta addizionali. Per esempio &lt;meta name="nomePersonalizzato" content="Il tuo contenuto personalizzato" /&gt;'
@@ -314,29 +250,76 @@ it:
     VIEW_ALL_HELP: 'Possibilità di vedere qualsiasi pagina del sito, senza tenere conto delle impostazioni nel tab Accesso. Richiede i permessi per "Accesso alla sezione ''Pagine''"'
     VIEW_DRAFT_CONTENT: 'Visualizza contenuto bozza'
     VIEW_DRAFT_CONTENT_HELP: 'Si applica per visualizzare le pagine in bozza al di fuori del CMS. Utile per collaboratori esterni che non hanno accesso al CMS.'
+    VIRTUALPAGEDRAFTWARNING: 'Perfavore pubblica la pagina linkata per poter pubblicare la pagina virtuale.'
+    VIRTUALPAGEWARNING: 'Perfavore scegli una pagina da linkare e salvala per poter pubblicare questa pagina.'
+    VIRTUALPAGEWARNINGSETTINGS: 'Perfavore scegli una pagina da linkare nel campo "Contenuto" per poter pubblicare.'
     Viewers: 'Gruppi di visualizzatori'
-    Visibility: Visibilità
+    Visibility: 'Visibilità'
     has_one_Parent: 'Pagina madre'
     many_many_BackLinkTracking: 'Monitoriaggio link di ritorno'
     many_many_ImageTracking: 'Monitoraggio immagine'
     many_many_LinkTracking: 'Monitoraggio link'
-  SiteTreeFileExtension:
+  SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Usato in'
-  SiteTreeURLSegmentField:
-    EMPTY: 'Perfavore inserisci un segmento URL o clicca cancella'
-    HelpChars: 'I caratteri speciali sono automaticamente convertiti o eliminati.'
-  URLSegmentField:
-    Cancel: Annulla
-    Edit: Modifica
-    OK: OK
-  ViewArchivedEmail_ss:
-    CANACCESS: 'Puoi accedere al sito archiviato da questo indirizzo:'
-    HAVEASKED: 'Hai chiesto di visualizzare il contenuto del nostro sito il'
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Pagina collegata'
+    DESCRIPTION: 'Mostra il contenuto di un''altra pagina'
     EditLink: modifica
     HEADER: 'Questa è una pagina virtuale'
     HEADERWITHLINK: 'Questa è una pagina virtuale copiata da "{title}" ({link})'
+    PLURALNAME: 'Pagine virtuali'
     PageTypNotAllowedOnRoot: 'Il tipo di pagina originale "{type}" non è consentito al primo livello per questa pagina virtuale'
+    SINGULARNAME: 'Pagina virtuale'
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    Any: Qualsiasi
+    BROKENLINKS: 'Rapporto link non funzionanti'
+    CheckSite: 'Verifica sito'
+    CheckSiteDropdownDraft: 'Sito Bozza'
+    CheckSiteDropdownPublished: 'Sito Pubblicato'
+    ColumnDateLastModified: 'Data ultima modifica'
+    ColumnDateLastPublished: 'Data ultima pubblicazione'
+    ColumnProblemType: 'Tipo problema'
+    ColumnURL: URL
+    HasBrokenFile: 'ha un file non funzionante'
+    HasBrokenLink: 'ha un link non funzionante'
+    HasBrokenLinkAndFile: 'ha link e file non funzionanti'
+    HoverTitleEditPage: 'Modifica pagina'
+    PageName: 'Nome pagina'
+    ReasonDropdown: 'Problemi da verificare'
+    ReasonDropdownBROKENFILE: 'File non funzionante'
+    ReasonDropdownBROKENLINK: 'Link non funzionante'
+    ReasonDropdownRPBROKENLINK: 'Pagina di redirezione che punta a una pagina che non esiste'
+    ReasonDropdownVPBROKENLINK: 'Pagina virtuale che punta a una pagina che non esiste'
+    RedirectorNonExistent: 'pagina di redirezione che punta a una pagina che non esiste'
+    VirtualPageNonExistent: 'pagina virtuale che punta a una pagina che non esiste'
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERDATEFROM: Da
+    FILTERDATETO: A
+    GO: Vai
+    PAGEFILTERDATEHEADING: 'Ultima modifica'
+    SEARCH: Cerca
+    SearchResults: 'Risultati della ricerca'
+  SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask:
+    BUTTONRUN: Esegui
+    CHOOSEOPERATION: 'Scegli operazione:'
+    DELETEWARNING: 'Attenzione: queste modifiche non sono reversibili. Maneggiare con cura.'
+    HEADER: 'Compito di rimozione di tutte le pagine orfane.'
+    NONEFOUND: 'Nessun orfano trovato'
+    NONEREMOVED: 'Nessuno rimosso'
+    OPERATION_REMOVE: 'Rimuove le pagine selezionate da tutti gli stage (ATTENZIONE: Distruggerà le pagine selezionate sia da stage che da live)'
+    SELECTALL: 'seleziona tutto'
+    UNSELECTALL: 'deseleziona tutto'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Pagine con file non funzionanti'
+    BROKENREDIRECTORPAGES: 'Pagina di redirezione che puntano a pagine eliminate'
+    BROKENVIRTUALPAGES: 'Pagine virtuali che puntano a pagine eliminate'
+    BrokenLinksGroupTitle: 'Rapporto link non funzionanti'
+    ContentGroupTitle: 'Rapporti sui contenuti'
+    EMPTYPAGES: 'Pagine vuote'
+    LAST2WEEKS: 'Pagine modificate nelle ultime 2 settimane'
+    ParameterLiveCheckbox: 'Verifica sito pubblicato'
+  SilverStripe\Security\Permission:
+    CONTENT_CATEGORY: 'Permessi sui contenuti'
+    PERMISSIONS_CATEGORY: 'Ruoli e permessi d''accesso'

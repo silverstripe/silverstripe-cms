@@ -1,34 +1,30 @@
 is:
-  ContentController:
+  SilverStripe\CMS\Controllers\ContentController:
     LOGGEDINAS: 'Innskráður sem'
     LOGIN: Innskrá
-    LOGOUT: 'Útskrá'
+    LOGOUT: Útskrá
     NOTLOGGEDIN: 'Ekki innskráður'
     PUBLISHEDSITE: 'Birt síða'
     VIEWPAGEIN: 'Skoða síðu í:'
-  ErrorPage:
+  SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Villu númer'
     DEFAULTERRORPAGECONTENT: '<p>Afsakið, það virðist vera að þú ert að reyna opna síðu sem er ekki til.</p><p>Vinsamlegast athugaðu hvort að slóðin sé rétt skrifuð og prófaðu aftur</p>'
     DEFAULTERRORPAGETITLE: 'Síða fannst ekki'
-  RedirectorPage:
+  SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Þessi síða mun áframsenda notendur á aðra síðu'
     OTHERURL: 'Slóð á aðra heimasíðu'
     REDIRECTTO: 'Áframsenda á'
     REDIRECTTOEXTERNAL: 'Önnur heimasíða'
     REDIRECTTOPAGE: 'Síða á heimasíðunni þinni'
     YOURPAGE: 'Síða á heimasíðunni þinni'
-  SearchForm:
-    GO: Framkvæma
-    SEARCH: Leita
-    SearchResults: 'Leitar niðurstaða'
-  SiteTree:
+  SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Allir
     ACCESSHEADER: 'Hver má skoða þessa síðu á heimasíðunni minni?'
     ACCESSLOGGEDIN: 'Innskráðir notendur'
     ACCESSONLYTHESE: 'Aðeins þetta fólk (veldu úr listanum)'
     BUTTONCANCELDRAFT: 'Hætta við breytingar á drögum'
     BUTTONCANCELDRAFTDESC: 'Eyða drögunum þínum og fara aftur ál núverandi bitar síðu'
-    BUTTONUNPUBLISH: Taka úr birtingu
+    BUTTONUNPUBLISH: 'Taka úr birtingu'
     BUTTONUNPUBLISHDESC: 'Fjarlægja þessa síðu úr birtum síðum'
     Comments: Athugasemdir
     Content: Efni
@@ -41,7 +37,7 @@ is:
     HASBROKENLINKS: 'Þessi síða inniheldur óvirkann hlekk.'
     HTMLEDITORTITLE: Efni
     INHERIT: 'Erfa frá foreldra síðu'
-    METADESC: 'Lýsing'
+    METADESC: Lýsing
     METAEXTRA: 'Sérnsniðin Meta tags'
     PAGELOCATION: 'Staðsetning síðu'
     PAGETITLE: 'Nafn síðu'
@@ -49,9 +45,13 @@ is:
     SHOWINMENUS: 'Sýna í valmynd?'
     SHOWINSEARCH: 'Sýna í leit?'
     TABBEHAVIOUR: Hegðun
-    TABCONTENT: 'Efni'
+    TABCONTENT: Efni
     URLSegment: 'Slóðar hlutar'
     VIEW_DRAFT_CONTENT: 'Skoða uppkast'
     has_one_Parent: 'Yfir síða'
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Þetta er sýndarsíða'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Framkvæma
+    SEARCH: Leita
+    SearchResults: 'Leitar niðurstaða'
