@@ -8,8 +8,6 @@ sk:
     UNPUBLISH_PAGES: Nezverejniť
   SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Použité na:'
-    ErrorItemPermissionDenied: 'Zdá sa, že nemáte potrebné oprávnenia na pridanie {ObjectTitle} ku kampani.'
-    ErrorNotFound: '{Type} nemožno nájsť'
     PAGES: stránka(y)
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Vymazaných %d stránok z konceptu a publikovania a presunuté do archívu.'
@@ -71,7 +69,6 @@ sk:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Mód porovnania (vyberte dva)'
-    COMPAREVERSIONS: 'Porovnať verzie'
     MENUTITLE: História
     MULTISELECT: 'Hromadné akcie'
     NOTPUBLISHED: Nepublikovaná
@@ -79,7 +76,6 @@ sk:
     PUBLISHER: Vydavateľ
     REVERTTOTHISVERSION: 'Vrátiť sa k tejto verzii'
     SHOWUNPUBLISHED: 'Zobraziť nepublikované verzie'
-    SHOWVERSION: 'Zobraziť verziu'
     UNKNOWN: Neznáma
     VIEW: zobraziť
     VIEWINGLATEST: 'Práve sa zobrazuje posledná verzia.'
@@ -131,9 +127,10 @@ sk:
     VIEWPAGEIN: 'Prezrieť stránku v:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archivované
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Archivovaný web môžete navštíviť týmto odkazom:'
-    HAVEASKED: 'Požiadali ste o zobrazenie obsahu webu z'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Archivovaný web môžete navštíviť týmto odkazom:'
+      HAVEASKED: 'Požiadali ste o zobrazenie obsahu webu z'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Zrušiť
     EMPTY: 'Zadajte prosím URL segment alebo kliknite zrušiť'
@@ -142,38 +139,13 @@ sk:
     OK: Ok
   SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Chybový kód'
-    DESCRIPTION: 'Vlastný obsah pre rôzne prípady chýb (napr. "Stránka nenájdená")'
-    PLURALNAME: 'Chybové stránky'
-    SINGULARNAME: 'Chybová stránka'
-    0: '400 - Neplatná požiadavka'
     DEFAULTERRORPAGECONTENT: '<p>Prepáčte, vyzerá to tak, že sa snažíte otvoriť stránku, ktorá neexistuje.</p><p> Skontrolujte napísanú URL, prosím.</p>'
     DEFAULTERRORPAGETITLE: 'Stránka nenájdená'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Prepáčte, nastal problém s manipuláciou vašej požiadavky.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Chyba servera'
-    1: '401 - Neautorizovaný prístup'
-    2: '403 - Zamietnuté'
-    3: '404 - Stránka nenájdená'
-    4: '405 - Metóda nie je povolená'
-    5: '406 - Neprijaté'
-    6: '407 - Vyžadovaná autentifikácia Proxy'
-    7: '408 - Čaš na požiadavku vypršal'
-    8: '409 - Konflikt'
-    9: '410 - Stránka už viac neexistuje'
-    10: '411 - Požadovaná dĺžka'
-    11: '412 - Zlyhanie podmienky'
-    12: '413 - Požadovaný celok je príliš veľký'
-    13: '413 - Požadované URI príliš dlhé'
-    14: '415 - Nepodporovaný typ média'
-    15: '416 - Rozsah požiadavky nie je dostačujúci'
-    16: '417 - Zlyhanie očakávania'
-    17: '422 - Nespracovateľná entita'
-    18: '429 - Príliš veľa požiadavkov'
-    19: '500 - Interná chyba serveru'
-    20: '501 - Nie je implementované'
-    21: '502 - Nesprávna brána'
-    22: '503 - Služba nedostupná'
-    23: '504 - Čas na požiadavky vypršal - Brána'
-    24: '505 - HTTP verzia nie je podporovaná'
+    DESCRIPTION: 'Vlastný obsah pre rôzne prípady chýb (napr. "Stránka nenájdená")'
+    PLURALNAME: 'Chybové stránky'
+    SINGULARNAME: 'Chybová stránka'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Presmeruje na internú stránku alebo na externé URL'
     HASBEENSETUP: 'Stránka na presmerovanie bola nastavená bez cieľa.'

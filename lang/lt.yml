@@ -48,12 +48,10 @@ lt:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autorius
     COMPAREMODE: 'Palyginimo režimas (pasirinkite du)'
-    COMPAREVERSIONS: 'Palyginti versijas'
     NOTPUBLISHED: Nepublikuotas
     PUBLISHER: Publikavo
     REVERTTOTHISVERSION: 'Palikti šią versiją'
     SHOWUNPUBLISHED: 'Rodyti nepublikuojamas versijas'
-    SHOWVERSION: 'Rodyti versiją'
     UNKNOWN: Nežinoma
     VIEW: peržiūrėti
     VIEWINGLATEST: 'Dabar peržiūrima naujausia versija.'
@@ -95,9 +93,10 @@ lt:
     VIEWPAGEIN: 'Peržiūrėti puslapį:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archyvuota
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Jūs galite atverti suarchyvuotą svetainę paspaudę šią nuorodą:'
-    HAVEASKED: 'Jūs norėjote peržiūrėti turinį mūsų svetainėje '
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Jūs galite atverti suarchyvuotą svetainę paspaudę šią nuorodą:'
+      HAVEASKED: 'Jūs norėjote peržiūrėti turinį mūsų svetainėje '
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Atšaukti
     EMPTY: 'Prašome įvesti URL dalį arba spauskite atšaukti'

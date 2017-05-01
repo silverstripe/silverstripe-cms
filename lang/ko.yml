@@ -41,12 +41,10 @@ ko:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: 작성자
     COMPAREMODE: '비교 모드 (2개 선택)'
-    COMPAREVERSIONS: '버전 비교'
     NOTPUBLISHED: 미공개
     PUBLISHER: 게시자
     REVERTTOTHISVERSION: '이 버전으로 복원'
     SHOWUNPUBLISHED: '공개되지 않은 버전을 표시'
-    SHOWVERSION: '버전을 표시'
     UNKNOWN: '알 수 없슴'
     VIEW: 표시
     VIEWINGLATEST: '현재 최신 버전을 보고있는 중.'
@@ -84,9 +82,10 @@ ko:
     VIEWPAGEIN: '다음에서 페이지를 표시한다 : '
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 보관됨
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: '아카이브된 사이트에 다음 링크에 액세스 할 수 있습니다 : '
-    HAVEASKED: '당신은 우리의 사이트의 콘텐츠를 보려고 요청했습니다.'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: '아카이브된 사이트에 다음 링크에 액세스 할 수 있습니다 : '
+      HAVEASKED: '당신은 우리의 사이트의 콘텐츠를 보려고 요청했습니다.'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: 취소
     EMPTY: 'URL 세그먼트를 입력 또는 중지를 클릭'

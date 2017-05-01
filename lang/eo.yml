@@ -8,8 +8,6 @@ eo:
     UNPUBLISH_PAGES: Malpublikigi
   SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Uzite ĉe:'
-    ErrorItemPermissionDenied: 'Ŝajnas ke vi ne havas la bezonatajn permesojn por aldoni je {ObjectTitle} al kampanjo'
-    ErrorNotFound: 'Ne eblis trovi tiun {Type}'
     PAGES: paĝo(j)
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Forigis %d paĝojn el malneta kaj publika, kaj sendis ilin al la arĥivo'
@@ -71,7 +69,6 @@ eo:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Aŭtoro
     COMPAREMODE: 'Kompara reĝimo (elektu du)'
-    COMPAREVERSIONS: 'Kompari versiojn'
     MENUTITLE: Historio
     MULTISELECT: 'Staplaj agoj'
     NOTPUBLISHED: Nepublikigita
@@ -79,7 +76,6 @@ eo:
     PUBLISHER: Publikiginto
     REVERTTOTHISVERSION: 'Malfari al ĉi tiu versio'
     SHOWUNPUBLISHED: 'Vidigi nepublikigitajn versiojn'
-    SHOWVERSION: 'Vidigi version'
     UNKNOWN: Nekonata
     VIEW: vido
     VIEWINGLATEST: 'Aktuale vidiĝas la lasta versio.'
@@ -131,9 +127,10 @@ eo:
     VIEWPAGEIN: 'Vidigi Paĝon en:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Enarkivigita
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Vi povas aliri la enarkivigitan retejon je ĉi tiu ligilo:'
-    HAVEASKED: 'Vi petis vidi la enhavon de nia retejo en'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Vi povas aliri la enarkivigitan retejon je ĉi tiu ligilo:'
+      HAVEASKED: 'Vi petis vidi la enhavon de nia retejo en'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Rezigni
     EMPTY: 'Bonvolu enigi URL-segmenton aŭ alklaki al Rezigni'
@@ -142,38 +139,13 @@ eo:
     OK: Akcepti
   SilverStripe\CMS\Model\ErrorPage:
     CODE: Erarokodo
-    DESCRIPTION: 'Propra enhavo por diversaj okazoj de eraro (ekzemple, "Ne trovis paĝon")'
-    PLURALNAME: 'Paĝoj pri eraroj'
-    SINGULARNAME: 'Paĝo pri eraroj'
-    0: '400 - Nevalida Peto'
     DEFAULTERRORPAGECONTENT: '<p>Bedaŭrinde, ŝajne vi provis aliri paĝon kiu ne ekzistas.</p><p>Bonvole kontrolu la literumadon de la URL alirota kaj provu denove.</p>'
     DEFAULTERRORPAGETITLE: 'Ne trovis paĝon'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Bedaŭrinde, estis problemo pri via peto.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Servila eraro'
-    1: '401- Nepermesita'
-    2: '403 - Nepermesebla'
-    3: '404 - Netrovita'
-    4: '405 - Metodo nepermesita'
-    5: '406 - Ne akceptebla'
-    6: '407 - Bezonas prokuran aŭtentokontrolon'
-    7: '408 - Pasis tempolimo de peto'
-    8: '409 - Konflikto'
-    9: '410 - For'
-    10: '411 - Longo bezonata'
-    11: '412 - Antaŭkondiĉo malsukcesis'
-    12: '413 - Petaĵo tro granda'
-    13: '414 - Petita URI tro longa'
-    14: '415 - Nesubtenata spekta tipo'
-    15: '416 - Peta amplekso ne plenumebla'
-    16: '417 - Atendo malsukcesis'
-    17: '422 - Netrakebla ento'
-    18: '429 - tro da petoj'
-    19: '500 - Eraro de interna servilo'
-    20: '501 - Ne realigita'
-    21: '502 - Malbona kluzo'
-    22: '503 - Servo nehavebla'
-    23: '504 - Kluza tempolimo'
-    24: '505 - HTTP-Versio ne subtenata'
+    DESCRIPTION: 'Propra enhavo por diversaj okazoj de eraro (ekzemple, "Ne trovis paĝon")'
+    PLURALNAME: 'Paĝoj pri eraroj'
+    SINGULARNAME: 'Paĝo pri eraroj'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Alidirektas al interna paĝo aŭ ekstera URL'
     HASBEENSETUP: 'Alidirekta paĝo estis agordita sen ie al kie alidirekti.'

@@ -45,12 +45,10 @@ fr:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Auteur
     COMPAREMODE: 'Comparer (choisissez deux)'
-    COMPAREVERSIONS: 'Comparer les versions'
     NOTPUBLISHED: 'Non publiée'
     PUBLISHER: Éditeur
     REVERTTOTHISVERSION: 'Revenir à cette version'
     SHOWUNPUBLISHED: 'Afficher les versions non publiées'
-    SHOWVERSION: 'Afficher cette version'
     UNKNOWN: Inconnu
     VIEW: Afficher
     VIEWINGLATEST: 'Vous regardez la dernière version'
@@ -90,9 +88,10 @@ fr:
     VIEWPAGEIN: 'Voir la page en :'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archivé
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Vous pouvez accéder le site archivé par ce lien :'
-    HAVEASKED: 'Vous avez demandé à voir le contenu de notre site le'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Vous pouvez accéder le site archivé par ce lien :'
+      HAVEASKED: 'Vous avez demandé à voir le contenu de notre site le'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Annuler
     EMPTY: 'Merci d''entrer une URL ou cliquez sur Annuler'

@@ -6,8 +6,6 @@ sl:
     RESTORED_PAGES: 'Obnovljene %d strani'
   SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Uporabljeno na:'
-    ErrorItemPermissionDenied: 'Izgleda, da nimate ustreznih pravic, da bi dodali {ObjectTitle} v kampanjo'
-    ErrorNotFound: 'Tip: {Type} ne obstaja'
     PAGES: Stran/Strani
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     TITLE: 'Odstrani iz objave in arhiviraj'
@@ -48,13 +46,11 @@ sl:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Avtor
     COMPAREMODE: 'Način primerjanja (izberite dve)'
-    COMPAREVERSIONS: 'Primerjaj različice'
     MENUTITLE: Zgodovina
     NOTPUBLISHED: 'Ni objavljeno'
     PREVIEW: 'Predogled spletnega mesta'
     REVERTTOTHISVERSION: 'Povrni v to različico'
     SHOWUNPUBLISHED: 'Pokaži neobjavljeno različico'
-    SHOWVERSION: 'Pokaži različico'
     UNKNOWN: Neznano
     VIEW: prikaz
     VIEWINGVERSION: 'Trenutno prikazana različica {version}.'
@@ -92,9 +88,10 @@ sl:
     VIEWPAGEIN: 'Ogled strani v:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arhivirano
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Do arhvirane različice spletnega mesta lahko dostopate na naslovu:'
-    HAVEASKED: 'Za vpogled v vsebino našega spletnega mesta ste zaprosili'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Do arhvirane različice spletnega mesta lahko dostopate na naslovu:'
+      HAVEASKED: 'Za vpogled v vsebino našega spletnega mesta ste zaprosili'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Prekliči
     EMPTY: 'Prosim vnesite URL segment ali kliknite prekliči'
@@ -105,35 +102,10 @@ sl:
     CODE: 'Napačna koda'
     DEFAULTERRORPAGECONTENT: '<p>Morda ste zahtevali dostop do strani, ki ne obstaja?</p><p>Za vsak slučaj preverite vpisani URL-naslov in poskusite ponovno.</p>'
     DEFAULTERRORPAGETITLE: 'Strani ni mogoče najti'
-    0: 'Napaka 400'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Oprostite, pri vaši zahtevi je prišlo do težave.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Napaka na strežniku'
     PLURALNAME: 'Strani z napakami'
     SINGULARNAME: 'Stran z napako'
-    1: 'Napaka 401: Nimate dovoljena za dostop'
-    2: 'Napaka 403: Nimate dovoljena za dostop'
-    3: 'Napaka 404: Iskana stran ni na voljo'
-    4: 'Napaka 405: Neveljavna metoda'
-    5: 'Napaka 406: Vsebine ni možno prejeti'
-    6: '407: Zahtevana je avtentikacija prek proxy-strežnika'
-    7: 'Napaka 408: Zahtevek za dostop je potekel'
-    8: 'Napaka 409: Težave zaradi kolizije zahtevkov'
-    9: 'Napaka 410: Iskana stran verjetno ne obstaja več'
-    10: 'Napaka 411: Dolžina vsebine ni znana'
-    11: 'Napaka 412: Strežnik ne ustreza zahtevanim pogojem'
-    12: 'Napaka 413: Zahtevek je preobsežen'
-    13: 'Napaka 414: Iskan URI-naslov je predolg'
-    14: 'Napaka 415: Zahtevanega tipa vsebine ni možno prikazati'
-    15: 'Napaka 416: Zahteva po obsegu vsebine, ki ga ni možno doseči'
-    16: 'Napaka 417: Strežnik ne ustreza vpisanim zahtevam'
-    17: 'Napaka 422 - Unprocessable Entity'
-    18: 'Napaka 429 - Preveč zahtevkov'
-    19: 'Napaka 500: Napaka na strežniku'
-    20: 'Napaka 501: Strežnik ne more izvesti zahtevka'
-    21: 'Napaka 502: Dostop ni dovoljen'
-    22: 'Napaka 503: Dostop trenutno ni možen'
-    23: 'Napaka 504: Čas za dostop je potekel'
-    24: 'Napaka 505: Strežnik ne podpira HTTP-različice zahtevka'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Nastavljena preusmeritev še nima določenega cilja.'
     HEADER: 'Ta stran bo preusmerila uporabnike na drugo stran'

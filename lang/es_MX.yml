@@ -18,9 +18,10 @@ es_MX:
     NOTLOGGEDIN: 'No ha iniciado sesión'
     PUBLISHEDSITE: 'Sitio Publicado'
     VIEWPAGEIN: 'Ver página en:'
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Puedes acceder al sitio archivado con este enlace:'
-    HAVEASKED: 'Has solicitado ver el contenido de nuestro sitio en'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Puedes acceder al sitio archivado con este enlace:'
+      HAVEASKED: 'Has solicitado ver el contenido de nuestro sitio en'
   SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Código de Error'
     DEFAULTERRORPAGECONTENT: '<p>Disculpe, parece que está tratando de ingresar a una página que no existe.</p><p>Por favor verifique la URL que desea visitar e inténtelo de nuevo.</p>'

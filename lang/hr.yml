@@ -8,8 +8,6 @@ hr:
     UNPUBLISH_PAGES: Odjavi
   SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Korišteno na:'
-    ErrorItemPermissionDenied: 'Izgleda kako nemate potrebna prava za dodati {ObjectTitle} na kampanju'
-    ErrorNotFound: '{Type} nije pronađen'
     PAGES: stranica(e)
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Obrisano %d stranica u statusu nacrt i objavljeno, i poslani u arhivu'
@@ -71,7 +69,6 @@ hr:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Način usporedbe (odaberi dva)'
-    COMPAREVERSIONS: 'Usporedi verzije'
     MENUTITLE: Povijest
     MULTISELECT: 'Grupne radnje'
     NOTPUBLISHED: 'Nije objavljeno'
@@ -79,7 +76,6 @@ hr:
     PUBLISHER: Izdavač
     REVERTTOTHISVERSION: 'Vrati na ovu verziju'
     SHOWUNPUBLISHED: 'Prikaži neobjavljene verzije'
-    SHOWVERSION: 'Prikaži verzije'
     UNKNOWN: Nepoznato
     VIEW: prikaži
     VIEWINGLATEST: 'Trenutno pregledavam zadnju verziju.'
@@ -131,9 +127,10 @@ hr:
     VIEWPAGEIN: 'Pregledaj stranice u:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arhivirano
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Na sljedećem linku možete pristupiti arhiviranoj stranici:'
-    HAVEASKED: 'Zatražili ste sadržaj naše stranice '
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Na sljedećem linku možete pristupiti arhiviranoj stranici:'
+      HAVEASKED: 'Zatražili ste sadržaj naše stranice '
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Odustani
     EMPTY: 'Molimo unesite dio URLa ili kliknite odustani'
@@ -142,38 +139,13 @@ hr:
     OK: Ok
   SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Kod pogreške'
-    DESCRIPTION: 'Prilagođeni sadržaj za različite slučajeve grešaka (npr. "Stranica nije pronađena")'
-    PLURALNAME: 'Stranice greške'
-    SINGULARNAME: 'Stranica greške'
-    0: '400 - loš zahtjev'
     DEFAULTERRORPAGECONTENT: '<p>Nažalost, čini se kako pokušavate pristupiti stranici koja ne postoji.</p><p>Molimo provjerite jeste li upisali točan URL i pokušajte ponovo.</p>'
     DEFAULTERRORPAGETITLE: 'Stranica nije pronađena'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Nažalost, dogodio se problem prilikom rukovanja vašim zahtjevom.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Serverska greška'
-    1: '401 - neovlašten'
-    2: '403 - zabranjen'
-    3: '404 - nije pronađeno'
-    4: '405 - metoda nije dozvoljena'
-    5: '406 - neprihvatljivo'
-    6: '407 - potrebna Proxy autentičnost'
-    7: '408 - zahtjev pauziran'
-    8: '409 - Sukob'
-    9: '410 - Nestala'
-    10: '411 - obavezna dužina'
-    11: '412 - preduvjet nije uspio'
-    12: '413 - zatražen entitet prevelik'
-    13: '414 - zatraženi URI predug'
-    14: '415 - nepodržan multimedijalni tip'
-    15: '416 - opseg zahtjeva nije zadovoljavajući'
-    16: '417 - očekivanje nije uspjelo'
-    17: '422 - ne mogu obraditi entitet'
-    18: '429 - previše zahtjeva'
-    19: '500 - interna serverska greška'
-    20: '501 - nije implementirano'
-    21: '502 - Loš pristupnik'
-    22: '503 - servis nedostupan'
-    23: '504 - Pristupnik pauziran'
-    24: '505 - HTTP verzija nije podržana'
+    DESCRIPTION: 'Prilagođeni sadržaj za različite slučajeve grešaka (npr. "Stranica nije pronađena")'
+    PLURALNAME: 'Stranice greške'
+    SINGULARNAME: 'Stranica greške'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Preusmjerava na internu stranicu ili vanjski URL'
     HASBEENSETUP: 'Stranica za preusjeravanje nema postavljenog preusmjeravanja'

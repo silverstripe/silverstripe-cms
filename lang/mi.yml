@@ -40,12 +40,10 @@ mi:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Kaituhi
     COMPAREMODE: 'Whakataurite Aratau (tīpakohia kia rua)'
-    COMPAREVERSIONS: 'Whakatauritea Ngā Putanga'
     NOTPUBLISHED: 'Kāore i whakaputaina'
     PUBLISHER: Pūwhakaputa
     REVERTTOTHISVERSION: 'Hoki ki tēnei putanga'
     SHOWUNPUBLISHED: 'Whakaaturia ngā putanga kāore i whakaputaina'
-    SHOWVERSION: 'Whakaatu Putanga'
     UNKNOWN: 'Tē Mōhiotia'
     VIEW: Tiro
     VIEWINGLATEST: 'Tirohia ana te tauira hou rawa ināianei.'
@@ -83,9 +81,10 @@ mi:
     VIEWPAGEIN: 'Tiro Whārangi i'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 'I putumōhiotia'
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Ka taea te uru ki te pae putumōhio mā tēnei hononga'
-    HAVEASKED: 'Kua tono mai kia tirohia e koe ngā ihirangi o tā mātou pae i'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Ka taea te uru ki te pae putumōhio mā tēnei hononga'
+      HAVEASKED: 'Kua tono mai kia tirohia e koe ngā ihirangi o tā mātou pae i'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Whakakore
     EMPTY: 'Tāurua he Wāhanga PRO, ka pāwhiri whakakore rānei'

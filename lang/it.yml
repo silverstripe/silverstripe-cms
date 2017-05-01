@@ -6,8 +6,6 @@ it:
     RESTORED_PAGES: '%d pagine ripristinate'
   SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Usato in:'
-    ErrorItemPermissionDenied: 'Sembra tu non abbia i necessari permessi per aggiungere {ObjectTitle} ad una campagna'
-    ErrorNotFound: 'Questo {Type} non può essere trovato'
     PAGES: pagina/e
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Eliminate %d pagine da bozza e live, e spedite all''archivio'
@@ -61,14 +59,12 @@ it:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autore
     COMPAREMODE: 'Modalità confronto (selezionane due)'
-    COMPAREVERSIONS: 'Confronta versioni'
     MENUTITLE: Storico
     NOTPUBLISHED: 'Non pubblicato'
     PREVIEW: 'Anteprima sito'
     PUBLISHER: Editore
     REVERTTOTHISVERSION: 'Ripristina a questa versione'
     SHOWUNPUBLISHED: 'Mostra versioni nascoste'
-    SHOWVERSION: 'Mostra versione'
     UNKNOWN: Sconosciuto
     VIEW: vista
     VIEWINGLATEST: 'Attualmente visualizzata ultima versione.'
@@ -112,9 +108,10 @@ it:
     VIEWPAGEIN: 'Mostra pagina in:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archiviato
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Puoi accedere al sito archiviato da questo indirizzo:'
-    HAVEASKED: 'Hai chiesto di visualizzare il contenuto del nostro sito il'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Puoi accedere al sito archiviato da questo indirizzo:'
+      HAVEASKED: 'Hai chiesto di visualizzare il contenuto del nostro sito il'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Annulla
     EMPTY: 'Perfavore inserisci un segmento URL o clicca cancella'
@@ -123,38 +120,13 @@ it:
     OK: OK
   SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Codice di errore'
-    DESCRIPTION: 'Contenuto personalizzato per i diversi casi d''errore (per esempio "Pagina non trovata")'
-    PLURALNAME: 'Pagine di errore'
-    SINGULARNAME: 'Pagina di errore'
-    0: '400 - Richiesta errata'
     DEFAULTERRORPAGECONTENT: '<p>Spiacente, sembra che tu cercassi di accedere ad una pagina che non esiste.</p><p>Controlla che l''URL a cui stavi cercando di accedere sia corretto e prova di nuovo.</p>'
     DEFAULTERRORPAGETITLE: 'Pagina non trovata'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Spiacenti, c''è stato un problema con la gestione della tua richiesta.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Errore server'
-    1: '401 - Non Autorizzato'
-    2: '403 - Accesso Negato'
-    3: '404 - Non Trovato'
-    4: '405 - Metodo non permesso'
-    5: '406 - Non accettabile'
-    6: '407 - Autenticazione Proxy necessaria'
-    7: '408 - Timeout della richiesta'
-    8: '409 - Conflitto'
-    9: '410 - Risorsa non più esistente'
-    10: '411 - Lunghezza necessaria'
-    11: '412 - Precondizione fallita'
-    12: '413 - Richiesta troppo grande'
-    13: '414 - URI di richiesta troppo lunga'
-    14: '415 - Tipo di media non supportato'
-    15: '416 - Intervallo di richiesta non soddisfacibile'
-    16: '417 - Attesa fallita'
-    17: '422 - Entità non elaborabile'
-    18: '429 - Troppe richieste'
-    19: '500 - Errore Interno del Server'
-    20: '501 - Non implementato'
-    21: '502 - Gateway errato'
-    22: '503 - Servizio non Disponibile'
-    23: '504 - Timeout del gateway'
-    24: '505 - Versione HTTP non supportata'
+    DESCRIPTION: 'Contenuto personalizzato per i diversi casi d''errore (per esempio "Pagina non trovata")'
+    PLURALNAME: 'Pagine di errore'
+    SINGULARNAME: 'Pagina di errore'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Reinoltra ad una pagina interna o una URL esterna'
     HASBEENSETUP: 'Una pagina di redirezione è stata configurata nonostante non vi sia alcun indirizzo a cui farla puntare'

@@ -8,8 +8,6 @@ fa_IR:
     UNPUBLISH_PAGES: 'عدم انتشار'
   SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'استفاده شده در:'
-    ErrorItemPermissionDenied: 'به نظر می‌رسد شما دسترسی‌های لازم برای افزودن {ObjectTitle} به کمپین را ندارید'
-    ErrorNotFound: 'این {Type} یافت نشد'
     PAGES: صفحه(ها)
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'حذف %d صفحه از سایت پیش‌نویس و زنده، و ارسال آنها به آرشیو'
@@ -69,7 +67,6 @@ fa_IR:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: ناشر
     COMPAREMODE: 'وضعیت مقایسه (دو مورد انتخاب کنید)'
-    COMPAREVERSIONS: 'مقایسه نسخه‌ها'
     MENUTITLE: تاریخچه
     MULTISELECT: 'عملکردهای دسته'
     NOTPUBLISHED: 'منتشر نشده'
@@ -77,7 +74,6 @@ fa_IR:
     PUBLISHER: 'منتشر کننده'
     REVERTTOTHISVERSION: 'بازگشت به این نسخه'
     SHOWUNPUBLISHED: 'نمایش نسخه‌های منتشر نشده'
-    SHOWVERSION: 'نمایش ویرایش'
     UNKNOWN: 'نامشخص'
     VIEW: 'نمایش'
     VIEWINGLATEST: 'در حال حاضر آخرین نسخه را مشاهده می‌کنید.'
@@ -129,9 +125,10 @@ fa_IR:
     VIEWPAGEIN: 'مشاهده صفحه در'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 'بایگانی شده'
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'شما می‌توانید با این لینک به سایت آرشیو‌شده دسترسی یابید:'
-    HAVEASKED: 'شما خواسته اید که درون‌مایه تارگاه ما را ببینید در'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'شما می‌توانید با این لینک به سایت آرشیو‌شده دسترسی یابید:'
+      HAVEASKED: 'شما خواسته اید که درون‌مایه تارگاه ما را ببینید در'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: لغو
     EMPTY: 'لطفاً یک بخش نشانی اینترنتی را درج نمایید یا روی لغو کلیک کنید.'
@@ -142,35 +139,10 @@ fa_IR:
     CODE: 'کد خطا'
     DEFAULTERRORPAGECONTENT: '<p>متاسفانه، به‌نظر می‌رسد شما در تلاش برای دستیابی به صفحه‌ای هستید که وجود ندارد.</p><p>لطفاً نشانی اینترنتی را از جهت وجود خطای نگارشی بررسی و مجدداً تلاش نمایید.</p>'
     DEFAULTERRORPAGETITLE: 'برگ پیدا نشد'
-    0: '400 - درخواست نادرست'
     DEFAULTSERVERERRORPAGECONTENT: '<p>با پوزش، در پردازش درخواست شما ایرادی بوجود آمد.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'خطای سرور'
     PLURALNAME: 'صفحات خطا'
     SINGULARNAME: 'صفحه‌ی خطا'
-    1: '401 - بدون مجوز'
-    2: '403 - ممنوع'
-    3: '404 - یافت نشد'
-    4: '405 - روش مجاز نیست'
-    5: '406 - پذیرفتنی نیست'
-    6: '407 - نیاز به تصدیق پراکسی است'
-    7: '408 - زمان درخواست گذشت'
-    8: '409 - تضاد'
-    9: '410 - از دست رفت'
-    10: '411 - طول مورد نیاز است'
-    11: '412 - پیش شرط درست نبود'
-    12: '413 - موجودیت درخواست بسیار بزرگ است'
-    13: '414 - نشانی اینترنتی در خواست شده بسیار طولانی است'
-    14: '415 - نوع رسانه پشتیبانی نمی‌شود'
-    15: '416 - محدوده‌ی درخواست شده رضایت‌پذیر نیست'
-    16: '417 - انتظار با شکست مواجه شده است'
-    17: '422 - موجودیت غیرقابل پردازش'
-    18: '429 - درخواست‌های بسیار'
-    19: '500 - خطای داخلی سرور'
-    20: '501 - اجرا نشده'
-    21: '502 - درگاه نادرست'
-    22: '503 - سرویس در دسترس نیست'
-    23: '504 - وقفه‌ در درگاه'
-    24: '505 - نگارش HTTP پشتیبانی نمی‌شود'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'یک صفحه‌ی هدایت‌گر ایجاد گردیده است بدون این‌که به جایی ارجاع داشته باشد.'
     HEADER: 'این صفحه کاربران را به صفحه‌ای دیگر هدایت می‌کند'

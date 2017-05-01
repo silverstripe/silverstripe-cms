@@ -40,12 +40,10 @@ sr:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Аутор
     COMPAREMODE: 'Режим поређења (изабери два)'
-    COMPAREVERSIONS: 'Упореди верзије'
     NOTPUBLISHED: Необјављено
     PUBLISHER: Објављивач
     REVERTTOTHISVERSION: 'Врати на ову верзију'
     SHOWUNPUBLISHED: 'Прикажи необјављене верзије'
-    SHOWVERSION: 'Прикажи верзију'
     UNKNOWN: Непознато
     VIEW: преглед
     VIEWINGLATEST: 'Тренутно се приказује последња верзија.'
@@ -83,9 +81,10 @@ sr:
     VIEWPAGEIN: 'Прикажи страницу у:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 'Архивирано'
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Можете да приступите архивираном садржају на овом линку:'
-    HAVEASKED: 'Замољени сте да погледате садржај овог сајта'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Можете да приступите архивираном садржају на овом линку:'
+      HAVEASKED: 'Замољени сте да погледате садржај овог сајта'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Одустани
     EMPTY: 'Молимо Вас да унесете сегмент URL-а или кликните на Одустани'

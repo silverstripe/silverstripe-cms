@@ -40,12 +40,10 @@ zh:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: '作者'
     COMPAREMODE: 比较模式（选择两个）
-    COMPAREVERSIONS: 版本比较
     NOTPUBLISHED: 未发布
     PUBLISHER: '发布者'
     REVERTTOTHISVERSION: 恢复到这个版本
     SHOWUNPUBLISHED: 显示未发布的版本
-    SHOWVERSION: 显示版本
     UNKNOWN: 未知的
     VIEW: 查看
     VIEWINGLATEST: 当前正在查看最新版本。
@@ -83,9 +81,10 @@ zh:
     VIEWPAGEIN: 查看页面，在：
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 已存档
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 您可以通过该链接访问存档站点：
-    HAVEASKED: '请您查看我们网站的内容在'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 您可以通过该链接访问存档站点：
+      HAVEASKED: '请您查看我们网站的内容在'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: 取消
     EMPTY: '请输入一个URL分类或点击“取消”'

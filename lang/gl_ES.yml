@@ -23,12 +23,10 @@ gl_ES:
     Title: 'Engadir páxina'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     COMPAREMODE: 'Modo comparación (seleccionar dúas)'
-    COMPAREVERSIONS: 'Comparar Versións'
     NOTPUBLISHED: 'Non publicado'
     PUBLISHER: Editor
     REVERTTOTHISVERSION: 'Retornar a esta versión'
     SHOWUNPUBLISHED: 'Amosar versións sen publicar'
-    SHOWVERSION: 'Amosar Versión'
     UNKNOWN: Descoñecido
     VIEW: ver
     WHEN: Cando
@@ -49,9 +47,10 @@ gl_ES:
     NOTLOGGEDIN: 'Sen iniciar sesión'
     PUBLISHEDSITE: 'Sitio Publicado'
     VIEWPAGEIN: 'Ver a Páxina en:'
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Podes acceder ao sitio arquivado nesta ligazón:'
-    HAVEASKED: 'Solicitaches ver o contido do sitio sobre'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Podes acceder ao sitio arquivado nesta ligazón:'
+      HAVEASKED: 'Solicitaches ver o contido do sitio sobre'
   SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Código de erro'
     DEFAULTERRORPAGECONTENT: '<p>Sintoo, parece que estabas tratando de acceder a unha página que non existe.</p><p>Por favor, comproba o enderezo da URL que estaba tratando de acceder e volva tentalo.</p>'

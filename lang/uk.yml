@@ -31,12 +31,10 @@ uk:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Автор
     COMPAREMODE: 'Режим порівняння (виберіть два)'
-    COMPAREVERSIONS: 'Порівняти версії'
     NOTPUBLISHED: 'Не опубліковано'
     PUBLISHER: Видавець
     REVERTTOTHISVERSION: 'Відновити цю версію'
     SHOWUNPUBLISHED: 'Показати неопубліковані версії'
-    SHOWVERSION: 'Показати версію'
     UNKNOWN: Невідомий
     VIEW: вигляд
     VIEWINGVERSION: 'Переглядається версія {version}.'
@@ -59,9 +57,10 @@ uk:
     Password: Пароль
     UnableDeleteInstall: 'Не вдається видалити інсталяційні файли. Будь ласка, видаліть вручну наведені нижче файли'
     VIEWPAGEIN: 'Переглянути сторінку в:'
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Ви можете перейти до архівного сайту за посиланням:'
-    HAVEASKED: 'Ви надіслали запит на перегляд вмісту нашої сторінки'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Ви можете перейти до архівного сайту за посиланням:'
+      HAVEASKED: 'Ви надіслали запит на перегляд вмісту нашої сторінки'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Спеціальні символи автоматично перетворені або видалені.'
   SilverStripe\CMS\Model\ErrorPage:

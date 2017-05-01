@@ -35,12 +35,10 @@ da:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Forfatter
     COMPAREMODE: 'Sammenligningstilstand (vælg to)'
-    COMPAREVERSIONS: 'Sammenlign versioner'
     NOTPUBLISHED: 'Ikke udgivet'
     PUBLISHER: Udgiver
     REVERTTOTHISVERSION: 'Genskab denne version'
     SHOWUNPUBLISHED: 'Vis versioner der ikke er udgivne'
-    SHOWVERSION: 'Vis version'
     UNKNOWN: Ukendt
     VIEW: Visning
     VIEWINGVERSION: 'Lige nu vises version {version}.'
@@ -67,9 +65,10 @@ da:
     Password: Adgangskode
     UnableDeleteInstall: 'Var ikke i stand til at slette installationsfilerne. Slet venligst filerne herunder manuelt.'
     VIEWPAGEIN: 'Vis side i:'
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Du kan tilgå¨den arkiverede side på dette link:'
-    HAVEASKED: 'Du har spurgt om at se indholdet af vores side på'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Du kan tilgå¨den arkiverede side på dette link:'
+      HAVEASKED: 'Du har spurgt om at se indholdet af vores side på'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Specialkarakterer bliver automatisk konverteret eller fjernet.'
   SilverStripe\CMS\Model\ErrorPage:

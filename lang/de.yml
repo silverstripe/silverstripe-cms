@@ -57,14 +57,12 @@ de:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Vergleichsmodus (wähle zwei)'
-    COMPAREVERSIONS: 'Versionen vergleichen'
     MENUTITLE: Historie
     NOTPUBLISHED: 'Nicht veröffentlicht'
     PREVIEW: 'Vorschau der Webseite'
     PUBLISHER: Herausgeber
     REVERTTOTHISVERSION: 'Zurück zu dieser Version'
     SHOWUNPUBLISHED: 'Zeige unveröffentlichte Versionen'
-    SHOWVERSION: 'Zeige Version'
     UNKNOWN: Unbekannt
     VIEW: anzeigen
     VIEWINGLATEST: 'Momentan wird die aktuellste Version angezeigt.'
@@ -108,9 +106,10 @@ de:
     VIEWPAGEIN: 'Seite anzeigen in:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archiviert
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Sie können unter folgendem Verweis auf die archivierte Seite zugreifen:'
-    HAVEASKED: 'Sie haben darum gebeten, den Inhalt unserer Site zu sehen, am'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Sie können unter folgendem Verweis auf die archivierte Seite zugreifen:'
+      HAVEASKED: 'Sie haben darum gebeten, den Inhalt unserer Site zu sehen, am'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Abbrechen
     EMPTY: 'Bitte geben Sie ein URL-Segment ein oder drücken Sie auf Abbrechen'
@@ -119,38 +118,13 @@ de:
     OK: OK
   SilverStripe\CMS\Model\ErrorPage:
     CODE: Fehlercode
-    DESCRIPTION: 'Spezieller Inhalt für andere Fehlerfälle (z.B. "Seite nicht gefunden")'
-    PLURALNAME: Fehlerseiten
-    SINGULARNAME: Fehlerseite
-    0: '400 - Fehlerhafter Zugriff'
     DEFAULTERRORPAGECONTENT: '<p>Entschuldigung, möglicherweise versuchen Sie eine Seite zu erreichen die nicht existiert.</p><p>Bitte überprüfen Sie die Schreibweise der URL die Sie versucht haben zu erreichen und versuchen Sie es noch einmal.</p>'
     DEFAULTERRORPAGETITLE: 'Seite nicht gefunden'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Entschuldigung, bei der Bearbeitung ihrer Anfrage ist ein Problem aufgetreten.</p>'
     DEFAULTSERVERERRORPAGETITLE: Serverfehler
-    1: '401 - Unerlaubter Zugriff'
-    2: '403 - Verbotener Zugriff'
-    3: '404 - Seite nicht gefunden'
-    4: '405 - Methode nicht zugelassen'
-    5: '406 - nicht akzeptabel'
-    6: '407 - Proxy Server Authentifizierung erforderlich'
-    7: '408 - Zeitüberschreitung der Anfrage'
-    8: '409 - Zugriffskonflikt'
-    9: '410 - nicht mehr existent'
-    10: '411 - Länge benötigt'
-    11: '412 - Voraussetzung nicht erfüllt'
-    12: '413 - Anfrage Datensatz zu groß'
-    13: '414 - Anfrage URI zu lang'
-    14: '415 - nicht-unterstützer Medientyp'
-    15: '416 - Anfragebereich nicht erfüllbar'
-    16: '417 - Erwartung nicht erfüllt'
-    17: '422 - Verarbeitung abgelehnt'
-    18: '429 - Zu viele Anfragen'
-    19: '500 - Interner Serverfehler'
-    20: '501 - nicht implementiert'
-    21: '502 - Fehlerhafter Gateway'
-    22: '503 - Dienst oder Dienstmerkmal nicht möglich'
-    23: '504 - Zeitüberschreitung am Gateway'
-    24: '505 - HTTP Version wird nicht unterstützt'
+    DESCRIPTION: 'Spezieller Inhalt für andere Fehlerfälle (z.B. "Seite nicht gefunden")'
+    PLURALNAME: Fehlerseiten
+    SINGULARNAME: Fehlerseite
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Leitet zu einer anderen internen oder externen Seite weiter'
     HASBEENSETUP: 'Eine Weiterleitungsseite wurde erstellt ohne das eine Weiterleitung definiert wurde.'

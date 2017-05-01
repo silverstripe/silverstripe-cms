@@ -38,12 +38,10 @@ hu:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Szerző
     COMPAREMODE: 'Összehasonlítás (select two)'
-    COMPAREVERSIONS: 'Verziók összehasonlítása'
     NOTPUBLISHED: 'Nincs publikálva'
     PUBLISHER: Szerző
     REVERTTOTHISVERSION: 'Visszatérés erre a verzióra'
     SHOWUNPUBLISHED: 'Publikálatlan verziók megjelenítése'
-    SHOWVERSION: 'Verzió megtekintése'
     UNKNOWN: Ismeretlen
     VIEW: megtekintés
     VIEWINGLATEST: 'Jelenleg ez az utolsó verzió'
@@ -78,9 +76,10 @@ hu:
     VIEWPAGEIN: 'Oldal megtekintése'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archiválva
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Az archivált oldalt elérheted ezen a linken:'
-    HAVEASKED: 'Azt kérted, hogy megnézhesd a honlapunk tartalmát ekkor:'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Az archivált oldalt elérheted ezen a linken:'
+      HAVEASKED: 'Azt kérted, hogy megnézhesd a honlapunk tartalmát ekkor:'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Mégsem
     EMPTY: 'Írjon be egy URL szegmenst, vagy kattitson a "mégse" feliratra'

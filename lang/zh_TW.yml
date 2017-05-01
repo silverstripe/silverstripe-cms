@@ -10,12 +10,10 @@ zh_TW:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: '作者'
     COMPAREMODE: '比較模式(選擇兩個)'
-    COMPAREVERSIONS: 比較版本
     NOTPUBLISHED: 未發行的
     PUBLISHER: '發行者'
     REVERTTOTHISVERSION: 回復到此版本
     SHOWUNPUBLISHED: 顯示未出版的版本
-    SHOWVERSION: 顯示版本
     UNKNOWN: 未知的
     VIEW: 瀏覽
     WHEN: 何時
@@ -27,9 +25,10 @@ zh_TW:
     Title: '所有網頁'
   SilverStripe\CMS\Controllers\ContentController:
     NOTEWONTBESHOWN: '備註: 此訊息將不會顯示給您的訪客看'
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: '您可以利用哲格連結到已歸檔站：'
-    HAVEASKED: '您要瀏覽這一天的網站內容：'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: '您可以利用哲格連結到已歸檔站：'
+      HAVEASKED: '您要瀏覽這一天的網站內容：'
   SilverStripe\CMS\Model\ErrorPage:
     CODE: 錯誤代碼
     DEFAULTERRORPAGECONTENT: '<p>抱歉, 看來您正再嘗試存取一個不存在的網頁</p><p>請檢查您正在嘗試存取網址的拼寫並再試一次.</p>'

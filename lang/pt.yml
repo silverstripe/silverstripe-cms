@@ -40,12 +40,10 @@ pt:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Modo de comparação (selecione duas)'
-    COMPAREVERSIONS: 'Comparar versões'
     NOTPUBLISHED: 'Não publicada'
     PUBLISHER: Publicador
     REVERTTOTHISVERSION: 'Reverter para esta versão'
     SHOWUNPUBLISHED: 'Mostrar versões não publicadas'
-    SHOWVERSION: 'Mostrar versão'
     UNKNOWN: Desconhecido
     VIEW: ver
     VIEWINGLATEST: 'Atualmente está a ver a última versão'
@@ -77,9 +75,10 @@ pt:
     PostInstallTutorialIntro: 'Este site é uma versão simplificada do SilverStripe 3. Para adicionar novas funcionalidades visita {link}.'
     UnableDeleteInstall: 'Impossível remover os ficheiros de instalação. Por favor, remova-os manualmente.'
     VIEWPAGEIN: 'Ver página em:'
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Pode aceder aos arquivos do site a partir deste link:'
-    HAVEASKED: 'Pediu para ver o conteúdo do nosso site na'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Pode aceder aos arquivos do site a partir deste link:'
+      HAVEASKED: 'Pediu para ver o conteúdo do nosso site na'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: 'Cancelar '
     Edit: Editar

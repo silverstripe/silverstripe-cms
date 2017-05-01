@@ -35,12 +35,10 @@ et_EE:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Võrdlusrežiim (valige kaks)'
-    COMPAREVERSIONS: 'Võrdle versioone'
     NOTPUBLISHED: Avaldamata
     PUBLISHER: Avaldaja
     REVERTTOTHISVERSION: 'Taasta valitud versioon'
     SHOWUNPUBLISHED: 'Näita ka avaldamata versioone'
-    SHOWVERSION: 'Näita versiooni'
     UNKNOWN: Tundmatu
     VIEW: vaade
     VIEWINGVERSION: 'Hetkel kuvatud versioon {version}.'
@@ -74,9 +72,10 @@ et_EE:
     VIEWPAGEIN: 'Kuva leht:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arhiveeritud
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Arhiveeritud lehele pääsed ligi selle lingi kaudu:'
-    HAVEASKED: 'Soovid vaadata meie lehe sisu kuupäeval'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Arhiveeritud lehele pääsed ligi selle lingi kaudu:'
+      HAVEASKED: 'Soovid vaadata meie lehe sisu kuupäeval'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Edit: Redigeeri
     HelpChars: 'Erimärgid teisendatakse või eemaldatakse automaatselt.'

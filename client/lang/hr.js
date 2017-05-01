@@ -19,7 +19,7 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "CMS.ThisPageAndSubpages": "Ova stranica i podstranice",
     "CMS.ThisPageOnly": "Samo ova stranica",
     "CMS.ViewPage": "Pregled",
-    "CMS.UpdateURL": "Ažuriraj link ",
+    "CMS.UpdateURL": "Ažuriraj link",
     "CMS.ONLYSELECTTWO": "You can only compare two versions at this time."
 });
 }

@@ -40,12 +40,10 @@ ro:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Mod comparare (selectează 2)'
-    COMPAREVERSIONS: 'Compară Versiunile'
     NOTPUBLISHED: Nepublicat
     PUBLISHER: Redactor
     REVERTTOTHISVERSION: 'Revernire la versiune'
     SHOWUNPUBLISHED: 'Afișează versiunile nepublicate'
-    SHOWVERSION: 'Afișează Versiune'
     UNKNOWN: Necunoscut
     VIEW: Vizualizare
     VIEWINGLATEST: 'Vizualizare curentă a ultimii versiuni.'
@@ -83,9 +81,10 @@ ro:
     VIEWPAGEIN: 'Vizualizează pagina în:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arhivă
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Puteți accesa site-ul arhivat la link-ul:'
-    HAVEASKED: 'Ați cerut să vizualizați conținutul site-ului la'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Puteți accesa site-ul arhivat la link-ul:'
+      HAVEASKED: 'Ați cerut să vizualizați conținutul site-ului la'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Anulare
     EMPTY: 'Vă rugăm introduceți un Segment URL sau apăsați anulează'

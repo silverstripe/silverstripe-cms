@@ -7,9 +7,10 @@ pt_BR:
     ROLLBACK: 'Reverter para esta versão'
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: Páginas
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Pode aceder ao site arquivado através deste link:'
-    HAVEASKED: 'Você pediu para ver o conteúdo do nosso site em'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Pode aceder ao site arquivado através deste link:'
+      HAVEASKED: 'Você pediu para ver o conteúdo do nosso site em'
   SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Código do erro'
     DEFAULTERRORPAGECONTENT: '<p>desculpe, mas parece que você esta tentando acessar uma página que não existe.</p><p>Por favor, verifique se você digitou a URL corretamente e tente novamente</p>'

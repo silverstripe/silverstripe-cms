@@ -5,9 +5,10 @@ fo:
     PUBALLFUN: '"Ger alt alment" funka'
     REMOVEDPAGEFROMDRAFT: 'Strikaði ''%s'' frá kladdu heimasíðuni'
     ROLLBACK: 'Far aftur til hesa útgávuna'
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Tú kann fáa atgongd til arkiv heimasíðuna her:'
-    HAVEASKED: 'Tú mást fáa loyvi, fyri at kunna síggja innihaldið á okkara heimasíðu á'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Tú kann fáa atgongd til arkiv heimasíðuna her:'
+      HAVEASKED: 'Tú mást fáa loyvi, fyri at kunna síggja innihaldið á okkara heimasíðu á'
   SilverStripe\CMS\Model\ErrorPage:
     CODE: Feilkota
     DEFAULTERRORPAGETITLE: 'Síðan var ikki funnin'

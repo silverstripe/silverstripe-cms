@@ -1,65 +1,14 @@
 sv:
-  AssetAdmin_DeleteBatchAction:
-    TITLE: 'Radera mapparna'
-  AssetAdmin_left_ss:
-    GO: Ok
-  CMSFileAddController:
-    MENUTITLE: Filer
-  CMSSettingsController:
-    MENUTITLE: Inställningar
-  SilverStripeNavigatorLink:
-    ShareInstructions: 'Kopiera och klistra in länken nedan för att dela den här sidan.'
-    ShareLink: 'Dela länk'
-  SilverStripeNavigatorLinkl:
-    CloseLink: Stäng
   SilverStripe\Admin\CMSBatchAction:
-    ARCHIVE: Arkivera
-    ARCHIVED_PAGES: 'Arkiverade %d sidor'
-    DELETED_DRAFT_PAGES: 'Raderade %d sidor från utkastsajten, %d misslyckades'
-    DELETED_PAGES: 'Raderade %d sidor från den publiserade sajten, %d misslyckades'
-    DELETE_DRAFT_PAGES: 'Radera från utkast'
-    DELETE_PAGES: 'Radera från publicerade sajten'
     PUBLISHED_PAGES: 'Publicerade %d sidor, %d misslyckades'
     PUBLISH_PAGES: Publicera
     RESTORE: 'Återskapa'
     RESTORED_PAGES: 'Återskapade %d sidor'
     UNPUBLISHED_PAGES: 'Avpublicerade %d sidor'
     UNPUBLISH_PAGES: Avpublicera
-  SilverStripe\Admin\LeftAndMain:
-    SearchResults: Sökresultat
   SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    ADDFILES: 'Lägg till filer'
-    ActionAdd: 'Skapa mapp'
-    AppCategoryArchive: Arkivera
-    AppCategoryAudio: Ljud
-    AppCategoryDocument: Dokument
-    AppCategoryFlash: Flash
-    AppCategoryImage: Bild
-    AppCategoryVideo: Video
     BACKLINKCOUNT: 'Använd på:'
-    BackToFolder: 'Tillbaka till mappen'
-    CREATED: Datum
-    CurrentFolderOnly: 'Begränsa till aktuell mapp?'
-    DetailsView: Detaljer
-    FILES: Filer
-    FILESYSTEMSYNC: 'Synkronisera filer'
-    FROMTHEINTERNET: 'Från internet'
-    FROMYOURCOMPUTER: 'Från din dator'
-    Filetype: Filtyp
-    ListView: Listvy
-    MENUTITLE: Filer
-    NEWFOLDER: 'Ny mapp'
     PAGES: sida(-or)
-    SIZE: Storlek
-    THUMBSDELETED: '{count} oanvända miniatyrbilder har raderats'
-    TreeView: Trädvy
-    Upload: 'Ladda upp'
-  SilverStripe\Assets\Folder:
-    AddFolderButton: 'Skapa mapp'
-    DELETEUNUSEDTHUMBNAILS: 'Radera oanvända tumnaglar'
-    UNUSEDFILESTITLE: 'Oanvända filer'
-    UNUSEDTHUMBNAILSTITLE: 'Oanvända tumnaglar'
-    UploadFilesButton: 'Ladda upp'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Raderat %d sidor från utkast och live, och lagt till dem i arkiv'
     TITLE: 'Avpublicerad och skickat till arkiv'
@@ -77,12 +26,9 @@ sv:
     ChoosePageParentMode: 'Välj var du vill skapa denna sida'
     ChoosePageType: 'Välj sidtyp'
     Create: Skapa
-    DELETE: 'Radera utkast'
-    DELETEFP: Radera
     DUPLICATED: 'Duplicerade ''{title}'' utan problem'
     DUPLICATEDWITHCHILDREN: 'Duplicerade ''{title}'' och undersidor utan problem'
     EMAIL: E-post
-    MENUTITLE: 'Redigera sida'
     NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Den här sidan finns inte'
     PAGETYPEANYOPT: 'Vilken som helst'
@@ -92,10 +38,8 @@ sv:
     PUBLISHED: 'Publiseringen av  ''{title}'' lyckades'
     PUBPAGES: 'Klar: Publicerade {count} sidor'
     PageAdded: 'Lyckades skapa sida'
-    REMOVED: 'Tog bort ''{title}''{description} från den publicerade sajten'
     REMOVEDPAGE: 'Tog bort ''{title}'' från den publicerade sajten'
     REMOVEDPAGEFROMDRAFT: 'Raderade ''%s'' från utkast'
-    RESET: 'Återställ'
     RESTORE: 'Återskapa utkast'
     RESTORED: 'Återskapandet av  ''{title}'' lyckades'
     RESTORE_DESC: 'Återställ den arkiverade versionen av sidan som ett utkast'
@@ -122,15 +66,12 @@ sv:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Författare
     COMPAREMODE: 'Jämföringsläge (välj två)'
-    COMPAREVERSIONS: 'Jämför versioner'
-    COMPARINGVERSION: 'Jämför version {version1} och {version2}.'
     MENUTITLE: Historia
     NOTPUBLISHED: 'Ej publicerad'
     PREVIEW: 'Förhandsgranska sida'
     PUBLISHER: Utgivare
     REVERTTOTHISVERSION: 'Ändra till denna version'
     SHOWUNPUBLISHED: 'Visa opublicerade versioner'
-    SHOWVERSION: 'Visa version'
     UNKNOWN: Okänd
     VIEW: 'Titta på'
     VIEWINGLATEST: 'Nu visas den senaste versionen.'
@@ -182,9 +123,10 @@ sv:
     VIEWPAGEIN: 'titta på sidan i:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arkiverad
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Du kan komma åt den arkiverade sajten med denna länk:'
-    HAVEASKED: 'Du har efterfrågat att se innehållet på vår sajt på'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Du kan komma åt den arkiverade sajten med denna länk:'
+      HAVEASKED: 'Du har efterfrågat att se innehållet på vår sajt på'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Avbryt
     EMPTY: 'Ange ett URL-segment eller klicka på avbryt'
@@ -197,35 +139,9 @@ sv:
     DEFAULTERRORPAGETITLE: 'Sidan hittades inte'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Ursäkta, ett fel uppstod vid hanteringen av din förfrågan.</p>'
     DEFAULTSERVERERRORPAGETITLE: Serverfel
-    0: '400 - Felaktig förfrågan'
     DESCRIPTION: 'Anpassat innehåll för olika felärenden (t.ex. "Sidan kan inte hittas")'
-    ERRORFILEPROBLEM: 'Kunde inte skriva filen "{filename}". Var vänlig kontrollera skrivrättigheterna.'
     PLURALNAME: Felsidor
     SINGULARNAME: Felsida
-    1: '401 - Obehörig'
-    2: '403 - Förbjuden'
-    3: '404 - Hittades inte'
-    4: '405 - Metoden inte tillåten'
-    5: '406 - Inte acceptabelt'
-    6: '407 - Proxyautentisering krävs'
-    7: '408 - Begäran tog för lång tid'
-    8: '409 - Konflikt'
-    9: '410 - Borta'
-    10: '411 - Längd krävs'
-    11: '412 - Ett villkor är inte uppfyllt'
-    12: '413 - Förfrågan för stor '
-    13: '414 - URI:n för begäran är för lång'
-    14: '415 - Mediatypen stöds inte'
-    15: '416 - Det efterfrågade intervallet går inte att leverera'
-    16: '417 - Förväntningen gick inte att infria'
-    17: '422 - Obehandlingsbar entitet'
-    18: '429 - För många anrop'
-    19: '500 - Internt serverfel'
-    20: '501 - Inte implementerad'
-    21: '502 - Felaktig gateway'
-    22: '503 - Tjänsten otillgänglig'
-    23: '504 - Gateway timeout'
-    24: '505 - HTTP-versionen stöds inte'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Omdirigerar till en annan intern eller extern sida'
     HASBEENSETUP: 'En omdirigeringssida har skapats utan att ha något mål.'
@@ -247,7 +163,6 @@ sv:
     APPEARSVIRTUALPAGES: 'Detta innehåll förekommer även på en virtuell sida i sektionen {title}.'
     ARCHIVEDPAGEHELP: 'Sidan är borttagen från utkast och från live'
     ARCHIVEDPAGESHORT: Arkiverad
-    BUTTONARCHIVEDESC: 'Avpublicerad och skickat till arkiv'
     BUTTONCANCELDRAFT: 'Ångra utkaständringar'
     BUTTONCANCELDRAFTDESC: 'Radera utkast och återgå till den publicerade sidan'
     BUTTONDELETEDESC: 'Radera från utkast och live, och lägg till i arkiv'
@@ -310,8 +225,6 @@ sv:
     PLURALNAME: Sidor
     PageTypNotAllowedOnRoot: 'Sidtypen "{type}" tillåts inte på rotnivå'
     PageTypeNotAllowed: 'Sidtypen "{type}" tillåts inte som barn till förälderns sida'
-    REMOVEDFROMDRAFTHELP: 'Sidan är publicerad men har raderats från utkastet'
-    REMOVEDFROMDRAFTSHORT: 'Raderad från utkast'
     REMOVE_INSTALL_WARNING: 'Varning: Du bör radera install.php från SilverStripe-installationen p.g.a säkerhetsskäl.'
     REORGANISE_DESCRIPTION: 'Ändra sidstrukturen'
     REORGANISE_HELP: 'Flytta om sidorna i sidträdet genom att dra och släppa.'
@@ -338,8 +251,6 @@ sv:
     many_many_ImageTracking: 'Spåra bild'
     many_many_LinkTracking: 'Spåra länk'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    BACKLINK_LIST_DESCRIPTION: 'Denna lista viasar alla sidor där filen har blivit tillagd/uppladdad via WYSIWIG editorn'
-    EDIT: Redigera
     TITLE_INDEX: '#'
     TITLE_TYPE: Sidtyp
     TITLE_USED_ON: 'Använd på'
@@ -376,7 +287,6 @@ sv:
     VirtualPageNonExistent: 'virtuell sida pekar på icke-existerande sida'
   SilverStripe\CMS\Search\SearchForm:
     FILTERDATEFROM: Från
-    FILTERDATEHEADING: Datum
     FILTERDATETO: Till
     FILTERLABELTEXT: Sök
     GO: Kör

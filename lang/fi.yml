@@ -1,68 +1,14 @@
 fi:
-  AssetAdmin_DeleteBatchAction:
-    TITLE: 'Poista kansiot'
-  AssetAdmin_left_ss:
-    GO: Suorita
-  CMSFileAddController:
-    MENUTITLE: Tiedostot
-  CMSSettingsController:
-    MENUTITLE: Asetukset
-  SilverStripeNavigatorLink:
-    ShareInstructions: 'Jakaaksesi tämän tällä sivulla, kopioi ja liitä alapuolella oleva linkki.'
-    ShareLink: 'Jaa linkki'
-  SilverStripeNavigatorLinkl:
-    CloseLink: Sulje
   SilverStripe\Admin\CMSBatchAction:
-    ARCHIVE: Arkistoi
-    ARCHIVED_PAGES: 'Arkistoitu %d sivua'
-    DELETED_DRAFT_PAGES: 'Poistettiin %d sivua luonnossivustolta, %d virhettä'
-    DELETED_PAGES: 'Poistettiin %d sivua julkaistulta sivustolta, %d virhettä'
-    DELETE_DRAFT_PAGES: 'Poista luonnossivustosta'
-    DELETE_PAGES: 'Poista julkaistulta sivustolta'
     PUBLISHED_PAGES: 'Julkaistu %d sivua, %d epäonnistumista'
     PUBLISH_PAGES: Julkaise
     RESTORE: Palauta
     RESTORED_PAGES: 'Palautettu %d sivua'
     UNPUBLISHED_PAGES: 'Poistettiin näkyvistä %d sivua'
     UNPUBLISH_PAGES: 'Poista näkyvistä'
-  SilverStripe\Admin\LeftAndMain:
-    SearchResults: Hakutulokset
   SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    ADDFILES: 'Lisää tiedostoja'
-    ActionAdd: 'Lisää kansio'
-    AppCategoryArchive: Arkistoi
-    AppCategoryAudio: Ääni
-    AppCategoryDocument: Asiakirja
-    AppCategoryFlash: Flash
-    AppCategoryImage: Kuva
-    AppCategoryVideo: Video
     BACKLINKCOUNT: 'Linkitetty:'
-    BackToFolder: 'Takaisin kansioon'
-    CREATED: Pvm
-    CurrentFolderOnly: 'Rajoita tähän kansioon?'
-    DetailsView: Tiedot
-    ErrorItemPermissionDenied: 'Vaikuttaa siltä, ettei sinulla ole oikeuksia lisätä kampanjaan kohdetta {ObjectTitle}'
-    ErrorNotFound: '{Type} ei löytynyt'
-    FILES: Tiedostot
-    FILESYSTEMSYNC: 'Synkronoi tiedostot'
-    FILESYSTEMSYNCTITLE: 'Päivitä palvelimella olevat tiedostot CMS-järjestelmän tietokantaan. Kätevä toiminto, kun olet siirtänyt tiedostoja suoraa palvelimelle ohi CMS-järjestelmän esim. FTP-ohjelmalla.'
-    FROMTHEINTERNET: Internetistä
-    FROMYOURCOMPUTER: Tietokoneeltasi
-    Filetype: Tiedostotyyppi
-    ListView: Listanäkymä
-    MENUTITLE: Tiedostot
-    NEWFOLDER: 'Uusi kansio'
     PAGES: sivu(t)
-    SIZE: Koko
-    THUMBSDELETED: '{count} käyttämätöntä esikatselukuvaa poistettiin'
-    TreeView: Puunäkymä
-    Upload: Lähetä
-  SilverStripe\Assets\Folder:
-    AddFolderButton: 'Lisää kansio'
-    DELETEUNUSEDTHUMBNAILS: 'Poista käyttämättömät esikatselukuvat'
-    UNUSEDFILESTITLE: 'Käyttämättömät tiedostot'
-    UNUSEDTHUMBNAILSTITLE: 'Käyttämättömät esikatselukuvat'
-    UploadFilesButton: Lähetä
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Poistettiin %d sivua luonnoksista ja julkaistuista sivuista sekä arkistoitiin'
     TITLE: 'Poista näkyviltä ja arkistoi'
@@ -80,14 +26,10 @@ fi:
     ChoosePageParentMode: 'Valitse kohde, minne sivu luodaan'
     ChoosePageType: 'Valitse sivutyyppi'
     Create: Luo
-    DELETE: 'Poista luonnos'
-    DELETEFP: Poista
-    DESCREMOVED: 'ja {count} alasivua'
     DUPLICATED: '''{title}''  monistettu onnistuneesti'
     DUPLICATEDWITHCHILDREN: '''{title}'' ja alasivu monistettiin onnistuneesti'
     EMAIL: Sähköposti
     ListFiltered: 'Näytetään haun tulokset.'
-    MENUTITLE: 'Muokkaa sivua'
     NEWPAGE: 'Uusi {pagetype}'
     PAGENOTEXISTS: 'Tätä sivua ei ole olemassa'
     PAGES: 'Sivun tila'
@@ -99,10 +41,8 @@ fi:
     PUBLISHED: 'Julkaistiin ''{title}'' onnistuneesti.'
     PUBPAGES: 'Valmis: julkaistiin {count} sivu(a)'
     PageAdded: 'Sivun luonti onnistui'
-    REMOVED: 'Poista ''{title}''{description} näkyvältä sivustolta'
     REMOVEDPAGE: '''{title}'' poistettiin julkaistulta sivustolta'
     REMOVEDPAGEFROMDRAFT: 'Poistettu ''%s'' luonnossivustolta'
-    RESET: Nollaa
     RESTORE: 'Palauta luonnos'
     RESTORED: '''{title}'' palautettiin onnistuneesti'
     RESTORE_DESC: 'Palauta arkistoitu versio luonnokseksi'
@@ -129,8 +69,6 @@ fi:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Tekijä
     COMPAREMODE: 'Vertailutila (valitse kaksi)'
-    COMPAREVERSIONS: 'Vertaa versioita'
-    COMPARINGVERSION: 'Vertaillaan versioita {version1} ja {version2}'
     MENUTITLE: Historia
     MULTISELECT: Massatoiminnot
     NOTPUBLISHED: Julkaisematon
@@ -138,7 +76,6 @@ fi:
     PUBLISHER: Julkaisija
     REVERTTOTHISVERSION: 'Palaa tähän versioon'
     SHOWUNPUBLISHED: 'Näytä julkaisemattomat versiot'
-    SHOWVERSION: 'Näytä versionumero'
     UNKNOWN: Tuntematon
     VIEW: näkymä
     VIEWINGLATEST: 'Katsot viimeisintä versiota.'
@@ -190,9 +127,10 @@ fi:
     VIEWPAGEIN: 'Tarkastele sivua:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arkistoitu
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Pääset arkistoidulle sivulle tällä linkillä:'
-    HAVEASKED: 'Sinua on pyydetty katsomaan sivun sisältöä '
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Pääset arkistoidulle sivulle tällä linkillä:'
+      HAVEASKED: 'Sinua on pyydetty katsomaan sivun sisältöä '
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Peruuta
     EMPTY: 'Anna URL-osoite tai napsauta peruuta'
@@ -205,35 +143,9 @@ fi:
     DEFAULTERRORPAGETITLE: 'Sivua ei löytynyt'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Pahoittelut, mutta pyyntösi aiheutti virheen.</p>'
     DEFAULTSERVERERRORPAGETITLE: Palvelinvirhe
-    0: '400 - Virheellinen Pyyntö'
     DESCRIPTION: 'Omat virheilmoitukset (sivuille, kuten "Sivua ei löytynyt")'
-    ERRORFILEPROBLEM: 'Virhe avattaessa tiedostoa "{filename}" palvelimelle tallentamista varten. Tarkista tiedoston kirjoitusoikeudet.'
     PLURALNAME: Virhesivut
     SINGULARNAME: Virhesivu
-    1: '401 - Luvaton'
-    2: '403 - Kielletty'
-    3: '404 - Ei löytynyt'
-    4: '405 - Menetelmä ei sallittu'
-    5: '406 - Ei hyväksyttävä'
-    6: '407 - Välityspalvelinvahvistus vaaditaan'
-    7: '408 - Pyyntö Aikakatkaistiin'
-    8: '409 - Ristiriita'
-    9: '410 - Hävinnyt'
-    10: '411 - Pituus vaaditaan'
-    11: '412 - Edellytys epäonnistui'
-    12: '413 - Pyyntökokonaisuus liian suuri'
-    13: '414 - Pyyntö-URI Liian Pitkä'
-    14: '415 - Tukematon mediatyyppi'
-    15: '416 - Pyydetty alue ei kelpaa'
-    16: '417 - Oletus epäonnistui'
-    17: '422 - Käsittely ei onnistu: semanttinen virhe?'
-    18: '429 - Liian monta pyyntöä'
-    19: '500 - Sisäinen Palvelin Virhe'
-    20: '501 - Ei toteutettu'
-    21: '502 - Virheellinen Yhdyskäytävä'
-    22: '503 - Palvelu ei ole käytettävissä'
-    23: '504 - Välitysaikakatkaisu'
-    24: '505 - HTTP Versio Ei Tuettu'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Edelleenohjaa toiselle sisäiselle sivulle tai ulkoiseen URL-osoitteeseen'
     HASBEENSETUP: 'Sivu, joka ohjaa käyttäjän toiselle sivulle on valmis, mutta sivua, jolle käyttäjä ohjataan, ei ole.'
@@ -255,7 +167,6 @@ fi:
     APPEARSVIRTUALPAGES: 'Tämä sisältö on käytössä myös virtuaalisivuilla osioissa {title}'
     ARCHIVEDPAGEHELP: 'Sivu poistettiin luonnoksista ja näkyviltä'
     ARCHIVEDPAGESHORT: Arkistoitu
-    BUTTONARCHIVEDESC: 'Poista näkyviltä ja lähetä arkistoon'
     BUTTONCANCELDRAFT: 'Peruuta muutokset, jotka teit luonnokseen'
     BUTTONCANCELDRAFTDESC: 'Poista luonnoksesi ja palauta julkaistu sivu'
     BUTTONDELETEDESC: 'Poista luonnoksista/julkaistuista ja siirrä arkistoon'
@@ -318,8 +229,6 @@ fi:
     PLURALNAME: Sivut
     PageTypNotAllowedOnRoot: '"{type}" -sivutyyppi ei ole sallittu päätasolla'
     PageTypeNotAllowed: '"{type}" -sivutyyppi ei ole sallittu tämän sivun alasivuna.'
-    REMOVEDFROMDRAFTHELP: 'Sivu on julkaistu, mutta poistettu luonnoksista'
-    REMOVEDFROMDRAFTSHORT: 'Poistettiin luonnoksista'
     REMOVE_INSTALL_WARNING: 'Varoitus: Turvallisuussyistä sinun tulisi poistaa install.php-tiedosto SilverStripe-asennuskansiosta.'
     REORGANISE_DESCRIPTION: 'Muuta sivuston rakennetta'
     REORGANISE_HELP: 'Uudelleenjärjestä sivuston rakenne vetämällä ja pudottamalla sivu halutulle paikalle.'
@@ -346,8 +255,6 @@ fi:
     many_many_ImageTracking: 'Kuvan seuranta'
     many_many_LinkTracking: 'Linkin seuranta'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    BACKLINK_LIST_DESCRIPTION: 'Tämä listaus näyttää kaikki sivut, joissa tiedosto on lisätty WYSIWYG-editorin avulla.'
-    EDIT: Muokkaa
     TITLE_INDEX: '#'
     TITLE_TYPE: Tyyppi
     TITLE_USED_ON: Käytössä
@@ -384,7 +291,6 @@ fi:
     VirtualPageNonExistent: 'virtuaalinen sivu osoittaa olemattomalle sivulle'
   SilverStripe\CMS\Search\SearchForm:
     FILTERDATEFROM: Alkaen
-    FILTERDATEHEADING: Pvm
     FILTERDATETO: Päättyen
     FILTERLABELTEXT: Haku
     GO: Suorita

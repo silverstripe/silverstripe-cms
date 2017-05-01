@@ -22,7 +22,6 @@ tr:
     Title: 'Sayfa ekle'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Yazar
-    COMPAREVERSIONS: 'Versiyonları karşılaştır'
     NOTPUBLISHED: Yayınlanmamış
     PUBLISHER: Yayınlayan
     UNKNOWN: Bilinmeyen
@@ -40,9 +39,10 @@ tr:
     LOGOUT: 'Çıkış Yap'
     NOTEWONTBESHOWN: 'Not: Bu mesaj ziyaretçilerinize gösterilmeyecektir.'
     Password: Parola
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Arşivdeki siteye şu bağlantıdan erişebilirsiniz:'
-    HAVEASKED: 'Şu tarihe kadar olan site içeriğini görüntülemek istediniz:'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Arşivdeki siteye şu bağlantıdan erişebilirsiniz:'
+      HAVEASKED: 'Şu tarihe kadar olan site içeriğini görüntülemek istediniz:'
   SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Hata kodu'
     DEFAULTERRORPAGECONTENT: '<p>Varolmayan bir sayfaya ulaşmaya çalışıyorsunuz.</p><p>Lütfen ulaşmak istediğiniz URL''i kontrol edip tekrar deneyiniz.</p>'

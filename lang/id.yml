@@ -46,12 +46,10 @@ id:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Penulis
     COMPAREMODE: 'Modus pembanding (pilih dua)'
-    COMPAREVERSIONS: 'Bandingkan Versi'
     NOTPUBLISHED: 'Batal terbit'
     PUBLISHER: Penerbit
     REVERTTOTHISVERSION: 'Kembali ke versi ini'
     SHOWUNPUBLISHED: 'Tampilkan versi batalterbit'
-    SHOWVERSION: 'Tampilkan Versi'
     UNKNOWN: 'Tidak diketahui'
     VIEW: tampilkan
     VIEWINGLATEST: 'Versi terakhir sedang ditampilkan.'
@@ -89,9 +87,10 @@ id:
     VIEWPAGEIN: 'Tampikan Laman pada:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Terarsip
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Anda dapat mengakses arsip situs pada tautan ini:'
-    HAVEASKED: 'Anda telah meminta menampilkan konten situs ini pada'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Anda dapat mengakses arsip situs pada tautan ini:'
+      HAVEASKED: 'Anda telah meminta menampilkan konten situs ini pada'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Batal
     EMPTY: 'Mohon isikan URL atau klik Batal'

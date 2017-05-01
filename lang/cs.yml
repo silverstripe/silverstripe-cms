@@ -53,14 +53,12 @@ cs:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Porovnávací mód (vyberte dva)'
-    COMPAREVERSIONS: 'Porovnat verze'
     MENUTITLE: Historie
     NOTPUBLISHED: Nezveřejněno
     PREVIEW: 'Náhled webu'
     PUBLISHER: Vydavatel
     REVERTTOTHISVERSION: 'Zpět na tuto verzi'
     SHOWUNPUBLISHED: 'Zobrazit nezveřejněné verze'
-    SHOWVERSION: 'Zobrazit verzi'
     UNKNOWN: Neznámý
     VIEW: zobrazit
     VIEWINGLATEST: 'Právě se zobrazuje poslední verze.'
@@ -104,9 +102,10 @@ cs:
     VIEWPAGEIN: 'Zobrazit stránku v:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archivováno
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Můžete přistupovat k archivu pomocí tohoto odkazu:'
-    HAVEASKED: 'Požadovali jste prohlížet obsah našich stránek během'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Můžete přistupovat k archivu pomocí tohoto odkazu:'
+      HAVEASKED: 'Požadovali jste prohlížet obsah našich stránek během'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Storno
     EMPTY: 'Zadejte prosím URL segment nebo klikněte zrušit'
@@ -115,38 +114,13 @@ cs:
     OK: Ok
   SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Chybový kód'
-    DESCRIPTION: 'Vlastní obsah pro různé případy chyb (např. "Stránka nenalezena")'
-    PLURALNAME: 'Chybové stránky'
-    SINGULARNAME: 'Chybová stránka'
-    0: '400 - Špatný požadavek'
     DEFAULTERRORPAGECONTENT: '<p>Omlouváme se, zdá se, že jste se pokoušeli o přístup na stránku, která neexistuje.</p><p>Zkontrolujte prosím pravopis požadované URL adresy, ke které jste se pokoušeli přistoupit a zkuste to znovu.</p>'
     DEFAULTERRORPAGETITLE: 'Stránka nenelazena'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Promiňte, nastal problém s obsloužením vaší žádosti.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Chyba serveru'
-    1: '401 - Neautorizováno'
-    2: '403 - Zakázáno'
-    3: '404 - Nenalezeno'
-    4: '405 - Metoda není povolena'
-    5: '406 - Není přijatelná'
-    6: '407 - Požadována proxy autentizace'
-    7: '408 - Vypršel čas požadavku'
-    8: '409 - Konflikt'
-    9: '410 - Uplynulý'
-    10: '411 - Požadována délka'
-    11: '412 - Nezdařená podmínka'
-    12: '413 - Žádost je moc velká'
-    13: '414 - Vyžádání URI trvá moc dlouho'
-    14: '415 - Nepodporovaný typ média'
-    15: '416 - Vyžádaný rozsah není dostatečný'
-    16: '417 - Očekávání se nezdařilo'
-    17: '422 - Nezpracovatelná entita'
-    18: '429 - Příliš mnoho požadavků'
-    19: '500 - Interní chyba serveru'
-    20: '501 - Není implementováno'
-    21: '502 - Špatná Gateway'
-    22: '503 - Nedostupná služba'
-    23: '504 - Vypršel čas Gateway'
-    24: '505 - HTTP verze není podporována'
+    DESCRIPTION: 'Vlastní obsah pro různé případy chyb (např. "Stránka nenalezena")'
+    PLURALNAME: 'Chybové stránky'
+    SINGULARNAME: 'Chybová stránka'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Přesměruje na interní stránku nebo na externí URL'
     HASBEENSETUP: 'Přesměrovací stránka byla nastavena bez cíle.'

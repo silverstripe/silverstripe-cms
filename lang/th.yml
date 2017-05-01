@@ -34,12 +34,10 @@ th:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: ผู้แต่ง
     COMPAREMODE: 'โหมดเปรียบเทียบ (เลือกสองรายการ)'
-    COMPAREVERSIONS: เปรียบเทียบรุ่น
     NOTPUBLISHED: ยังไม่ได้เผยแพร่
     PUBLISHER: ผู้เผยแพร่
     REVERTTOTHISVERSION: ย้อนกลับไปที่รุ่นนี้
     SHOWUNPUBLISHED: แสดงรุ่นที่ระงับการเผยแพร่ไว้
-    SHOWVERSION: แสดงข้อมูลรุ่น
     UNKNOWN: ไม่ทราบ
     VIEW: มุมมอง
     VIEWINGVERSION: 'ขณะนี้กำลังเปิดดูในรุ่น {version}.'
@@ -67,9 +65,10 @@ th:
     PostInstallTutorialIntro: 'เว็บไซต์นี้เป็นรุ่นอย่างง่ายของเว็บไซต์ที่สร้างจากรุ่น SiverStripe 3 หากต้องการขยายขีดความสามารถ กรุณาเข้าไปที่ {link}'
     UnableDeleteInstall: 'ไม่สามารถลบไฟล์ติดตั้งได้ กรุณาลบไฟล์ดังกล่าวด้านล่างด้วยตนเอง'
     VIEWPAGEIN: 'เปิดดูหน้าเว็บใน:'
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'คุณสามารถเข้าถึงเว็บไซต์รุ่นย้อนหลังได้จากลิงก์นี้:'
-    HAVEASKED: คุณได้ร้องขอเพื่อเปิดดูเนื้อหาในเว็บไซต์ของเราเมื่อ
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'คุณสามารถเข้าถึงเว็บไซต์รุ่นย้อนหลังได้จากลิงก์นี้:'
+      HAVEASKED: คุณได้ร้องขอเพื่อเปิดดูเนื้อหาในเว็บไซต์ของเราเมื่อ
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: ตัวอักษรพิเศษได้ถูกแปลงค่าหรือลบออกโดยอัตโนมัติแล้ว
   SilverStripe\CMS\Model\ErrorPage:

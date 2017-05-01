@@ -1,52 +1,13 @@
 bg:
-  AssetAdmin_DeleteBatchAction:
-    TITLE: 'Изтрий папки'
-  AssetAdmin_left_ss:
-    GO: Изпълни
-  CMSFileAddController:
-    MENUTITLE: Файлове
-  CMSSettingsController:
-    MENUTITLE: Настройки
   SilverStripe\Admin\CMSBatchAction:
-    ARCHIVE: 'Архивирай'
-    ARCHIVED_PAGES: 'Бяха архивирани %d страници'
-    DELETED_DRAFT_PAGES: 'Бяха изтрити %d страници от черновата на сайта, %d грешки'
-    DELETED_PAGES: 'Бяха изтрити %d страници от лайв сайта, %d грешки'
-    DELETE_DRAFT_PAGES: 'Изтрий от черновата на сайта'
-    DELETE_PAGES: 'Изтрий от лайв сайта'
     PUBLISHED_PAGES: 'Публикувани %d страници, %d грешки'
     PUBLISH_PAGES: Публикувай
     RESTORE: Възстанови
     RESTORED_PAGES: 'Бяха възстановени %d страници'
     UNPUBLISH_PAGES: 'Премахни от публикация'
   SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    ADDFILES: 'Добави файлове'
-    ActionAdd: 'Добави папка'
-    AppCategoryArchive: 'Архив'
-    AppCategoryAudio: Аудио
-    AppCategoryDocument: Документ
-    AppCategoryFlash: Флаш
-    AppCategoryImage: Изображение
-    AppCategoryVideo: Видео
     BACKLINKCOUNT: 'Използвано от:'
-    BackToFolder: 'Обратно към директорията'
-    CREATED: 'Дата на създаване'
-    CurrentFolderOnly: 'Ограничи в текущата директория?'
-    DetailsView: Детайли
-    FILES: Файлове
-    FILESYSTEMSYNC: 'Синхронизирай файловете'
-    FILESYSTEMSYNCTITLE: 'Актуализира базата данни с файловете от файловата система. Полезно, когато файлове са били качени не през системата, а например през FTP.'
-    FROMTHEINTERNET: 'От интернет'
-    FROMYOURCOMPUTER: 'От компютъра'
-    Filetype: 'Тип на файла'
-    ListView: 'Изглед в списък'
-    MENUTITLE: Файлове
-    NEWFOLDER: 'Нова папка'
     PAGES: Страница/и
-    SIZE: 'Размер'
-    THUMBSDELETED: '{count} неизползвани тъмбнейла бяха изтрити'
-    TreeView: 'Дървовиден изглед'
-    Upload: 'Качи '
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Бяха изтрити %d страници от сайта и същите бяха архивирани'
     TITLE: 'Премахни от публикация и архивирай'
@@ -64,12 +25,10 @@ bg:
     ChoosePageParentMode: 'Избери къде да създадеш тази страница'
     ChoosePageType: 'Избери тип на страницата'
     Create: Създай
-    DELETEFP: Изтрий
     DUPLICATED: '''{title}'' беше успешно дублирана'
     DUPLICATEDWITHCHILDREN: '''{title}'' и под-страниците бяха успешно дублирани'
     EMAIL: 'Ел. поща'
     ListFiltered: 'Резултати от търсенето'
-    MENUTITLE: 'Редактиране на страница'
     NEWPAGE: 'Нова страница {pagetype}'
     PAGENOTEXISTS: 'Тази страница не съществува'
     PAGETYPEANYOPT: Всички
@@ -82,7 +41,6 @@ bg:
     PageAdded: 'Страницата беше създадена успешно'
     REMOVEDPAGE: 'Страница ''{title}'' беше премахната от публикувания сайт'
     REMOVEDPAGEFROMDRAFT: 'Премахната(и) ''%s'' от черновите'
-    RESET: Нулирай
     RESTORED: 'Успешно възтановен/а ''{title}'''
     RESTORE_DESC: 'Възстанови архивираната версия до чернова'
     RESTORE_TO_ROOT: 'Възстанови черновата на най-високо ниво'
@@ -108,8 +66,6 @@ bg:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Автор
     COMPAREMODE: 'Режим на сравнение (Избери два)'
-    COMPAREVERSIONS: 'Сравни версиите'
-    COMPARINGVERSION: 'Сравняване на версии {version1} и {version2}.'
     MENUTITLE: История
     MULTISELECT: 'Групови действия'
     NOTPUBLISHED: Непубликувани
@@ -117,7 +73,6 @@ bg:
     PUBLISHER: 'Публикувана от'
     REVERTTOTHISVERSION: 'Върни към тази версия'
     SHOWUNPUBLISHED: 'Покажи непублекуваната версия'
-    SHOWVERSION: 'Покажи версията'
     UNKNOWN: Неизвестно
     VIEW: Изглед
     VIEWINGLATEST: 'Последна версия'
@@ -160,8 +115,9 @@ bg:
     VIEWPAGEIN: 'Изглед на страница в:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 'Архивирани'
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Можете да достигнете архивирания сайт, чрез тази връзка'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Можете да достигнете архивирания сайт, чрез тази връзка'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Отказ
     Edit: Промени
@@ -216,7 +172,6 @@ bg:
     APPEARSVIRTUALPAGES: 'Съдържанието присъства във виртуалните страници в секция {title}.'
     ARCHIVEDPAGEHELP: 'Страницата е премахната от сайта и от черновите'
     ARCHIVEDPAGESHORT: 'Архивирани'
-    BUTTONARCHIVEDESC: 'Премахни от публикация и запиши в архива'
     BUTTONCANCELDRAFT: 'Отмени промените в черновата'
     BUTTONCANCELDRAFTDESC: 'Изтрий черновата и отиди на текущата публикувана страница'
     BUTTONDELETEDESC: 'Премахни от чернова/публикация и запиши в архива'
@@ -276,8 +231,6 @@ bg:
     PLURALNAME: Страници
     PageTypNotAllowedOnRoot: 'Страница от тип "{type}" не може да бъде създадена в основното ниво на дървото'
     PageTypeNotAllowed: 'Страница от тип "{type}" не може да е подстраница на тази страница'
-    REMOVEDFROMDRAFTHELP: 'Страницата е публикувана, но беше изтрита от черновите'
-    REMOVEDFROMDRAFTSHORT: 'Изтрити от черновите'
     REMOVE_INSTALL_WARNING: 'Внимание: Трябва да изтриете install.php от тази Silverstripe инсталация от съображения за сигурност.'
     REORGANISE_DESCRIPTION: 'Промени структурата на сайта'
     REORGANISE_HELP: 'Реорганизирай страниците в дървото чрез "drag&drop" (теглене и пускане)'
@@ -301,7 +254,6 @@ bg:
     many_many_ImageTracking: 'Следене на снимките'
     many_many_LinkTracking: 'Следене на линовете'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    EDIT: 'Редакция'
     TITLE_INDEX: '#'
     TITLE_TYPE: Тип
     TITLE_USED_ON: 'Използван в'
@@ -332,7 +284,6 @@ bg:
     VirtualPageNonExistent: 'Виртуална страница, сочеща към несъществуваща страница'
   SilverStripe\CMS\Search\SearchForm:
     FILTERDATEFROM: От
-    FILTERDATEHEADING: Дата
     FILTERDATETO: До
     FILTERLABELTEXT: Търсене
     GO: Давай

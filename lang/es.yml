@@ -8,8 +8,6 @@ es:
     UNPUBLISH_PAGES: Despublicar
   SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Usado en:'
-    ErrorItemPermissionDenied: 'Parece que no tienes los permisos necesarios para añadir {ObjectTitle} a una campaña'
-    ErrorNotFound: 'Ese {Type} no pudo ser encontrado'
     PAGES: página(s)
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Eliminadas %d páginas desde el borrador y publicadas, y enviadas al archivo'
@@ -71,7 +69,6 @@ es:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Modo comparación (seleccionar dos)'
-    COMPAREVERSIONS: 'Comparar Versiones'
     MENUTITLE: Historial
     MULTISELECT: 'Acciones por lotes'
     NOTPUBLISHED: 'Sin publicar'
@@ -79,7 +76,6 @@ es:
     PUBLISHER: 'Publicado por'
     REVERTTOTHISVERSION: 'Volver a esta versión'
     SHOWUNPUBLISHED: 'Mostrar versiones no publicadas'
-    SHOWVERSION: 'Mostrar Versión'
     UNKNOWN: Desconocido
     VIEW: vista
     VIEWINGLATEST: 'Viendo la última versión'
@@ -131,9 +127,10 @@ es:
     VIEWPAGEIN: 'Ver página en:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archivado
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'Puede acceder al sitio archivado con este enlace:'
-    HAVEASKED: 'Ha pedido ver el contenido de nuestro sitio el'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'Puede acceder al sitio archivado con este enlace:'
+      HAVEASKED: 'Ha pedido ver el contenido de nuestro sitio el'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Cancelar
     EMPTY: Vacío
@@ -144,7 +141,6 @@ es:
     CODE: 'Código de error'
     DEFAULTERRORPAGECONTENT: '<p>Lo sentimos, parece que intentaste acceder a una página que no existe.</p><p>Por favor, comprueba que la URL que intentabas acceder está bien escrita e inténtalo de nuevo.</p>'
     DEFAULTERRORPAGETITLE: 'Página no encontrada'
-    0: '400 - Petición incorrecta (Bad Request)'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Lo sentimos, hubo un problema al gestionar tu solicitud.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Error de servidor'
     DESCRIPTION: 'Contenido personalizado para los distintos casos de error (p.e. "Página no encontrada")'
@@ -153,30 +149,6 @@ es:
       one: 'Una Página de error'
       other: '{count} Páginas de error'
     SINGULARNAME: 'Página de error'
-    1: '401 - No autorizado (Unauthorized)'
-    2: '403 - Prohibido (Forbidden)'
-    3: '404 - No encontrado (Not Found)'
-    4: '405 - Método no permitido (Method Not Allowed)'
-    5: '406 -  No aceptable (Not Acceptable)'
-    6: '407 - Autenticación del Proxy requerida (Proxy Authentication Required)'
-    7: '408 - Tiempo de espera agotado para la solicitud (Request Timeout)'
-    8: '409 - Conflicto (Conflict)'
-    9: '410 - Ido (Gone)'
-    10: '411 - Longitud requerida (Length Required)'
-    11: '412- Ha fallado una condición previa'
-    12: '413- La entidad requerida es demasiado grande'
-    13: '414 - URI Requerida Demasiado Larga'
-    14: '415- No hay cobertura para este tipo de soporte.'
-    15: '416- El rango requerido no puede cumplirse'
-    16: '417- Expectación fallida'
-    17: '422 - No es posible procesar la Entidad '
-    18: '429 - Muchas Peticiones al servidor'
-    19: '500 - Error interno en el servidor'
-    20: '501- No implementado'
-    21: '502- Pasarela de comunicación equivocada'
-    22: '503 - Servicio no Disponible'
-    23: '504- La pasarela de comunicación claudicó '
-    24: '505- Versión HTTP no cubierta'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Redirecciona a una página interna o a una URL externa'
     HASBEENSETUP: 'Se ha establecido una página redireccionadora sin ningún sitio al cual redireccionar.'

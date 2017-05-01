@@ -46,12 +46,10 @@ nl:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Auteur
     COMPAREMODE: 'Vergelijken (selecteer 2)'
-    COMPAREVERSIONS: 'Vergelijk versies'
     NOTPUBLISHED: 'Niet gepubliceerd'
     PUBLISHER: Publiceerder
     REVERTTOTHISVERSION: 'Deze versie terugzetten'
     SHOWUNPUBLISHED: 'Toon nog niet gepubliceerde versies'
-    SHOWVERSION: 'Toon versie'
     UNKNOWN: Onbekend
     VIEW: toon
     VIEWINGLATEST: 'U bekijkt nu de laatste versie.'
@@ -91,9 +89,10 @@ nl:
     VIEWPAGEIN: 'Bekijk pagina in:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Gearchiveerd
-  SilverStripe\CMS\Email\ViewArchivedmail.ss:
-    CANACCESS: 'U kunt de gearchiveerde site bekijken via deze link:'
-    HAVEASKED: 'U heeft gevraagd de inhoud van onze site te bekijken op'
+  SilverStripe\CMS\Email\ViewArchivedmail:
+    ss:
+      CANACCESS: 'U kunt de gearchiveerde site bekijken via deze link:'
+      HAVEASKED: 'U heeft gevraagd de inhoud van onze site te bekijken op'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Annuleer
     EMPTY: 'Vul een URL segment in of klik op annuleren'
@@ -103,35 +102,10 @@ nl:
   SilverStripe\CMS\Model\ErrorPage:
     CODE: Foutcode
     DEFAULTERRORPAGECONTENT: '<p>Helaas, de pagina die u zocht lijkt niet (meer) te bestaan.</p><p>Controleer of de juiste URL is gebruikt en probeer het opnieuw.</p>'
-    0: '400 - Foute aanvraag'
     DEFAULTERRORPAGETITLE: 'Pagina niet gevonden'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Helaas, er was een probleem bij het verwerken van je verzoek.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Probleem met de server'
     SINGULARNAME: Foutpagina
-    1: '401 - Niet geautorizeerd'
-    2: '403 - Toegang verboden'
-    3: '404 - Niet gevonden'
-    4: '405 - Methode niet toegestaan'
-    5: '406 - Niet aanvaardbaar'
-    6: '407 - Proxy auhenticatie vereist'
-    7: '408 - Aanvraag verlopen'
-    8: '409 - Conflict'
-    9: '410 - Verdwenen'
-    10: '411 - Lengte vereist'
-    11: '412 - Niet voldaan aan vooraf gestelde voorwaarde'
-    12: '413 - Aanvraag te groot'
-    13: '414 - Aanvraag URI te lang'
-    14: '415 - Media-type niet ondersteund'
-    15: '416 - Aangevraagd gedeelte niet opvraagbaar'
-    16: '417 - Niet voldaan aan verwachting'
-    17: '422 - Aanvraag kan niet verwerkt worden'
-    18: '429 - Te veel aanvragen'
-    19: '500 - Interne serverfout'
-    20: '501 -  Niet geïmplementeerd'
-    21: '502 - Slechte Gateway'
-    22: '503 - Service niet beschikbaar'
-    23: '504 - Gateway Timeout'
-    24: '505 - HTTP versie niet ondersteund'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Er is een verwijspagina opgezet zonder ergens naar te verwijzen.'
     HEADER: 'Deze pagina zal gebruikers naar een andere pagina doorsturen (redirect)'
