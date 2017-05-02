@@ -9,7 +9,7 @@ use PageController;
 class RedirectorPageController extends PageController
 {
 
-    protected function init()
+    public function init()
     {
         parent::init();
 
