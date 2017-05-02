@@ -6,6 +6,7 @@ use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\Control\ContentNegotiator;
 use SilverStripe\Control\Controller;
 use SilverStripe\ORM\DB;
+use SilverStripe\Security\InheritedPermissions;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ValidationException;
@@ -670,8 +671,11 @@ class SiteTreeTest extends SapphireTest
         $page->CanEditType = 'OnlyTheseUsers';
         $page->EditorGroups()->add($this->idFromFixture(Group::class, 'editors'));
         $page->write();
+
         // Clear permission cache
-        SiteTree::on_db_reset();
+        /** @var InheritedPermissions $checker */
+        $checker = SiteTree::getPermissionChecker();
+        $checker->clearCache();
 
         // Confirm that Member.editor can now edit the page
         $this->objFromFixture(Member::class, 'editor')->logIn();
