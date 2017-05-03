@@ -2426,8 +2426,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $stageRecord = Versioned::get_by_stage(static::class, Versioned::DRAFT)->byID($this->ID);
         /** @skipUpgrade */
         if ($stageRecord && $stageRecord->Version != $this->Version) {
-            $moreOptions->push(FormAction::create('email', _t('CMSMain.EMAIL', 'Email')));
-            $moreOptions->push(FormAction::create('rollback', _t('CMSMain.ROLLBACK', 'Roll back to this version')));
+            $moreOptions->push(FormAction::create('email', _t('SilverStripe\\CMS\\Controllers\\CMSMain.EMAIL', 'Email')));
+            $moreOptions->push(FormAction::create('rollback', _t('SilverStripe\\CMS\\Controllers\\CMSMain.ROLLBACK', 'Roll back to this version')));
             $actions = new FieldList(array($majorActions, $rootTabSet));
 
             // getCMSActions() can be extended with updateCMSActions() on a extension

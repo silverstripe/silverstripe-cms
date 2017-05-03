@@ -1,6 +1,6 @@
 <div class="cms-preview fill-height flexbox-area-grow" data-layout-type="border">
 	<div class="panel flexbox-area-grow fill-height">
-		<div class="preview-note"><span><!-- --></span><%t CMSPageHistoryController_versions_ss.PREVIEW 'Website preview' %></div>
+		<div class="preview-note"><span><!-- --></span><%t SilverStripe\CMS\Controllers\CMSPageHistoryController.PREVIEW 'Website preview' %></div>
 		<div class="preview__device">
 			<div class="preview-device-outer">
 				<div class="preview-device-inner">

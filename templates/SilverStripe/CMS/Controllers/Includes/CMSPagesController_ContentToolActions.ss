@@ -4,7 +4,7 @@
 
 		<% if $View == 'Tree' %>
 		<button type="button" class="cms-content-batchactions-button btn btn-secondary tool-button font-icon-check-mark-2" data-toolid="batch-actions">
-			<% _t("CMSPagesController_ContentToolbar_ss.MULTISELECT","Batch actions") %>
+			<% _t("SilverStripe\CMS\Controllers\CMSPageHistoryController.MULTISELECT","Batch actions") %>
 		</button>
 		<% end_if %>
 	</div>
