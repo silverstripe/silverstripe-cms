@@ -8,13 +8,11 @@ ko:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: '''{title}'' 섹션으로 이동'
     ACCESS_HELP: '페이지 트리 및 내용을 포함 섹션의 열람을 허용합니다. 표시 및 편집 권한은 페이지의 특정 드롭 다운뿐만 아니라 독립적 인 "콘텐츠의 권한"을 통해 처리 할 수 있습니다.'
-    AddNew: '새 페이지를 추가'
-    AddNewButton: '새로 추가'
     AddPageRestriction: '참고: 일부 유형의 페이지는 이 선택에 포함되지 않습니다'
     Cancel: 취소
     ChoosePageParentMode: '이 페이지를 만들 위치를 선택'
     ChoosePageType: '페이지 유형을 선택'
-    Create: '새로 만들기'
+    Create: 새로 만들기
     DUPLICATED: '''{title}''의 복제가 완료되었습니다.'
     DUPLICATEDWITHCHILDREN: '''{title}'' 와 그 하위에대한 복제가 완료되었습니다'
     NEWPAGE: '새로운 {pagetype}'
@@ -27,34 +25,21 @@ ko:
     REMOVEDPAGE: '''{title}''을 공개된 사이트에서 제거했습니다'
     REMOVEDPAGEFROMDRAFT: '%s 초안 사이트에서 제거했습니다'
     RESTORED: '{title}를 복구했습니다'
-    ROLLBACK: '이 버전으로 복원'
     ROLLEDBACKPUBv2: '공개된 버전으로 롤백되었습니다.'
     ROLLEDBACKVERSIONv2: '#%d. 버전으로 롤백'
     SAVEDRAFT: '임시 저장'
-    TabContent: '컨텐츠'
-    TabHistory: 기록
-    TabSettings: '설정'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: '다른 페이지 아래에 작성'
     ParentMode_top: '최상위 계층'
-    Title: '페이지 추가'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    AUTHOR: 작성자
     COMPAREMODE: '비교 모드 (2개 선택)'
-    NOTPUBLISHED: 미공개
-    PUBLISHER: 게시자
     REVERTTOTHISVERSION: '이 버전으로 복원'
     SHOWUNPUBLISHED: '공개되지 않은 버전을 표시'
-    UNKNOWN: '알 수 없슴'
     VIEW: 표시
     VIEWINGLATEST: '현재 최신 버전을 보고있는 중.'
     VIEWINGVERSION: '현재 {version}버젼을 보고 있는 중.'
-    WHEN: '언제'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: 필터
-    ListView: 목록보기
     MENUTITLE: 페이지
-    TreeView: 트리보기
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: '전체 페이지'
   SilverStripe\CMS\Controllers\ContentController:
@@ -63,11 +48,7 @@ ko:
     CMS: CMS
     DRAFT: 초안
     DRAFTSITE: '초안 사이트'
-    Email: 이메일
     INSTALL_SUCCESS: '설치에 성공!'
-    InstallFilesDeleted: '설치 관련 파일이 성공적으로 삭제되었습니다'
-    InstallSecurityWarning: '나중에 다시 설치할 계획이 없는 한, 보안상의 이유로, 당신은 지금 설치 파일을 삭제해야합니다 (<em> 관리자 로그인 필요, 위를 참조 </em>). 웹서버는 또한 지금 "asset" 폴더에 대한 쓰기권한을 필요할 뿐이며, 당신은 다른 모든 폴더에대한 쓰기 권한을 제거할 수 있습니다. <a href="{link}" style="text-align: center;"> 여기를 클릭하여 설치 파일을 삭제합니다. </a>'
-    InstallSuccessCongratulations: 'SilverStripe이 성공적으로 설치되었습니다!'
     LOGGEDINAS: '로그인 중'
     LOGIN: 로그인
     LOGOUT: '로그 아웃'
@@ -75,25 +56,13 @@ ko:
     NOTLOGGEDIN: '로그인되어 있지 않습니다'
     PUBLISHED: 공개됨
     PUBLISHEDSITE: '공개 사이트'
-    Password: 암호
-    PostInstallTutorialIntro: '이 웹사이트는 SilverStripe3 사이트의 간단한 버전입니다. 이것을 확장하려면 {link}를 참조하십시오.'
-    StartEditing: '<a href="{link}"> CMS </a>을 열어서 콘텐츠를 편집할 수 있습니다.'
-    UnableDeleteInstall: '설치 파일을 제거 할 수 없습니다. 다음 파일을 수동으로 삭제하십시오.'
     VIEWPAGEIN: '다음에서 페이지를 표시한다 : '
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 보관됨
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Cancel: 취소
     EMPTY: 'URL 세그먼트를 입력 또는 중지를 클릭'
-    Edit: 편집
     HelpChars: '특수 문자는 자동으로 변환되었는지 제거되었습니다'
-    OK: OK
   SilverStripe\CMS\Model\ErrorPage:
-    CODE: '오류 코드'
-    DEFAULTERRORPAGECONTENT: '<p> 죄송하지만 보려고하는 페이지가 존재하지 않습니다. </p> <p> 사이트의 URL을 확인 후 다시 시도해주세요. </p>'
-    DEFAULTERRORPAGETITLE: '페이지를 찾을 수 없습니다'
-    DEFAULTSERVERERRORPAGECONTENT: '<p> 죄송합니다. 귀하의 요청을 처리하는 동안 문제가 발생했습니다. </p>'
-    DEFAULTSERVERERRORPAGETITLE: '서버 오류'
     400: '400 - 올바르지 않은 요청입니다.'
     401: '401 - 허용되지 않습니다'
     403: '403 - 금지되어 있습니다'
@@ -119,11 +88,16 @@ ko:
     503: '503 - 서비스를 사용할 수 없습니다'
     504: '504 - Gateway가 만료되었습니다.'
     505: '505 - 지원되지 않는 HTTP 버전입니다'
+    CODE: '오류 코드'
+    DEFAULTERRORPAGECONTENT: '<p> 죄송하지만 보려고하는 페이지가 존재하지 않습니다. </p> <p> 사이트의 URL을 확인 후 다시 시도해주세요. </p>'
+    DEFAULTERRORPAGETITLE: '페이지를 찾을 수 없습니다'
+    DEFAULTSERVERERRORPAGECONTENT: '<p> 죄송합니다. 귀하의 요청을 처리하는 동안 문제가 발생했습니다. </p>'
+    DEFAULTSERVERERRORPAGETITLE: '서버 오류'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: '다른곳으로 리다이렉트되지않고 리다이렉터 페이지가 설치되었습니다.'
     HEADER: '이 페이지는 다른 페이지로 사용자들을 이동시킵니다.'
     OTHERURL: '다른 웹사이트 URL'
-    REDIRECTTO: 변경
+    REDIRECTTO: '변경'
     REDIRECTTOEXTERNAL: '다른 웹사이트'
     REDIRECTTOPAGE: '당신의 웹사이트의 페이지'
     YOURPAGE: '당신의 웹사이트의 페이지'
@@ -138,14 +112,14 @@ ko:
     BUTTONCANCELDRAFT: '초안의 편집 내용을 취소합니다'
     BUTTONCANCELDRAFTDESC: '초안을 삭제하고 현재 공개된 페이지로 돌아갑니다.'
     BUTTONPUBLISHED: 게시됨
-    BUTTONSAVED: '저장됨'
+    BUTTONSAVED: 저장됨
     BUTTONSAVEPUBLISH: '저장 및 게시'
     BUTTONUNPUBLISH: 비공개
     BUTTONUNPUBLISHDESC: '게시된 사이트로부터 이 페이지를 삭제'
     Comments: 코멘트
     Content: 내용
     DEFAULTABOUTTITLE: '회사 소개'
-    DEFAULTCONTACTTITLE: 연락처
+    DEFAULTCONTACTTITLE: '연락처'
     DEFAULTHOMETITLE: 홈
     DEPENDENT_NOTE: '다음 페이지들은 이 페이지에 의존합니다. 여기에는 가상 페이지 리디렉터 페이지 콘텐츠 링크가있는 페이지가 포함되어 있습니다.'
     DependtPageColumnLinkType: '링크 종류'
@@ -161,8 +135,6 @@ ko:
     HASBROKENLINKS: '이 페이지는 깨진 링크가 있습니다'
     HTMLEDITORTITLE: 내용
     INHERIT: '상위 페이지를 상속'
-    LASTPUBLISHED: '마지막으로 공개됨'
-    LASTSAVED: '마지막으로 저장됨'
     LASTUPDATED: '마지막으로 업데이트됨'
     LINKCHANGENOTE: '이 페이지의 링크를 변경하면 모든 하위 페이지 링크에 영향을 미칩니다.'
     MENUTITLE: '메뉴 표시'
@@ -171,10 +143,9 @@ ko:
     METAEXTRA: '메타 태그를 사용자 정의'
     METAEXTRAHELP: '추가 메타 정보에 대한 HTML 태그입니다. 예를 들어, &lt; meta name = "사용자 이름" content = "여기에 사용자 지정 콘텐츠" /&gt;'
     MODIFIEDONDRAFTHELP: '페이지는 게시되지 않은 변경들을 가지고 있습니다.'
-    MODIFIEDONDRAFTSHORT: '수정됨'
-    MetadataToggle: '메타 데이터'
+    MODIFIEDONDRAFTSHORT: 수정됨
+    MetadataToggle: 메타 데이터
     MoreOptions: '추가 옵션'
-    NOTPUBLISHED: '공개되지 않습니다'
     OBSOLETECLASS: '이 페이지는 사용되지 않는 타입 {type}입니다. 저장하면 그 타입이 재설정되고 데이터를 잃을 수 있습니다'
     PAGELOCATION: '페이지 찾기'
     PAGETITLE: '페이지 이름'
@@ -206,7 +177,7 @@ ko:
     VIRTUALPAGEWARNING: '이 페이지를 게시하기 위해 링크된 페이지를 선택하여 먼저 저장하십시오'
     VIRTUALPAGEWARNINGSETTINGS: '공개하기 위해 주요 콘텐츠 분야에서 링크된 페이지를 선택하십시오'
     Viewers: '방문자 그룹'
-    Visibility: '볼 수 있슴'
+    Visibility: 볼 수 있슴
     has_one_Parent: '상위 페이지'
     many_many_BackLinkTracking: '원본을 추적'
     many_many_ImageTracking: '이미지 링크 추적'
@@ -241,7 +212,7 @@ ko:
     VirtualPageNonExistent: '존재하지 않는 페이지를 가리키는 가상 페이지'
   SilverStripe\CMS\Search\SearchForm:
     FILTERDATEFROM: 시작일
-    FILTERDATETO: '종료일'
+    FILTERDATETO: 종료일
     GO: 시작
     SEARCH: 검색
     SearchResults: '검색 결과'
@@ -256,4 +227,3 @@ ko:
     ParameterLiveCheckbox: '라이브 사이트를 확인'
   SilverStripe\Security\Permission:
     CONTENT_CATEGORY: '콘텐츠에 관한 권한'
-    PERMISSIONS_CATEGORY: '역할과 접근권한'

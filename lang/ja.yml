@@ -1,105 +1,74 @@
 ja:
   SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: '%dページを公開しましたが、%dページの公開に失敗しました。'
-    PUBLISH_PAGES: '公開'
-    RESTORE: '復元'
+    PUBLISH_PAGES: 公開
+    RESTORE: 復元
     RESTORED_PAGES: '%dページを復元しました'
   SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 以下で使用される：
+    BACKLINKCOUNT: '以下で使用される：'
     PAGES: ページ
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: '''{title}'' セクションにアクセス'
     ACCESS_HELP: 'ページツリーとコンテンツを含むセクションの閲覧を許可します。　表示および編集の権限は、ページの特定のドロップダウンだけでなく、独立した"コンテンツの権限"を介して処理することができます。'
     ARCHIVE: アーカイブ
     ARCHIVEDPAGE: '''%s''ページがアーカイブされました'
-    AddNew: '新しいページを追加'
-    AddNewButton: '新しく追加'
-    AddPageRestriction: 注：一部の種類のページは、この選択には含まれていません
+    AddPageRestriction: '注：一部の種類のページは、この選択には含まれていません'
     Cancel: キャンセル
     ChoosePageParentMode: 'このページを作成する場所を選択'
-    ChoosePageType: ページの種類を選択
+    ChoosePageType: 'ページの種類を選択'
     Create: 作成
     DUPLICATED: '''{title}'' の複製が完了しました'
     DUPLICATEDWITHCHILDREN: '''{title}'' と子の複製が完了しました'
     NEWPAGE: '新しい {pagetype}'
-    PAGENOTEXISTS: このページは存在しません
+    PAGENOTEXISTS: 'このページは存在しません'
     PAGETYPEANYOPT: 何でも
     PUBALLCONFIRM: 'コンテンツのステージをコピーして配信するために、サイト内のすべてのページを公開してください'
     PUBALLFUN: '"すべてを公開" 機能'
     PUBPAGES: '完了: {count}ページを公開しました'
-    PageAdded: ページの作成に成功
+    PageAdded: 'ページの作成に成功'
     REMOVEDPAGE: '''{title}''を公開されているサイトから削除しました'
     REMOVEDPAGEFROMDRAFT: '%sを下書きサイトから削除しました'
     RESTORED: '{title}を復旧しました'
-    ROLLBACK: このバージョンへ戻す
     ROLLEDBACKPUBv2: '公開されたバージョンにロールバックされました。'
     ROLLEDBACKVERSIONv2: '#%d. のバージョンにロールバック'
-    SAVEDRAFT: 下書きを保存
-    TabContent: コンテンツ
-    TabHistory: 履歴
-    TabSettings: 設定
+    SAVEDRAFT: '下書きを保存'
   SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: 他のページの下に作成
-    ParentMode_top: 最上位層
-    Title: 'ページを追加'
+    ParentMode_child: '他のページの下に作成'
+    ParentMode_top: '最上位層'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    AUTHOR: '作成者'
-    COMPAREMODE: 比較モード（２つを選択）
-    NOTPUBLISHED: '未公開'
-    PUBLISHER: パブリッシャー
-    REVERTTOTHISVERSION: このバージョンに戻す
+    COMPAREMODE: '比較モード（２つを選択）'
+    REVERTTOTHISVERSION: 'このバージョンに戻す'
     SHOWUNPUBLISHED: '公開されていないバージョンを表示'
-    UNKNOWN: 不明
     VIEW: 表示
-    VIEWINGLATEST: 現在最新のバージョンを表示。
+    VIEWINGLATEST: '現在最新のバージョンを表示。'
     VIEWINGVERSION: '現在表示しているバージョンは{version}です。'
-    WHEN: いつ
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: フィルタ
-    ListView: 一覧表示
     MENUTITLE: ページ
-    TreeView: ツリー表示
   SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: '公開済みページ'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: '全ページ'
   SilverStripe\CMS\Controllers\ContentController:
-    ARCHIVEDSITE: プレビュー版
-    ARCHIVEDSITEFROM: からアーカイブされたサイト
+    ARCHIVEDSITE: 'プレビュー版'
+    ARCHIVEDSITEFROM: 'からアーカイブされたサイト'
     CMS: CMS
     DRAFT: 下書き
-    DRAFTSITE: 下書きサイト
-    Email: Eメール
-    INSTALL_SUCCESS: インストールに成功！
-    InstallFilesDeleted: インストール関連ファイルは正しく削除されました
-    InstallSecurityWarning: '後で再インストールすることを予定していない限り、セキュリティ上の理由のために、あなたは今インストールファイルを削除する必要があります(<em> 管理者のログインを必要とする、上記参照 </em>)。 今はウェブサーバーも"アセット"フォルダへの書き込みアクセスが必要なだけで、その他すべてのフォルダからの書き込みアクセスを削除することができます。<a href="{link}" style="text-align: center;"> ここをクリックしてインストールファイルを削除。</a>'
-    InstallSuccessCongratulations: SilverStripeは正常にインストールされています！
-    LOGGEDINAS: ログイン中：
+    DRAFTSITE: '下書きサイト'
+    INSTALL_SUCCESS: 'インストールに成功！'
+    LOGGEDINAS: 'ログイン中：'
     LOGIN: ログイン
-    LOGOUT: ログアウト
+    LOGOUT: 'ログアウト'
     NOTEWONTBESHOWN: '注：このメッセージは、あなたの訪問者に表示されません'
-    NOTLOGGEDIN: ログインされていません
-    PUBLISHED: '公開された'
+    NOTLOGGEDIN: 'ログインされていません'
+    PUBLISHED: 公開された
     PUBLISHEDSITE: '公開サイト'
-    Password: パスワード
-    PostInstallTutorialIntro: 'このウェブサイトは、SilverStripe3サイトの単純なバージョンです。 これを拡張するには、{link} をご覧ください。'
-    StartEditing: '<a href="{link}">the CMS</a> を開いて、あなたのコンテンツの編集を開始することができます。'
-    UnableDeleteInstall: 'インストールファイルを削除することができませんでした。次のファイルを手動で削除してください。'
-    VIEWPAGEIN: 以下からページを表示する：
+    VIEWPAGEIN: '以下からページを表示する：'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: アーカイブされた
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Cancel: 中止
     EMPTY: 'URLのセグメントを入力または中止をクリックする'
-    Edit: 編集
-    HelpChars: 特殊文字は自動的に変換されたか取り除かれました
-    OK: OK
+    HelpChars: '特殊文字は自動的に変換されたか取り除かれました'
   SilverStripe\CMS\Model\ErrorPage:
-    CODE: エラーコード
-    DEFAULTERRORPAGECONTENT: '<p>申し訳ありませんが、貴方の見ようとしているページは存在しません。</p><p>貴方が見ようとしているサイトのURLの綴りがあっているのか、再度確認してください。</p>'
-    DEFAULTERRORPAGETITLE: ページが見つかりません
-    DEFAULTSERVERERRORPAGECONTENT: '<p>申し訳ございません。あなたのリクエストを処理中に問題が起きました。</p>'
-    DEFAULTSERVERERRORPAGETITLE: サーバーエラー
     400: '400 - 不適格な要求です'
     401: '401 - 許可されていません'
     403: '403 - 禁止されています'
@@ -125,18 +94,23 @@ ja:
     503: '503 - サービスが利用できません'
     504: '504 - Gatewayが時間切れです'
     505: '505 - サポートされていないHTTPのバージョンです'
+    CODE: 'エラーコード'
+    DEFAULTERRORPAGECONTENT: '<p>申し訳ありませんが、貴方の見ようとしているページは存在しません。</p><p>貴方が見ようとしているサイトのURLの綴りがあっているのか、再度確認してください。</p>'
+    DEFAULTERRORPAGETITLE: 'ページが見つかりません'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>申し訳ございません。あなたのリクエストを処理中に問題が起きました。</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'サーバーエラー'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: '転送URLを含むページには、転送先がない状態で設定されています。'
-    HEADER: このページをユーザーを変更して他のページにしますか？
-    OTHERURL: 他のウェブサイトのURL
-    REDIRECTTO: 変更は
-    REDIRECTTOEXTERNAL: 他のウェブサイト
-    REDIRECTTOPAGE: 貴方のウェブサイトを表示します
-    YOURPAGE: 貴方のウェブサイトを表示します
+    HEADER: 'このページをユーザーを変更して他のページにしますか？'
+    OTHERURL: '他のウェブサイトのURL'
+    REDIRECTTO: '変更は'
+    REDIRECTTOEXTERNAL: '他のウェブサイト'
+    REDIRECTTOPAGE: '貴方のウェブサイトを表示します'
+    YOURPAGE: '貴方のウェブサイトを表示します'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 誰でも
-    ACCESSHEADER: このページを閲覧できる人
-    ACCESSLOGGEDIN: ログインしたユーザ
+    ACCESSHEADER: 'このページを閲覧できる人'
+    ACCESSLOGGEDIN: 'ログインしたユーザ'
     ACCESSONLYTHESE: 'この人達だけ (リストから選択してください)'
     ADDEDTODRAFTHELP: 'ページはまだ公開されていません'
     ADDEDTODRAFTSHORT: 下書き
@@ -144,124 +118,120 @@ ja:
     ARCHIVEDPAGESHORT: アーカイブされました
     BUTTONCANCELDRAFT: '草稿の編集内容を取り消します'
     BUTTONCANCELDRAFTDESC: '草稿と前回公開されたページを削除します'
-    BUTTONPUBLISHED: '公開された'
+    BUTTONPUBLISHED: 公開された
     BUTTONSAVED: 保存された
     BUTTONSAVEPUBLISH: '保存と公開'
-    BUTTONUNPUBLISH: '非公開'
+    BUTTONUNPUBLISH: 非公開
     BUTTONUNPUBLISHDESC: '公開サイトから取り除きました'
     Comments: コメント
     Content: コンテンツ
-    DEFAULTABOUTTITLE: 私たちについて
-    DEFAULTCONTACTTITLE: 連絡はこちらまで
-    DEFAULTHOMETITLE: 'ホーム'
-    DEPENDENT_NOTE: 以下のページでは、このページに依存します。　これには仮想ページ、リダイレクタページ、コンテンツのリンクを持つページが含まれています。
-    DependtPageColumnLinkType: リンクの種類
+    DEFAULTABOUTTITLE: '私たちについて'
+    DEFAULTCONTACTTITLE: '連絡はこちらまで'
+    DEFAULTHOMETITLE: ホーム
+    DEPENDENT_NOTE: '以下のページでは、このページに依存します。　これには仮想ページ、リダイレクタページ、コンテンツのリンクを持つページが含まれています。'
+    DependtPageColumnLinkType: 'リンクの種類'
     DependtPageColumnURL: URL
-    EDITANYONE: 誰でもCMSにログインが可能
-    EDITHEADER: このページを編集できる人
+    EDITANYONE: '誰でもCMSにログインが可能'
+    EDITHEADER: 'このページを編集できる人'
     EDITONLYTHESE: 'この人達だけ (リストから選択してください)'
     EDITORGROUPS: '編集者グループ'
-    EDIT_ALL_DESCRIPTION: すべてのページを編集
+    EDIT_ALL_DESCRIPTION: 'すべてのページを編集'
     EDIT_ALL_HELP: 'アクセスタブの設定にかかわらず、このサイト上のページを編集するには、"''ページ''セクションへのアクセス"許可が必要です。'
-    Editors: 編集グループ
-    GroupPlaceholder: クリックしてグループを選択
-    HASBROKENLINKS: このページはリンク切れがあります
-    HTMLEDITORTITLE: '内容'
-    INHERIT: 親ページを受け継ぐ
-    LASTPUBLISHED: '最後に公開された'
-    LASTSAVED: 最後に保存した
-    LASTUPDATED: 最後に更新された
-    LINKCHANGENOTE: このページのリンクを変更すると、すべての子ページのリンクに影響を与えます。
-    MENUTITLE: メニュー表示
-    METADESC: 説明
-    METADESCHELP: 検索エンジンは、検索結果を表示するためにこのコンテンツを使用します（ランキングには影響しません）。
+    Editors: '編集グループ'
+    GroupPlaceholder: 'クリックしてグループを選択'
+    HASBROKENLINKS: 'このページはリンク切れがあります'
+    HTMLEDITORTITLE: 内容
+    INHERIT: '親ページを受け継ぐ'
+    LASTUPDATED: '最後に更新された'
+    LINKCHANGENOTE: 'このページのリンクを変更すると、すべての子ページのリンクに影響を与えます。'
+    MENUTITLE: 'メニュー表示'
+    METADESC: '説明'
+    METADESCHELP: '検索エンジンは、検索結果を表示するためにこのコンテンツを使用します（ランキングには影響しません）。'
     METAEXTRA: 'メタタグをカスタム'
     METAEXTRAHELP: '追加のメタ情報用のHTMLタグ。　たとえば、&lt; メタネーム = "カスタムネーム" コンテンツ = "ここにあなたのカスタムコンテンツ" /&gt;'
     MODIFIEDONDRAFTHELP: '公開されていない変更がページにあります'
     MODIFIEDONDRAFTSHORT: 修正された
     MetadataToggle: メタデータ
-    MoreOptions: その他のオプション
-    NOTPUBLISHED: '公開されていません'
+    MoreOptions: 'その他のオプション'
     OBSOLETECLASS: 'このページは、旧式のタイプ{type} です。　保存するとそのタイプがリセットされて、データを失う可能性があります'
     PAGELOCATION: 'ページの場所'
-    PAGETITLE: ページ名
-    PAGETYPE: ページタイプ
-    PARENTID: 親ページ
+    PAGETITLE: 'ページ名'
+    PAGETYPE: 'ページタイプ'
+    PARENTID: '親ページ'
     PARENTTYPE: 'ページの場所'
-    PARENTTYPE_ROOT: 最上位層のページ
-    PARENTTYPE_SUBPAGE: 親ページの下にあるサブページ
-    PERMISSION_GRANTACCESS_DESCRIPTION: コンテンツへのアクセス権限を編集
+    PARENTTYPE_ROOT: '最上位層のページ'
+    PARENTTYPE_SUBPAGE: '親ページの下にあるサブページ'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'コンテンツへのアクセス権限を編集'
     PERMISSION_GRANTACCESS_HELP: '"ページ"セクションでページ固有のアクセス制限の設定を許可します。'
     PageTypNotAllowedOnRoot: 'ページタイプ"{type}"は最上位層のページになることができません'
     PageTypeNotAllowed: 'ページタイプ"{type}"はこの親ページの子になることができません'
     REMOVE_INSTALL_WARNING: '警告: セキュリティ上の理由から、SilverStripeのインストール先にあるinstall.phpを削除してください。'
     REORGANISE_DESCRIPTION: 'サイト構造を変更'
     REORGANISE_HELP: 'サイトツリー内のページをドラッグ・アンド・ドロップで再編集'
-    SHOWINMENUS: メニューに表示しますか？
-    SHOWINSEARCH: 検索に表示しますか？
+    SHOWINMENUS: 'メニューに表示しますか？'
+    SHOWINSEARCH: '検索に表示しますか？'
     TABBEHAVIOUR: 動作
-    TABCONTENT: コンテンツ
-    TABDEPENDENT: 依存ページ
+    TABCONTENT: 'コンテンツ'
+    TABDEPENDENT: '依存ページ'
     TOPLEVEL: 'サイトの内容 (最上位層)'
-    URLSegment: URLセグメント
-    VIEWERGROUPS: ビューアのグループ
-    VIEW_ALL_DESCRIPTION: すべてのページを閲覧
+    URLSegment: 'URLセグメント'
+    VIEWERGROUPS: 'ビューアのグループ'
+    VIEW_ALL_DESCRIPTION: 'すべてのページを閲覧'
     VIEW_ALL_HELP: 'このサイトのページを閲覧するには、アクセスタブの設定に関わらず、"ページのセクションへのアクセス"許可が必要です。'
-    VIEW_DRAFT_CONTENT: ドラフトを見る
+    VIEW_DRAFT_CONTENT: 'ドラフトを見る'
     VIEW_DRAFT_CONTENT_HELP: 'CMSの編集モード以外のページを閲覧させる。　CMSアクセスなしの外部からの共同作業者に最適。'
     VIRTUALPAGEDRAFTWARNING: '仮想ページを公開するためにリンクしたページを公開してください'
     VIRTUALPAGEWARNING: 'このページを公開するために、リンク先のページを選択して最初に保存してください'
     VIRTUALPAGEWARNINGSETTINGS: '公開するために、主なコンテンツの分野からリンク先のページを選択してください'
     Viewers: '閲覧者のグループ'
     Visibility: 表示・非表示
-    has_one_Parent: 親ページ
+    has_one_Parent: '親ページ'
     many_many_BackLinkTracking: 'リンク元を追跡'
-    many_many_ImageTracking: 画像へのリンクを追跡
-    many_many_LinkTracking: リンクを追跡
+    many_many_ImageTracking: '画像へのリンクを追跡'
+    many_many_LinkTracking: 'リンクを追跡'
   SilverStripe\CMS\Model\VirtualPage:
-    CHOOSE: リンクされたページ
+    CHOOSE: 'リンクされたページ'
     EditLink: 編集
-    HEADER: これがバーチャルページです
+    HEADER: 'これがバーチャルページです'
     HEADERWITHLINK: 'これは "{title}" ({link}) からコンテンツをコピーしている仮想ページです'
     PageTypNotAllowedOnRoot: 'この仮想ページに対して元のページの種類{type}はルートレベルに配置されることが許可されていません。'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: 何でも
-    BROKENLINKS: 壊れたリンクのレポート
-    CheckSite: サイトをチェックする
-    CheckSiteDropdownDraft: 下書きサイト
+    BROKENLINKS: '壊れたリンクのレポート'
+    CheckSite: 'サイトをチェックする'
+    CheckSiteDropdownDraft: '下書きサイト'
     CheckSiteDropdownPublished: '公開済みサイト'
-    ColumnDateLastModified: 最終更新日
+    ColumnDateLastModified: '最終更新日'
     ColumnDateLastPublished: '最終公開日'
-    ColumnProblemType: 問題の種類
+    ColumnProblemType: '問題の種類'
     ColumnURL: URL
-    HasBrokenFile: 壊れたファイルがあります
-    HasBrokenLink: リンクが壊れています
-    HasBrokenLinkAndFile: リンク切れのファイルがあります
-    HoverTitleEditPage: ページの編集
-    PageName: ページ名
-    ReasonDropdown: チェックする問題
-    ReasonDropdownBROKENFILE: 壊れたファイル
-    ReasonDropdownBROKENLINK: 壊れているリンク
-    ReasonDropdownRPBROKENLINK: 存在しないページを指しているリダイレクトページ
-    ReasonDropdownVPBROKENLINK: 存在しないページを指している仮想ページ
-    RedirectorNonExistent: 存在しないページを指しているリダイレクトページ
-    VirtualPageNonExistent: 存在しないページを指している仮想ページ
+    HasBrokenFile: '壊れたファイルがあります'
+    HasBrokenLink: 'リンクが壊れています'
+    HasBrokenLinkAndFile: 'リンク切れのファイルがあります'
+    HoverTitleEditPage: 'ページの編集'
+    PageName: 'ページ名'
+    ReasonDropdown: 'チェックする問題'
+    ReasonDropdownBROKENFILE: '壊れたファイル'
+    ReasonDropdownBROKENLINK: '壊れているリンク'
+    ReasonDropdownRPBROKENLINK: '存在しないページを指しているリダイレクトページ'
+    ReasonDropdownVPBROKENLINK: '存在しないページを指している仮想ページ'
+    RedirectorNonExistent: '存在しないページを指しているリダイレクトページ'
+    VirtualPageNonExistent: '存在しないページを指している仮想ページ'
   SilverStripe\CMS\Search\SearchForm:
     FILTERDATEFROM: 開始日
     FILTERDATETO: 終了日
     GO: 開始
-    PAGEFILTERDATEHEADING: 最後に編集された
+    PAGEFILTERDATEHEADING: '最後に編集された'
     SEARCH: 検索
-    SearchResults: 検索結果
+    SearchResults: '検索結果'
   SilverStripe\Reports\SideReport:
-    BROKENFILES: 壊れているファイルがあるページ
-    BROKENREDIRECTORPAGES: リダイレクトしたページが削除されています
+    BROKENFILES: '壊れているファイルがあるページ'
+    BROKENREDIRECTORPAGES: 'リダイレクトしたページが削除されています'
     BROKENVIRTUALPAGES: '削除されたページを参照している仮想ページ'
-    BrokenLinksGroupTitle: 壊れているリンクのレポート
-    ContentGroupTitle: コンテンツのレポート
-    EMPTYPAGES: 空のページ
+    BrokenLinksGroupTitle: '壊れているリンクのレポート'
+    ContentGroupTitle: 'コンテンツのレポート'
+    EMPTYPAGES: '空のページ'
     LAST2WEEKS: '過去２週間以内に編集されたページ'
     ParameterLiveCheckbox: 'ライブ配信のサイトをチェックする'
   SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: コンテンツに関する権限
-    PERMISSIONS_CATEGORY: 役割とアクセス権限
+    CONTENT_CATEGORY: 'コンテンツに関する権限'

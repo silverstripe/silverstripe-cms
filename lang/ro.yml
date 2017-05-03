@@ -8,8 +8,6 @@ ro:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Acces la secţiunea ''{title}'' '
     ACCESS_HELP: 'Permite vizualizarea secțiunii cu arborele de pagini și conținut. Permisiunile de vizualizare și editare pot fi setate specific prin meniul vertical din pagini sau separat în "Permisiuni de conținut". '
-    AddNew: 'Adăugaţi o pagină nouă'
-    AddNewButton: 'Adăugaţi o nouă'
     AddPageRestriction: 'Notă: Unele tipuri de pagini nu sunt permise pentru aceasta selecție'
     ChoosePageParentMode: 'Alegeți unde veţi crea această pagină'
     ChoosePageType: 'Alegeţi tipul de pagină'
@@ -26,34 +24,21 @@ ro:
     REMOVEDPAGE: 'Înlătură ''{title}'' din site-ul publicat'
     REMOVEDPAGEFROMDRAFT: 'Înlătură ''%s'' din site-ul ciornă'
     RESTORED: 'Restaurare ''{title}'' cu succes'
-    ROLLBACK: 'Revenire la versiunea aceasta'
     ROLLEDBACKPUBv2: 'Revenire la versiunea publicată'
     ROLLEDBACKVERSIONv2: 'Revenire la versiunea #%d'
     SAVEDRAFT: 'Salvează ciornă'
-    TabContent: Conținut
-    TabHistory: Istorie
-    TabSettings: Setări
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Sub altă pagină'
     ParentMode_top: 'Nivel top'
-    Title: 'Adăugare pagină'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    AUTHOR: Autor
     COMPAREMODE: 'Mod comparare (selectează 2)'
-    NOTPUBLISHED: Nepublicat
-    PUBLISHER: Redactor
     REVERTTOTHISVERSION: 'Revernire la versiune'
     SHOWUNPUBLISHED: 'Afișează versiunile nepublicate'
-    UNKNOWN: Necunoscut
     VIEW: Vizualizare
     VIEWINGLATEST: 'Vizualizare curentă a ultimii versiuni.'
     VIEWINGVERSION: 'Vizualizarea versiunii {version}.'
-    WHEN: Când
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Filtru
-    ListView: 'View listă'
     MENUTITLE: Pagini
-    TreeView: 'View Arbore'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Toate paginile'
   SilverStripe\CMS\Controllers\ContentController:
@@ -62,37 +47,21 @@ ro:
     CMS: CMS
     DRAFT: Cironă
     DRAFTSITE: 'Site ciornă'
-    Email: Email
     INSTALL_SUCCESS: 'Instalare cu succes!'
-    InstallFilesDeleted: 'Fișierele de instalarea au fost șterse cu succes.'
-    InstallSecurityWarning: 'Din motive de secutitate ar trebuii să ștergeți acum fișierele de instalare, în cazul în care nu planificați o reinstalare ulterioară (<em>necesită drepturi de admin, referințe mai sue</em>). De acum serverul necesită doar drepturi de scriere in directorul "assets", puteți șterge dreturile de scriere pentru celelalte directoare.. <a href="{link}" style="text-align: center;">Click aici pentru ștergerea fișierelor de instalare.</a>'
-    InstallSuccessCongratulations: 'Silverstripe a fost instalat cu succes!'
     LOGGEDINAS: 'Logat ca'
     LOGIN: Login
-    LOGOUT: Logout
+    LOGOUT: 'Logout'
     NOTEWONTBESHOWN: 'Notă: acest mesaj nu v-a fi afișat vizitatorilor'
-    NOTLOGGEDIN: Ne-loginat
+    NOTLOGGEDIN: 'Ne-loginat'
     PUBLISHED: Publicat
     PUBLISHEDSITE: 'Site publicat'
-    Password: Parolă
-    PostInstallTutorialIntro: 'Website-ul este o versiune simplificată a site-ului Silverstripe 3. Pentru a-l extinde, urmăriți link-ul {link}'
-    StartEditing: 'Puteți începe editarea conținutului deschizând <a href="{link}">CMS-ul</a>.'
-    UnableDeleteInstall: 'Fișierele de instalare nu pot fi șterse. Vă rugăm ștergeți fișierele următore manual'
     VIEWPAGEIN: 'Vizualizează pagina în:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arhivă
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Cancel: Anulare
     EMPTY: 'Vă rugăm introduceți un Segment URL sau apăsați anulează'
-    Edit: Editează
     HelpChars: 'Caracterele speciale sunt convertite automat sau șterse'
-    OK: OK
   SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Cod de eroare'
-    DEFAULTERRORPAGECONTENT: '<p>Ne pare rău, se pare că ați încercat să accesati o pagină inexistentă.</p><p>Vă rugăm verificați scrierea corectă a URL-ului dorit și încercați din nou.</p>'
-    DEFAULTERRORPAGETITLE: 'Pagină negasită'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Ne pare rău, s-a petrecut o problemă la procesarea solicitării dumeavoastre.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Eroare de server'
     400: '400 - Solicitare greșită'
     401: '401 - Neautorizat'
     403: '403 - Interzis'
@@ -116,6 +85,11 @@ ro:
     503: '503 - Serviciu nedisponibil'
     504: '504 - Timpul de Gateway expirat'
     505: '500 - Versiune HTTP Nesuportată'
+    CODE: 'Cod de eroare'
+    DEFAULTERRORPAGECONTENT: '<p>Ne pare rău, se pare că ați încercat să accesati o pagină inexistentă.</p><p>Vă rugăm verificați scrierea corectă a URL-ului dorit și încercați din nou.</p>'
+    DEFAULTERRORPAGETITLE: 'Pagină negasită'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Ne pare rău, s-a petrecut o problemă la procesarea solicitării dumeavoastre.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Eroare de server'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'O pagină referitoare a fost creată fără a direcționa către ceva'
     HEADER: 'Pagina v-a redirecționa utilizatorii către altă pagină'
@@ -142,7 +116,7 @@ ro:
     Comments: Comentarii
     Content: Continut
     DEFAULTABOUTTITLE: 'Despre Noi'
-    DEFAULTCONTACTTITLE: Contactați-ne
+    DEFAULTCONTACTTITLE: 'Contactați-ne'
     DEFAULTHOMETITLE: Acasă
     DEPENDENT_NOTE: 'Următoarele pagini depind de această pagină. Include și pagini virtuale, pagini redirecționate, și pagini cu link-uri către conținut.'
     DependtPageColumnLinkType: 'Tip referintă'
@@ -158,12 +132,10 @@ ro:
     HASBROKENLINKS: 'Această pagină are referințe nefuncţionale'
     HTMLEDITORTITLE: Continut
     INHERIT: 'Mostenește din pagina părinte'
-    LASTPUBLISHED: 'Ultima publicare'
-    LASTSAVED: 'Ultima salvare'
     LASTUPDATED: 'Ultimul actualizat'
     LINKCHANGENOTE: 'Schimbarea link-urilor din pagină v-a afecta și link-urile din toți descendenții.'
     MENUTITLE: 'Etichetă navigare'
-    METADESC: Descriere
+    METADESC: 'Descriere'
     METADESCHELP: 'Motoarele de căutare folosesc acest conținut pentru a afișa rezultatele căutării (deși nu v-a influența nota acestuia)'
     METAEXTRA: 'Etichetă Meta preferențială'
     METAEXTRAHELP: 'Etichetele HTML pentru informațiile meta adiționale. De exemplu &lt;meta name="numePreferat" content="conținut preferențial aici" /&gt;'
@@ -171,7 +143,6 @@ ro:
     MODIFIEDONDRAFTSHORT: Modificat
     MetadataToggle: Metadata
     MoreOptions: 'Mai multe opțiuni'
-    NOTPUBLISHED: Nepublicat
     OBSOLETECLASS: 'Această pagină este de un tip {type} scos din uz. Salvând se va reseta tipul și se pot pierde datele'
     PAGELOCATION: 'Locația pagini'
     PAGETITLE: 'Nume pagină'
@@ -237,7 +208,7 @@ ro:
     RedirectorNonExistent: 'pagina de redirectare indică spre o pagină inexistentă'
     VirtualPageNonExistent: 'pagina virtuală indică spre o pagină inexistentă'
   SilverStripe\CMS\Search\SearchForm:
-    FILTERDATEFROM: 'De la'
+    FILTERDATEFROM: De la
     FILTERDATETO: La
     GO: Start
     SEARCH: Căutare
@@ -253,4 +224,3 @@ ro:
     ParameterLiveCheckbox: 'Verifică site live'
   SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Permisiuni de conținut'
-    PERMISSIONS_CATEGORY: 'Permisiuni de rol și acces'

@@ -7,21 +7,17 @@ es_MX:
     PUBALLCONFIRM: 'Por favor publique todas las páginas del sitio, copiando el contenido del boceto al sitio público'
     PUBALLFUN: 'Funcionalidad "Publicar todo"'
     REMOVEDPAGEFROMDRAFT: 'Se ha eliminado ''%s'' del boceto del sitio'
-    ROLLBACK: 'Restaurar a ésta versión'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITEFROM: 'Sito archivado de'
     DRAFTSITE: 'Proyecto del Sitio'
     LOGGEDINAS: 'Conectado cómo'
-    LOGIN: 'Iniciar sesión'
+    LOGIN: Iniciar sesión
     LOGOUT: 'Cerrar sesión'
     NOTEWONTBESHOWN: 'Nota: este mensaje no será mostrado a sus visitantes'
     NOTLOGGEDIN: 'No ha iniciado sesión'
     PUBLISHEDSITE: 'Sitio Publicado'
     VIEWPAGEIN: 'Ver página en:'
   SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Código de Error'
-    DEFAULTERRORPAGECONTENT: '<p>Disculpe, parece que está tratando de ingresar a una página que no existe.</p><p>Por favor verifique la URL que desea visitar e inténtelo de nuevo.</p>'
-    DEFAULTERRORPAGETITLE: 'Página inexistente'
     400: '400 - Petición Incorrecta'
     401: '401 - No estás autorizado'
     403: '403 - Acceso Restringido'
@@ -45,6 +41,9 @@ es_MX:
     503: '503 - Fuera de Servicio'
     504: '504 - Excesivo Tiempo en la Puerta de Acceso'
     505: '505 - Versión HTTP Sin Soporte'
+    CODE: 'Código de Error'
+    DEFAULTERRORPAGECONTENT: '<p>Disculpe, parece que está tratando de ingresar a una página que no existe.</p><p>Por favor verifique la URL que desea visitar e inténtelo de nuevo.</p>'
+    DEFAULTERRORPAGETITLE: 'Página inexistente'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Se ha instalado una página de redirección  sin algún lugar a donde redireccionar.'
     HEADER: 'Esta página dirigirá al usuarios a otra página'
@@ -60,12 +59,12 @@ es_MX:
     ACCESSONLYTHESE: 'Únicamente estas personas (seleccione de la lista)'
     BUTTONCANCELDRAFT: 'Cancelar cambios al boceto'
     BUTTONCANCELDRAFTDESC: 'Eliminar el boceto y regresar a la página publicada actualmente'
-    BUTTONUNPUBLISH: 'Ocultar al público'
+    BUTTONUNPUBLISH: Ocultar al público
     BUTTONUNPUBLISHDESC: 'Quitar ésta página del sitio público'
     Comments: Comentarios
     Content: Contenido
     DEFAULTABOUTTITLE: 'Sobre nosotros'
-    DEFAULTCONTACTTITLE: Contacto
+    DEFAULTCONTACTTITLE: 'Contacto'
     DEFAULTHOMETITLE: Inicio
     DEPENDENT_NOTE: 'Las siguientes páginas depender de esta página. Esto incluye páginas virtuales, redirección de páginas y páginas con enlaces de contenido.'
     DependtPageColumnLinkType: 'Tipo de enlace'
@@ -80,7 +79,7 @@ es_MX:
     HTMLEDITORTITLE: Contenido
     INHERIT: 'Hereda de la página ascendiente'
     MENUTITLE: 'Etiqueta de navegación'
-    METADESC: Descripción
+    METADESC: 'Descripción'
     METAEXTRA: 'Etiquetas meta personalizadas'
     PAGELOCATION: 'Ubicación de la página'
     PAGETITLE: 'Nombre de página'
@@ -94,7 +93,7 @@ es_MX:
     SHOWINMENUS: '¿Mostrar en menús?'
     SHOWINSEARCH: '¿Mostrar en búsqueda?'
     TABBEHAVIOUR: Compotamiento
-    TABCONTENT: Contenido
+    TABCONTENT: 'Contenido'
     TABDEPENDENT: 'Páginas dependientes'
     TOPLEVEL: 'Contenido del sitio (Nivel Superior)'
     URLSegment: 'Segmento de la URL'
@@ -144,4 +143,3 @@ es_MX:
     ParameterLiveCheckbox: 'Comprobar el sitio vivo'
   SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Permisos de contenido'
-    PERMISSIONS_CATEGORY: 'Roles y permisos de acceso'

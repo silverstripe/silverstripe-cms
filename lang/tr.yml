@@ -4,8 +4,6 @@ tr:
   SilverStripe\AssetAdmin\Controller\AssetAdmin:
     PAGES: sayfa(lar)
   SilverStripe\CMS\Controllers\CMSMain:
-    AddNew: 'Yeni sayfa ekle'
-    AddNewButton: 'Yeni ekle'
     ChoosePageParentMode: 'Sayfanın nereye oluşturulacağını seç'
     ChoosePageType: 'Sayfa tipini seç'
     Create: Oluştur
@@ -14,35 +12,15 @@ tr:
     PUBALLFUN: '"Hepsini Yayınla" özelliği'
     PageAdded: 'Sayfa başarıyla oluşturuldu'
     REMOVEDPAGEFROMDRAFT: '''%s'' taslak siteden silindi'
-    ROLLBACK: 'Bu sürüme geri dön'
-    TabContent: İçerik
-    TabHistory: Geçmiş
-    TabSettings: Ayarlar
-  SilverStripe\CMS\Controllers\CMSPageAddController:
-    Title: 'Sayfa ekle'
-  SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    AUTHOR: Yazar
-    NOTPUBLISHED: Yayınlanmamış
-    PUBLISHER: Yayınlayan
-    UNKNOWN: Bilinmeyen
-    WHEN: 'Ne zaman'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Filtre
     MENUTITLE: Sayfalar
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Tüm sayfalar'
   SilverStripe\CMS\Controllers\ContentController:
-    Email: Eposta
     INSTALL_SUCCESS: 'Kurulum Başarılı!'
-    InstallFilesDeleted: 'Kurulum dosyaları başarıyla silindi.'
-    InstallSuccessCongratulations: 'SilverStripe başarıyla kuruldu!'
     LOGOUT: 'Çıkış Yap'
     NOTEWONTBESHOWN: 'Not: Bu mesaj ziyaretçilerinize gösterilmeyecektir.'
-    Password: Parola
   SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Hata kodu'
-    DEFAULTERRORPAGECONTENT: '<p>Varolmayan bir sayfaya ulaşmaya çalışıyorsunuz.</p><p>Lütfen ulaşmak istediğiniz URL''i kontrol edip tekrar deneyiniz.</p>'
-    DEFAULTERRORPAGETITLE: 'Sayfa bulunamadı'
     400: '400 - Hatalı İstek'
     401: '401 - Erişim Engellenmiş'
     403: '403 - Yasak'
@@ -66,6 +44,9 @@ tr:
     503: '503 - Servis Mevcut Değil'
     504: '504 - Arayapı Zaman Aşımı'
     505: '505 - HTTP Versiyonu Desteklenmiyor'
+    CODE: 'Hata kodu'
+    DEFAULTERRORPAGECONTENT: '<p>Varolmayan bir sayfaya ulaşmaya çalışıyorsunuz.</p><p>Lütfen ulaşmak istediğiniz URL''i kontrol edip tekrar deneyiniz.</p>'
+    DEFAULTERRORPAGETITLE: 'Sayfa bulunamadı'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Yönlendirilecek yeri olmayan bir yönlendirme sayfası ayarlandı.'
     HEADER: 'Bu sayfa, kullanıcıları başka bir sayfaya yönlendirir'
@@ -82,12 +63,12 @@ tr:
     ADDEDTODRAFTSHORT: Taslak
     BUTTONCANCELDRAFT: 'Taslak değikliklerini iptal et'
     BUTTONCANCELDRAFTDESC: 'Taslağı sil ve şu an yayında olan sayfaya geri döndür'
-    BUTTONUNPUBLISH: 'Yayından kaldır'
+    BUTTONUNPUBLISH: Yayından kaldır
     BUTTONUNPUBLISHDESC: 'Bu sayfayı yayından kaldır'
     Comments: Yorumlar
     Content: İçerik
-    DEFAULTABOUTTITLE: Hakkımızda
-    DEFAULTCONTACTTITLE: İletişim
+    DEFAULTABOUTTITLE: 'Hakkımızda'
+    DEFAULTCONTACTTITLE: 'İletişim'
     DEFAULTHOMETITLE: Anasayfa
     DependtPageColumnLinkType: 'Link tipi'
     EDITANYONE: 'CMS''e giriş yapabilen herkes'
@@ -99,7 +80,7 @@ tr:
     INHERIT: 'Üst sayfadan kalan'
     LASTUPDATED: 'Son Güncellenen'
     MENUTITLE: 'Navigasyon etiketi'
-    METADESC: Tanım
+    METADESC: 'Tanım'
     METAEXTRA: 'Kişisel Meta Etiketleri'
     MODIFIEDONDRAFTSHORT: Değiştirilmiş
     PAGETITLE: 'Sayfa ismi'
@@ -113,7 +94,7 @@ tr:
     SHOWINMENUS: 'Menülerde gösterilsin mi?'
     SHOWINSEARCH: 'Aramalarda gösterilsin mi?'
     TABBEHAVIOUR: Davranış
-    TABCONTENT: İçerik
+    TABCONTENT: 'İçerik'
     TOPLEVEL: 'Site İçeriği (Üst Seviye)'
     URLSegment: 'URL Kısmı'
     Viewers: 'Görüntüleyici Grupları'

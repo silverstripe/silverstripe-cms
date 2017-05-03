@@ -18,8 +18,6 @@ eo:
     APPLY_FILTER: Serĉi
     ARCHIVE: Enarkivigi
     ARCHIVEDPAGE: 'Enarkivigis paĝon ''%s'''
-    AddNew: 'Aldoni novan paĝon'
-    AddNewButton: 'Aldoni novan'
     AddPageRestriction: 'Noto: iuj tipoj de paĝoj ne estas permesataj por ĉi tiu elektaĵo.'
     CLEAR_FILTER: Vakigi
     Cancel: Rezigni
@@ -28,8 +26,6 @@ eo:
     Create: Krei
     DUPLICATED: 'Sukcese duobligis je ''{title}'''
     DUPLICATEDWITHCHILDREN: 'Sukcese duobligis je ''{title}'' kaj idoj'
-    EMAIL: Retpoŝto
-    ListFiltered: 'Vidigas rezultojn de serĉo.'
     NEWPAGE: 'Nova {pagetype}'
     PAGENOTEXISTS: 'Ĉi tiu paĝo ne ekzistas'
     PAGES: 'Stato de paĝo'
@@ -48,46 +44,29 @@ eo:
     RESTORE_DESC: 'Restaŭri la enarkivigitan version al malneto'
     RESTORE_TO_ROOT: 'Restaŭri malneton ĉe la supra nivelo'
     RESTORE_TO_ROOT_DESC: 'Restaŭri la enarkivigitan version al malneto kiel supranivela paĝo'
-    ROLLBACK: 'Malfari al ĉi tiu versio'
     ROLLEDBACKPUBv2: 'Malfaris ŝanĝojn ĝis la publikigita versio.'
     ROLLEDBACKVERSIONv2: 'Malfaris ŝanĝojn ĝis versio #%d.'
     SAVED: 'Sukcese konservis je ''{title}'''
     SAVEDRAFT: 'Konservi malneton'
-    TabContent: Enhavo
-    TabHistory: Historio
-    TabSettings: Agordoj
-    TreeFiltered: 'Vidigas rezultojn de serĉo.'
-    TreeFilteredClear: Vakigi
     UNPUBLISH_AND_ARCHIVE: 'Malpublikigi kaj sendi al arkivo'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Enmeti paĝon'
     ParentMode_child: 'Sub alia paĝo'
     ParentMode_top: 'Supra nivelo'
-    Title: 'Enmeti paĝon'
   SilverStripe\CMS\Controllers\CMSPageEditController:
     MENUTITLE: 'Redakti paĝon'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    AUTHOR: Aŭtoro
     COMPAREMODE: 'Kompara reĝimo (elektu du)'
     MENUTITLE: Historio
-    MULTISELECT: 'Staplaj agoj'
-    NOTPUBLISHED: Nepublikigita
-    PREVIEW: 'Antaŭvido de retejo'
-    PUBLISHER: Publikiginto
     REVERTTOTHISVERSION: 'Malfari al ĉi tiu versio'
     SHOWUNPUBLISHED: 'Vidigi nepublikigitajn versiojn'
-    UNKNOWN: Nekonata
     VIEW: vido
     VIEWINGLATEST: 'Aktuale vidiĝas la lasta versio.'
     VIEWINGVERSION: 'Aktuale vidiĝas versio {version}.'
-    WHEN: Kiam
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Redakti paĝon'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Filtri
-    ListView: 'Lista vido'
     MENUTITLE: Paĝoj
-    TreeView: 'Arba vido'
   SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Publikigitaj paĝoj'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
@@ -108,33 +87,22 @@ eo:
     CMS: CMS
     DRAFT: Malneta
     DRAFTSITE: 'Malneta retejo'
-    Email: Retpoŝto
     INSTALL_SUCCESS: 'Instalis sukcese!'
-    InstallFilesDeleted: 'Sukcesis forigi instalajn dosierojn.'
-    InstallSecurityWarning: 'Por sekureco vi devus nun forigi la instalajn dosierojn, krom se vi planas reinstali poste  (<em>necesas ensaluti kiel administranto, vidu supre</em>). La reta servilo nun bezonas skriban aliron nur al la dosierujo "assets", do vi povas forigi skriban aliron de ĉiuj aliaj dosierujoj. <a href="{link}" style="text-align: center;">Alklaku ĉi tie por forigi la instalajn dosierojn.</a>'
-    InstallSuccessCongratulations: 'SilverStripe estas sukcese instalita!'
     LOGGEDINAS: 'Ensalutis kiel'
     LOGIN: Ensaluti
-    LOGOUT: Elsaluti
+    LOGOUT: 'Elsaluti'
     NOTEWONTBESHOWN: 'Notu: ne vidigos ĉi tiun mesaĝon al viaj vizitantoj'
     NOTLOGGEDIN: 'Ne ensalutinte'
     PUBLISHED: Publikigita
     PUBLISHEDSITE: 'Publikigita retejo'
-    Password: Pasvorto
-    PostInstallTutorialIntro: 'Ĉi tiu retejo estas tro simpla versio de retejo de SilverStripe 3. Por etendi ĝin, bonvolu rigardi al {link}.'
-    StartEditing: 'Vi povas ekredakti vian enhavon malfermante je <a href="{link}">la CMS</a>.'
-    UnableDeleteInstall: 'Ne eblas forigi instalajn dosierojn. Bonvolu mane forigi la jenajn dosierojn'
     VIEWPAGEIN: 'Vidigi Paĝon en:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Enarkivigita
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Cancel: Rezigni
     EMPTY: 'Bonvolu enigi URL-segmenton aŭ alklaki al Rezigni'
-    Edit: Redakti
     HelpChars: 'Aŭtomate konvertas aŭ forigas specialajn signojn.'
-    OK: Akcepti
   SilverStripe\CMS\Model\ErrorPage:
-    CODE: Erarokodo
+    CODE: 'Erarokodo'
     DEFAULTERRORPAGECONTENT: '<p>Bedaŭrinde, ŝajne vi provis aliri paĝon kiu ne ekzistas.</p><p>Bonvole kontrolu la literumadon de la URL alirota kaj provu denove.</p>'
     DEFAULTERRORPAGETITLE: 'Ne trovis paĝon'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Bedaŭrinde, estis problemo pri via peto.</p>'
@@ -192,14 +160,12 @@ eo:
     HASBROKENLINKS: 'Ĉi tiu paĝo havas rompitajn ligilojn.'
     HTMLEDITORTITLE: Enhavo
     INHERIT: 'Heredi de patra paĝo'
-    LASTPUBLISHED: 'Lasta publikigo'
-    LASTSAVED: 'Laste konservita'
     LASTUPDATED: 'Lastfoje ĝisdatigita'
     LINKCHANGENOTE: 'Ŝanĝi la ligilon de ĉi tiu paĝo ankaŭ influas la ligilojn de ĉiuj idaj paĝoj.'
     LINKSALREADYUNIQUE: '{url} jam estas unika'
     LINKSCHANGEDTO: 'ŝanĝis {url1} -> {url2}'
     MENUTITLE: 'Navigada etikedo'
-    METADESC: Metapriskribo
+    METADESC: 'Metapriskribo'
     METADESCHELP: 'Serĉiloj uzas ĉi tiun enhavon por vidigi serĉajn rezultojn (kvankam ĝi ne influos ilian rangon).'
     METAEXTRA: 'Propraj Meta-etikedoj '
     METAEXTRAHELP: 'HTML-etikedoj por plua metainformo. Ekzemple &lt;meta name="customName" content="via propra enhavo ĉi tie" /&gt;'
@@ -207,7 +173,6 @@ eo:
     MODIFIEDONDRAFTSHORT: Ŝanĝita
     MetadataToggle: Metadatumoj
     MoreOptions: 'Pliaj agordoj'
-    NOTPUBLISHED: 'Ne publikigita'
     OBSOLETECLASS: 'Ĉi tiu paĝo estas de malaktuala tipo {type}. Konservi ĝin reagordos ĝian tipon kaj vi eble perdos datumojn.'
     ONLIVEONLYSHORT: 'Nur ĉe publika'
     ONLIVEONLYSHORTHELP: 'Paĝo estas publikigita, sed ĝi estas forigita el malneto'
@@ -233,7 +198,7 @@ eo:
     TABCONTENT: 'Ĉefa enhavo'
     TABDEPENDENT: 'Dependaj paĝoj'
     TOPLEVEL: 'Enhavo de Retejo (Supra Nivelo)'
-    URLSegment: URL-segmento
+    URLSegment: 'URL-segmento'
     VIEWERGROUPS: 'Grupoj de vidantoj'
     VIEW_ALL_DESCRIPTION: 'Vidigi ajnan paĝon'
     VIEW_ALL_HELP: 'Povo vidigi ajnan paĝon en la retejo, senkonsidere la agordaĵojn en la langeto Aliro. Bezonatas la permeso "Aliro al sekcio ''Paĝoj''"'
@@ -248,10 +213,6 @@ eo:
     many_many_BackLinkTracking: 'Spuri retroligilojn'
     many_many_ImageTracking: 'Spuri Bildojn'
     many_many_LinkTracking: 'Spuri Ligilojn'
-  SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
-    TITLE_TYPE: Tipo
-    TITLE_USED_ON: 'Uzita je'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Ligita paĝo'
     DESCRIPTION: 'Vidigas la enhavon de alia paĝo'
@@ -269,7 +230,7 @@ eo:
     CheckSiteDropdownPublished: 'Publika retejo'
     ColumnDateLastModified: 'Dato de lasta modifo'
     ColumnDateLastPublished: 'Dato de lasta publikigo'
-    ColumnProblemType: Problemtipo
+    ColumnProblemType: 'Problemtipo'
     ColumnURL: URL
     HasBrokenFile: 'havas rompitan dosieron'
     HasBrokenLink: 'havas rompitan ligilon'
@@ -311,5 +272,4 @@ eo:
     LAST2WEEKS: 'Paĝoj redaktitaj dum la lastaj 2 semajnoj'
     ParameterLiveCheckbox: 'Kontroli publikan retejon'
   SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: Enhavopermesoj
-    PERMISSIONS_CATEGORY: 'Roloj kaj aliraj permesoj'
+    CONTENT_CATEGORY: 'Enhavopermesoj'

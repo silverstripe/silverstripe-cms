@@ -4,11 +4,7 @@ ca:
     PUBALLCONFIRM: 'Publica cada pàgina del lloc web, copiant el contingut cap a la versió publicada'
     PUBALLFUN: 'Funcionalitat de "Publica-ho tot"'
     REMOVEDPAGEFROMDRAFT: 'S''ha suprimit  ''%s'' del lloc esborrany'
-    ROLLBACK: 'Torna a aquesta versió'
   SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Codi d''error'
-    DEFAULTERRORPAGECONTENT: '<p>Sembla que intenteu accedir a una pàgina que no existeix.</p><p>Si us plau, reviseu com heu escrit la URL que intenteu accedir i proveu-ho de nou.</p>'
-    DEFAULTERRORPAGETITLE: 'Pàgina no trobada'
     400: '400 - Mala petició'
     401: '401 - Sense autorització'
     403: '403 - Prohibit'
@@ -32,6 +28,9 @@ ca:
     503: '503 - Servei no disponible'
     504: '504 - Temps excedit de la pasarel·la'
     505: '505 - Versió HTTP no suportada'
+    CODE: 'Codi d''error'
+    DEFAULTERRORPAGECONTENT: '<p>Sembla que intenteu accedir a una pàgina que no existeix.</p><p>Si us plau, reviseu com heu escrit la URL que intenteu accedir i proveu-ho de nou.</p>'
+    DEFAULTERRORPAGETITLE: 'Pàgina no trobada'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'S''ha definit una pàgina redirectora sense cap lloc on redirigir.'
     HEADER: 'Aquesta pàgina redirigirà usuaris a una altra pàgina'
@@ -62,7 +61,7 @@ ca:
     HTMLEDITORTITLE: Contingut
     INHERIT: 'Hereda de la pàgina pare'
     MENUTITLE: 'Etiqueta de navegació'
-    METADESC: Descripció
+    METADESC: 'Descripció'
     METAEXTRA: 'Etiquetes Meta personalitzades'
     PAGETITLE: 'Nom de la pàgina'
     PAGETYPE: 'Tipus de pàgina'
@@ -70,7 +69,7 @@ ca:
     SHOWINMENUS: 'Mostra als menús?'
     SHOWINSEARCH: 'Mostra en cerques?'
     TABBEHAVIOUR: Comportament
-    TABCONTENT: Contingut
+    TABCONTENT: 'Contingut'
     TOPLEVEL: 'Contingut del lloc (Nivell principal)'
     URLSegment: 'Segment URL'
     Viewers: 'Grups de visitadors'

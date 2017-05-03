@@ -4,13 +4,9 @@ pt_BR:
     PUBALLCONFIRM: 'Por favor publique todas as páginas no site, copiando content stage to live'
     PUBALLFUN: 'Funcionalidade "Publicar Tudo"'
     REMOVEDPAGEFROMDRAFT: 'Removido ''%s''  do site de rascunho'
-    ROLLBACK: 'Reverter para esta versão'
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: Páginas
   SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Código do erro'
-    DEFAULTERRORPAGECONTENT: '<p>desculpe, mas parece que você esta tentando acessar uma página que não existe.</p><p>Por favor, verifique se você digitou a URL corretamente e tente novamente</p>'
-    DEFAULTERRORPAGETITLE: 'Página não encontrada'
     400: '400 - Requisição Invalida'
     401: '401 - Não autorizado'
     403: '403 - Proibido'
@@ -34,6 +30,9 @@ pt_BR:
     503: '503 - Serviço não esta habilitado'
     504: '504 - Tempo de conecção esgorado'
     505: '505 - Versão do HTTP não suporado'
+    CODE: 'Código do erro'
+    DEFAULTERRORPAGECONTENT: '<p>desculpe, mas parece que você esta tentando acessar uma página que não existe.</p><p>Por favor, verifique se você digitou a URL corretamente e tente novamente</p>'
+    DEFAULTERRORPAGETITLE: 'Página não encontrada'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Uma página de redireccionamento foi criada sem nenhum destino específicado'
     HEADER: 'Esta página redireccionará os utilizadores para outra página'
@@ -43,19 +42,19 @@ pt_BR:
     REDIRECTTOPAGE: 'Uma página no seu website'
     YOURPAGE: 'Página no seu website'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: 'Qualquer pessoa'
+    ACCESSANYONE: Qualquer pessoa
     ACCESSHEADER: 'Quem pode ver esta página?'
     ACCESSLOGGEDIN: 'Utilizadores que tenham feito log-in'
     ACCESSONLYTHESE: 'Somente estas pessoas (escolha da lista)'
     BUTTONCANCELDRAFT: 'Cancelar alterações no rascunho'
     BUTTONCANCELDRAFTDESC: 'Apague o seu rascunho e reverta para o site currrentement publicado'
-    BUTTONUNPUBLISH: 'Anular publicação'
+    BUTTONUNPUBLISH: Anular publicação
     BUTTONUNPUBLISHDESC: 'Remova esta página do site publicado'
     Comments: Comentários
     Content: Conteúdo
     DEFAULTABOUTTITLE: 'Sobre nós'
-    DEFAULTCONTACTTITLE: Contato
-    DEFAULTHOMETITLE: 'Página Inicial'
+    DEFAULTCONTACTTITLE: 'Contato'
+    DEFAULTHOMETITLE: Página Inicial
     EDITANYONE: 'Qualquer pessoa que possa fazer log-in'
     EDITHEADER: 'Quem pode editar esta página?'
     EDITONLYTHESE: 'Somente estas pessoas (escolha da lista)'
@@ -64,7 +63,7 @@ pt_BR:
     HTMLEDITORTITLE: Conteúdo
     INHERIT: 'Herdar da página mãe'
     MENUTITLE: 'Rótulo da navegação'
-    METADESC: Descrição
+    METADESC: 'Descrição'
     METAEXTRA: 'Meta tags personalizadas'
     PAGETITLE: 'Nome da Página'
     PAGETYPE: 'Tipo de página'
@@ -74,7 +73,7 @@ pt_BR:
     SHOWINMENUS: 'Mostrar nos menus?'
     SHOWINSEARCH: 'Uncluir na procura?'
     TABBEHAVIOUR: Comportamento
-    TABCONTENT: Conteúdo
+    TABCONTENT: 'Conteúdo'
     TOPLEVEL: 'Conteúdo do Site (Top Level)'
     URLSegment: 'URL da página'
     Viewers: 'Grupo de visualizadores'

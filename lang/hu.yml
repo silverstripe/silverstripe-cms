@@ -6,8 +6,6 @@ hu:
     BACKLINKCOUNT: 'Felhasználva:'
     PAGES: oldal(ak)
   SilverStripe\CMS\Controllers\CMSMain:
-    AddNew: 'Új oldal hozzáadása'
-    AddNewButton: 'Új hozzáadása'
     Cancel: Mégsem
     ChoosePageParentMode: 'Adja meg az oldal létrehozásának helyét'
     ChoosePageType: 'Válassza ki az oldal típusát'
@@ -24,68 +22,44 @@ hu:
     REMOVEDPAGE: '''{title}'' törölve a publikált oldalról'
     REMOVEDPAGEFROMDRAFT: '''%s'' törlése a piszkozatoldalról'
     RESTORED: '''{title}'' sikeresen helyreállítva'
-    ROLLBACK: 'Visszaállítás ehhez a verzióhoz'
     ROLLEDBACKPUBv2: 'Visszatérés a publikált verzióhoz.'
     ROLLEDBACKVERSIONv2: '#%d verzió beállítva.'
     SAVEDRAFT: 'Piszkozat mentése'
-    TabContent: Tartalom
-    TabHistory: Történet
-    TabSettings: Beállítások
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Másik oldal alatt'
     ParentMode_top: 'Felső szint'
-    Title: 'Oldal hozzáadása'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    AUTHOR: Szerző
     COMPAREMODE: 'Összehasonlítás (select two)'
-    NOTPUBLISHED: 'Nincs publikálva'
-    PUBLISHER: Szerző
     REVERTTOTHISVERSION: 'Visszatérés erre a verzióra'
     SHOWUNPUBLISHED: 'Publikálatlan verziók megjelenítése'
-    UNKNOWN: Ismeretlen
     VIEW: megtekintés
     VIEWINGLATEST: 'Jelenleg ez az utolsó verzió'
     VIEWINGVERSION: 'Verziószám: {version}'
-    WHEN: Mikor
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Szűrő
-    ListView: 'Lista nézet'
     MENUTITLE: Oldalak
-    TreeView: 'Fa nézet'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Összes oldal'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Előnézeti verzió'
-    ARCHIVEDSITEFROM: Archiválva
+    ARCHIVEDSITEFROM: 'Archiválva'
     CMS: Tartalomkezelő
     DRAFT: Piszkozat
     DRAFTSITE: 'Vázlat oldal'
-    Email: E-mail
     INSTALL_SUCCESS: 'Sikeres telepítés!'
-    InstallFilesDeleted: 'A telepítő állományok sikeresen tőrőlve lettek.'
-    InstallSuccessCongratulations: 'A SilverStripe sikeresen telepítve lett!'
     LOGGEDINAS: 'Bejelentkezve, mint'
     LOGIN: Bejelentkezés
-    LOGOUT: Kijelentkezés
+    LOGOUT: 'Kijelentkezés'
     NOTEWONTBESHOWN: 'Megjegyzés: ez az üzenet a látogatók számára nem jelenik meg'
-    NOTLOGGEDIN: Kijelentkezett
+    NOTLOGGEDIN: 'Kijelentkezett'
     PUBLISHED: Publikált
     PUBLISHEDSITE: 'Publikált oldal'
-    Password: Jelszó
-    UnableDeleteInstall: 'A telepítő állományok törlése nem sikerült. Kérjük törölje az alábbi állományokat kézzel.'
     VIEWPAGEIN: 'Oldal megtekintése'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archiválva
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Cancel: Mégsem
     EMPTY: 'Írjon be egy URL szegmenst, vagy kattitson a "mégse" feliratra'
-    Edit: Szerkeszt
     HelpChars: 'A speciális karakterek automatikusan konvertálódnak vagy törlődnek.'
-    OK: OK
   SilverStripe\CMS\Model\ErrorPage:
-    CODE: Hibakód
-    DEFAULTERRORPAGETITLE: 'Az oldal nem található'
-    DEFAULTSERVERERRORPAGETITLE: 'Szerver hiba'
     400: '400 - Hibás kérés'
     401: '401 - Jogosulatlan kérés'
     403: '403 - Tiltott hozzáférés'
@@ -97,6 +71,9 @@ hu:
     409: '409 - Konfliktus'
     410: '410 - Kapcsolat bontva'
     411: '411 - Hossz kötelező'
+    CODE: 'Hibakód'
+    DEFAULTERRORPAGETITLE: 'Az oldal nem található'
+    DEFAULTSERVERERRORPAGETITLE: 'Szerver hiba'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Egy átirányító oldal került létrehozásra, anélkül hogy lenne hova átirányítania.'
     HEADER: 'Ez az oldal egy másik oldalra fogja írányítani a felhasználókat'
@@ -117,12 +94,12 @@ hu:
     BUTTONPUBLISHED: Publikálva
     BUTTONSAVED: Elmentve
     BUTTONSAVEPUBLISH: 'Ment és publikál'
-    BUTTONUNPUBLISH: 'Publikálás visszavonása'
+    BUTTONUNPUBLISH: Publikálás visszavonása
     BUTTONUNPUBLISHDESC: 'Oldal eltávolítása a publikált oldalról'
     Comments: Kommentárok
     Content: Tartalom
-    DEFAULTABOUTTITLE: Rólunk
-    DEFAULTCONTACTTITLE: Kapcsolat
+    DEFAULTABOUTTITLE: 'Rólunk'
+    DEFAULTCONTACTTITLE: 'Kapcsolat'
     DEFAULTHOMETITLE: Kezdőlap
     DependtPageColumnLinkType: 'Hivatkozás típusa'
     DependtPageColumnURL: Link
@@ -136,24 +113,21 @@ hu:
     HASBROKENLINKS: 'Ez az oldal hibás linkeket tartalmaz.'
     HTMLEDITORTITLE: Tartalom
     INHERIT: 'Azonos a szülő értékével'
-    LASTPUBLISHED: 'Publikálás utolsó időpontja'
-    LASTSAVED: 'Utoljára frissítve'
     LASTUPDATED: 'Utoljára frissítve'
     MENUTITLE: 'Navigációs cimke'
-    METADESC: Leírás
+    METADESC: 'Leírás'
     METAEXTRA: 'Saját meta címkék'
     MODIFIEDONDRAFTHELP: 'Az oldal egyes módosításai nincsenek publikálva'
     MODIFIEDONDRAFTSHORT: Változtatva
     MetadataToggle: Metaadatok
     MoreOptions: 'További lehetőségek'
-    NOTPUBLISHED: 'Nincs publikálva'
     PAGELOCATION: 'Oldal helyzete'
     PAGETITLE: 'Oldal neve'
     PAGETYPE: 'Oldal típusa'
     PARENTID: 'Szülő oldal'
     PARENTTYPE: 'Oldal helyzete'
     PARENTTYPE_ROOT: 'Felső szintű oldal'
-    PARENTTYPE_SUBPAGE: Aloldal
+    PARENTTYPE_SUBPAGE: 'Aloldal'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Tartalom hozzáférését szabályozza'
     PageTypNotAllowedOnRoot: 'A "{type}" oldal nem helyezkedhet el a gyökér szintjén'
     PageTypeNotAllowed: 'A "{type}" oldal nem helyezkedhet el a kiválasztott szülő alá'
@@ -163,7 +137,7 @@ hu:
     SHOWINMENUS: 'Látható legyen a menükben?'
     SHOWINSEARCH: 'Látható legyen a keresésben?'
     TABBEHAVIOUR: Viselkedés
-    TABCONTENT: Tartalom
+    TABCONTENT: 'Tartalom'
     TABDEPENDENT: 'Kapcsolodó oldalak'
     TOPLEVEL: 'Oldaltartalom (legfelső szint)'
     URLSegment: 'URL szegmens'
@@ -195,18 +169,18 @@ hu:
     HasBrokenLinkAndFile: 'Hibás link és fájl'
     HoverTitleEditPage: 'Oldal szerkesztése'
     PageName: 'Oldal neve'
-    ReasonDropdown: Ellenőrizendő
+    ReasonDropdown: 'Ellenőrizendő'
     ReasonDropdownBROKENFILE: 'Hibás állomány'
     ReasonDropdownBROKENLINK: 'Hibás hivatkozás'
     ReasonDropdownRPBROKENLINK: '"Redirector" oldal nem létező oldalra hivatkozik'
     ReasonDropdownVPBROKENLINK: 'Virtuális oldal nem létező oldalra hivatkozik'
     VirtualPageNonExistent: 'a virtuális oldal egy nem létező oldalra hivatkozik'
   SilverStripe\CMS\Search\SearchForm:
-    FILTERDATEFROM: '-tól'
-    FILTERDATETO: '-ig'
+    FILTERDATEFROM: -tól
+    FILTERDATETO: -ig
     GO: Mehet
     SEARCH: Keresés
-    SearchResults: Találatok
+    SearchResults: 'Találatok'
   SilverStripe\Reports\SideReport:
     BROKENFILES: 'Oldalak hibás fájl hivatkozásokkal'
     BROKENREDIRECTORPAGES: 'RedirectorPage-ek törölt oldalakra hivatkoznak'
@@ -218,4 +192,3 @@ hu:
     ParameterLiveCheckbox: 'Éles oldal megtekintése'
   SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Tartalommal kapcsolatos jogosultságok'
-    PERMISSIONS_CATEGORY: 'Szerepkörök kés jogosultságok'

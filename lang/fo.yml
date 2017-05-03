@@ -4,12 +4,11 @@ fo:
     PUBALLCONFIRM: 'Vinarliga almenna kunngerð allar síðurnar á heimasíðuni,  avrita innihaldsstøðið til beinleiðis'
     PUBALLFUN: '"Ger alt alment" funka'
     REMOVEDPAGEFROMDRAFT: 'Strikaði ''%s'' frá kladdu heimasíðuni'
-    ROLLBACK: 'Far aftur til hesa útgávuna'
   SilverStripe\CMS\Model\ErrorPage:
-    CODE: Feilkota
-    DEFAULTERRORPAGETITLE: 'Síðan var ikki funnin'
     404: '404 - Ikki funnin'
     411: '411 - Longd er kravd'
+    CODE: 'Feilkota'
+    DEFAULTERRORPAGETITLE: 'Síðan var ikki funnin'
   SilverStripe\CMS\Model\RedirectorPage:
     REDIRECTTO: 'Víðarisend til'
     REDIRECTTOEXTERNAL: 'Onnur heimasíðu'
@@ -22,7 +21,7 @@ fo:
     ACCESSONLYTHESE: 'Bert hesi fólkini (vel fra yvirliti)'
     BUTTONCANCELDRAFT: 'Avlýs kladdu broytingarnar'
     BUTTONCANCELDRAFTDESC: 'Strika tína kladdu, og far aftur til tí nuverandi almennu síðuna'
-    BUTTONUNPUBLISH: 'Óalmenna kunngerð'
+    BUTTONUNPUBLISH: Óalmenna kunngerð
     BUTTONUNPUBLISHDESC: 'Strika hesa síðuna frá tí almennu heimasíðuni'
     Comments: Viðmerkingar
     Content: Innihald
@@ -34,16 +33,16 @@ fo:
     EDITONLYTHESE: 'Bert hesa fólkini (vel frá yvirliti)'
     HASBROKENLINKS: 'Hendan síðan inniheldur brotnar leinkur.'
     HTMLEDITORTITLE: Innihald
-    METADESC: Frágreiðing
+    METADESC: 'Frágreiðing'
     METAEXTRA: 'Serlig meta frámerki'
     PAGETITLE: 'Navn á síðuni'
     PAGETYPE: 'Slag av síðu'
     SHOWINMENUS: 'Vís á vælmyndum?'
     SHOWINSEARCH: 'Vís í leiting?'
     TABBEHAVIOUR: Virkisháttur
-    TABCONTENT: Innihald
+    TABCONTENT: 'Innihald'
     TOPLEVEL: 'Heimasíðu innihald (Fyrsta støði)'
-    has_one_Parent: Yvirsíða
+    has_one_Parent: 'Yvirsíða'
   SilverStripe\CMS\Search\SearchForm:
     GO: Víðari
     SEARCH: Leita

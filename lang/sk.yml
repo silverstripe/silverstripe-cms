@@ -18,8 +18,6 @@ sk:
     APPLY_FILTER: Hľadať
     ARCHIVE: Archív
     ARCHIVEDPAGE: 'Archivovaná stránka ''%s'''
-    AddNew: 'Pridať novou stránku'
-    AddNewButton: 'Pridať nový'
     AddPageRestriction: 'Poznámka: Niektoré typy stránok nie sú povolené pre tento výber'
     CLEAR_FILTER: Vyčistiť
     Cancel: Zrušiť
@@ -28,8 +26,6 @@ sk:
     Create: Vytvoriť
     DUPLICATED: 'Duplikované ''{title}'' úspešne'
     DUPLICATEDWITHCHILDREN: 'Duplikované ''{title}'' a potomkovia úspešne'
-    EMAIL: E-mail
-    ListFiltered: 'Zobrazenie výsledkov vyhľadávania.'
     NEWPAGE: 'Nová {pagetype}'
     PAGENOTEXISTS: 'Táto stránka neexistuje.'
     PAGES: 'Stav stránky'
@@ -48,46 +44,29 @@ sk:
     RESTORE_DESC: 'Obnoviť archivovanú verziu na koncept'
     RESTORE_TO_ROOT: 'Obnoviť koncept na najvyšiu úroveň'
     RESTORE_TO_ROOT_DESC: 'Obnoviť archivovanú verziu na koncept ako stránku najvyššej úrovne'
-    ROLLBACK: 'Návrat späť na túto verziu'
     ROLLEDBACKPUBv2: 'Vrátené späť na zverejnenú verziu.'
     ROLLEDBACKVERSIONv2: 'Vrátené späť na verziu #%d.'
     SAVED: 'Uložené ''{title}'' úspešne.'
     SAVEDRAFT: 'Uložiť koncept'
-    TabContent: Obsah
-    TabHistory: História
-    TabSettings: Nastavenia
-    TreeFiltered: 'Zobrazenie výsledkov vyhľadávania.'
-    TreeFilteredClear: Vyčistiť
     UNPUBLISH_AND_ARCHIVE: 'Nezverejniť a archivovať'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Pridať stránku'
     ParentMode_child: 'Pod inú stránku'
     ParentMode_top: 'Najvyššia úroveň'
-    Title: 'Pridať stránku'
   SilverStripe\CMS\Controllers\CMSPageEditController:
     MENUTITLE: 'Upraviť stránku'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    AUTHOR: Autor
     COMPAREMODE: 'Mód porovnania (vyberte dva)'
     MENUTITLE: História
-    MULTISELECT: 'Hromadné akcie'
-    NOTPUBLISHED: Nepublikovaná
-    PREVIEW: 'Náhľad webu'
-    PUBLISHER: Vydavateľ
     REVERTTOTHISVERSION: 'Vrátiť sa k tejto verzii'
     SHOWUNPUBLISHED: 'Zobraziť nepublikované verzie'
-    UNKNOWN: Neznáma
     VIEW: zobraziť
     VIEWINGLATEST: 'Práve sa zobrazuje posledná verzia.'
     VIEWINGVERSION: 'Práve sa zobrazuje verzia {version}.'
-    WHEN: Keď
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Upraviť stránku'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Filtrovať
-    ListView: 'Zobraziť zoznam'
     MENUTITLE: Stránky
-    TreeView: 'Zobraziť strom'
   SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Zverejnené stránky'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
@@ -108,31 +87,20 @@ sk:
     CMS: CMS
     DRAFT: Koncept
     DRAFTSITE: 'Koncept webu'
-    Email: E-mail
     INSTALL_SUCCESS: 'Inštalácia úspešná!'
-    InstallFilesDeleted: 'Inštalačné súbory boli odstranené úspešne.'
-    InstallSecurityWarning: 'Z bezpečnostných dôvodov by ste mali teraz odstrániť inštalačné súbory, ak  neplánujete preinštalovať neskôr (<em> vyžaduje admin prihlásenie, pozri vyššie </em>). Webový server teraz potrebuje už len prístup pre zápis do priečinka "assets", môžete odstrániť práva zápisu zo všetkých ostatných priečinkov. <a href="{link}" style="text-align: center;"> Kliknite tu pre odstránenie inštalačných súborov. </a>'
-    InstallSuccessCongratulations: 'SilverStripe bol nainštalovaný úspešne!'
     LOGGEDINAS: 'Prihlásený ako'
     LOGIN: Prihlásiť
-    LOGOUT: Odhlásiť
+    LOGOUT: 'Odhlásiť'
     NOTEWONTBESHOWN: 'Poznámka: Táto správa sa nebude zobrazovať vašim návštevníkom'
-    NOTLOGGEDIN: Neprihlásený
+    NOTLOGGEDIN: 'Neprihlásený'
     PUBLISHED: Publikované
     PUBLISHEDSITE: 'Verejný web'
-    Password: Heslo
-    PostInstallTutorialIntro: 'Tento web je zjednodušená verzia SilverStripe 3. webu. Pre rošírenie, pozrite sa na {link}, prosím.'
-    StartEditing: 'Môžte začať editáciu vášho obsahu otvorením <a href="{link}">CMS</a>.'
-    UnableDeleteInstall: 'Nepodarilo sa smazať inštalačné súbory. Smažte ručne súbory uvedené dole'
     VIEWPAGEIN: 'Prezrieť stránku v:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archivované
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Cancel: Zrušiť
     EMPTY: 'Zadajte prosím URL segment alebo kliknite zrušiť'
-    Edit: Editovať
     HelpChars: 'Špeciálne znaky sú automaticky zkonvertované alebo ostránené.'
-    OK: Ok
   SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Chybový kód'
     DEFAULTERRORPAGECONTENT: '<p>Prepáčte, vyzerá to tak, že sa snažíte otvoriť stránku, ktorá neexistuje.</p><p> Skontrolujte napísanú URL, prosím.</p>'
@@ -174,7 +142,7 @@ sk:
     Comments: Komentáre
     Content: Obsah
     DEFAULTABOUTTITLE: 'O nás'
-    DEFAULTCONTACTTITLE: Kontakt
+    DEFAULTCONTACTTITLE: 'Kontakt'
     DEFAULTHOMECONTENT: '<p>Vitajte v SilverStripe! Toto je základná domáca stránka. Môžte ju upraviť otvorením <a href="admin/">CMS</a>.</p><p>Môžte tiež vstúpiť k <a href="http://docs.silverstripe.org">dokumentácii vývojára</a>, alebo sa priučit na <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lekciách</a>.</p>'
     DEFAULTHOMETITLE: Domov
     DEPENDENT_NOTE: 'Nasledujúce stránky sú závislé na tejto stránke. To zahŕňa virtuálne stránky, presmerovacie stránky a stránky s odkazmi obsahu.'
@@ -192,8 +160,6 @@ sk:
     HASBROKENLINKS: 'Táto stránka obsahuje nefunkčné odkazy.'
     HTMLEDITORTITLE: Obsah
     INHERIT: 'Dediť od nadradenej stránky'
-    LASTPUBLISHED: 'Posledne zverejnené'
-    LASTSAVED: 'Posledne uložené'
     LASTUPDATED: 'Posledne aktualizované'
     LINKCHANGENOTE: 'Zmenenie odkazu tejto stránky ovplyvní tiež odkazy všetkých podstránok.'
     LINKSALREADYUNIQUE: ' {url} je vždy unikátne'
@@ -207,7 +173,6 @@ sk:
     MODIFIEDONDRAFTSHORT: Zmenené
     MetadataToggle: Metaúdaje
     MoreOptions: 'Viacej volieb'
-    NOTPUBLISHED: Nepublikované
     OBSOLETECLASS: 'Táto stránka je zastaralého typu {type}. Uloženie spôsobí zrušenie jeho typu a vy môžte stratiť dáta'
     ONLIVEONLYSHORT: 'Len publikované'
     ONLIVEONLYSHORTHELP: 'Stránka je zverejnená, ale bola odstránená z konceptu'
@@ -246,10 +211,6 @@ sk:
     many_many_BackLinkTracking: 'Záznamy o Backlinkoch'
     many_many_ImageTracking: 'Záznamy o obrázkoch'
     many_many_LinkTracking: 'Záznamy o odkazoch'
-  SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
-    TITLE_TYPE: Typ
-    TITLE_USED_ON: 'Použité na'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Odkazovaná stránka'
     DESCRIPTION: 'Zobrazí obsah inej stránky'
@@ -310,4 +271,3 @@ sk:
     ParameterLiveCheckbox: 'Skontrolovať publikovanú stránku'
   SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Práva k obsahu'
-    PERMISSIONS_CATEGORY: 'Úlohy a prístupové práva'

@@ -4,7 +4,7 @@ bg:
     PUBLISH_PAGES: Публикувай
     RESTORE: Възстанови
     RESTORED_PAGES: 'Бяха възстановени %d страници'
-    UNPUBLISH_PAGES: 'Премахни от публикация'
+    UNPUBLISH_PAGES: Премахни от публикация
   SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Използвано от:'
     PAGES: Страница/и
@@ -15,10 +15,8 @@ bg:
     ACCESS: 'Достъп до ''{title}'' секция'
     ACCESS_HELP: 'Разреши излгед на раздела съдържащ структурното дърво и съдържанието. Правата за достъп и редактиране могат да бъдат променени през падащи менюта (dropdowns), както и чрез отделни права на съдържанието'
     APPLY_FILTER: Търси
-    ARCHIVE: 'Архивирай'
+    ARCHIVE: Архивирай
     ARCHIVEDPAGE: 'Страница ''%s'' беше архивирана'
-    AddNew: 'Добави страница'
-    AddNewButton: 'Добави нова страница'
     AddPageRestriction: 'Забележка: Някои типове страници не могат да бъдат под-страници на избраната'
     CLEAR_FILTER: Изчисти
     Cancel: Отказ
@@ -27,8 +25,6 @@ bg:
     Create: Създай
     DUPLICATED: '''{title}'' беше успешно дублирана'
     DUPLICATEDWITHCHILDREN: '''{title}'' и под-страниците бяха успешно дублирани'
-    EMAIL: 'Ел. поща'
-    ListFiltered: 'Резултати от търсенето'
     NEWPAGE: 'Нова страница {pagetype}'
     PAGENOTEXISTS: 'Тази страница не съществува'
     PAGETYPEANYOPT: Всички
@@ -45,46 +41,29 @@ bg:
     RESTORE_DESC: 'Възстанови архивираната версия до чернова'
     RESTORE_TO_ROOT: 'Възстанови черновата на най-високо ниво'
     RESTORE_TO_ROOT_DESC: 'Възстанови архивираната версия до чернова като страница от най-високо ниво'
-    ROLLBACK: 'Върни към тази версия'
     ROLLEDBACKPUBv2: 'Беше върнато до публикуваната версия'
     ROLLEDBACKVERSIONv2: 'Беше върната версия #%d.'
     SAVED: 'Страница ''{title}'' беше записана успешно.'
     SAVEDRAFT: 'Запиши чернова'
-    TabContent: Съдържание
-    TabHistory: История
-    TabSettings: Настройки
-    TreeFiltered: 'Резултати от търсенето'
-    TreeFilteredClear: 'Нулирай филтъра'
     UNPUBLISH_AND_ARCHIVE: 'Премахни от публикация и архивирай'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Добавяне на страница'
     ParentMode_child: 'Под друга страница'
     ParentMode_top: 'Най-високо ниво'
-    Title: 'Добави страница'
   SilverStripe\CMS\Controllers\CMSPageEditController:
     MENUTITLE: 'Редактиране на страница'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    AUTHOR: Автор
     COMPAREMODE: 'Режим на сравнение (Избери два)'
     MENUTITLE: История
-    MULTISELECT: 'Групови действия'
-    NOTPUBLISHED: Непубликувани
-    PREVIEW: 'Преглед на сайта'
-    PUBLISHER: 'Публикувана от'
     REVERTTOTHISVERSION: 'Върни към тази версия'
     SHOWUNPUBLISHED: 'Покажи непублекуваната версия'
-    UNKNOWN: Неизвестно
     VIEW: Изглед
     VIEWINGLATEST: 'Последна версия'
     VIEWINGVERSION: 'Версия {version}.'
-    WHEN: Кога
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Редактиране на страница'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Филтър
-    ListView: 'Изглед в списък'
     MENUTITLE: Страници
-    TreeView: 'Дървовиден изглед'
   SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Публикувани страници'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
@@ -94,38 +73,23 @@ bg:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Преглед на версията'
     ARCHIVEDSITEFROM: 'Архивиран сайт от'
-    CMS: 'СУС (CMS)'
+    CMS: СУС (CMS)
     DRAFT: Чернова
-    DRAFTSITE: Чернови
-    Email: 'Ел. поща'
+    DRAFTSITE: 'Чернови'
     INSTALL_SUCCESS: 'Инсталацията премина успешно.'
-    InstallFilesDeleted: 'Инсталационните файлове са успешно изтрити.'
-    InstallSecurityWarning: 'От причини за сигурност трябва да изтриете инсталационните файлове, освен ако планирате да преинсталирате (<em>необходимо е да влезете като администратор</em>). Можете също да махнете правата за писане (write access) на всички папки на сървъра, с изключение на папка "assets". <a href="{link}" style="text-align: center;">Изтрийте инсталационните файлове.</a>'
-    InstallSuccessCongratulations: 'SilverStripe беше инсталиран успешно!'
     LOGGEDINAS: 'Влязъл като'
-    LOGIN: 'Вход'
+    LOGIN: Вход
     LOGOUT: 'Изход'
     NOTEWONTBESHOWN: 'Забележка: Това съобщение няма да се показва на Вашите посетители'
     NOTLOGGEDIN: 'Извън системата'
     PUBLISHED: Публикувана
     PUBLISHEDSITE: 'Публикувани страници'
-    Password: Парола
-    StartEditing: 'Можете да започнете да редактирате съдържанието на вашия сайт, влизайки в <a href="{link}">СУС (CMS)</a>.'
-    UnableDeleteInstall: 'Не може да бъдат изтрити инсталационните файлове. Моля изтриите ги "на ръка"'
     VIEWPAGEIN: 'Изглед на страница в:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: 'Архивирани'
+    ARCHIVED: Архивирани
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Cancel: Отказ
-    Edit: Промени
     HelpChars: 'Специалните символи са автоматично конвертирани или изтрити.'
-    OK: OK
   SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Грешка в кода'
-    DEFAULTERRORPAGECONTENT: '<p>Опитвате се да отворите страница, която не съществува.</p><p>Проверете изписването на адреса и опитайте отново.</p>'
-    DEFAULTERRORPAGETITLE: 'Страницата не беше намерена'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Проблем при изпълнението на заявката.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Сървърна грешка'
     400: '400 - Лошо Поискване'
     401: '401 - Неауторизирано'
     403: '403 - Забранено'
@@ -151,6 +115,11 @@ bg:
     503: '503 - Услугата не е налична'
     504: '504 - Gateway времето изтече'
     505: '505 - HTTP Версия не се поддържа'
+    CODE: 'Грешка в кода'
+    DEFAULTERRORPAGECONTENT: '<p>Опитвате се да отворите страница, която не съществува.</p><p>Проверете изписването на адреса и опитайте отново.</p>'
+    DEFAULTERRORPAGETITLE: 'Страницата не беше намерена'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Проблем при изпълнението на заявката.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Сървърна грешка'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Създадена е страница за пренасочване без да има накъде да се пренасочи.'
     HEADER: 'Тази страница ще пренасочи потребители към друга страница'
@@ -168,14 +137,14 @@ bg:
     ADDEDTODRAFTSHORT: Чернова
     APPEARSVIRTUALPAGES: 'Съдържанието присъства във виртуалните страници в секция {title}.'
     ARCHIVEDPAGEHELP: 'Страницата е премахната от сайта и от черновите'
-    ARCHIVEDPAGESHORT: 'Архивирани'
+    ARCHIVEDPAGESHORT: Архивирани
     BUTTONCANCELDRAFT: 'Отмени промените в черновата'
     BUTTONCANCELDRAFTDESC: 'Изтрий черновата и отиди на текущата публикувана страница'
     BUTTONDELETEDESC: 'Премахни от чернова/публикация и запиши в архива'
     BUTTONPUBLISHED: Публикувана
     BUTTONSAVED: Записана
     BUTTONSAVEPUBLISH: 'Запиши и публикувай'
-    BUTTONUNPUBLISH: 'Премахни от публикация'
+    BUTTONUNPUBLISH: Премахни от публикация
     BUTTONUNPUBLISHDESC: 'Премахни тази страница от публикувания сайт'
     Comments: Коментари
     Content: Съдържание
@@ -200,20 +169,17 @@ bg:
     HASBROKENLINKS: 'Тази страница съдържа невалидни препратки.'
     HTMLEDITORTITLE: Съдържание
     INHERIT: 'Наследи от предишната в йерархията страница'
-    LASTPUBLISHED: 'Публикувана на'
-    LASTSAVED: 'Записана на'
     LASTUPDATED: 'Последна промяна'
     LINKCHANGENOTE: 'Промяната на адреса на тази страница, ще повлияе на адресите на всички подстраници на тази страница'
     MENUTITLE: 'Етикет на навигация'
-    METADESC: Описание
+    METADESC: 'Описание'
     METADESCHELP: 'Търсачките използват това съдържание при показване на резултатите от търсенето (въпреки, че това няма да повлияе на тяхното класиране).'
     METAEXTRA: 'Собствени етикети'
     METAEXTRAHELP: 'HTML тагове за допълнителна meta информация. Например &lt;meta name="customName" content="вашето съдържание" /&gt;'
     MODIFIEDONDRAFTHELP: 'По страницата са правени промени, които не са публикувани'
     MODIFIEDONDRAFTSHORT: Променен
-    MetadataToggle: 'Meta данни за страницата'
+    MetadataToggle: Meta данни за страницата
     MoreOptions: 'Още действия'
-    NOTPUBLISHED: Непубликувана
     OBSOLETECLASS: 'Страницата е от тип {type}, който вече не съществува. Записването ѝ ще нулира типа ѝ и можа да загубите данни.'
     ONLIVEONLYSHORTHELP: 'Страницата е публикувана, но беше изтрита от черновите'
     PAGELOCATION: 'Местонахождение на страницата'
@@ -222,7 +188,7 @@ bg:
     PARENTID: 'Страница родител'
     PARENTTYPE: 'Местонахождение на страницата'
     PARENTTYPE_ROOT: 'Страница от най-високо ниво в йерархията'
-    PARENTTYPE_SUBPAGE: Подстраница
+    PARENTTYPE_SUBPAGE: 'Подстраница'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Управление на правата за достъп до съдържанието'
     PERMISSION_GRANTACCESS_HELP: 'Разреши настройката на специфични ограничения за достъп в раздела "Страници"'
     PLURALNAME: Страници
@@ -235,7 +201,7 @@ bg:
     SHOWINSEARCH: 'Покажи в търсене?'
     SINGULARNAME: Страница
     TABBEHAVIOUR: Поведение
-    TABCONTENT: Съдържание
+    TABCONTENT: 'Съдържание'
     TABDEPENDENT: 'Зависими страници'
     TOPLEVEL: 'Съдържание на сайта (Top level)'
     URLSegment: 'URL - Сегмент'
@@ -250,10 +216,6 @@ bg:
     many_many_BackLinkTracking: 'Следене на "обратни линкове"'
     many_many_ImageTracking: 'Следене на снимките'
     many_many_LinkTracking: 'Следене на линовете'
-  SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
-    TITLE_TYPE: Тип
-    TITLE_USED_ON: 'Използван в'
   SilverStripe\CMS\Model\VirtualPage:
     EditLink: промени
     HEADER: 'Това е виртуална страница'
@@ -261,12 +223,12 @@ bg:
     Any: Всички
     BROKENLINKS: 'Списък на развалени линкове'
     CheckSite: 'Провери сайта'
-    CheckSiteDropdownDraft: Чернови
+    CheckSiteDropdownDraft: 'Чернови'
     CheckSiteDropdownPublished: 'Публикувани страници'
     ColumnDateLastModified: 'Дата на последна промяна'
     ColumnDateLastPublished: 'Дата на последно публикуване'
     ColumnProblemType: 'Тип на проблема'
-    ColumnURL: 'Неработещи линкове'
+    ColumnURL: Неработещи линкове
     HasBrokenFile: 'има развален файл'
     HasBrokenLink: 'има развален линк'
     HasBrokenLinkAndFile: 'има развален линк и файл'
@@ -298,4 +260,3 @@ bg:
     ParameterLiveCheckbox: 'Провери реалния сайт'
   SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Права по съдържанието'
-    PERMISSIONS_CATEGORY: 'Роли и права за достъп'

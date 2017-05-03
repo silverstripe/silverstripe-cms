@@ -8,8 +8,6 @@ sr:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Приступ ''{title}'' секцији'
     ACCESS_HELP: 'Дозвољава преглед секције која садржи стабло страница и садржај. Дозволе за преглед и уређивање могу се подесити путем специфичних падајућих листи појединачних страница, као и путем "Дозволе за садржај".'
-    AddNew: 'Додај нову страницу'
-    AddNewButton: 'Додај нову'
     AddPageRestriction: 'Напомена: Неки типови страница нису дозвољени за овај избор'
     ChoosePageParentMode: 'Изаберите где желите да креирате ову страницу'
     ChoosePageType: 'Изабери тип странице'
@@ -18,7 +16,7 @@ sr:
     DUPLICATEDWITHCHILDREN: '''{title}'' и деца успешно дуплирани'
     NEWPAGE: 'Нова {pagetype}'
     PAGENOTEXISTS: 'Ова страница не постоји'
-    PAGETYPEANYOPT: 'Било која'
+    PAGETYPEANYOPT: Било која
     PUBALLCONFIRM: 'Објавите сваку страну на овом сајту копирањем садржај на жив сајт.'
     PUBALLFUN: 'Функција „Објави све“ '
     PUBPAGES: 'Урађено: Објављено {count} страница'
@@ -26,34 +24,21 @@ sr:
     REMOVEDPAGE: 'Са објављеног сајта уклоњена је страница ''{title}'''
     REMOVEDPAGEFROMDRAFT: 'Страница ''%s'' је уклоњена из нацрта сајта'
     RESTORED: '''{title}'' успешно обновљен'
-    ROLLBACK: 'Врати се на ову верзију'
     ROLLEDBACKPUBv2: 'Враћено на објављену верзију.'
     ROLLEDBACKVERSIONv2: 'Враћено на верзију #%d.'
     SAVEDRAFT: 'Сачувај нацрт'
-    TabContent: Садржај
-    TabHistory: Историја
-    TabSettings: Подешавања
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Као подстраницу друге странице'
     ParentMode_top: 'Вршни ниво'
-    Title: 'Додај страницу'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    AUTHOR: Аутор
     COMPAREMODE: 'Режим поређења (изабери два)'
-    NOTPUBLISHED: Необјављено
-    PUBLISHER: Објављивач
     REVERTTOTHISVERSION: 'Врати на ову верзију'
     SHOWUNPUBLISHED: 'Прикажи необјављене верзије'
-    UNKNOWN: Непознато
     VIEW: преглед
     VIEWINGLATEST: 'Тренутно се приказује последња верзија.'
     VIEWINGVERSION: 'Тренутно је приказана верзија {version}.'
-    WHEN: Датум
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Филтер
-    ListView: 'Приказ у виду листе'
     MENUTITLE: Странице
-    TreeView: 'Приказ у виду стабла'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Све странице'
   SilverStripe\CMS\Controllers\ContentController:
@@ -62,37 +47,21 @@ sr:
     CMS: CMS
     DRAFT: Нацрт
     DRAFTSITE: 'Нарцт сајта'
-    Email: Е-пошта
     INSTALL_SUCCESS: 'Инсталација је успешно обављена!'
-    InstallFilesDeleted: 'Инсталационе датотеке су успешно обрисане.'
-    InstallSecurityWarning: 'Из безбедносних разлога требали би да обришете инсталационе датотеке, осим ако не планирате да касније поново покрећете инсталацију (<em>захтева администраторски приступ, види изнад</em>). Такође, web server захтева право писања само за "assets" фасциклу, па можете уклонити право писања за све друге фасцикле. <a href="{link}" style="text-align: center;">Кликни овде да обришеш инсталационе датотеке.</a>'
-    InstallSuccessCongratulations: 'SilverStripe је успешно инсталиран!'
     LOGGEDINAS: 'Пријављен као'
     LOGIN: Пријава
-    LOGOUT: Одјава
+    LOGOUT: 'Одјава'
     NOTEWONTBESHOWN: 'Напомена: ова порука неће бити приказана посетиоцима'
     NOTLOGGEDIN: 'Нисте пријављени'
     PUBLISHED: Објаљено
     PUBLISHEDSITE: 'Објављени сајт'
-    Password: Лозинка
-    PostInstallTutorialIntro: 'Овај сајт је поједностављена верзија SilverStripe 3 сајта. Сазнајте више о могућностима проширења сајта на {link}.'
-    StartEditing: 'Можете започети са изменама садржаја отварањем <a href="{link}">CMS-а</a>.'
-    UnableDeleteInstall: 'Инсталационе датотеке не могу бити избрисане. Ручно избришите следеће датотеке:'
     VIEWPAGEIN: 'Прикажи страницу у:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: 'Архивирано'
+    ARCHIVED: Архивирано
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Cancel: Одустани
     EMPTY: 'Молимо Вас да унесете сегмент URL-а или кликните на Одустани'
-    Edit: Измени
     HelpChars: 'Специјални карактери су аутоматски конвертовани или уклоњени.'
-    OK: 'У реду'
   SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Кôд грешке'
-    DEFAULTERRORPAGECONTENT: '<p>Извињавамо се, изгледа да покушавате да приступите страници која не постоји.</p><p>Молимо Вас проверите URL којем покушавате да приступите и покушајте поново.</p>'
-    DEFAULTERRORPAGETITLE: 'Страница није пронађена'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Извињавамо се, постоји проблем при обради Вашег захтева.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Грешка сервера'
     400: '400 - Лош захтев'
     401: '401 - Неауторизовано'
     403: '403 - Забрањено'
@@ -116,6 +85,11 @@ sr:
     503: '503 - Сервис није доступан'
     504: '504 - Временски истек мрежног пролаза'
     505: '505 - HTTP верзија није подржана'
+    CODE: 'Кôд грешке'
+    DEFAULTERRORPAGECONTENT: '<p>Извињавамо се, изгледа да покушавате да приступите страници која не постоји.</p><p>Молимо Вас проверите URL којем покушавате да приступите и покушајте поново.</p>'
+    DEFAULTERRORPAGETITLE: 'Страница није пронађена'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Извињавамо се, постоји проблем при обради Вашег захтева.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Грешка сервера'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Страници за преусмеравање није подешено одредиште на које преусмерава.'
     HEADER: 'Ова страница ће преусмерити кориснике на другу страницу'
@@ -137,13 +111,13 @@ sr:
     BUTTONPUBLISHED: Објаљено
     BUTTONSAVED: Сачувано.
     BUTTONSAVEPUBLISH: 'Сачувај и објави'
-    BUTTONUNPUBLISH: 'Поништи објаву'
+    BUTTONUNPUBLISH: Поништи објаву
     BUTTONUNPUBLISHDESC: 'Уклони ову страницу из објављеног сајта'
     Comments: Коментари
     Content: Садржај
     DEFAULTABOUTTITLE: 'О нама'
     DEFAULTCONTACTTITLE: 'Контактирајте нас'
-    DEFAULTHOMETITLE: 'Почетна страница'
+    DEFAULTHOMETITLE: Почетна страница
     DEPENDENT_NOTE: 'Следеће странице зависе од ове странице. Ово подразумева витруелне странице, странице за преусмеравање и странице са линковима на садржај.'
     DependtPageColumnLinkType: 'Тип линка'
     DependtPageColumnURL: URL
@@ -158,20 +132,17 @@ sr:
     HASBROKENLINKS: 'Ова страница садржи оштећене линкове.'
     HTMLEDITORTITLE: Садржај
     INHERIT: 'Наследити од родитељске странице'
-    LASTPUBLISHED: 'Последњи пут објављено'
-    LASTSAVED: 'Последњи пут сачувано'
     LASTUPDATED: 'Последњи пут ажурирано'
     LINKCHANGENOTE: 'Промена линка ове странице утицаће, такође, на линкове свих подстраница.'
     MENUTITLE: 'Натпис за навигацију'
-    METADESC: Опис
+    METADESC: 'Опис'
     METADESCHELP: 'Претраживачке машине користе овај садржај за приказ резултата претраживања (ипак, он не утиче на рејтинг странице).'
     METAEXTRA: 'Прилагођене мета ознаке'
     METAEXTRAHELP: 'HTML ознаке за додатне мета информације. На пример, &lt;meta name="audience" content="all" /&gt;'
     MODIFIEDONDRAFTHELP: 'Страница садржи необјављене измене'
     MODIFIEDONDRAFTSHORT: Измењено
-    MetadataToggle: 'Мета подаци'
+    MetadataToggle: Мета подаци
     MoreOptions: 'Више опција'
-    NOTPUBLISHED: Необјављено
     OBSOLETECLASS: 'Тип ове странице: {type} није више шодржан. Ако сачувате страницу њен тип ће бити промењен, па можете изгубити своје податке'
     PAGELOCATION: 'Локација странице'
     PAGETITLE: 'Назив странице'
@@ -215,7 +186,7 @@ sr:
     HEADERWITHLINK: 'Ово је виртуелна страница која копира садржај из "{title}" ({link})'
     PageTypNotAllowedOnRoot: 'Оригинални тип странице "{type}" није дозвољен на вршном нивоу за ову виртуелну страницу'
   SilverStripe\CMS\Reports\BrokenLinksReport:
-    Any: 'Било који'
+    Any: Било који
     BROKENLINKS: 'Извештај о оштећеним линковима'
     CheckSite: 'Провери сајт'
     CheckSiteDropdownDraft: 'Нарцт сајта'
@@ -253,4 +224,3 @@ sr:
     ParameterLiveCheckbox: 'Провери објављени сајт'
   SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Дозволе за садржај'
-    PERMISSIONS_CATEGORY: 'Улоге и дозволе за приступ'

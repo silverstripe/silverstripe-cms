@@ -4,15 +4,12 @@ lv:
     DRAFTSITE: 'Melnrakstu vietne'
     LOGGEDINAS: 'Pieslēdzies kā'
     LOGIN: Pieslēgties
-    LOGOUT: Atslēgties
+    LOGOUT: 'Atslēgties'
     NOTEWONTBESHOWN: 'Piezīme: šī ziņa nebūs redzama Jūsu apmeklētājiem'
     NOTLOGGEDIN: 'Nav pieslēdzies'
     PUBLISHEDSITE: 'Publicētā vietne'
     VIEWPAGEIN: 'Skatīt lapu:'
   SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Kļūdas kods'
-    DEFAULTERRORPAGECONTENT: '<p>Atvainojiet, šķiet, ka lapa kurai mēģinat piekļūt neeksistē.</p><p>Lūdzu pārliecinieties par pareizrakstību URL, kuram vēlaties piekļūt400.</p>'
-    DEFAULTERRORPAGETITLE: 'Lapa nav atrasta'
     400: '400 - Nekorekts pieprasījums'
     401: '401 - Neautorizēts'
     403: '403 - Aizliegts'
@@ -36,6 +33,9 @@ lv:
     503: '503 - Serviss uz laiku nav pieejams'
     504: '504 - Beidzies vārtejas pieprasījuma laiks'
     505: '505 - Šī HTTP protokola versija netiek atbalstīta.'
+    CODE: 'Kļūdas kods'
+    DEFAULTERRORPAGECONTENT: '<p>Atvainojiet, šķiet, ka lapa kurai mēģinat piekļūt neeksistē.</p><p>Lūdzu pārliecinieties par pareizrakstību URL, kuram vēlaties piekļūt400.</p>'
+    DEFAULTERRORPAGETITLE: 'Lapa nav atrasta'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Novirzītājlapa ir uzstādīta bez norādes uz kurieni novirzīt.'
     HEADER: 'Šī lapa novirzīs lietotājus uz citu lapu '
@@ -72,7 +72,7 @@ lv:
     INHERIT: 'Mantot no vecāka lapas'
     LINKCHANGENOTE: 'Izmainot šīs lapas saiti, tiks izmainītas saites arī visām tās bērnu lapām.'
     MENUTITLE: 'Navigācijas virsraksts'
-    METADESC: Apraksts
+    METADESC: 'Apraksts'
     METAEXTRA: 'Lietotāja Meta-tagi'
     PAGELOCATION: 'Lapas adrese'
     PAGETITLE: 'Lapas nosaukums'
@@ -88,7 +88,7 @@ lv:
     SHOWINMENUS: 'Rādīt izvēlnēs?'
     SHOWINSEARCH: 'Rādīt meklēšanas rezultātos?'
     TABBEHAVIOUR: Uzvedība
-    TABCONTENT: Saturs
+    TABCONTENT: 'Saturs'
     TABDEPENDENT: 'Atkarīgās lapas'
     TOPLEVEL: 'Vietnes Saturs (Augšējais līmenis)'
     URLSegment: 'URL Segments'
@@ -109,4 +109,3 @@ lv:
     SearchResults: 'Meklēšanas rezultāti'
   SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Satura atļaujas'
-    PERMISSIONS_CATEGORY: 'Lomu un piekļuves atļaujas'

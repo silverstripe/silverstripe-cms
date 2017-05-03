@@ -1,7 +1,7 @@
 de_DE:
   SilverStripe\CMS\Model\SiteTree:
-    PAGETYPE: Seitentyp
+    PAGETYPE: 'Seitentyp'
     SHOWINSEARCH: 'In Suche anzeigen?'
   SilverStripe\CMS\Search\SearchForm:
     SEARCH: Suche
-    SearchResults: Suchergebnisse
+    SearchResults: 'Suchergebnisse'

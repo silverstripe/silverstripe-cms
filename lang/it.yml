@@ -15,8 +15,6 @@ it:
     ACCESS_HELP: 'Consente la visualizzazione della sezione con l''albero delle pagine e i contenuti. I permessi di visualizzazione e modifica possono essere gestiti attraverso menù a tendina specifici della pagina, come dai separati "Permessi sui contenuti".'
     ARCHIVE: Archivia
     ARCHIVEDPAGE: 'Pagina ''%s'' archiviata'
-    AddNew: 'Aggiungi nuova pagina'
-    AddNewButton: 'Aggiungi nuova'
     AddPageRestriction: 'Nota: alcuni tipi di pagina non sono permessi in questa sezione'
     CLEAR_FILTER: Annulla
     Cancel: Annulla
@@ -25,7 +23,6 @@ it:
     Create: Crea
     DUPLICATED: '''{title}'' duplicato correttamente'
     DUPLICATEDWITHCHILDREN: '''{title}'' e figlie duplicate con successo'
-    EMAIL: E-mail
     NEWPAGE: 'Nuova {pagetype}'
     PAGENOTEXISTS: 'Questa pagina non esiste'
     PAGETYPEANYOPT: Qualsiasi
@@ -40,43 +37,29 @@ it:
     RESTORE_DESC: 'Ripristinare la versione archiviata nella bozza'
     RESTORE_TO_ROOT: 'Ripristinare bozza al primo livello'
     RESTORE_TO_ROOT_DESC: 'Ripristinare la versione archiviata nella bozza come pagina di primo livello'
-    ROLLBACK: 'Ripristina a questa versione'
     ROLLEDBACKPUBv2: 'Ripristinata la versione pubblicata.'
     ROLLEDBACKVERSIONv2: 'Ripristinata la versione #%d.'
     SAVED: '''{title}'' salvata correttamente.'
     SAVEDRAFT: 'Salva bozza'
-    TabContent: Contenuto
-    TabHistory: Archivio
-    TabSettings: Impostazioni
     UNPUBLISH_AND_ARCHIVE: 'Annulla pubblicazione e archivia'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Aggiungi pagina'
     ParentMode_child: 'Sotto un''altra pagina'
     ParentMode_top: 'Primo livello'
-    Title: 'Aggiungi pagina'
   SilverStripe\CMS\Controllers\CMSPageEditController:
     MENUTITLE: 'Modifica pagina'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    AUTHOR: Autore
     COMPAREMODE: 'Modalità confronto (selezionane due)'
     MENUTITLE: Storico
-    NOTPUBLISHED: 'Non pubblicato'
-    PREVIEW: 'Anteprima sito'
-    PUBLISHER: Editore
     REVERTTOTHISVERSION: 'Ripristina a questa versione'
     SHOWUNPUBLISHED: 'Mostra versioni nascoste'
-    UNKNOWN: Sconosciuto
     VIEW: vista
     VIEWINGLATEST: 'Attualmente visualizzata ultima versione.'
     VIEWINGVERSION: 'Versione attualmente visualizzata {version}.'
-    WHEN: Quando
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Modifica pagina'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Filtra
-    ListView: 'Visualizzazione a lista'
     MENUTITLE: Pagine
-    TreeView: 'Visualizzazione a albero'
   SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Pagine pubblicate'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
@@ -89,31 +72,20 @@ it:
     CMS: CMS
     DRAFT: Bozza
     DRAFTSITE: 'Sito Bozza'
-    Email: Email
     INSTALL_SUCCESS: 'Installazione conclusa con successo!'
-    InstallFilesDeleted: 'I file di installazione sono stati eliminati con successo.'
-    InstallSecurityWarning: 'Per motivi di sicurezza ora devi eliminare i file di installazione, a meno che non stai pianificando in installare nuovamente più tardi (<em>richiede accesso da amministratore, vedi sopra</em>). Inoltre il server web ora richiede permessi di scrittura solo alla cartella "assets", Quindi puoi rimuovere i permessi di scrittura da tutte le altre cartelle. <a href="{link}" style="text-align: center;">Clicca qui per cancellare i file di installazione.</a>'
-    InstallSuccessCongratulations: 'SilverStripe è stato installato con successo!'
     LOGGEDINAS: 'Sei collegato come'
     LOGIN: Accedi
-    LOGOUT: Disconnetti
+    LOGOUT: 'Disconnetti'
     NOTEWONTBESHOWN: 'Nota: questo messaggio non verrà mostrato ai visitatori'
     NOTLOGGEDIN: 'Non connesso'
     PUBLISHED: Pubblicato
     PUBLISHEDSITE: 'Sito pubblicato'
-    Password: Password
-    PostInstallTutorialIntro: 'Il sito web è una versione semplificata di un sito SilverStripe 3. Per estenderlo, dai un''occhiata a {link}.'
-    StartEditing: 'Puoi iniziare a modificare i contenuti del sito aprendo <a href="{link}">il CMS</a>.'
-    UnableDeleteInstall: 'Impossibile eliminare i file di installazione. Cancella manualmente i file sotto indicati'
     VIEWPAGEIN: 'Mostra pagina in:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archiviato
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Cancel: Annulla
     EMPTY: 'Perfavore inserisci un segmento URL o clicca cancella'
-    Edit: Modifica
     HelpChars: 'I caratteri speciali sono automaticamente convertiti o eliminati.'
-    OK: OK
   SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Codice di errore'
     DEFAULTERRORPAGECONTENT: '<p>Spiacente, sembra che tu cercassi di accedere ad una pagina che non esiste.</p><p>Controlla che l''URL a cui stavi cercando di accedere sia corretto e prova di nuovo.</p>'
@@ -155,7 +127,7 @@ it:
     Comments: Commenti
     Content: Contenuto
     DEFAULTABOUTTITLE: 'Chi siamo'
-    DEFAULTCONTACTTITLE: Contattaci
+    DEFAULTCONTACTTITLE: 'Contattaci'
     DEFAULTHOMECONTENT: '<p>Benvenuto in SilverStripe! Questa è la home page di default. Puoi modificare questa pagina direttamente <a href="admin/">dal CMS</a>.</p><p>Puoi accedere alla <a href="http://docs.silverstripe.org">documentazione per gli sviluppatori</a> o partire dalle <a href="http://www.silverstripe.org/learn/lessons">lezioni di SilverStripe</a>.</p>'
     DEFAULTHOMETITLE: Home
     DEPENDENT_NOTE: 'Le seguenti pagine dipendono da questa pagina. Queste includono pagine virtuali, pagine di redirezione e pagine con link nel contenuto.'
@@ -173,14 +145,12 @@ it:
     HASBROKENLINKS: 'Questa pagina ha link non funzionanti.'
     HTMLEDITORTITLE: Contenuto
     INHERIT: 'Eredita dalla pagina madre'
-    LASTPUBLISHED: 'Ultima pubblicata'
-    LASTSAVED: 'Ultima salvata'
     LASTUPDATED: 'Ultimo aggiornamento'
     LINKCHANGENOTE: 'Cambiare il link di questa pagina farà cambiare anche i link delle pagine figlio. '
     LINKSALREADYUNIQUE: '{url} è già unica'
     LINKSCHANGEDTO: 'cambiato {url1} -> {url2}'
     MENUTITLE: 'Etichetta di navigazione'
-    METADESC: Descrizione
+    METADESC: 'Descrizione'
     METADESCHELP: 'I motori di ricerca utilizzano questo contenuto per visualizzare i risultati (ma non ne influenza la posizione)'
     METAEXTRA: 'Meta tag personalizzati'
     METAEXTRAHELP: 'Tag HTML per meta addizionali. Per esempio &lt;meta name="nomePersonalizzato" content="Il tuo contenuto personalizzato" /&gt;'
@@ -188,7 +158,6 @@ it:
     MODIFIEDONDRAFTSHORT: Modificata
     MetadataToggle: Metadati
     MoreOptions: 'Altre opzioni'
-    NOTPUBLISHED: 'Non pubblicato'
     OBSOLETECLASS: 'Quasta pagina è del tipo obsoleto {type}. Salvarla ripristinerà il suo tipo e potrai perdere dati'
     ONLIVEONLYSHORT: 'Solo su live'
     ONLIVEONLYSHORTHELP: 'Pagina pubblicata, ma eliminata dalle bozze'
@@ -222,15 +191,11 @@ it:
     VIRTUALPAGEWARNING: 'Perfavore scegli una pagina da linkare e salvala per poter pubblicare questa pagina.'
     VIRTUALPAGEWARNINGSETTINGS: 'Perfavore scegli una pagina da linkare nel campo "Contenuto" per poter pubblicare.'
     Viewers: 'Gruppi di visualizzatori'
-    Visibility: 'Visibilità'
+    Visibility: Visibilità
     has_one_Parent: 'Pagina madre'
     many_many_BackLinkTracking: 'Monitoriaggio link di ritorno'
     many_many_ImageTracking: 'Monitoraggio immagine'
     many_many_LinkTracking: 'Monitoraggio link'
-  SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
-    TITLE_TYPE: Tipo
-    TITLE_USED_ON: 'Usato in'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Pagina collegata'
     DESCRIPTION: 'Mostra il contenuto di un''altra pagina'
@@ -290,4 +255,3 @@ it:
     ParameterLiveCheckbox: 'Verifica sito pubblicato'
   SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Permessi sui contenuti'
-    PERMISSIONS_CATEGORY: 'Ruoli e permessi d''accesso'

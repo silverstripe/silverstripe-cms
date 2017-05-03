@@ -8,8 +8,6 @@ pt:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Acesso à secção ''{title}'''
     ACCESS_HELP: 'Permitir a visualização da árvore de páginas e respectivos conteúdos. Ver e editar permissões que podem ser seleccionadas a partir de uma caixa de selecção, bem como os separadores de "permissões de conteúdo".'
-    AddNew: 'Adicionar nova página'
-    AddNewButton: Novo
     AddPageRestriction: 'Nota: Alguns tipos de página não estão disponíveis nesta seleção'
     ChoosePageParentMode: 'Escolha onde criar esta página'
     ChoosePageType: 'Escolher tipo de página'
@@ -26,65 +24,39 @@ pt:
     REMOVEDPAGE: 'Remover ''{title}'' do site publicado'
     REMOVEDPAGEFROMDRAFT: 'Removido ''%s'' do site de rascunho'
     RESTORED: '''{title}'' restaurado com sucesso'
-    ROLLBACK: 'Voltar para esta versão'
     ROLLEDBACKPUBv2: 'Voltar para a versão publicada.'
     ROLLEDBACKVERSIONv2: 'Voltar para a versão #%d.'
     SAVEDRAFT: 'Guardar rascunho'
-    TabContent: Conteúdo
-    TabHistory: Histórico
-    TabSettings: Configurações
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Por cima de outra página'
     ParentMode_top: 'Nível de topo'
-    Title: 'Adicionar página'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    AUTHOR: Autor
     COMPAREMODE: 'Modo de comparação (selecione duas)'
-    NOTPUBLISHED: 'Não publicada'
-    PUBLISHER: Publicador
     REVERTTOTHISVERSION: 'Reverter para esta versão'
     SHOWUNPUBLISHED: 'Mostrar versões não publicadas'
-    UNKNOWN: Desconhecido
     VIEW: ver
     VIEWINGLATEST: 'Atualmente está a ver a última versão'
     VIEWINGVERSION: 'Actualmente está a ver a versão nº {version}.'
-    WHEN: Quando
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Filtrar
-    ListView: 'Vista em lista'
     MENUTITLE: Páginas
-    TreeView: 'Vista em árvore'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Todas as páginas'
   SilverStripe\CMS\Controllers\ContentController:
-    ARCHIVEDSITE: Pré-visualização
+    ARCHIVEDSITE: 'Pré-visualização'
     ARCHIVEDSITEFROM: 'Arquivar o site de'
-    CMS: 'Gestor de Conteúdos'
+    CMS: Gestor de Conteúdos
     DRAFTSITE: 'Site Rascunho'
     INSTALL_SUCCESS: 'Instalação concluída com sucesso'
-    InstallFilesDeleted: 'Ficheiros de instalação foram removidos com sucesso.'
-    InstallSecurityWarning: 'Por razões de segurança deverá apagar os ficheiros de instalação, a menos que esteja a planear uma instalação futura (<em> requer acesso de administrador, ver acima </em>). O servidor apenas necessita de permissões de escrita na pasta "assets", poderá remover todos os acessos de escrita nas restantes pastas.<a href="{link}" style="text-align: Clique aqui para apagar os ficheiros de instalação.</a>'
-    InstallSuccessCongratulations: 'SilverStripe foi instalado com sucesso'
     LOGGEDINAS: 'Autenticado como'
     LOGIN: Autenticar
-    LOGOUT: Sair
+    LOGOUT: 'Sair'
     NOTEWONTBESHOWN: 'Nota: Esta mensagem não vai ser apresentada aos visitantes'
     NOTLOGGEDIN: 'Não autenticado'
     PUBLISHEDSITE: 'Site Publicado'
-    Password: Palavra-passe
-    PostInstallTutorialIntro: 'Este site é uma versão simplificada do SilverStripe 3. Para adicionar novas funcionalidades visita {link}.'
-    UnableDeleteInstall: 'Impossível remover os ficheiros de instalação. Por favor, remova-os manualmente.'
     VIEWPAGEIN: 'Ver página em:'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Cancel: 'Cancelar '
-    Edit: Editar
     HelpChars: 'Os caracteres especiais são automaticamente convertido ou removidos.'
   SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Código de erro'
-    DEFAULTERRORPAGECONTENT: '<p>A página a que tentou aceder não existe.</p><p>Verifique se não existem erros no endereço a que tentou aceder e tente novamente.</p>'
-    DEFAULTERRORPAGETITLE: 'Página não encontrada'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Desculpe, ocorreu um problema no processamento do seu pedido</p>'
-    DEFAULTSERVERERRORPAGETITLE: '500 - Erro do servidor'
     401: '401 - Não Autorizado'
     403: '403 - Proibido'
     404: '404 - Não Encontrado'
@@ -105,6 +77,11 @@ pt:
     501: '501 - Não implementado'
     503: '503 - Serviço Indisponível'
     505: '505 - Versão HTTP não suportada'
+    CODE: 'Código de erro'
+    DEFAULTERRORPAGECONTENT: '<p>A página a que tentou aceder não existe.</p><p>Verifique se não existem erros no endereço a que tentou aceder e tente novamente.</p>'
+    DEFAULTERRORPAGETITLE: 'Página não encontrada'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Desculpe, ocorreu um problema no processamento do seu pedido</p>'
+    DEFAULTSERVERERRORPAGETITLE: '500 - Erro do servidor'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Uma página de redireccionamento foi criada sem nenhum destino.'
     HEADER: 'Esta página irá redireccionar os utilizadores para outra página'
@@ -123,13 +100,13 @@ pt:
     APPEARSVIRTUALPAGES: 'Este conteúdo também aparece nas páginas virtuais das secções {title}'
     BUTTONCANCELDRAFT: 'Cancelar alterações do rascunho'
     BUTTONCANCELDRAFTDESC: 'Apagar o seu rascunho e reverter para a versão publicada atualmente'
-    BUTTONUNPUBLISH: 'Remover do site Publicado'
+    BUTTONUNPUBLISH: Remover do site Publicado
     BUTTONUNPUBLISHDESC: 'Remover esta página do site publicado'
     Comments: Comentários
     Content: Conteúdo
     DEFAULTABOUTTITLE: 'Quem Somos'
-    DEFAULTCONTACTTITLE: Contacte-nos
-    DEFAULTHOMETITLE: 'Página Principal'
+    DEFAULTCONTACTTITLE: 'Contacte-nos'
+    DEFAULTHOMETITLE: Página Principal
     DEPENDENT_NOTE: 'As páginas seguintes dependem desta página. Isto inclui páginas virtuais, páginas redireccionadas e páginas com links de conteúdo.'
     DependtPageColumnLinkType: 'Tipo de ligação'
     EDITANYONE: 'Todos que possam efectuar a autenticação no CMS'
@@ -144,7 +121,7 @@ pt:
     LASTUPDATED: 'Última atualização'
     LINKCHANGENOTE: 'Alterar as ligação das páginas vai-se reflectir na ligação das páginas dependentes.'
     MENUTITLE: 'Nome na Navegação'
-    METADESC: Descrição
+    METADESC: 'Descrição'
     METADESCHELP: 'Os motores de pesquisa utilizam este conteúdo para apresentar os seus resultados (no entanto não influencia o ranking do site). '
     METAEXTRA: 'Meta-Tags personalizáveis'
     METAEXTRAHELP: 'HTML tags para informações adicionais. Por exemplo &lt;meta name="nomeDaTag" content="o teu conteúdo personalizado" /&gt;'
@@ -167,7 +144,7 @@ pt:
     SHOWINMENUS: 'Mostrar no Menu?'
     SHOWINSEARCH: 'Mostrar nas pesquisas?'
     TABBEHAVIOUR: Comportamento
-    TABCONTENT: Conteúdo
+    TABCONTENT: 'Conteúdo'
     TABDEPENDENT: 'Páginas Dependentes'
     TOPLEVEL: 'Conteúdo do Site (Nível Superior)'
     URLSegment: 'Segmento de URL'
@@ -222,4 +199,3 @@ pt:
     ParameterLiveCheckbox: 'Verificar site publicado'
   SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Permissões de conteúdo'
-    PERMISSIONS_CATEGORY: 'Regras e permissões de acesso'
