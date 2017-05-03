@@ -16,7 +16,7 @@ ne:
     ACCESSONLYTHESE: 'यि मान्छे मात्र (लिस्टबाट छान्)'
     BUTTONCANCELDRAFT: 'द्राफ्ट्रमा भएका परिवर्तनहरु क्यान्सिल गर्नुहोस् '
     BUTTONCANCELDRAFTDESC: 'द्राफ्ट्र हटाउनुहोस् र प्रकाशित पेजमा जानुहोस्'
-    BUTTONUNPUBLISH: 'प्रकाशित नगरनुहोस्'
+    BUTTONUNPUBLISH: प्रकाशित नगरनुहोस्
     BUTTONUNPUBLISHDESC: 'प्रकाशित साईटबाट यो पेजलाई हटाउनुहोस्'
     EDITANYONE: 'जोकोहिले जो सि.म्.एस् भित्र छिरेका छन्'
     EDITHEADER: 'कसले यो CMS भित्र मिलाउन सक्छ ?'
@@ -24,13 +24,13 @@ ne:
     HASBROKENLINKS: 'यो पजेमा टुटेका लिन्कहरु छन् ।'
     HTMLEDITORTITLE: सामाग्री
     MENUTITLE: 'अबलोकन नाम '
-    METADESC: विवरण
+    METADESC: 'विवरण'
     PAGETITLE: 'पेजको नाम'
     PAGETYPE: 'पेज किसिम'
     SHOWINMENUS: 'मेनुमा देखाउनुहोस् ? '
     SHOWINSEARCH: 'खोजिमा देखाउनुहोस् ?'
     TABBEHAVIOUR: बनी
-    TABCONTENT: सामाग्री
+    TABCONTENT: 'सामाग्री'
     TOPLEVEL: 'साईट सामाग्री (उच्च स्तान)'
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'यो भरचुअल पेज हो'

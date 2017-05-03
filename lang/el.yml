@@ -1,70 +1,47 @@
 el:
   SilverStripe\Admin\CMSBatchAction:
-    PUBLISH_PAGES: 'Δημοσίευση'
+    PUBLISH_PAGES: Δημοσίευση
   SilverStripe\AssetAdmin\Controller\AssetAdmin:
     BACKLINKCOUNT: 'Χρησιμοποιείται σε:'
     PAGES: σελίδες
   SilverStripe\CMS\Controllers\CMSMain:
-    AddNew: 'Προσθήκη σελίδας'
-    AddNewButton: 'Προσθήκη'
-    Cancel: 'Άκυρο'
+    Cancel: Άκυρο
     ChoosePageType: 'Επιλέξτε τύπο σελίδας'
-    Create: 'Δημιουργία'
+    Create: Δημιουργία
     NEWPAGE: 'Νέο {pagetype}'
     PAGENOTEXISTS: 'Αυτή η σελίδα δεν υπάρχει'
     PAGETYPEANYOPT: Οποιοδήποτε
     PUBALLFUN: 'Λειτουργία "Δημοσίευση Όλων"'
     PUBPAGES: 'Ολοκληρώθηκε: Δημοσίευση {count} σελίδων'
     PageAdded: 'Η σελίδα δημιουργήθηκε με επιτυχία'
-    TabContent: 'Περιεχόμενο'
-    TabHistory: Ιστορικό
-    TabSettings: 'Ρυθμίσεις'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Κάτω από άλλη σελίδα'
     ParentMode_top: 'Επίπεδο κορυφής'
-    Title: 'Προσθήκη σελίδας'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    AUTHOR: 'Συγγραφέας'
-    NOTPUBLISHED: 'δεν έχει δημοσιευθεί'
-    PUBLISHER: Εκδότης
     REVERTTOTHISVERSION: 'Επαναφορά σε αυτήν την έκδοση'
-    UNKNOWN: Άγνωστο
     VIEW: προβολή
-    WHEN: Όταν
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Φίλτρο
-    ListView: 'Προβολή Λίστας'
     MENUTITLE: Σελίδες
-    TreeView: 'Προβολή Δέντρου'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Όλες οι σελίδες'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Προεπισκόπιση'
-    Email: Email
     INSTALL_SUCCESS: 'Η Εγκατάσταση ήταν επιτυχής!'
     LOGGEDINAS: 'Συνδεδεμένος ως'
     LOGIN: Σύνδεση
-    LOGOUT: Αποσύνδεση
+    LOGOUT: 'Αποσύνδεση'
     NOTLOGGEDIN: 'Δεν έχετε συνδεθεί'
-    PUBLISHED: 'Δημοσιευμένο'
-    Password: Κωδικός
+    PUBLISHED: Δημοσιευμένο
     VIEWPAGEIN: 'Προβολή Σελίδας σε:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Αρχειοθετημένο
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Μπορείτε να δείτε τον αρχειοθετημένο ιστότοπο εδώ:'
-      HAVEASKED: 'Επιθυμείται να εμφανιστεί το περιεχόμενο του ιστοχώρου σας την '
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Cancel: 'Άκυρο'
     EMPTY: 'Παρακαλώ εισάγεται ένα τμήμα διεύθυνσης URL ή πατήστε άκυρο'
-    Edit: Επεξεργασία
-    OK: ΟΚ
   SilverStripe\CMS\Model\ErrorPage:
+    404: '404 - Δεν βρέθηκε'
     CODE: 'Κωδικός σφάλματος'
     DEFAULTERRORPAGETITLE: 'Η σελίδα δεν βρέθηκε'
     DEFAULTSERVERERRORPAGETITLE: 'Σφάλμα διακομιστή'
-    404: '404 - Δεν βρέθηκε'
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Αυτή η σελίδα θα ανακατευθύνει τους χρήστες σε μια άλλη σελίδα'
     REDIRECTTO: 'Ανακατεύθυνση σε'
@@ -73,26 +50,24 @@ el:
     ACCESSHEADER: 'Ποιος μπορεί να δεί αυτή τη σελίδα;'
     ACCESSLOGGEDIN: 'Συνδεδεμένοι χρήστες'
     ADDEDTODRAFTHELP: 'Η σελίδα δεν έχει δημοσιευθεί ακόμη'
-    BUTTONPUBLISHED: 'Δημοσιευμένο'
+    BUTTONPUBLISHED: Δημοσιευμένο
     BUTTONSAVED: Αποθηκεύτηκε
     BUTTONSAVEPUBLISH: 'Αποθήκευση & δημοσίευση'
     BUTTONUNPUBLISHDESC: 'Αφαίρεση αυτής της σελίδας απο τις δημοσιευμένες'
     Comments: Σχόλια
-    Content: 'Περιεχόμενο'
+    Content: Περιεχόμενο
     DEFAULTABOUTTITLE: 'Ποιοί είμαστε'
-    DEFAULTCONTACTTITLE: Επικοινωνία
+    DEFAULTCONTACTTITLE: 'Επικοινωνία'
     DEFAULTHOMETITLE: Αρχική
     DependtPageColumnLinkType: 'Τύπος συνδέσμου'
-    DependtPageColumnURL: 'Διεύθυνση URL'
+    DependtPageColumnURL: Διεύθυνση URL
     EDITHEADER: 'Ποιος μπορεί να επεξεργαστεί αυτή τη σελίδα;'
     EDITONLYTHESE: 'Μόνο αυτοί οι χρήστες (επιλέξτε από τη λίστα)'
     EDITORGROUPS: 'Ομάδες Συντακτών'
     Editors: 'Ομάδες Συντακτών'
     GroupPlaceholder: 'Κάντε κλικ για επιλογή ομάδας'
     HASBROKENLINKS: 'Αυτή η σελίδα έχει ανενεργούς συνδέσμους '
-    HTMLEDITORTITLE: 'Περιεχόμενο'
-    LASTPUBLISHED: 'Τελευταία δημοσίευση'
-    LASTSAVED: 'Τελευταία αποθήκευση'
+    HTMLEDITORTITLE: Περιεχόμενο
     LASTUPDATED: 'Τελευταία Ενημέρωση'
     MENUTITLE: 'Επίπεδο πλοίγησης'
     METADESC: 'Μετα-Περιγραφή'
@@ -100,7 +75,6 @@ el:
     MODIFIEDONDRAFTSHORT: Τροποποιημένο
     MetadataToggle: Μετα-δεδομένα
     MoreOptions: 'Περισσότερες επιλογές'
-    NOTPUBLISHED: 'Δεν έχει δημοσιευθεί'
     PAGELOCATION: 'Θέση σελίδας'
     PAGETITLE: 'Όνομα σελίδας'
     PAGETYPE: 'Τύπος σελίδας'
@@ -109,7 +83,7 @@ el:
     REORGANISE_DESCRIPTION: 'Αλλαγή δομής του ιστοτόπου '
     SHOWINMENUS: 'Να φαίνεται στα μενού;'
     SHOWINSEARCH: 'Να φαίνεται στην αναζήτηση'
-    TABBEHAVIOUR: 'Συμπεριφορά'
+    TABBEHAVIOUR: Συμπεριφορά
     TABCONTENT: 'Κυρίως Περιεχόμενο'
     TABDEPENDENT: 'Εξαρτώμενες σελίδες '
     URLSegment: 'Τμήμα διεύθυνσης URL'
@@ -133,7 +107,7 @@ el:
     HasBrokenLink: 'έχει ανενεργό σύνδεσμο '
     HasBrokenLinkAndFile: 'έχει ανενεργό σύνδεσμο και αρχείο'
     HoverTitleEditPage: 'Επεξεργασία σελίδας'
-    PageName: Σελίδα
+    PageName: 'Σελίδα'
     ReasonDropdown: 'Πρόβλημα για έλεγχο'
     ReasonDropdownBROKENFILE: 'Ανενεργό αρχείο '
     ReasonDropdownBROKENLINK: 'Ανενεργός σύνδεσμος '
@@ -153,4 +127,3 @@ el:
     EMPTYPAGES: 'Σελίδες χωρίς περιεχόμενο'
   SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Δικαιώματα περιεχόμενου'
-    PERMISSIONS_CATEGORY: 'Ρόλοι και δικαιώματα'

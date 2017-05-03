@@ -8,8 +8,6 @@ he_IL:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'גישה לאגף ''{title}'''
     ACCESS_HELP: 'מתן האפשרות לצפות באגף המכיל את עץ העמודים והתוכן. ניתן לצפות ולערוך הרשאות באמצעות תיבות בחירה ייעודיות לכל עמוד, כמו גם „הרשאות התוכן“ הנפרדות.'
-    AddNew: 'הוספת עמוד חדש'
-    AddNewButton: 'הוספת חדש'
     ChoosePageParentMode: 'נא לבחור היכן ליצור עמוד זה'
     ChoosePageType: 'נא לבחור בסוג העמוד'
     Create: יצירה
@@ -23,63 +21,34 @@ he_IL:
     REMOVEDPAGE: '''{title}'' הוסר מהאתר שפורסם'
     REMOVEDPAGEFROMDRAFT: '''$s'' הוסר מאתר הטיוטה'
     RESTORED: '''{title}'' שוחזר בהצלחה'
-    ROLLBACK: 'שחזור לגרסה זו'
-    TabContent: תוכן
-    TabHistory: היסטורייה
-    TabSettings: הגדרות
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'תחת עמוד אחר'
     ParentMode_top: 'רמה עליונה'
-    Title: 'הוספת עמוד'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    AUTHOR: 'נוצר על ידי'
     COMPAREMODE: 'מצב השוואה (יש לבחור שניים)'
-    NOTPUBLISHED: 'לא פורסם'
-    PUBLISHER: 'פורסם על ידי'
     REVERTTOTHISVERSION: 'חזרה לגרסה זו'
     SHOWUNPUBLISHED: 'הצגת גרסאות שלא פוסרמו'
-    UNKNOWN: 'לא ידוע'
     VIEW: צפייה
     VIEWINGVERSION: 'הגרסה הנוכחית המופיעה {version}.'
-    WHEN: מתי
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: 'מסנן'
-    ListView: 'תצוגת רשימה'
     MENUTITLE: עמודים
-    TreeView: 'תצוגת עץ'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'כל העמודים'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'הצגה מקדימה של הגרסה'
     ARCHIVEDSITEFROM: 'אתר ארכיון מהתאריך'
     DRAFTSITE: 'אתר טיוטה'
-    Email: דוא״ל
     INSTALL_SUCCESS: 'ההתקנה הצליחה!'
-    InstallFilesDeleted: 'קובצי ההתקנה נמחקו בהצלחה.'
-    InstallSecurityWarning: 'מטעמי אבטחה עליך למחוק כעת את קובצי ההתקנה, אלמלא תכניותיך הן להתקין מחדש מאוחר יותר (<em>נדרשת כניסת מנהל, פרטים להלן</em>). שרת האינטרנט יזדקק רק לעת עתה לגישה לכתיבה לתיקייה „assets“, ניתן להסיר את גישת הכתיבה מכל שאר התיקיות. <a href="{link}" style="text-align: center;">יש ללחוץ כאן כדי למחוק את קובצי ההתקנה.</a>'
-    InstallSuccessCongratulations: 'מערכת ה־SilverStripe הותקנה בהצלחה!'
     LOGGEDINAS: 'נכנסת בשם'
-    LOGIN: 'כניסה'
-    LOGOUT: יציאה
+    LOGIN: כניסה
+    LOGOUT: 'יציאה'
     NOTEWONTBESHOWN: 'לתשומת לבך: הודעה זו לא תוצג למבקריך'
     NOTLOGGEDIN: 'לא נכנסת'
     PUBLISHEDSITE: 'אתר שפורסם'
-    Password: ססמה
-    PostInstallTutorialIntro: 'אתר זה הנו גרסה מופשטת של אתר SilverStrip 3. כדי להרחיב את האתר, נא לגשת לכתובת {link}.'
-    UnableDeleteInstall: 'לא ניתן למחוק את קובצי ההתקנה. נא למחוק את הקבצים שלהלן ידנית'
     VIEWPAGEIN: 'צפייה בעמוד תחת:'
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'ניתן להיכנס לארכיון האתר בקישור הזה:'
-      HAVEASKED: 'ביקשת לצפות בתוכן האתר שלנו תחת'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: ' תווים מיוחדים מומרים אוטומטית או שהם מוסרים.'
   SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'הודעת שגיאה'
-    DEFAULTERRORPAGECONTENT: '<p>מצטערים, נראה שהדף שניסית להגיע אליו אינו קיים</p><p>נא לבדוק את הכתובת המבוקשת ולנסות שנית</p>'
-    DEFAULTERRORPAGETITLE: 'הדף המבוקש לא נמצא'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>אירעה תקלה בעת הטיפול בבקשתך, עמך הסליחה.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'שגיאת שרת'
     400: '400 - בקשה שגויה'
     401: '401 - אין הרשאה'
     403: '403 - אין כניסה'
@@ -103,6 +72,11 @@ he_IL:
     503: '503 - השירות אינו זמין'
     504: '504 - תם הזמן שהוקצב לשער הגישה'
     505: '505 - גרסת ה־HTTP לא נתמכת'
+    CODE: 'הודעת שגיאה'
+    DEFAULTERRORPAGECONTENT: '<p>מצטערים, נראה שהדף שניסית להגיע אליו אינו קיים</p><p>נא לבדוק את הכתובת המבוקשת ולנסות שנית</p>'
+    DEFAULTERRORPAGETITLE: 'הדף המבוקש לא נמצא'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>אירעה תקלה בעת הטיפול בבקשתך, עמך הסליחה.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'שגיאת שרת'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'נוצר דף הפניה ללא יעד'
     HEADER: 'העמוד הזה יוביל משתמשים לעמוד אחר'
@@ -112,7 +86,7 @@ he_IL:
     REDIRECTTOPAGE: 'עמוד באתר שלך'
     YOURPAGE: 'עמוד באתר שלך'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: 'כל אחד'
+    ACCESSANYONE: כל אחד
     ACCESSHEADER: 'מי יכול לצפות בעמוד זה?'
     ACCESSLOGGEDIN: 'משתמשים שנכנסו'
     ACCESSONLYTHESE: 'רק האנשים האלה (יש לבחור מהרשימה)'
@@ -121,13 +95,13 @@ he_IL:
     APPEARSVIRTUALPAGES: 'תוכן זה מופיע גם בעמודים הווירטואליים באגפים של {title}.'
     BUTTONCANCELDRAFT: 'ביטול שינויי הטיוטה'
     BUTTONCANCELDRAFTDESC: 'למחוק את הטיוטה שלך ולהחזיר לעמוד הנוכחי שפורסם'
-    BUTTONUNPUBLISH: 'ביטול הפרסום'
+    BUTTONUNPUBLISH: ביטול הפרסום
     BUTTONUNPUBLISHDESC: 'הסרת עמוד זה מהאתר שפורסם'
     Comments: תגובות
     Content: תוכן
     DEFAULTABOUTTITLE: 'על אודותינו'
     DEFAULTCONTACTTITLE: 'יצירת קשר'
-    DEFAULTHOMETITLE: 'דף הבית'
+    DEFAULTHOMETITLE: דף הבית
     DEPENDENT_NOTE: 'העמודים הבאים תלויים בעמוד זה. בין אלו נכללים, עמודים וירטואליים, עמודי הפנייה ועמודים עם קישורי תוכן.'
     DependtPageColumnLinkType: 'סוג הקישור'
     DependtPageColumnURL: קישור
@@ -144,13 +118,13 @@ he_IL:
     LASTUPDATED: 'עודכן לאחרונה'
     LINKCHANGENOTE: 'החלפת הקישורים בעמוד זה ישפיע גם על הקישורים של כל העמודים הצאצאים.'
     MENUTITLE: 'תווית ניווט'
-    METADESC: תיאור
+    METADESC: 'תיאור'
     METADESCHELP: 'מנועי החיפוש משתמשים בתוכן זה כדי להציג תוצאות חיפוש (למרות שלא תהיה לכך השפעה על הדירוג שלהם).'
     METAEXTRA: 'תגי על נוספים'
     METAEXTRAHELP: 'תגיות HTML לנתוני על נוספים. לדוגמה &lt;meta name="שם_מותאם_אישית" content="התוכן שלך כאן" /&gt;'
     MODIFIEDONDRAFTHELP: 'בעמוד יש שינויים שלא פורסמו'
-    MODIFIEDONDRAFTSHORT: 'השתנה'
-    MetadataToggle: 'נתוני על'
+    MODIFIEDONDRAFTSHORT: השתנה
+    MetadataToggle: נתוני על
     PAGELOCATION: 'מיקום העמוד'
     PAGETITLE: 'שם הדף'
     PAGETYPE: 'סוג דף'
@@ -167,7 +141,7 @@ he_IL:
     REORGANISE_HELP: 'ניתן לסדר מחדש את העמודים בעץ האתר באמצעות גרירה והשלכה.'
     SHOWINMENUS: 'להציג בתפריטים?'
     SHOWINSEARCH: 'לכלול בחיפוש?'
-    TABBEHAVIOUR: 'התנהגות'
+    TABBEHAVIOUR: התנהגות
     TABCONTENT: 'תוכן ראשי'
     TABDEPENDENT: 'עמודים תלויים'
     TOPLEVEL: 'תוכן האתר (רמה עליונה)'
@@ -177,7 +151,7 @@ he_IL:
     VIEW_DRAFT_CONTENT: 'צפייה בתוכן טיוטה'
     VIEW_DRAFT_CONTENT_HELP: 'חל על צפייה בעמודים מחוץ ל־CMD במצב טיוטה. חיוני לצורך שיתוף פעולה עם גורמים חיצוניים שאין להם גישה ל־CMS.'
     Viewers: 'קבוצות צופים'
-    Visibility: 'אופן הצגה'
+    Visibility: אופן הצגה
     has_one_Parent: 'דף הורה'
     many_many_BackLinkTracking: 'מעקב אחרי קישור חוזר'
     many_many_ImageTracking: 'מעקב אחר תמונה'
@@ -224,4 +198,3 @@ he_IL:
     ParameterLiveCheckbox: 'בדיקת האתר החי'
   SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'הרשאות התוכן'
-    PERMISSIONS_CATEGORY: 'תפקידים והרשאות גישה'

@@ -8,75 +8,45 @@ th:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'เข้าถึงเซ็กชั่น ''{title}'''
     ACCESS_HELP: 'อนุญาตให้เปิดดูส่วนของเซ็กชั่นที่บรรจุรายการหน้าเว็บแบบทรีและเนื้อหาได้ สิทธิ์ในการเปิดดูและแก้ไขสามารถจัดการได้ผ่านทางหน้าเว็บทีระบุอยู่ในเมนูแบบดรอปดาวน์ เช่นเดียวกับ "สิทธิ์อนุญาตของเนื้อหา" ที่แยกออกมาต่างหากด้วยเช่นกัน'
-    AddNew: เพิ่มหน้าใหม่
-    AddNewButton: เพิ่มใหม่
-    ChoosePageParentMode: เลือกว่าต้องการสร้างหน้าเว็บนี้ไว้ที่ไหน
+    ChoosePageParentMode: 'เลือกว่าต้องการสร้างหน้าเว็บนี้ไว้ที่ไหน'
     ChoosePageType: 'เลือกประเภทของหน้าเว็บ'
     Create: สร้าง
     NEWPAGE: 'ใหม่ {pagetype}'
-    PAGENOTEXISTS: ไม่มีหน้านี้อยู่
-    PAGETYPEANYOPT: 'ประเภทใดก็ได้'
+    PAGENOTEXISTS: 'ไม่มีหน้านี้อยู่'
+    PAGETYPEANYOPT: ประเภทใดก็ได้
     PUBALLCONFIRM: 'กรุณาเผยแพร่หน้าเว็บทุกหน้าในเว็บไซต์, คัดลอกเนื้อหาลงไปที่'
     PUBALLFUN: 'ฟังก์ชั่นการทำงาน "เผยแพร่ทั้งหมด"'
     PUBPAGES: 'เผยแแพร่หน้าเว็บแล้ว {count} หน้า'
-    PageAdded: หน้าเว็บที่สร้างเสร็จเรียบร้อยแล้ว
+    PageAdded: 'หน้าเว็บที่สร้างเสร็จเรียบร้อยแล้ว'
     REMOVEDPAGE: 'ลบ ''{title}'' ออกจากเว็บไซต์ที่เผยแพร่อยู่แล้ว'
     REMOVEDPAGEFROMDRAFT: 'ลบ ''%s'' ออกจากเว็บไซต์ฉบับร่างแล้ว'
     RESTORED: 'เรียกคืนค่า ''{title}'' เสร็จเรียบร้อยแล้ว'
-    ROLLBACK: ย้อนกลับไปที่รุ่นนี้
-    TabContent: เนื้อหา
-    TabHistory: ประวัติย้อนหลัง
-    TabSettings: ตั้งค่า
   SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: อยู่ใต้หน้าอื่นๆ
-    ParentMode_top: ระดับสูงสุด
-    Title: เพิ่มหน้า
+    ParentMode_child: 'อยู่ใต้หน้าอื่นๆ'
+    ParentMode_top: 'ระดับสูงสุด'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    AUTHOR: ผู้แต่ง
     COMPAREMODE: 'โหมดเปรียบเทียบ (เลือกสองรายการ)'
-    NOTPUBLISHED: ยังไม่ได้เผยแพร่
-    PUBLISHER: ผู้เผยแพร่
-    REVERTTOTHISVERSION: ย้อนกลับไปที่รุ่นนี้
-    SHOWUNPUBLISHED: แสดงรุ่นที่ระงับการเผยแพร่ไว้
-    UNKNOWN: ไม่ทราบ
+    REVERTTOTHISVERSION: 'ย้อนกลับไปที่รุ่นนี้'
+    SHOWUNPUBLISHED: 'แสดงรุ่นที่ระงับการเผยแพร่ไว้'
     VIEW: มุมมอง
     VIEWINGVERSION: 'ขณะนี้กำลังเปิดดูในรุ่น {version}.'
-    WHEN: เมื่อ
-  SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: ตัวกรองข้อมูล
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
-    Title: หน้าทั้งหมด
+    Title: 'หน้าทั้งหมด'
   SilverStripe\CMS\Controllers\ContentController:
-    ARCHIVEDSITE: รุ่นสำหรับดูตัวอย่าง
-    ARCHIVEDSITEFROM: เว็บไซต์ที่จัดเก็บไว้ถาวรจาก
-    DRAFTSITE: เว็บไซต์ฉบับร่าง
-    Email: อีเมล
-    INSTALL_SUCCESS: การติดตั้งเสร็จสมบูรณ์
-    InstallFilesDeleted: ไฟล์ติดตั้งได้ถูกลบทิ้งเรียบร้อยแล้ว
-    InstallSecurityWarning: 'ด้วยเหตุผลด้านการรักษาความปลอดภัย คุณควรลบไฟล์ติดตั้งทันที เว้นเสียแต่ว่าคุณกำลังวางแผนที่จะติดตั้งซ้ำใหม่ในภายหลัง (<em>จำเป็นต้องเข้าสู่ระบบในส่วนของผู้ดูแล, กรุณาดูได้จากด้านบน</em>). เว็บเซิร์ฟเวอร์ขณะนี้จำเป็นต้องได้รับการกำหนดสิทธิ์ให้สามารถเข้าถึงเพื่อเขียนข้อมูลที่โฟลเดอร์ "assets" ได้ด้วยเช่นกัน คุณสามารถลบสิทธิ์การเข้าถึงเพื่อเขียนข้อมูลจากโฟลเดอร์อื่นๆทั้งหมดได้ด้วยเช่นกัน. <a href="{link}" style="text-align: center;">คลิกที่นี่เพื่อลบไฟล์ติดตั้งออก.</a>'
-    InstallSuccessCongratulations: 'SilverStripe ได้รับการติดตั้งเรียบร้อยแล้ว!'
-    LOGGEDINAS: เข้าสู่ระบบในชื่อ
+    ARCHIVEDSITE: 'รุ่นสำหรับดูตัวอย่าง'
+    ARCHIVEDSITEFROM: 'เว็บไซต์ที่จัดเก็บไว้ถาวรจาก'
+    DRAFTSITE: 'เว็บไซต์ฉบับร่าง'
+    INSTALL_SUCCESS: 'การติดตั้งเสร็จสมบูรณ์'
+    LOGGEDINAS: 'เข้าสู่ระบบในชื่อ'
     LOGIN: เข้าสู่ระบบ
-    LOGOUT: ออกจากระบบ
+    LOGOUT: 'ออกจากระบบ'
     NOTEWONTBESHOWN: 'หมายเหตุ: ข้อความนี้จะไม่ถูกนำไปแสดงให้ผู้เยี่ยมชมเว็บไซต์ของคุณเห็น'
-    NOTLOGGEDIN: ยังไม่ได้เข้าสู่ระบบ
-    PUBLISHEDSITE: เว็บไซต์ที่เผยแพร่อยู่
-    Password: รหัสผ่าน
-    PostInstallTutorialIntro: 'เว็บไซต์นี้เป็นรุ่นอย่างง่ายของเว็บไซต์ที่สร้างจากรุ่น SiverStripe 3 หากต้องการขยายขีดความสามารถ กรุณาเข้าไปที่ {link}'
-    UnableDeleteInstall: 'ไม่สามารถลบไฟล์ติดตั้งได้ กรุณาลบไฟล์ดังกล่าวด้านล่างด้วยตนเอง'
+    NOTLOGGEDIN: 'ยังไม่ได้เข้าสู่ระบบ'
+    PUBLISHEDSITE: 'เว็บไซต์ที่เผยแพร่อยู่'
     VIEWPAGEIN: 'เปิดดูหน้าเว็บใน:'
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'คุณสามารถเข้าถึงเว็บไซต์รุ่นย้อนหลังได้จากลิงก์นี้:'
-      HAVEASKED: คุณได้ร้องขอเพื่อเปิดดูเนื้อหาในเว็บไซต์ของเราเมื่อ
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    HelpChars: ตัวอักษรพิเศษได้ถูกแปลงค่าหรือลบออกโดยอัตโนมัติแล้ว
+    HelpChars: 'ตัวอักษรพิเศษได้ถูกแปลงค่าหรือลบออกโดยอัตโนมัติแล้ว'
   SilverStripe\CMS\Model\ErrorPage:
-    CODE: รหัสข้อผิดพลาด
-    DEFAULTERRORPAGECONTENT: '<p>ขออภัย, แต่คุณดูเหมือนกำลังพยายามที่จะเข้าถึงหน้าเว็บที่ไม่มีอยู่ในระบบ.</p><p>กรุณาตรวจสอบการสะกดคำของ URL ของหน้าเว็บที่คุณพยายามจะเข้าถึงแล้วลองใหม่อีกครั้ง.</p>'
-    DEFAULTERRORPAGETITLE: ไม่พบหน้าที่ต้องการ
-    DEFAULTSERVERERRORPAGECONTENT: '<p>ขออภัย, เกิดข้อผิดพลาดบางประการในการจัดการตามคำร้องขอของคุณ</p>'
-    DEFAULTSERVERERRORPAGETITLE: เซิร์ฟเวอร์เกิดข้อผิดพลาด
     400: '400 - ข้อความร้องขอที่ส่งมามีความผิดพลาดทางไวยากรณ์ หรือไม่สามารถทำตามการร้องขอนั้นได้'
     401: '401 - ไม่สามารถยืนยันตัวบุคคลได้'
     403: '403 - ไม่สามารถดำเนินการตามที่ร้องขอได้'
@@ -100,118 +70,122 @@ th:
     503: '503 - เครื่องแม่ข่ายยังไม่ให้บริการในปัจจุบัน '
     504: '504 - หมดเวลารอรับข้อมูลจากเครื่องแม่ข่ายที่กำลังทำหน้าที่เป็นเกตเวย์หรือพร็อกซี่'
     505: '505 - เครื่องแม่ข่ายไม่รองรับรุ่นของเอชทีทีพีที่ใช้ในข้อความร้องขอ'
+    CODE: 'รหัสข้อผิดพลาด'
+    DEFAULTERRORPAGECONTENT: '<p>ขออภัย, แต่คุณดูเหมือนกำลังพยายามที่จะเข้าถึงหน้าเว็บที่ไม่มีอยู่ในระบบ.</p><p>กรุณาตรวจสอบการสะกดคำของ URL ของหน้าเว็บที่คุณพยายามจะเข้าถึงแล้วลองใหม่อีกครั้ง.</p>'
+    DEFAULTERRORPAGETITLE: 'ไม่พบหน้าที่ต้องการ'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>ขออภัย, เกิดข้อผิดพลาดบางประการในการจัดการตามคำร้องขอของคุณ</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'เซิร์ฟเวอร์เกิดข้อผิดพลาด'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: หน้าเว็บที่มีการเปลี่ยนเส้นทางซึ่งได้รับการตั้งค่าโดยปราศจากตำแหน่งปลายทางที่ต้องการเปลี่ยนเส้นทางไป
-    HEADER: หน้าเว็บนี้จะเปลี่ยนเส้นทางผู้ใช้งานไปยังหน้าเว็บอื่นๆ
+    HASBEENSETUP: 'หน้าเว็บที่มีการเปลี่ยนเส้นทางซึ่งได้รับการตั้งค่าโดยปราศจากตำแหน่งปลายทางที่ต้องการเปลี่ยนเส้นทางไป'
+    HEADER: 'หน้าเว็บนี้จะเปลี่ยนเส้นทางผู้ใช้งานไปยังหน้าเว็บอื่นๆ'
     OTHERURL: 'ที่อยู่ URL ของเว็บไซต์อื่นๆ'
-    REDIRECTTO: เปลี่ยนเส้นทางไปที่
-    REDIRECTTOEXTERNAL: เว็บไซต์อื่นๆ
-    REDIRECTTOPAGE: หน้าเว็บในเว็บไซต์ของคุณ
-    YOURPAGE: หน้าเว็บที่อยู่บนเว็บไซต์ของคุณ
+    REDIRECTTO: 'เปลี่ยนเส้นทางไปที่'
+    REDIRECTTOEXTERNAL: 'เว็บไซต์อื่นๆ'
+    REDIRECTTOPAGE: 'หน้าเว็บในเว็บไซต์ของคุณ'
+    YOURPAGE: 'หน้าเว็บที่อยู่บนเว็บไซต์ของคุณ'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: ทุกคน
     ACCESSHEADER: 'ใครบ้างที่สามารถเปิดดูหน้านี้ได้?'
-    ACCESSLOGGEDIN: ผู้ใช้งานที่อยู่ในระบบ
+    ACCESSLOGGEDIN: 'ผู้ใช้งานที่อยู่ในระบบ'
     ACCESSONLYTHESE: 'เฉพาะบุคคลเหล่านี้เท่านั้น (เลือกจากรายการ)'
-    ADDEDTODRAFTHELP: หน้าเว็บยังไม่ได้ถูกเผยแพร่
+    ADDEDTODRAFTHELP: 'หน้าเว็บยังไม่ได้ถูกเผยแพร่'
     ADDEDTODRAFTSHORT: ฉบับร่าง
     APPEARSVIRTUALPAGES: 'เนื้อหานี้ปรากฏอยู่ในหน้าเว็บจำลองในส่วนของ {title} ด้วยเช่นกัน'
-    BUTTONCANCELDRAFT: ยกเลิกการเปลี่ยนแปลงในฉบับร่าง
-    BUTTONCANCELDRAFTDESC: ลบฉบับร่างของคุณแล้วย้อนกลับไปใช้หน้าเว็บที่เผยแพร่อยู่ในขณะนี้
+    BUTTONCANCELDRAFT: 'ยกเลิกการเปลี่ยนแปลงในฉบับร่าง'
+    BUTTONCANCELDRAFTDESC: 'ลบฉบับร่างของคุณแล้วย้อนกลับไปใช้หน้าเว็บที่เผยแพร่อยู่ในขณะนี้'
     BUTTONUNPUBLISH: ยังไม่ได้เผยแพร่
-    BUTTONUNPUBLISHDESC: ลบหน้าเว็บนี้ออกจากเว็บไซต์ที่เผยแพร่แล้ว
+    BUTTONUNPUBLISHDESC: 'ลบหน้าเว็บนี้ออกจากเว็บไซต์ที่เผยแพร่แล้ว'
     Comments: ความคิดเห็น
     Content: เนื้อหา
-    DEFAULTABOUTTITLE: เกี่ยวกับเรา
-    DEFAULTCONTACTTITLE: ติดต่อเรา
+    DEFAULTABOUTTITLE: 'เกี่ยวกับเรา'
+    DEFAULTCONTACTTITLE: 'ติดต่อเรา'
     DEFAULTHOMETITLE: หน้าแรก
     DEPENDENT_NOTE: 'หน้าเว็บต่อไปนี้อาศัยหน้าเว็บนี้เป็นตัวอ้างอิง ซึ่งได้แก่หน้าเว็บจำลอง, หน้าเว็บที่เปลี่ยนเส้นทาง, และหน้าเว็บที่มีลิงก์เนื้อหาอยู่ด้วย'
-    DependtPageColumnLinkType: ชนิดของลิงค์
+    DependtPageColumnLinkType: 'ชนิดของลิงค์'
     EDITANYONE: 'ทุกคนสามารถเข้าสู่ระบบของ CMS ได้ทั้งหมด'
     EDITHEADER: 'ใครสามารถแก้ไขหน้านี้ได้บ้าง?'
     EDITONLYTHESE: 'เฉพาะบุคคลเหล่านี้เท่านั้น (เลือกจากรายการ)'
-    EDITORGROUPS: กลุ่มของบรรณาธิการ
-    EDIT_ALL_DESCRIPTION: แก้ไขหน้าเว็บใดก็ได้
+    EDITORGROUPS: 'กลุ่มของบรรณาธิการ'
+    EDIT_ALL_DESCRIPTION: 'แก้ไขหน้าเว็บใดก็ได้'
     EDIT_ALL_HELP: 'ความสามารถในการแก้ไขหน้าเว็บใดๆในเว็บไซต์, โดยไม่ต้องคำนึงถึงการตั้งค่าที่อยู่ในส่วนของแท็บการเข้าถึง, จำเป็นต้องได้รับสิทธิ์อนุญาติ "เข้าถึงส่วนของ''หน้าเว็บ''"'
-    Editors: กลุ่มของบรรณาธิการ
-    HASBROKENLINKS: หน้าเว็บนี้มีลิงค์เสีย
+    Editors: 'กลุ่มของบรรณาธิการ'
+    HASBROKENLINKS: 'หน้าเว็บนี้มีลิงค์เสีย'
     HTMLEDITORTITLE: เนื้อหา
-    INHERIT: สืบทอดค่าจากหน้าเว็บต้นทาง
-    LASTUPDATED: อัพเดทล่าสุด
-    LINKCHANGENOTE: การเปลี่ยนลิงก์ของหน้าเว็บนี้จะส่งผลถึงลิงก์ต่างๆที่อยู่ในหน้าเว็บลูกด้วย
-    MENUTITLE: ป้ายบอกทาง
-    METADESC: รายละเอียด
+    INHERIT: 'สืบทอดค่าจากหน้าเว็บต้นทาง'
+    LASTUPDATED: 'อัพเดทล่าสุด'
+    LINKCHANGENOTE: 'การเปลี่ยนลิงก์ของหน้าเว็บนี้จะส่งผลถึงลิงก์ต่างๆที่อยู่ในหน้าเว็บลูกด้วย'
+    MENUTITLE: 'ป้ายบอกทาง'
+    METADESC: 'รายละเอียด'
     METADESCHELP: 'เว็บไซต์ค้นหาข้อมูลใช้เนื้อหาในส่วนนี้เพื่อแสดงผลการค้นหา (แม้ว่าจะไม่มีผลกระทบกับการจัดอันดับก็ตาม).'
     METAEXTRA: 'Meta Tags แบบกำหนดเอง'
     METAEXTRAHELP: 'แท็กคำสั่ง HTML สำหรับใช้เป็นข้อมูล meta เพิ่มเติม. ตัวอย่างเพิ่มเติม &lt;meta name="ชื่อที่ต้องการ" content="กำหนดเนื้อหาของคุณเองที่นี่" /&gt;'
-    MODIFIEDONDRAFTHELP: หน้าเว็บถูกเปลี่ยนค่าเป็นระงับการเผยแพร่แล้ว
+    MODIFIEDONDRAFTHELP: 'หน้าเว็บถูกเปลี่ยนค่าเป็นระงับการเผยแพร่แล้ว'
     MODIFIEDONDRAFTSHORT: แก้ไขเมื่อ
-    PAGELOCATION: ตำแหน่งหน้าเว็บ
-    PAGETITLE: ชื่อหน้าเว็บ
+    PAGELOCATION: 'ตำแหน่งหน้าเว็บ'
+    PAGETITLE: 'ชื่อหน้าเว็บ'
     PAGETYPE: 'ประเภท เอกสาร'
-    PARENTID: หน้าเว็บแม่
-    PARENTTYPE: ตำแหน่งที่อยู่หน้าเวป
-    PARENTTYPE_ROOT: หน้าเว็บระดับสูงสุด
-    PARENTTYPE_SUBPAGE: หน้าเว็บย่อยที่อยู่ใต้หน้าเว็บแม่
-    PERMISSION_GRANTACCESS_DESCRIPTION: การจัดการสิทธิ์การเข้าถึงเนื้อหา
+    PARENTID: 'หน้าเว็บแม่'
+    PARENTTYPE: 'ตำแหน่งที่อยู่หน้าเวป'
+    PARENTTYPE_ROOT: 'หน้าเว็บระดับสูงสุด'
+    PARENTTYPE_SUBPAGE: 'หน้าเว็บย่อยที่อยู่ใต้หน้าเว็บแม่'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'การจัดการสิทธิ์การเข้าถึงเนื้อหา'
     PERMISSION_GRANTACCESS_HELP: 'อนุญาตให้มีการตั้งค่าข้อจำกัดในการเข้าถึงหน้าเว็บเฉพาะหน้าได้จากส่วนของ "หน้าเว็บ"'
     PageTypNotAllowedOnRoot: 'ประเภทของหน้าเว็บ "{type}" ไม่ได้รับอนุญาตให้สามารถใช้งานได้ที่ตำแหน่ง root'
     PageTypeNotAllowed: 'ชนิดของหน้าเว็บ "{type}" ไม่ได้รับอนุญาตให้ใช้เป็นหน้าเว็บลูกของหน้าเว็บแม่นี้'
     REMOVE_INSTALL_WARNING: 'คำเตือน: คุณควรลบไฟล์ install.php ออกหลังการติดตั้ง SilverStripe เพื่อความปลอดภัย'
-    REORGANISE_DESCRIPTION: เปลี่ยนโครงสร้างเว็บไซต์
-    REORGANISE_HELP: จัดเรียงหน้าเว็บที่อยู่ในแผนผังเว็บไซต์แบบต้นไม้โดยการลากและวาง
+    REORGANISE_DESCRIPTION: 'เปลี่ยนโครงสร้างเว็บไซต์'
+    REORGANISE_HELP: 'จัดเรียงหน้าเว็บที่อยู่ในแผนผังเว็บไซต์แบบต้นไม้โดยการลากและวาง'
     SHOWINMENUS: 'แสดงในเมนู?'
     SHOWINSEARCH: 'แสดงในผลลัพธ์ของการค้นหาหรือไม่?'
     TABBEHAVIOUR: พฤติกรรม
-    TABCONTENT: เนื้อหา
-    TABDEPENDENT: หน้าย่อย
+    TABCONTENT: 'เนื้อหา'
+    TABDEPENDENT: 'หน้าย่อย'
     TOPLEVEL: 'เนื้อหาเว็บไซต์ (ระดับสูงสุด)'
     URLSegment: 'ส่วนการจัดการ URL'
-    VIEWERGROUPS: กลุ่มผู้ชม
-    VIEW_ALL_DESCRIPTION: เปิดดูหน้าเว็บใดก็ได้
-    VIEW_DRAFT_CONTENT: เปิดดูเนื้อหาฉบับร่าง
+    VIEWERGROUPS: 'กลุ่มผู้ชม'
+    VIEW_ALL_DESCRIPTION: 'เปิดดูหน้าเว็บใดก็ได้'
+    VIEW_DRAFT_CONTENT: 'เปิดดูเนื้อหาฉบับร่าง'
     VIEW_DRAFT_CONTENT_HELP: 'นำไปใช้ในการดูหน้าเว็บที่อยู่ด้านนอก CMS ในโหมดฉบับร่าง มีประโยชน์สำหรับการทำงานร่วมกันจากภายนอก โดยไม่จำเป็นต้องเข้าถึง CMS'
-    Viewers: กลุ่มผู้เข้าชม
+    Viewers: 'กลุ่มผู้เข้าชม'
     Visibility: สามารถมองเห็นได้
-    has_one_Parent: หน้าเว็บต้นทาง
-    many_many_BackLinkTracking: แกะรอยลิงก์ย้อนกลับ
+    has_one_Parent: 'หน้าเว็บต้นทาง'
+    many_many_BackLinkTracking: 'แกะรอยลิงก์ย้อนกลับ'
     many_many_ImageTracking: 'แกะรอยรูปภาพ'
-    many_many_LinkTracking: แกะรอยลิงก์
+    many_many_LinkTracking: 'แกะรอยลิงก์'
   SilverStripe\CMS\Model\VirtualPage:
-    HEADER: นี่เป็นหน้าเว็บจำลอง
+    HEADER: 'นี่เป็นหน้าเว็บจำลอง'
     PageTypNotAllowedOnRoot: 'ชนิดของหน้าเว็บดั้งเดิม "{type}" ไม่ได้รับอนุญาตให้ใช้งานกับหน้าเว็บจำลองที่ตำแหน่ง root'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: ใดๆก็ได้
-    BROKENLINKS: รายงานลิงค์เสีย
-    CheckSite: ตรวจเว็บไซต์
-    CheckSiteDropdownDraft: เว็บไซต์ฉบับร่าง
-    CheckSiteDropdownPublished: เว็บไซต์ที่เผยแพร่แล้ว
-    ColumnDateLastModified: วันที่แก้ไขล่าสุด
-    ColumnDateLastPublished: วันที่เผยแพร่ล่าสุด
+    BROKENLINKS: 'รายงานลิงค์เสีย'
+    CheckSite: 'ตรวจเว็บไซต์'
+    CheckSiteDropdownDraft: 'เว็บไซต์ฉบับร่าง'
+    CheckSiteDropdownPublished: 'เว็บไซต์ที่เผยแพร่แล้ว'
+    ColumnDateLastModified: 'วันที่แก้ไขล่าสุด'
+    ColumnDateLastPublished: 'วันที่เผยแพร่ล่าสุด'
     ColumnProblemType: 'ประเภทปัญหา'
-    HasBrokenFile: มีไฟล์เสีย
-    HasBrokenLink: มีลิงค์เสีย
-    HasBrokenLinkAndFile: มีลิงค์เสียและไฟล์เสีย
-    HoverTitleEditPage: แก้ไขหน้าเว็บ
-    PageName: ชื่อของหน้าเว็บ
-    ReasonDropdown: ปัญหาที่ต้องตรวจสอบ
-    ReasonDropdownBROKENFILE: ไฟล์เสีย
-    ReasonDropdownBROKENLINK: ลิงค์เสีย
-    ReasonDropdownRPBROKENLINK: หน้าเว็บเปลี่ยนเส้นทางชี้ไปที่หน้าเว็บที่ไม่มีอยู่ในระบบ
-    ReasonDropdownVPBROKENLINK: หน้าเว็บจำลองชี้ไปยังหน้าเว็บที่ไม่มีอยู่ในระบบ
-    RedirectorNonExistent: หน้าเว็บเปลี่ยนเส้นทางชี้ไปที่หน้าเว็บที่ไม่มีอยู่ในระบบ
-    VirtualPageNonExistent: หน้าเว็บจำลองชี้ไปที่หน้าเว็บที่ไม่มีอยู่ในระบบ
+    HasBrokenFile: 'มีไฟล์เสีย'
+    HasBrokenLink: 'มีลิงค์เสีย'
+    HasBrokenLinkAndFile: 'มีลิงค์เสียและไฟล์เสีย'
+    HoverTitleEditPage: 'แก้ไขหน้าเว็บ'
+    PageName: 'ชื่อของหน้าเว็บ'
+    ReasonDropdown: 'ปัญหาที่ต้องตรวจสอบ'
+    ReasonDropdownBROKENFILE: 'ไฟล์เสีย'
+    ReasonDropdownBROKENLINK: 'ลิงค์เสีย'
+    ReasonDropdownRPBROKENLINK: 'หน้าเว็บเปลี่ยนเส้นทางชี้ไปที่หน้าเว็บที่ไม่มีอยู่ในระบบ'
+    ReasonDropdownVPBROKENLINK: 'หน้าเว็บจำลองชี้ไปยังหน้าเว็บที่ไม่มีอยู่ในระบบ'
+    RedirectorNonExistent: 'หน้าเว็บเปลี่ยนเส้นทางชี้ไปที่หน้าเว็บที่ไม่มีอยู่ในระบบ'
+    VirtualPageNonExistent: 'หน้าเว็บจำลองชี้ไปที่หน้าเว็บที่ไม่มีอยู่ในระบบ'
   SilverStripe\CMS\Search\SearchForm:
-    SearchResults: ผลการค้นหา
+    SearchResults: 'ผลการค้นหา'
   SilverStripe\Reports\SideReport:
-    BROKENFILES: หน้าเว็บที่มีไฟล์เสีย
-    BROKENREDIRECTORPAGES: เปลี่ยนเส้นทางหน้าเว็บที่ชี้ไปที่หน้าเว็บที่ถูกลบแล้ว
-    BROKENVIRTUALPAGES: หน้าเว็บจำลองชี้ไปที่หน้าเว็บที่ถูกลบทิ้งไปแล้ว
-    BrokenLinksGroupTitle: รายงานลิงค์เสีย
-    ContentGroupTitle: รายงานเกี่ยวกับเนื้อหา
-    EMPTYPAGES: หน้าเว็บที่ยังไม่มีเนื้อหา
+    BROKENFILES: 'หน้าเว็บที่มีไฟล์เสีย'
+    BROKENREDIRECTORPAGES: 'เปลี่ยนเส้นทางหน้าเว็บที่ชี้ไปที่หน้าเว็บที่ถูกลบแล้ว'
+    BROKENVIRTUALPAGES: 'หน้าเว็บจำลองชี้ไปที่หน้าเว็บที่ถูกลบทิ้งไปแล้ว'
+    BrokenLinksGroupTitle: 'รายงานลิงค์เสีย'
+    ContentGroupTitle: 'รายงานเกี่ยวกับเนื้อหา'
+    EMPTYPAGES: 'หน้าเว็บที่ยังไม่มีเนื้อหา'
     LAST2WEEKS: 'หน้าเว็บที่ถูกแก้ไขใน 2 สัปดาห์ล่าสุด'
-    ParameterLiveCheckbox: ดูเว็บไซต์แบบสดๆ
+    ParameterLiveCheckbox: 'ดูเว็บไซต์แบบสดๆ'
   SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: สิทธิ์อนุญาตของเนื้อหา
-    PERMISSIONS_CATEGORY: บทบาทและสิทธิ์อนุญาตการเข้าถึง
+    CONTENT_CATEGORY: 'สิทธิ์อนุญาตของเนื้อหา'

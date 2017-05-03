@@ -8,8 +8,6 @@ uk:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Доступ до секції ''{title}'' '
     ACCESS_HELP: 'Дозволити перегляд розділу, що містить дерево сторінок і зміст. Дозволами на перегляд та редагування, а також окремими дозволами на контент, можна керувати на відповідних сторінках.'
-    AddNew: 'Додати нову сторінку'
-    AddNewButton: 'Додати новий'
     ChoosePageParentMode: 'Виберіть де створити цю сторінку'
     ChoosePageType: 'Виберіть тип сторінки'
     Create: Створити
@@ -20,47 +18,27 @@ uk:
     PageAdded: 'Сторінка успішно створена'
     REMOVEDPAGE: '''{title}'' видалено з публічного сайту'
     REMOVEDPAGEFROMDRAFT: 'Видалено ''%s'' з чорнового сайту'
-    ROLLBACK: 'Повернутися до цієї версії'
-    TabContent: Вміст
-    TabHistory: Історія
-    TabSettings: Налаштування
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Під іншою сторінкою'
     ParentMode_top: 'Вищий рівень'
-    Title: 'Додати сторінку'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    AUTHOR: Автор
     COMPAREMODE: 'Режим порівняння (виберіть два)'
-    NOTPUBLISHED: 'Не опубліковано'
-    PUBLISHER: Видавець
     REVERTTOTHISVERSION: 'Відновити цю версію'
     SHOWUNPUBLISHED: 'Показати неопубліковані версії'
-    UNKNOWN: Невідомий
     VIEW: вигляд
     VIEWINGVERSION: 'Переглядається версія {version}.'
-    WHEN: Коли
-  SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Фільтр
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Всі сторінки'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITEFROM: 'Заархівований сайт з'
     DRAFTSITE: 'Чорновий сайт'
-    Email: Е-пошта
-    InstallFilesDeleted: 'Інсталяційні файли були успішно видалені.'
     LOGGEDINAS: 'Залогований як '
     LOGIN: Логін
-    LOGOUT: Вилогуватися
+    LOGOUT: 'Вилогуватися'
     NOTEWONTBESHOWN: 'Примітка: це повідомлення не буде відображатися для відвідувачів'
     NOTLOGGEDIN: 'Не залогований'
     PUBLISHEDSITE: 'Публічний сайт'
-    Password: Пароль
-    UnableDeleteInstall: 'Не вдається видалити інсталяційні файли. Будь ласка, видаліть вручну наведені нижче файли'
     VIEWPAGEIN: 'Переглянути сторінку в:'
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Ви можете перейти до архівного сайту за посиланням:'
-      HAVEASKED: 'Ви надіслали запит на перегляд вмісту нашої сторінки'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Спеціальні символи автоматично перетворені або видалені.'
   SilverStripe\CMS\Model\ErrorPage:
@@ -78,7 +56,7 @@ uk:
     REDIRECTTOPAGE: 'Сторінку на Вашому сайті'
     YOURPAGE: 'Сторінки на Вашому сайті'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: 'Будь-хто'
+    ACCESSANYONE: Будь-хто
     ACCESSHEADER: 'Хто може переглядати цю сторінку?'
     ACCESSLOGGEDIN: 'Тільки ті, що увійшли'
     ACCESSONLYTHESE: 'Тільки ці люди (виберіть зі списку)'
@@ -87,12 +65,12 @@ uk:
     APPEARSVIRTUALPAGES: 'Цей вміст також відображається на віртуальній сторінці в розділі {title}.'
     BUTTONCANCELDRAFT: 'Відмінити зміни чернетки'
     BUTTONCANCELDRAFTDESC: 'Видалити черентку та повернутися до теперішнього опублікованого варіанту'
-    BUTTONUNPUBLISH: 'Відміна публікування'
+    BUTTONUNPUBLISH: Відміна публікування
     BUTTONUNPUBLISHDESC: 'Видалити цю сторінку з опублікованого'
     Comments: Коментарі
     Content: Контент
     DEFAULTABOUTTITLE: 'Про нас'
-    DEFAULTCONTACTTITLE: Контакти
+    DEFAULTCONTACTTITLE: 'Контакти'
     DEFAULTHOMETITLE: Домівка
     DEPENDENT_NOTE: 'Наступні сторінки залежать від цієї сторінки. Вони включають віртуальні сторінки, сторінки переадресації і сторінки з посиланням у змісті'
     DependtPageColumnLinkType: 'Тип посилання'
@@ -109,7 +87,7 @@ uk:
     LASTUPDATED: 'Останнє оновлення'
     LINKCHANGENOTE: 'Зміна адреси цієї сторінки вплине на адреси всіх дочірніх сторінок'
     MENUTITLE: 'Мітка навігації'
-    METADESC: Опис
+    METADESC: 'Опис'
     METAEXTRA: 'Власні Мета-теги'
     MODIFIEDONDRAFTHELP: 'Сторінка має неопубліковані зміни'
     MODIFIEDONDRAFTSHORT: Змінений
@@ -130,7 +108,7 @@ uk:
     SHOWINMENUS: 'Показувати у навігації?'
     SHOWINSEARCH: 'Показувати у пошуку?'
     TABBEHAVIOUR: Поводження
-    TABCONTENT: Вміст
+    TABCONTENT: 'Вміст'
     TABDEPENDENT: 'Залежні сторінки'
     TOPLEVEL: 'Вміст Сайту (Верхній Рівень)'
     URLSegment: 'URL адреса'
@@ -184,4 +162,3 @@ uk:
     ParameterLiveCheckbox: 'Перевірити робочий сайт'
   SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Дозволи вмісту'
-    PERMISSIONS_CATEGORY: 'Ролі та дозволи доступу'

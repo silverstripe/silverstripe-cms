@@ -18,8 +18,6 @@ hr:
     APPLY_FILTER: Traži
     ARCHIVE: Arhiviraj
     ARCHIVEDPAGE: 'Arhivirane stranice ''%s'''
-    AddNew: 'Dodaj novu stranicu'
-    AddNewButton: 'Dodaj novi'
     AddPageRestriction: 'Napomena: neke vrste stranica nisu dozvoljene za ovu sekciju'
     CLEAR_FILTER: Očisti
     Cancel: Odustani
@@ -28,12 +26,10 @@ hr:
     Create: Kreiraj
     DUPLICATED: 'Dupliciran ''{title}'' uspješno'
     DUPLICATEDWITHCHILDREN: 'Dupliciran ''{title}''  i podstranice uspješno'
-    EMAIL: Email
-    ListFiltered: 'Prikazujem rezultate pretraživanja.'
     NEWPAGE: 'Novi {pagetype}'
     PAGENOTEXISTS: 'Stranica ne postoji'
     PAGES: 'Status stranice'
-    PAGETYPEANYOPT: 'Bilo koji'
+    PAGETYPEANYOPT: Bilo koji
     PAGETYPEOPT: 'Tip stranice'
     PUBALLCONFIRM: 'Molim objavi svaku stranicu, kopirajući sadržaj'
     PUBALLFUN: '"Objavi sve"'
@@ -48,46 +44,29 @@ hr:
     RESTORE_DESC: 'Vrati arhiviranu verziju u nacrt'
     RESTORE_TO_ROOT: 'Povrati nacrt na najviši nivo'
     RESTORE_TO_ROOT_DESC: 'Povrati arhiviranu verziju u nacrt na najviši nivo'
-    ROLLBACK: 'Vrati na ovu verziju'
     ROLLEDBACKPUBv2: 'Vraćeno na objavljenu verziju'
     ROLLEDBACKVERSIONv2: 'Vraćeno na verziju #%d.'
     SAVED: 'Uspješno spremljen ''{title}'''
     SAVEDRAFT: 'Spremiti nacrt'
-    TabContent: Sadržaj
-    TabHistory: Povijest
-    TabSettings: Postavke
-    TreeFiltered: 'Prikazujem rezultate pretraživanja.'
-    TreeFilteredClear: Očisti
     UNPUBLISH_AND_ARCHIVE: 'Odjavi i arhiviraj'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Dodaj stranicu'
     ParentMode_child: 'Ispod druge stranice'
     ParentMode_top: 'Najviši nivo'
-    Title: 'Dodaj stranicu'
   SilverStripe\CMS\Controllers\CMSPageEditController:
     MENUTITLE: 'Uredi stranicu'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    AUTHOR: Autor
     COMPAREMODE: 'Način usporedbe (odaberi dva)'
     MENUTITLE: Povijest
-    MULTISELECT: 'Grupne radnje'
-    NOTPUBLISHED: 'Nije objavljeno'
-    PREVIEW: 'Pregled web-stranice'
-    PUBLISHER: Izdavač
     REVERTTOTHISVERSION: 'Vrati na ovu verziju'
     SHOWUNPUBLISHED: 'Prikaži neobjavljene verzije'
-    UNKNOWN: Nepoznato
     VIEW: prikaži
     VIEWINGLATEST: 'Trenutno pregledavam zadnju verziju.'
     VIEWINGVERSION: 'Trenutno pregledavam verziju {version}.'
-    WHEN: Kada
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Uredi stranicu'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Filter
-    ListView: 'Pregled kao popis'
     MENUTITLE: Stranice
-    TreeView: 'Prikaz kao stablo'
   SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Objavljene stranice'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
@@ -107,36 +86,21 @@ hr:
     ARCHIVEDSITEFROM: 'Arhivirana stranica iz'
     CMS: CMS
     DRAFT: Predložak
-    DRAFTSITE: Predložak
-    Email: Email
+    DRAFTSITE: 'Predložak'
     INSTALL_SUCCESS: 'Instalacija uspješna!'
-    InstallFilesDeleted: 'Instalacijske datoteke su uspješno obrisane.'
-    InstallSecurityWarning: 'Zbog sigurnosnih razloga trebali bi ste obrisati instalacijske datoteke, osima ako planirate reinstalaciju kasnije (<em>zahtjeva administracijsku prijavu, pogledaj iznad</em>). Web server sada treba samo dozvole pisanja na "assets" direktorij, pa možete maknuti pravo pisanja sa svih drugih direktorija. <a href="{link}" style="text-align: center;">kliknite ovjde za brisanje instalacijskih datoteka.</a>'
-    InstallSuccessCongratulations: 'SilverStripe je uspješno instaliran!'
     LOGGEDINAS: 'Prijavi se kao'
     LOGIN: Prijavi
-    LOGOUT: Odjava
+    LOGOUT: 'Odjava'
     NOTEWONTBESHOWN: 'Napomena: ova poruka neće biti prikazana vašim posjetiteljima'
     NOTLOGGEDIN: 'Niste prijavljeni'
     PUBLISHED: Objavljeno
     PUBLISHEDSITE: 'Objavljena stranica'
-    Password: Lozinka
-    PostInstallTutorialIntro: 'Ova web stranica je pojednostavljena verzija SilverStripe 3 stranice. Kako bi ste nadogradili, pogledajte {link}.'
-    StartEditing: 'Možete početi uređivati vaš sadržaj otvarajući <a href="{link}">CMS sučelje</a>.'
-    UnableDeleteInstall: 'Nemoguće obrisati instalacijske datoteke. Molimo obrišite datoteke ručno'
     VIEWPAGEIN: 'Pregledaj stranice u:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arhivirano
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Na sljedećem linku možete pristupiti arhiviranoj stranici:'
-      HAVEASKED: 'Zatražili ste sadržaj naše stranice '
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Cancel: Odustani
     EMPTY: 'Molimo unesite dio URLa ili kliknite odustani'
-    Edit: Uredi
     HelpChars: 'Posebni znakovi se automatski pretvaraju ili uklanjaju.'
-    OK: Ok
   SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Kod pogreške'
     DEFAULTERRORPAGECONTENT: '<p>Nažalost, čini se kako pokušavate pristupiti stranici koja ne postoji.</p><p>Molimo provjerite jeste li upisali točan URL i pokušajte ponovo.</p>'
@@ -178,7 +142,7 @@ hr:
     Comments: Komentari
     Content: Sadržaj
     DEFAULTABOUTTITLE: 'O nama'
-    DEFAULTCONTACTTITLE: Kontakt
+    DEFAULTCONTACTTITLE: 'Kontakt'
     DEFAULTHOMECONTENT: '<p>Dobrodošli na SilverStripe! Ovo je zadana početna stranica. Možete je urediti otvarajući <a href="admin/"> CMS</a>.</p><p>Možete pristupiti  <a href="http://docs.silverstripe.org">razvojnoj dokumentaciji</a>, ili početi <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lekcije</a>.</p>'
     DEFAULTHOMETITLE: Početna
     DEPENDENT_NOTE: 'Sljedeće stranice zavise o ovoj stranici. To uključuje virtualne stranice, preusmjeravajuće stranice i stranice s sadržajnim linkovima.'
@@ -196,8 +160,6 @@ hr:
     HASBROKENLINKS: 'Ova stranica ima pogrešne linkove'
     HTMLEDITORTITLE: Sadržaj
     INHERIT: 'Naslijedi od matične stranice'
-    LASTPUBLISHED: 'Zadnje objavljeno'
-    LASTSAVED: 'Zadnje spremljeno'
     LASTUPDATED: 'Zadnje osvježeno'
     LINKCHANGENOTE: 'Mijenjanjem linka ove stranice također će utjecati na linkove svih povezanih stranica.'
     LINKSALREADYUNIQUE: '{url} je već jedinstven'
@@ -209,7 +171,6 @@ hr:
     MODIFIEDONDRAFTSHORT: Izmjenjeno
     MetadataToggle: Metapodaci
     MoreOptions: 'Više opcija'
-    NOTPUBLISHED: 'Nije objavljeno'
     ONLIVEONLYSHORT: 'Samo na objavljenom'
     ONLIVEONLYSHORTHELP: 'Stranica je objavljena, ali je obrisana s nacrta'
     PAGELOCATION: 'Lokacija stranice'
@@ -217,7 +178,7 @@ hr:
     PAGETYPE: 'Vrsta stranice'
     PARENTID: 'Matična stranica'
     PARENTTYPE: 'Lokacija stranice'
-    PARENTTYPE_ROOT: Nadstranica
+    PARENTTYPE_ROOT: 'Nadstranica'
     PARENTTYPE_SUBPAGE: 'Podstranica ispod matične stranice'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Upravljaj prava pristupa za sadržaj'
     PLURALNAME: Stranice
@@ -228,7 +189,7 @@ hr:
     SHOWINSEARCH: 'Pokaži u tražilici?'
     SINGULARNAME: Stranica
     TABBEHAVIOUR: Karakteristike
-    TABCONTENT: Sadržaj
+    TABCONTENT: 'Sadržaj'
     TABDEPENDENT: 'Zavisne stranice'
     TOPLEVEL: 'Sadržaj stranice (Top Level)'
     URLSegment: 'Dio URLa'
@@ -245,10 +206,6 @@ hr:
     many_many_BackLinkTracking: 'Praćenje Backlinkova'
     many_many_ImageTracking: 'Praćenje slika'
     many_many_LinkTracking: 'Praćenje linkova'
-  SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
-    TITLE_TYPE: Tip
-    TITLE_USED_ON: 'Korišteno na'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Povezane stranice'
     DESCRIPTION: 'Prikazuje sadržaj druge stranice'
@@ -259,10 +216,10 @@ hr:
     PageTypNotAllowedOnRoot: 'Originalni tip stranice  "{type}" nije dozvoljen na prvom nivu ove virtualne stranice'
     SINGULARNAME: 'Virtualna stranica'
   SilverStripe\CMS\Reports\BrokenLinksReport:
-    Any: 'bilo koji'
+    Any: bilo koji
     BROKENLINKS: 'Izvješće prekinutih linkova'
     CheckSite: 'Pregledaj stranicu'
-    CheckSiteDropdownDraft: Predložak
+    CheckSiteDropdownDraft: 'Predložak'
     CheckSiteDropdownPublished: 'Objavljena stranica'
     ColumnDateLastModified: 'Datum zadnjeg uređivanja'
     ColumnDateLastPublished: 'Datum zadnje objave'
@@ -309,4 +266,3 @@ hr:
     ParameterLiveCheckbox: 'Pregledaj objavljenu stranicu'
   SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Sadržajne dozvole'
-    PERMISSIONS_CATEGORY: 'Uloge i prava pristupa'

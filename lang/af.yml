@@ -5,19 +5,15 @@ af:
   SilverStripe\CMS\Controllers\CMSMain:
     PAGENOTEXISTS: 'Hierdie bladsy bestaan nie'
     PUBALLCONFIRM: 'Publiseer asseblief elke bladsy in die werf en kopieër inhoud fase na lewendig'
-    ROLLBACK: 'Rol terug na hierdie weergawe'
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: CMSPagesController
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      HAVEASKED: 'U het gevra om die inhoud van ons werf te sien op'
   SilverStripe\CMS\Model\ErrorPage:
     501: '501 - Nie Geimplementeer'
     502: '502 - Slegte Deurgang'
     503: '503 - Diens Nie Beskikbaar'
     505: '505 - HTTP Weergawe Nie Ondersteun'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: 'Enige iemand'
+    ACCESSANYONE: Enige iemand
     ACCESSHEADER: 'Wie mag hierdie bladsy sien?'
     ACCESSLOGGEDIN: 'Ingetekende gebruikers'
     ACCESSONLYTHESE: 'Slegs hierdie mense (kies uit lys)'
@@ -39,7 +35,7 @@ af:
     PARENTTYPE_SUBPAGE: 'Sub-bladsy onder ''n ouer bladsy (kies onder)'
     REORGANISE_DESCRIPTION: 'Verander werf struktuur'
     SHOWINSEARCH: 'Wys in soektog?'
-    TABCONTENT: Inhoud
+    TABCONTENT: 'Inhoud'
     has_one_Parent: 'Ouer Bladsy'
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Hierdie is ''n virtuele bladsy'
@@ -53,4 +49,3 @@ af:
     ParameterLiveCheckbox: 'Kies lewendige werf'
   SilverStripe\Security\Permission:
     CONTENT_CATEGORY: 'Inhoud permissies'
-    PERMISSIONS_CATEGORY: 'Rolle en toegang permissies'

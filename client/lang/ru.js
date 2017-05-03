@@ -7,19 +7,19 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
 } else {
   ss.i18n.addDictionary('ru', {
     "CMS.ALERTCLASSNAME": "Тип страницы будет изменён после её сохранения.",
+    "CMS.AddSubPage": "Добавить новую страницу",
     "CMS.ConfirmRestoreFromLive": "Вы действительно хотите вернуть страницу к состоянию опубликованной версии?",
+    "CMS.Duplicate": "Создать копию",
+    "CMS.EditPage": "Редактировать",
+    "CMS.ONLYSELECTTWO": "You can only compare two versions at this time.",
     "CMS.Restore": "Вы действительно хотите восстановить эту страницу из архива?",
     "CMS.RestoreToRoot": "Вы уверены что хотите восстановить данную страницу из архива?\n\nПоскольку родительская страница недоступна данная страница будет восстановлена в корень сайта.",
     "CMS.RollbackToVersion": "Вы действительно хотите восстановить версию #%s этой страницы?",
-    "CMS.Unpublish": "Вы уверены что хотите удалить страницу с опубликованного сайта?\n\nСтраница останется в черновиках.",
-    "CMS.AddSubPage": "Добавить новую страницу",
-    "CMS.Duplicate": "Создать копию",
-    "CMS.EditPage": "Редактировать",
     "CMS.ShowAsList": "Показать страницы в виде списка",
     "CMS.ThisPageAndSubpages": "Вместе с вложенными страницами",
     "CMS.ThisPageOnly": "Только этой страницы",
-    "CMS.ViewPage": "Просмотр",
+    "CMS.Unpublish": "Вы уверены что хотите удалить страницу с опубликованного сайта?\n\nСтраница останется в черновиках.",
     "CMS.UpdateURL": "Обновить Адрес",
-    "CMS.ONLYSELECTTWO": "You can only compare two versions at this time."
+    "CMS.ViewPage": "Просмотр"
 });
 }

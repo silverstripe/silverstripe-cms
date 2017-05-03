@@ -2,7 +2,7 @@ sv:
   SilverStripe\Admin\CMSBatchAction:
     PUBLISHED_PAGES: 'Publicerade %d sidor, %d misslyckades'
     PUBLISH_PAGES: Publicera
-    RESTORE: 'Återskapa'
+    RESTORE: Återskapa
     RESTORED_PAGES: 'Återskapade %d sidor'
     UNPUBLISHED_PAGES: 'Avpublicerade %d sidor'
     UNPUBLISH_PAGES: Avpublicera
@@ -18,8 +18,6 @@ sv:
     APPLY_FILTER: Sök
     ARCHIVE: Arkiv
     ARCHIVEDPAGE: 'Arkiverade sidor ''%s'''
-    AddNew: 'Skapa ny sida'
-    AddNewButton: 'Skapa ny'
     AddPageRestriction: 'OBS: Vissa sidtyper är inte tillåtna här'
     CLEAR_FILTER: Rensa
     Cancel: Avbryt
@@ -28,11 +26,10 @@ sv:
     Create: Skapa
     DUPLICATED: 'Duplicerade ''{title}'' utan problem'
     DUPLICATEDWITHCHILDREN: 'Duplicerade ''{title}'' och undersidor utan problem'
-    EMAIL: E-post
     NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Den här sidan finns inte'
-    PAGETYPEANYOPT: 'Vilken som helst'
-    PAGETYPEOPT: Sidtyp
+    PAGETYPEANYOPT: Vilken som helst
+    PAGETYPEOPT: 'Sidtyp'
     PUBALLCONFIRM: 'Publicera alla sidor på sajten och kopiera dem till "live"'
     PUBALLFUN: '"Publicera alla"-funktion'
     PUBLISHED: 'Publiseringen av  ''{title}'' lyckades'
@@ -45,45 +42,29 @@ sv:
     RESTORE_DESC: 'Återställ den arkiverade versionen av sidan som ett utkast'
     RESTORE_TO_ROOT: 'Återskapa utkast på top nivå'
     RESTORE_TO_ROOT_DESC: 'Återställ den arkiverade versionen till ett utkast som en top menu sida'
-    ROLLBACK: 'Återställ den här versionen'
     ROLLEDBACKPUBv2: 'Återställde till den publicerade versionen.'
     ROLLEDBACKVERSIONv2: 'Återställde till version #%d.'
     SAVED: 'Sparade  ''{title}'' lyckades.'
     SAVEDRAFT: 'Spara utkast'
-    TabContent: Innehåll
-    TabHistory: Historia
-    TabSettings: Inställningar
-    TreeFiltered: 'Visa sökresultat.'
-    TreeFilteredClear: Rensa
     UNPUBLISH_AND_ARCHIVE: 'Avpublicerad och arkivera'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Skapa sida'
     ParentMode_child: 'Under en annan sida'
-    ParentMode_top: Toppnivå
-    Title: 'Skapa sida'
+    ParentMode_top: 'Toppnivå'
   SilverStripe\CMS\Controllers\CMSPageEditController:
     MENUTITLE: 'Redigera sida'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    AUTHOR: Författare
     COMPAREMODE: 'Jämföringsläge (välj två)'
     MENUTITLE: Historia
-    NOTPUBLISHED: 'Ej publicerad'
-    PREVIEW: 'Förhandsgranska sida'
-    PUBLISHER: Utgivare
     REVERTTOTHISVERSION: 'Ändra till denna version'
     SHOWUNPUBLISHED: 'Visa opublicerade versioner'
-    UNKNOWN: Okänd
-    VIEW: 'Titta på'
+    VIEW: Titta på
     VIEWINGLATEST: 'Nu visas den senaste versionen.'
     VIEWINGVERSION: 'Nu visas version {version}.'
-    WHEN: När
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Redigera sida'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Filter
-    ListView: Listvy
     MENUTITLE: Sidor
-    TreeView: Trädvy
   SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Publicerade sidor'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
@@ -103,45 +84,30 @@ sv:
     ARCHIVEDSITEFROM: 'Arkiverad sajt från'
     CMS: CMS
     DRAFT: Utkast
-    DRAFTSITE: Utkast
-    Email: E-post
+    DRAFTSITE: 'Utkast'
     INSTALL_SUCCESS: 'Installation lyckades!'
-    InstallFilesDeleted: 'Installationsfilerna raderades utan problem.'
-    InstallSecurityWarning: 'Av säkerhetsskäl bör du nu radera installationsfilerna, förutom om du planerar att installera om (<em>kräver administratörs login, se ovan</em>). Webbservern behöver nu bara skrivrättigheter till katalogen "assets", du kan ta bort skrivrättigheter till alla andra kataloger. <a href="{link}" style="text-align: center;">Klicka här för att radera installationsfilerna.</a>'
-    InstallSuccessCongratulations: 'Silverstripe har installerats!'
     LOGGEDINAS: 'Inloggad som'
-    LOGIN: 'Logga in'
+    LOGIN: Logga in
     LOGOUT: 'Logga ut'
     NOTEWONTBESHOWN: 'Observera: Detta meddelande kommer inte att visas för besökarna'
     NOTLOGGEDIN: 'Inte inloggad'
     PUBLISHED: Publicerad
     PUBLISHEDSITE: 'Publicerad sajt'
-    Password: Lösenord
-    PostInstallTutorialIntro: 'Denna webbplats är en enklare version av en Silverstripe 3 hemsida. För att bygga ut, ta en titt på {link}.'
-    StartEditing: 'Du kan börja redigera innehållet genom att öppna <a href="{link}">CMS:et</a>.'
-    UnableDeleteInstall: 'Lyckades inte radera installationsfilerna. Radera följande filer manuellt.'
     VIEWPAGEIN: 'titta på sidan i:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arkiverad
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Du kan komma åt den arkiverade sajten med denna länk:'
-      HAVEASKED: 'Du har efterfrågat att se innehållet på vår sajt på'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Cancel: Avbryt
     EMPTY: 'Ange ett URL-segment eller klicka på avbryt'
-    Edit: Redigera
     HelpChars: 'Specialtecken konverteras eller tas bort'
-    OK: OK
   SilverStripe\CMS\Model\ErrorPage:
-    CODE: Felkod
+    CODE: 'Felkod'
     DEFAULTERRORPAGECONTENT: '<p>Det verkar som om du försökter komma åt en sida som inte finns.</p><p>Var god kontrollera stavningen på adressen som du försökte nå och försök igen.'
     DEFAULTERRORPAGETITLE: 'Sidan hittades inte'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Ursäkta, ett fel uppstod vid hanteringen av din förfrågan.</p>'
-    DEFAULTSERVERERRORPAGETITLE: Serverfel
+    DEFAULTSERVERERRORPAGETITLE: 'Serverfel'
     DESCRIPTION: 'Anpassat innehåll för olika felärenden (t.ex. "Sidan kan inte hittas")'
-    PLURALNAME: Felsidor
-    SINGULARNAME: Felsida
+    PLURALNAME: 'Felsidor'
+    SINGULARNAME: 'Felsida'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Omdirigerar till en annan intern eller extern sida'
     HASBEENSETUP: 'En omdirigeringssida har skapats utan att ha något mål.'
@@ -151,7 +117,7 @@ sv:
     REDIRECTTO: 'Omdirigera till'
     REDIRECTTOEXTERNAL: 'En annan sajt'
     REDIRECTTOPAGE: 'En sida på din sajt'
-    SINGULARNAME: Omdirigeringssida
+    SINGULARNAME: 'Omdirigeringssida'
     YOURPAGE: 'Sida på din sajt'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Alla
@@ -181,27 +147,25 @@ sv:
     DEFAULTHOMETITLE: Hem
     DEPENDENT_NOTE: 'Följande sidor berörs av den här sidan. Inklusive virtuella sidor, omdirigeringssidor, och sidor med innehållslänkar.'
     DESCRIPTION: 'Generisk innehållssida'
-    DependtPageColumnLinkType: Länktyp
+    DependtPageColumnLinkType: 'Länktyp'
     DependtPageColumnURL: URL
     EDITANYONE: 'Alla som kan logga in'
     EDITHEADER: 'Vem kan redigera den här sidan?'
     EDITONLYTHESE: 'Bara de här (välj från listan)'
-    EDITORGROUPS: Redaktörsgrupper
+    EDITORGROUPS: 'Redaktörsgrupper'
     EDIT_ALL_DESCRIPTION: 'Redigera alla sidor'
     EDIT_ALL_HELP: 'Möjlighet att redigera alla sidor på sajten, oavsett inställningarna under Åtkomstfliken. Kräver "Tillgång till ''Sidor''-delen"'
-    Editors: Redaktörsgrupper
+    Editors: 'Redaktörsgrupper'
     GroupPlaceholder: 'Klicka för att välja grupp'
     HASBROKENLINKS: 'Den här sidan har trasiga länkar.'
     HTMLEDITORTITLE: Innehåll
     INHERIT: 'Ärv från överordnad sida'
-    LASTPUBLISHED: 'Datum för senaste publicering'
-    LASTSAVED: 'Senast sparad'
     LASTUPDATED: 'Senast uppdaterad'
     LINKCHANGENOTE: 'Om du ändrar sidans länkadress så kommer det också påverka länkarna på underliggande sidor'
     LINKSALREADYUNIQUE: ' {url} är redan unik'
     LINKSCHANGEDTO: ' ändra {url1} -> {url2}'
-    MENUTITLE: Navigationsetikett
-    METADESC: Metabeskrivning
+    MENUTITLE: 'Navigationsetikett'
+    METADESC: 'Metabeskrivning'
     METADESCHELP: 'Sökmotorer använder detta innehåll vid visning av sökresultatet (rangordningen påverkas dock inte av detta innehåll).'
     METAEXTRA: 'Egna metataggar'
     METAEXTRAHELP: 'HTML taggar för övrig meta information. Till exempel &lt;meta name="Namn" content="innehållet kommer här" /&gt;'
@@ -209,13 +173,12 @@ sv:
     MODIFIEDONDRAFTSHORT: Ändrad
     MetadataToggle: Metadata
     MoreOptions: 'Fler alternativ'
-    NOTPUBLISHED: 'Ej publicerad'
     OBSOLETECLASS: 'Denna sida är den föråldrade typen {type}. Att spara kommer att återställa dess typ och du kan förlora data'
     ONLIVEONLYSHORT: 'Visa endast på publicerad sida'
     ONLIVEONLYSHORTHELP: 'Sidan är publicerad men har raderats från utkastet'
     PAGELOCATION: 'Sidans position'
-    PAGETITLE: Sidnamn
-    PAGETYPE: Sidtyp
+    PAGETITLE: 'Sidnamn'
+    PAGETYPE: 'Sidtyp'
     PARENTID: 'Överordnad sida'
     PARENTTYPE: 'Sidans position'
     PARENTTYPE_ROOT: 'Översta nivån'
@@ -232,10 +195,10 @@ sv:
     SHOWINSEARCH: 'Visa i sökningar?'
     SINGULARNAME: Sida
     TABBEHAVIOUR: Beteende
-    TABCONTENT: Huvudinnehåll
+    TABCONTENT: 'Huvudinnehåll'
     TABDEPENDENT: 'Beroende sidor'
     TOPLEVEL: 'Sajtinnehåll (toppnivå)'
-    URLSegment: URL-segment
+    URLSegment: 'URL-segment'
     VIEWERGROUPS: 'Åtkomstgrupper'
     VIEW_ALL_DESCRIPTION: 'Visa alla sidor'
     VIEW_ALL_HELP: 'Möjlighet att redigera alla sidor på sajten, oavsett inställningarna under Åtkomstfliken. Kräver åtkomst till "Tillgång till ''Sidor''-delen"'
@@ -250,10 +213,6 @@ sv:
     many_many_BackLinkTracking: 'Spåra inlänkar'
     many_many_ImageTracking: 'Spåra bild'
     many_many_LinkTracking: 'Spåra länk'
-  SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
-    TITLE_TYPE: Sidtyp
-    TITLE_USED_ON: 'Använd på'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Länkad sida'
     DESCRIPTION: 'Visar innehåll från en annan sida'
@@ -267,17 +226,17 @@ sv:
     Any: Alla
     BROKENLINKS: 'Rapport för brutna länkar'
     CheckSite: 'Kontrollera sajt'
-    CheckSiteDropdownDraft: Utkast
+    CheckSiteDropdownDraft: 'Utkast'
     CheckSiteDropdownPublished: 'Publicerad Sajt'
     ColumnDateLastModified: 'Datum vid senaste modifiering'
     ColumnDateLastPublished: 'Datum vid senaste publicering'
-    ColumnProblemType: Problemtyp
+    ColumnProblemType: 'Problemtyp'
     ColumnURL: URL
     HasBrokenFile: 'har trasig fil'
     HasBrokenLink: 'har trasig länk'
     HasBrokenLinkAndFile: 'har trasig länk och fil'
     HoverTitleEditPage: 'Redigera sida'
-    PageName: Sidnamn
+    PageName: 'Sidnamn'
     ReasonDropdown: 'Problem att kontrollera'
     ReasonDropdownBROKENFILE: 'Trasig fil'
     ReasonDropdownBROKENLINK: 'Bruten länk'
@@ -292,7 +251,7 @@ sv:
     GO: Kör
     PAGEFILTERDATEHEADING: 'Senast ändrad'
     SEARCH: Sök
-    SearchResults: Sökresultat
+    SearchResults: 'Sökresultat'
   SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask:
     BUTTONRUN: Kör
     CHOOSEOPERATION: 'Välj funktion:'
@@ -304,10 +263,9 @@ sv:
     BROKENREDIRECTORPAGES: 'Omdirigeringssidor som pekar på raderade sidor'
     BROKENVIRTUALPAGES: 'Virtuella sidor som pekar på raderade sidor'
     BrokenLinksGroupTitle: 'Rapport för trasiga länkar'
-    ContentGroupTitle: Innehållsrapport
+    ContentGroupTitle: 'Innehållsrapport'
     EMPTYPAGES: 'Tomma sidor'
     LAST2WEEKS: 'Sidor som har redigerats de senaste 2 veckorna'
     ParameterLiveCheckbox: 'Kontrollera live sajt'
   SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: Innehållsåtkomst
-    PERMISSIONS_CATEGORY: 'Roller och åtkomst'
+    CONTENT_CATEGORY: 'Innehållsåtkomst'

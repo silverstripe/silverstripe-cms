@@ -10,8 +10,6 @@ nl:
     ACCESS: 'Toegang tot het ''{title}'' gedeelte'
     ACCESS_HELP: 'Bevoegdheid om paginastructuur en inhoud te bekijken. Bekijk- en bewerkingstoestemmingen kunnen worden toegekend met pagina-specifieke menu''s en het aparte "Inhoudsmachtigingen".'
     ARCHIVE: Archief
-    AddNew: 'Voeg nieuwe pagina toe'
-    AddNewButton: Nieuw
     AddPageRestriction: 'Opmerking: Sommige paginatypes zijn niet toegestaan ​​voor deze selectie'
     Cancel: Annuleren
     ChoosePageParentMode: 'Kies waar u deze pagina wilt aanmaken'
@@ -29,39 +27,26 @@ nl:
     REMOVEDPAGE: '''{title}'' is van de gepubliceerde site verwijderd'
     REMOVEDPAGEFROMDRAFT: '''%s'' is verwijderd uit de concept site'
     RESTORED: '''{title}'' is met succes hersteld'
-    ROLLBACK: 'Terugdraaien naar deze versie'
     ROLLEDBACKPUBv2: 'Teruggedraaid naar gepubliceerde versie.'
     ROLLEDBACKVERSIONv2: 'Teruggedraaid naar versie #%d.'
     SAVEDRAFT: 'Concept opslaan'
-    TabContent: Inhoud
-    TabHistory: Geschiedenis
-    TabSettings: Instellingen
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Pagina toevoegen'
     ParentMode_child: 'Onder een andere pagina'
     ParentMode_top: 'Hoogste niveau'
-    Title: 'Pagina toevoegen'
   SilverStripe\CMS\Controllers\CMSPageEditController:
     MENUTITLE: 'Bewerk pagina'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    AUTHOR: Auteur
     COMPAREMODE: 'Vergelijken (selecteer 2)'
-    NOTPUBLISHED: 'Niet gepubliceerd'
-    PUBLISHER: Publiceerder
     REVERTTOTHISVERSION: 'Deze versie terugzetten'
     SHOWUNPUBLISHED: 'Toon nog niet gepubliceerde versies'
-    UNKNOWN: Onbekend
     VIEW: toon
     VIEWINGLATEST: 'U bekijkt nu de laatste versie.'
     VIEWINGVERSION: 'U bekijkt nu versie {version}.'
-    WHEN: Wanneer
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Bewerk pagina'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Filteren
-    ListView: Lijstweergave
-    MENUTITLE: 'Pagina ''s'
-    TreeView: 'Hierarchische weergave'
+    MENUTITLE: Pagina 's
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Alle pagina''s'
   SilverStripe\CMS\Controllers\ContentController:
@@ -70,42 +55,27 @@ nl:
     CMS: CMS
     DRAFT: Concept
     DRAFTSITE: 'Concept site'
-    Email: E-mail
     INSTALL_SUCCESS: 'Installatie voltooid!'
-    InstallFilesDeleted: 'De installatiebestanden zijn met succes verwijderd.'
-    InstallSecurityWarning: 'Om veiligheidsredenen dient u de installatiebestanden nu te verwijderen, tenzij u van plan bent om later opnieuw te installeren (<em>dit vereist   toegang als administrator, zie hierboven</em>). De webserver heeft vanaf nu alleen nog schrijftoegang nodig tot de "assets" map, u kunt de schrijftoegang van alle andere mappen verwijderen. <a href="{link}" style="text-align:center;">Klik hier om de installatiebestanden te verwijderen.</a> '
-    InstallSuccessCongratulations: 'SilverStripe is geïnstalleerd!'
     LOGGEDINAS: 'Ingelogd als'
     LOGIN: Inloggen
-    LOGOUT: Uitloggen
+    LOGOUT: 'Uitloggen'
     NOTEWONTBESHOWN: 'Merk op: dit bericht is niet zichtbaar voor uw bezoekers'
     NOTLOGGEDIN: 'Niet ingelogd'
     PUBLISHED: Gepubliceerd
     PUBLISHEDSITE: 'Gepubliceerde site'
-    Password: Wachtwoord
-    PostInstallTutorialIntro: 'Deze website is een eenvoudige versie van een SilverStripe 3 website. Voor uitbreidingen kan u hier een kijkje nemen: {link}.'
-    StartEditing: 'U kunt de inhoud aanpassen via <a href="{link}">het CMS</a>.'
-    UnableDeleteInstall: 'De installatiebestanden konden niet verwijderd worden. Verwijder onderstaande bestanden alstublieft handmatig.'
     VIEWPAGEIN: 'Bekijk pagina in:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Gearchiveerd
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'U kunt de gearchiveerde site bekijken via deze link:'
-      HAVEASKED: 'U heeft gevraagd de inhoud van onze site te bekijken op'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Cancel: Annuleer
     EMPTY: 'Vul een URL segment in of klik op annuleren'
-    Edit: Wijzigen
     HelpChars: 'Speciale tekens worden automatische omgezet of verwijderd.'
-    OK: OK
   SilverStripe\CMS\Model\ErrorPage:
-    CODE: Foutcode
+    CODE: 'Foutcode'
     DEFAULTERRORPAGECONTENT: '<p>Helaas, de pagina die u zocht lijkt niet (meer) te bestaan.</p><p>Controleer of de juiste URL is gebruikt en probeer het opnieuw.</p>'
     DEFAULTERRORPAGETITLE: 'Pagina niet gevonden'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Helaas, er was een probleem bij het verwerken van je verzoek.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Probleem met de server'
-    SINGULARNAME: Foutpagina
+    SINGULARNAME: 'Foutpagina'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Er is een verwijspagina opgezet zonder ergens naar te verwijzen.'
     HEADER: 'Deze pagina zal gebruikers naar een andere pagina doorsturen (redirect)'
@@ -127,29 +97,27 @@ nl:
     BUTTONPUBLISHED: Gepubliceerd
     BUTTONSAVED: Opgeslagen
     BUTTONSAVEPUBLISH: 'Opslaan & publiceren'
-    BUTTONUNPUBLISH: 'Publicatie intrekken'
+    BUTTONUNPUBLISH: Publicatie intrekken
     BUTTONUNPUBLISHDESC: 'Deze pagina verwijderen uit de gepubliceerde site'
     Comments: Commentaar
     Content: Inhoud
     DEFAULTABOUTTITLE: 'Over Ons'
-    DEFAULTCONTACTTITLE: Contact
+    DEFAULTCONTACTTITLE: 'Contact'
     DEFAULTHOMETITLE: Home
     DEPENDENT_NOTE: 'De volgende pagina''s zijn afhankelijk van deze pagina. Hieronder vallen virtuele pagina''s, verwijzingspagina''s en pagina''s met links in hun inhoud.'
-    DependtPageColumnLinkType: Linktype
+    DependtPageColumnLinkType: 'Linktype'
     DependtPageColumnURL: URL
     EDITANYONE: 'Iedereen die kan inloggen in het CMS'
     EDITHEADER: 'Wie kan deze pagina wijzigen?'
     EDITONLYTHESE: 'Alleen deze gebruikers (kies uit de lijst)'
-    EDITORGROUPS: Redacteursgroepen
+    EDITORGROUPS: 'Redacteursgroepen'
     EDIT_ALL_DESCRIPTION: 'Kan elke pagina wijzigen'
     EDIT_ALL_HELP: 'Bevoegdheid om alle pagina''s op de site te wijzigen, onafhankelijk van de instellingen in het ''Toegang'' tabblad. Vereist "Toegang tot site inhoud" rechten'
-    Editors: Redacteursgroepen
+    Editors: 'Redacteursgroepen'
     GroupPlaceholder: 'Klik om de groep te selecteren'
     HASBROKENLINKS: 'Deze pagina heeft verbroken links.'
     HTMLEDITORTITLE: Inhoud
     INHERIT: 'Overnemen van de bovenliggende pagina'
-    LASTPUBLISHED: 'Laatste publicatiedatum'
-    LASTSAVED: 'Laatste keer opgeslagen'
     LASTUPDATED: 'Laatst bijgewerkt'
     LINKCHANGENOTE: 'Het veranderen van de link van deze pagina beïnvloedt de links van alle onderliggende pagina''s. '
     MENUTITLE: 'Navigatie label'
@@ -161,7 +129,6 @@ nl:
     MODIFIEDONDRAFTSHORT: Aangepast
     MetadataToggle: Metadata
     MoreOptions: 'Meer opties'
-    NOTPUBLISHED: 'Niet gepubliceerd'
     OBSOLETECLASS: 'Deze pagina is van het type {type}. Dit type is niet meer in gebruik. Het opslaan van deze pagina zal het type wijzigen. Hierbij kan data verloren gaan.'
     PAGELOCATION: 'Pagina locatie'
     PAGETITLE: 'Pagina titel'
@@ -180,11 +147,11 @@ nl:
     SHOWINMENUS: 'Weergeven in menu''s?'
     SHOWINSEARCH: 'Weergeven in zoeken?'
     TABBEHAVIOUR: Gedrag
-    TABCONTENT: Hoofdinhoud
+    TABCONTENT: 'Hoofdinhoud'
     TABDEPENDENT: 'Afhankelijke pagina''s'
     TOPLEVEL: 'Site inhoud (hoogste niveau)'
     URLSegment: 'URL segment'
-    VIEWERGROUPS: Bekijkersgroepen
+    VIEWERGROUPS: 'Bekijkersgroepen'
     VIEW_ALL_DESCRIPTION: 'Kan iedere pagina op de website bekijken, ongeacht de specifieke pagina instelling'
     VIEW_ALL_HELP: 'Bevoegdheid om alle pagina''s op de site te wijzigen, onafhankelijk van de instellingen in het ''Toegang'' tabblad. Vereist "Toegang tot site inhoud" rechten'
     VIEW_DRAFT_CONTENT: 'Bekijk concept inhoud'
@@ -192,7 +159,7 @@ nl:
     VIRTUALPAGEDRAFTWARNING: 'U dient eerst de gekoppelde pagina te publiceren voordat u de virtuele pagina publiceert.'
     VIRTUALPAGEWARNING: 'U dient eerst een gekoppelde pagina te selecteren en op te slaan voordat u deze pagina kunt publiceren.'
     VIRTUALPAGEWARNINGSETTINGS: 'U dient een gekoppelde pagina te selecteren op het hoofdscherm voordat u kunt publiceren.'
-    Viewers: Bekijkersgroepen
+    Viewers: 'Bekijkersgroepen'
     Visibility: Zichtbaarheid
     has_one_Parent: 'Bovenliggende pagina'
     many_many_BackLinkTracking: 'Backlinks traceren'
@@ -214,13 +181,13 @@ nl:
     CheckSiteDropdownPublished: 'Gepubliceerde site'
     ColumnDateLastModified: 'Laatste wijzigingsdatum'
     ColumnDateLastPublished: 'Laatste publicatiedatum'
-    ColumnProblemType: Probleemtype
+    ColumnProblemType: 'Probleemtype'
     ColumnURL: URL
     HasBrokenFile: 'heeft verbroken bestand'
     HasBrokenLink: 'heeft verbroken link'
     HasBrokenLinkAndFile: 'heeft verbroken link en bestand'
     HoverTitleEditPage: 'Wijzig pagina'
-    PageName: Paginanaam
+    PageName: 'Paginanaam'
     ReasonDropdown: 'Te controleren probleem'
     ReasonDropdownBROKENFILE: 'Verbroken bestand'
     ReasonDropdownBROKENLINK: 'Verbroken link'
@@ -233,16 +200,15 @@ nl:
     FILTERDATETO: Tot
     GO: Zoeken
     SEARCH: Zoeken
-    SearchResults: Zoekresultaten
+    SearchResults: 'Zoekresultaten'
   SilverStripe\Reports\SideReport:
     BROKENFILES: 'Pagina''s met verbroken bestanden'
     BROKENREDIRECTORPAGES: 'Verwijzingspagina''s die naar verwijderde pagina''s verwijzen'
     BROKENVIRTUALPAGES: 'Virtuele pagina''s die naar verwijderde pagina''s verwijzen'
     BrokenLinksGroupTitle: 'Rapport van verbroken links'
-    ContentGroupTitle: Inhoudsrapporten
+    ContentGroupTitle: 'Inhoudsrapporten'
     EMPTYPAGES: 'Lege pagina''s'
     LAST2WEEKS: 'Pagina''s gewijzigd in de laatste twee weken'
     ParameterLiveCheckbox: 'Controleer gepubliceerde site'
   SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: Inhoudsrechten
-    PERMISSIONS_CATEGORY: 'Rollen en toegangsrechten'
+    CONTENT_CATEGORY: 'Inhoudsrechten'
