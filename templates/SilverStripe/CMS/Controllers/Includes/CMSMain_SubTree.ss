@@ -4,9 +4,9 @@
 <% if $limited %>
     <ul><li class="readonly">
         <span class="item">
-            <%t LeftAndMain.TooManyPages 'Too many pages' %>
+            <%t SilverStripe\Admin\LeftAndMain.TooManyPages 'Too many pages' %>
             (<a href="{$listViewLink.ATT}" class="cms-panel-link" data-pjax-target="Content">
-                <%t LeftAndMain.ShowAsList 'show as list' %>
+                <%t SilverStripe\Admin\LeftAndMain.ShowAsList 'show as list' %>
             </a>)
         </span>
     </li></ul>

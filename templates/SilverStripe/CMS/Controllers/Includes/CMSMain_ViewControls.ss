@@ -6,12 +6,12 @@
 			href="$LinkTreeView.ATT"
 			data-view="treeview"
 			data-pjax-target="$PJAXTarget.ATT"
-			title="<% _t('CMSPagesController.TreeView', 'Tree View') %>"
+			title="<% _t('SilverStripe\CMS\Controllers\CMSPagesController.TreeView', 'Tree View') %>"
 		></a><a class="cms-panel-link icon-button font-icon-list page-view-link <% if $ViewState == 'listview' %>active<% end_if %>"
 			href="$LinkListView.ATT"
 			data-view="listview"
 			data-pjax-target="$PJAXTarget.ATT"
-			title="<% _t('CMSPagesController.ListView', 'List View') %>"
+			title="<% _t('SilverStripe\CMS\Controllers\CMSPagesController.ListView', 'List View') %>"
 		></a>
 	</div>
 </div>
