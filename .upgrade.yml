@@ -77,5 +77,4 @@ mappings:
   CMSPagesController_ContentToolbar_ss: SilverStripe\CMS\Controllers\CMSPageHistoryController
   CMSSIteTreeFilter_PublishedPages: SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages
   URLSegmentField: SilverStripe\CMS\Forms\SiteTreeURLSegmentField
-  ViewArchivedEmail_ss: SilverStripe\CMS\Email\ViewArchivedmail.ss
   CMSPagesController_Tools_ss: SilverStripe\CMS\Controllers\CMSPagesController

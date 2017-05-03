@@ -93,10 +93,6 @@ nb:
     VIEWPAGEIN: 'Vis side i:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arkivert
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Du kan besøke det arkiverte nettstedet med denne lenken:'
-      HAVEASKED: 'Du har bedt om å vise innholdet på nettstedet vårt på '
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Avbryt
     EMPTY: 'Vennligst skriv inn adressesegment eller trykk avbryt.'

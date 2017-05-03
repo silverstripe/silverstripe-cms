@@ -65,10 +65,6 @@ da:
     Password: Adgangskode
     UnableDeleteInstall: 'Var ikke i stand til at slette installationsfilerne. Slet venligst filerne herunder manuelt.'
     VIEWPAGEIN: 'Vis side i:'
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Du kan tilgå¨den arkiverede side på dette link:'
-      HAVEASKED: 'Du har spurgt om at se indholdet af vores side på'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Specialkarakterer bliver automatisk konverteret eller fjernet.'
   SilverStripe\CMS\Model\ErrorPage:

@@ -68,10 +68,6 @@ he_IL:
     PostInstallTutorialIntro: 'אתר זה הנו גרסה מופשטת של אתר SilverStrip 3. כדי להרחיב את האתר, נא לגשת לכתובת {link}.'
     UnableDeleteInstall: 'לא ניתן למחוק את קובצי ההתקנה. נא למחוק את הקבצים שלהלן ידנית'
     VIEWPAGEIN: 'צפייה בעמוד תחת:'
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'ניתן להיכנס לארכיון האתר בקישור הזה:'
-      HAVEASKED: 'ביקשת לצפות בתוכן האתר שלנו תחת'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: ' תווים מיוחדים מומרים אוטומטית או שהם מוסרים.'
   SilverStripe\CMS\Model\ErrorPage:

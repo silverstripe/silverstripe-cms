@@ -5,10 +5,6 @@ ca:
     PUBALLFUN: 'Funcionalitat de "Publica-ho tot"'
     REMOVEDPAGEFROMDRAFT: 'S''ha suprimit  ''%s'' del lloc esborrany'
     ROLLBACK: 'Torna a aquesta versió'
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Podeu accedir al lloc arxivat en aquesta adreça:'
-      HAVEASKED: 'Heu demanat de veure el contingut del nostre lloc el'
   SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Codi d''error'
     DEFAULTERRORPAGECONTENT: '<p>Sembla que intenteu accedir a una pàgina que no existeix.</p><p>Si us plau, reviseu com heu escrit la URL que intenteu accedir i proveu-ho de nou.</p>'

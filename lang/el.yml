@@ -51,10 +51,6 @@ el:
     VIEWPAGEIN: 'Προβολή Σελίδας σε:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Αρχειοθετημένο
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Μπορείτε να δείτε τον αρχειοθετημένο ιστότοπο εδώ:'
-      HAVEASKED: 'Επιθυμείται να εμφανιστεί το περιεχόμενο του ιστοχώρου σας την '
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: 'Άκυρο'
     EMPTY: 'Παρακαλώ εισάγεται ένα τμήμα διεύθυνσης URL ή πατήστε άκυρο'

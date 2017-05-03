@@ -89,10 +89,6 @@ nl:
     VIEWPAGEIN: 'Bekijk pagina in:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Gearchiveerd
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'U kunt de gearchiveerde site bekijken via deze link:'
-      HAVEASKED: 'U heeft gevraagd de inhoud van onze site te bekijken op'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Annuleer
     EMPTY: 'Vul een URL segment in of klik op annuleren'

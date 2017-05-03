@@ -5,10 +5,6 @@ si:
     PUBALLFUN: 'සියලු ක්රම වේද ප්රසිද්ධ කරන ලදී'
     REMOVEDPAGEFROMDRAFT: 'කටු අඩවියෙන් ''%s'' මකන ලදී'
     ROLLBACK: 'මෙම සංස්රනය ඉවත් කරනන්න'
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'මෙම බැදීමෙන් පැරනි අඩවියට ප්රවිෂ්ට විය හැක'
-      HAVEASKED: 'ඹබට අපගේ වෙබ් අඩවිය නිරීක්ශනය කරන ලෙස ඉල්ලා ඇත'
   SilverStripe\CMS\Model\ErrorPage:
     CODE: 'වැරදි කේතය'
     DEFAULTERRORPAGECONTENT: '<p>කණගාටුයි,ඔබ නොමැති පිටුවකට යාමට උත්සාහ කරයි. </p><p>ඔබට යාමට අවශ්ය URL එකෙහි අක්ෂර පරීක්ෂා කර නැවත උත්සාහ කරන්න.</p>'

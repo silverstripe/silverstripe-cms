@@ -9,10 +9,6 @@ bs:
     PUBALLFUN: 'Funkcija "Objavi sve"'
     REMOVEDPAGEFROMDRAFT: 'Uklonjeno ''%s'' sa privremenog nacrta stranice'
     ROLLBACK: 'Vrati na ovo izdanje'
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Arhiviranoj stranici možete pristupiti korištenjem ovog linka:'
-      HAVEASKED: 'Zahtjevali ste pregled sadržaja naše stranice na'
   SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Kod greške'
     DEFAULTERRORPAGECONTENT: '<p>Žao nam je, pokušali ste pristupiti stranici koja ne postoji.</p><p>Molimo provjerite da li ste ispravno ukucali URL kojem ste pokušali pristupiti i pokušajte ponovo.</p>'

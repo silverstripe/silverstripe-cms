@@ -125,10 +125,6 @@ fa_IR:
     VIEWPAGEIN: 'مشاهده صفحه در'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 'بایگانی شده'
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'شما می‌توانید با این لینک به سایت آرشیو‌شده دسترسی یابید:'
-      HAVEASKED: 'شما خواسته اید که درون‌مایه تارگاه ما را ببینید در'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: لغو
     EMPTY: 'لطفاً یک بخش نشانی اینترنتی را درج نمایید یا روی لغو کلیک کنید.'

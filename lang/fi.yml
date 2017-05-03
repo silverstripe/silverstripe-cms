@@ -127,10 +127,6 @@ fi:
     VIEWPAGEIN: 'Tarkastele sivua:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arkistoitu
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Pääset arkistoidulle sivulle tällä linkillä:'
-      HAVEASKED: 'Sinua on pyydetty katsomaan sivun sisältöä '
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Peruuta
     EMPTY: 'Anna URL-osoite tai napsauta peruuta'

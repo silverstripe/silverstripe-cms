@@ -5,10 +5,6 @@ zh_CN:
     PUBALLFUN: '“全部发布“功能'
     REMOVEDPAGEFROMDRAFT: '已从测试站点删除 ''%s'''
     ROLLBACK: 恢复到这一版本
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: '您可通过这个链接进入已归挡的网页：'
-      HAVEASKED: '在%s,您要求浏览我们网站'
   SilverStripe\CMS\Model\ErrorPage:
     CODE: '错误代码'
   SilverStripe\CMS\Model\RedirectorPage:

@@ -1,9 +1,6 @@
 vi_VN:
   SilverStripe\CMS\Controllers\CMSMain:
     PAGENOTEXISTS: 'Không tìm thấy trang này.'
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      HAVEASKED: 'Bạn được mời để xem nội dung của web chúng tôi trên'
   SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Mã lỗi'
     DEFAULTERRORPAGECONTENT: '<p>Bạn truy cập vào một trang không tồn tại</p><p>Xin vui lòng kiểm tra lại đường dẩn hoặc quay lại trang chủ</p>'

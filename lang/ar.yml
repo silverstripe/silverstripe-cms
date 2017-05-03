@@ -81,10 +81,6 @@ ar:
     VIEWPAGEIN: 'مشاهدة الصفحة في:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 'المؤرشف'
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'يمكنك الدخول إلى أرشيف الموقع عن طريق الرابط التالي :'
-      HAVEASKED: 'تم طلب مشاهدة محتوى الموقع في'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: إلغاء
     EMPTY: 'الرجاء إدخال مقطع URL أو انقر فوق إلغاء الأمر'

@@ -115,9 +115,6 @@ bg:
     VIEWPAGEIN: 'Изглед на страница в:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 'Архивирани'
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Можете да достигнете архивирания сайт, чрез тази връзка'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Отказ
     Edit: Промени

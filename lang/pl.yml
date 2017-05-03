@@ -88,10 +88,6 @@ pl:
     VIEWPAGEIN: 'Zobacz stronę w:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Zarchiwizowane
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Dostęp do zarchiwizowanej witryny:'
-      HAVEASKED: 'Poprosiłeś o obejrzenie treści naszej strony na'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Anuluj
     EMPTY: 'Proszę podać część adresu lub kliknąć anuluj'

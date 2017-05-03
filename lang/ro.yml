@@ -81,10 +81,6 @@ ro:
     VIEWPAGEIN: 'Vizualizează pagina în:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arhivă
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Puteți accesa site-ul arhivat la link-ul:'
-      HAVEASKED: 'Ați cerut să vizualizați conținutul site-ului la'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Anulare
     EMPTY: 'Vă rugăm introduceți un Segment URL sau apăsați anulează'

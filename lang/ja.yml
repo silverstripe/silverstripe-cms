@@ -88,10 +88,6 @@ ja:
     VIEWPAGEIN: 以下からページを表示する：
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: アーカイブされた
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: アーカイブされたサイトには次のリンクでアクセス可能です：
-      HAVEASKED: あなたは私達のサイトのコンテンツを閲覧するように求められています
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: 中止
     EMPTY: 'URLのセグメントを入力または中止をクリックする'

@@ -102,10 +102,6 @@ cs:
     VIEWPAGEIN: 'Zobrazit stránku v:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archivováno
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Můžete přistupovat k archivu pomocí tohoto odkazu:'
-      HAVEASKED: 'Požadovali jste prohlížet obsah našich stránek během'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Storno
     EMPTY: 'Zadejte prosím URL segment nebo klikněte zrušit'

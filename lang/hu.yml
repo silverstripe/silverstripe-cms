@@ -76,10 +76,6 @@ hu:
     VIEWPAGEIN: 'Oldal megtekintése'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archiválva
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Az archivált oldalt elérheted ezen a linken:'
-      HAVEASKED: 'Azt kérted, hogy megnézhesd a honlapunk tartalmát ekkor:'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Mégsem
     EMPTY: 'Írjon be egy URL szegmenst, vagy kattitson a "mégse" feliratra'

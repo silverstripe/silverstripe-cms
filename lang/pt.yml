@@ -75,10 +75,6 @@ pt:
     PostInstallTutorialIntro: 'Este site é uma versão simplificada do SilverStripe 3. Para adicionar novas funcionalidades visita {link}.'
     UnableDeleteInstall: 'Impossível remover os ficheiros de instalação. Por favor, remova-os manualmente.'
     VIEWPAGEIN: 'Ver página em:'
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Pode aceder aos arquivos do site a partir deste link:'
-      HAVEASKED: 'Pediu para ver o conteúdo do nosso site na'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: 'Cancelar '
     Edit: Editar

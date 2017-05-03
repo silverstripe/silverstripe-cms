@@ -65,10 +65,6 @@ th:
     PostInstallTutorialIntro: 'เว็บไซต์นี้เป็นรุ่นอย่างง่ายของเว็บไซต์ที่สร้างจากรุ่น SiverStripe 3 หากต้องการขยายขีดความสามารถ กรุณาเข้าไปที่ {link}'
     UnableDeleteInstall: 'ไม่สามารถลบไฟล์ติดตั้งได้ กรุณาลบไฟล์ดังกล่าวด้านล่างด้วยตนเอง'
     VIEWPAGEIN: 'เปิดดูหน้าเว็บใน:'
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'คุณสามารถเข้าถึงเว็บไซต์รุ่นย้อนหลังได้จากลิงก์นี้:'
-      HAVEASKED: คุณได้ร้องขอเพื่อเปิดดูเนื้อหาในเว็บไซต์ของเราเมื่อ
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: ตัวอักษรพิเศษได้ถูกแปลงค่าหรือลบออกโดยอัตโนมัติแล้ว
   SilverStripe\CMS\Model\ErrorPage:

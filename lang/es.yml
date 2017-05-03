@@ -127,10 +127,6 @@ es:
     VIEWPAGEIN: 'Ver página en:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archivado
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Puede acceder al sitio archivado con este enlace:'
-      HAVEASKED: 'Ha pedido ver el contenido de nuestro sitio el'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Cancelar
     EMPTY: Vacío

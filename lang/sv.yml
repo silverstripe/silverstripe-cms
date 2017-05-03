@@ -123,10 +123,6 @@ sv:
     VIEWPAGEIN: 'titta på sidan i:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arkiverad
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Du kan komma åt den arkiverade sajten med denna länk:'
-      HAVEASKED: 'Du har efterfrågat att se innehållet på vår sajt på'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Avbryt
     EMPTY: 'Ange ett URL-segment eller klicka på avbryt'

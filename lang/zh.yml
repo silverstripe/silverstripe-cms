@@ -81,10 +81,6 @@ zh:
     VIEWPAGEIN: 查看页面，在：
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 已存档
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 您可以通过该链接访问存档站点：
-      HAVEASKED: '请您查看我们网站的内容在'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: 取消
     EMPTY: '请输入一个URL分类或点击“取消”'

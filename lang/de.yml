@@ -106,10 +106,6 @@ de:
     VIEWPAGEIN: 'Seite anzeigen in:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archiviert
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Sie können unter folgendem Verweis auf die archivierte Seite zugreifen:'
-      HAVEASKED: 'Sie haben darum gebeten, den Inhalt unserer Site zu sehen, am'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Abbrechen
     EMPTY: 'Bitte geben Sie ein URL-Segment ein oder drücken Sie auf Abbrechen'

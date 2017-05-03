@@ -81,10 +81,6 @@ mi:
     VIEWPAGEIN: 'Tiro Whārangi i'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 'I putumōhiotia'
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Ka taea te uru ki te pae putumōhio mā tēnei hononga'
-      HAVEASKED: 'Kua tono mai kia tirohia e koe ngā ihirangi o tā mātou pae i'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Whakakore
     EMPTY: 'Tāurua he Wāhanga PRO, ka pāwhiri whakakore rānei'

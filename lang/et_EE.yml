@@ -72,10 +72,6 @@ et_EE:
     VIEWPAGEIN: 'Kuva leht:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arhiveeritud
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Arhiveeritud lehele pääsed ligi selle lingi kaudu:'
-      HAVEASKED: 'Soovid vaadata meie lehe sisu kuupäeval'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Edit: Redigeeri
     HelpChars: 'Erimärgid teisendatakse või eemaldatakse automaatselt.'

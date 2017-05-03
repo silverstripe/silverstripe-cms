@@ -8,9 +8,6 @@ af:
     ROLLBACK: 'Rol terug na hierdie weergawe'
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: CMSPagesController
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      HAVEASKED: 'U het gevra om die inhoud van ons werf te sien op'
   SilverStripe\CMS\Model\ErrorPage:
     501: '501 - Nie Geimplementeer'
     502: '502 - Slegte Deurgang'

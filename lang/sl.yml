@@ -88,10 +88,6 @@ sl:
     VIEWPAGEIN: 'Ogled strani v:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arhivirano
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Do arhvirane različice spletnega mesta lahko dostopate na naslovu:'
-      HAVEASKED: 'Za vpogled v vsebino našega spletnega mesta ste zaprosili'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Prekliči
     EMPTY: 'Prosim vnesite URL segment ali kliknite prekliči'

@@ -81,10 +81,6 @@ sr_RS@latin:
     VIEWPAGEIN: 'Prikaži stranicu u:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arhivirano
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Možete da pristupite arhiviranom sadržaju na ovom linku:'
-      HAVEASKED: 'Zamoljeni ste da pogledate sadržaj ovog sajta'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Odustani
     EMPTY: 'Molimo Vas da unesete segment URL-a ili kliknete na Odustani'

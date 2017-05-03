@@ -82,10 +82,6 @@ ko:
     VIEWPAGEIN: '다음에서 페이지를 표시한다 : '
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 보관됨
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: '아카이브된 사이트에 다음 링크에 액세스 할 수 있습니다 : '
-      HAVEASKED: '당신은 우리의 사이트의 콘텐츠를 보려고 요청했습니다.'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: 취소
     EMPTY: 'URL 세그먼트를 입력 또는 중지를 클릭'

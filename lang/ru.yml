@@ -102,10 +102,6 @@ ru:
     VIEWPAGEIN: 'Просмотреть страницу в:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 'Архивные'
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Вы можете посмотреть архивную версию сайта по этой ссылке:'
-      HAVEASKED: 'Вы запросили просмотр содержимого нашего сайта за'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Отмена
     EMPTY: 'Задайте адрес страницы или нажмите "Отмена"'

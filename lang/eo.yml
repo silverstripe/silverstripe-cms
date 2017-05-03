@@ -127,10 +127,6 @@ eo:
     VIEWPAGEIN: 'Vidigi Paĝon en:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Enarkivigita
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Vi povas aliri la enarkivigitan retejon je ĉi tiu ligilo:'
-      HAVEASKED: 'Vi petis vidi la enhavon de nia retejo en'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Rezigni
     EMPTY: 'Bonvolu enigi URL-segmenton aŭ alklaki al Rezigni'

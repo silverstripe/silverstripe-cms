@@ -87,10 +87,6 @@ id:
     VIEWPAGEIN: 'Tampikan Laman pada:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Terarsip
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Anda dapat mengakses arsip situs pada tautan ini:'
-      HAVEASKED: 'Anda telah meminta menampilkan konten situs ini pada'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Batal
     EMPTY: 'Mohon isikan URL atau klik Batal'

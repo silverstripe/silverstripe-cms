@@ -47,10 +47,6 @@ gl_ES:
     NOTLOGGEDIN: 'Sen iniciar sesión'
     PUBLISHEDSITE: 'Sitio Publicado'
     VIEWPAGEIN: 'Ver a Páxina en:'
-  SilverStripe\CMS\Email\ViewArchivedmail:
-    ss:
-      CANACCESS: 'Podes acceder ao sitio arquivado nesta ligazón:'
-      HAVEASKED: 'Solicitaches ver o contido do sitio sobre'
   SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Código de erro'
     DEFAULTERRORPAGECONTENT: '<p>Sintoo, parece que estabas tratando de acceder a unha página que non existe.</p><p>Por favor, comproba o enderezo da URL que estaba tratando de acceder e volva tentalo.</p>'
