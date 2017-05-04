@@ -33,7 +33,7 @@ el:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Παρακαλώ εισάγεται ένα τμήμα διεύθυνσης URL ή πατήστε άκυρο'
   SilverStripe\CMS\Model\ErrorPage:
-    0: '404 - Δεν βρέθηκε'
+    CODE_404: '404 - Δεν βρέθηκε'
     CODE: 'Κωδικός σφάλματος'
     DEFAULTERRORPAGETITLE: 'Η σελίδα δεν βρέθηκε'
     DEFAULTSERVERERRORPAGETITLE: 'Σφάλμα διακομιστή'

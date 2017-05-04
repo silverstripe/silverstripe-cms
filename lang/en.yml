@@ -1,4 +1,20 @@
 en:
+  SilverStripe\Admin\CMSBatchAction:
+    PUBLISHED_PAGES: 'Published %d pages, %d failures'
+    PUBLISH_PAGES: Publish
+    RESTORE: Restore
+    RESTORED_PAGES: 'Restored %d pages'
+    UNPUBLISHED_PAGES: 'Unpublished %d pages'
+    UNPUBLISH_PAGES: Unpublish
+  SilverStripe\Admin\LeftAndMain:
+    CANT_REORGANISE: 'You do not have permission to alter Top level pages. Your change was not saved.'
+    PLEASESAVE: 'Please Save Page: This page could not be updated because it hasn''t been saved yet.'
+    REORGANISATIONSUCCESSFUL: 'Reorganised the site tree successfully.'
+    ShowAsList: 'show as list'
+    TooManyPages: 'Too many pages'
+  SilverStripe\AssetAdmin\Controller\AssetAdmin:
+    BACKLINKCOUNT: 'Used on:'
+    PAGES: page(s)
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Deleted %d pages from draft and live, and sent them to the archive'
     TITLE: 'Unpublish and archive'
@@ -53,10 +69,6 @@ en:
     TreeFiltered: 'Showing search results.'
     TreeFilteredClear: Clear
     UNPUBLISH_AND_ARCHIVE: 'Unpublish and archive'
-    CREATE: Create
-    INSERT: 'Insert file'
-    ACCESSALLINTERFACES: 'Access to all CMS sections'
-    ACCESSALLINTERFACESHELP: 'Overrules more specific access settings.'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
@@ -123,23 +135,8 @@ en:
     StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'View Page in:'
-    DRAFT_SITE_ACCESS_RESTRICTION: 'You must log in with your CMS password in order to view the draft or archived content. <a href="%s">Click here to go back to the published site.</a>'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archived
-    Auto: Auto
-    ChangeViewMode: 'Change view mode'
-    Desktop: Desktop
-    DualWindowView: 'Dual Window'
-    EditView: 'Edit mode'
-    Mobile: Mobile
-    PreviewState: 'Preview State'
-    PreviewView: 'Preview mode'
-    Responsive: Responsive
-    SplitView: 'Split mode'
-    Tablet: Tablet
-    ViewDeviceWidth: 'Select a preview width'
-    Width: width
-    Edit: Edit
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Cancel
     EMPTY: 'Please enter a URL Segment or click cancel'
@@ -147,32 +144,32 @@ en:
     HelpChars: ' Special characters are automatically converted or removed.'
     OK: OK
   SilverStripe\CMS\Model\ErrorPage:
-    0: '400 - Bad Request'
-    1: '401 - Unauthorized'
-    2: '403 - Forbidden'
-    3: '404 - Not Found'
-    4: '405 - Method Not Allowed'
-    5: '406 - Not Acceptable'
-    6: '407 - Proxy Authentication Required'
-    7: '408 - Request Timeout'
-    8: '409 - Conflict'
-    9: '410 - Gone'
-    10: '411 - Length Required'
-    11: '412 - Precondition Failed'
-    12: '413 - Request Entity Too Large'
-    13: '414 - Request-URI Too Long'
-    14: '415 - Unsupported Media Type'
-    15: '416 - Request Range Not Satisfiable'
-    16: '417 - Expectation Failed'
-    17: '422 - Unprocessable Entity'
-    18: '429 - Too Many Requests'
-    19: '500 - Internal Server Error'
-    20: '501 - Not Implemented'
-    21: '502 - Bad Gateway'
-    22: '503 - Service Unavailable'
-    23: '504 - Gateway Timeout'
-    24: '505 - HTTP Version Not Supported'
     CODE: 'Error code'
+    CODE_400: '400 - Bad Request'
+    CODE_401: '401 - Unauthorized'
+    CODE_403: '403 - Forbidden'
+    CODE_404: '404 - Not Found'
+    CODE_405: '405 - Method Not Allowed'
+    CODE_406: '406 - Not Acceptable'
+    CODE_407: '407 - Proxy Authentication Required'
+    CODE_408: '408 - Request Timeout'
+    CODE_409: '409 - Conflict'
+    CODE_410: '410 - Gone'
+    CODE_411: '411 - Length Required'
+    CODE_412: '412 - Precondition Failed'
+    CODE_413: '413 - Request Entity Too Large'
+    CODE_414: '414 - Request-URI Too Long'
+    CODE_415: '415 - Unsupported Media Type'
+    CODE_416: '416 - Request Range Not Satisfiable'
+    CODE_417: '417 - Expectation Failed'
+    CODE_422: '422 - Unprocessable Entity'
+    CODE_429: '429 - Too Many Requests'
+    CODE_500: '500 - Internal Server Error'
+    CODE_501: '501 - Not Implemented'
+    CODE_502: '502 - Bad Gateway'
+    CODE_503: '503 - Service Unavailable'
+    CODE_504: '504 - Gateway Timeout'
+    CODE_505: '505 - HTTP Version Not Supported'
     DEFAULTERRORPAGECONTENT: '<p>Sorry, it seems you were trying to access a page that doesn''t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>'
     DEFAULTERRORPAGETITLE: 'Page not found'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
@@ -297,8 +294,6 @@ en:
     many_many_BackLinkTracking: 'Backlink Tracking'
     many_many_ImageTracking: 'Image Tracking'
     many_many_LinkTracking: 'Link Tracking'
-    TOPLEVELCREATORGROUPS: 'Top level creators'
-    TABMAIN: Main
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Type
@@ -355,3 +350,14 @@ en:
     OPERATION_REMOVE: 'Remove selected from all stages (WARNING: Will destroy all selected pages from both stage and live)'
     SELECTALL: 'select all'
     UNSELECTALL: 'unselect all'
+  SilverStripe\Reports\SideReport:
+    BROKENFILES: 'Pages with broken files'
+    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
+    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
+    BrokenLinksGroupTitle: 'Broken links reports'
+    ContentGroupTitle: 'Content reports'
+    EMPTYPAGES: 'Pages with no content'
+    LAST2WEEKS: 'Pages edited in the last 2 weeks'
+    ParameterLiveCheckbox: 'Check live site'
+  SilverStripe\Security\Permission:
+    CONTENT_CATEGORY: 'Content permissions'
