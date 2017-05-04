@@ -28,7 +28,6 @@
     "phpunit/phpunit": "^5.7",
     "silverstripe/behat-extension": "^3",
     "silverstripe/serve": "dev-master",
-    "silverstripe/testsession": "^3",
     "se/selenium-server-standalone": "2.41.0"
   },
   "extra": {
