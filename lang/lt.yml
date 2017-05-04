@@ -1,12 +1,4 @@
 lt:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Publikuoti %d puslapiai, %d klaidų.'
-    PUBLISH_PAGES: Publikuoti
-    RESTORE: Atstatyti
-    RESTORED_PAGES: 'Atstatyti %d puslapiai'
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Naudojama:'
-    PAGES: puslapis(-iai)
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Priėjimas prie ''{title}'' dalies'
     ACCESS_HELP: 'Leisti peržiūrėti svetainės medžio ir turinio skiltį. Peržiūros, bei redagavimo leidimai gali būti pakeisti per iškrentančius pasirinkimus ir per atskirus "Turinio leidimai".'
@@ -21,7 +13,7 @@ lt:
     DUPLICATEDWITHCHILDREN: 'Puslapis ''{title}'' , bei jo vaikai kopijuoti sėkmingai'
     NEWPAGE: 'Naujas {pagetype}'
     PAGENOTEXISTS: 'Šis puslapis neegzistuoja'
-    PAGETYPEANYOPT: Bet koks
+    PAGETYPEANYOPT: 'Bet koks'
     PUBALLCONFIRM: 'Prašome publikuoti kiekvieną svetainės puslapį, kopijuojant turinį į svetainę'
     PUBALLFUN: '"Publikuoti viską" funkcionalumas'
     PUBPAGES: 'Įvykdyta: Publikuoti {count} puslapiai'
@@ -62,9 +54,9 @@ lt:
     INSTALL_SUCCESS: 'Įdiegta sėkmingai!'
     LOGGEDINAS: 'Prisijungėte kaip '
     LOGIN: Prisijungti
-    LOGOUT: 'Atsijungti'
+    LOGOUT: Atsijungti
     NOTEWONTBESHOWN: 'Pastaba: ši žinutė nebus rodoma jūsų lankytojams'
-    NOTLOGGEDIN: 'Neprisijungęs'
+    NOTLOGGEDIN: Neprisijungęs
     PUBLISHED: Publikuota
     PUBLISHEDSITE: 'Publikuojama svetainė'
     VIEWPAGEIN: 'Peržiūrėti puslapį:'
@@ -74,31 +66,31 @@ lt:
     EMPTY: 'Prašome įvesti URL dalį arba spauskite atšaukti'
     HelpChars: 'Specialūs simboliai automatiškai pakeičiami arba pašalinami.'
   SilverStripe\CMS\Model\ErrorPage:
-    400: '400 - Bloga užklausa'
-    401: '401 - Leidimas neduotas'
-    403: '403 - Uždrausta'
-    404: '404 - Puslapis nerastas'
-    405: '405 - Neleistinas būdas'
-    406: '406 - Nepriimtina'
-    407: '407 - Reikalinga proxy autentifikacija'
-    408: '408 - Baigėsi užklausai skirtas laikas'
-    409: '409 - Konfliktas'
-    410: '410 - Nebėra'
-    411: '411 - Reikalingas ilgis'
-    412: '412 - Išankstinė klaida'
-    413: '413 - Per didelė užklausa'
-    414: '414 - Per ilgas URL adresas'
-    415: '415 - Nežinomas media tipas'
-    416: '416 - Netinkamos užklausimo ribos'
-    417: '417 - Netikėtas atsakymas'
-    422: '422 - Nepavyko apdoroti'
-    429: '429 - Viršytas užklausų limitas'
-    500: '500 - Vidinė serverio klaida'
-    501: '501 - Neįgyvendinta'
-    502: '502 - Bloga tinklų sąsaja'
-    503: '503 - Servisas nepasiekiamas'
-    504: '504 - Viršytas laiko limitas'
-    505: '505 - Nepalaikoma HTTP versija'
+    0: '400 - Bloga užklausa'
+    1: '401 - Leidimas neduotas'
+    2: '403 - Uždrausta'
+    3: '404 - Puslapis nerastas'
+    4: '405 - Neleistinas būdas'
+    5: '406 - Nepriimtina'
+    6: '407 - Reikalinga proxy autentifikacija'
+    7: '408 - Baigėsi užklausai skirtas laikas'
+    8: '409 - Konfliktas'
+    9: '410 - Nebėra'
+    10: '411 - Reikalingas ilgis'
+    11: '412 - Išankstinė klaida'
+    12: '413 - Per didelė užklausa'
+    13: '414 - Per ilgas URL adresas'
+    14: '415 - Nežinomas media tipas'
+    15: '416 - Netinkamos užklausimo ribos'
+    16: '417 - Netikėtas atsakymas'
+    17: '422 - Nepavyko apdoroti'
+    18: '429 - Viršytas užklausų limitas'
+    19: '500 - Vidinė serverio klaida'
+    20: '501 - Neįgyvendinta'
+    21: '502 - Bloga tinklų sąsaja'
+    22: '503 - Servisas nepasiekiamas'
+    23: '504 - Viršytas laiko limitas'
+    24: '505 - Nepalaikoma HTTP versija'
     CODE: 'Klaidos kodas'
     DEFAULTERRORPAGECONTENT: "\t\n<p>Atsiprašome, atrodo, kad Jūs bandėte patekti į puslapį, kuris neegzistuoja.</p><p>Prašome patikrinti URL adresą ir pabandyti dar kartą.</p>\n"
     DEFAULTERRORPAGETITLE: 'Puslapis nerastas'
@@ -113,7 +105,7 @@ lt:
     REDIRECTTOPAGE: 'Puslapis Jūsų svetainėje'
     YOURPAGE: 'Puslapį Jūsų svetainėje'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: Bet kas
+    ACCESSANYONE: 'Bet kas'
     ACCESSHEADER: 'Kas gali matyti šį puslapį?'
     ACCESSLOGGEDIN: 'Prisijungę vartotojai'
     ACCESSONLYTHESE: 'Tik šie žmonės (pasirinkite iš sąrašo)'
@@ -132,12 +124,12 @@ lt:
     Comments: Komentarai
     Content: Turinys
     DEFAULTABOUTTITLE: 'Apie mus'
-    DEFAULTCONTACTTITLE: 'Kontaktai'
+    DEFAULTCONTACTTITLE: Kontaktai
     DEFAULTHOMECONTENT: '<p>Sveiki atvykę į SilverStripe! Tai yra pagrindinis puslapis. Jūs galite redaguoti šį puslapį atsidarę <a href="admin/">TVS</a>. Dabar galite naudotis <a href="http://doc.silverstripe.com">programuotojų dokumentacija</a>, arba pradėti nuo <a href = "http://doc.silverstripe.com/doku.php?id=tutorials">SilverStripe pamokų.</a></p>'
     DEFAULTHOMETITLE: Pradžia
     DEPENDENT_NOTE: 'Šiam puslapiui priklauso šie puslapiai. Tai gali būti virtualūs, nukreipiantys puslapiai, bei puslapiai, rodantys kitų puslapių turinį.'
     DependtPageColumnLinkType: 'Nuorodos tipas'
-    DependtPageColumnURL: URL adresas
+    DependtPageColumnURL: 'URL adresas'
     EDITANYONE: 'Bet kuris prisijungęs prie TVS'
     EDITHEADER: 'Kas gali redaguoti šį puslapį?'
     EDITONLYTHESE: 'Tik šie žmonės (pasirinkite iš sąrašo)'
@@ -149,7 +141,7 @@ lt:
     HASBROKENLINKS: 'Šiame puslapyje yra nebegaliojančių nuorodų.'
     HTMLEDITORTITLE: Turinys
     INHERIT: 'Paveldėti iš pradinio puslapio'
-    LASTUPDATED: 'Atnaujinta'
+    LASTUPDATED: Atnaujinta
     LINKCHANGENOTE: 'Keičiant šio puslapio nuorodą, keisis ir jam priklausančių puslapių nuorodos.'
     MENUTITLE: 'Navigacijos pavadinimas'
     METADESC: 'Meta aprašymas'
@@ -196,6 +188,8 @@ lt:
     many_many_BackLinkTracking: 'Atgalinis stebėjimas'
     many_many_ImageTracking: 'Paveikslėlių sekimas'
     many_many_LinkTracking: 'Nuorodos sekimas'
+    TOPLEVELCREATORGROUPS: 'Gali kurti pagrindiniame lygmenyje'
+    TABMAIN: Pagrindinis
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Prijungtas puslapis'
     EditLink: redaguoti
@@ -203,15 +197,15 @@ lt:
     HEADERWITHLINK: 'Tai yra virtualus puslapis su turiniu iš puslapio "{title}" ({link})'
     PageTypNotAllowedOnRoot: 'Norimas puslapio tipas "{type}" neleidžiamas šiam virtualiam puslapiui šakniniame lygmenyje.'
   SilverStripe\CMS\Reports\BrokenLinksReport:
-    Any: Bet kurias
+    Any: 'Bet kurias'
     BROKENLINKS: 'Sugadintų nuorodų ataskaita'
     CheckSite: 'Patikrinti svetainę'
     CheckSiteDropdownDraft: 'Juodraštinė svetainė'
     CheckSiteDropdownPublished: 'Publikuojama svetainė'
-    ColumnDateLastModified: 'Redaguota'
-    ColumnDateLastPublished: 'Publikuota'
+    ColumnDateLastModified: Redaguota
+    ColumnDateLastPublished: Publikuota
     ColumnProblemType: 'Problemos tipas'
-    ColumnURL: URL adresas
+    ColumnURL: 'URL adresas'
     HasBrokenFile: 'turi sugadintą bylą'
     HasBrokenLink: 'turi sugadintą nuorodą'
     HasBrokenLinkAndFile: 'turi sugadintą nuorodą ir bylą'
@@ -228,17 +222,6 @@ lt:
     FILTERDATEFROM: Nuo
     FILTERDATETO: Iki
     GO: Vykdyti
-    PAGEFILTERDATEHEADING: 'Redaguota'
+    PAGEFILTERDATEHEADING: Redaguota
     SEARCH: Ieškoti
     SearchResults: 'Paieškos rezultatai'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Puslapiai su sugadintomis bylomis'
-    BROKENREDIRECTORPAGES: 'Nukreipiantieji puslapiai, kurie nukreipia į ištrintus puslapius'
-    BROKENVIRTUALPAGES: 'Virtualūs puslapiai, vedantys į ištrintus puslapius'
-    BrokenLinksGroupTitle: 'Neveikiančių nuorodų ataskaitos'
-    ContentGroupTitle: 'Turinio ataskaitos'
-    EMPTYPAGES: 'Puslapiai be turinio'
-    LAST2WEEKS: 'Paskutines 2 savaites keisti puslapiai'
-    ParameterLiveCheckbox: 'Patikrinti publikuojamą svetainę'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Turinio teisės'

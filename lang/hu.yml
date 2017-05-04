@@ -1,10 +1,4 @@
 hu:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: '%d oldal publikálva, %d hibás'
-    PUBLISH_PAGES: Publikálni
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Felhasználva:'
-    PAGES: oldal(ak)
   SilverStripe\CMS\Controllers\CMSMain:
     Cancel: Mégsem
     ChoosePageParentMode: 'Adja meg az oldal létrehozásának helyét'
@@ -41,16 +35,16 @@ hu:
     Title: 'Összes oldal'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Előnézeti verzió'
-    ARCHIVEDSITEFROM: 'Archiválva'
+    ARCHIVEDSITEFROM: Archiválva
     CMS: Tartalomkezelő
     DRAFT: Piszkozat
     DRAFTSITE: 'Vázlat oldal'
     INSTALL_SUCCESS: 'Sikeres telepítés!'
     LOGGEDINAS: 'Bejelentkezve, mint'
     LOGIN: Bejelentkezés
-    LOGOUT: 'Kijelentkezés'
+    LOGOUT: Kijelentkezés
     NOTEWONTBESHOWN: 'Megjegyzés: ez az üzenet a látogatók számára nem jelenik meg'
-    NOTLOGGEDIN: 'Kijelentkezett'
+    NOTLOGGEDIN: Kijelentkezett
     PUBLISHED: Publikált
     PUBLISHEDSITE: 'Publikált oldal'
     VIEWPAGEIN: 'Oldal megtekintése'
@@ -60,18 +54,18 @@ hu:
     EMPTY: 'Írjon be egy URL szegmenst, vagy kattitson a "mégse" feliratra'
     HelpChars: 'A speciális karakterek automatikusan konvertálódnak vagy törlődnek.'
   SilverStripe\CMS\Model\ErrorPage:
-    400: '400 - Hibás kérés'
-    401: '401 - Jogosulatlan kérés'
-    403: '403 - Tiltott hozzáférés'
-    404: '404 - Az oldal nem létezik'
-    405: '405 - Tiltott Művelet'
-    406: '406 - Elfogadhatatlan művelet'
-    407: '407 - Proxy azonosítás szükséges'
-    408: '408 - Időtullépés'
-    409: '409 - Konfliktus'
-    410: '410 - Kapcsolat bontva'
-    411: '411 - Hossz kötelező'
-    CODE: 'Hibakód'
+    0: '400 - Hibás kérés'
+    1: '401 - Jogosulatlan kérés'
+    2: '403 - Tiltott hozzáférés'
+    3: '404 - Az oldal nem létezik'
+    4: '405 - Tiltott Művelet'
+    5: '406 - Elfogadhatatlan művelet'
+    6: '407 - Proxy azonosítás szükséges'
+    7: '408 - Időtullépés'
+    8: '409 - Konfliktus'
+    9: '410 - Kapcsolat bontva'
+    10: '411 - Hossz kötelező'
+    CODE: Hibakód
     DEFAULTERRORPAGETITLE: 'Az oldal nem található'
     DEFAULTSERVERERRORPAGETITLE: 'Szerver hiba'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -94,12 +88,12 @@ hu:
     BUTTONPUBLISHED: Publikálva
     BUTTONSAVED: Elmentve
     BUTTONSAVEPUBLISH: 'Ment és publikál'
-    BUTTONUNPUBLISH: Publikálás visszavonása
+    BUTTONUNPUBLISH: 'Publikálás visszavonása'
     BUTTONUNPUBLISHDESC: 'Oldal eltávolítása a publikált oldalról'
     Comments: Kommentárok
     Content: Tartalom
-    DEFAULTABOUTTITLE: 'Rólunk'
-    DEFAULTCONTACTTITLE: 'Kapcsolat'
+    DEFAULTABOUTTITLE: Rólunk
+    DEFAULTCONTACTTITLE: Kapcsolat
     DEFAULTHOMETITLE: Kezdőlap
     DependtPageColumnLinkType: 'Hivatkozás típusa'
     DependtPageColumnURL: Link
@@ -115,7 +109,7 @@ hu:
     INHERIT: 'Azonos a szülő értékével'
     LASTUPDATED: 'Utoljára frissítve'
     MENUTITLE: 'Navigációs cimke'
-    METADESC: 'Leírás'
+    METADESC: Leírás
     METAEXTRA: 'Saját meta címkék'
     MODIFIEDONDRAFTHELP: 'Az oldal egyes módosításai nincsenek publikálva'
     MODIFIEDONDRAFTSHORT: Változtatva
@@ -127,7 +121,7 @@ hu:
     PARENTID: 'Szülő oldal'
     PARENTTYPE: 'Oldal helyzete'
     PARENTTYPE_ROOT: 'Felső szintű oldal'
-    PARENTTYPE_SUBPAGE: 'Aloldal'
+    PARENTTYPE_SUBPAGE: Aloldal
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Tartalom hozzáférését szabályozza'
     PageTypNotAllowedOnRoot: 'A "{type}" oldal nem helyezkedhet el a gyökér szintjén'
     PageTypeNotAllowed: 'A "{type}" oldal nem helyezkedhet el a kiválasztott szülő alá'
@@ -137,7 +131,7 @@ hu:
     SHOWINMENUS: 'Látható legyen a menükben?'
     SHOWINSEARCH: 'Látható legyen a keresésben?'
     TABBEHAVIOUR: Viselkedés
-    TABCONTENT: 'Tartalom'
+    TABCONTENT: Tartalom
     TABDEPENDENT: 'Kapcsolodó oldalak'
     TOPLEVEL: 'Oldaltartalom (legfelső szint)'
     URLSegment: 'URL szegmens'
@@ -150,6 +144,7 @@ hu:
     many_many_BackLinkTracking: 'Backlink követés'
     many_many_ImageTracking: 'Kép követése'
     many_many_LinkTracking: 'Link követés'
+    TABMAIN: Fő
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Hivatkozott oldal'
     EditLink: szerkeszt
@@ -169,26 +164,15 @@ hu:
     HasBrokenLinkAndFile: 'Hibás link és fájl'
     HoverTitleEditPage: 'Oldal szerkesztése'
     PageName: 'Oldal neve'
-    ReasonDropdown: 'Ellenőrizendő'
+    ReasonDropdown: Ellenőrizendő
     ReasonDropdownBROKENFILE: 'Hibás állomány'
     ReasonDropdownBROKENLINK: 'Hibás hivatkozás'
     ReasonDropdownRPBROKENLINK: '"Redirector" oldal nem létező oldalra hivatkozik'
     ReasonDropdownVPBROKENLINK: 'Virtuális oldal nem létező oldalra hivatkozik'
     VirtualPageNonExistent: 'a virtuális oldal egy nem létező oldalra hivatkozik'
   SilverStripe\CMS\Search\SearchForm:
-    FILTERDATEFROM: -tól
-    FILTERDATETO: -ig
+    FILTERDATEFROM: '-tól'
+    FILTERDATETO: '-ig'
     GO: Mehet
     SEARCH: Keresés
-    SearchResults: 'Találatok'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Oldalak hibás fájl hivatkozásokkal'
-    BROKENREDIRECTORPAGES: 'RedirectorPage-ek törölt oldalakra hivatkoznak'
-    BROKENVIRTUALPAGES: 'VirtualPages törölt oldalakra mutatnak'
-    BrokenLinksGroupTitle: 'Hibás linkek listája'
-    ContentGroupTitle: 'Tartalommal kapcsolatos riportok'
-    EMPTYPAGES: 'Üres oldalak'
-    LAST2WEEKS: 'Elmúlt 2 héten belül szerkesztett oldalak'
-    ParameterLiveCheckbox: 'Éles oldal megtekintése'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Tartalommal kapcsolatos jogosultságok'
+    SearchResults: Találatok

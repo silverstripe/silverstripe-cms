@@ -7,29 +7,29 @@ pt_BR:
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: Páginas
   SilverStripe\CMS\Model\ErrorPage:
-    400: '400 - Requisição Invalida'
-    401: '401 - Não autorizado'
-    403: '403 - Proibido'
-    404: '404 - Arquivo não encontrado'
-    405: '405 - Método não permitido'
-    406: '406 - Não aceitavel'
-    407: '407 - Requer autentificação do proxy'
-    408: '408 - tempo de requisição esgotado'
-    409: '409 - Conflito'
-    410: '410 - Finalizado'
-    411: '411 - Tamanho requisitado'
-    412: '412 - Condição prévia não atendida'
-    413: '413 - dados requisição muito grande'
-    414: '414 -URI requisitado muito grande'
-    415: '415 - tipo de arquivo não suportado'
-    416: '416 - Escala do pedido não satisfaz'
-    417: '417 - A expectativa falhou'
-    500: '500 - Erro interno do servidor'
-    501: '501 - Não implementado'
-    502: '502 - Conecção ruim'
-    503: '503 - Serviço não esta habilitado'
-    504: '504 - Tempo de conecção esgorado'
-    505: '505 - Versão do HTTP não suporado'
+    0: '400 - Requisição Invalida'
+    1: '401 - Não autorizado'
+    2: '403 - Proibido'
+    3: '404 - Arquivo não encontrado'
+    4: '405 - Método não permitido'
+    5: '406 - Não aceitavel'
+    6: '407 - Requer autentificação do proxy'
+    7: '408 - tempo de requisição esgotado'
+    8: '409 - Conflito'
+    9: '410 - Finalizado'
+    10: '411 - Tamanho requisitado'
+    11: '412 - Condição prévia não atendida'
+    12: '413 - dados requisição muito grande'
+    13: '414 -URI requisitado muito grande'
+    14: '415 - tipo de arquivo não suportado'
+    15: '416 - Escala do pedido não satisfaz'
+    16: '417 - A expectativa falhou'
+    17: '500 - Erro interno do servidor'
+    18: '501 - Não implementado'
+    19: '502 - Conecção ruim'
+    20: '503 - Serviço não esta habilitado'
+    21: '504 - Tempo de conecção esgorado'
+    22: '505 - Versão do HTTP não suporado'
     CODE: 'Código do erro'
     DEFAULTERRORPAGECONTENT: '<p>desculpe, mas parece que você esta tentando acessar uma página que não existe.</p><p>Por favor, verifique se você digitou a URL corretamente e tente novamente</p>'
     DEFAULTERRORPAGETITLE: 'Página não encontrada'
@@ -42,19 +42,19 @@ pt_BR:
     REDIRECTTOPAGE: 'Uma página no seu website'
     YOURPAGE: 'Página no seu website'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: Qualquer pessoa
+    ACCESSANYONE: 'Qualquer pessoa'
     ACCESSHEADER: 'Quem pode ver esta página?'
     ACCESSLOGGEDIN: 'Utilizadores que tenham feito log-in'
     ACCESSONLYTHESE: 'Somente estas pessoas (escolha da lista)'
     BUTTONCANCELDRAFT: 'Cancelar alterações no rascunho'
     BUTTONCANCELDRAFTDESC: 'Apague o seu rascunho e reverta para o site currrentement publicado'
-    BUTTONUNPUBLISH: Anular publicação
+    BUTTONUNPUBLISH: 'Anular publicação'
     BUTTONUNPUBLISHDESC: 'Remova esta página do site publicado'
     Comments: Comentários
     Content: Conteúdo
     DEFAULTABOUTTITLE: 'Sobre nós'
-    DEFAULTCONTACTTITLE: 'Contato'
-    DEFAULTHOMETITLE: Página Inicial
+    DEFAULTCONTACTTITLE: Contato
+    DEFAULTHOMETITLE: 'Página Inicial'
     EDITANYONE: 'Qualquer pessoa que possa fazer log-in'
     EDITHEADER: 'Quem pode editar esta página?'
     EDITONLYTHESE: 'Somente estas pessoas (escolha da lista)'
@@ -63,7 +63,7 @@ pt_BR:
     HTMLEDITORTITLE: Conteúdo
     INHERIT: 'Herdar da página mãe'
     MENUTITLE: 'Rótulo da navegação'
-    METADESC: 'Descrição'
+    METADESC: Descrição
     METAEXTRA: 'Meta tags personalizadas'
     PAGETITLE: 'Nome da Página'
     PAGETYPE: 'Tipo de página'
@@ -73,7 +73,7 @@ pt_BR:
     SHOWINMENUS: 'Mostrar nos menus?'
     SHOWINSEARCH: 'Uncluir na procura?'
     TABBEHAVIOUR: Comportamento
-    TABCONTENT: 'Conteúdo'
+    TABCONTENT: Conteúdo
     TOPLEVEL: 'Conteúdo do Site (Top Level)'
     URLSegment: 'URL da página'
     Viewers: 'Grupo de visualizadores'
@@ -81,11 +81,9 @@ pt_BR:
     many_many_BackLinkTracking: 'Gerenciar Backlink '
     many_many_ImageTracking: 'Gerenciar Imagem'
     many_many_LinkTracking: 'Gerenciar Link'
+    TABMAIN: Principal
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Esta é uma página virtual'
   SilverStripe\CMS\Search\SearchForm:
     GO: Ir
     SEARCH: Buscar
-  SilverStripe\Reports\SideReport:
-    EMPTYPAGES: 'Páginas em branco'
-    LAST2WEEKS: 'Páginas editadas nas últimas 2 semanas'

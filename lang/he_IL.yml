@@ -1,10 +1,4 @@
 he_IL:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'פורסמו %d עמודים, %d שגיאות'
-    PUBLISH_PAGES: פרסום
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'נעשה שימוש בתאריך:'
-    PAGES: עמוד/ים
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'גישה לאגף ''{title}'''
     ACCESS_HELP: 'מתן האפשרות לצפות באגף המכיל את עץ העמודים והתוכן. ניתן לצפות ולערוך הרשאות באמצעות תיבות בחירה ייעודיות לכל עמוד, כמו גם „הרשאות התוכן“ הנפרדות.'
@@ -40,8 +34,8 @@ he_IL:
     DRAFTSITE: 'אתר טיוטה'
     INSTALL_SUCCESS: 'ההתקנה הצליחה!'
     LOGGEDINAS: 'נכנסת בשם'
-    LOGIN: כניסה
-    LOGOUT: 'יציאה'
+    LOGIN: 'כניסה'
+    LOGOUT: יציאה
     NOTEWONTBESHOWN: 'לתשומת לבך: הודעה זו לא תוצג למבקריך'
     NOTLOGGEDIN: 'לא נכנסת'
     PUBLISHEDSITE: 'אתר שפורסם'
@@ -49,29 +43,29 @@ he_IL:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: ' תווים מיוחדים מומרים אוטומטית או שהם מוסרים.'
   SilverStripe\CMS\Model\ErrorPage:
-    400: '400 - בקשה שגויה'
-    401: '401 - אין הרשאה'
-    403: '403 - אין כניסה'
-    404: '404 - לא נמצא'
-    405: '405 - השיטה חסומה'
-    406: '406 - לא מקובל'
-    407: '407 - דרשו זיהוי מתווך'
-    408: '408 - זמן הבקשה פג'
-    409: '409 - התנגשות'
-    410: '410 - בלעה אותו האדמה'
-    411: '411 - נדרש אורך'
-    412: '412 - תנאי הקדם נכשל'
-    413: '413 - יישות הבקשה גדולה מדי'
-    414: '414 - כתובת הבקשה ארוכה מדי'
-    415: '415 - סוג המדיה אינו נתמך'
-    416: '416 - טווח הבקשה אינו מספק'
-    417: '417 - הציפיות כשלו'
-    500: '500 - שגיאת שרת פנימית'
-    501: '501 - לא הוטמע'
-    502: '502 - שער גישה שגוי'
-    503: '503 - השירות אינו זמין'
-    504: '504 - תם הזמן שהוקצב לשער הגישה'
-    505: '505 - גרסת ה־HTTP לא נתמכת'
+    0: '400 - בקשה שגויה'
+    1: '401 - אין הרשאה'
+    2: '403 - אין כניסה'
+    3: '404 - לא נמצא'
+    4: '405 - השיטה חסומה'
+    5: '406 - לא מקובל'
+    6: '407 - דרשו זיהוי מתווך'
+    7: '408 - זמן הבקשה פג'
+    8: '409 - התנגשות'
+    9: '410 - בלעה אותו האדמה'
+    10: '411 - נדרש אורך'
+    11: '412 - תנאי הקדם נכשל'
+    12: '413 - יישות הבקשה גדולה מדי'
+    13: '414 - כתובת הבקשה ארוכה מדי'
+    14: '415 - סוג המדיה אינו נתמך'
+    15: '416 - טווח הבקשה אינו מספק'
+    16: '417 - הציפיות כשלו'
+    17: '500 - שגיאת שרת פנימית'
+    18: '501 - לא הוטמע'
+    19: '502 - שער גישה שגוי'
+    20: '503 - השירות אינו זמין'
+    21: '504 - תם הזמן שהוקצב לשער הגישה'
+    22: '505 - גרסת ה־HTTP לא נתמכת'
     CODE: 'הודעת שגיאה'
     DEFAULTERRORPAGECONTENT: '<p>מצטערים, נראה שהדף שניסית להגיע אליו אינו קיים</p><p>נא לבדוק את הכתובת המבוקשת ולנסות שנית</p>'
     DEFAULTERRORPAGETITLE: 'הדף המבוקש לא נמצא'
@@ -86,7 +80,7 @@ he_IL:
     REDIRECTTOPAGE: 'עמוד באתר שלך'
     YOURPAGE: 'עמוד באתר שלך'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: כל אחד
+    ACCESSANYONE: 'כל אחד'
     ACCESSHEADER: 'מי יכול לצפות בעמוד זה?'
     ACCESSLOGGEDIN: 'משתמשים שנכנסו'
     ACCESSONLYTHESE: 'רק האנשים האלה (יש לבחור מהרשימה)'
@@ -95,13 +89,13 @@ he_IL:
     APPEARSVIRTUALPAGES: 'תוכן זה מופיע גם בעמודים הווירטואליים באגפים של {title}.'
     BUTTONCANCELDRAFT: 'ביטול שינויי הטיוטה'
     BUTTONCANCELDRAFTDESC: 'למחוק את הטיוטה שלך ולהחזיר לעמוד הנוכחי שפורסם'
-    BUTTONUNPUBLISH: ביטול הפרסום
+    BUTTONUNPUBLISH: 'ביטול הפרסום'
     BUTTONUNPUBLISHDESC: 'הסרת עמוד זה מהאתר שפורסם'
     Comments: תגובות
     Content: תוכן
     DEFAULTABOUTTITLE: 'על אודותינו'
     DEFAULTCONTACTTITLE: 'יצירת קשר'
-    DEFAULTHOMETITLE: דף הבית
+    DEFAULTHOMETITLE: 'דף הבית'
     DEPENDENT_NOTE: 'העמודים הבאים תלויים בעמוד זה. בין אלו נכללים, עמודים וירטואליים, עמודי הפנייה ועמודים עם קישורי תוכן.'
     DependtPageColumnLinkType: 'סוג הקישור'
     DependtPageColumnURL: קישור
@@ -118,13 +112,13 @@ he_IL:
     LASTUPDATED: 'עודכן לאחרונה'
     LINKCHANGENOTE: 'החלפת הקישורים בעמוד זה ישפיע גם על הקישורים של כל העמודים הצאצאים.'
     MENUTITLE: 'תווית ניווט'
-    METADESC: 'תיאור'
+    METADESC: תיאור
     METADESCHELP: 'מנועי החיפוש משתמשים בתוכן זה כדי להציג תוצאות חיפוש (למרות שלא תהיה לכך השפעה על הדירוג שלהם).'
     METAEXTRA: 'תגי על נוספים'
     METAEXTRAHELP: 'תגיות HTML לנתוני על נוספים. לדוגמה &lt;meta name="שם_מותאם_אישית" content="התוכן שלך כאן" /&gt;'
     MODIFIEDONDRAFTHELP: 'בעמוד יש שינויים שלא פורסמו'
-    MODIFIEDONDRAFTSHORT: השתנה
-    MetadataToggle: נתוני על
+    MODIFIEDONDRAFTSHORT: 'השתנה'
+    MetadataToggle: 'נתוני על'
     PAGELOCATION: 'מיקום העמוד'
     PAGETITLE: 'שם הדף'
     PAGETYPE: 'סוג דף'
@@ -141,7 +135,7 @@ he_IL:
     REORGANISE_HELP: 'ניתן לסדר מחדש את העמודים בעץ האתר באמצעות גרירה והשלכה.'
     SHOWINMENUS: 'להציג בתפריטים?'
     SHOWINSEARCH: 'לכלול בחיפוש?'
-    TABBEHAVIOUR: התנהגות
+    TABBEHAVIOUR: 'התנהגות'
     TABCONTENT: 'תוכן ראשי'
     TABDEPENDENT: 'עמודים תלויים'
     TOPLEVEL: 'תוכן האתר (רמה עליונה)'
@@ -151,7 +145,7 @@ he_IL:
     VIEW_DRAFT_CONTENT: 'צפייה בתוכן טיוטה'
     VIEW_DRAFT_CONTENT_HELP: 'חל על צפייה בעמודים מחוץ ל־CMD במצב טיוטה. חיוני לצורך שיתוף פעולה עם גורמים חיצוניים שאין להם גישה ל־CMS.'
     Viewers: 'קבוצות צופים'
-    Visibility: אופן הצגה
+    Visibility: 'אופן הצגה'
     has_one_Parent: 'דף הורה'
     many_many_BackLinkTracking: 'מעקב אחרי קישור חוזר'
     many_many_ImageTracking: 'מעקב אחר תמונה'
@@ -187,14 +181,3 @@ he_IL:
     GO: לעבור
     SEARCH: חיפוש
     SearchResults: 'תוצאות החיפוש'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'עמודים עם קבצים שבורים'
-    BROKENREDIRECTORPAGES: 'עמודי הפנייה שמצביעים לעמודים שנמחקו'
-    BROKENVIRTUALPAGES: 'עמודים וירטואליים שמצביעים לעמודים שנמחקו'
-    BrokenLinksGroupTitle: 'דוחות קישורים שבורים'
-    ContentGroupTitle: 'דוחות תוכן'
-    EMPTYPAGES: 'עמודים ריקים'
-    LAST2WEEKS: 'עמודים שנערכו בשבועיים האחרונים'
-    ParameterLiveCheckbox: 'בדיקת האתר החי'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'הרשאות התוכן'

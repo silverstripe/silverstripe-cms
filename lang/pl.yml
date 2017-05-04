@@ -1,12 +1,4 @@
 pl:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Opublikowano %d stron, %d się nie powiodło'
-    PUBLISH_PAGES: Opublikuj
-    RESTORE: Przywróć
-    RESTORED_PAGES: 'Przywrócono %d stron'
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Używany na:'
-    PAGES: stron(y)
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Dostęp do sekcji ''{title}'''
     ACCESS_HELP: 'Zezwala na oglądanie sekcji zawierających drzewo stron oraz treść. Prawo Przeglądaj i edytuj może być obsługiwane przez pola wyboru dostępne na stronach oraz poprzez zakładkę uprawnień.'
@@ -51,13 +43,13 @@ pl:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Podgląd wersji'
     ARCHIVEDSITEFROM: 'Zarchiwizowana witryna od'
-    CMS: System Zarządzania Treścią
+    CMS: 'System Zarządzania Treścią'
     DRAFT: Szkic
     DRAFTSITE: 'Szkic witryny'
     INSTALL_SUCCESS: 'Instalacja przebiegła pomyślnie'
     LOGGEDINAS: 'Zalogowany jako'
     LOGIN: Zaloguj
-    LOGOUT: 'Wyloguj'
+    LOGOUT: Wyloguj
     NOTEWONTBESHOWN: 'Uwaga: ta strona nie będzie widoczna dla twoich odwiedzających  '
     NOTLOGGEDIN: 'Nie zalogowany'
     PUBLISHED: Opublikowano
@@ -69,31 +61,31 @@ pl:
     EMPTY: 'Proszę podać część adresu lub kliknąć anuluj'
     HelpChars: 'Znaki specjalne są automatycznie konwertowane lub usuwane.'
   SilverStripe\CMS\Model\ErrorPage:
-    400: '400 - Nieprawidłowe zapytanie'
-    401: '401 - Nieautoryzowany dostęp'
-    403: '403 - Zabroniony'
-    404: '404 - Nie znaleziono'
-    405: '405 - Niedozwolona metoda'
-    406: '406 - Niedozwolone'
-    407: '407 - Wymagane Uwierzytelnienie do Serwera Proxy'
-    408: '408 - Koniec czasu oczekiwania na żądanie'
-    409: '409 - Konflikt'
-    410: '410 - Zniknął (usunięto)'
-    411: '411 - Wymagana Długość'
-    412: '412 - Warunek wstępny nie może być spełniony'
-    413: '413 - Encja zapytania zbyt długa'
-    414: '414 - Adres URI zapytania zbyt długi'
-    415: '415 - Nieznany sposób żądania'
-    416: '416 - Zakres bajtowy podany w zapytaniu nie do obsłużenia'
-    417: '417 - Oczekiwana wartość nie do zwrócenia'
-    422: '422 - Niewłaściwe dane'
-    429: '429 - Zbyt wiele żądań'
-    500: '500 - Wewnętrzny błąd serwera'
-    501: '501 - Nie zaimplementowano'
-    502: '502 - Błąd bramy'
-    503: '503 - Usługa niedostępna'
-    504: '504 - Przekroczony czas bramy'
-    505: '505 - Wersja HTTP nie obsługiwana'
+    0: '400 - Nieprawidłowe zapytanie'
+    1: '401 - Nieautoryzowany dostęp'
+    2: '403 - Zabroniony'
+    3: '404 - Nie znaleziono'
+    4: '405 - Niedozwolona metoda'
+    5: '406 - Niedozwolone'
+    6: '407 - Wymagane Uwierzytelnienie do Serwera Proxy'
+    7: '408 - Koniec czasu oczekiwania na żądanie'
+    8: '409 - Konflikt'
+    9: '410 - Zniknął (usunięto)'
+    10: '411 - Wymagana Długość'
+    11: '412 - Warunek wstępny nie może być spełniony'
+    12: '413 - Encja zapytania zbyt długa'
+    13: '414 - Adres URI zapytania zbyt długi'
+    14: '415 - Nieznany sposób żądania'
+    15: '416 - Zakres bajtowy podany w zapytaniu nie do obsłużenia'
+    16: '417 - Oczekiwana wartość nie do zwrócenia'
+    17: '422 - Niewłaściwe dane'
+    18: '429 - Zbyt wiele żądań'
+    19: '500 - Wewnętrzny błąd serwera'
+    20: '501 - Nie zaimplementowano'
+    21: '502 - Błąd bramy'
+    22: '503 - Usługa niedostępna'
+    23: '504 - Przekroczony czas bramy'
+    24: '505 - Wersja HTTP nie obsługiwana'
     CODE: 'Kod błędu'
     DEFAULTERRORPAGECONTENT: '<p>Niestety, próbujesz wejść na stronę, która nie istnieje.</p><p>Sprawdź pisownię adresu URL i spróbuj ponownie.</p>'
     DEFAULTERRORPAGETITLE: 'Nie znaleziono strony'
@@ -126,11 +118,11 @@ pl:
     Comments: Komentarze
     Content: Zawartość
     DEFAULTABOUTTITLE: 'O nas'
-    DEFAULTCONTACTTITLE: 'Kontakt'
-    DEFAULTHOMETITLE: Strona główna
+    DEFAULTCONTACTTITLE: Kontakt
+    DEFAULTHOMETITLE: 'Strona główna'
     DEPENDENT_NOTE: 'Poniższe strony są zależne od tej (łącznie z wirtualnymi stronami, stronami przekierowującymi oraz stronami z treścią).'
     DependtPageColumnLinkType: 'Typ linku'
-    DependtPageColumnURL: Adres internetowy
+    DependtPageColumnURL: 'Adres internetowy'
     EDITANYONE: 'Każdy to jest zalogowany w systemie CMS'
     EDITHEADER: 'Kto może edytować wewnątrz systemu CMS?'
     EDITONLYTHESE: 'Tylko Ci ludzi (wybierz z listy)'
@@ -145,8 +137,8 @@ pl:
     LASTUPDATED: 'Ostania zmiana'
     LINKCHANGENOTE: 'Zmiana linku na aktualnej stronie skutkuje zmianą w linkach stron potomnych.'
     MENUTITLE: 'Sekcja nawigacji'
-    METADESC: 'Opis'
-    METADESCHELP: 'Wyszukiwarki internetowe używają tej treści w wynikach wyszukiwania (ta treść nie wpłynie na ich pozycjonowanie)'
+    METADESC: Opis
+    METADESCHELP: "Wyszukiwarki internetowe używają tej treści w wynikach wyszukiwania (ta treść\_nie wpłynie na ich pozycjonowanie)"
     METAEXTRA: 'Własne meta tagi'
     METAEXTRAHELP: 'HTML zawierający dodatkowe metainformacje, n.p. &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Na stronie znajdują się nieopublikowane zmiany'
@@ -171,7 +163,7 @@ pl:
     SHOWINMENUS: 'Pokazuj w menu?'
     SHOWINSEARCH: 'Pokazuj w wyszukiwarce?'
     TABBEHAVIOUR: Zachowanie
-    TABCONTENT: 'Zawartość'
+    TABCONTENT: Zawartość
     TABDEPENDENT: 'Strony zależne'
     TOPLEVEL: 'Zawartość witryny (główny poziom)'
     URLSegment: 'Segment adresu URL'
@@ -189,11 +181,12 @@ pl:
     many_many_BackLinkTracking: 'Śledzenie backlinków'
     many_many_ImageTracking: 'Śledzenie obrazków'
     many_many_LinkTracking: 'Śledzenie linków'
+    TABMAIN: Główny
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Linkowana strona'
     EditLink: edytuj
     HEADER: 'To jest wirtualna strona'
-    HEADERWITHLINK: 'Strona wirtualna odzwierciedlająca treść "{title}" ({link})'
+    HEADERWITHLINK: "Strona wirtualna odzwierciedlająca treść\_\"{title}\" ({link})"
     PageTypNotAllowedOnRoot: '"{type}" nie jest dozwolona dla głównego poziomu wirtualnej strony'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Jakikolwiek
@@ -204,7 +197,7 @@ pl:
     ColumnDateLastModified: 'Data ostatniej modyfikacji'
     ColumnDateLastPublished: 'Data ostatniej publikacji'
     ColumnProblemType: 'Rodzaj problemu'
-    ColumnURL: Adres URL
+    ColumnURL: 'Adres URL'
     HasBrokenFile: 'ma uszkodzony plik'
     HasBrokenLink: 'ma uszkodzony link'
     HasBrokenLinkAndFile: 'ma uszkodzony link oraz plik'
@@ -224,14 +217,3 @@ pl:
     PAGEFILTERDATEHEADING: 'Ostatnio edytowane'
     SEARCH: Szukaj
     SearchResults: 'Wyniki wyszukiwania'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Strony z uszkodzonymi plikami'
-    BROKENREDIRECTORPAGES: 'Strony przekierowania wskazujące na usunięte strony'
-    BROKENVIRTUALPAGES: 'Wirtualne strony wskazujące na usunięte strony'
-    BrokenLinksGroupTitle: 'Raporty o uszkodzonych linkach'
-    ContentGroupTitle: 'Treść raportów'
-    EMPTYPAGES: 'Strony bez zawartości'
-    LAST2WEEKS: 'Strony edytowane w ciągu 2 ostatnich tygodni'
-    ParameterLiveCheckbox: 'Sprawdź witrynę'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Uprawnienie edycji treści'

@@ -1,13 +1,4 @@
 bg:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Публикувани %d страници, %d грешки'
-    PUBLISH_PAGES: Публикувай
-    RESTORE: Възстанови
-    RESTORED_PAGES: 'Бяха възстановени %d страници'
-    UNPUBLISH_PAGES: Премахни от публикация
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Използвано от:'
-    PAGES: Страница/и
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Бяха изтрити %d страници от сайта и същите бяха архивирани'
     TITLE: 'Премахни от публикация и архивирай'
@@ -15,7 +6,7 @@ bg:
     ACCESS: 'Достъп до ''{title}'' секция'
     ACCESS_HELP: 'Разреши излгед на раздела съдържащ структурното дърво и съдържанието. Правата за достъп и редактиране могат да бъдат променени през падащи менюта (dropdowns), както и чрез отделни права на съдържанието'
     APPLY_FILTER: Търси
-    ARCHIVE: Архивирай
+    ARCHIVE: 'Архивирай'
     ARCHIVEDPAGE: 'Страница ''%s'' беше архивирана'
     AddPageRestriction: 'Забележка: Някои типове страници не могат да бъдат под-страници на избраната'
     CLEAR_FILTER: Изчисти
@@ -73,12 +64,12 @@ bg:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Преглед на версията'
     ARCHIVEDSITEFROM: 'Архивиран сайт от'
-    CMS: СУС (CMS)
+    CMS: 'СУС (CMS)'
     DRAFT: Чернова
-    DRAFTSITE: 'Чернови'
+    DRAFTSITE: Чернови
     INSTALL_SUCCESS: 'Инсталацията премина успешно.'
     LOGGEDINAS: 'Влязъл като'
-    LOGIN: Вход
+    LOGIN: 'Вход'
     LOGOUT: 'Изход'
     NOTEWONTBESHOWN: 'Забележка: Това съобщение няма да се показва на Вашите посетители'
     NOTLOGGEDIN: 'Извън системата'
@@ -86,35 +77,35 @@ bg:
     PUBLISHEDSITE: 'Публикувани страници'
     VIEWPAGEIN: 'Изглед на страница в:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: Архивирани
+    ARCHIVED: 'Архивирани'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Специалните символи са автоматично конвертирани или изтрити.'
   SilverStripe\CMS\Model\ErrorPage:
-    400: '400 - Лошо Поискване'
-    401: '401 - Неауторизирано'
-    403: '403 - Забранено'
-    404: '404 - Не Намерено'
-    405: '405 - Не позволен Метод'
-    406: '406 - Не е допустимо'
-    407: '407 - Нужна е Proxy Автентификация'
-    408: '408 - Времето за искане изтече'
-    409: '409 - Конфликт'
-    410: '410 - Изчезнал'
-    411: '411 - Задължена е Дължина'
-    412: '412 - Предпоставката се провали'
-    413: '413 - Поисканото лице е прекалено дълго'
-    414: '414 - Поисканото-URI е прекалено дълго'
-    415: '415 - Неподдържан тип медия'
-    416: '416 - Поисканият обсег не е удоволетворен'
-    417: '417 - Очакването се провали'
-    422: '422 - Необработваеми данни'
-    429: '429 - Твърде много заявки'
-    500: '500 - Вътрешна грешка при сървъра'
-    501: '501 - Не реализирано'
-    502: '502 - Лош Gateway'
-    503: '503 - Услугата не е налична'
-    504: '504 - Gateway времето изтече'
-    505: '505 - HTTP Версия не се поддържа'
+    0: '400 - Лошо Поискване'
+    1: '401 - Неауторизирано'
+    2: '403 - Забранено'
+    3: '404 - Не Намерено'
+    4: '405 - Не позволен Метод'
+    5: '406 - Не е допустимо'
+    6: '407 - Нужна е Proxy Автентификация'
+    7: '408 - Времето за искане изтече'
+    8: '409 - Конфликт'
+    9: '410 - Изчезнал'
+    10: '411 - Задължена е Дължина'
+    11: '412 - Предпоставката се провали'
+    12: '413 - Поисканото лице е прекалено дълго'
+    13: '414 - Поисканото-URI е прекалено дълго'
+    14: '415 - Неподдържан тип медия'
+    15: '416 - Поисканият обсег не е удоволетворен'
+    16: '417 - Очакването се провали'
+    17: '422 - Необработваеми данни'
+    18: '429 - Твърде много заявки'
+    19: '500 - Вътрешна грешка при сървъра'
+    20: '501 - Не реализирано'
+    21: '502 - Лош Gateway'
+    22: '503 - Услугата не е налична'
+    23: '504 - Gateway времето изтече'
+    24: '505 - HTTP Версия не се поддържа'
     CODE: 'Грешка в кода'
     DEFAULTERRORPAGECONTENT: '<p>Опитвате се да отворите страница, която не съществува.</p><p>Проверете изписването на адреса и опитайте отново.</p>'
     DEFAULTERRORPAGETITLE: 'Страницата не беше намерена'
@@ -137,14 +128,14 @@ bg:
     ADDEDTODRAFTSHORT: Чернова
     APPEARSVIRTUALPAGES: 'Съдържанието присъства във виртуалните страници в секция {title}.'
     ARCHIVEDPAGEHELP: 'Страницата е премахната от сайта и от черновите'
-    ARCHIVEDPAGESHORT: Архивирани
+    ARCHIVEDPAGESHORT: 'Архивирани'
     BUTTONCANCELDRAFT: 'Отмени промените в черновата'
     BUTTONCANCELDRAFTDESC: 'Изтрий черновата и отиди на текущата публикувана страница'
     BUTTONDELETEDESC: 'Премахни от чернова/публикация и запиши в архива'
     BUTTONPUBLISHED: Публикувана
     BUTTONSAVED: Записана
     BUTTONSAVEPUBLISH: 'Запиши и публикувай'
-    BUTTONUNPUBLISH: Премахни от публикация
+    BUTTONUNPUBLISH: 'Премахни от публикация'
     BUTTONUNPUBLISHDESC: 'Премахни тази страница от публикувания сайт'
     Comments: Коментари
     Content: Съдържание
@@ -172,13 +163,13 @@ bg:
     LASTUPDATED: 'Последна промяна'
     LINKCHANGENOTE: 'Промяната на адреса на тази страница, ще повлияе на адресите на всички подстраници на тази страница'
     MENUTITLE: 'Етикет на навигация'
-    METADESC: 'Описание'
+    METADESC: Описание
     METADESCHELP: 'Търсачките използват това съдържание при показване на резултатите от търсенето (въпреки, че това няма да повлияе на тяхното класиране).'
     METAEXTRA: 'Собствени етикети'
     METAEXTRAHELP: 'HTML тагове за допълнителна meta информация. Например &lt;meta name="customName" content="вашето съдържание" /&gt;'
     MODIFIEDONDRAFTHELP: 'По страницата са правени промени, които не са публикувани'
     MODIFIEDONDRAFTSHORT: Променен
-    MetadataToggle: Meta данни за страницата
+    MetadataToggle: 'Meta данни за страницата'
     MoreOptions: 'Още действия'
     OBSOLETECLASS: 'Страницата е от тип {type}, който вече не съществува. Записването ѝ ще нулира типа ѝ и можа да загубите данни.'
     ONLIVEONLYSHORTHELP: 'Страницата е публикувана, но беше изтрита от черновите'
@@ -188,7 +179,7 @@ bg:
     PARENTID: 'Страница родител'
     PARENTTYPE: 'Местонахождение на страницата'
     PARENTTYPE_ROOT: 'Страница от най-високо ниво в йерархията'
-    PARENTTYPE_SUBPAGE: 'Подстраница'
+    PARENTTYPE_SUBPAGE: Подстраница
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Управление на правата за достъп до съдържанието'
     PERMISSION_GRANTACCESS_HELP: 'Разреши настройката на специфични ограничения за достъп в раздела "Страници"'
     PLURALNAME: Страници
@@ -201,7 +192,7 @@ bg:
     SHOWINSEARCH: 'Покажи в търсене?'
     SINGULARNAME: Страница
     TABBEHAVIOUR: Поведение
-    TABCONTENT: 'Съдържание'
+    TABCONTENT: Съдържание
     TABDEPENDENT: 'Зависими страници'
     TOPLEVEL: 'Съдържание на сайта (Top level)'
     URLSegment: 'URL - Сегмент'
@@ -216,6 +207,8 @@ bg:
     many_many_BackLinkTracking: 'Следене на "обратни линкове"'
     many_many_ImageTracking: 'Следене на снимките'
     many_many_LinkTracking: 'Следене на линовете'
+    TOPLEVELCREATORGROUPS: 'Създатели на страници от най-високо ниво'
+    TABMAIN: Главно
   SilverStripe\CMS\Model\VirtualPage:
     EditLink: промени
     HEADER: 'Това е виртуална страница'
@@ -223,12 +216,12 @@ bg:
     Any: Всички
     BROKENLINKS: 'Списък на развалени линкове'
     CheckSite: 'Провери сайта'
-    CheckSiteDropdownDraft: 'Чернови'
+    CheckSiteDropdownDraft: Чернови
     CheckSiteDropdownPublished: 'Публикувани страници'
     ColumnDateLastModified: 'Дата на последна промяна'
     ColumnDateLastPublished: 'Дата на последно публикуване'
     ColumnProblemType: 'Тип на проблема'
-    ColumnURL: Неработещи линкове
+    ColumnURL: 'Неработещи линкове'
     HasBrokenFile: 'има развален файл'
     HasBrokenLink: 'има развален линк'
     HasBrokenLinkAndFile: 'има развален линк и файл'
@@ -249,14 +242,3 @@ bg:
     PAGEFILTERDATEHEADING: 'Последна редакция'
     SEARCH: Търси
     SearchResults: 'Резултати от търсенето'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Страници с несъществуващи файлове'
-    BROKENREDIRECTORPAGES: 'Пренасочващи страници, които сочат към изтрити страници'
-    BROKENVIRTUALPAGES: 'Виртуални страници, които сочат към изтрити страници'
-    BrokenLinksGroupTitle: 'Отчет за страници съдържащи невалидни препратки.'
-    ContentGroupTitle: 'Отчети за съдържание'
-    EMPTYPAGES: 'Страници без съдържание'
-    LAST2WEEKS: 'Страници редактирани през последните 2 седмици'
-    ParameterLiveCheckbox: 'Провери реалния сайт'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Права по съдържанието'

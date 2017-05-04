@@ -11,7 +11,7 @@ pa:
     BUTTONUNPUBLISH: 'ਅਣਛਾਪੋ       '
     EDITHEADER: 'Who can edit this inside the CMS?'
     HTMLEDITORTITLE: ਸਮਾਨ
-    METADESC: 'ਵਰਣਨ'
+    METADESC: ਵਰਣਨ
     PAGETITLE: "ਪੰਨੇ ਦਾ ਨਾਂ\t"
     PAGETYPE: 'ਸਫ਼ੇ ਦੀ ਿਕਸਮ  '
     SHOWINMENUS: 'menus ਿਵੱਚ ਿਦਖਾਉ?'
@@ -19,5 +19,6 @@ pa:
     TABBEHAVIOUR: ਵਰਤਾਉ
     TABCONTENT: 'ਸਮਾਨ '
     TOPLEVEL: 'ਸਾਈਟ ਦਾ ਸਮਾਨ (Top Level)'
+    TABMAIN: "ਮੁੱਖ\t"
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'ਇਹ ਇੱਕ virtual ਪੰਨਾ ਹੈ।'

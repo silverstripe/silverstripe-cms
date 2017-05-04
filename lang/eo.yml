@@ -1,14 +1,4 @@
 eo:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Publikigis %d paĝojn, %d malsukcesojn'
-    PUBLISH_PAGES: Publikigi
-    RESTORE: Restaŭri
-    RESTORED_PAGES: 'Restaŭris %d paĝojn'
-    UNPUBLISHED_PAGES: 'Nepublikigitaj %d paĝoj'
-    UNPUBLISH_PAGES: Malpublikigi
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Uzite ĉe:'
-    PAGES: paĝo(j)
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Forigis %d paĝojn el malneta kaj publika, kaj sendis ilin al la arĥivo'
     TITLE: 'Malpublikigi kaj sendi al arkivo'
@@ -90,7 +80,7 @@ eo:
     INSTALL_SUCCESS: 'Instalis sukcese!'
     LOGGEDINAS: 'Ensalutis kiel'
     LOGIN: Ensaluti
-    LOGOUT: 'Elsaluti'
+    LOGOUT: Elsaluti
     NOTEWONTBESHOWN: 'Notu: ne vidigos ĉi tiun mesaĝon al viaj vizitantoj'
     NOTLOGGEDIN: 'Ne ensalutinte'
     PUBLISHED: Publikigita
@@ -98,11 +88,12 @@ eo:
     VIEWPAGEIN: 'Vidigi Paĝon en:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Enarkivigita
+    Edit: Redakti
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Bonvolu enigi URL-segmenton aŭ alklaki al Rezigni'
     HelpChars: 'Aŭtomate konvertas aŭ forigas specialajn signojn.'
   SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Erarokodo'
+    CODE: Erarokodo
     DEFAULTERRORPAGECONTENT: '<p>Bedaŭrinde, ŝajne vi provis aliri paĝon kiu ne ekzistas.</p><p>Bonvole kontrolu la literumadon de la URL alirota kaj provu denove.</p>'
     DEFAULTERRORPAGETITLE: 'Ne trovis paĝon'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Bedaŭrinde, estis problemo pri via peto.</p>'
@@ -165,7 +156,7 @@ eo:
     LINKSALREADYUNIQUE: '{url} jam estas unika'
     LINKSCHANGEDTO: 'ŝanĝis {url1} -> {url2}'
     MENUTITLE: 'Navigada etikedo'
-    METADESC: 'Metapriskribo'
+    METADESC: Metapriskribo
     METADESCHELP: 'Serĉiloj uzas ĉi tiun enhavon por vidigi serĉajn rezultojn (kvankam ĝi ne influos ilian rangon).'
     METAEXTRA: 'Propraj Meta-etikedoj '
     METAEXTRAHELP: 'HTML-etikedoj por plua metainformo. Ekzemple &lt;meta name="customName" content="via propra enhavo ĉi tie" /&gt;'
@@ -198,7 +189,7 @@ eo:
     TABCONTENT: 'Ĉefa enhavo'
     TABDEPENDENT: 'Dependaj paĝoj'
     TOPLEVEL: 'Enhavo de Retejo (Supra Nivelo)'
-    URLSegment: 'URL-segmento'
+    URLSegment: URL-segmento
     VIEWERGROUPS: 'Grupoj de vidantoj'
     VIEW_ALL_DESCRIPTION: 'Vidigi ajnan paĝon'
     VIEW_ALL_HELP: 'Povo vidigi ajnan paĝon en la retejo, senkonsidere la agordaĵojn en la langeto Aliro. Bezonatas la permeso "Aliro al sekcio ''Paĝoj''"'
@@ -213,6 +204,8 @@ eo:
     many_many_BackLinkTracking: 'Spuri retroligilojn'
     many_many_ImageTracking: 'Spuri Bildojn'
     many_many_LinkTracking: 'Spuri Ligilojn'
+    TOPLEVELCREATORGROUPS: 'Supranivelaj kreintoj'
+    TABMAIN: Ĉefaj
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Ligita paĝo'
     DESCRIPTION: 'Vidigas la enhavon de alia paĝo'
@@ -230,7 +223,7 @@ eo:
     CheckSiteDropdownPublished: 'Publika retejo'
     ColumnDateLastModified: 'Dato de lasta modifo'
     ColumnDateLastPublished: 'Dato de lasta publikigo'
-    ColumnProblemType: 'Problemtipo'
+    ColumnProblemType: Problemtipo
     ColumnURL: URL
     HasBrokenFile: 'havas rompitan dosieron'
     HasBrokenLink: 'havas rompitan ligilon'
@@ -262,14 +255,3 @@ eo:
     OPERATION_REMOVE: 'Forigi elektitajn el ĉiuj stadioj. (AVERTO: detruos ĉiujn elektitajn paĝojn el kaj stadio kaj publika)'
     SELECTALL: 'elekti ĉion'
     UNSELECTALL: 'malelekti ĉion'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Paĝoj kun rompitaj dosieroj'
-    BROKENREDIRECTORPAGES: 'Redirektaj paĝoj indikantaj forigitajn paĝojn'
-    BROKENVIRTUALPAGES: 'VirtualajPaĝoj indikantaj forigitajn paĝojn'
-    BrokenLinksGroupTitle: 'Raporto pri rompitaj ligiloj'
-    ContentGroupTitle: 'Raportoj pri enhavo'
-    EMPTYPAGES: 'Malplenaj paĝoj'
-    LAST2WEEKS: 'Paĝoj redaktitaj dum la lastaj 2 semajnoj'
-    ParameterLiveCheckbox: 'Kontroli publikan retejon'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Enhavopermesoj'

@@ -1,10 +1,4 @@
 et_EE:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Avaldatud %d lehte, %d tõrget'
-    PUBLISH_PAGES: Avalda
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Kasutatakse:'
-    PAGES: leht (lehed)
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Juurdepääs jaotisele ''{title}'''
     ACCESS_HELP: 'Luba lehepuud ja sisu hõlmava jaotise vaatamine. Vaatamis- ja redigeerimisõigusi on võimalik hallata nii lehepõhiselt kui ka eraldi jaotise "Sisu õigused" abil.'
@@ -42,7 +36,7 @@ et_EE:
     DRAFTSITE: 'Mustandi sait'
     INSTALL_SUCCESS: 'Paigaldus oli edukas!'
     LOGGEDINAS: 'Sisse logitud kui'
-    LOGIN: Logi sisse
+    LOGIN: 'Logi sisse'
     LOGOUT: 'Logi välja'
     NOTEWONTBESHOWN: 'Märkus. Seda teadet ei kuvata lehe külastajatele'
     NOTLOGGEDIN: 'Pole sisse logitud'
@@ -54,30 +48,30 @@ et_EE:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Erimärgid teisendatakse või eemaldatakse automaatselt.'
   SilverStripe\CMS\Model\ErrorPage:
-    400: '400 - Halb päring'
-    401: '401 - Volitamata ligipääs'
-    403: '403 - Keelatud'
-    404: '404 - Ei leitud'
-    405: '405 -  Meetod pole lubatud'
-    406: '406 - Ligipääs puudub'
-    407: '407 - Proxy tuvastus vajalik'
-    408: '408 - Palve aegunud'
-    409: '409 - Konflikt'
-    410: '410 - Kustutatud'
-    411: '411 - Distants vajalik'
-    412: '412 - Eeltingimused täitmata'
-    413: '413 -  Palve käsklus liiga suur'
-    414: '414 - soovitud URL liiga pikk'
-    415: '415 - Ebasoovitav meedia tüüp'
-    416: '416 - Päring rahuldamata'
-    417: '417 - Eeldus puudub'
-    500: '500 - Serveri viga'
-    501: '501 - Rakendus puudub'
-    502: '502 - Halb sissepääsutee'
-    503: '503 - Teenus puudub'
-    504: '504 - Sissepääsutee aegmaas'
-    505: '505 - HTTP versioon ei ole kasutusel'
-    CODE: 'Veakood'
+    0: '400 - Halb päring'
+    1: '401 - Volitamata ligipääs'
+    2: '403 - Keelatud'
+    3: '404 - Ei leitud'
+    4: '405 -  Meetod pole lubatud'
+    5: '406 - Ligipääs puudub'
+    6: '407 - Proxy tuvastus vajalik'
+    7: '408 - Palve aegunud'
+    8: '409 - Konflikt'
+    9: '410 - Kustutatud'
+    10: '411 - Distants vajalik'
+    11: '412 - Eeltingimused täitmata'
+    12: '413 -  Palve käsklus liiga suur'
+    13: '414 - soovitud URL liiga pikk'
+    14: '415 - Ebasoovitav meedia tüüp'
+    15: '416 - Päring rahuldamata'
+    16: '417 - Eeldus puudub'
+    17: '500 - Serveri viga'
+    18: '501 - Rakendus puudub'
+    19: '502 - Halb sissepääsutee'
+    20: '503 - Teenus puudub'
+    21: '504 - Sissepääsutee aegmaas'
+    22: '505 - HTTP versioon ei ole kasutusel'
+    CODE: Veakood
     DEFAULTERRORPAGECONTENT: '<p>Vabandust aga tundub, et proovid ligipääseda lehele mida pole olemas.</p><p>Palun kontrolli uuesti aadressi kuhu proovid ligi pääseda.</p>'
     DEFAULTERRORPAGETITLE: 'Lehekülge ei leitud'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Vabandust, teie taotluse töötlemisel ilmnes probleem.</p>'
@@ -103,12 +97,12 @@ et_EE:
     BUTTONPUBLISHED: Avaldatud
     BUTTONSAVED: Salvestatud
     BUTTONSAVEPUBLISH: 'Salvesta ja avalda'
-    BUTTONUNPUBLISH: Võta maha
+    BUTTONUNPUBLISH: 'Võta maha'
     BUTTONUNPUBLISHDESC: 'Eemalda see lehekülg avalikult saidilt'
     Comments: Komentaarid
     Content: Sisu
-    DEFAULTABOUTTITLE: 'Meist'
-    DEFAULTCONTACTTITLE: 'Kontakt'
+    DEFAULTABOUTTITLE: Meist
+    DEFAULTCONTACTTITLE: Kontakt
     DEFAULTHOMETITLE: Avaleht
     DEPENDENT_NOTE: 'Alljärgnevad lehed sõltuvad sellest lehest. See hõlmab virtuaalseid lehti, ümbersuunamislehti ja sisulinkidega lehti.'
     DependtPageColumnLinkType: 'Lingi tüüp'
@@ -116,7 +110,7 @@ et_EE:
     EDITANYONE: 'Igaüks, kes sisuhaldussüsteemi sisse võib logida'
     EDITHEADER: 'Kes tohib seda sisuhaldussüsteemi kaudu muuta?'
     EDITONLYTHESE: 'Ainult järgnevad isikud (vali nimekirjast)'
-    EDITORGROUPS: 'Muutjagrupid'
+    EDITORGROUPS: Muutjagrupid
     EDIT_ALL_DESCRIPTION: 'Redigeeri mis tahes lehte'
     EDIT_ALL_HELP: 'Võimalus redigeerida mis tahes lehte sellel saidil, hoolimata vahekaardi Juurdepääs seadetest. Vajab jaotise "Juurdepääs  lehtedele" õigusi\n'
     Editors: 'Toimetajate gruppid'
@@ -126,7 +120,7 @@ et_EE:
     LASTUPDATED: 'Viimati uuendatud'
     LINKCHANGENOTE: 'Selle lehe lingi muutmine mõjutab ka kõigi alamlehtede linke.'
     MENUTITLE: 'Navigatsiooni silt'
-    METADESC: 'Kirjeldus'
+    METADESC: Kirjeldus
     METADESCHELP: 'Otsingumootor kasutab seda sisu otsingutulemuste kuvamiseks (kuigi see ei mõjuta nende järjestust).'
     METAEXTRA: 'Kohandatud metamärgendid'
     METAEXTRAHELP: 'HTML-sildid täiendavate metaandmete jaoks. Nt &lt;meta name="customName" content="your custom content here" /&gt;'
@@ -136,7 +130,7 @@ et_EE:
     PAGELOCATION: 'Lehe asukoht'
     PAGETITLE: 'Lehekülje nimi'
     PAGETYPE: 'Lehe tüüp'
-    PARENTID: 'Vanemleht'
+    PARENTID: Vanemleht
     PARENTTYPE: 'Lehe asukoht'
     PARENTTYPE_ROOT: 'Kõrgema taseme leht'
     PARENTTYPE_SUBPAGE: 'Vanemlehe all olev alamleht'
@@ -150,11 +144,11 @@ et_EE:
     SHOWINMENUS: 'Näita menüüdes?'
     SHOWINSEARCH: 'Näita otsingus?'
     TABBEHAVIOUR: Käitumine
-    TABCONTENT: 'Sisu'
+    TABCONTENT: Sisu
     TABDEPENDENT: 'Sõltuvad lehed'
     TOPLEVEL: 'Lehe sisu (kõrgeim tase)'
     URLSegment: 'URL-i jagu'
-    VIEWERGROUPS: 'Vaatajagrupid'
+    VIEWERGROUPS: Vaatajagrupid
     VIEW_ALL_DESCRIPTION: 'Kuva mis tahes leht'
     VIEW_DRAFT_CONTENT: 'Kuva mustandi sisu'
     VIEW_DRAFT_CONTENT_HELP: 'Rakendub lehe vaatamisel väljaspool CMS-i mustandirežiimis. Kasulik välistele kaastöötajatele, kellel puudub juurdepääs CMS-ile.'
@@ -164,6 +158,7 @@ et_EE:
     many_many_BackLinkTracking: 'Tagasilingi jälgimine'
     many_many_ImageTracking: 'Pildi jälgimine'
     many_many_LinkTracking: 'Lingi jälgimine'
+    TABMAIN: Avaleht
   SilverStripe\CMS\Model\VirtualPage:
     EditLink: redigeeri
     HEADER: 'See on virtuaalne leht'
@@ -195,15 +190,4 @@ et_EE:
     FILTERDATETO: Kuni
     GO: Mine
     SEARCH: Otsi
-    SearchResults: 'Otsingutulemused'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Katkiste failidega lehed'
-    BROKENREDIRECTORPAGES: 'Ümbersuunamislehed, mis suunavad kustutatud lehtedele'
-    BROKENVIRTUALPAGES: 'Virtuaallehed, mis suunavad kustutatud lehtedele'
-    BrokenLinksGroupTitle: 'Katkiste linkide aruanded'
-    ContentGroupTitle: 'Sisuaruanded'
-    EMPTYPAGES: 'Tühjad leheküljed'
-    LAST2WEEKS: 'Viimase kahe nädala jooksul muudetud leheküljed'
-    ParameterLiveCheckbox: 'Kontrolli avaldatud saiti'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Sisu õigused'
+    SearchResults: Otsingutulemused

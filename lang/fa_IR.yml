@@ -1,14 +1,4 @@
 fa_IR:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'انتشار %d صفحه، %d عدم موفقیت'
-    PUBLISH_PAGES: انتشار
-    RESTORE: بازنشاندن
-    RESTORED_PAGES: 'بازنشاندن %d صفحه'
-    UNPUBLISHED_PAGES: 'عدم انتشار %d صفحه'
-    UNPUBLISH_PAGES: عدم انتشار
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'استفاده شده در:'
-    PAGES: صفحه(ها)
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'حذف %d صفحه از سایت پیش‌نویس و زنده، و ارسال آنها به آرشیو'
     TITLE: 'عدم انتشار و بایگانی'
@@ -58,7 +48,7 @@ fa_IR:
     MENUTITLE: تاریخچه
     REVERTTOTHISVERSION: 'بازگشت به این نسخه'
     SHOWUNPUBLISHED: 'نمایش نسخه‌های منتشر نشده'
-    VIEW: نمایش
+    VIEW: 'نمایش'
     VIEWINGLATEST: 'در حال حاضر آخرین نسخه را مشاهده می‌کنید.'
     VIEWINGVERSION: 'در حال حاضر نسخه {version} را مشاهده می‌کنید.'
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
@@ -88,14 +78,15 @@ fa_IR:
     INSTALL_SUCCESS: 'نصب موفقیت‌آمیز!'
     LOGGEDINAS: 'وارد شده تحت عنوان'
     LOGIN: ورود
-    LOGOUT: 'خروج'
+    LOGOUT: خروج
     NOTEWONTBESHOWN: 'یادداشت: این پیام به بازدیدکنندگان شما نمایش داده نمی‌شود'
     NOTLOGGEDIN: 'وارد نشده'
-    PUBLISHED: منتشر شده
+    PUBLISHED: 'منتشر شده'
     PUBLISHEDSITE: 'سایت منتشر شده'
     VIEWPAGEIN: 'مشاهده صفحه در'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: بایگانی شده
+    ARCHIVED: 'بایگانی شده'
+    Edit: ویرایش
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'لطفاً یک بخش نشانی اینترنتی را درج نمایید یا روی لغو کلیک کنید.'
     HelpChars: 'کاراکترهای ویژه به‌طور خودکار تبدیل یا حذف می‌شوند.'
@@ -118,7 +109,7 @@ fa_IR:
     SINGULARNAME: 'صفحه هدایت‌گر'
     YOURPAGE: 'برگ روی تارگاه شما'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: همه
+    ACCESSANYONE: 'همه'
     ACCESSHEADER: 'چه کسی بتواند این صفحه را مشاهده کنید ؟'
     ACCESSLOGGEDIN: 'کاربران وارد شده'
     ACCESSONLYTHESE: 'فقط این افراد (انتخاب از لیست)'
@@ -126,17 +117,17 @@ fa_IR:
     ADDEDTODRAFTSHORT: پیش‌نویس
     APPEARSVIRTUALPAGES: 'این محتوا همچنین در صفحات مجازی در بخش‌های {title}.'
     ARCHIVEDPAGEHELP: 'صفحه از پیش‌نویس و زنده حذف گردید'
-    ARCHIVEDPAGESHORT: بایگانی شده
+    ARCHIVEDPAGESHORT: 'بایگانی شده'
     BUTTONCANCELDRAFT: 'لغو تغییرات پیش‌نویس'
     BUTTONCANCELDRAFTDESC: 'حذف پیش‌نویس و بازگردانی به نسخه‌ی منتشر‌شده‌ی کنونی'
     BUTTONDELETEDESC: 'حذف از پیش‌نویس/زنده و ارسال به بایگانی'
-    BUTTONPUBLISHED: منتشر شده
-    BUTTONSAVED: ذخیره شده
+    BUTTONPUBLISHED: 'منتشر شده'
+    BUTTONSAVED: 'ذخیره شده'
     BUTTONSAVEPUBLISH: 'ذخیره و انتشار'
-    BUTTONUNPUBLISH: عدم انتشار
+    BUTTONUNPUBLISH: 'عدم انتشار'
     BUTTONUNPUBLISHDESC: 'حذف این صفحه از سایت منتشر شده'
     Comments: دیدگاه‌ها
-    Content: درون مایه
+    Content: 'درون مایه'
     DEFAULTABOUTTITLE: 'درباره ما'
     DEFAULTCONTACTTITLE: 'تماس با ما'
     DEFAULTHOMECONTENT: '<p>به سیلوراسترایپ خوش آمدید! این صفحه اصلی پیش فرض است. میتوانید این صفحه را با بازکردن <a href="admin/">سامانه مدیریت محتوا</a> ویرایش نمایید.</p><p>میتوانید به<a href="http://docs.silverstripe.org">مستندات توسعه دهندگان</a> دسترسی یابید، و یا <a href="http://www.silverstripe.org/learn/lessons">درس های سیلوراسترایپ</a> را آغاز نمایید.</p>'
@@ -144,7 +135,7 @@ fa_IR:
     DEPENDENT_NOTE: 'صفحات زیر وابسته به این صفحه هستند. شامل صفحات مجازی، هدایت‌گر و صفحاتی با محتوای لینک'
     DESCRIPTION: 'صفحه محتوای عمومی'
     DependtPageColumnLinkType: 'نوع پیوند'
-    DependtPageColumnURL: نشانی اینترنتی
+    DependtPageColumnURL: 'نشانی اینترنتی'
     EDITANYONE: 'هر کسی بتواند به سیستم مدیریت محتوا وارد شود'
     EDITHEADER: 'چه کسی بتواند این صفحه را ویرایش کند ؟'
     EDITONLYTHESE: 'فقط این افراد (انتخاب از لیست)'
@@ -153,17 +144,17 @@ fa_IR:
     Editors: 'گروه‌های ویرایشگران'
     GroupPlaceholder: 'برای انتخاب گروه کلیک کنید'
     HASBROKENLINKS: 'این صفحه دارای پیوند معیوب است.'
-    HTMLEDITORTITLE: درون‌مایه
+    HTMLEDITORTITLE: 'درون‌مایه'
     INHERIT: 'از صفحه والد ارث ببر'
     LASTUPDATED: 'آخرین به روزرسانی'
     LINKSALREADYUNIQUE: '{url} هم‌اکنون نیز یکتا است'
     MENUTITLE: 'برچسب ناوبری'
-    METADESC: 'توضیحات'
+    METADESC: توضیحات
     METADESCHELP: 'موتورهای جستجو از این محتوا در نمایش نتایج جستجو بهره‌می‌برند (اگرچه تأثیری در رتبه‌بندی ندارد).'
     METAEXTRA: 'متا تگ‌های اختصاصی'
     MODIFIEDONDRAFTHELP: 'صفحه دارای تغییرات منتشر نشده است'
-    MODIFIEDONDRAFTSHORT: تغییر یافته
-    MetadataToggle: متاداده
+    MODIFIEDONDRAFTSHORT: 'تغییر یافته'
+    MetadataToggle: 'متاداده'
     MoreOptions: 'گزینه‌های بیشتر'
     OBSOLETECLASS: 'این صفحه از نوع منسوخ شده {type} است. ذخیره‌سازی سبب نوگردانی مدل آن شده و ممکن است داده‌هایی از دست برود'
     ONLIVEONLYSHORT: 'تنها در زنده'
@@ -198,6 +189,8 @@ fa_IR:
     many_many_BackLinkTracking: 'ردیابی بک‌لینک'
     many_many_ImageTracking: 'ردیابی تصویر'
     many_many_LinkTracking: 'ردیابی پیوند'
+    TOPLEVELCREATORGROUPS: 'خالقین بالاترین سطح'
+    TABMAIN: اصلی
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'صفحه ارجاعی'
     DESCRIPTION: 'نمایش‌دهنده‌ی محتوای صفحه‌ی دیگر'
@@ -244,14 +237,3 @@ fa_IR:
     NONEREMOVED: 'هیچ‌کدام حذف نگشت'
     SELECTALL: 'انتخاب همه'
     UNSELECTALL: 'لغو انتخاب همه'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'صفحات دارای فایل معیوب'
-    BROKENREDIRECTORPAGES: 'صفحات هدایت‌گر اشاره‌کننده به صفحات حذف شده'
-    BROKENVIRTUALPAGES: 'صفحات مجازی اشاره‌کننده به صفحات حذف شده'
-    BrokenLinksGroupTitle: 'گزارش پیوندهای معیوب'
-    ContentGroupTitle: 'گزارشات محتوا'
-    EMPTYPAGES: 'صفحات بدون مطلب'
-    LAST2WEEKS: 'صفحات ویرایش شده در 2 هفته گذشته'
-    ParameterLiveCheckbox: 'بررسی سایت به صورت زنده'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'دسترسی محتوا'

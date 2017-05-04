@@ -1,34 +1,31 @@
 zh_TW:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: '已出版 %d 網頁, %d 失敗'
-    PUBLISH_PAGES: 出版
   SilverStripe\CMS\Controllers\CMSMain:
     PAGENOTEXISTS: '這頁不存在'
     PUBALLCONFIRM: '請發布所有網頁'
     PUBALLFUN: '"全部發布" 功能'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     COMPAREMODE: '比較模式(選擇兩個)'
-    REVERTTOTHISVERSION: '回復到此版本'
-    SHOWUNPUBLISHED: '顯示未出版的版本'
+    REVERTTOTHISVERSION: 回復到此版本
+    SHOWUNPUBLISHED: 顯示未出版的版本
     VIEW: 瀏覽
   SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: 網頁
+    MENUTITLE: '網頁'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: '所有網頁'
   SilverStripe\CMS\Controllers\ContentController:
     NOTEWONTBESHOWN: '備註: 此訊息將不會顯示給您的訪客看'
   SilverStripe\CMS\Model\ErrorPage:
-    CODE: '錯誤代碼'
+    CODE: 錯誤代碼
     DEFAULTERRORPAGECONTENT: '<p>抱歉, 看來您正再嘗試存取一個不存在的網頁</p><p>請檢查您正在嘗試存取網址的拼寫並再試一次.</p>'
     DEFAULTERRORPAGETITLE: '未發現網頁'
     DEFAULTSERVERERRORPAGECONTENT: '<p>抱歉, 處裡您的要求發生一個問題</p>'
-    DEFAULTSERVERERRORPAGETITLE: '伺服器錯誤'
+    DEFAULTSERVERERRORPAGETITLE: 伺服器錯誤
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: '沒有任何地方被重新導向的一個重新導向網頁已被設定.'
     HEADER: '本網頁將重新導向用戶至別的網頁'
     OTHERURL: '其他網站網址'
-    REDIRECTTO: '重新導向到'
-    REDIRECTTOEXTERNAL: '別的網站'
+    REDIRECTTO: 重新導向到
+    REDIRECTTOEXTERNAL: 別的網站
     REDIRECTTOPAGE: '在您網站上的一個網頁'
     YOURPAGE: '在您網站上的網頁'
   SilverStripe\CMS\Model\SiteTree:
@@ -36,17 +33,17 @@ zh_TW:
     ACCESSHEADER: '誰可以瀏覽這頁？'
     ACCESSLOGGEDIN: '已登入的使用者'
     ACCESSONLYTHESE: '只有這些人(從清單選擇)'
-    BUTTONCANCELDRAFT: '取消草稿更變'
-    BUTTONCANCELDRAFTDESC: '刪除草稿並回複到正式發布的版本'
+    BUTTONCANCELDRAFT: 取消草稿更變
+    BUTTONCANCELDRAFTDESC: 刪除草稿並回複到正式發布的版本
     BUTTONUNPUBLISH: 取消發布
-    BUTTONUNPUBLISHDESC: '從正式發布站移除'
+    BUTTONUNPUBLISHDESC: 從正式發布站移除
     Comments: 意見
-    Content: 內容
-    DEFAULTABOUTTITLE: '關於我們'
-    DEFAULTCONTACTTITLE: '連絡我們'
-    DEFAULTHOMETITLE: 首頁
+    Content: '內容'
+    DEFAULTABOUTTITLE: 關於我們
+    DEFAULTCONTACTTITLE: 連絡我們
+    DEFAULTHOMETITLE: '首頁'
     DEPENDENT_NOTE: '以下的網頁是依附在本網頁的. 這包含了虛擬網頁, 重新導向網頁, 以及有內容鏈結的網頁.'
-    DependtPageColumnLinkType: '鏈結類型'
+    DependtPageColumnLinkType: 鏈結類型
     DependtPageColumnURL: 網址
     EDITANYONE: '所有可以登入CMS的人'
     EDITHEADER: '誰可以編輯這頁？'
@@ -56,12 +53,12 @@ zh_TW:
     EDIT_ALL_HELP: '不管在存取Tab上的設定值, 在網站上有能力去編輯任何網頁. 需要 "到''網頁''部分的存取"許可'
     Editors: '編輯者群體'
     HASBROKENLINKS: '網頁含有失效的連結。'
-    HTMLEDITORTITLE: 內容
+    HTMLEDITORTITLE: '內容'
     INHERIT: '從母頁繼承'
-    LASTUPDATED: '最近更新'
+    LASTUPDATED: 最近更新
     LINKCHANGENOTE: '改變這個網頁鏈結將也會影響所有子網頁的鏈結'
-    MENUTITLE: '捷徑標籤'
-    METADESC: '敘述'
+    MENUTITLE: 捷徑標籤
+    METADESC: 敘述
     METAEXTRA: '自訂元標籤(meta-tags)'
     MODIFIEDONDRAFTSHORT: 已修改
     PAGELOCATION: '網頁位置'
@@ -74,15 +71,15 @@ zh_TW:
     PERMISSION_GRANTACCESS_DESCRIPTION: '管理內容的存取權限'
     PERMISSION_GRANTACCESS_HELP: '允許設定在"網頁"部分的網頁-特定存取限制.'
     REMOVE_INSTALL_WARNING: '警告: 為了安全理由你應該從SilverStripe的安裝中移除install.php.'
-    REORGANISE_DESCRIPTION: '改變網站結構'
+    REORGANISE_DESCRIPTION: 改變網站結構
     REORGANISE_HELP: '經由 拉&放 於網站樹狀架構內重新安排網頁.'
-    SHOWINMENUS: '在選單裡顯示嗎？'
-    SHOWINSEARCH: '在搜尋結果裡顯示嗎？'
+    SHOWINMENUS: 在選單裡顯示嗎？
+    SHOWINSEARCH: 在搜尋結果裡顯示嗎？
     TABBEHAVIOUR: 作用
     TABCONTENT: '內容'
     TABDEPENDENT: '依賴網頁'
     TOPLEVEL: '網站內容 (高層)'
-    URLSegment: '網址分類'
+    URLSegment: 網址分類
     VIEWERGROUPS: '瀏覽者群組'
     VIEW_ALL_DESCRIPTION: '瀏覽任何網頁'
     VIEW_DRAFT_CONTENT: '瀏覽內容草稿'
@@ -90,11 +87,9 @@ zh_TW:
     Viewers: '瀏覽者群組'
     Visibility: 能見度
     has_one_Parent: '母頁'
-    many_many_BackLinkTracking: '背面鏈結追蹤'
-    many_many_ImageTracking: '影像追蹤'
-    many_many_LinkTracking: '鏈結追蹤'
+    many_many_BackLinkTracking: 背面鏈結追蹤
+    many_many_ImageTracking: 影像追蹤
+    many_many_LinkTracking: 鏈結追蹤
+    TABMAIN: 主要
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: '這是一個虛擬網頁'
-  SilverStripe\Reports\SideReport:
-    EMPTYPAGES: '空頁'
-    LAST2WEEKS: '網頁在過去兩個禮拜有被更改過'

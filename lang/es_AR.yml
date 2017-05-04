@@ -1,7 +1,4 @@
 es_AR:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Se publicaron %d páginas, %d fallas'
-    PUBLISH_PAGES: Publicar
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS_HELP: 'Permitir la visualización de la sección que contiene el árbol de páginas y el contenido. Ver y editar permisos que se pueden manejar mediante listas desplegables específicas de la página, así como el apartado "Permisos del contenido".'
     PAGENOTEXISTS: 'Esta página no existe'
@@ -11,36 +8,36 @@ es_AR:
   SilverStripe\CMS\Controllers\ContentController:
     DRAFTSITE: 'Sitio borrador'
     LOGGEDINAS: 'Conectado como'
-    LOGIN: Iniciar sesión
-    LOGOUT: 'Desconectarse'
+    LOGIN: 'Iniciar sesión'
+    LOGOUT: Desconectarse
     NOTEWONTBESHOWN: 'Nota: este mensage no se mostrará a sus visitantes'
     NOTLOGGEDIN: 'No conectado'
     PUBLISHEDSITE: 'Sitio publicado'
     VIEWPAGEIN: 'Ver página en:'
   SilverStripe\CMS\Model\ErrorPage:
-    400: '400 - Petición Incorrecta'
-    401: '401 - No estás autorizado'
-    403: '403 - Acceso Restringido'
-    404: '404 - No se encuentra'
-    405: '405 - Método No Permitido'
-    406: '406 - No es Aceptable'
-    407: '407 - Se Requiere Autenticación por Proxy'
-    408: '408 - Petición Excedida en Tiempo'
-    409: '409 - Existe Un Conflicto'
-    410: '410 - Reubicado'
-    411: '411 - Requiere Longitud'
-    412: '412 - Falló Precondición'
-    413: '413 - Elemento Requerido muy Largo'
-    414: '414 - URL Requerida muy Larga'
-    415: '415 - Tipo de Medio no Soportado'
-    416: '416 - No Satisface el Rango de Petición'
-    417: '417 - Falló la Expectativa'
-    500: '500 - Error Interno del Servidor'
-    501: '501 - No Implementado'
-    502: '502 - Puerta de Acceso Incorrecta'
-    503: '503 - Fuera de Servicio'
-    504: '504 - Tiempo Excedido en Puerta de Acceso'
-    505: '505 - Versión HTTP Sin Soporte'
+    0: '400 - Petición Incorrecta'
+    1: '401 - No estás autorizado'
+    2: '403 - Acceso Restringido'
+    3: '404 - No se encuentra'
+    4: '405 - Método No Permitido'
+    5: '406 - No es Aceptable'
+    6: '407 - Se Requiere Autenticación por Proxy'
+    7: '408 - Petición Excedida en Tiempo'
+    8: '409 - Existe Un Conflicto'
+    9: '410 - Reubicado'
+    10: '411 - Requiere Longitud'
+    11: '412 - Falló Precondición'
+    12: '413 - Elemento Requerido muy Largo'
+    13: '414 - URL Requerida muy Larga'
+    14: '415 - Tipo de Medio no Soportado'
+    15: '416 - No Satisface el Rango de Petición'
+    16: '417 - Falló la Expectativa'
+    17: '500 - Error Interno del Servidor'
+    18: '501 - No Implementado'
+    19: '502 - Puerta de Acceso Incorrecta'
+    20: '503 - Fuera de Servicio'
+    21: '504 - Tiempo Excedido en Puerta de Acceso'
+    22: '505 - Versión HTTP Sin Soporte'
     CODE: 'Código de Error'
     DEFAULTERRORPAGECONTENT: '<p>Disculpa, parece que estás tratando de ingresar a una página que no existe.</p><p>Por favor verifica la escritura de la URL que deseas visitar e inténtalo de nuevo.</p>'
     DEFAULTERRORPAGETITLE: 'Página inexistente'
@@ -59,12 +56,12 @@ es_AR:
     ACCESSONLYTHESE: 'Únicamente estas personas (selecciona de la lista)'
     BUTTONCANCELDRAFT: 'Cancelar cambios al borrador'
     BUTTONCANCELDRAFTDESC: 'Eliminar el borrador y regresar a la página actualmente publicada'
-    BUTTONUNPUBLISH: No Publicar
+    BUTTONUNPUBLISH: 'No Publicar'
     BUTTONUNPUBLISHDESC: 'Quitar ésta página del sitio público'
     Comments: Comentarios
     Content: Contenido
     DEFAULTABOUTTITLE: 'de Nosotros'
-    DEFAULTCONTACTTITLE: 'Contactenos'
+    DEFAULTCONTACTTITLE: Contactenos
     DEFAULTHOMETITLE: Inicio
     DEPENDENT_NOTE: 'Las siguientes páginas dependen de esta página. Esto incluye páginas virtuales, páginas de redireccionamiento y páginas con enlaces de contenido.'
     DependtPageColumnLinkType: 'Tipo de enlace'
@@ -79,7 +76,7 @@ es_AR:
     INHERIT: 'heredar de página superior'
     LINKCHANGENOTE: 'Cambiar este enlace de la página también afectará los enlaces de todas las páginas dependientes.'
     MENUTITLE: 'Etiqueta de navegación'
-    METADESC: 'Descripción'
+    METADESC: Descripción
     METAEXTRA: 'Etiquetas Meta Personalizadas'
     PAGELOCATION: 'Ubicación de la página'
     PAGETITLE: 'Nombre de página'
@@ -93,7 +90,7 @@ es_AR:
     SHOWINMENUS: '¿Mostrar en menús?'
     SHOWINSEARCH: '¿Mostrar en búsqueda?'
     TABBEHAVIOUR: Compotamiento
-    TABCONTENT: 'Contenido'
+    TABCONTENT: Contenido
     TABDEPENDENT: 'Páginas dependientes'
     TOPLEVEL: 'Contenido del Sitio (Nivel Superior)'
     URLSegment: 'Segmento del URL'
@@ -104,6 +101,7 @@ es_AR:
     many_many_BackLinkTracking: 'Seguimiento de Backlink'
     many_many_ImageTracking: 'Seguimiento de Imágen'
     many_many_LinkTracking: 'Seguimiento de Enlace'
+    TABMAIN: Principal
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Esta es una página virtual'
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -131,14 +129,3 @@ es_AR:
     GO: Ir
     SEARCH: Buscar
     SearchResults: 'Resultados de la búsqueda'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Páginas con archivos rotos'
-    BROKENREDIRECTORPAGES: 'RedirectorPages apunta a páginas eliminadas'
-    BROKENVIRTUALPAGES: 'VirtualPages apunta a páginas eliminadas'
-    BrokenLinksGroupTitle: 'Informes de enlaces rotos'
-    ContentGroupTitle: 'Informes del contenido'
-    EMPTYPAGES: 'Páginas sin contenido'
-    LAST2WEEKS: 'Páginas editadas en las últimas 2 semanas'
-    ParameterLiveCheckbox: 'Verificar el sitio en vivo'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Permisos de contenido'

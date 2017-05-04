@@ -1,7 +1,4 @@
 bs:
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Korišteno ovdje:'
-    PAGES: strana(ice)
   SilverStripe\CMS\Controllers\CMSMain:
     Create: Kreiraj
     PAGENOTEXISTS: 'Ova stranica ne postoji'
@@ -9,29 +6,29 @@ bs:
     PUBALLFUN: 'Funkcija "Objavi sve"'
     REMOVEDPAGEFROMDRAFT: 'Uklonjeno ''%s'' sa privremenog nacrta stranice'
   SilverStripe\CMS\Model\ErrorPage:
-    400: '400 - Pogrešan zahtjev'
-    401: '401 - Neovlašteno'
-    403: '403 - Zabranjeno'
-    404: '404 - Nije pronađeno'
-    405: '405 - Metoda nije dozvoljena'
-    406: '406 - NIje prihvatljivo'
-    407: '407 - Potrebna proxy ovjera'
-    408: '408 - Zahtjev zaustavljen'
-    409: '409 - Konflikt'
-    410: '410 - Nestalo'
-    411: '411 - Potrebna dužina'
-    412: '412 - Neuspjela pretpostavka'
-    413: '413 - Preveliki entitet zahtjeva'
-    414: '414 - Predug URI zahtjeva'
-    415: '415 - Tip medija nije podržan'
-    416: '416 - Opseg zahtjeva nije zadovoljavajući'
-    417: '417 - Neuspješno očekivanje'
-    500: '500 - INterna greška na serveru'
-    501: '501 - Nije realizirano'
-    502: '502 - Pogrešan gateway'
-    503: '503 - Nedostupan servis '
-    504: '504 - Gateway zaustavljen'
-    505: '505 - HTTP izdanje nije podržano'
+    0: '400 - Pogrešan zahtjev'
+    1: '401 - Neovlašteno'
+    2: '403 - Zabranjeno'
+    3: '404 - Nije pronađeno'
+    4: '405 - Metoda nije dozvoljena'
+    5: '406 - NIje prihvatljivo'
+    6: '407 - Potrebna proxy ovjera'
+    7: '408 - Zahtjev zaustavljen'
+    8: '409 - Konflikt'
+    9: '410 - Nestalo'
+    10: '411 - Potrebna dužina'
+    11: '412 - Neuspjela pretpostavka'
+    12: '413 - Preveliki entitet zahtjeva'
+    13: '414 - Predug URI zahtjeva'
+    14: '415 - Tip medija nije podržan'
+    15: '416 - Opseg zahtjeva nije zadovoljavajući'
+    16: '417 - Neuspješno očekivanje'
+    17: '500 - INterna greška na serveru'
+    18: '501 - Nije realizirano'
+    19: '502 - Pogrešan gateway'
+    20: '503 - Nedostupan servis '
+    21: '504 - Gateway zaustavljen'
+    22: '505 - HTTP izdanje nije podržano'
     CODE: 'Kod greške'
     DEFAULTERRORPAGECONTENT: '<p>Žao nam je, pokušali ste pristupiti stranici koja ne postoji.</p><p>Molimo provjerite da li ste ispravno ukucali URL kojem ste pokušali pristupiti i pokušajte ponovo.</p>'
     DEFAULTERRORPAGETITLE: 'Stranica nije pronađena'
@@ -44,13 +41,13 @@ bs:
     REDIRECTTOPAGE: 'Na stavku na Vašoj web stranici'
     YOURPAGE: 'Stavku na Vašoj web stranici'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: Svi korisnici
+    ACCESSANYONE: 'Svi korisnici'
     ACCESSHEADER: 'Ko može pregledati ovu stavku na mojoj stranici?'
     ACCESSLOGGEDIN: 'Prijavljeni korisnici'
     ACCESSONLYTHESE: 'Samo ovi korisnici (izaberite sa popisa)'
     BUTTONCANCELDRAFT: 'Poništi promjene privremenog nacrta stranice'
     BUTTONCANCELDRAFTDESC: 'Izbrišite Vaš privremeni nacrt stranice i vratite se na trenutno objavljenu stranicu'
-    BUTTONUNPUBLISH: Opozovi objavljivanje
+    BUTTONUNPUBLISH: 'Opozovi objavljivanje'
     BUTTONUNPUBLISHDESC: 'Ukloni ovu stavku sa objavljene stranice'
     DEFAULTABOUTTITLE: 'O nama'
     DEFAULTCONTACTTITLE: 'Kontaktirajte nas'
@@ -61,22 +58,20 @@ bs:
     HASBROKENLINKS: 'Ova stranica ima neispravnih linkova.'
     HTMLEDITORTITLE: Sadržaj
     MENUTITLE: 'Oznaka navigacije'
-    METADESC: 'Opis'
+    METADESC: Opis
     METAEXTRA: 'Prilagođene Meta oznake'
     PAGETITLE: 'Ime stranice'
     PAGETYPE: 'Tip stranice'
     SHOWINMENUS: 'Prikaži u izbornicima?'
     SHOWINSEARCH: 'Prikaži u pretrazi?'
     TABBEHAVIOUR: Ponašanje
-    TABCONTENT: 'Sadržaj'
+    TABCONTENT: Sadržaj
     TOPLEVEL: 'Sadržaj stranice (Glavni nivo)'
+    TABMAIN: Glavno
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Ovo je virtualna stranica'
   SilverStripe\CMS\Reports\BrokenLinksReport:
-    Any: Bilo koji
+    Any: 'Bilo koji'
   SilverStripe\CMS\Search\SearchForm:
     GO: Idi
     SEARCH: Pretraga
-  SilverStripe\Reports\SideReport:
-    EMPTYPAGES: 'Prazne stranice'
-    LAST2WEEKS: 'Izmjenjene stranice u posljednje 2 sedmice'

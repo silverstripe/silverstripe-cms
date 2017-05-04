@@ -1,10 +1,4 @@
 sr_RS@latin:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Objavljeno %d stranica. Nije uspelo objavljivanje %d stranica.'
-    PUBLISH_PAGES: Objavi
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Koristi se na:'
-    PAGES: stranici(a)
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Pristup ''{title}'' sekciji'
     ACCESS_HELP: 'Dozvoljava pregled sekcije koja sadrži stablo stranica i sadržaj. Dozvole za pregled i uređivanje mogu se podesiti putem specifičnih padajućih listi pojedinačnih stranica, kao i putem "Dozvole za sadržaj".'
@@ -16,7 +10,7 @@ sr_RS@latin:
     DUPLICATEDWITHCHILDREN: '''{title}'' i deca uspešno duplirani'
     NEWPAGE: 'Nova {pagetype}'
     PAGENOTEXISTS: 'Ova stranica ne postoji'
-    PAGETYPEANYOPT: Bilo koja
+    PAGETYPEANYOPT: 'Bilo koja'
     PUBALLCONFIRM: 'Objavite svaku stranu na ovom sajtu kopiranjem sadržaj na živ sajt.'
     PUBALLFUN: 'Funkcija „Objavi sve“ '
     PUBPAGES: 'Urađeno: Objavljeno {count} stranica'
@@ -50,7 +44,7 @@ sr_RS@latin:
     INSTALL_SUCCESS: 'Instalacija je uspešno obavljena!'
     LOGGEDINAS: 'Prijavljen kao'
     LOGIN: Prijava
-    LOGOUT: 'Odjava'
+    LOGOUT: Odjava
     NOTEWONTBESHOWN: 'Napomena: ova poruka neće biti prikazana posetiocima'
     NOTLOGGEDIN: 'Niste prijavljeni'
     PUBLISHED: Objaljeno
@@ -62,29 +56,29 @@ sr_RS@latin:
     EMPTY: 'Molimo Vas da unesete segment URL-a ili kliknete na Odustani'
     HelpChars: 'Specijalni karakteri su automatski konvertovani ili uklonjeni.'
   SilverStripe\CMS\Model\ErrorPage:
-    400: '400 - Loš zahtev'
-    401: '401 - Neautorizovano'
-    403: '403 - Zabranjeno'
-    404: '404 - Nije pronađeno'
-    405: '405 - Metoda nije dozvoljena'
-    406: '406 - Nije prihvatljivo'
-    407: '407 - Potrebna identifikacija proksija'
-    408: '408 - Zahtev istekao'
-    409: '409 - Konflikt'
-    410: '410 - Udaljeno'
-    411: '411 - Potrebna dužina'
-    412: '412 - Neuspešan preduslov'
-    413: '413 - Zahtevani entitet prevelik'
-    414: '414 - Zahtevani URI predugačak'
-    415: '415 - Nepodržan tip medija'
-    416: '416  - Traženi opseg nije zadovoljiv'
-    417: '417 - Neuspelo očekivanje'
-    500: '500 - Interna greška servera'
-    501: '501 - Nije implementirano'
-    502: '502 - Pogrešan mrežni prolaz'
-    503: '503 - Servis nije dostupan'
-    504: '504 - Vremenski istek mrežnog prolaza'
-    505: '505 - HTTP verzija nije podržana'
+    0: '400 - Loš zahtev'
+    1: '401 - Neautorizovano'
+    2: '403 - Zabranjeno'
+    3: '404 - Nije pronađeno'
+    4: '405 - Metoda nije dozvoljena'
+    5: '406 - Nije prihvatljivo'
+    6: '407 - Potrebna identifikacija proksija'
+    7: '408 - Zahtev istekao'
+    8: '409 - Konflikt'
+    9: '410 - Udaljeno'
+    10: '411 - Potrebna dužina'
+    11: '412 - Neuspešan preduslov'
+    12: '413 - Zahtevani entitet prevelik'
+    13: '414 - Zahtevani URI predugačak'
+    14: '415 - Nepodržan tip medija'
+    15: '416  - Traženi opseg nije zadovoljiv'
+    16: '417 - Neuspelo očekivanje'
+    17: '500 - Interna greška servera'
+    18: '501 - Nije implementirano'
+    19: '502 - Pogrešan mrežni prolaz'
+    20: '503 - Servis nije dostupan'
+    21: '504 - Vremenski istek mrežnog prolaza'
+    22: '505 - HTTP verzija nije podržana'
     CODE: 'Kôd greške'
     DEFAULTERRORPAGECONTENT: '<p>Izvinjavamo se, izgleda da pokušavate da pristupite stranici koja ne postoji.</p><p>Molimo Vas proverite URL kojem pokušavate da pristupite i pokušajte ponovo.</p>'
     DEFAULTERRORPAGETITLE: 'Stranica nije pronađena'
@@ -111,13 +105,13 @@ sr_RS@latin:
     BUTTONPUBLISHED: Objaljeno
     BUTTONSAVED: Sačuvano.
     BUTTONSAVEPUBLISH: 'Sačuvaj i objavi'
-    BUTTONUNPUBLISH: Poništi objavu
+    BUTTONUNPUBLISH: 'Poništi objavu'
     BUTTONUNPUBLISHDESC: 'Ukloni ovu stranicu iz objavljenog sajta'
     Comments: Komentari
     Content: Sadržaj
     DEFAULTABOUTTITLE: 'O nama'
     DEFAULTCONTACTTITLE: 'Kontaktirajte nas'
-    DEFAULTHOMETITLE: Početna stranica
+    DEFAULTHOMETITLE: 'Početna stranica'
     DEPENDENT_NOTE: 'Sledeće stranice zavise od ove stranice. Ovo podrazumeva vitruelne stranice, stranice za preusmeravanje i stranice sa linkovima na sadržaj.'
     DependtPageColumnLinkType: 'Tip linka'
     DependtPageColumnURL: URL
@@ -135,13 +129,13 @@ sr_RS@latin:
     LASTUPDATED: 'Poslednji put ažurirano'
     LINKCHANGENOTE: 'Promena linka ove stranice uticaće, takođe, na linkove svih podstranica.'
     MENUTITLE: 'Natpis za navigaciju'
-    METADESC: 'Opis'
+    METADESC: Opis
     METADESCHELP: 'Pretraživačke mašine koriste ovaj sadržaj za prikaz rezultata pretraživanja (ipak, on ne utiče na rejting stranice).'
     METAEXTRA: 'Prilagođene meta oznake'
     METAEXTRAHELP: 'HTML oznake za dodatne meta informacije. Na primer, &lt;meta name="audience" content="all" /&gt;'
     MODIFIEDONDRAFTHELP: 'Stranica sadrži neobjavljene izmene'
     MODIFIEDONDRAFTSHORT: Izmenjeno
-    MetadataToggle: Meta podaci
+    MetadataToggle: 'Meta podaci'
     MoreOptions: 'Više opcija'
     OBSOLETECLASS: 'Tip ove stranice: {type} nije više podržan. Ako sačuvate stranicu njen tip će biti promenjen, pa možete izgubiti svoje podatke'
     PAGELOCATION: 'Lokacija stranice'
@@ -179,6 +173,7 @@ sr_RS@latin:
     many_many_BackLinkTracking: 'Praćenje povratnih linkova'
     many_many_ImageTracking: 'Praćenje slika'
     many_many_LinkTracking: 'Praćenje linkova'
+    TABMAIN: Glavno
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Povezana stranica'
     EditLink: izmeni
@@ -186,7 +181,7 @@ sr_RS@latin:
     HEADERWITHLINK: 'Ovo je virtuelna stranica koja kopira sadržaj iz "{title}" ({link})'
     PageTypNotAllowedOnRoot: 'Originalni tip stranice "{type}" nije dozvoljen na vršnom nivou za ovu virtuelnu stranicu'
   SilverStripe\CMS\Reports\BrokenLinksReport:
-    Any: Bilo koji
+    Any: 'Bilo koji'
     BROKENLINKS: 'Izveštaj o oštećenim linkovima'
     CheckSite: 'Proveri sajt'
     CheckSiteDropdownDraft: 'Narct sajta'
@@ -213,14 +208,3 @@ sr_RS@latin:
     GO: Idi
     SEARCH: Pretraži
     SearchResults: 'Rezultati pretraživanja'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Stranice sa oštećenim datotekama'
-    BROKENREDIRECTORPAGES: 'Stranice za preusmerivanje koje pokazuju na izbrisane stranice'
-    BROKENVIRTUALPAGES: 'Virtuelne stranice koja pokazuju na izbrisane stranice'
-    BrokenLinksGroupTitle: 'Izveštaj o oštećenim linkovima'
-    ContentGroupTitle: 'Izveštaji o sadržaju'
-    EMPTYPAGES: 'Prazne stranice'
-    LAST2WEEKS: 'Stranice menjane u zadnje 2 nedelje'
-    ParameterLiveCheckbox: 'Proveri objavljeni sajt'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Dozvolje za sadržaj'

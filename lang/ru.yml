@@ -1,16 +1,8 @@
 ru:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Опубликовано %d страниц, %d ошибок'
-    PUBLISH_PAGES: Опубликовать
-    RESTORE: Восстановить
-    RESTORED_PAGES: 'Восстановлено %d страниц'
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Используется на:'
-    PAGES: страниц(а)
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Доступ к разделу ''{title}'''
     ACCESS_HELP: 'Возможность просматривать раздел, содержащий дерево страниц и контент. Настройка прав просмотра и редактирования производится через выпадающие меню на отдельных страницах, а также через "Права доступа к содержимому".'
-    ARCHIVE: В архив
+    ARCHIVE: 'В архив'
     ARCHIVEDPAGE: 'Страница ''%s'' отправлена в архив'
     AddPageRestriction: 'Внимание: некоторые типы страниц в этом случае недоступны для выбора'
     Cancel: Отмена
@@ -69,7 +61,7 @@ ru:
     DRAFTSITE: 'Черновой сайт'
     INSTALL_SUCCESS: 'Инсталляция прошла успешно!'
     LOGGEDINAS: 'Залогинен как'
-    LOGIN: Вход
+    LOGIN: 'Вход'
     LOGOUT: 'Выход'
     NOTEWONTBESHOWN: 'Внимание: это сообщение не будет показано посетителям'
     NOTLOGGEDIN: 'Не вошли в систему'
@@ -77,7 +69,8 @@ ru:
     PUBLISHEDSITE: 'Опубликованный сайт'
     VIEWPAGEIN: 'Просмотреть страницу в:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: Архивные
+    ARCHIVED: 'Архивные'
+    Edit: Изменить
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Задайте адрес страницы или нажмите "Отмена"'
     HelpChars: 'Спецсимволы автоматически конвертируются или удаляются.'
@@ -110,18 +103,18 @@ ru:
     ADDEDTODRAFTSHORT: Черновик
     APPEARSVIRTUALPAGES: 'Это содержимое также отображается на виртуальных страницах в разделе {title}.'
     ARCHIVEDPAGEHELP: 'Страница удалена с опубликованного сайта и из черновиков'
-    ARCHIVEDPAGESHORT: Зархивировано
+    ARCHIVEDPAGESHORT: 'Зархивировано'
     BUTTONCANCELDRAFT: 'Отменить изменения черновика'
     BUTTONCANCELDRAFTDESC: 'Удалить черновик и вернуться к уже опубликованной странице'
     BUTTONPUBLISHED: Опубликовано
-    BUTTONSAVED: Сохранено
+    BUTTONSAVED: 'Сохранено'
     BUTTONSAVEPUBLISH: 'Сохранить и опубликовать'
-    BUTTONUNPUBLISH: Отмена публикации
+    BUTTONUNPUBLISH: 'Отмена публикации'
     BUTTONUNPUBLISHDESC: 'Удалить эту страницу с опубликованного сайта'
     Comments: Комментарии
-    Content: Наполнение сайта
+    Content: 'Наполнение сайта'
     DEFAULTABOUTTITLE: 'О нас'
-    DEFAULTCONTACTTITLE: 'Контакты'
+    DEFAULTCONTACTTITLE: Контакты
     DEFAULTHOMECONTENT: '<p>Добро пожаловать в SilverStripe! Это стандартная домашняя страница. Вы можете изменить её перейдя по ссылке в <a href="admin/">the CMS</a>.</p><p>Документация для разработчиков доступна <a href="http://docs.silverstripe.org">здесь</a>, видео-уроки по SilverStripe находятся <a href="http://www.silverstripe.org/learn/lessons">здесь</a>.</p>'
     DEFAULTHOMETITLE: Главная
     DEPENDENT_NOTE: 'С этой страницей связаны следующие зависимые страницы (сюда относятся виртуальные страницы, страницы перенаправления и страницы со ссылками на контент).'
@@ -144,7 +137,7 @@ ru:
     LINKSALREADYUNIQUE: '{url} уже уникален'
     LINKSCHANGEDTO: 'изменен {url1} -> {url2}'
     MENUTITLE: 'Метка в навигации'
-    METADESC: 'Описание'
+    METADESC: Описание
     METADESCHELP: 'Поисковые системы используют этот контент для отображения результатов поиска (однако на рейтинг страницы он не влияет).'
     METAEXTRA: 'Пользовательские мета-тэги'
     METAEXTRAHELP: 'HTML-теги для дополнительной мета-информации. Например, &lt;meta name="customName" content="your custom content here" /&gt;'
@@ -170,7 +163,7 @@ ru:
     SHOWINMENUS: 'Показывать в меню?'
     SHOWINSEARCH: 'Показывать в поиске?'
     TABBEHAVIOUR: Настройки
-    TABCONTENT: 'Содержимое'
+    TABCONTENT: Содержимое
     TABDEPENDENT: 'Зависимые страницы'
     TOPLEVEL: 'Содержимое сайта (верхний уровень)'
     URLSegment: 'Адрес страницы'
@@ -188,6 +181,8 @@ ru:
     many_many_BackLinkTracking: 'Отслеживание обратных ссылок'
     many_many_ImageTracking: 'Отслеживание изображений'
     many_many_LinkTracking: 'Отслеживание ссылок'
+    TOPLEVELCREATORGROUPS: 'Редакторы страниц корневого уровня'
+    TABMAIN: Основное
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Связанная страница'
     DESCRIPTION: 'Отображает содержимое другой страницы'
@@ -212,7 +207,7 @@ ru:
     HasBrokenLinkAndFile: 'содержит нерабочую ссылку и поврежденный файл'
     HoverTitleEditPage: 'Править страницу'
     PageName: 'Название страницы'
-    ReasonDropdown: 'Проблема'
+    ReasonDropdown: Проблема
     ReasonDropdownBROKENFILE: 'Поврежденный файл'
     ReasonDropdownBROKENLINK: 'Нерабочая ссылка'
     ReasonDropdownRPBROKENLINK: 'Страница перенаправления указывает на несуществующую страницу'
@@ -236,14 +231,3 @@ ru:
     OPERATION_REMOVE: 'Удалить все версии выбранного (ВНИМАНИЕ: Это действие удалит все выбранные страниц из черновиков и с опубликованного сайта)'
     SELECTALL: 'выбрать все'
     UNSELECTALL: 'снять выделение со всех'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Страницы с ошибочными файлами'
-    BROKENREDIRECTORPAGES: 'Страницы перенаправления, указывающие на удаленные страницы'
-    BROKENVIRTUALPAGES: 'Виртуальные страницы, указывающие на удаленные страницы'
-    BrokenLinksGroupTitle: 'Отчеты об ошибочных ссылках'
-    ContentGroupTitle: 'Отчеты по контенту'
-    EMPTYPAGES: 'Пустые страницы'
-    LAST2WEEKS: 'Страницы, которые редактировались в последние 2 недели'
-    ParameterLiveCheckbox: 'Проверить опубликованный сайт'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Права доступа к содержимому'

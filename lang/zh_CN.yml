@@ -1,47 +1,45 @@
 zh_CN:
   SilverStripe\CMS\Controllers\CMSMain:
-    PAGENOTEXISTS: '该网页不存在'
+    PAGENOTEXISTS: 该网页不存在
     PUBALLCONFIRM: '请发布该站的每一网页，这样，预备发布站上的内容就会复制到正式发布站上'
     PUBALLFUN: '“全部发布“功能'
     REMOVEDPAGEFROMDRAFT: '已从测试站点删除 ''%s'''
   SilverStripe\CMS\Model\ErrorPage:
     CODE: '错误代码'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: '重导网页被生成，却没有什么地方由它来重导。'
-    HEADER: '该页会将用户重新导向另一网页'
-    OTHERURL: '另一网站的URL'
-    REDIRECTTO: '重新导向'
-    REDIRECTTOEXTERNAL: '另一网站'
-    REDIRECTTOPAGE: '您网站中的一个网页'
-    YOURPAGE: '您网站中的网页'
+    HASBEENSETUP: 重导网页被生成，却没有什么地方由它来重导。
+    HEADER: 该页会将用户重新导向另一网页
+    OTHERURL: 另一网站的URL
+    REDIRECTTO: 重新导向
+    REDIRECTTOEXTERNAL: 另一网站
+    REDIRECTTOPAGE: 您网站中的一个网页
+    YOURPAGE: 您网站中的网页
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 任何人
-    ACCESSHEADER: '在我的网站上，谁可以浏览此页？'
-    ACCESSLOGGEDIN: '已登录的用户'
+    ACCESSHEADER: 在我的网站上，谁可以浏览此页？
+    ACCESSLOGGEDIN: 已登录的用户
     ACCESSONLYTHESE: '只有这些人（请从下列清单中选择）'
-    BUTTONCANCELDRAFT: '取消草稿的改动'
-    BUTTONCANCELDRAFTDESC: '将您的草稿恢复到目前正式发布的版本'
+    BUTTONCANCELDRAFT: 取消草稿的改动
+    BUTTONCANCELDRAFTDESC: 将您的草稿恢复到目前正式发布的版本
     BUTTONUNPUBLISH: 撤消发布
     BUTTONUNPUBLISHDESC: '将此页从正式发布站删除'
     DEFAULTABOUTTITLE: '关于我们'
-    EDITANYONE: '任何可以登录CMS的人'
-    EDITHEADER: '谁能在CMS中编辑此页？'
+    EDITANYONE: 任何可以登录CMS的人
+    EDITHEADER: 谁能在CMS中编辑此页？
     EDITONLYTHESE: '只有这些人（请从下列清单中选择）'
-    HASBROKENLINKS: '该页有失效链接。'
-    HTMLEDITORTITLE: 内容
-    INHERIT: '从父页面继承'
+    HASBROKENLINKS: 该页有失效链接。
+    HTMLEDITORTITLE: '内容'
+    INHERIT: 从父页面继承
     MENUTITLE: '导航标签'
     METADESC: '网页描述标签'
     METAEXTRA: '自定义Meta标签'
-    PAGETITLE: '网页名称'
-    PAGETYPE: '网页类型'
-    SHOWINMENUS: '是否出现在菜单中？'
+    PAGETITLE: 网页名称
+    PAGETYPE: 网页类型
+    SHOWINMENUS: 是否出现在菜单中？
     SHOWINSEARCH: '是否包括在搜索结果中？'
     TABBEHAVIOUR: 行为特点
     TABCONTENT: '内容'
     TOPLEVEL: '网站内容（顶层）'
+    TABMAIN: 主要部分
   SilverStripe\CMS\Model\VirtualPage:
-    HEADER: '这是一个虚拟页'
-  SilverStripe\Reports\SideReport:
-    EMPTYPAGES: '空白页'
-    LAST2WEEKS: '在过去2周内编辑过的网页'
+    HEADER: 这是一个虚拟页

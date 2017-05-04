@@ -1,12 +1,4 @@
 it:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Pubblicate %d pagine, %d non a buon fine'
-    PUBLISH_PAGES: Pubblica
-    RESTORE: Ripristina
-    RESTORED_PAGES: '%d pagine ripristinate'
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Usato in:'
-    PAGES: pagina/e
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Eliminate %d pagine da bozza e live, e spedite all''archivio'
     TITLE: 'Annulla la pubblicazione e archivia'
@@ -75,7 +67,7 @@ it:
     INSTALL_SUCCESS: 'Installazione conclusa con successo!'
     LOGGEDINAS: 'Sei collegato come'
     LOGIN: Accedi
-    LOGOUT: 'Disconnetti'
+    LOGOUT: Disconnetti
     NOTEWONTBESHOWN: 'Nota: questo messaggio non verrà mostrato ai visitatori'
     NOTLOGGEDIN: 'Non connesso'
     PUBLISHED: Pubblicato
@@ -83,6 +75,7 @@ it:
     VIEWPAGEIN: 'Mostra pagina in:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archiviato
+    Edit: Modifica
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Perfavore inserisci un segmento URL o clicca cancella'
     HelpChars: 'I caratteri speciali sono automaticamente convertiti o eliminati.'
@@ -127,7 +120,7 @@ it:
     Comments: Commenti
     Content: Contenuto
     DEFAULTABOUTTITLE: 'Chi siamo'
-    DEFAULTCONTACTTITLE: 'Contattaci'
+    DEFAULTCONTACTTITLE: Contattaci
     DEFAULTHOMECONTENT: '<p>Benvenuto in SilverStripe! Questa è la home page di default. Puoi modificare questa pagina direttamente <a href="admin/">dal CMS</a>.</p><p>Puoi accedere alla <a href="http://docs.silverstripe.org">documentazione per gli sviluppatori</a> o partire dalle <a href="http://www.silverstripe.org/learn/lessons">lezioni di SilverStripe</a>.</p>'
     DEFAULTHOMETITLE: Home
     DEPENDENT_NOTE: 'Le seguenti pagine dipendono da questa pagina. Queste includono pagine virtuali, pagine di redirezione e pagine con link nel contenuto.'
@@ -150,7 +143,7 @@ it:
     LINKSALREADYUNIQUE: '{url} è già unica'
     LINKSCHANGEDTO: 'cambiato {url1} -> {url2}'
     MENUTITLE: 'Etichetta di navigazione'
-    METADESC: 'Descrizione'
+    METADESC: Descrizione
     METADESCHELP: 'I motori di ricerca utilizzano questo contenuto per visualizzare i risultati (ma non ne influenza la posizione)'
     METAEXTRA: 'Meta tag personalizzati'
     METAEXTRAHELP: 'Tag HTML per meta addizionali. Per esempio &lt;meta name="nomePersonalizzato" content="Il tuo contenuto personalizzato" /&gt;'
@@ -191,11 +184,13 @@ it:
     VIRTUALPAGEWARNING: 'Perfavore scegli una pagina da linkare e salvala per poter pubblicare questa pagina.'
     VIRTUALPAGEWARNINGSETTINGS: 'Perfavore scegli una pagina da linkare nel campo "Contenuto" per poter pubblicare.'
     Viewers: 'Gruppi di visualizzatori'
-    Visibility: Visibilità
+    Visibility: 'Visibilità'
     has_one_Parent: 'Pagina madre'
     many_many_BackLinkTracking: 'Monitoriaggio link di ritorno'
     many_many_ImageTracking: 'Monitoraggio immagine'
     many_many_LinkTracking: 'Monitoraggio link'
+    TOPLEVELCREATORGROUPS: 'Creatori di primo livello'
+    TABMAIN: Principale
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Pagina collegata'
     DESCRIPTION: 'Mostra il contenuto di un''altra pagina'
@@ -244,14 +239,3 @@ it:
     OPERATION_REMOVE: 'Rimuove le pagine selezionate da tutti gli stage (ATTENZIONE: Distruggerà le pagine selezionate sia da stage che da live)'
     SELECTALL: 'seleziona tutto'
     UNSELECTALL: 'deseleziona tutto'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Pagine con file non funzionanti'
-    BROKENREDIRECTORPAGES: 'Pagina di redirezione che puntano a pagine eliminate'
-    BROKENVIRTUALPAGES: 'Pagine virtuali che puntano a pagine eliminate'
-    BrokenLinksGroupTitle: 'Rapporto link non funzionanti'
-    ContentGroupTitle: 'Rapporti sui contenuti'
-    EMPTYPAGES: 'Pagine vuote'
-    LAST2WEEKS: 'Pagine modificate nelle ultime 2 settimane'
-    ParameterLiveCheckbox: 'Verifica sito pubblicato'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Permessi sui contenuti'

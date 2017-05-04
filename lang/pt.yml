@@ -1,10 +1,4 @@
 pt:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Publicadas %d páginas, %d falhas'
-    PUBLISH_PAGES: Publicar
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Usado em:'
-    PAGES: página(s)
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Acesso à secção ''{title}'''
     ACCESS_HELP: 'Permitir a visualização da árvore de páginas e respectivos conteúdos. Ver e editar permissões que podem ser seleccionadas a partir de uma caixa de selecção, bem como os separadores de "permissões de conteúdo".'
@@ -42,14 +36,14 @@ pt:
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Todas as páginas'
   SilverStripe\CMS\Controllers\ContentController:
-    ARCHIVEDSITE: 'Pré-visualização'
+    ARCHIVEDSITE: Pré-visualização
     ARCHIVEDSITEFROM: 'Arquivar o site de'
-    CMS: Gestor de Conteúdos
+    CMS: 'Gestor de Conteúdos'
     DRAFTSITE: 'Site Rascunho'
     INSTALL_SUCCESS: 'Instalação concluída com sucesso'
     LOGGEDINAS: 'Autenticado como'
     LOGIN: Autenticar
-    LOGOUT: 'Sair'
+    LOGOUT: Sair
     NOTEWONTBESHOWN: 'Nota: Esta mensagem não vai ser apresentada aos visitantes'
     NOTLOGGEDIN: 'Não autenticado'
     PUBLISHEDSITE: 'Site Publicado'
@@ -57,26 +51,26 @@ pt:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Os caracteres especiais são automaticamente convertido ou removidos.'
   SilverStripe\CMS\Model\ErrorPage:
-    401: '401 - Não Autorizado'
-    403: '403 - Proibido'
-    404: '404 - Não Encontrado'
-    405: '405 - Método não permitido'
-    406: '406 - Não aceite'
-    407: '407 - Autenticação Proxy Necessária'
-    408: '408 - Excedeu o tempo de resposta'
-    409: '409 - Conflicto'
-    410: '410 - Desaparecido'
-    411: '411 - Tamanho necessário'
-    412: '412 - Falha nas pré-condições'
-    413: '413 - Pedido demasiado grande'
-    414: '414 - Pedido de URL muito longa'
-    415: '415 - Tipo media não suportado'
-    416: '416 - Pedido solicitado não satisfatório'
-    417: '417 - Falha de expectativa'
-    500: '500 - Erro de Servidor'
-    501: '501 - Não implementado'
-    503: '503 - Serviço Indisponível'
-    505: '505 - Versão HTTP não suportada'
+    0: '401 - Não Autorizado'
+    1: '403 - Proibido'
+    2: '404 - Não Encontrado'
+    3: '405 - Método não permitido'
+    4: '406 - Não aceite'
+    5: '407 - Autenticação Proxy Necessária'
+    6: '408 - Excedeu o tempo de resposta'
+    7: '409 - Conflicto'
+    8: '410 - Desaparecido'
+    9: '411 - Tamanho necessário'
+    10: '412 - Falha nas pré-condições'
+    11: '413 - Pedido demasiado grande'
+    12: '414 - Pedido de URL muito longa'
+    13: '415 - Tipo media não suportado'
+    14: '416 - Pedido solicitado não satisfatório'
+    15: '417 - Falha de expectativa'
+    16: '500 - Erro de Servidor'
+    17: '501 - Não implementado'
+    18: '503 - Serviço Indisponível'
+    19: '505 - Versão HTTP não suportada'
     CODE: 'Código de erro'
     DEFAULTERRORPAGECONTENT: '<p>A página a que tentou aceder não existe.</p><p>Verifique se não existem erros no endereço a que tentou aceder e tente novamente.</p>'
     DEFAULTERRORPAGETITLE: 'Página não encontrada'
@@ -100,13 +94,13 @@ pt:
     APPEARSVIRTUALPAGES: 'Este conteúdo também aparece nas páginas virtuais das secções {title}'
     BUTTONCANCELDRAFT: 'Cancelar alterações do rascunho'
     BUTTONCANCELDRAFTDESC: 'Apagar o seu rascunho e reverter para a versão publicada atualmente'
-    BUTTONUNPUBLISH: Remover do site Publicado
+    BUTTONUNPUBLISH: 'Remover do site Publicado'
     BUTTONUNPUBLISHDESC: 'Remover esta página do site publicado'
     Comments: Comentários
     Content: Conteúdo
     DEFAULTABOUTTITLE: 'Quem Somos'
-    DEFAULTCONTACTTITLE: 'Contacte-nos'
-    DEFAULTHOMETITLE: Página Principal
+    DEFAULTCONTACTTITLE: Contacte-nos
+    DEFAULTHOMETITLE: 'Página Principal'
     DEPENDENT_NOTE: 'As páginas seguintes dependem desta página. Isto inclui páginas virtuais, páginas redireccionadas e páginas com links de conteúdo.'
     DependtPageColumnLinkType: 'Tipo de ligação'
     EDITANYONE: 'Todos que possam efectuar a autenticação no CMS'
@@ -121,7 +115,7 @@ pt:
     LASTUPDATED: 'Última atualização'
     LINKCHANGENOTE: 'Alterar as ligação das páginas vai-se reflectir na ligação das páginas dependentes.'
     MENUTITLE: 'Nome na Navegação'
-    METADESC: 'Descrição'
+    METADESC: Descrição
     METADESCHELP: 'Os motores de pesquisa utilizam este conteúdo para apresentar os seus resultados (no entanto não influencia o ranking do site). '
     METAEXTRA: 'Meta-Tags personalizáveis'
     METAEXTRAHELP: 'HTML tags para informações adicionais. Por exemplo &lt;meta name="nomeDaTag" content="o teu conteúdo personalizado" /&gt;'
@@ -144,7 +138,7 @@ pt:
     SHOWINMENUS: 'Mostrar no Menu?'
     SHOWINSEARCH: 'Mostrar nas pesquisas?'
     TABBEHAVIOUR: Comportamento
-    TABCONTENT: 'Conteúdo'
+    TABCONTENT: Conteúdo
     TABDEPENDENT: 'Páginas Dependentes'
     TOPLEVEL: 'Conteúdo do Site (Nível Superior)'
     URLSegment: 'Segmento de URL'
@@ -155,6 +149,7 @@ pt:
     has_one_Parent: 'Página Parente'
     many_many_ImageTracking: 'Rastreamento de imagens'
     many_many_LinkTracking: 'Rastreamento de links'
+    TABMAIN: Principal
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Página associada'
     EditLink: editar
@@ -188,14 +183,3 @@ pt:
     GO: Ir
     SEARCH: Procurar
     SearchResults: 'Resultados da pesquisa'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Páginas com ficheiros corrompidos'
-    BROKENREDIRECTORPAGES: 'As páginas redireccionadas apontam para páginas apagadas'
-    BROKENVIRTUALPAGES: 'Página virtuais apontam para páginas apagadas'
-    BrokenLinksGroupTitle: 'Relatório de links inválidos'
-    ContentGroupTitle: 'Conteúdo dos relatórios'
-    EMPTYPAGES: 'Páginas sem conteúdo'
-    LAST2WEEKS: 'Páginas editadas nas 2 últimas semanas'
-    ParameterLiveCheckbox: 'Verificar site publicado'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Permissões de conteúdo'

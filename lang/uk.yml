@@ -1,10 +1,4 @@
 uk:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Опубліковано %d сторінок, %d навдач'
-    PUBLISH_PAGES: Опублікувати
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Використовується в:'
-    PAGES: сторінка(и)
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Доступ до секції ''{title}'' '
     ACCESS_HELP: 'Дозволити перегляд розділу, що містить дерево сторінок і зміст. Дозволами на перегляд та редагування, а також окремими дозволами на контент, можна керувати на відповідних сторінках.'
@@ -34,7 +28,7 @@ uk:
     DRAFTSITE: 'Чорновий сайт'
     LOGGEDINAS: 'Залогований як '
     LOGIN: Логін
-    LOGOUT: 'Вилогуватися'
+    LOGOUT: Вилогуватися
     NOTEWONTBESHOWN: 'Примітка: це повідомлення не буде відображатися для відвідувачів'
     NOTLOGGEDIN: 'Не залогований'
     PUBLISHEDSITE: 'Публічний сайт'
@@ -56,7 +50,7 @@ uk:
     REDIRECTTOPAGE: 'Сторінку на Вашому сайті'
     YOURPAGE: 'Сторінки на Вашому сайті'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: Будь-хто
+    ACCESSANYONE: 'Будь-хто'
     ACCESSHEADER: 'Хто може переглядати цю сторінку?'
     ACCESSLOGGEDIN: 'Тільки ті, що увійшли'
     ACCESSONLYTHESE: 'Тільки ці люди (виберіть зі списку)'
@@ -65,12 +59,12 @@ uk:
     APPEARSVIRTUALPAGES: 'Цей вміст також відображається на віртуальній сторінці в розділі {title}.'
     BUTTONCANCELDRAFT: 'Відмінити зміни чернетки'
     BUTTONCANCELDRAFTDESC: 'Видалити черентку та повернутися до теперішнього опублікованого варіанту'
-    BUTTONUNPUBLISH: Відміна публікування
+    BUTTONUNPUBLISH: 'Відміна публікування'
     BUTTONUNPUBLISHDESC: 'Видалити цю сторінку з опублікованого'
     Comments: Коментарі
     Content: Контент
     DEFAULTABOUTTITLE: 'Про нас'
-    DEFAULTCONTACTTITLE: 'Контакти'
+    DEFAULTCONTACTTITLE: Контакти
     DEFAULTHOMETITLE: Домівка
     DEPENDENT_NOTE: 'Наступні сторінки залежать від цієї сторінки. Вони включають віртуальні сторінки, сторінки переадресації і сторінки з посиланням у змісті'
     DependtPageColumnLinkType: 'Тип посилання'
@@ -87,7 +81,7 @@ uk:
     LASTUPDATED: 'Останнє оновлення'
     LINKCHANGENOTE: 'Зміна адреси цієї сторінки вплине на адреси всіх дочірніх сторінок'
     MENUTITLE: 'Мітка навігації'
-    METADESC: 'Опис'
+    METADESC: Опис
     METAEXTRA: 'Власні Мета-теги'
     MODIFIEDONDRAFTHELP: 'Сторінка має неопубліковані зміни'
     MODIFIEDONDRAFTSHORT: Змінений
@@ -108,7 +102,7 @@ uk:
     SHOWINMENUS: 'Показувати у навігації?'
     SHOWINSEARCH: 'Показувати у пошуку?'
     TABBEHAVIOUR: Поводження
-    TABCONTENT: 'Вміст'
+    TABCONTENT: Вміст
     TABDEPENDENT: 'Залежні сторінки'
     TOPLEVEL: 'Вміст Сайту (Верхній Рівень)'
     URLSegment: 'URL адреса'
@@ -122,6 +116,7 @@ uk:
     many_many_BackLinkTracking: 'Відстеження зворотних посилань'
     many_many_ImageTracking: 'Відстеження зображень'
     many_many_LinkTracking: 'Відстеження посилань'
+    TABMAIN: Головна
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Це віртуальна сторінка'
     PageTypNotAllowedOnRoot: 'Тип сторінки "{type}" не допускається на кореневому рівні для цієї віртуальної сторінки'
@@ -151,14 +146,3 @@ uk:
     GO: Уперед
     SEARCH: Пошук
     SearchResults: 'Результати пошуку'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Сторінки з пошкодженими файлами'
-    BROKENREDIRECTORPAGES: 'Сторінки-перенаправлення вказують на видалені сторінки'
-    BROKENVIRTUALPAGES: 'Віртуальні сторінки вказують на видалені сторінки'
-    BrokenLinksGroupTitle: 'Звіт про биті посилання'
-    ContentGroupTitle: 'Звіти про вміст'
-    EMPTYPAGES: 'Порожні сторінки'
-    LAST2WEEKS: 'Сторінки, відредаговані за останні два тижні'
-    ParameterLiveCheckbox: 'Перевірити робочий сайт'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Дозволи вмісту'

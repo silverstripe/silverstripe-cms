@@ -1,8 +1,4 @@
 tr:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISH_PAGES: Yayınla
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    PAGES: sayfa(lar)
   SilverStripe\CMS\Controllers\CMSMain:
     ChoosePageParentMode: 'Sayfanın nereye oluşturulacağını seç'
     ChoosePageType: 'Sayfa tipini seç'
@@ -21,29 +17,29 @@ tr:
     LOGOUT: 'Çıkış Yap'
     NOTEWONTBESHOWN: 'Not: Bu mesaj ziyaretçilerinize gösterilmeyecektir.'
   SilverStripe\CMS\Model\ErrorPage:
-    400: '400 - Hatalı İstek'
-    401: '401 - Erişim Engellenmiş'
-    403: '403 - Yasak'
-    404: '404 - Bulunamadı'
-    405: '405 - Bilinmeyen Metod'
-    406: '406 - İstemciye Uygun Cevap Bulunamadı'
-    407: '407 - Yetkili Sunucu Erişim Hatası'
-    408: '408 - İstek Zaman Aşımı Hatası'
-    409: '409 - Çakışma'
-    410: '410 - En Saçma HTTP Hatası'
-    411: '411 - Uzunluk Belirtilmemiş'
-    412: '412 - Önşart Hatası'
-    413: '413 - İstek Çok Büyük'
-    414: '414 - İstek-URI Çok Uzun'
-    415: '415 - Desteklenmeyen Medya Tipi'
-    416: '416 - İstek Aralığı Tatmin Edici Değil'
-    417: '417 - Beklenti Hatası'
-    500: '500 - Dahili Sunucu Hatası'
-    501: '501 - Uygulanmamış'
-    502: '502 - Hatalı Arayapı'
-    503: '503 - Servis Mevcut Değil'
-    504: '504 - Arayapı Zaman Aşımı'
-    505: '505 - HTTP Versiyonu Desteklenmiyor'
+    0: '400 - Hatalı İstek'
+    1: '401 - Erişim Engellenmiş'
+    2: '403 - Yasak'
+    3: '404 - Bulunamadı'
+    4: '405 - Bilinmeyen Metod'
+    5: '406 - İstemciye Uygun Cevap Bulunamadı'
+    6: '407 - Yetkili Sunucu Erişim Hatası'
+    7: '408 - İstek Zaman Aşımı Hatası'
+    8: '409 - Çakışma'
+    9: '410 - En Saçma HTTP Hatası'
+    10: '411 - Uzunluk Belirtilmemiş'
+    11: '412 - Önşart Hatası'
+    12: '413 - İstek Çok Büyük'
+    13: '414 - İstek-URI Çok Uzun'
+    14: '415 - Desteklenmeyen Medya Tipi'
+    15: '416 - İstek Aralığı Tatmin Edici Değil'
+    16: '417 - Beklenti Hatası'
+    17: '500 - Dahili Sunucu Hatası'
+    18: '501 - Uygulanmamış'
+    19: '502 - Hatalı Arayapı'
+    20: '503 - Servis Mevcut Değil'
+    21: '504 - Arayapı Zaman Aşımı'
+    22: '505 - HTTP Versiyonu Desteklenmiyor'
     CODE: 'Hata kodu'
     DEFAULTERRORPAGECONTENT: '<p>Varolmayan bir sayfaya ulaşmaya çalışıyorsunuz.</p><p>Lütfen ulaşmak istediğiniz URL''i kontrol edip tekrar deneyiniz.</p>'
     DEFAULTERRORPAGETITLE: 'Sayfa bulunamadı'
@@ -63,12 +59,12 @@ tr:
     ADDEDTODRAFTSHORT: Taslak
     BUTTONCANCELDRAFT: 'Taslak değikliklerini iptal et'
     BUTTONCANCELDRAFTDESC: 'Taslağı sil ve şu an yayında olan sayfaya geri döndür'
-    BUTTONUNPUBLISH: Yayından kaldır
+    BUTTONUNPUBLISH: 'Yayından kaldır'
     BUTTONUNPUBLISHDESC: 'Bu sayfayı yayından kaldır'
     Comments: Yorumlar
     Content: İçerik
-    DEFAULTABOUTTITLE: 'Hakkımızda'
-    DEFAULTCONTACTTITLE: 'İletişim'
+    DEFAULTABOUTTITLE: Hakkımızda
+    DEFAULTCONTACTTITLE: İletişim
     DEFAULTHOMETITLE: Anasayfa
     DependtPageColumnLinkType: 'Link tipi'
     EDITANYONE: 'CMS''e giriş yapabilen herkes'
@@ -80,7 +76,7 @@ tr:
     INHERIT: 'Üst sayfadan kalan'
     LASTUPDATED: 'Son Güncellenen'
     MENUTITLE: 'Navigasyon etiketi'
-    METADESC: 'Tanım'
+    METADESC: Tanım
     METAEXTRA: 'Kişisel Meta Etiketleri'
     MODIFIEDONDRAFTSHORT: Değiştirilmiş
     PAGETITLE: 'Sayfa ismi'
@@ -94,7 +90,7 @@ tr:
     SHOWINMENUS: 'Menülerde gösterilsin mi?'
     SHOWINSEARCH: 'Aramalarda gösterilsin mi?'
     TABBEHAVIOUR: Davranış
-    TABCONTENT: 'İçerik'
+    TABCONTENT: İçerik
     TOPLEVEL: 'Site İçeriği (Üst Seviye)'
     URLSegment: 'URL Kısmı'
     Viewers: 'Görüntüleyici Grupları'
@@ -103,6 +99,7 @@ tr:
     many_many_BackLinkTracking: 'Geri bağlantı izi'
     many_many_ImageTracking: 'İmaj izi'
     many_many_LinkTracking: 'Bağlantı izi'
+    TABMAIN: 'Ana (Esas)'
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Bu sanal bir sayfadır'
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -114,10 +111,3 @@ tr:
   SilverStripe\CMS\Search\SearchForm:
     GO: Git
     SEARCH: Ara
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Kırık link bulunan sayfalar'
-    BrokenLinksGroupTitle: 'Kırık linki rapor et'
-    ContentGroupTitle: 'İçerik raporları'
-    EMPTYPAGES: 'Boş sayfalar'
-    LAST2WEEKS: 'Son 2 haftada düzenlenmiş sayfalar'
-    ParameterLiveCheckbox: 'Yayındaki siteyi kontrol et'
