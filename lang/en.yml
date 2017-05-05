@@ -1,23 +1,16 @@
 en:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Published %d pages, %d failures'
-    PUBLISH_PAGES: Publish
-    RESTORE: Restore
-    RESTORED_PAGES: 'Restored %d pages'
-    UNPUBLISHED_PAGES: 'Unpublished %d pages'
-    UNPUBLISH_PAGES: Unpublish
-  SilverStripe\Admin\LeftAndMain:
-    CANT_REORGANISE: 'You do not have permission to alter Top level pages. Your change was not saved.'
-    PLEASESAVE: 'Please Save Page: This page could not be updated because it hasn''t been saved yet.'
-    REORGANISATIONSUCCESSFUL: 'Reorganised the site tree successfully.'
-    ShowAsList: 'show as list'
-    TooManyPages: 'Too many pages'
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Used on:'
-    PAGES: page(s)
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Deleted %d pages from draft and live, and sent them to the archive'
     TITLE: 'Unpublish and archive'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: 'Published %d pages, %d failures'
+    PUBLISH_PAGES: Publish
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Restore
+    RESTORED_PAGES: 'Restored %d pages'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISHED_PAGES: 'Unpublished %d pages'
+    UNPUBLISH_PAGES: Unpublish
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Access to ''{title}'' section'
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
@@ -31,6 +24,7 @@ en:
     ArchiveWarningWithCampaigns: 'Warning: This page will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?'
     ArchiveWarningWithChildren: 'Warning: This page and all of its child pages will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?'
     ArchiveWarningWithChildrenAndCampaigns: 'Warning: This page and all of its child pages will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?'
+    CANT_REORGANISE: 'You do not have permission to alter Top level pages. Your change was not saved.'
     CLEAR_FILTER: Clear
     Cancel: Cancel
     ChoosePageParentMode: 'Choose where to create this page'
@@ -45,6 +39,7 @@ en:
     PAGES: 'Page status'
     PAGETYPEANYOPT: Any
     PAGETYPEOPT: 'Page type'
+    PLEASESAVE: 'Please Save Page: This page could not be updated because it hasn''t been saved yet.'
     PUBALLCONFIRM: 'Please publish every page in the site, copying content stage to live'
     PUBALLFUN: '"Publish All" functionality'
     PUBALLFUN2: 'Pressing this button will do the equivalent of going to every page and pressing "publish".  It''s intended to be used after there have been massive edits of the content, such as when the site was first built.'
@@ -53,6 +48,7 @@ en:
     PageAdded: 'Successfully created page'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: 'Removed ''%s'' from the draft site'
+    REORGANISATIONSUCCESSFUL: 'Reorganised the site tree successfully.'
     RESTORE: 'Restore draft'
     RESTORED: 'Restored ''{title}'' successfully'
     RESTORE_DESC: 'Restore the archived version to draft'
@@ -63,6 +59,8 @@ en:
     ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
     SAVED: 'Saved ''{title}'' successfully.'
     SAVEDRAFT: 'Save draft'
+    SHOW_AS_LIST: 'show as list'
+    TOO_MANY_PAGES: 'Too many pages'
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
@@ -295,6 +293,8 @@ en:
     many_many_ImageTracking: 'Image Tracking'
     many_many_LinkTracking: 'Link Tracking'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
+    BACKLINKCOUNT: 'Used on:'
+    PAGES: page(s)
     TITLE_INDEX: '#'
     TITLE_TYPE: Type
     TITLE_USED_ON: 'Used on'
@@ -310,6 +310,10 @@ en:
       other: '{count} Virtual Pages'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtual Page'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 'Pages with broken files'
+    BrokenLinksGroupTitle: 'Broken links reports'
+    ParameterLiveCheckbox: 'Check live site'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Any
     BROKENLINKS: 'Broken links report'
@@ -332,6 +336,20 @@ en:
     ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
     RedirectorNonExistent: 'redirector page pointing to non-existent page'
     VirtualPageNonExistent: 'virtual page pointing to non-existent page'
+  SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
+    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
+    BrokenLinksGroupTitle: 'Broken links reports'
+    ParameterLiveCheckbox: 'Check live site'
+  SilverStripe\CMS\Reports\BrokenVirtualPagesReport:
+    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
+    BrokenLinksGroupTitle: 'Broken links reports'
+    ParameterLiveCheckbox: 'Check live site'
+  SilverStripe\CMS\Reports\EmptyPagesReport:
+    ContentGroupTitle: 'Content reports'
+    EMPTYPAGES: 'Pages with no content'
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    ContentGroupTitle: 'Content reports'
+    LAST2WEEKS: 'Pages edited in the last 2 weeks'
   SilverStripe\CMS\Search\SearchForm:
     FILTERDATEFROM: From
     FILTERDATETO: To
@@ -350,14 +368,3 @@ en:
     OPERATION_REMOVE: 'Remove selected from all stages (WARNING: Will destroy all selected pages from both stage and live)'
     SELECTALL: 'select all'
     UNSELECTALL: 'unselect all'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Pages with broken files'
-    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
-    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
-    BrokenLinksGroupTitle: 'Broken links reports'
-    ContentGroupTitle: 'Content reports'
-    EMPTYPAGES: 'Pages with no content'
-    LAST2WEEKS: 'Pages edited in the last 2 weeks'
-    ParameterLiveCheckbox: 'Check live site'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Content permissions'
