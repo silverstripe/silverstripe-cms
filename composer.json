@@ -44,5 +44,6 @@
       "SilverStripe\\CMS\\Tests\\Behaviour\\": "tests/behat/src/"
     }
   },
+  "prefer-stable": true,
   "minimum-stability": "dev"
 }
