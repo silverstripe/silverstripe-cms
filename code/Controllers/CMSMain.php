@@ -42,7 +42,6 @@ use SilverStripe\Forms\GridField\GridFieldSortableHeader;
 use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\LabelField;
 use SilverStripe\Forms\LiteralField;
-use SilverStripe\Forms\ResetFormAction;
 use SilverStripe\Forms\TabSet;
 use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\ArrayList;
@@ -836,7 +835,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $actions = new FieldList(
             FormAction::create('doSearch', _t('SilverStripe\\CMS\\Controllers\\CMSMain.APPLY_FILTER', 'Search'))
                 ->addExtraClass('btn btn-primary'),
-            ResetFormAction::create('clear', _t('SilverStripe\\CMS\\Controllers\\CMSMain.CLEAR_FILTER', 'Clear'))
+            FormAction::create('clear', _t('SilverStripe\\CMS\\Controllers\\CMSMain.CLEAR_FILTER', 'Clear'))
+                ->setAttribute('type', 'reset')
                 ->addExtraClass('btn btn-secondary')
         );
 
