@@ -42,6 +42,3 @@ zh_CN:
     TOPLEVEL: '网站内容（顶层）'
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: '这是一个虚拟页'
-  SilverStripe\Reports\SideReport:
-    EMPTYPAGES: '空白页'
-    LAST2WEEKS: '在过去2周内编辑过的网页'

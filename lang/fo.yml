@@ -5,9 +5,9 @@ fo:
     PUBALLFUN: '"Ger alt alment" funka'
     REMOVEDPAGEFROMDRAFT: 'Strikaði ''%s'' frá kladdu heimasíðuni'
   SilverStripe\CMS\Model\ErrorPage:
-    404: '404 - Ikki funnin'
-    411: '411 - Longd er kravd'
     CODE: 'Feilkota'
+    CODE_404: '404 - Ikki funnin'
+    CODE_411: '411 - Longd er kravd'
     DEFAULTERRORPAGETITLE: 'Síðan var ikki funnin'
   SilverStripe\CMS\Model\RedirectorPage:
     REDIRECTTO: 'Víðarisend til'
@@ -46,6 +46,3 @@ fo:
   SilverStripe\CMS\Search\SearchForm:
     GO: Víðari
     SEARCH: Leita
-  SilverStripe\Reports\SideReport:
-    EMPTYPAGES: 'Tómar síður'
-    LAST2WEEKS: 'Síður broyttar seinastu 2 vikurnar'

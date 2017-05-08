@@ -78,3 +78,4 @@ mappings:
   CMSSIteTreeFilter_PublishedPages: SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages
   URLSegmentField: SilverStripe\CMS\Forms\SiteTreeURLSegmentField
   CMSPagesController_Tools_ss: SilverStripe\CMS\Controllers\CMSPagesController
+  LeftAndMain: SilverStripe\Admin\LeftAndMain

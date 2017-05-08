@@ -1,10 +1,4 @@
 pt:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Publicadas %d páginas, %d falhas'
-    PUBLISH_PAGES: Publicar
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Usado em:'
-    PAGES: página(s)
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Acesso à secção ''{title}'''
     ACCESS_HELP: 'Permitir a visualização da árvore de páginas e respectivos conteúdos. Ver e editar permissões que podem ser seleccionadas a partir de uma caixa de selecção, bem como os separadores de "permissões de conteúdo".'
@@ -57,27 +51,27 @@ pt:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Os caracteres especiais são automaticamente convertido ou removidos.'
   SilverStripe\CMS\Model\ErrorPage:
-    401: '401 - Não Autorizado'
-    403: '403 - Proibido'
-    404: '404 - Não Encontrado'
-    405: '405 - Método não permitido'
-    406: '406 - Não aceite'
-    407: '407 - Autenticação Proxy Necessária'
-    408: '408 - Excedeu o tempo de resposta'
-    409: '409 - Conflicto'
-    410: '410 - Desaparecido'
-    411: '411 - Tamanho necessário'
-    412: '412 - Falha nas pré-condições'
-    413: '413 - Pedido demasiado grande'
-    414: '414 - Pedido de URL muito longa'
-    415: '415 - Tipo media não suportado'
-    416: '416 - Pedido solicitado não satisfatório'
-    417: '417 - Falha de expectativa'
-    500: '500 - Erro de Servidor'
-    501: '501 - Não implementado'
-    503: '503 - Serviço Indisponível'
-    505: '505 - Versão HTTP não suportada'
     CODE: 'Código de erro'
+    CODE_401: '401 - Não Autorizado'
+    CODE_403: '403 - Proibido'
+    CODE_404: '404 - Não Encontrado'
+    CODE_405: '405 - Método não permitido'
+    CODE_406: '406 - Não aceite'
+    CODE_407: '407 - Autenticação Proxy Necessária'
+    CODE_408: '408 - Excedeu o tempo de resposta'
+    CODE_409: '409 - Conflicto'
+    CODE_410: '410 - Desaparecido'
+    CODE_411: '411 - Tamanho necessário'
+    CODE_412: '412 - Falha nas pré-condições'
+    CODE_413: '413 - Pedido demasiado grande'
+    CODE_414: '414 - Pedido de URL muito longa'
+    CODE_415: '415 - Tipo media não suportado'
+    CODE_416: '416 - Pedido solicitado não satisfatório'
+    CODE_417: '417 - Falha de expectativa'
+    CODE_500: '500 - Erro de Servidor'
+    CODE_501: '501 - Não implementado'
+    CODE_503: '503 - Serviço Indisponível'
+    CODE_505: '505 - Versão HTTP não suportada'
     DEFAULTERRORPAGECONTENT: '<p>A página a que tentou aceder não existe.</p><p>Verifique se não existem erros no endereço a que tentou aceder e tente novamente.</p>'
     DEFAULTERRORPAGETITLE: 'Página não encontrada'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Desculpe, ocorreu um problema no processamento do seu pedido</p>'
@@ -188,14 +182,3 @@ pt:
     GO: Ir
     SEARCH: Procurar
     SearchResults: 'Resultados da pesquisa'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Páginas com ficheiros corrompidos'
-    BROKENREDIRECTORPAGES: 'As páginas redireccionadas apontam para páginas apagadas'
-    BROKENVIRTUALPAGES: 'Página virtuais apontam para páginas apagadas'
-    BrokenLinksGroupTitle: 'Relatório de links inválidos'
-    ContentGroupTitle: 'Conteúdo dos relatórios'
-    EMPTYPAGES: 'Páginas sem conteúdo'
-    LAST2WEEKS: 'Páginas editadas nas 2 últimas semanas'
-    ParameterLiveCheckbox: 'Verificar site publicado'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Permissões de conteúdo'

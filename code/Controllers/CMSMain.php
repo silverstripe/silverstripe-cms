@@ -654,7 +654,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             return $this->httpError(
                 403,
                 _t(
-                    'SilverStripe\\Admin\\LeftAndMain.CANT_REORGANISE',
+                    __CLASS__.'.CANT_REORGANISE',
                     "You do not have permission to rearange the site tree. Your change was not saved."
                 )
             );
@@ -674,7 +674,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             return $this->httpError(
                 500,
                 _t(
-                    'SilverStripe\\Admin\\LeftAndMain.PLEASESAVE',
+                    __CLASS__.'.PLEASESAVE',
                     "Please Save Page: This page could not be updated because it hasn't been saved yet."
                 )
             );
@@ -686,7 +686,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             return $this->httpError(
                 403,
                 _t(
-                    'SilverStripe\\Admin\\LeftAndMain.CANT_REORGANISE',
+                    __CLASS__.'.CANT_REORGANISE',
                     "You do not have permission to alter Top level pages. Your change was not saved."
                 )
             );
@@ -718,7 +718,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
             $this->getResponse()->addHeader(
                 'X-Status',
-                rawurlencode(_t('SilverStripe\\Admin\\LeftAndMain.REORGANISATIONSUCCESSFUL', 'Reorganised the site tree successfully.'))
+                rawurlencode(_t(__CLASS__.'.REORGANISATIONSUCCESSFUL', 'Reorganised the site tree successfully.'))
             );
         }
 
@@ -746,7 +746,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
             $this->getResponse()->addHeader(
                 'X-Status',
-                rawurlencode(_t('SilverStripe\\Admin\\LeftAndMain.REORGANISATIONSUCCESSFUL', 'Reorganised the site tree successfully.'))
+                rawurlencode(_t(__CLASS__.'.REORGANISATIONSUCCESSFUL', 'Reorganised the site tree successfully.'))
             );
         }
 

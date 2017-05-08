@@ -1,10 +1,4 @@
 uk:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Опубліковано %d сторінок, %d навдач'
-    PUBLISH_PAGES: Опублікувати
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Використовується в:'
-    PAGES: сторінка(и)
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Доступ до секції ''{title}'' '
     ACCESS_HELP: 'Дозволити перегляд розділу, що містить дерево сторінок і зміст. Дозволами на перегляд та редагування, а також окремими дозволами на контент, можна керувати на відповідних сторінках.'
@@ -151,14 +145,3 @@ uk:
     GO: Уперед
     SEARCH: Пошук
     SearchResults: 'Результати пошуку'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Сторінки з пошкодженими файлами'
-    BROKENREDIRECTORPAGES: 'Сторінки-перенаправлення вказують на видалені сторінки'
-    BROKENVIRTUALPAGES: 'Віртуальні сторінки вказують на видалені сторінки'
-    BrokenLinksGroupTitle: 'Звіт про биті посилання'
-    ContentGroupTitle: 'Звіти про вміст'
-    EMPTYPAGES: 'Порожні сторінки'
-    LAST2WEEKS: 'Сторінки, відредаговані за останні два тижні'
-    ParameterLiveCheckbox: 'Перевірити робочий сайт'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Дозволи вмісту'

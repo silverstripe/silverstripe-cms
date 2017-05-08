@@ -1,14 +1,4 @@
 fi:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Julkaistu %d sivua, %d epäonnistumista'
-    PUBLISH_PAGES: Julkaise
-    RESTORE: Palauta
-    RESTORED_PAGES: 'Palautettu %d sivua'
-    UNPUBLISHED_PAGES: 'Poistettiin näkyvistä %d sivua'
-    UNPUBLISH_PAGES: Poista näkyvistä
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Linkitetty:'
-    PAGES: sivu(t)
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Poistettiin %d sivua luonnoksista ja julkaistuista sivuista sekä arkistoitiin'
     TITLE: 'Poista näkyviltä ja arkistoi'
@@ -19,6 +9,10 @@ fi:
     ARCHIVE: Arkistoi
     ARCHIVEDPAGE: 'Arkistoitiin sivu ''%s'''
     AddPageRestriction: 'Huomio: Tietyt sivutyypit eivät ole sallittuja valitun sivutyypin alle.'
+    ArchiveWarning: 'Varoitus: Tämä sivu poistetaan julkaisusta ennen arkistointia.\n\nHaluatko varmasti jatkaa?'
+    ArchiveWarningWithCampaigns: 'Varoitus: Tämä sivu poistetaan julkaisusta sekä poistetaan liitetyt kampanjat {NumCampaigns} ennen arkistointia.\n\nHaluatko varmasti jatkaa?'
+    ArchiveWarningWithChildren: 'Varoitus: Tämä sivu ja kaikki sen alasivut poistetaan julkaisusta ennen arkistointia.\n\nHaluatko varmasti jatkaa?'
+    ArchiveWarningWithChildrenAndCampaigns: 'Varoitus: Tämä sivu ja kaikki sen alasivut poistetaan julkaisusta sekä poistetaan liitetyt kampanjat {NumCampaigns} ennen arkistointia.\n\nHaluatko varmasti jatkaa?'
     CLEAR_FILTER: Tyhjennä
     Cancel: Peruuta
     ChoosePageParentMode: 'Valitse kohde, minne sivu luodaan'
@@ -109,6 +103,9 @@ fi:
     DEFAULTSERVERERRORPAGETITLE: 'Palvelinvirhe'
     DESCRIPTION: 'Omat virheilmoitukset (sivuille, kuten "Sivua ei löytynyt")'
     PLURALNAME: 'Virhesivut'
+    PLURALS:
+      one: 'Virhesivu'
+      other: '{count} Virhesivua'
     SINGULARNAME: 'Virhesivu'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Edelleenohjaa toiselle sisäiselle sivulle tai ulkoiseen URL-osoitteeseen'
@@ -116,6 +113,9 @@ fi:
     HEADER: 'Tämä sivu ohjaa käyttäjän toiselle sivulle'
     OTHERURL: 'Toisen verkkosivuston URL-osoite'
     PLURALNAME: 'Uudelleenohjaavat sivut'
+    PLURALS:
+      one: 'Uudelleenohjaava sivu'
+      other: '{count} Uudelleenohjaavaa sivua'
     REDIRECTTO: 'Minne ohjataan?'
     REDIRECTTOEXTERNAL: 'Muu verkkosivusto'
     REDIRECTTOPAGE: 'Sivu verkkosivustollasi'
@@ -188,6 +188,9 @@ fi:
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Hallitse sisällön käyttöoikeuksia'
     PERMISSION_GRANTACCESS_HELP: 'Salli sivukohtaisten pääsyrajoitusten asettaminen "Sivut" -osiossa.'
     PLURALNAME: Sivut
+    PLURALS:
+      one: 'Sivu'
+      other: '{count} Sivua'
     PageTypNotAllowedOnRoot: '"{type}" -sivutyyppi ei ole sallittu päätasolla'
     PageTypeNotAllowed: '"{type}" -sivutyyppi ei ole sallittu tämän sivun alasivuna.'
     REMOVE_INSTALL_WARNING: 'Varoitus: Turvallisuussyistä sinun tulisi poistaa install.php-tiedosto SilverStripe-asennuskansiosta.'
@@ -222,6 +225,9 @@ fi:
     HEADER: 'Tämä on virtuaalisivu'
     HEADERWITHLINK: 'Tämä on virtuaalisivu, joka kopioi sisällön kohteesta "{title}" ({link})'
     PLURALNAME: 'Virtuaalisivut'
+    PLURALS:
+      one: 'Virtuaali sivu'
+      other: '{count} Virtuaali sivua'
     PageTypNotAllowedOnRoot: 'Alkuperäinen sivutyyppi "{type}" ei ole sallittu tämän virtuaalisen sivun päätasolla'
     SINGULARNAME: 'Virtuaalisivu'
   SilverStripe\CMS\Reports\BrokenLinksReport:
@@ -264,14 +270,3 @@ fi:
     OPERATION_REMOVE: 'Poista kaikki valitut kaikilta julkaisutasoilta (VAROITUS: Tämä poistaa kaikki julkaisua odottavat sekä julkaistut sivut)'
     SELECTALL: 'valitse kaikki'
     UNSELECTALL: 'poista valinta kaikista'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Sivut joissa rikkinäisiä tiedostoja'
-    BROKENREDIRECTORPAGES: 'Uudelleenohjatut sivut, jotka osoittavat poistettuihin sivuhin'
-    BROKENVIRTUALPAGES: 'Virtuaaliset sivut, jotka osoittavat poistettuihin sivuihin'
-    BrokenLinksGroupTitle: 'Rikkinäisten linkkien raportit'
-    ContentGroupTitle: 'Sisältöraportit'
-    EMPTYPAGES: 'Sivut, joilla ei ole sisältöä'
-    LAST2WEEKS: 'Sivut, joita on muokattu viimeisen kahden viikon aikana'
-    ParameterLiveCheckbox: 'Tarkista live-sivusto'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Sisällön käyttöoikeudet'

@@ -2,9 +2,9 @@
 	<table class="table">
 		<thead>
 		<tr>
-			<th><% _t('SiteTreeFileExtension.TITLE_INDEX', '#') %></th>
-			<th><% _t('SiteTreeFileExtension.TITLE_USED_ON', 'Used on') %></th>
-			<th><% _t('SiteTreeFileExtension.TITLE_TYPE', 'Type') %></th>
+			<th><% _t('SilverStripe\CMS\Model\SiteTreeFileExtension.TITLE_INDEX', '#') %></th>
+			<th><% _t('SilverStripe\CMS\Model\SiteTreeFileExtension.TITLE_USED_ON', 'Used on') %></th>
+			<th><% _t('SilverStripe\CMS\Model\SiteTreeFileExtension.TITLE_TYPE', 'Type') %></th>
 		</tr>
 		</thead>
 		<tbody>

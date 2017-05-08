@@ -1,14 +1,4 @@
 hr:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Objavljeno %d stranica, %d neuspješno'
-    PUBLISH_PAGES: Objavi
-    RESTORE: Povrati
-    RESTORED_PAGES: 'Vraćeno ''%d'' stranica'
-    UNPUBLISHED_PAGES: 'Neobjavljene %d stranice'
-    UNPUBLISH_PAGES: Odjavi
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Korišteno na:'
-    PAGES: stranica(e)
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Obrisano %d stranica u statusu nacrt i objavljeno, i poslani u arhivu'
     TITLE: 'Odjavi i arhiviraj'
@@ -255,14 +245,3 @@ hr:
     OPERATION_REMOVE: 'Ukloni označeno sa svih stanja (UPOZORENJE: to će uništiti sve označene stranice s nacrta i objavljeno)'
     SELECTALL: 'označi sve'
     UNSELECTALL: 'odznači sve'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Stranice s neispravnim datotekama'
-    BROKENREDIRECTORPAGES: 'Preusmjeravanje pokazuje na obrisane stranice'
-    BROKENVIRTUALPAGES: 'Virtualne stranice pokazuje na obrisane stranice'
-    BrokenLinksGroupTitle: 'Izvješće prekinutih linkova'
-    ContentGroupTitle: 'Sadržajni izvještaji'
-    EMPTYPAGES: 'Stranice bez sadržaja'
-    LAST2WEEKS: 'Stranice mijenjane u zadnja 2 tjedna'
-    ParameterLiveCheckbox: 'Pregledaj objavljenu stranicu'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Sadržajne dozvole'

@@ -1,7 +1,7 @@
 ms:
   SilverStripe\CMS\Model\ErrorPage:
-    417: '417 - kegagalan expectation'
     CODE: 'Kod kesilapan'
+    CODE_417: '417 - kegagalan expectation'
     DEFAULTERRORPAGECONTENT: '<p>Minta maaf, rupa-rupanya anda ingin mencapai halaman yang tidak wujud</p><p>Sila semak ejaan URL yang anda ingin mencapai dan cuba semula</p>'
     DEFAULTERRORPAGETITLE: 'Halaman tidak wujud'
   SilverStripe\CMS\Model\RedirectorPage:

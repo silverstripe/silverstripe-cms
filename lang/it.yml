@@ -1,12 +1,4 @@
 it:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Pubblicate %d pagine, %d non a buon fine'
-    PUBLISH_PAGES: Pubblica
-    RESTORE: Ripristina
-    RESTORED_PAGES: '%d pagine ripristinate'
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Usato in:'
-    PAGES: pagina/e
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Eliminate %d pagine da bozza e live, e spedite all''archivio'
     TITLE: 'Annulla la pubblicazione e archivia'
@@ -244,14 +236,3 @@ it:
     OPERATION_REMOVE: 'Rimuove le pagine selezionate da tutti gli stage (ATTENZIONE: Distruggerà le pagine selezionate sia da stage che da live)'
     SELECTALL: 'seleziona tutto'
     UNSELECTALL: 'deseleziona tutto'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Pagine con file non funzionanti'
-    BROKENREDIRECTORPAGES: 'Pagina di redirezione che puntano a pagine eliminate'
-    BROKENVIRTUALPAGES: 'Pagine virtuali che puntano a pagine eliminate'
-    BrokenLinksGroupTitle: 'Rapporto link non funzionanti'
-    ContentGroupTitle: 'Rapporti sui contenuti'
-    EMPTYPAGES: 'Pagine vuote'
-    LAST2WEEKS: 'Pagine modificate nelle ultime 2 settimane'
-    ParameterLiveCheckbox: 'Verifica sito pubblicato'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Permessi sui contenuti'

@@ -1,10 +1,4 @@
 hu:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: '%d oldal publikálva, %d hibás'
-    PUBLISH_PAGES: Publikálni
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Felhasználva:'
-    PAGES: oldal(ak)
   SilverStripe\CMS\Controllers\CMSMain:
     Cancel: Mégsem
     ChoosePageParentMode: 'Adja meg az oldal létrehozásának helyét'
@@ -60,18 +54,18 @@ hu:
     EMPTY: 'Írjon be egy URL szegmenst, vagy kattitson a "mégse" feliratra'
     HelpChars: 'A speciális karakterek automatikusan konvertálódnak vagy törlődnek.'
   SilverStripe\CMS\Model\ErrorPage:
-    400: '400 - Hibás kérés'
-    401: '401 - Jogosulatlan kérés'
-    403: '403 - Tiltott hozzáférés'
-    404: '404 - Az oldal nem létezik'
-    405: '405 - Tiltott Művelet'
-    406: '406 - Elfogadhatatlan művelet'
-    407: '407 - Proxy azonosítás szükséges'
-    408: '408 - Időtullépés'
-    409: '409 - Konfliktus'
-    410: '410 - Kapcsolat bontva'
-    411: '411 - Hossz kötelező'
     CODE: 'Hibakód'
+    CODE_400: '400 - Hibás kérés'
+    CODE_401: '401 - Jogosulatlan kérés'
+    CODE_403: '403 - Tiltott hozzáférés'
+    CODE_404: '404 - Az oldal nem létezik'
+    CODE_405: '405 - Tiltott Művelet'
+    CODE_406: '406 - Elfogadhatatlan művelet'
+    CODE_407: '407 - Proxy azonosítás szükséges'
+    CODE_408: '408 - Időtullépés'
+    CODE_409: '409 - Konfliktus'
+    CODE_410: '410 - Kapcsolat bontva'
+    CODE_411: '411 - Hossz kötelező'
     DEFAULTERRORPAGETITLE: 'Az oldal nem található'
     DEFAULTSERVERERRORPAGETITLE: 'Szerver hiba'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -181,14 +175,3 @@ hu:
     GO: Mehet
     SEARCH: Keresés
     SearchResults: 'Találatok'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Oldalak hibás fájl hivatkozásokkal'
-    BROKENREDIRECTORPAGES: 'RedirectorPage-ek törölt oldalakra hivatkoznak'
-    BROKENVIRTUALPAGES: 'VirtualPages törölt oldalakra mutatnak'
-    BrokenLinksGroupTitle: 'Hibás linkek listája'
-    ContentGroupTitle: 'Tartalommal kapcsolatos riportok'
-    EMPTYPAGES: 'Üres oldalak'
-    LAST2WEEKS: 'Elmúlt 2 héten belül szerkesztett oldalak'
-    ParameterLiveCheckbox: 'Éles oldal megtekintése'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Tartalommal kapcsolatos jogosultságok'

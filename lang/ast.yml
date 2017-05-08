@@ -1,6 +1,14 @@
 ast:
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    COMPAREVERSIONS: 'Comparar les versiones'
+    MENUTITLE: Historial
+    SHOWVERSION: 'Mostrar la versión'
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Editar la páxina'
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: Páxines
+  SilverStripe\CMS\Controllers\ContentController:
+    Password: Contraseña
   SilverStripe\CMS\Model\ErrorPage:
     DEFAULTERRORPAGETITLE: 'Páxina non alcontrada'
     DEFAULTSERVERERRORPAGETITLE: 'Error del servidor'
@@ -14,3 +22,5 @@ ast:
     has_one_Parent: 'Páxina padre'
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Esto ye una páxina virtual'
+    PLURALNAME: 'Páxines virtuales'
+    SINGULARNAME: 'Páxina virtual'

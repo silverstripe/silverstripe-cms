@@ -1,14 +1,4 @@
 sv:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Publicerade %d sidor, %d misslyckades'
-    PUBLISH_PAGES: Publicera
-    RESTORE: Återskapa
-    RESTORED_PAGES: 'Återskapade %d sidor'
-    UNPUBLISHED_PAGES: 'Avpublicerade %d sidor'
-    UNPUBLISH_PAGES: Avpublicera
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Använd på:'
-    PAGES: sida(-or)
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Raderat %d sidor från utkast och live, och lagt till dem i arkiv'
     TITLE: 'Avpublicerad och skickat till arkiv'
@@ -258,14 +248,3 @@ sv:
     DELETEWARNING: 'Varning: Denna funktion är ej reversibla. Vänligen använd med försiktighet.'
     SELECTALL: 'Välj alla'
     UNSELECTALL: 'avmarkera alla'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Sidor med trasiga filer'
-    BROKENREDIRECTORPAGES: 'Omdirigeringssidor som pekar på raderade sidor'
-    BROKENVIRTUALPAGES: 'Virtuella sidor som pekar på raderade sidor'
-    BrokenLinksGroupTitle: 'Rapport för trasiga länkar'
-    ContentGroupTitle: 'Innehållsrapport'
-    EMPTYPAGES: 'Tomma sidor'
-    LAST2WEEKS: 'Sidor som har redigerats de senaste 2 veckorna'
-    ParameterLiveCheckbox: 'Kontrollera live sajt'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Innehållsåtkomst'

@@ -1,8 +1,4 @@
 tr:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISH_PAGES: Yayınla
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    PAGES: sayfa(lar)
   SilverStripe\CMS\Controllers\CMSMain:
     ChoosePageParentMode: 'Sayfanın nereye oluşturulacağını seç'
     ChoosePageType: 'Sayfa tipini seç'
@@ -21,30 +17,30 @@ tr:
     LOGOUT: 'Çıkış Yap'
     NOTEWONTBESHOWN: 'Not: Bu mesaj ziyaretçilerinize gösterilmeyecektir.'
   SilverStripe\CMS\Model\ErrorPage:
-    400: '400 - Hatalı İstek'
-    401: '401 - Erişim Engellenmiş'
-    403: '403 - Yasak'
-    404: '404 - Bulunamadı'
-    405: '405 - Bilinmeyen Metod'
-    406: '406 - İstemciye Uygun Cevap Bulunamadı'
-    407: '407 - Yetkili Sunucu Erişim Hatası'
-    408: '408 - İstek Zaman Aşımı Hatası'
-    409: '409 - Çakışma'
-    410: '410 - En Saçma HTTP Hatası'
-    411: '411 - Uzunluk Belirtilmemiş'
-    412: '412 - Önşart Hatası'
-    413: '413 - İstek Çok Büyük'
-    414: '414 - İstek-URI Çok Uzun'
-    415: '415 - Desteklenmeyen Medya Tipi'
-    416: '416 - İstek Aralığı Tatmin Edici Değil'
-    417: '417 - Beklenti Hatası'
-    500: '500 - Dahili Sunucu Hatası'
-    501: '501 - Uygulanmamış'
-    502: '502 - Hatalı Arayapı'
-    503: '503 - Servis Mevcut Değil'
-    504: '504 - Arayapı Zaman Aşımı'
-    505: '505 - HTTP Versiyonu Desteklenmiyor'
     CODE: 'Hata kodu'
+    CODE_400: '400 - Hatalı İstek'
+    CODE_401: '401 - Erişim Engellenmiş'
+    CODE_403: '403 - Yasak'
+    CODE_404: '404 - Bulunamadı'
+    CODE_405: '405 - Bilinmeyen Metod'
+    CODE_406: '406 - İstemciye Uygun Cevap Bulunamadı'
+    CODE_407: '407 - Yetkili Sunucu Erişim Hatası'
+    CODE_408: '408 - İstek Zaman Aşımı Hatası'
+    CODE_409: '409 - Çakışma'
+    CODE_410: '410 - En Saçma HTTP Hatası'
+    CODE_411: '411 - Uzunluk Belirtilmemiş'
+    CODE_412: '412 - Önşart Hatası'
+    CODE_413: '413 - İstek Çok Büyük'
+    CODE_414: '414 - İstek-URI Çok Uzun'
+    CODE_415: '415 - Desteklenmeyen Medya Tipi'
+    CODE_416: '416 - İstek Aralığı Tatmin Edici Değil'
+    CODE_417: '417 - Beklenti Hatası'
+    CODE_500: '500 - Dahili Sunucu Hatası'
+    CODE_501: '501 - Uygulanmamış'
+    CODE_502: '502 - Hatalı Arayapı'
+    CODE_503: '503 - Servis Mevcut Değil'
+    CODE_504: '504 - Arayapı Zaman Aşımı'
+    CODE_505: '505 - HTTP Versiyonu Desteklenmiyor'
     DEFAULTERRORPAGECONTENT: '<p>Varolmayan bir sayfaya ulaşmaya çalışıyorsunuz.</p><p>Lütfen ulaşmak istediğiniz URL''i kontrol edip tekrar deneyiniz.</p>'
     DEFAULTERRORPAGETITLE: 'Sayfa bulunamadı'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -114,10 +110,3 @@ tr:
   SilverStripe\CMS\Search\SearchForm:
     GO: Git
     SEARCH: Ara
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Kırık link bulunan sayfalar'
-    BrokenLinksGroupTitle: 'Kırık linki rapor et'
-    ContentGroupTitle: 'İçerik raporları'
-    EMPTYPAGES: 'Boş sayfalar'
-    LAST2WEEKS: 'Son 2 haftada düzenlenmiş sayfalar'
-    ParameterLiveCheckbox: 'Yayındaki siteyi kontrol et'

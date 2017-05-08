@@ -1,9 +1,4 @@
 el:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISH_PAGES: Δημοσίευση
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Χρησιμοποιείται σε:'
-    PAGES: σελίδες
   SilverStripe\CMS\Controllers\CMSMain:
     Cancel: Άκυρο
     ChoosePageType: 'Επιλέξτε τύπο σελίδας'
@@ -38,8 +33,8 @@ el:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Παρακαλώ εισάγεται ένα τμήμα διεύθυνσης URL ή πατήστε άκυρο'
   SilverStripe\CMS\Model\ErrorPage:
-    404: '404 - Δεν βρέθηκε'
     CODE: 'Κωδικός σφάλματος'
+    CODE_404: '404 - Δεν βρέθηκε'
     DEFAULTERRORPAGETITLE: 'Η σελίδα δεν βρέθηκε'
     DEFAULTSERVERERRORPAGETITLE: 'Σφάλμα διακομιστή'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -121,9 +116,3 @@ el:
     GO: Μετάβαση
     SEARCH: Αναζήτηση
     SearchResults: 'Αποτελέσματα Αναζήτησης'
-  SilverStripe\Reports\SideReport:
-    BrokenLinksGroupTitle: 'Αναφορές ανενεργών συνδέσμων'
-    ContentGroupTitle: 'Αναφορές περιεχομένου'
-    EMPTYPAGES: 'Σελίδες χωρίς περιεχόμενο'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Δικαιώματα περιεχόμενου'

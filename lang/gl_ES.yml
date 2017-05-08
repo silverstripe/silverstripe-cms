@@ -1,7 +1,4 @@
 gl_ES:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: '%d páxinas publicadas, %d erros'
-    PUBLISH_PAGES: Publicar
   SilverStripe\CMS\Controllers\CMSMain:
     ChoosePageParentMode: 'Escoller donde crear esta páxina'
     ChoosePageType: 'Escoller tipo de páxina'
@@ -122,14 +119,3 @@ gl_ES:
     ReasonDropdownVPBROKENLINK: 'A páxina virtual está apuntando a unha páxina inexistente'
     RedirectorNonExistent: 'o redirector está apuntando a unha páxina inexistente'
     VirtualPageNonExistent: 'a páxina virtual está apuntando a unha páxina inexistente'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Páxinas con ficheiros rotos'
-    BROKENREDIRECTORPAGES: 'RedirectorPages apuntando a páxinas eliminadas'
-    BROKENVIRTUALPAGES: 'VirtualPages apuntando a páxinas eliminadas'
-    BrokenLinksGroupTitle: 'Informes de ligazóns rotas'
-    ContentGroupTitle: 'Informes do Contido'
-    EMPTYPAGES: 'Páxinas sen contido'
-    LAST2WEEKS: 'Páxinas editadas nas 2 últimas semanas'
-    ParameterLiveCheckbox: 'Probar o sitio en vivo'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Permisos do Contido'

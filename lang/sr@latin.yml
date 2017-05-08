@@ -1,1 +1,3 @@
-sr@latin: {}
+sr@latin:
+  SilverStripe\CMS\Model\SiteTree:
+    TABMAIN: Glavno

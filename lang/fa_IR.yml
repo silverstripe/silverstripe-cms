@@ -1,14 +1,4 @@
 fa_IR:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'انتشار %d صفحه، %d عدم موفقیت'
-    PUBLISH_PAGES: انتشار
-    RESTORE: بازنشاندن
-    RESTORED_PAGES: 'بازنشاندن %d صفحه'
-    UNPUBLISHED_PAGES: 'عدم انتشار %d صفحه'
-    UNPUBLISH_PAGES: عدم انتشار
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'استفاده شده در:'
-    PAGES: صفحه(ها)
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'حذف %d صفحه از سایت پیش‌نویس و زنده، و ارسال آنها به آرشیو'
     TITLE: 'عدم انتشار و بایگانی'
@@ -244,14 +234,3 @@ fa_IR:
     NONEREMOVED: 'هیچ‌کدام حذف نگشت'
     SELECTALL: 'انتخاب همه'
     UNSELECTALL: 'لغو انتخاب همه'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'صفحات دارای فایل معیوب'
-    BROKENREDIRECTORPAGES: 'صفحات هدایت‌گر اشاره‌کننده به صفحات حذف شده'
-    BROKENVIRTUALPAGES: 'صفحات مجازی اشاره‌کننده به صفحات حذف شده'
-    BrokenLinksGroupTitle: 'گزارش پیوندهای معیوب'
-    ContentGroupTitle: 'گزارشات محتوا'
-    EMPTYPAGES: 'صفحات بدون مطلب'
-    LAST2WEEKS: 'صفحات ویرایش شده در 2 هفته گذشته'
-    ParameterLiveCheckbox: 'بررسی سایت به صورت زنده'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'دسترسی محتوا'

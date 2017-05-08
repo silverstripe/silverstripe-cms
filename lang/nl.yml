@@ -1,11 +1,4 @@
 nl:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: '%d pagina''s gepubliceerd'
-    PUBLISH_PAGES: Publiceer
-    RESTORE: Herstel
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Gebruikt op:'
-    PAGES: pagina(s)
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Toegang tot het ''{title}'' gedeelte'
     ACCESS_HELP: 'Bevoegdheid om paginastructuur en inhoud te bekijken. Bekijk- en bewerkingstoestemmingen kunnen worden toegekend met pagina-specifieke menu''s en het aparte "Inhoudsmachtigingen".'
@@ -201,14 +194,3 @@ nl:
     GO: Zoeken
     SEARCH: Zoeken
     SearchResults: 'Zoekresultaten'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Pagina''s met verbroken bestanden'
-    BROKENREDIRECTORPAGES: 'Verwijzingspagina''s die naar verwijderde pagina''s verwijzen'
-    BROKENVIRTUALPAGES: 'Virtuele pagina''s die naar verwijderde pagina''s verwijzen'
-    BrokenLinksGroupTitle: 'Rapport van verbroken links'
-    ContentGroupTitle: 'Inhoudsrapporten'
-    EMPTYPAGES: 'Lege pagina''s'
-    LAST2WEEKS: 'Pagina''s gewijzigd in de laatste twee weken'
-    ParameterLiveCheckbox: 'Controleer gepubliceerde site'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Inhoudsrechten'

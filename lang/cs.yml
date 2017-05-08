@@ -1,12 +1,4 @@
 cs:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Zveřejněných %d stránek, %d selhání'
-    PUBLISH_PAGES: Zveřejnit
-    RESTORE: Obnovit
-    RESTORED_PAGES: 'Obnoveno %d stránek'
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Použito na:'
-    PAGES: stránka(y)
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Přístup k ''{title}'' sekci'
     ACCESS_HELP: 'Povolit prohlížení sekce obsahující strukturu a obsah webu. Oprávnění na prohlížení a úpravu mohou být nastavena skrze menu pro samostatnou stránku, také jako jednotlivé oprávnění pro obsah.'
@@ -236,14 +228,3 @@ cs:
     OPERATION_REMOVE: 'Odstranit označené ze všech konceptů (Upozornění: Budou zničeny všechny označené stránky z obou koncept a živé)'
     SELECTALL: 'označit vše'
     UNSELECTALL: 'odznačit vše'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Stránky s porušenými soubory'
-    BROKENREDIRECTORPAGES: 'Přesměrovací stránky ukazují na smazané stránky'
-    BROKENVIRTUALPAGES: 'VirualPages ukazuje na smazané stránky'
-    BrokenLinksGroupTitle: 'Výkazy porušených odkazů'
-    ContentGroupTitle: 'Výkazy obsahu'
-    EMPTYPAGES: 'Stránky bez obsahu'
-    LAST2WEEKS: 'Stránky upravené během posledních 2 týdnů'
-    ParameterLiveCheckbox: 'Zkontrolovat web'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Oprávnění obsahu'

@@ -1,12 +1,4 @@
 de:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: '%d Seiten veröffentlicht, %d Fehler'
-    PUBLISH_PAGES: Veröffentlichen
-    RESTORE: Wiederherstellen
-    RESTORED_PAGES: '%d Seiten wiederhergestellt'
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Verwendet auf:'
-    PAGES: Seite(n)
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     TITLE: 'Veröffentlichung zurücknehmen und archivieren'
   SilverStripe\CMS\Controllers\CMSMain:
@@ -236,14 +228,3 @@ de:
     NONEREMOVED: 'Keine entfernt'
     SELECTALL: 'alle auswählen'
     UNSELECTALL: 'Auswahl aufheben'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Seiten mit defekten Dateiverknüpfungen'
-    BROKENREDIRECTORPAGES: 'Weiterleitungen, die auf gelöschte Seiten verweisen'
-    BROKENVIRTUALPAGES: 'Virtuelle Seiten, die auf gelöschte Seiten verweisen'
-    BrokenLinksGroupTitle: 'Defekte Links'
-    ContentGroupTitle: 'Inhaltsberichte'
-    EMPTYPAGES: 'Leere Seiten'
-    LAST2WEEKS: 'Seiten die in den letzten zwei Wochen bearbeitet wurden'
-    ParameterLiveCheckbox: 'Veröffentlichte Seite überprüfen'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Inhaltsberechtigungen'

@@ -10,8 +10,8 @@ az:
     PUBLISHEDSITE: 'Dərc olunmuş sayt'
     VIEWPAGEIN: 'Səhifəni göstər:'
   SilverStripe\CMS\Model\ErrorPage:
-    501: '501 - Implementasiya olunmayıb'
     CODE: 'Səhv kodu'
+    CODE_501: '501 - Implementasiya olunmayıb'
     DEFAULTERRORPAGECONTENT: '<P> Üzr istəyirik, görünür siz mövcud olan səhifəyə giriş əldə etməyə cəhd edirdiniz. </p><p>Xahiş sizin giriş əldə etməyə və bir daha sınaqdan keçirməyə cəhd etdiyiniz URL-i yoxlayasınız </p>'
     DEFAULTERRORPAGETITLE: 'Səhifə tapılmadı'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -73,5 +73,3 @@ az:
     GO: Göndər
     SEARCH: Axtar
     SearchResults: 'Axtarış nəticələri'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Məzmun səlahiyyətləri'

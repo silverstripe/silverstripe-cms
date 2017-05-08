@@ -1,12 +1,4 @@
 ru:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Опубликовано %d страниц, %d ошибок'
-    PUBLISH_PAGES: Опубликовать
-    RESTORE: Восстановить
-    RESTORED_PAGES: 'Восстановлено %d страниц'
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Используется на:'
-    PAGES: страниц(а)
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Доступ к разделу ''{title}'''
     ACCESS_HELP: 'Возможность просматривать раздел, содержащий дерево страниц и контент. Настройка прав просмотра и редактирования производится через выпадающие меню на отдельных страницах, а также через "Права доступа к содержимому".'
@@ -236,14 +228,3 @@ ru:
     OPERATION_REMOVE: 'Удалить все версии выбранного (ВНИМАНИЕ: Это действие удалит все выбранные страниц из черновиков и с опубликованного сайта)'
     SELECTALL: 'выбрать все'
     UNSELECTALL: 'снять выделение со всех'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Страницы с ошибочными файлами'
-    BROKENREDIRECTORPAGES: 'Страницы перенаправления, указывающие на удаленные страницы'
-    BROKENVIRTUALPAGES: 'Виртуальные страницы, указывающие на удаленные страницы'
-    BrokenLinksGroupTitle: 'Отчеты об ошибочных ссылках'
-    ContentGroupTitle: 'Отчеты по контенту'
-    EMPTYPAGES: 'Пустые страницы'
-    LAST2WEEKS: 'Страницы, которые редактировались в последние 2 недели'
-    ParameterLiveCheckbox: 'Проверить опубликованный сайт'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Права доступа к содержимому'

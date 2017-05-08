@@ -1,12 +1,4 @@
 sl:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Objavljenih je bilo %d strani. (Število napak %d)'
-    PUBLISH_PAGES: Objavi
-    RESTORE: Obnovi
-    RESTORED_PAGES: 'Obnovljene %d strani'
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Uporabljeno na:'
-    PAGES: Stran/Strani
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     TITLE: 'Odstrani iz objave in arhiviraj'
   SilverStripe\CMS\Controllers\CMSMain:
@@ -206,14 +198,3 @@ sl:
     CHOOSEOPERATION: 'Izberi operacijo:'
     SELECTALL: 'izberi vse'
     UNSELECTALL: 'odstrani vse'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Strani s poškodovanimi datotekami'
-    BROKENREDIRECTORPAGES: 'Preusmerjene strani, ki kažejo izbrisane strani'
-    BROKENVIRTUALPAGES: 'Navidezne strani, ki kažejo izbrisane strani'
-    BrokenLinksGroupTitle: 'Poročila o nedelujočih povezavah'
-    ContentGroupTitle: 'Poročila o vsebini'
-    EMPTYPAGES: 'Strani brez vsebine'
-    LAST2WEEKS: 'Strani, spremenjene v zadnjih 2 tednih'
-    ParameterLiveCheckbox: 'Preveri na objavljenem spletnem mestu'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Nastavitve dovoljenj za upravljanje z vsebino'

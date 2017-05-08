@@ -1,10 +1,4 @@
 da:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Publiserede %d sider'
-    PUBLISH_PAGES: Publisér
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Brugt på:'
-    PAGES: side(r)
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Adgang til ''{title}'' sektionen'
     ACCESS_HELP: 'Tillad visning af den sektion, som indeholder sidetræet og indhold. Visnings- og redigeringstilladelser kan håndteres gennem sidespecifikke rullemenuer, såvel som de enkelte "Inholdstilladelser".'
@@ -156,14 +150,3 @@ da:
     GO: Send
     SEARCH: Søg
     SearchResults: 'Søgeresultater'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Sider med ødelagt filer'
-    BROKENREDIRECTORPAGES: 'Viderestillingssider der henviser til slettede sider'
-    BROKENVIRTUALPAGES: 'Virtuelle sider der henviser til slettede sider'
-    BrokenLinksGroupTitle: 'Rapporteringer om links der ikke virker'
-    ContentGroupTitle: 'Indholdsrapporter'
-    EMPTYPAGES: 'Tomme sider'
-    LAST2WEEKS: 'Sider ændret indenfor de sidste 2 uger'
-    ParameterLiveCheckbox: 'Tjek det udgivne websted'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Indholdsrettigheder'

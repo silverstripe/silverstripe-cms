@@ -1,14 +1,4 @@
 eo:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Publikigis %d paĝojn, %d malsukcesojn'
-    PUBLISH_PAGES: Publikigi
-    RESTORE: Restaŭri
-    RESTORED_PAGES: 'Restaŭris %d paĝojn'
-    UNPUBLISHED_PAGES: 'Nepublikigitaj %d paĝoj'
-    UNPUBLISH_PAGES: Malpublikigi
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Uzite ĉe:'
-    PAGES: paĝo(j)
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Forigis %d paĝojn el malneta kaj publika, kaj sendis ilin al la arĥivo'
     TITLE: 'Malpublikigi kaj sendi al arkivo'
@@ -262,14 +252,3 @@ eo:
     OPERATION_REMOVE: 'Forigi elektitajn el ĉiuj stadioj. (AVERTO: detruos ĉiujn elektitajn paĝojn el kaj stadio kaj publika)'
     SELECTALL: 'elekti ĉion'
     UNSELECTALL: 'malelekti ĉion'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Paĝoj kun rompitaj dosieroj'
-    BROKENREDIRECTORPAGES: 'Redirektaj paĝoj indikantaj forigitajn paĝojn'
-    BROKENVIRTUALPAGES: 'VirtualajPaĝoj indikantaj forigitajn paĝojn'
-    BrokenLinksGroupTitle: 'Raporto pri rompitaj ligiloj'
-    ContentGroupTitle: 'Raportoj pri enhavo'
-    EMPTYPAGES: 'Malplenaj paĝoj'
-    LAST2WEEKS: 'Paĝoj redaktitaj dum la lastaj 2 semajnoj'
-    ParameterLiveCheckbox: 'Kontroli publikan retejon'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Enhavopermesoj'

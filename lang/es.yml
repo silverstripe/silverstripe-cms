@@ -1,14 +1,4 @@
 es:
-  SilverStripe\Admin\CMSBatchAction:
-    PUBLISHED_PAGES: 'Publicadas %d páginas, %d fallos'
-    PUBLISH_PAGES: Publicar
-    RESTORE: Restaurar
-    RESTORED_PAGES: '%d páginas restauradas'
-    UNPUBLISHED_PAGES: '%d páginas despublicadas'
-    UNPUBLISH_PAGES: Despublicar
-  SilverStripe\AssetAdmin\Controller\AssetAdmin:
-    BACKLINKCOUNT: 'Usado en:'
-    PAGES: página(s)
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Eliminadas %d páginas desde el borrador y publicadas, y enviadas al archivo'
     TITLE: 'Despublicar y archivar'
@@ -274,14 +264,3 @@ es:
     OPERATION_REMOVE: 'Eliminar seleccionado de todas los escenarios (ADVERTENCIA: Destruirá todas las páginas seleccionadas de ambos escenarios y en vivo)'
     SELECTALL: 'seleccionar todo'
     UNSELECTALL: 'deselecciona todo'
-  SilverStripe\Reports\SideReport:
-    BROKENFILES: 'Páginas con archivos rotos'
-    BROKENREDIRECTORPAGES: 'Páginas de redirección apuntando a páginas borradas'
-    BROKENVIRTUALPAGES: 'Páginas Virtuales apuntando a páginas borradas'
-    BrokenLinksGroupTitle: 'Informes de enlaces rotos'
-    ContentGroupTitle: 'Informes de contenido'
-    EMPTYPAGES: 'Páginas vacías'
-    LAST2WEEKS: 'Páginas editadas en las últimas 2 semanas'
-    ParameterLiveCheckbox: 'Comprobar sitio activo'
-  SilverStripe\Security\Permission:
-    CONTENT_CATEGORY: 'Permisos de contenido'
