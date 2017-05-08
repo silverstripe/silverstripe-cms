@@ -75,31 +75,6 @@ class RootURLController extends Controller implements Resettable
     }
 
     /**
-     * Set the URL Segment used for your homepage when it is created by dev/build.
-     * This allows you to use home page URLs other than the default "home".
-     *
-     * @deprecated 4.0 Use the "RootURLController.default_homepage_link" config setting instead
-     * @param string $urlsegment the URL segment for your home page
-     */
-    public static function set_default_homepage_link($urlsegment = "home")
-    {
-        Deprecation::notice('4.0', 'Use the "RootURLController.default_homepage_link" config setting instead');
-        Config::inst()->update('SilverStripe\\CMS\\Controllers\\RootURLController', 'default_homepage_link', $urlsegment);
-    }
-
-    /**
-     * Gets the link that denotes the homepage if there is not one explicitly defined for this HTTP_HOST value.
-     *
-     * @deprecated 4.0 Use the "RootURLController.default_homepage_link" config setting instead
-     * @return string
-     */
-    public static function get_default_homepage_link()
-    {
-        Deprecation::notice('4.0', 'Use the "RootURLController.default_homepage_link" config setting instead');
-        return Config::inst()->get('SilverStripe\\CMS\\Controllers\\RootURLController', 'default_homepage_link');
-    }
-
-    /**
      * Returns TRUE if a request to a certain page should be redirected to the site root (i.e. if the page acts as the
      * home page).
      *
