@@ -6,7 +6,7 @@ ko:
     Cancel: 취소
     ChoosePageParentMode: '이 페이지를 만들 위치를 선택'
     ChoosePageType: '페이지 유형을 선택'
-    Create: '새로 만들기'
+    Create: 새로 만들기
     DUPLICATED: '''{title}''의 복제가 완료되었습니다.'
     DUPLICATEDWITHCHILDREN: '''{title}'' 와 그 하위에대한 복제가 완료되었습니다'
     NEWPAGE: '새로운 {pagetype}'
@@ -57,6 +57,7 @@ ko:
     EMPTY: 'URL 세그먼트를 입력 또는 중지를 클릭'
     HelpChars: '특수 문자는 자동으로 변환되었는지 제거되었습니다'
   SilverStripe\CMS\Model\ErrorPage:
+    CODE: '오류 코드'
     CODE_400: '400 - 올바르지 않은 요청입니다.'
     CODE_401: '401 - 허용되지 않습니다'
     CODE_403: '403 - 금지되어 있습니다'
@@ -82,7 +83,6 @@ ko:
     CODE_503: '503 - 서비스를 사용할 수 없습니다'
     CODE_504: '504 - Gateway가 만료되었습니다.'
     CODE_505: '505 - 지원되지 않는 HTTP 버전입니다'
-    CODE: '오류 코드'
     DEFAULTERRORPAGECONTENT: '<p> 죄송하지만 보려고하는 페이지가 존재하지 않습니다. </p> <p> 사이트의 URL을 확인 후 다시 시도해주세요. </p>'
     DEFAULTERRORPAGETITLE: '페이지를 찾을 수 없습니다'
     DEFAULTSERVERERRORPAGECONTENT: '<p> 죄송합니다. 귀하의 요청을 처리하는 동안 문제가 발생했습니다. </p>'
@@ -91,7 +91,7 @@ ko:
     HASBEENSETUP: '다른곳으로 리다이렉트되지않고 리다이렉터 페이지가 설치되었습니다.'
     HEADER: '이 페이지는 다른 페이지로 사용자들을 이동시킵니다.'
     OTHERURL: '다른 웹사이트 URL'
-    REDIRECTTO: 변경
+    REDIRECTTO: '변경'
     REDIRECTTOEXTERNAL: '다른 웹사이트'
     REDIRECTTOPAGE: '당신의 웹사이트의 페이지'
     YOURPAGE: '당신의 웹사이트의 페이지'
@@ -106,14 +106,14 @@ ko:
     BUTTONCANCELDRAFT: '초안의 편집 내용을 취소합니다'
     BUTTONCANCELDRAFTDESC: '초안을 삭제하고 현재 공개된 페이지로 돌아갑니다.'
     BUTTONPUBLISHED: 게시됨
-    BUTTONSAVED: '저장됨'
+    BUTTONSAVED: 저장됨
     BUTTONSAVEPUBLISH: '저장 및 게시'
     BUTTONUNPUBLISH: 비공개
     BUTTONUNPUBLISHDESC: '게시된 사이트로부터 이 페이지를 삭제'
     Comments: 코멘트
     Content: 내용
     DEFAULTABOUTTITLE: '회사 소개'
-    DEFAULTCONTACTTITLE: 연락처
+    DEFAULTCONTACTTITLE: '연락처'
     DEFAULTHOMETITLE: 홈
     DEPENDENT_NOTE: '다음 페이지들은 이 페이지에 의존합니다. 여기에는 가상 페이지 리디렉터 페이지 콘텐츠 링크가있는 페이지가 포함되어 있습니다.'
     DependtPageColumnLinkType: '링크 종류'
@@ -137,8 +137,8 @@ ko:
     METAEXTRA: '메타 태그를 사용자 정의'
     METAEXTRAHELP: '추가 메타 정보에 대한 HTML 태그입니다. 예를 들어, &lt; meta name = "사용자 이름" content = "여기에 사용자 지정 콘텐츠" /&gt;'
     MODIFIEDONDRAFTHELP: '페이지는 게시되지 않은 변경들을 가지고 있습니다.'
-    MODIFIEDONDRAFTSHORT: '수정됨'
-    MetadataToggle: '메타 데이터'
+    MODIFIEDONDRAFTSHORT: 수정됨
+    MetadataToggle: 메타 데이터
     MoreOptions: '추가 옵션'
     OBSOLETECLASS: '이 페이지는 사용되지 않는 타입 {type}입니다. 저장하면 그 타입이 재설정되고 데이터를 잃을 수 있습니다'
     PAGELOCATION: '페이지 찾기'
@@ -171,7 +171,7 @@ ko:
     VIRTUALPAGEWARNING: '이 페이지를 게시하기 위해 링크된 페이지를 선택하여 먼저 저장하십시오'
     VIRTUALPAGEWARNINGSETTINGS: '공개하기 위해 주요 콘텐츠 분야에서 링크된 페이지를 선택하십시오'
     Viewers: '방문자 그룹'
-    Visibility: '볼 수 있슴'
+    Visibility: 볼 수 있슴
     has_one_Parent: '상위 페이지'
     many_many_BackLinkTracking: '원본을 추적'
     many_many_ImageTracking: '이미지 링크 추적'
@@ -206,7 +206,7 @@ ko:
     VirtualPageNonExistent: '존재하지 않는 페이지를 가리키는 가상 페이지'
   SilverStripe\CMS\Search\SearchForm:
     FILTERDATEFROM: 시작일
-    FILTERDATETO: '종료일'
+    FILTERDATETO: 종료일
     GO: 시작
     SEARCH: 검색
     SearchResults: '검색 결과'

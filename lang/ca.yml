@@ -5,6 +5,7 @@ ca:
     PUBALLFUN: 'Funcionalitat de "Publica-ho tot"'
     REMOVEDPAGEFROMDRAFT: 'S''ha suprimit  ''%s'' del lloc esborrany'
   SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'Codi d''error'
     CODE_400: '400 - Mala petició'
     CODE_401: '401 - Sense autorització'
     CODE_403: '403 - Prohibit'
@@ -28,7 +29,6 @@ ca:
     CODE_503: '503 - Servei no disponible'
     CODE_504: '504 - Temps excedit de la pasarel·la'
     CODE_505: '505 - Versió HTTP no suportada'
-    CODE: 'Codi d''error'
     DEFAULTERRORPAGECONTENT: '<p>Sembla que intenteu accedir a una pàgina que no existeix.</p><p>Si us plau, reviseu com heu escrit la URL que intenteu accedir i proveu-ho de nou.</p>'
     DEFAULTERRORPAGETITLE: 'Pàgina no trobada'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -61,7 +61,7 @@ ca:
     HTMLEDITORTITLE: Contingut
     INHERIT: 'Hereda de la pàgina pare'
     MENUTITLE: 'Etiqueta de navegació'
-    METADESC: Descripció
+    METADESC: 'Descripció'
     METAEXTRA: 'Etiquetes Meta personalitzades'
     PAGETITLE: 'Nom de la pàgina'
     PAGETYPE: 'Tipus de pàgina'
@@ -69,7 +69,7 @@ ca:
     SHOWINMENUS: 'Mostra als menús?'
     SHOWINSEARCH: 'Mostra en cerques?'
     TABBEHAVIOUR: Comportament
-    TABCONTENT: Contingut
+    TABCONTENT: 'Contingut'
     TOPLEVEL: 'Contingut del lloc (Nivell principal)'
     URLSegment: 'Segment URL'
     Viewers: 'Grups de visitadors'
@@ -77,7 +77,6 @@ ca:
     many_many_BackLinkTracking: 'Seguiment d''enllaços retroactius'
     many_many_ImageTracking: 'Seguiment d''imatges'
     many_many_LinkTracking: 'Seguiment d''enllaços'
-    TABMAIN: Principal
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Aquesta és una pàgina virtual'
   SilverStripe\CMS\Search\SearchForm:

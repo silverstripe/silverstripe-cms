@@ -80,9 +80,9 @@ sk:
     INSTALL_SUCCESS: 'Inštalácia úspešná!'
     LOGGEDINAS: 'Prihlásený ako'
     LOGIN: Prihlásiť
-    LOGOUT: Odhlásiť
+    LOGOUT: 'Odhlásiť'
     NOTEWONTBESHOWN: 'Poznámka: Táto správa sa nebude zobrazovať vašim návštevníkom'
-    NOTLOGGEDIN: Neprihlásený
+    NOTLOGGEDIN: 'Neprihlásený'
     PUBLISHED: Publikované
     PUBLISHEDSITE: 'Verejný web'
     VIEWPAGEIN: 'Prezrieť stránku v:'
@@ -132,7 +132,7 @@ sk:
     Comments: Komentáre
     Content: Obsah
     DEFAULTABOUTTITLE: 'O nás'
-    DEFAULTCONTACTTITLE: Kontakt
+    DEFAULTCONTACTTITLE: 'Kontakt'
     DEFAULTHOMECONTENT: '<p>Vitajte v SilverStripe! Toto je základná domáca stránka. Môžte ju upraviť otvorením <a href="admin/">CMS</a>.</p><p>Môžte tiež vstúpiť k <a href="http://docs.silverstripe.org">dokumentácii vývojára</a>, alebo sa priučit na <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lekciách</a>.</p>'
     DEFAULTHOMETITLE: Domov
     DEPENDENT_NOTE: 'Nasledujúce stránky sú závislé na tejto stránke. To zahŕňa virtuálne stránky, presmerovacie stránky a stránky s odkazmi obsahu.'
@@ -201,8 +201,6 @@ sk:
     many_many_BackLinkTracking: 'Záznamy o Backlinkoch'
     many_many_ImageTracking: 'Záznamy o obrázkoch'
     many_many_LinkTracking: 'Záznamy o odkazoch'
-    TOPLEVELCREATORGROUPS: 'Tvorcovia najvyššej úrovne'
-    TABMAIN: Hlavné
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Odkazovaná stránka'
     DESCRIPTION: 'Zobrazí obsah inej stránky'

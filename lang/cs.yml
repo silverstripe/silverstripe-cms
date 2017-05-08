@@ -62,7 +62,7 @@ cs:
     INSTALL_SUCCESS: 'Instalace úspěšná!'
     LOGGEDINAS: 'Přihlášen jako'
     LOGIN: Přihlášení
-    LOGOUT: Odhlášení
+    LOGOUT: 'Odhlášení'
     NOTEWONTBESHOWN: 'Poznámka: tato zpráva nebude zobrazena vašim návštěvníkům'
     NOTLOGGEDIN: 'Není přihlášen'
     PUBLISHED: Zveřejněno
@@ -115,7 +115,7 @@ cs:
     DEFAULTABOUTTITLE: 'O nás'
     DEFAULTCONTACTTITLE: 'Kontaktujte nás'
     DEFAULTHOMECONTENT: '<p>Vítejte v SilverStripe! Toto je základní domácí stránka. Můžete ji upravit otevřením <a href="admin/">CMS</a>.</p><p>Můžete také nyní vstoupit  do <a href="http://docs.silverstripe.org">dokumentace vývojáře</a>, nebo se přiučit na <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lekcích</a>.</p>'
-    DEFAULTHOMETITLE: 'Úvodní strana'
+    DEFAULTHOMETITLE: Úvodní strana
     DEPENDENT_NOTE: 'Následující stránky závisí na této stránce. Tyto obsahují virtuální stránky, přesměrovací stránky a stránky s odkazy obsahu.'
     DESCRIPTION: 'Obecný obsah stránky'
     DependtPageColumnLinkType: 'Typ odkazu'
@@ -136,7 +136,7 @@ cs:
     LINKSALREADYUNIQUE: ' {url} je vždy unikátní'
     LINKSCHANGEDTO: ' změněno {url1} -> {url2}'
     MENUTITLE: 'Navigační popisek'
-    METADESC: Popis
+    METADESC: 'Popis'
     METADESCHELP: 'Krátký popis/perex, který při vyplnění mohou vyhledávače využít ve výsledcích vyhledávání. I když tento popisek nemá přímý vliv na hodnocení stránky, tak může zvýšit míru prokliku (CTR).'
     METAEXTRA: 'Vlastní meta tagy'
     METAEXTRAHELP: 'HTML tagy pro další meta informace. Například &lt;meta name="vlastnínazev" content="vlastní obsah zde" /&gt;'
@@ -162,7 +162,7 @@ cs:
     SHOWINMENUS: 'Zobrazovat v menu?'
     SHOWINSEARCH: 'Zobrazovat ve vyhledávání?'
     TABBEHAVIOUR: Chování
-    TABCONTENT: Obsah
+    TABCONTENT: 'Obsah'
     TABDEPENDENT: 'Závislé stránky'
     TOPLEVEL: 'Obsah Webu (Nejvyšší úroveň)'
     URLSegment: 'Segment URL'
@@ -180,7 +180,6 @@ cs:
     many_many_BackLinkTracking: 'Stopování zpětných odkazů'
     many_many_ImageTracking: 'Stopování obrázku'
     many_many_LinkTracking: 'Stopování odkazu'
-    TABMAIN: Hlavní
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Odkazovaná stránka'
     DESCRIPTION: 'Zobrazí obsah jiné stránky'

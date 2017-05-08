@@ -14,7 +14,7 @@ es:
     ChoosePageParentMode: 'Elegir donde crear esta página'
     ChoosePageType: 'Elegir tipo de página'
     Create: Crear
-    DUPLICATED: Duplicado
+    DUPLICATED: 'Duplicado'
     DUPLICATEDWITHCHILDREN: 'Duplicado con hijos'
     NEWPAGE: 'Nuevo {pagetype}'
     PAGENOTEXISTS: 'Esta página no existe'
@@ -34,7 +34,7 @@ es:
     RESTORE_DESC: 'Recuperar la versión archivada del borrador'
     RESTORE_TO_ROOT: 'Recuperar borrador al nivel superior'
     RESTORE_TO_ROOT_DESC: 'Recuperar la versión archivada del borrador como de nivel superior'
-    ROLLEDBACKPUBv2: Restaurado
+    ROLLEDBACKPUBv2: 'Restaurado'
     ROLLEDBACKVERSIONv2: 'Versión #%d restaurada'
     SAVED: '''{title}'' guardado satisfactoriamente.'
     SAVEDRAFT: 'Guardar borrador'
@@ -79,8 +79,8 @@ es:
     DRAFTSITE: 'Sitio en Borrador'
     INSTALL_SUCCESS: '¡Instalación Correcta!'
     LOGGEDINAS: 'Conectado como'
-    LOGIN: 'Iniciar sesión'
-    LOGOUT: Desconectar
+    LOGIN: Iniciar sesión
+    LOGOUT: 'Desconectar'
     NOTEWONTBESHOWN: 'Nota: este mensaje no se mostrará a tus visitantes'
     NOTLOGGEDIN: 'No conectado'
     PUBLISHED: Publicado
@@ -89,7 +89,7 @@ es:
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archivado
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: Vacío
+    EMPTY: 'Vacío'
     HelpChars: 'Los caracteres especiales son automáticamente convertidos o eliminados.'
   SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Código de error'
@@ -133,7 +133,7 @@ es:
     BUTTONPUBLISHED: Publicado
     BUTTONSAVED: Guardado
     BUTTONSAVEPUBLISH: 'Guardar y publicar'
-    BUTTONUNPUBLISH: 'Sin Publicar'
+    BUTTONUNPUBLISH: Sin Publicar
     BUTTONUNPUBLISHDESC: 'Elimine esta página del sitio publicado'
     Comments: Comentarios
     Content: Contenido
@@ -144,7 +144,7 @@ es:
     DEPENDENT_NOTE: 'Las siguientes páginas dependen de esta página. Esto incluye páginas virtuales, páginas de redireccionamiento, y las páginas con enlaces de contenido.'
     DESCRIPTION: 'Página de contenido genérico'
     DependtPageColumnLinkType: 'Tipo de enlace'
-    DependtPageColumnURL: 'Depende de'
+    DependtPageColumnURL: Depende de
     EDITANYONE: 'Cualquiera que pueda iniciar sesión en el CMS'
     EDITHEADER: '¿Quién puede editar esta página?'
     EDITONLYTHESE: 'Solo estas personas (elija de la lista)'
@@ -152,7 +152,7 @@ es:
     EDIT_ALL_DESCRIPTION: 'Editar cualquier página'
     EDIT_ALL_HELP: 'Posibilidad de editar cualquier página en el sitio, independientemente de la configuración de la pestaña de Acceso. Requiere permiso "Acceso a la sección ''Páginas''"'
     Editors: 'Grupo de Editores'
-    GroupPlaceholder: Grupo
+    GroupPlaceholder: 'Grupo'
     HASBROKENLINKS: 'Esta página contiene enlaces rotos.'
     HTMLEDITORTITLE: Contenido
     INHERIT: 'Heredar de página padre'
@@ -161,7 +161,7 @@ es:
     LINKSALREADYUNIQUE: '{url} ya es único'
     LINKSCHANGEDTO: ' cambiado {url1} -> {url2}'
     MENUTITLE: 'Etiqueta de Navegación'
-    METADESC: Descripción
+    METADESC: 'Descripción'
     METADESCHELP: 'Los motores de búsqueda usan este contenido para mostrar resultados de búsqueda (aunque no influirá en su ranking).'
     METAEXTRA: 'Meta Tags Personalizadas'
     METAEXTRAHELP: 'Etiquetas HTML para meta información adicional. Por ejemplo &lt;meta name="nombrePersonalizado" content="tu contenido personalizado aquí" /&gt;'
@@ -194,7 +194,7 @@ es:
     SHOWINSEARCH: '¿Mostrar en la búsqueda?'
     SINGULARNAME: Página
     TABBEHAVIOUR: Comportamiento
-    TABCONTENT: Contenido
+    TABCONTENT: 'Contenido'
     TABDEPENDENT: 'Páginas dependientes'
     TOPLEVEL: 'Contenido del Sitio (Top Level)'
     URLSegment: 'Segmento de URL'
@@ -212,9 +212,8 @@ es:
     many_many_BackLinkTracking: 'Rastreo de Backlinks'
     many_many_ImageTracking: 'Rastreo de Imágenes'
     many_many_LinkTracking: 'Rastreo de Enlaces'
-    TABMAIN: Principal
   SilverStripe\CMS\Model\VirtualPage:
-    CHOOSE: Seleccionar
+    CHOOSE: 'Seleccionar'
     DESCRIPTION: 'Muestra el contenido de otra página'
     EditLink: Editar
     HEADER: 'Esta es una página virtual'

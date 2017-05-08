@@ -6,6 +6,7 @@ bs:
     PUBALLFUN: 'Funkcija "Objavi sve"'
     REMOVEDPAGEFROMDRAFT: 'Uklonjeno ''%s'' sa privremenog nacrta stranice'
   SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'Kod greške'
     CODE_400: '400 - Pogrešan zahtjev'
     CODE_401: '401 - Neovlašteno'
     CODE_403: '403 - Zabranjeno'
@@ -29,7 +30,6 @@ bs:
     CODE_503: '503 - Nedostupan servis '
     CODE_504: '504 - Gateway zaustavljen'
     CODE_505: '505 - HTTP izdanje nije podržano'
-    CODE: 'Kod greške'
     DEFAULTERRORPAGECONTENT: '<p>Žao nam je, pokušali ste pristupiti stranici koja ne postoji.</p><p>Molimo provjerite da li ste ispravno ukucali URL kojem ste pokušali pristupiti i pokušajte ponovo.</p>'
     DEFAULTERRORPAGETITLE: 'Stranica nije pronađena'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -41,13 +41,13 @@ bs:
     REDIRECTTOPAGE: 'Na stavku na Vašoj web stranici'
     YOURPAGE: 'Stavku na Vašoj web stranici'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: 'Svi korisnici'
+    ACCESSANYONE: Svi korisnici
     ACCESSHEADER: 'Ko može pregledati ovu stavku na mojoj stranici?'
     ACCESSLOGGEDIN: 'Prijavljeni korisnici'
     ACCESSONLYTHESE: 'Samo ovi korisnici (izaberite sa popisa)'
     BUTTONCANCELDRAFT: 'Poništi promjene privremenog nacrta stranice'
     BUTTONCANCELDRAFTDESC: 'Izbrišite Vaš privremeni nacrt stranice i vratite se na trenutno objavljenu stranicu'
-    BUTTONUNPUBLISH: 'Opozovi objavljivanje'
+    BUTTONUNPUBLISH: Opozovi objavljivanje
     BUTTONUNPUBLISHDESC: 'Ukloni ovu stavku sa objavljene stranice'
     DEFAULTABOUTTITLE: 'O nama'
     DEFAULTCONTACTTITLE: 'Kontaktirajte nas'
@@ -58,20 +58,19 @@ bs:
     HASBROKENLINKS: 'Ova stranica ima neispravnih linkova.'
     HTMLEDITORTITLE: Sadržaj
     MENUTITLE: 'Oznaka navigacije'
-    METADESC: Opis
+    METADESC: 'Opis'
     METAEXTRA: 'Prilagođene Meta oznake'
     PAGETITLE: 'Ime stranice'
     PAGETYPE: 'Tip stranice'
     SHOWINMENUS: 'Prikaži u izbornicima?'
     SHOWINSEARCH: 'Prikaži u pretrazi?'
     TABBEHAVIOUR: Ponašanje
-    TABCONTENT: Sadržaj
+    TABCONTENT: 'Sadržaj'
     TOPLEVEL: 'Sadržaj stranice (Glavni nivo)'
-    TABMAIN: Glavno
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Ovo je virtualna stranica'
   SilverStripe\CMS\Reports\BrokenLinksReport:
-    Any: 'Bilo koji'
+    Any: Bilo koji
   SilverStripe\CMS\Search\SearchForm:
     GO: Idi
     SEARCH: Pretraga

@@ -17,6 +17,7 @@ tr:
     LOGOUT: 'Çıkış Yap'
     NOTEWONTBESHOWN: 'Not: Bu mesaj ziyaretçilerinize gösterilmeyecektir.'
   SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'Hata kodu'
     CODE_400: '400 - Hatalı İstek'
     CODE_401: '401 - Erişim Engellenmiş'
     CODE_403: '403 - Yasak'
@@ -40,7 +41,6 @@ tr:
     CODE_503: '503 - Servis Mevcut Değil'
     CODE_504: '504 - Arayapı Zaman Aşımı'
     CODE_505: '505 - HTTP Versiyonu Desteklenmiyor'
-    CODE: 'Hata kodu'
     DEFAULTERRORPAGECONTENT: '<p>Varolmayan bir sayfaya ulaşmaya çalışıyorsunuz.</p><p>Lütfen ulaşmak istediğiniz URL''i kontrol edip tekrar deneyiniz.</p>'
     DEFAULTERRORPAGETITLE: 'Sayfa bulunamadı'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -59,12 +59,12 @@ tr:
     ADDEDTODRAFTSHORT: Taslak
     BUTTONCANCELDRAFT: 'Taslak değikliklerini iptal et'
     BUTTONCANCELDRAFTDESC: 'Taslağı sil ve şu an yayında olan sayfaya geri döndür'
-    BUTTONUNPUBLISH: 'Yayından kaldır'
+    BUTTONUNPUBLISH: Yayından kaldır
     BUTTONUNPUBLISHDESC: 'Bu sayfayı yayından kaldır'
     Comments: Yorumlar
     Content: İçerik
-    DEFAULTABOUTTITLE: Hakkımızda
-    DEFAULTCONTACTTITLE: İletişim
+    DEFAULTABOUTTITLE: 'Hakkımızda'
+    DEFAULTCONTACTTITLE: 'İletişim'
     DEFAULTHOMETITLE: Anasayfa
     DependtPageColumnLinkType: 'Link tipi'
     EDITANYONE: 'CMS''e giriş yapabilen herkes'
@@ -76,7 +76,7 @@ tr:
     INHERIT: 'Üst sayfadan kalan'
     LASTUPDATED: 'Son Güncellenen'
     MENUTITLE: 'Navigasyon etiketi'
-    METADESC: Tanım
+    METADESC: 'Tanım'
     METAEXTRA: 'Kişisel Meta Etiketleri'
     MODIFIEDONDRAFTSHORT: Değiştirilmiş
     PAGETITLE: 'Sayfa ismi'
@@ -90,7 +90,7 @@ tr:
     SHOWINMENUS: 'Menülerde gösterilsin mi?'
     SHOWINSEARCH: 'Aramalarda gösterilsin mi?'
     TABBEHAVIOUR: Davranış
-    TABCONTENT: İçerik
+    TABCONTENT: 'İçerik'
     TOPLEVEL: 'Site İçeriği (Üst Seviye)'
     URLSegment: 'URL Kısmı'
     Viewers: 'Görüntüleyici Grupları'
@@ -99,7 +99,6 @@ tr:
     many_many_BackLinkTracking: 'Geri bağlantı izi'
     many_many_ImageTracking: 'İmaj izi'
     many_many_LinkTracking: 'Bağlantı izi'
-    TABMAIN: 'Ana (Esas)'
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Bu sanal bir sayfadır'
   SilverStripe\CMS\Reports\BrokenLinksReport:

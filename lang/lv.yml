@@ -4,12 +4,13 @@ lv:
     DRAFTSITE: 'Melnrakstu vietne'
     LOGGEDINAS: 'Pieslēdzies kā'
     LOGIN: Pieslēgties
-    LOGOUT: Atslēgties
+    LOGOUT: 'Atslēgties'
     NOTEWONTBESHOWN: 'Piezīme: šī ziņa nebūs redzama Jūsu apmeklētājiem'
     NOTLOGGEDIN: 'Nav pieslēdzies'
     PUBLISHEDSITE: 'Publicētā vietne'
     VIEWPAGEIN: 'Skatīt lapu:'
   SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'Kļūdas kods'
     CODE_400: '400 - Nekorekts pieprasījums'
     CODE_401: '401 - Neautorizēts'
     CODE_403: '403 - Aizliegts'
@@ -33,7 +34,6 @@ lv:
     CODE_503: '503 - Serviss uz laiku nav pieejams'
     CODE_504: '504 - Beidzies vārtejas pieprasījuma laiks'
     CODE_505: '505 - Šī HTTP protokola versija netiek atbalstīta.'
-    CODE: 'Kļūdas kods'
     DEFAULTERRORPAGECONTENT: '<p>Atvainojiet, šķiet, ka lapa kurai mēģinat piekļūt neeksistē.</p><p>Lūdzu pārliecinieties par pareizrakstību URL, kuram vēlaties piekļūt400.</p>'
     DEFAULTERRORPAGETITLE: 'Lapa nav atrasta'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -72,7 +72,7 @@ lv:
     INHERIT: 'Mantot no vecāka lapas'
     LINKCHANGENOTE: 'Izmainot šīs lapas saiti, tiks izmainītas saites arī visām tās bērnu lapām.'
     MENUTITLE: 'Navigācijas virsraksts'
-    METADESC: Apraksts
+    METADESC: 'Apraksts'
     METAEXTRA: 'Lietotāja Meta-tagi'
     PAGELOCATION: 'Lapas adrese'
     PAGETITLE: 'Lapas nosaukums'
@@ -88,7 +88,7 @@ lv:
     SHOWINMENUS: 'Rādīt izvēlnēs?'
     SHOWINSEARCH: 'Rādīt meklēšanas rezultātos?'
     TABBEHAVIOUR: Uzvedība
-    TABCONTENT: Saturs
+    TABCONTENT: 'Saturs'
     TABDEPENDENT: 'Atkarīgās lapas'
     TOPLEVEL: 'Vietnes Saturs (Augšējais līmenis)'
     URLSegment: 'URL Segments'
@@ -101,7 +101,6 @@ lv:
     many_many_BackLinkTracking: 'Atpakaļsaišu izsekošana'
     many_many_ImageTracking: 'Attēlu izsekošana'
     many_many_LinkTracking: 'Saišu izsekošana'
-    TABMAIN: Sākums
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Šī ir virtuāla lapa'
   SilverStripe\CMS\Search\SearchForm:

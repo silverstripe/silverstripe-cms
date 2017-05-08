@@ -38,24 +38,25 @@ ar:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'إصدار المعاينة'
     ARCHIVEDSITEFROM: 'موقع تمت أرشفته منذ'
-    CMS: 'نظام إدارة المحتوى'
-    DRAFT: 'المسودّة'
+    CMS: نظام إدارة المحتوى
+    DRAFT: المسودّة
     DRAFTSITE: 'موقع في المسودة'
     INSTALL_SUCCESS: 'تم التثبيت بنجاح!'
     LOGGEDINAS: 'الدخول كـ'
     LOGIN: الدخول
-    LOGOUT: الخروج
+    LOGOUT: 'الخروج'
     NOTEWONTBESHOWN: 'تنبيه: هذه الرسالة لن يتم عرضها لزوار موقعك'
     NOTLOGGEDIN: 'لم يتم تسجيل الدخول'
-    PUBLISHED: 'تمّ النشر'
+    PUBLISHED: تمّ النشر
     PUBLISHEDSITE: 'موقع منشور'
     VIEWPAGEIN: 'مشاهدة الصفحة في:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: 'المؤرشف'
+    ARCHIVED: المؤرشف
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'الرجاء إدخال مقطع URL أو انقر فوق إلغاء الأمر'
     HelpChars: 'يتم تلقائيا تحويل الأحرف الخاصة أو إزالتها.'
   SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'كود الخطأ'
     CODE_400: '400 - طلب خاطئ'
     CODE_401: '401 - غير مصرح'
     CODE_403: '403 - ممنوع'
@@ -79,7 +80,6 @@ ar:
     CODE_503: '503 - خدمة غير متوفرة'
     CODE_504: '504 - انتهاء وقت البوابة'
     CODE_505: '505 - إصدار HTTP  غير مدعوم'
-    CODE: 'كود الخطأ'
     DEFAULTERRORPAGECONTENT: '<p>عذراً ، يبدو أنك تحاول الدخول إلى صفحة غير موجودة.</p><p>فضلاً تأكد من الرابط و أعد محاولة الدخول مرة أخرى.</p>'
     DEFAULTERRORPAGETITLE: 'الصفحة غير موجودة'
     DEFAULTSERVERERRORPAGECONTENT: '<p>عذرا، كانت هناك مشكلة في التعامل مع طلبك.</p>'
@@ -93,23 +93,23 @@ ar:
     REDIRECTTOPAGE: 'صفحة في موقعك الشخصي'
     YOURPAGE: 'صفحة في موقعك الشخصي'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: 'الجميع'
+    ACCESSANYONE: الجميع
     ACCESSHEADER: 'من يستطيع مشاهدة هذه الصفحة ؟'
     ACCESSLOGGEDIN: 'الأعضاء المسجلين'
     ACCESSONLYTHESE: 'فقط هؤلاء الأشخاص ( اختر من القائمة)'
     ADDEDTODRAFTHELP: 'لم تنشر الصفحة بعد'
-    ADDEDTODRAFTSHORT: 'المسودة'
+    ADDEDTODRAFTSHORT: المسودة
     APPEARSVIRTUALPAGES: 'يظهر هذا المحتوى أيضا على الصفحات الافتراضية في أقسام {title}.'
     BUTTONCANCELDRAFT: 'إلغاء التغييرات في المسودة'
     BUTTONCANCELDRAFTDESC: 'إلغاء المسودة و العودة إلى الموقع المنشور حالياً'
     BUTTONPUBLISHED: نشرت
-    BUTTONSAVED: 'تم الحفظ'
+    BUTTONSAVED: تم الحفظ
     BUTTONSAVEPUBLISH: 'احفظ وانشر'
-    BUTTONUNPUBLISH: 'غير منشور'
+    BUTTONUNPUBLISH: غير منشور
     BUTTONUNPUBLISHDESC: 'حذف هذه الصفحة من الموقع المنشور'
     Comments: التعليقات
-    Content: 'المحتوى'
-    DEFAULTABOUTTITLE: حول
+    Content: المحتوى
+    DEFAULTABOUTTITLE: 'حول'
     DEFAULTCONTACTTITLE: 'اتصل بنا'
     DEFAULTHOMETITLE: الرئيسة
     DEPENDENT_NOTE: 'الصفحات التالية تعتمد على هذه الصفحة. وهذا يشمل صفحات الظاهري، وصفحات معيد التوجيه، والصفحات التي تحتوي على روابط المحتوى.'
@@ -124,18 +124,18 @@ ar:
     Editors: 'مجموعات المحررين'
     GroupPlaceholder: 'انقر لاختيار المجموعة'
     HASBROKENLINKS: 'هذه الصفحة تحتوي على روابط معطوبة'
-    HTMLEDITORTITLE: 'محتوى'
+    HTMLEDITORTITLE: محتوى
     INHERIT: 'استيراد من الصفحة المرجعية'
     LASTUPDATED: 'أخر تحديث'
     LINKCHANGENOTE: 'تغيير هذا وصلة رابط الصفحة سوف تؤثر أيضًا على الوصلات لجميع صفحات الفرعية.'
     MENUTITLE: 'القائمة'
-    METADESC: الوصف
+    METADESC: 'الوصف'
     METADESCHELP: 'تستخدم محركات البحث هذا المحتوى لعرض نتائج البحث (على الرغم من أنها لن تؤثر على ترتيبها).'
     METAEXTRA: 'تخصيص Meta Tags'
     METAEXTRAHELP: 'علامات HTML لبيانات وصفية إضافية. على سبيل المثال <meta name="customName" content="your custom content here" />'
     MODIFIEDONDRAFTHELP: 'تحتوي الصفحة على تغييرات غير منشورة'
-    MODIFIEDONDRAFTSHORT: 'تم التعديل'
-    MetadataToggle: 'البيانات الوصفية'
+    MODIFIEDONDRAFTSHORT: تم التعديل
+    MetadataToggle: البيانات الوصفية
     MoreOptions: 'خيارات أخرى'
     OBSOLETECLASS: 'إنّ نوع {type} لهذه الصفحة بال. سيعيد حفظها تجديد نوعها وقد تفقد البيانات'
     PAGELOCATION: 'موقع الضفحة'
@@ -168,12 +168,11 @@ ar:
     VIRTUALPAGEWARNING: 'يرجى اختيار صفحة مرتبطة وقم بالحفظ أولا من أجل نشر هذه الصفحة'
     VIRTUALPAGEWARNINGSETTINGS: 'يرجى اختيار صفحة مرتبطة في مجالات المحتوى الرئيسي من أجل النشر'
     Viewers: 'مجموعات المشاهدين'
-    Visibility: 'مدي الرؤية'
+    Visibility: مدي الرؤية
     has_one_Parent: 'الصفحة الرئيسة'
     many_many_BackLinkTracking: 'متابعة التعقيبات'
     many_many_ImageTracking: 'متابعة الصور'
     many_many_LinkTracking: 'متابعة الروابط'
-    TABMAIN: الرئيسة
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'الصفحة المرتبطة'
     EditLink: حرر
@@ -203,7 +202,7 @@ ar:
     RedirectorNonExistent: 'معيد توجيه الصفحة يشير الى صفحة غير موجودة..'
     VirtualPageNonExistent: 'الصفحة الظاهرية تشير الى صفحة غير موجودة..'
   SilverStripe\CMS\Search\SearchForm:
-    FILTERDATEFROM: 'من'
+    FILTERDATEFROM: من
     FILTERDATETO: إلى
     GO: اذهب
     SEARCH: بحث

@@ -44,9 +44,9 @@ ro:
     INSTALL_SUCCESS: 'Instalare cu succes!'
     LOGGEDINAS: 'Logat ca'
     LOGIN: Login
-    LOGOUT: Logout
+    LOGOUT: 'Logout'
     NOTEWONTBESHOWN: 'Notă: acest mesaj nu v-a fi afișat vizitatorilor'
-    NOTLOGGEDIN: Ne-loginat
+    NOTLOGGEDIN: 'Ne-loginat'
     PUBLISHED: Publicat
     PUBLISHEDSITE: 'Site publicat'
     VIEWPAGEIN: 'Vizualizează pagina în:'
@@ -56,6 +56,7 @@ ro:
     EMPTY: 'Vă rugăm introduceți un Segment URL sau apăsați anulează'
     HelpChars: 'Caracterele speciale sunt convertite automat sau șterse'
   SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'Cod de eroare'
     CODE_400: '400 - Solicitare greșită'
     CODE_401: '401 - Neautorizat'
     CODE_403: '403 - Interzis'
@@ -73,13 +74,11 @@ ro:
     CODE_415: '415 - Tip media nesuportat'
     CODE_416: '416 - Banda solicitării neindelinită'
     CODE_417: '417 - Așteptare nereușită'
-    CODE_500: '500 - Eroare internă de server'
+    CODE_500: '500 - Versiune HTTP Nesuportată'
     CODE_501: '501 - Neimplementat'
     CODE_502: '502 - Gateway incorect'
     CODE_503: '503 - Serviciu nedisponibil'
     CODE_504: '504 - Timpul de Gateway expirat'
-    CODE_500: '500 - Versiune HTTP Nesuportată'
-    CODE: 'Cod de eroare'
     DEFAULTERRORPAGECONTENT: '<p>Ne pare rău, se pare că ați încercat să accesati o pagină inexistentă.</p><p>Vă rugăm verificați scrierea corectă a URL-ului dorit și încercați din nou.</p>'
     DEFAULTERRORPAGETITLE: 'Pagină negasită'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Ne pare rău, s-a petrecut o problemă la procesarea solicitării dumeavoastre.</p>'
@@ -110,7 +109,7 @@ ro:
     Comments: Comentarii
     Content: Continut
     DEFAULTABOUTTITLE: 'Despre Noi'
-    DEFAULTCONTACTTITLE: Contactați-ne
+    DEFAULTCONTACTTITLE: 'Contactați-ne'
     DEFAULTHOMETITLE: Acasă
     DEPENDENT_NOTE: 'Următoarele pagini depind de această pagină. Include și pagini virtuale, pagini redirecționate, și pagini cu link-uri către conținut.'
     DependtPageColumnLinkType: 'Tip referintă'
@@ -129,7 +128,7 @@ ro:
     LASTUPDATED: 'Ultimul actualizat'
     LINKCHANGENOTE: 'Schimbarea link-urilor din pagină v-a afecta și link-urile din toți descendenții.'
     MENUTITLE: 'Etichetă navigare'
-    METADESC: Descriere
+    METADESC: 'Descriere'
     METADESCHELP: 'Motoarele de căutare folosesc acest conținut pentru a afișa rezultatele căutării (deși nu v-a influența nota acestuia)'
     METAEXTRA: 'Etichetă Meta preferențială'
     METAEXTRAHELP: 'Etichetele HTML pentru informațiile meta adiționale. De exemplu &lt;meta name="numePreferat" content="conținut preferențial aici" /&gt;'
@@ -173,7 +172,6 @@ ro:
     many_many_BackLinkTracking: 'Urmărire link invers'
     many_many_ImageTracking: 'Urmărire Imagine'
     many_many_LinkTracking: 'Urmărire Link'
-    TABMAIN: Pincipal
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Pagina referință'
     EditLink: editare
@@ -203,7 +201,7 @@ ro:
     RedirectorNonExistent: 'pagina de redirectare indică spre o pagină inexistentă'
     VirtualPageNonExistent: 'pagina virtuală indică spre o pagină inexistentă'
   SilverStripe\CMS\Search\SearchForm:
-    FILTERDATEFROM: 'De la'
+    FILTERDATEFROM: De la
     FILTERDATETO: La
     GO: Start
     SEARCH: Căutare

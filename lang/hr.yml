@@ -19,7 +19,7 @@ hr:
     NEWPAGE: 'Novi {pagetype}'
     PAGENOTEXISTS: 'Stranica ne postoji'
     PAGES: 'Status stranice'
-    PAGETYPEANYOPT: 'Bilo koji'
+    PAGETYPEANYOPT: Bilo koji
     PAGETYPEOPT: 'Tip stranice'
     PUBALLCONFIRM: 'Molim objavi svaku stranicu, kopirajući sadržaj'
     PUBALLFUN: '"Objavi sve"'
@@ -39,7 +39,6 @@ hr:
     SAVED: 'Uspješno spremljen ''{title}'''
     SAVEDRAFT: 'Spremiti nacrt'
     UNPUBLISH_AND_ARCHIVE: 'Odjavi i arhiviraj'
-    INSERT: 'Ubaci datoteku'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Dodaj stranicu'
     ParentMode_child: 'Ispod druge stranice'
@@ -77,11 +76,11 @@ hr:
     ARCHIVEDSITEFROM: 'Arhivirana stranica iz'
     CMS: CMS
     DRAFT: Predložak
-    DRAFTSITE: Predložak
+    DRAFTSITE: 'Predložak'
     INSTALL_SUCCESS: 'Instalacija uspješna!'
     LOGGEDINAS: 'Prijavi se kao'
     LOGIN: Prijavi
-    LOGOUT: Odjava
+    LOGOUT: 'Odjava'
     NOTEWONTBESHOWN: 'Napomena: ova poruka neće biti prikazana vašim posjetiteljima'
     NOTLOGGEDIN: 'Niste prijavljeni'
     PUBLISHED: Objavljeno
@@ -133,7 +132,7 @@ hr:
     Comments: Komentari
     Content: Sadržaj
     DEFAULTABOUTTITLE: 'O nama'
-    DEFAULTCONTACTTITLE: Kontakt
+    DEFAULTCONTACTTITLE: 'Kontakt'
     DEFAULTHOMECONTENT: '<p>Dobrodošli na SilverStripe! Ovo je zadana početna stranica. Možete je urediti otvarajući <a href="admin/"> CMS</a>.</p><p>Možete pristupiti  <a href="http://docs.silverstripe.org">razvojnoj dokumentaciji</a>, ili početi <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lekcije</a>.</p>'
     DEFAULTHOMETITLE: Početna
     DEPENDENT_NOTE: 'Sljedeće stranice zavise o ovoj stranici. To uključuje virtualne stranice, preusmjeravajuće stranice i stranice s sadržajnim linkovima.'
@@ -169,7 +168,7 @@ hr:
     PAGETYPE: 'Vrsta stranice'
     PARENTID: 'Matična stranica'
     PARENTTYPE: 'Lokacija stranice'
-    PARENTTYPE_ROOT: Nadstranica
+    PARENTTYPE_ROOT: 'Nadstranica'
     PARENTTYPE_SUBPAGE: 'Podstranica ispod matične stranice'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Upravljaj prava pristupa za sadržaj'
     PLURALNAME: Stranice
@@ -180,7 +179,7 @@ hr:
     SHOWINSEARCH: 'Pokaži u tražilici?'
     SINGULARNAME: Stranica
     TABBEHAVIOUR: Karakteristike
-    TABCONTENT: Sadržaj
+    TABCONTENT: 'Sadržaj'
     TABDEPENDENT: 'Zavisne stranice'
     TOPLEVEL: 'Sadržaj stranice (Top Level)'
     URLSegment: 'Dio URLa'
@@ -197,8 +196,6 @@ hr:
     many_many_BackLinkTracking: 'Praćenje Backlinkova'
     many_many_ImageTracking: 'Praćenje slika'
     many_many_LinkTracking: 'Praćenje linkova'
-    TOPLEVELCREATORGROUPS: 'Glavni urednici'
-    TABMAIN: Osnovno
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Povezane stranice'
     DESCRIPTION: 'Prikazuje sadržaj druge stranice'
@@ -209,10 +206,10 @@ hr:
     PageTypNotAllowedOnRoot: 'Originalni tip stranice  "{type}" nije dozvoljen na prvom nivu ove virtualne stranice'
     SINGULARNAME: 'Virtualna stranica'
   SilverStripe\CMS\Reports\BrokenLinksReport:
-    Any: 'bilo koji'
+    Any: bilo koji
     BROKENLINKS: 'Izvješće prekinutih linkova'
     CheckSite: 'Pregledaj stranicu'
-    CheckSiteDropdownDraft: Predložak
+    CheckSiteDropdownDraft: 'Predložak'
     CheckSiteDropdownPublished: 'Objavljena stranica'
     ColumnDateLastModified: 'Datum zadnjeg uređivanja'
     ColumnDateLastPublished: 'Datum zadnje objave'

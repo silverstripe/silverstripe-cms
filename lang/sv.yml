@@ -18,8 +18,8 @@ sv:
     DUPLICATEDWITHCHILDREN: 'Duplicerade ''{title}'' och undersidor utan problem'
     NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Den här sidan finns inte'
-    PAGETYPEANYOPT: 'Vilken som helst'
-    PAGETYPEOPT: Sidtyp
+    PAGETYPEANYOPT: Vilken som helst
+    PAGETYPEOPT: 'Sidtyp'
     PUBALLCONFIRM: 'Publicera alla sidor på sajten och kopiera dem till "live"'
     PUBALLFUN: '"Publicera alla"-funktion'
     PUBLISHED: 'Publiseringen av  ''{title}'' lyckades'
@@ -40,7 +40,7 @@ sv:
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Skapa sida'
     ParentMode_child: 'Under en annan sida'
-    ParentMode_top: Toppnivå
+    ParentMode_top: 'Toppnivå'
   SilverStripe\CMS\Controllers\CMSPageEditController:
     MENUTITLE: 'Redigera sida'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
@@ -48,7 +48,7 @@ sv:
     MENUTITLE: Historia
     REVERTTOTHISVERSION: 'Ändra till denna version'
     SHOWUNPUBLISHED: 'Visa opublicerade versioner'
-    VIEW: 'Titta på'
+    VIEW: Titta på
     VIEWINGLATEST: 'Nu visas den senaste versionen.'
     VIEWINGVERSION: 'Nu visas version {version}.'
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
@@ -74,10 +74,10 @@ sv:
     ARCHIVEDSITEFROM: 'Arkiverad sajt från'
     CMS: CMS
     DRAFT: Utkast
-    DRAFTSITE: Utkast
+    DRAFTSITE: 'Utkast'
     INSTALL_SUCCESS: 'Installation lyckades!'
     LOGGEDINAS: 'Inloggad som'
-    LOGIN: 'Logga in'
+    LOGIN: Logga in
     LOGOUT: 'Logga ut'
     NOTEWONTBESHOWN: 'Observera: Detta meddelande kommer inte att visas för besökarna'
     NOTLOGGEDIN: 'Inte inloggad'
@@ -90,14 +90,14 @@ sv:
     EMPTY: 'Ange ett URL-segment eller klicka på avbryt'
     HelpChars: 'Specialtecken konverteras eller tas bort'
   SilverStripe\CMS\Model\ErrorPage:
-    CODE: Felkod
+    CODE: 'Felkod'
     DEFAULTERRORPAGECONTENT: '<p>Det verkar som om du försökter komma åt en sida som inte finns.</p><p>Var god kontrollera stavningen på adressen som du försökte nå och försök igen.'
     DEFAULTERRORPAGETITLE: 'Sidan hittades inte'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Ursäkta, ett fel uppstod vid hanteringen av din förfrågan.</p>'
-    DEFAULTSERVERERRORPAGETITLE: Serverfel
+    DEFAULTSERVERERRORPAGETITLE: 'Serverfel'
     DESCRIPTION: 'Anpassat innehåll för olika felärenden (t.ex. "Sidan kan inte hittas")'
-    PLURALNAME: Felsidor
-    SINGULARNAME: Felsida
+    PLURALNAME: 'Felsidor'
+    SINGULARNAME: 'Felsida'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Omdirigerar till en annan intern eller extern sida'
     HASBEENSETUP: 'En omdirigeringssida har skapats utan att ha något mål.'
@@ -107,7 +107,7 @@ sv:
     REDIRECTTO: 'Omdirigera till'
     REDIRECTTOEXTERNAL: 'En annan sajt'
     REDIRECTTOPAGE: 'En sida på din sajt'
-    SINGULARNAME: Omdirigeringssida
+    SINGULARNAME: 'Omdirigeringssida'
     YOURPAGE: 'Sida på din sajt'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Alla
@@ -137,15 +137,15 @@ sv:
     DEFAULTHOMETITLE: Hem
     DEPENDENT_NOTE: 'Följande sidor berörs av den här sidan. Inklusive virtuella sidor, omdirigeringssidor, och sidor med innehållslänkar.'
     DESCRIPTION: 'Generisk innehållssida'
-    DependtPageColumnLinkType: Länktyp
+    DependtPageColumnLinkType: 'Länktyp'
     DependtPageColumnURL: URL
     EDITANYONE: 'Alla som kan logga in'
     EDITHEADER: 'Vem kan redigera den här sidan?'
     EDITONLYTHESE: 'Bara de här (välj från listan)'
-    EDITORGROUPS: Redaktörsgrupper
+    EDITORGROUPS: 'Redaktörsgrupper'
     EDIT_ALL_DESCRIPTION: 'Redigera alla sidor'
     EDIT_ALL_HELP: 'Möjlighet att redigera alla sidor på sajten, oavsett inställningarna under Åtkomstfliken. Kräver "Tillgång till ''Sidor''-delen"'
-    Editors: Redaktörsgrupper
+    Editors: 'Redaktörsgrupper'
     GroupPlaceholder: 'Klicka för att välja grupp'
     HASBROKENLINKS: 'Den här sidan har trasiga länkar.'
     HTMLEDITORTITLE: Innehåll
@@ -154,8 +154,8 @@ sv:
     LINKCHANGENOTE: 'Om du ändrar sidans länkadress så kommer det också påverka länkarna på underliggande sidor'
     LINKSALREADYUNIQUE: ' {url} är redan unik'
     LINKSCHANGEDTO: ' ändra {url1} -> {url2}'
-    MENUTITLE: Navigationsetikett
-    METADESC: Metabeskrivning
+    MENUTITLE: 'Navigationsetikett'
+    METADESC: 'Metabeskrivning'
     METADESCHELP: 'Sökmotorer använder detta innehåll vid visning av sökresultatet (rangordningen påverkas dock inte av detta innehåll).'
     METAEXTRA: 'Egna metataggar'
     METAEXTRAHELP: 'HTML taggar för övrig meta information. Till exempel &lt;meta name="Namn" content="innehållet kommer här" /&gt;'
@@ -167,8 +167,8 @@ sv:
     ONLIVEONLYSHORT: 'Visa endast på publicerad sida'
     ONLIVEONLYSHORTHELP: 'Sidan är publicerad men har raderats från utkastet'
     PAGELOCATION: 'Sidans position'
-    PAGETITLE: Sidnamn
-    PAGETYPE: Sidtyp
+    PAGETITLE: 'Sidnamn'
+    PAGETYPE: 'Sidtyp'
     PARENTID: 'Överordnad sida'
     PARENTTYPE: 'Sidans position'
     PARENTTYPE_ROOT: 'Översta nivån'
@@ -185,10 +185,10 @@ sv:
     SHOWINSEARCH: 'Visa i sökningar?'
     SINGULARNAME: Sida
     TABBEHAVIOUR: Beteende
-    TABCONTENT: Huvudinnehåll
+    TABCONTENT: 'Huvudinnehåll'
     TABDEPENDENT: 'Beroende sidor'
     TOPLEVEL: 'Sajtinnehåll (toppnivå)'
-    URLSegment: URL-segment
+    URLSegment: 'URL-segment'
     VIEWERGROUPS: 'Åtkomstgrupper'
     VIEW_ALL_DESCRIPTION: 'Visa alla sidor'
     VIEW_ALL_HELP: 'Möjlighet att redigera alla sidor på sajten, oavsett inställningarna under Åtkomstfliken. Kräver åtkomst till "Tillgång till ''Sidor''-delen"'
@@ -203,7 +203,6 @@ sv:
     many_many_BackLinkTracking: 'Spåra inlänkar'
     many_many_ImageTracking: 'Spåra bild'
     many_many_LinkTracking: 'Spåra länk'
-    TABMAIN: Allmän
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Länkad sida'
     DESCRIPTION: 'Visar innehåll från en annan sida'
@@ -217,17 +216,17 @@ sv:
     Any: Alla
     BROKENLINKS: 'Rapport för brutna länkar'
     CheckSite: 'Kontrollera sajt'
-    CheckSiteDropdownDraft: Utkast
+    CheckSiteDropdownDraft: 'Utkast'
     CheckSiteDropdownPublished: 'Publicerad Sajt'
     ColumnDateLastModified: 'Datum vid senaste modifiering'
     ColumnDateLastPublished: 'Datum vid senaste publicering'
-    ColumnProblemType: Problemtyp
+    ColumnProblemType: 'Problemtyp'
     ColumnURL: URL
     HasBrokenFile: 'har trasig fil'
     HasBrokenLink: 'har trasig länk'
     HasBrokenLinkAndFile: 'har trasig länk och fil'
     HoverTitleEditPage: 'Redigera sida'
-    PageName: Sidnamn
+    PageName: 'Sidnamn'
     ReasonDropdown: 'Problem att kontrollera'
     ReasonDropdownBROKENFILE: 'Trasig fil'
     ReasonDropdownBROKENLINK: 'Bruten länk'
@@ -242,7 +241,7 @@ sv:
     GO: Kör
     PAGEFILTERDATEHEADING: 'Senast ändrad'
     SEARCH: Sök
-    SearchResults: Sökresultat
+    SearchResults: 'Sökresultat'
   SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask:
     BUTTONRUN: Kör
     CHOOSEOPERATION: 'Välj funktion:'

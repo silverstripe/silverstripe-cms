@@ -36,7 +36,7 @@ et_EE:
     DRAFTSITE: 'Mustandi sait'
     INSTALL_SUCCESS: 'Paigaldus oli edukas!'
     LOGGEDINAS: 'Sisse logitud kui'
-    LOGIN: 'Logi sisse'
+    LOGIN: Logi sisse
     LOGOUT: 'Logi välja'
     NOTEWONTBESHOWN: 'Märkus. Seda teadet ei kuvata lehe külastajatele'
     NOTLOGGEDIN: 'Pole sisse logitud'
@@ -48,6 +48,7 @@ et_EE:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Erimärgid teisendatakse või eemaldatakse automaatselt.'
   SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'Veakood'
     CODE_400: '400 - Halb päring'
     CODE_401: '401 - Volitamata ligipääs'
     CODE_403: '403 - Keelatud'
@@ -71,7 +72,6 @@ et_EE:
     CODE_503: '503 - Teenus puudub'
     CODE_504: '504 - Sissepääsutee aegmaas'
     CODE_505: '505 - HTTP versioon ei ole kasutusel'
-    CODE: Veakood
     DEFAULTERRORPAGECONTENT: '<p>Vabandust aga tundub, et proovid ligipääseda lehele mida pole olemas.</p><p>Palun kontrolli uuesti aadressi kuhu proovid ligi pääseda.</p>'
     DEFAULTERRORPAGETITLE: 'Lehekülge ei leitud'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Vabandust, teie taotluse töötlemisel ilmnes probleem.</p>'
@@ -97,12 +97,12 @@ et_EE:
     BUTTONPUBLISHED: Avaldatud
     BUTTONSAVED: Salvestatud
     BUTTONSAVEPUBLISH: 'Salvesta ja avalda'
-    BUTTONUNPUBLISH: 'Võta maha'
+    BUTTONUNPUBLISH: Võta maha
     BUTTONUNPUBLISHDESC: 'Eemalda see lehekülg avalikult saidilt'
     Comments: Komentaarid
     Content: Sisu
-    DEFAULTABOUTTITLE: Meist
-    DEFAULTCONTACTTITLE: Kontakt
+    DEFAULTABOUTTITLE: 'Meist'
+    DEFAULTCONTACTTITLE: 'Kontakt'
     DEFAULTHOMETITLE: Avaleht
     DEPENDENT_NOTE: 'Alljärgnevad lehed sõltuvad sellest lehest. See hõlmab virtuaalseid lehti, ümbersuunamislehti ja sisulinkidega lehti.'
     DependtPageColumnLinkType: 'Lingi tüüp'
@@ -110,7 +110,7 @@ et_EE:
     EDITANYONE: 'Igaüks, kes sisuhaldussüsteemi sisse võib logida'
     EDITHEADER: 'Kes tohib seda sisuhaldussüsteemi kaudu muuta?'
     EDITONLYTHESE: 'Ainult järgnevad isikud (vali nimekirjast)'
-    EDITORGROUPS: Muutjagrupid
+    EDITORGROUPS: 'Muutjagrupid'
     EDIT_ALL_DESCRIPTION: 'Redigeeri mis tahes lehte'
     EDIT_ALL_HELP: 'Võimalus redigeerida mis tahes lehte sellel saidil, hoolimata vahekaardi Juurdepääs seadetest. Vajab jaotise "Juurdepääs  lehtedele" õigusi\n'
     Editors: 'Toimetajate gruppid'
@@ -120,7 +120,7 @@ et_EE:
     LASTUPDATED: 'Viimati uuendatud'
     LINKCHANGENOTE: 'Selle lehe lingi muutmine mõjutab ka kõigi alamlehtede linke.'
     MENUTITLE: 'Navigatsiooni silt'
-    METADESC: Kirjeldus
+    METADESC: 'Kirjeldus'
     METADESCHELP: 'Otsingumootor kasutab seda sisu otsingutulemuste kuvamiseks (kuigi see ei mõjuta nende järjestust).'
     METAEXTRA: 'Kohandatud metamärgendid'
     METAEXTRAHELP: 'HTML-sildid täiendavate metaandmete jaoks. Nt &lt;meta name="customName" content="your custom content here" /&gt;'
@@ -130,7 +130,7 @@ et_EE:
     PAGELOCATION: 'Lehe asukoht'
     PAGETITLE: 'Lehekülje nimi'
     PAGETYPE: 'Lehe tüüp'
-    PARENTID: Vanemleht
+    PARENTID: 'Vanemleht'
     PARENTTYPE: 'Lehe asukoht'
     PARENTTYPE_ROOT: 'Kõrgema taseme leht'
     PARENTTYPE_SUBPAGE: 'Vanemlehe all olev alamleht'
@@ -144,11 +144,11 @@ et_EE:
     SHOWINMENUS: 'Näita menüüdes?'
     SHOWINSEARCH: 'Näita otsingus?'
     TABBEHAVIOUR: Käitumine
-    TABCONTENT: Sisu
+    TABCONTENT: 'Sisu'
     TABDEPENDENT: 'Sõltuvad lehed'
     TOPLEVEL: 'Lehe sisu (kõrgeim tase)'
     URLSegment: 'URL-i jagu'
-    VIEWERGROUPS: Vaatajagrupid
+    VIEWERGROUPS: 'Vaatajagrupid'
     VIEW_ALL_DESCRIPTION: 'Kuva mis tahes leht'
     VIEW_DRAFT_CONTENT: 'Kuva mustandi sisu'
     VIEW_DRAFT_CONTENT_HELP: 'Rakendub lehe vaatamisel väljaspool CMS-i mustandirežiimis. Kasulik välistele kaastöötajatele, kellel puudub juurdepääs CMS-ile.'
@@ -158,7 +158,6 @@ et_EE:
     many_many_BackLinkTracking: 'Tagasilingi jälgimine'
     many_many_ImageTracking: 'Pildi jälgimine'
     many_many_LinkTracking: 'Lingi jälgimine'
-    TABMAIN: Avaleht
   SilverStripe\CMS\Model\VirtualPage:
     EditLink: redigeeri
     HEADER: 'See on virtuaalne leht'
@@ -190,4 +189,4 @@ et_EE:
     FILTERDATETO: Kuni
     GO: Mine
     SEARCH: Otsi
-    SearchResults: Otsingutulemused
+    SearchResults: 'Otsingutulemused'

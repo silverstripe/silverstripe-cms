@@ -12,9 +12,9 @@ vi_VN:
     REDIRECTTO: 'Di chuyển đến'
     REDIRECTTOEXTERNAL: 'Website khác'
     REDIRECTTOPAGE: 'Một trang trên website'
-    YOURPAGE: Trang
+    YOURPAGE: 'Trang'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: 'Bất cứ ai'
+    ACCESSANYONE: Bất cứ ai
     ACCESSHEADER: 'Ai có thể xem trang này ?'
     ACCESSLOGGEDIN: 'Người dùng đã đăng nhập'
     ACCESSONLYTHESE: 'Chỉ những người sau đây (chọn từ danh sách)'
@@ -24,19 +24,18 @@ vi_VN:
     BUTTONUNPUBLISHDESC: 'Xóa trang này khỏi trang hoạt động'
     DEFAULTABOUTTITLE: 'Giới thiệu'
     DEFAULTCONTACTTITLE: 'Liên hệ'
-    DEFAULTHOMETITLE: 'Trang chủ'
+    DEFAULTHOMETITLE: Trang chủ
     EDITANYONE: 'Bất cứ ai có thể đăng nhập vào phần quản lý'
     EDITHEADER: 'Ai có thể thay đổi trang này ?'
     EDITONLYTHESE: 'Chỉ những người sau đây (chọn từ danh sách)'
     HASBROKENLINKS: 'Trang này có liên kết hỏng.'
-    HTMLEDITORTITLE: 'Nội dung'
-    MENUTITLE: Nhãn
+    HTMLEDITORTITLE: Nội dung
+    MENUTITLE: 'Nhãn'
     METADESC: 'Mô tả'
     METAEXTRA: 'Thẻ thông tin bổ sung'
     PAGETITLE: 'Tên trang'
-    PAGETYPE: Loại
+    PAGETYPE: 'Loại'
     SHOWINMENUS: 'Hiển thị trên menu?'
     SHOWINSEARCH: 'Hiển thị khi tìm kiếm?'
-    TABBEHAVIOUR: 'Hoạt động'
+    TABBEHAVIOUR: Hoạt động
     TABCONTENT: 'Thông tin'
-    TABMAIN: 'Nội dung'
