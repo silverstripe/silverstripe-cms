@@ -1,6 +1,0 @@
----
-Name: cmsinjector
----
-SilverStripe\Core\Injector\Injector:
-  SiteTreeLinkTracking_Parser:
-    class: SilverStripe\CMS\Model\SiteTreeLinkTracking_Parser
