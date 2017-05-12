@@ -196,51 +196,6 @@ $.entwine('ss', function($){
 	});
 
 	/**
-	 * Class: .cms-edit-form #CanViewType, .cms-edit-form #CanEditType
-	 *
-	 * Toggle display of group dropdown in "access" tab,
-	 * based on selection of radiobuttons.
-	 */
-  $('.cms-edit-form [name="CanViewType"], ' +
-    '.cms-edit-form [name="CanEditType"], ' +
-    '.cms-edit-form #CanCreateTopLevelType').entwine({
-    onmatch: function () {
-      if (this.val() === 'OnlyTheseUsers') {
-        if (this.is(':checked')) {
-          this.showList(true);
-        } else {
-          this.hideList(true);
-        }
-      }
-    },
-    onchange: function (e) {
-      if (e.target.value === 'OnlyTheseUsers') {
-        this.showList();
-      } else {
-        this.hideList();
-      }
-    },
-    showList: function (instant) {
-      const holder = this.closest('.field');
-      const list = holder.next().filter('.listbox');
-
-      holder.addClass('field--merge-below');
-      list[instant ? 'show' : 'slideDown'](() => {
-        // jquery adding overflow:hidden in hide, this will break listbox display
-        list.css('overflow','visible');
-      });
-    },
-    hideList: function (instant) {
-      const holder = this.closest('.field');
-      const list = holder.next().filter('.listbox');
-
-      list[instant ? 'hide' : 'slideUp'](() => {
-        holder.removeClass('field--merge-below');
-     }).css('overflow','hidden');
-    }
-  });
-
-	/**
 	 * Class: .cms-edit-form .btn-toolbar #Form_EditForm_action_print
 	 *
 	 * Open a printable representation of the form in a new window.
