@@ -5,6 +5,7 @@ if (Array.isArray(Config)) {
   const jsConfig = Config.find((item) => item.name === 'js');
 
   jsConfig.plugins = [
+  	...jsConfig.plugins,
     new webpack.ProvidePlugin({
       jQuery: 'jQuery',
       $: 'jQuery',
