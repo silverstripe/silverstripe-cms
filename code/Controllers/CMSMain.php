@@ -53,6 +53,7 @@ use SilverStripe\ORM\HiddenClass;
 use SilverStripe\ORM\Hierarchy\MarkedSet;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\ValidationResult;
+use SilverStripe\Security\InheritedPermissions;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\Security\Member;
@@ -466,11 +467,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         }
 
         // Pre-cache permissions
-        SiteTree::prepopulate_permission_cache(
-            'CanEditType',
-            $markingSet->markedNodeIDs(),
-            [ SiteTree::class, 'can_edit_multiple']
-        );
+        $checker = SiteTree::getPermissionChecker();
+        if ($checker instanceof InheritedPermissions) {
+            $checker->prePopulatePermissionCache(
+                InheritedPermissions::EDIT,
+                $markingSet->markedNodeIDs()
+            );
+        }
 
         // Render using full-subtree template
         return $markingSet->renderChildren(

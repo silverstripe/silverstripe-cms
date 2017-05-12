@@ -247,7 +247,7 @@ class VirtualPage extends Page
             );
         }
         if ($this->CopyContentFromID
-            && !Versioned::get_versionnumber_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', $this->CopyContentFromID)
+            && !Versioned::get_versionnumber_by_stage(SiteTree::class, Versioned::LIVE, $this->CopyContentFromID)
         ) {
             $msgs[] = _t(
                 'SilverStripe\\CMS\\Model\\SiteTree.VIRTUALPAGEDRAFTWARNING',

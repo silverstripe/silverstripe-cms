@@ -94,8 +94,8 @@ class SiteTreePermissionsTest extends FunctionalTest
 
         // Test can_edit_multiple
         $this->assertEquals(
-            array($pageID => true),
-            SiteTree::can_edit_multiple(array($pageID), $member->ID)
+            [ $pageID => true ],
+            SiteTree::getPermissionChecker()->canEditMultiple([$pageID], $member)
         );
 
         // Test canEdit
@@ -117,8 +117,8 @@ class SiteTreePermissionsTest extends FunctionalTest
 
         // Test can_edit_multiple
         $this->assertEquals(
-            array($pageID => true),
-            SiteTree::can_edit_multiple(array($pageID), $member->ID)
+            [ $pageID => true ],
+            SiteTree::getPermissionChecker()->canEditMultiple([$pageID], $member)
         );
 
         // Test canEdit
