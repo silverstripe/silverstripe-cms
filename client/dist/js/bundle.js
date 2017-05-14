@@ -55,11 +55,7 @@ this._super()},onunmatch:function t(){this._super()},_toggleSelection:function e
 "root"==a?this.find(":input[name=ParentID]").val(0):this.find(":input[name=ParentID]").val(this.find("#Form_EditForm_ParentType_subpage").data("parentIdValue")),"root"!=a?i.slideDown(400,function(){t(this).css("overflow","visible")
 
 }):i.slideUp()},_changeParentId:function t(e){var n=this.find(":input[name=ParentID]").val()
-this.find("#Form_EditForm_ParentType_subpage").data("parentIdValue",n)}}),t('.cms-edit-form [name="CanViewType"], .cms-edit-form [name="CanEditType"], .cms-edit-form #CanCreateTopLevelType').entwine({onmatch:function t(){
-"OnlyTheseUsers"===this.val()&&(this.is(":checked")?this.showList(!0):this.hideList(!0))},onchange:function t(e){"OnlyTheseUsers"===e.target.value?this.showList():this.hideList()},showList:function t(e){
-var n=this.closest(".field"),a=n.next().filter(".listbox")
-n.addClass("field--merge-below"),a[e?"show":"slideDown"](function(){a.css("overflow","visible")})},hideList:function t(e){var n=this.closest(".field"),a=n.next().filter(".listbox")
-a[e?"hide":"slideUp"](function(){n.removeClass("field--merge-below")}).css("overflow","hidden")}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_print").entwine({onclick:function e(n){var a=t(this[0].form).attr("action").replace(/\?.*$/,"")+"/printable/"+t(":input[name=ID]",this[0].form).val()
+this.find("#Form_EditForm_ParentType_subpage").data("parentIdValue",n)}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_print").entwine({onclick:function e(n){var a=t(this[0].form).attr("action").replace(/\?.*$/,"")+"/printable/"+t(":input[name=ID]",this[0].form).val()
 
 
 return"http://"!=a.substr(0,7)&&(a=t("base").attr("href")+a),window.open(a,"printable"),!1}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_rollback").entwine({onclick:function t(e){var n=this.parents("form:first"),a=n.find(":input[name=Version]").val(),i=""
