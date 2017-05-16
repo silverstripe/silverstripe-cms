@@ -16,7 +16,7 @@ So that I can link to a external website or a page on my site
   Scenario: I can link to an external URL
     Given I select "awesome" in the "Content" HTML field
       And I press the "Insert Link" HTML field button
-    When I click "Link to external URL" in the "[role='menuitem']" element
+    When I click "Link to external URL" in the ".mce-menu" element
       And I should see an "form#Form_EditorToolbarEditorExternalLink" element
     When I fill in "http://silverstripe.org" for "URL"
       And I check "Open in new window/tab"
@@ -29,7 +29,7 @@ So that I can link to a external website or a page on my site
     Given I fill in the "Content" HTML field with "<p>My <a href='http://silverstripe.org'>awesome</a> content"
       And I select "awesome" in the "Content" HTML field
     When I press the "Insert Link" HTML field button
-      And I click "Link to external URL" in the "[role='menuitem']" element
+      And I click "Link to external URL" in the ".mce-menu" element
       And I should see an "form#Form_EditorToolbarEditorExternalLink" element
     Then the "URL" field should contain "http://silverstripe.org"
     # This doesn't seem to suffer from that issue
