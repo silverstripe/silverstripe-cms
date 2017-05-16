@@ -2,6 +2,7 @@
 
 namespace SilverStripe\CMS\Model;
 
+use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\HeaderField;
 use SilverStripe\Forms\OptionsetField;
 use SilverStripe\Forms\TextField;
@@ -145,35 +146,35 @@ class RedirectorPage extends Page
 
     public function getCMSFields()
     {
-        $fields = parent::getCMSFields();
-        $fields->removeByName('Content', true);
+        $this->beforeUpdateCMSFields(function (FieldList $fields) {
+            $fields->removeByName('Content', true);
 
-        // Remove all metadata fields, does not apply for redirector pages
-        $fields->removeByName('Metadata');
+            // Remove all metadata fields, does not apply for redirector pages
+            $fields->removeByName('Metadata');
 
-        $fields->addFieldsToTab(
-            'Root.Main',
-            array(
-                new HeaderField('RedirectorDescHeader', _t('SilverStripe\\CMS\\Model\\RedirectorPage.HEADER', "This page will redirect users to another page")),
-                new OptionsetField(
-                    "RedirectionType",
-                    _t('SilverStripe\\CMS\\Model\\RedirectorPage.REDIRECTTO', "Redirect to"),
-                    array(
-                        "Internal" => _t('SilverStripe\\CMS\\Model\\RedirectorPage.REDIRECTTOPAGE', "A page on your website"),
-                        "External" => _t('SilverStripe\\CMS\\Model\\RedirectorPage.REDIRECTTOEXTERNAL', "Another website"),
+            $fields->addFieldsToTab(
+                'Root.Main',
+                array(
+                    new HeaderField('RedirectorDescHeader', _t(__CLASS__.'.HEADER', "This page will redirect users to another page")),
+                    new OptionsetField(
+                        "RedirectionType",
+                        _t(__CLASS__.'.REDIRECTTO', "Redirect to"),
+                        array(
+                            "Internal" => _t(__CLASS__.'.REDIRECTTOPAGE', "A page on your website"),
+                            "External" => _t(__CLASS__.'.REDIRECTTOEXTERNAL', "Another website"),
+                        ),
+                        "Internal"
                     ),
-                    "Internal"
-                ),
-                new TreeDropdownField(
-                    "LinkToID",
-                    _t('SilverStripe\\CMS\\Model\\RedirectorPage.YOURPAGE', "Page on your website"),
-                    "SilverStripe\\CMS\\Model\\SiteTree"
-                ),
-                new TextField("ExternalURL", _t('SilverStripe\\CMS\\Model\\RedirectorPage.OTHERURL', "Other website URL"))
-            )
-        );
-
-        return $fields;
+                    new TreeDropdownField(
+                        "LinkToID",
+                        _t(__CLASS__.'.YOURPAGE', "Page on your website"),
+                        SiteTree::class
+                    ),
+                    new TextField("ExternalURL", _t(__CLASS__.'.OTHERURL', "Other website URL"))
+                )
+            );
+        });
+        return parent::getCMSFields();
     }
 
     // Don't cache RedirectorPages
