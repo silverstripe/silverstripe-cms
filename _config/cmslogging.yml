@@ -1,9 +1,8 @@
 ---
 Name: cms-logging
-After: '#live-logging'
-Except:
-  environment: dev
+After:
+  - '#loggingformatters'
 ---
 SilverStripe\Core\Injector\Injector:
-  FriendlyErrorFormatter:
+  Monolog\Formatter\FormatterInterface.friendly:
     class: SilverStripe\CMS\Logging\ErrorPageErrorFormatter

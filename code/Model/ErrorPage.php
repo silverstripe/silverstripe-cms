@@ -390,6 +390,6 @@ class ErrorPage extends Page
      */
     protected static function get_asset_handler()
     {
-        return Injector::inst()->get('GeneratedAssetHandler');
+        return Injector::inst()->get(GeneratedAssetHandler::class);
     }
 }

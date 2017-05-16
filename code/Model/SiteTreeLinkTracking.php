@@ -46,9 +46,9 @@ class SiteTreeLinkTracking extends DataExtension
      * @var array
      * @config
      */
-    private static $dependencies = array(
-        'Parser' => '%$SiteTreeLinkTracking_Parser'
-    );
+    private static $dependencies = [
+        'Parser' => '%$' . SiteTreeLinkTracking_Parser::class
+    ];
 
     /**
      * Parser for link tracking
@@ -64,7 +64,7 @@ class SiteTreeLinkTracking extends DataExtension
      * @param SiteTreeLinkTracking_Parser $parser
      * @return $this
      */
-    public function setParser($parser)
+    public function setParser(SiteTreeLinkTracking_Parser $parser = null)
     {
         $this->parser = $parser;
         return $this;
@@ -81,7 +81,7 @@ class SiteTreeLinkTracking extends DataExtension
     );
 
     private static $belongs_many_many = array(
-        "BackLinkTracking" => "SilverStripe\\CMS\\Model\\SiteTree.LinkTracking"
+        "BackLinkTracking" => SiteTree::class . '.LinkTracking',
     );
 
     /**
