@@ -68,10 +68,10 @@ var n=this.parents("form:first"),a=n.find(":input[name=Version]").val(),i="",s=t
 return i=r.default.sprintf(r.default._t(s?"CMS.RestoreToRoot":"CMS.Restore"),a),!!confirm(i)&&this._super(e)}}),t(".cms-edit-form .btn-toolbar #Form_EditForm_action_unpublish").entwine({onclick:function t(e){
 var n=this.parents("form:first"),a=n.find(":input[name=Version]").val(),i=""
 return i=r.default.sprintf(r.default._t("CMS.Unpublish"),a),!!confirm(i)&&this._super(e)}}),t(".cms-edit-form.changed").entwine({onmatch:function t(e){var n=this.find("button[name=action_save]")
-n.attr("data-text-alternate")&&(n.attr("data-text-standard",n.text()),n.text(n.attr("data-text-alternate"))),n.attr("data-btn-alternate")&&(n.attr("data-btn-standard",n.attr("class")),n.attr("class",n.attr("data-btn-alternate"))),
-n.removeClass("btn-secondary-outline").addClass("btn-primary")
+n.attr("data-text-alternate")&&(n.attr("data-text-standard",n.find("span").text()),n.find("span").text(n.attr("data-text-alternate"))),n.attr("data-btn-alternate")&&(n.attr("data-btn-standard",n.attr("class")),
+n.attr("class",n.attr("data-btn-alternate"))),n.removeClass("btn-secondary-outline").addClass("btn-primary")
 var a=this.find("button[name=action_publish]")
-a.attr("data-text-alternate")&&(a.attr("data-text-standard",a.attr("data-text-alternate")),a.text(a.attr("data-text-alternate"))),a.attr("data-btn-alternate")&&(a.attr("data-btn-standard",a.attr("class")),
+a.attr("data-text-alternate")&&(a.attr("data-text-standard",a.find("span").text()),a.find("span").text(a.attr("data-text-alternate"))),a.attr("data-btn-alternate")&&(a.attr("data-btn-standard",a.attr("class")),
 a.attr("class",a.attr("data-btn-alternate"))),a.removeClass("btn-secondary-outline").addClass("btn-primary"),this._super(e)},onunmatch:function t(e){var n=this.find("button[name=action_save]")
 n.attr("data-text-standard")&&n.text(n.attr("data-text-standard")),n.attr("data-btn-standard")&&n.attr("class",n.attr("data-btn-standard"))
 var a=this.find("button[name=action_publish]")
