@@ -327,7 +327,7 @@ class SiteTreeTest extends SapphireTest
         $this->assertEquals($pageID, $resultPage->ID);
         $this->assertEquals($pageID, $requeriedPage->ID);
         $this->assertEquals('About Us', $requeriedPage->Title);
-        $this->assertEquals('Page', $requeriedPage->class);
+        $this->assertInstanceOf('Page', $requeriedPage);
 
 
         $page2 = $this->objFromFixture('Page', 'products');
@@ -345,7 +345,7 @@ class SiteTreeTest extends SapphireTest
         Versioned::set_stage(Versioned::DRAFT);
         $requeriedPage = DataObject::get_by_id("Page", $page2ID);
         $this->assertEquals('Products', $requeriedPage->Title);
-        $this->assertEquals('Page', $requeriedPage->class);
+        $this->assertInstanceOf('Page', $requeriedPage);
     }
 
     public function testGetByLink()
