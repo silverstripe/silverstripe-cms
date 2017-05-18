@@ -1,6 +1,9 @@
 LeftAndMain:
   extensions:
-    - LeftAndMainPageIconsExtension
+    - 'LeftAndMainPageIconsExtension'
 Security:
   extensions:
-    - ErrorPageControllerExtension
+    - 'ErrorPageControllerExtension'
+File:
+  extensions:
+    - 'SiteTreeFileExtension'
