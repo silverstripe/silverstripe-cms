@@ -10,6 +10,7 @@
 .CMSPageHistoryController ins { background-color: #DFD; padding: 2px; text-decoration: none; }
 .CMSPageHistoryController del { background-color: #FDD; padding: 2px; color: #ff4444; }
 
+.cms .ui-button-text { white-space: nowrap; }
 /** -------------------------------------------- Tree View (collapsed for sidebar) -------------------------------------------- */
 #cms-content-treeview .cms-tree-expand-trigger { display: none; }
 
