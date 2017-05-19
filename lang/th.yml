@@ -13,7 +13,7 @@ th:
     PUBPAGES: 'เผยแแพร่หน้าเว็บแล้ว {count} หน้า'
     PageAdded: หน้าเว็บที่สร้างเสร็จเรียบร้อยแล้ว
     REMOVEDPAGE: 'ลบ ''{title}'' ออกจากเว็บไซต์ที่เผยแพร่อยู่แล้ว'
-    REMOVEDPAGEFROMDRAFT: 'ลบ ''%s'' ออกจากเว็บไซต์ฉบับร่างแล้ว'
+    REMOVEDPAGEFROMDRAFT: 'ลบ ''{title}'' ออกจากเว็บไซต์ฉบับร่างแล้ว'
     RESTORED: 'เรียกคืนค่า ''{title}'' เสร็จเรียบร้อยแล้ว'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: อยู่ใต้หน้าอื่นๆ

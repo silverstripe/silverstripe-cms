@@ -16,10 +16,10 @@ mi:
     PUBPAGES: 'Kua oti: I whakaputaina ngā whārangi {count}'
     PageAdded: 'I momoho te hanga whārangi'
     REMOVEDPAGE: 'I tango te ''{title}'' i te pae kua whakaputaina'
-    REMOVEDPAGEFROMDRAFT: 'I tangohia a ''%s'' i te pae hukihuki'
+    REMOVEDPAGEFROMDRAFT: 'I tangohia a ''{title}'' i te pae hukihuki'
     RESTORED: 'I momoho te whakaora i te ''{title}'''
     ROLLEDBACKPUBv2: 'I hoki ki te tauira kua whakaputaina.'
-    ROLLEDBACKVERSIONv2: 'I hoki ki te tauira #%d.'
+    ROLLEDBACKVERSIONv2: 'I hoki ki te tauira #{version}.'
     SAVEDRAFT: 'Tiaki hukihuki'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Kei raro i tētahi atu whārangi'

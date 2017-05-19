@@ -7,7 +7,7 @@ sv:
     ACCESS_HELP: 'Tillåt visning av sektionen innehållande sidträdet och dess innehåll. Rättigheter att visa och redigera sidan kan hanteras i dess rullgardinsmenyer, liksom i "Innehållsbehörigheter".'
     APPLY_FILTER: Sök
     ARCHIVE: Arkiv
-    ARCHIVEDPAGE: 'Arkiverade sidor ''%s'''
+    ARCHIVEDPAGE: 'Arkiverade sidor ''{title}'''
     AddPageRestriction: 'OBS: Vissa sidtyper är inte tillåtna här'
     CLEAR_FILTER: Rensa
     Cancel: Avbryt
@@ -26,14 +26,14 @@ sv:
     PUBPAGES: 'Klar: Publicerade {count} sidor'
     PageAdded: 'Lyckades skapa sida'
     REMOVEDPAGE: 'Tog bort ''{title}'' från den publicerade sajten'
-    REMOVEDPAGEFROMDRAFT: 'Raderade ''%s'' från utkast'
+    REMOVEDPAGEFROMDRAFT: 'Raderade ''{title}'' från utkast'
     RESTORE: 'Återskapa utkast'
     RESTORED: 'Återskapandet av  ''{title}'' lyckades'
     RESTORE_DESC: 'Återställ den arkiverade versionen av sidan som ett utkast'
     RESTORE_TO_ROOT: 'Återskapa utkast på top nivå'
     RESTORE_TO_ROOT_DESC: 'Återställ den arkiverade versionen till ett utkast som en top menu sida'
     ROLLEDBACKPUBv2: 'Återställde till den publicerade versionen.'
-    ROLLEDBACKVERSIONv2: 'Återställde till version #%d.'
+    ROLLEDBACKVERSIONv2: 'Återställde till version #{version}.'
     SAVED: 'Sparade  ''{title}'' lyckades.'
     SAVEDRAFT: 'Spara utkast'
     UNPUBLISH_AND_ARCHIVE: 'Avpublicerad och arkivera'

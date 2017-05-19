@@ -18,10 +18,10 @@ nl:
     PUBPAGES: 'Gereed: {count} pagina''s gepubliceerd'
     PageAdded: 'Pagina met succes aangemaakt'
     REMOVEDPAGE: '''{title}'' is van de gepubliceerde site verwijderd'
-    REMOVEDPAGEFROMDRAFT: '''%s'' is verwijderd uit de concept site'
+    REMOVEDPAGEFROMDRAFT: '''{title}'' is verwijderd uit de concept site'
     RESTORED: '''{title}'' is met succes hersteld'
     ROLLEDBACKPUBv2: 'Teruggedraaid naar gepubliceerde versie.'
-    ROLLEDBACKVERSIONv2: 'Teruggedraaid naar versie #%d.'
+    ROLLEDBACKVERSIONv2: 'Teruggedraaid naar versie #{version}.'
     SAVEDRAFT: 'Concept opslaan'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Pagina toevoegen'

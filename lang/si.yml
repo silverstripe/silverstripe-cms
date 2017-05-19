@@ -3,7 +3,7 @@ si:
     PAGENOTEXISTS: 'මෙම  පිටුව තවදුරටත් නොපවතී'
     PUBALLCONFIRM: 'අඩවියේ ඇති සියලු පිටු, වේදිකාවට පිටපත් කර ප්රසිද්ධ කරන්න'
     PUBALLFUN: 'සියලු ක්රම වේද ප්රසිද්ධ කරන ලදී'
-    REMOVEDPAGEFROMDRAFT: 'කටු අඩවියෙන් ''%s'' මකන ලදී'
+    REMOVEDPAGEFROMDRAFT: 'කටු අඩවියෙන් ''{title}'' මකන ලදී'
   SilverStripe\CMS\Model\ErrorPage:
     CODE: 'වැරදි කේතය'
     CODE_400: '400 - දුර්වල ඉල්ළීමක්'

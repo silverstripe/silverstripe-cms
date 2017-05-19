@@ -7,7 +7,7 @@ es:
     ACCESS_HELP: 'Permitir la visualización de la sección que contiene el árbol de la página y el contenido. Ver y editar permisos puede ser gestionado a través de menús desplegables específicos de las páginas, así como los "permisos de contenido" separados.'
     APPLY_FILTER: Buscar
     ARCHIVE: Archivar
-    ARCHIVEDPAGE: '''%s'' páginas archivadas'
+    ARCHIVEDPAGE: '''{title}'' páginas archivadas'
     AddPageRestriction: 'Agregar restricción a la página'
     CLEAR_FILTER: Limpiar
     Cancel: Cancelar
@@ -28,14 +28,14 @@ es:
     PUBPAGES: 'Hecho: Publicadas {count} páginas'
     PageAdded: 'Página creada correctamente'
     REMOVEDPAGE: 'Eliminado ''{title}'' del sitio publicado'
-    REMOVEDPAGEFROMDRAFT: 'Borrado ''%s''%s desde el sitio no publicado'
+    REMOVEDPAGEFROMDRAFT: 'Borrado ''{title}'' desde el sitio no publicado'
     RESTORE: 'Restaurar borrador'
     RESTORED: 'Restablecido ''{title}'' correctamente'
     RESTORE_DESC: 'Recuperar la versión archivada del borrador'
     RESTORE_TO_ROOT: 'Recuperar borrador al nivel superior'
     RESTORE_TO_ROOT_DESC: 'Recuperar la versión archivada del borrador como de nivel superior'
     ROLLEDBACKPUBv2: Restaurado
-    ROLLEDBACKVERSIONv2: 'Versión #%d restaurada'
+    ROLLEDBACKVERSIONv2: 'Versión #{version} restaurada'
     SAVED: '''{title}'' guardado satisfactoriamente.'
     SAVEDRAFT: 'Guardar borrador'
     UNPUBLISH_AND_ARCHIVE: 'Despublicar y archivar'

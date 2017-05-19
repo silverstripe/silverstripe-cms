@@ -16,7 +16,7 @@ it:
     ACCESS_HELP: 'Consente la visualizzazione della sezione con l''albero delle pagine e i contenuti. I permessi di visualizzazione e modifica possono essere gestiti attraverso menù a tendina specifici della pagina, come dai separati "Permessi sui contenuti".'
     APPLY_FILTER: Cerca
     ARCHIVE: Archivia
-    ARCHIVEDPAGE: 'Pagina ''%s'' archiviata'
+    ARCHIVEDPAGE: 'Pagina ''{title}'' archiviata'
     AddNew: 'Aggiungi nuova pagina'
     AddNewButton: 'Aggiungi nuova'
     AddPageRestriction: 'Nota: alcuni tipi di pagina non sono permessi in questa sezione'
@@ -47,7 +47,7 @@ it:
     PUBPAGES: 'Fatto: Pubblicate {count} pagine'
     PageAdded: 'Pagina creata con successo'
     REMOVEDPAGE: 'Eliminata ''{title}'' dal sito pubblicato'
-    REMOVEDPAGEFROMDRAFT: 'Eliminata ''%s'' dal sito bozza'
+    REMOVEDPAGEFROMDRAFT: 'Eliminata ''{title}'' dal sito bozza'
     REORGANISATIONSUCCESSFUL: 'Albero del sito riorganizzato con successo.'
     RESTORE: 'Ripristina bozza'
     RESTORED: 'Ripristinata ''{title}'' con successo'
@@ -56,7 +56,7 @@ it:
     RESTORE_TO_ROOT_DESC: 'Ripristinare la versione archiviata nella bozza come pagina di primo livello'
     ROLLBACK: 'Ripristina a questa versione'
     ROLLEDBACKPUBv2: 'Ripristinata la versione pubblicata.'
-    ROLLEDBACKVERSIONv2: 'Ripristinata la versione #%d.'
+    ROLLEDBACKVERSIONv2: 'Ripristinata la versione #{version}.'
     SAVED: '''{title}'' salvata correttamente.'
     SAVEDRAFT: 'Salva bozza'
     SHOW_AS_LIST: 'Mostra come lista'

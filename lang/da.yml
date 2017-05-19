@@ -14,7 +14,7 @@ da:
     PUBPAGES: 'Færdig: Udgav {count} sider'
     PageAdded: 'Siden blev oprettet med succes'
     REMOVEDPAGE: 'Fjernede ''{title}'' fra den udgivne side'
-    REMOVEDPAGEFROMDRAFT: '''%s''  fjernet fra udkast-sitet'
+    REMOVEDPAGEFROMDRAFT: '''{title}''  fjernet fra udkast-sitet'
     RESTORED: 'Genskabte ''{title}'' korrekt'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Under en anden side'

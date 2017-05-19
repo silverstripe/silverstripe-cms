@@ -16,7 +16,7 @@ de:
     ACCESS_HELP: 'Seiteninhalt im CMS anzeigen. Anzeige- und Bearbeitungsberechtigungen können sowohl seitenspezifische als auch über die globalen Inhaltsberechtigungen gesetzt werden.'
     APPLY_FILTER: Suche
     ARCHIVE: Archiv
-    ARCHIVEDPAGE: 'Seite ''%s'' archiviert'
+    ARCHIVEDPAGE: 'Seite ''{title}'' archiviert'
     AddNew: 'Neue Seite hinzufügen'
     AddNewButton: Hinzufügen
     AddPageRestriction: 'Hinweis: einige Seitentypen sind in diesem Bereich nicht erlaubt.'
@@ -39,7 +39,7 @@ de:
     PUBPAGES: 'Abgeschlossen: {count} Seiten wurden veröffentlicht'
     PageAdded: 'Seite erfolgreich erstellt'
     REMOVEDPAGE: '''{title}'' wurde von der veröffentlichten Site entfernt'
-    REMOVEDPAGEFROMDRAFT: 'Lösche ''%s'' von der Entwurfs-Site'
+    REMOVEDPAGEFROMDRAFT: 'Lösche ''{title}'' von der Entwurfs-Site'
     RESTORE: 'Entwurf wiederherstellen'
     RESTORED: '''{title}'' wurde wiederhergestellt'
     RESTORE_DESC: 'Entwurf aus archivierter Version wiederherstellen'
@@ -47,7 +47,7 @@ de:
     RESTORE_TO_ROOT_DESC: 'Archivierte Version als Entwurf in oberster Ebene wiederherstellen'
     ROLLBACK: 'Diese Version wiederherstellen'
     ROLLEDBACKPUBv2: 'Veröffentlichte Version wiederhergestellt'
-    ROLLEDBACKVERSIONv2: 'Version #%d wiederhergestellt.'
+    ROLLEDBACKVERSIONv2: 'Version #{version} wiederhergestellt.'
     SAVED: '''{title}'' erfolgreich gespeichert.'
     SAVEDRAFT: 'Entwurf speichern'
     SHOW_AS_LIST: 'als Liste zeigen'

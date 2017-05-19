@@ -12,7 +12,7 @@ class CMSBatchAction_Archive extends CMSBatchAction
 {
     public function getActionTitle()
     {
-        return _t('SilverStripe\\CMS\\BatchActions\\CMSBatchAction_Archive.TITLE', 'Unpublish and archive');
+        return _t(__CLASS__ . '.TITLE', 'Unpublish and archive');
     }
 
     public function run(SS_List $pages)
@@ -20,7 +20,7 @@ class CMSBatchAction_Archive extends CMSBatchAction
         return $this->batchaction(
             $pages,
             'doArchive',
-            _t('SilverStripe\\CMS\\BatchActions\\CMSBatchAction_Archive.RESULT', 'Deleted %d pages from draft and live, and sent them to the archive')
+            _t(__CLASS__ . '.RESULT', 'Deleted %d pages from draft and live, and sent them to the archive')
         );
     }
 

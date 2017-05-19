@@ -1708,7 +1708,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             rawurlencode(_t(
                 'SilverStripe\\CMS\\Controllers\\CMSMain.RESTORED',
                 "Restored '{title}' successfully",
-                'Param %s is a title',
+                'Param {title} is a title',
                 array('title' => $record->Title)
             ))
         );
@@ -1853,14 +1853,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if ($version) {
             $record->doRollbackTo($version);
             $message = _t(
-                'SilverStripe\\CMS\\Controllers\\CMSMain.ROLLEDBACKVERSIONv2',
-                "Rolled back to version #%d.",
+                __CLASS__ . '.ROLLEDBACKVERSIONv2',
+                "Rolled back to version #{version}.",
                 array('version' => $data['Version'])
             );
         } else {
             $record->doRevertToLive();
             $message = _t(
-                'SilverStripe\\CMS\\Controllers\\CMSMain.ROLLEDBACKPUBv2',
+                __CLASS__ . '.ROLLEDBACKPUBv2',
                 "Rolled back to published version."
             );
         }

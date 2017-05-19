@@ -3,7 +3,7 @@ pt_BR:
     PAGENOTEXISTS: 'Esta página não existe'
     PUBALLCONFIRM: 'Por favor publique todas as páginas no site, copiando content stage to live'
     PUBALLFUN: 'Funcionalidade "Publicar Tudo"'
-    REMOVEDPAGEFROMDRAFT: 'Removido ''%s''  do site de rascunho'
+    REMOVEDPAGEFROMDRAFT: 'Removido ''{title}''  do site de rascunho'
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: Páginas
   SilverStripe\CMS\Model\ErrorPage:

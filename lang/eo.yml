@@ -16,7 +16,7 @@ eo:
     ACCESS_HELP: 'Permesi vidigi la sekcion kiu enhavas paĝarbon kaj enhavon. Vidigaj kaj redaktaj permesoj estas trakteblaj per paĝspecifaj fallistoj, kaj ankaŭ la apartaj "Enhavaj permesoj".'
     APPLY_FILTER: Serĉi
     ARCHIVE: Enarkivigi
-    ARCHIVEDPAGE: 'Enarkivigis paĝon ''%s'''
+    ARCHIVEDPAGE: 'Enarkivigis paĝon ''{title}'''
     AddNew: 'Aldoni novan paĝon'
     AddNewButton: 'Aldoni novan'
     AddPageRestriction: 'Noto: iuj tipoj de paĝoj ne estas permesataj por ĉi tiu elektaĵo.'
@@ -47,7 +47,7 @@ eo:
     PUBPAGES: 'Farite: publikigis {count} paĝojn'
     PageAdded: 'Sukcese kreis paĝon'
     REMOVEDPAGE: 'Forigis je ''{title}'' el la publikigita retejo'
-    REMOVEDPAGEFROMDRAFT: 'Forigis je ''%s'' el la malneta retejo'
+    REMOVEDPAGEFROMDRAFT: 'Forigis je ''{title}'' el la malneta retejo'
     REORGANISATIONSUCCESSFUL: 'Sukcese reorganizis la retejan arbon.'
     RESTORE: 'Restaŭri malneton'
     RESTORED: 'Sukcese restaŭris je ''{title}'''
@@ -56,7 +56,7 @@ eo:
     RESTORE_TO_ROOT_DESC: 'Restaŭri la enarkivigitan version al malneto kiel supranivela paĝo'
     ROLLBACK: 'Malfari al ĉi tiu versio'
     ROLLEDBACKPUBv2: 'Malfaris ŝanĝojn ĝis la publikigita versio.'
-    ROLLEDBACKVERSIONv2: 'Malfaris ŝanĝojn ĝis versio #%d.'
+    ROLLEDBACKVERSIONv2: 'Malfaris ŝanĝojn ĝis versio #{version}.'
     SAVED: 'Sukcese konservis je ''{title}'''
     SAVEDRAFT: 'Konservi malneton'
     SHOW_AS_LIST: 'vidigi kiel liston'

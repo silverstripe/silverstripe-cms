@@ -19,7 +19,7 @@ zh:
     REMOVEDPAGEFROMDRAFT: '从草稿站点删除‘s%’'
     RESTORED: '成功恢复’{title}‘'
     ROLLEDBACKPUBv2: 回滚到已发布版本。
-    ROLLEDBACKVERSIONv2: '回滚到版本#%d。'
+    ROLLEDBACKVERSIONv2: '回滚到版本#{version}。'
     SAVEDRAFT: 保存草稿
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: '根据另一个页面'

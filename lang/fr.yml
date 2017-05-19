@@ -3,7 +3,7 @@ fr:
     ACCESS: "Droits d’accès à la section «\_{title}\_»"
     ACCESS_HELP: 'Permettre l''affichage de la section contenant l''arborescence et le contenu. La gestion des permissions de visualisation et d''édition peut se faire à travers des liste spécifiques à chaque page. Et aussi la "Permission de contenu" séparé.'
     ARCHIVE: Archive
-    ARCHIVEDPAGE: 'Page ''%s'' archivée'
+    ARCHIVEDPAGE: 'Page ''{title}'' archivée'
     AddPageRestriction: 'Note : certains types de page ne sont pas autorisés pour cette sélection'
     Cancel: Annuler
     ChoosePageParentMode: 'Choisissez où créer cette page'
@@ -19,10 +19,10 @@ fr:
     PUBPAGES: '{count} pages ont été correctement publiées'
     PageAdded: 'La page a été créée avec succès '
     REMOVEDPAGE: "«\_{title}\_» a été éliminée du site public "
-    REMOVEDPAGEFROMDRAFT: 'Supprimé ''%s'' du site de test'
+    REMOVEDPAGEFROMDRAFT: 'Supprimé ''{title}'' du site de test'
     RESTORED: "«\_{title}\_» restaurée avec succès"
     ROLLEDBACKPUBv2: 'Revenir à la version publiée'
-    ROLLEDBACKVERSIONv2: 'Revenir à la version #%d'
+    ROLLEDBACKVERSIONv2: 'Revenir à la version #{version}'
     SAVEDRAFT: 'Sauvegarder le brouillon'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Sous une autre page'

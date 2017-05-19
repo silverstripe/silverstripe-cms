@@ -12,7 +12,7 @@ class CMSBatchAction_Publish extends CMSBatchAction
 {
     public function getActionTitle()
     {
-        return _t(__CLASS__.'.PUBLISH_PAGES', 'Publish');
+        return _t(__CLASS__ . '.PUBLISH_PAGES', 'Publish');
     }
 
     public function run(SS_List $pages)
@@ -20,7 +20,7 @@ class CMSBatchAction_Publish extends CMSBatchAction
         return $this->batchaction(
             $pages,
             'publishRecursive',
-            _t(__CLASS__.'.PUBLISHED_PAGES', 'Published %d pages, %d failures')
+            _t(__CLASS__ . '.PUBLISHED_PAGES', 'Published %d pages, %d failures')
         );
     }
 

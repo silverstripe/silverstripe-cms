@@ -16,10 +16,10 @@ ro:
     PUBPAGES: 'Finalizat: Publicate {count} pagini'
     PageAdded: 'Pagină creată cu succes'
     REMOVEDPAGE: 'Înlătură ''{title}'' din site-ul publicat'
-    REMOVEDPAGEFROMDRAFT: 'Înlătură ''%s'' din site-ul ciornă'
+    REMOVEDPAGEFROMDRAFT: 'Înlătură ''{title}'' din site-ul ciornă'
     RESTORED: 'Restaurare ''{title}'' cu succes'
     ROLLEDBACKPUBv2: 'Revenire la versiunea publicată'
-    ROLLEDBACKVERSIONv2: 'Revenire la versiunea #%d'
+    ROLLEDBACKVERSIONv2: 'Revenire la versiunea #{version}'
     SAVEDRAFT: 'Salvează ciornă'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Sub altă pagină'
