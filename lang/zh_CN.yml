@@ -3,7 +3,7 @@ zh_CN:
     PAGENOTEXISTS: 该网页不存在
     PUBALLCONFIRM: '请发布该站的每一网页，这样，预备发布站上的内容就会复制到正式发布站上'
     PUBALLFUN: '“全部发布“功能'
-    REMOVEDPAGEFROMDRAFT: '已从测试站点删除 ''%s'''
+    REMOVEDPAGEFROMDRAFT: '已从测试站点删除 ''{title}'''
   SilverStripe\CMS\Model\ErrorPage:
     CODE: '错误代码'
   SilverStripe\CMS\Model\RedirectorPage:

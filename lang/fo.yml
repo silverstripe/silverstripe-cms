@@ -3,7 +3,7 @@ fo:
     PAGENOTEXISTS: 'Hendan síðan finst ikki.'
     PUBALLCONFIRM: 'Vinarliga almenna kunngerð allar síðurnar á heimasíðuni,  avrita innihaldsstøðið til beinleiðis'
     PUBALLFUN: '"Ger alt alment" funka'
-    REMOVEDPAGEFROMDRAFT: 'Strikaði ''%s'' frá kladdu heimasíðuni'
+    REMOVEDPAGEFROMDRAFT: 'Strikaði ''{title}'' frá kladdu heimasíðuni'
   SilverStripe\CMS\Model\ErrorPage:
     CODE: Feilkota
     CODE_404: '404 - Ikki funnin'

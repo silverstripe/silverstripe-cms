@@ -3,7 +3,7 @@ lt:
     ACCESS: 'Priėjimas prie ''{title}'' dalies'
     ACCESS_HELP: 'Leisti peržiūrėti svetainės medžio ir turinio skiltį. Peržiūros, bei redagavimo leidimai gali būti pakeisti per iškrentančius pasirinkimus ir per atskirus "Turinio leidimai".'
     ARCHIVE: Archyvas
-    ARCHIVEDPAGE: 'Suarchyvuotas puslapis ''%s'''
+    ARCHIVEDPAGE: 'Suarchyvuotas puslapis ''{title}'''
     AddPageRestriction: 'Pastaba: kai kurie puslapių tipai šioje vietoje neleidžiami'
     Cancel: Atšaukti
     ChoosePageParentMode: 'Pasirinkite kur sukurti šį puslapį'
@@ -19,13 +19,13 @@ lt:
     PUBPAGES: 'Įvykdyta: Publikuoti {count} puslapiai'
     PageAdded: 'Puslapis sėkmingai sukurtas'
     REMOVEDPAGE: 'Iš publikuojamos svetainės pašalintas ''{title}'''
-    REMOVEDPAGEFROMDRAFT: '''%s'' pašalintas iš juodraštinės svetainės'
+    REMOVEDPAGEFROMDRAFT: '''{title}'' pašalintas iš juodraštinės svetainės'
     RESTORED: '''{title}'' atstatytas sėkmingai'
     RESTORE_DESC: 'Atstatyti suarchyvuotą versiją kaip juodraštinį puslapį'
     RESTORE_TO_ROOT: 'Atstatyti juodraštį aukščiausiame lygyje'
     RESTORE_TO_ROOT_DESC: 'Atstatyti suarchyvuotą versiją kaip aukščiausio lygio juodraštinį puslapį'
     ROLLEDBACKPUBv2: 'Sugrįžta prie publikuotos versijos.'
-    ROLLEDBACKVERSIONv2: 'Sugrįžta prie  #%d versijos.'
+    ROLLEDBACKVERSIONv2: 'Sugrįžta prie  #{version} versijos.'
     SAVEDRAFT: 'Išsaugoti juodraštį'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Po kitu puslapiu'

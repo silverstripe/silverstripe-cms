@@ -7,7 +7,7 @@ gl_ES:
     PAGETYPEANYOPT: Ningún
     PUBALLCONFIRM: 'Por favor publica toda a páxina no sitio, copiando o contido a contorna de produción'
     PUBALLFUN: 'Funcionalidade "Publicar Todo"'
-    REMOVEDPAGEFROMDRAFT: 'Eliminado ''%s''  do borrador do sitio'
+    REMOVEDPAGEFROMDRAFT: 'Eliminado ''{title}''  do borrador do sitio'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Baixo outra páxina'
     ParentMode_top: 'Nivel superior'

@@ -1,6 +1,6 @@
 <% include SilverStripe\\CMS\\Controllers\\CMSPagesController_ContentToolActions View='Tree' %>
 
-<div class="ss-dialog cms-page-add-form-dialog cms-dialog-content" id="cms-page-add-form" title="<% _t('SilverStripe\CMS\Controllers\CMSMain.AddNew', 'Add new page') %>">
+<div class="ss-dialog cms-page-add-form-dialog cms-dialog-content" id="cms-page-add-form" title="<%t SilverStripe\CMS\Controllers\CMSMain.AddNew 'Add new page' %>">
 	$AddForm
 </div>
 
@@ -8,9 +8,9 @@ $ExtraTreeTools
 
 	<% if $TreeIsFiltered %>
 <div class="cms-tree-filtered cms-notice flexbox-area-grow">
-		<strong><% _t('SilverStripe\CMS\Controllers\CMSMain.TreeFiltered', 'Showing search results.') %></strong>
+		<strong><%t SilverStripe\CMS\Controllers\CMSMain.TreeFiltered 'Showing search results.' %></strong>
 		<a href="javascript:void(0)" class="clear-filter">
-			<% _t('SilverStripe\CMS\Controllers\CMSMain.TreeFilteredClear', 'Clear') %>
+			<%t SilverStripe\CMS\Controllers\CMSMain.TreeFilteredClear 'Clear' %>
 		</a>
 
 		<div class="cms-tree <% if $TreeIsFiltered %>filtered-list<% end_if %>"

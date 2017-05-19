@@ -16,10 +16,10 @@ sr_RS@latin:
     PUBPAGES: 'Urađeno: Objavljeno {count} stranica'
     PageAdded: 'Uspešno kreirana stranica'
     REMOVEDPAGE: 'Sa objavljenog sajta uklonjena je stranica ''{title}'''
-    REMOVEDPAGEFROMDRAFT: 'Stranica ''%s'' je uklonjena iz nacrta sajta'
+    REMOVEDPAGEFROMDRAFT: 'Stranica ''{title}'' je uklonjena iz nacrta sajta'
     RESTORED: '''{title}'' uspešno obnovljen'
     ROLLEDBACKPUBv2: 'Vraćeno na objavljenu verziju.'
-    ROLLEDBACKVERSIONv2: 'Vraćeno na verziju #%d.'
+    ROLLEDBACKVERSIONv2: 'Vraćeno na verziju #{version}.'
     SAVEDRAFT: 'Sačuvaj nacrt'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Kao podstranicu druge stranice'

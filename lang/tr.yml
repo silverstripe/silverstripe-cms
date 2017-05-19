@@ -7,7 +7,7 @@ tr:
     PUBALLCONFIRM: 'Lütfen taslak sitedeki tüm sayfaları yayınlanmakta olan siteye kopyalayıp yayınla.'
     PUBALLFUN: '"Hepsini Yayınla" özelliği'
     PageAdded: 'Sayfa başarıyla oluşturuldu'
-    REMOVEDPAGEFROMDRAFT: '''%s'' taslak siteden silindi'
+    REMOVEDPAGEFROMDRAFT: '''{title}'' taslak siteden silindi'
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: Sayfalar
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:

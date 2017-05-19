@@ -3,7 +3,7 @@ ja:
     ACCESS: '''{title}'' セクションにアクセス'
     ACCESS_HELP: 'ページツリーとコンテンツを含むセクションの閲覧を許可します。　表示および編集の権限は、ページの特定のドロップダウンだけでなく、独立した"コンテンツの権限"を介して処理することができます。'
     ARCHIVE: アーカイブ
-    ARCHIVEDPAGE: '''%s''ページがアーカイブされました'
+    ARCHIVEDPAGE: '''{title}''ページがアーカイブされました'
     AddPageRestriction: 注：一部の種類のページは、この選択には含まれていません
     Cancel: キャンセル
     ChoosePageParentMode: 'このページを作成する場所を選択'
@@ -19,10 +19,10 @@ ja:
     PUBPAGES: '完了: {count}ページを公開しました'
     PageAdded: ページの作成に成功
     REMOVEDPAGE: '''{title}''を公開されているサイトから削除しました'
-    REMOVEDPAGEFROMDRAFT: '%sを下書きサイトから削除しました'
+    REMOVEDPAGEFROMDRAFT: '{title}を下書きサイトから削除しました'
     RESTORED: '{title}を復旧しました'
     ROLLEDBACKPUBv2: '公開されたバージョンにロールバックされました。'
-    ROLLEDBACKVERSIONv2: '#%d. のバージョンにロールバック'
+    ROLLEDBACKVERSIONv2: '#{version}. のバージョンにロールバック'
     SAVEDRAFT: 下書きを保存
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 他のページの下に作成

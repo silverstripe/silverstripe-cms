@@ -16,7 +16,7 @@ cs:
     ACCESS_HELP: 'Povolit prohlížení sekce obsahující strukturu a obsah webu. Oprávnění na prohlížení a úpravu mohou být nastavena skrze menu pro samostatnou stránku, také jako jednotlivé oprávnění pro obsah.'
     APPLY_FILTER: Hledat
     ARCHIVE: Archív
-    ARCHIVEDPAGE: 'Archivovaná stránka ''%s'''
+    ARCHIVEDPAGE: 'Archivovaná stránka ''{title}'''
     AddNew: 'Přidat novou stránku'
     AddNewButton: 'Přidat nový'
     AddPageRestriction: 'Poznámka: Některé typy stránek nejsou povoleny při tomto výběru'
@@ -47,7 +47,7 @@ cs:
     PUBPAGES: 'Hotovo: Zveřejněno {count} stránek'
     PageAdded: 'Stránka vytvořena úspěšně'
     REMOVEDPAGE: 'Odstraněno ''{title}'' ze zveřejněného webu'
-    REMOVEDPAGEFROMDRAFT: 'Odstraněno ''%s'' z konceptu webu'
+    REMOVEDPAGEFROMDRAFT: 'Odstraněno ''{title}'' z konceptu webu'
     REORGANISATIONSUCCESSFUL: 'Strom webu reorganizován úspěšně.'
     RESTORE: 'Obnovit koncept'
     RESTORED: 'Obnoveno ''{title}'' úspěšně'
@@ -56,7 +56,7 @@ cs:
     RESTORE_TO_ROOT_DESC: 'Obnovit archivovanou verzi na koncept stránky nejvyšší úrovně'
     ROLLBACK: 'Vrátit zpět na tuto verzi'
     ROLLEDBACKPUBv2: 'Vráceno zpět na zveřejněnou verzi.'
-    ROLLEDBACKVERSIONv2: 'Vráceno zpět na verzi #%d.'
+    ROLLEDBACKVERSIONv2: 'Vráceno zpět na verzi #{version}.'
     SAVED: 'Uloženo ''{title}'' úspěšně'
     SAVEDRAFT: 'Uložit koncept'
     SHOW_AS_LIST: 'ukázat jako seznam'

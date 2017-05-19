@@ -10,7 +10,7 @@ fa_IR:
     ACCESS: 'دسترسی به بخش ''{title}'''
     APPLY_FILTER: جستجو
     ARCHIVE: بایگانی
-    ARCHIVEDPAGE: 'صفحه بایگانی شده ''%s'''
+    ARCHIVEDPAGE: 'صفحه بایگانی شده ''{title}'''
     AddPageRestriction: 'یادداشت: برخی انواع صفحه برای این انتخاب مجاز نیستند.'
     CLEAR_FILTER: پاک‌کردن
     Cancel: لغو
@@ -30,14 +30,14 @@ fa_IR:
     PUBPAGES: 'انجام شد: انتشار {count} صفحه'
     PageAdded: 'صفحه با موفقیت ایجاد شد'
     REMOVEDPAGE: 'حذف ''{title}'' از سایت منتشر شده'
-    REMOVEDPAGEFROMDRAFT: 'حذف ''%s'' از سایت پیش‌نویس'
+    REMOVEDPAGEFROMDRAFT: 'حذف ''{title}'' از سایت پیش‌نویس'
     RESTORE: 'بازنشانی پیش‌نویس'
     RESTORED: 'بازنشانی موفقیت‌آمیز ''{title}'''
     RESTORE_DESC: 'بازنشانی نسخه‌ی بایگانی‌شده در پیش‌نویس'
     RESTORE_TO_ROOT: 'بازنشانی پیش‌نویس در سطح بالا'
     RESTORE_TO_ROOT_DESC: 'بازنشانی نسخه‌ی بایگانی‌شده به پیش‌نویس به عنوان یک صفحه‌ی سطح بالا'
     ROLLEDBACKPUBv2: 'بازگردانی به نسخه‌ی منتشرشده.'
-    ROLLEDBACKVERSIONv2: 'بازگردانی به نسخه‌ی #%d.'
+    ROLLEDBACKVERSIONv2: 'بازگردانی به نسخه‌ی #{version}.'
     SAVED: 'دخیره‌سازی ''{title}'' باموفقیت انجام شد.'
     SAVEDRAFT: 'ذخیره پیش‌نویس'
     UNPUBLISH_AND_ARCHIVE: 'عدم انتشار و بایگانی'

@@ -17,7 +17,7 @@ class CMSBatchAction_Restore extends CMSBatchAction
 
     public function getActionTitle()
     {
-        return _t(__CLASS__.'.RESTORE', 'Restore');
+        return _t(__CLASS__ . '.RESTORE', 'Restore');
     }
 
     public function run(SS_List $pages)
@@ -38,7 +38,7 @@ class CMSBatchAction_Restore extends CMSBatchAction
         return $this->batchaction(
             $pages,
             'doRestoreToStage',
-            _t(__CLASS__.'.RESTORED_PAGES', 'Restored %d pages')
+            _t(__CLASS__ . '.RESTORED_PAGES', 'Restored %d pages')
         );
     }
 

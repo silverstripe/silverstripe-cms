@@ -16,7 +16,7 @@ en:
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
     APPLY_FILTER: Search
     ARCHIVE: Archive
-    ARCHIVEDPAGE: 'Archived page ''%s'''
+    ARCHIVEDPAGE: 'Archived page ''{title}'''
     AddNew: 'Add new page'
     AddNewButton: 'Add new'
     AddPageRestriction: 'Note: Some page types are not allowed for this selection'
@@ -47,7 +47,7 @@ en:
     PUBPAGES: 'Done: Published {count} pages'
     PageAdded: 'Successfully created page'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
-    REMOVEDPAGEFROMDRAFT: 'Removed ''%s'' from the draft site'
+    REMOVEDPAGEFROMDRAFT: 'Removed ''{title}'' from the draft site'
     REORGANISATIONSUCCESSFUL: 'Reorganised the site tree successfully.'
     RESTORE: 'Restore draft'
     RESTORED: 'Restored ''{title}'' successfully'
@@ -56,7 +56,7 @@ en:
     RESTORE_TO_ROOT_DESC: 'Restore the archived version to draft as a top level page'
     ROLLBACK: 'Roll back to this version'
     ROLLEDBACKPUBv2: 'Rolled back to published version.'
-    ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
+    ROLLEDBACKVERSIONv2: 'Rolled back to version #{version}.'
     SAVED: 'Saved ''{title}'' successfully.'
     SAVEDRAFT: 'Save draft'
     SHOW_AS_LIST: 'show as list'

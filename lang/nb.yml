@@ -3,7 +3,7 @@ nb:
     ACCESS: 'Adgang til seksjon for ''{title}'''
     ACCESS_HELP: 'Lar deg se seksjonen som inneholder sidetreet og annet innhold. Tillatelser for å vise og redigere kan behandles gjennom sidespesifikke nedtrekkslister, så vel som  separate "Innholdstillatelser".'
     ARCHIVE: Arkiver
-    ARCHIVEDPAGE: 'Arkiverte side ''%s'''
+    ARCHIVEDPAGE: 'Arkiverte side ''{title}'''
     AddPageRestriction: 'Merk: Noen sidetyper er ikke tillatt for dette valget.'
     Cancel: Avbryt
     ChoosePageParentMode: 'Velg hvor du vil opprette siden'
@@ -19,13 +19,13 @@ nb:
     PUBPAGES: 'Ferdig: Publiserte {count} sider.'
     PageAdded: 'Siden ble opprettet.'
     REMOVEDPAGE: 'Fjernet "{title}" fra det publiserte nettstedet'
-    REMOVEDPAGEFROMDRAFT: 'Fjernet ''%s''  fra utkastnettstedet'
+    REMOVEDPAGEFROMDRAFT: 'Fjernet ''{title}''  fra utkastnettstedet'
     RESTORED: 'Vellykket gjenoppretting av "{title}".'
     RESTORE_DESC: 'Gjenopprett arkivert versjon som utkast'
     RESTORE_TO_ROOT: 'Gjenopprett utkast på toppnivå'
     RESTORE_TO_ROOT_DESC: 'Gjenopprett arkivert versjon som utkast på toppnivå'
     ROLLEDBACKPUBv2: 'Tilbakestilte til den publiserte versjonen.'
-    ROLLEDBACKVERSIONv2: 'Tilbakestile til versjon #%d.'
+    ROLLEDBACKVERSIONv2: 'Tilbakestile til versjon #{version}.'
     SAVEDRAFT: 'Lagre utkast'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Under en annen side'

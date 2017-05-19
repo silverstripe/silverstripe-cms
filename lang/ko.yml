@@ -17,10 +17,10 @@ ko:
     PUBPAGES: '완료: {count} 페이지를 공개했습니다'
     PageAdded: '페이지를 만드는 데 성공'
     REMOVEDPAGE: '''{title}''을 공개된 사이트에서 제거했습니다'
-    REMOVEDPAGEFROMDRAFT: '%s 초안 사이트에서 제거했습니다'
+    REMOVEDPAGEFROMDRAFT: '{title} 초안 사이트에서 제거했습니다'
     RESTORED: '{title}를 복구했습니다'
     ROLLEDBACKPUBv2: '공개된 버전으로 롤백되었습니다.'
-    ROLLEDBACKVERSIONv2: '#%d. 버전으로 롤백'
+    ROLLEDBACKVERSIONv2: '#{version}. 버전으로 롤백'
     SAVEDRAFT: '임시 저장'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: '다른 페이지 아래에 작성'

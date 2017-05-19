@@ -2,9 +2,9 @@
 	<thead>
 		<tr>
 			<th class="ui-helper-hidden"></th>
-			<th class="first-column"><% _t('SilverStripe\CMS\Controllers\CMSPageHistoryController.WHEN','When') %></th>
-			<th><% _t('SilverStripe\CMS\Controllers\CMSPageHistoryController.AUTHOR','Author') %></th>
-			<th class="last-column"><% _t('SilverStripe\CMS\Controllers\CMSPageHistoryController.PUBLISHER','Publisher') %></th>
+			<th class="first-column"><%t SilverStripe\CMS\Controllers\CMSPageHistoryController.WHEN 'When' %></th>
+			<th><%t SilverStripe\CMS\Controllers\CMSPageHistoryController.AUTHOR 'Author' %></th>
+			<th class="last-column"><%t SilverStripe\CMS\Controllers\CMSPageHistoryController.PUBLISHER 'Publisher' %></th>
 		</tr>
 	</thead>
 
@@ -15,8 +15,8 @@
 			<% with $LastEdited %>
 				<td class="last-edited first-column" title="$Ago - $Nice">$Nice</td>
 			<% end_with %>
-			<td><% if $Author %>$Author.FirstName $Author.Surname.Initial<% else %><% _t('SilverStripe\CMS\Controllers\CMSPageHistoryController.UNKNOWN','Unknown') %><% end_if %></td>
-			<td class="last-column"><% if $Published %><% if $Publisher %>$Publisher.FirstName $Publisher.Surname.Initial<% else %><% _t('SilverStripe\CMS\Controllers\CMSPageHistoryController.UNKNOWN','Unknown') %><% end_if %><% else %><% _t('SilverStripe\CMS\Controllers\CMSPageHistoryController.NOTPUBLISHED','Not published') %><% end_if %></td>
+			<td><% if $Author %>$Author.FirstName $Author.Surname.Initial<% else %><%t SilverStripe\CMS\Controllers\CMSPageHistoryController.UNKNOWN 'Unknown' %><% end_if %></td>
+			<td class="last-column"><% if $Published %><% if $Publisher %>$Publisher.FirstName $Publisher.Surname.Initial<% else %><%t SilverStripe\CMS\Controllers\CMSPageHistoryController.UNKNOWN 'Unknown' %><% end_if %><% else %><%t SilverStripe\CMS\Controllers\CMSPageHistoryController.NOTPUBLISHED 'Not published' %><% end_if %></td>
 		</tr>
 		<% end_loop %>
 	</tbody>
