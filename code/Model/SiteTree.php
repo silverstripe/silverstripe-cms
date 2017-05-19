@@ -1984,7 +1984,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         // This filter ensures that the ParentID dropdown selection does not show this node,
         // or its descendents, as this causes vanishing bugs
-        $parentIDField->setFilterFunction(create_function('$node', "return \$node->ID != {$this->ID};"));
+        $parentIDField->setFilterFunction(function ($node) {
+            return $node->ID != $this->ID;
+        });
         $parentTypeSelector->addExtraClass('parentTypeSelector');
 
         $tabBehaviour->setTitle(_t(__CLASS__.'.TABBEHAVIOUR', "Behavior"));
