@@ -6,6 +6,7 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\ORM\DB;
+use SilverStripe\Security\Security;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\MSSQL\MSSQLDatabase;
 use SilverStripe\PostgreSQL\PostgreSQLDatabase;
@@ -200,14 +201,14 @@ class ZZZSearchFormTest extends FunctionalTest
         );
 
         $member = $this->objFromFixture(Member::class, 'randomuser');
-        $member->logIn();
+        Security::setCurrentUser($member);
         $results = $sf->getResults();
         $this->assertContains(
             $page->ID,
             $results->column('ID'),
             'Page with "Restrict to logged in users" shows if login is present'
         );
-        $member->logOut();
+        Security::setCurrentUser(null);
     }
 
     public function testPagesRestrictedToSpecificGroupNotIncluded()
@@ -230,24 +231,24 @@ class ZZZSearchFormTest extends FunctionalTest
         );
 
         $member = $this->objFromFixture(Member::class, 'randomuser');
-        $member->logIn();
+        Security::setCurrentUser($member);
         $results = $sf->getResults();
         $this->assertNotContains(
             $page->ID,
             $results->column('ID'),
             'Page with "Restrict to these users" doesnt show if logged in user is not in the right group'
         );
-        $member->logOut();
+        Security::setCurrentUser(null);
 
         $member = $this->objFromFixture(Member::class, 'websiteuser');
-        $member->logIn();
+        Security::setCurrentUser($member);
         $results = $sf->getResults();
         $this->assertContains(
             $page->ID,
             $results->column('ID'),
             'Page with "Restrict to these users" shows if user in this group is logged in'
         );
-        $member->logOut();
+        Security::setCurrentUser(null);
     }
 
     public function testInheritedRestrictedPagesNotIncluded()
@@ -269,14 +270,14 @@ class ZZZSearchFormTest extends FunctionalTest
         );
 
         $member = $this->objFromFixture(Member::class, 'websiteuser');
-        $member->logIn();
+        Security::setCurrentUser($member);
         $results = $sf->getResults();
         $this->assertContains(
             $page->ID,
             $results->column('ID'),
             'Page inheriting "Restrict to loggedin users" shows if user in this group is logged in'
         );
-        $member->logOut();
+        Security::setCurrentUser(null);
     }
 
     public function testDisabledShowInSearchFlagNotIncludedForSiteTree()

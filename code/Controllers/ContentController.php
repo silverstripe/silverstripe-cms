@@ -20,8 +20,6 @@ use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\FieldType\DBVarchar;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\Versioned\Versioned;
-use SilverStripe\Security\Member;
-use SilverStripe\Security\MemberAuthenticator;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
@@ -320,12 +318,12 @@ class ContentController extends Controller
      */
     public function LoginForm()
     {
-        return MemberAuthenticator::get_login_form($this);
+        return MemberAuthenticator::singleton()->loginForm($this);
     }
 
     public function SilverStripeNavigator()
     {
-        $member = Member::currentUser();
+        $member = Security::getCurrentUser();
         $items = '';
         $message = '';
 

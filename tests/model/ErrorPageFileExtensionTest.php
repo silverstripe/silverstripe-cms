@@ -1,5 +1,6 @@
 <?php
 
+use SilverStripe\Security\Security;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\Assets\File;
 use SilverStripe\Control\Session;
@@ -46,7 +47,7 @@ class ErrorPageFileExtensionTest extends SapphireTest
         // Get stage version of file
         $file = File::get()->first();
         $fileLink = $file->Link();
-        Session::clear("loggedInAs");
+        Security::setCurrentUser(null);
 
         // Generate shortcode for a file which doesn't exist
         $shortcode = File::handle_shortcode(array('id' => 9999), null, new ShortcodeParser(), 'file_link');

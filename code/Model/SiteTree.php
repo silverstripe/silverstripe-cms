@@ -52,6 +52,7 @@ use SilverStripe\ORM\ValidationResult;
 use SilverStripe\Security\InheritedPermissions;
 use SilverStripe\Security\InheritedPermissionsExtension;
 use SilverStripe\Security\PermissionChecker;
+use SilverStripe\Security\Security;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\Security\Group;
 use SilverStripe\Security\Member;
@@ -922,7 +923,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function can($perm, $member = null, $context = array())
     {
         if (!$member) {
-            $member = Member::currentUser();
+            $member = Security::getCurrentUser();
         }
 
         if ($member && Permission::checkMember($member, "ADMIN")) {
@@ -968,7 +969,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         if (!$member) {
-            $member = Member::currentUser();
+            $member = Security::getCurrentUser();
         }
 
         // Standard mechanism for accepting permission changes from extensions
@@ -1004,7 +1005,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function canView($member = null)
     {
         if (!$member) {
-            $member = Member::currentUser();
+            $member = Security::getCurrentUser();
         }
 
         // Standard mechanism for accepting permission changes from extensions
@@ -1065,7 +1066,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function canPublish($member = null)
     {
         if (!$member) {
-            $member = Member::currentUser();
+            $member = Security::getCurrentUser();
         }
 
         // Check extension
@@ -1101,7 +1102,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function canDelete($member = null)
     {
         if (!$member) {
-            $member = Member::currentUser();
+            $member = Security::getCurrentUser();
         }
 
         // Standard mechanism for accepting permission changes from extensions
@@ -1145,7 +1146,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function canCreate($member = null, $context = array())
     {
         if (!$member) {
-            $member = Member::currentUser();
+            $member = Security::getCurrentUser();
         }
 
         // Check parent (custom canCreate option for SiteTree)
@@ -1199,7 +1200,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function canEdit($member = null)
     {
         if (!$member) {
-            $member = Member::currentUser();
+            $member = Security::getCurrentUser();
         }
 
         // Standard mechanism for accepting permission changes from extensions

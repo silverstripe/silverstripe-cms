@@ -922,7 +922,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         // Generate basic cache key. Too complex to encompass all variations
         $cache = Injector::inst()->get(CacheInterface::class . '.CMSMain_SiteTreeHints');
-        $cacheKey = md5(implode('_', array(Member::currentUserID(), implode(',', $cacheCanCreate), implode(',', $classes))));
+        $cacheKey = md5(implode('_', array(Security::getCurrentUser()->ID, implode(',', $cacheCanCreate), implode(',', $classes))));
         if ($this->getRequest()->getVar('flush')) {
             $cache->clear();
         }
