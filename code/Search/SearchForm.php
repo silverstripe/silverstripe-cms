@@ -148,12 +148,12 @@ class SearchForm extends Form
 
         $keywords = $request->requestVar('Search');
 
-        $andProcessor = create_function('$matches', '
-	 		return " +" . $matches[2] . " +" . $matches[4] . " ";
-	 	');
-        $notProcessor = create_function('$matches', '
-	 		return " -" . $matches[3];
-	 	');
+        $andProcessor = function ($matches) {
+            return ' +' . $matches[2] . ' +' . $matches[4] . ' ';
+        };
+        $notProcessor = function ($matches) {
+            return ' -' . $matches[3];
+        };
 
         $keywords = preg_replace_callback('/()("[^()"]+")( and )("[^"()]+")()/i', $andProcessor, $keywords);
         $keywords = preg_replace_callback('/(^| )([^() ]+)( and )([^ ()]+)( |$)/i', $andProcessor, $keywords);
