@@ -210,7 +210,7 @@ class VirtualPage extends Page
             "SilverStripe\\CMS\\Model\\SiteTree"
         );
         // filter doesn't let you select children of virtual pages as as source page
-        //$copyContentFromField->setFilterFunction(create_function('$item', 'return !($item instanceof VirtualPage);'));
+        //$copyContentFromField->setFilterFunction(function ($item) { return !($item instanceof VirtualPage); });
 
         // Setup virtual fields
         if ($virtualFields = $this->getVirtualFields()) {
