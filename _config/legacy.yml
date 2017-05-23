@@ -6,3 +6,4 @@ SilverStripe\ORM\DatabaseAdmin:
     SiteTree: 'SilverStripe\CMS\Model\SiteTree'
     RedirectorPage: SilverStripe\CMS\Model\RedirectorPage
     VirtualPage: SilverStripe\CMS\Model\VirtualPage
+    ErrorPage: SilverStripe\CMS\Model\ErrorPage
