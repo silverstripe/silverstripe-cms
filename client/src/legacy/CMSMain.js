@@ -1,4 +1,4 @@
-import $ from 'jQuery';
+import $ from 'jquery';
 
 /**
  * Behaviour for the CMS Content Toolbar.

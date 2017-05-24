@@ -1,157 +1,59 @@
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const Path = require('path');
+const webpackConfig = require('@silverstripe/webpack-config');
+const {
+  resolveJS,
+  externalJS,
+  moduleJS,
+  pluginJS,
+  moduleCSS,
+  pluginCSS,
+} = webpackConfig;
 
+const ENV = process.env.NODE_ENV;
 const PATHS = {
-  MODULES: './node_modules',
-  CMS_JS_SRC: './client/src',
-  CMS_JS_DIST: './client/dist/js',
-  CMS_CSS_SRC: './client/src/styles',
-  CMS_CSS_DIST: './client/dist/styles',
+  MODULES: 'node_modules',
+  FILES_PATH: '../',
+  ROOT: Path.resolve(),
+  SRC: Path.resolve('client/src'),
+  DIST: Path.resolve('client/dist'),
+  LEGACY_SRC: Path.resolve('client/src/legacy'),
 };
 
-// Used for autoprefixing css properties (same as Bootstrap Aplha.2 defaults)
-const SUPPORTED_BROWSERS = [
-  'Chrome >= 35',
-  'Firefox >= 31',
-  'Edge >= 12',
-  'Explorer >= 9',
-  'iOS >= 8',
-  'Safari >= 8',
-  'Android 2.3',
-  'Android >= 4',
-  'Opera >= 12',
-];
-
-module.exports = [
+const config = [
   {
     name: 'js',
     entry: {
-      bundle: `${PATHS.CMS_JS_SRC}/bundles/bundle.js`,
+      bundle: `${PATHS.SRC}/bundles/bundle.js`,
       // See https://github.com/webpack/webpack/issues/300#issuecomment-45313650
-      SilverStripeNavigator: [`${PATHS.CMS_JS_SRC}/legacy/SilverStripeNavigator.js`],
-    },
-    resolve: {
-      modulesDirectories: [PATHS.CMS_JS_SRC, PATHS.MODULES],
+      SilverStripeNavigator: `${PATHS.LEGACY_SRC}/SilverStripeNavigator.js`,
     },
     output: {
-      path: './client/dist',
+      path: PATHS.DIST,
       filename: 'js/[name].js',
     },
-    externals: {
-      i18n: 'i18n',
-      jQuery: 'jQuery',
-      'lib/Router': 'Router',
-    },
-    module: {
-      loaders: [
-        {
-          test: /\.js$/,
-          exclude: /(node_modules|thirdparty)/,
-          loader: 'babel',
-          query: {
-            presets: ['es2015', 'react'],
-            plugins: ['transform-object-assign'/* , 'transform-object-rest-spread' */],
-            comments: false,
-          },
-        },
-        {
-          test: /\.scss$/,
-          loader: ExtractTextPlugin.extract([
-            'css?sourceMap&minimize&-core&discardComments',
-            'postcss?sourceMap',
-            'resolve-url',
-            'sass?sourceMap',
-          ], {
-            publicPath: '../', // needed because bundle.css is in a subfolder
-          }),
-        },
-        {
-          test: /\.css$/,
-          loader: ExtractTextPlugin.extract([
-            'css?sourceMap&minimize&-core&discardComments',
-            'postcss?sourceMap',
-            'resolve-url',
-          ], {
-            publicPath: '../', // needed because bundle.css is in a subfolder
-          }),
-        },
-        {
-          test: /\.(png|gif|jpg|svg)$/,
-          loader: 'file?name=images/[name].[ext]',
-        },
-        {
-          test: /\.(woff|eot|ttf)$/,
-          loader: 'file?name=fonts/[name].[ext]',
-        },
-      ],
-    },
-    postcss: [
-      autoprefixer({ browsers: SUPPORTED_BROWSERS }),
-    ],
-    plugins: [
-      new webpack.ProvidePlugin({
-        $: 'jquery',
-        jQuery: 'jquery',
-        'ss.i18n': 'i18n',
-      }),
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          unused: false,
-          warnings: false,
-        },
-        output: {
-          beautify: false,
-          semicolons: false,
-          comments: false,
-          max_line_len: 200,
-        },
-      }),
-      new ExtractTextPlugin('styles/bundle.css', { allChunks: true }),
-    ],
+    devtool: (ENV !== 'production') ? 'source-map' : '',
+    resolve: resolveJS(ENV, PATHS),
+    externals: externalJS(ENV, PATHS),
+    module: moduleJS(ENV, PATHS),
+    plugins: pluginJS(ENV, PATHS),
   },
   {
     name: 'css',
     entry: {
-      'SilverStripeNavigator': `${PATHS.CMS_CSS_SRC}/SilverStripeNavigator.scss`,
+      bundle: `${PATHS.SRC}/styles/bundle.scss`,
+      SilverStripeNavigator: `${PATHS.SRC}/styles/SilverStripeNavigator.scss`,
     },
     output: {
-      path: 'client/dist/styles',
-      filename: '[name].css',
+      path: PATHS.DIST,
+      filename: 'styles/[name].css',
     },
-    module: {
-      loaders: [
-        {
-          test: /\.scss$/,
-          loader: ExtractTextPlugin.extract([
-            'css?sourceMap&minimize&-core&discardComments',
-            'postcss?sourceMap',
-            'resolve-url',
-            'sass?sourceMap',
-          ]),
-        },
-        {
-          test: /\.css$/,
-          loader: ExtractTextPlugin.extract([
-            'css?sourceMap&minimize&-core&discardComments',
-            'postcss?sourceMap',
-          ]),
-        },
-        {
-          test: /\.(png|gif|jpg|svg)$/,
-          loader: `url?limit=10000&name=../images/[name].[ext]`,
-        },
-        {
-          test: /\.(woff|eot|ttf)$/,
-          loader: `file?name=../fonts/[name].[ext]`,
-        },
-      ],
-    },
-    postcss: [
-      autoprefixer({ browsers: SUPPORTED_BROWSERS }),
-    ],
-    plugins: [
-      new ExtractTextPlugin('[name].css', { allChunks: true }),
-    ],
+    devtool: (ENV !== 'production') ? 'source-map' : '',
+    module: moduleCSS(ENV, PATHS),
+    plugins: pluginCSS(ENV, PATHS),
   },
 ];
+
+// Use WEBPACK_CHILD=js or WEBPACK_CHILD=css env var to run a single config
+module.exports = (process.env.WEBPACK_CHILD)
+  ? config.find((entry) => entry.name === process.env.WEBPACK_CHILD)
+  : module.exports = config;
