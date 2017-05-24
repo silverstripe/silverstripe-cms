@@ -4,8 +4,6 @@ use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\RedirectorPageController;
 use SilverStripe\Control\Director;
 use SilverStripe\Dev\FunctionalTest;
-use SilverStripe\Core\Extension;
-use SilverStripe\Dev\TestOnly;
 
 class RedirectorPageTest extends FunctionalTest
 {
@@ -98,5 +96,16 @@ class RedirectorPageTest extends FunctionalTest
         $this->assertEquals('http://www.mysite.com/foo', $response->getHeader('Location'));
 
         RedirectorPageController::remove_extension('RedirectorPageTest_RedirectExtension');
+    }
+
+    public function testNoJSLinksAllowed()
+    {
+        $page = new RedirectorPage();
+        $js = 'javascript:alert("hello world")';
+        $page->ExternalURL = $js;
+        $this->assertEquals($js, $page->ExternalURL);
+
+        $page->write();
+        $this->assertEmpty($page->ExternalURL);
     }
 }

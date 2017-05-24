@@ -138,12 +138,20 @@ class RedirectorPage extends Page
     {
         parent::onBeforeWrite();
 
-        // Prefix the URL with "http://" if no prefix is found
-        if ($this->ExternalURL
-            && !parse_url($this->ExternalURL, PHP_URL_SCHEME)
-            && !preg_match('#^//#', $this->ExternalURL)
-        ) {
+        // Skip empty or protocol-less absolute url
+        if (!$this->ExternalURL || substr($this->ExternalURL, 0, 2) === '//') {
+            return;
+        }
+        $urlParts = parse_url($this->ExternalURL);
+        if (!$urlParts) {
+            // malformed URL to reject
+            $this->ExternalURL = '';
+        } elseif (empty($urlParts['scheme'])) {
+            // no scheme, assume http
             $this->ExternalURL = 'http://' . $this->ExternalURL;
+        } elseif (!in_array($urlParts['scheme'], ['http', 'https'])) {
+            // we only allow http(s) urls
+            $this->ExternalURL = '';
         }
     }
 
