@@ -26,6 +26,7 @@ const config = [
       bundle: `${PATHS.SRC}/bundles/bundle.js`,
       // See https://github.com/webpack/webpack/issues/300#issuecomment-45313650
       SilverStripeNavigator: `${PATHS.LEGACY_SRC}/SilverStripeNavigator.js`,
+      'TinyMCE_sslink-internal': `${PATHS.LEGACY_SRC}/TinyMCE_sslink-internal.js`,
     },
     output: {
       path: PATHS.DIST,
@@ -33,7 +34,11 @@ const config = [
     },
     devtool: (ENV !== 'production') ? 'source-map' : '',
     resolve: resolveJS(ENV, PATHS),
-    externals: externalJS(ENV, PATHS),
+    externals: Object.assign({}, externalJS(ENV, PATHS), {
+      'containers/InsertLinkModal/InsertLinkModal': 'InsertLinkModal',
+      'lib/TinyMCEActionRegistrar': 'TinyMCEActionRegistrar',
+      'lib/ShortcodeSerialiser': 'ShortcodeSerialiser',
+    }),
     module: moduleJS(ENV, PATHS),
     plugins: pluginJS(ENV, PATHS),
   },

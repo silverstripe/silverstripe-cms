@@ -14,3 +14,9 @@ SilverStripe\Assets\File:
   extensions:
     - SilverStripe\CMS\Controllers\ErrorPageFileExtension
     - SilverStripe\CMS\Model\SiteTreeFileExtension
+---
+Name: cmsmodals
+---
+SilverStripe\Admin\ModalController:
+  extensions:
+    - SilverStripe\CMS\Forms\InternalLinkModalExtension

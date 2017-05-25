@@ -13,11 +13,42 @@ So that I can link to a external website or a page on my site
     And I go to "/admin/pages"
     And I click on "About Us" in the tree
 
+  Scenario: I can link to an internal page
+    Given I select "awesome" in the "Content" HTML field
+      And I press the "Insert Link" HTML field button
+      And I click "Link to page" in the ".mce-menu" element
+      And I should see an "form#Form_editorInternalLink" element
+    When I click "(Choose Page)" in the ".Select-multi-value-wrapper" element
+      And I click "About Us" in the ".treedropdownfield__menu" element
+      And I fill in "my desc" for "Link description"
+      And I press the "Insert" button
+    Then the "Content" HTML field should contain "<a title="my desc" href="[sitetree_link,id=2]">awesome</a>"
+    # Required to avoid "unsaved changes" browser dialog
+    Then I press the "Save draft" button
+
+
+  Scenario: I can edit a link to an internal page
+    Given I fill in the "Content" HTML field with "<a title='my desc' href='[sitetree_link,id=2]'>awesome</a>"
+      And I select "awesome" in the "Content" HTML field
+      And I press the "Insert Link" HTML field button
+      And I click "Link to page" in the ".mce-menu" element
+      And I should see an "form#Form_editorInternalLink" element
+    Then I should see "About Us" in the ".Select-value" element
+      And the "Link description" field should contain "my desc"
+    # This doesn't seem to suffer from that issue
+    When I click "About Us" in the ".Select-value" element
+      And I click "Home" in the ".treedropdownfield__menu" element
+      And I fill in "my new desc" for "Link description"
+      And I press the "Insert" button
+    Then the "Content" HTML field should contain "<a title="my new desc" href="[sitetree_link,id=1]">awesome</a>"
+    # Required to avoid "unsaved changes" browser dialog
+    Then I press the "Save draft" button
+
   Scenario: I can link to an external URL
     Given I select "awesome" in the "Content" HTML field
       And I press the "Insert Link" HTML field button
     When I click "Link to external URL" in the ".mce-menu" element
-      And I should see an "form#Form_EditorToolbarEditorExternalLink" element
+      And I should see an "form#Form_ModalsEditorExternalLink" element
     When I fill in "http://silverstripe.org" for "URL"
       And I check "Open in new window/tab"
       And I press the "Insert" button
@@ -30,7 +61,7 @@ So that I can link to a external website or a page on my site
       And I select "awesome" in the "Content" HTML field
     When I press the "Insert Link" HTML field button
       And I click "Link to external URL" in the ".mce-menu" element
-      And I should see an "form#Form_EditorToolbarEditorExternalLink" element
+      And I should see an "form#Form_ModalsEditorExternalLink" element
     Then the "URL" field should contain "http://silverstripe.org"
     # This doesn't seem to suffer from that issue
     When I fill in "http://google.com" for "URL"
