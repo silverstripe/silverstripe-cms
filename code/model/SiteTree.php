@@ -2541,21 +2541,27 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 	/**
-	 * Removes the page from both live and stage
+	 * Removes the page from both live and stage, if it exists on both
+	 * otherwise just removes from stage
 	 *
 	 * @return bool Success
 	 */
 	public function doArchive() {
 		$this->invokeWithExtensions('onBeforeArchive', $this);
+		$doDelete = false;
 
-		if($this->doUnpublish()) {
-			$this->delete();
-			$this->invokeWithExtensions('onAfterArchive', $this);
-
-			return true;
+		if($this->ExistsOnLive) {
+			$doDelete = $this->doUnpublish();
+		} else {
+			$doDelete = true;
 		}
 
-		return false;
+		if ($doDelete) {
+			$this->delete();
+			$this->invokeWithExtensions('onAfterArchive', $this);
+		}
+
+		return $doDelete;
 	}
 
 	/**
