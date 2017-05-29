@@ -80,6 +80,17 @@ class RedirectorPageTest extends FunctionalTest {
 		RedirectorPage_Controller::remove_extension('RedirectorPageTest_RedirectExtension');
 	}
 
+	public function testNoJSLinksAllowed()
+	{
+		$page = new RedirectorPage();
+		$js = 'javascript:alert("hello world")';
+		$page->ExternalURL = $js;
+		$this->assertEquals($js, $page->ExternalURL);
+
+		$page->write();
+		$this->assertEmpty($page->ExternalURL);
+	}
+
 }
 
 class RedirectorPageTest_RedirectExtension extends Extension implements TestOnly {
