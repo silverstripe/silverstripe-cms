@@ -1,7 +1,7 @@
 /**
  * File: CMSMain.EditForm.js
  */
-import $ from 'jQuery';
+import $ from 'jquery';
 import i18n from 'i18n';
 
 $.entwine('ss', function($){
