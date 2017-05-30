@@ -470,10 +470,6 @@ class CMSPageHistoryController extends CMSMain {
 				"Version" => $fromVersion,
 			));
 
-			foreach($form->Fields()->dataFields() as $field) {
-				$field->dontEscape = true;
-			}
-
 			return $form;
 		}
 
