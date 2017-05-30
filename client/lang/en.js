@@ -11,6 +11,7 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "CMS.ConfirmRestoreFromLive": "Are you sure you want to revert draft to when the page was last published?",
     "CMS.Duplicate": "Duplicate",
     "CMS.EditPage": "Edit",
+    "CMS.LINKLABEL_PAGE": "Link to page",
     "CMS.ONLYSELECTTWO": "You can only compare two versions at this time.",
     "CMS.Restore": "Are you sure you want to restore this page from archive?",
     "CMS.RestoreToRoot": "Are you sure you want to restore this page from archive?\n\nBecause the parent page is not available this will be restored to the top level.",

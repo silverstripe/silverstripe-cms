@@ -3,6 +3,7 @@
 namespace SilverStripe\CMS\Controllers;
 
 use Page;
+use SilverStripe\Admin\LeftAndMain;
 use SilverStripe\CampaignAdmin\AddToCampaignHandler;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
@@ -35,6 +36,10 @@ class CMSPageEditController extends CMSMain
             'form' => [
                 'AddToCampaignForm' => [
                     'schemaUrl' => $this->Link('schema/AddToCampaignForm')
+                ],
+                'editorInternalLink' => [
+                    'schemaUrl' => LeftAndMain::singleton()
+                        ->Link('methodSchema/Modals/editorInternalLink'),
                 ],
             ],
         ]);
