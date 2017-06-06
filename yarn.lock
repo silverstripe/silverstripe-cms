@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@silverstripe/webpack-config@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@silverstripe/webpack-config/-/webpack-config-0.2.3.tgz#292ac80e6246d0123add12765dcb04ccdfe78b59"
+"@silverstripe/webpack-config@^0.2.5":
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/@silverstripe/webpack-config/-/webpack-config-0.2.5.tgz#8efe913d712391185c75daac52e585182a984d70"
   dependencies:
     autoprefixer "^6.4.0"
     babel-core "^6.24.1"
@@ -34,7 +34,7 @@
     sass-loader "^6.0.5"
     script-loader "^0.7.0"
     url-loader "^0.5.8"
-    webpack "^2.6.0"
+    webpack "^2.6.1"
 
 abbrev@1:
   version "1.0.9"
@@ -4558,9 +4558,9 @@ webpack-sources@^0.2.3:
     source-list-map "^1.1.1"
     source-map "~0.5.3"
 
-webpack@^2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.6.0.tgz#7e650a92816abff5db5f43316b0b8b19b13d76c1"
+webpack@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.6.1.tgz#2e0457f0abb1ac5df3ab106c69c672f236785f07"
   dependencies:
     acorn "^5.0.0"
     acorn-dynamic-import "^2.0.0"
