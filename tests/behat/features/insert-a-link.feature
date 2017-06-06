@@ -16,7 +16,7 @@ So that I can link to a external website or a page on my site
   Scenario: I can link to an internal page
     Given I select "awesome" in the "Content" HTML field
       And I press the "Insert Link" HTML field button
-      And I click "Link to page" in the ".mce-menu" element
+      And I click "Page on this site" in the ".mce-menu" element
       And I should see an "form#Form_editorInternalLink" element
     When I click "(Choose Page)" in the ".Select-multi-value-wrapper" element
       And I click "About Us" in the ".treedropdownfield__menu" element
@@ -31,7 +31,7 @@ So that I can link to a external website or a page on my site
     Given I fill in the "Content" HTML field with "<a title='my desc' href='[sitetree_link,id=2]'>awesome</a>"
       And I select "awesome" in the "Content" HTML field
       And I press the "Insert Link" HTML field button
-      And I click "Link to page" in the ".mce-menu" element
+      And I click "Page on this site" in the ".mce-menu" element
       And I should see an "form#Form_editorInternalLink" element
     Then I should see "About Us" in the ".Select-value" element
       And the "Link description" field should contain "my desc"

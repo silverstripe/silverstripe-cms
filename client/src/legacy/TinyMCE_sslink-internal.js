@@ -11,7 +11,7 @@ import { provideInjector } from 'lib/Injector';
 
 // Link to external url
 TinyMCEActionRegistrar.addAction('sslink', {
-  text: i18n._t('CMS.LINKLABEL_PAGE', 'Link to page'),
+  text: i18n._t('CMS.LINKLABEL_PAGE', 'Page on this site'),
   // eslint-disable-next-line no-console
   onclick: (editor) => editor.execCommand('sslinkinternal'),
 });
@@ -65,7 +65,7 @@ jQuery.entwine('ss', ($) => {
             show={show}
             onInsert={handleInsert}
             onHide={handleHide}
-            title={i18n._t('CMS.LINK_PAGE', 'Insert page link')}
+            title={i18n._t('CMS.LINK_PAGE', 'Link to a page')}
             bodyClassName="modal__dialog"
             className="insert-link__dialog-wrapper--internal"
             fileAttributes={attrs}
