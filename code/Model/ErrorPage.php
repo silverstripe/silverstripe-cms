@@ -2,21 +2,21 @@
 
 namespace SilverStripe\CMS\Model;
 
+use Page;
+use SilverStripe\Assets\File;
 use SilverStripe\Assets\Storage\GeneratedAssetHandler;
-use SilverStripe\Forms\FieldList;
-use SilverStripe\ORM\DataModel;
-use SilverStripe\Versioned\Versioned;
-use SilverStripe\ORM\DB;
 use SilverStripe\CMS\Controllers\ModelAsController;
-use SilverStripe\View\Requirements;
+use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
-use SilverStripe\Forms\DropdownField;
-use SilverStripe\Assets\File;
 use SilverStripe\Core\Config\Config;
-use SilverStripe\Control\Director;
 use SilverStripe\Core\Injector\Injector;
-use Page;
+use SilverStripe\Forms\DropdownField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\ORM\DB;
+use SilverStripe\Versioned\Versioned;
+use SilverStripe\View\Requirements;
+use SilverStripe\View\SSViewer;
 
 /**
  * ErrorPage holds the content for the page of an error response.
@@ -32,7 +32,6 @@ use Page;
  */
 class ErrorPage extends Page
 {
-
     private static $db = array(
         "ErrorCode" => "Int",
     );
@@ -97,10 +96,7 @@ class ErrorPage extends Page
             Requirements::clear_combined_files();
 
             return ModelAsController::controller_for($errorPage)
-                ->handleRequest(
-                    new HTTPRequest('GET', ''),
-                    DataModel::inst()
-                );
+                ->handleRequest(new HTTPRequest('GET', ''));
         }
 
         // then fall back on a cached version
@@ -279,7 +275,7 @@ class ErrorPage extends Page
 
         // Run the page (reset the theme, it might've been disabled by LeftAndMain::init())
         Config::nest();
-        Config::inst()->update('SilverStripe\\View\\SSViewer', 'theme_enabled', true);
+        SSViewer::config()->set('theme_enabled', true);
         $response = Director::test(Director::makeRelative($this->Link()));
         Config::unnest();
         $errorContent = $response->getBody();
@@ -359,7 +355,7 @@ class ErrorPage extends Page
             505 => _t('SilverStripe\\CMS\\Model\\ErrorPage.CODE_505', '505 - HTTP Version Not Supported'),
         ];
     }
-    
+
     /**
      * Gets the filename identifier for the given error code.
      * Used when handling responses under error conditions.

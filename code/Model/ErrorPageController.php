@@ -1,17 +1,15 @@
 <?php
 namespace SilverStripe\CMS\Model;
 
-use SilverStripe\ORM\DataModel;
+use PageController;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
-use PageController;
 
 /**
  * Controller for ErrorPages.
  */
 class ErrorPageController extends PageController
 {
-
     /**
      * Overload the provided {@link Controller::handleRequest()} to append the
      * correct status code post request since otherwise permission related error
@@ -19,13 +17,14 @@ class ErrorPageController extends PageController
      * {@link HTTPResponse::isFinished() ignoring the response body.
      *
      * @param HTTPRequest $request
-     * @param DataModel $model
      * @return HTTPResponse
      */
-    public function handleRequest(HTTPRequest $request, DataModel $model = null)
+    public function handleRequest(HTTPRequest $request)
     {
-        $response = parent::handleRequest($request, $model);
-        $response->setStatusCode($this->ErrorCode);
+        /** @var ErrorPage $page */
+        $page = $this->data();
+        $response = parent::handleRequest($request);
+        $response->setStatusCode($page->ErrorCode);
         return $response;
     }
 }

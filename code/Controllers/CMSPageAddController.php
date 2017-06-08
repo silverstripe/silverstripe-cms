@@ -180,8 +180,6 @@ class CMSPageAddController extends CMSPageEditController
         $className = isset($data['PageType']) ? $data['PageType'] : "Page";
         $parentID = isset($data['ParentID']) ? (int)$data['ParentID'] : 0;
 
-        $suffix = isset($data['Suffix']) ? "-" . $data['Suffix'] : null;
-
         if (!$parentID && isset($data['Parent'])) {
             $page = SiteTree::get_by_link($data['Parent']);
             if ($page) {
@@ -203,18 +201,19 @@ class CMSPageAddController extends CMSPageEditController
             return Security::permissionFailure($this);
         }
 
-        $record = $this->getNewItem("new-$className-$parentID".$suffix, false);
+        $record = $this->getNewItem("new-$className-$parentID", false);
         $this->extend('updateDoAdd', $record, $form);
         $record->write();
 
         $editController = CMSPageEditController::singleton();
         $editController->setCurrentPageID($record->ID);
 
-        Session::set(
+        $session = $this->getRequest()->getSession();
+        $session->set(
             "FormInfo.Form_EditForm.formError.message",
             _t('SilverStripe\\CMS\\Controllers\\CMSMain.PageAdded', 'Successfully created page')
         );
-        Session::set("FormInfo.Form_EditForm.formError.type", 'good');
+        $session->set("FormInfo.Form_EditForm.formError.type", 'good');
 
         return $this->redirect(Controller::join_links($editController->Link('show'), $record->ID));
     }

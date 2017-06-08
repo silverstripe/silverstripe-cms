@@ -10,8 +10,6 @@ use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Resettable;
-use SilverStripe\Dev\Deprecation;
-use SilverStripe\ORM\DataModel;
 use SilverStripe\ORM\DB;
 use Translatable;
 
@@ -103,9 +101,9 @@ class RootURLController extends Controller implements Resettable
         self::$cached_homepage_link = null;
     }
 
-    protected function beforeHandleRequest(HTTPRequest $request, DataModel $model)
+    protected function beforeHandleRequest(HTTPRequest $request)
     {
-        parent::beforeHandleRequest($request, $model);
+        parent::beforeHandleRequest($request);
 
         self::$is_at_root = true;
 
@@ -123,13 +121,12 @@ class RootURLController extends Controller implements Resettable
 
     /**
      * @param HTTPRequest $request
-     * @param DataModel|null $model
      * @return HTTPResponse
      */
-    public function handleRequest(HTTPRequest $request, DataModel $model = null)
+    public function handleRequest(HTTPRequest $request)
     {
         self::$is_at_root = true;
-        $this->beforeHandleRequest($request, $model);
+        $this->beforeHandleRequest($request);
 
         if (!$this->getResponse()->isFinished()) {
             /** @skipUpgrade */
@@ -142,7 +139,7 @@ class RootURLController extends Controller implements Resettable
             $request->match('$URLSegment//$Action', true);
             $controller = new ModelAsController();
 
-            $response = $controller->handleRequest($request, $model);
+            $response = $controller->handleRequest($request);
 
             $this->prepareResponse($response);
         }

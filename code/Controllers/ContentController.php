@@ -5,24 +5,22 @@ namespace SilverStripe\CMS\Controllers;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
-use SilverStripe\Control\Session;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Convert;
 use SilverStripe\i18n\i18n;
 use SilverStripe\ORM\ArrayList;
-use SilverStripe\ORM\DataModel;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\FieldType\DBVarchar;
 use SilverStripe\ORM\SS_List;
-use SilverStripe\Versioned\Versioned;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
 use SilverStripe\View\SSViewer;
@@ -169,16 +167,14 @@ class ContentController extends Controller
      * fall over to a child controller in order to provide functionality for nested URLs.
      *
      * @param HTTPRequest $request
-     * @param DataModel $model
      * @return HTTPResponse
      * @throws HTTPResponse_Exception
      */
-    public function handleRequest(HTTPRequest $request, DataModel $model)
+    public function handleRequest(HTTPRequest $request)
     {
         /** @var SiteTree $child */
         $child  = null;
         $action = $request->param('Action');
-        $this->setDataModel($model);
 
         // If nested URLs are enabled, and there is no action handler for the current request then attempt to pass
         // control to a child controller. This allows for the creation of chains of controllers which correspond to a
@@ -203,7 +199,7 @@ class ContentController extends Controller
             $request->shiftAllParams();
             $request->shift();
 
-            $response = ModelAsController::controller_for($child)->handleRequest($request, $model);
+            $response = ModelAsController::controller_for($child)->handleRequest($request);
         } else {
             // If a specific locale is requested, and it doesn't match the page found by URLSegment,
             // look for a translation and redirect (see #5001). Only happens on the last child in
@@ -227,7 +223,7 @@ class ContentController extends Controller
             Director::set_current_page($this->data());
 
             try {
-                $response = parent::handleRequest($request, $model);
+                $response = parent::handleRequest($request);
 
                 Director::set_current_page(null);
             } catch (HTTPResponse_Exception $e) {
@@ -474,8 +470,8 @@ HTML;
         global $project;
         $data = new ArrayData(array(
             'Project' => Convert::raw2xml($project),
-            'Username' => Convert::raw2xml(Session::get('username')),
-            'Password' => Convert::raw2xml(Session::get('password')),
+            'Username' => Convert::raw2xml($this->getRequest()->getSession()->get('username')),
+            'Password' => Convert::raw2xml($this->getRequest()->getSession()->get('password')),
         ));
 
         return array(
@@ -518,8 +514,8 @@ HTML;
         }
 
         $data = new ArrayData(array(
-            'Username' => Convert::raw2xml(Session::get('username')),
-            'Password' => Convert::raw2xml(Session::get('password')),
+            'Username' => Convert::raw2xml($this->getRequest()->getSession()->get('username')),
+            'Password' => Convert::raw2xml($this->getRequest()->getSession()->get('password')),
             'UnsuccessfulFiles' => $unsuccessful
         ));
         $content->setValue($data->renderWith([
