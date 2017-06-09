@@ -17,16 +17,16 @@
   ],
   "require": {
     "composer/installers": "*",
-    "silverstripe/admin": "^1.0@dev",
+    "silverstripe/admin": "^1@dev",
     "silverstripe/campaign-admin": "^1@dev",
-    "silverstripe/framework": "4.0.x-dev",
-    "silverstripe/reports": "^4.0@dev",
-    "silverstripe/siteconfig": "^4.0@dev",
-    "silverstripe/versioned": "1.0@dev"
+    "silverstripe/framework": "^4@dev",
+    "silverstripe/reports": "^4@dev",
+    "silverstripe/siteconfig": "^4@dev",
+    "silverstripe/versioned": "^1@dev"
   },
   "require-dev": {
     "phpunit/phpunit": "^5.7",
-    "silverstripe/behat-extension": "^3",
+    "silverstripe/behat-extension": "^3@dev",
     "silverstripe/serve": "dev-master",
     "se/selenium-server-standalone": "2.41.0"
   },
