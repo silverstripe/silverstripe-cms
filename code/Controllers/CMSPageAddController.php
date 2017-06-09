@@ -199,7 +199,7 @@ class CMSPageAddController extends CMSPageEditController
             $parentID = 0;
         }
 
-        if (!singleton($className)->canCreate(Member::currentUser(), array('Parent' => $parentObj))) {
+        if (!singleton($className)->canCreate(Security::getCurrentUser(), array('Parent' => $parentObj))) {
             return Security::permissionFailure($this);
         }
 

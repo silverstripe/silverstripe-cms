@@ -7,6 +7,7 @@ use SilverStripe\Control\ContentNegotiator;
 use SilverStripe\Control\Controller;
 use SilverStripe\ORM\DB;
 use SilverStripe\Security\InheritedPermissions;
+use SilverStripe\Security\Security;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ValidationException;
@@ -57,8 +58,9 @@ class SiteTreeTest extends SapphireTest
      */
     public function logOut()
     {
-        if ($member = Member::currentUser()) {
-            $member->logOut();
+        if ($member = Security::getCurrentUser()) {
+            Session::clear('loggedInAs');
+            Security::setCurrentUser(null);
         }
     }
 
@@ -663,11 +665,13 @@ class SiteTreeTest extends SapphireTest
         $sc->write();
 
         // Confirm that Member.editor can't edit the page
-        $this->objFromFixture(Member::class, 'editor')->logIn();
+        $member = $this->objFromFixture(Member::class, 'editor');
+        Security::setCurrentUser($member);
         $this->assertFalse($page->canEdit());
 
         // Change the page to be editable by Group.editors, but do not publish
-        $this->objFromFixture(Member::class, 'admin')->logIn();
+        $admin = $this->objFromFixture(Member::class, 'admin');
+        Security::setCurrentUser($admin);
         $page->CanEditType = 'OnlyTheseUsers';
         $page->EditorGroups()->add($this->idFromFixture(Group::class, 'editors'));
         $page->write();
@@ -678,15 +682,18 @@ class SiteTreeTest extends SapphireTest
         $checker->clearCache();
 
         // Confirm that Member.editor can now edit the page
-        $this->objFromFixture(Member::class, 'editor')->logIn();
+        $member = $this->objFromFixture(Member::class, 'editor');
+        Security::setCurrentUser($member);
         $this->assertTrue($page->canEdit());
 
         // Publish the changes to the page
-        $this->objFromFixture(Member::class, 'admin')->logIn();
+        $admin = $this->objFromFixture(Member::class, 'admin');
+        Security::setCurrentUser($admin);
         $page->publishRecursive();
 
         // Confirm that Member.editor can still edit the page
-        $this->objFromFixture(Member::class, 'editor')->logIn();
+        $member = $this->objFromFixture(Member::class, 'editor');
+        Security::setCurrentUser($member);
         $this->assertTrue($page->canEdit());
     }
 
@@ -720,12 +727,12 @@ class SiteTreeTest extends SapphireTest
     public function testAuthorIDAndPublisherIDFilledOutOnPublish()
     {
         // Ensure that we have a member ID who is doing all this work
-        $member = Member::currentUser();
+        $member = security::getCurrentUser();
         if ($member) {
             $memberID = $member->ID;
         } else {
-            $memberID = $this->idFromFixture(Member::class, "admin");
-            Session::set("loggedInAs", $memberID);
+            $member = $this->objFromFixture(Member::class, "admin");
+            Security::setCurrentUser($member);
         }
 
         // Write the page
@@ -1158,7 +1165,7 @@ class SiteTreeTest extends SapphireTest
         $method = new ReflectionMethod($sitetree, 'getClassDropdown');
         $method->setAccessible(true);
 
-        Session::set("loggedInAs", null);
+        Security::setCurrentUser(null);
         $this->assertArrayNotHasKey(SiteTreeTest_ClassA::class, $method->invoke($sitetree));
 
         $this->loginWithPermission('ADMIN');
@@ -1167,7 +1174,7 @@ class SiteTreeTest extends SapphireTest
         $this->loginWithPermission('CMS_ACCESS_CMSMain');
         $this->assertArrayHasKey(SiteTreeTest_ClassA::class, $method->invoke($sitetree));
 
-        Session::set("loggedInAs", null);
+        Security::setCurrentUser(null);
     }
 
     public function testCanBeRoot()
@@ -1398,7 +1405,7 @@ class SiteTreeTest extends SapphireTest
     public function testCanPublish()
     {
         $page = new SiteTreeTest_ClassD();
-        Session::clear("loggedInAs");
+        $this->logOut();
 
         // Test that false overrides any can_publish = true
         SiteTreeTest_ExtensionA::$can_publish = true;

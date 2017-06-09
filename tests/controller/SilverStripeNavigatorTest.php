@@ -7,6 +7,7 @@ use SilverStripe\CMS\Controllers\SilverStripeNavigator;
 use SilverStripe\CMS\Controllers\SilverStripeNavigatorItem;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Dev\TestOnly;
+use SilverStripe\Security\Security;
 
 /**
  * @package cms
@@ -85,7 +86,7 @@ class SilverStripeNavigatorTest_ProtectedTestItem extends SilverStripeNavigatorI
     public function canView($member = null)
     {
         if (!$member) {
-            $member = Member::currentUser();
+            $member = Security::getCurrentUser();
         }
         return Permission::checkMember($member, 'ADMIN');
     }

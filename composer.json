@@ -19,10 +19,10 @@
     "composer/installers": "*",
     "silverstripe/admin": "^1.0@dev",
     "silverstripe/campaign-admin": "^1@dev",
-    "silverstripe/framework": "^4.0@dev",
+    "silverstripe/framework": "4.0.x-dev",
     "silverstripe/reports": "^4.0@dev",
     "silverstripe/siteconfig": "^4.0@dev",
-    "silverstripe/versioned": "^1.0@dev"
+    "silverstripe/versioned": "1.0@dev"
   },
   "require-dev": {
     "phpunit/phpunit": "^5.7",

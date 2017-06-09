@@ -4,6 +4,7 @@ use SilverStripe\Core\Injector\Injector;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ValidationException;
+use SilverStripe\Security\Security;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\ORM\HiddenClass;
 use SilverStripe\CMS\Controllers\CMSMain;
@@ -49,7 +50,7 @@ class CMSMainTest extends FunctionalTest
         $cache = Injector::inst()->get(CacheInterface::class . '.CMSMain_SiteTreeHints');
         // Login as user with root creation privileges
         $user = $this->objFromFixture('SilverStripe\\Security\\Member', 'rootedituser');
-        $user->logIn();
+        Security::setCurrentUser($user);
         $cache->clear();
 
         $rawHints = singleton('SilverStripe\\CMS\\Controllers\\CMSMain')->SiteTreeHints();
@@ -240,7 +241,7 @@ class CMSMainTest extends FunctionalTest
      */
     public function testDraftDeletedPageCanBeOpenedInCMS()
     {
-        $this->session()->inst_set('loggedInAs', $this->idFromFixture('SilverStripe\\Security\\Member', 'admin'));
+        $this->logInWithPermission('ADMIN');
 
         // Set up a page that is delete from live
         $page = $this->objFromFixture(Page::class, 'page1');
@@ -306,7 +307,7 @@ class CMSMainTest extends FunctionalTest
         $rootEditUser = $this->objFromFixture('SilverStripe\\Security\\Member', 'rootedituser');
 
         // with insufficient permissions
-        $cmsUser->logIn();
+        Security::setCurrentUser($cmsUser);
         $this->get('admin/pages/add');
         $response = $this->post(
             'admin/pages/add/AddForm',
@@ -325,7 +326,7 @@ class CMSMainTest extends FunctionalTest
         $this->assertEquals(403, $response->getStatusCode(), 'Add TopLevel page must fail for normal user');
 
         // with correct permissions
-        $rootEditUser->logIn();
+        Security::setCurrentUser($rootEditUser);
         $response = $this->get('admin/pages/add');
 
         $response = $this->post(
@@ -346,7 +347,7 @@ class CMSMainTest extends FunctionalTest
         $this->assertNotEmpty($location, 'Must be a redirect on success');
         $this->assertContains('/show/', $location, 'Must redirect to /show/ the new page');
         // TODO Logout
-        $this->session()->inst_set('loggedInAs', null);
+        Security::setCurrentUser(null);
 
         $this->autoFollowRedirection = $origFollow;
     }
@@ -357,7 +358,7 @@ class CMSMainTest extends FunctionalTest
         $this->autoFollowRedirection = false;
 
         $adminUser = $this->objFromFixture('SilverStripe\\Security\\Member', 'admin');
-        $adminUser->logIn();
+        Security::setCurrentUser($adminUser);
 
         // Create toplevel page
         $this->get('admin/pages/add');
@@ -422,7 +423,7 @@ class CMSMainTest extends FunctionalTest
         );
         $this->assertEquals(403, $response->getStatusCode(), 'Add disallowed child should fail');
 
-        $this->session()->inst_set('loggedInAs', null);
+        Security::setCurrentUser(null);
 
         $this->autoFollowRedirection = $origFollow;
     }
@@ -432,7 +433,7 @@ class CMSMainTest extends FunctionalTest
         $page3 = $this->objFromFixture(Page::class, 'page3');
         $page31 = $this->objFromFixture(Page::class, 'page31');
         $adminuser = $this->objFromFixture('SilverStripe\\Security\\Member', 'admin');
-        $this->session()->inst_set('loggedInAs', $adminuser->ID);
+        Security::setCurrentUser($adminuser);
 
         $response = $this->get('admin/pages/edit/show/' . $page31->ID);
         $parser = new CSSContentParser($response->getBody());
@@ -443,7 +444,7 @@ class CMSMainTest extends FunctionalTest
         $this->assertEquals('Page 3', (string)$crumbs[0]);
         $this->assertEquals('Page 3.1', (string)$crumbs[1]);
 
-        $this->session()->inst_set('loggedInAs', null);
+        Security::setCurrentUser(null);
     }
 
     public function testGetNewItem()

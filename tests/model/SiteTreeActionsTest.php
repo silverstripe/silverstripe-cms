@@ -1,6 +1,7 @@
 <?php
 
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Security\Security;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\ORM\DB;
 use SilverStripe\Security\Member;
@@ -40,7 +41,7 @@ class SiteTreeActionsTest extends FunctionalTest
 
         // Log in as another user
         $readonlyEditor = $this->objFromFixture(Member::class, 'cmsreadonlyeditor');
-        $this->session()->inst_set('loggedInAs', $readonlyEditor->ID);
+        Security::setCurrentUser($readonlyEditor);
 
         // Reload latest version
         $page = Page::get()->byID($page->ID);
@@ -76,7 +77,7 @@ class SiteTreeActionsTest extends FunctionalTest
 
         // Check that someone without the right permission can't delete the page
         $editor = $this->objFromFixture(Member::class, 'cmsnodeleteeditor');
-        $this->session()->inst_set('loggedInAs', $editor->ID);
+        Security::setCurrentUser($editor);
 
         $actions = $page->getCMSActions();
         $this->assertNull($actions->dataFieldByName('action_archive'));
@@ -84,7 +85,7 @@ class SiteTreeActionsTest extends FunctionalTest
         // Check that someone with the right permission can delete the page
         /** @var Member $member */
         $member = $this->objFromFixture(Member::class, 'cmseditor');
-        $member->logIn();
+        Security::setCurrentUser($member);
         $actions = $page->getCMSActions();
         $this->assertNotNull($actions->dataFieldByName('action_archive'));
     }
@@ -96,7 +97,7 @@ class SiteTreeActionsTest extends FunctionalTest
         }
 
         $author = $this->objFromFixture(Member::class, 'cmseditor');
-        $this->session()->inst_set('loggedInAs', $author->ID);
+        Security::setCurrentUser($author);
 
         /** @var Page $page */
         $page = new Page();
@@ -125,7 +126,7 @@ class SiteTreeActionsTest extends FunctionalTest
         }
 
         $author = $this->objFromFixture(Member::class, 'cmseditor');
-        $this->session()->inst_set('loggedInAs', $author->ID);
+        Security::setCurrentUser($author);
 
         $page = new Page();
         $page->CanEditType = 'LoggedInUsers';
@@ -158,7 +159,7 @@ class SiteTreeActionsTest extends FunctionalTest
         }
 
         $author = $this->objFromFixture(Member::class, 'cmseditor');
-        $this->session()->inst_set('loggedInAs', $author->ID);
+        Security::setCurrentUser($author);
 
         $page = new Page();
         $page->CanEditType = 'LoggedInUsers';
