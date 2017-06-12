@@ -91,15 +91,6 @@ eo:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Bonvolu enigi URL-segmenton aŭ alklaki al Rezigni'
     HelpChars: 'Aŭtomate konvertas aŭ forigas specialajn signojn.'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Erarokodo'
-    DEFAULTERRORPAGECONTENT: '<p>Bedaŭrinde, ŝajne vi provis aliri paĝon kiu ne ekzistas.</p><p>Bonvole kontrolu la literumadon de la URL alirota kaj provu denove.</p>'
-    DEFAULTERRORPAGETITLE: 'Ne trovis paĝon'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Bedaŭrinde, estis problemo pri via peto.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Servila eraro'
-    DESCRIPTION: 'Propra enhavo por diversaj okazoj de eraro (ekzemple, "Ne trovis paĝon")'
-    PLURALNAME: 'Paĝoj pri eraroj'
-    SINGULARNAME: 'Paĝo pri eraroj'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Alidirektas al interna paĝo aŭ ekstera URL'
     HASBEENSETUP: 'Alidirekta paĝo estis agordita sen ie al kie alidirekti.'

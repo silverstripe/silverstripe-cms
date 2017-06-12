@@ -35,12 +35,6 @@ uk:
     VIEWPAGEIN: 'Переглянути сторінку в:'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Спеціальні символи автоматично перетворені або видалені.'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Код помилки'
-    DEFAULTERRORPAGECONTENT: '<p>Вибачте, але такої сторінки не існує.</p><p>Перевірте, будь-ласка, правильність URL та спробуйте ще раз.</p>'
-    DEFAULTERRORPAGETITLE: 'Сторінку не знайдено'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Вибачте, під час опрацювання вашого запиту сталася помилка.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Помилка сервера'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Сторінка перенаправлення була встановлена без указання цілі перенаправлення'
     HEADER: 'Ця сторінка перенаправляє користувачів на іншу сторінку'

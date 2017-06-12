@@ -91,18 +91,6 @@ es:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Vacío'
     HelpChars: 'Los caracteres especiales son automáticamente convertidos o eliminados.'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Código de error'
-    DEFAULTERRORPAGECONTENT: '<p>Lo sentimos, parece que intentaste acceder a una página que no existe.</p><p>Por favor, comprueba que la URL que intentabas acceder está bien escrita e inténtalo de nuevo.</p>'
-    DEFAULTERRORPAGETITLE: 'Página no encontrada'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Lo sentimos, hubo un problema al gestionar tu solicitud.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Error de servidor'
-    DESCRIPTION: 'Contenido personalizado para los distintos casos de error (p.e. "Página no encontrada")'
-    PLURALNAME: 'Páginas de error'
-    PLURALS:
-      one: 'Una Página de error'
-      other: '{count} Páginas de error'
-    SINGULARNAME: 'Página de error'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Redirecciona a una página interna o a una URL externa'
     HASBEENSETUP: 'Se ha establecido una página redireccionadora sin ningún sitio al cual redireccionar.'

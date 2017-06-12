@@ -19,10 +19,10 @@ Feature: Search for a page
     But I should not see "Contact Us" in the tree
 
   Scenario: I can search for a page by its type
-    Given a "Error Page" "My Error Page"
-    When I select "Error Page" from "Page type"
+    Given a "Virtual Page" "My Virtual Page"
+    When I select "Virtual Page" from "Page type"
     And I press the "Search" button
-    Then I should see "My Error Page" in the tree
+    Then I should see "My Virtual Page" in the tree
     But I should not see "Contact Us" in the tree
 
   Scenario: I can search for a page by its oldest last edited date

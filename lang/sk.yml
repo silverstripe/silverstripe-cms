@@ -91,15 +91,6 @@ sk:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Zadajte prosím URL segment alebo kliknite zrušiť'
     HelpChars: 'Špeciálne znaky sú automaticky zkonvertované alebo ostránené.'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Chybový kód'
-    DEFAULTERRORPAGECONTENT: '<p>Prepáčte, vyzerá to tak, že sa snažíte otvoriť stránku, ktorá neexistuje.</p><p> Skontrolujte napísanú URL, prosím.</p>'
-    DEFAULTERRORPAGETITLE: 'Stránka nenájdená'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Prepáčte, nastal problém s manipuláciou vašej požiadavky.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Chyba servera'
-    DESCRIPTION: 'Vlastný obsah pre rôzne prípady chýb (napr. "Stránka nenájdená")'
-    PLURALNAME: 'Chybové stránky'
-    SINGULARNAME: 'Chybová stránka'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Presmeruje na internú stránku alebo na externé URL'
     HASBEENSETUP: 'Stránka na presmerovanie bola nastavená bez cieľa.'

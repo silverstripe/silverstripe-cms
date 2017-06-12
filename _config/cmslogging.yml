@@ -1,8 +1,0 @@
----
-Name: cms-logging
-After:
-  - '#loggingformatters'
----
-SilverStripe\Core\Injector\Injector:
-  Monolog\Formatter\FormatterInterface.friendly:
-    class: SilverStripe\CMS\Logging\ErrorPageErrorFormatter

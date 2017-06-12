@@ -1304,7 +1304,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         if (Permission::check('CMS_ACCESS_CMSMain')
-            && !$this instanceof ErrorPage
             && $this->ID > 0
         ) {
             $tags[] = HTML::createTag('meta', array(

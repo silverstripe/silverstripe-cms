@@ -14,12 +14,6 @@ zh_TW:
     Title: '所有網頁'
   SilverStripe\CMS\Controllers\ContentController:
     NOTEWONTBESHOWN: '備註: 此訊息將不會顯示給您的訪客看'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: '錯誤代碼'
-    DEFAULTERRORPAGECONTENT: '<p>抱歉, 看來您正再嘗試存取一個不存在的網頁</p><p>請檢查您正在嘗試存取網址的拼寫並再試一次.</p>'
-    DEFAULTERRORPAGETITLE: '未發現網頁'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>抱歉, 處裡您的要求發生一個問題</p>'
-    DEFAULTSERVERERRORPAGETITLE: '伺服器錯誤'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: '沒有任何地方被重新導向的一個重新導向網頁已被設定.'
     HEADER: '本網頁將重新導向用戶至別的網頁'

@@ -62,13 +62,6 @@ nl:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Vul een URL segment in of klik op annuleren'
     HelpChars: 'Speciale tekens worden automatische omgezet of verwijderd.'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Foutcode'
-    DEFAULTERRORPAGECONTENT: '<p>Helaas, de pagina die u zocht lijkt niet (meer) te bestaan.</p><p>Controleer of de juiste URL is gebruikt en probeer het opnieuw.</p>'
-    DEFAULTERRORPAGETITLE: 'Pagina niet gevonden'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Helaas, er was een probleem bij het verwerken van je verzoek.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Probleem met de server'
-    SINGULARNAME: 'Foutpagina'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Er is een verwijspagina opgezet zonder ergens naar te verwijzen.'
     HEADER: 'Deze pagina zal gebruikers naar een andere pagina doorsturen (redirect)'

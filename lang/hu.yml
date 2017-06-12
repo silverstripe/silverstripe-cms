@@ -53,21 +53,6 @@ hu:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Írjon be egy URL szegmenst, vagy kattitson a "mégse" feliratra'
     HelpChars: 'A speciális karakterek automatikusan konvertálódnak vagy törlődnek.'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Hibakód'
-    CODE_400: '400 - Hibás kérés'
-    CODE_401: '401 - Jogosulatlan kérés'
-    CODE_403: '403 - Tiltott hozzáférés'
-    CODE_404: '404 - Az oldal nem létezik'
-    CODE_405: '405 - Tiltott Művelet'
-    CODE_406: '406 - Elfogadhatatlan művelet'
-    CODE_407: '407 - Proxy azonosítás szükséges'
-    CODE_408: '408 - Időtullépés'
-    CODE_409: '409 - Konfliktus'
-    CODE_410: '410 - Kapcsolat bontva'
-    CODE_411: '411 - Hossz kötelező'
-    DEFAULTERRORPAGETITLE: 'Az oldal nem található'
-    DEFAULTSERVERERRORPAGETITLE: 'Szerver hiba'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Egy átirányító oldal került létrehozásra, anélkül hogy lenne hova átirányítania.'
     HEADER: 'Ez az oldal egy másik oldalra fogja írányítani a felhasználókat'
