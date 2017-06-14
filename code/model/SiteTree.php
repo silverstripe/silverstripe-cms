@@ -1957,7 +1957,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				'CMSMain.NEWPAGE',
 				array('pagetype' => $this->i18n_singular_name())
 			)));
-		$helpText = (self::config()->nested_urls && count($this->Children())) ? $this->fieldLabel('LinkChangeNote') : '';
+		$helpText = (self::config()->nested_urls && $this->numChildren()) ? $this->fieldLabel('LinkChangeNote') : '';
 		if(!Config::inst()->get('URLSegmentFilter', 'default_allow_multibyte')) {
 			$helpText .= $helpText ? '<br />' : '';
 			$helpText .= _t('SiteTreeURLSegmentField.HelpChars', ' Special characters are automatically converted or removed.');
