@@ -1,7 +1,41 @@
 mi:
+  AssetAdmin:
+    ADDFILES: "Tāpiri Kōnae"
+    ActionAdd: "Tāpiri kōpaki"
+    AppCategoryArchive: Puranga
+    AppCategoryAudio: Ororongo
+    AppCategoryDocument: Tuhinga
+    AppCategoryFlash: Kohiko
+    AppCategoryImage: Atahanga
+    AppCategoryVideo: Ataata
+    BackToFolder: "Hoki ki te kōpaki"
+    CREATED: Rā
+    CurrentFolderOnly: "Me whakatiki ki te kōpaki o nāianei?"
+    DetailsView: "Ngā Taipitopito"
+    FILES: "Ngā Kōnae"
+    FILESYSTEMSYNC: "Tukutahi kōnae"
+    FILESYSTEMSYNCTITLE: "Whakahōutia ngā tāurunga pātengi raraunga CMS o ngā kōnae kei te pūnaha kōnae. He whaitake ina tukuna atu he kōnae hou mai i waho i te CMS, hei tauira, mā te FTP."
+    FROMTHEINTERNET: "Mai i te Ipurangi"
+    FROMYOURCOMPUTER: "Mai i tō rorohiko"
+    Filetype: "Momo kōnae"
+    ListView: "Tirohanga Rārangi"
+    MENUTITLE: "Ngā Kōnae"
+    NEWFOLDER: KōpakiHōu
+    SIZE: Rahi
+    THUMBSDELETED: " Kua mukua e {count} ngā karakōnui kāore i whakamahia"
+    TreeView: "Tirohanga Rākau"
+    Upload: Tukuatu
+  AssetAdmin_DeleteBatchAction:
+    TITLE: "Muku kōpaki"
+  AssetAdmin_Tools:
+    FILTER: Tātari
+  AssetAdmin_left_ss:
+    GO: Haere
   AssetTableField:
     BACKLINKCOUNT: "I whakamahia i:"
     PAGES: "te/ngā whārangi"
+  BackLink_Button_ss:
+    Back: Hoki
   BrokenLinksReport:
     Any: "Ko tētahi"
     BROKENLINKS: "Pūrongo hono whati"
@@ -27,8 +61,14 @@ mi:
   CMSAddPageController:
     Title: "Tāpiri whārangi"
   CMSBatchActions:
+    DELETED_DRAFT_PAGES: "Kua mukua e %d ngā whārangi i te pae hukihuki, %d i rahua"
+    DELETED_PAGES: "Kua mukua e %d ngā whārangi i te pae kua whakaputaina , %d i rahua"
+    DELETE_DRAFT_PAGES: "Mukua i te pae hukihuki"
+    DELETE_PAGES: "Mukua i te pae kua whakaputaina"
     PUBLISHED_PAGES: "%d ngā whārangi kua whakaputaina, %d i rahua"
     PUBLISH_PAGES: Whakaputa
+  CMSFileAddController:
+    MENUTITLE: "Ngā Kōnae"
   CMSMain:
     ACCESS: "Uru ki te wāhanga '{title}' "
     ACCESS_HELP: "Tukua kia kitea te wāhanga kei roto te whārangi rākau me ngā ihirangi. Ka taea te whakahaere i te tiro me te whakatika whakaaetanga mā ngā takaiho tauwhāiti-whārangi, mā \"Ngā whakaaetanga ihirangi\" motuhake hoki."
@@ -38,8 +78,13 @@ mi:
     ChoosePageParentMode: "Kōwhiri ki hea hangaia ai tēnei whārangi"
     ChoosePageType: "Kōwhiria te momo whārangi"
     Create: Hanga
+    DELETE: "Mukua te hukihuki"
+    DELETEFP: Muku
+    DESCREMOVED: "me ngā uri {count}"
     DUPLICATED: "I momoho te tārite i '{title}'"
     DUPLICATEDWITHCHILDREN: "I momoho te tārite i '{title}' me ngā tamariki"
+    EditTree: "Whakatika Rākau"
+    MENUTITLE: "Whakatika Whārangi"
     NEWPAGE: "{pagetype} hou"
     PAGENOTEXISTS: "KIāore tēnei whārangi e tīari"
     PAGETYPEANYOPT: "Ko tētahi"
@@ -47,22 +92,31 @@ mi:
     PUBALLFUN: "Te taumahinga \"Whakaputaina Katoatia\""
     PUBPAGES: "Kua oti: I whakaputaina ngā whārangi {count}"
     PageAdded: "I momoho te hanga whārangi"
+    REMOVED: "I mukua te '{title}'{description} i te pae ora"
     REMOVEDPAGE: "I tango te '{title}' i te pae kua whakaputaina"
     REMOVEDPAGEFROMDRAFT: "I tangohia a '%s' i te pae hukihuki"
     RESTORED: "I momoho te whakaora i te '{title}'"
     ROLLBACK: "Hoki whakamuri ki tēnei putanga."
     ROLLEDBACKPUBv2: "I hoki ki te tauira kua whakaputaina."
     ROLLEDBACKVERSIONv2: "I hoki ki te tauira #%d."
+    SAVE: tiakina
     SAVEDRAFT: "Tiaki hukihuki"
     TabContent: "Ngā Ihirangi"
     TabHistory: Hītori
     TabSettings: "Ngā Tautuhinga"
+  CMSMain_left_ss:
+    RESET: "Tautuhi Anō"
   CMSPageAddController:
+    MENUTITLE: "Tāpiri whārangi"
     ParentMode_child: "Kei raro i tētahi atu whārangi"
     ParentMode_top: "Taumata matua"
+  CMSPageEditController:
+    MENUTITLE: "Whakatika Whārangi"
   CMSPageHistoryController:
     COMPAREMODE: "Whakataurite Aratau (tīpakohia kia rua)"
     COMPAREVERSIONS: "Whakatauritea Ngā Putanga"
+    COMPARINGVERSION: "Whakataurite ana i te putanga {version1} me te putanga {version2}."
+    MENUTITLE: Hītori
     REVERTTOTHISVERSION: "Hoki ki tēnei putanga"
     SHOWUNPUBLISHED: "Whakaaturia ngā putanga kāore i whakaputaina"
     SHOWVERSION: "Whakaatu Putanga"
@@ -75,7 +129,10 @@ mi:
     PUBLISHER: Pūwhakaputa
     UNKNOWN: "Tē Mōhiotia"
     WHEN: Inahea
+  CMSPageSettingsController:
+    MENUTITLE: "Whakatika Whārangi"
   CMSPagesController:
+    GalleryView: "Tirohanga Taiwhanga"
     ListView: "Tirohanga Rārangi"
     MENUTITLE: "Ngā Whārangi"
     TreeView: "Tirohanga Rākau"
@@ -83,7 +140,10 @@ mi:
     FILTER: Tātari
   CMSSearch:
     FILTERDATEFROM: "Mai i"
+    FILTERDATEHEADING: Rā
     FILTERDATETO: Ki
+  CMSSettingsController:
+    MENUTITLE: "Ngā Tautuhinga"
   CMSSiteTreeFilter_Search:
     Title: "Ngā Whārangi Katoa"
   ContentControl:
@@ -94,6 +154,7 @@ mi:
     CMS: CMS
     DRAFT: Hukihuki
     DRAFTSITE: "Pae Hukihuki"
+    DRAFT_SITE_ACCESS_RESTRICTION: "Me takiuru mā tō kupuhipa CMS hei tiro i te hukihuki, ngā ihirangi putumōhio rānei.  <a href=\"%s\">Pāwhiri ki konei kia hoki ki te pae kua whakaputaina.</a>"
     Email: Īmēra
     INSTALL_SUCCESS: "Kua oti pai te tāuta!"
     InstallFilesDeleted: "Kua momoho te muku i ngā kōnae tāuta"
@@ -139,17 +200,40 @@ mi:
     DEFAULTERRORPAGETITLE: "Kāore i kitea te whārangi"
     DEFAULTSERVERERRORPAGECONTENT: "<p>Aroha noa,kua rarua te tuku i tō tono.</p>"
     DEFAULTSERVERERRORPAGETITLE: "Hapa tūmau"
+    DESCRIPTION: "Ngā ihirangi ritenga mō ngā take hapa rerekē (hei tauira. \"Kāore i kitea te whārangi\")"
+    ERRORFILEPROBLEM: "Kua hapa te whakatuwhera i te kōnae \"{filename}\" mō te tuhituhi. Tirohia ngā whakaaetanga kōnae."
+    SINGULARNAME: "Whārangi Hapa"
+  Folder:
+    AddFolderButton: "Tāpiri kōpaki"
+    DELETEUNUSEDTHUMBNAILS: "Mukua ngā karakōnui kāore i whakamahia"
+    UNUSEDFILESTITLE: "Ngā kōnae kāore i whakamahia"
+    UNUSEDTHUMBNAILSTITLE: "Ngā karakōnui kāore i whakamahia"
+    UploadFilesButton: Tukuatu
+  LeftAndMain:
+    DELETED: "Kua Mukua"
+    PreviewButton: Arokite
+    SAVEDUP: "Kua Tiakina"
+    SearchResults: "Ngā Hua Rapu"
+  Permission:
+    CMS_ACCESS_CATEGORY: "Uru CMS"
   Permissions:
     CONTENT_CATEGORY: "Whakaaetanga ihirangi"
     PERMISSIONS_CATEGORY: "Ngā tūranga me ngā whakaaetanga uru"
   RedirectorPage:
+    DESCRIPTION: "Ka tuku anō ki tētahi whārangi ā-roto kē"
     HASBEENSETUP: "Kua tatū he whārangi tuku anō me te kore whai wāhi hei tuku anō."
     HEADER: "Ka tuku anō tēnei whārangi i ngā kaiwhakamahi ki whārangi kē"
     OTHERURL: "Tētahi atu PRO paetukutuku"
     REDIRECTTO: "Tukua anō ki"
     REDIRECTTOEXTERNAL: "Tētahi atu paetukutuku"
     REDIRECTTOPAGE: "Whārangi kei tō paetukutuku"
+    SINGULARNAME: "Whārangi Tuku Anō"
     YOURPAGE: "Whārangi kei tō paetukutuku"
+  ReportAdmin:
+    MENUTITLE: "Ngā Pūrongo"
+    ReportTitle: Taitara
+  ReportAdminForm:
+    FILTERBY: "Tātari mā te"
   SITETREE:
     VIRTUALPAGEDRAFTWARNING: "Whakaputaina te whārangi kua honoa kia whakaputa ai i te whārangi mariko"
     VIRTUALPAGEWARNING: "Kōwhiria he whārangi kua honoa kātahi anō ka tiaki kia whakaputa ai i tēnei whārangi"
@@ -160,15 +244,38 @@ mi:
     SearchResults: "Ngā Hua Rapu"
   SideReport:
     BROKENFILES: "Ngā whārangi me ngā kōnae whati"
+    BROKENLINKS: "Ngā whārangi me ngā hononga whati"
     BROKENREDIRECTORPAGES: "Ngā WhārangiTukuAnō e tohu ana ki ngā whārangi kua mukua"
     BROKENVIRTUALPAGES: "Ngā WhārangiMariko e tohu ana ki ngā whārangi kua mukua"
     BrokenLinksGroupTitle: "Ngā pūrongo hononga whati"
     ContentGroupTitle: "Ngā pūrongo ihirangi"
     EMPTYPAGES: "Ngā whārangi me te kore ihirangi"
     LAST2WEEKS: "Ngā whārangi i whakatikatia i ngā wiki e 2 kua hipa"
+    OtherGroupTitle: "Ētahi atu"
     ParameterLiveCheckbox: "Tirohia te pae ora"
+    REPEMPTY: "Kua piako te pūrongo {title}."
   SilverStripeNavigator:
     ARCHIVED: "I putumōhiotia"
+  SilverStripeNavigatorLink:
+    ShareLink: "Tiritiri hono"
+  SilverStripeNavigatorLinkl:
+    CloseLink: Kati
+  SiteConfig:
+    DEFAULTTHEME: "(Whakamahia te kaupapa taunoa)"
+    EDITHEADER: "Mā wai ngā whārangi i tēnei pae e whakatika?"
+    EDIT_PERMISSION: "Whakahaeretia te whirihora pae"
+    EDIT_PERMISSION_HELP: "Āhei ki te whakatika i ngā tautuhinga uru aowhānui/ngā whakaaetanga whārangi taumata matua."
+    PLURALNAME: "Ngā Whirihoranga Pae"
+    SINGULARNAME: "Whirihoranga Pae"
+    SITENAMEDEFAULT: "Tō Ingoa Pae"
+    SITETAGLINE: "Rārangi Tautuhinga Pae/Peha"
+    SITETITLE: "Taitara pae"
+    TABACCESS: Uru
+    TABMAIN: Matua
+    TAGLINEDEFAULT: "tō rārangi tautuhinga ki konei"
+    THEME: Kaupapa
+    TOPLEVELCREATE: "Mā wai he whārangi i te pūtake o te pae e hanga?"
+    VIEWHEADER: "Mā wai ngā whārangi i tēnei pae e tiro?"
   SiteTree:
     ACCESSANYONE: "Tētahi tangata"
     ACCESSHEADER: "Mā wai tēnei whārangi e tiro?"
@@ -176,6 +283,7 @@ mi:
     ACCESSONLYTHESE: "Ko ēnei tāngata anake (kōwhiria i te rārangi)"
     ADDEDTODRAFTHELP: "Kāore anō kia whakaputaina te whārangi"
     ADDEDTODRAFTSHORT: Hukihuki
+    ALLOWCOMMENTS: "Ka tukuna ngā tākupu i tēnei whārangi?"
     APPEARSVIRTUALPAGES: "Ka kitea hoki ēnei ihirangi i ngā whārangi mariko kei ngā wāhanga  {title}."
     BUTTONCANCELDRAFT: "Whakakorea ngā huringa hukihuki"
     BUTTONCANCELDRAFTDESC: "Mukua tō hukihuki, ka hoki ki te whārangi kua whakaputaina ināianei"
@@ -189,7 +297,10 @@ mi:
     DEFAULTABOUTTITLE: "Mō Mātou"
     DEFAULTCONTACTTITLE: "Whakapā Mai"
     DEFAULTHOMETITLE: Kāinga
+    DELETEDPAGEHELP: "Kua kore e whakaputaina te whārangi"
+    DELETEDPAGESHORT: "Kua Mukua"
     DEPENDENT_NOTE: "Ka whakawhirinaki ngā whārangi e whai ana ki tēnei whārangi. Kei roto nei ngā whārangi matua, ngā whārangi tuku anō me ngā whārangi whai hono ihirangi."
+    DESCRIPTION: "Whārangi ihirangi ahuwhānui"
     DependtPageColumnLinkType: "Momo hono"
     DependtPageColumnURL: PRO
     EDITANYONE: "Ngā tāngata e āhei ana te takiuru ki te CMS"
@@ -227,17 +338,22 @@ mi:
     PARENTTYPE_SUBPAGE: "Whārangi-iti kei raro i te whārangi matua"
     PERMISSION_GRANTACCESS_DESCRIPTION: "Whakahaeretia ngā motika uru mō ngā ihirangi"
     PERMISSION_GRANTACCESS_HELP: "Tukuna te tautuhi rāhuitanga uru ki ētahi whārangi tauwhāiti i te wāhanga \"Ngā Whārangi\""
+    PLURALNAME: "Ngā Whārangi"
     PageTypNotAllowedOnRoot: "Kāore e whakaaetia te momo whārangi \"{type}\" i te taumata pūtake"
     PageTypeNotAllowed: "Kāore e whakaaetia te momo whārangi \"{type}\" hei tamaiti a tēnei whārangi matua"
+    REMOVEDFROMDRAFTHELP: "Kua whakaputaina te whārangi, engari kua mukua i te hukihuki"
+    REMOVEDFROMDRAFTSHORT: "I tangohia i te hukihuki"
     REMOVE_INSTALL_WARNING: "Whakatūpato: Me tango te install.php i tēnei tāuta SilverStripe nā ngā take haumaru."
     REORGANISE_DESCRIPTION: "Hurihia te hanganga pae"
     REORGANISE_HELP: "Whakaraupapatia ngā whārangi i te rākau pae mā te tō me te taka."
     SHOWINMENUS: "Ka kitea i ngā tahua?"
     SHOWINSEARCH: "Ka kitea i te rapu?"
+    SINGULARNAME: Whārangi
     TABBEHAVIOUR: Whanonga
     TABCONTENT: "Ngā Ihirangi Matua"
     TABDEPENDENT: "Ngā whārangi hāngai"
     TOPLEVEL: "Ngā Ihirangi Pae (Taumata Matua)"
+    TOPLEVELCREATORGROUPS: "Kaihanga taumata matua"
     URLSegment: "Wāhanga PRO"
     VIEWERGROUPS: "Ngā Ropū Kaitirotiro"
     VIEW_ALL_DESCRIPTION: "Tirohia tētahi whārangi"
@@ -262,7 +378,9 @@ mi:
     HAVEASKED: "Kua tono mai kia tirohia e koe ngā ihirangi o tā mātou pae i"
   VirtualPage:
     CHOOSE: "Whārangi kua honoa"
+    DESCRIPTION: "Ka whakaatu i ngā ihirangi o tētahi atu whārangi"
     EditLink: Whakatika
     HEADER: "He whārangi mariko tēnei"
     HEADERWITHLINK: "He whārangi mariko tēnei e tārua ihirangi ana i \"{title}\" ({link})"
     PageTypNotAllowedOnRoot: "Kāore e whakaaetia te momo whārangi taketake \"{type}\" i te taumata pūtake o tēnei whārangi mariko"
+    SINGULARNAME: "Whārangi Mariko"

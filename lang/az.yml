@@ -1,4 +1,8 @@
 az:
+  CMSMain:
+    DELETE: "Qaralama saytdan sil"
+    DELETEFP: "Dərc olunmuş saytdan sil"
+    SAVE: "Yadda saxla"
   ContentControl:
     NOTEWONTBESHOWN: "Qeyd: Bu mesaj ziyarətçilər üçün görünməyəcək"
   ContentController:
@@ -15,6 +19,10 @@ az:
     CODE: "Səhv kodu"
     DEFAULTERRORPAGECONTENT: "<P> Üzr istəyirik, görünür siz mövcud olan səhifəyə giriş əldə etməyə cəhd edirdiniz. </p><p>Xahiş sizin giriş əldə etməyə və bir daha sınaqdan keçirməyə cəhd etdiyiniz URL-i yoxlayasınız </p>"
     DEFAULTERRORPAGETITLE: "Səhifə tapılmadı"
+  Folder:
+    DELETEUNUSEDTHUMBNAILS: "İşlənməyən şəkilləri sil"
+    UNUSEDFILESTITLE: "İstifadəsiz fayllar"
+    UNUSEDTHUMBNAILSTITLE: "İşlənməyən şəkillər"
   Permissions:
     CONTENT_CATEGORY: "Məzmun səlahiyyətləri"
     PERMISSIONS_CATEGORY: İcazələr
@@ -30,11 +38,29 @@ az:
     GO: Göndər
     SEARCH: Axtar
     SearchResults: "Axtarış nəticələri"
+  SilverStripeNavigatorLink:
+    ShareLink: "Linki Paylaş"
+  SilverStripeNavigatorLinkl:
+    CloseLink: Bağla
+  SiteConfig:
+    DEFAULTTHEME: "(Susmaya görə olan şablon)"
+    EDITHEADER: "Bu saytda səhifələri kim redaktə edə bilər?"
+    EDIT_PERMISSION: "Sayt konfigurasiyasını sazla"
+    SITENAMEDEFAULT: "Saytın adı"
+    SITETAGLINE: "Saytın sloqanı"
+    SITETITLE: "Saytın başlığı"
+    TABACCESS: İcazə
+    TABMAIN: Əsas
+    TAGLINEDEFAULT: "Sizin sloganınız burda"
+    THEME: Şablon
+    TOPLEVELCREATE: "Saytın kəlləsində kim səhifə yarada bilər?"
+    VIEWHEADER: "Bu saytda səhifələri kim görə bilir?"
   SiteTree:
     ACCESSANYONE: "Hər kəs"
     ACCESSHEADER: "Bu səhifəyə kimlər baxa bilər?"
     ACCESSLOGGEDIN: "Daxil olmuş istifadəçilər"
     ACCESSONLYTHESE: "Yalnız aşağıdakılar(siyahıdan seçin)"
+    ALLOWCOMMENTS: "Bu səhifədə şərhlərə icazə verilsin?"
     BUTTONCANCELDRAFT: "Qaralama dəyişiklikləri imtina et"
     BUTTONCANCELDRAFTDESC: "Qaralamanı sil və cari dərc olunmuş versiyaya qaytar"
     BUTTONUNPUBLISH: "Dərci ləğv et"
@@ -69,6 +95,7 @@ az:
     TABCONTENT: Məzmun
     TABDEPENDENT: "Asılı səhifələr"
     TOPLEVEL: "Saytın məzmunu (yuxarı səviyyə)"
+    TOPLEVELCREATORGROUPS: "Yuxarı səviyyə yaradıcıları"
     URLSegment: "URL seqmenti"
     VIEW_ALL_DESCRIPTION: "İstənilən səhifəyə bax"
     VIEW_DRAFT_CONTENT: "Qaralama məzmuna bax"
@@ -77,3 +104,4 @@ az:
     many_many_LinkTracking: "Keçidin izlənməsi"
   VirtualPage:
     HEADER: "Bu virtual səhifədir"
+    SINGULARNAME: "Virtual səhifə"
