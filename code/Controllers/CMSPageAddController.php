@@ -149,7 +149,7 @@ class CMSPageAddController extends CMSPageEditController
             "AddForm",
             $fields,
             $actions
-        )->setHTMLID('Form_AddForm');
+        )->setHTMLID('Form_AddForm')->setStrictFormMethodCheck(false);
         $form->setAttribute('data-hints', $this->SiteTreeHints());
         $form->setAttribute('data-childfilter', $this->Link('childfilter'));
         $form->setValidationResponseCallback(function (ValidationResult $errors) use ($negotiator, $form) {
