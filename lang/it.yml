@@ -1,10 +1,44 @@
 it:
   AssetAdmin:
+    ADDFILES: "Aggiungi File"
+    ActionAdd: "Aggiungi cartella"
+    AppCategoryArchive: Archivia
+    AppCategoryAudio: Audio
+    AppCategoryDocument: Documento
+    AppCategoryFlash: Flash
+    AppCategoryImage: Immagine
+    AppCategoryVideo: Video
+    BackToFolder: "Torna alla cartella"
+    CMSMENU_OLD: "Files (vecchio)"
+    CREATED: "Data creazione"
+    CurrentFolderOnly: "Limita alla cartella corrente?"
+    DetailsView: Dettagli
     ErrorItemPermissionDenied: "Sembra tu non abbia i necessari permessi per aggiungere {ObjectTitle} ad una campagna"
     ErrorNotFound: "Questo {Type} non può essere trovato"
+    FILES: Files
+    FILESYSTEMSYNC: "Sincronizza file"
+    FILESYSTEMSYNCTITLE: "Aggiorna il database dei file. Utile quando nuovi file sono stati caricati fuori dal CMS, es. via FTP."
+    FROMTHEINTERNET: "Da Internet"
+    FROMYOURCOMPUTER: "Dal tuo computer"
+    Filetype: "Tipo di file"
+    ListView: "Visualizzazione a lista"
+    MENUTITLE: Files
+    NEWFOLDER: NuovaCartella
+    SIZE: Dimensione
+    THUMBSDELETED: "{count} miniature inutilizzate sono state eliminate"
+    TreeView: "Visualizzazione a albero"
+    Upload: Carica
+  AssetAdmin_DeleteBatchAction:
+    TITLE: "Elimina cartelle"
+  AssetAdmin_Tools:
+    FILTER: Filtra
+  AssetAdmin_left_ss:
+    GO: Vai
   AssetTableField:
     BACKLINKCOUNT: "Usato in:"
     PAGES: pagina/e
+  BackLink_Button_ss:
+    Back: Indietro
   BrokenLinksReport:
     Any: Qualsiasi
     BROKENLINKS: "Rapporto link non funzionanti"
@@ -33,10 +67,18 @@ it:
     RESULT: "Eliminate %d pagine da bozza e live, e spedite all'archivio"
     TITLE: "Annulla la pubblicazione e archivia"
   CMSBatchActions:
+    ARCHIVE: Archiviare
+    ARCHIVED_PAGES: "%d pagine archiviate"
+    DELETED_DRAFT_PAGES: "Eliminate %d pagine dal sito bozza, %d non a buon fine"
+    DELETED_PAGES: "Eliminate %d pagine dal sito pubbico, %d non a buon fine"
+    DELETE_DRAFT_PAGES: "Elimina dal sito bozza"
+    DELETE_PAGES: "Eliminata dal sito pubblicato"
     PUBLISHED_PAGES: "Pubblicate %d pagine, %d non a buon fine"
     PUBLISH_PAGES: Pubblica
     RESTORE: Ripristina
     RESTORED_PAGES: "%d pagine ripristinate"
+  CMSFileAddController:
+    MENUTITLE: Files
   CMSMain:
     ACCESS: "Accesso alla sezione '{title}'"
     ACCESS_HELP: "Consente la visualizzazione della sezione con l'albero delle pagine e i contenuti. I permessi di visualizzazione e modifica possono essere gestiti attraverso menù a tendina specifici della pagina, come dai separati \"Permessi sui contenuti\"."
@@ -49,9 +91,14 @@ it:
     ChoosePageParentMode: "Scegli dove creare questa pagina"
     ChoosePageType: "Scegli tipo di pagina"
     Create: Crea
+    DELETE: "Elimina bozza"
+    DELETEFP: "Elimina dal sito pubblicato"
+    DESCREMOVED: "e {count} discendenti"
     DUPLICATED: "'{title}' duplicato correttamente"
     DUPLICATEDWITHCHILDREN: "'{title}' e figlie duplicate con successo"
     EMAIL: E-mail
+    EditTree: "Modifica albero"
+    MENUTITLE: "Modifica pagina"
     NEWPAGE: "Nuova {pagetype}"
     PAGENOTEXISTS: "Questa pagina non esiste"
     PAGETYPEANYOPT: Qualsiasi
@@ -60,6 +107,7 @@ it:
     PUBLISHED: "Pubblicata '{title}' con successo."
     PUBPAGES: "Fatto: Pubblicate {count} pagine"
     PageAdded: "Pagina creata con successo"
+    REMOVED: "'{title}' {description} rimosso dal sito pubblico"
     REMOVEDPAGE: "Eliminata '{title}' dal sito pubblicato"
     REMOVEDPAGEFROMDRAFT: "Eliminata '%s' dal sito bozza"
     RESTORED: "Ripristinata '{title}' con successo"
@@ -69,6 +117,7 @@ it:
     ROLLBACK: "Ripristina a questa versione"
     ROLLEDBACKPUBv2: "Ripristinata la versione pubblicata."
     ROLLEDBACKVERSIONv2: "Ripristinata la versione #%d."
+    SAVE: Salva
     SAVED: "'{title}' salvata correttamente."
     SAVEDRAFT: "Salva bozza"
     TabContent: Contenuto
@@ -77,12 +126,18 @@ it:
     UNPUBLISH_AND_ARCHIVE: "Annulla pubblicazione e archivia"
   CMSMain_left_ss:
     CLEAR_FILTER: Annulla
+    RESET: Azzera
   CMSPageAddController:
+    MENUTITLE: "Aggiungi pagina"
     ParentMode_child: "Sotto un'altra pagina"
     ParentMode_top: "Primo livello"
+  CMSPageEditController:
+    MENUTITLE: "Modifica pagina"
   CMSPageHistoryController:
     COMPAREMODE: "Modalità confronto (selezionane due)"
     COMPAREVERSIONS: "Confronta versioni"
+    COMPARINGVERSION: "Confronto versioni {version1} e {version2}."
+    MENUTITLE: Archivio
     REVERTTOTHISVERSION: "Ripristina a questa versione"
     SHOWUNPUBLISHED: "Mostra versioni nascoste"
     SHOWVERSION: "Mostra versione"
@@ -96,7 +151,10 @@ it:
     PUBLISHER: Editore
     UNKNOWN: Sconosciuto
     WHEN: Quando
+  CMSPageSettingsController:
+    MENUTITLE: "Modifica pagina"
   CMSPagesController:
+    GalleryView: "Visualizzazione a galleria"
     ListView: "Visualizzazione a lista"
     MENUTITLE: Pagine
     TreeView: "Visualizzazione a albero"
@@ -106,8 +164,11 @@ it:
     Title: "Pagine pubblicate"
   CMSSearch:
     FILTERDATEFROM: Da
+    FILTERDATEHEADING: Data
     FILTERDATETO: A
     PAGEFILTERDATEHEADING: "Ultima modifica"
+  CMSSettingsController:
+    MENUTITLE: Impostazioni
   CMSSiteTreeFilter_Search:
     Title: "Tutte le pagine"
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
@@ -120,6 +181,7 @@ it:
     CMS: CMS
     DRAFT: Bozza
     DRAFTSITE: "Sito Bozza"
+    DRAFT_SITE_ACCESS_RESTRICTION: "Devi autenticarti utilizzando la tua password per poter visualizzare bozze o contenuti archiviati. <a href=\"%s\">Clicca qui per tornare al sito pubblicato</a>"
     Email: Email
     INSTALL_SUCCESS: "Installazione conclusa con successo!"
     InstallFilesDeleted: "I file di installazione sono stati eliminati con successo."
@@ -167,16 +229,38 @@ it:
     DEFAULTERRORPAGETITLE: "Pagina non trovata"
     DEFAULTSERVERERRORPAGECONTENT: "<p>Spiacenti, c'è stato un problema con la gestione della tua richiesta.</p>"
     DEFAULTSERVERERRORPAGETITLE: "Errore server"
+    DESCRIPTION: "Contenuto personalizzato per differenti casi di errore (es. \"Pagina non trovata\")"
+    ERRORFILEPROBLEM: "Errore nell'apertura del file \"{filename}\" per la scrittura. Controlla i permessi del file."
+    PLURALNAME: "Pagine Errore"
+    SINGULARNAME: "Pagine errore"
+  File:
+    Title: Titolo
+  Folder:
+    AddFolderButton: "Aggiungi cartella"
+    DELETEUNUSEDTHUMBNAILS: "Elimina anteprime inutilizzate"
+    UNUSEDFILESTITLE: "File inutilizzati"
+    UNUSEDTHUMBNAILSTITLE: "Anteprime inutilizzate"
+    UploadFilesButton: Carica
+  LeftAndMain:
+    DELETED: Eliminata.
+    PreviewButton: Anteprima
+    SAVEDUP: Salvata.
+    SearchResults: "Risultati della ricerca"
+  Permission:
+    CMS_ACCESS_CATEGORY: "Accesso CMS"
   Permissions:
     CONTENT_CATEGORY: "Permessi sui contenuti"
     PERMISSIONS_CATEGORY: "Ruoli e permessi d'accesso"
   RedirectorPage:
+    DESCRIPTION: "Redirige a un'altra pagina del sito"
     HASBEENSETUP: "Una pagina di redirezione è stata configurata nonostante non vi sia alcun indirizzo a cui farla puntare"
     HEADER: "Questa pagina redirigerà gli utenti su un'altra"
     OTHERURL: "Altro indirizzo del sito web"
+    PLURALNAME: "Pagine di redirezione"
     REDIRECTTO: "Redirigi a"
     REDIRECTTOEXTERNAL: "Un altro sito web"
     REDIRECTTOPAGE: "Una pagina sul tuo sito web"
+    SINGULARNAME: "Pagina di redirezione"
     YOURPAGE: "Pagina sul tuo sito web"
   RemoveOrphanedPagesTask:
     BUTTONRUN: Esegui
@@ -188,6 +272,11 @@ it:
     OPERATION_REMOVE: "Rimuove le pagine selezionate da tutti gli stage (ATTENZIONE: Distruggerà le pagine selezionate sia da stage che da live)"
     SELECTALL: "seleziona tutto"
     UNSELECTALL: "deseleziona tutto"
+  ReportAdmin:
+    MENUTITLE: Rapporti
+    ReportTitle: Titolo
+  ReportAdminForm:
+    FILTERBY: "Filtra per"
   SITETREE:
     VIRTUALPAGEDRAFTWARNING: "Perfavore pubblica la pagina linkata per poter pubblicare la pagina virtuale."
     VIRTUALPAGEWARNING: "Perfavore scegli una pagina da linkare e salvala per poter pubblicare questa pagina."
@@ -198,15 +287,22 @@ it:
     SearchResults: "Risultati della ricerca"
   SideReport:
     BROKENFILES: "Pagine con file non funzionanti"
+    BROKENLINKS: "Pagine con link non funzionanti."
     BROKENREDIRECTORPAGES: "Pagina di redirezione che puntano a pagine eliminate"
     BROKENVIRTUALPAGES: "Pagine virtuali che puntano a pagine eliminate"
     BrokenLinksGroupTitle: "Rapporto link non funzionanti"
     ContentGroupTitle: "Rapporti sui contenuti"
     EMPTYPAGES: "Pagine vuote"
     LAST2WEEKS: "Pagine modificate nelle ultime 2 settimane"
+    OtherGroupTitle: Altro
     ParameterLiveCheckbox: "Verifica sito pubblicato"
+    REPEMPTY: "Il rapporto {title} è vuoto."
   SilverStripeNavigator:
     ARCHIVED: Archiviato
+  SilverStripeNavigatorLink:
+    ShareLink: "Link di condivisione"
+  SilverStripeNavigatorLinkl:
+    CloseLink: Chiudi
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: "Aggiungi pagina"
   SilverStripe\CMS\Controllers\CMSPageEditController:
@@ -227,10 +323,28 @@ it:
     SINGULARNAME: "Pagina di reindirizzamento"
   SilverStripe\CMS\Model\SiteTree:
     DESCRIPTION: "Pagina di contenuto generico"
+    PLURALNAME: "Alberi del sito"
+    SINGULARNAME: "Albero del sito"
   SilverStripe\CMS\Model\VirtualPage:
     DESCRIPTION: "Mostra il contenuto di un'altra pagina"
     PLURALNAME: "Pagine virtuali"
     SINGULARNAME: "Pagina virtuale"
+  SiteConfig:
+    DEFAULTTHEME: "(Usa il tema predefinito)"
+    EDITHEADER: "Chi può modificare le pagine in questo sito?"
+    EDIT_PERMISSION: "Gestisci la configurazione del sito"
+    EDIT_PERMISSION_HELP: "Capacità di modificare le impostazioni globali di accesso/permessi pagina primo livello"
+    PLURALNAME: "Configurazioni sito"
+    SINGULARNAME: "Configurazione sito"
+    SITENAMEDEFAULT: "Nome del sito"
+    SITETAGLINE: "Motto/Slogan del sito"
+    SITETITLE: "Titolo del sito"
+    TABACCESS: Accesso
+    TABMAIN: Principale
+    TAGLINEDEFAULT: "lo slogan qui"
+    THEME: Tema
+    TOPLEVELCREATE: "Chi può creare pagine di primo livello?"
+    VIEWHEADER: "Chi può vedere le pagine in questo sito?"
   SiteTree:
     ACCESSANYONE: Chiunque
     ACCESSHEADER: "Chi può vedere questa pagina?"
@@ -238,9 +352,11 @@ it:
     ACCESSONLYTHESE: "Solamente queste persone (scegli dalla lista)"
     ADDEDTODRAFTHELP: "La pagina non è stata ancora pubblicata"
     ADDEDTODRAFTSHORT: Bozza
+    ALLOWCOMMENTS: "Permetti commenti in questa pagina?"
     APPEARSVIRTUALPAGES: "Questo contenuto appare nelle pagine virtuali nelle sezioni {title}."
     ARCHIVEDPAGEHELP: "Pagina rimossa da bozza e live"
     ARCHIVEDPAGESHORT: Archiviato
+    BUTTONARCHIVEDESC: "Nascondere e mettere in archivio"
     BUTTONCANCELDRAFT: "Cancella le modifiche salvate in bozza"
     BUTTONCANCELDRAFTDESC: "Cancella la tua bozza e ritorna alla versione corrente della pagina pubblicata"
     BUTTONDELETEDESC: "Rimuove da bozza/live e manda all'archivio"
@@ -255,7 +371,10 @@ it:
     DEFAULTCONTACTTITLE: Contattaci
     DEFAULTHOMECONTENT: "<p>Benvenuto in SilverStripe! Questa è la home page di default. Puoi modificare questa pagina direttamente <a href=\"admin/\">dal CMS</a>.</p><p>Puoi accedere alla <a href=\"http://docs.silverstripe.org\">documentazione per gli sviluppatori</a> o partire dalle <a href=\"http://www.silverstripe.org/learn/lessons\">lezioni di SilverStripe</a>.</p>"
     DEFAULTHOMETITLE: Home
+    DELETEDPAGEHELP: "La pagina non è più pubblicata"
+    DELETEDPAGESHORT: Eliminata
     DEPENDENT_NOTE: "Le seguenti pagine dipendono da questa pagina. Queste includono pagine virtuali, pagine di redirezione e pagine con link nel contenuto."
+    DESCRIPTION: "Pagina con contenuto generico"
     DependtPageColumnLinkType: "Tipo di link"
     DependtPageColumnURL: URL
     EDITANYONE: "Chiunque può autenticarsi al CMS"
@@ -297,17 +416,22 @@ it:
     PARENTTYPE_SUBPAGE: "Pagina sotto una pagina madre"
     PERMISSION_GRANTACCESS_DESCRIPTION: "Gestisci quali gruppi possono accedere o modificare certe pagine"
     PERMISSION_GRANTACCESS_HELP: "Consenti le impostazioni di restrizione d'accesso a pagine specifiche nella sezione \"Pagine\"."
+    PLURALNAME: Pagine
     PageTypNotAllowedOnRoot: "Il tipo di pagina \"{type}\" non è consentito al primo livello"
     PageTypeNotAllowed: "Il tipo di pagina \"{type}\" non è consentito come figlio di questa pagina madre"
+    REMOVEDFROMDRAFTHELP: "La pagina è pubblicata, ma è stata eliminata dal sito bozza"
+    REMOVEDFROMDRAFTSHORT: "Eliminato dal sito bozza"
     REMOVE_INSTALL_WARNING: "Attenzione: devi rimuovere install.php da questa installazione di SilverStripe per motivi di sicurezza."
     REORGANISE_DESCRIPTION: "Cambia struttura del sito"
     REORGANISE_HELP: "Riordina le pagine nell'albero del sito utilizzando il drag&drop."
     SHOWINMENUS: "Visualizza nei menu?"
     SHOWINSEARCH: "Visualizza in cerca?"
+    SINGULARNAME: Pagina
     TABBEHAVIOUR: Comportamento
     TABCONTENT: "Contenuto Principale"
     TABDEPENDENT: "Pagine dipendenti"
     TOPLEVEL: "Contenuto del sito (Livello alto)"
+    TOPLEVELCREATORGROUPS: "Creatori di primo livello"
     URLSegment: "Segmento URL"
     VIEWERGROUPS: "Gruppi di visualizzatori"
     VIEW_ALL_DESCRIPTION: "Visualizza qualsiasi pagina"
@@ -321,6 +445,8 @@ it:
     many_many_ImageTracking: "Monitoraggio immagine"
     many_many_LinkTracking: "Monitoraggio link"
   SiteTreeFileExtension:
+    BACKLINK_LIST_DESCRIPTION: "Questo elenco mostra tutte le pagine dove il file è stato aggiunto con l'editor WYSIWYG."
+    EDIT: Modifica
     TITLE_INDEX: "#"
     TITLE_TYPE: Tipo
     TITLE_USED_ON: "Usato in"
@@ -336,7 +462,10 @@ it:
     HAVEASKED: "Hai chiesto di visualizzare il contenuto del nostro sito il"
   VirtualPage:
     CHOOSE: "Pagina collegata"
+    DESCRIPTION: "Visualizza il contenuto di un'altra pagina"
     EditLink: modifica
     HEADER: "Questa è una pagina virtuale"
     HEADERWITHLINK: "Questa è una pagina virtuale copiata da \"{title}\" ({link})"
+    PLURALNAME: "Pagine virtuali"
     PageTypNotAllowedOnRoot: "Il tipo di pagina originale \"{type}\" non è consentito al primo livello per questa pagina virtuale"
+    SINGULARNAME: "Pagina virtuale"
