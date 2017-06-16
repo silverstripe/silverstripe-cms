@@ -26,7 +26,6 @@ use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldGroup;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\FormAction;
-use SilverStripe\Forms\FormField;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldDataColumns;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
@@ -60,6 +59,7 @@ use SilverStripe\Security\Permission;
 use SilverStripe\Security\PermissionProvider;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\View\ArrayData;
+use SilverStripe\View\HTML;
 use SilverStripe\View\Parsers\ShortcodeParser;
 use SilverStripe\View\Parsers\URLSegmentFilter;
 use SilverStripe\View\SSViewer;
@@ -1280,24 +1280,24 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     {
         $tags = array();
         if ($includeTitle && strtolower($includeTitle) != 'false') {
-            $tags[] = FormField::create_tag('title', array(), $this->obj('Title')->forTemplate());
+            $tags[] = HTML::createTag('title', array(), $this->obj('Title')->forTemplate());
         }
 
         $generator = trim(Config::inst()->get(self::class, 'meta_generator'));
         if (!empty($generator)) {
-            $tags[] = FormField::create_tag('meta', array(
+            $tags[] = HTML::createTag('meta', array(
                 'name' => 'generator',
                 'content' => $generator,
             ));
         }
 
         $charset = ContentNegotiator::config()->uninherited('encoding');
-        $tags[] = FormField::create_tag('meta', array(
+        $tags[] = HTML::createTag('meta', array(
             'http-equiv' => 'Content-Type',
             'content' => 'text/html; charset=' . $charset,
         ));
         if ($this->MetaDescription) {
-            $tags[] = FormField::create_tag('meta', array(
+            $tags[] = HTML::createTag('meta', array(
                 'name' => 'description',
                 'content' => $this->MetaDescription,
             ));
@@ -1307,11 +1307,11 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             && !$this instanceof ErrorPage
             && $this->ID > 0
         ) {
-            $tags[] = FormField::create_tag('meta', array(
+            $tags[] = HTML::createTag('meta', array(
                 'name' => 'x-page-id',
                 'content' => $this->obj('ID')->forTemplate(),
             ));
-            $tags[] = FormField::create_tag('meta', array(
+            $tags[] = HTML::createTag('meta', array(
                 'name' => 'x-cms-edit-link',
                 'content' => $this->obj('CMSEditLink')->forTemplate(),
             ));

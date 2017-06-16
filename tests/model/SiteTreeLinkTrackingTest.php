@@ -1,9 +1,9 @@
 <?php
 
 use SilverStripe\CMS\Model\SiteTreeLinkTracking_Parser;
-use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Assets\File;
 use SilverStripe\Dev\SapphireTest;
+use SilverStripe\View\Parsers\HTMLValue;
 
 class SiteTreeLinkTrackingTest extends SapphireTest
 {
@@ -11,7 +11,7 @@ class SiteTreeLinkTrackingTest extends SapphireTest
     protected function isBroken($content)
     {
         $parser = new SiteTreeLinkTracking_Parser();
-        $htmlValue = Injector::inst()->create('HTMLValue', $content);
+        $htmlValue = HTMLValue::create($content);
         $links = $parser->process($htmlValue);
 
         if (empty($links[0])) {

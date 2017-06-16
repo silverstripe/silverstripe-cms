@@ -3,13 +3,13 @@
 namespace SilverStripe\CMS\Model;
 
 use SilverStripe\Assets\File;
-use SilverStripe\Core\Injector\Injector;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\ManyManyList;
 use SilverStripe\Versioned\Versioned;
 use DOMElement;
+use SilverStripe\View\Parsers\HTMLValue;
 
 /**
  * Adds tracking of links in any HTMLText fields which reference SiteTree or File items.
@@ -111,7 +111,7 @@ class SiteTreeLinkTracking extends DataExtension
         $linkedPages = array();
         $linkedFiles = array();
 
-        $htmlValue = Injector::inst()->create('HTMLValue', $record->$fieldName);
+        $htmlValue = HTMLValue::create($record->$fieldName);
         $links = $this->parser->process($htmlValue);
 
         // Highlight broken links in the content.
