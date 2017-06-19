@@ -198,7 +198,7 @@ class SiteTreePermissionsTest extends FunctionalTest
             'Users without SITETREE_GRANT_ACCESS permission cannot change "edit" permissions in cms fields'
         );
 
-        $this->session()->inst_set('loggedInAs', null);
+        $this->session()->set('loggedInAs', null);
     }
 
     public function testRestrictedViewLoggedInUsers()

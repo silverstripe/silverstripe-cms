@@ -125,7 +125,7 @@ class CMSMainTest extends FunctionalTest
     {
         $page1 = $this->objFromFixture(Page::class, "page1");
         $page2 = $this->objFromFixture(Page::class, "page2");
-        $this->session()->inst_set('loggedInAs', $this->idFromFixture('SilverStripe\\Security\\Member', 'admin'));
+        $this->session()->set('loggedInAs', $this->idFromFixture('SilverStripe\\Security\\Member', 'admin'));
 
         $response = $this->get('admin/pages/publishall?confirm=1');
         $this->assertContains(

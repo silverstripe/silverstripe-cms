@@ -9,7 +9,7 @@ class CMSMainSearchFormTest extends FunctionalTest
 
     public function testTitleFilter()
     {
-        $this->session()->inst_set('loggedInAs', $this->idFromFixture('SilverStripe\\Security\\Member', 'admin'));
+        $this->session()->set('loggedInAs', $this->idFromFixture('SilverStripe\\Security\\Member', 'admin'));
 
         $response = $this->get(
             'admin/pages/SearchForm/?' .
