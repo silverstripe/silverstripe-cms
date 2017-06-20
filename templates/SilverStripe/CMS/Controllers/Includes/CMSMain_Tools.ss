@@ -2,10 +2,9 @@
 	<div class="cms-content-header north">
 		<div class="cms-content-header-info">
 			<div class="section-heading">
-			<% include SilverStripe\\Admin\\CMSSectionIcon %>
 				<span class="section-label"><a href="$LinkPages">{$MenuCurrentItem.Title}</a></span>
 			</div>
-			<% include SilverStripe\\CMS\\Controllers\\CMSMain_ViewControls PJAXTarget='Content' %>
+            <% include SilverStripe\\CMS\\Controllers\\CMSMain_Filter %>
 		</div>
 	</div>
 	<div class="panel panel--scrollable flexbox-area-grow fill-height cms-panel-content">

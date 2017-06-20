@@ -101,6 +101,30 @@
 	}
 }
 
+/* -------------------------------------------------------------------
+ * Sitetree tool bar
+ * ----------------------------------------------------------------- */
+.cms-content-toolbar {
+
+  .view-controls {
+    margin-top: 0;
+
+     .page-view-link {
+       display: none;
+       margin-right: -5px;
+     }
+
+     &.view-controls--treeview .font-icon-list {
+       display: inline-block;
+     }
+
+     &.view-controls--listview .font-icon-tree {
+       display: inline-block;
+     }
+  }
+
+}
+
 /** ------------------------------------------------------------------
  * URLSegment field
  * ----------------------------------------------------------------- */
