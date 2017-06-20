@@ -53,17 +53,6 @@ class SiteTreeTest extends SapphireTest
         SiteTreeTest_StageStatusInherit::class,
     );
 
-    /**
-     * Ensure any current member is logged out
-     */
-    public function logOut()
-    {
-        if ($member = Security::getCurrentUser()) {
-            Session::clear('loggedInAs');
-            Security::setCurrentUser(null);
-        }
-    }
-
     public function testCreateDefaultpages()
     {
             $remove = SiteTree::get();

@@ -7,6 +7,7 @@ use SilverStripe\Admin\CMSBatchActionHandler;
 use SilverStripe\Admin\LeftAndMain_SearchFilter;
 use SilverStripe\Admin\LeftAndMainFormRequestHandler;
 use SilverStripe\CMS\Model\VirtualPage;
+use SilverStripe\Core\Environment;
 use SilverStripe\Forms\Tab;
 use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\Admin\LeftAndMain;
@@ -1883,8 +1884,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             return Security::permissionFailure($this);
         }
 
-        increase_time_limit_to();
-        increase_memory_limit_to();
+        Environment::increaseTimeLimitTo();
+        Environment::increaseMemoryLimitTo();
 
         $response = "";
 
@@ -2026,7 +2027,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if (!SecurityToken::inst()->checkRequest($request)) {
             return $this->httpError(400);
         }
-        increase_time_limit_to();
+        Environment::increaseTimeLimitTo();
         if (($id = $this->urlParams['ID']) && is_numeric($id)) {
             /** @var SiteTree $page */
             $page = SiteTree::get()->byID($id);
