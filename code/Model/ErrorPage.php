@@ -6,6 +6,7 @@ use Page;
 use SilverStripe\Assets\File;
 use SilverStripe\Assets\Storage\GeneratedAssetHandler;
 use SilverStripe\CMS\Controllers\ModelAsController;
+use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
@@ -96,8 +97,10 @@ class ErrorPage extends Page
             Requirements::clear();
             Requirements::clear_combined_files();
 
+            $request = new HTTPRequest('GET', '');
+            $request->setSession(Controller::curr()->getRequest()->getSession());
             return ModelAsController::controller_for($errorPage)
-                ->handleRequest(new HTTPRequest('GET', ''));
+                ->handleRequest($request);
         }
 
         // then fall back on a cached version

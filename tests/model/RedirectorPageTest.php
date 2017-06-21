@@ -100,12 +100,3 @@ class RedirectorPageTest extends FunctionalTest
         RedirectorPageController::remove_extension('RedirectorPageTest_RedirectExtension');
     }
 }
-
-class RedirectorPageTest_RedirectExtension extends Extension implements TestOnly
-{
-
-    public function onBeforeInit()
-    {
-        $this->owner->redirect('/foo');
-    }
-}

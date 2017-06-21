@@ -1,13 +1,13 @@
 <?php
 
-use SilverStripe\Versioned\Versioned;
+use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\CMS\Controllers\RootURLController;
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\CMS\Controllers\ContentController;
-use SilverStripe\Core\Config\Config;
 use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPResponse_Exception;
+use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\FunctionalTest;
+use SilverStripe\Versioned\Versioned;
 
 /**
  * @package cms
@@ -21,6 +21,12 @@ class ContentControllerTest extends FunctionalTest
     protected static $use_draft_site = true;
 
     protected static $disable_themes = true;
+
+    protected static $extra_dataobjects = [
+        ContentControllerTest_Page::class,
+        ContentControllerTestPage::class,
+        ContentControllerTestPageWithoutController::class,
+    ];
 
     /**
      * Test that nested pages, basic actions, and nested/non-nested URL switching works properly
@@ -119,10 +125,9 @@ class ContentControllerTest extends FunctionalTest
 
         $this->assertEquals('403', $response->getstatusCode());
 
-
         // test when user does have permission, should show page title and header ok.
         $this->logInWithPermission('ADMIN');
-        $this->assertEquals('200', $this->get('/contact/?stage=Stage')->getstatusCode());
+        $this->assertEquals('200', $this->get('contact/?stage=Stage')->getstatusCode());
     }
 
     public function testLinkShortcodes()
@@ -200,48 +205,3 @@ class ContentControllerTest extends FunctionalTest
     }
 }
 
-class ContentControllerTest_Page extends Page
-{
-
-}
-
-class ContentControllerTest_PageController extends PageController
-{
-
-    private static $allowed_actions = array (
-        'second_index'
-    );
-
-    public function index()
-    {
-        return $this->Title;
-    }
-
-    public function second_index()
-    {
-        return $this->index();
-    }
-}
-
-// For testing templates
-class ContentControllerTestPageWithoutController extends Page
-{
-
-}
-
-class ContentControllerTestPage extends Page
-{
-
-}
-class ContentControllerTestPageController extends PageController
-{
-    private static $allowed_actions = array(
-        'test',
-        'testwithouttemplate'
-    );
-
-    public function testwithouttemplate()
-    {
-        return array();
-    }
-}

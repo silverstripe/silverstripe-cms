@@ -28,10 +28,6 @@ class SiteTreeActionsTest extends FunctionalTest
 
     public function testActionsReadonly()
     {
-        if (class_exists('SiteTreeCMSWorkflow')) {
-            $this->markTestSkipped('Skip if SiteTreeCMSWorkflow installed');
-        }
-
         // Publish record
         $this->logInWithPermission('ADMIN');
         $page = new SiteTreeActionsTest_Page();
@@ -58,10 +54,6 @@ class SiteTreeActionsTest extends FunctionalTest
 
     public function testActionsNoDeletePublishedRecord()
     {
-        if (class_exists('SiteTreeCMSWorkflow')) {
-            $this->markTestSkipped('Skip if SiteTreeCMSWorkflow installed');
-        }
-
         $this->logInWithPermission('ADMIN');
 
         $page = new SiteTreeActionsTest_Page();
@@ -92,10 +84,6 @@ class SiteTreeActionsTest extends FunctionalTest
 
     public function testActionsPublishedRecord()
     {
-        if (class_exists('SiteTreeCMSWorkflow')) {
-            $this->markTestSkipped('Skip if SiteTreeCMSWorkflow installed');
-        }
-
         $author = $this->objFromFixture(Member::class, 'cmseditor');
         Security::setCurrentUser($author);
 
@@ -121,10 +109,6 @@ class SiteTreeActionsTest extends FunctionalTest
 
     public function testActionsDeletedFromStageRecord()
     {
-        if (class_exists('SiteTreeCMSWorkflow')) {
-            $this->markTestSkipped('Skip if SiteTreeCMSWorkflow installed');
-        }
-
         $author = $this->objFromFixture(Member::class, 'cmseditor');
         Security::setCurrentUser($author);
 
@@ -154,10 +138,6 @@ class SiteTreeActionsTest extends FunctionalTest
 
     public function testActionsChangedOnStageRecord()
     {
-        if (class_exists('SiteTreeCMSWorkflow')) {
-            $this->markTestSkipped('Skip if SiteTreeCMSWorkflow installed');
-        }
-
         $author = $this->objFromFixture(Member::class, 'cmseditor');
         Security::setCurrentUser($author);
 
@@ -185,10 +165,6 @@ class SiteTreeActionsTest extends FunctionalTest
 
     public function testActionsViewingOldVersion()
     {
-        if (class_exists('SiteTreeCMSWorkflow')) {
-            $this->markTestSkipped('Skip if SiteTreeCMSWorkflow installed');
-        }
-
         $p = new Page();
         $p->Content = 'test page first version';
         $p->write();
@@ -205,18 +181,5 @@ class SiteTreeActionsTest extends FunctionalTest
         $this->assertNull($actions->dataFieldByName('action_unpublish'));
         $this->assertNotNull($actions->dataFieldByName('action_email'));
         $this->assertNotNull($actions->dataFieldByName('action_rollback'));
-    }
-}
-
-class SiteTreeActionsTest_Page extends Page implements TestOnly
-{
-    public function canEdit($member = null)
-    {
-        return Permission::checkMember($member, 'SiteTreeActionsTest_Page_CANEDIT');
-    }
-
-    public function canDelete($member = null)
-    {
-        return Permission::checkMember($member, 'SiteTreeActionsTest_Page_CANDELETE');
     }
 }

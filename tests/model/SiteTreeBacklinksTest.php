@@ -1,5 +1,6 @@
 <?php
 
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Control\HTTP;
@@ -16,9 +17,11 @@ class SiteTreeBacklinksTest extends SapphireTest
 {
     protected static $fixture_file = "SiteTreeBacklinksTest.yml";
 
-    protected static $required_extensions = array(
-        'SilverStripe\\CMS\\Model\\SiteTree' => array('SiteTreeBacklinksTest_DOD'),
-    );
+    protected static $required_extensions = [
+        SiteTree::class => [
+            SiteTreeBacklinksTest_DOD::class
+        ],
+    ];
 
     public function setUp()
     {
@@ -96,8 +99,6 @@ class SiteTreeBacklinksTest extends SapphireTest
 
     public function testChangingUrlOnLiveSiteRewritesLink()
     {
-        $this->markTestSkipped("Test disabled until versioned many_many implemented");
-
         // publish page 1 & 3
         $page1 = $this->objFromFixture('Page', 'page1');
         $page3 = $this->objFromFixture('Page', 'page3');
@@ -130,8 +131,6 @@ class SiteTreeBacklinksTest extends SapphireTest
 
     public function testPublishingPageWithModifiedUrlRewritesLink()
     {
-        $this->markTestSkipped("Test disabled until versioned many_many implemented");
-
         // publish page 1 & 3
         $page1 = $this->objFromFixture('Page', 'page1');
         $page3 = $this->objFromFixture('Page', 'page3');
@@ -168,8 +167,6 @@ class SiteTreeBacklinksTest extends SapphireTest
 
     public function testPublishingPageWithModifiedLinksRewritesLinks()
     {
-        $this->markTestSkipped("Test disabled until versioned many_many implemented");
-
         // publish page 1 & 3
         $page1 = $this->objFromFixture('Page', 'page1');
         $page3 = $this->objFromFixture('Page', 'page3');
@@ -211,7 +208,9 @@ class SiteTreeBacklinksTest extends SapphireTest
 
     public function testLinkTrackingOnExtraContentFields()
     {
+        /** @var Page $page1 */
         $page1 = $this->objFromFixture('Page', 'page1');
+        /** @var Page $page2 */
         $page2 = $this->objFromFixture('Page', 'page2');
         $page1->publishRecursive();
         $page2->publishRecursive();
@@ -236,9 +235,6 @@ class SiteTreeBacklinksTest extends SapphireTest
         $page2 = $this->objFromFixture('Page', 'page2');
         $this->assertEquals('<p><a href="'.Director::baseURL().'page1-new-url/">Testing page 1 link</a></p>', $page2->obj('ExtraContent')->forTemplate());
 
-        // @todo - Implement versioned many_many
-        $this->markTestSkipped("Test disabled until versioned many_many implemented");
-
         // confirm that published link hasn't
         $page2Live = Versioned::get_one_by_stage("Page", "Live", "\"SiteTree\".\"ID\" = $page2->ID");
         Versioned::set_stage(Versioned::LIVE);
@@ -249,25 +245,12 @@ class SiteTreeBacklinksTest extends SapphireTest
         $page2Live = Versioned::get_one_by_stage("Page", "Live", "\"SiteTree\".\"ID\" = $page2->ID");
         $this->assertEquals('<p><a href="'.Director::baseURL().'page1-new-url/">Testing page 1 link</a></p>', $page2Live->obj('ExtraContent')->forTemplate());
 
-
-        // remove hyperlink to page 1
+        // Edit draft again
+        Versioned::set_stage(Versioned::DRAFT);
         $page2->ExtraContent = '<p>No links anymore!</p>';
         $page2->write();
 
         // assert backlink to page 2 no longer exists
         $this->assertNotContains($page2->ID, $page1->BackLinkTracking()->column('ID'), 'Assert backlink to page 2 has been removed');
-    }
-}
-
-class SiteTreeBacklinksTest_DOD extends DataExtension implements TestOnly
-{
-
-    private static $db = array(
-        'ExtraContent' => 'HTMLText',
-    );
-
-    public function updateCMSFields(FieldList $fields)
-    {
-        $fields->addFieldToTab("Root.Content", new HTMLEditorField("ExtraContent"));
     }
 }

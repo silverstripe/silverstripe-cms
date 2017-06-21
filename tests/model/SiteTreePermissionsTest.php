@@ -41,40 +41,39 @@ class SiteTreePermissionsTest extends FunctionalTest
         $this->useDraftSite(false);
         $this->autoFollowRedirection = false;
 
-        $page = $this->objFromFixture('Page', 'draftOnlyPage');
+        /** @var Page $draftOnlyPage */
+        $draftOnlyPage = $this->objFromFixture('Page', 'draftOnlyPage');
+        $this->logOut();
 
-        if ($member = Security::getCurrentUser()) {
-            Security::setCurrentUser(null);
-        }
-
-        $response = $this->get($page->URLSegment . '?stage=Live');
+        $response = $this->get($draftOnlyPage->URLSegment . '?stage=Live');
         $this->assertEquals($response->getStatusCode(), '404');
 
-        $response = $this->get($page->URLSegment . '?stage=');
+        $response = $this->get($draftOnlyPage->URLSegment);
         $this->assertEquals($response->getStatusCode(), '404');
 
         // should be prompted for a login
         try {
-            $response = $this->get($page->URLSegment . '?stage=Stage');
+            $response = $this->get($draftOnlyPage->URLSegment . '?stage=Stage');
         } catch (HTTPResponse_Exception $responseException) {
             $response = $responseException->getResponse();
         }
         $this->assertEquals($response->getStatusCode(), '302');
         $this->assertContains(
-            Config::inst()->get('SilverStripe\\Security\\Security', 'login_url'),
+            Security::config()->get('login_url'),
             $response->getHeader('Location')
         );
 
         $this->logInWithPermission('ADMIN');
 
-        $response = $this->get($page->URLSegment . '?stage=Live');
-        $this->assertEquals($response->getStatusCode(), '404');
+        $response = $this->get($draftOnlyPage->URLSegment . '?stage=Live');
+        $this->assertEquals('404', $response->getStatusCode());
 
-        $response = $this->get($page->URLSegment . '?stage=Stage');
-        $this->assertEquals($response->getStatusCode(), '200');
+        $response = $this->get($draftOnlyPage->URLSegment . '?stage=Stage');
+        $this->assertEquals('200', $response->getStatusCode());
 
-        $response = $this->get($page->URLSegment . '?stage=');
-        $this->assertEquals($response->getStatusCode(), '404');
+        // Stage is remembered from last request
+        $response = $this->get($draftOnlyPage->URLSegment);
+        $this->assertEquals('200', $response->getStatusCode());
     }
 
     public function testPermissionCheckingWorksOnDeletedPages()
@@ -87,7 +86,7 @@ class SiteTreePermissionsTest extends FunctionalTest
         $page->delete();
 
         // Re-fetch the page from the live site
-        $page = Versioned::get_one_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', "\"SiteTree\".\"ID\" = $pageID");
+        $page = Versioned::get_one_by_stage(SiteTree::class, 'Live', "\"SiteTree\".\"ID\" = $pageID");
 
         // subadmin has edit rights on that page
         $member = $this->objFromFixture(Member::class, 'subadmin');
@@ -137,7 +136,7 @@ class SiteTreePermissionsTest extends FunctionalTest
         $page->delete();
 
         // We'll need to resurrect the page from the version cache to test this case
-        $page = Versioned::get_latest_version('SilverStripe\\CMS\\Model\\SiteTree', $pageID);
+        $page = Versioned::get_latest_version(SiteTree::class, $pageID);
 
         // subadmin had edit rights on that page, but now it's gone
         $member = $this->objFromFixture(Member::class, 'subadmin');

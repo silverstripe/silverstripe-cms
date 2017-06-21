@@ -153,8 +153,6 @@ class SiteTreeBrokenLinksTest extends SapphireTest
 
     public function testPublishingSourceBeforeDestHasBrokenLink()
     {
-        $this->markTestSkipped("Test disabled until versioned many_many implemented");
-
         $this->logInWithPermission('ADMIN');
 
         // Set up two draft pages with a link from content -> about
@@ -169,15 +167,16 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         // Publish the source of the link, while the dest is still unpublished.
         $linkSrc->publishRecursive();
 
-        // Verify that the link isn't broken on draft but is broken on published
+        // Verify that the link is not marked as broken on draft (source of truth)
         $this->assertEquals(0, (int)$linkSrc->HasBrokenLink);
-        $this->assertEquals(1, DB::query("SELECT \"HasBrokenLink\" FROM \"SiteTree_Live\"
+
+        // Live doesn't have separate broken link tracking
+        $this->assertEquals(0, DB::query("SELECT \"HasBrokenLink\" FROM \"SiteTree_Live\"
 			WHERE \"ID\" = $linkSrc->ID")->value());
     }
 
     public function testRestoreFixesBrokenLinks()
     {
-        $this->markTestSkipped("Test disabled until versioned many_many implemented");
         // Create page and virtual page
         $p = new Page();
         $p->Title = "source";
@@ -210,43 +209,44 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         $this->assertFalse($vp->HasBrokenLink);
         $this->assertFalse($rp->HasBrokenLink);
 
-        // Unpublish the source page, confirm that the page 2 and RP has a broken link on published
+        // Unpublishing doesn't affect broken state on live (draft is source of truth)
         $p->doUnpublish();
-        $p2Live = Versioned::get_one_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', '"SiteTree"."ID" = ' . $p2->ID);
-        $rpLive = Versioned::get_one_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', '"SiteTree"."ID" = ' . $rp->ID);
-        $this->assertEquals(1, $p2Live->HasBrokenLink);
-        $this->assertEquals(1, $rpLive->HasBrokenLink);
+        $p2Live = Versioned::get_one_by_stage(SiteTree::class, 'Live', '"SiteTree"."ID" = ' . $p2->ID);
+        $rpLive = Versioned::get_one_by_stage(SiteTree::class, 'Live', '"SiteTree"."ID" = ' . $rp->ID);
+        $this->assertEquals(0, $p2Live->HasBrokenLink);
+        $this->assertEquals(0, $rpLive->HasBrokenLink);
 
         // Delete the source page, confirm that the VP, RP and page 2 have broken links on draft
         $p->delete();
         $vp->flushCache();
-        $vp = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $vp->ID);
+        $vp = DataObject::get_by_id(SiteTree::class, $vp->ID);
         $p2->flushCache();
-        $p2 = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $p2->ID);
+        $p2 = DataObject::get_by_id(SiteTree::class, $p2->ID);
         $rp->flushCache();
-        $rp = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $rp->ID);
+        $rp = DataObject::get_by_id(SiteTree::class, $rp->ID);
         $this->assertEquals(1, $p2->HasBrokenLink);
         $this->assertEquals(1, $vp->HasBrokenLink);
         $this->assertEquals(1, $rp->HasBrokenLink);
 
         // Restore the page to stage, confirm that this fixes the links
-        $p = Versioned::get_latest_version('SilverStripe\\CMS\\Model\\SiteTree', $pageID);
+        /** @var SiteTree $p */
+        $p = Versioned::get_latest_version(SiteTree::class, $pageID);
         $p->doRestoreToStage();
 
         $p2->flushCache();
-        $p2 = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $p2->ID);
+        $p2 = DataObject::get_by_id(SiteTree::class, $p2->ID);
         $vp->flushCache();
-        $vp = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $vp->ID);
+        $vp = DataObject::get_by_id(SiteTree::class, $vp->ID);
         $rp->flushCache();
-        $rp = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $rp->ID);
+        $rp = DataObject::get_by_id(SiteTree::class, $rp->ID);
         $this->assertFalse((bool)$p2->HasBrokenLink);
         $this->assertFalse((bool)$vp->HasBrokenLink);
         $this->assertFalse((bool)$rp->HasBrokenLink);
 
         // Publish and confirm that the p2 and RP broken links are fixed on published
         $this->assertTrue($p->publishRecursive());
-        $p2Live = Versioned::get_one_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', '"SiteTree"."ID" = ' . $p2->ID);
-        $rpLive = Versioned::get_one_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', '"SiteTree"."ID" = ' . $rp->ID);
+        $p2Live = Versioned::get_one_by_stage(SiteTree::class, 'Live', '"SiteTree"."ID" = ' . $p2->ID);
+        $rpLive = Versioned::get_one_by_stage(SiteTree::class, 'Live', '"SiteTree"."ID" = ' . $rp->ID);
         $this->assertFalse((bool)$p2Live->HasBrokenLink);
         $this->assertFalse((bool)$rpLive->HasBrokenLink);
     }
@@ -290,25 +290,25 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         $p->delete();
 
         $vp->flushCache();
-        $vp = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $vp->ID);
+        $vp = DataObject::get_by_id(SiteTree::class, $vp->ID);
         $p2->flushCache();
-        $p2 = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $p2->ID);
+        $p2 = DataObject::get_by_id(SiteTree::class, $p2->ID);
         $rp->flushCache();
-        $rp = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $rp->ID);
+        $rp = DataObject::get_by_id(SiteTree::class, $rp->ID);
         $this->assertEquals(1, $p2->HasBrokenLink);
         $this->assertEquals(1, $vp->HasBrokenLink);
         $this->assertEquals(1, $rp->HasBrokenLink);
 
         // Call doRevertToLive and confirm that broken links are restored
-        $pLive = Versioned::get_one_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', '"SiteTree"."ID" = ' . $pID);
+        $pLive = Versioned::get_one_by_stage(SiteTree::class, 'Live', '"SiteTree"."ID" = ' . $pID);
         $pLive->doRevertToLive();
 
         $p2->flushCache();
-        $p2 = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $p2->ID);
+        $p2 = DataObject::get_by_id(SiteTree::class, $p2->ID);
         $vp->flushCache();
-        $vp = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $vp->ID);
+        $vp = DataObject::get_by_id(SiteTree::class, $vp->ID);
         $rp->flushCache();
-        $rp = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $rp->ID);
+        $rp = DataObject::get_by_id(SiteTree::class, $rp->ID);
         $this->assertFalse((bool)$p2->HasBrokenLink);
         $this->assertFalse((bool)$vp->HasBrokenLink);
         $this->assertFalse((bool)$rp->HasBrokenLink);

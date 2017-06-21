@@ -1,5 +1,6 @@
 <?php
 
+use SilverStripe\Control\Controller;
 use SilverStripe\Forms\FieldGroup;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\HiddenField;
@@ -54,6 +55,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
     public function testGetEditForm()
     {
         $controller = new CMSPageHistoryController();
+        $controller->setRequest(Controller::curr()->getRequest());
 
         // should get the latest version which we cannot rollback to
         $form = $controller->getEditForm($this->page->ID);
@@ -98,7 +100,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
      */
     public function testVersionsForm()
     {
-        $history = $this->get('admin/pages/history/show/'. $this->page->ID);
+        $this->get('admin/pages/history/show/'. $this->page->ID);
         $form = $this->cssParser()->getBySelector('#Form_VersionsForm');
 
         $this->assertEquals(1, count($form));
@@ -116,7 +118,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
 
     public function testVersionsFormTableContainsInformation()
     {
-        $history = $this->get('admin/pages/history/show/'. $this->page->ID);
+        $this->get('admin/pages/history/show/'. $this->page->ID);
         $form = $this->cssParser()->getBySelector('#Form_VersionsForm');
         $rows = $form[0]->xpath("fieldset/table/tbody/tr");
 
@@ -142,7 +144,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
 
     public function testVersionsFormSelectsUnpublishedCheckbox()
     {
-        $history = $this->get('admin/pages/history/show/'. $this->page->ID);
+        $this->get('admin/pages/history/show/'. $this->page->ID);
         $checkbox = $this->cssParser()->getBySelector('#Form_VersionsForm_ShowUnpublished');
 
         $this->assertThat($checkbox[0], $this->logicalNot($this->isNull()));
@@ -151,7 +153,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
         $this->assertThat($checked, $this->logicalNot($this->stringContains('checked')));
 
         // viewing an unpublished
-        $history = $this->get('admin/pages/history/show/'.$this->page->ID .'/'.$this->versionUnpublishedCheck);
+        $this->get('admin/pages/history/show/'.$this->page->ID .'/'.$this->versionUnpublishedCheck);
         $checkbox = $this->cssParser()->getBySelector('#Form_VersionsForm_ShowUnpublished');
 
         $this->assertThat($checkbox[0], $this->logicalNot($this->isNull()));
@@ -161,7 +163,8 @@ class CMSPageHistoryControllerTest extends FunctionalTest
     public function testTransformReadonly()
     {
         /** @var CMSPageHistoryController $history */
-        $history = singleton(CMSPageHistoryController::class);
+        $history = new CMSPageHistoryController();
+        $history->setRequest(Controller::curr()->getRequest());
 
         $fieldList = FieldList::create([
             FieldGroup::create('group', [

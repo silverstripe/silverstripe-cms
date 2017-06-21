@@ -206,6 +206,7 @@ class CMSPageAddController extends CMSPageEditController
         $record->write();
 
         $editController = CMSPageEditController::singleton();
+        $editController->setRequest($this->getRequest());
         $editController->setCurrentPageID($record->ID);
 
         $session = $this->getRequest()->getSession();

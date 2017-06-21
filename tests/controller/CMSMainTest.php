@@ -1,25 +1,26 @@
 <?php
 
-use SilverStripe\Core\Injector\Injector;
-use SilverStripe\ORM\DB;
-use SilverStripe\ORM\DataObject;
-use SilverStripe\ORM\ValidationException;
-use SilverStripe\Security\Security;
-use SilverStripe\Versioned\Versioned;
-use SilverStripe\ORM\HiddenClass;
+use Psr\SimpleCache\CacheInterface;
+use SilverStripe\Admin\CMSBatchActionHandler;
 use SilverStripe\CMS\Controllers\CMSMain;
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\Admin\CMSBatchActionHandler;
-use SilverStripe\SiteConfig\SiteConfig;
-use Psr\SimpleCache\CacheInterface;
-use SilverStripe\Core\Convert;
+use SilverStripe\Control\Controller;
+use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\ClassInfo;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Core\Convert;
+use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Dev\CSSContentParser;
+use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Dev\TestOnly;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\Core\Config\Config;
-use SilverStripe\Dev\CSSContentParser;
-use SilverStripe\Control\HTTPResponse_Exception;
-use SilverStripe\Dev\FunctionalTest;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\DB;
+use SilverStripe\ORM\HiddenClass;
+use SilverStripe\ORM\ValidationException;
+use SilverStripe\Security\Security;
+use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\Versioned\Versioned;
 
 /**
  * @package cms
@@ -163,33 +164,6 @@ class CMSMainTest extends FunctionalTest
     }
 
     /**
-     * Test publication of one of every page type
-     */
-    public function testPublishOneOfEachKindOfPage()
-    {
-        $this->markTestIncomplete();
-
-        // $classes = ClassInfo::subclassesFor("SiteTree");
-        // array_shift($classes);
-
-        // foreach($classes as $class) {
-        // 	$page = new $class();
-        // 	if($class instanceof TestOnly) continue;
-
-        // 	$page->Title = "Test $class page";
-
-        // 	$page->write();
-        // 	$this->assertEquals("Test $class page", DB::query("SELECT \"Title\" FROM \"SiteTree\" WHERE \"ID\" = $page->ID")->value());
-
-        // 	$page->publishRecursive();
-        // 	$this->assertEquals("Test $class page", DB::query("SELECT \"Title\" FROM \"SiteTree_Live\" WHERE \"ID\" = $page->ID")->value());
-
-        // 	// Check that you can visit the page
-        // 	$this->get($page->URLSegment);
-        // }
-    }
-
-    /**
      * Test that getCMSFields works on each page type.
      * Mostly, this is just checking that the method doesn't return an error
      */
@@ -275,6 +249,7 @@ class CMSMainTest extends FunctionalTest
         $page1->delete();
 
         $cmsMain = new CMSMain();
+        $cmsMain->setRequest(Controller::curr()->getRequest());
 
         // Bad calls
         $this->assertNull($cmsMain->getRecord('0'));
@@ -450,6 +425,7 @@ class CMSMainTest extends FunctionalTest
     public function testGetNewItem()
     {
         $controller = new CMSMain();
+        $controller->setRequest(Controller::curr()->getRequest());
         $id = 'new-Page-0';
 
         // Test success
@@ -475,6 +451,7 @@ class CMSMainTest extends FunctionalTest
     public function testGetList()
     {
         $controller = new CMSMain();
+        $controller->setRequest(Controller::curr()->getRequest());
 
         // Test all pages (stage)
         $pages = $controller->getList()->sort('Title');
@@ -567,6 +544,7 @@ class CMSMainTest extends FunctionalTest
         // Get a associated with a fixture page.
         $page = $this->objFromFixture(Page::class, 'page1');
         $controller = new CMSMain();
+        $controller->setRequest(Controller::curr()->getRequest());
         $form = $controller->getEditForm($page->ID);
         $this->assertInstanceOf("SilverStripe\\Forms\\Form", $form);
 
@@ -583,6 +561,7 @@ class CMSMainTest extends FunctionalTest
     {
         $this->logInWithPermission('ADMIN');
         $cms = new CMSMain();
+        $cms->setRequest(Controller::curr()->getRequest());
         $page = new CMSMainTest_ClassA();
         $page->Title = 'Class A';
         $page->write();
@@ -601,41 +580,4 @@ class CMSMainTest extends FunctionalTest
         $this->assertEquals('CMSMainTest_ClassB', $newPage->ClassName);
         $this->assertEquals('Class A', $newPage->Title);
     }
-}
-
-class CMSMainTest_ClassA extends Page implements TestOnly
-{
-    private static $allowed_children = array('CMSMainTest_ClassB');
-
-    protected function onBeforeWrite()
-    {
-        parent::onBeforeWrite();
-
-        if ($this->ClassName !== self::class) {
-            throw new ValidationException("Class saved with incorrect ClassName");
-        }
-    }
-}
-
-class CMSMainTest_ClassB extends Page implements TestOnly
-{
-
-    protected function onBeforeWrite()
-    {
-        parent::onBeforeWrite();
-
-        if ($this->ClassName !== self::class) {
-            throw new ValidationException("Class saved with incorrect ClassName");
-        }
-    }
-}
-
-class CMSMainTest_NotRoot extends Page implements TestOnly
-{
-    private static $can_be_root = false;
-}
-
-class CMSMainTest_HiddenClass extends Page implements TestOnly, HiddenClass
-{
-
 }

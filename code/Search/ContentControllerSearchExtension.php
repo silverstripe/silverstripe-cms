@@ -22,6 +22,8 @@ class ContentControllerSearchExtension extends Extension
 
     /**
      * Site search form
+     *
+     * @return SearchForm
      */
     public function SearchForm()
     {

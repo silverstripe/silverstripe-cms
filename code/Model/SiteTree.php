@@ -4,8 +4,6 @@ namespace SilverStripe\CMS\Model;
 
 use Page;
 use SilverStripe\CampaignAdmin\AddToCampaignHandler_FormAction;
-use SilverStripe\Core\Injector\Injector;
-use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\CMS\Controllers\CMSPageEditController;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\CMS\Controllers\ModelAsController;
@@ -18,6 +16,7 @@ use SilverStripe\Control\RequestHandler;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Convert;
+use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Core\Resettable;
 use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\CheckboxField;
@@ -41,6 +40,7 @@ use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\i18n\i18n;
 use SilverStripe\i18n\i18nEntityProvider;
 use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
@@ -48,16 +48,16 @@ use SilverStripe\ORM\HiddenClass;
 use SilverStripe\ORM\Hierarchy\Hierarchy;
 use SilverStripe\ORM\ManyManyList;
 use SilverStripe\ORM\ValidationResult;
+use SilverStripe\Security\Group;
 use SilverStripe\Security\InheritedPermissions;
 use SilverStripe\Security\InheritedPermissionsExtension;
-use SilverStripe\Security\PermissionChecker;
-use SilverStripe\Security\Security;
-use SilverStripe\Versioned\Versioned;
-use SilverStripe\Security\Group;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
+use SilverStripe\Security\PermissionChecker;
 use SilverStripe\Security\PermissionProvider;
+use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\HTML;
 use SilverStripe\View\Parsers\ShortcodeParser;
@@ -1472,18 +1472,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
     public function onAfterDelete()
     {
-        // Need to flush cache to avoid outdated versionnumber references
-        $this->flushCache();
-
-        // Need to mark pages depending to this one as broken
-        $dependentPages = $this->DependentPages();
-        if ($dependentPages) {
-            foreach ($dependentPages as $page) {
-            // $page->write() calls syncLinkTracking, which does all the hard work for us.
-                $page->write();
-            }
-        }
-
+        $this->updateDependentPages();
         parent::onAfterDelete();
     }
 
@@ -2336,13 +2325,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         /** @var SiteTree $result */
         $result = DataObject::get_by_id(self::class, $this->ID);
 
-        // Need to update pages linking to this one as no longer broken
-        foreach ($result->DependentPages(false) as $page) {
-            // $page->write() calls syncLinkTracking, which does all the hard work for us.
-            $page->write();
-        }
-
         Versioned::set_reading_mode($oldReadingMode);
+
+        // Need to update pages linking to this one as no longer broken
+        $this->updateDependentPages();
 
         $this->invokeWithExtensions('onAfterRestoreToStage', $this);
 
@@ -2863,6 +2849,24 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $permissions = static::getPermissionChecker();
         if ($permissions instanceof InheritedPermissions) {
             $permissions->clearCache();
+        }
+    }
+
+    /**
+     * Update dependant pages
+     */
+    protected function updateDependentPages()
+    {
+        // Need to flush cache to avoid outdated versionnumber references
+        $this->flushCache();
+
+        // Need to mark pages depending to this one as broken
+        $dependentPages = $this->DependentPages();
+        if ($dependentPages) {
+            foreach ($dependentPages as $page) {
+                // $page->write() calls syncLinkTracking, which does all the hard work for us.
+                $page->write();
+            }
         }
     }
 }
