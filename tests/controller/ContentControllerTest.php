@@ -204,4 +204,3 @@ class ContentControllerTest extends FunctionalTest
         });
     }
 }
-

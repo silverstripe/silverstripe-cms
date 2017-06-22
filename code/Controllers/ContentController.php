@@ -9,6 +9,7 @@ use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Convert;
+use SilverStripe\Core\Injector\Injector;
 use SilverStripe\i18n\i18n;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataObject;
@@ -17,6 +18,7 @@ use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\FieldType\DBVarchar;
 use SilverStripe\ORM\SS_List;
+use SilverStripe\Security\MemberAuthenticator\MemberAuthenticator;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
@@ -311,10 +313,11 @@ class ContentController extends Controller
      *
      * @todo Check if here should be returned just the default log-in form or
      *       all available log-in forms (also OpenID...)
+     * @return \SilverStripe\Security\MemberAuthenticator\MemberLoginForm
      */
     public function LoginForm()
     {
-        return MemberAuthenticator::singleton()->loginForm($this);
+        return Injector::inst()->get(MemberAuthenticator::class)->getLoginHandler($this->Link())->loginForm();
     }
 
     public function SilverStripeNavigator()
