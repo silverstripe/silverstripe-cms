@@ -1,0 +1,17 @@
+<?php
+
+use SilverStripe\Dev\TestOnly;
+use SilverStripe\Security\Permission;
+
+class SiteTreeActionsTest_Page extends Page implements TestOnly
+{
+    public function canEdit($member = null)
+    {
+        return Permission::checkMember($member, 'SiteTreeActionsTest_Page_CANEDIT');
+    }
+
+    public function canDelete($member = null)
+    {
+        return Permission::checkMember($member, 'SiteTreeActionsTest_Page_CANDELETE');
+    }
+}

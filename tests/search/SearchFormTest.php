@@ -51,10 +51,10 @@ class ZZZSearchFormTest extends FunctionalTest
     {
         // HACK Postgres doesn't refresh TSearch indexes when the schema changes after CREATE TABLE
         // MySQL will need a different table type
-        static::kill_temp_db();
+        static::$tempDB->kill();
         Config::modify();
         FulltextSearchable::enable();
-        static::create_temp_db();
+        static::$tempDB->build();
         static::resetDBSchema(true);
         parent::setUpBeforeClass();
     }
@@ -116,9 +116,11 @@ class ZZZSearchFormTest extends FunctionalTest
         }
 
         $request = new HTTPRequest('GET', 'search', ['Search'=>'publicPublishedPage']);
+        $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
 
+        /** @var SiteTree $publishedPage */
         $publishedPage = $this->objFromFixture(SiteTree::class, 'publicPublishedPage');
         $publishedPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
@@ -142,9 +144,11 @@ class ZZZSearchFormTest extends FunctionalTest
         }
 
         $request = new HTTPRequest('GET', 'search', ['Search'=>'"finding butterflies"']);
+        $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
 
+        /** @var SiteTree $publishedPage */
         $publishedPage = $this->objFromFixture(SiteTree::class, 'publicPublishedPage');
         $publishedPage->Title = "finding butterflies";
         $publishedPage->write();
@@ -169,6 +173,7 @@ class ZZZSearchFormTest extends FunctionalTest
         }
 
         $request = new HTTPRequest('GET', 'search', ['Search'=>'publicUnpublishedPage']);
+        $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
 
@@ -188,9 +193,11 @@ class ZZZSearchFormTest extends FunctionalTest
         }
 
         $request = new HTTPRequest('GET', 'search', ['Search'=>'restrictedViewLoggedInUsers']);
+        $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
 
+        /** @var SiteTree $page */
         $page = $this->objFromFixture(SiteTree::class, 'restrictedViewLoggedInUsers');
         $page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
         $results = $sf->getResults();
@@ -218,9 +225,11 @@ class ZZZSearchFormTest extends FunctionalTest
         }
 
         $request = new HTTPRequest('GET', 'search', ['Search'=>'restrictedViewOnlyWebsiteUsers']);
+        $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
 
+        /** @var SiteTree $page */
         $page = $this->objFromFixture(SiteTree::class, 'restrictedViewOnlyWebsiteUsers');
         $page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
         $results = $sf->getResults();
@@ -251,15 +260,21 @@ class ZZZSearchFormTest extends FunctionalTest
         Security::setCurrentUser(null);
     }
 
+    /**
+     *
+     */
     public function testInheritedRestrictedPagesNotIncluded()
     {
         $request = new HTTPRequest('GET', 'search', ['Search'=>'inheritRestrictedView']);
+        $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
 
+        /** @var SiteTree $parent */
         $parent = $this->objFromFixture(SiteTree::class, 'restrictedViewLoggedInUsers');
         $parent->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
+        /** @var SiteTree $page */
         $page = $this->objFromFixture(SiteTree::class, 'inheritRestrictedView');
         $page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
         $results = $sf->getResults();
@@ -287,6 +302,7 @@ class ZZZSearchFormTest extends FunctionalTest
         }
 
         $request = new HTTPRequest('GET', 'search', ['Search'=>'dontShowInSearchPage']);
+        $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
 
@@ -306,11 +322,14 @@ class ZZZSearchFormTest extends FunctionalTest
         }
 
         $request = new HTTPRequest('GET', 'search', ['Search'=>'dontShowInSearchFile']);
+        $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
 
+        /** @var File $dontShowInSearchFile */
         $dontShowInSearchFile = $this->objFromFixture(File::class, 'dontShowInSearchFile');
         $dontShowInSearchFile->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
+        /** @var File $showInSearchFile */
         $showInSearchFile = $this->objFromFixture(File::class, 'showInSearchFile');
         $showInSearchFile->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
@@ -323,6 +342,7 @@ class ZZZSearchFormTest extends FunctionalTest
 
         // Check ShowInSearch=1 can be found
         $request = new HTTPRequest('GET', 'search', ['Search'=>'showInSearchFile']);
+        $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
         $results = $sf->getResults();
@@ -344,9 +364,11 @@ class ZZZSearchFormTest extends FunctionalTest
         }
 
         $request = new HTTPRequest('GET', 'search', ['Search'=>'Brötchen']);
+        $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
 
+        /** @var SiteTree $pageWithSpecialChars */
         $pageWithSpecialChars = $this->objFromFixture(SiteTree::class, 'pageWithSpecialChars');
         $pageWithSpecialChars->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
@@ -359,6 +381,7 @@ class ZZZSearchFormTest extends FunctionalTest
 
         // Check another word
         $request = new HTTPRequest('GET', 'search', ['Search'=>'Bäcker']);
+        $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
         $results = $sf->getResults();

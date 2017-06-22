@@ -2,12 +2,13 @@
 
 namespace SilverStripe\CMS\Model;
 
+use Page;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\HeaderField;
 use SilverStripe\Forms\OptionsetField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\TreeDropdownField;
-use Page;
+use SilverStripe\Versioned\Versioned;
 
 /**
  * A redirector page redirects when the page is visited.
@@ -120,7 +121,9 @@ class RedirectorPage extends Page
     {
         if ($this->RedirectionType == 'Internal') {
             if ($this->LinkToID) {
-                $this->HasBrokenLink = SiteTree::get()->byID($this->LinkToID) ? false : true;
+                $this->HasBrokenLink = Versioned::get_by_stage(SiteTree::class, Versioned::DRAFT)
+                    ->filter('ID', $this->LinkToID)
+                    ->count() === 0;
             } else {
                 // An incomplete redirector page definitely has a broken link
                 $this->HasBrokenLink = true;

@@ -617,10 +617,6 @@ class VirtualPageTest extends FunctionalTest
 
     public function testVirtualPagePointingToRedirectorPage()
     {
-        if (!class_exists('SilverStripe\\CMS\\Model\\RedirectorPage')) {
-            $this->markTestSkipped('RedirectorPage required');
-        }
-
         $rp = new RedirectorPage(array('ExternalURL' => 'http://google.com', 'RedirectionType' => 'External'));
         $rp->write();
         $rp->publishRecursive();
@@ -652,83 +648,4 @@ class VirtualPageTest extends FunctionalTest
         $controller = ModelAsController::controller_for($virtualPage);
         $this->assertContains('testaction', $controller->allowedActions());
     }
-}
-
-class VirtualPageTest_ClassA extends Page implements TestOnly
-{
-
-    private static $db = array(
-        'MyInitiallyCopiedField' => 'Text',
-        'MyVirtualField' => 'Text',
-        'MyNonVirtualField' => 'Text',
-        'CastingTest' => 'VirtualPageTest_TestDBField'
-    );
-
-    private static $allowed_children = array('VirtualPageTest_ClassB');
-
-    public function modelMethod()
-    {
-        return 'hi there';
-    }
-}
-
-class VirtualPageTest_ClassAController extends PageController implements TestOnly
-{
-    private static $allowed_actions = [
-        'testaction'
-    ];
-
-    public function testMethod()
-    {
-        return 'hello';
-    }
-}
-
-class VirtualPageTest_ClassB extends Page implements TestOnly
-{
-    private static $allowed_children = array('VirtualPageTest_ClassC');
-}
-
-class VirtualPageTest_ClassC extends Page implements TestOnly
-{
-    private static $allowed_children = array();
-}
-
-class VirtualPageTest_NotRoot extends Page implements TestOnly
-{
-    private static $can_be_root = false;
-}
-
-class VirtualPageTest_TestDBField extends DBVarchar implements TestOnly
-{
-    public function forTemplate()
-    {
-        return strtoupper($this->XML());
-    }
-}
-
-class VirtualPageTest_VirtualPageSub extends VirtualPage implements TestOnly
-{
-    private static $db = array(
-        'MyProperty' => 'Varchar',
-    );
-}
-
-class VirtualPageTest_PageExtension extends DataExtension implements TestOnly
-{
-
-    private static $db = array(
-        // These fields are just on an extension to simulate shared properties between Page and VirtualPage.
-        // Not possible through direct $db definitions due to VirtualPage inheriting from Page, and Page being defined elsewhere.
-        'MySharedVirtualField' => 'Text',
-        'MySharedNonVirtualField' => 'Text',
-    );
-}
-
-class VirtualPageTest_PageWithAllowedChildren extends Page implements TestOnly
-{
-    private static $allowed_children = array(
-        'VirtualPageTest_ClassA',
-        'SilverStripe\\CMS\\Model\\VirtualPage'
-    );
 }

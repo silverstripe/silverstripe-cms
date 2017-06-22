@@ -2,13 +2,13 @@
 
 namespace SilverStripe\CMS\Model;
 
+use DOMElement;
 use SilverStripe\Assets\File;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\ManyManyList;
 use SilverStripe\Versioned\Versioned;
-use DOMElement;
 use SilverStripe\View\Parsers\HTMLValue;
 
 /**

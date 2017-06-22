@@ -57,37 +57,3 @@ class SilverStripeNavigatorTest extends SapphireTest
         $this->assertContains('SilverStripeNavigatorTest_ProtectedTestItem', $classes);
     }
 }
-
-class SilverStripeNavigatorTest_TestItem extends SilverStripeNavigatorItem implements TestOnly
-{
-    public function getTitle()
-    {
-        return self::class;
-    }
-    public function getHTML()
-    {
-        return null;
-    }
-}
-
-class SilverStripeNavigatorTest_ProtectedTestItem extends SilverStripeNavigatorItem implements TestOnly
-{
-
-    public function getTitle()
-    {
-        return self::class;
-    }
-
-    public function getHTML()
-    {
-        return null;
-    }
-
-    public function canView($member = null)
-    {
-        if (!$member) {
-            $member = Security::getCurrentUser();
-        }
-        return Permission::checkMember($member, 'ADMIN');
-    }
-}

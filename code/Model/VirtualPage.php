@@ -159,8 +159,9 @@ class VirtualPage extends Page
     public function syncLinkTracking()
     {
         if ($this->CopyContentFromID) {
-            $copyPage = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $this->CopyContentFromID);
-            $this->HasBrokenLink = !$copyPage;
+            $this->HasBrokenLink = Versioned::get_by_stage(SiteTree::class, Versioned::DRAFT)
+                    ->filter('ID', $this->CopyContentFromID)
+                    ->count() === 0;
         } else {
             $this->HasBrokenLink = true;
         }

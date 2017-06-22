@@ -7,6 +7,7 @@ use SilverStripe\Admin\CMSBatchActionHandler;
 use SilverStripe\Admin\LeftAndMain_SearchFilter;
 use SilverStripe\Admin\LeftAndMainFormRequestHandler;
 use SilverStripe\CMS\Model\VirtualPage;
+use SilverStripe\Core\Environment;
 use SilverStripe\Forms\Tab;
 use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\Admin\LeftAndMain;
@@ -1576,7 +1577,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function getNewItem($id, $setID = true)
     {
         $parentClass = $this->stat('tree_class');
-        list($dummy, $className, $parentID, $suffix) = array_pad(explode('-', $id), 4, null);
+        list(, $className, $parentID) = array_pad(explode('-', $id), 3, null);
 
         if (!is_a($className, $parentClass, true)) {
             $response = Security::permissionFailure($this);
@@ -1588,18 +1589,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         /** @var SiteTree $newItem */
         $newItem = Injector::inst()->create($className);
-        if (!$suffix) {
-            $sessionTag = "NewItems." . $parentID . "." . $className;
-            if (Session::get($sessionTag)) {
-                $suffix = '-' . Session::get($sessionTag);
-                Session::set($sessionTag, Session::get($sessionTag) + 1);
-            } else {
-                Session::set($sessionTag, 1);
-            }
-
-                $id = $id . $suffix;
-        }
-
         $newItem->Title = _t(
             'SilverStripe\\CMS\\Controllers\\CMSMain.NEWPAGE',
             "New {pagetype}",
@@ -1612,10 +1601,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         // DataObject::fieldExists only checks the current class, not the hierarchy
         // This allows the CMS to set the correct sort value
         if ($newItem->castingHelper('Sort')) {
-            $newItem->Sort = DB::prepared_query('SELECT MAX("Sort") FROM "SiteTree" WHERE "ParentID" = ?', array($parentID))->value() + 1;
+            $maxSort = DB::prepared_query(
+                'SELECT MAX("Sort") FROM "SiteTree" WHERE "ParentID" = ?',
+                array($parentID)
+            )->value();
+            $newItem->Sort = (int)$maxSort + 1;
         }
 
-        if ($setID) {
+        if ($setID && $id) {
             $newItem->ID = $id;
         }
 
@@ -1891,8 +1884,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             return Security::permissionFailure($this);
         }
 
-        increase_time_limit_to();
-        increase_memory_limit_to();
+        Environment::increaseTimeLimitTo();
+        Environment::increaseMemoryLimitTo();
 
         $response = "";
 
@@ -2034,7 +2027,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if (!SecurityToken::inst()->checkRequest($request)) {
             return $this->httpError(400);
         }
-        increase_time_limit_to();
+        Environment::increaseTimeLimitTo();
         if (($id = $this->urlParams['ID']) && is_numeric($id)) {
             /** @var SiteTree $page */
             $page = SiteTree::get()->byID($id);

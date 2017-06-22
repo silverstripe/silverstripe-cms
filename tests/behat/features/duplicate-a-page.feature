@@ -18,7 +18,7 @@ Feature: Duplicate a page
 		And I click on "This page and subpages" in the context menu
 		Then I should see a "Duplicated 'Page1' and children successfully" notice
 
-		When I fill in "Title" with "Duplicate Page"
+		When I fill in "MenuTitle" with "Duplicate Page"
 		And I press the "Save & publish" button
 		Then I should see "Page1" in the tree
 		And I should see "Duplicate Page" in the tree
