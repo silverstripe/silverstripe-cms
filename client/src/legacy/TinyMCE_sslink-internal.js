@@ -69,6 +69,7 @@ jQuery.entwine('ss', ($) => {
             bodyClassName="modal__dialog"
             className="insert-link__dialog-wrapper--internal"
             fileAttributes={attrs}
+            identifier="Admin.InsertLinkInternalModal"
           />
         </ApolloProvider>,
         this[0]
