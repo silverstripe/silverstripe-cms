@@ -26,6 +26,7 @@ use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Core\Manifest\ModuleLoader;
 use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\DropdownField;
@@ -164,11 +165,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         parent::init();
 
-        Requirements::javascript(CMS_DIR . '/client/dist/js/bundle.js');
-        Requirements::javascript(CMS_DIR . '/client/dist/js/SilverStripeNavigator.js');
-        Requirements::css(CMS_DIR . '/client/dist/styles/bundle.css');
+        Requirements::javascript('silverstripe/cms: client/dist/js/bundle.js');
+        Requirements::javascript('silverstripe/cms: client/dist/js/SilverStripeNavigator.js');
+        Requirements::css('silverstripe/cms: client/dist/styles/bundle.css');
         Requirements::customCSS($this->generatePageIconsCss());
-        Requirements::add_i18n_javascript(CMS_DIR . '/client/lang', false, true);
+
+        $module = ModuleLoader::getModule('silverstripe/cms');
+        Requirements::add_i18n_javascript($module->getRelativeResourcePath('client/lang'), false, true);
 
         CMSBatchActionHandler::register('restore', CMSBatchAction_Restore::class);
         CMSBatchActionHandler::register('archive', CMSBatchAction_Archive::class);
