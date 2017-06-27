@@ -532,7 +532,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
     /**
      * Base link used for previewing. Defaults to absolute URL, in order to account for domain changes, e.g. on multi
-     * site setups. Does not contain hints about the stage, see {@link SilverStripeNavigator} for details.
+     * site setups. Does not contain hints about the stage, see {@link SilverStripe\CMS\Controllers\SilverStripeNavigator} for details.
      *
      * @param string $action See {@link Link()}
      * @return string

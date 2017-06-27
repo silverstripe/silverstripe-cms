@@ -12,7 +12,7 @@ abstract class SiteTreeExtension extends DataExtension
 {
 
     /**
-     * Hook called before the page's {@link Versioned::publishSingle()} action is completed
+     * Hook called before the page's {@link SilverStripe\Versioned\Versioned::publishSingle()} action is completed
      *
      * @param SiteTree &$original The current Live SiteTree record prior to publish
      */
@@ -21,7 +21,7 @@ abstract class SiteTreeExtension extends DataExtension
     }
 
     /**
-     * Hook called after the page's {@link Versioned::publishSingle()} action is completed
+     * Hook called after the page's {@link SilverStripe\Versioned\Versioned::publishSingle()} action is completed
      *
      * @param SiteTree &$original The current Live SiteTree record prior to publish
      */
@@ -30,7 +30,7 @@ abstract class SiteTreeExtension extends DataExtension
     }
 
     /**
-     * Hook called before the page's {@link Versioned::doUnpublish()} action is completed
+     * Hook called before the page's {@link SilverStripe\Versioned\Versioned::doUnpublish()} action is completed
      */
     public function onBeforeUnpublish()
     {
@@ -38,7 +38,7 @@ abstract class SiteTreeExtension extends DataExtension
 
 
     /**
-     * Hook called after the page's {@link SiteTree::doUnpublish()} action is completed
+     * Hook called after the page's {@link SilverStripe\CMS\Model\SiteTree::doUnpublish()} action is completed
      */
     public function onAfterUnpublish()
     {
@@ -72,7 +72,7 @@ abstract class SiteTreeExtension extends DataExtension
 
     /**
      * Hook called to modify the $base url of this page, with a given $action,
-     * before {@link SiteTree::RelativeLink()} calls {@link Controller::join_links()}
+     * before {@link SilverStripe\CMS\Model\SiteTree::RelativeLink()} calls {@link SilverStripe\Control\Controller::join_links()}
      * on the $base and $action
      *
      * @param string &$base The URL of this page relative to siteroot, not including

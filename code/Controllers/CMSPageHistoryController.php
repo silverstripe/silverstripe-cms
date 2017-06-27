@@ -159,7 +159,7 @@ class CMSPageHistoryController extends CMSMain
      * Returns the read only version of the edit form. Detaches all {@link FormAction}
      * instances attached since only action relates to revert.
      *
-     * Permission checking is done at the {@link CMSMain::getEditForm()} level.
+     * Permission checking is done at the {@link SilverStripe\CMS\Controllers\CMSMain::getEditForm()} level.
      *
      * @param int $id ID of the record to show
      * @param array $fields optional

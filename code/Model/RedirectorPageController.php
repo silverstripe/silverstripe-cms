@@ -4,7 +4,7 @@ namespace SilverStripe\CMS\Model;
 use PageController;
 
 /**
- * Controller for the {@link RedirectorPage}.
+ * Controller for the {@link SilverStripe\CMS\Model\RedirectorPage}.
  */
 class RedirectorPageController extends PageController
 {
