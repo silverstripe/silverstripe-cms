@@ -1,7 +1,40 @@
 pt:
+  AssetAdmin:
+    ADDFILES: "Adicionar ficheiros"
+    ActionAdd: "Adicionar pasta"
+    AppCategoryArchive: Arquivar
+    AppCategoryDocument: Documento
+    AppCategoryFlash: "Inserir flash"
+    AppCategoryImage: Imagem
+    AppCategoryVideo: Vídeo
+    BackToFolder: "Voltar para a pasta"
+    CREATED: Data
+    CurrentFolderOnly: "Limitar à pasta actual?"
+    DetailsView: Detalhes
+    FILES: Ficheiros
+    FILESYSTEMSYNC: "Sincronizar ficheiros"
+    FILESYSTEMSYNCTITLE: "Actualize a base de dados de ficheiros do CMS. É recomendado quando são adicionados novos arquivos externamente, por exemplo, através de FTP."
+    FROMTHEINTERNET: "Da internet"
+    FROMYOURCOMPUTER: "Do computador"
+    Filetype: "Tipo de ficheiro"
+    ListView: "Vista em lista"
+    MENUTITLE: Ficheiros
+    NEWFOLDER: "Nova Pasta"
+    SIZE: Tamanho
+    THUMBSDELETED: "{count} miniaturas não utilizadas foram removidas"
+    TreeView: "Vista em árvore"
+    Upload: Enviar
+  AssetAdmin_DeleteBatchAction:
+    TITLE: "Apagar pastas"
+  AssetAdmin_Tools:
+    FILTER: Filtro
+  AssetAdmin_left_ss:
+    GO: Ir
   AssetTableField:
     BACKLINKCOUNT: "Usado em:"
     PAGES: página(s)
+  BackLink_Button_ss:
+    Back: Voltar
   BrokenLinksReport:
     Any: Qualquer
     BROKENLINKS: "Relatório de links inválidos"
@@ -26,8 +59,13 @@ pt:
   CMSAddPageController:
     Title: "Adicionar página"
   CMSBatchActions:
+    DELETED_DRAFT_PAGES: "Apagadas %d páginas publicadas, %d falharam"
+    DELETED_PAGES: "Apagadas %d páginas publicadas, %d falharam"
+    DELETE_DRAFT_PAGES: "Apagar do site de rascunho"
     PUBLISHED_PAGES: "Publicadas %d páginas, %d falhas"
     PUBLISH_PAGES: Publicar
+  CMSFileAddController:
+    MENUTITLE: Ficheiros
   CMSMain:
     ACCESS: "Acesso à secção '{title}'"
     ACCESS_HELP: "Permitir a visualização da árvore de páginas e respectivos conteúdos. Ver e editar permissões que podem ser seleccionadas a partir de uma caixa de selecção, bem como os separadores de \"permissões de conteúdo\"."
@@ -37,8 +75,13 @@ pt:
     ChoosePageParentMode: "Escolha onde criar esta página"
     ChoosePageType: "Escolher tipo de página"
     Create: Criar
+    DELETE: "Apagar do site de rascunho"
+    DELETEFP: "Apagar do site publicado"
+    DESCREMOVED: "e {count} descendentes"
     DUPLICATED: "Página '{title}' duplicada com sucesso"
     DUPLICATEDWITHCHILDREN: "Página '{title}' e filhos duplicados com sucesso"
+    EditTree: "Editar árvore"
+    MENUTITLE: "Editar página"
     NEWPAGE: "Nova {pagetype}"
     PAGENOTEXISTS: "Esta página não existe"
     PAGETYPEANYOPT: Qualquer
@@ -52,16 +95,24 @@ pt:
     ROLLBACK: "Voltar para esta versão"
     ROLLEDBACKPUBv2: "Voltar para a versão publicada."
     ROLLEDBACKVERSIONv2: "Voltar para a versão #%d."
+    SAVE: Guardar
     SAVEDRAFT: "Guardar rascunho"
     TabContent: Conteúdo
     TabHistory: Histórico
     TabSettings: Configurações
+  CMSMain_left_ss:
+    RESET: Redefinir
   CMSPageAddController:
+    MENUTITLE: "Adicionar página"
     ParentMode_child: "Por cima de outra página"
     ParentMode_top: "Nível de topo"
+  CMSPageEditController:
+    MENUTITLE: "Editar página"
   CMSPageHistoryController:
     COMPAREMODE: "Modo de comparação (selecione duas)"
     COMPAREVERSIONS: "Comparar versões"
+    COMPARINGVERSION: "Comparando as versões {version1} e {version2}."
+    MENUTITLE: Histórico
     REVERTTOTHISVERSION: "Reverter para esta versão"
     SHOWUNPUBLISHED: "Mostrar versões não publicadas"
     SHOWVERSION: "Mostrar versão"
@@ -74,7 +125,10 @@ pt:
     PUBLISHER: Publicador
     UNKNOWN: Desconhecido
     WHEN: Quando
+  CMSPageSettingsController:
+    MENUTITLE: "Editar página"
   CMSPagesController:
+    GalleryView: "Vista de galeria"
     ListView: "Vista em lista"
     MENUTITLE: Páginas
     TreeView: "Vista em árvore"
@@ -82,7 +136,10 @@ pt:
     FILTER: Filtrar
   CMSSearch:
     FILTERDATEFROM: De
+    FILTERDATEHEADING: Data
     FILTERDATETO: Para
+  CMSSettingsController:
+    MENUTITLE: Configurações
   CMSSiteTreeFilter_Search:
     Title: "Todas as páginas"
   ContentControl:
@@ -92,6 +149,7 @@ pt:
     ARCHIVEDSITEFROM: "Arquivar o site de"
     CMS: "Gestor de Conteúdos"
     DRAFTSITE: "Site Rascunho"
+    DRAFT_SITE_ACCESS_RESTRICTION: "Tem de se autenticar para ver o conteúdo de rascunho ou arquivado. <a href=\"%s\">Clique aqui para voltar ao site publicado</a>"
     INSTALL_SUCCESS: "Instalação concluída com sucesso"
     InstallFilesDeleted: "Ficheiros de instalação foram removidos com sucesso."
     InstallSecurityWarning: "Por razões de segurança deverá apagar os ficheiros de instalação, a menos que esteja a planear uma instalação futura (<em> requer acesso de administrador, ver acima </em>). O servidor apenas necessita de permissões de escrita na pasta \"assets\", poderá remover todos os acessos de escrita nas restantes pastas.<a href=\"{link}\" style=\"text-align: Clique aqui para apagar os ficheiros de instalação.</a>"
@@ -131,30 +189,76 @@ pt:
     DEFAULTERRORPAGETITLE: "Página não encontrada"
     DEFAULTSERVERERRORPAGECONTENT: "<p>Desculpe, ocorreu um problema no processamento do seu pedido</p>"
     DEFAULTSERVERERRORPAGETITLE: "500 - Erro do servidor"
+    DESCRIPTION: "Conteúdo personalizado para as diferentes possibilidades de erro (ex. página não encontrada)"
+    ERRORFILEPROBLEM: "Erro ao escrever no ficheiro \"{filename}\". Por favor, verifique as permissões do ficheiro."
+    SINGULARNAME: "Página de erro"
+  Folder:
+    AddFolderButton: "Adicionar pasta"
+    DELETEUNUSEDTHUMBNAILS: "Apagar miniaturas não utilizadas"
+    UNUSEDFILESTITLE: "Ficheiros não utilizados"
+    UNUSEDTHUMBNAILSTITLE: "Miniaturas não utilizadas"
+    UploadFilesButton: Submeter
+  LeftAndMain:
+    DELETED: Apagada
+    PreviewButton: Pré-visualização
+    SAVEDUP: Guardado
+    SearchResults: "Resultados da pesquisa"
+  Permission:
+    CMS_ACCESS_CATEGORY: "Acesso ao CMS"
   Permissions:
     CONTENT_CATEGORY: "Permissões de conteúdo"
     PERMISSIONS_CATEGORY: "Regras e permissões de acesso"
   RedirectorPage:
+    DESCRIPTION: "Redirecionar para outra página interna"
     HASBEENSETUP: "Uma página de redireccionamento foi criada sem nenhum destino."
     HEADER: "Esta página irá redireccionar os utilizadores para outra página"
     OTHERURL: "Outro Site"
     REDIRECTTO: "Redireccionar para"
     REDIRECTTOEXTERNAL: "Outro site"
     REDIRECTTOPAGE: "Uma página no seu site"
+    SINGULARNAME: "A página redirecciona para uma que não existe"
     YOURPAGE: "Página no seu site"
+  ReportAdmin:
+    MENUTITLE: Relatórios
+    ReportTitle: Título
+  ReportAdminForm:
+    FILTERBY: "Filtrar por"
   SearchForm:
     GO: Ir
     SEARCH: Procurar
     SearchResults: "Resultados da pesquisa"
   SideReport:
     BROKENFILES: "Páginas com ficheiros corrompidos"
+    BROKENLINKS: "Esta página contém links inválidos."
     BROKENREDIRECTORPAGES: "As páginas redireccionadas apontam para páginas apagadas"
     BROKENVIRTUALPAGES: "Página virtuais apontam para páginas apagadas"
     BrokenLinksGroupTitle: "Relatório de links inválidos"
     ContentGroupTitle: "Conteúdo dos relatórios"
     EMPTYPAGES: "Páginas sem conteúdo"
     LAST2WEEKS: "Páginas editadas nas 2 últimas semanas"
+    OtherGroupTitle: Outro
     ParameterLiveCheckbox: "Verificar site publicado"
+    REPEMPTY: "O relatório {title} encontra-se vazio."
+  SilverStripeNavigatorLink:
+    ShareLink: "Partilhar ligação"
+  SilverStripeNavigatorLinkl:
+    CloseLink: Fechar
+  SiteConfig:
+    DEFAULTTHEME: "(Usar o tema por omissão)"
+    EDITHEADER: "Quem pode editar páginas neste site?"
+    EDIT_PERMISSION: "Gerir configuração do site"
+    EDIT_PERMISSION_HELP: "Capacidade de editar as configurações de acesso global / permissões da página."
+    PLURALNAME: "Configurações do site"
+    SINGULARNAME: "Configurações do site"
+    SITENAMEDEFAULT: "Nome do site"
+    SITETAGLINE: "Slogan do site"
+    SITETITLE: "Título do site"
+    TABACCESS: Acesso
+    TABMAIN: Principal
+    TAGLINEDEFAULT: "seu slogan aqui"
+    THEME: Tema
+    TOPLEVELCREATE: "Quem pode criar páginas na raiz do site?"
+    VIEWHEADER: "Quem pode ver páginas neste site?"
   SiteTree:
     ACCESSANYONE: Todos
     ACCESSHEADER: "Quem pode ver esta página no site?"
@@ -162,6 +266,7 @@ pt:
     ACCESSONLYTHESE: "Apenas estes (Seleccione da lista abaixo)"
     ADDEDTODRAFTHELP: "A página ainda não foi publicada"
     ADDEDTODRAFTSHORT: Rascunho
+    ALLOWCOMMENTS: "Permitir comentários nesta página?"
     APPEARSVIRTUALPAGES: "Este conteúdo também aparece nas páginas virtuais das secções {title}"
     BUTTONCANCELDRAFT: "Cancelar alterações do rascunho"
     BUTTONCANCELDRAFTDESC: "Apagar o seu rascunho e reverter para a versão publicada atualmente"
@@ -172,7 +277,10 @@ pt:
     DEFAULTABOUTTITLE: "Quem Somos"
     DEFAULTCONTACTTITLE: Contacte-nos
     DEFAULTHOMETITLE: "Página Principal"
+    DELETEDPAGEHELP: "A página nunca mais será publicada"
+    DELETEDPAGESHORT: Apagada
     DEPENDENT_NOTE: "As páginas seguintes dependem desta página. Isto inclui páginas virtuais, páginas redireccionadas e páginas com links de conteúdo."
+    DESCRIPTION: "Página de conteúdo genérico"
     DependtPageColumnLinkType: "Tipo de ligação"
     EDITANYONE: "Todos que possam efectuar a autenticação no CMS"
     EDITHEADER: "Quem pode editar esta página no CMS?"
@@ -201,17 +309,22 @@ pt:
     PARENTTYPE_ROOT: "Página de topo"
     PARENTTYPE_SUBPAGE: "Página Parente"
     PERMISSION_GRANTACCESS_DESCRIPTION: "Gestão de permissões de acesso para o conteúdo"
+    PLURALNAME: Páginas
     PageTypNotAllowedOnRoot: "Páginas do tipo \"{type}\" não tem permissões para serem criadas a este nível."
     PageTypeNotAllowed: "A página do tipo \"{type}\" não é permitida como filho deste tipo de página"
+    REMOVEDFROMDRAFTHELP: "A página está publicada mas foi removida dos rascunhos"
+    REMOVEDFROMDRAFTSHORT: "Removido do rascunho"
     REMOVE_INSTALL_WARNING: "Aviso: Por razões de segurança, deverá apagar o ficheiro \"install.php\" da raiz do seu servidor."
     REORGANISE_DESCRIPTION: "Alterar estrutura do site"
     REORGANISE_HELP: "Rearranjar páginas na árvore do site com drag&drop"
     SHOWINMENUS: "Mostrar no Menu?"
     SHOWINSEARCH: "Mostrar nas pesquisas?"
+    SINGULARNAME: Página
     TABBEHAVIOUR: Comportamento
     TABCONTENT: Conteúdo
     TABDEPENDENT: "Páginas Dependentes"
     TOPLEVEL: "Conteúdo do Site (Nível Superior)"
+    TOPLEVELCREATORGROUPS: "Nível de topo"
     URLSegment: "Segmento de URL"
     VIEWERGROUPS: "Ver grupos "
     VIEW_DRAFT_CONTENT: "Ver o conteúdo de rascunho"
@@ -230,7 +343,9 @@ pt:
     HAVEASKED: "Pediu para ver o conteúdo do nosso site na"
   VirtualPage:
     CHOOSE: "Página associada"
+    DESCRIPTION: "Apresentar o conteúdo de outra página"
     EditLink: editar
     HEADER: "Esta é uma página virtual"
     HEADERWITHLINK: "Esta é uma página virtual com o conteúdo copiado da página \"{title}\" ({link})"
     PageTypNotAllowedOnRoot: "Páginas do tipo \"{type}\" não tem permissões para serem criadas a este nível."
+    SINGULARNAME: "Página Virtual"

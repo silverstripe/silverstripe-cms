@@ -770,7 +770,7 @@ class SiteTreeTest extends SapphireTest {
 			array('pagetype' => $sitetree->i18n_singular_name())
 		);
 		$sitetree->write();
-		$this->assertEquals('neue-site-tree', $sitetree->URLSegment,
+		$this->assertEquals('neue-seite', $sitetree->URLSegment,
 			'Sets based on default title on first save'
 		);
 

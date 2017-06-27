@@ -1,10 +1,17 @@
 pt_BR:
+  AssetAdmin:
+    NEWFOLDER: "Nova Pasta"
+  AssetAdmin_left_ss:
+    GO: Ir
   CMSMain:
+    DELETE: "Excluir do site de rascunho"
+    DELETEFP: "Excluir do site ativo"
     PAGENOTEXISTS: "Esta página não existe"
     PUBALLCONFIRM: "Por favor publique todas as páginas no site, copiando content stage to live"
     PUBALLFUN: "Funcionalidade \"Publicar Tudo\""
     REMOVEDPAGEFROMDRAFT: "Removido '%s'  do site de rascunho"
     ROLLBACK: "Reverter para esta versão"
+    SAVE: Salvar
   CMSPagesController:
     MENUTITLE: Páginas
   ErrorPage:
@@ -34,6 +41,10 @@ pt_BR:
     CODE: "Código do erro"
     DEFAULTERRORPAGECONTENT: "<p>desculpe, mas parece que você esta tentando acessar uma página que não existe.</p><p>Por favor, verifique se você digitou a URL corretamente e tente novamente</p>"
     DEFAULTERRORPAGETITLE: "Página não encontrada"
+  Folder:
+    DELETEUNUSEDTHUMBNAILS: "Excluir miniaturas não utilizadas"
+    UNUSEDFILESTITLE: "Arquivos não utilizados"
+    UNUSEDTHUMBNAILSTITLE: "Miniaturas não utilizadas"
   RedirectorPage:
     HASBEENSETUP: "Uma página de redireccionamento foi criada sem nenhum destino específicado"
     HEADER: "Esta página redireccionará os utilizadores para outra página"
@@ -53,6 +64,7 @@ pt_BR:
     ACCESSHEADER: "Quem pode ver esta página?"
     ACCESSLOGGEDIN: "Utilizadores que tenham feito log-in"
     ACCESSONLYTHESE: "Somente estas pessoas (escolha da lista)"
+    ALLOWCOMMENTS: "Permitir comentários sobre esta página?"
     BUTTONCANCELDRAFT: "Cancelar alterações no rascunho"
     BUTTONCANCELDRAFTDESC: "Apague o seu rascunho e reverta para o site currrentement publicado"
     BUTTONUNPUBLISH: "Anular publicação"
@@ -77,6 +89,7 @@ pt_BR:
     PARENTID: "Página pai"
     PARENTTYPE: "Lugar da página"
     PERMISSION_GRANTACCESS_DESCRIPTION: "Controla os grupos que podem acessar ou editar determinadas páginas"
+    PLURALNAME: Páginas
     SHOWINMENUS: "Mostrar nos menus?"
     SHOWINSEARCH: "Uncluir na procura?"
     TABBEHAVIOUR: Comportamento
@@ -93,3 +106,4 @@ pt_BR:
     HAVEASKED: "Você pediu para ver o conteúdo do nosso site em"
   VirtualPage:
     HEADER: "Esta é uma página virtual"
+    SINGULARNAME: "Página virtual"
