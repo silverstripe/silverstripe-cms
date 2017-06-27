@@ -1,7 +1,41 @@
 ko:
+  AssetAdmin:
+    ADDFILES: "파일 추가"
+    ActionAdd: "폴더 추가"
+    AppCategoryArchive: 저장소
+    AppCategoryAudio: 오디오
+    AppCategoryDocument: 문서
+    AppCategoryFlash: Flash
+    AppCategoryImage: 이미지
+    AppCategoryVideo: 동영상
+    BackToFolder: "폴더로 이동"
+    CREATED: 날짜
+    CurrentFolderOnly: "이 폴더에 한정하시겠습니까?"
+    DetailsView: 상세보기
+    FILES: 파일
+    FILESYSTEMSYNC: "동기화 파일"
+    FILESYSTEMSYNCTITLE: "파일에 대한 CMS 데이터베이스 항목을 업데이트합니다. 예로, FTP 등 CMS 이외를 통해 파일을 업로드 한 경우에 유용합니다."
+    FROMTHEINTERNET: 인터넷으로부터
+    FROMYOURCOMPUTER: 컴퓨터로부터
+    Filetype: "파일 형식"
+    ListView: 목록보기
+    MENUTITLE: 파일
+    NEWFOLDER: "새 폴더"
+    SIZE: 사이즈
+    THUMBSDELETED: "{count}개의 사용하지 않은 이미지를 제거했습니다"
+    TreeView: 트리보기
+    Upload: 업로드
+  AssetAdmin_DeleteBatchAction:
+    TITLE: "폴더를 삭제"
+  AssetAdmin_Tools:
+    FILTER: 필터
+  AssetAdmin_left_ss:
+    GO: Go
   AssetTableField:
     BACKLINKCOUNT: "다음에서 사용중 "
     PAGES: 페이지
+  BackLink_Button_ss:
+    Back: 돌아가기
   BrokenLinksReport:
     Any: 아무거나
     BROKENLINKS: "깨진 링크 보고서"
@@ -27,8 +61,14 @@ ko:
   CMSAddPageController:
     Title: "페이지 추가"
   CMSBatchActions:
+    DELETED_DRAFT_PAGES: "%d페이지를 초안 사이트에서 삭제했지만, %d페이지의 삭제에 실패했습니다."
+    DELETED_PAGES: "공개사이트로부터 %d페이지를 삭제,  %d페이지는 삭제하지 못했습니다."
+    DELETE_DRAFT_PAGES: "초안 사이트에서 삭제"
+    DELETE_PAGES: "공개 사이트에서 삭제"
     PUBLISHED_PAGES: "%d페이지를 공개하고, %d페이지는 공개에서 실패했습니다."
     PUBLISH_PAGES: 공개
+  CMSFileAddController:
+    MENUTITLE: 파일
   CMSMain:
     ACCESS: "'{title}' 섹션으로 이동"
     ACCESS_HELP: "페이지 트리 및 내용을 포함 섹션의 열람을 허용합니다. 표시 및 편집 권한은 페이지의 특정 드롭 다운뿐만 아니라 독립적 인 \"콘텐츠의 권한\"을 통해 처리 할 수 있습니다."
@@ -39,8 +79,13 @@ ko:
     ChoosePageParentMode: "이 페이지를 만들 위치를 선택"
     ChoosePageType: "페이지 유형을 선택"
     Create: "새로 만들기"
+    DELETE: "초안 삭제"
+    DELETEFP: 삭제
+    DESCREMOVED: "그리고 {count} 파생"
     DUPLICATED: "'{title}'의 복제가 완료되었습니다."
     DUPLICATEDWITHCHILDREN: "'{title}' 와 그 하위에대한 복제가 완료되었습니다"
+    EditTree: "트리를 편집"
+    MENUTITLE: "페이지 편집"
     NEWPAGE: "새로운 {pagetype}"
     PAGENOTEXISTS: "이 페이지는 존재하지 않습니다"
     PAGETYPEANYOPT: 아무거나
@@ -48,22 +93,31 @@ ko:
     PUBALLFUN: " \"모두 공개\"기능"
     PUBPAGES: "완료: {count} 페이지를 공개했습니다"
     PageAdded: "페이지를 만드는 데 성공"
+    REMOVED: "이 전달 사이트에서'{title}'{description}을 제거했습니다."
     REMOVEDPAGE: "'{title}'을 공개된 사이트에서 제거했습니다"
     REMOVEDPAGEFROMDRAFT: "%s 초안 사이트에서 제거했습니다"
     RESTORED: "{title}를 복구했습니다"
     ROLLBACK: "이 버전으로 복원"
     ROLLEDBACKPUBv2: "공개된 버전으로 롤백되었습니다."
     ROLLEDBACKVERSIONv2: "#%d. 버전으로 롤백"
+    SAVE: 저장
     SAVEDRAFT: "임시 저장"
     TabContent: 컨텐츠
     TabHistory: 기록
     TabSettings: 설정
+  CMSMain_left_ss:
+    RESET: 리셋
   CMSPageAddController:
+    MENUTITLE: "페이지 추가"
     ParentMode_child: "다른 페이지 아래에 작성"
     ParentMode_top: "최상위 계층"
+  CMSPageEditController:
+    MENUTITLE: "페이지 편집"
   CMSPageHistoryController:
     COMPAREMODE: "비교 모드 (2개 선택)"
     COMPAREVERSIONS: "버전 비교"
+    COMPARINGVERSION: "{version1}과 {version2}을 비교하고 있습니다."
+    MENUTITLE: 기록
     REVERTTOTHISVERSION: "이 버전으로 복원"
     SHOWUNPUBLISHED: "공개되지 않은 버전을 표시"
     SHOWVERSION: "버전을 표시"
@@ -76,7 +130,10 @@ ko:
     PUBLISHER: 게시자
     UNKNOWN: "알 수 없슴"
     WHEN: 언제
+  CMSPageSettingsController:
+    MENUTITLE: "페이지 편집"
   CMSPagesController:
+    GalleryView: 갤러리보기
     ListView: 목록보기
     MENUTITLE: 페이지
     TreeView: 트리보기
@@ -84,7 +141,10 @@ ko:
     FILTER: 필터
   CMSSearch:
     FILTERDATEFROM: 시작일
+    FILTERDATEHEADING: 날짜
     FILTERDATETO: 종료일
+  CMSSettingsController:
+    MENUTITLE: 설정
   CMSSiteTreeFilter_Search:
     Title: "전체 페이지"
   ContentControl:
@@ -95,6 +155,7 @@ ko:
     CMS: CMS
     DRAFT: 초안
     DRAFTSITE: "초안 사이트"
+    DRAFT_SITE_ACCESS_RESTRICTION: "초안 또는 보관된 내용을보기 위하여 로그인하십시오. <a href=\"%s\"> 공개 사이트로 돌아가려면 여기를 클릭하십시오. </a>"
     Email: 이메일
     INSTALL_SUCCESS: "설치에 성공!"
     InstallFilesDeleted: "설치 관련 파일이 성공적으로 삭제되었습니다"
@@ -142,17 +203,40 @@ ko:
     DEFAULTERRORPAGETITLE: "페이지를 찾을 수 없습니다"
     DEFAULTSERVERERRORPAGECONTENT: "<p> 죄송합니다. 귀하의 요청을 처리하는 동안 문제가 발생했습니다. </p>"
     DEFAULTSERVERERRORPAGETITLE: "서버 오류"
+    DESCRIPTION: "각각의 오류 사례에 대해 사용자 지정 콘텐츠를 표시 (예: \"페이지가 없습니다\")"
+    ERRORFILEPROBLEM: "쓰기용 파일 \"{filename}\"을 열때 오류가 발생했습니다. 파일 권한을 확인하십시오."
+    SINGULARNAME: "오류 페이지"
+  Folder:
+    AddFolderButton: "폴더 추가"
+    DELETEUNUSEDTHUMBNAILS: "사용하지 않는 썸네일을 삭제"
+    UNUSEDFILESTITLE: "사용하지 않는 파일"
+    UNUSEDTHUMBNAILSTITLE: "사용되지 않는 썸네일"
+    UploadFilesButton: 업로드
+  LeftAndMain:
+    DELETED: 삭제됨.
+    PreviewButton: 미리보기
+    SAVEDUP: 저장됨.
+    SearchResults: "검색 결과"
+  Permission:
+    CMS_ACCESS_CATEGORY: "CMS에 액세스"
   Permissions:
     CONTENT_CATEGORY: "콘텐츠에 관한 권한"
     PERMISSIONS_CATEGORY: "역할과 접근권한"
   RedirectorPage:
+    DESCRIPTION: "다른 내부 페이지로 리디렉션"
     HASBEENSETUP: "다른곳으로 리다이렉트되지않고 리다이렉터 페이지가 설치되었습니다."
     HEADER: "이 페이지는 다른 페이지로 사용자들을 이동시킵니다."
     OTHERURL: "다른 웹사이트 URL"
     REDIRECTTO: 변경
     REDIRECTTOEXTERNAL: "다른 웹사이트"
     REDIRECTTOPAGE: "당신의 웹사이트의 페이지"
+    SINGULARNAME: "리디렉션 페이지"
     YOURPAGE: "당신의 웹사이트의 페이지"
+  ReportAdmin:
+    MENUTITLE: 보고서
+    ReportTitle: 제목
+  ReportAdminForm:
+    FILTERBY: "에 의해 필터"
   SITETREE:
     VIRTUALPAGEDRAFTWARNING: "가상 페이지를 게시하기 위해 링크된 페이지를 공개합니다"
     VIRTUALPAGEWARNING: "이 페이지를 게시하기 위해 링크된 페이지를 선택하여 먼저 저장하십시오"
@@ -163,15 +247,38 @@ ko:
     SearchResults: "검색 결과"
   SideReport:
     BROKENFILES: "손상된 파일이 있는 페이지"
+    BROKENLINKS: "깨진 링크를 가지고 있는 페이지"
     BROKENREDIRECTORPAGES: "리디렉션된 페이지가 삭제됩니다"
     BROKENVIRTUALPAGES: "삭제된 페이지를 참조하는 가상 페이지"
     BrokenLinksGroupTitle: "깨진 링크에 관한 보고서"
     ContentGroupTitle: "콘텐츠의 보고서"
     EMPTYPAGES: "빈 페이지"
     LAST2WEEKS: "지난 2 주 이내에 편집된 페이지"
+    OtherGroupTitle: 기타
     ParameterLiveCheckbox: "라이브 사이트를 확인"
+    REPEMPTY: "{title} 보고서에 내용이 없습니다."
   SilverStripeNavigator:
     ARCHIVED: 보관됨
+  SilverStripeNavigatorLink:
+    ShareLink: "공유 링크"
+  SilverStripeNavigatorLinkl:
+    CloseLink: 닫기
+  SiteConfig:
+    DEFAULTTHEME: "(기본 테마를 사용)"
+    EDITHEADER: "이 사이트에서 페이지를 편집 할 수있는 사람"
+    EDIT_PERMISSION: "사이트 설정 관리"
+    EDIT_PERMISSION_HELP: "글로벌 액세스 설정 / 최상위 페이지의 사용 권한을 편집하는 기능."
+    PLURALNAME: "사이트 설정"
+    SINGULARNAME: "사이트 설정"
+    SITENAMEDEFAULT: "사이트 이름"
+    SITETAGLINE: "사이트의 태그라인/슬로건"
+    SITETITLE: "사이트 제목"
+    TABACCESS: "액세스 권한"
+    TABMAIN: 메인
+    TAGLINEDEFAULT: "사이트의 태그라인을 여기에 입력"
+    THEME: 테마
+    TOPLEVELCREATE: "누가 사이트의 루트에서 페이지를 생성할 수 있나?"
+    VIEWHEADER: "누가 이 사이트에서 페이지를 볼 수 있나?"
   SiteTree:
     ACCESSANYONE: 누구나
     ACCESSHEADER: "누가 이 페이지를 볼 수 있나?"
@@ -179,6 +286,7 @@ ko:
     ACCESSONLYTHESE: "이 사람들만 (목록에서 선택하기)"
     ADDEDTODRAFTHELP: "페이지는 아직 공개되지 않습니다"
     ADDEDTODRAFTSHORT: 초안
+    ALLOWCOMMENTS: "이 페이지에대한 댓글을 허용합니까?"
     APPEARSVIRTUALPAGES: "이 내용은 {title}섹션들에서의 가상 페이지상에서도 또한 보여집니다."
     BUTTONCANCELDRAFT: "초안의 편집 내용을 취소합니다"
     BUTTONCANCELDRAFTDESC: "초안을 삭제하고 현재 공개된 페이지로 돌아갑니다."
@@ -192,7 +300,10 @@ ko:
     DEFAULTABOUTTITLE: "회사 소개"
     DEFAULTCONTACTTITLE: 연락처
     DEFAULTHOMETITLE: 홈
+    DELETEDPAGEHELP: "이 문서는 더이상 공개되지 않습니다."
+    DELETEDPAGESHORT: 삭제됨
     DEPENDENT_NOTE: "다음 페이지들은 이 페이지에 의존합니다. 여기에는 가상 페이지 리디렉터 페이지 콘텐츠 링크가있는 페이지가 포함되어 있습니다."
+    DESCRIPTION: "일반 콘텐츠 페이지"
     DependtPageColumnLinkType: "링크 종류"
     DependtPageColumnURL: URL
     EDITANYONE: "CMS로 로그인하는 사용자"
@@ -230,17 +341,22 @@ ko:
     PARENTTYPE_SUBPAGE: "상위 페이지의 하위 페이지"
     PERMISSION_GRANTACCESS_DESCRIPTION: "콘텐츠에 대한 액세스 권한을 편집"
     PERMISSION_GRANTACCESS_HELP: " \"페이지\"섹션에서 페이지 별 접근 제한 설정을 허용합니다."
+    PLURALNAME: 페이지
     PageTypNotAllowedOnRoot: "페이지 타입 \"{type}\"는 최상위 계층의 페이지가 될 수 없습니다"
     PageTypeNotAllowed: "페이지 타입 \"{type}\"은 상위 페이지의 하위페이지가 될 수 없습니다"
+    REMOVEDFROMDRAFTHELP: "페이지가 공개되어 있지만 초안에서 삭제됩니다"
+    REMOVEDFROMDRAFTSHORT: "초안에서 삭제되었습니다"
     REMOVE_INSTALL_WARNING: "경고: 보안상의 이유로, SilverStripe의 대상에있는 install.php를 제거하십시오."
     REORGANISE_DESCRIPTION: "사이트 구조 변경"
     REORGANISE_HELP: "사이트 트리의 페이지를 드래그 앤 드롭으로 재편집"
     SHOWINMENUS: "메뉴에 표시 하시겠습니까?"
     SHOWINSEARCH: "검색에 ​​표시 하시겠습니까?"
+    SINGULARNAME: 페이지
     TABBEHAVIOUR: 동작
     TABCONTENT: 콘텐츠
     TABDEPENDENT: "의존 페이지"
     TOPLEVEL: "사이트의 내용 (최상위 계층)"
+    TOPLEVELCREATORGROUPS: "최상위 계층의 페이지 작성자"
     URLSegment: "URL 세그먼트"
     VIEWERGROUPS: "뷰어 그룹"
     VIEW_ALL_DESCRIPTION: "모든 페이지보기"
@@ -265,7 +381,9 @@ ko:
     HAVEASKED: "당신은 우리의 사이트의 콘텐츠를 보려고 요청했습니다."
   VirtualPage:
     CHOOSE: "링크된 페이지"
+    DESCRIPTION: "다른 페이지의 내용보기"
     EditLink: 편집
     HEADER: "가상 페이지입니다"
     HEADERWITHLINK: "이것은 \"{title}\"({link})에서 콘텐츠를 복사하는 가상 페이지입니다"
     PageTypNotAllowedOnRoot: "이 가상 페이지에 대해 원본 페이지 형식 {type}는 루트 레벨에 배치되는 것을 허용하지 않습니다."
+    SINGULARNAME: "가상 페이지"

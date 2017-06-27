@@ -1,6 +1,7 @@
 vi_VN:
   CMSMain:
     PAGENOTEXISTS: "Không tìm thấy trang này."
+    SAVE: Lưu
   ErrorPage:
     CODE: "Mã lỗi"
     DEFAULTERRORPAGECONTENT: "<p>Bạn truy cập vào một trang không tồn tại</p><p>Xin vui lòng kiểm tra lại đường dẩn hoặc quay lại trang chủ</p>"
@@ -18,6 +19,7 @@ vi_VN:
     ACCESSHEADER: "Ai có thể xem trang này ?"
     ACCESSLOGGEDIN: "Người dùng đã đăng nhập"
     ACCESSONLYTHESE: "Chỉ những người sau đây (chọn từ danh sách)"
+    ALLOWCOMMENTS: "Cho phép bình luận trên trang này?"
     BUTTONCANCELDRAFT: "Hủy thay đổi nháp"
     BUTTONCANCELDRAFTDESC: "Xóa khỏi mục nháp và khôi phục lại trang gốc"
     BUTTONUNPUBLISH: Ẩn

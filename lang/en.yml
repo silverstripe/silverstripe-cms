@@ -9,6 +9,7 @@ en:
     AppCategoryImage: Image
     AppCategoryVideo: Video
     BackToFolder: 'Back to folder'
+    CMSMENU_OLD: 'Files (old)'
     CREATED: Date
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
@@ -29,11 +30,15 @@ en:
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
+  AssetAdmin_Tools:
+    FILTER: Filter
   AssetAdmin_left_ss:
     GO: Go
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
     PAGES: page(s)
+  BackLink_Button_ss:
+    Back: Back
   BrokenLinksReport:
     Any: Any
     BROKENLINKS: 'Broken links report'
@@ -94,6 +99,7 @@ en:
     DUPLICATED: 'Duplicated ''{title}'' successfully'
     DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
     EMAIL: Email
+    EditTree: 'Edit Tree'
     ListFiltered: 'Showing search results.'
     MENUTITLE: 'Edit Page'
     NEWPAGE: 'New {pagetype}'
@@ -118,6 +124,7 @@ en:
     ROLLBACK: 'Roll back to this version'
     ROLLEDBACKPUBv2: 'Rolled back to published version.'
     ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
+    SAVE: Save
     SAVED: 'Saved ''{title}'' successfully.'
     SAVEDRAFT: 'Save draft'
     TabContent: Content
@@ -157,6 +164,7 @@ en:
   CMSPageSettingsController:
     MENUTITLE: 'Edit Page'
   CMSPagesController:
+    GalleryView: 'Gallery View'
     ListView: 'List View'
     MENUTITLE: Pages
     TreeView: 'Tree View'
@@ -194,6 +202,7 @@ en:
     CMS: CMS
     DRAFT: Draft
     DRAFTSITE: 'Draft Site'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'You must log in with your CMS password in order to view the draft or archived content. <a href="%s">Click here to go back to the published site.</a>'
     Email: Email
     INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'Installation files have been successfully deleted.'
@@ -245,6 +254,8 @@ en:
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
     PLURALNAME: 'Error Pages'
     SINGULARNAME: 'Error Page'
+  File:
+    Title: Title
   Folder:
     AddFolderButton: 'Add folder'
     DELETEUNUSEDTHUMBNAILS: 'Delete unused thumbnails'
@@ -252,7 +263,12 @@ en:
     UNUSEDTHUMBNAILSTITLE: 'Unused thumbnails'
     UploadFilesButton: Upload
   LeftAndMain:
+    DELETED: Deleted.
+    PreviewButton: Preview
+    SAVEDUP: Saved.
     SearchResults: 'Search Results'
+  Permission:
+    CMS_ACCESS_CATEGORY: 'CMS Access'
   Permissions:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
@@ -277,6 +293,11 @@ en:
     OPERATION_REMOVE: 'Remove selected from all stages (WARNING: Will destroy all selected pages from both stage and live)'
     SELECTALL: 'select all'
     UNSELECTALL: 'unselect all'
+  ReportAdmin:
+    MENUTITLE: Reports
+    ReportTitle: Title
+  ReportAdminForm:
+    FILTERBY: 'Filter by'
   SITETREE:
     VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
     VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
@@ -287,13 +308,16 @@ en:
     SearchResults: 'Search Results'
   SideReport:
     BROKENFILES: 'Pages with broken files'
+    BROKENLINKS: 'Pages with broken links'
     BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
     BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
     BrokenLinksGroupTitle: 'Broken links reports'
     ContentGroupTitle: 'Content reports'
     EMPTYPAGES: 'Pages with no content'
     LAST2WEEKS: 'Pages edited in the last 2 weeks'
+    OtherGroupTitle: Other
     ParameterLiveCheckbox: 'Check live site'
+    REPEMPTY: 'The {title} report is empty.'
   SilverStripeNavigator:
     ARCHIVED: Archived
   SilverStripeNavigatorLink:
@@ -314,31 +338,35 @@ en:
   SilverStripe\CMS\Model\ErrorPage:
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     PLURALNAME: 'Error Pages'
-    PLURALS:
-      one: 'An Error Page'
-      other: '{count} Error Pages'
     SINGULARNAME: 'Error Page'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Redirects to an internal page or an external URL'
     PLURALNAME: 'Redirector Pages'
-    PLURALS:
-      one: 'A Redirector Page'
-      other: '{count} Redirector Pages'
     SINGULARNAME: 'Redirector Page'
   SilverStripe\CMS\Model\SiteTree:
     DESCRIPTION: 'Generic content page'
-    PLURALNAME: Pages
-    PLURALS:
-      one: 'A Page'
-      other: '{count} Pages'
-    SINGULARNAME: Page
+    PLURALNAME: 'Site Trees'
+    SINGULARNAME: 'Site Tree'
   SilverStripe\CMS\Model\VirtualPage:
     DESCRIPTION: 'Displays the content of another page'
     PLURALNAME: 'Virtual Pages'
-    PLURALS:
-      one: 'A Virtual Page'
-      other: '{count} Virtual Pages'
     SINGULARNAME: 'Virtual Page'
+  SiteConfig:
+    DEFAULTTHEME: '(Use default theme)'
+    EDITHEADER: 'Who can edit pages on this site?'
+    EDIT_PERMISSION: 'Manage site configuration'
+    EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
+    SITENAMEDEFAULT: 'Your Site Name'
+    SITETAGLINE: 'Site Tagline/Slogan'
+    SITETITLE: 'Site title'
+    TABACCESS: Access
+    TABMAIN: Main
+    TAGLINEDEFAULT: 'your tagline here'
+    THEME: Theme
+    TOPLEVELCREATE: 'Who can create pages in the root of the site?'
+    VIEWHEADER: 'Who can view pages on this site?'
   SiteTree:
     ACCESSANYONE: Anyone
     ACCESSHEADER: 'Who can view this page?'
@@ -346,6 +374,7 @@ en:
     ACCESSONLYTHESE: 'Only these people (choose from list)'
     ADDEDTODRAFTHELP: 'Page has not been published yet'
     ADDEDTODRAFTSHORT: Draft
+    ALLOWCOMMENTS: 'Allow comments on this page?'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     ARCHIVEDPAGEHELP: 'Page is removed from draft and live'
     ARCHIVEDPAGESHORT: Archived
@@ -366,6 +395,8 @@ en:
     DEFAULTCONTACTTITLE: 'Contact Us'
     DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>.</p><p>You can now access the <a href="http://docs.silverstripe.org">developer documentation</a>, or begin the <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lessons</a>.</p>'
     DEFAULTHOMETITLE: Home
+    DELETEDPAGEHELP: 'Page is no longer published'
+    DELETEDPAGESHORT: Deleted
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
     DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Link type'
@@ -424,6 +455,7 @@ en:
     TABCONTENT: 'Main Content'
     TABDEPENDENT: 'Dependent pages'
     TOPLEVEL: 'Site Content (Top Level)'
+    TOPLEVELCREATORGROUPS: 'Top level creators'
     URLSegment: 'URL Segment'
     VIEWERGROUPS: 'Viewer Groups'
     VIEW_ALL_DESCRIPTION: 'View any page'
