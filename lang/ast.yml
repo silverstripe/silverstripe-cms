@@ -9,9 +9,6 @@ ast:
     MENUTITLE: Páxines
   SilverStripe\CMS\Controllers\ContentController:
     Password: Contraseña
-  SilverStripe\CMS\Model\ErrorPage:
-    DEFAULTERRORPAGETITLE: 'Páxina non alcontrada'
-    DEFAULTSERVERERRORPAGETITLE: 'Error del servidor'
   SilverStripe\CMS\Model\SiteTree:
     Content: Conteníu
     HTMLEDITORTITLE: Conteníu

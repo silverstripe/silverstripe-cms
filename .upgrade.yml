@@ -19,8 +19,8 @@ mappings:
   CMSSiteTreeFilter_StatusDeletedPages: SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages
   CMSSiteTreeFilter_Search: SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search
   ContentController: SilverStripe\CMS\Controllers\ContentController
-  ErrorPageControllerExtension: SilverStripe\CMS\Controllers\ErrorPageControllerExtension
-  ErrorPageFileExtension: SilverStripe\CMS\Controllers\ErrorPageFileExtension
+  ErrorPageControllerExtension: SilverStripe\ErrorPage\ErrorPageControllerExtension
+  ErrorPageFileExtension: SilverStripe\ErrorPage\ErrorPageFileExtension
   LeftAndMainPageIconsExtension: SilverStripe\CMS\Controllers\LeftAndMainPageIconsExtension
   ModelAsController: SilverStripe\CMS\Controllers\ModelAsController
   OldPageRedirector: SilverStripe\CMS\Controllers\OldPageRedirector
@@ -34,8 +34,8 @@ mappings:
   SiteTreeURLSegmentField: SilverStripe\CMS\Forms\SiteTreeURLSegmentField
   SiteTreeURLSegmentField_Readonly: SilverStripe\CMS\Forms\SiteTreeURLSegmentField_Readonly
   CurrentPageIdentifier: SilverStripe\CMS\Model\CurrentPageIdentifier
-  ErrorPage: SilverStripe\CMS\Model\ErrorPage
-  ErrorPage_Controller: SilverStripe\CMS\Model\ErrorPageController
+  ErrorPage: SilverStripe\ErrorPage\ErrorPage
+  ErrorPage_Controller: SilverStripe\ErrorPage\ErrorPageController
   RedirectorPage: SilverStripe\CMS\Model\RedirectorPage
   RedirectorPage_Controller: SilverStripe\CMS\Model\RedirectorPageController
   SiteTree: SilverStripe\CMS\Model\SiteTree

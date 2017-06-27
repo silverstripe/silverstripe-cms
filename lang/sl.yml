@@ -63,14 +63,6 @@ sl:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Prosim vnesite URL segment ali kliknite prekliči'
     HelpChars: 'Posebni znaki so samodejno spremenjeni ali odstranjeni.'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Napačna koda'
-    DEFAULTERRORPAGECONTENT: '<p>Morda ste zahtevali dostop do strani, ki ne obstaja?</p><p>Za vsak slučaj preverite vpisani URL-naslov in poskusite ponovno.</p>'
-    DEFAULTERRORPAGETITLE: 'Strani ni mogoče najti'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Oprostite, pri vaši zahtevi je prišlo do težave.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Napaka na strežniku'
-    PLURALNAME: 'Strani z napakami'
-    SINGULARNAME: 'Stran z napako'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Nastavljena preusmeritev še nima določenega cilja.'
     HEADER: 'Ta stran bo preusmerila uporabnike na drugo stran'

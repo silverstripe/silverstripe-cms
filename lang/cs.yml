@@ -73,15 +73,6 @@ cs:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Zadejte prosím URL segment nebo klikněte zrušit'
     HelpChars: 'Zvláštní znaky jsou automaticky zkonvertovány nebo odstraněny'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Chybový kód'
-    DEFAULTERRORPAGECONTENT: '<p>Omlouváme se, zdá se, že jste se pokoušeli o přístup na stránku, která neexistuje.</p><p>Zkontrolujte prosím pravopis požadované URL adresy, ke které jste se pokoušeli přistoupit a zkuste to znovu.</p>'
-    DEFAULTERRORPAGETITLE: 'Stránka nenelazena'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Promiňte, nastal problém s obsloužením vaší žádosti.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Chyba serveru'
-    DESCRIPTION: 'Vlastní obsah pro různé případy chyb (např. "Stránka nenalezena")'
-    PLURALNAME: 'Chybové stránky'
-    SINGULARNAME: 'Chybová stránka'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Přesměruje na interní stránku nebo na externí URL'
     HASBEENSETUP: 'Přesměrovací stránka byla nastavena bez cíle.'

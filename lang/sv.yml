@@ -89,15 +89,6 @@ sv:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Ange ett URL-segment eller klicka på avbryt'
     HelpChars: 'Specialtecken konverteras eller tas bort'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Felkod'
-    DEFAULTERRORPAGECONTENT: '<p>Det verkar som om du försökter komma åt en sida som inte finns.</p><p>Var god kontrollera stavningen på adressen som du försökte nå och försök igen.'
-    DEFAULTERRORPAGETITLE: 'Sidan hittades inte'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Ursäkta, ett fel uppstod vid hanteringen av din förfrågan.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Serverfel'
-    DESCRIPTION: 'Anpassat innehåll för olika felärenden (t.ex. "Sidan kan inte hittas")'
-    PLURALNAME: 'Felsidor'
-    SINGULARNAME: 'Felsida'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Omdirigerar till en annan intern eller extern sida'
     HASBEENSETUP: 'En omdirigeringssida har skapats utan att ha något mål.'

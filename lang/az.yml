@@ -9,11 +9,6 @@ az:
     NOTLOGGEDIN: 'Daxil olmayıb'
     PUBLISHEDSITE: 'Dərc olunmuş sayt'
     VIEWPAGEIN: 'Səhifəni göstər:'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Səhv kodu'
-    CODE_501: '501 - Implementasiya olunmayıb'
-    DEFAULTERRORPAGECONTENT: '<P> Üzr istəyirik, görünür siz mövcud olan səhifəyə giriş əldə etməyə cəhd edirdiniz. </p><p>Xahiş sizin giriş əldə etməyə və bir daha sınaqdan keçirməyə cəhd etdiyiniz URL-i yoxlayasınız </p>'
-    DEFAULTERRORPAGETITLE: 'Səhifə tapılmadı'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Yönləndirmə səhifəsinə yönlənmə istiqaməti verilməyib.'
     HEADER: 'Bu səhifə istifadəçiləri başqa səhifəyə yönləndirəcək'

@@ -14,8 +14,3 @@ Page:
     RedirectionType: Internal
     Title: RedirectorPageToBrokenInteralPage
     LinkTo: =>Page.content
-
-SilverStripe\CMS\Model\ErrorPage:
-  404:
-    Title: Page not Found
-    ErrorCode: 404

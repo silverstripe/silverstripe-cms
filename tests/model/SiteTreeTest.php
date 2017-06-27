@@ -1,6 +1,5 @@
 <?php
 
-use SilverStripe\CMS\Model\ErrorPage;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\Control\ContentNegotiator;
@@ -345,7 +344,6 @@ class SiteTreeTest extends SapphireTest
         $about    = $this->objFromFixture('Page', 'about');
         $staff    = $this->objFromFixture('Page', 'staff');
         $product  = $this->objFromFixture('Page', 'product1');
-        $notFound = $this->objFromFixture(ErrorPage::class, '404');
 
         SiteTree::config()->nested_urls = false;
 
@@ -354,7 +352,6 @@ class SiteTreeTest extends SapphireTest
         $this->assertEquals($about->ID, SiteTree::get_by_link($about->Link(), false)->ID);
         $this->assertEquals($staff->ID, SiteTree::get_by_link($staff->Link(), false)->ID);
         $this->assertEquals($product->ID, SiteTree::get_by_link($product->Link(), false)->ID);
-        $this->assertEquals($notFound->ID, SiteTree::get_by_link($notFound->Link(), false)->ID);
 
         Config::inst()->update(SiteTree::class, 'nested_urls', true);
 
@@ -363,7 +360,6 @@ class SiteTreeTest extends SapphireTest
         $this->assertEquals($about->ID, SiteTree::get_by_link($about->Link(), false)->ID);
         $this->assertEquals($staff->ID, SiteTree::get_by_link($staff->Link(), false)->ID);
         $this->assertEquals($product->ID, SiteTree::get_by_link($product->Link(), false)->ID);
-        $this->assertEquals($notFound->ID, SiteTree::get_by_link($notFound->Link(), false)->ID);
 
         $this->assertEquals(
             $staff->ID,
@@ -788,17 +784,12 @@ class SiteTreeTest extends SapphireTest
     public function testIsCurrent()
     {
         $aboutPage = $this->objFromFixture('Page', 'about');
-        $errorPage = $this->objFromFixture(ErrorPage::class, '404');
+        $productPage = $this->objFromFixture('Page', 'products');
 
         Director::set_current_page($aboutPage);
-        $this->assertTrue($aboutPage->isCurrent(), 'Assert that basic isSection checks works.');
-        $this->assertFalse($errorPage->isCurrent());
+        $this->assertTrue($aboutPage->isCurrent(), 'Assert that basic isCurrent checks works.');
+        $this->assertFalse($productPage->isCurrent());
 
-        Director::set_current_page($errorPage);
-        $this->assertTrue($errorPage->isCurrent(), 'Assert isSection works on error pages.');
-        $this->assertFalse($aboutPage->isCurrent());
-
-        Director::set_current_page($aboutPage);
         $this->assertTrue(
             DataObject::get_one(SiteTree::class, array(
                 '"SiteTree"."Title"' => 'About Us'

@@ -4,11 +4,6 @@ fo:
     PUBALLCONFIRM: 'Vinarliga almenna kunngerð allar síðurnar á heimasíðuni,  avrita innihaldsstøðið til beinleiðis'
     PUBALLFUN: '"Ger alt alment" funka'
     REMOVEDPAGEFROMDRAFT: 'Strikaði ''%s'' frá kladdu heimasíðuni'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Feilkota'
-    CODE_404: '404 - Ikki funnin'
-    CODE_411: '411 - Longd er kravd'
-    DEFAULTERRORPAGETITLE: 'Síðan var ikki funnin'
   SilverStripe\CMS\Model\RedirectorPage:
     REDIRECTTO: 'Víðarisend til'
     REDIRECTTOEXTERNAL: 'Onnur heimasíðu'

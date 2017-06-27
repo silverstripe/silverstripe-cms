@@ -73,15 +73,6 @@ ru:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Задайте адрес страницы или нажмите "Отмена"'
     HelpChars: 'Спецсимволы автоматически конвертируются или удаляются.'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Код ошибки'
-    DEFAULTERRORPAGECONTENT: '<p>Извините, страница, к которой вы пытаетесь получить доступ, не существует.</p><p>Пожалуйста, проверьте правильность написания ссылки и попытайтесь снова.</p>'
-    DEFAULTERRORPAGETITLE: 'Страница не найдена'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Не удалось обработать запрос.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Ошибка сервера'
-    DESCRIPTION: 'Пользовательские страницы ошибок (например, "Страница не найдена")'
-    PLURALNAME: 'Страницы ошибок'
-    SINGULARNAME: 'Страница ошибки'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Перенаправление на другую внутреннюю или внешнюю страницу'
     HASBEENSETUP: 'Страница перенаправления установлена без указания места перенаправления.'

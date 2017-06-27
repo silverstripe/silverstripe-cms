@@ -95,18 +95,6 @@ fi:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Anna URL-osoite tai napsauta peruuta'
     HelpChars: 'Erikoismerkit muunnetaan tai poistetaan automaattisesti.'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Virhekoodi'
-    DEFAULTERRORPAGECONTENT: '<p>Valitettavasti hakemaasi sivua ei ole olemassa.</p><p>Tarkista hakemasi sivun URL-osoitteen kirjoitusasu ja yritä uudelleen.</p>'
-    DEFAULTERRORPAGETITLE: 'Sivua ei löytynyt'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Pahoittelut, mutta pyyntösi aiheutti virheen.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Palvelinvirhe'
-    DESCRIPTION: 'Omat virheilmoitukset (sivuille, kuten "Sivua ei löytynyt")'
-    PLURALNAME: 'Virhesivut'
-    PLURALS:
-      one: 'Virhesivu'
-      other: '{count} Virhesivua'
-    SINGULARNAME: 'Virhesivu'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Edelleenohjaa toiselle sisäiselle sivulle tai ulkoiseen URL-osoitteeseen'
     HASBEENSETUP: 'Sivu, joka ohjaa käyttäjän toiselle sivulle on valmis, mutta sivua, jolle käyttäjä ohjataan, ei ole.'

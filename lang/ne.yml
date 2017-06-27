@@ -1,6 +1,4 @@
 ne:
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'त्रुटी सङ्केत '
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'कुनै पनि पुनर्निर्देशनबिना नै एउटा पुनर्निदेशन पृष्ठ सेटअप गरियो । '
     HEADER: 'यो पेजले प्रयोगकतालाई अर्को पेजमा लैजान्छ'
