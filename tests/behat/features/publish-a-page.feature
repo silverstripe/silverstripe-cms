@@ -20,7 +20,7 @@ Feature: Publish a page
     And I click on "My Page" in the tree
     And I press the "Save & publish" button
 
-    Then I press the "Log out" button
+    Then I am not logged in
     And I go to "/my-page"
 
     Then I should see "initial content"
@@ -66,7 +66,7 @@ Feature: Publish a page
     When I click "More options" in the "#ActionMenus" element
     And I press the "Unpublish" button, confirming the dialog
 
-    Then I press the "Log out" button
+    Then I am not logged in
     And I go to "/hello"
     Then the page can't be found
 
