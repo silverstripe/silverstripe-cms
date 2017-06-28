@@ -1915,12 +1915,18 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function getSettingsFields()
     {
-        $groupsMap = array();
-        foreach (Group::get() as $group) {
-            // Listboxfield values are escaped, use ASCII char instead of &raquo;
-            $groupsMap[$group->ID] = $group->getBreadcrumbs(' > ');
-        }
-        asort($groupsMap);
+        $mapFn = function ($groups = []) {
+            $map = [];
+            foreach ($groups as $group) {
+                // Listboxfield values are escaped, use ASCII char instead of &raquo;
+                $map[$group->ID] = $group->getBreadcrumbs(' > ');
+            }
+            asort($map);
+            return $map;
+        };
+        $groupsMap = $mapFn(Group::get());
+        $viewAllGroupsMap = $mapFn(Permission::get_groups_by_permission(['SITETREE_VIEW_ALL', 'ADMIN']));
+        $editAllGroupsMap = $mapFn(Permission::get_groups_by_permission(['SITETREE_EDIT_ALL', 'ADMIN']));
 
         $fields = new FieldList(
             $rootTab = new TabSet(
@@ -2005,6 +2011,22 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $editorsOptionsSource = $viewersOptionsSource;
         unset($editorsOptionsSource[InheritedPermissions::ANYONE]);
         $editorsOptionsField->setSource($editorsOptionsSource);
+
+        if ($viewAllGroupsMap) {
+            $viewerGroupsField->setDescription(_t(
+                'SilverStripe\\CMS\\Model\\SiteTree.VIEWER_GROUPS_FIELD_DESC',
+                'Groups with global view permissions: {groupList}',
+                ['groupList' => implode(', ', array_values($viewAllGroupsMap))]
+            ));
+        }
+
+        if ($editAllGroupsMap) {
+            $editorGroupsField->setDescription(_t(
+                'SilverStripe\\CMS\\Model\\SiteTree.EDITOR_GROUPS_FIELD_DESC',
+                'Groups with global edit permissions: {groupList}',
+                ['groupList' => implode(', ', array_values($editAllGroupsMap))]
+            ));
+        }
 
         if (!Permission::check('SITETREE_GRANT_ACCESS')) {
             $fields->makeFieldReadonly($viewersOptionsField);
