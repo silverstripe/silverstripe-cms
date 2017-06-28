@@ -328,9 +328,9 @@ class ContentController extends Controller
 
         if (Director::isDev() || Permission::check('CMS_ACCESS_CMSMain') || Permission::check('VIEW_DRAFT_CONTENT')) {
             if ($this->dataRecord) {
-                Requirements::css(CMS_DIR . '/client/dist/styles/SilverStripeNavigator.css');
-                Requirements::javascript(ADMIN_THIRDPARTY_DIR . '/jquery/jquery.js');
-                Requirements::javascript(CMS_DIR . '/client/dist/js/SilverStripeNavigator.js');
+                Requirements::css('silverstripe/cms: client/dist/styles/SilverStripeNavigator.css');
+                Requirements::javascript('silverstripe/admin: thirdparty/jquery/jquery.js');
+                Requirements::javascript('silverstripe/cms: client/dist/js/SilverStripeNavigator.js');
 
                 $return = $nav = SilverStripeNavigator::get_for_record($this->dataRecord);
                 $items = $return['items'];
@@ -370,7 +370,7 @@ HTML;
         // On live sites we should still see the archived message
         } else {
             if ($date = Versioned::current_archived_date()) {
-                Requirements::css(CMS_DIR . '/client/dist/styles/SilverStripeNavigator.css');
+                Requirements::css('silverstripe/cms: client/dist/styles/SilverStripeNavigator.css');
                 /** @var DBDatetime $dateObj */
                 $dateObj = DBField::create_field('Datetime', $date);
                 // $dateObj->setVal($date);

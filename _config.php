@@ -17,14 +17,10 @@ use SilverStripe\View\Parsers\ShortcodeParser;
  * - CMS_PATH: Absolute filepath, e.g. "/var/www/my-webroot/cms"
  */
 call_user_func(function () {
-    define('CMS_PATH', __DIR__);
-
     // Check if CMS is root dir, or subdir
     if (strcasecmp(__DIR__, BASE_PATH) === 0) {
-        define('CMS_DIR', '');
         $clientPath = 'client';
     } else {
-        define('CMS_DIR', basename(__DIR__));
         $clientPath = basename(__DIR__) . '/client';
     }
 
