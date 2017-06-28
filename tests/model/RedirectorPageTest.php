@@ -53,7 +53,7 @@ class RedirectorPageTest extends FunctionalTest
         $this->assertContains('message-setupWithoutRedirect', $content);
 
         /* Transitive redirectors are those that point to another redirector page.  They should send people to the URLSegment
-		 * of the destination page - the middle-stop, so to speak.  That should redirect to the final destination */
+         * of the destination page - the middle-stop, so to speak.  That should redirect to the final destination */
         $page = $this->objFromFixture(RedirectorPage::class, 'transitive');
         $this->assertEquals('/good-internal/', $page->Link());
 
@@ -98,5 +98,16 @@ class RedirectorPageTest extends FunctionalTest
         $this->assertEquals('http://www.mysite.com/foo', $response->getHeader('Location'));
 
         RedirectorPageController::remove_extension('RedirectorPageTest_RedirectExtension');
+    }
+
+    public function testNoJSLinksAllowed()
+    {
+        $page = new RedirectorPage();
+        $js = 'javascript:alert("hello world")';
+        $page->ExternalURL = $js;
+        $this->assertEquals($js, $page->ExternalURL);
+
+        $page->write();
+        $this->assertEmpty($page->ExternalURL);
     }
 }

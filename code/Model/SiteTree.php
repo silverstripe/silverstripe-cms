@@ -777,7 +777,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             /** @var SiteTree $child */
             $sort = 0;
             foreach ($children as $child) {
-                $childClone = $child->duplicateWithChildren();
+                $childClone = method_exists($child, 'duplicateWithChildren')
+                    ? $child->duplicateWithChildren()
+                    : $child->duplicate();
                 $childClone->ParentID = $clone->ID;
                 //retain sort order by manually setting sort values
                 $childClone->Sort = ++$sort;
@@ -1812,7 +1814,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 'New {pagetype}',
                 array('pagetype' => $this->i18n_singular_name())
             )));
-        $helpText = (self::config()->nested_urls && $this->Children()->count())
+        $helpText = (self::config()->nested_urls && $this->numChildren())
             ? $this->fieldLabel('LinkChangeNote')
             : '';
         if (!Config::inst()->get('SilverStripe\\View\\Parsers\\URLSegmentFilter', 'default_allow_multibyte')) {
