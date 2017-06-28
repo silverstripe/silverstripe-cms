@@ -11,11 +11,11 @@ use SilverStripe\View\ViewableData;
 
 /**
  * Utility class representing links to different views of a record
- * for CMS authors, usually for {@link SiteTree} objects with "stage" and "live" links.
+ * for CMS authors, usually for {@link SilverStripe\CMS\Model\SiteTree} objects with "stage" and "live" links.
  * Useful both in the CMS and alongside the page template (for logged in authors).
  * The class can be used for any {@link DataObject} subclass implementing the {@link CMSPreviewable} interface.
  *
- * New item types can be defined by extending the {@link SilverStripeNavigatorItem} class,
+ * New item types can be defined by extending the {@link SilverStripe\CMS\Controllers\SilverStripeNavigatorItem} class,
  * for example the "cmsworkflow" module defines a new "future state" item with a date selector
  * to view embargoed data at a future point in time. So the item doesn't always have to be a simple link.
  */

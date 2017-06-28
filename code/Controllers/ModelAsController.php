@@ -19,7 +19,7 @@ use SilverStripe\ORM\DB;
 use Translatable;
 
 /**
- * ModelAsController deals with mapping the initial request to the first {@link SiteTree}/{@link ContentController}
+ * ModelAsController deals with mapping the initial request to the first {@link SiteTree}/{@link SilverStripe\CMS\Controllers\ContentController}
  * pair, which are then used to handle the request.
  */
 class ModelAsController extends Controller implements NestedController
@@ -29,7 +29,7 @@ class ModelAsController extends Controller implements NestedController
     ];
 
     /**
-     * Get the appropriate {@link ContentController} for handling a {@link SiteTree} object, link it to the object and
+     * Get the appropriate {@link SilverStripe\CMS\Controllers\ContentController} for handling a {@link SiteTree} object, link it to the object and
      * return it.
      *
      * @param SiteTree $sitetree

@@ -66,7 +66,7 @@ class ContentControllerTest extends FunctionalTest
     }
 
     /**
-     * Tests {@link ContentController::ChildrenOf()}
+     * Tests {@link SilverStripe\CMS\Controllers\ContentController::ChildrenOf()}
      */
     public function testChildrenOf()
     {
@@ -152,7 +152,7 @@ class ContentControllerTest extends FunctionalTest
 
 
     /**
-     * Tests that {@link ContentController::getViewer()} chooses the correct templates.
+     * Tests that {@link SilverStripe\CMS\Controllers\ContentController::getViewer()} chooses the correct templates.
      *
      * @covers SilverStripe\CMS\Controllers\ContentController::getViewer()
     **/

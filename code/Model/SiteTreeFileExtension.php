@@ -71,7 +71,7 @@ class SiteTreeFileExtension extends DataExtension
     }
 
     /**
-     * Extend through {@link updateBackLinkTracking()} in your own {@link Extension}.
+     * Extend through {@link updateBackLinkTracking()} in your own {@link SilverStripe\Core\Extension}.
      *
      * @return ManyManyList
      */
