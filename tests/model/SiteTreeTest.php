@@ -464,8 +464,8 @@ class SiteTreeTest extends SapphireTest
         $pageAbout->delete();
 
         $this->assertNull(DataObject::get_by_id('Page', $pageAbout->ID));
-        $this->assertFalse(DataObject::get_by_id('Page', $pageStaff->ID));
-        $this->assertFalse(DataObject::get_by_id('Page', $pageStaffDuplicate->ID));
+        $this->assertNull(DataObject::get_by_id('Page', $pageStaff->ID));
+        $this->assertNull(DataObject::get_by_id('Page', $pageStaffDuplicate->ID));
     }
 
     public function testDuplicate()
