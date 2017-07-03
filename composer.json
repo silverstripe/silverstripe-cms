@@ -1,49 +1,48 @@
 {
-  "name": "silverstripe/cms",
-  "type": "silverstripe-module",
-  "description": "The SilverStripe Content Management System",
-  "homepage": "http://silverstripe.org",
-  "license": "BSD-3-Clause",
-  "keywords": ["silverstripe", "cms"],
-  "authors": [
-    {
-      "name": "SilverStripe",
-      "homepage": "http://silverstripe.com"
+    "name": "silverstripe/cms",
+    "type": "silverstripe-module",
+    "description": "The SilverStripe Content Management System",
+    "homepage": "http://silverstripe.org",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "silverstripe",
+        "cms"
+    ],
+    "authors": [
+        {
+            "name": "SilverStripe",
+            "homepage": "http://silverstripe.com"
+        },
+        {
+            "name": "The SilverStripe Community",
+            "homepage": "http://silverstripe.org"
+        }
+    ],
+    "require": {
+        "composer/installers": "*",
+        "silverstripe/admin": "^1@dev",
+        "silverstripe/campaign-admin": "^1@dev",
+        "silverstripe/framework": "^4@dev",
+        "silverstripe/reports": "^4@dev",
+        "silverstripe/siteconfig": "^4@dev",
+        "silverstripe/versioned": "^1@dev"
     },
-    {
-      "name": "The SilverStripe Community",
-      "homepage": "http://silverstripe.org"
-    }
-  ],
-  "require": {
-    "composer/installers": "*",
-    "silverstripe/admin": "^1@dev",
-    "silverstripe/campaign-admin": "^1@dev",
-    "silverstripe/framework": "^4@dev",
-    "silverstripe/reports": "^4@dev",
-    "silverstripe/siteconfig": "^4@dev",
-    "silverstripe/versioned": "^1@dev"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^5.7",
-    "silverstripe/behat-extension": "^3@dev",
-    "silverstripe/serve": "dev-master",
-    "se/selenium-server-standalone": "2.41.0"
-  },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "4.0.x-dev"
-    }
-  },
-  "scripts": {
-    "lint": "phpcs -s code/ tests/"
-  },
-  "autoload": {
-    "psr-4": {
-      "SilverStripe\\CMS\\": "code/",
-      "SilverStripe\\CMS\\Tests\\Behaviour\\": "tests/behat/src/"
-    }
-  },
-  "prefer-stable": true,
-  "minimum-stability": "dev"
+    "require-dev": {
+        "phpunit/phpunit": "^5.7",
+        "silverstripe/behat-extension": "^3@dev",
+        "silverstripe/serve": "dev-master",
+        "se/selenium-server-standalone": "2.41.0"
+    },
+    "extra": [],
+    "scripts": {
+        "lint": "phpcs -s code/ tests/"
+    },
+    "autoload": {
+        "psr-4": {
+            "SilverStripe\\CMS\\": "code/",
+            "SilverStripe\\CMS\\Tests\\Behaviour\\": "tests/behat/src/"
+        }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
 }
