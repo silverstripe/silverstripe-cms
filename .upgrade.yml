@@ -76,3 +76,5 @@ mappings:
   URLSegmentField: SilverStripe\CMS\Forms\SiteTreeURLSegmentField
   CMSPagesController_Tools_ss: SilverStripe\CMS\Controllers\CMSPagesController
   LeftAndMain: SilverStripe\Admin\LeftAndMain
+excludedPaths:
+  - '*/_config/legacy.yml'
