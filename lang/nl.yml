@@ -39,7 +39,7 @@ nl:
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Bewerk pagina'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: Pagina 's
+    MENUTITLE: 'Pagina ''s'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Alle pagina''s'
   SilverStripe\CMS\Controllers\ContentController:
@@ -51,7 +51,7 @@ nl:
     INSTALL_SUCCESS: 'Installatie voltooid!'
     LOGGEDINAS: 'Ingelogd als'
     LOGIN: Inloggen
-    LOGOUT: 'Uitloggen'
+    LOGOUT: Uitloggen
     NOTEWONTBESHOWN: 'Merk op: dit bericht is niet zichtbaar voor uw bezoekers'
     NOTLOGGEDIN: 'Niet ingelogd'
     PUBLISHED: Gepubliceerd
@@ -62,6 +62,13 @@ nl:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Vul een URL segment in of klik op annuleren'
     HelpChars: 'Speciale tekens worden automatische omgezet of verwijderd.'
+  SilverStripe\CMS\Model\ErrorPage:
+    CODE: Foutcode
+    DEFAULTERRORPAGECONTENT: '<p>Helaas, de pagina die u zocht lijkt niet (meer) te bestaan.</p><p>Controleer of de juiste URL is gebruikt en probeer het opnieuw.</p>'
+    DEFAULTERRORPAGETITLE: 'Pagina niet gevonden'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Helaas, er was een probleem bij het verwerken van je verzoek.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Probleem met de server'
+    SINGULARNAME: Foutpagina
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Er is een verwijspagina opgezet zonder ergens naar te verwijzen.'
     HEADER: 'Deze pagina zal gebruikers naar een andere pagina doorsturen (redirect)'
@@ -83,23 +90,23 @@ nl:
     BUTTONPUBLISHED: Gepubliceerd
     BUTTONSAVED: Opgeslagen
     BUTTONSAVEPUBLISH: 'Opslaan & publiceren'
-    BUTTONUNPUBLISH: Publicatie intrekken
+    BUTTONUNPUBLISH: 'Publicatie intrekken'
     BUTTONUNPUBLISHDESC: 'Deze pagina verwijderen uit de gepubliceerde site'
     Comments: Commentaar
     Content: Inhoud
     DEFAULTABOUTTITLE: 'Over Ons'
-    DEFAULTCONTACTTITLE: 'Contact'
+    DEFAULTCONTACTTITLE: Contact
     DEFAULTHOMETITLE: Home
     DEPENDENT_NOTE: 'De volgende pagina''s zijn afhankelijk van deze pagina. Hieronder vallen virtuele pagina''s, verwijzingspagina''s en pagina''s met links in hun inhoud.'
-    DependtPageColumnLinkType: 'Linktype'
+    DependtPageColumnLinkType: Linktype
     DependtPageColumnURL: URL
     EDITANYONE: 'Iedereen die kan inloggen in het CMS'
     EDITHEADER: 'Wie kan deze pagina wijzigen?'
     EDITONLYTHESE: 'Alleen deze gebruikers (kies uit de lijst)'
-    EDITORGROUPS: 'Redacteursgroepen'
+    EDITORGROUPS: Redacteursgroepen
     EDIT_ALL_DESCRIPTION: 'Kan elke pagina wijzigen'
     EDIT_ALL_HELP: 'Bevoegdheid om alle pagina''s op de site te wijzigen, onafhankelijk van de instellingen in het ''Toegang'' tabblad. Vereist "Toegang tot site inhoud" rechten'
-    Editors: 'Redacteursgroepen'
+    Editors: Redacteursgroepen
     GroupPlaceholder: 'Klik om de groep te selecteren'
     HASBROKENLINKS: 'Deze pagina heeft verbroken links.'
     HTMLEDITORTITLE: Inhoud
@@ -133,11 +140,11 @@ nl:
     SHOWINMENUS: 'Weergeven in menu''s?'
     SHOWINSEARCH: 'Weergeven in zoeken?'
     TABBEHAVIOUR: Gedrag
-    TABCONTENT: 'Hoofdinhoud'
+    TABCONTENT: Hoofdinhoud
     TABDEPENDENT: 'Afhankelijke pagina''s'
     TOPLEVEL: 'Site inhoud (hoogste niveau)'
     URLSegment: 'URL segment'
-    VIEWERGROUPS: 'Bekijkersgroepen'
+    VIEWERGROUPS: Bekijkersgroepen
     VIEW_ALL_DESCRIPTION: 'Kan iedere pagina op de website bekijken, ongeacht de specifieke pagina instelling'
     VIEW_ALL_HELP: 'Bevoegdheid om alle pagina''s op de site te wijzigen, onafhankelijk van de instellingen in het ''Toegang'' tabblad. Vereist "Toegang tot site inhoud" rechten'
     VIEW_DRAFT_CONTENT: 'Bekijk concept inhoud'
@@ -145,7 +152,7 @@ nl:
     VIRTUALPAGEDRAFTWARNING: 'U dient eerst de gekoppelde pagina te publiceren voordat u de virtuele pagina publiceert.'
     VIRTUALPAGEWARNING: 'U dient eerst een gekoppelde pagina te selecteren en op te slaan voordat u deze pagina kunt publiceren.'
     VIRTUALPAGEWARNINGSETTINGS: 'U dient een gekoppelde pagina te selecteren op het hoofdscherm voordat u kunt publiceren.'
-    Viewers: 'Bekijkersgroepen'
+    Viewers: Bekijkersgroepen
     Visibility: Zichtbaarheid
     has_one_Parent: 'Bovenliggende pagina'
     many_many_BackLinkTracking: 'Backlinks traceren'
@@ -167,13 +174,13 @@ nl:
     CheckSiteDropdownPublished: 'Gepubliceerde site'
     ColumnDateLastModified: 'Laatste wijzigingsdatum'
     ColumnDateLastPublished: 'Laatste publicatiedatum'
-    ColumnProblemType: 'Probleemtype'
+    ColumnProblemType: Probleemtype
     ColumnURL: URL
     HasBrokenFile: 'heeft verbroken bestand'
     HasBrokenLink: 'heeft verbroken link'
     HasBrokenLinkAndFile: 'heeft verbroken link en bestand'
     HoverTitleEditPage: 'Wijzig pagina'
-    PageName: 'Paginanaam'
+    PageName: Paginanaam
     ReasonDropdown: 'Te controleren probleem'
     ReasonDropdownBROKENFILE: 'Verbroken bestand'
     ReasonDropdownBROKENLINK: 'Verbroken link'
@@ -186,4 +193,4 @@ nl:
     FILTERDATETO: Tot
     GO: Zoeken
     SEARCH: Zoeken
-    SearchResults: 'Zoekresultaten'
+    SearchResults: Zoekresultaten

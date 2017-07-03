@@ -135,6 +135,11 @@ en:
     VIEWPAGEIN: 'View Page in:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archived
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    ANCHORVALUE: Anchor
+    LINKDESCR: 'Link description'
+    LINKOPENNEWWIN: 'Open in new window/tab'
+    SELECT_PAGE: 'Select a page'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Cancel
     EMPTY: 'Please enter a URL Segment or click cancel'
@@ -185,10 +190,9 @@ en:
     DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
-    EDITANYONE: 'Anyone who can log-in to the CMS'
     EDITHEADER: 'Who can edit this page?'
-    EDITONLYTHESE: 'Only these people (choose from list)'
     EDITORGROUPS: 'Editor Groups'
+    EDITOR_GROUPS_FIELD_DESC: 'Groups with global edit permissions: {groupList}'
     EDIT_ALL_DESCRIPTION: 'Edit any page'
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     Editors: 'Editors Groups'
@@ -242,6 +246,7 @@ en:
     TOPLEVEL: 'Site Content (Top Level)'
     URLSegment: 'URL Segment'
     VIEWERGROUPS: 'Viewer Groups'
+    VIEWER_GROUPS_FIELD_DESC: 'Groups with global view permissions: {groupList}'
     VIEW_ALL_DESCRIPTION: 'View any page'
     VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     VIEW_DRAFT_CONTENT: 'View draft content'

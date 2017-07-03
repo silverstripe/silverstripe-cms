@@ -1,6 +1,6 @@
 fr:
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Droits d’accès à la section « {title} »'
+    ACCESS: "Droits d’accès à la section «\_{title}\_»"
     ACCESS_HELP: 'Permettre l''affichage de la section contenant l''arborescence et le contenu. La gestion des permissions de visualisation et d''édition peut se faire à travers des liste spécifiques à chaque page. Et aussi la "Permission de contenu" séparé.'
     ARCHIVE: Archive
     ARCHIVEDPAGE: 'Page ''%s'' archivée'
@@ -18,9 +18,9 @@ fr:
     PUBALLFUN: 'Fonctionnalité "Tout Publier"'
     PUBPAGES: '{count} pages ont été correctement publiées'
     PageAdded: 'La page a été créée avec succès '
-    REMOVEDPAGE: '« {title} » a été éliminée du site public '
+    REMOVEDPAGE: "«\_{title}\_» a été éliminée du site public "
     REMOVEDPAGEFROMDRAFT: 'Supprimé ''%s'' du site de test'
-    RESTORED: '« {title} » restaurée avec succès'
+    RESTORED: "«\_{title}\_» restaurée avec succès"
     ROLLEDBACKPUBv2: 'Revenir à la version publiée'
     ROLLEDBACKVERSIONv2: 'Revenir à la version #%d'
     SAVEDRAFT: 'Sauvegarder le brouillon'
@@ -33,7 +33,7 @@ fr:
     SHOWUNPUBLISHED: 'Afficher les versions non publiées'
     VIEW: Afficher
     VIEWINGLATEST: 'Vous regardez la dernière version'
-    VIEWINGVERSION: 'Version affichée : {version}.'
+    VIEWINGVERSION: "Version affichée\_: {version}."
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: Pages
   SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
@@ -51,7 +51,7 @@ fr:
     LOGIN: Connectez-vous
     LOGOUT: 'Se déconnecter'
     NOTEWONTBESHOWN: 'Note : ce message ne sera pas visible de vos visiteurs.'
-    NOTLOGGEDIN: 'Non-connecté'
+    NOTLOGGEDIN: Non-connecté
     PUBLISHED: Publié
     PUBLISHEDSITE: 'Site Publié'
     VIEWPAGEIN: 'Voir la page en :'
@@ -60,6 +60,35 @@ fr:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Merci d''entrer une URL ou cliquez sur Annuler'
     HelpChars: 'Les caractères spéciaux sont automatiquement convertis ou supprimés.'
+  SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'Code d''erreur'
+    CODE_400: '400 - Requête incorrecte'
+    CODE_401: '401 - Non autorisé'
+    CODE_403: '403 - Interdit'
+    CODE_404: '404 - Non trouvé'
+    CODE_405: '405 - Méthode non authorisée'
+    CODE_406: '406 - Inacceptable'
+    CODE_407: '407 - Authentification de mandataire (Proxy) requise'
+    CODE_408: '408 - Temps d''attente d''une réponse du serveur écoulé'
+    CODE_409: '409 - La requête ne peut être traitée à l''état actuel'
+    CODE_410: '410 - La ressource est indisponible et aucune adresse de redirection n''est connue'
+    CODE_411: '411 - La longueur de la requête n''a pas été précisée'
+    CODE_412: '412 - Préconditions envoyées par la requête non-vérifiées'
+    CODE_413: '413 - Entité de la requête trop grande'
+    CODE_414: '414 - URI de la requête trop longue'
+    CODE_415: '415 - Type de média non géré'
+    CODE_416: '416 - Champs d''en-tête de requête ''range'' incorrect.'
+    CODE_417: '417 - Comportement attendu et défini dans l''en-tête de la requête insatisfaisable'
+    CODE_500: '500 - Erreur interne du serveur'
+    CODE_501: '501 - Fonctionnalité réclamée non supportée par le serveur'
+    CODE_502: '502 - Mauvaise passerelle d''accès'
+    CODE_503: '503 - Service indisponible'
+    CODE_504: '504 - Temps d''attente d''une réponse d''un serveur à un serveur intermédiaire écoulé'
+    CODE_505: '505 - Version HTTP non supportée'
+    DEFAULTERRORPAGECONTENT: '<p>Désolé, il semble que vous tentez d''accéder à une page qui n''existe pas.</p><p>Merci de vérifier l''URL que vous avez saisie puis d''essayer à nouveau.</p>'
+    DEFAULTERRORPAGETITLE: 'Page non trouvée'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Nous sommes désolés, un problème nous a empêché de traiter votre requête.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Erreur du serveur'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Une page de redirection sans adresse de redirection a été créée.'
     HEADER: 'Cette page va rediriger les utilisateurs vers une autre page'
@@ -69,7 +98,7 @@ fr:
     REDIRECTTOPAGE: 'Une page de votre site web'
     YOURPAGE: 'Page de votre site web'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: Tout le monde
+    ACCESSANYONE: 'Tout le monde'
     ACCESSHEADER: 'Qui peut voir cette page?'
     ACCESSLOGGEDIN: 'Utilisateurs connectés'
     ACCESSONLYTHESE: 'Seulement ces personnes (choisir à partir de la liste)'
@@ -82,12 +111,12 @@ fr:
     BUTTONPUBLISHED: Publié
     BUTTONSAVED: Sauvegardé
     BUTTONSAVEPUBLISH: 'Sauvegarder et publier'
-    BUTTONUNPUBLISH: Retirer du site publié
+    BUTTONUNPUBLISH: 'Retirer du site publié'
     BUTTONUNPUBLISHDESC: 'Retirer cette page du site publié'
     Comments: Commentaires
     Content: Contenu
-    DEFAULTABOUTTITLE: 'Qui sommes nous ?'
-    DEFAULTCONTACTTITLE: 'Contactez-nous'
+    DEFAULTABOUTTITLE: "Qui sommes nous\_?"
+    DEFAULTCONTACTTITLE: Contactez-nous
     DEFAULTHOMECONTENT: '<p>Bienvenue dans SilverStripe! Ceci est la page d''accueil par défaut. Vous pouvez éditer cette page en ouvrant <a href="admin/">le CMS</a>.</p><p>Vous pouvez maintenant accéder à la <a href="http://docs.silverstripe.org">documentation développeur</a>, ou commencer les <a href="http://www.silverstripe.org/learn/lessons">leçons SilverStripe</a>.</p>'
     DEFAULTHOMETITLE: Accueil
     DEPENDENT_NOTE: 'Les pages suivantes dépendent de cette page. Ceci inclut les pages virtuelles, les redirections et les pages avec des liens.'
@@ -107,7 +136,7 @@ fr:
     LASTUPDATED: 'Dernière mise à jour'
     LINKCHANGENOTE: 'Changer le lien de cette page affectera aussi les liens des pages enfants.'
     MENUTITLE: 'Nom de navigation'
-    METADESC: 'Description'
+    METADESC: Description
     METADESCHELP: 'Les moteurs de recherche reprennent cette description dans leurs résultats (bien qu’elle n’ait pas d’influence sur le classement).'
     METAEXTRA: 'Balises Méta personnalisées'
     METAEXTRAHELP: 'Balises HTML pour des métadonnées supplémentaires. Par exemple &lt;meta name="monNom" content="Mon contenu" /&gt;'
@@ -125,9 +154,9 @@ fr:
     PARENTTYPE_SUBPAGE: 'Sous-page d''une page parente (choisir en-dessous) '
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Contrôler les groupes qui peuvent accéder ou éditer certaines pages'
     PERMISSION_GRANTACCESS_HELP: 'Autoriser la gestion des restrictions d''accès d''une page dans la section "Pages"'
-    PageTypNotAllowedOnRoot: 'Le type de page « {type} » n’est pas autorisé au niveau racine'
-    PageTypeNotAllowed: 'Le type de page « {type} » n''est pas autorisé comme enfant de cette page parent'
-    REMOVE_INSTALL_WARNING: 'Attention : Vous devriez supprimer install.php pour des raisons de sécurité.'
+    PageTypNotAllowedOnRoot: "Le type de page «\_{type}\_» n’est pas autorisé au niveau racine"
+    PageTypeNotAllowed: "Le type de page «\_{type}\_» n'est pas autorisé comme enfant de cette page parent"
+    REMOVE_INSTALL_WARNING: "Attention\_: Vous devriez supprimer install.php pour des raisons de sécurité."
     REORGANISE_DESCRIPTION: 'Modifier la structure du site'
     REORGANISE_HELP: 'Réorganiser les pages dans l''arborescence du site par glisser & déposer.'
     SHOWINMENUS: 'Afficher dans les menus ?'
@@ -156,9 +185,9 @@ fr:
     EditLink: éditer
     HEADER: 'Cette page est virtuelle'
     HEADERWITHLINK: 'Ceci est une page virtuelle copiant le contenu de "{title}" ({link})'
-    PageTypNotAllowedOnRoot: 'Le type de page d’origine « {type} » n’est pas autorisé au niveau racine pour cette page virtuelle'
+    PageTypNotAllowedOnRoot: "Le type de page d’origine «\_{type}\_» n’est pas autorisé au niveau racine pour cette page virtuelle"
   SilverStripe\CMS\Reports\BrokenLinksReport:
-    Any: N'importe quel
+    Any: 'N''importe quel'
     BROKENLINKS: 'Rapport des liens brisés'
     CheckSite: 'Consulter le site'
     CheckSiteDropdownDraft: 'Site Brouillon'

@@ -1,56 +1,113 @@
 cs:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
+    RESULT: 'Smazáno %d stránek z konceptu a webu a odesláno do archivu'
+    TITLE: 'Nezveřejnit a archivovat'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: 'Zveřejněných %d stránek, %d selhání'
+    PUBLISH_PAGES: Zveřejnit
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Obnovit
+    RESTORED_PAGES: 'Obnoveno %d stránek'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISHED_PAGES: 'Nezveřejněných %d stránek'
+    UNPUBLISH_PAGES: Nezveřejnit
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Přístup k ''{title}'' sekci'
     ACCESS_HELP: 'Povolit prohlížení sekce obsahující strukturu a obsah webu. Oprávnění na prohlížení a úpravu mohou být nastavena skrze menu pro samostatnou stránku, také jako jednotlivé oprávnění pro obsah.'
+    APPLY_FILTER: Hledat
     ARCHIVE: Archív
     ARCHIVEDPAGE: 'Archivovaná stránka ''%s'''
+    AddNew: 'Přidat novou stránku'
+    AddNewButton: 'Přidat nový'
     AddPageRestriction: 'Poznámka: Některé typy stránek nejsou povoleny při tomto výběru'
+    ArchiveWarning: 'Varování: Stránka bude nezveřejněna před odesláním do archívu.\n\nSkutečně to chcete vykonat?'
+    ArchiveWarningWithCampaigns: 'Varování: Stránka bude nezveřejněna a automaticky odstraněna z její  asociací {NumCampaigns} před odesláním do archívu.\n\nSkutečně to vykonat?'
+    ArchiveWarningWithChildren: 'Varování: Stránka a její potomkové bude nezveřejněna před odesláním do archívu.\n\nSkutečně to chcete vykonat?'
+    ArchiveWarningWithChildrenAndCampaigns: 'Varování: Stránka a její potomkové bude nezveřejněna a automaticky odstraněna z její asociací {NumCampaigns} před odesláním do archívu.\n\nSkutečně to chcete vykonat?'
+    CANT_REORGANISE: 'Nemáte oprávnění měnit stránky nejvyšší úrovně. Vaše změna nebyla uložena.'
+    CLEAR_FILTER: Vyčistit
     Cancel: Storno
     ChoosePageParentMode: 'Vyberte, kde vytvořit tuto stránku'
     ChoosePageType: 'Vyberte typ stránky'
     Create: Vytvořit
     DUPLICATED: 'Duplikováno ''{title}'' úspěšně'
     DUPLICATEDWITHCHILDREN: 'Duplikováno ''{title}'' a potomci úspěšně'
+    EMAIL: E-mail
+    ListFiltered: 'Zobrazení výsledků vyhledávání.'
     NEWPAGE: 'Nová {pagetype}'
     PAGENOTEXISTS: 'Tato stránka neexistuje'
+    PAGES: 'Stav stránky'
     PAGETYPEANYOPT: Jakékoliv
+    PAGETYPEOPT: 'Typ stránky'
+    PLEASESAVE: 'Uložte stránku, prosím. Tato stránka nemůže být aktualizována, protože ještě nebyla uložena.'
     PUBALLCONFIRM: 'Prosím zveřejněte veškeré stránky z úschovny'
     PUBALLFUN: 'Funkce "Publikovat vše"'
+    PUBALLFUN2: 'Stisknutí tohoto tlačítka se rovná zveřejnění každé jednotlivé stránky. Toto tlačítko má být použito, pokud se vyskytly rozsáhlé úpravy obsahu, jako např. když poprvé sestavujete stránky.'
     PUBLISHED: 'Publikováno ''{title}'' úspěšně'
     PUBPAGES: 'Hotovo: Zveřejněno {count} stránek'
     PageAdded: 'Stránka vytvořena úspěšně'
     REMOVEDPAGE: 'Odstraněno ''{title}'' ze zveřejněného webu'
     REMOVEDPAGEFROMDRAFT: 'Odstraněno ''%s'' z konceptu webu'
+    REORGANISATIONSUCCESSFUL: 'Strom webu reorganizován úspěšně.'
+    RESTORE: 'Obnovit koncept'
     RESTORED: 'Obnoveno ''{title}'' úspěšně'
     RESTORE_DESC: 'Obnovit archivovanou verzi na koncept'
     RESTORE_TO_ROOT: 'Obnovit koncept do nejvyšší úrovně'
     RESTORE_TO_ROOT_DESC: 'Obnovit archivovanou verzi na koncept stránky nejvyšší úrovně'
+    ROLLBACK: 'Vrátit zpět na tuto verzi'
     ROLLEDBACKPUBv2: 'Vráceno zpět na zveřejněnou verzi.'
     ROLLEDBACKVERSIONv2: 'Vráceno zpět na verzi #%d.'
     SAVED: 'Uloženo ''{title}'' úspěšně'
     SAVEDRAFT: 'Uložit koncept'
+    SHOW_AS_LIST: 'ukázat jako seznam'
+    TOO_MANY_PAGES: 'Příliš mnoho stránek'
+    TabContent: Obsah
+    TabHistory: Historie
+    TabSettings: Nastavení
+    TreeFiltered: 'Zobrazení výsledků vyhledávání.'
+    TreeFilteredClear: Vyčistit
+    UNPUBLISH_AND_ARCHIVE: 'Nezveřejnit a archivovat'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Přidat stránku'
     ParentMode_child: 'Pod jinou stránku'
     ParentMode_top: 'Nejvyšší úroveň'
+    Title: 'Přidat stránku'
   SilverStripe\CMS\Controllers\CMSPageEditController:
     MENUTITLE: 'Upravit stránku'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    AUTHOR: Autor
     COMPAREMODE: 'Porovnávací mód (vyberte dva)'
     MENUTITLE: Historie
+    MULTISELECT: 'Dávkové akce'
+    NOTPUBLISHED: Nezveřejněno
+    PREVIEW: 'Náhled webu'
+    PUBLISHER: Vydavatel
     REVERTTOTHISVERSION: 'Zpět na tuto verzi'
     SHOWUNPUBLISHED: 'Zobrazit nezveřejněné verze'
+    UNKNOWN: Neznámé
     VIEW: zobrazit
     VIEWINGLATEST: 'Právě se zobrazuje poslední verze.'
     VIEWINGVERSION: 'Právě prohlížíte verzi číslo {version}.'
+    WHEN: Když
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Upravit stránku'
   SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: Filtr
+    ListView: 'Pohled seznam'
     MENUTITLE: Stránky
+    TreeView: 'Pohled strom'
   SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Zveřejněné stránky'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
+    Title: 'Upravené stránky'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
+    Title: 'Všechny stránky, včetně archivovaných'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Všechny stránky'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Archivované stránky'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Konceptové stránky'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Živé, ale odstraněno z konceptu'
   SilverStripe\CMS\Controllers\ContentController:
@@ -59,20 +116,65 @@ cs:
     CMS: CMS
     DRAFT: Koncept
     DRAFTSITE: 'Koncept webu'
+    Email: E-mail
     INSTALL_SUCCESS: 'Instalace úspěšná!'
+    InstallFilesDeleted: 'Instalační soubory byly odstraněny úspěšně.'
+    InstallSecurityWarning: 'Z bezpečnostních důvodů byste měli nyní odstranit instalační soubory, pokud se nechystáte přeinstalovat později (<em>vyžaduje admin přihlášení, viz výše </em>). Webový server nyní potřebuje pouze přístup pro zápis do složky "assets", můžete odstranit práva zápisu ze všech ostatních složek. <a href="{link}" style="text-align: center;"> Klikněte sem pro smazání instalačních souborů.</a>'
+    InstallSuccessCongratulations: 'SilverStripe byl nainstalován úspěšně!'
     LOGGEDINAS: 'Přihlášen jako'
     LOGIN: Přihlášení
-    LOGOUT: 'Odhlášení'
+    LOGOUT: Odhlášení
     NOTEWONTBESHOWN: 'Poznámka: tato zpráva nebude zobrazena vašim návštěvníkům'
     NOTLOGGEDIN: 'Není přihlášen'
     PUBLISHED: Zveřejněno
     PUBLISHEDSITE: 'Zveřejnen web'
+    Password: Heslo
+    PostInstallTutorialIntro: 'Tento web je zjednodušená verze SilverStripe 3. webu. Pro rozšíření, podívejte se na {link} prosím.'
+    StartEditing: 'Můžete začít editovat váš obsah otevřením <a href="{link}">CMS</a>.'
+    UnableDeleteInstall: 'Nelze smazat instalační soubory. Prosím, odstraňte soubory níže ručně'
     VIEWPAGEIN: 'Zobrazit stránku v:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archivováno
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Cancel: Storno
     EMPTY: 'Zadejte prosím URL segment nebo klikněte zrušit'
+    Edit: Editovat
     HelpChars: 'Zvláštní znaky jsou automaticky zkonvertovány nebo odstraněny'
+    OK: OK
+  SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'Chybový kód'
+    CODE_400: '400 - Špatný požadavek'
+    CODE_401: '401 - Neautorizováno'
+    CODE_403: '403 - Zakázáno'
+    CODE_404: '404 - Nenalezeno'
+    CODE_405: '405 - Metoda není povolena'
+    CODE_406: '406 - Není přijatelné'
+    CODE_407: '407 - Požadována proxy autentizace'
+    CODE_408: '408 - Vypršel čas požadavku'
+    CODE_409: '409 - Konflikt'
+    CODE_410: '410 - Uplynulý'
+    CODE_411: '411 - Požadována délka'
+    CODE_412: '412 - Nezdařená podmínka'
+    CODE_413: '413 - Žádaná entita je moc velká'
+    CODE_414: '414 - Vyžádání URI trvá moc dlouho'
+    CODE_415: '415 - Nepodporovaný typ média'
+    CODE_416: '416 - Vyžádaný rozsah není dostatečný'
+    CODE_417: '417 - Očekávání se nezdařilo'
+    CODE_422: '422 - Nezpracovatelná entita'
+    CODE_429: '429 - Příliš mnoho požadavků'
+    CODE_500: '500 - Interní chyba serveru'
+    CODE_501: '501 - Není implementováno'
+    CODE_502: '502 - Špatná Gateway'
+    CODE_503: '503 - Nedostupná služba'
+    CODE_504: '504 - Vypršel čas Gateway'
+    CODE_505: '505 - HTTP verze není podporována'
+    DEFAULTERRORPAGECONTENT: '<p>Omlouváme se, zdá se, že jste se pokoušeli o přístup na stránku, která neexistuje.</p><p>Zkontrolujte prosím pravopis požadované URL adresy, ke které jste se pokoušeli přistoupit a zkuste to znovu.</p>'
+    DEFAULTERRORPAGETITLE: 'Stránka nenelazena'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Promiňte, nastal problém s obsloužením vaší žádosti.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Chyba serveru'
+    DESCRIPTION: 'Vlastní obsah pro různé případy chyb (např. "Stránka nenalezena")'
+    PLURALNAME: 'Chybové stránky'
+    SINGULARNAME: 'Chybová stránka'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Přesměruje na interní stránku nebo na externí URL'
     HASBEENSETUP: 'Přesměrovací stránka byla nastavena bez cíle.'
@@ -96,6 +198,7 @@ cs:
     ARCHIVEDPAGESHORT: Archivováno
     BUTTONCANCELDRAFT: 'Zrušit změny v konceptu'
     BUTTONCANCELDRAFTDESC: 'Odstranit koncept a vrátit se k aktuálně zveřejněné stránce'
+    BUTTONDELETEDESC: 'Smazáno z konceptu/webu a odesláno do archivu'
     BUTTONPUBLISHED: Zveřejněno
     BUTTONSAVED: Uloženo
     BUTTONSAVEPUBLISH: 'Uložit & zveřejnit'
@@ -103,10 +206,12 @@ cs:
     BUTTONUNPUBLISHDESC: 'Odstranit tuto stránku z publikovaných na webu'
     Comments: Komentáře
     Content: Obsah
+    DEFAULTABOUTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky. <br /> </p>'
     DEFAULTABOUTTITLE: 'O nás'
+    DEFAULTCONTACTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky. <br /> </p>'
     DEFAULTCONTACTTITLE: 'Kontaktujte nás'
     DEFAULTHOMECONTENT: '<p>Vítejte v SilverStripe! Toto je základní domácí stránka. Můžete ji upravit otevřením <a href="admin/">CMS</a>.</p><p>Můžete také nyní vstoupit  do <a href="http://docs.silverstripe.org">dokumentace vývojáře</a>, nebo se přiučit na <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lekcích</a>.</p>'
-    DEFAULTHOMETITLE: Úvodní strana
+    DEFAULTHOMETITLE: 'Úvodní strana'
     DEPENDENT_NOTE: 'Následující stránky závisí na této stránce. Tyto obsahují virtuální stránky, přesměrovací stránky a stránky s odkazy obsahu.'
     DESCRIPTION: 'Obecný obsah stránky'
     DependtPageColumnLinkType: 'Typ odkazu'
@@ -122,12 +227,14 @@ cs:
     HASBROKENLINKS: 'Tato stránka obsahuje neplatné odkazy.'
     HTMLEDITORTITLE: Obsah
     INHERIT: 'Zděděno po rodičovské stránce'
+    LASTPUBLISHED: 'Posledně zveřejněno'
+    LASTSAVED: 'Posledně uloženo'
     LASTUPDATED: 'Poslední změna'
     LINKCHANGENOTE: 'Změnění tohoto odkazu stránky, bude mít také vliv na odkazy podřízených stránek.'
     LINKSALREADYUNIQUE: ' {url} je vždy unikátní'
     LINKSCHANGEDTO: ' změněno {url1} -> {url2}'
     MENUTITLE: 'Navigační popisek'
-    METADESC: 'Popis'
+    METADESC: Popis
     METADESCHELP: 'Krátký popis/perex, který při vyplnění mohou vyhledávače využít ve výsledcích vyhledávání. I když tento popisek nemá přímý vliv na hodnocení stránky, tak může zvýšit míru prokliku (CTR).'
     METAEXTRA: 'Vlastní meta tagy'
     METAEXTRAHELP: 'HTML tagy pro další meta informace. Například &lt;meta name="vlastnínazev" content="vlastní obsah zde" /&gt;'
@@ -135,7 +242,10 @@ cs:
     MODIFIEDONDRAFTSHORT: Upraveno
     MetadataToggle: Metadata
     MoreOptions: 'Více voleb'
+    NOTPUBLISHED: Nezveřejněno
     OBSOLETECLASS: 'Tato stránka je zastaralého typu {type}. Uložení zpúsobí zrušení svého typu a múžete tak ztratit data'
+    ONLIVEONLYSHORT: 'Pouze na živé'
+    ONLIVEONLYSHORTHELP: 'Stránka je zveřejněna, ale byla odstraněna z konceptu'
     PAGELOCATION: 'Umístění stránky'
     PAGETITLE: 'Název stránky'
     PAGETYPE: 'Typ stránky'
@@ -145,6 +255,7 @@ cs:
     PARENTTYPE_SUBPAGE: 'Pod-stránka pod nadřazenou stránkou (vyberte dole)'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Správa přístupových práv pro obsah stránek'
     PERMISSION_GRANTACCESS_HELP: 'Povolit nastavení omezení na specifické stránky v sekci "Stránky".'
+    PLURALNAME: Stránky
     PageTypNotAllowedOnRoot: 'Stránka typu "{type}" není povolena na nejvyšší úrovni'
     PageTypeNotAllowed: 'Stránka typu "{type}" není povolena jako potomek této nadřízené stránky'
     REMOVE_INSTALL_WARNING: 'Upozornění: Měli by jste odstranit soubor install.php z této instalace SilverStripe z bezpečnostních důvodů.'
@@ -152,8 +263,9 @@ cs:
     REORGANISE_HELP: 'Reorganizace stránek webu pomocí  "táhni a pusť".'
     SHOWINMENUS: 'Zobrazovat v menu?'
     SHOWINSEARCH: 'Zobrazovat ve vyhledávání?'
+    SINGULARNAME: Stránka
     TABBEHAVIOUR: Chování
-    TABCONTENT: 'Obsah'
+    TABCONTENT: Obsah
     TABDEPENDENT: 'Závislé stránky'
     TOPLEVEL: 'Obsah Webu (Nejvyšší úroveň)'
     URLSegment: 'Segment URL'
@@ -171,6 +283,12 @@ cs:
     many_many_BackLinkTracking: 'Stopování zpětných odkazů'
     many_many_ImageTracking: 'Stopování obrázku'
     many_many_LinkTracking: 'Stopování odkazu'
+  SilverStripe\CMS\Model\SiteTreeFileExtension:
+    BACKLINKCOUNT: 'Použito na:'
+    PAGES: stránka(y)
+    TITLE_INDEX: '#'
+    TITLE_TYPE: Typ
+    TITLE_USED_ON: 'Použito na'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Odkazovaná stránka'
     DESCRIPTION: 'Zobrazí obsah jiné stránky'
@@ -180,6 +298,10 @@ cs:
     PLURALNAME: 'Virtuální stránky'
     PageTypNotAllowedOnRoot: 'Původní stránka typu "{type}" není povolena na nejvyšší úrovni pro tuto virtuální stránku'
     SINGULARNAME: 'Virtuální stránka'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 'Stránky s porušenými soubory'
+    BrokenLinksGroupTitle: 'Výkazy porušených odkazů'
+    ParameterLiveCheckbox: 'Zkontrolovat web'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Jakékoliv
     BROKENLINKS: 'Výkaz porušených odkazů'
@@ -202,9 +324,24 @@ cs:
     ReasonDropdownVPBROKENLINK: 'Virtuální stránka ukazuje na neexistující stránku'
     RedirectorNonExistent: 'přesměrovací stránka ukazuje na neexistující stránku'
     VirtualPageNonExistent: 'virtuální stránka ukazuje na neexistující stránku'
+  SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
+    BROKENREDIRECTORPAGES: 'PřesměrovacíStránky ukazují na smazané stránky'
+    BrokenLinksGroupTitle: 'Výkazy porušených odkazů'
+    ParameterLiveCheckbox: 'Zkontrolovat web'
+  SilverStripe\CMS\Reports\BrokenVirtualPagesReport:
+    BROKENVIRTUALPAGES: 'ViruálníStránky ukazuje na smazané stránky'
+    BrokenLinksGroupTitle: 'Výkazy porušených odkazů'
+    ParameterLiveCheckbox: 'Zkontrolovat web'
+  SilverStripe\CMS\Reports\EmptyPagesReport:
+    ContentGroupTitle: 'Výkazy obsahu'
+    EMPTYPAGES: 'Stránky bez obsahu'
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    ContentGroupTitle: 'Výkazy obsahu'
+    LAST2WEEKS: 'Stránky upravené během posledních 2 týdnů'
   SilverStripe\CMS\Search\SearchForm:
     FILTERDATEFROM: Od
     FILTERDATETO: Do
+    FILTERLABELTEXT: Hledat
     GO: Hledat
     PAGEFILTERDATEHEADING: 'Poslední změna'
     SEARCH: Hledat
