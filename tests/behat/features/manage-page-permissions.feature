@@ -29,7 +29,7 @@ Feature: Manage global page permissions
     Then I should see "Welcome"
 
   Scenario: I can limit global view permissions to certain groups
-    Given I select "Only these people (choose from list)" from "Who can view pages on this site?" input group
+    Given I select "Only these groups (choose from list)" from "Who can view pages on this site?" input group
     And I select "AUTHOR group" from "Viewer Groups" with javascript
     And I press the "Save" button
     When I am not logged in
@@ -50,7 +50,7 @@ Feature: Manage global page permissions
     And pages should be editable by "ADMIN"
 
   Scenario: I can limit global edit permissions to certain groups
-    Given I select "Only these people (choose from list)" from "Who can edit pages on this site?" input group
+    Given I select "Only these groups (choose from list)" from "Who can edit pages on this site?" input group
     And I select "ADMIN group" from "Editor Groups" with javascript
     And I press the "Save" button
     Then pages should not be editable by "AUTHOR"

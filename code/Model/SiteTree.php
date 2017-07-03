@@ -2004,7 +2004,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             InheritedPermissions::LOGGED_IN_USERS => _t(__CLASS__.'.ACCESSLOGGEDIN', "Logged-in users"),
             InheritedPermissions::ONLY_THESE_USERS => _t(
                 __CLASS__.'.ACCESSONLYTHESE',
-                "Only these people (choose from list)"
+                "Only these groups (choose from list)"
             ),
         ];
         $viewersOptionsField->setSource($viewersOptionsSource);
