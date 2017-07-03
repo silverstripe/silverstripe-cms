@@ -4,7 +4,10 @@
   "description": "The SilverStripe Content Management System",
   "homepage": "http://silverstripe.org",
   "license": "BSD-3-Clause",
-  "keywords": ["silverstripe", "cms"],
+  "keywords": [
+    "silverstripe",
+    "cms"
+  ],
   "authors": [
     {
       "name": "SilverStripe",
@@ -32,7 +35,7 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "4.0.x-dev"
+      "dev-master": "4.1.x-dev"
     }
   },
   "scripts": {

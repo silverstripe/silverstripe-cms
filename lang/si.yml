@@ -4,6 +4,20 @@ si:
     PUBALLCONFIRM: 'අඩවියේ ඇති සියලු පිටු, වේදිකාවට පිටපත් කර ප්රසිද්ධ කරන්න'
     PUBALLFUN: 'සියලු ක්රම වේද ප්රසිද්ධ කරන ලදී'
     REMOVEDPAGEFROMDRAFT: 'කටු අඩවියෙන් ''%s'' මකන ලදී'
+  SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'වැරදි කේතය'
+    CODE_400: '400 - දුර්වල ඉල්ළීමක්'
+    CODE_401: '401 - බල රහිත'
+    CODE_403: '403 - තහනම්'
+    CODE_404: '404 - නොලැබුණි'
+    CODE_405: '405 - ඉඩ නොදෙන ක්රමයකි'
+    CODE_406: '406 - භාරගත නොහැක'
+    CODE_407: '407 - Proxy යෙහි බලය අවශ්ය වේ'
+    CODE_408: '408 - ඉල්ලීමේ කාලය අවසන්'
+    CODE_409: '409 - ගැටුමකි'
+    CODE_410: '410 - නැති විය'
+    DEFAULTERRORPAGECONTENT: '<p>කණගාටුයි,ඔබ නොමැති පිටුවකට යාමට උත්සාහ කරයි. </p><p>ඔබට යාමට අවශ්ය URL එකෙහි අක්ෂර පරීක්ෂා කර නැවත උත්සාහ කරන්න.</p>'
+    DEFAULTERRORPAGETITLE: 'පිටුව නොලැබුනි'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'යොමු කිරීමේ පිටුව කිසිවකට යොමු නොකරයි'
     HEADER: 'මෙම පිටුව පරිබෝඡකයන් වෙනත් යොමු කරයි'
@@ -13,22 +27,22 @@ si:
     REDIRECTTOPAGE: 'ඔබේ අඩවියේ පිටුවක්'
     YOURPAGE: 'ඔබේ අඩවියේ පිටුවක්'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: සියලු දෙනා
+    ACCESSANYONE: 'සියලු දෙනා'
     ACCESSHEADER: 'මෙම පිටුව බැලිය හැකි අය'
     ACCESSLOGGEDIN: 'ප්රවිෂ්ටව සිටින පරිශීලකයින්'
     ACCESSONLYTHESE: 'මේ අය පමනක් (ලයිස්තුවෙන් තෝරන්න)'
     BUTTONCANCELDRAFT: 'කටු වෙනස් කිරීම් අවලංගු කරන්න'
     BUTTONCANCELDRAFTDESC: 'කටු සටහන මකා, දැනට ප්රසිද්ධ පිටුවට ඵකතු කරන්න'
-    BUTTONUNPUBLISH: අප්රසිද්ධ කරන්න
+    BUTTONUNPUBLISH: 'අප්රසිද්ධ කරන්න'
     BUTTONUNPUBLISHDESC: 'මෙම පිටුව ප්රසිද්ධ කල අඩවියෙන් ගලවන්න'
-    Content: අන්තර්ගතය
+    Content: 'අන්තර්ගතය'
     DEFAULTABOUTTITLE: 'අපි ගැන'
     DEFAULTCONTACTTITLE: 'අප අමතන්න'
     EDITANYONE: 'CMS ඵකට ඇතුල් විය හැකි සියල්ලන්ටම'
     EDITHEADER: 'CMS ඵක සංස්කරනය කල හැක්කේ කාහටද?'
     EDITONLYTHESE: 'මෙම අයට පමනක් (ලැයිස්තුවෙන් තෝරන්න)'
     HASBROKENLINKS: 'මෙම පිටුවට කැඩුනු බැදීම් ඇත'
-    HTMLEDITORTITLE: අන්තර්ගතය
+    HTMLEDITORTITLE: 'අන්තර්ගතය'
     MENUTITLE: 'සංක්රමන ලේබලය'
     METADESC: 'අර්තකතනය'
     METAEXTRA: 'සැකසූ මෙටා ටැග්'

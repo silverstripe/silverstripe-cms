@@ -48,7 +48,7 @@ id:
     INSTALL_SUCCESS: 'Penginstalan berhasil!'
     LOGGEDINAS: 'Masuk sebagai'
     LOGIN: Masuk
-    LOGOUT: 'Keluar'
+    LOGOUT: Keluar
     NOTEWONTBESHOWN: 'Catatan: pesan ini tidak akan ditampilkan kepada pengunjung'
     NOTLOGGEDIN: 'Tidak masuk'
     PUBLISHED: Terbit
@@ -59,6 +59,35 @@ id:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Mohon isikan URL atau klik Batal'
     HelpChars: 'Karakter khusus akan dikonversi secara otomatis atau dihapus.'
+  SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'Kode yang salah'
+    CODE_400: '400 - Permintaan buruk'
+    CODE_401: '401 - Tidak ada otorisasi'
+    CODE_404: '404 - Tidak Ditemukan'
+    CODE_405: '405 - Metode Tidak Diperbolehkan'
+    CODE_406: '406 - Tidak Dapat Diterima'
+    CODE_407: '407 - Pembuktian diperlukan'
+    CODE_408: '408 - Permintaan Timeout'
+    CODE_409: '409 - Konflik'
+    CODE_410: '410 - Hilang'
+    CODE_411: '411 - Kepanjangan Diperlukan'
+    CODE_412: '412 - Prakondisi Gagal'
+    CODE_413: '413 - Permintaan Entity Terlalu Besar'
+    CODE_414: '414 - Permintaan-URI Terlalu Panjang'
+    CODE_416: '416 - Lingkup Permintaan Tidak Dapat Dipuaskan'
+    CODE_417: '417 - Expectation Gagal'
+    CODE_422: '422 - Entitas Tidak Terproses'
+    CODE_429: '429 - Terlalu Banyak Permintaan'
+    CODE_500: '500 - Server Internal Error'
+    CODE_501: '501 - Tidak Diimplementasi'
+    CODE_502: '502 - Gateway Buruk'
+    CODE_503: '503 - Servis Tidak Tersedia'
+    CODE_504: '504 - Masa Tunggu Terlewat'
+    CODE_505: '505 - Versi HTTP Tidak Didukung'
+    DEFAULTERRORPAGECONTENT: '<p>Maaf, sepertinya anda berusaha mengakses laman yang tidak ada.</p><p>Mohon periksa ejaan URL yang ingin anda akses dan coba lagi.</p>'
+    DEFAULTERRORPAGETITLE: 'Laman tidak ditemukan'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Maaf, ada masalah dalam penanganan permintaan Anda.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Server mengalami kesalahan'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Sebuah laman pengarah telah dibuat tanpa arah yang dituju.'
     HEADER: 'Laman ini akan mengarahkan pengguna ke laman lain'
@@ -68,7 +97,7 @@ id:
     REDIRECTTOPAGE: 'Laman pada situs Anda'
     YOURPAGE: 'Laman pada situs Anda'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: Siapa saja
+    ACCESSANYONE: 'Siapa saja'
     ACCESSHEADER: 'Siapa yang dapat melihat laman ini?'
     ACCESSLOGGEDIN: 'User yang masuk'
     ACCESSONLYTHESE: 'Hanya orang ini saja (pilih dari daftar)'
@@ -104,7 +133,7 @@ id:
     LASTUPDATED: 'Terakhir diperbarui'
     LINKCHANGENOTE: 'Mengganti tautan laman ini akan mempengaruhi semua tautan pada laman terkait.'
     MENUTITLE: 'Label navigasi'
-    METADESC: 'Deskripsi'
+    METADESC: Deskripsi
     METADESCHELP: 'Mesin pencari menggunakan konten ini untuk menampilkan hasil pencarian (meskipun tidak mempengaruhi pemeringkatan situs).'
     METAEXTRA: 'Penanda Meta'
     METAEXTRAHELP: 'Penanda HTML untuk informasi meta tambahan. Contohnya &lt;meta name="namaMeta" content="konten Anda di sini" /&gt;'

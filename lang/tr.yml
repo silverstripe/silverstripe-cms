@@ -16,6 +16,33 @@ tr:
     INSTALL_SUCCESS: 'Kurulum Başarılı!'
     LOGOUT: 'Çıkış Yap'
     NOTEWONTBESHOWN: 'Not: Bu mesaj ziyaretçilerinize gösterilmeyecektir.'
+  SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'Hata kodu'
+    CODE_400: '400 - Hatalı İstek'
+    CODE_401: '401 - Erişim Engellenmiş'
+    CODE_403: '403 - Yasak'
+    CODE_404: '404 - Bulunamadı'
+    CODE_405: '405 - Bilinmeyen Metod'
+    CODE_406: '406 - İstemciye Uygun Cevap Bulunamadı'
+    CODE_407: '407 - Yetkili Sunucu Erişim Hatası'
+    CODE_408: '408 - İstek Zaman Aşımı Hatası'
+    CODE_409: '409 - Çakışma'
+    CODE_410: '410 - En Saçma HTTP Hatası'
+    CODE_411: '411 - Uzunluk Belirtilmemiş'
+    CODE_412: '412 - Önşart Hatası'
+    CODE_413: '413 - İstek Çok Büyük'
+    CODE_414: '414 - İstek-URI Çok Uzun'
+    CODE_415: '415 - Desteklenmeyen Medya Tipi'
+    CODE_416: '416 - İstek Aralığı Tatmin Edici Değil'
+    CODE_417: '417 - Beklenti Hatası'
+    CODE_500: '500 - Dahili Sunucu Hatası'
+    CODE_501: '501 - Uygulanmamış'
+    CODE_502: '502 - Hatalı Arayapı'
+    CODE_503: '503 - Servis Mevcut Değil'
+    CODE_504: '504 - Arayapı Zaman Aşımı'
+    CODE_505: '505 - HTTP Versiyonu Desteklenmiyor'
+    DEFAULTERRORPAGECONTENT: '<p>Varolmayan bir sayfaya ulaşmaya çalışıyorsunuz.</p><p>Lütfen ulaşmak istediğiniz URL''i kontrol edip tekrar deneyiniz.</p>'
+    DEFAULTERRORPAGETITLE: 'Sayfa bulunamadı'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Yönlendirilecek yeri olmayan bir yönlendirme sayfası ayarlandı.'
     HEADER: 'Bu sayfa, kullanıcıları başka bir sayfaya yönlendirir'
@@ -32,12 +59,12 @@ tr:
     ADDEDTODRAFTSHORT: Taslak
     BUTTONCANCELDRAFT: 'Taslak değikliklerini iptal et'
     BUTTONCANCELDRAFTDESC: 'Taslağı sil ve şu an yayında olan sayfaya geri döndür'
-    BUTTONUNPUBLISH: Yayından kaldır
+    BUTTONUNPUBLISH: 'Yayından kaldır'
     BUTTONUNPUBLISHDESC: 'Bu sayfayı yayından kaldır'
     Comments: Yorumlar
     Content: İçerik
-    DEFAULTABOUTTITLE: 'Hakkımızda'
-    DEFAULTCONTACTTITLE: 'İletişim'
+    DEFAULTABOUTTITLE: Hakkımızda
+    DEFAULTCONTACTTITLE: İletişim
     DEFAULTHOMETITLE: Anasayfa
     DependtPageColumnLinkType: 'Link tipi'
     EDITANYONE: 'CMS''e giriş yapabilen herkes'
@@ -49,7 +76,7 @@ tr:
     INHERIT: 'Üst sayfadan kalan'
     LASTUPDATED: 'Son Güncellenen'
     MENUTITLE: 'Navigasyon etiketi'
-    METADESC: 'Tanım'
+    METADESC: Tanım
     METAEXTRA: 'Kişisel Meta Etiketleri'
     MODIFIEDONDRAFTSHORT: Değiştirilmiş
     PAGETITLE: 'Sayfa ismi'
@@ -63,7 +90,7 @@ tr:
     SHOWINMENUS: 'Menülerde gösterilsin mi?'
     SHOWINSEARCH: 'Aramalarda gösterilsin mi?'
     TABBEHAVIOUR: Davranış
-    TABCONTENT: 'İçerik'
+    TABCONTENT: İçerik
     TOPLEVEL: 'Site İçeriği (Üst Seviye)'
     URLSegment: 'URL Kısmı'
     Viewers: 'Görüntüleyici Grupları'

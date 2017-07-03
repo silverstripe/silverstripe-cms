@@ -1,8 +1,8 @@
 el:
   SilverStripe\CMS\Controllers\CMSMain:
-    Cancel: Άκυρο
+    Cancel: 'Άκυρο'
     ChoosePageType: 'Επιλέξτε τύπο σελίδας'
-    Create: Δημιουργία
+    Create: 'Δημιουργία'
     NEWPAGE: 'Νέο {pagetype}'
     PAGENOTEXISTS: 'Αυτή η σελίδα δεν υπάρχει'
     PAGETYPEANYOPT: Οποιοδήποτε
@@ -24,14 +24,19 @@ el:
     INSTALL_SUCCESS: 'Η Εγκατάσταση ήταν επιτυχής!'
     LOGGEDINAS: 'Συνδεδεμένος ως'
     LOGIN: Σύνδεση
-    LOGOUT: 'Αποσύνδεση'
+    LOGOUT: Αποσύνδεση
     NOTLOGGEDIN: 'Δεν έχετε συνδεθεί'
-    PUBLISHED: Δημοσιευμένο
+    PUBLISHED: 'Δημοσιευμένο'
     VIEWPAGEIN: 'Προβολή Σελίδας σε:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Αρχειοθετημένο
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Παρακαλώ εισάγεται ένα τμήμα διεύθυνσης URL ή πατήστε άκυρο'
+  SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'Κωδικός σφάλματος'
+    CODE_404: '404 - Δεν βρέθηκε'
+    DEFAULTERRORPAGETITLE: 'Η σελίδα δεν βρέθηκε'
+    DEFAULTSERVERERRORPAGETITLE: 'Σφάλμα διακομιστή'
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Αυτή η σελίδα θα ανακατευθύνει τους χρήστες σε μια άλλη σελίδα'
     REDIRECTTO: 'Ανακατεύθυνση σε'
@@ -40,24 +45,24 @@ el:
     ACCESSHEADER: 'Ποιος μπορεί να δεί αυτή τη σελίδα;'
     ACCESSLOGGEDIN: 'Συνδεδεμένοι χρήστες'
     ADDEDTODRAFTHELP: 'Η σελίδα δεν έχει δημοσιευθεί ακόμη'
-    BUTTONPUBLISHED: Δημοσιευμένο
+    BUTTONPUBLISHED: 'Δημοσιευμένο'
     BUTTONSAVED: Αποθηκεύτηκε
     BUTTONSAVEPUBLISH: 'Αποθήκευση & δημοσίευση'
     BUTTONUNPUBLISHDESC: 'Αφαίρεση αυτής της σελίδας απο τις δημοσιευμένες'
     Comments: Σχόλια
-    Content: Περιεχόμενο
+    Content: 'Περιεχόμενο'
     DEFAULTABOUTTITLE: 'Ποιοί είμαστε'
-    DEFAULTCONTACTTITLE: 'Επικοινωνία'
+    DEFAULTCONTACTTITLE: Επικοινωνία
     DEFAULTHOMETITLE: Αρχική
     DependtPageColumnLinkType: 'Τύπος συνδέσμου'
-    DependtPageColumnURL: Διεύθυνση URL
+    DependtPageColumnURL: 'Διεύθυνση URL'
     EDITHEADER: 'Ποιος μπορεί να επεξεργαστεί αυτή τη σελίδα;'
     EDITONLYTHESE: 'Μόνο αυτοί οι χρήστες (επιλέξτε από τη λίστα)'
     EDITORGROUPS: 'Ομάδες Συντακτών'
     Editors: 'Ομάδες Συντακτών'
     GroupPlaceholder: 'Κάντε κλικ για επιλογή ομάδας'
     HASBROKENLINKS: 'Αυτή η σελίδα έχει ανενεργούς συνδέσμους '
-    HTMLEDITORTITLE: Περιεχόμενο
+    HTMLEDITORTITLE: 'Περιεχόμενο'
     LASTUPDATED: 'Τελευταία Ενημέρωση'
     MENUTITLE: 'Επίπεδο πλοίγησης'
     METADESC: 'Μετα-Περιγραφή'
@@ -73,7 +78,7 @@ el:
     REORGANISE_DESCRIPTION: 'Αλλαγή δομής του ιστοτόπου '
     SHOWINMENUS: 'Να φαίνεται στα μενού;'
     SHOWINSEARCH: 'Να φαίνεται στην αναζήτηση'
-    TABBEHAVIOUR: Συμπεριφορά
+    TABBEHAVIOUR: 'Συμπεριφορά'
     TABCONTENT: 'Κυρίως Περιεχόμενο'
     TABDEPENDENT: 'Εξαρτώμενες σελίδες '
     URLSegment: 'Τμήμα διεύθυνσης URL'
@@ -97,7 +102,7 @@ el:
     HasBrokenLink: 'έχει ανενεργό σύνδεσμο '
     HasBrokenLinkAndFile: 'έχει ανενεργό σύνδεσμο και αρχείο'
     HoverTitleEditPage: 'Επεξεργασία σελίδας'
-    PageName: 'Σελίδα'
+    PageName: Σελίδα
     ReasonDropdown: 'Πρόβλημα για έλεγχο'
     ReasonDropdownBROKENFILE: 'Ανενεργό αρχείο '
     ReasonDropdownBROKENLINK: 'Ανενεργός σύνδεσμος '

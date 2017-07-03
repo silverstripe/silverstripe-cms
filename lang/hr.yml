@@ -19,7 +19,7 @@ hr:
     NEWPAGE: 'Novi {pagetype}'
     PAGENOTEXISTS: 'Stranica ne postoji'
     PAGES: 'Status stranice'
-    PAGETYPEANYOPT: Bilo koji
+    PAGETYPEANYOPT: 'Bilo koji'
     PAGETYPEOPT: 'Tip stranice'
     PUBALLCONFIRM: 'Molim objavi svaku stranicu, kopirajući sadržaj'
     PUBALLFUN: '"Objavi sve"'
@@ -76,11 +76,11 @@ hr:
     ARCHIVEDSITEFROM: 'Arhivirana stranica iz'
     CMS: CMS
     DRAFT: Predložak
-    DRAFTSITE: 'Predložak'
+    DRAFTSITE: Predložak
     INSTALL_SUCCESS: 'Instalacija uspješna!'
     LOGGEDINAS: 'Prijavi se kao'
     LOGIN: Prijavi
-    LOGOUT: 'Odjava'
+    LOGOUT: Odjava
     NOTEWONTBESHOWN: 'Napomena: ova poruka neće biti prikazana vašim posjetiteljima'
     NOTLOGGEDIN: 'Niste prijavljeni'
     PUBLISHED: Objavljeno
@@ -91,6 +91,15 @@ hr:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Molimo unesite dio URLa ili kliknite odustani'
     HelpChars: 'Posebni znakovi se automatski pretvaraju ili uklanjaju.'
+  SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'Kod pogreške'
+    DEFAULTERRORPAGECONTENT: '<p>Nažalost, čini se kako pokušavate pristupiti stranici koja ne postoji.</p><p>Molimo provjerite jeste li upisali točan URL i pokušajte ponovo.</p>'
+    DEFAULTERRORPAGETITLE: 'Stranica nije pronađena'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Nažalost, dogodio se problem prilikom rukovanja vašim zahtjevom.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Serverska greška'
+    DESCRIPTION: 'Prilagođeni sadržaj za različite slučajeve grešaka (npr. "Stranica nije pronađena")'
+    PLURALNAME: 'Stranice greške'
+    SINGULARNAME: 'Stranica greške'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Preusmjerava na internu stranicu ili vanjski URL'
     HASBEENSETUP: 'Stranica za preusjeravanje nema postavljenog preusmjeravanja'
@@ -123,7 +132,7 @@ hr:
     Comments: Komentari
     Content: Sadržaj
     DEFAULTABOUTTITLE: 'O nama'
-    DEFAULTCONTACTTITLE: 'Kontakt'
+    DEFAULTCONTACTTITLE: Kontakt
     DEFAULTHOMECONTENT: '<p>Dobrodošli na SilverStripe! Ovo je zadana početna stranica. Možete je urediti otvarajući <a href="admin/"> CMS</a>.</p><p>Možete pristupiti  <a href="http://docs.silverstripe.org">razvojnoj dokumentaciji</a>, ili početi <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lekcije</a>.</p>'
     DEFAULTHOMETITLE: Početna
     DEPENDENT_NOTE: 'Sljedeće stranice zavise o ovoj stranici. To uključuje virtualne stranice, preusmjeravajuće stranice i stranice s sadržajnim linkovima.'
@@ -159,7 +168,7 @@ hr:
     PAGETYPE: 'Vrsta stranice'
     PARENTID: 'Matična stranica'
     PARENTTYPE: 'Lokacija stranice'
-    PARENTTYPE_ROOT: 'Nadstranica'
+    PARENTTYPE_ROOT: Nadstranica
     PARENTTYPE_SUBPAGE: 'Podstranica ispod matične stranice'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Upravljaj prava pristupa za sadržaj'
     PLURALNAME: Stranice
@@ -170,7 +179,7 @@ hr:
     SHOWINSEARCH: 'Pokaži u tražilici?'
     SINGULARNAME: Stranica
     TABBEHAVIOUR: Karakteristike
-    TABCONTENT: 'Sadržaj'
+    TABCONTENT: Sadržaj
     TABDEPENDENT: 'Zavisne stranice'
     TOPLEVEL: 'Sadržaj stranice (Top Level)'
     URLSegment: 'Dio URLa'
@@ -197,10 +206,10 @@ hr:
     PageTypNotAllowedOnRoot: 'Originalni tip stranice  "{type}" nije dozvoljen na prvom nivu ove virtualne stranice'
     SINGULARNAME: 'Virtualna stranica'
   SilverStripe\CMS\Reports\BrokenLinksReport:
-    Any: bilo koji
+    Any: 'bilo koji'
     BROKENLINKS: 'Izvješće prekinutih linkova'
     CheckSite: 'Pregledaj stranicu'
-    CheckSiteDropdownDraft: 'Predložak'
+    CheckSiteDropdownDraft: Predložak
     CheckSiteDropdownPublished: 'Objavljena stranica'
     ColumnDateLastModified: 'Datum zadnjeg uređivanja'
     ColumnDateLastPublished: 'Datum zadnje objave'

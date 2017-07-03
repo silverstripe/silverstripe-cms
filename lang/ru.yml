@@ -1,56 +1,113 @@
 ru:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
+    RESULT: '%d черновых и активных страниц удалено и отправлено в архив'
+    TITLE: 'Отменить публикацию и отправить в архив'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: 'Опубликовано %d страниц, %d ошибок'
+    PUBLISH_PAGES: Опубликовать
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Восстановить
+    RESTORED_PAGES: 'Восстановлено %d страниц'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISHED_PAGES: 'Отменена публикация %d страниц'
+    UNPUBLISH_PAGES: 'Отмена публикации'
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Доступ к разделу ''{title}'''
     ACCESS_HELP: 'Возможность просматривать раздел, содержащий дерево страниц и контент. Настройка прав просмотра и редактирования производится через выпадающие меню на отдельных страницах, а также через "Права доступа к содержимому".'
-    ARCHIVE: В архив
+    APPLY_FILTER: Поиск
+    ARCHIVE: 'В архив'
     ARCHIVEDPAGE: 'Страница ''%s'' отправлена в архив'
+    AddNew: 'Добавить новую страницу'
+    AddNewButton: Добавить
     AddPageRestriction: 'Внимание: некоторые типы страниц в этом случае недоступны для выбора'
+    ArchiveWarning: 'Предупреждение: Перед отправкой в архив произойдёт отмена публикации данной страницы. Вы действительно хотите продолжить?'
+    ArchiveWarningWithCampaigns: 'Предупреждение: Перед отправкой в архив произойдёт отмена публикации данной страницы и автоматическое удаление из ассоциированных {NumCampaigns}. Вы действительно хотите продолжить?'
+    ArchiveWarningWithChildren: 'Предупреждение: Перед отправкой в архив произойдёт отмена публикации данной и всех дочерних страниц. Вы действительно хотите продолжить?'
+    ArchiveWarningWithChildrenAndCampaigns: 'Предупреждение: Перед отправкой в архив произойдёт отмена публикации данной и дочерних страниц и автоматическое удаление из ассоциированных {NumCampaigns}. Вы действительно хотите продолжить?'
+    CANT_REORGANISE: 'У вас нет права редактировать страницы верхнего уровня. Изменения не были сохранены.'
+    CLEAR_FILTER: Сбросить
     Cancel: Отмена
     ChoosePageParentMode: 'Выберите, расположение страницы'
     ChoosePageType: 'Выберите тип страницы'
     Create: Создать
     DUPLICATED: 'Копия ''{title}'' создана'
     DUPLICATEDWITHCHILDREN: 'Копия ''{title}'' и дочерних элементов создана'
+    EMAIL: Email
+    ListFiltered: 'Результаты поиска'
     NEWPAGE: 'Новая {pagetype}'
     PAGENOTEXISTS: 'Страница не существует'
+    PAGES: 'Статус страницы'
     PAGETYPEANYOPT: Любой
+    PAGETYPEOPT: 'Тип страницы'
+    PLEASESAVE: 'Пожалуйста, сохраните страницу: ее нельзя обновить, т.к. она еще не была сохранена.'
     PUBALLCONFIRM: 'Пожалуйста, опубликуйте каждую страницу сайта, перенося содержимое из чернового режима в опубликованный'
     PUBALLFUN: 'Функция "Опубликовать все"'
+    PUBALLFUN2: 'Нажатие этой кнопки выполнит ту же функцию, что и нажатие кнопки "Опубликовать" для каждой отдельной страницы. Данная функция предназначена для использования после значительных изменений содержимого, например, в момент создания нового сайта.'
     PUBLISHED: '''{title}'' опубликован'
     PUBPAGES: 'Готово: опубликовано {count} страниц'
     PageAdded: 'Страница успешно создана'
     REMOVEDPAGE: 'Страница ''{title}'' удалена с опубликованного сайта'
     REMOVEDPAGEFROMDRAFT: 'Страница ''%s'' удалена с чернового сайта'
+    REORGANISATIONSUCCESSFUL: 'Древесная структура сайта успешно реорганизована.'
+    RESTORE: 'Восстановить черновик'
     RESTORED: '''{title}'' успешно восстановлен'
     RESTORE_DESC: 'Восстановить архивную версию в черновик'
     RESTORE_TO_ROOT: 'Восстановить черновик в корень сайта'
     RESTORE_TO_ROOT_DESC: 'Восстановить архивную версию в черновик в корне сайта'
+    ROLLBACK: 'Вернуться к этой версии'
     ROLLEDBACKPUBv2: 'Восстановлена опубликованная версия.'
     ROLLEDBACKVERSIONv2: 'Версия #%d восстановлена.'
     SAVED: '''{title}'' сохранен'
     SAVEDRAFT: 'Сохранить черновик'
+    SHOW_AS_LIST: 'в виде списка'
+    TOO_MANY_PAGES: 'Слишком много страниц'
+    TabContent: Содержимое
+    TabHistory: История
+    TabSettings: Настройки
+    TreeFiltered: 'Результаты поиска'
+    TreeFilteredClear: Сбросить
+    UNPUBLISH_AND_ARCHIVE: 'Отменить публикацию и отправить в архив'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Добавить страницу'
     ParentMode_child: 'Под другой страницей'
     ParentMode_top: 'Корневая страница'
+    Title: 'Добавить страницу'
   SilverStripe\CMS\Controllers\CMSPageEditController:
     MENUTITLE: 'Редактировать страницу'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    AUTHOR: Автор
     COMPAREMODE: 'Режим сравнения двух страниц'
     MENUTITLE: История
+    MULTISELECT: Действия
+    NOTPUBLISHED: 'Не опубликовано'
+    PREVIEW: 'Предварительный просмотр сайта'
+    PUBLISHER: Издатель
     REVERTTOTHISVERSION: 'Вернуться на эту версию'
     SHOWUNPUBLISHED: 'Показать неопубликованные версии'
+    UNKNOWN: Неизвестно
     VIEW: обзор
     VIEWINGLATEST: 'Вы просматриваете самую новую версию.'
     VIEWINGVERSION: 'Вы просматриваете версию {version}.'
+    WHEN: Когда
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Редактировать Страницу'
   SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: Фильтр
+    ListView: 'Отобразить списком'
     MENUTITLE: Страницы
+    TreeView: 'Отобразить деревом'
   SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Опубликованные страницы'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
+    Title: 'Изменённые страницы'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
+    Title: 'Все страницы, включая архивные'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Все страницы'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Архивные страницы'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDraftPages:
+    Title: Черновики
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Опубликовано, но удалено из черновика'
   SilverStripe\CMS\Controllers\ContentController:
@@ -59,26 +116,81 @@ ru:
     CMS: CMS
     DRAFT: Черновик
     DRAFTSITE: 'Черновой сайт'
+    Email: Email
     INSTALL_SUCCESS: 'Инсталляция прошла успешно!'
+    InstallFilesDeleted: 'Установочные файлы были успешно удалены.'
+    InstallSecurityWarning: 'Если вы не планируете в ближайшее время переустанавливать CMS, по соображениям безопасности рекомендуется удалить инсталляционные файлы (<em>для этого требуются права доступа администратора ‒ см. выше</em>). Теперь веб-серверу необходим доступ для записи только к папке "assets"; все остальные папки можно защитить от записи. <a href="{link}" style="text-align: center;">Щелкните здесь, чтобы удалить инсталляционные файлы.</a>'
+    InstallSuccessCongratulations: 'SilverStripe успешно установлен!'
     LOGGEDINAS: 'Залогинен как'
-    LOGIN: Вход
+    LOGIN: 'Вход'
     LOGOUT: 'Выход'
     NOTEWONTBESHOWN: 'Внимание: это сообщение не будет показано посетителям'
     NOTLOGGEDIN: 'Не вошли в систему'
     PUBLISHED: Опубликовано
     PUBLISHEDSITE: 'Опубликованный сайт'
+    Password: Пароль
+    PostInstallTutorialIntro: 'Это упрощенная версия сайта, созданного с помощью SilverStripe 3. О возможностях расширения сайта можно узнать, щелкнув эту ссылку: {link}.'
+    StartEditing: 'Вы можете приступить к редактированию содержимого сайта, открыв <a href="{link}">CMS</a>.'
+    UnableDeleteInstall: 'Не удалось удалить инсталляционные файлы. Пожалуйста, удалите следующие файлы вручную'
     VIEWPAGEIN: 'Просмотреть страницу в:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: Архивные
+    ARCHIVED: 'Архивные'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Cancel: Отмена
     EMPTY: 'Задайте адрес страницы или нажмите "Отмена"'
+    Edit: 'Редактировать'
     HelpChars: 'Спецсимволы автоматически конвертируются или удаляются.'
+    OK: ОК
+  SilverStripe\CMS\Model\ErrorPage:
+    CODE: 'Код ошибки'
+    CODE_400: '400 - Плохой запрос'
+    CODE_401: '401 - Неавторизован'
+    CODE_403: '403 - Запрещено'
+    CODE_404: '404 - Не найдено'
+    CODE_405: '405 - Метод не поддерживается'
+    CODE_406: '406 - Не приемлемо'
+    CODE_407: '407 - Необходима авторизация прокси'
+    CODE_408: '408 - Время ожидания истекло'
+    CODE_409: '409 - Конфликт'
+    CODE_410: '410 - Удален'
+    CODE_411: '411 - Необходима длина'
+    CODE_412: '412 - Условие «ложно»'
+    CODE_413: '413 - Запрашиваемые данные слишком большие'
+    CODE_414: '414 - Запрашиваемый URI слишком длинный'
+    CODE_415: '415 - Неподдерживаемый тип данных'
+    CODE_416: '416 - Запрашиваемый диапазон не достижим'
+    CODE_417: '417 - Ожидаемое ошибочно'
+    CODE_422: '422 - Необрабатываемый экземпляр'
+    CODE_429: '429 - Слишком много запросов'
+    CODE_500: '500 - Внутренняя ошибка сервера'
+    CODE_501: '501 - Невыполнимо'
+    CODE_502: '502 - Плохой шлюз'
+    CODE_503: '503 - Сервис недоступен'
+    CODE_504: '504 - Шлюз не отвечает'
+    CODE_505: '505 - Версия HTTP не поддерживается'
+    DEFAULTERRORPAGECONTENT: '<p>Извините, страница, к которой вы пытаетесь получить доступ, не существует.</p><p>Пожалуйста, проверьте правильность написания ссылки и попытайтесь снова.</p>'
+    DEFAULTERRORPAGETITLE: 'Страница не найдена'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Не удалось обработать запрос.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Ошибка сервера'
+    DESCRIPTION: 'Пользовательские страницы ошибок (например, "Страница не найдена")'
+    PLURALNAME: 'Страницы ошибок'
+    PLURALS:
+      one: 'Страница ошибки'
+      few: '{count} страницы ошибок'
+      many: '{count} страниц ошибок'
+      other: '{count} страниц ошибок'
+    SINGULARNAME: 'Страница ошибки'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Перенаправление на другую внутреннюю или внешнюю страницу'
     HASBEENSETUP: 'Страница перенаправления установлена без указания места перенаправления.'
     HEADER: 'Эта страница будет перенаправлять пользователей на другую страницу'
     OTHERURL: 'URL другого сайта'
     PLURALNAME: 'Страницы перенаправления'
+    PLURALS:
+      one: 'Страница перенаправления'
+      few: '{count} страницы перенаправления'
+      many: '{count} страниц перенаправления'
+      other: '{count} страниц перенаправления'
     REDIRECTTO: 'Перенаправлять на'
     REDIRECTTOEXTERNAL: 'Другой сайт'
     REDIRECTTOPAGE: 'Страницу вашего сайта'
@@ -93,18 +205,21 @@ ru:
     ADDEDTODRAFTSHORT: Черновик
     APPEARSVIRTUALPAGES: 'Это содержимое также отображается на виртуальных страницах в разделе {title}.'
     ARCHIVEDPAGEHELP: 'Страница удалена с опубликованного сайта и из черновиков'
-    ARCHIVEDPAGESHORT: Зархивировано
+    ARCHIVEDPAGESHORT: 'Зархивировано'
     BUTTONCANCELDRAFT: 'Отменить изменения черновика'
     BUTTONCANCELDRAFTDESC: 'Удалить черновик и вернуться к уже опубликованной странице'
+    BUTTONDELETEDESC: 'Отменить публикацию, удалить из черновиков и отправить в архив'
     BUTTONPUBLISHED: Опубликовано
-    BUTTONSAVED: Сохранено
+    BUTTONSAVED: 'Сохранено'
     BUTTONSAVEPUBLISH: 'Сохранить и опубликовать'
-    BUTTONUNPUBLISH: Отмена публикации
+    BUTTONUNPUBLISH: 'Отмена публикации'
     BUTTONUNPUBLISHDESC: 'Удалить эту страницу с опубликованного сайта'
     Comments: Комментарии
-    Content: Наполнение сайта
+    Content: 'Наполнение сайта'
+    DEFAULTABOUTCONTENT: '<p>Вы можете добавить своё собственное содержимое на эту страницу, удалить её или создать свои собственные страницы.</p>'
     DEFAULTABOUTTITLE: 'О нас'
-    DEFAULTCONTACTTITLE: 'Контакты'
+    DEFAULTCONTACTCONTENT: '<p>Вы можете добавить своё собственное содержимое на эту страницу, удалить её или создать свои собственные страницы.</p>'
+    DEFAULTCONTACTTITLE: Контакты
     DEFAULTHOMECONTENT: '<p>Добро пожаловать в SilverStripe! Это стандартная домашняя страница. Вы можете изменить её перейдя по ссылке в <a href="admin/">the CMS</a>.</p><p>Документация для разработчиков доступна <a href="http://docs.silverstripe.org">здесь</a>, видео-уроки по SilverStripe находятся <a href="http://www.silverstripe.org/learn/lessons">здесь</a>.</p>'
     DEFAULTHOMETITLE: Главная
     DEPENDENT_NOTE: 'С этой страницей связаны следующие зависимые страницы (сюда относятся виртуальные страницы, страницы перенаправления и страницы со ссылками на контент).'
@@ -122,12 +237,14 @@ ru:
     HASBROKENLINKS: 'Эта страница содержит неверные ссылки.'
     HTMLEDITORTITLE: Содержимое
     INHERIT: 'Перенять от родительской страницы'
+    LASTPUBLISHED: 'Последняя публикация'
+    LASTSAVED: 'Дата сохранения'
     LASTUPDATED: 'Последнее обновление'
     LINKCHANGENOTE: 'Изменение ссылки на эту страницу повлияет и на ссылки всех дочерних страниц.'
     LINKSALREADYUNIQUE: '{url} уже уникален'
     LINKSCHANGEDTO: 'изменен {url1} -> {url2}'
     MENUTITLE: 'Метка в навигации'
-    METADESC: 'Описание'
+    METADESC: Описание
     METADESCHELP: 'Поисковые системы используют этот контент для отображения результатов поиска (однако на рейтинг страницы он не влияет).'
     METAEXTRA: 'Пользовательские мета-тэги'
     METAEXTRAHELP: 'HTML-теги для дополнительной мета-информации. Например, &lt;meta name="customName" content="your custom content here" /&gt;'
@@ -135,7 +252,10 @@ ru:
     MODIFIEDONDRAFTSHORT: Изменено
     MetadataToggle: Метаданные
     MoreOptions: 'Другие варианты'
+    NOTPUBLISHED: 'Не опубликовано'
     OBSOLETECLASS: 'Тип страницы {type} больше не поддерживается. При сохранении тип страницы будет сброшен, что может привести к потере данных'
+    ONLIVEONLYSHORT: 'Только опубликованные'
+    ONLIVEONLYSHORTHELP: 'Страница опубликована, но была удалена из черновой версии'
     PAGELOCATION: 'Расположение страницы'
     PAGETITLE: 'Название страницы'
     PAGETYPE: 'Тип страницы'
@@ -145,6 +265,12 @@ ru:
     PARENTTYPE_SUBPAGE: 'Подстраница под родительской страницей'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Управление правами доступа к содержимому'
     PERMISSION_GRANTACCESS_HELP: 'Возможность устанавливать ограничения доступа в разделе "Страницы" для каждой страницы отдельно.'
+    PLURALNAME: Страницы
+    PLURALS:
+      one: Страница
+      few: '{count} страницы'
+      many: '{count} страниц'
+      other: '{count} страниц'
     PageTypNotAllowedOnRoot: 'Страницы типа "{type}" не могут быть корневыми'
     PageTypeNotAllowed: 'Страницы типа "{type}" недопустимы для этой родительской страницы в качестве дочерних'
     REMOVE_INSTALL_WARNING: 'Внимание: по соображениям безопасности рекомендуется удалить файл install.php из данной инсталляции SilverStripe.'
@@ -152,8 +278,9 @@ ru:
     REORGANISE_HELP: 'Изменение порядка страниц в древовидной структуре сайта посредством drag&drop.'
     SHOWINMENUS: 'Показывать в меню?'
     SHOWINSEARCH: 'Показывать в поиске?'
+    SINGULARNAME: Страница
     TABBEHAVIOUR: Настройки
-    TABCONTENT: 'Содержимое'
+    TABCONTENT: Содержимое
     TABDEPENDENT: 'Зависимые страницы'
     TOPLEVEL: 'Содержимое сайта (верхний уровень)'
     URLSegment: 'Адрес страницы'
@@ -171,6 +298,12 @@ ru:
     many_many_BackLinkTracking: 'Отслеживание обратных ссылок'
     many_many_ImageTracking: 'Отслеживание изображений'
     many_many_LinkTracking: 'Отслеживание ссылок'
+  SilverStripe\CMS\Model\SiteTreeFileExtension:
+    BACKLINKCOUNT: 'Используется на:'
+    PAGES: страниц(ы)
+    TITLE_INDEX: №
+    TITLE_TYPE: Тип
+    TITLE_USED_ON: 'Используется на'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Связанная страница'
     DESCRIPTION: 'Отображает содержимое другой страницы'
@@ -178,8 +311,17 @@ ru:
     HEADER: 'Это виртуальная страница'
     HEADERWITHLINK: 'Это виртуальная страница, копирующая содержимое из "{title}" ({link})'
     PLURALNAME: 'Виртуальные Страницы'
+    PLURALS:
+      one: 'Виртуальная страница'
+      few: '{count} виртуальные страницы'
+      many: '{count} виртуальных страниц'
+      other: '{count} виртуальных страниц'
     PageTypNotAllowedOnRoot: 'Страницы типа "{type}" недопустимы в качестве корневых для этой виртуальной страницы'
     SINGULARNAME: 'Виртуальная Страница'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 'Страницы с ошибочными файлами'
+    BrokenLinksGroupTitle: 'Отчеты об ошибочных ссылках'
+    ParameterLiveCheckbox: 'Проверить опубликованный сайт'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Все
     BROKENLINKS: 'Отчет об ошибочных ссылках'
@@ -195,16 +337,31 @@ ru:
     HasBrokenLinkAndFile: 'содержит нерабочую ссылку и поврежденный файл'
     HoverTitleEditPage: 'Править страницу'
     PageName: 'Название страницы'
-    ReasonDropdown: 'Проблема'
+    ReasonDropdown: Проблема
     ReasonDropdownBROKENFILE: 'Поврежденный файл'
     ReasonDropdownBROKENLINK: 'Нерабочая ссылка'
     ReasonDropdownRPBROKENLINK: 'Страница перенаправления указывает на несуществующую страницу'
     ReasonDropdownVPBROKENLINK: 'Виртуальная страница указывает на несуществующую страницу'
     RedirectorNonExistent: 'страница перенаправления указывает на несуществующую страницу'
     VirtualPageNonExistent: 'виртуальная страница указывает на несуществующую страницу'
+  SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
+    BROKENREDIRECTORPAGES: 'Страницы перенаправления, указывающие на удаленные страницы'
+    BrokenLinksGroupTitle: 'Отчеты об ошибочных ссылках'
+    ParameterLiveCheckbox: 'Проверить опубликованный сайт'
+  SilverStripe\CMS\Reports\BrokenVirtualPagesReport:
+    BROKENVIRTUALPAGES: 'Виртуальные страницы, указывающие на удаленные страницы'
+    BrokenLinksGroupTitle: 'Отчеты об ошибочных ссылках'
+    ParameterLiveCheckbox: 'Проверить опубликованный сайт'
+  SilverStripe\CMS\Reports\EmptyPagesReport:
+    ContentGroupTitle: 'Отчеты по контенту'
+    EMPTYPAGES: 'Пустые страницы'
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    ContentGroupTitle: 'Отчеты по контенту'
+    LAST2WEEKS: 'Страницы, которые редактировались в последние 2 недели'
   SilverStripe\CMS\Search\SearchForm:
     FILTERDATEFROM: От
     FILTERDATETO: До
+    FILTERLABELTEXT: Поиск
     GO: Выполн.
     PAGEFILTERDATEHEADING: 'Последнее изменение'
     SEARCH: Поиск
