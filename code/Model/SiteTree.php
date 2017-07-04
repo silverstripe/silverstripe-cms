@@ -1256,6 +1256,12 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function collateDescendants($condition, &$collator)
     {
+        // apply reasonable hierarchy limits
+        $threshold = Config::inst()->get(Hierarchy::class, 'node_threshold_leaf');
+        if ($this->numChildren() > $threshold) {
+            return false;
+        }
+
         $children = $this->Children();
         if ($children) {
             foreach ($children as $item) {
