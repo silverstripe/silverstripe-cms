@@ -33,7 +33,12 @@
         "silverstripe/serve": "dev-master",
         "se/selenium-server-standalone": "2.41.0"
     },
-    "extra": [],
+    "extra": {
+        "branch-alias": {
+            "4.x-dev": "4.0.x-dev",
+            "dev-master": "5.x-dev"
+        }
+    },
     "scripts": {
         "lint": "phpcs -s code/ tests/"
     },
