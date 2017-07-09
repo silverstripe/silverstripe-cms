@@ -46,6 +46,15 @@ class SiteTreeTest extends SapphireTest
         SiteTreeTest_DataObject::class,
     );
 
+    public function reservedSegmentsProvider()
+    {
+        return [
+            ['Admin', 'admin-2'],
+            ['Dev', 'dev-2'],
+            ['Robots in disguise', 'robots-in-disguise']
+        ];
+    }
+
     public function testCreateDefaultpages()
     {
             $remove = SiteTree::get();
@@ -99,6 +108,33 @@ class SiteTreeTest extends SapphireTest
             $obj = $this->objFromFixture('Page', $fixture);
             $this->assertEquals($urlSegment, $obj->URLSegment);
         }
+    }
+
+    /**
+     * Check if reserved URL's are properly appended with a number at top level
+     * @dataProvider reservedSegmentsProvider
+     */
+    public function testDisallowedURLGeneration($title, $urlSegment)
+    {
+        $page = Page::create(['Title' => $title]);
+        $id = $page->write();
+        $page = Page::get()->byID($id);
+        $this->assertEquals($urlSegment, $page->URLSegment);
+    }
+
+    /**
+     * Check if reserved URL's are not appended with a number on a child page
+     * It's okay to have a URL like domain.com/my-page/admin as it won't interfere with domain.com/admin
+     * @dataProvider reservedSegmentsProvider
+     */
+    public function testDisallowedChildURLGeneration($title, $urlSegment)
+    {
+        // Using the same dataprovider, strip out the -2 from the admin and dev segment
+        $urlSegment = str_replace('-2', '', $urlSegment);
+        $page = Page::create(['Title' => $title, 'ParentID' => 1]);
+        $id = $page->write();
+        $page = Page::get()->byID($id);
+        $this->assertEquals($urlSegment, $page->URLSegment);
     }
 
     /**
@@ -818,6 +854,14 @@ class SiteTreeTest extends SapphireTest
         $this->assertTrue($about->isSection());
         $this->assertTrue($staff->isSection());
         $this->assertTrue($ceo->isSection());
+    }
+
+    public function testURLSegmentReserved()
+    {
+        $siteTree = SiteTree::create(['URLSegment' => 'admin']);
+        $segment = $siteTree->validURLSegment();
+
+        $this->assertFalse($segment);
     }
 
     public function testURLSegmentAutoUpdate()
