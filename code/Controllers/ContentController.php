@@ -450,7 +450,7 @@ HTML;
             SSViewer::get_templates_by_class(static::class, "", "SilverStripe\\Control\\Controller")
         );
 
-        return new SSViewer($templates);
+        return SSViewer::create($templates);
     }
 
 

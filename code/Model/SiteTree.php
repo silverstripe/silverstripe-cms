@@ -816,7 +816,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function Breadcrumbs($maxDepth = 20, $unlinked = false, $stopAtPageType = false, $showHidden = false)
     {
         $pages = $this->getBreadcrumbItems($maxDepth, $stopAtPageType, $showHidden);
-        $template = new SSViewer('BreadcrumbsTemplate');
+        $template = SSViewer::create('BreadcrumbsTemplate');
         return $template->process($this->customise(new ArrayData(array(
             "Pages" => $pages,
             "Unlinked" => $unlinked
