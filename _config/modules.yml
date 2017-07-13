@@ -5,4 +5,4 @@ Before: modules-admin
 ---
 SilverStripe\Core\Manifest\ModuleManifest:
   module_priority:
-    - silverstripe\cms
+    - silverstripe/cms
