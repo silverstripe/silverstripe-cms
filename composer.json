@@ -19,7 +19,7 @@
     }
   ],
   "require": {
-    "composer/installers": "*",
+    "composer/installers": "^1@dev",
     "silverstripe/admin": "^1@dev",
     "silverstripe/campaign-admin": "^1@dev",
     "silverstripe/framework": "^4@dev",

@@ -1,8 +1,0 @@
----
-Name: cmsi18n
-Before: '/i18n'
-After: '/i18n#basei18n'
----
-SilverStripe\i18n\i18n:
-  module_priority:
-    - silverstripe\cms

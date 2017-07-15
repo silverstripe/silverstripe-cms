@@ -1189,7 +1189,16 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         // TODO Can't merge $FormAttributes in template at the moment
         $form->addExtraClass('center ' . $this->BaseCSSClasses());
         // Set validation exemptions for specific actions
-        $form->setValidationExemptActions(array('restore', 'revert', 'deletefromlive', 'delete', 'unpublish', 'rollback', 'doRollback'));
+        $form->setValidationExemptActions(array(
+            'restore',
+            'revert',
+            'deletefromlive',
+            'delete',
+            'unpublish',
+            'rollback',
+            'doRollback',
+            'archive',
+        ));
 
         // Announce the capability so the frontend can decide whether to allow preview or not.
         if ($record instanceof CMSPreviewable) {
