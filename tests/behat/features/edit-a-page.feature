@@ -27,3 +27,14 @@ Feature: Edit a page
     When I click on "About Us" in the tree
     Then the "Title" field should contain "About Us!"
     And the "Content" HTML field should contain "my new content"
+
+  @javascript
+  Scenario: I can toggle between the main tabs on a page
+    When I click on "About Us" in the tree
+    Then I should see an edit page form
+    And I should see a "Settings" tab in the CMS content header tabs
+    And the "Content" header tab should be active
+
+    When I click on "Settings" in the header tabs
+    Then the "Settings" header tab should be active
+    And the "Content" header tab should not be active
