@@ -350,6 +350,21 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         }
     }
 
+    /**
+     * Decide which is the active primary tab in a CMS edit screen
+     *
+     * @return string
+     */
+    public function getActiveTab()
+    {
+        if ($this instanceof CMSPageSettingsController) {
+            return 'settings';
+        } elseif ($this instanceof CMSPageHistoryController) {
+            return 'history';
+        }
+        return 'edit';
+    }
+
     public function LinkWithSearch($link)
     {
         // Whitelist to avoid side effects
