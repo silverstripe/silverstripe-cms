@@ -248,7 +248,7 @@ class CMSMainTest extends FunctionalTest
         $page1->publishRecursive();
         $page1->delete();
 
-        $cmsMain = new CMSMain();
+        $cmsMain = CMSMain::create();
         $cmsMain->setRequest(Controller::curr()->getRequest());
 
         // Bad calls
@@ -424,7 +424,7 @@ class CMSMainTest extends FunctionalTest
 
     public function testGetNewItem()
     {
-        $controller = new CMSMain();
+        $controller = CMSMain::create();
         $controller->setRequest(Controller::curr()->getRequest());
         $id = 'new-Page-0';
 
@@ -450,7 +450,7 @@ class CMSMainTest extends FunctionalTest
      */
     public function testGetList()
     {
-        $controller = new CMSMain();
+        $controller = CMSMain::create();
         $controller->setRequest(Controller::curr()->getRequest());
 
         // Test all pages (stage)
@@ -543,7 +543,7 @@ class CMSMainTest extends FunctionalTest
 
         // Get a associated with a fixture page.
         $page = $this->objFromFixture(Page::class, 'page1');
-        $controller = new CMSMain();
+        $controller = CMSMain::create();
         $controller->setRequest(Controller::curr()->getRequest());
         $form = $controller->getEditForm($page->ID);
         $this->assertInstanceOf("SilverStripe\\Forms\\Form", $form);
@@ -560,7 +560,7 @@ class CMSMainTest extends FunctionalTest
     public function testChangeClass()
     {
         $this->logInWithPermission('ADMIN');
-        $cms = new CMSMain();
+        $cms = CMSMain::create();
         $cms->setRequest(Controller::curr()->getRequest());
         $page = new CMSMainTest_ClassA();
         $page->Title = 'Class A';
