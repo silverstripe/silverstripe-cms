@@ -164,7 +164,7 @@ en:
     ACCESSANYONE: Anyone
     ACCESSHEADER: 'Who can view this page?'
     ACCESSLOGGEDIN: 'Logged-in users'
-    ACCESSONLYTHESE: 'Only these people (choose from list)'
+    ACCESSONLYTHESE: 'Only these groups (choose from list)'
     ADDEDTODRAFTHELP: 'Page has not been published yet'
     ADDEDTODRAFTSHORT: Draft
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
