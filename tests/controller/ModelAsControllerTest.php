@@ -29,7 +29,7 @@ class ModelAsControllerTest extends FunctionalTest
     public function setUp()
     {
         parent::setUp();
-        Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'nested_urls', true);
+        Config::modify()->set(SiteTree::class, 'nested_urls', true);
     }
 
 
@@ -303,7 +303,7 @@ class ModelAsControllerTest extends FunctionalTest
     public function testChildOfDraft()
     {
         RootURLController::reset();
-        Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'nested_urls', true);
+        Config::modify()->set(SiteTree::class, 'nested_urls', true);
 
         $draft = new Page();
         $draft->Title = 'Root Leve Draft Page';
