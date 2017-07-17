@@ -17,9 +17,9 @@ class RootURLControllerTest extends SapphireTest
     {
         $default = $this->objFromFixture('Page', 'home');
 
-        SiteTree::config()->nested_urls = false;
+        Config::modify()->set(SiteTree::class, 'nested_urls', false);
         $this->assertEquals('home', RootURLController::get_homepage_link());
-        Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'nested_urls', true);
+        Config::modify()->set(SiteTree::class, 'nested_urls', true);
         $this->assertEquals('home', RootURLController::get_homepage_link());
     }
 }
