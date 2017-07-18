@@ -496,10 +496,8 @@ class VirtualPage_Controller extends Page_Controller {
 	}
 	
 	public function getViewer($action) {
-		$originalClass = get_class($this->CopyContentFrom());
-		if ($originalClass == 'SiteTree') $name = 'Page_Controller';
-		else $name = $originalClass."_Controller";
-		$controller = new $name();
+		$object = $this->CopyContentFrom();
+		$controller = ModelAsController::controller_for($object, $action);
 		return $controller->getViewer($action);
 	}
 	
@@ -538,11 +536,8 @@ class VirtualPage_Controller extends Page_Controller {
 	 */
 	public function hasMethod($method) {
 		$haveIt = parent::hasMethod($method);
-		if (!$haveIt) {	
-			$originalClass = get_class($this->CopyContentFrom());
-			if ($originalClass == 'SiteTree') $name = 'ContentController';
-			else $name = $originalClass."_Controller";
-			$controller = new $name($this->dataRecord->copyContentFrom());
+		if (!$haveIt) {
+			$controller = ModelAsController::controller_for($this->CopyContentFrom());
 			$haveIt = $controller->hasMethod($method);
 		}
 		return $haveIt;
