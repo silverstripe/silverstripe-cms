@@ -351,17 +351,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     }
 
     /**
-     * Decide which is the active primary tab in a CMS edit screen
+     * Return the active tab identifier for the CMS. Used by templates to decide which tab to give the active state.
+     * The default value is "edit", as the primary content tab. Child controllers will override this.
      *
      * @return string
      */
-    public function getActiveTab()
+    public function getTabIdentifier()
     {
-        if ($this instanceof CMSPageSettingsController) {
-            return 'settings';
-        } elseif ($this instanceof CMSPageHistoryController) {
-            return 'history';
-        }
         return 'edit';
     }
 
