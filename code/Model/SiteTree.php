@@ -813,13 +813,14 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * @param boolean $showHidden Include pages marked with the attribute ShowInMenus = 0
      * @return string The breadcrumb trail.
      */
-    public function Breadcrumbs($maxDepth = 20, $unlinked = false, $stopAtPageType = false, $showHidden = false)
+    public function Breadcrumbs($maxDepth = 20, $unlinked = false, $stopAtPageType = false, $showHidden = false, $delimiter = '&raquo;')
     {
         $pages = $this->getBreadcrumbItems($maxDepth, $stopAtPageType, $showHidden);
         $template = SSViewer::create('BreadcrumbsTemplate');
         return $template->process($this->customise(new ArrayData(array(
             "Pages" => $pages,
-            "Unlinked" => $unlinked
+            "Unlinked" => $unlinked,
+            "Delimiter" => $delimiter,
         ))));
     }
 

@@ -838,7 +838,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $dateGroup->setTitle(_t('SilverStripe\\CMS\\Search\\SearchForm.PAGEFILTERDATEHEADING', 'Last edited'));
 
         // view mode
-        $viewMode = HiddenField::create('view', false, $this->ViewState());
+        $viewMode = HiddenField::create('view', false, 'listview');
 
         // Create the Field list
         $fields = new FieldList(
@@ -1464,7 +1464,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 }
             },
             'getTreeTitle' => function ($value, &$item) use ($controller) {
-                return sprintf(
+                $title = sprintf(
                     '<a class="action-detail" href="%s">%s</a>',
                     Controller::join_links(
                         CMSPageEditController::singleton()->Link('show'),
@@ -1472,6 +1472,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                     ),
                     $item->TreeTitle // returns HTML, does its own escaping
                 );
+                $breadcrumbs = $item->Breadcrumbs(20, true, false, true, '/');
+                // Remove item's tile
+                $breadcrumbs = preg_replace('/[^\/]+$/', '', trim($breadcrumbs));
+                // Trim spaces around delimiters
+                $breadcrumbs = preg_replace('/\s?\/\s?/', '/', trim($breadcrumbs));
+                return $title . sprintf('<p class="small cms-list__item-breadcrumbs">%s</p>', $breadcrumbs);
             }
         ));
 
