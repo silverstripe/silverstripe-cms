@@ -9,7 +9,7 @@ class VirtualPageTest extends FunctionalTest {
 		'VirtualPageTest_ClassA',
 		'VirtualPageTest_ClassB',
 		'VirtualPageTest_VirtualPageSub',
-		'VirtualPageTest_PageWithAllowedChildren'
+		'VirtualPageTest_PageWithAllowedChildren',
 	);
 
 	protected $illegalExtensions = array(
@@ -666,6 +666,27 @@ class VirtualPageTest extends FunctionalTest {
 		$response = $this->get($vp->Link());
 		$this->assertEquals(301, $response->getStatusCode());
 		$this->assertEquals('http://google.com', $response->getHeader('Location'));
+	}
+
+	public function testVirtualPageRendersCorrectTemplate() {
+		$self = $this;
+		$this->useDraftSite(true);
+		$this->useTestTheme(dirname(__FILE__), 'virtualpagetest', function() use ($self) {
+			$page = new VirtualPageTest_ClassA();
+			$page->Title = 'Test Page';
+			$page->Content = 'NotThisContent';
+ 			$page->MyInitiallyCopiedField = 'TestContent';
+			$page->write();
+
+			$vp = new VirtualPage();
+			$vp->CopyContentFromID = $page->ID;
+			$vp->write();
+
+			$response = $self->get($vp->Link());
+			$self->assertEquals(200, $response->getStatusCode());
+			$self->assertContains('TestContent', $response->getBody());
+			$self->assertNotContains('NotThisContent', $response->getBody());
+		});
 	}
 }
 
