@@ -464,4 +464,9 @@ class CMSPageHistoryController extends CMSMain
     {
         return $this->versionID;
     }
+
+    public function getTabIdentifier()
+    {
+        return 'history';
+    }
 }
