@@ -248,7 +248,7 @@ class ContentController extends Controller
      */
     public function project()
     {
-        return ModuleManifest::config()->get('project');    
+        return ModuleManifest::config()->get('project');
     }
 
     /**
