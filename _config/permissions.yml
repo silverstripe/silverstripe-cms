@@ -7,7 +7,7 @@ SilverStripe\Core\Injector\Injector:
     constructor:
       BaseClass: SilverStripe\CMS\Model\SiteTree
     properties:
-      DefaultPermissions: %$SilverStripe\SiteConfig\SiteConfigPagePermissions
+      DefaultPermissions: '%$SilverStripe\SiteConfig\SiteConfigPagePermissions'
       GlobalEditPermissions:
         - CMS_ACCESS_LeftAndMain
         - CMS_ACCESS_CMSMain
