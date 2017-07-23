@@ -10,6 +10,7 @@ use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Core\Manifest\ModuleManifest;
 use SilverStripe\i18n\i18n;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataObject;
@@ -247,8 +248,7 @@ class ContentController extends Controller
      */
     public function project()
     {
-        global $project;
-        return $project;
+        return ModuleManifest::config()->get('project');
     }
 
     /**
