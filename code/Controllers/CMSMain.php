@@ -838,7 +838,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $dateGroup->setTitle(_t('SilverStripe\\CMS\\Search\\SearchForm.PAGEFILTERDATEHEADING', 'Last edited'));
 
         // view mode
-        $viewMode = HiddenField::create('view', false, 'listview');
+        $viewMode = HiddenField::create('view', false, $this->ViewState('listview'));
 
         // Create the Field list
         $fields = new FieldList(
@@ -1307,9 +1307,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     }
 
     /**
+     * @param string $default
      * @return string
      */
-    public function ViewState()
+    public function ViewState($default = 'treeview')
     {
         $mode = $this->getRequest()->requestVar('view')
             ?: $this->getRequest()->param('Action');
@@ -1318,7 +1319,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             case 'treeview':
                 return $mode;
             default:
-                return 'treeview';
+                return $default;
         }
     }
 
