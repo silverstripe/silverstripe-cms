@@ -630,6 +630,25 @@ class VirtualPageTest extends FunctionalTest
         $this->assertEquals('http://google.com', $response->getHeader('Location'));
     }
 
+    public function testVirtualPageRendersCorrectTemplate()
+    {
+        $this->useDraftSite(true);
+        $this->useTestTheme(dirname(__FILE__), 'virtualpagetest', function () {
+            $page = new VirtualPageTest_ClassA();
+            $page->Title = 'Test Page';
+            $page->Content = 'NotThisContent';
+            $page->MyInitiallyCopiedField = 'TestContent';
+            $page->write();
+            $vp = new VirtualPage();
+            $vp->CopyContentFromID = $page->ID;
+            $vp->write();
+            $response = $this->get($vp->Link());
+            $this->assertEquals(200, $response->getStatusCode());
+            $this->assertContains('TestContent', $response->getBody());
+            $this->assertNotContains('NotThisContent', $response->getBody());
+        });
+    }
+
     public function testMethod()
     {
         $virtualPage = $this->objFromFixture(VirtualPage::class, 'vp4');
