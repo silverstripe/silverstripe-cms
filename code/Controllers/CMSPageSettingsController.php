@@ -26,4 +26,9 @@ class CMSPageSettingsController extends CMSMain
         $crumbs[0]->Title = _t('SilverStripe\\CMS\\Controllers\\CMSPagesController.MENUTITLE', 'Pages');
         return $crumbs;
     }
+
+    public function getTabIdentifier()
+    {
+        return 'settings';
+    }
 }

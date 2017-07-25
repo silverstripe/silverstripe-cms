@@ -9,16 +9,20 @@ import ShortcodeSerialiser from 'lib/ShortcodeSerialiser';
 import { createInsertLinkModal } from 'containers/InsertLinkModal/InsertLinkModal';
 import { provideInjector } from 'lib/Injector';
 
+const commandName = 'sslinkinternal';
+
 // Link to external url
-TinyMCEActionRegistrar.addAction('sslink', {
-  text: i18n._t('CMS.LINKLABEL_PAGE', 'Page on this site'),
-  // eslint-disable-next-line no-console
-  onclick: (editor) => editor.execCommand('sslinkinternal'),
-});
+TinyMCEActionRegistrar
+  .addAction('sslink', {
+    text: i18n._t('CMS.LINKLABEL_PAGE', 'Page on this site'),
+    // eslint-disable-next-line no-console
+    onclick: (editor) => editor.execCommand(commandName),
+  })
+  .addCommandWithUrlTest(commandName, /^\[sitetree_link/);
 
 const plugin = {
   init(editor) {
-    editor.addCommand('sslinkinternal', () => {
+    editor.addCommand(commandName, () => {
       const field = jQuery(`#${editor.id}`).entwine('ss');
 
       field.openLinkInternalDialog();
@@ -124,6 +128,6 @@ jQuery.entwine('ss', ($) => {
 });
 
 // Adds the plugin class to the list of available TinyMCE plugins
-tinymce.PluginManager.add('sslinkinternal', (editor) => plugin.init(editor));
+tinymce.PluginManager.add(commandName, (editor) => plugin.init(editor));
 
 export default plugin;

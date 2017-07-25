@@ -169,7 +169,7 @@ class CMSMainTest extends FunctionalTest
      */
     public function testThatGetCMSFieldsWorksOnEveryPageType()
     {
-        $classes = ClassInfo::subclassesFor("SilverStripe\\CMS\\Model\\SiteTree");
+        $classes = ClassInfo::subclassesFor(SiteTree::class);
         array_shift($classes);
 
         foreach ($classes as $class) {
@@ -184,7 +184,7 @@ class CMSMainTest extends FunctionalTest
             $page->Title = "Test $class page";
             $page->write();
             $page->flushCache();
-            $page = DataObject::get_by_id("SilverStripe\\CMS\\Model\\SiteTree", $page->ID);
+            $page = DataObject::get_by_id(SiteTree::class, $page->ID);
 
             $this->assertTrue($page->getCMSFields() instanceof FieldList);
         }
@@ -194,7 +194,7 @@ class CMSMainTest extends FunctionalTest
     {
         $this->logInWithPermission('ADMIN');
 
-        Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'enforce_strict_hierarchy', true);
+        Config::modify()->set(SiteTree::class, 'enforce_strict_hierarchy', true);
         $parentPage = $this->objFromFixture(Page::class, 'page3');
         $childPage = $this->objFromFixture(Page::class, 'page1');
 
@@ -207,7 +207,7 @@ class CMSMainTest extends FunctionalTest
             $actions,
             'Can publish a page with an unpublished parent with strict hierarchy off'
         );
-        Config::inst()->update('SilverStripe\\CMS\\Model\\SiteTree', 'enforce_strict_hierarchy', false);
+        Config::modify()->set(SiteTree::class, 'enforce_strict_hierarchy', false);
     }
 
     /**
@@ -228,7 +228,7 @@ class CMSMainTest extends FunctionalTest
         $livePage = Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, array(
                 '"SiteTree"."ID"' => $pageID
         ));
-        $this->assertInstanceOf('SilverStripe\\CMS\\Model\\SiteTree', $livePage);
+        $this->assertInstanceOf(SiteTree::class, $livePage);
         $this->assertTrue($livePage->canDelete());
 
         // Check that the 'restore' button exists as a simple way of checking that the correct page is returned.
@@ -248,7 +248,7 @@ class CMSMainTest extends FunctionalTest
         $page1->publishRecursive();
         $page1->delete();
 
-        $cmsMain = new CMSMain();
+        $cmsMain = CMSMain::create();
         $cmsMain->setRequest(Controller::curr()->getRequest());
 
         // Bad calls
@@ -424,7 +424,7 @@ class CMSMainTest extends FunctionalTest
 
     public function testGetNewItem()
     {
-        $controller = new CMSMain();
+        $controller = CMSMain::create();
         $controller->setRequest(Controller::curr()->getRequest());
         $id = 'new-Page-0';
 
@@ -450,7 +450,7 @@ class CMSMainTest extends FunctionalTest
      */
     public function testGetList()
     {
-        $controller = new CMSMain();
+        $controller = CMSMain::create();
         $controller->setRequest(Controller::curr()->getRequest());
 
         // Test all pages (stage)
@@ -543,7 +543,7 @@ class CMSMainTest extends FunctionalTest
 
         // Get a associated with a fixture page.
         $page = $this->objFromFixture(Page::class, 'page1');
-        $controller = new CMSMain();
+        $controller = CMSMain::create();
         $controller->setRequest(Controller::curr()->getRequest());
         $form = $controller->getEditForm($page->ID);
         $this->assertInstanceOf("SilverStripe\\Forms\\Form", $form);
@@ -560,7 +560,7 @@ class CMSMainTest extends FunctionalTest
     public function testChangeClass()
     {
         $this->logInWithPermission('ADMIN');
-        $cms = new CMSMain();
+        $cms = CMSMain::create();
         $cms->setRequest(Controller::curr()->getRequest());
         $page = new CMSMainTest_ClassA();
         $page->Title = 'Class A';

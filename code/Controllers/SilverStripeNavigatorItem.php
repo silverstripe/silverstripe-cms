@@ -121,7 +121,8 @@ abstract class SilverStripeNavigatorItem extends ViewableData
      */
     public function isArchived()
     {
-        if (!$this->record->hasExtension(Versioned::class)) {
+        $recordClass = get_class($this->record);
+        if (!$recordClass::has_extension(Versioned::class)) {
             return false;
         }
 

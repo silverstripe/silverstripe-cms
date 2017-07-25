@@ -1,12 +1,14 @@
 <div class="toolbar toolbar--content cms-content-toolbar">
 	<div class="btn-toolbar cms-actions-buttons-row">
-		<a class="btn btn-primary cms-content-addpage-button tool-button font-icon-plus" href="$LinkPageAdd" data-url-addpage="{$LinkPageAdd('', 'ParentID=%s')}"><% _t('SilverStripe\CMS\Controllers\CMSMain.AddNewButton', 'Add new') %></a>
+        <% if not $TreeIsFiltered %>
+            <a class="btn btn-primary cms-content-addpage-button tool-button font-icon-plus" href="$LinkPageAdd" data-url-addpage="{$LinkPageAdd('', 'ParentID=%s')}"><% _t('SilverStripe\CMS\Controllers\CMSMain.AddNewButton', 'Add new') %></a>
 
-		<% if $View == 'Tree' %>
-		<button type="button" class="cms-content-batchactions-button btn btn-secondary tool-button font-icon-check-mark-2 btn--last" data-toolid="batch-actions">
-			<% _t("SilverStripe\CMS\Controllers\CMSPageHistoryController.MULTISELECT","Batch actions") %>
-		</button>
-		<% end_if %>
+            <% if $View == 'Tree' %>
+            <button type="button" class="cms-content-batchactions-button btn btn-secondary tool-button font-icon-check-mark-2 btn--last" data-toolid="batch-actions">
+                <% _t("SilverStripe\CMS\Controllers\CMSPageHistoryController.MULTISELECT","Batch actions") %>
+            </button>
+            <% end_if %>
+        <% end_if %>
 
         <% include SilverStripe\\CMS\\Controllers\\CMSMain_ViewControls PJAXTarget='Content-PageList' %>
 	</div>

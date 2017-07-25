@@ -353,7 +353,7 @@ class SiteTreeTest extends SapphireTest
         $this->assertEquals($staff->ID, SiteTree::get_by_link($staff->Link(), false)->ID);
         $this->assertEquals($product->ID, SiteTree::get_by_link($product->Link(), false)->ID);
 
-        Config::inst()->update(SiteTree::class, 'nested_urls', true);
+        Config::modify()->set(SiteTree::class, 'nested_urls', true);
 
         $this->assertEquals($home->ID, SiteTree::get_by_link('/', false)->ID);
         $this->assertEquals($home->ID, SiteTree::get_by_link('/home/', false)->ID);
@@ -373,7 +373,7 @@ class SiteTreeTest extends SapphireTest
         $about    = $this->objFromFixture('Page', 'about');
         $staff    = $this->objFromFixture('Page', 'staff');
 
-        Config::inst()->update(SiteTree::class, 'nested_urls', true);
+        Config::modify()->set(SiteTree::class, 'nested_urls', true);
 
         $this->assertEquals('about-us/', $about->RelativeLink(), 'Matches URLSegment on top level without parameters');
         $this->assertEquals('about-us/my-staff/', $staff->RelativeLink(), 'Matches URLSegment plus parent on second level without parameters');
@@ -394,7 +394,7 @@ class SiteTreeTest extends SapphireTest
         $parent = $this->objFromFixture('Page', 'about');
         $child = $this->objFromFixture('Page', 'staff');
 
-        Config::inst()->update(SiteTree::class, 'nested_urls', true);
+        Config::modify()->set(SiteTree::class, 'nested_urls', true);
 
         $child->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
         $parent->URLSegment = 'changed-on-live';
@@ -442,7 +442,7 @@ class SiteTreeTest extends SapphireTest
 
     public function testDeleteFromStageOperatesRecursively()
     {
-        Config::inst()->update(SiteTree::class, 'enforce_strict_hierarchy', false);
+        Config::modify()->set(SiteTree::class, 'enforce_strict_hierarchy', false);
         $pageAbout = $this->objFromFixture('Page', 'about');
         $pageStaff = $this->objFromFixture('Page', 'staff');
         $pageStaffDuplicate = $this->objFromFixture('Page', 'staffduplicate');
@@ -452,7 +452,7 @@ class SiteTreeTest extends SapphireTest
         $this->assertNull(DataObject::get_by_id('Page', $pageAbout->ID));
         $this->assertTrue(DataObject::get_by_id('Page', $pageStaff->ID) instanceof Page);
         $this->assertTrue(DataObject::get_by_id('Page', $pageStaffDuplicate->ID) instanceof Page);
-        Config::inst()->update(SiteTree::class, 'enforce_strict_hierarchy', true);
+        Config::modify()->set(SiteTree::class, 'enforce_strict_hierarchy', true);
     }
 
     public function testDeleteFromStageOperatesRecursivelyStrict()
@@ -479,7 +479,7 @@ class SiteTreeTest extends SapphireTest
 
     public function testDeleteFromLiveOperatesRecursively()
     {
-        Config::inst()->update(SiteTree::class, 'enforce_strict_hierarchy', false);
+        Config::modify()->set(SiteTree::class, 'enforce_strict_hierarchy', false);
         $this->logInWithPermission('ADMIN');
 
         $pageAbout = $this->objFromFixture('Page', 'about');
@@ -499,12 +499,12 @@ class SiteTreeTest extends SapphireTest
         $this->assertTrue(DataObject::get_by_id('Page', $pageStaff->ID) instanceof Page);
         $this->assertTrue(DataObject::get_by_id('Page', $pageStaffDuplicate->ID) instanceof Page);
         Versioned::set_stage(Versioned::DRAFT);
-        Config::inst()->update(SiteTree::class, 'enforce_strict_hierarchy', true);
+        Config::modify()->set(SiteTree::class, 'enforce_strict_hierarchy', true);
     }
 
     public function testUnpublishDoesNotDeleteChildrenWithLooseHierachyOn()
     {
-        Config::inst()->update(SiteTree::class, 'enforce_strict_hierarchy', false);
+        Config::modify()->set(SiteTree::class, 'enforce_strict_hierarchy', false);
         $this->logInWithPermission('ADMIN');
 
         $pageAbout = $this->objFromFixture('Page', 'about');
@@ -522,7 +522,7 @@ class SiteTreeTest extends SapphireTest
         $this->assertTrue(DataObject::get_by_id('Page', $pageStaff->ID) instanceof Page);
         $this->assertTrue(DataObject::get_by_id('Page', $pageStaffDuplicate->ID) instanceof Page);
         Versioned::set_stage(Versioned::DRAFT);
-        Config::inst()->update(SiteTree::class, 'enforce_strict_hierarchy', true);
+        Config::modify()->set(SiteTree::class, 'enforce_strict_hierarchy', true);
     }
 
     public function testDeleteFromLiveOperatesRecursivelyStrict()
@@ -909,7 +909,7 @@ class SiteTreeTest extends SapphireTest
         $sitetree->URLSegment = 'home';
         $this->assertFalse($sitetree->validURLSegment(), 'Conflicts are still recognised with a ParentID value');
 
-        Config::inst()->update(SiteTree::class, 'nested_urls', true);
+        Config::modify()->set(SiteTree::class, 'nested_urls', true);
 
         $sitetree->ParentID   = 0;
         $sitetree->URLSegment = 'home';
@@ -940,7 +940,7 @@ class SiteTreeTest extends SapphireTest
      */
     public function testValidURLSegmentControllerConflicts()
     {
-        Config::inst()->update(SiteTree::class, 'nested_urls', true);
+        Config::modify()->set(SiteTree::class, 'nested_urls', true);
 
         $sitetree = new SiteTree();
         $sitetree->ParentID = $this->idFromFixture('SiteTreeTest_Conflicted', 'parent');
@@ -1023,7 +1023,7 @@ class SiteTreeTest extends SapphireTest
         $this->assertContains('Page', $classes, 'Page types do contain subclasses');
 
         // Testing what happens in an incorrect config value is set - hide_ancestor should be a string
-        Config::inst()->update(SiteTreeTest_ClassA::class, 'hide_ancestor', true);
+        Config::modify()->set(SiteTreeTest_ClassA::class, 'hide_ancestor', true);
         $newClasses = SiteTree::page_type_classes();
         $this->assertEquals(
             $classes,
@@ -1220,7 +1220,7 @@ class SiteTreeTest extends SapphireTest
         );
 
         // test proper escaping of quotes in attribute value
-        Config::inst()->update(SiteTree::class, 'meta_generator', 'Generator with "quotes" in it');
+        Config::modify()->set(SiteTree::class, 'meta_generator', 'Generator with "quotes" in it');
         $meta = $page->MetaTags();
         $this->assertEquals(
             1,
@@ -1229,7 +1229,7 @@ class SiteTreeTest extends SapphireTest
         );
 
         // test empty generator - no tag should appear at all
-        Config::inst()->update(SiteTree::class, 'meta_generator', '');
+        Config::modify()->set(SiteTree::class, 'meta_generator', '');
         $meta = $page->MetaTags();
         $this->assertEquals(
             0,
@@ -1238,7 +1238,7 @@ class SiteTreeTest extends SapphireTest
         );
 
         // reset original value
-        Config::inst()->update(SiteTree::class, 'meta_generator', $generator);
+        Config::modify()->set(SiteTree::class, 'meta_generator', $generator);
     }
 
 

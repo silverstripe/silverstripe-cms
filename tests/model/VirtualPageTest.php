@@ -47,8 +47,8 @@ class VirtualPageTest extends FunctionalTest
         $this->logInWithPermission("ADMIN");
 
         // Add extra fields
-        Config::inst()->update('SilverStripe\\CMS\\Model\\VirtualPage', 'initially_copied_fields', array('MyInitiallyCopiedField'));
-        Config::inst()->update('SilverStripe\\CMS\\Model\\VirtualPage', 'non_virtual_fields', array('MyNonVirtualField', 'MySharedNonVirtualField'));
+        Config::modify()->merge(VirtualPage::class, 'initially_copied_fields', array('MyInitiallyCopiedField'));
+        Config::modify()->merge(VirtualPage::class, 'non_virtual_fields', array('MyNonVirtualField', 'MySharedNonVirtualField'));
     }
 
     /**
@@ -63,8 +63,8 @@ class VirtualPageTest extends FunctionalTest
         $master->Content = "<p>New content</p>";
         $master->write();
 
-        $vp1 = $this->objFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp1');
-        $vp2 = $this->objFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp2');
+        $vp1 = $this->objFromFixture(VirtualPage::class, 'vp1');
+        $vp2 = $this->objFromFixture(VirtualPage::class, 'vp2');
 
         $this->assertEquals("New title", $vp1->Title);
         $this->assertEquals("New title", $vp2->Title);
@@ -90,16 +90,16 @@ class VirtualPageTest extends FunctionalTest
         $master->Content = "<p>New content</p>";
         $master->write();
 
-        $vp1 = DataObject::get_by_id(VirtualPage::class, $this->idFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp1'));
-        $vp2 = DataObject::get_by_id(VirtualPage::class, $this->idFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp2'));
+        $vp1 = DataObject::get_by_id(VirtualPage::class, $this->idFromFixture(VirtualPage::class, 'vp1'));
+        $vp2 = DataObject::get_by_id(VirtualPage::class, $this->idFromFixture(VirtualPage::class, 'vp2'));
         $this->assertTrue($vp1->publishRecursive());
         $this->assertTrue($vp2->publishRecursive());
 
         $master->publishRecursive();
 
         Versioned::set_stage(Versioned::LIVE);
-        $vp1 = DataObject::get_by_id(VirtualPage::class, $this->idFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp1'));
-        $vp2 = DataObject::get_by_id(VirtualPage::class, $this->idFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp2'));
+        $vp1 = DataObject::get_by_id(VirtualPage::class, $this->idFromFixture(VirtualPage::class, 'vp1'));
+        $vp2 = DataObject::get_by_id(VirtualPage::class, $this->idFromFixture(VirtualPage::class, 'vp2'));
 
         $this->assertNotNull($vp1);
         $this->assertNotNull($vp2);
@@ -242,7 +242,7 @@ class VirtualPageTest extends FunctionalTest
     public function testCanEdit()
     {
         $parentPage = $this->objFromFixture('Page', 'master3');
-        $virtualPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp3');
+        $virtualPage = $this->objFromFixture(VirtualPage::class, 'vp3');
         $bob = $this->objFromFixture('SilverStripe\\Security\\Member', 'bob');
         $andrew = $this->objFromFixture('SilverStripe\\Security\\Member', 'andrew');
 
@@ -261,7 +261,7 @@ class VirtualPageTest extends FunctionalTest
     {
         $parentPage = $this->objFromFixture('Page', 'master3');
         $parentPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
-        $virtualPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp3');
+        $virtualPage = $this->objFromFixture(VirtualPage::class, 'vp3');
         $virtualPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
         $cindy = $this->objFromFixture('SilverStripe\\Security\\Member', 'cindy');
         $alice = $this->objFromFixture('SilverStripe\\Security\\Member', 'alice');
@@ -487,7 +487,7 @@ class VirtualPageTest extends FunctionalTest
         $virtual->CopyContentFromID = $page->ID;
         $virtual->write();
 
-        $virtual = DataObject::get_by_id('SilverStripe\\CMS\\Model\\VirtualPage', $virtual->ID, false);
+        $virtual = DataObject::get_by_id(VirtualPage::class, $virtual->ID, false);
         $virtual->CopyContentFromID = $notRootPage->ID;
         $virtual->flushCache();
 
@@ -630,9 +630,28 @@ class VirtualPageTest extends FunctionalTest
         $this->assertEquals('http://google.com', $response->getHeader('Location'));
     }
 
+    public function testVirtualPageRendersCorrectTemplate()
+    {
+        $this->useDraftSite(true);
+        $this->useTestTheme(dirname(__FILE__), 'virtualpagetest', function () {
+            $page = new VirtualPageTest_ClassA();
+            $page->Title = 'Test Page';
+            $page->Content = 'NotThisContent';
+            $page->MyInitiallyCopiedField = 'TestContent';
+            $page->write();
+            $vp = new VirtualPage();
+            $vp->CopyContentFromID = $page->ID;
+            $vp->write();
+            $response = $this->get($vp->Link());
+            $this->assertEquals(200, $response->getStatusCode());
+            $this->assertContains('TestContent', $response->getBody());
+            $this->assertNotContains('NotThisContent', $response->getBody());
+        });
+    }
+
     public function testMethod()
     {
-        $virtualPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp4');
+        $virtualPage = $this->objFromFixture(VirtualPage::class, 'vp4');
         $controller = ModelAsController::controller_for($virtualPage);
 
         $this->assertInstanceOf('VirtualPageTest_ClassAController', $controller);
@@ -644,7 +663,7 @@ class VirtualPageTest extends FunctionalTest
 
     public function testAllowedActions()
     {
-        $virtualPage = $this->objFromFixture('SilverStripe\\CMS\\Model\\VirtualPage', 'vp4');
+        $virtualPage = $this->objFromFixture(VirtualPage::class, 'vp4');
         $controller = ModelAsController::controller_for($virtualPage);
         $this->assertContains('testaction', $controller->allowedActions());
     }

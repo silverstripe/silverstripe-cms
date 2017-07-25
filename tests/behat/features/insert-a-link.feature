@@ -72,9 +72,9 @@ So that I can link to a external website or a page on my site
 
   Scenario: I can remove a link
     Given I fill in the "Content" HTML field with "My <a href='http://silverstripe.org'>awesome</a> content"
-    And I select "awesome" in the "Content" HTML field
-    When I press the "Remove link" HTML field button
+      And I select "awesome" in the "Content" HTML field
+    When I press the "Remove link" button
     Then the "Content" HTML field should contain "My awesome content"
-    And the "Content" HTML field should not contain "http://silverstripe.org"
+      And the "Content" HTML field should not contain "http://silverstripe.org"
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save draft" button

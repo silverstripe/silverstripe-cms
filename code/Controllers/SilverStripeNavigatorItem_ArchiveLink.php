@@ -53,8 +53,9 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem
 
     public function canView($member = null)
     {
+        $recordClass = get_class($this->record);
         return (
-            $this->record->hasExtension(Versioned::class)
+            $recordClass::has_extension(Versioned::class)
             && $this->isArchived()
             // Don't follow redirects in preview, they break the CMS editing form
             && !($this->record instanceof RedirectorPage)
