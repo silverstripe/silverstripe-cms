@@ -23,7 +23,7 @@ class InternalLinkFormFactory extends LinkFormFactory
                 SiteTree::class,
                 'ID',
                 'TreeTitle'
-            ),
+            )->setTitleField('MenuTitle'),
             TextField::create(
                 'Description',
                 _t(__CLASS__.'.LINKDESCR', 'Link description')
