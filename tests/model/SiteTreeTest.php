@@ -50,6 +50,7 @@ class SiteTreeTest extends SapphireTest
         SiteTreeTest_ClassCext::class,
         SiteTreeTest_NotRoot::class,
         SiteTreeTest_StageStatusInherit::class,
+        SiteTreeTest_DataObject::class,
     );
 
     public function testCreateDefaultpages()
@@ -632,6 +633,9 @@ class SiteTreeTest extends SapphireTest
         // Test creation underneath a parent which doesn't exist in the database. This should
         // fall back to checking whether the user can create pages at the root of the site
         $this->assertTrue(singleton(SiteTree::class)->canCreate(null, array('Parent' => singleton(SiteTree::class))));
+
+        //Test we don't check for allowedChildren on parent context if it's not SiteTree instance
+        $this->assertTrue(singleton(SiteTree::class)->canCreate(null, ['Parent' => $this->objFromFixture('SiteTreeTest_DataObject', 'relations')]));
     }
 
     public function testEditPermissionsOnDraftVsLive()

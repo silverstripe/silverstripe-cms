@@ -123,3 +123,8 @@ SilverStripe\CMS\Model\RedirectorPage:
     URLSegment: external
     RedirectionType: External
     ExternalURL: "http://www.google.com?a&b"
+
+SiteTreeTest_DataObject:
+  relations:
+    Title: 'Linked DataObject'
+    Pages: =>Page.home,=>Page.about,=>Page.staff
