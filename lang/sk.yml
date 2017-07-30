@@ -16,7 +16,7 @@ sk:
     ACCESS_HELP: 'Povoliť prezeranie sekcie obsahujúcu strom stránok a obsah. Práva na prezeranie a úpravu môžu byť nastavené cez výber, ako aj jednotlivo  "Práva obsahu".'
     APPLY_FILTER: Hľadať
     ARCHIVE: Archív
-    ARCHIVEDPAGE: 'Archivovaná stránka ''%s'''
+    ARCHIVEDPAGE: 'Archivovaná stránka ''{title}'''
     AddNew: 'Pridať novú stránku'
     AddNewButton: 'Pridať nový'
     AddPageRestriction: 'Poznámka: Niektoré typy stránok nie sú povolené pre tento výber'
@@ -47,7 +47,7 @@ sk:
     PUBPAGES: 'Hotovo: Publikované {count} stránky'
     PageAdded: 'Stránka vytvorená úspešne'
     REMOVEDPAGE: 'Zmazané ''{title}'' z verejného webu'
-    REMOVEDPAGEFROMDRAFT: 'Odstránené ''%s'' z konceptu webu'
+    REMOVEDPAGEFROMDRAFT: 'Odstránené ''{title}'' z konceptu webu'
     REORGANISATIONSUCCESSFUL: 'Strom webu bol reorganizovaný úspešne.'
     RESTORE: 'Obnoviť koncept'
     RESTORED: 'Obnovené ''{title}'' úspešne'
@@ -56,7 +56,7 @@ sk:
     RESTORE_TO_ROOT_DESC: 'Obnoviť archivovanú verziu na koncept ako stránku najvyššej úrovne'
     ROLLBACK: 'Návrat na túto verziu'
     ROLLEDBACKPUBv2: 'Vrátené späť na zverejnenú verziu.'
-    ROLLEDBACKVERSIONv2: 'Vrátené späť na verziu #%d.'
+    ROLLEDBACKVERSIONv2: 'Vrátené späť na verziu #{version}.'
     SAVED: 'Uložené ''{title}'' úspešne.'
     SAVEDRAFT: 'Uložiť koncept'
     SHOW_AS_LIST: 'ukázať ako zoznam'

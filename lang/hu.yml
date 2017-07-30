@@ -14,10 +14,10 @@ hu:
     PUBPAGES: '{count} oldalt publikált'
     PageAdded: 'Oldal sikeresen létrehozva'
     REMOVEDPAGE: '''{title}'' törölve a publikált oldalról'
-    REMOVEDPAGEFROMDRAFT: '''%s'' törlése a piszkozatoldalról'
+    REMOVEDPAGEFROMDRAFT: '''{title}'' törlése a piszkozatoldalról'
     RESTORED: '''{title}'' sikeresen helyreállítva'
     ROLLEDBACKPUBv2: 'Visszatérés a publikált verzióhoz.'
-    ROLLEDBACKVERSIONv2: '#%d verzió beállítva.'
+    ROLLEDBACKVERSIONv2: '#{version} verzió beállítva.'
     SAVEDRAFT: 'Piszkozat mentése'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Másik oldal alatt'

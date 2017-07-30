@@ -12,17 +12,17 @@
 						<ul class="cms-tabset-nav-primary nav nav-tabs">
 							<li class="nav-item content-treeview<% if $TabIdentifier == 'edit' %> ui-tabs-active<% end_if %>">
 								<a href="$LinkPageEdit" class="nav-link cms-panel-link" title="Form_EditForm" data-href="$LinkPageEdit">
-				  <% _t('SilverStripe\CMS\Controllers\CMSMain.TabContent', 'Content') %>
+				  <%t SilverStripe\CMS\Controllers\CMSMain.TabContent 'Content' %>
 								</a>
 							</li>
 							<li class="nav-item content-listview<% if $TabIdentifier == 'settings' %> ui-tabs-active<% end_if %>">
 								<a href="$LinkPageSettings" class="nav-link cms-panel-link" title="Form_EditForm" data-href="$LinkPageSettings">
-				  <% _t('SilverStripe\CMS\Controllers\CMSMain.TabSettings', 'Settings') %>
+				  <%t SilverStripe\CMS\Controllers\CMSMain.TabSettings 'Settings' %>
 								</a>
 							</li>
 							<li class="nav-item content-listview<% if $TabIdentifier == 'history' %> ui-tabs-active<% end_if %>">
 								<a href="$LinkPageHistory" class="nav-link cms-panel-link" title="Form_EditForm" data-href="$LinkPageHistory">
-				  <% _t('SilverStripe\CMS\Controllers\CMSMain.TabHistory', 'History') %>
+				  <%t SilverStripe\CMS\Controllers\CMSMain.TabHistory 'History' %>
 								</a>
 							</li>
 						</ul>

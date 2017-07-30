@@ -3,7 +3,7 @@ es_MX:
     PAGENOTEXISTS: 'Esta página no existe'
     PUBALLCONFIRM: 'Por favor publique todas las páginas del sitio, copiando el contenido del boceto al sitio público'
     PUBALLFUN: 'Funcionalidad "Publicar todo"'
-    REMOVEDPAGEFROMDRAFT: 'Se ha eliminado ''%s'' del boceto del sitio'
+    REMOVEDPAGEFROMDRAFT: 'Se ha eliminado ''{title}'' del boceto del sitio'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITEFROM: 'Sito archivado de'
     DRAFTSITE: 'Proyecto del Sitio'

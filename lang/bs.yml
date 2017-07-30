@@ -4,7 +4,7 @@ bs:
     PAGENOTEXISTS: 'Ova stranica ne postoji'
     PUBALLCONFIRM: 'Molimo, objavite svaku stavku na ovoj stranici, kopiranjem sadržaja na aktivnu stranicu'
     PUBALLFUN: 'Funkcija "Objavi sve"'
-    REMOVEDPAGEFROMDRAFT: 'Uklonjeno ''%s'' sa privremenog nacrta stranice'
+    REMOVEDPAGEFROMDRAFT: 'Uklonjeno ''{title}'' sa privremenog nacrta stranice'
   SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Kod greške'
     CODE_400: '400 - Pogrešan zahtjev'

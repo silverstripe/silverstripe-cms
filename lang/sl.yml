@@ -5,7 +5,7 @@ sl:
     ACCESS: 'Dostop do razdelka ''{title}'' '
     ACCESS_HELP: 'Dovoli vpogled  sklop z drevesno strukturo in vsebino. Pravice za ogled in urejanje je možno urejati prek dropdown-seznamov za vsako posamezno stran, ali pa ločeno v sklopu Nastavitve pravic za upravljanje z vsebino (Content permissions). '
     ARCHIVE: Arhiv
-    ARCHIVEDPAGE: 'Arhivirana stran ''%s'''
+    ARCHIVEDPAGE: 'Arhivirana stran ''{title}'''
     AddPageRestriction: 'Pozor: nekateri tipi strani niso dovoljeni za to izbiro'
     Cancel: Prekliči
     ChoosePageParentMode: 'Izberite mesto, kjer želite ustvariti novo stran'
@@ -18,7 +18,7 @@ sl:
     PUBPAGES: 'Opravljeno: Objavljenih je {count} strani'
     PageAdded: 'Stran je bila uspešno ustvarjena'
     REMOVEDPAGE: '''{title}'' je odstranjen z objavljenega spletnega mesta. '
-    REMOVEDPAGEFROMDRAFT: 'Vsebina, odstranjena iz osnutka spletnega mesta: ''%s'''
+    REMOVEDPAGEFROMDRAFT: 'Vsebina, odstranjena iz osnutka spletnega mesta: ''{title}'''
     SAVED: 'Uspešno shranjeno ''{title}''.'
     SAVEDRAFT: 'Shrani osnutek'
     UNPUBLISH_AND_ARCHIVE: 'Odstrani iz objave in arhiviraj'

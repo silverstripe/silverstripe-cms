@@ -13,7 +13,7 @@ et_EE:
     PUBPAGES: 'Valmis: {count} lehte avaldatud'
     PageAdded: 'Lehekülje loomine õnnestus'
     REMOVEDPAGE: 'Leht ''{title}'' eemaldati avaldatud saitide hulgast'
-    REMOVEDPAGEFROMDRAFT: '''%s'' eemaldatud visandi lehelt'
+    REMOVEDPAGEFROMDRAFT: '''{title}'' eemaldatud visandi lehelt'
     RESTORED: '''{title}'' taastati edukalt'
     SAVEDRAFT: 'Salvesta mustand'
   SilverStripe\CMS\Controllers\CMSPageAddController:

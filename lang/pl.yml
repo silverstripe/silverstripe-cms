@@ -18,11 +18,11 @@ pl:
     PUBPAGES: 'Zrobiono:  Opublikowano {count} stron'
     PageAdded: 'Pomyślnie utworzono stronę'
     REMOVEDPAGE: 'Usunięto ''{title}'' z opublikowanej witryny'
-    REMOVEDPAGEFROMDRAFT: '''%s'' usunięto ze szkiców'
+    REMOVEDPAGEFROMDRAFT: '''{title}'' usunięto ze szkiców'
     RESTORED: 'Pomyślnie przywrócono ''{title}'''
     RESTORE_DESC: 'Przywróć jako szkic'
     ROLLEDBACKPUBv2: 'Przywrócono opublikowaną wersję'
-    ROLLEDBACKVERSIONv2: 'Przywrócono wersję #%d.'
+    ROLLEDBACKVERSIONv2: 'Przywrócono wersję #{version}.'
     SAVEDRAFT: 'Zapisz szkic'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Pod inną stroną'

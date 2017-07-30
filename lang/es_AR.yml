@@ -4,7 +4,7 @@ es_AR:
     PAGENOTEXISTS: 'Esta página no existe'
     PUBALLCONFIRM: 'Por favor publica todas las páginas del sitio, copiando el contenido del boceto al sitio público'
     PUBALLFUN: 'Funcionalidad "Publicar Todo"'
-    REMOVEDPAGEFROMDRAFT: 'Quitados ''%s'' del borrador del sitio'
+    REMOVEDPAGEFROMDRAFT: 'Quitados ''{title}'' del borrador del sitio'
   SilverStripe\CMS\Controllers\ContentController:
     DRAFTSITE: 'Sitio borrador'
     LOGGEDINAS: 'Conectado como'

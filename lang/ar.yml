@@ -16,10 +16,10 @@ ar:
     PUBPAGES: 'تمّ: نشر {count} صفحات'
     PageAdded: 'تم إنشاء الصفحة بنجاح'
     REMOVEDPAGE: 'أزيل ''{title}'' من الموقع المنشور'
-    REMOVEDPAGEFROMDRAFT: '''%s'' محذوف من مسودة الموقع'
+    REMOVEDPAGEFROMDRAFT: '''{title}'' محذوف من مسودة الموقع'
     RESTORED: 'استعادة ''{title}'' بنجاح'
     ROLLEDBACKPUBv2: 'التراجع إلى النسخة المنشورة.'
-    ROLLEDBACKVERSIONv2: 'التراجع إلى النسخة #%d.'
+    ROLLEDBACKVERSIONv2: 'التراجع إلى النسخة #{version}.'
     SAVEDRAFT: 'احفظ المسودة'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'تحت صفحة أخرى'

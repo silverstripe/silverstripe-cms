@@ -15,7 +15,7 @@ fi:
     ACCESS_HELP: 'Oikeuttaa näkemään osion, joka sisältää sivurakenteen ja sisällön. Katselu- ja muokkausoikeuksia voidaan käsitellä sivukohtaisten pudotusvalikoiden kautta, kuten myös erillisestä "Sisällön oikeudet"-kohdasta.'
     APPLY_FILTER: Haku
     ARCHIVE: Arkistoi
-    ARCHIVEDPAGE: 'Arkistoitiin sivu ''%s'''
+    ARCHIVEDPAGE: 'Arkistoitiin sivu ''{title}'''
     AddNew: 'Lisää uusi sivu'
     AddNewButton: 'Lisää uusi'
     AddPageRestriction: 'Huomio: Tietyt sivutyypit eivät ole sallittuja valitun sivutyypin alle.'
@@ -46,7 +46,7 @@ fi:
     PUBPAGES: 'Valmis: julkaistiin {count} sivu(a)'
     PageAdded: 'Sivun luonti onnistui'
     REMOVEDPAGE: '''{title}'' poistettiin julkaistulta sivustolta'
-    REMOVEDPAGEFROMDRAFT: 'Poistettu ''%s'' luonnossivustolta'
+    REMOVEDPAGEFROMDRAFT: 'Poistettu ''{title}'' luonnossivustolta'
     REORGANISATIONSUCCESSFUL: 'Hakemistopuu uudelleenjärjestettiin onnistuneesti.'
     RESTORE: 'Palauta luonnos'
     RESTORED: '''{title}'' palautettiin onnistuneesti'
@@ -55,7 +55,7 @@ fi:
     RESTORE_TO_ROOT_DESC: 'Palauta arkistoitu versio luonnoksena päätason sivuksi'
     ROLLBACK: 'Palauta tähän versioon'
     ROLLEDBACKPUBv2: 'Palattiin takaisin julkaistuun versioon'
-    ROLLEDBACKVERSIONv2: 'Palautettu versioon #%d.'
+    ROLLEDBACKVERSIONv2: 'Palautettu versioon #{version}.'
     SAVED: 'Tallennettiin ''{title}'' onnistuneesti.'
     SAVEDRAFT: 'Tallenna luonnos'
     SHOW_AS_LIST: 'näytä listana'

@@ -3,7 +3,7 @@ ca:
     PAGENOTEXISTS: 'Aquesta pàgina no existeix'
     PUBALLCONFIRM: 'Publica cada pàgina del lloc web, copiant el contingut cap a la versió publicada'
     PUBALLFUN: 'Funcionalitat de "Publica-ho tot"'
-    REMOVEDPAGEFROMDRAFT: 'S''ha suprimit  ''%s'' del lloc esborrany'
+    REMOVEDPAGEFROMDRAFT: 'S''ha suprimit  ''{title}'' del lloc esborrany'
   SilverStripe\CMS\Model\ErrorPage:
     CODE: 'Codi d''error'
     CODE_400: '400 - Mala petició'
