@@ -1742,7 +1742,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         $this->getResponse()->addHeader(
             'X-Status',
-            rawurlencode(sprintf(_t('SilverStripe\\CMS\\Controllers\\CMSMain.REMOVEDPAGEFROMDRAFT', "Removed '%s' from the draft site"), $record->Title))
+            rawurlencode(_t(
+                __CLASS__ . '.REMOVEDPAGEFROMDRAFT',
+                "Removed '{title}' from the draft site",
+                ['title' => $record->Title]
+            ))
         );
 
         // Even if the record has been deleted from stage and live, it can be viewed in "archive mode"
@@ -1774,7 +1778,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         $this->getResponse()->addHeader(
             'X-Status',
-            rawurlencode(sprintf(_t('SilverStripe\\CMS\\Controllers\\CMSMain.ARCHIVEDPAGE', "Archived page '%s'"), $record->Title))
+            rawurlencode(_t(
+                __CLASS__ . '.ARCHIVEDPAGE',
+                "Archived page '{title}'",
+                ['title' => $record->Title]
+            ))
         );
 
         // Even if the record has been deleted from stage and live, it can be viewed in "archive mode"
