@@ -34,8 +34,12 @@ class InternalLinkModalExtension extends Extension
      */
     public function editorInternalLink()
     {
-        /** @var InternalLinkFormFactory $factory */
+        $showLinkText = $this->getOwner()->getRequest()->getVar('requireLinkText');
         $factory = InternalLinkFormFactory::singleton();
-        return $factory->getForm($this->getOwner(), "editorInternalLink");
+        return $factory->getForm(
+            $this->getOwner(),
+            "editorInternalLink",
+            [ 'RequireLinkText' => isset($showLinkText) ]
+        );
     }
 }

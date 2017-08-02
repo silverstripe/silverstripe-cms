@@ -36,7 +36,7 @@ class InternalLinkFormFactory extends LinkFormFactory
             ),
         ]);
 
-        if ($this->requireLinkTextField($controller)) {
+        if ($context['RequireLinkText']) {
             $fields->insertAfter('PageID', TextField::create('Text', _t(__CLASS__.'.LINKTEXT', 'Link text')));
         }
 
@@ -45,7 +45,7 @@ class InternalLinkFormFactory extends LinkFormFactory
 
     protected function getValidator($controller, $name, $context)
     {
-        if ($this->requireLinkTextField($controller)) {
+        if ($context['RequireLinkText']) {
             return RequiredFields::create('Text');
         }
 
