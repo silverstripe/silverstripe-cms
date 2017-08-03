@@ -13,3 +13,11 @@ Name: cmsmodals
 SilverStripe\Admin\ModalController:
   extensions:
     - SilverStripe\CMS\Forms\InternalLinkModalExtension
+---
+Name: cmscampaigns
+Only:
+  moduleexists: 'silverstripe/campaign-admin'
+---
+SilverStripe\CampaignAdmin\CampaignAdmin:
+  placeholder_group_classes:
+    - 'SilverStripe\CMS\Model\SiteTree'
