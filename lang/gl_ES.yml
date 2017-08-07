@@ -30,12 +30,6 @@ gl_ES:
     NOTLOGGEDIN: 'Sen iniciar sesión'
     PUBLISHEDSITE: 'Sitio Publicado'
     VIEWPAGEIN: 'Ver a Páxina en:'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Código de erro'
-    DEFAULTERRORPAGECONTENT: '<p>Sintoo, parece que estabas tratando de acceder a unha página que non existe.</p><p>Por favor, comproba o enderezo da URL que estaba tratando de acceder e volva tentalo.</p>'
-    DEFAULTERRORPAGETITLE: 'Páxina non atopada'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Sintoo, houbo un problema coa xestión da túa petición.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Erro Servidor'
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Esta páxina redirixirá os usuarios a outra páxina'
     OTHERURL: 'Outra URL do sitio web'
@@ -58,9 +52,7 @@ gl_ES:
     DEFAULTCONTACTTITLE: Contactarnos
     DEFAULTHOMETITLE: Inicio
     DependtPageColumnLinkType: 'Tipo de ligazón'
-    EDITANYONE: 'Ningún pode iniciar sesión no CMS'
     EDITHEADER: 'Quen pode editar esta páxina?'
-    EDITONLYTHESE: 'Só esta xente (escoller da lista)'
     EDITORGROUPS: 'Grupos Editor'
     EDIT_ALL_DESCRIPTION: 'Editar calquer páxina'
     Editors: 'Grupos dos Editores'

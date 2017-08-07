@@ -60,37 +60,6 @@ ja:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'URLのセグメントを入力または中止をクリックする'
     HelpChars: 特殊文字は自動的に変換されたか取り除かれました
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: エラーコード
-    CODE_400: '400 - 不適格な要求です'
-    CODE_401: '401 - 許可されていません'
-    CODE_403: '403 - 禁止されています'
-    CODE_404: '404 - 見つかりません'
-    CODE_405: '405 - 禁じられた方法です'
-    CODE_406: '406 - 許容できません'
-    CODE_407: '407 - プロキシ認証が必要です'
-    CODE_408: '408 - 応答がありません'
-    CODE_409: '409 - 衝突が生じています'
-    CODE_410: '410 - 消失しました'
-    CODE_411: '411 - 冗長な要求です。'
-    CODE_412: '412 - 前提条件がありません'
-    CODE_413: '413 - リクエストされたものが長すぎます'
-    CODE_414: '414 - リクエストされたURIが長すぎます'
-    CODE_415: '415 - サポートされていないメディアです'
-    CODE_416: '416 - リクエストの長さが満たされていません'
-    CODE_417: '417 - 期待には沿えませんでした'
-    CODE_422: '422 - 処理できないエンティティ'
-    CODE_429: '429 - リクエスト過多'
-    CODE_500: '500 - 本質的なサーバーエラーです'
-    CODE_501: '501 - 実施できません'
-    CODE_502: '502 - Gatewayとして正しくありません'
-    CODE_503: '503 - サービスが利用できません'
-    CODE_504: '504 - Gatewayが時間切れです'
-    CODE_505: '505 - サポートされていないHTTPのバージョンです'
-    DEFAULTERRORPAGECONTENT: '<p>申し訳ありませんが、貴方の見ようとしているページは存在しません。</p><p>貴方が見ようとしているサイトのURLの綴りがあっているのか、再度確認してください。</p>'
-    DEFAULTERRORPAGETITLE: ページが見つかりません
-    DEFAULTSERVERERRORPAGECONTENT: '<p>申し訳ございません。あなたのリクエストを処理中に問題が起きました。</p>'
-    DEFAULTSERVERERRORPAGETITLE: サーバーエラー
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: '転送URLを含むページには、転送先がない状態で設定されています。'
     HEADER: このページをユーザーを変更して他のページにしますか？
@@ -123,9 +92,7 @@ ja:
     DEPENDENT_NOTE: 以下のページでは、このページに依存します。　これには仮想ページ、リダイレクタページ、コンテンツのリンクを持つページが含まれています。
     DependtPageColumnLinkType: リンクの種類
     DependtPageColumnURL: URL
-    EDITANYONE: 誰でもCMSにログインが可能
     EDITHEADER: このページを編集できる人
-    EDITONLYTHESE: 'この人達だけ (リストから選択してください)'
     EDITORGROUPS: '編集者グループ'
     EDIT_ALL_DESCRIPTION: すべてのページを編集
     EDIT_ALL_HELP: 'アクセスタブの設定にかかわらず、このサイト上のページを編集するには、"''ページ''セクションへのアクセス"許可が必要です。'

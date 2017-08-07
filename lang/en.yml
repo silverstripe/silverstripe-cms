@@ -139,6 +139,7 @@ en:
     ANCHORVALUE: Anchor
     LINKDESCR: 'Link description'
     LINKOPENNEWWIN: 'Open in new window/tab'
+    LINKTEXT: 'Link text'
     SELECT_PAGE: 'Select a page'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Cancel
@@ -148,7 +149,6 @@ en:
     OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Redirects to an internal page or an external URL'
-    HASBEENSETUP: 'A redirector page has been set up without anywhere to redirect to.'
     HEADER: 'This page will redirect users to another page'
     OTHERURL: 'Other website URL'
     PLURALNAME: 'Redirector Pages'
@@ -160,6 +160,8 @@ en:
     REDIRECTTOPAGE: 'A page on your website'
     SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Page on your website'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'A redirector page has been set up without anywhere to redirect to.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Anyone
     ACCESSHEADER: 'Who can view this page?'

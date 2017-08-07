@@ -32,11 +32,6 @@ el:
     ARCHIVED: Αρχειοθετημένο
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Παρακαλώ εισάγεται ένα τμήμα διεύθυνσης URL ή πατήστε άκυρο'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Κωδικός σφάλματος'
-    CODE_404: '404 - Δεν βρέθηκε'
-    DEFAULTERRORPAGETITLE: 'Η σελίδα δεν βρέθηκε'
-    DEFAULTSERVERERRORPAGETITLE: 'Σφάλμα διακομιστή'
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Αυτή η σελίδα θα ανακατευθύνει τους χρήστες σε μια άλλη σελίδα'
     REDIRECTTO: 'Ανακατεύθυνση σε'
@@ -57,7 +52,6 @@ el:
     DependtPageColumnLinkType: 'Τύπος συνδέσμου'
     DependtPageColumnURL: 'Διεύθυνση URL'
     EDITHEADER: 'Ποιος μπορεί να επεξεργαστεί αυτή τη σελίδα;'
-    EDITONLYTHESE: 'Μόνο αυτοί οι χρήστες (επιλέξτε από τη λίστα)'
     EDITORGROUPS: 'Ομάδες Συντακτών'
     Editors: 'Ομάδες Συντακτών'
     GroupPlaceholder: 'Κάντε κλικ για επιλογή ομάδας'

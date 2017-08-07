@@ -55,35 +55,6 @@ zh:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: '请输入一个URL分类或点击“取消”'
     HelpChars: '特殊字符已自动转换或删除。'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: '错误代码'
-    CODE_400: '400 - 错误请求'
-    CODE_401: '401 - 未授权'
-    CODE_403: '403 - 禁止'
-    CODE_404: '404 - 未找到'
-    CODE_405: '405 - 不允许使用该方法'
-    CODE_406: '406 - 不接受'
-    CODE_407: '407 - 要求代理身份验证'
-    CODE_408: '408 - 请求超时'
-    CODE_409: '409 - 冲突'
-    CODE_410: '410 - 已失效'
-    CODE_411: '411 - 需要内容长度'
-    CODE_412: '412 - 前提条件失败'
-    CODE_413: '413 - 请求实体太大'
-    CODE_414: '414 - 请求的URI太长'
-    CODE_415: '415 - 不支持的媒体类型'
-    CODE_416: '416 - 请求的范围无法满足'
-    CODE_417: '417 - 预期失败'
-    CODE_500: '500 - 服务器内部错误'
-    CODE_501: '501 - 未实现'
-    CODE_502: '502 - 网关错误'
-    CODE_503: '503 - 服务不可用'
-    CODE_504: '504 - 网关超时'
-    CODE_505: '505 - HTTP版本不支持'
-    DEFAULTERRORPAGECONTENT: '<p>对不起，您正在尝试访问不存在的页面。</p><p>请检查您想要访问的URL的拼写并再试一次。</p>'
-    DEFAULTERRORPAGETITLE: 未发现页面
-    DEFAULTSERVERERRORPAGECONTENT: '<p>对不起，处理您的请求时发生错误。</p>'
-    DEFAULTSERVERERRORPAGETITLE: 服务器错误
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: '建立了一个没有任何跳转目标的重定向页。'
     HEADER: 该页面将会使用户转向另外一个页面
@@ -115,9 +86,7 @@ zh:
     DEPENDENT_NOTE: '以下页面依赖该页。包括虚拟页面，重定向页，以及有内容链接的页面。'
     DependtPageColumnLinkType: 链接类型
     DependtPageColumnURL: URL
-    EDITANYONE: '任何人都可以登录到内容管理系统'
     EDITHEADER: 谁可以修改该页面？
-    EDITONLYTHESE: '仅这些人（从列表中选择）'
     EDITORGROUPS: 编辑分组
     EDIT_ALL_DESCRIPTION: 编辑任何页面
     EDIT_ALL_HELP: 可以编辑站点上的任何页面，忽略“访问”选项卡上的设置。需要“访问’页面‘部分”权限

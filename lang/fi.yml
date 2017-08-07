@@ -3,6 +3,7 @@ fi:
     RESULT: 'Poistettiin %d sivua luonnoksista ja julkaistuista sivuista sekä arkistoitiin'
     TITLE: 'Poista näkyviltä ja arkistoi'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: 'Julkaistu %d sivua, %d virhettä'
     PUBLISH_PAGES: Julkaise
   SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
     RESTORE: Palauta
@@ -134,24 +135,17 @@ fi:
     VIEWPAGEIN: 'Tarkastele sivua:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arkistoitu
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    ANCHORVALUE: Ankkuri
+    LINKDESCR: 'Linkin kuvaus'
+    LINKOPENNEWWIN: 'Avataanko linkki uudessa ikkunassa/välilehdellä?'
+    SELECT_PAGE: 'Valitse sivu'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Peruuta
     EMPTY: 'Anna URL-osoite tai napsauta peruuta'
     Edit: Muokkaa
     HelpChars: 'Erikoismerkit muunnetaan tai poistetaan automaattisesti.'
     OK: OK
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: Virhekoodi
-    DEFAULTERRORPAGECONTENT: '<p>Valitettavasti hakemaasi sivua ei ole olemassa.</p><p>Tarkista hakemasi sivun URL-osoitteen kirjoitusasu ja yritä uudelleen.</p>'
-    DEFAULTERRORPAGETITLE: 'Sivua ei löytynyt'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Pahoittelut, mutta pyyntösi aiheutti virheen.</p>'
-    DEFAULTSERVERERRORPAGETITLE: Palvelinvirhe
-    DESCRIPTION: 'Omat virheilmoitukset (sivuille, kuten "Sivua ei löytynyt")'
-    PLURALNAME: Virhesivut
-    PLURALS:
-      one: Virhesivu
-      other: '{count} Virhesivua'
-    SINGULARNAME: Virhesivu
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Edelleenohjaa toiselle sisäiselle sivulle tai ulkoiseen URL-osoitteeseen'
     HASBEENSETUP: 'Sivu, joka ohjaa käyttäjän toiselle sivulle on valmis, mutta sivua, jolle käyttäjä ohjataan, ei ole.'
@@ -196,10 +190,9 @@ fi:
     DESCRIPTION: 'Yleinen sisältösivu'
     DependtPageColumnLinkType: 'Linkin tyyppi'
     DependtPageColumnURL: URL
-    EDITANYONE: 'Jokainen, joka voi kirjautua sisään CMS:ään.'
     EDITHEADER: 'Kuka voi muokata tätä CMS:ssä?'
-    EDITONLYTHESE: 'Vain seuraavat henkilöt (valitse listasta)'
     EDITORGROUPS: 'Muokkaa ryhmiä'
+    EDITOR_GROUPS_FIELD_DESC: 'Ryhmät, joilla laajat muokkausoikeudet: {groupList}'
     EDIT_ALL_DESCRIPTION: 'Muokkaa mitä tahansa sivua'
     EDIT_ALL_HELP: 'Mahdollisuus muokata mitä tahansa sivua sivustosta, riippumatta Käyttöoikeus-välilehden asetuksista. Vaatii "Käyttöoikeus sivuston sisältöön" -lupaa'
     Editors: Toimittajaryhmät
@@ -253,6 +246,7 @@ fi:
     TOPLEVEL: 'Sivuston sisältö (ylin taso)'
     URLSegment: URL-osoite
     VIEWERGROUPS: Katsojaryhmät
+    VIEWER_GROUPS_FIELD_DESC: 'Ryhmät, joilla laajat katseluoikeudet: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Näytä mikä tahansa sivu'
     VIEW_ALL_HELP: 'Mahdollisuus nähdä mikä tahansa sivu, huolimatta Käyttöoikeudet-välilehden asetuksista. Vaatii "Käyttöoikeus ''Sivuihin''" -oikeudet.'
     VIEW_DRAFT_CONTENT: 'Näytä luonnoksen sisältö'

@@ -47,35 +47,6 @@ et_EE:
     ARCHIVED: Arhiveeritud
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Erimärgid teisendatakse või eemaldatakse automaatselt.'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: Veakood
-    CODE_400: '400 - Halb päring'
-    CODE_401: '401 - Volitamata ligipääs'
-    CODE_403: '403 - Keelatud'
-    CODE_404: '404 - Ei leitud'
-    CODE_405: '405 -  Meetod pole lubatud'
-    CODE_406: '406 - Ligipääs puudub'
-    CODE_407: '407 - Proxy tuvastus vajalik'
-    CODE_408: '408 - Palve aegunud'
-    CODE_409: '409 - Konflikt'
-    CODE_410: '410 - Kustutatud'
-    CODE_411: '411 - Distants vajalik'
-    CODE_412: '412 - Eeltingimused täitmata'
-    CODE_413: '413 -  Palve käsklus liiga suur'
-    CODE_414: '414 - soovitud URL liiga pikk'
-    CODE_415: '415 - Ebasoovitav meedia tüüp'
-    CODE_416: '416 - Päring rahuldamata'
-    CODE_417: '417 - Eeldus puudub'
-    CODE_500: '500 - Serveri viga'
-    CODE_501: '501 - Rakendus puudub'
-    CODE_502: '502 - Halb sissepääsutee'
-    CODE_503: '503 - Teenus puudub'
-    CODE_504: '504 - Sissepääsutee aegmaas'
-    CODE_505: '505 - HTTP versioon ei ole kasutusel'
-    DEFAULTERRORPAGECONTENT: '<p>Vabandust aga tundub, et proovid ligipääseda lehele mida pole olemas.</p><p>Palun kontrolli uuesti aadressi kuhu proovid ligi pääseda.</p>'
-    DEFAULTERRORPAGETITLE: 'Lehekülge ei leitud'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Vabandust, teie taotluse töötlemisel ilmnes probleem.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Serveri viga'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Suunav lehekülg seati üles ilma, et ta kuhugile suunaks.'
     HEADER: 'See lehekülg suunab kasutajad teisele leheküljele'
@@ -107,9 +78,7 @@ et_EE:
     DEPENDENT_NOTE: 'Alljärgnevad lehed sõltuvad sellest lehest. See hõlmab virtuaalseid lehti, ümbersuunamislehti ja sisulinkidega lehti.'
     DependtPageColumnLinkType: 'Lingi tüüp'
     DependtPageColumnURL: URL
-    EDITANYONE: 'Igaüks, kes sisuhaldussüsteemi sisse võib logida'
     EDITHEADER: 'Kes tohib seda sisuhaldussüsteemi kaudu muuta?'
-    EDITONLYTHESE: 'Ainult järgnevad isikud (vali nimekirjast)'
     EDITORGROUPS: Muutjagrupid
     EDIT_ALL_DESCRIPTION: 'Redigeeri mis tahes lehte'
     EDIT_ALL_HELP: 'Võimalus redigeerida mis tahes lehte sellel saidil, hoolimata vahekaardi Juurdepääs seadetest. Vajab jaotise "Juurdepääs  lehtedele" õigusi\n'

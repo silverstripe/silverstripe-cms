@@ -6,10 +6,6 @@ is:
     NOTLOGGEDIN: 'Ekki innskráður'
     PUBLISHEDSITE: 'Birt síða'
     VIEWPAGEIN: 'Skoða síðu í:'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Villu númer'
-    DEFAULTERRORPAGECONTENT: '<p>Afsakið, það virðist vera að þú ert að reyna opna síðu sem er ekki til.</p><p>Vinsamlegast athugaðu hvort að slóðin sé rétt skrifuð og prófaðu aftur</p>'
-    DEFAULTERRORPAGETITLE: 'Síða fannst ekki'
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Þessi síða mun áframsenda notendur á aðra síðu'
     OTHERURL: 'Slóð á aðra heimasíðu'
@@ -31,9 +27,7 @@ is:
     DEFAULTABOUTTITLE: 'Um okkur'
     DEFAULTCONTACTTITLE: 'Hafa samband'
     DEFAULTHOMETITLE: Heim
-    EDITANYONE: 'Allir þeir sem geta innskráð sig í kerfið'
     EDITHEADER: 'Hver getur breytt þessu í kerfinu?'
-    EDITONLYTHESE: 'Aðeins þetta fólk (veldu úr listanum)'
     HASBROKENLINKS: 'Þessi síða inniheldur óvirkann hlekk.'
     HTMLEDITORTITLE: Efni
     INHERIT: 'Erfa frá foreldra síðu'

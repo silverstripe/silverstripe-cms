@@ -42,12 +42,6 @@ da:
     VIEWPAGEIN: 'Vis side i:'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Specialkarakterer bliver automatisk konverteret eller fjernet.'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: Fejlkode
-    DEFAULTERRORPAGECONTENT: '<p>Det lader til at du har forsøgt at få vist en side som ikke findes</p><p>Undersøg venligst om URL''en er korrekt stavet og forsøg derefter igen.</p>'
-    DEFAULTERRORPAGETITLE: 'Siden blev ikke fundet'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Der opstod desværre et problem med at håndtere din forespørgsel.</p>'
-    DEFAULTSERVERERRORPAGETITLE: Serverfejl
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'En omdirigeringsside er blevet sat op, uden et sted at omdirigere til.'
     HEADER: 'Denne side omdirigerer besøgende til en anden side'
@@ -77,9 +71,7 @@ da:
     DEFAULTCONTACTTITLE: 'Kontakt os'
     DEFAULTHOMETITLE: Forside
     DependtPageColumnLinkType: Linktype
-    EDITANYONE: 'Enhver der kan logge ind på CMS'
     EDITHEADER: 'Hvem kan redigere denne side ?'
-    EDITONLYTHESE: 'Kun disse personer (vælg fra liste)'
     EDITORGROUPS: Redaktionsgrupper
     EDIT_ALL_DESCRIPTION: 'Rediger enhver side'
     HASBROKENLINKS: 'Denne side har links der ikke virker.'

@@ -93,14 +93,6 @@ fa_IR:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'لطفاً یک بخش نشانی اینترنتی را درج نمایید یا روی لغو کلیک کنید.'
     HelpChars: 'کاراکترهای ویژه به‌طور خودکار تبدیل یا حذف می‌شوند.'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'کد خطا'
-    DEFAULTERRORPAGECONTENT: '<p>متاسفانه، به‌نظر می‌رسد شما در تلاش برای دستیابی به صفحه‌ای هستید که وجود ندارد.</p><p>لطفاً نشانی اینترنتی را از جهت وجود خطای نگارشی بررسی و مجدداً تلاش نمایید.</p>'
-    DEFAULTERRORPAGETITLE: 'برگ پیدا نشد'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>با پوزش، در پردازش درخواست شما ایرادی بوجود آمد.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'خطای سرور'
-    PLURALNAME: 'صفحات خطا'
-    SINGULARNAME: 'صفحه‌ی خطا'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'یک صفحه‌ی هدایت‌گر ایجاد گردیده است بدون این‌که به جایی ارجاع داشته باشد.'
     HEADER: 'این صفحه کاربران را به صفحه‌ای دیگر هدایت می‌کند'
@@ -139,9 +131,7 @@ fa_IR:
     DESCRIPTION: 'صفحه محتوای عمومی'
     DependtPageColumnLinkType: 'نوع پیوند'
     DependtPageColumnURL: 'نشانی اینترنتی'
-    EDITANYONE: 'هر کسی بتواند به سیستم مدیریت محتوا وارد شود'
     EDITHEADER: 'چه کسی بتواند این صفحه را ویرایش کند ؟'
-    EDITONLYTHESE: 'فقط این افراد (انتخاب از لیست)'
     EDITORGROUPS: 'گروه‌های ویرایشگر'
     EDIT_ALL_DESCRIPTION: 'ویرایش هر صفحه‌ای'
     Editors: 'گروه‌های ویرایشگران'
