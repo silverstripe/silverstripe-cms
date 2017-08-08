@@ -1,18 +1,16 @@
 <?php
 
-use SilverStripe\ORM\DataObject;
-use SilverStripe\Versioned\Versioned;
-use SilverStripe\ORM\DB;
-use SilverStripe\ORM\ValidationException;
-use SilverStripe\ORM\FieldType\DBVarchar;
-use SilverStripe\ORM\DataExtension;
-use SilverStripe\CMS\Model\VirtualPage;
-use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Controllers\ModelAsController;
+use SilverStripe\CMS\Model\RedirectorPage;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\FunctionalTest;
-use SilverStripe\Dev\TestOnly;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\DB;
+use SilverStripe\ORM\ValidationException;
+use SilverStripe\Security\Member;
+use SilverStripe\Versioned\Versioned;
 
 class VirtualPageTest extends FunctionalTest
 {
@@ -200,51 +198,12 @@ class VirtualPageTest extends FunctionalTest
         $this->assertTrue($vp->canPublish());
     }
 
-    public function testCanDeleteOrphanedVirtualPagesFromLive()
-    {
-        // An unpublished source page
-        $p = new Page();
-        $p->Content = "test content";
-        $p->write();
-        $p->publishRecursive();
-        $pID = $p->ID;
-
-        $vp = new VirtualPage();
-        $vp->CopyContentFromID = $p->ID;
-        $vp->write();
-        $this->assertTrue($vp->canPublish());
-        $this->assertTrue($vp->publishRecursive());
-
-        // Delete the source page semi-manually, without triggering
-        // the cascade publish back to the virtual page.
-        Versioned::set_stage(Versioned::LIVE);
-        $livePage = Versioned::get_by_stage(SiteTree::class, Versioned::LIVE)->byID($pID);
-        $livePage->delete();
-        Versioned::set_stage(Versioned::DRAFT);
-
-        // Confirm that we can unpublish, but not publish
-        $this->assertFalse($p->IsPublished(), 'Copied page has orphaned the virtual page on live');
-        $this->assertTrue($vp->isPublished(), 'Virtual page remains on live');
-        $this->assertTrue($vp->canUnpublish());
-        $this->assertFalse($vp->canPublish());
-
-        // Confirm that the action really works
-        $this->assertTrue($vp->doUnpublish());
-        $this->assertEquals(
-            0,
-            DB::prepared_query(
-                "SELECT count(*) FROM \"SiteTree_Live\" WHERE \"ID\" = ?",
-                array($vp->ID)
-            )->value()
-        );
-    }
-
     public function testCanEdit()
     {
         $parentPage = $this->objFromFixture('Page', 'master3');
         $virtualPage = $this->objFromFixture(VirtualPage::class, 'vp3');
-        $bob = $this->objFromFixture('SilverStripe\\Security\\Member', 'bob');
-        $andrew = $this->objFromFixture('SilverStripe\\Security\\Member', 'andrew');
+        $bob = $this->objFromFixture(Member::class, 'bob');
+        $andrew = $this->objFromFixture(Member::class, 'andrew');
 
         // Bob can edit the mirrored page, but he shouldn't be able to edit the virtual page.
         $this->logInAs($bob);
@@ -259,12 +218,13 @@ class VirtualPageTest extends FunctionalTest
 
     public function testCanView()
     {
+        /** @var Page $parentPage */
         $parentPage = $this->objFromFixture('Page', 'master3');
         $parentPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
         $virtualPage = $this->objFromFixture(VirtualPage::class, 'vp3');
         $virtualPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
-        $cindy = $this->objFromFixture('SilverStripe\\Security\\Member', 'cindy');
-        $alice = $this->objFromFixture('SilverStripe\\Security\\Member', 'alice');
+        $cindy = $this->objFromFixture(Member::class, 'cindy');
+        $alice = $this->objFromFixture(Member::class, 'alice');
 
         // Cindy can see both pages
         $this->logInAs($cindy);
@@ -336,6 +296,7 @@ class VirtualPageTest extends FunctionalTest
         $vp = new VirtualPage();
         $vp->CopyContentFromID = $p->ID;
         $vp->write();
+        $vpID = $vp->ID;
         $this->assertTrue($vp->publishRecursive());
 
         // All is fine, the virtual page doesn't have a broken link
@@ -346,17 +307,17 @@ class VirtualPageTest extends FunctionalTest
 
         // The draft VP still has the CopyContentFromID link
         $vp->flushCache();
-        $vp = DataObject::get_by_id(SiteTree::class, $vp->ID);
+        $vp = DataObject::get_by_id(SiteTree::class, $vpID);
         $this->assertEquals($p->ID, $vp->CopyContentFromID);
 
-        $vpLive = Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, '"SiteTree"."ID" = ' . $vp->ID);
+        $vpLive = Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, '"SiteTree"."ID" = ' . $vpID);
         $this->assertNull($vpLive);
 
-        // Delete from draft, confirm that the virtual page has a broken link on the draft site
+        // Delete from draft, ensure virtual page deletion cascades
         $p->delete();
         $vp->flushCache();
-        $vp = DataObject::get_by_id(SiteTree::class, $vp->ID);
-        $this->assertEquals(1, $vp->HasBrokenLink);
+        $vp = DataObject::get_by_id(SiteTree::class, $vpID);
+        $this->assertNull($vp);
     }
 
     public function testDeletingFromLiveSourcePageOfAVirtualPageAlsoUnpublishesVirtualPage()
@@ -369,29 +330,27 @@ class VirtualPageTest extends FunctionalTest
         $vp = new VirtualPage();
         $vp->CopyContentFromID = $p->ID;
         $vp->write();
+        $vpID = $vp->ID;
         $this->assertTrue($vp->publishRecursive());
 
         // All is fine, the virtual page doesn't have a broken link
         $this->assertFalse($vp->HasBrokenLink);
 
-        // Delete the source page from draft, confirm that this creates a broken link
+        // Delete the source page from draft, cascades to virtual page
         $pID = $p->ID;
         $p->delete();
         $vp->flushCache();
-        $vp = DataObject::get_by_id(SiteTree::class, $vp->ID);
-        $this->assertEquals(1, $vp->HasBrokenLink);
+        $vpDraft = Versioned::get_by_stage(SiteTree::class, Versioned::DRAFT)
+            ->byID($pID);
+        $this->assertNull($vpDraft);
 
         // Delete the source page form live, confirm that the virtual page has also been unpublished
-        $pLive = Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, '"SiteTree"."ID" = ' . $pID);
+        $pLive = Versioned::get_by_stage(SiteTree::class, Versioned::LIVE)
+            ->byID($pID);
         $this->assertTrue($pLive->doUnpublish());
-        $vpLive = Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, '"SiteTree"."ID" = ' . $vp->ID);
+        $vpLive = Versioned::get_by_stage(SiteTree::class, Versioned::LIVE)
+            ->byID($vpID);
         $this->assertNull($vpLive);
-
-        // Delete from draft, confirm that the virtual page has a broken link on the draft site
-        $pLive->delete();
-        $vp->flushCache();
-        $vp = DataObject::get_by_id(SiteTree::class, $vp->ID);
-        $this->assertEquals(1, $vp->HasBrokenLink);
     }
 
     /**
