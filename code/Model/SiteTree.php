@@ -193,12 +193,16 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     );
 
     private static $has_many = array(
-        "VirtualPages" => "SilverStripe\\CMS\\Model\\VirtualPage.CopyContentFrom"
+        "VirtualPages" => VirtualPage::class . '.CopyContentFrom'
     );
 
     private static $owned_by = array(
         "VirtualPages"
     );
+
+    private static $cascade_deletes = [
+        'VirtualPages',
+    ];
 
     private static $casting = array(
         "Breadcrumbs" => "HTMLFragment",

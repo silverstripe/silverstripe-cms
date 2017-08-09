@@ -66,7 +66,7 @@ class VirtualPage extends Page
     );
 
     private static $has_one = array(
-        "CopyContentFrom" => "SilverStripe\\CMS\\Model\\SiteTree",
+        "CopyContentFrom" => SiteTree::class,
     );
 
     private static $owns = array(

@@ -37,6 +37,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest
 
     public function testBrokenLinksBetweenPages()
     {
+        /** @var Page $obj */
         $obj = $this->objFromFixture('Page', 'content');
 
         $obj->Content = '<a href="[sitetree_link,id=3423423]">this is a broken link</a>';
@@ -50,6 +51,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest
 
     public function testBrokenAnchorBetweenPages()
     {
+        /** @var Page $obj */
         $obj = $this->objFromFixture('Page', 'content');
         $target = $this->objFromFixture('Page', 'about');
 
@@ -141,7 +143,6 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         $this->assertEquals(0, (int)$linkSrc->HasBrokenLink);
 
         // Delete page from draft
-        $linkDestID = $linkDest->ID;
         $linkDest->delete();
 
         // Confirm draft has broken link
@@ -156,10 +157,12 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         $this->logInWithPermission('ADMIN');
 
         // Set up two draft pages with a link from content -> about
+        /** @var Page $linkDest */
         $linkDest = $this->objFromFixture('Page', 'about');
         // Ensure that it's not on the published site
         $linkDest->doUnpublish();
 
+        /** @var Page $linkSrc */
         $linkSrc = $this->objFromFixture('Page', 'content');
         $linkSrc->Content = "<p><a href=\"[sitetree_link,id=$linkDest->ID]\">about us</a></p>";
         $linkSrc->write();
@@ -191,11 +194,6 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         $p2->write();
         $this->assertTrue($p2->publishRecursive());
 
-        // Virtual pages are another
-        $vp = new VirtualPage();
-        $vp->CopyContentFromID = $p->ID;
-        $vp->write();
-
         // Redirector links are a third
         $rp = new RedirectorPage();
         $rp->Title = "redirector";
@@ -206,7 +204,6 @@ class SiteTreeBrokenLinksTest extends SapphireTest
 
         // Confirm that there are no broken links to begin with
         $this->assertFalse($p2->HasBrokenLink);
-        $this->assertFalse($vp->HasBrokenLink);
         $this->assertFalse($rp->HasBrokenLink);
 
         // Unpublishing doesn't affect broken state on live (draft is source of truth)
@@ -218,14 +215,11 @@ class SiteTreeBrokenLinksTest extends SapphireTest
 
         // Delete the source page, confirm that the VP, RP and page 2 have broken links on draft
         $p->delete();
-        $vp->flushCache();
-        $vp = DataObject::get_by_id(SiteTree::class, $vp->ID);
         $p2->flushCache();
         $p2 = DataObject::get_by_id(SiteTree::class, $p2->ID);
         $rp->flushCache();
         $rp = DataObject::get_by_id(SiteTree::class, $rp->ID);
         $this->assertEquals(1, $p2->HasBrokenLink);
-        $this->assertEquals(1, $vp->HasBrokenLink);
         $this->assertEquals(1, $rp->HasBrokenLink);
 
         // Restore the page to stage, confirm that this fixes the links
@@ -235,12 +229,9 @@ class SiteTreeBrokenLinksTest extends SapphireTest
 
         $p2->flushCache();
         $p2 = DataObject::get_by_id(SiteTree::class, $p2->ID);
-        $vp->flushCache();
-        $vp = DataObject::get_by_id(SiteTree::class, $vp->ID);
         $rp->flushCache();
         $rp = DataObject::get_by_id(SiteTree::class, $rp->ID);
         $this->assertFalse((bool)$p2->HasBrokenLink);
-        $this->assertFalse((bool)$vp->HasBrokenLink);
         $this->assertFalse((bool)$rp->HasBrokenLink);
 
         // Publish and confirm that the p2 and RP broken links are fixed on published
@@ -254,68 +245,57 @@ class SiteTreeBrokenLinksTest extends SapphireTest
     public function testRevertToLiveFixesBrokenLinks()
     {
         // Create page and virutal page
-        $p = new Page();
-        $p->Title = "source";
-        $p->write();
-        $pageID = $p->ID;
-        $this->assertTrue($p->publishRecursive());
+        $page = new Page();
+        $page->Title = "source";
+        $page->write();
+        $pageID = $page->ID;
+        $this->assertTrue($page->publishRecursive());
 
         // Content links are one kind of link to pages
-        $p2 = new Page();
-        $p2->Title = "regular link";
-        $p2->Content = "<a href=\"[sitetree_link,id=$p->ID]\">test</a>";
-        $p2->write();
-        $this->assertTrue($p2->publishRecursive());
-
-        // Virtual pages are another
-        $vp = new VirtualPage();
-        $vp->CopyContentFromID = $p->ID;
-        $vp->write();
+        $page2 = new Page();
+        $page2->Title = "regular link";
+        $page2->Content = "<a href=\"[sitetree_link,id={$pageID}]\">test</a>";
+        $page2->write();
+        $this->assertTrue($page2->publishRecursive());
 
         // Redirector links are a third
-        $rp = new RedirectorPage();
-        $rp->Title = "redirector";
-        $rp->LinkType = 'Internal';
-        $rp->LinkToID = $p->ID;
-        $rp->write();
-        $this->assertTrue($rp->publishRecursive());
+        $redirectorPage = new RedirectorPage();
+        $redirectorPage->Title = "redirector";
+        $redirectorPage->LinkType = 'Internal';
+        $redirectorPage->LinkToID = $page->ID;
+        $redirectorPage->write();
+        $this->assertTrue($redirectorPage->publishRecursive());
 
         // Confirm that there are no broken links to begin with
-        $this->assertFalse($p2->HasBrokenLink);
-        $this->assertFalse($vp->HasBrokenLink);
-        $this->assertFalse($rp->HasBrokenLink);
+        $this->assertFalse($page2->HasBrokenLink);
+        $this->assertFalse($redirectorPage->HasBrokenLink);
 
         // Delete from draft and confirm that broken links are marked
-        $pID = $p->ID;
-        $p->delete();
+        $page->delete();
 
-        $vp->flushCache();
-        $vp = DataObject::get_by_id(SiteTree::class, $vp->ID);
-        $p2->flushCache();
-        $p2 = DataObject::get_by_id(SiteTree::class, $p2->ID);
-        $rp->flushCache();
-        $rp = DataObject::get_by_id(SiteTree::class, $rp->ID);
-        $this->assertEquals(1, $p2->HasBrokenLink);
-        $this->assertEquals(1, $vp->HasBrokenLink);
-        $this->assertEquals(1, $rp->HasBrokenLink);
+        $page2->flushCache();
+        $page2 = DataObject::get_by_id(SiteTree::class, $page2->ID);
+        $redirectorPage->flushCache();
+        $redirectorPage = DataObject::get_by_id(SiteTree::class, $redirectorPage->ID);
+        $this->assertEquals(1, $page2->HasBrokenLink);
+        $this->assertEquals(1, $redirectorPage->HasBrokenLink);
 
         // Call doRevertToLive and confirm that broken links are restored
-        $pLive = Versioned::get_one_by_stage(SiteTree::class, 'Live', '"SiteTree"."ID" = ' . $pID);
-        $pLive->doRevertToLive();
+        /** @var Page $pageLive */
+        $pageLive = Versioned::get_one_by_stage(SiteTree::class, 'Live', '"SiteTree"."ID" = ' . $pageID);
+        $pageLive->doRevertToLive();
 
-        $p2->flushCache();
-        $p2 = DataObject::get_by_id(SiteTree::class, $p2->ID);
-        $vp->flushCache();
-        $vp = DataObject::get_by_id(SiteTree::class, $vp->ID);
-        $rp->flushCache();
-        $rp = DataObject::get_by_id(SiteTree::class, $rp->ID);
-        $this->assertFalse((bool)$p2->HasBrokenLink);
-        $this->assertFalse((bool)$vp->HasBrokenLink);
-        $this->assertFalse((bool)$rp->HasBrokenLink);
+        $page2->flushCache();
+        $page2 = DataObject::get_by_id(SiteTree::class, $page2->ID);
+        $redirectorPage->flushCache();
+        $redirectorPage = DataObject::get_by_id(SiteTree::class, $redirectorPage->ID);
+        $this->assertFalse((bool)$page2->HasBrokenLink);
+        $this->assertFalse((bool)$redirectorPage->HasBrokenLink);
     }
 
     public function testBrokenAnchorLinksInAPage()
     {
+        /** @var Page $obj */
         $obj = $this->objFromFixture('Page', 'content');
         $origContent = $obj->Content;
 
