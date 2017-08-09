@@ -1,0 +1,130 @@
+SilverStripe\SiteConfig\SiteConfig:
+  default:
+    Title: My test site
+    Tagline: Default site config
+    CanViewType: Anyone
+    CanEditType: LoggedInUsers
+    CanCreateTopLevelType: LoggedInUsers
+
+SilverStripe\Security\Group:
+  editors:
+    Title: Editors
+  admins:
+    Title: Administrators
+  allsections:
+    Title: All Section Editors
+  securityadmins:
+    Title: Security Admins
+
+SilverStripe\Security\Permission:
+  admins:
+    Code: ADMIN
+    Group: =>SilverStripe\Security\Group.admins
+  editors:
+    Code: CMS_ACCESS_CMSMain
+    Group: =>SilverStripe\Security\Group.editors
+  allsections:
+    Code: CMS_ACCESS_LeftAndMain
+    Group: =>SilverStripe\Security\Group.allsections
+  securityadmins:
+    Code: CMS_ACCESS_SecurityAdmin
+    Group: =>SilverStripe\Security\Group.securityadmins
+
+SilverStripe\Security\Member:
+  editor:
+    FirstName: Test
+    Surname: Editor
+    Groups: =>SilverStripe\Security\Group.editors
+  admin:
+    FirstName: Test
+    Surname: Administrator
+    Groups: =>SilverStripe\Security\Group.admins
+  allsections:
+    Groups: =>SilverStripe\Security\Group.allsections
+  securityadmin:
+    Groups: =>SilverStripe\Security\Group.securityadmins
+
+Page:
+  home:
+    Title: Home
+    CanEditType: OnlyTheseUsers
+    EditorGroups: =>SilverStripe\Security\Group.admins
+  about:
+    Title: About Us
+    CanEditType: OnlyTheseUsers
+    EditorGroups: =>SilverStripe\Security\Group.admins
+  staff:
+    Title: Staff
+    URLSegment: my-staff
+    Parent: =>Page.about
+  ceo:
+    Title: CEO
+    Parent: =>Page.staff
+  staffduplicate:
+    Title: Staff
+    URLSegment: my-staff
+    Parent: =>Page.about
+    ShowInMenus: 0
+  products:
+    Title: Products
+    CanEditType: OnlyTheseUsers
+    EditorGroups: =>SilverStripe\Security\Group.editors
+  product1:
+    Title: 1.1 Test Product
+    Parent: =>Page.products
+    CanEditType: Inherit
+  product2:
+    Title: Another Product
+    Parent: =>Page.products
+    CanEditType: Inherit
+  product3:
+    Title: Another Product
+    Parent: =>Page.products
+    CanEditType: Inherit
+  product4:
+    Title: Another Product
+    Parent: =>Page.products
+    CanEditType: OnlyTheseUsers
+    EditorGroups: =>SilverStripe\Security\Group.admins
+  contact:
+    Title: Contact Us
+  object:
+    Title: Object
+  controller:
+    Title: Controller
+  numericonly:
+    Title: 1930
+  metapage:
+    Title: 'HTML & XML'
+    MetaDescription: 'The <br /> and <br> tags'
+    ExtraMeta: '<link rel="canonical" href="http://www.mysite.com/html-and-xml" />'
+  breadcrumbs:
+    Title: 'Breadcrumbs'
+  breadcrumbs2:
+    Title: 'Breadcrumbs 2'
+    Parent: =>Page.breadcrumbs
+  breadcrumbs3:
+    Title: 'Breadcrumbs 3'
+    Parent: =>Page.breadcrumbs2
+  breadcrumbs4:
+    Title: 'Breadcrumbs 4'
+    Parent: =>Page.breadcrumbs3
+  breadcrumbs5:
+    Title: 'Breadcrumbs 5'
+    Parent: =>Page.breadcrumbs4
+
+SilverStripe\CMS\Tests\Model\SiteTreeTest_Conflicted:
+  parent:
+    Title: Parent
+
+SilverStripe\CMS\Model\RedirectorPage:
+  external:
+    Title: External
+    URLSegment: external
+    RedirectionType: External
+    ExternalURL: "http://www.google.com?a&b"
+
+SilverStripe\CMS\Tests\Model\SiteTreeTest_DataObject:
+  relations:
+    Title: 'Linked DataObject'
+    Pages: =>Page.home,=>Page.about,=>Page.staff
