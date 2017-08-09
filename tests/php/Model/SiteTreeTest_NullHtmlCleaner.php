@@ -1,7 +1,12 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use SilverStripe\Dev\TestOnly;
 use SilverStripe\View\Parsers\HTMLCleaner;
+
+
 
 class SiteTreeTest_NullHtmlCleaner extends HTMLCleaner implements TestOnly
 {

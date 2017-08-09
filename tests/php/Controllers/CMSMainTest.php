@@ -1,5 +1,8 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Admin\CMSBatchActionHandler;
 use SilverStripe\CMS\Controllers\CMSMain;
@@ -21,6 +24,8 @@ use SilverStripe\ORM\ValidationException;
 use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\Versioned\Versioned;
+use Page;
+
 
 /**
  * @package cms

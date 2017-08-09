@@ -1,7 +1,12 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use SilverStripe\Dev\TestOnly;
 use SilverStripe\ORM\FieldType\DBVarchar;
+
+
 
 class VirtualPageTest_TestDBField extends DBVarchar implements TestOnly
 {

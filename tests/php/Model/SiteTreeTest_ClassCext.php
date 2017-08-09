@@ -1,6 +1,11 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use SilverStripe\Dev\TestOnly;
+
+
 
 class SiteTreeTest_ClassCext extends SiteTreeTest_ClassC implements TestOnly
 {

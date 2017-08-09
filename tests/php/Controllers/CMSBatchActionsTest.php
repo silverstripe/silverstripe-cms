@@ -1,5 +1,8 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Archive;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Publish;
@@ -7,6 +10,8 @@ use SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Restore;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Dev\SapphireTest;
+
+
 
 /**
  * Tests CMS Specific subclasses of {@see CMSBatchAction}

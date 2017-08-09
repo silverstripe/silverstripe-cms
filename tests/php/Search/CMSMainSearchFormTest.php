@@ -1,6 +1,11 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use SilverStripe\Dev\FunctionalTest;
+
+
 
 class CMSMainSearchFormTest extends FunctionalTest
 {

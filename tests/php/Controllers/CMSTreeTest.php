@@ -1,8 +1,13 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\ORM\DataObject;
+
+
 
 /**
  * Tests for tree-operations refactored out of LeftAndMain

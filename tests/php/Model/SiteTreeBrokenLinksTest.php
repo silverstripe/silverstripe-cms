@@ -1,5 +1,8 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\ORM\DataObject;
@@ -9,6 +12,8 @@ use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\Assets\File;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Assets\Tests\Storage\AssetStoreTest\TestAssetStore;
+use Page;
+
 
 /**
  * Tests {@see SiteTreeLinkTracking} broken links feature: LinkTracking

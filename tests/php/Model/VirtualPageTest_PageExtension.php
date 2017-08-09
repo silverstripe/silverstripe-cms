@@ -1,7 +1,12 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use SilverStripe\Dev\TestOnly;
 use SilverStripe\ORM\DataExtension;
+
+
 
 class VirtualPageTest_PageExtension extends DataExtension implements TestOnly
 {

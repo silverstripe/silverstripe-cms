@@ -1,8 +1,13 @@
 <?php
+
+namespace SilverStripe\CMS\Tests;
+
 use SilverStripe\CMS\Controllers\SilverStripeNavigatorItem;
 use SilverStripe\Dev\TestOnly;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\Security;
+
+
 
 class SilverStripeNavigatorTest_ProtectedTestItem extends SilverStripeNavigatorItem implements TestOnly
 {

@@ -1,9 +1,14 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use SilverStripe\Dev\TestOnly;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\ORM\DataExtension;
+
+
 
 class SiteTreeBacklinksTest_DOD extends DataExtension implements TestOnly
 {

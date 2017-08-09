@@ -1,7 +1,12 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use SilverStripe\CMS\Model\SiteTreeExtension;
 use SilverStripe\Dev\TestOnly;
+
+
 
 class SiteTreeTest_ExtensionA extends SiteTreeExtension implements TestOnly
 {

@@ -1,5 +1,8 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\CMS\Controllers\OldPageRedirector;
@@ -8,6 +11,8 @@ use SilverStripe\Core\Config\Config;
 use SilverStripe\Control\Director;
 use SilverStripe\Control\Controller;
 use SilverStripe\Dev\FunctionalTest;
+use Page;
+
 
 /**
  * @package cms

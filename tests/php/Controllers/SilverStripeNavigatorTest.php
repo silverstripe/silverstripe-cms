@@ -1,5 +1,8 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use SilverStripe\CMS\Controllers\SilverStripeNavigatorItem_StageLink;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
@@ -8,6 +11,8 @@ use SilverStripe\CMS\Controllers\SilverStripeNavigatorItem;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Dev\TestOnly;
 use SilverStripe\Security\Security;
+
+
 
 /**
  * @package cms

@@ -1,7 +1,12 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\Dev\FunctionalTest;
+
+
 
 /**
  * <h2>Fixture tree</h2>

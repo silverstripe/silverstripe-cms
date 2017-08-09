@@ -1,5 +1,8 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use SilverStripe\Control\Controller;
 use SilverStripe\Forms\FieldGroup;
 use SilverStripe\Forms\FieldList;
@@ -9,6 +12,8 @@ use SilverStripe\Forms\TextField;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\CMS\Controllers\CMSPageHistoryController;
 use SilverStripe\Dev\FunctionalTest;
+use Page;
+
 
 /**
  * @package cms

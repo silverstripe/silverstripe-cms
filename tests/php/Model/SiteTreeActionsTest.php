@@ -1,5 +1,8 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Security\Security;
 use SilverStripe\Versioned\Versioned;
@@ -8,6 +11,8 @@ use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Dev\TestOnly;
+use Page;
+
 
 /**
  * Possible actions:

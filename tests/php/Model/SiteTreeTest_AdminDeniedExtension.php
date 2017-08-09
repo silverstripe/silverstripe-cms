@@ -1,7 +1,12 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use SilverStripe\Dev\TestOnly;
 use SilverStripe\ORM\DataExtension;
+
+
 
 /**
  * An extension that can even deny actions to admins

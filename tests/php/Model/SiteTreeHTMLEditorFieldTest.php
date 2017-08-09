@@ -1,5 +1,8 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Assets\File;
 use SilverStripe\Assets\Filesystem;
@@ -7,6 +10,8 @@ use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Dev\CSSContentParser;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Assets\Tests\Storage\AssetStoreTest\TestAssetStore;
+
+
 
 class SiteTreeHTMLEditorFieldTest extends FunctionalTest
 {

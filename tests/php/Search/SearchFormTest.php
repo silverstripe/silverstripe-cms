@@ -1,5 +1,8 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use SilverStripe\Assets\File;
 use SilverStripe\CMS\Controllers\ModelAsController;
 use SilverStripe\CMS\Model\SiteTree;
@@ -15,6 +18,8 @@ use SilverStripe\CMS\Search\SearchForm;
 use SilverStripe\ORM\Search\FulltextSearchable;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Security\Member;
+
+
 
 /**
  * @package cms

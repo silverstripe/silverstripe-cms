@@ -1,5 +1,8 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\FieldType\DBDatetime;
@@ -13,6 +16,8 @@ use SilverStripe\CMS\Reports\BrokenRedirectorPagesReport;
 use SilverStripe\Reports\Report;
 use SilverStripe\Assets\File;
 use SilverStripe\Dev\SapphireTest;
+use Page;
+
 
 /**
  * @package cms

@@ -1,5 +1,8 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+use Page;
 use SilverStripe\CMS\Controllers\ModelAsController;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
@@ -7,9 +10,7 @@ use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\ORM\DataObject;
-use SilverStripe\ORM\DB;
 use SilverStripe\ORM\ValidationException;
-use SilverStripe\Security\Member;
 use SilverStripe\Versioned\Versioned;
 
 class VirtualPageTest extends FunctionalTest

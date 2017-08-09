@@ -1,5 +1,8 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\Control\ContentNegotiator;
@@ -28,6 +31,9 @@ use SilverStripe\Dev\TestOnly;
 use SilverStripe\View\Parsers\HTMLCleaner;
 use SilverStripe\View\Parsers\Diff;
 use SilverStripe\View\Parsers\URLSegmentFilter;
+use Page;
+use ReflectionMethod;
+
 
 /**
  * @package cms

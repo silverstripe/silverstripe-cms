@@ -1,8 +1,13 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Dev\TestOnly;
 use SilverStripe\ORM\DataObject;
+
+
 
 /**
  * Class SiteTreeTest_DataObject

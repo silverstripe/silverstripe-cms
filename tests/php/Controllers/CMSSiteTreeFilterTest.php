@@ -1,5 +1,8 @@
 <?php
 
+namespace SilverStripe\CMS\Tests;
+
+
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search;
@@ -9,6 +12,8 @@ use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDraftPages;
 use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages;
 use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages;
 use SilverStripe\Dev\SapphireTest;
+
+
 
 class CMSSiteTreeFilterTest extends SapphireTest
 {
