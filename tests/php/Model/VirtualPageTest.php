@@ -1,6 +1,6 @@
 <?php
 
-namespace SilverStripe\CMS\Tests;
+namespace SilverStripe\CMS\Tests\Model;
 
 use Page;
 use SilverStripe\CMS\Controllers\ModelAsController;
@@ -11,6 +11,7 @@ use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ValidationException;
+use SilverStripe\Security\Member;
 use SilverStripe\Versioned\Versioned;
 
 class VirtualPageTest extends FunctionalTest
@@ -19,23 +20,28 @@ class VirtualPageTest extends FunctionalTest
     protected static $use_draft_site = false;
     protected $autoFollowRedirection = false;
 
-    protected static $extra_dataobjects = array(
-        'VirtualPageTest_ClassA',
-        'VirtualPageTest_ClassB',
-        'VirtualPageTest_ClassC',
-        'VirtualPageTest_NotRoot',
-        'VirtualPageTest_PageExtension',
-        'VirtualPageTest_PageWithAllowedChildren',
-        'VirtualPageTest_TestDBField',
-        'VirtualPageTest_VirtualPageSub',
-    );
+    protected static $extra_dataobjects = [
+        VirtualPageTest_ClassA::class,
+        VirtualPageTest_ClassB::class,
+        VirtualPageTest_ClassC::class,
+        VirtualPageTest_NotRoot::class,
+        VirtualPageTest_PageExtension::class,
+        VirtualPageTest_PageWithAllowedChildren::class,
+        VirtualPageTest_TestDBField::class,
+        VirtualPageTest_VirtualPageSub::class,
+    ];
 
     protected static $illegal_extensions = array(
-        SiteTree::class => array('SiteTreeSubsites', 'Translatable'),
+        SiteTree::class => [
+            'SiteTreeSubsites',
+            'Translatable'
+        ],
     );
 
     protected static $required_extensions = array(
-        SiteTree::class => array('VirtualPageTest_PageExtension')
+        SiteTree::class => [
+            VirtualPageTest_PageExtension::class
+        ]
     );
 
     public function setUp()
@@ -47,7 +53,11 @@ class VirtualPageTest extends FunctionalTest
 
         // Add extra fields
         Config::modify()->merge(VirtualPage::class, 'initially_copied_fields', array('MyInitiallyCopiedField'));
-        Config::modify()->merge(VirtualPage::class, 'non_virtual_fields', array('MyNonVirtualField', 'MySharedNonVirtualField'));
+        Config::modify()->merge(
+            VirtualPage::class,
+            'non_virtual_fields',
+            array('MyNonVirtualField', 'MySharedNonVirtualField')
+        );
     }
 
     /**
@@ -81,6 +91,7 @@ class VirtualPageTest extends FunctionalTest
     {
         $this->logInWithPermission('ADMIN');
 
+        /** @var Page $master */
         $master = $this->objFromFixture('Page', 'master');
         $master->publishRecursive();
 
@@ -89,7 +100,9 @@ class VirtualPageTest extends FunctionalTest
         $master->Content = "<p>New content</p>";
         $master->write();
 
+        /** @var VirtualPage $vp1 */
         $vp1 = DataObject::get_by_id(VirtualPage::class, $this->idFromFixture(VirtualPage::class, 'vp1'));
+        /** @var VirtualPage $vp2 */
         $vp2 = DataObject::get_by_id(VirtualPage::class, $this->idFromFixture(VirtualPage::class, 'vp2'));
         $this->assertTrue($vp1->publishRecursive());
         $this->assertTrue($vp2->publishRecursive());
@@ -222,6 +235,7 @@ class VirtualPageTest extends FunctionalTest
         /** @var Page $parentPage */
         $parentPage = $this->objFromFixture('Page', 'master3');
         $parentPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
+        /** @var VirtualPage $virtualPage */
         $virtualPage = $this->objFromFixture(VirtualPage::class, 'vp3');
         $virtualPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
         $cindy = $this->objFromFixture(Member::class, 'cindy');
@@ -310,10 +324,8 @@ class VirtualPageTest extends FunctionalTest
         $vp->flushCache();
         $vp = DataObject::get_by_id(SiteTree::class, $vpID);
         $this->assertEquals($p->ID, $vp->CopyContentFromID);
-
-        $vpLive = Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, '"SiteTree"."ID" = ' . $vpID);
+        $vpLive = Versioned::get_by_stage(SiteTree::class, Versioned::LIVE)->byID($vpID);
         $this->assertNull($vpLive);
-
         // Delete from draft, ensure virtual page deletion cascades
         $p->delete();
         $vp->flushCache();
@@ -336,7 +348,6 @@ class VirtualPageTest extends FunctionalTest
 
         // All is fine, the virtual page doesn't have a broken link
         $this->assertFalse($vp->HasBrokenLink);
-
         // Delete the source page from draft, cascades to virtual page
         $pID = $p->ID;
         $p->delete();
@@ -344,8 +355,8 @@ class VirtualPageTest extends FunctionalTest
         $vpDraft = Versioned::get_by_stage(SiteTree::class, Versioned::DRAFT)
             ->byID($pID);
         $this->assertNull($vpDraft);
-
         // Delete the source page form live, confirm that the virtual page has also been unpublished
+        /** @var Page $pLive */
         $pLive = Versioned::get_by_stage(SiteTree::class, Versioned::LIVE)
             ->byID($pID);
         $this->assertTrue($pLive->doUnpublish());
@@ -485,14 +496,19 @@ class VirtualPageTest extends FunctionalTest
 
 
         $nonVirtual = $virtual;
-        $nonVirtual->ClassName = 'VirtualPageTest_ClassA';
+        $nonVirtual->ClassName = VirtualPageTest_ClassA::class;
         $nonVirtual->MySharedNonVirtualField = 'changed on new type';
         $nonVirtual->write(); // not publishing the page type change here
 
         // Stage record is changed to the new type and no longer acts as a virtual page
-        $nonVirtualStage = Versioned::get_one_by_stage(SiteTree::class, 'Stage', '"SiteTree"."ID" = ' . $nonVirtual->ID, false);
+        $nonVirtualStage = Versioned::get_one_by_stage(
+            SiteTree::class,
+            'Stage',
+            '"SiteTree"."ID" = ' . $nonVirtual->ID,
+            false
+        );
         $this->assertNotNull($nonVirtualStage);
-        $this->assertEquals('VirtualPageTest_ClassA', $nonVirtualStage->ClassName);
+        $this->assertEquals(VirtualPageTest_ClassA::class, $nonVirtualStage->ClassName);
         $this->assertEquals('changed on new type', $nonVirtualStage->MySharedNonVirtualField);
         $this->assertEquals(
             'original',
@@ -501,9 +517,14 @@ class VirtualPageTest extends FunctionalTest
         );
 
         // Virtual page on live keeps working as it should
-        $virtualLive = Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, '"SiteTree_Live"."ID" = ' . $virtual->ID, false);
+        $virtualLive = Versioned::get_one_by_stage(
+            SiteTree::class,
+            Versioned::LIVE,
+            '"SiteTree_Live"."ID" = ' . $virtual->ID,
+            false
+        );
         $this->assertNotNull($virtualLive);
-        $this->assertEquals('VirtualPageTest_VirtualPageSub', $virtualLive->ClassName);
+        $this->assertEquals(VirtualPageTest_VirtualPageSub::class, $virtualLive->ClassName);
         $this->assertEquals('virtual published field', $virtualLive->MySharedNonVirtualField);
         $this->assertEquals('published title', $virtualLive->Title);
 
@@ -514,7 +535,12 @@ class VirtualPageTest extends FunctionalTest
         $page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
         // Virtual page only notices changes to virtualised fields (Title)
-        $virtualLive = Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, '"SiteTree_Live"."ID" = ' . $virtual->ID, false);
+        $virtualLive = Versioned::get_one_by_stage(
+            SiteTree::class,
+            Versioned::LIVE,
+            '"SiteTree_Live"."ID" = ' . $virtual->ID,
+            false
+        );
         $this->assertEquals('virtual published field', $virtualLive->MySharedNonVirtualField);
         $this->assertEquals('title changed on original', $virtualLive->Title);
     }
@@ -528,7 +554,7 @@ class VirtualPageTest extends FunctionalTest
         $virtual->CopyContentFromID = $page->ID;
         $virtual->write();
 
-        $this->assertEquals('VirtualPageTest_TestDBField', $virtual->castingHelper('CastingTest'));
+        $this->assertEquals(VirtualPageTest_TestDBField::class, $virtual->castingHelper('CastingTest'));
         $this->assertEquals('SOME CONTENT', $virtual->obj('CastingTest')->forTemplate());
     }
 
@@ -611,10 +637,11 @@ class VirtualPageTest extends FunctionalTest
 
     public function testMethod()
     {
+        /** @var VirtualPage $virtualPage */
         $virtualPage = $this->objFromFixture(VirtualPage::class, 'vp4');
+        /** @var VirtualPageTest_ClassAController $controller */
         $controller = ModelAsController::controller_for($virtualPage);
-
-        $this->assertInstanceOf('VirtualPageTest_ClassAController', $controller);
+        $this->assertInstanceOf(VirtualPageTest_ClassAController::class, $controller);
         $this->assertTrue($controller->hasMethod('testMethod'));
         $this->assertEquals('hello', $controller->testMethod());
         $this->assertTrue($controller->hasMethod('modelMethod'));
@@ -623,6 +650,7 @@ class VirtualPageTest extends FunctionalTest
 
     public function testAllowedActions()
     {
+        /** @var VirtualPage $virtualPage */
         $virtualPage = $this->objFromFixture(VirtualPage::class, 'vp4');
         $controller = ModelAsController::controller_for($virtualPage);
         $this->assertContains('testaction', $controller->allowedActions());

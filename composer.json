@@ -40,11 +40,13 @@
         }
     },
     "scripts": {
-        "lint": "phpcs -s code/ tests/"
+        "lint": "phpcs -s code/ tests/php/ tests/behat/src/",
+        "lint-clean": "phpcbf code/ tests/php/ tests/behat/src/"
     },
     "autoload": {
         "psr-4": {
             "SilverStripe\\CMS\\": "code/",
+            "SilverStripe\\CMS\\Tests\\": "code/php/",
             "SilverStripe\\CMS\\Tests\\Behaviour\\": "tests/behat/src/"
         }
     },

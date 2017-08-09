@@ -1,24 +1,17 @@
 <?php
 
-namespace SilverStripe\CMS\Tests;
+namespace SilverStripe\CMS\Tests\Model;
 
-
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Control\HTTPResponse_Exception;
+use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Security\Group;
+use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\Versioned\Versioned;
-use SilverStripe\Security\Member;
-use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\Control\HTTPResponse_Exception;
-use SilverStripe\Core\Config\Config;
-use SilverStripe\Dev\FunctionalTest;
-
-
 
 /**
- * @package cms
- * @subpackage tests
- *
  * @todo Test canAddChildren()
  * @todo Test canCreate()
  */

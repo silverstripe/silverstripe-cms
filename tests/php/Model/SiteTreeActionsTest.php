@@ -1,18 +1,14 @@
 <?php
 
-namespace SilverStripe\CMS\Tests;
+namespace SilverStripe\CMS\Tests\Model;
 
-
+use Page;
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\Security\Security;
-use SilverStripe\Versioned\Versioned;
+use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\ORM\DB;
 use SilverStripe\Security\Member;
-use SilverStripe\Security\Permission;
-use SilverStripe\Dev\FunctionalTest;
-use SilverStripe\Dev\TestOnly;
-use Page;
-
+use SilverStripe\Security\Security;
+use SilverStripe\Versioned\Versioned;
 
 /**
  * Possible actions:
@@ -22,9 +18,6 @@ use Page;
  * - action_archive
  * - action_rollback
  * - action_revert
- *
- * @package cms
- * @subpackage tests
  */
 class SiteTreeActionsTest extends FunctionalTest
 {

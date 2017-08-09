@@ -1,7 +1,6 @@
 <?php
 
-namespace SilverStripe\CMS\Tests;
-
+namespace SilverStripe\CMS\Tests\Model;
 
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Versioned\Versioned;
@@ -14,12 +13,8 @@ use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Assets\Tests\Storage\AssetStoreTest\TestAssetStore;
 use Page;
 
-
 /**
  * Tests {@see SiteTreeLinkTracking} broken links feature: LinkTracking
- *
- * @package cms
- * @subpackage tests
  */
 class SiteTreeBrokenLinksTest extends SapphireTest
 {

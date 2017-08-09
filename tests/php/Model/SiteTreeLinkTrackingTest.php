@@ -1,14 +1,12 @@
 <?php
 
-namespace SilverStripe\CMS\Tests;
-
+namespace SilverStripe\CMS\Tests\Model;
 
 use SilverStripe\CMS\Model\SiteTreeLinkTracking_Parser;
 use SilverStripe\Assets\File;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\View\Parsers\HTMLValue;
 use Page;
-
 
 class SiteTreeLinkTrackingTest extends SapphireTest
 {

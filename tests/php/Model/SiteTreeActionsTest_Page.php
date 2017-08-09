@@ -1,12 +1,10 @@
 <?php
 
-namespace SilverStripe\CMS\Tests;
-
+namespace SilverStripe\CMS\Tests\Model;
 
 use SilverStripe\Dev\TestOnly;
 use SilverStripe\Security\Permission;
 use Page;
-
 
 class SiteTreeActionsTest_Page extends Page implements TestOnly
 {

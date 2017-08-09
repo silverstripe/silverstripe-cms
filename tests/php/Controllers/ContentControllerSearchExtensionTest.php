@@ -1,7 +1,6 @@
 <?php
 
-namespace SilverStripe\CMS\Tests;
-
+namespace SilverStripe\CMS\Tests\Controllers;
 
 use SilverStripe\Assets\File;
 use SilverStripe\CMS\Controllers\ContentController;
@@ -10,7 +9,6 @@ use SilverStripe\Dev\SapphireTest;
 use SilverStripe\ORM\Search\FulltextSearchable;
 use SilverStripe\Versioned\Versioned;
 use Page;
-
 
 class ContentControllerSearchExtensionTest extends SapphireTest
 {

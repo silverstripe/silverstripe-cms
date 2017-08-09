@@ -1,7 +1,6 @@
 <?php
 
-namespace SilverStripe\CMS\Tests;
-
+namespace SilverStripe\CMS\Tests\Controllers;
 
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\CMS\Model\SiteTree;
@@ -13,14 +12,8 @@ use SilverStripe\Control\Controller;
 use SilverStripe\Dev\FunctionalTest;
 use Page;
 
-
-/**
- * @package cms
- * @subpackage tests
- */
 class ModelAsControllerTest extends FunctionalTest
 {
-
     protected $usesDatabase = true;
 
     protected $autoFollowRedirection = false;

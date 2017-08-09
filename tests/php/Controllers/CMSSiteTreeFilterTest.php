@@ -1,7 +1,6 @@
 <?php
 
-namespace SilverStripe\CMS\Tests;
-
+namespace SilverStripe\CMS\Tests\Controllers;
 
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Versioned\Versioned;
@@ -12,8 +11,6 @@ use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDraftPages;
 use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages;
 use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages;
 use SilverStripe\Dev\SapphireTest;
-
-
 
 class CMSSiteTreeFilterTest extends SapphireTest
 {
@@ -113,7 +110,7 @@ class CMSSiteTreeFilterTest extends SapphireTest
         $deletedPageID = $deletedPage->ID;
         $deletedPage->delete();
         $deletedPage = Versioned::get_one_by_stage(
-            'SilverStripe\\CMS\\Model\\SiteTree',
+            SiteTree::class,
             'Live',
             array('"SiteTree_Live"."ID"' => $deletedPageID)
         );
@@ -130,7 +127,7 @@ class CMSSiteTreeFilterTest extends SapphireTest
     {
         $draftPage = $this->objFromFixture('Page', 'page4');
         $draftPage = Versioned::get_one_by_stage(
-            'SilverStripe\\CMS\\Model\\SiteTree',
+            SiteTree::class,
             'Stage',
             sprintf('"SiteTree"."ID" = %d', $draftPage->ID)
         );
@@ -168,7 +165,7 @@ class CMSSiteTreeFilterTest extends SapphireTest
         $removedDraftPage->publishRecursive();
         $removedDraftPage->deleteFromStage('Stage');
         $removedDraftPage = Versioned::get_one_by_stage(
-            'SilverStripe\\CMS\\Model\\SiteTree',
+            SiteTree::class,
             'Live',
             sprintf('"SiteTree"."ID" = %d', $removedDraftPage->ID)
         );

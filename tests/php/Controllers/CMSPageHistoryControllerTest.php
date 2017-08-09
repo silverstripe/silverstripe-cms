@@ -1,7 +1,6 @@
 <?php
 
-namespace SilverStripe\CMS\Tests;
-
+namespace SilverStripe\CMS\Tests\Controllers;
 
 use SilverStripe\Control\Controller;
 use SilverStripe\Forms\FieldGroup;
@@ -14,11 +13,6 @@ use SilverStripe\CMS\Controllers\CMSPageHistoryController;
 use SilverStripe\Dev\FunctionalTest;
 use Page;
 
-
-/**
- * @package cms
- * @subpackage tests
- */
 class CMSPageHistoryControllerTest extends FunctionalTest
 {
     protected static $fixture_file = 'CMSPageHistoryControllerTest.yml';

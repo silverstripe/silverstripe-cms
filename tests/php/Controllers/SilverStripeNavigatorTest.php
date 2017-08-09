@@ -1,27 +1,14 @@
 <?php
 
-namespace SilverStripe\CMS\Tests;
+namespace SilverStripe\CMS\Tests\Controllers;
 
-
-use SilverStripe\CMS\Controllers\SilverStripeNavigatorItem_StageLink;
-use SilverStripe\Security\Member;
-use SilverStripe\Security\Permission;
 use SilverStripe\CMS\Controllers\SilverStripeNavigator;
-use SilverStripe\CMS\Controllers\SilverStripeNavigatorItem;
+use SilverStripe\CMS\Controllers\SilverStripeNavigatorItem_StageLink;
 use SilverStripe\Dev\SapphireTest;
-use SilverStripe\Dev\TestOnly;
-use SilverStripe\Security\Security;
-
-
-
-/**
- * @package cms
- * @subpackage tests
- */
+use SilverStripe\Security\Member;
 
 class SilverStripeNavigatorTest extends SapphireTest
 {
-
     protected static $fixture_file = 'CMSMainTest.yml';
 
     public function testGetItems()
@@ -38,7 +25,7 @@ class SilverStripeNavigatorTest extends SapphireTest
         );
 
         $this->assertContains(
-            'SilverStripeNavigatorTest_TestItem',
+            SilverStripeNavigatorTest_TestItem::class,
             $classes,
             'Autodiscovers new classes'
         );
@@ -54,11 +41,11 @@ class SilverStripeNavigatorTest extends SapphireTest
         $this->logInWithPermission('CMS_ACCESS_CMSMain');
         $items = $navigator->getItems();
         $classes = array_map('get_class', $items->toArray());
-        $this->assertNotContains('SilverStripeNavigatorTest_ProtectedTestItem', $classes);
+        $this->assertNotContains(SilverStripeNavigatorTest_ProtectedTestItem::class, $classes);
 
         $this->logInWithPermission('ADMIN');
         $items = $navigator->getItems();
         $classes = array_map('get_class', $items->toArray());
-        $this->assertContains('SilverStripeNavigatorTest_ProtectedTestItem', $classes);
+        $this->assertContains(SilverStripeNavigatorTest_ProtectedTestItem::class, $classes);
     }
 }

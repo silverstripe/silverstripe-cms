@@ -45,7 +45,7 @@ Page:
     CanEditType: OnlyTheseUsers
     CanViewType: Inherit
     EditorGroups: =>SilverStripe\Security\Group.bobgroup
-VirtualPageTest_ClassA:
+SilverStripe\CMS\Tests\Model\VirtualPageTest_ClassA:
   pagea:
     Title: 'Page A'
     Content: '<p>Content</p>'
@@ -66,5 +66,5 @@ SilverStripe\CMS\Model\VirtualPage:
     EditorGroups: =>SilverStripe\Security\Group.andrewgroup
     ViewerGroups: =>SilverStripe\Security\Group.cindygroup
   vp4:
-    CopyContentFrom: =>VirtualPageTest_ClassA.pagea
+    CopyContentFrom: =>SilverStripe\CMS\Tests\Model\VirtualPageTest_ClassA.pagea
     Title: 'vp4'

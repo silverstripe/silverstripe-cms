@@ -1,12 +1,9 @@
 <?php
 
-namespace SilverStripe\CMS\Tests;
-
+namespace SilverStripe\CMS\Tests\Tasks;
 
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\Dev\FunctionalTest;
-
-
 
 /**
  * <h2>Fixture tree</h2>
@@ -35,13 +32,9 @@ use SilverStripe\Dev\FunctionalTest;
  * </code>
  *
  * @author Ingo Schommer (<firstname>@silverstripe.com), SilverStripe Ltd.
- *
- * @package cms
- * @subpackage tests
  */
 class RemoveOrphanedPagesTaskTest extends FunctionalTest
 {
-
     protected static $fixture_file = 'RemoveOrphanedPagesTaskTest.yml';
 
     protected static $use_draft_site = false;

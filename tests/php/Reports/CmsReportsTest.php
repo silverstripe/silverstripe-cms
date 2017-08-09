@@ -1,7 +1,6 @@
 <?php
 
-namespace SilverStripe\CMS\Tests;
-
+namespace SilverStripe\CMS\Tests\Reports;
 
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\ORM\DB;
@@ -18,11 +17,6 @@ use SilverStripe\Assets\File;
 use SilverStripe\Dev\SapphireTest;
 use Page;
 
-
-/**
- * @package cms
- * @subpackage tests
- */
 class CmsReportsTest extends SapphireTest
 {
 
@@ -48,14 +42,12 @@ class CmsReportsTest extends SapphireTest
     /**
      *  ASSERT whether a report is returning the correct results, based on a broken "draft" and/or "published" page.
      *
-     *  @parameter ss_report
-     *  @parameter boolean
-     *  @parameter boolean
+     * @param Report $report
+     * @param bool $isDraftBroken
+     * @param bool $isPublishedBroken
      */
-
     public function isReportBroken($report, $isDraftBroken, $isPublishedBroken)
     {
-
         $class = get_class($report);
 
         // ASSERT that the "draft" report is returning the correct results.

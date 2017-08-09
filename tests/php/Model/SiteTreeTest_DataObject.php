@@ -1,13 +1,10 @@
 <?php
 
-namespace SilverStripe\CMS\Tests;
-
+namespace SilverStripe\CMS\Tests\Model;
 
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Dev\TestOnly;
 use SilverStripe\ORM\DataObject;
-
-
 
 /**
  * Class SiteTreeTest_DataObject
@@ -17,6 +14,8 @@ use SilverStripe\ORM\DataObject;
  */
 class SiteTreeTest_DataObject extends DataObject implements TestOnly
 {
+    private static $table_name = 'SiteTreeTest_DataObject';
+
     /**
      * @var array
      */

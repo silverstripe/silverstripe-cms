@@ -1,16 +1,11 @@
 <?php
 
-namespace SilverStripe\CMS\Tests;
-
+namespace SilverStripe\CMS\Tests\Model;
 
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\RedirectorPageController;
 use SilverStripe\Control\Director;
 use SilverStripe\Dev\FunctionalTest;
-use SilverStripe\Core\Extension;
-use SilverStripe\Dev\TestOnly;
-
-
 
 class RedirectorPageTest extends FunctionalTest
 {
@@ -96,13 +91,13 @@ class RedirectorPageTest extends FunctionalTest
     public function testRedirectRespectsFinishedResponse()
     {
         $page = $this->objFromFixture(RedirectorPage::class, 'goodinternal');
-        RedirectorPageController::add_extension('RedirectorPageTest_RedirectExtension');
+        RedirectorPageController::add_extension(RedirectorPageTest_RedirectExtension::class);
 
         $response = $this->get($page->regularLink());
         $this->assertEquals(302, $response->getStatusCode());
         $this->assertEquals('http://www.mysite.com/foo', $response->getHeader('Location'));
 
-        RedirectorPageController::remove_extension('RedirectorPageTest_RedirectExtension');
+        RedirectorPageController::remove_extension(RedirectorPageTest_RedirectExtension::class);
     }
 
     public function testNoJSLinksAllowed()

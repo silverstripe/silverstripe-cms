@@ -1,7 +1,6 @@
 <?php
 
-namespace SilverStripe\CMS\Tests;
-
+namespace SilverStripe\CMS\Tests\Model;
 
 use SilverStripe\Assets\Folder;
 use SilverStripe\Assets\Image;
@@ -14,10 +13,6 @@ use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Assets\Tests\Storage\AssetStoreTest\TestAssetStore;
 use Page;
 
-
-/**
- * Tests link tracking to files and images.
- */
 class FileLinkTrackingTest extends SapphireTest
 {
     protected static $fixture_file = "FileLinkTrackingTest.yml";

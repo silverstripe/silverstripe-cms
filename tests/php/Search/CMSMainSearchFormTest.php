@@ -1,20 +1,17 @@
 <?php
 
-namespace SilverStripe\CMS\Tests;
-
+namespace SilverStripe\CMS\Tests\Search;
 
 use SilverStripe\Dev\FunctionalTest;
-
-
+use SilverStripe\Security\Member;
 
 class CMSMainSearchFormTest extends FunctionalTest
 {
-
-    protected static $fixture_file = '../controller/CMSMainTest.yml';
+    protected static $fixture_file = '../Controllers/CMSMainTest.yml';
 
     public function testTitleFilter()
     {
-        $this->session()->set('loggedInAs', $this->idFromFixture('SilverStripe\\Security\\Member', 'admin'));
+        $this->session()->set('loggedInAs', $this->idFromFixture(Member::class, 'admin'));
 
         $response = $this->get(
             'admin/pages/SearchForm/?' .

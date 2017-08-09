@@ -1,8 +1,8 @@
 <?php
 
-namespace SilverStripe\CMS\Tests;
+namespace SilverStripe\CMS\Tests\Controllers;
 
-
+use Page;
 use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Admin\CMSBatchActionHandler;
 use SilverStripe\CMS\Controllers\CMSMain;
@@ -19,21 +19,13 @@ use SilverStripe\Dev\TestOnly;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
-use SilverStripe\ORM\HiddenClass;
-use SilverStripe\ORM\ValidationException;
+use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\Versioned\Versioned;
-use Page;
 
-
-/**
- * @package cms
- * @subpackage tests
- */
 class CMSMainTest extends FunctionalTest
 {
-
     protected static $fixture_file = 'CMSMainTest.yml';
 
     static protected $orig = array();
@@ -55,11 +47,11 @@ class CMSMainTest extends FunctionalTest
     {
         $cache = Injector::inst()->get(CacheInterface::class . '.CMSMain_SiteTreeHints');
         // Login as user with root creation privileges
-        $user = $this->objFromFixture('SilverStripe\\Security\\Member', 'rootedituser');
+        $user = $this->objFromFixture(Member::class, 'rootedituser');
         Security::setCurrentUser($user);
         $cache->clear();
 
-        $rawHints = singleton('SilverStripe\\CMS\\Controllers\\CMSMain')->SiteTreeHints();
+        $rawHints = singleton(CMSMain::class)->SiteTreeHints();
         $this->assertNotNull($rawHints);
 
         $rawHints = preg_replace('/^"(.*)"$/', '$1', Convert::xml2raw($rawHints));
@@ -70,25 +62,25 @@ class CMSMainTest extends FunctionalTest
         $this->assertArrayHasKey('All', $hints);
 
         $this->assertArrayHasKey(
-            'CMSMainTest_ClassA',
+            CMSMainTest_ClassA::class,
             $hints['All'],
             'Global list shows allowed classes'
         );
 
         $this->assertArrayNotHasKey(
-            'CMSMainTest_HiddenClass',
+            CMSMainTest_HiddenClass::class,
             $hints['All'],
             'Global list does not list hidden classes'
         );
 
         $this->assertNotContains(
-            'CMSMainTest_ClassA',
+            CMSMainTest_ClassA::class,
             $hints['Root']['disallowedChildren'],
             'Limits root classes'
         );
 
         $this->assertContains(
-            'CMSMainTest_NotRoot',
+            CMSMainTest_NotRoot::class,
             $hints['Root']['disallowedChildren'],
             'Limits root classes'
         );
@@ -118,7 +110,7 @@ class CMSMainTest extends FunctionalTest
 
         // But it can create a ClassB
         $this->assertNotContains(
-            'CMSMainTest_ClassB',
+            CMSMainTest_ClassB::class,
             $children,
             'Limited parent omits explicitly allowed classes in disallowedChildren'
         );
@@ -131,7 +123,7 @@ class CMSMainTest extends FunctionalTest
     {
         $page1 = $this->objFromFixture(Page::class, "page1");
         $page2 = $this->objFromFixture(Page::class, "page2");
-        $this->session()->set('loggedInAs', $this->idFromFixture('SilverStripe\\Security\\Member', 'admin'));
+        $this->session()->set('loggedInAs', $this->idFromFixture(Member::class, 'admin'));
 
         $response = $this->get('admin/pages/publishall?confirm=1');
         $this->assertContains(
@@ -283,8 +275,8 @@ class CMSMainTest extends FunctionalTest
         $origFollow = $this->autoFollowRedirection;
         $this->autoFollowRedirection = false;
 
-        $cmsUser = $this->objFromFixture('SilverStripe\\Security\\Member', 'allcmssectionsuser');
-        $rootEditUser = $this->objFromFixture('SilverStripe\\Security\\Member', 'rootedituser');
+        $cmsUser = $this->objFromFixture(Member::class, 'allcmssectionsuser');
+        $rootEditUser = $this->objFromFixture(Member::class, 'rootedituser');
 
         // with insufficient permissions
         Security::setCurrentUser($cmsUser);
@@ -337,7 +329,7 @@ class CMSMainTest extends FunctionalTest
         $origFollow = $this->autoFollowRedirection;
         $this->autoFollowRedirection = false;
 
-        $adminUser = $this->objFromFixture('SilverStripe\\Security\\Member', 'admin');
+        $adminUser = $this->objFromFixture(Member::class, 'admin');
         Security::setCurrentUser($adminUser);
 
         // Create toplevel page
@@ -346,7 +338,7 @@ class CMSMainTest extends FunctionalTest
             'admin/pages/add/AddForm',
             array(
                 'ParentID' => '0',
-                'PageType' => 'CMSMainTest_ClassA',
+                'PageType' => CMSMainTest_ClassA::class,
                 'Locale' => 'en_US',
                 'action_doAdd' => 1,
                 'ajax' => 1
@@ -366,7 +358,7 @@ class CMSMainTest extends FunctionalTest
             'admin/pages/add/AddForm',
             array(
                 'ParentID' => $newPageId,
-                'PageType' => 'CMSMainTest_ClassB',
+                'PageType' => CMSMainTest_ClassB::class,
                 'Locale' => 'en_US',
                 'action_doAdd' => 1,
                 'ajax' => 1
@@ -412,7 +404,7 @@ class CMSMainTest extends FunctionalTest
     {
         $page3 = $this->objFromFixture(Page::class, 'page3');
         $page31 = $this->objFromFixture(Page::class, 'page31');
-        $adminuser = $this->objFromFixture('SilverStripe\\Security\\Member', 'admin');
+        $adminuser = $this->objFromFixture(Member::class, 'admin');
         Security::setCurrentUser($adminuser);
 
         $response = $this->get('admin/pages/edit/show/' . $page31->ID);
@@ -572,17 +564,17 @@ class CMSMainTest extends FunctionalTest
         $page->write();
 
         $form = $cms->getEditForm($page->ID);
-        $form->loadDataFrom(['ClassName' => 'CMSMainTest_ClassB']);
+        $form->loadDataFrom(['ClassName' => CMSMainTest_ClassB::class]);
         $result = $cms->save([
             'ID' => $page->ID,
-            'ClassName' => 'CMSMainTest_ClassB'
+            'ClassName' => CMSMainTest_ClassB::class
         ], $form);
         $this->assertEquals(200, $result->getStatusCode());
 
         $newPage = SiteTree::get()->byID($page->ID);
 
-        $this->assertInstanceOf('CMSMainTest_ClassB', $newPage);
-        $this->assertEquals('CMSMainTest_ClassB', $newPage->ClassName);
+        $this->assertInstanceOf(CMSMainTest_ClassB::class, $newPage);
+        $this->assertEquals(CMSMainTest_ClassB::class, $newPage->ClassName);
         $this->assertEquals('Class A', $newPage->Title);
     }
 }

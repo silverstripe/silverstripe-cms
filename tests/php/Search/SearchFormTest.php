@@ -1,30 +1,25 @@
 <?php
 
-namespace SilverStripe\CMS\Tests;
+namespace SilverStripe\CMS\Tests\Search;
 
-
+use Page;
 use SilverStripe\Assets\File;
+use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\CMS\Controllers\ModelAsController;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\CMS\Search\SearchForm;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Config\Config;
+use SilverStripe\Dev\FunctionalTest;
+use SilverStripe\MSSQL\MSSQLDatabase;
 use SilverStripe\ORM\DB;
+use SilverStripe\ORM\Search\FulltextSearchable;
+use SilverStripe\PostgreSQL\PostgreSQLDatabase;
+use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
 use SilverStripe\Versioned\Versioned;
-use SilverStripe\MSSQL\MSSQLDatabase;
-use SilverStripe\PostgreSQL\PostgreSQLDatabase;
-use SilverStripe\CMS\Controllers\ContentController;
-use SilverStripe\CMS\Search\SearchForm;
-use SilverStripe\ORM\Search\FulltextSearchable;
-use SilverStripe\Dev\FunctionalTest;
-use SilverStripe\Security\Member;
-
-
 
 /**
- * @package cms
- * @subpackage testing
- *
  * @todo Fix unpublished pages check in testPublishedPagesMatchedByTitle()
  * @todo All tests run on unpublished pages at the moment, due to the searchform not distinguishing between them
  *

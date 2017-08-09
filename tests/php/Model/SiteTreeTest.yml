@@ -113,7 +113,7 @@ Page:
     Title: 'Breadcrumbs 5'
     Parent: =>Page.breadcrumbs4
 
-SiteTreeTest_Conflicted:
+SilverStripe\CMS\Tests\Model\SiteTreeTest_Conflicted:
   parent:
     Title: Parent
 
@@ -124,7 +124,7 @@ SilverStripe\CMS\Model\RedirectorPage:
     RedirectionType: External
     ExternalURL: "http://www.google.com?a&b"
 
-SiteTreeTest_DataObject:
+SilverStripe\CMS\Tests\Model\SiteTreeTest_DataObject:
   relations:
     Title: 'Linked DataObject'
     Pages: =>Page.home,=>Page.about,=>Page.staff

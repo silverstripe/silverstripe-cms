@@ -1,11 +1,9 @@
 <?php
 
-namespace SilverStripe\CMS\Tests;
-
+namespace SilverStripe\CMS\Tests\Model;
 
 use SilverStripe\Dev\TestOnly;
 use PageController;
-
 
 class VirtualPageTest_ClassAController extends PageController implements TestOnly
 {

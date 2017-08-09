@@ -1,7 +1,6 @@
 <?php
 
-namespace SilverStripe\CMS\Tests;
-
+namespace SilverStripe\CMS\Tests\Controllers;
 
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\CMS\Controllers\RootURLController;
@@ -13,14 +12,8 @@ use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Versioned\Versioned;
 use Page;
 
-
-/**
- * @package cms
- * @subpackage tests
- */
 class ContentControllerTest extends FunctionalTest
 {
-
     protected static $fixture_file = 'ContentControllerTest.yml';
 
     protected static $use_draft_site = true;
@@ -105,7 +98,7 @@ class ContentControllerTest extends FunctionalTest
 
             $page = new ContentControllerTest_Page();
             $page->ParentID = $parentID;
-            $page->Title      = "Page Level $i";
+            $page->Title = "Page Level $i";
             $page->URLSegment = "level-$i";
             $page->write();
 
@@ -159,13 +152,11 @@ class ContentControllerTest extends FunctionalTest
     /**
      * Tests that {@link ContentController::getViewer()} chooses the correct templates.
      *
-     * @covers SilverStripe\CMS\Controllers\ContentController::getViewer()
-    **/
+     * @covers \SilverStripe\CMS\Controllers\ContentController::getViewer()
+     **/
     public function testGetViewer()
     {
-
-        $self = $this;
-        $this->useTestTheme(dirname(__FILE__), 'controllertest', function () use ($self) {
+        $this->useTestTheme(__DIR__, 'controllertest', function () {
 
             // Test a page without a controller (ContentControllerTest_PageWithoutController.ss)
             $page = new ContentControllerTestPageWithoutController();
@@ -173,8 +164,8 @@ class ContentControllerTest extends FunctionalTest
             $page->write();
             $page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
-            $response = $self->get($page->RelativeLink());
-            $self->assertEquals("ContentControllerTestPageWithoutController", trim($response->getBody()));
+            $response = $this->get($page->RelativeLink());
+            $this->assertEquals("ContentControllerTestPageWithoutController", trim($response->getBody()));
 
             // // This should fall over to user Page.ss
             $page = new ContentControllerTestPage();
@@ -182,8 +173,8 @@ class ContentControllerTest extends FunctionalTest
             $page->write();
             $page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
-            $response = $self->get($page->RelativeLink());
-            $self->assertEquals("Page", trim($response->getBody()));
+            $response = $this->get($page->RelativeLink());
+            $this->assertEquals("Page", trim($response->getBody()));
 
 
             // Test that the action template is rendered.
@@ -192,20 +183,24 @@ class ContentControllerTest extends FunctionalTest
             $page->write();
             $page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
-            $response = $self->get($page->RelativeLink("test"));
-            $self->assertEquals("ContentControllerTestPage_test", trim($response->getBody()));
+            $response = $this->get($page->RelativeLink("test"));
+            $this->assertEquals("ContentControllerTestPage_test", trim($response->getBody()));
 
             // Test that an action without a template will default to the index template, which is
             // to say the default Page.ss template
-            $response = $self->get($page->RelativeLink("testwithouttemplate"));
-            $self->assertEquals("Page", trim($response->getBody()));
+            $response = $this->get($page->RelativeLink("testwithouttemplate"));
+            $this->assertEquals("Page", trim($response->getBody()));
 
             // Test that an action with a template will render the both action template *and* the
             // correct parent template
             $controller = new ContentController($page);
             $viewer = $controller->getViewer('test');
-            $templateList = array('ContentControllerTestPage_test', 'Page');
-            $self->assertEquals(dirname(__FILE__).'/themes/controllertest/templates/ContentControllerTestPage_test.ss', $viewer->templates()['main']);
+            $this->assertEquals(
+                __DIR__
+                . '/themes/controllertest/templates/SilverStripe/CMS/Tests/Controllers/'
+                . 'ContentControllerTestPage_test.ss',
+                $viewer->templates()['main']
+            );
         });
     }
 }

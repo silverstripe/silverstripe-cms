@@ -1,47 +1,34 @@
 <?php
 
-namespace SilverStripe\CMS\Tests;
+namespace SilverStripe\CMS\Tests\Model;
 
-
+use Page;
+use ReflectionMethod;
 use SilverStripe\CMS\Model\RedirectorPage;
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\Control\ContentNegotiator;
 use SilverStripe\Control\Controller;
-use SilverStripe\ORM\DB;
-use SilverStripe\Security\InheritedPermissions;
-use SilverStripe\Security\Security;
-use SilverStripe\Versioned\Versioned;
+use SilverStripe\Control\Director;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Dev\SapphireTest;
+use SilverStripe\i18n\i18n;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\DB;
 use SilverStripe\ORM\ValidationException;
-use SilverStripe\ORM\DataExtension;
-use SilverStripe\ORM\HiddenClass;
+use SilverStripe\Security\Group;
+use SilverStripe\Security\InheritedPermissions;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
-use SilverStripe\Security\Group;
-use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\CMS\Model\SiteTreeExtension;
-use SilverStripe\Core\Config\Config;
+use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
-use SilverStripe\Control\Session;
-use SilverStripe\View\Parsers\ShortcodeParser;
-use SilverStripe\Control\Director;
-use SilverStripe\i18n\i18n;
-use SilverStripe\Dev\SapphireTest;
-use SilverStripe\Dev\TestOnly;
-use SilverStripe\View\Parsers\HTMLCleaner;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\Parsers\Diff;
+use SilverStripe\View\Parsers\ShortcodeParser;
 use SilverStripe\View\Parsers\URLSegmentFilter;
-use Page;
-use ReflectionMethod;
 
-
-/**
- * @package cms
- * @subpackage tests
- */
 class SiteTreeTest extends SapphireTest
 {
-
     protected static $fixture_file = 'SiteTreeTest.yml';
 
     protected static $illegal_extensions = array(
@@ -165,7 +152,7 @@ class SiteTreeTest extends SapphireTest
         $child = new SiteTreeTest_PageNode();
 
         $child->setParent($parent);
-        $this->assertInstanceOf('SiteTreeTest_PageNode', $child->Parent);
+        $this->assertInstanceOf(SiteTreeTest_PageNode::class, $child->Parent);
     }
 
     /**
@@ -641,7 +628,7 @@ class SiteTreeTest extends SapphireTest
         $this->assertTrue(singleton(SiteTree::class)->canCreate(null, array('Parent' => singleton(SiteTree::class))));
 
         //Test we don't check for allowedChildren on parent context if it's not SiteTree instance
-        $this->assertTrue(singleton(SiteTree::class)->canCreate(null, ['Parent' => $this->objFromFixture('SiteTreeTest_DataObject', 'relations')]));
+        $this->assertTrue(singleton(SiteTree::class)->canCreate(null, ['Parent' => $this->objFromFixture(SiteTreeTest_DataObject::class, 'relations')]));
     }
 
     public function testEditPermissionsOnDraftVsLive()
@@ -696,7 +683,7 @@ class SiteTreeTest extends SapphireTest
     {
         // Necessary to avoid
         $oldCleanerClass = Diff::$html_cleaner_class;
-        Diff::$html_cleaner_class = 'SiteTreeTest_NullHtmlCleaner';
+        Diff::$html_cleaner_class = SiteTreeTest_NullHtmlCleaner::class;
 
         $page = new Page();
         $page->write();
@@ -953,7 +940,7 @@ class SiteTreeTest extends SapphireTest
         Config::modify()->set(SiteTree::class, 'nested_urls', true);
 
         $sitetree = new SiteTree();
-        $sitetree->ParentID = $this->idFromFixture('SiteTreeTest_Conflicted', 'parent');
+        $sitetree->ParentID = $this->idFromFixture(SiteTreeTest_Conflicted::class, 'parent');
 
         $sitetree->URLSegment = 'index';
         $this->assertFalse($sitetree->validURLSegment(), 'index is not a valid URLSegment');
@@ -974,11 +961,11 @@ class SiteTreeTest extends SapphireTest
         $sitetree->URLSegment = 'unique-segment';
         $this->assertTrue($sitetree->validURLSegment());
 
-        SiteTree::add_extension('SiteTreeTest_Extension');
+        SiteTree::add_extension(SiteTreeTest_Extension::class);
         $sitetree = new SiteTree();
         $sitetree->URLSegment = 'unique-segment';
         $this->assertFalse($sitetree->validURLSegment());
-        SiteTree::remove_extension('SiteTreeTest_Extension');
+        SiteTree::remove_extension(SiteTreeTest_Extension::class);
     }
 
     public function testURLSegmentMultiByte()
@@ -1430,6 +1417,6 @@ class SiteTreeTest extends SapphireTest
     public function testGetControllerNameWithUnderscoresIsSupported()
     {
         $class = new SiteTreeTest_LegacyControllerName;
-        $this->assertSame('SiteTreeTest_LegacyControllerName_Controller', $class->getControllerName());
+        $this->assertEquals(SiteTreeTest_LegacyControllerName_Controller::class, $class->getControllerName());
     }
 }
