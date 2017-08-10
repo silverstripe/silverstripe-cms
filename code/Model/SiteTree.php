@@ -2248,7 +2248,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         if ($canEdit && $isOnDraft) {
             $majorActions->push(
                 FormAction::create('save', _t(__CLASS__.'.BUTTONSAVED', 'Saved'))
-                    ->addExtraClass('btn-secondary-outline font-icon-check-mark')
+                    ->addExtraClass('btn-outline-secondary font-icon-check-mark')
                     ->setAttribute('data-btn-alternate', 'btn action btn-primary font-icon-save')
                     ->setUseButtonTag(true)
                     ->setAttribute('data-text-alternate', _t('SilverStripe\\CMS\\Controllers\\CMSMain.SAVEDRAFT', 'Save draft'))
@@ -2259,7 +2259,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             // "publish", as with "save", it supports an alternate state to show when action is needed.
             $majorActions->push(
                 $publish = FormAction::create('publish', _t(__CLASS__.'.BUTTONPUBLISHED', 'Published'))
-                    ->addExtraClass('btn-secondary-outline font-icon-check-mark')
+                    ->addExtraClass('btn-outline-secondary font-icon-check-mark')
                     ->setAttribute('data-btn-alternate', 'btn action btn-primary font-icon-rocket')
                     ->setUseButtonTag(true)
                     ->setAttribute('data-text-alternate', _t(__CLASS__.'.BUTTONSAVEPUBLISH', 'Save & publish'))
@@ -2269,7 +2269,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             if ($stagesDiffer) {
                 $publish->addExtraClass('btn-primary font-icon-rocket');
                 $publish->setTitle(_t(__CLASS__.'.BUTTONSAVEPUBLISH', 'Save & publish'));
-                $publish->removeExtraClass('btn-secondary-outline font-icon-check-mark');
+                $publish->removeExtraClass('btn-outline-secondary font-icon-check-mark');
             }
         }
 

@@ -354,7 +354,7 @@ $.entwine('ss', function($){
 
 
       save
-        .removeClass('btn-secondary-outline')
+        .removeClass('btn-outline-secondary')
         .addClass('btn-primary');
 
 			const publish = this.find('button[name=action_publish]');
@@ -370,7 +370,7 @@ $.entwine('ss', function($){
       }
 
       publish
-        .removeClass('btn-secondary-outline')
+        .removeClass('btn-outline-secondary')
         .addClass('btn-primary');
 
 
