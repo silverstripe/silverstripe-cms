@@ -8,6 +8,7 @@ use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\TreeDropdownField;
+use SilverStripe\Forms\RequiredFields;
 
 /**
  * Provides a form factory for inserting internal page links in a HTML editor
@@ -23,7 +24,7 @@ class InternalLinkFormFactory extends LinkFormFactory
                 SiteTree::class,
                 'ID',
                 'TreeTitle'
-            ),
+            )->setTitleField('MenuTitle'),
             TextField::create(
                 'Description',
                 _t(__CLASS__.'.LINKDESCR', 'Link description')
@@ -35,6 +36,19 @@ class InternalLinkFormFactory extends LinkFormFactory
             ),
         ]);
 
+        if ($context['RequireLinkText']) {
+            $fields->insertAfter('PageID', TextField::create('Text', _t(__CLASS__.'.LINKTEXT', 'Link text')));
+        }
+
         return $fields;
+    }
+
+    protected function getValidator($controller, $name, $context)
+    {
+        if ($context['RequireLinkText']) {
+            return RequiredFields::create('Text');
+        }
+
+        return null;
     }
 }

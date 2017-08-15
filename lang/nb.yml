@@ -65,37 +65,6 @@ nb:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Vennligst skriv inn adressesegment eller trykk avbryt.'
     HelpChars: 'Spesialtegn blir automatisk konvertert eller fjernet.'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: Feilkode
-    CODE_400: '400 - Ugyldig sidespørring'
-    CODE_401: '401 - Uautorisert'
-    CODE_403: '403 - Forbudt'
-    CODE_404: '404 - Ikke funnet'
-    CODE_405: '405 - Metode ikke tillat'
-    CODE_406: '406 - Ikke akseptabel'
-    CODE_407: '407 - Proxy autentisering påkrevd'
-    CODE_408: '408 - Sidespørring timeout'
-    CODE_409: '409 - Konflikt'
-    CODE_410: '410 - Borte'
-    CODE_411: '411 - Lengde påkrevd'
-    CODE_412: '412 - Prekondisjon feilet'
-    CODE_413: '413 - Spørringsenhet for stor'
-    CODE_414: '414 - Spørrings-URI for lang'
-    CODE_415: '415 - Mediatype ikke støttet'
-    CODE_416: '416 - Spørringsspenne kan ikke tilfredstilles'
-    CODE_417: '417 - Forventning feilet'
-    CODE_422: '422 - Enheten kan ikke prosesseres'
-    CODE_429: '429 - for mange sideforespørsler'
-    CODE_500: '500 - Intern serverfeil'
-    CODE_501: '501 - Ikke implementert'
-    CODE_502: '502 - Dårlig gateway'
-    CODE_503: '503 - Service ikke tilgjengelig'
-    CODE_504: '504 - Gateway timeout'
-    CODE_505: '505 - HTTP versjon ikke støttet'
-    DEFAULTERRORPAGECONTENT: '<p>Beklager, det ser ut til at du prøver å nå en side som ikke finnes.</p><p>Sjekk at du har skrevet riktig adresse og prøv på nytt.</p>'
-    DEFAULTERRORPAGETITLE: 'Siden ble ikke funnet'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Beklager, det oppstod et problem under utføringen.</p>'
-    DEFAULTSERVERERRORPAGETITLE: Serverfeil
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'En omdirigeringssside har blitt satt opp uten et mål å omdirigere til.'
     HEADER: 'Denne siden vil omdirigere brukere til en annen side'
@@ -130,9 +99,7 @@ nb:
     DEPENDENT_NOTE: 'De følgende sidene avhenger av denne siden. Dette inkluderer virtuelle sider, omdirigeringssider og sider med innholdslenker.'
     DependtPageColumnLinkType: Lenketype
     DependtPageColumnURL: URL
-    EDITANYONE: 'Alle som kan logge inn til kontrollpanelet'
     EDITHEADER: 'Hvem kan redigere dette i kontrollpanelet?'
-    EDITONLYTHESE: 'Bare disse personene'
     EDITORGROUPS: Redaktørgrupper
     EDIT_ALL_DESCRIPTION: 'Rediger hvilken som helst side'
     EDIT_ALL_HELP: 'Lar deg redigere hvilken som helst side på nettstedet, uavhengig av innstillingene på adgangsfanen. Krever at du har tilgang til sideseksjonen.'

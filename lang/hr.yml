@@ -91,15 +91,6 @@ hr:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Molimo unesite dio URLa ili kliknite odustani'
     HelpChars: 'Posebni znakovi se automatski pretvaraju ili uklanjaju.'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Kod pogreške'
-    DEFAULTERRORPAGECONTENT: '<p>Nažalost, čini se kako pokušavate pristupiti stranici koja ne postoji.</p><p>Molimo provjerite jeste li upisali točan URL i pokušajte ponovo.</p>'
-    DEFAULTERRORPAGETITLE: 'Stranica nije pronađena'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Nažalost, dogodio se problem prilikom rukovanja vašim zahtjevom.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Serverska greška'
-    DESCRIPTION: 'Prilagođeni sadržaj za različite slučajeve grešaka (npr. "Stranica nije pronađena")'
-    PLURALNAME: 'Stranice greške'
-    SINGULARNAME: 'Stranica greške'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Preusmjerava na internu stranicu ili vanjski URL'
     HASBEENSETUP: 'Stranica za preusjeravanje nema postavljenog preusmjeravanja'
@@ -139,9 +130,7 @@ hr:
     DESCRIPTION: 'Obična sadržajna stranica'
     DependtPageColumnLinkType: 'Tip linka'
     DependtPageColumnURL: Link
-    EDITANYONE: 'Svi koji se mogu prijaviti  u CMS'
     EDITHEADER: 'Tko može uređivati unutar CMSa?'
-    EDITONLYTHESE: 'Samo slijedeći korisnici (odaberite s popisa)'
     EDITORGROUPS: 'Urednička grupa'
     EDIT_ALL_DESCRIPTION: 'Uredi bilo koju stranicu'
     EDIT_ALL_HELP: 'Mogućnost uređivanja bilo koje stranice, neovisno o postavkama na Pristup tabu. Zahtjeva "Pristup na ''Stranice'' sekciju" dozvolu'

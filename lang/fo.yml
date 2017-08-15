@@ -4,11 +4,6 @@ fo:
     PUBALLCONFIRM: 'Vinarliga almenna kunngerð allar síðurnar á heimasíðuni,  avrita innihaldsstøðið til beinleiðis'
     PUBALLFUN: '"Ger alt alment" funka'
     REMOVEDPAGEFROMDRAFT: 'Strikaði ''{title}'' frá kladdu heimasíðuni'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: Feilkota
-    CODE_404: '404 - Ikki funnin'
-    CODE_411: '411 - Longd er kravd'
-    DEFAULTERRORPAGETITLE: 'Síðan var ikki funnin'
   SilverStripe\CMS\Model\RedirectorPage:
     REDIRECTTO: 'Víðarisend til'
     REDIRECTTOEXTERNAL: 'Onnur heimasíðu'
@@ -28,9 +23,7 @@ fo:
     DEFAULTABOUTTITLE: 'Um okkum'
     DEFAULTCONTACTTITLE: 'Samband við okkum'
     DEFAULTHOMETITLE: Heim
-    EDITANYONE: 'Øll kunna innrita á CMS skipanina'
     EDITHEADER: 'Hvør kann broyta hesa síðuna?'
-    EDITONLYTHESE: 'Bert hesa fólkini (vel frá yvirliti)'
     HASBROKENLINKS: 'Hendan síðan inniheldur brotnar leinkur.'
     HTMLEDITORTITLE: Innihald
     METADESC: Frágreiðing

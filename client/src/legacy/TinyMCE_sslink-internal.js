@@ -61,6 +61,10 @@ jQuery.entwine('ss', ($) => {
       const handleHide = () => this.close();
       const handleInsert = (...args) => this.handleInsert(...args);
       const attrs = this.getOriginalAttributes();
+      const selection = tinymce.activeEditor.selection;
+      const selectionContent = selection.getContent() || '';
+      const tagName = selection.getNode().tagName;
+      const requireLinkText = tagName !== 'A' && selectionContent.trim() === '';
 
       // create/update the react component
       ReactDOM.render(
@@ -74,6 +78,7 @@ jQuery.entwine('ss', ($) => {
             className="insert-link__dialog-wrapper--internal"
             fileAttributes={attrs}
             identifier="Admin.InsertLinkInternalModal"
+            requireLinkText={requireLinkText}
           />
         </ApolloProvider>,
         this[0]

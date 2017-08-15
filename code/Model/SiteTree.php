@@ -193,12 +193,16 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     );
 
     private static $has_many = array(
-        "VirtualPages" => "SilverStripe\\CMS\\Model\\VirtualPage.CopyContentFrom"
+        "VirtualPages" => VirtualPage::class . '.CopyContentFrom'
     );
 
     private static $owned_by = array(
         "VirtualPages"
     );
+
+    private static $cascade_deletes = [
+        'VirtualPages',
+    ];
 
     private static $casting = array(
         "Breadcrumbs" => "HTMLFragment",
@@ -1155,7 +1159,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // Check parent (custom canCreate option for SiteTree)
         // Block children not allowed for this parent type
         $parent = isset($context['Parent']) ? $context['Parent'] : null;
-        if ($parent && !in_array(static::class, $parent->allowedChildren())) {
+        $strictParentInstance = ($parent && $parent instanceof SiteTree);
+        if ($strictParentInstance && !in_array(static::class, $parent->allowedChildren())) {
             return false;
         }
 
@@ -1171,7 +1176,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         // Fall over to inherited permissions
-        if ($parent && $parent->exists()) {
+        if ($strictParentInstance && $parent->exists()) {
             return $parent->canAddChildren($member);
         } else {
             // This doesn't necessarily mean we are creating a root page, but that

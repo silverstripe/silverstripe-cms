@@ -63,14 +63,6 @@ sl:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Prosim vnesite URL segment ali kliknite prekliči'
     HelpChars: 'Posebni znaki so samodejno spremenjeni ali odstranjeni.'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Napačna koda'
-    DEFAULTERRORPAGECONTENT: '<p>Morda ste zahtevali dostop do strani, ki ne obstaja?</p><p>Za vsak slučaj preverite vpisani URL-naslov in poskusite ponovno.</p>'
-    DEFAULTERRORPAGETITLE: 'Strani ni mogoče najti'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Oprostite, pri vaši zahtevi je prišlo do težave.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Napaka na strežniku'
-    PLURALNAME: 'Strani z napakami'
-    SINGULARNAME: 'Stran z napako'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Nastavljena preusmeritev še nima določenega cilja.'
     HEADER: 'Ta stran bo preusmerila uporabnike na drugo stran'
@@ -104,9 +96,7 @@ sl:
     DEPENDENT_NOTE: 'Naslednje strani so odvisne od vsebine tukaj (vključuje navidezne strani, preusmerjevalne strani in strani s povezavami v vsebini)'
     DependtPageColumnLinkType: 'Tip povezave'
     DependtPageColumnURL: URL
-    EDITANYONE: 'Vsakdo, ki se prijavi v CMS-vmesnik'
     EDITHEADER: 'Kdo lahko ureja to stran?'
-    EDITONLYTHESE: 'Samo ti uporabniki (izberite jih s seznama)'
     EDITORGROUPS: 'Skupine urednikov'
     EDIT_ALL_DESCRIPTION: 'Urejanje vseh strani'
     EDIT_ALL_HELP: 'Možnost urejanja katerekoli strani na spletnem mestu, ne glede na nastavitve v sklopu "Dostop". Zahteva dovoljenje za dostop do vsebine spletnega mesta.'

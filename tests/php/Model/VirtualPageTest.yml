@@ -1,0 +1,70 @@
+SilverStripe\Security\Group:
+  bobgroup:
+    Title: BobGroup
+    code: bobgroup
+  andrewgroup:
+    Title: AndrewGroup
+    code: andrewgroup
+  cindygroup:
+    Title: CindyGroup
+    code: cindygroup
+  alicegroup:
+    Title: AliceGroup
+    code: alicegroup
+SilverStripe\Security\Permission:
+  bobpermission:
+    Code: CMS_ACCESS_CMSMain
+    Group: =>SilverStripe\Security\Group.bobgroup
+  andrewpermission:
+    Code: CMS_ACCESS_CMSMain
+    Group: =>SilverStripe\Security\Group.andrewgroup
+SilverStripe\Security\Member:
+  bob:
+    Email: bob@bobby.com
+    Groups: =>SilverStripe\Security\Group.bobgroup
+  andrew:
+    Email: andrew@andrew.com
+    Groups: =>SilverStripe\Security\Group.andrewgroup
+  cindy:
+    Email: cindy@cindy.com
+    Groups: =>SilverStripe\Security\Group.cindygroup
+  alice:
+    Email: alice@alice.com
+    Groups: =>SilverStripe\Security\Group.alicegroup
+Page:
+  master:
+    Title: My Page
+    MenuTitle: My Page Nav
+  master2:
+    Title: My Other Page
+    MenuTitle: My Other Page Nav
+  holder:
+    Title: Sub-pages
+  master3:
+    Title: CanEditBob
+    CanEditType: OnlyTheseUsers
+    CanViewType: Inherit
+    EditorGroups: =>SilverStripe\Security\Group.bobgroup
+SilverStripe\CMS\Tests\Model\VirtualPageTest_ClassA:
+  pagea:
+    Title: 'Page A'
+    Content: '<p>Content</p>'
+SilverStripe\CMS\Model\VirtualPage:
+  vp1:
+    Title: vp1
+    CopyContentFrom: =>Page.master
+    Parent: =>Page.holder
+  vp2:
+    Title: vp2
+    CopyContentFrom: =>Page.master
+    Parent: =>Page.holder
+  vp3:
+    CopyContentFrom: =>Page.master3
+    Parent: =>Page.holder
+    CanEditType: OnlyTheseUsers
+    CanViewType: OnlyTheseUsers
+    EditorGroups: =>SilverStripe\Security\Group.andrewgroup
+    ViewerGroups: =>SilverStripe\Security\Group.cindygroup
+  vp4:
+    CopyContentFrom: =>SilverStripe\CMS\Tests\Model\VirtualPageTest_ClassA.pagea
+    Title: 'vp4'

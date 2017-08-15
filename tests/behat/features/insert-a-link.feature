@@ -52,7 +52,7 @@ So that I can link to a external website or a page on my site
     When I fill in "http://silverstripe.org" for "URL"
       And I check "Open in new window/tab"
       And I press the "Insert" button
-    Then the "Content" HTML field should contain "<a href="http://silverstripe.org" target="_blank">awesome</a>"
+    Then the "Content" HTML field should contain "<a rel="noopener" href="http://silverstripe.org" target="_blank">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save draft" button
 

@@ -1,10 +1,6 @@
 vi_VN:
   SilverStripe\CMS\Controllers\CMSMain:
     PAGENOTEXISTS: 'Không tìm thấy trang này.'
-  SilverStripe\CMS\Model\ErrorPage:
-    CODE: 'Mã lỗi'
-    DEFAULTERRORPAGECONTENT: '<p>Bạn truy cập vào một trang không tồn tại</p><p>Xin vui lòng kiểm tra lại đường dẩn hoặc quay lại trang chủ</p>'
-    DEFAULTERRORPAGETITLE: 'Không tìm thấy'
   SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'Một trang di chuyển chưa cấu hình đích di chuyển đến.'
     HEADER: 'Trang này sẽ di chuyển người dùng đến một trang khác'
@@ -25,9 +21,7 @@ vi_VN:
     DEFAULTABOUTTITLE: 'Giới thiệu'
     DEFAULTCONTACTTITLE: 'Liên hệ'
     DEFAULTHOMETITLE: 'Trang chủ'
-    EDITANYONE: 'Bất cứ ai có thể đăng nhập vào phần quản lý'
     EDITHEADER: 'Ai có thể thay đổi trang này ?'
-    EDITONLYTHESE: 'Chỉ những người sau đây (chọn từ danh sách)'
     HASBROKENLINKS: 'Trang này có liên kết hỏng.'
     HTMLEDITORTITLE: 'Nội dung'
     MENUTITLE: Nhãn
