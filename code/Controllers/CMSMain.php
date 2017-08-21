@@ -2,15 +2,12 @@
 
 namespace SilverStripe\CMS\Controllers;
 
+use InvalidArgumentException;
+use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Admin\AdminRootController;
 use SilverStripe\Admin\CMSBatchActionHandler;
-use SilverStripe\Admin\LeftAndMain_SearchFilter;
-use SilverStripe\Admin\LeftAndMainFormRequestHandler;
-use SilverStripe\CMS\Model\VirtualPage;
-use SilverStripe\Core\Environment;
-use SilverStripe\Forms\Tab;
-use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\Admin\LeftAndMain;
+use SilverStripe\Admin\LeftAndMainFormRequestHandler;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Archive;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Publish;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Restore;
@@ -18,16 +15,16 @@ use SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish;
 use SilverStripe\CMS\Model\CurrentPageIdentifier;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
-use SilverStripe\Control\Session;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Convert;
+use SilverStripe\Core\Environment;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Core\Manifest\ModuleLoader;
-use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldGroup;
@@ -44,9 +41,11 @@ use SilverStripe\Forms\GridField\GridFieldSortableHeader;
 use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\LabelField;
 use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\Tab;
 use SilverStripe\Forms\TabSet;
 use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
@@ -56,19 +55,18 @@ use SilverStripe\ORM\Hierarchy\MarkedSet;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\ValidationResult;
 use SilverStripe\Security\InheritedPermissions;
-use SilverStripe\SiteConfig\SiteConfig;
-use SilverStripe\Versioned\Versioned;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\PermissionProvider;
 use SilverStripe\Security\Security;
 use SilverStripe\Security\SecurityToken;
+use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\Versioned\ChangeSet;
+use SilverStripe\Versioned\ChangeSetItem;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
 use Translatable;
-use InvalidArgumentException;
-use SilverStripe\Versioned\ChangeSet;
-use SilverStripe\Versioned\ChangeSetItem;
 
 /**
  * The main "content" area of the CMS.
@@ -140,6 +138,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
     private static $url_handlers = [
         'EditForm/$ID' => 'EditForm',
+        'treeview/$ID' => 'treeview',
+        'listview/$ParentID' => 'listview',
     ];
 
     private static $casting = array(
@@ -197,16 +197,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         // ListViewForm
         $negotiator->setCallback('ListViewForm', function () {
             return $this->ListViewForm()->forTemplate();
-        });
-
-        // PageList view
-        $negotiator->setCallback('Content-PageList', function () {
-            return $this->PageList()->forTemplate();
-        });
-
-        // PageList view for edit controller
-        $negotiator->setCallback('Content-PageList-Sidebar', function () {
-            return $this->PageListSidebar()->forTemplate();
         });
 
         return $negotiator;
@@ -314,8 +304,39 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     public function LinkListView()
     {
-        // Note : Force redirect to top level page controller
+        // Note : Force redirect to top level page controller (no parentid)
         return $this->LinkWithSearch(CMSMain::singleton()->Link('listview'));
+    }
+
+    /**
+     * Link to list view for children of a parent page
+     *
+     * @param int|string $parentID Literal parentID, or placeholder (e.g. '%d') for
+     * client side substitution
+     * @return string
+     */
+    public function LinkListViewChildren($parentID)
+    {
+        return $this->LinkWithSearch(Controller::join_links(
+            CMSMain::singleton()->Link('listview'),
+            $parentID
+        ));
+    }
+
+    /**
+     * Link to lazy-load deferred tree view
+     *
+     * @return string
+     */
+    public function LinkTreeViewDeferred()
+    {
+        $link = $this->Link('treeview');
+        // Ensure selected page is encoded into URL
+        $selectedID = $this->currentPageID();
+        if ($selectedID) {
+            $link = Controller::join_links($link, $selectedID);
+        }
+        return $this->LinkWithSearch($link);
     }
 
     public function LinkPageEdit($id = null)
@@ -506,13 +527,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     protected function getTreeNodeCustomisations()
     {
         $rootTitle = $this->getCMSTreeTitle();
-        $linkWithSearch = $this->LinkWithSearch($this->Link());
-        return function (SiteTree $node) use ($linkWithSearch, $rootTitle) {
+        return function (SiteTree $node) use ($rootTitle) {
             return [
-                'listViewLink' => Controller::join_links(
-                    $linkWithSearch,
-                    '?view=listview&ParentID=' . $node->ID
-                ),
+                'listViewLink' => $this->LinkListViewChildren($node->ID),
                 'rootTitle' => $rootTitle,
                 'extraClass' => $this->getTreeNodeClasses($node),
             ];
@@ -1289,20 +1306,31 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     }
 
     /**
+     * This method exclusively handles deferred ajax requests to render the
+     * pages tree deferred handler (no pjax-fragment)
+     *
      * @param HTTPRequest $request
      * @return string HTML
      */
     public function treeview($request)
     {
-        return $this->getResponseNegotiator()->respond($request);
+        // Ensure selected page ID is highlighted
+        $pageID = $request->param('ID') ?: 0;
+        $this->setCurrentPageID($pageID);
+        return $this->renderWith($this->getTemplatesWithSuffix('_TreeView'));
     }
 
     /**
+     * Note: This method exclusively handles top level view of list view
+     *
      * @param HTTPRequest $request
      * @return string HTML
      */
     public function listview($request)
     {
+        // Ensure selected page ID is highlighted
+        $pageID = $request->param('ParentID') ?: 0;
+        $this->setCurrentPageID($pageID);
         return $this->getResponseNegotiator()->respond($request);
     }
 
@@ -1407,15 +1435,15 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function ListViewForm()
     {
         $params = $this->getRequest()->requestVar('q');
-        $list = $this->getList($params, $parentID = $this->getRequest()->requestVar('ParentID'));
+        $parentID = $this->getRequest()->param('ParentID');
+        $list = $this->getList($params, $parentID);
         $gridFieldConfig = GridFieldConfig::create()->addComponents(
             new GridFieldSortableHeader(),
             new GridFieldDataColumns(),
             new GridFieldPaginator($this->config()->get('page_length'))
         );
         if ($parentID) {
-            $linkSpec = $this->Link();
-            $linkSpec = $linkSpec . (strstr($linkSpec, '?') ? '&' : '?') . 'ParentID=%d&view=listview';
+            $linkSpec = $this->LinkListViewChildren('%d');
             $gridFieldConfig->addComponent(
                 GridFieldLevelup::create($parentID)
                     ->setLinkSpec($linkSpec)
@@ -1456,10 +1484,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 if ($num) {
                     return sprintf(
                         '<a class="btn btn-secondary btn--no-text btn--icon-large font-icon-right-dir cms-panel-link list-children-link" data-pjax-target="ListViewForm,Breadcrumbs" href="%s"><span class="sr-only">%s child pages</span></a>',
-                        Controller::join_links(
-                            $controller->Link(),
-                            sprintf("?ParentID=%d&view=listview", (int)$item->ID)
-                        ),
+                        $this->LinkListViewChildren((int)$item->ID),
                         $num
                     );
                 }
