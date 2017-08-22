@@ -278,7 +278,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     {
         $link = Controller::join_links(
             AdminRootController::admin_url(),
-            $this->stat('url_segment'), // in case we want to change the segment
+            $this->config()->get('url_segment'), // in case we want to change the segment
             '/', // trailing slash needed if $action is null!
             "$action"
         );
@@ -418,7 +418,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         // Pre-cache sitetree version numbers for querying efficiency
         Versioned::prepopulate_versionnumber_cache(SiteTree::class, Versioned::DRAFT);
         Versioned::prepopulate_versionnumber_cache(SiteTree::class, Versioned::LIVE);
-        $html = $this->getSiteTreeFor($this->stat('tree_class'));
+        $html = $this->getSiteTreeFor($this->config()->get('tree_class'));
 
         $this->extend('updateSiteTreeAsUL', $html);
 
@@ -566,7 +566,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function getsubtree($request)
     {
         $html = $this->getSiteTreeFor(
-            $this->stat('tree_class'),
+            $this->config()->get('tree_class'),
             $request->getVar('ID'),
             null,
             null,
@@ -615,7 +615,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             // TODO: These methods should really be in hierarchy - for a start it assumes Sort exists
             $prev = null;
 
-            $className = $this->stat('tree_class');
+            $className = $this->config()->get('tree_class');
             $next = DataObject::get($className)
                 ->filter('ParentID', $record->ParentID)
                 ->filter('Sort:GreaterThan', $record->Sort)
@@ -677,7 +677,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             );
         }
 
-        $className = $this->stat('tree_class');
+        $className = $this->config()->get('tree_class');
         $id = $request->requestVar('ID');
         $parentID = $request->requestVar('ParentID');
         if (!is_numeric($id) || !is_numeric($parentID)) {
@@ -963,8 +963,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 );
 
                 // Check if can be created at the root
-                $needsPerm = $obj->stat('need_permission');
-                if (!$obj->stat('can_be_root')
+                $needsPerm = $obj->config()->get('need_permission');
+                if (!$obj->config()->get('can_be_root')
                     || (!array_key_exists($class, $cacheCanCreate) || !$cacheCanCreate[$class])
                     || ($needsPerm && !$this->can($needsPerm))
                 ) {
@@ -1012,7 +1012,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             }
 
             // skip this type if it is restricted
-            if ($instance->stat('need_permission') && !$this->can(singleton($class)->stat('need_permission'))) {
+            if ($instance->config()->get('need_permission') && !$this->can(singleton($class)->config()->get('need_permission'))) {
                 continue;
             }
 
@@ -1024,7 +1024,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 'AddAction' => $singularName,
                 'Description' => $description,
                 // TODO Sprite support
-                'IconURL' => $instance->stat('icon'),
+                'IconURL' => $instance->config()->get('icon'),
                 'Title' => $singularName,
             )));
         }
@@ -1046,7 +1046,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if (!$id) {
             return null;
         }
-        $treeClass = $this->stat('tree_class');
+        $treeClass = $this->config()->get('tree_class');
         if ($id instanceof $treeClass) {
             return $id;
         }
@@ -1395,7 +1395,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if ($filter = $this->getQueryFilter($params)) {
             return $filter->getFilteredPages();
         } else {
-            $list = DataList::create($this->stat('tree_class'));
+            $list = DataList::create($this->config()->get('tree_class'));
             $parentID = is_numeric($parentID) ? $parentID : 0;
             return $list->filter("ParentID", $parentID);
         }
@@ -1530,7 +1530,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     public function save($data, $form)
     {
-        $className = $this->stat('tree_class');
+        $className = $this->config()->get('tree_class');
 
         // Existing or new record?
         $id = $data['ID'];
@@ -1606,7 +1606,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     public function getNewItem($id, $setID = true)
     {
-        $parentClass = $this->stat('tree_class');
+        $parentClass = $this->config()->get('tree_class');
         list(, $className, $parentID) = array_pad(explode('-', $id), 3, null);
 
         if (!is_a($className, $parentClass, true)) {
@@ -1798,7 +1798,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
     public function unpublish($data, $form)
     {
-        $className = $this->stat('tree_class');
+        $className = $this->config()->get('tree_class');
         /** @var SiteTree $record */
         $record = DataObject::get_by_id($className, $data['ID']);
 
@@ -1845,7 +1845,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $version = (isset($data['Version'])) ? (int) $data['Version'] : null;
 
         /** @var DataObject|Versioned $record */
-        $record = DataObject::get_by_id($this->stat('tree_class'), $id);
+        $record = DataObject::get_by_id($this->config()->get('tree_class'), $id);
         if ($record && !$record->canEdit()) {
             return Security::permissionFailure($this);
         }

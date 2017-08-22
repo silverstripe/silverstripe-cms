@@ -31,7 +31,7 @@ class LeftAndMainPageIconsExtension extends Extension
         $classes = ClassInfo::subclassesFor('SilverStripe\\CMS\\Model\\SiteTree');
         foreach ($classes as $class) {
             $obj = singleton($class);
-            $iconSpec = $obj->stat('icon');
+            $iconSpec = $obj->config()->get('icon');
 
             if (!$iconSpec) {
                 continue;
