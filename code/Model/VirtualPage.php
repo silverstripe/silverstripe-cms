@@ -335,7 +335,7 @@ class VirtualPage extends Page
 
         // "Can be root" validation
         $orig = $this->CopyContentFrom();
-        if ($orig && $orig->exists() && !$orig->stat('can_be_root') && !$this->ParentID) {
+        if ($orig && $orig->exists() && !$orig->config()->get('can_be_root') && !$this->ParentID) {
             $result->addError(
                 _t(
                     'SilverStripe\\CMS\\Model\\VirtualPage.PageTypNotAllowedOnRoot',

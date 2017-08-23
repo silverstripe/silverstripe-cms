@@ -88,7 +88,7 @@ abstract class SilverStripeNavigatorItem extends ViewableData
      */
     public function getPriority()
     {
-        return $this->stat('priority');
+        return $this->config()->get('priority');
     }
 
     /**

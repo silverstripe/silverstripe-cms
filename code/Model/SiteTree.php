@@ -452,7 +452,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $instance = singleton($class);
 
             // do any of the progeny want to hide an ancestor?
-            if ($ancestor_to_hide = $instance->stat('hide_ancestor')) {
+            if ($ancestor_to_hide = $instance->config()->get('hide_ancestor')) {
                 // note for killing later
                 $kill_ancestors[] = $ancestor_to_hide;
             }
@@ -990,7 +990,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             return true;
         }
 
-        return $this->canEdit($member) && $this->stat('allowed_children') !== 'none';
+        return $this->canEdit($member) && $this->config()->get('allowed_children') !== 'none';
     }
 
     /**
@@ -1522,7 +1522,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         // "Can be root" validation
-        if (!$this->stat('can_be_root') && !$this->ParentID) {
+        if (!$this->config()->get('can_be_root') && !$this->ParentID) {
             $result->addError(
                 _t(
                     'SilverStripe\\CMS\\Model\\SiteTree.PageTypNotAllowedOnRoot',
@@ -2419,7 +2419,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 }
             }
 
-            if ($perms = $instance->stat('need_permission')) {
+            if ($perms = $instance->config()->get('need_permission')) {
                 if (!$this->can($perms)) {
                     continue;
                 }
@@ -2498,7 +2498,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function defaultChild()
     {
-        $default = $this->stat('default_child');
+        $default = $this->config()->get('default_child');
         $allowed = $this->allowedChildren();
         if ($allowed) {
             if (!$default || !in_array($default, $allowed)) {
@@ -2516,7 +2516,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function defaultParent()
     {
-        return $this->stat('default_parent');
+        return $this->config()->get('default_parent');
     }
 
     /**
@@ -2802,7 +2802,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     {
         $base = in_array(static::class, [Page::class, self::class]);
         if ($base) {
-            return $this->stat('base_singular_name');
+            return $this->config()->get('base_singular_name');
         }
         return parent::singular_name();
     }
@@ -2816,7 +2816,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     {
         $base = in_array(static::class, [Page::class, self::class]);
         if ($base) {
-            return $this->stat('base_plural_name');
+            return $this->config()->get('base_plural_name');
         }
         return parent::plural_name();
     }
@@ -2830,9 +2830,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     {
         $base = in_array(static::class, [Page::class, self::class]);
         if ($base) {
-            return $this->stat('base_description');
+            return $this->config()->get('base_description');
         }
-        return $this->stat('description');
+        return $this->config()->get('description');
     }
 
     /**
