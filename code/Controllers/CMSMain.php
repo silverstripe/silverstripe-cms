@@ -887,7 +887,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $form = Form::create($this, 'SearchForm', $fields, $actions)
             ->addExtraClass('cms-search-form')
             ->setFormMethod('GET')
-            ->setFormAction($this->Link())
+            ->setFormAction(CMSMain::singleton()->Link())
             ->disableSecurityToken()
             ->unsetValidator();
 
