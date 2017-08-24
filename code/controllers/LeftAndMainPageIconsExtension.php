@@ -33,12 +33,7 @@ class LeftAndMainPageIconsExtension extends Extension {
 			// Legacy support: Add file extension if none exists
 			if(!pathinfo($iconFile, PATHINFO_EXTENSION)) $iconFile .= '-file.gif';
 
-			$iconPathInfo = pathinfo($iconFile);
-			
-			// Base filename
-			$baseFilename = $iconPathInfo['dirname'] . '/' . $iconPathInfo['filename'];
-			$fileExtension = $iconPathInfo['extension'];
-
+			$class = Convert::raw2htmlid($class);
 			$selector = ".page-icon.class-$class, li.class-$class > a .jstree-pageicon";
 
 			if(Director::fileExists($iconFile)) {
