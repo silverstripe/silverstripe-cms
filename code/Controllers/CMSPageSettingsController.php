@@ -2,6 +2,8 @@
 
 namespace SilverStripe\CMS\Controllers;
 
+use SilverStripe\View\ArrayData;
+
 class CMSPageSettingsController extends CMSMain
 {
 
@@ -18,13 +20,6 @@ class CMSPageSettingsController extends CMSMain
         $record = $this->getRecord($id ?: $this->currentPageID());
 
         return parent::getEditForm($id, ($record) ? $record->getSettingsFields() : null);
-    }
-
-    public function Breadcrumbs($unlinked = false)
-    {
-        $crumbs = parent::Breadcrumbs($unlinked);
-        $crumbs[0]->Title = _t('SilverStripe\\CMS\\Controllers\\CMSPagesController.MENUTITLE', 'Pages');
-        return $crumbs;
     }
 
     public function getTabIdentifier()
