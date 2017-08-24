@@ -2837,7 +2837,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 		$flags = $this->getStatusFlags();
 		$treeTitle = sprintf(
-			"<span class=\"jstree-pageicon\"></span><span class=\"item\" data-allowedchildren=\"%s\">%s</span>",
+			"<span class=\"jstree-pageicon page-icon class-%s\"></span><span class=\"item\" data-allowedchildren=\"%s\">%s</span>",
+			Convert::raw2htmlid($this->class),
 			Convert::raw2att(Convert::raw2json($children)),
 			Convert::raw2xml(str_replace(array("\n","\r"),"",$this->MenuTitle))
 		);
@@ -2890,7 +2891,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string
 	 */
 	public function CMSTreeClasses($numChildrenMethod="numChildren") {
-		$classes = sprintf('class-%s', $this->class);
+		$classes = sprintf('class-%s', Convert::raw2htmlid($this->class));
 		if($this->HasBrokenFile || $this->HasBrokenLink) {
 			$classes .= " BrokenLink";
 		}
