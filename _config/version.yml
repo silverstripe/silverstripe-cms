@@ -1,0 +1,8 @@
+---
+Name: cmsversion
+After: 'framework/*'
+---
+SilverStripe\Core\Manifest\VersionProvider:
+  modules:
+    silverstripe/framework: ''
+    silverstripe/cms: CMS
