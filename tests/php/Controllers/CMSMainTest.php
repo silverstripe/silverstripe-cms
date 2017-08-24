@@ -174,7 +174,7 @@ class CMSMainTest extends FunctionalTest
             if ($page instanceof TestOnly) {
                 continue;
             }
-            if (!$page->stat('can_be_root')) {
+            if (!$page->config()->get('can_be_root')) {
                 continue;
             }
 

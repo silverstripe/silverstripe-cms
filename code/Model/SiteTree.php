@@ -452,7 +452,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $instance = singleton($class);
 
             // do any of the progeny want to hide an ancestor?
-            if ($ancestor_to_hide = $instance->stat('hide_ancestor')) {
+            if ($ancestor_to_hide = $instance->config()->get('hide_ancestor')) {
                 // note for killing later
                 $kill_ancestors[] = $ancestor_to_hide;
             }
@@ -990,7 +990,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             return true;
         }
 
-        return $this->canEdit($member) && $this->stat('allowed_children') !== 'none';
+        return $this->canEdit($member) && $this->config()->get('allowed_children') !== 'none';
     }
 
     /**
@@ -1522,7 +1522,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         // "Can be root" validation
-        if (!$this->stat('can_be_root') && !$this->ParentID) {
+        if (!$this->config()->get('can_be_root') && !$this->ParentID) {
             $result->addError(
                 _t(
                     'SilverStripe\\CMS\\Model\\SiteTree.PageTypNotAllowedOnRoot',
@@ -2248,7 +2248,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         if ($canEdit && $isOnDraft) {
             $majorActions->push(
                 FormAction::create('save', _t(__CLASS__.'.BUTTONSAVED', 'Saved'))
-                    ->addExtraClass('btn-secondary-outline font-icon-check-mark')
+                    ->addExtraClass('btn-outline-secondary font-icon-check-mark')
                     ->setAttribute('data-btn-alternate', 'btn action btn-primary font-icon-save')
                     ->setUseButtonTag(true)
                     ->setAttribute('data-text-alternate', _t('SilverStripe\\CMS\\Controllers\\CMSMain.SAVEDRAFT', 'Save draft'))
@@ -2259,7 +2259,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             // "publish", as with "save", it supports an alternate state to show when action is needed.
             $majorActions->push(
                 $publish = FormAction::create('publish', _t(__CLASS__.'.BUTTONPUBLISHED', 'Published'))
-                    ->addExtraClass('btn-secondary-outline font-icon-check-mark')
+                    ->addExtraClass('btn-outline-secondary font-icon-check-mark')
                     ->setAttribute('data-btn-alternate', 'btn action btn-primary font-icon-rocket')
                     ->setUseButtonTag(true)
                     ->setAttribute('data-text-alternate', _t(__CLASS__.'.BUTTONSAVEPUBLISH', 'Save & publish'))
@@ -2269,7 +2269,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             if ($stagesDiffer) {
                 $publish->addExtraClass('btn-primary font-icon-rocket');
                 $publish->setTitle(_t(__CLASS__.'.BUTTONSAVEPUBLISH', 'Save & publish'));
-                $publish->removeExtraClass('btn-secondary-outline font-icon-check-mark');
+                $publish->removeExtraClass('btn-outline-secondary font-icon-check-mark');
             }
         }
 
@@ -2419,7 +2419,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 }
             }
 
-            if ($perms = $instance->stat('need_permission')) {
+            if ($perms = $instance->config()->get('need_permission')) {
                 if (!$this->can($perms)) {
                     continue;
                 }
@@ -2498,7 +2498,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function defaultChild()
     {
-        $default = $this->stat('default_child');
+        $default = $this->config()->get('default_child');
         $allowed = $this->allowedChildren();
         if ($allowed) {
             if (!$default || !in_array($default, $allowed)) {
@@ -2516,7 +2516,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function defaultParent()
     {
-        return $this->stat('default_parent');
+        return $this->config()->get('default_parent');
     }
 
     /**
@@ -2621,7 +2621,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
         $flags = $this->getStatusFlags();
         $treeTitle = sprintf(
-            "<span class=\"jstree-pageicon\"></span><span class=\"item\" data-allowedchildren=\"%s\">%s</span>",
+            "<span class=\"jstree-pageicon page-icon class-%s\"></span><span class=\"item\" data-allowedchildren=\"%s\">%s</span>",
+            Convert::raw2htmlid(static::class),
             Convert::raw2att(Convert::raw2json($children)),
             Convert::raw2xml(str_replace(array("\n","\r"), "", $this->MenuTitle))
         );
@@ -2715,7 +2716,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function CMSTreeClasses()
     {
-        $classes = sprintf('class-%s', static::class);
+        $classes = sprintf('class-%s', Convert::raw2htmlid(static::class));
         if ($this->HasBrokenFile || $this->HasBrokenLink) {
             $classes .= " BrokenLink";
         }
@@ -2802,7 +2803,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     {
         $base = in_array(static::class, [Page::class, self::class]);
         if ($base) {
-            return $this->stat('base_singular_name');
+            return $this->config()->get('base_singular_name');
         }
         return parent::singular_name();
     }
@@ -2816,7 +2817,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     {
         $base = in_array(static::class, [Page::class, self::class]);
         if ($base) {
-            return $this->stat('base_plural_name');
+            return $this->config()->get('base_plural_name');
         }
         return parent::plural_name();
     }
@@ -2830,9 +2831,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     {
         $base = in_array(static::class, [Page::class, self::class]);
         if ($base) {
-            return $this->stat('base_description');
+            return $this->config()->get('base_description');
         }
-        return $this->stat('description');
+        return $this->config()->get('description');
     }
 
     /**

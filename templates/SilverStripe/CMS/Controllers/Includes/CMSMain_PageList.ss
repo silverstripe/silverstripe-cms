@@ -1,7 +1,7 @@
-<div class="flexbox-area-grow cms-content-view" data-pjax-fragment="Content-PageList">
-	<% if $ViewState == 'listview' %>
-		<% include SilverStripe\\CMS\\Controllers\\CMSMain_ListView %>
-	<% else %>
-		<% include SilverStripe\\CMS\\Controllers\\CMSMain_TreeView %>
-	<% end_if %>
-</div>
+<% if $ViewState == 'listview' %>
+    <div class="flexbox-area-grow cms-content-view">
+        <% include SilverStripe\\CMS\\Controllers\\CMSMain_ListView %>
+    </div>
+<% else %>
+    <% include SilverStripe\\CMS\\Controllers\\CMSMain_TreeView_Deferred %>
+<% end_if %>
