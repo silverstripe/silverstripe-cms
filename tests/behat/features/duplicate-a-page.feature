@@ -10,7 +10,7 @@ Feature: Duplicate a page
 		And the "page" "Page1b" is a child of the "page" "Page1"
 		And the "page" "Page1b1" is a child of the "page" "Page1b"
 
-	@javascript
+	@javascript @retry
 	Scenario: I can duplicate a page in the pages section
 		When I go to "/admin/pages"
 		And I right click on "Page1" in the tree
@@ -18,8 +18,7 @@ Feature: Duplicate a page
 		And I click on "This page and subpages" in the context menu
 		Then I should see a "Duplicated 'Page1' and children successfully" notice
 
-		When I fill in "Title" with "Duplicate Page"
+		When I fill in "MenuTitle" with "Duplicate Page"
 		And I press the "Save & publish" button
-		And I wait for 1 second
 		Then I should see "Page1" in the tree
 		And I should see "Duplicate Page" in the tree

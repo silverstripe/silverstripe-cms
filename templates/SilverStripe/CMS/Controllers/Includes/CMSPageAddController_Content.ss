@@ -6,7 +6,7 @@
 					<ol class="breadcrumb">
 						<li class="breadcrumb__item breadcrumb__item--last">
 				            <h2 class="breadcrumb__item-title breadcrumb__item-title--last">
-						        <% _t('CMSAddPageController.Title','Add page') %>
+						        <%t SilverStripe\CMS\Controllers\CMSPageAddController.Title 'Add page' %>
 				            </h2>
 			            </li>
 					</ol>

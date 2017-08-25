@@ -6,4 +6,3 @@ require('../legacy/CMSPageHistoryController.js');
 require('../legacy/RedirectorPage.js');
 require('../legacy/SiteTreeURLSegmentField.js');
 
-require('../styles/bundle.scss');

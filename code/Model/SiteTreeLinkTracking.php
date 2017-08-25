@@ -2,14 +2,14 @@
 
 namespace SilverStripe\CMS\Model;
 
+use DOMElement;
 use SilverStripe\Assets\File;
-use SilverStripe\Core\Injector\Injector;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\ManyManyList;
-use SilverStripe\ORM\Versioning\Versioned;
-use DOMElement;
+use SilverStripe\Versioned\Versioned;
+use SilverStripe\View\Parsers\HTMLValue;
 
 /**
  * Adds tracking of links in any HTMLText fields which reference SiteTree or File items.
@@ -46,9 +46,9 @@ class SiteTreeLinkTracking extends DataExtension
      * @var array
      * @config
      */
-    private static $dependencies = array(
-        'Parser' => '%$SiteTreeLinkTracking_Parser'
-    );
+    private static $dependencies = [
+        'Parser' => '%$' . SiteTreeLinkTracking_Parser::class
+    ];
 
     /**
      * Parser for link tracking
@@ -64,7 +64,7 @@ class SiteTreeLinkTracking extends DataExtension
      * @param SiteTreeLinkTracking_Parser $parser
      * @return $this
      */
-    public function setParser($parser)
+    public function setParser(SiteTreeLinkTracking_Parser $parser = null)
     {
         $this->parser = $parser;
         return $this;
@@ -81,7 +81,7 @@ class SiteTreeLinkTracking extends DataExtension
     );
 
     private static $belongs_many_many = array(
-        "BackLinkTracking" => "SilverStripe\\CMS\\Model\\SiteTree.LinkTracking"
+        "BackLinkTracking" => SiteTree::class . '.LinkTracking',
     );
 
     /**
@@ -111,7 +111,7 @@ class SiteTreeLinkTracking extends DataExtension
         $linkedPages = array();
         $linkedFiles = array();
 
-        $htmlValue = Injector::inst()->create('HTMLValue', $record->$fieldName);
+        $htmlValue = HTMLValue::create($record->$fieldName);
         $links = $this->parser->process($htmlValue);
 
         // Highlight broken links in the content.

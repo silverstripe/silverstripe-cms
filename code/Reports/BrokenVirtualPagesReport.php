@@ -6,7 +6,7 @@ use SilverStripe\Core\ClassInfo;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DB;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\Reports\Report;
 
 class BrokenVirtualPagesReport extends Report
@@ -14,12 +14,12 @@ class BrokenVirtualPagesReport extends Report
 
     public function title()
     {
-        return _t('SideReport.BROKENVIRTUALPAGES', 'VirtualPages pointing to deleted pages');
+        return _t(__CLASS__.'.BROKENVIRTUALPAGES', 'VirtualPages pointing to deleted pages');
     }
 
     public function group()
     {
-        return _t('SideReport.BrokenLinksGroupTitle', "Broken links reports");
+        return _t(__CLASS__.'.BrokenLinksGroupTitle', "Broken links reports");
     }
 
     public function sourceRecords($params = null)
@@ -46,7 +46,7 @@ class BrokenVirtualPagesReport extends Report
     public function getParameterFields()
     {
         return new FieldList(
-            new CheckboxField('OnLive', _t('SideReport.ParameterLiveCheckbox', 'Check live site'))
+            new CheckboxField('OnLive', _t(__CLASS__.'.ParameterLiveCheckbox', 'Check live site'))
         );
     }
 }

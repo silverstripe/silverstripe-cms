@@ -6,6 +6,7 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Session;
 use SilverStripe\Control\HTTPResponse;
+use SilverStripe\Core\Convert;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
@@ -16,7 +17,6 @@ use SilverStripe\Forms\SelectionGroup_Item;
 use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBField;
-use SilverStripe\ORM\ValidationException;
 use SilverStripe\ORM\ValidationResult;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
@@ -45,7 +45,7 @@ class CMSPageAddController extends CMSPageEditController
         foreach ($this->PageTypes() as $type) {
             $html = sprintf(
                 '<span class="page-icon class-%s"></span><span class="title">%s</span><span class="form__field-description">%s</span>',
-                $type->getField('ClassName'),
+                Convert::raw2htmlid($type->getField('ClassName')),
                 $type->getField('AddAction'),
                 $type->getField('Description')
             );
@@ -59,8 +59,8 @@ class CMSPageAddController extends CMSPageEditController
 
         $numericLabelTmpl = '<span class="step-label"><span class="flyout">Step %d. </span><span class="title">%s</span></span>';
 
-        $topTitle = _t('CMSPageAddController.ParentMode_top', 'Top level');
-        $childTitle = _t('CMSPageAddController.ParentMode_child', 'Under another page');
+        $topTitle = _t('SilverStripe\\CMS\\Controllers\\CMSPageAddController.ParentMode_top', 'Top level');
+        $childTitle = _t('SilverStripe\\CMS\\Controllers\\CMSPageAddController.ParentMode_child', 'Under another page');
 
         $fields = new FieldList(
             $parentModeField = new SelectionGroup(
@@ -89,7 +89,7 @@ class CMSPageAddController extends CMSPageEditController
                 sprintf(
                     '<p class="message notice message-restricted">%s</p>',
                     _t(
-                        'CMSMain.AddPageRestriction',
+                        'SilverStripe\\CMS\\Controllers\\CMSMain.AddPageRestriction',
                         'Note: Some page types are not allowed for this selection'
                     )
                 )
@@ -98,7 +98,7 @@ class CMSPageAddController extends CMSPageEditController
                 "PageType",
                 DBField::create_field(
                     'HTMLFragment',
-                    sprintf($numericLabelTmpl, 2, _t('CMSMain.ChoosePageType', 'Choose page type'))
+                    sprintf($numericLabelTmpl, 2, _t('SilverStripe\\CMS\\Controllers\\CMSMain.ChoosePageType', 'Choose page type'))
                 ),
                 $pageTypes,
                 'Page'
@@ -107,7 +107,7 @@ class CMSPageAddController extends CMSPageEditController
 
         $parentModeField->setTitle(DBField::create_field(
             'HTMLFragment',
-            sprintf($numericLabelTmpl, 1, _t('CMSMain.ChoosePageParentMode', 'Choose where to create this page'))
+            sprintf($numericLabelTmpl, 1, _t('SilverStripe\\CMS\\Controllers\\CMSMain.ChoosePageParentMode', 'Choose where to create this page'))
         ));
 
         $parentField->setSearchFunction(function ($sourceObject, $labelField, $search) {
@@ -134,10 +134,10 @@ class CMSPageAddController extends CMSPageEditController
         }
 
         $actions = new FieldList(
-            FormAction::create("doAdd", _t('CMSMain.Create', "Create"))
+            FormAction::create("doAdd", _t('SilverStripe\\CMS\\Controllers\\CMSMain.Create', "Create"))
                 ->addExtraClass('btn-primary font-icon-plus-circled')
                 ->setUseButtonTag(true),
-            FormAction::create("doCancel", _t('CMSMain.Cancel', "Cancel"))
+            FormAction::create("doCancel", _t('SilverStripe\\CMS\\Controllers\\CMSMain.Cancel', "Cancel"))
                 ->addExtraClass('btn-secondary')
                 ->setUseButtonTag(true)
         );
@@ -150,7 +150,7 @@ class CMSPageAddController extends CMSPageEditController
             "AddForm",
             $fields,
             $actions
-        )->setHTMLID('Form_AddForm');
+        )->setHTMLID('Form_AddForm')->setStrictFormMethodCheck(false);
         $form->setAttribute('data-hints', $this->SiteTreeHints());
         $form->setAttribute('data-childfilter', $this->Link('childfilter'));
         $form->setValidationResponseCallback(function (ValidationResult $errors) use ($negotiator, $form) {
@@ -181,8 +181,6 @@ class CMSPageAddController extends CMSPageEditController
         $className = isset($data['PageType']) ? $data['PageType'] : "Page";
         $parentID = isset($data['ParentID']) ? (int)$data['ParentID'] : 0;
 
-        $suffix = isset($data['Suffix']) ? "-" . $data['Suffix'] : null;
-
         if (!$parentID && isset($data['Parent'])) {
             $page = SiteTree::get_by_link($data['Parent']);
             if ($page) {
@@ -200,22 +198,24 @@ class CMSPageAddController extends CMSPageEditController
             $parentID = 0;
         }
 
-        if (!singleton($className)->canCreate(Member::currentUser(), array('Parent' => $parentObj))) {
+        if (!singleton($className)->canCreate(Security::getCurrentUser(), array('Parent' => $parentObj))) {
             return Security::permissionFailure($this);
         }
 
-        $record = $this->getNewItem("new-$className-$parentID".$suffix, false);
+        $record = $this->getNewItem("new-$className-$parentID", false);
         $this->extend('updateDoAdd', $record, $form);
         $record->write();
 
         $editController = CMSPageEditController::singleton();
+        $editController->setRequest($this->getRequest());
         $editController->setCurrentPageID($record->ID);
 
-        Session::set(
+        $session = $this->getRequest()->getSession();
+        $session->set(
             "FormInfo.Form_EditForm.formError.message",
-            _t('CMSMain.PageAdded', 'Successfully created page')
+            _t('SilverStripe\\CMS\\Controllers\\CMSMain.PageAdded', 'Successfully created page')
         );
-        Session::set("FormInfo.Form_EditForm.formError.type", 'good');
+        $session->set("FormInfo.Form_EditForm.formError.type", 'good');
 
         return $this->redirect(Controller::join_links($editController->Link('show'), $record->ID));
     }

@@ -4,7 +4,7 @@ namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\ORM\SS_List;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 
 /**
  * Filters pages which have a status "Draft".
@@ -14,7 +14,7 @@ class CMSSiteTreeFilter_StatusDraftPages extends CMSSiteTreeFilter
 
     public static function title()
     {
-        return _t('CMSSiteTreeFilter_StatusDraftPages.Title', 'Draft pages');
+        return _t('SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_StatusDraftPages.Title', 'Draft pages');
     }
 
     /**

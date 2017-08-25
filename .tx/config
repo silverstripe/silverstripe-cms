@@ -8,7 +8,7 @@ source_lang = en
 type = YML
 
 [silverstripe-cms.master-js]
-file_filter = client/lang/src/<lang>.js
-source_file = client/lang/src/en.js
+file_filter = client/lang/src/<lang>.json
+source_file = client/lang/src/en.json
 source_lang = en
 type = KEYVALUEJSON

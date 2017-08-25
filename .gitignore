@@ -1,12 +1,5 @@
-.sass-cache
-.DS_Store
 node_modules
-framework
-siteconfig
-reports
-testsession
 silverstripe-cache
 vendor
 /**/*.js.map
 /**/*.css.map
-

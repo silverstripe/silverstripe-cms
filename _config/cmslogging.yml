@@ -1,9 +1,0 @@
----
-Name: cms-logging
-After: '#live-logging'
-Except:
-  environment: dev
----
-SilverStripe\Core\Injector\Injector:
-  FriendlyErrorFormatter:
-    class: SilverStripe\CMS\Logging\ErrorPageErrorFormatter

@@ -101,13 +101,53 @@
 	}
 }
 
+/* -------------------------------------------------------------------
+ * List view
+ * ------------------------------------------------------------------- */
+.cms-list {
+
+  .cms-list__item-breadcrumbs {
+    margin-left: 21px;
+    margin-bottom: 0;
+    font-size: 0.9em;
+    word-break: break-word;
+  }
+}
+
+/* -------------------------------------------------------------------
+ * Sitetree tool bar
+ * ----------------------------------------------------------------- */
+.cms-content-toolbar {
+
+  .view-controls {
+    margin-top: 0;
+
+     .page-view-link {
+       display: none;
+       margin-right: -5px;
+     }
+
+     &.view-controls--treeview .font-icon-list {
+       display: inline-block;
+     }
+
+     &.view-controls--listview .font-icon-tree {
+       display: inline-block;
+     }
+  }
+
+}
+
 /** ------------------------------------------------------------------
  * URLSegment field
  * ----------------------------------------------------------------- */
 .field.urlsegment {
 
-	&.loading {
-		background: url(../../images/loading.gif) no-repeat 162px 8px;
+	&.loading .form__field-label {
+		background-image: url(../../images/loading.gif);
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 20px;
 	}
 
 	.URL-link {
@@ -140,3 +180,4 @@
 #Form_EditForm #Title .update {
 	margin-left: 7px;
 }
+

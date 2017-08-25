@@ -1,42 +1,167 @@
 nb:
-  AssetAdmin:
-    ADDFILES: 'Legg til filer'
-    ActionAdd: 'Legg til mappe'
-    AppCategoryArchive: Arkiv
-    AppCategoryAudio: Lyd
-    AppCategoryDocument: Dokument
-    AppCategoryFlash: Flash
-    AppCategoryImage: Bilde
-    AppCategoryVideo: Video
-    BackToFolder: 'Tilbake til mappe'
-    CREATED: Dato
-    CurrentFolderOnly: 'Begrens til nåværende mappe'
-    DetailsView: Detaljer
-    FILES: Filer
-    FILESYSTEMSYNC: 'Synkroniser filer'
-    FILESYSTEMSYNCTITLE: 'Oppdaterer publiseringssystemets database av filene på nettstedet. Nyttig når nye filer har blitt lastet opp utenfor publiseringssystemet, for eksempel gjennom FTP.'
-    FROMTHEINTERNET: 'Fra internett'
-    FROMYOURCOMPUTER: 'Fra din PC'
-    Filetype: Filtype
-    ListView: Listevisning
-    MENUTITLE: Filer
-    NEWFOLDER: 'Ny mappe'
-    SIZE: Størrelse
-    THUMBSDELETED: '{count} ubrukte miniatyrbilder har blitt slettet.'
-    TreeView: Trevisning
-    Upload: 'Last opp'
-  AssetAdmin_DeleteBatchAction:
-    TITLE: 'Slett mapper'
-  AssetAdmin_Tools:
-    FILTER: Filter
-  AssetAdmin_left_ss:
-    GO: Utfør
-  AssetTableField:
-    BACKLINKCOUNT: 'Brukt på:'
-    PAGES: side(r)
-  BackLink_Button_ss:
-    Back: Tilbake
-  BrokenLinksReport:
+  SilverStripe\CMS\Controllers\CMSMain:
+    ACCESS: 'Adgang til seksjon for ''{title}'''
+    ACCESS_HELP: 'Lar deg se seksjonen som inneholder sidetreet og annet innhold. Tillatelser for å vise og redigere kan behandles gjennom sidespesifikke nedtrekkslister, så vel som  separate "Innholdstillatelser".'
+    ARCHIVE: Arkiver
+    ARCHIVEDPAGE: 'Arkiverte side ''{title}'''
+    AddPageRestriction: 'Merk: Noen sidetyper er ikke tillatt for dette valget.'
+    Cancel: Avbryt
+    ChoosePageParentMode: 'Velg hvor du vil opprette siden'
+    ChoosePageType: 'Velg sidetype'
+    Create: Opprett
+    DUPLICATED: 'Vellykket duplisering av "{title}".'
+    DUPLICATEDWITHCHILDREN: 'Vellykket duplisering av "{title}" og undersider.'
+    NEWPAGE: 'Ny {pagetype}'
+    PAGENOTEXISTS: 'Siden eksisterer ikke'
+    PAGETYPEANYOPT: 'Hvilken som helst'
+    PUBALLCONFIRM: 'Vennligst publiser hver eneste side på nettstedet, og kopier innhold til aktivt nettsted'
+    PUBALLFUN: 'Funksjonalitet for "Publiser alle"'
+    PUBPAGES: 'Ferdig: Publiserte {count} sider.'
+    PageAdded: 'Siden ble opprettet.'
+    REMOVEDPAGE: 'Fjernet "{title}" fra det publiserte nettstedet'
+    REMOVEDPAGEFROMDRAFT: 'Fjernet ''{title}''  fra utkastnettstedet'
+    RESTORED: 'Vellykket gjenoppretting av "{title}".'
+    RESTORE_DESC: 'Gjenopprett arkivert versjon som utkast'
+    RESTORE_TO_ROOT: 'Gjenopprett utkast på toppnivå'
+    RESTORE_TO_ROOT_DESC: 'Gjenopprett arkivert versjon som utkast på toppnivå'
+    ROLLEDBACKPUBv2: 'Tilbakestilte til den publiserte versjonen.'
+    ROLLEDBACKVERSIONv2: 'Tilbakestile til versjon #{version}.'
+    SAVEDRAFT: 'Lagre utkast'
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    ParentMode_child: 'Under en annen side'
+    ParentMode_top: Toppnivå
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    COMPAREMODE: 'Sammenlign modus (velg to)'
+    REVERTTOTHISVERSION: 'Tilbakestill til denne versjonen'
+    SHOWUNPUBLISHED: 'Vis upubliserte versjoner'
+    VIEW: Visning
+    VIEWINGLATEST: 'Viser den nyeste versjonen.'
+    VIEWINGVERSION: 'Viser versjon {version}.'
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    MENUTITLE: Sider
+  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
+    Title: 'Publiserte sider'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
+    Title: 'Alle sider'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'Publisert men fjernet fra utkast'
+  SilverStripe\CMS\Controllers\ContentController:
+    ARCHIVEDSITE: 'Forhåndsvis versjon'
+    ARCHIVEDSITEFROM: 'Arkivert nettsted fra '
+    CMS: Publiseringssystem
+    DRAFT: Utkast
+    DRAFTSITE: Utkastnettsted
+    INSTALL_SUCCESS: 'Installasjonen var vellykket!'
+    LOGGEDINAS: 'Logget inn som'
+    LOGIN: Innlogging
+    LOGOUT: 'Logg ut'
+    NOTEWONTBESHOWN: 'Merk: denne beskjeden vil ikke være synlig for besøkende'
+    NOTLOGGEDIN: 'Ikke logget inn'
+    PUBLISHED: Publisert
+    PUBLISHEDSITE: 'Publisert nettsted'
+    VIEWPAGEIN: 'Vis side i:'
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: Arkivert
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    EMPTY: 'Vennligst skriv inn adressesegment eller trykk avbryt.'
+    HelpChars: 'Spesialtegn blir automatisk konvertert eller fjernet.'
+  SilverStripe\CMS\Model\RedirectorPage:
+    HASBEENSETUP: 'En omdirigeringssside har blitt satt opp uten et mål å omdirigere til.'
+    HEADER: 'Denne siden vil omdirigere brukere til en annen side'
+    OTHERURL: 'Nettadresse til et annet nettsted'
+    REDIRECTTO: 'Omdiriger til'
+    REDIRECTTOEXTERNAL: 'Et annet nettsted'
+    REDIRECTTOPAGE: 'En side på nettstedet'
+    YOURPAGE: 'Side på ditt nettsted'
+  SilverStripe\CMS\Model\SiteTree:
+    ACCESSANYONE: Alle
+    ACCESSHEADER: 'Hvem kan se denne siden?'
+    ACCESSLOGGEDIN: 'Brukere som er logget inn'
+    ACCESSONLYTHESE: 'Bare disse personene (velg fra listen)'
+    ADDEDTODRAFTHELP: 'Siden har ikke blitt publisert ennå'
+    ADDEDTODRAFTSHORT: Utkast
+    APPEARSVIRTUALPAGES: 'Dette innholdet opptrer også i {title}-seksjonene til de virtuelle sidene.'
+    ARCHIVEDPAGEHELP: 'Siden er publisert og fjernet fra utkast'
+    ARCHIVEDPAGESHORT: Arkivert
+    BUTTONCANCELDRAFT: 'Avbryt endringer i utkast'
+    BUTTONCANCELDRAFTDESC: 'Slett utkast og gå tilbake til publisert versjon av denne siden'
+    BUTTONPUBLISHED: Publisert
+    BUTTONSAVED: Lagret
+    BUTTONSAVEPUBLISH: 'Lagre og publiser'
+    BUTTONUNPUBLISH: Avpubliser
+    BUTTONUNPUBLISHDESC: 'Fjern denne siden fra det publiserte nettstedet'
+    Comments: Kommentarer
+    Content: Innhold
+    DEFAULTABOUTTITLE: 'Om oss'
+    DEFAULTCONTACTTITLE: 'Kontakt oss'
+    DEFAULTHOMECONTENT: '<p>Velkommen til SilverStripe! Dette er standard-forsiden. Du kan redigere denne ved å gå til <a href="admin/">publiseringssystemet</a>.</p><p>Du kan nå gå til <a href="http://docs.silverstripe.org">dokumentasjonen for utviklere</a>, eller begynne med <a href="http://www.silverstripe.org/learn/lessons">SilverStripe-leksjoner</a>.</p>'
+    DEFAULTHOMETITLE: Hjem
+    DEPENDENT_NOTE: 'De følgende sidene avhenger av denne siden. Dette inkluderer virtuelle sider, omdirigeringssider og sider med innholdslenker.'
+    DependtPageColumnLinkType: Lenketype
+    DependtPageColumnURL: URL
+    EDITHEADER: 'Hvem kan redigere dette i kontrollpanelet?'
+    EDITORGROUPS: Redaktørgrupper
+    EDIT_ALL_DESCRIPTION: 'Rediger hvilken som helst side'
+    EDIT_ALL_HELP: 'Lar deg redigere hvilken som helst side på nettstedet, uavhengig av innstillingene på adgangsfanen. Krever at du har tilgang til sideseksjonen.'
+    Editors: Redaktørgrupper
+    GroupPlaceholder: 'Trykk for å velge gruppe'
+    HASBROKENLINKS: 'Denne siden har ødelagte lenker.'
+    HTMLEDITORTITLE: Innhold
+    INHERIT: 'Arvet fra overordnet side'
+    LASTUPDATED: 'Sist oppdatert'
+    LINKCHANGENOTE: 'Endring av denne sidens lenke vil også påvirke lenkene til alle underliggende sider.'
+    MENUTITLE: Navigasjonsetikett
+    METADESC: Beskrivelse
+    METADESCHELP: 'Søkemotorer bruker dette innholdet for å vise søkeresultater (selv om de ikke påvirker rekkefølgen).'
+    METAEXTRA: 'Egendefinerte meta-elementer'
+    METAEXTRAHELP: 'HTML-elementer for ekstra metainformasjon. For eksempel &lt;meta name="egetNavn" content="Ditt egendefinerte innhold her" /&gt;'
+    MODIFIEDONDRAFTHELP: 'Siden har upubliserte forandringer'
+    MODIFIEDONDRAFTSHORT: Endret
+    MetadataToggle: Metadata
+    MoreOptions: 'Flere alternativer'
+    OBSOLETECLASS: 'Denne siden er av den utdaterte typen {type}. Lagring vil tilbakestille typen og kan medføre tap av informasjon.'
+    PAGELOCATION: Sideplassering
+    PAGETITLE: Sidenavn
+    PAGETYPE: Sidetype
+    PARENTID: 'Overordnet side'
+    PARENTTYPE: Sideplassering
+    PARENTTYPE_ROOT: Toppnivåside
+    PARENTTYPE_SUBPAGE: Underside
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Kontroller hvilke grupper som har tilgang til eller kan endre sidene'
+    PERMISSION_GRANTACCESS_HELP: 'Tillat tilordning av restriksjoner på sidenivå i sideseksjonen.'
+    PageTypNotAllowedOnRoot: 'Sidetypen "{type}" er ikke tillatt på toppnivå'
+    PageTypeNotAllowed: 'Sidetypen "{type}" er ikke tillatt som underside til denne siden.'
+    REMOVE_INSTALL_WARNING: 'Advarsel: Du bør fjerne installer.php fra SilverStripe-installasjonen av sikkerhetsgrunner.'
+    REORGANISE_DESCRIPTION: 'Endre nettstedets struktur'
+    REORGANISE_HELP: 'Omorganiser sidene i sidetreet ved hjelp av dra-og-slipp.'
+    SHOWINMENUS: 'Vis i menyer?'
+    SHOWINSEARCH: 'Vis i søk?'
+    TABBEHAVIOUR: Adferd
+    TABCONTENT: Innhold
+    TABDEPENDENT: Undersider
+    TOPLEVEL: 'Nettstedets innhold (toppnivå)'
+    URLSegment: Adressesegment
+    VIEWERGROUPS: Publikumsgrupper
+    VIEW_ALL_DESCRIPTION: 'Se på hvilken som helst side'
+    VIEW_ALL_HELP: 'Viser alle sider på nettstedet, uavhengig av innstillingene på adgangsfanen. Krever at du har adgang til sideseksjonen.'
+    VIEW_DRAFT_CONTENT: 'Se innhold i utkast'
+    VIEW_DRAFT_CONTENT_HELP: 'Gjelder visning av sider utenfor publiseringssystemet i utkastmodus. Nyttig for eksterne bidragsytere uten tilgang til publiseringssystemet.'
+    VIRTUALPAGEDRAFTWARNING: 'Vennligst publiser den lenkede siden for å publisere den virtuelle siden'
+    VIRTUALPAGEWARNING: 'Vennligst velg en lenket side og lagre først for å publisere denne siden'
+    VIRTUALPAGEWARNINGSETTINGS: 'Vennligst velg en lenket side i hovedinnholdsfeltene for å publisere siden'
+    Viewers: Lesergrupper
+    Visibility: Synlighet
+    has_one_Parent: 'Overordnet side'
+    many_many_BackLinkTracking: Referansesporing
+    many_many_ImageTracking: Bildesporing
+    many_many_LinkTracking: Lenkesporing
+  SilverStripe\CMS\Model\VirtualPage:
+    CHOOSE: 'Lenket side'
+    EditLink: rediger
+    HEADER: 'Dette er en virituell side'
+    HEADERWITHLINK: 'Dette er en virtuell side som kopierer innhold fra "{title}" ({link})'
+    PageTypNotAllowedOnRoot: 'Originaltypen "{type}" er ikke tillatt på toppnivået for denne virtuelle siden.'
+  SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: 'Hvilken som helst'
     BROKENLINKS: 'Rapport over ødelagte lenker'
     CheckSite: 'Sjekk nettstedet'
@@ -58,352 +183,9 @@ nb:
     ReasonDropdownVPBROKENLINK: 'Virtuell side peker til ikke-eksisterende side'
     RedirectorNonExistent: 'omdirigeringsside peker til ikke-eksisterende side'
     VirtualPageNonExistent: 'Virtuell side peker til ikke-eksisterende side'
-  CMSAddPageController:
-    Title: 'Legg til side'
-  CMSBatchActions:
-    ARCHIVE: Arkiv
-    ARCHIVED_PAGES: 'Arkiverte %d sider'
-    DELETED_DRAFT_PAGES: 'Slettet %d sider fra utkastnettstedet, %d feilet.'
-    DELETED_PAGES: 'Slettet %d sider fra det publiserte nettstedet, %d feilet.'
-    DELETE_DRAFT_PAGES: 'Slett fra utkastnettsted.'
-    DELETE_PAGES: 'Slett fra publisert side'
-    PUBLISHED_PAGES: 'Publiserte %d sider, %d feilet.'
-    PUBLISH_PAGES: Publiser
-    RESTORE: Gjenopprett
-    RESTORED_PAGES: 'Gjenopprettet %d sider'
-  CMSFileAddController:
-    MENUTITLE: Filer
-  CMSMain:
-    ACCESS: 'Adgang til seksjon for ''{title}'''
-    ACCESS_HELP: 'Lar deg se seksjonen som inneholder sidetreet og annet innhold. Tillatelser for å vise og redigere kan behandles gjennom sidespesifikke nedtrekkslister, så vel som  separate "Innholdstillatelser".'
-    ARCHIVE: Arkiver
-    ARCHIVEDPAGE: 'Arkiverte side ''%s'''
-    AddNew: 'Opprett ny side'
-    AddNewButton: 'Opprett ny'
-    AddPageRestriction: 'Merk: Noen sidetyper er ikke tillatt for dette valget.'
-    Cancel: Avbryt
-    ChoosePageParentMode: 'Velg hvor du vil opprette siden'
-    ChoosePageType: 'Velg sidetype'
-    Create: Opprett
-    DELETE: 'Slett utkast'
-    DELETEFP: Slett
-    DESCREMOVED: 'og {count} undersider.'
-    DUPLICATED: 'Vellykket duplisering av "{title}".'
-    DUPLICATEDWITHCHILDREN: 'Vellykket duplisering av "{title}" og undersider.'
-    EditTree: 'Rediger treet'
-    MENUTITLE: 'Rediger side'
-    NEWPAGE: 'Ny {pagetype}'
-    PAGENOTEXISTS: 'Siden eksisterer ikke'
-    PAGETYPEANYOPT: 'Hvilken som helst'
-    PUBALLCONFIRM: 'Vennligst publiser hver eneste side på nettstedet, og kopier innhold til aktivt nettsted'
-    PUBALLFUN: 'Funksjonalitet for "Publiser alle"'
-    PUBPAGES: 'Ferdig: Publiserte {count} sider.'
-    PageAdded: 'Siden ble opprettet.'
-    REMOVED: 'Slettet "{title}" {description} fra publisert nettsted.'
-    REMOVEDPAGE: 'Fjernet "{title}" fra det publiserte nettstedet'
-    REMOVEDPAGEFROMDRAFT: 'Fjernet ''%s''  fra utkastnettstedet'
-    RESTORED: 'Vellykket gjenoppretting av "{title}".'
-    RESTORE_DESC: 'Gjenopprett arkivert versjon som utkast'
-    RESTORE_TO_ROOT: 'Gjenopprett utkast på toppnivå'
-    RESTORE_TO_ROOT_DESC: 'Gjenopprett arkivert versjon som utkast på toppnivå'
-    ROLLBACK: 'Tilbakestill til denne versjonen'
-    ROLLEDBACKPUBv2: 'Tilbakestilte til den publiserte versjonen.'
-    ROLLEDBACKVERSIONv2: 'Tilbakestile til versjon #%d.'
-    SAVE: Lagre
-    SAVEDRAFT: 'Lagre utkast'
-    TabContent: Innhold
-    TabHistory: Historikk
-    TabSettings: Innstillinger
-  CMSMain_left_ss:
-    RESET: Tilbakestill
-  CMSPageAddController:
-    MENUTITLE: 'Legg til side'
-    ParentMode_child: 'Under en annen side'
-    ParentMode_top: Toppnivå
-  CMSPageEditController:
-    MENUTITLE: 'Rediger side'
-  CMSPageHistoryController:
-    COMPAREMODE: 'Sammenlign modus (velg to)'
-    COMPAREVERSIONS: 'Sammenlign versjoner'
-    COMPARINGVERSION: 'Sammenligner versjon {version1} og {version2}.'
-    MENUTITLE: Historie
-    REVERTTOTHISVERSION: 'Tilbakestill til denne versjonen'
-    SHOWUNPUBLISHED: 'Vis upubliserte versjoner'
-    SHOWVERSION: 'Vis versjon'
-    VIEW: Visning
-    VIEWINGLATEST: 'Viser den nyeste versjonen.'
-    VIEWINGVERSION: 'Viser versjon {version}.'
-  CMSPageHistoryController_versions_ss:
-    AUTHOR: Forfatter
-    NOTPUBLISHED: 'Ikke publisert'
-    PUBLISHER: Utgiver
-    UNKNOWN: Ukjent
-    WHEN: Når
-  CMSPageSettingsController:
-    MENUTITLE: 'Rediger siden'
-  CMSPagesController:
-    GalleryView: Gallerivisning
-    ListView: Listevisning
-    MENUTITLE: Sider
-    TreeView: Trevisning
-  CMSPagesController_Tools_ss:
-    FILTER: Filter
-  CMSSIteTreeFilter_PublishedPages:
-    Title: 'Publiserte sider'
-  CMSSearch:
+  SilverStripe\CMS\Search\SearchForm:
     FILTERDATEFROM: Fra
-    FILTERDATEHEADING: Dato
     FILTERDATETO: Til
-  CMSSettingsController:
-    MENUTITLE: Innstillinger
-  CMSSiteTreeFilter_Search:
-    Title: 'Alle sider'
-  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
-    Title: 'Publisert men fjernet fra utkast'
-  ContentControl:
-    NOTEWONTBESHOWN: 'Merk: denne beskjeden vil ikke være synlig for besøkende'
-  ContentController:
-    ARCHIVEDSITE: 'Forhåndsvis versjon'
-    ARCHIVEDSITEFROM: 'Arkivert nettsted fra '
-    CMS: Publiseringssystem
-    DRAFT: Utkast
-    DRAFTSITE: Utkastnettsted
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Du må være logget inn i kontrollpanelet for å se utkast eller det arkiverte innholdet. <a href="%s">Klikk her for å gå tilbake til den publiserte versjonen.</a>'
-    Email: Epost
-    INSTALL_SUCCESS: 'Installasjonen var vellykket!'
-    InstallFilesDeleted: 'Vellykket sletting av installasjonsfilene.'
-    InstallSecurityWarning: 'Av sikkerhetsgrunner bør du nå slette installsjonsfilene, med mindre du planlegger å reinstallere senere (<em>krever administrasjonsinnlogging, se over</em>). Webserveren trenger nå bare skrivetilgang til "assets"-mappen, så du kan fjerne skrivetilgang til alle andre mapper. <a href="{link}" style="text-align: center;">Trykk her for å slette installasjonsfilene.</a>'
-    InstallSuccessCongratulations: 'SilverStriper har blitt installert!'
-    LOGGEDINAS: 'Logget inn som'
-    LOGIN: Innlogging
-    LOGOUT: 'Logg ut'
-    NOTLOGGEDIN: 'Ikke logget inn'
-    PUBLISHED: Publisert
-    PUBLISHEDSITE: 'Publisert nettsted'
-    Password: Passord
-    PostInstallTutorialIntro: 'Dette nettstedet er en simplistisk versjon av et nettsted for SilverStripe 3. For å utvide nettstedet kan du ta en titt på {link}.'
-    StartEditing: 'Du kan redigere innholdet ved å åpne <a href="{link}">publiseringssystemet</a>.'
-    UnableDeleteInstall: 'Klarte ikke å slette installasjonsfilene. Vennligst slett filene under manuelt'
-    VIEWPAGEIN: 'Vis side i:'
-  ErrorPage:
-    400: '400 - Ugyldig sidespørring'
-    401: '401 - Uautorisert'
-    403: '403 - Forbudt'
-    404: '404 - Ikke funnet'
-    405: '405 - Metode ikke tillat'
-    406: '406 - Ikke akseptabel'
-    407: '407 - Proxy autentisering påkrevd'
-    408: '408 - Sidespørring timeout'
-    409: '409 - Konflikt'
-    410: '410 - Borte'
-    411: '411 - Lengde påkrevd'
-    412: '412 - Prekondisjon feilet'
-    413: '413 - Spørringsenhet for stor'
-    414: '414 - Spørrings-URI for lang'
-    415: '415 - Mediatype ikke støttet'
-    416: '416 - Spørringsspenne kan ikke tilfredstilles'
-    417: '417 - Forventning feilet'
-    422: '422 - Enheten kan ikke prosesseres'
-    429: '429 - for mange sideforespørsler'
-    500: '500 - Intern serverfeil'
-    501: '501 - Ikke implementert'
-    502: '502 - Dårlig gateway'
-    503: '503 - Service ikke tilgjengelig'
-    504: '504 - Gateway timeout'
-    505: '505 - HTTP versjon ikke støttet'
-    CODE: Feilkode
-    DEFAULTERRORPAGECONTENT: '<p>Beklager, det ser ut til at du prøver å nå en side som ikke finnes.</p><p>Sjekk at du har skrevet riktig adresse og prøv på nytt.</p>'
-    DEFAULTERRORPAGETITLE: 'Siden ble ikke funnet'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Beklager, det oppstod et problem under utføringen.</p>'
-    DEFAULTSERVERERRORPAGETITLE: Serverfeil
-    DESCRIPTION: 'Egendefinert innhold for forskjellige feilsituasjoner (f.eks "Siden ble ikke funnet")'
-    ERRORFILEPROBLEM: 'Feil ved åpning av filen "{filename}". Vennligst sjekk filtillatelser.'
-    SINGULARNAME: Feilside
-  Folder:
-    AddFolderButton: 'Legg til mappe'
-    DELETEUNUSEDTHUMBNAILS: 'Slett miniatyrbilder som ikke er i bruk'
-    UNUSEDFILESTITLE: 'Filer ikke i bruk'
-    UNUSEDTHUMBNAILSTITLE: 'Miniatyrbilder ikke i bruk'
-    UploadFilesButton: 'Last opp'
-  LeftAndMain:
-    DELETED: Slettet.
-    PreviewButton: Forhåndsvisning
-    SAVEDUP: Lagret.
-    SearchResults: Søkeresultater
-  Permission:
-    CMS_ACCESS_CATEGORY: 'Tilgang til publiseringssystemet'
-  Permissions:
-    CONTENT_CATEGORY: Innholdstillatelser
-    PERMISSIONS_CATEGORY: 'Rolle- og tilgangstillatelser'
-  RedirectorPage:
-    DESCRIPTION: 'Omdirigerer til en annen intern side'
-    HASBEENSETUP: 'En omdirigeringssside har blitt satt opp uten et mål å omdirigere til.'
-    HEADER: 'Denne siden vil omdirigere brukere til en annen side'
-    OTHERURL: 'Nettadresse til et annet nettsted'
-    REDIRECTTO: 'Omdiriger til'
-    REDIRECTTOEXTERNAL: 'Et annet nettsted'
-    REDIRECTTOPAGE: 'En side på nettstedet'
-    SINGULARNAME: Omdirigeringsside
-    YOURPAGE: 'Side på ditt nettsted'
-  ReportAdmin:
-    MENUTITLE: Rapporter
-    ReportTitle: Tittel
-  ReportAdminForm:
-    FILTERBY: 'Filtrer på '
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Vennligst publiser den lenkede siden for å publisere den virtuelle siden'
-    VIRTUALPAGEWARNING: 'Vennligst velg en lenket side og lagre først for å publisere denne siden'
-    VIRTUALPAGEWARNINGSETTINGS: 'Vennligst velg en lenket side i hovedinnholdsfeltene for å publisere siden'
-  SearchForm:
     GO: Utfør
     SEARCH: Søk
     SearchResults: Søkeresultater
-  SideReport:
-    BROKENFILES: 'Sider med ødelagte lenker'
-    BROKENLINKS: 'Sider med ødelagte lenker'
-    BROKENREDIRECTORPAGES: 'Omdirigeringssider som peker til slettede sider'
-    BROKENVIRTUALPAGES: 'Virtuelle sider som peker til slettede sider'
-    BrokenLinksGroupTitle: 'Rapport over ødelagte lenker'
-    ContentGroupTitle: Innholdsrapporter
-    EMPTYPAGES: 'Sider uten innhold'
-    LAST2WEEKS: 'Sider endret i de siste 2 ukene'
-    OtherGroupTitle: Andre
-    ParameterLiveCheckbox: 'Sjekk aktivt nettsted'
-    REPEMPTY: 'Rapporten for {title} er tom.'
-  SilverStripeNavigator:
-    ARCHIVED: Arkivert
-  SilverStripeNavigatorLink:
-    ShareLink: 'Del lenke'
-  SilverStripeNavigatorLinkl:
-    CloseLink: Lukk
-  SiteConfig:
-    DEFAULTTHEME: '(Bruk standard utseende)'
-    EDITHEADER: 'Hvem kan redigere sider på dette nettstedet?'
-    EDIT_PERMISSION: 'Behandle nettstedskonfigurasjon'
-    EDIT_PERMISSION_HELP: 'Lar deg endre globale adgangsinnstillinger og tillatelser for toppnivåsider.'
-    PLURALNAME: Nettstedskonfigurasjoner
-    SINGULARNAME: Nettstedskonfigurasjon
-    SITENAMEDEFAULT: Nettstedsnavn
-    SITETAGLINE: 'Slagord for nettstedet'
-    SITETITLE: 'Tittel for nettstedet'
-    TABACCESS: Tilgang
-    TABMAIN: Hovedinnstillinger
-    TAGLINEDEFAULT: 'slagordet ditt her'
-    THEME: Utseende
-    TOPLEVELCREATE: 'Hvem kan opprette toppnivåsider på dette nettstedet?'
-    VIEWHEADER: 'Hvem kan se sider på dette nettstedet?'
-  SiteTree:
-    ACCESSANYONE: Alle
-    ACCESSHEADER: 'Hvem kan se denne siden?'
-    ACCESSLOGGEDIN: 'Brukere som er logget inn'
-    ACCESSONLYTHESE: 'Bare disse personene (velg fra listen)'
-    ADDEDTODRAFTHELP: 'Siden har ikke blitt publisert ennå'
-    ADDEDTODRAFTSHORT: Utkast
-    ALLOWCOMMENTS: 'Tillat kommentarer på denne siden?'
-    APPEARSVIRTUALPAGES: 'Dette innholdet opptrer også i {title}-seksjonene til de virtuelle sidene.'
-    ARCHIVEDPAGEHELP: 'Siden er publisert og fjernet fra utkast'
-    ARCHIVEDPAGESHORT: Arkivert
-    BUTTONARCHIVEDESC: 'Avpubliser og arkiver'
-    BUTTONCANCELDRAFT: 'Avbryt endringer i utkast'
-    BUTTONCANCELDRAFTDESC: 'Slett utkast og gå tilbake til publisert versjon av denne siden'
-    BUTTONPUBLISHED: Publisert
-    BUTTONSAVED: Lagret
-    BUTTONSAVEPUBLISH: 'Lagre og publiser'
-    BUTTONUNPUBLISH: Avpubliser
-    BUTTONUNPUBLISHDESC: 'Fjern denne siden fra det publiserte nettstedet'
-    Comments: Kommentarer
-    Content: Innhold
-    DEFAULTABOUTTITLE: 'Om oss'
-    DEFAULTCONTACTTITLE: 'Kontakt oss'
-    DEFAULTHOMECONTENT: '<p>Velkommen til SilverStripe! Dette er standard-forsiden. Du kan redigere denne ved å gå til <a href="admin/">publiseringssystemet</a>.</p><p>Du kan nå gå til <a href="http://docs.silverstripe.org">dokumentasjonen for utviklere</a>, eller begynne med <a href="http://www.silverstripe.org/learn/lessons">SilverStripe-leksjoner</a>.</p>'
-    DEFAULTHOMETITLE: Hjem
-    DELETEDPAGEHELP: 'Siden er ikke lenger publisert.'
-    DELETEDPAGESHORT: Slettet
-    DEPENDENT_NOTE: 'De følgende sidene avhenger av denne siden. Dette inkluderer virtuelle sider, omdirigeringssider og sider med innholdslenker.'
-    DESCRIPTION: 'Generisk innholdsside'
-    DependtPageColumnLinkType: Lenketype
-    DependtPageColumnURL: URL
-    EDITANYONE: 'Alle som kan logge inn til kontrollpanelet'
-    EDITHEADER: 'Hvem kan redigere dette i kontrollpanelet?'
-    EDITONLYTHESE: 'Bare disse personene'
-    EDITORGROUPS: Redaktørgrupper
-    EDIT_ALL_DESCRIPTION: 'Rediger hvilken som helst side'
-    EDIT_ALL_HELP: 'Lar deg redigere hvilken som helst side på nettstedet, uavhengig av innstillingene på adgangsfanen. Krever at du har tilgang til sideseksjonen.'
-    Editors: Redaktørgrupper
-    GroupPlaceholder: 'Trykk for å velge gruppe'
-    HASBROKENLINKS: 'Denne siden har ødelagte lenker.'
-    HTMLEDITORTITLE: Innhold
-    INHERIT: 'Arvet fra overordnet side'
-    LASTPUBLISHED: 'Sist publisert'
-    LASTSAVED: 'Sist lagret'
-    LASTUPDATED: 'Sist oppdatert'
-    LINKCHANGENOTE: 'Endring av denne sidens lenke vil også påvirke lenkene til alle underliggende sider.'
-    MENUTITLE: Navigasjonsetikett
-    METADESC: Beskrivelse
-    METADESCHELP: 'Søkemotorer bruker dette innholdet for å vise søkeresultater (selv om de ikke påvirker rekkefølgen).'
-    METAEXTRA: 'Egendefinerte meta-elementer'
-    METAEXTRAHELP: 'HTML-elementer for ekstra metainformasjon. For eksempel &lt;meta name="egetNavn" content="Ditt egendefinerte innhold her" /&gt;'
-    MODIFIEDONDRAFTHELP: 'Siden har upubliserte forandringer'
-    MODIFIEDONDRAFTSHORT: Endret
-    MetadataToggle: Metadata
-    MoreOptions: 'Flere alternativer'
-    NOTPUBLISHED: 'Ikke publisert'
-    OBSOLETECLASS: 'Denne siden er av den utdaterte typen {type}. Lagring vil tilbakestille typen og kan medføre tap av informasjon.'
-    PAGELOCATION: Sideplassering
-    PAGETITLE: Sidenavn
-    PAGETYPE: Sidetype
-    PARENTID: 'Overordnet side'
-    PARENTTYPE: Sideplassering
-    PARENTTYPE_ROOT: Toppnivåside
-    PARENTTYPE_SUBPAGE: Underside
-    PERMISSION_GRANTACCESS_DESCRIPTION: 'Kontroller hvilke grupper som har tilgang til eller kan endre sidene'
-    PERMISSION_GRANTACCESS_HELP: 'Tillat tilordning av restriksjoner på sidenivå i sideseksjonen.'
-    PLURALNAME: Sider
-    PageTypNotAllowedOnRoot: 'Sidetypen "{type}" er ikke tillatt på toppnivå'
-    PageTypeNotAllowed: 'Sidetypen "{type}" er ikke tillatt som underside til denne siden.'
-    REMOVEDFROMDRAFTHELP: 'Siden er publisert, men har blitt slettet fra utkastet.'
-    REMOVEDFROMDRAFTSHORT: 'Fjernet fra utkast'
-    REMOVE_INSTALL_WARNING: 'Advarsel: Du bør fjerne installer.php fra SilverStripe-installasjonen av sikkerhetsgrunner.'
-    REORGANISE_DESCRIPTION: 'Endre nettstedets struktur'
-    REORGANISE_HELP: 'Omorganiser sidene i sidetreet ved hjelp av dra-og-slipp.'
-    SHOWINMENUS: 'Vis i menyer?'
-    SHOWINSEARCH: 'Vis i søk?'
-    SINGULARNAME: Side
-    TABBEHAVIOUR: Adferd
-    TABCONTENT: Innhold
-    TABDEPENDENT: Undersider
-    TOPLEVEL: 'Nettstedets innhold (toppnivå)'
-    TOPLEVELCREATORGROUPS: Toppnivåopprettere
-    URLSegment: Adressesegment
-    VIEWERGROUPS: Publikumsgrupper
-    VIEW_ALL_DESCRIPTION: 'Se på hvilken som helst side'
-    VIEW_ALL_HELP: 'Viser alle sider på nettstedet, uavhengig av innstillingene på adgangsfanen. Krever at du har adgang til sideseksjonen.'
-    VIEW_DRAFT_CONTENT: 'Se innhold i utkast'
-    VIEW_DRAFT_CONTENT_HELP: 'Gjelder visning av sider utenfor publiseringssystemet i utkastmodus. Nyttig for eksterne bidragsytere uten tilgang til publiseringssystemet.'
-    Viewers: Lesergrupper
-    Visibility: Synlighet
-    has_one_Parent: 'Overordnet side'
-    many_many_BackLinkTracking: Referansesporing
-    many_many_ImageTracking: Bildesporing
-    many_many_LinkTracking: Lenkesporing
-  SiteTreeFileExtension:
-    BACKLINK_LIST_DESCRIPTION: 'Denne liste viser alle sider med filer lastet opp gjennom en WYSIWYG-editor.'
-    EDIT: Rediger
-  SiteTreeURLSegmentField:
-    EMPTY: 'Vennligst skriv inn adressesegment eller trykk avbryt.'
-    HelpChars: 'Spesialtegn blir automatisk konvertert eller fjernet.'
-  URLSegmentField:
-    Cancel: Avbryt
-    Edit: Rediger
-    OK: OK
-  ViewArchivedEmail_ss:
-    CANACCESS: 'Du kan besøke det arkiverte nettstedet med denne lenken:'
-    HAVEASKED: 'Du har bedt om å vise innholdet på nettstedet vårt på '
-  VirtualPage:
-    CHOOSE: 'Lenket side'
-    DESCRIPTION: 'Viser innholdet av en annen side'
-    EditLink: rediger
-    HEADER: 'Dette er en virituell side'
-    HEADERWITHLINK: 'Dette er en virtuell side som kopierer innhold fra "{title}" ({link})'
-    PageTypNotAllowedOnRoot: 'Originaltypen "{type}" er ikke tillatt på toppnivået for denne virtuelle siden.'
-    SINGULARNAME: 'Virtuell side'

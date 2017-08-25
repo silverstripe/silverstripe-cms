@@ -2,7 +2,7 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 
 /**
  * Works a bit different than the other filters:
@@ -24,7 +24,7 @@ class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter
 
     public static function title()
     {
-        return _t('CMSSiteTreeFilter_DeletedPages.Title', "All pages, including archived");
+        return _t('SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_DeletedPages.Title', "All pages, including archived");
     }
 
     public function getFilteredPages()

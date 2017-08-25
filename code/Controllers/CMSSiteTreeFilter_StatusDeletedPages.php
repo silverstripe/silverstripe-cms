@@ -4,7 +4,7 @@ namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\ORM\SS_List;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 
 /**
  * Filters pages which have a status "Deleted".
@@ -24,7 +24,7 @@ class CMSSiteTreeFilter_StatusDeletedPages extends CMSSiteTreeFilter
 
     public static function title()
     {
-        return _t('CMSSiteTreeFilter_StatusDeletedPages.Title', 'Archived pages');
+        return _t('SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_StatusDeletedPages.Title', 'Archived pages');
     }
 
     /**

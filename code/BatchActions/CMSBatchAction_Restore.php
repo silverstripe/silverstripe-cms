@@ -6,7 +6,7 @@ use SilverStripe\Admin\CMSBatchAction;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\SS_List;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\Security\Permission;
 
 /**
@@ -17,7 +17,7 @@ class CMSBatchAction_Restore extends CMSBatchAction
 
     public function getActionTitle()
     {
-        return _t('CMSBatchActions.RESTORE', 'Restore');
+        return _t(__CLASS__ . '.RESTORE', 'Restore');
     }
 
     public function run(SS_List $pages)
@@ -38,7 +38,7 @@ class CMSBatchAction_Restore extends CMSBatchAction
         return $this->batchaction(
             $pages,
             'doRestoreToStage',
-            _t('CMSBatchActions.RESTORED_PAGES', 'Restored %d pages')
+            _t(__CLASS__ . '.RESTORED_PAGES', 'Restored %d pages')
         );
     }
 

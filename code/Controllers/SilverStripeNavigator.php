@@ -2,7 +2,7 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-use SilverStripe\Admin\CMSPreviewable;
+use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataObject;
@@ -23,12 +23,12 @@ class SilverStripeNavigator extends ViewableData
 {
 
     /**
-     * @var DataObject|CMSPreviewable
+     * @var DataObject|\SilverStripe\ORM\CMSPreviewable
      */
     protected $record;
 
     /**
-     * @param DataObject|CMSPreviewable $record
+     * @param DataObject|\SilverStripe\ORM\CMSPreviewable $record
      */
     public function __construct(CMSPreviewable $record)
     {
@@ -71,7 +71,7 @@ class SilverStripeNavigator extends ViewableData
     }
 
     /**
-     * @return DataObject|CMSPreviewable
+     * @return DataObject|\SilverStripe\ORM\CMSPreviewable
      */
     public function getRecord()
     {

@@ -2,14 +2,14 @@
 namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\ORM\SS_List;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 
 class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter
 {
 
     public static function title()
     {
-        return _t('CMSSiteTreeFilter_Search.Title', "All pages");
+        return _t('SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_Search.Title', "All pages");
     }
 
     /**

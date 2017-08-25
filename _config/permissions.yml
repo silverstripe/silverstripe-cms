@@ -1,0 +1,13 @@
+---
+Name: sitetreepermissions
+---
+SilverStripe\Core\Injector\Injector:
+  SilverStripe\Security\PermissionChecker.sitetree:
+    class: SilverStripe\Security\InheritedPermissions
+    constructor:
+      BaseClass: SilverStripe\CMS\Model\SiteTree
+    properties:
+      DefaultPermissions: '%$SilverStripe\SiteConfig\SiteConfigPagePermissions'
+      GlobalEditPermissions:
+        - CMS_ACCESS_LeftAndMain
+        - CMS_ACCESS_CMSMain

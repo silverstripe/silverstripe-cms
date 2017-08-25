@@ -12,12 +12,12 @@ class RecentlyEditedReport extends Report
 
     public function title()
     {
-        return _t('SideReport.LAST2WEEKS', "Pages edited in the last 2 weeks");
+        return _t(__CLASS__.'.LAST2WEEKS', "Pages edited in the last 2 weeks");
     }
 
     public function group()
     {
-        return _t('SideReport.ContentGroupTitle', "Content reports");
+        return _t(__CLASS__.'.ContentGroupTitle', "Content reports");
     }
 
     public function sort()

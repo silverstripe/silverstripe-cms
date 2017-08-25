@@ -2,9 +2,9 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-use SilverStripe\Admin\CMSPreviewable;
+use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\ORM\DataObject;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\Security\Member;
 use SilverStripe\View\ViewableData;
 
@@ -88,7 +88,7 @@ abstract class SilverStripeNavigatorItem extends ViewableData
      */
     public function getPriority()
     {
-        return $this->stat('priority');
+        return $this->config()->get('priority');
     }
 
     /**
@@ -121,7 +121,8 @@ abstract class SilverStripeNavigatorItem extends ViewableData
      */
     public function isArchived()
     {
-        if (!$this->record->hasExtension('SilverStripe\ORM\Versioning\Versioned')) {
+        $recordClass = get_class($this->record);
+        if (!$recordClass::has_extension(Versioned::class)) {
             return false;
         }
 

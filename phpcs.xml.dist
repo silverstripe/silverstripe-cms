@@ -9,10 +9,6 @@
 		<exclude name="PSR2.Classes.PropertyDeclaration.Underscore" />
 		<exclude name="Squiz.Classes.ValidClassName.NotCamelCaps" />
 		<exclude name="Generic.Files.LineLength.TooLong" />
-
-		<!-- CMS specific exclusions (high priority to fix) -->
-		<exclude name="PSR1.Classes.ClassDeclaration.MissingNamespace" />
-		<exclude name="PSR1.Classes.ClassDeclaration.MultipleClasses" />
 	</rule>
 </ruleset>
 

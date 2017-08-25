@@ -2,11 +2,13 @@
 
 namespace SilverStripe\CMS\Model;
 
+use Page;
+use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\HeaderField;
 use SilverStripe\Forms\OptionsetField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\TreeDropdownField;
-use Page;
+use SilverStripe\Versioned\Versioned;
 
 /**
  * A redirector page redirects when the page is visited.
@@ -119,7 +121,9 @@ class RedirectorPage extends Page
     {
         if ($this->RedirectionType == 'Internal') {
             if ($this->LinkToID) {
-                $this->HasBrokenLink = SiteTree::get()->byID($this->LinkToID) ? false : true;
+                $this->HasBrokenLink = Versioned::get_by_stage(SiteTree::class, Versioned::DRAFT)
+                    ->filter('ID', $this->LinkToID)
+                    ->count() === 0;
             } else {
                 // An incomplete redirector page definitely has a broken link
                 $this->HasBrokenLink = true;
@@ -134,46 +138,57 @@ class RedirectorPage extends Page
     {
         parent::onBeforeWrite();
 
-        // Prefix the URL with "http://" if no prefix is found
-        if ($this->ExternalURL
-            && !parse_url($this->ExternalURL, PHP_URL_SCHEME)
-            && !preg_match('#^//#', $this->ExternalURL)
-        ) {
-            $this->ExternalURL = 'http://' . $this->ExternalURL;
+        if ($this->ExternalURL && substr($this->ExternalURL, 0, 2) !== '//') {
+            $urlParts = parse_url($this->ExternalURL);
+            if ($urlParts) {
+                if (empty($urlParts['scheme'])) {
+                    // no scheme, assume http
+                    $this->ExternalURL = 'http://' . $this->ExternalURL;
+                } elseif (!in_array($urlParts['scheme'], array(
+                    'http',
+                    'https',
+                ))) {
+                    // we only allow http(s) urls
+                    $this->ExternalURL = '';
+                }
+            } else {
+                // malformed URL to reject
+                $this->ExternalURL = '';
+            }
         }
     }
 
     public function getCMSFields()
     {
-        $fields = parent::getCMSFields();
-        $fields->removeByName('Content', true);
+        $this->beforeUpdateCMSFields(function (FieldList $fields) {
+            $fields->removeByName('Content', true);
 
-        // Remove all metadata fields, does not apply for redirector pages
-        $fields->removeByName('Metadata');
+            // Remove all metadata fields, does not apply for redirector pages
+            $fields->removeByName('Metadata');
 
-        $fields->addFieldsToTab(
-            'Root.Main',
-            array(
-                new HeaderField('RedirectorDescHeader', _t('RedirectorPage.HEADER', "This page will redirect users to another page")),
-                new OptionsetField(
-                    "RedirectionType",
-                    _t('RedirectorPage.REDIRECTTO', "Redirect to"),
-                    array(
-                        "Internal" => _t('RedirectorPage.REDIRECTTOPAGE', "A page on your website"),
-                        "External" => _t('RedirectorPage.REDIRECTTOEXTERNAL', "Another website"),
+            $fields->addFieldsToTab(
+                'Root.Main',
+                array(
+                    new HeaderField('RedirectorDescHeader', _t(__CLASS__.'.HEADER', "This page will redirect users to another page")),
+                    new OptionsetField(
+                        "RedirectionType",
+                        _t(__CLASS__.'.REDIRECTTO', "Redirect to"),
+                        array(
+                            "Internal" => _t(__CLASS__.'.REDIRECTTOPAGE', "A page on your website"),
+                            "External" => _t(__CLASS__.'.REDIRECTTOEXTERNAL', "Another website"),
+                        ),
+                        "Internal"
                     ),
-                    "Internal"
-                ),
-                new TreeDropdownField(
-                    "LinkToID",
-                    _t('RedirectorPage.YOURPAGE', "Page on your website"),
-                    "SilverStripe\\CMS\\Model\\SiteTree"
-                ),
-                new TextField("ExternalURL", _t('RedirectorPage.OTHERURL', "Other website URL"))
-            )
-        );
-
-        return $fields;
+                    new TreeDropdownField(
+                        "LinkToID",
+                        _t(__CLASS__.'.YOURPAGE', "Page on your website"),
+                        SiteTree::class
+                    ),
+                    new TextField("ExternalURL", _t(__CLASS__.'.OTHERURL', "Other website URL"))
+                )
+            );
+        });
+        return parent::getCMSFields();
     }
 
     // Don't cache RedirectorPages

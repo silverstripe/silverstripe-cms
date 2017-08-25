@@ -1,0 +1,3 @@
+sr_RS:
+  SilverStripe\CMS\Model\SiteTree:
+    TABMAIN: Главно

@@ -4,7 +4,7 @@ namespace SilverStripe\CMS\Controllers;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\Control\Controller;
 use SilverStripe\Core\Convert;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 
 class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem
 {
@@ -19,7 +19,7 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem
         }
 
         $linkClass = $this->isActive() ? 'class="current" ' : '';
-        $linkTitle = _t('ContentController.PUBLISHEDSITE', 'Published Site');
+        $linkTitle = _t('SilverStripe\\CMS\\Controllers\\ContentController.PUBLISHEDSITE', 'Published Site');
         $recordLink = Convert::raw2att(Controller::join_links($livePage->AbsoluteLink(), "?stage=Live"));
         return "<a {$linkClass} href=\"$recordLink\">$linkTitle</a>";
     }
@@ -27,7 +27,7 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem
     public function getTitle()
     {
         return _t(
-            'ContentController.PUBLISHED',
+            'SilverStripe\\CMS\\Controllers\\ContentController.PUBLISHED',
             'Published',
             'Used for the Switch between draft and published view mode. Needs to be a short label'
         );
@@ -36,10 +36,10 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem
     public function getMessage()
     {
         return "<div id=\"SilverStripeNavigatorMessage\" title=\"" . _t(
-            'ContentControl.NOTEWONTBESHOWN',
+            'SilverStripe\\CMS\\Controllers\\ContentController.NOTEWONTBESHOWN',
             'Note: this message will not be shown to your visitors'
         ) . "\">" . _t(
-            'ContentController.PUBLISHEDSITE',
+            'SilverStripe\\CMS\\Controllers\\ContentController.PUBLISHEDSITE',
             'Published Site'
         ) . "</div>";
     }
@@ -51,8 +51,9 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem
 
     public function canView($member = null)
     {
+        $recordClass = get_class($this->record);
         return (
-            $this->record->hasExtension('SilverStripe\ORM\Versioning\Versioned')
+            $recordClass::has_extension(Versioned::class)
             && $this->getLivePage()
             // Don't follow redirects in preview, they break the CMS editing form
             && !($this->record instanceof RedirectorPage)

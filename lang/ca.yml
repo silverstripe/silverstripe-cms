@@ -1,49 +1,10 @@
 ca:
-  AssetAdmin:
-    NEWFOLDER: NovaCarpeta
-  AssetAdmin_left_ss:
-    GO: Vés
-  CMSMain:
-    DELETE: 'Suprimeix del lloc esborrany'
-    DELETEFP: 'Suprimeix del lloc publicat'
+  SilverStripe\CMS\Controllers\CMSMain:
     PAGENOTEXISTS: 'Aquesta pàgina no existeix'
     PUBALLCONFIRM: 'Publica cada pàgina del lloc web, copiant el contingut cap a la versió publicada'
     PUBALLFUN: 'Funcionalitat de "Publica-ho tot"'
-    REMOVEDPAGEFROMDRAFT: 'S''ha suprimit  ''%s'' del lloc esborrany'
-    ROLLBACK: 'Torna a aquesta versió'
-    SAVE: Desa
-  ErrorPage:
-    400: '400 - Mala petició'
-    401: '401 - Sense autorització'
-    403: '403 - Prohibit'
-    404: '404 - No s''ha trobat'
-    405: '405 - Mètode no permès'
-    406: '406 - No acceptable'
-    407: '407 - Autenticació de servidor intermediari requerida'
-    408: '408 - Temps excedit de la petició'
-    409: '409 - Conflicte'
-    410: '410 - Ja no hi és'
-    411: '411 - Longitud requerida'
-    412: '412 - Una precondició ha fallat'
-    413: '413 - Entitat de la petició massa gran'
-    414: '414 - Adreça de la petició massa llarga'
-    415: '415 - Tipus mèdia no suportat'
-    416: '416 - Rang de la petició no satisfactible'
-    417: '417 - Expectació ha fallat'
-    500: '500 - Error intern del servidor'
-    501: '501 - No implementat'
-    502: '502 - Pasarel·la errònia'
-    503: '503 - Servei no disponible'
-    504: '504 - Temps excedit de la pasarel·la'
-    505: '505 - Versió HTTP no suportada'
-    CODE: 'Codi d''error'
-    DEFAULTERRORPAGECONTENT: '<p>Sembla que intenteu accedir a una pàgina que no existeix.</p><p>Si us plau, reviseu com heu escrit la URL que intenteu accedir i proveu-ho de nou.</p>'
-    DEFAULTERRORPAGETITLE: 'Pàgina no trobada'
-  Folder:
-    DELETEUNUSEDTHUMBNAILS: 'Suprimeix les miniatures no usades'
-    UNUSEDFILESTITLE: 'Fitxers no usats'
-    UNUSEDTHUMBNAILSTITLE: 'Miniatures no usades'
-  RedirectorPage:
+    REMOVEDPAGEFROMDRAFT: 'S''ha suprimit  ''{title}'' del lloc esborrany'
+  SilverStripe\CMS\Model\RedirectorPage:
     HASBEENSETUP: 'S''ha definit una pàgina redirectora sense cap lloc on redirigir.'
     HEADER: 'Aquesta pàgina redirigirà usuaris a una altra pàgina'
     OTHERURL: 'URL del lloc web'
@@ -51,18 +12,11 @@ ca:
     REDIRECTTOEXTERNAL: 'Un altre lloc web'
     REDIRECTTOPAGE: 'Una pàgina del vostre lloc web'
     YOURPAGE: 'Pàgina del vostre lloc web'
-  SearchForm:
-    GO: Vés
-    SEARCH: Cerca
-  SideReport:
-    EMPTYPAGES: 'Pàgines buides'
-    LAST2WEEKS: 'Pàgines editades les dues darreres setmanes'
-  SiteTree:
+  SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Qualsevol
     ACCESSHEADER: 'Qui pot veure aquesta pàgina al meu lloc web?'
     ACCESSLOGGEDIN: 'Usuaris connectats'
     ACCESSONLYTHESE: 'Només aquesta gent (trieu de la llista)'
-    ALLOWCOMMENTS: 'Permet comentaris en aquesta pàgina?'
     BUTTONCANCELDRAFT: 'Cancel·la els canvis de l''esborrany'
     BUTTONCANCELDRAFTDESC: 'Suprimeix el vostre esborrany i reverteix a la pàgina actualment publicada'
     BUTTONUNPUBLISH: Despublica
@@ -72,9 +26,7 @@ ca:
     DEFAULTABOUTTITLE: 'Sobre nosaltres'
     DEFAULTCONTACTTITLE: 'Contacteu amb nosaltres'
     DEFAULTHOMETITLE: Portada
-    EDITANYONE: 'Qualsevol que pot entrar al SGC'
     EDITHEADER: 'Qui pot editar-la des del SGC?'
-    EDITONLYTHESE: 'Només aquesta gent (trieu d''una llista)'
     Editors: 'Grups d''editors'
     HASBROKENLINKS: 'Aquesta pàgina té enllaços trencats'
     HTMLEDITORTITLE: Contingut
@@ -96,9 +48,8 @@ ca:
     many_many_BackLinkTracking: 'Seguiment d''enllaços retroactius'
     many_many_ImageTracking: 'Seguiment d''imatges'
     many_many_LinkTracking: 'Seguiment d''enllaços'
-  ViewArchivedEmail_ss:
-    CANACCESS: 'Podeu accedir al lloc arxivat en aquesta adreça:'
-    HAVEASKED: 'Heu demanat de veure el contingut del nostre lloc el'
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Aquesta és una pàgina virtual'
-    SINGULARNAME: 'Pàgina virtual'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Vés
+    SEARCH: Cerca

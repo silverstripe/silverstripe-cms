@@ -1,46 +1,23 @@
 is:
-  CMSMain:
-    DELETE: 'Eyða úr drögum'
-    DELETEFP: 'Eyða úr birtum síðum'
-    SAVE: Vista
-  ContentController:
+  SilverStripe\CMS\Controllers\ContentController:
     LOGGEDINAS: 'Innskráður sem'
     LOGIN: Innskrá
     LOGOUT: Útskrá
     NOTLOGGEDIN: 'Ekki innskráður'
     PUBLISHEDSITE: 'Birt síða'
     VIEWPAGEIN: 'Skoða síðu í:'
-  ErrorPage:
-    CODE: 'Villu númer'
-    DEFAULTERRORPAGECONTENT: '<p>Afsakið, það virðist vera að þú ert að reyna opna síðu sem er ekki til.</p><p>Vinsamlegast athugaðu hvort að slóðin sé rétt skrifuð og prófaðu aftur</p>'
-    DEFAULTERRORPAGETITLE: 'Síða fannst ekki'
-  Folder:
-    DELETEUNUSEDTHUMBNAILS: 'Eyða ónotuðum smámyndum'
-    UNUSEDFILESTITLE: 'Ónotaðar skrár'
-    UNUSEDTHUMBNAILSTITLE: 'Ónotaðar smámyndir'
-  RedirectorPage:
+  SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Þessi síða mun áframsenda notendur á aðra síðu'
     OTHERURL: 'Slóð á aðra heimasíðu'
     REDIRECTTO: 'Áframsenda á'
     REDIRECTTOEXTERNAL: 'Önnur heimasíða'
     REDIRECTTOPAGE: 'Síða á heimasíðunni þinni'
     YOURPAGE: 'Síða á heimasíðunni þinni'
-  SearchForm:
-    GO: Framkvæma
-    SEARCH: Leita
-    SearchResults: 'Leitar niðurstaða'
-  SilverStripeNavigatorLinkl:
-    CloseLink: Loka
-  SiteConfig:
-    SITENAMEDEFAULT: 'Nafn síðunnar'
-    SITETITLE: 'Titill síðunnar'
-    THEME: Þema
-  SiteTree:
+  SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Allir
     ACCESSHEADER: 'Hver má skoða þessa síðu á heimasíðunni minni?'
     ACCESSLOGGEDIN: 'Innskráðir notendur'
     ACCESSONLYTHESE: 'Aðeins þetta fólk (veldu úr listanum)'
-    ALLOWCOMMENTS: 'Leyfa lesendum að skrifa athugasemdir á þessa síðu?'
     BUTTONCANCELDRAFT: 'Hætta við breytingar á drögum'
     BUTTONCANCELDRAFTDESC: 'Eyða drögunum þínum og fara aftur ál núverandi bitar síðu'
     BUTTONUNPUBLISH: 'Taka úr birtingu'
@@ -50,9 +27,7 @@ is:
     DEFAULTABOUTTITLE: 'Um okkur'
     DEFAULTCONTACTTITLE: 'Hafa samband'
     DEFAULTHOMETITLE: Heim
-    EDITANYONE: 'Allir þeir sem geta innskráð sig í kerfið'
     EDITHEADER: 'Hver getur breytt þessu í kerfinu?'
-    EDITONLYTHESE: 'Aðeins þetta fólk (veldu úr listanum)'
     HASBROKENLINKS: 'Þessi síða inniheldur óvirkann hlekk.'
     HTMLEDITORTITLE: Efni
     INHERIT: 'Erfa frá foreldra síðu'
@@ -68,6 +43,9 @@ is:
     URLSegment: 'Slóðar hlutar'
     VIEW_DRAFT_CONTENT: 'Skoða uppkast'
     has_one_Parent: 'Yfir síða'
-  VirtualPage:
+  SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Þetta er sýndarsíða'
-    SINGULARNAME: 'Sýndar síða'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Framkvæma
+    SEARCH: Leita
+    SearchResults: 'Leitar niðurstaða'

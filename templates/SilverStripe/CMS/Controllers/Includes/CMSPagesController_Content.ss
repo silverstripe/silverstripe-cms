@@ -3,7 +3,7 @@
 	<div class="cms-content-header north">
 		<div class="cms-content-header-info fill-width">
 			<% include SilverStripe\\Admin\\CMSBreadcrumbs %>
-			<% include SilverStripe\\CMS\\Controllers\\CMSMain_ViewControls PJAXTarget='Content-PageList' %>
+            <% include SilverStripe\\CMS\\Controllers\\CMSMain_Filter %>
 		</div>
 	</div>
 

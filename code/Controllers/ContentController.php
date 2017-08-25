@@ -5,26 +5,25 @@ namespace SilverStripe\CMS\Controllers;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
-use SilverStripe\Control\Session;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Convert;
+use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Core\Manifest\ModuleManifest;
 use SilverStripe\i18n\i18n;
 use SilverStripe\ORM\ArrayList;
-use SilverStripe\ORM\DataModel;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\FieldType\DBVarchar;
 use SilverStripe\ORM\SS_List;
-use SilverStripe\ORM\Versioning\Versioned;
-use SilverStripe\Security\Member;
-use SilverStripe\Security\MemberAuthenticator;
+use SilverStripe\Security\MemberAuthenticator\MemberAuthenticator;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
 use SilverStripe\View\SSViewer;
@@ -171,16 +170,14 @@ class ContentController extends Controller
      * fall over to a child controller in order to provide functionality for nested URLs.
      *
      * @param HTTPRequest $request
-     * @param DataModel $model
      * @return HTTPResponse
      * @throws HTTPResponse_Exception
      */
-    public function handleRequest(HTTPRequest $request, DataModel $model)
+    public function handleRequest(HTTPRequest $request)
     {
         /** @var SiteTree $child */
         $child  = null;
         $action = $request->param('Action');
-        $this->setDataModel($model);
 
         // If nested URLs are enabled, and there is no action handler for the current request then attempt to pass
         // control to a child controller. This allows for the creation of chains of controllers which correspond to a
@@ -205,7 +202,7 @@ class ContentController extends Controller
             $request->shiftAllParams();
             $request->shift();
 
-            $response = ModelAsController::controller_for($child)->handleRequest($request, $model);
+            $response = ModelAsController::controller_for($child)->handleRequest($request);
         } else {
             // If a specific locale is requested, and it doesn't match the page found by URLSegment,
             // look for a translation and redirect (see #5001). Only happens on the last child in
@@ -229,7 +226,7 @@ class ContentController extends Controller
             Director::set_current_page($this->data());
 
             try {
-                $response = parent::handleRequest($request, $model);
+                $response = parent::handleRequest($request);
 
                 Director::set_current_page(null);
             } catch (HTTPResponse_Exception $e) {
@@ -251,8 +248,7 @@ class ContentController extends Controller
      */
     public function project()
     {
-        global $project;
-        return $project;
+        return ModuleManifest::config()->get('project');
     }
 
     /**
@@ -317,23 +313,24 @@ class ContentController extends Controller
      *
      * @todo Check if here should be returned just the default log-in form or
      *       all available log-in forms (also OpenID...)
+     * @return \SilverStripe\Security\MemberAuthenticator\MemberLoginForm
      */
     public function LoginForm()
     {
-        return MemberAuthenticator::get_login_form($this);
+        return Injector::inst()->get(MemberAuthenticator::class)->getLoginHandler($this->Link())->loginForm();
     }
 
     public function SilverStripeNavigator()
     {
-        $member = Member::currentUser();
+        $member = Security::getCurrentUser();
         $items = '';
         $message = '';
 
         if (Director::isDev() || Permission::check('CMS_ACCESS_CMSMain') || Permission::check('VIEW_DRAFT_CONTENT')) {
             if ($this->dataRecord) {
-                Requirements::css(CMS_DIR . '/client/dist/styles/SilverStripeNavigator.css');
-                Requirements::javascript(ADMIN_THIRDPARTY_DIR . '/jquery/jquery.js');
-                Requirements::javascript(CMS_DIR . '/client/dist/js/SilverStripeNavigator.js');
+                Requirements::css('silverstripe/cms: client/dist/styles/SilverStripeNavigator.css');
+                Requirements::javascript('silverstripe/admin: thirdparty/jquery/jquery.js');
+                Requirements::javascript('silverstripe/cms: client/dist/js/SilverStripeNavigator.js');
 
                 $return = $nav = SilverStripeNavigator::get_for_record($this->dataRecord);
                 $items = $return['items'];
@@ -343,16 +340,16 @@ class ContentController extends Controller
             if ($member) {
                 $firstname = Convert::raw2xml($member->FirstName);
                 $surname = Convert::raw2xml($member->Surname);
-                $logInMessage = _t('ContentController.LOGGEDINAS', 'Logged in as') ." {$firstname} {$surname} - <a href=\"Security/logout\">". _t('ContentController.LOGOUT', 'Log out'). "</a>";
+                $logInMessage = _t('SilverStripe\\CMS\\Controllers\\ContentController.LOGGEDINAS', 'Logged in as') ." {$firstname} {$surname} - <a href=\"Security/logout\">". _t('SilverStripe\\CMS\\Controllers\\ContentController.LOGOUT', 'Log out'). "</a>";
             } else {
                 $logInMessage = sprintf(
                     '%s - <a href="%s">%s</a>',
-                    _t('ContentController.NOTLOGGEDIN', 'Not logged in'),
+                    _t('SilverStripe\\CMS\\Controllers\\ContentController.NOTLOGGEDIN', 'Not logged in'),
                     Security::config()->login_url,
-                    _t('ContentController.LOGIN', 'Login') ."</a>"
+                    _t('SilverStripe\\CMS\\Controllers\\ContentController.LOGIN', 'Login') ."</a>"
                 );
             }
-            $viewPageIn = _t('ContentController.VIEWPAGEIN', 'View Page in:');
+            $viewPageIn = _t('SilverStripe\\CMS\\Controllers\\ContentController.VIEWPAGEIN', 'View Page in:');
 
             return <<<HTML
 				<div id="SilverStripeNavigator">
@@ -373,12 +370,12 @@ HTML;
         // On live sites we should still see the archived message
         } else {
             if ($date = Versioned::current_archived_date()) {
-                Requirements::css(CMS_DIR . '/client/dist/styles/SilverStripeNavigator.css');
+                Requirements::css('silverstripe/cms: client/dist/styles/SilverStripeNavigator.css');
                 /** @var DBDatetime $dateObj */
                 $dateObj = DBField::create_field('Datetime', $date);
                 // $dateObj->setVal($date);
                 return "<div id=\"SilverStripeNavigatorMessage\">" .
-                    _t('ContentController.ARCHIVEDSITEFROM', 'Archived site from') .
+                    _t('SilverStripe\\CMS\\Controllers\\ContentController.ARCHIVEDSITEFROM', 'Archived site from') .
                     "<br>" . $dateObj->Nice() . "</div>";
             }
         }
@@ -453,7 +450,7 @@ HTML;
             SSViewer::get_templates_by_class(static::class, "", "SilverStripe\\Control\\Controller")
         );
 
-        return new SSViewer($templates);
+        return SSViewer::create($templates);
     }
 
 
@@ -476,12 +473,12 @@ HTML;
         global $project;
         $data = new ArrayData(array(
             'Project' => Convert::raw2xml($project),
-            'Username' => Convert::raw2xml(Session::get('username')),
-            'Password' => Convert::raw2xml(Session::get('password')),
+            'Username' => Convert::raw2xml($this->getRequest()->getSession()->get('username')),
+            'Password' => Convert::raw2xml($this->getRequest()->getSession()->get('password')),
         ));
 
         return array(
-            "Title" =>  _t("ContentController.INSTALL_SUCCESS", "Installation Successful!"),
+            "Title" =>  _t("SilverStripe\\CMS\\Controllers\\ContentController.INSTALL_SUCCESS", "Installation Successful!"),
             "Content" => $data->renderWith([
                 'type' => 'Includes',
                 'Install_successfullyinstalled'
@@ -520,8 +517,8 @@ HTML;
         }
 
         $data = new ArrayData(array(
-            'Username' => Convert::raw2xml(Session::get('username')),
-            'Password' => Convert::raw2xml(Session::get('password')),
+            'Username' => Convert::raw2xml($this->getRequest()->getSession()->get('username')),
+            'Password' => Convert::raw2xml($this->getRequest()->getSession()->get('password')),
             'UnsuccessfulFiles' => $unsuccessful
         ));
         $content->setValue($data->renderWith([

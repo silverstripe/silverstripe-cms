@@ -1,8 +1,7 @@
-
 /**
  * File: CMSMain.EditForm.js
  */
-import $ from 'jQuery';
+import $ from 'jquery';
 import i18n from 'i18n';
 
 $.entwine('ss', function($){
@@ -14,7 +13,7 @@ $.entwine('ss', function($){
 	$('.cms-edit-form :input[name=ClassName]').entwine({
 		// Function: onchange
 		onchange: function() {
-			alert(i18n._t('CMSMAIN.ALERTCLASSNAME'));
+			alert(i18n._t('CMS.ALERTCLASSNAME'));
 		}
 	});
 
@@ -124,7 +123,7 @@ $.entwine('ss', function($){
 			// update button
 			updateURLFromTitle = $('<button />', {
 				'class': 'update ss-ui-button-small',
-				'text': i18n._t('URLSEGMENT.UpdateURL'),
+				'text': i18n._t('CMS.UpdateURL'),
 				'type': 'button',
 				'click': function(e) {
 					e.preventDefault();
@@ -197,46 +196,6 @@ $.entwine('ss', function($){
 	});
 
 	/**
-	 * Class: .cms-edit-form #CanViewType, .cms-edit-form #CanEditType
-	 *
-	 * Toggle display of group dropdown in "access" tab,
-	 * based on selection of radiobuttons.
-	 */
-  $('.cms-edit-form [name="CanViewType"], ' +
-    '.cms-edit-form [name="CanEditType"], ' +
-    '.cms-edit-form #CanCreateTopLevelType').entwine({
-    onmatch: function () {
-      if (this.val() === 'OnlyTheseUsers') {
-        if (this.is(':checked')) {
-          this.showList(true);
-        } else {
-          this.hideList(true);
-        }
-      }
-    },
-    onchange: function (e) {
-      if (e.target.value === 'OnlyTheseUsers') {
-        this.showList();
-      } else {
-        this.hideList();
-      }
-    },
-    showList: function (instant) {
-      let holder = this.closest('.field');
-
-      holder.addClass('field--merge-below');
-      holder.next().filter('.listbox')[instant ? 'show' : 'slideDown']();
-    },
-    hideList: function (instant) {
-      let holder = this.closest('.field');
-
-      holder.next().filter('.listbox')[instant ? 'hide' : 'slideUp'](() => {
-        holder.removeClass('field--merge-below');
-      });
-    }
-  });
-
-	/**
 	 * Class: .cms-edit-form .btn-toolbar #Form_EditForm_action_print
 	 *
 	 * Open a printable representation of the form in a new window.
@@ -278,11 +237,11 @@ $.entwine('ss', function($){
 			var form = this.parents('form:first'), version = form.find(':input[name=Version]').val(), message = '';
 			if(version) {
 				message = i18n.sprintf(
-					i18n._t('CMSMain.RollbackToVersion'),
+					i18n._t('CMS.RollbackToVersion'),
 					version
 				);
 			} else {
-				message = i18n._t('CMSMain.ConfirmRestoreFromLive');
+				message = i18n._t('CMS.ConfirmRestoreFromLive');
 			}
 			if(confirm(message)) {
 				return this._super(e);
@@ -306,11 +265,11 @@ $.entwine('ss', function($){
 		 *  (Event) e
 		 */
 		onclick: function(e) {
-			var form = this.parents('form:first'), version = form.find(':input[name=Version]').val(), message = '';
-			message = i18n.sprintf(
-				i18n._t('CMSMain.Archive'),
-				version
-			);
+			var form = this.parents('form:first'), message = '';
+			message = form.find('input[name=ArchiveWarningMessage]')
+				.val()
+				.replace(/\\n/g, '\n');
+
 			if(confirm(message)) {
 				return this._super(e);
 			} else {
@@ -338,7 +297,7 @@ $.entwine('ss', function($){
 				message = '',
 				toRoot = this.data('toRoot');
 			message = i18n.sprintf(
-				i18n._t(toRoot ? 'CMSMain.RestoreToRoot' : 'CMSMain.Restore'),
+				i18n._t(toRoot ? 'CMS.RestoreToRoot' : 'CMS.Restore'),
 				version
 			);
 			if(confirm(message)) {
@@ -364,7 +323,7 @@ $.entwine('ss', function($){
 		onclick: function(e) {
 			var form = this.parents('form:first'), version = form.find(':input[name=Version]').val(), message = '';
 			message = i18n.sprintf(
-				i18n._t('CMSMain.Unpublish'),
+				i18n._t('CMS.Unpublish'),
 				version
 			);
 			if(confirm(message)) {
@@ -381,11 +340,11 @@ $.entwine('ss', function($){
 	 */
   $('.cms-edit-form.changed').entwine({
     onmatch: function(e) {
-      var save = this.find('button[name=action_save]');
+      const save = this.find('button[name=action_save]');
 
       if(save.attr('data-text-alternate')) {
-        save.attr('data-text-standard', save.text());
-        save.text(save.attr('data-text-alternate'));
+        save.attr('data-text-standard', save.find('span').text());
+        save.find('span').text(save.attr('data-text-alternate'));
       }
 
       if(save.attr('data-btn-alternate')) {
@@ -395,14 +354,14 @@ $.entwine('ss', function($){
 
 
       save
-        .removeClass('btn-secondary-outline')
+        .removeClass('btn-outline-secondary')
         .addClass('btn-primary');
 
-			var publish = this.find('button[name=action_publish]')
+			const publish = this.find('button[name=action_publish]');
 
       if(publish.attr('data-text-alternate')) {
-        publish.attr('data-text-standard', publish.attr('data-text-alternate'));
-        publish.text(publish.attr('data-text-alternate'));
+        publish.attr('data-text-standard', publish.find('span').text());
+        publish.find('span').text(publish.attr('data-text-alternate'));
       }
 
       if(publish.attr('data-btn-alternate')) {
@@ -411,7 +370,7 @@ $.entwine('ss', function($){
       }
 
       publish
-        .removeClass('btn-secondary-outline')
+        .removeClass('btn-outline-secondary')
         .addClass('btn-primary');
 
 

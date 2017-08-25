@@ -35,3 +35,4 @@ If you would like to make changes to the SilverStripe core codebase, we have an 
  * [Bugtracker: Installer](https://github.com/silverstripe/silverstripe-installer/issues)
  * [Forums](http://silverstripe.org/forums)
  * [Developer Mailinglist](https://groups.google.com/forum/#!forum/silverstripe-dev)
+ * [License](./LICENSE)

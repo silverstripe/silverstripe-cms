@@ -4,7 +4,7 @@ namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\ORM\SS_List;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 
 /**
  * This filter will display the SiteTree as a site visitor might see the site, i.e only the
@@ -20,7 +20,7 @@ class CMSSiteTreeFilter_PublishedPages extends CMSSiteTreeFilter
      */
     public static function title()
     {
-        return _t('CMSSIteTreeFilter_PublishedPages.Title', "Published pages");
+        return _t('SilverStripe\\CMS\\Controllers\\CMSSIteTreeFilter_PublishedPages.Title', "Published pages");
     }
 
     /**

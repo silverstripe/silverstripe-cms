@@ -1,0 +1,17 @@
+{
+    "CMS.ALERTCLASSNAME": "将在页面保存后上传页面类型",
+    "CMS.AddSubPage": "在此添加新页面",
+    "CMS.ConfirmRestoreFromLive": "Are you sure you want to revert draft to when the page was last published?",
+    "CMS.Duplicate": "复制",
+    "CMS.EditPage": "编辑",
+    "CMS.ONLYSELECTTWO": "You can only compare two versions at this time.",
+    "CMS.Restore": "Are you sure you want to restore this page from archive?",
+    "CMS.RestoreToRoot": "Are you sure you want to restore this page from archive?\n\nBecause the parent page is not available this will be restored to the top level.",
+    "CMS.RollbackToVersion": "是否确定回滚至该页面的第 #%s 版？",
+    "CMS.ShowAsList": "将儿童显示为列表",
+    "CMS.ThisPageAndSubpages": "本页和子页面",
+    "CMS.ThisPageOnly": "仅该页",
+    "CMS.Unpublish": "Are you sure you want to remove your page from the published site?\n\nThis page will still be available in the sitetree as draft.",
+    "CMS.UpdateURL": "Update URL",
+    "CMS.ViewPage": "View"
+}

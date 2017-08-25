@@ -4,10 +4,6 @@
 		<directory>tests</directory>
 	</testsuite>
 
-	<listeners>
-		<listener class="SilverStripe\Dev\TestListener" />
-	</listeners>
-
 	<filter>
 		<whitelist addUncoveredFilesFromWhitelist="true">
 			<directory suffix=".php">.</directory>

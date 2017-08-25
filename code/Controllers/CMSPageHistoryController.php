@@ -2,21 +2,21 @@
 
 namespace SilverStripe\CMS\Controllers;
 
+use SilverStripe\Admin\LeftAndMainFormRequestHandler;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Forms\CheckboxField;
-use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\HTMLReadonlyField;
 use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\Tab;
 use SilverStripe\ORM\FieldType\DBField;
-use SilverStripe\ORM\FieldType\DBHTMLText;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\Security\Security;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\ViewableData;
@@ -35,6 +35,7 @@ class CMSPageHistoryController extends CMSMain
     private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
 
     private static $allowed_actions = array(
+        'EditForm',
         'VersionsForm',
         'CompareVersionsForm',
         'show',
@@ -42,15 +43,23 @@ class CMSPageHistoryController extends CMSMain
     );
 
     private static $url_handlers = array(
-        '$Action/$ID/$VersionID/$OtherVersionID' => 'handleAction'
+        '$Action/$ID/$VersionID/$OtherVersionID' => 'handleAction',
+        'EditForm/$ID/$VersionID' => 'EditForm',
     );
+
+    /**
+     * Current version ID for this request. Can be 0 for latest version
+     *
+     * @var int
+     */
+    protected $versionID = null;
 
     public function getResponseNegotiator()
     {
         $negotiator = parent::getResponseNegotiator();
         $controller = $this;
         $negotiator->setCallback('CurrentForm', function () use (&$controller) {
-            $form = $controller->ShowVersionForm($controller->getRequest()->param('VersionID'));
+            $form = $controller->getEditForm();
             if ($form) {
                 return $form->forTemplate();
             } else {
@@ -65,19 +74,30 @@ class CMSPageHistoryController extends CMSMain
 
     /**
      * @param HTTPRequest $request
-     * @return array
+     * @return HTTPResponse
      */
     public function show($request)
     {
-        $form = $this->ShowVersionForm($request->param('VersionID'));
+        // Record id and version for this request
+        $id = $request->param('ID');
+        $this->setCurrentPageID($id);
+        $versionID = $request->param('VersionID');
+        $this->setVersionID($versionID);
+
+        // Show id
+        $form = $this->getEditForm();
 
         $negotiator = $this->getResponseNegotiator();
         $controller = $this;
         $negotiator->setCallback('CurrentForm', function () use (&$controller, &$form) {
-            return $form ? $form->forTemplate() : $controller->renderWith($controller->getTemplatesWithSuffix('_Content'));
+            return $form
+                ? $form->forTemplate()
+                : $controller->renderWith($controller->getTemplatesWithSuffix('_Content'));
         });
         $negotiator->setCallback('default', function () use (&$controller, &$form) {
-            return $controller->customise(array('EditForm' => $form))->renderWith($controller->getViewer('show'));
+            return $controller
+                ->customise(array('EditForm' => $form))
+                ->renderWith($controller->getViewer('show'));
         });
 
         return $negotiator->respond($request);
@@ -85,7 +105,7 @@ class CMSPageHistoryController extends CMSMain
 
     /**
      * @param HTTPRequest $request
-     * @return array
+     * @return HTTPResponse
      */
     public function compare($request)
     {
@@ -118,6 +138,24 @@ class CMSPageHistoryController extends CMSMain
     }
 
     /**
+     * @param HTTPRequest $request
+     * @return Form
+     */
+    public function EditForm($request = null)
+    {
+        if ($request) {
+            // Validate VersionID is present
+            $versionID = $request->param('VersionID');
+            if (!isset($versionID)) {
+                $this->httpError(400);
+                return null;
+            }
+            $this->setVersionID($versionID);
+        }
+        return parent::EditForm($request);
+    }
+
+    /**
      * Returns the read only version of the edit form. Detaches all {@link FormAction}
      * instances attached since only action relates to revert.
      *
@@ -135,11 +173,21 @@ class CMSPageHistoryController extends CMSMain
         if (!$id) {
             $id = $this->currentPageID();
         }
+        if (!$versionID) {
+            $versionID = $this->getVersionID();
+        }
 
         $record = $this->getRecord($id, $versionID);
-        $versionID = ($record) ? $record->Version : $versionID;
+        if (!$record) {
+            return $this->EmptyForm();
+        }
 
-        $form = parent::getEditForm($record, ($record) ? $record->getCMSFields() : null);
+        // Refresh version ID
+        $versionID = $record->Version;
+        $this->setVersionID($versionID);
+
+        // Get edit form
+        $form = parent::getEditForm($record, $record->getCMSFields());
         // Respect permission failures from parent implementation
         if (!($form instanceof Form)) {
             return $form;
@@ -148,9 +196,14 @@ class CMSPageHistoryController extends CMSMain
         // TODO: move to the SilverStripeNavigator structure so the new preview can pick it up.
         //$nav = new SilverStripeNavigatorItem_ArchiveLink($record);
 
-        $form->setActions(new FieldList(
-            $revert = FormAction::create('doRollback', _t('CMSPageHistoryController.REVERTTOTHISVERSION', 'Revert to this version'))->setUseButtonTag(true)
-        ));
+        $actions = new FieldList(
+            $revert = FormAction::create(
+                'doRollback',
+                _t('SilverStripe\\CMS\\Controllers\\CMSPageHistoryController.REVERTTOTHISVERSION', 'Revert to this version')
+            )->setUseButtonTag(true)
+        );
+        $actions->setForm($form);
+        $form->setActions($actions);
 
         $fields = $form->Fields();
         $fields->removeByName("Status");
@@ -165,10 +218,10 @@ class CMSPageHistoryController extends CMSMain
                 $id
             );
 
-            $view = _t('CMSPageHistoryController.VIEW', "view");
+            $view = _t('SilverStripe\\CMS\\Controllers\\CMSPageHistoryController.VIEW', "view");
 
             $message = _t(
-                'CMSPageHistoryController.COMPARINGVERSION',
+                'SilverStripe\\CMS\\Controllers\\CMSPageHistoryController.COMPARINGVERSION',
                 "Comparing versions {version1} and {version2}.",
                 array(
                     'version1' => sprintf('%s (<a href="%s">%s</a>)', $versionID, Controller::join_links($link, $versionID), $view),
@@ -179,17 +232,19 @@ class CMSPageHistoryController extends CMSMain
             $revert->setReadonly(true);
         } else {
             if ($record->isLatestVersion()) {
-                $message = _t('CMSPageHistoryController.VIEWINGLATEST', 'Currently viewing the latest version.');
+                $message = _t('SilverStripe\\CMS\\Controllers\\CMSPageHistoryController.VIEWINGLATEST', 'Currently viewing the latest version.');
             } else {
                 $message = _t(
-                    'CMSPageHistoryController.VIEWINGVERSION',
+                    'SilverStripe\\CMS\\Controllers\\CMSPageHistoryController.VIEWINGVERSION',
                     "Currently viewing version {version}.",
                     array('version' => $versionID)
                 );
             }
         }
 
-        $fields->fieldByName('Root.Main')->unshift(
+        /** @var Tab $mainTab */
+        $mainTab = $fields->fieldByName('Root.Main');
+        $mainTab->unshift(
             new LiteralField('CurrentlyViewingMessage', ArrayData::create(array(
                 'Content' => DBField::create_field('HTMLFragment', $message),
                 'Classes' => 'notice'
@@ -202,11 +257,16 @@ class CMSPageHistoryController extends CMSMain
             "Version" => $versionID,
         ));
 
-        if (($record && $record->isLatestVersion())) {
+        if ($record->isLatestVersion()) {
             $revert->setReadonly(true);
         }
 
         $form->removeExtraClass('cms-content');
+
+        // History form has both ID and VersionID as suffixes
+        $form->setRequestHandler(
+            LeftAndMainFormRequestHandler::create($form, [$id, $versionID])
+        );
 
         return $form;
     }
@@ -264,40 +324,23 @@ class CMSPageHistoryController extends CMSMain
         $fields = new FieldList(
             new CheckboxField(
                 'ShowUnpublished',
-                _t('CMSPageHistoryController.SHOWUNPUBLISHED', 'Show unpublished versions'),
+                _t('SilverStripe\\CMS\\Controllers\\CMSPageHistoryController.SHOWUNPUBLISHED', 'Show unpublished versions'),
                 $showUnpublishedChecked
             ),
             new CheckboxField(
                 'CompareMode',
-                _t('CMSPageHistoryController.COMPAREMODE', 'Compare mode (select two)'),
+                _t('SilverStripe\\CMS\\Controllers\\CMSPageHistoryController.COMPAREMODE', 'Compare mode (select two)'),
                 $compareModeChecked
             ),
             new LiteralField('VersionsHtml', $versionsHtml),
             $hiddenID = new HiddenField('ID', false, "")
         );
 
-        $actions = new FieldList(
-            new FormAction(
-                'doCompare',
-                _t('CMSPageHistoryController.COMPAREVERSIONS', 'Compare Versions')
-            ),
-            new FormAction(
-                'doShowVersion',
-                _t('CMSPageHistoryController.SHOWVERSION', 'Show Version')
-            )
-        );
-
-        // Use <button> to allow full jQuery UI styling
-        foreach ($actions->dataFields() as $action) {
-            /** @var FormAction $action */
-            $action->setUseButtonTag(true);
-        }
-
         $form = Form::create(
             $this,
             'VersionsForm',
             $fields,
-            $actions
+            new FieldList()
         )->setHTMLID('Form_VersionsForm');
         $form->loadDataFrom($this->getRequest()->requestVars());
         $hiddenID->setValue($id);
@@ -307,97 +350,6 @@ class CMSPageHistoryController extends CMSMain
             ->addExtraClass('cms-versions-form') // placeholder, necessary for $.metadata() to work
             ->setAttribute('data-link-tmpl-compare', Controller::join_links($this->Link('compare'), '%s', '%s', '%s'))
             ->setAttribute('data-link-tmpl-show', Controller::join_links($this->Link('show'), '%s', '%s'));
-
-        return $form;
-    }
-
-    /**
-     * Process the {@link VersionsForm} compare function between two pages.
-     *
-     * @param array $data
-     * @param Form $form
-     * @return HTTPResponse|DBHTMLText
-     */
-    public function doCompare($data, $form)
-    {
-        $versions = $data['Versions'];
-        if (count($versions) < 2) {
-            return null;
-        }
-
-        $version1 = array_shift($versions);
-        $version2 = array_shift($versions);
-
-        $form = $this->CompareVersionsForm($version1, $version2);
-
-        // javascript solution, render into template
-        if ($this->getRequest()->isAjax()) {
-            return $this->customise(array(
-                "EditForm" => $form
-            ))->renderWith(array(
-                static::class . '_EditForm',
-                'LeftAndMain_Content'
-            ));
-        }
-
-        // non javascript, redirect the user to the page
-        return $this->redirect(Controller::join_links(
-            $this->Link('compare'),
-            $version1,
-            $version2
-        ));
-    }
-
-    /**
-     * Process the {@link VersionsForm} show version function. Only requires
-     * one page to be selected.
-     *
-     * @param array
-     * @param Form
-     *
-     * @return DBHTMLText|HTTPResponse
-     */
-    public function doShowVersion($data, $form)
-    {
-        $versionID = null;
-
-        if (isset($data['Versions']) && is_array($data['Versions'])) {
-            $versionID  = array_shift($data['Versions']);
-        }
-
-        if (!$versionID) {
-            return null;
-        }
-
-        $request = $this->getRequest();
-        if ($request->isAjax()) {
-            return $this->customise(array(
-                "EditForm" => $this->ShowVersionForm($versionID)
-            ))->renderWith(array(
-                static::class . '_EditForm',
-                'LeftAndMain_Content'
-            ));
-        }
-
-        // non javascript, redirect the user to the page
-        return $this->redirect(Controller::join_links(
-            $this->Link('version'),
-            $versionID
-        ));
-    }
-
-    /**
-     * @param int|null $versionID
-     * @return Form
-     */
-    public function ShowVersionForm($versionID = null)
-    {
-        if (!$versionID) {
-            return null;
-        }
-
-        $id = $this->currentPageID();
-        $form = $this->getEditForm($id, null, $versionID);
 
         return $form;
     }
@@ -434,8 +386,8 @@ class CMSPageHistoryController extends CMSMain
             $record = $page->compareVersions($fromVersion, $toVersion);
         }
 
-        $fromVersionRecord = Versioned::get_version('SilverStripe\\CMS\\Model\\SiteTree', $id, $fromVersion);
-        $toVersionRecord = Versioned::get_version('SilverStripe\\CMS\\Model\\SiteTree', $id, $toVersion);
+        $fromVersionRecord = Versioned::get_version(SiteTree::class, $id, $fromVersion);
+        $toVersionRecord = Versioned::get_version(SiteTree::class, $id, $toVersion);
 
         if (!$fromVersionRecord) {
             user_error("Can't find version $fromVersion of page $id", E_USER_ERROR);
@@ -469,7 +421,7 @@ class CMSPageHistoryController extends CMSMain
     public function Breadcrumbs($unlinked = false)
     {
         $crumbs = parent::Breadcrumbs($unlinked);
-        $crumbs[0]->Title = _t('CMSPagesController.MENUTITLE', 'Pages');
+        $crumbs[0]->Title = _t('SilverStripe\\CMS\\Controllers\\CMSPagesController.MENUTITLE', 'Pages');
         return $crumbs;
     }
 
@@ -489,5 +441,32 @@ class CMSPageHistoryController extends CMSMain
             $fields->replaceField($field->getName(), $newField);
         }
         return $fields;
+    }
+
+    /**
+     * Set current version ID
+     *
+     * @param int $versionID
+     * @return $this
+     */
+    public function setVersionID($versionID)
+    {
+        $this->versionID = $versionID;
+        return $this;
+    }
+
+    /**
+     * Get current version ID
+     *
+     * @return int
+     */
+    public function getVersionID()
+    {
+        return $this->versionID;
+    }
+
+    public function getTabIdentifier()
+    {
+        return 'history';
     }
 }

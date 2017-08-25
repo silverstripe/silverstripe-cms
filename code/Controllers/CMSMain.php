@@ -2,10 +2,12 @@
 
 namespace SilverStripe\CMS\Controllers;
 
+use InvalidArgumentException;
+use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Admin\AdminRootController;
 use SilverStripe\Admin\CMSBatchActionHandler;
-use SilverStripe\Admin\CMSPreviewable;
 use SilverStripe\Admin\LeftAndMain;
+use SilverStripe\Admin\LeftAndMainFormRequestHandler;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Archive;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Publish;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Restore;
@@ -13,15 +15,16 @@ use SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish;
 use SilverStripe\CMS\Model\CurrentPageIdentifier;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
-use SilverStripe\Control\Session;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Convert;
+use SilverStripe\Core\Environment;
 use SilverStripe\Core\Injector\Injector;
-use Psr\SimpleCache\CacheInterface;
+use SilverStripe\Core\Manifest\ModuleLoader;
 use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldGroup;
@@ -38,28 +41,32 @@ use SilverStripe\Forms\GridField\GridFieldSortableHeader;
 use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\LabelField;
 use SilverStripe\Forms\LiteralField;
-use SilverStripe\Forms\RequiredFields;
-use SilverStripe\Forms\ResetFormAction;
+use SilverStripe\Forms\Tab;
 use SilverStripe\Forms\TabSet;
 use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\HiddenClass;
+use SilverStripe\ORM\Hierarchy\MarkedSet;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\ValidationResult;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Security\InheritedPermissions;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\PermissionProvider;
 use SilverStripe\Security\Security;
 use SilverStripe\Security\SecurityToken;
+use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\Versioned\ChangeSet;
+use SilverStripe\Versioned\ChangeSetItem;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
 use Translatable;
-use InvalidArgumentException;
 
 /**
  * The main "content" area of the CMS.
@@ -92,7 +99,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
     private static $subitem_class = Member::class;
 
-    private static $session_namespace = 'SilverStripe\\CMS\\Controllers\\CMSMain';
+    private static $session_namespace = self::class;
 
     private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
 
@@ -119,12 +126,21 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         'SearchForm',
         'SiteTreeAsUL',
         'getshowdeletedsubtree',
+        'savetreenode',
+        'getsubtree',
+        'updatetreenodes',
         'batchactions',
         'treeview',
         'listview',
         'ListViewForm',
         'childfilter',
     );
+
+    private static $url_handlers = [
+        'EditForm/$ID' => 'EditForm',
+        'treeview/$ID' => 'treeview',
+        'listview/$ParentID' => 'listview',
+    ];
 
     private static $casting = array(
         'TreeIsFiltered' => 'Boolean',
@@ -149,11 +165,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         parent::init();
 
-        Requirements::javascript(CMS_DIR . '/client/dist/js/bundle.js');
-        Requirements::javascript(CMS_DIR . '/client/dist/js/SilverStripeNavigator.js');
-        Requirements::css(CMS_DIR . '/client/dist/styles/bundle.css');
+        Requirements::javascript('silverstripe/cms: client/dist/js/bundle.js');
+        Requirements::javascript('silverstripe/cms: client/dist/js/SilverStripeNavigator.js');
+        Requirements::css('silverstripe/cms: client/dist/styles/bundle.css');
         Requirements::customCSS($this->generatePageIconsCss());
-        Requirements::add_i18n_javascript(CMS_DIR . '/client/lang', false, true);
+
+        $module = ModuleLoader::getModule('silverstripe/cms');
+        Requirements::add_i18n_javascript($module->getRelativeResourcePath('client/lang'), false, true);
 
         CMSBatchActionHandler::register('restore', CMSBatchAction_Restore::class);
         CMSBatchActionHandler::register('archive', CMSBatchAction_Archive::class);
@@ -179,16 +197,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         // ListViewForm
         $negotiator->setCallback('ListViewForm', function () {
             return $this->ListViewForm()->forTemplate();
-        });
-
-        // PageList view
-        $negotiator->setCallback('Content-PageList', function () {
-            return $this->PageList()->forTemplate();
-        });
-
-        // PageList view for edit controller
-        $negotiator->setCallback('Content-PageList-Sidebar', function () {
-            return $this->PageListSidebar()->forTemplate();
         });
 
         return $negotiator;
@@ -260,7 +268,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     {
         $link = Controller::join_links(
             AdminRootController::admin_url(),
-            $this->stat('url_segment'), // in case we want to change the segment
+            $this->config()->get('url_segment'), // in case we want to change the segment
             '/', // trailing slash needed if $action is null!
             "$action"
         );
@@ -296,8 +304,39 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     public function LinkListView()
     {
-        // Note : Force redirect to top level page controller
+        // Note : Force redirect to top level page controller (no parentid)
         return $this->LinkWithSearch(CMSMain::singleton()->Link('listview'));
+    }
+
+    /**
+     * Link to list view for children of a parent page
+     *
+     * @param int|string $parentID Literal parentID, or placeholder (e.g. '%d') for
+     * client side substitution
+     * @return string
+     */
+    public function LinkListViewChildren($parentID)
+    {
+        return $this->LinkWithSearch(Controller::join_links(
+            CMSMain::singleton()->Link('listview'),
+            $parentID
+        ));
+    }
+
+    /**
+     * Link to lazy-load deferred tree view
+     *
+     * @return string
+     */
+    public function LinkTreeViewDeferred()
+    {
+        $link = $this->Link('treeview');
+        // Ensure selected page is encoded into URL
+        $selectedID = $this->currentPageID();
+        if ($selectedID) {
+            $link = Controller::join_links($link, $selectedID);
+        }
+        return $this->LinkWithSearch($link);
     }
 
     public function LinkPageEdit($id = null)
@@ -330,6 +369,17 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         } else {
             return null;
         }
+    }
+
+    /**
+     * Return the active tab identifier for the CMS. Used by templates to decide which tab to give the active state.
+     * The default value is "edit", as the primary content tab. Child controllers will override this.
+     *
+     * @return string
+     */
+    public function getTabIdentifier()
+    {
+        return 'edit';
     }
 
     public function LinkWithSearch($link)
@@ -387,13 +437,362 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function SiteTreeAsUL()
     {
         // Pre-cache sitetree version numbers for querying efficiency
-        Versioned::prepopulate_versionnumber_cache(SiteTree::class, "Stage");
-        Versioned::prepopulate_versionnumber_cache(SiteTree::class, "Live");
-        $html = $this->getSiteTreeFor($this->stat('tree_class'));
+        Versioned::prepopulate_versionnumber_cache(SiteTree::class, Versioned::DRAFT);
+        Versioned::prepopulate_versionnumber_cache(SiteTree::class, Versioned::LIVE);
+        $html = $this->getSiteTreeFor($this->config()->get('tree_class'));
 
         $this->extend('updateSiteTreeAsUL', $html);
 
         return $html;
+    }
+
+    /**
+     * Get a site tree HTML listing which displays the nodes under the given criteria.
+     *
+     * @param string $className The class of the root object
+     * @param string $rootID The ID of the root object.  If this is null then a complete tree will be
+     *  shown
+     * @param string $childrenMethod The method to call to get the children of the tree. For example,
+     *  Children, AllChildrenIncludingDeleted, or AllHistoricalChildren
+     * @param string $numChildrenMethod
+     * @param callable $filterFunction
+     * @param int $nodeCountThreshold
+     * @return string Nested unordered list with links to each page
+     */
+    public function getSiteTreeFor(
+        $className,
+        $rootID = null,
+        $childrenMethod = null,
+        $numChildrenMethod = null,
+        $filterFunction = null,
+        $nodeCountThreshold = 30
+    ) {
+        // Provide better defaults from filter
+        $filter = $this->getSearchFilter();
+        if ($filter) {
+            if (!$childrenMethod) {
+                $childrenMethod = $filter->getChildrenMethod();
+            }
+            if (!$numChildrenMethod) {
+                $numChildrenMethod = $filter->getNumChildrenMethod();
+            }
+            if (!$filterFunction) {
+                $filterFunction = function ($node) use ($filter) {
+                    return $filter->isPageIncluded($node);
+                };
+            }
+        }
+
+        // Build set from node and begin marking
+        $record = ($rootID) ? $this->getRecord($rootID) : null;
+        $rootNode = $record ? $record : DataObject::singleton($className);
+        $markingSet = MarkedSet::create($rootNode, $childrenMethod, $numChildrenMethod, $nodeCountThreshold);
+
+        // Set filter function
+        if ($filterFunction) {
+            $markingSet->setMarkingFilterFunction($filterFunction);
+        }
+
+        // Mark tree from this node
+        $markingSet->markPartialTree();
+
+        // Ensure current page is exposed
+        $currentPage = $this->currentPage();
+        if ($currentPage) {
+            $markingSet->markToExpose($currentPage);
+        }
+
+        // Pre-cache permissions
+        $checker = SiteTree::getPermissionChecker();
+        if ($checker instanceof InheritedPermissions) {
+            $checker->prePopulatePermissionCache(
+                InheritedPermissions::EDIT,
+                $markingSet->markedNodeIDs()
+            );
+        }
+
+        // Render using full-subtree template
+        return $markingSet->renderChildren(
+            [ self::class . '_SubTree', 'type' => 'Includes' ],
+            $this->getTreeNodeCustomisations()
+        );
+    }
+
+
+    /**
+     * Get callback to determine template customisations for nodes
+     *
+     * @return callable
+     */
+    protected function getTreeNodeCustomisations()
+    {
+        $rootTitle = $this->getCMSTreeTitle();
+        return function (SiteTree $node) use ($rootTitle) {
+            return [
+                'listViewLink' => $this->LinkListViewChildren($node->ID),
+                'rootTitle' => $rootTitle,
+                'extraClass' => $this->getTreeNodeClasses($node),
+            ];
+        };
+    }
+
+    /**
+     * Get extra CSS classes for a page's tree node
+     *
+     * @param SiteTree $node
+     * @return string
+     */
+    public function getTreeNodeClasses(SiteTree $node)
+    {
+        // Get classes from object
+        $classes = $node->CMSTreeClasses();
+
+        // Flag as current
+        if ($this->isCurrentPage($node)) {
+            $classes .= ' current';
+        }
+
+        // Get status flag classes
+        $flags = $node->getStatusFlags();
+        if ($flags) {
+            $statuses = array_keys($flags);
+            foreach ($statuses as $s) {
+                $classes .= ' status-' . $s;
+            }
+        }
+
+        // Get additional filter classes
+        $filter = $this->getSearchFilter();
+        if ($filter && ($filterClasses = $filter->getPageClasses($node))) {
+            if (is_array($filterClasses)) {
+                $filterClasses = implode(' ', $filterClasses);
+            }
+            $classes .= ' ' . $filterClasses;
+        }
+
+        return trim($classes);
+    }
+
+    /**
+     * Get a subtree underneath the request param 'ID'.
+     * If ID = 0, then get the whole tree.
+     *
+     * @param HTTPRequest $request
+     * @return string
+     */
+    public function getsubtree($request)
+    {
+        $html = $this->getSiteTreeFor(
+            $this->config()->get('tree_class'),
+            $request->getVar('ID'),
+            null,
+            null,
+            null,
+            $request->getVar('minNodeCount')
+        );
+
+        // Trim off the outer tag
+        $html = preg_replace('/^[\s\t\r\n]*<ul[^>]*>/', '', $html);
+        $html = preg_replace('/<\/ul[^>]*>[\s\t\r\n]*$/', '', $html);
+
+        return $html;
+    }
+
+    /**
+     * Allows requesting a view update on specific tree nodes.
+     * Similar to {@link getsubtree()}, but doesn't enforce loading
+     * all children with the node. Useful to refresh views after
+     * state modifications, e.g. saving a form.
+     *
+     * @param HTTPRequest $request
+     * @return HTTPResponse
+     */
+    public function updatetreenodes($request)
+    {
+        $data = array();
+        $ids = explode(',', $request->getVar('ids'));
+        foreach ($ids as $id) {
+            if ($id === "") {
+                continue; // $id may be a blank string, which is invalid and should be skipped over
+            }
+
+            $record = $this->getRecord($id);
+            if (!$record) {
+                continue; // In case a page is no longer available
+            }
+
+            // Create marking set with sole marked root
+            $markingSet = MarkedSet::create($record);
+            $markingSet->setMarkingFilterFunction(function () {
+                return false;
+            });
+            $markingSet->markUnexpanded($record);
+
+            // Find the next & previous nodes, for proper positioning (Sort isn't good enough - it's not a raw offset)
+            // TODO: These methods should really be in hierarchy - for a start it assumes Sort exists
+            $prev = null;
+
+            $className = $this->config()->get('tree_class');
+            $next = DataObject::get($className)
+                ->filter('ParentID', $record->ParentID)
+                ->filter('Sort:GreaterThan', $record->Sort)
+                ->first();
+
+            if (!$next) {
+                $prev = DataObject::get($className)
+                    ->filter('ParentID', $record->ParentID)
+                    ->filter('Sort:LessThan', $record->Sort)
+                    ->reverse()
+                    ->first();
+            }
+
+            // Render using single node template
+            $html = $markingSet->renderChildren(
+                [ self::class . '_TreeNode', 'type' => 'Includes'],
+                $this->getTreeNodeCustomisations()
+            );
+
+            $data[$id] = array(
+                'html' => $html,
+                'ParentID' => $record->ParentID,
+                'NextID' => $next ? $next->ID : null,
+                'PrevID' => $prev ? $prev->ID : null
+            );
+        }
+        return $this
+            ->getResponse()
+            ->addHeader('Content-Type', 'application/json')
+            ->setBody(Convert::raw2json($data));
+    }
+
+    /**
+     * Update the position and parent of a tree node.
+     * Only saves the node if changes were made.
+     *
+     * Required data:
+     * - 'ID': The moved node
+     * - 'ParentID': New parent relation of the moved node (0 for root)
+     * - 'SiblingIDs': Array of all sibling nodes to the moved node (incl. the node itself).
+     *   In case of a 'ParentID' change, relates to the new siblings under the new parent.
+     *
+     * @param HTTPRequest $request
+     * @return HTTPResponse JSON string with a
+     * @throws HTTPResponse_Exception
+     */
+    public function savetreenode($request)
+    {
+        if (!SecurityToken::inst()->checkRequest($request)) {
+            return $this->httpError(400);
+        }
+        if (!Permission::check('SITETREE_REORGANISE') && !Permission::check('ADMIN')) {
+            return $this->httpError(
+                403,
+                _t(
+                    __CLASS__.'.CANT_REORGANISE',
+                    "You do not have permission to rearange the site tree. Your change was not saved."
+                )
+            );
+        }
+
+        $className = $this->config()->get('tree_class');
+        $id = $request->requestVar('ID');
+        $parentID = $request->requestVar('ParentID');
+        if (!is_numeric($id) || !is_numeric($parentID)) {
+            return $this->httpError(400);
+        }
+
+        // Check record exists in the DB
+        /** @var SiteTree $node */
+        $node = DataObject::get_by_id($className, $id);
+        if (!$node) {
+            return $this->httpError(
+                500,
+                _t(
+                    __CLASS__.'.PLEASESAVE',
+                    "Please Save Page: This page could not be updated because it hasn't been saved yet."
+                )
+            );
+        }
+
+        // Check top level permissions
+        $root = $node->getParentType();
+        if (($parentID == '0' || $root == 'root') && !SiteConfig::current_site_config()->canCreateTopLevel()) {
+            return $this->httpError(
+                403,
+                _t(
+                    __CLASS__.'.CANT_REORGANISE',
+                    "You do not have permission to alter Top level pages. Your change was not saved."
+                )
+            );
+        }
+
+        $siblingIDs = $request->requestVar('SiblingIDs');
+        $statusUpdates = array('modified'=>array());
+
+        if (!$node->canEdit()) {
+            return Security::permissionFailure($this);
+        }
+
+        // Update hierarchy (only if ParentID changed)
+        if ($node->ParentID != $parentID) {
+            $node->ParentID = (int)$parentID;
+            $node->write();
+
+            $statusUpdates['modified'][$node->ID] = array(
+                'TreeTitle' => $node->TreeTitle
+            );
+
+            // Update all dependent pages
+            $virtualPages = VirtualPage::get()->filter("CopyContentFromID", $node->ID);
+            foreach ($virtualPages as $virtualPage) {
+                $statusUpdates['modified'][$virtualPage->ID] = array(
+                    'TreeTitle' => $virtualPage->TreeTitle()
+                );
+            }
+
+            $this->getResponse()->addHeader(
+                'X-Status',
+                rawurlencode(_t(__CLASS__.'.REORGANISATIONSUCCESSFUL', 'Reorganised the site tree successfully.'))
+            );
+        }
+
+        // Update sorting
+        if (is_array($siblingIDs)) {
+            $counter = 0;
+            foreach ($siblingIDs as $id) {
+                if ($id == $node->ID) {
+                    $node->Sort = ++$counter;
+                    $node->write();
+                    $statusUpdates['modified'][$node->ID] = array(
+                        'TreeTitle' => $node->TreeTitle
+                    );
+                } elseif (is_numeric($id)) {
+                    // Nodes that weren't "actually moved" shouldn't be registered as
+                    // having been edited; do a direct SQL update instead
+                    ++$counter;
+                    $table = DataObject::getSchema()->baseDataTable($className);
+                    DB::prepared_query(
+                        "UPDATE \"$table\" SET \"Sort\" = ? WHERE \"ID\" = ?",
+                        array($counter, $id)
+                    );
+                }
+            }
+
+            $this->getResponse()->addHeader(
+                'X-Status',
+                rawurlencode(_t(__CLASS__.'.REORGANISATIONSUCCESSFUL', 'Reorganised the site tree successfully.'))
+            );
+        }
+
+        return $this
+            ->getResponse()
+            ->addHeader('Content-Type', 'application/json')
+            ->setBody(Convert::raw2json($statusUpdates));
+    }
+
+    public function CanOrganiseSitetree()
+    {
+        return !Permission::check('SITETREE_REORGANISE') && !Permission::check('ADMIN') ? false : true;
     }
 
     /**
@@ -427,38 +826,36 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function SearchForm()
     {
         // Create the fields
-        $content = new TextField('q[Term]', _t('CMSSearch.FILTERLABELTEXT', 'Search'));
+        $content = new TextField('q[Term]', _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERLABELTEXT', 'Search'));
         $dateFrom = new DateField(
             'q[LastEditedFrom]',
-            _t('CMSSearch.FILTERDATEFROM', 'From')
+            _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERDATEFROM', 'From')
         );
-        $dateFrom->setShowCalendar(true);
         $dateTo = new DateField(
             'q[LastEditedTo]',
-            _t('CMSSearch.FILTERDATETO', 'To')
+            _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERDATETO', 'To')
         );
-        $dateTo->setShowCalendar(true);
         $pageFilter = new DropdownField(
             'q[FilterClass]',
-            _t('CMSMain.PAGES', 'Page status'),
+            _t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGES', 'Page status'),
             CMSSiteTreeFilter::get_all_filters()
         );
         $pageClasses = new DropdownField(
             'q[ClassName]',
-            _t('CMSMain.PAGETYPEOPT', 'Page type', 'Dropdown for limiting search to a page type'),
+            _t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGETYPEOPT', 'Page type', 'Dropdown for limiting search to a page type'),
             $this->getPageTypes()
         );
-        $pageClasses->setEmptyString(_t('CMSMain.PAGETYPEANYOPT', 'Any'));
+        $pageClasses->setEmptyString(_t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGETYPEANYOPT', 'Any'));
 
         // Group the Datefields
         $dateGroup = new FieldGroup(
             $dateFrom,
             $dateTo
         );
-        $dateGroup->setTitle(_t('CMSSearch.PAGEFILTERDATEHEADING', 'Last edited'));
+        $dateGroup->setTitle(_t('SilverStripe\\CMS\\Search\\SearchForm.PAGEFILTERDATEHEADING', 'Last edited'));
 
         // view mode
-        $viewMode = HiddenField::create('view', false, $this->ViewState());
+        $viewMode = HiddenField::create('view', false, $this->ViewState('listview'));
 
         // Create the Field list
         $fields = new FieldList(
@@ -471,9 +868,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         // Create the Search and Reset action
         $actions = new FieldList(
-            FormAction::create('doSearch', _t('CMSMain_left_ss.APPLY_FILTER', 'Search'))
+            FormAction::create('doSearch', _t('SilverStripe\\CMS\\Controllers\\CMSMain.APPLY_FILTER', 'Search'))
                 ->addExtraClass('btn btn-primary'),
-            ResetFormAction::create('clear', _t('CMSMain_left_ss.CLEAR_FILTER', 'Clear'))
+            FormAction::create('clear', _t('SilverStripe\\CMS\\Controllers\\CMSMain.CLEAR_FILTER', 'Clear'))
+                ->setAttribute('type', 'reset')
                 ->addExtraClass('btn btn-secondary')
         );
 
@@ -489,7 +887,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $form = Form::create($this, 'SearchForm', $fields, $actions)
             ->addExtraClass('cms-search-form')
             ->setFormMethod('GET')
-            ->setFormAction($this->Link())
+            ->setFormAction(CMSMain::singleton()->Link())
             ->disableSecurityToken()
             ->unsetValidator();
 
@@ -556,7 +954,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         // Generate basic cache key. Too complex to encompass all variations
         $cache = Injector::inst()->get(CacheInterface::class . '.CMSMain_SiteTreeHints');
-        $cacheKey = md5(implode('_', array(Member::currentUserID(), implode(',', $cacheCanCreate), implode(',', $classes))));
+        $cacheKey = md5(implode('_', array(Security::getCurrentUser()->ID, implode(',', $cacheCanCreate), implode(',', $classes))));
         if ($this->getRequest()->getVar('flush')) {
             $cache->clear();
         }
@@ -582,8 +980,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 );
 
                 // Check if can be created at the root
-                $needsPerm = $obj->stat('need_permission');
-                if (!$obj->stat('can_be_root')
+                $needsPerm = $obj->config()->get('need_permission');
+                if (!$obj->config()->get('can_be_root')
                     || (!array_key_exists($class, $cacheCanCreate) || !$cacheCanCreate[$class])
                     || ($needsPerm && !$this->can($needsPerm))
                 ) {
@@ -631,19 +1029,19 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             }
 
             // skip this type if it is restricted
-            if ($instance->stat('need_permission') && !$this->can(singleton($class)->stat('need_permission'))) {
+            if ($instance->config()->get('need_permission') && !$this->can(singleton($class)->config()->get('need_permission'))) {
                 continue;
             }
 
             $singularName = $instance->i18n_singular_name();
-            $description = $instance->i18n_description();
+            $description = $instance->i18n_classDescription();
 
             $result->push(new ArrayData(array(
                 'ClassName' => $class,
                 'AddAction' => $singularName,
                 'Description' => $description,
                 // TODO Sprite support
-                'IconURL' => $instance->stat('icon'),
+                'IconURL' => $instance->config()->get('icon'),
                 'Title' => $singularName,
             )));
         }
@@ -662,55 +1060,72 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     public function getRecord($id, $versionID = null)
     {
-        $treeClass = $this->stat('tree_class');
-
+        if (!$id) {
+            return null;
+        }
+        $treeClass = $this->config()->get('tree_class');
         if ($id instanceof $treeClass) {
             return $id;
-        } elseif ($id && is_numeric($id)) {
-            $currentStage = Versioned::get_reading_mode();
-
-            if ($this->getRequest()->getVar('Version')) {
-                $versionID = (int) $this->getRequest()->getVar('Version');
-            }
-
-            if ($versionID) {
-                $record = Versioned::get_version($treeClass, $id, $versionID);
-            } else {
-                $record = DataObject::get_by_id($treeClass, $id);
-            }
-
-            // Then, try getting a record from the live site
-            if (!$record) {
-                // $record = Versioned::get_one_by_stage($treeClass, "Live", "\"$treeClass\".\"ID\" = $id");
-                Versioned::set_stage(Versioned::LIVE);
-                singleton($treeClass)->flushCache();
-
-                $record = DataObject::get_by_id($treeClass, $id);
-            }
-
-            // Then, try getting a deleted record
-            if (!$record) {
-                $record = Versioned::get_latest_version($treeClass, $id);
-            }
-
-            // Don't open a page from a different locale
-            /** The record's Locale is saved in database in 2.4, and not related with Session,
-             *  we should not check their locale matches the Translatable::get_current_locale,
-             *  here as long as we all the HTTPRequest is init with right locale.
-             *  This bit breaks the all FileIFrameField functions if the field is used in CMS
-             *  and its relevent ajax calles, like loading the tree dropdown for TreeSelectorField.
-             */
-            /* if($record && SiteTree::has_extension('Translatable') && $record->Locale && $record->Locale != Translatable::get_current_locale()) {
-				$record = null;
-			}*/
-
-            // Set the reading mode back to what it was.
-            Versioned::set_reading_mode($currentStage);
-
-            return $record;
-        } elseif (substr($id, 0, 3) == 'new') {
+        }
+        if (substr($id, 0, 3) == 'new') {
             return $this->getNewItem($id);
         }
+        if (!is_numeric($id)) {
+            return null;
+        }
+
+        $currentStage = Versioned::get_reading_mode();
+
+        if ($this->getRequest()->getVar('Version')) {
+            $versionID = (int) $this->getRequest()->getVar('Version');
+        }
+
+        /** @var SiteTree $record */
+        if ($versionID) {
+            $record = Versioned::get_version($treeClass, $id, $versionID);
+        } else {
+            $record = DataObject::get_by_id($treeClass, $id);
+        }
+
+        // Then, try getting a record from the live site
+        if (!$record) {
+            // $record = Versioned::get_one_by_stage($treeClass, "Live", "\"$treeClass\".\"ID\" = $id");
+            Versioned::set_stage(Versioned::LIVE);
+            singleton($treeClass)->flushCache();
+
+            $record = DataObject::get_by_id($treeClass, $id);
+        }
+
+        // Then, try getting a deleted record
+        if (!$record) {
+            $record = Versioned::get_latest_version($treeClass, $id);
+        }
+
+        // Set the reading mode back to what it was.
+        Versioned::set_reading_mode($currentStage);
+
+        return $record;
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @param HTTPRequest $request
+     * @return Form
+     */
+    public function EditForm($request = null)
+    {
+        // set page ID from request
+        if ($request) {
+            // Validate id is present
+            $id = $request->param('ID');
+            if (!isset($id)) {
+                $this->httpError(400);
+                return null;
+            }
+            $this->setCurrentPageID($id);
+        }
+        return $this->getEditForm();
     }
 
     /**
@@ -720,138 +1135,210 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     public function getEditForm($id = null, $fields = null)
     {
+        // Get record
         if (!$id) {
             $id = $this->currentPageID();
         }
-        $form = parent::getEditForm($id, $fields);
-
-        // TODO Duplicate record fetching (see parent implementation)
+        /** @var SiteTree $record */
         $record = $this->getRecord($id);
-        if ($record && !$record->canView()) {
-            return Security::permissionFailure($this);
+
+        // Check parent form can be generated
+        $form = parent::getEditForm($record, $fields);
+        if (!$form || !$record) {
+            return $form;
         }
 
         if (!$fields) {
             $fields = $form->Fields();
         }
-        $actions = $form->Actions();
 
-        if ($record) {
-            $deletedFromStage = !$record->isOnDraft();
+        // Add extra fields
+        $deletedFromStage = !$record->isOnDraft();
+        $fields->push($idField = new HiddenField("ID", false, $id));
+        // Necessary for different subsites
+        $fields->push($liveLinkField = new HiddenField("AbsoluteLink", false, $record->AbsoluteLink()));
+        $fields->push($liveLinkField = new HiddenField("LiveLink"));
+        $fields->push($stageLinkField = new HiddenField("StageLink"));
+        $fields->push($archiveWarningMsgField = new HiddenField("ArchiveWarningMessage"));
+        $fields->push(new HiddenField("TreeTitle", false, $record->getTreeTitle()));
 
-            $fields->push($idField = new HiddenField("ID", false, $id));
-            // Necessary for different subsites
-            $fields->push($liveLinkField = new HiddenField("AbsoluteLink", false, $record->AbsoluteLink()));
-            $fields->push($liveLinkField = new HiddenField("LiveLink"));
-            $fields->push($stageLinkField = new HiddenField("StageLink"));
-            $fields->push(new HiddenField("TreeTitle", false, $record->TreeTitle));
+        $archiveWarningMsgField->setValue($this->getArchiveWarningMessage($record));
 
-            if ($record->ID && is_numeric($record->ID)) {
-                $liveLink = $record->getAbsoluteLiveLink();
-                if ($liveLink) {
-                    $liveLinkField->setValue($liveLink);
-                }
-                if (!$deletedFromStage) {
-                    $stageLink = Controller::join_links($record->AbsoluteLink(), '?stage=Stage');
-                    if ($stageLink) {
-                        $stageLinkField->setValue($stageLink);
-                    }
-                }
+        // Build preview / live links
+        $liveLink = $record->getAbsoluteLiveLink();
+        if ($liveLink) {
+            $liveLinkField->setValue($liveLink);
+        }
+        if (!$deletedFromStage) {
+            $stageLink = Controller::join_links($record->AbsoluteLink(), '?stage=Stage');
+            if ($stageLink) {
+                $stageLinkField->setValue($stageLink);
             }
+        }
 
-            // Added in-line to the form, but plucked into different view by LeftAndMain.Preview.js upon load
-            /** @skipUpgrade */
-            if ($record instanceof CMSPreviewable && !$fields->fieldByName('SilverStripeNavigator')) {
-                $navField = new LiteralField('SilverStripeNavigator', $this->getSilverStripeNavigator());
-                $navField->setAllowHTML(true);
-                $fields->push($navField);
-            }
+        // Added in-line to the form, but plucked into different view by LeftAndMain.Preview.js upon load
+        /** @skipUpgrade */
+        if ($record instanceof CMSPreviewable && !$fields->fieldByName('SilverStripeNavigator')) {
+            $navField = new LiteralField('SilverStripeNavigator', $this->getSilverStripeNavigator());
+            $navField->setAllowHTML(true);
+            $fields->push($navField);
+        }
 
-            // getAllCMSActions can be used to completely redefine the action list
-            if ($record->hasMethod('getAllCMSActions')) {
-                $actions = $record->getAllCMSActions();
-            } else {
-                $actions = $record->getCMSActions();
+        // getAllCMSActions can be used to completely redefine the action list
+        if ($record->hasMethod('getAllCMSActions')) {
+            $actions = $record->getAllCMSActions();
+        } else {
+            $actions = $record->getCMSActions();
 
-                // Find and remove action menus that have no actions.
-                if ($actions && $actions->count()) {
-                    /** @var TabSet $tabset */
-                    $tabset = $actions->fieldByName('ActionMenus');
-                    if ($tabset) {
-                        foreach ($tabset->getChildren() as $tab) {
-                            if (!$tab->getChildren()->count()) {
-                                $tabset->removeByName($tab->getName());
-                            }
+            // Find and remove action menus that have no actions.
+            if ($actions && $actions->count()) {
+                /** @var TabSet $tabset */
+                $tabset = $actions->fieldByName('ActionMenus');
+                if ($tabset) {
+                    /** @var Tab $tab */
+                    foreach ($tabset->getChildren() as $tab) {
+                        if (!$tab->getChildren()->count()) {
+                            $tabset->removeByName($tab->getName());
                         }
                     }
                 }
             }
-
-            // Use <button> to allow full jQuery UI styling
-            $actionsFlattened = $actions->dataFields();
-            if ($actionsFlattened) {
-                /** @var FormAction $action */
-                foreach ($actionsFlattened as $action) {
-                    $action->setUseButtonTag(true);
-                }
-            }
-
-            if ($record->hasMethod('getCMSValidator')) {
-                $validator = $record->getCMSValidator();
-            } else {
-                $validator = new RequiredFields();
-            }
-
-            // TODO Can't merge $FormAttributes in template at the moment
-            $form->addExtraClass('center ' . $this->BaseCSSClasses());
-            // Set validation exemptions for specific actions
-            $form->setValidationExemptActions(array('restore', 'revert', 'deletefromlive', 'delete', 'unpublish', 'rollback', 'doRollback'));
-
-            // Announce the capability so the frontend can decide whether to allow preview or not.
-            if ($record instanceof CMSPreviewable) {
-                $form->addExtraClass('cms-previewable');
-            }
-            $form->addExtraClass('fill-height flexbox-area-grow');
-
-            if (!$record->canEdit() || $deletedFromStage) {
-                $readonlyFields = $form->Fields()->makeReadonly();
-                $form->setFields($readonlyFields);
-            }
-
-            $form->Fields()->setForm($form);
-
-            $this->extend('updateEditForm', $form);
-            return $form;
-        } elseif ($id) {
-            $form = Form::create($this, "EditForm", new FieldList(
-                new LabelField('PageDoesntExistLabel', _t('CMSMain.PAGENOTEXISTS', "This page doesn't exist"))
-            ), new FieldList())->setHTMLID('Form_EditForm');
-            return $form;
         }
+
+        // Use <button> to allow full jQuery UI styling
+        $actionsFlattened = $actions->dataFields();
+        if ($actionsFlattened) {
+            /** @var FormAction $action */
+            foreach ($actionsFlattened as $action) {
+                $action->setUseButtonTag(true);
+            }
+        }
+
+        // TODO Can't merge $FormAttributes in template at the moment
+        $form->addExtraClass('center ' . $this->BaseCSSClasses());
+        // Set validation exemptions for specific actions
+        $form->setValidationExemptActions(array(
+            'restore',
+            'revert',
+            'deletefromlive',
+            'delete',
+            'unpublish',
+            'rollback',
+            'doRollback',
+            'archive',
+        ));
+
+        // Announce the capability so the frontend can decide whether to allow preview or not.
+        if ($record instanceof CMSPreviewable) {
+            $form->addExtraClass('cms-previewable');
+        }
+        $form->addExtraClass('fill-height flexbox-area-grow');
+
+        if (!$record->canEdit() || $deletedFromStage) {
+            $readonlyFields = $form->Fields()->makeReadonly();
+            $form->setFields($readonlyFields);
+        }
+
+        $form->Fields()->setForm($form);
+
+        $this->extend('updateEditForm', $form);
+
+        // Use custom reqest handler for LeftAndMain requests;
+        // CMS Forms cannot be identified solely by name, but also need ID (and sometimes OtherID)
+        $form->setRequestHandler(
+            LeftAndMainFormRequestHandler::create($form, [$id])
+        );
+        return $form;
+    }
+
+    public function EmptyForm()
+    {
+        $fields = new FieldList(
+            new LabelField('PageDoesntExistLabel', _t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGENOTEXISTS', "This page doesn't exist"))
+        );
+        $form = parent::EmptyForm();
+        $form->setFields($fields);
+        $fields->setForm($form);
+        return $form;
     }
 
     /**
+     * Build an archive warning message based on the page's children
+     *
+     * @param SiteTree $record
+     * @return string
+     */
+    protected function getArchiveWarningMessage($record)
+    {
+        // Get all page's descendants
+        $record->collateDescendants(true, $descendants);
+        if (!$descendants) {
+            $descendants = [];
+        }
+
+        // Get all campaigns that the page and its descendants belong to
+        $inChangeSetIDs = ChangeSetItem::get_for_object($record)->column('ChangeSetID');
+
+        foreach ($descendants as $page) {
+            $inChangeSetIDs = array_merge($inChangeSetIDs, ChangeSetItem::get_for_object($page)->column('ChangeSetID'));
+        }
+
+        if (count($inChangeSetIDs) > 0) {
+            $inChangeSets = ChangeSet::get()->filter(['ID' => $inChangeSetIDs, 'State' => ChangeSet::STATE_OPEN]);
+        } else {
+            $inChangeSets = new ArrayList();
+        }
+
+        $numCampaigns = ChangeSet::singleton()->i18n_pluralise($inChangeSets->count());
+        $numCampaigns = mb_strtolower($numCampaigns);
+
+        if (count($descendants) > 0 && $inChangeSets->count() > 0) {
+            $archiveWarningMsg = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarningWithChildrenAndCampaigns', 'Warning: This page and all of its child pages will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?', [ 'NumCampaigns' => $numCampaigns ]);
+        } elseif (count($descendants) > 0) {
+            $archiveWarningMsg = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarningWithChildren', 'Warning: This page and all of its child pages will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?');
+        } elseif ($inChangeSets->count() > 0) {
+            $archiveWarningMsg = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarningWithCampaigns', 'Warning: This page will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?', [ 'NumCampaigns' => $numCampaigns ]);
+        } else {
+            $archiveWarningMsg = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarning', 'Warning: This page will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?');
+        }
+
+        return $archiveWarningMsg;
+    }
+
+    /**
+     * This method exclusively handles deferred ajax requests to render the
+     * pages tree deferred handler (no pjax-fragment)
+     *
      * @param HTTPRequest $request
      * @return string HTML
      */
     public function treeview($request)
     {
-        return $this->getResponseNegotiator()->respond($request);
+        // Ensure selected page ID is highlighted
+        $pageID = $request->param('ID') ?: 0;
+        $this->setCurrentPageID($pageID);
+        return $this->renderWith($this->getTemplatesWithSuffix('_TreeView'));
     }
 
     /**
+     * Note: This method exclusively handles top level view of list view
+     *
      * @param HTTPRequest $request
      * @return string HTML
      */
     public function listview($request)
     {
+        // Ensure selected page ID is highlighted
+        $pageID = $request->param('ParentID') ?: 0;
+        $this->setCurrentPageID($pageID);
         return $this->getResponseNegotiator()->respond($request);
     }
 
     /**
+     * @param string $default
      * @return string
      */
-    public function ViewState()
+    public function ViewState($default = 'treeview')
     {
         $mode = $this->getRequest()->requestVar('view')
             ?: $this->getRequest()->param('Action');
@@ -860,7 +1347,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             case 'treeview':
                 return $mode;
             default:
-                return 'treeview';
+                return $default;
         }
     }
 
@@ -915,7 +1402,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             return null;
         }
         $filterClass = $params['FilterClass'];
-        if (!is_subclass_of($filterClass, 'SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter')) {
+        if (!is_subclass_of($filterClass, CMSSiteTreeFilter::class)) {
             throw new InvalidArgumentException("Invalid filter class passed: {$filterClass}");
         }
         return $filterClass::create($params);
@@ -936,7 +1423,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if ($filter = $this->getQueryFilter($params)) {
             return $filter->getFilteredPages();
         } else {
-            $list = DataList::create($this->stat('tree_class'));
+            $list = DataList::create($this->config()->get('tree_class'));
             $parentID = is_numeric($parentID) ? $parentID : 0;
             return $list->filter("ParentID", $parentID);
         }
@@ -948,15 +1435,15 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function ListViewForm()
     {
         $params = $this->getRequest()->requestVar('q');
-        $list = $this->getList($params, $parentID = $this->getRequest()->requestVar('ParentID'));
+        $parentID = $this->getRequest()->param('ParentID');
+        $list = $this->getList($params, $parentID);
         $gridFieldConfig = GridFieldConfig::create()->addComponents(
             new GridFieldSortableHeader(),
             new GridFieldDataColumns(),
             new GridFieldPaginator($this->config()->get('page_length'))
         );
         if ($parentID) {
-            $linkSpec = $this->Link();
-            $linkSpec = $linkSpec . (strstr($linkSpec, '?') ? '&' : '?') . 'ParentID=%d&view=listview';
+            $linkSpec = $this->LinkListViewChildren('%d');
             $gridFieldConfig->addComponent(
                 GridFieldLevelup::create($parentID)
                     ->setLinkSpec($linkSpec)
@@ -969,9 +1456,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         // Don't allow navigating into children nodes on filtered lists
         $fields = array(
-            'getTreeTitle' => _t('SiteTree.PAGETITLE', 'Page Title'),
-            'singular_name' => _t('SiteTree.PAGETYPE', 'Page Type'),
-            'LastEdited' => _t('SiteTree.LASTUPDATED', 'Last Updated'),
+            'getTreeTitle' => _t('SilverStripe\\CMS\\Model\\SiteTree.PAGETITLE', 'Page Title'),
+            'singular_name' => _t('SilverStripe\\CMS\\Model\\SiteTree.PAGETYPE', 'Page Type'),
+            'LastEdited' => _t('SilverStripe\\CMS\\Model\\SiteTree.LASTUPDATED', 'Last Updated'),
         );
         /** @var GridFieldSortableHeader $sortableHeader */
         $sortableHeader = $gridField->getConfig()->getComponentByType('SilverStripe\\Forms\\GridField\\GridFieldSortableHeader');
@@ -997,16 +1484,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 if ($num) {
                     return sprintf(
                         '<a class="btn btn-secondary btn--no-text btn--icon-large font-icon-right-dir cms-panel-link list-children-link" data-pjax-target="ListViewForm,Breadcrumbs" href="%s"><span class="sr-only">%s child pages</span></a>',
-                        Controller::join_links(
-                            $controller->Link(),
-                            sprintf("?ParentID=%d&view=listview", (int)$item->ID)
-                        ),
+                        $this->LinkListViewChildren((int)$item->ID),
                         $num
                     );
                 }
             },
             'getTreeTitle' => function ($value, &$item) use ($controller) {
-                return sprintf(
+                $title = sprintf(
                     '<a class="action-detail" href="%s">%s</a>',
                     Controller::join_links(
                         CMSPageEditController::singleton()->Link('show'),
@@ -1014,6 +1498,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                     ),
                     $item->TreeTitle // returns HTML, does its own escaping
                 );
+                $breadcrumbs = $item->Breadcrumbs(20, true, false, true, '/');
+                // Remove item's tile
+                $breadcrumbs = preg_replace('/[^\/]+$/', '', trim($breadcrumbs));
+                // Trim spaces around delimiters
+                $breadcrumbs = preg_replace('/\s?\/\s?/', '/', trim($breadcrumbs));
+                return $title . sprintf('<p class="small cms-list__item-breadcrumbs">%s</p>', $breadcrumbs);
             }
         ));
 
@@ -1065,7 +1555,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     public function save($data, $form)
     {
-        $className = $this->stat('tree_class');
+        $className = $this->config()->get('tree_class');
 
         // Existing or new record?
         $id = $data['ID'];
@@ -1115,13 +1605,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if ($doPublish) {
             $record->publishRecursive();
             $message = _t(
-                'CMSMain.PUBLISHED',
+                'SilverStripe\\CMS\\Controllers\\CMSMain.PUBLISHED',
                 "Published '{title}' successfully.",
                 ['title' => $record->Title]
             );
         } else {
             $message = _t(
-                'CMSMain.SAVED',
+                'SilverStripe\\CMS\\Controllers\\CMSMain.SAVED',
                 "Saved '{title}' successfully.",
                 ['title' => $record->Title]
             );
@@ -1141,8 +1631,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     public function getNewItem($id, $setID = true)
     {
-        $parentClass = $this->stat('tree_class');
-        list($dummy, $className, $parentID, $suffix) = array_pad(explode('-', $id), 4, null);
+        $parentClass = $this->config()->get('tree_class');
+        list(, $className, $parentID) = array_pad(explode('-', $id), 3, null);
 
         if (!is_a($className, $parentClass, true)) {
             $response = Security::permissionFailure($this);
@@ -1154,20 +1644,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         /** @var SiteTree $newItem */
         $newItem = Injector::inst()->create($className);
-        if (!$suffix) {
-            $sessionTag = "NewItems." . $parentID . "." . $className;
-            if (Session::get($sessionTag)) {
-                $suffix = '-' . Session::get($sessionTag);
-                Session::set($sessionTag, Session::get($sessionTag) + 1);
-            } else {
-                Session::set($sessionTag, 1);
-            }
-
-                $id = $id . $suffix;
-        }
-
         $newItem->Title = _t(
-            'CMSMain.NEWPAGE',
+            'SilverStripe\\CMS\\Controllers\\CMSMain.NEWPAGE',
             "New {pagetype}",
             'followed by a page type title',
             array('pagetype' => singleton($className)->i18n_singular_name())
@@ -1178,10 +1656,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         // DataObject::fieldExists only checks the current class, not the hierarchy
         // This allows the CMS to set the correct sort value
         if ($newItem->castingHelper('Sort')) {
-            $newItem->Sort = DB::prepared_query('SELECT MAX("Sort") FROM "SiteTree" WHERE "ParentID" = ?', array($parentID))->value() + 1;
+            $maxSort = DB::prepared_query(
+                'SELECT MAX("Sort") FROM "SiteTree" WHERE "ParentID" = ?',
+                array($parentID)
+            )->value();
+            $newItem->Sort = (int)$maxSort + 1;
         }
 
-        if ($setID) {
+        if ($setID && $id) {
             $newItem->ID = $id;
         }
 
@@ -1249,9 +1731,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $this->getResponse()->addHeader(
             'X-Status',
             rawurlencode(_t(
-                'CMSMain.RESTORED',
+                'SilverStripe\\CMS\\Controllers\\CMSMain.RESTORED',
                 "Restored '{title}' successfully",
-                'Param %s is a title',
+                'Param {title} is a title',
                 array('title' => $record->Title)
             ))
         );
@@ -1285,7 +1767,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         $this->getResponse()->addHeader(
             'X-Status',
-            rawurlencode(sprintf(_t('CMSMain.REMOVEDPAGEFROMDRAFT', "Removed '%s' from the draft site"), $record->Title))
+            rawurlencode(_t(
+                __CLASS__ . '.REMOVEDPAGEFROMDRAFT',
+                "Removed '{title}' from the draft site",
+                ['title' => $record->Title]
+            ))
         );
 
         // Even if the record has been deleted from stage and live, it can be viewed in "archive mode"
@@ -1317,7 +1803,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         $this->getResponse()->addHeader(
             'X-Status',
-            rawurlencode(sprintf(_t('CMSMain.ARCHIVEDPAGE', "Archived page '%s'"), $record->Title))
+            rawurlencode(_t(
+                __CLASS__ . '.ARCHIVEDPAGE',
+                "Archived page '{title}'",
+                ['title' => $record->Title]
+            ))
         );
 
         // Even if the record has been deleted from stage and live, it can be viewed in "archive mode"
@@ -1333,7 +1823,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
     public function unpublish($data, $form)
     {
-        $className = $this->stat('tree_class');
+        $className = $this->config()->get('tree_class');
         /** @var SiteTree $record */
         $record = DataObject::get_by_id($className, $data['ID']);
 
@@ -1348,7 +1838,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         $this->getResponse()->addHeader(
             'X-Status',
-            rawurlencode(_t('CMSMain.REMOVEDPAGE', "Removed '{title}' from the published site", array('title' => $record->Title)))
+            rawurlencode(_t('SilverStripe\\CMS\\Controllers\\CMSMain.REMOVEDPAGE', "Removed '{title}' from the published site", array('title' => $record->Title)))
         );
 
         return $this->getResponseNegotiator()->respond($this->getRequest());
@@ -1380,7 +1870,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $version = (isset($data['Version'])) ? (int) $data['Version'] : null;
 
         /** @var DataObject|Versioned $record */
-        $record = DataObject::get_by_id($this->stat('tree_class'), $id);
+        $record = DataObject::get_by_id($this->config()->get('tree_class'), $id);
         if ($record && !$record->canEdit()) {
             return Security::permissionFailure($this);
         }
@@ -1388,14 +1878,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if ($version) {
             $record->doRollbackTo($version);
             $message = _t(
-                'CMSMain.ROLLEDBACKVERSIONv2',
-                "Rolled back to version #%d.",
+                __CLASS__ . '.ROLLEDBACKVERSIONv2',
+                "Rolled back to version #{version}.",
                 array('version' => $data['Version'])
             );
         } else {
             $record->doRevertToLive();
             $message = _t(
-                'CMSMain.ROLLEDBACKPUBv2',
+                __CLASS__ . '.ROLLEDBACKPUBv2',
                 "Rolled back to published version."
             );
         }
@@ -1457,8 +1947,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             return Security::permissionFailure($this);
         }
 
-        increase_time_limit_to();
-        increase_memory_limit_to();
+        Environment::increaseTimeLimitTo();
+        Environment::increaseMemoryLimitTo();
 
         $response = "";
 
@@ -1491,7 +1981,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                     break;
                 }
             }
-            $response .= _t('CMSMain.PUBPAGES', "Done: Published {count} pages", array('count' => $count));
+            $response .= _t('SilverStripe\\CMS\\Controllers\\CMSMain.PUBPAGES', "Done: Published {count} pages", array('count' => $count));
         } else {
             $token = SecurityToken::inst();
             $fields = new FieldList();
@@ -1499,16 +1989,16 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             $tokenField = $fields->first();
             $tokenHtml = ($tokenField) ? $tokenField->FieldHolder() : '';
             $publishAllDescription = _t(
-                'CMSMain.PUBALLFUN2',
+                'SilverStripe\\CMS\\Controllers\\CMSMain.PUBALLFUN2',
                 'Pressing this button will do the equivalent of going to every page and pressing "publish".  '
                 . 'It\'s intended to be used after there have been massive edits of the content, such as when '
                 . 'the site was first built.'
             );
-            $response .= '<h1>' . _t('CMSMain.PUBALLFUN', '"Publish All" functionality') . '</h1>
+            $response .= '<h1>' . _t('SilverStripe\\CMS\\Controllers\\CMSMain.PUBALLFUN', '"Publish All" functionality') . '</h1>
 				<p>' . $publishAllDescription . '</p>
 				<form method="post" action="publishall">
 					<input type="submit" name="confirm" value="'
-                    . _t('CMSMain.PUBALLCONFIRM', "Please publish every page in the site, copying content stage to live", 'Confirmation button') .'" />'
+                    . _t('SilverStripe\\CMS\\Controllers\\CMSMain.PUBALLCONFIRM', "Please publish every page in the site, copying content stage to live", 'Confirmation button') .'" />'
                     . $tokenHtml .
                 '</form>';
         }
@@ -1541,7 +2031,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $this->getResponse()->addHeader(
             'X-Status',
             rawurlencode(_t(
-                'CMSMain.RESTORED',
+                'SilverStripe\\CMS\\Controllers\\CMSMain.RESTORED',
                 "Restored '{title}' successfully",
                 array('title' => $restoredPage->Title)
             ))
@@ -1578,7 +2068,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             $this->getResponse()->addHeader(
                 'X-Status',
                 rawurlencode(_t(
-                    'CMSMain.DUPLICATED',
+                    'SilverStripe\\CMS\\Controllers\\CMSMain.DUPLICATED',
                     "Duplicated '{title}' successfully",
                     array('title' => $newPage->Title)
                 ))
@@ -1600,7 +2090,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if (!SecurityToken::inst()->checkRequest($request)) {
             return $this->httpError(400);
         }
-        increase_time_limit_to();
+        Environment::increaseTimeLimitTo();
         if (($id = $this->urlParams['ID']) && is_numeric($id)) {
             /** @var SiteTree $page */
             $page = SiteTree::get()->byID($id);
@@ -1616,7 +2106,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             $this->getResponse()->addHeader(
                 'X-Status',
                 rawurlencode(_t(
-                    'CMSMain.DUPLICATEDWITHCHILDREN',
+                    'SilverStripe\\CMS\\Controllers\\CMSMain.DUPLICATEDWITHCHILDREN',
                     "Duplicated '{title}' and children successfully",
                     array('title' => $newPage->Title)
                 ))
@@ -1637,14 +2127,26 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $title = CMSPagesController::menu_title();
         return array(
             "CMS_ACCESS_CMSMain" => array(
-                'name' => _t('CMSMain.ACCESS', "Access to '{title}' section", array('title' => $title)),
-                'category' => _t('Permission.CMS_ACCESS_CATEGORY', 'CMS Access'),
+                'name' => _t('SilverStripe\\CMS\\Controllers\\CMSMain.ACCESS', "Access to '{title}' section", array('title' => $title)),
+                'category' => _t('SilverStripe\\Security\\Permission.CMS_ACCESS_CATEGORY', 'CMS Access'),
                 'help' => _t(
-                    'CMSMain.ACCESS_HELP',
+                    'SilverStripe\\CMS\\Controllers\\CMSMain.ACCESS_HELP',
                     'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
                 ),
                 'sort' => -99 // below "CMS_ACCESS_LeftAndMain", but above everything else
             )
         );
+    }
+
+    /**
+     * Get title for root CMS node
+     *
+     * @return string
+     */
+    protected function getCMSTreeTitle()
+    {
+        $rootTitle = SiteConfig::current_site_config()->Title;
+        $this->extend('updateCMSTreeTitle', $rootTitle);
+        return $rootTitle;
     }
 }

@@ -1,0 +1,44 @@
+SilverStripe\Security\Group:
+  editors:
+    Title: Editors
+  admins:
+    Title: Administrators
+
+SilverStripe\Security\Permission:
+  admins:
+    Code: VIEW_DRAFT_CONTENT
+    Group: =>SilverStripe\Security\Group.admins
+  editors:
+    Group: =>SilverStripe\Security\Group.editors
+
+SilverStripe\Security\Member:
+  editor:
+    FirstName: Test
+    Surname: Editor
+    Groups: =>SilverStripe\Security\Group.editors
+  admin:
+    FirstName: Test
+    Surname: Administrator
+    Groups: =>SilverStripe\Security\Group.admins
+
+SilverStripe\CMS\Tests\Controllers\ContentControllerTest_Page:
+  root_page:
+    Title: Home Page
+    URLSegment: home
+  second_level_page:
+    Title: Second Level Page
+    URLSegment: second-level
+    Parent: =>SilverStripe\CMS\Tests\Controllers\ContentControllerTest_Page.root_page
+  third_level_page:
+    Title: Third Level Page
+    URLSegment: third-level
+    Parent: =>SilverStripe\CMS\Tests\Controllers\ContentControllerTest_Page.second_level_page
+  third_level_page_2:
+    Title: Third Level Page Two
+    URLSegment: third-level-2
+    Parent: =>SilverStripe\CMS\Tests\Controllers\ContentControllerTest_Page.second_level_page
+  contact_page:
+    Title: Contact Page
+    URLSegment: contact
+    CanViewType: OnlyTheseUsers
+    EditorGroups: =>SilverStripe\Security\Group.admins

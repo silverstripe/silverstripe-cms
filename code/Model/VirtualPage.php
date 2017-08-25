@@ -3,18 +3,21 @@
 namespace SilverStripe\CMS\Model;
 
 use SilverStripe\Core\Convert;
+use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\ReadonlyTransformation;
 use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ValidationResult;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\Security\Member;
 use Page;
 
 /**
  * Virtual Page creates an instance of a  page, with the same fields that the original page had, but readonly.
- * This allows you can have a page in mulitple places in the site structure, with different children without duplicating the content
+ * This allows you can have a page in mulitple places in the site structure, with different children without
+ * duplicating the content.
+ *
  * Note: This Only duplicates $db fields and not the $has_one etc..
  *
  * @method SiteTree CopyContentFrom()
@@ -63,7 +66,7 @@ class VirtualPage extends Page
     );
 
     private static $has_one = array(
-        "CopyContentFrom" => "SilverStripe\\CMS\\Model\\SiteTree",
+        "CopyContentFrom" => SiteTree::class,
     );
 
     private static $owns = array(
@@ -103,8 +106,8 @@ class VirtualPage extends Page
     public function getNonVirtualisedFields()
     {
         return array_merge(
-            VirtualPage::config()->non_virtual_fields,
-            VirtualPage::config()->initially_copied_fields
+            self::config()->non_virtual_fields,
+            self::config()->initially_copied_fields
         );
     }
 
@@ -156,7 +159,9 @@ class VirtualPage extends Page
     public function syncLinkTracking()
     {
         if ($this->CopyContentFromID) {
-            $this->HasBrokenLink = !(bool) DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $this->CopyContentFromID);
+            $this->HasBrokenLink = Versioned::get_by_stage(SiteTree::class, Versioned::DRAFT)
+                    ->filter('ID', $this->CopyContentFromID)
+                    ->count() === 0;
         } else {
             $this->HasBrokenLink = true;
         }
@@ -187,7 +192,11 @@ class VirtualPage extends Page
         }
 
         // Unpublished source
-        if (!Versioned::get_versionnumber_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', $this->CopyContentFromID)) {
+        if (!Versioned::get_versionnumber_by_stage(
+            'SilverStripe\\CMS\\Model\\SiteTree',
+            'Live',
+            $this->CopyContentFromID
+        )) {
             return false;
         }
 
@@ -200,70 +209,71 @@ class VirtualPage extends Page
      */
     public function getCMSFields()
     {
-        $fields = parent::getCMSFields();
+        $this->beforeUpdateCMSFields(function (FieldList $fields) {
+            // Setup the linking to the original page.
+            $copyContentFromField = TreeDropdownField::create(
+                'CopyContentFromID',
+                _t('SilverStripe\\CMS\\Model\\VirtualPage.CHOOSE', "Linked Page"),
+                "SilverStripe\\CMS\\Model\\SiteTree"
+            );
 
-        // Setup the linking to the original page.
-        $copyContentFromField = new TreeDropdownField(
-            "CopyContentFromID",
-            _t('VirtualPage.CHOOSE', "Linked Page"),
-            "SilverStripe\\CMS\\Model\\SiteTree"
-        );
-        // filter doesn't let you select children of virtual pages as as source page
-        //$copyContentFromField->setFilterFunction(create_function('$item', 'return !($item instanceof VirtualPage);'));
-
-        // Setup virtual fields
-        if ($virtualFields = $this->getVirtualFields()) {
-            $roTransformation = new ReadonlyTransformation();
-            foreach ($virtualFields as $virtualField) {
-                if ($fields->dataFieldByName($virtualField)) {
-                    $fields->replaceField($virtualField, $fields->dataFieldByName($virtualField)->transform($roTransformation));
+            // Setup virtual fields
+            if ($virtualFields = $this->getVirtualFields()) {
+                $roTransformation = new ReadonlyTransformation();
+                foreach ($virtualFields as $virtualField) {
+                    if ($fields->dataFieldByName($virtualField)) {
+                        $fields->replaceField(
+                            $virtualField,
+                            $fields->dataFieldByName($virtualField)->transform($roTransformation)
+                        );
+                    }
                 }
             }
-        }
 
-        $msgs = array();
+            $msgs = array();
 
-        $fields->addFieldToTab("Root.Main", $copyContentFromField, "Title");
+            $fields->addFieldToTab('Root.Main', $copyContentFromField, 'Title');
 
-        // Create links back to the original object in the CMS
-        if ($this->CopyContentFrom()->exists()) {
-            $link = "<a class=\"cmsEditlink\" href=\"admin/pages/edit/show/$this->CopyContentFromID\">"
-                . _t('VirtualPage.EditLink', 'edit')
-                . "</a>";
-            $msgs[] = _t(
-                'VirtualPage.HEADERWITHLINK',
-                "This is a virtual page copying content from \"{title}\" ({link})",
-                array(
-                    'title' => $this->CopyContentFrom()->obj('Title'),
-                    'link' => $link
-                )
-            );
-        } else {
-            $msgs[] = _t('VirtualPage.HEADER', "This is a virtual page");
-            $msgs[] = _t(
-                'SITETREE.VIRTUALPAGEWARNING',
-                'Please choose a linked page and save first in order to publish this page'
-            );
-        }
-        if ($this->CopyContentFromID
-            && !Versioned::get_versionnumber_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', $this->CopyContentFromID)
-        ) {
-            $msgs[] = _t(
-                'SITETREE.VIRTUALPAGEDRAFTWARNING',
-                'Please publish the linked page in order to publish the virtual page'
-            );
-        }
+            // Create links back to the original object in the CMS
+            if ($this->CopyContentFrom()->exists()) {
+                $link = "<a class=\"cmsEditlink\" href=\"admin/pages/edit/show/$this->CopyContentFromID\">" . _t(
+                    'SilverStripe\\CMS\\Model\\VirtualPage.EditLink',
+                    'edit'
+                ) . "</a>";
+                $msgs[] = _t(
+                    'SilverStripe\\CMS\\Model\\VirtualPage.HEADERWITHLINK',
+                    "This is a virtual page copying content from \"{title}\" ({link})",
+                    array(
+                        'title' => $this->CopyContentFrom()->obj('Title'),
+                        'link'  => $link,
+                    )
+                );
+            } else {
+                $msgs[] = _t('SilverStripe\\CMS\\Model\\VirtualPage.HEADER', "This is a virtual page");
+                $msgs[] = _t(
+                    'SilverStripe\\CMS\\Model\\SiteTree.VIRTUALPAGEWARNING',
+                    'Please choose a linked page and save first in order to publish this page'
+                );
+            }
+            if ($this->CopyContentFromID && !Versioned::get_versionnumber_by_stage(
+                SiteTree::class,
+                Versioned::LIVE,
+                $this->CopyContentFromID
+            )
+            ) {
+                $msgs[] = _t(
+                    'SilverStripe\\CMS\\Model\\SiteTree.VIRTUALPAGEDRAFTWARNING',
+                    'Please publish the linked page in order to publish the virtual page'
+                );
+            }
 
-        $fields->addFieldToTab(
-            "Root.Main",
-            new LiteralField(
+            $fields->addFieldToTab("Root.Main", new LiteralField(
                 'VirtualPageMessage',
                 '<div class="message notice">' . implode('. ', $msgs) . '.</div>'
-            ),
-            'CopyContentFromID'
-        );
+            ), 'CopyContentFromID');
+        });
 
-        return $fields;
+        return parent::getCMSFields();
     }
 
     public function onBeforeWrite()
@@ -307,7 +317,7 @@ class VirtualPage extends Page
                     'VirtualPageWarning',
                     '<div class="message notice">'
                      . _t(
-                         'SITETREE.VIRTUALPAGEWARNINGSETTINGS',
+                         'SilverStripe\\CMS\\Model\\SiteTree.VIRTUALPAGEWARNINGSETTINGS',
                          'Please choose a linked page in the main content fields in order to publish'
                      )
                     . '</div>'
@@ -325,10 +335,10 @@ class VirtualPage extends Page
 
         // "Can be root" validation
         $orig = $this->CopyContentFrom();
-        if ($orig && $orig->exists() && !$orig->stat('can_be_root') && !$this->ParentID) {
+        if ($orig && $orig->exists() && !$orig->config()->get('can_be_root') && !$this->ParentID) {
             $result->addError(
                 _t(
-                    'VirtualPage.PageTypNotAllowedOnRoot',
+                    'SilverStripe\\CMS\\Model\\VirtualPage.PageTypNotAllowedOnRoot',
                     'Original page type "{type}" is not allowed on the root level for this virtual page',
                     array('type' => $orig->i18n_singular_name())
                 ),
@@ -354,13 +364,9 @@ class VirtualPage extends Page
         $this->ImageTracking()->setByIDList($this->CopyContentFrom()->ImageTracking()->column('ID'));
     }
 
-    /**
-     * @param string $numChildrenMethod
-     * @return string
-     */
-    public function CMSTreeClasses($numChildrenMethod = "numChildren")
+    public function CMSTreeClasses()
     {
-        return parent::CMSTreeClasses($numChildrenMethod) . ' VirtualPage-' . $this->CopyContentFrom()->ClassName;
+        return parent::CMSTreeClasses() . ' VirtualPage-' . $this->CopyContentFrom()->ClassName;
     }
 
     /**

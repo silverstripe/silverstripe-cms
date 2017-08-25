@@ -10,12 +10,12 @@ class EmptyPagesReport extends Report
 
     public function title()
     {
-        return _t('SideReport.EMPTYPAGES', "Pages with no content");
+        return _t(__CLASS__.'.EMPTYPAGES', "Pages with no content");
     }
 
     public function group()
     {
-        return _t('SideReport.ContentGroupTitle', "Content reports");
+        return _t(__CLASS__.'.ContentGroupTitle', "Content reports");
     }
 
     public function sort()

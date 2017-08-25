@@ -3,8 +3,7 @@
 namespace SilverStripe\CMS\Model;
 
 use Page;
-use SilverStripe\Admin\AddToCampaignHandler_FormAction;
-use SilverStripe\Admin\CMSPreviewable;
+use SilverStripe\CampaignAdmin\AddToCampaignHandler_FormAction;
 use SilverStripe\CMS\Controllers\CMSPageEditController;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\CMS\Controllers\ModelAsController;
@@ -17,6 +16,7 @@ use SilverStripe\Control\RequestHandler;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Convert;
+use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Core\Resettable;
 use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\CheckboxField;
@@ -25,7 +25,6 @@ use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldGroup;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\FormAction;
-use SilverStripe\Forms\FormField;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldDataColumns;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
@@ -41,6 +40,7 @@ use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\i18n\i18n;
 use SilverStripe\i18n\i18nEntityProvider;
 use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
@@ -48,13 +48,18 @@ use SilverStripe\ORM\HiddenClass;
 use SilverStripe\ORM\Hierarchy\Hierarchy;
 use SilverStripe\ORM\ManyManyList;
 use SilverStripe\ORM\ValidationResult;
-use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\Security\Group;
+use SilverStripe\Security\InheritedPermissions;
+use SilverStripe\Security\InheritedPermissionsExtension;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
+use SilverStripe\Security\PermissionChecker;
 use SilverStripe\Security\PermissionProvider;
+use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\ArrayData;
+use SilverStripe\View\HTML;
 use SilverStripe\View\Parsers\ShortcodeParser;
 use SilverStripe\View\Parsers\URLSegmentFilter;
 use SilverStripe\View\SSViewer;
@@ -82,8 +87,6 @@ use Subsite;
  * @property string ShowInSearch
  * @property string Sort Integer value denoting the sort order.
  * @property string ReportClass
- * @property string CanViewType Type of restriction for viewing this object.
- * @property string CanEditType Type of restriction for editing this object.
  *
  * @method ManyManyList ViewerGroups() List of groups that can view this object.
  * @method ManyManyList EditorGroups() List of groups that can edit this object.
@@ -92,6 +95,7 @@ use Subsite;
  * @mixin Hierarchy
  * @mixin Versioned
  * @mixin SiteTreeLinkTracking
+ * @mixin InheritedPermissionsExtension
  */
 class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvider, CMSPreviewable, Resettable
 {
@@ -189,26 +193,23 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         "HasBrokenFile" => "Boolean",
         "HasBrokenLink" => "Boolean",
         "ReportClass" => "Varchar",
-        "CanViewType" => "Enum('Anyone, LoggedInUsers, OnlyTheseUsers, Inherit', 'Inherit')",
-        "CanEditType" => "Enum('LoggedInUsers, OnlyTheseUsers, Inherit', 'Inherit')",
     );
 
     private static $indexes = array(
         "URLSegment" => true,
     );
 
-    private static $many_many = array(
-        "ViewerGroups" => Group::class,
-        "EditorGroups" => Group::class,
-    );
-
     private static $has_many = array(
-        "VirtualPages" => "SilverStripe\\CMS\\Model\\VirtualPage.CopyContentFrom"
+        "VirtualPages" => VirtualPage::class . '.CopyContentFrom'
     );
 
     private static $owned_by = array(
         "VirtualPages"
     );
+
+    private static $cascade_deletes = [
+        'VirtualPages',
+    ];
 
     private static $casting = array(
         "Breadcrumbs" => "HTMLFragment",
@@ -225,8 +226,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     private static $defaults = array(
         "ShowInMenus" => 1,
         "ShowInSearch" => 1,
-        "CanViewType" => "Inherit",
-        "CanEditType" => "Inherit"
     );
 
     private static $table_name = 'SiteTree';
@@ -258,6 +257,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         Hierarchy::class,
         Versioned::class,
         SiteTreeLinkTracking::class,
+        InheritedPermissionsExtension::class,
     ];
 
     private static $searchable_fields = array(
@@ -283,14 +283,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * This controls whether of not extendCMSFields() is called by getCMSFields.
      */
     private static $runCMSFieldsExtensions = true;
-
-    /**
-     * Cache for canView/Edit/Publish/Delete permissions.
-     * Keyed by permission type (e.g. 'edit'), with an array
-     * of IDs mapped to their boolean permission ability (true=allow, false=deny).
-     * See {@link batch_permission_check()} for details.
-     */
-    private static $cache_permissions = array();
 
     /**
      * @config
@@ -328,8 +320,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Description of the class functionality, typically shown to a user
      * when selecting which page type to create. Translated through {@link provideI18nEntities()}.
      *
-     * @see SiteTree::description()
-     * @see SiteTree::i18n_description()
+     * @see SiteTree::classDescription()
+     * @see SiteTree::i18n_classDescription()
      *
      * @config
      * @var string
@@ -340,8 +332,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Description for Page and SiteTree classes, but not inherited by subclasses.
      * override SiteTree::$description in subclasses instead.
      *
-     * @see SiteTree::description()
-     * @see SiteTree::i18n_description()
+     * @see SiteTree::classDescription()
+     * @see SiteTree::i18n_classDescription()
      *
      * @config
      * @var string
@@ -467,7 +459,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $instance = singleton($class);
 
             // do any of the progeny want to hide an ancestor?
-            if ($ancestor_to_hide = $instance->stat('hide_ancestor')) {
+            if ($ancestor_to_hide = $instance->config()->get('hide_ancestor')) {
                 // note for killing later
                 $kill_ancestors[] = $ancestor_to_hide;
             }
@@ -796,7 +788,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             /** @var SiteTree $child */
             $sort = 0;
             foreach ($children as $child) {
-                $childClone = $child->duplicateWithChildren();
+                $childClone = method_exists($child, 'duplicateWithChildren')
+                    ? $child->duplicateWithChildren()
+                    : $child->duplicate();
                 $childClone->ParentID = $clone->ID;
                 //retain sort order by manually setting sort values
                 $childClone->Sort = ++$sort;
@@ -830,13 +824,14 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * @param boolean $showHidden Include pages marked with the attribute ShowInMenus = 0
      * @return string The breadcrumb trail.
      */
-    public function Breadcrumbs($maxDepth = 20, $unlinked = false, $stopAtPageType = false, $showHidden = false)
+    public function Breadcrumbs($maxDepth = 20, $unlinked = false, $stopAtPageType = false, $showHidden = false, $delimiter = '&raquo;')
     {
         $pages = $this->getBreadcrumbItems($maxDepth, $stopAtPageType, $showHidden);
-        $template = new SSViewer('BreadcrumbsTemplate');
+        $template = SSViewer::create('BreadcrumbsTemplate');
         return $template->process($this->customise(new ArrayData(array(
             "Pages" => $pages,
-            "Unlinked" => $unlinked
+            "Unlinked" => $unlinked,
+            "Delimiter" => $delimiter,
         ))));
     }
 
@@ -941,8 +936,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function can($perm, $member = null, $context = array())
     {
-        if (!$member || !($member instanceof Member) || is_numeric($member)) {
-            $member = Member::currentUserID();
+        if (!$member) {
+            $member = Security::getCurrentUser();
         }
 
         if ($member && Permission::checkMember($member, "ADMIN")) {
@@ -987,8 +982,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             return false;
         }
 
-        if (!$member || !($member instanceof Member) || is_numeric($member)) {
-            $member = Member::currentUserID();
+        if (!$member) {
+            $member = Security::getCurrentUser();
         }
 
         // Standard mechanism for accepting permission changes from extensions
@@ -1002,7 +997,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             return true;
         }
 
-        return $this->canEdit($member) && $this->stat('allowed_children') !== 'none';
+        return $this->canEdit($member) && $this->config()->get('allowed_children') !== 'none';
     }
 
     /**
@@ -1018,13 +1013,13 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * @uses DataExtension->canView()
      * @uses ViewerGroups()
      *
-     * @param Member|int $member
+     * @param Member $member
      * @return bool True if the current user can view this page
      */
     public function canView($member = null)
     {
-        if (!$member || !($member instanceof Member) || is_numeric($member)) {
-            $member = Member::currentUserID();
+        if (!$member) {
+            $member = Security::getCurrentUser();
         }
 
         // Standard mechanism for accepting permission changes from extensions
@@ -1043,13 +1038,16 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             return false;
         }
 
+        // Note: getInheritedPermissions() is disused in this instance
+        // to allow parent canView extensions to influence subpage canView()
+
         // check for empty spec
-        if (!$this->CanViewType || $this->CanViewType == 'Anyone') {
+        if (!$this->CanViewType || $this->CanViewType === InheritedPermissions::ANYONE) {
             return true;
         }
 
         // check for inherit
-        if ($this->CanViewType == 'Inherit') {
+        if ($this->CanViewType === InheritedPermissions::INHERIT) {
             if ($this->ParentID) {
                 return $this->Parent()->canView($member);
             } else {
@@ -1058,15 +1056,12 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         // check for any logged-in users
-        if ($this->CanViewType == 'LoggedInUsers' && $member) {
+        if ($this->CanViewType === InheritedPermissions::LOGGED_IN_USERS && $member && $member->ID) {
             return true;
         }
 
         // check for specific groups
-        if ($member && is_numeric($member)) {
-            $member = DataObject::get_by_id('SilverStripe\\Security\\Member', $member);
-        }
-        if ($this->CanViewType == 'OnlyTheseUsers'
+        if ($this->CanViewType === InheritedPermissions::ONLY_THESE_USERS
             && $member
             && $member->inGroups($this->ViewerGroups())
         ) {
@@ -1085,7 +1080,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function canPublish($member = null)
     {
         if (!$member) {
-            $member = Member::currentUser();
+            $member = Security::getCurrentUser();
         }
 
         // Check extension
@@ -1120,31 +1115,28 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function canDelete($member = null)
     {
-        if ($member instanceof Member) {
-            $memberID = $member->ID;
-        } elseif (is_numeric($member)) {
-            $memberID = $member;
-        } else {
-            $memberID = Member::currentUserID();
+        if (!$member) {
+            $member = Security::getCurrentUser();
         }
 
         // Standard mechanism for accepting permission changes from extensions
-        $extended = $this->extendedCan('canDelete', $memberID);
+        $extended = $this->extendedCan('canDelete', $member);
         if ($extended !== null) {
             return $extended;
         }
 
+        if (!$member) {
+            return false;
+        }
+
         // Default permission check
-        if ($memberID && Permission::checkMember($memberID, array("ADMIN", "SITETREE_EDIT_ALL"))) {
+        if (Permission::checkMember($member, array("ADMIN", "SITETREE_EDIT_ALL"))) {
             return true;
         }
 
-        // Regular canEdit logic is handled by can_edit_multiple
-        $results = self::can_delete_multiple(array($this->ID), $memberID);
-
-        // If this page no longer exists in stage/live results won't contain the page.
-        // Fail-over to false
-        return isset($results[$this->ID]) ? $results[$this->ID] : false;
+        // Check inherited permissions
+        return static::getPermissionChecker()
+            ->canDelete($this->ID, $member);
     }
 
     /**
@@ -1167,14 +1159,15 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function canCreate($member = null, $context = array())
     {
-        if (!$member || !(is_a($member, Member::class)) || is_numeric($member)) {
-            $member = Member::currentUserID();
+        if (!$member) {
+            $member = Security::getCurrentUser();
         }
 
         // Check parent (custom canCreate option for SiteTree)
         // Block children not allowed for this parent type
         $parent = isset($context['Parent']) ? $context['Parent'] : null;
-        if ($parent && !in_array(static::class, $parent->allowedChildren())) {
+        $strictParentInstance = ($parent && $parent instanceof SiteTree);
+        if ($strictParentInstance && !in_array(static::class, $parent->allowedChildren())) {
             return false;
         }
 
@@ -1190,7 +1183,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         // Fall over to inherited permissions
-        if ($parent && $parent->exists()) {
+        if ($strictParentInstance && $parent->exists()) {
             return $parent->canAddChildren($member);
         } else {
             // This doesn't necessarily mean we are creating a root page, but that
@@ -1221,37 +1214,24 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function canEdit($member = null)
     {
-        if ($member instanceof Member) {
-            $memberID = $member->ID;
-        } elseif (is_numeric($member)) {
-            $memberID = $member;
-        } else {
-            $memberID = Member::currentUserID();
+        if (!$member) {
+            $member = Security::getCurrentUser();
         }
 
         // Standard mechanism for accepting permission changes from extensions
-        $extended = $this->extendedCan('canEdit', $memberID);
+        $extended = $this->extendedCan('canEdit', $member);
         if ($extended !== null) {
             return $extended;
         }
 
         // Default permissions
-        if ($memberID && Permission::checkMember($memberID, array("ADMIN", "SITETREE_EDIT_ALL"))) {
+        if (Permission::checkMember($member, "SITETREE_EDIT_ALL")) {
             return true;
         }
 
-        if ($this->ID) {
-            // Regular canEdit logic is handled by can_edit_multiple
-            $results = self::can_edit_multiple(array($this->ID), $memberID);
-
-            // If this page no longer exists in stage/live results won't contain the page.
-            // Fail-over to false
-            return isset($results[$this->ID]) ? $results[$this->ID] : false;
-
-        // Default for unsaved pages
-        } else {
-            return $this->getSiteConfig()->canEditPages($member);
-        }
+        // Check inherited permissions
+        return static::getPermissionChecker()
+            ->canEdit($this->ID, $member);
     }
 
     /**
@@ -1270,265 +1250,11 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
-     * Pre-populate the cache of canEdit, canView, canDelete, canPublish permissions. This method will use the static
-     * can_(perm)_multiple method for efficiency.
-     *
-     * @param string          $permission    The permission: edit, view, publish, approve, etc.
-     * @param array           $ids           An array of page IDs
-     * @param callable|string $batchCallback The function/static method to call to calculate permissions.  Defaults
-     *                                       to 'SiteTree::can_(permission)_multiple'
+     * @return PermissionChecker
      */
-    public static function prepopulate_permission_cache($permission = 'CanEditType', $ids = [], $batchCallback = null)
+    public static function getPermissionChecker()
     {
-        if (!$batchCallback) {
-            $batchCallback = self::class . "::can_{$permission}_multiple";
-        }
-
-        if (is_callable($batchCallback)) {
-            call_user_func($batchCallback, $ids, Member::currentUserID(), false);
-        } else {
-            user_error("SiteTree::prepopulate_permission_cache can't calculate '$permission' "
-                . "with callback '$batchCallback'", E_USER_WARNING);
-        }
-    }
-
-    /**
-     * This method is NOT a full replacement for the individual can*() methods, e.g. {@link canEdit()}. Rather than
-     * checking (potentially slow) PHP logic, it relies on the database group associations, e.g. the "CanEditType" field
-     * plus the "SiteTree_EditorGroups" many-many table. By batch checking multiple records, we can combine the queries
-     * efficiently.
-     *
-     * Caches based on $typeField data. To invalidate the cache, use {@link SiteTree::reset()} or set the $useCached
-     * property to FALSE.
-     *
-     * @param array  $ids              Of {@link SiteTree} IDs
-     * @param int    $memberID         Member ID
-     * @param string $typeField        A property on the data record, e.g. "CanEditType".
-     * @param string $groupJoinTable   A many-many table name on this record, e.g. "SiteTree_EditorGroups"
-     * @param string $siteConfigMethod Method to call on {@link SiteConfig} for toplevel items, e.g. "canEdit"
-     * @param string $globalPermission If the member doesn't have this permission code, don't bother iterating deeper
-     * @param bool   $useCached
-     * @return array An map of {@link SiteTree} ID keys to boolean values
-     */
-    public static function batch_permission_check(
-        $ids,
-        $memberID,
-        $typeField,
-        $groupJoinTable,
-        $siteConfigMethod,
-        $globalPermission = null,
-        $useCached = true
-    ) {
-        if ($globalPermission === null) {
-            $globalPermission = array('CMS_ACCESS_LeftAndMain', 'CMS_ACCESS_CMSMain');
-        }
-
-        // Sanitise the IDs
-        $ids = array_filter($ids, 'is_numeric');
-
-        // This is the name used on the permission cache
-        // converts something like 'CanEditType' to 'edit'.
-        $cacheKey = strtolower(substr($typeField, 3, -4)) . "-$memberID";
-
-        // Default result: nothing editable
-        $result = array_fill_keys($ids, false);
-        if ($ids) {
-            // Look in the cache for values
-            if ($useCached && isset(self::$cache_permissions[$cacheKey])) {
-                $cachedValues = array_intersect_key(self::$cache_permissions[$cacheKey], $result);
-
-                // If we can't find everything in the cache, then look up the remainder separately
-                $uncachedValues = array_diff_key($result, self::$cache_permissions[$cacheKey]);
-                if ($uncachedValues) {
-                    $cachedValues = self::batch_permission_check(array_keys($uncachedValues), $memberID, $typeField, $groupJoinTable, $siteConfigMethod, $globalPermission, false) + $cachedValues;
-                }
-                return $cachedValues;
-            }
-
-            // If a member doesn't have a certain permission then they can't edit anything
-            if (!$memberID || ($globalPermission && !Permission::checkMember($memberID, $globalPermission))) {
-                return $result;
-            }
-
-            // Placeholder for parameterised ID list
-            $idPlaceholders = DB::placeholders($ids);
-
-            // If page can't be viewed, don't grant edit permissions to do - implement can_view_multiple(), so this can
-            // be enabled
-            //$ids = array_keys(array_filter(self::can_view_multiple($ids, $memberID)));
-
-            // Get the groups that the given member belongs to
-            /** @var Member $member */
-            $member = DataObject::get_by_id('SilverStripe\\Security\\Member', $memberID);
-            $groupIDs = $member->Groups()->column("ID");
-            $SQL_groupList = implode(", ", $groupIDs);
-            if (!$SQL_groupList) {
-                $SQL_groupList = '0';
-            }
-
-            $combinedStageResult = array();
-
-            foreach (array(Versioned::DRAFT, Versioned::LIVE) as $stage) {
-                // Start by filling the array with the pages that actually exist
-                /** @skipUpgrade */
-                $table = ($stage=='Stage') ? "SiteTree" : "SiteTree_$stage";
-
-                if ($ids) {
-                    $idQuery = "SELECT \"ID\" FROM \"$table\" WHERE \"ID\" IN ($idPlaceholders)";
-                    $stageIds = DB::prepared_query($idQuery, $ids)->column();
-                } else {
-                    $stageIds = array();
-                }
-                $result = array_fill_keys($stageIds, false);
-
-                // Get the uninherited permissions
-                $uninheritedPermissions = Versioned::get_by_stage("SilverStripe\\CMS\\Model\\SiteTree", $stage)
-                    ->where(array(
-                        "(\"$typeField\" = 'LoggedInUsers' OR
-						(\"$typeField\" = 'OnlyTheseUsers' AND \"$groupJoinTable\".\"SiteTreeID\" IS NOT NULL))
-						AND \"SiteTree\".\"ID\" IN ($idPlaceholders)"
-                        => $ids
-                    ))
-                    ->leftJoin($groupJoinTable, "\"$groupJoinTable\".\"SiteTreeID\" = \"SiteTree\".\"ID\" AND \"$groupJoinTable\".\"GroupID\" IN ($SQL_groupList)");
-
-                if ($uninheritedPermissions) {
-                    // Set all the relevant items in $result to true
-                    $result = array_fill_keys($uninheritedPermissions->column('ID'), true) + $result;
-                }
-
-                // Get permissions that are inherited
-                $potentiallyInherited = Versioned::get_by_stage(
-                    "SilverStripe\\CMS\\Model\\SiteTree",
-                    $stage,
-                    array("\"$typeField\" = 'Inherit' AND \"SiteTree\".\"ID\" IN ($idPlaceholders)" => $ids)
-                );
-
-                if ($potentiallyInherited) {
-                    // Group $potentiallyInherited by ParentID; we'll look at the permission of all those parents and
-                    // then see which ones the user has permission on
-                    $groupedByParent = array();
-                    foreach ($potentiallyInherited as $item) {
-                        /** @var SiteTree $item */
-                        if ($item->ParentID) {
-                            if (!isset($groupedByParent[$item->ParentID])) {
-                                $groupedByParent[$item->ParentID] = array();
-                            }
-                            $groupedByParent[$item->ParentID][] = $item->ID;
-                        } else {
-                            // Might return different site config based on record context, e.g. when subsites module
-                            // is used
-                            $siteConfig = $item->getSiteConfig();
-                            $result[$item->ID] = $siteConfig->{$siteConfigMethod}($memberID);
-                        }
-                    }
-
-                    if ($groupedByParent) {
-                        $actuallyInherited = self::batch_permission_check(array_keys($groupedByParent), $memberID, $typeField, $groupJoinTable, $siteConfigMethod);
-                        if ($actuallyInherited) {
-                            $parentIDs = array_keys(array_filter($actuallyInherited));
-                            foreach ($parentIDs as $parentID) {
-                                // Set all the relevant items in $result to true
-                                $result = array_fill_keys($groupedByParent[$parentID], true) + $result;
-                            }
-                        }
-                    }
-                }
-
-                $combinedStageResult = $combinedStageResult + $result;
-            }
-        }
-
-        if (isset($combinedStageResult)) {
-            // Cache the results
-            if (empty(self::$cache_permissions[$cacheKey])) {
-                self::$cache_permissions[$cacheKey] = array();
-            }
-            self::$cache_permissions[$cacheKey] = $combinedStageResult + self::$cache_permissions[$cacheKey];
-            return $combinedStageResult;
-        } else {
-            return array();
-        }
-    }
-
-    /**
-     * Get the 'can edit' information for a number of SiteTree pages.
-     *
-     * @param array $ids       An array of IDs of the SiteTree pages to look up
-     * @param int   $memberID  ID of member
-     * @param bool  $useCached Return values from the permission cache if they exist
-     * @return array A map where the IDs are keys and the values are booleans stating whether the given page can be
-     *                         edited
-     */
-    public static function can_edit_multiple($ids, $memberID, $useCached = true)
-    {
-        return self::batch_permission_check($ids, $memberID, 'CanEditType', 'SiteTree_EditorGroups', 'canEditPages', null, $useCached);
-    }
-
-    /**
-     * Get the 'can edit' information for a number of SiteTree pages.
-     *
-     * @param array $ids       An array of IDs of the SiteTree pages to look up
-     * @param int   $memberID  ID of member
-     * @param bool  $useCached Return values from the permission cache if they exist
-     * @return array
-     */
-    public static function can_delete_multiple($ids, $memberID, $useCached = true)
-    {
-        $deletable = array();
-        $result = array_fill_keys($ids, false);
-        $cacheKey = "delete-$memberID";
-
-        // Look in the cache for values
-        if ($useCached && isset(self::$cache_permissions[$cacheKey])) {
-            $cachedValues = array_intersect_key(self::$cache_permissions[$cacheKey], $result);
-
-            // If we can't find everything in the cache, then look up the remainder separately
-            $uncachedValues = array_diff_key($result, self::$cache_permissions[$cacheKey]);
-            if ($uncachedValues) {
-                $cachedValues = self::can_delete_multiple(array_keys($uncachedValues), $memberID, false)
-                    + $cachedValues;
-            }
-            return $cachedValues;
-        }
-
-        // You can only delete pages that you can edit
-        $editableIDs = array_keys(array_filter(self::can_edit_multiple($ids, $memberID)));
-        if ($editableIDs) {
-            // You can only delete pages whose children you can delete
-            $editablePlaceholders = DB::placeholders($editableIDs);
-            $childRecords = SiteTree::get()->where(array(
-                "\"SiteTree\".\"ParentID\" IN ($editablePlaceholders)" => $editableIDs
-            ));
-            if ($childRecords) {
-                $children = $childRecords->map("ID", "ParentID");
-
-                // Find out the children that can be deleted
-                $deletableChildren = self::can_delete_multiple($children->keys(), $memberID);
-
-                // Get a list of all the parents that have no undeletable children
-                $deletableParents = array_fill_keys($editableIDs, true);
-                foreach ($deletableChildren as $id => $canDelete) {
-                    if (!$canDelete) {
-                        unset($deletableParents[$children[$id]]);
-                    }
-                }
-
-                // Use that to filter the list of deletable parents that have children
-                $deletableParents = array_keys($deletableParents);
-
-                // Also get the $ids that don't have children
-                $parents = array_unique($children->values());
-                $deletableLeafNodes = array_diff($editableIDs, $parents);
-
-                // Combine the two
-                $deletable = array_merge($deletableParents, $deletableLeafNodes);
-            } else {
-                $deletable = $editableIDs;
-            }
-        }
-
-        // Convert the array of deletable IDs into a map of the original IDs with true/false as the value
-        return array_fill_keys($deletable, true) + array_fill_keys($ids, false);
+        return Injector::inst()->get(PermissionChecker::class.'.sitetree');
     }
 
     /**
@@ -1543,6 +1269,12 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function collateDescendants($condition, &$collator)
     {
+        // apply reasonable hierarchy limits
+        $threshold = Config::inst()->get(Hierarchy::class, 'node_threshold_leaf');
+        if ($this->numChildren() > $threshold) {
+            return false;
+        }
+
         $children = $this->Children();
         if ($children) {
             foreach ($children as $item) {
@@ -1569,38 +1301,37 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     {
         $tags = array();
         if ($includeTitle && strtolower($includeTitle) != 'false') {
-            $tags[] = FormField::create_tag('title', array(), $this->obj('Title')->forTemplate());
+            $tags[] = HTML::createTag('title', array(), $this->obj('Title')->forTemplate());
         }
 
         $generator = trim(Config::inst()->get(self::class, 'meta_generator'));
         if (!empty($generator)) {
-            $tags[] = FormField::create_tag('meta', array(
+            $tags[] = HTML::createTag('meta', array(
                 'name' => 'generator',
                 'content' => $generator,
             ));
         }
 
         $charset = ContentNegotiator::config()->uninherited('encoding');
-        $tags[] = FormField::create_tag('meta', array(
+        $tags[] = HTML::createTag('meta', array(
             'http-equiv' => 'Content-Type',
             'content' => 'text/html; charset=' . $charset,
         ));
         if ($this->MetaDescription) {
-            $tags[] = FormField::create_tag('meta', array(
+            $tags[] = HTML::createTag('meta', array(
                 'name' => 'description',
                 'content' => $this->MetaDescription,
             ));
         }
 
         if (Permission::check('CMS_ACCESS_CMSMain')
-            && !$this instanceof ErrorPage
             && $this->ID > 0
         ) {
-            $tags[] = FormField::create_tag('meta', array(
+            $tags[] = HTML::createTag('meta', array(
                 'name' => 'x-page-id',
                 'content' => $this->obj('ID')->forTemplate(),
             ));
-            $tags[] = FormField::create_tag('meta', array(
+            $tags[] = HTML::createTag('meta', array(
                 'name' => 'x-cms-edit-link',
                 'content' => $this->obj('CMSEditLink')->forTemplate(),
             ));
@@ -1643,8 +1374,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         if (static::class == self::class && $this->config()->create_default_pages) {
             if (!SiteTree::get_by_link(RootURLController::config()->default_homepage_link)) {
                 $homepage = new Page();
-                $homepage->Title = _t('SiteTree.DEFAULTHOMETITLE', 'Home');
-                $homepage->Content = _t('SiteTree.DEFAULTHOMECONTENT', '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>.</p><p>You can now access the <a href="http://docs.silverstripe.org">developer documentation</a>, or begin the <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lessons</a>.</p>');
+                $homepage->Title = _t(__CLASS__.'.DEFAULTHOMETITLE', 'Home');
+                $homepage->Content = _t(__CLASS__.'.DEFAULTHOMECONTENT', '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>.</p><p>You can now access the <a href="http://docs.silverstripe.org">developer documentation</a>, or begin the <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lessons</a>.</p>');
                 $homepage->URLSegment = RootURLController::config()->default_homepage_link;
                 $homepage->Sort = 1;
                 $homepage->write();
@@ -1655,9 +1386,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
             if (DB::query("SELECT COUNT(*) FROM \"SiteTree\"")->value() == 1) {
                 $aboutus = new Page();
-                $aboutus->Title = _t('SiteTree.DEFAULTABOUTTITLE', 'About Us');
+                $aboutus->Title = _t(__CLASS__.'.DEFAULTABOUTTITLE', 'About Us');
                 $aboutus->Content = _t(
-                    'SiteTree.DEFAULTABOUTCONTENT',
+                    'SilverStripe\\CMS\\Model\\SiteTree.DEFAULTABOUTCONTENT',
                     '<p>You can fill this page out with your own content, or delete it and create your own pages.</p>'
                 );
                 $aboutus->Sort = 2;
@@ -1667,9 +1398,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 DB::alteration_message('About Us page created', 'created');
 
                 $contactus = new Page();
-                $contactus->Title = _t('SiteTree.DEFAULTCONTACTTITLE', 'Contact Us');
+                $contactus->Title = _t(__CLASS__.'.DEFAULTCONTACTTITLE', 'Contact Us');
                 $contactus->Content = _t(
-                    'SiteTree.DEFAULTCONTACTCONTENT',
+                    'SilverStripe\\CMS\\Model\\SiteTree.DEFAULTCONTACTCONTENT',
                     '<p>You can fill this page out with your own content, or delete it and create your own pages.</p>'
                 );
                 $contactus->Sort = 3;
@@ -1696,7 +1427,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         // If there is no URLSegment set, generate one from Title
         $defaultSegment = $this->generateURLSegment(_t(
-            'CMSMain.NEWPAGE',
+            'SilverStripe\\CMS\\Controllers\\CMSMain.NEWPAGE',
             'New {pagetype}',
             array('pagetype' => $this->i18n_singular_name())
         ));
@@ -1761,18 +1492,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
     public function onAfterDelete()
     {
-        // Need to flush cache to avoid outdated versionnumber references
-        $this->flushCache();
-
-        // Need to mark pages depending to this one as broken
-        $dependentPages = $this->DependentPages();
-        if ($dependentPages) {
-            foreach ($dependentPages as $page) {
-            // $page->write() calls syncLinkTracking, which does all the hard work for us.
-                $page->write();
-            }
-        }
-
+        $this->updateDependentPages();
         parent::onAfterDelete();
     }
 
@@ -1798,7 +1518,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             if (!in_array($subject->ClassName, $allowed)) {
                 $result->addError(
                     _t(
-                        'SiteTree.PageTypeNotAllowed',
+                        'SilverStripe\\CMS\\Model\\SiteTree.PageTypeNotAllowed',
                         'Page type "{type}" not allowed as child of this parent page',
                         array('type' => $subject->i18n_singular_name())
                     ),
@@ -1809,10 +1529,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         // "Can be root" validation
-        if (!$this->stat('can_be_root') && !$this->ParentID) {
+        if (!$this->config()->get('can_be_root') && !$this->ParentID) {
             $result->addError(
                 _t(
-                    'SiteTree.PageTypNotAllowedOnRoot',
+                    'SilverStripe\\CMS\\Model\\SiteTree.PageTypNotAllowedOnRoot',
                     'Page type "{type}" is not allowed on the root level',
                     array('type' => $this->i18n_singular_name())
                 ),
@@ -2032,7 +1752,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                         $title = Convert::raw2xml($parentPage->Title);
                     } else {
                         $link = CMSPageEditController::singleton()->Link('show');
-                        $title = _t('SiteTree.TOPLEVEL', 'Site Content (Top Level)');
+                        $title = _t(__CLASS__.'.TOPLEVEL', 'Site Content (Top Level)');
                     }
                     $parentPageLinks[] = "<a class=\"cmsEditlink\" href=\"{$link}\">{$title}</a>";
                 }
@@ -2046,7 +1766,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 }
 
                 $statusMessage[] = _t(
-                    'SiteTree.APPEARSVIRTUALPAGES',
+                    'SilverStripe\\CMS\\Model\\SiteTree.APPEARSVIRTUALPAGES',
                     "This content also appears on the virtual pages in the {title} sections.",
                     array('title' => $parentList)
                 );
@@ -2054,7 +1774,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         if ($this->HasBrokenLink || $this->HasBrokenFile) {
-            $statusMessage[] = _t('SiteTree.HASBROKENLINKS', "This page has broken links.");
+            $statusMessage[] = _t(__CLASS__.'.HASBROKENLINKS', "This page has broken links.");
         }
 
         $dependentNote = '';
@@ -2066,14 +1786,14 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         if ($dependentPagesCount) {
             $dependentColumns = array(
                 'Title' => $this->fieldLabel('Title'),
-                'AbsoluteLink' => _t('SiteTree.DependtPageColumnURL', 'URL'),
-                'DependentLinkType' => _t('SiteTree.DependtPageColumnLinkType', 'Link type'),
+                'AbsoluteLink' => _t(__CLASS__.'.DependtPageColumnURL', 'URL'),
+                'DependentLinkType' => _t(__CLASS__.'.DependtPageColumnLinkType', 'Link type'),
             );
             if (class_exists('Subsite')) {
                 $dependentColumns['Subsite.Title'] = singleton('Subsite')->i18n_singular_name();
             }
 
-            $dependentNote = new LiteralField('DependentNote', '<p>' . _t('SiteTree.DEPENDENT_NOTE', 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.') . '</p>');
+            $dependentNote = new LiteralField('DependentNote', '<p>' . _t(__CLASS__.'.DEPENDENT_NOTE', 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.') . '</p>');
             $dependentTable = GridField::create(
                 'DependentPages',
                 false,
@@ -2109,15 +1829,15 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $urlsegment = SiteTreeURLSegmentField::create("URLSegment", $this->fieldLabel('URLSegment'))
             ->setURLPrefix($baseLink)
             ->setDefaultURL($this->generateURLSegment(_t(
-                'CMSMain.NEWPAGE',
+                'SilverStripe\\CMS\\Controllers\\CMSMain.NEWPAGE',
                 'New {pagetype}',
                 array('pagetype' => $this->i18n_singular_name())
             )));
-        $helpText = (self::config()->nested_urls && $this->Children()->count())
+        $helpText = (self::config()->nested_urls && $this->numChildren())
             ? $this->fieldLabel('LinkChangeNote')
             : '';
         if (!Config::inst()->get('SilverStripe\\View\\Parsers\\URLSegmentFilter', 'default_allow_multibyte')) {
-            $helpText .= _t('SiteTreeURLSegmentField.HelpChars', ' Special characters are automatically converted or removed.');
+            $helpText .= _t('SilverStripe\\CMS\\Forms\\SiteTreeURLSegmentField.HelpChars', ' Special characters are automatically converted or removed.');
         }
         $urlsegment->setHelpText($helpText);
 
@@ -2129,10 +1849,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                     new TextField("Title", $this->fieldLabel('Title')),
                     $urlsegment,
                     new TextField("MenuTitle", $this->fieldLabel('MenuTitle')),
-                    $htmlField = new HTMLEditorField("Content", _t('SiteTree.HTMLEDITORTITLE', "Content", 'HTML editor title')),
+                    $htmlField = new HTMLEditorField("Content", _t(__CLASS__.'.HTMLEDITORTITLE', "Content", 'HTML editor title')),
                     ToggleCompositeField::create(
                         'Metadata',
-                        _t('SiteTree.MetadataToggle', 'Metadata'),
+                        _t(__CLASS__.'.MetadataToggle', 'Metadata'),
                         array(
                             $metaFieldDesc = new TextareaField("MetaDescription", $this->fieldLabel('MetaDescription')),
                             $metaFieldExtra = new TextareaField("ExtraMeta", $this->fieldLabel('ExtraMeta'))
@@ -2152,7 +1872,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $metaFieldDesc
             ->setRightTitle(
                 _t(
-                    'SiteTree.METADESCHELP',
+                    'SilverStripe\\CMS\\Model\\SiteTree.METADESCHELP',
                     "Search engines use this content for displaying search results (although it will not influence their ranking)."
                 )
             )
@@ -2160,7 +1880,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $metaFieldExtra
             ->setRightTitle(
                 _t(
-                    'SiteTree.METAEXTRAHELP',
+                    'SilverStripe\\CMS\\Model\\SiteTree.METAEXTRAHELP',
                     "HTML tags for additional meta information. For example &lt;meta name=\"customName\" content=\"your custom content here\" /&gt;"
                 )
             )
@@ -2168,16 +1888,16 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         // Conditional dependent pages tab
         if ($dependentPagesCount) {
-            $tabDependent->setTitle(_t('SiteTree.TABDEPENDENT', "Dependent pages") . " ($dependentPagesCount)");
+            $tabDependent->setTitle(_t(__CLASS__.'.TABDEPENDENT', "Dependent pages") . " ($dependentPagesCount)");
         } else {
             $fields->removeFieldFromTab('Root', 'Dependent');
         }
 
-        $tabMain->setTitle(_t('SiteTree.TABCONTENT', "Main Content"));
+        $tabMain->setTitle(_t(__CLASS__.'.TABCONTENT', "Main Content"));
 
         if ($this->ObsoleteClassName) {
             $obsoleteWarning = _t(
-                'SiteTree.OBSOLETECLASS',
+                'SilverStripe\\CMS\\Model\\SiteTree.OBSOLETECLASS',
                 "This page is of obsolete type {type}. Saving will reset its type and you may lose data",
                 array('type' => $this->ObsoleteClassName)
             );
@@ -2193,7 +1913,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $fields->addFieldToTab("Root.Main", new LiteralField(
                 "InstallWarningHeader",
                 "<p class=\"message warning\">" . _t(
-                    "SiteTree.REMOVE_INSTALL_WARNING",
+                    "SilverStripe\\CMS\\Model\\SiteTree.REMOVE_INSTALL_WARNING",
                     "Warning: You should remove install.php from this SilverStripe install for security reasons."
                 )
                 . "</p>"
@@ -2216,12 +1936,18 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function getSettingsFields()
     {
-        $groupsMap = array();
-        foreach (Group::get() as $group) {
-            // Listboxfield values are escaped, use ASCII char instead of &raquo;
-            $groupsMap[$group->ID] = $group->getBreadcrumbs(' > ');
-        }
-        asort($groupsMap);
+        $mapFn = function ($groups = []) {
+            $map = [];
+            foreach ($groups as $group) {
+                // Listboxfield values are escaped, use ASCII char instead of &raquo;
+                $map[$group->ID] = $group->getBreadcrumbs(' > ');
+            }
+            asort($map);
+            return $map;
+        };
+        $groupsMap = $mapFn(Group::get());
+        $viewAllGroupsMap = $mapFn(Permission::get_groups_by_permission(['SITETREE_VIEW_ALL', 'ADMIN']));
+        $editAllGroupsMap = $mapFn(Permission::get_groups_by_permission(['SITETREE_EDIT_ALL', 'ADMIN']));
 
         $fields = new FieldList(
             $rootTab = new TabSet(
@@ -2234,9 +1960,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                         $this->getClassDropdown()
                     ),
                     $parentTypeSelector = new CompositeField(
-                        $parentType = new OptionsetField("ParentType", _t("SiteTree.PAGELOCATION", "Page location"), array(
-                            "root" => _t("SiteTree.PARENTTYPE_ROOT", "Top-level page"),
-                            "subpage" => _t("SiteTree.PARENTTYPE_SUBPAGE", "Sub-page underneath a parent page"),
+                        $parentType = new OptionsetField("ParentType", _t("SilverStripe\\CMS\\Model\\SiteTree.PAGELOCATION", "Page location"), array(
+                            "root" => _t("SilverStripe\\CMS\\Model\\SiteTree.PARENTTYPE_ROOT", "Top-level page"),
+                            "subpage" => _t("SilverStripe\\CMS\\Model\\SiteTree.PARENTTYPE_SUBPAGE", "Sub-page underneath a parent page"),
                         )),
                         $parentIDField = new TreeDropdownField("ParentID", $this->fieldLabel('ParentID'), self::class, 'ID', 'MenuTitle')
                     ),
@@ -2246,23 +1972,23 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                     ),
                     $viewersOptionsField = new OptionsetField(
                         "CanViewType",
-                        _t('SiteTree.ACCESSHEADER', "Who can view this page?")
+                        _t(__CLASS__.'.ACCESSHEADER', "Who can view this page?")
                     ),
-                    $viewerGroupsField = ListboxField::create("ViewerGroups", _t('SiteTree.VIEWERGROUPS', "Viewer Groups"))
+                    $viewerGroupsField = ListboxField::create("ViewerGroups", _t(__CLASS__.'.VIEWERGROUPS', "Viewer Groups"))
                         ->setSource($groupsMap)
                         ->setAttribute(
                             'data-placeholder',
-                            _t('SiteTree.GroupPlaceholder', 'Click to select group')
+                            _t(__CLASS__.'.GroupPlaceholder', 'Click to select group')
                         ),
                     $editorsOptionsField = new OptionsetField(
                         "CanEditType",
-                        _t('SiteTree.EDITHEADER', "Who can edit this page?")
+                        _t(__CLASS__.'.EDITHEADER', "Who can edit this page?")
                     ),
-                    $editorGroupsField = ListboxField::create("EditorGroups", _t('SiteTree.EDITORGROUPS', "Editor Groups"))
+                    $editorGroupsField = ListboxField::create("EditorGroups", _t(__CLASS__.'.EDITORGROUPS', "Editor Groups"))
                         ->setSource($groupsMap)
                         ->setAttribute(
                             'data-placeholder',
-                            _t('SiteTree.GroupPlaceholder', 'Click to select group')
+                            _t(__CLASS__.'.GroupPlaceholder', 'Click to select group')
                         )
                 )
             )
@@ -2274,10 +2000,12 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         // This filter ensures that the ParentID dropdown selection does not show this node,
         // or its descendents, as this causes vanishing bugs
-        $parentIDField->setFilterFunction(create_function('$node', "return \$node->ID != {$this->ID};"));
+        $parentIDField->setFilterFunction(function ($node) {
+            return $node->ID != $this->ID;
+        });
         $parentTypeSelector->addExtraClass('parentTypeSelector');
 
-        $tabBehaviour->setTitle(_t('SiteTree.TABBEHAVIOUR', "Behavior"));
+        $tabBehaviour->setTitle(_t(__CLASS__.'.TABBEHAVIOUR', "Behavior"));
 
         // Make page location fields read-only if the user doesn't have the appropriate permission
         if (!Permission::check("SITETREE_REORGANISE")) {
@@ -2289,29 +2017,48 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             }
         }
 
-        $viewersOptionsSource = array();
-        $viewersOptionsSource["Inherit"] = _t('SiteTree.INHERIT', "Inherit from parent page");
-        $viewersOptionsSource["Anyone"] = _t('SiteTree.ACCESSANYONE', "Anyone");
-        $viewersOptionsSource["LoggedInUsers"] = _t('SiteTree.ACCESSLOGGEDIN', "Logged-in users");
-        $viewersOptionsSource["OnlyTheseUsers"] = _t('SiteTree.ACCESSONLYTHESE', "Only these people (choose from list)");
+        $viewersOptionsSource = [
+            InheritedPermissions::INHERIT => _t(__CLASS__.'.INHERIT', "Inherit from parent page"),
+            InheritedPermissions::ANYONE => _t(__CLASS__.'.ACCESSANYONE', "Anyone"),
+            InheritedPermissions::LOGGED_IN_USERS => _t(__CLASS__.'.ACCESSLOGGEDIN', "Logged-in users"),
+            InheritedPermissions::ONLY_THESE_USERS => _t(
+                __CLASS__.'.ACCESSONLYTHESE',
+                "Only these groups (choose from list)"
+            ),
+        ];
         $viewersOptionsField->setSource($viewersOptionsSource);
 
-        $editorsOptionsSource = array();
-        $editorsOptionsSource["Inherit"] = _t('SiteTree.INHERIT', "Inherit from parent page");
-        $editorsOptionsSource["LoggedInUsers"] = _t('SiteTree.EDITANYONE', "Anyone who can log-in to the CMS");
-        $editorsOptionsSource["OnlyTheseUsers"] = _t('SiteTree.EDITONLYTHESE', "Only these people (choose from list)");
+        // Editors have same options, except no "Anyone"
+        $editorsOptionsSource = $viewersOptionsSource;
+        unset($editorsOptionsSource[InheritedPermissions::ANYONE]);
         $editorsOptionsField->setSource($editorsOptionsSource);
+
+        if ($viewAllGroupsMap) {
+            $viewerGroupsField->setDescription(_t(
+                'SilverStripe\\CMS\\Model\\SiteTree.VIEWER_GROUPS_FIELD_DESC',
+                'Groups with global view permissions: {groupList}',
+                ['groupList' => implode(', ', array_values($viewAllGroupsMap))]
+            ));
+        }
+
+        if ($editAllGroupsMap) {
+            $editorGroupsField->setDescription(_t(
+                'SilverStripe\\CMS\\Model\\SiteTree.EDITOR_GROUPS_FIELD_DESC',
+                'Groups with global edit permissions: {groupList}',
+                ['groupList' => implode(', ', array_values($editAllGroupsMap))]
+            ));
+        }
 
         if (!Permission::check('SITETREE_GRANT_ACCESS')) {
             $fields->makeFieldReadonly($viewersOptionsField);
-            if ($this->CanViewType == 'OnlyTheseUsers') {
+            if ($this->CanEditType === InheritedPermissions::ONLY_THESE_USERS) {
                 $fields->makeFieldReadonly($viewerGroupsField);
             } else {
                 $fields->removeByName('ViewerGroups');
             }
 
             $fields->makeFieldReadonly($editorsOptionsField);
-            if ($this->CanEditType == 'OnlyTheseUsers') {
+            if ($this->CanEditType === InheritedPermissions::ONLY_THESE_USERS) {
                 $fields->makeFieldReadonly($editorGroupsField);
             } else {
                 $fields->removeByName('EditorGroups');
@@ -2334,33 +2081,33 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $cacheKey = static::class . '_' . $includerelations;
         if (!isset(self::$_cache_field_labels[$cacheKey])) {
             $labels = parent::fieldLabels($includerelations);
-            $labels['Title'] = _t('SiteTree.PAGETITLE', "Page name");
-            $labels['MenuTitle'] = _t('SiteTree.MENUTITLE', "Navigation label");
-            $labels['MetaDescription'] = _t('SiteTree.METADESC', "Meta Description");
-            $labels['ExtraMeta'] = _t('SiteTree.METAEXTRA', "Custom Meta Tags");
-            $labels['ClassName'] = _t('SiteTree.PAGETYPE', "Page type", 'Classname of a page object');
-            $labels['ParentType'] = _t('SiteTree.PARENTTYPE', "Page location");
-            $labels['ParentID'] = _t('SiteTree.PARENTID', "Parent page");
-            $labels['ShowInMenus'] =_t('SiteTree.SHOWINMENUS', "Show in menus?");
-            $labels['ShowInSearch'] = _t('SiteTree.SHOWINSEARCH', "Show in search?");
-            $labels['ViewerGroups'] = _t('SiteTree.VIEWERGROUPS', "Viewer Groups");
-            $labels['EditorGroups'] = _t('SiteTree.EDITORGROUPS', "Editor Groups");
-            $labels['URLSegment'] = _t('SiteTree.URLSegment', 'URL Segment', 'URL for this page');
-            $labels['Content'] = _t('SiteTree.Content', 'Content', 'Main HTML Content for a page');
-            $labels['CanViewType'] = _t('SiteTree.Viewers', 'Viewers Groups');
-            $labels['CanEditType'] = _t('SiteTree.Editors', 'Editors Groups');
-            $labels['Comments'] = _t('SiteTree.Comments', 'Comments');
-            $labels['Visibility'] = _t('SiteTree.Visibility', 'Visibility');
+            $labels['Title'] = _t(__CLASS__.'.PAGETITLE', "Page name");
+            $labels['MenuTitle'] = _t(__CLASS__.'.MENUTITLE', "Navigation label");
+            $labels['MetaDescription'] = _t(__CLASS__.'.METADESC', "Meta Description");
+            $labels['ExtraMeta'] = _t(__CLASS__.'.METAEXTRA', "Custom Meta Tags");
+            $labels['ClassName'] = _t(__CLASS__.'.PAGETYPE', "Page type", 'Classname of a page object');
+            $labels['ParentType'] = _t(__CLASS__.'.PARENTTYPE', "Page location");
+            $labels['ParentID'] = _t(__CLASS__.'.PARENTID', "Parent page");
+            $labels['ShowInMenus'] =_t(__CLASS__.'.SHOWINMENUS', "Show in menus?");
+            $labels['ShowInSearch'] = _t(__CLASS__.'.SHOWINSEARCH', "Show in search?");
+            $labels['ViewerGroups'] = _t(__CLASS__.'.VIEWERGROUPS', "Viewer Groups");
+            $labels['EditorGroups'] = _t(__CLASS__.'.EDITORGROUPS', "Editor Groups");
+            $labels['URLSegment'] = _t(__CLASS__.'.URLSegment', 'URL Segment', 'URL for this page');
+            $labels['Content'] = _t(__CLASS__.'.Content', 'Content', 'Main HTML Content for a page');
+            $labels['CanViewType'] = _t(__CLASS__.'.Viewers', 'Viewers Groups');
+            $labels['CanEditType'] = _t(__CLASS__.'.Editors', 'Editors Groups');
+            $labels['Comments'] = _t(__CLASS__.'.Comments', 'Comments');
+            $labels['Visibility'] = _t(__CLASS__.'.Visibility', 'Visibility');
             $labels['LinkChangeNote'] = _t(
-                'SiteTree.LINKCHANGENOTE',
+                'SilverStripe\\CMS\\Model\\SiteTree.LINKCHANGENOTE',
                 'Changing this page\'s link will also affect the links of all child pages.'
             );
 
             if ($includerelations) {
-                $labels['Parent'] = _t('SiteTree.has_one_Parent', 'Parent Page', 'The parent page in the site hierarchy');
-                $labels['LinkTracking'] = _t('SiteTree.many_many_LinkTracking', 'Link Tracking');
-                $labels['ImageTracking'] = _t('SiteTree.many_many_ImageTracking', 'Image Tracking');
-                $labels['BackLinkTracking'] = _t('SiteTree.many_many_BackLinkTracking', 'Backlink Tracking');
+                $labels['Parent'] = _t(__CLASS__.'.has_one_Parent', 'Parent Page', 'The parent page in the site hierarchy');
+                $labels['LinkTracking'] = _t(__CLASS__.'.many_many_LinkTracking', 'Link Tracking');
+                $labels['ImageTracking'] = _t(__CLASS__.'.many_many_ImageTracking', 'Image Tracking');
+                $labels['BackLinkTracking'] = _t(__CLASS__.'.many_many_BackLinkTracking', 'Backlink Tracking');
             }
 
             self::$_cache_field_labels[$cacheKey] = $labels;
@@ -2401,8 +2148,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $rootTabSet = new TabSet('ActionMenus');
         $moreOptions = new Tab(
             'MoreOptions',
-            _t('SiteTree.MoreOptions', 'More options', 'Expands a view for more buttons')
+            _t(__CLASS__.'.MoreOptions', 'More options', 'Expands a view for more buttons')
         );
+        $moreOptions->addExtraClass('popover-actions-simulate');
         $rootTabSet->push($moreOptions);
         $rootTabSet->addExtraClass('ss-ui-action-tabset action-menus noborder');
 
@@ -2432,8 +2180,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $stageRecord = Versioned::get_by_stage(static::class, Versioned::DRAFT)->byID($this->ID);
         /** @skipUpgrade */
         if ($stageRecord && $stageRecord->Version != $this->Version) {
-            $moreOptions->push(FormAction::create('email', _t('CMSMain.EMAIL', 'Email')));
-            $moreOptions->push(FormAction::create('rollback', _t('CMSMain.ROLLBACK', 'Roll back to this version')));
+            $moreOptions->push(FormAction::create('email', _t('SilverStripe\\CMS\\Controllers\\CMSMain.EMAIL', 'Email')));
+            $moreOptions->push(FormAction::create('rollback', _t('SilverStripe\\CMS\\Controllers\\CMSMain.ROLLBACK', 'Roll back to this version')));
             $actions = new FieldList(array($majorActions, $rootTabSet));
 
             // getCMSActions() can be extended with updateCMSActions() on a extension
@@ -2444,8 +2192,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // "unpublish"
         if ($isPublished && $canPublish && $isOnDraft && $canUnpublish) {
             $moreOptions->push(
-                FormAction::create('unpublish', _t('SiteTree.BUTTONUNPUBLISH', 'Unpublish'), 'delete')
-                    ->setDescription(_t('SiteTree.BUTTONUNPUBLISHDESC', 'Remove this page from the published site'))
+                FormAction::create('unpublish', _t(__CLASS__.'.BUTTONUNPUBLISH', 'Unpublish'), 'delete')
+                    ->setDescription(_t(__CLASS__.'.BUTTONUNPUBLISHDESC', 'Remove this page from the published site'))
                     ->addExtraClass('btn-secondary')
             );
         }
@@ -2453,9 +2201,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // "rollback"
         if ($isOnDraft && $isPublished && $canEdit && $stagesDiffer) {
             $moreOptions->push(
-                FormAction::create('rollback', _t('SiteTree.BUTTONCANCELDRAFT', 'Cancel draft changes'))
+                FormAction::create('rollback', _t(__CLASS__.'.BUTTONCANCELDRAFT', 'Cancel draft changes'))
                     ->setDescription(_t(
-                        'SiteTree.BUTTONCANCELDRAFTDESC',
+                        'SilverStripe\\CMS\\Model\\SiteTree.BUTTONCANCELDRAFTDESC',
                         'Delete your draft and revert to the currently published page'
                     ))
                     ->addExtraClass('btn-secondary')
@@ -2464,7 +2212,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         // "restore"
         if ($canEdit && !$isOnDraft && $isPublished) {
-            $majorActions->push(FormAction::create('revert', _t('CMSMain.RESTORE', 'Restore')));
+            $majorActions->push(FormAction::create('revert', _t('SilverStripe\\CMS\\Controllers\\CMSMain.RESTORE', 'Restore')));
         }
 
         // Check if we can restore a deleted page
@@ -2475,11 +2223,11 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
             // "restore"
             $title = $restoreToRoot
-                ? _t('CMSMain.RESTORE_TO_ROOT', 'Restore draft at top level')
-                : _t('CMSMain.RESTORE', 'Restore draft');
+                ? _t('SilverStripe\\CMS\\Controllers\\CMSMain.RESTORE_TO_ROOT', 'Restore draft at top level')
+                : _t('SilverStripe\\CMS\\Controllers\\CMSMain.RESTORE', 'Restore draft');
             $description = $restoreToRoot
-                ? _t('CMSMain.RESTORE_TO_ROOT_DESC', 'Restore the archived version to draft as a top level page')
-                : _t('CMSMain.RESTORE_DESC', 'Restore the archived version to draft');
+                ? _t('SilverStripe\\CMS\\Controllers\\CMSMain.RESTORE_TO_ROOT_DESC', 'Restore the archived version to draft as a top level page')
+                : _t('SilverStripe\\CMS\\Controllers\\CMSMain.RESTORE_DESC', 'Restore the archived version to draft');
             $majorActions->push(
                 FormAction::create('restore', $title)
                     ->setDescription($description)
@@ -2491,13 +2239,13 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // If a page is on any stage it can be archived
         if (($isOnDraft || $isPublished) && $this->canArchive()) {
             $title = $isPublished
-                ? _t('CMSMain.UNPUBLISH_AND_ARCHIVE', 'Unpublish and archive')
-                : _t('CMSMain.ARCHIVE', 'Archive');
+                ? _t('SilverStripe\\CMS\\Controllers\\CMSMain.UNPUBLISH_AND_ARCHIVE', 'Unpublish and archive')
+                : _t('SilverStripe\\CMS\\Controllers\\CMSMain.ARCHIVE', 'Archive');
             $moreOptions->push(
                 FormAction::create('archive', $title)
                     ->addExtraClass('delete btn btn-secondary')
                     ->setDescription(_t(
-                        'SiteTree.BUTTONDELETEDESC',
+                        'SilverStripe\\CMS\\Model\\SiteTree.BUTTONDELETEDESC',
                         'Remove from draft/live and send to archive'
                     ))
             );
@@ -2506,29 +2254,29 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // "save", supports an alternate state that is still clickable, but notifies the user that the action is not needed.
         if ($canEdit && $isOnDraft) {
             $majorActions->push(
-                FormAction::create('save', _t('SiteTree.BUTTONSAVED', 'Saved'))
-                    ->addExtraClass('btn-secondary-outline font-icon-check-mark')
+                FormAction::create('save', _t(__CLASS__.'.BUTTONSAVED', 'Saved'))
+                    ->addExtraClass('btn-outline-secondary font-icon-check-mark')
                     ->setAttribute('data-btn-alternate', 'btn action btn-primary font-icon-save')
                     ->setUseButtonTag(true)
-                    ->setAttribute('data-text-alternate', _t('CMSMain.SAVEDRAFT', 'Save draft'))
+                    ->setAttribute('data-text-alternate', _t('SilverStripe\\CMS\\Controllers\\CMSMain.SAVEDRAFT', 'Save draft'))
             );
         }
 
         if ($canPublish && $isOnDraft) {
             // "publish", as with "save", it supports an alternate state to show when action is needed.
             $majorActions->push(
-                $publish = FormAction::create('publish', _t('SiteTree.BUTTONPUBLISHED', 'Published'))
-                    ->addExtraClass('btn-secondary-outline font-icon-check-mark')
+                $publish = FormAction::create('publish', _t(__CLASS__.'.BUTTONPUBLISHED', 'Published'))
+                    ->addExtraClass('btn-outline-secondary font-icon-check-mark')
                     ->setAttribute('data-btn-alternate', 'btn action btn-primary font-icon-rocket')
                     ->setUseButtonTag(true)
-                    ->setAttribute('data-text-alternate', _t('SiteTree.BUTTONSAVEPUBLISH', 'Save & publish'))
+                    ->setAttribute('data-text-alternate', _t(__CLASS__.'.BUTTONSAVEPUBLISH', 'Save & publish'))
             );
 
             // Set up the initial state of the button to reflect the state of the underlying SiteTree object.
             if ($stagesDiffer) {
                 $publish->addExtraClass('btn-primary font-icon-rocket');
-                $publish->setTitle(_t('SiteTree.BUTTONSAVEPUBLISH', 'Save & publish'));
-                $publish->removeExtraClass('btn-secondary-outline font-icon-check-mark');
+                $publish->setTitle(_t(__CLASS__.'.BUTTONSAVEPUBLISH', 'Save & publish'));
+                $publish->removeExtraClass('btn-outline-secondary font-icon-check-mark');
             }
         }
 
@@ -2620,13 +2368,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         /** @var SiteTree $result */
         $result = DataObject::get_by_id(self::class, $this->ID);
 
-        // Need to update pages linking to this one as no longer broken
-        foreach ($result->DependentPages(false) as $page) {
-            // $page->write() calls syncLinkTracking, which does all the hard work for us.
-            $page->write();
-        }
-
         Versioned::set_reading_mode($oldReadingMode);
+
+        // Need to update pages linking to this one as no longer broken
+        $this->updateDependentPages();
 
         $this->invokeWithExtensions('onAfterRestoreToStage', $this);
 
@@ -2681,7 +2426,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 }
             }
 
-            if ($perms = $instance->stat('need_permission')) {
+            if ($perms = $instance->config()->get('need_permission')) {
                 if (!$this->can($perms)) {
                     continue;
                 }
@@ -2767,7 +2512,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function defaultChild()
     {
-        $default = $this->stat('default_child');
+        $default = $this->config()->get('default_child');
         $allowed = $this->allowedChildren();
         if ($allowed) {
             if (!$default || !in_array($default, $allowed)) {
@@ -2785,7 +2530,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function defaultParent()
     {
-        return $this->stat('default_parent');
+        return $this->config()->get('default_parent');
     }
 
     /**
@@ -2839,23 +2584,23 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $flags = array();
             if ($this->isOnLiveOnly()) {
                 $flags['removedfromdraft'] = array(
-                    'text' => _t('SiteTree.ONLIVEONLYSHORT', 'On live only'),
-                    'title' => _t('SiteTree.ONLIVEONLYSHORTHELP', 'Page is published, but has been deleted from draft'),
+                    'text' => _t(__CLASS__.'.ONLIVEONLYSHORT', 'On live only'),
+                    'title' => _t(__CLASS__.'.ONLIVEONLYSHORTHELP', 'Page is published, but has been deleted from draft'),
                 );
             } elseif ($this->isArchived()) {
                 $flags['archived'] = array(
-                    'text' => _t('SiteTree.ARCHIVEDPAGESHORT', 'Archived'),
-                    'title' => _t('SiteTree.ARCHIVEDPAGEHELP', 'Page is removed from draft and live'),
+                    'text' => _t(__CLASS__.'.ARCHIVEDPAGESHORT', 'Archived'),
+                    'title' => _t(__CLASS__.'.ARCHIVEDPAGEHELP', 'Page is removed from draft and live'),
                 );
             } elseif ($this->isOnDraftOnly()) {
                 $flags['addedtodraft'] = array(
-                    'text' => _t('SiteTree.ADDEDTODRAFTSHORT', 'Draft'),
-                    'title' => _t('SiteTree.ADDEDTODRAFTHELP', "Page has not been published yet")
+                    'text' => _t(__CLASS__.'.ADDEDTODRAFTSHORT', 'Draft'),
+                    'title' => _t(__CLASS__.'.ADDEDTODRAFTHELP', "Page has not been published yet")
                 );
             } elseif ($this->isModifiedOnDraft()) {
                 $flags['modified'] = array(
-                    'text' => _t('SiteTree.MODIFIEDONDRAFTSHORT', 'Modified'),
-                    'title' => _t('SiteTree.MODIFIEDONDRAFTHELP', 'Page has unpublished changes'),
+                    'text' => _t(__CLASS__.'.MODIFIEDONDRAFTSHORT', 'Modified'),
+                    'title' => _t(__CLASS__.'.MODIFIEDONDRAFTHELP', 'Page has unpublished changes'),
                 );
             }
 
@@ -2890,7 +2635,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
         $flags = $this->getStatusFlags();
         $treeTitle = sprintf(
-            "<span class=\"jstree-pageicon\"></span><span class=\"item\" data-allowedchildren=\"%s\">%s</span>",
+            "<span class=\"jstree-pageicon page-icon class-%s\"></span><span class=\"item\" data-allowedchildren=\"%s\">%s</span>",
+            Convert::raw2htmlid(static::class),
             Convert::raw2att(Convert::raw2json($children)),
             Convert::raw2xml(str_replace(array("\n","\r"), "", $this->MenuTitle))
         );
@@ -2980,12 +2726,11 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     /**
      * Return the CSS classes to apply to this node in the CMS tree.
      *
-     * @param string $numChildrenMethod
      * @return string
      */
-    public function CMSTreeClasses($numChildrenMethod = "numChildren")
+    public function CMSTreeClasses()
     {
-        $classes = sprintf('class-%s', static::class);
+        $classes = sprintf('class-%s', Convert::raw2htmlid(static::class));
         if ($this->HasBrokenFile || $this->HasBrokenLink) {
             $classes .= " BrokenLink";
         }
@@ -3005,13 +2750,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         if (!$this->ShowInMenus) {
             $classes .= " notinmenu";
         }
-
-        //TODO: Add integration
-        /*
-		if($this->hasExtension('Translatable') && $controller->Locale != Translatable::default_locale() && !$this->isTranslation())
-			$classes .= " untranslated ";
-		*/
-        $classes .= $this->markingClasses($numChildrenMethod);
 
         return $classes;
     }
@@ -3038,33 +2776,33 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     {
         return array(
             'SITETREE_GRANT_ACCESS' => array(
-                'name' => _t('SiteTree.PERMISSION_GRANTACCESS_DESCRIPTION', 'Manage access rights for content'),
-                'help' => _t('SiteTree.PERMISSION_GRANTACCESS_HELP', 'Allow setting of page-specific access restrictions in the "Pages" section.'),
-                'category' => _t('Permissions.PERMISSIONS_CATEGORY', 'Roles and access permissions'),
+                'name' => _t(__CLASS__.'.PERMISSION_GRANTACCESS_DESCRIPTION', 'Manage access rights for content'),
+                'help' => _t(__CLASS__.'.PERMISSION_GRANTACCESS_HELP', 'Allow setting of page-specific access restrictions in the "Pages" section.'),
+                'category' => _t('SilverStripe\\Security\\Permission.PERMISSIONS_CATEGORY', 'Roles and access permissions'),
                 'sort' => 100
             ),
             'SITETREE_VIEW_ALL' => array(
-                'name' => _t('SiteTree.VIEW_ALL_DESCRIPTION', 'View any page'),
-                'category' => _t('Permissions.CONTENT_CATEGORY', 'Content permissions'),
+                'name' => _t(__CLASS__.'.VIEW_ALL_DESCRIPTION', 'View any page'),
+                'category' => _t('SilverStripe\\Security\\Permission.CONTENT_CATEGORY', 'Content permissions'),
                 'sort' => -100,
-                'help' => _t('SiteTree.VIEW_ALL_HELP', 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to \'Pages\' section" permission')
+                'help' => _t(__CLASS__.'.VIEW_ALL_HELP', 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to \'Pages\' section" permission')
             ),
             'SITETREE_EDIT_ALL' => array(
-                'name' => _t('SiteTree.EDIT_ALL_DESCRIPTION', 'Edit any page'),
-                'category' => _t('Permissions.CONTENT_CATEGORY', 'Content permissions'),
+                'name' => _t(__CLASS__.'.EDIT_ALL_DESCRIPTION', 'Edit any page'),
+                'category' => _t('SilverStripe\\Security\\Permission.CONTENT_CATEGORY', 'Content permissions'),
                 'sort' => -50,
-                'help' => _t('SiteTree.EDIT_ALL_HELP', 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to \'Pages\' section" permission')
+                'help' => _t(__CLASS__.'.EDIT_ALL_HELP', 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to \'Pages\' section" permission')
             ),
             'SITETREE_REORGANISE' => array(
-                'name' => _t('SiteTree.REORGANISE_DESCRIPTION', 'Change site structure'),
-                'category' => _t('Permissions.CONTENT_CATEGORY', 'Content permissions'),
-                'help' => _t('SiteTree.REORGANISE_HELP', 'Rearrange pages in the site tree through drag&drop.'),
+                'name' => _t(__CLASS__.'.REORGANISE_DESCRIPTION', 'Change site structure'),
+                'category' => _t('SilverStripe\\Security\\Permission.CONTENT_CATEGORY', 'Content permissions'),
+                'help' => _t(__CLASS__.'.REORGANISE_HELP', 'Rearrange pages in the site tree through drag&drop.'),
                 'sort' => 100
             ),
             'VIEW_DRAFT_CONTENT' => array(
-                'name' => _t('SiteTree.VIEW_DRAFT_CONTENT', 'View draft content'),
-                'category' => _t('Permissions.CONTENT_CATEGORY', 'Content permissions'),
-                'help' => _t('SiteTree.VIEW_DRAFT_CONTENT_HELP', 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'),
+                'name' => _t(__CLASS__.'.VIEW_DRAFT_CONTENT', 'View draft content'),
+                'category' => _t('SilverStripe\\Security\\Permission.CONTENT_CATEGORY', 'Content permissions'),
+                'help' => _t(__CLASS__.'.VIEW_DRAFT_CONTENT_HELP', 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'),
                 'sort' => 100
             )
         );
@@ -3079,7 +2817,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     {
         $base = in_array(static::class, [Page::class, self::class]);
         if ($base) {
-            return $this->stat('base_singular_name');
+            return $this->config()->get('base_singular_name');
         }
         return parent::singular_name();
     }
@@ -3093,23 +2831,23 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     {
         $base = in_array(static::class, [Page::class, self::class]);
         if ($base) {
-            return $this->stat('base_plural_name');
+            return $this->config()->get('base_plural_name');
         }
         return parent::plural_name();
     }
 
     /**
-     * Get description for this page
+     * Get description for this page type
      *
      * @return string|null
      */
-    public function description()
+    public function classDescription()
     {
         $base = in_array(static::class, [Page::class, self::class]);
         if ($base) {
-            return $this->stat('base_description');
+            return $this->config()->get('base_description');
         }
-        return $this->stat('description');
+        return $this->config()->get('description');
     }
 
     /**
@@ -3117,9 +2855,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      *
      * @return string|null
      */
-    public function i18n_description()
+    public function i18n_classDescription()
     {
-        $description = $this->description();
+        $description = $this->classDescription();
         if ($description) {
             return _t(static::class.'.DESCRIPTION', $description);
         }
@@ -3137,7 +2875,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $entities = parent::provideI18nEntities();
 
         // Add optional description
-        $description = $this->description();
+        $description = $this->classDescription();
         if ($description) {
             $entities[static::class . '.DESCRIPTION'] = $description;
         }
@@ -3159,11 +2897,27 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public static function reset()
     {
-        self::$cache_permissions = array();
+        $permissions = static::getPermissionChecker();
+        if ($permissions instanceof InheritedPermissions) {
+            $permissions->clearCache();
+        }
     }
 
-    public static function on_db_reset()
+    /**
+     * Update dependant pages
+     */
+    protected function updateDependentPages()
     {
-        self::$cache_permissions = array();
+        // Need to flush cache to avoid outdated versionnumber references
+        $this->flushCache();
+
+        // Need to mark pages depending to this one as broken
+        $dependentPages = $this->DependentPages();
+        if ($dependentPages) {
+            foreach ($dependentPages as $page) {
+                // $page->write() calls syncLinkTracking, which does all the hard work for us.
+                $page->write();
+            }
+        }
     }
 }

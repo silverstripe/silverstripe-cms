@@ -16,13 +16,13 @@ class SilverStripeNavigatorItem_CMSLink extends SilverStripeNavigatorItem
         return sprintf(
             '<a href="%s">%s</a>',
             $this->record->CMSEditLink(),
-            _t('ContentController.CMS', 'CMS')
+            _t('SilverStripe\\CMS\\Controllers\\ContentController.CMS', 'CMS')
         );
     }
 
     public function getTitle()
     {
-        return _t('ContentController.CMS', 'CMS', 'Used in navigation. Should be a short label');
+        return _t('SilverStripe\\CMS\\Controllers\\ContentController.CMS', 'CMS', 'Used in navigation. Should be a short label');
     }
 
     public function getLink()

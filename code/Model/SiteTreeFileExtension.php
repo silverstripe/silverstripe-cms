@@ -9,7 +9,7 @@ use SilverStripe\Forms\ReadonlyField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ManyManyList;
-use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\SSViewer;
 use Subsite;
 
@@ -50,8 +50,8 @@ class SiteTreeFileExtension extends DataExtension
             'LastEdited',
             ReadonlyField::create(
                 'BackLinkCount',
-                _t('AssetTableField.BACKLINKCOUNT', 'Used on:'),
-                $this->BackLinkTracking()->count() . ' ' . _t('AssetTableField.PAGES', 'page(s)')
+                _t(__CLASS__.'.BACKLINKCOUNT', 'Used on:'),
+                $this->BackLinkTracking()->count() . ' ' . _t(__CLASS__.'.PAGES', 'page(s)')
             )
                 ->addExtraClass('cms-description-toggle')
                 ->setDescription($this->BackLinkHTMLList())
@@ -65,7 +65,7 @@ class SiteTreeFileExtension extends DataExtension
      */
     public function BackLinkHTMLList()
     {
-        $viewer = new SSViewer(["type" => "Includes", self::class . "_description"]);
+        $viewer = SSViewer::create(["type" => "Includes", self::class . "_description"]);
 
         return $viewer->process($this->owner);
     }

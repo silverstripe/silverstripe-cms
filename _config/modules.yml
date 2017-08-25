@@ -1,0 +1,8 @@
+---
+Name: modules-cms
+After: modules-other
+Before: modules-admin
+---
+SilverStripe\Core\Manifest\ModuleManifest:
+  module_priority:
+    - silverstripe/cms
