@@ -294,7 +294,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function LinkTreeView()
     {
         // Tree view is just default link to main pages section (no /treeview suffix)
-        return $this->LinkWithSearch(CMSMain::singleton()->Link());
+        return CMSMain::singleton()->Link();
     }
 
     /**
@@ -1451,6 +1451,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             );
         }
         $gridField = new GridField('Page', 'Pages', $list, $gridFieldConfig);
+        $gridField->setAttribute('cms-loading-ignore-url-params', true);
         /** @var GridFieldDataColumns $columns */
         $columns = $gridField->getConfig()->getComponentByType('SilverStripe\\Forms\\GridField\\GridFieldDataColumns');
 
