@@ -418,13 +418,6 @@ class CMSPageHistoryController extends CMSMain
         return $form;
     }
 
-    public function Breadcrumbs($unlinked = false)
-    {
-        $crumbs = parent::Breadcrumbs($unlinked);
-        $crumbs[0]->Title = _t('SilverStripe\\CMS\\Controllers\\CMSPagesController.MENUTITLE', 'Pages');
-        return $crumbs;
-    }
-
     /**
      * Replace all data fields with HTML readonly fields to display diff
      *

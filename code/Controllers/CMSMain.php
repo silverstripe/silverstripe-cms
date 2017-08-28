@@ -921,17 +921,53 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     }
 
     /**
+     * Get "back" url for breadcrumbs
+     *
+     * @return string
+     */
+    public function getBreadcrumbsBackLink()
+    {
+        $breadcrumbs = $this->Breadcrumbs();
+        if ($breadcrumbs->count() < 2) {
+            return $this->LinkPages();
+        }
+        // Get second from end breadcrumb
+        return $breadcrumbs
+            ->offsetGet($breadcrumbs->count() - 2)
+            ->Link;
+    }
+
+    /**
      * @param bool $unlinked
      * @return ArrayList
      */
     public function Breadcrumbs($unlinked = false)
     {
-        $items = parent::Breadcrumbs($unlinked);
+        $items = new ArrayList();
 
-        if ($items->count() > 1) {
-            // Specific to the SiteTree admin section, we never show the cms section and current
-            // page in the same breadcrumbs block.
-            $items->shift();
+        // Check if we are editing a page
+        /** @var SiteTree $record */
+        $record = $this->currentPage();
+        if (!$record) {
+            $items->push(new ArrayData(array(
+                'Title' => CMSPagesController::menu_title(),
+                'Link' => ($unlinked) ? false : $this->LinkPages()
+            )));
+            return $items;
+        }
+
+        // Add all ancestors
+        $ancestors = $record->getAncestors();
+        $ancestors = new ArrayList(array_reverse($ancestors->toArray()));
+        $ancestors->push($record);
+        /** @var SiteTree $ancestor */
+        foreach ($ancestors as $ancestor) {
+            $items->push(new ArrayData(array(
+                'Title' => $ancestor->getMenuTitle(),
+                'Link' => ($unlinked)
+                    ? false
+                    : $ancestor->CMSEditLink()
+            )));
         }
 
         return $items;
