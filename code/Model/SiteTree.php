@@ -37,6 +37,7 @@ use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\ToggleCompositeField;
 use SilverStripe\Forms\TreeDropdownField;
+use SilverStripe\Forms\TreeMultiselectField;
 use SilverStripe\i18n\i18n;
 use SilverStripe\i18n\i18nEntityProvider;
 use SilverStripe\ORM\ArrayList;
@@ -1938,7 +1939,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             asort($map);
             return $map;
         };
-        $groupsMap = $mapFn(Group::get());
         $viewAllGroupsMap = $mapFn(Permission::get_groups_by_permission(['SITETREE_VIEW_ALL', 'ADMIN']));
         $editAllGroupsMap = $mapFn(Permission::get_groups_by_permission(['SITETREE_EDIT_ALL', 'ADMIN']));
 
@@ -1967,22 +1967,20 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                         "CanViewType",
                         _t(__CLASS__.'.ACCESSHEADER', "Who can view this page?")
                     ),
-                    $viewerGroupsField = ListboxField::create("ViewerGroups", _t(__CLASS__.'.VIEWERGROUPS', "Viewer Groups"))
-                        ->setSource($groupsMap)
-                        ->setAttribute(
-                            'data-placeholder',
-                            _t(__CLASS__.'.GroupPlaceholder', 'Click to select group')
-                        ),
+                    $viewerGroupsField = TreeMultiselectField::create(
+                        "ViewerGroups",
+                        _t(__CLASS__.'.VIEWERGROUPS', "Viewer Groups"),
+                        Group::class
+                    ),
                     $editorsOptionsField = new OptionsetField(
                         "CanEditType",
                         _t(__CLASS__.'.EDITHEADER', "Who can edit this page?")
                     ),
-                    $editorGroupsField = ListboxField::create("EditorGroups", _t(__CLASS__.'.EDITORGROUPS', "Editor Groups"))
-                        ->setSource($groupsMap)
-                        ->setAttribute(
-                            'data-placeholder',
-                            _t(__CLASS__.'.GroupPlaceholder', 'Click to select group')
-                        )
+                    $editorGroupsField = TreeMultiselectField::create(
+                        "EditorGroups",
+                        _t(__CLASS__.'.EDITORGROUPS', "Editor Groups"),
+                        Group::class
+                    )
                 )
             )
         );
