@@ -122,7 +122,7 @@ $.entwine('ss', function($){
 
 			// update button
 			updateURLFromTitle = $('<button />', {
-				'class': 'update ss-ui-button-small',
+				'class': 'btn btn-primary btn-sm update',
 				'text': i18n._t('CMS.UpdateURL'),
 				'type': 'button',
 				'click': function(e) {
