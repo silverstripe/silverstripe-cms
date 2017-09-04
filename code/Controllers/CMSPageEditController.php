@@ -11,6 +11,7 @@ use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Forms\Form;
 use SilverStripe\ORM\FieldType\DBHTMLText;
+use SilverStripe\ORM\ValidationResult;
 
 /**
  * @package cms
@@ -58,7 +59,7 @@ class CMSPageEditController extends CMSMain
         $record = \Page::get()->byID($id);
 
         $handler = AddToCampaignHandler::create($this, $record);
-        $results = $handler->addToCampaign($record, $data['Campaign']);
+        $results = $handler->addToCampaign($record, $data);
         if (is_null($results)) {
             return null;
         }
@@ -97,7 +98,7 @@ class CMSPageEditController extends CMSMain
 
         if (!$record) {
             $this->httpError(404, _t(
-                'SilverStripe\\AssetAdmin\\Controller\\AssetAdmin.ErrorNotFound',
+                __CLASS__ . '.ErrorNotFound',
                 'That {Type} couldn\'t be found',
                 '',
                 ['Type' => Page::singleton()->i18n_singular_name()]
@@ -106,7 +107,7 @@ class CMSPageEditController extends CMSMain
         }
         if (!$record->canView()) {
             $this->httpError(403, _t(
-                'SilverStripe\\AssetAdmin\\Controller\\AssetAdmin.ErrorItemPermissionDenied',
+                __CLASS__.'.ErrorItemPermissionDenied',
                 'It seems you don\'t have the necessary permissions to add {ObjectTitle} to a campaign',
                 '',
                 ['ObjectTitle' => Page::singleton()->i18n_singular_name()]
@@ -115,6 +116,13 @@ class CMSPageEditController extends CMSMain
         }
 
         $handler = AddToCampaignHandler::create($this, $record);
-        return $handler->Form($record);
+        $form = $handler->Form($record);
+
+        $form->setValidationResponseCallback(function (ValidationResult $errors) use ($form, $id) {
+            $schemaId = Controller::join_links($this->Link('schema/AddToCampaignForm'), $id);
+            return $this->getSchemaResponse($schemaId, $form, $errors);
+        });
+
+        return $form;
     }
 }
