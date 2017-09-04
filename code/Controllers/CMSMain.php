@@ -138,7 +138,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
     private static $url_handlers = [
         'EditForm/$ID' => 'EditForm',
-        'treeview/$ID' => 'treeview',
         'listview/$ParentID' => 'listview',
     ];
 
@@ -330,13 +329,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     public function LinkTreeViewDeferred()
     {
-        $link = $this->Link('treeview');
-        // Ensure selected page is encoded into URL
-        $selectedID = $this->currentPageID();
-        if ($selectedID) {
-            $link = Controller::join_links($link, $selectedID);
-        }
-        return $this->LinkWithSearch($link);
+        return $this->Link('treeview');
     }
 
     public function LinkPageEdit($id = null)
@@ -546,11 +539,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     {
         // Get classes from object
         $classes = $node->CMSTreeClasses();
-
-        // Flag as current
-        if ($this->isCurrentPage($node)) {
-            $classes .= ' current';
-        }
 
         // Get status flag classes
         $flags = $node->getStatusFlags();
@@ -1345,14 +1333,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * This method exclusively handles deferred ajax requests to render the
      * pages tree deferred handler (no pjax-fragment)
      *
-     * @param HTTPRequest $request
      * @return string HTML
      */
-    public function treeview($request)
+    public function treeview()
     {
-        // Ensure selected page ID is highlighted
-        $pageID = $request->param('ID') ?: 0;
-        $this->setCurrentPageID($pageID);
         return $this->renderWith($this->getTemplatesWithSuffix('_TreeView'));
     }
 
