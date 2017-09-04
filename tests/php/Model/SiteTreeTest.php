@@ -890,7 +890,7 @@ class SiteTreeTest extends SapphireTest
     }
 
     /**
-     * @covers SilverStripe\CMS\Model\SiteTree::validURLSegment
+     * @covers \SilverStripe\CMS\Model\SiteTree::validURLSegment
      */
     public function testValidURLSegmentURLSegmentConflicts()
     {
@@ -922,7 +922,7 @@ class SiteTreeTest extends SapphireTest
     }
 
     /**
-     * @covers SilverStripe\CMS\Model\SiteTree::validURLSegment
+     * @covers \SilverStripe\CMS\Model\SiteTree::validURLSegment
      */
     public function testValidURLSegmentClassNameConflicts()
     {
@@ -933,7 +933,7 @@ class SiteTreeTest extends SapphireTest
     }
 
     /**
-     * @covers SilverStripe\CMS\Model\SiteTree::validURLSegment
+     * @covers \SilverStripe\CMS\Model\SiteTree::validURLSegment
      */
     public function testValidURLSegmentControllerConflicts()
     {
@@ -1399,6 +1399,29 @@ class SiteTreeTest extends SapphireTest
         $this->assertTrue($page->canPublish());
         $page->canEditValue = false;
         $this->assertFalse($page->canPublish());
+    }
+
+    /**
+     * Test url rewriting extensions
+     */
+    public function testLinkExtension()
+    {
+        Director::config()->set('alternate_base_url', 'http://www.baseurl.com');
+        $page = new SiteTreeTest_ClassD();
+        $page->URLSegment = 'classd';
+        $page->write();
+        $this->assertEquals(
+            'http://www.updatedhost.com/classd/myaction?extra=1',
+            $page->Link('myaction')
+        );
+        $this->assertEquals(
+            'http://www.updatedhost.com/classd/myaction?extra=1',
+            $page->AbsoluteLink('myaction')
+        );
+        $this->assertEquals(
+            'classd/myaction',
+            $page->RelativeLink('myaction')
+        );
     }
 
     /**
