@@ -9,35 +9,35 @@ import ShortcodeSerialiser from 'lib/ShortcodeSerialiser';
 import { createInsertLinkModal } from 'containers/InsertLinkModal/InsertLinkModal';
 import { provideInjector } from 'lib/Injector';
 
-const commandName = 'sslinkinternal';
+const commandName = 'sslinkanchor';
 
 // Link to external url
 TinyMCEActionRegistrar
   .addAction('sslink', {
-    text: i18n._t('CMS.LINKLABEL_PAGE', 'Page on this site'),
+    text: i18n._t('CMS.LINKLABEL_ANCHOR', 'Anchor on a page'),
     onclick: (editor) => editor.execCommand(commandName),
-    priority: 53,
+    priority: 52,
   })
-  .addCommandWithUrlTest(commandName, /^\[sitetree_link.+]$/);
+  .addCommandWithUrlTest(commandName, /^\[sitetree_link.+]#[^#\]]+$/);
 
 const plugin = {
   init(editor) {
     editor.addCommand(commandName, () => {
       const field = jQuery(`#${editor.id}`).entwine('ss');
 
-      field.openLinkInternalDialog();
+      field.openLinkAnchorDialog();
     });
   },
 };
 
-const modalId = 'insert-link__dialog-wrapper--internal';
+const modalId = 'insert-link__dialog-wrapper--anchor';
 const sectionConfigKey = 'SilverStripe\\CMS\\Controllers\\CMSPageEditController';
-const formName = 'editorInternalLink';
+const formName = 'editorAnchorLink';
 const InsertLinkInternalModal = provideInjector(createInsertLinkModal(sectionConfigKey, formName));
 
 jQuery.entwine('ss', ($) => {
   $('textarea.htmleditor').entwine({
-    openLinkInternalDialog() {
+    openLinkAnchorDialog() {
       let dialog = $(`#${modalId}`);
 
       if (!dialog.length) {
@@ -65,6 +65,7 @@ jQuery.entwine('ss', ($) => {
       const selectionContent = selection.getContent() || '';
       const tagName = selection.getNode().tagName;
       const requireLinkText = tagName !== 'A' && selectionContent.trim() === '';
+      const currentPageID = Number($('#Form_EditForm_ID').val() || 0);
 
       // create/update the react component
       ReactDOM.render(
@@ -73,12 +74,13 @@ jQuery.entwine('ss', ($) => {
             show={show}
             onInsert={handleInsert}
             onHide={handleHide}
-            title={i18n._t('CMS.LINK_PAGE', 'Link to a page')}
+            title={i18n._t('CMS.LINK_ANCHOR', 'Link to an anchor on a page')}
             bodyClassName="modal__dialog"
-            className="insert-link__dialog-wrapper--internal"
+            className="insert-link__dialog-wrapper--anchor"
             fileAttributes={attrs}
-            identifier="Admin.InsertLinkInternalModal"
+            identifier="Admin.InsertLinkAnchorModal"
             requireLinkText={requireLinkText}
+            currentPageID={currentPageID}
           />
         </ApolloProvider>,
         this[0]

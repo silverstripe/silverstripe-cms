@@ -4,6 +4,7 @@ namespace SilverStripe\CMS\Forms;
 
 use SilverStripe\Admin\Forms\LinkFormFactory;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Control\RequestHandler;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
@@ -15,6 +16,12 @@ use SilverStripe\Forms\RequiredFields;
  */
 class InternalLinkFormFactory extends LinkFormFactory
 {
+    /**
+     * @param RequestHandler $controller
+     * @param string $name
+     * @param array $context
+     * @return FieldList
+     */
     protected function getFormFields($controller, $name, $context)
     {
         $fields = FieldList::create([
@@ -29,7 +36,6 @@ class InternalLinkFormFactory extends LinkFormFactory
                 'Description',
                 _t(__CLASS__.'.LINKDESCR', 'Link description')
             ),
-            TextField::create('Anchor', _t(__CLASS__.'.ANCHORVALUE', 'Anchor')),
             CheckboxField::create(
                 'TargetBlank',
                 _t(__CLASS__.'.LINKOPENNEWWIN', 'Open in new window/tab')
