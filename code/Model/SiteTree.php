@@ -2253,11 +2253,13 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         // "save", supports an alternate state that is still clickable, but notifies the user that the action is not needed.
+        $noChangesClasses = 'btn-outline-secondary font-icon-check-mark';
         if ($canEdit && $isOnDraft) {
             $majorActions->push(
                 FormAction::create('save', _t(__CLASS__.'.BUTTONSAVED', 'Saved'))
-                    ->addExtraClass('btn-outline-secondary font-icon-check-mark')
-                    ->setAttribute('data-btn-alternate', 'btn action btn-primary font-icon-save')
+                    ->addExtraClass($noChangesClasses)
+                    ->setAttribute('data-btn-alternate-add', 'btn-primary font-icon-save')
+                    ->setAttribute('data-btn-alternate-remove', $noChangesClasses)
                     ->setUseButtonTag(true)
                     ->setAttribute('data-text-alternate', _t('SilverStripe\\CMS\\Controllers\\CMSMain.SAVEDRAFT', 'Save draft'))
             );
@@ -2267,8 +2269,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             // "publish", as with "save", it supports an alternate state to show when action is needed.
             $majorActions->push(
                 $publish = FormAction::create('publish', _t(__CLASS__.'.BUTTONPUBLISHED', 'Published'))
-                    ->addExtraClass('btn-outline-secondary font-icon-check-mark')
-                    ->setAttribute('data-btn-alternate', 'btn action btn-primary font-icon-rocket')
+                    ->addExtraClass($noChangesClasses)
+                    ->setAttribute('data-btn-alternate-add', 'btn-primary font-icon-rocket')
+                    ->setAttribute('data-btn-alternate-remove', $noChangesClasses)
                     ->setUseButtonTag(true)
                     ->setAttribute('data-text-alternate', _t(__CLASS__.'.BUTTONSAVEPUBLISH', 'Save & publish'))
             );
@@ -2277,7 +2280,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             if ($stagesDiffer) {
                 $publish->addExtraClass('btn-primary font-icon-rocket');
                 $publish->setTitle(_t(__CLASS__.'.BUTTONSAVEPUBLISH', 'Save & publish'));
-                $publish->removeExtraClass('btn-outline-secondary font-icon-check-mark');
+                $publish->removeExtraClass($noChangesClasses);
             }
         }
 
