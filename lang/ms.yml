@@ -1,6 +1,5 @@
 ms:
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'Mukasurat pengalih destinasi dihasilkan tanpa menyatakan destinasi alihan.'
     HEADER: 'Mukasurat ini akan mengalih pengguna ke mukasurat lain'
     OTHERURL: 'URL laman web lain'
     REDIRECTTO: 'Alihkan ke'

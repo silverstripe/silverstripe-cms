@@ -61,7 +61,6 @@ ja:
     EMPTY: 'URLのセグメントを入力または中止をクリックする'
     HelpChars: 特殊文字は自動的に変換されたか取り除かれました
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: '転送URLを含むページには、転送先がない状態で設定されています。'
     HEADER: このページをユーザーを変更して他のページにしますか？
     OTHERURL: 他のウェブサイトのURL
     REDIRECTTO: 変更は

@@ -64,7 +64,6 @@ sl:
     EMPTY: 'Prosim vnesite URL segment ali kliknite prekliči'
     HelpChars: 'Posebni znaki so samodejno spremenjeni ali odstranjeni.'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'Nastavljena preusmeritev še nima določenega cilja.'
     HEADER: 'Ta stran bo preusmerila uporabnike na drugo stran'
     OTHERURL: 'URL druge spletne strani'
     PLURALNAME: 'Preusmeritvene strani'

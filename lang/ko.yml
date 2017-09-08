@@ -57,7 +57,6 @@ ko:
     EMPTY: 'URL 세그먼트를 입력 또는 중지를 클릭'
     HelpChars: '특수 문자는 자동으로 변환되었는지 제거되었습니다'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: '다른곳으로 리다이렉트되지않고 리다이렉터 페이지가 설치되었습니다.'
     HEADER: '이 페이지는 다른 페이지로 사용자들을 이동시킵니다.'
     OTHERURL: '다른 웹사이트 URL'
     REDIRECTTO: 변경

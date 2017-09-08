@@ -48,7 +48,6 @@ et_EE:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Erimärgid teisendatakse või eemaldatakse automaatselt.'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'Suunav lehekülg seati üles ilma, et ta kuhugile suunaks.'
     HEADER: 'See lehekülg suunab kasutajad teisele leheküljele'
     OTHERURL: 'Teise veebisaidi URL'
     REDIRECTTO: 'Suuna ümber'

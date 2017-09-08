@@ -5,7 +5,6 @@ zh_CN:
     PUBALLFUN: '“全部发布“功能'
     REMOVEDPAGEFROMDRAFT: '已从测试站点删除 ''{title}'''
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 重导网页被生成，却没有什么地方由它来重导。
     HEADER: 该页会将用户重新导向另一网页
     OTHERURL: 另一网站的URL
     REDIRECTTO: 重新导向

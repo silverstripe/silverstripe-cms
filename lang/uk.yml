@@ -36,7 +36,6 @@ uk:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Спеціальні символи автоматично перетворені або видалені.'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'Сторінка перенаправлення була встановлена без указання цілі перенаправлення'
     HEADER: 'Ця сторінка перенаправляє користувачів на іншу сторінку'
     OTHERURL: 'URL іншого сайту'
     REDIRECTTO: 'Перенапралено на'

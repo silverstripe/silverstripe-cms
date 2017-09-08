@@ -56,7 +56,6 @@ sr_RS@latin:
     EMPTY: 'Molimo Vas da unesete segment URL-a ili kliknete na Odustani'
     HelpChars: 'Specijalni karakteri su automatski konvertovani ili uklonjeni.'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'Stranici za preusmeravanje nije podešeno odredište na koje preusmerava.'
     HEADER: 'Ova stranica će preusmeriti korisnike na drugu stranicu'
     OTHERURL: 'URL drugog veb sajta'
     REDIRECTTO: 'Preusmeri na'

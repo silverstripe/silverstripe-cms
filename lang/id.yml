@@ -60,7 +60,6 @@ id:
     EMPTY: 'Mohon isikan URL atau klik Batal'
     HelpChars: 'Karakter khusus akan dikonversi secara otomatis atau dihapus.'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'Sebuah laman pengarah telah dibuat tanpa arah yang dituju.'
     HEADER: 'Laman ini akan mengarahkan pengguna ke laman lain'
     OTHERURL: 'URL situs web lain'
     REDIRECTTO: 'Arahkan lagi ke'

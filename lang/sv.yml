@@ -91,7 +91,6 @@ sv:
     HelpChars: 'Specialtecken konverteras eller tas bort'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Omdirigerar till en annan intern eller extern sida'
-    HASBEENSETUP: 'En omdirigeringssida har skapats utan att ha något mål.'
     HEADER: 'Den här sidan omdirigerar användare till en annan sida'
     OTHERURL: 'Andra sidans URL'
     PLURALNAME: 'Omdirigerings sidor'

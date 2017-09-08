@@ -135,6 +135,12 @@ it:
     VIEWPAGEIN: 'Mostra pagina in:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archiviato
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    ANCHORVALUE: Ancora
+    LINKDESCR: 'Descrizione del link'
+    LINKOPENNEWWIN: 'Apri in una nuova finestra/tab'
+    LINKTEXT: 'Testo del collegamento'
+    SELECT_PAGE: 'Seleziona una pagina'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Annulla
     EMPTY: 'Perfavore inserisci un segmento URL o clicca cancella'
@@ -143,7 +149,6 @@ it:
     OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Reinoltra ad una pagina interna o una URL esterna'
-    HASBEENSETUP: 'Una pagina di redirezione è stata configurata nonostante non vi sia alcun indirizzo a cui farla puntare'
     HEADER: 'Questa pagina redirigerà gli utenti su un''altra'
     OTHERURL: 'Altro indirizzo del sito web'
     PLURALNAME: 'Pagine di reindirizzamento'
@@ -155,6 +160,8 @@ it:
     REDIRECTTOPAGE: 'Una pagina sul tuo sito web'
     SINGULARNAME: 'Pagina di reindirizzamento'
     YOURPAGE: 'Pagina sul tuo sito web'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Una pagina di redirect è stata impostata senza alcuna destinazione'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Chiunque
     ACCESSHEADER: 'Chi può vedere questa pagina?'
@@ -187,6 +194,7 @@ it:
     DependtPageColumnURL: URL
     EDITHEADER: 'Chi può modificare questa pagina?'
     EDITORGROUPS: 'Gruppi di editori'
+    EDITOR_GROUPS_FIELD_DESC: 'Gruppi con permessi di modifica globale: {groupList}'
     EDIT_ALL_DESCRIPTION: 'Modifica qualunque pagina'
     EDIT_ALL_HELP: 'Possibilità di modificare qualsiasi pagina nel sito, senza tenere conto delle impostazioni nella tab Access. Richiede i permessi di "Accesso ai contenuti del sito"'
     Editors: 'Gruppi di Editori'
@@ -240,6 +248,7 @@ it:
     TOPLEVEL: 'Contenuto del sito (Livello alto)'
     URLSegment: 'Segmento URL'
     VIEWERGROUPS: 'Gruppi di visualizzatori'
+    VIEWER_GROUPS_FIELD_DESC: 'Gruppi con permessi di visualizzazione globale: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Visualizza qualsiasi pagina'
     VIEW_ALL_HELP: 'Possibilità di vedere qualsiasi pagina del sito, senza tenere conto delle impostazioni nel tab Accesso. Richiede i permessi per "Accesso alla sezione ''Pagine''"'
     VIEW_DRAFT_CONTENT: 'Visualizza contenuto bozza'

@@ -56,7 +56,6 @@ zh:
     EMPTY: '请输入一个URL分类或点击“取消”'
     HelpChars: '特殊字符已自动转换或删除。'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: '建立了一个没有任何跳转目标的重定向页。'
     HEADER: 该页面将会使用户转向另外一个页面
     OTHERURL: '其他网站URL'
     REDIRECTTO: 重定向到

@@ -17,7 +17,6 @@ tr:
     LOGOUT: 'Çıkış Yap'
     NOTEWONTBESHOWN: 'Not: Bu mesaj ziyaretçilerinize gösterilmeyecektir.'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'Yönlendirilecek yeri olmayan bir yönlendirme sayfası ayarlandı.'
     HEADER: 'Bu sayfa, kullanıcıları başka bir sayfaya yönlendirir'
     OTHERURL: 'Başka bir siteye ait URL'
     REDIRECTTO: 'Şuraya yönlendir'

@@ -93,7 +93,6 @@ hr:
     HelpChars: 'Posebni znakovi se automatski pretvaraju ili uklanjaju.'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Preusmjerava na internu stranicu ili vanjski URL'
-    HASBEENSETUP: 'Stranica za preusjeravanje nema postavljenog preusmjeravanja'
     HEADER: 'Ova stranica preusmjeriti će korisnike na drugu stranicu'
     OTHERURL: 'URL drugog weba'
     PLURALNAME: 'Preusmjeravajuće stranice'

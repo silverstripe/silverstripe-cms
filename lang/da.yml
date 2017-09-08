@@ -43,7 +43,6 @@ da:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Specialkarakterer bliver automatisk konverteret eller fjernet.'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'En omdirigeringsside er blevet sat op, uden et sted at omdirigere til.'
     HEADER: 'Denne side omdirigerer besøgende til en anden side'
     OTHERURL: 'Andet websteds URL'
     REDIRECTTO: 'Omdiriger til'

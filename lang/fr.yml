@@ -61,7 +61,6 @@ fr:
     EMPTY: 'Merci d''entrer une URL ou cliquez sur Annuler'
     HelpChars: 'Les caractères spéciaux sont automatiquement convertis ou supprimés.'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'Une page de redirection sans adresse de redirection a été créée.'
     HEADER: 'Cette page va rediriger les utilisateurs vers une autre page'
     OTHERURL: 'Autre URL de site web'
     REDIRECTTO: 'Rediriger vers'
