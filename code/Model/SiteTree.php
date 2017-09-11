@@ -2253,7 +2253,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         // "save", supports an alternate state that is still clickable, but notifies the user that the action is not needed.
-        $noChangesClasses = 'btn-outline-secondary font-icon-check-mark';
+        $noChangesClasses = 'btn-outline-primary font-icon-tick';
         if ($canEdit && $isOnDraft) {
             $majorActions->push(
                 FormAction::create('save', _t(__CLASS__.'.BUTTONSAVED', 'Saved'))
