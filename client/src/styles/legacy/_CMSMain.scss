@@ -1,5 +1,5 @@
 /**
- * Style  custom to the CMSMain admin interface. CMSMain extends the built in
+ * Style custom to the CMSMain admin interface. CMSMain extends the built in
  * SilverStripe admin section styles. As much as possible we want to use those
  * built in styles. If anything in this file can be implemented in a generic
  * way then it should be include in the admin scss files.
@@ -177,7 +177,18 @@
 	}
 }
 
+.form__field-update-url {
+  position: absolute;
+  top: 4px;
+  right: 20px;
+  background: #fff;
+  z-index: 3;
+
+  @media (max-width: 992px) {
+    right: 0;
+  }
+}
+
 #Form_EditForm #Title .update {
 	margin-left: 7px;
 }
-

@@ -122,7 +122,7 @@ $.entwine('ss', function($){
 
 			// update button
 			updateURLFromTitle = $('<button />', {
-				'class': 'btn btn-primary btn-sm update',
+				'class': 'btn btn-outline-secondary btn-sm update form__field-update-url',
 				'text': i18n._t('CMS.UpdateURL'),
 				'type': 'button',
 				'click': function(e) {
@@ -133,6 +133,7 @@ $.entwine('ss', function($){
 
 			// insert elements
 			updateURLFromTitle.insertAfter(self);
+      updateURLFromTitle.parent('.form__field-holder').addClass('input-group');
 			updateURLFromTitle.hide();
 		}
 	});
