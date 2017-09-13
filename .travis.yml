@@ -1,6 +1,6 @@
 language: php
 
-dist: precise
+dist: trusty
 
 sudo: false
 
@@ -31,9 +31,6 @@ matrix:
       env: DB=MYSQL BEHAT_TEST=1
     - php: 7.0
       env: NPM_TEST=1
-  allow_failures:
-    - php: 7.0
-      env: DB=MYSQL BEHAT_TEST=1
 
 before_script:
 # Init PHP
