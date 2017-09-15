@@ -4,9 +4,11 @@
 
 		<div class="fill-height flexbox-area-grow">
 			<div class="cms-content-header north">
-				<div class="cms-content-header-nav fill-width">
-					<a href="$BreadcrumbsBackLink" class="btn btn-secondary btn--no-text font-icon-left-open-big hidden-lg-up toolbar__back-button"></a>
-					<% include SilverStripe\\Admin\\CMSBreadcrumbs %>
+				<div class="cms-content-header-nav fill-width vertical-align-items">
+                    <div class="cms-content-header-nav__left vertical-align-items flexbox-area-grow">
+                        <a href="$BreadcrumbsBackLink" class="btn btn-secondary btn--no-text font-icon-left-open-big hidden-lg-up toolbar__back-button"></a>
+                        <% include SilverStripe\\Admin\\CMSBreadcrumbs %>
+                    </div>
 
 					<div class="cms-content-header-tabs cms-tabset">
 						<ul class="cms-tabset-nav-primary nav nav-tabs">
