@@ -10,6 +10,7 @@ use SilverStripe\Control\Controller;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Forms\Form;
+use SilverStripe\ORM\ArrayLib;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\ValidationResult;
 
@@ -33,7 +34,7 @@ class CMSPageEditController extends CMSMain
 
     public function getClientConfig()
     {
-        return array_merge(parent::getClientConfig(), [
+        return ArrayLib::array_merge_recursive(parent::getClientConfig(), [
             'form' => [
                 'AddToCampaignForm' => [
                     'schemaUrl' => $this->Link('schema/AddToCampaignForm')
