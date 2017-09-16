@@ -3,12 +3,13 @@
 namespace SilverStripe\CMS\Tests\Controllers;
 
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Archive;
-use SilverStripe\Versioned\Versioned;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Publish;
-use SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Restore;
+use SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Versioned\Versioned;
 
 /**
  * Tests CMS Specific subclasses of {@see CMSBatchAction}
@@ -23,6 +24,9 @@ class CMSBatchActionsTest extends SapphireTest
         parent::setUp();
 
         $this->logInWithPermission('ADMIN');
+
+        // Tests assume strict hierarchy is enabled
+        Config::inst()->update(SiteTree::class, 'enforce_strict_hierarchy', true);
 
         // published page
         $published = $this->objFromFixture(SiteTree::class, 'published');
