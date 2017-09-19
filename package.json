@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/silverstripe/silverstripe-cms#readme",
   "devDependencies": {
-    "@silverstripe/webpack-config": "file:../../webpack-config"
+    "@silverstripe/webpack-config": "^0.3.0"
   },
   "dependencies": {
     "jquery": "^3.2.1"
