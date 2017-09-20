@@ -27,6 +27,7 @@ const config = [
       // See https://github.com/webpack/webpack/issues/300#issuecomment-45313650
       SilverStripeNavigator: `${PATHS.LEGACY_SRC}/SilverStripeNavigator.js`,
       'TinyMCE_sslink-internal': `${PATHS.LEGACY_SRC}/TinyMCE_sslink-internal.js`,
+      'TinyMCE_sslink-anchor': `${PATHS.LEGACY_SRC}/TinyMCE_sslink-anchor.js`,
     },
     output: {
       path: PATHS.DIST,

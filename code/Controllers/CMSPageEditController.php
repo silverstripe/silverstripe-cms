@@ -37,11 +37,15 @@ class CMSPageEditController extends CMSMain
         return ArrayLib::array_merge_recursive(parent::getClientConfig(), [
             'form' => [
                 'AddToCampaignForm' => [
-                    'schemaUrl' => $this->Link('schema/AddToCampaignForm')
+                    'schemaUrl' => $this->Link('schema/AddToCampaignForm'),
                 ],
                 'editorInternalLink' => [
                     'schemaUrl' => LeftAndMain::singleton()
                         ->Link('methodSchema/Modals/editorInternalLink'),
+                ],
+                'editorAnchorLink' => [
+                    'schemaUrl' => LeftAndMain::singleton()
+                        ->Link('methodSchema/Modals/editorAnchorLink/:pageid'),
                 ],
             ],
         ]);

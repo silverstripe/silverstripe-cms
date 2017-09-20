@@ -9,9 +9,12 @@
     "node": "^6.x"
   },
   "scripts": {
-    "build": "NODE_ENV=production webpack -p --bail --progress",
+    "build": "yarn && yarn test && NODE_ENV=production webpack -p --bail --progress",
+    "dev": "NODE_ENV=development webpack --progress",
     "watch": "NODE_ENV=development webpack --watch --progress",
     "css": "WEBPACK_CHILD=css npm run build",
+    "test": "jest",
+    "coverage": "jest --coverage",
     "lint": "eslint client/src && sass-lint -v"
   },
   "repository": {
@@ -28,10 +31,57 @@
     "url": "https://github.com/silverstripe/silverstripe-cms/issues"
   },
   "homepage": "https://github.com/silverstripe/silverstripe-cms#readme",
-  "devDependencies": {
-    "@silverstripe/webpack-config": "^0.3.0"
-  },
   "dependencies": {
-    "jquery": "^3.2.1"
+    "babel-loader": "^7.0.0",
+    "babel-polyfill": "^6.26.0",
+    "classnames": "^2.2.5",
+    "deep-freeze-strict": "^1.1.1",
+    "isomorphic-fetch": "https://registry.npmjs.org/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz",
+    "jquery": "^3.2.1",
+    "react": "15.3.1",
+    "react-addons-test-utils": "15.3.1",
+    "react-bootstrap-ss": "^0.30.10",
+    "react-dom": "15.3.1",
+    "react-redux": "^4.4.1",
+    "react-select": "^1.0.0-rc.5",
+    "redux": "^3.3.1",
+    "redux-form": "^6.0.2"
+  },
+  "devDependencies": {
+    "@silverstripe/webpack-config": "^0.3.0",
+    "babel-jest": "^20.0.3",
+    "jest-cli": "^19.0.2"
+  },
+  "jest": {
+    "roots": [
+      "client/src"
+    ],
+    "moduleDirectories": [
+      "client/src",
+      "node_modules",
+      "../silverstripe-admin/client/src",
+      "../silverstripe-admin",
+      "silverstripe-admin/client/src",
+      "silverstripe-admin",
+      "node_modules/@silverstripe/webpack-config/node_modules"
+    ],
+    "testMatch": [
+      "**/tests/**/*-test.js?(x)"
+    ],
+    "transform": {
+      ".*": "babel-jest"
+    }
+  },
+  "resolutions": {
+    "eslint": "^4.6.1"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
+    ]
   }
 }

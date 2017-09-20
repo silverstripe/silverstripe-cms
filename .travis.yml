@@ -64,6 +64,7 @@ script:
  - if [[ $NPM_TEST ]]; then git diff-files --quiet -w --relative=client; fi
  - if [[ $NPM_TEST ]]; then git diff -w --no-color --relative=client; fi
  - if [[ $NPM_TEST ]]; then yarn run lint; fi
+ - if [[ $NPM_TEST ]]; then yarn run test; fi
  - if [[ $PHPCS_TEST ]]; then composer run-script lint; fi
 
 after_success:
