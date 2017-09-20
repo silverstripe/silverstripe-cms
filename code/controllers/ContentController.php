@@ -266,7 +266,8 @@ class ContentController extends Controller {
 	 *       all available log-in forms (also OpenID...)
 	 */
 	public function LoginForm() {
-		return MemberAuthenticator::get_login_form($this);
+		$authenticator = Authenticator::get_default_authenticator();
+		return $authenticator::get_login_form($this);
 	}
 
 	public function SilverStripeNavigator() {
