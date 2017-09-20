@@ -43,8 +43,8 @@ class SilverStripeNavigator extends ViewableData
     {
         $items = array();
 
-        $classes = ClassInfo::subclassesFor('SilverStripe\\CMS\\Controllers\\SilverStripeNavigatorItem');
-        unset($classes['SilverStripe\\CMS\\Controllers\\SilverStripeNavigatorItem']);
+        $classes = ClassInfo::subclassesFor(SilverStripeNavigatorItem::class);
+        array_shift($classes);
 
         // Sort menu items according to priority
         foreach ($classes as $class) {

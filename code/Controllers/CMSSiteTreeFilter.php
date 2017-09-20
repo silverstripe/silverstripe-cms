@@ -74,7 +74,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
     public static function get_all_filters()
     {
         // get all filter instances
-        $filters = ClassInfo::subclassesFor('SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter');
+        $filters = ClassInfo::subclassesFor(CMSSiteTreeFilter::class);
 
         // remove abstract CMSSiteTreeFilter class
         array_shift($filters);
@@ -162,7 +162,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
             }
 
             while (!empty($parents)) {
-                $q = Versioned::get_including_deleted('SilverStripe\\CMS\\Model\\SiteTree', '"RecordID" in ('.implode(',', array_keys($parents)).')');
+                $q = Versioned::get_including_deleted(SiteTree::class, '"RecordID" in ('.implode(',', array_keys($parents)).')');
                 $list = $q->map('ID', 'ParentID');
                 $parents = array();
                 foreach ($list as $id => $parentID) {

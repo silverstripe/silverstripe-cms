@@ -2,6 +2,7 @@
 
 namespace SilverStripe\CMS\Controllers;
 
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Core\Convert;
 use SilverStripe\View\Requirements;
 use SilverStripe\Core\ClassInfo;
@@ -29,7 +30,7 @@ class LeftAndMainPageIconsExtension extends Extension
     {
         $css = '';
 
-        $classes = ClassInfo::subclassesFor('SilverStripe\\CMS\\Model\\SiteTree');
+        $classes = ClassInfo::subclassesFor(SiteTree::class);
         foreach ($classes as $class) {
             $obj = singleton($class);
             $iconSpec = $obj->config()->get('icon');

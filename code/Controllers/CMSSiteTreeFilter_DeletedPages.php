@@ -2,6 +2,7 @@
 
 namespace SilverStripe\CMS\Controllers;
 
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Versioned\Versioned;
 
 /**
@@ -29,7 +30,7 @@ class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter
 
     public function getFilteredPages()
     {
-        $pages = Versioned::get_including_deleted('SilverStripe\\CMS\\Model\\SiteTree');
+        $pages = Versioned::get_including_deleted(SiteTree::class);
         $pages = $this->applyDefaultFilters($pages);
         return $pages;
     }

@@ -63,7 +63,7 @@ in the other stage:<br />
 </p>
 	";
 
-    protected $orphanedSearchClass = 'SilverStripe\\CMS\\Model\\SiteTree';
+    protected $orphanedSearchClass = SiteTree::class;
 
     protected function init()
     {
@@ -341,7 +341,7 @@ in the other stage:<br />
      * @param int|array $limit
      * @return SS_List
      */
-    public function getOrphanedPages($class = 'SilverStripe\\CMS\\Model\\SiteTree', $filter = array(), $sort = null, $join = null, $limit = null)
+    public function getOrphanedPages($class = SiteTree::class, $filter = array(), $sort = null, $join = null, $limit = null)
     {
         // Alter condition
         $table = DataObject::getSchema()->tableName($class);

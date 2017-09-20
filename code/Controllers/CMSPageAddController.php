@@ -76,7 +76,7 @@ class CMSPageAddController extends CMSPageEditController
                         $parentField = new TreeDropdownField(
                             "ParentID",
                             "",
-                            'SilverStripe\\CMS\\Model\\SiteTree',
+                            SiteTree::class,
                             'ID',
                             'TreeTitle'
                         ),
