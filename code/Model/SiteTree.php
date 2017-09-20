@@ -2488,17 +2488,18 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
             // Parse candidate list
             $allowedChildren = [];
-            foreach ($candidates as $candidate) {
+            foreach ((array)$candidates as $candidate) {
                 // If a classname is prefixed by "*", such as "*Page", then only that class is allowed - no subclasses.
                 // Otherwise, the class and all its subclasses are allowed.
                 if (substr($candidate, 0, 1) == '*') {
                     $allowedChildren[] = substr($candidate, 1);
-                } elseif ($subclasses = ClassInfo::subclassesFor($candidate)) {
+                } elseif (($candidate !== 'SiteTree_root')
+                    && ($subclasses = ClassInfo::subclassesFor($candidate))
+                ) {
                     foreach ($subclasses as $subclass) {
-                        if ($subclass == 'SiteTree_root' || singleton($subclass) instanceof HiddenClass) {
-                            continue;
+                        if (!is_a($subclass, HiddenClass::class, true)) {
+                            $allowedChildren[] = $subclass;
                         }
-                        $allowedChildren[] = $subclass;
                     }
                 }
                 static::$_allowedChildren[get_class($this)] = $allowedChildren;

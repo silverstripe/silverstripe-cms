@@ -1,0 +1,28 @@
+SilverStripe\Assets\Folder:
+  folder1:
+    Name: myfolder
+  folder2:
+    Name: other
+SilverStripe\Assets\File:
+  file1:
+    Name: file1.txt
+    FileFilename: myfolder/file1.txt
+    Parent: =>SilverStripe\Assets\Folder.folder1
+  file2:
+    Name: file2.txt
+    FileFilename: myfolder/file2.txt
+    Parent: =>SilverStripe\Assets\Folder.folder1
+SilverStripe\Assets\Image:
+  image1:
+    Name: image1.jpg
+    FileFilename: other/image1.jpg
+    Parent: =>SilverStripe\Assets\Folder.folder2
+  image2:
+    Name: image2.jpg
+    FileFilename: other/image2.jpg
+    Parent: =>SilverStripe\Assets\Folder.folder2
+SilverStripe\CMS\Tests\Model\SiteTreeFolderExtensionTest\PageWithFile:
+  page1:
+    Title: mypage
+    URLSegment: mypage
+    LinkedFile: =>SilverStripe\Assets\File.file1

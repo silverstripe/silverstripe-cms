@@ -108,7 +108,7 @@ class ContentController extends Controller
         $parent = SiteTree::get_by_link($parentRef);
 
         if (!$parent && is_numeric($parentRef)) {
-            $parent = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $parentRef);
+            $parent = DataObject::get_by_id(SiteTree::class, $parentRef);
         }
 
         if ($parent) {

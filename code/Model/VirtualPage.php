@@ -25,7 +25,6 @@ use Page;
  */
 class VirtualPage extends Page
 {
-
     private static $description = 'Displays the content of another page';
 
     public static $virtualFields;
@@ -114,7 +113,7 @@ class VirtualPage extends Page
     public function setCopyContentFromID($val)
     {
         // Sanity check to prevent pages virtualising other virtual pages
-        if ($val && DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $val) instanceof VirtualPage) {
+        if ($val && DataObject::get_by_id(SiteTree::class, $val) instanceof VirtualPage) {
             $val = 0;
         }
         return $this->setField("CopyContentFromID", $val);
@@ -193,7 +192,7 @@ class VirtualPage extends Page
 
         // Unpublished source
         if (!Versioned::get_versionnumber_by_stage(
-            'SilverStripe\\CMS\\Model\\SiteTree',
+            SiteTree::class,
             'Live',
             $this->CopyContentFromID
         )) {
