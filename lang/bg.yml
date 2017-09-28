@@ -129,7 +129,6 @@ bg:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Специалните символи са автоматично конвертирани или изтрити.'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'Създадена е страница за пренасочване без да има накъде да се пренасочи.'
     HEADER: 'Тази страница ще пренасочи потребители към друга страница'
     OTHERURL: 'Друг уебсайт URL'
     REDIRECTTO: 'Пренасочи към'

@@ -56,7 +56,7 @@ class SiteTreeLinkTracking_Parser
             // Link to a page on this site.
             $matches = array();
             if (preg_match('/\[sitetree_link(?:\s*|%20|,)?id=(?<id>[0-9]+)\](#(?<anchor>.*))?/i', $href, $matches)) {
-                $page = DataObject::get_by_id('SilverStripe\\CMS\\Model\\SiteTree', $matches['id']);
+                $page = DataObject::get_by_id(SiteTree::class, $matches['id']);
                 $broken = false;
 
                 if (!$page) {

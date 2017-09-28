@@ -2,6 +2,9 @@
 
 namespace SilverStripe\CMS\Reports;
 
+use SilverStripe\CMS\Model\RedirectorPage;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldList;
@@ -26,17 +29,17 @@ class BrokenFilesReport extends Report
     {
         // Get class names for page types that are not virtual pages or redirector pages
         $classes = array_diff(
-            ClassInfo::subclassesFor('SilverStripe\\CMS\\Model\\SiteTree'),
-            ClassInfo::subclassesFor('SilverStripe\\CMS\\Model\\VirtualPage'),
-            ClassInfo::subclassesFor('SilverStripe\\CMS\\Model\\RedirectorPage')
+            ClassInfo::subclassesFor(SiteTree::class),
+            ClassInfo::subclassesFor(VirtualPage::class),
+            ClassInfo::subclassesFor(RedirectorPage::class)
         );
         $classParams = DB::placeholders($classes);
         $classFilter = array(
             "\"ClassName\" IN ($classParams) AND \"HasBrokenFile\" = 1" => $classes
         );
 
-        $stage = isset($params['OnLive']) ? 'Live' : 'Stage';
-        return Versioned::get_by_stage('SilverStripe\\CMS\\Model\\SiteTree', $stage, $classFilter);
+        $stage = isset($params['OnLive']) ? Versioned::LIVE : Versioned::DRAFT;
+        return Versioned::get_by_stage(SiteTree::class, $stage, $classFilter);
     }
 
     public function columns()

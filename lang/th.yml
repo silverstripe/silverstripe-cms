@@ -41,7 +41,6 @@ th:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: ตัวอักษรพิเศษได้ถูกแปลงค่าหรือลบออกโดยอัตโนมัติแล้ว
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: หน้าเว็บที่มีการเปลี่ยนเส้นทางซึ่งได้รับการตั้งค่าโดยปราศจากตำแหน่งปลายทางที่ต้องการเปลี่ยนเส้นทางไป
     HEADER: หน้าเว็บนี้จะเปลี่ยนเส้นทางผู้ใช้งานไปยังหน้าเว็บอื่นๆ
     OTHERURL: 'ที่อยู่ URL ของเว็บไซต์อื่นๆ'
     REDIRECTTO: เปลี่ยนเส้นทางไปที่

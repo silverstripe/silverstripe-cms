@@ -61,7 +61,6 @@ pl:
     EMPTY: 'Proszę podać część adresu lub kliknąć anuluj'
     HelpChars: 'Znaki specjalne są automatycznie konwertowane lub usuwane.'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'Strona przekierowująca została ustawiona bez celu, do którego ma przekierowywać.'
     HEADER: 'Ta strona przeniesie użytkowników na inną stronę'
     OTHERURL: 'Adres URL innej strony'
     REDIRECTTO: 'Przenieś do'

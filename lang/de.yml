@@ -128,7 +128,6 @@ de:
     HelpChars: 'Sonderzeichen werden automatisch umgewandelt oder entfernt.'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Leitet zu einer anderen internen oder externen Seite weiter'
-    HASBEENSETUP: 'Eine Weiterleitungsseite wurde erstellt ohne das eine Weiterleitung definiert wurde.'
     HEADER: 'Diese Seite wird Nutzer auf eine andere Seite weiterleiten'
     OTHERURL: 'Andere Webseiten URL'
     PLURALNAME: Weiterleitungsseiten

@@ -56,7 +56,6 @@ mi:
     EMPTY: 'Tāurua he Wāhanga PRO, ka pāwhiri whakakore rānei'
     HelpChars: 'Ka tahuri aunoatia, ka tangohia rānei ngā pūāhua motuhake'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'Kua tatū he whārangi tuku anō me te kore whai wāhi hei tuku anō.'
     HEADER: 'Ka tuku anō tēnei whārangi i ngā kaiwhakamahi ki whārangi kē'
     OTHERURL: 'Tētahi atu PRO paetukutuku'
     REDIRECTTO: 'Tukua anō ki'

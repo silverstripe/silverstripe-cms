@@ -15,7 +15,6 @@ zh_TW:
   SilverStripe\CMS\Controllers\ContentController:
     NOTEWONTBESHOWN: '備註: 此訊息將不會顯示給您的訪客看'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: '沒有任何地方被重新導向的一個重新導向網頁已被設定.'
     HEADER: '本網頁將重新導向用戶至別的網頁'
     OTHERURL: '其他網站網址'
     REDIRECTTO: 重新導向到

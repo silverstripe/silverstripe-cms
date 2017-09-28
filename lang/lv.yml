@@ -10,7 +10,6 @@ lv:
     PUBLISHEDSITE: 'Publicētā vietne'
     VIEWPAGEIN: 'Skatīt lapu:'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'Novirzītājlapa ir uzstādīta bez norādes uz kurieni novirzīt.'
     HEADER: 'Šī lapa novirzīs lietotājus uz citu lapu '
     OTHERURL: 'Citas tīmekļa vietnes URL'
     REDIRECTTO: 'Novirzīt uz '

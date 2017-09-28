@@ -56,7 +56,6 @@ ro:
     EMPTY: 'Vă rugăm introduceți un Segment URL sau apăsați anulează'
     HelpChars: 'Caracterele speciale sunt convertite automat sau șterse'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'O pagină referitoare a fost creată fără a direcționa către ceva'
     HEADER: 'Pagina v-a redirecționa utilizatorii către altă pagină'
     OTHERURL: 'URL-ul altui website'
     REDIRECTTO: 'Redirecționare către'

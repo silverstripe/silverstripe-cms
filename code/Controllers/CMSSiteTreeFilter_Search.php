@@ -1,6 +1,7 @@
 <?php
 namespace SilverStripe\CMS\Controllers;
 
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\Versioned\Versioned;
 
@@ -21,7 +22,7 @@ class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter
     public function getFilteredPages()
     {
         // Filter default records
-        $pages = Versioned::get_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Stage');
+        $pages = Versioned::get_by_stage(SiteTree::class, Versioned::DRAFT);
         $pages = $this->applyDefaultFilters($pages);
         return $pages;
     }

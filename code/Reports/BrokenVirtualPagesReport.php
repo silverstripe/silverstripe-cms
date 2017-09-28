@@ -2,6 +2,8 @@
 
 namespace SilverStripe\CMS\Reports;
 
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldList;
@@ -24,13 +26,13 @@ class BrokenVirtualPagesReport extends Report
 
     public function sourceRecords($params = null)
     {
-        $classes = ClassInfo::subclassesFor('SilverStripe\\CMS\\Model\\VirtualPage');
+        $classes = ClassInfo::subclassesFor(VirtualPage::class);
         $classParams = DB::placeholders($classes);
         $classFilter = array(
             "\"ClassName\" IN ($classParams) AND \"HasBrokenLink\" = 1" => $classes
         );
         $stage = isset($params['OnLive']) ? 'Live' : 'Stage';
-        return Versioned::get_by_stage('SilverStripe\\CMS\\Model\\SiteTree', $stage, $classFilter);
+        return Versioned::get_by_stage(SiteTree::class, $stage, $classFilter);
     }
 
     public function columns()

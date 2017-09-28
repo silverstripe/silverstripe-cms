@@ -1,6 +1,6 @@
 language: php
 
-dist: precise
+dist: trusty
 
 sudo: false
 
@@ -34,21 +34,19 @@ matrix:
 
 before_script:
 # Init PHP
-  - if [[ $PHPCS_TEST ]]; then pyrus install pear/PHP_CodeSniffer; fi
   - phpenv rehash
   - phpenv config-rm xdebug.ini
+  - export PATH=~/.composer/vendor/bin:$PATH
   - echo 'memory_limit = 2G' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
 
 # Install composer dependencies
+  - composer validate
   - composer install --prefer-dist
-  - composer require --prefer-dist --no-update symfony/config:^3.2 silverstripe/framework:4.0.x-dev silverstripe/siteconfig:4.0.x-dev silverstripe/config:1.0.x-dev silverstripe/admin:1.0.x-dev silverstripe/assets:1.0.x-dev silverstripe/versioned:1.0.x-dev
+  - composer require --prefer-dist --no-update silverstripe/recipe-cms:1.0.x-dev
   - composer update
-
   - if [[ $DB == PGSQL ]]; then composer require silverstripe/postgresql:2.0.x-dev --prefer-dist; fi
   - if [[ $DB == SQLITE ]]; then composer require silverstripe/sqlite3:2.0.x-dev --prefer-dist; fi
-
-# Bootstrap cms / mysite folder
-  - php ./tests/bootstrap/mysite.php
+  - if [[ $PHPCS_TEST ]]; then composer global require squizlabs/php_codesniffer:^3 --prefer-dist --no-interaction --no-progress --no-suggest -o; fi
 
 # Install NPM dependencies
   - if [[ $NPM_TEST ]]; then nvm install $TRAVIS_NODE_VERSION && nvm use $TRAVIS_NODE_VERSION && npm install -g yarn && yarn install --network-concurrency 1 && yarn run build; fi
@@ -66,6 +64,7 @@ script:
  - if [[ $NPM_TEST ]]; then git diff-files --quiet -w --relative=client; fi
  - if [[ $NPM_TEST ]]; then git diff -w --no-color --relative=client; fi
  - if [[ $NPM_TEST ]]; then yarn run lint; fi
+ - if [[ $NPM_TEST ]]; then yarn run test; fi
  - if [[ $PHPCS_TEST ]]; then composer run-script lint; fi
 
 after_success:

@@ -5,7 +5,6 @@ si:
     PUBALLFUN: 'සියලු ක්රම වේද ප්රසිද්ධ කරන ලදී'
     REMOVEDPAGEFROMDRAFT: 'කටු අඩවියෙන් ''{title}'' මකන ලදී'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'යොමු කිරීමේ පිටුව කිසිවකට යොමු නොකරයි'
     HEADER: 'මෙම පිටුව පරිබෝඡකයන් වෙනත් යොමු කරයි'
     OTHERURL: 'වෙනත් වෙබ් අඩවි URL'
     REDIRECTTO: 'යොමු කරන්න'

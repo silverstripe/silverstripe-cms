@@ -28,6 +28,7 @@ call_user_func(function () {
     TinyMCEConfig::get('cms')
         ->enablePlugins(array(
             'sslinkinternal' => "{$clientPath}/dist/js/TinyMCE_sslink-internal.js",
+            'sslinkanchor' => "{$clientPath}/dist/js/TinyMCE_sslink-anchor.js",
         ));
 });
 

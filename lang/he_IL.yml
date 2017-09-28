@@ -43,7 +43,6 @@ he_IL:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: ' תווים מיוחדים מומרים אוטומטית או שהם מוסרים.'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'נוצר דף הפניה ללא יעד'
     HEADER: 'העמוד הזה יוביל משתמשים לעמוד אחר'
     OTHERURL: 'כתובת של אתר אחר'
     REDIRECTTO: 'העברה אל'

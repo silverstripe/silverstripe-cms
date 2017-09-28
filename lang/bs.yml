@@ -6,7 +6,6 @@ bs:
     PUBALLFUN: 'Funkcija "Objavi sve"'
     REMOVEDPAGEFROMDRAFT: 'Uklonjeno ''{title}'' sa privremenog nacrta stranice'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'Stranica za preusmjeravanje je podešena bez odredišta.'
     HEADER: 'Ova stranica će preusmjeriti korisnike na drugu stranicu'
     OTHERURL: 'URL druge web stranice'
     REDIRECTTO: 'Preusmjeri na'

@@ -138,7 +138,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
     private static $url_handlers = [
         'EditForm/$ID' => 'EditForm',
-        'treeview/$ID' => 'treeview',
         'listview/$ParentID' => 'listview',
     ];
 
@@ -160,7 +159,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     {
         // set reading lang
         if (SiteTree::has_extension('Translatable') && !$this->getRequest()->isAjax()) {
-            Translatable::choose_site_locale(array_keys(Translatable::get_existing_content_languages('SilverStripe\\CMS\\Model\\SiteTree')));
+            Translatable::choose_site_locale(array_keys(Translatable::get_existing_content_languages(SiteTree::class)));
         }
 
         parent::init();
@@ -294,7 +293,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function LinkTreeView()
     {
         // Tree view is just default link to main pages section (no /treeview suffix)
-        return $this->LinkWithSearch(CMSMain::singleton()->Link());
+        return CMSMain::singleton()->Link();
     }
 
     /**
@@ -330,13 +329,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     public function LinkTreeViewDeferred()
     {
-        $link = $this->Link('treeview');
-        // Ensure selected page is encoded into URL
-        $selectedID = $this->currentPageID();
-        if ($selectedID) {
-            $link = Controller::join_links($link, $selectedID);
-        }
-        return $this->LinkWithSearch($link);
+        return $this->Link('treeview');
     }
 
     public function LinkPageEdit($id = null)
@@ -546,11 +539,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     {
         // Get classes from object
         $classes = $node->CMSTreeClasses();
-
-        // Flag as current
-        if ($this->isCurrentPage($node)) {
-            $classes .= ' current';
-        }
 
         // Get status flag classes
         $flags = $node->getStatusFlags();
@@ -921,17 +909,53 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     }
 
     /**
+     * Get "back" url for breadcrumbs
+     *
+     * @return string
+     */
+    public function getBreadcrumbsBackLink()
+    {
+        $breadcrumbs = $this->Breadcrumbs();
+        if ($breadcrumbs->count() < 2) {
+            return $this->LinkPages();
+        }
+        // Get second from end breadcrumb
+        return $breadcrumbs
+            ->offsetGet($breadcrumbs->count() - 2)
+            ->Link;
+    }
+
+    /**
      * @param bool $unlinked
      * @return ArrayList
      */
     public function Breadcrumbs($unlinked = false)
     {
-        $items = parent::Breadcrumbs($unlinked);
+        $items = new ArrayList();
 
-        if ($items->count() > 1) {
-            // Specific to the SiteTree admin section, we never show the cms section and current
-            // page in the same breadcrumbs block.
-            $items->shift();
+        // Check if we are editing a page
+        /** @var SiteTree $record */
+        $record = $this->currentPage();
+        if (!$record) {
+            $items->push(new ArrayData(array(
+                'Title' => CMSPagesController::menu_title(),
+                'Link' => ($unlinked) ? false : $this->LinkPages()
+            )));
+            return $items;
+        }
+
+        // Add all ancestors
+        $ancestors = $record->getAncestors();
+        $ancestors = new ArrayList(array_reverse($ancestors->toArray()));
+        $ancestors->push($record);
+        /** @var SiteTree $ancestor */
+        foreach ($ancestors as $ancestor) {
+            $items->push(new ArrayData(array(
+                'Title' => $ancestor->getMenuTitle(),
+                'Link' => ($unlinked)
+                    ? false
+                    : $ancestor->CMSEditLink()
+            )));
         }
 
         return $items;
@@ -1309,14 +1333,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * This method exclusively handles deferred ajax requests to render the
      * pages tree deferred handler (no pjax-fragment)
      *
-     * @param HTTPRequest $request
      * @return string HTML
      */
-    public function treeview($request)
+    public function treeview()
     {
-        // Ensure selected page ID is highlighted
-        $pageID = $request->param('ID') ?: 0;
-        $this->setCurrentPageID($pageID);
         return $this->renderWith($this->getTemplatesWithSuffix('_TreeView'));
     }
 
@@ -1451,6 +1471,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             );
         }
         $gridField = new GridField('Page', 'Pages', $list, $gridFieldConfig);
+        $gridField->setAttribute('cms-loading-ignore-url-params', true);
         /** @var GridFieldDataColumns $columns */
         $columns = $gridField->getConfig()->getComponentByType('SilverStripe\\Forms\\GridField\\GridFieldDataColumns');
 
@@ -1713,7 +1734,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         }
 
         /** @var SiteTree $record */
-        $record = Versioned::get_one_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Live', array(
+        $record = Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, array(
             '"SiteTree_Live"."ID"' => $id
         ));
 

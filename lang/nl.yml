@@ -131,7 +131,6 @@ nl:
     OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Stuurt door naar een interne pagina of een externe URL'
-    HASBEENSETUP: 'Er is een verwijspagina opgezet zonder ergens naar te verwijzen.'
     HEADER: 'Deze pagina zal gebruikers naar een andere pagina doorsturen (redirect)'
     OTHERURL: 'Andere website URL'
     PLURALNAME: 'Verwijzingspagina''s'

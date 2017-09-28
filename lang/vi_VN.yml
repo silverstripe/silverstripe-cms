@@ -2,7 +2,6 @@ vi_VN:
   SilverStripe\CMS\Controllers\CMSMain:
     PAGENOTEXISTS: 'Không tìm thấy trang này.'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'Một trang di chuyển chưa cấu hình đích di chuyển đến.'
     HEADER: 'Trang này sẽ di chuyển người dùng đến một trang khác'
     OTHERURL: 'Đường dẩn website khác'
     REDIRECTTO: 'Di chuyển đến'

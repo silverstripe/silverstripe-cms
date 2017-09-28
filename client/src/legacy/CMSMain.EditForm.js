@@ -122,7 +122,7 @@ $.entwine('ss', function($){
 
 			// update button
 			updateURLFromTitle = $('<button />', {
-				'class': 'update ss-ui-button-small',
+				'class': 'btn btn-outline-secondary btn-sm update form__field-update-url',
 				'text': i18n._t('CMS.UpdateURL'),
 				'type': 'button',
 				'click': function(e) {
@@ -133,6 +133,7 @@ $.entwine('ss', function($){
 
 			// insert elements
 			updateURLFromTitle.insertAfter(self);
+      updateURLFromTitle.parent('.form__field-holder').addClass('input-group');
 			updateURLFromTitle.hide();
 		}
 	});
@@ -340,62 +341,72 @@ $.entwine('ss', function($){
 	 */
   $('.cms-edit-form.changed').entwine({
     onmatch: function(e) {
-      const save = this.find('button[name=action_save]');
+      // Update all buttons with alternate text
+      this.find('button[data-text-alternate]').each(function() {
+        const button = $(this);
+        const buttonTitle = button.find('.btn__title');
 
-      if(save.attr('data-text-alternate')) {
-        save.attr('data-text-standard', save.find('span').text());
-        save.find('span').text(save.attr('data-text-alternate'));
-      }
+        // Set alternate-text
+        const alternateText = button.data('textAlternate');
+        if (alternateText) {
+          button.data('textStandard', buttonTitle.text());
+          buttonTitle.text(alternateText);
+        }
 
-      if(save.attr('data-btn-alternate')) {
-        save.attr('data-btn-standard', save.attr('class'));
-        save.attr('class', save.attr('data-btn-alternate'));
-      }
+        // Extra classes can be declared explicitly (legacy)
+        const alternateClasses = button.data('btnAlternate');
+        if (alternateClasses) {
+          button.data('btnStandard', button.attr('class'));
+          button.attr('class', alternateClasses);
+          button
+            .removeClass('btn-outline-secondary')
+            .addClass('btn-primary');
+        }
 
-
-      save
-        .removeClass('btn-outline-secondary')
-        .addClass('btn-primary');
-
-			const publish = this.find('button[name=action_publish]');
-
-      if(publish.attr('data-text-alternate')) {
-        publish.attr('data-text-standard', publish.find('span').text());
-        publish.find('span').text(publish.attr('data-text-alternate'));
-      }
-
-      if(publish.attr('data-btn-alternate')) {
-        publish.attr('data-btn-standard', publish.attr('class'));
-        publish.attr('class', publish.attr('data-btn-alternate'));
-      }
-
-      publish
-        .removeClass('btn-outline-secondary')
-        .addClass('btn-primary');
-
+        // Extra classes can also be specified as add / remove
+        const alternateClassesAdd = button.data('btnAlternateAdd');
+        if (alternateClassesAdd) {
+          button.addClass(alternateClassesAdd);
+        }
+        const alternateClassesRemove = button.data('btnAlternateRemove');
+        if (alternateClassesRemove) {
+          button.removeClass(alternateClassesRemove);
+        }
+      });
 
 			this._super(e);
 		},
 		onunmatch: function(e) {
-      var save = this.find('button[name=action_save]')
+      this.find('button[data-text-alternate]').each(function() {
+        const button = $(this);
+        const buttonTitle = button.find('.btn__title');
 
-      if(save.attr('data-text-standard')) {
-        save.text(save.attr('data-text-standard'));
-      }
+        // Revert extra classes
+        const standardText = button.data('textStandard');
+        if (standardText) {
+          buttonTitle.text(standardText);
+        }
 
-      if(save.attr('data-btn-standard')) {
-        save.attr('class', save.attr('data-btn-standard'));
-      }
+        // Extra classes can be declared explicitly (legacy)
+        const standardClasses = button.data('btnStandard');
+        if (standardClasses) {
+          button.attr('class', standardClasses);
+          button
+            .addClass('btn-outline-secondary')
+            .removeClass('btn-primary');
+        }
 
-      var publish = this.find('button[name=action_publish]');
-
-      if(publish.attr('data-text-standard')) {
-        publish.text(publish.attr('data-text-standard'));
-      }
-
-      if(publish.attr('data-btn-standard')) {
-        publish.attr('class', publish.attr('data-btn-standard'));
-      }
+        // Extra classes can also be specified as add / remove
+        // Note: Reverse of onMatch
+        const alternateClassesAdd = button.data('btnAlternateAdd');
+        if (alternateClassesAdd) {
+          button.removeClass(alternateClassesAdd);
+        }
+        const alternateClassesRemove = button.data('btnAlternateRemove');
+        if (alternateClassesRemove) {
+          button.addClass(alternateClassesRemove);
+        }
+      });
 
 			this._super(e);
 		}

@@ -25,7 +25,7 @@ class CMSSiteTreeFilter_StatusDraftPages extends CMSSiteTreeFilter
      */
     public function getFilteredPages()
     {
-        $pages = Versioned::get_by_stage('SilverStripe\\CMS\\Model\\SiteTree', 'Stage');
+        $pages = Versioned::get_by_stage(SiteTree::class, 'Stage');
         $pages = $this->applyDefaultFilters($pages);
         $pages = $pages->filterByCallback(function (SiteTree $page) {
             // If page exists on stage but not on live

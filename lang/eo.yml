@@ -143,7 +143,6 @@ eo:
     OK: Akcepti
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Alidirektas al interna paĝo aŭ ekstera URL'
-    HASBEENSETUP: 'Alidirekta paĝo estis agordita sen ie al kie alidirekti.'
     HEADER: 'Ĉi tiu paĝo redirektos uzantojn al alia paĝo'
     OTHERURL: 'URL de alia retejo'
     PLURALNAME: 'Paĝoj pri alidirekto'

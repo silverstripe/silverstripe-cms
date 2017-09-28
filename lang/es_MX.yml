@@ -15,7 +15,6 @@ es_MX:
     PUBLISHEDSITE: 'Sitio Publicado'
     VIEWPAGEIN: 'Ver página en:'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'Se ha instalado una página de redirección  sin algún lugar a donde redireccionar.'
     HEADER: 'Esta página dirigirá al usuarios a otra página'
     OTHERURL: 'Otro URL del sitio web'
     REDIRECTTO: 'Redirigir a'

@@ -93,7 +93,6 @@ es:
     HelpChars: 'Los caracteres especiales son automáticamente convertidos o eliminados.'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Redirecciona a una página interna o a una URL externa'
-    HASBEENSETUP: 'Se ha establecido una página redireccionadora sin ningún sitio al cual redireccionar.'
     HEADER: 'Esta página redireccionará a los usuarios a otra página'
     OTHERURL: 'Otra dirección URL de un sitio web'
     PLURALNAME: 'Páginas de redirección'

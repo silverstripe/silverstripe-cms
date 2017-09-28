@@ -143,7 +143,6 @@ cs:
     OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Přesměruje na interní stránku nebo na externí URL'
-    HASBEENSETUP: 'Přesměrovací stránka byla nastavena bez cíle.'
     HEADER: 'Tato stránka přesměruje uživatele na jinou stránku'
     OTHERURL: 'Jiná web adresa'
     PLURALNAME: 'Přesměrovací stránky'

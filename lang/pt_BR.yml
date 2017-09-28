@@ -7,7 +7,6 @@ pt_BR:
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: Páginas
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'Uma página de redireccionamento foi criada sem nenhum destino específicado'
     HEADER: 'Esta página redireccionará os utilizadores para outra página'
     OTHERURL: 'Outro website URL'
     REDIRECTTO: 'Redirecionar para'

@@ -51,7 +51,6 @@ pt:
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Os caracteres especiais são automaticamente convertido ou removidos.'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'Uma página de redireccionamento foi criada sem nenhum destino.'
     HEADER: 'Esta página irá redireccionar os utilizadores para outra página'
     OTHERURL: 'Outro Site'
     REDIRECTTO: 'Redireccionar para'

@@ -2,6 +2,7 @@
 
 namespace SilverStripe\CMS\Forms;
 
+use SilverStripe\Admin\LeftAndMainFormRequestHandler;
 use SilverStripe\Admin\ModalController;
 use SilverStripe\Core\Extension;
 use SilverStripe\Forms\Form;
@@ -12,8 +13,13 @@ use SilverStripe\Forms\Form;
  */
 class InternalLinkModalExtension extends Extension
 {
+    private static $url_handlers = [
+        'editorAnchorLink/$ItemID' => 'editorAnchorLink', // Matches LeftAndMain::methodSchema args
+    ];
+
     private static $allowed_actions = array(
         'editorInternalLink',
+        'editorAnchorLink',
     );
 
     /**
@@ -41,5 +47,26 @@ class InternalLinkModalExtension extends Extension
             "editorInternalLink",
             [ 'RequireLinkText' => isset($showLinkText) ]
         );
+    }
+
+    public function editorAnchorLink()
+    {
+        // Note: Should work both via MethodSchema and as direct request
+        $request = $this->getOwner()->getRequest();
+        $showLinkText = $request->getVar('requireLinkText');
+        $pageID = $request->param('ItemID');
+        $factory = AnchorLinkFormFactory::singleton();
+        $form = $factory->getForm(
+            $this->getOwner(),
+            "editorAnchorLink",
+            [ 'RequireLinkText' => isset($showLinkText), 'PageID' => $pageID ]
+        );
+
+        // Set url handler that includes pageID
+        $form->setRequestHandler(
+            LeftAndMainFormRequestHandler::create($form, [$pageID])
+        );
+
+        return $form;
     }
 }

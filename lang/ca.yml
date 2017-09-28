@@ -5,7 +5,6 @@ ca:
     PUBALLFUN: 'Funcionalitat de "Publica-ho tot"'
     REMOVEDPAGEFROMDRAFT: 'S''ha suprimit  ''{title}'' del lloc esborrany'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'S''ha definit una pàgina redirectora sense cap lloc on redirigir.'
     HEADER: 'Aquesta pàgina redirigirà usuaris a una altra pàgina'
     OTHERURL: 'URL del lloc web'
     REDIRECTTO: 'Redirigeix a'

@@ -1,6 +1,6 @@
 <div class="cms-content-tools fill-height cms-panel cms-panel-layout" data-expandOnClick="true" data-layout-type="border" id="cms-content-tools-CMSMain">
 	<div class="cms-content-header north">
-		<div class="cms-content-header-info">
+		<div class="cms-content-header-info vertical-align-items">
 			<div class="section-heading">
 				<span class="section-label"><a href="$LinkPages">{$MenuCurrentItem.Title}</a></span>
 			</div>

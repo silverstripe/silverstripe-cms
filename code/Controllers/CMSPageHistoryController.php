@@ -200,7 +200,9 @@ class CMSPageHistoryController extends CMSMain
             $revert = FormAction::create(
                 'doRollback',
                 _t('SilverStripe\\CMS\\Controllers\\CMSPageHistoryController.REVERTTOTHISVERSION', 'Revert to this version')
-            )->setUseButtonTag(true)
+            )
+                ->setUseButtonTag(true)
+                ->addExtraClass('font-icon-back-in-time')
         );
         $actions->setForm($form);
         $form->setActions($actions);
@@ -416,13 +418,6 @@ class CMSPageHistoryController extends CMSMain
         $form->setFields($readonlyFields);
 
         return $form;
-    }
-
-    public function Breadcrumbs($unlinked = false)
-    {
-        $crumbs = parent::Breadcrumbs($unlinked);
-        $crumbs[0]->Title = _t('SilverStripe\\CMS\\Controllers\\CMSPagesController.MENUTITLE', 'Pages');
-        return $crumbs;
     }
 
     /**

@@ -1,7 +1,7 @@
 fi:
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Poistettiin %d sivua luonnoksista ja julkaistuista sivuista sekä arkistoitiin'
-    TITLE: 'Poista näkyviltä ja arkistoi'
+    TITLE: 'Poista julkaisusta ja arkistoi'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
     PUBLISHED_PAGES: 'Julkaistu %d sivua, %d virhettä'
     PUBLISH_PAGES: Julkaise
@@ -10,7 +10,7 @@ fi:
     RESTORED_PAGES: 'Palautettu %d sivua'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
     UNPUBLISHED_PAGES: 'Poistettiin %d sivua julkaisusta'
-    UNPUBLISH_PAGES: 'Piilota julkaisu'
+    UNPUBLISH_PAGES: 'Poista julkaisusta'
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Pääsy ''{title}'' -osioon'
     ACCESS_HELP: 'Oikeuttaa näkemään osion, joka sisältää sivurakenteen ja sisällön. Katselu- ja muokkausoikeuksia voidaan käsitellä sivukohtaisten pudotusvalikoiden kautta, kuten myös erillisestä "Sisällön oikeudet"-kohdasta.'
@@ -66,7 +66,7 @@ fi:
     TabSettings: Asetukset
     TreeFiltered: 'Näytetään hakutulokset.'
     TreeFilteredClear: Tyhjennä
-    UNPUBLISH_AND_ARCHIVE: 'Poista näkyviltä ja arkistoi'
+    UNPUBLISH_AND_ARCHIVE: 'Poista julkaisusta ja arkistoi'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Lisää sivu'
     ParentMode_child: 'Toisen sivun alla'
@@ -139,6 +139,7 @@ fi:
     ANCHORVALUE: Ankkuri
     LINKDESCR: 'Linkin kuvaus'
     LINKOPENNEWWIN: 'Avataanko linkki uudessa ikkunassa/välilehdellä?'
+    LINKTEXT: Linkkiteksti
     SELECT_PAGE: 'Valitse sivu'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Peruuta
@@ -148,7 +149,6 @@ fi:
     OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Edelleenohjaa toiselle sisäiselle sivulle tai ulkoiseen URL-osoitteeseen'
-    HASBEENSETUP: 'Sivu, joka ohjaa käyttäjän toiselle sivulle on valmis, mutta sivua, jolle käyttäjä ohjataan, ei ole.'
     HEADER: 'Tämä sivu ohjaa käyttäjän toiselle sivulle'
     OTHERURL: 'Toisen verkkosivuston URL-osoite'
     PLURALNAME: 'Uudelleenohjaavat sivut'
@@ -160,6 +160,8 @@ fi:
     REDIRECTTOPAGE: 'Sivu verkkosivustollasi'
     SINGULARNAME: 'Uudelleenohjaava sivu'
     YOURPAGE: 'Sivu verkkosivustollasi'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Uudelleenohjaava sivu on valmis, mutta ei ohjaa mihinkään.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Jokainen
     ACCESSHEADER: 'Ketkä saavat katsoa tätä sivua?'
@@ -176,7 +178,7 @@ fi:
     BUTTONPUBLISHED: Julkaistu
     BUTTONSAVED: Tallennettu
     BUTTONSAVEPUBLISH: 'Tallenna ja julkaise'
-    BUTTONUNPUBLISH: 'Poista näkyvistä'
+    BUTTONUNPUBLISH: 'Poista julkaisusta'
     BUTTONUNPUBLISHDESC: 'Poista tämä sivu julkaistulta sivustolta'
     Comments: Kommentit
     Content: Sisältö
@@ -211,7 +213,7 @@ fi:
     METADESCHELP: 'Hakukoneet näyttävät tämän sisällön hakutuloksissa (sisältö ei kuitenkaan vaikuta sijoitukseen hakutuloksessa).'
     METAEXTRA: 'Omat meta-tagit'
     METAEXTRAHELP: 'HTML-tagit omia metatietoja varten. Esimerkiksi &lt;meta name="haluamasiNimi" content="Oma sisältö tässä" /&gt;'
-    MODIFIEDONDRAFTHELP: 'Sivulla on tehty muutoksia, joita ei ole julkaistu'
+    MODIFIEDONDRAFTHELP: 'Sivulla on julkaisemattomia muutoksia'
     MODIFIEDONDRAFTSHORT: Muokattu
     MetadataToggle: Meta-tiedot
     MoreOptions: 'Lisää valintoja'

@@ -1,22 +1,37 @@
 import $ from 'jquery';
 
 $.entwine('ss', function($){
+  $('.TreeDropdownField').entwine({
+    OldValue: null,
+  });
+
+  $('#Form_AddForm_ParentID_Holder .treedropdownfield').entwine({
+    onmatch() {
+      this._super();
+      $('.cms-add-form').updateTypeList();
+    }
+  });
+
   /**
-   * Reset the parent node selection if the type is
-   * set back to "toplevel page", to avoid submitting inconsistent state.
+   * Reset the parent node selection if the type is set back to "toplevel page",
+   * to avoid submitting inconsistent state.
    */
   $(".cms-add-form .parent-mode :input").entwine({
     onclick: function(e) {
+      var parentField = this.closest('form').find('#Form_AddForm_ParentID_Holder .TreeDropdownField');
       if(this.val() == 'top') {
-        var parentField = this.closest('form').find('#Form_AddForm_ParentID_Holder .TreeDropdownField');
-        parentField.setValue('');
-        parentField.setTitle('');
+        parentField.setOldValue(parentField.getValue());
+        parentField.setValue(0);
+      } else {
+        parentField.setValue(parentField.getOldValue() || 0);
+        parentField.setOldValue(null);
       }
+      parentField.refresh();
+      parentField.trigger('change');
     }
   });
 
   $(".cms-add-form").entwine({
-    ParentID: 0, // Last selected parentID
     ParentCache: {}, // Cache allowed children for each selected page
     onadd: function() {
       var self = this;
@@ -27,12 +42,16 @@ $.entwine('ss', function($){
       this.find(".SelectionGroup.parent-mode").bind('change',  function() {
         self.updateTypeList();
       });
-      this.updateTypeList();
+      if ($(".cms-add-form .parent-mode :input").val() == 'top') {
+        this.updateTypeList();
+      }
     },
     loadCachedChildren: function(parentID) {
       var cache = this.getParentCache();
-      if(typeof cache[parentID] !== 'undefined') return cache[parentID];
-      else return null;
+      if(typeof cache[parentID] !== 'undefined') {
+        return cache[parentID];
+      }
+      return null;
     },
     saveCachedChildren: function(parentID, children) {
       var cache = this.getParentCache();
@@ -51,7 +70,7 @@ $.entwine('ss', function($){
         parentMode = this.find("input[name=ParentModeField]:checked").val(),
         metadata = parentTree.data('metadata'),
         id = (metadata && parentMode === 'child')
-          ? (parentTree.getValue() || this.getParentID())
+          ? parentTree.getValue()
           : null,
         newClassName = metadata ? metadata.ClassName : null,
         hintKey = (newClassName && parentMode === 'child' && id)
@@ -68,10 +87,6 @@ $.entwine('ss', function($){
         // Prevent interface operations
         if(this.hasClass('loading')) return;
         this.addClass('loading');
-
-        // Enable last parent ID to be re-selected from memory
-        this.setParentID(id);
-        if(!parentTree.getValue()) parentTree.setValue(id);
 
         // Use cached data if available
         disallowedChildren = this.loadCachedChildren(id);

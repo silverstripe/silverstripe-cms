@@ -10,7 +10,6 @@ az:
     PUBLISHEDSITE: 'Dərc olunmuş sayt'
     VIEWPAGEIN: 'Səhifəni göstər:'
   SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'Yönləndirmə səhifəsinə yönlənmə istiqaməti verilməyib.'
     HEADER: 'Bu səhifə istifadəçiləri başqa səhifəyə yönləndirəcək'
     OTHERURL: 'Başqa Web saytın URL-i'
     REDIRECTTO: Yönləndir

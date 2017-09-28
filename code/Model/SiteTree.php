@@ -37,6 +37,7 @@ use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\ToggleCompositeField;
 use SilverStripe\Forms\TreeDropdownField;
+use SilverStripe\Forms\TreeMultiselectField;
 use SilverStripe\i18n\i18n;
 use SilverStripe\i18n\i18nEntityProvider;
 use SilverStripe\ORM\ArrayList;
@@ -523,7 +524,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function Link($action = null)
     {
-        return Controller::join_links(Director::baseURL(), $this->RelativeLink($action));
+        $relativeLink = $this->RelativeLink($action);
+        $link =  Controller::join_links(Director::baseURL(), $relativeLink);
+        $this->extend('updateLink', $link, $action, $relativeLink);
+        return $link;
     }
 
     /**
@@ -1945,7 +1949,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             asort($map);
             return $map;
         };
-        $groupsMap = $mapFn(Group::get());
         $viewAllGroupsMap = $mapFn(Permission::get_groups_by_permission(['SITETREE_VIEW_ALL', 'ADMIN']));
         $editAllGroupsMap = $mapFn(Permission::get_groups_by_permission(['SITETREE_EDIT_ALL', 'ADMIN']));
 
@@ -1974,22 +1977,20 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                         "CanViewType",
                         _t(__CLASS__.'.ACCESSHEADER', "Who can view this page?")
                     ),
-                    $viewerGroupsField = ListboxField::create("ViewerGroups", _t(__CLASS__.'.VIEWERGROUPS', "Viewer Groups"))
-                        ->setSource($groupsMap)
-                        ->setAttribute(
-                            'data-placeholder',
-                            _t(__CLASS__.'.GroupPlaceholder', 'Click to select group')
-                        ),
+                    $viewerGroupsField = TreeMultiselectField::create(
+                        "ViewerGroups",
+                        _t(__CLASS__.'.VIEWERGROUPS', "Viewer Groups"),
+                        Group::class
+                    ),
                     $editorsOptionsField = new OptionsetField(
                         "CanEditType",
                         _t(__CLASS__.'.EDITHEADER', "Who can edit this page?")
                     ),
-                    $editorGroupsField = ListboxField::create("EditorGroups", _t(__CLASS__.'.EDITORGROUPS', "Editor Groups"))
-                        ->setSource($groupsMap)
-                        ->setAttribute(
-                            'data-placeholder',
-                            _t(__CLASS__.'.GroupPlaceholder', 'Click to select group')
-                        )
+                    $editorGroupsField = TreeMultiselectField::create(
+                        "EditorGroups",
+                        _t(__CLASS__.'.EDITORGROUPS', "Editor Groups"),
+                        Group::class
+                    )
                 )
             )
         );
@@ -2252,11 +2253,13 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         // "save", supports an alternate state that is still clickable, but notifies the user that the action is not needed.
+        $noChangesClasses = 'btn-outline-primary font-icon-tick';
         if ($canEdit && $isOnDraft) {
             $majorActions->push(
                 FormAction::create('save', _t(__CLASS__.'.BUTTONSAVED', 'Saved'))
-                    ->addExtraClass('btn-outline-secondary font-icon-check-mark')
-                    ->setAttribute('data-btn-alternate', 'btn action btn-primary font-icon-save')
+                    ->addExtraClass($noChangesClasses)
+                    ->setAttribute('data-btn-alternate-add', 'btn-primary font-icon-save')
+                    ->setAttribute('data-btn-alternate-remove', $noChangesClasses)
                     ->setUseButtonTag(true)
                     ->setAttribute('data-text-alternate', _t('SilverStripe\\CMS\\Controllers\\CMSMain.SAVEDRAFT', 'Save draft'))
             );
@@ -2266,8 +2269,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             // "publish", as with "save", it supports an alternate state to show when action is needed.
             $majorActions->push(
                 $publish = FormAction::create('publish', _t(__CLASS__.'.BUTTONPUBLISHED', 'Published'))
-                    ->addExtraClass('btn-outline-secondary font-icon-check-mark')
-                    ->setAttribute('data-btn-alternate', 'btn action btn-primary font-icon-rocket')
+                    ->addExtraClass($noChangesClasses)
+                    ->setAttribute('data-btn-alternate-add', 'btn-primary font-icon-rocket')
+                    ->setAttribute('data-btn-alternate-remove', $noChangesClasses)
                     ->setUseButtonTag(true)
                     ->setAttribute('data-text-alternate', _t(__CLASS__.'.BUTTONSAVEPUBLISH', 'Save & publish'))
             );
@@ -2276,7 +2280,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             if ($stagesDiffer) {
                 $publish->addExtraClass('btn-primary font-icon-rocket');
                 $publish->setTitle(_t(__CLASS__.'.BUTTONSAVEPUBLISH', 'Save & publish'));
-                $publish->removeExtraClass('btn-outline-secondary font-icon-check-mark');
+                $publish->removeExtraClass($noChangesClasses);
             }
         }
 
@@ -2484,17 +2488,18 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
             // Parse candidate list
             $allowedChildren = [];
-            foreach ($candidates as $candidate) {
+            foreach ((array)$candidates as $candidate) {
                 // If a classname is prefixed by "*", such as "*Page", then only that class is allowed - no subclasses.
                 // Otherwise, the class and all its subclasses are allowed.
                 if (substr($candidate, 0, 1) == '*') {
                     $allowedChildren[] = substr($candidate, 1);
-                } elseif ($subclasses = ClassInfo::subclassesFor($candidate)) {
+                } elseif (($candidate !== 'SiteTree_root')
+                    && ($subclasses = ClassInfo::subclassesFor($candidate))
+                ) {
                     foreach ($subclasses as $subclass) {
-                        if ($subclass == 'SiteTree_root' || singleton($subclass) instanceof HiddenClass) {
-                            continue;
+                        if (!is_a($subclass, HiddenClass::class, true)) {
+                            $allowedChildren[] = $subclass;
                         }
-                        $allowedChildren[] = $subclass;
                     }
                 }
                 static::$_allowedChildren[get_class($this)] = $allowedChildren;

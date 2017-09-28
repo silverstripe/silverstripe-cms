@@ -15,11 +15,10 @@ const commandName = 'sslinkinternal';
 TinyMCEActionRegistrar
   .addAction('sslink', {
     text: i18n._t('CMS.LINKLABEL_PAGE', 'Page on this site'),
-    // eslint-disable-next-line no-console
     onclick: (editor) => editor.execCommand(commandName),
     priority: 53,
   })
-  .addCommandWithUrlTest(commandName, /^\[sitetree_link/);
+  .addCommandWithUrlTest(commandName, /^\[sitetree_link.+]$/);
 
 const plugin = {
   init(editor) {

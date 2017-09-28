@@ -3,11 +3,9 @@
 namespace SilverStripe\CMS\Model;
 
 use SilverStripe\Assets\File;
-use SilverStripe\Core\Convert;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\ReadonlyField;
 use SilverStripe\ORM\DataExtension;
-use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ManyManyList;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\SSViewer;
@@ -25,9 +23,8 @@ use Subsite;
  */
 class SiteTreeFileExtension extends DataExtension
 {
-
     private static $belongs_many_many = array(
-        'BackLinkTracking' => 'SilverStripe\\CMS\\Model\\SiteTree.ImageTracking' // {@see SiteTreeLinkTracking}
+        'BackLinkTracking' => SiteTree::class . '.ImageTracking' // {@see SiteTreeLinkTracking}
     );
 
     /**
@@ -122,7 +119,7 @@ class SiteTreeFileExtension extends DataExtension
         $brokenPageIDs = $this->owner->BackLinkTracking()->column("ID");
         if ($brokenPageIDs) {
             // This will syncLinkTracking on the same stage as this file
-            $brokenPages = DataObject::get('SilverStripe\\CMS\\Model\\SiteTree')->byIDs($brokenPageIDs);
+            $brokenPages = SiteTree::get()->byIDs($brokenPageIDs);
             foreach ($brokenPages as $brokenPage) {
                 $brokenPage->write();
             }

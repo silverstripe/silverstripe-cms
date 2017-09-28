@@ -33,7 +33,7 @@ Feature: Manage page permissions
 
   Scenario: I can limit page view permissions to certain groups
     Given I select "Only these groups (choose from list)" from "Who can view this page?" input group
-    And I select "AUTHOR group" from "Viewer Groups" with javascript
+    And I select "AUTHOR group" in the "#Form_EditForm_ViewerGroups_Holder" tree dropdown
     And I press the "Save" button
     When I am not logged in
     And I go to the homepage
@@ -54,7 +54,7 @@ Feature: Manage page permissions
 
   Scenario: I can limit page edit permissions to certain groups
     Given I select "Only these groups (choose from list)" from "Who can edit this page?" input group
-    And I select "ADMIN group" from "Editor Groups" with javascript
+    And I select "ADMIN group" in the "#Form_EditForm_EditorGroups_Holder" tree dropdown
     And I press the "Save" button
     Then pages should not be editable by "AUTHOR"
     But pages should be editable by "ADMIN"

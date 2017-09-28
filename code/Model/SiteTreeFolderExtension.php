@@ -2,61 +2,73 @@
 
 namespace SilverStripe\CMS\Model;
 
+use SilverStripe\Assets\File;
+use SilverStripe\Assets\Folder;
 use SilverStripe\Core\ClassInfo;
-use SilverStripe\ORM\DB;
-use SilverStripe\ORM\DataQuery;
-use SilverStripe\ORM\DataList;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Core\Convert;
+use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataExtension;
+use SilverStripe\ORM\DataList;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\DB;
 
-/**
- * @todo Cleanup, refactor, test this class
- */
 class SiteTreeFolderExtension extends DataExtension
 {
-
     /**
      * Looks for files used in system and create where clause which contains all ID's of files.
      *
-     * @returns String where clause which will work as filter.
+     * @returns string where clause which will work as filter.
      */
     public function getUnusedFilesListFilter()
     {
-        $result = DB::query("SELECT DISTINCT \"FileID\" FROM \"SiteTree_ImageTracking\"");
-        $usedFiles = array();
-        $where = '';
-        $classes = ClassInfo::subclassesFor('SilverStripe\\CMS\\Model\\SiteTree');
+        // Add all records in link tracking
+        $usedFiles = DB::query("SELECT DISTINCT \"FileID\" FROM \"SiteTree_ImageTracking\"")->column('FileID');
 
-        if ($result->numRecords() > 0) {
-            while ($nextResult = $result->next()) {
-                $where .= $nextResult['FileID'] . ',';
-            }
-        }
+        // Get all classes that aren't folder
+        $fileClasses = array_diff_key(
+            ClassInfo::subclassesFor(File::class),
+            ClassInfo::subclassesFor(Folder::class)
+        );
 
+        // Search on a class-by-class basis
+        $classes = ClassInfo::subclassesFor(SiteTree::class);
+
+        $schema = DataObject::getSchema();
         foreach ($classes as $className) {
-            $query = new DataQuery($className);
-            $ids = $query->execute()->column();
-            if (!count($ids)) {
+            // Build query based on all direct has_ones on this class
+            $hasOnes = Config::inst()->get($className, 'has_one', Config::UNINHERITED);
+            if (empty($hasOnes)) {
                 continue;
             }
-
-            foreach (singleton($className)->hasOne() as $relName => $joinClass) {
-                if ($joinClass == 'SilverStripe\\Assets\\Image' || $joinClass == 'SilverStripe\\Assets\\File') {
-                    $fieldName = $relName .'ID';
-                    $query = DataList::create($className)->where("$fieldName > 0");
-                    $query->distinct = true;
-                    $query->select(array($fieldName));
-                    $usedFiles = array_merge($usedFiles, $query->execute()->column());
-                } elseif ($joinClass == 'SilverStripe\\Assets\\Folder') {
-                    // @todo
+            $where = [];
+            $columns = [];
+            foreach ($hasOnes as $relName => $joinClass) {
+                if (in_array($joinClass, $fileClasses)) {
+                    $column = $relName . 'ID';
+                    $columns[] = $column;
+                    $quotedColumn = $schema->sqlColumnForField($className, $column);
+                    $where[] = "{$quotedColumn} > 0";
                 }
+            }
+
+            // Get all records with any file ID in the searched columns
+            $recordsArray = DataList::create($className)->whereAny($where)->toArray();
+            $records = ArrayList::create($recordsArray);
+            foreach ($columns as $column) {
+                $usedFiles = array_unique(array_merge($usedFiles, $records->column($column)));
             }
         }
 
+        // Create filter based on class and id
+        $classFilter = sprintf(
+            "(\"File\".\"ClassName\" IN (%s))",
+            implode(", ", Convert::raw2sql($fileClasses, true))
+        );
         if ($usedFiles) {
-            return "\"File\".\"ID\" NOT IN (" . implode(', ', $usedFiles) . ") AND (\"ClassName\" = 'File' OR \"ClassName\" = 'Image')";
+            return "\"File\".\"ID\" NOT IN (" . implode(', ', $usedFiles) . ") AND $classFilter";
         } else {
-            return "(\"ClassName\" = 'File' OR \"ClassName\" = 'Image')";
+            return $classFilter;
         }
-        return $where; // @todo - How?
     }
 }
