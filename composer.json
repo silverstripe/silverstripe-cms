@@ -1,6 +1,6 @@
 {
     "name": "silverstripe/cms",
-    "type": "silverstripe-module",
+    "type": "silverstripe-vendormodule",
     "description": "The SilverStripe Content Management System",
     "homepage": "http://silverstripe.org",
     "license": "BSD-3-Clause",
@@ -25,7 +25,8 @@
         "silverstripe/framework": "^4@dev",
         "silverstripe/reports": "^4@dev",
         "silverstripe/siteconfig": "^4@dev",
-        "silverstripe/versioned": "^1@dev"
+        "silverstripe/versioned": "^1@dev",
+        "silverstripe/vendor-plugin": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7",
@@ -37,7 +38,11 @@
         "branch-alias": {
             "4.x-dev": "4.0.x-dev",
             "dev-master": "5.x-dev"
-        }
+        },
+        "expose": [
+            "client/dist",
+            "client/lang"
+        ]
     },
     "scripts": {
         "lint": "phpcs -s code/ tests/php/ tests/behat/src/",

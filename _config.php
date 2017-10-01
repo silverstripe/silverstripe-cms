@@ -7,28 +7,18 @@ use SilverStripe\CMS\Controllers\CMSPageEditController;
 use SilverStripe\CMS\Controllers\CMSPageHistoryController;
 use SilverStripe\CMS\Controllers\CMSPageSettingsController;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Core\Manifest\ModuleLoader;
 use SilverStripe\Forms\HTMLEditor\TinyMCEConfig;
 use SilverStripe\View\Parsers\ShortcodeParser;
 
-/**
- * Define constants
- *
- * - CMS_DIR: Path relative to webroot, e.g. "cms"
- * - CMS_PATH: Absolute filepath, e.g. "/var/www/my-webroot/cms"
- */
 call_user_func(function () {
-    // Check if CMS is root dir, or subdir
-    if (strcasecmp(__DIR__, BASE_PATH) === 0) {
-        $clientPath = 'client';
-    } else {
-        $clientPath = basename(__DIR__) . '/client';
-    }
+    $module = ModuleLoader::inst()->getManifest()->getModule('silverstripe/cms');
 
     // Enable insert-link to internal pages
     TinyMCEConfig::get('cms')
         ->enablePlugins(array(
-            'sslinkinternal' => "{$clientPath}/dist/js/TinyMCE_sslink-internal.js",
-            'sslinkanchor' => "{$clientPath}/dist/js/TinyMCE_sslink-anchor.js",
+            'sslinkinternal' => $module->getResource('client/dist/js/TinyMCE_sslink-internal.js')->getURL(),
+            'sslinkanchor' => $module->getResource('client/dist/js/TinyMCE_sslink-anchor.js')->getURL()
         ));
 });
 
