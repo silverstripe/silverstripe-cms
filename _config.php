@@ -16,10 +16,12 @@ call_user_func(function () {
 
     // Enable insert-link to internal pages
     TinyMCEConfig::get('cms')
-        ->enablePlugins(array(
-            'sslinkinternal' => $module->getResource('client/dist/js/TinyMCE_sslink-internal.js')->getURL(),
-            'sslinkanchor' => $module->getResource('client/dist/js/TinyMCE_sslink-anchor.js')->getURL()
-        ));
+        ->enablePlugins([
+            'sslinkinternal' => $module
+                ->getResource('client/dist/js/TinyMCE_sslink-internal.js'),
+            'sslinkanchor' => $module
+                ->getResource('client/dist/js/TinyMCE_sslink-anchor.js'),
+        ]);
 });
 
 
