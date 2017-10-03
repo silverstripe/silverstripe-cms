@@ -59,10 +59,10 @@
     "moduleDirectories": [
       "client/src",
       "node_modules",
-      "../silverstripe-admin/client/src",
-      "../silverstripe-admin",
-      "silverstripe-admin/client/src",
-      "silverstripe-admin",
+      "../admin/client/src",
+      "../admin",
+      "vendor/silverstripe/admin/client/src",
+      "vendor/silverstripe/admin",
       "node_modules/@silverstripe/webpack-config/node_modules"
     ],
     "testMatch": [
