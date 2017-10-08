@@ -5,12 +5,12 @@ namespace SilverStripe\CMS\Controllers;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\View\ArrayData;
 use stdClass;
 
 class CMSPagesController extends CMSMain
 {
-
     private static $url_segment = 'pages';
 
     private static $url_rule = '/$Action/$ID/$OtherID';
@@ -51,10 +51,11 @@ class CMSPagesController extends CMSMain
                 'view' => $this->getRequest()->getVar('view'),
                 'q' => $this->getRequest()->getVar('q')
             ));
+
             foreach ($pages as $page) {
                 $params['ParentID'] = $page->ID;
                 $item = new stdClass();
-                $item->Title = $page->Title;
+                $item->Title = DBField::create_field('HTMLVarchar', $page->Title);
                 $item->Link = Controller::join_links($this->Link(), '?' . http_build_query($params));
                 $items->push(new ArrayData($item));
             }

@@ -49,6 +49,7 @@ use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
+use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\HiddenClass;
 use SilverStripe\ORM\Hierarchy\MarkedSet;
@@ -942,7 +943,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $record = $this->currentPage();
         if (!$record) {
             $items->push(new ArrayData(array(
-                'Title' => CMSPagesController::menu_title(),
+                'Title' => DBField::create_field('Varchar', CMSPagesController::menu_title()),
                 'Link' => ($unlinked) ? false : $this->LinkPages()
             )));
             return $items;
@@ -955,7 +956,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         /** @var SiteTree $ancestor */
         foreach ($ancestors as $ancestor) {
             $items->push(new ArrayData(array(
-                'Title' => $ancestor->getMenuTitle(),
+                'Title' => DBField::create_field('Varchar', $ancestor->getMenuTitle()),
                 'Link' => ($unlinked)
                     ? false
                     : $ancestor->CMSEditLink()
