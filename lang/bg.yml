@@ -246,6 +246,12 @@ bg:
     ReasonDropdownVPBROKENLINK: 'Виртуална страница, сочеща към несъществуваща страница'
     RedirectorNonExistent: 'Страница за пренасочване, сочеща към несъществуваща страница'
     VirtualPageNonExistent: 'Виртуална страница, сочеща към несъществуваща страница'
+  SilverStripe\CMS\Reports\EmptyPagesReport:
+    ContentGroupTitle: 'Отчети за съдържание'
+    EMPTYPAGES: 'Страници без съдържание'
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    ContentGroupTitle: 'Отчети за съдържание'
+    LAST2WEEKS: 'Страници, редактирани през последните 2 седмици'
   SilverStripe\CMS\Search\SearchForm:
     FILTERDATEFROM: От
     FILTERDATETO: До
@@ -254,3 +260,5 @@ bg:
     PAGEFILTERDATEHEADING: 'Последна редакция'
     SEARCH: Търси
     SearchResults: 'Резултати от търсенето'
+  SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask:
+    BUTTONRUN: Изпълни
