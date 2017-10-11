@@ -17,7 +17,7 @@ class LeftAndMainPageIconsExtension extends Extension
 
     public function init()
     {
-        Requirements::customCSS($this->generatePageIconsCss());
+        Requirements::customCSS($this->generatePageIconsCss(), CMSMain::PAGE_ICONS_ID);
     }
 
     /**

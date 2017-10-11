@@ -24,7 +24,7 @@ use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\Environment;
 use SilverStripe\Core\Injector\Injector;
-use SilverStripe\Core\Manifest\ModuleLoader;
+use SilverStripe\Core\Manifest\ModuleResourceLoader;
 use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldGroup;
@@ -80,6 +80,10 @@ use Translatable;
  */
 class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionProvider
 {
+    /**
+     * Unique ID for page icons CSS block
+     */
+    const PAGE_ICONS_ID = 'PageIcons';
 
     private static $url_segment = 'pages';
 
@@ -167,10 +171,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         Requirements::javascript('silverstripe/cms: client/dist/js/bundle.js');
         Requirements::javascript('silverstripe/cms: client/dist/js/SilverStripeNavigator.js');
         Requirements::css('silverstripe/cms: client/dist/styles/bundle.css');
-        Requirements::customCSS($this->generatePageIconsCss());
+        Requirements::customCSS($this->generatePageIconsCss(), self::PAGE_ICONS_ID);
 
-        $module = ModuleLoader::getModule('silverstripe/cms');
-        Requirements::add_i18n_javascript($module->getRelativeResourcePath('client/lang'), false, true);
+        Requirements::add_i18n_javascript('silverstripe/cms: client/lang', false, true);
 
         CMSBatchActionHandler::register('restore', CMSBatchAction_Restore::class);
         CMSBatchActionHandler::register('archive', CMSBatchAction_Archive::class);
@@ -1065,7 +1068,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 'AddAction' => $singularName,
                 'Description' => $description,
                 // TODO Sprite support
-                'IconURL' => $instance->config()->get('icon'),
+                'IconURL' => ModuleResourceLoader::resourceURL($instance->config()->get('icon')),
                 'Title' => $singularName,
             )));
         }
