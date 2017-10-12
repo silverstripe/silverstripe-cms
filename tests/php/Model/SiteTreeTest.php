@@ -332,6 +332,26 @@ class SiteTreeTest extends SapphireTest
         $this->assertInstanceOf('Page', $requeriedPage);
     }
 
+    public function testNoCascadingDeleteWithoutID()
+    {
+        Config::nest();
+        Config::modify()->merge('SiteTree', 'enforce_strict_hierarchy', true);
+        $count = SiteTree::get()->count();
+        $this->assertNotEmpty($count);
+        $obj = new SiteTree();
+        $this->assertFalse($obj->exists());
+        $fail = true;
+        try {
+            $obj->delete();
+        } catch (\LogicException $e) {
+            $fail = false;
+        }
+        if ($fail) {
+            $this->fail('Failed to throw delete exception');
+        }
+        $this->assertEquals($count, SiteTree::get()->count());
+        Config::unnest();
+    }
     public function testGetByLink()
     {
         $home     = $this->objFromFixture('Page', 'home');

@@ -1481,9 +1481,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $this->extend('augmentSyncLinkTracking');
     }
 
-    public function onBeforeDelete()
+    public function onAfterDelete()
     {
-        parent::onBeforeDelete();
+        $this->updateDependentPages();
+        parent::onAfterDelete();
 
         // If deleting this page, delete all its children.
         if (SiteTree::config()->enforce_strict_hierarchy && $children = $this->AllChildren()) {
@@ -1492,12 +1493,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 $child->delete();
             }
         }
-    }
 
-    public function onAfterDelete()
-    {
-        $this->updateDependentPages();
-        parent::onAfterDelete();
     }
 
     public function flushCache($persistent = true)
