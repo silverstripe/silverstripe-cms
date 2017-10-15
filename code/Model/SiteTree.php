@@ -1559,6 +1559,22 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function validURLSegment()
     {
+        $excludes = Director::config()->get('rules');
+        $excludes = array_keys($excludes);
+        $disallowedSegments = array_map(function ($key) {
+            $route = explode('/', $key);
+            if (!empty($route) && strpos($route[0], '$') === false) {
+                return $route[0];
+            }
+            return;
+        }, $excludes);
+
+        if (!$this->ParentID && in_array($this->URLSegment, $disallowedSegments)) {
+            // Default to '-2', onBeforeWrite takes care of further possible clashes
+            return false;
+        }
+
+
         if (self::config()->nested_urls && $parent = $this->Parent()) {
             if ($controller = ModelAsController::controller_for($parent)) {
                 if ($controller instanceof Controller && $controller->hasAction($this->URLSegment)) {
@@ -1611,17 +1627,17 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function generateURLSegment($title)
     {
         $filter = URLSegmentFilter::create();
-        $t = $filter->filter($title);
+        $filteredTitle = $filter->filter($title);
 
         // Fallback to generic page name if path is empty (= no valid, convertable characters)
-        if (!$t || $t == '-' || $t == '-1') {
-            $t = "page-$this->ID";
+        if (!$filteredTitle || $filteredTitle == '-' || $filteredTitle == '-1') {
+            $filteredTitle = "page-$this->ID";
         }
 
         // Hook for extensions
-        $this->extend('updateURLSegment', $t, $title);
+        $this->extend('updateURLSegment', $filteredTitle, $title);
 
-        return $t;
+        return $filteredTitle;
     }
 
     /**
