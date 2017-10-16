@@ -276,7 +276,25 @@ class SiteTreeTest extends SapphireTest {
 
 	}
 
-	public function testGetByLink() {
+    public function testNoCascadingDeleteWithoutID() {
+        Config::inst()->update('SiteTree', 'enforce_strict_hierarchy', true);
+        $count = SiteTree::get()->count();
+        $this->assertNotEmpty($count);
+        $obj = new SiteTree();
+        $this->assertFalse($obj->exists());
+        $fail = true;
+        try {
+            $obj->delete();
+        } catch (LogicException $e) {
+            $fail = false;
+        }
+        if ($fail) {
+            $this->fail('Failed to throw delete exception');
+        }
+        $this->assertCount($count, SiteTree::get());
+    }
+
+    public function testGetByLink() {
 		$home     = $this->objFromFixture('Page', 'home');
 		$about    = $this->objFromFixture('Page', 'about');
 		$staff    = $this->objFromFixture('Page', 'staff');
