@@ -276,7 +276,25 @@ class SiteTreeTest extends SapphireTest {
 
 	}
 
-	public function testGetByLink() {
+    public function testNoCascadingDeleteWithoutID() {
+        Config::inst()->update('SiteTree', 'enforce_strict_hierarchy', true);
+        $count = SiteTree::get()->count();
+        $this->assertNotEmpty($count);
+        $obj = new SiteTree();
+        $this->assertFalse($obj->exists());
+        $fail = true;
+        try {
+            $obj->delete();
+        } catch (LogicException $e) {
+            $fail = false;
+        }
+        if ($fail) {
+            $this->fail('Failed to throw delete exception');
+        }
+        $this->assertCount($count, SiteTree::get());
+    }
+
+    public function testGetByLink() {
 		$home     = $this->objFromFixture('Page', 'home');
 		$about    = $this->objFromFixture('Page', 'about');
 		$staff    = $this->objFromFixture('Page', 'staff');
@@ -770,19 +788,19 @@ class SiteTreeTest extends SapphireTest {
 			array('pagetype' => $sitetree->i18n_singular_name())
 		);
 		$sitetree->write();
-		$this->assertEquals($sitetree->URLSegment, 'neue-seite',
+		$this->assertEquals('neue-seite', $sitetree->URLSegment,
 			'Sets based on default title on first save'
 		);
 
 		$sitetree->Title = 'Changed';
 		$sitetree->write();
-		$this->assertEquals($sitetree->URLSegment, 'changed',
+		$this->assertEquals('changed', $sitetree->URLSegment,
 			'Auto-updates when set to default title'
 		);
 
 		$sitetree->Title = 'Changed again';
 		$sitetree->write();
-		$this->assertEquals($sitetree->URLSegment, 'changed',
+		$this->assertEquals('changed', $sitetree->URLSegment,
 			'Does not auto-update once title has been changed'
 		);
 

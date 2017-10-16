@@ -1158,10 +1158,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @param string $siteConfigMethod Method to call on {@link SiteConfig} for toplevel items, e.g. "canEdit"
 	 * @param string $globalPermission If the member doesn't have this permission code, don't bother iterating deeper
 	 * @param bool   $useCached
+	 * @param array $stages            Which stages to check permissions against, defaults to both Stage and Live
 	 * @return array An map of {@link SiteTree} ID keys to boolean values
 	 */
 	public static function batch_permission_check($ids, $memberID, $typeField, $groupJoinTable, $siteConfigMethod,
-												  $globalPermission = null, $useCached = true) {
+												  $globalPermission = null, $useCached = true, $stages = array('Stage', 'Live')) {
 		if($globalPermission === NULL) $globalPermission = array('CMS_ACCESS_LeftAndMain', 'CMS_ACCESS_CMSMain');
 
 		// Sanitise the IDs
@@ -1169,7 +1170,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		// This is the name used on the permission cache
 		// converts something like 'CanEditType' to 'edit'.
-		$cacheKey = strtolower(substr($typeField, 3, -4)) . "-$memberID";
+		$cacheKey = strtolower(substr($typeField, 3, -4)) . "-$memberID" . implode('-', $stages);
 
 		// Default result: nothing editable
 		$result = array_fill_keys($ids, false);
@@ -1206,7 +1207,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 			$combinedStageResult = array();
 
-			foreach(array('Stage', 'Live') as $stage) {
+			foreach($stages as $stage) {
 				// Start by filling the array with the pages that actually exist
 				$table = ($stage=='Stage') ? "SiteTree" : "SiteTree_$stage";
 
@@ -1257,7 +1258,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					}
 
 					if($groupedByParent) {
-						$actuallyInherited = self::batch_permission_check(array_keys($groupedByParent), $memberID, $typeField, $groupJoinTable, $siteConfigMethod);
+						$actuallyInherited = self::batch_permission_check(array_keys($groupedByParent), $memberID, $typeField, $groupJoinTable, $siteConfigMethod, $globalPermission, $useCached, array($stage));
 						if($actuallyInherited) {
 							$parentIDs = array_keys(array_filter($actuallyInherited));
 							foreach($parentIDs as $parentID) {
@@ -1574,7 +1575,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		parent::onBeforeDelete();
 
 		// If deleting this page, delete all its children.
-		if(SiteTree::config()->enforce_strict_hierarchy && $children = $this->AllChildren()) {
+		if($this->isInDB() && SiteTree::config()->enforce_strict_hierarchy && $children = $this->AllChildren()) {
 			foreach($children as $child) {
 				$child->delete();
 			}
@@ -2541,21 +2542,27 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 	/**
-	 * Removes the page from both live and stage
+	 * Removes the page from both live and stage, if it exists on both
+	 * otherwise just removes from stage
 	 *
 	 * @return bool Success
 	 */
 	public function doArchive() {
 		$this->invokeWithExtensions('onBeforeArchive', $this);
+		$doDelete = false;
 
-		if($this->doUnpublish()) {
-			$this->delete();
-			$this->invokeWithExtensions('onAfterArchive', $this);
-
-			return true;
+		if($this->ExistsOnLive) {
+			$doDelete = $this->doUnpublish();
+		} else {
+			$doDelete = true;
 		}
 
-		return false;
+		if ($doDelete) {
+			$this->delete();
+			$this->invokeWithExtensions('onAfterArchive', $this);
+		}
+
+		return $doDelete;
 	}
 
 	/**

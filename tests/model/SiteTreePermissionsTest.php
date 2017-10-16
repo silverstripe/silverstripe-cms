@@ -445,5 +445,47 @@ class SiteTreePermissionsTest extends FunctionalTest {
 		$this->session()->inst_set('loggedInAs', $user->ID);
 		$this->assertFalse($page->canEdit($user), 'Website user can\'t edit a page when set to inherit from the SiteConfig, and SiteConfig has canEdit set to OnlyTheseUsers');
 	}
-	
+
+	/**
+	 * Ensure that flipping parent / child relationship on live doesn't
+	 * cause infinite loop
+	 */
+	public function testMobiusHierarchy()
+	{
+		// login as admin to be able to publish
+		$adminID = $this->logInWithPermission('ADMIN');
+
+		$parentPage = new Page();
+		$parentPage->Title = 'Parent Page';
+		$parentPage->doPublish();
+
+		$childPage = new Page();
+		$childPage->Title = 'Child Page';
+		$childPage->ParentID = $parentPage->ID;
+		$childPage->doPublish();
+
+		//flip parent/child relation
+		$childPage->ParentID = 0;
+		$childPage->write();
+
+		$parentPage->ParentID = $childPage->ID;
+		$parentPage->write();
+
+		$this->assertTrue($childPage->isPublished());
+		$this->assertTrue($parentPage->isPublished());
+
+		$result = SiteTree::batch_permission_check(array(
+			$parentPage->ID,
+			$childPage->ID,
+		), $adminID, 'CanEditType', 'SiteTree_EditorGroups', 'canEditPages');
+
+		$this->assertArrayHasKey($childPage->ID, $result);
+		$this->assertArrayHasKey($parentPage->ID, $result);
+
+		// mr potato head can't edit
+		$this->assertTrue($result[$parentPage->ID]);
+		$this->assertTrue($result[$childPage->ID]);
+
+	}
+
 }

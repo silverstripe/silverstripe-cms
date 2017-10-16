@@ -12,7 +12,7 @@ class VirtualPage extends Page {
 	public static $virtualFields;
 	
 	/**
-	 * @var Array Define fields that are not virtual - the virtual page must define these fields themselves.
+	 * @var array Define fields that are not virtual - the virtual page must define these fields themselves.
 	 * Note that anything in {@link self::config()->initially_copied_fields} is implicitly included in this list.
 	 */
 	private static $non_virtual_fields = array(
@@ -30,7 +30,7 @@ class VirtualPage extends Page {
 	);
 	
 	/**
-	 * @var Array Define fields that are initially copied to virtual pages but left modifiable after that.
+	 * @var array Define fields that are initially copied to virtual pages but left modifiable after that.
 	 */
 	private static $initially_copied_fields = array(
 		'ShowInMenus',
@@ -416,10 +416,28 @@ class VirtualPage extends Page {
 		} else if(parent::hasField($field) || ($field === 'ID' && !$this->exists())) {
 			return $this->getField($field);
 		} else {
-			return $this->copyContentFrom()->$field;
+			return $this->CopyContentFrom()->$field;
 		}
 	}
-	
+
+
+	/**
+	 * Allow attributes on the master page to pass
+	 * through to the virtual page
+	 *
+	 * @param string $field
+	 * @return mixed
+	 */
+	public function __isset($field) {
+		if(parent::hasMethod($funcName = "get$field")) {
+			return true;
+		} else if(parent::hasField($field) || ($field === 'ID' && !$this->exists())) {
+			return true;
+		} else {
+			return $this->CopyContentFrom()->__isset($field);
+		}
+	}
+
 	/**
 	 * Pass unrecognized method calls on to the original data object
 	 *
@@ -431,7 +449,7 @@ class VirtualPage extends Page {
 		if(parent::hasMethod($method)) {
 			return parent::__call($method, $args);
 		} else {
-			return call_user_func_array(array($this->copyContentFrom(), $method), $args);
+			return call_user_func_array(array($this->CopyContentFrom(), $method), $args);
 		}
 	}
 
@@ -441,13 +459,11 @@ class VirtualPage extends Page {
 	 */
 	public function hasField($field) {
 		return (
-			array_key_exists($field, $this->record)
-			|| $this->hasDatabaseField($field)
-			|| array_key_exists($field, $this->db()) // Needed for composite fields
-			|| parent::hasMethod("get{$field}")
+			parent::hasField($field)
 			|| $this->CopyContentFrom()->hasField($field)
 		);
-	}	
+	}
+
 	/**
 	 * Overwrite to also check for method on the original data object
 	 *
@@ -455,8 +471,10 @@ class VirtualPage extends Page {
 	 * @return bool
 	 */
 	public function hasMethod($method) {
-		if(parent::hasMethod($method)) return true;
-		return $this->copyContentFrom()->hasMethod($method);
+		return (
+			parent::hasMethod($method)
+			|| $this->CopyContentFrom()->hasMethod($method)
+		);
 	}
 
 	/**
@@ -467,8 +485,8 @@ class VirtualPage extends Page {
 	 * @return string
 	 */
 	public function castingHelper($field) {
-		if($this->copyContentFrom()) {
-			return $this->copyContentFrom()->castingHelper($field);
+		if($this->CopyContentFrom()) {
+			return $this->CopyContentFrom()->castingHelper($field);
 		} else {
 			return parent::castingHelper($field);
 		}
@@ -508,8 +526,8 @@ class VirtualPage_Controller extends Page_Controller {
 	 * We can't load the content without an ID or record to copy it from.
 	 */
 	public function init(){
-		if(isset($this->record) && $this->record->ID){
-			if($this->record->VersionID != $this->failover->CopyContentFrom()->Version){
+		if(isset($this->record) && $this->record['ID']){
+			if($this->record['VersionID'] != $this->failover->CopyContentFrom()->Version){
 				$this->reloadContent();
 				$this->VersionID = $this->failover->CopyContentFrom()->VersionID;
 			}
@@ -562,7 +580,7 @@ class VirtualPage_Controller extends Page_Controller {
 				throw $e;
 			}
 
-			$original = $this->copyContentFrom();
+			$original = $this->CopyContentFrom();
 			$controller = ModelAsController::controller_for($original);
 
 			// Ensure request/response data is available on virtual controller
