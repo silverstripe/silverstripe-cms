@@ -17,6 +17,8 @@ use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Core\Manifest\ModuleResource;
+use SilverStripe\Core\Manifest\ModuleResourceLoader;
 use SilverStripe\Core\Resettable;
 use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\CheckboxField;
@@ -2839,6 +2841,33 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             return $this->config()->get('base_plural_name');
         }
         return parent::plural_name();
+    }
+
+    /**
+     * Generate link to this page's icon
+     *
+     * @return string
+     */
+    public function getPageIconURL()
+    {
+        $icon = $this->config()->get('icon');
+        if (!$icon) {
+            return null;
+        }
+
+        // Icon is relative resource
+        $iconResource = ModuleResourceLoader::singleton()->resolveResource($icon);
+        if ($iconResource instanceof ModuleResource) {
+            return $iconResource->getURL();
+        }
+
+        // Full path to file
+        if (Director::fileExists($icon)) {
+            return ModuleResourceLoader::resourceURL($icon);
+        }
+
+        // Skip invalid files
+        return null;
     }
 
     /**
