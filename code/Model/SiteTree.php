@@ -248,7 +248,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Icon to use in the CMS page tree. This should be the full filename, relative to the webroot.
      * Also supports custom CSS rule contents (applied to the correct selector for the tree UI implementation).
      *
-     * @see CMSMain::generateTreeStylingCSS()
+     * @see LeftAndMainPageIconsExtension::generatePageIconsCss()
      * @config
      * @var string
      */
