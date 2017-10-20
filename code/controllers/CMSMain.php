@@ -1247,7 +1247,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$id = (isset($data['ID'])) ? (int) $data['ID'] : null;
 		$version = (isset($data['Version'])) ? (int) $data['Version'] : null;
 
-		$record = DataObject::get_by_id($this->stat('tree_class'), $id);
+		$record = Versioned::get_latest_version($this->stat('tree_class'), $id);
 		if($record && !$record->canEdit()) return Security::permissionFailure($this);
 
 		if($version) {
