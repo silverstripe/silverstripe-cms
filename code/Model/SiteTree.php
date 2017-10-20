@@ -17,6 +17,8 @@ use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Core\Manifest\ModuleResource;
+use SilverStripe\Core\Manifest\ModuleResourceLoader;
 use SilverStripe\Core\Resettable;
 use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\CheckboxField;
@@ -248,7 +250,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Icon to use in the CMS page tree. This should be the full filename, relative to the webroot.
      * Also supports custom CSS rule contents (applied to the correct selector for the tree UI implementation).
      *
-     * @see CMSMain::generateTreeStylingCSS()
+     * @see LeftAndMainPageIconsExtension::generatePageIconsCss()
      * @config
      * @var string
      */
@@ -1486,7 +1488,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         parent::onBeforeDelete();
 
         // If deleting this page, delete all its children.
-        if (SiteTree::config()->enforce_strict_hierarchy && $children = $this->AllChildren()) {
+        if ($this->isInDB() && SiteTree::config()->enforce_strict_hierarchy && $children = $this->AllChildren()) {
             foreach ($children as $child) {
                 /** @var SiteTree $child */
                 $child->delete();
@@ -2855,6 +2857,33 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             return $this->config()->get('base_plural_name');
         }
         return parent::plural_name();
+    }
+
+    /**
+     * Generate link to this page's icon
+     *
+     * @return string
+     */
+    public function getPageIconURL()
+    {
+        $icon = $this->config()->get('icon');
+        if (!$icon) {
+            return null;
+        }
+
+        // Icon is relative resource
+        $iconResource = ModuleResourceLoader::singleton()->resolveResource($icon);
+        if ($iconResource instanceof ModuleResource) {
+            return $iconResource->getURL();
+        }
+
+        // Full path to file
+        if (Director::fileExists($icon)) {
+            return ModuleResourceLoader::resourceURL($icon);
+        }
+
+        // Skip invalid files
+        return null;
     }
 
     /**

@@ -122,18 +122,15 @@
   .view-controls {
     margin-top: 0;
 
-     .page-view-link {
-       display: none;
-       margin-right: -5px;
-     }
+    .page-view-link {
+      display: inline-block;
+      margin-right: -5px;
+    }
 
-     &.view-controls--treeview .font-icon-list {
-       display: inline-block;
-     }
-
-     &.view-controls--listview .font-icon-tree {
-       display: inline-block;
-     }
+    &.view-controls--treeview .font-icon-tree,
+    &.view-controls--listview .font-icon-list {
+      display: none;
+    }
   }
 
 }

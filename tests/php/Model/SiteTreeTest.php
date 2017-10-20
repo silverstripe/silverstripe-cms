@@ -26,6 +26,7 @@ use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\Parsers\Diff;
 use SilverStripe\View\Parsers\ShortcodeParser;
 use SilverStripe\View\Parsers\URLSegmentFilter;
+use LogicException;
 
 class SiteTreeTest extends SapphireTest
 {
@@ -366,6 +367,25 @@ class SiteTreeTest extends SapphireTest
         $requeriedPage = DataObject::get_by_id("Page", $page2ID);
         $this->assertEquals('Products', $requeriedPage->Title);
         $this->assertInstanceOf('Page', $requeriedPage);
+    }
+
+    public function testNoCascadingDeleteWithoutID()
+    {
+        Config::inst()->update('SiteTree', 'enforce_strict_hierarchy', true);
+        $count = SiteTree::get()->count();
+        $this->assertNotEmpty($count);
+        $obj = new SiteTree();
+        $this->assertFalse($obj->exists());
+        $fail = true;
+        try {
+            $obj->delete();
+        } catch (LogicException $e) {
+            $fail = false;
+        }
+        if ($fail) {
+            $this->fail('Failed to throw delete exception');
+        }
+        $this->assertCount($count, SiteTree::get());
     }
 
     public function testGetByLink()
