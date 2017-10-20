@@ -102,6 +102,11 @@ class CMSFileAddController extends LeftAndMain {
 			)
 		);
 		$form->loadDataFrom($folder);
+		
+		if($this->currentPageID()){
+		    // Make sure this controller know current folder when AJAX 'fileexists' is fired.
+		    $uploadField->setConfig('urlFileExists', Controller::join_links($uploadField->link('fileexists'), '?ID=' . $this->currentPageID()));
+		}
 
 		$this->extend('updateEditForm', $form);
 

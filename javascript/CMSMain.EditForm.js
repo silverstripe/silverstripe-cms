@@ -254,8 +254,7 @@
 		 *
 		 * A "rollback" to a specific version needs user confirmation.
 		 */
-		$('.cms-edit-form .Actions #Form_EditForm_action_rollback').entwine({
-			
+		$('.cms-edit-form .Actions #Form_EditForm_action_doRollback').entwine({
 			/**
 			 * Function: onclick
 			 *

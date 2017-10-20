@@ -1575,7 +1575,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		parent::onBeforeDelete();
 
 		// If deleting this page, delete all its children.
-		if(SiteTree::config()->enforce_strict_hierarchy && $children = $this->AllChildren()) {
+		if($this->isInDB() && SiteTree::config()->enforce_strict_hierarchy && $children = $this->AllChildren()) {
 			foreach($children as $child) {
 				$child->delete();
 			}
@@ -2837,7 +2837,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 		$flags = $this->getStatusFlags();
 		$treeTitle = sprintf(
-			"<span class=\"jstree-pageicon page-icon class-%s\"></span><span class=\"item\" data-allowedchildren=\"%s\">%s</span>",
+			"<span class=\"jstree-pageicon class-%s\"></span><span class=\"item\" data-allowedchildren=\"%s\">%s</span>",
 			Convert::raw2htmlid($this->class),
 			Convert::raw2att(Convert::raw2json($children)),
 			Convert::raw2xml(str_replace(array("\n","\r"),"",$this->MenuTitle))
