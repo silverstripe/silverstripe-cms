@@ -154,7 +154,5 @@ warnings:
       message: 'Moved to Versioned->isOnDraftOnly()'
     'SilverStripe\CMS\Model\SiteTree::getIsModifiedOnStage()':
       message: 'Moved to Versioned->isModifiedOnDraft()'
-    'SilverStripe\CMS\Model\SiteTree::isPublished()':
-      message: 'Moved to Versioned'
     'SilverStripe\CMS\Model\SiteTree::getExistsOnLive()':
       message: 'Removed in favour of isPublished()'
