@@ -61,10 +61,7 @@ jQuery.entwine('ss', ($) => {
       const handleHide = () => this.close();
       const handleInsert = (...args) => this.handleInsert(...args);
       const attrs = this.getOriginalAttributes();
-      const selection = tinymce.activeEditor.selection;
-      const selectionContent = selection.getContent() || '';
-      const tagName = selection.getNode().tagName;
-      const requireLinkText = tagName !== 'A' && selectionContent.trim() === '';
+      const requireLinkText = this.getRequireLinkText();
 
       // create/update the react component
       ReactDOM.render(
@@ -83,6 +80,20 @@ jQuery.entwine('ss', ($) => {
         </ApolloProvider>,
         this[0]
       );
+    },
+
+    /**
+     * Determine whether to show the link text field
+     *
+     * @return {Boolean}
+     */
+    getRequireLinkText() {
+      const selection = this.getElement().getEditor().getInstance().selection;
+      const selectionContent = selection.getContent() || '';
+      const tagName = selection.getNode().tagName;
+      const requireLinkText = tagName !== 'A' && selectionContent.trim() === '';
+
+      return requireLinkText;
     },
 
     /**
