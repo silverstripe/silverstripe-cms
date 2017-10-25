@@ -134,7 +134,6 @@ hr:
     EDIT_ALL_DESCRIPTION: 'Uredi bilo koju stranicu'
     EDIT_ALL_HELP: 'Mogućnost uređivanja bilo koje stranice, neovisno o postavkama na Pristup tabu. Zahtjeva "Pristup na ''Stranice'' sekciju" dozvolu'
     Editors: 'Uredničke grupe'
-    GroupPlaceholder: 'Klikni da obabereš grupu'
     HASBROKENLINKS: 'Ova stranica ima pogrešne linkove'
     HTMLEDITORTITLE: Sadržaj
     INHERIT: 'Naslijedi od matične stranice'

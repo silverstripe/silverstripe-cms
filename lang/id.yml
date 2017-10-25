@@ -94,7 +94,6 @@ id:
     EDIT_ALL_DESCRIPTION: 'Edit semua laman'
     EDIT_ALL_HELP: 'Bolehkan mengedit semua laman pada situs, terlepas dari pengaturan Akses. Memerlukan perijinan "Akses ke bagian ''Laman''".'
     Editors: 'Kelompok Editor'
-    GroupPlaceholder: 'Klik untuk memilih kelompok'
     HASBROKENLINKS: 'Laman ini mempunyai tautan yang rusak.'
     HTMLEDITORTITLE: Konten
     INHERIT: 'Warisi dari laman induk'

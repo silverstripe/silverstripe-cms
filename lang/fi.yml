@@ -136,7 +136,6 @@ fi:
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arkistoitu
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    ANCHORVALUE: Ankkuri
     LINKDESCR: 'Linkin kuvaus'
     LINKOPENNEWWIN: 'Avataanko linkki uudessa ikkunassa/välilehdellä?'
     LINKTEXT: Linkkiteksti
@@ -198,7 +197,6 @@ fi:
     EDIT_ALL_DESCRIPTION: 'Muokkaa mitä tahansa sivua'
     EDIT_ALL_HELP: 'Mahdollisuus muokata mitä tahansa sivua sivustosta, riippumatta Käyttöoikeus-välilehden asetuksista. Vaatii "Käyttöoikeus sivuston sisältöön" -lupaa'
     Editors: Toimittajaryhmät
-    GroupPlaceholder: 'Valitse ryhmä napsauttamalla'
     HASBROKENLINKS: 'Tällä sivulla on rikkinäisiä linkkejä'
     HTMLEDITORTITLE: Sisältö
     INHERIT: 'Sama kuin ylätason sivulla'

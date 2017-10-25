@@ -90,7 +90,6 @@ sr_RS@latin:
     EDIT_ALL_DESCRIPTION: 'Izmena bilo koje stranice'
     EDIT_ALL_HELP: 'Mogućnost menjanja bilo koje stranice na sajtu, bez obzira na podešavanja na kartici "Pristup". Zahteva dozvolu za pristup odeljku "Stranice".'
     Editors: 'Grupe za izmene'
-    GroupPlaceholder: 'Klikni radi izbora grupe'
     HASBROKENLINKS: 'Ova stranica sadrži oštećene linkove.'
     HTMLEDITORTITLE: Sadržaj
     INHERIT: 'Naslediti od roditeljske stranice'

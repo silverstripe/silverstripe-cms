@@ -134,7 +134,6 @@ fa_IR:
     EDITORGROUPS: 'گروه‌های ویرایشگر'
     EDIT_ALL_DESCRIPTION: 'ویرایش هر صفحه‌ای'
     Editors: 'گروه‌های ویرایشگران'
-    GroupPlaceholder: 'برای انتخاب گروه کلیک کنید'
     HASBROKENLINKS: 'این صفحه دارای پیوند معیوب است.'
     HTMLEDITORTITLE: 'درون‌مایه'
     INHERIT: 'از صفحه والد ارث ببر'

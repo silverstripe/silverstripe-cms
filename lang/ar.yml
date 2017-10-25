@@ -90,7 +90,6 @@ ar:
     EDIT_ALL_DESCRIPTION: 'Can edit any page on the site, bypassing page specific security'
     EDIT_ALL_HELP: 'القدرة على تحرير أي صفحة على الموقع ، بغض النظر عن الإعدادات على علامة تبويب الوصول. يتطلب تصريح "الوصول إلى محتوى الموقع" '
     Editors: 'مجموعات المحررين'
-    GroupPlaceholder: 'انقر لاختيار المجموعة'
     HASBROKENLINKS: 'هذه الصفحة تحتوي على روابط معطوبة'
     HTMLEDITORTITLE: 'محتوى'
     INHERIT: 'استيراد من الصفحة المرجعية'

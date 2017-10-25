@@ -103,7 +103,6 @@ lt:
     EDIT_ALL_DESCRIPTION: 'Gali redaguoti puslapį, apeinant puslapio redagavimo teises'
     EDIT_ALL_HELP: 'Galimybė redaguoti bet kurį puslapį, nepriklausomai nuo "Priėjimo/Leidimų" skyriaus nustatymų. Būtinas leidimas "Prieiti prie ''Puslapių''"'
     Editors: 'Redaguotojų grupė'
-    GroupPlaceholder: 'Paspauskite, norėdami pasirinkti grupę'
     HASBROKENLINKS: 'Šiame puslapyje yra nebegaliojančių nuorodų.'
     HTMLEDITORTITLE: Turinys
     INHERIT: 'Paveldėti iš pradinio puslapio'
