@@ -73,6 +73,8 @@ en:
     ParentMode_top: 'Top level'
     Title: 'Add page'
   SilverStripe\CMS\Controllers\CMSPageEditController:
+    ErrorItemPermissionDenied: 'It seems you don''t have the necessary permissions to add {ObjectTitle} to a campaign'
+    ErrorNotFound: 'That {Type} couldn''t be found'
     MENUTITLE: 'Edit Page'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Author
@@ -135,8 +137,9 @@ en:
     VIEWPAGEIN: 'View Page in:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archived
-  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Anchor
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Link description'
     LINKOPENNEWWIN: 'Open in new window/tab'
     LINKTEXT: 'Link text'
@@ -198,7 +201,6 @@ en:
     EDIT_ALL_DESCRIPTION: 'Edit any page'
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     Editors: 'Editors Groups'
-    GroupPlaceholder: 'Click to select group'
     HASBROKENLINKS: 'This page has broken links.'
     HTMLEDITORTITLE: Content
     INHERIT: 'Inherit from parent page'

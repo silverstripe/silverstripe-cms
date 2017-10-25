@@ -26,6 +26,7 @@ use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\Parsers\Diff;
 use SilverStripe\View\Parsers\ShortcodeParser;
 use SilverStripe\View\Parsers\URLSegmentFilter;
+use LogicException;
 
 class SiteTreeTest extends SapphireTest
 {
@@ -45,6 +46,15 @@ class SiteTreeTest extends SapphireTest
         SiteTreeTest_StageStatusInherit::class,
         SiteTreeTest_DataObject::class,
     );
+
+    public function reservedSegmentsProvider()
+    {
+        return [
+            ['Admin', 'admin-2'],
+            ['Dev', 'dev-2'],
+            ['Robots in disguise', 'robots-in-disguise']
+        ];
+    }
 
     public function testCreateDefaultpages()
     {
@@ -99,6 +109,33 @@ class SiteTreeTest extends SapphireTest
             $obj = $this->objFromFixture('Page', $fixture);
             $this->assertEquals($urlSegment, $obj->URLSegment);
         }
+    }
+
+    /**
+     * Check if reserved URL's are properly appended with a number at top level
+     * @dataProvider reservedSegmentsProvider
+     */
+    public function testDisallowedURLGeneration($title, $urlSegment)
+    {
+        $page = Page::create(['Title' => $title]);
+        $id = $page->write();
+        $page = Page::get()->byID($id);
+        $this->assertEquals($urlSegment, $page->URLSegment);
+    }
+
+    /**
+     * Check if reserved URL's are not appended with a number on a child page
+     * It's okay to have a URL like domain.com/my-page/admin as it won't interfere with domain.com/admin
+     * @dataProvider reservedSegmentsProvider
+     */
+    public function testDisallowedChildURLGeneration($title, $urlSegment)
+    {
+        // Using the same dataprovider, strip out the -2 from the admin and dev segment
+        $urlSegment = str_replace('-2', '', $urlSegment);
+        $page = Page::create(['Title' => $title, 'ParentID' => 1]);
+        $id = $page->write();
+        $page = Page::get()->byID($id);
+        $this->assertEquals($urlSegment, $page->URLSegment);
     }
 
     /**
@@ -330,6 +367,25 @@ class SiteTreeTest extends SapphireTest
         $requeriedPage = DataObject::get_by_id("Page", $page2ID);
         $this->assertEquals('Products', $requeriedPage->Title);
         $this->assertInstanceOf('Page', $requeriedPage);
+    }
+
+    public function testNoCascadingDeleteWithoutID()
+    {
+        Config::inst()->update('SiteTree', 'enforce_strict_hierarchy', true);
+        $count = SiteTree::get()->count();
+        $this->assertNotEmpty($count);
+        $obj = new SiteTree();
+        $this->assertFalse($obj->exists());
+        $fail = true;
+        try {
+            $obj->delete();
+        } catch (LogicException $e) {
+            $fail = false;
+        }
+        if ($fail) {
+            $this->fail('Failed to throw delete exception');
+        }
+        $this->assertCount($count, SiteTree::get());
     }
 
     public function testGetByLink()
@@ -818,6 +874,14 @@ class SiteTreeTest extends SapphireTest
         $this->assertTrue($about->isSection());
         $this->assertTrue($staff->isSection());
         $this->assertTrue($ceo->isSection());
+    }
+
+    public function testURLSegmentReserved()
+    {
+        $siteTree = SiteTree::create(['URLSegment' => 'admin']);
+        $segment = $siteTree->validURLSegment();
+
+        $this->assertFalse($segment);
     }
 
     public function testURLSegmentAutoUpdate()

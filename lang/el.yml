@@ -54,7 +54,6 @@ el:
     EDITHEADER: 'Ποιος μπορεί να επεξεργαστεί αυτή τη σελίδα;'
     EDITORGROUPS: 'Ομάδες Συντακτών'
     Editors: 'Ομάδες Συντακτών'
-    GroupPlaceholder: 'Κάντε κλικ για επιλογή ομάδας'
     HASBROKENLINKS: 'Αυτή η σελίδα έχει ανενεργούς συνδέσμους '
     HTMLEDITORTITLE: 'Περιεχόμενο'
     LASTUPDATED: 'Τελευταία Ενημέρωση'

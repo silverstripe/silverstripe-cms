@@ -90,7 +90,6 @@ ro:
     EDIT_ALL_DESCRIPTION: 'Editează orice pagină'
     EDIT_ALL_HELP: 'Abilitatea de a edita orice pagină din site, indiferent de setările din tabul Acces. Necesită permisiunea de "Acces la secțiunea ''Pagini''"'
     Editors: 'Grupul editorilor'
-    GroupPlaceholder: 'Click pentru selecție grup'
     HASBROKENLINKS: 'Această pagină are referințe nefuncţionale'
     HTMLEDITORTITLE: Continut
     INHERIT: 'Mostenește din pagina părinte'

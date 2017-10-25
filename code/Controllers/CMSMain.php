@@ -24,6 +24,7 @@ use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\Environment;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Core\Manifest\ModuleResource;
 use SilverStripe\Core\Manifest\ModuleResourceLoader;
 use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\DropdownField;
@@ -1056,20 +1057,17 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             }
 
             // skip this type if it is restricted
-            if ($instance->config()->get('need_permission') && !$this->can(singleton($class)->config()->get('need_permission'))) {
+            $needPermissions = $instance->config()->get('need_permission');
+            if ($needPermissions && !$this->can($needPermissions)) {
                 continue;
             }
 
-            $singularName = $instance->i18n_singular_name();
-            $description = $instance->i18n_classDescription();
-
             $result->push(new ArrayData(array(
                 'ClassName' => $class,
-                'AddAction' => $singularName,
-                'Description' => $description,
-                // TODO Sprite support
-                'IconURL' => ModuleResourceLoader::resourceURL($instance->config()->get('icon')),
-                'Title' => $singularName,
+                'AddAction' => $instance->i18n_singular_name(),
+                'Description' => $instance->i18n_classDescription(),
+                'IconURL' => $instance->getPageIconURL(),
+                'Title' => $instance->i18n_singular_name(),
             )));
         }
 
@@ -1888,13 +1886,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     public function doRollback($data, $form)
     {
-        $this->extend('onBeforeRollback', $data['ID']);
+        $this->extend('onBeforeRollback', $data['ID'], $data['Version']);
 
         $id = (isset($data['ID'])) ? (int) $data['ID'] : null;
         $version = (isset($data['Version'])) ? (int) $data['Version'] : null;
 
         /** @var DataObject|Versioned $record */
-        $record = DataObject::get_by_id($this->config()->get('tree_class'), $id);
+        $record = Versioned::get_latest_version($this->config()->get('tree_class'), $id);
         if ($record && !$record->canEdit()) {
             return Security::permissionFailure($this);
         }

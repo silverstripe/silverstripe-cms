@@ -91,7 +91,6 @@ ko:
     EDIT_ALL_DESCRIPTION: '모든 페이지를 편집'
     EDIT_ALL_HELP: '액세스 탭의 설정에 관계없이 이 사이트의 페이지를 편집하려면 "''페이지''섹션에 액세스"권한이 필요합니다.'
     Editors: '편집 그룹'
-    GroupPlaceholder: '그룹을 선택하려면 클릭하세요.'
     HASBROKENLINKS: '이 페이지는 깨진 링크가 있습니다'
     HTMLEDITORTITLE: 내용
     INHERIT: '상위 페이지를 상속'

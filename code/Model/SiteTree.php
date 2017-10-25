@@ -17,6 +17,8 @@ use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Core\Manifest\ModuleResource;
+use SilverStripe\Core\Manifest\ModuleResourceLoader;
 use SilverStripe\Core\Resettable;
 use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\CheckboxField;
@@ -248,7 +250,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Icon to use in the CMS page tree. This should be the full filename, relative to the webroot.
      * Also supports custom CSS rule contents (applied to the correct selector for the tree UI implementation).
      *
-     * @see CMSMain::generateTreeStylingCSS()
+     * @see LeftAndMainPageIconsExtension::generatePageIconsCss()
      * @config
      * @var string
      */
@@ -1486,7 +1488,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         parent::onBeforeDelete();
 
         // If deleting this page, delete all its children.
-        if (SiteTree::config()->enforce_strict_hierarchy && $children = $this->AllChildren()) {
+        if ($this->isInDB() && SiteTree::config()->enforce_strict_hierarchy && $children = $this->AllChildren()) {
             foreach ($children as $child) {
                 /** @var SiteTree $child */
                 $child->delete();
@@ -1559,6 +1561,22 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function validURLSegment()
     {
+        $excludes = Director::config()->get('rules');
+        $excludes = array_keys($excludes);
+        $disallowedSegments = array_map(function ($key) {
+            $route = explode('/', $key);
+            if (!empty($route) && strpos($route[0], '$') === false) {
+                return $route[0];
+            }
+            return;
+        }, $excludes);
+
+        if (!$this->ParentID && in_array($this->URLSegment, $disallowedSegments)) {
+            // Default to '-2', onBeforeWrite takes care of further possible clashes
+            return false;
+        }
+
+
         if (self::config()->nested_urls && $parent = $this->Parent()) {
             if ($controller = ModelAsController::controller_for($parent)) {
                 if ($controller instanceof Controller && $controller->hasAction($this->URLSegment)) {
@@ -1611,17 +1629,17 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function generateURLSegment($title)
     {
         $filter = URLSegmentFilter::create();
-        $t = $filter->filter($title);
+        $filteredTitle = $filter->filter($title);
 
         // Fallback to generic page name if path is empty (= no valid, convertable characters)
-        if (!$t || $t == '-' || $t == '-1') {
-            $t = "page-$this->ID";
+        if (!$filteredTitle || $filteredTitle == '-' || $filteredTitle == '-1') {
+            $filteredTitle = "page-$this->ID";
         }
 
         // Hook for extensions
-        $this->extend('updateURLSegment', $t, $title);
+        $this->extend('updateURLSegment', $filteredTitle, $title);
 
-        return $t;
+        return $filteredTitle;
     }
 
     /**
@@ -2839,6 +2857,33 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             return $this->config()->get('base_plural_name');
         }
         return parent::plural_name();
+    }
+
+    /**
+     * Generate link to this page's icon
+     *
+     * @return string
+     */
+    public function getPageIconURL()
+    {
+        $icon = $this->config()->get('icon');
+        if (!$icon) {
+            return null;
+        }
+
+        // Icon is relative resource
+        $iconResource = ModuleResourceLoader::singleton()->resolveResource($icon);
+        if ($iconResource instanceof ModuleResource) {
+            return $iconResource->getURL();
+        }
+
+        // Full path to file
+        if (Director::fileExists($icon)) {
+            return ModuleResourceLoader::resourceURL($icon);
+        }
+
+        // Skip invalid files
+        return null;
     }
 
     /**

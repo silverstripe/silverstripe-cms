@@ -97,7 +97,6 @@ fr:
     EDIT_ALL_DESCRIPTION: 'Editer toute la page'
     EDIT_ALL_HELP: 'Possibilité d''édition de toute les pages du site, peu importe les réglages de l''onglet Accès. Nécessite la permission "Access to Site Content". '
     Editors: 'Groupes d''éditeurs'
-    GroupPlaceholder: 'Cliquez pour sélectionner un groupe'
     HASBROKENLINKS: 'Cette page possède des liens rompus.'
     HTMLEDITORTITLE: Contenu
     INHERIT: 'hérite de la page parente'

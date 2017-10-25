@@ -73,6 +73,8 @@ eo:
     ParentMode_top: 'Supra nivelo'
     Title: 'Enmeti paĝon'
   SilverStripe\CMS\Controllers\CMSPageEditController:
+    ErrorItemPermissionDenied: 'Ŝajnas ke vi ne havas la bezonatajn permesojn por aldoni je {ObjectTitle} al kampanjo'
+    ErrorNotFound: 'Ne eblis trovi tiun {Type}'
     MENUTITLE: 'Redakti paĝon'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Aŭtoro
@@ -135,6 +137,13 @@ eo:
     VIEWPAGEIN: 'Vidigi Paĝon en:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Enarkivigita
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Ankri
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Ligila priskribo'
+    LINKOPENNEWWIN: 'Malfermi en nova fenestro/tabo'
+    LINKTEXT: 'Ligi tekston'
+    SELECT_PAGE: 'Elekti paĝon'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Rezigni
     EMPTY: 'Bonvolu enigi URL-segmenton aŭ alklaki al Rezigni'
@@ -154,6 +163,8 @@ eo:
     REDIRECTTOPAGE: 'Paĝo en via retejo'
     SINGULARNAME: 'Paĝo pri alidirekto'
     YOURPAGE: 'Paĝo en via retejo'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Alidirekta paĝo estis agordita sen ie al kie alidirekti.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Iu
     ACCESSHEADER: 'Kiuj povas vidi ĉi tiun paĝon?'
@@ -186,10 +197,10 @@ eo:
     DependtPageColumnURL: URL
     EDITHEADER: 'Kiuj povas redakti ĉi tiun paĝon?'
     EDITORGROUPS: 'Grupoj de redaktantoj'
+    EDITOR_GROUPS_FIELD_DESC: 'Grupoj kun ĉieaj permesoj: {groupList}'
     EDIT_ALL_DESCRIPTION: 'Redakti ajnan paĝon'
     EDIT_ALL_HELP: 'Eblo redakti ajnan paĝon en la retejo, senkonsidere de la agordoj en la langeto Aliro. Necesas la permeso "Aliro al sekcio ''Paĝoj'' "'
     Editors: 'Redaktaj Grupoj'
-    GroupPlaceholder: 'Alklaku por elekti grupon'
     HASBROKENLINKS: 'Ĉi tiu paĝo havas rompitajn ligilojn.'
     HTMLEDITORTITLE: Enhavo
     INHERIT: 'Heredi de patra paĝo'
@@ -239,6 +250,7 @@ eo:
     TOPLEVEL: 'Enhavo de Retejo (Supra Nivelo)'
     URLSegment: URL-segmento
     VIEWERGROUPS: 'Grupoj de vidantoj'
+    VIEWER_GROUPS_FIELD_DESC: 'Grupoj kun ĉieaj vidigaj permesoj: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Vidigi ajnan paĝon'
     VIEW_ALL_HELP: 'Povo vidigi ajnan paĝon en la retejo, senkonsidere la agordaĵojn en la langeto Aliro. Bezonatas la permeso "Aliro al sekcio ''Paĝoj''"'
     VIEW_DRAFT_CONTENT: 'Vidigi malnetan enhavon'

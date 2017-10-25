@@ -3,11 +3,11 @@
 namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\Core\Convert;
-use SilverStripe\View\Requirements;
 use SilverStripe\Core\ClassInfo;
-use SilverStripe\Control\Director;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Core\Convert;
 use SilverStripe\Core\Extension;
+use SilverStripe\View\Requirements;
 
 /**
  * Extension to include custom page icons
@@ -32,28 +32,16 @@ class LeftAndMainPageIconsExtension extends Extension
 
         $classes = ClassInfo::subclassesFor(SiteTree::class);
         foreach ($classes as $class) {
-            $obj = singleton($class);
-            $iconSpec = $obj->config()->get('icon');
-
-            if (!$iconSpec) {
+            $icon = Config::inst()->get($class, 'icon');
+            if (!$icon) {
                 continue;
             }
 
-            // Legacy support: We no longer need separate icon definitions for folders etc.
-            $iconFile = (is_array($iconSpec)) ? $iconSpec[0] : $iconSpec;
-
-            // Legacy support: Add file extension if none exists
-            if (!pathinfo($iconFile, PATHINFO_EXTENSION)) {
-                $iconFile .= '-file.gif';
-            }
-
-            $class = Convert::raw2htmlid($class);
-            $selector = ".page-icon.class-$class, li.class-$class > a .jstree-pageicon";
-            if (Director::fileExists($iconFile)) {
-                $css .= "$selector { background: transparent url('$iconFile') 0 0 no-repeat; }\n";
-            } else {
-                // Support for more sophisticated rules, e.g. sprited icons
-                $css .= "$selector { $iconFile }\n";
+            $cssClass = Convert::raw2htmlid($class);
+            $selector = ".page-icon.class-$cssClass, li.class-$cssClass > a .jstree-pageicon";
+            $iconURL = SiteTree::singleton($class)->getPageIconURL();
+            if ($iconURL) {
+                $css .= "$selector { background: transparent url('$iconURL') 0 0 no-repeat; }\n";
             }
         }
 

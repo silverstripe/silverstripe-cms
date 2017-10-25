@@ -119,7 +119,6 @@ nl:
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Gearchiveerd
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    ANCHORVALUE: Anker
     LINKDESCR: 'Omschrijving van de koppeling'
     LINKOPENNEWWIN: 'Open in een nieuw venster/tab'
     SELECT_PAGE: 'Selecteer een pagina'
@@ -177,7 +176,6 @@ nl:
     EDIT_ALL_DESCRIPTION: 'Kan elke pagina wijzigen'
     EDIT_ALL_HELP: 'Bevoegdheid om alle pagina''s op de site te wijzigen, onafhankelijk van de instellingen in het ''Toegang'' tabblad. Vereist "Toegang tot site inhoud" rechten'
     Editors: Redacteursgroepen
-    GroupPlaceholder: 'Klik om de groep te selecteren'
     HASBROKENLINKS: 'Deze pagina heeft verbroken links.'
     HTMLEDITORTITLE: Inhoud
     INHERIT: 'Overnemen van de bovenliggende pagina'
