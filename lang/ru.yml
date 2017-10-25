@@ -136,7 +136,6 @@ ru:
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 'Архивные'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    ANCHORVALUE: Ярлык
     LINKDESCR: 'Описание ссылки'
     LINKOPENNEWWIN: 'Открывать в новом окне'
     SELECT_PAGE: 'Выберите страницу'
@@ -197,7 +196,6 @@ ru:
     EDIT_ALL_DESCRIPTION: 'Редактирование любой страницы'
     EDIT_ALL_HELP: 'Возможность редактировать любую страницу на сайте независимо от настроек во вкладке "Доступ". Необходимо право доступа к разделу "Страницы".'
     Editors: 'Группы редактирования'
-    GroupPlaceholder: 'Щелкните, чтобы выбрать группу'
     HASBROKENLINKS: 'Эта страница содержит неверные ссылки.'
     HTMLEDITORTITLE: Содержимое
     INHERIT: 'Перенять от родительской страницы'

@@ -100,7 +100,6 @@ sl:
     EDIT_ALL_DESCRIPTION: 'Urejanje vseh strani'
     EDIT_ALL_HELP: 'Možnost urejanja katerekoli strani na spletnem mestu, ne glede na nastavitve v sklopu "Dostop". Zahteva dovoljenje za dostop do vsebine spletnega mesta.'
     Editors: 'Skupine urednikov'
-    GroupPlaceholder: 'Klikni za izbiro grupe'
     HASBROKENLINKS: 'Ta stran ima neveljavne povezave.'
     HTMLEDITORTITLE: Vsebina
     INHERIT: 'Privzemi od nadrejene strani'

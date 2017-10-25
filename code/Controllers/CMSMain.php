@@ -1886,13 +1886,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     public function doRollback($data, $form)
     {
-        $this->extend('onBeforeRollback', $data['ID']);
+        $this->extend('onBeforeRollback', $data['ID'], $data['Version']);
 
         $id = (isset($data['ID'])) ? (int) $data['ID'] : null;
         $version = (isset($data['Version'])) ? (int) $data['Version'] : null;
 
         /** @var DataObject|Versioned $record */
-        $record = DataObject::get_by_id($this->config()->get('tree_class'), $id);
+        $record = Versioned::get_latest_version($this->config()->get('tree_class'), $id);
         if ($record && !$record->canEdit()) {
             return Security::permissionFailure($this);
         }

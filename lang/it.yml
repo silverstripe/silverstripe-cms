@@ -73,6 +73,8 @@ it:
     ParentMode_top: 'Primo livello'
     Title: 'Aggiungi pagina'
   SilverStripe\CMS\Controllers\CMSPageEditController:
+    ErrorItemPermissionDenied: 'Pare tu non abbia i privilegi necessari per aggiungere {ObjectTitle} alla campagna'
+    ErrorNotFound: '{Type} non è stato trovato'
     MENUTITLE: 'Modifica pagina'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autore
@@ -135,8 +137,9 @@ it:
     VIEWPAGEIN: 'Mostra pagina in:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archiviato
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Ancoraggio
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    ANCHORVALUE: Ancora
     LINKDESCR: 'Descrizione del link'
     LINKOPENNEWWIN: 'Apri in una nuova finestra/tab'
     LINKTEXT: 'Testo del collegamento'
@@ -198,7 +201,6 @@ it:
     EDIT_ALL_DESCRIPTION: 'Modifica qualunque pagina'
     EDIT_ALL_HELP: 'Possibilità di modificare qualsiasi pagina nel sito, senza tenere conto delle impostazioni nella tab Access. Richiede i permessi di "Accesso ai contenuti del sito"'
     Editors: 'Gruppi di Editori'
-    GroupPlaceholder: 'Clicca per selezionare il gruppo'
     HASBROKENLINKS: 'Questa pagina ha link non funzionanti.'
     HTMLEDITORTITLE: Contenuto
     INHERIT: 'Eredita dalla pagina madre'
@@ -264,7 +266,7 @@ it:
     many_many_LinkTracking: 'Monitoraggio link'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     BACKLINKCOUNT: 'Usato in:'
-    PAGES: pagina/e
+    PAGES: pagina(e)
     TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Usato in'

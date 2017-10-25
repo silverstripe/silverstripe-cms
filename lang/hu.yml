@@ -85,7 +85,6 @@ hu:
     EDITORGROUPS: 'Szerkesztők csoportja'
     EDIT_ALL_DESCRIPTION: 'Bármely oldal szerkesztése'
     Editors: 'Szerkesztők csoportja'
-    GroupPlaceholder: 'Válasszon csoportot'
     HASBROKENLINKS: 'Ez az oldal hibás linkeket tartalmaz.'
     HTMLEDITORTITLE: Tartalom
     INHERIT: 'Azonos a szülő értékével'

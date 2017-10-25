@@ -186,7 +186,6 @@ sk:
     EDIT_ALL_DESCRIPTION: 'Upraviť akúkoľvek stránku'
     EDIT_ALL_HELP: 'Schopnosť upravovať ktorúkoľvek stránku na webe, nedbajúc na nastavenia v záložke prístupov. Vyžaduje "Prístup k ''Stránkam'' sekcia" povolenie'
     Editors: 'Skupiny upravovateľov'
-    GroupPlaceholder: 'Kliknite pre vybratie skupiny'
     HASBROKENLINKS: 'Táto stránka obsahuje nefunkčné odkazy.'
     HTMLEDITORTITLE: Obsah
     INHERIT: 'Dediť od nadradenej stránky'

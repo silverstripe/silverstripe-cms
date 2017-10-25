@@ -90,7 +90,6 @@ zh:
     EDIT_ALL_DESCRIPTION: 编辑任何页面
     EDIT_ALL_HELP: 可以编辑站点上的任何页面，忽略“访问”选项卡上的设置。需要“访问’页面‘部分”权限
     Editors: 编辑分组
-    GroupPlaceholder: 点击选择分组
     HASBROKENLINKS: '该页面包含无效链接。'
     HTMLEDITORTITLE: '内容'
     INHERIT: 从父页面继承

@@ -96,7 +96,6 @@ ja:
     EDIT_ALL_DESCRIPTION: すべてのページを編集
     EDIT_ALL_HELP: 'アクセスタブの設定にかかわらず、このサイト上のページを編集するには、"''ページ''セクションへのアクセス"許可が必要です。'
     Editors: 編集グループ
-    GroupPlaceholder: クリックしてグループを選択
     HASBROKENLINKS: このページはリンク切れがあります
     HTMLEDITORTITLE: '内容'
     INHERIT: 親ページを受け継ぐ
