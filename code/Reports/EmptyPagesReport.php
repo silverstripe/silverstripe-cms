@@ -2,6 +2,7 @@
 
 namespace SilverStripe\CMS\Reports;
 
+use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Reports\Report;
 
@@ -25,9 +26,10 @@ class EmptyPagesReport extends Report
 
     public function sourceRecords($params = null)
     {
-        return SiteTree::get()->where(
-            "\"ClassName\" != 'RedirectorPage' AND (\"Content\" = '' OR \"Content\" IS NULL OR \"Content\" LIKE '<p></p>' OR \"Content\" LIKE '<p>&nbsp;</p>')"
-        )->sort('Title');
+        return SiteTree::get()
+            ->exclude('SiteTree.ClassName', RedirectorPage::class)
+            ->filter('SiteTree.Content', [null, '', '<p></p>', '<p>&nbsp;</p>'])
+            ->sort('Title');
     }
 
     public function columns()
