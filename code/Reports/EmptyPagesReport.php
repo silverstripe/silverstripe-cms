@@ -4,6 +4,7 @@ namespace SilverStripe\CMS\Reports;
 
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\ORM\DataList;
 use SilverStripe\Reports\Report;
 
 class EmptyPagesReport extends Report
@@ -24,6 +25,12 @@ class EmptyPagesReport extends Report
         return 100;
     }
 
+    /**
+     * Gets the source records
+     *
+     * @param array $params
+     * @return DataList
+     */
     public function sourceRecords($params = null)
     {
         return SiteTree::get()
