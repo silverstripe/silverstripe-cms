@@ -27,8 +27,8 @@ class EmptyPagesReport extends Report
     public function sourceRecords($params = null)
     {
         return SiteTree::get()
-            ->exclude('SiteTree.ClassName', RedirectorPage::class)
-            ->filter('SiteTree.Content', [null, '', '<p></p>', '<p>&nbsp;</p>'])
+            ->exclude('ClassName', RedirectorPage::class)
+            ->filter('Content', [null, '', '<p></p>', '<p>&nbsp;</p>'])
             ->sort('Title');
     }
 
