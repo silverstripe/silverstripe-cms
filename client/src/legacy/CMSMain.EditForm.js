@@ -226,7 +226,7 @@ $.entwine('ss', function($){
 	 *
 	 * A "rollback" to a specific version needs user confirmation.
 	 */
-	$('.cms-edit-form .btn-toolbar #Form_EditForm_action_doRollback').entwine({
+	$('.cms-edit-form .btn-toolbar #Form_EditForm_action_doRollback, .cms-edit-form .btn-toolbar #Form_EditForm_action_rollback').entwine({
 
 		/**
 		 * Function: onclick
