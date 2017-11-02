@@ -51,7 +51,7 @@ sr:
     PUBLISHEDSITE: 'Објављени сајт'
     VIEWPAGEIN: 'Прикажи страницу у:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: 'Архивирано'
+    ARCHIVED: Архивирано
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'Молимо Вас да унесете сегмент URL-а или кликните на Одустани'
     HelpChars: 'Специјални карактери су аутоматски конвертовани или уклоњени.'

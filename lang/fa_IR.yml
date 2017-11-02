@@ -52,7 +52,7 @@ fa_IR:
     MENUTITLE: تاریخچه
     REVERTTOTHISVERSION: 'بازگشت به این نسخه'
     SHOWUNPUBLISHED: 'نمایش نسخه‌های منتشر نشده'
-    VIEW: 'نمایش'
+    VIEW: نمایش
     VIEWINGLATEST: 'در حال حاضر آخرین نسخه را مشاهده می‌کنید.'
     VIEWINGVERSION: 'در حال حاضر نسخه {version} را مشاهده می‌کنید.'
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
@@ -103,7 +103,7 @@ fa_IR:
     SINGULARNAME: 'صفحه هدایت‌گر'
     YOURPAGE: 'برگ روی تارگاه شما'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: 'همه'
+    ACCESSANYONE: همه
     ACCESSHEADER: 'چه کسی بتواند این صفحه را مشاهده کنید ؟'
     ACCESSLOGGEDIN: 'کاربران وارد شده'
     ACCESSONLYTHESE: 'فقط این افراد (انتخاب از لیست)'
@@ -135,7 +135,7 @@ fa_IR:
     EDIT_ALL_DESCRIPTION: 'ویرایش هر صفحه‌ای'
     Editors: 'گروه‌های ویرایشگران'
     HASBROKENLINKS: 'این صفحه دارای پیوند معیوب است.'
-    HTMLEDITORTITLE: 'درون‌مایه'
+    HTMLEDITORTITLE: درون‌مایه
     INHERIT: 'از صفحه والد ارث ببر'
     LASTUPDATED: 'آخرین به روزرسانی'
     LINKSALREADYUNIQUE: '{url} هم‌اکنون نیز یکتا است'
@@ -145,7 +145,7 @@ fa_IR:
     METAEXTRA: 'متا تگ‌های اختصاصی'
     MODIFIEDONDRAFTHELP: 'صفحه دارای تغییرات منتشر نشده است'
     MODIFIEDONDRAFTSHORT: 'تغییر یافته'
-    MetadataToggle: 'متاداده'
+    MetadataToggle: متاداده
     MoreOptions: 'گزینه‌های بیشتر'
     OBSOLETECLASS: 'این صفحه از نوع منسوخ شده {type} است. ذخیره‌سازی سبب نوگردانی مدل آن شده و ممکن است داده‌هایی از دست برود'
     ONLIVEONLYSHORT: 'تنها در زنده'
@@ -164,7 +164,7 @@ fa_IR:
     SHOWINMENUS: 'نمایش در منوها؟'
     SHOWINSEARCH: 'نمایش در جستجو ؟'
     TABBEHAVIOUR: رفتار
-    TABCONTENT: 'مطلب'
+    TABCONTENT: مطلب
     TABDEPENDENT: 'صفحات وابسته'
     TOPLEVEL: 'محتوای سایت (سطح بالا)'
     URLSegment: 'بخش آدرس URL'

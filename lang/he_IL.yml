@@ -34,7 +34,7 @@ he_IL:
     DRAFTSITE: 'אתר טיוטה'
     INSTALL_SUCCESS: 'ההתקנה הצליחה!'
     LOGGEDINAS: 'נכנסת בשם'
-    LOGIN: 'כניסה'
+    LOGIN: כניסה
     LOGOUT: יציאה
     NOTEWONTBESHOWN: 'לתשומת לבך: הודעה זו לא תוצג למבקריך'
     NOTLOGGEDIN: 'לא נכנסת'
@@ -85,7 +85,7 @@ he_IL:
     METAEXTRA: 'תגי על נוספים'
     METAEXTRAHELP: 'תגיות HTML לנתוני על נוספים. לדוגמה &lt;meta name="שם_מותאם_אישית" content="התוכן שלך כאן" /&gt;'
     MODIFIEDONDRAFTHELP: 'בעמוד יש שינויים שלא פורסמו'
-    MODIFIEDONDRAFTSHORT: 'השתנה'
+    MODIFIEDONDRAFTSHORT: השתנה
     MetadataToggle: 'נתוני על'
     PAGELOCATION: 'מיקום העמוד'
     PAGETITLE: 'שם הדף'
@@ -103,7 +103,7 @@ he_IL:
     REORGANISE_HELP: 'ניתן לסדר מחדש את העמודים בעץ האתר באמצעות גרירה והשלכה.'
     SHOWINMENUS: 'להציג בתפריטים?'
     SHOWINSEARCH: 'לכלול בחיפוש?'
-    TABBEHAVIOUR: 'התנהגות'
+    TABBEHAVIOUR: התנהגות
     TABCONTENT: 'תוכן ראשי'
     TABDEPENDENT: 'עמודים תלויים'
     TOPLEVEL: 'תוכן האתר (רמה עליונה)'
