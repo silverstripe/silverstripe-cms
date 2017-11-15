@@ -1,6 +1,7 @@
 <?php
 namespace SilverStripe\CMS\Model;
 
+use DOMElement;
 use SilverStripe\Control\Director;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\View\Parsers\HTMLValue;
@@ -33,12 +34,16 @@ class SiteTreeLinkTracking_Parser
             return $results;
         }
 
+        /** @var DOMElement $link */
         foreach ($links as $link) {
             if (!$link->hasAttribute('href')) {
                 continue;
             }
 
-            $href = Director::makeRelative($link->getAttribute('href'));
+            $href = $link->getAttribute('href');
+            if (Director::is_site_url($href)) {
+                $href = Director::makeRelative($href);
+            }
 
             // Definitely broken links.
             if ($href == '' || $href[0] == '/') {

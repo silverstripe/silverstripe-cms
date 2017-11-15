@@ -3,11 +3,11 @@ th:
     ACCESS: 'เข้าถึงเซ็กชั่น ''{title}'''
     ACCESS_HELP: 'อนุญาตให้เปิดดูส่วนของเซ็กชั่นที่บรรจุรายการหน้าเว็บแบบทรีและเนื้อหาได้ สิทธิ์ในการเปิดดูและแก้ไขสามารถจัดการได้ผ่านทางหน้าเว็บทีระบุอยู่ในเมนูแบบดรอปดาวน์ เช่นเดียวกับ "สิทธิ์อนุญาตของเนื้อหา" ที่แยกออกมาต่างหากด้วยเช่นกัน'
     ChoosePageParentMode: เลือกว่าต้องการสร้างหน้าเว็บนี้ไว้ที่ไหน
-    ChoosePageType: 'เลือกประเภทของหน้าเว็บ'
+    ChoosePageType: เลือกประเภทของหน้าเว็บ
     Create: สร้าง
     NEWPAGE: 'ใหม่ {pagetype}'
     PAGENOTEXISTS: ไม่มีหน้านี้อยู่
-    PAGETYPEANYOPT: 'ประเภทใดก็ได้'
+    PAGETYPEANYOPT: ประเภทใดก็ได้
     PUBALLCONFIRM: 'กรุณาเผยแพร่หน้าเว็บทุกหน้าในเว็บไซต์, คัดลอกเนื้อหาลงไปที่'
     PUBALLFUN: 'ฟังก์ชั่นการทำงาน "เผยแพร่ทั้งหมด"'
     PUBPAGES: 'เผยแแพร่หน้าเว็บแล้ว {count} หน้า'
@@ -112,7 +112,7 @@ th:
     Visibility: สามารถมองเห็นได้
     has_one_Parent: หน้าเว็บต้นทาง
     many_many_BackLinkTracking: แกะรอยลิงก์ย้อนกลับ
-    many_many_ImageTracking: 'แกะรอยรูปภาพ'
+    many_many_ImageTracking: แกะรอยรูปภาพ
     many_many_LinkTracking: แกะรอยลิงก์
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: นี่เป็นหน้าเว็บจำลอง
@@ -125,7 +125,7 @@ th:
     CheckSiteDropdownPublished: เว็บไซต์ที่เผยแพร่แล้ว
     ColumnDateLastModified: วันที่แก้ไขล่าสุด
     ColumnDateLastPublished: วันที่เผยแพร่ล่าสุด
-    ColumnProblemType: 'ประเภทปัญหา'
+    ColumnProblemType: ประเภทปัญหา
     HasBrokenFile: มีไฟล์เสีย
     HasBrokenLink: มีลิงค์เสีย
     HasBrokenLinkAndFile: มีลิงค์เสียและไฟล์เสีย

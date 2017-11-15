@@ -202,7 +202,7 @@ class CMSPageHistoryController extends CMSMain
                 _t('SilverStripe\\CMS\\Controllers\\CMSPageHistoryController.REVERTTOTHISVERSION', 'Revert to this version')
             )
                 ->setUseButtonTag(true)
-                ->addExtraClass('font-icon-back-in-time')
+                ->addExtraClass('btn-warning font-icon-back-in-time')
         );
         $actions->setForm($form);
         $form->setActions($actions);

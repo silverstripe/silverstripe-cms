@@ -203,9 +203,11 @@ class SearchForm extends Form
         // Add * to each keyword
         $splitWords = preg_split("/ +/", trim($keywords));
         $newWords = [];
-        while (list($i,$word) = each($splitWords)) {
+        for ($i = 0; $i < count($splitWords); $i++) {
+            $word = $splitWords[$i];
             if ($word[0] == '"') {
-                while (list($i,$subword) = each($splitWords)) {
+                while (++$i < count($splitWords)) {
+                    $subword = $splitWords[$i];
                     $word .= ' ' . $subword;
                     if (substr($subword, -1) == '"') {
                         break;

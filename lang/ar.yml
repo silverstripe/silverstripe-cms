@@ -39,7 +39,7 @@ ar:
     ARCHIVEDSITE: 'إصدار المعاينة'
     ARCHIVEDSITEFROM: 'موقع تمت أرشفته منذ'
     CMS: 'نظام إدارة المحتوى'
-    DRAFT: 'المسودّة'
+    DRAFT: المسودّة
     DRAFTSITE: 'موقع في المسودة'
     INSTALL_SUCCESS: 'تم التثبيت بنجاح!'
     LOGGEDINAS: 'الدخول كـ'
@@ -51,7 +51,7 @@ ar:
     PUBLISHEDSITE: 'موقع منشور'
     VIEWPAGEIN: 'مشاهدة الصفحة في:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: 'المؤرشف'
+    ARCHIVED: المؤرشف
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'الرجاء إدخال مقطع URL أو انقر فوق إلغاء الأمر'
     HelpChars: 'يتم تلقائيا تحويل الأحرف الخاصة أو إزالتها.'
@@ -63,12 +63,12 @@ ar:
     REDIRECTTOPAGE: 'صفحة في موقعك الشخصي'
     YOURPAGE: 'صفحة في موقعك الشخصي'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: 'الجميع'
+    ACCESSANYONE: الجميع
     ACCESSHEADER: 'من يستطيع مشاهدة هذه الصفحة ؟'
     ACCESSLOGGEDIN: 'الأعضاء المسجلين'
     ACCESSONLYTHESE: 'فقط هؤلاء الأشخاص ( اختر من القائمة)'
     ADDEDTODRAFTHELP: 'لم تنشر الصفحة بعد'
-    ADDEDTODRAFTSHORT: 'المسودة'
+    ADDEDTODRAFTSHORT: المسودة
     APPEARSVIRTUALPAGES: 'يظهر هذا المحتوى أيضا على الصفحات الافتراضية في أقسام {title}.'
     BUTTONCANCELDRAFT: 'إلغاء التغييرات في المسودة'
     BUTTONCANCELDRAFTDESC: 'إلغاء المسودة و العودة إلى الموقع المنشور حالياً'
@@ -78,7 +78,7 @@ ar:
     BUTTONUNPUBLISH: 'غير منشور'
     BUTTONUNPUBLISHDESC: 'حذف هذه الصفحة من الموقع المنشور'
     Comments: التعليقات
-    Content: 'المحتوى'
+    Content: المحتوى
     DEFAULTABOUTTITLE: حول
     DEFAULTCONTACTTITLE: 'اتصل بنا'
     DEFAULTHOMETITLE: الرئيسة
@@ -91,11 +91,11 @@ ar:
     EDIT_ALL_HELP: 'القدرة على تحرير أي صفحة على الموقع ، بغض النظر عن الإعدادات على علامة تبويب الوصول. يتطلب تصريح "الوصول إلى محتوى الموقع" '
     Editors: 'مجموعات المحررين'
     HASBROKENLINKS: 'هذه الصفحة تحتوي على روابط معطوبة'
-    HTMLEDITORTITLE: 'محتوى'
+    HTMLEDITORTITLE: محتوى
     INHERIT: 'استيراد من الصفحة المرجعية'
     LASTUPDATED: 'أخر تحديث'
     LINKCHANGENOTE: 'تغيير هذا وصلة رابط الصفحة سوف تؤثر أيضًا على الوصلات لجميع صفحات الفرعية.'
-    MENUTITLE: 'القائمة'
+    MENUTITLE: القائمة
     METADESC: الوصف
     METADESCHELP: 'تستخدم محركات البحث هذا المحتوى لعرض نتائج البحث (على الرغم من أنها لن تؤثر على ترتيبها).'
     METAEXTRA: 'تخصيص Meta Tags'
@@ -122,7 +122,7 @@ ar:
     SHOWINMENUS: 'عرض في قوائم ؟'
     SHOWINSEARCH: 'عرض في البحث ؟'
     TABBEHAVIOUR: الشسلوك
-    TABCONTENT: 'المحتوى'
+    TABCONTENT: المحتوى
     TABDEPENDENT: 'الصفحات المعتدة'
     TOPLEVEL: 'محتوى الموقع ( مستوى أعلى )'
     URLSegment: 'جزء رابط الموقع'
@@ -169,7 +169,7 @@ ar:
     RedirectorNonExistent: 'معيد توجيه الصفحة يشير الى صفحة غير موجودة..'
     VirtualPageNonExistent: 'الصفحة الظاهرية تشير الى صفحة غير موجودة..'
   SilverStripe\CMS\Search\SearchForm:
-    FILTERDATEFROM: 'من'
+    FILTERDATEFROM: من
     FILTERDATETO: إلى
     GO: اذهب
     SEARCH: بحث

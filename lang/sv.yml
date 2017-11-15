@@ -176,7 +176,7 @@ sv:
     TABDEPENDENT: 'Beroende sidor'
     TOPLEVEL: 'Sajtinnehåll (toppnivå)'
     URLSegment: URL-segment
-    VIEWERGROUPS: 'Åtkomstgrupper'
+    VIEWERGROUPS: Åtkomstgrupper
     VIEW_ALL_DESCRIPTION: 'Visa alla sidor'
     VIEW_ALL_HELP: 'Möjlighet att redigera alla sidor på sajten, oavsett inställningarna under Åtkomstfliken. Kräver åtkomst till "Tillgång till ''Sidor''-delen"'
     VIEW_DRAFT_CONTENT: 'Se utkast'
@@ -184,7 +184,7 @@ sv:
     VIRTUALPAGEDRAFTWARNING: 'Publicera den länkade sidan för att kunna publicera den virtuella sidan'
     VIRTUALPAGEWARNING: 'Välj en länkad sida och spara först för att kunna publicera den här sidan'
     VIRTUALPAGEWARNINGSETTINGS: 'Välj en länkad sida i huvudinnehållsfälten för att kunna publicera'
-    Viewers: 'Åskådargrupper'
+    Viewers: Åskådargrupper
     Visibility: Synlighet
     has_one_Parent: 'Överordnad sida'
     many_many_BackLinkTracking: 'Spåra inlänkar'

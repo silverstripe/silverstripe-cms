@@ -259,7 +259,7 @@ it:
     VIRTUALPAGEWARNING: 'Perfavore scegli una pagina da linkare e salvala per poter pubblicare questa pagina.'
     VIRTUALPAGEWARNINGSETTINGS: 'Perfavore scegli una pagina da linkare nel campo "Contenuto" per poter pubblicare.'
     Viewers: 'Gruppi di visualizzatori'
-    Visibility: 'Visibilità'
+    Visibility: Visibilità
     has_one_Parent: 'Pagina madre'
     many_many_BackLinkTracking: 'Monitoriaggio link di ritorno'
     many_many_ImageTracking: 'Monitoraggio immagine'
