@@ -462,7 +462,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $childrenMethod = null,
         $numChildrenMethod = null,
         $filterFunction = null,
-        $nodeCountThreshold = 30
+        $nodeCountThreshold = null
     ) {
         // Provide better defaults from filter
         $filter = $this->getSearchFilter();
