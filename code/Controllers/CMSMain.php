@@ -784,7 +784,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
     public function CanOrganiseSitetree()
     {
-        return !Permission::check('SITETREE_REORGANISE') && !Permission::check('ADMIN') ? false : true;
+        return ( Permission::check('SITETREE_REORGANISE') || Permission::check('ADMIN') );
     }
 
     /**
