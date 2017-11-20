@@ -21,6 +21,7 @@ use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Control\HTTPResponse_Exception;
+use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\Environment;
 use SilverStripe\Core\Injector\Injector;
@@ -107,6 +108,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     private static $session_namespace = self::class;
 
     private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
+
+    private static $default_node_count_threshold = 30;
 
     /**
      * Amount of results showing on a single page.
@@ -464,6 +467,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $filterFunction = null,
         $nodeCountThreshold = null
     ) {
+        $nodeCountThreshold = is_null($nodeCountThreshold) ? Config::inst()->get(get_class(), 'default_node_count_threshold') : $nodeCountThreshold;
         // Provide better defaults from filter
         $filter = $this->getSearchFilter();
         if ($filter) {
