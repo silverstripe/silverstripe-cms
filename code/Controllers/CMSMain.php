@@ -53,6 +53,7 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\HiddenClass;
+use SilverStripe\ORM\Hierarchy;
 use SilverStripe\ORM\Hierarchy\MarkedSet;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\ValidationResult;
@@ -108,8 +109,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     private static $session_namespace = self::class;
 
     private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
-
-    private static $default_node_count_threshold = 30;
 
     /**
      * Amount of results showing on a single page.
@@ -467,7 +466,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $filterFunction = null,
         $nodeCountThreshold = null
     ) {
-        $nodeCountThreshold = is_null($nodeCountThreshold) ? Config::inst()->get(get_class(), 'default_node_count_threshold') : $nodeCountThreshold;
+        $nodeCountThreshold = is_null($nodeCountThreshold) ? Config::inst()->get(Hierarchy::class, 'node_threshold_total') : $nodeCountThreshold;
         // Provide better defaults from filter
         $filter = $this->getSearchFilter();
         if ($filter) {
