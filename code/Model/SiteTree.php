@@ -2854,6 +2854,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         if (!$icon) {
             return null;
         }
+        if (strpos($icon, 'data:image/') !== false) {
+            return $icon;
+        }
 
         // Icon is relative resource
         $iconResource = ModuleResourceLoader::singleton()->resolveResource($icon);
