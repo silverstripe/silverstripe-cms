@@ -466,7 +466,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $filterFunction = null,
         $nodeCountThreshold = null
     ) {
-        $nodeCountThreshold = is_null($nodeCountThreshold) ? Config::inst()->get(Hierarchy::class, 'node_threshold_total') : $nodeCountThreshold;
+        $nodeCountThreshold = is_null($nodeCountThreshold) ? Config::inst()->get($className, 'node_threshold_total') : $nodeCountThreshold;
         // Provide better defaults from filter
         $filter = $this->getSearchFilter();
         if ($filter) {
