@@ -22,13 +22,16 @@
 		"silverstripe/reports": "~3.4",
 		"silverstripe/siteconfig": "~3.4"
 	},
+	"require-dev": {
+		"phpunit/phpunit": "^3 || ^4 || ^5"
+	},
 	"extra": {
 		"branch-alias": {
 			"3.x-dev": "3.6.x-dev"
 		}
 	},
 	"autoload": {
-		"classmap": ["tests/behat/"]
+		"classmap": ["tests/behat/", "code"]
 	},
 	"minimum-stability": "dev"
 }
