@@ -6,7 +6,7 @@ ja:
     ARCHIVEDPAGE: '''{title}''ページがアーカイブされました'
     AddPageRestriction: 注：一部の種類のページは、この選択には含まれていません
     Cancel: キャンセル
-    ChoosePageParentMode: 'このページを作成する場所を選択'
+    ChoosePageParentMode: このページを作成する場所を選択
     ChoosePageType: ページの種類を選択
     Create: 作成
     DUPLICATED: '''{title}'' の複製が完了しました'
@@ -14,14 +14,14 @@ ja:
     NEWPAGE: '新しい {pagetype}'
     PAGENOTEXISTS: このページは存在しません
     PAGETYPEANYOPT: 何でも
-    PUBALLCONFIRM: 'コンテンツのステージをコピーして配信するために、サイト内のすべてのページを公開してください'
+    PUBALLCONFIRM: コンテンツのステージをコピーして配信するために、サイト内のすべてのページを公開してください
     PUBALLFUN: '"すべてを公開" 機能'
     PUBPAGES: '完了: {count}ページを公開しました'
     PageAdded: ページの作成に成功
     REMOVEDPAGE: '''{title}''を公開されているサイトから削除しました'
     REMOVEDPAGEFROMDRAFT: '{title}を下書きサイトから削除しました'
     RESTORED: '{title}を復旧しました'
-    ROLLEDBACKPUBv2: '公開されたバージョンにロールバックされました。'
+    ROLLEDBACKPUBv2: 公開されたバージョンにロールバックされました。
     ROLLEDBACKVERSIONv2: '#{version}. のバージョンにロールバック'
     SAVEDRAFT: 下書きを保存
   SilverStripe\CMS\Controllers\CMSPageAddController:
@@ -30,16 +30,16 @@ ja:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     COMPAREMODE: 比較モード（２つを選択）
     REVERTTOTHISVERSION: このバージョンに戻す
-    SHOWUNPUBLISHED: '公開されていないバージョンを表示'
+    SHOWUNPUBLISHED: 公開されていないバージョンを表示
     VIEW: 表示
     VIEWINGLATEST: 現在最新のバージョンを表示。
     VIEWINGVERSION: '現在表示しているバージョンは{version}です。'
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: ページ
   SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: '公開済みページ'
+    Title: 公開済みページ
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
-    Title: '全ページ'
+    Title: 全ページ
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: プレビュー版
     ARCHIVEDSITEFROM: からアーカイブされたサイト
@@ -50,15 +50,15 @@ ja:
     LOGGEDINAS: ログイン中：
     LOGIN: ログイン
     LOGOUT: ログアウト
-    NOTEWONTBESHOWN: '注：このメッセージは、あなたの訪問者に表示されません'
+    NOTEWONTBESHOWN: 注：このメッセージは、あなたの訪問者に表示されません
     NOTLOGGEDIN: ログインされていません
-    PUBLISHED: '公開された'
-    PUBLISHEDSITE: '公開サイト'
+    PUBLISHED: 公開された
+    PUBLISHEDSITE: 公開サイト
     VIEWPAGEIN: 以下からページを表示する：
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: アーカイブされた
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'URLのセグメントを入力または中止をクリックする'
+    EMPTY: URLのセグメントを入力または中止をクリックする
     HelpChars: 特殊文字は自動的に変換されたか取り除かれました
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: このページをユーザーを変更して他のページにしますか？
@@ -72,50 +72,50 @@ ja:
     ACCESSHEADER: このページを閲覧できる人
     ACCESSLOGGEDIN: ログインしたユーザ
     ACCESSONLYTHESE: 'この人達だけ (リストから選択してください)'
-    ADDEDTODRAFTHELP: 'ページはまだ公開されていません'
+    ADDEDTODRAFTHELP: ページはまだ公開されていません
     ADDEDTODRAFTSHORT: 下書き
     APPEARSVIRTUALPAGES: 'このコンテンツは{title}として仮想ページにおいても表示されます。'
     ARCHIVEDPAGESHORT: アーカイブされました
-    BUTTONCANCELDRAFT: '草稿の編集内容を取り消します'
-    BUTTONCANCELDRAFTDESC: '草稿と前回公開されたページを削除します'
-    BUTTONPUBLISHED: '公開された'
+    BUTTONCANCELDRAFT: 草稿の編集内容を取り消します
+    BUTTONCANCELDRAFTDESC: 草稿と前回公開されたページを削除します
+    BUTTONPUBLISHED: 公開された
     BUTTONSAVED: 保存された
-    BUTTONSAVEPUBLISH: '保存と公開'
-    BUTTONUNPUBLISH: '非公開'
-    BUTTONUNPUBLISHDESC: '公開サイトから取り除きました'
+    BUTTONSAVEPUBLISH: 保存と公開
+    BUTTONUNPUBLISH: 非公開
+    BUTTONUNPUBLISHDESC: 公開サイトから取り除きました
     Comments: コメント
     Content: コンテンツ
     DEFAULTABOUTTITLE: 私たちについて
     DEFAULTCONTACTTITLE: 連絡はこちらまで
-    DEFAULTHOMETITLE: 'ホーム'
+    DEFAULTHOMETITLE: ホーム
     DEPENDENT_NOTE: 以下のページでは、このページに依存します。　これには仮想ページ、リダイレクタページ、コンテンツのリンクを持つページが含まれています。
     DependtPageColumnLinkType: リンクの種類
     DependtPageColumnURL: URL
     EDITHEADER: このページを編集できる人
-    EDITORGROUPS: '編集者グループ'
+    EDITORGROUPS: 編集者グループ
     EDIT_ALL_DESCRIPTION: すべてのページを編集
     EDIT_ALL_HELP: 'アクセスタブの設定にかかわらず、このサイト上のページを編集するには、"''ページ''セクションへのアクセス"許可が必要です。'
     Editors: 編集グループ
     HASBROKENLINKS: このページはリンク切れがあります
-    HTMLEDITORTITLE: '内容'
+    HTMLEDITORTITLE: 内容
     INHERIT: 親ページを受け継ぐ
     LASTUPDATED: 最後に更新された
     LINKCHANGENOTE: このページのリンクを変更すると、すべての子ページのリンクに影響を与えます。
     MENUTITLE: メニュー表示
     METADESC: 説明
     METADESCHELP: 検索エンジンは、検索結果を表示するためにこのコンテンツを使用します（ランキングには影響しません）。
-    METAEXTRA: 'メタタグをカスタム'
+    METAEXTRA: メタタグをカスタム
     METAEXTRAHELP: '追加のメタ情報用のHTMLタグ。　たとえば、&lt; メタネーム = "カスタムネーム" コンテンツ = "ここにあなたのカスタムコンテンツ" /&gt;'
-    MODIFIEDONDRAFTHELP: '公開されていない変更がページにあります'
+    MODIFIEDONDRAFTHELP: 公開されていない変更がページにあります
     MODIFIEDONDRAFTSHORT: 修正された
     MetadataToggle: メタデータ
     MoreOptions: その他のオプション
     OBSOLETECLASS: 'このページは、旧式のタイプ{type} です。　保存するとそのタイプがリセットされて、データを失う可能性があります'
-    PAGELOCATION: 'ページの場所'
+    PAGELOCATION: ページの場所
     PAGETITLE: ページ名
     PAGETYPE: ページタイプ
     PARENTID: 親ページ
-    PARENTTYPE: 'ページの場所'
+    PARENTTYPE: ページの場所
     PARENTTYPE_ROOT: 最上位層のページ
     PARENTTYPE_SUBPAGE: 親ページの下にあるサブページ
     PERMISSION_GRANTACCESS_DESCRIPTION: コンテンツへのアクセス権限を編集
@@ -123,8 +123,8 @@ ja:
     PageTypNotAllowedOnRoot: 'ページタイプ"{type}"は最上位層のページになることができません'
     PageTypeNotAllowed: 'ページタイプ"{type}"はこの親ページの子になることができません'
     REMOVE_INSTALL_WARNING: '警告: セキュリティ上の理由から、SilverStripeのインストール先にあるinstall.phpを削除してください。'
-    REORGANISE_DESCRIPTION: 'サイト構造を変更'
-    REORGANISE_HELP: 'サイトツリー内のページをドラッグ・アンド・ドロップで再編集'
+    REORGANISE_DESCRIPTION: サイト構造を変更
+    REORGANISE_HELP: サイトツリー内のページをドラッグ・アンド・ドロップで再編集
     SHOWINMENUS: メニューに表示しますか？
     SHOWINSEARCH: 検索に表示しますか？
     TABBEHAVIOUR: 動作
@@ -136,14 +136,14 @@ ja:
     VIEW_ALL_DESCRIPTION: すべてのページを閲覧
     VIEW_ALL_HELP: 'このサイトのページを閲覧するには、アクセスタブの設定に関わらず、"ページのセクションへのアクセス"許可が必要です。'
     VIEW_DRAFT_CONTENT: ドラフトを見る
-    VIEW_DRAFT_CONTENT_HELP: 'CMSの編集モード以外のページを閲覧させる。　CMSアクセスなしの外部からの共同作業者に最適。'
-    VIRTUALPAGEDRAFTWARNING: '仮想ページを公開するためにリンクしたページを公開してください'
-    VIRTUALPAGEWARNING: 'このページを公開するために、リンク先のページを選択して最初に保存してください'
-    VIRTUALPAGEWARNINGSETTINGS: '公開するために、主なコンテンツの分野からリンク先のページを選択してください'
-    Viewers: '閲覧者のグループ'
+    VIEW_DRAFT_CONTENT_HELP: CMSの編集モード以外のページを閲覧させる。　CMSアクセスなしの外部からの共同作業者に最適。
+    VIRTUALPAGEDRAFTWARNING: 仮想ページを公開するためにリンクしたページを公開してください
+    VIRTUALPAGEWARNING: このページを公開するために、リンク先のページを選択して最初に保存してください
+    VIRTUALPAGEWARNINGSETTINGS: 公開するために、主なコンテンツの分野からリンク先のページを選択してください
+    Viewers: 閲覧者のグループ
     Visibility: 表示・非表示
     has_one_Parent: 親ページ
-    many_many_BackLinkTracking: 'リンク元を追跡'
+    many_many_BackLinkTracking: リンク元を追跡
     many_many_ImageTracking: 画像へのリンクを追跡
     many_many_LinkTracking: リンクを追跡
   SilverStripe\CMS\Model\VirtualPage:
@@ -157,9 +157,9 @@ ja:
     BROKENLINKS: 壊れたリンクのレポート
     CheckSite: サイトをチェックする
     CheckSiteDropdownDraft: 下書きサイト
-    CheckSiteDropdownPublished: '公開済みサイト'
+    CheckSiteDropdownPublished: 公開済みサイト
     ColumnDateLastModified: 最終更新日
-    ColumnDateLastPublished: '最終公開日'
+    ColumnDateLastPublished: 最終公開日
     ColumnProblemType: 問題の種類
     ColumnURL: URL
     HasBrokenFile: 壊れたファイルがあります

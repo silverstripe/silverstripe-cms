@@ -4,12 +4,18 @@ namespace SilverStripe\CMS\Tests\Model;
 
 use SilverStripe\CMS\Model\SiteTreeLinkTracking_Parser;
 use SilverStripe\Assets\File;
+use SilverStripe\Control\Director;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\View\Parsers\HTMLValue;
 use Page;
 
 class SiteTreeLinkTrackingTest extends SapphireTest
 {
+    protected function setUp()
+    {
+        parent::setUp();
+        Director::config()->set('alternate_base_url', 'http://www.mysite.com/');
+    }
 
     protected function isBroken($content)
     {
@@ -25,12 +31,24 @@ class SiteTreeLinkTrackingTest extends SapphireTest
 
     public function testParser()
     {
+        // Shortcodes
         $this->assertTrue($this->isBroken('<a href="[sitetree_link,id=123]">link</a>'));
         $this->assertTrue($this->isBroken('<a href="[sitetree_link,id=123]#no-such-anchor">link</a>'));
         $this->assertTrue($this->isBroken('<a href="[file_link,id=123]">link</a>'));
+
+        // Relative urls
         $this->assertTrue($this->isBroken('<a href="">link</a>'));
         $this->assertTrue($this->isBroken('<a href="/">link</a>'));
 
+        // Non-shortcodes, assume non-broken without due reason
+        $this->assertFalse($this->isBroken('<a href="/some-page">link</a>'));
+        $this->assertFalse($this->isBroken('<a href="some-page">link</a>'));
+
+        // Absolute urls
+        $this->assertFalse($this->isBroken('<a href="http://www.mysite.com/some-page">link</a>'));
+        $this->assertFalse($this->isBroken('<a href="http://www.google.com/some-page">link</a>'));
+
+        // Anchors
         $this->assertFalse($this->isBroken('<a name="anchor">anchor</a>'));
         $this->assertFalse($this->isBroken('<a id="anchor">anchor</a>'));
         $this->assertTrue($this->isBroken('<a href="##anchor">anchor</a>'));
