@@ -66,10 +66,10 @@ $.entwine('ss', function($){
      */
     updateTypeList: function() {
       var hints = this.data('hints'),
-        parentTree = this.find('#Form_AddForm_ParentID_Holder .TreeDropdownField'),
+        parentTree = this.find('#Form_AddForm_ParentID'),
         parentMode = this.find("input[name=ParentModeField]:checked").val(),
         metadata = parentTree.data('metadata'),
-        id = (metadata && parentMode === 'child')
+        id = (parentMode === 'child')
           ? parentTree.getValue()
           : null,
         newClassName = metadata ? metadata.ClassName : null,

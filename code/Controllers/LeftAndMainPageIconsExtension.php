@@ -29,22 +29,15 @@ class LeftAndMainPageIconsExtension extends Extension
     public function generatePageIconsCss()
     {
         $css = '';
-
         $classes = ClassInfo::subclassesFor(SiteTree::class);
         foreach ($classes as $class) {
-            $icon = Config::inst()->get($class, 'icon');
-            if (!$icon) {
-                continue;
-            }
-
-            $cssClass = Convert::raw2htmlid($class);
-            $selector = ".page-icon.class-$cssClass, li.class-$cssClass > a .jstree-pageicon";
             $iconURL = SiteTree::singleton($class)->getPageIconURL();
             if ($iconURL) {
-                $css .= "$selector { background: transparent url('$iconURL') 0 0 no-repeat; }\n";
+                $cssClass = Convert::raw2htmlid($class);
+                $selector = sprintf('.page-icon.class-%1$s, li.class-%1$s > a .jstree-pageicon', $cssClass);
+                $css .= sprintf('%s { background: transparent url(\'%s\') 0 0 no-repeat; }', $selector, $iconURL);
             }
         }
-
         return $css;
     }
 }
