@@ -21,6 +21,7 @@ use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Control\HTTPResponse_Exception;
+use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\Environment;
 use SilverStripe\Core\Injector\Injector;
@@ -52,6 +53,7 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\HiddenClass;
+use SilverStripe\ORM\Hierarchy;
 use SilverStripe\ORM\Hierarchy\MarkedSet;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\ValidationResult;
@@ -462,8 +464,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $childrenMethod = null,
         $numChildrenMethod = null,
         $filterFunction = null,
-        $nodeCountThreshold = 30
+        $nodeCountThreshold = null
     ) {
+        $nodeCountThreshold = is_null($nodeCountThreshold) ? Config::inst()->get($className, 'node_threshold_total') : $nodeCountThreshold;
         // Provide better defaults from filter
         $filter = $this->getSearchFilter();
         if ($filter) {
