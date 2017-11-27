@@ -48,8 +48,8 @@
     "redux-form": "^6.0.2"
   },
   "devDependencies": {
+    "@silverstripe/eslint-config": "^0.0.2",
     "@silverstripe/webpack-config": "^0.5.0",
-    "@silverstripe/eslint-config": "^0.0.1",
     "babel-jest": "^20.0.3",
     "jest-cli": "^19.0.2"
   },
