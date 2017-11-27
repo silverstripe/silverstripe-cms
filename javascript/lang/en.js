@@ -37,6 +37,7 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "CMSMain.RestoreToRoot": "Are you sure you want to restore this page from archive?\n\nBecause the parent page is not available this will be restored to the top level.",
     "CMSMain.RollbackToVersion": "Do you really want to roll back to version #%s of this page?",
     "CMSMain.Unpublish": "Are you sure you want to remove your page from the published site?\n\nThis page will still be available in the sitetree as draft.",
+    "CMSMain.UnpublishWithChildren": "Warning: removing this page from the published site will also unpublish %s child page(s). Are you sure you want to go ahead?\n\nThese pages will still be available in the sitetree as draft.",
     "Folder.Name": "Folder name",
     "Tree.AddSubPage": "Add new page here",
     "Tree.Duplicate": "Duplicate",

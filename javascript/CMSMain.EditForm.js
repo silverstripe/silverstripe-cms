@@ -377,10 +377,18 @@
 			 */
 			onclick: function(e) {
 				var form = this.parents('form:first'), version = form.find(':input[name=Version]').val(), message = '';
-				message = ss.i18n.sprintf(
-					ss.i18n._t('CMSMain.Unpublish'),
-					version
-				);
+				numChildren = this.data('numChildren');
+				if (numChildren === 0) {
+					message = ss.i18n.sprintf(
+						ss.i18n._t('CMSMain.Unpublish'),
+						version
+					);
+				} else {
+					message = ss.i18n.sprintf(
+						ss.i18n._t('CMSMain.UnpublishWithChildren'),
+						numChildren
+					);
+				}
 				if(confirm(message)) {
 					return this._super(e);
 				} else {
