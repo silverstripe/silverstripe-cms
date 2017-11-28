@@ -277,8 +277,8 @@ class VirtualPage extends Page
 
     public function onBeforeWrite()
     {
-        parent::onBeforeWrite();
         $this->refreshFromCopied();
+        parent::onBeforeWrite();
     }
 
     /**
