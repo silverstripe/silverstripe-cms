@@ -440,16 +440,24 @@ HTML;
             $action = '_' . $action;
         }
 
-        $templates = array_merge(
-            // Find templates by dataRecord
-            SSViewer::get_templates_by_class(get_class($this->dataRecord), $action, "SilverStripe\\CMS\\Model\\SiteTree"),
-            // Next, we need to add templates for all controllers
-            SSViewer::get_templates_by_class(static::class, $action, "SilverStripe\\Control\\Controller"),
-            // Fail-over to the same for the "index" action
-            SSViewer::get_templates_by_class(get_class($this->dataRecord), "", "SilverStripe\\CMS\\Model\\SiteTree"),
-            SSViewer::get_templates_by_class(static::class, "", "SilverStripe\\Control\\Controller")
-        );
+        $templatesFound = [];
+        // Find templates for the record + action together - e.g. Page_action.ss
+        if ($this->dataRecord instanceof SiteTree) {
+            $templatesFound[] = $this->dataRecord->getViewerTemplates($action);
+        }
 
+        // Find templates for the controller + action together - e.g. PageController_action.ss
+        $templatesFound[] = SSViewer::get_templates_by_class(static::class, $action, Controller::class);
+
+        // Find templates for the record without an action - e.g. Page.ss
+        if ($this->dataRecord instanceof SiteTree) {
+            $templatesFound[] = $this->dataRecord->getViewerTemplates();
+        }
+
+        // Find the templates for the controller without an action - e.g. PageController.ss
+        $templatesFound[] = SSViewer::get_templates_by_class(static::class, "", Controller::class);
+
+        $templates = array_merge(...$templatesFound);
         return SSViewer::create($templates);
     }
 
