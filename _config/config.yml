@@ -7,6 +7,9 @@ SilverStripe\Admin\LeftAndMain:
 SilverStripe\Assets\File:
   extensions:
     - SilverStripe\CMS\Model\SiteTreeFileExtension
+SilverStripe\AssetAdmin\Forms\FileFormFactory:
+  extensions:
+    - SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension
 ---
 Name: cmsmodals
 ---

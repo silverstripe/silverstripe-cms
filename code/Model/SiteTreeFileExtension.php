@@ -41,20 +41,6 @@ class SiteTreeFileExtension extends DataExtension
         'BackLinkHTMLList' => 'HTMLFragment'
     );
 
-    public function updateCMSFields(FieldList $fields)
-    {
-        $fields->insertAfter(
-            'LastEdited',
-            ReadonlyField::create(
-                'BackLinkCount',
-                _t(__CLASS__.'.BACKLINKCOUNT', 'Used on:'),
-                $this->BackLinkTracking()->count() . ' ' . _t(__CLASS__.'.PAGES', 'page(s)')
-            )
-                ->addExtraClass('cms-description-toggle')
-                ->setDescription($this->BackLinkHTMLList())
-        );
-    }
-
     /**
      * Generate an HTML list which provides links to where a file is used.
      *
