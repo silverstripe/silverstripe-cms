@@ -25,8 +25,6 @@ use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\Environment;
 use SilverStripe\Core\Injector\Injector;
-use SilverStripe\Core\Manifest\ModuleResource;
-use SilverStripe\Core\Manifest\ModuleResourceLoader;
 use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldGroup;
@@ -53,7 +51,6 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\HiddenClass;
-use SilverStripe\ORM\Hierarchy;
 use SilverStripe\ORM\Hierarchy\MarkedSet;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\ValidationResult;
@@ -69,6 +66,8 @@ use SilverStripe\Versioned\ChangeSetItem;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
+use SilverStripe\Core\Flushable;
+use SilverStripe\Core\Cache\MemberCacheFlusher;
 use Translatable;
 
 /**
@@ -81,7 +80,7 @@ use Translatable;
  *
  * @mixin LeftAndMainPageIconsExtension
  */
-class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionProvider
+class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionProvider, Flushable, MemberCacheFlusher
 {
     /**
      * Unique ID for page icons CSS block
@@ -161,6 +160,15 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         'SecurityID' => 'Text',
         'SiteTreeAsUL' => 'HTMLFragment',
     );
+
+    private static $dependencies = [
+        'HintsCache' => '%$' . CacheInterface::class . '.CMSMain_SiteTreeHints',
+    ];
+
+    /**
+     * @var CacheInterface
+     */
+    protected $hintsCache;
 
     protected function init()
     {
@@ -379,6 +387,33 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function getTabIdentifier()
     {
         return 'edit';
+    }
+
+    /**
+     * @param CacheInterface $cache
+     * @return $this
+     */
+    public function setHintsCache(CacheInterface $cache)
+    {
+        $this->hintsCache = $cache;
+
+        return $this;
+    }
+
+    /**
+     * @return CacheInterface $cache
+     */
+    public function getHintsCache()
+    {
+        return $this->hintsCache;
+    }
+
+    /**
+     * Clears all dependent cache backends
+     */
+    public function clearCache()
+    {
+        $this->getHintsCache()->clear();
     }
 
     public function LinkWithSearch($link)
@@ -977,67 +1012,65 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function SiteTreeHints()
     {
         $classes = SiteTree::page_type_classes();
-
-        $cacheCanCreate = array();
-        foreach ($classes as $class) {
-            $cacheCanCreate[$class] = singleton($class)->canCreate();
-        }
-
-        // Generate basic cache key. Too complex to encompass all variations
-        $cache = Injector::inst()->get(CacheInterface::class . '.CMSMain_SiteTreeHints');
-        $cacheKey = md5(implode('_', array(Security::getCurrentUser()->ID, implode(',', $cacheCanCreate), implode(',', $classes))));
-        if ($this->getRequest()->getVar('flush')) {
-            $cache->clear();
-        }
+        $memberID = Security::getCurrentUser() ? Security::getCurrentUser()->ID : 0;
+        $cache = $this->getHintsCache();
+        $cacheKey = $this->generateHintsCacheKey($memberID);
         $json = $cache->get($cacheKey);
-        if (!$json) {
-            $def['Root'] = array();
-            $def['Root']['disallowedChildren'] = array();
 
-            // Contains all possible classes to support UI controls listing them all,
-            // such as the "add page here" context menu.
-            $def['All'] = array();
+        if ($json) return $json;
 
-            // Identify disallows and set globals
-            foreach ($classes as $class) {
-                $obj = singleton($class);
-                if ($obj instanceof HiddenClass) {
-                    continue;
-                }
+        $canCreate = [];
+        foreach ($classes as $class) {
+            $canCreate[$class] = singleton($class)->canCreate();
+        }
 
-                // Name item
-                $def['All'][$class] = array(
-                    'title' => $obj->i18n_singular_name()
-                );
+        $def['Root'] = [];
+        $def['Root']['disallowedChildren'] = [];
 
-                // Check if can be created at the root
-                $needsPerm = $obj->config()->get('need_permission');
-                if (!$obj->config()->get('can_be_root')
-                    || (!array_key_exists($class, $cacheCanCreate) || !$cacheCanCreate[$class])
-                    || ($needsPerm && !$this->can($needsPerm))
-                ) {
-                    $def['Root']['disallowedChildren'][] = $class;
-                }
+        // Contains all possible classes to support UI controls listing them all,
+        // such as the "add page here" context menu.
+        $def['All'] = [];
 
-                // Hint data specific to the class
-                $def[$class] = array();
-
-                $defaultChild = $obj->defaultChild();
-                if ($defaultChild !== 'Page' && $defaultChild !== null) {
-                    $def[$class]['defaultChild'] = $defaultChild;
-                }
-
-                $defaultParent = $obj->defaultParent();
-                if ($defaultParent !== 1 && $defaultParent !== null) {
-                    $def[$class]['defaultParent'] = $defaultParent;
-                }
+        // Identify disallows and set globals
+        foreach ($classes as $class) {
+            $obj = singleton($class);
+            if ($obj instanceof HiddenClass) {
+                continue;
             }
 
-            $this->extend('updateSiteTreeHints', $def);
+            // Name item
+            $def['All'][$class] = [
+                'title' => $obj->i18n_singular_name()
+            ];
 
-            $json = Convert::raw2json($def);
-            $cache->set($cacheKey, $json);
+            // Check if can be created at the root
+            $needsPerm = $obj->config()->get('need_permission');
+            if (!$obj->config()->get('can_be_root')
+                || (!array_key_exists($class, $canCreate) || !$canCreate[$class])
+                || ($needsPerm && !$this->can($needsPerm))
+            ) {
+                $def['Root']['disallowedChildren'][] = $class;
+            }
+
+            // Hint data specific to the class
+            $def[$class] = [];
+
+            $defaultChild = $obj->defaultChild();
+            if ($defaultChild !== 'Page' && $defaultChild !== null) {
+                $def[$class]['defaultChild'] = $defaultChild;
+            }
+
+            $defaultParent = $obj->defaultParent();
+            if ($defaultParent !== 1 && $defaultParent !== null) {
+                $def[$class]['defaultParent'] = $defaultParent;
+            }
         }
+
+        $this->extend('updateSiteTreeHints', $def);
+
+        $json = Convert::raw2json($def);
+        $cache->set($cacheKey, $json);
+
         return $json;
     }
 
@@ -2173,5 +2206,38 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $rootTitle = SiteConfig::current_site_config()->Title;
         $this->extend('updateCMSTreeTitle', $rootTitle);
         return $rootTitle;
+    }
+
+    protected function generateHintsCacheKey($memberID)
+    {
+        return md5($memberID);
+    }
+
+    /**
+     * Clear the cache on ?flush
+     */
+    public static function flush()
+    {
+        static::singleton()->clearCache();
+    }
+
+    /**
+     * Flush the hints cache for a specific member
+     *
+     * @param null $memberIDs
+     */
+    public function flushMemberCache($memberIDs = null)
+    {
+        $cache = $this->getHintsCache();
+
+        if (!$memberIDs) {
+            $cache->clear();
+        } else if (is_array($memberIDs)) {
+            foreach($memberIDs as $memberID) {
+                $key = $this->generateHintsCacheKey($memberID);
+                $cache->delete($key);
+            }
+        }
+
     }
 }

@@ -577,4 +577,57 @@ class CMSMainTest extends FunctionalTest
         $this->assertEquals(CMSMainTest_ClassB::class, $newPage->ClassName);
         $this->assertEquals('Class A', $newPage->Title);
     }
+
+    public function testSiteTreeHintsCache()
+    {
+        $cms = CMSMain::create();
+        $user = $this->objFromFixture(Member::class, 'rootedituser');
+        Security::setCurrentUser($user);
+        $pageClass = array_values(SiteTree::page_type_classes())[0];
+        $mockPageMissesCache = $this->getMockBuilder($pageClass)
+            ->setMethods(['canCreate'])
+            ->getMock();
+        $mockPageMissesCache
+            ->expects($this->exactly(3))
+            ->method('canCreate');
+
+        $mockPageHitsCache = $this->getMockBuilder($pageClass)
+            ->setMethods(['canCreate'])
+            ->getMock();
+        $mockPageHitsCache
+            ->expects($this->never())
+            ->method('canCreate');
+
+
+        // Initially, cache misses (1)
+        Injector::inst()->registerService($mockPageMissesCache, $pageClass);
+        $hints = $cms->SiteTreeHints();
+        $this->assertNotNull($hints);
+
+        // Now it hits
+        Injector::inst()->registerService($mockPageHitsCache, $pageClass);
+        $hints = $cms->SiteTreeHints();
+        $this->assertNotNull($hints);
+
+
+        // Mutating member record invalidates cache. Misses (2)
+        $user->FirstName = 'changed';
+        $user->write();
+        Injector::inst()->registerService($mockPageMissesCache, $pageClass);
+        $hints = $cms->SiteTreeHints();
+        $this->assertNotNull($hints);
+
+        // Now it hits again
+        Injector::inst()->registerService($mockPageHitsCache, $pageClass);
+        $hints = $cms->SiteTreeHints();
+        $this->assertNotNull($hints);
+
+        // Different user. Misses. (3)
+        $user = $this->objFromFixture(Member::class, 'allcmssectionsuser');
+        Security::setCurrentUser($user);
+        Injector::inst()->registerService($mockPageMissesCache, $pageClass);
+        $hints = $cms->SiteTreeHints();
+        $this->assertNotNull($hints);
+
+    }
 }

@@ -8,3 +8,8 @@ SilverStripe\Core\Injector\Injector:
     factory: SilverStripe\Core\Cache\CacheFactory
     constructor:
       namespace: "CMSMain_SiteTreeHints"
+  Psr\SimpleCache\CacheInterface.SiteTree_CreatableChildren:
+    factory: SilverStripe\Core\Cache\CacheFactory
+    constructor:
+      namespace: "SiteTree_CreatableChildren"
+
