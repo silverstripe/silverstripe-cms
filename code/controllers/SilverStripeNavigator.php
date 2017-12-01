@@ -196,7 +196,7 @@ class SilverStripeNavigatorItem extends ViewableData {
 	 * @return boolean
 	 */
 	public function isArchived() {
-		if(!Object::has_extension($this->record->ClassName, 'Versioned')) return false;
+		if(!SS_Object::has_extension($this->record->ClassName, 'Versioned')) return false;
 
 		if(!isset($this->record->_cached_isArchived)) {
 			$baseTable = ClassInfo::baseDataClass($this->record->class);
@@ -294,7 +294,7 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
 	
 	public function canView($member = null) {
 		return (
-			Object::has_extension($this->record->ClassName, 'Versioned')
+			SS_Object::has_extension($this->record->ClassName, 'Versioned')
 			&& $this->getDraftPage()
 			// Don't follow redirects in preview, they break the CMS editing form
 			&& !($this->record instanceof RedirectorPage)
@@ -351,7 +351,7 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem {
 	
 	public function canView($member = null) {
 		return (
-			Object::has_extension($this->record->ClassName, 'Versioned')
+			SS_Object::has_extension($this->record->ClassName, 'Versioned')
 			&& $this->getLivePage()
 			// Don't follow redirects in preview, they break the CMS editing form
 			&& !($this->record instanceof RedirectorPage)
@@ -418,7 +418,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 	
 	public function canView($member = null) {
 		return (
-			Object::has_extension($this->record->ClassName, 'Versioned')
+			SS_Object::has_extension($this->record->ClassName, 'Versioned')
 			&& $this->isArchived()
 			// Don't follow redirects in preview, they break the CMS editing form
 			&& !($this->record instanceof RedirectorPage)

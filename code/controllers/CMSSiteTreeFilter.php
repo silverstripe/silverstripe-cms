@@ -13,7 +13,7 @@
  * @package cms
  * @subpackage content
  */
-abstract class CMSSiteTreeFilter extends Object implements LeftAndMain_SearchFilter {
+abstract class CMSSiteTreeFilter extends SS_Object implements LeftAndMain_SearchFilter {
 
 	/**
 	 * @var Array Search parameters, mostly properties on {@link SiteTree}.

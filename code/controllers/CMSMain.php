@@ -368,7 +368,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$actions = new FieldList(
 			FormAction::create('doSearch',  _t('CMSMain_left_ss.APPLY_FILTER', 'Search'))
 				->addExtraClass('ss-ui-action-constructive'),
-			Object::create('ResetFormAction', 'clear', _t('CMSMain_left_ss.CLEAR_FILTER', 'Clear'))
+			SS_Object::create('ResetFormAction', 'clear', _t('CMSMain_left_ss.CLEAR_FILTER', 'Clear'))
 		);
 
 		// Use <button> to allow full jQuery UI styling on the all of the Actions
