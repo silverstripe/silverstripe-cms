@@ -1,7 +1,9 @@
-<% if $ViewState == 'listview' %>
-    <div class="flexbox-area-grow cms-content-view">
-        <% include SilverStripe\\CMS\\Controllers\\CMSMain_ListView %>
-    </div>
-<% else %>
-    <% include SilverStripe\\CMS\\Controllers\\CMSMain_TreeView_Deferred %>
-<% end_if %>
+<div
+    class="panel panel--padded panel--scrollable flexbox-area-grow fill-height flexbox-display cms-content-view cms-tree-view-sidebar cms-panel-deferred"
+    data-url="$LinkTreeViewDeferred"
+    data-url-treeview="$LinkTreeViewDeferred"
+    data-url-listview="$LinkListViewDeferred"
+    data-url-listviewchildren="$LinkListViewChildren(0)"
+>
+    <%-- Lazy-loaded via ajax --%>
+</div>

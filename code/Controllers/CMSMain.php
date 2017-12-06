@@ -138,13 +138,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         'batchactions',
         'treeview',
         'listview',
+        'listviewchildren',
         'ListViewForm',
         'childfilter',
     );
 
     private static $url_handlers = [
         'EditForm/$ID' => 'EditForm',
-        'listview/$ParentID' => 'listview',
+        'listviewchildren/$ParentID' => 'listviewchildren',
     ];
 
     private static $casting = array(
@@ -331,7 +332,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function LinkListViewChildren($parentID)
     {
         return $this->LinkWithSearch(Controller::join_links(
-            CMSMain::singleton()->Link('listview'),
+            CMSMain::singleton()->Link('listviewchildren'),
             $parentID
         ));
     }
@@ -344,6 +345,16 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function LinkTreeViewDeferred()
     {
         return $this->Link('treeview');
+    }
+
+    /**
+     * Link to lazy-load deferred list view
+     *
+     * @return string
+     */
+    public function LinkListViewDeferred()
+    {
+        return $this->Link('listview');
     }
 
     public function LinkPageEdit($id = null)
@@ -1379,13 +1390,18 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         return $this->renderWith($this->getTemplatesWithSuffix('_TreeView'));
     }
 
+    public function listview($request)
+    {
+        return $this->renderWith($this->getTemplatesWithSuffix('_ListView'));
+    }
+
     /**
      * Note: This method exclusively handles top level view of list view
      *
      * @param HTTPRequest $request
      * @return string HTML
      */
-    public function listview($request)
+    public function listviewchildren($request)
     {
         // Ensure selected page ID is highlighted
         $pageID = $request->param('ParentID') ?: 0;
@@ -1506,7 +1522,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             $gridFieldConfig->addComponent(
                 GridFieldLevelup::create($parentID)
                     ->setLinkSpec($linkSpec)
-                    ->setAttributes(array('data-pjax' => 'ListViewForm,Breadcrumbs'))
+                    ->setAttributes(array('data-pjax-target' => 'ListViewForm,Breadcrumbs'))
             );
         }
         $gridField = new GridField('Page', 'Pages', $list, $gridFieldConfig);
