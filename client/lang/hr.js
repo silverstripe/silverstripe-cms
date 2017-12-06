@@ -11,7 +11,7 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "CMS.ConfirmRestoreFromLive": "Da li ste sigurni da želite vratiti predložak kada je stranica zadnji put objavljena?",
     "CMS.Duplicate": "Dupliciraj",
     "CMS.EditPage": "Uredi",
-    "CMS.ONLYSELECTTWO": "You can only compare two versions at this time.",
+    "CMS.ONLYSELECTTWO": "Možete usporediti samo dvije verzije u isto vrijeme.",
     "CMS.Restore": "Da li ste sigurni da želite vratiti stranicu iz arhive?",
     "CMS.RestoreToRoot": "Jeste li sigurni da želite vratiti ovu stranicu iz arhive?\n\nNadstranica neće biti dostupna kada se stranica vrati.",
     "CMS.RollbackToVersion": "Jeste li sigurni da želite vratiti na verziju #%s ove stranice?",

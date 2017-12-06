@@ -1,12 +1,123 @@
 es_MX:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
+    RESULT: 'Se han eliminado %d páginas de borrador y de publicadas, y se han enviado a archivo'
+    TITLE: 'Despublicar y archivar'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: 'Se han publicado %d páginas, %dhan fallado'
+    PUBLISH_PAGES: Publicar
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Restaurar
+    RESTORED_PAGES: 'Se han restaurado %d páginas'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISHED_PAGES: 'Se han despublicado %d páginas'
+    UNPUBLISH_PAGES: Despublicar
   SilverStripe\CMS\Controllers\CMSMain:
+    ACCESS: 'Acceso a la sección ''{title}'''
+    ACCESS_HELP: 'Permitir acceso de lectura a la sección que contiene el árbol del sitio y el contenido. Los permisos de lectura y escritura se pueden manejar a través de desplegables específicos, así como los "Permisos de contenido" separados.'
+    APPLY_FILTER: Buscar
+    ARCHIVE: Archivar
+    ARCHIVEDPAGE: 'Se ha archivado la página ''{title}'''
+    AddNew: 'Agregar página'
+    AddNewButton: Agregar
+    AddPageRestriction: 'Nota: algunos tipos de página no están permitidos en esta selección'
+    ArchiveWarning: 'Advertencia: esta página será despublicada antes de ser enviada a archivo.\n\nEstás seguro que deseas proceder?'
+    ArchiveWarningWithCampaigns: 'Advertencia: esta página sera despublicada y eliminada automáticamente de {NumCampaigns} campañas asociadas antes de ser enviadas a archivo.\n\nEstás seguro que deseas proceder?'
+    ArchiveWarningWithChildren: 'Advertencia: esta página y todas sus sub páginas serán despublicadas antes de ser enviadas a archivo.\n\nEstás seguro que deseas proceder?'
+    ArchiveWarningWithChildrenAndCampaigns: 'Advertencia: esta página y todas sus sub páginas serán despublicadas y eliminadas automáticamente de {NumCampaigns} campañas asociadas antes de ser enviadas a archivo.\n\nEstás seguro que deseas proceder?'
+    CANT_REORGANISE: 'No tienes permiso para modificar páginas de primer nivel. Tus cambios no se han guardado.'
+    CLEAR_FILTER: Limpiar
+    Cancel: Cancelar
+    ChoosePageParentMode: 'Elige donde crear esta página'
+    ChoosePageType: 'Elige el tipo de página'
+    Create: Crear
+    DUPLICATED: '''{title}'' se ha duplicado con éxito'
+    DUPLICATEDWITHCHILDREN: '''{title}'' y sub páginas se han duplicado con éxito'
+    EMAIL: Email
+    ListFiltered: 'Mostrando resultados de búsqueda'
+    NEWPAGE: 'Nueva {pagetype}'
     PAGENOTEXISTS: 'Esta página no existe'
+    PAGES: 'Estado de página'
+    PAGETYPEANYOPT: Cualquier
+    PAGETYPEOPT: 'Tipo de página'
+    PLEASESAVE: 'Por favor guardar página: esta página no ha sido actualizada porque aún no ha sido guardada.'
     PUBALLCONFIRM: 'Por favor publique todas las páginas del sitio, copiando el contenido del boceto al sitio público'
     PUBALLFUN: 'Funcionalidad "Publicar todo"'
+    PUBALLFUN2: 'Presionar este botón hará el equivalente de ir a cada página y presionar "publicar". Su intención es para ser usado luego de editar contenido masivamente, como cuando el sitio fue inicialmente creado.'
+    PUBLISHED: '''{title}'' publicada con éxito.'
+    PUBPAGES: 'Completado: {count} páginas publicadas'
+    PageAdded: 'Página creada con éxito'
+    REMOVEDPAGE: 'Se ha eliminado ''{title}'' del sitio público'
     REMOVEDPAGEFROMDRAFT: 'Se ha eliminado ''{title}'' del boceto del sitio'
+    REORGANISATIONSUCCESSFUL: 'Árbol del sitio reorganizado con éxito.'
+    RESTORE: 'Recuperar borrador'
+    RESTORED: '''{title}'' recuperada con éxito'
+    RESTORE_DESC: 'Restablecer la versión archivada a borrador'
+    RESTORE_TO_ROOT: 'Restablecer borrador al primer nivel'
+    RESTORE_TO_ROOT_DESC: 'Restablecer la versión archivada como borrador de página de primer nivel'
+    ROLLBACK: 'Regresar a esta versión'
+    ROLLEDBACKPUBv2: 'Regresar a la versión publicada.'
+    ROLLEDBACKVERSIONv2: 'Restaurada a la versión #{version}.'
+    SAVED: '''{title}'' guardada con éxito.'
+    SAVEDRAFT: 'Guardar borrador'
+    SHOW_AS_LIST: 'Mostrar como lista'
+    TOO_MANY_PAGES: 'Demasiadas páginas'
+    TabContent: Contenido
+    TabHistory: Historial
+    TabSettings: Configuración
+    TreeFiltered: 'Mostrando resultados de búsqueda.'
+    TreeFilteredClear: Limpiar
+    UNPUBLISH_AND_ARCHIVE: 'Despublicar y archivar'
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Agregar página'
+    ParentMode_child: 'Como sub página'
+    ParentMode_top: 'Primer nivel'
+    Title: 'Agregar página'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    ErrorItemPermissionDenied: 'Al parecer no cuentas con los permisos necesarios para agregar {ObjectTitle} a una campaña'
+    ErrorNotFound: 'Este {Type} no se ha encontrado'
+    MENUTITLE: 'Editar página'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    AUTHOR: Autor
+    COMPAREMODE: 'Modo de comparación (selecciona dos)'
+    MENUTITLE: Historial
+    MULTISELECT: 'Acciones en lote'
+    NOTPUBLISHED: 'No publicada'
+    PREVIEW: 'Vista previa del sitio'
+    REVERTTOTHISVERSION: 'Revertir a esta versión'
+    SHOWUNPUBLISHED: 'Mostrar versiones no publicadas'
+    UNKNOWN: Desconocido
+    VIEW: ver
+    VIEWINGLATEST: 'Viendo la última versión.'
+    VIEWINGVERSION: 'Viendo la versión {version}'
+    WHEN: Cuando
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Editar página'
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: Filtrar
+    ListView: 'Ver como lista'
+    MENUTITLE: Páginas
+    TreeView: 'Ver como árbol'
+  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
+    Title: 'Páginas publicadas'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
+    Title: 'Páginas modificadas'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
+    Title: 'Todas las páginas, incluyendo archivadas'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
+    Title: 'Todas las páginas'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Páginas archivadas'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Páginas en borrador'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'Pública, pero eliminada de borrador'
   SilverStripe\CMS\Controllers\ContentController:
+    ARCHIVEDSITE: 'Versión de vista previa'
     ARCHIVEDSITEFROM: 'Sito archivado de'
+    CMS: CMS
+    DRAFT: Borrador
     DRAFTSITE: 'Proyecto del Sitio'
+    Email: Email
     LOGGEDINAS: 'Conectado cómo'
     LOGIN: 'Iniciar sesión'
     LOGOUT: 'Cerrar sesión'
@@ -83,17 +194,17 @@ es_MX:
     ColumnDateLastModified: 'Fecha de última modificación'
     ColumnDateLastPublished: 'Fecha de última publicación'
     ColumnProblemType: 'Tipo de problema'
-    HasBrokenFile: 'tiene un archivo en mal estado'
+    HasBrokenFile: 'tiene un archivo defectuoso'
     HasBrokenLink: 'tiene un enlace roto'
-    HasBrokenLinkAndFile: 'tiene un enlace roto y un archivo en mal estado'
-    HoverTitleEditPage: 'Modificar página'
+    HasBrokenLinkAndFile: 'tiene un enlace roto y un archivo defectuoso'
+    HoverTitleEditPage: 'Editar página'
     PageName: 'Nombre de página'
     ReasonDropdown: 'Problema al hacer la comprobación'
-    ReasonDropdownBROKENFILE: 'Archivo en mal estado'
+    ReasonDropdownBROKENFILE: 'Archivo defectuoso'
     ReasonDropdownBROKENLINK: 'Enlace roto'
-    ReasonDropdownRPBROKENLINK: 'La redirección de página apunta una página inexistente'
+    ReasonDropdownRPBROKENLINK: 'La redirección apunta una página inexistente'
     ReasonDropdownVPBROKENLINK: 'La página virtual apunta a una página inexistente'
-    RedirectorNonExistent: 'la redirección de página apunta a una página inexistente'
+    RedirectorNonExistent: 'la redirección apunta a una página inexistente'
     VirtualPageNonExistent: 'la página virtual apunta a una página inexistente'
   SilverStripe\CMS\Search\SearchForm:
     GO: Ir
