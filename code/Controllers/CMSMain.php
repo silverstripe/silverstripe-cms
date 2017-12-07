@@ -338,6 +338,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     }
 
     /**
+     * @return string
+     */
+    public function LinkListViewRoot()
+    {
+        return $this->LinkListViewChildren(0);
+    }
+
+    /**
      * Link to lazy-load deferred tree view
      *
      * @return string
@@ -1424,6 +1432,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             default:
                 return $default;
         }
+    }
+
+    public function RequestViewState()
+    {
+        return $this->getRequest()->requestVar('view');
     }
 
     /**

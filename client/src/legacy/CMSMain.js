@@ -27,14 +27,6 @@ $.entwine('ss', function ($) {
 		}
 	});
 
-  // Page edit mode
-  $('.cms-edit-form').entwine({
-      onadd: function() {
-        // Always use treeview when in page edit mode
-        localStorage.setItem('ss.pages-view-type', VIEW_TYPE_TREE);
-      }
-  });
-
   /**
    * Override super's `onadd` to modify url base the previously select view
    * type.
@@ -43,7 +35,14 @@ $.entwine('ss', function ($) {
    */
   $('.cms-panel-deferred.cms-content-view').entwine({
     onadd: function() {
-      const viewType = localStorage.getItem('ss.pages-view-type') || VIEW_TYPE_TREE;
+      if(this.data('no-ajax')) {
+        return;
+      }
+      var viewType = localStorage.getItem('ss.pages-view-type') || VIEW_TYPE_TREE;
+      if(this.closest('.cms-content-tools').length > 0) {
+        // Always use treeview when in page edit mode
+        viewType = VIEW_TYPE_TREE;
+      }
       const url = this.data(`url-${viewType}`);
       this.data('deferredNoCache', viewType === VIEW_TYPE_LIST);
       this.data('url', url);
@@ -64,10 +63,22 @@ $.entwine('ss', function ($) {
 
       localStorage.setItem('ss.pages-view-type', viewType);
       if(isContentViewInSidebar && viewType === VIEW_TYPE_LIST) {
-        window.location = $contentView.data('url-listviewchildren');
+        window.location = $contentView.data('url-listviewroot');
         return;
       }
 
+      $contentView.data('url', url);
+      $contentView.redraw();
+    }
+  });
+
+  $('.cms .cms-clear-filter').entwine({
+    onclick: function(e){
+      e.preventDefault();
+
+      const viewType = localStorage.getItem('ss.pages-view-type');
+      const $contentView = this.closest('.cms-content-view');
+      var url = $contentView.data(`url-${viewType}`);
       $contentView.data('url', url);
       $contentView.redraw();
     }

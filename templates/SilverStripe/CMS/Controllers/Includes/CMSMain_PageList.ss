@@ -3,7 +3,12 @@
     data-url="$LinkTreeViewDeferred"
     data-url-treeview="$LinkTreeViewDeferred"
     data-url-listview="$LinkListViewDeferred"
-    data-url-listviewchildren="$LinkListViewChildren(0)"
+    data-url-listviewroot="$LinkListViewRoot"
+    data-no-ajax="<% if $TreeIsFiltered || $RequestViewState = 'listview'%>true<% else %>false<% end_if %>"
 >
-    <%-- Lazy-loaded via ajax --%>
+    <% if $TreeIsFiltered || $RequestViewState = 'listview' %>
+        <% include SilverStripe\\CMS\\Controllers\\CMSMain_ListView %>
+    <% else %>
+        <%-- Lazy-loaded via ajax --%>
+    <% end_if %>
 </div>
