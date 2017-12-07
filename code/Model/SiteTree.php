@@ -1855,7 +1855,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                     new TextField("Title", $this->fieldLabel('Title')),
                     $urlsegment,
                     new TextField("MenuTitle", $this->fieldLabel('MenuTitle')),
-                    $htmlField = new HTMLEditorField("Content", _t(__CLASS__.'.HTMLEDITORTITLE', "Content", 'HTML editor title')),
+                    $htmlField = HTMLEditorField::create("Content", _t(__CLASS__.'.HTMLEDITORTITLE', "Content", 'HTML editor title')),
                     ToggleCompositeField::create(
                         'Metadata',
                         _t(__CLASS__.'.MetadataToggle', 'Metadata'),
