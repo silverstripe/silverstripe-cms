@@ -45,7 +45,7 @@ $.entwine('ss', function ($) {
       }
       const url = this.data(`url-${viewType}`);
       this.data('deferredNoCache', viewType === VIEW_TYPE_LIST);
-      this.data('url', url);
+      this.data('url', url + location.search);
       this._super();
     }
   });
@@ -67,7 +67,7 @@ $.entwine('ss', function ($) {
         return;
       }
 
-      $contentView.data('url', url);
+      $contentView.data('url', url + location.search);
       $contentView.redraw();
     }
   });

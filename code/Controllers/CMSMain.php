@@ -138,14 +138,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         'batchactions',
         'treeview',
         'listview',
-        'listviewchildren',
         'ListViewForm',
         'childfilter',
     );
 
     private static $url_handlers = [
-        'EditForm/$ID' => 'EditForm',
-        'listviewchildren/$ParentID' => 'listviewchildren',
+        'EditForm/$ID' => 'EditForm'
     ];
 
     private static $casting = array(
@@ -331,10 +329,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     public function LinkListViewChildren($parentID)
     {
-        return $this->LinkWithSearch(Controller::join_links(
-            CMSMain::singleton()->Link('listviewchildren'),
+        return sprintf(
+            '%s?ParentID=%s',
+            CMSMain::singleton()->Link(),
             $parentID
-        ));
+        );
     }
 
     /**
@@ -1404,20 +1403,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     }
 
     /**
-     * Note: This method exclusively handles top level view of list view
-     *
-     * @param HTTPRequest $request
-     * @return string HTML
-     */
-    public function listviewchildren($request)
-    {
-        // Ensure selected page ID is highlighted
-        $pageID = $request->param('ParentID') ?: 0;
-        $this->setCurrentPageID($pageID);
-        return $this->getResponseNegotiator()->respond($request);
-    }
-
-    /**
      * @param string $default
      * @return string
      */
@@ -1523,7 +1508,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function ListViewForm()
     {
         $params = $this->getRequest()->requestVar('q');
-        $parentID = $this->getRequest()->param('ParentID');
+        // $parentID = $this->getRequest()->param('ParentID');
+        $parentID = $this->getRequest()->requestVar('ParentID');
         $list = $this->getList($params, $parentID);
         $gridFieldConfig = GridFieldConfig::create()->addComponents(
             new GridFieldSortableHeader(),
@@ -1537,6 +1523,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                     ->setLinkSpec($linkSpec)
                     ->setAttributes(array('data-pjax-target' => 'ListViewForm,Breadcrumbs'))
             );
+            $this->setCurrentPageID($parentID);
         }
         $gridField = new GridField('Page', 'Pages', $list, $gridFieldConfig);
         $gridField->setAttribute('cms-loading-ignore-url-params', true);
