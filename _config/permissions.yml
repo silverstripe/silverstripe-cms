@@ -16,3 +16,5 @@ SilverStripe\Core\Injector\Injector:
     properties:
       Services:
         - '%$SilverStripe\Security\PermissionChecker.sitetree'
+        - '%$SilverStripe\CMS\Controllers\CMSMain'
+        - '%$SilverStripe\CMS\Model\SiteTree'

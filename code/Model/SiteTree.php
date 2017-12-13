@@ -3,6 +3,7 @@
 namespace SilverStripe\CMS\Model;
 
 use Page;
+use Psr\SimpleCache\CacheInterface;
 use SilverStripe\CampaignAdmin\AddToCampaignHandler_FormAction;
 use SilverStripe\CMS\Controllers\CMSPageEditController;
 use SilverStripe\CMS\Controllers\ContentController;
@@ -16,6 +17,7 @@ use SilverStripe\Control\RequestHandler;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Convert;
+use SilverStripe\Core\Flushable;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Core\Manifest\ModuleResource;
 use SilverStripe\Core\Manifest\ModuleResourceLoader;
@@ -30,7 +32,6 @@ use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldDataColumns;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
-use SilverStripe\Forms\ListboxField;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\OptionsetField;
 use SilverStripe\Forms\Tab;
@@ -66,6 +67,7 @@ use SilverStripe\View\HTML;
 use SilverStripe\View\Parsers\ShortcodeParser;
 use SilverStripe\View\Parsers\URLSegmentFilter;
 use SilverStripe\View\SSViewer;
+use SilverStripe\Core\Cache\MemberCacheFlusher;
 use Subsite;
 
 /**
@@ -100,7 +102,7 @@ use Subsite;
  * @mixin SiteTreeLinkTracking
  * @mixin InheritedPermissionsExtension
  */
-class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvider, CMSPreviewable, Resettable
+class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvider, CMSPreviewable, Resettable, Flushable, MemberCacheFlusher
 {
 
     /**
@@ -342,6 +344,18 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * @var string
      */
     private static $base_description = 'Generic content page';
+
+    /**
+     * @var array
+     */
+    private static $dependencies = [
+        'creatableChildrenCache' => '%$' . CacheInterface::class . '.SiteTree_CreatableChildren'
+    ];
+
+    /**
+     * @var CacheInterface
+     */
+    protected $creatableChildrenCache;
 
     /**
      * Fetches the {@link SiteTree} object that maps to a link.
@@ -902,6 +916,25 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             return DataObject::get_by_id(self::class, $parentID);
         }
         return null;
+    }
+
+    /**
+     * @param CacheInterface $cache
+     * @return $this
+     */
+    public function setCreatableChildrenCache(CacheInterface $cache)
+    {
+        $this->creatableChildrenCache = $cache;
+
+        return $this;
+    }
+
+    /**
+     * @return CacheInterface $cache
+     */
+    public function getCreatableChildrenCache()
+    {
+        return $this->creatableChildrenCache;
     }
 
     /**
@@ -1506,6 +1539,26 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     {
         parent::flushCache($persistent);
         $this->_cache_statusFlags = null;
+    }
+
+    /**
+     * Flushes the member specific cache for creatable children
+     *
+     * @param array $memberIDs
+     */
+    public function flushMemberCache($memberIDs = null)
+    {
+        $cache = SiteTree::singleton()->getCreatableChildrenCache();
+
+        if (!$memberIDs) {
+            $cache->clear();
+            return;
+        }
+
+        foreach ($memberIDs as $memberID) {
+            $key = $this->generateChildrenCacheKey($memberID);
+            $cache->delete($key);
+        }
     }
 
     public function validate()
@@ -2529,6 +2582,32 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
+     * Gets a list of the page types that can be created under this specific page
+     *
+     * @return array
+     */
+    public function creatableChildren()
+    {
+        // Build the list of candidate children
+        $cache = SiteTree::singleton()->getCreatableChildrenCache();
+        $cacheKey = $this->generateChildrenCacheKey(Security::getCurrentUser() ? Security::getCurrentUser()->ID : 0);
+        $children = $cache->get($cacheKey, []);
+        if (!$children || !isset($children[$this->ID])) {
+            $children[$this->ID] = [];
+            $candidates = static::page_type_classes();
+            foreach ($candidates as $childClass) {
+                $child = singleton($childClass);
+                if ($child->canCreate(null, ['Parent' => $this])) {
+                    $children[$this->ID][$childClass] = $child->i18n_singular_name();
+                }
+            }
+            $cache->set($cacheKey, $children);
+        }
+
+        return $children[$this->ID];
+    }
+
+    /**
      * Returns the class name of the default class for children of this page.
      *
      * @return string
@@ -2644,18 +2723,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function getTreeTitle()
     {
-        // Build the list of candidate children
-        $children = array();
-        $candidates = static::page_type_classes();
-        foreach ($this->allowedChildren() as $childClass) {
-            if (!in_array($childClass, $candidates)) {
-                continue;
-            }
-            $child = singleton($childClass);
-            if ($child->canCreate(null, array('Parent' => $this))) {
-                $children[$childClass] = $child->i18n_singular_name();
-            }
-        }
+        $children = $this->creatableChildren();
         $flags = $this->getStatusFlags();
         $treeTitle = sprintf(
             "<span class=\"jstree-pageicon page-icon class-%s\"></span><span class=\"item\" data-allowedchildren=\"%s\">%s</span>",
@@ -2957,6 +3025,15 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
+     * Clear the creatableChildren cache on flush
+     */
+    public static function flush()
+    {
+        Injector::inst()->get(CacheInterface::class . '.SiteTree_CreatableChildren')
+            ->clear();
+    }
+
+    /**
      * Update dependant pages
      */
     protected function updateDependentPages()
@@ -2972,5 +3049,16 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 $page->write();
             }
         }
+    }
+
+    /**
+     * Cache key for creatableChildren() method
+     *
+     * @param int $memberID
+     * @return string
+     */
+    protected function generateChildrenCacheKey($memberID)
+    {
+        return md5($memberID . '_' . __CLASS__);
     }
 }

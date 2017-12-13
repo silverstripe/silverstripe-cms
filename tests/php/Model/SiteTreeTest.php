@@ -26,6 +26,7 @@ use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\Parsers\Diff;
 use SilverStripe\View\Parsers\ShortcodeParser;
 use SilverStripe\View\Parsers\URLSegmentFilter;
+use SilverStripe\Core\Injector\Injector;
 use LogicException;
 
 class SiteTreeTest extends SapphireTest
@@ -1505,5 +1506,57 @@ class SiteTreeTest extends SapphireTest
     {
         $class = new SiteTreeTest_LegacyControllerName;
         $this->assertEquals(SiteTreeTest_LegacyControllerName_Controller::class, $class->getControllerName());
+    }
+
+    public function testTreeTitleCache()
+    {
+        $siteTree = SiteTree::create();
+        $user = $this->objFromFixture(Member::class, 'allsections');
+        Security::setCurrentUser($user);
+        $pageClass = array_values(SiteTree::page_type_classes())[0];
+
+        $mockPageMissesCache = $this->getMockBuilder($pageClass)
+            ->setMethods(['canCreate'])
+            ->getMock();
+        $mockPageMissesCache
+            ->expects($this->exactly(3))
+            ->method('canCreate');
+
+        $mockPageHitsCache = $this->getMockBuilder($pageClass)
+            ->setMethods(['canCreate'])
+            ->getMock();
+        $mockPageHitsCache
+            ->expects($this->never())
+            ->method('canCreate');
+
+        // Initially, cache misses (1)
+        Injector::inst()->registerService($mockPageMissesCache, $pageClass);
+        $title = $siteTree->getTreeTitle();
+        $this->assertNotNull($title);
+
+        // Now it hits
+        Injector::inst()->registerService($mockPageHitsCache, $pageClass);
+        $title = $siteTree->getTreeTitle();
+        $this->assertNotNull($title);
+
+
+        // Mutating member record invalidates cache. Misses (2)
+        $user->FirstName = 'changed';
+        $user->write();
+        Injector::inst()->registerService($mockPageMissesCache, $pageClass);
+        $title = $siteTree->getTreeTitle();
+        $this->assertNotNull($title);
+
+        // Now it hits again
+        Injector::inst()->registerService($mockPageHitsCache, $pageClass);
+        $title = $siteTree->getTreeTitle();
+        $this->assertNotNull($title);
+
+        // Different user. Misses. (3)
+        $user = $this->objFromFixture(Member::class, 'editor');
+        Security::setCurrentUser($user);
+        Injector::inst()->registerService($mockPageMissesCache, $pageClass);
+        $title = $siteTree->getTreeTitle();
+        $this->assertNotNull($title);
     }
 }
