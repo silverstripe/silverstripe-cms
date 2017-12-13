@@ -849,12 +849,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function TreeIsFiltered()
     {
         $query = $this->getRequest()->getVar('q');
-
-        if (!$query || (count($query) === 1 && isset($query['FilterClass']) && $query['FilterClass'] === 'SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_Search')) {
-            return false;
-        }
-
-        return true;
+        return !empty($query);
     }
 
     public function ExtraTreeTools()

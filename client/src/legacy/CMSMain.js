@@ -73,14 +73,9 @@ $.entwine('ss', function ($) {
   });
 
   $('.cms .cms-clear-filter').entwine({
-    onclick: function(e){
+    onclick: function(e) {
       e.preventDefault();
-
-      const viewType = localStorage.getItem('ss.pages-view-type');
-      const $contentView = this.closest('.cms-content-view');
-      var url = $contentView.data(`url-${viewType}`);
-      $contentView.data('url', url);
-      $contentView.redraw();
+      window.location = $(this).prop('href');
     }
   });
 
