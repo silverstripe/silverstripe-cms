@@ -8,6 +8,9 @@ import $ from 'jquery';
  */
 $.entwine('ss', function ($) {
 
+  const VIEW_TYPE_TREE = 'treeview';
+  const VIEW_TYPE_LIST = 'listview';
+
 	// Faux three column layout
 	$('.cms-content-header-info').entwine({
 		'from .cms-panel': {
@@ -24,20 +27,55 @@ $.entwine('ss', function ($) {
 		}
 	});
 
+  /**
+   * Override super's `onadd` to modify url base the previously select view
+   * type.
+   *
+   * See $('.cms .cms-panel-link') in LeftAndMain.js
+   */
+  $('.cms-panel-deferred.cms-content-view').entwine({
+    onadd: function() {
+      if(this.data('no-ajax')) {
+        return;
+      }
+      var viewType = localStorage.getItem('ss.pages-view-type') || VIEW_TYPE_TREE;
+      if(this.closest('.cms-content-tools').length > 0) {
+        // Always use treeview when in page edit mode
+        viewType = VIEW_TYPE_TREE;
+      }
+      const url = this.data(`url-${viewType}`);
+      this.data('deferredNoCache', viewType === VIEW_TYPE_LIST);
+      this.data('url', url + location.search);
+      this._super();
+    }
+  });
+
   // Customise tree / list view pjax tab loading
   // See $('.cms .cms-panel-link') in LeftAndMain.js
-  $('.cms .cms-panel-link.page-view-link').entwine({
+  $('.cms .page-view-link').entwine({
     onclick: function(e){
-      // Toggle 'active' flag
-      this.siblings().removeClass('active');
-      this.addClass('active');
+      e.preventDefault();
 
-      // Toggle 'view' parameter in search form to keep same view type
-      var viewField = $(".cms-content-filters input[type='hidden'][name='view']");
-      viewField.val($(this).data('view'));
+      const viewType = $(this).data('view');
+      const $contentView = this.closest('.cms-content-view');
+      var url = $contentView.data(`url-${viewType}`);
+      const isContentViewInSidebar = $contentView.closest('.cms-content-tools').length !== 0;
 
-      // Does pjax load
-      return this._super(e);
+      localStorage.setItem('ss.pages-view-type', viewType);
+      if(isContentViewInSidebar && viewType === VIEW_TYPE_LIST) {
+        window.location = $contentView.data('url-listviewroot');
+        return;
+      }
+
+      $contentView.data('url', url + location.search);
+      $contentView.redraw();
+    }
+  });
+
+  $('.cms .cms-clear-filter').entwine({
+    onclick: function(e) {
+      e.preventDefault();
+      window.location = $(this).prop('href');
     }
   });
 

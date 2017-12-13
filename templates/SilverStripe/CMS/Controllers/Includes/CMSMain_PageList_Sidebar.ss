@@ -1,1 +1,1 @@
-<% include SilverStripe\\CMS\\Controllers\\CMSMain_TreeView_Deferred %>
+<% include SilverStripe\\CMS\\Controllers\\CMSMain_PageList %>

@@ -144,7 +144,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
     private static $url_handlers = [
         'EditForm/$ID' => 'EditForm',
-        'listview/$ParentID' => 'listview',
     ];
 
     private static $casting = array(
@@ -330,10 +329,19 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     public function LinkListViewChildren($parentID)
     {
-        return $this->LinkWithSearch(Controller::join_links(
-            CMSMain::singleton()->Link('listview'),
+        return sprintf(
+            '%s?ParentID=%s',
+            CMSMain::singleton()->Link(),
             $parentID
-        ));
+        );
+    }
+
+    /**
+     * @return string
+     */
+    public function LinkListViewRoot()
+    {
+        return $this->LinkListViewChildren(0);
     }
 
     /**
@@ -344,6 +352,16 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function LinkTreeViewDeferred()
     {
         return $this->Link('treeview');
+    }
+
+    /**
+     * Link to lazy-load deferred list view
+     *
+     * @return string
+     */
+    public function LinkListViewDeferred()
+    {
+        return $this->Link('listview');
     }
 
     public function LinkPageEdit($id = null)
@@ -831,12 +849,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function TreeIsFiltered()
     {
         $query = $this->getRequest()->getVar('q');
-
-        if (!$query || (count($query) === 1 && isset($query['FilterClass']) && $query['FilterClass'] === 'SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_Search')) {
-            return false;
-        }
-
-        return true;
+        return !empty($query);
     }
 
     public function ExtraTreeTools()
@@ -884,16 +897,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         );
         $dateGroup->setTitle(_t('SilverStripe\\CMS\\Search\\SearchForm.PAGEFILTERDATEHEADING', 'Last edited'));
 
-        // view mode
-        $viewMode = HiddenField::create('view', false, $this->ViewState('listview'));
-
         // Create the Field list
         $fields = new FieldList(
             $content,
             $pageFilter,
             $pageClasses,
-            $dateGroup,
-            $viewMode
+            $dateGroup
         );
 
         // Create the Search and Reset action
@@ -1372,7 +1381,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * This method exclusively handles deferred ajax requests to render the
      * pages tree deferred handler (no pjax-fragment)
      *
-     * @return string HTML
+     * @return DBHTMLText HTML response with the rendered treeview
      */
     public function treeview()
     {
@@ -1380,27 +1389,24 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     }
 
     /**
-     * Note: This method exclusively handles top level view of list view
+     * Returns deferred listview for the current level
      *
-     * @param HTTPRequest $request
-     * @return string HTML
+     * @return DBHTMLText HTML response with the rendered listview
      */
-    public function listview($request)
+    public function listview()
     {
-        // Ensure selected page ID is highlighted
-        $pageID = $request->param('ParentID') ?: 0;
-        $this->setCurrentPageID($pageID);
-        return $this->getResponseNegotiator()->respond($request);
+        return $this->renderWith($this->getTemplatesWithSuffix('_ListView'));
     }
 
     /**
+     * Get view state based on the current action
+     *
      * @param string $default
      * @return string
      */
     public function ViewState($default = 'treeview')
     {
-        $mode = $this->getRequest()->requestVar('view')
-            ?: $this->getRequest()->param('Action');
+        $mode = $this->getRequest()->param('Action');
         switch ($mode) {
             case 'listview':
             case 'treeview':
@@ -1494,7 +1500,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function ListViewForm()
     {
         $params = $this->getRequest()->requestVar('q');
-        $parentID = $this->getRequest()->param('ParentID');
+        $parentID = $this->getRequest()->requestVar('ParentID');
         $list = $this->getList($params, $parentID);
         $gridFieldConfig = GridFieldConfig::create()->addComponents(
             new GridFieldSortableHeader(),
@@ -1506,8 +1512,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             $gridFieldConfig->addComponent(
                 GridFieldLevelup::create($parentID)
                     ->setLinkSpec($linkSpec)
-                    ->setAttributes(array('data-pjax' => 'ListViewForm,Breadcrumbs'))
+                    ->setAttributes(array('data-pjax-target' => 'ListViewForm,Breadcrumbs'))
             );
+            $this->setCurrentPageID($parentID);
         }
         $gridField = new GridField('Page', 'Pages', $list, $gridFieldConfig);
         $gridField->setAttribute('cms-loading-ignore-url-params', true);

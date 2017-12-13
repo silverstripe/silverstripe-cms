@@ -8,7 +8,7 @@
 	<% if $TreeIsFiltered %>
 	<div class="cms-notice cms-tree-filtered">
 		<strong><%t SilverStripe\\CMS\\Controllers\\CMSMain.ListFiltered 'Showing search results.' %></strong>
-		<a href="$LinkPages.ATT" class="cms-panel-link">
+		<a href="$LinkPages.ATT" class="cms-panel-link cms-clear-filter">
 			<%t SilverStripe\\CMS\\Controllers\\CMSMain.TreeFilteredClear 'Clear' %>
 		</a>
 
