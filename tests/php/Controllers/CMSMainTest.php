@@ -147,17 +147,6 @@ class CMSMainTest extends FunctionalTest
         $this->assertEquals(1, $dsCount, "Published page has no duplicate version records: it has " . $dsCount . " for version " . $latestID);
 
         $this->session()->clear('loggedInAs');
-
-        //$this->assertRegexp('/Done: Published 4 pages/', $response->getBody())
-
-        /*
-		$response = Director::test("admin/pages/publishitems", array(
-			'ID' => ''
-			'Title' => ''
-			'action_publish' => 'Save and publish',
-		), $session);
-		$this->assertRegexp('/Done: Published 4 pages/', $response->getBody())
-		*/
     }
 
     /**
@@ -581,6 +570,7 @@ class CMSMainTest extends FunctionalTest
     public function testSiteTreeHintsCache()
     {
         $cms = CMSMain::create();
+        /** @var Member $user */
         $user = $this->objFromFixture(Member::class, 'rootedituser');
         Security::setCurrentUser($user);
         $pageClass = array_values(SiteTree::page_type_classes())[0];
@@ -609,7 +599,6 @@ class CMSMainTest extends FunctionalTest
         $hints = $cms->SiteTreeHints();
         $this->assertNotNull($hints);
 
-
         // Mutating member record invalidates cache. Misses (2)
         $user->FirstName = 'changed';
         $user->write();
@@ -628,6 +617,5 @@ class CMSMainTest extends FunctionalTest
         Injector::inst()->registerService($mockPageMissesCache, $pageClass);
         $hints = $cms->SiteTreeHints();
         $this->assertNotNull($hints);
-
     }
 }

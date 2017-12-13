@@ -1558,6 +1558,5 @@ class SiteTreeTest extends SapphireTest
         Injector::inst()->registerService($mockPageMissesCache, $pageClass);
         $title = $siteTree->getTreeTitle();
         $this->assertNotNull($title);
-
     }
 }

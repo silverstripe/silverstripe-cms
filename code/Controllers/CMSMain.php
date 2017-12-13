@@ -1017,7 +1017,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $cacheKey = $this->generateHintsCacheKey($memberID);
         $json = $cache->get($cacheKey);
 
-        if ($json) return $json;
+        if ($json) {
+            return $json;
+        }
 
         $canCreate = [];
         foreach ($classes as $class) {
@@ -1510,7 +1512,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $gridField = new GridField('Page', 'Pages', $list, $gridFieldConfig);
         $gridField->setAttribute('cms-loading-ignore-url-params', true);
         /** @var GridFieldDataColumns $columns */
-        $columns = $gridField->getConfig()->getComponentByType('SilverStripe\\Forms\\GridField\\GridFieldDataColumns');
+        $columns = $gridField->getConfig()->getComponentByType(GridFieldDataColumns::class);
 
         // Don't allow navigating into children nodes on filtered lists
         $fields = array(
@@ -1519,7 +1521,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             'LastEdited' => _t('SilverStripe\\CMS\\Model\\SiteTree.LASTUPDATED', 'Last Updated'),
         );
         /** @var GridFieldSortableHeader $sortableHeader */
-        $sortableHeader = $gridField->getConfig()->getComponentByType('SilverStripe\\Forms\\GridField\\GridFieldSortableHeader');
+        $sortableHeader = $gridField->getConfig()->getComponentByType(GridFieldSortableHeader::class);
         $sortableHeader->setFieldSorting(array('getTreeTitle' => 'Title'));
         $gridField->getState()->ParentID = $parentID;
 
@@ -1663,13 +1665,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if ($doPublish) {
             $record->publishRecursive();
             $message = _t(
-                'SilverStripe\\CMS\\Controllers\\CMSMain.PUBLISHED',
+                __CLASS__ . '.PUBLISHED',
                 "Published '{title}' successfully.",
                 ['title' => $record->Title]
             );
         } else {
             $message = _t(
-                'SilverStripe\\CMS\\Controllers\\CMSMain.SAVED',
+                __CLASS__ . '.SAVED',
                 "Saved '{title}' successfully.",
                 ['title' => $record->Title]
             );
@@ -1703,7 +1705,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         /** @var SiteTree $newItem */
         $newItem = Injector::inst()->create($className);
         $newItem->Title = _t(
-            'SilverStripe\\CMS\\Controllers\\CMSMain.NEWPAGE',
+            __CLASS__ . '.NEWPAGE',
             "New {pagetype}",
             'followed by a page type title',
             array('pagetype' => singleton($className)->i18n_singular_name())
@@ -1789,7 +1791,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $this->getResponse()->addHeader(
             'X-Status',
             rawurlencode(_t(
-                'SilverStripe\\CMS\\Controllers\\CMSMain.RESTORED',
+                __CLASS__ . '.RESTORED',
                 "Restored '{title}' successfully",
                 'Param {title} is a title',
                 array('title' => $record->Title)
@@ -1896,7 +1898,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         $this->getResponse()->addHeader(
             'X-Status',
-            rawurlencode(_t('SilverStripe\\CMS\\Controllers\\CMSMain.REMOVEDPAGE', "Removed '{title}' from the published site", array('title' => $record->Title)))
+            rawurlencode(_t(
+                __CLASS__ . '.REMOVEDPAGE',
+                "Removed '{title}' from the published site",
+                ['title' => $record->Title]
+            ))
         );
 
         return $this->getResponseNegotiator()->respond($this->getRequest());
@@ -2039,7 +2045,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                     break;
                 }
             }
-            $response .= _t('SilverStripe\\CMS\\Controllers\\CMSMain.PUBPAGES', "Done: Published {count} pages", array('count' => $count));
+            $response .= _t(__CLASS__ . '.PUBPAGES', "Done: Published {count} pages", array('count' => $count));
         } else {
             $token = SecurityToken::inst();
             $fields = new FieldList();
@@ -2047,16 +2053,16 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             $tokenField = $fields->first();
             $tokenHtml = ($tokenField) ? $tokenField->FieldHolder() : '';
             $publishAllDescription = _t(
-                'SilverStripe\\CMS\\Controllers\\CMSMain.PUBALLFUN2',
+                __CLASS__ . '.PUBALLFUN2',
                 'Pressing this button will do the equivalent of going to every page and pressing "publish".  '
                 . 'It\'s intended to be used after there have been massive edits of the content, such as when '
                 . 'the site was first built.'
             );
-            $response .= '<h1>' . _t('SilverStripe\\CMS\\Controllers\\CMSMain.PUBALLFUN', '"Publish All" functionality') . '</h1>
+            $response .= '<h1>' . _t(__CLASS__ . '.PUBALLFUN', '"Publish All" functionality') . '</h1>
 				<p>' . $publishAllDescription . '</p>
 				<form method="post" action="publishall">
 					<input type="submit" name="confirm" value="'
-                    . _t('SilverStripe\\CMS\\Controllers\\CMSMain.PUBALLCONFIRM', "Please publish every page in the site, copying content stage to live", 'Confirmation button') .'" />'
+                    . _t(__CLASS__ . '.PUBALLCONFIRM', "Please publish every page in the site, copying content stage to live", 'Confirmation button') .'" />'
                     . $tokenHtml .
                 '</form>';
         }
@@ -2089,7 +2095,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $this->getResponse()->addHeader(
             'X-Status',
             rawurlencode(_t(
-                'SilverStripe\\CMS\\Controllers\\CMSMain.RESTORED',
+                __CLASS__ . '.RESTORED',
                 "Restored '{title}' successfully",
                 array('title' => $restoredPage->Title)
             ))
@@ -2126,7 +2132,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             $this->getResponse()->addHeader(
                 'X-Status',
                 rawurlencode(_t(
-                    'SilverStripe\\CMS\\Controllers\\CMSMain.DUPLICATED',
+                    __CLASS__ . '.DUPLICATED',
                     "Duplicated '{title}' successfully",
                     array('title' => $newPage->Title)
                 ))
@@ -2164,7 +2170,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             $this->getResponse()->addHeader(
                 'X-Status',
                 rawurlencode(_t(
-                    'SilverStripe\\CMS\\Controllers\\CMSMain.DUPLICATEDWITHCHILDREN',
+                    __CLASS__ . '.DUPLICATEDWITHCHILDREN',
                     "Duplicated '{title}' and children successfully",
                     array('title' => $newPage->Title)
                 ))
@@ -2185,10 +2191,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $title = CMSPagesController::menu_title();
         return array(
             "CMS_ACCESS_CMSMain" => array(
-                'name' => _t('SilverStripe\\CMS\\Controllers\\CMSMain.ACCESS', "Access to '{title}' section", array('title' => $title)),
+                'name' => _t(__CLASS__ . '.ACCESS', "Access to '{title}' section", array('title' => $title)),
                 'category' => _t('SilverStripe\\Security\\Permission.CMS_ACCESS_CATEGORY', 'CMS Access'),
                 'help' => _t(
-                    'SilverStripe\\CMS\\Controllers\\CMSMain.ACCESS_HELP',
+                    __CLASS__ . '.ACCESS_HELP',
                     'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
                 ),
                 'sort' => -99 // below "CMS_ACCESS_LeftAndMain", but above everything else
@@ -2208,9 +2214,15 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         return $rootTitle;
     }
 
+    /**
+     * Cache key for SiteTreeHints() method
+     *
+     * @param $memberID
+     * @return string
+     */
     protected function generateHintsCacheKey($memberID)
     {
-        return md5($memberID);
+        return md5($memberID . '_' . __CLASS__);
     }
 
     /**
@@ -2218,13 +2230,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     public static function flush()
     {
-        static::singleton()->clearCache();
+        CMSMain::singleton()->clearCache();
     }
 
     /**
      * Flush the hints cache for a specific member
      *
-     * @param null $memberIDs
+     * @param array $memberIDs
      */
     public function flushMemberCache($memberIDs = null)
     {
@@ -2232,12 +2244,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         if (!$memberIDs) {
             $cache->clear();
-        } else if (is_array($memberIDs)) {
-            foreach($memberIDs as $memberID) {
-                $key = $this->generateHintsCacheKey($memberID);
-                $cache->delete($key);
-            }
+            return;
         }
 
+        foreach ($memberIDs as $memberID) {
+            $key = $this->generateHintsCacheKey($memberID);
+            $cache->delete($key);
+        }
     }
 }

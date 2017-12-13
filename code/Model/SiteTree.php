@@ -1543,19 +1543,21 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
     /**
      * Flushes the member specific cache for creatable children
-     * @param null $memberIDs
+     *
+     * @param array $memberIDs
      */
     public function flushMemberCache($memberIDs = null)
     {
-        $cache = static::singleton()->getCreatableChildrenCache();
+        $cache = SiteTree::singleton()->getCreatableChildrenCache();
 
-        if ($memberIDs) {
+        if (!$memberIDs) {
             $cache->clear();
-        } else if (is_array($memberIDs)) {
-            foreach ($memberIDs as $memberID) {
-                $key = $this->generateChildrenCacheKey($memberID);
-                $cache->delete($key);
-            }
+            return;
+        }
+
+        foreach ($memberIDs as $memberID) {
+            $key = $this->generateChildrenCacheKey($memberID);
+            $cache->delete($key);
         }
     }
 
@@ -2587,7 +2589,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function creatableChildren()
     {
         // Build the list of candidate children
-        $cache = static::singleton()->getCreatableChildrenCache();
+        $cache = SiteTree::singleton()->getCreatableChildrenCache();
         $cacheKey = $this->generateChildrenCacheKey(Security::getCurrentUser() ? Security::getCurrentUser()->ID : 0);
         $children = $cache->get($cacheKey, []);
         if (!$children || !isset($children[$this->ID])) {
@@ -3049,6 +3051,12 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
     }
 
+    /**
+     * Cache key for creatableChildren() method
+     *
+     * @param int $memberID
+     * @return string
+     */
     protected function generateChildrenCacheKey($memberID)
     {
         return md5($memberID . '_' . __CLASS__);
