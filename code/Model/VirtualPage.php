@@ -316,10 +316,10 @@ class VirtualPage extends Page
                 new LiteralField(
                     'VirtualPageWarning',
                     '<div class="message notice">'
-                     . _t(
-                         'SilverStripe\\CMS\\Model\\SiteTree.VIRTUALPAGEWARNINGSETTINGS',
-                         'Please choose a linked page in the main content fields in order to publish'
-                     )
+                    . _t(
+                        'SilverStripe\\CMS\\Model\\SiteTree.VIRTUALPAGEWARNINGSETTINGS',
+                        'Please choose a linked page in the main content fields in order to publish'
+                    )
                     . '</div>'
                 ),
                 'ClassName'

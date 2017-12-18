@@ -151,13 +151,13 @@ class CMSMainTest extends FunctionalTest
         //$this->assertRegexp('/Done: Published 4 pages/', $response->getBody())
 
         /*
-		$response = Director::test("admin/pages/publishitems", array(
-			'ID' => ''
-			'Title' => ''
-			'action_publish' => 'Save and publish',
-		), $session);
-		$this->assertRegexp('/Done: Published 4 pages/', $response->getBody())
-		*/
+        $response = Director::test("admin/pages/publishitems", array(
+            'ID' => ''
+            'Title' => ''
+            'action_publish' => 'Save and publish',
+        ), $session);
+        $this->assertRegexp('/Done: Published 4 pages/', $response->getBody())
+        */
     }
 
     /**
