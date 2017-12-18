@@ -6,8 +6,15 @@ SilverStripe\Core\Injector\Injector:
     class: SilverStripe\Security\InheritedPermissions
     constructor:
       BaseClass: SilverStripe\CMS\Model\SiteTree
+      CacheService: '%$Psr\SimpleCache\CacheInterface.InheritedPermissions'
     properties:
       DefaultPermissions: '%$SilverStripe\SiteConfig\SiteConfigPagePermissions'
       GlobalEditPermissions:
         - CMS_ACCESS_LeftAndMain
         - CMS_ACCESS_CMSMain
+  SilverStripe\Security\InheritedPermissionFlusher:
+    properties:
+      Services:
+        - '%$SilverStripe\Security\PermissionChecker.sitetree'
+        - '%$SilverStripe\CMS\Controllers\CMSMain'
+        - '%$SilverStripe\CMS\Model\SiteTree'

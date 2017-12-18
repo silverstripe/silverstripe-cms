@@ -2,9 +2,21 @@
 # yarn lockfile v1
 
 
-"@silverstripe/webpack-config@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@silverstripe/webpack-config/-/webpack-config-0.3.0.tgz#5d07c5fe128ecef3cf2b888b5660ed9cfd4c0da1"
+"@silverstripe/eslint-config@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@silverstripe/eslint-config/-/eslint-config-0.0.2.tgz#358ed4e1f28d35326b5af7e4526e5f1cbf7b3b60"
+  dependencies:
+    eslint "^4.6.1"
+    eslint-config-airbnb "^15.1.0"
+    eslint-config-airbnb-base "^12.0.0"
+    eslint-loader "^1.7.1"
+    eslint-plugin-import "^2.7.0"
+    eslint-plugin-jsx-a11y "^5.1.1"
+    eslint-plugin-react "^7.3.0"
+
+"@silverstripe/webpack-config@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@silverstripe/webpack-config/-/webpack-config-0.5.0.tgz#ca19d7eff2162e7fd62e4325915168bf2ae64acf"
   dependencies:
     autoprefixer "^6.4.0"
     babel-core "^6.24.1"
@@ -13,13 +25,6 @@
     babel-preset-env "^1.6.0"
     babel-preset-react "^6.24.1"
     css-loader "^0.28.1"
-    eslint "^4.6.1"
-    eslint-config-airbnb "^15.1.0"
-    eslint-config-airbnb-base "^12.0.0"
-    eslint-loader "^1.7.1"
-    eslint-plugin-import "^2.7.0"
-    eslint-plugin-jsx-a11y "^5.1.1"
-    eslint-plugin-react "^7.3.0"
     expose-loader "^0.7.3"
     extract-text-webpack-plugin "^2.1.0"
     file-loader "^0.11.1"

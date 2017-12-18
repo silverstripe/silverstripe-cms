@@ -2,6 +2,7 @@
 
 namespace SilverStripe\CMS\Model;
 
+use Page;
 use SilverStripe\Core\Convert;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
@@ -9,9 +10,9 @@ use SilverStripe\Forms\ReadonlyTransformation;
 use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ValidationResult;
-use SilverStripe\Versioned\Versioned;
 use SilverStripe\Security\Member;
-use Page;
+use SilverStripe\Versioned\Versioned;
+use SilverStripe\View\SSViewer;
 
 /**
  * Virtual Page creates an instance of a  page, with the same fields that the original page had, but readonly.
@@ -277,8 +278,8 @@ class VirtualPage extends Page
 
     public function onBeforeWrite()
     {
-        parent::onBeforeWrite();
         $this->refreshFromCopied();
+        parent::onBeforeWrite();
     }
 
     /**
@@ -315,10 +316,10 @@ class VirtualPage extends Page
                 new LiteralField(
                     'VirtualPageWarning',
                     '<div class="message notice">'
-                     . _t(
-                         'SilverStripe\\CMS\\Model\\SiteTree.VIRTUALPAGEWARNINGSETTINGS',
-                         'Please choose a linked page in the main content fields in order to publish'
-                     )
+                    . _t(
+                        'SilverStripe\\CMS\\Model\\SiteTree.VIRTUALPAGEWARNINGSETTINGS',
+                        'Please choose a linked page in the main content fields in order to publish'
+                    )
                     . '</div>'
                 ),
                 'ClassName'
@@ -366,6 +367,22 @@ class VirtualPage extends Page
     public function CMSTreeClasses()
     {
         return parent::CMSTreeClasses() . ' VirtualPage-' . $this->CopyContentFrom()->ClassName;
+    }
+
+    /**
+     * Use the target page's class name for fetching templates - as we need to take on its appearance
+     *
+     * @param string $suffix
+     * @return array
+     */
+    public function getViewerTemplates($suffix = '')
+    {
+        $copy = $this->CopyContentFrom();
+        if ($copy && $copy->exists()) {
+            return $copy->getViewerTemplates($suffix);
+        }
+
+        return parent::getViewerTemplates($suffix);
     }
 
     /**
