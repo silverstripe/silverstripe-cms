@@ -15,6 +15,7 @@ use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\HTMLReadonlyField;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\Tab;
+use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\Security\Security;
@@ -297,41 +298,43 @@ class CMSPageHistoryController extends CMSMain
         $compareModeChecked = ($action == "compare");
 
         if ($page) {
-            $versions = $page->allVersions();
+            $versions = $page
+                ->Versions()
+                ->sort(['"SiteTree"."Version"' => 'DESC'])
+                ->toArray();
             $versionID = (!$versionID) ? $page->Version : $versionID;
 
-            if ($versions) {
-                foreach ($versions as $k => $version) {
-                    $active = false;
+            /** @var SiteTree $pageVersion */
+            foreach ($versions as $pageVersion) {
+                $active = false;
 
-                    if ($version->Version == $versionID || $version->Version == $otherVersionID) {
-                        $active = true;
+                if ($pageVersion->Version == $versionID || $pageVersion->Version == $otherVersionID) {
+                    $active = true;
 
-                        if (!$version->WasPublished) {
-                            $showUnpublishedChecked = 1;
-                        }
+                    if (!$pageVersion->WasPublished) {
+                        $showUnpublishedChecked = 1;
                     }
-
-                    $version->Active = ($active);
                 }
+
+                $pageVersion->Active = !!($active);
             }
 
             $vd = new ViewableData();
 
             $versionsHtml = $vd->customise(array(
-                'Versions' => $versions
+                'VersionItems' => new ArrayList($versions)
             ))->renderWith($this->getTemplatesWithSuffix('_versions'));
         }
 
         $fields = new FieldList(
             new CheckboxField(
                 'ShowUnpublished',
-                _t('SilverStripe\\CMS\\Controllers\\CMSPageHistoryController.SHOWUNPUBLISHED', 'Show unpublished versions'),
+                _t(__CLASS__ . '.SHOWUNPUBLISHED', 'Show unpublished versions'),
                 $showUnpublishedChecked
             ),
             new CheckboxField(
                 'CompareMode',
-                _t('SilverStripe\\CMS\\Controllers\\CMSPageHistoryController.COMPAREMODE', 'Compare mode (select two)'),
+                _t(__CLASS__ . '.COMPAREMODE', 'Compare mode (select two)'),
                 $compareModeChecked
             ),
             new LiteralField('VersionsHtml', $versionsHtml),
