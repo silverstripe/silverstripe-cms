@@ -7,9 +7,9 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\ReadonlyField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\ManyManyList;
+use SilverStripe\Subsites\Model\Subsite;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\SSViewer;
-use Subsite;
 
 /**
  * Extension applied to {@see File} object to track links to {@see SiteTree} records.
@@ -74,7 +74,8 @@ class SiteTreeFileExtension extends DataExtension
      */
     public function BackLinkTracking()
     {
-        if (class_exists("Subsite")) {
+        // @todo remove coupling with Subsites
+        if (class_exists(Subsite::class)) {
             $rememberSubsiteFilter = Subsite::$disable_subsite_filter;
             Subsite::disable_subsite_filter(true);
         }
@@ -82,7 +83,7 @@ class SiteTreeFileExtension extends DataExtension
         $links = $this->owner->getManyManyComponents('BackLinkTracking');
         $this->owner->extend('updateBackLinkTracking', $links);
 
-        if (class_exists("Subsite")) {
+        if (class_exists(Subsite::class)) {
             Subsite::disable_subsite_filter($rememberSubsiteFilter);
         }
 
