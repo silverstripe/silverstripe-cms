@@ -47,16 +47,20 @@ use Translatable;
  */
 class ContentController extends Controller
 {
-
+    /**
+     * @var SiteTree
+     */
     protected $dataRecord;
 
-    private static $extensions = array('SilverStripe\\CMS\\Controllers\\OldPageRedirector');
+    private static $extensions = [
+        OldPageRedirector::class,
+    ];
 
-    private static $allowed_actions = array(
+    private static $allowed_actions = [
         'successfullyinstalled',
         'deleteinstallfiles', // secured through custom code
-        'LoginForm'
-    );
+        'LoginForm',
+    ];
 
     /**
      * The ContentController will take the URLSegment parameter from the URL and use that to look
@@ -294,6 +298,7 @@ class ContentController extends Controller
         // We might need to create a show in menu permission
         if (isset($result)) {
             foreach ($result as $page) {
+                /** @var SiteTree $page */
                 if ($page->canView()) {
                     $visible[] = $page;
                 }
@@ -340,16 +345,16 @@ class ContentController extends Controller
             if ($member) {
                 $firstname = Convert::raw2xml($member->FirstName);
                 $surname = Convert::raw2xml($member->Surname);
-                $logInMessage = _t('SilverStripe\\CMS\\Controllers\\ContentController.LOGGEDINAS', 'Logged in as') ." {$firstname} {$surname} - <a href=\"Security/logout\">". _t('SilverStripe\\CMS\\Controllers\\ContentController.LOGOUT', 'Log out'). "</a>";
+                $logInMessage = _t(__CLASS__ . '.LOGGEDINAS', 'Logged in as') ." {$firstname} {$surname} - <a href=\"Security/logout\">". _t(__CLASS__ . '.LOGOUT', 'Log out'). "</a>";
             } else {
                 $logInMessage = sprintf(
                     '%s - <a href="%s">%s</a>',
-                    _t('SilverStripe\\CMS\\Controllers\\ContentController.NOTLOGGEDIN', 'Not logged in'),
+                    _t(__CLASS__ . '.NOTLOGGEDIN', 'Not logged in'),
                     Security::config()->login_url,
-                    _t('SilverStripe\\CMS\\Controllers\\ContentController.LOGIN', 'Login') ."</a>"
+                    _t(__CLASS__ . '.LOGIN', 'Login') ."</a>"
                 );
             }
-            $viewPageIn = _t('SilverStripe\\CMS\\Controllers\\ContentController.VIEWPAGEIN', 'View Page in:');
+            $viewPageIn = _t(__CLASS__ . '.VIEWPAGEIN', 'View Page in:');
 
             return <<<HTML
 				<div id="SilverStripeNavigator">
@@ -375,7 +380,7 @@ HTML;
                 $dateObj = DBField::create_field('Datetime', $date);
                 // $dateObj->setVal($date);
                 return "<div id=\"SilverStripeNavigatorMessage\">" .
-                    _t('SilverStripe\\CMS\\Controllers\\ContentController.ARCHIVEDSITEFROM', 'Archived site from') .
+                    _t(__CLASS__ . '.ARCHIVEDSITEFROM', 'Archived site from') .
                     "<br>" . $dateObj->Nice() . "</div>";
             }
         }
@@ -468,7 +473,7 @@ HTML;
     public function successfullyinstalled()
     {
         // Return 410 Gone if this site is not actually a fresh installation
-        if (!file_exists(BASE_PATH . '/install.php')) {
+        if (!file_exists(PUBLIC_PATH . '/install.php')) {
             $this->httpError(410);
         }
 
@@ -486,7 +491,7 @@ HTML;
         ));
 
         return array(
-            "Title" =>  _t("SilverStripe\\CMS\\Controllers\\ContentController.INSTALL_SUCCESS", "Installation Successful!"),
+            "Title" =>  _t(__CLASS__ . ".INSTALL_SUCCESS", "Installation Successful!"),
             "Content" => $data->renderWith([
                 'type' => 'Includes',
                 'Install_successfullyinstalled'
