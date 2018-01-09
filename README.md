@@ -8,31 +8,29 @@
 [![License](https://poser.pugx.org/silverstripe/cms/license.svg)](https://github.com/silverstripe/silverstripe-cms#license)
 [![Dependency Status](https://www.versioneye.com/php/silverstripe:cms/badge.svg)](https://www.versioneye.com/php/silverstripe:cms)
 [![Reference Status](https://www.versioneye.com/php/silverstripe:cms/reference_badge.svg?style=flat)](https://www.versioneye.com/php/silverstripe:cms/references)
-![helpfulrobot](https://helpfulrobot.io/silverstripe/cms/badge)
 
 PHP5 Content Management System (CMS), see [http://silverstripe.org](http://silverstripe.org). Requires the [`framework`](http://github.com/silverstripe/silverstripe-framework) module and a [`silverstripe-installer`](http://github.com/silverstripe/silverstripe-installer) base project.
 
-## Installation ##
+## Installation
 
-See [installation on different platforms](http://doc.silverstripe.org/framework/en/installation/),
-and [installation from source](http://doc.silverstripe.org/framework/en/installation/from-source).
+See [installation instructions](https://docs.silverstripe.org/en/getting_started/installation/).
 
-## Bugtracker ##
+## Bugtracker
 
 Bugs are tracked on [github.com](https://github.com/silverstripe/silverstripe-cms/issues). 
-Please read our [issue reporting guidelines](http://doc.silverstripe.org/framework/en/misc/contributing/issues).
+Please read our [issue reporting guidelines](https://docs.silverstripe.org/en/contributing/issues_and_bugs).
 
-## Development and Contribution ##
+## Development and Contribution 
 
-If you would like to make changes to the SilverStripe core codebase, we have an extensive [guide to contributing code](http://doc.silverstripe.org/framework/en/misc/contributing/code).
+If you would like to make changes to the SilverStripe core codebase, we have an extensive [guide to contributing code](https://docs.silverstripe.org/en/contributing/code).
 
-## Links ##
+## Links
 
- * [Requirements](http://doc.silverstripe.org/framework/en/installation/server-requirements)
- * [Changelogs](http://doc.silverstripe.org/framework/en/changelogs/)
+ * [Requirements](https://docs.silverstripe.org/en/getting_started/server_requirements/)
+ * [Changelogs](https://docs.silverstripe.org/en/changelogs/)
  * [Bugtracker: Framework](https://github.com/silverstripe/silverstripe-framework/issues)
  * [Bugtracker: CMS](https://github.com/silverstripe/silverstripe-cms/issues)
  * [Bugtracker: Installer](https://github.com/silverstripe/silverstripe-installer/issues)
- * [Forums](http://silverstripe.org/forums)
+ * [Slack](https://silverstripe.org/slack)
  * [Developer Mailinglist](https://groups.google.com/forum/#!forum/silverstripe-dev)
  * [License](./LICENSE)
