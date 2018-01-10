@@ -164,7 +164,7 @@
 			 */
 			_unselect: function() {
 				var tr = this.get(0);
-				tr.className = $.trim(tr.className.replace('active', ''));
+				tr.className = $.trim(tr.className.replace(/\bactive\b/, ''));
 				this.find(":input[type=checkbox][checked]").attr("checked", false);
 			},
 			
