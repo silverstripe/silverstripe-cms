@@ -7,11 +7,12 @@
             data-pjax-target="$PJAXTarget.ATT"
             title="<%t SilverStripe\CMS\Controllers\CMSPagesController.TreeView 'Tree View' %>"
         ></a>
+
+        <a class="page-view-link btn btn-secondary btn--icon-sm btn--no-text font-icon-list"
+            href="$LinkListView.ATT"
+            data-view="listview"
+            data-pjax-target="$PJAXTarget.ATT"
+            title="<%t SilverStripe\CMS\Controllers\CMSPagesController.ListView 'List View' %>"
+        ></a>
     <% end_if %>
-    <a class="page-view-link btn btn-secondary btn--icon-sm btn--no-text font-icon-list"
-        href="$LinkListView.ATT"
-        data-view="listview"
-        data-pjax-target="$PJAXTarget.ATT"
-        title="<%t SilverStripe\CMS\Controllers\CMSPagesController.ListView 'List View' %>"
-    ></a>
 </div>

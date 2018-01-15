@@ -4,7 +4,10 @@
 			<div class="toolbar toolbar--north">
 				<div class="toolbar__navigation">
 					<ol class="breadcrumb">
-						<li class="breadcrumb__item breadcrumb__item--last">
+						<li class="breadcrumb__item">
+                            <%t SilverStripe\CMS\Controllers\CMSPagesController.MENUTITLE 'Pages'%>
+                        </li>
+						<li class="breadcrumb__item breadcrumb__item--last breadcrumb__item--no-crumb">
 				            <h2 class="breadcrumb__item-title breadcrumb__item-title--last">
 						        <%t SilverStripe\CMS\Controllers\CMSPageAddController.Title 'Add page' %>
 				            </h2>
