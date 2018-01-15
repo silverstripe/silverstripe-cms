@@ -156,10 +156,16 @@
 			 * Function: _unselect()
 			 *
 			 * Unselects the row from the form selection.
+			 *
+			 * Using regular js to update the class rather than this.removeClass('active')
+			 * because the latter causes the browser to continuously call
+			 * element.compareDocumentPosition, causing the browser to hang for long
+			 * periods of time, especially on pages with lots of versions (e.g. 100+)
 			 */
 			_unselect: function() {
-				this.removeClass('active');
-				this.find(":input[type=checkbox]").attr("checked", false);
+				var tr = this.get(0);
+				tr.className = $.trim(tr.className.replace(/\bactive\b/, ''));
+				this.find(":input[type=checkbox][checked]").attr("checked", false);
 			},
 			
 			/**
