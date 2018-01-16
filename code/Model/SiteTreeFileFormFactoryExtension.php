@@ -3,36 +3,44 @@
 namespace SilverStripe\CMS\Model;
 
 use SilverStripe\Assets\File;
+use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\ReadonlyField;
+use SilverStripe\Forms\Tab;
+use SilverStripe\Forms\TabSet;
 use SilverStripe\ORM\DataExtension;
-use SilverStripe\Versioned\Versioned;
+use SilverStripe\ORM\FieldType\DBHTMLText;
 
 /**
- * Extension applied to {@see FileFormFactoryExtension} object to track links to {@see SiteTree} records.
- *
- * {@see SiteTreeLinkTracking} for the extension applied to {@see SiteTree}
- *
- * Note that since both SiteTree and File are versioned, LinkTracking and ImageTracking will
- * only be enabled for the Stage record.
+ * Extension applied to {@see FileFormFactory} to decorate with a "Used on:" information area.
+ * Uses tracking provided by {@see SiteTreeFileExtension} to generate this.
  *
  * @property File $owner
  */
 class SiteTreeFileFormFactoryExtension extends DataExtension
 {
-    public function updateForm($form, $controller, $name, $context)
+    public function updateFormFields(FieldList $fields, $controller, $formName, $context)
     {
+        // Create field
+        /** @var File|SiteTreeFileExtension $record */
         $record = $context['Record'];
-        $fields = $form->Fields();
+        $usedOnField = ReadonlyField::create(
+            'BackLinkCount',
+            _t(__CLASS__.'.BACKLINKCOUNT', 'Used on:'),
+            $record->BackLinkTrackingCount() . ' ' . _t(__CLASS__.'.PAGES', 'page(s)')
+        )
+            ->addExtraClass('cms-description-toggle');
 
-        $fields->insertAfter(
-            'LastEdited',
-            ReadonlyField::create(
-                'BackLinkCount',
-                _t(__CLASS__.'.BACKLINKCOUNT', 'Used on:'),
-                $record->BackLinkTrackingCount() . ' ' . _t(__CLASS__.'.PAGES', 'page(s)')
-            )
-                ->addExtraClass('cms-description-toggle')
-                ->setDescription($record->BackLinkHTMLList())
-        );
+        // Add table
+        /** @var DBHTMLText $backlinkHTML */
+        $backlinkHTML = $record->BackLinkHTMLList();
+        if (trim($backlinkHTML->forTemplate())) {
+            $usedOnField->setDescription($backlinkHTML);
+        }
+
+        // Add field to new tab
+        $tab = Tab::create('Usage', _t(__CLASS__.'.USAGE', 'Usage'), $usedOnField);
+        /** @var TabSet $tabset */
+        $tabset = $fields->fieldByName('Editor');
+        $tabset->push($tab);
     }
 }
