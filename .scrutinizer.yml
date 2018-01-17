@@ -1,0 +1,16 @@
+
+inherit: true
+
+build:
+  environment:
+    variables:
+      COMPOSER_ROOT_VERSION: 5.x-dev
+  nodes:
+    analysis:
+      tests:
+        override: [php-scrutinizer-run]
+
+filter:
+  paths:
+    - src/*
+    - tests/*
