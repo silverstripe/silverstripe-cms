@@ -1,8 +1,13 @@
-<phpunit bootstrap="tests/bootstrap.php" colors="true">
-
-	<testsuite name="Default">
-		<directory>tests</directory>
-	</testsuite>
+<phpunit
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/7.0/phpunit.xsd"
+        bootstrap="tests/bootstrap.php"
+        colors="true">
+    <testsuites>
+        <testsuite name="Default">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
 
 	<filter>
 		<whitelist addUncoveredFilesFromWhitelist="true">
@@ -12,5 +17,4 @@
 			</exclude>
 		</whitelist>
 	</filter>
-
 </phpunit>
