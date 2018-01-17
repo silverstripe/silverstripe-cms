@@ -175,15 +175,9 @@
 }
 
 .form__field-update-url {
-  position: absolute;
-  top: 4px;
-  right: 20px;
-  background: #fff;
-  z-index: 3;
-
-  @media (max-width: 992px) {
-    right: 0;
-  }
+    border-radius: 0 3px 3px 0;
+    margin-right: 0px;
+    margin-left: -1px;
 }
 
 #Form_EditForm #Title .update {
