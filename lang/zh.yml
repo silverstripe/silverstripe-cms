@@ -1,25 +1,54 @@
 zh:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
+    RESULT: 已删除%d草稿/正式页面，并进行归档
+    TITLE: 取消并归档
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: 已发布%d页面，失败%d
+    PUBLISH_PAGES: 发布
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: 恢复
+    RESTORED_PAGES: 已恢复%d页面
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISHED_PAGES: 取消发布%d页面
+    UNPUBLISH_PAGES: 未发布
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: '访问 ''{title}'' 部分'
     ACCESS_HELP: '允许查看包含页面树及内容 部分。查看和编辑权限可以通过页面特定的下拉菜单进行控制，与使用单独的”内容权限“处理一样。'
+    APPLY_FILTER: 查询
+    ARCHIVE: 归档
+    ARCHIVEDPAGE: '归档页面 ''{title}'''
+    AddNew: 增加一个新的页面
+    AddNewButton: 增加一个新的
     AddPageRestriction: 备注：某些类型页面是不允许选择该项的
+    ArchiveWarning: 警告：在进行归档前，当前页面将被取消发布？是否继续？
+    CLEAR_FILTER: 清除
+    Cancel: 取消
     ChoosePageParentMode: 选择在哪创建此页面
     ChoosePageType: 选择页面类型
     Create: 创建
     DUPLICATED: '成功复制‘{title}’'
     DUPLICATEDWITHCHILDREN: '成功复制‘{title}’及其子页面'
+    EMAIL: Email
+    ListFiltered: 显示查询结果.
     NEWPAGE: '新建{pagetype}'
     PAGENOTEXISTS: 该页面不存在
+    PAGES: 页面状态
     PAGETYPEANYOPT: 任何
+    PAGETYPEOPT: 页面类型
+    PLEASESAVE: '请保存页面: 当前页面未被保存，导致未能更新成功'
     PUBALLCONFIRM: 请发布站点上的所有页面，将内容复制到线上
     PUBALLFUN: “全部发布”功能
+    PUBLISHED: '''{title}'' 发布成功。'
     PUBPAGES: '完成：已发布{count}个页面'
     PageAdded: 成功创建页面
     REMOVEDPAGE: '从已发布站点删除’{title}'''
     REMOVEDPAGEFROMDRAFT: 从草稿站点删除‘s%’
+    RESTORE: 恢复草稿
     RESTORED: '成功恢复’{title}‘'
+    ROLLBACK: 回滚至当前版本
     ROLLEDBACKPUBv2: 回滚到已发布版本。
     ROLLEDBACKVERSIONv2: '回滚到版本#{version}。'
+    SAVED: ' ''{title}'' 保存成功。'
     SAVEDRAFT: 保存草稿
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 根据另一个页面
