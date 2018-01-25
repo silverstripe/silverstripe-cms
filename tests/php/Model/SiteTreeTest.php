@@ -51,9 +51,14 @@ class SiteTreeTest extends SapphireTest
     public function reservedSegmentsProvider()
     {
         return [
+            // segments reserved by rules
             ['Admin', 'admin-2'],
             ['Dev', 'dev-2'],
-            ['Robots in disguise', 'robots-in-disguise']
+            ['Robots in disguise', 'robots-in-disguise'],
+            // segments reserved by folder name
+            ['resources', 'resources-2'],
+            ['assets', 'assets-2'],
+            ['notafoldername', 'notafoldername'],
         ];
     }
 
@@ -994,7 +999,7 @@ class SiteTreeTest extends SapphireTest
         $sitetree = new SiteTree();
         $sitetree->URLSegment = Controller::class;
 
-        $this->assertFalse($sitetree->validURLSegment(), 'Class name conflicts are recognised');
+        $this->assertTrue($sitetree->validURLSegment(), 'Class names are no longer conflicts');
     }
 
     /**

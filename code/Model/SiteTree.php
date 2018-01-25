@@ -1614,43 +1614,19 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function validURLSegment()
     {
-        $excludes = Director::config()->get('rules');
-        $excludes = array_keys($excludes);
-        $disallowedSegments = array_map(function ($key) {
-            $route = explode('/', $key);
-            if (!empty($route) && strpos($route[0], '$') === false) {
-                return $route[0];
-            }
-            return;
-        }, $excludes);
-
-        if (!$this->ParentID && in_array($this->URLSegment, $disallowedSegments)) {
-            // Default to '-2', onBeforeWrite takes care of further possible clashes
-            return false;
-        }
-
-
-        if (self::config()->nested_urls && $parent = $this->Parent()) {
+        // Check known urlsegment blacklists
+        if (self::config()->nested_urls && $this->ParentID) {
+            // Guard against url segments for sub-pages
+            $parent = $this->Parent();
             if ($controller = ModelAsController::controller_for($parent)) {
                 if ($controller instanceof Controller && $controller->hasAction($this->URLSegment)) {
                     return false;
                 }
             }
-        }
-
-        if (!self::config()->nested_urls || !$this->ParentID) {
-            if (class_exists($this->URLSegment) && is_subclass_of($this->URLSegment, RequestHandler::class)) {
-                return false;
-            }
-        }
-
-        // Filters by url, id, and parent
-        $filter = array('"SiteTree"."URLSegment"' => $this->URLSegment);
-        if ($this->ID) {
-            $filter['"SiteTree"."ID" <> ?'] = $this->ID;
-        }
-        if (self::config()->nested_urls) {
-            $filter['"SiteTree"."ParentID"'] = $this->ParentID ? $this->ParentID : 0;
+        } elseif (in_array(strtolower($this->URLSegment), $this->getExcludedURLSegments())) {
+            // Guard against url segments for the base page
+            // Default to '-2', onBeforeWrite takes care of further possible clashes
+            return false;
         }
 
         // If any of the extensions return `0` consider the segment invalid
@@ -1664,8 +1640,15 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             return min($extensionResponses);
         }
 
-        // Check existence
-        return !DataObject::get(self::class, $filter)->exists();
+        // Check for clashing pages by url, id, and parent
+        $source = SiteTree::get()->filter('URLSegment', $this->URLSegment);
+        if ($this->ID) {
+            $source = $source->exclude('ID', $this->ID);
+        }
+        if (self::config()->nested_urls) {
+            $source = $source->filter('ParentID', $this->ParentID ? $this->ParentID : 0);
+        }
+        return !$source->exists();
     }
 
     /**
@@ -3060,5 +3043,31 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     protected function generateChildrenCacheKey($memberID)
     {
         return md5($memberID . '_' . __CLASS__);
+    }
+
+    /**
+     * Get the list of excluded root URL segments
+     *
+     * @return array List of lowercase urlsegments
+     */
+    protected function getExcludedURLSegments()
+    {
+        $excludes = [];
+
+        // Build from rules
+        foreach (Director::config()->get('rules') as $pattern => $rule) {
+            $route = explode('/', $pattern);
+            if (!empty($route) && strpos($route[0], '$') === false) {
+                $excludes[] = strtolower($route[0]);
+            }
+        }
+
+        // Build from base folders
+        foreach (glob(Director::publicFolder() . '/*', GLOB_ONLYDIR) as $folder) {
+            $excludes[] = strtolower(basename($folder));
+        }
+
+        $this->extend('updateExcludedURLSegments', $excludes);
+        return $excludes;
     }
 }
