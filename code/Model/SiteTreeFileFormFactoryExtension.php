@@ -37,10 +37,13 @@ class SiteTreeFileFormFactoryExtension extends DataExtension
             $usedOnField->setDescription($backlinkHTML);
         }
 
-        // Add field to new tab
-        $tab = Tab::create('Usage', _t(__CLASS__.'.USAGE', 'Usage'), $usedOnField);
         /** @var TabSet $tabset */
         $tabset = $fields->fieldByName('Editor');
-        $tabset->push($tab);
+        if ($tabset) {
+            // Add field to new tab
+            /** @var Tab $tab */
+            $tab = Tab::create('Usage', _t(__CLASS__.'.USAGE', 'Usage'), $usedOnField);
+            $tabset->push($tab);
+        }
     }
 }
