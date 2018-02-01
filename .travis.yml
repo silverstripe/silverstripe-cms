@@ -14,7 +14,7 @@ addons:
 
 env:
   global:
-    - CORE_RELEASE=3.5
+    - CORE_RELEASE=3
 
 matrix:
   include:
