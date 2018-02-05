@@ -211,6 +211,10 @@ es_MX:
     PARENTTYPE: 'Ubicación de página'
     PARENTTYPE_ROOT: 'Página de nivel superior'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Controlar los derechos de acceso al contenido'
+    PLURALNAME: Páginas
+    PLURALS:
+      one: 'Una página'
+      other: '{count} Páginas'
     REORGANISE_DESCRIPTION: 'Cambiar la estructura del sitio'
     REORGANISE_HELP: 'Reorganizar páginas en el árbol del sitio arrastrando y soltando.'
     SHOWINMENUS: '¿Mostrar en menús?'
@@ -224,11 +228,21 @@ es_MX:
     VIEW_ALL_DESCRIPTION: 'Ver cualquier página'
     VIEW_DRAFT_CONTENT: 'Ver el contenido del boceto'
     Viewers: 'Grupos de Espectadores'
+    Visibility: Visibilidad
     has_one_Parent: 'Página ascendiente'
     many_many_BackLinkTracking: 'Seguimiento en retrospectiva'
     many_many_ImageTracking: 'Seguir la Imagen'
     many_many_LinkTracking: 'Seguir el Enlace'
+  SilverStripe\CMS\Model\SiteTreeFileExtension:
+    BACKLINKCOUNT: 'Usado en:'
+    PAGES: Página(s)
+    TITLE_INDEX: '#'
+    TITLE_TYPE: Tipo
+    TITLE_USED_ON: 'Usado en'
   SilverStripe\CMS\Model\VirtualPage:
+    CHOOSE: 'Página vinculada'
+    DESCRIPTION: 'Muestra el contenido de otra página'
+    EditLink: editar
     HEADER: 'Esta es una página virtual'
     PLURALNAME: 'Páginas Virtuales'
     PLURALS:
