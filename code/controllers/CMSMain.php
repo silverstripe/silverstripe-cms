@@ -618,7 +618,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$fields->push($liveLinkField = new HiddenField("AbsoluteLink", false, $record->AbsoluteLink()));
 			$fields->push($liveLinkField = new HiddenField("LiveLink"));
 			$fields->push($stageLinkField = new HiddenField("StageLink"));
+			$fields->push($archiveWarningMsgField = new HiddenField("ArchiveWarningMessage"));
 			$fields->push(new HiddenField("TreeTitle", false, $record->TreeTitle));
+
+			$archiveWarningMsgField->setValue($this->getArchiveWarningMessage($record));
 
 			if($record->ID && is_numeric( $record->ID ) ) {
 				$liveLink = $record->getAbsoluteLiveLink();
@@ -708,6 +711,20 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$form->setResponseNegotiator($this->getResponseNegotiator());
 			return $form;
 		}
+	}
+
+	/**
+	 * @param SiteTree $record
+	 */
+	protected function getArchiveWarningMessage($record)
+	{
+		// Get all page descendants
+		$record->collateDescendants(true, $descendants);
+		if (!$descendants) {
+			return _t('CMSMain.ArchiveWarning', 'Warning: This page will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?');
+		}
+		return _t('CMSMain.ArchiveWarningWithChildren', 'Warning: This page and all of its child pages will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?');
+
 	}
 
 	/**

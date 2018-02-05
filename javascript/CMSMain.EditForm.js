@@ -320,14 +320,11 @@
 			 *  (Event) e
 			 */
 			onclick: function(e) {
-				var form = this.parents('form:first'),
-					version = form.find(':input[name=Version]').val(),
-					message = '',
-					toRoot = this.data('toRoot');
-				message = ss.i18n.sprintf(
-					ss.i18n._t(toRoot ? 'CMSMain.RestoreToRoot' : 'CMSMain.Restore'),
-					version
-				);
+				var form = this.parents('form:first'), message = '';
+				message = form.find('input[name=ArchiveWarningMessage]')
+					.val()
+					.replace(/\\n/g, '\n');
+
 				if(confirm(message)) {
 					return this._super(e);
 				} else {

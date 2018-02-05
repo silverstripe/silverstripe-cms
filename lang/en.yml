@@ -133,6 +133,9 @@ en:
     TreeFiltered: 'Showing search results.'
     TreeFilteredClear: Clear
     UNPUBLISH_AND_ARCHIVE: 'Unpublish and archive'
+    ArchiveWarning: 'Warning: This page will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?'
+    ArchiveWarningWithChildren: 'Warning: This page and all of its child pages will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?'
+
   CMSMain_left_ss:
     APPLY_FILTER: Search
     CLEAR_FILTER: Clear
