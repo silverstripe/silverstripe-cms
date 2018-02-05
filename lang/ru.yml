@@ -9,7 +9,7 @@ ru:
     RESTORE: Восстановить
     RESTORED_PAGES: 'Восстановлено %d страниц'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
-    UNPUBLISHED_PAGES: 'Отменена публикация %d страниц'
+    UNPUBLISHED_PAGES: '%d страниц сняты с публикации'
     UNPUBLISH_PAGES: 'Отмена публикации'
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Доступ к разделу ''{title}'''
@@ -23,7 +23,7 @@ ru:
     ArchiveWarning: 'Предупреждение: Перед отправкой в архив произойдёт отмена публикации данной страницы. Вы действительно хотите продолжить?'
     ArchiveWarningWithCampaigns: 'Предупреждение: Перед отправкой в архив произойдёт отмена публикации данной страницы и автоматическое удаление из ассоциированных {NumCampaigns}. Вы действительно хотите продолжить?'
     ArchiveWarningWithChildren: 'Предупреждение: Перед отправкой в архив произойдёт отмена публикации данной и всех дочерних страниц. Вы действительно хотите продолжить?'
-    ArchiveWarningWithChildrenAndCampaigns: 'Предупреждение: Перед отправкой в архив произойдёт отмена публикации данной и дочерних страниц и автоматическое удаление из ассоциированных {NumCampaigns}. Вы действительно хотите продолжить?'
+    ArchiveWarningWithChildrenAndCampaigns: 'Предупреждение: Перед отправкой в архив произойдёт отмена публикации данной и дочерних страниц и автоматическое удаление из связаных {NumCampaigns}. Вы действительно хотите продолжить?'
     CANT_REORGANISE: 'У вас нет права редактировать страницы верхнего уровня. Изменения не были сохранены.'
     CLEAR_FILTER: Сбросить
     Cancel: Отмена
@@ -73,6 +73,8 @@ ru:
     ParentMode_top: 'Корневая страница'
     Title: 'Добавить страницу'
   SilverStripe\CMS\Controllers\CMSPageEditController:
+    ErrorItemPermissionDenied: 'Возможно у Вас нет прав на добавление {ObjectTitle} в кампанию'
+    ErrorNotFound: '{Type} не найден'
     MENUTITLE: 'Редактировать страницу'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Автор
@@ -135,9 +137,12 @@ ru:
     VIEWPAGEIN: 'Просмотреть страницу в:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Архивные
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Якорь
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Описание ссылки'
     LINKOPENNEWWIN: 'Открывать в новом окне'
+    LINKTEXT: 'Текст ссылки'
     SELECT_PAGE: 'Выберите страницу'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Отмена
