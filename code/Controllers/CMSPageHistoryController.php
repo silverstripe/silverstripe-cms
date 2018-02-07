@@ -220,10 +220,10 @@ class CMSPageHistoryController extends CMSMain
                 $id
             );
 
-            $view = _t('SilverStripe\\CMS\\Controllers\\CMSPageHistoryController.VIEW', "view");
+            $view = _t(__CLASS__ . '.VIEW', "view");
 
             $message = _t(
-                'SilverStripe\\CMS\\Controllers\\CMSPageHistoryController.COMPARINGVERSION',
+                __CLASS__ . '.COMPARINGVERSION',
                 "Comparing versions {version1} and {version2}.",
                 array(
                     'version1' => sprintf('%s (<a href="%s">%s</a>)', $versionID, Controller::join_links($link, $versionID), $view),
@@ -234,10 +234,10 @@ class CMSPageHistoryController extends CMSMain
             $revert->setReadonly(true);
         } else {
             if ($record->isLatestVersion()) {
-                $message = _t('SilverStripe\\CMS\\Controllers\\CMSPageHistoryController.VIEWINGLATEST', 'Currently viewing the latest version.');
+                $message = _t(__CLASS__ . '.VIEWINGLATEST', 'Currently viewing the latest version.');
             } else {
                 $message = _t(
-                    'SilverStripe\\CMS\\Controllers\\CMSPageHistoryController.VIEWINGVERSION',
+                    __CLASS__ . '.VIEWINGVERSION',
                     "Currently viewing version {version}.",
                     array('version' => $versionID)
                 );
@@ -247,9 +247,9 @@ class CMSPageHistoryController extends CMSMain
         /** @var Tab $mainTab */
         $mainTab = $fields->fieldByName('Root.Main');
         $mainTab->unshift(
-            new LiteralField('CurrentlyViewingMessage', ArrayData::create(array(
+            LiteralField::create('CurrentlyViewingMessage', ArrayData::create(array(
                 'Content' => DBField::create_field('HTMLFragment', $message),
-                'Classes' => 'notice'
+                'Classes' => 'alert alert-info'
             ))->renderWith($this->getTemplatesWithSuffix('_notice')))
         );
 

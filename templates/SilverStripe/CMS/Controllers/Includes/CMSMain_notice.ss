@@ -1,3 +1,3 @@
-<div class="message $Classes">
-	<p>$Content</p>
+<div class="$Classes">
+    $Content
 </div>
