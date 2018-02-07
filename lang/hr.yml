@@ -228,8 +228,6 @@ hr:
     many_many_ImageTracking: 'Praćenje slika'
     many_many_LinkTracking: 'Praćenje linkova'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    BACKLINKCOUNT: 'Korišteno na:'
-    PAGES: stranica(e)
     TITLE_INDEX: '#'
     TITLE_TYPE: Tip
     TITLE_USED_ON: 'Korišteno na'

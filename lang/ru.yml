@@ -267,8 +267,6 @@ ru:
     many_many_ImageTracking: 'Отслеживание изображений'
     many_many_LinkTracking: 'Отслеживание ссылок'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    BACKLINKCOUNT: 'Используется на:'
-    PAGES: страниц(ы)
     TITLE_INDEX: №
     TITLE_TYPE: Тип
     TITLE_USED_ON: 'Используется на'

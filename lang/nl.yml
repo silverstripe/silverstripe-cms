@@ -239,8 +239,6 @@ nl:
     many_many_BackLinkTracking: 'Backlinks traceren'
     many_many_ImageTracking: 'Afbeeldingen traceren'
     many_many_LinkTracking: 'Links traceren'
-  SilverStripe\CMS\Model\SiteTreeFileExtension:
-    PAGES: 'pagina(''s)'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Gekoppelde pagina'
     DESCRIPTION: 'Toont de inhoud van een andere pagina'

@@ -265,8 +265,6 @@ fi:
     many_many_ImageTracking: 'Kuvan seuranta'
     many_many_LinkTracking: 'Linkin seuranta'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    BACKLINKCOUNT: 'Käytössä:'
-    PAGES: sivu(t)
     TITLE_INDEX: '#'
     TITLE_TYPE: Tyyppi
     TITLE_USED_ON: 'Käytössä:'

@@ -265,8 +265,6 @@ it:
     many_many_ImageTracking: 'Monitoraggio immagine'
     many_many_LinkTracking: 'Monitoraggio link'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    BACKLINKCOUNT: 'Usato in:'
-    PAGES: pagina(e)
     TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Usato in'
