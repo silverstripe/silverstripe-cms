@@ -2287,7 +2287,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 FormAction::create('restore', $title)
                     ->setDescription($description)
                     ->setAttribute('data-to-root', $restoreToRoot)
-                    ->setAttribute('data-icon', 'decline')
+                    ->addExtraClass('btn-warning font-icon-back-in-time')
+                    ->setUseButtonTag(true)
             );
         }
 
