@@ -265,8 +265,6 @@ eo:
     many_many_ImageTracking: 'Spuri Bildojn'
     many_many_LinkTracking: 'Spuri Ligilojn'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    BACKLINKCOUNT: 'Uzita je:'
-    PAGES: paĝo(j)
     TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Uzita je'

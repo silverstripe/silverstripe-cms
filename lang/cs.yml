@@ -246,8 +246,6 @@ cs:
     many_many_ImageTracking: 'Stopování obrázku'
     many_many_LinkTracking: 'Stopování odkazu'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    BACKLINKCOUNT: 'Použito na:'
-    PAGES: stránka(y)
     TITLE_INDEX: '#'
     TITLE_TYPE: Typ
     TITLE_USED_ON: 'Použito na'

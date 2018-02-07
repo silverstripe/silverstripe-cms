@@ -1,8 +1,16 @@
 pl:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISH_PAGES: Opublikuj
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Przywróć
+    RESTORED_PAGES: 'Przywrócono %d stron/y/ę'
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Dostęp do sekcji ''{title}'''
     ACCESS_HELP: 'Zezwala na oglądanie sekcji zawierających drzewo stron oraz treść. Prawo Przeglądaj i edytuj może być obsługiwane przez pola wyboru dostępne na stronach oraz poprzez zakładkę uprawnień.'
+    APPLY_FILTER: Szukaj
     ARCHIVE: Archiwizuj
+    ARCHIVEDPAGE: 'Zarchiwizowano stronę ''{title}'''
+    AddNew: 'Dodaj nową stronę'
     AddPageRestriction: 'Uwaga: Niektóre typy stron nie są dozwolone dla tego wyboru'
     Cancel: Anuluj
     ChoosePageParentMode: 'Wybierz gdzie chcesz utworzyć tę stronę'
@@ -10,6 +18,7 @@ pl:
     Create: Utwórz
     DUPLICATED: 'Duplikowanie ''{title}'' zakończone powodzeniem'
     DUPLICATEDWITHCHILDREN: 'Duplikowanie ''{title}'' oraz podstron zakończone powodzeniem'
+    EMAIL: Email
     NEWPAGE: 'Nowa {pagetype}'
     PAGENOTEXISTS: 'Ta strona nie istnieje'
     PAGETYPEANYOPT: Jakikolwiek
@@ -19,34 +28,60 @@ pl:
     PageAdded: 'Pomyślnie utworzono stronę'
     REMOVEDPAGE: 'Usunięto ''{title}'' z opublikowanej witryny'
     REMOVEDPAGEFROMDRAFT: '''{title}'' usunięto ze szkiców'
+    RESTORE: 'Przywróć szkic'
     RESTORED: 'Pomyślnie przywrócono ''{title}'''
     RESTORE_DESC: 'Przywróć jako szkic'
     ROLLEDBACKPUBv2: 'Przywrócono opublikowaną wersję'
     ROLLEDBACKVERSIONv2: 'Przywrócono wersję #{version}.'
     SAVEDRAFT: 'Zapisz szkic'
+    SHOW_AS_LIST: 'pokaż jako listę'
+    TabContent: Zawartość
+    TabHistory: Historia
+    TabSettings: Ustawienia
+    TreeFilteredClear: Wyczyść
   SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Dodaj stronę'
     ParentMode_child: 'Pod inną stroną'
     ParentMode_top: 'Główny poziom'
+    Title: 'Dodaj stronę'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Edytuj Stronę'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    AUTHOR: Autor
     COMPAREMODE: 'Tryb porównywania (wybierz dwie)'
+    MENUTITLE: Historia
+    NOTPUBLISHED: Nieopublikowano
+    PREVIEW: 'Podgląd strony'
     REVERTTOTHISVERSION: 'Wróć do tej wersji'
     SHOWUNPUBLISHED: 'Pokaż nieopublikowane wersje'
+    UNKNOWN: Nieznany
     VIEW: zobacz
     VIEWINGLATEST: 'Obecnie oglądasz najnowszą wersję'
     VIEWINGVERSION: 'Obecnie oglądasz wersję {version}.'
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Edytuj Stronę'
   SilverStripe\CMS\Controllers\CMSPagesController:
+    ListView: 'Widok listy'
     MENUTITLE: Strony
+    TreeView: 'Widok drzewa'
   SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
     Title: 'Opublikowane strony'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
+    Title: 'Zmodyfikowane strony'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Wszystkie strony'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Zarchiwizowane strony'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Podgląd wersji'
     ARCHIVEDSITEFROM: 'Zarchiwizowana witryna od'
     CMS: 'System Zarządzania Treścią'
     DRAFT: Szkic
     DRAFTSITE: 'Szkic witryny'
+    Email: Email
     INSTALL_SUCCESS: 'Instalacja przebiegła pomyślnie'
+    InstallFilesDeleted: 'Pliki instalacyjne zostały pomyślnie usunięte'
+    InstallSuccessCongratulations: 'SilverStripe został zainstalowany!'
     LOGGEDINAS: 'Zalogowany jako'
     LOGIN: Zaloguj
     LOGOUT: Wyloguj
@@ -54,6 +89,7 @@ pl:
     NOTLOGGEDIN: 'Nie zalogowany'
     PUBLISHED: Opublikowano
     PUBLISHEDSITE: 'Opublikowana witryna'
+    Password: Hasło
     VIEWPAGEIN: 'Zobacz stronę w:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Zarchiwizowane

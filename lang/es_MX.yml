@@ -118,36 +118,81 @@ es_MX:
     DRAFT: Borrador
     DRAFTSITE: 'Proyecto del Sitio'
     Email: Email
+    INSTALL_SUCCESS: 'Instalación exitosa!'
+    InstallFilesDeleted: 'Los archivos de instalación han sido eliminados con éxito.'
+    InstallSecurityWarning: 'Por razones de seguridad debes eliminar los archivos de instalación, a menos que tengas planeado reinstalar luego (<em>requiere ingresar como administrador</em>). Además, el servidor web ahora solo requiere permisos de escritura sobre el directorio "assets", puedes remover el acceso de escritura a los demás directorios. <a href="{link}" style="text-align: center;">Haz click aquí para eliminar los archivos de instalación.</a>'
+    InstallSuccessCongratulations: 'SilverStripe se ha instalado con éxito!'
     LOGGEDINAS: 'Conectado cómo'
     LOGIN: 'Iniciar sesión'
     LOGOUT: 'Cerrar sesión'
     NOTEWONTBESHOWN: 'Nota: este mensaje no será mostrado a sus visitantes'
     NOTLOGGEDIN: 'No ha iniciado sesión'
+    PUBLISHED: Publicado
     PUBLISHEDSITE: 'Sitio Publicado'
+    Password: Contraseña
+    PostInstallTutorialIntro: 'Este sitio web es una versión simplificada de un sitio de SilverStripe 3. Para extenderlo, por favor ver en {link}.'
+    StartEditing: 'Puedes comenzar a editar el contenido abriendo <a href="{link}">el CMS</a>.'
+    UnableDeleteInstall: 'No se han podido eliminar los archivos de instalación. Por favor elimina manualmente los archivos mostrados debajo'
     VIEWPAGEIN: 'Ver página en:'
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: Archivado
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Ancla
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Descripción del enlace'
+    LINKOPENNEWWIN: 'Abrir en nueva ventana/pestaña'
+    LINKTEXT: 'Texto del enlace'
+    SELECT_PAGE: 'Selecciona una página'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Cancel: Cancelar
+    Edit: Editar
+    HelpChars: 'Carácteres especiales son automáticamente convertidos o eliminados.'
+    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
+    DESCRIPTION: 'Redirecciona a una página interna o a una URL externa'
     HEADER: 'Esta página dirigirá al usuarios a otra página'
     OTHERURL: 'Otro URL del sitio web'
+    PLURALNAME: 'Páginas de redirección'
+    PLURALS:
+      one: 'Una Página de Redirección'
+      other: '{count} Páginas de Redirección'
     REDIRECTTO: 'Redirigir a'
     REDIRECTTOEXTERNAL: 'Otro sitio web'
     REDIRECTTOPAGE: 'Una página en tu sitio web'
+    SINGULARNAME: 'Página de Redirección'
     YOURPAGE: 'Página en tu sitio web'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'La página de redirección ha sido configurada sin ningún destino.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Cualquiera
     ACCESSHEADER: '¿Quién puede ver ésta página?'
     ACCESSLOGGEDIN: 'Usuarios registrados'
     ACCESSONLYTHESE: 'Únicamente estas personas (seleccione de la lista)'
+    ADDEDTODRAFTHELP: 'Esta página aún no ha sido publicada'
+    ADDEDTODRAFTSHORT: Borrador
+    APPEARSVIRTUALPAGES: 'Este contenido aparece adicionalmente en las páginas virtuales en las secciones {title}.'
+    ARCHIVEDPAGEHELP: 'La página se ha eliminado de borrador y del sitio público'
+    ARCHIVEDPAGESHORT: Archivado
     BUTTONCANCELDRAFT: 'Cancelar cambios al boceto'
     BUTTONCANCELDRAFTDESC: 'Eliminar el boceto y regresar a la página publicada actualmente'
+    BUTTONDELETEDESC: 'Eliminar de borrador/público y archivar'
+    BUTTONPUBLISHED: Publicado
+    BUTTONSAVED: Guardado
+    BUTTONSAVEPUBLISH: 'Guardar y publicar'
     BUTTONUNPUBLISH: 'Ocultar al público'
     BUTTONUNPUBLISHDESC: 'Quitar ésta página del sitio público'
     Comments: Comentarios
     Content: Contenido
+    DEFAULTABOUTCONTENT: '<p>Puedes agregar tu contenido a esta página, o eliminarla y agregar tus propias páginas.</p>'
     DEFAULTABOUTTITLE: 'Sobre nosotros'
+    DEFAULTCONTACTCONTENT: '<p>Puedes agregar tu contenido a esta página, o eliminarla y agregar tus propias páginas.</p>'
     DEFAULTCONTACTTITLE: Contacto
+    DEFAULTHOMECONTENT: '<p>Bienvenido a SilverStripe! Esta es la página principal predeterminada. Puedes editar esta página ingresando <a href="admin/">al CMS</a>.</p><p>También puedes acceder a <a href="http://docs.silverstripe.org">la documentación para desarrolladores</a>, o comenzar con <a href="http://www.silverstripe.org/learn/lessons">las lecciones de SilverStripe</a>.</p>'
     DEFAULTHOMETITLE: Inicio
     DEPENDENT_NOTE: 'Las siguientes páginas depender de esta página. Esto incluye páginas virtuales, redirección de páginas y páginas con enlaces de contenido.'
+    DESCRIPTION: 'Página de contenido genérico'
     DependtPageColumnLinkType: 'Tipo de enlace'
+    DependtPageColumnURL: URL
     EDITHEADER: '¿Quién puede modificar esta página?'
     EDITORGROUPS: 'Editor de grupos'
     EDIT_ALL_DESCRIPTION: 'Editar cualquier página'
@@ -166,6 +211,10 @@ es_MX:
     PARENTTYPE: 'Ubicación de página'
     PARENTTYPE_ROOT: 'Página de nivel superior'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Controlar los derechos de acceso al contenido'
+    PLURALNAME: Páginas
+    PLURALS:
+      one: 'Una página'
+      other: '{count} Páginas'
     REORGANISE_DESCRIPTION: 'Cambiar la estructura del sitio'
     REORGANISE_HELP: 'Reorganizar páginas en el árbol del sitio arrastrando y soltando.'
     SHOWINMENUS: '¿Mostrar en menús?'
@@ -179,12 +228,29 @@ es_MX:
     VIEW_ALL_DESCRIPTION: 'Ver cualquier página'
     VIEW_DRAFT_CONTENT: 'Ver el contenido del boceto'
     Viewers: 'Grupos de Espectadores'
+    Visibility: Visibilidad
     has_one_Parent: 'Página ascendiente'
     many_many_BackLinkTracking: 'Seguimiento en retrospectiva'
     many_many_ImageTracking: 'Seguir la Imagen'
     many_many_LinkTracking: 'Seguir el Enlace'
+  SilverStripe\CMS\Model\SiteTreeFileExtension:
+    TITLE_INDEX: '#'
+    TITLE_TYPE: Tipo
+    TITLE_USED_ON: 'Usado en'
   SilverStripe\CMS\Model\VirtualPage:
+    CHOOSE: 'Página vinculada'
+    DESCRIPTION: 'Muestra el contenido de otra página'
+    EditLink: editar
     HEADER: 'Esta es una página virtual'
+    PLURALNAME: 'Páginas Virtuales'
+    PLURALS:
+      one: 'Una Página Virtual'
+      other: '{count} Páginas Virtuales'
+    SINGULARNAME: 'Página Virtual'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 'Páginas con archivos rotos'
+    BrokenLinksGroupTitle: 'Reporte de enlaces rotos'
+    ParameterLiveCheckbox: 'Revisar sitio público'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Cualquiera
     BROKENLINKS: 'Informe de enlaces rotos'
@@ -194,6 +260,7 @@ es_MX:
     ColumnDateLastModified: 'Fecha de última modificación'
     ColumnDateLastPublished: 'Fecha de última publicación'
     ColumnProblemType: 'Tipo de problema'
+    ColumnURL: URL
     HasBrokenFile: 'tiene un archivo defectuoso'
     HasBrokenLink: 'tiene un enlace roto'
     HasBrokenLinkAndFile: 'tiene un enlace roto y un archivo defectuoso'
@@ -206,7 +273,35 @@ es_MX:
     ReasonDropdownVPBROKENLINK: 'La página virtual apunta a una página inexistente'
     RedirectorNonExistent: 'la redirección apunta a una página inexistente'
     VirtualPageNonExistent: 'la página virtual apunta a una página inexistente'
+  SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
+    BROKENREDIRECTORPAGES: 'Páginas de redirección apuntando a páginas eliminadas'
+    BrokenLinksGroupTitle: 'Reporte de enlaces rotos'
+    ParameterLiveCheckbox: 'Revisar sitio público'
+  SilverStripe\CMS\Reports\BrokenVirtualPagesReport:
+    BROKENVIRTUALPAGES: 'Páginas virtuales apuntando a páginas eliminadas'
+    BrokenLinksGroupTitle: 'Reporte de enlaces rotos'
+    ParameterLiveCheckbox: 'Revisar sitio público'
+  SilverStripe\CMS\Reports\EmptyPagesReport:
+    ContentGroupTitle: 'Reportes de contenido'
+    EMPTYPAGES: 'Páginas sin contenido'
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    ContentGroupTitle: 'Reportes de contenido'
+    LAST2WEEKS: 'Páginas editadas en las últimas 2 semanas'
   SilverStripe\CMS\Search\SearchForm:
+    FILTERDATEFROM: Desde
+    FILTERDATETO: Hasta
+    FILTERLABELTEXT: Buscar
     GO: Ir
+    PAGEFILTERDATEHEADING: 'Última edición'
     SEARCH: Buscar
     SearchResults: 'Resultados de la búsqueda'
+  SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask:
+    BUTTONRUN: Ejecutar
+    CHOOSEOPERATION: 'Escoger operación:'
+    DELETEWARNING: 'Advertencia: estas operaciones no son reversibles. Por favor procede con cuidado.'
+    HEADER: 'Tarea eliminar todas las páginas huérfanas'
+    NONEFOUND: 'No se han encontrado huérfanos'
+    NONEREMOVED: 'No se ha eliminado ninguno'
+    OPERATION_REMOVE: 'Eliminar selección de todos los entornos (ADVERTENCIA: esto destruirá todas las páginas seleccionadas del entorno de pruebas y de producción)'
+    SELECTALL: 'seleccionar todo'
+    UNSELECTALL: 'deseleccionar todo'

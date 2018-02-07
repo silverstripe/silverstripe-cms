@@ -246,8 +246,6 @@ sk:
     many_many_ImageTracking: 'Záznamy o obrázkoch'
     many_many_LinkTracking: 'Záznamy o odkazoch'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    BACKLINKCOUNT: 'Použité na:'
-    PAGES: stránka(y)
     TITLE_INDEX: '#'
     TITLE_TYPE: Typ
     TITLE_USED_ON: 'Použité na'
