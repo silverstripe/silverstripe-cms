@@ -236,13 +236,16 @@ $.entwine('ss', function($){
 		 */
 		onclick: function(e) {
 			var form = this.parents('form:first'), version = form.find(':input[name=Version]').val(), message = '';
+			if (this.props('disabled')) {
+			  return false;
+      }
 			if(version) {
 				message = i18n.sprintf(
-					i18n._t('CMS.RollbackToVersion'),
+					i18n._t('CMS.RollbackToVersion', 'Do you really want to roll back to version #%s of this page?'),
 					version
 				);
 			} else {
-				message = i18n._t('CMS.ConfirmRestoreFromLive');
+				message = i18n._t('CMS.ConfirmRestoreFromLive', 'Are you sure you want to revert draft to when the page was last published?');
 			}
 			if(confirm(message)) {
 				return this._super(e);
