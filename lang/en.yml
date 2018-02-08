@@ -58,7 +58,7 @@ en:
     ROLLEDBACKPUBv2: 'Rolled back to published version.'
     ROLLEDBACKVERSIONv2: 'Rolled back to version #{version}.'
     SAVED: 'Saved ''{title}'' successfully.'
-    SAVEDRAFT: 'Save draft'
+    SAVEDRAFT: 'Save'
     SHOW_AS_LIST: 'show as list'
     TOO_MANY_PAGES: 'Too many pages'
     TabContent: Content
@@ -180,7 +180,7 @@ en:
     BUTTONDELETEDESC: 'Remove from draft/live and send to archive'
     BUTTONPUBLISHED: Published
     BUTTONSAVED: Saved
-    BUTTONSAVEPUBLISH: 'Save & publish'
+    BUTTONSAVEPUBLISH: 'Publish'
     BUTTONUNPUBLISH: Unpublish
     BUTTONUNPUBLISHDESC: 'Remove this page from the published site'
     Comments: Comments

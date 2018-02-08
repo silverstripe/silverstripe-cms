@@ -2263,7 +2263,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                     ->setAttribute('data-btn-alternate-add', 'btn-primary font-icon-save')
                     ->setAttribute('data-btn-alternate-remove', $noChangesClasses)
                     ->setUseButtonTag(true)
-                    ->setAttribute('data-text-alternate', _t('SilverStripe\\CMS\\Controllers\\CMSMain.SAVEDRAFT', 'Save draft'))
+                    ->setAttribute('data-text-alternate', _t('SilverStripe\\CMS\\Controllers\\CMSMain.SAVEDRAFT', 'Save'))
             );
         }
 
@@ -2275,13 +2275,13 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                     ->setAttribute('data-btn-alternate-add', 'btn-primary font-icon-rocket')
                     ->setAttribute('data-btn-alternate-remove', $noChangesClasses)
                     ->setUseButtonTag(true)
-                    ->setAttribute('data-text-alternate', _t(__CLASS__.'.BUTTONSAVEPUBLISH', 'Save & publish'))
+                    ->setAttribute('data-text-alternate', _t(__CLASS__.'.BUTTONSAVEPUBLISH', 'Publish'))
             );
 
             // Set up the initial state of the button to reflect the state of the underlying SiteTree object.
             if ($stagesDiffer) {
                 $publish->addExtraClass('btn-primary font-icon-rocket');
-                $publish->setTitle(_t(__CLASS__.'.BUTTONSAVEPUBLISH', 'Save & publish'));
+                $publish->setTitle(_t(__CLASS__.'.BUTTONSAVEPUBLISH', 'Publish'));
                 $publish->removeExtraClass($noChangesClasses);
             }
         }

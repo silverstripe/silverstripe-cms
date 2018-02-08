@@ -80,7 +80,7 @@ Feature: Search for a page
     Then I should see an edit page form
 
     When I fill in the "Content" HTML field with "<p>my new content</p>"
-    And I press the "Save draft" button
+    And I press the "Save" button
     Then I should see "Saved" in the "button#Form_EditForm_action_save" element
 
     When I go to "/admin/pages"
