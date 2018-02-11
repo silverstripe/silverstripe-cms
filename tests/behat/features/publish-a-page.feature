@@ -18,7 +18,7 @@ Feature: Publish a page
     And I go to "/admin/pages"
     And I should see "My Page" in the tree
     And I click on "My Page" in the tree
-    And I press the "Save & publish" button
+    And I press the "Publish" button
 
     Then I am not logged in
     And I go to "/my-page"
@@ -36,16 +36,16 @@ Feature: Publish a page
     Then I should see "Not published" in the "#ActionMenus_MoreOptions" element
     And I should not see an "Unpublish" button
     And I should see an "Archive" button
-    And I should see a "Save & publish" button
+    And I should see a "Publish" button
     And I should see a "Saved" button
 
     When I fill in the "Content" HTML field with "<p>my new content</p>"
     And I click "More options" in the "#ActionMenus" element
     Then I should not see an "Unpublish" button
-    And I should see a "Save & publish" button
-    And I should see a "Save draft" button
+    And I should see a "Publish" button
+    And I should see a "Save" button
 
-    When I press the "Save & publish" button
+    When I press the "Publish" button
     And I click "More options" in the "#ActionMenus" element
     Then I should see an "Unpublish" button
     And I should see an "Unpublish and archive" button
@@ -76,7 +76,7 @@ Feature: Publish a page
     And I go to "/admin/pages"
     And I should see "My Page" in the tree
     And I click on "My Page" in the tree
-    And I press the "Save & publish" button
+    And I press the "Publish" button
     And I click "More options" in the "#ActionMenus" element
     Then I should see an "Unpublish" button
 
@@ -87,9 +87,9 @@ Feature: Publish a page
     When I press the "Archive" button, confirming the dialog
     Then I should see a "Restore" button
     And I should not see a "Published" button
-    And I should not see a "Save & publish" button
+    And I should not see a "Publish" button
     And I should not see a "Saved" button
-    And I should not see a "Save draft" button
+    And I should not see a "Save" button
 
     When I press the "Restore" button, confirming the dialog
-    Then I should see a "Save & publish" button
+    Then I should see a "Publish" button

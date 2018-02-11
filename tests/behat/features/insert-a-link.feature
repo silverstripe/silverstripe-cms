@@ -24,7 +24,7 @@ So that I can link to a external website or a page on my site
       And I press the "Insert" button
     Then the "Content" HTML field should contain "<a title="my desc" href="[sitetree_link,id=2]">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
-    Then I press the "Save draft" button
+    Then I press the "Save" button
 
   Scenario: I can link to an anchor in an internal page
     When I select "awesome" in the "Content" HTML field
@@ -41,7 +41,7 @@ So that I can link to a external website or a page on my site
       And I press the "Insert" button
     Then the "Content" HTML field should contain "<a title="my desc" href="[sitetree_link,id=3]#youranchor">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
-    Then I press the "Save draft" button
+    Then I press the "Save" button
 
   Scenario: I can edit a link to an internal page
     Given I fill in the "Content" HTML field with "<a title='my desc' href='[sitetree_link,id=2]'>awesome</a>"
@@ -58,7 +58,7 @@ So that I can link to a external website or a page on my site
       And I press the "Insert" button
     Then the "Content" HTML field should contain "<a title="my new desc" href="[sitetree_link,id=1]">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
-    Then I press the "Save draft" button
+    Then I press the "Save" button
 
   Scenario: I can link to an external URL
     Given I select "awesome" in the "Content" HTML field
@@ -70,7 +70,7 @@ So that I can link to a external website or a page on my site
       And I press the "Insert" button
     Then the "Content" HTML field should contain "<a rel="noopener" href="http://silverstripe.org" target="_blank">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
-    Then I press the "Save draft" button
+    Then I press the "Save" button
 
   Scenario: I can edit a link
     Given I fill in the "Content" HTML field with "<p>My <a href='http://silverstripe.org'>awesome</a> content"
@@ -84,7 +84,7 @@ So that I can link to a external website or a page on my site
     And I press the "Insert" button
     Then the "Content" HTML field should contain "<a href="http://google.com">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
-    Then I press the "Save draft" button
+    Then I press the "Save" button
 
   Scenario: I can remove a link
     Given I fill in the "Content" HTML field with "My <a href='http://silverstripe.org'>awesome</a> content"
@@ -93,4 +93,4 @@ So that I can link to a external website or a page on my site
     Then the "Content" HTML field should contain "My awesome content"
       And the "Content" HTML field should not contain "http://silverstripe.org"
     # Required to avoid "unsaved changes" browser dialog
-    Then I press the "Save draft" button
+    Then I press the "Save" button
