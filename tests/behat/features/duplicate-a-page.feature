@@ -19,6 +19,6 @@ Feature: Duplicate a page
 		Then I should see a "Duplicated 'Page1' and children successfully" notice
 
 		When I fill in "MenuTitle" with "Duplicate Page"
-		And I press the "Save & publish" button
+		And I press the "Publish" button
 		Then I should see "Page1" in the tree
 		And I should see "Duplicate Page" in the tree

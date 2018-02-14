@@ -196,30 +196,6 @@ $.entwine('ss', function($){
 		}
 	});
 
-	/**
-	 * Class: .cms-edit-form .btn-toolbar #Form_EditForm_action_print
-	 *
-	 * Open a printable representation of the form in a new window.
-	 * Used for readonly older versions of a specific page.
-	 */
-	$('.cms-edit-form .btn-toolbar #Form_EditForm_action_print').entwine({
-		/**
-		 * Function: onclick
-		 *
-		 * Parameters:
-		 *  (Event) e
-		 */
-		onclick: function(e) {
-			var printURL = $(this[0].form).attr('action').replace(/\?.*$/,'')
-				+ '/printable/'
-				+ $(':input[name=ID]',this[0].form).val();
-			if(printURL.substr(0,7) != 'http://') printURL = $('base').attr('href') + printURL;
-
-			window.open(printURL, 'printable');
-
-			return false;
-		}
-	});
 
 	/**
 	 * Class: .cms-edit-form .btn-toolbar #Form_EditForm_action_rollback

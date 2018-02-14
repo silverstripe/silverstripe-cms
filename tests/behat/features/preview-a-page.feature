@@ -31,7 +31,7 @@ Feature: Preview a page
     And I fill in the "Content" HTML field with "<p>first content</p>"
     And I press the "Publish" button
     And I fill in the "Content" HTML field with "<p>my new content</p>"
-    And I press the "Save draft" button
+    And I press the "Save" button
     And I set the CMS mode to "Preview mode"
 
     When I switch the preview to "Published"
