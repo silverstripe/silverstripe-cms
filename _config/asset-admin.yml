@@ -1,8 +1,0 @@
----
-Name: cms-asset-admin
-OnlyIf:
-  ModuleExists: silverstripe/asset-admin
----
-SilverStripe\AssetAdmin\Forms\FileFormFactory:
-  extensions:
-    - SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension

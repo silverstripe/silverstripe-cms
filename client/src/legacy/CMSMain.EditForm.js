@@ -196,30 +196,6 @@ $.entwine('ss', function($){
 		}
 	});
 
-	/**
-	 * Class: .cms-edit-form .btn-toolbar #Form_EditForm_action_print
-	 *
-	 * Open a printable representation of the form in a new window.
-	 * Used for readonly older versions of a specific page.
-	 */
-	$('.cms-edit-form .btn-toolbar #Form_EditForm_action_print').entwine({
-		/**
-		 * Function: onclick
-		 *
-		 * Parameters:
-		 *  (Event) e
-		 */
-		onclick: function(e) {
-			var printURL = $(this[0].form).attr('action').replace(/\?.*$/,'')
-				+ '/printable/'
-				+ $(':input[name=ID]',this[0].form).val();
-			if(printURL.substr(0,7) != 'http://') printURL = $('base').attr('href') + printURL;
-
-			window.open(printURL, 'printable');
-
-			return false;
-		}
-	});
 
 	/**
 	 * Class: .cms-edit-form .btn-toolbar #Form_EditForm_action_rollback
@@ -236,13 +212,16 @@ $.entwine('ss', function($){
 		 */
 		onclick: function(e) {
 			var form = this.parents('form:first'), version = form.find(':input[name=Version]').val(), message = '';
+			if (this.props('disabled')) {
+			  return false;
+      }
 			if(version) {
 				message = i18n.sprintf(
-					i18n._t('CMS.RollbackToVersion'),
+					i18n._t('CMS.RollbackToVersion', 'Do you really want to roll back to version #%s of this page?'),
 					version
 				);
 			} else {
-				message = i18n._t('CMS.ConfirmRestoreFromLive');
+				message = i18n._t('CMS.ConfirmRestoreFromLive', 'Are you sure you want to revert draft to when the page was last published?');
 			}
 			if(confirm(message)) {
 				return this._super(e);

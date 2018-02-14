@@ -8,7 +8,7 @@ use SilverStripe\Assets\Filesystem;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Dev\CSSContentParser;
 use SilverStripe\Dev\FunctionalTest;
-use SilverStripe\Assets\Tests\Storage\AssetStoreTest\TestAssetStore;
+use Silverstripe\Assets\Dev\TestAssetStore;
 
 class SiteTreeHTMLEditorFieldTest extends FunctionalTest
 {

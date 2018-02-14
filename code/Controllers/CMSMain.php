@@ -1668,7 +1668,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $form->saveInto($record);
         $record->write();
 
-        // If the 'Save & Publish' button was clicked, also publish the page
+        // If the 'Publish' button was clicked, also publish the page
         if ($doPublish) {
             $record->publishRecursive();
             $message = _t(

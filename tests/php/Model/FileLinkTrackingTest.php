@@ -10,7 +10,7 @@ use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\Assets\File;
 use SilverStripe\Assets\Filesystem;
 use SilverStripe\Dev\SapphireTest;
-use SilverStripe\Assets\Tests\Storage\AssetStoreTest\TestAssetStore;
+use Silverstripe\Assets\Dev\TestAssetStore;
 use Page;
 
 class FileLinkTrackingTest extends SapphireTest

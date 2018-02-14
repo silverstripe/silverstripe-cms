@@ -23,7 +23,7 @@ Feature: Manage page permissions
 
   Scenario: I can limit page view permissions to logged-in users
     Given I select "Logged-in users" from "Who can view this page?" input group
-    And I press the "Save & publish" button
+    And I press the "Publish" button
     When I am not logged in
     And I go to the homepage
     Then I should see a log-in form
@@ -34,7 +34,7 @@ Feature: Manage page permissions
   Scenario: I can limit page view permissions to certain groups
     Given I select "Only these groups (choose from list)" from "Who can view this page?" input group
     And I select "AUTHOR group" in the "#Form_EditForm_ViewerGroups_Holder" tree dropdown
-    And I press the "Save & publish" button
+    And I press the "Publish" button
     When I am not logged in
     And I go to the homepage
     Then I should see a log-in form
@@ -48,14 +48,14 @@ Feature: Manage page permissions
 
   Scenario: I can limit page edit permissions to logged-in users
     Given I select "Logged-in users" from "Who can edit this page?" input group
-    And I press the "Save & publish" button
+    And I press the "Publish" button
     Then pages should be editable by "AUTHOR"
     And pages should be editable by "ADMIN"
 
   Scenario: I can limit page edit permissions to certain groups
     Given I select "Only these groups (choose from list)" from "Who can edit this page?" input group
     And I select "ADMIN group" in the "#Form_EditForm_EditorGroups_Holder" tree dropdown
-    And I press the "Save & publish" button
+    And I press the "Publish" button
     Then pages should not be editable by "AUTHOR"
     But pages should be editable by "ADMIN"
 
