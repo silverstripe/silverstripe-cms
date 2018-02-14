@@ -4,7 +4,7 @@ namespace SilverStripe\CMS\Tests\Model;
 
 use SilverStripe\Assets\File;
 use SilverStripe\Assets\Image;
-use SilverStripe\Assets\Tests\Storage\AssetStoreTest\TestAssetStore;
+use Silverstripe\Assets\Dev\TestAssetStore;
 use SilverStripe\CMS\Tests\Model\SiteTreeFolderExtensionTest\PageWithFile;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Versioned\Versioned;
