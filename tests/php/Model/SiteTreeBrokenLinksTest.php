@@ -10,7 +10,7 @@ use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\Assets\File;
 use SilverStripe\Dev\SapphireTest;
-use SilverStripe\Assets\Tests\Storage\AssetStoreTest\TestAssetStore;
+use Silverstripe\Assets\Dev\TestAssetStore;
 use Page;
 
 /**
