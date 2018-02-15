@@ -57,18 +57,19 @@ class CMSPageHistoryController extends CMSMain
     public function getResponseNegotiator()
     {
         $negotiator = parent::getResponseNegotiator();
-        $controller = $this;
-        $negotiator->setCallback('CurrentForm', function () use (&$controller) {
-            $form = $controller->getEditForm();
+
+        $negotiator->setCallback('CurrentForm', function () {
+            $form = $this->getEditForm();
             if ($form) {
                 return $form->forTemplate();
-            } else {
-                return $controller->renderWith($controller->getTemplatesWithSuffix('_Content'));
             }
+            return $this->renderWith($this->getTemplatesWithSuffix('_Content'));
         });
-        $negotiator->setCallback('default', function () use (&$controller) {
-            return $controller->renderWith($controller->getViewer('show'));
+
+        $negotiator->setCallback('default', function () {
+            return $this->renderWith($this->getViewer('show'));
         });
+
         return $negotiator;
     }
 
@@ -88,16 +89,15 @@ class CMSPageHistoryController extends CMSMain
         $form = $this->getEditForm();
 
         $negotiator = $this->getResponseNegotiator();
-        $controller = $this;
-        $negotiator->setCallback('CurrentForm', function () use (&$controller, &$form) {
+        $negotiator->setCallback('CurrentForm', function () use ($form) {
             return $form
                 ? $form->forTemplate()
-                : $controller->renderWith($controller->getTemplatesWithSuffix('_Content'));
+                : $this->renderWith($this->getTemplatesWithSuffix('_Content'));
         });
-        $negotiator->setCallback('default', function () use (&$controller, &$form) {
-            return $controller
+        $negotiator->setCallback('default', function () use ($form) {
+            return $this
                 ->customise(array('EditForm' => $form))
-                ->renderWith($controller->getViewer('show'));
+                ->renderWith($this->getViewer('show'));
         });
 
         return $negotiator->respond($request);
@@ -115,12 +115,11 @@ class CMSPageHistoryController extends CMSMain
         );
 
         $negotiator = $this->getResponseNegotiator();
-        $controller = $this;
-        $negotiator->setCallback('CurrentForm', function () use (&$controller, &$form) {
-            return $form ? $form->forTemplate() : $controller->renderWith($controller->getTemplatesWithSuffix('_Content'));
+        $negotiator->setCallback('CurrentForm', function () use ($form) {
+            return $form ? $form->forTemplate() : $this->renderWith($this->getTemplatesWithSuffix('_Content'));
         });
-        $negotiator->setCallback('default', function () use (&$controller, &$form) {
-            return $controller->customise(array('EditForm' => $form))->renderWith($controller->getViewer('show'));
+        $negotiator->setCallback('default', function () use ($form) {
+            return $this->customise(array('EditForm' => $form))->renderWith($this->getViewer('show'));
         });
 
         return $negotiator->respond($request);
