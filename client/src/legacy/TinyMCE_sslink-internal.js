@@ -55,7 +55,7 @@ jQuery.entwine('ss', ($) => {
    * Assumes that $('.insert-link__dialog-wrapper').entwine({}); is defined for shared functions
    */
   $(`#${modalId}`).entwine({
-    renderModal(show) {
+    renderModal(isOpen) {
       const store = ss.store;
       const client = ss.apolloClient;
       const handleHide = () => this.close();
@@ -67,7 +67,7 @@ jQuery.entwine('ss', ($) => {
       ReactDOM.render(
         <ApolloProvider store={store} client={client}>
           <InsertLinkInternalModal
-            show={show}
+            isOpen={isOpen}
             onInsert={handleInsert}
             onHide={handleHide}
             title={i18n._t('CMS.LINK_PAGE', 'Link to a page')}
