@@ -40,10 +40,10 @@
     "jquery": "^3.2.1",
     "react": "15.3.1",
     "react-addons-test-utils": "15.3.1",
-    "react-bootstrap-ss": "^0.30.10",
     "react-dom": "15.3.1",
     "react-redux": "^4.4.1",
     "react-select": "^1.0.0-rc.5",
+    "reactstrap": "5.0.0-beta",
     "redux": "^3.3.1",
     "redux-form": "^6.0.2"
   },

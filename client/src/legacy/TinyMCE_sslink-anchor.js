@@ -73,7 +73,7 @@ jQuery.entwine('ss', ($) => {
           <InsertLinkInternalModal
             isOpen={isOpen}
             onInsert={handleInsert}
-            onHide={handleHide}
+            onClosed={handleHide}
             title={i18n._t('CMS.LINK_ANCHOR', 'Link to an anchor on a page')}
             bodyClassName="modal__dialog"
             className="insert-link__dialog-wrapper--anchor"
