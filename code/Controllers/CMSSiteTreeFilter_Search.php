@@ -1,4 +1,5 @@
 <?php
+
 namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\CMS\Model\SiteTree;
@@ -10,7 +11,7 @@ class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter
 
     public static function title()
     {
-        return _t('SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_Search.Title', "All pages");
+        return _t(__CLASS__ . '.Title', "All pages");
     }
 
     /**
