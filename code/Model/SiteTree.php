@@ -1502,7 +1502,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         if ($oneChangedFields && !array_diff($changedFields, $fieldsIgnoredByVersioning)) {
             // This will have the affect of preserving the versioning
-            $this->migrateVersion($this->Version);
+            $this->setMigratingVersion($this->Version);
         }
     }
 
