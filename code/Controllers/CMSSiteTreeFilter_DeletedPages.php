@@ -25,7 +25,7 @@ class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter
 
     public static function title()
     {
-        return _t('SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_DeletedPages.Title', "All pages, including archived");
+        return _t(__CLASS__ . '.Title', "All pages, including archived");
     }
 
     public function getFilteredPages()
