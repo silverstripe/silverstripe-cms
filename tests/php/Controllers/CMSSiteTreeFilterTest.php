@@ -2,6 +2,7 @@
 
 namespace SilverStripe\CMS\Tests\Controllers;
 
+use Page;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search;
@@ -65,14 +66,17 @@ class CMSSiteTreeFilterTest extends SapphireTest
 
     public function testChangedPagesFilter()
     {
+        /** @var Page $unchangedPage */
         $unchangedPage = $this->objFromFixture('Page', 'page1');
         $unchangedPage->publishRecursive();
 
+        /** @var Page $changedPage */
         $changedPage = $this->objFromFixture('Page', 'page2');
         $changedPage->Title = 'Original';
         $changedPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
         $changedPage->Title = 'Changed';
         $changedPage->write();
+        $changedPageVersion = $changedPage->Version;
 
         // Check that only changed pages are returned
         $f = new CMSSiteTreeFilter_ChangedPages(array('Term' => 'Changed'));
@@ -93,8 +97,9 @@ class CMSSiteTreeFilterTest extends SapphireTest
 
         // If we roll back to an earlier version than what's on the published site, we should still show the changed
         $changedPage->Title = 'Changed 2';
+        $changedPage->write();
         $changedPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
-        $changedPage->doRollbackTo(1);
+        $changedPage->doRollbackTo($changedPageVersion);
 
         $f = new CMSSiteTreeFilter_ChangedPages(array('Term' => 'Changed'));
         $results = $f->pagesIncluded();

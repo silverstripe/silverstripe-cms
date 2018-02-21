@@ -3,6 +3,8 @@
 namespace SilverStripe\CMS\Tests\Controllers;
 
 use SilverStripe\CMS\Controllers\SilverStripeNavigator;
+use SilverStripe\CMS\Controllers\SilverStripeNavigatorItem_ArchiveLink;
+use SilverStripe\CMS\Controllers\SilverStripeNavigatorItem_LiveLink;
 use SilverStripe\CMS\Controllers\SilverStripeNavigatorItem_StageLink;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Security\Member;
@@ -10,6 +12,10 @@ use SilverStripe\Security\Member;
 class SilverStripeNavigatorTest extends SapphireTest
 {
     protected static $fixture_file = 'CMSMainTest.yml';
+
+    protected static $extra_dataobjects = [
+        SilverStripeNavigatorTest\UnstagedRecord::class,
+    ];
 
     public function testGetItems()
     {
@@ -29,6 +35,8 @@ class SilverStripeNavigatorTest extends SapphireTest
             $classes,
             'Autodiscovers new classes'
         );
+
+        // Non-versioned items don't have stage / live
     }
 
     public function testCanView()
@@ -47,5 +55,13 @@ class SilverStripeNavigatorTest extends SapphireTest
         $items = $navigator->getItems();
         $classes = array_map('get_class', $items->toArray());
         $this->assertContains(SilverStripeNavigatorTest_ProtectedTestItem::class, $classes);
+
+        // Unversioned record shouldn't be viewable in stage / live specific views
+        $unversioned = new SilverStripeNavigatorTest\UnstagedRecord();
+        $navigator2 = new SilverStripeNavigator($unversioned);
+        $classes = array_map('get_class', $navigator2->getItems()->toArray());
+        $this->assertNotContains(SilverStripeNavigatorItem_LiveLink::class, $classes);
+        $this->assertNotContains(SilverStripeNavigatorItem_StageLink::class, $classes);
+        $this->assertNotContains(SilverStripeNavigatorItem_ArchiveLink::class, $classes);
     }
 }

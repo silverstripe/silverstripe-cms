@@ -992,6 +992,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 'Title' => CMSPagesController::menu_title(),
                 'Link' => ($unlinked) ? false : $this->LinkPages()
             )));
+
+            $this->extend('updateBreadcrumbs', $items);
+
             return $items;
         }
 
@@ -1008,6 +1011,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                     : $ancestor->CMSEditLink()
             )));
         }
+
+        $this->extend('updateBreadcrumbs', $items);
 
         return $items;
     }
