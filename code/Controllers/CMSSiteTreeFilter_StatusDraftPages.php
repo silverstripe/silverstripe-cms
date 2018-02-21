@@ -14,7 +14,7 @@ class CMSSiteTreeFilter_StatusDraftPages extends CMSSiteTreeFilter
 
     public static function title()
     {
-        return _t('SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_StatusDraftPages.Title', 'Draft pages');
+        return _t(__CLASS__ . '.Title', 'Draft pages');
     }
 
     /**

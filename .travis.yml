@@ -2,9 +2,7 @@ language: php
 
 dist: trusty
 
-sudo: required
-
-group: deprecated-2017Q4
+sudo: false
 
 cache:
   directories:

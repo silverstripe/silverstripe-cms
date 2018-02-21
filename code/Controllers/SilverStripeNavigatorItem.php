@@ -121,22 +121,23 @@ abstract class SilverStripeNavigatorItem extends ViewableData
      */
     public function isArchived()
     {
-        $recordClass = get_class($this->record);
-        if (!$recordClass::has_extension(Versioned::class)) {
+        /** @var Versioned|DataObject $record */
+        $record = $this->record;
+        if (!$record->hasExtension(Versioned::class) || !$record->hasStages()) {
             return false;
         }
 
-        if (!isset($this->record->_cached_isArchived)) {
-            $baseClass = $this->record->baseClass();
-            $currentDraft = Versioned::get_by_stage($baseClass, Versioned::DRAFT)->byID($this->record->ID);
-            $currentLive = Versioned::get_by_stage($baseClass, Versioned::LIVE)->byID($this->record->ID);
+        if (!isset($record->_cached_isArchived)) {
+            $baseClass = $record->baseClass();
+            $currentDraft = Versioned::get_by_stage($baseClass, Versioned::DRAFT)->byID($record->ID);
+            $currentLive = Versioned::get_by_stage($baseClass, Versioned::LIVE)->byID($record->ID);
 
-            $this->record->_cached_isArchived = (
-                (!$currentDraft || ($currentDraft && $this->record->Version != $currentDraft->Version))
-                && (!$currentLive || ($currentLive && $this->record->Version != $currentLive->Version))
+            $record->_cached_isArchived = (
+                (!$currentDraft || ($currentDraft && $record->Version != $currentDraft->Version))
+                && (!$currentLive || ($currentLive && $record->Version != $currentLive->Version))
             );
         }
 
-        return $this->record->_cached_isArchived;
+        return $record->_cached_isArchived;
     }
 }

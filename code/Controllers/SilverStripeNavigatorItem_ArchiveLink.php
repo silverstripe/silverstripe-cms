@@ -4,6 +4,7 @@ namespace SilverStripe\CMS\Controllers;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\Control\Controller;
 use SilverStripe\Core\Convert;
+use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\Versioned\Versioned;
@@ -53,12 +54,14 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem
 
     public function canView($member = null)
     {
-        $recordClass = get_class($this->record);
+        /** @var Versioned|DataObject $record */
+        $record = $this->record;
         return (
-            $recordClass::has_extension(Versioned::class)
+            $record->hasExtension(Versioned::class)
+            && $record->hasStages()
             && $this->isArchived()
             // Don't follow redirects in preview, they break the CMS editing form
-            && !($this->record instanceof RedirectorPage)
+            && !($record instanceof RedirectorPage)
         );
     }
 
