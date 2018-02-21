@@ -14,7 +14,7 @@ class CMSSiteTreeFilter_StatusRemovedFromDraftPages extends CMSSiteTreeFilter
 
     public static function title()
     {
-        return _t('SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_StatusRemovedFromDraftPages.Title', 'Live but removed from draft');
+        return _t(__CLASS__ . '.Title', 'Live but removed from draft');
     }
 
     /**
