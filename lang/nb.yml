@@ -112,7 +112,7 @@ nb:
     METADESC: Beskrivelse
     METADESCHELP: 'Søkemotorer bruker dette innholdet for å vise søkeresultater (selv om de ikke påvirker rekkefølgen).'
     METAEXTRA: 'Egendefinerte meta-elementer'
-    METAEXTRAHELP: 'HTML-elementer for ekstra metainformasjon. For eksempel &lt;meta name="egetNavn" content="Ditt egendefinerte innhold her" /&gt;'
+    METAEXTRAHELP: 'HTML-elementer for ekstra metainformasjon. For eksempel <meta name="egetNavn" content="Ditt egendefinerte innhold her" />'
     MODIFIEDONDRAFTHELP: 'Siden har upubliserte forandringer'
     MODIFIEDONDRAFTSHORT: Endret
     MetadataToggle: Metadata

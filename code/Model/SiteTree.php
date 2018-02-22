@@ -1939,7 +1939,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             ->setRightTitle(
                 _t(
                     'SilverStripe\\CMS\\Model\\SiteTree.METAEXTRAHELP',
-                    "HTML tags for additional meta information. For example &lt;meta name=\"customName\" content=\"your custom content here\" /&gt;"
+                    "HTML tags for additional meta information. For example <meta name=\"customName\" content=\"your custom content here\" />"
                 )
             )
             ->addExtraClass('help');
