@@ -214,7 +214,7 @@ fr:
     METADESC: 'Meta Description'
     METADESCHELP: 'Les moteurs de recherche reprennent cette description dans leurs résultats (bien qu’elle n’ait pas d’influence sur le classement).'
     METAEXTRA: 'Balises Méta personnalisées'
-    METAEXTRAHELP: 'Balises HTML pour des métadonnées supplémentaires. Par exemple &lt;meta name="monNom" content="Mon contenu" /&gt;'
+    METAEXTRAHELP: 'Balises HTML pour des métadonnées supplémentaires. Par exemple <meta name="monNom" content="Mon contenu" />'
     MODIFIEDONDRAFTHELP: 'Des changements effectués sur cette page n''''ont pas été publiés'
     MODIFIEDONDRAFTSHORT: Modifiée
     MetadataToggle: Métadonnées
