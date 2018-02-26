@@ -145,7 +145,7 @@ sv:
     METADESC: Metabeskrivning
     METADESCHELP: 'Sökmotorer använder detta innehåll vid visning av sökresultatet (rangordningen påverkas dock inte av detta innehåll).'
     METAEXTRA: 'Egna metataggar'
-    METAEXTRAHELP: 'HTML taggar för övrig meta information. Till exempel &lt;meta name="Namn" content="innehållet kommer här" /&gt;'
+    METAEXTRAHELP: 'HTML taggar för övrig meta information. Till exempel <meta name="Namn" content="innehållet kommer här" />'
     MODIFIEDONDRAFTHELP: 'Sidan har ej publicerade ändringar'
     MODIFIEDONDRAFTSHORT: Ändrad
     MetadataToggle: Metadata
