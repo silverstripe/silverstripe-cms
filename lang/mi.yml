@@ -99,7 +99,7 @@ mi:
     METADESC: 'Whakaahuatanga Meta'
     METADESCHELP: 'Ka whakamahi ngā pūrere rapu i ēnei ihirangi ki te whakaatu huanga rapu (ahakoa kāore ngā whakatauranga e whakaawetia).'
     METAEXTRA: 'Ngā Tūtohu Meta Ritenga'
-    METAEXTRAHELP: 'Ngā tūtohu HTML mō ngā mōhiohio meta tāpiri. Hei tauira &lt;ingoa meta="customName" ihirangi="your custom content here" /&gt;'
+    METAEXTRAHELP: 'Ngā tūtohu HTML mō ngā mōhiohio meta tāpiri. Hei tauira <ingoa meta="customName" ihirangi="your custom content here" />'
     MODIFIEDONDRAFTHELP: 'He huringa kāore anō kia whakaputaina ō te whārangi'
     MODIFIEDONDRAFTSHORT: 'Kua Whakakētia'
     MetadataToggle: Raraungameta

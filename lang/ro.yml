@@ -99,7 +99,7 @@ ro:
     METADESC: Descriere
     METADESCHELP: 'Motoarele de căutare folosesc acest conținut pentru a afișa rezultatele căutării (deși nu v-a influența nota acestuia)'
     METAEXTRA: 'Etichetă Meta preferențială'
-    METAEXTRAHELP: 'Etichetele HTML pentru informațiile meta adiționale. De exemplu &lt;meta name="numePreferat" content="conținut preferențial aici" /&gt;'
+    METAEXTRAHELP: 'Etichetele HTML pentru informațiile meta adiționale. De exemplu <meta name="numePreferat" content="conținut preferențial aici" />'
     MODIFIEDONDRAFTHELP: 'Pagina are modificări nepublicate'
     MODIFIEDONDRAFTSHORT: Modificat
     MetadataToggle: Metadata

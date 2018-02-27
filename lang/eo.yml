@@ -214,7 +214,7 @@ eo:
     METADESC: Metapriskribo
     METADESCHELP: 'Serĉiloj uzas ĉi tiun enhavon por vidigi serĉajn rezultojn (kvankam ĝi ne influos ilian rangon).'
     METAEXTRA: 'Propraj Meta-etikedoj '
-    METAEXTRAHELP: 'HTML-etikedoj por plua metainformo. Ekzemple &lt;meta name="customName" content="via propra enhavo ĉi tie" /&gt;'
+    METAEXTRAHELP: 'HTML-etikedoj por plua metainformo. Ekzemple <meta name="customName" content="via propra enhavo ĉi tie" />'
     MODIFIEDONDRAFTHELP: 'Paĝo enhavas nepublikigitajn ŝanĝojn'
     MODIFIEDONDRAFTSHORT: Ŝanĝita
     MetadataToggle: Metadatumoj

@@ -105,7 +105,7 @@ ja:
     METADESC: 説明
     METADESCHELP: 検索エンジンは、検索結果を表示するためにこのコンテンツを使用します（ランキングには影響しません）。
     METAEXTRA: メタタグをカスタム
-    METAEXTRAHELP: '追加のメタ情報用のHTMLタグ。　たとえば、&lt; メタネーム = "カスタムネーム" コンテンツ = "ここにあなたのカスタムコンテンツ" /&gt;'
+    METAEXTRAHELP: '追加のメタ情報用のHTMLタグ。　たとえば、< メタネーム = "カスタムネーム" コンテンツ = "ここにあなたのカスタムコンテンツ" />'
     MODIFIEDONDRAFTHELP: 公開されていない変更がページにあります
     MODIFIEDONDRAFTSHORT: 修正された
     MetadataToggle: メタデータ
