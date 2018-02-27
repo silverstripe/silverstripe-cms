@@ -214,7 +214,7 @@ it:
     METADESC: Descrizione
     METADESCHELP: 'I motori di ricerca utilizzano questo contenuto per visualizzare i risultati (ma non ne influenza la posizione)'
     METAEXTRA: 'Meta tag personalizzati'
-    METAEXTRAHELP: 'Tag HTML per meta addizionali. Per esempio &lt;meta name="nomePersonalizzato" content="Il tuo contenuto personalizzato" /&gt;'
+    METAEXTRAHELP: 'Tag HTML per meta addizionali. Per esempio <meta name="nomePersonalizzato" content="Il tuo contenuto personalizzato" />'
     MODIFIEDONDRAFTHELP: 'La pagina ha modifiche nascoste'
     MODIFIEDONDRAFTSHORT: Modificata
     MetadataToggle: Metadati

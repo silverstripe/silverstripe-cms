@@ -179,7 +179,7 @@ bg:
     METADESC: Описание
     METADESCHELP: 'Търсачките използват това съдържание при показване на резултатите от търсенето (въпреки, че това няма да повлияе на тяхното класиране).'
     METAEXTRA: 'Собствени етикети'
-    METAEXTRAHELP: 'HTML тагове за допълнителна meta информация. Например &lt;meta name="customName" content="вашето съдържание" /&gt;'
+    METAEXTRAHELP: 'HTML тагове за допълнителна meta информация. Например <meta name="customName" content="вашето съдържание" />'
     MODIFIEDONDRAFTHELP: 'По страницата са правени промени, които не са публикувани'
     MODIFIEDONDRAFTSHORT: Променен
     MetadataToggle: 'Meta данни за страницата'

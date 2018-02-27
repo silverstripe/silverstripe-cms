@@ -148,7 +148,7 @@ es:
     METADESC: Descripción
     METADESCHELP: 'Los motores de búsqueda usan este contenido para mostrar resultados de búsqueda (aunque no influirá en su ranking).'
     METAEXTRA: 'Meta Tags Personalizadas'
-    METAEXTRAHELP: 'Etiquetas HTML para meta información adicional. Por ejemplo &lt;meta name="nombrePersonalizado" content="tu contenido personalizado aquí" /&gt;'
+    METAEXTRAHELP: 'Etiquetas HTML para meta información adicional. Por ejemplo <meta name="nombrePersonalizado" content="tu contenido personalizado aquí" />'
     MODIFIEDONDRAFTHELP: 'La página tiene cambios sin publicar'
     MODIFIEDONDRAFTSHORT: Modificado
     MetadataToggle: Metadata

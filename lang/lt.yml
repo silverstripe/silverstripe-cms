@@ -112,7 +112,7 @@ lt:
     METADESC: 'Meta aprašymas'
     METADESCHELP: 'Paieškos sistemos naudoja šį turinį rodydamos paieškos rezultatus (tačiau tai neturi įtakos paieškos rezultatų reitingui).'
     METAEXTRA: 'Kitos meta žymės'
-    METAEXTRAHELP: 'HTML žymos papildomai meta informacijai. Pavyzdžiui, &lt;meta name="kitaMetaZyme" content="papildomas turinys" /&gt;'
+    METAEXTRAHELP: 'HTML žymos papildomai meta informacijai. Pavyzdžiui, <meta name="kitaMetaZyme" content="papildomas turinys" />'
     MODIFIEDONDRAFTHELP: 'Puslapyje yra nepublikuoto turinio'
     MODIFIEDONDRAFTSHORT: Pakeistas
     MetadataToggle: Metaduomenys

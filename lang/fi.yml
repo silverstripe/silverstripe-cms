@@ -214,7 +214,7 @@ fi:
     METADESC: Meta-kuvaus
     METADESCHELP: 'Hakukoneet näyttävät tämän sisällön hakutuloksissa (sisältö ei kuitenkaan vaikuta sijoitukseen hakutuloksessa).'
     METAEXTRA: 'Omat meta-tagit'
-    METAEXTRAHELP: 'HTML-tagit omia metatietoja varten. Esimerkiksi &lt;meta name="haluamasiNimi" content="Oma sisältö tässä" /&gt;'
+    METAEXTRAHELP: 'HTML-tagit omia metatietoja varten. Esimerkiksi <meta name="haluamasiNimi" content="Oma sisältö tässä" />'
     MODIFIEDONDRAFTHELP: 'Sivulla on julkaisemattomia muutoksia'
     MODIFIEDONDRAFTSHORT: Muokattu
     MetadataToggle: Meta-tiedot
