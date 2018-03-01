@@ -150,9 +150,12 @@ excludedPaths:
   - '*/_config/legacy.yml'
 warnings:
   methods:
-    'SilverStripe\CMS\Model\SiteTree::getIsAddedToStage()':
+    'SilverStripe\CMS\Model\SiteTree->getIsAddedToStage()':
       message: 'Moved to Versioned->isOnDraftOnly()'
-    'SilverStripe\CMS\Model\SiteTree::getIsModifiedOnStage()':
+      replacement: 'isOnDraftOnly'
+    'SilverStripe\CMS\Model\SiteTree->getIsModifiedOnStage()':
       message: 'Moved to Versioned->isModifiedOnDraft()'
-    'SilverStripe\CMS\Model\SiteTree::getExistsOnLive()':
+      replacement: 'isModifiedOnDraft'
+    'SilverStripe\CMS\Model\SiteTree->getExistsOnLive()':
       message: 'Removed in favour of isPublished()'
+      replacement: 'isPublished'
