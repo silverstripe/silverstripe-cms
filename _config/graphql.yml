@@ -1,0 +1,15 @@
+---
+Name: cmsgraphql
+---
+SilverStripe\GraphQL\Controller:
+  schema:
+    scaffolding:
+      types:
+        SilverStripe\CMS\Model\SiteTree:
+          fields: '*'
+          operations:
+            readOne: true
+        SilverStripe\Security\Member:
+          fields: [ID, FirstName, Surname]
+          operations:
+            readOne: true
