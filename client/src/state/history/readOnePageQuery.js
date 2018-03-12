@@ -1,9 +1,10 @@
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
-// GraphQL query for retrieving the version history of a specific page. The results of the query must
-// be set to the "versions" prop on the component that this HOC is applied to (see PageHistoryViewer.js)
-// for binding implementation.
+// GraphQL query for retrieving the version history of a specific page. The
+// results of the query must be set to the "versions" prop on the component
+// that this HOC is applied to (see PageHistoryViewer.js) for binding
+// implementation.
 const query = gql`
 query readOnePage ($page_id: ID!, $limit: Int!, $offset: Int!) {
   readOnePage(
@@ -81,7 +82,7 @@ const config = {
               offset: ((page || 1) - 1) * limit,
               limit,
               page_id: recordId,
-           })
+           });
           }
         }),
       }),
