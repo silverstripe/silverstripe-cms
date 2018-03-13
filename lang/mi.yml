@@ -20,7 +20,6 @@ mi:
     RESTORED: 'I momoho te whakaora i te ''{title}'''
     ROLLEDBACKPUBv2: 'I hoki ki te tauira kua whakaputaina.'
     ROLLEDBACKVERSIONv2: 'I hoki ki te tauira #{version}.'
-    SAVEDRAFT: 'Tiaki hukihuki'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Kei raro i tētahi atu whārangi'
     ParentMode_top: 'Taumata matua'
@@ -74,7 +73,6 @@ mi:
     BUTTONCANCELDRAFTDESC: 'Mukua tō hukihuki, ka hoki ki te whārangi kua whakaputaina ināianei'
     BUTTONPUBLISHED: 'I whakaputaina'
     BUTTONSAVED: 'Kua Tiakina'
-    BUTTONSAVEPUBLISH: 'Tiakina te whārangi'
     BUTTONUNPUBLISH: Wetewhakaputa
     BUTTONUNPUBLISHDESC: 'Tangohia tēnei whārangi i te pae kua whakaputaina'
     Comments: 'Ngā Tākupu'
@@ -99,7 +97,7 @@ mi:
     METADESC: 'Whakaahuatanga Meta'
     METADESCHELP: 'Ka whakamahi ngā pūrere rapu i ēnei ihirangi ki te whakaatu huanga rapu (ahakoa kāore ngā whakatauranga e whakaawetia).'
     METAEXTRA: 'Ngā Tūtohu Meta Ritenga'
-    METAEXTRAHELP: 'Ngā tūtohu HTML mō ngā mōhiohio meta tāpiri. Hei tauira <ingoa meta="customName" ihirangi="your custom content here" />'
+    METAEXTRAHELP: 'Ngā tūtohu HTML mō ngā mōhiohio meta tāpiri. Hei tauira &lt;ingoa meta="customName" ihirangi="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'He huringa kāore anō kia whakaputaina ō te whārangi'
     MODIFIEDONDRAFTSHORT: 'Kua Whakakētia'
     MetadataToggle: Raraungameta

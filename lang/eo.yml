@@ -58,7 +58,6 @@ eo:
     ROLLEDBACKPUBv2: 'Malfaris ŝanĝojn ĝis la publikigita versio.'
     ROLLEDBACKVERSIONv2: 'Malfaris ŝanĝojn ĝis versio #{version}.'
     SAVED: 'Sukcese konservis je ''{title}'''
-    SAVEDRAFT: 'Konservi malneton'
     SHOW_AS_LIST: 'vidigi kiel liston'
     TOO_MANY_PAGES: 'Tro da paĝoj'
     TabContent: Enhavo
@@ -180,7 +179,6 @@ eo:
     BUTTONDELETEDESC: 'Forigi el malneta aŭ publika, kaj sendi ilin al la arĥivo'
     BUTTONPUBLISHED: Publikigita
     BUTTONSAVED: Konservita
-    BUTTONSAVEPUBLISH: 'Konservi kaj publikigi'
     BUTTONUNPUBLISH: Malpublikigi
     BUTTONUNPUBLISHDESC: 'Forigi ĉi tiun paĝon de la publikigita retejo'
     Comments: Komentoj
@@ -214,7 +212,7 @@ eo:
     METADESC: Metapriskribo
     METADESCHELP: 'Serĉiloj uzas ĉi tiun enhavon por vidigi serĉajn rezultojn (kvankam ĝi ne influos ilian rangon).'
     METAEXTRA: 'Propraj Meta-etikedoj '
-    METAEXTRAHELP: 'HTML-etikedoj por plua metainformo. Ekzemple <meta name="customName" content="via propra enhavo ĉi tie" />'
+    METAEXTRAHELP: 'HTML-etikedoj por plua metainformo. Ekzemple &lt;meta name="customName" content="via propra enhavo ĉi tie" /&gt;'
     MODIFIEDONDRAFTHELP: 'Paĝo enhavas nepublikigitajn ŝanĝojn'
     MODIFIEDONDRAFTSHORT: Ŝanĝita
     MetadataToggle: Metadatumoj

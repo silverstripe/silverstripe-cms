@@ -49,7 +49,6 @@ zh:
     ROLLEDBACKPUBv2: 回滚到已发布版本。
     ROLLEDBACKVERSIONv2: '回滚到版本#{version}。'
     SAVED: ' ''{title}'' 保存成功。'
-    SAVEDRAFT: 保存草稿
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 根据另一个页面
     ParentMode_top: 顶层
@@ -103,7 +102,6 @@ zh:
     BUTTONCANCELDRAFTDESC: 删除您的草稿并回复至当前已发布的页面
     BUTTONPUBLISHED: 已发布
     BUTTONSAVED: 已保存
-    BUTTONSAVEPUBLISH: 保存及发布
     BUTTONUNPUBLISH: 未发布
     BUTTONUNPUBLISHDESC: 将该页面从已发布的站点中删除
     Comments: 评论

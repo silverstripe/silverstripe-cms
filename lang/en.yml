@@ -98,12 +98,12 @@ en:
     ListView: 'List View'
     MENUTITLE: Pages
     TreeView: 'Tree View'
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Published pages'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Modified pages'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including archived'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
+    Title: 'Published pages'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'All pages'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:

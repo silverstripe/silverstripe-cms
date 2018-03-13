@@ -39,7 +39,6 @@ fa_IR:
     ROLLEDBACKPUBv2: 'بازگردانی به نسخه‌ی منتشرشده.'
     ROLLEDBACKVERSIONv2: 'بازگردانی به نسخه‌ی #{version}.'
     SAVED: 'دخیره‌سازی ''{title}'' باموفقیت انجام شد.'
-    SAVEDRAFT: 'ذخیره پیش‌نویس'
     UNPUBLISH_AND_ARCHIVE: 'عدم انتشار و بایگانی'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'افزودن صفحه'
@@ -117,7 +116,6 @@ fa_IR:
     BUTTONDELETEDESC: 'حذف از پیش‌نویس/زنده و ارسال به بایگانی'
     BUTTONPUBLISHED: 'منتشر شده'
     BUTTONSAVED: 'ذخیره شده'
-    BUTTONSAVEPUBLISH: 'ذخیره و انتشار'
     BUTTONUNPUBLISH: 'عدم انتشار'
     BUTTONUNPUBLISHDESC: 'حذف این صفحه از سایت منتشر شده'
     Comments: دیدگاه‌ها
