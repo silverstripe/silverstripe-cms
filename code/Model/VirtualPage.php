@@ -12,7 +12,6 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ValidationResult;
 use SilverStripe\Security\Member;
 use SilverStripe\Versioned\Versioned;
-use SilverStripe\View\SSViewer;
 
 /**
  * Virtual Page creates an instance of a  page, with the same fields that the original page had, but readonly.
@@ -366,7 +365,11 @@ class VirtualPage extends Page
 
     public function CMSTreeClasses()
     {
-        return parent::CMSTreeClasses() . ' VirtualPage-' . $this->CopyContentFrom()->ClassName;
+        $parentClass = sprintf(
+            ' VirtualPage-%s',
+            Convert::raw2htmlid($this->CopyContentFrom()->ClassName)
+        );
+        return parent::CMSTreeClasses() . $parentClass;
     }
 
     /**
