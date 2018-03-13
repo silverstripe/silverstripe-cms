@@ -13,7 +13,7 @@ use SilverStripe\CMS\Forms\SiteTreeURLSegmentField;
 use SilverStripe\Control\ContentNegotiator;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
-use SilverStripe\Control\RequestHandler;
+use SilverStripe\Core\Cache\MemberCacheFlusher;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Convert;
@@ -61,13 +61,13 @@ use SilverStripe\Security\PermissionChecker;
 use SilverStripe\Security\PermissionProvider;
 use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\Versioned\RecursivePublishable;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\HTML;
 use SilverStripe\View\Parsers\ShortcodeParser;
 use SilverStripe\View\Parsers\URLSegmentFilter;
 use SilverStripe\View\SSViewer;
-use SilverStripe\Core\Cache\MemberCacheFlusher;
 use Subsite;
 
 /**
@@ -99,6 +99,7 @@ use Subsite;
  *
  * @mixin Hierarchy
  * @mixin Versioned
+ * @mixin RecursivePublishable
  * @mixin SiteTreeLinkTracking
  * @mixin InheritedPermissionsExtension
  */
@@ -1501,8 +1502,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $oneChangedFields = array_keys($this->getChangedFields(true, 1));
 
         if ($oneChangedFields && !array_diff($changedFields, $fieldsIgnoredByVersioning)) {
-            // This will have the affect of preserving the versioning
-            $this->migrateVersion($this->Version);
+            $this->setNextWriteWithoutVersion(true);
         }
     }
 
@@ -2395,7 +2395,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     /**
      * Restore the content in the active copy of this SiteTree page to the stage site.
      *
-     * @return self
+     * @return static
      */
     public function doRestoreToStage()
     {
@@ -2406,33 +2406,16 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $this->ParentID = 0;
         }
 
-        // if no record can be found on draft stage (meaning it has been "deleted from draft" before),
-        // create an empty record
-        if (!DB::prepared_query("SELECT \"ID\" FROM \"SiteTree\" WHERE \"ID\" = ?", array($this->ID))->value()) {
-            $conn = DB::get_conn();
-            if (method_exists($conn, 'allowPrimaryKeyEditing')) {
-                $conn->allowPrimaryKeyEditing(self::class, true);
-            }
-            DB::prepared_query("INSERT INTO \"SiteTree\" (\"ID\") VALUES (?)", array($this->ID));
-            if (method_exists($conn, 'allowPrimaryKeyEditing')) {
-                $conn->allowPrimaryKeyEditing(self::class, false);
-            }
-        }
-
-        $oldReadingMode = Versioned::get_reading_mode();
-        Versioned::set_stage(Versioned::DRAFT);
-        $this->forceChange();
-        $this->write();
-
-        /** @var SiteTree $result */
-        $result = DataObject::get_by_id(self::class, $this->ID);
-
-        Versioned::set_reading_mode($oldReadingMode);
+        // Restore
+        $this->writeToStage(Versioned::DRAFT);
 
         // Need to update pages linking to this one as no longer broken
-        $this->updateDependentPages();
+        /** @var SiteTree $result */
+        $result = Versioned::get_by_stage(self::class, Versioned::DRAFT)
+            ->byID($this->ID);
+        $result->updateDependentPages();
 
-        $this->invokeWithExtensions('onAfterRestoreToStage', $this);
+        $this->invokeWithExtensions('onAfterRestoreToStage', $result);
 
         return $result;
     }

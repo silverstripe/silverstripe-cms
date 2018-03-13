@@ -137,7 +137,7 @@ class CMSBatchActionsTest extends SapphireTest
         $archivedyID = $this->idFromFixture(SiteTree::class, 'archivedy');
 
         // Just restore one child
-        $list = $pages->filter('RecordID', $archivedxID);
+        $list = $pages->filter('ID', $archivedxID);
         $this->assertEquals(1, $list->count());
         $this->assertEquals($archivedID, $list->first()->ParentID);
 
@@ -155,7 +155,7 @@ class CMSBatchActionsTest extends SapphireTest
 
         // Restore both remaining pages
         $list = $pages
-            ->filter('RecordID', array($archivedID, $archivedyID))
+            ->filter('ID', [$archivedID, $archivedyID])
             ->sort('Title');
         $this->assertEquals(2, $list->count());
         $this->assertEquals($archivedID, $list->first()->ParentID); // archivedy
