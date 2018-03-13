@@ -773,8 +773,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function InSection($sectionName)
     {
         $page = Director::get_current_page();
-        while ($page && $page->exists()) {
-            if ($sectionName == $page->URLSegment) {
+        while ($page instanceof SiteTree && $page->exists()) {
+            if ($sectionName === $page->URLSegment) {
                 return true;
             }
             $page = $page->Parent();
