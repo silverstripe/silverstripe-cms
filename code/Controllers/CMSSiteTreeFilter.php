@@ -162,7 +162,8 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
             }
 
             while (!empty($parents)) {
-                $q = Versioned::get_including_deleted(SiteTree::class, '"RecordID" in ('.implode(',', array_keys($parents)).')');
+                $q = Versioned::get_including_deleted(SiteTree::class)
+                    ->byIDs(array_keys($parents));
                 $list = $q->map('ID', 'ParentID');
                 $parents = array();
                 foreach ($list as $id => $parentID) {

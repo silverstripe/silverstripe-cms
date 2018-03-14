@@ -771,13 +771,8 @@ class SiteTreeTest extends SapphireTest
     public function testAuthorIDAndPublisherIDFilledOutOnPublish()
     {
         // Ensure that we have a member ID who is doing all this work
-        $member = security::getCurrentUser();
-        if ($member) {
-            $memberID = $member->ID;
-        } else {
-            $member = $this->objFromFixture(Member::class, "admin");
-            Security::setCurrentUser($member);
-        }
+        $member = $this->objFromFixture(Member::class, "admin");
+        $this->logInAs($member);
 
         // Write the page
         $about = $this->objFromFixture('Page', 'about');
@@ -785,19 +780,25 @@ class SiteTreeTest extends SapphireTest
         $about->write();
 
         // Check the version created
-        $savedVersion = DB::query("SELECT \"AuthorID\", \"PublisherID\" FROM \"SiteTree_Versions\"
-			WHERE \"RecordID\" = $about->ID ORDER BY \"Version\" DESC")->first();
-        $this->assertEquals($memberID, $savedVersion['AuthorID']);
+        $savedVersion = DB::prepared_query(
+            "SELECT \"AuthorID\", \"PublisherID\" FROM \"SiteTree_Versions\"
+			WHERE \"RecordID\" = ? ORDER BY \"Version\" DESC",
+            [$about->ID]
+        )->first();
+        $this->assertEquals($member->ID, $savedVersion['AuthorID']);
         $this->assertEquals(0, $savedVersion['PublisherID']);
 
         // Publish the page
         $about->publishRecursive();
-        $publishedVersion = DB::query("SELECT \"AuthorID\", \"PublisherID\" FROM \"SiteTree_Versions\"
-			WHERE \"RecordID\" = $about->ID ORDER BY \"Version\" DESC")->first();
+        $publishedVersion = DB::prepared_query(
+            "SELECT \"AuthorID\", \"PublisherID\" FROM \"SiteTree_Versions\"
+			WHERE \"RecordID\" = ? ORDER BY \"Version\" DESC",
+            [$about->ID]
+        )->first();
 
         // Check the version created
-        $this->assertEquals($memberID, $publishedVersion['AuthorID']);
-        $this->assertEquals($memberID, $publishedVersion['PublisherID']);
+        $this->assertEquals($member->ID, $publishedVersion['AuthorID']);
+        $this->assertEquals($member->ID, $publishedVersion['PublisherID']);
     }
 
     public function testLinkShortcodeHandler()

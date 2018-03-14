@@ -108,8 +108,8 @@ class SiteTreeLinkTracking extends DataExtension
     {
         $record = $this->owner;
 
-        $linkedPages = array();
-        $linkedFiles = array();
+        $linkedPages = [];
+        $linkedFiles = [];
 
         $htmlValue = HTMLValue::create($record->$fieldName);
         $links = $this->parser->process($htmlValue);
@@ -125,7 +125,7 @@ class SiteTreeLinkTracking extends DataExtension
             $domReference = $link['DOMReference'];
             $classStr = trim($domReference->getAttribute('class'));
             if (!$classStr) {
-                $classes = array();
+                $classes = [];
             } else {
                 $classes = explode(' ', $classStr);
             }
@@ -174,36 +174,36 @@ class SiteTreeLinkTracking extends DataExtension
         }
 
         // Update the "LinkTracking" many_many
-        if ($record->ID
-            && $record->getSchema()->manyManyComponent(get_class($record), 'LinkTracking')
+        if ($record->getSchema()->manyManyComponent(get_class($record), 'LinkTracking')
             && ($tracker = $record->LinkTracking())
         ) {
-            $tracker->removeByFilter(array(
-                sprintf('"FieldName" = ? AND "%s" = ?', $tracker->getForeignKey())
+            // If already saved, clear existing records
+            if ($record->isInDB()) {
+                $tracker->removeByFilter(array(
+                    sprintf('"FieldName" = ? AND "%s" = ?', $tracker->getForeignKey())
                     => array($fieldName, $record->ID)
-            ));
+                ));
+            }
 
-            if ($linkedPages) {
-                foreach ($linkedPages as $item) {
-                    $tracker->add($item, array('FieldName' => $fieldName));
-                }
+            foreach ($linkedPages as $item) {
+                $tracker->add($item, array('FieldName' => $fieldName));
             }
         }
 
         // Update the "ImageTracking" many_many
-        if ($record->ID
-            && $record->getSchema()->manyManyComponent(get_class($record), 'ImageTracking')
+        if ($record->getSchema()->manyManyComponent(get_class($record), 'ImageTracking')
             && ($tracker = $record->ImageTracking())
         ) {
-            $tracker->removeByFilter(array(
-                sprintf('"FieldName" = ? AND "%s" = ?', $tracker->getForeignKey())
+            // If already saved, clear existing records
+            if ($record->isInDB()) {
+                $tracker->removeByFilter(array(
+                    sprintf('"FieldName" = ? AND "%s" = ?', $tracker->getForeignKey())
                     => array($fieldName, $record->ID)
-            ));
+                ));
+            }
 
-            if ($linkedFiles) {
-                foreach ($linkedFiles as $item) {
-                    $tracker->add($item, array('FieldName' => $fieldName));
-                }
+            foreach ($linkedFiles as $item) {
+                $tracker->add($item, array('FieldName' => $fieldName));
             }
         }
     }
@@ -216,7 +216,7 @@ class SiteTreeLinkTracking extends DataExtension
     public function augmentSyncLinkTracking()
     {
         // Skip live tracking
-        if (Versioned::get_stage() == Versioned::LIVE) {
+        if (Versioned::get_stage() === Versioned::LIVE) {
             return;
         }
 
