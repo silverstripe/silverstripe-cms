@@ -100,7 +100,8 @@ use Subsite;
  * @mixin Hierarchy
  * @mixin Versioned
  * @mixin RecursivePublishable
- * @mixin SiteTreeLinkTracking
+ * @mixin SiteTreeLinkTracking Added via linktracking.yml to DataObject directly
+ * @mixin SiteTreeTrackedPage
  * @mixin InheritedPermissionsExtension
  */
 class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvider, CMSPreviewable, Resettable, Flushable, MemberCacheFlusher
@@ -262,7 +263,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     private static $extensions = [
         Hierarchy::class,
         Versioned::class,
-        SiteTreeLinkTracking::class,
+        SiteTreeTrackedPage::class,
         InheritedPermissionsExtension::class,
     ];
 
@@ -384,7 +385,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // Grab the initial root level page to traverse down from.
         $URLSegment = array_shift($parts);
         $conditions = array('"SiteTree"."URLSegment"' => rawurlencode($URLSegment));
-        if (self::config()->nested_urls) {
+        if (self::config()->get('nested_urls')) {
             $conditions[] = array('"SiteTree"."ParentID"' => 0);
         }
         /** @var SiteTree $sitetree */
@@ -392,7 +393,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         /// Fall back on a unique URLSegment for b/c.
         if (!$sitetree
-            && self::config()->nested_urls
+            && self::config()->get('nested_urls')
             && $sitetree = DataObject::get_one(self::class, array(
                 '"SiteTree"."URLSegment"' => $URLSegment
             ), $cache)
@@ -402,7 +403,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         // Attempt to grab an alternative page from extensions.
         if (!$sitetree) {
-            $parentID = self::config()->nested_urls ? 0 : null;
+            $parentID = self::config()->get('nested_urls') ? 0 : null;
 
             if ($alternatives = static::singleton()->extend('alternateGetByLink', $URLSegment, $parentID)) {
                 foreach ($alternatives as $alternative) {
@@ -418,7 +419,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         // Check if we have any more URL parts to parse.
-        if (!self::config()->nested_urls || !count($parts)) {
+        if (!self::config()->get('nested_urls') || !count($parts)) {
             return $sitetree;
         }
 
@@ -600,7 +601,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function RelativeLink($action = null)
     {
-        if ($this->ParentID && self::config()->nested_urls) {
+        if ($this->ParentID && self::config()->get('nested_urls')) {
             $parent = $this->Parent();
             // If page is removed select parent from version history (for archive page view)
             if ((!$parent || !$parent->exists()) && !$this->isOnDraft()) {
@@ -843,6 +844,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * @param boolean $unlinked Whether to link page titles.
      * @param boolean|string $stopAtPageType ClassName of a page to stop the upwards traversal.
      * @param boolean $showHidden Include pages marked with the attribute ShowInMenus = 0
+     * @param string $delimiter Delimiter character (raw html)
      * @return string The breadcrumb trail.
      */
     public function Breadcrumbs($maxDepth = 20, $unlinked = false, $stopAtPageType = false, $showHidden = false, $delimiter = '&raquo;')
@@ -913,8 +915,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function getParent()
     {
-        if ($parentID = $this->getField("ParentID")) {
-            return DataObject::get_by_id(self::class, $parentID);
+        $parentID = $this->getField("ParentID");
+        if ($parentID) {
+            return SiteTree::get_by_id(self::class, $parentID);
         }
         return null;
     }
@@ -1377,14 +1380,14 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             ));
         }
 
-        $tags = implode("\n", $tags);
+        $tagString = implode("\n", $tags);
         if ($this->ExtraMeta) {
-            $tags .= $this->obj('ExtraMeta')->forTemplate();
+            $tagString .= $this->obj('ExtraMeta')->forTemplate();
         }
 
-        $this->extend('MetaTags', $tags);
+        $this->extend('MetaTags', $tagString);
 
-        return $tags;
+        return $tagString;
     }
 
     /**
@@ -1411,12 +1414,13 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         parent::requireDefaultRecords();
 
         // default pages
-        if (static::class == self::class && $this->config()->create_default_pages) {
-            if (!SiteTree::get_by_link(RootURLController::config()->default_homepage_link)) {
+        if (static::class === self::class && $this->config()->get('create_default_pages')) {
+            $defaultHomepage = RootURLController::config()->get('default_homepage_link');
+            if (!SiteTree::get_by_link($defaultHomepage)) {
                 $homepage = new Page();
                 $homepage->Title = _t(__CLASS__.'.DEFAULTHOMETITLE', 'Home');
                 $homepage->Content = _t(__CLASS__.'.DEFAULTHOMECONTENT', '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>.</p><p>You can now access the <a href="http://docs.silverstripe.org">developer documentation</a>, or begin the <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lessons</a>.</p>');
-                $homepage->URLSegment = RootURLController::config()->default_homepage_link;
+                $homepage->URLSegment = $defaultHomepage;
                 $homepage->Sort = 1;
                 $homepage->write();
                 $homepage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
@@ -1521,8 +1525,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         parent::onBeforeDelete();
 
         // If deleting this page, delete all its children.
-        if ($this->isInDB() && SiteTree::config()->enforce_strict_hierarchy && $children = $this->AllChildren()) {
-            foreach ($children as $child) {
+        if ($this->isInDB() && SiteTree::config()->get('enforce_strict_hierarchy')) {
+            foreach ($this->AllChildren() as $child) {
                 /** @var SiteTree $child */
                 $child->delete();
             }
@@ -1615,7 +1619,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function validURLSegment()
     {
         // Check known urlsegment blacklists
-        if (self::config()->nested_urls && $this->ParentID) {
+        if (self::config()->get('nested_urls') && $this->ParentID) {
             // Guard against url segments for sub-pages
             $parent = $this->Parent();
             if ($controller = ModelAsController::controller_for($parent)) {
@@ -1645,7 +1649,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         if ($this->ID) {
             $source = $source->exclude('ID', $this->ID);
         }
-        if (self::config()->nested_urls) {
+        if (self::config()->get('nested_urls')) {
             $source = $source->filter('ParentID', $this->ParentID ? $this->ParentID : 0);
         }
         return !$source->exists();
@@ -1685,9 +1689,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function getStageURLSegment()
     {
-        $stageRecord = Versioned::get_one_by_stage(self::class, Versioned::DRAFT, array(
+        /** @var SiteTree $stageRecord */
+        $stageRecord = Versioned::get_one_by_stage(self::class, Versioned::DRAFT, [
             '"SiteTree"."ID"' => $this->ID
-        ));
+        ]);
         return ($stageRecord) ? $stageRecord->URLSegment : null;
     }
 
@@ -1698,9 +1703,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function getLiveURLSegment()
     {
-        $liveRecord = Versioned::get_one_by_stage(self::class, Versioned::LIVE, array(
+        /** @var SiteTree $liveRecord */
+        $liveRecord = Versioned::get_one_by_stage(self::class, Versioned::LIVE, [
             '"SiteTree"."ID"' => $this->ID
-        ));
+        ]);
         return ($liveRecord) ? $liveRecord->URLSegment : null;
     }
 
@@ -1881,7 +1887,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         $baseLink = Controller::join_links(
             Director::absoluteBaseURL(),
-            (self::config()->nested_urls && $this->ParentID ? $this->Parent()->RelativeLink(true) : null)
+            (self::config()->get('nested_urls') && $this->ParentID ? $this->Parent()->RelativeLink(true) : null)
         );
 
         $urlsegment = SiteTreeURLSegmentField::create("URLSegment", $this->fieldLabel('URLSegment'))
@@ -1891,7 +1897,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 'New {pagetype}',
                 array('pagetype' => $this->i18n_singular_name())
             )));
-        $helpText = (self::config()->nested_urls && $this->numChildren())
+        $helpText = (self::config()->get('nested_urls') && $this->numChildren())
             ? $this->fieldLabel('LinkChangeNote')
             : '';
         if (!Config::inst()->get('SilverStripe\\View\\Parsers\\URLSegmentFilter', 'default_allow_multibyte')) {
@@ -2188,7 +2194,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // Get status of page
         $isOnDraft = $this->isOnDraft();
         $isPublished = $this->isPublished();
-        $stagesDiffer = $this->stagesDiffer(Versioned::DRAFT, Versioned::LIVE);
+        $stagesDiffer = $this->stagesDiffer();
 
         // Check permissions
         $canPublish = $this->canPublish();
@@ -2232,6 +2238,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         // "readonly"/viewing version that isn't the current version of the record
+        /** @var SiteTree $stageRecord */
         $stageRecord = Versioned::get_by_stage(static::class, Versioned::DRAFT)->byID($this->ID);
         /** @skipUpgrade */
         if ($stageRecord && $stageRecord->Version != $this->Version) {
