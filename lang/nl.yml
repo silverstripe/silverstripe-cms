@@ -54,7 +54,6 @@ nl:
     ROLLEDBACKPUBv2: 'Teruggedraaid naar gepubliceerde versie.'
     ROLLEDBACKVERSIONv2: 'Teruggedraaid naar versie #{version}.'
     SAVED: '''{title}'' is opgeslagen.'
-    SAVEDRAFT: 'Concept opslaan'
     SHOW_AS_LIST: 'Als lijst tonen'
     TOO_MANY_PAGES: 'Te veel pagina''s'
     TabContent: Inhoud
@@ -156,7 +155,6 @@ nl:
     BUTTONDELETEDESC: 'Verwijderde concept/live versie en archiveer'
     BUTTONPUBLISHED: Gepubliceerd
     BUTTONSAVED: Opgeslagen
-    BUTTONSAVEPUBLISH: 'Opslaan & publiceren'
     BUTTONUNPUBLISH: 'Publicatie intrekken'
     BUTTONUNPUBLISHDESC: 'Deze pagina verwijderen uit de gepubliceerde site'
     Comments: Commentaar
@@ -189,7 +187,7 @@ nl:
     METADESC: 'Meta omschrijving'
     METADESCHELP: 'Zoekmachines gebruiken deze inhoud voor het weergeven van zoekresultaten (hoewel het hun ranking niet zal beïnvloeden).'
     METAEXTRA: 'Andere meta tags'
-    METAEXTRAHELP: 'HTML-tags voor extra meta-informatie. Bijvoorbeeld <meta name = "customName" content="uw aangepaste inhoud"/>'
+    METAEXTRAHELP: 'HTML-tags voor extra meta-informatie. Bijvoorbeeld &lt;meta name = "customName" content="uw aangepaste inhoud"/&gt;'
     MODIFIEDONDRAFTHELP: 'Pagina heeft wijzigingen die nog niet gepubliceerd zijn'
     MODIFIEDONDRAFTSHORT: Aangepast
     MetadataToggle: Metadata

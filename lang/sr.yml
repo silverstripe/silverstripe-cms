@@ -20,7 +20,6 @@ sr:
     RESTORED: '''{title}'' успешно обновљен'
     ROLLEDBACKPUBv2: 'Враћено на објављену верзију.'
     ROLLEDBACKVERSIONv2: 'Враћено на верзију #{version}.'
-    SAVEDRAFT: 'Сачувај нацрт'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Као подстраницу друге странице'
     ParentMode_top: 'Вршни ниво'
@@ -74,7 +73,6 @@ sr:
     BUTTONCANCELDRAFTDESC: 'Избришите свој нацрт и вратите се на тренутно објављену страну'
     BUTTONPUBLISHED: Објаљено
     BUTTONSAVED: Сачувано.
-    BUTTONSAVEPUBLISH: 'Сачувај и објави'
     BUTTONUNPUBLISH: 'Поништи објаву'
     BUTTONUNPUBLISHDESC: 'Уклони ову страницу из објављеног сајта'
     Comments: Коментари
@@ -99,7 +97,7 @@ sr:
     METADESC: Опис
     METADESCHELP: 'Претраживачке машине користе овај садржај за приказ резултата претраживања (ипак, он не утиче на рејтинг странице).'
     METAEXTRA: 'Прилагођене мета ознаке'
-    METAEXTRAHELP: 'HTML ознаке за додатне мета информације. На пример, <meta name="audience" content="all" />'
+    METAEXTRAHELP: 'HTML ознаке за додатне мета информације. На пример, &lt;meta name="audience" content="all" /&gt;'
     MODIFIEDONDRAFTHELP: 'Страница садржи необјављене измене'
     MODIFIEDONDRAFTSHORT: Измењено
     MetadataToggle: 'Мета подаци'

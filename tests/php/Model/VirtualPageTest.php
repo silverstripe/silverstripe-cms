@@ -235,6 +235,7 @@ class VirtualPageTest extends FunctionalTest
         /** @var Page $parentPage */
         $parentPage = $this->objFromFixture('Page', 'master3');
         $parentPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
+
         /** @var VirtualPage $virtualPage */
         $virtualPage = $this->objFromFixture(VirtualPage::class, 'vp3');
         $virtualPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);

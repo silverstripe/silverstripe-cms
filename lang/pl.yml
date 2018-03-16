@@ -33,7 +33,6 @@ pl:
     RESTORE_DESC: 'Przywróć jako szkic'
     ROLLEDBACKPUBv2: 'Przywrócono opublikowaną wersję'
     ROLLEDBACKVERSIONv2: 'Przywrócono wersję #{version}.'
-    SAVEDRAFT: 'Zapisz szkic'
     SHOW_AS_LIST: 'pokaż jako listę'
     TabContent: Zawartość
     TabHistory: Historia
@@ -116,7 +115,6 @@ pl:
     BUTTONCANCELDRAFTDESC: 'Usuń zmiany i wróć do istniejącej wersji opublikowanej strony'
     BUTTONPUBLISHED: Opublikowano
     BUTTONSAVED: Zapisano
-    BUTTONSAVEPUBLISH: 'Zapisz i opublikuj'
     BUTTONUNPUBLISH: Nieopublikowane
     BUTTONUNPUBLISHDESC: 'Usuń tę stronę z opublikowanej witryny'
     Comments: Komentarze
@@ -141,7 +139,7 @@ pl:
     METADESC: Opis
     METADESCHELP: "Wyszukiwarki internetowe używają tej treści w wynikach wyszukiwania (ta treść\_nie wpłynie na ich pozycjonowanie)"
     METAEXTRA: 'Własne meta tagi'
-    METAEXTRAHELP: 'HTML zawierający dodatkowe metainformacje, n.p. <meta name="customName" content="your custom content here" />'
+    METAEXTRAHELP: 'HTML zawierający dodatkowe metainformacje, n.p. &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Na stronie znajdują się nieopublikowane zmiany'
     MODIFIEDONDRAFTSHORT: Zmodyfikowana
     MetadataToggle: Metadane

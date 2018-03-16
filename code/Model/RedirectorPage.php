@@ -32,7 +32,7 @@ class RedirectorPage extends Page
     );
 
     private static $has_one = array(
-        "LinkTo" => "SilverStripe\\CMS\\Model\\SiteTree",
+        "LinkTo" => SiteTree::class,
     );
 
     private static $table_name = 'RedirectorPage';

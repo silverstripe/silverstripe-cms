@@ -18,7 +18,6 @@ hu:
     RESTORED: '''{title}'' sikeresen helyreállítva'
     ROLLEDBACKPUBv2: 'Visszatérés a publikált verzióhoz.'
     ROLLEDBACKVERSIONv2: '#{version} verzió beállítva.'
-    SAVEDRAFT: 'Piszkozat mentése'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Másik oldal alatt'
     ParentMode_top: 'Felső szint'
@@ -71,7 +70,6 @@ hu:
     BUTTONCANCELDRAFTDESC: 'Piszkozat törlése, és vissztérés a jelenleg publikált oldalra'
     BUTTONPUBLISHED: Publikálva
     BUTTONSAVED: Elmentve
-    BUTTONSAVEPUBLISH: 'Ment és publikál'
     BUTTONUNPUBLISH: 'Publikálás visszavonása'
     BUTTONUNPUBLISHDESC: 'Oldal eltávolítása a publikált oldalról'
     Comments: Kommentárok

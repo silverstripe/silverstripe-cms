@@ -58,7 +58,6 @@ fi:
     ROLLEDBACKPUBv2: 'Palattiin takaisin julkaistuun versioon'
     ROLLEDBACKVERSIONv2: 'Palautettu versioon #{version}.'
     SAVED: 'Tallennettiin ''{title}'' onnistuneesti.'
-    SAVEDRAFT: 'Tallenna luonnos'
     SHOW_AS_LIST: 'näytä listana'
     TOO_MANY_PAGES: 'Liian monta sivua'
     TabContent: Sisältö
@@ -141,7 +140,7 @@ fi:
     ANCHORVALUE: Ankkuri
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Linkin kuvaus'
-    LINKOPENNEWWIN: 'Avataanko linkki uudessa ikkunassa/välilehdellä?'
+    LINKOPENNEWWIN: 'Linkki avataan uudessa ikkunassa/välilehdellä'
     LINKTEXT: Linkkiteksti
     SELECT_PAGE: 'Valitse sivu'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
@@ -180,7 +179,6 @@ fi:
     BUTTONDELETEDESC: 'Poista luonnoksista/julkaistuista ja siirrä arkistoon'
     BUTTONPUBLISHED: Julkaistu
     BUTTONSAVED: Tallennettu
-    BUTTONSAVEPUBLISH: 'Tallenna ja julkaise'
     BUTTONUNPUBLISH: 'Poista julkaisusta'
     BUTTONUNPUBLISHDESC: 'Poista tämä sivu julkaistulta sivustolta'
     Comments: Kommentit
@@ -214,7 +212,7 @@ fi:
     METADESC: Meta-kuvaus
     METADESCHELP: 'Hakukoneet näyttävät tämän sisällön hakutuloksissa (sisältö ei kuitenkaan vaikuta sijoitukseen hakutuloksessa).'
     METAEXTRA: 'Omat meta-tagit'
-    METAEXTRAHELP: 'HTML-tagit omia metatietoja varten. Esimerkiksi <meta name="haluamasiNimi" content="Oma sisältö tässä" />'
+    METAEXTRAHELP: 'HTML-tagit omia metatietoja varten. Esimerkiksi &lt;meta name="haluamasiNimi" content="Oma sisältö tässä" /&gt;'
     MODIFIEDONDRAFTHELP: 'Sivulla on julkaisemattomia muutoksia'
     MODIFIEDONDRAFTSHORT: Muokattu
     MetadataToggle: Meta-tiedot

@@ -15,7 +15,6 @@ et_EE:
     REMOVEDPAGE: 'Leht ''{title}'' eemaldati avaldatud saitide hulgast'
     REMOVEDPAGEFROMDRAFT: '''{title}'' eemaldatud visandi lehelt'
     RESTORED: '''{title}'' taastati edukalt'
-    SAVEDRAFT: 'Salvesta mustand'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Teise lehe all'
     ParentMode_top: 'Kõrgem tase'
@@ -66,7 +65,6 @@ et_EE:
     BUTTONCANCELDRAFTDESC: 'Kustuta oma visand ja pöördu tagasi hetkel avaldatud lehekülje kujule'
     BUTTONPUBLISHED: Avaldatud
     BUTTONSAVED: Salvestatud
-    BUTTONSAVEPUBLISH: 'Salvesta ja avalda'
     BUTTONUNPUBLISH: 'Võta maha'
     BUTTONUNPUBLISHDESC: 'Eemalda see lehekülg avalikult saidilt'
     Comments: Komentaarid
@@ -91,7 +89,7 @@ et_EE:
     METADESC: Kirjeldus
     METADESCHELP: 'Otsingumootor kasutab seda sisu otsingutulemuste kuvamiseks (kuigi see ei mõjuta nende järjestust).'
     METAEXTRA: 'Kohandatud metamärgendid'
-    METAEXTRAHELP: 'HTML-sildid täiendavate metaandmete jaoks. Nt <meta name="customName" content="your custom content here" />'
+    METAEXTRAHELP: 'HTML-sildid täiendavate metaandmete jaoks. Nt &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Lehel on avaldamata muudatusi'
     MODIFIEDONDRAFTSHORT: Muudetud
     MetadataToggle: Metaandmed

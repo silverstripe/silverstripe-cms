@@ -26,7 +26,6 @@ nb:
     RESTORE_TO_ROOT_DESC: 'Gjenopprett arkivert versjon som utkast på toppnivå'
     ROLLEDBACKPUBv2: 'Tilbakestilte til den publiserte versjonen.'
     ROLLEDBACKVERSIONv2: 'Tilbakestile til versjon #{version}.'
-    SAVEDRAFT: 'Lagre utkast'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Under en annen side'
     ParentMode_top: Toppnivå
@@ -86,7 +85,6 @@ nb:
     BUTTONCANCELDRAFTDESC: 'Slett utkast og gå tilbake til publisert versjon av denne siden'
     BUTTONPUBLISHED: Publisert
     BUTTONSAVED: Lagret
-    BUTTONSAVEPUBLISH: 'Lagre og publiser'
     BUTTONUNPUBLISH: Avpubliser
     BUTTONUNPUBLISHDESC: 'Fjern denne siden fra det publiserte nettstedet'
     Comments: Kommentarer
@@ -112,7 +110,7 @@ nb:
     METADESC: Beskrivelse
     METADESCHELP: 'Søkemotorer bruker dette innholdet for å vise søkeresultater (selv om de ikke påvirker rekkefølgen).'
     METAEXTRA: 'Egendefinerte meta-elementer'
-    METAEXTRAHELP: 'HTML-elementer for ekstra metainformasjon. For eksempel <meta name="egetNavn" content="Ditt egendefinerte innhold her" />'
+    METAEXTRAHELP: 'HTML-elementer for ekstra metainformasjon. For eksempel &lt;meta name="egetNavn" content="Ditt egendefinerte innhold her" /&gt;'
     MODIFIEDONDRAFTHELP: 'Siden har upubliserte forandringer'
     MODIFIEDONDRAFTSHORT: Endret
     MetadataToggle: Metadata

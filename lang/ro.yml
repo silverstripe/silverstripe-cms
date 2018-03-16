@@ -20,7 +20,6 @@ ro:
     RESTORED: 'Restaurare ''{title}'' cu succes'
     ROLLEDBACKPUBv2: 'Revenire la versiunea publicată'
     ROLLEDBACKVERSIONv2: 'Revenire la versiunea #{version}'
-    SAVEDRAFT: 'Salvează ciornă'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Sub altă pagină'
     ParentMode_top: 'Nivel top'
@@ -74,7 +73,6 @@ ro:
     BUTTONCANCELDRAFTDESC: 'Șterge ciorna și revenire la pagina publicată curent '
     BUTTONPUBLISHED: Publicat
     BUTTONSAVED: Salvat
-    BUTTONSAVEPUBLISH: 'Salvează & publică'
     BUTTONUNPUBLISH: Ascunde
     BUTTONUNPUBLISHDESC: 'Șterge pagina din site-ul publicat'
     Comments: Comentarii
@@ -99,7 +97,7 @@ ro:
     METADESC: Descriere
     METADESCHELP: 'Motoarele de căutare folosesc acest conținut pentru a afișa rezultatele căutării (deși nu v-a influența nota acestuia)'
     METAEXTRA: 'Etichetă Meta preferențială'
-    METAEXTRAHELP: 'Etichetele HTML pentru informațiile meta adiționale. De exemplu <meta name="numePreferat" content="conținut preferențial aici" />'
+    METAEXTRAHELP: 'Etichetele HTML pentru informațiile meta adiționale. De exemplu &lt;meta name="numePreferat" content="conținut preferențial aici" /&gt;'
     MODIFIEDONDRAFTHELP: 'Pagina are modificări nepublicate'
     MODIFIEDONDRAFTSHORT: Modificat
     MetadataToggle: Metadata

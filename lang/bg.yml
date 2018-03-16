@@ -53,7 +53,6 @@ bg:
     ROLLEDBACKPUBv2: 'Беше върнато до публикуваната версия'
     ROLLEDBACKVERSIONv2: 'Беше върната версия #{version}.'
     SAVED: 'Страница ''{title}'' беше записана успешно.'
-    SAVEDRAFT: 'Запиши чернова'
     SHOW_AS_LIST: 'покажи в списък'
     TOO_MANY_PAGES: 'Твърде много страници'
     TabContent: Съдържание
@@ -150,7 +149,6 @@ bg:
     BUTTONDELETEDESC: 'Премахни от чернова/публикация и запиши в архива'
     BUTTONPUBLISHED: Публикувана
     BUTTONSAVED: Записана
-    BUTTONSAVEPUBLISH: 'Запиши и публикувай'
     BUTTONUNPUBLISH: 'Премахни от публикация'
     BUTTONUNPUBLISHDESC: 'Премахни тази страница от публикувания сайт'
     Comments: Коментари
@@ -179,7 +177,7 @@ bg:
     METADESC: Описание
     METADESCHELP: 'Търсачките използват това съдържание при показване на резултатите от търсенето (въпреки, че това няма да повлияе на тяхното класиране).'
     METAEXTRA: 'Собствени етикети'
-    METAEXTRAHELP: 'HTML тагове за допълнителна meta информация. Например <meta name="customName" content="вашето съдържание" />'
+    METAEXTRAHELP: 'HTML тагове за допълнителна meta информация. Например &lt;meta name="customName" content="вашето съдържание" /&gt;'
     MODIFIEDONDRAFTHELP: 'По страницата са правени промени, които не са публикувани'
     MODIFIEDONDRAFTSHORT: Променен
     MetadataToggle: 'Meta данни за страницата'

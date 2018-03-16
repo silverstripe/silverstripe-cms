@@ -197,7 +197,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         // Redirector links are a third
         $rp = new RedirectorPage();
         $rp->Title = "redirector";
-        $rp->LinkType = 'Internal';
+        $rp->RedirectionType = 'Internal';
         $rp->LinkToID = $p->ID;
         $rp->write();
         $this->assertTrue($rp->publishRecursive());
@@ -207,9 +207,8 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         $this->assertFalse($rp->HasBrokenLink);
 
         // Unpublishing doesn't affect broken state on live (draft is source of truth)
-        $p->doUnpublish();
-        $p2Live = Versioned::get_one_by_stage(SiteTree::class, 'Live', '"SiteTree"."ID" = ' . $p2->ID);
-        $rpLive = Versioned::get_one_by_stage(SiteTree::class, 'Live', '"SiteTree"."ID" = ' . $rp->ID);
+        $p2Live = Versioned::get_by_stage(SiteTree::class, Versioned::LIVE)->byID($p2->ID);
+        $rpLive = Versioned::get_by_stage(SiteTree::class, Versioned::LIVE)->byID($rp->ID);
         $this->assertEquals(0, $p2Live->HasBrokenLink);
         $this->assertEquals(0, $rpLive->HasBrokenLink);
 

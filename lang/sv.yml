@@ -35,7 +35,6 @@ sv:
     ROLLEDBACKPUBv2: 'Återställde till den publicerade versionen.'
     ROLLEDBACKVERSIONv2: 'Återställde till version #{version}.'
     SAVED: 'Sparade  ''{title}'' lyckades.'
-    SAVEDRAFT: 'Spara utkast'
     UNPUBLISH_AND_ARCHIVE: 'Avpublicerad och arkivera'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Skapa sida'
@@ -114,7 +113,6 @@ sv:
     BUTTONDELETEDESC: 'Radera från utkast och live, och lägg till i arkiv'
     BUTTONPUBLISHED: Publicerad
     BUTTONSAVED: Sparad
-    BUTTONSAVEPUBLISH: 'Spara & publicera'
     BUTTONUNPUBLISH: Avpublicera
     BUTTONUNPUBLISHDESC: 'Ta bort den här sidan från den publicerade sajten'
     Comments: Kommentarer
@@ -145,7 +143,7 @@ sv:
     METADESC: Metabeskrivning
     METADESCHELP: 'Sökmotorer använder detta innehåll vid visning av sökresultatet (rangordningen påverkas dock inte av detta innehåll).'
     METAEXTRA: 'Egna metataggar'
-    METAEXTRAHELP: 'HTML taggar för övrig meta information. Till exempel <meta name="Namn" content="innehållet kommer här" />'
+    METAEXTRAHELP: 'HTML taggar för övrig meta information. Till exempel &lt;meta name="Namn" content="innehållet kommer här" /&gt;'
     MODIFIEDONDRAFTHELP: 'Sidan har ej publicerade ändringar'
     MODIFIEDONDRAFTSHORT: Ändrad
     MetadataToggle: Metadata

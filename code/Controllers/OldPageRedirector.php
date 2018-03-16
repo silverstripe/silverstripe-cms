@@ -73,20 +73,18 @@ class OldPageRedirector extends Extension
                 'ParentID' => $parent->ID,
             ));
         }
+        /** @var SiteTree $page */
         $page = $pages->first();
-
         if (!$page) {
             // If we haven't found a candidate, lets resort to finding an old page with this URL segment
             $pages = $pages
-                ->filter(array(
-                    'WasPublished' => true,
-                ))
+                ->filter('WasPublished', 1)
                 ->sort('LastEdited', 'DESC')
                 ->setDataQueryParam("Versioned.mode", 'all_versions');
 
             $record = $pages->first();
             if ($record) {
-                $page = SiteTree::get()->byID($record->RecordID);
+                $page = SiteTree::get()->byID($record->ID);
                 $redirect = true;
             }
         }

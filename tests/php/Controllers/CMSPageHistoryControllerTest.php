@@ -2,16 +2,15 @@
 
 namespace SilverStripe\CMS\Tests\Controllers;
 
+use Page;
+use SilverStripe\CMS\Controllers\CMSPageHistoryController;
 use SilverStripe\Control\Controller;
+use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Forms\FieldGroup;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\HTMLReadonlyField;
 use SilverStripe\Forms\TextField;
-use SilverStripe\Versioned\Versioned;
-use SilverStripe\CMS\Controllers\CMSPageHistoryController;
-use SilverStripe\Dev\FunctionalTest;
-use Page;
 
 class CMSPageHistoryControllerTest extends FunctionalTest
 {
@@ -20,6 +19,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
     protected $versionUnpublishedCheck;
     protected $versionPublishCheck;
     protected $versionUnpublishedCheck2;
+    protected $versionPublishCheck2;
     protected $page;
 
     public function setUp()
@@ -33,22 +33,20 @@ class CMSPageHistoryControllerTest extends FunctionalTest
         $this->page->URLSegment = "test";
         $this->page->Content = "new content";
         $this->page->write();
-        $this->versionUnpublishedCheck = $this->page->Version;
+        $this->versionUnpublishedCheck = $this->page->Version; // v1
 
         $this->page->Content = "some further content";
-        $this->page->write();
-        $this->page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
-        $this->versionPublishCheck = $this->page->Version;
+        $this->page->publishSingle();
+        $this->versionPublishCheck = $this->page->Version; // v2
 
         $this->page->Content = "No, more changes please";
         $this->page->Title = "Changing titles too";
         $this->page->write();
-        $this->versionUnpublishedCheck2 = $this->page->Version;
+        $this->versionUnpublishedCheck2 = $this->page->Version; // v3
 
         $this->page->Title = "Final Change";
-        $this->page->write();
-        $this->page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
-        $this->versionPublishCheck2 = $this->page->Version;
+        $this->page->publishSingle();
+        $this->versionPublishCheck2 = $this->page->Version; // v4
     }
 
     public function testGetEditForm()
