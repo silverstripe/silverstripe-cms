@@ -58,7 +58,6 @@ sk:
     ROLLEDBACKPUBv2: 'Vrátené späť na zverejnenú verziu.'
     ROLLEDBACKVERSIONv2: 'Vrátené späť na verziu #{version}.'
     SAVED: 'Uložené ''{title}'' úspešne.'
-    SAVEDRAFT: 'Uložiť koncept'
     SHOW_AS_LIST: 'ukázať ako zoznam'
     TOO_MANY_PAGES: 'Príliš veľa stránok'
     TabContent: Obsah
@@ -166,7 +165,6 @@ sk:
     BUTTONDELETEDESC: 'Odstrániť z konceptu/publikovania a presunúť do archívu'
     BUTTONPUBLISHED: Publikované
     BUTTONSAVED: Uložené
-    BUTTONSAVEPUBLISH: 'Uložiť a zverejniť'
     BUTTONUNPUBLISH: Nezverejniť
     BUTTONUNPUBLISHDESC: 'Odstrániť túto stránku z publikovaných na webe'
     Comments: Komentáre
@@ -199,7 +197,7 @@ sk:
     METADESC: 'Meta Popis'
     METADESCHELP: 'Vyhľadávače používajú tento obsah pre zobrazovanie výsledkov vyhľadávania (aj keď to nebude mať vplyv na ich hodnotenie).'
     METAEXTRA: 'Vlastné Meta Tagy'
-    METAEXTRAHELP: 'HTML tagy pre ďalšie meta informácie. Napríklad <meta name="vlastnýnazov" content="vlastný obsah tu"  />'
+    METAEXTRAHELP: 'HTML tagy pre ďalšie meta informácie. Napríklad &lt;meta name="vlastnýnazov" content="vlastný obsah tu"  /&gt;'
     MODIFIEDONDRAFTHELP: 'Stránka má nezverejnené zmeny'
     MODIFIEDONDRAFTSHORT: Zmenené
     MetadataToggle: Metaúdaje

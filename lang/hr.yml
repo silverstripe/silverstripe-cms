@@ -51,7 +51,6 @@ hr:
     ROLLEDBACKPUBv2: 'Vraćeno na objavljenu verziju'
     ROLLEDBACKVERSIONv2: 'Vraćeno na verziju #{version}.'
     SAVED: 'Uspješno spremljen ''{title}'''
-    SAVEDRAFT: 'Spremiti nacrt'
     SHOW_AS_LIST: 'prikaži kao listu'
     TOO_MANY_PAGES: 'Previše stranica'
     TabContent: Sadržaj
@@ -157,7 +156,6 @@ hr:
     BUTTONDELETEDESC: 'Ukloni iz nacrta/objavljeno i pošalji u arhivu'
     BUTTONPUBLISHED: Objavljeno
     BUTTONSAVED: Spremljeno
-    BUTTONSAVEPUBLISH: 'Spremi i objavi'
     BUTTONUNPUBLISH: Odjavi
     BUTTONUNPUBLISHDESC: 'Izbrišite ovu stranicu sa objavljene'
     Comments: Komentari

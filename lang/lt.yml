@@ -26,7 +26,6 @@ lt:
     RESTORE_TO_ROOT_DESC: 'Atstatyti suarchyvuotą versiją kaip aukščiausio lygio juodraštinį puslapį'
     ROLLEDBACKPUBv2: 'Sugrįžta prie publikuotos versijos.'
     ROLLEDBACKVERSIONv2: 'Sugrįžta prie  #{version} versijos.'
-    SAVEDRAFT: 'Išsaugoti juodraštį'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Po kitu puslapiu'
     ParentMode_top: 'Aukščiausias lygmuo'
@@ -86,7 +85,6 @@ lt:
     BUTTONCANCELDRAFTDESC: 'Ištrinti juodraštį ir grįžti prie šiuo metu publikuojamo puslapio'
     BUTTONPUBLISHED: Publikuota
     BUTTONSAVED: Išsaugota
-    BUTTONSAVEPUBLISH: 'Išsaugoti ir publikuoti'
     BUTTONUNPUBLISH: Nebepublikuoti
     BUTTONUNPUBLISHDESC: 'Pašalinti šį puslapį iš publikuojamos svetainės'
     Comments: Komentarai
@@ -112,7 +110,7 @@ lt:
     METADESC: 'Meta aprašymas'
     METADESCHELP: 'Paieškos sistemos naudoja šį turinį rodydamos paieškos rezultatus (tačiau tai neturi įtakos paieškos rezultatų reitingui).'
     METAEXTRA: 'Kitos meta žymės'
-    METAEXTRAHELP: 'HTML žymos papildomai meta informacijai. Pavyzdžiui, <meta name="kitaMetaZyme" content="papildomas turinys" />'
+    METAEXTRAHELP: 'HTML žymos papildomai meta informacijai. Pavyzdžiui, &lt;meta name="kitaMetaZyme" content="papildomas turinys" /&gt;'
     MODIFIEDONDRAFTHELP: 'Puslapyje yra nepublikuoto turinio'
     MODIFIEDONDRAFTSHORT: Pakeistas
     MetadataToggle: Metaduomenys

@@ -58,7 +58,6 @@ es_MX:
     ROLLEDBACKPUBv2: 'Regresar a la versión publicada.'
     ROLLEDBACKVERSIONv2: 'Restaurada a la versión #{version}.'
     SAVED: '''{title}'' guardada con éxito.'
-    SAVEDRAFT: 'Guardar borrador'
     SHOW_AS_LIST: 'Mostrar como lista'
     TOO_MANY_PAGES: 'Demasiadas páginas'
     TabContent: Contenido
@@ -178,7 +177,6 @@ es_MX:
     BUTTONDELETEDESC: 'Eliminar de borrador/público y archivar'
     BUTTONPUBLISHED: Publicado
     BUTTONSAVED: Guardado
-    BUTTONSAVEPUBLISH: 'Guardar y publicar'
     BUTTONUNPUBLISH: 'Ocultar al público'
     BUTTONUNPUBLISHDESC: 'Quitar ésta página del sitio público'
     Comments: Comentarios

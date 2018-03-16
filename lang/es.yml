@@ -37,7 +37,6 @@ es:
     ROLLEDBACKPUBv2: Restaurado
     ROLLEDBACKVERSIONv2: 'Versión #{version} restaurada'
     SAVED: '''{title}'' guardado satisfactoriamente.'
-    SAVEDRAFT: 'Guardar borrador'
     UNPUBLISH_AND_ARCHIVE: 'Despublicar y archivar'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Añadir página'
@@ -119,7 +118,6 @@ es:
     BUTTONDELETEDESC: 'Eliminar desde el borrador/publicadas y enviar al archivo'
     BUTTONPUBLISHED: Publicado
     BUTTONSAVED: Guardado
-    BUTTONSAVEPUBLISH: 'Guardar y publicar'
     BUTTONUNPUBLISH: 'Sin Publicar'
     BUTTONUNPUBLISHDESC: 'Elimine esta página del sitio publicado'
     Comments: Comentarios
@@ -148,7 +146,7 @@ es:
     METADESC: Descripción
     METADESCHELP: 'Los motores de búsqueda usan este contenido para mostrar resultados de búsqueda (aunque no influirá en su ranking).'
     METAEXTRA: 'Meta Tags Personalizadas'
-    METAEXTRAHELP: 'Etiquetas HTML para meta información adicional. Por ejemplo <meta name="nombrePersonalizado" content="tu contenido personalizado aquí" />'
+    METAEXTRAHELP: 'Etiquetas HTML para meta información adicional. Por ejemplo &lt;meta name="nombrePersonalizado" content="tu contenido personalizado aquí" /&gt;'
     MODIFIEDONDRAFTHELP: 'La página tiene cambios sin publicar'
     MODIFIEDONDRAFTSHORT: Modificado
     MetadataToggle: Metadata
