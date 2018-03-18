@@ -17,7 +17,6 @@ class ContentControllerSearchExtension extends Extension
 {
     private static $allowed_actions = array(
         'SearchForm',
-        'results',
     );
 
     /**
