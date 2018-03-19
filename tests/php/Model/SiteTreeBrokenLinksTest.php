@@ -2,16 +2,15 @@
 
 namespace SilverStripe\CMS\Tests\Model;
 
+use Page;
+use Silverstripe\Assets\Dev\TestAssetStore;
+use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\Versioned\Versioned;
+use SilverStripe\CMS\Model\VirtualPage;
+use SilverStripe\Dev\SapphireTest;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
-use SilverStripe\CMS\Model\VirtualPage;
-use SilverStripe\CMS\Model\RedirectorPage;
-use SilverStripe\Assets\File;
-use SilverStripe\Dev\SapphireTest;
-use Silverstripe\Assets\Dev\TestAssetStore;
-use Page;
+use SilverStripe\Versioned\Versioned;
 
 /**
  * Tests {@see SiteTreeLinkTracking} broken links feature: LinkTracking
@@ -94,47 +93,12 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         $this->assertTrue($rp->HasBrokenLink, 'Broken redirector page IS marked as such');
     }
 
-    public function testDeletingFileMarksBackedPagesAsBroken()
-    {
-        // Test entry
-        $file = new File();
-        $file->setFromString('test', 'test-file.txt');
-        $file->write();
-
-        /** @var Page $obj */
-        $obj = $this->objFromFixture('Page', 'content');
-        $obj->Content = sprintf(
-            '<p><a href="[file_link,id=%d]">Working Link</a></p>',
-            $file->ID
-        );
-        $obj->write();
-        $this->assertTrue($obj->publishRecursive());
-        // Confirm that it isn't marked as broken to begin with
-
-        $obj = SiteTree::get()->byID($obj->ID);
-        $this->assertEquals(0, $obj->HasBrokenFile);
-
-        $liveObj = Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, "\"SiteTree\".\"ID\" = $obj->ID");
-        $this->assertEquals(0, $liveObj->HasBrokenFile);
-
-        // Delete the file
-        $file->delete();
-
-        // Confirm that it is marked as broken in stage
-        $obj = SiteTree::get()->byID($obj->ID);
-        $this->assertEquals(1, $obj->HasBrokenFile);
-
-        // Publishing this page marks it as broken on live too
-        $obj->publishRecursive();
-        $liveObj = Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, "\"SiteTree\".\"ID\" = $obj->ID");
-        $this->assertEquals(1, $liveObj->HasBrokenFile);
-    }
-
     public function testDeletingMarksBackLinkedPagesAsBroken()
     {
         // Set up two published pages with a link from content -> about
         $linkDest = $this->objFromFixture('Page', 'about');
 
+        /** @var Page $linkSrc */
         $linkSrc = $this->objFromFixture('Page', 'content');
         $linkSrc->Content = "<p><a href=\"[sitetree_link,id=$linkDest->ID]\">about us</a></p>";
         $linkSrc->write();
@@ -207,7 +171,9 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         $this->assertFalse($rp->HasBrokenLink);
 
         // Unpublishing doesn't affect broken state on live (draft is source of truth)
+        /** @var SiteTree $p2Live */
         $p2Live = Versioned::get_by_stage(SiteTree::class, Versioned::LIVE)->byID($p2->ID);
+        /** @var SiteTree $rpLive */
         $rpLive = Versioned::get_by_stage(SiteTree::class, Versioned::LIVE)->byID($rp->ID);
         $this->assertEquals(0, $p2Live->HasBrokenLink);
         $this->assertEquals(0, $rpLive->HasBrokenLink);
@@ -215,8 +181,10 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         // Delete the source page, confirm that the VP, RP and page 2 have broken links on draft
         $p->delete();
         $p2->flushCache();
+        /** @var SiteTree $p2 */
         $p2 = DataObject::get_by_id(SiteTree::class, $p2->ID);
         $rp->flushCache();
+        /** @var RedirectorPage $rp */
         $rp = DataObject::get_by_id(SiteTree::class, $rp->ID);
         $this->assertEquals(1, $p2->HasBrokenLink);
         $this->assertEquals(1, $rp->HasBrokenLink);
@@ -260,7 +228,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         // Redirector links are a third
         $redirectorPage = new RedirectorPage();
         $redirectorPage->Title = "redirector";
-        $redirectorPage->LinkType = 'Internal';
+        $redirectorPage->RedirectionType = 'Internal';
         $redirectorPage->LinkToID = $page->ID;
         $redirectorPage->write();
         $this->assertTrue($redirectorPage->publishRecursive());
@@ -273,8 +241,10 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         $page->delete();
 
         $page2->flushCache();
+        /** @var SiteTree $page2 */
         $page2 = DataObject::get_by_id(SiteTree::class, $page2->ID);
         $redirectorPage->flushCache();
+        /** @var RedirectorPage $redirectorPage */
         $redirectorPage = DataObject::get_by_id(SiteTree::class, $redirectorPage->ID);
         $this->assertEquals(1, $page2->HasBrokenLink);
         $this->assertEquals(1, $redirectorPage->HasBrokenLink);

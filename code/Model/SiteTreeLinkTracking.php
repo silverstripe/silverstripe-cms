@@ -76,7 +76,19 @@ class SiteTreeLinkTracking extends DataExtension
 
     public function onBeforeWrite()
     {
-        $this->augmentSyncLinkTracking();
+        // Trigger link tracking
+        $this->owner->syncLinkTracking();
+    }
+
+    /**
+     * Public method to call when triggering symlink extension. Can be called externally,
+     * or overridden by class implementations.
+     *
+     * {@see SiteTreeLinkTracking::augmentSyncLinkTracking}
+     */
+    public function syncLinkTracking()
+    {
+        $this->owner->extend('augmentSyncLinkTracking');
     }
 
     /**

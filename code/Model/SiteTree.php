@@ -48,6 +48,7 @@ use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
+use SilverStripe\ORM\HasManyList;
 use SilverStripe\ORM\HiddenClass;
 use SilverStripe\ORM\Hierarchy\Hierarchy;
 use SilverStripe\ORM\ManyManyList;
@@ -96,12 +97,12 @@ use Subsite;
  * @method ManyManyList ViewerGroups() List of groups that can view this object.
  * @method ManyManyList EditorGroups() List of groups that can edit this object.
  * @method SiteTree Parent()
+ * @method HasManyList|SiteTreeLink[] BackLinks() List of SiteTreeLink objects attached to this page
  *
  * @mixin Hierarchy
  * @mixin Versioned
  * @mixin RecursivePublishable
  * @mixin SiteTreeLinkTracking Added via linktracking.yml to DataObject directly
- * @mixin SiteTreeTrackedPage
  * @mixin InheritedPermissionsExtension
  */
 class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvider, CMSPreviewable, Resettable, Flushable, MemberCacheFlusher
@@ -206,9 +207,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         "URLSegment" => true,
     );
 
-    private static $has_many = array(
-        "VirtualPages" => VirtualPage::class . '.CopyContentFrom'
-    );
+    private static $has_many = [
+        "VirtualPages" => VirtualPage::class . '.CopyContentFrom',
+        'BackLinks' => SiteTreeLink::class . '.Linked',
+    ];
 
     private static $owned_by = array(
         "VirtualPages"
@@ -263,7 +265,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     private static $extensions = [
         Hierarchy::class,
         Versioned::class,
-        SiteTreeTrackedPage::class,
         InheritedPermissionsExtension::class,
     ];
 
@@ -1495,8 +1496,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $count++;
         }
 
-        $this->syncLinkTracking();
-
         // Check to see if we've only altered fields that shouldn't affect versioning
         $fieldsIgnoredByVersioning = array('HasBrokenLink', 'Status', 'HasBrokenFile', 'ToDo', 'VersionID', 'SaveCount');
         $changedFields = array_keys($this->getChangedFields(true, 2));
@@ -1708,6 +1707,25 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             '"SiteTree"."ID"' => $this->ID
         ]);
         return ($liveRecord) ? $liveRecord->URLSegment : null;
+    }
+
+    /**
+     * Get the back-link tracking objects that link to this page
+     *
+     * @retun ArrayList|DataObject[]
+     */
+    public function BackLinkTracking()
+    {
+        // @todo - Implement PolymorphicManyManyList to replace this
+        $list = ArrayList::create();
+        foreach ($this->BackLinks() as $link) {
+            // Ensure parent record exists
+            $item = $link->Parent();
+            if ($item && $item->isInDB()) {
+                $list->push($item);
+            }
+        }
+        return $list;
     }
 
     /**
