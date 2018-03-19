@@ -138,13 +138,13 @@ class ContentControllerTest extends FunctionalTest
         $linkedPage = new SiteTree();
         $linkedPage->URLSegment = 'linked-page';
         $linkedPage->write();
-        $linkedPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
+        $linkedPage->publishSingle();
 
         $page = new SiteTree();
         $page->URLSegment = 'linking-page';
         $page->Content = sprintf('<a href="[sitetree_link,id=%s]">Testlink</a>', $linkedPage->ID);
         $page->write();
-        $page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
+        $page->publishSingle();
 
         $link = $page->RelativeLink();
         $response = $this->get($link);

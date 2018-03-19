@@ -163,10 +163,10 @@ class SiteTreeLinkTracking extends DataExtension
      * @param string $class Class name to toggle.
      * @param bool $toggle On or off.
      */
-    protected function toggleElementClass($domReference, $class, $toggle)
+    protected function toggleElementClass(DOMElement $domReference, $class, $toggle)
     {
         // Get all existing classes.
-        $classes = explode(' ', trim($domReference->getAttribute('class')));
+        $classes = array_filter(explode(' ', trim($domReference->getAttribute('class'))));
 
         // Add or remove the broken class from the link, depending on the link status.
         if ($toggle) {
