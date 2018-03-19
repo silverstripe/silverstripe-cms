@@ -3,6 +3,7 @@
 namespace SilverStripe\CMS\Model;
 
 use DOMElement;
+use SilverStripe\Assets\Shortcodes\FileLinkTracking;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBHTMLText;
@@ -20,7 +21,6 @@ use SilverStripe\View\Parsers\HTMLValue;
  * Note that since both SiteTree and File are versioned, LinkTracking and ImageTracking will
  * only be enabled for the Stage record.
  *
- * {@see SiteTreeTrackedPage} for the extension applied to {@see SiteTree}
  * @property DataObject|SiteTreeLinkTracking $owner
  * @property bool $HasBrokenLink True if any page or anchor is broken
  * @method ManyManyList LinkTracking() List of site pages linked on this dataobject
@@ -76,8 +76,10 @@ class SiteTreeLinkTracking extends DataExtension
 
     public function onBeforeWrite()
     {
-        // Trigger link tracking
-        $this->owner->syncLinkTracking();
+        // Trigger link tracking (unless this would also be triggered by FileLinkTracking)
+        if (!$this->owner->hasExtension(FileLinkTracking::class)) {
+            $this->owner->syncLinkTracking();
+        }
     }
 
     /**

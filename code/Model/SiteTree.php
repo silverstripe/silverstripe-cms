@@ -103,6 +103,7 @@ use Subsite;
  * @mixin Versioned
  * @mixin RecursivePublishable
  * @mixin SiteTreeLinkTracking Added via linktracking.yml to DataObject directly
+ * @mixin FileLinkTracking Added via filetracking.yml in silverstripe/assets
  * @mixin InheritedPermissionsExtension
  */
 class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvider, CMSPreviewable, Resettable, Flushable, MemberCacheFlusher
