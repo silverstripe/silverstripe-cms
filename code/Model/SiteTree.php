@@ -4,6 +4,7 @@ namespace SilverStripe\CMS\Model;
 
 use Page;
 use Psr\SimpleCache\CacheInterface;
+use SilverStripe\Assets\Shortcodes\FileLinkTracking;
 use SilverStripe\CampaignAdmin\AddToCampaignHandler_FormAction;
 use SilverStripe\CMS\Controllers\CMSPageEditController;
 use SilverStripe\CMS\Controllers\ContentController;
