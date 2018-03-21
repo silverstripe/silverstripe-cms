@@ -17,7 +17,7 @@ use SilverStripe\Versioned\Versioned;
 class VirtualPageTest extends FunctionalTest
 {
     protected static $fixture_file = 'VirtualPageTest.yml';
-    protected static $use_draft_site = false;
+
     protected $autoFollowRedirection = false;
 
     protected static $extra_dataobjects = [
@@ -58,6 +58,12 @@ class VirtualPageTest extends FunctionalTest
             'non_virtual_fields',
             array('MyNonVirtualField', 'MySharedNonVirtualField')
         );
+
+        // Ensure all pages are published
+        /** @var Page $page */
+        foreach (Page::get() as $page) {
+            $page->publishSingle();
+        }
     }
 
     /**
@@ -66,11 +72,13 @@ class VirtualPageTest extends FunctionalTest
      */
     public function testEditingSourcePageUpdatesVirtualPages()
     {
+        /** @var Page $master */
         $master = $this->objFromFixture('Page', 'master');
         $master->Title = "New title";
         $master->MenuTitle = "New menutitle";
         $master->Content = "<p>New content</p>";
         $master->write();
+        $master->publishSingle();
 
         $vp1 = $this->objFromFixture(VirtualPage::class, 'vp1');
         $vp2 = $this->objFromFixture(VirtualPage::class, 'vp2');
@@ -619,16 +627,19 @@ class VirtualPageTest extends FunctionalTest
 
     public function testVirtualPageRendersCorrectTemplate()
     {
-        $this->useDraftSite(true);
         $this->useTestTheme(dirname(__FILE__), 'virtualpagetest', function () {
             $page = new VirtualPageTest_ClassA();
             $page->Title = 'Test Page';
             $page->Content = 'NotThisContent';
             $page->MyInitiallyCopiedField = 'TestContent';
             $page->write();
+            $page->publishSingle();
+
             $vp = new VirtualPage();
             $vp->CopyContentFromID = $page->ID;
             $vp->write();
+            $vp->publishSingle();
+
             $response = $this->get($vp->Link());
             $this->assertEquals(200, $response->getStatusCode());
             $this->assertContains('TestContent', $response->getBody());
@@ -639,9 +650,13 @@ class VirtualPageTest extends FunctionalTest
             $page = new VirtualPageTest_ClassB();
             $page->Title = 'Test Page B';
             $page->write();
+            $page->publishSingle();
+
             $vp = new VirtualPage();
             $vp->CopyContentFromID = $page->ID;
             $vp->write();
+            $vp->publishSingle();
+
             $response = $this->get($vp->Link());
             $this->assertEquals(200, $response->getStatusCode());
             $this->assertContains('Test Page B', $response->getBody());

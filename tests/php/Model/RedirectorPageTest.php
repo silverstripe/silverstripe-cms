@@ -2,6 +2,7 @@
 
 namespace SilverStripe\CMS\Tests\Model;
 
+use Page;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\RedirectorPageController;
 use SilverStripe\Control\Director;
@@ -10,13 +11,19 @@ use SilverStripe\Dev\FunctionalTest;
 class RedirectorPageTest extends FunctionalTest
 {
     protected static $fixture_file = 'RedirectorPageTest.yml';
-    protected static $use_draft_site = true;
+
     protected $autoFollowRedirection = false;
 
     public function setUp()
     {
         parent::setUp();
         Director::config()->update('alternate_base_url', 'http://www.mysite.com/');
+
+        // Ensure all pages are published
+        /** @var Page $page */
+        foreach (Page::get() as $page) {
+            $page->publishSingle();
+        }
     }
 
     public function testGoodRedirectors()

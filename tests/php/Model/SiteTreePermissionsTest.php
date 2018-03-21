@@ -2,6 +2,7 @@
 
 namespace SilverStripe\CMS\Tests\Model;
 
+use Page;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Dev\FunctionalTest;
@@ -27,20 +28,25 @@ class SiteTreePermissionsTest extends FunctionalTest
     {
         parent::setUp();
 
-        $this->useDraftSite();
-
         // we're testing HTTP status codes before being redirected to login forms
         $this->autoFollowRedirection = false;
+
+        // Ensure all pages are published
+        /** @var Page $page */
+        foreach (Page::get() as $page) {
+            if ($page->URLSegment !== 'draft-only') {
+                $page->publishSingle();
+            }
+        }
     }
 
 
     public function testAccessingStageWithBlankStage()
     {
-        $this->useDraftSite(false);
         $this->autoFollowRedirection = false;
 
         /** @var Page $draftOnlyPage */
-        $draftOnlyPage = $this->objFromFixture('Page', 'draftOnlyPage');
+        $draftOnlyPage = $this->objFromFixture(Page::class, 'draftOnlyPage');
         $this->logOut();
 
         $response = $this->get($draftOnlyPage->URLSegment . '?stage=Live');
@@ -69,7 +75,7 @@ class SiteTreePermissionsTest extends FunctionalTest
         $response = $this->get($draftOnlyPage->URLSegment . '?stage=Stage');
         $this->assertEquals('200', $response->getStatusCode());
 
-        // Stage is remembered from last request
+        $draftOnlyPage->publishSingle();
         $response = $this->get($draftOnlyPage->URLSegment);
         $this->assertEquals('200', $response->getStatusCode());
     }
@@ -78,7 +84,7 @@ class SiteTreePermissionsTest extends FunctionalTest
     {
         // Set up fixture - a published page deleted from draft
         $this->logInWithPermission("ADMIN");
-        $page = $this->objFromFixture('Page', 'restrictedEditOnlySubadminGroup');
+        $page = $this->objFromFixture(Page::class, 'restrictedEditOnlySubadminGroup');
         $pageID = $page->ID;
         $this->assertTrue($page->publishRecursive());
         $page->delete();
@@ -105,7 +111,7 @@ class SiteTreePermissionsTest extends FunctionalTest
     {
         // Set up fixture - an unpublished page
         $this->logInWithPermission("ADMIN");
-        $page = $this->objFromFixture('Page', 'restrictedEditOnlySubadminGroup');
+        $page = $this->objFromFixture(Page::class, 'restrictedEditOnlySubadminGroup');
         $pageID = $page->ID;
         $page->doUnpublish();
 
@@ -128,7 +134,7 @@ class SiteTreePermissionsTest extends FunctionalTest
     {
         // Find a page that exists and delete it from both stage and published
         $this->logInWithPermission("ADMIN");
-        $page = $this->objFromFixture('Page', 'restrictedEditOnlySubadminGroup');
+        $page = $this->objFromFixture(Page::class, 'restrictedEditOnlySubadminGroup');
         $pageID = $page->ID;
         $page->doUnpublish();
         $page->delete();
@@ -145,11 +151,10 @@ class SiteTreePermissionsTest extends FunctionalTest
 
     public function testCanViewStage()
     {
-        $this->useDraftSite(false); // useDraftSite deliberately disables checking the stage as part of canView
-
         // Get page & make sure it exists on Live
-        $page = $this->objFromFixture('Page', 'standardpage');
-        $page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
+        /** @var Page $page */
+        $page = $this->objFromFixture(Page::class, 'standardpage');
+        $page->publishSingle();
 
         // Then make sure there's a new version on Stage
         $page->Title = 1;
@@ -163,13 +168,11 @@ class SiteTreePermissionsTest extends FunctionalTest
 
         $this->assertTrue($page->canViewStage('Live', $editor));
         $this->assertTrue($page->canViewStage('Stage', $editor));
-
-        $this->useDraftSite();
     }
 
     public function testAccessTabOnlyDisplaysWithGrantAccessPermissions()
     {
-        $page = $this->objFromFixture('Page', 'standardpage');
+        $page = $this->objFromFixture(Page::class, 'standardpage');
 
         $subadminuser = $this->objFromFixture(Member::class, 'subadmin');
         Security::setCurrentUser($subadminuser);
@@ -200,7 +203,7 @@ class SiteTreePermissionsTest extends FunctionalTest
 
     public function testRestrictedViewLoggedInUsers()
     {
-        $page = $this->objFromFixture('Page', 'restrictedViewLoggedInUsers');
+        $page = $this->objFromFixture(Page::class, 'restrictedViewLoggedInUsers');
 
         // unauthenticated users
         $this->assertFalse(
@@ -233,7 +236,7 @@ class SiteTreePermissionsTest extends FunctionalTest
 
     public function testRestrictedViewOnlyTheseUsers()
     {
-        $page = $this->objFromFixture('Page', 'restrictedViewOnlyWebsiteUsers');
+        $page = $this->objFromFixture(Page::class, 'restrictedViewOnlyWebsiteUsers');
 
         // unauthenticcated users
         $this->assertFalse(
@@ -281,7 +284,7 @@ class SiteTreePermissionsTest extends FunctionalTest
 
     public function testRestrictedEditLoggedInUsers()
     {
-        $page = $this->objFromFixture('Page', 'restrictedEditLoggedInUsers');
+        $page = $this->objFromFixture(Page::class, 'restrictedEditLoggedInUsers');
 
         // unauthenticcated users
         $this->assertFalse(
@@ -307,7 +310,7 @@ class SiteTreePermissionsTest extends FunctionalTest
 
     public function testRestrictedEditOnlySubadminGroup()
     {
-        $page = $this->objFromFixture('Page', 'restrictedEditOnlySubadminGroup');
+        $page = $this->objFromFixture(Page::class, 'restrictedEditOnlySubadminGroup');
 
         // unauthenticated users
         $this->assertFalse(
@@ -332,8 +335,8 @@ class SiteTreePermissionsTest extends FunctionalTest
 
     public function testRestrictedViewInheritance()
     {
-        $parentPage = $this->objFromFixture('Page', 'parent_restrictedViewOnlySubadminGroup');
-        $childPage = $this->objFromFixture('Page', 'child_restrictedViewOnlySubadminGroup');
+        $parentPage = $this->objFromFixture(Page::class, 'parent_restrictedViewOnlySubadminGroup');
+        $childPage = $this->objFromFixture(Page::class, 'child_restrictedViewOnlySubadminGroup');
 
         // unauthenticated users
         $this->assertFalse(
@@ -366,8 +369,8 @@ class SiteTreePermissionsTest extends FunctionalTest
 
     public function testRestrictedEditInheritance()
     {
-        $parentPage = $this->objFromFixture('Page', 'parent_restrictedEditOnlySubadminGroup');
-        $childPage = $this->objFromFixture('Page', 'child_restrictedEditOnlySubadminGroup');
+        $parentPage = $this->objFromFixture(Page::class, 'parent_restrictedEditOnlySubadminGroup');
+        $childPage = $this->objFromFixture(Page::class, 'child_restrictedEditOnlySubadminGroup');
 
         // unauthenticated users
         $this->assertFalse(
@@ -385,8 +388,8 @@ class SiteTreePermissionsTest extends FunctionalTest
 
     public function testDeleteRestrictedChild()
     {
-        $parentPage = $this->objFromFixture('Page', 'deleteTestParentPage');
-        $childPage = $this->objFromFixture('Page', 'deleteTestChildPage');
+        $parentPage = $this->objFromFixture(Page::class, 'deleteTestParentPage');
+        $childPage = $this->objFromFixture(Page::class, 'deleteTestChildPage');
 
         // unauthenticated users
         $this->assertFalse(
@@ -401,7 +404,7 @@ class SiteTreePermissionsTest extends FunctionalTest
 
     public function testRestrictedEditLoggedInUsersDeletedFromStage()
     {
-        $page = $this->objFromFixture('Page', 'restrictedEditLoggedInUsers');
+        $page = $this->objFromFixture(Page::class, 'restrictedEditLoggedInUsers');
         $pageID = $page->ID;
 
         $this->logInWithPermission("ADMIN");
@@ -423,7 +426,7 @@ class SiteTreePermissionsTest extends FunctionalTest
 
     public function testInheritCanViewFromSiteConfig()
     {
-        $page = $this->objFromFixture('Page', 'inheritWithNoParent');
+        $page = $this->objFromFixture(Page::class, 'inheritWithNoParent');
         $siteconfig = $this->objFromFixture(SiteConfig::class, 'default');
         $editor = $this->objFromFixture(Member::class, 'editor');
         $editorGroup = $this->objFromFixture(Group::class, 'editorgroup');
@@ -449,7 +452,7 @@ class SiteTreePermissionsTest extends FunctionalTest
 
     public function testInheritCanEditFromSiteConfig()
     {
-        $page = $this->objFromFixture('Page', 'inheritWithNoParent');
+        $page = $this->objFromFixture(Page::class, 'inheritWithNoParent');
         $siteconfig = $this->objFromFixture(SiteConfig::class, 'default');
         $editor = $this->objFromFixture(Member::class, 'editor');
         $user = $this->objFromFixture(Member::class, 'websiteuser');

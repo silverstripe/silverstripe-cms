@@ -6,6 +6,7 @@ use Page;
 use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Admin\CMSBatchActionHandler;
 use SilverStripe\CMS\Controllers\CMSMain;
+use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\HTTPResponse_Exception;
@@ -141,7 +142,7 @@ class CMSMainTest extends FunctionalTest
         }
 
         // Get the latest version of the redirector page
-        $pageID = $this->idFromFixture('SilverStripe\\CMS\\Model\\RedirectorPage', 'page5');
+        $pageID = $this->idFromFixture(RedirectorPage::class, 'page5');
         $latestID = DB::prepared_query('select max("Version") from "RedirectorPage_Versions" where "RecordID" = ?', array($pageID))->value();
         $dsCount = DB::prepared_query('select count("Version") from "RedirectorPage_Versions" where "RecordID" = ? and "Version"= ?', array($pageID, $latestID))->value();
         $this->assertEquals(1, $dsCount, "Published page has no duplicate version records: it has " . $dsCount . " for version " . $latestID);
