@@ -75,8 +75,10 @@ const config = {
       loading: networkLoading || !versions,
       versions,
       graphQLErrors: errors,
-      actions: Object.assign({}, actions, {
-        versions: Object.assign({}, actions.versions, {
+      actions: {
+        ...actions,
+        versions: {
+          ...versions,
           goToPage(page) {
            refetch({
               offset: ((page || 1) - 1) * limit,
@@ -84,8 +86,8 @@ const config = {
               page_id: recordId,
            });
           }
-        }),
-      }),
+        },
+      },
     };
   },
 };

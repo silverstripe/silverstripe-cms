@@ -6,7 +6,7 @@ SilverStripe\GraphQL\Controller:
     scaffolding:
       types:
         SilverStripe\CMS\Model\SiteTree:
-          fields: '*'
+          fields: [ID, LastEdited]
           operations:
             readOne: true
         SilverStripe\Security\Member:
