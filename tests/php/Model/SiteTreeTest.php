@@ -612,12 +612,8 @@ class SiteTreeTest extends SapphireTest
         Versioned::reading_archived_date($date);
         SiteTree::get()->where(array(
             '"SiteTree"."ParentID"' => 0
-        ));
-        Versioned::reading_archived_date(null);
-        $this->assertEquals(
-            Versioned::get_reading_mode(),
-            'Archive.'
-        );
+        ))->sql($args);
+        $this->assertContains($date, $args);
     }
 
     public function testEditPermissions()

@@ -16,8 +16,6 @@ class ContentControllerTest extends FunctionalTest
 {
     protected static $fixture_file = 'ContentControllerTest.yml';
 
-    protected static $use_draft_site = true;
-
     protected static $disable_themes = true;
 
     protected static $extra_dataobjects = [
@@ -26,13 +24,25 @@ class ContentControllerTest extends FunctionalTest
         ContentControllerTestPageWithoutController::class,
     ];
 
+    protected function setUp()
+    {
+        parent::setUp();
+
+        Config::modify()->set(SiteTree::class, 'nested_urls', true);
+
+        // Ensure all pages are published
+        /** @var Page $page */
+        foreach (Page::get() as $page) {
+            $page->publishSingle();
+        }
+    }
+
     /**
      * Test that nested pages, basic actions, and nested/non-nested URL switching works properly
      */
 
     public function testNestedPages()
     {
-        RootURLController::reset();
         Config::modify()->set(SiteTree::class, 'nested_urls', true);
 
         $this->assertEquals('Home Page', $this->get('/')->getBody());
@@ -70,14 +80,12 @@ class ContentControllerTest extends FunctionalTest
     {
         $controller = new ContentController();
 
-        Config::modify()->set(SiteTree::class, 'nested_urls', true);
-
         $this->assertEquals(1, $controller->ChildrenOf('/')->Count());
         $this->assertEquals(1, $controller->ChildrenOf('/home/')->Count());
         $this->assertEquals(2, $controller->ChildrenOf('/home/second-level/')->Count());
         $this->assertEquals(0, $controller->ChildrenOf('/home/second-level/third-level/')->Count());
 
-        SiteTree::config()->nested_urls = false;
+        SiteTree::config()->set('nested_urls', false);
 
         $this->assertEquals(1, $controller->ChildrenOf('/')->Count());
         $this->assertEquals(1, $controller->ChildrenOf('/home/')->Count());
@@ -87,11 +95,11 @@ class ContentControllerTest extends FunctionalTest
 
     public function testDeepNestedURLs()
     {
-        Config::modify()->set(SiteTree::class, 'nested_urls', true);
 
         $page = new Page();
         $page->URLSegment = 'base-page';
         $page->write();
+        $page->publishSingle();
 
         for ($i = 0; $i < 10; $i++) {
             $parentID = $page->ID;
@@ -101,18 +109,15 @@ class ContentControllerTest extends FunctionalTest
             $page->Title = "Page Level $i";
             $page->URLSegment = "level-$i";
             $page->write();
+            $page->publishSingle();
 
             $relativeLink = Director::makeRelative($page->Link());
             $this->assertEquals($page->Title, $this->get($relativeLink)->getBody());
         }
-
-
-        SiteTree::config()->nested_urls = false;
     }
 
     public function testViewDraft()
     {
-
         // test when user does not have permission, should get login form
         $this->logInWithPermission('EDITOR');
         try {
@@ -141,9 +146,11 @@ class ContentControllerTest extends FunctionalTest
         $page->write();
         $page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
+        $link = $page->RelativeLink();
+        $response = $this->get($link);
         $this->assertContains(
             sprintf('<a href="%s">Testlink</a>', $linkedPage->Link()),
-            $this->get($page->RelativeLink())->getBody(),
+            $response->getBody(),
             '"sitetree_link" shortcodes get parsed properly'
         );
     }

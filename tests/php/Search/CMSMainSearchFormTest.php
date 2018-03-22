@@ -2,6 +2,7 @@
 
 namespace SilverStripe\CMS\Tests\Search;
 
+use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Security\Member;
 
@@ -13,12 +14,12 @@ class CMSMainSearchFormTest extends FunctionalTest
     {
         $this->session()->set('loggedInAs', $this->idFromFixture(Member::class, 'admin'));
 
-        $response = $this->get(
+        $this->get(
             'admin/pages/SearchForm/?' .
             http_build_query(array(
                 'q' => array(
                     'Title' => 'Page 10',
-                    'FilterClass' => 'SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_Search',
+                    'FilterClass' => CMSSiteTreeFilter_Search::class,
                 ),
                 'action_doSearch' => true
             ))
