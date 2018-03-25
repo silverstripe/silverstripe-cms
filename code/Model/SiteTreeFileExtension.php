@@ -12,10 +12,6 @@ use SilverStripe\View\SSViewer;
  */
 class SiteTreeFileExtension extends DataExtension
 {
-    private static $belongs_many_many = array(
-        'BackLinkTracking' => SiteTree::class . '.ImageTracking' // {@see SiteTreeLinkTracking}
-    );
-
     private static $casting = array(
         'BackLinkHTMLList' => 'HTMLFragment'
     );
