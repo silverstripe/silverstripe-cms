@@ -7,7 +7,7 @@ use SilverStripe\Assets\Shortcodes\FileLinkTracking;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBHTMLText;
-use SilverStripe\ORM\ManyManyList;
+use SilverStripe\ORM\ManyManyThroughList;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\Parsers\HTMLValue;
 
@@ -21,9 +21,11 @@ use SilverStripe\View\Parsers\HTMLValue;
  * Note that since both SiteTree and File are versioned, LinkTracking and ImageTracking will
  * only be enabled for the Stage record.
  *
+ * Note: To support `HasBrokenLink` for non-SiteTree classes, add a boolean `HasBrokenLink`
+ * field to your `db` config and this extension will ensure it's flagged appropriately.
+ *
  * @property DataObject|SiteTreeLinkTracking $owner
- * @property bool $HasBrokenLink True if any page or anchor is broken
- * @method ManyManyList LinkTracking() List of site pages linked on this dataobject
+ * @method ManyManyThroughList LinkTracking() List of site pages linked on this dataobject
  */
 class SiteTreeLinkTracking extends DataExtension
 {
@@ -40,10 +42,6 @@ class SiteTreeLinkTracking extends DataExtension
      */
     private static $dependencies = [
         'Parser' => '%$' . SiteTreeLinkTracking_Parser::class
-    ];
-
-    private static $db = [
-        'HasBrokenLink' => 'Boolean'
     ];
 
     private static $many_many = [
@@ -103,19 +101,22 @@ class SiteTreeLinkTracking extends DataExtension
             return;
         }
 
-        // Reset boolean broken flag. This will be flagged back by trackLinksInField().
-        $this->owner->HasBrokenLink = false;
-
         // Build a list of HTMLText fields, merging all linked pages together.
         $allFields = DataObject::getSchema()->fieldSpecs($this->owner);
         $linkedPages = [];
+        $anyBroken = false;
         foreach ($allFields as $field => $fieldSpec) {
             $fieldObj = $this->owner->dbObject($field);
             if ($fieldObj instanceof DBHTMLText) {
                 // Merge links in this field with global list.
-                $linksInField = $this->trackLinksInField($field);
+                $linksInField = $this->trackLinksInField($field, $anyBroken);
                 $linkedPages = array_merge($linkedPages, $linksInField);
             }
+        }
+
+        // Soft support for HasBrokenLink db field (e.g. SiteTree)
+        if ($this->owner->hasField('HasBrokenLink')) {
+            $this->owner->HasBrokenLink = $anyBroken;
         }
 
         // Update the "LinkTracking" many_many.
@@ -126,13 +127,13 @@ class SiteTreeLinkTracking extends DataExtension
      * Scrape the content of a field to detect anly links to local SiteTree pages or files
      *
      * @param string $fieldName The name of the field on {@link @owner} to scrape
+     * @param bool &$anyBroken Will be flagged to true (by reference) if a link is broken.
      * @return int[] Array of page IDs found (associative array)
      */
-    public function trackLinksInField($fieldName)
+    public function trackLinksInField($fieldName, &$anyBroken = false)
     {
         // Pull down current field content
-        $record = $this->owner;
-        $htmlValue = HTMLValue::create($record->$fieldName);
+        $htmlValue = HTMLValue::create($this->owner->$fieldName);
 
         // Process all links
         $linkedPages = [];
@@ -143,7 +144,7 @@ class SiteTreeLinkTracking extends DataExtension
 
             // Flag broken
             if ($link['Broken']) {
-                $record->HasBrokenLink = true;
+                $anyBroken = true;
             }
 
             // Collect page ids
@@ -154,7 +155,7 @@ class SiteTreeLinkTracking extends DataExtension
         }
 
         // Update any changed content
-        $record->$fieldName = $htmlValue->getContent();
+        $this->owner->$fieldName = $htmlValue->getContent();
         return $linkedPages;
     }
 

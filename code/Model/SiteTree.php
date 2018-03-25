@@ -84,16 +84,18 @@ use Subsite;
  * {@link AbsoluteLink()}. You can allow these segments to contain multibyte characters through
  * {@link URLSegmentFilter::$default_allow_multibyte}.
  *
- * @property string URLSegment
- * @property string Title
- * @property string MenuTitle
- * @property string Content HTML content of the page.
- * @property string MetaDescription
- * @property string ExtraMeta
- * @property string ShowInMenus
- * @property string ShowInSearch
- * @property string Sort Integer value denoting the sort order.
- * @property string ReportClass
+ * @property string $URLSegment
+ * @property string $Title
+ * @property string $MenuTitle
+ * @property string $Content HTML content of the page.
+ * @property string $MetaDescription
+ * @property string $ExtraMeta
+ * @property string $ShowInMenus
+ * @property string $ShowInSearch
+ * @property string $Sort Integer value denoting the sort order.
+ * @property string $ReportClass
+ * @property bool $HasBrokenFile True if this page has a broken file shortcode
+ * @property bool $HasBrokenLink True if this page has a broken page shortcode
  *
  * @method ManyManyList ViewerGroups() List of groups that can view this object.
  * @method ManyManyList EditorGroups() List of groups that can edit this object.
@@ -1734,7 +1736,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Returns the pages that depend on this page. This includes virtual pages, pages that link to it, etc.
      *
      * @param bool $includeVirtuals Set to false to exlcude virtual pages.
-     * @return ArrayList
+     * @return ArrayList|SiteTree[]
      */
     public function DependentPages($includeVirtuals = true)
     {
@@ -3036,10 +3038,11 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $this->flushCache();
 
         // Need to mark pages depending to this one as broken
-        $dependentPages = $this->DependentPages();
-        if ($dependentPages) {
-            foreach ($dependentPages as $page) {
-                // $page->write() calls syncLinkTracking, which does all the hard work for us.
+        /** @var Page $page */
+        foreach ($this->DependentPages() as $page) {
+            // Update sync link tracking
+            $page->syncLinkTracking();
+            if ($page->hasField('HasBrokenLink') && $page->isChanged('HasBrokenLink')) {
                 $page->write();
             }
         }

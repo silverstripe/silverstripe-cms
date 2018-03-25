@@ -10,6 +10,7 @@ use SilverStripe\View\Parsers\HTMLValue;
 
 class SiteTreeLinkTrackingTest extends SapphireTest
 {
+
     protected function setUp()
     {
         parent::setUp();

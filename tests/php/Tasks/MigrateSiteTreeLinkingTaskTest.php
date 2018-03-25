@@ -25,7 +25,7 @@ class MigrateSiteTreeLinkingTaskTest extends SapphireTest
         }
 
         // Ensure legacy SiteTree_LinkTracking table exists
-        DB::get_schema()->schemaUpdate(function() {
+        DB::get_schema()->schemaUpdate(function () {
             DB::require_table('SiteTree_LinkTracking', [
                 'SiteTreeID' => 'Int',
                 'ChildID' => 'Int',

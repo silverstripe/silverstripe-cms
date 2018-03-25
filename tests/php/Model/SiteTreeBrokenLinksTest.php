@@ -6,7 +6,9 @@ use Page;
 use Silverstripe\Assets\Dev\TestAssetStore;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\CMS\Model\SiteTreeLink;
 use SilverStripe\CMS\Model\VirtualPage;
+use SilverStripe\CMS\Tests\Model\SiteTreeBrokenLinksTest\NotPageObject;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
@@ -18,6 +20,10 @@ use SilverStripe\Versioned\Versioned;
 class SiteTreeBrokenLinksTest extends SapphireTest
 {
     protected static $fixture_file = 'SiteTreeBrokenLinksTest.yml';
+
+    protected static $extra_dataobjects = [
+        NotPageObject::class,
+    ];
 
     public function setUp()
     {
@@ -43,9 +49,55 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         $obj->syncLinkTracking();
         $this->assertTrue($obj->HasBrokenLink, 'Page has a broken link');
 
-        $obj->Content = '<a href="[sitetree_link,id=' . $this->idFromFixture('Page', 'about') .']">this is not a broken link</a>';
+        $obj->Content = '<a href="[sitetree_link,id=' . $this->idFromFixture(
+            'Page',
+            'about'
+        ) . ']">this is not a broken link</a>';
         $obj->syncLinkTracking();
         $this->assertFalse($obj->HasBrokenLink, 'Page does NOT have a broken link');
+    }
+
+    /**
+     * Ensure broken links can be tracked between non-page objects
+     */
+    public function testBrokenLinksNonPage()
+    {
+        /** @var Page $aboutPage */
+        $aboutPage = $this->objFromFixture('Page', 'about');
+
+        /** @var NotPageObject $obj */
+        $obj = $this->objFromFixture(NotPageObject::class, 'object1');
+        $obj->Content = '<a href="[sitetree_link,id=3423423]">this is a broken link</a>';
+        $obj->AnotherContent = '<a href="[sitetree_link,id=' . $aboutPage->ID . ']">this is not a broken link</a>';
+        $obj->write();
+
+        // Two links created for this record
+        $this->assertListEquals(
+            [
+                ['LinkedID' => 3423423],
+                ['LinkedID' => $aboutPage->ID],
+            ],
+            SiteTreeLink::get()->filter([
+                'ParentClass' => NotPageObject::class,
+                'ParentID' => $obj->ID,
+            ])
+        );
+
+        // ManyManyThrough relation only links to unbroken pages
+        $this->assertListEquals(
+            [
+                ['Title' => 'About'],
+            ],
+            $obj->LinkTracking()
+        );
+
+        // About-page backlinks contains this object
+        $this->assertListEquals(
+            [
+                ['ID' => $obj->ID]
+            ],
+            $aboutPage->BackLinkTracking()
+        );
     }
 
     public function testBrokenAnchorBetweenPages()
