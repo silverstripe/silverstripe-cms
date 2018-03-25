@@ -7,14 +7,14 @@ use SilverStripe\ORM\DataExtension;
 use SilverStripe\View\SSViewer;
 
 /**
- * @deprecated 1.2..2.0 Link tracking is baked into File class now
+ * @deprecated 4.2..5.0 Link tracking is baked into File class now
  * @property File $owner
  */
 class SiteTreeFileExtension extends DataExtension
 {
-    private static $casting = array(
+    private static $casting = [
         'BackLinkHTMLList' => 'HTMLFragment'
-    );
+    ];
 
     /**
      * Generate an HTML list which provides links to where a file is used.
