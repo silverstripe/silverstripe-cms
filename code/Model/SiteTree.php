@@ -3042,7 +3042,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         foreach ($this->DependentPages() as $page) {
             // Update sync link tracking
             $page->syncLinkTracking();
-            if ($page->hasField('HasBrokenLink') && $page->isChanged('HasBrokenLink')) {
+            if ($page->isChanged()) {
                 $page->write();
             }
         }
