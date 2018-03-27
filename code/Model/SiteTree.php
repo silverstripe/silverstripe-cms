@@ -2182,14 +2182,14 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $labels['Comments'] = _t(__CLASS__.'.Comments', 'Comments');
             $labels['Visibility'] = _t(__CLASS__.'.Visibility', 'Visibility');
             $labels['LinkChangeNote'] = _t(
-                'SilverStripe\\CMS\\Model\\SiteTree.LINKCHANGENOTE',
+                __CLASS__ . '.LINKCHANGENOTE',
                 'Changing this page\'s link will also affect the links of all child pages.'
             );
 
             if ($includerelations) {
                 $labels['Parent'] = _t(__CLASS__.'.has_one_Parent', 'Parent Page', 'The parent page in the site hierarchy');
                 $labels['LinkTracking'] = _t(__CLASS__.'.many_many_LinkTracking', 'Link Tracking');
-                $labels['ImageTracking'] = _t(__CLASS__.'.many_many_ImageTracking', 'Image Tracking');
+                $labels['FileTracking'] = _t(__CLASS__.'.many_many_ImageTracking', 'Image Tracking');
                 $labels['BackLinkTracking'] = _t(__CLASS__.'.many_many_BackLinkTracking', 'Backlink Tracking');
             }
 
@@ -3034,6 +3034,11 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     protected function updateDependentPages()
     {
+        // Skip live stage
+        if (Versioned::get_stage() === Versioned::LIVE) {
+            return;
+        }
+
         // Need to flush cache to avoid outdated versionnumber references
         $this->flushCache();
 

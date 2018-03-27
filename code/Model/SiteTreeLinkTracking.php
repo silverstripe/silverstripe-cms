@@ -18,7 +18,7 @@ use SilverStripe\View\Parsers\HTMLValue;
  * referenced in any HTMLText fields, and two booleans to indicate if there are any broken links. Call
  * augmentSyncLinkTracking to update those fields with any changes to those fields.
  *
- * Note that since both SiteTree and File are versioned, LinkTracking and ImageTracking will
+ * Note that since both SiteTree and File are versioned, LinkTracking and FileTracking will
  * only be enabled for the Stage record.
  *
  * Note: To support `HasBrokenLink` for non-SiteTree classes, add a boolean `HasBrokenLink`
@@ -96,8 +96,8 @@ class SiteTreeLinkTracking extends DataExtension
      */
     public function augmentSyncLinkTracking()
     {
-        // Skip live tracking
-        if (Versioned::get_stage() == Versioned::LIVE) {
+        // If owner is versioned, skip tracking on live
+        if (Versioned::get_stage() == Versioned::LIVE && $this->owner->hasExtension(Versioned::class)) {
             return;
         }
 

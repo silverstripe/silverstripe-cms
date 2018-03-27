@@ -349,20 +349,6 @@ class VirtualPage extends Page
         return $result;
     }
 
-    public function updateImageTracking()
-    {
-        // Doesn't work on unsaved records
-        if (!$this->ID) {
-            return;
-        }
-
-        // Remove CopyContentFrom() from the cache
-        unset($this->components['CopyContentFrom']);
-
-        // Update ImageTracking
-        $this->ImageTracking()->setByIDList($this->CopyContentFrom()->ImageTracking()->column('ID'));
-    }
-
     public function CMSTreeClasses()
     {
         $parentClass = sprintf(
