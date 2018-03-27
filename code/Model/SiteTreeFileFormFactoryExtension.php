@@ -32,10 +32,8 @@ class SiteTreeFileFormFactoryExtension extends DataExtension
         $class = UsedOnTable::class;
         Deprecation::notice('5.0', "Use the $class to show this table");
 
-        /** @var File|SiteTreeFileExtension|RecursivePublishable $record */
-        $record = $context['Record'];
-
         $usedOnField = UsedOnTable::create('UsedOnTableReplacement');
+        $usedOnField->setRecord($context['Record']);
 
         // Add field to new tab
         /** @var Tab $tab */
