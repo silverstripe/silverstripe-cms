@@ -6,7 +6,7 @@ import gql from 'graphql-tag';
 // that this HOC is applied to (see PageHistoryViewer.js) for binding
 // implementation.
 const query = gql`
-query readOnePage ($page_id: ID!, $limit: Int!, $offset: Int!) {
+query ReadHistoryViewerPage ($page_id: ID!, $limit: Int!, $offset: Int!) {
   readOnePage(
     Versioning: {
       Mode: LATEST
