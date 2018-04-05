@@ -32,7 +32,7 @@ class MigrateSiteTreeLinkingTask extends BuildTask
         $pages = 0;
 
         // Ensure sync occurs on draft
-        Versioned::withVersionedMode(function() use (&$pages) {
+        Versioned::withVersionedMode(function () use (&$pages) {
             Versioned::set_stage(Versioned::DRAFT);
 
             /** @var SiteTree[] $linkedPages */
