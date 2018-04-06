@@ -6,6 +6,7 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\CMS\Tasks\MigrateSiteTreeLinkingTask;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\DB;
 
 class MigrateSiteTreeLinkingTaskTest extends SapphireTest
 {
@@ -13,73 +14,76 @@ class MigrateSiteTreeLinkingTaskTest extends SapphireTest
 
     protected static $use_draft_site = true;
 
+    public static function setUpBeforeClass()
+    {
+        parent::setUpBeforeClass();
+
+        // Cover db reset in case parent did not start
+        if (!static::getExtraDataObjects()) {
+            DataObject::reset();
+            static::resetDBSchema(true, true);
+        }
+
+        // Ensure legacy SiteTree_LinkTracking table exists
+        DB::get_schema()->schemaUpdate(function () {
+            DB::require_table('SiteTree_LinkTracking', [
+                'SiteTreeID' => 'Int',
+                'ChildID' => 'Int',
+                'FieldName' => 'Varchar',
+            ]);
+        });
+    }
+
+    protected function setUp()
+    {
+        parent::setUp();
+
+        // Manually bootstrap all Content blocks with soft coded IDs (raw sql to avoid save hooks)
+        $replacements = [
+            '$$ABOUTID$$' => $this->idFromFixture(SiteTree::class, 'about'),
+            '$$HOMEID$$' => $this->idFromFixture(SiteTree::class, 'home'),
+            '$$STAFFID$$' => $this->idFromFixture(SiteTree::class, 'staff'),
+        ];
+        foreach (DB::query('SELECT "ID", "Content" FROM "SiteTree"') as $row) {
+            $id = (int)$row['ID'];
+            $content = str_replace(array_keys($replacements), array_values($replacements), $row['Content']);
+            DB::prepared_query('UPDATE "SiteTree" SET "Content" = ? WHERE "ID" = ?', [$content, $id]);
+        }
+        DataObject::reset();
+    }
+
     public function testLinkingMigration()
     {
         ob_start();
 
+        DB::quiet(false);
         $task = new MigrateSiteTreeLinkingTask();
         $task->run(null);
-
-        $this->assertEquals(
-            "Rewrote 9 link(s) on 5 page(s) to use shortcodes.\n",
+        $this->assertContains(
+            "Migrated page links on 5 Pages",
             ob_get_contents(),
             'Rewritten links are correctly reported'
         );
+        DB::quiet(true);
         ob_end_clean();
 
-        $homeID   = $this->idFromFixture(SiteTree::class, 'home');
-        $aboutID  = $this->idFromFixture(SiteTree::class, 'about');
-        $staffID  = $this->idFromFixture(SiteTree::class, 'staff');
-        $actionID = $this->idFromFixture(SiteTree::class, 'action');
-        $hashID   = $this->idFromFixture(SiteTree::class, 'hash_link');
+        // Query links for pages
+        /** @var SiteTree $home */
+        $home = $this->objFromFixture(SiteTree::class, 'home');
+        /** @var SiteTree $about */
+        $about  = $this->objFromFixture(SiteTree::class, 'about');
+        /** @var SiteTree $staff */
+        $staff  = $this->objFromFixture(SiteTree::class, 'staff');
+        /** @var SiteTree $action */
+        $action = $this->objFromFixture(SiteTree::class, 'action');
+        /** @var SiteTree $hash */
+        $hash = $this->objFromFixture(SiteTree::class, 'hash_link');
 
-        $homeContent = sprintf(
-            '<a href="[sitetree_link,id=%d]">About</a><a href="[sitetree_link,id=%d]">Staff</a><a href="http://silverstripe.org/">External Link</a><a name="anchor"></a>',
-            $aboutID,
-            $staffID
-        );
-        $aboutContent = sprintf(
-            '<a href="[sitetree_link,id=%d]">Home</a><a href="[sitetree_link,id=%d]">Staff</a><a name="second-anchor"></a>',
-            $homeID,
-            $staffID
-        );
-        $staffContent = sprintf(
-            '<a href="[sitetree_link,id=%d]">Home</a><a href="[sitetree_link,id=%d]">About</a>',
-            $homeID,
-            $aboutID
-        );
-        $actionContent = sprintf(
-            '<a href="[sitetree_link,id=%d]SearchForm">Search Form</a>',
-            $homeID
-        );
-        $hashLinkContent = sprintf(
-            '<a href="[sitetree_link,id=%d]#anchor">Home</a><a href="[sitetree_link,id=%d]#second-anchor">About</a>',
-            $homeID,
-            $aboutID
-        );
-
-        $this->assertEquals(
-            $homeContent,
-            DataObject::get_by_id(SiteTree::class, $homeID)->Content,
-            'HTML URLSegment links are rewritten.'
-        );
-        $this->assertEquals(
-            $aboutContent,
-            DataObject::get_by_id(SiteTree::class, $aboutID)->Content
-        );
-        $this->assertEquals(
-            $staffContent,
-            DataObject::get_by_id(SiteTree::class, $staffID)->Content
-        );
-        $this->assertEquals(
-            $actionContent,
-            DataObject::get_by_id(SiteTree::class, $actionID)->Content,
-            'Links to actions on pages are rewritten correctly.'
-        );
-        $this->assertEquals(
-            $hashLinkContent,
-            DataObject::get_by_id(SiteTree::class, $hashID)->Content,
-            'Hash/anchor links are correctly handled.'
-        );
+        // Ensure all links are created
+        $this->assertListEquals([$about->toMap(), $staff->toMap()], $home->LinkTracking());
+        $this->assertListEquals([$home->toMap(), $staff->toMap()], $about->LinkTracking());
+        $this->assertListEquals([$home->toMap(), $about->toMap()], $staff->LinkTracking());
+        $this->assertListEquals([$home->toMap()], $action->LinkTracking());
+        $this->assertListEquals([$home->toMap(), $about->toMap()], $hash->LinkTracking());
     }
 }

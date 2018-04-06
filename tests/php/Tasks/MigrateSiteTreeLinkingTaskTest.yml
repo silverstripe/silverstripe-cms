@@ -2,24 +2,24 @@ SilverStripe\CMS\Model\SiteTree:
   home:
     Title: Home Page
     URLSegment: home
-    Content: '<a href="about/">About</a><a href="staff">Staff</a><a href="http://silverstripe.org/">External Link</a><a name="anchor"></a>'
+    Content: '<a href="[sitetree_link,id=$$ABOUTID$$]">About</a><a href="[sitetree_link,id=$$STAFFID$$]">Staff</a><a href="http://silverstripe.org/">External Link</a><a name="anchor"></a>'
   about:
     Title: About Us
     URLSegment: about
-    Content: '<a href="home">Home</a><a href="staff/">Staff</a><a name="second-anchor"></a>'
+    Content: '<a href="[sitetree_link,id=$$HOMEID$$]">Home</a><a href="[sitetree_link,id=$$STAFFID$$]">Staff</a><a name="second-anchor"></a>'
   staff:
     Title: Staff
     URLSegment: staff
-    Content: '<a href="home/">Home</a><a href="about">About</a>'
+    Content: '<a href="[sitetree_link,id=$$HOMEID$$]">Home</a><a href="[sitetree_link,id=$$ABOUTID$$]">About</a>'
     Parent: =>SilverStripe\CMS\Model\SiteTree.about
   action:
     Title: Action Link
     URLSegment: action
-    Content: '<a href="home/SearchForm">Search Form</a>'
+    Content: '<a href="[sitetree_link,id=$$HOMEID$$]SearchForm">Search Form</a>'
   hash_link:
     Title: Hash Link
     URLSegment: hash-link
-    Content: '<a href="home/#anchor">Home</a><a href="about/#second-anchor">About</a>'
+    Content: '<a href="[sitetree_link,id=$$HOMEID$$]#anchor">Home</a><a href="[sitetree_link,id=$$ABOUTID$$]#second-anchor">About</a>'
   admin_link:
     Title: Admin Link
     URLSegment: admin-link

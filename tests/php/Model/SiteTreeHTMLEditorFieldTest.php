@@ -3,11 +3,10 @@
 namespace SilverStripe\CMS\Tests\Model;
 
 use Page;
-use Silverstripe\Assets\Dev\TestAssetStore;
+use SilverStripe\Assets\Dev\TestAssetStore;
 use SilverStripe\Assets\File;
 use SilverStripe\Assets\Filesystem;
 use SilverStripe\Assets\Folder;
-use SilverStripe\Assets\Image;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Dev\CSSContentParser;
 use SilverStripe\Dev\FunctionalTest;
@@ -46,6 +45,7 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest
 
     public function testLinkTracking()
     {
+        /** @var SiteTree $sitetree */
         $sitetree = $this->objFromFixture(SiteTree::class, 'home');
         $editor   = new HTMLEditorField('Content');
 
@@ -84,43 +84,6 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest
         );
     }
 
-    public function testFileLinkTracking()
-    {
-        $sitetree = $this->objFromFixture(SiteTree::class, 'home');
-        $editor   = new HTMLEditorField('Content');
-        $fileID   = $this->idFromFixture(File::class, 'example_file');
-
-        $editor->setValue(sprintf(
-            '<p><a href="[file_link,id=%d]">Example File</a></p>',
-            $fileID
-        ));
-        $editor->saveInto($sitetree);
-        $sitetree->write();
-        $this->assertEquals(
-            array($fileID => $fileID),
-            $sitetree->ImageTracking()->getIDList(),
-            'Links to assets are tracked.'
-        );
-
-        $editor->setValue(null);
-        $editor->saveInto($sitetree);
-        $sitetree->write();
-        $this->assertEquals(array(), $sitetree->ImageTracking()->getIdList(), 'Asset tracking is removed with links.');
-
-        // Legacy support - old CMS versions added link shortcodes with spaces instead of commas
-        $editor->setValue(sprintf(
-            '<p><a href="[file_link id=%d]">Example File</a></p>',
-            $fileID
-        ));
-        $editor->saveInto($sitetree);
-        $sitetree->write();
-        $this->assertEquals(
-            array($fileID => $fileID),
-            $sitetree->ImageTracking()->getIDList(),
-            'Link tracking with space instead of comma in shortcode works.'
-        );
-    }
-
     public function testImageInsertion()
     {
         $sitetree = new SiteTree();
@@ -145,30 +108,6 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest
         $this->assertEquals('bar', (string)$xml[0]['title'], 'Title tags are preserved.');
     }
 
-    public function testImageTracking()
-    {
-        $sitetree = $this->objFromFixture(SiteTree::class, 'home');
-        $editor = new HTMLEditorField('Content');
-        $file = $this->objFromFixture(Image::class, 'example_image');
-
-        $editor->setValue(sprintf('[image src="%s" id="%d"]', $file->getURL(), $file->ID));
-        $editor->saveInto($sitetree);
-        $sitetree->write();
-        $this->assertEquals(
-            array($file->ID => $file->ID),
-            $sitetree->ImageTracking()->getIDList(),
-            'Inserted images are tracked.'
-        );
-
-        $editor->setValue(null);
-        $editor->saveInto($sitetree);
-        $sitetree->write();
-        $this->assertEmpty(
-            $sitetree->ImageTracking()->getIDList(),
-            'Tracked images are deleted when removed.'
-        );
-    }
-
     public function testBrokenSiteTreeLinkTracking()
     {
         $sitetree = new SiteTree();
@@ -191,29 +130,5 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest
         $sitetree->write();
 
         $this->assertFalse((bool) $sitetree->HasBrokenLink);
-    }
-
-    public function testBrokenFileLinkTracking()
-    {
-        $sitetree = new SiteTree();
-        $editor   = new HTMLEditorField('Content');
-
-        $this->assertFalse((bool) $sitetree->HasBrokenFile);
-
-        $editor->setValue('<p><a href="[file_link,id=0]">Broken Link</a></p>');
-        $editor->saveInto($sitetree);
-        $sitetree->write();
-
-        $this->assertTrue($sitetree->HasBrokenFile);
-
-        $editor->setValue(sprintf(
-            '<p><a href="[file_link,id=%d]">Working Link</a></p>',
-            $this->idFromFixture(File::class, 'example_file')
-        ));
-        $sitetree->HasBrokenFile = false;
-        $editor->saveInto($sitetree);
-        $sitetree->write();
-
-        $this->assertFalse((bool) $sitetree->HasBrokenFile);
     }
 }

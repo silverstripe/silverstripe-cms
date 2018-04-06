@@ -1,0 +1,6 @@
+---
+Name: cmslinktracking
+---
+SilverStripe\ORM\DataObject:
+  extensions:
+    - SilverStripe\CMS\Model\SiteTreeLinkTracking
