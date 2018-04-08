@@ -4,6 +4,7 @@ namespace SilverStripe\CMS\Model;
 
 use Page;
 use SilverStripe\Core\Convert;
+use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\ReadonlyTransformation;
@@ -12,6 +13,7 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ValidationResult;
 use SilverStripe\Security\Member;
 use SilverStripe\Versioned\Versioned;
+use SilverStripe\View\HTML;
 
 /**
  * Virtual Page creates an instance of a  page, with the same fields that the original page had, but readonly.
@@ -104,9 +106,10 @@ class VirtualPage extends Page
      */
     public function getNonVirtualisedFields()
     {
+        $config = self::config();
         return array_merge(
-            self::config()->non_virtual_fields,
-            self::config()->initially_copied_fields
+            $config->get('non_virtual_fields'),
+            $config->get('initially_copied_fields')
         );
     }
 
@@ -140,8 +143,11 @@ class VirtualPage extends Page
         $tags = parent::MetaTags($includeTitle);
         $copied = $this->CopyContentFrom();
         if ($copied && $copied->exists()) {
-            $link = Convert::raw2att($copied->Link());
-            $tags .= "<link rel=\"canonical\" href=\"{$link}\" />\n";
+            $tags .= HTML::createTag('link', [
+                'rel' => 'canonical',
+                'href' => $copied->Link()
+            ]);
+            $tags .= "\n";
         }
         return $tags;
     }
@@ -159,8 +165,8 @@ class VirtualPage extends Page
     {
         if ($this->CopyContentFromID) {
             $this->HasBrokenLink = Versioned::get_by_stage(SiteTree::class, Versioned::DRAFT)
-                    ->filter('ID', $this->CopyContentFromID)
-                    ->count() === 0;
+                ->filter('ID', $this->CopyContentFromID)
+                ->count() === 0;
         } else {
             $this->HasBrokenLink = true;
         }
@@ -212,8 +218,8 @@ class VirtualPage extends Page
             // Setup the linking to the original page.
             $copyContentFromField = TreeDropdownField::create(
                 'CopyContentFromID',
-                _t('SilverStripe\\CMS\\Model\\VirtualPage.CHOOSE', "Linked Page"),
-                "SilverStripe\\CMS\\Model\\SiteTree"
+                _t(self::class . '.CHOOSE', "Linked Page"),
+                SiteTree::class
             );
 
             // Setup virtual fields
@@ -235,20 +241,24 @@ class VirtualPage extends Page
 
             // Create links back to the original object in the CMS
             if ($this->CopyContentFrom()->exists()) {
-                $link = "<a class=\"cmsEditlink\" href=\"admin/pages/edit/show/$this->CopyContentFromID\">" . _t(
-                    'SilverStripe\\CMS\\Model\\VirtualPage.EditLink',
-                    'edit'
-                ) . "</a>";
+                $link = HTML::createTag(
+                    'a',
+                    [
+                        'class' => 'cmsEditlink',
+                        'href' => 'admin/pages/edit/show/' . $this->CopyContentFromID,
+                    ],
+                    _t(self::class . '.EditLink', 'edit')
+                );
                 $msgs[] = _t(
-                    'SilverStripe\\CMS\\Model\\VirtualPage.HEADERWITHLINK',
+                    self::class . '.HEADERWITHLINK',
                     "This is a virtual page copying content from \"{title}\" ({link})",
-                    array(
+                    [
                         'title' => $this->CopyContentFrom()->obj('Title'),
                         'link'  => $link,
-                    )
+                    ]
                 );
             } else {
-                $msgs[] = _t('SilverStripe\\CMS\\Model\\VirtualPage.HEADER', "This is a virtual page");
+                $msgs[] = _t(self::class . '.HEADER', "This is a virtual page");
                 $msgs[] = _t(
                     'SilverStripe\\CMS\\Model\\SiteTree.VIRTUALPAGEWARNING',
                     'Please choose a linked page and save first in order to publish this page'
@@ -258,8 +268,7 @@ class VirtualPage extends Page
                 SiteTree::class,
                 Versioned::LIVE,
                 $this->CopyContentFromID
-            )
-            ) {
+            )) {
                 $msgs[] = _t(
                     'SilverStripe\\CMS\\Model\\SiteTree.VIRTUALPAGEDRAFTWARNING',
                     'Please publish the linked page in order to publish the virtual page'
@@ -295,7 +304,7 @@ class VirtualPage extends Page
         // We also want to copy certain, but only if we're copying the source page for the first
         // time. After this point, the user is free to customise these for the virtual page themselves.
         if ($this->isChanged('CopyContentFromID', 2) && $this->CopyContentFromID) {
-            foreach (self::config()->initially_copied_fields as $fieldName) {
+            foreach (self::config()->get('initially_copied_fields') as $fieldName) {
                 $this->$fieldName = $source->$fieldName;
             }
         }
@@ -337,7 +346,7 @@ class VirtualPage extends Page
         if ($orig && $orig->exists() && !$orig->config()->get('can_be_root') && !$this->ParentID) {
             $result->addError(
                 _t(
-                    'SilverStripe\\CMS\\Model\\VirtualPage.PageTypNotAllowedOnRoot',
+                    self::class . '.PageTypNotAllowedOnRoot',
                     'Original page type "{type}" is not allowed on the root level for this virtual page',
                     array('type' => $orig->i18n_singular_name())
                 ),
@@ -349,10 +358,15 @@ class VirtualPage extends Page
         return $result;
     }
 
+    /**
+     * @deprecated 4.2..5.0
+     */
     public function updateImageTracking()
     {
+        Deprecation::notice('5.0', 'This will be removed in 5.0');
+
         // Doesn't work on unsaved records
-        if (!$this->ID) {
+        if (!$this->isInDB()) {
             return;
         }
 
@@ -360,7 +374,12 @@ class VirtualPage extends Page
         unset($this->components['CopyContentFrom']);
 
         // Update ImageTracking
-        $this->ImageTracking()->setByIDList($this->CopyContentFrom()->ImageTracking()->column('ID'));
+        $copyContentFrom = $this->CopyContentFrom();
+        if (!$copyContentFrom || !$copyContentFrom->isInDB()) {
+            return;
+        }
+
+        $this->FileTracking()->setByIDList($copyContentFrom->FileTracking()->column('ID'));
     }
 
     public function CMSTreeClasses()

@@ -14,3 +14,6 @@ Page:
     RedirectionType: Internal
     Title: RedirectorPageToBrokenInteralPage
     LinkTo: =>Page.content
+SilverStripe\CMS\Tests\Model\SiteTreeBrokenLinksTest\NotPageObject:
+  object1:
+    Content: 'Everything will be ok'

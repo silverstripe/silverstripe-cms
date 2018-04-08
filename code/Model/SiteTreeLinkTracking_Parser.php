@@ -28,7 +28,6 @@ class SiteTreeLinkTracking_Parser
     {
         $results = array();
 
-        // @todo - Should be calling getElementsByTagName on DOMDocument?
         $links = $htmlValue->getElementsByTagName('a');
         if (!$links) {
             return $results;
@@ -61,21 +60,18 @@ class SiteTreeLinkTracking_Parser
             // Link to a page on this site.
             $matches = array();
             if (preg_match('/\[sitetree_link(?:\s*|%20|,)?id=(?<id>[0-9]+)\](#(?<anchor>.*))?/i', $href, $matches)) {
+                // Check if page link is broken
+                /** @var SiteTree $page */
                 $page = DataObject::get_by_id(SiteTree::class, $matches['id']);
-                $broken = false;
-
                 if (!$page) {
                     // Page doesn't exist.
                     $broken = true;
+                } elseif (!empty($matches['anchor'])) {
+                    // Ensure anchor isn't broken on target page
+                    $anchor = preg_quote($matches['anchor'], '/');
+                    $broken = !preg_match("/(name|id)=\"{$anchor}\"/", $page->Content);
                 } else {
-                    if (!empty($matches['anchor'])) {
-                        $anchor = preg_quote($matches['anchor'], '/');
-
-                        if (!preg_match("/(name|id)=\"{$anchor}\"/", $page->Content)) {
-                            // Broken anchor on the target page.
-                            $broken = true;
-                        }
-                    }
+                    $broken = false;
                 }
 
                 $results[] = array(
@@ -89,22 +85,7 @@ class SiteTreeLinkTracking_Parser
                 continue;
             }
 
-            // Link to a file on this site.
-            $matches = array();
-            if (preg_match('/\[file_link(?:\s*|%20|,)?id=(?<id>[0-9]+)/i', $href, $matches)) {
-                $results[] = array(
-                    'Type' => 'file',
-                    'Target' => $matches['id'],
-                    'Anchor' => null,
-                    'DOMReference' => $link,
-                    'Broken' => !DataObject::get_by_id('SilverStripe\\Assets\\File', $matches['id'])
-                );
-
-                continue;
-            }
-
             // Local anchor.
-            $matches = array();
             if (preg_match('/^#(.*)/i', $href, $matches)) {
                 $anchor = preg_quote($matches[1], '#');
                 $results[] = array(
@@ -116,20 +97,6 @@ class SiteTreeLinkTracking_Parser
                 );
 
                 continue;
-            }
-        }
-
-        // Find all [image ] shortcodes (will be inline, not inside attributes)
-        $content = $htmlValue->getContent();
-        if (preg_match_all('/\[image([^\]]+)\bid=(["])?(?<id>\d+)\D/i', $content, $matches)) {
-            foreach ($matches['id'] as $id) {
-                $results[] = array(
-                    'Type' => 'image',
-                    'Target' => (int)$id,
-                    'Anchor' => null,
-                    'DOMReference' => null,
-                    'Broken' => !DataObject::get_by_id('SilverStripe\\Assets\\Image', (int)$id)
-                );
             }
         }
         return $results;

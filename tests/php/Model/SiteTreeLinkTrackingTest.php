@@ -2,15 +2,15 @@
 
 namespace SilverStripe\CMS\Tests\Model;
 
+use Page;
 use SilverStripe\CMS\Model\SiteTreeLinkTracking_Parser;
-use SilverStripe\Assets\File;
 use SilverStripe\Control\Director;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\View\Parsers\HTMLValue;
-use Page;
 
 class SiteTreeLinkTrackingTest extends SapphireTest
 {
+
     protected function setUp()
     {
         parent::setUp();
@@ -34,7 +34,6 @@ class SiteTreeLinkTrackingTest extends SapphireTest
         // Shortcodes
         $this->assertTrue($this->isBroken('<a href="[sitetree_link,id=123]">link</a>'));
         $this->assertTrue($this->isBroken('<a href="[sitetree_link,id=123]#no-such-anchor">link</a>'));
-        $this->assertTrue($this->isBroken('<a href="[file_link,id=123]">link</a>'));
 
         // Relative urls
         $this->assertTrue($this->isBroken('<a href="">link</a>'));
@@ -57,13 +56,9 @@ class SiteTreeLinkTrackingTest extends SapphireTest
         $page->Content = '<a name="yes-name-anchor">name</a><a id="yes-id-anchor">id</a>';
         $page->write();
 
-        $file = new File();
-        $file->write();
-
         $this->assertFalse($this->isBroken("<a href=\"[sitetree_link,id=$page->ID]\">link</a>"));
         $this->assertFalse($this->isBroken("<a href=\"[sitetree_link,id=$page->ID]#yes-name-anchor\">link</a>"));
         $this->assertFalse($this->isBroken("<a href=\"[sitetree_link,id=$page->ID]#yes-id-anchor\">link</a>"));
-        $this->assertFalse($this->isBroken("<a href=\"[file_link,id=$file->ID]\">link</a>"));
         $this->assertTrue($this->isBroken("<a href=\"[sitetree_link,id=$page->ID]#http://invalid-anchor.com\"></a>"));
     }
 
@@ -93,19 +88,5 @@ class SiteTreeLinkTrackingTest extends SapphireTest
         );
         $this->assertEquals(substr_count($content, 'ss-broken'), 0, 'All ss-broken classes are removed from good link');
         $this->assertEquals(substr_count($content, 'existing-class'), 1, 'Existing class is not removed.');
-    }
-
-    public function testHasBrokenFile()
-    {
-        $this->assertTrue($this->pageIsBrokenFile('[image src="someurl.jpg" id="99999999"]'));
-        $this->assertFalse($this->pageIsBrokenFile('[image src="someurl.jpg"]'));
-    }
-
-    protected function pageIsBrokenFile($content)
-    {
-        $page = new Page();
-        $page->Content = $content;
-        $page->write();
-        return $page->HasBrokenFile;
     }
 }

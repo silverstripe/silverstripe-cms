@@ -4,9 +4,6 @@ Name: cmsextensions
 SilverStripe\Admin\LeftAndMain:
   extensions:
     - SilverStripe\CMS\Controllers\LeftAndMainPageIconsExtension
-SilverStripe\Assets\File:
-  extensions:
-    - SilverStripe\CMS\Model\SiteTreeFileExtension
 ---
 Name: cmsmodals
 ---
