@@ -6,6 +6,7 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Dev\BuildTask;
 use SilverStripe\Dev\Debug;
 use SilverStripe\ORM\DB;
+use SilverStripe\Subsites\Model\Subsite;
 use SilverStripe\Versioned\Versioned;
 
 /**
@@ -22,6 +23,11 @@ class MigrateSiteTreeLinkingTask extends BuildTask
 
     public function run($request)
     {
+        if (class_exists(Subsite::class)) {
+            $origDisableSubsiteFilter = Subsite::$disable_subsite_filter;
+            Subsite::disable_subsite_filter(true);
+        }
+
         // Ensure legacy table exists
         $exists = DB::get_conn()->getSchemaManager()->hasTable('SiteTree_LinkTracking');
         if (!$exists) {
@@ -51,5 +57,9 @@ class MigrateSiteTreeLinkingTask extends BuildTask
 
         // Disable table to prevent double-migration
         DB::dont_require_table('SiteTree_LinkTracking');
+
+        if (class_exists(Subsite::class)) {
+            Subsite::disable_subsite_filter($origDisableSubsiteFilter);
+        }
     }
 }
