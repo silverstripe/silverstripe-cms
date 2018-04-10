@@ -1,6 +1,6 @@
 import Injector from 'lib/Injector';
 import AnchorSelectorField from 'components/AnchorSelectorField/AnchorSelectorField';
-import withPagesHistoryViewer from 'components/PageHistoryViewer/PageHistoryViewer';
+import readOnePageQuery from 'state/history/readOnePageQuery';
 
 export default () => {
   Injector.component.register('AnchorSelectorField', AnchorSelectorField);
@@ -8,10 +8,10 @@ export default () => {
   Injector.transform(
     'pages-history',
     (updater) => {
-      // Add CMS page history to the HistoryViewer
+      // Add CMS page history GraphQL query HOC to the HistoryViewer
       updater.component(
         'HistoryViewer.pages-controller-cms-content',
-        withPagesHistoryViewer,
+        readOnePageQuery,
         'PageHistoryViewer'
       );
     }
