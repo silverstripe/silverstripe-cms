@@ -1,10 +1,10 @@
 <?php
 
-// Mock mysite if not installed with silverstripe/installer
+// Mock app if not installed with silverstripe/installer
 if (defined('BASE_PATH')) {
-    $projectPath = BASE_PATH . '/mysite';
+    $projectPath = BASE_PATH . '/app';
 } else {
-    $projectPath = getcwd() . '/mysite';
+    $projectPath = getcwd() . '/app';
 }
 if (!is_dir($projectPath)) {
     mkdir($projectPath, 02775);
