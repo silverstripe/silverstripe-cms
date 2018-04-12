@@ -29,10 +29,7 @@
         "silverstripe/vendor-plugin": "^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.7",
-        "silverstripe/behat-extension": "^3@dev",
-        "silverstripe/serve": "^2",
-        "se/selenium-server-standalone": "2.41.0"
+        "phpunit/phpunit": "^5.7"
     },
     "extra": {
         "expose": [
