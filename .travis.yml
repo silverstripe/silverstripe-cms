@@ -2,6 +2,10 @@ language: php
 
 dist: trusty
 
+before_install:
+ - sudo apt-get update
+ - sudo apt-get install chromium-chromedriver
+
 cache:
   directories:
     - $HOME/.composer/cache/files
@@ -10,7 +14,6 @@ addons:
   apt:
     packages:
       - tidy
-  firefox: "31.0"
 
 env:
   global:
@@ -36,6 +39,9 @@ matrix:
       env: NPM_TEST=1
 
 before_script:
+# Extra $PATH
+  - export PATH=/usr/lib/chromium-browser/:$PATH
+
 # Init PHP
   - phpenv rehash
   - phpenv config-rm xdebug.ini
@@ -44,20 +50,19 @@ before_script:
 
 # Install composer dependencies
   - composer validate
-  - composer install --prefer-dist
-  - composer require --prefer-dist --no-update silverstripe/recipe-cms:1.0.x-dev
-  - composer update
-  - if [[ $DB == PGSQL ]]; then composer require silverstripe/postgresql:2.0.x-dev --prefer-dist; fi
-  - if [[ $DB == SQLITE ]]; then composer require silverstripe/sqlite3:2.0.x-dev --prefer-dist; fi
-  - if [[ $PHPCS_TEST ]]; then composer global require squizlabs/php_codesniffer:^3 --prefer-dist --no-interaction --no-progress --no-suggest -o; fi
+  - composer require silverstripe/recipe-testing:^1 silverstripe/recipe-cms 1.0.x-dev --no-update --prefer-dist
+  - if [[ $DB == PGSQL ]]; then composer require silverstripe/postgresql:2.0.x-dev --no-update --prefer-dist; fi
+  - if [[ $DB == SQLITE ]]; then composer require silverstripe/sqlite3:2.0.x-dev --no-update --prefer-dist; fi
+  - composer install --prefer-dist --no-interaction --no-progress --no-suggest --optimize-autoloader --verbose --profile
 
 # Install NPM dependencies
   - if [[ $NPM_TEST ]]; then nvm install $TRAVIS_NODE_VERSION && nvm use $TRAVIS_NODE_VERSION && npm install -g yarn && yarn install --network-concurrency 1 && yarn run build; fi
 
 # Start behat services
   - if [[ $BEHAT_TEST ]]; then mkdir artifacts; fi
+  - if [[ $BEHAT_TEST ]]; then cp composer.lock artifacts/; fi
   - if [[ $BEHAT_TEST ]]; then sh -e /etc/init.d/xvfb start; sleep 3; fi
-  - if [[ $BEHAT_TEST ]]; then (vendor/bin/selenium-server-standalone > artifacts/selenium.log 2>&1 &); fi
+  - if [[ $BEHAT_TEST ]]; then (chromedriver > artifacts/chromedriver.log 2>&1 &); fi
   - if [[ $BEHAT_TEST ]]; then (vendor/bin/serve --bootstrap-file tests/behat/serve-bootstrap.php &> artifacts/serve.log &); fi
 
 script:
