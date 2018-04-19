@@ -196,40 +196,56 @@ $.entwine('ss', function($){
 		}
 	});
 
+  /**
+   * Class: .cms-edit-form .btn-toolbar #Form_EditForm_action_rollback
+   *
+   * A "rollback" to a specific version needs user confirmation.
+   */
+  $('.cms-edit-form .btn-toolbar #Form_EditForm_action_doRollback, .cms-edit-form .btn-toolbar #Form_EditForm_action_rollback').entwine({
 
-	/**
-	 * Class: .cms-edit-form .btn-toolbar #Form_EditForm_action_rollback
-	 *
-	 * A "rollback" to a specific version needs user confirmation.
-	 */
-	$('.cms-edit-form .btn-toolbar #Form_EditForm_action_doRollback, .cms-edit-form .btn-toolbar #Form_EditForm_action_rollback').entwine({
-
-		/**
-		 * Function: onclick
-		 *
-		 * Parameters:
-		 *  (Event) e
-		 */
-		onclick: function(e) {
-			var form = this.parents('form:first'), version = form.find(':input[name=Version]').val(), message = '';
-			if (this.props('disabled')) {
-			  return false;
+    /**
+     * Function: onclick
+     *
+     * Parameters:
+     *  (Event) e
+     */
+    onclick: function(e) {
+      // Skip if disabled
+      if (this.is(':disabled')) {
+        e.preventDefault();
+        return false;
       }
-			if(version) {
-				message = i18n.sprintf(
-					i18n._t('CMS.RollbackToVersion', 'Do you really want to roll back to version #%s of this page?'),
-					version
-				);
-			} else {
-				message = i18n._t('CMS.ConfirmRestoreFromLive', 'Are you sure you want to revert draft to when the page was last published?');
-			}
-			if(confirm(message)) {
-				return this._super(e);
-			} else {
-				return false;
-			}
-		}
-	});
+
+      // Check if a version is selected
+      const version = this
+        .parents('form:first')
+        .find(':input[name=Version]')
+        .val();
+
+      // Assign message based on version
+      const message = version
+        ? i18n.sprintf(
+            i18n._t(
+              'CMS.RollbackToVersion',
+              'Do you really want to roll back to version #%s of this page?'
+            ),
+            version
+        )
+        : i18n._t(
+          'CMS.ConfirmRestoreFromLive',
+          'Are you sure you want to revert draft to when the page was last published?'
+        );
+
+      // Skip if cancelled
+      if(!confirm(message)) {
+        e.preventDefault();
+        return false;
+      }
+
+      // Continue
+      return this._super(e);
+    }
+  });
 
 	/**
 	 * Class: .cms-edit-form .btn-toolbar #Form_EditForm_action_archive
