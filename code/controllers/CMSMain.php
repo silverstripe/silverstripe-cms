@@ -188,7 +188,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			'/', // trailing slash needed if $action is null!
 			"$action"
 		);
-		$this->extend('updateLink', $link);
+		$this->extend('updateLink', $link, $action);
 		return $link;
 	}
 
