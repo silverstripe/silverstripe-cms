@@ -58,6 +58,10 @@ class ContentController extends Controller
         'LoginForm'
     );
 
+    private static $casting = array(
+        'SilverStripeNavigator' => 'HTMLFragment',
+    );
+
     /**
      * The ContentController will take the URLSegment parameter from the URL and use that to look
      * up a SiteTree record.
