@@ -585,6 +585,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 'listViewLink' => $this->LinkListViewChildren($node->ID),
                 'rootTitle' => $rootTitle,
                 'extraClass' => $this->getTreeNodeClasses($node),
+                'Title' => _t(
+                    self::class . '.PAGETYPE_TITLE',
+                    '(Page type: {type}) {title}',
+                    [
+                        'type' => $node->i18n_singular_name(),
+                        'title' => $node->Title,
+                    ]
+                )
             ];
         };
     }
