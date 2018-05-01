@@ -355,7 +355,7 @@ class ContentController extends Controller
             }
             $viewPageIn = _t('SilverStripe\\CMS\\Controllers\\ContentController.VIEWPAGEIN', 'View Page in:');
 
-            $navigator = <<<HTML
+            return <<<HTML
 				<div id="SilverStripeNavigator">
 					<div class="holder">
 					<div id="logInStatus">
@@ -370,7 +370,6 @@ class ContentController extends Controller
 				</div>
 					$message
 HTML;
-            return DBField::create_field('HTMLFragment', $navigator);
 
         // On live sites we should still see the archived message
         } else {
@@ -379,9 +378,9 @@ HTML;
                 /** @var DBDatetime $dateObj */
                 $dateObj = DBField::create_field('Datetime', $date);
                 // $dateObj->setVal($date);
-                return DBField::create_field('HTMLFragment', "<div id=\"SilverStripeNavigatorMessage\">" .
+                return "<div id=\"SilverStripeNavigatorMessage\">" .
                     _t('SilverStripe\\CMS\\Controllers\\ContentController.ARCHIVEDSITEFROM', 'Archived site from') .
-                    "<br>" . $dateObj->Nice() . "</div>");
+                    "<br>" . $dateObj->Nice() . "</div>";
             }
         }
         return null;
