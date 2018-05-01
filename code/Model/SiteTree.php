@@ -2303,7 +2303,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // Note: It would be nice to have a canRestore() permission at some point
         if ($canEdit && !$isOnDraft && !$isPublished) {
             // Determine if we should force a restore to root (where once it was a subpage)
-            $restoreToRoot = $this->isParentArchived();
+            $restoreToRoot = $this->isParentArchived() && $this->config()->get('can_be_root');
 
             // "restore"
             $title = $restoreToRoot
@@ -2312,13 +2312,15 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $description = $restoreToRoot
                 ? _t('SilverStripe\\CMS\\Controllers\\CMSMain.RESTORE_TO_ROOT_DESC', 'Restore the archived version to draft as a top level page')
                 : _t('SilverStripe\\CMS\\Controllers\\CMSMain.RESTORE_DESC', 'Restore the archived version to draft');
-            $majorActions->push(
-                FormAction::create('restore', $title)
-                    ->setDescription($description)
-                    ->setAttribute('data-to-root', $restoreToRoot)
-                    ->addExtraClass('btn-warning font-icon-back-in-time')
-                    ->setUseButtonTag(true)
-            );
+            if (!$this->isParentArchived() || $restoreToRoot) {
+                $majorActions->push(
+                    FormAction::create('restore', $title)
+                        ->setDescription($description)
+                        ->setAttribute('data-to-root', $restoreToRoot)
+                        ->addExtraClass('btn-warning font-icon-back-in-time')
+                        ->setUseButtonTag(true)
+                );
+            }
         }
 
         // If a page is on any stage it can be archived
