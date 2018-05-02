@@ -50,13 +50,19 @@ class ContentController extends Controller
 
     protected $dataRecord;
 
-    private static $extensions = array('SilverStripe\\CMS\\Controllers\\OldPageRedirector');
+    private static $extensions = [
+        'SilverStripe\\CMS\\Controllers\\OldPageRedirector',
+    ];
 
-    private static $allowed_actions = array(
+    private static $allowed_actions = [
         'successfullyinstalled',
         'deleteinstallfiles', // secured through custom code
-        'LoginForm'
-    );
+        'LoginForm',
+    ];
+
+    private static $casting = [
+        'SilverStripeNavigator' => 'HTMLFragment',
+    ];
 
     /**
      * The ContentController will take the URLSegment parameter from the URL and use that to look
@@ -133,7 +139,7 @@ class ContentController extends Controller
         // If we've accessed the homepage as /home/, then we should redirect to /.
         if ($this->dataRecord instanceof SiteTree
             && RootURLController::should_be_on_root($this->dataRecord)
-            && (!isset($this->urlParams['Action']) || !$this->urlParams['Action'] )
+            && (!isset($this->urlParams['Action']) || !$this->urlParams['Action'])
             && !$_POST && !$_FILES && !$this->redirectedTo()
         ) {
             $getVars = $_GET;
@@ -176,7 +182,7 @@ class ContentController extends Controller
     public function handleRequest(HTTPRequest $request)
     {
         /** @var SiteTree $child */
-        $child  = null;
+        $child = null;
         $action = $request->param('Action');
 
         // If nested URLs are enabled, and there is no action handler for the current request then attempt to pass
@@ -188,10 +194,10 @@ class ContentController extends Controller
                 Translatable::disable_locale_filter();
             }
             // look for a page with this URLSegment
-            $child = SiteTree::get()->filter(array(
+            $child = SiteTree::get()->filter([
                 'ParentID' => $this->ID,
-                'URLSegment' => rawurlencode($action)
-            ))->first();
+                'URLSegment' => rawurlencode($action),
+            ])->first();
             if (class_exists('Translatable')) {
                 Translatable::enable_locale_filter();
             }
@@ -269,13 +275,13 @@ class ContentController extends Controller
     public function getMenu($level = 1)
     {
         if ($level == 1) {
-            $result = SiteTree::get()->filter(array(
+            $result = SiteTree::get()->filter([
                 "ShowInMenus" => 1,
-                "ParentID" => 0
-            ));
+                "ParentID" => 0,
+            ]);
         } else {
             $parent = $this->data();
-            $stack = array($parent);
+            $stack = [$parent];
 
             if ($parent) {
                 while (($parent = $parent->Parent()) && $parent->exists()) {
@@ -283,12 +289,12 @@ class ContentController extends Controller
                 }
             }
 
-            if (isset($stack[$level-2])) {
-                $result = $stack[$level-2]->Children();
+            if (isset($stack[$level - 2])) {
+                $result = $stack[$level - 2]->Children();
             }
         }
 
-        $visible = array();
+        $visible = [];
 
         // Remove all entries the can not be viewed by the current user
         // We might need to create a show in menu permission
@@ -340,18 +346,18 @@ class ContentController extends Controller
             if ($member) {
                 $firstname = Convert::raw2xml($member->FirstName);
                 $surname = Convert::raw2xml($member->Surname);
-                $logInMessage = _t('SilverStripe\\CMS\\Controllers\\ContentController.LOGGEDINAS', 'Logged in as') ." {$firstname} {$surname} - <a href=\"Security/logout\">". _t('SilverStripe\\CMS\\Controllers\\ContentController.LOGOUT', 'Log out'). "</a>";
+                $logInMessage = _t('SilverStripe\\CMS\\Controllers\\ContentController.LOGGEDINAS', 'Logged in as') . " {$firstname} {$surname} - <a href=\"Security/logout\">" . _t('SilverStripe\\CMS\\Controllers\\ContentController.LOGOUT', 'Log out') . "</a>";
             } else {
                 $logInMessage = sprintf(
                     '%s - <a href="%s">%s</a>',
                     _t('SilverStripe\\CMS\\Controllers\\ContentController.NOTLOGGEDIN', 'Not logged in'),
                     Security::config()->login_url,
-                    _t('SilverStripe\\CMS\\Controllers\\ContentController.LOGIN', 'Login') ."</a>"
+                    _t('SilverStripe\\CMS\\Controllers\\ContentController.LOGIN', 'Login') . "</a>"
                 );
             }
             $viewPageIn = _t('SilverStripe\\CMS\\Controllers\\ContentController.VIEWPAGEIN', 'View Page in:');
 
-            $navigator = <<<HTML
+            return <<<HTML
 				<div id="SilverStripeNavigator">
 					<div class="holder">
 					<div id="logInStatus">
@@ -366,18 +372,17 @@ class ContentController extends Controller
 				</div>
 					$message
 HTML;
-            return DBField::create_field('HTMLFragment', $navigator);
 
-        // On live sites we should still see the archived message
+            // On live sites we should still see the archived message
         } else {
             if ($date = Versioned::current_archived_date()) {
                 Requirements::css('silverstripe/cms: client/dist/styles/SilverStripeNavigator.css');
                 /** @var DBDatetime $dateObj */
                 $dateObj = DBField::create_field('Datetime', $date);
                 // $dateObj->setVal($date);
-                return DBField::create_field('HTMLFragment', "<div id=\"SilverStripeNavigatorMessage\">" .
+                return "<div id=\"SilverStripeNavigatorMessage\">" .
                     _t('SilverStripe\\CMS\\Controllers\\ContentController.ARCHIVEDSITEFROM', 'Archived site from') .
-                    "<br>" . $dateObj->Nice() . "</div>");
+                    "<br>" . $dateObj->Nice() . "</div>";
             }
         }
         return null;
@@ -480,19 +485,19 @@ HTML;
         }
 
         global $project;
-        $data = new ArrayData(array(
+        $data = new ArrayData([
             'Project' => Convert::raw2xml($project),
             'Username' => Convert::raw2xml($this->getRequest()->getSession()->get('username')),
             'Password' => Convert::raw2xml($this->getRequest()->getSession()->get('password')),
-        ));
+        ]);
 
-        return array(
-            "Title" =>  _t("SilverStripe\\CMS\\Controllers\\ContentController.INSTALL_SUCCESS", "Installation Successful!"),
+        return [
+            "Title" => _t("SilverStripe\\CMS\\Controllers\\ContentController.INSTALL_SUCCESS", "Installation Successful!"),
             "Content" => $data->renderWith([
                 'type' => 'Includes',
-                'Install_successfullyinstalled'
+                'Install_successfullyinstalled',
             ]),
-        );
+        ];
     }
 
     public function deleteinstallfiles()
@@ -507,12 +512,12 @@ HTML;
         // We can't delete index.php as it might be necessary for URL routing without mod_rewrite.
         // There's no safe way to detect usage of mod_rewrite across webservers,
         // so we have to assume the file is required.
-        $installfiles = array(
+        $installfiles = [
             'install.php',
             'config-form.css',
             'config-form.html',
-            'index.html'
-        );
+            'index.html',
+        ];
 
         $unsuccessful = new ArrayList();
         foreach ($installfiles as $installfile) {
@@ -521,23 +526,23 @@ HTML;
             }
 
             if (file_exists(BASE_PATH . '/' . $installfile)) {
-                $unsuccessful->push(new ArrayData(array('File' => $installfile)));
+                $unsuccessful->push(new ArrayData(['File' => $installfile]));
             }
         }
 
-        $data = new ArrayData(array(
+        $data = new ArrayData([
             'Username' => Convert::raw2xml($this->getRequest()->getSession()->get('username')),
             'Password' => Convert::raw2xml($this->getRequest()->getSession()->get('password')),
-            'UnsuccessfulFiles' => $unsuccessful
-        ));
+            'UnsuccessfulFiles' => $unsuccessful,
+        ]);
         $content->setValue($data->renderWith([
             'type' => 'Includes',
-            'Install_deleteinstallfiles'
+            'Install_deleteinstallfiles',
         ]));
 
-        return array(
+        return [
             "Title" => $title,
             "Content" => $content,
-        );
+        ];
     }
 }
