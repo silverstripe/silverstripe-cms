@@ -33,6 +33,10 @@ const config = {
       },
     };
   },
+  options: {
+    // Refetch versions after mutation is completed
+    refetchQueries: ['ReadHistoryViewerPage']
+  }
 };
 
 export { mutation, config };
