@@ -9,8 +9,7 @@ class ContentControllerTest extends FunctionalTest {
 
 	protected static $disable_themes = true;
 
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Config::inst()->update('Director', 'alternate_base_url', '/');
 		$this->useDraftSite(false);

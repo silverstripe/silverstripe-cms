@@ -5,8 +5,7 @@ class RedirectorPageTest extends FunctionalTest {
 
 	protected $autoFollowRedirection = false;
 
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->useDraftSite(false);
 		$this->logInWithPermission('ADMIN');
