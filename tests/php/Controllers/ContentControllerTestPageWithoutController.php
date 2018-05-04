@@ -2,10 +2,9 @@
 
 namespace SilverStripe\CMS\Tests\Controllers;
 
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Dev\TestOnly;
-use Page;
 
-class ContentControllerTestPageWithoutController extends Page implements TestOnly
+class ContentControllerTestPageWithoutController extends SiteTree implements TestOnly
 {
-
 }

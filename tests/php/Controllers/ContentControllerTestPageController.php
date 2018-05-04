@@ -7,13 +7,13 @@ use PageController;
 
 class ContentControllerTestPageController extends PageController implements TestOnly
 {
-    private static $allowed_actions = array(
+    private static $allowed_actions = [
         'test',
-        'testwithouttemplate'
-    );
+        'testwithouttemplate',
+    ];
 
     public function testwithouttemplate()
     {
-        return array();
+        return [];
     }
 }

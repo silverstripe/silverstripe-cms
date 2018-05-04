@@ -1,4 +1,4 @@
-Page:
+SilverStripe\CMS\Model\SiteTree:
   page1:
     ID: 1
     Title: page1
@@ -12,6 +12,6 @@ Page:
     Title: page3
     URLSegment: page3
     Content: '<p><a href="[sitetree_link,id=1]">Testing page 1 link</a></p>'
-    LinkTracking: =>Page.page1
+    LinkTracking: =>SilverStripe\CMS\Model\SiteTree.page1
 
 

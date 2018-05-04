@@ -2,14 +2,14 @@
 
 namespace SilverStripe\CMS\Tests\Controllers;
 
-use Page;
 use SilverStripe\CMS\Controllers\CMSPageHistoryController;
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Forms\FieldGroup;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\HTMLReadonlyField;
+use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\TextField;
 
 class CMSPageHistoryControllerTest extends FunctionalTest
@@ -29,7 +29,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
         $this->loginWithPermission('ADMIN');
 
         // creates a series of published, unpublished versions of a page
-        $this->page = new Page();
+        $this->page = SiteTree::create();
         $this->page->URLSegment = "test";
         $this->page->Content = "new content";
         $this->page->write();
@@ -79,7 +79,12 @@ class CMSPageHistoryControllerTest extends FunctionalTest
         );
 
         // check that compare mode updates the message
-        $form = $controller->getEditForm($this->page->ID, null, $this->versionPublishCheck, $this->versionPublishCheck2);
+        $form = $controller->getEditForm(
+            $this->page->ID,
+            null,
+            $this->versionPublishCheck,
+            $this->versionPublishCheck2
+        );
         $this->assertContains(
             sprintf("Comparing versions %s", $this->versionPublishCheck),
             $form->Fields()->fieldByName('Root.Main.CurrentlyViewingMessage')->getContent()
@@ -97,7 +102,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
      */
     public function testVersionsForm()
     {
-        $this->get('admin/pages/history/show/'. $this->page->ID);
+        $this->get('admin/pages/history/show/' . $this->page->ID);
         $form = $this->cssParser()->getBySelector('#Form_VersionsForm');
 
         $this->assertEquals(1, count($form));
@@ -115,16 +120,16 @@ class CMSPageHistoryControllerTest extends FunctionalTest
 
     public function testVersionsFormTableContainsInformation()
     {
-        $this->get('admin/pages/history/show/'. $this->page->ID);
+        $this->get('admin/pages/history/show/' . $this->page->ID);
         $form = $this->cssParser()->getBySelector('#Form_VersionsForm');
         $rows = $form[0]->xpath("fieldset/table/tbody/tr");
 
-        $expected = array(
-            array('version' => $this->versionPublishCheck2, 'status' => 'published'),
-            array('version' => $this->versionUnpublishedCheck2, 'status' => 'internal'),
-            array('version' => $this->versionPublishCheck, 'status' => 'published'),
-            array('version' => $this->versionUnpublishedCheck, 'status' => 'internal')
-        );
+        $expected = [
+            ['version' => $this->versionPublishCheck2, 'status' => 'published'],
+            ['version' => $this->versionUnpublishedCheck2, 'status' => 'internal'],
+            ['version' => $this->versionPublishCheck, 'status' => 'published'],
+            ['version' => $this->versionUnpublishedCheck, 'status' => 'internal'],
+        ];
 
         // goes the reverse order that we created in setUp()
         $i = 0;
@@ -141,7 +146,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
 
     public function testVersionsFormSelectsUnpublishedCheckbox()
     {
-        $this->get('admin/pages/history/show/'. $this->page->ID);
+        $this->get('admin/pages/history/show/' . $this->page->ID);
         $checkbox = $this->cssParser()->getBySelector('#Form_VersionsForm_ShowUnpublished');
 
         $this->assertThat($checkbox[0], $this->logicalNot($this->isNull()));
@@ -150,7 +155,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
         $this->assertThat($checked, $this->logicalNot($this->stringContains('checked')));
 
         // viewing an unpublished
-        $this->get('admin/pages/history/show/'.$this->page->ID .'/'.$this->versionUnpublishedCheck);
+        $this->get('admin/pages/history/show/' . $this->page->ID . '/' . $this->versionUnpublishedCheck);
         $checkbox = $this->cssParser()->getBySelector('#Form_VersionsForm_ShowUnpublished');
 
         $this->assertThat($checkbox[0], $this->logicalNot($this->isNull()));

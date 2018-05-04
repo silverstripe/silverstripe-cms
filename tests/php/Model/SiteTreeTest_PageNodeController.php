@@ -3,8 +3,8 @@
 namespace SilverStripe\CMS\Tests\Model;
 
 use SilverStripe\Dev\TestOnly;
-use PageController;
+use SilverStripe\CMS\Controllers\ContentController;
 
-class SiteTreeTest_PageNodeController extends PageController implements TestOnly
+class SiteTreeTest_PageNodeController extends ContentController implements TestOnly
 {
 }

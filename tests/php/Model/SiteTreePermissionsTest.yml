@@ -35,7 +35,7 @@ SilverStripe\Security\Member:
     Email: websiteuser@test.com
     Password: test
     Groups: =>SilverStripe\Security\Group.websiteusers
-Page:
+SilverStripe\CMS\Model\SiteTree:
   standardpage:
     URLSegment: standardpage
   restrictedViewLoggedInUsers:
@@ -66,7 +66,7 @@ Page:
     URLSegment: parent-restrictedViewOnlySubadminGroup
   child_restrictedViewOnlySubadminGroup:
     CanViewType: Inherit
-    Parent: =>Page.parent_restrictedViewOnlySubadminGroup
+    Parent: =>SilverStripe\CMS\Model\SiteTree.parent_restrictedViewOnlySubadminGroup
     URLSegment: child-restrictedViewOnlySubadminGroup
   parent_restrictedEditOnlySubadminGroup:
     CanEditType: OnlyTheseUsers
@@ -74,7 +74,7 @@ Page:
     URLSegment: parent-restrictedEditOnlySubadminGroup
   child_restrictedEditOnlySubadminGroup:
     CanEditType: Inherit
-    Parent: =>Page.parent_restrictedEditOnlySubadminGroup
+    Parent: =>SilverStripe\CMS\Model\SiteTree.parent_restrictedEditOnlySubadminGroup
     URLSegment: child-restrictedEditOnlySubadminGroup
   deleteTestParentPage:
     CanEditType: Inherit

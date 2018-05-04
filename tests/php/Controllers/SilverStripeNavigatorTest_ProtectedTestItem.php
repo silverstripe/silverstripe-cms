@@ -9,7 +9,6 @@ use SilverStripe\Security\Security;
 
 class SilverStripeNavigatorTest_ProtectedTestItem extends SilverStripeNavigatorItem implements TestOnly
 {
-
     public function getTitle()
     {
         return self::class;

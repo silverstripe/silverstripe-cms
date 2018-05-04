@@ -2,7 +2,6 @@
 
 namespace SilverStripe\CMS\Tests\Model;
 
-use Page;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\ORM\DB;
@@ -21,7 +20,6 @@ use SilverStripe\Versioned\Versioned;
  */
 class SiteTreeActionsTest extends FunctionalTest
 {
-
     protected static $fixture_file = 'SiteTreeActionsTest.yml';
 
     public function testActionsReadonly()
@@ -38,7 +36,7 @@ class SiteTreeActionsTest extends FunctionalTest
         Security::setCurrentUser($readonlyEditor);
 
         // Reload latest version
-        $page = Page::get()->byID($page->ID);
+        $page = SiteTree::get()->byID($page->ID);
         $actions = $page->getCMSActions();
 
         $this->assertNull($actions->dataFieldByName('action_addtocampaign'));
@@ -85,14 +83,14 @@ class SiteTreeActionsTest extends FunctionalTest
         $author = $this->objFromFixture(Member::class, 'cmseditor');
         Security::setCurrentUser($author);
 
-        /** @var Page $page */
-        $page = new Page();
+        /** @var SiteTree $page */
+        $page = SiteTree::create();
         $page->CanEditType = 'LoggedInUsers';
         $page->write();
         $page->publishRecursive();
 
         // Reload latest version
-        $page = Page::get()->byID($page->ID);
+        $page = SiteTree::get()->byID($page->ID);
 
         $actions = $page->getCMSActions();
 
@@ -110,7 +108,7 @@ class SiteTreeActionsTest extends FunctionalTest
         $author = $this->objFromFixture(Member::class, 'cmseditor');
         Security::setCurrentUser($author);
 
-        $page = new Page();
+        $page = SiteTree::create();
         $page->CanEditType = 'LoggedInUsers';
         $page->write();
         $this->assertTrue($page->canPublish());
@@ -139,7 +137,7 @@ class SiteTreeActionsTest extends FunctionalTest
         $author = $this->objFromFixture(Member::class, 'cmseditor');
         Security::setCurrentUser($author);
 
-        $page = new Page();
+        $page = SiteTree::create();
         $page->CanEditType = 'LoggedInUsers';
         $page->write();
         $this->assertTrue($page->canPublish());
@@ -149,7 +147,7 @@ class SiteTreeActionsTest extends FunctionalTest
         $page->flushCache();
 
         // Reload latest version
-        $page = Page::get()->byID($page->ID);
+        $page = SiteTree::get()->byID($page->ID);
 
         $actions = $page->getCMSActions();
         $this->assertNotNull($actions->dataFieldByName('action_addtocampaign'));
@@ -163,15 +161,17 @@ class SiteTreeActionsTest extends FunctionalTest
 
     public function testActionsViewingOldVersion()
     {
-        $p = new Page();
+        $p = SiteTree::create();
         $p->Content = 'test page first version';
         $p->write();
         $p->Content = 'new content';
         $p->write();
 
         // Looking at the old version, the ability to rollback to that version is available
-        $version = DB::query('SELECT "Version" FROM "SiteTree_Versions" WHERE "Content" = \'test page first version\'')->value();
-        $old = Versioned::get_version('Page', $p->ID, $version);
+        $version = DB::query(
+            'SELECT "Version" FROM "SiteTree_Versions" WHERE "Content" = \'test page first version\''
+        )->value();
+        $old = Versioned::get_version(SiteTree::class, $p->ID, $version);
         $actions = $old->getCMSActions();
         $this->assertNull($actions->dataFieldByName('action_addtocampaign'));
         $this->assertNull($actions->dataFieldByName('action_save'));

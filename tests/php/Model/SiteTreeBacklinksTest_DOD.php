@@ -9,9 +9,9 @@ use SilverStripe\ORM\DataExtension;
 
 class SiteTreeBacklinksTest_DOD extends DataExtension implements TestOnly
 {
-    private static $db = array(
+    private static $db = [
         'ExtraContent' => 'HTMLText',
-    );
+    ];
 
     public function updateCMSFields(FieldList $fields)
     {

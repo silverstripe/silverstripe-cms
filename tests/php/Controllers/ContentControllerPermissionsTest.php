@@ -6,7 +6,7 @@ use SilverStripe\Versioned\Versioned;
 use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\FunctionalTest;
-use Page;
+use SilverStripe\CMS\Model\SiteTree;
 
 class ContentControllerPermissionsTest extends FunctionalTest
 {
@@ -17,7 +17,7 @@ class ContentControllerPermissionsTest extends FunctionalTest
     public function testCanViewStage()
     {
         // Create a new page
-        $page = new Page();
+        $page = SiteTree::create();
         $page->URLSegment = 'testpage';
         $page->write();
         $page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
@@ -38,7 +38,11 @@ class ContentControllerPermissionsTest extends FunctionalTest
             $response = $responseException->getResponse();
         }
         // should redirect to login
-        $this->assertEquals($response->getStatusCode(), 302, 'Redirects to login page when not logged in for draft stage');
+        $this->assertEquals(
+            $response->getStatusCode(),
+            302,
+            'Redirects to login page when not logged in for draft stage'
+        );
         $this->assertContains(
             Config::inst()->get('SilverStripe\\Security\\Security', 'login_url'),
             $response->getHeader('Location')
@@ -47,6 +51,10 @@ class ContentControllerPermissionsTest extends FunctionalTest
         $this->logInWithPermission('CMS_ACCESS_CMSMain');
 
         $response = $this->get('/testpage/?stage=Stage');
-        $this->assertEquals($response->getStatusCode(), 200, 'Doesnt redirect to login, but shows page for authenticated user');
+        $this->assertEquals(
+            $response->getStatusCode(),
+            200,
+            'Doesnt redirect to login, but shows page for authenticated user'
+        );
     }
 }
