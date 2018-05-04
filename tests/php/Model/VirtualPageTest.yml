@@ -31,7 +31,7 @@ SilverStripe\Security\Member:
   alice:
     Email: alice@alice.com
     Groups: =>SilverStripe\Security\Group.alicegroup
-Page:
+SilverStripe\CMS\Model\SiteTree:
   master:
     Title: My Page
     MenuTitle: My Page Nav
@@ -52,15 +52,15 @@ SilverStripe\CMS\Tests\Model\VirtualPageTest_ClassA:
 SilverStripe\CMS\Model\VirtualPage:
   vp1:
     Title: vp1
-    CopyContentFrom: =>Page.master
-    Parent: =>Page.holder
+    CopyContentFrom: =>SilverStripe\CMS\Model\SiteTree.master
+    Parent: =>SilverStripe\CMS\Model\SiteTree.holder
   vp2:
     Title: vp2
-    CopyContentFrom: =>Page.master
-    Parent: =>Page.holder
+    CopyContentFrom: =>SilverStripe\CMS\Model\SiteTree.master
+    Parent: =>SilverStripe\CMS\Model\SiteTree.holder
   vp3:
-    CopyContentFrom: =>Page.master3
-    Parent: =>Page.holder
+    CopyContentFrom: =>SilverStripe\CMS\Model\SiteTree.master3
+    Parent: =>SilverStripe\CMS\Model\SiteTree.holder
     CanEditType: OnlyTheseUsers
     CanViewType: OnlyTheseUsers
     EditorGroups: =>SilverStripe\Security\Group.andrewgroup

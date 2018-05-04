@@ -2,7 +2,6 @@
 
 namespace SilverStripe\CMS\Tests\Model;
 
-use Page;
 use SilverStripe\Assets\Dev\TestAssetStore;
 use SilverStripe\Assets\File;
 use SilverStripe\Assets\Filesystem;
@@ -31,8 +30,8 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest
         }
 
         // Ensure all pages are published
-        /** @var Page $page */
-        foreach (Page::get() as $page) {
+        /** @var SiteTree $page */
+        foreach (SiteTree::get() as $page) {
             $page->publishSingle();
         }
     }
@@ -55,7 +54,11 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest
         $editor->setValue("<a href=\"[sitetree_link,id=$aboutID]\">Example Link</a>");
         $editor->saveInto($sitetree);
         $sitetree->write();
-        $this->assertEquals(array($aboutID => $aboutID), $sitetree->LinkTracking()->getIdList(), 'Basic link tracking works.');
+        $this->assertEquals(
+            [$aboutID => $aboutID],
+            $sitetree->LinkTracking()->getIdList(),
+            'Basic link tracking works.'
+        );
 
         $editor->setValue(
             "<a href=\"[sitetree_link,id=$aboutID]\"></a><a href=\"[sitetree_link,id=$contactID]\"></a>"
@@ -63,7 +66,7 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest
         $editor->saveInto($sitetree);
         $sitetree->write();
         $this->assertEquals(
-            array($aboutID => $aboutID, $contactID => $contactID),
+            [$aboutID => $aboutID, $contactID => $contactID],
             $sitetree->LinkTracking()->getIdList(),
             'Tracking works on multiple links'
         );
@@ -71,14 +74,14 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest
         $editor->setValue(null);
         $editor->saveInto($sitetree);
         $sitetree->write();
-        $this->assertEquals(array(), $sitetree->LinkTracking()->getIdList(), 'Link tracking is removed when links are.');
+        $this->assertEquals([], $sitetree->LinkTracking()->getIdList(), 'Link tracking is removed when links are.');
 
         // Legacy support - old CMS versions added link shortcodes with spaces instead of commas
         $editor->setValue("<a href=\"[sitetree_link id=$aboutID]\">Example Link</a>");
         $editor->saveInto($sitetree);
         $sitetree->write();
         $this->assertEquals(
-            array($aboutID => $aboutID),
+            [$aboutID => $aboutID],
             $sitetree->LinkTracking()->getIdList(),
             'Link tracking with space instead of comma in shortcode works.'
         );
@@ -86,7 +89,7 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest
 
     public function testImageInsertion()
     {
-        $sitetree = new SiteTree();
+        $sitetree = SiteTree::create();
         $editor   = new HTMLEditorField('Content');
 
         $editor->setValue('<img src="assets/example.jpg" />');
@@ -110,7 +113,7 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest
 
     public function testBrokenSiteTreeLinkTracking()
     {
-        $sitetree = new SiteTree();
+        $sitetree = SiteTree::create();
         $editor   = new HTMLEditorField('Content');
 
         $this->assertFalse((bool) $sitetree->HasBrokenLink);

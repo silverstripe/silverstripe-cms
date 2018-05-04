@@ -2,15 +2,14 @@
 
 namespace SilverStripe\CMS\Tests\Model;
 
-use Page;
 use SilverStripe\CMS\Model\SiteTreeLinkTracking_Parser;
 use SilverStripe\Control\Director;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\View\Parsers\HTMLValue;
+use SilverStripe\CMS\Model\SiteTree;
 
 class SiteTreeLinkTrackingTest extends SapphireTest
 {
-
     protected function setUp()
     {
         parent::setUp();
@@ -52,7 +51,7 @@ class SiteTreeLinkTrackingTest extends SapphireTest
         $this->assertFalse($this->isBroken('<a id="anchor">anchor</a>'));
         $this->assertTrue($this->isBroken('<a href="##anchor">anchor</a>'));
 
-        $page = new Page();
+        $page = SiteTree::create();
         $page->Content = '<a name="yes-name-anchor">name</a><a id="yes-id-anchor">id</a>';
         $page->write();
 
@@ -64,7 +63,7 @@ class SiteTreeLinkTrackingTest extends SapphireTest
 
     protected function highlight($content)
     {
-        $page = new Page();
+        $page = SiteTree::create();
         $page->Content = $content;
         $page->write();
         return $page->Content;
@@ -79,7 +78,7 @@ class SiteTreeLinkTrackingTest extends SapphireTest
         $content = $this->highlight('<a href="[sitetree_link,id=123]">link</a>');
         $this->assertEquals(substr_count($content, 'ss-broken'), 1, 'ss-broken class is added to the broken link.');
 
-        $otherPage = new Page();
+        $otherPage = SiteTree::create();
         $otherPage->Content = '';
         $otherPage->write();
 

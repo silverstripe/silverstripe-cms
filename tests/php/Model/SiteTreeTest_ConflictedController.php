@@ -3,13 +3,13 @@
 namespace SilverStripe\CMS\Tests\Model;
 
 use SilverStripe\Dev\TestOnly;
-use PageController;
+use SilverStripe\CMS\Controllers\ContentController;
 
-class SiteTreeTest_ConflictedController extends PageController implements TestOnly
+class SiteTreeTest_ConflictedController extends ContentController implements TestOnly
 {
-    private static $allowed_actions = array(
-        'conflicted-action'
-    );
+    private static $allowed_actions = [
+        'conflicted-action',
+    ];
 
     public function hasActionTemplate($template)
     {

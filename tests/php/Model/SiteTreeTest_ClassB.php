@@ -3,14 +3,14 @@
 namespace SilverStripe\CMS\Tests\Model;
 
 use SilverStripe\Dev\TestOnly;
-use Page;
+use SilverStripe\CMS\Model\SiteTree;
 
-class SiteTreeTest_ClassB extends Page implements TestOnly
+class SiteTreeTest_ClassB extends SiteTree implements TestOnly
 {
     private static $table_name = 'SiteTreeTest_ClassB';
 
     // Also allowed subclasses
     private static $allowed_children = [
-        SiteTreeTest_ClassC::class
+        SiteTreeTest_ClassC::class,
     ];
 }

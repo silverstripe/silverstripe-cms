@@ -6,6 +6,7 @@ use SilverStripe\CMS\Controllers\SilverStripeNavigator;
 use SilverStripe\CMS\Controllers\SilverStripeNavigatorItem_ArchiveLink;
 use SilverStripe\CMS\Controllers\SilverStripeNavigatorItem_LiveLink;
 use SilverStripe\CMS\Controllers\SilverStripeNavigatorItem_StageLink;
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Security\Member;
 
@@ -19,7 +20,7 @@ class SilverStripeNavigatorTest extends SapphireTest
 
     public function testGetItems()
     {
-        $page = $this->objFromFixture('Page', 'page1');
+        $page = $this->objFromFixture(SiteTree::class, 'page1');
         $navigator = new SilverStripeNavigator($page);
 
         $items = $navigator->getItems();
@@ -41,7 +42,7 @@ class SilverStripeNavigatorTest extends SapphireTest
 
     public function testCanView()
     {
-        $page = $this->objFromFixture('Page', 'page1');
+        $page = $this->objFromFixture(SiteTree::class, 'page1');
         $admin = $this->objFromFixture(Member::class, 'admin');
         $navigator = new SilverStripeNavigator($page);
 

@@ -4,23 +4,23 @@ namespace SilverStripe\CMS\Tests\Controllers;
 
 use SilverStripe\Assets\File;
 use SilverStripe\CMS\Controllers\ContentController;
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\CMS\Search\ContentControllerSearchExtension;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\ORM\Search\FulltextSearchable;
 use SilverStripe\Versioned\Versioned;
-use Page;
 
 class ContentControllerSearchExtensionTest extends SapphireTest
 {
-    protected static $required_extensions = array(
+    protected static $required_extensions = [
         ContentController::class => [
             ContentControllerSearchExtension::class,
-        ]
-    );
+        ],
+    ];
 
     public function testCustomSearchFormClassesToTest()
     {
-        $page = new Page();
+        $page = SiteTree::create();
         $page->URLSegment = 'whatever';
         $page->Content = 'oh really?';
         $page->write();

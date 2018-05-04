@@ -1,4 +1,4 @@
-Page:
+SilverStripe\CMS\Model\SiteTree:
   page1:
     Title: Page 1
     Sort: 1
@@ -10,11 +10,11 @@ Page:
     Sort: 3
   page31:
     Title: Page 3.1
-    Parent: =>Page.page3
+    Parent: =>SilverStripe\CMS\Model\SiteTree.page3
     Sort: 1
   page32:
     Title: Page 3.2
-    Parent: =>Page.page3
+    Parent: =>SilverStripe\CMS\Model\SiteTree.page3
     Sort: 2
   page4:
     Title: Page 4

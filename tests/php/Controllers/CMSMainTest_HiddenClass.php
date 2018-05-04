@@ -2,11 +2,10 @@
 
 namespace SilverStripe\CMS\Tests\Controllers;
 
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Dev\TestOnly;
 use SilverStripe\ORM\HiddenClass;
-use Page;
 
-class CMSMainTest_HiddenClass extends Page implements TestOnly, HiddenClass
+class CMSMainTest_HiddenClass extends SiteTree implements TestOnly, HiddenClass
 {
-
 }

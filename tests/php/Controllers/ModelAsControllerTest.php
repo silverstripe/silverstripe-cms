@@ -10,7 +10,6 @@ use SilverStripe\Core\Config\Config;
 use SilverStripe\Control\Director;
 use SilverStripe\Control\Controller;
 use SilverStripe\Dev\FunctionalTest;
-use Page;
 
 class ModelAsControllerTest extends FunctionalTest
 {
@@ -33,7 +32,7 @@ class ModelAsControllerTest extends FunctionalTest
 
     protected function generateNestedPagesFixture()
     {
-        $level1 = new Page();
+        $level1 = SiteTree::create();
         $level1->Title      = 'First Level';
         $level1->URLSegment = 'level1';
         $level1->write();
@@ -43,7 +42,7 @@ class ModelAsControllerTest extends FunctionalTest
         $level1->write();
         $level1->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
-        $level2 = new Page();
+        $level2 = SiteTree::create();
         $level2->Title      = 'Second Level';
         $level2->URLSegment = 'level2';
         $level2->ParentID = $level1->ID;
@@ -54,7 +53,7 @@ class ModelAsControllerTest extends FunctionalTest
         $level2->write();
         $level2->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
-        $level3 = new Page();
+        $level3 = SiteTree::create();
         $level3->Title = "Level 3";
         $level3->URLSegment = 'level3';
         $level3->ParentID = $level2->ID;
@@ -114,7 +113,7 @@ class ModelAsControllerTest extends FunctionalTest
      */
     public function testHeavilyNestedRenamedRedirectedPages()
     {
-        $page = new Page();
+        $page = SiteTree::create();
         $page->Title      = 'First Level';
         $page->URLSegment = 'oldurl';
         $page->write();
@@ -124,28 +123,28 @@ class ModelAsControllerTest extends FunctionalTest
         $page->write();
         $page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
-        $page2 = new Page();
+        $page2 = SiteTree::create();
         $page2->Title      = 'Second Level Page';
         $page2->URLSegment = 'level2';
         $page2->ParentID = $page->ID;
         $page2->write();
         $page2->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
-        $page3 = new Page();
+        $page3 = SiteTree::create();
         $page3->Title      = 'Third Level Page';
         $page3->URLSegment = 'level3';
         $page3->ParentID = $page2->ID;
         $page3->write();
         $page3->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
-        $page4 = new Page();
+        $page4 = SiteTree::create();
         $page4->Title      = 'Fourth Level Page';
         $page4->URLSegment = 'level4';
         $page4->ParentID = $page3->ID;
         $page4->write();
         $page4->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
-        $page5 = new Page();
+        $page5 = SiteTree::create();
         $page5->Title      = 'Fifth Level Page';
         $page5->URLSegment = 'level5';
         $page5->ParentID = $page4->ID;
@@ -187,9 +186,9 @@ class ModelAsControllerTest extends FunctionalTest
     {
         $this->generateNestedPagesFixture();
 
-        $otherParent = new Page(array(
-            'URLSegment' => 'otherparent'
-        ));
+        $otherParent = SiteTree::create([
+            'URLSegment' => 'otherparent',
+        ]);
         $otherParent->write();
         $otherParent->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
@@ -231,10 +230,10 @@ class ModelAsControllerTest extends FunctionalTest
     {
         $this->generateNestedPagesFixture();
 
-        $otherLevel1 = new Page(array(
+        $otherLevel1 = SiteTree::create([
             'Title' => "Other Level 1",
-            'URLSegment' => 'level1'
-        ));
+            'URLSegment' => 'level1',
+        ]);
         $otherLevel1->write();
         $otherLevel1->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
@@ -259,7 +258,7 @@ class ModelAsControllerTest extends FunctionalTest
      */
     public function testFindOldPage()
     {
-        $page = new Page();
+        $page = SiteTree::create();
         $page->Title      = 'First Level';
         $page->URLSegment = 'oldurl';
         $page->write();
@@ -273,7 +272,7 @@ class ModelAsControllerTest extends FunctionalTest
         $matchedPage = SiteTree::get_by_link($url);
         $this->assertEquals('First Level', $matchedPage->Title);
 
-        $page2 = new Page();
+        $page2 = SiteTree::create();
         $page2->Title      = 'Second Level Page';
         $page2->URLSegment = 'oldpage2';
         $page2->ParentID = $page->ID;
@@ -303,12 +302,12 @@ class ModelAsControllerTest extends FunctionalTest
         RootURLController::reset();
         Config::modify()->set(SiteTree::class, 'nested_urls', true);
 
-        $draft = new Page();
+        $draft = SiteTree::create();
         $draft->Title = 'Root Leve Draft Page';
         $draft->URLSegment = 'root';
         $draft->write();
 
-        $published = new Page();
+        $published = SiteTree::create();
         $published->Title = 'Published Page Under Draft Page';
         $published->URLSegment = 'sub-root';
         $published->write();
@@ -318,7 +317,8 @@ class ModelAsControllerTest extends FunctionalTest
         $this->assertEquals(
             $response->getStatusCode(),
             404,
-            'The page should not be found since its parent has not been published, in this case http://<yousitename>/root/sub-root or http://<yousitename>/sub-root'
+            'The page should not be found since its parent has not been published, in this case ' .
+            'http://<yousitename>/root/sub-root or http://<yousitename>/sub-root'
         );
     }
 }

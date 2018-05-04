@@ -16,13 +16,13 @@ class CMSMainSearchFormTest extends FunctionalTest
 
         $this->get(
             'admin/pages/SearchForm/?' .
-            http_build_query(array(
-                'q' => array(
+            http_build_query([
+                'q' => [
                     'Title' => 'Page 10',
                     'FilterClass' => CMSSiteTreeFilter_Search::class,
-                ),
-                'action_doSearch' => true
-            ))
+                ],
+                'action_doSearch' => true,
+            ])
         );
 
         $titles = $this->getPageTitles();
@@ -34,8 +34,8 @@ class CMSMainSearchFormTest extends FunctionalTest
 
     protected function getPageTitles()
     {
-        $titles = array();
-        $links = $this->cssParser()->getBySelector('li.class-Page a');
+        $titles = [];
+        $links = $this->cssParser()->getBySelector('li.class-SilverStripe_CMS_Model_SiteTree a');
         if ($links) {
             foreach ($links as $link) {
                 $titles[] = preg_replace('/\n/', ' ', $link->asXML());

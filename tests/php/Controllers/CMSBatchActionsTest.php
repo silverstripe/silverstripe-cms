@@ -16,7 +16,6 @@ use SilverStripe\Versioned\Versioned;
  */
 class CMSBatchActionsTest extends SapphireTest
 {
-
     protected static $fixture_file = 'CMSBatchActionsTest.yml';
 
     public function setUp()
@@ -144,9 +143,9 @@ class CMSBatchActionsTest extends SapphireTest
         // Run restore
         $result = json_decode($action->run($list), true);
         $this->assertEquals(
-            array(
-                $archivedxID => $archivedxID
-            ),
+            [
+                $archivedxID => $archivedxID,
+            ],
             $result['success']
         );
         $archivedx = SiteTree::get()->byID($archivedxID);
@@ -164,12 +163,12 @@ class CMSBatchActionsTest extends SapphireTest
         // Run restore
         $result = json_decode($action->run($list), true);
         $this->assertEquals(
-            array(
+            [
                 // Order of archived is opposite to order items are passed in, as
                 // these are sorted by level first
                 $archivedID => $archivedID,
-                $archivedyID => $archivedyID
-            ),
+                $archivedyID => $archivedyID,
+            ],
             $result['success']
         );
         $archived = SiteTree::get()->byID($archivedID);
