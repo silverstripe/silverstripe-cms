@@ -1,4 +1,4 @@
-Page:
+SilverStripe\CMS\Model\SiteTree:
   dest:
     Title: Redirection Dest
     URLSegment: redirection-dest
@@ -17,7 +17,7 @@ SilverStripe\CMS\Model\RedirectorPage:
     Title: Good Internal
     URLSegment: good-internal
     RedirectionType: Internal
-    LinkTo: =>Page.dest
+    LinkTo: =>SilverStripe\CMS\Model\SiteTree.dest
   badexternal:
     Title: Bad External
     RedirectionType: External

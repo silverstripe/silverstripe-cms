@@ -1,4 +1,4 @@
-Page:
+SilverStripe\CMS\Model\SiteTree:
   content:
     Title: ContentPage
     Content: 'This is some partially happy content. It has one missing a skiplink, but does have another <a name="yes-anchor-here">skiplink here</a>.'
@@ -13,7 +13,7 @@ Page:
   workingInternalRedirector:
     RedirectionType: Internal
     Title: RedirectorPageToBrokenInteralPage
-    LinkTo: =>Page.content
+    LinkTo: =>SilverStripe\CMS\Model\SiteTree.content
 SilverStripe\CMS\Tests\Model\SiteTreeBrokenLinksTest\NotPageObject:
   object1:
     Content: 'Everything will be ok'

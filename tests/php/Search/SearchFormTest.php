@@ -2,7 +2,6 @@
 
 namespace SilverStripe\CMS\Tests\Search;
 
-use Page;
 use SilverStripe\Assets\File;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\CMS\Controllers\ModelAsController;
@@ -29,7 +28,6 @@ use TractorCow\Fluent\Extension\FluentSiteTreeExtension;
  */
 class ZZZSearchFormTest extends FunctionalTest
 {
-
     protected static $fixture_file = 'SearchFormTest.yml';
 
     protected static $illegal_extensions = [

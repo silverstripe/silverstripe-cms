@@ -10,7 +10,6 @@ use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Versioned\Versioned;
-use Page;
 
 class ContentControllerTest extends FunctionalTest
 {
@@ -31,8 +30,8 @@ class ContentControllerTest extends FunctionalTest
         Config::modify()->set(SiteTree::class, 'nested_urls', true);
 
         // Ensure all pages are published
-        /** @var Page $page */
-        foreach (Page::get() as $page) {
+        /** @var SiteTree $page */
+        foreach (SiteTree::get() as $page) {
             $page->publishSingle();
         }
     }
@@ -95,8 +94,7 @@ class ContentControllerTest extends FunctionalTest
 
     public function testDeepNestedURLs()
     {
-
-        $page = new Page();
+        $page = new SiteTree();
         $page->URLSegment = 'base-page';
         $page->write();
         $page->publishSingle();
@@ -174,7 +172,7 @@ class ContentControllerTest extends FunctionalTest
             $response = $this->get($page->RelativeLink());
             $this->assertEquals("ContentControllerTestPageWithoutController", trim($response->getBody() ?? ''));
 
-            // // This should fall over to user Page.ss
+            // This should fall over to user Page.ss
             $page = new ContentControllerTestPage();
             $page->URLSegment = "test";
             $page->write();

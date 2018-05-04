@@ -44,7 +44,7 @@ SilverStripe\Security\Member:
   securityadmin:
     Groups: =>SilverStripe\Security\Group.securityadmins
 
-Page:
+SilverStripe\CMS\Model\SiteTree:
   home:
     Title: Home
     CanEditType: OnlyTheseUsers
@@ -56,14 +56,14 @@ Page:
   staff:
     Title: Staff
     URLSegment: my-staff
-    Parent: =>Page.about
+    Parent: =>SilverStripe\CMS\Model\SiteTree.about
   ceo:
     Title: CEO
-    Parent: =>Page.staff
+    Parent: =>SilverStripe\CMS\Model\SiteTree.staff
   staffduplicate:
     Title: Staff
     URLSegment: my-staff
-    Parent: =>Page.about
+    Parent: =>SilverStripe\CMS\Model\SiteTree.about
     ShowInMenus: 0
   products:
     Title: Products
@@ -71,19 +71,19 @@ Page:
     EditorGroups: =>SilverStripe\Security\Group.editors
   product1:
     Title: 1.1 Test Product
-    Parent: =>Page.products
+    Parent: =>SilverStripe\CMS\Model\SiteTree.products
     CanEditType: Inherit
   product2:
     Title: Another Product
-    Parent: =>Page.products
+    Parent: =>SilverStripe\CMS\Model\SiteTree.products
     CanEditType: Inherit
   product3:
     Title: Another Product
-    Parent: =>Page.products
+    Parent: =>SilverStripe\CMS\Model\SiteTree.products
     CanEditType: Inherit
   product4:
     Title: Another Product
-    Parent: =>Page.products
+    Parent: =>SilverStripe\CMS\Model\SiteTree.products
     CanEditType: OnlyTheseUsers
     EditorGroups: =>SilverStripe\Security\Group.admins
   contact:
@@ -102,16 +102,16 @@ Page:
     Title: 'Breadcrumbs'
   breadcrumbs2:
     Title: 'Breadcrumbs 2'
-    Parent: =>Page.breadcrumbs
+    Parent: =>SilverStripe\CMS\Model\SiteTree.breadcrumbs
   breadcrumbs3:
     Title: 'Breadcrumbs 3'
-    Parent: =>Page.breadcrumbs2
+    Parent: =>SilverStripe\CMS\Model\SiteTree.breadcrumbs2
   breadcrumbs4:
     Title: 'Breadcrumbs 4'
-    Parent: =>Page.breadcrumbs3
+    Parent: =>SilverStripe\CMS\Model\SiteTree.breadcrumbs3
   breadcrumbs5:
     Title: 'Breadcrumbs 5'
-    Parent: =>Page.breadcrumbs4
+    Parent: =>SilverStripe\CMS\Model\SiteTree.breadcrumbs4
 
 SilverStripe\CMS\Tests\Model\SiteTreeTest_Conflicted:
   parent:
@@ -127,4 +127,4 @@ SilverStripe\CMS\Model\RedirectorPage:
 SilverStripe\CMS\Tests\Model\SiteTreeTest_DataObject:
   relations:
     Title: 'Linked DataObject'
-    Pages: =>Page.home,=>Page.about,=>Page.staff
+    Pages: =>SilverStripe\CMS\Model\SiteTree.home,=>SilverStripe\CMS\Model\SiteTree.about,=>SilverStripe\CMS\Model\SiteTree.staff

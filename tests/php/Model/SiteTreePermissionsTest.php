@@ -2,7 +2,6 @@
 
 namespace SilverStripe\CMS\Tests\Model;
 
-use Page;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Dev\FunctionalTest;
@@ -33,8 +32,8 @@ class SiteTreePermissionsTest extends FunctionalTest
         $this->autoFollowRedirection = false;
 
         // Ensure all pages are published
-        /** @var Page $page */
-        foreach (Page::get() as $page) {
+        /** @var SiteTree $page */
+        foreach (SiteTree::get() as $page) {
             if ($page->URLSegment !== 'draft-only') {
                 $page->publishSingle();
             }
@@ -46,8 +45,8 @@ class SiteTreePermissionsTest extends FunctionalTest
     {
         $this->autoFollowRedirection = false;
 
-        /** @var Page $draftOnlyPage */
-        $draftOnlyPage = $this->objFromFixture(Page::class, 'draftOnlyPage');
+        /** @var SiteTree $draftOnlyPage */
+        $draftOnlyPage = $this->objFromFixture(SiteTree::class, 'draftOnlyPage');
         $this->logOut();
 
         $response = $this->get($draftOnlyPage->URLSegment . '?stage=Live');
@@ -85,7 +84,7 @@ class SiteTreePermissionsTest extends FunctionalTest
     {
         // Set up fixture - a published page deleted from draft
         $this->logInWithPermission("ADMIN");
-        $page = $this->objFromFixture(Page::class, 'restrictedEditOnlySubadminGroup');
+        $page = $this->objFromFixture(SiteTree::class, 'restrictedEditOnlySubadminGroup');
         $pageID = $page->ID;
         $this->assertTrue($page->publishRecursive());
         $page->delete();
@@ -112,7 +111,7 @@ class SiteTreePermissionsTest extends FunctionalTest
     {
         // Set up fixture - an unpublished page
         $this->logInWithPermission("ADMIN");
-        $page = $this->objFromFixture(Page::class, 'restrictedEditOnlySubadminGroup');
+        $page = $this->objFromFixture(SiteTree::class, 'restrictedEditOnlySubadminGroup');
         $pageID = $page->ID;
         $page->doUnpublish();
 
@@ -135,7 +134,7 @@ class SiteTreePermissionsTest extends FunctionalTest
     {
         // Find a page that exists and delete it from both stage and published
         $this->logInWithPermission("ADMIN");
-        $page = $this->objFromFixture(Page::class, 'restrictedEditOnlySubadminGroup');
+        $page = $this->objFromFixture(SiteTree::class, 'restrictedEditOnlySubadminGroup');
         $pageID = $page->ID;
         $page->doUnpublish();
         $page->delete();
@@ -153,8 +152,8 @@ class SiteTreePermissionsTest extends FunctionalTest
     public function testCanViewStage()
     {
         // Get page & make sure it exists on Live
-        /** @var Page $page */
-        $page = $this->objFromFixture(Page::class, 'standardpage');
+        /** @var SiteTree $page */
+        $page = $this->objFromFixture(SiteTree::class, 'standardpage');
         $page->publishSingle();
 
         // Then make sure there's a new version on Stage
@@ -173,7 +172,7 @@ class SiteTreePermissionsTest extends FunctionalTest
 
     public function testAccessTabOnlyDisplaysWithGrantAccessPermissions()
     {
-        $page = $this->objFromFixture(Page::class, 'standardpage');
+        $page = $this->objFromFixture(SiteTree::class, 'standardpage');
 
         $subadminuser = $this->objFromFixture(Member::class, 'subadmin');
         Security::setCurrentUser($subadminuser);
@@ -204,7 +203,7 @@ class SiteTreePermissionsTest extends FunctionalTest
 
     public function testRestrictedViewLoggedInUsers()
     {
-        $page = $this->objFromFixture(Page::class, 'restrictedViewLoggedInUsers');
+        $page = $this->objFromFixture(SiteTree::class, 'restrictedViewLoggedInUsers');
 
         // unauthenticated users
         $this->assertFalse(
@@ -223,21 +222,23 @@ class SiteTreePermissionsTest extends FunctionalTest
         $websiteuser = $this->objFromFixture(Member::class, 'websiteuser');
         $this->assertTrue(
             $page->canView($websiteuser),
-            'Authenticated members can view a page marked as "Viewable for any logged in users" even if they dont have access to the CMS'
+            'Authenticated members can view a page marked as "Viewable for any logged in users" even if they dont ' .
+            'have access to the CMS'
         );
         $this->logInAs($websiteuser);
         $response = $this->get($page->RelativeLink());
         $this->assertEquals(
             $response->getStatusCode(),
             200,
-            'Authenticated members can view a page marked as "Viewable for any logged in users" even if they dont have access to the CMS'
+            'Authenticated members can view a page marked as "Viewable for any logged in users" even if they dont ' .
+            'have access to the CMS'
         );
         $this->logOut();
     }
 
     public function testRestrictedViewOnlyTheseUsers()
     {
-        $page = $this->objFromFixture(Page::class, 'restrictedViewOnlyWebsiteUsers');
+        $page = $this->objFromFixture(SiteTree::class, 'restrictedViewOnlyWebsiteUsers');
 
         // unauthenticcated users
         $this->assertFalse(
@@ -256,14 +257,16 @@ class SiteTreePermissionsTest extends FunctionalTest
         $subadminuser = $this->objFromFixture(Member::class, 'subadmin');
         $this->assertFalse(
             $page->canView($subadminuser),
-            'Authenticated members cant view a page marked as "Viewable by these groups" if theyre not in the listed groups'
+            'Authenticated members cant view a page marked as "Viewable by these groups" if theyre not in the listed ' .
+            'groups'
         );
         $this->LogInAs($subadminuser);
         $response = $this->get($page->RelativeLink());
         $this->assertEquals(
             $response->getStatusCode(),
             403,
-            'Authenticated members cant view a page marked as "Viewable by these groups" if theyre not in the listed groups'
+            'Authenticated members cant view a page marked as "Viewable by these groups" if theyre not in the listed ' .
+            'groups'
         );
         $this->logOut();
 
@@ -285,7 +288,7 @@ class SiteTreePermissionsTest extends FunctionalTest
 
     public function testRestrictedEditLoggedInUsers()
     {
-        $page = $this->objFromFixture(Page::class, 'restrictedEditLoggedInUsers');
+        $page = $this->objFromFixture(SiteTree::class, 'restrictedEditLoggedInUsers');
 
         // unauthenticcated users
         $this->assertFalse(
@@ -298,20 +301,22 @@ class SiteTreePermissionsTest extends FunctionalTest
         Security::setCurrentUser($websiteuser);
         $this->assertFalse(
             $page->canEdit($websiteuser),
-            'Authenticated members cant edit a page marked as "Editable by logged in users" if they dont have cms permissions'
+            'Authenticated members cant edit a page marked as "Editable by logged in users" if they dont have cms ' .
+            'permissions'
         );
 
         // subadmin users
         $subadminuser = $this->objFromFixture(Member::class, 'subadmin');
         $this->assertTrue(
             $page->canEdit($subadminuser),
-            'Authenticated members can edit a page marked as "Editable by logged in users" if they have cms permissions and belong to any of these groups'
+            'Authenticated members can edit a page marked as "Editable by logged in users" if they have cms ' .
+            'permissions and belong to any of these groups'
         );
     }
 
     public function testRestrictedEditOnlySubadminGroup()
     {
-        $page = $this->objFromFixture(Page::class, 'restrictedEditOnlySubadminGroup');
+        $page = $this->objFromFixture(SiteTree::class, 'restrictedEditOnlySubadminGroup');
 
         // unauthenticated users
         $this->assertFalse(
@@ -330,14 +335,15 @@ class SiteTreePermissionsTest extends FunctionalTest
         $websiteuser = $this->objFromFixture(Member::class, 'websiteuser');
         $this->assertFalse(
             $page->canEdit($websiteuser),
-            'Authenticated members cant edit a page marked as "Editable by these groups" if theyre not in the listed groups'
+            'Authenticated members cant edit a page marked as "Editable by these groups" if theyre not in the listed ' .
+            'groups'
         );
     }
 
     public function testRestrictedViewInheritance()
     {
-        $parentPage = $this->objFromFixture(Page::class, 'parent_restrictedViewOnlySubadminGroup');
-        $childPage = $this->objFromFixture(Page::class, 'child_restrictedViewOnlySubadminGroup');
+        $parentPage = $this->objFromFixture(SiteTree::class, 'parent_restrictedViewOnlySubadminGroup');
+        $childPage = $this->objFromFixture(SiteTree::class, 'child_restrictedViewOnlySubadminGroup');
 
         // unauthenticated users
         $this->assertFalse(
@@ -356,22 +362,24 @@ class SiteTreePermissionsTest extends FunctionalTest
         $subadminuser = $this->objFromFixture(Member::class, 'subadmin');
         $this->assertTrue(
             $childPage->canView($subadminuser),
-            'Authenticated members can view a page marked as "Viewable by these groups" if theyre in the listed groups by inherited permission'
+            'Authenticated members can view a page marked as "Viewable by these groups" if theyre in the listed ' .
+            'groups by inherited permission'
         );
         $this->logInAs($subadminuser);
         $response = $this->get($childPage->RelativeLink());
         $this->assertEquals(
             $response->getStatusCode(),
             200,
-            'Authenticated members can view a page marked as "Viewable by these groups" if theyre in the listed groups by inherited permission'
+            'Authenticated members can view a page marked as "Viewable by these groups" if theyre in the listed ' .
+            'groups by inherited permission'
         );
         $this->logOut();
     }
 
     public function testRestrictedEditInheritance()
     {
-        $parentPage = $this->objFromFixture(Page::class, 'parent_restrictedEditOnlySubadminGroup');
-        $childPage = $this->objFromFixture(Page::class, 'child_restrictedEditOnlySubadminGroup');
+        $parentPage = $this->objFromFixture(SiteTree::class, 'parent_restrictedEditOnlySubadminGroup');
+        $childPage = $this->objFromFixture(SiteTree::class, 'child_restrictedEditOnlySubadminGroup');
 
         // unauthenticated users
         $this->assertFalse(
@@ -383,14 +391,15 @@ class SiteTreePermissionsTest extends FunctionalTest
         $subadminuser = $this->objFromFixture(Member::class, 'subadmin');
         $this->assertTrue(
             $childPage->canEdit($subadminuser),
-            'Authenticated members can edit a page marked as "Editable by these groups" if theyre in the listed groups by inherited permission'
+            'Authenticated members can edit a page marked as "Editable by these groups" if theyre in the listed ' .
+            'groups by inherited permission'
         );
     }
 
     public function testDeleteRestrictedChild()
     {
-        $parentPage = $this->objFromFixture(Page::class, 'deleteTestParentPage');
-        $childPage = $this->objFromFixture(Page::class, 'deleteTestChildPage');
+        $parentPage = $this->objFromFixture(SiteTree::class, 'deleteTestParentPage');
+        $childPage = $this->objFromFixture(SiteTree::class, 'deleteTestChildPage');
 
         // unauthenticated users
         $this->assertFalse(
@@ -405,7 +414,7 @@ class SiteTreePermissionsTest extends FunctionalTest
 
     public function testRestrictedEditLoggedInUsersDeletedFromStage()
     {
-        $page = $this->objFromFixture(Page::class, 'restrictedEditLoggedInUsers');
+        $page = $this->objFromFixture(SiteTree::class, 'restrictedEditLoggedInUsers');
         $pageID = $page->ID;
 
         $this->logInWithPermission("ADMIN");
@@ -421,39 +430,60 @@ class SiteTreePermissionsTest extends FunctionalTest
         $subadminuser = $this->objFromFixture(Member::class, 'subadmin');
         $this->assertTrue(
             $page->canEdit($subadminuser),
-            'Authenticated members can edit a page that was deleted from stage and marked as "Editable by logged in users" if they have cms permissions and belong to any of these groups'
+            'Authenticated members can edit a page that was deleted from stage and marked as "Editable by logged ' .
+            'in users" if they have cms permissions and belong to any of these groups'
         );
     }
 
     public function testInheritCanViewFromSiteConfig()
     {
-        $page = $this->objFromFixture(Page::class, 'inheritWithNoParent');
+        $page = $this->objFromFixture(SiteTree::class, 'inheritWithNoParent');
         $siteconfig = $this->objFromFixture(SiteConfig::class, 'default');
         $editor = $this->objFromFixture(Member::class, 'editor');
         $editorGroup = $this->objFromFixture(Group::class, 'editorgroup');
 
         $siteconfig->CanViewType = 'Anyone';
         $siteconfig->write();
-        $this->assertTrue($page->canView(false), 'Anyone can view a page when set to inherit from the SiteConfig, and SiteConfig has canView set to LoggedInUsers');
+        $this->assertTrue(
+            $page->canView(false),
+            'Anyone can view a page when set to inherit from the SiteConfig, and SiteConfig has canView set to ' .
+            'LoggedInUsers'
+        );
 
         $siteconfig->CanViewType = 'LoggedInUsers';
         $siteconfig->write();
-        $this->assertFalse($page->canView(false), 'Anonymous can\'t view a page when set to inherit from the SiteConfig, and SiteConfig has canView set to LoggedInUsers');
+        $this->assertFalse(
+            $page->canView(false),
+            'Anonymous can\'t view a page when set to inherit from the SiteConfig, and SiteConfig has canView set to ' .
+            'LoggedInUsers'
+        );
 
         $siteconfig->CanViewType = 'LoggedInUsers';
         $siteconfig->write();
-        $this->assertTrue($page->canView($editor), 'Users can view a page when set to inherit from the SiteConfig, and SiteConfig has canView set to LoggedInUsers');
+        $this->assertTrue(
+            $page->canView($editor),
+            'Users can view a page when set to inherit from the SiteConfig, and SiteConfig has canView set to ' .
+            'LoggedInUsers'
+        );
 
         $siteconfig->CanViewType = 'OnlyTheseUsers';
         $siteconfig->ViewerGroups()->add($editorGroup);
         $siteconfig->write();
-        $this->assertTrue($page->canView($editor), 'Editors can view a page when set to inherit from the SiteConfig, and SiteConfig has canView set to OnlyTheseUsers');
-        $this->assertFalse($page->canView(false), 'Anonymous can\'t view a page when set to inherit from the SiteConfig, and SiteConfig has canView set to OnlyTheseUsers');
+        $this->assertTrue(
+            $page->canView($editor),
+            'Editors can view a page when set to inherit from the SiteConfig, and SiteConfig has canView set to ' .
+            'OnlyTheseUsers'
+        );
+        $this->assertFalse(
+            $page->canView(false),
+            'Anonymous can\'t view a page when set to inherit from the SiteConfig, and SiteConfig has canView set ' .
+            'to OnlyTheseUsers'
+        );
     }
 
     public function testInheritCanEditFromSiteConfig()
     {
-        $page = $this->objFromFixture(Page::class, 'inheritWithNoParent');
+        $page = $this->objFromFixture(SiteTree::class, 'inheritWithNoParent');
         $siteconfig = $this->objFromFixture(SiteConfig::class, 'default');
         $editor = $this->objFromFixture(Member::class, 'editor');
         $user = $this->objFromFixture(Member::class, 'websiteuser');
@@ -462,17 +492,37 @@ class SiteTreePermissionsTest extends FunctionalTest
         $siteconfig->CanEditType = 'LoggedInUsers';
         $siteconfig->write();
 
-        $this->assertFalse($page->canEdit(false), 'Anonymous can\'t edit a page when set to inherit from the SiteConfig, and SiteConfig has canEdit set to LoggedInUsers');
+        $this->assertFalse(
+            $page->canEdit(false),
+            'Anonymous can\'t edit a page when set to inherit from the SiteConfig, and SiteConfig has canEdit set ' .
+            'to LoggedInUsers'
+        );
         Security::setCurrentUser($editor);
-        $this->assertTrue($page->canEdit(), 'Users can edit a page when set to inherit from the SiteConfig, and SiteConfig has canEdit set to LoggedInUsers');
+        $this->assertTrue(
+            $page->canEdit(),
+            'Users can edit a page when set to inherit from the SiteConfig, and SiteConfig has canEdit set to ' .
+            'LoggedInUsers'
+        );
 
         $siteconfig->CanEditType = 'OnlyTheseUsers';
         $siteconfig->EditorGroups()->add($editorGroup);
         $siteconfig->write();
-        $this->assertTrue($page->canEdit($editor), 'Editors can edit a page when set to inherit from the SiteConfig, and SiteConfig has canEdit set to OnlyTheseUsers');
+        $this->assertTrue(
+            $page->canEdit($editor),
+            'Editors can edit a page when set to inherit from the SiteConfig, and SiteConfig has canEdit set to ' .
+            'OnlyTheseUsers'
+        );
         Security::setCurrentUser(null);
-        $this->assertFalse($page->canEdit(false), 'Anonymous can\'t edit a page when set to inherit from the SiteConfig, and SiteConfig has canEdit set to OnlyTheseUsers');
+        $this->assertFalse(
+            $page->canEdit(false),
+            'Anonymous can\'t edit a page when set to inherit from the SiteConfig, and SiteConfig has canEdit set ' .
+            'to OnlyTheseUsers'
+        );
         Security::setCurrentUser($user);
-        $this->assertFalse($page->canEdit($user), 'Website user can\'t edit a page when set to inherit from the SiteConfig, and SiteConfig has canEdit set to OnlyTheseUsers');
+        $this->assertFalse(
+            $page->canEdit($user),
+            'Website user can\'t edit a page when set to inherit from the SiteConfig, and SiteConfig has canEdit set ' .
+            'to OnlyTheseUsers'
+        );
     }
 }

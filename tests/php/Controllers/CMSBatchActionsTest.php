@@ -16,7 +16,6 @@ use SilverStripe\Versioned\Versioned;
  */
 class CMSBatchActionsTest extends SapphireTest
 {
-
     protected static $fixture_file = 'CMSBatchActionsTest.yml';
 
     protected function setUp(): void
@@ -145,7 +144,7 @@ class CMSBatchActionsTest extends SapphireTest
         $result = json_decode($action->run($list) ?? '', true);
         $this->assertEquals(
             [
-                $archivedxID => $archivedxID
+                $archivedxID => $archivedxID,
             ],
             $result['success']
         );
@@ -168,7 +167,7 @@ class CMSBatchActionsTest extends SapphireTest
                 // Order of archived is opposite to order items are passed in, as
                 // these are sorted by level first
                 $archivedID => $archivedID,
-                $archivedyID => $archivedyID
+                $archivedyID => $archivedyID,
             ],
             $result['success']
         );

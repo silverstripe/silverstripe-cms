@@ -2,7 +2,6 @@
 
 namespace SilverStripe\CMS\Tests\Controllers;
 
-use Page;
 use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Admin\CMSBatchActionHandler;
 use SilverStripe\CMS\Controllers\CMSMain;
@@ -123,8 +122,8 @@ class CMSMainTest extends FunctionalTest
      */
     public function testPublish()
     {
-        $page1 = $this->objFromFixture(Page::class, "page1");
-        $page2 = $this->objFromFixture(Page::class, "page2");
+        $page1 = $this->objFromFixture(SiteTree::class, 'page1');
+        $page2 = $this->objFromFixture(SiteTree::class, 'page2');
         $this->logInAs('admin');
 
         $response = $this->get('admin/pages/publishall?confirm=1');
@@ -136,7 +135,9 @@ class CMSMainTest extends FunctionalTest
         // Some modules (e.g., cmsworkflow) will remove this action
         $actions = CMSBatchActionHandler::config()->batch_actions;
         if (isset($actions['publish'])) {
-            $response = $this->get('admin/pages/batchactions/publish?ajax=1&csvIDs=' . implode(',', [$page1->ID, $page2->ID]));
+            $response = $this->get(
+                'admin/pages/batchactions/publish?ajax=1&csvIDs=' . implode(',', [$page1->ID, $page2->ID])
+            );
             $responseData = json_decode($response->getBody() ?? '', true);
             $this->assertArrayHasKey($page1->ID, $responseData['modified']);
             $this->assertArrayHasKey($page2->ID, $responseData['modified']);
@@ -144,8 +145,8 @@ class CMSMainTest extends FunctionalTest
 
         // Get the latest version of the redirector page
         $pageID = $this->idFromFixture(RedirectorPage::class, 'page5');
-        $latestID = DB::prepared_query('select max("Version") from "RedirectorPage_Versions" where "RecordID" = ?', [$pageID])->value();
-        $dsCount = DB::prepared_query('select count("Version") from "RedirectorPage_Versions" where "RecordID" = ? and "Version"= ?', [$pageID, $latestID])->value();
+        $latestID = DB::prepared_query('SELECT MAX("Version") FROM "RedirectorPage_Versions" WHERE "RecordID" = ?', [$pageID])->value();
+        $dsCount = DB::prepared_query('SELECT COUNT("Version") FROM "RedirectorPage_Versions" WHERE "RecordID" = ? AND "Version"= ?', [$pageID, $latestID])->value();
         $this->assertEquals(1, $dsCount, "Published page has no duplicate version records: it has " . $dsCount . " for version " . $latestID);
     }
 
@@ -181,8 +182,8 @@ class CMSMainTest extends FunctionalTest
         $this->logInWithPermission('ADMIN');
 
         Config::modify()->set(SiteTree::class, 'enforce_strict_hierarchy', true);
-        $parentPage = $this->objFromFixture(Page::class, 'page3');
-        $childPage = $this->objFromFixture(Page::class, 'page1');
+        $parentPage = $this->objFromFixture(SiteTree::class, 'page3');
+        $childPage = $this->objFromFixture(SiteTree::class, 'page1');
 
         $parentPage->doUnpublish();
         $childPage->doUnpublish();
@@ -204,7 +205,7 @@ class CMSMainTest extends FunctionalTest
         $this->logInWithPermission('ADMIN');
 
         // Set up a page that is delete from live
-        $page = $this->objFromFixture(Page::class, 'page1');
+        $page = $this->objFromFixture(SiteTree::class, 'page1');
         $pageID = $page->ID;
         $page->publishRecursive();
         $page->delete();
@@ -212,7 +213,7 @@ class CMSMainTest extends FunctionalTest
         $response = $this->get('admin/pages/edit/show/' . $pageID);
 
         $livePage = Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, [
-                '"SiteTree"."ID"' => $pageID
+                '"SiteTree"."ID"' => $pageID,
         ]);
         $this->assertInstanceOf(SiteTree::class, $livePage);
         $this->assertTrue($livePage->canDelete());
@@ -229,7 +230,7 @@ class CMSMainTest extends FunctionalTest
         $this->logInWithPermission('ADMIN');
 
         // Set up a page that is delete from live
-        $page1 = $this->objFromFixture(Page::class, 'page1');
+        $page1 = $this->objFromFixture(SiteTree::class, 'page1');
         $page1ID = $page1->ID;
         $page1->publishRecursive();
         $page1->delete();
@@ -242,18 +243,18 @@ class CMSMainTest extends FunctionalTest
         $this->assertNull($cmsMain->getRecord('asdf'));
 
         // Pages that are on draft and aren't on draft should both work
-        $this->assertInstanceOf('Page', $cmsMain->getRecord($page1ID));
-        $this->assertInstanceOf('Page', $cmsMain->getRecord($this->idFromFixture('Page', 'page2')));
+        $this->assertInstanceOf(SiteTree::class, $cmsMain->getRecord($page1ID));
+        $this->assertInstanceOf(SiteTree::class, $cmsMain->getRecord($this->idFromFixture(SiteTree::class, 'page2')));
 
         // This functionality isn't actually used any more.
         $newPage = $cmsMain->getRecord('new-Page-5');
-        $this->assertInstanceOf('Page', $newPage);
+        $this->assertInstanceOf(SiteTree::class, $newPage);
         $this->assertEquals('5', $newPage->ParentID);
     }
 
     public function testDeletedPagesSiteTreeFilter()
     {
-        $id = $this->idFromFixture('Page', 'page3');
+        $id = $this->idFromFixture(SiteTree::class, 'page3');
         $this->logInWithPermission('ADMIN');
         $result = $this->get('admin/pages/getsubtree?filter=CMSSiteTreeFilter_DeletedPages&ajax=1&ID=' . $id);
         $this->assertEquals(200, $result->getStatusCode());
@@ -274,7 +275,7 @@ class CMSMainTest extends FunctionalTest
             'admin/pages/add/AddForm',
             [
                 'ParentID' => '0',
-                'PageType' => 'Page',
+                'PageType' => RedirectorPage::class,
                 'Locale' => 'en_US',
                 'action_doAdd' => 1,
                 'ajax' => 1,
@@ -294,7 +295,7 @@ class CMSMainTest extends FunctionalTest
             'admin/pages/add/AddForm',
             [
                 'ParentID' => '0',
-                'PageType' => 'Page',
+                'PageType' => RedirectorPage::class,
                 'Locale' => 'en_US',
                 'action_doAdd' => 1,
                 'ajax' => 1,
@@ -328,7 +329,7 @@ class CMSMainTest extends FunctionalTest
                 'PageType' => CMSMainTest_ClassA::class,
                 'Locale' => 'en_US',
                 'action_doAdd' => 1,
-                'ajax' => 1
+                'ajax' => 1,
             ],
             [
                 'X-Pjax' => 'CurrentForm,Breadcrumbs',
@@ -348,7 +349,7 @@ class CMSMainTest extends FunctionalTest
                 'PageType' => CMSMainTest_ClassB::class,
                 'Locale' => 'en_US',
                 'action_doAdd' => 1,
-                'ajax' => 1
+                'ajax' => 1,
             ],
             [
                 'X-Pjax' => 'CurrentForm,Breadcrumbs',
@@ -371,10 +372,10 @@ class CMSMainTest extends FunctionalTest
             'admin/pages/add/AddForm',
             [
                 'ParentID' => $newPageId,
-                'PageType' => 'Page',
+                'PageType' => RedirectorPage::class,
                 'Locale' => 'en_US',
                 'action_doAdd' => 1,
-                'ajax' => 1
+                'ajax' => 1,
             ],
             [
                 'X-Pjax' => 'CurrentForm,Breadcrumbs',
@@ -389,8 +390,8 @@ class CMSMainTest extends FunctionalTest
 
     public function testBreadcrumbs()
     {
-        $page3 = $this->objFromFixture(Page::class, 'page3');
-        $page31 = $this->objFromFixture(Page::class, 'page31');
+        $page3 = $this->objFromFixture(SiteTree::class, 'page3');
+        $page31 = $this->objFromFixture(SiteTree::class, 'page31');
         $this->logInAs('admin');
 
         $response = $this->get('admin/pages/edit/show/' . $page31->ID);
@@ -416,7 +417,7 @@ class CMSMainTest extends FunctionalTest
 
         $this->assertEquals($page->Title, 'New Page');
         $this->assertNotEquals($page->Sort, 0);
-        $this->assertInstanceOf('Page', $page);
+        $this->assertInstanceOf(SiteTree::class, $page);
 
         // Test failure
         try {
@@ -445,10 +446,10 @@ class CMSMainTest extends FunctionalTest
         );
 
         // Change state of tree
-        $page1 = $this->objFromFixture(Page::class, 'page1');
-        $page3 = $this->objFromFixture(Page::class, 'page3');
-        $page11 = $this->objFromFixture(Page::class, 'page11');
-        $page12 = $this->objFromFixture(Page::class, 'page12');
+        $page1 = $this->objFromFixture(SiteTree::class, 'page1');
+        $page3 = $this->objFromFixture(SiteTree::class, 'page3');
+        $page11 = $this->objFromFixture(SiteTree::class, 'page11');
+        $page12 = $this->objFromFixture(SiteTree::class, 'page12');
         // Deleted
         $page1->doUnpublish();
         $page1->delete();
@@ -468,7 +469,7 @@ class CMSMainTest extends FunctionalTest
 
         // Test deleted page filter
         $params = [
-                'FilterClass' => 'SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_StatusDeletedPages'
+                'FilterClass' => 'SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_StatusDeletedPages',
         ];
         $pages = $controller->getList($params);
         $this->assertEquals(1, $pages->count());
@@ -479,7 +480,7 @@ class CMSMainTest extends FunctionalTest
 
         // Test live, but not on draft filter
         $params = [
-            'FilterClass' => 'SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_StatusRemovedFromDraftPages'
+            'FilterClass' => 'SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_StatusRemovedFromDraftPages',
         ];
         $pages = $controller->getList($params);
         $this->assertEquals(1, $pages->count());
@@ -490,7 +491,7 @@ class CMSMainTest extends FunctionalTest
 
         // Test live pages filter
         $params = [
-            'FilterClass' => 'SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_PublishedPages'
+            'FilterClass' => 'SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_PublishedPages',
         ];
         $pages = $controller->getList($params);
         $this->assertEquals(2, $pages->count());
@@ -525,7 +526,7 @@ class CMSMainTest extends FunctionalTest
         $this->loginWithPermission('ADMIN');
 
         // Get a associated with a fixture page.
-        $page = $this->objFromFixture(Page::class, 'page1');
+        $page = $this->objFromFixture(SiteTree::class, 'page1');
         $controller = CMSMain::create();
         $controller->setRequest(Controller::curr()->getRequest());
         $form = $controller->getEditForm($page->ID);
@@ -553,7 +554,7 @@ class CMSMainTest extends FunctionalTest
         $form->loadDataFrom(['ClassName' => CMSMainTest_ClassB::class]);
         $result = $cms->save([
             'ID' => $page->ID,
-            'ClassName' => CMSMainTest_ClassB::class
+            'ClassName' => CMSMainTest_ClassB::class,
         ], $form);
         $this->assertEquals(200, $result->getStatusCode());
 

@@ -3,12 +3,12 @@
 namespace SilverStripe\CMS\Tests\Model;
 
 use SilverStripe\Dev\TestOnly;
-use PageController;
+use SilverStripe\CMS\Controllers\ContentController;
 
-class VirtualPageTest_ClassAController extends PageController implements TestOnly
+class VirtualPageTest_ClassAController extends ContentController implements TestOnly
 {
     private static $allowed_actions = [
-        'testaction'
+        'testaction',
     ];
 
     public function testMethod()

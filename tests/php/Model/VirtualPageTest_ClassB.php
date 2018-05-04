@@ -3,9 +3,9 @@
 namespace SilverStripe\CMS\Tests\Model;
 
 use SilverStripe\Dev\TestOnly;
-use Page;
+use SilverStripe\CMS\Model\SiteTree;
 
-class VirtualPageTest_ClassB extends Page implements TestOnly
+class VirtualPageTest_ClassB extends SiteTree implements TestOnly
 {
     private static $table_name = 'VirtualPageTest_ClassB';
 

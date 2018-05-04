@@ -4,9 +4,9 @@ namespace SilverStripe\CMS\Tests\Model;
 
 use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\Dev\TestOnly;
-use Page;
+use SilverStripe\CMS\Model\SiteTree;
 
-class VirtualPageTest_PageWithAllowedChildren extends Page implements TestOnly
+class VirtualPageTest_PageWithAllowedChildren extends SiteTree implements TestOnly
 {
     private static $table_name = 'VirtualPageTest_PageWithAllowedChildren';
 
