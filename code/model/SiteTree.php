@@ -465,7 +465,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string
 	 */
 	public function Link($action = null) {
-		return Controller::join_links(Director::baseURL(), $this->RelativeLink($action));
+		$relativeLink = $this->RelativeLink($action);
+		$link = Controller::join_links(Director::baseURL(), $relativeLink);
+		$this->extend('updateLink', $link, $action, $relativeLink);
+		return $link;
 	}
 
 	/**
@@ -542,7 +545,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string
 	 */
 	public function getAbsoluteLiveLink($includeStageEqualsLive = true) {
-		$oldStage = Versioned::current_stage();
+		$oldMode = Versioned::get_reading_mode();
 		Versioned::reading_stage('Live');
 		$live = Versioned::get_one_by_stage('SiteTree', 'Live', array(
 			'"SiteTree"."ID"' => $this->ID
@@ -556,7 +559,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$link = null;
 		}
 
-		Versioned::reading_stage($oldStage);
+		Versioned::set_reading_mode($oldMode);
 		return $link;
 	}
 
@@ -2429,7 +2432,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		$this->invokeWithExtensions('onBeforeUnpublish', $this);
 
-		$origStage = Versioned::current_stage();
+		$origMode = Versioned::get_reading_mode();
 		Versioned::reading_stage('Live');
 
 		// We should only unpublish virtualpages that exist on live
@@ -2445,7 +2448,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			// $page->write() calls syncLinkTracking, which does all the hard work for us.
 			$page->write();
 		}
-		Versioned::reading_stage($origStage);
+		Versioned::set_reading_mode($origMode);
 
 		// Unpublish any published virtual pages
 		if ($virtualPages) foreach($virtualPages as $vp) $vp->doUnpublish();
@@ -2521,7 +2524,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			if(method_exists($conn, 'allowPrimaryKeyEditing')) $conn->allowPrimaryKeyEditing('SiteTree', false);
 		}
 
-		$oldStage = Versioned::current_stage();
+		$oldMode = Versioned::get_reading_mode();
 		Versioned::reading_stage('Stage');
 		$this->forceChange();
 		$this->write();
@@ -2534,7 +2537,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$page->write();
 		}
 
-		Versioned::reading_stage($oldStage);
+		Versioned::set_reading_mode($oldMode);
 
 		$this->invokeWithExtensions('onAfterRestoreToStage', $this);
 

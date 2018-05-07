@@ -7,9 +7,13 @@ class ContentControllerTest extends FunctionalTest {
 
 	protected static $fixture_file = 'ContentControllerTest.yml';
 
-	protected static $use_draft_site = true;
-
 	protected static $disable_themes = true;
+
+	public function setUp() {
+		parent::setUp();
+		Config::inst()->update('Director', 'alternate_base_url', '/');
+		$this->useDraftSite(false);
+	}
 
 	/**
 	 * Test that nested pages, basic actions, and nested/non-nested URL switching works properly
@@ -17,6 +21,7 @@ class ContentControllerTest extends FunctionalTest {
 
 	public function testNestedPages() {
 		RootURLController::reset();
+		$this->useDraftSite(true);
 		Config::inst()->update('SiteTree', 'nested_urls', true);
 
 		$this->assertEquals('Home Page', $this->get('/')->getBody());
@@ -52,7 +57,7 @@ class ContentControllerTest extends FunctionalTest {
 	 */
 	public function testChildrenOf() {
 		$controller = new ContentController();
-
+		$this->useDraftSite(true);
 		Config::inst()->update('SiteTree', 'nested_urls', true);
 
 		$this->assertEquals(1, $controller->ChildrenOf('/')->Count());
@@ -70,6 +75,7 @@ class ContentControllerTest extends FunctionalTest {
 
 	public function testDeepNestedURLs() {
 		Config::inst()->update('SiteTree', 'nested_urls', true);
+		$this->useDraftSite(true);
 
 		$page = new Page();
 		$page->URLSegment = 'base-page';
@@ -126,7 +132,7 @@ class ContentControllerTest extends FunctionalTest {
 
 		$this->assertContains(
 			sprintf('<a href="%s">Testlink</a>', $linkedPage->Link()),
-			$this->get($page->RelativeLink())->getBody(),
+			$this->get($page->Link())->getBody(),
 			'"sitetree_link" shortcodes get parsed properly'
 		);
 	}

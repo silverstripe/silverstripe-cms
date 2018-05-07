@@ -60,7 +60,7 @@ class SiteTreeFileExtension extends DataExtension {
 				SiteTreeFileExtension::BackLinkTracking() have been deprecated.
 				Please manipluate the returned list directly.', Deprecation::SCOPE_GLOBAL);
 		}
-		
+
 		if(class_exists("Subsite")){
 			$rememberSubsiteFilter = Subsite::$disable_subsite_filter;
 			Subsite::disable_subsite_filter(true);
@@ -71,7 +71,7 @@ class SiteTreeFileExtension extends DataExtension {
 				SiteTreeFileExtension::BackLinkTracking() have been deprecated.
 				Please manipluate the returned list directly.', Deprecation::SCOPE_GLOBAL);
 		}
-		
+
 		$links = $this->owner->getManyManyComponents('BackLinkTracking');
 		if($this->owner->ID) {
 			$links = $links
@@ -80,14 +80,14 @@ class SiteTreeFileExtension extends DataExtension {
 				->limit($limit);
 		}
 		$this->owner->extend('updateBackLinkTracking', $links);
-		
+
 		if(class_exists("Subsite")){
 			Subsite::disable_subsite_filter($rememberSubsiteFilter);
 		}
-		
+
 		return $links;
 	}
-	
+
 	/**
 	 * @todo Unnecessary shortcut for AssetTableField, coupled with cms module.
 	 *
@@ -101,7 +101,7 @@ class SiteTreeFileExtension extends DataExtension {
 			return 0;
 		}
 	}
-	
+
 	/**
 	 * Updates link tracking.
 	 */
@@ -110,7 +110,7 @@ class SiteTreeFileExtension extends DataExtension {
 		// site does its thing
 		$brokenPageIDs = $this->owner->BackLinkTracking()->column("ID");
 		if($brokenPageIDs) {
-			$origStage = Versioned::current_stage();
+			$origMode = Versioned::get_reading_mode();
 
 			// This will syncLinkTracking on draft
 			Versioned::reading_stage('Stage');
@@ -124,10 +124,10 @@ class SiteTreeFileExtension extends DataExtension {
 				$brokenPage->write();
 			}
 
-			Versioned::reading_stage($origStage);
+			Versioned::set_reading_mode($origMode);
 		}
 	}
-	
+
 	/**
 	 * Rewrite links to the $old file to now point to the $new file.
 	 *
@@ -138,15 +138,15 @@ class SiteTreeFileExtension extends DataExtension {
 	 */
 	public function updateLinks($old, $new) {
 		if(class_exists('Subsite')) Subsite::disable_subsite_filter(true);
-	
+
 		$pages = $this->owner->BackLinkTracking();
 
 		$summary = "";
 		if($pages) {
 			foreach($pages as $page) $page->rewriteFileURL($old,$new);
 		}
-		
+
 		if(class_exists('Subsite')) Subsite::disable_subsite_filter(false);
 	}
-	
+
 }
