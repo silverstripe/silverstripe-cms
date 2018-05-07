@@ -2,6 +2,8 @@
 
 namespace SilverStripe\CMS\Tests\Model;
 
+use LogicException;
+use Page;
 use ReflectionMethod;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
@@ -10,10 +12,10 @@ use SilverStripe\Control\ContentNegotiator;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
 use SilverStripe\Core\Config\Config;
+use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Dev\SapphireTest;
-use SilverStripe\i18n\i18n;
-use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
+use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ValidationException;
 use SilverStripe\Security\Group;
 use SilverStripe\Security\InheritedPermissions;
@@ -25,9 +27,7 @@ use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\Parsers\Diff;
 use SilverStripe\View\Parsers\ShortcodeParser;
 use SilverStripe\View\Parsers\URLSegmentFilter;
-use SilverStripe\Core\Injector\Injector;
-use LogicException;
-use Page;
+use SilverStripe\i18n\i18n;
 
 class SiteTreeTest extends SapphireTest
 {
@@ -136,6 +136,7 @@ class SiteTreeTest extends SapphireTest
      */
     public function testDisallowedChildURLGeneration($title, $urlSegment)
     {
+        Config::modify()->set(SiteTree::class, 'nested_urls', true);
         // Using the same dataprovider, strip out the -2 from the admin and dev segment
         $urlSegment = str_replace('-2', '', $urlSegment);
         $page = SiteTree::create(['Title' => $title, 'ParentID' => 1]);
@@ -539,6 +540,7 @@ class SiteTreeTest extends SapphireTest
 
     public function testDeleteFromStageOperatesRecursivelyStrict()
     {
+        Config::modify()->set(SiteTree::class, 'enforce_strict_hierarchy', true);
         $pageAbout = $this->objFromFixture(SiteTree::class, 'about');
         $pageStaff = $this->objFromFixture(SiteTree::class, 'staff');
         $pageStaffDuplicate = $this->objFromFixture(SiteTree::class, 'staffduplicate');
@@ -609,6 +611,7 @@ class SiteTreeTest extends SapphireTest
 
     public function testDeleteFromLiveOperatesRecursivelyStrict()
     {
+        Config::inst()->update(SiteTree::class, 'enforce_strict_hierarchy', true);
         $this->logInWithPermission('ADMIN');
 
         $pageAbout = $this->objFromFixture(SiteTree::class, 'about');
