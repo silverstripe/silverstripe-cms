@@ -2,20 +2,31 @@
 
 namespace SilverStripe\CMS\Tests\Controllers;
 
-use SilverStripe\Versioned\Versioned;
-use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\CMS\Controllers\ContentController;
+use SilverStripe\CMS\Controllers\ModelAsController;
 use SilverStripe\CMS\Controllers\OldPageRedirector;
 use SilverStripe\CMS\Controllers\RootURLController;
-use SilverStripe\Core\Config\Config;
-use SilverStripe\Control\Director;
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
+use SilverStripe\Control\Director;
+use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\FunctionalTest;
+use SilverStripe\Versioned\Versioned;
 
 class ModelAsControllerTest extends FunctionalTest
 {
     protected $usesDatabase = true;
 
     protected $autoFollowRedirection = false;
+
+    protected static $required_extensions = [
+        ModelAsController::class => [
+            OldPageRedirector::class,
+        ],
+        ContentController::class => [
+            OldPageRedirector::class,
+        ],
+    ];
 
     /**
      * New tests require nested urls to be enabled, but the site might not
