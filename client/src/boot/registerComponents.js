@@ -18,7 +18,7 @@ export default () => {
     'pages-history-revert',
     (updater) => {
       // Add CMS page revert GraphQL mutation to the HistoryViewerToolbar
-      updater.component('HistoryViewerToolbar', revertToPageVersionMutation, 'Page', 'PageRevertMutation');
+      updater.component('HistoryViewerToolbar.VersionedAdmin.HistoryViewer.SiteTree.HistoryViewerVersionDetail', revertToPageVersionMutation, 'PageRevertMutation');
     }
   );
 };
