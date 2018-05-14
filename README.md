@@ -9,7 +9,7 @@
 [![Dependency Status](https://www.versioneye.com/php/silverstripe:cms/badge.svg)](https://www.versioneye.com/php/silverstripe:cms)
 [![Reference Status](https://www.versioneye.com/php/silverstripe:cms/reference_badge.svg?style=flat)](https://www.versioneye.com/php/silverstripe:cms/references)
 
-PHP5 Content Management System (CMS), see [http://silverstripe.org](http://silverstripe.org). Requires the [`framework`](http://github.com/silverstripe/silverstripe-framework) module and a [`silverstripe-installer`](http://github.com/silverstripe/silverstripe-installer) base project.
+PHP5 Content Management System (CMS), see [https://www.silverstripe.org/](https://www.silverstripe.org/). Requires the [`framework`](https://github.com/silverstripe/silverstripe-framework) module and a [`silverstripe-installer`](https://github.com/silverstripe/silverstripe-installer) base project.
 
 ## Installation
 
@@ -17,10 +17,10 @@ See [installation instructions](https://docs.silverstripe.org/en/getting_started
 
 ## Bugtracker
 
-Bugs are tracked on [github.com](https://github.com/silverstripe/silverstripe-cms/issues). 
+Bugs are tracked on [github.com](https://github.com/silverstripe/silverstripe-cms/issues).
 Please read our [issue reporting guidelines](https://docs.silverstripe.org/en/contributing/issues_and_bugs).
 
-## Development and Contribution 
+## Development and Contribution
 
 If you would like to make changes to the SilverStripe core codebase, we have an extensive [guide to contributing code](https://docs.silverstripe.org/en/contributing/code).
 
