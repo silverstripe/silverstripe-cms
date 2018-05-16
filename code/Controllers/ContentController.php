@@ -521,11 +521,11 @@ HTML;
 
         $unsuccessful = new ArrayList();
         foreach ($installfiles as $installfile) {
-            if (file_exists(BASE_PATH . '/' . $installfile)) {
-                @unlink(BASE_PATH . '/' . $installfile);
+            if (file_exists(PUBLIC_PATH . '/' . $installfile)) {
+                @unlink(PUBLIC_PATH . '/' . $installfile);
             }
 
-            if (file_exists(BASE_PATH . '/' . $installfile)) {
+            if (file_exists(PUBLIC_PATH . '/' . $installfile)) {
                 $unsuccessful->push(new ArrayData(array('File' => $installfile)));
             }
         }
