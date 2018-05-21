@@ -4,6 +4,7 @@ import TinyMCEActionRegistrar from 'lib/TinyMCEActionRegistrar';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ApolloProvider } from 'react-apollo';
+import { Provider } from 'react-redux';
 import jQuery from 'jquery';
 import ShortcodeSerialiser from 'lib/ShortcodeSerialiser';
 import { createInsertLinkModal } from 'containers/InsertLinkModal/InsertLinkModal';
@@ -69,19 +70,21 @@ jQuery.entwine('ss', ($) => {
 
       // create/update the react component
       ReactDOM.render(
-        <ApolloProvider store={store} client={client}>
-          <InsertLinkInternalModal
-            isOpen={isOpen}
-            onInsert={handleInsert}
-            onClosed={handleHide}
-            title={i18n._t('CMS.LINK_ANCHOR', 'Link to an anchor on a page')}
-            bodyClassName="modal__dialog"
-            className="insert-link__dialog-wrapper--anchor"
-            fileAttributes={attrs}
-            identifier="Admin.InsertLinkAnchorModal"
-            requireLinkText={requireLinkText}
-            currentPageID={currentPageID}
-          />
+        <ApolloProvider client={client}>
+          <Provider store={store}>
+            <InsertLinkInternalModal
+              isOpen={isOpen}
+              onInsert={handleInsert}
+              onClosed={handleHide}
+              title={i18n._t('CMS.LINK_ANCHOR', 'Link to an anchor on a page')}
+              bodyClassName="modal__dialog"
+              className="insert-link__dialog-wrapper--anchor"
+              fileAttributes={attrs}
+              identifier="Admin.InsertLinkAnchorModal"
+              requireLinkText={requireLinkText}
+              currentPageID={currentPageID}
+            />
+          </Provider>
         </ApolloProvider>,
         this[0]
       );
