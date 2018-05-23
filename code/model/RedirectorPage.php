@@ -42,10 +42,14 @@ class RedirectorPage extends Page {
 	 * If the redirectorpage has been appropriately configured, then it will return the redirection
 	 * destination, to prevent unnecessary 30x redirections.  However, if it's misconfigured, then
 	 * it will return a link to itself, which will then display an error message.
+	 * @param null $action
+	 * @return null|string
 	 */
-	public function Link() {
-		if($link = $this->redirectionLink()) return $link;
-		else return $this->regularLink();
+	public function Link($action = null) {
+		if ($link = $this->redirectionLink()) {
+			return $link;
+		}
+		return $this->regularLink($action);
 	}
 	
 	/**
