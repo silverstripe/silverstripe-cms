@@ -512,24 +512,22 @@ HTML;
         $title = new DBVarchar("Title");
         $content = new DBHTMLText('Content');
 
-        // We can't delete index.php as it might be necessary for URL routing without mod_rewrite.
-        // There's no safe way to detect usage of mod_rewrite across webservers,
-        // so we have to assume the file is required.
-        $installfiles = [
+        // As of SS4, index.php is required and should never be deleted.
+        $installfiles = array(
             'install.php',
-            'config-form.css',
-            'config-form.html',
-            'index.html',
-        ];
+            'install-frameworkmissing.html',
+            'index.html'
+        );
 
         $unsuccessful = new ArrayList();
         foreach ($installfiles as $installfile) {
-            if (file_exists(BASE_PATH . '/' . $installfile)) {
-                @unlink(BASE_PATH . '/' . $installfile);
+            $installfilepath = PUBLIC_PATH . '/' . $installfile;
+            if (file_exists($installfilepath)) {
+                @unlink($installfilepath);
             }
 
-            if (file_exists(BASE_PATH . '/' . $installfile)) {
-                $unsuccessful->push(new ArrayData(['File' => $installfile]));
+            if (file_exists($installfilepath)) {
+                $unsuccessful->push(new ArrayData(array('File' => $installfile)));
             }
         }
 
