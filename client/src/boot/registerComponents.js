@@ -1,10 +1,8 @@
 import Injector from 'lib/Injector';
-import AnchorSelectorField from 'components/AnchorSelectorField/AnchorSelectorField';
 import readOnePageQuery from 'state/history/readOnePageQuery';
 import revertToPageVersionMutation from 'state/history/revertToPageVersionMutation';
 
 export default () => {
-  Injector.component.register('AnchorSelectorField', AnchorSelectorField);
 
   Injector.transform(
     'pages-history',
