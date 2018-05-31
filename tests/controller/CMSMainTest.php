@@ -22,7 +22,7 @@ class CMSMainTest extends FunctionalTest {
 	}
 
 	function testSiteTreeHints() {
-		$cache = SS_Cache::factory('CMSMain_SiteTreeHints');
+		$cache = SS_Cache::factory('CMSMain_SiteTreeHints', 'Output', array('disable-segmentation' => true));
 		// Login as user with root creation privileges
 		$user = $this->objFromFixture('Member', 'rootedituser');
 		$user->logIn();

@@ -441,7 +441,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 	foreach($classes as $class) $cacheCanCreate[$class] = singleton($class)->canCreate();
 
 	 	// Generate basic cache key. Too complex to encompass all variations
-	 	$cache = SS_Cache::factory('CMSMain_SiteTreeHints');
+	 	$cache = SS_Cache::factory('CMSMain_SiteTreeHints', 'Output', array('disable-segmentation' => true));
 	 	$cacheKey = md5(implode('_', array(Member::currentUserID(), implode(',', $cacheCanCreate), implode(',', $classes))));
 	 	if($this->getRequest()->getVar('flush')) $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
 	 	$json = $cache->load($cacheKey);
