@@ -105,15 +105,31 @@ class ErrorPage extends Page {
 				);
 				$pageExists = ($page && $page->exists());
 				$pagePath = self::get_filepath_for_errorcode($code);
-				if(!($pageExists && file_exists($pagePath))) {
+				if(!$pageExists || !file_exists($pagePath)) {
 					if(!$pageExists) {
 						$page = new ErrorPage($defaultData);
 						$page->write();
 						$page->publish('Stage', 'Live');
 					}
 
+					// Skip unpublished records
+					/** @var ErrorPage $livePage */
+					$livePage = Versioned::get_by_stage('ErrorPage', Versioned::LIVE)
+						->byID($page->ID);
+					if (!$livePage) {
+						continue;
+					}
+
 					// Ensure a static error page is created from latest error page content
-					$response = Director::test(Director::makeRelative($page->Link()));
+					$origReadingMode = static::get_reading_mode();
+					$oldDefault = static::get_default_reading_mode();
+					Versioned::reading_stage(Versioned::LIVE);
+					Versioned::set_default_reading_mode(Versioned::get_reading_mode());
+					$response = Director::test(Director::makeRelative($livePage->Link()));
+					static::set_default_reading_mode($oldDefault);
+					static::set_reading_mode($origReadingMode);
+
+					// Write contents
 					$written = null;
 					if($fh = fopen($pagePath, 'w')) {
 						$written = fwrite($fh, $response->getBody());
