@@ -2247,9 +2247,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		);
 
 		// "readonly"/viewing version that isn't the current version of the record
-		$stageOrLiveRecord = Versioned::get_one_by_stage($this->class, Versioned::current_stage(), array(
-			'"SiteTree"."ID"' => $this->ID
-		));
+        $stageOrLiveRecord = SiteTree::get()->byID($this->ID);
 		if($stageOrLiveRecord && $stageOrLiveRecord->Version != $this->Version) {
 			$moreOptions->push(FormAction::create('email', _t('CMSMain.EMAIL', 'Email')));
 			$moreOptions->push(FormAction::create('rollback', _t('CMSMain.ROLLBACK', 'Roll back to this version')));
