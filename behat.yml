@@ -4,9 +4,9 @@ default:
       paths:
         - %paths.modules.cms%/tests/behat/features
       contexts:
-        - SilverStripe\Framework\Tests\Behaviour\FeatureContext
-        - SilverStripe\Framework\Tests\Behaviour\CmsFormsContext
-        - SilverStripe\Framework\Tests\Behaviour\CmsUiContext
+        - SilverStripe\Admin\Tests\Behaviour\FeatureContext
+        - SilverStripe\Admin\Tests\Behaviour\CmsFormsContext
+        - SilverStripe\Admin\Tests\Behaviour\CmsUiContext
         - SilverStripe\BehatExtension\Context\BasicContext
         - SilverStripe\BehatExtension\Context\EmailContext
         - SilverStripe\CMS\Tests\Behaviour\LoginContext
