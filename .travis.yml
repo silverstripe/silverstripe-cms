@@ -50,7 +50,7 @@ before_script:
 
 # Install composer dependencies
   - composer validate
-  - composer require --no-update silverstripe/recipe-testing:^1 silverstripe/recipe-cms:1.2.x-dev
+  - composer require --no-update silverstripe/recipe-testing:^1 silverstripe/recipe-cms:4.2.x-dev
   - if [[ $DB == PGSQL ]]; then composer require --no-update silverstripe/postgresql:2.0.x-dev; fi
   - composer install --prefer-source --no-interaction --no-progress --no-suggest --optimize-autoloader --verbose --profile
 
