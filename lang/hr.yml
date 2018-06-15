@@ -87,8 +87,6 @@ hr:
     ListView: Lista
     MENUTITLE: Stranice
     TreeView: Stablo
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Objavljene stranice'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Izmjenjene stranice'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:

@@ -89,7 +89,6 @@ et_EE:
     METADESC: Kirjeldus
     METADESCHELP: 'Otsingumootor kasutab seda sisu otsingutulemuste kuvamiseks (kuigi see ei mõjuta nende järjestust).'
     METAEXTRA: 'Kohandatud metamärgendid'
-    METAEXTRAHELP: 'HTML-sildid täiendavate metaandmete jaoks. Nt &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Lehel on avaldamata muudatusi'
     MODIFIEDONDRAFTSHORT: Muudetud
     MetadataToggle: Metaandmed

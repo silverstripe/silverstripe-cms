@@ -38,8 +38,6 @@ nb:
     VIEWINGVERSION: 'Viser versjon {version}.'
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: Sider
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Publiserte sider'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Alle sider'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
@@ -110,7 +108,6 @@ nb:
     METADESC: Beskrivelse
     METADESCHELP: 'Søkemotorer bruker dette innholdet for å vise søkeresultater (selv om de ikke påvirker rekkefølgen).'
     METAEXTRA: 'Egendefinerte meta-elementer'
-    METAEXTRAHELP: 'HTML-elementer for ekstra metainformasjon. For eksempel &lt;meta name="egetNavn" content="Ditt egendefinerte innhold her" /&gt;'
     MODIFIEDONDRAFTHELP: 'Siden har upubliserte forandringer'
     MODIFIEDONDRAFTSHORT: Endret
     MetadataToggle: Metadata

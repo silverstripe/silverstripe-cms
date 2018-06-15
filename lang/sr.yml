@@ -97,7 +97,6 @@ sr:
     METADESC: Опис
     METADESCHELP: 'Претраживачке машине користе овај садржај за приказ резултата претраживања (ипак, он не утиче на рејтинг странице).'
     METAEXTRA: 'Прилагођене мета ознаке'
-    METAEXTRAHELP: 'HTML ознаке за додатне мета информације. На пример, &lt;meta name="audience" content="all" /&gt;'
     MODIFIEDONDRAFTHELP: 'Страница садржи необјављене измене'
     MODIFIEDONDRAFTSHORT: Измењено
     MetadataToggle: 'Мета подаци'

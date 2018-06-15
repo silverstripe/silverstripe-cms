@@ -85,8 +85,6 @@ de:
     ListView: Listenansicht
     MENUTITLE: Seiten
     TreeView: Baumansicht
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Veröffentlichte Seiten'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Geänderte Seiten'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
@@ -176,7 +174,6 @@ de:
     METADESC: 'Meta Beschreibung'
     METADESCHELP: 'Suchmaschinen können diesen Inhalt für die Anzeige der Suchergebnisse verwenden (auch wenn es die Position nicht beeinflusst).'
     METAEXTRA: 'Benutzerdefinierte Meta-Tags'
-    METAEXTRAHELP: 'HTML Tags für zusätzliche Meta Informationen, z.B.: &lt;meta name="ihrName" content="Ihr Inhalt" /&gt;'
     MODIFIEDONDRAFTHELP: 'Die Seite hat unveröffentlichte Änderungen'
     MODIFIEDONDRAFTSHORT: 'Zuletzt geändert'
     MetadataToggle: Metadaten

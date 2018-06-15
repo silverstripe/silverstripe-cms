@@ -97,7 +97,6 @@ sr_RS@latin:
     METADESC: Opis
     METADESCHELP: 'Pretraživačke mašine koriste ovaj sadržaj za prikaz rezultata pretraživanja (ipak, on ne utiče na rejting stranice).'
     METAEXTRA: 'Prilagođene meta oznake'
-    METAEXTRAHELP: 'HTML oznake za dodatne meta informacije. Na primer, &lt;meta name="audience" content="all" /&gt;'
     MODIFIEDONDRAFTHELP: 'Stranica sadrži neobjavljene izmene'
     MODIFIEDONDRAFTSHORT: Izmenjeno
     MetadataToggle: 'Meta podaci'

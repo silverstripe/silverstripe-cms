@@ -37,8 +37,6 @@ sl:
     MENUTITLE: 'Uredi stran'
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: 'Seznam strani'
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Objavljene strani'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Vse strani'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
