@@ -97,8 +97,6 @@ it:
     ListView: 'Visualizzazione a lista'
     MENUTITLE: Pagine
     TreeView: 'Visualizzazione ad albero'
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Pagine pubblicate'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Pagine modificate'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
@@ -212,7 +210,6 @@ it:
     METADESC: Descrizione
     METADESCHELP: 'I motori di ricerca utilizzano questo contenuto per visualizzare i risultati (ma non ne influenza la posizione)'
     METAEXTRA: 'Meta tag personalizzati'
-    METAEXTRAHELP: 'Tag HTML per meta addizionali. Per esempio &lt;meta name="nomePersonalizzato" content="Il tuo contenuto personalizzato" /&gt;'
     MODIFIEDONDRAFTHELP: 'La pagina ha modifiche nascoste'
     MODIFIEDONDRAFTSHORT: Modificata
     MetadataToggle: Metadati

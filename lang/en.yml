@@ -39,6 +39,7 @@ en:
     PAGES: 'Page status'
     PAGETYPEANYOPT: Any
     PAGETYPEOPT: 'Page type'
+    PAGETYPE_TITLE: '(Page type: {type}) {title}'
     PLEASESAVE: 'Please Save Page: This page could not be updated because it hasn''t been saved yet.'
     PUBALLCONFIRM: 'Please publish every page in the site, copying content stage to live'
     PUBALLFUN: '"Publish All" functionality'
@@ -269,9 +270,13 @@ en:
     TITLE_TYPE: Type
     TITLE_USED_ON: 'Used on'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    BACKLINKCOUNT: 'Used on:'
-    PAGES: page(s)
     USAGE: Usage
+  SilverStripe\CMS\Model\SiteTreeLink:
+    PLURALNAME: 'Site Tree Links'
+    PLURALS:
+      one: 'A Site Tree Link'
+      other: '{count} Site Tree Links'
+    SINGULARNAME: 'Site Tree Link'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Linked Page'
     DESCRIPTION: 'Displays the content of another page'

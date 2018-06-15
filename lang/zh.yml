@@ -126,7 +126,6 @@ zh:
     METADESC: 'Meta 描述'
     METADESCHELP: 搜索引擎使用这些内容用于显示搜索结果（虽然它不会影响它们的排名）。
     METAEXTRA: 自定义Meta标签
-    METAEXTRAHELP: 'HTML标签用于额外的元信息。例如&amp;lt;meta name="自定义名称" content="自定义内容" /&amp;gt;'
     MODIFIEDONDRAFTHELP: 页面有未发布的变更
     MODIFIEDONDRAFTSHORT: 已修改
     MetadataToggle: 元数据
