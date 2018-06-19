@@ -12,7 +12,9 @@ use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ValidationException;
 use SilverStripe\Security\Member;
+use SilverStripe\Subsites\Extensions\SiteTreeSubsites;
 use SilverStripe\Versioned\Versioned;
+use TractorCow\Fluent\Extension\FluentSiteTreeExtension;
 
 class VirtualPageTest extends FunctionalTest
 {
@@ -31,18 +33,18 @@ class VirtualPageTest extends FunctionalTest
         VirtualPageTest_VirtualPageSub::class,
     ];
 
-    protected static $illegal_extensions = array(
+    protected static $illegal_extensions = [
         SiteTree::class => [
-            'SiteTreeSubsites',
-            'Translatable'
+            SiteTreeSubsites::class,
+            FluentSiteTreeExtension::class,
         ],
-    );
+    ];
 
-    protected static $required_extensions = array(
+    protected static $required_extensions = [
         SiteTree::class => [
             VirtualPageTest_PageExtension::class
         ]
-    );
+    ];
 
     public function setUp()
     {
@@ -52,11 +54,11 @@ class VirtualPageTest extends FunctionalTest
         $this->logInWithPermission("ADMIN");
 
         // Add extra fields
-        Config::modify()->merge(VirtualPage::class, 'initially_copied_fields', array('MyInitiallyCopiedField'));
+        Config::modify()->merge(VirtualPage::class, 'initially_copied_fields', ['MyInitiallyCopiedField']);
         Config::modify()->merge(
             VirtualPage::class,
             'non_virtual_fields',
-            array('MyNonVirtualField', 'MySharedNonVirtualField')
+            ['MyNonVirtualField', 'MySharedNonVirtualField']
         );
 
         // Ensure all pages are published
@@ -612,11 +614,11 @@ class VirtualPageTest extends FunctionalTest
 
     public function testVirtualPagePointingToRedirectorPage()
     {
-        $rp = new RedirectorPage(array('ExternalURL' => 'http://google.com', 'RedirectionType' => 'External'));
+        $rp = new RedirectorPage(['ExternalURL' => 'http://google.com', 'RedirectionType' => 'External']);
         $rp->write();
         $rp->publishRecursive();
 
-        $vp = new VirtualPage(array('URLSegment' => 'vptest', 'CopyContentFromID' => $rp->ID));
+        $vp = new VirtualPage(['URLSegment' => 'vptest', 'CopyContentFromID' => $rp->ID]);
         $vp->write();
         $vp->publishRecursive();
 
