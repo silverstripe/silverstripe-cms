@@ -63,8 +63,6 @@ pl:
     ListView: 'Widok listy'
     MENUTITLE: Strony
     TreeView: 'Widok drzewa'
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Opublikowane strony'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Zmodyfikowane strony'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
@@ -139,7 +137,6 @@ pl:
     METADESC: Opis
     METADESCHELP: "Wyszukiwarki internetowe używają tej treści w wynikach wyszukiwania (ta treść\_nie wpłynie na ich pozycjonowanie)"
     METAEXTRA: 'Własne meta tagi'
-    METAEXTRAHELP: 'HTML zawierający dodatkowe metainformacje, n.p. &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Na stronie znajdują się nieopublikowane zmiany'
     MODIFIEDONDRAFTSHORT: Zmodyfikowana
     MetadataToggle: Metadane

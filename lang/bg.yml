@@ -90,8 +90,6 @@ bg:
     ListView: 'Изглед в списък'
     MENUTITLE: Страници
     TreeView: 'Дървовиден изглед'
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Публикувани страници'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Променени страници'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
@@ -177,7 +175,6 @@ bg:
     METADESC: Описание
     METADESCHELP: 'Търсачките използват това съдържание при показване на резултатите от търсенето (въпреки, че това няма да повлияе на тяхното класиране).'
     METAEXTRA: 'Собствени етикети'
-    METAEXTRAHELP: 'HTML тагове за допълнителна meta информация. Например &lt;meta name="customName" content="вашето съдържание" /&gt;'
     MODIFIEDONDRAFTHELP: 'По страницата са правени промени, които не са публикувани'
     MODIFIEDONDRAFTSHORT: Променен
     MetadataToggle: 'Meta данни за страницата'

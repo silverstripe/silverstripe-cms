@@ -38,8 +38,6 @@ lt:
     VIEWINGVERSION: 'Dabar peržiūrima versija {version}.'
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: Puslapiai
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Publikuoti puslapiai'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Visi puslapiai'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
@@ -110,7 +108,6 @@ lt:
     METADESC: 'Meta aprašymas'
     METADESCHELP: 'Paieškos sistemos naudoja šį turinį rodydamos paieškos rezultatus (tačiau tai neturi įtakos paieškos rezultatų reitingui).'
     METAEXTRA: 'Kitos meta žymės'
-    METAEXTRAHELP: 'HTML žymos papildomai meta informacijai. Pavyzdžiui, &lt;meta name="kitaMetaZyme" content="papildomas turinys" /&gt;'
     MODIFIEDONDRAFTHELP: 'Puslapyje yra nepublikuoto turinio'
     MODIFIEDONDRAFTSHORT: Pakeistas
     MetadataToggle: Metaduomenys

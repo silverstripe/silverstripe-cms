@@ -84,8 +84,6 @@ nl:
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filter
     MENUTITLE: 'Pagina ''s'
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Gepubliceerde pagina''s'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Gewijzigde pagina''s'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
@@ -187,7 +185,6 @@ nl:
     METADESC: 'Meta omschrijving'
     METADESCHELP: 'Zoekmachines gebruiken deze inhoud voor het weergeven van zoekresultaten (hoewel het hun ranking niet zal beïnvloeden).'
     METAEXTRA: 'Andere meta tags'
-    METAEXTRAHELP: 'HTML-tags voor extra meta-informatie. Bijvoorbeeld &lt;meta name = "customName" content="uw aangepaste inhoud"/&gt;'
     MODIFIEDONDRAFTHELP: 'Pagina heeft wijzigingen die nog niet gepubliceerd zijn'
     MODIFIEDONDRAFTSHORT: Aangepast
     MetadataToggle: Metadata

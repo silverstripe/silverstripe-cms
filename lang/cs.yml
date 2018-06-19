@@ -95,8 +95,6 @@ cs:
     ListView: 'Pohled seznam'
     MENUTITLE: Stránky
     TreeView: 'Pohled strom'
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Zveřejněné stránky'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Upravené stránky'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
@@ -197,7 +195,6 @@ cs:
     METADESC: Popis
     METADESCHELP: 'Krátký popis/perex, který při vyplnění mohou vyhledávače využít ve výsledcích vyhledávání. I když tento popisek nemá přímý vliv na hodnocení stránky, tak může zvýšit míru prokliku (CTR).'
     METAEXTRA: 'Vlastní meta tagy'
-    METAEXTRAHELP: 'HTML tagy pro další meta informace. Například &lt;meta name="vlastnínazev" content="vlastní obsah zde" /&gt;'
     MODIFIEDONDRAFTHELP: 'Stránka má nezveřejněné změny'
     MODIFIEDONDRAFTSHORT: Upraveno
     MetadataToggle: Metadata

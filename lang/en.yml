@@ -39,6 +39,7 @@ en:
     PAGES: 'Page status'
     PAGETYPEANYOPT: Any
     PAGETYPEOPT: 'Page type'
+    PAGETYPE_TITLE: '(Page type: {type}) {title}'
     PLEASESAVE: 'Please Save Page: This page could not be updated because it hasn''t been saved yet.'
     PUBALLCONFIRM: 'Please publish every page in the site, copying content stage to live'
     PUBALLFUN: '"Publish All" functionality'

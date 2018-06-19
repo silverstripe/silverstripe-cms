@@ -59,8 +59,6 @@ ar:
     ListView: 'عرض كقائمة'
     MENUTITLE: الصفحات
     TreeView: 'عرض كشجرة'
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'الصفحات المنشورة'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'كل الصفحات'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
@@ -136,7 +134,6 @@ ar:
     METADESC: الوصف
     METADESCHELP: 'تستخدم محركات البحث هذا المحتوى لعرض نتائج البحث (على الرغم من أنها لن تؤثر على ترتيبها).'
     METAEXTRA: 'تخصيص Meta Tags'
-    METAEXTRAHELP: 'علامات HTML لبيانات وصفية إضافية. على سبيل المثال <meta name="customName" content="your custom content here" />'
     MODIFIEDONDRAFTHELP: 'تحتوي الصفحة على تغييرات غير منشورة'
     MODIFIEDONDRAFTSHORT: 'تم التعديل'
     MetadataToggle: 'البيانات الوصفية'

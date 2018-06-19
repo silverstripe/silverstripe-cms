@@ -35,8 +35,6 @@ ja:
     VIEWINGVERSION: '現在表示しているバージョンは{version}です。'
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: ページ
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 公開済みページ
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 全ページ
   SilverStripe\CMS\Controllers\ContentController:
@@ -103,7 +101,6 @@ ja:
     METADESC: 説明
     METADESCHELP: 検索エンジンは、検索結果を表示するためにこのコンテンツを使用します（ランキングには影響しません）。
     METAEXTRA: メタタグをカスタム
-    METAEXTRAHELP: '追加のメタ情報用のHTMLタグ。　たとえば、&lt; メタネーム = "カスタムネーム" コンテンツ = "ここにあなたのカスタムコンテンツ" /&gt;'
     MODIFIEDONDRAFTHELP: 公開されていない変更がページにあります
     MODIFIEDONDRAFTSHORT: 修正された
     MetadataToggle: メタデータ

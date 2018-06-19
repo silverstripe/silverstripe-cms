@@ -58,6 +58,7 @@ eo:
     ROLLEDBACKPUBv2: 'Malfaris ŝanĝojn ĝis la publikigita versio.'
     ROLLEDBACKVERSIONv2: 'Malfaris ŝanĝojn ĝis versio #{version}.'
     SAVED: 'Sukcese konservis je ''{title}'''
+    SAVEDRAFT: Konservi
     SHOW_AS_LIST: 'vidigi kiel liston'
     TOO_MANY_PAGES: 'Tro da paĝoj'
     TabContent: Enhavo
@@ -97,12 +98,12 @@ eo:
     ListView: 'Lista vido'
     MENUTITLE: Paĝoj
     TreeView: 'Arba vido'
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Publikigitaj paĝoj'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Ŝanĝitaj paĝoj'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
     Title: 'Ĉiuj paĝoj, inkluzive enarkivigitajn'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
+    Title: 'Publikigitaj paĝoj'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Ĉiuj paĝoj'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
@@ -179,6 +180,7 @@ eo:
     BUTTONDELETEDESC: 'Forigi el malneta aŭ publika, kaj sendi ilin al la arĥivo'
     BUTTONPUBLISHED: Publikigita
     BUTTONSAVED: Konservita
+    BUTTONSAVEPUBLISH: Publikigi
     BUTTONUNPUBLISH: Malpublikigi
     BUTTONUNPUBLISHDESC: 'Forigi ĉi tiun paĝon de la publikigita retejo'
     Comments: Komentoj
@@ -266,6 +268,8 @@ eo:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Uzita je'
+  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
+    USAGE: Uzmaniero
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Ligita paĝo'
     DESCRIPTION: 'Vidigas la enhavon de alia paĝo'

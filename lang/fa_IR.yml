@@ -58,8 +58,6 @@ fa_IR:
     MENUTITLE: 'ویرایش صفحه'
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: صفحات
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'صفحات منتشر شده'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'صفحات تغییر یافته'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
