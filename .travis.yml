@@ -50,7 +50,7 @@ before_script:
 
 # Install composer dependencies
   - composer validate
-  - composer require --no-update silverstripe/recipe-testing:^2 silverstripe/recipe-cms:2.x-dev
+  - composer require --no-update silverstripe/recipe-testing:^2 silverstripe/recipe-cms:5.x-dev
   - if [[ $DB == PGSQL ]]; then composer require --no-update silverstripe/postgresql:3.x-dev; fi
   - if [[ $PHPCS_TEST ]]; then composer global require squizlabs/php_codesniffer:^3 --prefer-dist --no-interaction --no-progress --no-suggest -o; fi
   - composer install --prefer-source --no-interaction --no-progress --no-suggest --optimize-autoloader --verbose --profile
