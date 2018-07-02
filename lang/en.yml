@@ -204,7 +204,8 @@ en:
     Editors: 'Editors Groups'
     HASBROKENLINKS: 'This page has broken links.'
     HTMLEDITORTITLE: Content
-    INHERIT: 'Inherit from parent page'
+    INHERITPARENT: 'Inherit from parent page'
+    INHERITSITECONFIG: 'Inherit from site access settings'
     LASTPUBLISHED: 'Last published'
     LASTSAVED: 'Last saved'
     LASTUPDATED: 'Last Updated'
