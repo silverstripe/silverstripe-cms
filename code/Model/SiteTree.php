@@ -2100,7 +2100,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             }
         }
 
-        $inheritMessage = $this->ParentID !== 0 ? _t(__CLASS__.'.INHERITPARENT', "Inherit from parent page") : _t(__CLASS__.'.INHERITSITECONFIG', "Inherit from site access settings");
+        $inheritMessage = $this->ParentID !== 0 ?
+            _t(__CLASS__.'.INHERIT', "Inherit from parent page") :
+            _t(__CLASS__.'.INHERITSITECONFIG', "Inherit from site access settings");
 
         $viewersOptionsSource = [
             InheritedPermissions::INHERIT => $inheritMessage,
