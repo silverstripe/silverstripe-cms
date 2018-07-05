@@ -529,6 +529,41 @@ class CMSMainTest extends FunctionalTest {
 		$this->assertContains("delete", $exemptActions);
 		$this->assertContains("unpublish", $exemptActions);
 	}
+
+	public function testSave()
+	{
+		// Login is required prior to accessing a CMS form.
+		$this->loginWithPermission('ADMIN');
+
+		$page = $this->objFromFixture('Page', 'page1');
+		$page->doPublish();
+
+		$this->get($page->CMSEditLink());
+		$this->post(
+			'admin/pages/settings/EditForm/' . $page->ID,
+			array(
+				'PageType' => 'Page',
+				'ClassName' => 'CMSMainTest_WithPopulatedDefaults',
+				'action_save' => 1,
+				'ajax' => 1,
+				'ID' => $page->ID
+			), array(
+				'X-Pjax' => 'CurrentForm,Breadcrumbs',
+			)
+		);
+
+		$page = Page::get()->byID($page->ID);
+
+		$this->assertEquals(
+			'CMSMainTest_WithPopulatedDefaults',
+			$page->ClassName,
+			'page1 should now be a CMSMainTest_WithPopulatedDefaults');
+		$this->assertEquals(
+			'Default FooBar value',
+			$page->FooBar,
+			'page1 should have been populated with CMSMainTest_WithPopulatedDefaults defaults after ClassName change'
+		);
+	}
 }
 
 class CMSMainTest_ClassA extends Page implements TestOnly {
@@ -536,7 +571,7 @@ class CMSMainTest_ClassA extends Page implements TestOnly {
 }
 
 class CMSMainTest_ClassB extends Page implements TestOnly {
-	
+
 }
 
 class CMSMainTest_NotRoot extends Page implements TestOnly {
@@ -544,5 +579,12 @@ class CMSMainTest_NotRoot extends Page implements TestOnly {
 }
 
 class CMSMainTest_HiddenClass extends Page implements TestOnly, HiddenClass {
-	
+
 }
+
+class CMSMainTest_WithPopulatedDefaults extends Page {
+	private static $db = array('FooBar' => 'VarChar(255)');
+
+	private static $defaults = array('FooBar' => 'Default FooBar value');
+}
+
