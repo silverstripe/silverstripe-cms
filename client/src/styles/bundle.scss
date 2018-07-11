@@ -3,5 +3,7 @@
 // DO NOT ADD stylesheet rules to this file directly!
 // Note: By prefixing files with an underscore, they won't create individual CSS files.
 
+@import "variables";
+
 @import "legacy/CMSMain";
 @import "legacy/ReportAdmin";
