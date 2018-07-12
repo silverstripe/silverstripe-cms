@@ -3070,4 +3070,28 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $this->extend('updateExcludedURLSegments', $excludes);
         return $excludes;
     }
+
+    /**
+     * @return array
+     */
+    public function getAnchorsOnPage()
+    {
+        $parseSuccess = preg_match_all(
+            "/\\s+(name|id)\\s*=\\s*([\"'])([^\\2\\s>]*?)\\2|\\s+(name|id)\\s*=\\s*([^\"']+)[\\s +>]/im",
+            $this->Content,
+            $matches
+        );
+
+        if (!$parseSuccess) {
+            return [];
+        }
+
+        $anchors = array_values(array_unique(array_filter(
+            array_merge($matches[3], $matches[5])
+        )));
+
+        $this->extend('updateAnchorsOnPage', $anchors);
+
+        return $anchors;
+    }
 }
