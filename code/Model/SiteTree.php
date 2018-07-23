@@ -2309,7 +2309,11 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         // "restore"
         if ($canEdit && !$isOnDraft && $isPublished) {
-            $majorActions->push(FormAction::create('revert', _t('SilverStripe\\CMS\\Controllers\\CMSMain.RESTORE', 'Restore')));
+            $majorActions->push(
+                FormAction::create('revert', _t('SilverStripe\\CMS\\Controllers\\CMSMain.RESTORE', 'Restore'))
+                    ->addExtraClass('btn-warning font-icon-back-in-time')
+                    ->setUseButtonTag(true)
+            );
         }
 
         // Check if we can restore a deleted page

@@ -269,8 +269,6 @@ fr:
     TITLE_TYPE: Type
     TITLE_USED_ON: 'Utilisé dans'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    BACKLINKCOUNT: 'Utilisé dans:'
-    PAGES: page(s)
     USAGE: Usage
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Page liée'
