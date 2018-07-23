@@ -2,7 +2,7 @@
 
 namespace SilverStripe\CMS\Forms;
 
-use Page;
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Forms\TextField;
 
@@ -38,34 +38,24 @@ class AnchorSelectorField extends TextField
     {
         $id = (int)$this->getRequest()->param('PageID');
         $anchors = $this->getAnchorsInPage($id);
+
         return json_encode($anchors);
     }
 
     /**
-     * Get anchors in the given page ID
+     * Get anchors in the given page ID.
      *
      * @param int $id
      * @return array
      */
     protected function getAnchorsInPage($id)
     {
-        // Check page is accessible
-        $page = Page::get()->byID($id);
+        $page = SiteTree::get()->byID($id);
+
         if (!$page || !$page->canView()) {
             return [];
         }
 
-        // Similar to the regex found in HtmlEditorField.js / getAnchors method.
-        $parseSuccess = preg_match_all(
-            "/\\s+(name|id)\\s*=\\s*([\"'])([^\\2\\s>]*?)\\2|\\s+(name|id)\\s*=\\s*([^\"']+)[\\s +>]/im",
-            $page->Content,
-            $matches
-        );
-        if (!$parseSuccess) {
-            return [];
-        }
-
-        // Cleanup results
-        return array_values(array_unique(array_filter(array_merge($matches[3], $matches[5]))));
+        return $page->getAnchorsOnPage();
     }
 }

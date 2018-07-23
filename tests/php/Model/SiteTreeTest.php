@@ -14,6 +14,7 @@ use SilverStripe\Control\Director;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Dev\SapphireTest;
+use SilverStripe\i18n\i18n;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ValidationException;
@@ -23,18 +24,22 @@ use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\Subsites\Extensions\SiteTreeSubsites;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\Parsers\Diff;
 use SilverStripe\View\Parsers\ShortcodeParser;
 use SilverStripe\View\Parsers\URLSegmentFilter;
-use SilverStripe\i18n\i18n;
+use TractorCow\Fluent\Extension\FluentSiteTreeExtension;
 
 class SiteTreeTest extends SapphireTest
 {
     protected static $fixture_file = 'SiteTreeTest.yml';
 
     protected static $illegal_extensions = [
-        SiteTree::class => ['SiteTreeSubsites', 'Translatable'],
+        SiteTree::class => [
+            SiteTreeSubsites::class,
+            FluentSiteTreeExtension::class,
+        ],
     ];
 
     protected static $extra_dataobjects = [
@@ -1556,6 +1561,16 @@ class SiteTreeTest extends SapphireTest
     {
         $class = Page::create();
         $this->assertSame('PageController', $class->getControllerName());
+    }
+
+    /**
+     * Test that the controller name for a SiteTree instance can be gathered when set directly via config var
+     */
+    public function testGetControllerNameFromConfig()
+    {
+        Config::inst()->update(Page::class, 'controller_name', 'This\\Is\\A\\New\\Controller');
+        $class = new Page;
+        $this->assertSame('This\\Is\\A\\New\\Controller', $class->getControllerName());
     }
 
     /**

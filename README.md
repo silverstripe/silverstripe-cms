@@ -4,6 +4,7 @@
 [![Latest Stable Version](https://poser.pugx.org/silverstripe/cms/version.svg)](http://www.silverstripe.org/stable-download/)
 [![Latest Unstable Version](https://poser.pugx.org/silverstripe/cms/v/unstable.svg)](https://packagist.org/packages/silverstripe/cms)
 [![codecov](https://codecov.io/gh/silverstripe/silverstripe-cms/branch/master/graph/badge.svg)](https://codecov.io/gh/silverstripe/silverstripe-cms)
+[![SilverStripe supported module](https://img.shields.io/badge/silverstripe-supported-0071C4.svg)](https://www.silverstripe.org/software/addons/silverstripe-commercially-supported-module-list/)
 [![Total Downloads](https://poser.pugx.org/silverstripe/cms/downloads.svg)](https://packagist.org/packages/silverstripe/cms)
 [![License](https://poser.pugx.org/silverstripe/cms/license.svg)](https://github.com/silverstripe/silverstripe-cms#license)
 [![Dependency Status](https://www.versioneye.com/php/silverstripe:cms/badge.svg)](https://www.versioneye.com/php/silverstripe:cms)

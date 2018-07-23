@@ -96,8 +96,6 @@ es_MX:
     ListView: 'Ver como lista'
     MENUTITLE: Páginas
     TreeView: 'Ver como árbol'
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Páginas publicadas'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Páginas modificadas'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:

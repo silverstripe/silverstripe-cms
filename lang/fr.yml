@@ -98,12 +98,12 @@ fr:
     ListView: 'Affichage en liste'
     MENUTITLE: Pages
     TreeView: Arborescence
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Pages publiées'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Page modifiées'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
     Title: 'Toutes les pages, même archivées'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
+    Title: 'Pages publiées'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Toutes les pages'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
@@ -214,7 +214,7 @@ fr:
     METADESC: 'Meta Description'
     METADESCHELP: 'Les moteurs de recherche reprennent cette description dans leurs résultats (bien qu’elle n’ait pas d’influence sur le classement).'
     METAEXTRA: 'Balises Méta personnalisées'
-    METAEXTRAHELP: 'Balises HTML pour des métadonnées supplémentaires. Par exemple &lt;meta name="monNom" content="Mon contenu" /&gt;'
+    METAEXTRAHELP: 'Balises HTML pour des informations meta supplémentaires. <meta name="customName" content="your custom content here" /> par exemple.'
     MODIFIEDONDRAFTHELP: 'Des changements effectués sur cette page n''''ont pas été publiés'
     MODIFIEDONDRAFTSHORT: Modifiée
     MetadataToggle: Métadonnées
@@ -269,8 +269,6 @@ fr:
     TITLE_TYPE: Type
     TITLE_USED_ON: 'Utilisé dans'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    BACKLINKCOUNT: 'Utilisé dans:'
-    PAGES: page(s)
     USAGE: Usage
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Page liée'

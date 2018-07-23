@@ -56,8 +56,6 @@ es:
     MENUTITLE: 'Editar página'
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: Páginas
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Páginas publicadas'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Páginas modificadas'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
@@ -146,7 +144,6 @@ es:
     METADESC: Descripción
     METADESCHELP: 'Los motores de búsqueda usan este contenido para mostrar resultados de búsqueda (aunque no influirá en su ranking).'
     METAEXTRA: 'Meta Tags Personalizadas'
-    METAEXTRAHELP: 'Etiquetas HTML para meta información adicional. Por ejemplo &lt;meta name="nombrePersonalizado" content="tu contenido personalizado aquí" /&gt;'
     MODIFIEDONDRAFTHELP: 'La página tiene cambios sin publicar'
     MODIFIEDONDRAFTSHORT: Modificado
     MetadataToggle: Metadata

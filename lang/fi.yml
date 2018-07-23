@@ -97,8 +97,6 @@ fi:
     ListView: Listanäkymä
     MENUTITLE: Sivut
     TreeView: Puunäkymä
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Julkaistut sivut'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Muokatut sivut'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
@@ -212,7 +210,6 @@ fi:
     METADESC: Meta-kuvaus
     METADESCHELP: 'Hakukoneet näyttävät tämän sisällön hakutuloksissa (sisältö ei kuitenkaan vaikuta sijoitukseen hakutuloksessa).'
     METAEXTRA: 'Omat meta-tagit'
-    METAEXTRAHELP: 'HTML-tagit omia metatietoja varten. Esimerkiksi &lt;meta name="haluamasiNimi" content="Oma sisältö tässä" /&gt;'
     MODIFIEDONDRAFTHELP: 'Sivulla on julkaisemattomia muutoksia'
     MODIFIEDONDRAFTSHORT: Muokattu
     MetadataToggle: Meta-tiedot

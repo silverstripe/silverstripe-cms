@@ -16,7 +16,9 @@ use SilverStripe\ORM\Search\FulltextSearchable;
 use SilverStripe\PostgreSQL\PostgreSQLDatabase;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
+use SilverStripe\Subsites\Extensions\SiteTreeSubsites;
 use SilverStripe\Versioned\Versioned;
+use TractorCow\Fluent\Extension\FluentSiteTreeExtension;
 
 /**
  * @todo Fix unpublished pages check in testPublishedPagesMatchedByTitle()
@@ -29,7 +31,10 @@ class ZZZSearchFormTest extends FunctionalTest
     protected static $fixture_file = 'SearchFormTest.yml';
 
     protected static $illegal_extensions = [
-        SiteTree::class => ['SiteTreeSubsites', 'Translatable'],
+        SiteTree::class => [
+            SiteTreeSubsites::class,
+            FluentSiteTreeExtension::class,
+        ],
     ];
 
     /**

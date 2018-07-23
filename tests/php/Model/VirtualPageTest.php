@@ -11,7 +11,9 @@ use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ValidationException;
 use SilverStripe\Security\Member;
+use SilverStripe\Subsites\Extensions\SiteTreeSubsites;
 use SilverStripe\Versioned\Versioned;
+use TractorCow\Fluent\Extension\FluentSiteTreeExtension;
 
 class VirtualPageTest extends FunctionalTest
 {
@@ -32,8 +34,8 @@ class VirtualPageTest extends FunctionalTest
 
     protected static $illegal_extensions = [
         SiteTree::class => [
-            'SiteTreeSubsites',
-            'Translatable',
+            SiteTreeSubsites::class,
+            FluentSiteTreeExtension::class,
         ],
     ];
 

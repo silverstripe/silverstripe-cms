@@ -192,6 +192,15 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     private static $hide_ancestor = null;
 
+    /**
+     * You can define the class of the controller that maps to your SiteTree object here if
+     * you don't want to rely on the magic of appending Controller to the Classname
+     *
+     * @config
+     * @var string
+     */
+    private static $controller_name = null;
+
     private static $db = array(
         "URLSegment" => "Varchar(255)",
         "Title" => "Varchar(255)",
@@ -2100,8 +2109,12 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             }
         }
 
+        $inheritMessage = $this->ParentID !== 0 ?
+            _t(__CLASS__.'.INHERIT', "Inherit from parent page") :
+            _t(__CLASS__.'.INHERITSITECONFIG', "Inherit from site access settings");
+
         $viewersOptionsSource = [
-            InheritedPermissions::INHERIT => _t(__CLASS__.'.INHERIT', "Inherit from parent page"),
+            InheritedPermissions::INHERIT => $inheritMessage,
             InheritedPermissions::ANYONE => _t(__CLASS__.'.ACCESSANYONE', "Anyone"),
             InheritedPermissions::LOGGED_IN_USERS => _t(__CLASS__.'.ACCESSLOGGEDIN', "Logged-in users"),
             InheritedPermissions::ONLY_THESE_USERS => _t(
@@ -2296,7 +2309,11 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         // "restore"
         if ($canEdit && !$isOnDraft && $isPublished) {
-            $majorActions->push(FormAction::create('revert', _t('SilverStripe\\CMS\\Controllers\\CMSMain.RESTORE', 'Restore')));
+            $majorActions->push(
+                FormAction::create('revert', _t('SilverStripe\\CMS\\Controllers\\CMSMain.RESTORE', 'Restore'))
+                    ->addExtraClass('btn-warning font-icon-back-in-time')
+                    ->setUseButtonTag(true)
+            );
         }
 
         // Check if we can restore a deleted page
@@ -2777,11 +2794,16 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
     /**
      * Find the controller name by our convention of {$ModelClass}Controller
+     * Can be overriden by config variable
      *
      * @return string
      */
     public function getControllerName()
     {
+        if ($controller = Config::inst()->get(static::class, 'controller_name')) {
+            return $controller;
+        }
+
         //default controller for SiteTree objects
         $controller = ContentController::class;
 
@@ -3090,5 +3112,29 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         $this->extend('updateExcludedURLSegments', $excludes);
         return $excludes;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAnchorsOnPage()
+    {
+        $parseSuccess = preg_match_all(
+            "/\\s+(name|id)\\s*=\\s*([\"'])([^\\2\\s>]*?)\\2|\\s+(name|id)\\s*=\\s*([^\"']+)[\\s +>]/im",
+            $this->Content,
+            $matches
+        );
+
+        if (!$parseSuccess) {
+            return [];
+        }
+
+        $anchors = array_values(array_unique(array_filter(
+            array_merge($matches[3], $matches[5])
+        )));
+
+        $this->extend('updateAnchorsOnPage', $anchors);
+
+        return $anchors;
     }
 }

@@ -98,7 +98,6 @@ ko:
     METADESC: 설명
     METADESCHELP: '검색 엔진은 검색 결과를 표시하기 위해이 내용을 사용합니다 (랭킹에 영향을 주지 않습니다).'
     METAEXTRA: '메타 태그를 사용자 정의'
-    METAEXTRAHELP: '추가 메타 정보에 대한 HTML 태그입니다. 예를 들어, &lt; meta name = "사용자 이름" content = "여기에 사용자 지정 콘텐츠" /&gt;'
     MODIFIEDONDRAFTHELP: '페이지는 게시되지 않은 변경들을 가지고 있습니다.'
     MODIFIEDONDRAFTSHORT: 수정됨
     MetadataToggle: '메타 데이터'
