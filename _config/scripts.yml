@@ -1,0 +1,9 @@
+---
+Name: cmsscripts
+---
+SilverStripe\Admin\LeftAndMain:
+  extra_requirements_javascript:
+    - 'silverstripe/cms: client/dist/js/bundle.js'
+    - 'silverstripe/cms: client/dist/js/SilverStripeNavigator.js'
+  extra_requirements_css:
+    - 'silverstripe/cms: client/dist/styles/bundle.css'
