@@ -192,6 +192,15 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     private static $hide_ancestor = null;
 
+    /**
+     * You can define the class of the controller that maps to your SiteTree object here if
+     * you don't want to rely on the magic of appending Controller to the Classname
+     *
+     * @config
+     * @var string
+     */
+    private static $controller_name = null;
+
     private static $db = array(
         "URLSegment" => "Varchar(255)",
         "Title" => "Varchar(255)",
@@ -2779,11 +2788,16 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
     /**
      * Find the controller name by our convention of {$ModelClass}Controller
+     * Can be overriden by config variable
      *
      * @return string
      */
     public function getControllerName()
     {
+        if ($controller = Config::inst()->get(static::class, 'controller_name')) {
+            return $controller;
+        }
+
         //default controller for SiteTree objects
         $controller = ContentController::class;
 

@@ -1507,6 +1507,16 @@ class SiteTreeTest extends SapphireTest
     }
 
     /**
+     * Test that the controller name for a SiteTree instance can be gathered when set directly via config var
+     */
+    public function testGetControllerNameFromConfig()
+    {
+        Config::inst()->update(Page::class, 'controller_name', 'This\\Is\\A\\New\\Controller');
+        $class = new Page;
+        $this->assertSame('This\\Is\\A\\New\\Controller', $class->getControllerName());
+    }
+
+    /**
      * Test that underscored class names (legacy) are still supported (deprecation notice is issued though).
      */
     public function testGetControllerNameWithUnderscoresIsSupported()
