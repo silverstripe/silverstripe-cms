@@ -16,6 +16,7 @@ da:
     REMOVEDPAGE: 'Fjernede ''{title}'' fra den udgivne side'
     REMOVEDPAGEFROMDRAFT: '''{title}''  fjernet fra udkast-sitet'
     RESTORED: 'Genskabte ''{title}'' korrekt'
+    TabHistory: Historik
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Under en anden side'
     ParentMode_top: 'Højeste niveau'

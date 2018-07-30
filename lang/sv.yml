@@ -269,8 +269,6 @@ sv:
     TITLE_TYPE: Typ
     TITLE_USED_ON: 'Använd på'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    BACKLINKCOUNT: 'Använd på:'
-    PAGES: sida(-or)
     USAGE: Användning
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Länkad sida'

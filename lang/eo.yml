@@ -269,8 +269,6 @@ eo:
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Uzita je'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    BACKLINKCOUNT: 'Uzita je:'
-    PAGES: paĝo(j)
     USAGE: Uzmaniero
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Ligita paĝo'
