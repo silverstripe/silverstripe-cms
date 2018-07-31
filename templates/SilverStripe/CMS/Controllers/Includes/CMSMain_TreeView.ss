@@ -37,7 +37,7 @@ $ExtraTreeTools
 		data-url-editpage="$LinkPageEdit('%s').ATT"
 		data-url-duplicate="{$Link('duplicate/%s').ATT}"
 		data-url-duplicatewithchildren="{$Link('duplicatewithchildren/%s').ATT}"
-		data-url-listview="{$Link('?view=list').ATT}"
+		data-url-listview="{$Link('listview').ATT}"
 		data-hints="$SiteTreeHints.ATT"
 		data-childfilter="$Link('childfilter').ATT"
 		data-extra-params="SecurityID=$SecurityID.ATT">

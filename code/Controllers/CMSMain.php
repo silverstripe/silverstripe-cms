@@ -331,7 +331,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     {
         return sprintf(
             '%s?ParentID=%s',
-            CMSMain::singleton()->Link(),
+            CMSMain::singleton()->Link('listview'),
             $parentID
         );
     }

@@ -34,6 +34,21 @@ $.entwine('ss.tree', function($){
 				});
 			});
 		},
+
+		showListViewFor: function(id) {
+      const $contentView = this.closest('.cms-content-view');
+      const url = $contentView.data('url-listview') + '?ParentID=' + id;
+      const isContentViewInSidebar = $contentView.closest('.cms-content-tools').length !== 0;
+
+      if(isContentViewInSidebar) {
+        window.location = $contentView.data('url-listviewroot');
+        return;
+      }
+
+      $contentView.data('url', url + location.search);
+      $contentView.entwine('.ss').redraw();
+		},
+
 		getTreeConfig: function() {
 			var self = this, config = this._super(), hints = this.getHints();
 			config.plugins.push('contextmenu');
@@ -58,12 +73,7 @@ $.entwine('ss.tree', function($){
 						menuitems['showaslist'] = {
 							'label': i18n._t('CMS.ShowAsList'),
 							'action': function(obj) {
-								$('.cms-container').entwine('.ss').loadPanel(
-									self.data('urlListview') + '&ParentID=' + obj.data('id'),
-									null,
-									// Default to list view tab
-									{tabState: {'pages-controller-cms-content': {'tabSelector': '.content-listview'}}}
-								);
+								self.showListViewFor(obj.data('id'));
 							}
 						};
 					}
@@ -162,5 +172,12 @@ $.entwine('ss.tree', function($){
 		onclick: function () {
 			window.location = location.protocol + '//' + location.host + location.pathname;
 		}
+	});
+
+	$('.cms-tree .subtree-list-link').entwine({
+		onclick: function(e) {
+			e.preventDefault();
+			this.closest('.cms-tree').showListViewFor(this.data('id'));
+    }
 	});
 });
