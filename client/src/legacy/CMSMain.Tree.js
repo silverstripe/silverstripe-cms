@@ -37,15 +37,17 @@ $.entwine('ss.tree', function($){
 
 		showListViewFor: function(id) {
       const $contentView = this.closest('.cms-content-view');
-      const url = $contentView.data('url-listview') + '?ParentID=' + id;
       const isContentViewInSidebar = $contentView.closest('.cms-content-tools').length !== 0;
 
       if(isContentViewInSidebar) {
         window.location = $contentView.data('url-listviewroot');
         return;
       }
-
-      $contentView.data('url', url + location.search);
+      const url = $contentView.data('url-listview') + location.search;
+			const urlWithParams = $.path.addSearchParams(url, {
+				ParentID: id
+			});
+      $contentView.data('url', urlWithParams);
       $contentView.entwine('.ss').redraw();
 		},
 

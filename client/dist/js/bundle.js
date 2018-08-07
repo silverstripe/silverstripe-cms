@@ -742,15 +742,17 @@ _jquery2.default.entwine('ss.tree', function ($) {
 
 		showListViewFor: function showListViewFor(id) {
 			var $contentView = this.closest('.cms-content-view');
-			var url = $contentView.data('url-listview') + '?ParentID=' + id;
 			var isContentViewInSidebar = $contentView.closest('.cms-content-tools').length !== 0;
 
 			if (isContentViewInSidebar) {
 				window.location = $contentView.data('url-listviewroot');
 				return;
 			}
-
-			$contentView.data('url', url + location.search);
+			var url = $contentView.data('url-listview') + location.search;
+			var urlWithParams = $.path.addSearchParams(url, {
+				ParentID: id
+			});
+			$contentView.data('url', urlWithParams);
 			$contentView.entwine('.ss').redraw();
 		},
 
