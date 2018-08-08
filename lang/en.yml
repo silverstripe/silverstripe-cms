@@ -61,6 +61,7 @@ en:
     SAVED: 'Saved ''{title}'' successfully.'
     SAVEDRAFT: Save
     SHOW_AS_LIST: 'show as list'
+    SEARCHRESULTS: 'Search results'
     TOO_MANY_PAGES: 'Too many pages'
     TabContent: Content
     TabHistory: History

@@ -129,6 +129,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         'PublishItemsForm',
         'submit',
         'EditForm',
+        'schema',
         'SearchForm',
         'SiteTreeAsUL',
         'getshowdeletedsubtree',
@@ -868,75 +869,99 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     }
 
     /**
+     * @return \SilverStripe\ORM\Search\SearchContext
+     */
+    public function getSearchContext()
+    {
+        $context = SiteTree::singleton()->getDefaultSearchContext();
+
+        $this->extend('updateSearchContext', $context);
+
+        return $context;
+    }
+
+    /**
+     * Returns the search form schema for the current model
+     *
+     * @return string
+     */
+    public function getSearchFieldSchema()
+    {
+        $schemaUrl = $this->Link('schema/SearchForm');
+
+        $context = $this->getSearchContext();
+        $params = $this->getRequest()->requestVar('q') ?: [];
+        $context->setSearchParams($params);
+
+        $placeholder = _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERLABELTEXT', 'Search') . ' "' . SiteTree::singleton()->i18n_plural_name() . '"';
+
+        $schema = [
+            'formSchemaUrl' => $schemaUrl,
+            'name' => 'Term',
+            'placeholder' => $placeholder,
+            'filters' => $context->getSearchParams() ?: null
+        ];
+
+        return Convert::raw2json($schema);
+    }
+
+    /**
      * Returns a Form for page searching for use in templates.
      *
      * Can be modified from a decorator by a 'updateSearchForm' method
      *
      * @return Form
      */
-    public function SearchForm()
+    public function getSearchForm()
     {
         // Create the fields
-        $content = new TextField('q[Term]', _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERLABELTEXT', 'Search'));
-        $dateFrom = new DateField(
-            'q[LastEditedFrom]',
+        $dateFrom = DateField::create(
+            'LastEditedFrom',
             _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERDATEFROM', 'From')
         );
-        $dateTo = new DateField(
-            'q[LastEditedTo]',
+        $dateTo = DateField::create(
+            'LastEditedTo',
             _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERDATETO', 'To')
         );
-        $pageFilter = new DropdownField(
-            'q[FilterClass]',
+        $pageFilter = DropdownField::create(
+            'FilterClass',
             _t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGES', 'Page status'),
             CMSSiteTreeFilter::get_all_filters()
         );
-        $pageClasses = new DropdownField(
-            'q[ClassName]',
+        $pageClasses = DropdownField::create(
+            'ClassName',
             _t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGETYPEOPT', 'Page type', 'Dropdown for limiting search to a page type'),
             $this->getPageTypes()
         );
         $pageClasses->setEmptyString(_t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGETYPEANYOPT', 'Any'));
 
         // Group the Datefields
-        $dateGroup = new FieldGroup(
-            $dateFrom,
-            $dateTo
-        );
-        $dateGroup->setTitle(_t('SilverStripe\\CMS\\Search\\SearchForm.PAGEFILTERDATEHEADING', 'Last edited'));
+        $dateGroup = FieldGroup::create(
+            _t('SilverStripe\\CMS\\Search\\SearchForm.PAGEFILTERDATEHEADING', 'Last edited'),
+            [$dateFrom, $dateTo]
+        )->setName('LastEdited')
+        ->addExtraClass('fieldgroup--fill-width');
 
         // Create the Field list
         $fields = new FieldList(
-            $content,
             $pageFilter,
             $pageClasses,
             $dateGroup
         );
 
-        // Create the Search and Reset action
-        $actions = new FieldList(
-            FormAction::create('doSearch', _t('SilverStripe\\CMS\\Controllers\\CMSMain.APPLY_FILTER', 'Search'))
-                ->addExtraClass('btn btn-primary'),
-            FormAction::create('clear', _t('SilverStripe\\CMS\\Controllers\\CMSMain.CLEAR_FILTER', 'Clear'))
-                ->setAttribute('type', 'reset')
-                ->addExtraClass('btn btn-secondary')
-        );
-
-        // Use <button> to allow full jQuery UI styling on the all of the Actions
-        /** @var FormAction $action */
-        foreach ($actions->dataFields() as $action) {
-            /** @var FormAction $action */
-            $action->setUseButtonTag(true);
-        }
-
         // Create the form
         /** @skipUpgrade */
-        $form = Form::create($this, 'SearchForm', $fields, $actions)
-            ->addExtraClass('cms-search-form')
-            ->setFormMethod('GET')
-            ->setFormAction(CMSMain::singleton()->Link())
-            ->disableSecurityToken()
-            ->unsetValidator();
+        $form = Form::create(
+            $this,
+            'SearchForm',
+            $fields,
+            new FieldList()
+        );
+        $form->addExtraClass('cms-search-form');
+        $form->setFormMethod('GET');
+        $form->setFormAction(CMSMain::singleton()->Link());
+        $form->disableSecurityToken();
+        $form->unsetValidator();
 
         // Load the form with previously sent search data
         $form->loadDataFrom($this->getRequest()->getVars());
@@ -991,6 +1016,21 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function Breadcrumbs($unlinked = false)
     {
         $items = new ArrayList();
+
+        if ($this->TreeIsFiltered()) {
+            $items->push(new ArrayData([
+                'Title' => CMSPagesController::menu_title(),
+                'Link' => ($unlinked) ? false : $this->LinkPages()
+            ]));
+            $items->push(new ArrayData([
+                'Title' => _t('SilverStripe\\CMS\\Controllers\\CMSMain.SEARCHRESULTS', 'Search results'),
+                'Link' => ($unlinked) ? false : $this->LinkPages()
+            ]));
+
+            $this->extend('updateBreadcrumbs', $items);
+
+            return $items;
+        }
 
         // Check if we are editing a page
         /** @var SiteTree $record */
