@@ -32,6 +32,7 @@ query ReadHistoryViewerPage ($page_id: ID!, $limit: Int!, $offset: Int!) {
           }
           Published
           LiveVersion
+          LatestDraftVersion
           LastEdited
         }
       }
