@@ -36,22 +36,14 @@ $.entwine('ss.tree', function($){
 		},
 
 		showListViewFor: function(id) {
+      localStorage.setItem('ss.pages-view-type', 'listview');
       const $contentView = this.closest('.cms-content-view');
-      const isContentViewInSidebar = $contentView.closest('.cms-content-tools').length !== 0;
-			const url = isContentViewInSidebar
-				? $contentView.data('url-listviewroot')
-				: $contentView.data('url-listview') + location.search;
+			const url = $contentView.data('url-listviewroot');
       const urlWithParams = $.path.addSearchParams(url, {
         ParentID: id
       });
 
-      if(isContentViewInSidebar) {
-        window.location = urlWithParams;
-        return;
-      }
-
-      $contentView.data('url', urlWithParams);
-      $contentView.entwine('.ss').redraw();
+			window.location = urlWithParams;
 		},
 
 		getTreeConfig: function() {
@@ -182,7 +174,6 @@ $.entwine('ss.tree', function($){
 	$('.cms-tree .subtree-list-link').entwine({
 		onclick: function(e) {
 			e.preventDefault();
-      localStorage.setItem('ss.pages-view-type', 'listview');
       this.closest('.cms-tree').showListViewFor(this.data('id'));
     }
 	});
