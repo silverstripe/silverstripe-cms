@@ -5,11 +5,9 @@ namespace SilverStripe\CMS\Reports;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\ORM\DataList;
-use SilverStripe\Reports\Report;
 
-class EmptyPagesReport extends Report
+class EmptyPagesReport extends AbstractCMSReport
 {
-
     public function title()
     {
         return _t(__CLASS__.'.EMPTYPAGES', "Pages with no content");
@@ -37,15 +35,5 @@ class EmptyPagesReport extends Report
             ->exclude('ClassName', RedirectorPage::class)
             ->filter('Content', [null, '', '<p></p>', '<p>&nbsp;</p>'])
             ->sort('Title');
-    }
-
-    public function columns()
-    {
-        return array(
-            "Title" => array(
-                "title" => "Title", // todo: use NestedTitle(2)
-                "link" => true,
-            ),
-        );
     }
 }

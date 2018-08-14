@@ -8,13 +8,11 @@ use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\Reports\Report;
 use SilverStripe\ORM\DB;
 use SilverStripe\Versioned\Versioned;
 
-class BrokenFilesReport extends Report
+class BrokenFilesReport extends AbstractCMSReport
 {
-
     public function title()
     {
         return _t(__CLASS__.'.BROKENFILES', "Pages with broken files");
@@ -40,16 +38,6 @@ class BrokenFilesReport extends Report
 
         $stage = isset($params['OnLive']) ? Versioned::LIVE : Versioned::DRAFT;
         return Versioned::get_by_stage(SiteTree::class, $stage, $classFilter);
-    }
-
-    public function columns()
-    {
-        return array(
-            "Title" => array(
-                "title" => "Title", // todo: use NestedTitle(2)
-                "link" => true,
-            ),
-        );
     }
 
     public function getParameterFields()

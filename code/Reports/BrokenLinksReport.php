@@ -2,25 +2,21 @@
 
 namespace SilverStripe\CMS\Reports;
 
-use SilverStripe\CMS\Controllers\CMSPageEditController;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\Control\Controller;
-use SilverStripe\Core\ClassInfo;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\Versioned\Versioned;
-use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ArrayList;
-use SilverStripe\Reports\Report;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\Versioned\Versioned;
 
 /**
  * Content side-report listing pages with broken links
  */
-class BrokenLinksReport extends Report
+class BrokenLinksReport extends AbstractCMSReport
 {
-
     public function title()
     {
         return _t(__CLASS__ . '.BROKENLINKS', "Broken links report");
@@ -49,7 +45,7 @@ class BrokenLinksReport extends Report
         );
         $isLive = !isset($params['CheckSite']) || $params['CheckSite'] == 'Published';
         if ($isLive) {
-            $ret = Versioned::get_by_stage(SiteTree::class, 'Live', $brokenFilter, $sort, $join, $limit);
+            $ret = Versioned::get_by_stage(SiteTree::class, Versioned::LIVE, $brokenFilter, $sort, $join, $limit);
         } else {
             $ret = DataObject::get(SiteTree::class, $brokenFilter, $sort, $join, $limit);
         }
@@ -102,29 +98,9 @@ class BrokenLinksReport extends Report
     }
     public function columns()
     {
-        if (isset($_REQUEST['filters']['CheckSite']) && $_REQUEST['filters']['CheckSite'] == 'Draft') {
-            $dateTitle = _t(__CLASS__ . '.ColumnDateLastModified', 'Date last modified');
-        } else {
-            $dateTitle = _t(__CLASS__ . '.ColumnDateLastPublished', 'Date last published');
-        }
+        $columns = parent::columns();
 
-        $linkBase = CMSPageEditController::singleton()->Link('show');
-        $fields = array(
-            "Title" => array(
-                "title" => _t(__CLASS__ . '.PageName', 'Page name'),
-                'formatting' => function ($value, $item) use ($linkBase) {
-                    return sprintf(
-                        '<a href="%s" title="%s">%s</a>',
-                        Controller::join_links($linkBase, $item->ID),
-                        _t(__CLASS__ . '.HoverTitleEditPage', 'Edit page'),
-                        $value
-                    );
-                }
-            ),
-            "LastEdited" => array(
-                "title" => $dateTitle,
-                'casting' => 'DBDatetime->Full'
-            ),
+        $columns += [
             "BrokenReason" => array(
                 "title" => _t(__CLASS__ . '.ColumnProblemType', "Problem type")
             ),
@@ -142,9 +118,9 @@ class BrokenLinksReport extends Report
                     );
                 }
             )
-        );
+        ];
 
-        return $fields;
+        return $columns;
     }
     public function parameterFields()
     {

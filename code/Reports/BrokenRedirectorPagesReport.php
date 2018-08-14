@@ -9,11 +9,9 @@ use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DB;
 use SilverStripe\Versioned\Versioned;
-use SilverStripe\Reports\Report;
 
-class BrokenRedirectorPagesReport extends Report
+class BrokenRedirectorPagesReport extends AbstractCMSReport
 {
-
     public function title()
     {
         return _t(__CLASS__.'.BROKENREDIRECTORPAGES', 'RedirectorPages pointing to deleted pages');
@@ -31,18 +29,8 @@ class BrokenRedirectorPagesReport extends Report
         $classFilter = array(
             "\"ClassName\" IN ($classParams) AND \"HasBrokenLink\" = 1" => $classes
         );
-        $stage = isset($params['OnLive']) ? 'Live' : 'Stage';
+        $stage = isset($params['OnLive']) ? Versioned::LIVE : Versioned::DRAFT;
         return Versioned::get_by_stage(SiteTree::class, $stage, $classFilter);
-    }
-
-    public function columns()
-    {
-        return array(
-            "Title" => array(
-                "title" => "Title", // todo: use NestedTitle(2)
-                "link" => true,
-            ),
-        );
     }
 
     public function getParameterFields()

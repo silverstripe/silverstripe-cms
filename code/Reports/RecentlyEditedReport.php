@@ -4,12 +4,9 @@ namespace SilverStripe\CMS\Reports;
 
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\ORM\FieldType\DBDatetime;
-use SilverStripe\ORM\DataObject;
-use SilverStripe\Reports\Report;
 
-class RecentlyEditedReport extends Report
+class RecentlyEditedReport extends AbstractCMSReport
 {
-
     public function title()
     {
         return _t(__CLASS__.'.LAST2WEEKS', "Pages edited in the last 2 weeks");
@@ -31,15 +28,5 @@ class RecentlyEditedReport extends Report
         return SiteTree::get()
             ->filter('LastEdited:GreaterThan', date("Y-m-d H:i:s", $threshold))
             ->sort("\"SiteTree\".\"LastEdited\" DESC");
-    }
-
-    public function columns()
-    {
-        return array(
-            "Title" => array(
-                "title" => "Title", // todo: use NestedTitle(2)
-                "link" => true,
-            ),
-        );
     }
 }
