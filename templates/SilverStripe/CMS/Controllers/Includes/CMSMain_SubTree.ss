@@ -5,9 +5,7 @@
     <ul><li class="readonly">
         <span class="item">
             <%t SilverStripe\\CMS\\Controllers\\CMSMain.TOO_MANY_PAGES 'Too many pages' %>
-            (<a href="{$listViewLink.ATT}" class="cms-panel-link" data-pjax-target="Content">
-                <%t SilverStripe\\CMS\\Controllers\\CMSMain.SHOW_AS_LIST 'show as list' %>
-            </a>)
+            (<a href="{$listViewLink.ATT}" class="subtree-list-link" data-id="$node.ID" data-pjax-target="Content"><%t SilverStripe\\CMS\\Controllers\\CMSMain.SHOW_AS_LIST 'show as list' %></a>)
         </span>
     </li></ul>
 <% else_if $children %>
