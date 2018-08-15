@@ -58,7 +58,7 @@ $.entwine('ss', function ($) {
 
       const viewType = $(this).data('view');
       const $contentView = this.closest('.cms-content-view');
-      var url = $contentView.data(`url-${viewType}`);
+      const url = $contentView.data(`url-${viewType}`);
       const isContentViewInSidebar = $contentView.closest('.cms-content-tools').length !== 0;
 
       localStorage.setItem('ss.pages-view-type', viewType);
