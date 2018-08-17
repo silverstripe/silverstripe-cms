@@ -443,11 +443,7 @@ HTML;
         }
 
         // Prepare action for template search
-        if ($action == "index") {
-            $action = "";
-        } else {
-            $action = '_' . $action;
-        }
+        $action = $action === 'index' ? '' : '_' . $action;
 
         $templatesFound = [];
         // Find templates for the record + action together - e.g. Page_action.ss
