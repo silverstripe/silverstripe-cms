@@ -7,10 +7,16 @@ SilverStripe\Control\Director:
     '': 'SilverStripe\CMS\Controllers\RootURLController'
     'RemoveOrphanedPagesTask//$Action/$ID/$OtherID': 'SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask'
     'SiteTreeMaintenanceTask//$Action/$ID/$OtherID': 'SilverStripe\CMS\Tasks\SiteTreeMaintenanceTask'
-    '$URLSegment//$Action/$ID/$OtherID': 'SilverStripe\CMS\Controllers\ModelAsController'
 ---
 Name: legacycmsroutes
 ---
 SilverStripe\Control\Director:
   rules:
     'admin/cms': '->admin/pages'
+---
+Name: modelascontrollercatchallroute
+After: '*'
+---
+SilverStripe\Control\Director:
+  rules:
+    '$URLSegment//$Action/$ID/$OtherID': 'SilverStripe\CMS\Controllers\ModelAsController'
