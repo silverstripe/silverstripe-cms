@@ -7,6 +7,10 @@ use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Reports\Report;
 
+if (!class_exists(Report::class)) {
+    return;
+}
+
 class RecentlyEditedReport extends Report
 {
 

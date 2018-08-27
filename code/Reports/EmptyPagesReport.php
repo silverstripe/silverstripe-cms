@@ -7,6 +7,10 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\ORM\DataList;
 use SilverStripe\Reports\Report;
 
+if (!class_exists(Report::class)) {
+    return;
+}
+
 class EmptyPagesReport extends Report
 {
 

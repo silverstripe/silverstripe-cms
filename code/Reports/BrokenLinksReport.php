@@ -15,6 +15,10 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\Reports\Report;
 
+if (!class_exists(Report::class)) {
+    return;
+}
+
 /**
  * Content side-report listing pages with broken links
  */

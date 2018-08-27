@@ -11,6 +11,10 @@ use SilverStripe\ORM\DB;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\Reports\Report;
 
+if (!class_exists(Report::class)) {
+    return;
+}
+
 class BrokenVirtualPagesReport extends Report
 {
 

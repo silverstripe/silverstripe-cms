@@ -12,6 +12,10 @@ use SilverStripe\Reports\Report;
 use SilverStripe\ORM\DB;
 use SilverStripe\Versioned\Versioned;
 
+if (!class_exists(Report::class)) {
+    return;
+}
+
 class BrokenFilesReport extends Report
 {
 
