@@ -17,6 +17,10 @@ use SilverStripe\Assets\File;
 use SilverStripe\Dev\SapphireTest;
 use Page;
 
+if (!class_exists(Report::class)) {
+    return;
+}
+
 class CmsReportsTest extends SapphireTest
 {
 
