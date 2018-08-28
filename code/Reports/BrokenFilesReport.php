@@ -12,9 +12,11 @@ use SilverStripe\Reports\Report;
 use SilverStripe\ORM\DB;
 use SilverStripe\Versioned\Versioned;
 
+// phpcs:disable PSR1.Files.SideEffects
 if (!class_exists(Report::class)) {
     return;
 }
+// phpcs:enable
 
 class BrokenFilesReport extends Report
 {

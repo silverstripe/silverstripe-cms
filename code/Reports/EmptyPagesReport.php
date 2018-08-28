@@ -7,9 +7,11 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\ORM\DataList;
 use SilverStripe\Reports\Report;
 
+// phpcs:disable PSR1.Files.SideEffects
 if (!class_exists(Report::class)) {
     return;
 }
+// phpcs:enable
 
 class EmptyPagesReport extends Report
 {

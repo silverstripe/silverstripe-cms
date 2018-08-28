@@ -15,9 +15,11 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\Reports\Report;
 
+// phpcs:disable PSR1.Files.SideEffects
 if (!class_exists(Report::class)) {
     return;
 }
+// phpcs:enable
 
 /**
  * Content side-report listing pages with broken links

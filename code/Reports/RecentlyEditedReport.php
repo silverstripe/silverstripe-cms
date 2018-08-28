@@ -7,9 +7,11 @@ use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Reports\Report;
 
+// phpcs:disable PSR1.Files.SideEffects
 if (!class_exists(Report::class)) {
     return;
 }
+// phpcs:enable
 
 class RecentlyEditedReport extends Report
 {

@@ -17,9 +17,11 @@ use SilverStripe\Assets\File;
 use SilverStripe\Dev\SapphireTest;
 use Page;
 
+// phpcs:disable PSR1.Files.SideEffects
 if (!class_exists(Report::class)) {
     return;
 }
+// phpcs:enable
 
 class CmsReportsTest extends SapphireTest
 {
