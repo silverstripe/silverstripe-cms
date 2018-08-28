@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="panel panel--scrollable flexbox-area-grow fill-height cms-panel-content">
-        <div class="cms-content-filters">
+        <div class="cms-content-filters cms-content-filters--hidden">
             <div
                 class="search-holder search-holder--cms"
                 data-schema="$SearchFieldSchema"

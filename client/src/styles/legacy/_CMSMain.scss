@@ -101,6 +101,13 @@
 	}
 }
 
+// Remove right border of search when in 'sidebar' view
+#cms-content-tools-CMSMain {
+	.search-box__content-field {
+		border-right: none;
+	}
+}
+
 /* -------------------------------------------------------------------
  * List view
  * ------------------------------------------------------------------- */

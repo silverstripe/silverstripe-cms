@@ -869,6 +869,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     }
 
     /**
+     * This provides information required to generate the search form
+     * and can be modified on extensions through updateSearchContext
+     *
      * @return \SilverStripe\ORM\Search\SearchContext
      */
     public function getSearchContext()
