@@ -902,7 +902,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             'formSchemaUrl' => $schemaUrl,
             'name' => 'Term',
             'placeholder' => $placeholder,
-            'filters' => $context->getSearchParams() ?: null
+            'filters' => $context->getSearchParams() ?: new \stdClass // stdClass maps to empty json object '{}'
         ];
 
         return Convert::raw2json($schema);

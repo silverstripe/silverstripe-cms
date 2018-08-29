@@ -101,10 +101,10 @@
 	}
 }
 
-// Remove right border of search when in 'sidebar' view
+// Move search form inline with close button (rather than filter)
 #cms-content-tools-CMSMain {
-	.search-box__content-field {
-		border-right: none;
+	.search-form {
+		right: 0;
 	}
 }
 
