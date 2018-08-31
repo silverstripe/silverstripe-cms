@@ -37,6 +37,7 @@ en:
     NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'This page doesn''t exist'
     PAGES: 'Page status'
+    PAGESALLOPT: 'All pages'
     PAGETYPEANYOPT: Any
     PAGETYPEOPT: 'Page type'
     PAGETYPE_TITLE: '(Page type: {type}) {title}'

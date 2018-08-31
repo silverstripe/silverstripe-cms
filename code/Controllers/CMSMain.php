@@ -12,6 +12,7 @@ use SilverStripe\CMS\BatchActions\CMSBatchAction_Archive;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Publish;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Restore;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish;
+use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search;
 use SilverStripe\CMS\Model\CurrentPageIdentifier;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
@@ -21,9 +22,11 @@ use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Control\HTTPResponse_Exception;
+use SilverStripe\Core\Cache\MemberCacheFlusher;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\Environment;
+use SilverStripe\Core\Flushable;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\DropdownField;
@@ -66,8 +69,6 @@ use SilverStripe\Versioned\ChangeSetItem;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
-use SilverStripe\Core\Flushable;
-use SilverStripe\Core\Cache\MemberCacheFlusher;
 use Translatable;
 
 /**
@@ -926,11 +927,15 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             'LastEditedTo',
             _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERDATETO', 'To')
         );
+        $filters = CMSSiteTreeFilter::get_all_filters();
+        // Remove 'All pages' as we set that to empty/default value
+        unset($filters[CMSSiteTreeFilter_Search::class]);
         $pageFilter = DropdownField::create(
             'FilterClass',
             _t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGES', 'Page status'),
-            CMSSiteTreeFilter::get_all_filters()
+            $filters
         );
+        $pageFilter->setEmptyString(_t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGESALLOPT', 'All pages'));
         $pageClasses = DropdownField::create(
             'ClassName',
             _t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGETYPEOPT', 'Page type', 'Dropdown for limiting search to a page type'),
@@ -1514,15 +1519,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * Safely reconstruct a selected filter from a given set of query parameters
      *
      * @param array $params Query parameters to use
-     * @return CMSSiteTreeFilter The filter class, or null if none present
+     * @return CMSSiteTreeFilter The filter class
      * @throws InvalidArgumentException if invalid filter class is passed.
      */
     protected function getQueryFilter($params)
     {
-        if (empty($params['FilterClass'])) {
-            return null;
-        }
-        $filterClass = $params['FilterClass'];
+        $filterClass = empty($params['FilterClass']) ? CMSSiteTreeFilter_Search::class : $params['FilterClass'];
         if (!is_subclass_of($filterClass, CMSSiteTreeFilter::class)) {
             throw new InvalidArgumentException("Invalid filter class passed: {$filterClass}");
         }
