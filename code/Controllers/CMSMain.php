@@ -1518,13 +1518,16 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     /**
      * Safely reconstruct a selected filter from a given set of query parameters
      *
-     * @param array $params Query parameters to use
+     * @param array $params Query parameters to use, or null if none present
      * @return CMSSiteTreeFilter The filter class
      * @throws InvalidArgumentException if invalid filter class is passed.
      */
     protected function getQueryFilter($params)
     {
-        $filterClass = empty($params['FilterClass']) ? CMSSiteTreeFilter_Search::class : $params['FilterClass'];
+        if (empty($params['FilterClass'])) {
+            return null;
+        }
+        $filterClass = $params['FilterClass'];
         if (!is_subclass_of($filterClass, CMSSiteTreeFilter::class)) {
             throw new InvalidArgumentException("Invalid filter class passed: {$filterClass}");
         }
@@ -1559,6 +1562,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     {
         $params = $this->getRequest()->requestVar('q');
         $parentID = $this->getRequest()->requestVar('ParentID');
+        // Set default filter if other params are set
+        if ($params && empty($params['FilterClass'])) {
+            $params['FilterClass'] = CMSSiteTreeFilter_Search::class;
+        }
         $list = $this->getList($params, $parentID);
         $gridFieldConfig = GridFieldConfig::create()->addComponents(
             new GridFieldSortableHeader(),
