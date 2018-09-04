@@ -3,8 +3,7 @@
 jest.mock('isomorphic-fetch', () =>
   () => Promise.resolve({
     json: () => ['anchor3', 'anchor4'],
-  })
-);
+}));
 jest.mock('i18n');
 
 import React from 'react';
@@ -40,9 +39,7 @@ describe('AnchorSelectorField', () => {
   describe('componentDidMount()', () => {
     it('Loads dirty selectors', () => {
       props.loadingState = anchorSelectorStates.DIRTY;
-      field = ReactTestUtils.renderIntoDocument(
-        <AnchorSelectorField {...props} />
-      );
+      field = ReactTestUtils.renderIntoDocument(<AnchorSelectorField {...props} />);
       expect(props.actions.anchorSelector.beginUpdating)
         .toHaveBeenCalledWith(4);
     });
@@ -50,9 +47,7 @@ describe('AnchorSelectorField', () => {
 
   describe('getDropdownOptions()', () => {
     it('Merges value with page anchors', () => {
-      field = ReactTestUtils.renderIntoDocument(
-        <AnchorSelectorField {...props} />
-      );
+      field = ReactTestUtils.renderIntoDocument(<AnchorSelectorField {...props} />);
       expect(field.getDropdownOptions()).toEqual([
         { value: 'selectedanchor' },
         { value: 'anchor1' },
@@ -64,9 +59,7 @@ describe('AnchorSelectorField', () => {
   describe('ensurePagesLoaded', () => {
     it('Triggers loading on dirty', () => {
       props.loadingState = anchorSelectorStates.DIRTY;
-      field = ReactTestUtils.renderIntoDocument(
-        <AnchorSelectorField {...props} />
-      );
+      field = ReactTestUtils.renderIntoDocument(<AnchorSelectorField {...props} />);
       return field
         .ensurePagesLoaded()
         .then((result) => {
@@ -83,9 +76,7 @@ describe('AnchorSelectorField', () => {
 
     it('Does not trigger updating', () => {
       props.loadingState = anchorSelectorStates.UPDATING;
-      field = ReactTestUtils.renderIntoDocument(
-        <AnchorSelectorField {...props} />
-      );
+      field = ReactTestUtils.renderIntoDocument(<AnchorSelectorField {...props} />);
       return field
         .ensurePagesLoaded()
         .then((result) => {
