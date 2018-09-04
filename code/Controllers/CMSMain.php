@@ -12,6 +12,7 @@ use SilverStripe\CMS\BatchActions\CMSBatchAction_Archive;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Publish;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Restore;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish;
+use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search;
 use SilverStripe\CMS\Model\CurrentPageIdentifier;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
@@ -21,9 +22,11 @@ use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Control\HTTPResponse_Exception;
+use SilverStripe\Core\Cache\MemberCacheFlusher;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\Environment;
+use SilverStripe\Core\Flushable;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\DropdownField;
@@ -66,8 +69,6 @@ use SilverStripe\Versioned\ChangeSetItem;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
-use SilverStripe\Core\Flushable;
-use SilverStripe\Core\Cache\MemberCacheFlusher;
 use Translatable;
 
 /**
@@ -129,6 +130,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         'PublishItemsForm',
         'submit',
         'EditForm',
+        'schema',
         'SearchForm',
         'SiteTreeAsUL',
         'getshowdeletedsubtree',
@@ -868,75 +870,106 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     }
 
     /**
+     * This provides information required to generate the search form
+     * and can be modified on extensions through updateSearchContext
+     *
+     * @return \SilverStripe\ORM\Search\SearchContext
+     */
+    public function getSearchContext()
+    {
+        $context = SiteTree::singleton()->getDefaultSearchContext();
+
+        $this->extend('updateSearchContext', $context);
+
+        return $context;
+    }
+
+    /**
+     * Returns the search form schema for the current model
+     *
+     * @return string
+     */
+    public function getSearchFieldSchema()
+    {
+        $schemaUrl = $this->Link('schema/SearchForm');
+
+        $context = $this->getSearchContext();
+        $params = $this->getRequest()->requestVar('q') ?: [];
+        $context->setSearchParams($params);
+
+        $placeholder = _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERLABELTEXT', 'Search') . ' "' . SiteTree::singleton()->i18n_plural_name() . '"';
+
+        $schema = [
+            'formSchemaUrl' => $schemaUrl,
+            'name' => 'Term',
+            'placeholder' => $placeholder,
+            'filters' => $context->getSearchParams() ?: new \stdClass // stdClass maps to empty json object '{}'
+        ];
+
+        return Convert::raw2json($schema);
+    }
+
+    /**
      * Returns a Form for page searching for use in templates.
      *
      * Can be modified from a decorator by a 'updateSearchForm' method
      *
      * @return Form
      */
-    public function SearchForm()
+    public function getSearchForm()
     {
         // Create the fields
-        $content = new TextField('q[Term]', _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERLABELTEXT', 'Search'));
-        $dateFrom = new DateField(
-            'q[LastEditedFrom]',
+        $dateFrom = DateField::create(
+            'LastEditedFrom',
             _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERDATEFROM', 'From')
         );
-        $dateTo = new DateField(
-            'q[LastEditedTo]',
+        $dateTo = DateField::create(
+            'LastEditedTo',
             _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERDATETO', 'To')
         );
-        $pageFilter = new DropdownField(
-            'q[FilterClass]',
+        $filters = CMSSiteTreeFilter::get_all_filters();
+        // Remove 'All pages' as we set that to empty/default value
+        unset($filters[CMSSiteTreeFilter_Search::class]);
+        $pageFilter = DropdownField::create(
+            'FilterClass',
             _t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGES', 'Page status'),
-            CMSSiteTreeFilter::get_all_filters()
+            $filters
         );
-        $pageClasses = new DropdownField(
-            'q[ClassName]',
+        $pageFilter->setEmptyString(_t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGESALLOPT', 'All pages'));
+        $pageClasses = DropdownField::create(
+            'ClassName',
             _t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGETYPEOPT', 'Page type', 'Dropdown for limiting search to a page type'),
             $this->getPageTypes()
         );
         $pageClasses->setEmptyString(_t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGETYPEANYOPT', 'Any'));
 
         // Group the Datefields
-        $dateGroup = new FieldGroup(
-            $dateFrom,
-            $dateTo
-        );
-        $dateGroup->setTitle(_t('SilverStripe\\CMS\\Search\\SearchForm.PAGEFILTERDATEHEADING', 'Last edited'));
+        $dateGroup = FieldGroup::create(
+            _t('SilverStripe\\CMS\\Search\\SearchForm.PAGEFILTERDATEHEADING', 'Last edited'),
+            [$dateFrom, $dateTo]
+        )->setName('LastEdited')
+        ->addExtraClass('fieldgroup--fill-width');
 
         // Create the Field list
         $fields = new FieldList(
-            $content,
             $pageFilter,
             $pageClasses,
             $dateGroup
         );
 
-        // Create the Search and Reset action
-        $actions = new FieldList(
-            FormAction::create('doSearch', _t('SilverStripe\\CMS\\Controllers\\CMSMain.APPLY_FILTER', 'Search'))
-                ->addExtraClass('btn btn-primary'),
-            FormAction::create('clear', _t('SilverStripe\\CMS\\Controllers\\CMSMain.CLEAR_FILTER', 'Clear'))
-                ->setAttribute('type', 'reset')
-                ->addExtraClass('btn btn-secondary')
-        );
-
-        // Use <button> to allow full jQuery UI styling on the all of the Actions
-        /** @var FormAction $action */
-        foreach ($actions->dataFields() as $action) {
-            /** @var FormAction $action */
-            $action->setUseButtonTag(true);
-        }
-
         // Create the form
         /** @skipUpgrade */
-        $form = Form::create($this, 'SearchForm', $fields, $actions)
-            ->addExtraClass('cms-search-form')
-            ->setFormMethod('GET')
-            ->setFormAction(CMSMain::singleton()->Link())
-            ->disableSecurityToken()
-            ->unsetValidator();
+        $form = Form::create(
+            $this,
+            'SearchForm',
+            $fields,
+            new FieldList()
+        );
+        $form->addExtraClass('cms-search-form');
+        $form->setFormMethod('GET');
+        $form->setFormAction(CMSMain::singleton()->Link());
+        $form->disableSecurityToken();
+        $form->unsetValidator();
 
         // Load the form with previously sent search data
         $form->loadDataFrom($this->getRequest()->getVars());
@@ -991,6 +1024,21 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function Breadcrumbs($unlinked = false)
     {
         $items = new ArrayList();
+
+        if ($this->TreeIsFiltered()) {
+            $items->push(new ArrayData([
+                'Title' => CMSPagesController::menu_title(),
+                'Link' => ($unlinked) ? false : $this->LinkPages()
+            ]));
+            $items->push(new ArrayData([
+                'Title' => _t('SilverStripe\\CMS\\Controllers\\CMSMain.SEARCHRESULTS', 'Search results'),
+                'Link' => ($unlinked) ? false : $this->LinkPages()
+            ]));
+
+            $this->extend('updateBreadcrumbs', $items);
+
+            return $items;
+        }
 
         // Check if we are editing a page
         /** @var SiteTree $record */
@@ -1470,8 +1518,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     /**
      * Safely reconstruct a selected filter from a given set of query parameters
      *
-     * @param array $params Query parameters to use
-     * @return CMSSiteTreeFilter The filter class, or null if none present
+     * @param array $params Query parameters to use, or null if none present
+     * @return CMSSiteTreeFilter The filter class
      * @throws InvalidArgumentException if invalid filter class is passed.
      */
     protected function getQueryFilter($params)
@@ -1514,6 +1562,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     {
         $params = $this->getRequest()->requestVar('q');
         $parentID = $this->getRequest()->requestVar('ParentID');
+        // Set default filter if other params are set
+        if ($params && empty($params['FilterClass'])) {
+            $params['FilterClass'] = CMSSiteTreeFilter_Search::class;
+        }
         $list = $this->getList($params, $parentID);
         $gridFieldConfig = GridFieldConfig::create()->addComponents(
             new GridFieldSortableHeader(),

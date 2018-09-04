@@ -37,6 +37,7 @@ en:
     NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'This page doesn''t exist'
     PAGES: 'Page status'
+    PAGESALLOPT: 'All pages'
     PAGETYPEANYOPT: Any
     PAGETYPEOPT: 'Page type'
     PAGETYPE_TITLE: '(Page type: {type}) {title}'
@@ -61,6 +62,7 @@ en:
     SAVED: 'Saved ''{title}'' successfully.'
     SAVEDRAFT: Save
     SHOW_AS_LIST: 'show as list'
+    SEARCHRESULTS: 'Search results'
     TOO_MANY_PAGES: 'Too many pages'
     TabContent: Content
     TabHistory: History

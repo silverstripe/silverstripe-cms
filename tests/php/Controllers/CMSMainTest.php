@@ -9,6 +9,7 @@ use SilverStripe\CMS\Controllers\CMSMain;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
+use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Config;
@@ -618,5 +619,45 @@ class CMSMainTest extends FunctionalTest
         Injector::inst()->registerService($mockPageMissesCache, $pageClass);
         $hints = $cms->SiteTreeHints();
         $this->assertNotNull($hints);
+    }
+
+    public function testSearchField()
+    {
+        $cms = CMSMain::create();
+        $searchSchema = $cms->getSearchFieldSchema();
+
+        $this->assertJsonStringEqualsJsonString(
+            json_encode([
+                'formSchemaUrl' => 'admin/pages/schema/SearchForm',
+                'name' => 'Term',
+                'placeholder' => 'Search "Pages"',
+                'filters' => new \stdClass
+            ]),
+            $searchSchema
+        );
+
+        $request = new HTTPRequest(
+            'GET',
+            'admin/pages/schema/SearchForm',
+            ['q' => [
+                'Term' => 'test',
+                'FilterClass' => 'SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search'
+            ]]
+        );
+        $cms->setRequest($request);
+        $searchSchema = $cms->getSearchFieldSchema();
+
+        $this->assertJsonStringEqualsJsonString(
+            json_encode([
+                'formSchemaUrl' => 'admin/pages/schema/SearchForm',
+                'name' => 'Term',
+                'placeholder' => 'Search "Pages"',
+                'filters' => [
+                    'Term' => 'test',
+                    'FilterClass' => 'SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search'
+                ]
+            ]),
+            $searchSchema
+        );
     }
 }

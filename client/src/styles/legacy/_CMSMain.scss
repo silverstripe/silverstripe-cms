@@ -101,6 +101,13 @@
 	}
 }
 
+// Move search form inline with close button (rather than filter)
+#cms-content-tools-CMSMain {
+	.search-form {
+		right: 0;
+	}
+}
+
 /* -------------------------------------------------------------------
  * List view
  * ------------------------------------------------------------------- */

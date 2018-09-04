@@ -138,11 +138,9 @@ AnchorSelectorField.propTypes = {
   attributes: React.PropTypes.oneOfType([React.PropTypes.object, React.PropTypes.array]),
   pageId: React.PropTypes.number,
   anchors: React.PropTypes.array,
-  loadingState: React.PropTypes.oneOf(
-    Object
+  loadingState: React.PropTypes.oneOf(Object
       .keys(anchorSelectorStates)
-      .map((key) => anchorSelectorStates[key])
-  ),
+      .map((key) => anchorSelectorStates[key])),
   onLoadingError: React.PropTypes.func,
   data: React.PropTypes.shape({
     endpoint: React.PropTypes.string,
@@ -169,12 +167,14 @@ function mapStateToProps(state, ownProps) {
     ? state.cms.anchorSelector.pages.find(next => next.id === pageId)
     : null;
   if (page && page.loadingState === anchorSelectorStates.SUCCESS) {
+    // eslint-disable-next-line prefer-destructuring
     anchors = page.anchors;
   }
 
   // Check status
   let loadingState = null;
   if (page) {
+    // eslint-disable-next-line prefer-destructuring
     loadingState = page.loadingState;
   } else if (pageId) {
     // Triggers an update

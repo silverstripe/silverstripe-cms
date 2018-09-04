@@ -15,13 +15,12 @@ class CMSMainSearchFormTest extends FunctionalTest
         $this->session()->set('loggedInAs', $this->idFromFixture(Member::class, 'admin'));
 
         $this->get(
-            'admin/pages/SearchForm/?' .
+            'admin/pages/?' .
             http_build_query(array(
                 'q' => array(
-                    'Title' => 'Page 10',
+                    'Term' => 'Page 10',
                     'FilterClass' => CMSSiteTreeFilter_Search::class,
-                ),
-                'action_doSearch' => true
+                )
             ))
         );
 
@@ -35,7 +34,7 @@ class CMSMainSearchFormTest extends FunctionalTest
     protected function getPageTitles()
     {
         $titles = array();
-        $links = $this->cssParser()->getBySelector('li.class-Page a');
+        $links = $this->cssParser()->getBySelector('.col-getTreeTitle span.item');
         if ($links) {
             foreach ($links as $link) {
                 $titles[] = preg_replace('/\n/', ' ', $link->asXML());
