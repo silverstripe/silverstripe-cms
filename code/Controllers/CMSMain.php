@@ -922,11 +922,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $dateFrom = DateField::create(
             'LastEditedFrom',
             _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERDATEFROM', 'From')
-        );
+        )->setLocale(Security::getCurrentUser()->Locale);
         $dateTo = DateField::create(
             'LastEditedTo',
             _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERDATETO', 'To')
-        );
+        )->setLocale(Security::getCurrentUser()->Locale);
         $filters = CMSSiteTreeFilter::get_all_filters();
         // Remove 'All pages' as we set that to empty/default value
         unset($filters[CMSSiteTreeFilter_Search::class]);
