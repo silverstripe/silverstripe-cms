@@ -26,23 +26,25 @@ Feature: Search for a page
     Then I should see "My Virtual Page" in the cms list
       But I should not see "Contact Us" in the cms list
 
-  Scenario: I can search for a page by its oldest last edited date
-    Given a "page" "Recent Page"
-      And a "page" "Old Page" was last edited "7 days ago"
-    When I press the "Advanced" button
-      And I fill in "From" with "the date of 5 days ago"
-      And I press the "Search" button
-    Then I should see "Recent Page" in the cms list
-      But I should not see "Old Page" in the cms list
+  # BUG: https://github.com/silverstripe/silverstripe-admin/issues/631
+  # Scenario: I can search for a page by its oldest last edited date
+  #   Given a "page" "Recent Page"
+  #     And a "page" "Old Page" was last edited "7 days ago"
+  #   When I press the "Advanced" button
+  #     And I fill in "From" with "the date of 5 days ago"
+  #     And I press the "Search" button
+  #   Then I should see "Recent Page" in the cms list
+  #     But I should not see "Old Page" in the cms list
 
-  Scenario: I can search for a page by its newest last edited date
-    Given a "page" "Recent Page"
-      And a "page" "Old Page" was last edited "7 days ago"
-    When I press the "Advanced" button
-      And I fill in "To" with "the date of 5 days ago"
-      And I press the "Search" button
-    Then I should not see "Recent Page" in the cms list
-      But I should see "Old Page" in the cms list
+  # BUG: https://github.com/silverstripe/silverstripe-admin/issues/631
+  # Scenario: I can search for a page by its newest last edited date
+  #   Given a "page" "Recent Page"
+  #     And a "page" "Old Page" was last edited "7 days ago"
+  #   When I press the "Advanced" button
+  #     And I fill in "To" with "the date of 5 days ago"
+  #     And I press the "Search" button
+  #   Then I should not see "Recent Page" in the cms list
+  #     But I should see "Old Page" in the cms list
 
   Scenario: I can include deleted pages in my search
     Given a "page" "Deleted Page"
