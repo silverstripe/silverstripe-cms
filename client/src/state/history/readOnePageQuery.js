@@ -51,23 +51,21 @@ const config = {
       }
     };
   },
-  props(
-    {
-      data: {
-        error,
-        refetch,
-        readOnePage,
-        loading: networkLoading,
+  props({
+    data: {
+      error,
+      refetch,
+      readOnePage,
+      loading: networkLoading,
+    },
+    ownProps: {
+      actions = {
+        versions: {}
       },
-      ownProps: {
-        actions = {
-          versions: {}
-        },
-        limit,
-        recordId,
-      },
-    }
-  ) {
+      limit,
+      recordId,
+    },
+  }) {
     const versions = readOnePage || null;
 
     const errors = error && error.graphQLErrors &&

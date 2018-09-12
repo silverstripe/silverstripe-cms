@@ -44,9 +44,19 @@ $.entwine('ss', function ($) {
         viewType = VIEW_TYPE_TREE;
       }
       const url = this.data(`url-${viewType}`);
-      this.data('deferredNoCache', viewType === VIEW_TYPE_LIST);
+      const clearFiltered = localStorage.getItem('ss.pages-view-filtered');
+      localStorage.setItem('ss.pages-view-filtered', false)
+      this.data('deferredNoCache', (clearFiltered || viewType === VIEW_TYPE_LIST));
       this.data('url', url + location.search);
       this._super();
+    }
+  });
+
+  $('.js-injector-boot .search-holder--cms').entwine({
+    search(data) {
+      localStorage.setItem('ss.pages-view-filtered', true)
+
+      this._super(data);
     }
   });
 
