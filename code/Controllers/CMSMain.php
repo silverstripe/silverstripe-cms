@@ -1405,13 +1405,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * @param array $collator
      * @return bool
      */
-    protected function collateDescendants($recordIDs, &$collator) {
+    protected function collateDescendants($recordIDs, &$collator)
+    {
 
         $children = SiteTree::get()->filter(['ParentID' => $recordIDs])->column();
         if ($children) {
             foreach ($children as $item) {
                 $collator[] = $item;
-
             }
             $this->collateDescendants($children, $collator);
             return true;
