@@ -1375,7 +1375,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             'ObjectClass' => SiteTree::class
         ])->column('ChangeSetID');
 
-        // Count number of affacted change set
+        // Count number of affected change set
         $affectedChangeSetCount = 0;
         if (count($inChangeSetIDs) > 0) {
             $affectedChangeSetCount = ChangeSet::get()
@@ -1405,7 +1405,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * @param array $collator
      * @return bool
      */
-    private function collateDescendants($recordIDs, &$collator) {
+    protected function collateDescendants($recordIDs, &$collator) {
 
         $children = SiteTree::get()->filter(['ParentID' => $recordIDs])->column();
         if ($children) {
