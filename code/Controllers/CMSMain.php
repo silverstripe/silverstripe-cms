@@ -54,6 +54,7 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\HiddenClass;
+use SilverStripe\ORM\Hierarchy\Hierarchy;
 use SilverStripe\ORM\Hierarchy\MarkedSet;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\ValidationResult;
@@ -493,6 +494,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         // Pre-cache sitetree version numbers for querying efficiency
         Versioned::prepopulate_versionnumber_cache(SiteTree::class, Versioned::DRAFT);
         Versioned::prepopulate_versionnumber_cache(SiteTree::class, Versioned::LIVE);
+
+        if (method_exists(Hierarchy::class, 'prepopulate_numchildren_cache')) {
+            Hierarchy::prepopulate_numchildren_cache(SiteTree::class, Versioned::DRAFT);
+        }
+
         $html = $this->getSiteTreeFor($this->config()->get('tree_class'));
 
         $this->extend('updateSiteTreeAsUL', $html);
