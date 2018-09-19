@@ -17,7 +17,7 @@ addons:
 
 env:
   global:
-    - TRAVIS_NODE_VERSION="6"
+    - TRAVIS_NODE_VERSION="10"
     - COMPOSER_ROOT_VERSION="4.4.x-dev"
     - DISPLAY=":99"
     - XVFBARGS=":99 -ac -screen 0 1024x768x16"
