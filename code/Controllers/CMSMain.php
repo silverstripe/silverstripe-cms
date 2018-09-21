@@ -491,13 +491,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     public function SiteTreeAsUL()
     {
-        // Pre-cache sitetree version numbers for querying efficiency
-        Versioned::prepopulate_versionnumber_cache(SiteTree::class, Versioned::DRAFT);
-        Versioned::prepopulate_versionnumber_cache(SiteTree::class, Versioned::LIVE);
-
-        if (method_exists(Hierarchy::class, 'prepopulate_numchildren_cache')) {
-            Hierarchy::prepopulate_numchildren_cache(SiteTree::class, Versioned::DRAFT);
-        }
+        $filter = $this->getSearchFilter();
+        SiteTree::singleton()->prepopulateTreeDataCache(null, [
+            'childrenMethod' => $filter ? $filter->getChildrenMethod() : 'AllChildrenIncludingDeleted',
+            'numChildrenMethod' => $filter ? $filter->getNumChildrenMethod() : 'numChildren',
+        ]);
 
         $html = $this->getSiteTreeFor($this->config()->get('tree_class'));
 
