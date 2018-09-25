@@ -491,13 +491,15 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     public function SiteTreeAsUL()
     {
+        $treeClass = $this->config()->get('tree_class');
         $filter = $this->getSearchFilter();
-        SiteTree::singleton()->prepopulateTreeDataCache(null, [
+
+        DataObject::singleton($treeClass)->prepopulateTreeDataCache(null, [
             'childrenMethod' => $filter ? $filter->getChildrenMethod() : 'AllChildrenIncludingDeleted',
             'numChildrenMethod' => $filter ? $filter->getNumChildrenMethod() : 'numChildren',
         ]);
 
-        $html = $this->getSiteTreeFor($this->config()->get('tree_class'));
+        $html = $this->getSiteTreeFor($treeClass);
 
         $this->extend('updateSiteTreeAsUL', $html);
 
