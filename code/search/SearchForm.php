@@ -180,14 +180,14 @@ class SearchForm extends Form {
         }
         // Add * to each keyword
         $splitWords = preg_split("/ +/", trim($keywords));
-        $newWords = [];
+        $newWords = array();
         for ($i = 0; $i < count($splitWords); $i++) {
             $word = $splitWords[$i];
-            if ($word[0] == '"') {
+            if ($word[0] === '"') {
                 while (++$i < count($splitWords)) {
                     $subword = $splitWords[$i];
                     $word .= ' ' . $subword;
-                    if (substr($subword, -1) == '"') {
+                    if (substr($subword, -1) === '"') {
                         break;
                     }
                 }
