@@ -131,12 +131,12 @@ class SearchForm extends Form {
 
 		$keywords = $data['Search'];
 
-	 	$andProcessor = create_function('$matches','
-	 		return " +" . $matches[2] . " +" . $matches[4] . " ";
-	 	');
-	 	$notProcessor = create_function('$matches', '
-	 		return " -" . $matches[3];
-	 	');
+	 	$andProcessor = function ($matches) {
+            return ' +' . $matches[2] . ' +' . $matches[4] . ' ';
+        };
+        $notProcessor = function ($matches) {
+            return ' -' . $matches[3];
+        };
 
 	 	$keywords = preg_replace_callback('/()("[^()"]+")( and )("[^"()]+")()/i', $andProcessor, $keywords);
 	 	$keywords = preg_replace_callback('/(^| )([^() ]+)( and )([^ ()]+)( |$)/i', $andProcessor, $keywords);
@@ -173,23 +173,31 @@ class SearchForm extends Form {
 		return $results;
 	}
 
-	protected function addStarsToKeywords($keywords) {
-		if(!trim($keywords)) return "";
-		// Add * to each keyword
-		$splitWords = preg_split("/ +/" , trim($keywords));
-		while(list($i,$word) = each($splitWords)) {
-			if($word[0] == '"') {
-				while(list($i,$subword) = each($splitWords)) {
-					$word .= ' ' . $subword;
-					if(substr($subword,-1) == '"') break;
-				}
-			} else {
-				$word .= '*';
-			}
-			$newWords[] = $word;
-		}
-		return implode(" ", $newWords);
-	}
+	protected function addStarsToKeywords($keywords)
+    {
+        if (!trim($keywords)) {
+            return "";
+        }
+        // Add * to each keyword
+        $splitWords = preg_split("/ +/", trim($keywords));
+        $newWords = array();
+        for ($i = 0; $i < count($splitWords); $i++) {
+            $word = $splitWords[$i];
+            if ($word[0] === '"') {
+                while (++$i < count($splitWords)) {
+                    $subword = $splitWords[$i];
+                    $word .= ' ' . $subword;
+                    if (substr($subword, -1) === '"') {
+                        break;
+                    }
+                }
+            } else {
+                $word .= '*';
+            }
+            $newWords[] = $word;
+        }
+        return implode(" ", $newWords);
+    }
 	
 	/**
 	 * Get the search query for display in a "You searched for ..." sentence.
