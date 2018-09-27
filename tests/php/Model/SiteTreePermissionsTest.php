@@ -10,6 +10,7 @@ use SilverStripe\Security\Group;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\Subsites\Extensions\SiteTreeSubsites;
 use SilverStripe\Versioned\Versioned;
 
 /**
@@ -20,11 +21,11 @@ class SiteTreePermissionsTest extends FunctionalTest
 {
     protected static $fixture_file = "SiteTreePermissionsTest.yml";
 
-    protected static $illegal_extensions = array(
-        SiteTree::class => array('SiteTreeSubsites')
-    );
+    protected static $illegal_extensions = [
+        SiteTree::class => [SiteTreeSubsites::class],
+    ];
 
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
 
