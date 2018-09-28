@@ -112,6 +112,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
 
     /**
+     * Should the archive warning message be dynamic based on the specific content? This is slow on larger sites and can be disabled.
+     *
+     * @config
+     * @var bool
+     */
+    private static $enable_dynamic_archive_warning_message = true;
+
+    /**
      * Amount of results showing on a single page.
      *
      * @config
@@ -1409,6 +1417,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     protected function getArchiveWarningMessage($record)
     {
+
+        $defaultMessage = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarningWithChildren', 'Warning: This page and all of its child pages will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?');
+
+        // Option to disable this feature as it is slow on large sites
+        if (!$this->config()->enable_dynamic_archive_warning_message) {
+            return $defaultMessage;
+        }
+
         // Get all page's descendants
         $record->collateDescendants(true, $descendants);
         if (!$descendants) {
@@ -1434,7 +1450,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if (count($descendants) > 0 && $inChangeSets->count() > 0) {
             $archiveWarningMsg = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarningWithChildrenAndCampaigns', 'Warning: This page and all of its child pages will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?', [ 'NumCampaigns' => $numCampaigns ]);
         } elseif (count($descendants) > 0) {
-            $archiveWarningMsg = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarningWithChildren', 'Warning: This page and all of its child pages will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?');
+            $archiveWarningMsg = $defaultMessage;
         } elseif ($inChangeSets->count() > 0) {
             $archiveWarningMsg = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarningWithCampaigns', 'Warning: This page will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?', [ 'NumCampaigns' => $numCampaigns ]);
         } else {
