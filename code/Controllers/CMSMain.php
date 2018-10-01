@@ -903,13 +903,20 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $params = $this->getRequest()->requestVar('q') ?: [];
         $context->setSearchParams($params);
 
-        $placeholder = _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERLABELTEXT', 'Search') . ' "' . SiteTree::singleton()->i18n_plural_name() . '"';
+        $placeholder = _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERLABELTEXT', 'Search') . ' "' .
+            SiteTree::singleton()->i18n_plural_name() . '"';
+
+        $searchParams = $context->getSearchParams();
+
+        $searchParams = array_combine(array_map(function($key) {
+            return 'Search__' . $key;
+        }, array_keys($searchParams)), $searchParams);
 
         $schema = [
             'formSchemaUrl' => $schemaUrl,
             'name' => 'Term',
             'placeholder' => $placeholder,
-            'filters' => $context->getSearchParams() ?: new \stdClass // stdClass maps to empty json object '{}'
+            'filters' => $searchParams ?: new \stdClass // stdClass maps to empty json object '{}'
         ];
 
         return Convert::raw2json($schema);
@@ -926,24 +933,24 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     {
         // Create the fields
         $dateFrom = DateField::create(
-            'LastEditedFrom',
+            'Search__LastEditedFrom',
             _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERDATEFROM', 'From')
         )->setLocale(Security::getCurrentUser()->Locale);
         $dateTo = DateField::create(
-            'LastEditedTo',
+            'Search__LastEditedTo',
             _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERDATETO', 'To')
         )->setLocale(Security::getCurrentUser()->Locale);
         $filters = CMSSiteTreeFilter::get_all_filters();
         // Remove 'All pages' as we set that to empty/default value
         unset($filters[CMSSiteTreeFilter_Search::class]);
         $pageFilter = DropdownField::create(
-            'FilterClass',
+            'Search__FilterClass',
             _t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGES', 'Page status'),
             $filters
         );
         $pageFilter->setEmptyString(_t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGESALLOPT', 'All pages'));
         $pageClasses = DropdownField::create(
-            'ClassName',
+            'Search__ClassName',
             _t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGETYPEOPT', 'Page type', 'Dropdown for limiting search to a page type'),
             $this->getPageTypes()
         );
@@ -953,7 +960,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $dateGroup = FieldGroup::create(
             _t('SilverStripe\\CMS\\Search\\SearchForm.PAGEFILTERDATEHEADING', 'Last edited'),
             [$dateFrom, $dateTo]
-        )->setName('LastEdited')
+        )->setName('Search__LastEdited')
         ->addExtraClass('fieldgroup--fill-width');
 
         // Create the Field list
