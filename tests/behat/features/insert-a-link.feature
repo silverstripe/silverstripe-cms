@@ -1,4 +1,4 @@
-@assets 
+@assets
 Feature: Insert links into a page
 As a cms author
 I want to insert a link into my content
@@ -21,7 +21,7 @@ So that I can link to a external website or a page on my site
     And I fill in "my desc" for "Link description"
     And I press the "Insert" button
     # TODO Dynamic DB identifiers
-    Then the "Content" HTML field should contain "<a title="my desc" href="[sitetree_link,id=1]">awesome</a>"
+    Then the "Content" HTML field should contain /<a title="my desc" href="\[sitetree_link,id=[0-9]+\]">awesome</a>/
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save draft" button
 
@@ -33,7 +33,7 @@ So that I can link to a external website or a page on my site
     And I wait for 1 second
     And I select "youranchor" from "Form_EditorToolbarLinkForm_AnchorSelector"
     And I press the "Insert link" button
-    Then the "Content" HTML field should contain "<a href="[sitetree_link,id=3]#youranchor">awesome</a>"
+    Then the "Content" HTML field should contain /<a href="\[sitetree_link,id=[0-9]+\]#youranchor">awesome</a>/
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save draft" button
 
@@ -54,7 +54,7 @@ So that I can link to a external website or a page on my site
     When I select the "Download a file" radio button
     And I attach the file "testfile.jpg" to "file[Uploads][]" with HTML5
     And I press the "Insert link" button
-    Then the "Content" HTML field should contain "<a href="[file_link,id=3]">awesome</a>"
+    Then the "Content" HTML field should contain /<a href="\[file_link,id=[0-9]+\]">awesome</a>/
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save draft" button
     # Check that the field is reset when adding another new link
