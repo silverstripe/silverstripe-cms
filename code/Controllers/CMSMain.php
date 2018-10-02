@@ -908,7 +908,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         $searchParams = $context->getSearchParams();
 
-        $searchParams = array_combine(array_map(function($key) {
+        $searchParams = array_combine(array_map(function ($key) {
             return 'Search__' . $key;
         }, array_keys($searchParams)), $searchParams);
 
