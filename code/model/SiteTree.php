@@ -519,7 +519,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			if((!$parent || !$parent->exists()) && $this->IsDeletedFromStage) {
 				$parent = Versioned::get_latest_version('SiteTree', $this->ParentID);
 			}
-			$base = $parent->RelativeLink($this->URLSegment);
+			$base = $parent ? $parent->RelativeLink($this->URLSegment) : null;
 		} elseif(!$action && $this->URLSegment == RootURLController::get_homepage_link()) {
 			// Unset base for root-level homepages.
 			// Note: Homepages with action parameters (or $action === true)
