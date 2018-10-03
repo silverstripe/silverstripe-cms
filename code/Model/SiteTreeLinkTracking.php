@@ -4,6 +4,7 @@ namespace SilverStripe\CMS\Model;
 
 use DOMElement;
 use SilverStripe\Assets\Shortcodes\FileLinkTracking;
+use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBHTMLText;
@@ -70,6 +71,11 @@ class SiteTreeLinkTracking extends DataExtension
     {
         $this->parser = $parser;
         return $this;
+    }
+
+    public function updateCMSFields(FieldList $fields)
+    {
+        $fields->removeByName('LinkTracking');
     }
 
     public function onBeforeWrite()
