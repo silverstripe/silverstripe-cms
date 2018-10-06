@@ -47,7 +47,7 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem
 
     public function getLink()
     {
-        return Controller::join_links($this->record->PreviewLink(), '?stage=Live');
+        return Controller::join_links($this->getLivePage()->PreviewLink(), '?stage=Live');
     }
 
     public function canView($member = null)
