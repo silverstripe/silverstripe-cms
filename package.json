@@ -34,7 +34,7 @@
   "dependencies": {
     "babel-loader": "^7.0.0",
     "babel-polyfill": "^6.26.0",
-    "bootstrap": "4.0.0",
+    "bootstrap": "4.1.2",
     "classnames": "^2.2.5",
     "deep-freeze-strict": "^1.1.1",
     "graphql-tag": "^0.1.17",
