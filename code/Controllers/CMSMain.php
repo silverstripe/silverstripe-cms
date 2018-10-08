@@ -2215,7 +2215,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if (($id = $this->urlParams['ID']) && is_numeric($id)) {
             /** @var SiteTree $page */
             $page = SiteTree::get()->byID($id);
-            if ($page && (!$page->canEdit() || !$page->canCreate(null, array('Parent' => $page->Parent())))) {
+            if ($page && !$page->canCreate(null, ['Parent' => $page->Parent()])) {
                 return Security::permissionFailure($this);
             }
             if (!$page || !$page->ID) {
@@ -2244,9 +2244,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             $this->getResponse()->addHeader('X-Pjax', 'Content');
 
             return $this->getResponseNegotiator()->respond($this->getRequest());
-        } else {
-            return new HTTPResponse("CMSMain::duplicate() Bad ID: '$id'", 400);
         }
+        return new HTTPResponse("CMSMain::duplicate() Bad ID: '$id'", 400);
     }
 
     public function duplicatewithchildren($request)
@@ -2259,7 +2258,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if (($id = $this->urlParams['ID']) && is_numeric($id)) {
             /** @var SiteTree $page */
             $page = SiteTree::get()->byID($id);
-            if ($page && (!$page->canEdit() || !$page->canCreate(null, array('Parent' => $page->Parent())))) {
+            if ($page && !$page->canCreate(null, ['Parent' => $page->Parent()])) {
                 return Security::permissionFailure($this);
             }
             if (!$page || !$page->ID) {
@@ -2282,9 +2281,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             $this->getResponse()->addHeader('X-Pjax', 'Content');
 
             return $this->getResponseNegotiator()->respond($this->getRequest());
-        } else {
-            return new HTTPResponse("CMSMain::duplicatewithchildren() Bad ID: '$id'", 400);
         }
+        return new HTTPResponse("CMSMain::duplicatewithchildren() Bad ID: '$id'", 400);
     }
 
     public function providePermissions()
