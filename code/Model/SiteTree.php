@@ -32,6 +32,8 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldDataColumns;
+use SilverStripe\Forms\GridField\GridFieldLazyLoader;
+use SilverStripe\Forms\GridField\GridFieldSortableHeader;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\OptionsetField;
@@ -1895,7 +1897,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 $dependentPages
             );
             /** @var GridFieldDataColumns $dataColumns */
-            $dataColumns = $dependentTable->getConfig()->getComponentByType('SilverStripe\\Forms\\GridField\\GridFieldDataColumns');
+            $dataColumns = $dependentTable->getConfig()->getComponentByType(GridFieldDataColumns::class);
             $dataColumns
                 ->setDisplayFields($dependentColumns)
                 ->setFieldFormatting(array(
@@ -1914,6 +1916,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                         );
                     }
                 ));
+            $dependentTable->getConfig()->addComponent(new GridFieldLazyLoader());
         }
 
         $baseLink = Controller::join_links(
