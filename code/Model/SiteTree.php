@@ -1883,7 +1883,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         if ($dependentPagesCount) {
             $dependentColumns = array(
                 'Title' => $this->fieldLabel('Title'),
-                'AbsoluteLink' => _t(__CLASS__.'.DependtPageColumnURL', 'URL'),
                 'DependentLinkType' => _t(__CLASS__.'.DependtPageColumnLinkType', 'Link type'),
             );
             if (class_exists('Subsite')) {
@@ -1906,13 +1905,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                             '<a href="admin/pages/edit/show/%d">%s</a>',
                             (int)$item->ID,
                             Convert::raw2xml($item->Title)
-                        );
-                    },
-                    'AbsoluteLink' => function ($value, &$item) {
-                        return sprintf(
-                            '<a href="%s" target="_blank">%s</a>',
-                            Convert::raw2xml($value),
-                            Convert::raw2xml($value)
                         );
                     }
                 ));
