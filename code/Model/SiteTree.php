@@ -32,6 +32,8 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldDataColumns;
+use SilverStripe\Forms\GridField\GridFieldLazyLoader;
+use SilverStripe\Forms\GridField\GridFieldSortableHeader;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\OptionsetField;
@@ -1881,7 +1883,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         if ($dependentPagesCount) {
             $dependentColumns = array(
                 'Title' => $this->fieldLabel('Title'),
-                'AbsoluteLink' => _t(__CLASS__.'.DependtPageColumnURL', 'URL'),
                 'DependentLinkType' => _t(__CLASS__.'.DependtPageColumnLinkType', 'Link type'),
             );
             if (class_exists('Subsite')) {
@@ -1895,7 +1896,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 $dependentPages
             );
             /** @var GridFieldDataColumns $dataColumns */
-            $dataColumns = $dependentTable->getConfig()->getComponentByType('SilverStripe\\Forms\\GridField\\GridFieldDataColumns');
+            $dataColumns = $dependentTable->getConfig()->getComponentByType(GridFieldDataColumns::class);
             $dataColumns
                 ->setDisplayFields($dependentColumns)
                 ->setFieldFormatting(array(
@@ -1905,15 +1906,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                             (int)$item->ID,
                             Convert::raw2xml($item->Title)
                         );
-                    },
-                    'AbsoluteLink' => function ($value, &$item) {
-                        return sprintf(
-                            '<a href="%s" target="_blank">%s</a>',
-                            Convert::raw2xml($value),
-                            Convert::raw2xml($value)
-                        );
                     }
                 ));
+            $dependentTable->getConfig()->addComponent(new GridFieldLazyLoader());
         }
 
         $baseLink = Controller::join_links(

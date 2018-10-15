@@ -54,6 +54,7 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\HiddenClass;
+use SilverStripe\ORM\Hierarchy\Hierarchy;
 use SilverStripe\ORM\Hierarchy\MarkedSet;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\ValidationResult;
@@ -109,6 +110,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     private static $session_namespace = self::class;
 
     private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
+
+    /**
+     * Should the archive warning message be dynamic based on the specific content? This is slow on larger sites and can be disabled.
+     *
+     * @config
+     * @var bool
+     */
+    private static $enable_dynamic_archive_warning_message = true;
 
     /**
      * Amount of results showing on a single page.
@@ -490,10 +499,15 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     public function SiteTreeAsUL()
     {
-        // Pre-cache sitetree version numbers for querying efficiency
-        Versioned::prepopulate_versionnumber_cache(SiteTree::class, Versioned::DRAFT);
-        Versioned::prepopulate_versionnumber_cache(SiteTree::class, Versioned::LIVE);
-        $html = $this->getSiteTreeFor($this->config()->get('tree_class'));
+        $treeClass = $this->config()->get('tree_class');
+        $filter = $this->getSearchFilter();
+
+        DataObject::singleton($treeClass)->prepopulateTreeDataCache(null, [
+            'childrenMethod' => $filter ? $filter->getChildrenMethod() : 'AllChildrenIncludingDeleted',
+            'numChildrenMethod' => $filter ? $filter->getNumChildrenMethod() : 'numChildren',
+        ]);
+
+        $html = $this->getSiteTreeFor($treeClass);
 
         $this->extend('updateSiteTreeAsUL', $html);
 
@@ -897,13 +911,20 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $params = $this->getRequest()->requestVar('q') ?: [];
         $context->setSearchParams($params);
 
-        $placeholder = _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERLABELTEXT', 'Search') . ' "' . SiteTree::singleton()->i18n_plural_name() . '"';
+        $placeholder = _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERLABELTEXT', 'Search') . ' "' .
+            SiteTree::singleton()->i18n_plural_name() . '"';
+
+        $searchParams = $context->getSearchParams();
+
+        $searchParams = array_combine(array_map(function ($key) {
+            return 'Search__' . $key;
+        }, array_keys($searchParams)), $searchParams);
 
         $schema = [
             'formSchemaUrl' => $schemaUrl,
             'name' => 'Term',
             'placeholder' => $placeholder,
-            'filters' => $context->getSearchParams() ?: new \stdClass // stdClass maps to empty json object '{}'
+            'filters' => $searchParams ?: new \stdClass // stdClass maps to empty json object '{}'
         ];
 
         return Convert::raw2json($schema);
@@ -920,24 +941,24 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     {
         // Create the fields
         $dateFrom = DateField::create(
-            'LastEditedFrom',
+            'Search__LastEditedFrom',
             _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERDATEFROM', 'From')
         )->setLocale(Security::getCurrentUser()->Locale);
         $dateTo = DateField::create(
-            'LastEditedTo',
+            'Search__LastEditedTo',
             _t('SilverStripe\\CMS\\Search\\SearchForm.FILTERDATETO', 'To')
         )->setLocale(Security::getCurrentUser()->Locale);
         $filters = CMSSiteTreeFilter::get_all_filters();
         // Remove 'All pages' as we set that to empty/default value
         unset($filters[CMSSiteTreeFilter_Search::class]);
         $pageFilter = DropdownField::create(
-            'FilterClass',
+            'Search__FilterClass',
             _t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGES', 'Page status'),
             $filters
         );
         $pageFilter->setEmptyString(_t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGESALLOPT', 'All pages'));
         $pageClasses = DropdownField::create(
-            'ClassName',
+            'Search__ClassName',
             _t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGETYPEOPT', 'Page type', 'Dropdown for limiting search to a page type'),
             $this->getPageTypes()
         );
@@ -947,7 +968,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $dateGroup = FieldGroup::create(
             _t('SilverStripe\\CMS\\Search\\SearchForm.PAGEFILTERDATEHEADING', 'Last edited'),
             [$dateFrom, $dateTo]
-        )->setName('LastEdited')
+        )->setName('Search__LastEdited')
         ->addExtraClass('fieldgroup--fill-width');
 
         // Create the Field list
@@ -1401,35 +1422,54 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * @param SiteTree $record
      * @return string
      */
+    /**
+     * Build an archive warning message based on the page's children
+     *
+     * @param SiteTree $record
+     * @return string
+     */
     protected function getArchiveWarningMessage($record)
     {
+
+        $defaultMessage = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarningWithChildren', 'Warning: This page and all of its child pages will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?');
+
+        // Option to disable this feature as it is slow on large sites
+        if (!$this->config()->enable_dynamic_archive_warning_message) {
+            return $defaultMessage;
+        }
+
         // Get all page's descendants
-        $record->collateDescendants(true, $descendants);
+        $descendants = [];
+        $this->collateDescendants([$record->ID], $descendants);
         if (!$descendants) {
             $descendants = [];
         }
 
-        // Get all campaigns that the page and its descendants belong to
-        $inChangeSetIDs = ChangeSetItem::get_for_object($record)->column('ChangeSetID');
+        // Get the IDs of all changeset including at least one of the pages.
+        $descendants[] = $record->ID;
+        $inChangeSetIDs = ChangeSetItem::get()->filter([
+            'ObjectID' => $descendants,
+            'ObjectClass' => SiteTree::class
+        ])->column('ChangeSetID');
 
-        foreach ($descendants as $page) {
-            $inChangeSetIDs = array_merge($inChangeSetIDs, ChangeSetItem::get_for_object($page)->column('ChangeSetID'));
-        }
-
+        // Count number of affected change set
+        $affectedChangeSetCount = 0;
         if (count($inChangeSetIDs) > 0) {
-            $inChangeSets = ChangeSet::get()->filter(['ID' => $inChangeSetIDs, 'State' => ChangeSet::STATE_OPEN]);
-        } else {
-            $inChangeSets = new ArrayList();
+            $affectedChangeSetCount = ChangeSet::get()
+                ->filter(['ID' => $inChangeSetIDs, 'State' => ChangeSet::STATE_OPEN])
+                ->count();
         }
 
-        $numCampaigns = ChangeSet::singleton()->i18n_pluralise($inChangeSets->count());
+        $numCampaigns = ChangeSet::singleton()->i18n_pluralise($affectedChangeSetCount);
         $numCampaigns = mb_strtolower($numCampaigns);
 
-        if (count($descendants) > 0 && $inChangeSets->count() > 0) {
+        if (count($descendants) > 0 && $affectedChangeSetCount > 0) {
             $archiveWarningMsg = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarningWithChildrenAndCampaigns', 'Warning: This page and all of its child pages will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?', [ 'NumCampaigns' => $numCampaigns ]);
         } elseif (count($descendants) > 0) {
-            $archiveWarningMsg = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarningWithChildren', 'Warning: This page and all of its child pages will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?');
+            $archiveWarningMsg = $defaultMessage;
         } elseif ($inChangeSets->count() > 0) {
+            $archiveWarningMsg = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarningWithChildren', 'Warning: This page and all of its child pages will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?');
+        } elseif ($affectedChangeSetCount > 0) {
             $archiveWarningMsg = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarningWithCampaigns', 'Warning: This page will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?', [ 'NumCampaigns' => $numCampaigns ]);
         } else {
             $archiveWarningMsg = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarning', 'Warning: This page will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?');
@@ -1437,6 +1477,27 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         return $archiveWarningMsg;
     }
+
+    /**
+     * Find IDs of all descendant pages for the provided ID lists.
+     * @param int[] $recordIDs
+     * @param array $collator
+     * @return bool
+     */
+    protected function collateDescendants($recordIDs, &$collator)
+    {
+
+        $children = SiteTree::get()->filter(['ParentID' => $recordIDs])->column();
+        if ($children) {
+            foreach ($children as $item) {
+                $collator[] = $item;
+            }
+            $this->collateDescendants($children, $collator);
+            return true;
+        }
+        return false;
+    }
+
 
     /**
      * This method exclusively handles deferred ajax requests to render the
@@ -2186,7 +2247,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if (($id = $this->urlParams['ID']) && is_numeric($id)) {
             /** @var SiteTree $page */
             $page = SiteTree::get()->byID($id);
-            if ($page && (!$page->canEdit() || !$page->canCreate(null, array('Parent' => $page->Parent())))) {
+            if ($page && !$page->canCreate(null, ['Parent' => $page->Parent()])) {
                 return Security::permissionFailure($this);
             }
             if (!$page || !$page->ID) {
@@ -2215,9 +2276,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             $this->getResponse()->addHeader('X-Pjax', 'Content');
 
             return $this->getResponseNegotiator()->respond($this->getRequest());
-        } else {
-            return new HTTPResponse("CMSMain::duplicate() Bad ID: '$id'", 400);
         }
+        return new HTTPResponse("CMSMain::duplicate() Bad ID: '$id'", 400);
     }
 
     public function duplicatewithchildren($request)
@@ -2230,7 +2290,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if (($id = $this->urlParams['ID']) && is_numeric($id)) {
             /** @var SiteTree $page */
             $page = SiteTree::get()->byID($id);
-            if ($page && (!$page->canEdit() || !$page->canCreate(null, array('Parent' => $page->Parent())))) {
+            if ($page && !$page->canCreate(null, ['Parent' => $page->Parent()])) {
                 return Security::permissionFailure($this);
             }
             if (!$page || !$page->ID) {
@@ -2253,9 +2313,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             $this->getResponse()->addHeader('X-Pjax', 'Content');
 
             return $this->getResponseNegotiator()->respond($this->getRequest());
-        } else {
-            return new HTTPResponse("CMSMain::duplicatewithchildren() Bad ID: '$id'", 400);
         }
+        return new HTTPResponse("CMSMain::duplicatewithchildren() Bad ID: '$id'", 400);
     }
 
     public function providePermissions()

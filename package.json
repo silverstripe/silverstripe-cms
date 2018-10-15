@@ -34,12 +34,13 @@
   "dependencies": {
     "babel-loader": "^7.0.0",
     "babel-polyfill": "^6.26.0",
-    "bootstrap": "4.0.0",
+    "bootstrap": "4.1.2",
     "classnames": "^2.2.5",
     "deep-freeze-strict": "^1.1.1",
     "graphql-tag": "^0.1.17",
     "isomorphic-fetch": "https://registry.npmjs.org/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz",
     "jquery": "^3.2.1",
+    "prop-types": "^15.6.2",
     "react": "15.3.1",
     "react-addons-test-utils": "15.3.1",
     "react-apollo": "^0.7.0",
@@ -52,7 +53,7 @@
   },
   "devDependencies": {
     "@silverstripe/eslint-config": "0.0.5",
-    "@silverstripe/webpack-config": "0.11.0",
+    "@silverstripe/webpack-config": "^0.12.0",
     "babel-jest": "^20.0.3",
     "jest-cli": "^19.0.2"
   },

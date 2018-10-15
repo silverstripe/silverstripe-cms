@@ -15,7 +15,7 @@ So that I can link to a external website or a page on my site
 
   Scenario: I can link to an internal page
     When I select "awesome" in the "Content" HTML field
-      And I press the "Insert Link" HTML field button
+      And I press the "Insert link" HTML field button
       And I click "Page on this site" in the ".mce-menu" element
     Then I should see an "form#Form_editorInternalLink" element
     When I click "(Choose Page)" in the ".Select-multi-value-wrapper" element
@@ -28,7 +28,7 @@ So that I can link to a external website or a page on my site
 
   Scenario: I can link to an anchor in an internal page
     When I select "awesome" in the "Content" HTML field
-      And I press the "Insert Link" HTML field button
+      And I press the "Insert link" HTML field button
       And I click "Anchor on a page" in the ".mce-menu" element
     Then I should see an "form#Form_editorAnchorLink" element
       And I should see "About Us" in the "#Form_editorAnchorLink_PageID_Holder .Select-multi-value-wrapper" element
@@ -46,7 +46,7 @@ So that I can link to a external website or a page on my site
   Scenario: I can edit a link to an internal page
     Given I fill in the "Content" HTML field with "<a title='my desc' href='[sitetree_link,id=2]'>awesome</a>"
       And I select "awesome" in the "Content" HTML field
-      And I press the "Insert Link" HTML field button
+      And I press the "Insert link" HTML field button
       And I click "Page on this site" in the ".mce-menu" element
       And I should see an "form#Form_editorInternalLink" element
     Then I should see "About Us" in the ".Select-value" element
@@ -62,7 +62,7 @@ So that I can link to a external website or a page on my site
 
   Scenario: I can link to an external URL
     Given I select "awesome" in the "Content" HTML field
-      And I press the "Insert Link" HTML field button
+      And I press the "Insert link" HTML field button
     When I click "Link to external URL" in the ".mce-menu" element
       And I should see an "form#Form_ModalsEditorExternalLink" element
     When I fill in "http://silverstripe.org" for "URL"
@@ -75,7 +75,7 @@ So that I can link to a external website or a page on my site
   Scenario: I can edit a link
     Given I fill in the "Content" HTML field with "<p>My <a href='http://silverstripe.org'>awesome</a> content"
       And I select "awesome" in the "Content" HTML field
-    When I press the "Insert Link" HTML field button
+    When I press the "Insert link" HTML field button
       And I click "Link to external URL" in the ".mce-menu" element
       And I should see an "form#Form_ModalsEditorExternalLink" element
     Then the "URL" field should contain "http://silverstripe.org"

@@ -664,8 +664,8 @@ class CMSMainTest extends FunctionalTest
                 'name' => 'Term',
                 'placeholder' => 'Search "Pages"',
                 'filters' => [
-                    'Term' => 'test',
-                    'FilterClass' => 'SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search'
+                    'Search__Term' => 'test',
+                    'Search__FilterClass' => 'SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search'
                 ]
             ]),
             $searchSchema

@@ -11,6 +11,7 @@ import fieldHolder from 'components/FieldHolder/FieldHolder';
 import { Creatable } from 'react-select';
 import getFormState from 'lib/getFormState';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 const noop = () => null;
 
@@ -130,21 +131,21 @@ class AnchorSelectorField extends SilverStripeComponent {
 }
 
 AnchorSelectorField.propTypes = {
-  extraClass: React.PropTypes.string,
-  id: React.PropTypes.string,
-  name: React.PropTypes.string.isRequired,
-  onChange: React.PropTypes.func,
-  value: React.PropTypes.string,
-  attributes: React.PropTypes.oneOfType([React.PropTypes.object, React.PropTypes.array]),
-  pageId: React.PropTypes.number,
-  anchors: React.PropTypes.array,
-  loadingState: React.PropTypes.oneOf(Object
+  extraClass: PropTypes.string,
+  id: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  value: PropTypes.string,
+  attributes: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  pageId: PropTypes.number,
+  anchors: PropTypes.array,
+  loadingState: PropTypes.oneOf(Object
       .keys(anchorSelectorStates)
       .map((key) => anchorSelectorStates[key])),
-  onLoadingError: React.PropTypes.func,
-  data: React.PropTypes.shape({
-    endpoint: React.PropTypes.string,
-    targetFieldName: React.PropTypes.string,
+  onLoadingError: PropTypes.func,
+  data: PropTypes.shape({
+    endpoint: PropTypes.string,
+    targetFieldName: PropTypes.string,
   }),
 };
 
