@@ -1353,35 +1353,44 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * @param SiteTree $record
      * @return string
      */
+    /**
+     * Build an archive warning message based on the page's children
+     *
+     * @param SiteTree $record
+     * @return string
+     */
     protected function getArchiveWarningMessage($record)
     {
         // Get all page's descendants
-        $record->collateDescendants(true, $descendants);
+        $descendants = [];
+        $this->collateDescendants([$record->ID], $descendants);
         if (!$descendants) {
             $descendants = [];
         }
 
-        // Get all campaigns that the page and its descendants belong to
-        $inChangeSetIDs = ChangeSetItem::get_for_object($record)->column('ChangeSetID');
+        // Get the IDs of all changeset including at least one of the pages.
+        $descendants[] = $record->ID;
+        $inChangeSetIDs = ChangeSetItem::get()->filter([
+            'ObjectID' => $descendants,
+            'ObjectClass' => SiteTree::class
+        ])->column('ChangeSetID');
 
-        foreach ($descendants as $page) {
-            $inChangeSetIDs = array_merge($inChangeSetIDs, ChangeSetItem::get_for_object($page)->column('ChangeSetID'));
-        }
-
+        // Count number of affected change set
+        $affectedChangeSetCount = 0;
         if (count($inChangeSetIDs) > 0) {
-            $inChangeSets = ChangeSet::get()->filter(['ID' => $inChangeSetIDs, 'State' => ChangeSet::STATE_OPEN]);
-        } else {
-            $inChangeSets = new ArrayList();
+            $affectedChangeSetCount = ChangeSet::get()
+                ->filter(['ID' => $inChangeSetIDs, 'State' => ChangeSet::STATE_OPEN])
+                ->count();
         }
 
-        $numCampaigns = ChangeSet::singleton()->i18n_pluralise($inChangeSets->count());
+        $numCampaigns = ChangeSet::singleton()->i18n_pluralise($affectedChangeSetCount);
         $numCampaigns = mb_strtolower($numCampaigns);
 
-        if (count($descendants) > 0 && $inChangeSets->count() > 0) {
+        if (count($descendants) > 0 && $affectedChangeSetCount > 0) {
             $archiveWarningMsg = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarningWithChildrenAndCampaigns', 'Warning: This page and all of its child pages will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?', [ 'NumCampaigns' => $numCampaigns ]);
         } elseif (count($descendants) > 0) {
             $archiveWarningMsg = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarningWithChildren', 'Warning: This page and all of its child pages will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?');
-        } elseif ($inChangeSets->count() > 0) {
+        } elseif ($affectedChangeSetCount > 0) {
             $archiveWarningMsg = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarningWithCampaigns', 'Warning: This page will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?', [ 'NumCampaigns' => $numCampaigns ]);
         } else {
             $archiveWarningMsg = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarning', 'Warning: This page will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?');
@@ -1389,6 +1398,27 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         return $archiveWarningMsg;
     }
+
+    /**
+     * Find IDs of all descendant pages for the provided ID lists.
+     * @param int[] $recordIDs
+     * @param array $collator
+     * @return bool
+     */
+    protected function collateDescendants($recordIDs, &$collator)
+    {
+
+        $children = SiteTree::get()->filter(['ParentID' => $recordIDs])->column();
+        if ($children) {
+            foreach ($children as $item) {
+                $collator[] = $item;
+            }
+            $this->collateDescendants($children, $collator);
+            return true;
+        }
+        return false;
+    }
+
 
     /**
      * This method exclusively handles deferred ajax requests to render the
