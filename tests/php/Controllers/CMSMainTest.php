@@ -57,7 +57,7 @@ class CMSMainTest extends FunctionalTest
         $this->assertNotNull($rawHints);
 
         $rawHints = preg_replace('/^"(.*)"$/', '$1', Convert::xml2raw($rawHints));
-        $hints = Convert::json2array($rawHints);
+        $hints = json_decode($rawHints, true);
 
         $this->assertArrayHasKey('Root', $hints);
         $this->assertArrayHasKey('Page', $hints);
@@ -137,7 +137,7 @@ class CMSMainTest extends FunctionalTest
         $actions = CMSBatchActionHandler::config()->batch_actions;
         if (isset($actions['publish'])) {
             $response = $this->get('admin/pages/batchactions/publish?ajax=1&csvIDs=' . implode(',', array($page1->ID, $page2->ID)));
-            $responseData = Convert::json2array($response->getBody());
+            $responseData = json_decode($response->getBody(), true);
             $this->assertArrayHasKey($page1->ID, $responseData['modified']);
             $this->assertArrayHasKey($page2->ID, $responseData['modified']);
         }
