@@ -734,7 +734,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         return $this
             ->getResponse()
             ->addHeader('Content-Type', 'application/json')
-            ->setBody(Convert::raw2json($data));
+            ->setBody(json_encode($data));
     }
 
     /**
@@ -859,7 +859,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         return $this
             ->getResponse()
             ->addHeader('Content-Type', 'application/json')
-            ->setBody(Convert::raw2json($statusUpdates));
+            ->setBody(json_encode($statusUpdates));
     }
 
     public function CanOrganiseSitetree()
@@ -927,7 +927,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             'filters' => $searchParams ?: new \stdClass // stdClass maps to empty json object '{}'
         ];
 
-        return Convert::raw2json($schema);
+        return json_encode($schema);
     }
 
     /**
@@ -1161,7 +1161,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         $this->extend('updateSiteTreeHints', $def);
 
-        $json = Convert::raw2json($def);
+        $json = json_encode($def);
         $cache->set($cacheKey, $json);
 
         return $json;
@@ -1573,7 +1573,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         return $this
             ->getResponse()
             ->addHeader('Content-Type', 'application/json; charset=utf-8')
-            ->setBody(Convert::raw2json($disallowedChildren));
+            ->setBody(json_encode($disallowedChildren));
     }
 
     /**
