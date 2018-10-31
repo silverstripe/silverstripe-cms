@@ -43,7 +43,8 @@ $.entwine('ss.tree', function($){
         ParentID: id
       });
 
-			window.location = urlWithParams;
+      const baseUrl = $('base').attr('href') || '';  // Edge17 and IE11 require absolute paths
+      window.location.assign(baseUrl + urlWithParams);
 		},
 
 		getTreeConfig: function() {
