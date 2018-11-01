@@ -73,7 +73,9 @@ $.entwine('ss', function ($) {
 
       localStorage.setItem('ss.pages-view-type', viewType);
       if(isContentViewInSidebar && viewType === VIEW_TYPE_LIST) {
-        window.location = $contentView.data('url-listviewroot');
+        const baseUrl = $('base').attr('href') || '';  // Edge17 and IE11 need absolute path
+        window.location.assign(baseUrl + $contentView.data('url-listviewroot'));
+
         return;
       }
 
