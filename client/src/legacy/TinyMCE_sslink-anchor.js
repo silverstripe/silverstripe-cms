@@ -1,4 +1,4 @@
-/* global tinymce, ss */
+/* global tinymce, editorIdentifier, ss */
 import i18n from 'i18n';
 import TinyMCEActionRegistrar from 'lib/TinyMCEActionRegistrar';
 import React from 'react';
@@ -14,11 +14,15 @@ const commandName = 'sslinkanchor';
 
 // Link to external url
 TinyMCEActionRegistrar
-  .addAction('sslink', {
-    text: i18n._t('CMS.LINKLABEL_ANCHOR', 'Anchor on a page'),
-    onclick: (editor) => editor.execCommand(commandName),
-    priority: 52,
-  })
+  .addAction(
+    'sslink',
+    {
+      text: i18n._t('CMS.LINKLABEL_ANCHOR', 'Anchor on a page'),
+      onclick: (activeEditor) => activeEditor.execCommand(commandName),
+      priority: 52,
+    },
+    editorIdentifier,
+  )
   .addCommandWithUrlTest(commandName, /^\[sitetree_link.+]#[^#\]]+$/);
 
 const plugin = {
