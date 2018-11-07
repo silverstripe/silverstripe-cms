@@ -14,7 +14,6 @@ es_MX:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Acceso a la sección ''{title}'''
     ACCESS_HELP: 'Permitir acceso de lectura a la sección que contiene el árbol del sitio y el contenido. Los permisos de lectura y escritura se pueden manejar a través de desplegables específicos, así como los "Permisos de contenido" separados.'
-    APPLY_FILTER: Buscar
     ARCHIVE: Archivar
     ARCHIVEDPAGE: 'Se ha archivado la página ''{title}'''
     AddNew: 'Agregar página'
@@ -25,7 +24,6 @@ es_MX:
     ArchiveWarningWithChildren: 'Advertencia: esta página y todas sus sub páginas serán despublicadas antes de ser enviadas a archivo.\n\nEstás seguro que deseas proceder?'
     ArchiveWarningWithChildrenAndCampaigns: 'Advertencia: esta página y todas sus sub páginas serán despublicadas y eliminadas automáticamente de {NumCampaigns} campañas asociadas antes de ser enviadas a archivo.\n\nEstás seguro que deseas proceder?'
     CANT_REORGANISE: 'No tienes permiso para modificar páginas de primer nivel. Tus cambios no se han guardado.'
-    CLEAR_FILTER: Limpiar
     Cancel: Cancelar
     ChoosePageParentMode: 'Elige donde crear esta página'
     ChoosePageType: 'Elige el tipo de página'
@@ -33,7 +31,6 @@ es_MX:
     DUPLICATED: '''{title}'' se ha duplicado con éxito'
     DUPLICATEDWITHCHILDREN: '''{title}'' y sub páginas se han duplicado con éxito'
     EMAIL: Email
-    ListFiltered: 'Mostrando resultados de búsqueda'
     NEWPAGE: 'Nueva {pagetype}'
     PAGENOTEXISTS: 'Esta página no existe'
     PAGES: 'Estado de página'
@@ -188,7 +185,6 @@ es_MX:
     DEPENDENT_NOTE: 'Las siguientes páginas depender de esta página. Esto incluye páginas virtuales, redirección de páginas y páginas con enlaces de contenido.'
     DESCRIPTION: 'Página de contenido genérico'
     DependtPageColumnLinkType: 'Tipo de enlace'
-    DependtPageColumnURL: URL
     EDITHEADER: '¿Quién puede modificar esta página?'
     EDITORGROUPS: 'Editor de grupos'
     EDIT_ALL_DESCRIPTION: 'Editar cualquier página'

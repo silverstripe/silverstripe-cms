@@ -37,7 +37,6 @@ zh_TW:
     DEFAULTHOMETITLE: 首頁
     DEPENDENT_NOTE: '以下的網頁是依附在本網頁的. 這包含了虛擬網頁, 重新導向網頁, 以及有內容鏈結的網頁.'
     DependtPageColumnLinkType: 鏈結類型
-    DependtPageColumnURL: 網址
     EDITHEADER: 誰可以編輯這頁？
     EDITORGROUPS: 編輯者群組
     EDIT_ALL_DESCRIPTION: 編輯任何網頁

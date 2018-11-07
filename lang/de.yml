@@ -14,7 +14,6 @@ de:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Zugang zum Bereich ''{title}'''
     ACCESS_HELP: 'Seiteninhalt im CMS anzeigen. Anzeige- und Bearbeitungsberechtigungen können sowohl seitenspezifische als auch über die globalen Inhaltsberechtigungen gesetzt werden.'
-    APPLY_FILTER: Suche
     ARCHIVE: Archiv
     ARCHIVEDPAGE: 'Seite ''{title}'' archiviert'
     AddNew: 'Neue Seite hinzufügen'
@@ -27,7 +26,6 @@ de:
     DUPLICATED: '''{title}''  wurde erfolgreich dupliziert'
     DUPLICATEDWITHCHILDREN: '''{title}'' und alle Unterseiten wurden erfolgreich dupliziert'
     EMAIL: E-Mail
-    ListFiltered: Suchergebnisse
     NEWPAGE: 'Neue {pagetype}'
     PAGENOTEXISTS: 'Diese Seite existiert nicht'
     PAGES: Seitenstatus
@@ -55,6 +53,7 @@ de:
     TabHistory: Verlauf
     TabSettings: Einstellungen
     TreeFiltered: Suchergebnisse
+    TreeFilteredClear: Löschen
     UNPUBLISH_AND_ARCHIVE: 'Veröffentlichung zurücknehmen und archivieren'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Seite hinzufügen'
@@ -158,7 +157,6 @@ de:
     DEPENDENT_NOTE: 'Die folgenden Seiten hängen von dieser Seite ab. Dies schließt Virtuelle Seiten, Weiterleitungen und Seiten mit Links im Inhalt ein.'
     DESCRIPTION: 'Allgemeine Inhaltsseite'
     DependtPageColumnLinkType: Linktyp
-    DependtPageColumnURL: URL
     EDITHEADER: 'Wer kann diese Seite im CMS verändern?'
     EDITORGROUPS: Bearbeitergruppen
     EDIT_ALL_DESCRIPTION: 'Kann beliebige Seiten bearbeiten'

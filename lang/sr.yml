@@ -82,7 +82,6 @@ sr:
     DEFAULTHOMETITLE: 'Почетна страница'
     DEPENDENT_NOTE: 'Следеће странице зависе од ове странице. Ово подразумева витруелне странице, странице за преусмеравање и странице са линковима на садржај.'
     DependtPageColumnLinkType: 'Тип линка'
-    DependtPageColumnURL: URL
     EDITHEADER: 'Ко може да измени ову страницу?'
     EDITORGROUPS: 'Групе за измене'
     EDIT_ALL_DESCRIPTION: 'Измена било које странице'

@@ -14,7 +14,6 @@ fi:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Pääsy ''{title}'' -osioon'
     ACCESS_HELP: 'Oikeuttaa näkemään osion, joka sisältää sivurakenteen ja sisällön. Katselu- ja muokkausoikeuksia voidaan käsitellä sivukohtaisten pudotusvalikoiden kautta, kuten myös erillisestä "Sisällön oikeudet"-kohdasta.'
-    APPLY_FILTER: Haku
     ARCHIVE: Arkistoi
     ARCHIVEDPAGE: 'Arkistoitiin sivu ''{title}'''
     AddNew: 'Lisää uusi sivu'
@@ -25,7 +24,6 @@ fi:
     ArchiveWarningWithChildren: 'Varoitus: Tämä sivu ja kaikki sen alasivut poistetaan julkaisusta ennen arkistointia.\n\nHaluatko varmasti jatkaa?'
     ArchiveWarningWithChildrenAndCampaigns: 'Varoitus: Tämä sivu ja kaikki sen alasivut poistetaan julkaisusta sekä poistetaan liitetyt kampanjat {NumCampaigns} ennen arkistointia.\n\nHaluatko varmasti jatkaa?'
     CANT_REORGANISE: 'Sinulla ei ole oikeuksia mennä ylemmän tason sivuille. Muutoksiasi ei tallennettu.'
-    CLEAR_FILTER: Tyhjennä
     Cancel: Peruuta
     ChoosePageParentMode: 'Valitse kohde, minne sivu luodaan'
     ChoosePageType: 'Valitse sivutyyppi'
@@ -33,12 +31,12 @@ fi:
     DUPLICATED: '''{title}''  monistettu onnistuneesti'
     DUPLICATEDWITHCHILDREN: '''{title}'' ja alasivu monistettiin onnistuneesti'
     EMAIL: Sähköposti
-    ListFiltered: 'Näytetään hakutulokset.'
     NEWPAGE: 'Uusi {pagetype}'
     PAGENOTEXISTS: 'Tätä sivua ei ole olemassa'
     PAGES: 'Sivun tila'
     PAGETYPEANYOPT: 'Mikä tahansa'
     PAGETYPEOPT: 'Sivun tyyppi'
+    PAGETYPE_TITLE: '(Sivutyyppi: {type}) {title}'
     PLEASESAVE: 'Tallenna sivu: tätä sivua ei voida päivittää, koska sitä ei ole vielä tallennettu.'
     PUBALLCONFIRM: 'Julkaise jokainen sivu tällä sivustolla kopioiden luonnosten sisältö julkiselle sivustolle'
     PUBALLFUN: 'Julkaise kaikki -toiminto'
@@ -58,6 +56,7 @@ fi:
     ROLLEDBACKPUBv2: 'Palattiin takaisin julkaistuun versioon'
     ROLLEDBACKVERSIONv2: 'Palautettu versioon #{version}.'
     SAVED: 'Tallennettiin ''{title}'' onnistuneesti.'
+    SAVEDRAFT: Tallenna
     SHOW_AS_LIST: 'näytä listana'
     TOO_MANY_PAGES: 'Liian monta sivua'
     TabContent: Sisältö
@@ -101,6 +100,8 @@ fi:
     Title: 'Muokatut sivut'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
     Title: 'Kaikki sivut, myös arkistoidut'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
+    Title: 'Julkaistut sivut'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Kaikki sivut'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
@@ -177,6 +178,7 @@ fi:
     BUTTONDELETEDESC: 'Poista luonnoksista/julkaistuista ja siirrä arkistoon'
     BUTTONPUBLISHED: Julkaistu
     BUTTONSAVED: Tallennettu
+    BUTTONSAVEPUBLISH: Julkaise
     BUTTONUNPUBLISH: 'Poista julkaisusta'
     BUTTONUNPUBLISHDESC: 'Poista tämä sivu julkaistulta sivustolta'
     Comments: Kommentit
@@ -190,7 +192,6 @@ fi:
     DEPENDENT_NOTE: 'Seuraavat sivut riippuvat tästä sivusta. Tämä pitää sisällään virtuaaliset sivut, uudelleenohjaussivut ja sivut sisältölinkkien kanssa.'
     DESCRIPTION: 'Yleinen sisältösivu'
     DependtPageColumnLinkType: 'Linkin tyyppi'
-    DependtPageColumnURL: URL
     EDITHEADER: 'Kuka voi muokata tätä CMS:ssä?'
     EDITORGROUPS: 'Muokkaa ryhmiä'
     EDITOR_GROUPS_FIELD_DESC: 'Ryhmät, joilla laajat muokkausoikeudet: {groupList}'
@@ -210,6 +211,7 @@ fi:
     METADESC: Meta-kuvaus
     METADESCHELP: 'Hakukoneet näyttävät tämän sisällön hakutuloksissa (sisältö ei kuitenkaan vaikuta sijoitukseen hakutuloksessa).'
     METAEXTRA: 'Omat meta-tagit'
+    METAEXTRAHELP: 'HTML-tagit ylimääräiselle metatiedoille. Esimerkiksi <meta name="customName" content="your custom content here" />'
     MODIFIEDONDRAFTHELP: 'Sivulla on julkaisemattomia muutoksia'
     MODIFIEDONDRAFTSHORT: Muokattu
     MetadataToggle: Meta-tiedot
@@ -263,6 +265,14 @@ fi:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tyyppi
     TITLE_USED_ON: 'Käytössä:'
+  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
+    USAGE: Käyttö
+  SilverStripe\CMS\Model\SiteTreeLink:
+    PLURALNAME: 'Hakemistopuun linkit'
+    PLURALS:
+      one: 'Hakemistopuun linkki'
+      other: '{count} hakemistopuun linkkiä'
+    SINGULARNAME: 'Hakemistopuun linkki'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Linkitetty sivu'
     DESCRIPTION: 'Näyttää toisen sivun sisällön'

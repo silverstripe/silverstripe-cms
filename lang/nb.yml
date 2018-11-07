@@ -93,7 +93,6 @@ nb:
     DEFAULTHOMETITLE: Hjem
     DEPENDENT_NOTE: 'De følgende sidene avhenger av denne siden. Dette inkluderer virtuelle sider, omdirigeringssider og sider med innholdslenker.'
     DependtPageColumnLinkType: Lenketype
-    DependtPageColumnURL: URL
     EDITHEADER: 'Hvem kan redigere dette i kontrollpanelet?'
     EDITORGROUPS: Redaktørgrupper
     EDIT_ALL_DESCRIPTION: 'Rediger hvilken som helst side'
