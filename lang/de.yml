@@ -20,6 +20,7 @@ de:
     AddNew: 'Neue Seite hinzufügen'
     AddNewButton: Hinzufügen
     AddPageRestriction: 'Hinweis: einige Seitentypen sind in diesem Bereich nicht erlaubt.'
+    CLEAR_FILTER: Löschen
     Cancel: Abbrechen
     ChoosePageParentMode: 'Wo soll diese Seite erstellt werden?'
     ChoosePageType: 'Seitentyp auswählen'
@@ -55,6 +56,7 @@ de:
     TabHistory: Verlauf
     TabSettings: Einstellungen
     TreeFiltered: Suchergebnisse
+    TreeFilteredClear: Löschen
     UNPUBLISH_AND_ARCHIVE: 'Veröffentlichung zurücknehmen und archivieren'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Seite hinzufügen'

@@ -39,6 +39,7 @@ eo:
     PAGES: 'Stato de paĝo'
     PAGETYPEANYOPT: Ajna
     PAGETYPEOPT: 'Tipo de paĝo'
+    PAGETYPE_TITLE: '(Paĝa tipo: {type}) {title}'
     PLEASESAVE: 'Bonvolu konservi paĝon: ne povis ĝisdatigi ĉi tiun paĝon ĉar ĝi ankoraŭ estas nekonservita.'
     PUBALLCONFIRM: 'Bonvolu eldoni ĉiun paĝon en la retejo, kopiante enhavan stadion al la publika'
     PUBALLFUN: 'Funkcio "Eldoni Ĉiujn"'
@@ -270,6 +271,12 @@ eo:
     TITLE_USED_ON: 'Uzita je'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
     USAGE: Uzmaniero
+  SilverStripe\CMS\Model\SiteTreeLink:
+    PLURALNAME: 'Retejaj arbaj ligiloj'
+    PLURALS:
+      one: 'Unu reteja arba ligilo'
+      other: '{count} retejaj arbaj ligiloj'
+    SINGULARNAME: 'Reteja arba ligilo'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Ligita paĝo'
     DESCRIPTION: 'Vidigas la enhavon de alia paĝo'
