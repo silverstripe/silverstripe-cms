@@ -14,7 +14,6 @@ eo:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Aliro al sekcio ''{title}'''
     ACCESS_HELP: 'Permesi vidigi la sekcion kiu enhavas paĝarbon kaj enhavon. Vidigaj kaj redaktaj permesoj estas trakteblaj per paĝspecifaj fallistoj, kaj ankaŭ la apartaj "Enhavaj permesoj".'
-    APPLY_FILTER: Serĉi
     ARCHIVE: Enarkivigi
     ARCHIVEDPAGE: 'Enarkivigis paĝon ''{title}'''
     AddNew: 'Aldoni novan paĝon'
@@ -25,7 +24,6 @@ eo:
     ArchiveWarningWithChildren: 'Averto: Ĉi tiu paĝo kaj ĉiuj ĝiaj paĝidoj malpublikiĝos kaj enarkiviĝos.\n\nĈu vi certe volas daŭrigi?'
     ArchiveWarningWithChildrenAndCampaigns: 'Averto: Ĉi tiu paĝo kaj ĉiuj ĝiaj paĝidoj malpublikiĝos kaj aŭtomate foriĝos el siaj ligitaj  {NumCampaigns} kampanjoj antaŭ ol enarkiviĝi.\n\nĈu vi certe volas daŭrigi?'
     CANT_REORGANISE: 'Vi ne rajtas ŝanĝi supronivelajn paĝojn. Via ŝanĝo ne konserviĝis.'
-    CLEAR_FILTER: Vakigi
     Cancel: Rezigni
     ChoosePageParentMode: 'Elekti kie krei ĉi tiun paĝon'
     ChoosePageType: 'Elekti tipon de paĝo'
@@ -33,12 +31,12 @@ eo:
     DUPLICATED: 'Sukcese duobligis je ''{title}'''
     DUPLICATEDWITHCHILDREN: 'Sukcese duobligis je ''{title}'' kaj idoj'
     EMAIL: Retpoŝto
-    ListFiltered: 'Vidigas rezultojn de serĉo.'
     NEWPAGE: 'Nova {pagetype}'
     PAGENOTEXISTS: 'Ĉi tiu paĝo ne ekzistas'
     PAGES: 'Stato de paĝo'
     PAGETYPEANYOPT: Ajna
     PAGETYPEOPT: 'Tipo de paĝo'
+    PAGETYPE_TITLE: '(Paĝa tipo: {type}) {title}'
     PLEASESAVE: 'Bonvolu konservi paĝon: ne povis ĝisdatigi ĉi tiun paĝon ĉar ĝi ankoraŭ estas nekonservita.'
     PUBALLCONFIRM: 'Bonvolu eldoni ĉiun paĝon en la retejo, kopiante enhavan stadion al la publika'
     PUBALLFUN: 'Funkcio "Eldoni Ĉiujn"'
@@ -194,7 +192,6 @@ eo:
     DEPENDENT_NOTE: 'La sekvaj paĝoj dependas de ĉi tiu paĝo. Tio inkluzivas virtualajn paĝojn, alidirektajn paĝojn, kaj paĝojn kun enhavaj ligiloj.'
     DESCRIPTION: 'Paĝo por ĝenerala enhavo'
     DependtPageColumnLinkType: 'Ligila tipo'
-    DependtPageColumnURL: URL
     EDITHEADER: 'Kiuj povas redakti ĉi tiun paĝon?'
     EDITORGROUPS: 'Grupoj de redaktantoj'
     EDITOR_GROUPS_FIELD_DESC: 'Grupoj kun ĉieaj permesoj: {groupList}'
@@ -270,6 +267,12 @@ eo:
     TITLE_USED_ON: 'Uzita je'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
     USAGE: Uzmaniero
+  SilverStripe\CMS\Model\SiteTreeLink:
+    PLURALNAME: 'Retejaj arbaj ligiloj'
+    PLURALS:
+      one: 'Unu reteja arba ligilo'
+      other: '{count} retejaj arbaj ligiloj'
+    SINGULARNAME: 'Reteja arba ligilo'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Ligita paĝo'
     DESCRIPTION: 'Vidigas la enhavon de alia paĝo'

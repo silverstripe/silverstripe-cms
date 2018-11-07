@@ -83,7 +83,6 @@ ko:
     DEFAULTHOMETITLE: 홈
     DEPENDENT_NOTE: '다음 페이지들은 이 페이지에 의존합니다. 여기에는 가상 페이지 리디렉터 페이지 콘텐츠 링크가있는 페이지가 포함되어 있습니다.'
     DependtPageColumnLinkType: '링크 종류'
-    DependtPageColumnURL: URL
     EDITHEADER: '누가 이 페이지를 편집할 수 있습니까?'
     EDITORGROUPS: '편집자 그룹'
     EDIT_ALL_DESCRIPTION: '모든 페이지를 편집'

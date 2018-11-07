@@ -14,8 +14,8 @@ nl:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Toegang tot het ''{title}'' gedeelte'
     ACCESS_HELP: 'Bevoegdheid om paginastructuur en inhoud te bekijken. Bekijk- en bewerkingstoestemmingen kunnen worden toegekend met pagina-specifieke menu''s en het aparte "Inhoudsmachtigingen".'
-    APPLY_FILTER: Zoeken
     ARCHIVE: Archief
+    ARCHIVEDPAGE: 'Pagina ''%s'' is gearchiveerd'
     AddNew: 'Voeg nieuwe pagina toe'
     AddNewButton: Nieuw...
     AddPageRestriction: 'Opmerking: Sommige paginatypes zijn niet toegestaan ​​voor deze selectie'
@@ -24,7 +24,6 @@ nl:
     ArchiveWarningWithChildren: 'Let op: deze pagina en alle bijbehorende subpagina''s worden van de gepubliceerde site verwijderd voordat ze worden gearchiveerd.\n\nWeet u zeker dat u wilt doorgaan?'
     ArchiveWarningWithChildrenAndCampaigns: 'Let op: deze pagina en alle bijbehorende subpagina''s worden automatisch van de gepubliceerde site én uit alle campagnes verwijderd, voordat ze worden gearchiveerd.\n\nWeet u zeker dat u wilt doorgaan?'
     CANT_REORGANISE: 'U hebt onvoldoende rechten om pagina''s op het topniveau te wijzigen. Uw wijziging is niet opgeslagen.'
-    CLEAR_FILTER: Wissen
     Cancel: Annuleren
     ChoosePageParentMode: 'Kies waar u deze pagina wilt aanmaken'
     ChoosePageType: 'Kies een pagina type'
@@ -32,12 +31,12 @@ nl:
     DUPLICATED: '''{title}'' met succes gedupliceerd'
     DUPLICATEDWITHCHILDREN: '''{title}'' en onderliggende items met succes gedupliceerd'
     EMAIL: E-mail
-    ListFiltered: 'Zoekresultaten worden getoond.'
     NEWPAGE: 'Nieuwe {pagetype}'
     PAGENOTEXISTS: 'Deze pagina bestaat niet'
     PAGES: 'Pagina status'
     PAGETYPEANYOPT: Elke
     PAGETYPEOPT: Paginatype
+    PAGETYPE_TITLE: '(Paginatype: {type}) {title}'
     PLEASESAVE: 'Sla de pagina eerst op: deze pagina kon niet worden bijgewerkt, omdat hij nog niet was opgeslagen.'
     PUBALLCONFIRM: 'Publiceer elke pagina van de site: dit kopieert de inhoud van de concept site naar de live site'
     PUBALLFUN: '"Publiceer alles" functionaliteit'
@@ -47,13 +46,17 @@ nl:
     PageAdded: 'Pagina met succes aangemaakt'
     REMOVEDPAGE: '''{title}'' is van de gepubliceerde site verwijderd'
     REMOVEDPAGEFROMDRAFT: '''{title}'' is verwijderd uit de concept site'
+    REORGANISATIONSUCCESSFUL: 'Menu-indeling is aangepast'
     RESTORE: 'Concept herstellen'
     RESTORED: '''{title}'' is met succes hersteld'
     RESTORE_DESC: 'Herstel de gearchiveerde versie naar concept.'
+    RESTORE_TO_ROOT: 'Concept herstellen naar hoofdniveau'
+    RESTORE_TO_ROOT_DESC: 'Herstel de gearchiveerde versie naar concept op het hoofdniveau.'
     ROLLBACK: 'Terugdraaien naar deze versie'
     ROLLEDBACKPUBv2: 'Teruggedraaid naar gepubliceerde versie.'
     ROLLEDBACKVERSIONv2: 'Teruggedraaid naar versie #{version}.'
     SAVED: '''{title}'' is opgeslagen.'
+    SAVEDRAFT: Opslaan
     SHOW_AS_LIST: 'Als lijst tonen'
     TOO_MANY_PAGES: 'Te veel pagina''s'
     TabContent: Inhoud
@@ -68,32 +71,45 @@ nl:
     ParentMode_top: 'Hoogste niveau'
     Title: 'Pagina toevoegen'
   SilverStripe\CMS\Controllers\CMSPageEditController:
+    ErrorItemPermissionDenied: 'Onvoldoende rechten om {ObjectTitle} aan de campagne toe te voegen'
+    ErrorNotFound: '{Type} niet gevonden'
     MENUTITLE: 'Bewerk pagina'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Auteur
     COMPAREMODE: 'Vergelijken (selecteer 2)'
+    MENUTITLE: Geschiedenis
+    MULTISELECT: 'Meervoudige acties'
     NOTPUBLISHED: 'Niet gepubliceerd'
+    PREVIEW: 'Website voorbeeld'
+    PUBLISHER: 'Gepubliceerd door'
     REVERTTOTHISVERSION: 'Deze versie terugzetten'
     SHOWUNPUBLISHED: 'Toon nog niet gepubliceerde versies'
     UNKNOWN: Onbekend
     VIEW: toon
     VIEWINGLATEST: 'U bekijkt nu de laatste versie.'
     VIEWINGVERSION: 'U bekijkt nu versie {version}.'
+    WHEN: Wanneer
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Bewerk pagina'
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filter
+    ListView: Lijstweergave
     MENUTITLE: 'Pagina ''s'
+    TreeView: Boomstructuur
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Gewijzigde pagina''s'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
     Title: 'Alle pagina''s, ook de gearchiveerde'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
+    Title: 'Gepubliceerde pagina''s'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Alle pagina''s'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
     Title: 'Gearchiveerde pagina''s'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDraftPages:
     Title: 'Conceptpagina''s'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'Gepubliceerd, maar verwijderd uit concept'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Voorbeeld van versie bekijken'
     ARCHIVEDSITEFROM: 'Gearchiveerde site van'
@@ -103,6 +119,7 @@ nl:
     Email: E-mail
     INSTALL_SUCCESS: 'Installatie voltooid!'
     InstallFilesDeleted: 'De installatiebestanden zijn verwijderd.'
+    InstallSecurityWarning: 'Om veiligheidsredenen dient u de installatiebestanden nu te verwijderen, tenzij u van plan bent om later opnieuw te installeren (<em>dit vereist   toegang als administrator, zie hierboven</em>). De webserver heeft vanaf nu alleen nog schrijftoegang nodig tot de "assets" map, u kunt de schrijftoegang van alle andere mappen verwijderen. <a href="{link}" style="text-align:center;">Klik hier om de installatiebestanden te verwijderen.</a> '
     InstallSuccessCongratulations: 'SilverStripe is met succes geïnstalleerd!'
     LOGGEDINAS: 'Ingelogd als'
     LOGIN: Inloggen
@@ -112,12 +129,18 @@ nl:
     PUBLISHED: Gepubliceerd
     PUBLISHEDSITE: 'Gepubliceerde site'
     Password: Wachtwoord
+    PostInstallTutorialIntro: 'Deze website is een eenvoudige versie van een SilverStripe 3 website. Voor uitbreidingen kunt u hier een kijkje nemen: {link}.'
+    StartEditing: 'U kunt de inhoud aanpassen via <a href="{link}">het CMS</a>.'
+    UnableDeleteInstall: 'De installatiebestanden konden niet verwijderd worden. Verwijder onderstaande bestanden handmatig:'
     VIEWPAGEIN: 'Bekijk pagina in:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Gearchiveerd
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Anker
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Omschrijving van de koppeling'
     LINKOPENNEWWIN: 'Open in een nieuw venster/tab'
+    LINKTEXT: 'Tekst van link'
     SELECT_PAGE: 'Selecteer een pagina'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Annuleren
@@ -138,6 +161,8 @@ nl:
     REDIRECTTOPAGE: 'Een pagina op deze website'
     SINGULARNAME: Verwijzingspagina
     YOURPAGE: 'Pagina op deze website'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Er is een verwijspagina ingesteld, zonder ergens naar te verwijzen.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Iedereen
     ACCESSHEADER: 'Wie kan deze pagina bekijken?'
@@ -153,19 +178,20 @@ nl:
     BUTTONDELETEDESC: 'Verwijderde concept/live versie en archiveer'
     BUTTONPUBLISHED: Gepubliceerd
     BUTTONSAVED: Opgeslagen
+    BUTTONSAVEPUBLISH: Publiceren
     BUTTONUNPUBLISH: 'Publicatie intrekken'
     BUTTONUNPUBLISHDESC: 'Deze pagina verwijderen uit de gepubliceerde site'
     Comments: Commentaar
     Content: Inhoud
-    DEFAULTABOUTCONTENT: '<p>Je kunt deze pagina vullen met nieuwe inhoud, of hem verwijderen en nieuwe pagina''s aanmaken.</p>'
+    DEFAULTABOUTCONTENT: '<p>U kunt deze pagina vullen met eigen tekst, of deze verwijderen en nieuwe pagina''s aanmaken.</p>'
     DEFAULTABOUTTITLE: 'Over Ons'
-    DEFAULTCONTACTCONTENT: '<p>Je kunt deze pagina vullen met nieuwe inhoud, of hem verwijderen en nieuwe pagina''s aanmaken.</p>'
+    DEFAULTCONTACTCONTENT: '<p>U kunt deze pagina vullen met nieuwe tekst, of verwijderen en nieuwe pagina''s aanmaken.</p>'
     DEFAULTCONTACTTITLE: Contact
+    DEFAULTHOMECONTENT: '<p>Welkom bij Silverstripe! Dit is de standaard homepagina. Je kan deze pagina wijzigen door <a href="admin/">het CMS</a> te openen.</p><p>Je kan verder de <a href="http://docs.silverstripe.org">documentatie voor ontwikkelaars</a> raadplegen of aan <a href="http://www.silverstripe.org/learn/lessons">de tutorials</a> beginnen.</p>'
     DEFAULTHOMETITLE: Home
     DEPENDENT_NOTE: 'De volgende pagina''s zijn afhankelijk van deze pagina. Hieronder vallen virtuele pagina''s, verwijzingspagina''s en pagina''s met links in hun inhoud.'
     DESCRIPTION: 'Algemene pagina'
     DependtPageColumnLinkType: Linktype
-    DependtPageColumnURL: URL
     EDITHEADER: 'Wie kan deze pagina wijzigen?'
     EDITORGROUPS: Redacteursgroepen
     EDITOR_GROUPS_FIELD_DESC: 'Groepen die alles mogen bewerken: {groupList}'
@@ -185,6 +211,7 @@ nl:
     METADESC: 'Meta omschrijving'
     METADESCHELP: 'Zoekmachines gebruiken deze inhoud voor het weergeven van zoekresultaten (hoewel het hun ranking niet zal beïnvloeden).'
     METAEXTRA: 'Andere meta tags'
+    METAEXTRAHELP: 'HTML-tags voor extra meta-informatie. Bijvoorbeeld <meta name="customName" content="your custom content here" />'
     MODIFIEDONDRAFTHELP: 'Pagina heeft wijzigingen die nog niet gepubliceerd zijn'
     MODIFIEDONDRAFTSHORT: Aangepast
     MetadataToggle: Metadata
@@ -234,6 +261,18 @@ nl:
     many_many_BackLinkTracking: 'Backlinks traceren'
     many_many_ImageTracking: 'Afbeeldingen traceren'
     many_many_LinkTracking: 'Links traceren'
+  SilverStripe\CMS\Model\SiteTreeFileExtension:
+    TITLE_INDEX: '#'
+    TITLE_TYPE: Type
+    TITLE_USED_ON: 'Gebruikt op:'
+  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
+    USAGE: Gebruik
+  SilverStripe\CMS\Model\SiteTreeLink:
+    PLURALNAME: 'Pagina links'
+    PLURALS:
+      one: 'Een pagina link'
+      other: '{count} pagina links'
+    SINGULARNAME: 'Pagina link'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Gekoppelde pagina'
     DESCRIPTION: 'Toont de inhoud van een andere pagina'
@@ -248,6 +287,8 @@ nl:
     SINGULARNAME: 'Virtuele pagina'
   SilverStripe\CMS\Reports\BrokenFilesReport:
     BROKENFILES: 'Pagina met verbroken afbeeldingskoppelingen'
+    BrokenLinksGroupTitle: 'Rapport van niet-werkende links'
+    ParameterLiveCheckbox: 'Controleer gepubliceerde site'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Alles
     BROKENLINKS: 'Rapport van verbroken links'
@@ -272,11 +313,17 @@ nl:
     VirtualPageNonExistent: 'virtuele pagina verwijst naar niet bestaande pagina'
   SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
     BROKENREDIRECTORPAGES: 'Verwijzingspagina''s die verwijzen naar naar verwijderde pagina''s'
+    BrokenLinksGroupTitle: 'Overzicht van verbroken links'
+    ParameterLiveCheckbox: 'Controleer gepubliceerde site'
   SilverStripe\CMS\Reports\BrokenVirtualPagesReport:
     BROKENVIRTUALPAGES: 'Virtuele pagina''s die verwijzen naar verwijderde pagina''s'
+    BrokenLinksGroupTitle: 'Overzicht van niet-werkende links'
+    ParameterLiveCheckbox: 'Controleer gepubliceerde site'
   SilverStripe\CMS\Reports\EmptyPagesReport:
+    ContentGroupTitle: Inhoudsrapporten
     EMPTYPAGES: 'Pagina''s zonder inhoud'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
+    ContentGroupTitle: Inhoudsrapporten
     LAST2WEEKS: 'Pagina''s die de laatste 2 weken zijn bewerkt'
   SilverStripe\CMS\Search\SearchForm:
     FILTERDATEFROM: Van
@@ -290,6 +337,9 @@ nl:
     BUTTONRUN: Uitvoeren
     CHOOSEOPERATION: 'Kies een actie'
     DELETEWARNING: 'Waarschuwing: deze acties kunnen niet ongedaan gemaakt worden. Wees hier voorzichtig mee.'
+    HEADER: 'Taak voor het verwijderen van alle pagina-wezen (pagina''s waarvan de bovenliggende pagina is verwijderd).'
+    NONEFOUND: 'Geen pagina-wezen gevonden'
     NONEREMOVED: 'Niets verwijderd'
+    OPERATION_REMOVE: 'Verwijder selectie definitief (LET OP: dit wordt verwijderd van zowel de Concept- als de Live-versie van de site)'
     SELECTALL: 'Alles selecteren'
     UNSELECTALL: 'Alles deselecteren'

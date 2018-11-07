@@ -1,38 +1,126 @@
 da:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
+    RESULT: 'Slettede %d sider fra kladde og udgivet webside og lagde dem i arkiv'
+    TITLE: 'Fjern udgivelse og arkiver'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: 'Publiserede %d sider, %d fejl'
+    PUBLISH_PAGES: Udgiv
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Genskab
+    RESTORED_PAGES: 'Genskabte %d sider'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISHED_PAGES: 'Fjernede %d udgivne sider'
+    UNPUBLISH_PAGES: 'Fjern udgivelse'
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Adgang til ''{title}'' sektionen'
     ACCESS_HELP: 'Tillad visning af den sektion, som indeholder sidetræet og indhold. Visnings- og redigeringstilladelser kan håndteres gennem sidespecifikke rullemenuer, såvel som de enkelte "Inholdstilladelser".'
     ARCHIVE: Arkiv
+    ARCHIVEDPAGE: 'Arkiverede siden ''{title}'''
+    AddNew: 'Tilføj ny side'
+    AddNewButton: 'Tilføj ny'
+    AddPageRestriction: 'Note: Nogle sidetyper er ikke tilladte ved dette valg'
+    ArchiveWarning: 'Advarsel: Udgivelsen af denne side ophæves, før siden sendes til arkiv. \n\nEr du sikker på du vil fortsætte?'
+    ArchiveWarningWithCampaigns: 'Advarsel: Udgivelsen af denne side ophæves og siden fjernes fra de tilknyttede {NumCampaigns} før den bliver lagt i arkivet. \n\nEr du sikker på du vil fortsætte?'
+    ArchiveWarningWithChildren: 'Advarsel: Udgivelsen af denne side og alle dens undersider ophæves, før siden sendes til arkiv. \n\nEr du sikker på du vil fortsætte?'
+    ArchiveWarningWithChildrenAndCampaigns: 'Advarsel: Udgivelsen af denne side og alle dens undersider ophæves og siden fjernes fra de tilknyttede {NumCampaigns} før den bliver lagt i arkivet. \n\nEr du sikker på du vil fortsætte?'
+    CANT_REORGANISE: 'Du har ikke tilladelse til at ændre sider på Top niveau. Dine ændringer blev ikke gemt.'
+    Cancel: Annuller
     ChoosePageParentMode: 'Vælg hvor denne side skal oprettes'
     ChoosePageType: 'Vælg sidetype'
     Create: Opret
+    DUPLICATED: 'Dublerede ''{title}'' med succes'
+    DUPLICATEDWITHCHILDREN: 'Dublerede ''{title}'' og undersider med succes'
+    EMAIL: Email
     NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Denne side eksisterer ikke'
+    PAGES: 'Side status'
     PAGETYPEANYOPT: Enhver
+    PAGETYPEOPT: Sidetype
+    PAGETYPE_TITLE: '(Sidetype: {type}) {title}'
+    PLEASESAVE: 'Gem siden: Denne side kunne ikke opdateres, da den endnu ikke er gemt.'
     PUBALLCONFIRM: 'Udgiv alle sider på sitet. Kopierer indhold fra kladde til offentlig'
     PUBALLFUN: '"Udgiv alle" funktionalitet'
+    PUBALLFUN2: 'Hvis du trykker på denne knap, svarer det til at gå til hver enkel side og vælge udgiv. Det er hensigten at denne funktion benyttes når der er blevet lavet mange ændringer på flere sider, som f.eks da websitet blev påbegyndt.'
+    PUBLISHED: 'Udgav ''{title}'' med succes'
     PUBPAGES: 'Færdig: Udgav {count} sider'
     PageAdded: 'Siden blev oprettet med succes'
     REMOVEDPAGE: 'Fjernede ''{title}'' fra den udgivne side'
     REMOVEDPAGEFROMDRAFT: '''{title}''  fjernet fra udkast-sitet'
-    RESTORED: 'Genskabte ''{title}'' korrekt'
+    REORGANISATIONSUCCESSFUL: 'Reorganiserede sidetræet med succes.'
+    RESTORE: 'Genskab kladde'
+    RESTORED: 'Genskabte ''{title}'' succesfuldt'
+    RESTORE_DESC: 'Genskab arkiveret version til kladde'
+    RESTORE_TO_ROOT: 'Genskab kladde på topniveau'
+    RESTORE_TO_ROOT_DESC: 'Genskab den arkiverede version til kladde som en topniveau side'
+    ROLLBACK: 'Rul tilbage til denne version'
+    ROLLEDBACKPUBv2: 'Rullede tilbage til den udgivne version.'
+    ROLLEDBACKVERSIONv2: 'Rullede tilbage til version #{version}.'
+    SAVED: 'Gemte ''{title}'' succesfuldt'
+    SAVEDRAFT: Gem
+    SHOW_AS_LIST: 'Vis som liste'
+    TOO_MANY_PAGES: 'For mange sider'
+    TabContent: Indhold
     TabHistory: Historik
+    TabSettings: Indstillinger
+    TreeFiltered: 'Viser søgeresultater'
+    TreeFilteredClear: Ryd
+    UNPUBLISH_AND_ARCHIVE: 'Fjern udgivelse og arkiver'
   SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Tilføj side'
     ParentMode_child: 'Under en anden side'
     ParentMode_top: 'Højeste niveau'
+    Title: 'Tilføj side'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    ErrorItemPermissionDenied: 'Det ser ikke ud til at du har de nødvendige tilladelser til at tilføje {ObjectTitle} til en kampagne'
+    ErrorNotFound: 'Typen  {Type} kunne ikke findes'
+    MENUTITLE: 'Rediger side'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    AUTHOR: Forfatter
     COMPAREMODE: 'Sammenligningstilstand (vælg to)'
+    MENUTITLE: Historik
+    MULTISELECT: Handlinger
+    NOTPUBLISHED: 'Ikke udgivet'
+    PREVIEW: 'Webside preview'
+    PUBLISHER: Udgiver
     REVERTTOTHISVERSION: 'Genskab denne version'
     SHOWUNPUBLISHED: 'Vis versioner der ikke er udgivne'
+    UNKNOWN: Ukendt
     VIEW: Visning
+    VIEWINGLATEST: 'Viser seneste version.'
     VIEWINGVERSION: 'Lige nu vises version {version}.'
+    WHEN: Hvornår
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Rediger side'
   SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: Filter
+    ListView: Listevisning
     MENUTITLE: Sider
+    TreeView: Trævisning
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
+    Title: 'Ændrede sider'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
+    Title: 'Alle sider, inklusive arkiverede'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
+    Title: 'Udgivne sider'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Alle sider'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Arkiverede sider'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDraftPages:
+    Title: Kladdesider
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'Udgivet men slettet fra kladde'
   SilverStripe\CMS\Controllers\ContentController:
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Arkiveret side fra'
+    CMS: CMS
+    DRAFT: Kladde
     DRAFTSITE: Kladdeside
+    Email: Email
+    INSTALL_SUCCESS: 'Installation gennemført succesfuldt'
+    InstallFilesDeleted: 'Installationsfiler slettet succesfuldt.'
+    InstallSecurityWarning: 'Af sikkerhedmæssige årsager bør du slette installationsfilerne, medmindre du planlægger at installere igen på et senere tidspunkt (<em>kræver admin login, se det ovenstående</em>). Webserveren behøver også kun skriverettigheder til mappen "assets", du kan fjerne skriverettigheder til alle de andre mapper. <a href="{link}" style="text-align: center;">Klik her for at slette installationsfilerne.</a>'
+    InstallSuccessCongratulations: 'SilverStripe succesfuldt installeret!'
     LOGGEDINAS: 'Logget på som'
     LOGIN: 'Log ind'
     LOGOUT: 'Log ud'
@@ -40,16 +128,41 @@ da:
     NOTLOGGEDIN: 'Ikke logget ind'
     PUBLISHED: Udgivet
     PUBLISHEDSITE: 'Udgivet side'
+    Password: Adgangskode
+    PostInstallTutorialIntro: 'Denne webside er en enkel version af en SilverStripe 3 side. For at udvide denne, kig venligts på {link}.'
+    StartEditing: 'Du kan nu starte med at redigere dit indhold ved at åbne dit<a href="{link}">CMS</a>.'
+    UnableDeleteInstall: 'Var ikke i stand til at slette installationsfilerne. Slet venligst filerne herunder manuelt.'
     VIEWPAGEIN: 'Vis side i:'
+  SilverStripe\CMS\Controllers\SilverStripeNavigator:
+    ARCHIVED: Arkiveret
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Anker
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Link beskrivelse'
+    LINKOPENNEWWIN: 'Åben i nyt vindue/tab'
+    LINKTEXT: 'Link tekst'
+    SELECT_PAGE: 'Vælg en side'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Cancel: Annuller
+    EMPTY: 'Indtast en URL eller klik annuller'
+    Edit: Rediger
     HelpChars: 'Specialkarakterer bliver automatisk konverteret eller fjernet.'
+    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
+    DESCRIPTION: 'Omdirigerer til en side eller en ekstern URL'
     HEADER: 'Denne side omdirigerer besøgende til en anden side'
     OTHERURL: 'Andet websteds URL'
+    PLURALNAME: 'Viderestillende side'
+    PLURALS:
+      one: 'En viderestillende side'
+      other: '{count} Viderestillende sider'
     REDIRECTTO: 'Omdiriger til'
     REDIRECTTOEXTERNAL: 'Et andet websted'
     REDIRECTTOPAGE: 'En side på dit websted'
+    SINGULARNAME: 'Viderestillende side'
     YOURPAGE: 'Side på dit websted'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'En viderestillendeside er blevet sat op, uden et sted at viderestille til.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Enhver
     ACCESSHEADER: 'Hvem kan se denne side?'
@@ -58,31 +171,56 @@ da:
     ADDEDTODRAFTHELP: 'Siden er ikke blevet udgivet endnu'
     ADDEDTODRAFTSHORT: Kladde
     APPEARSVIRTUALPAGES: 'Dette indhold er også på de virtuelle sider i {title}sektionerne'
+    ARCHIVEDPAGEHELP: 'Siden er fjernet fra kladde og udgivet'
+    ARCHIVEDPAGESHORT: Arkiveret
     BUTTONCANCELDRAFT: 'Annuller ændringer i kladden '
     BUTTONCANCELDRAFTDESC: 'Slet kladden og benyt istedet den nuværende side'
+    BUTTONDELETEDESC: 'Fjern fra kladde og udgivet og læg i arkiv'
     BUTTONPUBLISHED: Udgivet
     BUTTONSAVED: Gemt
+    BUTTONSAVEPUBLISH: Udgiv
     BUTTONUNPUBLISH: 'Annuller udgivelse'
     BUTTONUNPUBLISHDESC: 'Fjern denne side fra det udgivne websted'
     Comments: Kommentarer
     Content: Indhold
+    DEFAULTABOUTCONTENT: '<p>Du kan udfylde denne side med dit eget indhold, eller slette den og oprette dine egne sider.</p>'
     DEFAULTABOUTTITLE: 'Om os'
+    DEFAULTCONTACTCONTENT: '<p>Du kan udfylde denne side med dit eget indhold, eller slette den og oprette dine egne sider.</p>'
     DEFAULTCONTACTTITLE: 'Kontakt os'
+    DEFAULTHOMECONTENT: '<p>Velkommen til SilverStripe! Dette er en standard forside. Du kan redigere den ved at åbne <a href="admin/">CMS</a>.</p><p>Du kan læse <a href="http://docs.silverstripe.org">udviklerdokumentationen</a>, eller påbegynde en af <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lektionerne</a>.</p>'
     DEFAULTHOMETITLE: Forside
+    DEPENDENT_NOTE: 'De følgende sider er afhængige af denne side. Dette inkluderer virtuelle sider, viderestillendeside og sider med links i indholdet.'
+    DESCRIPTION: 'Standard indholdsside'
     DependtPageColumnLinkType: Linktype
     EDITHEADER: 'Hvem kan redigere denne side ?'
     EDITORGROUPS: Redaktionsgrupper
+    EDITOR_GROUPS_FIELD_DESC: 'Grupper med globale rettigheder: {groupList}'
     EDIT_ALL_DESCRIPTION: 'Rediger enhver side'
+    EDIT_ALL_HELP: 'Mulighed for at redigere enhver side på sitet, uanset indstillingerne på indstillingerne på Adgangsfanebladet. Kræver adgangsrettigheden "Adgang til ''Sider'' sektionen"'
+    Editors: Redaktionsgrupper
     HASBROKENLINKS: 'Denne side har links der ikke virker.'
     HTMLEDITORTITLE: Indhold
     INHERIT: 'Nedarv fra overliggende side'
+    LASTPUBLISHED: 'Seneste udgivet'
+    LASTSAVED: 'Senest gemt'
     LASTUPDATED: 'Sidst opdateret'
     LINKCHANGENOTE: 'Ved at ændre denne sides link, ændrer du også linket til alle underliggende sider.'
+    LINKSALREADYUNIQUE: ' {url} er allerede unik'
+    LINKSCHANGEDTO: ' ændrede {url1} -> {url2}'
     MENUTITLE: Navigationsetiket
     METADESC: Meta-beskrivelse
+    METADESCHELP: 'Søgemaskiner viser dette indhold i søgeresultaterne (teksten påvirker ikke placeringen).'
     METAEXTRA: 'Brugerdefinerede Meta Tags'
+    METAEXTRAHELP: 'HTML koder for ekstra meta information. For eksempel <meta name="customName" content="your custom content here" />'
     MODIFIEDONDRAFTHELP: 'Siden har ikke-udgivne ændringer'
     MODIFIEDONDRAFTSHORT: Ændret
+    MetadataToggle: Metadata
+    MoreOptions: 'Flere muligheder'
+    NOTPUBLISHED: 'Ikke udgivet'
+    OBSOLETECLASS: 'Denne side er af den udgåede sidetype {type}. Gemmer du bliver sidetypen nulstillet og du kan tabe data.'
+    ONLIVEONLYSHORT: 'Kun publiseret '
+    ONLIVEONLYSHORTHELP: 'Siden er udgivet, men er slettet fra kladde'
+    PAGELOCATION: Sideplacering
     PAGETITLE: Sidenavn
     PAGETYPE: Sidetype
     PARENTID: 'Overliggende side'
@@ -91,6 +229,10 @@ da:
     PARENTTYPE_SUBPAGE: 'Underside fra en overliggende side'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Administrer adgangsrettigheder for indhold'
     PERMISSION_GRANTACCESS_HELP: 'Tillad indstilling af side-specifikke adgangsbegrænsninger i sektionen "Sider" .'
+    PLURALNAME: Sider
+    PLURALS:
+      one: 'En Side'
+      other: '{count} Sider'
     PageTypNotAllowedOnRoot: 'Sidetypen "{type}" er ikke tilladt på rodniveau'
     PageTypeNotAllowed: 'Sidetypen {type} er ikke tilladt som underside til denne side'
     REMOVE_INSTALL_WARNING: 'Advarsel: Du bør, af sikkerhedsmæssige årsager, slette install.php fra SilverStripe installationsmappen.'
@@ -98,22 +240,55 @@ da:
     REORGANISE_HELP: 'Omarranger sider i sidetræet ved hjælp af træk&slip.'
     SHOWINMENUS: 'Vis i menuer ?'
     SHOWINSEARCH: 'Vis i søgninger?'
+    SINGULARNAME: Side
     TABBEHAVIOUR: Opførsel
     TABCONTENT: 'Primært indhold'
     TABDEPENDENT: 'Afhængige sider'
     TOPLEVEL: 'Sideindhold (Top niveau)'
+    URLSegment: 'URL adresse'
     VIEWERGROUPS: Visningsgrupper
+    VIEWER_GROUPS_FIELD_DESC: 'Grupper med globale se rettigheder: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Vis enhver side'
+    VIEW_ALL_HELP: 'Mulighed for at se enhver side på sitet, uanset indstillingerne på indstillingerne på Adgangsfanebladet. Kræver adgangsrettigheden "Adgang til ''Sider'' sektionen"'
     VIEW_DRAFT_CONTENT: 'Vis indhold af kladde'
+    VIEW_DRAFT_CONTENT_HELP: 'Gælder for visning af sider uden for CMS i kladdetilstand. Nyttig til eksterne samarbejdspartnere uden CMS-adgang.'
+    VIRTUALPAGEDRAFTWARNING: 'Udgiv den lænkede side side for at udgive den virtuelle side'
+    VIRTUALPAGEWARNING: 'Vælg en linket side og gem først for at udgive denne side'
+    VIRTUALPAGEWARNINGSETTINGS: 'Vælg en linket side i de primære indholdsfelter, for at udgive denne side'
     Viewers: Visningsgrupper
     Visibility: Synlighed
     has_one_Parent: 'Overliggende side'
     many_many_BackLinkTracking: 'Bagud rettet sporing '
     many_many_ImageTracking: 'Sporing af billeder'
     many_many_LinkTracking: 'Sporing af links'
+  SilverStripe\CMS\Model\SiteTreeFileExtension:
+    TITLE_INDEX: '#'
+    TITLE_TYPE: Type
+    TITLE_USED_ON: 'Brugt på'
+  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
+    USAGE: Brug
+  SilverStripe\CMS\Model\SiteTreeLink:
+    PLURALNAME: 'Sidetræ links'
+    PLURALS:
+      one: 'Et sidetræ link'
+      other: '{count} Sidetræ links'
+    SINGULARNAME: 'Sidetræ link'
   SilverStripe\CMS\Model\VirtualPage:
+    CHOOSE: 'Linket side'
+    DESCRIPTION: 'Viser indholdet fra en anden side'
+    EditLink: rediger
     HEADER: 'Dette er en virtuel side'
+    HEADERWITHLINK: 'Dette er en virtuel side, der kopierer indhold fra "{title}" ({link})'
+    PLURALNAME: 'Virtuelle sider'
+    PLURALS:
+      one: 'En virtuel side'
+      other: '{count} Virtuelle sider'
     PageTypNotAllowedOnRoot: 'Original side type "{type}" er ikke tilladt på rodniveau for denne virtuelle side'
+    SINGULARNAME: 'Virtuel side'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 'Sider med ødelagt filer'
+    BrokenLinksGroupTitle: 'Rapporter over brudte links'
+    ParameterLiveCheckbox: 'Tjek det udgivne websted'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Alle
     BROKENLINKS: 'Rapport over brudte links'
@@ -123,6 +298,7 @@ da:
     ColumnDateLastModified: 'Dato for seneste ændring'
     ColumnDateLastPublished: 'Dato for seneste udgivelse'
     ColumnProblemType: Problemtype
+    ColumnURL: URL
     HasBrokenFile: 'har en ødelagt fil'
     HasBrokenLink: 'har et dårligt link'
     HasBrokenLinkAndFile: 'har et dårligt link og en ødelagt fil'
@@ -135,9 +311,35 @@ da:
     ReasonDropdownVPBROKENLINK: 'Virtuel side der peger på en side der ikke findes'
     RedirectorNonExistent: 'Viderestillende side der peger på en side der ikke findes'
     VirtualPageNonExistent: 'Virtuel side der peger på en side der ikke findes'
+  SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
+    BROKENREDIRECTORPAGES: 'Viderestillingssider der henviser til slettede sider'
+    BrokenLinksGroupTitle: 'Rapporter over brudte links'
+    ParameterLiveCheckbox: 'Tjek det udgivne websted'
+  SilverStripe\CMS\Reports\BrokenVirtualPagesReport:
+    BROKENVIRTUALPAGES: 'Virtuelle sider der henviser til slettede sider'
+    BrokenLinksGroupTitle: 'Rapporter over brudte links'
+    ParameterLiveCheckbox: 'Tjek det udgivne websted'
+  SilverStripe\CMS\Reports\EmptyPagesReport:
+    ContentGroupTitle: Indholdsrapporter
+    EMPTYPAGES: 'Sider uden indhold'
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    ContentGroupTitle: Indholdsrapporter
+    LAST2WEEKS: 'Sider ændret indenfor de seneste 2 uger'
   SilverStripe\CMS\Search\SearchForm:
     FILTERDATEFROM: Fra
     FILTERDATETO: Til
+    FILTERLABELTEXT: Søg
     GO: Send
+    PAGEFILTERDATEHEADING: 'Senest redigeret'
     SEARCH: Søg
     SearchResults: Søgeresultater
+  SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask:
+    BUTTONRUN: Kør
+    CHOOSEOPERATION: 'Vælg handling:'
+    DELETEWARNING: 'Advarsel: Disse handlinger kan ikke fortrydes. Brug venligst med omtanke.'
+    HEADER: 'Fjern alle forældreløse sider'
+    NONEFOUND: 'Ingen forældre fundet'
+    NONEREMOVED: 'Ingen fjernet'
+    OPERATION_REMOVE: 'Fjern valgte fra alle versioner (Advarsel: Dette sletter alle valgte sider fra både kladde og udgivet version)'
+    SELECTALL: 'vælg alle'
+    UNSELECTALL: 'fravælg alle'

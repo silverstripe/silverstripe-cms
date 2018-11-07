@@ -10,7 +10,6 @@ ar:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'النفاذ إلى القسم ''{title}'''
     ACCESS_HELP: 'سماح بعرض لقسم يحتوي على صفحة الشجرة والمحتوى. يمكن التعامل معها عرض وتحرير الأذونات من خلال القائمه المنسدله للروابط محددة صفحة، فضلا عن فصل "أذونات المحتوى".'
-    APPLY_FILTER: بحث
     ARCHIVE: أرشفة
     ARCHIVEDPAGE: 'أرشفة الصفحة ''{title}'''
     AddNew: 'اضافة صفحة جديدة'
@@ -22,7 +21,6 @@ ar:
     Create: خلق
     DUPLICATED: 'تكرار ''{title}'' بنجاح'
     DUPLICATEDWITHCHILDREN: 'تكرار ''{title}'' والتوابع بنجاح'
-    ListFiltered: 'استعراض نتائج البحث'
     NEWPAGE: '{pagetype} جديد'
     PAGENOTEXISTS: 'هذه الصفحة غير موجودة'
     PAGES: 'حالة الصفحة'
@@ -119,7 +117,6 @@ ar:
     DEFAULTHOMETITLE: الرئيسة
     DEPENDENT_NOTE: 'الصفحات التالية تعتمد على هذه الصفحة. وهذا يشمل صفحات الظاهري، وصفحات معيد التوجيه، والصفحات التي تحتوي على روابط المحتوى.'
     DependtPageColumnLinkType: 'نوع الرابط'
-    DependtPageColumnURL: رابط
     EDITHEADER: 'من يستطيع تعديل هذه الصفحة؟'
     EDITORGROUPS: 'مجموعات المحرر'
     EDIT_ALL_DESCRIPTION: 'Can edit any page on the site, bypassing page specific security'

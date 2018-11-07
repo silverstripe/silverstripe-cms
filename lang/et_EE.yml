@@ -74,7 +74,6 @@ et_EE:
     DEFAULTHOMETITLE: Avaleht
     DEPENDENT_NOTE: 'Alljärgnevad lehed sõltuvad sellest lehest. See hõlmab virtuaalseid lehti, ümbersuunamislehti ja sisulinkidega lehti.'
     DependtPageColumnLinkType: 'Lingi tüüp'
-    DependtPageColumnURL: URL
     EDITHEADER: 'Kes tohib seda sisuhaldussüsteemi kaudu muuta?'
     EDITORGROUPS: Muutjagrupid
     EDIT_ALL_DESCRIPTION: 'Redigeeri mis tahes lehte'

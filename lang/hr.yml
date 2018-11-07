@@ -14,13 +14,11 @@ hr:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Pristup ''{title}'' sekciji'
     ACCESS_HELP: 'Dozvoli pregledavati sekcije sadržanog stabla i sadržaja strancie. Dozvole za pregled i uređivanje mogu se mijenjati putem stranicama specifičnim padajućim izbornicima kao i posebnim "Sadržajnim dozvolama".'
-    APPLY_FILTER: Traži
     ARCHIVE: Arhiviraj
     ARCHIVEDPAGE: 'Arhivirane stranice ''{title}'''
     AddNew: 'Dodaj novu stranicu'
     AddNewButton: 'Dodaj novi'
     AddPageRestriction: 'Napomena: neke vrste stranica nisu dozvoljene za ovu sekciju'
-    CLEAR_FILTER: Očisti
     Cancel: Odustani
     ChoosePageParentMode: 'Odaberite gdje želite kreirati ovu stranicu'
     ChoosePageType: 'Odaberi vrstu stranice'
@@ -28,7 +26,6 @@ hr:
     DUPLICATED: 'Dupliciran ''{title}'' uspješno'
     DUPLICATEDWITHCHILDREN: 'Dupliciran ''{title}''  i podstranice uspješno'
     EMAIL: Email
-    ListFiltered: 'Prikazuje rezultate pretraživanja'
     NEWPAGE: 'Novi {pagetype}'
     PAGENOTEXISTS: 'Stranica ne postoji'
     PAGES: 'Status stranice'
@@ -165,7 +162,6 @@ hr:
     DEPENDENT_NOTE: 'Sljedeće stranice zavise o ovoj stranici. To uključuje virtualne stranice, preusmjeravajuće stranice i stranice s sadržajnim linkovima.'
     DESCRIPTION: 'Obična sadržajna stranica'
     DependtPageColumnLinkType: 'Tip linka'
-    DependtPageColumnURL: Link
     EDITHEADER: 'Tko može uređivati unutar CMSa?'
     EDITORGROUPS: 'Urednička grupa'
     EDIT_ALL_DESCRIPTION: 'Uredi bilo koju stranicu'
