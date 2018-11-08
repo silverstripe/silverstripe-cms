@@ -20,7 +20,6 @@ sl:
     REMOVEDPAGE: '''{title}'' je odstranjen z objavljenega spletnega mesta. '
     REMOVEDPAGEFROMDRAFT: 'Vsebina, odstranjena iz osnutka spletnega mesta: ''{title}'''
     SAVED: 'Uspešno shranjeno ''{title}''.'
-    SAVEDRAFT: 'Shrani osnutek'
     UNPUBLISH_AND_ARCHIVE: 'Odstrani iz objave in arhiviraj'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Dodaj stran'
@@ -38,8 +37,6 @@ sl:
     MENUTITLE: 'Uredi stran'
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: 'Seznam strani'
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Objavljene strani'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Vse strani'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
@@ -84,7 +81,6 @@ sl:
     BUTTONCANCELDRAFTDESC: 'Izbriši osnutek in ponastavi na trenutno objavljeno stran'
     BUTTONPUBLISHED: Objavljeno
     BUTTONSAVED: Shranjeno
-    BUTTONSAVEPUBLISH: 'Shrani in objavi'
     BUTTONUNPUBLISH: 'Umakni iz objave'
     BUTTONUNPUBLISHDESC: 'Umakni to stran iz objave'
     Comments: Komentarji
@@ -94,7 +90,6 @@ sl:
     DEFAULTHOMETITLE: Domov
     DEPENDENT_NOTE: 'Naslednje strani so odvisne od vsebine tukaj (vključuje navidezne strani, preusmerjevalne strani in strani s povezavami v vsebini)'
     DependtPageColumnLinkType: 'Tip povezave'
-    DependtPageColumnURL: URL
     EDITHEADER: 'Kdo lahko ureja to stran?'
     EDITORGROUPS: 'Skupine urednikov'
     EDIT_ALL_DESCRIPTION: 'Urejanje vseh strani'

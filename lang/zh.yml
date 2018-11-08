@@ -14,14 +14,12 @@ zh:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: '访问 ''{title}'' 部分'
     ACCESS_HELP: '允许查看包含页面树及内容 部分。查看和编辑权限可以通过页面特定的下拉菜单进行控制，与使用单独的”内容权限“处理一样。'
-    APPLY_FILTER: 查询
     ARCHIVE: 归档
     ARCHIVEDPAGE: '归档页面 ''{title}'''
     AddNew: 增加一个新的页面
     AddNewButton: 增加一个新的
     AddPageRestriction: 备注：某些类型页面是不允许选择该项的
     ArchiveWarning: 警告：在进行归档前，当前页面将被取消发布？是否继续？
-    CLEAR_FILTER: 清除
     Cancel: 取消
     ChoosePageParentMode: 选择在哪创建此页面
     ChoosePageType: 选择页面类型
@@ -29,7 +27,6 @@ zh:
     DUPLICATED: '成功复制‘{title}’'
     DUPLICATEDWITHCHILDREN: '成功复制‘{title}’及其子页面'
     EMAIL: Email
-    ListFiltered: 显示查询结果.
     NEWPAGE: '新建{pagetype}'
     PAGENOTEXISTS: 该页面不存在
     PAGES: 页面状态
@@ -49,7 +46,6 @@ zh:
     ROLLEDBACKPUBv2: 回滚到已发布版本。
     ROLLEDBACKVERSIONv2: '回滚到版本#{version}。'
     SAVED: ' ''{title}'' 保存成功。'
-    SAVEDRAFT: 保存草稿
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 根据另一个页面
     ParentMode_top: 顶层
@@ -103,7 +99,6 @@ zh:
     BUTTONCANCELDRAFTDESC: 删除您的草稿并回复至当前已发布的页面
     BUTTONPUBLISHED: 已发布
     BUTTONSAVED: 已保存
-    BUTTONSAVEPUBLISH: 保存及发布
     BUTTONUNPUBLISH: 未发布
     BUTTONUNPUBLISHDESC: 将该页面从已发布的站点中删除
     Comments: 评论
@@ -113,7 +108,6 @@ zh:
     DEFAULTHOMETITLE: 首页
     DEPENDENT_NOTE: 以下页面依赖该页。包括虚拟页面，重定向页，以及有内容链接的页面。
     DependtPageColumnLinkType: 链接类型
-    DependtPageColumnURL: URL
     EDITHEADER: 谁可以修改该页面？
     EDITORGROUPS: 编辑分组
     EDIT_ALL_DESCRIPTION: 编辑任何页面
@@ -128,7 +122,6 @@ zh:
     METADESC: 'Meta 描述'
     METADESCHELP: 搜索引擎使用这些内容用于显示搜索结果（虽然它不会影响它们的排名）。
     METAEXTRA: 自定义Meta标签
-    METAEXTRAHELP: 'HTML标签用于额外的元信息。例如&amp;lt;meta name="自定义名称" content="自定义内容" /&amp;gt;'
     MODIFIEDONDRAFTHELP: 页面有未发布的变更
     MODIFIEDONDRAFTSHORT: 已修改
     MetadataToggle: 元数据

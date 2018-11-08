@@ -14,7 +14,6 @@ it:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Accesso alla sezione ''{title}'''
     ACCESS_HELP: 'Consente la visualizzazione della sezione con l''albero delle pagine e i contenuti. I permessi di visualizzazione e modifica possono essere gestiti attraverso menù a tendina specifici della pagina, come dai separati "Permessi sui contenuti".'
-    APPLY_FILTER: Cerca
     ARCHIVE: Archivia
     ARCHIVEDPAGE: 'Pagina ''{title}'' archiviata'
     AddNew: 'Aggiungi nuova pagina'
@@ -25,7 +24,6 @@ it:
     ArchiveWarningWithChildren: 'Attenzione: Questa pagina e tutte le pagine discendenti saranno nascoste prima di essere archiviate.\n\nSei sicuro di voler continuare?'
     ArchiveWarningWithChildrenAndCampaigns: 'Attenzione: Questa pagina e tutte le pagine discendenti saranno nascoste e automaticamente rimosse da {NumCampaigns} prima di essere archiviate.\n\nSei sicuro di voler continuare?'
     CANT_REORGANISE: 'Non hai i permessi per modificare le pagine di primo livello. Le modifiche non sono state salvate.'
-    CLEAR_FILTER: Annulla
     Cancel: Annulla
     ChoosePageParentMode: 'Scegli dove creare questa pagina'
     ChoosePageType: 'Scegli tipo di pagina'
@@ -33,12 +31,12 @@ it:
     DUPLICATED: '''{title}'' duplicato correttamente'
     DUPLICATEDWITHCHILDREN: '''{title}'' e figlie duplicate con successo'
     EMAIL: Email
-    ListFiltered: 'Visualizzazione risultati ricerca.'
     NEWPAGE: 'Nuova {pagetype}'
     PAGENOTEXISTS: 'Questa pagina non esiste'
     PAGES: 'Stato pagina'
     PAGETYPEANYOPT: Qualsiasi
     PAGETYPEOPT: 'Tipo di pagina'
+    PAGETYPE_TITLE: '(Pagina tipo: {type}) {title}'
     PLEASESAVE: 'Per favore salvare la pagina: potrebbe non venire aggiornata perché non è ancora stata salvata.'
     PUBALLCONFIRM: 'Per favore pubblica ogni singola pagina nel sito, copiando i contenuti da ''bozza'' a ''pubblicato''.'
     PUBALLFUN: 'Funzione "Pubblica tutto"'
@@ -58,7 +56,7 @@ it:
     ROLLEDBACKPUBv2: 'Ripristinata la versione pubblicata.'
     ROLLEDBACKVERSIONv2: 'Ripristinata la versione #{version}.'
     SAVED: '''{title}'' salvata correttamente.'
-    SAVEDRAFT: 'Salva bozza'
+    SAVEDRAFT: Salva
     SHOW_AS_LIST: 'Mostra come lista'
     TOO_MANY_PAGES: 'Troppe pagine'
     TabContent: Contenuto
@@ -98,12 +96,12 @@ it:
     ListView: 'Visualizzazione a lista'
     MENUTITLE: Pagine
     TreeView: 'Visualizzazione ad albero'
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Pagine pubblicate'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Pagine modificate'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
     Title: 'Tutte le pagine, comprese quelle archiviate'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
+    Title: 'Pagine pubblicate'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Tutte le pagine'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
@@ -180,7 +178,7 @@ it:
     BUTTONDELETEDESC: 'Rimuove da bozza/live e manda all''archivio'
     BUTTONPUBLISHED: Pubblicato
     BUTTONSAVED: Salvato
-    BUTTONSAVEPUBLISH: 'Salva & pubblica'
+    BUTTONSAVEPUBLISH: Pubblica
     BUTTONUNPUBLISH: Nascondere
     BUTTONUNPUBLISHDESC: 'Rimuovi questa pagina dal sito pubblicato'
     Comments: Commenti
@@ -194,7 +192,6 @@ it:
     DEPENDENT_NOTE: 'Le seguenti pagine dipendono da questa pagina. Queste includono pagine virtuali, pagine di redirezione e pagine con link nel contenuto.'
     DESCRIPTION: 'Pagina di contenuto generico'
     DependtPageColumnLinkType: 'Tipo di link'
-    DependtPageColumnURL: URL
     EDITHEADER: 'Chi può modificare questa pagina?'
     EDITORGROUPS: 'Gruppi di editori'
     EDITOR_GROUPS_FIELD_DESC: 'Gruppi con permessi di modifica globale: {groupList}'
@@ -214,7 +211,7 @@ it:
     METADESC: Descrizione
     METADESCHELP: 'I motori di ricerca utilizzano questo contenuto per visualizzare i risultati (ma non ne influenza la posizione)'
     METAEXTRA: 'Meta tag personalizzati'
-    METAEXTRAHELP: 'Tag HTML per meta addizionali. Per esempio <meta name="nomePersonalizzato" content="Il tuo contenuto personalizzato" />'
+    METAEXTRAHELP: 'Tag HTML per meta informazioni addizionali. Esempio: <meta name="customName" content="your custom content here" />'
     MODIFIEDONDRAFTHELP: 'La pagina ha modifiche nascoste'
     MODIFIEDONDRAFTSHORT: Modificata
     MetadataToggle: Metadati
@@ -265,11 +262,11 @@ it:
     many_many_ImageTracking: 'Monitoraggio immagine'
     many_many_LinkTracking: 'Monitoraggio link'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    BACKLINKCOUNT: 'Usato in:'
-    PAGES: pagina(e)
     TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Usato in'
+  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
+    USAGE: Uso
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Pagina collegata'
     DESCRIPTION: 'Mostra il contenuto di un''altra pagina'

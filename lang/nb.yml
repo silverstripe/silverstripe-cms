@@ -26,7 +26,6 @@ nb:
     RESTORE_TO_ROOT_DESC: 'Gjenopprett arkivert versjon som utkast på toppnivå'
     ROLLEDBACKPUBv2: 'Tilbakestilte til den publiserte versjonen.'
     ROLLEDBACKVERSIONv2: 'Tilbakestile til versjon #{version}.'
-    SAVEDRAFT: 'Lagre utkast'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Under en annen side'
     ParentMode_top: Toppnivå
@@ -39,8 +38,6 @@ nb:
     VIEWINGVERSION: 'Viser versjon {version}.'
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: Sider
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Publiserte sider'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Alle sider'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
@@ -86,7 +83,6 @@ nb:
     BUTTONCANCELDRAFTDESC: 'Slett utkast og gå tilbake til publisert versjon av denne siden'
     BUTTONPUBLISHED: Publisert
     BUTTONSAVED: Lagret
-    BUTTONSAVEPUBLISH: 'Lagre og publiser'
     BUTTONUNPUBLISH: Avpubliser
     BUTTONUNPUBLISHDESC: 'Fjern denne siden fra det publiserte nettstedet'
     Comments: Kommentarer
@@ -97,7 +93,6 @@ nb:
     DEFAULTHOMETITLE: Hjem
     DEPENDENT_NOTE: 'De følgende sidene avhenger av denne siden. Dette inkluderer virtuelle sider, omdirigeringssider og sider med innholdslenker.'
     DependtPageColumnLinkType: Lenketype
-    DependtPageColumnURL: URL
     EDITHEADER: 'Hvem kan redigere dette i kontrollpanelet?'
     EDITORGROUPS: Redaktørgrupper
     EDIT_ALL_DESCRIPTION: 'Rediger hvilken som helst side'
@@ -112,7 +107,6 @@ nb:
     METADESC: Beskrivelse
     METADESCHELP: 'Søkemotorer bruker dette innholdet for å vise søkeresultater (selv om de ikke påvirker rekkefølgen).'
     METAEXTRA: 'Egendefinerte meta-elementer'
-    METAEXTRAHELP: 'HTML-elementer for ekstra metainformasjon. For eksempel <meta name="egetNavn" content="Ditt egendefinerte innhold her" />'
     MODIFIEDONDRAFTHELP: 'Siden har upubliserte forandringer'
     MODIFIEDONDRAFTSHORT: Endret
     MetadataToggle: Metadata

@@ -26,7 +26,6 @@ lt:
     RESTORE_TO_ROOT_DESC: 'Atstatyti suarchyvuotą versiją kaip aukščiausio lygio juodraštinį puslapį'
     ROLLEDBACKPUBv2: 'Sugrįžta prie publikuotos versijos.'
     ROLLEDBACKVERSIONv2: 'Sugrįžta prie  #{version} versijos.'
-    SAVEDRAFT: 'Išsaugoti juodraštį'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Po kitu puslapiu'
     ParentMode_top: 'Aukščiausias lygmuo'
@@ -39,8 +38,6 @@ lt:
     VIEWINGVERSION: 'Dabar peržiūrima versija {version}.'
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: Puslapiai
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Publikuoti puslapiai'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Visi puslapiai'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
@@ -86,7 +83,6 @@ lt:
     BUTTONCANCELDRAFTDESC: 'Ištrinti juodraštį ir grįžti prie šiuo metu publikuojamo puslapio'
     BUTTONPUBLISHED: Publikuota
     BUTTONSAVED: Išsaugota
-    BUTTONSAVEPUBLISH: 'Išsaugoti ir publikuoti'
     BUTTONUNPUBLISH: Nebepublikuoti
     BUTTONUNPUBLISHDESC: 'Pašalinti šį puslapį iš publikuojamos svetainės'
     Comments: Komentarai
@@ -97,7 +93,6 @@ lt:
     DEFAULTHOMETITLE: Pradžia
     DEPENDENT_NOTE: 'Šiam puslapiui priklauso šie puslapiai. Tai gali būti virtualūs, nukreipiantys puslapiai, bei puslapiai, rodantys kitų puslapių turinį.'
     DependtPageColumnLinkType: 'Nuorodos tipas'
-    DependtPageColumnURL: 'URL adresas'
     EDITHEADER: 'Kas gali redaguoti šį puslapį?'
     EDITORGROUPS: 'Redaktorių grupės'
     EDIT_ALL_DESCRIPTION: 'Gali redaguoti puslapį, apeinant puslapio redagavimo teises'
@@ -112,7 +107,6 @@ lt:
     METADESC: 'Meta aprašymas'
     METADESCHELP: 'Paieškos sistemos naudoja šį turinį rodydamos paieškos rezultatus (tačiau tai neturi įtakos paieškos rezultatų reitingui).'
     METAEXTRA: 'Kitos meta žymės'
-    METAEXTRAHELP: 'HTML žymos papildomai meta informacijai. Pavyzdžiui, <meta name="kitaMetaZyme" content="papildomas turinys" />'
     MODIFIEDONDRAFTHELP: 'Puslapyje yra nepublikuoto turinio'
     MODIFIEDONDRAFTSHORT: Pakeistas
     MetadataToggle: Metaduomenys

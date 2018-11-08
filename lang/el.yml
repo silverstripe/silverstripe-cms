@@ -42,7 +42,6 @@ el:
     ADDEDTODRAFTHELP: 'Η σελίδα δεν έχει δημοσιευθεί ακόμη'
     BUTTONPUBLISHED: Δημοσιευμένο
     BUTTONSAVED: Αποθηκεύτηκε
-    BUTTONSAVEPUBLISH: 'Αποθήκευση & δημοσίευση'
     BUTTONUNPUBLISHDESC: 'Αφαίρεση αυτής της σελίδας απο τις δημοσιευμένες'
     Comments: Σχόλια
     Content: Περιεχόμενο
@@ -50,7 +49,6 @@ el:
     DEFAULTCONTACTTITLE: Επικοινωνία
     DEFAULTHOMETITLE: Αρχική
     DependtPageColumnLinkType: 'Τύπος συνδέσμου'
-    DependtPageColumnURL: 'Διεύθυνση URL'
     EDITHEADER: 'Ποιος μπορεί να επεξεργαστεί αυτή τη σελίδα;'
     EDITORGROUPS: 'Ομάδες Συντακτών'
     Editors: 'Ομάδες Συντακτών'

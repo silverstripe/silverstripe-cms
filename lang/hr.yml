@@ -14,13 +14,11 @@ hr:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Pristup ''{title}'' sekciji'
     ACCESS_HELP: 'Dozvoli pregledavati sekcije sadržanog stabla i sadržaja strancie. Dozvole za pregled i uređivanje mogu se mijenjati putem stranicama specifičnim padajućim izbornicima kao i posebnim "Sadržajnim dozvolama".'
-    APPLY_FILTER: Traži
     ARCHIVE: Arhiviraj
     ARCHIVEDPAGE: 'Arhivirane stranice ''{title}'''
     AddNew: 'Dodaj novu stranicu'
     AddNewButton: 'Dodaj novi'
     AddPageRestriction: 'Napomena: neke vrste stranica nisu dozvoljene za ovu sekciju'
-    CLEAR_FILTER: Očisti
     Cancel: Odustani
     ChoosePageParentMode: 'Odaberite gdje želite kreirati ovu stranicu'
     ChoosePageType: 'Odaberi vrstu stranice'
@@ -28,7 +26,6 @@ hr:
     DUPLICATED: 'Dupliciran ''{title}'' uspješno'
     DUPLICATEDWITHCHILDREN: 'Dupliciran ''{title}''  i podstranice uspješno'
     EMAIL: Email
-    ListFiltered: 'Prikazuje rezultate pretraživanja'
     NEWPAGE: 'Novi {pagetype}'
     PAGENOTEXISTS: 'Stranica ne postoji'
     PAGES: 'Status stranice'
@@ -51,7 +48,6 @@ hr:
     ROLLEDBACKPUBv2: 'Vraćeno na objavljenu verziju'
     ROLLEDBACKVERSIONv2: 'Vraćeno na verziju #{version}.'
     SAVED: 'Uspješno spremljen ''{title}'''
-    SAVEDRAFT: 'Spremiti nacrt'
     SHOW_AS_LIST: 'prikaži kao listu'
     TOO_MANY_PAGES: 'Previše stranica'
     TabContent: Sadržaj
@@ -88,8 +84,6 @@ hr:
     ListView: Lista
     MENUTITLE: Stranice
     TreeView: Stablo
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Objavljene stranice'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Izmjenjene stranice'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
@@ -157,7 +151,6 @@ hr:
     BUTTONDELETEDESC: 'Ukloni iz nacrta/objavljeno i pošalji u arhivu'
     BUTTONPUBLISHED: Objavljeno
     BUTTONSAVED: Spremljeno
-    BUTTONSAVEPUBLISH: 'Spremi i objavi'
     BUTTONUNPUBLISH: Odjavi
     BUTTONUNPUBLISHDESC: 'Izbrišite ovu stranicu sa objavljene'
     Comments: Komentari
@@ -169,7 +162,6 @@ hr:
     DEPENDENT_NOTE: 'Sljedeće stranice zavise o ovoj stranici. To uključuje virtualne stranice, preusmjeravajuće stranice i stranice s sadržajnim linkovima.'
     DESCRIPTION: 'Obična sadržajna stranica'
     DependtPageColumnLinkType: 'Tip linka'
-    DependtPageColumnURL: Link
     EDITHEADER: 'Tko može uređivati unutar CMSa?'
     EDITORGROUPS: 'Urednička grupa'
     EDIT_ALL_DESCRIPTION: 'Uredi bilo koju stranicu'
@@ -228,8 +220,6 @@ hr:
     many_many_ImageTracking: 'Praćenje slika'
     many_many_LinkTracking: 'Praćenje linkova'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    BACKLINKCOUNT: 'Korišteno na:'
-    PAGES: stranica(e)
     TITLE_INDEX: '#'
     TITLE_TYPE: Tip
     TITLE_USED_ON: 'Korišteno na'

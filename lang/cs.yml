@@ -14,7 +14,6 @@ cs:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Přístup k ''{title}'' sekci'
     ACCESS_HELP: 'Povolit prohlížení sekce obsahující strukturu a obsah webu. Oprávnění na prohlížení a úpravu mohou být nastavena skrze menu pro samostatnou stránku, také jako jednotlivé oprávnění pro obsah.'
-    APPLY_FILTER: Hledat
     ARCHIVE: Archív
     ARCHIVEDPAGE: 'Archivovaná stránka ''{title}'''
     AddNew: 'Přidat novou stránku'
@@ -25,7 +24,6 @@ cs:
     ArchiveWarningWithChildren: 'Varování: Stránka a její potomkové bude nezveřejněna před odesláním do archívu.\n\nSkutečně to chcete vykonat?'
     ArchiveWarningWithChildrenAndCampaigns: 'Varování: Stránka a její potomkové bude nezveřejněna a automaticky odstraněna z její asociací {NumCampaigns} před odesláním do archívu.\n\nSkutečně to chcete vykonat?'
     CANT_REORGANISE: 'Nemáte oprávnění měnit stránky nejvyšší úrovně. Vaše změna nebyla uložena.'
-    CLEAR_FILTER: Vyčistit
     Cancel: Storno
     ChoosePageParentMode: 'Vyberte, kde vytvořit tuto stránku'
     ChoosePageType: 'Vyberte typ stránky'
@@ -33,7 +31,6 @@ cs:
     DUPLICATED: 'Duplikováno ''{title}'' úspěšně'
     DUPLICATEDWITHCHILDREN: 'Duplikováno ''{title}'' a potomci úspěšně'
     EMAIL: E-mail
-    ListFiltered: 'Zobrazení výsledků vyhledávání.'
     NEWPAGE: 'Nová {pagetype}'
     PAGENOTEXISTS: 'Tato stránka neexistuje'
     PAGES: 'Stav stránky'
@@ -58,7 +55,6 @@ cs:
     ROLLEDBACKPUBv2: 'Vráceno zpět na zveřejněnou verzi.'
     ROLLEDBACKVERSIONv2: 'Vráceno zpět na verzi #{version}.'
     SAVED: 'Uloženo ''{title}'' úspěšně'
-    SAVEDRAFT: 'Uložit koncept'
     SHOW_AS_LIST: 'ukázat jako seznam'
     TOO_MANY_PAGES: 'Příliš mnoho stránek'
     TabContent: Obsah
@@ -96,8 +92,6 @@ cs:
     ListView: 'Pohled seznam'
     MENUTITLE: Stránky
     TreeView: 'Pohled strom'
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Zveřejněné stránky'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Upravené stránky'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
@@ -166,7 +160,6 @@ cs:
     BUTTONDELETEDESC: 'Smazáno z konceptu/webu a odesláno do archivu'
     BUTTONPUBLISHED: Zveřejněno
     BUTTONSAVED: Uloženo
-    BUTTONSAVEPUBLISH: 'Uložit & zveřejnit'
     BUTTONUNPUBLISH: Nezveřejňovat
     BUTTONUNPUBLISHDESC: 'Odstranit tuto stránku z publikovaných na webu'
     Comments: Komentáře
@@ -180,7 +173,6 @@ cs:
     DEPENDENT_NOTE: 'Následující stránky závisí na této stránce. Tyto obsahují virtuální stránky, přesměrovací stránky a stránky s odkazy obsahu.'
     DESCRIPTION: 'Obecný obsah stránky'
     DependtPageColumnLinkType: 'Typ odkazu'
-    DependtPageColumnURL: URL
     EDITHEADER: 'Kdo může tuto stránku editovat?'
     EDITORGROUPS: 'Editor skupin'
     EDIT_ALL_DESCRIPTION: 'Může editovat jakoukoli stránku webu, obcházeje bezpečnostní specifikaci stránky'
@@ -199,7 +191,6 @@ cs:
     METADESC: Popis
     METADESCHELP: 'Krátký popis/perex, který při vyplnění mohou vyhledávače využít ve výsledcích vyhledávání. I když tento popisek nemá přímý vliv na hodnocení stránky, tak může zvýšit míru prokliku (CTR).'
     METAEXTRA: 'Vlastní meta tagy'
-    METAEXTRAHELP: 'HTML tagy pro další meta informace. Například <meta name="vlastnínazev" content="vlastní obsah zde" />'
     MODIFIEDONDRAFTHELP: 'Stránka má nezveřejněné změny'
     MODIFIEDONDRAFTSHORT: Upraveno
     MetadataToggle: Metadata
@@ -246,8 +237,6 @@ cs:
     many_many_ImageTracking: 'Stopování obrázku'
     many_many_LinkTracking: 'Stopování odkazu'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    BACKLINKCOUNT: 'Použito na:'
-    PAGES: stránka(y)
     TITLE_INDEX: '#'
     TITLE_TYPE: Typ
     TITLE_USED_ON: 'Použito na'

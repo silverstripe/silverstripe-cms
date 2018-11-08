@@ -23,7 +23,6 @@ ja:
     RESTORED: '{title}を復旧しました'
     ROLLEDBACKPUBv2: 公開されたバージョンにロールバックされました。
     ROLLEDBACKVERSIONv2: '#{version}. のバージョンにロールバック'
-    SAVEDRAFT: 下書きを保存
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 他のページの下に作成
     ParentMode_top: 最上位層
@@ -36,8 +35,6 @@ ja:
     VIEWINGVERSION: '現在表示しているバージョンは{version}です。'
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: ページ
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 公開済みページ
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 全ページ
   SilverStripe\CMS\Controllers\ContentController:
@@ -80,7 +77,6 @@ ja:
     BUTTONCANCELDRAFTDESC: 草稿と前回公開されたページを削除します
     BUTTONPUBLISHED: 公開された
     BUTTONSAVED: 保存された
-    BUTTONSAVEPUBLISH: 保存と公開
     BUTTONUNPUBLISH: 非公開
     BUTTONUNPUBLISHDESC: 公開サイトから取り除きました
     Comments: コメント
@@ -90,7 +86,6 @@ ja:
     DEFAULTHOMETITLE: ホーム
     DEPENDENT_NOTE: 以下のページでは、このページに依存します。　これには仮想ページ、リダイレクタページ、コンテンツのリンクを持つページが含まれています。
     DependtPageColumnLinkType: リンクの種類
-    DependtPageColumnURL: URL
     EDITHEADER: このページを編集できる人
     EDITORGROUPS: 編集者グループ
     EDIT_ALL_DESCRIPTION: すべてのページを編集
@@ -105,7 +100,6 @@ ja:
     METADESC: 説明
     METADESCHELP: 検索エンジンは、検索結果を表示するためにこのコンテンツを使用します（ランキングには影響しません）。
     METAEXTRA: メタタグをカスタム
-    METAEXTRAHELP: '追加のメタ情報用のHTMLタグ。　たとえば、< メタネーム = "カスタムネーム" コンテンツ = "ここにあなたのカスタムコンテンツ" />'
     MODIFIEDONDRAFTHELP: 公開されていない変更がページにあります
     MODIFIEDONDRAFTSHORT: 修正された
     MetadataToggle: メタデータ

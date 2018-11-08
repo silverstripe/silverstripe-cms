@@ -14,7 +14,6 @@ fr:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: "Accès à la section «\_{title}\_»"
     ACCESS_HELP: 'Autoriser la visualisation de la section contenant l''arborescence et le contenu. Les autorisations de voir ou modifier le contenu peuvent être gérées dans les menus déroulants spécifiques à chaque page, ainsi que dans les "permissions de contenu".'
-    APPLY_FILTER: Rechercher
     ARCHIVE: Archive
     ARCHIVEDPAGE: 'Page ''{title}'' archivée'
     AddNew: 'Ajouter une nouvelle page'
@@ -25,7 +24,6 @@ fr:
     ArchiveWarningWithChildren: 'Attention: cette page et toutes les pages "enfant" seont dépubliées avant d''être archivées.\n\nEtes-vous sûr de vouloir poursuivre?'
     ArchiveWarningWithChildrenAndCampaigns: 'Attention: cette page et toutes les pages "enfant" seront dépubliées et retirées automatiquement des {NumCampaigns} associées avant d''être archivées.\n\nEtes-vous sûr de vouloir poursuivre?'
     CANT_REORGANISE: 'Vous n''avez pas la permission de modifier les pages à la racine du site. Vos modifications n''ont pas été sauvegardées.'
-    CLEAR_FILTER: Effacer
     Cancel: Annuler
     ChoosePageParentMode: 'Choisissez à quel emplacement créer cette page'
     ChoosePageType: 'Choisir le type de page'
@@ -33,12 +31,12 @@ fr:
     DUPLICATED: '''{title}'' dupliqué avec succès'
     DUPLICATEDWITHCHILDREN: '''{title}'' et ses enfants dupliqués avec succès'
     EMAIL: Email
-    ListFiltered: 'Affichage des résultats de la recherche'
     NEWPAGE: 'Nouveau {pagetype}'
     PAGENOTEXISTS: 'Cette page n''existe pas'
     PAGES: 'Statut de la page'
     PAGETYPEANYOPT: Tous
     PAGETYPEOPT: 'Type de page'
+    PAGETYPE_TITLE: '(Type de Page: {type}) {title}'
     PLEASESAVE: 'Merci de sauvegarder la page : elle n''a pas pu être mise à jour car elle n''a pas encore été enregistrée.'
     PUBALLCONFIRM: 'Merci de publier chaque page en copiant le contenu du site brouillon vers le site public'
     PUBALLFUN: 'Fonctionnalité "Tout Publier"'
@@ -58,7 +56,7 @@ fr:
     ROLLEDBACKPUBv2: 'Revenir à la version publiée'
     ROLLEDBACKVERSIONv2: 'Revenir à la version #{version}'
     SAVED: 'Page ''{title}'' sauvegardée avec succès'
-    SAVEDRAFT: 'Sauvegarder le brouillon'
+    SAVEDRAFT: Sauvegarder
     SHOW_AS_LIST: 'Afficher sous forme de liste'
     TOO_MANY_PAGES: 'Pages trop nombreuses'
     TabContent: Contenu
@@ -98,12 +96,12 @@ fr:
     ListView: 'Affichage en liste'
     MENUTITLE: Pages
     TreeView: Arborescence
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Pages publiées'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Page modifiées'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
     Title: 'Toutes les pages, même archivées'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
+    Title: 'Pages publiées'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Toutes les pages'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
@@ -180,7 +178,7 @@ fr:
     BUTTONDELETEDESC: 'Retirer du site public/brouillon et archiver'
     BUTTONPUBLISHED: Publié
     BUTTONSAVED: Sauvegardé
-    BUTTONSAVEPUBLISH: 'Sauvegarder et publier'
+    BUTTONSAVEPUBLISH: Publier
     BUTTONUNPUBLISH: 'Retirer du site publié'
     BUTTONUNPUBLISHDESC: Dépublier
     Comments: Commentaires
@@ -194,7 +192,6 @@ fr:
     DEPENDENT_NOTE: 'Les pages suivantes dépendent de cette page. Ceci inclut les pages virtuelles, les redirections et les pages avec des liens.'
     DESCRIPTION: 'Page au contenu généric'
     DependtPageColumnLinkType: 'Type de lien'
-    DependtPageColumnURL: URL
     EDITHEADER: 'Qui peut modifier cette page?'
     EDITORGROUPS: 'Groupes d''édition'
     EDITOR_GROUPS_FIELD_DESC: 'Groupes avec des autorisations d''édition globales: {groupList}'
@@ -214,7 +211,7 @@ fr:
     METADESC: 'Meta Description'
     METADESCHELP: 'Les moteurs de recherche reprennent cette description dans leurs résultats (bien qu’elle n’ait pas d’influence sur le classement).'
     METAEXTRA: 'Balises Méta personnalisées'
-    METAEXTRAHELP: 'Balises HTML pour des métadonnées supplémentaires. Par exemple <meta name="monNom" content="Mon contenu" />'
+    METAEXTRAHELP: 'Balises HTML pour des informations meta supplémentaires. <meta name="customName" content="your custom content here" /> par exemple.'
     MODIFIEDONDRAFTHELP: 'Des changements effectués sur cette page n''''ont pas été publiés'
     MODIFIEDONDRAFTSHORT: Modifiée
     MetadataToggle: Métadonnées
@@ -265,11 +262,11 @@ fr:
     many_many_ImageTracking: 'Suivi des images'
     many_many_LinkTracking: 'Suivi des Liens'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    BACKLINKCOUNT: 'Utilisé dans:'
-    PAGES: page(s)
     TITLE_INDEX: '#'
     TITLE_TYPE: Type
     TITLE_USED_ON: 'Utilisé dans'
+  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
+    USAGE: Usage
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Page liée'
     DESCRIPTION: 'Affiche le contenu d''une autre page'

@@ -39,6 +39,7 @@ en:
     PAGES: 'Page status'
     PAGETYPEANYOPT: Any
     PAGETYPEOPT: 'Page type'
+    PAGETYPE_TITLE: '(Page type: {type}) {title}'
     PLEASESAVE: 'Please Save Page: This page could not be updated because it hasn''t been saved yet.'
     PUBALLCONFIRM: 'Please publish every page in the site, copying content stage to live'
     PUBALLFUN: '"Publish All" functionality'
@@ -98,12 +99,12 @@ en:
     ListView: 'List View'
     MENUTITLE: Pages
     TreeView: 'Tree View'
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'Published pages'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Modified pages'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including archived'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
+    Title: 'Published pages'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'All pages'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:

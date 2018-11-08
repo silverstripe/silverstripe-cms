@@ -68,7 +68,6 @@ he_IL:
     DEFAULTHOMETITLE: 'דף הבית'
     DEPENDENT_NOTE: 'העמודים הבאים תלויים בעמוד זה. בין אלו נכללים, עמודים וירטואליים, עמודי הפנייה ועמודים עם קישורי תוכן.'
     DependtPageColumnLinkType: 'סוג הקישור'
-    DependtPageColumnURL: קישור
     EDITHEADER: 'מי יכול לערוך עמוד זה?'
     EDITORGROUPS: 'קבוצות עורכים'
     EDIT_ALL_DESCRIPTION: 'עריכת עמוד כלשהו'
@@ -83,7 +82,6 @@ he_IL:
     METADESC: תיאור
     METADESCHELP: 'מנועי החיפוש משתמשים בתוכן זה כדי להציג תוצאות חיפוש (למרות שלא תהיה לכך השפעה על הדירוג שלהם).'
     METAEXTRA: 'תגי על נוספים'
-    METAEXTRAHELP: 'תגיות HTML לנתוני על נוספים. לדוגמה <meta name="שם_מותאם_אישית" content="התוכן שלך כאן" />'
     MODIFIEDONDRAFTHELP: 'בעמוד יש שינויים שלא פורסמו'
     MODIFIEDONDRAFTSHORT: השתנה
     MetadataToggle: 'נתוני על'

@@ -20,7 +20,6 @@ pt:
     RESTORED: '''{title}'' restaurado com sucesso'
     ROLLEDBACKPUBv2: 'Voltar para a versão publicada.'
     ROLLEDBACKVERSIONv2: 'Voltar para a versão #{version}.'
-    SAVEDRAFT: 'Guardar rascunho'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Por cima de outra página'
     ParentMode_top: 'Nível de topo'
@@ -89,7 +88,6 @@ pt:
     METADESC: Descrição
     METADESCHELP: 'Os motores de pesquisa utilizam este conteúdo para apresentar os seus resultados (no entanto não influencia o ranking do site). '
     METAEXTRA: 'Meta-Tags personalizáveis'
-    METAEXTRAHELP: 'HTML tags para informações adicionais. Por exemplo <meta name="nomeDaTag" content="o teu conteúdo personalizado" />'
     MODIFIEDONDRAFTHELP: 'A página contem alterações não publicadas'
     MODIFIEDONDRAFTSHORT: Modificado
     MetadataToggle: Meta-data

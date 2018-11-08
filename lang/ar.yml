@@ -1,8 +1,21 @@
 ar:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISH_PAGES: نشر
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: استعادة
+    RESTORED_PAGES: '%d صفحة تم استعادتها'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISHED_PAGES: '%d صفحة غير منشورة'
+    UNPUBLISH_PAGES: 'الغاء النشر'
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'النفاذ إلى القسم ''{title}'''
     ACCESS_HELP: 'سماح بعرض لقسم يحتوي على صفحة الشجرة والمحتوى. يمكن التعامل معها عرض وتحرير الأذونات من خلال القائمه المنسدله للروابط محددة صفحة، فضلا عن فصل "أذونات المحتوى".'
+    ARCHIVE: أرشفة
+    ARCHIVEDPAGE: 'أرشفة الصفحة ''{title}'''
+    AddNew: 'اضافة صفحة جديدة'
+    AddNewButton: 'اضافة جديد'
     AddPageRestriction: 'ملاحظة: لا يسمح ببعض أنواع الصفحات لهذا الاختيار'
+    Cancel: الغاء
     ChoosePageParentMode: 'اختر مكان إنشاء هذه الصفحة'
     ChoosePageType: 'اختر نوع الصفحة'
     Create: خلق
@@ -10,7 +23,9 @@ ar:
     DUPLICATEDWITHCHILDREN: 'تكرار ''{title}'' والتوابع بنجاح'
     NEWPAGE: '{pagetype} جديد'
     PAGENOTEXISTS: 'هذه الصفحة غير موجودة'
+    PAGES: 'حالة الصفحة'
     PAGETYPEANYOPT: أي
+    PAGETYPEOPT: 'نوع الصفحة'
     PUBALLCONFIRM: 'فضلاً قم بنشر كل صفحة من صفحات الموقع'
     PUBALLFUN: '"نشر الجميع"خاصية '
     PUBPAGES: 'تمّ: نشر {count} صفحات'
@@ -20,21 +35,32 @@ ar:
     RESTORED: 'استعادة ''{title}'' بنجاح'
     ROLLEDBACKPUBv2: 'التراجع إلى النسخة المنشورة.'
     ROLLEDBACKVERSIONv2: 'التراجع إلى النسخة #{version}.'
-    SAVEDRAFT: 'احفظ المسودة'
+    SAVEDRAFT: حفظ
+    SHOW_AS_LIST: 'عرض كقائمة'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'تحت صفحة أخرى'
     ParentMode_top: 'أعلى مستوى'
+    Title: 'اضافة صفحة'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'تعديل الصفحة'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     COMPAREMODE: 'وضع المقارنة (حدد اثنين)'
     REVERTTOTHISVERSION: 'العودة إلى هذا الإصدار'
     SHOWUNPUBLISHED: 'عرض الإصدارات الغير منشورة'
+    UNKNOWN: 'غير معروف'
     VIEW: عرض
     VIEWINGLATEST: 'يقع حاليا عرض أحدث إصدار.'
     VIEWINGVERSION: 'يقع حاليا عرض إصدار  {version}.'
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'تحرير الصفحة'
   SilverStripe\CMS\Controllers\CMSPagesController:
+    ListView: 'عرض كقائمة'
     MENUTITLE: الصفحات
+    TreeView: 'عرض كشجرة'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'كل الصفحات'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'الصفحات المؤرشفة'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'إصدار المعاينة'
     ARCHIVEDSITEFROM: 'موقع تمت أرشفته منذ'
@@ -49,12 +75,19 @@ ar:
     NOTLOGGEDIN: 'لم يتم تسجيل الدخول'
     PUBLISHED: 'تمّ النشر'
     PUBLISHEDSITE: 'موقع منشور'
+    Password: 'كلمة المرور'
     VIEWPAGEIN: 'مشاهدة الصفحة في:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: المؤرشف
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKTEXT: 'نص الرابط'
+    SELECT_PAGE: 'اختيار صفحة'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Cancel: الغاء
     EMPTY: 'الرجاء إدخال مقطع URL أو انقر فوق إلغاء الأمر'
+    Edit: تحرير
     HelpChars: 'يتم تلقائيا تحويل الأحرف الخاصة أو إزالتها.'
+    OK: موافق
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'هذه الصفحة سوف تقوم بتحويل الأعضاء إلى صفحة أخرى'
     OTHERURL: 'رابط موقع آخر'
@@ -74,7 +107,7 @@ ar:
     BUTTONCANCELDRAFTDESC: 'إلغاء المسودة و العودة إلى الموقع المنشور حالياً'
     BUTTONPUBLISHED: نشرت
     BUTTONSAVED: 'تم الحفظ'
-    BUTTONSAVEPUBLISH: 'احفظ وانشر'
+    BUTTONSAVEPUBLISH: نشر
     BUTTONUNPUBLISH: 'غير منشور'
     BUTTONUNPUBLISHDESC: 'حذف هذه الصفحة من الموقع المنشور'
     Comments: التعليقات
@@ -84,7 +117,6 @@ ar:
     DEFAULTHOMETITLE: الرئيسة
     DEPENDENT_NOTE: 'الصفحات التالية تعتمد على هذه الصفحة. وهذا يشمل صفحات الظاهري، وصفحات معيد التوجيه، والصفحات التي تحتوي على روابط المحتوى.'
     DependtPageColumnLinkType: 'نوع الرابط'
-    DependtPageColumnURL: رابط
     EDITHEADER: 'من يستطيع تعديل هذه الصفحة؟'
     EDITORGROUPS: 'مجموعات المحرر'
     EDIT_ALL_DESCRIPTION: 'Can edit any page on the site, bypassing page specific security'
@@ -99,7 +131,6 @@ ar:
     METADESC: الوصف
     METADESCHELP: 'تستخدم محركات البحث هذا المحتوى لعرض نتائج البحث (على الرغم من أنها لن تؤثر على ترتيبها).'
     METAEXTRA: 'تخصيص Meta Tags'
-    METAEXTRAHELP: 'علامات HTML لبيانات وصفية إضافية. على سبيل المثال <meta name="customName" content="your custom content here" />'
     MODIFIEDONDRAFTHELP: 'تحتوي الصفحة على تغييرات غير منشورة'
     MODIFIEDONDRAFTSHORT: 'تم التعديل'
     MetadataToggle: 'البيانات الوصفية'
@@ -121,6 +152,7 @@ ar:
     REORGANISE_HELP: 'إعادة ترتيب الصفحات في  شجرة الموقع من خلال السحب والإسقاط.'
     SHOWINMENUS: 'عرض في قوائم ؟'
     SHOWINSEARCH: 'عرض في البحث ؟'
+    SINGULARNAME: صفحة
     TABBEHAVIOUR: الشسلوك
     TABCONTENT: المحتوى
     TABDEPENDENT: 'الصفحات المعتدة'
@@ -140,6 +172,8 @@ ar:
     many_many_BackLinkTracking: 'متابعة التعقيبات'
     many_many_ImageTracking: 'متابعة الصور'
     many_many_LinkTracking: 'متابعة الروابط'
+  SilverStripe\CMS\Model\SiteTreeFileExtension:
+    TITLE_TYPE: النوع
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'الصفحة المرتبطة'
     EditLink: حرر
@@ -168,9 +202,20 @@ ar:
     ReasonDropdownVPBROKENLINK: 'الصفحة الظاهرية تشير الى صفحة غير موجودة..'
     RedirectorNonExistent: 'معيد توجيه الصفحة يشير الى صفحة غير موجودة..'
     VirtualPageNonExistent: 'الصفحة الظاهرية تشير الى صفحة غير موجودة..'
+  SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
+    BrokenLinksGroupTitle: 'تقارير الروابط المعطوبة'
+  SilverStripe\CMS\Reports\BrokenVirtualPagesReport:
+    ParameterLiveCheckbox: 'عرض الموقع'
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    ContentGroupTitle: 'تقاير المحتوى'
   SilverStripe\CMS\Search\SearchForm:
     FILTERDATEFROM: من
     FILTERDATETO: إلى
+    FILTERLABELTEXT: بحث
     GO: اذهب
     SEARCH: بحث
     SearchResults: 'نتائج البحث'
+  SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask:
+    CHOOSEOPERATION: 'اختر عملية'
+    SELECTALL: 'تحديد الكل'
+    UNSELECTALL: 'الغاء تحديد الكل'

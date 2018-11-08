@@ -8,11 +8,9 @@ fa_IR:
     RESTORE: بازیابی
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'دسترسی به بخش ''{title}'''
-    APPLY_FILTER: جستجو
     ARCHIVE: بایگانی
     ARCHIVEDPAGE: 'صفحه بایگانی شده ''{title}'''
     AddPageRestriction: 'یادداشت: برخی انواع صفحه برای این انتخاب مجاز نیستند.'
-    CLEAR_FILTER: پاک‌کردن
     Cancel: لغو
     ChoosePageParentMode: 'انتخاب کنید کجا این صفحه ایجاد شود'
     ChoosePageType: 'انتخاب نوع صفحه'
@@ -39,7 +37,6 @@ fa_IR:
     ROLLEDBACKPUBv2: 'بازگردانی به نسخه‌ی منتشرشده.'
     ROLLEDBACKVERSIONv2: 'بازگردانی به نسخه‌ی #{version}.'
     SAVED: 'دخیره‌سازی ''{title}'' باموفقیت انجام شد.'
-    SAVEDRAFT: 'ذخیره پیش‌نویس'
     UNPUBLISH_AND_ARCHIVE: 'عدم انتشار و بایگانی'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'افزودن صفحه'
@@ -59,8 +56,6 @@ fa_IR:
     MENUTITLE: 'ویرایش صفحه'
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: صفحات
-  SilverStripe\CMS\Controllers\CMSSIteTreeFilter_PublishedPages:
-    Title: 'صفحات منتشر شده'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'صفحات تغییر یافته'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
@@ -117,7 +112,6 @@ fa_IR:
     BUTTONDELETEDESC: 'حذف از پیش‌نویس/زنده و ارسال به بایگانی'
     BUTTONPUBLISHED: 'منتشر شده'
     BUTTONSAVED: 'ذخیره شده'
-    BUTTONSAVEPUBLISH: 'ذخیره و انتشار'
     BUTTONUNPUBLISH: 'عدم انتشار'
     BUTTONUNPUBLISHDESC: 'حذف این صفحه از سایت منتشر شده'
     Comments: دیدگاه‌ها
@@ -129,7 +123,6 @@ fa_IR:
     DEPENDENT_NOTE: 'صفحات زیر وابسته به این صفحه هستند. شامل صفحات مجازی، هدایت‌گر و صفحاتی با محتوای لینک'
     DESCRIPTION: 'صفحه محتوای عمومی'
     DependtPageColumnLinkType: 'نوع پیوند'
-    DependtPageColumnURL: 'نشانی اینترنتی'
     EDITHEADER: 'چه کسی بتواند این صفحه را ویرایش کند ؟'
     EDITORGROUPS: 'گروه‌های ویرایشگر'
     EDIT_ALL_DESCRIPTION: 'ویرایش هر صفحه‌ای'
