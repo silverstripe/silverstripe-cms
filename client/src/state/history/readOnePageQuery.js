@@ -51,7 +51,11 @@ const config = {
         limit,
         offset: ((page || 1) - 1) * limit,
         page_id: recordId,
-      }
+      },
+      // Never read from the cache. Saved pages should stale the query, and these mutations
+      // happen outside the scope of apollo. This view is loaded asynchronously anyway,
+      // so caching doesn't make any sense until we're full React/GraphQL.
+      fetchPolicy: 'network-only',
     };
   },
   props({

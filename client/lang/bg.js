@@ -7,19 +7,19 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
 } else {
   ss.i18n.addDictionary('bg', {
     "CMS.ALERTCLASSNAME": "Типът на страницата ще бъде обновен, след като тя бъде записана",
-    "CMS.AddSubPage": "Add new page here",
-    "CMS.ConfirmRestoreFromLive": "Are you sure you want to revert draft to when the page was last published?",
-    "CMS.Duplicate": "Duplicate",
-    "CMS.EditPage": "Edit",
-    "CMS.ONLYSELECTTWO": "You can only compare two versions at this time.",
-    "CMS.Restore": "Are you sure you want to restore this page from archive?",
-    "CMS.RestoreToRoot": "Are you sure you want to restore this page from archive?\n\nBecause the parent page is not available this will be restored to the top level.",
-    "CMS.RollbackToVersion": "Do you really want to roll back to version #%s of this page?",
-    "CMS.ShowAsList": "Show children as list",
-    "CMS.ThisPageAndSubpages": "This page and subpages",
-    "CMS.ThisPageOnly": "This page only",
-    "CMS.Unpublish": "Are you sure you want to remove your page from the published site?\n\nThis page will still be available in the sitetree as draft.",
-    "CMS.UpdateURL": "Update URL",
-    "CMS.ViewPage": "View"
+    "CMS.AddSubPage": "Добави нова страница тук",
+    "CMS.ConfirmRestoreFromLive": "Сигурни ли сте, че искате да възстановите чернова, когато страницата е била публикувана за последен път?",
+    "CMS.Duplicate": "Дублирай",
+    "CMS.EditPage": "Редактирай",
+    "CMS.ONLYSELECTTWO": "В момента можете да сравните само две версии.",
+    "CMS.Restore": "Сигурни ли сте, че искате да възстановите страницата от архива?",
+    "CMS.RestoreToRoot": "Сигурни ли сте, че искате да възстановите страницата от архива?\n\nТази страница ще бъде разположена на най-високо ниво в дървото.",
+    "CMS.RollbackToVersion": "Сигурни ли сте, че искате да върнете версия #%s на тази страница?",
+    "CMS.ShowAsList": "Покажи подстраниците в листинг",
+    "CMS.ThisPageAndSubpages": "Тази страница и подстраниците ѝ",
+    "CMS.ThisPageOnly": "Само тази страница",
+    "CMS.Unpublish": "Сигурни ли сте, че искате да премахнете страницата от сайта?\n\nТази страница ще остане като чернова.",
+    "CMS.UpdateURL": "Обнови URL",
+    "CMS.ViewPage": "Преглед"
 });
 }

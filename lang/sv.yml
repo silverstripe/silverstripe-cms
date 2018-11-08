@@ -39,6 +39,7 @@ sv:
     PAGES: Sidstatus
     PAGETYPEANYOPT: 'Vilken som helst'
     PAGETYPEOPT: Sidtyp
+    PAGETYPE_TITLE: '(Sidtyp: {type}) {title}'
     PLEASESAVE: 'Var god spara sidan. Den kan inte uppdateras eftersom den har inte sparats ännu.'
     PUBALLCONFIRM: 'Publicera alla sidor på sajten och kopiera dem till "live"'
     PUBALLFUN: '"Publicera alla"-funktion'
@@ -270,6 +271,12 @@ sv:
     TITLE_USED_ON: 'Använd på'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
     USAGE: Användning
+  SilverStripe\CMS\Model\SiteTreeLink:
+    PLURALNAME: Sidträds-länkar
+    PLURALS:
+      one: 'En sidträds-länk'
+      other: '{count} Sidträds-länkar'
+    SINGULARNAME: Sidträds-länk
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Länkad sida'
     DESCRIPTION: 'Visar innehåll från en annan sida'
