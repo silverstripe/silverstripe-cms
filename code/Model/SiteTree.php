@@ -1727,19 +1727,37 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     /**
      * Get the back-link tracking objects that link to this page
      *
-     * @retun ArrayList|DataObject[]
+     * @return ArrayList|DataObject[]
      */
     public function BackLinkTracking()
     {
         // @todo - Implement PolymorphicManyManyList to replace this
         $list = ArrayList::create();
-        foreach ($this->BackLinks() as $link) {
-            // Ensure parent record exists
-            $item = $link->Parent();
-            if ($item && $item->isInDB()) {
-                $list->push($item);
-            }
+
+        $joinClause = sprintf(
+            "\"%s\".\"ParentID\"=\"ParentRelationTable\".\"ID\"",
+            SiteTreeLink::singleton()->baseTable()
+        );
+
+        // Get the list of back links classes
+        $linkClasses = $this->BackLinks()->exclude(['ParentClass' => null])->columnUnique('ParentClass');
+
+        // Get list of sitreTreelink and join them to the their parent class to make sure we don't get orphan records.
+        foreach ($linkClasses as $linkClass) {
+            $links = $this->BackLinks()
+                ->filter(['ParentClass' => $linkClass])
+                ->innerJoin(
+                    DataObject::singleton($linkClass)->baseTable(),
+                    $joinClause,
+                    'ParentRelationTable'
+                )
+                ->alterDataQuery(function ($query) {
+                    $query->selectField("'Content link'", "DependentLinkType");
+                })
+            ;
+            $list->merge($links);
         }
+
         return $list;
     }
 
@@ -1761,40 +1779,26 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         // We merge all into a regular SS_List, because DataList doesn't support merge
         if ($contentLinks = $this->BackLinkTracking()) {
-            $linkList = new ArrayList();
-            foreach ($contentLinks as $item) {
-                $item->DependentLinkType = 'Content link';
-                $linkList->push($item);
-            }
-            $items->merge($linkList);
+            $items->merge($contentLinks);
         }
 
         // Virtual pages
         if ($includeVirtuals) {
-            $virtuals = $this->VirtualPages();
-            if ($virtuals) {
-                $virtualList = new ArrayList();
-                foreach ($virtuals as $item) {
-                    $item->DependentLinkType = 'Virtual page';
-                    $virtualList->push($item);
-                }
-                $items->merge($virtualList);
-            }
+            $virtuals = $this->VirtualPages()
+                ->alterDataQuery(function ($query) {
+                    $query->selectField("'Virtual page'", "DependentLinkType");
+                });
+            $items->merge($virtuals);
         }
 
         // Redirector pages
         $redirectors = RedirectorPage::get()->where(array(
-            '"RedirectorPage"."RedirectionType"' => 'Internal',
-            '"RedirectorPage"."LinkToID"' => $this->ID
-        ));
-        if ($redirectors) {
-            $redirectorList = new ArrayList();
-            foreach ($redirectors as $item) {
-                $item->DependentLinkType = 'Redirector page';
-                $redirectorList->push($item);
-            }
-            $items->merge($redirectorList);
-        }
+                '"RedirectorPage"."RedirectionType"' => 'Internal',
+                '"RedirectorPage"."LinkToID"' => $this->ID
+            ))->alterDataQuery(function ($query) {
+                $query->selectField("'Redirector page'", "DependentLinkType");
+            });
+        $items->merge($redirectors);
 
         if (class_exists('Subsite')) {
             Subsite::disable_subsite_filter($origDisableSubsiteFilter);
