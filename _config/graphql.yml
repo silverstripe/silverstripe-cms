@@ -10,6 +10,7 @@ SilverStripe\GraphQL\Manager:
             fields: [ID, LastEdited, AbsoluteLink]
             operations:
               copyToStage: true
+              rollback: true
               readOne: true
           SilverStripe\Security\Member:
             fields: [ID, FirstName, Surname]
