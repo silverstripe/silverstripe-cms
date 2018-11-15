@@ -1734,27 +1734,32 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // @todo - Implement PolymorphicManyManyList to replace this
         $list = ArrayList::create();
 
-        $joinClause = sprintf(
-            "\"%s\".\"ParentID\"=\"ParentRelationTable\".\"ID\"",
-            SiteTreeLink::singleton()->baseTable()
-        );
+        $siteTreelinkTable = SiteTreeLink::singleton()->baseTable();
 
         // Get the list of back links classes
-        $linkClasses = $this->BackLinks()->exclude(['ParentClass' => null])->columnUnique('ParentClass');
+        $parentClasses = $this->BackLinks()->exclude(['ParentClass' => null])->columnUnique('ParentClass');
 
         // Get list of sitreTreelink and join them to the their parent class to make sure we don't get orphan records.
-        foreach ($linkClasses as $linkClass) {
-            $links = $this->BackLinks()
-                ->filter(['ParentClass' => $linkClass])
+        foreach ($parentClasses as $parentClass) {
+            $joinClause = sprintf(
+                "\"%s\".\"ParentID\"=\"%s\".\"ID\"",
+                $siteTreelinkTable,
+                $linkTable,
+                DataObject::singleton($parentClass)->baseTable()
+            );
+
+            $links = DataObject::get($parentClass)
                 ->innerJoin(
-                    DataObject::singleton($linkClass)->baseTable(),
-                    $joinClause,
-                    'ParentRelationTable'
+                    $siteTreelinkTable,
+                    $joinClause
                 )
+                ->where([
+                    "\"$siteTreelinkTable\".\"LinkedID\"" => $this->ID,
+                    "\"$siteTreelinkTable\".\"ParentClass\"" => $parentClass,
+                ])
                 ->alterDataQuery(function ($query) {
                     $query->selectField("'Content link'", "DependentLinkType");
-                })
-            ;
+                });
             $list->merge($links);
         }
 
