@@ -1744,7 +1744,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $joinClause = sprintf(
                 "\"%s\".\"ParentID\"=\"%s\".\"ID\"",
                 $siteTreelinkTable,
-                $linkTable,
                 DataObject::singleton($parentClass)->baseTable()
             );
 
