@@ -2081,6 +2081,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             );
         } else {
             $record->doRevertToLive();
+            $record->publishRecursive();
             $message = _t(
                 __CLASS__ . '.ROLLEDBACKPUBv2',
                 "Rolled back to published version."
