@@ -7,7 +7,7 @@ jest.mock('isomorphic-fetch', () =>
 jest.mock('i18n');
 
 import React from 'react';
-import ReactTestUtils from 'react-addons-test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 import { Component as AnchorSelectorField } from '../AnchorSelectorField';
 import anchorSelectorStates from 'state/anchorSelector/AnchorSelectorStates';
 
