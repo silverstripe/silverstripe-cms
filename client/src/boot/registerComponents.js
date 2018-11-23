@@ -1,7 +1,7 @@
 import Injector from 'lib/Injector';
 import AnchorSelectorField from 'components/AnchorSelectorField/AnchorSelectorField';
 import readOnePageQuery from 'state/history/readOnePageQuery';
-import revertToPageVersionMutation from 'state/history/revertToPageVersionMutation';
+import rollbackPageMutation from 'state/history/rollbackPageMutation';
 
 export default () => {
   Injector.component.register('AnchorSelectorField', AnchorSelectorField);
@@ -18,7 +18,14 @@ export default () => {
     'pages-history-revert',
     (updater) => {
       // Add CMS page revert GraphQL mutation to the HistoryViewerToolbar
-      updater.component('HistoryViewerToolbar.VersionedAdmin.HistoryViewer.SiteTree.HistoryViewerVersionDetail', revertToPageVersionMutation, 'PageRevertMutation');
+      updater.component(
+        'HistoryViewerToolbar.VersionedAdmin.HistoryViewer.SiteTree.HistoryViewerVersionDetail',
+        // This was using `copyToStage` incorrectly which also provides from and to stage
+        // arguments. The "rollback" mutation correctly handles relations and is a more consumable
+        // API endpoint.
+        rollbackPageMutation,
+        'PageRevertMutation'
+      );
     }
   );
 };
