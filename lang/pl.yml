@@ -274,8 +274,6 @@ pl:
     TITLE_TYPE: 'Rodzaj strony'
     TITLE_USED_ON: 'Używany na:'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    BACKLINKCOUNT: 'Używany na:'
-    PAGES: stron(y)
     USAGE: Używane
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Linkowana strona'

@@ -6,7 +6,7 @@
     "test": "tests"
   },
   "engines": {
-    "node": "^6.x"
+    "node": "^10.x"
   },
   "scripts": {
     "build": "yarn && yarn test && NODE_ENV=production webpack -p --bail --progress",
@@ -32,30 +32,34 @@
   },
   "homepage": "https://github.com/silverstripe/silverstripe-cms#readme",
   "dependencies": {
-    "babel-loader": "^7.0.0",
-    "babel-polyfill": "^6.26.0",
-    "bootstrap": "4.1.2",
+    "apollo-client": "^2.4.2",
+    "bootstrap": "^4.1.3",
     "classnames": "^2.2.5",
     "deep-freeze-strict": "^1.1.1",
-    "graphql-tag": "^0.1.17",
-    "isomorphic-fetch": "https://registry.npmjs.org/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz",
+    "graphql": "^14.0.0",
+    "graphql-tag": "^2.10.0",
+    "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.2.1",
+    "popper.js": "^1.14.4",
     "prop-types": "^15.6.2",
-    "react": "15.3.1",
-    "react-addons-test-utils": "15.3.1",
-    "react-apollo": "^0.7.0",
-    "react-dom": "15.3.1",
-    "react-redux": "^4.4.1",
-    "react-select": "^1.0.0-rc.5",
-    "reactstrap": "5.0.0-beta",
-    "redux": "^3.3.1",
-    "redux-form": "^6.0.2"
+    "react": "^16.6.1",
+    "react-apollo": "^2.1.11",
+    "react-dom": "^16.6.1",
+    "react-redux": "^5.0.7",
+    "react-select": "^1.3",
+    "reactstrap": "^6.4.0",
+    "redux": "^4.0.0",
+    "redux-form": "^7.4.2"
   },
   "devDependencies": {
     "@silverstripe/eslint-config": "0.0.5",
-    "@silverstripe/webpack-config": "^0.12.0",
-    "babel-jest": "^20.0.3",
-    "jest-cli": "^19.0.2"
+    "@silverstripe/webpack-config": "^1.0.0",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^7.0.0",
+    "babel-polyfill": "^6.26.0",
+    "jest-cli": "^23.6.0",
+    "webpack": "^2.0.0"
   },
   "jest": {
     "roots": [

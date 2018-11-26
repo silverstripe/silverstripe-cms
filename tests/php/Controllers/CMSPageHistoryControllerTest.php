@@ -5,6 +5,7 @@ namespace SilverStripe\CMS\Tests\Controllers;
 use SilverStripe\CMS\Controllers\CMSPageHistoryController;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
+use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Forms\FieldGroup;
 use SilverStripe\Forms\FieldList;
@@ -25,6 +26,11 @@ class CMSPageHistoryControllerTest extends FunctionalTest
     public function setUp()
     {
         parent::setUp();
+
+        Injector::inst()->registerService(
+            new CMSPageHistoryController(),
+            CMSPageHistoryController::class
+        );
 
         $this->loginWithPermission('ADMIN');
 

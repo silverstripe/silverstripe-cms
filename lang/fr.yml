@@ -39,6 +39,7 @@ fr:
     PAGES: 'Statut de la page'
     PAGETYPEANYOPT: Tous
     PAGETYPEOPT: 'Type de page'
+    PAGETYPE_TITLE: '(Type de Page: {type}) {title}'
     PLEASESAVE: 'Merci de sauvegarder la page : elle n''a pas pu être mise à jour car elle n''a pas encore été enregistrée.'
     PUBALLCONFIRM: 'Merci de publier chaque page en copiant le contenu du site brouillon vers le site public'
     PUBALLFUN: 'Fonctionnalité "Tout Publier"'
@@ -270,6 +271,12 @@ fr:
     TITLE_USED_ON: 'Utilisé dans'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
     USAGE: Usage
+  SilverStripe\CMS\Model\SiteTreeLink:
+    PLURALNAME: 'Liens Site Tree'
+    PLURALS:
+      one: 'Un Lien Site Tree'
+      other: '{count} Liens Site Tree'
+    SINGULARNAME: 'Lien Site Tree'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Page liée'
     DESCRIPTION: 'Affiche le contenu d''une autre page'

@@ -39,6 +39,7 @@ it:
     PAGES: 'Stato pagina'
     PAGETYPEANYOPT: Qualsiasi
     PAGETYPEOPT: 'Tipo di pagina'
+    PAGETYPE_TITLE: '(Pagina tipo: {type}) {title}'
     PLEASESAVE: 'Per favore salvare la pagina: potrebbe non venire aggiornata perché non è ancora stata salvata.'
     PUBALLCONFIRM: 'Per favore pubblica ogni singola pagina nel sito, copiando i contenuti da ''bozza'' a ''pubblicato''.'
     PUBALLFUN: 'Funzione "Pubblica tutto"'
@@ -58,6 +59,7 @@ it:
     ROLLEDBACKPUBv2: 'Ripristinata la versione pubblicata.'
     ROLLEDBACKVERSIONv2: 'Ripristinata la versione #{version}.'
     SAVED: '''{title}'' salvata correttamente.'
+    SAVEDRAFT: Salva
     SHOW_AS_LIST: 'Mostra come lista'
     TOO_MANY_PAGES: 'Troppe pagine'
     TabContent: Contenuto
@@ -101,6 +103,8 @@ it:
     Title: 'Pagine modificate'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
     Title: 'Tutte le pagine, comprese quelle archiviate'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
+    Title: 'Pagine pubblicate'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Tutte le pagine'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
@@ -177,6 +181,7 @@ it:
     BUTTONDELETEDESC: 'Rimuove da bozza/live e manda all''archivio'
     BUTTONPUBLISHED: Pubblicato
     BUTTONSAVED: Salvato
+    BUTTONSAVEPUBLISH: Pubblica
     BUTTONUNPUBLISH: Nascondere
     BUTTONUNPUBLISHDESC: 'Rimuovi questa pagina dal sito pubblicato'
     Comments: Commenti
@@ -210,6 +215,7 @@ it:
     METADESC: Descrizione
     METADESCHELP: 'I motori di ricerca utilizzano questo contenuto per visualizzare i risultati (ma non ne influenza la posizione)'
     METAEXTRA: 'Meta tag personalizzati'
+    METAEXTRAHELP: 'Tag HTML per meta informazioni addizionali. Esempio: <meta name="customName" content="your custom content here" />'
     MODIFIEDONDRAFTHELP: 'La pagina ha modifiche nascoste'
     MODIFIEDONDRAFTSHORT: Modificata
     MetadataToggle: Metadati
@@ -263,6 +269,14 @@ it:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Usato in'
+  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
+    USAGE: Uso
+  SilverStripe\CMS\Model\SiteTreeLink:
+    PLURALNAME: 'Collegamenti Albero Sito'
+    PLURALS:
+      one: 'Un Collegamento Albero Sito'
+      other: '{count} Collegamenti Albero Sito'
+    SINGULARNAME: 'Collegamento Albero Sito'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Pagina collegata'
     DESCRIPTION: 'Mostra il contenuto di un''altra pagina'

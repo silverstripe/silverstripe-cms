@@ -48,6 +48,8 @@ class InternalLinkFormFactory extends LinkFormFactory
             $fields->insertAfter('PageID', TextField::create('Text', _t(__CLASS__.'.LINKTEXT', 'Link text')));
         }
 
+        $this->extend('updateFormFields', $fields, $controller, $name, $context);
+
         return $fields;
     }
 

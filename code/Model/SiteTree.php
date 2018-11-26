@@ -2738,7 +2738,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $treeTitle = sprintf(
             "<span class=\"jstree-pageicon page-icon class-%s\"></span><span class=\"item\" data-allowedchildren=\"%s\">%s</span>",
             Convert::raw2htmlid(static::class),
-            Convert::raw2att(Convert::raw2json($children)),
+            Convert::raw2att(json_encode($children)),
             Convert::raw2xml(str_replace(array("\n","\r"), "", $this->MenuTitle))
         );
         foreach ($flags as $class => $data) {
