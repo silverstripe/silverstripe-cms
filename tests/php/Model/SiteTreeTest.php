@@ -1817,7 +1817,7 @@ class SiteTreeTest extends SapphireTest
         // END DRAFT
 
         // BEGIN PUBLISHED
-        $page->doPublish();
+        $page->publishRecursive();
         $actions = $page->getCMSActions();
         $this->assertNull(
             $actions->fieldByName('MajorActions.action_save'),
@@ -1936,7 +1936,7 @@ class SiteTreeTest extends SapphireTest
         // END DRAFT
 
         // BEGIN PUBLISHED
-        $page->doPublish();
+        $page->publishRecursive();
         $actions = $page->getCMSActions();
 
         $this->assertEmpty(
