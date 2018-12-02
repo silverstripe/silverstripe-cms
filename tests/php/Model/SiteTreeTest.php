@@ -1576,4 +1576,11 @@ class SiteTreeTest extends SapphireTest
         $title = $siteTree->getTreeTitle();
         $this->assertNotNull($title);
     }
+
+    public function testDependentPagesOnUnsavedRecord()
+    {
+        $record = new SiteTree();
+        $pages = $record->DependentPages();
+        $this->assertCount(0, $pages, 'Unsaved pages should have no dependent pages');
+    }
 }

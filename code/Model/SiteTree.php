@@ -1779,7 +1779,12 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         // Content links
-        $items = new ArrayList();
+        $items = ArrayList::create();
+
+        // If the record hasn't been written yet, it cannot be depended on yet
+        if (!$this->isInDB()) {
+            return $items;
+        }
 
         // We merge all into a regular SS_List, because DataList doesn't support merge
         if ($contentLinks = $this->BackLinkTracking()) {
