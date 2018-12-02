@@ -5,6 +5,7 @@ namespace SilverStripe\CMS\Tests\Controllers;
 use Page;
 use SilverStripe\CMS\Controllers\CMSPageHistoryController;
 use SilverStripe\Control\Controller;
+use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Forms\FieldGroup;
@@ -31,6 +32,9 @@ class CMSPageHistoryControllerTest extends FunctionalTest
             new CMSPageHistoryController(),
             CMSPageHistoryController::class
         );
+
+        // Bump to avoid loading any customised controllers
+        Config::modify()->set(CMSPageHistoryController::class, 'url_priority', 50);
 
         $this->loginWithPermission('ADMIN');
 
