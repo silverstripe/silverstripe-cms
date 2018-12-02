@@ -299,7 +299,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * @config
      * @var string
      */
-    private static $meta_generator = 'SilverStripe - http://silverstripe.org';
+    private static $meta_generator = 'SilverStripe - https://www.silverstripe.org';
 
     protected $_cache_statusFlags = null;
 
