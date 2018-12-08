@@ -2025,6 +2025,41 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         return $fields;
     }
 
+    /**
+     * Quick way to add some fields to the CMSFields
+     *
+     * @param array $fieldsAsArray - list of fields to include, may include has_one, has_many, etc... e.g. `BackgroundImage`
+     * @param string $tabName - name of the tab to which they are to be adde, e.g. `MoreFields`
+     * @param null|FieldList - the existing CMSFields (or other FieldList) - OPTIONAL 
+     *
+     * @return FieldList
+     */
+    public function addFieldsToTab(array $fieldsAsArray, $tabName = '', $fieldList = null)
+    {
+            $fieldsToAdd = $this->scaffoldFormFields(
+                [
+                    'tabbed' => false,
+                    'includeRelations' => true,
+                    'restrictFields' => $fieldsAsArray,
+                    'ajaxSafe' => true
+                ]
+            );
+            if($fieldList === null) {
+                $fieldList = $this->getCMSFields();   
+            }
+            if($tabName === '') {
+                $tabName = _t(
+                    __CLASS__ . '.EXRA_FIELDS',
+                    "ExtraFields"
+                )
+            }
+            $fields->addFieldsToTab(
+                'Root.'.$tabName,
+                $fieldsToAdd
+            );
+            
+            return $fieldList;
+    }
 
     /**
      * Returns fields related to configuration aspects on this record, e.g. access control. See {@link getCMSFields()}
