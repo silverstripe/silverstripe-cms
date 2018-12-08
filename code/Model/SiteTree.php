@@ -2051,7 +2051,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 $tabName = _t(
                     __CLASS__ . '.EXRA_FIELDS',
                     "ExtraFields"
-                )
+                );
             }
             $fields->addFieldsToTab(
                 'Root.'.$tabName,
