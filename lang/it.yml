@@ -14,7 +14,6 @@ it:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Accesso alla sezione ''{title}'''
     ACCESS_HELP: 'Consente la visualizzazione della sezione con l''albero delle pagine e i contenuti. I permessi di visualizzazione e modifica possono essere gestiti attraverso menù a tendina specifici della pagina, come dai separati "Permessi sui contenuti".'
-    APPLY_FILTER: Cerca
     ARCHIVE: Archivia
     ARCHIVEDPAGE: 'Pagina ''{title}'' archiviata'
     AddNew: 'Aggiungi nuova pagina'
@@ -25,7 +24,6 @@ it:
     ArchiveWarningWithChildren: 'Attenzione: Questa pagina e tutte le pagine discendenti saranno nascoste prima di essere archiviate.\n\nSei sicuro di voler continuare?'
     ArchiveWarningWithChildrenAndCampaigns: 'Attenzione: Questa pagina e tutte le pagine discendenti saranno nascoste e automaticamente rimosse da {NumCampaigns} prima di essere archiviate.\n\nSei sicuro di voler continuare?'
     CANT_REORGANISE: 'Non hai i permessi per modificare le pagine di primo livello. Le modifiche non sono state salvate.'
-    CLEAR_FILTER: Annulla
     Cancel: Annulla
     ChoosePageParentMode: 'Scegli dove creare questa pagina'
     ChoosePageType: 'Scegli tipo di pagina'
@@ -33,7 +31,6 @@ it:
     DUPLICATED: '''{title}'' duplicato correttamente'
     DUPLICATEDWITHCHILDREN: '''{title}'' e figlie duplicate con successo'
     EMAIL: Email
-    ListFiltered: 'Visualizzazione risultati ricerca.'
     NEWPAGE: 'Nuova {pagetype}'
     PAGENOTEXISTS: 'Questa pagina non esiste'
     PAGES: 'Stato pagina'
@@ -195,7 +192,6 @@ it:
     DEPENDENT_NOTE: 'Le seguenti pagine dipendono da questa pagina. Queste includono pagine virtuali, pagine di redirezione e pagine con link nel contenuto.'
     DESCRIPTION: 'Pagina di contenuto generico'
     DependtPageColumnLinkType: 'Tipo di link'
-    DependtPageColumnURL: URL
     EDITHEADER: 'Chi può modificare questa pagina?'
     EDITORGROUPS: 'Gruppi di editori'
     EDITOR_GROUPS_FIELD_DESC: 'Gruppi con permessi di modifica globale: {groupList}'

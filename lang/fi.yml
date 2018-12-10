@@ -14,7 +14,6 @@ fi:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Pääsy ''{title}'' -osioon'
     ACCESS_HELP: 'Oikeuttaa näkemään osion, joka sisältää sivurakenteen ja sisällön. Katselu- ja muokkausoikeuksia voidaan käsitellä sivukohtaisten pudotusvalikoiden kautta, kuten myös erillisestä "Sisällön oikeudet"-kohdasta.'
-    APPLY_FILTER: Haku
     ARCHIVE: Arkistoi
     ARCHIVEDPAGE: 'Arkistoitiin sivu ''{title}'''
     AddNew: 'Lisää uusi sivu'
@@ -25,7 +24,6 @@ fi:
     ArchiveWarningWithChildren: 'Varoitus: Tämä sivu ja kaikki sen alasivut poistetaan julkaisusta ennen arkistointia.\n\nHaluatko varmasti jatkaa?'
     ArchiveWarningWithChildrenAndCampaigns: 'Varoitus: Tämä sivu ja kaikki sen alasivut poistetaan julkaisusta sekä poistetaan liitetyt kampanjat {NumCampaigns} ennen arkistointia.\n\nHaluatko varmasti jatkaa?'
     CANT_REORGANISE: 'Sinulla ei ole oikeuksia mennä ylemmän tason sivuille. Muutoksiasi ei tallennettu.'
-    CLEAR_FILTER: Tyhjennä
     Cancel: Peruuta
     ChoosePageParentMode: 'Valitse kohde, minne sivu luodaan'
     ChoosePageType: 'Valitse sivutyyppi'
@@ -33,7 +31,6 @@ fi:
     DUPLICATED: '''{title}''  monistettu onnistuneesti'
     DUPLICATEDWITHCHILDREN: '''{title}'' ja alasivu monistettiin onnistuneesti'
     EMAIL: Sähköposti
-    ListFiltered: 'Näytetään hakutulokset.'
     NEWPAGE: 'Uusi {pagetype}'
     PAGENOTEXISTS: 'Tätä sivua ei ole olemassa'
     PAGES: 'Sivun tila'
@@ -195,7 +192,6 @@ fi:
     DEPENDENT_NOTE: 'Seuraavat sivut riippuvat tästä sivusta. Tämä pitää sisällään virtuaaliset sivut, uudelleenohjaussivut ja sivut sisältölinkkien kanssa.'
     DESCRIPTION: 'Yleinen sisältösivu'
     DependtPageColumnLinkType: 'Linkin tyyppi'
-    DependtPageColumnURL: URL
     EDITHEADER: 'Kuka voi muokata tätä CMS:ssä?'
     EDITORGROUPS: 'Muokkaa ryhmiä'
     EDITOR_GROUPS_FIELD_DESC: 'Ryhmät, joilla laajat muokkausoikeudet: {groupList}'

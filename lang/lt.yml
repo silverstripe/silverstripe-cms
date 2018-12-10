@@ -93,7 +93,6 @@ lt:
     DEFAULTHOMETITLE: Pradžia
     DEPENDENT_NOTE: 'Šiam puslapiui priklauso šie puslapiai. Tai gali būti virtualūs, nukreipiantys puslapiai, bei puslapiai, rodantys kitų puslapių turinį.'
     DependtPageColumnLinkType: 'Nuorodos tipas'
-    DependtPageColumnURL: 'URL adresas'
     EDITHEADER: 'Kas gali redaguoti šį puslapį?'
     EDITORGROUPS: 'Redaktorių grupės'
     EDIT_ALL_DESCRIPTION: 'Gali redaguoti puslapį, apeinant puslapio redagavimo teises'

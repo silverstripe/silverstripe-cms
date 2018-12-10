@@ -26,17 +26,18 @@ class ContentControllerSearchExtension extends Extension
      */
     public function SearchForm()
     {
-        $searchText =  _t('SilverStripe\\CMS\\Search\\SearchForm.SEARCH', 'Search');
-
+        $searchText = '';
         if ($this->owner->getRequest() && $this->owner->getRequest()->getVar('Search')) {
             $searchText = $this->owner->getRequest()->getVar('Search');
         }
 
-        $fields = new FieldList(
-            new TextField('Search', false, $searchText)
+        $placeholder = _t('SilverStripe\\CMS\\Search\\SearchForm.SEARCH', 'Search');
+        $fields = FieldList::create(
+            TextField::create('Search', false, $searchText)
+                ->setAttribute('placeholder', $placeholder)
         );
-        $actions = new FieldList(
-            new FormAction('results', _t('SilverStripe\\CMS\\Search\\SearchForm.GO', 'Go'))
+        $actions = FieldList::create(
+            FormAction::create('results', _t('SilverStripe\\CMS\\Search\\SearchForm.GO', 'Go'))
         );
         /** @skipUpgrade */
         $form = SearchForm::create($this->owner, 'SearchForm', $fields, $actions);

@@ -14,7 +14,6 @@ nl:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Toegang tot het ''{title}'' gedeelte'
     ACCESS_HELP: 'Bevoegdheid om paginastructuur en inhoud te bekijken. Bekijk- en bewerkingstoestemmingen kunnen worden toegekend met pagina-specifieke menu''s en het aparte "Inhoudsmachtigingen".'
-    APPLY_FILTER: Zoeken
     ARCHIVE: Archief
     ARCHIVEDPAGE: 'Pagina ''%s'' is gearchiveerd'
     AddNew: 'Voeg nieuwe pagina toe'
@@ -25,7 +24,6 @@ nl:
     ArchiveWarningWithChildren: 'Let op: deze pagina en alle bijbehorende subpagina''s worden van de gepubliceerde site verwijderd voordat ze worden gearchiveerd.\n\nWeet u zeker dat u wilt doorgaan?'
     ArchiveWarningWithChildrenAndCampaigns: 'Let op: deze pagina en alle bijbehorende subpagina''s worden automatisch van de gepubliceerde site én uit alle campagnes verwijderd, voordat ze worden gearchiveerd.\n\nWeet u zeker dat u wilt doorgaan?'
     CANT_REORGANISE: 'U hebt onvoldoende rechten om pagina''s op het topniveau te wijzigen. Uw wijziging is niet opgeslagen.'
-    CLEAR_FILTER: Wissen
     Cancel: Annuleren
     ChoosePageParentMode: 'Kies waar u deze pagina wilt aanmaken'
     ChoosePageType: 'Kies een pagina type'
@@ -33,7 +31,6 @@ nl:
     DUPLICATED: '''{title}'' met succes gedupliceerd'
     DUPLICATEDWITHCHILDREN: '''{title}'' en onderliggende items met succes gedupliceerd'
     EMAIL: E-mail
-    ListFiltered: 'Zoekresultaten worden getoond.'
     NEWPAGE: 'Nieuwe {pagetype}'
     PAGENOTEXISTS: 'Deze pagina bestaat niet'
     PAGES: 'Pagina status'
@@ -195,7 +192,6 @@ nl:
     DEPENDENT_NOTE: 'De volgende pagina''s zijn afhankelijk van deze pagina. Hieronder vallen virtuele pagina''s, verwijzingspagina''s en pagina''s met links in hun inhoud.'
     DESCRIPTION: 'Algemene pagina'
     DependtPageColumnLinkType: Linktype
-    DependtPageColumnURL: URL
     EDITHEADER: 'Wie kan deze pagina wijzigen?'
     EDITORGROUPS: Redacteursgroepen
     EDITOR_GROUPS_FIELD_DESC: 'Groepen die alles mogen bewerken: {groupList}'

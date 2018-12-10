@@ -14,7 +14,6 @@ sv:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Tillgång till sektionen ''{title}'''
     ACCESS_HELP: 'Tillåt visning av sektionen innehållande sidträdet och dess innehåll. Rättigheter att visa och redigera sidan kan hanteras i dess rullgardinsmenyer, liksom i "Innehållsbehörigheter".'
-    APPLY_FILTER: Sök
     ARCHIVE: Arkiv
     ARCHIVEDPAGE: 'Arkiverade sidor ''{title}'''
     AddNew: 'Skapa ny sida'
@@ -25,7 +24,6 @@ sv:
     ArchiveWarningWithChildren: 'Varning: Denna sida och alla dess undersidor kommer att avpubliceras innan de arkiveras.\n\nÄr du säker på att du vill fortsätta?'
     ArchiveWarningWithChildrenAndCampaigns: 'Varning: Denna sida och alla dess undersidor kommer att avpubliceras och automatiskt raderas från associerade {NumCampaigns} innan de arkiveras.\n\nÄr du säker på att du vill fortsätta?'
     CANT_REORGANISE: 'Du har inte tillstånd att ändra sidor på toppnivå. Dina ändringar har inte sparats.'
-    CLEAR_FILTER: Rensa
     Cancel: Avbryt
     ChoosePageParentMode: 'Välj var du vill skapa denna sida'
     ChoosePageType: 'Välj sidtyp'
@@ -33,7 +31,6 @@ sv:
     DUPLICATED: 'Duplicerade ''{title}'' utan problem'
     DUPLICATEDWITHCHILDREN: 'Duplicerade ''{title}'' och undersidor utan problem'
     EMAIL: E-post
-    ListFiltered: 'Visar sökresultat.'
     NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Den här sidan finns inte'
     PAGES: Sidstatus
@@ -195,7 +192,6 @@ sv:
     DEPENDENT_NOTE: 'Följande sidor berörs av den här sidan. Inklusive virtuella sidor, omdirigeringssidor, och sidor med innehållslänkar.'
     DESCRIPTION: 'Generisk innehållssida'
     DependtPageColumnLinkType: Länktyp
-    DependtPageColumnURL: URL
     EDITHEADER: 'Vem kan redigera den här sidan?'
     EDITORGROUPS: Redaktörsgrupper
     EDITOR_GROUPS_FIELD_DESC: 'Grupper med globala editerings-rättigheter: {groupList}'

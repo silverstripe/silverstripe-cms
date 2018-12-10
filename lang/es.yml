@@ -14,13 +14,11 @@ es:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Acceso a la sección ''{title}'''
     ACCESS_HELP: 'Permitir la visualización de la sección que contiene el árbol de la página y el contenido. Ver y editar permisos puede ser gestionado a través de menús desplegables específicos de las páginas, así como los "permisos de contenido" separados.'
-    APPLY_FILTER: Buscar
     ARCHIVE: Archivar
     ARCHIVEDPAGE: '''{title}'' páginas archivadas'
     AddNew: 'Agregar nueva página'
     AddNewButton: 'Agregar nuevo'
     AddPageRestriction: 'Agregar restricción a la página'
-    CLEAR_FILTER: Limpiar
     Cancel: Cancelar
     ChoosePageParentMode: 'Elegir donde crear esta página'
     ChoosePageType: 'Elegir tipo de página'
@@ -180,7 +178,6 @@ es:
     DEPENDENT_NOTE: 'Las siguientes páginas dependen de esta página. Esto incluye páginas virtuales, páginas de redireccionamiento, y las páginas con enlaces de contenido.'
     DESCRIPTION: 'Página de contenido genérico'
     DependtPageColumnLinkType: 'Tipo de enlace'
-    DependtPageColumnURL: 'Depende de'
     EDITHEADER: '¿Quién puede editar esta página?'
     EDITORGROUPS: 'Grupos de Editor'
     EDIT_ALL_DESCRIPTION: 'Editar cualquier página'
