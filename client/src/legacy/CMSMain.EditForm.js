@@ -242,7 +242,8 @@ $.entwine('ss', function($){
         return false;
       }
 
-      // Continue
+      // Add a loading indicator and continue
+      this.parents('form:first').addClass('loading');
       return this._super(e);
     }
   });
@@ -267,10 +268,11 @@ $.entwine('ss', function($){
 				.replace(/\\n/g, '\n');
 
 			if(confirm(message)) {
+        // Add a loading indicator and continue
+        this.parents('form:first').addClass('loading');
 				return this._super(e);
-			} else {
-				return false;
 			}
+      return false;
 		}
 	});
 
@@ -297,10 +299,11 @@ $.entwine('ss', function($){
 				version
 			);
 			if(confirm(message)) {
+        // Add a loading indicator and continue
+        this.parents('form:first').addClass('loading');
 				return this._super(e);
-			} else {
-				return false;
 			}
+			return false;
 		}
 	});
 
@@ -323,10 +326,11 @@ $.entwine('ss', function($){
 				version
 			);
 			if(confirm(message)) {
+        // Add a loading indicator and continue
+        this.parents('form:first').addClass('loading');
 				return this._super(e);
-			} else {
-				return false;
 			}
+			return false;
 		}
 	});
 
