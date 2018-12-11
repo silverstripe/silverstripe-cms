@@ -54,7 +54,6 @@ bg:
     ROLLEDBACKPUBv2: 'Беше върнато до публикуваната версия'
     ROLLEDBACKVERSIONv2: 'Беше върната версия #{version}.'
     SAVED: 'Страница ''{title}'' беше записана успешно.'
-    SAVEDRAFT: Запис
     SHOW_AS_LIST: 'покажи в списък'
     TOO_MANY_PAGES: 'Твърде много страници'
     TabContent: Съдържание
@@ -175,7 +174,6 @@ bg:
     BUTTONDELETEDESC: 'Премахни от чернова/публикация и запиши в архива'
     BUTTONPUBLISHED: Публикувана
     BUTTONSAVED: Записана
-    BUTTONSAVEPUBLISH: Публикувай
     BUTTONUNPUBLISH: 'Премахни от публикация'
     BUTTONUNPUBLISHDESC: 'Премахни тази страница от публикувания сайт'
     Comments: Коментари
@@ -261,14 +259,6 @@ bg:
     TITLE_INDEX: '#'
     TITLE_TYPE: Тип
     TITLE_USED_ON: 'Използвано в'
-  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    USAGE: Употреба
-  SilverStripe\CMS\Model\SiteTreeLink:
-    PLURALNAME: 'Връзки към Дървото на сайта'
-    PLURALS:
-      one: 'Връзка към Дървото на сайта'
-      other: '{count} връзки към Дървото на сайта'
-    SINGULARNAME: 'Връзка към Дървото на сайта'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Свързани страници'
     DESCRIPTION: 'Показва съдържанието на друга страница'
