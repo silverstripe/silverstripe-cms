@@ -59,7 +59,7 @@ en:
     ROLLEDBACKPUBv2: 'Rolled back to published version.'
     ROLLEDBACKVERSIONv2: 'Rolled back to version #{version}.'
     SAVED: 'Saved ''{title}'' successfully.'
-    SAVEDRAFT: Save
+    SAVEDRAFT: 'Save draft'
     SHOW_AS_LIST: 'show as list'
     TOO_MANY_PAGES: 'Too many pages'
     TabContent: Content
@@ -181,7 +181,7 @@ en:
     BUTTONDELETEDESC: 'Remove from draft/live and send to archive'
     BUTTONPUBLISHED: Published
     BUTTONSAVED: Saved
-    BUTTONSAVEPUBLISH: Publish
+    BUTTONSAVEPUBLISH: 'Save & publish'
     BUTTONUNPUBLISH: Unpublish
     BUTTONUNPUBLISHDESC: 'Remove this page from the published site'
     Comments: Comments
@@ -266,13 +266,11 @@ en:
     many_many_ImageTracking: 'Image Tracking'
     many_many_LinkTracking: 'Link Tracking'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
+    BACKLINKCOUNT: 'Used on:'
+    PAGES: page(s)
     TITLE_INDEX: '#'
     TITLE_TYPE: Type
     TITLE_USED_ON: 'Used on'
-  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    BACKLINKCOUNT: 'Used on:'
-    PAGES: page(s)
-    USAGE: Usage
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Linked Page'
     DESCRIPTION: 'Displays the content of another page'

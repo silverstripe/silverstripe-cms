@@ -56,7 +56,6 @@ sv:
     ROLLEDBACKPUBv2: 'Återställde till den publicerade versionen.'
     ROLLEDBACKVERSIONv2: 'Återställde till version #{version}.'
     SAVED: 'Sparade  ''{title}'' lyckades.'
-    SAVEDRAFT: Spara
     SHOW_AS_LIST: 'visa som lista'
     TOO_MANY_PAGES: 'För många sidor'
     TabContent: Innehåll
@@ -178,7 +177,6 @@ sv:
     BUTTONDELETEDESC: 'Radera från utkast och live, och lägg till i arkiv'
     BUTTONPUBLISHED: Publicerad
     BUTTONSAVED: Sparad
-    BUTTONSAVEPUBLISH: Publicera
     BUTTONUNPUBLISH: Avpublicera
     BUTTONUNPUBLISHDESC: 'Ta bort den här sidan från den publicerade sajten'
     Comments: Kommentarer
@@ -265,14 +263,6 @@ sv:
     TITLE_INDEX: '#'
     TITLE_TYPE: Typ
     TITLE_USED_ON: 'Använd på'
-  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    USAGE: Användning
-  SilverStripe\CMS\Model\SiteTreeLink:
-    PLURALNAME: Sidträds-länkar
-    PLURALS:
-      one: 'En sidträds-länk'
-      other: '{count} Sidträds-länkar'
-    SINGULARNAME: Sidträds-länk
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Länkad sida'
     DESCRIPTION: 'Visar innehåll från en annan sida'

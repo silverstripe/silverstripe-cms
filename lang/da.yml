@@ -14,6 +14,7 @@ da:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Adgang til ''{title}'' sektionen'
     ACCESS_HELP: 'Tillad visning af den sektion, som indeholder sidetræet og indhold. Visnings- og redigeringstilladelser kan håndteres gennem sidespecifikke rullemenuer, såvel som de enkelte "Inholdstilladelser".'
+    APPLY_FILTER: Søg
     ARCHIVE: Arkiv
     ARCHIVEDPAGE: 'Arkiverede siden ''{title}'''
     AddNew: 'Tilføj ny side'
@@ -24,6 +25,7 @@ da:
     ArchiveWarningWithChildren: 'Advarsel: Udgivelsen af denne side og alle dens undersider ophæves, før siden sendes til arkiv. \n\nEr du sikker på du vil fortsætte?'
     ArchiveWarningWithChildrenAndCampaigns: 'Advarsel: Udgivelsen af denne side og alle dens undersider ophæves og siden fjernes fra de tilknyttede {NumCampaigns} før den bliver lagt i arkivet. \n\nEr du sikker på du vil fortsætte?'
     CANT_REORGANISE: 'Du har ikke tilladelse til at ændre sider på Top niveau. Dine ændringer blev ikke gemt.'
+    CLEAR_FILTER: Ryd
     Cancel: Annuller
     ChoosePageParentMode: 'Vælg hvor denne side skal oprettes'
     ChoosePageType: 'Vælg sidetype'
@@ -31,6 +33,7 @@ da:
     DUPLICATED: 'Dublerede ''{title}'' med succes'
     DUPLICATEDWITHCHILDREN: 'Dublerede ''{title}'' og undersider med succes'
     EMAIL: Email
+    ListFiltered: 'Viser søgeresultater'
     NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Denne side eksisterer ikke'
     PAGES: 'Side status'
@@ -56,7 +59,7 @@ da:
     ROLLEDBACKPUBv2: 'Rullede tilbage til den udgivne version.'
     ROLLEDBACKVERSIONv2: 'Rullede tilbage til version #{version}.'
     SAVED: 'Gemte ''{title}'' succesfuldt'
-    SAVEDRAFT: Gem
+    SAVEDRAFT: 'Gem kladde'
     SHOW_AS_LIST: 'Vis som liste'
     TOO_MANY_PAGES: 'For mange sider'
     TabContent: Indhold
@@ -178,7 +181,7 @@ da:
     BUTTONDELETEDESC: 'Fjern fra kladde og udgivet og læg i arkiv'
     BUTTONPUBLISHED: Udgivet
     BUTTONSAVED: Gemt
-    BUTTONSAVEPUBLISH: Udgiv
+    BUTTONSAVEPUBLISH: 'Gem og udgiv'
     BUTTONUNPUBLISH: 'Annuller udgivelse'
     BUTTONUNPUBLISHDESC: 'Fjern denne side fra det udgivne websted'
     Comments: Kommentarer
@@ -192,6 +195,7 @@ da:
     DEPENDENT_NOTE: 'De følgende sider er afhængige af denne side. Dette inkluderer virtuelle sider, viderestillendeside og sider med links i indholdet.'
     DESCRIPTION: 'Standard indholdsside'
     DependtPageColumnLinkType: Linktype
+    DependtPageColumnURL: URL
     EDITHEADER: 'Hvem kan redigere denne side ?'
     EDITORGROUPS: Redaktionsgrupper
     EDITOR_GROUPS_FIELD_DESC: 'Grupper med globale rettigheder: {groupList}'
@@ -262,17 +266,11 @@ da:
     many_many_ImageTracking: 'Sporing af billeder'
     many_many_LinkTracking: 'Sporing af links'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
+    BACKLINKCOUNT: 'Brugt på:'
+    PAGES: Side(r)
     TITLE_INDEX: '#'
     TITLE_TYPE: Type
     TITLE_USED_ON: 'Brugt på'
-  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    USAGE: Brug
-  SilverStripe\CMS\Model\SiteTreeLink:
-    PLURALNAME: 'Sidetræ links'
-    PLURALS:
-      one: 'Et sidetræ link'
-      other: '{count} Sidetræ links'
-    SINGULARNAME: 'Sidetræ link'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Linket side'
     DESCRIPTION: 'Viser indholdet fra en anden side'
