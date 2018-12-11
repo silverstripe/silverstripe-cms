@@ -56,7 +56,6 @@ pl:
     ROLLEDBACKPUBv2: 'Przywrócono opublikowaną wersję'
     ROLLEDBACKVERSIONv2: 'Przywrócono wersję #{version}.'
     SAVED: 'Zapisano ''{title}''.'
-    SAVEDRAFT: Zapisz
     SHOW_AS_LIST: 'pokaż jako listę'
     TOO_MANY_PAGES: 'Zbyt wiele stron'
     TabContent: Zawartość
@@ -180,7 +179,6 @@ pl:
     BUTTONDELETEDESC: Usunięto
     BUTTONPUBLISHED: Opublikowano
     BUTTONSAVED: Zapisano
-    BUTTONSAVEPUBLISH: Opublikuj
     BUTTONUNPUBLISH: Nieopublikowane
     BUTTONUNPUBLISHDESC: 'Usuń tę stronę z opublikowanej witryny'
     Comments: Komentarze
@@ -269,8 +267,6 @@ pl:
     TITLE_INDEX: '#'
     TITLE_TYPE: 'Rodzaj strony'
     TITLE_USED_ON: 'Używany na:'
-  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    USAGE: Używane
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Linkowana strona'
     DESCRIPTION: 'Wyświetla zawartość innej strony'

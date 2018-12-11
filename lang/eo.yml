@@ -14,6 +14,7 @@ eo:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Aliro al sekcio ''{title}'''
     ACCESS_HELP: 'Permesi vidigi la sekcion kiu enhavas paĝarbon kaj enhavon. Vidigaj kaj redaktaj permesoj estas trakteblaj per paĝspecifaj fallistoj, kaj ankaŭ la apartaj "Enhavaj permesoj".'
+    APPLY_FILTER: Serĉi
     ARCHIVE: Enarkivigi
     ARCHIVEDPAGE: 'Enarkivigis paĝon ''{title}'''
     AddNew: 'Aldoni novan paĝon'
@@ -24,6 +25,7 @@ eo:
     ArchiveWarningWithChildren: 'Averto: Ĉi tiu paĝo kaj ĉiuj ĝiaj paĝidoj malpublikiĝos kaj enarkiviĝos.\n\nĈu vi certe volas daŭrigi?'
     ArchiveWarningWithChildrenAndCampaigns: 'Averto: Ĉi tiu paĝo kaj ĉiuj ĝiaj paĝidoj malpublikiĝos kaj aŭtomate foriĝos el siaj ligitaj  {NumCampaigns} kampanjoj antaŭ ol enarkiviĝi.\n\nĈu vi certe volas daŭrigi?'
     CANT_REORGANISE: 'Vi ne rajtas ŝanĝi supronivelajn paĝojn. Via ŝanĝo ne konserviĝis.'
+    CLEAR_FILTER: Vakigi
     Cancel: Rezigni
     ChoosePageParentMode: 'Elekti kie krei ĉi tiun paĝon'
     ChoosePageType: 'Elekti tipon de paĝo'
@@ -31,6 +33,7 @@ eo:
     DUPLICATED: 'Sukcese duobligis je ''{title}'''
     DUPLICATEDWITHCHILDREN: 'Sukcese duobligis je ''{title}'' kaj idoj'
     EMAIL: Retpoŝto
+    ListFiltered: 'Vidigas rezultojn de serĉo.'
     NEWPAGE: 'Nova {pagetype}'
     PAGENOTEXISTS: 'Ĉi tiu paĝo ne ekzistas'
     PAGES: 'Stato de paĝo'
@@ -56,7 +59,7 @@ eo:
     ROLLEDBACKPUBv2: 'Malfaris ŝanĝojn ĝis la publikigita versio.'
     ROLLEDBACKVERSIONv2: 'Malfaris ŝanĝojn ĝis versio #{version}.'
     SAVED: 'Sukcese konservis je ''{title}'''
-    SAVEDRAFT: Konservi
+    SAVEDRAFT: 'Konservi malneton'
     SHOW_AS_LIST: 'vidigi kiel liston'
     TOO_MANY_PAGES: 'Tro da paĝoj'
     TabContent: Enhavo
@@ -178,7 +181,7 @@ eo:
     BUTTONDELETEDESC: 'Forigi el malneta aŭ publika, kaj sendi ilin al la arĥivo'
     BUTTONPUBLISHED: Publikigita
     BUTTONSAVED: Konservita
-    BUTTONSAVEPUBLISH: Publikigi
+    BUTTONSAVEPUBLISH: 'Konservi kaj publikigi'
     BUTTONUNPUBLISH: Malpublikigi
     BUTTONUNPUBLISHDESC: 'Forigi ĉi tiun paĝon de la publikigita retejo'
     Comments: Komentoj
@@ -192,6 +195,7 @@ eo:
     DEPENDENT_NOTE: 'La sekvaj paĝoj dependas de ĉi tiu paĝo. Tio inkluzivas virtualajn paĝojn, alidirektajn paĝojn, kaj paĝojn kun enhavaj ligiloj.'
     DESCRIPTION: 'Paĝo por ĝenerala enhavo'
     DependtPageColumnLinkType: 'Ligila tipo'
+    DependtPageColumnURL: URL
     EDITHEADER: 'Kiuj povas redakti ĉi tiun paĝon?'
     EDITORGROUPS: 'Grupoj de redaktantoj'
     EDITOR_GROUPS_FIELD_DESC: 'Grupoj kun ĉieaj permesoj: {groupList}'
@@ -262,11 +266,11 @@ eo:
     many_many_ImageTracking: 'Spuri Bildojn'
     many_many_LinkTracking: 'Spuri Ligilojn'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
+    BACKLINKCOUNT: 'Uzita je:'
+    PAGES: paĝo(j)
     TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Uzita je'
-  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    USAGE: Uzmaniero
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Ligita paĝo'
     DESCRIPTION: 'Vidigas la enhavon de alia paĝo'

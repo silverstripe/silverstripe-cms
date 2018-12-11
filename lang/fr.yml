@@ -56,7 +56,6 @@ fr:
     ROLLEDBACKPUBv2: 'Revenir à la version publiée'
     ROLLEDBACKVERSIONv2: 'Revenir à la version #{version}'
     SAVED: 'Page ''{title}'' sauvegardée avec succès'
-    SAVEDRAFT: Sauvegarder
     SHOW_AS_LIST: 'Afficher sous forme de liste'
     TOO_MANY_PAGES: 'Pages trop nombreuses'
     TabContent: Contenu
@@ -178,7 +177,6 @@ fr:
     BUTTONDELETEDESC: 'Retirer du site public/brouillon et archiver'
     BUTTONPUBLISHED: Publié
     BUTTONSAVED: Sauvegardé
-    BUTTONSAVEPUBLISH: Publier
     BUTTONUNPUBLISH: 'Retirer du site publié'
     BUTTONUNPUBLISHDESC: Dépublier
     Comments: Commentaires
@@ -265,8 +263,6 @@ fr:
     TITLE_INDEX: '#'
     TITLE_TYPE: Type
     TITLE_USED_ON: 'Utilisé dans'
-  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    USAGE: Usage
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Page liée'
     DESCRIPTION: 'Affiche le contenu d''une autre page'

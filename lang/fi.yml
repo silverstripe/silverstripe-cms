@@ -56,7 +56,6 @@ fi:
     ROLLEDBACKPUBv2: 'Palattiin takaisin julkaistuun versioon'
     ROLLEDBACKVERSIONv2: 'Palautettu versioon #{version}.'
     SAVED: 'Tallennettiin ''{title}'' onnistuneesti.'
-    SAVEDRAFT: Tallenna
     SHOW_AS_LIST: 'näytä listana'
     TOO_MANY_PAGES: 'Liian monta sivua'
     TabContent: Sisältö
@@ -178,7 +177,6 @@ fi:
     BUTTONDELETEDESC: 'Poista luonnoksista/julkaistuista ja siirrä arkistoon'
     BUTTONPUBLISHED: Julkaistu
     BUTTONSAVED: Tallennettu
-    BUTTONSAVEPUBLISH: Julkaise
     BUTTONUNPUBLISH: 'Poista julkaisusta'
     BUTTONUNPUBLISHDESC: 'Poista tämä sivu julkaistulta sivustolta'
     Comments: Kommentit
@@ -265,8 +263,6 @@ fi:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tyyppi
     TITLE_USED_ON: 'Käytössä:'
-  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    USAGE: Käyttö
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Linkitetty sivu'
     DESCRIPTION: 'Näyttää toisen sivun sisällön'

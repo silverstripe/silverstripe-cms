@@ -48,7 +48,6 @@ es:
     ROLLEDBACKPUBv2: Restaurado
     ROLLEDBACKVERSIONv2: 'Versión #{version} restaurada'
     SAVED: '''{title}'' guardado satisfactoriamente.'
-    SAVEDRAFT: Guardar
     SHOW_AS_LIST: 'mostrar como lista'
     TOO_MANY_PAGES: 'Demasiadas páginas'
     TabContent: Contenido
@@ -165,7 +164,6 @@ es:
     BUTTONDELETEDESC: 'Eliminar desde el borrador/publicadas y enviar al archivo'
     BUTTONPUBLISHED: Publicado
     BUTTONSAVED: Guardado
-    BUTTONSAVEPUBLISH: Publicar
     BUTTONUNPUBLISH: 'Sin Publicar'
     BUTTONUNPUBLISHDESC: 'Elimine esta página del sitio publicado'
     Comments: Comentarios
@@ -247,8 +245,6 @@ es:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Usado en'
-  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    USAGE: Uso
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: Seleccionar
     DESCRIPTION: 'Muestra el contenido de otra página'
