@@ -35,7 +35,6 @@ ar:
     RESTORED: 'استعادة ''{title}'' بنجاح'
     ROLLEDBACKPUBv2: 'التراجع إلى النسخة المنشورة.'
     ROLLEDBACKVERSIONv2: 'التراجع إلى النسخة #{version}.'
-    SAVEDRAFT: حفظ
     SHOW_AS_LIST: 'عرض كقائمة'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'تحت صفحة أخرى'
@@ -107,7 +106,6 @@ ar:
     BUTTONCANCELDRAFTDESC: 'إلغاء المسودة و العودة إلى الموقع المنشور حالياً'
     BUTTONPUBLISHED: نشرت
     BUTTONSAVED: 'تم الحفظ'
-    BUTTONSAVEPUBLISH: نشر
     BUTTONUNPUBLISH: 'غير منشور'
     BUTTONUNPUBLISHDESC: 'حذف هذه الصفحة من الموقع المنشور'
     Comments: التعليقات
