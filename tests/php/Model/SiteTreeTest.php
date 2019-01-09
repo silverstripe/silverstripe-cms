@@ -61,7 +61,7 @@ class SiteTreeTest extends SapphireTest
             ['Dev', 'dev-2'],
             ['Robots in disguise', 'robots-in-disguise'],
             // segments reserved by folder name
-            ['resources', 'resources-2'],
+            [RESOURCES_DIR, RESOURCES_DIR . '-2'],
             ['assets', 'assets-2'],
             ['notafoldername', 'notafoldername'],
         ];
