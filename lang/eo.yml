@@ -59,7 +59,7 @@ eo:
     ROLLEDBACKPUBv2: 'Malfaris ŝanĝojn ĝis la publikigita versio.'
     ROLLEDBACKVERSIONv2: 'Malfaris ŝanĝojn ĝis versio #{version}.'
     SAVED: 'Sukcese konservis je ''{title}'''
-    SAVEDRAFT: Konservi
+    SAVEDRAFT: 'Konservi malneton'
     SHOW_AS_LIST: 'vidigi kiel liston'
     TOO_MANY_PAGES: 'Tro da paĝoj'
     TabContent: Enhavo
@@ -181,7 +181,7 @@ eo:
     BUTTONDELETEDESC: 'Forigi el malneta aŭ publika, kaj sendi ilin al la arĥivo'
     BUTTONPUBLISHED: Publikigita
     BUTTONSAVED: Konservita
-    BUTTONSAVEPUBLISH: Publikigi
+    BUTTONSAVEPUBLISH: 'Konservi kaj publikigi'
     BUTTONUNPUBLISH: Malpublikigi
     BUTTONUNPUBLISHDESC: 'Forigi ĉi tiun paĝon de la publikigita retejo'
     Comments: Komentoj
@@ -266,17 +266,11 @@ eo:
     many_many_ImageTracking: 'Spuri Bildojn'
     many_many_LinkTracking: 'Spuri Ligilojn'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
+    BACKLINKCOUNT: 'Uzita je:'
+    PAGES: paĝo(j)
     TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Uzita je'
-  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    USAGE: Uzmaniero
-  SilverStripe\CMS\Model\SiteTreeLink:
-    PLURALNAME: 'Retejaj arbaj ligiloj'
-    PLURALS:
-      one: 'Unu reteja arba ligilo'
-      other: '{count} retejaj arbaj ligiloj'
-    SINGULARNAME: 'Reteja arba ligilo'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Ligita paĝo'
     DESCRIPTION: 'Vidigas la enhavon de alia paĝo'

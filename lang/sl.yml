@@ -90,7 +90,6 @@ sl:
     DEFAULTHOMETITLE: Domov
     DEPENDENT_NOTE: 'Naslednje strani so odvisne od vsebine tukaj (vključuje navidezne strani, preusmerjevalne strani in strani s povezavami v vsebini)'
     DependtPageColumnLinkType: 'Tip povezave'
-    DependtPageColumnURL: URL
     EDITHEADER: 'Kdo lahko ureja to stran?'
     EDITORGROUPS: 'Skupine urednikov'
     EDIT_ALL_DESCRIPTION: 'Urejanje vseh strani'

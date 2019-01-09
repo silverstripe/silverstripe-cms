@@ -14,13 +14,11 @@ es:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Acceso a la sección ''{title}'''
     ACCESS_HELP: 'Permitir la visualización de la sección que contiene el árbol de la página y el contenido. Ver y editar permisos puede ser gestionado a través de menús desplegables específicos de las páginas, así como los "permisos de contenido" separados.'
-    APPLY_FILTER: Buscar
     ARCHIVE: Archivar
     ARCHIVEDPAGE: '''{title}'' páginas archivadas'
     AddNew: 'Agregar nueva página'
     AddNewButton: 'Agregar nuevo'
     AddPageRestriction: 'Agregar restricción a la página'
-    CLEAR_FILTER: Limpiar
     Cancel: Cancelar
     ChoosePageParentMode: 'Elegir donde crear esta página'
     ChoosePageType: 'Elegir tipo de página'
@@ -51,7 +49,6 @@ es:
     ROLLEDBACKPUBv2: Restaurado
     ROLLEDBACKVERSIONv2: 'Versión #{version} restaurada'
     SAVED: '''{title}'' guardado satisfactoriamente.'
-    SAVEDRAFT: Guardar
     SHOW_AS_LIST: 'mostrar como lista'
     TOO_MANY_PAGES: 'Demasiadas páginas'
     TabContent: Contenido
@@ -168,7 +165,6 @@ es:
     BUTTONDELETEDESC: 'Eliminar desde el borrador/publicadas y enviar al archivo'
     BUTTONPUBLISHED: Publicado
     BUTTONSAVED: Guardado
-    BUTTONSAVEPUBLISH: Publicar
     BUTTONUNPUBLISH: 'Sin Publicar'
     BUTTONUNPUBLISHDESC: 'Elimine esta página del sitio publicado'
     Comments: Comentarios
@@ -180,7 +176,6 @@ es:
     DEPENDENT_NOTE: 'Las siguientes páginas dependen de esta página. Esto incluye páginas virtuales, páginas de redireccionamiento, y las páginas con enlaces de contenido.'
     DESCRIPTION: 'Página de contenido genérico'
     DependtPageColumnLinkType: 'Tipo de enlace'
-    DependtPageColumnURL: 'Depende de'
     EDITHEADER: '¿Quién puede editar esta página?'
     EDITORGROUPS: 'Grupos de Editor'
     EDIT_ALL_DESCRIPTION: 'Editar cualquier página'
@@ -251,14 +246,6 @@ es:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Usado en'
-  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    USAGE: Uso
-  SilverStripe\CMS\Model\SiteTreeLink:
-    PLURALNAME: 'Enlaces del árbol del sitio'
-    PLURALS:
-      one: 'Un enlace del árbol del sitio'
-      other: '{count} enlaces del árbol del sitio'
-    SINGULARNAME: 'Enlace del árbol del sitio'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: Seleccionar
     DESCRIPTION: 'Muestra el contenido de otra página'

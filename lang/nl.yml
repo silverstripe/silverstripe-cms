@@ -14,7 +14,7 @@ nl:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Toegang tot het ''{title}'' gedeelte'
     ACCESS_HELP: 'Bevoegdheid om paginastructuur en inhoud te bekijken. Bekijk- en bewerkingstoestemmingen kunnen worden toegekend met pagina-specifieke menu''s en het aparte "Inhoudsmachtigingen".'
-    APPLY_FILTER: Zoeken
+    APPLY_FILTER: Zoek
     ARCHIVE: Archief
     ARCHIVEDPAGE: 'Pagina ''%s'' is gearchiveerd'
     AddNew: 'Voeg nieuwe pagina toe'
@@ -59,7 +59,7 @@ nl:
     ROLLEDBACKPUBv2: 'Teruggedraaid naar gepubliceerde versie.'
     ROLLEDBACKVERSIONv2: 'Teruggedraaid naar versie #{version}.'
     SAVED: '''{title}'' is opgeslagen.'
-    SAVEDRAFT: Opslaan
+    SAVEDRAFT: 'Concept opslaan'
     SHOW_AS_LIST: 'Als lijst tonen'
     TOO_MANY_PAGES: 'Te veel pagina''s'
     TabContent: Inhoud
@@ -97,7 +97,7 @@ nl:
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filter
     ListView: Lijstweergave
-    MENUTITLE: 'Pagina ''s'
+    MENUTITLE: 'Pagina''s'
     TreeView: Boomstructuur
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Gewijzigde pagina''s'
@@ -181,7 +181,7 @@ nl:
     BUTTONDELETEDESC: 'Verwijderde concept/live versie en archiveer'
     BUTTONPUBLISHED: Gepubliceerd
     BUTTONSAVED: Opgeslagen
-    BUTTONSAVEPUBLISH: Publiceren
+    BUTTONSAVEPUBLISH: 'Opslaan & publiceren'
     BUTTONUNPUBLISH: 'Publicatie intrekken'
     BUTTONUNPUBLISHDESC: 'Deze pagina verwijderen uit de gepubliceerde site'
     Comments: Commentaar
@@ -266,17 +266,11 @@ nl:
     many_many_ImageTracking: 'Afbeeldingen traceren'
     many_many_LinkTracking: 'Links traceren'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
+    BACKLINKCOUNT: 'Gebruikt op:'
+    PAGES: pagina(s)
     TITLE_INDEX: '#'
     TITLE_TYPE: Type
     TITLE_USED_ON: 'Gebruikt op:'
-  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    USAGE: Gebruik
-  SilverStripe\CMS\Model\SiteTreeLink:
-    PLURALNAME: 'Pagina links'
-    PLURALS:
-      one: 'Een pagina link'
-      other: '{count} pagina links'
-    SINGULARNAME: 'Pagina link'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Gekoppelde pagina'
     DESCRIPTION: 'Toont de inhoud van een andere pagina'

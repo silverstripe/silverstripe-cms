@@ -86,7 +86,6 @@ id:
     DEFAULTHOMETITLE: Beranda
     DEPENDENT_NOTE: 'Laman-laman berikut ini bergantung pada laman ini. Termasuk laman virtual, laman pengarah, dan laman-laman dengan tautan konten.'
     DependtPageColumnLinkType: 'Jenis tautan'
-    DependtPageColumnURL: URL
     EDITHEADER: 'Siapa yang dapat mengedit laman ini?'
     EDITORGROUPS: 'Kelompok Editor'
     EDIT_ALL_DESCRIPTION: 'Edit semua laman'

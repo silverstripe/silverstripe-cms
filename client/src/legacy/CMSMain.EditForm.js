@@ -47,7 +47,10 @@ $.entwine('ss', function($){
 					) {
 						self.updateURLSegment(title);
 					} else {
-						$('.update', self.parent()).show();
+						$('.update', self.parent())
+							.show()
+							.parent('.form__field-holder')
+							.addClass('input-group');
 					}
 
 					self.updateRelatedFields(title, origTitle);
@@ -92,7 +95,10 @@ $.entwine('ss', function($){
 			var updateURLFromTitle = $('.update', this.parent());
 			urlSegmentField.update(title);
 			if (updateURLFromTitle.is(':visible')) {
-				updateURLFromTitle.hide();
+				updateURLFromTitle
+					.hide()
+					.parent('.form__field-holder')
+					.removeClass('input-group');
 			}
 		},
 
@@ -133,7 +139,6 @@ $.entwine('ss', function($){
 
 			// insert elements
 			updateURLFromTitle.insertAfter(self);
-      updateURLFromTitle.parent('.form__field-holder').addClass('input-group');
 			updateURLFromTitle.hide();
 		}
 	});
@@ -242,7 +247,8 @@ $.entwine('ss', function($){
         return false;
       }
 
-      // Continue
+      // Add a loading indicator and continue
+      this.parents('form:first').addClass('loading');
       return this._super(e);
     }
   });
@@ -267,10 +273,11 @@ $.entwine('ss', function($){
 				.replace(/\\n/g, '\n');
 
 			if(confirm(message)) {
+        // Add a loading indicator and continue
+        this.parents('form:first').addClass('loading');
 				return this._super(e);
-			} else {
-				return false;
 			}
+      return false;
 		}
 	});
 
@@ -297,10 +304,11 @@ $.entwine('ss', function($){
 				version
 			);
 			if(confirm(message)) {
+        // Add a loading indicator and continue
+        this.parents('form:first').addClass('loading');
 				return this._super(e);
-			} else {
-				return false;
 			}
+			return false;
 		}
 	});
 
@@ -323,10 +331,11 @@ $.entwine('ss', function($){
 				version
 			);
 			if(confirm(message)) {
+        // Add a loading indicator and continue
+        this.parents('form:first').addClass('loading');
 				return this._super(e);
-			} else {
-				return false;
 			}
+			return false;
 		}
 	});
 

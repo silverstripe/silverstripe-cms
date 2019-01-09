@@ -78,7 +78,6 @@ hu:
     DEFAULTCONTACTTITLE: Kapcsolat
     DEFAULTHOMETITLE: Kezdőlap
     DependtPageColumnLinkType: 'Hivatkozás típusa'
-    DependtPageColumnURL: Link
     EDITHEADER: 'Ki szerkesztheti ezt a CMS-ben?'
     EDITORGROUPS: 'Szerkesztők csoportja'
     EDIT_ALL_DESCRIPTION: 'Bármely oldal szerkesztése'

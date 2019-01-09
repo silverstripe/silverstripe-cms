@@ -1279,35 +1279,36 @@ class SiteTreeTest extends SapphireTest
     {
         $generator = Config::inst()->get(SiteTree::class, 'meta_generator');
 
+        // Stub to ensure customisations don't affect the test
+        Config::modify()->set(SiteTree::class, 'meta_generator', 'SilverStripe - https://www.silverstripe.org');
+
         $page = new SiteTreeTest_PageNode();
 
         $meta = $page->MetaTags();
-        $this->assertEquals(
-            1,
-            preg_match('/.*meta name="generator" content="SilverStripe - http:\/\/silverstripe.org".*/', $meta),
-            'test default functionality - uses value from Config'
+        $this->assertContains('meta name="generator"', $meta, 'Should include generator tag');
+        $this->assertContains(
+            'content="SilverStripe - https://www.silverstripe.org',
+            $meta,
+            'Should contain default meta generator info'
         );
 
         // test proper escaping of quotes in attribute value
         Config::modify()->set(SiteTree::class, 'meta_generator', 'Generator with "quotes" in it');
         $meta = $page->MetaTags();
-        $this->assertEquals(
-            1,
-            preg_match('/.*meta name="generator" content="Generator with &quot;quotes&quot; in it".*/', $meta),
+        $this->assertContains(
+            'content="Generator with &quot;quotes&quot; in it',
+            $meta,
             'test proper escaping of values from Config'
         );
 
         // test empty generator - no tag should appear at all
         Config::modify()->set(SiteTree::class, 'meta_generator', '');
         $meta = $page->MetaTags();
-        $this->assertEquals(
-            0,
-            preg_match('/.*meta name=.generator..*/', $meta),
+        $this->assertNotContains(
+            'meta name="generator"',
+            $meta,
             'test blank value means no tag generated'
         );
-
-        // reset original value
-        Config::modify()->set(SiteTree::class, 'meta_generator', $generator);
     }
 
 
@@ -1575,5 +1576,12 @@ class SiteTreeTest extends SapphireTest
         Injector::inst()->registerService($mockPageMissesCache, $pageClass);
         $title = $siteTree->getTreeTitle();
         $this->assertNotNull($title);
+    }
+
+    public function testDependentPagesOnUnsavedRecord()
+    {
+        $record = new SiteTree();
+        $pages = $record->DependentPages();
+        $this->assertCount(0, $pages, 'Unsaved pages should have no dependent pages');
     }
 }

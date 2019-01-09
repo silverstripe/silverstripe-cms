@@ -14,7 +14,6 @@ cs:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Přístup k ''{title}'' sekci'
     ACCESS_HELP: 'Povolit prohlížení sekce obsahující strukturu a obsah webu. Oprávnění na prohlížení a úpravu mohou být nastavena skrze menu pro samostatnou stránku, také jako jednotlivé oprávnění pro obsah.'
-    APPLY_FILTER: Hledat
     ARCHIVE: Archív
     ARCHIVEDPAGE: 'Archivovaná stránka ''{title}'''
     AddNew: 'Přidat novou stránku'
@@ -25,7 +24,6 @@ cs:
     ArchiveWarningWithChildren: 'Varování: Stránka a její potomkové bude nezveřejněna před odesláním do archívu.\n\nSkutečně to chcete vykonat?'
     ArchiveWarningWithChildrenAndCampaigns: 'Varování: Stránka a její potomkové bude nezveřejněna a automaticky odstraněna z její asociací {NumCampaigns} před odesláním do archívu.\n\nSkutečně to chcete vykonat?'
     CANT_REORGANISE: 'Nemáte oprávnění měnit stránky nejvyšší úrovně. Vaše změna nebyla uložena.'
-    CLEAR_FILTER: Vyčistit
     Cancel: Storno
     ChoosePageParentMode: 'Vyberte, kde vytvořit tuto stránku'
     ChoosePageType: 'Vyberte typ stránky'
@@ -33,7 +31,6 @@ cs:
     DUPLICATED: 'Duplikováno ''{title}'' úspěšně'
     DUPLICATEDWITHCHILDREN: 'Duplikováno ''{title}'' a potomci úspěšně'
     EMAIL: E-mail
-    ListFiltered: 'Zobrazení výsledků vyhledávání.'
     NEWPAGE: 'Nová {pagetype}'
     PAGENOTEXISTS: 'Tato stránka neexistuje'
     PAGES: 'Stav stránky'
@@ -176,7 +173,6 @@ cs:
     DEPENDENT_NOTE: 'Následující stránky závisí na této stránce. Tyto obsahují virtuální stránky, přesměrovací stránky a stránky s odkazy obsahu.'
     DESCRIPTION: 'Obecný obsah stránky'
     DependtPageColumnLinkType: 'Typ odkazu'
-    DependtPageColumnURL: URL
     EDITHEADER: 'Kdo může tuto stránku editovat?'
     EDITORGROUPS: 'Editor skupin'
     EDIT_ALL_DESCRIPTION: 'Může editovat jakoukoli stránku webu, obcházeje bezpečnostní specifikaci stránky'

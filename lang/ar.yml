@@ -10,7 +10,6 @@ ar:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'النفاذ إلى القسم ''{title}'''
     ACCESS_HELP: 'سماح بعرض لقسم يحتوي على صفحة الشجرة والمحتوى. يمكن التعامل معها عرض وتحرير الأذونات من خلال القائمه المنسدله للروابط محددة صفحة، فضلا عن فصل "أذونات المحتوى".'
-    APPLY_FILTER: بحث
     ARCHIVE: أرشفة
     ARCHIVEDPAGE: 'أرشفة الصفحة ''{title}'''
     AddNew: 'اضافة صفحة جديدة'
@@ -22,7 +21,6 @@ ar:
     Create: خلق
     DUPLICATED: 'تكرار ''{title}'' بنجاح'
     DUPLICATEDWITHCHILDREN: 'تكرار ''{title}'' والتوابع بنجاح'
-    ListFiltered: 'استعراض نتائج البحث'
     NEWPAGE: '{pagetype} جديد'
     PAGENOTEXISTS: 'هذه الصفحة غير موجودة'
     PAGES: 'حالة الصفحة'
@@ -37,7 +35,6 @@ ar:
     RESTORED: 'استعادة ''{title}'' بنجاح'
     ROLLEDBACKPUBv2: 'التراجع إلى النسخة المنشورة.'
     ROLLEDBACKVERSIONv2: 'التراجع إلى النسخة #{version}.'
-    SAVEDRAFT: حفظ
     SHOW_AS_LIST: 'عرض كقائمة'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'تحت صفحة أخرى'
@@ -109,7 +106,6 @@ ar:
     BUTTONCANCELDRAFTDESC: 'إلغاء المسودة و العودة إلى الموقع المنشور حالياً'
     BUTTONPUBLISHED: نشرت
     BUTTONSAVED: 'تم الحفظ'
-    BUTTONSAVEPUBLISH: نشر
     BUTTONUNPUBLISH: 'غير منشور'
     BUTTONUNPUBLISHDESC: 'حذف هذه الصفحة من الموقع المنشور'
     Comments: التعليقات
@@ -119,7 +115,6 @@ ar:
     DEFAULTHOMETITLE: الرئيسة
     DEPENDENT_NOTE: 'الصفحات التالية تعتمد على هذه الصفحة. وهذا يشمل صفحات الظاهري، وصفحات معيد التوجيه، والصفحات التي تحتوي على روابط المحتوى.'
     DependtPageColumnLinkType: 'نوع الرابط'
-    DependtPageColumnURL: رابط
     EDITHEADER: 'من يستطيع تعديل هذه الصفحة؟'
     EDITORGROUPS: 'مجموعات المحرر'
     EDIT_ALL_DESCRIPTION: 'Can edit any page on the site, bypassing page specific security'

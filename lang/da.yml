@@ -59,7 +59,7 @@ da:
     ROLLEDBACKPUBv2: 'Rullede tilbage til den udgivne version.'
     ROLLEDBACKVERSIONv2: 'Rullede tilbage til version #{version}.'
     SAVED: 'Gemte ''{title}'' succesfuldt'
-    SAVEDRAFT: Gem
+    SAVEDRAFT: 'Gem kladde'
     SHOW_AS_LIST: 'Vis som liste'
     TOO_MANY_PAGES: 'For mange sider'
     TabContent: Indhold
@@ -181,7 +181,7 @@ da:
     BUTTONDELETEDESC: 'Fjern fra kladde og udgivet og læg i arkiv'
     BUTTONPUBLISHED: Udgivet
     BUTTONSAVED: Gemt
-    BUTTONSAVEPUBLISH: Udgiv
+    BUTTONSAVEPUBLISH: 'Gem og udgiv'
     BUTTONUNPUBLISH: 'Annuller udgivelse'
     BUTTONUNPUBLISHDESC: 'Fjern denne side fra det udgivne websted'
     Comments: Kommentarer
@@ -266,17 +266,11 @@ da:
     many_many_ImageTracking: 'Sporing af billeder'
     many_many_LinkTracking: 'Sporing af links'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
+    BACKLINKCOUNT: 'Brugt på:'
+    PAGES: Side(r)
     TITLE_INDEX: '#'
     TITLE_TYPE: Type
     TITLE_USED_ON: 'Brugt på'
-  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    USAGE: Brug
-  SilverStripe\CMS\Model\SiteTreeLink:
-    PLURALNAME: 'Sidetræ links'
-    PLURALS:
-      one: 'Et sidetræ link'
-      other: '{count} Sidetræ links'
-    SINGULARNAME: 'Sidetræ link'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Linket side'
     DESCRIPTION: 'Viser indholdet fra en anden side'

@@ -86,7 +86,6 @@ ja:
     DEFAULTHOMETITLE: ホーム
     DEPENDENT_NOTE: 以下のページでは、このページに依存します。　これには仮想ページ、リダイレクタページ、コンテンツのリンクを持つページが含まれています。
     DependtPageColumnLinkType: リンクの種類
-    DependtPageColumnURL: URL
     EDITHEADER: このページを編集できる人
     EDITORGROUPS: 編集者グループ
     EDIT_ALL_DESCRIPTION: すべてのページを編集

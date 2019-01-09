@@ -4,6 +4,7 @@ namespace SilverStripe\CMS\Tests\Controllers;
 
 use Page;
 use SilverStripe\CMS\Controllers\CMSPageHistoryController;
+use SilverStripe\CMS\Tests\Controllers\CMSPageHistoryControllerTest\HistoryController;
 use SilverStripe\Control\Controller;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Dev\FunctionalTest;
@@ -23,7 +24,11 @@ class CMSPageHistoryControllerTest extends FunctionalTest
     protected $versionPublishCheck2;
     protected $page;
 
-    public function setUp()
+    protected static $extra_controllers = [
+        CMSPageHistoryControllerTest\HistoryController::class,
+    ];
+
+    protected function setUp()
     {
         parent::setUp();
 
@@ -103,7 +108,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
      */
     public function testVersionsForm()
     {
-        $this->get('admin/pages/history/show/'. $this->page->ID);
+        $this->get('admin/pages/legacyhistory/show/'. $this->page->ID . '?flush');
         $form = $this->cssParser()->getBySelector('#Form_VersionsForm');
 
         $this->assertEquals(1, count($form));
@@ -121,7 +126,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
 
     public function testVersionsFormTableContainsInformation()
     {
-        $this->get('admin/pages/history/show/'. $this->page->ID);
+        $this->get('admin/pages/legacyhistory/show/'. $this->page->ID);
         $form = $this->cssParser()->getBySelector('#Form_VersionsForm');
         $rows = $form[0]->xpath("fieldset/table/tbody/tr");
 
@@ -147,7 +152,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
 
     public function testVersionsFormSelectsUnpublishedCheckbox()
     {
-        $this->get('admin/pages/history/show/'. $this->page->ID);
+        $this->get('admin/pages/legacyhistory/show/'. $this->page->ID);
         $checkbox = $this->cssParser()->getBySelector('#Form_VersionsForm_ShowUnpublished');
 
         $this->assertThat($checkbox[0], $this->logicalNot($this->isNull()));
@@ -156,7 +161,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
         $this->assertThat($checked, $this->logicalNot($this->stringContains('checked')));
 
         // viewing an unpublished
-        $this->get('admin/pages/history/show/'.$this->page->ID .'/'.$this->versionUnpublishedCheck);
+        $this->get('admin/pages/legacyhistory/show/'.$this->page->ID .'/'.$this->versionUnpublishedCheck);
         $checkbox = $this->cssParser()->getBySelector('#Form_VersionsForm_ShowUnpublished');
 
         $this->assertThat($checkbox[0], $this->logicalNot($this->isNull()));
