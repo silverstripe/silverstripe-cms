@@ -30,7 +30,7 @@ class CMSMainTest extends FunctionalTest
 {
     protected static $fixture_file = 'CMSMainTest.yml';
 
-    static protected $orig = array();
+    protected static $orig = array();
 
     public function setUp()
     {
