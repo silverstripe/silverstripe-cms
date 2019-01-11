@@ -660,4 +660,24 @@ class CMSMainTest extends FunctionalTest
             $searchSchema
         );
     }
+
+    public function testCanOrganiseSitetree()
+    {
+        $cms = CMSMain::create();
+
+        $this->assertFalse($cms->CanOrganiseSitetree());
+
+        $this->logInWithPermission('CMS_ACCESS_CMSMain');
+        $this->assertFalse($cms->CanOrganiseSitetree());
+
+        $this->logOut();
+        $this->logInWithPermission('SITETREE_REORGANISE');
+        $this->assertTrue($cms->CanOrganiseSitetree());
+
+        $this->logOut();
+        $this->logInWithPermission('ADMIN');
+        $this->assertTrue($cms->CanOrganiseSitetree());
+
+
+    }
 }

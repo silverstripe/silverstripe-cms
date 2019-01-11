@@ -756,7 +756,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if (!SecurityToken::inst()->checkRequest($request)) {
             return $this->httpError(400);
         }
-        if (!Permission::check('SITETREE_REORGANISE') && !Permission::check('ADMIN')) {
+        if (!$this->CanOrganiseSitetree()) {
             return $this->httpError(
                 403,
                 _t(
@@ -862,10 +862,15 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             ->setBody(json_encode($statusUpdates));
     }
 
+    /**
+     * Whatever the current member has the permission to reorganise SiteTree objects.
+     * @return bool
+     */
     public function CanOrganiseSitetree()
     {
-        return !Permission::check('SITETREE_REORGANISE') && !Permission::check('ADMIN') ? false : true;
+        return Permission::check('SITETREE_REORGANISE');
     }
+
 
     /**
      * @return boolean
