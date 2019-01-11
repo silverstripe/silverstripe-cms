@@ -677,7 +677,5 @@ class CMSMainTest extends FunctionalTest
         $this->logOut();
         $this->logInWithPermission('ADMIN');
         $this->assertTrue($cms->CanOrganiseSitetree());
-
-
     }
 }
