@@ -863,7 +863,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     }
 
     /**
-     * Whatever the current member has the permission to reorganise SiteTree objects.
+     * Whether the current member has the permission to reorganise SiteTree objects.
      * @return bool
      */
     public function CanOrganiseSitetree()
