@@ -22,6 +22,8 @@ class RedirectorPage extends Page
 {
     private static $description = 'Redirects to an internal page or an external URL';
 
+    private static $icon_class = 'font-icon-p-redirect';
+
     private static $db = array(
         "RedirectionType" => "Enum('Internal,External','Internal')",
         "ExternalURL" => "Varchar(2083)" // 2083 is the maximum length of a URL in Internet Explorer.
