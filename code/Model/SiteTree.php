@@ -1514,9 +1514,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // need to set the default values of a page e.g."Untitled [Page type]"
         if (empty($this->Title)) {
             $this->Title = _t(
-            'SilverStripe\\CMS\\Controllers\\CMSMain.NEWPAGE',
-            'New {pagetype}',
-            ['pagetype' => $this->i18n_singular_name()]
+                'SilverStripe\\CMS\\Controllers\\CMSMain.NEWPAGE',
+                'New {pagetype}',
+                ['pagetype' => $this->i18n_singular_name()]
             );
         };
 
