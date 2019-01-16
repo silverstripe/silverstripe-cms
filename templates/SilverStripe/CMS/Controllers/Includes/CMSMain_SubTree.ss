@@ -1,5 +1,5 @@
 <% if not $node.IsInDB %><%-- Only render root node if it's the true root --%>
-    <ul><li id="record-0" data-id="0" class="Root nodelete"><strong>$rootTitle</strong>
+    <ul><li id="record-0" data-id="0" class="Root nodelete"><ins class="jstree-icon font-icon-right-dir">&nbsp;</ins><strong>$rootTitle</strong>
 <% end_if %>
 <% if $limited %>
     <ul><li class="readonly">
