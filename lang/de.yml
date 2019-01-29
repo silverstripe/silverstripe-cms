@@ -14,13 +14,14 @@ de:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Zugang zum Bereich ''{title}'''
     ACCESS_HELP: 'Seiteninhalt im CMS anzeigen. Anzeige- und Bearbeitungsberechtigungen können sowohl seitenspezifische als auch über die globalen Inhaltsberechtigungen gesetzt werden.'
-    APPLY_FILTER: Suche
+    APPLY_FILTER: Suchen
     ARCHIVE: Archiv
     ARCHIVEDPAGE: 'Seite ''{title}'' archiviert'
     AddNew: 'Neue Seite hinzufügen'
     AddNewButton: Hinzufügen
     AddPageRestriction: 'Hinweis: einige Seitentypen sind in diesem Bereich nicht erlaubt.'
     CLEAR_FILTER: Löschen
+    ArchiveWarning: 'Warnung: Die Veröffentlichung dieser Seite wird zurückgenommen, bevor sie archiviert wird.\n\nSind Sie sicher, dass Sie fortfahren wollen?'
     Cancel: Abbrechen
     ChoosePageParentMode: 'Wo soll diese Seite erstellt werden?'
     ChoosePageType: 'Seitentyp auswählen'
@@ -28,12 +29,13 @@ de:
     DUPLICATED: '''{title}''  wurde erfolgreich dupliziert'
     DUPLICATEDWITHCHILDREN: '''{title}'' und alle Unterseiten wurden erfolgreich dupliziert'
     EMAIL: E-Mail
-    ListFiltered: Suchergebnisse
+    ListFiltered: 'Suchergebnisse werden angezeigt.'
     NEWPAGE: 'Neue {pagetype}'
     PAGENOTEXISTS: 'Diese Seite existiert nicht'
     PAGES: Seitenstatus
     PAGETYPEANYOPT: Alle
     PAGETYPEOPT: Seitentyp
+    PAGETYPE_TITLE: '(Seitentyp: {type}) {title}'
     PUBALLCONFIRM: 'Veröffentlicht jede Seite des Seitenbaumes und kopiert den Inhalt von Entwurf zu Live.'
     PUBALLFUN: '"Alle veröffentlichen"-Funktion'
     PUBLISHED: '''{title}'' wurde erfolgreich veröffentlicht.'
@@ -41,6 +43,7 @@ de:
     PageAdded: 'Seite erfolgreich erstellt'
     REMOVEDPAGE: '''{title}'' wurde von der veröffentlichten Site entfernt'
     REMOVEDPAGEFROMDRAFT: 'Lösche ''{title}'' von der Entwurfs-Site'
+    REORGANISATIONSUCCESSFUL: 'Der Seitenbaum wurde erfolgreich sortiert'
     RESTORE: 'Entwurf wiederherstellen'
     RESTORED: '''{title}'' wurde wiederhergestellt'
     RESTORE_DESC: 'Entwurf aus archivierter Version wiederherstellen'
@@ -50,6 +53,7 @@ de:
     ROLLEDBACKPUBv2: 'Veröffentlichte Version wiederhergestellt'
     ROLLEDBACKVERSIONv2: 'Version #{version} wiederhergestellt.'
     SAVED: '''{title}'' erfolgreich gespeichert.'
+    SAVEDRAFT: 'Entwurf speichern'
     SHOW_AS_LIST: 'als Liste zeigen'
     TOO_MANY_PAGES: 'Zu viele Seiten'
     TabContent: Inhalt
@@ -91,6 +95,8 @@ de:
     Title: 'Geänderte Seiten'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
     Title: 'Alle Seiten, inkl. Archiv'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
+    Title: 'Veröffentlichte Seiten'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Alle Seiten'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
@@ -122,9 +128,17 @@ de:
     VIEWPAGEIN: 'Seite anzeigen in:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archiviert
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Anker
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKOPENNEWWIN: 'In einem neuen Fenster/Reiter öffnen'
+    SELECT_PAGE: 'Seite auswählen'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Cancel: Abbrechen
     EMPTY: 'Bitte geben Sie ein URL-Segment ein oder drücken Sie auf Abbrechen'
+    Edit: Bearbeiten
     HelpChars: 'Sonderzeichen werden automatisch umgewandelt oder entfernt.'
+    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Leitet zu einer anderen internen oder externen Seite weiter'
     HEADER: 'Diese Seite wird Nutzer auf eine andere Seite weiterleiten'
@@ -149,6 +163,7 @@ de:
     BUTTONCANCELDRAFTDESC: 'Löschen Sie Ihren Entwurf und kehren Sie zur derzeit veröffentlichten Seite zurück.'
     BUTTONPUBLISHED: Veröffentlicht
     BUTTONSAVED: Gespeichert
+    BUTTONSAVEPUBLISH: 'Speichern & veröffentlichen'
     BUTTONUNPUBLISH: 'Veröffentlichung zurücknehmen'
     BUTTONUNPUBLISHDESC: 'Entferne diese Seite aus der veröffentlichten Website'
     Comments: Kommentare
@@ -160,7 +175,6 @@ de:
     DEPENDENT_NOTE: 'Die folgenden Seiten hängen von dieser Seite ab. Dies schließt Virtuelle Seiten, Weiterleitungen und Seiten mit Links im Inhalt ein.'
     DESCRIPTION: 'Allgemeine Inhaltsseite'
     DependtPageColumnLinkType: Linktyp
-    DependtPageColumnURL: URL
     EDITHEADER: 'Wer kann diese Seite im CMS verändern?'
     EDITORGROUPS: Bearbeitergruppen
     EDIT_ALL_DESCRIPTION: 'Kann beliebige Seiten bearbeiten'
@@ -169,8 +183,11 @@ de:
     HASBROKENLINKS: 'Diese Seite enthält ungültige Verweise.'
     HTMLEDITORTITLE: Inhalt
     INHERIT: 'Von der übergeordneten Seite erben'
+    LASTPUBLISHED: 'Zuletzt veröffentlicht'
+    LASTSAVED: 'Zuletzt gespeichert'
     LASTUPDATED: 'Letzte Änderung'
     LINKCHANGENOTE: 'Das Ändern des Links zu dieser Seite führt ebenfalls zur Änderung aller Links der Unterseiten dieser Seite.'
+    LINKSALREADYUNIQUE: '{url} ist bereits eindeutig'
     LINKSCHANGEDTO: 'Geändert: {url1} -> {url2}'
     MENUTITLE: Navigationsbezeichnung
     METADESC: 'Meta Beschreibung'
@@ -180,6 +197,7 @@ de:
     MODIFIEDONDRAFTSHORT: 'Zuletzt geändert'
     MetadataToggle: Metadaten
     MoreOptions: 'Weitere Optionen'
+    NOTPUBLISHED: 'Nicht veröffentlicht'
     OBSOLETECLASS: 'Der Seitentyp {type} wird nicht mehr verwendet. Wenn Sie speichern wird der Seitentyp zurückgesetzt, was Datenverlust verursachen kann'
     ONLIVEONLYSHORTHELP: 'Die Seite ist veröffentlicht, wurde aber von der Entwurf Seite gelöscht.'
     PAGELOCATION: Seitenposition
@@ -219,6 +237,8 @@ de:
     many_many_BackLinkTracking: Rückverweis-Verfolgung
     many_many_ImageTracking: Bild-Verfolgung
     many_many_LinkTracking: Link-Verfolgung
+  SilverStripe\CMS\Model\SiteTreeFileExtension:
+    BACKLINKCOUNT: 'Verwendet auf:'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Verknüpfte Seite'
     DESCRIPTION: 'Zeigt den Inhalt einer anderen Seite an'
@@ -259,6 +279,8 @@ de:
     SearchResults: Suchergebnisse
   SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask:
     BUTTONRUN: Ausführen
+    DELETEWARNING: 'Warnung: Diese Operationen sind nicht reversibel. Bitte handeln Sie mit Vorsicht.'
+    HEADER: 'Task zum Entfernen aller verwaisten Seiten'
     NONEREMOVED: 'Keine entfernt'
     SELECTALL: 'alle auswählen'
     UNSELECTALL: 'Auswahl aufheben'

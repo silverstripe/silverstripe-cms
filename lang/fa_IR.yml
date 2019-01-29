@@ -8,11 +8,9 @@ fa_IR:
     RESTORE: بازیابی
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'دسترسی به بخش ''{title}'''
-    APPLY_FILTER: جستجو
     ARCHIVE: بایگانی
     ARCHIVEDPAGE: 'صفحه بایگانی شده ''{title}'''
     AddPageRestriction: 'یادداشت: برخی انواع صفحه برای این انتخاب مجاز نیستند.'
-    CLEAR_FILTER: پاک‌کردن
     Cancel: لغو
     ChoosePageParentMode: 'انتخاب کنید کجا این صفحه ایجاد شود'
     ChoosePageType: 'انتخاب نوع صفحه'
@@ -125,7 +123,6 @@ fa_IR:
     DEPENDENT_NOTE: 'صفحات زیر وابسته به این صفحه هستند. شامل صفحات مجازی، هدایت‌گر و صفحاتی با محتوای لینک'
     DESCRIPTION: 'صفحه محتوای عمومی'
     DependtPageColumnLinkType: 'نوع پیوند'
-    DependtPageColumnURL: 'نشانی اینترنتی'
     EDITHEADER: 'چه کسی بتواند این صفحه را ویرایش کند ؟'
     EDITORGROUPS: 'گروه‌های ویرایشگر'
     EDIT_ALL_DESCRIPTION: 'ویرایش هر صفحه‌ای'

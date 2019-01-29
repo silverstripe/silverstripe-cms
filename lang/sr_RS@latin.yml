@@ -82,7 +82,6 @@ sr_RS@latin:
     DEFAULTHOMETITLE: 'Početna stranica'
     DEPENDENT_NOTE: 'Sledeće stranice zavise od ove stranice. Ovo podrazumeva vitruelne stranice, stranice za preusmeravanje i stranice sa linkovima na sadržaj.'
     DependtPageColumnLinkType: 'Tip linka'
-    DependtPageColumnURL: URL
     EDITHEADER: 'Ko može da izmeni ovu stranicu?'
     EDITORGROUPS: 'Grupe za izmene'
     EDIT_ALL_DESCRIPTION: 'Izmena bilo koje stranice'

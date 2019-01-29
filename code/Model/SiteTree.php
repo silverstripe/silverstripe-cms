@@ -277,6 +277,13 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     private static $icon = null;
 
+    /**
+     * Class attached to page icons in the CMS page tree. Also supports font-icon set.
+     * @config
+     * @var string
+     */
+    private static $icon_class = 'font-icon-page';
+
     private static $extensions = [
         Hierarchy::class,
         Versioned::class,
@@ -319,7 +326,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * @config
      * @var string
      */
-    private static $meta_generator = 'SilverStripe - http://silverstripe.org';
+    private static $meta_generator = 'SilverStripe - https://www.silverstripe.org';
 
     protected $_cache_statusFlags = null;
 
@@ -1779,7 +1786,12 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         // Content links
-        $items = new ArrayList();
+        $items = ArrayList::create();
+
+        // If the record hasn't been written yet, it cannot be depended on yet
+        if (!$this->isInDB()) {
+            return $items;
+        }
 
         // We merge all into a regular SS_List, because DataList doesn't support merge
         if ($contentLinks = $this->BackLinkTracking()) {
@@ -2744,7 +2756,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $children = $this->creatableChildren();
         $flags = $this->getStatusFlags();
         $treeTitle = sprintf(
-            "<span class=\"jstree-pageicon page-icon class-%s\"></span><span class=\"item\" data-allowedchildren=\"%s\">%s</span>",
+            "<span class=\"jstree-pageicon page-icon %s class-%s\"></span><span class=\"item\" data-allowedchildren=\"%s\">%s</span>",
+            $this->config()->get('icon') ? '' : $this->config()->get('icon_class'),
             Convert::raw2htmlid(static::class),
             Convert::raw2att(json_encode($children)),
             Convert::raw2xml(str_replace(array("\n","\r"), "", $this->MenuTitle))

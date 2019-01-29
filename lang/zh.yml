@@ -14,14 +14,12 @@ zh:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: '访问 ''{title}'' 部分'
     ACCESS_HELP: '允许查看包含页面树及内容 部分。查看和编辑权限可以通过页面特定的下拉菜单进行控制，与使用单独的”内容权限“处理一样。'
-    APPLY_FILTER: 查询
     ARCHIVE: 归档
     ARCHIVEDPAGE: '归档页面 ''{title}'''
     AddNew: 增加一个新的页面
     AddNewButton: 增加一个新的
     AddPageRestriction: 备注：某些类型页面是不允许选择该项的
     ArchiveWarning: 警告：在进行归档前，当前页面将被取消发布？是否继续？
-    CLEAR_FILTER: 清除
     Cancel: 取消
     ChoosePageParentMode: 选择在哪创建此页面
     ChoosePageType: 选择页面类型
@@ -29,7 +27,6 @@ zh:
     DUPLICATED: '成功复制‘{title}’'
     DUPLICATEDWITHCHILDREN: '成功复制‘{title}’及其子页面'
     EMAIL: Email
-    ListFiltered: 显示查询结果.
     NEWPAGE: '新建{pagetype}'
     PAGENOTEXISTS: 该页面不存在
     PAGES: 页面状态
@@ -111,7 +108,6 @@ zh:
     DEFAULTHOMETITLE: 首页
     DEPENDENT_NOTE: 以下页面依赖该页。包括虚拟页面，重定向页，以及有内容链接的页面。
     DependtPageColumnLinkType: 链接类型
-    DependtPageColumnURL: URL
     EDITHEADER: 谁可以修改该页面？
     EDITORGROUPS: 编辑分组
     EDIT_ALL_DESCRIPTION: 编辑任何页面

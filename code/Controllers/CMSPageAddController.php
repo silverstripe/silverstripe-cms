@@ -6,6 +6,7 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Session;
 use SilverStripe\Control\HTTPResponse;
+use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Convert;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
@@ -44,7 +45,8 @@ class CMSPageAddController extends CMSPageEditController
         $pageTypes = array();
         foreach ($this->PageTypes() as $type) {
             $html = sprintf(
-                '<span class="page-icon class-%s"></span><span class="title">%s</span><span class="form__field-description">%s</span>',
+                '<span class="page-icon %s class-%s"></span><span class="title">%s</span><span class="form__field-description">%s</span>',
+                Config::inst()->get($type->getField('ClassName'), 'icon_class'),
                 Convert::raw2htmlid($type->getField('ClassName')),
                 $type->getField('AddAction'),
                 $type->getField('Description')

@@ -68,7 +68,6 @@ he_IL:
     DEFAULTHOMETITLE: 'דף הבית'
     DEPENDENT_NOTE: 'העמודים הבאים תלויים בעמוד זה. בין אלו נכללים, עמודים וירטואליים, עמודי הפנייה ועמודים עם קישורי תוכן.'
     DependtPageColumnLinkType: 'סוג הקישור'
-    DependtPageColumnURL: קישור
     EDITHEADER: 'מי יכול לערוך עמוד זה?'
     EDITORGROUPS: 'קבוצות עורכים'
     EDIT_ALL_DESCRIPTION: 'עריכת עמוד כלשהו'

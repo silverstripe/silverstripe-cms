@@ -14,7 +14,6 @@ pl:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Dostęp do sekcji ''{title}'''
     ACCESS_HELP: 'Zezwala na oglądanie sekcji zawierających drzewo stron oraz treść. Prawo Przeglądaj i edytuj może być obsługiwane przez pola wyboru dostępne na stronach oraz poprzez zakładkę uprawnień.'
-    APPLY_FILTER: Szukaj
     ARCHIVE: Archiwizuj
     ARCHIVEDPAGE: 'Zarchiwizowano stronę ''{title}'''
     AddNew: 'Dodaj nową stronę'
@@ -25,7 +24,6 @@ pl:
     ArchiveWarningWithChildren: 'Uwaga: Ta strona i wszystkie jej podrzędne nie zostaną opublikowane przed usunięciem.\n\nCzy chcesz kontynuować? '
     ArchiveWarningWithChildrenAndCampaigns: 'Uwaga: Ta strona i wszystkie jej podrzędne nie zostaną opublikowane i automatycznie zostaną usunięte z przypisanych kampanii {NumCampaigns}  przed wysłaniem do archiwum.\n\nCzy chcesz kontynuować?'
     CANT_REORGANISE: 'Nie masz uprawnień by zmieniać strony najwyższego poziomu. Twoje zmiany nie zostały zapisane.'
-    CLEAR_FILTER: Wyczyść
     Cancel: Anuluj
     ChoosePageParentMode: 'Wybierz gdzie chcesz utworzyć tę stronę'
     ChoosePageType: 'Wybierz rodzaj strony'
@@ -33,7 +31,6 @@ pl:
     DUPLICATED: 'Duplikowanie ''{title}'' zakończone powodzeniem'
     DUPLICATEDWITHCHILDREN: 'Duplikowanie ''{title}'' oraz podstron zakończone powodzeniem'
     EMAIL: Email
-    ListFiltered: 'Pokaż wyniki wyszukiwania:'
     NEWPAGE: 'Nowa {pagetype}'
     PAGENOTEXISTS: 'Ta strona nie istnieje'
     PAGES: 'Status strony'
@@ -59,7 +56,6 @@ pl:
     ROLLEDBACKPUBv2: 'Przywrócono opublikowaną wersję'
     ROLLEDBACKVERSIONv2: 'Przywrócono wersję #{version}.'
     SAVED: 'Zapisano ''{title}''.'
-    SAVEDRAFT: Zapisz
     SHOW_AS_LIST: 'pokaż jako listę'
     TOO_MANY_PAGES: 'Zbyt wiele stron'
     TabContent: Zawartość
@@ -183,7 +179,6 @@ pl:
     BUTTONDELETEDESC: Usunięto
     BUTTONPUBLISHED: Opublikowano
     BUTTONSAVED: Zapisano
-    BUTTONSAVEPUBLISH: Opublikuj
     BUTTONUNPUBLISH: Nieopublikowane
     BUTTONUNPUBLISHDESC: 'Usuń tę stronę z opublikowanej witryny'
     Comments: Komentarze
@@ -197,7 +192,6 @@ pl:
     DEPENDENT_NOTE: 'Poniższe strony są zależne od tej (łącznie z wirtualnymi stronami, stronami przekierowującymi oraz stronami z treścią).'
     DESCRIPTION: 'Zwykła strona'
     DependtPageColumnLinkType: 'Typ linku'
-    DependtPageColumnURL: 'Adres internetowy'
     EDITHEADER: 'Kto może edytować wewnątrz systemu CMS?'
     EDITORGROUPS: 'Grupy edytujących'
     EDITOR_GROUPS_FIELD_DESC: 'Grupy z globalnymi uprawnieniami do edycji: {groupList}'
@@ -273,8 +267,6 @@ pl:
     TITLE_INDEX: '#'
     TITLE_TYPE: 'Rodzaj strony'
     TITLE_USED_ON: 'Używany na:'
-  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    USAGE: Używane
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Linkowana strona'
     DESCRIPTION: 'Wyświetla zawartość innej strony'
