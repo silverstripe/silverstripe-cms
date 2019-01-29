@@ -484,7 +484,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
-     * Return a subclass map of SiteTree that shouldn't be hidden through {@link SiteTree::$hide_ancestor}
+     * Return a subclass map of SiteTree that shouldn't be hidden through {@link SiteTree::$hide_ancestor}.
+     * Does not enforce permissions.
      *
      * @return array
      */

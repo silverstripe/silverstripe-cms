@@ -1186,11 +1186,18 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         foreach ($classes as $class) {
             $instance = SiteTree::singleton($class);
+
+            // skip if implements HiddenClass
             if ($instance instanceof HiddenClass) {
                 continue;
             }
 
-            // skip this type if it is restricted
+            // skip if access is restricted via custom permission checks
+            if (!$instance->canCreate()) {
+                continue;
+            }
+
+            // skip this type if access is restricted via config
             $needPermissions = $instance->config()->get('need_permission');
             if ($needPermissions && !$this->can($needPermissions)) {
                 continue;

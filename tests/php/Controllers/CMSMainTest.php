@@ -32,6 +32,10 @@ class CMSMainTest extends FunctionalTest
 
     protected static $orig = array();
 
+    protected static $extra_dataobjects = [
+        CMSMainTest_AdminOnly::class
+    ];
+
     public function setUp()
     {
         parent::setUp();
@@ -677,5 +681,43 @@ class CMSMainTest extends FunctionalTest
         $this->logOut();
         $this->logInWithPermission('ADMIN');
         $this->assertTrue($cms->CanOrganiseSitetree());
+    }
+
+    public function testPageTypesFiltersByCanCreate()
+    {
+        $cms = CMSMain::create();
+        $getClassFn = function($type) { return $type->ClassName;};
+
+        // Reset custom SiteConfig settings from YAML,
+        // since it messes with canCreate permissions below
+        $this->objFromFixture(SiteConfig::class, 'siteconfig1')
+            ->update(['CanCreateTopLevelType' => 'LoggedInUsers'])
+            ->write();
+
+        $this->logInWithPermission('ADMIN');
+        $types = array_map($getClassFn, $cms->PageTypes()->toArray());
+        $this->assertContains(
+            CMSMainTest_ClassA::class,
+            $types,
+            'Contains unrestricted classes'
+        );
+        $this->assertContains(
+            CMSMainTest_AdminOnly::class,
+            $types,
+            'Contains restricted classes where canCreate=true'
+        );
+
+        $this->logInWithPermission('CMS_ACCESS_CMSMain');
+        $types = array_map($getClassFn, $cms->PageTypes()->toArray());
+        $this->assertContains(
+            CMSMainTest_ClassA::class,
+            $types,
+            'Contains unrestricted classes'
+        );
+        $this->assertNotContains(
+            CMSMainTest_AdminOnly::class,
+            $types,
+            'Contains restricted classes where canCreate=false'
+        );
     }
 }
