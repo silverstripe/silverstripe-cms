@@ -2,6 +2,7 @@
 
 namespace SilverStripe\CMS\Tests\Model;
 
+use const ASSETS_DIR;
 use LogicException;
 use Page;
 use ReflectionMethod;
@@ -13,6 +14,7 @@ use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Core\Manifest\ManifestFileFinder;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\i18n\i18n;
 use SilverStripe\ORM\DB;
@@ -61,8 +63,8 @@ class SiteTreeTest extends SapphireTest
             ['Dev', 'dev-2'],
             ['Robots in disguise', 'robots-in-disguise'],
             // segments reserved by folder name
-            [RESOURCES_DIR, RESOURCES_DIR . '-2'],
-            ['assets', 'assets-2'],
+            [ManifestFileFinder::RESOURCES_DIR, ManifestFileFinder::RESOURCES_DIR . '-2'],
+            [ASSETS_DIR, ASSETS_DIR . '-2'],
             ['notafoldername', 'notafoldername'],
         ];
     }
