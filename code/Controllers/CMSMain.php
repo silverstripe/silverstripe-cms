@@ -760,7 +760,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             return $this->httpError(
                 403,
                 _t(
-                    __CLASS__.'.CANT_REORGANISE',
+                    __CLASS__ . '.CANT_REORGANISE',
                     "You do not have permission to rearange the site tree. Your change was not saved."
                 )
             );
@@ -780,7 +780,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             return $this->httpError(
                 500,
                 _t(
-                    __CLASS__.'.PLEASESAVE',
+                    __CLASS__ . '.PLEASESAVE',
                     "Please Save Page: This page could not be updated because it hasn't been saved yet."
                 )
             );
@@ -792,14 +792,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             return $this->httpError(
                 403,
                 _t(
-                    __CLASS__.'.CANT_REORGANISE',
+                    __CLASS__ . '.CANT_REORGANISE',
                     "You do not have permission to alter Top level pages. Your change was not saved."
                 )
             );
         }
 
         $siblingIDs = $request->requestVar('SiblingIDs');
-        $statusUpdates = array('modified'=>array());
+        $statusUpdates = array('modified' => array());
 
         if (!$node->canEdit()) {
             return Security::permissionFailure($this);
@@ -824,7 +824,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
             $this->getResponse()->addHeader(
                 'X-Status',
-                rawurlencode(_t(__CLASS__.'.REORGANISATIONSUCCESSFUL', 'Reorganised the site tree successfully.'))
+                rawurlencode(_t(__CLASS__ . '.REORGANISATIONSUCCESSFUL', 'Reorganised the site tree successfully.'))
             );
         }
 
@@ -852,7 +852,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
             $this->getResponse()->addHeader(
                 'X-Status',
-                rawurlencode(_t(__CLASS__.'.REORGANISATIONSUCCESSFUL', 'Reorganised the site tree successfully.'))
+                rawurlencode(_t(__CLASS__ . '.REORGANISATIONSUCCESSFUL', 'Reorganised the site tree successfully.'))
             );
         }
 
@@ -929,7 +929,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             'formSchemaUrl' => $schemaUrl,
             'name' => 'Term',
             'placeholder' => $placeholder,
-            'filters' => $searchParams ?: new \stdClass // stdClass maps to empty json object '{}'
+            'filters' => $searchParams ?: new \stdClass() // stdClass maps to empty json object '{}'
         ];
 
         return json_encode($schema);
@@ -2134,7 +2134,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         foreach ($forms as $urlSegment => $html) {
             $pageHtml .= "<div class=\"params\" id=\"BatchActionParameters_$urlSegment\">$html</div>\n\n";
         }
-        return new LiteralField("BatchActionParameters", '<div id="BatchActionParameters" style="display:none">'.$pageHtml.'</div>');
+        return new LiteralField("BatchActionParameters", '<div id="BatchActionParameters" style="display:none">' . $pageHtml . '</div>');
     }
     /**
      * Returns a list of batch actions
@@ -2201,7 +2201,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				<p>' . $publishAllDescription . '</p>
 				<form method="post" action="publishall">
 					<input type="submit" name="confirm" value="'
-                    . _t(__CLASS__ . '.PUBALLCONFIRM', "Please publish every page in the site, copying content stage to live", 'Confirmation button') .'" />'
+                    . _t(__CLASS__ . '.PUBALLCONFIRM', "Please publish every page in the site, copying content stage to live", 'Confirmation button') . '" />'
                     . $tokenHtml .
                 '</form>';
         }

@@ -66,7 +66,7 @@ class SearchForm extends Form
     ) {
         if (!$fields) {
             $fields = new FieldList(
-                new TextField('Search', _t(__CLASS__.'.SEARCH', 'Search'))
+                new TextField('Search', _t(__CLASS__ . '.SEARCH', 'Search'))
             );
         }
 
@@ -78,7 +78,7 @@ class SearchForm extends Form
 
         if (!$actions) {
             $actions = new FieldList(
-                new FormAction("results", _t(__CLASS__.'.GO', 'Go'))
+                new FormAction("results", _t(__CLASS__ . '.GO', 'Go'))
             );
         }
 

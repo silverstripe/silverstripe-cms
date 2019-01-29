@@ -112,7 +112,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
      */
     public function testVersionsForm()
     {
-        $this->get('admin/pages/legacyhistory/show/'. $this->page->ID . '?flush');
+        $this->get('admin/pages/legacyhistory/show/' . $this->page->ID . '?flush');
         $form = $this->cssParser()->getBySelector('#Form_VersionsForm');
 
         $this->assertEquals(1, count($form));
@@ -130,7 +130,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
 
     public function testVersionsFormTableContainsInformation()
     {
-        $this->get('admin/pages/legacyhistory/show/'. $this->page->ID);
+        $this->get('admin/pages/legacyhistory/show/' . $this->page->ID);
         $form = $this->cssParser()->getBySelector('#Form_VersionsForm');
         $rows = $form[0]->xpath("fieldset/table/tbody/tr");
 
@@ -156,7 +156,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
 
     public function testVersionsFormSelectsUnpublishedCheckbox()
     {
-        $this->get('admin/pages/legacyhistory/show/'. $this->page->ID);
+        $this->get('admin/pages/legacyhistory/show/' . $this->page->ID);
         $checkbox = $this->cssParser()->getBySelector('#Form_VersionsForm_ShowUnpublished');
 
         $this->assertThat($checkbox[0], $this->logicalNot($this->isNull()));

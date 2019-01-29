@@ -202,7 +202,7 @@ in the other stage:<br />
 
     public function doSubmit($data, $form)
     {
-        set_time_limit(60*10); // 10 minutes
+        set_time_limit(60 * 10); // 10 minutes
 
         if (!isset($data['OrphanIDs']) || !isset($data['OrphanOperation'])) {
             return false;

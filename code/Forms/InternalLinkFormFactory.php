@@ -27,7 +27,7 @@ class InternalLinkFormFactory extends LinkFormFactory
         $fields = FieldList::create([
             TreeDropdownField::create(
                 'PageID',
-                _t(__CLASS__.'.SELECT_PAGE', 'Select a page'),
+                _t(__CLASS__ . '.SELECT_PAGE', 'Select a page'),
                 SiteTree::class,
                 'ID',
                 'TreeTitle'
@@ -36,16 +36,16 @@ class InternalLinkFormFactory extends LinkFormFactory
                 ->setHasEmptyDefault(true),
             TextField::create(
                 'Description',
-                _t(__CLASS__.'.LINKDESCR', 'Link description')
+                _t(__CLASS__ . '.LINKDESCR', 'Link description')
             ),
             CheckboxField::create(
                 'TargetBlank',
-                _t(__CLASS__.'.LINKOPENNEWWIN', 'Open in new window/tab')
+                _t(__CLASS__ . '.LINKOPENNEWWIN', 'Open in new window/tab')
             ),
         ]);
 
         if ($context['RequireLinkText']) {
-            $fields->insertAfter('PageID', TextField::create('Text', _t(__CLASS__.'.LINKTEXT', 'Link text')));
+            $fields->insertAfter('PageID', TextField::create('Text', _t(__CLASS__ . '.LINKTEXT', 'Link text')));
         }
 
         $this->extend('updateFormFields', $fields, $controller, $name, $context);

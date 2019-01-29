@@ -1186,7 +1186,7 @@ class SiteTreeTest extends SapphireTest
      */
     public function testAllowedChildren($className, $expected, $assertionMessage)
     {
-        $class = new $className;
+        $class = new $className();
         $this->assertEquals($expected, $class->allowedChildren(), $assertionMessage);
     }
 
@@ -1570,7 +1570,7 @@ class SiteTreeTest extends SapphireTest
     public function testGetControllerNameFromConfig()
     {
         Config::inst()->update(Page::class, 'controller_name', 'This\\Is\\A\\New\\Controller');
-        $class = new Page;
+        $class = new Page();
         $this->assertSame('This\\Is\\A\\New\\Controller', $class->getControllerName());
     }
 
@@ -1579,7 +1579,7 @@ class SiteTreeTest extends SapphireTest
      */
     public function testGetControllerNameWithUnderscoresIsSupported()
     {
-        $class = new SiteTreeTest_LegacyControllerName;
+        $class = new SiteTreeTest_LegacyControllerName();
         $this->assertEquals(SiteTreeTest_LegacyControllerName_Controller::class, $class->getControllerName());
     }
 

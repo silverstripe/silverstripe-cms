@@ -642,7 +642,7 @@ class CMSMainTest extends FunctionalTest
                 'formSchemaUrl' => 'admin/pages/schema/SearchForm',
                 'name' => 'Term',
                 'placeholder' => 'Search "Pages"',
-                'filters' => new \stdClass
+                'filters' => new \stdClass()
             ]),
             $searchSchema
         );

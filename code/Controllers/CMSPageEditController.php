@@ -112,7 +112,7 @@ class CMSPageEditController extends CMSMain
         }
         if (!$record->canView()) {
             $this->httpError(403, _t(
-                __CLASS__.'.ErrorItemPermissionDenied',
+                __CLASS__ . '.ErrorItemPermissionDenied',
                 'It seems you don\'t have the necessary permissions to add {ObjectTitle} to a campaign',
                 '',
                 ['ObjectTitle' => Page::singleton()->i18n_singular_name()]

@@ -118,7 +118,7 @@ class ZZZSearchFormTest extends FunctionalTest
             return;
         }
 
-        $request = new HTTPRequest('GET', 'search', ['Search'=>'publicPublishedPage']);
+        $request = new HTTPRequest('GET', 'search', ['Search' => 'publicPublishedPage']);
         $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
@@ -146,7 +146,7 @@ class ZZZSearchFormTest extends FunctionalTest
             return;
         }
 
-        $request = new HTTPRequest('GET', 'search', ['Search'=>'"finding butterflies"']);
+        $request = new HTTPRequest('GET', 'search', ['Search' => '"finding butterflies"']);
         $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
@@ -175,7 +175,7 @@ class ZZZSearchFormTest extends FunctionalTest
             return;
         }
 
-        $request = new HTTPRequest('GET', 'search', ['Search'=>'publicUnpublishedPage']);
+        $request = new HTTPRequest('GET', 'search', ['Search' => 'publicUnpublishedPage']);
         $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
@@ -195,7 +195,7 @@ class ZZZSearchFormTest extends FunctionalTest
             return;
         }
 
-        $request = new HTTPRequest('GET', 'search', ['Search'=>'restrictedViewLoggedInUsers']);
+        $request = new HTTPRequest('GET', 'search', ['Search' => 'restrictedViewLoggedInUsers']);
         $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
@@ -227,7 +227,7 @@ class ZZZSearchFormTest extends FunctionalTest
             return;
         }
 
-        $request = new HTTPRequest('GET', 'search', ['Search'=>'restrictedViewOnlyWebsiteUsers']);
+        $request = new HTTPRequest('GET', 'search', ['Search' => 'restrictedViewOnlyWebsiteUsers']);
         $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
@@ -268,7 +268,7 @@ class ZZZSearchFormTest extends FunctionalTest
      */
     public function testInheritedRestrictedPagesNotIncluded()
     {
-        $request = new HTTPRequest('GET', 'search', ['Search'=>'inheritRestrictedView']);
+        $request = new HTTPRequest('GET', 'search', ['Search' => 'inheritRestrictedView']);
         $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
@@ -304,7 +304,7 @@ class ZZZSearchFormTest extends FunctionalTest
             return;
         }
 
-        $request = new HTTPRequest('GET', 'search', ['Search'=>'dontShowInSearchPage']);
+        $request = new HTTPRequest('GET', 'search', ['Search' => 'dontShowInSearchPage']);
         $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
@@ -324,7 +324,7 @@ class ZZZSearchFormTest extends FunctionalTest
             return;
         }
 
-        $request = new HTTPRequest('GET', 'search', ['Search'=>'dontShowInSearchFile']);
+        $request = new HTTPRequest('GET', 'search', ['Search' => 'dontShowInSearchFile']);
         $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
@@ -344,7 +344,7 @@ class ZZZSearchFormTest extends FunctionalTest
         );
 
         // Check ShowInSearch=1 can be found
-        $request = new HTTPRequest('GET', 'search', ['Search'=>'showInSearchFile']);
+        $request = new HTTPRequest('GET', 'search', ['Search' => 'showInSearchFile']);
         $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
@@ -366,7 +366,7 @@ class ZZZSearchFormTest extends FunctionalTest
             $this->markTestSkipped("PostgreSQLDatabase doesn't support entity-encoded searches");
         }
 
-        $request = new HTTPRequest('GET', 'search', ['Search'=>'Brötchen']);
+        $request = new HTTPRequest('GET', 'search', ['Search' => 'Brötchen']);
         $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
@@ -383,7 +383,7 @@ class ZZZSearchFormTest extends FunctionalTest
         );
 
         // Check another word
-        $request = new HTTPRequest('GET', 'search', ['Search'=>'Bäcker']);
+        $request = new HTTPRequest('GET', 'search', ['Search' => 'Bäcker']);
         $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);

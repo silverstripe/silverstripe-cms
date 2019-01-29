@@ -17,12 +17,12 @@ class BrokenFilesReport extends Report
 
     public function title()
     {
-        return _t(__CLASS__.'.BROKENFILES', "Pages with broken files");
+        return _t(__CLASS__ . '.BROKENFILES', "Pages with broken files");
     }
 
     public function group()
     {
-        return _t(__CLASS__.'.BrokenLinksGroupTitle', "Broken links reports");
+        return _t(__CLASS__ . '.BrokenLinksGroupTitle', "Broken links reports");
     }
 
     public function sourceRecords($params = null)
@@ -55,7 +55,7 @@ class BrokenFilesReport extends Report
     public function getParameterFields()
     {
         return new FieldList(
-            new CheckboxField('OnLive', _t(__CLASS__.'.ParameterLiveCheckbox', 'Check live site'))
+            new CheckboxField('OnLive', _t(__CLASS__ . '.ParameterLiveCheckbox', 'Check live site'))
         );
     }
 }

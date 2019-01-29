@@ -212,12 +212,12 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
 
                 case 'LastEditedFrom':
                     $fromDate = new DateField(null, null, $val);
-                    $query = $query->filter("LastEdited:GreaterThanOrEqual", $fromDate->dataValue().' 00:00:00');
+                    $query = $query->filter("LastEdited:GreaterThanOrEqual", $fromDate->dataValue() . ' 00:00:00');
                     break;
 
                 case 'LastEditedTo':
                     $toDate = new DateField(null, null, $val);
-                    $query = $query->filter("LastEdited:LessThanOrEqual", $toDate->dataValue().' 23:59:59');
+                    $query = $query->filter("LastEdited:LessThanOrEqual", $toDate->dataValue() . ' 23:59:59');
                     break;
 
                 case 'ClassName':

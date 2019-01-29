@@ -100,7 +100,7 @@ class ModelAsController extends Controller implements NestedController
                 $result = $result->handleRequest($this->getRequest());
             } elseif (!($result instanceof HTTPResponse)) {
                 user_error("ModelAsController::getNestedController() returned bad object type '" .
-                    get_class($result)."'", E_USER_WARNING);
+                    get_class($result) . "'", E_USER_WARNING);
             }
         } catch (HTTPResponse_Exception $responseException) {
             $result = $responseException->getResponse();
