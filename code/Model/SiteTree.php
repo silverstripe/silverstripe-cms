@@ -5,7 +5,6 @@ namespace SilverStripe\CMS\Model;
 use Page;
 use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Assets\Shortcodes\FileLinkTracking;
-use SilverStripe\CampaignAdmin\AddToCampaignHandler_FormAction;
 use SilverStripe\CMS\Controllers\CMSPageEditController;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\CMS\Controllers\ModelAsController;
@@ -33,7 +32,6 @@ use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldDataColumns;
 use SilverStripe\Forms\GridField\GridFieldLazyLoader;
-use SilverStripe\Forms\GridField\GridFieldSortableHeader;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\OptionsetField;
@@ -2277,15 +2275,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 ))->renderWith($infoTemplate)
             )
         );
-
-        // Add to campaign option if not-archived and has publish permission
-        if (($isPublished || $isOnDraft) && $canPublish) {
-            $moreOptions->push(
-                AddToCampaignHandler_FormAction::create()
-                    ->removeExtraClass('btn-primary')
-                    ->addExtraClass('btn-secondary')
-            );
-        }
 
         // "readonly"/viewing version that isn't the current version of the record
         /** @var SiteTree $stageRecord */
