@@ -1380,7 +1380,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         $tags['title'] = [
             'tag' => 'title',
-            'attributes' => [],
             'content' => $this->obj('Title')->forTemplate()
         ];
 
@@ -1442,7 +1441,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     {
         $tags = [];
         $tagsArray = $this->MetaComponents();
-        if (!$includeTitle) {
+        if (!$includeTitle || strtolower($includeTitle) == 'false') {
             unset($tagsArray['title']);
         }
 
