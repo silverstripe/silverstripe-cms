@@ -1353,6 +1353,57 @@ class SiteTreeTest extends SapphireTest
         // Test without title
         $meta = $page->MetaTags(false);
         $this->assertNotContains('<title>', $meta);
+
+        $meta = $page->MetaTags('false');
+        $this->assertNotContains('<title>', $meta);
+    }
+
+    public function testMetaComponents()
+    {
+        $this->logInWithPermission('ADMIN');
+        /** @var SiteTree $page */
+        $page = $this->objFromFixture('Page', 'metapage');
+
+        $charset = Config::inst()->get(ContentNegotiator::class, 'encoding');
+
+        $expected = [
+            'title' => [
+                'tag' => 'title',
+                'content' => "HTML &amp; XML",
+            ],
+            'generator' => [
+                'attributes' => [
+                    'name' => 'generator',
+                    'content' => Config::inst()->get(SiteTree::class, 'meta_generator')
+                ],
+            ],
+            'contentType' => [
+                'attributes' => [
+                    'http-equiv' => 'Content-Type',
+                    'content' => "text/html; charset=$charset",
+                ],
+            ],
+            'description' => [
+                'attributes' => [
+                    'name' => 'description',
+                    'content' => 'The <br /> and <br> tags'
+                ]
+            ],
+            'pageId' => [
+                'attributes' => [
+                    'name' => 'x-page-id',
+                    'content' => $page->ID
+                ],
+            ],
+            'cmsEditLink' => [
+                'attributes' => [
+                    'name' => 'x-cms-edit-link',
+                    'content' => $page->CMSEditLink()
+                ]
+            ]
+        ];
+
+        $this->assertEquals($expected, $page->MetaComponents());
     }
 
     /**

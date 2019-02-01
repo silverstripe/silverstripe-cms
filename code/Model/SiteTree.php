@@ -541,7 +541,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         if (!($page = DataObject::get_by_id(self::class, $arguments['id']))         // Get the current page by ID.
             && !($page = Versioned::get_latest_version(self::class, $arguments['id'])) // Attempt link to old version.
         ) {
-             return null; // There were no suitable matches at all.
+            return null; // There were no suitable matches at all.
         }
 
         /** @var SiteTree $page */
@@ -1356,51 +1356,102 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
-     * Return the title, description, keywords and language metatags.
+     * Return attributes for various meta tags, plus a title tag, in a keyed array.
+     * Array structure corresponds to arguments for HTML::create_tag(). Example:
      *
-     * @todo Move <title> tag in separate getter for easier customization and more obvious usage
+     * $tags['description'] = [
+     *     // html tag type, if omitted defaults to 'meta'
+     *     'tag' => 'meta',
+     *     // attributes of html tag
+     *     'attributes' => [
+     *         'name' => 'description',
+     *         'content' => $this->customMetaDescription(),
+     *     ],
+     *     // content of html tag. (True meta tags don't contain content)
+     *     'content' => null
+     * ];
+     *
+     * @see HTML::createTag()
+     * @return array
+     */
+    public function MetaComponents()
+    {
+        $tags = [];
+
+        $tags['title'] = [
+            'tag' => 'title',
+            'content' => $this->obj('Title')->forTemplate()
+        ];
+
+        $generator = trim(Config::inst()->get(self::class, 'meta_generator'));
+        if (!empty($generator)) {
+            $tags['generator'] = [
+                'attributes' => [
+                    'name' => 'generator',
+                    'content' => $generator,
+                ],
+            ];
+        }
+
+        $charset = ContentNegotiator::config()->uninherited('encoding');
+        $tags['contentType'] = [
+            'attributes' => [
+                'http-equiv' => 'Content-Type',
+                'content' => 'text/html; charset=' . $charset,
+            ],
+        ];
+        if ($this->MetaDescription) {
+            $tags['description'] = [
+                'attributes' => [
+                    'name' => 'description',
+                    'content' => $this->MetaDescription,
+                ],
+            ];
+        }
+
+        if (Permission::check('CMS_ACCESS_CMSMain')
+            && $this->ID > 0
+        ) {
+            $tags['pageId'] = [
+                'attributes' => [
+                    'name' => 'x-page-id',
+                    'content' => $this->ID,
+                ],
+            ];
+            $tags['cmsEditLink'] = [
+                'attributes' => [
+                    'name' => 'x-cms-edit-link',
+                    'content' => $this->CMSEditLink(),
+                ],
+            ];
+        }
+
+        $this->extend('MetaComponents', $tags);
+
+        return $tags;
+    }
+
+    /**
+     * Return the title, description, keywords and language metatags.
      *
      * @param bool $includeTitle Show default <title>-tag, set to false for custom templating
      * @return string The XHTML metatags
      */
     public function MetaTags($includeTitle = true)
     {
-        $tags = array();
-        if ($includeTitle && strtolower($includeTitle) != 'false') {
-            $tags[] = HTML::createTag('title', array(), $this->obj('Title')->forTemplate());
+        $tags = [];
+        $tagsArray = $this->MetaComponents();
+        if (!$includeTitle || strtolower($includeTitle) == 'false') {
+            unset($tagsArray['title']);
         }
 
-        $generator = trim(Config::inst()->get(self::class, 'meta_generator'));
-        if (!empty($generator)) {
-            $tags[] = HTML::createTag('meta', array(
-                'name' => 'generator',
-                'content' => $generator,
-            ));
-        }
-
-        $charset = ContentNegotiator::config()->uninherited('encoding');
-        $tags[] = HTML::createTag('meta', array(
-            'http-equiv' => 'Content-Type',
-            'content' => 'text/html; charset=' . $charset,
-        ));
-        if ($this->MetaDescription) {
-            $tags[] = HTML::createTag('meta', array(
-                'name' => 'description',
-                'content' => $this->MetaDescription,
-            ));
-        }
-
-        if (Permission::check('CMS_ACCESS_CMSMain')
-            && $this->ID > 0
-        ) {
-            $tags[] = HTML::createTag('meta', array(
-                'name' => 'x-page-id',
-                'content' => $this->obj('ID')->forTemplate(),
-            ));
-            $tags[] = HTML::createTag('meta', array(
-                'name' => 'x-cms-edit-link',
-                'content' => $this->obj('CMSEditLink')->forTemplate(),
-            ));
+        foreach ($tagsArray as $tagProps) {
+            $tag = array_merge([
+                'tag' => 'meta',
+                'attributes' => [],
+                'content' => null,
+            ], $tagProps);
+            $tags[] = HTML::createTag($tag['tag'], $tag['attributes'], $tag['content']);
         }
 
         $tagString = implode("\n", $tags);
