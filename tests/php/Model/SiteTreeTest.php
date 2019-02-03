@@ -30,6 +30,7 @@ use SilverStripe\View\Parsers\Diff;
 use SilverStripe\View\Parsers\ShortcodeParser;
 use SilverStripe\View\Parsers\URLSegmentFilter;
 use TractorCow\Fluent\Extension\FluentSiteTreeExtension;
+use const RESOURCES_DIR;
 
 class SiteTreeTest extends SapphireTest
 {
@@ -61,7 +62,6 @@ class SiteTreeTest extends SapphireTest
             ['Dev', 'dev-2'],
             ['Robots in disguise', 'robots-in-disguise'],
             // segments reserved by folder name
-            [RESOURCES_DIR, RESOURCES_DIR . '-2'],
             ['assets', 'assets-2'],
             ['notafoldername', 'notafoldername'],
         ];
@@ -147,6 +147,48 @@ class SiteTreeTest extends SapphireTest
         $id = $page->write();
         $page = Page::get()->byID($id);
         $this->assertEquals($urlSegment, $page->URLSegment);
+    }
+
+    /**
+     * Check that explicitly setting a URL segment to the resources dir will rename it to have a -2 suffix
+     */
+    public function testExplicitlyUsingResourcesDirForURLSegment()
+    {
+        $page = SiteTree::create(['URLSegment' => RESOURCES_DIR]);
+        $id = $page->write();
+        $page = SiteTree::get()->byID($id);
+        $this->assertSame(RESOURCES_DIR . '-2', $page->URLSegment);
+    }
+
+    /**
+     * For legacy resources dir values ("resources"), check that URLSegments get a -2 appended
+     */
+    public function testLegacyResourcesDirValuesHaveIncrementedValueAppended()
+    {
+        if (RESOURCES_DIR !== 'resources') {
+            $this->markTestSkipped('This legacy test requires RESOURCES_DIR to be "resources"');
+        }
+
+        $page = SiteTree::create(['Title' => 'Resources']);
+        $id = $page->write();
+        $page = SiteTree::get()->byID($id);
+        $this->assertSame('resources-2', $page->URLSegment);
+    }
+
+    /**
+     * For new/configured resources dir values ("_resources"), check that URLSegments have the leading underscore
+     * removed
+     */
+    public function testDefaultResourcesDirHasLeadingUnderscoreRemovedAndResourcesIsUsed()
+    {
+        if (RESOURCES_DIR === 'resources') {
+            $this->markTestSkipped('This test requires RESOURCES_DIR to be something other than "resources"');
+        }
+
+        $page = SiteTree::create(['Title' => '_Resources']);
+        $id = $page->write();
+        $page = SiteTree::get()->byID($id);
+        $this->assertSame('resources', $page->URLSegment);
     }
 
     /**
