@@ -65,6 +65,7 @@ use SilverStripe\Security\PermissionChecker;
 use SilverStripe\Security\PermissionProvider;
 use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\Subsites\Model\Subsite;
 use SilverStripe\Versioned\RecursivePublishable;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\ArrayData;
@@ -72,7 +73,6 @@ use SilverStripe\View\HTML;
 use SilverStripe\View\Parsers\ShortcodeParser;
 use SilverStripe\View\Parsers\URLSegmentFilter;
 use SilverStripe\View\SSViewer;
-use Subsite;
 
 /**
  * Basic data-object representing all pages within the site tree. All page types that live within the hierarchy should
@@ -1773,7 +1773,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function DependentPages($includeVirtuals = true)
     {
-        if (class_exists('Subsite')) {
+        if (class_exists(Subsite::class)) {
             $origDisableSubsiteFilter = Subsite::$disable_subsite_filter;
             Subsite::disable_subsite_filter(true);
         }
@@ -1809,7 +1809,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             });
         $items->merge($redirectors);
 
-        if (class_exists('Subsite')) {
+        if (class_exists(Subsite::class)) {
             Subsite::disable_subsite_filter($origDisableSubsiteFilter);
         }
 
@@ -1828,9 +1828,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // Disable subsite filter for these pages
         if ($pages instanceof DataList) {
             return $pages->setDataQueryParam('Subsite.filter', false);
-        } else {
-            return $pages;
         }
+        return $pages;
     }
 
     /**
@@ -1898,8 +1897,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 'Title' => $this->fieldLabel('Title'),
                 'DependentLinkType' => _t(__CLASS__.'.DependtPageColumnLinkType', 'Link type'),
             );
-            if (class_exists('Subsite')) {
-                $dependentColumns['Subsite.Title'] = singleton('Subsite')->i18n_singular_name();
+            if (class_exists(Subsite::class)) {
+                $dependentColumns['Subsite.Title'] = Subsite::singleton()->i18n_singular_name();
             }
 
             $dependentNote = new LiteralField('DependentNote', '<p>' . _t(__CLASS__.'.DEPENDENT_NOTE', 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.') . '</p>');
