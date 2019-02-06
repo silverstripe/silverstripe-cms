@@ -25,6 +25,7 @@ use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\ArrayData;
+use SilverStripe\View\Parsers\URLSegmentFilter;
 use SilverStripe\View\Requirements;
 use SilverStripe\View\SSViewer;
 use Translatable;
@@ -195,11 +196,16 @@ class ContentController extends Controller
             if (class_exists('Translatable')) {
                 Translatable::disable_locale_filter();
             }
+
+            $filter = URLSegmentFilter::create();
+
             // look for a page with this URLSegment
             $child = SiteTree::get()->filter([
                 'ParentID' => $this->ID,
-                'URLSegment' => rawurlencode($action),
+                // url encode unless it's multibyte (already pre-encoded in the database)
+                'URLSegment' => $filter->getAllowMultibyte() ? $action : rawurlencode($action),
             ])->first();
+
             if (class_exists('Translatable')) {
                 Translatable::enable_locale_filter();
             }
