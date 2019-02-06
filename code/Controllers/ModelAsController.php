@@ -16,6 +16,7 @@ use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Dev\Debug;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
+use SilverStripe\View\Parsers\URLSegmentFilter;
 use Translatable;
 
 /**
@@ -127,8 +128,14 @@ class ModelAsController extends Controller implements NestedController
             Translatable::disable_locale_filter();
         }
 
+        // url encode unless it's multibyte (already pre-encoded in the database)
+        $filter = URLSegmentFilter::create();
+        if (!$filter->getAllowMultibyte()) {
+            $URLSegment = rawurlencode($URLSegment);
+        }
+
         // Select child page
-        $conditions = array('"SiteTree"."URLSegment"' => rawurlencode($URLSegment));
+        $conditions = array('"SiteTree"."URLSegment"' => $URLSegment);
         if (SiteTree::config()->get('nested_urls')) {
             $conditions[] = array('"SiteTree"."ParentID"' => 0);
         }

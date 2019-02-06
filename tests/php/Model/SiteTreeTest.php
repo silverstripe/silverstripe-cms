@@ -2,7 +2,6 @@
 
 namespace SilverStripe\CMS\Tests\Model;
 
-use const ASSETS_DIR;
 use LogicException;
 use Page;
 use ReflectionMethod;
@@ -17,8 +16,8 @@ use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Core\Manifest\ManifestFileFinder;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\i18n\i18n;
-use SilverStripe\ORM\DB;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\DB;
 use SilverStripe\ORM\ValidationException;
 use SilverStripe\Security\Group;
 use SilverStripe\Security\InheritedPermissions;
@@ -32,6 +31,8 @@ use SilverStripe\View\Parsers\Diff;
 use SilverStripe\View\Parsers\ShortcodeParser;
 use SilverStripe\View\Parsers\URLSegmentFilter;
 use TractorCow\Fluent\Extension\FluentSiteTreeExtension;
+use const ASSETS_DIR;
+use const RESOURCES_DIR;
 
 class SiteTreeTest extends SapphireTest
 {
@@ -63,7 +64,6 @@ class SiteTreeTest extends SapphireTest
             ['Dev', 'dev-2'],
             ['Robots in disguise', 'robots-in-disguise'],
             // segments reserved by folder name
-            [ManifestFileFinder::RESOURCES_DIR, ManifestFileFinder::RESOURCES_DIR . '-2'],
             [ASSETS_DIR, ASSETS_DIR . '-2'],
             ['notafoldername', 'notafoldername'],
         ];
@@ -150,6 +150,48 @@ class SiteTreeTest extends SapphireTest
         $id = $page->write();
         $page = SiteTree::get()->byID($id);
         $this->assertEquals($urlSegment, $page->URLSegment);
+    }
+
+    /**
+     * Check that explicitly setting a URL segment to the resources dir will rename it to have a -2 suffix
+     */
+    public function testExplicitlyUsingResourcesDirForURLSegment()
+    {
+        $page = SiteTree::create(['URLSegment' => RESOURCES_DIR]);
+        $id = $page->write();
+        $page = SiteTree::get()->byID($id);
+        $this->assertSame(RESOURCES_DIR . '-2', $page->URLSegment);
+    }
+
+    /**
+     * For legacy resources dir values ("resources"), check that URLSegments get a -2 appended
+     */
+    public function testLegacyResourcesDirValuesHaveIncrementedValueAppended()
+    {
+        if (RESOURCES_DIR !== 'resources') {
+            $this->markTestSkipped('This legacy test requires RESOURCES_DIR to be "resources"');
+        }
+
+        $page = SiteTree::create(['Title' => 'Resources']);
+        $id = $page->write();
+        $page = SiteTree::get()->byID($id);
+        $this->assertSame('resources-2', $page->URLSegment);
+    }
+
+    /**
+     * For new/configured resources dir values ("_resources"), check that URLSegments have the leading underscore
+     * removed
+     */
+    public function testDefaultResourcesDirHasLeadingUnderscoreRemovedAndResourcesIsUsed()
+    {
+        if (RESOURCES_DIR === 'resources') {
+            $this->markTestSkipped('This test requires RESOURCES_DIR to be something other than "resources"');
+        }
+
+        $page = SiteTree::create(['Title' => '_Resources']);
+        $id = $page->write();
+        $page = SiteTree::get()->byID($id);
+        $this->assertSame('resources', $page->URLSegment);
     }
 
     /**
@@ -1412,6 +1454,57 @@ class SiteTreeTest extends SapphireTest
         // Test without title
         $meta = $page->MetaTags(false);
         $this->assertNotContains('<title>', $meta);
+
+        $meta = $page->MetaTags('false');
+        $this->assertNotContains('<title>', $meta);
+    }
+
+    public function testMetaComponents()
+    {
+        $this->logInWithPermission('ADMIN');
+        /** @var SiteTree $page */
+        $page = $this->objFromFixture('Page', 'metapage');
+
+        $charset = Config::inst()->get(ContentNegotiator::class, 'encoding');
+
+        $expected = [
+            'title' => [
+                'tag' => 'title',
+                'content' => "HTML &amp; XML",
+            ],
+            'generator' => [
+                'attributes' => [
+                    'name' => 'generator',
+                    'content' => Config::inst()->get(SiteTree::class, 'meta_generator')
+                ],
+            ],
+            'contentType' => [
+                'attributes' => [
+                    'http-equiv' => 'Content-Type',
+                    'content' => "text/html; charset=$charset",
+                ],
+            ],
+            'description' => [
+                'attributes' => [
+                    'name' => 'description',
+                    'content' => 'The <br /> and <br> tags'
+                ]
+            ],
+            'pageId' => [
+                'attributes' => [
+                    'name' => 'x-page-id',
+                    'content' => $page->ID
+                ],
+            ],
+            'cmsEditLink' => [
+                'attributes' => [
+                    'name' => 'x-cms-edit-link',
+                    'content' => $page->CMSEditLink()
+                ]
+            ]
+        ];
+
+        $this->assertEquals($expected, $page->MetaComponents());
     }
 
     /**

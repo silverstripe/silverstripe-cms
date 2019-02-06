@@ -5,7 +5,6 @@ namespace SilverStripe\CMS\Model;
 use Page;
 use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Assets\Shortcodes\FileLinkTracking;
-use SilverStripe\CampaignAdmin\AddToCampaignHandler_FormAction;
 use SilverStripe\CMS\Controllers\CMSPageEditController;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\CMS\Controllers\ModelAsController;
@@ -33,7 +32,6 @@ use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldDataColumns;
 use SilverStripe\Forms\GridField\GridFieldLazyLoader;
-use SilverStripe\Forms\GridField\GridFieldSortableHeader;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\OptionsetField;
@@ -65,6 +63,7 @@ use SilverStripe\Security\PermissionChecker;
 use SilverStripe\Security\PermissionProvider;
 use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\Subsites\Model\Subsite;
 use SilverStripe\Versioned\RecursivePublishable;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\ArrayData;
@@ -72,7 +71,6 @@ use SilverStripe\View\HTML;
 use SilverStripe\View\Parsers\ShortcodeParser;
 use SilverStripe\View\Parsers\URLSegmentFilter;
 use SilverStripe\View\SSViewer;
-use Subsite;
 
 /**
  * Basic data-object representing all pages within the site tree. All page types that live within the hierarchy should
@@ -541,7 +539,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         if (!($page = DataObject::get_by_id(self::class, $arguments['id']))         // Get the current page by ID.
             && !($page = Versioned::get_latest_version(self::class, $arguments['id'])) // Attempt link to old version.
         ) {
-             return null; // There were no suitable matches at all.
+            return null; // There were no suitable matches at all.
         }
 
         /** @var SiteTree $page */
@@ -1356,51 +1354,102 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
-     * Return the title, description, keywords and language metatags.
+     * Return attributes for various meta tags, plus a title tag, in a keyed array.
+     * Array structure corresponds to arguments for HTML::create_tag(). Example:
      *
-     * @todo Move <title> tag in separate getter for easier customization and more obvious usage
+     * $tags['description'] = [
+     *     // html tag type, if omitted defaults to 'meta'
+     *     'tag' => 'meta',
+     *     // attributes of html tag
+     *     'attributes' => [
+     *         'name' => 'description',
+     *         'content' => $this->customMetaDescription(),
+     *     ],
+     *     // content of html tag. (True meta tags don't contain content)
+     *     'content' => null
+     * ];
+     *
+     * @see HTML::createTag()
+     * @return array
+     */
+    public function MetaComponents()
+    {
+        $tags = [];
+
+        $tags['title'] = [
+            'tag' => 'title',
+            'content' => $this->obj('Title')->forTemplate()
+        ];
+
+        $generator = trim(Config::inst()->get(self::class, 'meta_generator'));
+        if (!empty($generator)) {
+            $tags['generator'] = [
+                'attributes' => [
+                    'name' => 'generator',
+                    'content' => $generator,
+                ],
+            ];
+        }
+
+        $charset = ContentNegotiator::config()->uninherited('encoding');
+        $tags['contentType'] = [
+            'attributes' => [
+                'http-equiv' => 'Content-Type',
+                'content' => 'text/html; charset=' . $charset,
+            ],
+        ];
+        if ($this->MetaDescription) {
+            $tags['description'] = [
+                'attributes' => [
+                    'name' => 'description',
+                    'content' => $this->MetaDescription,
+                ],
+            ];
+        }
+
+        if (Permission::check('CMS_ACCESS_CMSMain')
+            && $this->ID > 0
+        ) {
+            $tags['pageId'] = [
+                'attributes' => [
+                    'name' => 'x-page-id',
+                    'content' => $this->ID,
+                ],
+            ];
+            $tags['cmsEditLink'] = [
+                'attributes' => [
+                    'name' => 'x-cms-edit-link',
+                    'content' => $this->CMSEditLink(),
+                ],
+            ];
+        }
+
+        $this->extend('MetaComponents', $tags);
+
+        return $tags;
+    }
+
+    /**
+     * Return the title, description, keywords and language metatags.
      *
      * @param bool $includeTitle Show default <title>-tag, set to false for custom templating
      * @return string The XHTML metatags
      */
     public function MetaTags($includeTitle = true)
     {
-        $tags = array();
-        if ($includeTitle && strtolower($includeTitle) != 'false') {
-            $tags[] = HTML::createTag('title', array(), $this->obj('Title')->forTemplate());
+        $tags = [];
+        $tagsArray = $this->MetaComponents();
+        if (!$includeTitle || strtolower($includeTitle) == 'false') {
+            unset($tagsArray['title']);
         }
 
-        $generator = trim(Config::inst()->get(self::class, 'meta_generator'));
-        if (!empty($generator)) {
-            $tags[] = HTML::createTag('meta', array(
-                'name' => 'generator',
-                'content' => $generator,
-            ));
-        }
-
-        $charset = ContentNegotiator::config()->uninherited('encoding');
-        $tags[] = HTML::createTag('meta', array(
-            'http-equiv' => 'Content-Type',
-            'content' => 'text/html; charset=' . $charset,
-        ));
-        if ($this->MetaDescription) {
-            $tags[] = HTML::createTag('meta', array(
-                'name' => 'description',
-                'content' => $this->MetaDescription,
-            ));
-        }
-
-        if (Permission::check('CMS_ACCESS_CMSMain')
-            && $this->ID > 0
-        ) {
-            $tags[] = HTML::createTag('meta', array(
-                'name' => 'x-page-id',
-                'content' => $this->obj('ID')->forTemplate(),
-            ));
-            $tags[] = HTML::createTag('meta', array(
-                'name' => 'x-cms-edit-link',
-                'content' => $this->obj('CMSEditLink')->forTemplate(),
-            ));
+        foreach ($tagsArray as $tagProps) {
+            $tag = array_merge([
+                'tag' => 'meta',
+                'attributes' => [],
+                'content' => null,
+            ], $tagProps);
+            $tags[] = HTML::createTag($tag['tag'], $tag['attributes'], $tag['content']);
         }
 
         $tagString = implode("\n", $tags);
@@ -1780,7 +1829,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function DependentPages($includeVirtuals = true)
     {
-        if (class_exists('Subsite')) {
+        if (class_exists(Subsite::class)) {
             $origDisableSubsiteFilter = Subsite::$disable_subsite_filter;
             Subsite::disable_subsite_filter(true);
         }
@@ -1816,7 +1865,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             });
         $items->merge($redirectors);
 
-        if (class_exists('Subsite')) {
+        if (class_exists(Subsite::class)) {
             Subsite::disable_subsite_filter($origDisableSubsiteFilter);
         }
 
@@ -1835,9 +1884,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // Disable subsite filter for these pages
         if ($pages instanceof DataList) {
             return $pages->setDataQueryParam('Subsite.filter', false);
-        } else {
-            return $pages;
         }
+        return $pages;
     }
 
     /**
@@ -1905,8 +1953,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 'Title' => $this->fieldLabel('Title'),
                 'DependentLinkType' => _t(__CLASS__ . '.DependtPageColumnLinkType', 'Link type'),
             );
-            if (class_exists('Subsite')) {
-                $dependentColumns['Subsite.Title'] = singleton('Subsite')->i18n_singular_name();
+            if (class_exists(Subsite::class)) {
+                $dependentColumns['Subsite.Title'] = Subsite::singleton()->i18n_singular_name();
             }
 
             $dependentNote = new LiteralField('DependentNote', '<p>' . _t(__CLASS__ . '.DEPENDENT_NOTE', 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.') . '</p>');
@@ -1946,7 +1994,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $helpText = (self::config()->get('nested_urls') && $this->numChildren())
             ? $this->fieldLabel('LinkChangeNote')
             : '';
-        if (!Config::inst()->get('SilverStripe\\View\\Parsers\\URLSegmentFilter', 'default_allow_multibyte')) {
+        if (!URLSegmentFilter::create()->getAllowMultibyte()) {
             $helpText .= _t('SilverStripe\\CMS\\Forms\\SiteTreeURLSegmentField.HelpChars', ' Special characters are automatically converted or removed.');
         }
         $urlsegment->setHelpText($helpText);
@@ -2277,15 +2325,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 ))->renderWith($infoTemplate)
             )
         );
-
-        // Add to campaign option if not-archived and has publish permission
-        if (($isPublished || $isOnDraft) && $canPublish) {
-            $moreOptions->push(
-                AddToCampaignHandler_FormAction::create()
-                    ->removeExtraClass('btn-primary')
-                    ->addExtraClass('btn-secondary')
-            );
-        }
 
         // "readonly"/viewing version that isn't the current version of the record
         /** @var SiteTree $stageRecord */

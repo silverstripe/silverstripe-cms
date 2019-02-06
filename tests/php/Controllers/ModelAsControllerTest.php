@@ -2,6 +2,7 @@
 
 namespace SilverStripe\CMS\Tests\Controllers;
 
+use Page;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\CMS\Controllers\ModelAsController;
 use SilverStripe\CMS\Controllers\OldPageRedirector;
@@ -12,6 +13,7 @@ use SilverStripe\Control\Director;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Versioned\Versioned;
+use SilverStripe\View\Parsers\URLSegmentFilter;
 
 class ModelAsControllerTest extends FunctionalTest
 {
@@ -330,6 +332,39 @@ class ModelAsControllerTest extends FunctionalTest
             404,
             'The page should not be found since its parent has not been published, in this case ' .
             'http://<yousitename>/root/sub-root or http://<yousitename>/sub-root'
+        );
+    }
+
+    public function testAllowMultibyte()
+    {
+        Config::modify()->set(URLSegmentFilter::class, 'default_allow_multibyte', true);
+
+        $parent = new Page();
+        $parent->Title = 'Multibyte test';
+        $parent->URLSegment = 'بلاگ';
+        $parent->write();
+        $parent->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
+
+        $child = new Page();
+        $child->Title = 'Multibyte test';
+        $child->URLSegment = 'فضة';
+        $child->ParentID = $parent->ID;
+        $child->write();
+        $child->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
+
+        // Emulate browser behaviour around multibyte URL encodings
+        $response = $this->get(rawurlencode('بلاگ'));
+        $this->assertEquals(
+            $response->getStatusCode(),
+            200,
+            'Routes toplevel paths'
+        );
+
+        $response = $this->get(join('/', [rawurlencode('بلاگ'), rawurlencode('فضة')]));
+        $this->assertEquals(
+            $response->getStatusCode(),
+            200,
+            'Routes nested paths'
         );
     }
 }
