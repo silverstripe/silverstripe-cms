@@ -1462,7 +1462,7 @@ class SiteTreeTest extends SapphireTest
     {
         $this->logInWithPermission('ADMIN');
         /** @var SiteTree $page */
-        $page = $this->objFromFixture('Page', 'metapage');
+        $page = $this->objFromFixture(SiteTree::class, 'metapage');
 
         $charset = Config::inst()->get(ContentNegotiator::class, 'encoding');
 
