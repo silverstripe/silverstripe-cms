@@ -32,7 +32,6 @@ use SilverStripe\View\Parsers\ShortcodeParser;
 use SilverStripe\View\Parsers\URLSegmentFilter;
 use TractorCow\Fluent\Extension\FluentSiteTreeExtension;
 use const ASSETS_DIR;
-use const RESOURCES_DIR;
 
 class SiteTreeTest extends SapphireTest
 {
@@ -157,10 +156,10 @@ class SiteTreeTest extends SapphireTest
      */
     public function testExplicitlyUsingResourcesDirForURLSegment()
     {
-        $page = SiteTree::create(['URLSegment' => RESOURCES_DIR]);
+        $page = SiteTree::create(['URLSegment' => ManifestFileFinder::RESOURCES_DIR]);
         $id = $page->write();
         $page = SiteTree::get()->byID($id);
-        $this->assertSame(RESOURCES_DIR . '-2', $page->URLSegment);
+        $this->assertSame(ManifestFileFinder::RESOURCES_DIR . '-2', $page->URLSegment);
     }
 
     /**
@@ -168,7 +167,7 @@ class SiteTreeTest extends SapphireTest
      */
     public function testLegacyResourcesDirValuesHaveIncrementedValueAppended()
     {
-        if (RESOURCES_DIR !== 'resources') {
+        if (ManifestFileFinder::RESOURCES_DIR !== 'resources') {
             $this->markTestSkipped('This legacy test requires RESOURCES_DIR to be "resources"');
         }
 
@@ -184,7 +183,7 @@ class SiteTreeTest extends SapphireTest
      */
     public function testDefaultResourcesDirHasLeadingUnderscoreRemovedAndResourcesIsUsed()
     {
-        if (RESOURCES_DIR === 'resources') {
+        if (ManifestFileFinder::RESOURCES_DIR === 'resources') {
             $this->markTestSkipped('This test requires RESOURCES_DIR to be something other than "resources"');
         }
 
