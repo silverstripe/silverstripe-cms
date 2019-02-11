@@ -17,6 +17,7 @@ use SilverStripe\Dev\SapphireTest;
 use SilverStripe\i18n\i18n;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
+use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\ORM\ValidationException;
 use SilverStripe\Security\Group;
 use SilverStripe\Security\InheritedPermissions;
@@ -613,12 +614,18 @@ class SiteTreeTest extends SapphireTest
      */
     public function testReadArchiveDate()
     {
+        DBDatetime::set_mock_now('2009-07-02 14:05:07');
+        $oldPage = SiteTree::create();
+        $oldPage->Title = 'A really old page';
+        $oldPage->write();
+        DBDatetime::clear_mock_now();
+
         $date = '2009-07-02 14:05:07';
         Versioned::reading_archived_date($date);
-        SiteTree::get()->where([
+        $result = SiteTree::get()->where([
             '"SiteTree"."ParentID"' => 0
-        ])->sql($args);
-        $this->assertContains($date, $args);
+        ]);
+        $this->assertCount(1, $result, '"A really old page" should be returned');
     }
 
     public function testEditPermissions()
