@@ -11,15 +11,15 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "CMS.ConfirmRestoreFromLive": "Weet u zeker dat u terug wil naar de laatst gepubliceerde versie van deze pagina?",
     "CMS.Duplicate": "Dupliceren",
     "CMS.EditPage": "Aanpassen",
-    "CMS.ONLYSELECTTWO": "You can only compare two versions at this time.",
-    "CMS.Restore": "Are you sure you want to restore this page from archive?",
-    "CMS.RestoreToRoot": "Are you sure you want to restore this page from archive?\n\nBecause the parent page is not available this will be restored to the top level.",
+    "CMS.ONLYSELECTTWO": "Er kunnen maar 2 pagina's tegelijk worden vergeleken.",
+    "CMS.Restore": "Weet u zeker dat deze pagina hersteld moet worden?",
+    "CMS.RestoreToRoot": "Weet u zeker dat deze pagina hersteld moet worden?\n\nDe bovenliggende pagina bestaat niet meer, waardoor deze pagina op het hoofdniveau terecht komt.",
     "CMS.RollbackToVersion": "Wilt u terugdraaien naar versie #%s van deze pagina?",
     "CMS.ShowAsList": "Toon onderliggende pagina's als lijst",
     "CMS.ThisPageAndSubpages": "Deze pagina en subpagina's",
     "CMS.ThisPageOnly": "Enkel deze pagina",
-    "CMS.Unpublish": "Are you sure you want to remove your page from the published site?\n\nThis page will still be available in the sitetree as draft.",
-    "CMS.UpdateURL": "Update URL",
-    "CMS.ViewPage": "View"
+    "CMS.Unpublish": "Weet u zeker dat deze pagina verwijderd moet worden?\n\nDe pagina blijft wel als concept opgeslagen.",
+    "CMS.UpdateURL": "URL aanpassen",
+    "CMS.ViewPage": "Bekijk"
 });
 }
