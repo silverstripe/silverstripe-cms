@@ -56,6 +56,7 @@ it:
     ROLLEDBACKPUBv2: 'Ripristinata la versione pubblicata.'
     ROLLEDBACKVERSIONv2: 'Ripristinata la versione #{version}.'
     SAVED: '''{title}'' salvata correttamente.'
+    SAVEDRAFT: Salva
     SHOW_AS_LIST: 'Mostra come lista'
     TOO_MANY_PAGES: 'Troppe pagine'
     TabContent: Contenuto
@@ -177,6 +178,7 @@ it:
     BUTTONDELETEDESC: 'Rimuove da bozza/live e manda all''archivio'
     BUTTONPUBLISHED: Pubblicato
     BUTTONSAVED: Salvato
+    BUTTONSAVEPUBLISH: Pubblica
     BUTTONUNPUBLISH: Nascondere
     BUTTONUNPUBLISHDESC: 'Rimuovi questa pagina dal sito pubblicato'
     Comments: Commenti
@@ -263,6 +265,14 @@ it:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Usato in'
+  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
+    USAGE: Utilizzo
+  SilverStripe\CMS\Model\SiteTreeLink:
+    PLURALNAME: 'Collegamenti Albero Sito'
+    PLURALS:
+      one: 'Un Collegamento Albero Sito'
+      other: '{count} Collegamenti Albero Sito'
+    SINGULARNAME: 'Collegamento Albero Sito'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Pagina collegata'
     DESCRIPTION: 'Mostra il contenuto di un''altra pagina'
