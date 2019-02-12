@@ -14,18 +14,16 @@ nl:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Toegang tot het ''{title}'' gedeelte'
     ACCESS_HELP: 'Bevoegdheid om paginastructuur en inhoud te bekijken. Bekijk- en bewerkingstoestemmingen kunnen worden toegekend met pagina-specifieke menu''s en het aparte "Inhoudsmachtigingen".'
-    APPLY_FILTER: Zoek
     ARCHIVE: Archief
-    ARCHIVEDPAGE: 'Pagina ''%s'' is gearchiveerd'
+    ARCHIVEDPAGE: 'Pagina ''{title}'' is gearchiveerd'
     AddNew: 'Voeg nieuwe pagina toe'
     AddNewButton: Nieuw...
     AddPageRestriction: 'Opmerking: Sommige paginatypes zijn niet toegestaan ​​voor deze selectie'
     ArchiveWarning: 'Let op: de publicatie van deze pagina wordt ingetrokken voordat hij wordt gearchiveerd.\n\nWeet u zeker dat u wilt doorgaan?'
-    ArchiveWarningWithCampaigns: 'Let op: de publicatie van deze pagina wordt ingetrokken en de pagina wordt automatisch uit alle campagnes verwijderd voordat hij wordt gearchiveerd.\n\nWeet u zeker dat u wilt doorgaan?'
+    ArchiveWarningWithCampaigns: 'Let op: de publicatie van deze pagina wordt ingetrokken en de pagina wordt automatisch uit alle {NumCampaigns} campagnes verwijderd voordat deze wordt gearchiveerd.\n\nWeet u zeker dat u wilt doorgaan?'
     ArchiveWarningWithChildren: 'Let op: deze pagina en alle bijbehorende subpagina''s worden van de gepubliceerde site verwijderd voordat ze worden gearchiveerd.\n\nWeet u zeker dat u wilt doorgaan?'
-    ArchiveWarningWithChildrenAndCampaigns: 'Let op: deze pagina en alle bijbehorende subpagina''s worden automatisch van de gepubliceerde site én uit alle campagnes verwijderd, voordat ze worden gearchiveerd.\n\nWeet u zeker dat u wilt doorgaan?'
+    ArchiveWarningWithChildrenAndCampaigns: 'Let op: deze pagina en alle bijbehorende subpagina''s worden automatisch van de gepubliceerde site én uit alle {NumCampaigns} campagnes verwijderd, voordat ze worden gearchiveerd.\n\nWeet u zeker dat u wilt doorgaan?'
     CANT_REORGANISE: 'U hebt onvoldoende rechten om pagina''s op het topniveau te wijzigen. Uw wijziging is niet opgeslagen.'
-    CLEAR_FILTER: Wissen
     Cancel: Annuleren
     ChoosePageParentMode: 'Kies waar u deze pagina wilt aanmaken'
     ChoosePageType: 'Kies een pagina type'
@@ -33,7 +31,6 @@ nl:
     DUPLICATED: '''{title}'' met succes gedupliceerd'
     DUPLICATEDWITHCHILDREN: '''{title}'' en onderliggende items met succes gedupliceerd'
     EMAIL: E-mail
-    ListFiltered: 'Zoekresultaten worden getoond.'
     NEWPAGE: 'Nieuwe {pagetype}'
     PAGENOTEXISTS: 'Deze pagina bestaat niet'
     PAGES: 'Pagina status'
@@ -59,7 +56,6 @@ nl:
     ROLLEDBACKPUBv2: 'Teruggedraaid naar gepubliceerde versie.'
     ROLLEDBACKVERSIONv2: 'Teruggedraaid naar versie #{version}.'
     SAVED: '''{title}'' is opgeslagen.'
-    SAVEDRAFT: 'Concept opslaan'
     SHOW_AS_LIST: 'Als lijst tonen'
     TOO_MANY_PAGES: 'Te veel pagina''s'
     TabContent: Inhoud
@@ -181,7 +177,6 @@ nl:
     BUTTONDELETEDESC: 'Verwijderde concept/live versie en archiveer'
     BUTTONPUBLISHED: Gepubliceerd
     BUTTONSAVED: Opgeslagen
-    BUTTONSAVEPUBLISH: 'Opslaan & publiceren'
     BUTTONUNPUBLISH: 'Publicatie intrekken'
     BUTTONUNPUBLISHDESC: 'Deze pagina verwijderen uit de gepubliceerde site'
     Comments: Commentaar
@@ -195,7 +190,6 @@ nl:
     DEPENDENT_NOTE: 'De volgende pagina''s zijn afhankelijk van deze pagina. Hieronder vallen virtuele pagina''s, verwijzingspagina''s en pagina''s met links in hun inhoud.'
     DESCRIPTION: 'Algemene pagina'
     DependtPageColumnLinkType: Linktype
-    DependtPageColumnURL: URL
     EDITHEADER: 'Wie kan deze pagina wijzigen?'
     EDITORGROUPS: Redacteursgroepen
     EDITOR_GROUPS_FIELD_DESC: 'Groepen die alles mogen bewerken: {groupList}'
@@ -266,8 +260,6 @@ nl:
     many_many_ImageTracking: 'Afbeeldingen traceren'
     many_many_LinkTracking: 'Links traceren'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    BACKLINKCOUNT: 'Gebruikt op:'
-    PAGES: pagina(s)
     TITLE_INDEX: '#'
     TITLE_TYPE: Type
     TITLE_USED_ON: 'Gebruikt op:'
