@@ -7,13 +7,12 @@ use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\Control\Controller;
-use SilverStripe\Core\ClassInfo;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\Versioned\Versioned;
-use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\DataObject;
 use SilverStripe\Reports\Report;
+use SilverStripe\Versioned\Versioned;
 
 /**
  * Content side-report listing pages with broken links
@@ -23,7 +22,7 @@ class BrokenLinksReport extends Report
 
     public function title()
     {
-        return _t(__CLASS__ . '.BROKENLINKS', "Broken links report");
+        return _t(__CLASS__ . '.BROKENLINKS', 'Broken links report');
     }
 
     public function sourceRecords($params, $sort, $limit)
@@ -35,26 +34,26 @@ class BrokenLinksReport extends Report
             $field = $parts[0];
             $direction = $parts[1];
 
-            if ($field == 'AbsoluteLink') {
+            if ($field === 'AbsoluteLink') {
                 $sort = 'URLSegment ' . $direction;
-            } elseif ($field == 'Subsite.Title') {
+            } elseif ($field === 'Subsite.Title') {
                 $join = 'LEFT JOIN "Subsite" ON "Subsite"."ID" = "SiteTree"."SubsiteID"';
-            } elseif ($field == 'BrokenReason') {
+            } elseif ($field === 'BrokenReason') {
                 $sortBrokenReason = true;
                 $sort = '';
             }
         }
-        $brokenFilter = array(
-            '"SiteTree"."HasBrokenLink" = ? OR "SiteTree"."HasBrokenFile" = ?' => array(true, true)
-        );
-        $isLive = !isset($params['CheckSite']) || $params['CheckSite'] == 'Published';
+        $brokenFilter = [
+            '"SiteTree"."HasBrokenLink" = ? OR "SiteTree"."HasBrokenFile" = ?' => [true, true]
+        ];
+        $isLive = !isset($params['CheckSite']) || $params['CheckSite'] === 'Published';
         if ($isLive) {
-            $ret = Versioned::get_by_stage(SiteTree::class, 'Live', $brokenFilter, $sort, $join, $limit);
+            $ret = Versioned::get_by_stage(SiteTree::class, Versioned::LIVE, $brokenFilter, $sort, $join, $limit);
         } else {
             $ret = DataObject::get(SiteTree::class, $brokenFilter, $sort, $join, $limit);
         }
 
-        $returnSet = new ArrayList();
+        $returnSet = ArrayList::create();
         if ($ret) {
             foreach ($ret as $record) {
                 $reason = false;
@@ -63,24 +62,24 @@ class BrokenLinksReport extends Report
                 $reasonCodes = [];
                 if ($isVirtualPage) {
                     if ($record->HasBrokenLink) {
-                        $reason = _t(__CLASS__ . '.VirtualPageNonExistent', "virtual page pointing to non-existent page");
-                        $reasonCodes = array("VPBROKENLINK");
+                        $reason = _t(__CLASS__ . '.VirtualPageNonExistent', 'virtual page pointing to non-existent page');
+                        $reasonCodes = ['VPBROKENLINK'];
                     }
                 } elseif ($isRedirectorPage) {
                     if ($record->HasBrokenLink) {
-                        $reason = _t(__CLASS__ . '.RedirectorNonExistent', "redirector page pointing to non-existent page");
-                        $reasonCodes = array("RPBROKENLINK");
+                        $reason = _t(__CLASS__ . '.RedirectorNonExistent', 'redirector page pointing to non-existent page');
+                        $reasonCodes = ['RPBROKENLINK'];
                     }
                 } else {
                     if ($record->HasBrokenLink && $record->HasBrokenFile) {
-                        $reason = _t(__CLASS__ . '.HasBrokenLinkAndFile', "has broken link and file");
-                        $reasonCodes = array("BROKENFILE", "BROKENLINK");
+                        $reason = _t(__CLASS__ . '.HasBrokenLinkAndFile', 'has broken link and file');
+                        $reasonCodes = ['BROKENFILE', 'BROKENLINK'];
                     } elseif ($record->HasBrokenLink && !$record->HasBrokenFile) {
-                        $reason = _t(__CLASS__ . '.HasBrokenLink', "has broken link");
-                        $reasonCodes = array("BROKENLINK");
+                        $reason = _t(__CLASS__ . '.HasBrokenLink', 'has broken link');
+                        $reasonCodes = ['BROKENLINK'];
                     } elseif (!$record->HasBrokenLink && $record->HasBrokenFile) {
-                        $reason = _t(__CLASS__ . '.HasBrokenFile', "has broken file");
-                        $reasonCodes = array("BROKENFILE");
+                        $reason = _t(__CLASS__ . '.HasBrokenFile', 'has broken file');
+                        $reasonCodes = ['BROKENFILE'];
                     }
                 }
 
@@ -109,9 +108,9 @@ class BrokenLinksReport extends Report
         }
 
         $linkBase = CMSPageEditController::singleton()->Link('show');
-        $fields = array(
-            "Title" => array(
-                "title" => _t(__CLASS__ . '.PageName', 'Page name'),
+        $fields = [
+            'Title' => [
+                'title' => _t(__CLASS__ . '.PageName', 'Page name'),
                 'formatting' => function ($value, $item) use ($linkBase) {
                     return sprintf(
                         '<a href="%s" title="%s">%s</a>',
@@ -120,15 +119,15 @@ class BrokenLinksReport extends Report
                         $value
                     );
                 }
-            ),
-            "LastEdited" => array(
-                "title" => $dateTitle,
+            ],
+            'LastEdited' => [
+                'title' => $dateTitle,
                 'casting' => 'DBDatetime->Full'
-            ),
-            "BrokenReason" => array(
-                "title" => _t(__CLASS__ . '.ColumnProblemType', "Problem type")
-            ),
-            'AbsoluteLink' => array(
+            ],
+            'BrokenReason' => [
+                'title' => _t(__CLASS__ . '.ColumnProblemType', 'Problem type')
+            ],
+            'AbsoluteLink' => [
                 'title' => _t(__CLASS__ . '.ColumnURL', 'URL'),
                 'formatting' => function ($value, $item) {
                     /** @var SiteTree $item */
@@ -141,28 +140,28 @@ class BrokenLinksReport extends Report
                         $liveLink ? '(live)' : '(draft)'
                     );
                 }
-            )
-        );
+            ],
+        ];
 
         return $fields;
     }
     public function parameterFields()
     {
-        return new FieldList(
-            new DropdownField('CheckSite', _t(__CLASS__ . '.CheckSite', 'Check site'), array(
+        return FieldList::create(
+            DropdownField::create('CheckSite', _t(__CLASS__ . '.CheckSite', 'Check site'), array(
                 'Published' => _t(__CLASS__ . '.CheckSiteDropdownPublished', 'Published Site'),
                 'Draft' => _t(__CLASS__ . '.CheckSiteDropdownDraft', 'Draft Site')
             )),
-            new DropdownField(
+            DropdownField::create(
                 'Reason',
                 _t(__CLASS__ . '.ReasonDropdown', 'Problem to check'),
-                array(
+                [
                     '' => _t(__CLASS__ . '.Any', 'Any'),
                     'BROKENFILE' => _t(__CLASS__ . '.ReasonDropdownBROKENFILE', 'Broken file'),
                     'BROKENLINK' => _t(__CLASS__ . '.ReasonDropdownBROKENLINK', 'Broken link'),
                     'VPBROKENLINK' => _t(__CLASS__ . '.ReasonDropdownVPBROKENLINK', 'Virtual page pointing to non-existent page'),
                     'RPBROKENLINK' => _t(__CLASS__ . '.ReasonDropdownRPBROKENLINK', 'Redirector page pointing to non-existent page'),
-                )
+                ]
             )
         );
     }
