@@ -26,7 +26,6 @@ es:
     DUPLICATED: Duplicado
     DUPLICATEDWITHCHILDREN: 'Duplicado con hijos'
     EMAIL: 'Correo electrónico'
-    ListFiltered: 'Mostrando resultados de la búsqueda'
     NEWPAGE: 'Nuevo {pagetype}'
     PAGENOTEXISTS: 'Esta página no existe'
     PAGES: 'Estado de página'
