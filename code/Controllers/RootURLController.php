@@ -11,7 +11,6 @@ use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Resettable;
 use SilverStripe\ORM\DB;
-use Translatable;
 
 class RootURLController extends Controller implements Resettable
 {
@@ -41,34 +40,10 @@ class RootURLController extends Controller implements Resettable
     public static function get_homepage_link()
     {
         if (!self::$cached_homepage_link) {
-            // @todo Move to 'homepagefordomain' module
-            if (class_exists('HomepageForDomainExtension')) {
-                $host       = str_replace('www.', null, $_SERVER['HTTP_HOST']);
-                $candidates = SiteTree::get()->where(array(
-                    '"SiteTree"."HomepageForDomain" LIKE ?' => "%$host%"
-                ));
-                if ($candidates) {
-                    foreach ($candidates as $candidate) {
-                        if (preg_match('/(,|^) *' . preg_quote($host) . ' *(,|$)/', $candidate->HomepageForDomain)) {
-                            self::$cached_homepage_link = trim($candidate->RelativeLink(true), '/');
-                        }
-                    }
-                }
-            }
-
-            if (!self::$cached_homepage_link) {
-                // TODO Move to 'translatable' module
-                if (class_exists('Translatable')
-                    && SiteTree::has_extension('Translatable')
-                    && $link = Translatable::get_homepage_link_by_locale(Translatable::get_current_locale())
-                ) {
-                    self::$cached_homepage_link = $link;
-                } else {
-                    self::$cached_homepage_link = Config::inst()->get('SilverStripe\\CMS\\Controllers\\RootURLController', 'default_homepage_link');
-                }
-            }
+            $link = Config::inst()->get(__CLASS__, 'default_homepage_link');
+            singleton(__CLASS__)->extend('updateHomepageLink', $link);
+            self::$cached_homepage_link = $link;
         }
-
         return self::$cached_homepage_link;
     }
 
@@ -81,16 +56,7 @@ class RootURLController extends Controller implements Resettable
      */
     public static function should_be_on_root(SiteTree $page)
     {
-        if (!self::$is_at_root && self::get_homepage_link() == trim($page->RelativeLink(true), '/')) {
-            return !(
-                class_exists('Translatable')
-                    && $page->hasExtension('Translatable')
-                    && $page->Locale
-                    && $page->Locale != Translatable::default_locale()
-            );
-        }
-
-        return false;
+        return (!self::$is_at_root && self::get_homepage_link() == trim($page->RelativeLink(true), '/'));
     }
 
     /**
