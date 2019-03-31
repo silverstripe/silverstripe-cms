@@ -108,7 +108,8 @@ class CMSPageHistoryControllerTest extends FunctionalTest
      */
     public function testVersionsForm()
     {
-        $this->get('admin/pages/legacyhistory/show/'. $this->page->ID . '?flush');
+        $this->get('admin/pages/legacyhistory/show/'. $this->page->ID);
+
         $form = $this->cssParser()->getBySelector('#Form_VersionsForm');
 
         $this->assertEquals(1, count($form));
