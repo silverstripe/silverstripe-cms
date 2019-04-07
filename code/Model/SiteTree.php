@@ -2828,7 +2828,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         if ($this->config()->get('icon')) {
             return '';
         } else {
-            return $this->config()->get('icon_class');
+        return $this->config()->get('icon_class');
         }
     }
 
