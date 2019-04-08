@@ -2649,6 +2649,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
+     * @deprecated 5.0 use creatableChildPages instead
+     *
      * Gets a list of the page types that can be created under this specific page
      *
      * @return array
@@ -2668,6 +2670,41 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                     $children[$this->ID][$childClass] = $child->i18n_singular_name();
                 }
             }
+            $cache->set($cacheKey, $children);
+        }
+
+        return $children[$this->ID];
+    }
+
+    /**
+     *
+     * Gets a list of the page types that can be created under this specific page, including font icons
+     *
+     * @return array
+     */
+    public function creatableChildPages()
+    {
+        // Build the list of candidate children
+        $cache = SiteTree::singleton()->getCreatableChildrenCache();
+        $cacheKey = $this->generateChildrenCacheKey(Security::getCurrentUser() ? Security::getCurrentUser()->ID : 0);
+        $children = $cache->get($cacheKey, []);
+
+        if (!$children || !isset($children[$this->ID])) {
+            $children[$this->ID] = [];
+            $candidates = static::page_type_classes();
+
+            foreach ($candidates as $childClass) {
+                $child = singleton($childClass);
+
+                if ($child->canCreate(null, ['Parent' => $this])) {
+                    $children[$this->ID][] = [
+                        'ClassName' => $childClass,
+                        'Title' => $child->i18n_singular_name(),
+                        'IconClass' => $child->getIconClass(),
+                    ];
+                }
+            }
+
             $cache->set($cacheKey, $children);
         }
 
@@ -2782,19 +2819,32 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
+     * Returns the CSS class used for the page icon in the site tree.
+     *
+     * @return string
+     */
+    public function getIconClass()
+    {
+        if ($this->config()->get('icon')) {
+            return '';
+        }
+        return $this->config()->get('icon_class');
+    }
+
+    /**
      * getTreeTitle will return three <span> html DOM elements, an empty <span> with the class 'jstree-pageicon' in
-     * front, following by a <span> wrapping around its MenutTitle, then following by a <span> indicating its
+     * front, following by a <span> wrapping around its MenuTitle, then following by a <span> indicating its
      * publication status.
      *
      * @return string An HTML string ready to be directly used in a template
      */
     public function getTreeTitle()
     {
-        $children = $this->creatableChildren();
+        $children = $this->creatableChildPages();
         $flags = $this->getStatusFlags();
         $treeTitle = sprintf(
             "<span class=\"jstree-pageicon page-icon %s class-%s\"></span><span class=\"item\" data-allowedchildren=\"%s\">%s</span>",
-            $this->config()->get('icon') ? '' : $this->config()->get('icon_class'),
+            $this->getIconClass(),
             Convert::raw2htmlid(static::class),
             Convert::raw2att(json_encode($children)),
             Convert::raw2xml(str_replace(array("\n","\r"), "", $this->MenuTitle))
