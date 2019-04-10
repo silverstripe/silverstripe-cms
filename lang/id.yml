@@ -47,7 +47,7 @@ id:
     INSTALL_SUCCESS: 'Penginstalan berhasil!'
     LOGGEDINAS: 'Masuk sebagai'
     LOGIN: Masuk
-    LOGOUT: Keluar
+    LOGOUT: 'Keluar'
     NOTEWONTBESHOWN: 'Catatan: pesan ini tidak akan ditampilkan kepada pengunjung'
     NOTLOGGEDIN: 'Tidak masuk'
     PUBLISHED: Terbit
@@ -66,7 +66,7 @@ id:
     REDIRECTTOPAGE: 'Laman pada situs Anda'
     YOURPAGE: 'Laman pada situs Anda'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: 'Siapa saja'
+    ACCESSANYONE: Siapa saja
     ACCESSHEADER: 'Siapa yang dapat melihat laman ini?'
     ACCESSLOGGEDIN: 'User yang masuk'
     ACCESSONLYTHESE: 'Hanya orang ini saja (pilih dari daftar)'
@@ -97,7 +97,7 @@ id:
     LASTUPDATED: 'Terakhir diperbarui'
     LINKCHANGENOTE: 'Mengganti tautan laman ini akan mempengaruhi semua tautan pada laman terkait.'
     MENUTITLE: 'Label navigasi'
-    METADESC: Deskripsi
+    METADESC: 'Deskripsi'
     METADESCHELP: 'Mesin pencari menggunakan konten ini untuk menampilkan hasil pencarian (meskipun tidak mempengaruhi pemeringkatan situs).'
     METAEXTRA: 'Penanda Meta'
     MODIFIEDONDRAFTHELP: 'Laman memiliki perubahan yang tidak terbit'

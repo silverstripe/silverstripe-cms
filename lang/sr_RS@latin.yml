@@ -10,7 +10,7 @@ sr_RS@latin:
     DUPLICATEDWITHCHILDREN: '''{title}'' i deca uspešno duplirani'
     NEWPAGE: 'Nova {pagetype}'
     PAGENOTEXISTS: 'Ova stranica ne postoji'
-    PAGETYPEANYOPT: 'Bilo koja'
+    PAGETYPEANYOPT: Bilo koja
     PUBALLCONFIRM: 'Objavite svaku stranu na ovom sajtu kopiranjem sadržaj na živ sajt.'
     PUBALLFUN: 'Funkcija „Objavi sve“ '
     PUBPAGES: 'Urađeno: Objavljeno {count} stranica'
@@ -43,7 +43,7 @@ sr_RS@latin:
     INSTALL_SUCCESS: 'Instalacija je uspešno obavljena!'
     LOGGEDINAS: 'Prijavljen kao'
     LOGIN: Prijava
-    LOGOUT: Odjava
+    LOGOUT: 'Odjava'
     NOTEWONTBESHOWN: 'Napomena: ova poruka neće biti prikazana posetiocima'
     NOTLOGGEDIN: 'Niste prijavljeni'
     PUBLISHED: Objaljeno
@@ -73,13 +73,13 @@ sr_RS@latin:
     BUTTONCANCELDRAFTDESC: 'Izbrišite svoj nacrt i vratite se na trenutno objavljenu stranu'
     BUTTONPUBLISHED: Objaljeno
     BUTTONSAVED: Sačuvano.
-    BUTTONUNPUBLISH: 'Poništi objavu'
+    BUTTONUNPUBLISH: Poništi objavu
     BUTTONUNPUBLISHDESC: 'Ukloni ovu stranicu iz objavljenog sajta'
     Comments: Komentari
     Content: Sadržaj
     DEFAULTABOUTTITLE: 'O nama'
     DEFAULTCONTACTTITLE: 'Kontaktirajte nas'
-    DEFAULTHOMETITLE: 'Početna stranica'
+    DEFAULTHOMETITLE: Početna stranica
     DEPENDENT_NOTE: 'Sledeće stranice zavise od ove stranice. Ovo podrazumeva vitruelne stranice, stranice za preusmeravanje i stranice sa linkovima na sadržaj.'
     DependtPageColumnLinkType: 'Tip linka'
     EDITHEADER: 'Ko može da izmeni ovu stranicu?'
@@ -93,12 +93,12 @@ sr_RS@latin:
     LASTUPDATED: 'Poslednji put ažurirano'
     LINKCHANGENOTE: 'Promena linka ove stranice uticaće, takođe, na linkove svih podstranica.'
     MENUTITLE: 'Natpis za navigaciju'
-    METADESC: Opis
+    METADESC: 'Opis'
     METADESCHELP: 'Pretraživačke mašine koriste ovaj sadržaj za prikaz rezultata pretraživanja (ipak, on ne utiče na rejting stranice).'
     METAEXTRA: 'Prilagođene meta oznake'
     MODIFIEDONDRAFTHELP: 'Stranica sadrži neobjavljene izmene'
     MODIFIEDONDRAFTSHORT: Izmenjeno
-    MetadataToggle: 'Meta podaci'
+    MetadataToggle: Meta podaci
     MoreOptions: 'Više opcija'
     OBSOLETECLASS: 'Tip ove stranice: {type} nije više podržan. Ako sačuvate stranicu njen tip će biti promenjen, pa možete izgubiti svoje podatke'
     PAGELOCATION: 'Lokacija stranice'
@@ -143,7 +143,7 @@ sr_RS@latin:
     HEADERWITHLINK: 'Ovo je virtuelna stranica koja kopira sadržaj iz "{title}" ({link})'
     PageTypNotAllowedOnRoot: 'Originalni tip stranice "{type}" nije dozvoljen na vršnom nivou za ovu virtuelnu stranicu'
   SilverStripe\CMS\Reports\BrokenLinksReport:
-    Any: 'Bilo koji'
+    Any: Bilo koji
     BROKENLINKS: 'Izveštaj o oštećenim linkovima'
     CheckSite: 'Proveri sajt'
     CheckSiteDropdownDraft: 'Narct sajta'

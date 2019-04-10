@@ -86,15 +86,15 @@ $.entwine('ss.tree', function($) {
               hasAllowedChildren = false;
 
           // Convert to menu entries
-          $.each(allowedChildren, function(klass, title) {
+          $.each(allowedChildren, function(index, child) {
             hasAllowedChildren = true;
-            menuAllowedChildren["allowedchildren-" + klass] = {
-              'label': '<span class="jstree-pageicon"></span>' + title,
-              '_class': 'class-' + klass.replace(/[^a-zA-Z0-9\-_:.]+/g, '_'),
+            menuAllowedChildren["allowedchildren-" + child.ClassName] = {
+              'label': '<span class="jstree-pageicon ' + child.IconClass + '"></span>' + child.Title,
+              '_class': 'class-' + child.ClassName.replace(/[^a-zA-Z0-9\-_:.]+/g, '_'),
               'action': function(obj) {
                 $('.cms-container').entwine('.ss').loadPanel(
                   $.path.addSearchParams(
-                    i18n.sprintf(self.data('urlAddpage'), id, klass),
+                    i18n.sprintf(self.data('urlAddpage'), id, child.ClassName),
                     self.data('extraParams')
                   )
                 );

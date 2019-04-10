@@ -180,7 +180,7 @@ en:
     BUTTONDELETEDESC: 'Remove from draft/live and send to archive'
     BUTTONPUBLISHED: Published
     BUTTONSAVED: Saved
-    BUTTONSAVEPUBLISH: 'Publish'
+    BUTTONSAVEPUBLISH: Publish
     BUTTONUNPUBLISH: Unpublish
     BUTTONUNPUBLISHDESC: 'Remove this page from the published site'
     Comments: Comments
@@ -265,11 +265,17 @@ en:
     many_many_ImageTracking: 'Image Tracking'
     many_many_LinkTracking: 'Link Tracking'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    BACKLINKCOUNT: 'Used on:'
-    PAGES: page(s)
     TITLE_INDEX: '#'
     TITLE_TYPE: Type
     TITLE_USED_ON: 'Used on'
+  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
+    USAGE: Usage
+  SilverStripe\CMS\Model\SiteTreeLink:
+    PLURALNAME: 'Site Tree Links'
+    PLURALS:
+      one: 'A Site Tree Link'
+      other: '{count} Site Tree Links'
+    SINGULARNAME: 'Site Tree Link'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Linked Page'
     DESCRIPTION: 'Displays the content of another page'

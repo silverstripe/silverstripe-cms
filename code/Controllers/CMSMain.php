@@ -2144,6 +2144,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         return $this->batchactions()->batchActionList();
     }
 
+    /**
+     * @deprecated 5.0 Please use custom logic for this
+     * @param $request
+     * @return HTTPResponse|string|void
+     */
     public function publishall($request)
     {
         if (!Permission::check('ADMIN')) {
@@ -2195,7 +2200,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 __CLASS__ . '.PUBALLFUN2',
                 'Pressing this button will do the equivalent of going to every page and pressing "publish".  '
                 . 'It\'s intended to be used after there have been massive edits of the content, such as when '
-                . 'the site was first built.'
+                . 'the site was first built. '
+                . 'For large websites, this task might not be able to run through to completion. '
+                . 'In this case, we recommend talking to your developers to create a custom task'
             );
             $response .= '<h1>' . _t(__CLASS__ . '.PUBALLFUN', '"Publish All" functionality') . '</h1>
 				<p>' . $publishAllDescription . '</p>

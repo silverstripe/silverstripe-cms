@@ -37,6 +37,8 @@ matrix:
       env: DB=MYSQL BEHAT_TEST=1
     - php: 7.2
       env: NPM_TEST=1
+    - php: 7.3
+      env: DB=MYSQL PHPUNIT_TEST=1
 
 before_script:
 # Extra $PATH

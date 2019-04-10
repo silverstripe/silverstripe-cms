@@ -77,14 +77,14 @@ fa_IR:
     INSTALL_SUCCESS: 'نصب موفقیت‌آمیز!'
     LOGGEDINAS: 'وارد شده تحت عنوان'
     LOGIN: ورود
-    LOGOUT: خروج
+    LOGOUT: 'خروج'
     NOTEWONTBESHOWN: 'یادداشت: این پیام به بازدیدکنندگان شما نمایش داده نمی‌شود'
     NOTLOGGEDIN: 'وارد نشده'
-    PUBLISHED: 'منتشر شده'
+    PUBLISHED: منتشر شده
     PUBLISHEDSITE: 'سایت منتشر شده'
     VIEWPAGEIN: 'مشاهده صفحه در'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: 'بایگانی شده'
+    ARCHIVED: بایگانی شده
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     EMPTY: 'لطفاً یک بخش نشانی اینترنتی را درج نمایید یا روی لغو کلیک کنید.'
     HelpChars: 'کاراکترهای ویژه به‌طور خودکار تبدیل یا حذف می‌شوند.'
@@ -106,16 +106,16 @@ fa_IR:
     ADDEDTODRAFTSHORT: پیش‌نویس
     APPEARSVIRTUALPAGES: 'این محتوا همچنین در صفحات مجازی در بخش‌های {title}.'
     ARCHIVEDPAGEHELP: 'صفحه از پیش‌نویس و زنده حذف گردید'
-    ARCHIVEDPAGESHORT: 'بایگانی شده'
+    ARCHIVEDPAGESHORT: بایگانی شده
     BUTTONCANCELDRAFT: 'لغو تغییرات پیش‌نویس'
     BUTTONCANCELDRAFTDESC: 'حذف پیش‌نویس و بازگردانی به نسخه‌ی منتشر‌شده‌ی کنونی'
     BUTTONDELETEDESC: 'حذف از پیش‌نویس/زنده و ارسال به بایگانی'
-    BUTTONPUBLISHED: 'منتشر شده'
-    BUTTONSAVED: 'ذخیره شده'
-    BUTTONUNPUBLISH: 'عدم انتشار'
+    BUTTONPUBLISHED: منتشر شده
+    BUTTONSAVED: ذخیره شده
+    BUTTONUNPUBLISH: عدم انتشار
     BUTTONUNPUBLISHDESC: 'حذف این صفحه از سایت منتشر شده'
     Comments: دیدگاه‌ها
-    Content: 'درون مایه'
+    Content: درون مایه
     DEFAULTABOUTTITLE: 'درباره ما'
     DEFAULTCONTACTTITLE: 'تماس با ما'
     DEFAULTHOMECONTENT: '<p>به سیلوراسترایپ خوش آمدید! این صفحه اصلی پیش فرض است. میتوانید این صفحه را با بازکردن <a href="admin/">سامانه مدیریت محتوا</a> ویرایش نمایید.</p><p>میتوانید به<a href="http://docs.silverstripe.org">مستندات توسعه دهندگان</a> دسترسی یابید، و یا <a href="http://www.silverstripe.org/learn/lessons">درس های سیلوراسترایپ</a> را آغاز نمایید.</p>'
@@ -133,11 +133,11 @@ fa_IR:
     LASTUPDATED: 'آخرین به روزرسانی'
     LINKSALREADYUNIQUE: '{url} هم‌اکنون نیز یکتا است'
     MENUTITLE: 'برچسب ناوبری'
-    METADESC: توضیحات
+    METADESC: 'توضیحات'
     METADESCHELP: 'موتورهای جستجو از این محتوا در نمایش نتایج جستجو بهره‌می‌برند (اگرچه تأثیری در رتبه‌بندی ندارد).'
     METAEXTRA: 'متا تگ‌های اختصاصی'
     MODIFIEDONDRAFTHELP: 'صفحه دارای تغییرات منتشر نشده است'
-    MODIFIEDONDRAFTSHORT: 'تغییر یافته'
+    MODIFIEDONDRAFTSHORT: تغییر یافته
     MetadataToggle: متاداده
     MoreOptions: 'گزینه‌های بیشتر'
     OBSOLETECLASS: 'این صفحه از نوع منسوخ شده {type} است. ذخیره‌سازی سبب نوگردانی مدل آن شده و ممکن است داده‌هایی از دست برود'
@@ -157,7 +157,7 @@ fa_IR:
     SHOWINMENUS: 'نمایش در منوها؟'
     SHOWINSEARCH: 'نمایش در جستجو ؟'
     TABBEHAVIOUR: رفتار
-    TABCONTENT: مطلب
+    TABCONTENT: 'مطلب'
     TABDEPENDENT: 'صفحات وابسته'
     TOPLEVEL: 'محتوای سایت (سطح بالا)'
     URLSegment: 'بخش آدرس URL'

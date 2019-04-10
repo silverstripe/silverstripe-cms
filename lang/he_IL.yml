@@ -35,7 +35,7 @@ he_IL:
     INSTALL_SUCCESS: 'ההתקנה הצליחה!'
     LOGGEDINAS: 'נכנסת בשם'
     LOGIN: כניסה
-    LOGOUT: יציאה
+    LOGOUT: 'יציאה'
     NOTEWONTBESHOWN: 'לתשומת לבך: הודעה זו לא תוצג למבקריך'
     NOTLOGGEDIN: 'לא נכנסת'
     PUBLISHEDSITE: 'אתר שפורסם'
@@ -50,7 +50,7 @@ he_IL:
     REDIRECTTOPAGE: 'עמוד באתר שלך'
     YOURPAGE: 'עמוד באתר שלך'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: 'כל אחד'
+    ACCESSANYONE: כל אחד
     ACCESSHEADER: 'מי יכול לצפות בעמוד זה?'
     ACCESSLOGGEDIN: 'משתמשים שנכנסו'
     ACCESSONLYTHESE: 'רק האנשים האלה (יש לבחור מהרשימה)'
@@ -59,13 +59,13 @@ he_IL:
     APPEARSVIRTUALPAGES: 'תוכן זה מופיע גם בעמודים הווירטואליים באגפים של {title}.'
     BUTTONCANCELDRAFT: 'ביטול שינויי הטיוטה'
     BUTTONCANCELDRAFTDESC: 'למחוק את הטיוטה שלך ולהחזיר לעמוד הנוכחי שפורסם'
-    BUTTONUNPUBLISH: 'ביטול הפרסום'
+    BUTTONUNPUBLISH: ביטול הפרסום
     BUTTONUNPUBLISHDESC: 'הסרת עמוד זה מהאתר שפורסם'
     Comments: תגובות
     Content: תוכן
     DEFAULTABOUTTITLE: 'על אודותינו'
     DEFAULTCONTACTTITLE: 'יצירת קשר'
-    DEFAULTHOMETITLE: 'דף הבית'
+    DEFAULTHOMETITLE: דף הבית
     DEPENDENT_NOTE: 'העמודים הבאים תלויים בעמוד זה. בין אלו נכללים, עמודים וירטואליים, עמודי הפנייה ועמודים עם קישורי תוכן.'
     DependtPageColumnLinkType: 'סוג הקישור'
     EDITHEADER: 'מי יכול לערוך עמוד זה?'
@@ -79,12 +79,12 @@ he_IL:
     LASTUPDATED: 'עודכן לאחרונה'
     LINKCHANGENOTE: 'החלפת הקישורים בעמוד זה ישפיע גם על הקישורים של כל העמודים הצאצאים.'
     MENUTITLE: 'תווית ניווט'
-    METADESC: תיאור
+    METADESC: 'תיאור'
     METADESCHELP: 'מנועי החיפוש משתמשים בתוכן זה כדי להציג תוצאות חיפוש (למרות שלא תהיה לכך השפעה על הדירוג שלהם).'
     METAEXTRA: 'תגי על נוספים'
     MODIFIEDONDRAFTHELP: 'בעמוד יש שינויים שלא פורסמו'
     MODIFIEDONDRAFTSHORT: השתנה
-    MetadataToggle: 'נתוני על'
+    MetadataToggle: נתוני על
     PAGELOCATION: 'מיקום העמוד'
     PAGETITLE: 'שם הדף'
     PAGETYPE: 'סוג דף'
@@ -111,7 +111,7 @@ he_IL:
     VIEW_DRAFT_CONTENT: 'צפייה בתוכן טיוטה'
     VIEW_DRAFT_CONTENT_HELP: 'חל על צפייה בעמודים מחוץ ל־CMD במצב טיוטה. חיוני לצורך שיתוף פעולה עם גורמים חיצוניים שאין להם גישה ל־CMS.'
     Viewers: 'קבוצות צופים'
-    Visibility: 'אופן הצגה'
+    Visibility: אופן הצגה
     has_one_Parent: 'דף הורה'
     many_many_BackLinkTracking: 'מעקב אחרי קישור חוזר'
     many_many_ImageTracking: 'מעקב אחר תמונה'
