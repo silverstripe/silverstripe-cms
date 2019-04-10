@@ -1,4 +1,4 @@
-fi:
+fi_FI:
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Poistettiin %d sivua luonnoksista ja julkaistuista sivuista sekä arkistoitiin'
     TITLE: 'Poista julkaisusta ja arkistoi'

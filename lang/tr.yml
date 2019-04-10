@@ -31,12 +31,12 @@ tr:
     ADDEDTODRAFTSHORT: Taslak
     BUTTONCANCELDRAFT: 'Taslak değikliklerini iptal et'
     BUTTONCANCELDRAFTDESC: 'Taslağı sil ve şu an yayında olan sayfaya geri döndür'
-    BUTTONUNPUBLISH: 'Yayından kaldır'
+    BUTTONUNPUBLISH: Yayından kaldır
     BUTTONUNPUBLISHDESC: 'Bu sayfayı yayından kaldır'
     Comments: Yorumlar
     Content: İçerik
-    DEFAULTABOUTTITLE: Hakkımızda
-    DEFAULTCONTACTTITLE: İletişim
+    DEFAULTABOUTTITLE: 'Hakkımızda'
+    DEFAULTCONTACTTITLE: 'İletişim'
     DEFAULTHOMETITLE: Anasayfa
     DependtPageColumnLinkType: 'Link tipi'
     EDITHEADER: 'Bu sayfayı kimler düzenleyebilir?'
@@ -46,7 +46,7 @@ tr:
     INHERIT: 'Üst sayfadan kalan'
     LASTUPDATED: 'Son Güncellenen'
     MENUTITLE: 'Navigasyon etiketi'
-    METADESC: Tanım
+    METADESC: 'Tanım'
     METAEXTRA: 'Kişisel Meta Etiketleri'
     MODIFIEDONDRAFTSHORT: Değiştirilmiş
     PAGETITLE: 'Sayfa ismi'
@@ -60,7 +60,7 @@ tr:
     SHOWINMENUS: 'Menülerde gösterilsin mi?'
     SHOWINSEARCH: 'Aramalarda gösterilsin mi?'
     TABBEHAVIOUR: Davranış
-    TABCONTENT: İçerik
+    TABCONTENT: 'İçerik'
     TOPLEVEL: 'Site İçeriği (Üst Seviye)'
     URLSegment: 'URL Kısmı'
     Viewers: 'Görüntüleyici Grupları'

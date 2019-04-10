@@ -6,7 +6,7 @@ ar:
     RESTORED_PAGES: '%d صفحة تم استعادتها'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
     UNPUBLISHED_PAGES: '%d صفحة غير منشورة'
-    UNPUBLISH_PAGES: 'الغاء النشر'
+    UNPUBLISH_PAGES: الغاء النشر
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'النفاذ إلى القسم ''{title}'''
     ACCESS_HELP: 'سماح بعرض لقسم يحتوي على صفحة الشجرة والمحتوى. يمكن التعامل معها عرض وتحرير الأذونات من خلال القائمه المنسدله للروابط محددة صفحة، فضلا عن فصل "أذونات المحتوى".'
@@ -46,7 +46,7 @@ ar:
     COMPAREMODE: 'وضع المقارنة (حدد اثنين)'
     REVERTTOTHISVERSION: 'العودة إلى هذا الإصدار'
     SHOWUNPUBLISHED: 'عرض الإصدارات الغير منشورة'
-    UNKNOWN: 'غير معروف'
+    UNKNOWN: غير معروف
     VIEW: عرض
     VIEWINGLATEST: 'يقع حاليا عرض أحدث إصدار.'
     VIEWINGVERSION: 'يقع حاليا عرض إصدار  {version}.'
@@ -63,18 +63,18 @@ ar:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'إصدار المعاينة'
     ARCHIVEDSITEFROM: 'موقع تمت أرشفته منذ'
-    CMS: 'نظام إدارة المحتوى'
+    CMS: نظام إدارة المحتوى
     DRAFT: المسودّة
     DRAFTSITE: 'موقع في المسودة'
     INSTALL_SUCCESS: 'تم التثبيت بنجاح!'
     LOGGEDINAS: 'الدخول كـ'
     LOGIN: الدخول
-    LOGOUT: الخروج
+    LOGOUT: 'الخروج'
     NOTEWONTBESHOWN: 'تنبيه: هذه الرسالة لن يتم عرضها لزوار موقعك'
     NOTLOGGEDIN: 'لم يتم تسجيل الدخول'
-    PUBLISHED: 'تمّ النشر'
+    PUBLISHED: تمّ النشر
     PUBLISHEDSITE: 'موقع منشور'
-    Password: 'كلمة المرور'
+    Password: كلمة المرور
     VIEWPAGEIN: 'مشاهدة الصفحة في:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: المؤرشف
@@ -105,12 +105,12 @@ ar:
     BUTTONCANCELDRAFT: 'إلغاء التغييرات في المسودة'
     BUTTONCANCELDRAFTDESC: 'إلغاء المسودة و العودة إلى الموقع المنشور حالياً'
     BUTTONPUBLISHED: نشرت
-    BUTTONSAVED: 'تم الحفظ'
-    BUTTONUNPUBLISH: 'غير منشور'
+    BUTTONSAVED: تم الحفظ
+    BUTTONUNPUBLISH: غير منشور
     BUTTONUNPUBLISHDESC: 'حذف هذه الصفحة من الموقع المنشور'
     Comments: التعليقات
     Content: المحتوى
-    DEFAULTABOUTTITLE: حول
+    DEFAULTABOUTTITLE: 'حول'
     DEFAULTCONTACTTITLE: 'اتصل بنا'
     DEFAULTHOMETITLE: الرئيسة
     DEPENDENT_NOTE: 'الصفحات التالية تعتمد على هذه الصفحة. وهذا يشمل صفحات الظاهري، وصفحات معيد التوجيه، والصفحات التي تحتوي على روابط المحتوى.'
@@ -125,13 +125,13 @@ ar:
     INHERIT: 'استيراد من الصفحة المرجعية'
     LASTUPDATED: 'أخر تحديث'
     LINKCHANGENOTE: 'تغيير هذا وصلة رابط الصفحة سوف تؤثر أيضًا على الوصلات لجميع صفحات الفرعية.'
-    MENUTITLE: القائمة
-    METADESC: الوصف
+    MENUTITLE: 'القائمة'
+    METADESC: 'الوصف'
     METADESCHELP: 'تستخدم محركات البحث هذا المحتوى لعرض نتائج البحث (على الرغم من أنها لن تؤثر على ترتيبها).'
     METAEXTRA: 'تخصيص Meta Tags'
     MODIFIEDONDRAFTHELP: 'تحتوي الصفحة على تغييرات غير منشورة'
-    MODIFIEDONDRAFTSHORT: 'تم التعديل'
-    MetadataToggle: 'البيانات الوصفية'
+    MODIFIEDONDRAFTSHORT: تم التعديل
+    MetadataToggle: البيانات الوصفية
     MoreOptions: 'خيارات أخرى'
     OBSOLETECLASS: 'إنّ نوع {type} لهذه الصفحة بال. سيعيد حفظها تجديد نوعها وقد تفقد البيانات'
     PAGELOCATION: 'موقع الضفحة'
@@ -152,7 +152,7 @@ ar:
     SHOWINSEARCH: 'عرض في البحث ؟'
     SINGULARNAME: صفحة
     TABBEHAVIOUR: الشسلوك
-    TABCONTENT: المحتوى
+    TABCONTENT: 'المحتوى'
     TABDEPENDENT: 'الصفحات المعتدة'
     TOPLEVEL: 'محتوى الموقع ( مستوى أعلى )'
     URLSegment: 'جزء رابط الموقع'
@@ -165,7 +165,7 @@ ar:
     VIRTUALPAGEWARNING: 'يرجى اختيار صفحة مرتبطة وقم بالحفظ أولا من أجل نشر هذه الصفحة'
     VIRTUALPAGEWARNINGSETTINGS: 'يرجى اختيار صفحة مرتبطة في مجالات المحتوى الرئيسي من أجل النشر'
     Viewers: 'مجموعات المشاهدين'
-    Visibility: 'مدي الرؤية'
+    Visibility: مدي الرؤية
     has_one_Parent: 'الصفحة الرئيسة'
     many_many_BackLinkTracking: 'متابعة التعقيبات'
     many_many_ImageTracking: 'متابعة الصور'

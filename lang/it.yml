@@ -34,6 +34,7 @@ it:
     NEWPAGE: 'Nuova {pagetype}'
     PAGENOTEXISTS: 'Questa pagina non esiste'
     PAGES: 'Stato pagina'
+    PAGESALLOPT: 'Tutte le pagine'
     PAGETYPEANYOPT: Qualsiasi
     PAGETYPEOPT: 'Tipo di pagina'
     PAGETYPE_TITLE: '(Pagina tipo: {type}) {title}'
@@ -56,6 +57,8 @@ it:
     ROLLEDBACKPUBv2: 'Ripristinata la versione pubblicata.'
     ROLLEDBACKVERSIONv2: 'Ripristinata la versione #{version}.'
     SAVED: '''{title}'' salvata correttamente.'
+    SAVEDRAFT: Salva
+    SEARCHRESULTS: 'Risultati di ricerca'
     SHOW_AS_LIST: 'Mostra come lista'
     TOO_MANY_PAGES: 'Troppe pagine'
     TabContent: Contenuto
@@ -122,7 +125,7 @@ it:
     InstallSuccessCongratulations: 'SilverStripe è stato installato con successo!'
     LOGGEDINAS: 'Sei collegato come'
     LOGIN: Accedi
-    LOGOUT: Disconnetti
+    LOGOUT: 'Disconnetti'
     NOTEWONTBESHOWN: 'Nota: questo messaggio non verrà mostrato ai visitatori'
     NOTLOGGEDIN: 'Non connesso'
     PUBLISHED: Pubblicato
@@ -177,6 +180,7 @@ it:
     BUTTONDELETEDESC: 'Rimuove da bozza/live e manda all''archivio'
     BUTTONPUBLISHED: Pubblicato
     BUTTONSAVED: Salvato
+    BUTTONSAVEPUBLISH: Pubblica
     BUTTONUNPUBLISH: Nascondere
     BUTTONUNPUBLISHDESC: 'Rimuovi questa pagina dal sito pubblicato'
     Comments: Commenti
@@ -184,7 +188,7 @@ it:
     DEFAULTABOUTCONTENT: '<p>Puoi riempire questa pagina con i tuoi contenuti, oppure cancellarla e creare le tue pagine.</p>'
     DEFAULTABOUTTITLE: 'Chi siamo'
     DEFAULTCONTACTCONTENT: '<p>Puoi riempire questa pagina con i tuoi contenuti, oppure cancellarla e creare le tue pagine.</p>'
-    DEFAULTCONTACTTITLE: Contattaci
+    DEFAULTCONTACTTITLE: 'Contattaci'
     DEFAULTHOMECONTENT: '<p>Benvenuto in SilverStripe! Questa è la home page di default. Puoi modificare questa pagina direttamente <a href="admin/">dal CMS</a>.</p><p>Puoi accedere alla <a href="http://docs.silverstripe.org">documentazione per gli sviluppatori</a> o partire dalle <a href="http://www.silverstripe.org/learn/lessons">lezioni di SilverStripe</a>.</p>'
     DEFAULTHOMETITLE: Home
     DEPENDENT_NOTE: 'Le seguenti pagine dipendono da questa pagina. Queste includono pagine virtuali, pagine di redirezione e pagine con link nel contenuto.'
@@ -199,6 +203,7 @@ it:
     HASBROKENLINKS: 'Questa pagina ha link non funzionanti.'
     HTMLEDITORTITLE: Contenuto
     INHERIT: 'Eredita dalla pagina madre'
+    INHERITSITECONFIG: 'Eredita dalle impostazioni di accesso al sito'
     LASTPUBLISHED: 'Ultima pubblicazione'
     LASTSAVED: 'Ultimo salvataggio'
     LASTUPDATED: 'Ultimo aggiornamento'
@@ -206,7 +211,7 @@ it:
     LINKSALREADYUNIQUE: '{url} è già unica'
     LINKSCHANGEDTO: 'cambiato {url1} -> {url2}'
     MENUTITLE: 'Etichetta di navigazione'
-    METADESC: Descrizione
+    METADESC: 'Descrizione'
     METADESCHELP: 'I motori di ricerca utilizzano questo contenuto per visualizzare i risultati (ma non ne influenza la posizione)'
     METAEXTRA: 'Meta tag personalizzati'
     METAEXTRAHELP: 'Tag HTML per meta informazioni addizionali. Esempio: <meta name="customName" content="your custom content here" />'
@@ -263,6 +268,14 @@ it:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Usato in'
+  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
+    USAGE: Uso
+  SilverStripe\CMS\Model\SiteTreeLink:
+    PLURALNAME: 'Link dell''albero del sito'
+    PLURALS:
+      one: 'Un collegamento all''albero del sito'
+      other: '{count} Collegamenti all''albero del Sito'
+    SINGULARNAME: 'Link dell''albero del sito'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Pagina collegata'
     DESCRIPTION: 'Mostra il contenuto di un''altra pagina'
