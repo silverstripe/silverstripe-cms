@@ -10,20 +10,18 @@ de:
     RESTORED_PAGES: '%d Seiten wiederhergestellt'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
     UNPUBLISHED_PAGES: 'Veröffentlichung von %d Seiten zurückgenommen'
-    UNPUBLISH_PAGES: 'Veröffentlichung zurücknehmen'
+    UNPUBLISH_PAGES: Veröffentlichung zurücknehmen
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Zugang zum Bereich ''{title}'''
     ACCESS_HELP: 'Seiteninhalt im CMS anzeigen. Anzeige- und Bearbeitungsberechtigungen können sowohl seitenspezifische als auch über die globalen Inhaltsberechtigungen gesetzt werden.'
-    APPLY_FILTER: Suche
     ARCHIVE: Archiv
     ARCHIVEDPAGE: 'Seite ''{title}'' archiviert'
     AddNew: 'Neue Seite hinzufügen'
-    AddNewButton: Hinzufügen
+    AddNewButton: 'Hinzufügen'
     AddPageRestriction: 'Hinweis: einige Seitentypen sind in diesem Bereich nicht erlaubt.'
     ArchiveWarning: 'Warnung: Die Veröffentlichung dieser Seite wird zurückgenommen, bevor sie archiviert wird.\n\nSind Sie sicher, dass Sie fortfahren wollen?'
     ArchiveWarningWithChildren: 'Warnung: Die Veröffentlichung dieser Seite und aller Unterseiten wird zurückgenommen, bevor sie archiviert wird.\n\nSind Sie sicher, dass Sie fortfahren wollen?'
     CANT_REORGANISE: 'Sie besitzen nicht die benötigten Zugriffsrechte um Seiten der höchsten Ebene zu bearbeiten. Ihre Änderungen wurden nicht gespeichert.'
-    CLEAR_FILTER: Löschen
     Cancel: Abbrechen
     ChoosePageParentMode: 'Wo soll diese Seite erstellt werden?'
     ChoosePageType: 'Seitentyp auswählen'
@@ -31,12 +29,11 @@ de:
     DUPLICATED: '''{title}''  wurde erfolgreich dupliziert'
     DUPLICATEDWITHCHILDREN: '''{title}'' und alle Unterseiten wurden erfolgreich dupliziert'
     EMAIL: E-Mail
-    ListFiltered: 'Anzeige der Suchergebnisse.'
     NEWPAGE: 'Neue {pagetype}'
     PAGENOTEXISTS: 'Diese Seite existiert nicht'
-    PAGES: Seitenstatus
+    PAGES: 'Seitenstatus'
     PAGETYPEANYOPT: Alle
-    PAGETYPEOPT: Seitentyp
+    PAGETYPEOPT: 'Seitentyp'
     PAGETYPE_TITLE: '(Seitentyp: {type}) {title}'
     PLEASESAVE: 'Diese Seite konnte nicht aktualisiert werden weil sie noch nicht gespeichert wurde - bitte speichern.'
     PUBALLCONFIRM: 'Veröffentlicht jede Seite des Seitenbaumes und kopiert den Inhalt von Entwurf zu Live.'
@@ -57,13 +54,12 @@ de:
     ROLLEDBACKPUBv2: 'Veröffentlichte Version wiederhergestellt'
     ROLLEDBACKVERSIONv2: 'Version #{version} wiederhergestellt.'
     SAVED: '''{title}'' erfolgreich gespeichert.'
-    SAVEDRAFT: Speichern
     SHOW_AS_LIST: 'als Liste zeigen'
     TOO_MANY_PAGES: 'Zu viele Seiten'
     TabContent: Inhalt
     TabHistory: Verlauf
     TabSettings: Einstellungen
-    TreeFiltered: Suchergebnisse
+    TreeFiltered: 'Suchergebnisse'
     TreeFilteredClear: Löschen
     UNPUBLISH_AND_ARCHIVE: 'Veröffentlichung zurücknehmen und archivieren'
   SilverStripe\CMS\Controllers\CMSPageAddController:
@@ -79,7 +75,7 @@ de:
     AUTHOR: Autor
     COMPAREMODE: 'Vergleichsmodus (wähle zwei)'
     MENUTITLE: Historie
-    MULTISELECT: Massenaktionen
+    MULTISELECT: 'Massenaktionen'
     NOTPUBLISHED: 'Nicht veröffentlicht'
     PREVIEW: 'Vorschau der Webseite'
     PUBLISHER: Herausgeber
@@ -94,9 +90,9 @@ de:
     MENUTITLE: 'Seite bearbeiten'
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filter
-    ListView: Listenansicht
+    ListView: 'Listenansicht'
     MENUTITLE: Seiten
-    TreeView: Baumansicht
+    TreeView: 'Baumansicht'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Geänderte Seiten'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
@@ -108,15 +104,15 @@ de:
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
     Title: 'Archivierte Seiten'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDraftPages:
-    Title: Entwurfsseiten
+    Title: 'Entwurfsseiten'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Veröffentlicht aber aus Entwurf entfernt'
   SilverStripe\CMS\Controllers\ContentController:
-    ARCHIVEDSITE: Vorschauversion
+    ARCHIVEDSITE: 'Vorschauversion'
     ARCHIVEDSITEFROM: 'Site archiviert von'
     CMS: CMS
     DRAFT: Entwurf
-    DRAFTSITE: Vorschau-Site
+    DRAFTSITE: 'Vorschau-Site'
     Email: E-Mail
     INSTALL_SUCCESS: 'Installation erfolgreich!'
     InstallFilesDeleted: 'Die Installationsdateien wurden erfolgreich gelöscht.'
@@ -124,7 +120,7 @@ de:
     InstallSuccessCongratulations: 'Silverstripe wurde erfolgreich installiert!'
     LOGGEDINAS: 'Angemeldet als'
     LOGIN: Anmelden
-    LOGOUT: Abmelden
+    LOGOUT: 'Abmelden'
     NOTEWONTBESHOWN: 'Achtung: Diese Nachricht wird Ihren Besuchern nicht gezeigt.'
     NOTLOGGEDIN: 'Nicht angemeldet'
     PUBLISHED: Veröffentlicht
@@ -153,14 +149,14 @@ de:
     DESCRIPTION: 'Leitet zu einer anderen internen oder externen Seite weiter'
     HEADER: 'Diese Seite wird Nutzer auf eine andere Seite weiterleiten'
     OTHERURL: 'Andere Webseiten URL'
-    PLURALNAME: Weiterleitungsseiten
+    PLURALNAME: 'Weiterleitungsseiten'
     PLURALS:
       one: 'Eine Weiterleitungsseite'
       other: '{count} Weiterleitungsseiten'
     REDIRECTTO: 'Weiterleiten zu'
     REDIRECTTOEXTERNAL: 'Andere Website'
     REDIRECTTOPAGE: 'Eine Seite auf Ihrer Website'
-    SINGULARNAME: Weiterleitungsseite
+    SINGULARNAME: 'Weiterleitungsseite'
     YOURPAGE: 'Seite auf Ihrer Website'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Eine Weiterleitungsseite wurde erstellt ohne das eine Weiterleitung definiert wurde.'
@@ -178,23 +174,21 @@ de:
     BUTTONCANCELDRAFTDESC: 'Löschen Sie Ihren Entwurf und kehren Sie zur derzeit veröffentlichten Seite zurück.'
     BUTTONPUBLISHED: Veröffentlicht
     BUTTONSAVED: Gespeichert
-    BUTTONSAVEPUBLISH: Veröffentlichen
-    BUTTONUNPUBLISH: 'Veröffentlichung zurücknehmen'
+    BUTTONUNPUBLISH: Veröffentlichung zurücknehmen
     BUTTONUNPUBLISHDESC: 'Entferne diese Seite aus der veröffentlichten Website'
     Comments: Kommentare
     Content: Inhalt
     DEFAULTABOUTCONTENT: '<p>Sie können diese Seite mit Ihren eigenen Inhalten füllen oder löschen.</p>'
     DEFAULTABOUTTITLE: 'Über uns'
     DEFAULTCONTACTCONTENT: '<p>Sie können diese Seite mit Ihren eigenen Inhalten füllen oder löschen.</p>'
-    DEFAULTCONTACTTITLE: Kontakt
+    DEFAULTCONTACTTITLE: 'Kontakt'
     DEFAULTHOMECONTENT: '<p>Willkommen bei SilverStripe! Sie sehen hier die standard Homepage. Diese können Sie im <a href="admin/">CMS</a> bearbeiten.</p><p>Sie können auch die englische  <a href="http://docs.silverstripe.org">Dokumentation für Entwickler</a> lesen oder mit den <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lessons</a> lernen, wie Sie das CMS an Ihre Bedürfnisse anpassen.</p>'
     DEFAULTHOMETITLE: Startseite
     DEPENDENT_NOTE: 'Die folgenden Seiten hängen von dieser Seite ab. Dies schließt Virtuelle Seiten, Weiterleitungen und Seiten mit Links im Inhalt ein.'
     DESCRIPTION: 'Allgemeine Inhaltsseite'
-    DependtPageColumnLinkType: Linktyp
-    DependtPageColumnURL: URL
+    DependtPageColumnLinkType: 'Linktyp'
     EDITHEADER: 'Wer kann diese Seite im CMS verändern?'
-    EDITORGROUPS: Bearbeitergruppen
+    EDITORGROUPS: 'Bearbeitergruppen'
     EDITOR_GROUPS_FIELD_DESC: 'Gruppen mit globalen Editierberechtigungen: {groupList}'
     EDIT_ALL_DESCRIPTION: 'Kann beliebige Seiten bearbeiten'
     EDIT_ALL_HELP: 'Kann beliebige Seiten auf der Site bearbeiten; seitenspezifische Sicherheitseinstellungen werden ignoriert.'
@@ -208,23 +202,23 @@ de:
     LINKCHANGENOTE: 'Das Ändern des Links zu dieser Seite führt ebenfalls zur Änderung aller Links der Unterseiten dieser Seite.'
     LINKSALREADYUNIQUE: '{url} ist bereits eindeutig'
     LINKSCHANGEDTO: 'Geändert: {url1} -> {url2}'
-    MENUTITLE: Navigationsbezeichnung
+    MENUTITLE: 'Navigationsbezeichnung'
     METADESC: 'Meta Beschreibung'
     METADESCHELP: 'Suchmaschinen können diesen Inhalt für die Anzeige der Suchergebnisse verwenden (auch wenn es die Position nicht beeinflusst).'
     METAEXTRA: 'Benutzerdefinierte Meta-Tags'
     METAEXTRAHELP: 'HTML Tags für zusätzliche Meta Informationen, z.B.: &lt;meta name="ihrName" content="Ihr Inhalt" /&gt;'
     MODIFIEDONDRAFTHELP: 'Die Seite hat unveröffentlichte Änderungen'
-    MODIFIEDONDRAFTSHORT: 'Zuletzt geändert'
+    MODIFIEDONDRAFTSHORT: Zuletzt geändert
     MetadataToggle: Metadaten
     MoreOptions: 'Weitere Optionen'
     NOTPUBLISHED: 'Nicht veröffentlicht'
     OBSOLETECLASS: 'Der Seitentyp {type} wird nicht mehr verwendet. Wenn Sie speichern wird der Seitentyp zurückgesetzt, was Datenverlust verursachen kann'
     ONLIVEONLYSHORTHELP: 'Die Seite ist veröffentlicht, wurde aber von der Entwurf Seite gelöscht.'
-    PAGELOCATION: Seitenposition
-    PAGETITLE: Seitenname
-    PAGETYPE: Seitentyp
+    PAGELOCATION: 'Seitenposition'
+    PAGETITLE: 'Seitenname'
+    PAGETYPE: 'Seitentyp'
     PARENTID: 'Übergeordnete Seite'
-    PARENTTYPE: Seitenposition
+    PARENTTYPE: 'Seitenposition'
     PARENTTYPE_ROOT: 'Seite auf der obersten Ebene'
     PARENTTYPE_SUBPAGE: 'Seite unterhalb einer übergeordneten Seite'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Zugriffsrechte für Inhalte verwalten'
@@ -242,11 +236,11 @@ de:
     SHOWINSEARCH: 'In der Suche anzeigen?'
     SINGULARNAME: Seite
     TABBEHAVIOUR: Verhalten
-    TABCONTENT: Haupt-Inhalt
+    TABCONTENT: 'Haupt-Inhalt'
     TABDEPENDENT: 'Abhängige Seiten'
     TOPLEVEL: 'Seiten Inhalt (Top Level)'
-    URLSegment: URL-Segment
-    VIEWERGROUPS: Betrachtergruppen
+    URLSegment: 'URL-Segment'
+    VIEWERGROUPS: 'Betrachtergruppen'
     VIEWER_GROUPS_FIELD_DESC: 'Gruppen mit globalen Berechtigungen zum Ansehen: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Kann beliebige Seiten betrachten'
     VIEW_ALL_HELP: 'Kann beliebige Seiten auf der Site betrachten; seitenspezifische Sicherheitseinstellungen werden ignoriert.'
@@ -258,18 +252,12 @@ de:
     Viewers: 'Betrachter Gruppen'
     Visibility: Sichtbarkeit
     has_one_Parent: 'Übergeordnete Seite'
-    many_many_BackLinkTracking: Rückverweis-Verfolgung
-    many_many_ImageTracking: Bild-Verfolgung
-    many_many_LinkTracking: Link-Verfolgung
+    many_many_BackLinkTracking: 'Rückverweis-Verfolgung'
+    many_many_ImageTracking: 'Bild-Verfolgung'
+    many_many_LinkTracking: 'Link-Verfolgung'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_TYPE: Typ
     TITLE_USED_ON: 'Verwendet auf'
-  SilverStripe\CMS\Model\SiteTreeLink:
-    PLURALNAME: Seiten-Links
-    PLURALS:
-      one: 'Ein Seiten-Link'
-      other: '{count} Seiten-Links'
-    SINGULARNAME: Seiten-Link
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Verknüpfte Seite'
     DESCRIPTION: 'Zeigt den Inhalt einer anderen Seite an'
@@ -290,17 +278,17 @@ de:
     Any: Alle
     BROKENLINKS: 'Defekte Links'
     CheckSite: 'Site überprüfen'
-    CheckSiteDropdownDraft: Vorschau-Site
+    CheckSiteDropdownDraft: 'Vorschau-Site'
     CheckSiteDropdownPublished: 'Veröffentlichte Site'
     ColumnDateLastModified: 'Zuletzt geändert'
     ColumnDateLastPublished: 'Zuletzt veröffentlicht'
-    ColumnProblemType: Problemtyp
+    ColumnProblemType: 'Problemtyp'
     ColumnURL: URL
     HasBrokenFile: 'Defekter Dateilink'
     HasBrokenLink: 'Defekter Link'
     HasBrokenLinkAndFile: 'Defekter Link und defekter Dateilink'
     HoverTitleEditPage: 'Seite bearbeiten'
-    PageName: Seitenname
+    PageName: 'Seitenname'
     ReasonDropdown: 'Zu überprüfendes Problem'
     ReasonDropdownBROKENFILE: 'Defekte Datei'
     ReasonDropdownBROKENLINK: 'Defekter Link'
@@ -317,10 +305,10 @@ de:
     BrokenLinksGroupTitle: 'Defekte Links'
     ParameterLiveCheckbox: 'Veröffentlichte Seite überprüfen'
   SilverStripe\CMS\Reports\EmptyPagesReport:
-    ContentGroupTitle: Inhaltsberichte
+    ContentGroupTitle: 'Inhaltsberichte'
     EMPTYPAGES: 'Leere Seiten'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
-    ContentGroupTitle: Inhaltsberichte
+    ContentGroupTitle: 'Inhaltsberichte'
     LAST2WEEKS: 'Seiten die in den letzten 2 Wochen bearbeitet wurden'
   SilverStripe\CMS\Search\SearchForm:
     FILTERDATEFROM: Von
@@ -329,7 +317,7 @@ de:
     GO: Los
     PAGEFILTERDATEHEADING: 'Zuletzt bearbeitet'
     SEARCH: Suche
-    SearchResults: Suchergebnisse
+    SearchResults: 'Suchergebnisse'
   SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask:
     BUTTONRUN: Ausführen
     CHOOSEOPERATION: 'Operation auswählen:'

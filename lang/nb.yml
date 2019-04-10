@@ -13,7 +13,7 @@ nb:
     DUPLICATEDWITHCHILDREN: 'Vellykket duplisering av "{title}" og undersider.'
     NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Siden eksisterer ikke'
-    PAGETYPEANYOPT: 'Hvilken som helst'
+    PAGETYPEANYOPT: Hvilken som helst
     PUBALLCONFIRM: 'Vennligst publiser hver eneste side på nettstedet, og kopier innhold til aktivt nettsted'
     PUBALLFUN: 'Funksjonalitet for "Publiser alle"'
     PUBPAGES: 'Ferdig: Publiserte {count} sider.'
@@ -28,7 +28,7 @@ nb:
     ROLLEDBACKVERSIONv2: 'Tilbakestile til versjon #{version}.'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Under en annen side'
-    ParentMode_top: Toppnivå
+    ParentMode_top: 'Toppnivå'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     COMPAREMODE: 'Sammenlign modus (velg to)'
     REVERTTOTHISVERSION: 'Tilbakestill til denne versjonen'
@@ -47,7 +47,7 @@ nb:
     ARCHIVEDSITEFROM: 'Arkivert nettsted fra '
     CMS: Publiseringssystem
     DRAFT: Utkast
-    DRAFTSITE: Utkastnettsted
+    DRAFTSITE: 'Utkastnettsted'
     INSTALL_SUCCESS: 'Installasjonen var vellykket!'
     LOGGEDINAS: 'Logget inn som'
     LOGIN: Innlogging
@@ -92,19 +92,19 @@ nb:
     DEFAULTHOMECONTENT: '<p>Velkommen til SilverStripe! Dette er standard-forsiden. Du kan redigere denne ved å gå til <a href="admin/">publiseringssystemet</a>.</p><p>Du kan nå gå til <a href="http://docs.silverstripe.org">dokumentasjonen for utviklere</a>, eller begynne med <a href="http://www.silverstripe.org/learn/lessons">SilverStripe-leksjoner</a>.</p>'
     DEFAULTHOMETITLE: Hjem
     DEPENDENT_NOTE: 'De følgende sidene avhenger av denne siden. Dette inkluderer virtuelle sider, omdirigeringssider og sider med innholdslenker.'
-    DependtPageColumnLinkType: Lenketype
+    DependtPageColumnLinkType: 'Lenketype'
     EDITHEADER: 'Hvem kan redigere dette i kontrollpanelet?'
-    EDITORGROUPS: Redaktørgrupper
+    EDITORGROUPS: 'Redaktørgrupper'
     EDIT_ALL_DESCRIPTION: 'Rediger hvilken som helst side'
     EDIT_ALL_HELP: 'Lar deg redigere hvilken som helst side på nettstedet, uavhengig av innstillingene på adgangsfanen. Krever at du har tilgang til sideseksjonen.'
-    Editors: Redaktørgrupper
+    Editors: 'Redaktørgrupper'
     HASBROKENLINKS: 'Denne siden har ødelagte lenker.'
     HTMLEDITORTITLE: Innhold
     INHERIT: 'Arvet fra overordnet side'
     LASTUPDATED: 'Sist oppdatert'
     LINKCHANGENOTE: 'Endring av denne sidens lenke vil også påvirke lenkene til alle underliggende sider.'
-    MENUTITLE: Navigasjonsetikett
-    METADESC: Beskrivelse
+    MENUTITLE: 'Navigasjonsetikett'
+    METADESC: 'Beskrivelse'
     METADESCHELP: 'Søkemotorer bruker dette innholdet for å vise søkeresultater (selv om de ikke påvirker rekkefølgen).'
     METAEXTRA: 'Egendefinerte meta-elementer'
     MODIFIEDONDRAFTHELP: 'Siden har upubliserte forandringer'
@@ -112,13 +112,13 @@ nb:
     MetadataToggle: Metadata
     MoreOptions: 'Flere alternativer'
     OBSOLETECLASS: 'Denne siden er av den utdaterte typen {type}. Lagring vil tilbakestille typen og kan medføre tap av informasjon.'
-    PAGELOCATION: Sideplassering
-    PAGETITLE: Sidenavn
-    PAGETYPE: Sidetype
+    PAGELOCATION: 'Sideplassering'
+    PAGETITLE: 'Sidenavn'
+    PAGETYPE: 'Sidetype'
     PARENTID: 'Overordnet side'
-    PARENTTYPE: Sideplassering
-    PARENTTYPE_ROOT: Toppnivåside
-    PARENTTYPE_SUBPAGE: Underside
+    PARENTTYPE: 'Sideplassering'
+    PARENTTYPE_ROOT: 'Toppnivåside'
+    PARENTTYPE_SUBPAGE: 'Underside'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Kontroller hvilke grupper som har tilgang til eller kan endre sidene'
     PERMISSION_GRANTACCESS_HELP: 'Tillat tilordning av restriksjoner på sidenivå i sideseksjonen.'
     PageTypNotAllowedOnRoot: 'Sidetypen "{type}" er ikke tillatt på toppnivå'
@@ -129,11 +129,11 @@ nb:
     SHOWINMENUS: 'Vis i menyer?'
     SHOWINSEARCH: 'Vis i søk?'
     TABBEHAVIOUR: Adferd
-    TABCONTENT: Innhold
-    TABDEPENDENT: Undersider
+    TABCONTENT: 'Innhold'
+    TABDEPENDENT: 'Undersider'
     TOPLEVEL: 'Nettstedets innhold (toppnivå)'
-    URLSegment: Adressesegment
-    VIEWERGROUPS: Publikumsgrupper
+    URLSegment: 'Adressesegment'
+    VIEWERGROUPS: 'Publikumsgrupper'
     VIEW_ALL_DESCRIPTION: 'Se på hvilken som helst side'
     VIEW_ALL_HELP: 'Viser alle sider på nettstedet, uavhengig av innstillingene på adgangsfanen. Krever at du har adgang til sideseksjonen.'
     VIEW_DRAFT_CONTENT: 'Se innhold i utkast'
@@ -141,12 +141,12 @@ nb:
     VIRTUALPAGEDRAFTWARNING: 'Vennligst publiser den lenkede siden for å publisere den virtuelle siden'
     VIRTUALPAGEWARNING: 'Vennligst velg en lenket side og lagre først for å publisere denne siden'
     VIRTUALPAGEWARNINGSETTINGS: 'Vennligst velg en lenket side i hovedinnholdsfeltene for å publisere siden'
-    Viewers: Lesergrupper
+    Viewers: 'Lesergrupper'
     Visibility: Synlighet
     has_one_Parent: 'Overordnet side'
-    many_many_BackLinkTracking: Referansesporing
-    many_many_ImageTracking: Bildesporing
-    many_many_LinkTracking: Lenkesporing
+    many_many_BackLinkTracking: 'Referansesporing'
+    many_many_ImageTracking: 'Bildesporing'
+    many_many_LinkTracking: 'Lenkesporing'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Lenket side'
     EditLink: rediger
@@ -154,20 +154,20 @@ nb:
     HEADERWITHLINK: 'Dette er en virtuell side som kopierer innhold fra "{title}" ({link})'
     PageTypNotAllowedOnRoot: 'Originaltypen "{type}" er ikke tillatt på toppnivået for denne virtuelle siden.'
   SilverStripe\CMS\Reports\BrokenLinksReport:
-    Any: 'Hvilken som helst'
+    Any: Hvilken som helst
     BROKENLINKS: 'Rapport over ødelagte lenker'
     CheckSite: 'Sjekk nettstedet'
-    CheckSiteDropdownDraft: Utkastnettsted
+    CheckSiteDropdownDraft: 'Utkastnettsted'
     CheckSiteDropdownPublished: 'Publisert nettsted'
     ColumnDateLastModified: 'Dato sist endret'
     ColumnDateLastPublished: 'Dato sist publisert'
-    ColumnProblemType: Problemtype
+    ColumnProblemType: 'Problemtype'
     ColumnURL: URL
     HasBrokenFile: 'har ødelagt fil'
     HasBrokenLink: 'har ødelagt lenke'
     HasBrokenLinkAndFile: 'har ødelagt lenke og fil'
     HoverTitleEditPage: 'Rediger side'
-    PageName: Sidenavn
+    PageName: 'Sidenavn'
     ReasonDropdown: 'Problem som skal sjekkes'
     ReasonDropdownBROKENFILE: 'Ødelagt fil'
     ReasonDropdownBROKENLINK: 'Ødelagt lenke'
@@ -180,4 +180,4 @@ nb:
     FILTERDATETO: Til
     GO: Utfør
     SEARCH: Søk
-    SearchResults: Søkeresultater
+    SearchResults: 'Søkeresultater'

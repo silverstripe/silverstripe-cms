@@ -28,7 +28,7 @@ uk:
     DRAFTSITE: 'Чорновий сайт'
     LOGGEDINAS: 'Залогований як '
     LOGIN: Логін
-    LOGOUT: Вилогуватися
+    LOGOUT: 'Вилогуватися'
     NOTEWONTBESHOWN: 'Примітка: це повідомлення не буде відображатися для відвідувачів'
     NOTLOGGEDIN: 'Не залогований'
     PUBLISHEDSITE: 'Публічний сайт'
@@ -52,12 +52,12 @@ uk:
     APPEARSVIRTUALPAGES: 'Цей вміст також відображається на віртуальній сторінці в розділі {title}.'
     BUTTONCANCELDRAFT: 'Відмінити зміни чернетки'
     BUTTONCANCELDRAFTDESC: 'Видалити черентку та повернутися до теперішнього опублікованого варіанту'
-    BUTTONUNPUBLISH: 'Відміна публікування'
+    BUTTONUNPUBLISH: Відміна публікування
     BUTTONUNPUBLISHDESC: 'Видалити цю сторінку з опублікованого'
     Comments: Коментарі
     Content: Контент
     DEFAULTABOUTTITLE: 'Про нас'
-    DEFAULTCONTACTTITLE: Контакти
+    DEFAULTCONTACTTITLE: 'Контакти'
     DEFAULTHOMETITLE: Домівка
     DEPENDENT_NOTE: 'Наступні сторінки залежать від цієї сторінки. Вони включають віртуальні сторінки, сторінки переадресації і сторінки з посиланням у змісті'
     DependtPageColumnLinkType: 'Тип посилання'
@@ -72,7 +72,7 @@ uk:
     LASTUPDATED: 'Останнє оновлення'
     LINKCHANGENOTE: 'Зміна адреси цієї сторінки вплине на адреси всіх дочірніх сторінок'
     MENUTITLE: 'Мітка навігації'
-    METADESC: Опис
+    METADESC: 'Опис'
     METAEXTRA: 'Власні Мета-теги'
     MODIFIEDONDRAFTHELP: 'Сторінка має неопубліковані зміни'
     MODIFIEDONDRAFTSHORT: Змінений
@@ -93,7 +93,7 @@ uk:
     SHOWINMENUS: 'Показувати у навігації?'
     SHOWINSEARCH: 'Показувати у пошуку?'
     TABBEHAVIOUR: Поводження
-    TABCONTENT: Вміст
+    TABCONTENT: 'Вміст'
     TABDEPENDENT: 'Залежні сторінки'
     TOPLEVEL: 'Вміст Сайту (Верхній Рівень)'
     URLSegment: 'URL адреса'

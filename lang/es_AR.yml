@@ -8,8 +8,8 @@ es_AR:
   SilverStripe\CMS\Controllers\ContentController:
     DRAFTSITE: 'Sitio borrador'
     LOGGEDINAS: 'Conectado como'
-    LOGIN: 'Iniciar sesión'
-    LOGOUT: Desconectarse
+    LOGIN: Iniciar sesión
+    LOGOUT: 'Desconectarse'
     NOTEWONTBESHOWN: 'Nota: este mensage no se mostrará a sus visitantes'
     NOTLOGGEDIN: 'No conectado'
     PUBLISHEDSITE: 'Sitio publicado'
@@ -28,12 +28,12 @@ es_AR:
     ACCESSONLYTHESE: 'Únicamente estas personas (selecciona de la lista)'
     BUTTONCANCELDRAFT: 'Cancelar cambios al borrador'
     BUTTONCANCELDRAFTDESC: 'Eliminar el borrador y regresar a la página actualmente publicada'
-    BUTTONUNPUBLISH: 'No Publicar'
+    BUTTONUNPUBLISH: No Publicar
     BUTTONUNPUBLISHDESC: 'Quitar ésta página del sitio público'
     Comments: Comentarios
     Content: Contenido
     DEFAULTABOUTTITLE: 'de Nosotros'
-    DEFAULTCONTACTTITLE: Contactenos
+    DEFAULTCONTACTTITLE: 'Contactenos'
     DEFAULTHOMETITLE: Inicio
     DEPENDENT_NOTE: 'Las siguientes páginas dependen de esta página. Esto incluye páginas virtuales, páginas de redireccionamiento y páginas con enlaces de contenido.'
     DependtPageColumnLinkType: 'Tipo de enlace'
@@ -46,7 +46,7 @@ es_AR:
     INHERIT: 'heredar de página superior'
     LINKCHANGENOTE: 'Cambiar este enlace de la página también afectará los enlaces de todas las páginas dependientes.'
     MENUTITLE: 'Etiqueta de navegación'
-    METADESC: Descripción
+    METADESC: 'Descripción'
     METAEXTRA: 'Etiquetas Meta Personalizadas'
     PAGELOCATION: 'Ubicación de la página'
     PAGETITLE: 'Nombre de página'
@@ -60,7 +60,7 @@ es_AR:
     SHOWINMENUS: '¿Mostrar en menús?'
     SHOWINSEARCH: '¿Mostrar en búsqueda?'
     TABBEHAVIOUR: Compotamiento
-    TABCONTENT: Contenido
+    TABCONTENT: 'Contenido'
     TABDEPENDENT: 'Páginas dependientes'
     TOPLEVEL: 'Contenido del Sitio (Nivel Superior)'
     URLSegment: 'Segmento del URL'
