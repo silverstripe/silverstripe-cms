@@ -12,12 +12,12 @@ fr:
     UNPUBLISHED_PAGES: '%d pages dépubliées'
     UNPUBLISH_PAGES: Dépublier
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: "Accès à la section «\_{title}\_»"
+    ACCESS: 'Accès à la section « {title} »'
     ACCESS_HELP: 'Autoriser la visualisation de la section contenant l''arborescence et le contenu. Les autorisations de voir ou modifier le contenu peuvent être gérées dans les menus déroulants spécifiques à chaque page, ainsi que dans les "permissions de contenu".'
     ARCHIVE: Archive
     ARCHIVEDPAGE: 'Page ''{title}'' archivée'
     AddNew: 'Ajouter une nouvelle page'
-    AddNewButton: Ajouter
+    AddNewButton: 'Ajouter'
     AddPageRestriction: 'Remarque : certains types de page ne sont pas autorisés pour cette sélection'
     ArchiveWarning: 'Avertissement: cette page sera dépubliée avant d''être archivée.\n\nEtes-vous sûr de vouloir poursuivre?'
     ArchiveWarningWithCampaigns: 'Attention: cette page sera dépubliée et retirée automatiquement des {NumCampaigns} associées avant d''être archivée.\n\nEtes-vous sûr de vouloir poursuivre?'
@@ -44,11 +44,11 @@ fr:
     PUBLISHED: 'Page ''{title}'' publiée avec succès'
     PUBPAGES: '{count} pages ont été correctement publiées'
     PageAdded: 'La page a été créée avec succès '
-    REMOVEDPAGE: "La page «\_{title}\_» a été retirée du site public "
+    REMOVEDPAGE: 'La page « {title} » a été retirée du site public '
     REMOVEDPAGEFROMDRAFT: 'Page ''{title}'' retirée du site brouillon'
     REORGANISATIONSUCCESSFUL: 'Réorganisation de l''arborescence réalisée avec succès'
     RESTORE: 'Restaurer la version brouillon'
-    RESTORED: "Page «\_{title}\_» restaurée avec succès"
+    RESTORED: 'Page « {title} » restaurée avec succès'
     RESTORE_DESC: 'Restaurer la version archivée dans le site brouillon'
     RESTORE_TO_ROOT: 'Restaurer le brouillon à la racine du site'
     RESTORE_TO_ROOT_DESC: 'Restaurer la version archivée à la racine du site brouillon'
@@ -86,7 +86,7 @@ fr:
     UNKNOWN: Inconnu
     VIEW: Afficher
     VIEWINGLATEST: 'Vous regardez la dernière version'
-    VIEWINGVERSION: "Version affichée\_: {version}."
+    VIEWINGVERSION: 'Version affichée : {version}.'
     WHEN: Quand
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Éditer la page'
@@ -94,7 +94,7 @@ fr:
     FILTER: Filtrer
     ListView: 'Affichage en liste'
     MENUTITLE: Pages
-    TreeView: Arborescence
+    TreeView: 'Arborescence'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Page modifiées'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
@@ -118,7 +118,7 @@ fr:
     Email: Email
     INSTALL_SUCCESS: 'Installation terminée!'
     InstallFilesDeleted: 'Les fichiers d''installation ont été supprimés avec succès'
-    InstallSecurityWarning: "Pour des raisons de sécurité vous devriez maintenant supprimer les fichiers d’installation, à moins que vous n’ayez prévu de réinstaller le système ultérieurement (<em>ce qui nécessite de se connecter comme administrateur, voir plus haut</em>). Désormais, votre serveur n’aura besoin de droits d'accès en écriture que pour le dossier «\_assets\_», vous pouvez donc les révoquer pour tous les autres dossiers. <a href=\"{link}\" style=\"text-align: center;\">Cliquez ici pour supprimer les fichiers d’installation.</a>"
+    InstallSecurityWarning: 'Pour des raisons de sécurité vous devriez maintenant supprimer les fichiers d’installation, à moins que vous n’ayez prévu de réinstaller le système ultérieurement (<em>ce qui nécessite de se connecter comme administrateur, voir plus haut</em>). Désormais, votre serveur n’aura besoin de droits d''accès en écriture que pour le dossier « assets », vous pouvez donc les révoquer pour tous les autres dossiers. <a href="{link}" style="text-align: center;">Cliquez ici pour supprimer les fichiers d’installation.</a>'
     InstallSuccessCongratulations: 'SilverStripe a été installé avec succès.'
     LOGGEDINAS: 'Connecté en tant que'
     LOGIN: Connectez-vous
@@ -127,7 +127,7 @@ fr:
     NOTLOGGEDIN: 'Non connecté'
     PUBLISHED: Publié
     PUBLISHEDSITE: 'Site Publié'
-    Password: 'Mot de passe'
+    Password: Mot de passe
     PostInstallTutorialIntro: 'Ceci est un site Silverstripe minimaliste. Pour le déployer, veuillez regarder {link}.'
     StartEditing: 'Vous pouvez commencer à créer ou modifier du contenu en accédant au <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Impossible de supprimer les fichiers d''installation. Merci de supprimer manuellement les fichiers suivants :'
@@ -163,7 +163,7 @@ fr:
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Une page de redirection a été configurée... Sans redirection'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: 'Tout le monde'
+    ACCESSANYONE: Tout le monde
     ACCESSHEADER: 'Qui peut voir cette page?'
     ACCESSLOGGEDIN: 'Utilisateurs connectés'
     ACCESSONLYTHESE: 'Seulement ces groupes (choisir à partir de la liste)'
@@ -177,14 +177,14 @@ fr:
     BUTTONDELETEDESC: 'Retirer du site public/brouillon et archiver'
     BUTTONPUBLISHED: Publié
     BUTTONSAVED: Sauvegardé
-    BUTTONUNPUBLISH: 'Retirer du site publié'
-    BUTTONUNPUBLISHDESC: Dépublier
+    BUTTONUNPUBLISH: Retirer du site publié
+    BUTTONUNPUBLISHDESC: 'Dépublier'
     Comments: Commentaires
     Content: Contenu
     DEFAULTABOUTCONTENT: '<p>Vous pouvez remplir cette page avec votre propre contenu, ou la supprimer et créer vos propres pages.</p>'
-    DEFAULTABOUTTITLE: "Qui sommes nous\_?"
+    DEFAULTABOUTTITLE: 'Qui sommes nous ?'
     DEFAULTCONTACTCONTENT: '<p>Vous pouvez remplir cette page avec votre propre contenu, ou la supprimer et créer vos propres pages.</p>'
-    DEFAULTCONTACTTITLE: Contactez-nous
+    DEFAULTCONTACTTITLE: 'Contactez-nous'
     DEFAULTHOMECONTENT: '<p>Bienvenue dans SilverStripe! Ceci est la page d''accueil par défaut. Vous pouvez éditer cette page en ouvrant <a href="admin/">le CMS</a>.</p><p>Vous pouvez maintenant accéder à la <a href="http://docs.silverstripe.org">documentation développeur</a>, ou commencer les <a href="http://www.silverstripe.org/learn/lessons">leçons SilverStripe</a>.</p>'
     DEFAULTHOMETITLE: Accueil
     DEPENDENT_NOTE: 'Les pages suivantes dépendent de cette page. Ceci inclut les pages virtuelles, les redirections et les pages avec des liens.'
@@ -231,9 +231,9 @@ fr:
     PLURALS:
       one: 'Une page'
       other: '{count} pages'
-    PageTypNotAllowedOnRoot: "Le type de page «\_{type}\_» n’est pas autorisé à la racine du site"
+    PageTypNotAllowedOnRoot: 'Le type de page « {type} » n’est pas autorisé à la racine du site'
     PageTypeNotAllowed: 'Le type de page "{type}" ne peut pas être créé sous cette page'
-    REMOVE_INSTALL_WARNING: "Attention\_: Vous devriez supprimer install.php pour des raisons de sécurité."
+    REMOVE_INSTALL_WARNING: 'Attention : Vous devriez supprimer install.php pour des raisons de sécurité.'
     REORGANISE_DESCRIPTION: 'Modifier la structure du site'
     REORGANISE_HELP: 'Réorganiser les pages du site par glisser & déposer.'
     SHOWINMENUS: 'Afficher dans les menus ?'
@@ -273,14 +273,14 @@ fr:
     PLURALS:
       one: 'Une page virtuelle'
       other: '{count} pages virtuelles'
-    PageTypNotAllowedOnRoot: "Le type de page d’origine «\_{type}\_» n’est pas autorisé au niveau racine pour cette page virtuelle"
+    PageTypNotAllowedOnRoot: 'Le type de page d’origine « {type} » n’est pas autorisé au niveau racine pour cette page virtuelle'
     SINGULARNAME: 'Page virtuelle'
   SilverStripe\CMS\Reports\BrokenFilesReport:
     BROKENFILES: 'Pages avec des liens brisés'
     BrokenLinksGroupTitle: 'Rapports des liens brisés'
     ParameterLiveCheckbox: 'Consulter le site public'
   SilverStripe\CMS\Reports\BrokenLinksReport:
-    Any: 'N''importe quel'
+    Any: N'importe quel
     BROKENLINKS: 'Rapport des liens brisés'
     CheckSite: 'Consulter le site'
     CheckSiteDropdownDraft: 'Site Brouillon'

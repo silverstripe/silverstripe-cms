@@ -1,198 +1,198 @@
 zh:
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
-    RESULT: 已删除%d草稿/正式页面，并进行归档
-    TITLE: 取消并归档
+    RESULT: '已删除%d草稿/正式页面，并进行归档'
+    TITLE: '取消并归档'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
-    PUBLISHED_PAGES: 已发布%d页面，失败%d
+    PUBLISHED_PAGES: '已发布%d页面，失败%d'
     PUBLISH_PAGES: 发布
   SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
     RESTORE: 恢复
-    RESTORED_PAGES: 已恢复%d页面
+    RESTORED_PAGES: '已恢复%d页面'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
-    UNPUBLISHED_PAGES: 取消发布%d页面
+    UNPUBLISHED_PAGES: '取消发布%d页面'
     UNPUBLISH_PAGES: 未发布
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: '访问 ''{title}'' 部分'
     ACCESS_HELP: '允许查看包含页面树及内容 部分。查看和编辑权限可以通过页面特定的下拉菜单进行控制，与使用单独的”内容权限“处理一样。'
     ARCHIVE: 归档
     ARCHIVEDPAGE: '归档页面 ''{title}'''
-    AddNew: 增加一个新的页面
-    AddNewButton: 增加一个新的
-    AddPageRestriction: 备注：某些类型页面是不允许选择该项的
-    ArchiveWarning: 警告：在进行归档前，当前页面将被取消发布？是否继续？
+    AddNew: '增加一个新的页面'
+    AddNewButton: '增加一个新的'
+    AddPageRestriction: '备注：某些类型页面是不允许选择该项的'
+    ArchiveWarning: '警告：在进行归档前，当前页面将被取消发布？是否继续？'
     Cancel: 取消
-    ChoosePageParentMode: 选择在哪创建此页面
-    ChoosePageType: 选择页面类型
+    ChoosePageParentMode: '选择在哪创建此页面'
+    ChoosePageType: '选择页面类型'
     Create: 创建
     DUPLICATED: '成功复制‘{title}’'
     DUPLICATEDWITHCHILDREN: '成功复制‘{title}’及其子页面'
     EMAIL: Email
     NEWPAGE: '新建{pagetype}'
-    PAGENOTEXISTS: 该页面不存在
-    PAGES: 页面状态
+    PAGENOTEXISTS: '该页面不存在'
+    PAGES: '页面状态'
     PAGETYPEANYOPT: 任何
-    PAGETYPEOPT: 页面类型
+    PAGETYPEOPT: '页面类型'
     PLEASESAVE: '请保存页面: 当前页面未被保存，导致未能更新成功'
-    PUBALLCONFIRM: 请发布站点上的所有页面，将内容复制到线上
-    PUBALLFUN: “全部发布”功能
+    PUBALLCONFIRM: '请发布站点上的所有页面，将内容复制到线上'
+    PUBALLFUN: '“全部发布”功能'
     PUBLISHED: '''{title}'' 发布成功。'
     PUBPAGES: '完成：已发布{count}个页面'
-    PageAdded: 成功创建页面
+    PageAdded: '成功创建页面'
     REMOVEDPAGE: '从已发布站点删除’{title}'''
-    REMOVEDPAGEFROMDRAFT: 从草稿站点删除‘s%’
-    RESTORE: 恢复草稿
+    REMOVEDPAGEFROMDRAFT: '从草稿站点删除‘s%’'
+    RESTORE: '恢复草稿'
     RESTORED: '成功恢复’{title}‘'
-    ROLLBACK: 回滚至当前版本
-    ROLLEDBACKPUBv2: 回滚到已发布版本。
+    ROLLBACK: '回滚至当前版本'
+    ROLLEDBACKPUBv2: '回滚到已发布版本。'
     ROLLEDBACKVERSIONv2: '回滚到版本#{version}。'
     SAVED: ' ''{title}'' 保存成功。'
   SilverStripe\CMS\Controllers\CMSPageAddController:
-    ParentMode_child: 根据另一个页面
-    ParentMode_top: 顶层
+    ParentMode_child: '根据另一个页面'
+    ParentMode_top: '顶层'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 比较模式（选择两个）
-    REVERTTOTHISVERSION: 恢复到这个版本
-    SHOWUNPUBLISHED: 显示未发布的版本
+    COMPAREMODE: '比较模式（选择两个）'
+    REVERTTOTHISVERSION: '恢复到这个版本'
+    SHOWUNPUBLISHED: '显示未发布的版本'
     VIEW: 查看
-    VIEWINGLATEST: 当前正在查看最新版本。
+    VIEWINGLATEST: '当前正在查看最新版本。'
     VIEWINGVERSION: '当前正在查看版本{version}。'
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: 页面
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
-    Title: 所有页面
+    Title: '所有页面'
   SilverStripe\CMS\Controllers\ContentController:
-    ARCHIVEDSITE: 预览版本
-    ARCHIVEDSITEFROM: 存档站点从
+    ARCHIVEDSITE: '预览版本'
+    ARCHIVEDSITEFROM: '存档站点从'
     CMS: 内容管理系统
     DRAFT: 草稿
-    DRAFTSITE: 草稿站点
-    INSTALL_SUCCESS: 安装成功
-    LOGGEDINAS: 当前登录
+    DRAFTSITE: '草稿站点'
+    INSTALL_SUCCESS: '安装成功'
+    LOGGEDINAS: '当前登录'
     LOGIN: 登录
-    LOGOUT: 注销
-    NOTEWONTBESHOWN: 备注：该消息将不会展示给您的浏览者
-    NOTLOGGEDIN: 未登录
+    LOGOUT: '注销'
+    NOTEWONTBESHOWN: '备注：该消息将不会展示给您的浏览者'
+    NOTLOGGEDIN: '未登录'
     PUBLISHED: 已发布
-    PUBLISHEDSITE: 已发布站点
-    VIEWPAGEIN: 查看页面，在：
+    PUBLISHEDSITE: '已发布站点'
+    VIEWPAGEIN: '查看页面，在：'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 已存档
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 请输入一个URL分类或点击“取消”
-    HelpChars: 特殊字符已自动转换或删除。
+    EMPTY: '请输入一个URL分类或点击“取消”'
+    HelpChars: '特殊字符已自动转换或删除。'
   SilverStripe\CMS\Model\RedirectorPage:
-    HEADER: 该页面将会使用户转向另外一个页面
-    OTHERURL: 其他网站URL
-    REDIRECTTO: 重定向到
-    REDIRECTTOEXTERNAL: 另一个网站
-    REDIRECTTOPAGE: 您网站上的一个页面
-    YOURPAGE: 您网站的页面
+    HEADER: '该页面将会使用户转向另外一个页面'
+    OTHERURL: '其他网站URL'
+    REDIRECTTO: '重定向到'
+    REDIRECTTOEXTERNAL: '另一个网站'
+    REDIRECTTOPAGE: '您网站上的一个页面'
+    YOURPAGE: '您网站的页面'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 任何人
-    ACCESSHEADER: 谁可以查看该页面？
-    ACCESSLOGGEDIN: 已登录用户
-    ACCESSONLYTHESE: 仅这些人（从列表中选择）
-    ADDEDTODRAFTHELP: 页面尚未发布
+    ACCESSHEADER: '谁可以查看该页面？'
+    ACCESSLOGGEDIN: '已登录用户'
+    ACCESSONLYTHESE: '仅这些人（从列表中选择）'
+    ADDEDTODRAFTHELP: '页面尚未发布'
     ADDEDTODRAFTSHORT: 草稿
     APPEARSVIRTUALPAGES: '该内容也出现在{title}部分的虚拟页面中。'
-    BUTTONCANCELDRAFT: 取消草稿改动
-    BUTTONCANCELDRAFTDESC: 删除您的草稿并回复至当前已发布的页面
+    BUTTONCANCELDRAFT: '取消草稿改动'
+    BUTTONCANCELDRAFTDESC: '删除您的草稿并回复至当前已发布的页面'
     BUTTONPUBLISHED: 已发布
     BUTTONSAVED: 已保存
     BUTTONUNPUBLISH: 未发布
-    BUTTONUNPUBLISHDESC: 将该页面从已发布的站点中删除
+    BUTTONUNPUBLISHDESC: '将该页面从已发布的站点中删除'
     Comments: 评论
     Content: 内容
-    DEFAULTABOUTTITLE: 关于我们
-    DEFAULTCONTACTTITLE: 联络我们
+    DEFAULTABOUTTITLE: '关于我们'
+    DEFAULTCONTACTTITLE: '联络我们'
     DEFAULTHOMETITLE: 首页
-    DEPENDENT_NOTE: 以下页面依赖该页。包括虚拟页面，重定向页，以及有内容链接的页面。
-    DependtPageColumnLinkType: 链接类型
-    EDITHEADER: 谁可以修改该页面？
-    EDITORGROUPS: 编辑分组
-    EDIT_ALL_DESCRIPTION: 编辑任何页面
-    EDIT_ALL_HELP: 可以编辑站点上的任何页面，忽略“访问”选项卡上的设置。需要“访问’页面‘部分”权限
-    Editors: 编辑分组
-    HASBROKENLINKS: 该页面包含无效链接。
+    DEPENDENT_NOTE: '以下页面依赖该页。包括虚拟页面，重定向页，以及有内容链接的页面。'
+    DependtPageColumnLinkType: '链接类型'
+    EDITHEADER: '谁可以修改该页面？'
+    EDITORGROUPS: '编辑分组'
+    EDIT_ALL_DESCRIPTION: '编辑任何页面'
+    EDIT_ALL_HELP: '可以编辑站点上的任何页面，忽略“访问”选项卡上的设置。需要“访问’页面‘部分”权限'
+    Editors: '编辑分组'
+    HASBROKENLINKS: '该页面包含无效链接。'
     HTMLEDITORTITLE: 内容
-    INHERIT: 从父页面继承
-    LASTUPDATED: 最后更新
-    LINKCHANGENOTE: 改变该页面的链接将会影响到所有子页面的链接。
-    MENUTITLE: 导航标签
+    INHERIT: '从父页面继承'
+    LASTUPDATED: '最后更新'
+    LINKCHANGENOTE: '改变该页面的链接将会影响到所有子页面的链接。'
+    MENUTITLE: '导航标签'
     METADESC: 'Meta 描述'
-    METADESCHELP: 搜索引擎使用这些内容用于显示搜索结果（虽然它不会影响它们的排名）。
-    METAEXTRA: 自定义Meta标签
-    MODIFIEDONDRAFTHELP: 页面有未发布的变更
+    METADESCHELP: '搜索引擎使用这些内容用于显示搜索结果（虽然它不会影响它们的排名）。'
+    METAEXTRA: '自定义Meta标签'
+    MODIFIEDONDRAFTHELP: '页面有未发布的变更'
     MODIFIEDONDRAFTSHORT: 已修改
     MetadataToggle: 元数据
-    MoreOptions: 更多选项
+    MoreOptions: '更多选项'
     OBSOLETECLASS: '该页面属于陈旧的类型{type}。保存将会重置它的类型，可能会造成您的数据丢失'
-    PAGELOCATION: 页面位置
-    PAGETITLE: 页面名称
-    PAGETYPE: 页面类型
-    PARENTID: 父页面
-    PARENTTYPE: 页面位置
-    PARENTTYPE_ROOT: 顶层页面
-    PARENTTYPE_SUBPAGE: 父页面之下的子页面
-    PERMISSION_GRANTACCESS_DESCRIPTION: 管理访问内容的权限
-    PERMISSION_GRANTACCESS_HELP: 允许在“页面”部分设置针对页面的访问限制。
+    PAGELOCATION: '页面位置'
+    PAGETITLE: '页面名称'
+    PAGETYPE: '页面类型'
+    PARENTID: '父页面'
+    PARENTTYPE: '页面位置'
+    PARENTTYPE_ROOT: '顶层页面'
+    PARENTTYPE_SUBPAGE: '父页面之下的子页面'
+    PERMISSION_GRANTACCESS_DESCRIPTION: '管理访问内容的权限'
+    PERMISSION_GRANTACCESS_HELP: '允许在“页面”部分设置针对页面的访问限制。'
     PageTypNotAllowedOnRoot: '页面类型“{type}”不允许做为根级页'
     PageTypeNotAllowed: '页面类型“{type}”不允许作为该父页面的子页面'
-    REMOVE_INSTALL_WARNING: 警告：出于安全原因考虑，您应该从该SilverStripe安装副本中删除install.php。
-    REORGANISE_DESCRIPTION: 改变站点结构
-    REORGANISE_HELP: 在站点树上通过拖放重新安排页面
-    SHOWINMENUS: 在菜单中显示？
-    SHOWINSEARCH: 在搜索结果中显示？
+    REMOVE_INSTALL_WARNING: '警告：出于安全原因考虑，您应该从该SilverStripe安装副本中删除install.php。'
+    REORGANISE_DESCRIPTION: '改变站点结构'
+    REORGANISE_HELP: '在站点树上通过拖放重新安排页面'
+    SHOWINMENUS: '在菜单中显示？'
+    SHOWINSEARCH: '在搜索结果中显示？'
     TABBEHAVIOUR: 行为
-    TABCONTENT: 主要内容
-    TABDEPENDENT: 依赖页面
-    TOPLEVEL: 站点内容（顶层）
-    URLSegment: URL分类
-    VIEWERGROUPS: 浏览者分组
-    VIEW_ALL_DESCRIPTION: 查看任何页面
-    VIEW_ALL_HELP: 能够查看站点上的任何页面，忽略、“访问”选项卡的设置。需要“访问‘页面’部分”权限
-    VIEW_DRAFT_CONTENT: 查看草稿内容
-    VIEW_DRAFT_CONTENT_HELP: 适用于在草稿模式下于内容管理系统之外查看页面。对于没有内容管理系统访问权限的外部合作者有用。
-    VIRTUALPAGEDRAFTWARNING: 请发布链接的页面，以发布虚拟页面
-    VIRTUALPAGEWARNING: 请先选择一个链接的页面并保存，以发布该页面
-    VIRTUALPAGEWARNINGSETTINGS: 请在主目录栏选择一个链接的页面以待发布
-    Viewers: 浏览者分组
+    TABCONTENT: '主要内容'
+    TABDEPENDENT: '依赖页面'
+    TOPLEVEL: '站点内容（顶层）'
+    URLSegment: 'URL分类'
+    VIEWERGROUPS: '浏览者分组'
+    VIEW_ALL_DESCRIPTION: '查看任何页面'
+    VIEW_ALL_HELP: '能够查看站点上的任何页面，忽略、“访问”选项卡的设置。需要“访问‘页面’部分”权限'
+    VIEW_DRAFT_CONTENT: '查看草稿内容'
+    VIEW_DRAFT_CONTENT_HELP: '适用于在草稿模式下于内容管理系统之外查看页面。对于没有内容管理系统访问权限的外部合作者有用。'
+    VIRTUALPAGEDRAFTWARNING: '请发布链接的页面，以发布虚拟页面'
+    VIRTUALPAGEWARNING: '请先选择一个链接的页面并保存，以发布该页面'
+    VIRTUALPAGEWARNINGSETTINGS: '请在主目录栏选择一个链接的页面以待发布'
+    Viewers: '浏览者分组'
     Visibility: 可见性
-    has_one_Parent: 父页面
-    many_many_BackLinkTracking: 后连接跟踪
-    many_many_ImageTracking: 图像跟踪
-    many_many_LinkTracking: 链接跟踪
+    has_one_Parent: '父页面'
+    many_many_BackLinkTracking: '后连接跟踪'
+    many_many_ImageTracking: '图像跟踪'
+    many_many_LinkTracking: '链接跟踪'
   SilverStripe\CMS\Model\VirtualPage:
-    CHOOSE: 链接的页面
+    CHOOSE: '链接的页面'
     EditLink: 编辑
-    HEADER: 这是一个虚拟页面
+    HEADER: '这是一个虚拟页面'
     HEADERWITHLINK: '这是一个从“{标题}”复制内容的虚拟页面（{链接}）'
     PageTypNotAllowedOnRoot: '此虚拟页面的根级不允许使用原页面类型 "{type}"'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: 任意
-    BROKENLINKS: 报告无效链接
-    CheckSite: 检查状态
-    CheckSiteDropdownDraft: 网站雏形
-    CheckSiteDropdownPublished: 已发布的网站
-    ColumnDateLastModified: 上次更改日期
-    ColumnDateLastPublished: 上次发布日期
-    ColumnProblemType: 问题类型
+    BROKENLINKS: '报告无效链接'
+    CheckSite: '检查状态'
+    CheckSiteDropdownDraft: '网站雏形'
+    CheckSiteDropdownPublished: '已发布的网站'
+    ColumnDateLastModified: '上次更改日期'
+    ColumnDateLastPublished: '上次发布日期'
+    ColumnProblemType: '问题类型'
     ColumnURL: 网址
-    HasBrokenFile: 有无效文件
-    HasBrokenLink: 有无效链接
-    HasBrokenLinkAndFile: 有无效的链接及文件
-    HoverTitleEditPage: 编辑页面
-    PageName: 页面名称
-    ReasonDropdown: 要检查的问题
-    ReasonDropdownBROKENFILE: 损坏的文件
-    ReasonDropdownBROKENLINK: 无效链接
-    ReasonDropdownRPBROKENLINK: 页面重定向工具指向的页面不存在
-    ReasonDropdownVPBROKENLINK: 虚拟页面指向的页面不存在
-    RedirectorNonExistent: 页面重定向工具指向的页面不存在
-    VirtualPageNonExistent: 虚拟页面指向的页面不存在
+    HasBrokenFile: '有无效文件'
+    HasBrokenLink: '有无效链接'
+    HasBrokenLinkAndFile: '有无效的链接及文件'
+    HoverTitleEditPage: '编辑页面'
+    PageName: '页面名称'
+    ReasonDropdown: '要检查的问题'
+    ReasonDropdownBROKENFILE: '损坏的文件'
+    ReasonDropdownBROKENLINK: '无效链接'
+    ReasonDropdownRPBROKENLINK: '页面重定向工具指向的页面不存在'
+    ReasonDropdownVPBROKENLINK: '虚拟页面指向的页面不存在'
+    RedirectorNonExistent: '页面重定向工具指向的页面不存在'
+    VirtualPageNonExistent: '虚拟页面指向的页面不存在'
   SilverStripe\CMS\Search\SearchForm:
     FILTERDATEFROM: 从
     FILTERDATETO: 到
     GO: 到
     SEARCH: 搜索
-    SearchResults: 搜索结果
+    SearchResults: '搜索结果'

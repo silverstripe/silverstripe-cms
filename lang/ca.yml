@@ -31,7 +31,7 @@ ca:
     HTMLEDITORTITLE: Contingut
     INHERIT: 'Hereda de la pàgina pare'
     MENUTITLE: 'Etiqueta de navegació'
-    METADESC: Descripció
+    METADESC: 'Descripció'
     METAEXTRA: 'Etiquetes Meta personalitzades'
     PAGETITLE: 'Nom de la pàgina'
     PAGETYPE: 'Tipus de pàgina'
@@ -39,7 +39,7 @@ ca:
     SHOWINMENUS: 'Mostra als menús?'
     SHOWINSEARCH: 'Mostra en cerques?'
     TABBEHAVIOUR: Comportament
-    TABCONTENT: Contingut
+    TABCONTENT: 'Contingut'
     TOPLEVEL: 'Contingut del lloc (Nivell principal)'
     URLSegment: 'Segment URL'
     Viewers: 'Grups de visitadors'

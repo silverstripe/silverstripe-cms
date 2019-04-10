@@ -10,14 +10,14 @@ pl:
     RESTORED_PAGES: 'Przywrócono %d stron/y/ę'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
     UNPUBLISHED_PAGES: 'Usunięto z opublikowanych %d stron'
-    UNPUBLISH_PAGES: 'Cofnij publikację'
+    UNPUBLISH_PAGES: Cofnij publikację
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Dostęp do sekcji ''{title}'''
     ACCESS_HELP: 'Zezwala na oglądanie sekcji zawierających drzewo stron oraz treść. Prawo Przeglądaj i edytuj może być obsługiwane przez pola wyboru dostępne na stronach oraz poprzez zakładkę uprawnień.'
     ARCHIVE: Archiwizuj
     ARCHIVEDPAGE: 'Zarchiwizowano stronę ''{title}'''
     AddNew: 'Dodaj nową stronę'
-    AddNewButton: Dodaj
+    AddNewButton: 'Dodaj'
     AddPageRestriction: 'Uwaga: Niektóre typy stron nie są dozwolone dla tego wyboru'
     ArchiveWarning: 'Uwaga: Ta strona nie zostanie opublikowana przed wysłaniem do archiwizacji.\n\nCzy jesteś pewien, że chcesz kontynuować?'
     ArchiveWarningWithCampaigns: 'Uwaga: Ta strona nie zostanie opublikowana i automatycznie zostanie usunięta z powiązanych kampanii ({NumCampaigns}) przed wysłaniem do archiwizacji.\n\nCzy chcesz kontynuować?  '
@@ -78,7 +78,7 @@ pl:
     COMPAREMODE: 'Tryb porównywania (wybierz dwie)'
     MENUTITLE: Historia
     MULTISELECT: 'Operacje hurtem'
-    NOTPUBLISHED: Nieopublikowano
+    NOTPUBLISHED: 'Nieopublikowano'
     PREVIEW: 'Podgląd strony'
     PUBLISHER: Edytor
     REVERTTOTHISVERSION: 'Wróć do tej wersji'
@@ -106,13 +106,13 @@ pl:
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
     Title: 'Zarchiwizowane strony'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDraftPages:
-    Title: Szkice
+    Title: 'Szkice'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Opublikowana ale usunięta ze szkicu strony'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Podgląd wersji'
     ARCHIVEDSITEFROM: 'Zarchiwizowana witryna od'
-    CMS: 'System Zarządzania Treścią'
+    CMS: System Zarządzania Treścią
     DRAFT: Szkic
     DRAFTSITE: 'Szkic witryny'
     Email: Email
@@ -122,7 +122,7 @@ pl:
     InstallSuccessCongratulations: 'SilverStripe został zainstalowany!'
     LOGGEDINAS: 'Zalogowany jako'
     LOGIN: Zaloguj
-    LOGOUT: Wyloguj
+    LOGOUT: 'Wyloguj'
     NOTEWONTBESHOWN: 'Uwaga: ta strona nie będzie widoczna dla twoich odwiedzających  '
     NOTLOGGEDIN: 'Nie zalogowany'
     PUBLISHED: Opublikowano
@@ -139,7 +139,7 @@ pl:
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Opis linku'
     LINKOPENNEWWIN: 'Otworzyć link w nowym oknie?'
-    LINKTEXT: Link
+    LINKTEXT: 'Link'
     SELECT_PAGE: 'Wybierz stronę'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Anuluj
@@ -172,11 +172,11 @@ pl:
     ADDEDTODRAFTHELP: 'Strona nie została jeszcze opublikowana'
     ADDEDTODRAFTSHORT: Szkic
     APPEARSVIRTUALPAGES: 'Ta treść pojawia się również na wirtualnej stronie w sekcji {title}.'
-    ARCHIVEDPAGEHELP: Usunięto
+    ARCHIVEDPAGEHELP: 'Usunięto'
     ARCHIVEDPAGESHORT: Zarchiwizowane
     BUTTONCANCELDRAFT: 'Anuluj wprowadzone zmiany'
     BUTTONCANCELDRAFTDESC: 'Usuń zmiany i wróć do istniejącej wersji opublikowanej strony'
-    BUTTONDELETEDESC: Usunięto
+    BUTTONDELETEDESC: 'Usunięto'
     BUTTONPUBLISHED: Opublikowano
     BUTTONSAVED: Zapisano
     BUTTONUNPUBLISH: Nieopublikowane
@@ -186,9 +186,9 @@ pl:
     DEFAULTABOUTCONTENT: '<p>Możesz wypełnić tę stronę własną treścią, usunąć ją i tworzyć własne strony.<br /></p>'
     DEFAULTABOUTTITLE: 'O nas'
     DEFAULTCONTACTCONTENT: '<p>Możesz wypełnić tę stronę własną treścią, usunąć ją i tworzyć własne strony.<br /></p>'
-    DEFAULTCONTACTTITLE: Kontakt
+    DEFAULTCONTACTTITLE: 'Kontakt'
     DEFAULTHOMECONTENT: '<p>Witaj w SilverStripe! To jest domyślna strona główna. Możesz ją edytować, otwierając <a href="admin/">CMS</a>. Możesz również otworzyć <a href="http://doc.silverstripe.com">dokumentację dla developerów</a>, lub rozpocząć <a href="http://doc.silverstripe.com/doku.php?id=tutorials">jeden z samouczków.</a></p>'
-    DEFAULTHOMETITLE: 'Strona główna'
+    DEFAULTHOMETITLE: Strona główna
     DEPENDENT_NOTE: 'Poniższe strony są zależne od tej (łącznie z wirtualnymi stronami, stronami przekierowującymi oraz stronami z treścią).'
     DESCRIPTION: 'Zwykła strona'
     DependtPageColumnLinkType: 'Typ linku'
@@ -208,15 +208,15 @@ pl:
     LINKSALREADYUNIQUE: ' {url} jest już w użyciu'
     LINKSCHANGEDTO: 'Zmieniono {url1} na {url2}'
     MENUTITLE: 'Sekcja nawigacji'
-    METADESC: Opis
-    METADESCHELP: "Wyszukiwarki internetowe używają tej treści w wynikach wyszukiwania (ta treść\_nie wpłynie na ich pozycjonowanie)"
+    METADESC: 'Opis'
+    METADESCHELP: 'Wyszukiwarki internetowe używają tej treści w wynikach wyszukiwania (ta treść nie wpłynie na ich pozycjonowanie)'
     METAEXTRA: 'Własne meta tagi'
     METAEXTRAHELP: 'HTML zawierający dodatkowe metainformacje, n.p. &lt;meta name="jakaśNazwa" content="jakaś zawartość" /&gt;'
     MODIFIEDONDRAFTHELP: 'Na stronie znajdują się nieopublikowane zmiany'
     MODIFIEDONDRAFTSHORT: Zmodyfikowana
     MetadataToggle: Metadane
     MoreOptions: 'Więcej opcji'
-    NOTPUBLISHED: Nieopublikowana
+    NOTPUBLISHED: 'Nieopublikowana'
     OBSOLETECLASS: 'Ta strona jest przestarzałego typu {type}. Zapisanie jej spowoduje zmianę typu przez co możesz stracić dane'
     ONLIVEONLYSHORT: 'Tylko opublikowana'
     ONLIVEONLYSHORTHELP: 'Strona jest opublikowana, ale została usunięta ze szkiców'
@@ -231,7 +231,7 @@ pl:
     PERMISSION_GRANTACCESS_HELP: 'Zezwól na ustawienie wymagań dostępu dla konkretnej strony w sekcji "Strony".'
     PLURALNAME: Strony
     PLURALS:
-      one: Strona
+      one: 'Strona'
       few: '{count} stron'
       many: '{count} stron'
       other: '{count} stron'
@@ -244,7 +244,7 @@ pl:
     SHOWINSEARCH: 'Pokazuj w wyszukiwarce?'
     SINGULARNAME: Strona
     TABBEHAVIOUR: Zachowanie
-    TABCONTENT: Zawartość
+    TABCONTENT: 'Zawartość'
     TABDEPENDENT: 'Strony zależne'
     TOPLEVEL: 'Zawartość witryny (główny poziom)'
     URLSegment: 'Segment adresu URL'
@@ -265,14 +265,14 @@ pl:
     many_many_LinkTracking: 'Śledzenie linków'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
-    TITLE_TYPE: 'Rodzaj strony'
+    TITLE_TYPE: Rodzaj strony
     TITLE_USED_ON: 'Używany na:'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Linkowana strona'
     DESCRIPTION: 'Wyświetla zawartość innej strony'
     EditLink: edytuj
     HEADER: 'To jest wirtualna strona'
-    HEADERWITHLINK: "Strona wirtualna odzwierciedlająca treść\_\"{title}\" ({link})"
+    HEADERWITHLINK: 'Strona wirtualna odzwierciedlająca treść "{title}" ({link})'
     PLURALNAME: 'Strony wirtualne'
     PLURALS:
       one: 'Strona wirtualna'
@@ -294,7 +294,7 @@ pl:
     ColumnDateLastModified: 'Data ostatniej modyfikacji'
     ColumnDateLastPublished: 'Data ostatniej publikacji'
     ColumnProblemType: 'Rodzaj problemu'
-    ColumnURL: 'Adres URL'
+    ColumnURL: Adres URL
     HasBrokenFile: 'ma uszkodzony plik'
     HasBrokenLink: 'ma uszkodzony link'
     HasBrokenLinkAndFile: 'ma uszkodzony link oraz plik'

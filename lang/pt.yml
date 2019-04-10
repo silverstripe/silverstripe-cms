@@ -35,14 +35,14 @@ pt:
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Todas as páginas'
   SilverStripe\CMS\Controllers\ContentController:
-    ARCHIVEDSITE: Pré-visualização
+    ARCHIVEDSITE: 'Pré-visualização'
     ARCHIVEDSITEFROM: 'Arquivar o site de'
-    CMS: 'Gestor de Conteúdos'
+    CMS: Gestor de Conteúdos
     DRAFTSITE: 'Site Rascunho'
     INSTALL_SUCCESS: 'Instalação concluída com sucesso'
     LOGGEDINAS: 'Autenticado como'
     LOGIN: Autenticar
-    LOGOUT: Sair
+    LOGOUT: 'Sair'
     NOTEWONTBESHOWN: 'Nota: Esta mensagem não vai ser apresentada aos visitantes'
     NOTLOGGEDIN: 'Não autenticado'
     PUBLISHEDSITE: 'Site Publicado'
@@ -66,13 +66,13 @@ pt:
     APPEARSVIRTUALPAGES: 'Este conteúdo também aparece nas páginas virtuais das secções {title}'
     BUTTONCANCELDRAFT: 'Cancelar alterações do rascunho'
     BUTTONCANCELDRAFTDESC: 'Apagar o seu rascunho e reverter para a versão publicada atualmente'
-    BUTTONUNPUBLISH: 'Remover do site Publicado'
+    BUTTONUNPUBLISH: Remover do site Publicado
     BUTTONUNPUBLISHDESC: 'Remover esta página do site publicado'
     Comments: Comentários
     Content: Conteúdo
     DEFAULTABOUTTITLE: 'Quem Somos'
-    DEFAULTCONTACTTITLE: Contacte-nos
-    DEFAULTHOMETITLE: 'Página Principal'
+    DEFAULTCONTACTTITLE: 'Contacte-nos'
+    DEFAULTHOMETITLE: Página Principal
     DEPENDENT_NOTE: 'As páginas seguintes dependem desta página. Isto inclui páginas virtuais, páginas redireccionadas e páginas com links de conteúdo.'
     DependtPageColumnLinkType: 'Tipo de ligação'
     EDITHEADER: 'Quem pode editar esta página no CMS?'
@@ -85,7 +85,7 @@ pt:
     LASTUPDATED: 'Última atualização'
     LINKCHANGENOTE: 'Alterar as ligação das páginas vai-se reflectir na ligação das páginas dependentes.'
     MENUTITLE: 'Nome na Navegação'
-    METADESC: Descrição
+    METADESC: 'Descrição'
     METADESCHELP: 'Os motores de pesquisa utilizam este conteúdo para apresentar os seus resultados (no entanto não influencia o ranking do site). '
     METAEXTRA: 'Meta-Tags personalizáveis'
     MODIFIEDONDRAFTHELP: 'A página contem alterações não publicadas'
@@ -107,7 +107,7 @@ pt:
     SHOWINMENUS: 'Mostrar no Menu?'
     SHOWINSEARCH: 'Mostrar nas pesquisas?'
     TABBEHAVIOUR: Comportamento
-    TABCONTENT: Conteúdo
+    TABCONTENT: 'Conteúdo'
     TABDEPENDENT: 'Páginas Dependentes'
     TOPLEVEL: 'Conteúdo do Site (Nível Superior)'
     URLSegment: 'Segmento de URL'
