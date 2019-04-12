@@ -505,18 +505,43 @@ class VirtualPage extends Page
         return parent::castingHelper($field);
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    public function defineMethods()
+    {
+        parent::defineMethods();
+
+        $methods = array_diff($this->getVirtualMethodNames(true), parent::allMethodNames(true));
+        $methodInfo = [
+            'property' => 'CopyContentFrom',
+            'index' => null,
+            'callSetOwnerFirst' => false
+        ];
+
+        $class = static::class;
+        $newMethods = array_fill_keys($methods, $methodInfo);
+        if (isset(self::$extra_methods[$class])) {
+            self::$extra_methods[$class] = array_merge(self::$extra_methods[$class], $newMethods);
+        } else {
+            self::$extra_methods[$class] = $newMethods;
+        }
+    }
+
     public function allMethodNames($custom = false)
     {
-        $methods = parent::allMethodNames($custom);
+        return array_merge(parent::allMethodNames($custom), $this->getVirtualMethodNames($custom));
+    }
 
-        if ($copy = $this->CopyContentFrom()) {
-            $methods = array_merge($methods, $copy->allMethodNames($custom));
+    /**
+     * @param bool $custom
+     * @return array
+     */
+    protected function getVirtualMethodNames($custom = false)
+    {
+        $copy = $this->CopyContentFrom();
+        if ($copy && $copy->exists()) {
+            return $copy->allMethodNames($custom);
         }
 
-        return $methods;
+        return [];
     }
 
     /**
