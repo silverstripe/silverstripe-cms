@@ -222,7 +222,7 @@ class SiteTreeTest extends SapphireTest
         $obj->write();
         $this->assertTrue($obj->publishRecursive());
 
-        $this->assertNull(DB::query("SELECT \"Title\" FROM \"SiteTree_Live\" WHERE \"ID\" = '$obj->ID'")->value());
+        $this->assertNotNull(DB::query("SELECT \"Title\" FROM \"SiteTree_Live\" WHERE \"ID\" = '$obj->ID'")->value());
     }
 
     public function testParentNodeCachedInMemory()

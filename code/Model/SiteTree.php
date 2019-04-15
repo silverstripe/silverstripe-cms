@@ -1559,6 +1559,15 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 $this->URLSegment = "page-$this->ID";
             }
         }
+        
+        // need to set the default values of a page e.g."Untitled [Page type]"
+        if (empty($this->Title)) {
+            $this->Title = _t(
+                'SilverStripe\\CMS\\Model\\SiteTree.UNTITLED',
+                'Untitled {pagetype}',
+                ['pagetype' => $this->i18n_singular_name()]
+            );
+        };
 
         // Ensure that this object has a non-conflicting URLSegment value.
         $count = 2;
