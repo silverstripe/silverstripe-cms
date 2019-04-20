@@ -27,10 +27,9 @@ class AnchorSelectorField extends SilverStripeComponent {
     this.ensurePagesLoaded();
   }
 
-  componentWillReceiveProps(nextProps) {
-    // Reload if pageId changes
-    if (this.props.pageId !== nextProps.pageId) {
-      this.ensurePagesLoaded(nextProps);
+  componentDidUpdate(prevProps) {
+    if (this.props.pageId !== prevProps.pageId) {
+      this.ensurePagesLoaded();
     }
   }
 
@@ -42,7 +41,7 @@ class AnchorSelectorField extends SilverStripeComponent {
    */
   ensurePagesLoaded(props = this.props) {
     // Only load if dirty and a valid ID
-    if (props.loadingState !== anchorSelectorStates.DIRTY || !props.pageId) {
+    if (props.loadingState === anchorSelectorStates.UPDATING || !props.pageId) {
       return Promise.resolve();
     }
 

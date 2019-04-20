@@ -18,7 +18,7 @@ So that I can link to a external website or a page on my site
       And I press the "Insert link" HTML field button
       And I click "Page on this site" in the ".mce-menu" element
     Then I should see an "form#Form_editorInternalLink" element
-    When I click "(Choose Page)" in the ".Select-multi-value-wrapper" element
+    When I click "(Search or choose Page)" in the ".Select-multi-value-wrapper" element
       And I click "About Us" in the ".treedropdownfield__menu" element
       And I fill in "my desc" for "Link description"
       And I press the "Insert" button
