@@ -89,7 +89,7 @@ class CMSPageAddController extends CMSPageEditController
             new LiteralField(
                 'RestrictedNote',
                 sprintf(
-                    '<p class="message notice message-restricted">%s</p>',
+                    '<p class="alert alert-info message-restricted">%s</p>',
                     _t(
                         'SilverStripe\\CMS\\Controllers\\CMSMain.AddPageRestriction',
                         'Note: Some page types are not allowed for this selection'

@@ -2,7 +2,7 @@ is:
   SilverStripe\CMS\Controllers\ContentController:
     LOGGEDINAS: 'Innskráður sem'
     LOGIN: Innskrá
-    LOGOUT: 'Útskrá'
+    LOGOUT: Útskrá
     NOTLOGGEDIN: 'Ekki innskráður'
     PUBLISHEDSITE: 'Birt síða'
     VIEWPAGEIN: 'Skoða síðu í:'
@@ -20,7 +20,7 @@ is:
     ACCESSONLYTHESE: 'Aðeins þetta fólk (veldu úr listanum)'
     BUTTONCANCELDRAFT: 'Hætta við breytingar á drögum'
     BUTTONCANCELDRAFTDESC: 'Eyða drögunum þínum og fara aftur ál núverandi bitar síðu'
-    BUTTONUNPUBLISH: Taka úr birtingu
+    BUTTONUNPUBLISH: 'Taka úr birtingu'
     BUTTONUNPUBLISHDESC: 'Fjarlægja þessa síðu úr birtum síðum'
     Comments: Athugasemdir
     Content: Efni
@@ -31,7 +31,7 @@ is:
     HASBROKENLINKS: 'Þessi síða inniheldur óvirkann hlekk.'
     HTMLEDITORTITLE: Efni
     INHERIT: 'Erfa frá foreldra síðu'
-    METADESC: 'Lýsing'
+    METADESC: Lýsing
     METAEXTRA: 'Sérnsniðin Meta tags'
     PAGELOCATION: 'Staðsetning síðu'
     PAGETITLE: 'Nafn síðu'
@@ -39,7 +39,7 @@ is:
     SHOWINMENUS: 'Sýna í valmynd?'
     SHOWINSEARCH: 'Sýna í leit?'
     TABBEHAVIOUR: Hegðun
-    TABCONTENT: 'Efni'
+    TABCONTENT: Efni
     URLSegment: 'Slóðar hlutar'
     VIEW_DRAFT_CONTENT: 'Skoða uppkast'
     has_one_Parent: 'Yfir síða'
