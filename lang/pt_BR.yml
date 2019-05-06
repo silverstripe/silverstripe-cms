@@ -14,26 +14,26 @@ pt_BR:
     REDIRECTTOPAGE: 'Uma página no seu website'
     YOURPAGE: 'Página no seu website'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: Qualquer pessoa
+    ACCESSANYONE: 'Qualquer pessoa'
     ACCESSHEADER: 'Quem pode ver esta página?'
     ACCESSLOGGEDIN: 'Utilizadores que tenham feito log-in'
     ACCESSONLYTHESE: 'Somente estas pessoas (escolha da lista)'
     BUTTONCANCELDRAFT: 'Cancelar alterações no rascunho'
     BUTTONCANCELDRAFTDESC: 'Apague o seu rascunho e reverta para o site currrentement publicado'
-    BUTTONUNPUBLISH: Anular publicação
+    BUTTONUNPUBLISH: 'Anular publicação'
     BUTTONUNPUBLISHDESC: 'Remova esta página do site publicado'
     Comments: Comentários
     Content: Conteúdo
     DEFAULTABOUTTITLE: 'Sobre nós'
-    DEFAULTCONTACTTITLE: 'Contato'
-    DEFAULTHOMETITLE: Página Inicial
+    DEFAULTCONTACTTITLE: Contato
+    DEFAULTHOMETITLE: 'Página Inicial'
     EDITHEADER: 'Quem pode editar esta página?'
     Editors: 'Grupo de editores'
     HASBROKENLINKS: 'Esta página tem links quebrados.'
     HTMLEDITORTITLE: Conteúdo
     INHERIT: 'Herdar da página mãe'
     MENUTITLE: 'Rótulo da navegação'
-    METADESC: 'Descrição'
+    METADESC: Descrição
     METAEXTRA: 'Meta tags personalizadas'
     PAGETITLE: 'Nome da Página'
     PAGETYPE: 'Tipo de página'
@@ -43,7 +43,7 @@ pt_BR:
     SHOWINMENUS: 'Mostrar nos menus?'
     SHOWINSEARCH: 'Uncluir na procura?'
     TABBEHAVIOUR: Comportamento
-    TABCONTENT: 'Conteúdo'
+    TABCONTENT: Conteúdo
     TOPLEVEL: 'Conteúdo do Site (Top Level)'
     URLSegment: 'URL da página'
     Viewers: 'Grupo de visualizadores'

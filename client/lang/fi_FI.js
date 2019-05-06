@@ -6,20 +6,20 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
   }
 } else {
   ss.i18n.addDictionary('fi_FI', {
-    "CMS.ALERTCLASSNAME": "The page type will be updated after the page is saved",
-    "CMS.AddSubPage": "Add new page here",
-    "CMS.ConfirmRestoreFromLive": "Are you sure you want to revert draft to when the page was last published?",
-    "CMS.Duplicate": "Duplicate",
-    "CMS.EditPage": "Edit",
+    "CMS.ALERTCLASSNAME": "Sivutyyppi päivitetään sivun tallennuksen jälkeen",
+    "CMS.AddSubPage": "Lisää uusi sivu tähän",
+    "CMS.ConfirmRestoreFromLive": "Haluatko varmasti palata luonnoksen viimeisimpään julkaistuun versioon?",
+    "CMS.Duplicate": "Monista",
+    "CMS.EditPage": "Muokkaa",
     "CMS.ONLYSELECTTWO": "You can only compare two versions at this time.",
-    "CMS.Restore": "Are you sure you want to restore this page from archive?",
-    "CMS.RestoreToRoot": "Are you sure you want to restore this page from archive?\n\nBecause the parent page is not available this will be restored to the top level.",
-    "CMS.RollbackToVersion": "Do you really want to roll back to version #%s of this page?",
-    "CMS.ShowAsList": "Show children as list",
-    "CMS.ThisPageAndSubpages": "This page and subpages",
-    "CMS.ThisPageOnly": "This page only",
-    "CMS.Unpublish": "Are you sure you want to remove your page from the published site?\n\nThis page will still be available in the sitetree as draft.",
-    "CMS.UpdateURL": "Update URL",
-    "CMS.ViewPage": "View"
+    "CMS.Restore": "Haluatko varmasti palauttaa sivun arkistosta?",
+    "CMS.RestoreToRoot": "Haluatko varmasti palauttaa tämän sivun arkistosta?\n\nKoska isäntäsivua ei ole saatavilla, sivu palautetaan päätasolle.",
+    "CMS.RollbackToVersion": "Haluatko varmasti palauttaa #%s version tästä sivusta?",
+    "CMS.ShowAsList": "Näytä alasivut listana",
+    "CMS.ThisPageAndSubpages": "Tämä sivu ja alasivut",
+    "CMS.ThisPageOnly": "Vain tämä sivu",
+    "CMS.Unpublish": "Haluatko varmasti poistaa tämän sivun julkaisusta?\n\nTämä sivu on vielä saatavilla vedoksena rakennepuusta.",
+    "CMS.UpdateURL": "Päivitä URL",
+    "CMS.ViewPage": "Näytä"
 });
 }

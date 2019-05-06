@@ -20,11 +20,11 @@ el:
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Όλες οι σελίδες'
   SilverStripe\CMS\Controllers\ContentController:
-    ARCHIVEDSITE: 'Προεπισκόπιση'
+    ARCHIVEDSITE: Προεπισκόπιση
     INSTALL_SUCCESS: 'Η Εγκατάσταση ήταν επιτυχής!'
     LOGGEDINAS: 'Συνδεδεμένος ως'
     LOGIN: Σύνδεση
-    LOGOUT: 'Αποσύνδεση'
+    LOGOUT: Αποσύνδεση
     NOTLOGGEDIN: 'Δεν έχετε συνδεθεί'
     PUBLISHED: Δημοσιευμένο
     VIEWPAGEIN: 'Προβολή Σελίδας σε:'
@@ -46,7 +46,7 @@ el:
     Comments: Σχόλια
     Content: Περιεχόμενο
     DEFAULTABOUTTITLE: 'Ποιοί είμαστε'
-    DEFAULTCONTACTTITLE: 'Επικοινωνία'
+    DEFAULTCONTACTTITLE: Επικοινωνία
     DEFAULTHOMETITLE: Αρχική
     DependtPageColumnLinkType: 'Τύπος συνδέσμου'
     EDITHEADER: 'Ποιος μπορεί να επεξεργαστεί αυτή τη σελίδα;'
@@ -56,7 +56,7 @@ el:
     HTMLEDITORTITLE: Περιεχόμενο
     LASTUPDATED: 'Τελευταία Ενημέρωση'
     MENUTITLE: 'Επίπεδο πλοίγησης'
-    METADESC: 'Μετα-Περιγραφή'
+    METADESC: Μετα-Περιγραφή
     MODIFIEDONDRAFTHELP: 'Η σελίδα έχει μη δημοσιευμένες αλλαγές'
     MODIFIEDONDRAFTSHORT: Τροποποιημένο
     MetadataToggle: Μετα-δεδομένα
@@ -93,7 +93,7 @@ el:
     HasBrokenLink: 'έχει ανενεργό σύνδεσμο '
     HasBrokenLinkAndFile: 'έχει ανενεργό σύνδεσμο και αρχείο'
     HoverTitleEditPage: 'Επεξεργασία σελίδας'
-    PageName: 'Σελίδα'
+    PageName: Σελίδα
     ReasonDropdown: 'Πρόβλημα για έλεγχο'
     ReasonDropdownBROKENFILE: 'Ανενεργό αρχείο '
     ReasonDropdownBROKENLINK: 'Ανενεργός σύνδεσμος '

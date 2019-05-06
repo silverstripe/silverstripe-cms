@@ -34,16 +34,16 @@ hu:
     Title: 'Összes oldal'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Előnézeti verzió'
-    ARCHIVEDSITEFROM: 'Archiválva'
+    ARCHIVEDSITEFROM: Archiválva
     CMS: Tartalomkezelő
     DRAFT: Piszkozat
     DRAFTSITE: 'Vázlat oldal'
     INSTALL_SUCCESS: 'Sikeres telepítés!'
     LOGGEDINAS: 'Bejelentkezve, mint'
     LOGIN: Bejelentkezés
-    LOGOUT: 'Kijelentkezés'
+    LOGOUT: Kijelentkezés
     NOTEWONTBESHOWN: 'Megjegyzés: ez az üzenet a látogatók számára nem jelenik meg'
-    NOTLOGGEDIN: 'Kijelentkezett'
+    NOTLOGGEDIN: Kijelentkezett
     PUBLISHED: Publikált
     PUBLISHEDSITE: 'Publikált oldal'
     VIEWPAGEIN: 'Oldal megtekintése'
@@ -70,12 +70,12 @@ hu:
     BUTTONCANCELDRAFTDESC: 'Piszkozat törlése, és vissztérés a jelenleg publikált oldalra'
     BUTTONPUBLISHED: Publikálva
     BUTTONSAVED: Elmentve
-    BUTTONUNPUBLISH: Publikálás visszavonása
+    BUTTONUNPUBLISH: 'Publikálás visszavonása'
     BUTTONUNPUBLISHDESC: 'Oldal eltávolítása a publikált oldalról'
     Comments: Kommentárok
     Content: Tartalom
-    DEFAULTABOUTTITLE: 'Rólunk'
-    DEFAULTCONTACTTITLE: 'Kapcsolat'
+    DEFAULTABOUTTITLE: Rólunk
+    DEFAULTCONTACTTITLE: Kapcsolat
     DEFAULTHOMETITLE: Kezdőlap
     DependtPageColumnLinkType: 'Hivatkozás típusa'
     EDITHEADER: 'Ki szerkesztheti ezt a CMS-ben?'
@@ -87,7 +87,7 @@ hu:
     INHERIT: 'Azonos a szülő értékével'
     LASTUPDATED: 'Utoljára frissítve'
     MENUTITLE: 'Navigációs cimke'
-    METADESC: 'Leírás'
+    METADESC: Leírás
     METAEXTRA: 'Saját meta címkék'
     MODIFIEDONDRAFTHELP: 'Az oldal egyes módosításai nincsenek publikálva'
     MODIFIEDONDRAFTSHORT: Változtatva
@@ -99,7 +99,7 @@ hu:
     PARENTID: 'Szülő oldal'
     PARENTTYPE: 'Oldal helyzete'
     PARENTTYPE_ROOT: 'Felső szintű oldal'
-    PARENTTYPE_SUBPAGE: 'Aloldal'
+    PARENTTYPE_SUBPAGE: Aloldal
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Tartalom hozzáférését szabályozza'
     PageTypNotAllowedOnRoot: 'A "{type}" oldal nem helyezkedhet el a gyökér szintjén'
     PageTypeNotAllowed: 'A "{type}" oldal nem helyezkedhet el a kiválasztott szülő alá'
@@ -109,7 +109,7 @@ hu:
     SHOWINMENUS: 'Látható legyen a menükben?'
     SHOWINSEARCH: 'Látható legyen a keresésben?'
     TABBEHAVIOUR: Viselkedés
-    TABCONTENT: 'Tartalom'
+    TABCONTENT: Tartalom
     TABDEPENDENT: 'Kapcsolodó oldalak'
     TOPLEVEL: 'Oldaltartalom (legfelső szint)'
     URLSegment: 'URL szegmens'
@@ -141,15 +141,15 @@ hu:
     HasBrokenLinkAndFile: 'Hibás link és fájl'
     HoverTitleEditPage: 'Oldal szerkesztése'
     PageName: 'Oldal neve'
-    ReasonDropdown: 'Ellenőrizendő'
+    ReasonDropdown: Ellenőrizendő
     ReasonDropdownBROKENFILE: 'Hibás állomány'
     ReasonDropdownBROKENLINK: 'Hibás hivatkozás'
     ReasonDropdownRPBROKENLINK: '"Redirector" oldal nem létező oldalra hivatkozik'
     ReasonDropdownVPBROKENLINK: 'Virtuális oldal nem létező oldalra hivatkozik'
     VirtualPageNonExistent: 'a virtuális oldal egy nem létező oldalra hivatkozik'
   SilverStripe\CMS\Search\SearchForm:
-    FILTERDATEFROM: -tól
-    FILTERDATETO: -ig
+    FILTERDATEFROM: '-tól'
+    FILTERDATETO: '-ig'
     GO: Mehet
     SEARCH: Keresés
-    SearchResults: 'Találatok'
+    SearchResults: Találatok

@@ -36,7 +36,7 @@ sl:
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Uredi stran'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: Seznam strani
+    MENUTITLE: 'Seznam strani'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Vse strani'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
@@ -50,9 +50,9 @@ sl:
     INSTALL_SUCCESS: 'Namestitev je bila uspešna!'
     LOGGEDINAS: 'Prijavljen-a kot'
     LOGIN: Prijava
-    LOGOUT: 'Odjava'
+    LOGOUT: Odjava
     NOTEWONTBESHOWN: 'Opomba: neprijavljeni obiskovalci spletnega mesta tega obvestila ne bodo videli.'
-    NOTLOGGEDIN: 'Neprijavljen-a'
+    NOTLOGGEDIN: Neprijavljen-a
     PUBLISHEDSITE: 'Objavljeno spletno mesto'
     VIEWPAGEIN: 'Ogled strani v:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
@@ -81,12 +81,12 @@ sl:
     BUTTONCANCELDRAFTDESC: 'Izbriši osnutek in ponastavi na trenutno objavljeno stran'
     BUTTONPUBLISHED: Objavljeno
     BUTTONSAVED: Shranjeno
-    BUTTONUNPUBLISH: Umakni iz objave
+    BUTTONUNPUBLISH: 'Umakni iz objave'
     BUTTONUNPUBLISHDESC: 'Umakni to stran iz objave'
     Comments: Komentarji
     Content: Vsebina
     DEFAULTABOUTTITLE: 'O nas'
-    DEFAULTCONTACTTITLE: 'Kontakt'
+    DEFAULTCONTACTTITLE: Kontakt
     DEFAULTHOMETITLE: Domov
     DEPENDENT_NOTE: 'Naslednje strani so odvisne od vsebine tukaj (vključuje navidezne strani, preusmerjevalne strani in strani s povezavami v vsebini)'
     DependtPageColumnLinkType: 'Tip povezave'
@@ -103,7 +103,7 @@ sl:
     LINKSALREADYUNIQUE: '{url} je že v uporabi'
     LINKSCHANGEDTO: 'spremenba {url1} -> {url2}'
     MENUTITLE: 'Naziv navigacije'
-    METADESC: 'Opis'
+    METADESC: Opis
     METADESCHELP: 'Iskalniki to vsebino uporabljajo pri prikazu rezultatov. (Vsebina nima vpliva na vrstni red prikaza med zadetki v iskalniku.)'
     METAEXTRA: 'Meta tagi po meri'
     MODIFIEDONDRAFTHELP: 'Stran vsebuje še neobjavljene spremembe.'
@@ -127,13 +127,13 @@ sl:
     SHOWINMENUS: 'Pokaži v meniju?'
     SHOWINSEARCH: 'Pokaži v iskalniku?'
     TABBEHAVIOUR: Vedenje
-    TABCONTENT: 'Vsebina'
+    TABCONTENT: Vsebina
     TABDEPENDENT: 'Odvisne strani'
     TOPLEVEL: 'Vsebina Strani (Zgornja Stopnja)'
     URLSegment: 'URL naslov strani'
     VIEWERGROUPS: 'Skupine obiskovalcev'
     VIEW_ALL_DESCRIPTION: 'Prikaz vse strani'
-    VIEW_DRAFT_CONTENT: 'Predogled.'
+    VIEW_DRAFT_CONTENT: Predogled.
     VIEW_DRAFT_CONTENT_HELP: 'Ogled osnutka vsebine za uporabnike brez dostopa do vmesnika.'
     Viewers: 'Skupine obiskovalcev (viewers)'
     Visibility: Vidnost

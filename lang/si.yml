@@ -12,13 +12,13 @@ si:
     REDIRECTTOPAGE: 'ඔබේ අඩවියේ පිටුවක්'
     YOURPAGE: 'ඔබේ අඩවියේ පිටුවක්'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: සියලු දෙනා
+    ACCESSANYONE: 'සියලු දෙනා'
     ACCESSHEADER: 'මෙම පිටුව බැලිය හැකි අය'
     ACCESSLOGGEDIN: 'ප්රවිෂ්ටව සිටින පරිශීලකයින්'
     ACCESSONLYTHESE: 'මේ අය පමනක් (ලයිස්තුවෙන් තෝරන්න)'
     BUTTONCANCELDRAFT: 'කටු වෙනස් කිරීම් අවලංගු කරන්න'
     BUTTONCANCELDRAFTDESC: 'කටු සටහන මකා, දැනට ප්රසිද්ධ පිටුවට ඵකතු කරන්න'
-    BUTTONUNPUBLISH: අප්රසිද්ධ කරන්න
+    BUTTONUNPUBLISH: 'අප්රසිද්ධ කරන්න'
     BUTTONUNPUBLISHDESC: 'මෙම පිටුව ප්රසිද්ධ කල අඩවියෙන් ගලවන්න'
     Content: අන්තර්ගතය
     DEFAULTABOUTTITLE: 'අපි ගැන'
@@ -27,15 +27,15 @@ si:
     HASBROKENLINKS: 'මෙම පිටුවට කැඩුනු බැදීම් ඇත'
     HTMLEDITORTITLE: අන්තර්ගතය
     MENUTITLE: 'සංක්රමන ලේබලය'
-    METADESC: 'අර්තකතනය'
+    METADESC: අර්තකතනය
     METAEXTRA: 'සැකසූ මෙටා ටැග්'
     PAGETITLE: 'පිටු නම'
     PAGETYPE: 'පිටු වර්ගය'
     SHOWINMENUS: 'මෙනුවේ පෙන්වන්නද?'
     SHOWINSEARCH: 'සර්ච් ඵකේ පෙන්වන්නද?'
     TABBEHAVIOUR: හැසිරීම
-    TABCONTENT: 'අන්තර්ගතය'
-    TOPLEVEL: 'අන්ර්ගතය'
+    TABCONTENT: අන්තර්ගතය
+    TOPLEVEL: අන්ර්ගතය
     URLSegment: 'URL කොටස'
     has_one_Parent: 'මවු පිටුව'
   SilverStripe\CMS\Model\VirtualPage:
