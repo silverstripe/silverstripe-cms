@@ -31,6 +31,9 @@ class LeftAndMainPageIconsExtension extends Extension
         $css = '';
         $classes = ClassInfo::subclassesFor(SiteTree::class);
         foreach ($classes as $class) {
+            if (!empty(Config::inst()->get($class, 'icon_class', Config::UNINHERITED))) {
+                continue;
+            }
             $iconURL = SiteTree::singleton($class)->getPageIconURL();
             if ($iconURL) {
                 $cssClass = Convert::raw2htmlid($class);
