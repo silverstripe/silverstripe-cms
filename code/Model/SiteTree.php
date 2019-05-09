@@ -1812,8 +1812,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 ->setFieldFormatting(array(
                     'Title' => function ($value, &$item) {
                         return sprintf(
-                            '<a href="admin/pages/edit/show/%d">%s</a>',
-                            (int)$item->ID,
+                            '<a href="%s">%s</a>',
+                            $item->CMSEditLink(),
                             Convert::raw2xml($item->Title)
                         );
                     },
