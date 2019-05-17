@@ -395,6 +395,11 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public static function get_by_link($link, $cache = true)
     {
+        // Compute the column names with dynamic a dynamic table name
+        $tableName = DataObject::singleton(self::class)->baseTable();
+        $urlSegmentExpr = sprintf('"%s"."URLSegment"', $tableName);
+        $parentIDExpr = sprintf('"%s"."ParentID"', $tableName);
+
         if (trim($link, '/')) {
             $link = trim(Director::makeRelative($link), '/');
         } else {
@@ -405,9 +410,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         // Grab the initial root level page to traverse down from.
         $URLSegment = array_shift($parts);
-        $conditions = array('"SiteTree"."URLSegment"' => rawurlencode($URLSegment));
+        $conditions = array($urlSegmentExpr => rawurlencode($URLSegment));
         if (self::config()->get('nested_urls')) {
-            $conditions[] = array('"SiteTree"."ParentID"' => 0);
+            $conditions[] = array($parentIDExpr => 0);
         }
         /** @var SiteTree $sitetree */
         $sitetree = DataObject::get_one(self::class, $conditions, $cache);
@@ -416,7 +421,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         if (!$sitetree
             && self::config()->get('nested_urls')
             && $sitetree = DataObject::get_one(self::class, array(
-                '"SiteTree"."URLSegment"' => $URLSegment
+                $urlSegmentExpr => $URLSegment
             ), $cache)
         ) {
             return $sitetree;
@@ -449,8 +454,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $next = DataObject::get_one(
                 self::class,
                 array(
-                    '"SiteTree"."URLSegment"' => $segment,
-                    '"SiteTree"."ParentID"' => $sitetree->ID
+                    $urlSegmentExpr => $segment,
+                    $parentIDExpr => $sitetree->ID
                 ),
                 $cache
             );
@@ -659,9 +664,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     {
         $oldReadingMode = Versioned::get_reading_mode();
         Versioned::set_stage(Versioned::LIVE);
+        $tablename = $this->baseTable();
         /** @var SiteTree $live */
         $live = Versioned::get_one_by_stage(self::class, Versioned::LIVE, array(
-            '"SiteTree"."ID"' => $this->ID
+            "\"$tablename\".\"ID\"" => $this->ID
         ));
         if ($live) {
             $link = $live->AbsoluteLink();
@@ -1500,7 +1506,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 DB::alteration_message('Home page created', 'created');
             }
 
-            if (DB::query("SELECT COUNT(*) FROM \"SiteTree\"")->value() == 1) {
+            $tablename = $this->baseTable();
+            if (DB::query("SELECT COUNT(*) FROM \"$tablename\"")->value() == 1) {
                 $aboutus = new Page();
                 $aboutus->Title = _t(__CLASS__.'.DEFAULTABOUTTITLE', 'About Us');
                 $aboutus->Content = _t(
@@ -1535,8 +1542,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // If Sort hasn't been set, make this page come after it's siblings
         if (!$this->Sort) {
             $parentID = ($this->ParentID) ? $this->ParentID : 0;
+            $tablename = $this->baseTable();
             $this->Sort = DB::prepared_query(
-                "SELECT MAX(\"Sort\") + 1 FROM \"SiteTree\" WHERE \"ParentID\" = ?",
+                "SELECT MAX(\"Sort\") + 1 FROM \"$tablename\" WHERE \"ParentID\" = ?",
                 array($parentID)
             )->value();
         }
@@ -1768,9 +1776,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function getStageURLSegment()
     {
+        $tablename = $this->baseTable();
         /** @var SiteTree $stageRecord */
         $stageRecord = Versioned::get_one_by_stage(self::class, Versioned::DRAFT, [
-            '"SiteTree"."ID"' => $this->ID
+            "\"$tablename\".\"ID\"" => $this->ID
         ]);
         return ($stageRecord) ? $stageRecord->URLSegment : null;
     }
@@ -1782,9 +1791,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function getLiveURLSegment()
     {
+        $tablename = $this->baseTable();
         /** @var SiteTree $liveRecord */
         $liveRecord = Versioned::get_one_by_stage(self::class, Versioned::LIVE, [
-            '"SiteTree"."ID"' => $this->ID
+            "\"$tablename\".\"ID\"" => $this->ID
         ]);
         return ($liveRecord) ? $liveRecord->URLSegment : null;
     }
@@ -2459,12 +2469,15 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function onAfterPublish()
     {
         // Force live sort order to match stage sort order
-        DB::prepared_query(
-            'UPDATE "SiteTree_Live"
-			SET "Sort" = (SELECT "SiteTree"."Sort" FROM "SiteTree" WHERE "SiteTree_Live"."ID" = "SiteTree"."ID")
-			WHERE EXISTS (SELECT "SiteTree"."Sort" FROM "SiteTree" WHERE "SiteTree_Live"."ID" = "SiteTree"."ID") AND "ParentID" = ?',
-            array($this->ParentID)
+        $sql = sprintf(
+            'UPDATE "%2$s"
+			SET "Sort" = (SELECT "%1$s"."Sort" FROM "%1$s" WHERE "%2$s"."ID" = "%1$s"."ID")
+			WHERE EXISTS (SELECT "%1$s"."Sort" FROM "%1$s" WHERE "%2$s"."ID" = "%1$s"."ID") AND "ParentID" = ?',
+            $this->baseTable(),
+            $this->stageTable($this->baseTable(), Versioned::LIVE)
         );
+
+        DB::prepared_query($sql, [$this->ParentID]);
     }
 
     /**
