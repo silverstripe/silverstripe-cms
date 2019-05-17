@@ -135,9 +135,10 @@ class ModelAsController extends Controller implements NestedController
         }
 
         // Select child page
-        $conditions = array('"SiteTree"."URLSegment"' => $URLSegment);
+        $tableName = DataObject::singleton(SiteTree::class)->baseTable();
+        $conditions = [sprintf('"%s"."URLSegment"', $tableName) => $URLSegment];
         if (SiteTree::config()->get('nested_urls')) {
-            $conditions[] = array('"SiteTree"."ParentID"' => 0);
+            $conditions[] = [sprintf('"%s"."ParentID"', $tableName) => 0];
         }
         /** @var SiteTree $sitetree */
         $sitetree = DataObject::get_one(SiteTree::class, $conditions);

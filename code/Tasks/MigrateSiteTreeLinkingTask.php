@@ -5,6 +5,7 @@ namespace SilverStripe\CMS\Tasks;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Dev\BuildTask;
 use SilverStripe\Dev\Debug;
+use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
 use SilverStripe\Versioned\Versioned;
 
@@ -35,11 +36,13 @@ class MigrateSiteTreeLinkingTask extends BuildTask
         Versioned::withVersionedMode(function () use (&$pages) {
             Versioned::set_stage(Versioned::DRAFT);
 
+            $sitetreeTbl = DataObject::singleton(SiteTree::class)->baseTable();
+
             /** @var SiteTree[] $linkedPages */
             $linkedPages = SiteTree::get()
                 ->innerJoin(
                     'SiteTree_LinkTracking',
-                    '"SiteTree_LinkTracking"."SiteTreeID" = "SiteTree"."ID"'
+                    "\"SiteTree_LinkTracking\".\"SiteTreeID\" = \"$sitetreeTbl\".\"ID\""
                 );
             foreach ($linkedPages as $page) {
                 // Command page to update symlink tracking
