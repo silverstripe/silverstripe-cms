@@ -9,6 +9,7 @@ use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\Control\Controller;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldList;
+use SilverStripe\Subsites\Model\Subsite;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Reports\Report;
@@ -27,6 +28,8 @@ class BrokenLinksReport extends Report
 
     public function sourceRecords($params, $sort, $limit)
     {
+        $sitetreeTbl = DataObject::singleton(SiteTree::class)->baseTable();
+
         $join = '';
         $sortBrokenReason = false;
         if ($sort) {
@@ -36,15 +39,21 @@ class BrokenLinksReport extends Report
 
             if ($field === 'AbsoluteLink') {
                 $sort = 'URLSegment ' . $direction;
-            } elseif ($field === 'Subsite.Title') {
-                $join = 'LEFT JOIN "Subsite" ON "Subsite"."ID" = "SiteTree"."SubsiteID"';
-            } elseif ($field === 'BrokenReason') {
+            } elseif ($field == 'Subsite.Title') {
+                $subSiteTbl = DataObject::singleton(Subsite::class)->baseTable();
+                $join = sprintf(
+                    'LEFT JOIN "%s" ON "%s"."ID" = "%s"."SubsiteID"',
+                    $subSiteTbl,
+                    $subSiteTbl,
+                    $sitetreeTbl
+                );
+            } elseif ($field == 'BrokenReason') {
                 $sortBrokenReason = true;
                 $sort = '';
             }
         }
         $brokenFilter = [
-            '"SiteTree"."HasBrokenLink" = ? OR "SiteTree"."HasBrokenFile" = ?' => [true, true]
+            sprintf('"%s"."HasBrokenLink" = ? OR "%s"."HasBrokenFile" = ?', $sitetreeTbl, $sitetreeTbl) => [true, true]
         ];
         $isLive = !isset($params['CheckSite']) || $params['CheckSite'] === 'Published';
         if ($isLive) {

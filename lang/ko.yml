@@ -6,7 +6,7 @@ ko:
     Cancel: 취소
     ChoosePageParentMode: '이 페이지를 만들 위치를 선택'
     ChoosePageType: '페이지 유형을 선택'
-    Create: 새로 만들기
+    Create: '새로 만들기'
     DUPLICATED: '''{title}''의 복제가 완료되었습니다.'
     DUPLICATEDWITHCHILDREN: '''{title}'' 와 그 하위에대한 복제가 완료되었습니다'
     NEWPAGE: '새로운 {pagetype}'
@@ -58,7 +58,7 @@ ko:
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: '이 페이지는 다른 페이지로 사용자들을 이동시킵니다.'
     OTHERURL: '다른 웹사이트 URL'
-    REDIRECTTO: '변경'
+    REDIRECTTO: 변경
     REDIRECTTOEXTERNAL: '다른 웹사이트'
     REDIRECTTOPAGE: '당신의 웹사이트의 페이지'
     YOURPAGE: '당신의 웹사이트의 페이지'
@@ -79,7 +79,7 @@ ko:
     Comments: 코멘트
     Content: 내용
     DEFAULTABOUTTITLE: '회사 소개'
-    DEFAULTCONTACTTITLE: '연락처'
+    DEFAULTCONTACTTITLE: 연락처
     DEFAULTHOMETITLE: 홈
     DEPENDENT_NOTE: '다음 페이지들은 이 페이지에 의존합니다. 여기에는 가상 페이지 리디렉터 페이지 콘텐츠 링크가있는 페이지가 포함되어 있습니다.'
     DependtPageColumnLinkType: '링크 종류'
@@ -94,12 +94,12 @@ ko:
     LASTUPDATED: '마지막으로 업데이트됨'
     LINKCHANGENOTE: '이 페이지의 링크를 변경하면 모든 하위 페이지 링크에 영향을 미칩니다.'
     MENUTITLE: '메뉴 표시'
-    METADESC: '설명'
+    METADESC: 설명
     METADESCHELP: '검색 엔진은 검색 결과를 표시하기 위해이 내용을 사용합니다 (랭킹에 영향을 주지 않습니다).'
     METAEXTRA: '메타 태그를 사용자 정의'
     MODIFIEDONDRAFTHELP: '페이지는 게시되지 않은 변경들을 가지고 있습니다.'
     MODIFIEDONDRAFTSHORT: 수정됨
-    MetadataToggle: 메타 데이터
+    MetadataToggle: '메타 데이터'
     MoreOptions: '추가 옵션'
     OBSOLETECLASS: '이 페이지는 사용되지 않는 타입 {type}입니다. 저장하면 그 타입이 재설정되고 데이터를 잃을 수 있습니다'
     PAGELOCATION: '페이지 찾기'
@@ -119,7 +119,7 @@ ko:
     SHOWINMENUS: '메뉴에 표시 하시겠습니까?'
     SHOWINSEARCH: '검색에 ​​표시 하시겠습니까?'
     TABBEHAVIOUR: 동작
-    TABCONTENT: '콘텐츠'
+    TABCONTENT: 콘텐츠
     TABDEPENDENT: '의존 페이지'
     TOPLEVEL: '사이트의 내용 (최상위 계층)'
     URLSegment: 'URL 세그먼트'
@@ -132,7 +132,7 @@ ko:
     VIRTUALPAGEWARNING: '이 페이지를 게시하기 위해 링크된 페이지를 선택하여 먼저 저장하십시오'
     VIRTUALPAGEWARNINGSETTINGS: '공개하기 위해 주요 콘텐츠 분야에서 링크된 페이지를 선택하십시오'
     Viewers: '방문자 그룹'
-    Visibility: 볼 수 있슴
+    Visibility: '볼 수 있슴'
     has_one_Parent: '상위 페이지'
     many_many_BackLinkTracking: '원본을 추적'
     many_many_ImageTracking: '이미지 링크 추적'

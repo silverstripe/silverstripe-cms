@@ -75,7 +75,7 @@ sk:
     COMPAREMODE: 'Mód porovnania (vyberte dva)'
     MENUTITLE: História
     MULTISELECT: 'Dávkové akcie'
-    NOTPUBLISHED: 'Nepublikované'
+    NOTPUBLISHED: Nepublikované
     PREVIEW: 'Náhľad webu'
     PUBLISHER: Vydavateľ
     REVERTTOTHISVERSION: 'Vrátiť sa k tejto verzii'
@@ -117,9 +117,9 @@ sk:
     InstallSuccessCongratulations: 'SilverStripe bol nainštalovaný úspešne!'
     LOGGEDINAS: 'Prihlásený ako'
     LOGIN: Prihlásiť
-    LOGOUT: 'Odhlásiť'
+    LOGOUT: Odhlásiť
     NOTEWONTBESHOWN: 'Poznámka: Táto správa sa nebude zobrazovať vašim návštevníkom'
-    NOTLOGGEDIN: 'Neprihlásený'
+    NOTLOGGEDIN: Neprihlásený
     PUBLISHED: Publikované
     PUBLISHEDSITE: 'Verejný web'
     Password: Heslo
@@ -167,7 +167,7 @@ sk:
     DEFAULTABOUTCONTENT: '<p>Túto stránku môžete vyplniť vlastným obsahom, alebo ju zmazať a vytvoriť vaše vlastné stránky.</p>'
     DEFAULTABOUTTITLE: 'O nás'
     DEFAULTCONTACTCONTENT: '<p>Túto stránku môžete vyplniť vlastným obsahom, alebo ju zmazať a vytvoriť vaše vlastné stránky.<br /></p>'
-    DEFAULTCONTACTTITLE: 'Kontakt'
+    DEFAULTCONTACTTITLE: Kontakt
     DEFAULTHOMECONTENT: '<p>Vitajte v SilverStripe! Toto je základná domáca stránka. Môžte ju upraviť otvorením <a href="admin/">CMS</a>.</p><p>Môžte tiež vstúpiť k <a href="http://docs.silverstripe.org">dokumentácii vývojára</a>, alebo sa priučit na <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lekciách</a>.</p>'
     DEFAULTHOMETITLE: Domov
     DEPENDENT_NOTE: 'Nasledujúce stránky sú závislé na tejto stránke. To zahŕňa virtuálne stránky, presmerovacie stránky a stránky s odkazmi obsahu.'
@@ -195,7 +195,7 @@ sk:
     MODIFIEDONDRAFTSHORT: Zmenené
     MetadataToggle: Metaúdaje
     MoreOptions: 'Viacej volieb'
-    NOTPUBLISHED: 'Nepublikované'
+    NOTPUBLISHED: Nepublikované
     OBSOLETECLASS: 'Táto stránka je zastaralého typu {type}. Uloženie spôsobí zrušenie jeho typu a vy môžte stratiť dáta'
     ONLIVEONLYSHORT: 'Len publikované'
     ONLIVEONLYSHORTHELP: 'Stránka je zverejnená, ale bola odstránená z konceptu'

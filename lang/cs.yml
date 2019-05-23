@@ -75,7 +75,7 @@ cs:
     COMPAREMODE: 'Porovnávací mód (vyberte dva)'
     MENUTITLE: Historie
     MULTISELECT: 'Dávkové akce'
-    NOTPUBLISHED: 'Nezveřejněno'
+    NOTPUBLISHED: Nezveřejněno
     PREVIEW: 'Náhled webu'
     PUBLISHER: Vydavatel
     REVERTTOTHISVERSION: 'Zpět na tuto verzi'
@@ -117,7 +117,7 @@ cs:
     InstallSuccessCongratulations: 'SilverStripe byl nainstalován úspěšně!'
     LOGGEDINAS: 'Přihlášen jako'
     LOGIN: Přihlášení
-    LOGOUT: 'Odhlášení'
+    LOGOUT: Odhlášení
     NOTEWONTBESHOWN: 'Poznámka: tato zpráva nebude zobrazena vašim návštěvníkům'
     NOTLOGGEDIN: 'Není přihlášen'
     PUBLISHED: Zveřejněno
@@ -169,7 +169,7 @@ cs:
     DEFAULTCONTACTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky. <br /> </p>'
     DEFAULTCONTACTTITLE: 'Kontaktujte nás'
     DEFAULTHOMECONTENT: '<p>Vítejte v SilverStripe! Toto je základní domácí stránka. Můžete ji upravit otevřením <a href="admin/">CMS</a>.</p><p>Můžete také nyní vstoupit  do <a href="http://docs.silverstripe.org">dokumentace vývojáře</a>, nebo se přiučit na <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lekcích</a>.</p>'
-    DEFAULTHOMETITLE: Úvodní strana
+    DEFAULTHOMETITLE: 'Úvodní strana'
     DEPENDENT_NOTE: 'Následující stránky závisí na této stránce. Tyto obsahují virtuální stránky, přesměrovací stránky a stránky s odkazy obsahu.'
     DESCRIPTION: 'Obecný obsah stránky'
     DependtPageColumnLinkType: 'Typ odkazu'
@@ -188,14 +188,14 @@ cs:
     LINKSALREADYUNIQUE: ' {url} je vždy unikátní'
     LINKSCHANGEDTO: ' změněno {url1} -> {url2}'
     MENUTITLE: 'Navigační popisek'
-    METADESC: 'Popis'
+    METADESC: Popis
     METADESCHELP: 'Krátký popis/perex, který při vyplnění mohou vyhledávače využít ve výsledcích vyhledávání. I když tento popisek nemá přímý vliv na hodnocení stránky, tak může zvýšit míru prokliku (CTR).'
     METAEXTRA: 'Vlastní meta tagy'
     MODIFIEDONDRAFTHELP: 'Stránka má nezveřejněné změny'
     MODIFIEDONDRAFTSHORT: Upraveno
     MetadataToggle: Metadata
     MoreOptions: 'Více voleb'
-    NOTPUBLISHED: 'Nezveřejněno'
+    NOTPUBLISHED: Nezveřejněno
     OBSOLETECLASS: 'Tato stránka je zastaralého typu {type}. Uložení zpúsobí zrušení svého typu a múžete tak ztratit data'
     ONLIVEONLYSHORT: 'Pouze na živé'
     ONLIVEONLYSHORTHELP: 'Stránka je zveřejněna, ale byla odstraněna z konceptu'
@@ -218,7 +218,7 @@ cs:
     SHOWINSEARCH: 'Zobrazovat ve vyhledávání?'
     SINGULARNAME: Stránka
     TABBEHAVIOUR: Chování
-    TABCONTENT: 'Obsah'
+    TABCONTENT: Obsah
     TABDEPENDENT: 'Závislé stránky'
     TOPLEVEL: 'Obsah Webu (Nejvyšší úroveň)'
     URLSegment: 'Segment URL'

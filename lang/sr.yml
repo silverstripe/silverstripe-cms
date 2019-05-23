@@ -10,7 +10,7 @@ sr:
     DUPLICATEDWITHCHILDREN: '''{title}'' и деца успешно дуплирани'
     NEWPAGE: 'Нова {pagetype}'
     PAGENOTEXISTS: 'Ова страница не постоји'
-    PAGETYPEANYOPT: Било која
+    PAGETYPEANYOPT: 'Било која'
     PUBALLCONFIRM: 'Објавите сваку страну на овом сајту копирањем садржај на жив сајт.'
     PUBALLFUN: 'Функција „Објави све“ '
     PUBPAGES: 'Урађено: Објављено {count} страница'
@@ -43,7 +43,7 @@ sr:
     INSTALL_SUCCESS: 'Инсталација је успешно обављена!'
     LOGGEDINAS: 'Пријављен као'
     LOGIN: Пријава
-    LOGOUT: 'Одјава'
+    LOGOUT: Одјава
     NOTEWONTBESHOWN: 'Напомена: ова порука неће бити приказана посетиоцима'
     NOTLOGGEDIN: 'Нисте пријављени'
     PUBLISHED: Објаљено
@@ -73,13 +73,13 @@ sr:
     BUTTONCANCELDRAFTDESC: 'Избришите свој нацрт и вратите се на тренутно објављену страну'
     BUTTONPUBLISHED: Објаљено
     BUTTONSAVED: Сачувано.
-    BUTTONUNPUBLISH: Поништи објаву
+    BUTTONUNPUBLISH: 'Поништи објаву'
     BUTTONUNPUBLISHDESC: 'Уклони ову страницу из објављеног сајта'
     Comments: Коментари
     Content: Садржај
     DEFAULTABOUTTITLE: 'О нама'
     DEFAULTCONTACTTITLE: 'Контактирајте нас'
-    DEFAULTHOMETITLE: Почетна страница
+    DEFAULTHOMETITLE: 'Почетна страница'
     DEPENDENT_NOTE: 'Следеће странице зависе од ове странице. Ово подразумева витруелне странице, странице за преусмеравање и странице са линковима на садржај.'
     DependtPageColumnLinkType: 'Тип линка'
     EDITHEADER: 'Ко може да измени ову страницу?'
@@ -93,12 +93,12 @@ sr:
     LASTUPDATED: 'Последњи пут ажурирано'
     LINKCHANGENOTE: 'Промена линка ове странице утицаће, такође, на линкове свих подстраница.'
     MENUTITLE: 'Натпис за навигацију'
-    METADESC: 'Опис'
+    METADESC: Опис
     METADESCHELP: 'Претраживачке машине користе овај садржај за приказ резултата претраживања (ипак, он не утиче на рејтинг странице).'
     METAEXTRA: 'Прилагођене мета ознаке'
     MODIFIEDONDRAFTHELP: 'Страница садржи необјављене измене'
     MODIFIEDONDRAFTSHORT: Измењено
-    MetadataToggle: Мета подаци
+    MetadataToggle: 'Мета подаци'
     MoreOptions: 'Више опција'
     OBSOLETECLASS: 'Тип ове странице: {type} није више шодржан. Ако сачувате страницу њен тип ће бити промењен, па можете изгубити своје податке'
     PAGELOCATION: 'Локација странице'
@@ -143,7 +143,7 @@ sr:
     HEADERWITHLINK: 'Ово је виртуелна страница која копира садржај из "{title}" ({link})'
     PageTypNotAllowedOnRoot: 'Оригинални тип странице "{type}" није дозвољен на вршном нивоу за ову виртуелну страницу'
   SilverStripe\CMS\Reports\BrokenLinksReport:
-    Any: Било који
+    Any: 'Било који'
     BROKENLINKS: 'Извештај о оштећеним линковима'
     CheckSite: 'Провери сајт'
     CheckSiteDropdownDraft: 'Нарцт сајта'

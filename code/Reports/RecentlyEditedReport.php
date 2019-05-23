@@ -27,10 +27,11 @@ class RecentlyEditedReport extends Report
 
     public function sourceRecords($params = null)
     {
+        $tableName = DataObject::singleton(SiteTree::class)->baseTable();
         $threshold = strtotime('-14 days', DBDatetime::now()->getTimestamp());
         return SiteTree::get()
             ->filter('LastEdited:GreaterThan', date("Y-m-d H:i:s", $threshold))
-            ->sort("\"SiteTree\".\"LastEdited\" DESC");
+            ->sort("\"$tableName\".\"LastEdited\" DESC");
     }
 
     public function columns()

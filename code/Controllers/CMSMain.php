@@ -1854,8 +1854,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         // DataObject::fieldExists only checks the current class, not the hierarchy
         // This allows the CMS to set the correct sort value
         if ($newItem->castingHelper('Sort')) {
+            $table = DataObject::singleton(SiteTree::class)->baseTable();
             $maxSort = DB::prepared_query(
-                'SELECT MAX("Sort") FROM "SiteTree" WHERE "ParentID" = ?',
+                "SELECT MAX(\"Sort\") FROM \"$table\" WHERE \"ParentID\" = ?",
                 array($parentID)
             )->value();
             $newItem->Sort = (int)$maxSort + 1;
@@ -1911,8 +1912,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         }
 
         /** @var SiteTree $record */
+        $table = DataObject::singleton(SiteTree::class)->baseTable();
+        $liveTable = DataObject::singleton(SiteTree::class)->stageTable($table, Versioned::LIVE);
         $record = Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, array(
-            '"SiteTree_Live"."ID"' => $id
+            "\"$liveTable\".\"ID\"" => $id
         ));
 
         // a user can restore a page without publication rights, as it just adds a new draft state
