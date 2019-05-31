@@ -279,7 +279,7 @@ class VirtualPage extends Page
 
             $fields->addFieldToTab("Root.Main", new LiteralField(
                 'VirtualPageMessage',
-                '<div class="message notice">' . implode('. ', $msgs) . '.</div>'
+                '<div class="alert alert-info">' . implode('. ', $msgs) . '.</div>'
             ), 'CopyContentFromID');
         });
 
