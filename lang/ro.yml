@@ -43,9 +43,9 @@ ro:
     INSTALL_SUCCESS: 'Instalare cu succes!'
     LOGGEDINAS: 'Logat ca'
     LOGIN: Login
-    LOGOUT: 'Logout'
+    LOGOUT: Logout
     NOTEWONTBESHOWN: 'Notă: acest mesaj nu v-a fi afișat vizitatorilor'
-    NOTLOGGEDIN: 'Ne-loginat'
+    NOTLOGGEDIN: Ne-loginat
     PUBLISHED: Publicat
     PUBLISHEDSITE: 'Site publicat'
     VIEWPAGEIN: 'Vizualizează pagina în:'
@@ -78,7 +78,7 @@ ro:
     Comments: Comentarii
     Content: Continut
     DEFAULTABOUTTITLE: 'Despre Noi'
-    DEFAULTCONTACTTITLE: 'Contactați-ne'
+    DEFAULTCONTACTTITLE: Contactați-ne
     DEFAULTHOMETITLE: Acasă
     DEPENDENT_NOTE: 'Următoarele pagini depind de această pagină. Include și pagini virtuale, pagini redirecționate, și pagini cu link-uri către conținut.'
     DependtPageColumnLinkType: 'Tip referintă'
@@ -93,7 +93,7 @@ ro:
     LASTUPDATED: 'Ultimul actualizat'
     LINKCHANGENOTE: 'Schimbarea link-urilor din pagină v-a afecta și link-urile din toți descendenții.'
     MENUTITLE: 'Etichetă navigare'
-    METADESC: 'Descriere'
+    METADESC: Descriere
     METADESCHELP: 'Motoarele de căutare folosesc acest conținut pentru a afișa rezultatele căutării (deși nu v-a influența nota acestuia)'
     METAEXTRA: 'Etichetă Meta preferențială'
     MODIFIEDONDRAFTHELP: 'Pagina are modificări nepublicate'
@@ -165,7 +165,7 @@ ro:
     RedirectorNonExistent: 'pagina de redirectare indică spre o pagină inexistentă'
     VirtualPageNonExistent: 'pagina virtuală indică spre o pagină inexistentă'
   SilverStripe\CMS\Search\SearchForm:
-    FILTERDATEFROM: De la
+    FILTERDATEFROM: 'De la'
     FILTERDATETO: La
     GO: Start
     SEARCH: Căutare

@@ -17,7 +17,7 @@ es_MX:
     ARCHIVE: Archivar
     ARCHIVEDPAGE: 'Se ha archivado la página ''{title}'''
     AddNew: 'Agregar página'
-    AddNewButton: 'Agregar'
+    AddNewButton: Agregar
     AddPageRestriction: 'Nota: algunos tipos de página no están permitidos en esta selección'
     ArchiveWarning: 'Advertencia: esta página será despublicada antes de ser enviada a archivo.\n\nEstás seguro que deseas proceder?'
     ArchiveWarningWithCampaigns: 'Advertencia: esta página sera despublicada y eliminada automáticamente de {NumCampaigns} campañas asociadas antes de ser enviadas a archivo.\n\nEstás seguro que deseas proceder?'
@@ -39,7 +39,6 @@ es_MX:
     PLEASESAVE: 'Por favor guardar página: esta página no ha sido actualizada porque aún no ha sido guardada.'
     PUBALLCONFIRM: 'Por favor publique todas las páginas del sitio, copiando el contenido del boceto al sitio público'
     PUBALLFUN: 'Funcionalidad "Publicar todo"'
-    PUBALLFUN2: 'Presionar este botón hará el equivalente de ir a cada página y presionar "publicar". Su intención es para ser usado luego de editar contenido masivamente, como cuando el sitio fue inicialmente creado.'
     PUBLISHED: '''{title}'' publicada con éxito.'
     PUBPAGES: 'Completado: {count} páginas publicadas'
     PageAdded: 'Página creada con éxito'
@@ -117,7 +116,7 @@ es_MX:
     InstallSecurityWarning: 'Por razones de seguridad debes eliminar los archivos de instalación, a menos que tengas planeado reinstalar luego (<em>requiere ingresar como administrador</em>). Además, el servidor web ahora solo requiere permisos de escritura sobre el directorio "assets", puedes remover el acceso de escritura a los demás directorios. <a href="{link}" style="text-align: center;">Haz click aquí para eliminar los archivos de instalación.</a>'
     InstallSuccessCongratulations: 'SilverStripe se ha instalado con éxito!'
     LOGGEDINAS: 'Conectado cómo'
-    LOGIN: Iniciar sesión
+    LOGIN: 'Iniciar sesión'
     LOGOUT: 'Cerrar sesión'
     NOTEWONTBESHOWN: 'Nota: este mensaje no será mostrado a sus visitantes'
     NOTLOGGEDIN: 'No ha iniciado sesión'
@@ -172,14 +171,14 @@ es_MX:
     BUTTONDELETEDESC: 'Eliminar de borrador/público y archivar'
     BUTTONPUBLISHED: Publicado
     BUTTONSAVED: Guardado
-    BUTTONUNPUBLISH: Ocultar al público
+    BUTTONUNPUBLISH: 'Ocultar al público'
     BUTTONUNPUBLISHDESC: 'Quitar ésta página del sitio público'
     Comments: Comentarios
     Content: Contenido
     DEFAULTABOUTCONTENT: '<p>Puedes agregar tu contenido a esta página, o eliminarla y agregar tus propias páginas.</p>'
     DEFAULTABOUTTITLE: 'Sobre nosotros'
     DEFAULTCONTACTCONTENT: '<p>Puedes agregar tu contenido a esta página, o eliminarla y agregar tus propias páginas.</p>'
-    DEFAULTCONTACTTITLE: 'Contacto'
+    DEFAULTCONTACTTITLE: Contacto
     DEFAULTHOMECONTENT: '<p>Bienvenido a SilverStripe! Esta es la página principal predeterminada. Puedes editar esta página ingresando <a href="admin/">al CMS</a>.</p><p>También puedes acceder a <a href="http://docs.silverstripe.org">la documentación para desarrolladores</a>, o comenzar con <a href="http://www.silverstripe.org/learn/lessons">las lecciones de SilverStripe</a>.</p>'
     DEFAULTHOMETITLE: Inicio
     DEPENDENT_NOTE: 'Las siguientes páginas depender de esta página. Esto incluye páginas virtuales, redirección de páginas y páginas con enlaces de contenido.'
@@ -194,7 +193,7 @@ es_MX:
     HTMLEDITORTITLE: Contenido
     INHERIT: 'Hereda de la página ascendiente'
     MENUTITLE: 'Etiqueta de navegación'
-    METADESC: 'Descripción'
+    METADESC: Descripción
     METAEXTRA: 'Etiquetas meta personalizadas'
     PAGELOCATION: 'Ubicación de la página'
     PAGETITLE: 'Nombre de página'
@@ -212,7 +211,7 @@ es_MX:
     SHOWINMENUS: '¿Mostrar en menús?'
     SHOWINSEARCH: '¿Mostrar en búsqueda?'
     TABBEHAVIOUR: Compotamiento
-    TABCONTENT: 'Contenido'
+    TABCONTENT: Contenido
     TABDEPENDENT: 'Páginas dependientes'
     TOPLEVEL: 'Contenido del sitio (Nivel Superior)'
     URLSegment: 'Segmento de la URL'

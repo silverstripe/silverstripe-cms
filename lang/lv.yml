@@ -4,7 +4,7 @@ lv:
     DRAFTSITE: 'Melnrakstu vietne'
     LOGGEDINAS: 'Pieslēdzies kā'
     LOGIN: Pieslēgties
-    LOGOUT: 'Atslēgties'
+    LOGOUT: Atslēgties
     NOTEWONTBESHOWN: 'Piezīme: šī ziņa nebūs redzama Jūsu apmeklētājiem'
     NOTLOGGEDIN: 'Nav pieslēdzies'
     PUBLISHEDSITE: 'Publicētā vietne'
@@ -42,7 +42,7 @@ lv:
     INHERIT: 'Mantot no vecāka lapas'
     LINKCHANGENOTE: 'Izmainot šīs lapas saiti, tiks izmainītas saites arī visām tās bērnu lapām.'
     MENUTITLE: 'Navigācijas virsraksts'
-    METADESC: 'Apraksts'
+    METADESC: Apraksts
     METAEXTRA: 'Lietotāja Meta-tagi'
     PAGELOCATION: 'Lapas adrese'
     PAGETITLE: 'Lapas nosaukums'
@@ -58,7 +58,7 @@ lv:
     SHOWINMENUS: 'Rādīt izvēlnēs?'
     SHOWINSEARCH: 'Rādīt meklēšanas rezultātos?'
     TABBEHAVIOUR: Uzvedība
-    TABCONTENT: 'Saturs'
+    TABCONTENT: Saturs
     TABDEPENDENT: 'Atkarīgās lapas'
     TOPLEVEL: 'Vietnes Saturs (Augšējais līmenis)'
     URLSegment: 'URL Segments'
