@@ -23,9 +23,9 @@ es:
     ChoosePageParentMode: 'Elegir donde crear esta página'
     ChoosePageType: 'Elegir tipo de página'
     Create: Crear
-    DUPLICATED: 'Duplicado'
+    DUPLICATED: Duplicado
     DUPLICATEDWITHCHILDREN: 'Duplicado con hijos'
-    EMAIL: Correo electrónico
+    EMAIL: 'Correo electrónico'
     NEWPAGE: 'Nuevo {pagetype}'
     PAGENOTEXISTS: 'Esta página no existe'
     PAGES: 'Estado de página'
@@ -34,7 +34,6 @@ es:
     PAGETYPE_TITLE: '(Tipo de página: {type}) {title}'
     PUBALLCONFIRM: 'Por favor publica todas las páginas del sitio, copiando el contenido del borrador al sitio público'
     PUBALLFUN: 'Función "Publicar Todo"'
-    PUBALLFUN2: 'Presionando este botón haremos el equivalente a ir a cada página y pulsar "publicar". Está destinado a ser utilizado después de haber habido ediciones masivas del contenido, como cuando el sitio fue construido por primera vez.'
     PUBLISHED: '''{title}'' publicado satisfactoriamente.'
     PUBPAGES: 'Hecho: Publicadas {count} páginas'
     PageAdded: 'Página creada correctamente'
@@ -45,7 +44,7 @@ es:
     RESTORE_DESC: 'Recuperar la versión archivada del borrador'
     RESTORE_TO_ROOT: 'Recuperar borrador al nivel superior'
     RESTORE_TO_ROOT_DESC: 'Recuperar la versión archivada del borrador como de nivel superior'
-    ROLLEDBACKPUBv2: 'Restaurado'
+    ROLLEDBACKPUBv2: Restaurado
     ROLLEDBACKVERSIONv2: 'Versión #{version} restaurada'
     SAVED: '''{title}'' guardado satisfactoriamente.'
     SHOW_AS_LIST: 'mostrar como lista'
@@ -70,7 +69,7 @@ es:
     MENUTITLE: Historial
     MULTISELECT: 'Acciones en lote'
     NOTPUBLISHED: 'No publicado'
-    PUBLISHER: Publicado por
+    PUBLISHER: 'Publicado por'
     REVERTTOTHISVERSION: 'Volver a esta versión'
     SHOWUNPUBLISHED: 'Mostrar versiones no publicadas'
     UNKNOWN: Desconocido
@@ -105,13 +104,13 @@ es:
     CMS: CMS
     DRAFT: Borrador
     DRAFTSITE: 'Sitio en Borrador'
-    Email: Correo electrónico
+    Email: 'Correo electrónico'
     INSTALL_SUCCESS: '¡Instalación Correcta!'
     InstallFilesDeleted: 'Archivos de instalación han sido eliminados correctamente.'
     InstallSuccessCongratulations: 'SilverStripe ha sido instalado correctamente'
     LOGGEDINAS: 'Conectado como'
-    LOGIN: Iniciar sesión
-    LOGOUT: 'Desconectar'
+    LOGIN: 'Iniciar sesión'
+    LOGOUT: Desconectar
     NOTEWONTBESHOWN: 'Nota: este mensaje no se mostrará a tus visitantes'
     NOTLOGGEDIN: 'No conectado'
     PUBLISHED: Publicado
@@ -130,7 +129,7 @@ es:
     SELECT_PAGE: 'Seleccionar una página'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Cancelar
-    EMPTY: 'Vacío'
+    EMPTY: Vacío
     Edit: Editar
     HelpChars: 'Los caracteres especiales son automáticamente convertidos o eliminados.'
     OK: Aceptar
@@ -164,7 +163,7 @@ es:
     BUTTONDELETEDESC: 'Eliminar desde el borrador/publicadas y enviar al archivo'
     BUTTONPUBLISHED: Publicado
     BUTTONSAVED: Guardado
-    BUTTONUNPUBLISH: Sin Publicar
+    BUTTONUNPUBLISH: 'Sin Publicar'
     BUTTONUNPUBLISHDESC: 'Elimine esta página del sitio publicado'
     Comments: Comentarios
     Content: Contenido
@@ -190,7 +189,7 @@ es:
     LINKSALREADYUNIQUE: '{url} ya es único'
     LINKSCHANGEDTO: ' cambiado {url1} -> {url2}'
     MENUTITLE: 'Etiqueta de Navegación'
-    METADESC: 'Descripción'
+    METADESC: Descripción
     METADESCHELP: 'Los motores de búsqueda usan este contenido para mostrar resultados de búsqueda (aunque no influirá en su ranking).'
     METAEXTRA: 'Meta Tags Personalizadas'
     MODIFIEDONDRAFTHELP: 'La página tiene cambios sin publicar'
@@ -223,7 +222,7 @@ es:
     SHOWINSEARCH: '¿Mostrar en la búsqueda?'
     SINGULARNAME: Página
     TABBEHAVIOUR: Comportamiento
-    TABCONTENT: 'Contenido'
+    TABCONTENT: Contenido
     TABDEPENDENT: 'Páginas dependientes'
     TOPLEVEL: 'Contenido del Sitio (Top Level)'
     URLSegment: 'Segmento de URL'
@@ -246,7 +245,7 @@ es:
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Usado en'
   SilverStripe\CMS\Model\VirtualPage:
-    CHOOSE: 'Seleccionar'
+    CHOOSE: Seleccionar
     DESCRIPTION: 'Muestra el contenido de otra página'
     EditLink: Editar
     HEADER: 'Esta es una página virtual'

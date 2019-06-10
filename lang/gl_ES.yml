@@ -24,7 +24,7 @@ gl_ES:
     ARCHIVEDSITEFROM: 'Sitio arquivado dende'
     DRAFTSITE: 'Sitio Borrador'
     LOGGEDINAS: 'Iniciada sesión como'
-    LOGIN: Iniciar sesión
+    LOGIN: 'Iniciar sesión'
     LOGOUT: 'Pechar sesión'
     NOTEWONTBESHOWN: 'Nota: esta mensaxe non se amosará aos visitantes'
     NOTLOGGEDIN: 'Sen iniciar sesión'
@@ -44,12 +44,12 @@ gl_ES:
     ACCESSONLYTHESE: 'Só esta xente (escoller da lista)'
     BUTTONCANCELDRAFT: 'Cancelar cambios do borrador'
     BUTTONCANCELDRAFTDESC: 'Eliminar o borrador e revertir a páxina publicada actualmente'
-    BUTTONUNPUBLISH: Sen publicar
+    BUTTONUNPUBLISH: 'Sen publicar'
     BUTTONUNPUBLISHDESC: 'Eliminar esta páxina do sitio publicado'
     Comments: Comentarios
     Content: Contido
     DEFAULTABOUTTITLE: 'Sobre nós'
-    DEFAULTCONTACTTITLE: 'Contactarnos'
+    DEFAULTCONTACTTITLE: Contactarnos
     DEFAULTHOMETITLE: Inicio
     DependtPageColumnLinkType: 'Tipo de ligazón'
     EDITHEADER: 'Quen pode editar esta páxina?'

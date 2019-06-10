@@ -3,8 +3,8 @@ az:
     ARCHIVEDSITEFROM: 'Arxivləşmiş sayt'
     DRAFTSITE: 'Qaralama sayt'
     LOGGEDINAS: 'Kimi daxil olmusan'
-    LOGIN: Daxil ol
-    LOGOUT: 'Çıxış'
+    LOGIN: 'Daxil ol'
+    LOGOUT: Çıxış
     NOTEWONTBESHOWN: 'Qeyd: Bu mesaj ziyarətçilər üçün görünməyəcək'
     NOTLOGGEDIN: 'Daxil olmayıb'
     PUBLISHEDSITE: 'Dərc olunmuş sayt'
@@ -12,24 +12,24 @@ az:
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Bu səhifə istifadəçiləri başqa səhifəyə yönləndirəcək'
     OTHERURL: 'Başqa Web saytın URL-i'
-    REDIRECTTO: 'Yönləndir'
+    REDIRECTTO: Yönləndir
     REDIRECTTOEXTERNAL: 'Başqa Web sayt'
     REDIRECTTOPAGE: 'web səhifənizdə olan səhifə'
     YOURPAGE: 'Web saytınızda olan səhifə'
   SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: Hər kəs
+    ACCESSANYONE: 'Hər kəs'
     ACCESSHEADER: 'Bu səhifəyə kimlər baxa bilər?'
     ACCESSLOGGEDIN: 'Daxil olmuş istifadəçilər'
     ACCESSONLYTHESE: 'Yalnız aşağıdakılar(siyahıdan seçin)'
     BUTTONCANCELDRAFT: 'Qaralama dəyişiklikləri imtina et'
     BUTTONCANCELDRAFTDESC: 'Qaralamanı sil və cari dərc olunmuş versiyaya qaytar'
-    BUTTONUNPUBLISH: Dərci ləğv et
+    BUTTONUNPUBLISH: 'Dərci ləğv et'
     BUTTONUNPUBLISHDESC: 'Bu səhifəni dərc olunmuş saytdan sil'
     Comments: Şərhlər
     Content: Məzmun
-    DEFAULTABOUTTITLE: 'Haqqımızda'
+    DEFAULTABOUTTITLE: Haqqımızda
     DEFAULTCONTACTTITLE: 'Bizimlə əlaqə'
-    DEFAULTHOMETITLE: Baş səhifə
+    DEFAULTHOMETITLE: 'Baş səhifə'
     DependtPageColumnLinkType: 'Keçid növü'
     EDITHEADER: 'Bu səhifəni kimlər deyişə bilər?'
     EDIT_ALL_DESCRIPTION: 'İstənilən səhifəni redaktə et'
@@ -50,7 +50,7 @@ az:
     SHOWINMENUS: 'Menyularda görünsün?'
     SHOWINSEARCH: 'Axtarışda görünsün?'
     TABBEHAVIOUR: Davranış
-    TABCONTENT: 'Məzmun'
+    TABCONTENT: Məzmun
     TABDEPENDENT: 'Asılı səhifələr'
     TOPLEVEL: 'Saytın məzmunu (yuxarı səviyyə)'
     URLSegment: 'URL seqmenti'

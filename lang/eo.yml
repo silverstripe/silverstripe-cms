@@ -34,13 +34,13 @@ eo:
     NEWPAGE: 'Nova {pagetype}'
     PAGENOTEXISTS: 'Ĉi tiu paĝo ne ekzistas'
     PAGES: 'Stato de paĝo'
+    PAGESALLOPT: 'Ĉiuj paĝoj'
     PAGETYPEANYOPT: Ajna
     PAGETYPEOPT: 'Tipo de paĝo'
     PAGETYPE_TITLE: '(Paĝa tipo: {type}) {title}'
     PLEASESAVE: 'Bonvolu konservi paĝon: ne povis ĝisdatigi ĉi tiun paĝon ĉar ĝi ankoraŭ estas nekonservita.'
     PUBALLCONFIRM: 'Bonvolu eldoni ĉiun paĝon en la retejo, kopiante enhavan stadion al la publika'
     PUBALLFUN: 'Funkcio "Eldoni Ĉiujn"'
-    PUBALLFUN2: 'Premi ĉi tiun butonon faros same kiel iri al ĉiu paĝo kaj premi je "Publikigi". Oni celas ke ĝi uziĝu post multaj redaktoj de la enhavo, ekzemple kiam la retejo estis unue konstruita.'
     PUBLISHED: 'Sukcese publikigis je ''{title}'''
     PUBPAGES: 'Farite: publikigis {count} paĝojn'
     PageAdded: 'Sukcese kreis paĝon'
@@ -56,6 +56,8 @@ eo:
     ROLLEDBACKPUBv2: 'Malfaris ŝanĝojn ĝis la publikigita versio.'
     ROLLEDBACKVERSIONv2: 'Malfaris ŝanĝojn ĝis versio #{version}.'
     SAVED: 'Sukcese konservis je ''{title}'''
+    SAVEDRAFT: Konservi
+    SEARCHRESULTS: 'Serĉaj rezultoj'
     SHOW_AS_LIST: 'vidigi kiel liston'
     TOO_MANY_PAGES: 'Tro da paĝoj'
     TabContent: Enhavo
@@ -122,7 +124,7 @@ eo:
     InstallSuccessCongratulations: 'SilverStripe estas sukcese instalita!'
     LOGGEDINAS: 'Ensalutis kiel'
     LOGIN: Ensaluti
-    LOGOUT: 'Elsaluti'
+    LOGOUT: Elsaluti
     NOTEWONTBESHOWN: 'Notu: ne vidigos ĉi tiun mesaĝon al viaj vizitantoj'
     NOTLOGGEDIN: 'Ne ensalutinte'
     PUBLISHED: Publikigita
@@ -177,6 +179,7 @@ eo:
     BUTTONDELETEDESC: 'Forigi el malneta aŭ publika, kaj sendi ilin al la arĥivo'
     BUTTONPUBLISHED: Publikigita
     BUTTONSAVED: Konservita
+    BUTTONSAVEPUBLISH: Publikigi
     BUTTONUNPUBLISH: Malpublikigi
     BUTTONUNPUBLISHDESC: 'Forigi ĉi tiun paĝon de la publikigita retejo'
     Comments: Komentoj
@@ -199,6 +202,7 @@ eo:
     HASBROKENLINKS: 'Ĉi tiu paĝo havas rompitajn ligilojn.'
     HTMLEDITORTITLE: Enhavo
     INHERIT: 'Heredi de patra paĝo'
+    INHERITSITECONFIG: 'Heredi el retejaliraj agordoj'
     LASTPUBLISHED: 'Lasta publikigo'
     LASTSAVED: 'Laste konservita'
     LASTUPDATED: 'Lastfoje ĝisdatigita'
@@ -206,7 +210,7 @@ eo:
     LINKSALREADYUNIQUE: '{url} jam estas unika'
     LINKSCHANGEDTO: 'ŝanĝis {url1} -> {url2}'
     MENUTITLE: 'Navigada etikedo'
-    METADESC: 'Metapriskribo'
+    METADESC: Metapriskribo
     METADESCHELP: 'Serĉiloj uzas ĉi tiun enhavon por vidigi serĉajn rezultojn (kvankam ĝi ne influos ilian rangon).'
     METAEXTRA: 'Propraj Meta-etikedoj '
     METAEXTRAHELP: 'HTML-etikedoj por plua metainformo. Ekzemple &lt;meta name="customName" content="via propra enhavo ĉi tie" /&gt;'
@@ -243,7 +247,7 @@ eo:
     TABCONTENT: 'Ĉefa enhavo'
     TABDEPENDENT: 'Dependaj paĝoj'
     TOPLEVEL: 'Enhavo de Retejo (Supra Nivelo)'
-    URLSegment: 'URL-segmento'
+    URLSegment: URL-segmento
     VIEWERGROUPS: 'Grupoj de vidantoj'
     VIEWER_GROUPS_FIELD_DESC: 'Grupoj kun ĉieaj vidigaj permesoj: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Vidigi ajnan paĝon'
@@ -263,6 +267,14 @@ eo:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Uzita je'
+  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
+    USAGE: Uzmaniero
+  SilverStripe\CMS\Model\SiteTreeLink:
+    PLURALNAME: 'Retejaj arbaj ligiloj'
+    PLURALS:
+      one: 'unu reteja arba ligilo'
+      other: '{count} retejaj arbaj ligiloj'
+    SINGULARNAME: 'Reteja arba ligilo'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Ligita paĝo'
     DESCRIPTION: 'Vidigas la enhavon de alia paĝo'
@@ -287,7 +299,7 @@ eo:
     CheckSiteDropdownPublished: 'Publika retejo'
     ColumnDateLastModified: 'Dato de lasta modifo'
     ColumnDateLastPublished: 'Dato de lasta publikigo'
-    ColumnProblemType: 'Problemtipo'
+    ColumnProblemType: Problemtipo
     ColumnURL: URL
     HasBrokenFile: 'havas rompitan dosieron'
     HasBrokenLink: 'havas rompitan ligilon'

@@ -29,11 +29,10 @@ hr:
     NEWPAGE: 'Novi {pagetype}'
     PAGENOTEXISTS: 'Stranica ne postoji'
     PAGES: 'Status stranice'
-    PAGETYPEANYOPT: Bilo koji
+    PAGETYPEANYOPT: 'Bilo koji'
     PAGETYPEOPT: 'Tip stranice'
     PUBALLCONFIRM: 'Molim objavi svaku stranicu, kopirajući sadržaj'
     PUBALLFUN: '"Objavi sve"'
-    PUBALLFUN2: 'Pritiskom na ovaj gumb će učiniti isto kao i ide na svakoj stranici i pritiskom na "objavi". Namijenjen da se koristi nakon što je došlo do masivne promjene u sadržaju, kao kada je prvi put napravljena.'
     PUBLISHED: 'Uspješno objavljen ''{title}'''
     PUBPAGES: 'Gotovo: Objavljeno {count} stranica'
     PageAdded: 'Uspješno kreirane stranice'
@@ -81,9 +80,9 @@ hr:
     MENUTITLE: 'Uredi stranicu'
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filter
-    ListView: 'Lista'
+    ListView: Lista
     MENUTITLE: Stranice
-    TreeView: 'Stablo'
+    TreeView: Stablo
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Izmjenjene stranice'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
@@ -101,12 +100,12 @@ hr:
     ARCHIVEDSITEFROM: 'Arhivirana stranica iz'
     CMS: CMS
     DRAFT: Predložak
-    DRAFTSITE: 'Predložak'
+    DRAFTSITE: Predložak
     Email: Email
     INSTALL_SUCCESS: 'Instalacija uspješna!'
     LOGGEDINAS: 'Prijavi se kao'
     LOGIN: Prijavi
-    LOGOUT: 'Odjava'
+    LOGOUT: Odjava
     NOTEWONTBESHOWN: 'Napomena: ova poruka neće biti prikazana vašim posjetiteljima'
     NOTLOGGEDIN: 'Niste prijavljeni'
     PUBLISHED: Objavljeno
@@ -156,7 +155,7 @@ hr:
     Comments: Komentari
     Content: Sadržaj
     DEFAULTABOUTTITLE: 'O nama'
-    DEFAULTCONTACTTITLE: 'Kontakt'
+    DEFAULTCONTACTTITLE: Kontakt
     DEFAULTHOMECONTENT: '<p>Dobrodošli na SilverStripe! Ovo je zadana početna stranica. Možete je urediti otvarajući <a href="admin/"> CMS</a>.</p><p>Možete pristupiti  <a href="http://docs.silverstripe.org">razvojnoj dokumentaciji</a>, ili početi <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lekcije</a>.</p>'
     DEFAULTHOMETITLE: Početna
     DEPENDENT_NOTE: 'Sljedeće stranice zavise o ovoj stranici. To uključuje virtualne stranice, preusmjeravajuće stranice i stranice s sadržajnim linkovima.'
@@ -191,7 +190,7 @@ hr:
     PAGETYPE: 'Vrsta stranice'
     PARENTID: 'Matična stranica'
     PARENTTYPE: 'Lokacija stranice'
-    PARENTTYPE_ROOT: 'Nadstranica'
+    PARENTTYPE_ROOT: Nadstranica
     PARENTTYPE_SUBPAGE: 'Podstranica ispod matične stranice'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Upravljaj prava pristupa za sadržaj'
     PLURALNAME: Stranice
@@ -202,7 +201,7 @@ hr:
     SHOWINSEARCH: 'Pokaži u tražilici?'
     SINGULARNAME: Stranica
     TABBEHAVIOUR: Karakteristike
-    TABCONTENT: 'Sadržaj'
+    TABCONTENT: Sadržaj
     TABDEPENDENT: 'Zavisne stranice'
     TOPLEVEL: 'Sadržaj stranice (Top Level)'
     URLSegment: 'Dio URLa'
@@ -236,10 +235,10 @@ hr:
     BROKENFILES: 'Stranice s neispravnim datotekama'
     ParameterLiveCheckbox: 'Pregledaj objavljenu stranicu'
   SilverStripe\CMS\Reports\BrokenLinksReport:
-    Any: bilo koji
+    Any: 'bilo koji'
     BROKENLINKS: 'Izvješće prekinutih linkova'
     CheckSite: 'Pregledaj stranicu'
-    CheckSiteDropdownDraft: 'Predložak'
+    CheckSiteDropdownDraft: Predložak
     CheckSiteDropdownPublished: 'Objavljena stranica'
     ColumnDateLastModified: 'Datum zadnjeg uređivanja'
     ColumnDateLastPublished: 'Datum zadnje objave'

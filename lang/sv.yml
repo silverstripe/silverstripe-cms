@@ -33,14 +33,13 @@ sv:
     EMAIL: E-post
     NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Den här sidan finns inte'
-    PAGES: 'Sidstatus'
-    PAGETYPEANYOPT: Vilken som helst
-    PAGETYPEOPT: 'Sidtyp'
+    PAGES: Sidstatus
+    PAGETYPEANYOPT: 'Vilken som helst'
+    PAGETYPEOPT: Sidtyp
     PAGETYPE_TITLE: '(Sidtyp: {type}) {title}'
     PLEASESAVE: 'Var god spara sidan. Den kan inte uppdateras eftersom den har inte sparats ännu.'
     PUBALLCONFIRM: 'Publicera alla sidor på sajten och kopiera dem till "live"'
     PUBALLFUN: '"Publicera alla"-funktion'
-    PUBALLFUN2: 'Ett klick på den här knappen är samma sak som att gå till varje sida och klicka på "Publicera". Tanken är att den ska användas efter stora uppdateringar av innehållet.'
     PUBLISHED: 'Publiceringen av  ''{title}'' lyckades'
     PUBPAGES: 'Klar: Publicerade {count} sidor'
     PageAdded: 'Lyckades skapa sida'
@@ -67,7 +66,7 @@ sv:
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Skapa sida'
     ParentMode_child: 'Under en annan sida'
-    ParentMode_top: 'Toppnivå'
+    ParentMode_top: Toppnivå
     Title: 'Skapa sida'
   SilverStripe\CMS\Controllers\CMSPageEditController:
     ErrorItemPermissionDenied: 'Du har inte de rättigheter som krävs för att lägga till  {ObjectTitle} i en kampanj'
@@ -77,14 +76,14 @@ sv:
     AUTHOR: Författare
     COMPAREMODE: 'Jämföringsläge (välj två)'
     MENUTITLE: Historia
-    MULTISELECT: 'Åtgärder'
+    MULTISELECT: Åtgärder
     NOTPUBLISHED: 'Ej publicerad'
     PREVIEW: 'Förhandsgranska sida'
-    PUBLISHER: Publicerad av
+    PUBLISHER: 'Publicerad av'
     REVERTTOTHISVERSION: 'Ändra till denna version'
     SHOWUNPUBLISHED: 'Visa opublicerade versioner'
     UNKNOWN: Okänd
-    VIEW: Titta på
+    VIEW: 'Titta på'
     VIEWINGLATEST: 'Nu visas den senaste versionen.'
     VIEWINGVERSION: 'Nu visas version {version}.'
     WHEN: När
@@ -92,9 +91,9 @@ sv:
     MENUTITLE: 'Redigera sida'
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filter
-    ListView: 'Listvy'
+    ListView: Listvy
     MENUTITLE: Sidor
-    TreeView: 'Trädvy'
+    TreeView: Trädvy
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Ändrade sidor'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
@@ -114,14 +113,14 @@ sv:
     ARCHIVEDSITEFROM: 'Arkiverad sajt från'
     CMS: CMS
     DRAFT: Utkast
-    DRAFTSITE: 'Utkast'
+    DRAFTSITE: Utkast
     Email: E-post
     INSTALL_SUCCESS: 'Installation lyckades!'
     InstallFilesDeleted: 'Installationsfilerna raderades utan problem.'
     InstallSecurityWarning: 'Av säkerhetsskäl bör du nu radera installationsfilerna, förutom om du planerar att installera om senare (<em>kräver administratörs-login, se ovan</em>). Webbservern behöver nu bara skrivrättigheter till mappen "assets", du kan ta bort skrivrättigheter från alla andra mappar. <a href="{link}" style="text-align: center;">Klicka här för att radera installationsfilerna.</a>'
     InstallSuccessCongratulations: 'Silverstripe har installerats!'
     LOGGEDINAS: 'Inloggad som'
-    LOGIN: Logga in
+    LOGIN: 'Logga in'
     LOGOUT: 'Logga ut'
     NOTEWONTBESHOWN: 'Observera: Detta meddelande kommer inte att visas för besökarna'
     NOTLOGGEDIN: 'Inte inloggad'
@@ -137,9 +136,9 @@ sv:
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Ankare
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    LINKDESCR: 'Länk-beskrivning'
+    LINKDESCR: Länk-beskrivning
     LINKOPENNEWWIN: 'Öppna i nytt fönster/flik'
-    LINKTEXT: 'Länk-text'
+    LINKTEXT: Länk-text
     SELECT_PAGE: 'Välj en sida'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Avbryt
@@ -158,7 +157,7 @@ sv:
     REDIRECTTO: 'Omdirigera till'
     REDIRECTTOEXTERNAL: 'En annan sajt'
     REDIRECTTOPAGE: 'En sida på din sajt'
-    SINGULARNAME: 'Omdirigeringssida'
+    SINGULARNAME: Omdirigeringssida
     YOURPAGE: 'Sida på din sajt'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'En omdirigeringssida har skapats utan att ha något mål.'
@@ -189,13 +188,13 @@ sv:
     DEFAULTHOMETITLE: Hem
     DEPENDENT_NOTE: 'Följande sidor berörs av den här sidan. Inklusive virtuella sidor, omdirigeringssidor, och sidor med innehållslänkar.'
     DESCRIPTION: 'Generisk innehållssida'
-    DependtPageColumnLinkType: 'Länktyp'
+    DependtPageColumnLinkType: Länktyp
     EDITHEADER: 'Vem kan redigera den här sidan?'
-    EDITORGROUPS: 'Redaktörsgrupper'
+    EDITORGROUPS: Redaktörsgrupper
     EDITOR_GROUPS_FIELD_DESC: 'Grupper med globala editerings-rättigheter: {groupList}'
     EDIT_ALL_DESCRIPTION: 'Redigera alla sidor'
     EDIT_ALL_HELP: 'Möjlighet att redigera alla sidor på sajten, oavsett inställningarna under Åtkomstfliken. Kräver "Tillgång till ''Sidor''-delen"'
-    Editors: 'Redaktörsgrupper'
+    Editors: Redaktörsgrupper
     HASBROKENLINKS: 'Den här sidan har trasiga länkar.'
     HTMLEDITORTITLE: Innehåll
     INHERIT: 'Ärv från överordnad sida'
@@ -205,8 +204,8 @@ sv:
     LINKCHANGENOTE: 'Om du ändrar sidans länkadress så kommer det också påverka länkarna på underliggande sidor'
     LINKSALREADYUNIQUE: ' {url} är redan unik'
     LINKSCHANGEDTO: ' ändra {url1} -> {url2}'
-    MENUTITLE: 'Navigationsetikett'
-    METADESC: 'Metabeskrivning'
+    MENUTITLE: Navigationsetikett
+    METADESC: Metabeskrivning
     METADESCHELP: 'Sökmotorer använder detta innehåll vid visning av sökresultatet (rangordningen påverkas dock inte av detta innehåll).'
     METAEXTRA: 'Egna metataggar'
     METAEXTRAHELP: 'HTML-taggar för övrig meta-information. Till exempel <meta name="customName" content="your custom content here" />'
@@ -219,8 +218,8 @@ sv:
     ONLIVEONLYSHORT: 'Visa endast på publicerad sida'
     ONLIVEONLYSHORTHELP: 'Sidan är publicerad men har raderats från utkastet'
     PAGELOCATION: 'Sidans position'
-    PAGETITLE: 'Sidnamn'
-    PAGETYPE: 'Sidtyp'
+    PAGETITLE: Sidnamn
+    PAGETYPE: Sidtyp
     PARENTID: 'Överordnad sida'
     PARENTTYPE: 'Sidans position'
     PARENTTYPE_ROOT: 'Översta nivån'
@@ -240,11 +239,11 @@ sv:
     SHOWINSEARCH: 'Visa i sökningar?'
     SINGULARNAME: Sida
     TABBEHAVIOUR: Beteende
-    TABCONTENT: 'Huvudinnehåll'
+    TABCONTENT: Huvudinnehåll
     TABDEPENDENT: 'Beroende sidor'
     TOPLEVEL: 'Sajtinnehåll (toppnivå)'
-    URLSegment: 'URL-segment'
-    VIEWERGROUPS: 'Åtkomstgrupper'
+    URLSegment: URL-segment
+    VIEWERGROUPS: Åtkomstgrupper
     VIEWER_GROUPS_FIELD_DESC: 'Grupper med globala visnings-rättigheter: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Visa alla sidor'
     VIEW_ALL_HELP: 'Möjlighet att redigera alla sidor på sajten, oavsett inställningarna under Åtkomstfliken. Kräver åtkomst till "Tillgång till ''Sidor''-delen"'
@@ -253,7 +252,7 @@ sv:
     VIRTUALPAGEDRAFTWARNING: 'Publicera den länkade sidan för att kunna publicera den virtuella sidan'
     VIRTUALPAGEWARNING: 'Välj en länkad sida och spara först för att kunna publicera den här sidan'
     VIRTUALPAGEWARNINGSETTINGS: 'Välj en länkad sida i huvudinnehållsfälten för att kunna publicera'
-    Viewers: 'Åskådargrupper'
+    Viewers: Åskådargrupper
     Visibility: Synlighet
     has_one_Parent: 'Överordnad sida'
     many_many_BackLinkTracking: 'Spåra inlänkar'
@@ -283,17 +282,17 @@ sv:
     Any: Alla
     BROKENLINKS: 'Rapport för brutna länkar'
     CheckSite: 'Kontrollera sajt'
-    CheckSiteDropdownDraft: 'Utkast'
+    CheckSiteDropdownDraft: Utkast
     CheckSiteDropdownPublished: 'Publicerad Sajt'
     ColumnDateLastModified: 'Datum vid senaste modifiering'
     ColumnDateLastPublished: 'Datum vid senaste publicering'
-    ColumnProblemType: 'Problemtyp'
+    ColumnProblemType: Problemtyp
     ColumnURL: URL
     HasBrokenFile: 'har trasig fil'
     HasBrokenLink: 'har trasig länk'
     HasBrokenLinkAndFile: 'har trasig länk och fil'
     HoverTitleEditPage: 'Redigera sida'
-    PageName: 'Sidnamn'
+    PageName: Sidnamn
     ReasonDropdown: 'Problem att kontrollera'
     ReasonDropdownBROKENFILE: 'Trasig fil'
     ReasonDropdownBROKENLINK: 'Bruten länk'
@@ -310,10 +309,10 @@ sv:
     BrokenLinksGroupTitle: 'Rapport för trasiga länkar'
     ParameterLiveCheckbox: 'Kontrollera live-sajt'
   SilverStripe\CMS\Reports\EmptyPagesReport:
-    ContentGroupTitle: 'Innehållsrapport'
+    ContentGroupTitle: Innehållsrapport
     EMPTYPAGES: 'Tomma sidor'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
-    ContentGroupTitle: 'Innehållsrapport'
+    ContentGroupTitle: Innehållsrapport
     LAST2WEEKS: 'Sidor som har redigerats de senaste 2 veckorna'
   SilverStripe\CMS\Search\SearchForm:
     FILTERDATEFROM: Från
@@ -322,7 +321,7 @@ sv:
     GO: Kör
     PAGEFILTERDATEHEADING: 'Senast ändrad'
     SEARCH: Sök
-    SearchResults: 'Sökresultat'
+    SearchResults: Sökresultat
   SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask:
     BUTTONRUN: Kör
     CHOOSEOPERATION: 'Välj funktion:'
