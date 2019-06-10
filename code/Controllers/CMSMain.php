@@ -2369,7 +2369,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     protected function generateHintsCacheKey($memberID)
     {
-        return md5($memberID . '_' . __CLASS__);
+        $baseKey = $memberID . '_' . __CLASS__;
+
+        $this->extend('updateHintsCacheKey', $baseKey);
+
+        return md5($baseKey);
     }
 
     /**
