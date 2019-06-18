@@ -80,10 +80,10 @@ class MigrateSiteTreeLinkingTaskTest extends SapphireTest
         $hash = $this->objFromFixture(SiteTree::class, 'hash_link');
 
         // Ensure all links are created
-        $this->assertListEquals([$about->toMap(), $staff->toMap()], $home->LinkTracking());
-        $this->assertListEquals([$home->toMap(), $staff->toMap()], $about->LinkTracking());
-        $this->assertListEquals([$home->toMap(), $about->toMap()], $staff->LinkTracking());
-        $this->assertListEquals([$home->toMap()], $action->LinkTracking());
-        $this->assertListEquals([$home->toMap(), $about->toMap()], $hash->LinkTracking());
+        $this->assertListEquals([['ID' => $about->ID], ['ID' => $staff->ID]], $home->LinkTracking());
+        $this->assertListEquals([['ID' => $home->ID], ['ID' => $staff->ID]], $about->LinkTracking());
+        $this->assertListEquals([['ID' => $home->ID], ['ID' => $about->ID]], $staff->LinkTracking());
+        $this->assertListEquals([['ID' => $home->ID]], $action->LinkTracking());
+        $this->assertListEquals([['ID' => $home->ID], ['ID' => $about->ID]], $hash->LinkTracking());
     }
 }
