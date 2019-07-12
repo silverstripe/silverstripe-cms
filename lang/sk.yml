@@ -39,7 +39,6 @@ sk:
     PLEASESAVE: 'Prosím uložte stránku: Táto stránka nemôže byť aktualizovaná, lebo ešte nebola uložená.'
     PUBALLCONFIRM: 'Prosím, zverejnite všetky stránky webu, zkopírovaním obsahu na verejné'
     PUBALLFUN: 'Funkcia "Publikovať všetko"'
-    PUBALLFUN2: 'Stlačením tohto tlačidla vykonáte to isté ako keby ste navštívili každú stránku a stlačili "Zverejniť". Je určené na použite po rozsiahlych zmenách obsahu, napríklad keď bol web prvýkrát vytvorený.'
     PUBLISHED: 'Uverejnené "{title}" úspešne.'
     PUBPAGES: 'Hotovo: Publikované {count} stránky'
     PageAdded: 'Stránka vytvorená úspešne'

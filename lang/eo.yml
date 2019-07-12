@@ -41,7 +41,6 @@ eo:
     PLEASESAVE: 'Bonvolu konservi paĝon: ne povis ĝisdatigi ĉi tiun paĝon ĉar ĝi ankoraŭ estas nekonservita.'
     PUBALLCONFIRM: 'Bonvolu eldoni ĉiun paĝon en la retejo, kopiante enhavan stadion al la publika'
     PUBALLFUN: 'Funkcio "Eldoni Ĉiujn"'
-    PUBALLFUN2: 'Premi ĉi tiun butonon faros same kiel iri al ĉiu paĝo kaj premi je "Publikigi". Oni celas ke ĝi uziĝu post multaj redaktoj de la enhavo, ekzemple kiam la retejo estis unue konstruita.'
     PUBLISHED: 'Sukcese publikigis je ''{title}'''
     PUBPAGES: 'Farite: publikigis {count} paĝojn'
     PageAdded: 'Sukcese kreis paĝon'

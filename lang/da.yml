@@ -40,7 +40,6 @@ da:
     PLEASESAVE: 'Gem siden: Denne side kunne ikke opdateres, da den endnu ikke er gemt.'
     PUBALLCONFIRM: 'Udgiv alle sider på sitet. Kopierer indhold fra kladde til offentlig'
     PUBALLFUN: '"Udgiv alle" funktionalitet'
-    PUBALLFUN2: 'Hvis du trykker på denne knap, svarer det til at gå til hver enkel side og vælge udgiv. Det er hensigten at denne funktion benyttes når der er blevet lavet mange ændringer på flere sider, som f.eks da websitet blev påbegyndt.'
     PUBLISHED: 'Udgav ''{title}'' med succes'
     PUBPAGES: 'Færdig: Udgav {count} sider'
     PageAdded: 'Siden blev oprettet med succes'

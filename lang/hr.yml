@@ -33,7 +33,6 @@ hr:
     PAGETYPEOPT: 'Tip stranice'
     PUBALLCONFIRM: 'Molim objavi svaku stranicu, kopirajući sadržaj'
     PUBALLFUN: '"Objavi sve"'
-    PUBALLFUN2: 'Pritiskom na ovaj gumb će učiniti isto kao i ide na svakoj stranici i pritiskom na "objavi". Namijenjen da se koristi nakon što je došlo do masivne promjene u sadržaju, kao kada je prvi put napravljena.'
     PUBLISHED: 'Uspješno objavljen ''{title}'''
     PUBPAGES: 'Gotovo: Objavljeno {count} stranica'
     PageAdded: 'Uspješno kreirane stranice'
