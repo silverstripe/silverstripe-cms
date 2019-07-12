@@ -68,6 +68,7 @@ use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\Versioned\ChangeSet;
 use SilverStripe\Versioned\ChangeSetItem;
 use SilverStripe\Versioned\Versioned;
+use SilverStripe\VersionedAdmin\Controllers\CMSPageHistoryViewerController;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
 use Translatable;
@@ -398,10 +399,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
     public function LinkPageHistory()
     {
-        if ($id = $this->currentPageID()) {
-            return $this->LinkWithSearch(
-                Controller::join_links(CMSPageHistoryController::singleton()->Link('show'), $id)
-            );
+        $controller = Injector::inst()->get(CMSPageHistoryViewerController::class);
+        if (($id = $this->currentPageID()) && $controller) {
+            if ($controller) {
+                return $this->LinkWithSearch(
+                    Controller::join_links($controller->Link('show'), $id)
+                );
+            }
         } else {
             return null;
         }
