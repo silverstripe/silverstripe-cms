@@ -40,7 +40,6 @@ sv:
     PLEASESAVE: 'Var god spara sidan. Den kan inte uppdateras eftersom den har inte sparats ännu.'
     PUBALLCONFIRM: 'Publicera alla sidor på sajten och kopiera dem till "live"'
     PUBALLFUN: '"Publicera alla"-funktion'
-    PUBALLFUN2: 'Ett klick på den här knappen är samma sak som att gå till varje sida och klicka på "Publicera". Tanken är att den ska användas efter stora uppdateringar av innehållet.'
     PUBLISHED: 'Publiceringen av  ''{title}'' lyckades'
     PUBPAGES: 'Klar: Publicerade {count} sidor'
     PageAdded: 'Lyckades skapa sida'

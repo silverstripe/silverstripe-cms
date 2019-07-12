@@ -40,7 +40,6 @@ fr:
     PLEASESAVE: 'Merci de sauvegarder la page : elle n''a pas pu être mise à jour car elle n''a pas encore été enregistrée.'
     PUBALLCONFIRM: 'Merci de publier chaque page en copiant le contenu du site brouillon vers le site public'
     PUBALLFUN: 'Fonctionnalité "Tout Publier"'
-    PUBALLFUN2: 'Cliquer sur ce bouton permet d''éviter d''avoir à publier les pages une par une. Particulièrement utile quand de nombreuses modifications de contenu ont été effectuées.'
     PUBLISHED: 'Page ''{title}'' publiée avec succès'
     PUBPAGES: '{count} pages ont été correctement publiées'
     PageAdded: 'La page a été créée avec succès '
