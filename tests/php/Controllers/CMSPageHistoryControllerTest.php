@@ -23,10 +23,6 @@ class CMSPageHistoryControllerTest extends FunctionalTest
     protected $versionPublishCheck2;
     protected $page;
 
-    protected static $extra_controllers = [
-        CMSPageHistoryControllerTest\HistoryController::class,
-    ];
-
     protected function setUp()
     {
         parent::setUp();
@@ -104,72 +100,6 @@ class CMSPageHistoryControllerTest extends FunctionalTest
             sprintf("and %s", $this->versionPublishCheck2),
             $form->Fields()->fieldByName('Root.Main.CurrentlyViewingMessage')->getContent()
         );
-    }
-
-    /**
-     * @todo should be less tied to cms theme.
-     * @todo check highlighting for comparing pages.
-     */
-    public function testVersionsForm()
-    {
-        $this->get('admin/pages/legacyhistory/show/' . $this->page->ID . '?flush');
-        $form = $this->cssParser()->getBySelector('#Form_VersionsForm');
-
-        $this->assertEquals(1, count($form));
-
-        // check the page ID is present
-        $hidden = $form[0]->xpath("fieldset/input[@type='hidden']");
-
-        $this->assertThat($hidden, $this->logicalNot($this->isNull()), 'Hidden ID field exists');
-        $this->assertEquals($this->page->ID, (int) $hidden[0]->attributes()->value);
-
-        // ensure that all the versions are present in the table and displayed
-        $rows = $form[0]->xpath("fieldset/table/tbody/tr");
-        $this->assertEquals(4, count($rows));
-    }
-
-    public function testVersionsFormTableContainsInformation()
-    {
-        $this->get('admin/pages/legacyhistory/show/' . $this->page->ID);
-        $form = $this->cssParser()->getBySelector('#Form_VersionsForm');
-        $rows = $form[0]->xpath("fieldset/table/tbody/tr");
-
-        $expected = [
-            ['version' => $this->versionPublishCheck2, 'status' => 'published'],
-            ['version' => $this->versionUnpublishedCheck2, 'status' => 'internal'],
-            ['version' => $this->versionPublishCheck, 'status' => 'published'],
-            ['version' => $this->versionUnpublishedCheck, 'status' => 'internal'],
-        ];
-
-        // goes the reverse order that we created in setUp()
-        $i = 0;
-        foreach ($rows as $tr) {
-            // data-link must be present for the javascript to load new
-            $this->assertContains($expected[$i]['status'], (string) $tr->attributes()->class);
-            $i++;
-        }
-
-        // test highlighting
-        $this->assertContains('active', (string) $rows[0]->attributes()->class);
-        $this->assertThat((string) $rows[1]->attributes()->class, $this->logicalNot($this->stringContains('active')));
-    }
-
-    public function testVersionsFormSelectsUnpublishedCheckbox()
-    {
-        $this->get('admin/pages/legacyhistory/show/' . $this->page->ID);
-        $checkbox = $this->cssParser()->getBySelector('#Form_VersionsForm_ShowUnpublished');
-
-        $this->assertThat($checkbox[0], $this->logicalNot($this->isNull()));
-        $checked = $checkbox[0]->attributes()->checked;
-
-        $this->assertThat($checked, $this->logicalNot($this->stringContains('checked')));
-
-        // viewing an unpublished
-        $this->get('admin/pages/legacyhistory/show/' . $this->page->ID . '/' . $this->versionUnpublishedCheck);
-        $checkbox = $this->cssParser()->getBySelector('#Form_VersionsForm_ShowUnpublished');
-
-        $this->assertThat($checkbox[0], $this->logicalNot($this->isNull()));
-        $this->assertEquals('checked', (string) $checkbox[0]->attributes()->checked);
     }
 
     public function testTransformReadonly()
