@@ -39,6 +39,11 @@ matrix:
       env: NPM_TEST=1
     - php: 7.3
       env: DB=MYSQL PHPUNIT_TEST=1
+    - php: 7.4snapshot
+      env: DB=MYSQL PHPUNIT_TEST=1
+  allow_failures:
+    - php: 7.4snapshot
+
 
 before_script:
 # Extra $PATH
@@ -68,7 +73,7 @@ before_script:
   - if [[ $BEHAT_TEST ]]; then (vendor/bin/serve --bootstrap-file tests/behat/serve-bootstrap.php &> artifacts/serve.log &); fi
 
 script:
- - if [[ $PHPUNIT_TEST ]]; then vendor/bin/phpunit tests/php/ flush=1; fi
+ - if [[ $PHPUNIT_TEST ]]; then vendor/bin/phpunit tests/php/; fi
  - if [[ $BEHAT_TEST ]]; then vendor/bin/behat @cms; fi
  - if [[ $NPM_TEST ]]; then git diff-files --quiet -w --relative=client; fi
  - if [[ $NPM_TEST ]]; then git diff -w --no-color --relative=client; fi
