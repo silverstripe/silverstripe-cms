@@ -6,6 +6,7 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTP;
 use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Versioned\Versioned;
 
 /**
@@ -21,6 +22,10 @@ class SiteTreeBacklinksTest extends SapphireTest
         ],
     ];
 
+    protected static $extra_dataobjects = [
+        SiteTreeBacklinksTestContentObject::class,
+    ];
+
     public function setUp()
     {
         parent::setUp();
@@ -28,6 +33,14 @@ class SiteTreeBacklinksTest extends SapphireTest
         // Log in as admin so that we don't run into permission issues.  That's not what we're
         // testing here.
         $this->logInWithPermission('ADMIN');
+
+        $page3 = $this->objFromFixture('Page', 'page3');
+        $page3->Content = str_replace(
+            '$page1.ID',
+            $this->objFromFixture('Page', 'page1')->ID,
+            $page3->Content
+        );
+        $page3->write();
     }
 
     public function testSavingPageWithLinkAddsBacklink()
@@ -250,5 +263,29 @@ class SiteTreeBacklinksTest extends SapphireTest
 
         // assert backlink to page 2 no longer exists
         $this->assertNotContains($page2->ID, $page1->BackLinkTracking()->column('ID'), 'Assert backlink to page 2 has been removed');
+    }
+
+    public function testLinkTrackingWithUntitledObjectsDisplaysAReadableIdentifier()
+    {
+        $page = $this->objFromFixture('Page', 'page2');
+
+        $referencingObject = new SiteTreeBacklinksTestContentObject();
+        $referencingObject->Content = '<p><a href="[sitetree_link,id='
+            . $page->ID
+            . ']">Page 2</a></p>';
+        // Title purposely not set - this is the coverage case for this test
+        $referencingObject->write();
+
+        /** @var GridField $gridField */
+        $gridField = $page->getCMSFields()->dataFieldByName('DependentPages');
+
+        // Prepare and sanity check
+        $this->assertNotNull($gridField);
+        $list = $gridField->getList();
+        $this->assertEquals(1, $list->count());
+
+        $content = $gridField->getColumnContent($list->first(), 'Title');
+
+        $this->assertContains('Untitled Backlink test content object', $content);
     }
 }
