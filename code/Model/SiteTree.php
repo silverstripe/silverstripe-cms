@@ -1567,7 +1567,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 $this->URLSegment = "page-$this->ID";
             }
         }
-        
+
         // need to set the default values of a page e.g."Untitled [Page type]"
         if (empty($this->Title)) {
             $this->Title = _t(
@@ -1988,10 +1988,20 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 ->setDisplayFields($dependentColumns)
                 ->setFieldFormatting(array(
                     'Title' => function ($value, &$item) {
+                        $title = $item->Title;
+                        $untitled = _t(
+                            __CLASS__ . '.UntitledDependentObject',
+                            'Untitled {instanceType}',
+                            ['instanceType' => $item->i18n_singular_name()]
+                        );
+                        $tag = $item->hasMethod('CMSEditLink') ? 'a' : 'span';
                         return sprintf(
-                            '<a href="admin/pages/edit/show/%d">%s</a>',
-                            (int)$item->ID,
-                            Convert::raw2xml($item->Title)
+                            '<%s%s class="dependent-content__edit-link %s">%s</%s>',
+                            $tag,
+                            $tag === 'a' ? sprintf(' href="%s"', $item->CMSEditLink()) : '',
+                            $title ? '' : 'dependent-content__edit-link--untitled',
+                            $title ? Convert::raw2xml($title) : $untitled,
+                            $tag
                         );
                     }
                 ));

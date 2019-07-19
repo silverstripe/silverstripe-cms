@@ -1,6 +1,5 @@
 SilverStripe\CMS\Model\SiteTree:
   page1:
-    ID: 1
     Title: page1
     URLSegment: page1
 
@@ -11,7 +10,7 @@ SilverStripe\CMS\Model\SiteTree:
   page3:
     Title: page3
     URLSegment: page3
-    Content: '<p><a href="[sitetree_link,id=1]">Testing page 1 link</a></p>'
+    Content: '<p><a href="[sitetree_link,id=$page1.ID]">Testing page 1 link</a></p>'
     LinkTracking: =>SilverStripe\CMS\Model\SiteTree.page1
 
 
