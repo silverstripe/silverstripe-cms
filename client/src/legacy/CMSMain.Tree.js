@@ -26,7 +26,7 @@ $.entwine('ss.tree', function($) {
           col = "2";
         }
 
-        $(menus[i]).addClass('col-' + col).removeClass('right');
+        $(menus[i]).addClass('vakata-col-' + col).removeClass('right');
 
         //Remove "right" class that jstree adds on mouseenter
         $(menus[i]).find('li').on("mouseenter", function(e) {
