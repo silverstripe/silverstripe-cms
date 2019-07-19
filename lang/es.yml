@@ -34,7 +34,6 @@ es:
     PAGETYPE_TITLE: '(Tipo de página: {type}) {title}'
     PUBALLCONFIRM: 'Por favor publica todas las páginas del sitio, copiando el contenido del borrador al sitio público'
     PUBALLFUN: 'Función "Publicar Todo"'
-    PUBALLFUN2: 'Presionando este botón haremos el equivalente a ir a cada página y pulsar "publicar". Está destinado a ser utilizado después de haber habido ediciones masivas del contenido, como cuando el sitio fue construido por primera vez.'
     PUBLISHED: '''{title}'' publicado satisfactoriamente.'
     PUBPAGES: 'Hecho: Publicadas {count} páginas'
     PageAdded: 'Página creada correctamente'

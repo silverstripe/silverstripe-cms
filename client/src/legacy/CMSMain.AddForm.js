@@ -123,11 +123,19 @@ $.entwine('ss', function($){
      * @param {string} defaultChildClass
      */
     updateSelectionFilter: function(disallowedChildren, defaultChildClass) {
+      var currentSelection = this.find('#Form_AddForm_PageType div.radio.selected')[0];
+      var keepSelection = false;
+
       // Limit selection
       var allAllowed = null; // troolian
-      this.find('#Form_AddForm_PageType div.radio').each(function() {
+      this.find('#Form_AddForm_PageType div.radio').each(function (i, el) {
         var className = $(this).find('input').val(),
           isAllowed = ($.inArray(className, disallowedChildren) === -1);
+
+        // Avoid changing the selected pagetype if still allowed
+        if (el === currentSelection && isAllowed) {
+          keepSelection = true;
+        }
 
         $(this).setEnabled(isAllowed);
         if(!isAllowed) {
@@ -140,8 +148,10 @@ $.entwine('ss', function($){
         }
       });
 
-      // Set default child selection, or fall back to first available option
-      if(defaultChildClass) {
+      // Keep current selection if we can, or set default child selection, or fall back to first available option
+      if (keepSelection) {
+        var selectedEl = $(currentSelection).parents('li:first');
+      } else if (defaultChildClass) {
         var selectedEl = this
           .find('#Form_AddForm_PageType div.radio input[value=' + defaultChildClass + ']')
           .parents('li:first');

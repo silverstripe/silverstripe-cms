@@ -40,7 +40,6 @@ pl:
     PLEASESAVE: 'Proszę zapisać stronę. Ta strona nie mogła zostać uaktualniona, ponieważ nie została jeszcze zapisana.'
     PUBALLCONFIRM: 'Opublikuj każdą stronę w witrynie'
     PUBALLFUN: '"Opublikuj wszystko"'
-    PUBALLFUN2: 'Naciśnięcie tego przycisku spowoduje przejście po wszystkich stronach i opublikowanie ich. Zazwyczaj używa się tego, gdy w witrynie było bardzo dużo zmian, na przykład gdy witryna została utworzona.'
     PUBLISHED: 'Opublikowano ''{title}'' '
     PUBPAGES: 'Zrobiono:  Opublikowano {count} stron'
     PageAdded: 'Pomyślnie utworzono stronę'

@@ -14,6 +14,7 @@ en:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Access to ''{title}'' section'
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
+    APPLY_FILTER: Search
     ARCHIVE: Archive
     ARCHIVEDPAGE: 'Archived page ''{title}'''
     AddNew: 'Add new page'
@@ -24,6 +25,7 @@ en:
     ArchiveWarningWithChildren: 'Warning: This page and all of its child pages will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?'
     ArchiveWarningWithChildrenAndCampaigns: 'Warning: This page and all of its child pages will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?'
     CANT_REORGANISE: 'You do not have permission to alter Top level pages. Your change was not saved.'
+    CLEAR_FILTER: Clear
     Cancel: Cancel
     ChoosePageParentMode: 'Choose where to create this page'
     ChoosePageType: 'Choose page type'
@@ -31,10 +33,10 @@ en:
     DUPLICATED: 'Duplicated ''{title}'' successfully'
     DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
     EMAIL: Email
+    ListFiltered: 'Showing search results.'
     NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'This page doesn''t exist'
     PAGES: 'Page status'
-    PAGESALLOPT: 'All pages'
     PAGETYPEANYOPT: Any
     PAGETYPEOPT: 'Page type'
     PAGETYPE_TITLE: '(Page type: {type}) {title}'
@@ -58,7 +60,6 @@ en:
     ROLLEDBACKVERSIONv2: 'Rolled back to version #{version}.'
     SAVED: 'Saved ''{title}'' successfully.'
     SAVEDRAFT: Save
-    SEARCHRESULTS: 'Search results'
     SHOW_AS_LIST: 'show as list'
     TOO_MANY_PAGES: 'Too many pages'
     TabContent: Content
@@ -194,6 +195,7 @@ en:
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
     DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Link type'
+    DependtPageColumnURL: URL
     EDITHEADER: 'Who can edit this page?'
     EDITORGROUPS: 'Editor Groups'
     EDITOR_GROUPS_FIELD_DESC: 'Groups with global edit permissions: {groupList}'
@@ -203,7 +205,6 @@ en:
     HASBROKENLINKS: 'This page has broken links.'
     HTMLEDITORTITLE: Content
     INHERIT: 'Inherit from parent page'
-    INHERITSITECONFIG: 'Inherit from site access settings'
     LASTPUBLISHED: 'Last published'
     LASTSAVED: 'Last saved'
     LASTUPDATED: 'Last Updated'

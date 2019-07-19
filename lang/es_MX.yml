@@ -39,7 +39,6 @@ es_MX:
     PLEASESAVE: 'Por favor guardar página: esta página no ha sido actualizada porque aún no ha sido guardada.'
     PUBALLCONFIRM: 'Por favor publique todas las páginas del sitio, copiando el contenido del boceto al sitio público'
     PUBALLFUN: 'Funcionalidad "Publicar todo"'
-    PUBALLFUN2: 'Presionar este botón hará el equivalente de ir a cada página y presionar "publicar". Su intención es para ser usado luego de editar contenido masivamente, como cuando el sitio fue inicialmente creado.'
     PUBLISHED: '''{title}'' publicada con éxito.'
     PUBPAGES: 'Completado: {count} páginas publicadas'
     PageAdded: 'Página creada con éxito'
