@@ -136,7 +136,7 @@ class RedirectorPage extends Page
         }
     }
 
-    public function onBeforeWrite()
+    protected function onBeforeWrite()
     {
         parent::onBeforeWrite();
 
