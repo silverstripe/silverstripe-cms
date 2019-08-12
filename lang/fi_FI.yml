@@ -41,6 +41,7 @@ fi_FI:
     PLEASESAVE: 'Tallenna sivu: tätä sivua ei voida päivittää, koska sitä ei ole vielä tallennettu.'
     PUBALLCONFIRM: 'Julkaise jokainen sivu tällä sivustolla kopioiden luonnosten sisältö julkiselle sivustolle'
     PUBALLFUN: 'Julkaise kaikki -toiminto'
+    PUBALLFUN2: 'Tämän nappulan painaminen on verrattavissa jokaisella sivulla "Julkaise" toiminnon käyttämiseen. Tarkoituksen mukaisinta on käyttää tätä toimintoa määrällisesti isojen sisältömuutosten jälkeen.'
     PUBLISHED: 'Julkaistiin ''{title}'' onnistuneesti.'
     PUBPAGES: 'Valmis: julkaistiin {count} sivu(a)'
     PageAdded: 'Sivun luonti onnistui'
@@ -202,7 +203,7 @@ fi_FI:
     HASBROKENLINKS: 'Tällä sivulla on rikkinäisiä linkkejä'
     HTMLEDITORTITLE: Sisältö
     INHERIT: 'Sama kuin ylätason sivulla'
-    INHERITSITECONFIG: 'Periytä sivuston käyttöoikeuksista'
+    INHERITSITECONFIG: 'Peri sivuston pääsyasetuksista'
     LASTPUBLISHED: 'Viimeksi julkaistu'
     LASTSAVED: 'Viimeksi tallennettu'
     LASTUPDATED: 'Viimeksi päivitetty'
