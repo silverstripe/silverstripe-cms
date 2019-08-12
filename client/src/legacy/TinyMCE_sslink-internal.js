@@ -19,7 +19,7 @@ TinyMCEActionRegistrar
     {
       text: i18n._t('CMS.LINKLABEL_PAGE', 'Page on this site'),
       onclick: (activeEditor) => activeEditor.execCommand(commandName),
-      priority: 53,
+      priority: 90,
     },
     editorIdentifier,
   )
