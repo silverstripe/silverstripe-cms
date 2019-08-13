@@ -34,7 +34,6 @@ it:
     NEWPAGE: 'Nuova {pagetype}'
     PAGENOTEXISTS: 'Questa pagina non esiste'
     PAGES: 'Stato pagina'
-    PAGESALLOPT: 'Tutte le pagine'
     PAGETYPEANYOPT: Qualsiasi
     PAGETYPEOPT: 'Tipo di pagina'
     PAGETYPE_TITLE: '(Pagina tipo: {type}) {title}'
@@ -57,7 +56,6 @@ it:
     ROLLEDBACKVERSIONv2: 'Ripristinata la versione #{version}.'
     SAVED: '''{title}'' salvata correttamente.'
     SAVEDRAFT: Salva
-    SEARCHRESULTS: 'Risultati di ricerca'
     SHOW_AS_LIST: 'Mostra come lista'
     TOO_MANY_PAGES: 'Troppe pagine'
     TabContent: Contenuto
@@ -202,7 +200,6 @@ it:
     HASBROKENLINKS: 'Questa pagina ha link non funzionanti.'
     HTMLEDITORTITLE: Contenuto
     INHERIT: 'Eredita dalla pagina madre'
-    INHERITSITECONFIG: 'Eredita dalle impostazioni di accesso al sito'
     LASTPUBLISHED: 'Ultima pubblicazione'
     LASTSAVED: 'Ultimo salvataggio'
     LASTUPDATED: 'Ultimo aggiornamento'

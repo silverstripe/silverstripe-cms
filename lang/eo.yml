@@ -34,7 +34,6 @@ eo:
     NEWPAGE: 'Nova {pagetype}'
     PAGENOTEXISTS: 'Ĉi tiu paĝo ne ekzistas'
     PAGES: 'Stato de paĝo'
-    PAGESALLOPT: 'Ĉiuj paĝoj'
     PAGETYPEANYOPT: Ajna
     PAGETYPEOPT: 'Tipo de paĝo'
     PAGETYPE_TITLE: '(Paĝa tipo: {type}) {title}'
@@ -57,7 +56,6 @@ eo:
     ROLLEDBACKVERSIONv2: 'Malfaris ŝanĝojn ĝis versio #{version}.'
     SAVED: 'Sukcese konservis je ''{title}'''
     SAVEDRAFT: Konservi
-    SEARCHRESULTS: 'Serĉaj rezultoj'
     SHOW_AS_LIST: 'vidigi kiel liston'
     TOO_MANY_PAGES: 'Tro da paĝoj'
     TabContent: Enhavo
@@ -202,7 +200,6 @@ eo:
     HASBROKENLINKS: 'Ĉi tiu paĝo havas rompitajn ligilojn.'
     HTMLEDITORTITLE: Enhavo
     INHERIT: 'Heredi de patra paĝo'
-    INHERITSITECONFIG: 'Heredi el retejaliraj agordoj'
     LASTPUBLISHED: 'Lasta publikigo'
     LASTSAVED: 'Laste konservita'
     LASTUPDATED: 'Lastfoje ĝisdatigita'
