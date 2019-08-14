@@ -73,7 +73,7 @@ class SiteTreeURLSegmentField extends TextField
         if (!$request->getVar('value')) {
             return $this->httpError(
                 405,
-                _t('SilverStripe\\CMS\\Forms\\SiteTreeURLSegmentField.EMPTY', 'Please enter a URL Segment or click cancel')
+                _t('SilverStripe\\CMS\\Forms\\SiteTreeURLSegmentField.EMPTY', 'Please enter a URL segment or click cancel')
             );
         }
         $page = $this->getPage();

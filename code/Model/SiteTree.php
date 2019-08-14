@@ -2080,7 +2080,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $fields->removeFieldFromTab('Root', 'Dependent');
         }
 
-        $tabMain->setTitle(_t(__CLASS__.'.TABCONTENT', "Main Content"));
+        $tabMain->setTitle(_t(__CLASS__.'.TABCONTENT', "Main content"));
 
         if ($this->ObsoleteClassName) {
             $obsoleteWarning = _t(
@@ -2280,7 +2280,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $labels['ShowInSearch'] = _t(__CLASS__.'.SHOWINSEARCH', "Show in search?");
             $labels['ViewerGroups'] = _t(__CLASS__.'.VIEWERGROUPS', "Viewer Groups");
             $labels['EditorGroups'] = _t(__CLASS__.'.EDITORGROUPS', "Editor Groups");
-            $labels['URLSegment'] = _t(__CLASS__.'.URLSegment', 'URL Segment', 'URL for this page');
+            $labels['URLSegment'] = _t(__CLASS__.'.URLSegment', 'URL segment', 'URL for this page');
             $labels['Content'] = _t(__CLASS__.'.Content', 'Content', 'Main HTML Content for a page');
             $labels['CanViewType'] = _t(__CLASS__.'.Viewers', 'Viewers Groups');
             $labels['CanEditType'] = _t(__CLASS__.'.Editors', 'Editors Groups');
