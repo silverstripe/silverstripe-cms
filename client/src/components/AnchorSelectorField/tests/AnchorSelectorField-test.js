@@ -43,6 +43,13 @@ describe('AnchorSelectorField', () => {
       expect(props.actions.anchorSelector.beginUpdating)
         .toHaveBeenCalledWith(4);
     });
+    it('Does not load success selectors', () => {
+      props.loadingState = anchorSelectorStates.SUCCESS;
+      field = ReactTestUtils.renderIntoDocument(<AnchorSelectorField {...props} />);
+      expect(props.actions.anchorSelector.beginUpdating)
+        .not
+        .toHaveBeenCalled();
+    });
   });
 
   describe('getDropdownOptions()', () => {
