@@ -15,15 +15,18 @@ export function beginUpdating(pageId) {
 
 /**
  * Finish updating a anchors for a page
+ * By default forces list of anchors for a page ID to be loaded from the server each time the page
+ * is selected to select on if it's anchors from.
  *
  * @param {Number} pageId - ID of page to query for
  * @param {Array} anchors - List of anchor strings
+ * @param {Boolean} cacheResult - false: Refresh anchor list, true: cache result
  * @returns {Object}
  */
-export function updated(pageId, anchors) {
+export function updated(pageId, anchors, cacheResult = false) {
   return {
     type: ACTION_TYPES.ANCHORSELECTOR_UPDATED,
-    payload: { pageId, anchors },
+    payload: { pageId, anchors, cacheResult },
   };
 }
 
