@@ -2019,7 +2019,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 'SilverStripe\\CMS\\Controllers\\CMSMain.NEWPAGE',
                 'New {pagetype}',
                 array('pagetype' => $this->i18n_singular_name())
-            )));
+            )))
+            ->addExtraClass(($this->isHomePage() ? 'homepage-warning' : ''));
         $helpText = (self::config()->get('nested_urls') && $this->numChildren())
             ? $this->fieldLabel('LinkChangeNote')
             : '';
@@ -2374,7 +2375,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $moreOptions->push(
                 FormAction::create('unpublish', _t(__CLASS__.'.BUTTONUNPUBLISH', 'Unpublish'), 'delete')
                     ->setDescription(_t(__CLASS__.'.BUTTONUNPUBLISHDESC', 'Remove this page from the published site'))
-                    ->addExtraClass('btn-secondary')
+                    ->addExtraClass('btn-secondary' . ($this->isHomePage() ? ' homepage-warning' : ''))
             );
         }
 
@@ -2428,7 +2429,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 : _t('SilverStripe\\CMS\\Controllers\\CMSMain.ARCHIVE', 'Archive');
             $moreOptions->push(
                 FormAction::create('archive', $title)
-                    ->addExtraClass('delete btn btn-secondary')
+                    ->addExtraClass('delete btn btn-secondary' . ($this->isHomePage() ? ' homepage-warning' : ''))
                     ->setDescription(_t(
                         'SilverStripe\\CMS\\Model\\SiteTree.BUTTONDELETEDESC',
                         'Remove from draft/live and send to archive'
@@ -2875,9 +2876,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $children = $this->creatableChildPages();
         $flags = $this->getStatusFlags();
         $treeTitle = sprintf(
-            "<span class=\"jstree-pageicon page-icon %s class-%s\"></span><span class=\"item\" data-allowedchildren=\"%s\">%s</span>",
+            '<span class="jstree-pageicon page-icon %s class-%s%s"></span><span class="item" data-allowedchildren="%s">%s</span>',
             $this->getIconClass(),
             Convert::raw2htmlid(static::class),
+            $this->isHomePage() ? ' homepage' : '',
             Convert::raw2att(json_encode($children)),
             Convert::raw2xml(str_replace(array("\n","\r"), "", $this->MenuTitle))
         );
@@ -3271,5 +3273,15 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $this->extend('updateAnchorsOnPage', $anchors);
 
         return $anchors;
+    }
+
+    /**
+     * Returns whether this is the home page or not
+     *
+     * @return bool
+     */
+    public function isHomePage(): bool
+    {
+        return $this->URLSegment === RootURLController::get_homepage_link();
     }
 }

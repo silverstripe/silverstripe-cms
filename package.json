@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/silverstripe/silverstripe-cms#readme",
   "dependencies": {
+    "@silverstripe/reactstrap-confirm": "0.0.5",
     "apollo-client": "^2.4.2",
     "bootstrap": "^4.3.1",
     "classnames": "^2.2.5",
