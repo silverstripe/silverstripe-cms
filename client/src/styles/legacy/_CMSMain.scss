@@ -142,6 +142,14 @@
 
 }
 
+/* -------------------------------------------------------------------
+ * Container for editor + preview
+ * ----------------------------------------------------------------- */
+#pages-controller-cms-content,
+#pages-controller-cms-content + .cms-preview {
+  width: 50%; // Effectively inert, allows IE 11 to do its sizing math properly
+}
+
 /** ------------------------------------------------------------------
  * URLSegment field
  * ----------------------------------------------------------------- */

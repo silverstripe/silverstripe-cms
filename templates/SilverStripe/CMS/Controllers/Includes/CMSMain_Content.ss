@@ -3,7 +3,7 @@
 
 	<div class="fill-height flexbox-area-grow">
 		<div class="cms-content-header north">
-			<div class="cms-content-header-info flexbox-area-grow vertical-align-items fill-width">
+			<div class="cms-content-header-info flexbox-area-grow vertical-align-items">
 				<a href="$BreadcrumbsBackLink" class="btn btn-secondary btn--no-text font-icon-left-open-big hidden-lg-up toolbar__back-button"></a>
 				<% include SilverStripe\\Admin\\CMSBreadcrumbs %>
 			</div>
