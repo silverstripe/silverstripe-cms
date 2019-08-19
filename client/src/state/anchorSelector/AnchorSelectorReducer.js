@@ -36,7 +36,10 @@ export default function anchorSelectorReducer(state = initialState, action = nul
     }
 
     case ACTION_TYPES.ANCHORSELECTOR_UPDATED: {
-      return updatePage(anchorSelectorStates.SUCCESS, action.payload.anchors);
+      const { anchors, cacheResult } = action.payload;
+      const { SUCCESS, DIRTY } = anchorSelectorStates;
+      const newSelectorLoadingState = cacheResult ? SUCCESS : DIRTY;
+      return updatePage(newSelectorLoadingState, anchors);
     }
 
     case ACTION_TYPES.ANCHORSELECTOR_UPDATE_FAILED: {

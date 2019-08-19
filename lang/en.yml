@@ -41,7 +41,7 @@ en:
     PLEASESAVE: 'Please Save Page: This page could not be updated because it hasn''t been saved yet.'
     PUBALLCONFIRM: 'Please publish every page in the site, copying content stage to live'
     PUBALLFUN: '"Publish All" functionality'
-    PUBALLFUN2: 'Pressing this button will do the equivalent of going to every page and pressing "publish".  It''s intended to be used after there have been massive edits of the content, such as when the site was first built.'
+    PUBALLFUN2: 'Pressing this button will do the equivalent of going to every page and pressing "publish".  It''s intended to be used after there have been massive edits of the content, such as when the site was first built. For large websites, this task might not be able to run through to completion. In this case, we recommend talking to your developers to create a custom task'
     PUBLISHED: 'Published ''{title}'' successfully.'
     PUBPAGES: 'Done: Published {count} pages'
     PageAdded: 'Successfully created page'
@@ -146,7 +146,7 @@ en:
     SELECT_PAGE: 'Select a page'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Cancel
-    EMPTY: 'Please enter a URL segment or click cancel'
+    EMPTY: 'Please enter a URL Segment or click cancel'
     Edit: Edit
     HelpChars: ' Special characters are automatically converted or removed.'
     OK: OK
@@ -245,10 +245,12 @@ en:
     SHOWINSEARCH: 'Show in search?'
     SINGULARNAME: Page
     TABBEHAVIOUR: Behavior
-    TABCONTENT: 'Main content'
+    TABCONTENT: 'Main Content'
     TABDEPENDENT: 'Dependent pages'
     TOPLEVEL: 'Site Content (Top Level)'
-    URLSegment: 'URL segment'
+    UNTITLED: 'Untitled {pagetype}'
+    URLSegment: 'URL Segment'
+    UntitledDependentObject: 'Untitled {instanceType}'
     VIEWERGROUPS: 'Viewer Groups'
     VIEWER_GROUPS_FIELD_DESC: 'Groups with global view permissions: {groupList}'
     VIEW_ALL_DESCRIPTION: 'View any page'

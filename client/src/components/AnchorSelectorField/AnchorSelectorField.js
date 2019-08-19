@@ -41,7 +41,11 @@ class AnchorSelectorField extends SilverStripeComponent {
    */
   ensurePagesLoaded(props = this.props) {
     // Only load if dirty and a valid ID
-    if (props.loadingState === anchorSelectorStates.UPDATING || !props.pageId) {
+    if (
+      props.loadingState === anchorSelectorStates.UPDATING
+      || props.loadingState === anchorSelectorStates.SUCCESS
+      || !props.pageId
+    ) {
       return Promise.resolve();
     }
 
@@ -166,7 +170,12 @@ function mapStateToProps(state, ownProps) {
   const page = pageId
     ? state.cms.anchorSelector.pages.find(next => next.id === pageId)
     : null;
-  if (page && page.loadingState === anchorSelectorStates.SUCCESS) {
+  if (page
+    && (
+      page.loadingState === anchorSelectorStates.SUCCESS
+      || page.loadingState === anchorSelectorStates.DIRTY
+    )
+  ) {
     // eslint-disable-next-line prefer-destructuring
     anchors = page.anchors;
   }
