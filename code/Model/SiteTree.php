@@ -2011,7 +2011,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             );
         }
 
-        if (file_exists(BASE_PATH . '/install.php')) {
+        if (file_exists(PUBLIC_PATH . '/install.php')) {
             $fields->addFieldToTab('Root.Main', LiteralField::create(
                 'InstallWarningHeader',
                 '<div class="alert alert-warning">' . _t(
