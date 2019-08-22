@@ -8,6 +8,7 @@ use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Control\HTTPResponse_Exception;
+use SilverStripe\Control\Middleware\HTTPCacheControlMiddleware;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Core\Manifest\ModuleManifest;
@@ -138,6 +139,13 @@ class ContentController extends Controller
     protected function init()
     {
         parent::init();
+
+        // In the CMS Preview or draft contexts, we never want to cache page output.
+        if ($this->getRequest()->getVar('CMSPreview') === '1'
+            || $this->getRequest()->getVar('stage') === Versioned::DRAFT
+        ) {
+            HTTPCacheControlMiddleware::singleton()->disableCache(true);
+        }
 
         // If we've accessed the homepage as /home/, then we should redirect to /.
         if ($this->dataRecord instanceof SiteTree
