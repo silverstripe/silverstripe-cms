@@ -10,7 +10,7 @@
 [![Dependency Status](https://www.versioneye.com/php/silverstripe:cms/badge.svg)](https://www.versioneye.com/php/silverstripe:cms)
 [![Reference Status](https://www.versioneye.com/php/silverstripe:cms/reference_badge.svg?style=flat)](https://www.versioneye.com/php/silverstripe:cms/references)
 
-PHP5 Content Management System (CMS), see [http://silverstripe.org](http://silverstripe.org). Requires the [`framework`](http://github.com/silverstripe/silverstripe-framework) module and a [`silverstripe-installer`](http://github.com/silverstripe/silverstripe-installer) base project.
+PHP Content Management System (CMS), see [http://silverstripe.org](http://silverstripe.org). Requires the [`framework`](http://github.com/silverstripe/silverstripe-framework) module and a [`silverstripe-installer`](http://github.com/silverstripe/silverstripe-installer) base project.
 
 ## Installation
 
