@@ -3,6 +3,7 @@
  */
 import $ from 'jquery';
 import i18n from 'i18n';
+import reactConfirm from "@silverstripe/reactstrap-confirm";
 
 $.entwine('ss', function($){
 	/**
@@ -258,7 +259,7 @@ $.entwine('ss', function($){
 	 *
 	 * Informing the user about the archive action while requiring confirmation
 	 */
-	$('.cms-edit-form .btn-toolbar #Form_EditForm_action_archive').entwine({
+	$('.cms-edit-form .btn-toolbar #Form_EditForm_action_archive:not(.homepage-warning)').entwine({
 
 		/**
 		 * Function: onclick
@@ -316,7 +317,7 @@ $.entwine('ss', function($){
 	 * Class: .cms-edit-form .btn-toolbar #Form_EditForm_action_unpublish
 	 * Informing the user about the unpublish action while requiring confirmation
 	 */
-	$('.cms-edit-form .btn-toolbar #Form_EditForm_action_unpublish').entwine({
+	$('.cms-edit-form .btn-toolbar #Form_EditForm_action_unpublish:not(.homepage-warning)').entwine({
 
 		/**
 		 * Function: onclick
@@ -476,4 +477,43 @@ $.entwine('ss', function($){
 	if ($('.cms-edit-form.CMSPageSettingsController input[name="ParentType"]:checked').attr('id') == 'Form_EditForm_ParentType_root') {
 		$('.cms-edit-form.CMSPageSettingsController #Form_EditForm_ParentID_Holder').hide(); //quick hide on first run
 	}
+
+  var confirmed = false;
+  /**
+   * Warn the user not to remove the homepage
+   */
+  $('.cms-edit-form .btn-toolbar #Form_EditForm_action_unpublish.homepage-warning,' +
+    '.cms-edit-form .btn-toolbar #Form_EditForm_action_archive.homepage-warning,' +
+    '#Form_EditForm_URLSegment_Holder.homepage-warning .btn.update').entwine({
+    onclick: async function (e) {
+      if (confirmed) {
+        return this._super(e);
+      }
+      e.stopPropagation();
+
+      var message = i18n._t(
+        'CMS.RemoveHomePageWarningMessage',
+        'Warning: This page is the home page. ' +
+        'By changing the URL segment visitors will not be able to view it.'
+      );
+
+      if (await reactConfirm(message, {
+        title: i18n._t(
+          'CMS.RemoveHomePageWarningTitle',
+          'Remove your home page?'
+        ),
+        confirmLabel: i18n._t(
+          'CMS.RemoveHomePageWarningLabel',
+          'Remove'
+        ),
+        confirmColor: 'danger'
+      })) {
+        // Add a loading indicator and continue
+        confirmed = true;
+        this.trigger('click');
+        confirmed = false;
+      }
+      return false;
+    }
+  });
 });

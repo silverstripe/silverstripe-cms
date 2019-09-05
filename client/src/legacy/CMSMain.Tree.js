@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import i18n from 'i18n';
+import reactConfirm from "@silverstripe/reactstrap-confirm";
 
 $.entwine('ss.tree', function($) {
   $('.cms-tree').entwine({
@@ -140,6 +141,44 @@ $.entwine('ss.tree', function($) {
         }
       };
       return config;
+    },
+
+    /**
+     * Validates the moving of a node
+     * @param {Object} data provided by the move_node.jstree event
+     * @returns {Promise<boolean>} Returning false will prevent the node from moving
+     */
+    canMove: async function (data) {
+      // only display warning if its the homepage
+      var isHomePage = data.rslt.o.find(".homepage").first().length > 0;
+      if (!isHomePage) {
+        return true;
+      }
+
+      // only display warning if we're moving to a new parent
+      var oldParentId = data.rslt.op.data('id');
+      var newParentId = data.rslt.np.data('id');
+      if (oldParentId === newParentId) {
+        return true;
+      }
+
+      var message = i18n._t(
+        'CMS.RemoveHomePageWarningMessage',
+        'Warning: This page is the home page. ' +
+        'By changing the URL segment visitors will not be able to view it.'
+      );
+
+      return await reactConfirm(message, {
+        title: i18n._t(
+          'CMS.RemoveHomePageWarningTitle',
+          'Remove your home page?'
+        ),
+        confirmLabel: i18n._t(
+          'CMS.RemoveHomePageWarningLabel',
+          'Remove'
+        ),
+        confirmColor: 'danger'
+      });
     }
   });
 
