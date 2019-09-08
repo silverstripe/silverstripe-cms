@@ -128,14 +128,7 @@ abstract class SilverStripeNavigatorItem extends ViewableData
         }
 
         if (!isset($record->_cached_isArchived)) {
-            $baseClass = $record->baseClass();
-            $currentDraft = Versioned::get_by_stage($baseClass, Versioned::DRAFT)->byID($record->ID);
-            $currentLive = Versioned::get_by_stage($baseClass, Versioned::LIVE)->byID($record->ID);
-
-            $record->_cached_isArchived = (
-                (!$currentDraft || ($currentDraft && $record->Version != $currentDraft->Version))
-                && (!$currentLive || ($currentLive && $record->Version != $currentLive->Version))
-            );
+            $record->_cached_isArchived = $record->isArchived();
         }
 
         return $record->_cached_isArchived;
