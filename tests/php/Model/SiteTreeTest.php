@@ -1272,6 +1272,13 @@ class SiteTreeTest extends SapphireTest
         $this->loginWithPermission('CMS_ACCESS_CMSMain');
         $this->assertArrayHasKey(SiteTreeTest_ClassA::class, $method->invoke($sitetree));
 
+        $this->logInWithPermission('ADMIN');
+        $rootPage = $this->objFromFixture(Page::class, 'home');
+        $nonRootPage = $this->objFromFixture(Page::class, 'staff');
+
+        $this->assertArrayNotHasKey(SiteTreeTest_NotRoot::class, $method->invoke($rootPage));
+        $this->assertArrayHasKey(SiteTreeTest_NotRoot::class, $method->invoke($nonRootPage));
+
         Security::setCurrentUser(null);
     }
 

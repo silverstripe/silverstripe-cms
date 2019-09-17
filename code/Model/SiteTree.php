@@ -2591,6 +2591,11 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         foreach ($classes as $class) {
             $instance = singleton($class);
 
+            //if the current page is root and the instance can't be, exclude
+            if (!$instance->config()->get('can_be_root') && $this->ParentID == 0) {
+                continue;
+            }
+
             // if the current page type is this the same as the class type always show the page type in the list
             if ($this->ClassName != $instance->ClassName) {
                 if ($instance instanceof HiddenClass) {
