@@ -29,7 +29,7 @@ class OldPageRedirector extends Extension
         $getvars = $request->getVars();
         unset($getvars['url']);
 
-        $page = self::find_old_page($params);
+        $page = static::find_old_page($params);
         $cleanPage = trim(Director::makeRelative($page), '/');
         if (!$cleanPage) {
             $cleanPage = Director::makeRelative(RootURLController::get_homepage_link());
