@@ -669,6 +669,9 @@ class VirtualPageTest extends FunctionalTest
     {
         /** @var VirtualPage $virtualPage */
         $virtualPage = $this->objFromFixture(VirtualPage::class, 'vp4');
+        $this->assertTrue($virtualPage->hasMethod('modelMethod'));
+        $this->assertEquals('hi there', $virtualPage->modelMethod());
+
         /** @var VirtualPageTest_ClassAController $controller */
         $controller = ModelAsController::controller_for($virtualPage);
         $this->assertInstanceOf(VirtualPageTest_ClassAController::class, $controller);
