@@ -492,6 +492,19 @@ class VirtualPage extends Page
     }
 
     /**
+     * @param string $method
+     * @return bool
+     */
+    public function hasMethod($method)
+    {
+        if (parent::hasMethod($method)) {
+            return true;
+        }
+        $copy = $this->CopyContentFrom();
+        return $copy && $copy->exists() && $copy->hasMethod($method);
+    }
+
+    /**
      * Return the "casting helper" (a piece of PHP code that when evaluated creates a casted value object) for a field
      * on this object.
      *
