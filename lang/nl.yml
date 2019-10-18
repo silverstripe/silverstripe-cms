@@ -41,7 +41,6 @@ nl:
     PLEASESAVE: 'Sla de pagina eerst op: deze pagina kon niet worden bijgewerkt, omdat hij nog niet was opgeslagen.'
     PUBALLCONFIRM: 'Publiceer elke pagina van de site: dit kopieert de inhoud van de concept site naar de live site'
     PUBALLFUN: '"Publiceer alles" functionaliteit'
-    PUBALLFUN2: 'Deze knop doet hetzelfde als wanneer u naar elke pagina toe zou gaan om daar op ''Publiceren'' te klikken. Gebruik deze knop wanneer er op veel pagina''s wijzigingen zijn doorgevoerd, zoals bijvoorbeeld tijdens de eerste opzet van de website.'
     PUBLISHED: 'Pagina ''{title}'' is gepubliceerd.'
     PUBPAGES: 'Gereed: {count} pagina''s gepubliceerd'
     PageAdded: 'Pagina met succes aangemaakt'
