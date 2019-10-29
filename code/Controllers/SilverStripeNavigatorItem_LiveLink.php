@@ -58,9 +58,18 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem
             $record->hasExtension(Versioned::class)
             && $record->hasStages()
             && $this->getLivePage()
-            // Don't follow redirects in preview, they break the CMS editing form
-            && !($this->record instanceof RedirectorPage)
+            && $this->showLiveLink()
         );
+    }
+
+    public function showLiveLink()
+    {
+        try {
+            return $this->record->config()->get('show_live_link');
+        } catch (\BadMethodCallException $e) {
+            // Not using `config()` or similar
+            return false;
+        }
     }
 
     public function isActive()

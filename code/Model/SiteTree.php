@@ -137,6 +137,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     protected static $_allowedChildren = array();
 
+    private static $show_stage_link = true;
+
+    private static $show_live_link = true;
+
     /**
      * The default child class for this page.
      * Note: Value might be cached, see {@link $allowed_chilren}.

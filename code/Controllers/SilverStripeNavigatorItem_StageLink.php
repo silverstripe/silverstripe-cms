@@ -64,9 +64,18 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem
             $record->hasExtension(Versioned::class)
             && $record->hasStages()
             && $this->getDraftPage()
-            // Don't follow redirects in preview, they break the CMS editing form
-            && !($record instanceof RedirectorPage)
+            && $this->showStageLink()
         );
+    }
+
+    public function showStageLink()
+    {
+        try {
+            return $this->record->config()->get('show_stage_link');
+        } catch (\BadMethodCallException $e) {
+            // Not using `config()` or similar
+            return false;
+        }
     }
 
     public function isActive()
