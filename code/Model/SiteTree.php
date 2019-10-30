@@ -137,8 +137,16 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     protected static $_allowedChildren = array();
 
+    /**
+     * Determines if the Draft Preview panel will appear when in the CMS admin
+     * @var bool
+     */
     private static $show_stage_link = true;
 
+    /**
+     * Determines if the Live Preview panel will appear when in the CMS admin
+     * @var bool
+     */
     private static $show_live_link = true;
 
     /**
