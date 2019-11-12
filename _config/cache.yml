@@ -12,4 +12,7 @@ SilverStripe\Core\Injector\Injector:
     factory: SilverStripe\Core\Cache\CacheFactory
     constructor:
       namespace: "SiteTree_CreatableChildren"
-
+  Psr\SimpleCache\CacheInterface.SiteTree_PageIcons:
+    factory: SilverStripe\Core\Cache\CacheFactory
+    constructor:
+      namespace: "SiteTree_PageIcons"
