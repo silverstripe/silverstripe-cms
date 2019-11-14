@@ -171,6 +171,8 @@ id:
   SilverStripe\CMS\Search\SearchForm:
     FILTERDATEFROM: Dari
     FILTERDATETO: Ke
+    FILTERLABELTEXT: Cari
     GO: Pergi
+    PAGEFILTERDATEHEADING: 'Terakhir diubah'
     SEARCH: Cari
     SearchResults: 'Hasil Pencarian'
