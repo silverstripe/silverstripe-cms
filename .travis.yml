@@ -18,7 +18,7 @@ addons:
 env:
   global:
     - TRAVIS_NODE_VERSION="10"
-    - COMPOSER_ROOT_VERSION="4.5.x-dev"
+    - COMPOSER_ROOT_VERSION="4.6.x-dev"
     - DISPLAY=":99"
     - XVFBARGS=":99 -ac -screen 0 1024x768x16"
     - SS_BASE_URL="http://localhost:8080/"
@@ -52,8 +52,8 @@ before_script:
 
 # Install composer dependencies
   - composer validate
-  - composer require --no-update silverstripe/recipe-testing:^1 silverstripe/recipe-cms:4.5.x-dev
-  - if [[ $DB == PGSQL ]]; then composer require --no-update silverstripe/postgresql:2.1.x-dev; fi
+  - composer require --no-update silverstripe/recipe-testing:^1 silverstripe/recipe-cms:4.6.x-dev
+  - if [[ $DB == PGSQL ]]; then composer require --no-update silverstripe/postgresql:2.4.x-dev; fi
   - composer install --prefer-source --no-interaction --no-progress --no-suggest --optimize-autoloader --verbose --profile
 
 # Install NPM dependencies
