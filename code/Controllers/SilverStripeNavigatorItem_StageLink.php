@@ -3,6 +3,7 @@ namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\Control\Controller;
+use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Convert;
 use SilverStripe\ORM\DataObject;
@@ -62,11 +63,18 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem
         $record = $this->record;
         return (
             $record->hasExtension(Versioned::class)
+            && $this->showStageLink()
             && $record->hasStages()
             && $this->getDraftPage()
-            // Don't follow redirects in preview, they break the CMS editing form
-            && !($record instanceof RedirectorPage)
         );
+    }
+
+    /**
+     * @return bool
+     */
+    public function showStageLink()
+    {
+        return (bool)Config::inst()->get(get_class($this->record), 'show_stage_link');
     }
 
     public function isActive()

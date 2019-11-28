@@ -3,6 +3,7 @@ namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\Control\Controller;
+use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Convert;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Versioned\Versioned;
@@ -56,11 +57,18 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem
         $record = $this->record;
         return (
             $record->hasExtension(Versioned::class)
+            && $this->showLiveLink()
             && $record->hasStages()
             && $this->getLivePage()
-            // Don't follow redirects in preview, they break the CMS editing form
-            && !($this->record instanceof RedirectorPage)
         );
+    }
+
+    /**
+     * @return bool
+     */
+    public function showLiveLink()
+    {
+        return (bool)Config::inst()->get(get_class($this->record), 'show_live_link');
     }
 
     public function isActive()
