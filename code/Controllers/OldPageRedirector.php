@@ -23,8 +23,8 @@ class OldPageRedirector extends Extension
     public function onBeforeHTTPError404($request)
     {
         // We need to get the URL ourselves because $request->allParams() only has a max of 4 params
-        $params = preg_split('|/+|', $request->getURL());
-        $cleanURL = trim(Director::makeRelative($request->getURL(false)), '/');
+        $cleanURL = trim(Director::makeRelative($request->remaining()), '/');
+        $params = preg_split('|/+|', $cleanURL);
 
         $getvars = $request->getVars();
         unset($getvars['url']);
