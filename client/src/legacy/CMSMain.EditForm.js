@@ -11,7 +11,7 @@ $.entwine('ss', function($){
 	 * Alert the user on change of page-type. This might have implications
 	 * on the available form fields etc.
 	 */
-	$('.cms-edit-form :input[name=ClassName]').entwine({
+	$('.cms-edit-form :input#Form_EditForm_ClassName').entwine({
 		// Function: onchange
 		onchange: function() {
 			alert(i18n._t('CMS.ALERTCLASSNAME'));
