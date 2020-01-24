@@ -28,18 +28,18 @@ class RedirectorPage extends Page
 
     private static $show_live_link = false;
 
-    private static $db = array(
+    private static $db = [
         "RedirectionType" => "Enum('Internal,External','Internal')",
         "ExternalURL" => "Varchar(2083)" // 2083 is the maximum length of a URL in Internet Explorer.
-    );
+    ];
 
-    private static $defaults = array(
+    private static $defaults = [
         "RedirectionType" => "Internal"
-    );
+    ];
 
-    private static $has_one = array(
+    private static $has_one = [
         "LinkTo" => SiteTree::class,
-    );
+    ];
 
     private static $table_name = 'RedirectorPage';
 
@@ -91,36 +91,44 @@ class RedirectorPage extends Page
     /**
      * Return the link that we should redirect to.
      * Only return a value if there is a legal redirection destination.
+     *
+     * @return string
      */
     public function redirectionLink()
     {
         // Check external redirect
         if ($this->RedirectionType == 'External') {
-            return $this->ExternalURL ?: null;
+            $result = $this->ExternalURL ?: null;
+
+            $this->extend('updateRedirectionLink', $result);
+
+            return $result;
         }
 
         // Check internal redirect
         /** @var SiteTree $linkTo */
         $linkTo = $this->LinkToID ? SiteTree::get()->byID($this->LinkToID) : null;
+
         if (empty($linkTo)) {
-            return null;
+            $link = null;
+        } elseif ($this->ID == $linkTo->ID) {
+            // We shouldn't point to ourselves
+            $link = null;
+        } elseif ($linkTo instanceof RedirectorPage) {
+            // If we're linking to another redirectorpage then just return the
+            // URLSegment, to prevent a cycle of redirector
+            // pages from causing an infinite loop.  Instead, they will cause
+            // a 30x redirection loop in the browser, but
+            // this can be handled sufficiently gracefully by the browser.
+            $link = $linkTo->regularLink();
+        } else {
+            // For all other pages, just return the link of the page.
+            $link = $linkTo->Link();
         }
 
-        // We shouldn't point to ourselves - that would create an infinite loop!  Return null since we have a
-        // bad configuration
-        if ($this->ID == $linkTo->ID) {
-            return null;
-        }
+        $this->extend('updateRedirectionLink', $link);
 
-        // If we're linking to another redirectorpage then just return the URLSegment, to prevent a cycle of redirector
-        // pages from causing an infinite loop.  Instead, they will cause a 30x redirection loop in the browser, but
-        // this can be handled sufficiently gracefully by the browser.
-        if ($linkTo instanceof RedirectorPage) {
-            return $linkTo->regularLink();
-        }
-
-        // For all other pages, just return the link of the page.
-        return $linkTo->Link();
+        return $link;
     }
 
     public function syncLinkTracking()
@@ -194,12 +202,13 @@ class RedirectorPage extends Page
                 )
             );
         });
+
         return parent::getCMSFields();
     }
 
     // Don't cache RedirectorPages
     public function subPagesToCache()
     {
-        return array();
+        return [];
     }
 }
