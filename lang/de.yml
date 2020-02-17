@@ -20,7 +20,9 @@ de:
     AddNewButton: Hinzufügen
     AddPageRestriction: 'Hinweis: einige Seitentypen sind in diesem Bereich nicht erlaubt.'
     ArchiveWarning: 'Warnung: Die Veröffentlichung dieser Seite wird zurückgenommen, bevor sie archiviert wird.\n\nSind Sie sicher, dass Sie fortfahren wollen?'
+    ArchiveWarningWithCampaigns: 'Warnung: Die Veröffentlichung dieser Seite wird zurückgenommen und automatisch aus den zugehörigen {NumCampaigns} entfernt, bevor sie archiviert wird.\n\nMöchten Sie wirklich fortfahren?'
     ArchiveWarningWithChildren: 'Warnung: Die Veröffentlichung dieser Seite und aller Unterseiten wird zurückgenommen, bevor sie archiviert wird.\n\nSind Sie sicher, dass Sie fortfahren wollen?'
+    ArchiveWarningWithChildrenAndCampaigns: 'Warnung: Die Veröffentlichung dieser Seite mitsamt ihrer Unterseiten wird zurückgenommen und automatisch aus den zugehörigen {NumCampaigns} entfernt, bevor sie archiviert wird.\n\nMöchten Sie wirklich fortfahren?'
     CANT_REORGANISE: 'Sie besitzen nicht die benötigten Zugriffsrechte um Seiten der höchsten Ebene zu bearbeiten. Ihre Änderungen wurden nicht gespeichert.'
     Cancel: Abbrechen
     ChoosePageParentMode: 'Wo soll diese Seite erstellt werden?'
@@ -32,12 +34,14 @@ de:
     NEWPAGE: 'Neue {pagetype}'
     PAGENOTEXISTS: 'Diese Seite existiert nicht'
     PAGES: Seitenstatus
+    PAGESALLOPT: 'Alle Seiten'
     PAGETYPEANYOPT: Alle
     PAGETYPEOPT: Seitentyp
     PAGETYPE_TITLE: '(Seitentyp: {type}) {title}'
     PLEASESAVE: 'Diese Seite konnte nicht aktualisiert werden weil sie noch nicht gespeichert wurde - bitte speichern.'
     PUBALLCONFIRM: 'Veröffentlicht jede Seite des Seitenbaumes und kopiert den Inhalt von Entwurf zu Live.'
     PUBALLFUN: '"Alle veröffentlichen"-Funktion'
+    PUBALLFUN2: 'Wenn Sie auf diese Schaltfläche klicken, wird auf jede Seite gewechselt und auf "Veröffentlichen" geklickt. Es soll verwendet werden, nachdem umfangreiche Änderungen am Inhalt vorgenommen wurden, z. B. als die Website zum ersten Mal erstellt wurde. Bei großen Websites kann diese Aufgabe möglicherweise nicht vollständig ausgeführt werden. In diesem Fall empfehlen wir, mit Ihren Entwicklern zu sprechen, um eine benutzerdefinierte Aufgabe zu erstellen'
     PUBLISHED: '''{title}'' wurde erfolgreich veröffentlicht.'
     PUBPAGES: 'Abgeschlossen: {count} Seiten wurden veröffentlicht'
     PageAdded: 'Seite erfolgreich erstellt'
@@ -53,6 +57,8 @@ de:
     ROLLEDBACKPUBv2: 'Veröffentlichte Version wiederhergestellt'
     ROLLEDBACKVERSIONv2: 'Version #{version} wiederhergestellt.'
     SAVED: '''{title}'' erfolgreich gespeichert.'
+    SAVEDRAFT: Speichern
+    SEARCHRESULTS: Suchergebnisse
     SHOW_AS_LIST: 'als Liste zeigen'
     TOO_MANY_PAGES: 'Zu viele Seiten'
     TabContent: Inhalt
@@ -140,7 +146,6 @@ de:
     SELECT_PAGE: 'Seite auswählen'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Abbrechen
-    EMPTY: 'Bitte geben Sie ein URL-Segment ein oder drücken Sie auf Abbrechen'
     Edit: Bearbeiten
     HelpChars: 'Sonderzeichen werden automatisch umgewandelt oder entfernt.'
     OK: OK
@@ -171,8 +176,10 @@ de:
     ARCHIVEDPAGESHORT: Archiviert
     BUTTONCANCELDRAFT: 'Verwerfe Entwurfsänderungen'
     BUTTONCANCELDRAFTDESC: 'Löschen Sie Ihren Entwurf und kehren Sie zur derzeit veröffentlichten Seite zurück.'
+    BUTTONDELETEDESC: 'Aus draft/live entfernen und in das Archiv verschieben.'
     BUTTONPUBLISHED: Veröffentlicht
     BUTTONSAVED: Gespeichert
+    BUTTONSAVEPUBLISH: Veröffentlichen
     BUTTONUNPUBLISH: 'Veröffentlichung zurücknehmen'
     BUTTONUNPUBLISHDESC: 'Entferne diese Seite aus der veröffentlichten Website'
     Comments: Kommentare
@@ -195,6 +202,7 @@ de:
     HASBROKENLINKS: 'Diese Seite enthält ungültige Verweise.'
     HTMLEDITORTITLE: Inhalt
     INHERIT: 'Von der übergeordneten Seite erben'
+    INHERITSITECONFIG: 'Von den Zugriffseinstellungen der Seite erben'
     LASTPUBLISHED: 'Zuletzt veröffentlicht'
     LASTSAVED: 'Zuletzt gespeichert'
     LASTUPDATED: 'Letzte Änderung'
@@ -212,6 +220,7 @@ de:
     MoreOptions: 'Weitere Optionen'
     NOTPUBLISHED: 'Nicht veröffentlicht'
     OBSOLETECLASS: 'Der Seitentyp {type} wird nicht mehr verwendet. Wenn Sie speichern wird der Seitentyp zurückgesetzt, was Datenverlust verursachen kann'
+    ONLIVEONLYSHORT: 'Nur live'
     ONLIVEONLYSHORTHELP: 'Die Seite ist veröffentlicht, wurde aber von der Entwurf Seite gelöscht.'
     PAGELOCATION: Seitenposition
     PAGETITLE: Seitenname
@@ -235,10 +244,10 @@ de:
     SHOWINSEARCH: 'In der Suche anzeigen?'
     SINGULARNAME: Seite
     TABBEHAVIOUR: Verhalten
-    TABCONTENT: Haupt-Inhalt
     TABDEPENDENT: 'Abhängige Seiten'
     TOPLEVEL: 'Seiten Inhalt (Top Level)'
-    URLSegment: URL-Segment
+    UNTITLED: 'Unbenannt {pagetype}'
+    UntitledDependentObject: 'Unbenannt {instanceType}'
     VIEWERGROUPS: Betrachtergruppen
     VIEWER_GROUPS_FIELD_DESC: 'Gruppen mit globalen Berechtigungen zum Ansehen: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Kann beliebige Seiten betrachten'
@@ -255,8 +264,17 @@ de:
     many_many_ImageTracking: Bild-Verfolgung
     many_many_LinkTracking: Link-Verfolgung
   SilverStripe\CMS\Model\SiteTreeFileExtension:
+    TITLE_INDEX: '#'
     TITLE_TYPE: Typ
     TITLE_USED_ON: 'Verwendet auf'
+  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
+    USAGE: Verwendung
+  SilverStripe\CMS\Model\SiteTreeLink:
+    PLURALNAME: Seiten-Links
+    PLURALS:
+      one: 'Ein Seitenbaum Link'
+      other: '{count} Seitenbaum Links'
+    SINGULARNAME: Seiten-Link
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Verknüpfte Seite'
     DESCRIPTION: 'Zeigt den Inhalt einer anderen Seite an'
@@ -324,5 +342,6 @@ de:
     HEADER: 'Task zum Entfernen aller verwaisten Seiten'
     NONEFOUND: 'Keine verwaisten Seiten gefunden'
     NONEREMOVED: 'Keine entfernt'
+    OPERATION_REMOVE: 'Ausgewählte Elemente aus allen Bereichen entfernen (WARNUNG: Zerstört alle ausgewählten Seiten sowohl aus dem Entwurf als auch im Live-Modus)'
     SELECTALL: 'alle auswählen'
     UNSELECTALL: 'Auswahl aufheben'

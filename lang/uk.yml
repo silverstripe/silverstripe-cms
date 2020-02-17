@@ -93,10 +93,8 @@ uk:
     SHOWINMENUS: 'Показувати у навігації?'
     SHOWINSEARCH: 'Показувати у пошуку?'
     TABBEHAVIOUR: Поводження
-    TABCONTENT: Вміст
     TABDEPENDENT: 'Залежні сторінки'
     TOPLEVEL: 'Вміст Сайту (Верхній Рівень)'
-    URLSegment: 'URL адреса'
     VIEWERGROUPS: 'Групи глядачів'
     VIEW_ALL_DESCRIPTION: 'Перегляд будь-якої сторінки'
     VIEW_DRAFT_CONTENT: 'Переглянути чорновий вміст'

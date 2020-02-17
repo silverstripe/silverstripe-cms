@@ -78,7 +78,6 @@ zh:
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 已存档
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 请输入一个URL分类或点击“取消”
     HelpChars: 特殊字符已自动转换或删除。
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 该页面将会使用户转向另外一个页面
@@ -144,10 +143,8 @@ zh:
     SHOWINMENUS: 在菜单中显示？
     SHOWINSEARCH: 在搜索结果中显示？
     TABBEHAVIOUR: 行为
-    TABCONTENT: 主要内容
     TABDEPENDENT: 依赖页面
     TOPLEVEL: 站点内容（顶层）
-    URLSegment: URL分类
     VIEWERGROUPS: 浏览者分组
     VIEW_ALL_DESCRIPTION: 查看任何页面
     VIEW_ALL_HELP: 能够查看站点上的任何页面，忽略、“访问”选项卡的设置。需要“访问‘页面’部分”权限

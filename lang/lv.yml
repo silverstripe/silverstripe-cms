@@ -58,10 +58,8 @@ lv:
     SHOWINMENUS: 'Rādīt izvēlnēs?'
     SHOWINSEARCH: 'Rādīt meklēšanas rezultātos?'
     TABBEHAVIOUR: Uzvedība
-    TABCONTENT: Saturs
     TABDEPENDENT: 'Atkarīgās lapas'
     TOPLEVEL: 'Vietnes Saturs (Augšējais līmenis)'
-    URLSegment: 'URL Segments'
     VIEWERGROUPS: 'Skatītāju grupas'
     VIEW_ALL_DESCRIPTION: 'Skatī jebkuru lapu'
     VIEW_DRAFT_CONTENT: 'Aplūkot melnraksa saturu'

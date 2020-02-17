@@ -60,9 +60,7 @@ tr:
     SHOWINMENUS: 'Menülerde gösterilsin mi?'
     SHOWINSEARCH: 'Aramalarda gösterilsin mi?'
     TABBEHAVIOUR: Davranış
-    TABCONTENT: İçerik
     TOPLEVEL: 'Site İçeriği (Üst Seviye)'
-    URLSegment: 'URL Kısmı'
     Viewers: 'Görüntüleyici Grupları'
     Visibility: Görünürlük
     has_one_Parent: 'Üst Sayfa'

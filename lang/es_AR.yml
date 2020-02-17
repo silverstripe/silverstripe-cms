@@ -60,10 +60,8 @@ es_AR:
     SHOWINMENUS: '¿Mostrar en menús?'
     SHOWINSEARCH: '¿Mostrar en búsqueda?'
     TABBEHAVIOUR: Compotamiento
-    TABCONTENT: Contenido
     TABDEPENDENT: 'Páginas dependientes'
     TOPLEVEL: 'Contenido del Sitio (Nivel Superior)'
-    URLSegment: 'Segmento del URL'
     VIEW_ALL_DESCRIPTION: 'Ver cualquier página'
     VIEW_DRAFT_CONTENT: 'Ver contenido borrador'
     Viewers: 'Grupos de Observadores'

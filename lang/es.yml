@@ -129,7 +129,6 @@ es:
     SELECT_PAGE: 'Seleccionar una página'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Cancelar
-    EMPTY: Vacío
     Edit: Editar
     HelpChars: 'Los caracteres especiales son automáticamente convertidos o eliminados.'
     OK: Aceptar
@@ -222,10 +221,8 @@ es:
     SHOWINSEARCH: '¿Mostrar en la búsqueda?'
     SINGULARNAME: Página
     TABBEHAVIOUR: Comportamiento
-    TABCONTENT: Contenido
     TABDEPENDENT: 'Páginas dependientes'
     TOPLEVEL: 'Contenido del Sitio (Top Level)'
-    URLSegment: 'Segmento de URL'
     VIEWERGROUPS: 'Visor de Grupos'
     VIEW_ALL_DESCRIPTION: 'Ver cualquier página'
     VIEW_ALL_HELP: 'Ver toda la ayuda'

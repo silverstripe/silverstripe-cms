@@ -53,7 +53,6 @@ ko:
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 보관됨
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'URL 세그먼트를 입력 또는 중지를 클릭'
     HelpChars: '특수 문자는 자동으로 변환되었는지 제거되었습니다'
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: '이 페이지는 다른 페이지로 사용자들을 이동시킵니다.'
@@ -119,10 +118,8 @@ ko:
     SHOWINMENUS: '메뉴에 표시 하시겠습니까?'
     SHOWINSEARCH: '검색에 ​​표시 하시겠습니까?'
     TABBEHAVIOUR: 동작
-    TABCONTENT: 콘텐츠
     TABDEPENDENT: '의존 페이지'
     TOPLEVEL: '사이트의 내용 (최상위 계층)'
-    URLSegment: 'URL 세그먼트'
     VIEWERGROUPS: '뷰어 그룹'
     VIEW_ALL_DESCRIPTION: '모든 페이지보기'
     VIEW_ALL_HELP: '이 사이트의 페이지보기를 하려면 액세스 탭의 설정에 관계없이 "페이지의 섹션에 액세스"권한이 필요합니다.'

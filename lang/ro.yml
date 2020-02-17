@@ -52,7 +52,6 @@ ro:
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arhivă
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Vă rugăm introduceți un Segment URL sau apăsați anulează'
     HelpChars: 'Caracterele speciale sunt convertite automat sau șterse'
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Pagina v-a redirecționa utilizatorii către altă pagină'
@@ -118,10 +117,8 @@ ro:
     SHOWINMENUS: 'Afişează in meniu?'
     SHOWINSEARCH: 'Afisează în căutare'
     TABBEHAVIOUR: Comportament
-    TABCONTENT: 'Conţinut principal'
     TABDEPENDENT: 'Pagini dependente'
     TOPLEVEL: 'Conținut Site (Nivel Top)'
-    URLSegment: 'Segment URL'
     VIEWERGROUPS: 'Grupuri Observatori'
     VIEW_ALL_DESCRIPTION: 'Vizualizează orice pagină'
     VIEW_ALL_HELP: 'Abilitatea de a vizualiza orice pagină din site, indiferent de setările din tabul de Acces. Necesită permisiunea "Acces la secțiunea ''Pagini''"'

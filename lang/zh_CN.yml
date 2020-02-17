@@ -33,7 +33,6 @@ zh_CN:
     SHOWINMENUS: 是否出现在菜单中？
     SHOWINSEARCH: 是否包括在搜索结果中？
     TABBEHAVIOUR: 行为特点
-    TABCONTENT: 内容
     TOPLEVEL: 网站内容（顶层）
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 这是一个虚拟页

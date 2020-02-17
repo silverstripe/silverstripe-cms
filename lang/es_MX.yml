@@ -211,10 +211,8 @@ es_MX:
     SHOWINMENUS: '¿Mostrar en menús?'
     SHOWINSEARCH: '¿Mostrar en búsqueda?'
     TABBEHAVIOUR: Compotamiento
-    TABCONTENT: Contenido
     TABDEPENDENT: 'Páginas dependientes'
     TOPLEVEL: 'Contenido del sitio (Nivel Superior)'
-    URLSegment: 'Segmento de la URL'
     VIEWERGROUPS: 'Ver grupos'
     VIEW_ALL_DESCRIPTION: 'Ver cualquier página'
     VIEW_DRAFT_CONTENT: 'Ver el contenido del boceto'

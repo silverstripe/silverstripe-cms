@@ -41,6 +41,7 @@ nl:
     PLEASESAVE: 'Sla de pagina eerst op: deze pagina kon niet worden bijgewerkt, omdat hij nog niet was opgeslagen.'
     PUBALLCONFIRM: 'Publiceer elke pagina van de site: dit kopieert de inhoud van de concept site naar de live site'
     PUBALLFUN: '"Publiceer alles" functionaliteit'
+    PUBALLFUN2: 'Op deze knop klikken heeft hetzelfde resultaat als bij elke pagina op "Publiceer" te klikken. Het is bedoeld om te gebruiken wanneer er erg grote inhoudsaanpassingen gebeurd zijn, bijvoorbeeld wanneer een nieuwe site voor het eerst gebouwd wordt. Bij grote sites kan het uitvoeren te lang duren. Neem in dat geval contact op met de web-ontwikkelaars om hiervoor een aangepaste taak te maken.'
     PUBLISHED: 'Pagina ''{title}'' is gepubliceerd.'
     PUBPAGES: 'Gereed: {count} pagina''s gepubliceerd'
     PageAdded: 'Pagina met succes aangemaakt'
@@ -145,7 +146,6 @@ nl:
     SELECT_PAGE: 'Selecteer een pagina'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Annuleren
-    EMPTY: 'Vul een URL segment in of klik op annuleren'
     Edit: Bewerken
     HelpChars: 'Speciale tekens worden automatische omgezet of verwijderd.'
     OK: OK
@@ -244,10 +244,10 @@ nl:
     SHOWINSEARCH: 'Weergeven in zoeken?'
     SINGULARNAME: Pagina
     TABBEHAVIOUR: Gedrag
-    TABCONTENT: Hoofdinhoud
     TABDEPENDENT: 'Afhankelijke pagina''s'
     TOPLEVEL: 'Site inhoud (hoogste niveau)'
-    URLSegment: 'URL segment'
+    UNTITLED: 'Naamloos {pagetype}'
+    UntitledDependentObject: 'Naamloos {instanceType}'
     VIEWERGROUPS: Bekijkersgroepen
     VIEWER_GROUPS_FIELD_DESC: 'Groepen die alles mogen bekijken: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Kan iedere pagina op de website bekijken, ongeacht de specifieke pagina instelling'
