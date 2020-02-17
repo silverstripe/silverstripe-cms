@@ -130,7 +130,6 @@ cs:
     ARCHIVED: Archivováno
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Storno
-    EMPTY: 'Zadejte prosím URL segment nebo klikněte zrušit'
     Edit: Editovat
     HelpChars: 'Zvláštní znaky jsou automaticky zkonvertovány nebo odstraněny'
     OK: OK
@@ -217,10 +216,8 @@ cs:
     SHOWINSEARCH: 'Zobrazovat ve vyhledávání?'
     SINGULARNAME: Stránka
     TABBEHAVIOUR: Chování
-    TABCONTENT: Obsah
     TABDEPENDENT: 'Závislé stránky'
     TOPLEVEL: 'Obsah Webu (Nejvyšší úroveň)'
-    URLSegment: 'Segment URL'
     VIEWERGROUPS: 'Prohlížeč skupin'
     VIEW_ALL_DESCRIPTION: 'Může vidět jakoukoli stránku webu, obcházeje bezpečnostní specifikaci stránky'
     VIEW_ALL_HELP: 'Možnost zobrazit libovolnou stránku na webu, bez ohledu na nastevení kartě Přístup. Vyžaduje povolení "Přístup k  sekci ''Stránky''"'

@@ -77,10 +77,8 @@ gl_ES:
     SHOWINMENUS: 'Amosar nos menús?'
     SHOWINSEARCH: 'Amosar na busca?'
     TABBEHAVIOUR: Comportamento
-    TABCONTENT: 'Contido Principal'
     TABDEPENDENT: 'Páxinas dependentes'
     TOPLEVEL: 'Contido do Sitio (Nivel Superior)'
-    URLSegment: 'Segmento URL'
     VIEWERGROUPS: 'Visor Grupos'
     VIEW_ALL_DESCRIPTION: 'Ver calquera páxina'
     VIEW_DRAFT_CONTENT: 'Ver contido do borrador'

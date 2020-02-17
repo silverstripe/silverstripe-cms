@@ -35,7 +35,6 @@ bs:
     SHOWINMENUS: 'Prikaži u izbornicima?'
     SHOWINSEARCH: 'Prikaži u pretrazi?'
     TABBEHAVIOUR: Ponašanje
-    TABCONTENT: Sadržaj
     TOPLEVEL: 'Sadržaj stranice (Glavni nivo)'
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Ovo je virtualna stranica'

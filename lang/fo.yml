@@ -33,7 +33,6 @@ fo:
     SHOWINMENUS: 'Vís á vælmyndum?'
     SHOWINSEARCH: 'Vís í leiting?'
     TABBEHAVIOUR: Virkisháttur
-    TABCONTENT: Innihald
     TOPLEVEL: 'Heimasíðu innihald (Fyrsta støði)'
     has_one_Parent: Yvirsíða
   SilverStripe\CMS\Search\SearchForm:

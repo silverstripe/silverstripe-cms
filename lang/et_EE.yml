@@ -108,10 +108,8 @@ et_EE:
     SHOWINMENUS: 'Näita menüüdes?'
     SHOWINSEARCH: 'Näita otsingus?'
     TABBEHAVIOUR: Käitumine
-    TABCONTENT: Sisu
     TABDEPENDENT: 'Sõltuvad lehed'
     TOPLEVEL: 'Lehe sisu (kõrgeim tase)'
-    URLSegment: 'URL-i jagu'
     VIEWERGROUPS: Vaatajagrupid
     VIEW_ALL_DESCRIPTION: 'Kuva mis tahes leht'
     VIEW_DRAFT_CONTENT: 'Kuva mustandi sisu'

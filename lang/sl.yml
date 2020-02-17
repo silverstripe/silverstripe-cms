@@ -58,7 +58,6 @@ sl:
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arhivirano
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Prosim vnesite URL segment ali kliknite prekliči'
     HelpChars: 'Posebni znaki so samodejno spremenjeni ali odstranjeni.'
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Ta stran bo preusmerila uporabnike na drugo stran'
@@ -127,10 +126,8 @@ sl:
     SHOWINMENUS: 'Pokaži v meniju?'
     SHOWINSEARCH: 'Pokaži v iskalniku?'
     TABBEHAVIOUR: Vedenje
-    TABCONTENT: Vsebina
     TABDEPENDENT: 'Odvisne strani'
     TOPLEVEL: 'Vsebina Strani (Zgornja Stopnja)'
-    URLSegment: 'URL naslov strani'
     VIEWERGROUPS: 'Skupine obiskovalcev'
     VIEW_ALL_DESCRIPTION: 'Prikaz vse strani'
     VIEW_DRAFT_CONTENT: Predogled.

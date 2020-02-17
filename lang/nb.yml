@@ -60,7 +60,6 @@ nb:
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arkivert
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Vennligst skriv inn adressesegment eller trykk avbryt.'
     HelpChars: 'Spesialtegn blir automatisk konvertert eller fjernet.'
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Denne siden vil omdirigere brukere til en annen side'
@@ -129,10 +128,8 @@ nb:
     SHOWINMENUS: 'Vis i menyer?'
     SHOWINSEARCH: 'Vis i søk?'
     TABBEHAVIOUR: Adferd
-    TABCONTENT: Innhold
     TABDEPENDENT: Undersider
     TOPLEVEL: 'Nettstedets innhold (toppnivå)'
-    URLSegment: Adressesegment
     VIEWERGROUPS: Publikumsgrupper
     VIEW_ALL_DESCRIPTION: 'Se på hvilken som helst side'
     VIEW_ALL_HELP: 'Viser alle sider på nettstedet, uavhengig av innstillingene på adgangsfanen. Krever at du har adgang til sideseksjonen.'

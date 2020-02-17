@@ -139,7 +139,6 @@ bg:
     SELECT_PAGE: 'Изберете страница'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Отказ
-    EMPTY: 'Въведете URL Сегмент или изберете отказ'
     Edit: Редактирай
     HelpChars: 'Специалните символи са автоматично конвертирани или изтрити.'
     OK: OK
@@ -235,10 +234,8 @@ bg:
     SHOWINSEARCH: 'Покажи в търсене?'
     SINGULARNAME: Страница
     TABBEHAVIOUR: Поведение
-    TABCONTENT: Съдържание
     TABDEPENDENT: 'Зависими страници'
     TOPLEVEL: 'Съдържание на сайта (Top level)'
-    URLSegment: 'URL - Сегмент'
     VIEWERGROUPS: 'Групи потребители'
     VIEWER_GROUPS_FIELD_DESC: 'Групи с глобални права за преглед: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Достъп до всяка страница'

@@ -52,7 +52,6 @@ mi:
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 'I putumōhiotia'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Tāurua he Wāhanga PRO, ka pāwhiri whakakore rānei'
     HelpChars: 'Ka tahuri aunoatia, ka tangohia rānei ngā pūāhua motuhake'
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Ka tuku anō tēnei whārangi i ngā kaiwhakamahi ki whārangi kē'
@@ -118,10 +117,8 @@ mi:
     SHOWINMENUS: 'Ka kitea i ngā tahua?'
     SHOWINSEARCH: 'Ka kitea i te rapu?'
     TABBEHAVIOUR: Whanonga
-    TABCONTENT: 'Ngā Ihirangi Matua'
     TABDEPENDENT: 'Ngā whārangi hāngai'
     TOPLEVEL: 'Ngā Ihirangi Pae (Taumata Matua)'
-    URLSegment: 'Wāhanga PRO'
     VIEWERGROUPS: 'Ngā Ropū Kaitirotiro'
     VIEW_ALL_DESCRIPTION: 'Tirohia tētahi whārangi'
     VIEW_ALL_HELP: 'Te āhei ki te tiro i tētahi whārangi i te pae, ahakoa ngā tautuhinga i te ripa Uru. Ka hiahia i te whakaaetanga "wāhanga Uru ki ''Ngā Whārangi''"'

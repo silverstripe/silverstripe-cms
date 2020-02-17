@@ -30,8 +30,6 @@ el:
     VIEWPAGEIN: 'Προβολή Σελίδας σε:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Αρχειοθετημένο
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Παρακαλώ εισάγεται ένα τμήμα διεύθυνσης URL ή πατήστε άκυρο'
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Αυτή η σελίδα θα ανακατευθύνει τους χρήστες σε μια άλλη σελίδα'
     REDIRECTTO: 'Ανακατεύθυνση σε'
@@ -70,9 +68,7 @@ el:
     SHOWINMENUS: 'Να φαίνεται στα μενού;'
     SHOWINSEARCH: 'Να φαίνεται στην αναζήτηση'
     TABBEHAVIOUR: Συμπεριφορά
-    TABCONTENT: 'Κυρίως Περιεχόμενο'
     TABDEPENDENT: 'Εξαρτώμενες σελίδες '
-    URLSegment: 'Τμήμα διεύθυνσης URL'
     VIEW_ALL_DESCRIPTION: 'Δείτε κάθε σελίδα'
     Visibility: Ορατότητα
     has_one_Parent: 'Γονική Σελίδα'

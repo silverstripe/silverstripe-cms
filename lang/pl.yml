@@ -142,7 +142,6 @@ pl:
     SELECT_PAGE: 'Wybierz stronę'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Anuluj
-    EMPTY: 'Proszę podać część adresu lub kliknąć anuluj'
     Edit: Edytuj
     HelpChars: 'Znaki specjalne są automatycznie konwertowane lub usuwane.'
     OK: OK
@@ -243,10 +242,8 @@ pl:
     SHOWINSEARCH: 'Pokazuj w wyszukiwarce?'
     SINGULARNAME: Strona
     TABBEHAVIOUR: Zachowanie
-    TABCONTENT: Zawartość
     TABDEPENDENT: 'Strony zależne'
     TOPLEVEL: 'Zawartość witryny (główny poziom)'
-    URLSegment: 'Segment adresu URL'
     VIEWERGROUPS: 'Grupy przeglądających'
     VIEWER_GROUPS_FIELD_DESC: 'Grupy z globalnymi uprawnieniami podglądu: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Przeglądanie stron'

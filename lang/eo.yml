@@ -143,7 +143,6 @@ eo:
     SELECT_PAGE: 'Elekti paĝon'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Rezigni
-    EMPTY: 'Bonvolu enigi URL-segmenton aŭ alklaki al Rezigni'
     Edit: Redakti
     HelpChars: 'Aŭtomate konvertas aŭ forigas specialajn signojn.'
     OK: Akcepti
@@ -241,10 +240,8 @@ eo:
     SHOWINSEARCH: 'Vidigi en serĉo?'
     SINGULARNAME: Paĝo
     TABBEHAVIOUR: Konduto
-    TABCONTENT: 'Ĉefa enhavo'
     TABDEPENDENT: 'Dependaj paĝoj'
     TOPLEVEL: 'Enhavo de Retejo (Supra Nivelo)'
-    URLSegment: URL-segmento
     VIEWERGROUPS: 'Grupoj de vidantoj'
     VIEWER_GROUPS_FIELD_DESC: 'Grupoj kun ĉieaj vidigaj permesoj: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Vidigi ajnan paĝon'

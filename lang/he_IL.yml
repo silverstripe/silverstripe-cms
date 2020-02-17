@@ -102,10 +102,8 @@ he_IL:
     SHOWINMENUS: 'להציג בתפריטים?'
     SHOWINSEARCH: 'לכלול בחיפוש?'
     TABBEHAVIOUR: התנהגות
-    TABCONTENT: 'תוכן ראשי'
     TABDEPENDENT: 'עמודים תלויים'
     TOPLEVEL: 'תוכן האתר (רמה עליונה)'
-    URLSegment: 'מקטע כתובת'
     VIEWERGROUPS: 'קבוצות צופים'
     VIEW_ALL_DESCRIPTION: 'צפייה בכל עמוד שהוא'
     VIEW_DRAFT_CONTENT: 'צפייה בתוכן טיוטה'

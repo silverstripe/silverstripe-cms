@@ -121,7 +121,6 @@ hr:
     SELECT_PAGE: 'Odaberi stranicu'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Odustani
-    EMPTY: 'Molimo unesite dio URLa ili kliknite odustani'
     Edit: Uredi
     HelpChars: 'Posebni znakovi se automatski pretvaraju ili uklanjaju.'
     OK: OK
@@ -201,10 +200,8 @@ hr:
     SHOWINSEARCH: 'Pokaži u tražilici?'
     SINGULARNAME: Stranica
     TABBEHAVIOUR: Karakteristike
-    TABCONTENT: Sadržaj
     TABDEPENDENT: 'Zavisne stranice'
     TOPLEVEL: 'Sadržaj stranice (Top Level)'
-    URLSegment: 'Dio URLa'
     VIEWERGROUPS: 'Grupe preglednika'
     VIEW_ALL_DESCRIPTION: 'Pregled bilo koje stranice'
     VIEW_ALL_HELP: 'Mogućnost pregleda bilo koje stranice, neovisno o postavkama na Pristup tabu. Zahtjeva "Pristup na ''Stranice'' sekciju" dozvolu'

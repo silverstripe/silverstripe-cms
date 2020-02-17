@@ -55,7 +55,6 @@ ja:
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: アーカイブされた
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: URLのセグメントを入力または中止をクリックする
     HelpChars: 特殊文字は自動的に変換されたか取り除かれました
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: このページをユーザーを変更して他のページにしますか？
@@ -122,10 +121,8 @@ ja:
     SHOWINMENUS: メニューに表示しますか？
     SHOWINSEARCH: 検索に表示しますか？
     TABBEHAVIOUR: 動作
-    TABCONTENT: コンテンツ
     TABDEPENDENT: 依存ページ
     TOPLEVEL: 'サイトの内容 (最上位層)'
-    URLSegment: URLセグメント
     VIEWERGROUPS: ビューアのグループ
     VIEW_ALL_DESCRIPTION: すべてのページを閲覧
     VIEW_ALL_HELP: 'このサイトのページを閲覧するには、アクセスタブの設定に関わらず、"ページのセクションへのアクセス"許可が必要です。'

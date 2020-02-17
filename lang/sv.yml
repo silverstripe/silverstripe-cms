@@ -142,7 +142,6 @@ sv:
     SELECT_PAGE: 'Välj en sida'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Avbryt
-    EMPTY: 'Ange ett URL-segment eller klicka på avbryt'
     Edit: Redigera
     HelpChars: 'Specialtecken konverteras eller tas bort'
     OK: OK
@@ -239,10 +238,8 @@ sv:
     SHOWINSEARCH: 'Visa i sökningar?'
     SINGULARNAME: Sida
     TABBEHAVIOUR: Beteende
-    TABCONTENT: Huvudinnehåll
     TABDEPENDENT: 'Beroende sidor'
     TOPLEVEL: 'Sajtinnehåll (toppnivå)'
-    URLSegment: URL-segment
     VIEWERGROUPS: Åtkomstgrupper
     VIEWER_GROUPS_FIELD_DESC: 'Grupper med globala visnings-rättigheter: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Visa alla sidor'
