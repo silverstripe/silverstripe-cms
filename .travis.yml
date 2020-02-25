@@ -1,10 +1,11 @@
 language: php
 
-dist: trusty
+dist: xenial
 
-before_install:
- - sudo apt-get update
- - sudo apt-get install chromium-chromedriver
+services:
+  - mysql
+  - postgresql
+  - xvfb
 
 cache:
   directories:
@@ -14,13 +15,13 @@ addons:
   apt:
     packages:
       - tidy
+      - chromium-chromedriver
+      - chromium-browser
 
 env:
   global:
     - TRAVIS_NODE_VERSION="10"
     - COMPOSER_ROOT_VERSION="4.5.x-dev"
-    - DISPLAY=":99"
-    - XVFBARGS=":99 -ac -screen 0 1024x768x16"
     - SS_BASE_URL="http://localhost:8080/"
     - SS_ENVIRONMENT_TYPE="dev"
 
@@ -33,6 +34,8 @@ matrix:
       env: DB=PGSQL PHPUNIT_TEST=1
     - php: 7.3
       env: DB=MYSQL PDO=1 PHPUNIT_TEST=1
+    - php: 7.4
+      env: DB=MYSQL PHPUNIT_TEST=1
     - php: 7.1
       env: DB=MYSQL BEHAT_TEST=1
     - php: 7.2
@@ -58,6 +61,11 @@ before_script:
 
 # Install NPM dependencies
   - if [[ $NPM_TEST ]]; then nvm install $TRAVIS_NODE_VERSION && nvm use $TRAVIS_NODE_VERSION && npm install -g yarn && yarn install --network-concurrency 1 && yarn run build; fi
+
+# Remove preinstalled Chrome (google-chrome)
+# this would conflict with our chromium-browser installation
+# and its version is incompatible with chromium-chromedriver
+  - sudo apt-get remove -y --purge google-chrome-stable || true
 
 # Start behat services
   - if [[ $BEHAT_TEST ]]; then mkdir artifacts; fi
