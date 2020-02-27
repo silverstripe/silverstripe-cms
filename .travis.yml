@@ -1,6 +1,6 @@
 language: php
 
-dist: precise
+dist: trusty
 
 sudo: false
 
@@ -18,8 +18,6 @@ env:
 
 matrix:
   include:
-    - php: 5.3
-      env: DB=MYSQL
     - php: 5.4
       env: DB=PGSQL
     - php: 5.5
@@ -33,7 +31,7 @@ before_script:
  - composer self-update || true
  - phpenv rehash
  - phpenv config-rm xdebug.ini
- - echo 'memory_limit = 2048M' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+ - echo 'memory_limit = 3072M' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
  - git clone git://github.com/silverstripe/silverstripe-travis-support.git ~/travis-support
  - "if [ \"$BEHAT_TEST\" = \"\" ]; then php ~/travis-support/travis_setup.php --source `pwd` --target ~/builds/ss; fi"
  - "if [ \"$BEHAT_TEST\" = \"1\" ]; then php ~/travis-support/travis_setup.php --source `pwd` --target ~/builds/ss --require silverstripe/behat-extension; fi"
