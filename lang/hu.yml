@@ -50,7 +50,6 @@ hu:
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archiválva
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Írjon be egy URL szegmenst, vagy kattitson a "mégse" feliratra'
     HelpChars: 'A speciális karakterek automatikusan konvertálódnak vagy törlődnek.'
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Ez az oldal egy másik oldalra fogja írányítani a felhasználókat'
@@ -109,10 +108,8 @@ hu:
     SHOWINMENUS: 'Látható legyen a menükben?'
     SHOWINSEARCH: 'Látható legyen a keresésben?'
     TABBEHAVIOUR: Viselkedés
-    TABCONTENT: Tartalom
     TABDEPENDENT: 'Kapcsolodó oldalak'
     TOPLEVEL: 'Oldaltartalom (legfelső szint)'
-    URLSegment: 'URL szegmens'
     VIEWERGROUPS: 'Olvasási joggal rendelkező csoportok'
     VIEW_ALL_DESCRIPTION: 'Bármely oldal megtekintése'
     VIEW_DRAFT_CONTENT: 'Piszkozat megtekintése'

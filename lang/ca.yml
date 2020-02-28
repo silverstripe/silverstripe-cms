@@ -39,9 +39,7 @@ ca:
     SHOWINMENUS: 'Mostra als menús?'
     SHOWINSEARCH: 'Mostra en cerques?'
     TABBEHAVIOUR: Comportament
-    TABCONTENT: Contingut
     TOPLEVEL: 'Contingut del lloc (Nivell principal)'
-    URLSegment: 'Segment URL'
     Viewers: 'Grups de visitadors'
     has_one_Parent: 'Pàgina pare'
     many_many_BackLinkTracking: 'Seguiment d''enllaços retroactius'

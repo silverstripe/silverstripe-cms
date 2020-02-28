@@ -142,7 +142,6 @@ da:
     SELECT_PAGE: 'Vælg en side'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Annuller
-    EMPTY: 'Indtast en URL eller klik annuller'
     Edit: Rediger
     HelpChars: 'Specialkarakterer bliver automatisk konverteret eller fjernet.'
     OK: OK
@@ -239,10 +238,8 @@ da:
     SHOWINSEARCH: 'Vis i søgninger?'
     SINGULARNAME: Side
     TABBEHAVIOUR: Opførsel
-    TABCONTENT: 'Primært indhold'
     TABDEPENDENT: 'Afhængige sider'
     TOPLEVEL: 'Sideindhold (Top niveau)'
-    URLSegment: 'URL adresse'
     VIEWERGROUPS: Visningsgrupper
     VIEWER_GROUPS_FIELD_DESC: 'Grupper med globale se rettigheder: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Vis enhver side'

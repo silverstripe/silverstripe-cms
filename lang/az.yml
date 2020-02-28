@@ -50,10 +50,8 @@ az:
     SHOWINMENUS: 'Menyularda görünsün?'
     SHOWINSEARCH: 'Axtarışda görünsün?'
     TABBEHAVIOUR: Davranış
-    TABCONTENT: Məzmun
     TABDEPENDENT: 'Asılı səhifələr'
     TOPLEVEL: 'Saytın məzmunu (yuxarı səviyyə)'
-    URLSegment: 'URL seqmenti'
     VIEW_ALL_DESCRIPTION: 'İstənilən səhifəyə bax'
     VIEW_DRAFT_CONTENT: 'Qaralama məzmuna bax'
     has_one_Parent: 'Valideyn səhifəsi'

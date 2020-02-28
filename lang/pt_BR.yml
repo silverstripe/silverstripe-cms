@@ -43,9 +43,7 @@ pt_BR:
     SHOWINMENUS: 'Mostrar nos menus?'
     SHOWINSEARCH: 'Uncluir na procura?'
     TABBEHAVIOUR: Comportamento
-    TABCONTENT: Conteúdo
     TOPLEVEL: 'Conteúdo do Site (Top Level)'
-    URLSegment: 'URL da página'
     Viewers: 'Grupo de visualizadores'
     has_one_Parent: 'Página mãe'
     many_many_BackLinkTracking: 'Gerenciar Backlink '

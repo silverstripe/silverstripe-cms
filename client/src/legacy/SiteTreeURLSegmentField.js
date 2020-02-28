@@ -111,8 +111,18 @@ $.entwine('ss', function($) {
 					self.removeClass('loading');
 				}
 			});
-		}
+		},
 	});
+
+	$('.field.urlsegment .text').entwine({
+    onkeydown: function(e) {
+      // Prevent page-level form submission, update this field instead
+      if (e.keyCode === 13) {
+        e.preventDefault();
+        this.closest('.field').update();
+      }
+    }
+  });
 
 	$('.field.urlsegment .edit').entwine({
 		onclick: function(e) {

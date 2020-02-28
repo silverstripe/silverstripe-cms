@@ -52,7 +52,6 @@ sr_RS@latin:
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arhivirano
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Molimo Vas da unesete segment URL-a ili kliknete na Odustani'
     HelpChars: 'Specijalni karakteri su automatski konvertovani ili uklonjeni.'
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Ova stranica će preusmeriti korisnike na drugu stranicu'
@@ -118,10 +117,8 @@ sr_RS@latin:
     SHOWINMENUS: 'Prikazati u menijima?'
     SHOWINSEARCH: 'Prikazati u pretraživanjima?'
     TABBEHAVIOUR: Ponašanje
-    TABCONTENT: 'Glavni sadržaj'
     TABDEPENDENT: 'Zavisne stranice'
     TOPLEVEL: 'Sadržaj sajta (vršni nivo)'
-    URLSegment: 'Segment URL-a'
     VIEWERGROUPS: 'Grupe za pregled'
     VIEW_ALL_DESCRIPTION: 'Pogledaj bilo koju stranicu'
     VIEW_ALL_HELP: 'Mogućnost pregleda bilo koje stranice na sajtu, bez obzira na podešavanja na kartici "Pristup". Zahteva dozvolu za pristup odeljku "Stranice".'

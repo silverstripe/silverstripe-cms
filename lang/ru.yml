@@ -139,7 +139,6 @@ ru:
     SELECT_PAGE: 'Выберите страницу'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Отмена
-    EMPTY: 'Задайте адрес страницы или нажмите "Отмена"'
     Edit: Редактировать
     HelpChars: 'Спецсимволы автоматически конвертируются или удаляются.'
     OK: ОК
@@ -237,10 +236,8 @@ ru:
     SHOWINSEARCH: 'Показывать в поиске?'
     SINGULARNAME: Страница
     TABBEHAVIOUR: Настройки
-    TABCONTENT: Содержимое
     TABDEPENDENT: 'Зависимые страницы'
     TOPLEVEL: 'Содержимое сайта (верхний уровень)'
-    URLSegment: 'Адрес страницы'
     VIEWERGROUPS: 'Группы чтения'
     VIEWER_GROUPS_FIELD_DESC: 'Группы с правами просмотра: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Просмотр любой страницы'

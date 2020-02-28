@@ -83,7 +83,6 @@ ar:
     SELECT_PAGE: 'اختيار صفحة'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: الغاء
-    EMPTY: 'الرجاء إدخال مقطع URL أو انقر فوق إلغاء الأمر'
     Edit: تحرير
     HelpChars: 'يتم تلقائيا تحويل الأحرف الخاصة أو إزالتها.'
     OK: موافق
@@ -152,10 +151,8 @@ ar:
     SHOWINSEARCH: 'عرض في البحث ؟'
     SINGULARNAME: صفحة
     TABBEHAVIOUR: الشسلوك
-    TABCONTENT: المحتوى
     TABDEPENDENT: 'الصفحات المعتدة'
     TOPLEVEL: 'محتوى الموقع ( مستوى أعلى )'
-    URLSegment: 'جزء رابط الموقع'
     VIEWERGROUPS: 'مجموعات الزوار'
     VIEW_ALL_DESCRIPTION: 'Can view any page on the site, bypassing page specific security'
     VIEW_ALL_HELP: 'القدرة على عرض أي صفحة على الموقع، بغض النظر عن الإعدادات على علامة التبويب Access. يتطلب الرخيص "قسم الوصول إلى "الصفحات" "  "Access to ''Pages'' section"'

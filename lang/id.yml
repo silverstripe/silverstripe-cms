@@ -56,7 +56,6 @@ id:
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Terarsip
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Mohon isikan URL atau klik Batal'
     HelpChars: 'Karakter khusus akan dikonversi secara otomatis atau dihapus.'
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Laman ini akan mengarahkan pengguna ke laman lain'
@@ -122,10 +121,8 @@ id:
     SHOWINMENUS: 'Perlihatkan dalam menu?'
     SHOWINSEARCH: 'Perlihatkan dalam pencarian'
     TABBEHAVIOUR: Perilaku
-    TABCONTENT: 'Konten Utama'
     TABDEPENDENT: 'Laman terkait'
     TOPLEVEL: 'Konten Situs (Tingkat Atas)'
-    URLSegment: 'Segmen URL'
     VIEWERGROUPS: 'Kelompok Penampil'
     VIEW_ALL_DESCRIPTION: 'Tampilkan semua laman'
     VIEW_ALL_HELP: 'Bolehkan menampilkan semua laman pada situs, terlepas dari pengaturan Akses. Memerlukan perijinan "Akses ke bagian ''Laman''".'
@@ -171,6 +168,8 @@ id:
   SilverStripe\CMS\Search\SearchForm:
     FILTERDATEFROM: Dari
     FILTERDATETO: Ke
+    FILTERLABELTEXT: Cari
     GO: Pergi
+    PAGEFILTERDATEHEADING: 'Terakhir diubah'
     SEARCH: Cari
     SearchResults: 'Hasil Pencarian'

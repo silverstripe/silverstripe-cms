@@ -39,8 +39,6 @@ is:
     SHOWINMENUS: 'Sýna í valmynd?'
     SHOWINSEARCH: 'Sýna í leit?'
     TABBEHAVIOUR: Hegðun
-    TABCONTENT: Efni
-    URLSegment: 'Slóðar hlutar'
     VIEW_DRAFT_CONTENT: 'Skoða uppkast'
     has_one_Parent: 'Yfir síða'
   SilverStripe\CMS\Model\VirtualPage:

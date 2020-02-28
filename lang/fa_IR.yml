@@ -86,7 +86,6 @@ fa_IR:
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 'بایگانی شده'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'لطفاً یک بخش نشانی اینترنتی را درج نمایید یا روی لغو کلیک کنید.'
     HelpChars: 'کاراکترهای ویژه به‌طور خودکار تبدیل یا حذف می‌شوند.'
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'این صفحه کاربران را به صفحه‌ای دیگر هدایت می‌کند'
@@ -157,10 +156,8 @@ fa_IR:
     SHOWINMENUS: 'نمایش در منوها؟'
     SHOWINSEARCH: 'نمایش در جستجو ؟'
     TABBEHAVIOUR: رفتار
-    TABCONTENT: مطلب
     TABDEPENDENT: 'صفحات وابسته'
     TOPLEVEL: 'محتوای سایت (سطح بالا)'
-    URLSegment: 'بخش آدرس URL'
     VIEWERGROUPS: 'گروه‌های مشاهده‌کنندگان'
     VIEW_ALL_DESCRIPTION: 'مشاهده هر صفحه‌ای'
     VIEW_DRAFT_CONTENT: 'مشاهده محتوای پیش‌نویس'

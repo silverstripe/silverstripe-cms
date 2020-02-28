@@ -34,9 +34,7 @@ si:
     SHOWINMENUS: 'මෙනුවේ පෙන්වන්නද?'
     SHOWINSEARCH: 'සර්ච් ඵකේ පෙන්වන්නද?'
     TABBEHAVIOUR: හැසිරීම
-    TABCONTENT: අන්තර්ගතය
     TOPLEVEL: අන්ර්ගතය
-    URLSegment: 'URL කොටස'
     has_one_Parent: 'මවු පිටුව'
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'මෙය මනඃකල්පිත පිටුවකි'

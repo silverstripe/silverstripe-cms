@@ -60,7 +60,6 @@ lt:
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archyvuota
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    EMPTY: 'Prašome įvesti URL dalį arba spauskite atšaukti'
     HelpChars: 'Specialūs simboliai automatiškai pakeičiami arba pašalinami.'
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Šis puslapis nukreips lankytojus į kitą puslapį'
@@ -129,10 +128,8 @@ lt:
     SHOWINMENUS: 'Ar įtraukti į rodomą meniu?'
     SHOWINSEARCH: 'Rodyti paieškoje?'
     TABBEHAVIOUR: Elgsena
-    TABCONTENT: 'Pagrindinis turinys'
     TABDEPENDENT: 'Priklausantys puslapiai'
     TOPLEVEL: 'Svetainės turinys (aukščiausias lygmuo)'
-    URLSegment: 'URL dalis'
     VIEWERGROUPS: 'Lankytojų grupės'
     VIEW_ALL_DESCRIPTION: 'Gali peržiūrėti bet kurį puslapį svetainėje, apeinant puslapio peržiūros teises'
     VIEW_ALL_HELP: 'Galimybė peržiūrėti bet kurį puslapį svetainėje, nepriklausomai nuo "Priėjimo/Leidimų" skyriaus nustatymų. Būtinas leidimas "Prieiti prie ''Puslapių''"'

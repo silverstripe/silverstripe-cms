@@ -30,9 +30,7 @@ ms:
     SHOWINMENUS: 'Paparkan di menu?'
     SHOWINSEARCH: 'Paparkan di carian?'
     TABBEHAVIOUR: Perilaku
-    TABCONTENT: Kandungan
     TOPLEVEL: 'Kandungan Laman (Peringkat Atas)'
-    URLSegment: 'Segmen URL'
     has_one_Parent: 'Halaman Induk'
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Ini adalah mukasurat maya'

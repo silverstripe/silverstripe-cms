@@ -146,7 +146,7 @@ en:
     SELECT_PAGE: 'Select a page'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Cancel
-    EMPTY: 'Please enter a URL Segment or click cancel'
+    EMPTY: 'Please enter a URL segment or click cancel'
     Edit: Edit
     HelpChars: ' Special characters are automatically converted or removed.'
     OK: OK
@@ -245,11 +245,11 @@ en:
     SHOWINSEARCH: 'Show in search?'
     SINGULARNAME: Page
     TABBEHAVIOUR: Behavior
-    TABCONTENT: 'Main Content'
+    TABCONTENT: 'Main content'
     TABDEPENDENT: 'Dependent pages'
     TOPLEVEL: 'Site Content (Top Level)'
     UNTITLED: 'Untitled {pagetype}'
-    URLSegment: 'URL Segment'
+    URLSegment: 'URL segment'
     UntitledDependentObject: 'Untitled {instanceType}'
     VIEWERGROUPS: 'Viewer Groups'
     VIEWER_GROUPS_FIELD_DESC: 'Groups with global view permissions: {groupList}'

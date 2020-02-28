@@ -107,10 +107,8 @@ pt:
     SHOWINMENUS: 'Mostrar no Menu?'
     SHOWINSEARCH: 'Mostrar nas pesquisas?'
     TABBEHAVIOUR: Comportamento
-    TABCONTENT: Conteúdo
     TABDEPENDENT: 'Páginas Dependentes'
     TOPLEVEL: 'Conteúdo do Site (Nível Superior)'
-    URLSegment: 'Segmento de URL'
     VIEWERGROUPS: 'Ver grupos '
     VIEW_DRAFT_CONTENT: 'Ver o conteúdo de rascunho'
     Viewers: 'Grupo de Visualizadores'

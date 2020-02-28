@@ -143,7 +143,6 @@ it:
     SELECT_PAGE: 'Seleziona una pagina'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Annulla
-    EMPTY: 'Perfavore inserisci un segmento URL o clicca cancella'
     Edit: Modifica
     HelpChars: 'I caratteri speciali sono automaticamente convertiti o eliminati.'
     OK: OK
@@ -241,10 +240,8 @@ it:
     SHOWINSEARCH: 'Visualizza in cerca?'
     SINGULARNAME: Pagina
     TABBEHAVIOUR: Comportamento
-    TABCONTENT: 'Contenuto Principale'
     TABDEPENDENT: 'Pagine dipendenti'
     TOPLEVEL: 'Contenuto del sito (Livello alto)'
-    URLSegment: 'Segmento URL'
     VIEWERGROUPS: 'Gruppi di visualizzatori'
     VIEWER_GROUPS_FIELD_DESC: 'Gruppi con permessi di visualizzazione globale: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Visualizza qualsiasi pagina'

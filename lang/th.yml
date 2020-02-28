@@ -99,10 +99,8 @@ th:
     SHOWINMENUS: 'แสดงในเมนู?'
     SHOWINSEARCH: 'แสดงในผลลัพธ์ของการค้นหาหรือไม่?'
     TABBEHAVIOUR: พฤติกรรม
-    TABCONTENT: เนื้อหา
     TABDEPENDENT: หน้าย่อย
     TOPLEVEL: 'เนื้อหาเว็บไซต์ (ระดับสูงสุด)'
-    URLSegment: 'ส่วนการจัดการ URL'
     VIEWERGROUPS: กลุ่มผู้ชม
     VIEW_ALL_DESCRIPTION: เปิดดูหน้าเว็บใดก็ได้
     VIEW_DRAFT_CONTENT: เปิดดูเนื้อหาฉบับร่าง
