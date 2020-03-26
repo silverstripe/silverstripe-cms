@@ -15,7 +15,7 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest
 {
     protected static $fixture_file = 'SiteTreeHTMLEditorFieldTest.yml';
 
-    public function setUp()
+    protected function setUp() : void
     {
         parent::setUp();
         TestAssetStore::activate('SiteTreeHTMLEditorFieldTest');
@@ -36,7 +36,7 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest
         }
     }
 
-    public function tearDown()
+    protected function tearDown() : void
     {
         TestAssetStore::reset();
         parent::tearDown();

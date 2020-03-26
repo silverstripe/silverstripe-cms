@@ -36,7 +36,7 @@ class ModelAsControllerTest extends FunctionalTest
      * This setup will enable nested-urls for this test and resets the state
      * after the tests have been performed.
      */
-    public function setUp()
+    protected function setUp() : void
     {
         parent::setUp();
         Config::modify()->set(SiteTree::class, 'nested_urls', true);

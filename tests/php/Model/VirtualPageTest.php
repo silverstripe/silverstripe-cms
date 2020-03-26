@@ -45,7 +45,7 @@ class VirtualPageTest extends FunctionalTest
         ],
     ];
 
-    public function setUp()
+    protected function setUp() : void
     {
         parent::setUp();
 

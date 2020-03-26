@@ -31,7 +31,7 @@ class CMSMainTest extends FunctionalTest
 
     protected static $orig = [];
 
-    protected function setUp()
+    protected function setUp() : void
     {
         parent::setUp();
 

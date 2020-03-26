@@ -31,7 +31,7 @@ class ContentControllerSearchExtensionTest extends SapphireTest
         $this->assertEquals([ File::class ], $form->getClassesToSearch());
     }
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass() : void
     {
         parent::setUpBeforeClass();
         FulltextSearchable::enable(File::class);
@@ -42,7 +42,7 @@ class ContentControllerSearchExtensionTest extends SapphireTest
      * properly at the end of the test. This becomes apparent when a later test tries to
      * ALTER TABLE File and add fulltext indexes with the InnoDB table type.
      */
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass() : void
     {
         File::remove_extension(FulltextSearchable::class);
         parent::tearDownAfterClass();

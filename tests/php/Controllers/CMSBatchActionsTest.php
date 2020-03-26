@@ -18,7 +18,7 @@ class CMSBatchActionsTest extends SapphireTest
 {
     protected static $fixture_file = 'CMSBatchActionsTest.yml';
 
-    public function setUp()
+    protected function setUp() : void
     {
         parent::setUp();
 
