@@ -14,7 +14,7 @@ class RedirectorPageTest extends FunctionalTest
 
     protected $autoFollowRedirection = false;
 
-    public function setUp()
+    protected function setUp() : void
     {
         parent::setUp();
         Director::config()->update('alternate_base_url', 'http://www.mysite.com/');

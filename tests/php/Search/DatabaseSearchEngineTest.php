@@ -13,7 +13,7 @@ class DatabaseSearchEngineTest extends SapphireTest
 {
     protected $usesDatabase = true;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass() : void
     {
         parent::setUpBeforeClass();
 

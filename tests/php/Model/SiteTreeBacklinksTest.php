@@ -26,7 +26,7 @@ class SiteTreeBacklinksTest extends SapphireTest
         SiteTreeBacklinksTestContentObject::class,
     ];
 
-    protected function setUp()
+    protected function setUp() : void
     {
         parent::setUp();
 

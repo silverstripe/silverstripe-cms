@@ -22,7 +22,7 @@ class CmsReportsTest extends SapphireTest
 
     private static $daysAgo = 14;
 
-    public function setUp()
+    protected function setUp() : void
     {
         parent::setUp();
 

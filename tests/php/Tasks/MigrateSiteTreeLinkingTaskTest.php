@@ -14,7 +14,7 @@ class MigrateSiteTreeLinkingTaskTest extends SapphireTest
 
     protected static $use_draft_site = true;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass() : void
     {
         parent::setUpBeforeClass();
 
@@ -34,7 +34,7 @@ class MigrateSiteTreeLinkingTaskTest extends SapphireTest
         });
     }
 
-    protected function setUp()
+    protected function setUp() : void
     {
         parent::setUp();
 
