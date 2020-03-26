@@ -359,6 +359,6 @@ class SiteTreeBacklinksTest extends SapphireTest
 
         $content = $gridField->getColumnContent($list->first(), 'Title');
 
-        $this->assertContains('Untitled Backlink test content object', $content);
+        $this->assertStringContainsString('Untitled Backlink test content object', $content);
     }
 }

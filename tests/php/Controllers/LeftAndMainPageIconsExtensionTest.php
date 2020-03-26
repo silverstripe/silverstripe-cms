@@ -17,12 +17,12 @@ class LeftAndMainPageIconsExtensionTest extends SapphireTest
     {
         $extension = new LeftAndMainPageIconsExtension();
         $css = $extension->generatePageIconsCss();
-        $this->assertNotContains('some invalid string', $css);
-        $this->assertContains(
+        $this->assertStringNotContainsString('some invalid string', $css);
+        $this->assertStringContainsString(
             'tests/php/Controllers/LeftAndMainPageIconsExtensionTest/icon_b.jpg?m=',
             $css
         );
-        $this->assertContains(
+        $this->assertStringContainsString(
             'tests/php/Controllers/LeftAndMainPageIconsExtensionTest/icon_c.jpg?m=',
             $css
         );

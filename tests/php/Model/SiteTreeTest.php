@@ -1335,6 +1335,8 @@ class SiteTreeTest extends SapphireTest
 
     public function testCanBeRoot()
     {
+        $this->expectException(ValidationException::class);
+        $this->expectExceptionMessageMatches('/is not allowed on the root level/');
         $page = SiteTree::create();
         $page->ParentID = 0;
         $page->write();
@@ -1342,24 +1344,15 @@ class SiteTreeTest extends SapphireTest
         $notRootPage = new SiteTreeTest_NotRoot();
         $notRootPage->ParentID = 0;
         $isDetected = false;
-        try {
-            $notRootPage->write();
-        } catch (ValidationException $e) {
-            $this->assertContains('is not allowed on the root level', $e->getMessage());
-            $isDetected = true;
-        }
-
-        if (!$isDetected) {
-            $this->fail('Fails validation with $can_be_root=false');
-        }
+        $notRootPage->write();
     }
 
     public function testModifyStatusFlagByInheritance()
     {
         $node = new SiteTreeTest_StageStatusInherit();
         $treeTitle = $node->getTreeTitle();
-        $this->assertContains('InheritedTitle', $treeTitle);
-        $this->assertContains('inherited-class', $treeTitle);
+        $this->assertStringContainsString('InheritedTitle', $treeTitle);
+        $this->assertStringContainsString('inherited-class', $treeTitle);
     }
 
     public function testMenuTitleIsUnsetWhenEqualsTitle()
@@ -1392,8 +1385,8 @@ class SiteTreeTest extends SapphireTest
         $page = new SiteTreeTest_PageNode();
 
         $meta = $page->MetaTags();
-        $this->assertContains('meta name="generator"', $meta, 'Should include generator tag');
-        $this->assertContains(
+        $this->assertStringContainsString('meta name="generator"', $meta, 'Should include generator tag');
+        $this->assertStringContainsString(
             'content="SilverStripe - https://www.silverstripe.org',
             $meta,
             'Should contain default meta generator info'
@@ -1402,7 +1395,7 @@ class SiteTreeTest extends SapphireTest
         // test proper escaping of quotes in attribute value
         Config::modify()->set(SiteTree::class, 'meta_generator', 'Generator with "quotes" in it');
         $meta = $page->MetaTags();
-        $this->assertContains(
+        $this->assertStringContainsString(
             'content="Generator with &quot;quotes&quot; in it',
             $meta,
             'test proper escaping of values from Config'
@@ -1411,7 +1404,7 @@ class SiteTreeTest extends SapphireTest
         // test empty generator - no tag should appear at all
         Config::modify()->set(SiteTree::class, 'meta_generator', '');
         $meta = $page->MetaTags();
-        $this->assertNotContains(
+        $this->assertStringNotContainsString(
             'meta name="generator"',
             $meta,
             'test blank value means no tag generated'
@@ -1450,19 +1443,19 @@ class SiteTreeTest extends SapphireTest
         // Test with title
         $meta = $page->MetaTags();
         $charset = Config::inst()->get(ContentNegotiator::class, 'encoding');
-        $this->assertContains('<meta http-equiv="Content-Type" content="text/html; charset=' . $charset . '"', $meta);
-        $this->assertContains('<meta name="description" content="The &lt;br /&gt; and &lt;br&gt; tags"', $meta);
-        $this->assertContains('<link rel="canonical" href="http://www.mysite.com/html-and-xml"', $meta);
-        $this->assertContains('<meta name="x-page-id" content="' . $page->ID . '"', $meta);
-        $this->assertContains('<meta name="x-cms-edit-link" content="' . $page->CMSEditLink() . '"', $meta);
-        $this->assertContains('<title>HTML &amp; XML</title>', $meta);
+        $this->assertStringContainsString('<meta http-equiv="Content-Type" content="text/html; charset=' . $charset . '"', $meta);
+        $this->assertStringContainsString('<meta name="description" content="The &lt;br /&gt; and &lt;br&gt; tags"', $meta);
+        $this->assertStringContainsString('<link rel="canonical" href="http://www.mysite.com/html-and-xml"', $meta);
+        $this->assertStringContainsString('<meta name="x-page-id" content="' . $page->ID . '"', $meta);
+        $this->assertStringContainsString('<meta name="x-cms-edit-link" content="' . $page->CMSEditLink() . '"', $meta);
+        $this->assertStringContainsString('<title>HTML &amp; XML</title>', $meta);
 
         // Test without title
         $meta = $page->MetaTags(false);
-        $this->assertNotContains('<title>', $meta);
+        $this->assertStringNotContainsString('<title>', $meta);
 
         $meta = $page->MetaTags('false');
-        $this->assertNotContains('<title>', $meta);
+        $this->assertStringNotContainsString('<title>', $meta);
     }
 
     public function testMetaComponents()

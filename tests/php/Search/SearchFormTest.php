@@ -103,7 +103,7 @@ class ZZZSearchFormTest extends FunctionalTest
 
         $sf->setTemplate('BlankPage');
 
-        $this->assertContains(
+        $this->assertStringContainsString(
             '<body class="SearchForm Form BlankPage">',
             $sf->forTemplate()
         );
