@@ -59,7 +59,7 @@ class MigrateSiteTreeLinkingTaskTest extends SapphireTest
         DB::quiet(false);
         $task = new MigrateSiteTreeLinkingTask();
         $task->run(null);
-        $this->assertContains(
+        $this->assertStringContainsString(
             "Migrated page links on 5 Pages",
             ob_get_contents(),
             'Rewritten links are correctly reported'

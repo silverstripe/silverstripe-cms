@@ -146,7 +146,7 @@ class ContentControllerTest extends FunctionalTest
 
         $link = $page->RelativeLink();
         $response = $this->get($link);
-        $this->assertContains(
+        $this->assertStringContainsString(
             sprintf('<a href="%s">Testlink</a>', $linkedPage->Link()),
             $response->getBody(),
             '"sitetree_link" shortcodes get parsed properly'

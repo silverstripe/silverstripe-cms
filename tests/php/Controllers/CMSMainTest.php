@@ -127,7 +127,7 @@ class CMSMainTest extends FunctionalTest
         $this->session()->set('loggedInAs', $this->idFromFixture(Member::class, 'admin'));
 
         $response = $this->get('admin/pages/publishall?confirm=1');
-        $this->assertContains(
+        $this->assertStringContainsString(
             'Done: Published 30 pages',
             $response->getBody()
         );
@@ -319,7 +319,7 @@ class CMSMainTest extends FunctionalTest
 
         $location = $response->getHeader('X-ControllerURL');
         $this->assertNotEmpty($location, 'Must be a redirect on success');
-        $this->assertContains('/show/', $location, 'Must redirect to /show/ the new page');
+        $this->assertStringContainsString('/show/', $location, 'Must redirect to /show/ the new page');
         // TODO Logout
         Security::setCurrentUser(null);
 

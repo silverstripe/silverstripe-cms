@@ -476,7 +476,7 @@ class VirtualPageTest extends FunctionalTest
         try {
             $virtual->write();
         } catch (ValidationException $e) {
-            $this->assertContains('is not allowed on the root level', $e->getMessage());
+            $this->assertStringContainsString('is not allowed on the root level', $e->getMessage());
             $isDetected = true;
         }
 
@@ -602,7 +602,7 @@ class VirtualPageTest extends FunctionalTest
         try {
             $childVirtualPage->write();
         } catch (ValidationException $e) {
-            $this->assertContains('not allowed as child of this parent page', $e->getMessage());
+            $this->assertStringContainsString('not allowed as child of this parent page', $e->getMessage());
             $isDetected = true;
         }
 
@@ -643,8 +643,8 @@ class VirtualPageTest extends FunctionalTest
 
             $response = $this->get($vp->Link());
             $this->assertEquals(200, $response->getStatusCode());
-            $this->assertContains('TestContent', $response->getBody());
-            $this->assertNotContains('NotThisContent', $response->getBody());
+            $this->assertStringContainsString('TestContent', $response->getBody());
+            $this->assertStringNotContainsString('NotThisContent', $response->getBody());
 
             // VirtualPageTest_ClassB doesn't have an associated controller for
             // ModelAsController::controller_for() to find
@@ -660,7 +660,7 @@ class VirtualPageTest extends FunctionalTest
 
             $response = $this->get($vp->Link());
             $this->assertEquals(200, $response->getStatusCode());
-            $this->assertContains('Test Page B', $response->getBody());
+            $this->assertStringContainsString('Test Page B', $response->getBody());
         });
     }
 
