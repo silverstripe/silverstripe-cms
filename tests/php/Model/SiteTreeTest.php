@@ -1335,8 +1335,6 @@ class SiteTreeTest extends SapphireTest
 
     public function testCanBeRoot()
     {
-        $this->expectException(ValidationException::class);
-        $this->expectExceptionMessageMatches('/is not allowed on the root level/');
         $page = SiteTree::create();
         $page->ParentID = 0;
         $page->write();
@@ -1344,7 +1342,16 @@ class SiteTreeTest extends SapphireTest
         $notRootPage = new SiteTreeTest_NotRoot();
         $notRootPage->ParentID = 0;
         $isDetected = false;
-        $notRootPage->write();
+        try {
+            $notRootPage->write();
+        } catch (ValidationException $e) {
+            $this->assertStringContainsString('is not allowed on the root level', $e->getMessage());
+            $isDetected = true;
+        }
+
+        if (!$isDetected) {
+            $this->fail('Fails validation with $can_be_root=false');
+        }
     }
 
     public function testModifyStatusFlagByInheritance()
