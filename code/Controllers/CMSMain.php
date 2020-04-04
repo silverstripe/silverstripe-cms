@@ -1053,7 +1053,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         if ($this->TreeIsFiltered()) {
             $items->push(new ArrayData([
-                'Title' => CMSPagesController::menu_title(),
+                'Title' => $this->menu_title(CMSPagesController::class),
                 'Link' => ($unlinked) ? false : $this->LinkPages()
             ]));
             $items->push(new ArrayData([
@@ -1071,7 +1071,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $record = $this->currentPage();
         if (!$record) {
             $items->push(new ArrayData(array(
-                'Title' => CMSPagesController::menu_title(),
+                'Title' => $this->menu_title(CMSPagesController::class),
                 'Link' => ($unlinked) ? false : $this->LinkPages()
             )));
 
