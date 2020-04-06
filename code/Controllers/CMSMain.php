@@ -1674,9 +1674,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             'getTreeTitle' => 'HTMLFragment'
         ));
 
-        $controller = $this;
         $columns->setFieldFormatting(array(
-            'listChildrenLink' => function ($value, &$item) use ($controller) {
+            'listChildrenLink' => function ($value, &$item) {
                 /** @var SiteTree $item */
                 $num = $item ? $item->numChildren() : null;
                 if ($num) {
@@ -1687,7 +1686,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                     );
                 }
             },
-            'getTreeTitle' => function ($value, &$item) use ($controller) {
+            'getTreeTitle' => function ($value, &$item) {
                 $title = sprintf(
                     '<a class="action-detail" href="%s">%s</a>',
                     Controller::join_links(
