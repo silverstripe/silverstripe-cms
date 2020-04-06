@@ -402,10 +402,12 @@ class CMSMainTest extends FunctionalTest
         $parser = new CSSContentParser($response->getBody());
         $crumbs = $parser->getBySelector('.breadcrumbs-wrapper .crumb');
 
-        $this->assertNotNull($crumbs);
-        $this->assertEquals(2, count($crumbs));
-        $this->assertEquals('Page 3', (string)$crumbs[0]);
-        $this->assertEquals('Page 3.1', (string)$crumbs[1]);
+        $this->assertNotEmpty($crumbs);
+        $this->assertCount(2, $crumbs);
+        $topCrumb = trim(str_replace(PHP_EOL, ' ', $crumbs[0]));
+        $lastCrumb = trim(str_replace(PHP_EOL, ' ', $crumbs[1]));
+        $this->assertEquals('Page 3', $topCrumb);
+        $this->assertEquals('Page 3.1', $lastCrumb);
 
         Security::setCurrentUser(null);
     }
