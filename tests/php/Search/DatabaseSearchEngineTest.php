@@ -47,19 +47,4 @@ class DatabaseSearchEngineTest extends SapphireTest
         );
     }
 
-    /**
-     * Validate that https://github.com/silverstripe/silverstripe-cms/issues/1452 is fixed
-     */
-    public function testSearchEngineEscapeGreaterThan()
-    {
-        $page = new SiteTree();
-        $page->Title = "Unrelated page";
-        $page->write();
-        $page->doPublish();
-
-        $results = DB::get_conn()->searchEngine([ SiteTree::class, File::class ], "foo>*", 0, 100, "\"Relevance\" DESC", "", true);
-
-        // We're not trying to match this query, just confirm that it successfully executes
-        $this->assertCount(0, $results);
-    }
 }
