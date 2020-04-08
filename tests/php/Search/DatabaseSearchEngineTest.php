@@ -13,6 +13,11 @@ class DatabaseSearchEngineTest extends SapphireTest
 {
     protected $usesDatabase = true;
 
+    /**
+     * @var bool InnoDB doesn't update indexes until transactions are committed
+     */
+    protected $usesTransactions = false;
+
     public static function setUpBeforeClass()
     {
         parent::setUpBeforeClass();
@@ -46,5 +51,4 @@ class DatabaseSearchEngineTest extends SapphireTest
             $results->First()->Title
         );
     }
-
 }
