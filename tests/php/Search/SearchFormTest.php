@@ -44,6 +44,11 @@ class ZZZSearchFormTest extends FunctionalTest
      */
     protected $mockController;
 
+    /**
+     * @var bool InnoDB doesn't update indexes until transactions are committed
+     */
+    protected $usesTransactions = false;
+
     public function waitUntilIndexingFinished()
     {
         $schema = DB::get_schema();

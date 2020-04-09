@@ -13,6 +13,11 @@ class DatabaseSearchEngineTest extends SapphireTest
 {
     protected $usesDatabase = true;
 
+    /**
+     * @var bool InnoDB doesn't update indexes until transactions are committed
+     */
+    protected $usesTransactions = false;
+
     public static function setUpBeforeClass()
     {
         parent::setUpBeforeClass();
@@ -45,21 +50,5 @@ class DatabaseSearchEngineTest extends SapphireTest
             "This page provides food as bar",
             $results->First()->Title
         );
-    }
-
-    /**
-     * Validate that https://github.com/silverstripe/silverstripe-cms/issues/1452 is fixed
-     */
-    public function testSearchEngineEscapeGreaterThan()
-    {
-        $page = new SiteTree();
-        $page->Title = "Unrelated page";
-        $page->write();
-        $page->doPublish();
-
-        $results = DB::get_conn()->searchEngine([ SiteTree::class, File::class ], "foo>*", 0, 100, "\"Relevance\" DESC", "", true);
-
-        // We're not trying to match this query, just confirm that it successfully executes
-        $this->assertCount(0, $results);
     }
 }
