@@ -1687,12 +1687,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 }
             },
             'getTreeTitle' => function ($value, &$item) {
+                /** @var SiteTree $item */
                 $title = sprintf(
                     '<a class="action-detail" href="%s">%s</a>',
-                    Controller::join_links(
-                        CMSPageEditController::singleton()->Link('show'),
-                        (int)$item->ID
-                    ),
+                    $item->CMSEditLink(),
                     $item->TreeTitle // returns HTML, does its own escaping
                 );
                 $breadcrumbs = $item->Breadcrumbs(20, true, false, true, '/');
@@ -2073,7 +2071,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $id = (isset($data['ID'])) ? (int) $data['ID'] : null;
         $version = (isset($data['Version'])) ? (int) $data['Version'] : null;
 
-        /** @var DataObject|Versioned $record */
+        /** @var SiteTree|Versioned $record */
         $record = Versioned::get_latest_version($this->config()->get('tree_class'), $id);
         if ($record && !$record->canEdit()) {
             return Security::permissionFailure($this);
@@ -2100,7 +2098,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         // Can be used in different contexts: In normal page edit view, in which case the redirect won't have any effect.
         // Or in history view, in which case a revert causes the CMS to re-load the edit view.
         // The X-Pjax header forces a "full" content refresh on redirect.
-        $url = Controller::join_links(CMSPageEditController::singleton()->Link('show'), $record->ID);
+        $url = $record->CMSEditLink();
         $this->getResponse()->addHeader('X-ControllerURL', $url);
         $this->getRequest()->addHeader('X-Pjax', 'Content');
         $this->getResponse()->addHeader('X-Pjax', 'Content');
@@ -2269,6 +2267,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 throw new HTTPResponse_Exception("Bad record ID #$id", 404);
             }
 
+            /** @var SiteTree $newPage */
             $newPage = $page->duplicate();
 
             // ParentID can be hard-set in the URL.  This is useful for pages with multiple parents
@@ -2285,7 +2284,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                     array('title' => $newPage->Title)
                 ))
             );
-            $url = Controller::join_links(CMSPageEditController::singleton()->Link('show'), $newPage->ID);
+            $url = $newPage->CMSEditLink();
             $this->getResponse()->addHeader('X-ControllerURL', $url);
             $this->getRequest()->addHeader('X-Pjax', 'Content');
             $this->getResponse()->addHeader('X-Pjax', 'Content');
@@ -2312,6 +2311,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 throw new HTTPResponse_Exception("Bad record ID #$id", 404);
             }
 
+            /** @var SiteTree $newPage */
             $newPage = $page->duplicateWithChildren();
 
             $this->getResponse()->addHeader(
@@ -2322,7 +2322,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                     array('title' => $newPage->Title)
                 ))
             );
-            $url = Controller::join_links(CMSPageEditController::singleton()->Link('show'), $newPage->ID);
+            $url = $newPage->CMSEditLink();
             $this->getResponse()->addHeader('X-ControllerURL', $url);
             $this->getRequest()->addHeader('X-Pjax', 'Content');
             $this->getResponse()->addHeader('X-Pjax', 'Content');
