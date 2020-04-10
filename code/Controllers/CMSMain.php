@@ -1687,6 +1687,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 }
             },
             'getTreeTitle' => function ($value, &$item) {
+                /** @var SiteTree $item */
                 $title = sprintf(
                     '<a class="action-detail" href="%s">%s</a>',
                     Controller::join_links(
@@ -2073,7 +2074,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $id = (isset($data['ID'])) ? (int) $data['ID'] : null;
         $version = (isset($data['Version'])) ? (int) $data['Version'] : null;
 
-        /** @var DataObject|Versioned $record */
+        /** @var SiteTree|Versioned $record */
         $record = Versioned::get_latest_version($this->config()->get('tree_class'), $id);
         if ($record && !$record->canEdit()) {
             return Security::permissionFailure($this);
@@ -2269,6 +2270,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 throw new HTTPResponse_Exception("Bad record ID #$id", 404);
             }
 
+            /** @var SiteTree $newPage */
             $newPage = $page->duplicate();
 
             // ParentID can be hard-set in the URL.  This is useful for pages with multiple parents
@@ -2312,6 +2314,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 throw new HTTPResponse_Exception("Bad record ID #$id", 404);
             }
 
+            /** @var SiteTree $newPage */
             $newPage = $page->duplicateWithChildren();
 
             $this->getResponse()->addHeader(
