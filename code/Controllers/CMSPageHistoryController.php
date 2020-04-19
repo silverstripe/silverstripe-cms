@@ -39,18 +39,18 @@ class CMSPageHistoryController extends CMSMain
 
     private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
 
-    private static $allowed_actions = array(
+    private static $allowed_actions = [
         'EditForm',
         'VersionsForm',
         'CompareVersionsForm',
         'show',
         'compare'
-    );
+    ];
 
-    private static $url_handlers = array(
+    private static $url_handlers = [
         '$Action/$ID/$VersionID/$OtherVersionID' => 'handleAction',
         'EditForm/$ID/$VersionID' => 'EditForm',
-    );
+    ];
 
     /**
      * Current version ID for this request. Can be 0 for latest version
@@ -101,7 +101,7 @@ class CMSPageHistoryController extends CMSMain
         });
         $negotiator->setCallback('default', function () use ($form) {
             return $this
-                ->customise(array('EditForm' => $form))
+                ->customise(['EditForm' => $form])
                 ->renderWith($this->getViewer('show'));
         });
 
@@ -124,7 +124,7 @@ class CMSPageHistoryController extends CMSMain
             return $form ? $form->forTemplate() : $this->renderWith($this->getTemplatesWithSuffix('_Content'));
         });
         $negotiator->setCallback('default', function () use ($form) {
-            return $this->customise(array('EditForm' => $form))->renderWith($this->getViewer('show'));
+            return $this->customise(['EditForm' => $form])->renderWith($this->getViewer('show'));
         });
 
         return $negotiator->respond($request);
@@ -229,10 +229,10 @@ class CMSPageHistoryController extends CMSMain
             $message = _t(
                 __CLASS__ . '.COMPARINGVERSION',
                 "Comparing versions {version1} and {version2}.",
-                array(
+                [
                     'version1' => sprintf('%s (<a href="%s">%s</a>)', $versionID, Controller::join_links($link, $versionID), $view),
                     'version2' => sprintf('%s (<a href="%s">%s</a>)', $compareID, Controller::join_links($link, $compareID), $view)
-                )
+                ]
             );
 
             $revert->setReadonly(true);
@@ -243,7 +243,7 @@ class CMSPageHistoryController extends CMSMain
                 $message = _t(
                     __CLASS__ . '.VIEWINGVERSION',
                     "Currently viewing version {version}.",
-                    array('version' => $versionID)
+                    ['version' => $versionID]
                 );
             }
         }
@@ -251,17 +251,17 @@ class CMSPageHistoryController extends CMSMain
         /** @var Tab $mainTab */
         $mainTab = $fields->fieldByName('Root.Main');
         $mainTab->unshift(
-            LiteralField::create('CurrentlyViewingMessage', ArrayData::create(array(
+            LiteralField::create('CurrentlyViewingMessage', ArrayData::create([
                 'Content' => DBField::create_field('HTMLFragment', $message),
                 'Classes' => 'alert alert-info'
-            ))->renderWith($this->getTemplatesWithSuffix('_notice')))
+            ])->renderWith($this->getTemplatesWithSuffix('_notice')))
         );
 
         $form->setFields($fields->makeReadonly());
-        $form->loadDataFrom(array(
+        $form->loadDataFrom([
             "ID" => $id,
             "Version" => $versionID,
-        ));
+        ]);
 
         if ($record->isLatestVersion()) {
             $revert->setReadonly(true);
@@ -322,9 +322,9 @@ class CMSPageHistoryController extends CMSMain
 
             $vd = new ViewableData();
 
-            $versionsHtml = $vd->customise(array(
+            $versionsHtml = $vd->customise([
                 'Versions' => $versions
-            ))->renderWith($this->getTemplatesWithSuffix('_versions'));
+            ])->renderWith($this->getTemplatesWithSuffix('_versions'));
         }
 
         $fields = new FieldList(
@@ -411,10 +411,10 @@ class CMSPageHistoryController extends CMSMain
         $form->addExtraClass('compare');
 
         $form->loadDataFrom($record);
-        $form->loadDataFrom(array(
+        $form->loadDataFrom([
             "ID" => $id,
             "Version" => $fromVersion,
-        ));
+        ]);
 
         // Comparison views shouldn't be editable.
         // As the comparison output is HTML and not valid values for the various field types

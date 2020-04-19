@@ -51,8 +51,8 @@ class CMSBatchAction_Restore extends CMSBatchAction
     public function applicablePages($ids)
     {
         // Basic permission check based on SiteTree::canEdit
-        if (!Permission::check(array("ADMIN", "SITETREE_EDIT_ALL"))) {
-            return array();
+        if (!Permission::check(["ADMIN", "SITETREE_EDIT_ALL"])) {
+            return [];
         }
 
         // Get pages that exist in stage and remove them from the restore-able set

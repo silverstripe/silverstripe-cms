@@ -9,5 +9,5 @@ class SiteTreeTest_ClassC extends Page implements TestOnly
 {
     private static $table_name = 'SiteTreeTest_ClassC';
 
-    private static $allowed_children = array();
+    private static $allowed_children = [];
 }

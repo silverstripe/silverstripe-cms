@@ -7,9 +7,9 @@ use PageController;
 
 class SiteTreeTest_ConflictedController extends PageController implements TestOnly
 {
-    private static $allowed_actions = array(
+    private static $allowed_actions = [
         'conflicted-action'
-    );
+    ];
 
     public function hasActionTemplate($template)
     {

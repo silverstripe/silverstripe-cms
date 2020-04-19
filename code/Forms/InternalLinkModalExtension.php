@@ -17,10 +17,10 @@ class InternalLinkModalExtension extends Extension
         'editorAnchorLink/$ItemID' => 'editorAnchorLink', // Matches LeftAndMain::methodSchema args
     ];
 
-    private static $allowed_actions = array(
+    private static $allowed_actions = [
         'editorInternalLink',
         'editorAnchorLink',
-    );
+    ];
 
     /**
      * @return ModalController

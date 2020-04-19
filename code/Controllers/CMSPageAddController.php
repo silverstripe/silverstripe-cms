@@ -31,18 +31,18 @@ class CMSPageAddController extends CMSPageEditController
     private static $menu_title = 'Add page';
     private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
 
-    private static $allowed_actions = array(
+    private static $allowed_actions = [
         'AddForm',
         'doAdd',
         'doCancel'
-    );
+    ];
 
     /**
      * @return Form
      */
     public function AddForm()
     {
-        $pageTypes = array();
+        $pageTypes = [];
         $defaultIcon = Config::inst()->get(SiteTree::class, 'icon_class');
 
         foreach ($this->PageTypes() as $type) {
@@ -67,7 +67,7 @@ class CMSPageAddController extends CMSPageEditController
         // Ensure generic page type shows on top
         if (isset($pageTypes['Page'])) {
             $pageTitle = $pageTypes['Page'];
-            $pageTypes = array_merge(array('Page' => $pageTitle), $pageTypes);
+            $pageTypes = array_merge(['Page' => $pageTitle], $pageTypes);
         }
 
         $numericLabelTmpl = '<span class="step-label"><span class="flyout">Step %d. </span><span class="title">%s</span></span>';
@@ -78,7 +78,7 @@ class CMSPageAddController extends CMSPageEditController
         $fields = new FieldList(
             $parentModeField = new SelectionGroup(
                 "ParentModeField",
-                array(
+                [
                     new SelectionGroup_Item(
                         "top",
                         null,
@@ -95,7 +95,7 @@ class CMSPageAddController extends CMSPageEditController
                         ),
                         $childTitle
                     )
-                )
+                ]
             ),
             new LiteralField(
                 'RestrictedNote',
@@ -170,11 +170,11 @@ class CMSPageAddController extends CMSPageEditController
             $request = $this->getRequest();
             if ($request->isAjax() && $negotiator) {
                 $result = $form->forTemplate();
-                return $negotiator->respond($request, array(
+                return $negotiator->respond($request, [
                     'CurrentForm' => function () use ($result) {
                         return $result;
                     }
-                ));
+                ]);
             }
             return null;
         });
@@ -211,7 +211,7 @@ class CMSPageAddController extends CMSPageEditController
             $parentID = 0;
         }
 
-        if (!singleton($className)->canCreate(Security::getCurrentUser(), array('Parent' => $parentObj))) {
+        if (!singleton($className)->canCreate(Security::getCurrentUser(), ['Parent' => $parentObj])) {
             return Security::permissionFailure($this);
         }
 

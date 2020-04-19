@@ -10,5 +10,8 @@
 		<exclude name="Squiz.Classes.ValidClassName.NotCamelCaps" />
 		<exclude name="Generic.Files.LineLength.TooLong" />
 	</rule>
+
+	<!-- use short array syntax -->
+	<rule ref="Generic.Arrays.DisallowLongArraySyntax" />
 </ruleset>
 

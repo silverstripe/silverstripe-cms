@@ -51,12 +51,12 @@ class CmsReportsTest extends SapphireTest
         $class = get_class($report);
 
         // ASSERT that the "draft" report is returning the correct results.
-        $parameters = array('CheckSite' => 'Draft');
+        $parameters = ['CheckSite' => 'Draft'];
         $results = count($report->sourceRecords($parameters, null, null)) > 0;
         $isDraftBroken ? $this->assertTrue($results, "{$class} has NOT returned the correct DRAFT results, as NO pages were found.") : $this->assertFalse($results, "{$class} has NOT returned the correct DRAFT results, as pages were found.");
 
         // ASSERT that the "published" report is returning the correct results.
-        $parameters = array('CheckSite' => 'Published', 'OnLive' => 1);
+        $parameters = ['CheckSite' => 'Published', 'OnLive' => 1];
         $results = count($report->sourceRecords($parameters, null, null)) > 0;
         $isPublishedBroken ? $this->assertTrue($results, "{$class} has NOT returned the correct PUBLISHED results, as NO pages were found.") : $this->assertFalse($results, "{$class} has NOT returned the correct PUBLISHED results, as pages were found.");
     }
@@ -71,9 +71,9 @@ class CmsReportsTest extends SapphireTest
         $r = new RecentlyEditedReport();
 
         // check if contains only elements not older than $daysAgo days
-        $this->assertNotNull($r->records(array()));
-        $this->assertContains($after->ID, $r->records(array())->column('ID'));
-        $this->assertNotContains($before->ID, $r->records(array())->column('ID'));
+        $this->assertNotNull($r->records([]));
+        $this->assertContains($after->ID, $r->records([])->column('ID'));
+        $this->assertNotContains($before->ID, $r->records([])->column('ID'));
 
         DBDatetime::clear_mock_now();
     }

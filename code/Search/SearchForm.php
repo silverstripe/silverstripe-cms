@@ -41,14 +41,14 @@ class SearchForm extends Form
      *
      * @var array
      */
-    protected $classesToSearch = array(
+    protected $classesToSearch = [
         SiteTree::class,
         File::class
-    );
+    ];
 
-    private static $casting = array(
+    private static $casting = [
         'SearchQuery' => 'Text'
-    );
+    ];
 
     /**
      * @skipUpgrade
@@ -97,7 +97,7 @@ class SearchForm extends Form
      */
     public function classesToSearch($classes)
     {
-        $supportedClasses = array(SiteTree::class, File::class);
+        $supportedClasses = [SiteTree::class, File::class];
         $illegalClasses = array_diff($classes, $supportedClasses);
         if ($illegalClasses) {
             throw new BadMethodCallException(

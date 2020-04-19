@@ -12,8 +12,8 @@ class ThemeContext implements Context
 {
     use MainContextAwareTrait;
 
-    protected $restoreFiles = array();
-    protected $restoreDirectories = array();
+    protected $restoreFiles = [];
+    protected $restoreDirectories = [];
 
     /**
      * Create a test theme
@@ -98,7 +98,7 @@ class ThemeContext implements Context
                 }
             }
 
-            $this->restoreFiles = array();
+            $this->restoreFiles = [];
         }
 
         // Restore any created directories: that is, delete them
@@ -109,7 +109,7 @@ class ThemeContext implements Context
                 rmdir($dir);
             }
 
-            $this->restoreDirectories = array();
+            $this->restoreDirectories = [];
         }
     }
 }

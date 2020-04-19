@@ -55,7 +55,7 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest
         $editor->setValue("<a href=\"[sitetree_link,id=$aboutID]\">Example Link</a>");
         $editor->saveInto($sitetree);
         $sitetree->write();
-        $this->assertEquals(array($aboutID => $aboutID), $sitetree->LinkTracking()->getIdList(), 'Basic link tracking works.');
+        $this->assertEquals([$aboutID => $aboutID], $sitetree->LinkTracking()->getIdList(), 'Basic link tracking works.');
 
         $editor->setValue(
             "<a href=\"[sitetree_link,id=$aboutID]\"></a><a href=\"[sitetree_link,id=$contactID]\"></a>"
@@ -63,7 +63,7 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest
         $editor->saveInto($sitetree);
         $sitetree->write();
         $this->assertEquals(
-            array($aboutID => $aboutID, $contactID => $contactID),
+            [$aboutID => $aboutID, $contactID => $contactID],
             $sitetree->LinkTracking()->getIdList(),
             'Tracking works on multiple links'
         );
@@ -71,14 +71,14 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest
         $editor->setValue(null);
         $editor->saveInto($sitetree);
         $sitetree->write();
-        $this->assertEquals(array(), $sitetree->LinkTracking()->getIdList(), 'Link tracking is removed when links are.');
+        $this->assertEquals([], $sitetree->LinkTracking()->getIdList(), 'Link tracking is removed when links are.');
 
         // Legacy support - old CMS versions added link shortcodes with spaces instead of commas
         $editor->setValue("<a href=\"[sitetree_link id=$aboutID]\">Example Link</a>");
         $editor->saveInto($sitetree);
         $sitetree->write();
         $this->assertEquals(
-            array($aboutID => $aboutID),
+            [$aboutID => $aboutID],
             $sitetree->LinkTracking()->getIdList(),
             'Link tracking with space instead of comma in shortcode works.'
         );

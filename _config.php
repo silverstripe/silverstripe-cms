@@ -30,7 +30,7 @@ call_user_func(function () {
  */
 ShortcodeParser::get('default')->register(
     'sitetree_link',
-    array(SiteTree::class, 'link_shortcode_handler')
+    [SiteTree::class, 'link_shortcode_handler']
 );
 
 // TODO Remove once we can configure CMSMenu through static, nested configuration files

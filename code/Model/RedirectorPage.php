@@ -158,10 +158,10 @@ class RedirectorPage extends Page
                 if (empty($urlParts['scheme'])) {
                     // no scheme, assume http
                     $this->ExternalURL = 'http://' . $this->ExternalURL;
-                } elseif (!in_array($urlParts['scheme'], array(
+                } elseif (!in_array($urlParts['scheme'], [
                     'http',
                     'https',
-                ))) {
+                ])) {
                     // we only allow http(s) urls
                     $this->ExternalURL = '';
                 }
@@ -182,15 +182,15 @@ class RedirectorPage extends Page
 
             $fields->addFieldsToTab(
                 'Root.Main',
-                array(
+                [
                     new HeaderField('RedirectorDescHeader', _t(__CLASS__.'.HEADER', "This page will redirect users to another page")),
                     new OptionsetField(
                         "RedirectionType",
                         _t(__CLASS__.'.REDIRECTTO', "Redirect to"),
-                        array(
+                        [
                             "Internal" => _t(__CLASS__.'.REDIRECTTOPAGE', "A page on your website"),
                             "External" => _t(__CLASS__.'.REDIRECTTOEXTERNAL', "Another website"),
-                        ),
+                        ],
                         "Internal"
                     ),
                     new TreeDropdownField(
@@ -199,7 +199,7 @@ class RedirectorPage extends Page
                         SiteTree::class
                     ),
                     new TextField("ExternalURL", _t(__CLASS__.'.OTHERURL', "Other website URL"))
-                )
+                ]
             );
         });
 

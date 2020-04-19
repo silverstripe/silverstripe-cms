@@ -131,12 +131,12 @@ class CMSPageHistoryControllerTest extends FunctionalTest
         $form = $this->cssParser()->getBySelector('#Form_VersionsForm');
         $rows = $form[0]->xpath("fieldset/table/tbody/tr");
 
-        $expected = array(
-            array('version' => $this->versionPublishCheck2, 'status' => 'published'),
-            array('version' => $this->versionUnpublishedCheck2, 'status' => 'internal'),
-            array('version' => $this->versionPublishCheck, 'status' => 'published'),
-            array('version' => $this->versionUnpublishedCheck, 'status' => 'internal')
-        );
+        $expected = [
+            ['version' => $this->versionPublishCheck2, 'status' => 'published'],
+            ['version' => $this->versionUnpublishedCheck2, 'status' => 'internal'],
+            ['version' => $this->versionPublishCheck, 'status' => 'published'],
+            ['version' => $this->versionUnpublishedCheck, 'status' => 'internal']
+        ];
 
         // goes the reverse order that we created in setUp()
         $i = 0;

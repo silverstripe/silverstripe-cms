@@ -9,5 +9,5 @@ class VirtualPageTest_ClassC extends Page implements TestOnly
 {
     private static $table_name = 'VirtualPageTest_ClassC';
 
-    private static $allowed_children = array();
+    private static $allowed_children = [];
 }

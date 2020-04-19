@@ -10,7 +10,7 @@ class CMSMainTest_ClassA extends Page implements TestOnly
 {
     private static $table_name = 'CMSMainTest_ClassA';
 
-    private static $allowed_children = array(CMSMainTest_ClassB::class);
+    private static $allowed_children = [CMSMainTest_ClassB::class];
 
     protected function onBeforeWrite()
     {

@@ -32,7 +32,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
      *
      * @var array
      */
-    protected $params = array();
+    protected $params = [];
 
     /**
      * List of filtered items and all their parents
@@ -54,7 +54,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
     /**
      * @var array
      */
-    protected $_cache_expanded = array();
+    protected $_cache_expanded = [];
 
     /**
      * @var string
@@ -80,7 +80,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
         array_shift($filters);
 
         // add filters to map
-        $filterMap = array();
+        $filterMap = [];
         foreach ($filters as $filter) {
             $filterMap[$filter] = $filter::title();
         }
@@ -148,9 +148,9 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
      */
     protected function populateIDs()
     {
-        $parents = array();
-        $this->_cache_ids = array();
-        $this->_cache_highlight_ids = array();
+        $parents = [];
+        $this->_cache_ids = [];
+        $this->_cache_highlight_ids = [];
 
         if ($pages = $this->pagesIncluded()) {
             // And keep a record of parents we don't need to get
@@ -165,7 +165,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
                 $q = Versioned::get_including_deleted(SiteTree::class)
                     ->byIDs(array_keys($parents));
                 $list = $q->map('ID', 'ParentID');
-                $parents = array();
+                $parents = [];
                 foreach ($list as $id => $parentID) {
                     if ($parentID) {
                         $parents[$parentID] = true;
@@ -202,12 +202,12 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
 
             switch ($name) {
                 case 'Term':
-                    $query = $query->filterAny(array(
+                    $query = $query->filterAny([
                         'URLSegment:PartialMatch' => $val,
                         'Title:PartialMatch' => $val,
                         'MenuTitle:PartialMatch' => $val,
                         'Content:PartialMatch' => $val
-                    ));
+                    ]);
                     break;
 
                 case 'LastEditedFrom':
@@ -231,7 +231,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
                     if ($field) {
                         $filter = $field->defaultSearchFilter();
                         $filter->setValue($val);
-                        $query = $query->alterDataQuery(array($filter, 'apply'));
+                        $query = $query->alterDataQuery([$filter, 'apply']);
                     }
             }
         }
@@ -246,10 +246,10 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
      */
     protected function mapIDs($pages)
     {
-        $ids = array();
+        $ids = [];
         if ($pages) {
             foreach ($pages as $page) {
-                $ids[] = array('ID' => $page->ID, 'ParentID' => $page->ParentID);
+                $ids[] = ['ID' => $page->ID, 'ParentID' => $page->ParentID];
             }
         }
         return $ids;

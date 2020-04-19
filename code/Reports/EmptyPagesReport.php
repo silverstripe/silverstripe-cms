@@ -41,11 +41,11 @@ class EmptyPagesReport extends Report
 
     public function columns()
     {
-        return array(
-            "Title" => array(
+        return [
+            "Title" => [
                 "title" => "Title", // todo: use NestedTitle(2)
                 "link" => true,
-            ),
-        );
+            ],
+        ];
     }
 }

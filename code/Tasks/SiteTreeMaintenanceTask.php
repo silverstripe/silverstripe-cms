@@ -9,9 +9,9 @@ use SilverStripe\ORM\DataObject;
 
 class SiteTreeMaintenanceTask extends Controller
 {
-    private static $allowed_actions = array(
+    private static $allowed_actions = [
         '*' => 'ADMIN'
-    );
+    ];
 
     public function makelinksunique()
     {
@@ -27,13 +27,13 @@ class SiteTreeMaintenanceTask extends Controller
                 echo _t(
                     'SilverStripe\\CMS\\Model\\SiteTree.LINKSCHANGEDTO',
                     " changed {url1} -> {url2}",
-                    array('url1' => $urlSegment, 'url2' => $page->URLSegment)
+                    ['url1' => $urlSegment, 'url2' => $page->URLSegment]
                 );
             } else {
                 echo _t(
                     'SilverStripe\\CMS\\Model\\SiteTree.LINKSALREADYUNIQUE',
                     " {url} is already unique",
-                    array('url' => $urlSegment)
+                    ['url' => $urlSegment]
                 );
             }
             die();

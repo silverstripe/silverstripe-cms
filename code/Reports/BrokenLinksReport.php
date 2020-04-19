@@ -157,10 +157,10 @@ class BrokenLinksReport extends Report
     public function parameterFields()
     {
         return FieldList::create(
-            DropdownField::create('CheckSite', _t(__CLASS__ . '.CheckSite', 'Check site'), array(
+            DropdownField::create('CheckSite', _t(__CLASS__ . '.CheckSite', 'Check site'), [
                 'Published' => _t(__CLASS__ . '.CheckSiteDropdownPublished', 'Published Site'),
                 'Draft' => _t(__CLASS__ . '.CheckSiteDropdownDraft', 'Draft Site')
-            )),
+            ]),
             DropdownField::create(
                 'Reason',
                 _t(__CLASS__ . '.ReasonDropdown', 'Problem to check'),

@@ -12,11 +12,11 @@ use Page;
 
 class ContentControllerSearchExtensionTest extends SapphireTest
 {
-    protected static $required_extensions = array(
+    protected static $required_extensions = [
         ContentController::class => [
             ContentControllerSearchExtension::class,
         ]
-    );
+    ];
 
     public function testCustomSearchFormClassesToTest()
     {

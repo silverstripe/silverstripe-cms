@@ -40,12 +40,12 @@ use SilverStripe\View\Requirements;
 class RemoveOrphanedPagesTask extends Controller
 {
 
-    private static $allowed_actions = array(
+    private static $allowed_actions = [
         'index' => 'ADMIN',
         'Form' => 'ADMIN',
         'run' => 'ADMIN',
         'handleAction' => 'ADMIN',
-    );
+    ];
 
     protected $title = 'Removed orphaned pages without existing parents from both stage and live';
 
@@ -92,7 +92,7 @@ in the other stage:<br />
     public function Form()
     {
         $fields = new FieldList();
-        $source = array();
+        $source = [];
 
         $fields->push(new HeaderField(
             'Header',
@@ -113,7 +113,7 @@ in the other stage:<br />
                 $liveRecord = Versioned::get_one_by_stage(
                     $this->orphanedSearchClass,
                     'Live',
-                    array("\"$orphanBaseTable\".\"ID\"" => $orphan->ID)
+                    ["\"$orphanBaseTable\".\"ID\"" => $orphan->ID]
                 );
                             $label = sprintf(
                                 '<a href="admin/pages/edit/show/%d">%s</a> <small>(#%d, Last Modified Date: %s, Last Modifier: %s, %s)</small>',
@@ -147,7 +147,7 @@ in the other stage:<br />
             $fields->push(new OptionsetField(
                 'OrphanOperation',
                 _t('SilverStripe\\CMS\\Tasks\\RemoveOrphanedPagesTask.CHOOSEOPERATION', 'Choose operation:'),
-                array(
+                [
                     'rebase' => _t(
                         'SilverStripe\\CMS\\Tasks\\RemoveOrphanedPagesTask.OPERATION_REBASE',
                         sprintf(
@@ -156,7 +156,7 @@ in the other stage:<br />
                         )
                     ),
                     'remove' => _t('SilverStripe\\CMS\\Tasks\\RemoveOrphanedPagesTask.OPERATION_REMOVE', 'Remove selected from all stages (WARNING: Will destroy all selected pages from both stage and live)'),
-                ),
+                ],
                 'rebase'
             ));
             $fields->push(new LiteralField(
@@ -231,22 +231,22 @@ in the other stage:<br />
             $content = _t('SilverStripe\\CMS\\Tasks\\RemoveOrphanedPagesTask.NONEREMOVED', 'None removed');
         }
 
-        return $this->customise(array(
+        return $this->customise([
             'Content' => $content,
             'Form' => ' '
-        ))->renderWith('BlankPage');
+        ])->renderWith('BlankPage');
     }
 
     protected function removeOrphans($orphanIDs)
     {
-        $removedOrphans = array();
+        $removedOrphans = [];
         $orphanBaseTable = DataObject::getSchema()->baseDataTable($this->orphanedSearchClass);
         foreach ($orphanIDs as $id) {
             /** @var SiteTree $stageRecord */
             $stageRecord = Versioned::get_one_by_stage(
                 $this->orphanedSearchClass,
                 Versioned::DRAFT,
-                array("\"$orphanBaseTable\".\"ID\"" => $id)
+                ["\"$orphanBaseTable\".\"ID\"" => $id]
             );
             if ($stageRecord) {
                 $removedOrphans[$stageRecord->ID] = sprintf('Removed %s (#%d) from Stage', $stageRecord->Title, $stageRecord->ID);
@@ -258,7 +258,7 @@ in the other stage:<br />
             $liveRecord = Versioned::get_one_by_stage(
                 $this->orphanedSearchClass,
                 Versioned::LIVE,
-                array("\"$orphanBaseTable\".\"ID\"" => $id)
+                ["\"$orphanBaseTable\".\"ID\"" => $id]
             );
             if ($liveRecord) {
                 $removedOrphans[$liveRecord->ID] = sprintf('Removed %s (#%d) from Live', $liveRecord->Title, $liveRecord->ID);
@@ -285,14 +285,14 @@ in the other stage:<br />
         $holder->Title = $this->rebaseHolderTitle();
         $holder->write();
 
-        $removedOrphans = array();
+        $removedOrphans = [];
         $orphanBaseTable = DataObject::getSchema()->baseDataTable($this->orphanedSearchClass);
         foreach ($orphanIDs as $id) {
             /** @var SiteTree $stageRecord */
             $stageRecord = Versioned::get_one_by_stage(
                 $this->orphanedSearchClass,
                 'Stage',
-                array("\"$orphanBaseTable\".\"ID\"" => $id)
+                ["\"$orphanBaseTable\".\"ID\"" => $id]
             );
             if ($stageRecord) {
                 $removedOrphans[$stageRecord->ID] = sprintf('Rebased %s (#%d)', $stageRecord->Title, $stageRecord->ID);
@@ -308,7 +308,7 @@ in the other stage:<br />
             $liveRecord = Versioned::get_one_by_stage(
                 $this->orphanedSearchClass,
                 'Live',
-                array("\"$orphanBaseTable\".\"ID\"" => $id)
+                ["\"$orphanBaseTable\".\"ID\"" => $id]
             );
             if ($liveRecord) {
                 $removedOrphans[$liveRecord->ID] = sprintf('Rebased %s (#%d)', $liveRecord->Title, $liveRecord->ID);
@@ -341,22 +341,22 @@ in the other stage:<br />
      * @param int|array $limit
      * @return SS_List
      */
-    public function getOrphanedPages($class = SiteTree::class, $filter = array(), $sort = null, $join = null, $limit = null)
+    public function getOrphanedPages($class = SiteTree::class, $filter = [], $sort = null, $join = null, $limit = null)
     {
         // Alter condition
         $table = DataObject::getSchema()->tableName($class);
         if (empty($filter)) {
-            $where = array();
+            $where = [];
         } elseif (is_array($filter)) {
             $where = $filter;
         } else {
-            $where = array($filter);
+            $where = [$filter];
         }
-        $where[] = array("\"{$table}\".\"ParentID\" != ?" => 0);
+        $where[] = ["\"{$table}\".\"ParentID\" != ?" => 0];
         $where[] = '"Parents"."ID" IS NULL';
 
         $orphans = new ArrayList();
-        foreach (array(Versioned::DRAFT, Versioned::LIVE) as $stage) {
+        foreach ([Versioned::DRAFT, Versioned::LIVE] as $stage) {
             $table .= ($stage == Versioned::LIVE) ? '_Live' : '';
             $stageOrphans = Versioned::get_by_stage(
                 $class,

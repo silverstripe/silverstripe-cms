@@ -28,9 +28,9 @@ class CMSPageEditController extends CMSMain
 
     private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
 
-    private static $allowed_actions = array(
+    private static $allowed_actions = [
         'AddToCampaignForm',
-    );
+    ];
 
     public function getClientConfig()
     {

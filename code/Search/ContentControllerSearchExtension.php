@@ -15,9 +15,9 @@ use SilverStripe\ORM\Search\FulltextSearchable;
  */
 class ContentControllerSearchExtension extends Extension
 {
-    private static $allowed_actions = array(
+    private static $allowed_actions = [
         'SearchForm',
-    );
+    ];
 
     /**
      * Site search form
@@ -54,11 +54,11 @@ class ContentControllerSearchExtension extends Extension
      */
     public function results($data, $form, $request)
     {
-        $data = array(
+        $data = [
             'Results' => $form->getResults(),
             'Query' => DBField::create_field('Text', $form->getSearchQuery()),
             'Title' => _t('SilverStripe\\CMS\\Search\\SearchForm.SearchResults', 'Search Results')
-        );
-        return $this->owner->customise($data)->renderWith(array('Page_results', 'Page'));
+        ];
+        return $this->owner->customise($data)->renderWith(['Page_results', 'Page']);
     }
 }

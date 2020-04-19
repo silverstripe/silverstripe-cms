@@ -28,21 +28,21 @@ class BrokenVirtualPagesReport extends Report
     {
         $classes = ClassInfo::subclassesFor(VirtualPage::class);
         $classParams = DB::placeholders($classes);
-        $classFilter = array(
+        $classFilter = [
             "\"ClassName\" IN ($classParams) AND \"HasBrokenLink\" = 1" => $classes
-        );
+        ];
         $stage = isset($params['OnLive']) ? 'Live' : 'Stage';
         return Versioned::get_by_stage(SiteTree::class, $stage, $classFilter);
     }
 
     public function columns()
     {
-        return array(
-            "Title" => array(
+        return [
+            "Title" => [
                 "title" => "Title", // todo: use NestedTitle(2)
                 "link" => true,
-            ),
-        );
+            ],
+        ];
     }
 
     public function getParameterFields()
