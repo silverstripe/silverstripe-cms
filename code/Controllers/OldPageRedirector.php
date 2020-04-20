@@ -54,7 +54,7 @@ class OldPageRedirector extends Extension
     /**
      * Attempt to find an old/renamed page from some given the URL as an array
      *
-     * @param array $params The array of URL, e.g. /foo/bar as array('foo', 'bar')
+     * @param array $params The array of URL, e.g. /foo/bar as ['foo', 'bar']
      * @param SiteTree|null $parent The current parent in the recursive flow
      * @param boolean $redirect Whether we've found an old page worthy of a redirect
      *
@@ -68,13 +68,13 @@ class OldPageRedirector extends Extension
         if (empty($URL)) {
             return false;
         }
-        $pages = SiteTree::get()->filter(array(
+        $pages = SiteTree::get()->filter([
             'URLSegment' => $URL,
-        ));
+        ]);
         if ($parent || is_numeric($parent)) {
-            $pages = $pages->filter(array(
+            $pages = $pages->filter([
                 'ParentID' => is_numeric($parent) ? $parent : $parent->ID,
-            ));
+            ]);
         }
         /** @var SiteTree $page */
         $page = $pages->first();

@@ -41,7 +41,7 @@ class SilverStripeNavigator extends ViewableData
      */
     public function getItems()
     {
-        $items = array();
+        $items = [];
 
         $classes = ClassInfo::subclassesFor(SilverStripeNavigatorItem::class);
         array_shift($classes);
@@ -99,9 +99,9 @@ class SilverStripeNavigator extends ViewableData
             }
         }
 
-        return array(
+        return [
             'items' => $html,
             'message' => $message
-        );
+        ];
     }
 }

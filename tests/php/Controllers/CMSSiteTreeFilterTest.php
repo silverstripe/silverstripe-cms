@@ -35,14 +35,14 @@ class CMSSiteTreeFilterTest extends SapphireTest
         $page1 = $this->objFromFixture('Page', 'page1');
         $page2 = $this->objFromFixture('Page', 'page2');
 
-        $f = new CMSSiteTreeFilter_Search(array('Title' => 'Page 1'));
+        $f = new CMSSiteTreeFilter_Search(['Title' => 'Page 1']);
         $results = $f->pagesIncluded();
 
         $this->assertTrue($f->isPageIncluded($page1));
         $this->assertFalse($f->isPageIncluded($page2));
         $this->assertEquals(1, count($results));
         $this->assertEquals(
-            array('ID' => $page1->ID, 'ParentID' => 0),
+            ['ID' => $page1->ID, 'ParentID' => 0],
             $results[0]
         );
     }
@@ -52,14 +52,14 @@ class CMSSiteTreeFilterTest extends SapphireTest
         $parent = $this->objFromFixture('Page', 'page3');
         $child = $this->objFromFixture('Page', 'page3b');
 
-        $f = new CMSSiteTreeFilter_Search(array('Title' => 'Page 3b'));
+        $f = new CMSSiteTreeFilter_Search(['Title' => 'Page 3b']);
         $results = $f->pagesIncluded();
 
         $this->assertTrue($f->isPageIncluded($parent));
         $this->assertTrue($f->isPageIncluded($child));
         $this->assertEquals(1, count($results));
         $this->assertEquals(
-            array('ID' => $child->ID, 'ParentID' => $parent->ID),
+            ['ID' => $child->ID, 'ParentID' => $parent->ID],
             $results[0]
         );
     }
@@ -79,19 +79,19 @@ class CMSSiteTreeFilterTest extends SapphireTest
         $changedPageVersion = $changedPage->Version;
 
         // Check that only changed pages are returned
-        $f = new CMSSiteTreeFilter_ChangedPages(array('Term' => 'Changed'));
+        $f = new CMSSiteTreeFilter_ChangedPages(['Term' => 'Changed']);
         $results = $f->pagesIncluded();
 
         $this->assertTrue($f->isPageIncluded($changedPage));
         $this->assertFalse($f->isPageIncluded($unchangedPage));
         $this->assertEquals(1, count($results));
         $this->assertEquals(
-            array('ID' => $changedPage->ID, 'ParentID' => 0),
+            ['ID' => $changedPage->ID, 'ParentID' => 0],
             $results[0]
         );
 
         // Check that only changed pages are returned
-        $f = new CMSSiteTreeFilter_ChangedPages(array('Term' => 'No Matches'));
+        $f = new CMSSiteTreeFilter_ChangedPages(['Term' => 'No Matches']);
         $results = $f->pagesIncluded();
         $this->assertEquals(0, count($results));
 
@@ -101,11 +101,11 @@ class CMSSiteTreeFilterTest extends SapphireTest
         $changedPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
         $changedPage->doRollbackTo($changedPageVersion);
 
-        $f = new CMSSiteTreeFilter_ChangedPages(array('Term' => 'Changed'));
+        $f = new CMSSiteTreeFilter_ChangedPages(['Term' => 'Changed']);
         $results = $f->pagesIncluded();
 
         $this->assertEquals(1, count($results));
-        $this->assertEquals(array('ID' => $changedPage->ID, 'ParentID' => 0), $results[0]);
+        $this->assertEquals(['ID' => $changedPage->ID, 'ParentID' => 0], $results[0]);
     }
 
     public function testDeletedPagesFilter()
@@ -117,14 +117,14 @@ class CMSSiteTreeFilterTest extends SapphireTest
         $deletedPage = Versioned::get_one_by_stage(
             SiteTree::class,
             'Live',
-            array('"SiteTree_Live"."ID"' => $deletedPageID)
+            ['"SiteTree_Live"."ID"' => $deletedPageID]
         );
 
-        $f = new CMSSiteTreeFilter_DeletedPages(array('Term' => 'Page'));
+        $f = new CMSSiteTreeFilter_DeletedPages(['Term' => 'Page']);
         $this->assertTrue($f->isPageIncluded($deletedPage));
 
         // Check that only changed pages are returned
-        $f = new CMSSiteTreeFilter_DeletedPages(array('Term' => 'No Matches'));
+        $f = new CMSSiteTreeFilter_DeletedPages(['Term' => 'No Matches']);
         $this->assertFalse($f->isPageIncluded($deletedPage));
     }
 
@@ -138,11 +138,11 @@ class CMSSiteTreeFilterTest extends SapphireTest
         );
 
         // Check draft page is shown
-        $f = new CMSSiteTreeFilter_StatusDraftPages(array('Term' => 'Page'));
+        $f = new CMSSiteTreeFilter_StatusDraftPages(['Term' => 'Page']);
         $this->assertTrue($f->isPageIncluded($draftPage));
 
         // Check filter respects parameters
-        $f = new CMSSiteTreeFilter_StatusDraftPages(array('Term' => 'No Match'));
+        $f = new CMSSiteTreeFilter_StatusDraftPages(['Term' => 'No Match']);
         $this->assertEmpty($f->isPageIncluded($draftPage));
 
         // Ensures empty array returned if no data to show
@@ -157,10 +157,10 @@ class CMSSiteTreeFilterTest extends SapphireTest
         // Grab the date
         $date = substr($draftPage->LastEdited, 0, 10);
         // Filter with that date
-        $filter = new CMSSiteTreeFilter_Search(array(
+        $filter = new CMSSiteTreeFilter_Search([
             'LastEditedFrom' => $date,
             'LastEditedTo' => $date
-        ));
+        ]);
         $this->assertTrue($filter->isPageIncluded($draftPage), 'Using the same date for from and to should show find that page');
     }
 
@@ -176,11 +176,11 @@ class CMSSiteTreeFilterTest extends SapphireTest
         );
 
         // Check live-only page is included
-        $f = new CMSSiteTreeFilter_StatusRemovedFromDraftPages(array('LastEditedFrom' => '2000-01-01 00:00'));
+        $f = new CMSSiteTreeFilter_StatusRemovedFromDraftPages(['LastEditedFrom' => '2000-01-01 00:00']);
         $this->assertTrue($f->isPageIncluded($removedDraftPage));
 
         // Check filter is respected
-        $f = new CMSSiteTreeFilter_StatusRemovedFromDraftPages(array('LastEditedTo' => '1999-01-01 00:00'));
+        $f = new CMSSiteTreeFilter_StatusRemovedFromDraftPages(['LastEditedTo' => '1999-01-01 00:00']);
         $this->assertEmpty($f->isPageIncluded($removedDraftPage));
 
         // Ensures empty array returned if no data to show
@@ -201,11 +201,11 @@ class CMSSiteTreeFilterTest extends SapphireTest
         $checkParentExists = Versioned::get_latest_version(SiteTree::class, $deletedPageID);
 
         // Check deleted page is included
-        $f = new CMSSiteTreeFilter_StatusDeletedPages(array('Title' => 'Page'));
+        $f = new CMSSiteTreeFilter_StatusDeletedPages(['Title' => 'Page']);
         $this->assertTrue($f->isPageIncluded($checkParentExists));
 
         // Check filter is respected
-        $f = new CMSSiteTreeFilter_StatusDeletedPages(array('Title' => 'Bobby'));
+        $f = new CMSSiteTreeFilter_StatusDeletedPages(['Title' => 'Bobby']);
         $this->assertFalse($f->isPageIncluded($checkParentExists));
     }
 }

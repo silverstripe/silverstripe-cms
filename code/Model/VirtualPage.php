@@ -37,7 +37,7 @@ class VirtualPage extends Page
      * @var array Define fields that are not virtual - the virtual page must define these fields themselves.
      * Note that anything in {@link self::config()->initially_copied_fields} is implicitly included in this list.
      */
-    private static $non_virtual_fields = array(
+    private static $non_virtual_fields = [
         "ID",
         "ClassName",
         "ObsoleteClassName",
@@ -57,28 +57,28 @@ class VirtualPage extends Page
         "CanEditType",
         "CopyContentFromID",
         "HasBrokenLink",
-    );
+    ];
 
     /**
      * @var array Define fields that are initially copied to virtual pages but left modifiable after that.
      */
-    private static $initially_copied_fields = array(
+    private static $initially_copied_fields = [
         'ShowInMenus',
         'ShowInSearch',
         'URLSegment',
-    );
+    ];
 
-    private static $has_one = array(
+    private static $has_one = [
         "CopyContentFrom" => SiteTree::class,
-    );
+    ];
 
-    private static $owns = array(
+    private static $owns = [
         "CopyContentFrom",
-    );
+    ];
 
-    private static $db = array(
+    private static $db = [
         "VersionID" => "Int",
-    );
+    ];
 
     private static $table_name = 'VirtualPage';
 
@@ -92,7 +92,7 @@ class VirtualPage extends Page
         // Check if copied page exists
         $record = $this->CopyContentFrom();
         if (!$record || !$record->exists()) {
-            return array();
+            return [];
         }
 
         // Diff db with non-virtual fields
@@ -160,7 +160,7 @@ class VirtualPage extends Page
         if ($copy && $copy->exists()) {
             return $copy->allowedChildren();
         }
-        return array();
+        return [];
     }
 
     public function syncLinkTracking()
@@ -237,7 +237,7 @@ class VirtualPage extends Page
                 }
             }
 
-            $msgs = array();
+            $msgs = [];
 
             $fields->addFieldToTab('Root.Main', $copyContentFromField, 'Title');
 
@@ -350,7 +350,7 @@ class VirtualPage extends Page
                 _t(
                     self::class . '.PageTypNotAllowedOnRoot',
                     'Original page type "{type}" is not allowed on the root level for this virtual page',
-                    array('type' => $orig->i18n_singular_name())
+                    ['type' => $orig->i18n_singular_name()]
                 ),
                 ValidationResult::TYPE_ERROR,
                 'CAN_BE_ROOT_VIRTUAL'
@@ -474,7 +474,7 @@ class VirtualPage extends Page
         if (parent::hasMethod($method)) {
             return parent::__call($method, $args);
         } else {
-            return call_user_func_array(array($this->CopyContentFrom(), $method), $args);
+            return call_user_func_array([$this->CopyContentFrom(), $method], $args);
         }
     }
 

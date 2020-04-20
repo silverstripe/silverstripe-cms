@@ -40,17 +40,17 @@ class CMSPagesController extends CMSMain
                 $page = SiteTree::get()->byID($parentID);
 
                 //build a reversed list of the parent tree
-                $pages = array();
+                $pages = [];
                 while ($page) {
                     array_unshift($pages, $page); //add to start of array so that array is in reverse order
                     $page = $page->Parent;
                 }
 
                 //turns the title and link of the breadcrumbs into template-friendly variables
-                $params = array_filter(array(
+                $params = array_filter([
                     'view' => $this->getRequest()->getVar('view'),
                     'q' => $this->getRequest()->getVar('q')
-                ));
+                ]);
                 foreach ($pages as $page) {
                     $params['ParentID'] = $page->ID;
                     $item = new stdClass();

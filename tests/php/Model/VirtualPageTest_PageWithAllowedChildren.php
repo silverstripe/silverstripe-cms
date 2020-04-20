@@ -10,8 +10,8 @@ class VirtualPageTest_PageWithAllowedChildren extends Page implements TestOnly
 {
     private static $table_name = 'VirtualPageTest_PageWithAllowedChildren';
 
-    private static $allowed_children = array(
+    private static $allowed_children = [
         VirtualPageTest_ClassA::class,
         VirtualPage::class,
-    );
+    ];
 }

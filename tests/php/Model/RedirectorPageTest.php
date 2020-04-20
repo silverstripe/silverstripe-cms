@@ -79,15 +79,15 @@ class RedirectorPageTest extends FunctionalTest
 
     public function testAllowsProtocolRelative()
     {
-        $noProtocol = new RedirectorPage(array('ExternalURL' => 'mydomain.com'));
+        $noProtocol = new RedirectorPage(['ExternalURL' => 'mydomain.com']);
         $noProtocol->write();
         $this->assertEquals('http://mydomain.com', $noProtocol->ExternalURL);
 
-        $protocolAbsolute = new RedirectorPage(array('ExternalURL' => 'http://mydomain.com'));
+        $protocolAbsolute = new RedirectorPage(['ExternalURL' => 'http://mydomain.com']);
         $protocolAbsolute->write();
         $this->assertEquals('http://mydomain.com', $protocolAbsolute->ExternalURL);
 
-        $protocolRelative = new RedirectorPage(array('ExternalURL' => '//mydomain.com'));
+        $protocolRelative = new RedirectorPage(['ExternalURL' => '//mydomain.com']);
         $protocolRelative->write();
         $this->assertEquals('//mydomain.com', $protocolRelative->ExternalURL);
     }

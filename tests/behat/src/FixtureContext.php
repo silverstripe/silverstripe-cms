@@ -52,7 +52,7 @@ class FixtureContext extends BehatFixtureContext
             $targetObj = $this->fixtureFactory->get($targetClass, $targetId);
         }
 
-        $fields = array('LinkToID' => $targetObj->ID);
+        $fields = ['LinkToID' => $targetObj->ID];
         /** @var RedirectorPage $obj */
         $obj = $this->fixtureFactory->get($class, $id);
         if ($obj) {

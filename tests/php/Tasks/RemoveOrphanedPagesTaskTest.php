@@ -95,13 +95,13 @@ class RemoveOrphanedPagesTaskTest extends FunctionalTest
         $orphans = $task->getOrphanedPages();
         $orphanIDs = $orphans->column('ID');
         sort($orphanIDs);
-        $compareIDs = array(
+        $compareIDs = [
             $child1_3_orphaned->ID,
             $child1_4_orphaned_published->ID,
             $grandchild1_1_3_orphaned->ID,
             $grandchild1_1_4_orphaned_published->ID,
             $child2_1_published_orphaned->ID
-        );
+        ];
         sort($compareIDs);
 
         $this->assertEquals($orphanIDs, $compareIDs);

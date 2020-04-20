@@ -78,9 +78,9 @@ class RootURLController extends Controller implements Resettable
             $this->getResponse()->redirect(Controller::join_links(
                 Director::absoluteBaseURL(),
                 'dev/build',
-                '?' . http_build_query(array(
+                '?' . http_build_query([
                     'returnURL' => isset($_GET['url']) ? $_GET['url'] : null,
-                ))
+                ])
             ));
         }
     }

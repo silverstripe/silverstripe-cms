@@ -188,9 +188,9 @@ class ModelAsControllerTest extends FunctionalTest
     {
         $this->generateNestedPagesFixture();
 
-        $otherParent = new Page(array(
+        $otherParent = new Page([
             'URLSegment' => 'otherparent'
-        ));
+        ]);
         $otherParent->write();
         $otherParent->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
@@ -232,10 +232,10 @@ class ModelAsControllerTest extends FunctionalTest
     {
         $this->generateNestedPagesFixture();
 
-        $otherLevel1 = new Page(array(
+        $otherLevel1 = new Page([
             'Title' => "Other Level 1",
             'URLSegment' => 'level1'
-        ));
+        ]);
         $otherLevel1->write();
         $otherLevel1->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 

@@ -29,11 +29,11 @@ class CMSTreeTest extends FunctionalTest
         // Move page2 before page1
         $siblingIDs[0] = $page2->ID;
         $siblingIDs[1] = $page1->ID;
-        $data = array(
+        $data = [
             'SiblingIDs' => $siblingIDs,
             'ID' => $page2->ID,
             'ParentID' => 0
-        );
+        ];
 
         $response = $this->post('admin/pages/edit/savetreenode', $data);
         $this->assertEquals(200, $response->getStatusCode());
@@ -59,16 +59,16 @@ class CMSTreeTest extends FunctionalTest
         $page32 = $this->objFromFixture(SiteTree::class, 'page32');
 
         // Move page2 into page3, between page3.1 and page 3.2
-        $siblingIDs = array(
+        $siblingIDs = [
             $page31->ID,
             $page2->ID,
             $page32->ID
-        );
-        $data = array(
+        ];
+        $data = [
             'SiblingIDs' => $siblingIDs,
             'ID' => $page2->ID,
             'ParentID' => $page3->ID
-        );
+        ];
         $response = $this->post('admin/pages/edit/savetreenode', $data);
         $this->assertEquals(200, $response->getStatusCode());
         $page2 = DataObject::get_by_id(SiteTree::class, $page2->ID, false);

@@ -26,7 +26,7 @@ class SiteTreeLinkTracking_Parser
      */
     public function process(HTMLValue $htmlValue)
     {
-        $results = array();
+        $results = [];
 
         $links = $htmlValue->getElementsByTagName('a');
         if (!$links) {
@@ -46,19 +46,19 @@ class SiteTreeLinkTracking_Parser
 
             // Definitely broken links.
             if ($href == '' || $href[0] == '/') {
-                $results[] = array(
+                $results[] = [
                     'Type' => 'broken',
                     'Target' => null,
                     'Anchor' => null,
                     'DOMReference' => $link,
                     'Broken' => true
-                );
+                ];
 
                 continue;
             }
 
             // Link to a page on this site.
-            $matches = array();
+            $matches = [];
             if (preg_match('/\[sitetree_link(?:\s*|%20|,)?id=(?<id>[0-9]+)\](#(?<anchor>.*))?/i', $href, $matches)) {
                 // Check if page link is broken
                 /** @var SiteTree $page */
@@ -74,13 +74,13 @@ class SiteTreeLinkTracking_Parser
                     $broken = false;
                 }
 
-                $results[] = array(
+                $results[] = [
                     'Type' => 'sitetree',
                     'Target' => $matches['id'],
                     'Anchor' => empty($matches['anchor']) ? null : $matches['anchor'],
                     'DOMReference' => $link,
                     'Broken' => $broken
-                );
+                ];
 
                 continue;
             }
@@ -88,13 +88,13 @@ class SiteTreeLinkTracking_Parser
             // Local anchor.
             if (preg_match('/^#(.*)/i', $href, $matches)) {
                 $anchor = preg_quote($matches[1], '#');
-                $results[] = array(
+                $results[] = [
                     'Type' => 'localanchor',
                     'Target' => null,
                     'Anchor' => $matches[1],
                     'DOMReference' => $link,
                     'Broken' => !preg_match("#(name|id)=\"{$anchor}\"#", $htmlValue->getContent())
-                );
+                ];
 
                 continue;
             }

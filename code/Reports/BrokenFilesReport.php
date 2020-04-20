@@ -34,9 +34,9 @@ class BrokenFilesReport extends Report
             ClassInfo::subclassesFor(RedirectorPage::class)
         );
         $classParams = DB::placeholders($classes);
-        $classFilter = array(
+        $classFilter = [
             "\"ClassName\" IN ($classParams) AND \"HasBrokenFile\" = 1" => $classes
-        );
+        ];
 
         $stage = isset($params['OnLive']) ? Versioned::LIVE : Versioned::DRAFT;
         return Versioned::get_by_stage(SiteTree::class, $stage, $classFilter);
@@ -44,12 +44,12 @@ class BrokenFilesReport extends Report
 
     public function columns()
     {
-        return array(
-            "Title" => array(
+        return [
+            "Title" => [
                 "title" => "Title", // todo: use NestedTitle(2)
                 "link" => true,
-            ),
-        );
+            ],
+        ];
     }
 
     public function getParameterFields()

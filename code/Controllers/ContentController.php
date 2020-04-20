@@ -523,11 +523,11 @@ HTML;
         $content = new DBHTMLText('Content');
 
         // As of SS4, index.php is required and should never be deleted.
-        $installfiles = array(
+        $installfiles = [
             'install.php',
             'install-frameworkmissing.html',
             'index.html'
-        );
+        ];
 
         $unsuccessful = new ArrayList();
         foreach ($installfiles as $installfile) {
@@ -537,7 +537,7 @@ HTML;
             }
 
             if (file_exists($installfilepath)) {
-                $unsuccessful->push(new ArrayData(array('File' => $installfile)));
+                $unsuccessful->push(new ArrayData(['File' => $installfile]));
             }
         }
 

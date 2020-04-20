@@ -38,9 +38,9 @@ class SiteTreeURLSegmentField extends TextField
      */
     protected $defaultUrl;
 
-    private static $allowed_actions = array(
+    private static $allowed_actions = [
         'suggest'
-    );
+    ];
 
     public function Value()
     {
@@ -51,15 +51,15 @@ class SiteTreeURLSegmentField extends TextField
     {
         return array_merge(
             parent::getAttributes(),
-            array(
+            [
                 'data-prefix' => $this->getURLPrefix(),
                 'data-suffix' => '?stage=Stage',
                 'data-default-url' => $this->getDefaultURL()
-            )
+            ]
         );
     }
 
-    public function Field($properties = array())
+    public function Field($properties = [])
     {
         return parent::Field($properties);
     }
@@ -87,7 +87,7 @@ class SiteTreeURLSegmentField extends TextField
         }
 
         Controller::curr()->getResponse()->addHeader('Content-Type', 'application/json');
-        return json_encode(array('value' => $page->URLSegment));
+        return json_encode(['value' => $page->URLSegment]);
     }
 
     /**

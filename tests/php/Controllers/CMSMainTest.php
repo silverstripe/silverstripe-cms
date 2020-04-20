@@ -30,7 +30,7 @@ class CMSMainTest extends FunctionalTest
 {
     protected static $fixture_file = 'CMSMainTest.yml';
 
-    protected static $orig = array();
+    protected static $orig = [];
 
     public function setUp()
     {
@@ -136,7 +136,7 @@ class CMSMainTest extends FunctionalTest
         // Some modules (e.g., cmsworkflow) will remove this action
         $actions = CMSBatchActionHandler::config()->batch_actions;
         if (isset($actions['publish'])) {
-            $response = $this->get('admin/pages/batchactions/publish?ajax=1&csvIDs=' . implode(',', array($page1->ID, $page2->ID)));
+            $response = $this->get('admin/pages/batchactions/publish?ajax=1&csvIDs=' . implode(',', [$page1->ID, $page2->ID]));
             $responseData = json_decode($response->getBody(), true);
             $this->assertArrayHasKey($page1->ID, $responseData['modified']);
             $this->assertArrayHasKey($page2->ID, $responseData['modified']);
@@ -144,8 +144,8 @@ class CMSMainTest extends FunctionalTest
 
         // Get the latest version of the redirector page
         $pageID = $this->idFromFixture(RedirectorPage::class, 'page5');
-        $latestID = DB::prepared_query('select max("Version") from "RedirectorPage_Versions" where "RecordID" = ?', array($pageID))->value();
-        $dsCount = DB::prepared_query('select count("Version") from "RedirectorPage_Versions" where "RecordID" = ? and "Version"= ?', array($pageID, $latestID))->value();
+        $latestID = DB::prepared_query('select max("Version") from "RedirectorPage_Versions" where "RecordID" = ?', [$pageID])->value();
+        $dsCount = DB::prepared_query('select count("Version") from "RedirectorPage_Versions" where "RecordID" = ? and "Version"= ?', [$pageID, $latestID])->value();
         $this->assertEquals(1, $dsCount, "Published page has no duplicate version records: it has " . $dsCount . " for version " . $latestID);
 
         $this->session()->clear('loggedInAs');
@@ -213,9 +213,9 @@ class CMSMainTest extends FunctionalTest
 
         $response = $this->get('admin/pages/edit/show/' . $pageID);
 
-        $livePage = Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, array(
+        $livePage = Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, [
                 '"SiteTree"."ID"' => $pageID
-        ));
+        ]);
         $this->assertInstanceOf(SiteTree::class, $livePage);
         $this->assertTrue($livePage->canDelete());
 
@@ -274,16 +274,16 @@ class CMSMainTest extends FunctionalTest
         $this->get('admin/pages/add');
         $response = $this->post(
             'admin/pages/add/AddForm',
-            array(
+            [
                 'ParentID' => '0',
                 'PageType' => 'Page',
                 'Locale' => 'en_US',
                 'action_doAdd' => 1,
                 'ajax' => 1,
-            ),
-            array(
+            ],
+            [
                 'X-Pjax' => 'CurrentForm,Breadcrumbs',
-            )
+            ]
         );
         // should redirect, which is a permission error
         $this->assertEquals(403, $response->getStatusCode(), 'Add TopLevel page must fail for normal user');
@@ -294,16 +294,16 @@ class CMSMainTest extends FunctionalTest
 
         $response = $this->post(
             'admin/pages/add/AddForm',
-            array(
+            [
                 'ParentID' => '0',
                 'PageType' => 'Page',
                 'Locale' => 'en_US',
                 'action_doAdd' => 1,
                 'ajax' => 1,
-            ),
-            array(
+            ],
+            [
                 'X-Pjax' => 'CurrentForm,Breadcrumbs',
-            )
+            ]
         );
 
         $location = $response->getHeader('X-ControllerURL');
@@ -327,16 +327,16 @@ class CMSMainTest extends FunctionalTest
         $this->get('admin/pages/add');
         $response = $this->post(
             'admin/pages/add/AddForm',
-            array(
+            [
                 'ParentID' => '0',
                 'PageType' => CMSMainTest_ClassA::class,
                 'Locale' => 'en_US',
                 'action_doAdd' => 1,
                 'ajax' => 1
-            ),
-            array(
+            ],
+            [
                 'X-Pjax' => 'CurrentForm,Breadcrumbs',
-            )
+            ]
         );
         $this->assertFalse($response->isError());
         $ok = preg_match('/edit\/show\/(\d*)/', $response->getHeader('X-ControllerURL'), $matches);
@@ -347,16 +347,16 @@ class CMSMainTest extends FunctionalTest
         $this->get('admin/pages/add');
         $response = $this->post(
             'admin/pages/add/AddForm',
-            array(
+            [
                 'ParentID' => $newPageId,
                 'PageType' => CMSMainTest_ClassB::class,
                 'Locale' => 'en_US',
                 'action_doAdd' => 1,
                 'ajax' => 1
-            ),
-            array(
+            ],
+            [
                 'X-Pjax' => 'CurrentForm,Breadcrumbs',
-            )
+            ]
         );
         $this->assertFalse($response->isError());
         $this->assertEmpty($response->getBody());
@@ -373,16 +373,16 @@ class CMSMainTest extends FunctionalTest
         $this->get('admin/pages/add');
         $response = $this->post(
             'admin/pages/add/AddForm',
-            array(
+            [
                 'ParentID' => $newPageId,
                 'PageType' => 'Page',
                 'Locale' => 'en_US',
                 'action_doAdd' => 1,
                 'ajax' => 1
-            ),
-            array(
+            ],
+            [
                 'X-Pjax' => 'CurrentForm,Breadcrumbs',
-            )
+            ]
         );
         $this->assertEquals(403, $response->getStatusCode(), 'Add disallowed child should fail');
 
@@ -445,7 +445,7 @@ class CMSMainTest extends FunctionalTest
         $pages = $controller->getList()->sort('Title');
         $this->assertEquals(28, $pages->count());
         $this->assertEquals(
-            array('Home', 'Page 1', 'Page 10', 'Page 11', 'Page 12'),
+            ['Home', 'Page 1', 'Page 10', 'Page 11', 'Page 12'],
             $pages->Limit(5)->column('Title')
         );
 
@@ -467,40 +467,40 @@ class CMSMainTest extends FunctionalTest
         $pages = $controller->getList()->sort('Title');
         $this->assertEquals(26, $pages->count());
         $this->assertEquals(
-            array('Home', 'Page 10', 'Page 11', 'Page 13', 'Page 14'),
+            ['Home', 'Page 10', 'Page 11', 'Page 13', 'Page 14'],
             $pages->Limit(5)->column('Title')
         );
 
         // Test deleted page filter
-        $params = array(
+        $params = [
                 'FilterClass' => 'SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_StatusDeletedPages'
-        );
+        ];
         $pages = $controller->getList($params);
         $this->assertEquals(1, $pages->count());
         $this->assertEquals(
-            array('Page 1'),
+            ['Page 1'],
             $pages->column('Title')
         );
 
         // Test live, but not on draft filter
-        $params = array(
+        $params = [
             'FilterClass' => 'SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_StatusRemovedFromDraftPages'
-        );
+        ];
         $pages = $controller->getList($params);
         $this->assertEquals(1, $pages->count());
         $this->assertEquals(
-            array('Page 12'),
+            ['Page 12'],
             $pages->column('Title')
         );
 
         // Test live pages filter
-        $params = array(
+        $params = [
             'FilterClass' => 'SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_PublishedPages'
-        );
+        ];
         $pages = $controller->getList($params);
         $this->assertEquals(2, $pages->count());
         $this->assertEquals(
-            array('Page 11', 'Page 12'),
+            ['Page 11', 'Page 12'],
             $pages->column('Title')
         );
 
@@ -508,15 +508,15 @@ class CMSMainTest extends FunctionalTest
         $pages = $controller->getList($params, $page3->ID);
         $this->assertEquals(2, $pages->count());
         $this->assertEquals(
-            array('Page 11', 'Page 12'),
+            ['Page 11', 'Page 12'],
             $pages->column('Title')
         );
 
         // Test that parentID is respected when not filtering
-        $pages = $controller->getList(array(), $page3->ID);
+        $pages = $controller->getList([], $page3->ID);
         $this->assertEquals(2, $pages->count());
         $this->assertEquals(
-            array('Page 3.1', 'Page 3.2'),
+            ['Page 3.1', 'Page 3.2'],
             $pages->column('Title')
         );
     }
