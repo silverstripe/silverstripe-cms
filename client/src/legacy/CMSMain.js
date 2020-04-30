@@ -44,8 +44,15 @@ $.entwine('ss', function ($) {
         viewType = VIEW_TYPE_TREE;
       }
       const url = this.data(`url-${viewType}`);
-      const clearFiltered = localStorage.getItem('ss.pages-view-filtered');
-      localStorage.setItem('ss.pages-view-filtered', false)
+
+      let clearFiltered = localStorage.getItem('ss.pages-view-filtered');
+      if (typeof clearFiltered === 'string' && clearFiltered.toLowerCase() === 'false') {
+        // localStorage save `false` as a string
+        clearFiltered = false;
+      }
+
+      localStorage.setItem('ss.pages-view-filtered', false);
+
       this.data('deferredNoCache', (clearFiltered || viewType === VIEW_TYPE_LIST));
       this.data('url', url + location.search);
       this._super();
