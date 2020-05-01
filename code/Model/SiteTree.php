@@ -90,10 +90,10 @@ use SilverStripe\View\SSViewer;
  * @property string $Content HTML content of the page.
  * @property string $MetaDescription
  * @property string $ExtraMeta
- * @property string $ShowInMenus
- * @property string $ShowInSearch
- * @property string $Sort Integer value denoting the sort order.
  * @property string $ReportClass
+ * @property int $Sort Integer value denoting the sort order.
+ * @property bool $ShowInMenus
+ * @property bool $ShowInSearch
  * @property bool $HasBrokenFile True if this page has a broken file shortcode
  * @property bool $HasBrokenLink True if this page has a broken page shortcode
  *
