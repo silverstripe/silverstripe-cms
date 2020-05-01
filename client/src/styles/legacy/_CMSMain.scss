@@ -119,6 +119,13 @@
     font-size: 0.9em;
     word-break: break-word;
   }
+
+  // Positioning adjustment for 'navigate up' action on SiteTree list view
+  .grid-levelup {
+    position: relative;
+    left: -15px;
+    top: 40px;
+  }
 }
 
 /* -------------------------------------------------------------------
