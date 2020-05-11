@@ -29,7 +29,10 @@ class OldPageRedirector extends Extension
         $getvars = $request->getVars();
         unset($getvars['url']);
 
-        $page = static::find_old_page($params);
+        $page = self::find_old_page($params, 0);
+        if (!$page) {
+            $page = self::find_old_page($params);
+        }
         $cleanPage = trim(Director::makeRelative($page), '/');
         if (!$cleanPage) {
             $cleanPage = Director::makeRelative(RootURLController::get_homepage_link());
@@ -59,7 +62,7 @@ class OldPageRedirector extends Extension
      */
     public static function find_old_page($params, $parent = null, $redirect = false)
     {
-        $parent = is_numeric($parent) ? SiteTree::get()->byID($parent) : $parent;
+        $parent = is_numeric($parent) && $parent > 0 ? SiteTree::get()->byID($parent) : $parent;
         $params = (array)$params;
         $URL = rawurlencode(array_shift($params));
         if (empty($URL)) {
@@ -68,9 +71,9 @@ class OldPageRedirector extends Extension
         $pages = SiteTree::get()->filter(array(
             'URLSegment' => $URL,
         ));
-        if ($parent) {
+        if ($parent || is_numeric($parent)) {
             $pages = $pages->filter(array(
-                'ParentID' => $parent->ID,
+                'ParentID' => is_numeric($parent) ? $parent : $parent->ID,
             ));
         }
         /** @var SiteTree $page */
