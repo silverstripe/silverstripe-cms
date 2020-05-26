@@ -41,10 +41,14 @@ class CMSSiteTreeFilter_PublishedPages extends CMSSiteTreeFilter
      */
     public function getFilteredPages()
     {
-        return Versioned::get_including_deleted(SiteTree::class)
+        $pages = Versioned::get_including_deleted(SiteTree::class)
             ->innerJoin(
                 'SiteTree_Live',
                 '"SiteTree_Versions"."RecordID" = "SiteTree_Live"."ID"'
             );
+
+        $pages = $this->applyDefaultFilters($pages);
+
+        return $pages;
     }
 }

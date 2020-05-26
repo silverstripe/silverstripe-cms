@@ -2158,13 +2158,13 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                         $this->fieldLabel('ClassName'),
                         $this->getClassDropdown()
                     ),
-                    $parentTypeSelector = new CompositeField(
+                    $parentTypeSelector = (new CompositeField(
                         $parentType = new OptionsetField("ParentType", _t("SilverStripe\\CMS\\Model\\SiteTree.PAGELOCATION", "Page location"), [
                             "root" => _t("SilverStripe\\CMS\\Model\\SiteTree.PARENTTYPE_ROOT", "Top-level page"),
                             "subpage" => _t("SilverStripe\\CMS\\Model\\SiteTree.PARENTTYPE_SUBPAGE", "Sub-page underneath a parent page"),
                         ]),
                         $parentIDField = new TreeDropdownField("ParentID", $this->fieldLabel('ParentID'), self::class, 'ID', 'MenuTitle')
-                    ),
+                    ))->setTitle(_t("SilverStripe\\CMS\\Model\\SiteTree.PAGELOCATION", "Page location")),
                     $visibility = new FieldGroup(
                         new CheckboxField("ShowInMenus", $this->fieldLabel('ShowInMenus')),
                         new CheckboxField("ShowInSearch", $this->fieldLabel('ShowInSearch'))
