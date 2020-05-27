@@ -145,6 +145,7 @@ fi:
     SELECT_PAGE: 'Valitse sivu'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Peruuta
+    EMPTY: 'Ole hyvä ja anna URL-osoitteen osio tai napsauta Peruuta'
     Edit: Muokkaa
     HelpChars: 'Erikoismerkit muunnetaan tai poistetaan automaattisesti.'
     OK: OK
@@ -243,8 +244,12 @@ fi:
     SHOWINSEARCH: 'Näytetäänkö hauissa?'
     SINGULARNAME: Sivu
     TABBEHAVIOUR: Käyttäytyminen
+    TABCONTENT: Pääsisältö
     TABDEPENDENT: 'Riippuvaiset sivut'
     TOPLEVEL: 'Sivuston sisältö (ylin taso)'
+    UNTITLED: 'Nimetön {pagetype}'
+    URLSegment: 'URL-osoitteen osio'
+    UntitledDependentObject: 'Nimetön {instanceType}'
     VIEWERGROUPS: Katsojaryhmät
     VIEWER_GROUPS_FIELD_DESC: 'Ryhmät, joilla laajat katseluoikeudet: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Näytä mikä tahansa sivu'

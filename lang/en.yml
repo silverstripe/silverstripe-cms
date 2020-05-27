@@ -79,6 +79,7 @@ en:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Author
     COMPAREMODE: 'Compare mode (select two)'
+    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
     MENUTITLE: History
     MULTISELECT: 'Batch actions'
     NOTPUBLISHED: 'Not published'
