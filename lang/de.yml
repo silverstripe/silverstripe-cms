@@ -146,6 +146,7 @@ de:
     SELECT_PAGE: 'Seite auswählen'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Abbrechen
+    EMPTY: 'Bitte geben Sie ein URL-Segment ein oder drücken Sie auf Abbrechen'
     Edit: Bearbeiten
     HelpChars: 'Sonderzeichen werden automatisch umgewandelt oder entfernt.'
     OK: OK
@@ -244,9 +245,11 @@ de:
     SHOWINSEARCH: 'In der Suche anzeigen?'
     SINGULARNAME: Seite
     TABBEHAVIOUR: Verhalten
+    TABCONTENT: Haupt-Inhalt
     TABDEPENDENT: 'Abhängige Seiten'
     TOPLEVEL: 'Seiten Inhalt (Top Level)'
     UNTITLED: 'Unbenannt {pagetype}'
+    URLSegment: URL-Segment
     UntitledDependentObject: 'Unbenannt {instanceType}'
     VIEWERGROUPS: Betrachtergruppen
     VIEWER_GROUPS_FIELD_DESC: 'Gruppen mit globalen Berechtigungen zum Ansehen: {groupList}'

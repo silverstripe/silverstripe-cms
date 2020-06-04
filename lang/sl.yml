@@ -1,44 +1,110 @@
 sl:
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
+    RESULT: 'Umaknili iz objave in arhivirali smo %d stran/i.'
     TITLE: 'Odstrani iz objave in arhiviraj'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: 'Objavili smo %d stran/i, neuspešnih je bilo %d poskus/ov.'
+    PUBLISH_PAGES: Objavi
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Obnovi
+    RESTORED_PAGES: 'Obnovili smo %d stran/i'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISHED_PAGES: 'Iz objave smo umaknili %d stran/i'
+    UNPUBLISH_PAGES: 'Umakni iz objave'
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Dostop do razdelka ''{title}'' '
     ACCESS_HELP: 'Dovoli vpogled  sklop z drevesno strukturo in vsebino. Pravice za ogled in urejanje je možno urejati prek dropdown-seznamov za vsako posamezno stran, ali pa ločeno v sklopu Nastavitve pravic za upravljanje z vsebino (Content permissions). '
     ARCHIVE: Arhiv
     ARCHIVEDPAGE: 'Arhivirana stran ''{title}'''
+    AddNew: 'Dodaj novo stran'
+    AddNewButton: Dodaj
     AddPageRestriction: 'Pozor: nekateri tipi strani niso dovoljeni za to izbiro'
+    CANT_REORGANISE: 'Nimate pravic za spreminjanje strani na prvem nivoju, zato sprememb nismo shranili.'
     Cancel: Prekliči
     ChoosePageParentMode: 'Izberite mesto, kjer želite ustvariti novo stran'
     ChoosePageType: 'Izberi tip strani'
     Create: Ustvari
-    NEWPAGE: 'Nov {pagetype}'
+    DUPLICATED: 'Ustvarili smo kopijo ''{title}'''
+    DUPLICATEDWITHCHILDREN: 'Ustvarili smo kopijo ''{title}'' in podrejenih strani'
+    EMAIL: E-pošta
+    NEWPAGE: 'Dodaj {pagetype}'
     PAGENOTEXISTS: 'Stran na tem naslovu ne obstaja'
+    PAGES: Status
+    PAGESALLOPT: 'Vse strani'
+    PAGETYPEANYOPT: Poljubna
+    PAGETYPEOPT: 'Tip stra'
+    PAGETYPE_TITLE: '(Tip strani: {type}) {title}'
+    PLEASESAVE: 'Shranite stran. Strani nismo mogli posodobiti, saj mora biti predhodno shranjena.'
     PUBALLCONFIRM: 'Objavite vse strani spletnega mesta (vsebine bodo prekopirane v "objavljeno" različico spletnega mesta).'
     PUBALLFUN: 'Funkcionalnost "Objavi vse"'
+    PUBLISHED: 'Objavili smo stran ''{title}''.'
     PUBPAGES: 'Opravljeno: Objavljenih je {count} strani'
     PageAdded: 'Stran je bila uspešno ustvarjena'
     REMOVEDPAGE: '''{title}'' je odstranjen z objavljenega spletnega mesta. '
     REMOVEDPAGEFROMDRAFT: 'Vsebina, odstranjena iz osnutka spletnega mesta: ''{title}'''
+    REORGANISATIONSUCCESSFUL: 'Preuredili smo drevesno strukturo.'
+    RESTORE: 'Obnovi osnutek'
+    RESTORED: 'Obnovili smo stran ''{title}''.'
+    RESTORE_DESC: 'Obnovi arhivirano različico v osnutek.'
+    RESTORE_TO_ROOT: 'Obnovi osnutek na prvem nivoju.'
+    RESTORE_TO_ROOT_DESC: 'Obnovi arhivirano različico kot osnutek na prvem nivoju.'
+    ROLLBACK: 'Povrni v to različico'
+    ROLLEDBACKPUBv2: 'Stran smo povrnili iz različice, ki je objavljena.'
+    ROLLEDBACKVERSIONv2: 'Stran smo povrnili iz različice #{version}.'
     SAVED: 'Uspešno shranjeno ''{title}''.'
+    SAVEDRAFT: 'Shrani osnutek'
+    SEARCHRESULTS: 'Rezultati iskanja'
+    SHOW_AS_LIST: 'prikaži v obliki seznama'
+    TOO_MANY_PAGES: 'Preveč strani'
+    TabContent: Vsebina
+    TabHistory: Zgodovina
+    TabSettings: Nastavitve
+    TreeFiltered: 'Prikazani so rezultati iskanja.'
+    TreeFilteredClear: Odstrani
     UNPUBLISH_AND_ARCHIVE: 'Odstrani iz objave in arhiviraj'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Dodaj stran'
+    ParentMode_child: 'Nivo nižje'
     ParentMode_top: 'Stran na prvem nivoju'
+    Title: 'Dodaj stran'
   SilverStripe\CMS\Controllers\CMSPageEditController:
+    ErrorItemPermissionDenied: 'Nimate potrebnih pravic, da bi lahko dodali {ObjectTitle} v kampanjo.'
+    ErrorNotFound: 'Tipa {Type} nismo našli'
     MENUTITLE: 'Uredi stran'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    AUTHOR: Avtor
     COMPAREMODE: 'Način primerjanja (izberite dve)'
     MENUTITLE: Zgodovina
+    MULTISELECT: 'Paketno urejanje'
+    NOTPUBLISHED: 'Ni objavljeno'
+    PREVIEW: Predogled
+    PUBLISHER: Objavljavec
     REVERTTOTHISVERSION: 'Povrni v to različico'
     SHOWUNPUBLISHED: 'Pokaži neobjavljeno različico'
+    UNKNOWN: Neznan
     VIEW: prikaz
+    VIEWINGLATEST: 'Prikazana je aktualna različica.'
     VIEWINGVERSION: 'Trenutno prikazana različica {version}.'
+    WHEN: Kdaj
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Uredi stran'
   SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: Filter
+    ListView: Seznam
     MENUTITLE: 'Seznam strani'
+    TreeView: Drevo
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
+    Title: 'Spremenjene strani'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
+    Title: 'Vse strani, vključno z arhiviranimi'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
+    Title: 'Objavljene strani'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Vse strani'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Arhivirane strani'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDraftPages:
+    Title: Osnutki
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Objavljeno, vendar odstranjeno iz ostnutka'
   SilverStripe\CMS\Controllers\ContentController:
@@ -47,27 +113,51 @@ sl:
     CMS: CMS
     DRAFT: Osnutek
     DRAFTSITE: 'Osnutek spletnega mesta'
+    Email: E-pošta
     INSTALL_SUCCESS: 'Namestitev je bila uspešna!'
+    InstallFilesDeleted: 'Namestitvene datoteke so odstranjene.'
+    InstallSuccessCongratulations: 'Silverstripe je uspešno nameščen.'
     LOGGEDINAS: 'Prijavljen-a kot'
     LOGIN: Prijava
     LOGOUT: Odjava
     NOTEWONTBESHOWN: 'Opomba: neprijavljeni obiskovalci spletnega mesta tega obvestila ne bodo videli.'
     NOTLOGGEDIN: Neprijavljen-a
+    PUBLISHED: Objavljeno
     PUBLISHEDSITE: 'Objavljeno spletno mesto'
+    Password: Geslo
     VIEWPAGEIN: 'Ogled strani v:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arhivirano
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Sidro
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Opis povezave'
+    LINKOPENNEWWIN: 'Odpri v novem zavihku'
+    LINKTEXT: 'Besedilo v povezavi'
+    SELECT_PAGE: 'Izberite stran'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Cancel: Prekliči
+    EMPTY: 'Vnesite naslov URL ali prekličite'
+    Edit: Uredi
     HelpChars: 'Posebni znaki so samodejno spremenjeni ali odstranjeni.'
+    OK: 'V redu'
   SilverStripe\CMS\Model\RedirectorPage:
+    DESCRIPTION: 'Uporabnik bo preusmerjen na stran s tega spletišča ali na poljuben spletni naslov.'
     HEADER: 'Ta stran bo preusmerila uporabnike na drugo stran'
     OTHERURL: 'URL druge spletne strani'
     PLURALNAME: 'Preusmeritvene strani'
+    PLURALS:
+      one: 'Preusmeritvena stran'
+      two: '{count} preusmeritvenih strani'
+      few: '{count} preusmeritvenih strani'
+      other: '{count} preusmeritvenih strani'
     REDIRECTTO: 'Preusmeri na'
     REDIRECTTOEXTERNAL: 'Druga spletna stran'
     REDIRECTTOPAGE: 'Stran na tvojem spletnem mestu'
     SINGULARNAME: 'Preusmeritvena stran'
     YOURPAGE: 'Stran na tvojem spletnem mestu'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Nastavljena preusmeritev še nima določenega cilja.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Vsakdo
     ACCESSHEADER: 'Kdo lahko vidi to stran?'
@@ -75,11 +165,15 @@ sl:
     ACCESSONLYTHESE: 'Samo ti uporabniki (izberite jih s seznama)'
     ADDEDTODRAFTHELP: 'Stran še ni bila objavljena'
     ADDEDTODRAFTSHORT: Osnutek
+    APPEARSVIRTUALPAGES: 'Vsebina je uporabljena na navideznih straneh iz razdelka {title}.'
+    ARCHIVEDPAGEHELP: 'Stran smo umaknili iz objave in izbrisali osnutek'
     ARCHIVEDPAGESHORT: Arhivirano
     BUTTONCANCELDRAFT: 'Prekliči spremembe osnutka'
     BUTTONCANCELDRAFTDESC: 'Izbriši osnutek in ponastavi na trenutno objavljeno stran'
+    BUTTONDELETEDESC: 'Umakni iz objave/osnutkov in arhiviraj'
     BUTTONPUBLISHED: Objavljeno
     BUTTONSAVED: Shranjeno
+    BUTTONSAVEPUBLISH: Objavi
     BUTTONUNPUBLISH: 'Umakni iz objave'
     BUTTONUNPUBLISHDESC: 'Umakni to stran iz objave'
     Comments: Komentarji
@@ -88,6 +182,7 @@ sl:
     DEFAULTCONTACTTITLE: Kontakt
     DEFAULTHOMETITLE: Domov
     DEPENDENT_NOTE: 'Naslednje strani so odvisne od vsebine tukaj (vključuje navidezne strani, preusmerjevalne strani in strani s povezavami v vsebini)'
+    DESCRIPTION: 'Splošna stran'
     DependtPageColumnLinkType: 'Tip povezave'
     EDITHEADER: 'Kdo lahko ureja to stran?'
     EDITORGROUPS: 'Skupine urednikov'
@@ -97,6 +192,8 @@ sl:
     HASBROKENLINKS: 'Ta stran ima neveljavne povezave.'
     HTMLEDITORTITLE: Vsebina
     INHERIT: 'Privzemi od nadrejene strani'
+    LASTPUBLISHED: 'Nazadnje objavljeno'
+    LASTSAVED: 'Nazadnje shranjeno'
     LASTUPDATED: 'Nazadnje urejeno'
     LINKCHANGENOTE: 'Sprememba URL-naslova te strani bo povzročila spremembo URL-naslovov do vseh podrejenih strani.'
     LINKSALREADYUNIQUE: '{url} je že v uporabi'
@@ -109,6 +206,9 @@ sl:
     MODIFIEDONDRAFTSHORT: Spremenjeno
     MetadataToggle: Metapodatki
     MoreOptions: 'Več opcij'
+    NOTPUBLISHED: 'Ni objavljeno'
+    ONLIVEONLYSHORT: 'Samo objavljena'
+    ONLIVEONLYSHORTHELP: 'Stran je objavljena, osnutek pa ne obstaja'
     PAGELOCATION: 'Lokacija strani'
     PAGETITLE: 'Ime strani'
     PAGETYPE: 'Tip strani'
@@ -118,6 +218,12 @@ sl:
     PARENTTYPE_SUBPAGE: 'Podstran (izberi spodaj)'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Upravljaj s pravicami za dostop do vsebine'
     PERMISSION_GRANTACCESS_HELP: 'Dovoli nastavitve pravic za dostop do izbrane strani v sklopu "Strani".'
+    PLURALNAME: Strani
+    PLURALS:
+      one: Stran
+      two: '{count} strani'
+      few: '{count} strani'
+      other: '{count} strani'
     PageTypNotAllowedOnRoot: 'Tip strani "{type}" ne more biti del osnovne korenske ravni'
     PageTypeNotAllowed: 'Tip strani "{type}" ne more biti podrejen tej nadrejeni strani.'
     REMOVE_INSTALL_WARNING: 'Pozor: Zaradi varnosti priporočamo, da odstranite install.php it te SilverStripe namestitve.'
@@ -125,9 +231,14 @@ sl:
     REORGANISE_HELP: 'Razvrsti strani v drevesni strukturi s funkcijo "povleci in izpusti".'
     SHOWINMENUS: 'Pokaži v meniju?'
     SHOWINSEARCH: 'Pokaži v iskalniku?'
+    SINGULARNAME: Stran
     TABBEHAVIOUR: Vedenje
+    TABCONTENT: 'Osrednja vsebina'
     TABDEPENDENT: 'Odvisne strani'
     TOPLEVEL: 'Vsebina Strani (Zgornja Stopnja)'
+    UNTITLED: '{pagetype} brez naslova'
+    URLSegment: 'Naslov URL'
+    UntitledDependentObject: '{instanceType} brez naslova'
     VIEWERGROUPS: 'Skupine obiskovalcev'
     VIEW_ALL_DESCRIPTION: 'Prikaz vse strani'
     VIEW_DRAFT_CONTENT: Predogled.
@@ -138,12 +249,23 @@ sl:
     many_many_BackLinkTracking: 'Spremljanje povezav "nazaj"'
     many_many_ImageTracking: 'Spremljanje slik'
     many_many_LinkTracking: 'Spremljanje povezav'
+  SilverStripe\CMS\Model\SiteTreeFileExtension:
+    TITLE_INDEX: '#'
+    TITLE_TYPE: Tip
+    TITLE_USED_ON: 'Uporabljena na'
+  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
+    USAGE: Uporaba
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Povezana stran'
+    DESCRIPTION: 'Prikaže vsebino, ki je vnesena na drugi strani'
     EditLink: uredi
     HEADER: 'To je navidezna stran'
     PLURALNAME: 'Virtualne strani'
     SINGULARNAME: 'Virtualna stran'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 'Strani z nedelujočimi datotekami'
+    BrokenLinksGroupTitle: 'Poročila o nedelujočih povezavah'
+    ParameterLiveCheckbox: 'Preverite, kaj je objavljeno'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Poljuben
     BROKENLINKS: 'Poročilo o nedelujočih povezavah'
@@ -166,9 +288,24 @@ sl:
     ReasonDropdownVPBROKENLINK: 'Navidezna stran, ki kaže na neobstoječo stran'
     RedirectorNonExistent: 'preusmerjevalna stran, ki kaže na neobstoječo stran'
     VirtualPageNonExistent: 'navidezna stran, ki kaže na neobstoječo stran'
+  SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
+    BROKENREDIRECTORPAGES: 'Preusmeritve, ki kažejo na neobstoječe strani'
+    BrokenLinksGroupTitle: 'Poročila o nedelujočih povezavah'
+    ParameterLiveCheckbox: 'Preverite, kaj je objavljeno'
+  SilverStripe\CMS\Reports\BrokenVirtualPagesReport:
+    BROKENVIRTUALPAGES: 'Navidezne strani, ki kažejo na neobstoječe strani'
+    BrokenLinksGroupTitle: 'Poročila o nedelujočih povezavah'
+    ParameterLiveCheckbox: 'Preverite, kaj je objavljeno'
+  SilverStripe\CMS\Reports\EmptyPagesReport:
+    ContentGroupTitle: 'Poročila o stanju vsebine'
+    EMPTYPAGES: 'Strani brez vsebine'
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    ContentGroupTitle: 'Poročila o stanju vsebine'
+    LAST2WEEKS: 'Strani, ki so bile spremenjene v zadnjih dveh tednih'
   SilverStripe\CMS\Search\SearchForm:
     FILTERDATEFROM: Od
     FILTERDATETO: Do
+    FILTERLABELTEXT: Najdi
     GO: Pojdi
     PAGEFILTERDATEHEADING: 'Nazadnje spremenjeno'
     SEARCH: Išči
@@ -176,5 +313,9 @@ sl:
   SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask:
     BUTTONRUN: Zaženi
     CHOOSEOPERATION: 'Izberi operacijo:'
+    DELETEWARNING: 'Opozorilo: Postopki niso povračljivi, zato jih izvajajte preudarno.'
+    HEADER: 'Postopek za odstranjevanje strani, ki nimajo nadrejenih strani'
+    NONEFOUND: 'Nismo našli strani brez nadrejenih strani'
+    NONEREMOVED: 'Nobene strani nismo odstranili'
     SELECTALL: 'izberi vse'
     UNSELECTALL: 'odstrani vse'
