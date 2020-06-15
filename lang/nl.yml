@@ -79,6 +79,7 @@ nl:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Auteur
     COMPAREMODE: 'Vergelijken (selecteer 2)'
+    COMPARINGVERSION: 'U vergelijkt versie {version1} en {version2}.'
     MENUTITLE: Geschiedenis
     MULTISELECT: 'Meervoudige acties'
     NOTPUBLISHED: 'Niet gepubliceerd'
@@ -146,6 +147,7 @@ nl:
     SELECT_PAGE: 'Selecteer een pagina'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Annuleren
+    EMPTY: 'Vul een URL segment in of klik op annuleren'
     Edit: Bewerken
     HelpChars: 'Speciale tekens worden automatische omgezet of verwijderd.'
     OK: OK
@@ -244,9 +246,11 @@ nl:
     SHOWINSEARCH: 'Weergeven in zoeken?'
     SINGULARNAME: Pagina
     TABBEHAVIOUR: Gedrag
+    TABCONTENT: Hoofdinhoud
     TABDEPENDENT: 'Afhankelijke pagina''s'
     TOPLEVEL: 'Site inhoud (hoogste niveau)'
     UNTITLED: 'Naamloos {pagetype}'
+    URLSegment: 'URL segment'
     UntitledDependentObject: 'Naamloos {instanceType}'
     VIEWERGROUPS: Bekijkersgroepen
     VIEWER_GROUPS_FIELD_DESC: 'Groepen die alles mogen bekijken: {groupList}'
