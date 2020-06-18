@@ -2628,13 +2628,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
             $currentClass = $class;
             $result[$class] = $pageTypeName;
-
-            // If we're in translation mode, the link between the translated pagetype title and the actual classname
-            // might not be obvious, so we add it in parantheses. Example: class "RedirectorPage" has the title
-            // "Weiterleitung" in German, so it shows up as "Weiterleitung (RedirectorPage)"
-            if (i18n::getData()->langFromLocale(i18n::get_locale()) != 'en') {
-                $result[$class] = $result[$class] .  " ({$class})";
-            }
         }
 
         // sort alphabetically, and put current on top
