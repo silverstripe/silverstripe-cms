@@ -33,6 +33,8 @@ query ReadHistoryViewerPage ($page_id: ID!, $limit: Int!, $offset: Int!) {
             FirstName
             Surname
           }
+          Deleted
+          Draft
           Published
           LiveVersion
           LatestDraftVersion
