@@ -327,7 +327,7 @@ en:
     ParameterLiveCheckbox: 'Check live site'
   SilverStripe\CMS\Reports\EmptyPagesReport:
     ContentGroupTitle: 'Content reports'
-    EMPTYPAGES: 'Pages with no content'
+    EMPTYPAGES: 'Pages without content'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'Content reports'
     LAST2WEEKS: 'Pages edited in the last 2 weeks'

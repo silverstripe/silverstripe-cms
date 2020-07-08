@@ -12,7 +12,7 @@ class EmptyPagesReport extends Report
 
     public function title()
     {
-        return _t(__CLASS__.'.EMPTYPAGES', "Pages with no content");
+        return _t(__CLASS__.'.EMPTYPAGES', "Pages without content");
     }
 
     public function group()
