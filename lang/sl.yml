@@ -32,7 +32,7 @@ sl:
     PAGES: Status
     PAGESALLOPT: 'Vse strani'
     PAGETYPEANYOPT: Poljubna
-    PAGETYPEOPT: 'Tip stra'
+    PAGETYPEOPT: 'Tip strani'
     PAGETYPE_TITLE: '(Tip strani: {type}) {title}'
     PLEASESAVE: 'Shranite stran. Strani nismo mogli posodobiti, saj mora biti predhodno shranjena.'
     PUBALLCONFIRM: 'Objavite vse strani spletnega mesta (vsebine bodo prekopirane v "objavljeno" različico spletnega mesta).'
@@ -80,7 +80,7 @@ sl:
     PREVIEW: Predogled
     PUBLISHER: Objavljavec
     REVERTTOTHISVERSION: 'Povrni v to različico'
-    SHOWUNPUBLISHED: 'Pokaži neobjavljeno različico'
+    SHOWUNPUBLISHED: 'Prikaži neobjavljeno različico'
     UNKNOWN: Neznan
     VIEW: prikaz
     VIEWINGLATEST: 'Prikazana je aktualna različica.'
@@ -186,7 +186,7 @@ sl:
     DependtPageColumnLinkType: 'Tip povezave'
     EDITHEADER: 'Kdo lahko ureja to stran?'
     EDITORGROUPS: 'Skupine urednikov'
-    EDIT_ALL_DESCRIPTION: 'Urejanje vseh strani'
+    EDIT_ALL_DESCRIPTION: 'Urejanje poljubne strani'
     EDIT_ALL_HELP: 'Možnost urejanja katerekoli strani na spletnem mestu, ne glede na nastavitve v sklopu "Dostop". Zahteva dovoljenje za dostop do vsebine spletnega mesta.'
     Editors: 'Skupine urednikov'
     HASBROKENLINKS: 'Ta stran ima neveljavne povezave.'
@@ -198,7 +198,7 @@ sl:
     LINKCHANGENOTE: 'Sprememba URL-naslova te strani bo povzročila spremembo URL-naslovov do vseh podrejenih strani.'
     LINKSALREADYUNIQUE: '{url} je že v uporabi'
     LINKSCHANGEDTO: 'spremenba {url1} -> {url2}'
-    MENUTITLE: 'Naziv navigacije'
+    MENUTITLE: 'Naslov v navigaciji'
     METADESC: Opis
     METADESCHELP: 'Iskalniki to vsebino uporabljajo pri prikazu rezultatov. (Vsebina nima vpliva na vrstni red prikaza med zadetki v iskalniku.)'
     METAEXTRA: 'Meta tagi po meri'
@@ -210,12 +210,12 @@ sl:
     ONLIVEONLYSHORT: 'Samo objavljena'
     ONLIVEONLYSHORTHELP: 'Stran je objavljena, osnutek pa ne obstaja'
     PAGELOCATION: 'Lokacija strani'
-    PAGETITLE: 'Ime strani'
+    PAGETITLE: 'Naslov strani'
     PAGETYPE: 'Tip strani'
-    PARENTID: 'Starševska stran'
+    PARENTID: 'Nadrejena stran'
     PARENTTYPE: 'Lokacija strani'
     PARENTTYPE_ROOT: 'Stran na prvem nivoju'
-    PARENTTYPE_SUBPAGE: 'Podstran (izberi spodaj)'
+    PARENTTYPE_SUBPAGE: 'Podstran (izberite nadrejeno stran spodaj)'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Upravljaj s pravicami za dostop do vsebine'
     PERMISSION_GRANTACCESS_HELP: 'Dovoli nastavitve pravic za dostop do izbrane strani v sklopu "Strani".'
     PLURALNAME: Strani
@@ -229,10 +229,10 @@ sl:
     REMOVE_INSTALL_WARNING: 'Pozor: Zaradi varnosti priporočamo, da odstranite install.php it te SilverStripe namestitve.'
     REORGANISE_DESCRIPTION: 'Spremeni strukturo spletnega mesta'
     REORGANISE_HELP: 'Razvrsti strani v drevesni strukturi s funkcijo "povleci in izpusti".'
-    SHOWINMENUS: 'Pokaži v meniju?'
-    SHOWINSEARCH: 'Pokaži v iskalniku?'
+    SHOWINMENUS: 'Prikaži v navigaciji'
+    SHOWINSEARCH: 'Prikaži v iskalnikih'
     SINGULARNAME: Stran
-    TABBEHAVIOUR: Vedenje
+    TABBEHAVIOUR: Obnašanje
     TABCONTENT: 'Osrednja vsebina'
     TABDEPENDENT: 'Odvisne strani'
     TOPLEVEL: 'Vsebina Strani (Zgornja Stopnja)'
@@ -240,12 +240,12 @@ sl:
     URLSegment: 'Naslov URL'
     UntitledDependentObject: '{instanceType} brez naslova'
     VIEWERGROUPS: 'Skupine obiskovalcev'
-    VIEW_ALL_DESCRIPTION: 'Prikaz vse strani'
-    VIEW_DRAFT_CONTENT: Predogled.
+    VIEW_ALL_DESCRIPTION: 'Ogled poljubne strani'
+    VIEW_DRAFT_CONTENT: 'Ogled osnutka'
     VIEW_DRAFT_CONTENT_HELP: 'Ogled osnutka vsebine za uporabnike brez dostopa do vmesnika.'
     Viewers: 'Skupine obiskovalcev (viewers)'
     Visibility: Vidnost
-    has_one_Parent: 'Starševska stran'
+    has_one_Parent: 'Nadrejena stran'
     many_many_BackLinkTracking: 'Spremljanje povezav "nazaj"'
     many_many_ImageTracking: 'Spremljanje slik'
     many_many_LinkTracking: 'Spremljanje povezav'
