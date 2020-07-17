@@ -16,3 +16,12 @@ SilverStripe\GraphQL\Manager:
             fields: [ID, FirstName, Surname]
             operations:
               readOne: true
+    default:
+      scaffolding:
+        types:
+          SilverStripe\CMS\Model\SiteTree:
+            fields:
+              ID: true
+              Link: true
+      queries:
+        getPageByLink: SilverStripe\CMS\GraphQL\GetByLinkCreator
