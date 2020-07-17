@@ -49,8 +49,6 @@ class GetByLinkCreator extends QueryCreator
      */
     public function resolve($obj, array $args = [])
     {
-        $link = $args['Link'] ?? null;
-
-        return $link ? SiteTree::get_by_link($link) : null;
+        return SiteTree::get_by_link($args['Link']);
     }
 }
