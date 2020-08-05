@@ -20,12 +20,16 @@ matrix:
   include:
     - php: 5.4
       env: DB=PGSQL
+    - php: 5.4
+      env: DB=MYSQL
     - php: 5.5
       env: DB=SQLITE
     - php: 5.6
       env: DB=MYSQL PDO=1
     - php: 5.6
       env: DB=MYSQL BEHAT_TEST=1
+    - php: 7.1
+      env: DB=PGSQL
     - php: 7.4
       env: DB=MYSQL
       dist: xenial
