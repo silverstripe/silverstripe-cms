@@ -53,7 +53,7 @@ class SiteTreeURLSegmentField extends TextField
             parent::getAttributes(),
             [
                 'data-prefix' => $this->getURLPrefix(),
-                'data-suffix' => '?stage=Stage',
+                'data-suffix' => $this->getURLSuffix(),
                 'data-default-url' => $this->getDefaultURL()
             ]
         );
