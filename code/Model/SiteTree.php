@@ -2027,6 +2027,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         $urlsegment = SiteTreeURLSegmentField::create("URLSegment", $this->fieldLabel('URLSegment'))
             ->setURLPrefix($baseLink)
+            ->setURLSuffix('?stage=Stage')
             ->setDefaultURL($this->generateURLSegment(_t(
                 'SilverStripe\\CMS\\Controllers\\CMSMain.NEWPAGE',
                 'New {pagetype}',
