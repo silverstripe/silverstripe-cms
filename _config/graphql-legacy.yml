@@ -1,0 +1,20 @@
+---
+Name: cmsgraphql
+Only:
+  classexists: 'SilverStripe\GraphQL\Manager'
+---
+SilverStripe\GraphQL\Manager:
+  schemas:
+    admin:
+      scaffolding:
+        types:
+          SilverStripe\CMS\Model\SiteTree:
+            fields: [ID, LastEdited, AbsoluteLink]
+            operations:
+              copyToStage: true
+              rollback: true
+              readOne: true
+          SilverStripe\Security\Member:
+            fields: [ID, FirstName, Surname]
+            operations:
+              readOne: true
