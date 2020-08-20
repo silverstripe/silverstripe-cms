@@ -9,7 +9,7 @@ const query = gql`
 query ReadHistoryViewerPage ($page_id: ID!, $limit: Int!, $offset: Int!) {
   readOnePage(
     Versioning: {
-      Mode: LATEST
+      Mode: ALL_VERSIONS
     },
     ID: $page_id
   ) {
