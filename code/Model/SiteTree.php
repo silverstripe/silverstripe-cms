@@ -70,6 +70,7 @@ use SilverStripe\View\ArrayData;
 use SilverStripe\View\HTML;
 use SilverStripe\View\Parsers\ShortcodeParser;
 use SilverStripe\View\Parsers\URLSegmentFilter;
+use SilverStripe\View\Shortcodes\EmbedShortcodeProvider;
 use SilverStripe\View\SSViewer;
 
 /**
@@ -1606,6 +1607,24 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         if ($oneChangedFields && !array_diff($changedFields, $fieldsIgnoredByVersioning)) {
             $this->setNextWriteWithoutVersion(true);
+        }
+
+        // Flush cached [embed] shortcodes
+        // Flush on both DRAFT and LIVE because VersionedCacheAdapter has separate caches for both
+        // Clear both caches at once for the scenario where a CMS-author updates a remote resource
+        // on a 3rd party service and the url for the resource stays the same.  Either saving or publishing
+        // the page will clear both caches.  This allow a CMS-author to clear the live cache by only
+        // saving the draft page and not publishing any changes they may not want live yet.
+        $parser = ShortcodeParser::get('default');
+        foreach ([Versioned::DRAFT, Versioned::LIVE] as $stage) {
+            Versioned::withVersionedMode(function () use ($parser, $stage) {
+                Versioned::set_reading_mode("Stage.$stage");
+                // $this->Content may be null on brand new SiteTree objects
+                if (!$this->Content) {
+                    return;
+                }
+                EmbedShortcodeProvider::flushCachedShortcodes($parser, $this->Content);
+            });
         }
     }
 

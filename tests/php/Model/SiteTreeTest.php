@@ -4,6 +4,7 @@ namespace SilverStripe\CMS\Tests\Model;
 
 use LogicException;
 use Page;
+use Psr\SimpleCache\CacheInterface;
 use ReflectionMethod;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
@@ -30,6 +31,7 @@ use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\Parsers\Diff;
 use SilverStripe\View\Parsers\ShortcodeParser;
 use SilverStripe\View\Parsers\URLSegmentFilter;
+use SilverStripe\View\Shortcodes\EmbedShortcodeProvider;
 use TractorCow\Fluent\Extension\FluentSiteTreeExtension;
 use const RESOURCES_DIR;
 
@@ -1690,5 +1692,45 @@ class SiteTreeTest extends SapphireTest
         $record = new SiteTree();
         $pages = $record->DependentPages();
         $this->assertCount(0, $pages, 'Unsaved pages should have no dependent pages');
+    }
+
+    public function testOnBeforeWriteClearsEmbedShortcodeCache()
+    {
+        /** @var CacheInterface $cache */
+        $url = 'http://www.test-service.com/abc123';
+        $content = '<p>Some content with an [embed url="' . $url . '" thumbnail="https://example.com/mythumb.jpg" ' .
+            'class="leftAlone ss-htmleditorfield-file embed" width="480" height="270"]' . $url . '[/embed]</p>';
+        $embedHtml = '<iframe myattr="something" />';
+
+        // use reflection to access private methods
+        $provider = new EmbedShortcodeProvider();
+        $reflector = new \ReflectionClass(EmbedShortcodeProvider::class);
+        $method = $reflector->getMethod('getCache');
+        $method->setAccessible(true);
+        $cache = $method->invokeArgs($provider, []);
+        $method = $reflector->getMethod('deriveCacheKey');
+        $method->setAccessible(true);
+        $key = $method->invokeArgs($provider, [$url]);
+
+        // Set cache (VersionedCacheAdapter) on both DRAFT and LIVE
+        foreach ([Versioned::DRAFT, Versioned::LIVE] as $stage) {
+            Versioned::withVersionedMode(function () use ($cache, $key, $embedHtml, $stage) {
+                Versioned::set_reading_mode("Stage.$stage");
+                $cache->set($key, $embedHtml);
+            });
+        }
+
+        // Create new page on DRAFT
+        $page = SiteTree::create();
+        $page->Content = $content;
+        $page->write();
+
+        // Assert both DRAFT and LIVE caches were cleared on DRAFT $page->write()
+        foreach ([Versioned::DRAFT, Versioned::LIVE] as $stage) {
+            Versioned::withVersionedMode(function () use ($cache, $key, $stage) {
+                Versioned::set_reading_mode("Stage.$stage");
+                $this->assertFalse($cache->has($key));
+            });
+        }
     }
 }
