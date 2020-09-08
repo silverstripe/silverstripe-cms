@@ -2403,7 +2403,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         // "unpublish"
-        if ($isPublished && $canPublish && $isOnDraft && $canUnpublish) {
+        if ($isPublished && $isOnDraft && $canUnpublish) {
             $moreOptions->push(
                 FormAction::create('unpublish', _t(__CLASS__.'.BUTTONUNPUBLISH', 'Unpublish'), 'delete')
                     ->setDescription(_t(__CLASS__.'.BUTTONUNPUBLISHDESC', 'Remove this page from the published site'))
