@@ -7,6 +7,13 @@ SilverStripe\Core\Injector\Injector:
   SilverStripe\GraphQL\Schema\Registry\ResolverRegistry:
     constructor:
       cmsResolver: '%$SilverStripe\CMS\GraphQL\Resolver'
+SilverStripe\CMS\Model\SiteTree:
+  graphql_blacklisted_fields:
+    HasBrokenFile: true
+    HasBrokenLink: true
+    ReportClass: true
+    VirtualPages: true
+    BackLinks: true
 SilverStripe\GraphQL\Schema\Schema:
   schemas:
     admin:
