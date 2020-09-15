@@ -2124,7 +2124,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
             $fields->addFieldToTab(
                 "Root.Main",
-                new LiteralField("ObsoleteWarningHeader", "<p class=\"message warning\">$obsoleteWarning</p>"),
+                LiteralField::create("ObsoleteWarningHeader", "<p class=\"alert alert-warning\">$obsoleteWarning</p>"),
                 "Title"
             );
         }
