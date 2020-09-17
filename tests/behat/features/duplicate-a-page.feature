@@ -16,7 +16,7 @@ Feature: Duplicate a page
 		And I right click on "Page1" in the tree
 		And I hover on "Duplicate" in the context menu
 		And I click on "This page and subpages" in the context menu
-		Then I should see a "Duplicated 'Page1' and children successfully" notice
+		Then I should see a "Duplicated 'Page1' and children successfully" success toast
 
 		When I fill in "MenuTitle" with "Duplicate Page"
 		And I press the "Publish" button
