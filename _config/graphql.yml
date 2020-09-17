@@ -13,7 +13,7 @@ SilverStripe\Core\Injector\Injector:
 SilverStripe\GraphQL\Schema\DataObject\ReadOneCreator:
   default_plugins:
     getByLink:
-      before: '*'
+      after: filter
 SilverStripe\CMS\Model\SiteTree:
   graphql_blacklisted_fields:
     HasBrokenFile: true
