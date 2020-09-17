@@ -7,6 +7,13 @@ SilverStripe\Core\Injector\Injector:
   SilverStripe\GraphQL\Schema\Registry\ResolverRegistry:
     constructor:
       cmsResolver: '%$SilverStripe\CMS\GraphQL\Resolver'
+  SilverStripe\GraphQL\Schema\Registry\PluginRegistry:
+    constructor:
+      linkable: '%$SilverStripe\CMS\GraphQL\LinkablePlugin'
+SilverStripe\GraphQL\Schema\DataObject\ReadOneCreator:
+  default_plugins:
+    getByLink:
+      before: '*'
 SilverStripe\CMS\Model\SiteTree:
   graphql_blacklisted_fields:
     HasBrokenFile: true
@@ -35,11 +42,3 @@ SilverStripe\GraphQL\Schema\Schema:
             surname: true
           operations:
             readOne: true
-    default:
-      queries:
-        getPageByLink:
-          model: SilverStripe\CMS\Model\SiteTree
-          args:
-            link:
-              type: String!
-              description: The link to the page, without the base URL, e.g. "path/to/page"
