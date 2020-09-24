@@ -325,6 +325,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     private static $runCMSFieldsExtensions = true;
 
     /**
+     * Deleting this page also deletes all its children if set to true.
+     *
      * @config
      * @var boolean
      */
