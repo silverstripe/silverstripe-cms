@@ -396,11 +396,11 @@ class CMSPageHistoryController extends CMSMain
         $toVersionRecord = Versioned::get_version(SiteTree::class, $id, $toVersion);
 
         if (!$fromVersionRecord) {
-            user_error("Can't find version $fromVersion of page $id", E_USER_ERROR);
+            throw new \Exception("Can't find version $fromVersion of page $id");
         }
 
         if (!$toVersionRecord) {
-            user_error("Can't find version $toVersion of page $id", E_USER_ERROR);
+            throw new \Exception("Can't find version $toVersion of page $id");
         }
 
         if (!$record) {
