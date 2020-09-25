@@ -51,11 +51,4 @@ class BrokenFilesReport extends Report
             ],
         ];
     }
-
-    public function getParameterFields()
-    {
-        return new FieldList(
-            new CheckboxField('OnLive', _t(__CLASS__.'.ParameterLiveCheckbox', 'Check live site'))
-        );
-    }
 }
