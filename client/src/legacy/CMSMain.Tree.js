@@ -187,19 +187,16 @@ $.entwine('ss.tree', function($) {
   $('.cms-tree a.jstree-clicked').entwine({
     onmatch: function() {
       var self = this,
-          panel = self.parents('.cms-panel-content'),
-          scrollTo;
+          panel = self.parents('.cms-tree-view-sidebar');
 
       if (self.offset().top < 0 ||
           self.offset().top > panel.height() - self.height()) {
-        // Current scroll top + our current offset top is our
-        // position in the panel
-        scrollTo = panel.scrollTop() + self.offset().top +
-          (panel.height() / 2);
-
-        panel.animate({
-          scrollTop: scrollTo
-        }, 'slow');
+        var scrollToElement = self.parent();
+        // scroll to the list item above for some extra padding if possible
+        if (scrollToElement.prev().length) {
+          scrollToElement = scrollToElement.prev();
+        }
+        scrollToElement.get(0).scrollIntoView();
       }
     }
   });
