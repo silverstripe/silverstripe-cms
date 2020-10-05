@@ -47,6 +47,17 @@ class CMSSiteTreeFilterTest extends SapphireTest
         );
     }
 
+    public function testUrlSegmentFilter()
+    {
+        $page = $this->objFromFixture(Page::class, 'page8');
+
+        $filter = CMSSiteTreeFilter_Search::create(['Term' => 'lake-wanaka+adventure']);
+        $this->assertTrue($filter->isPageIncluded($page));
+
+        $filter = CMSSiteTreeFilter_Search::create(['URLSegment' => 'lake-wanaka+adventure']);
+        $this->assertTrue($filter->isPageIncluded($page));
+    }
+
     public function testIncludesParentsForNestedMatches()
     {
         $parent = $this->objFromFixture('Page', 'page3');
