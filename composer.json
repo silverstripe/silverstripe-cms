@@ -25,10 +25,11 @@
         "silverstripe/reports": "^4.7@dev",
         "silverstripe/siteconfig": "^4.7@dev",
         "silverstripe/versioned": "^1.7@dev",
-        "silverstripe/vendor-plugin": "^1.0"
+        "silverstripe/vendor-plugin": "^1.0",
+        "php": "^7.1 || ^8"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.7"
+        "sminnee/phpunit": "^5.7"
     },
     "extra": {
         "expose": [
