@@ -153,22 +153,13 @@ class SiteTreeTest extends SapphireTest
     }
 
     /**
-     * Check that explicitly setting a URL segment to the resources dir will rename it to have a -2 suffix
-     */
-    public function testExplicitlyUsingResourcesDirForURLSegment()
-    {
-        $page = SiteTree::create(['URLSegment' => RESOURCES_DIR]);
-        $id = $page->write();
-        $page = SiteTree::get()->byID($id);
-        $this->assertSame(RESOURCES_DIR . '-2', $page->URLSegment);
-    }
-
-    /**
      * For legacy resources dir values ("resources"), check that URLSegments get a -2 appended
      */
     public function testLegacyResourcesDirValuesHaveIncrementedValueAppended()
     {
         if (RESOURCES_DIR !== 'resources') {
+            // This test only runs on the CMS build because it doesn't have a `resources-dir` flag on its
+            // composer.json file
             $this->markTestSkipped('This legacy test requires RESOURCES_DIR to be "resources"');
         }
 
@@ -185,6 +176,8 @@ class SiteTreeTest extends SapphireTest
     public function testDefaultResourcesDirHasLeadingUnderscoreRemovedAndResourcesIsUsed()
     {
         if (RESOURCES_DIR === 'resources') {
+            // This test won't runs on the CMS build because it doesn't have a `resources-dir` flag on its
+            // composer.json file. It will run on the recipe-cms build.
             $this->markTestSkipped('This test requires RESOURCES_DIR to be something other than "resources"');
         }
 
