@@ -3,7 +3,6 @@
 
 namespace SilverStripe\CMS\GraphQL;
 
-
 use GraphQL\Type\Definition\ResolveInfo;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Core\Config\Configurable;
@@ -91,7 +90,8 @@ class LinkablePlugin implements ModelQueryPlugin
      * @return SiteTree|DataList|null
      */
     public static function applyLinkFilter(
-        $obj, array $args,
+        $obj,
+        array $args,
         array $context,
         ResolveInfo $info,
         callable $done

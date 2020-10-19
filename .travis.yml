@@ -61,6 +61,22 @@ before_script:
   - if [[ $DB == PGSQL ]]; then composer require --no-update silverstripe/postgresql:^2; fi
   - composer update --prefer-source --no-interaction --no-progress --no-suggest --optimize-autoloader --verbose --profile $COMPOSER_ARG
 
+  # Remove once everything is merged
+  - cd vendor/silverstripe/graphql
+  - git checkout -t origin/master
+  - cd ../admin
+  - git remote add -f uc https://github.com/unclecheese/silverstripe-admin
+  - git checkout pulls/1/schemageddon
+  - cd ../versioned
+  - git remote add -f uc https://github.com/unclecheese/silverstripe-versioned
+  - git checkout pulls/1/schemageddon
+  - cd ../asset-admin
+  - git remote add -f uc https://github.com/unclecheese/silverstripe-asset-admin
+  - git checkout pulls/1/schemageddon
+  - cd ../../../
+  - composer dump-autoload -o
+  ########################################################
+
 # Install NPM dependencies
   - if [[ $NPM_TEST ]]; then nvm install $TRAVIS_NODE_VERSION && nvm use $TRAVIS_NODE_VERSION && npm install -g yarn && yarn install --network-concurrency 1 && yarn run build; fi
 
