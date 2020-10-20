@@ -136,7 +136,12 @@ class ZZZSearchFormTest extends FunctionalTest
 
         $this->waitUntilIndexingFinished();
 
-        $results = $sf->getResults();
+        // Generate results on the Live stage for an accurate outcome
+        $results = Versioned::withVersionedMode(function () use ($sf) {
+            Versioned::set_stage(Versioned::LIVE);
+            return $sf->getResults();
+        });
+
         $this->assertContains(
             $publishedPage->ID,
             $results->column('ID'),
@@ -165,7 +170,13 @@ class ZZZSearchFormTest extends FunctionalTest
         $publishedPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
         $this->waitUntilIndexingFinished();
-        $results = $sf->getResults();
+
+        // Generate results on the Live stage for an accurate outcome
+        $results = Versioned::withVersionedMode(function () use ($sf) {
+            Versioned::set_stage(Versioned::LIVE);
+            return $sf->getResults();
+        });
+
         $this->assertContains(
             $publishedPage->ID,
             $results->column('ID'),
@@ -187,7 +198,12 @@ class ZZZSearchFormTest extends FunctionalTest
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
 
-        $results = $sf->getResults();
+        // Generate results on the Live stage for an accurate outcome
+        $results = Versioned::withVersionedMode(function () use ($sf) {
+            Versioned::set_stage(Versioned::LIVE);
+            return $sf->getResults();
+        });
+
         $unpublishedPage = $this->objFromFixture(SiteTree::class, 'publicUnpublishedPage');
         $this->assertNotContains(
             $unpublishedPage->ID,
@@ -210,7 +226,13 @@ class ZZZSearchFormTest extends FunctionalTest
         /** @var SiteTree $page */
         $page = $this->objFromFixture(SiteTree::class, 'restrictedViewLoggedInUsers');
         $page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
-        $results = $sf->getResults();
+
+        // Generate results on the Live stage for an accurate outcome
+        $results = Versioned::withVersionedMode(function () use ($sf) {
+            Versioned::set_stage(Versioned::LIVE);
+            return $sf->getResults();
+        });
+
         $this->assertNotContains(
             $page->ID,
             $results->column('ID'),
@@ -242,7 +264,13 @@ class ZZZSearchFormTest extends FunctionalTest
         /** @var SiteTree $page */
         $page = $this->objFromFixture(SiteTree::class, 'restrictedViewOnlyWebsiteUsers');
         $page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
-        $results = $sf->getResults();
+
+        // Generate results on the Live stage for an accurate outcome
+        $results = Versioned::withVersionedMode(function () use ($sf) {
+            Versioned::set_stage(Versioned::LIVE);
+            return $sf->getResults();
+        });
+
         $this->assertNotContains(
             $page->ID,
             $results->column('ID'),
@@ -251,7 +279,13 @@ class ZZZSearchFormTest extends FunctionalTest
 
         $member = $this->objFromFixture(Member::class, 'randomuser');
         Security::setCurrentUser($member);
-        $results = $sf->getResults();
+
+        // Generate results on the Live stage for an accurate outcome
+        $results = Versioned::withVersionedMode(function () use ($sf) {
+            Versioned::set_stage(Versioned::LIVE);
+            return $sf->getResults();
+        });
+
         $this->assertNotContains(
             $page->ID,
             $results->column('ID'),
@@ -287,7 +321,13 @@ class ZZZSearchFormTest extends FunctionalTest
         /** @var SiteTree $page */
         $page = $this->objFromFixture(SiteTree::class, 'inheritRestrictedView');
         $page->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
-        $results = $sf->getResults();
+
+        // Generate results on the Live stage for an accurate outcome
+        $results = Versioned::withVersionedMode(function () use ($sf) {
+            Versioned::set_stage(Versioned::LIVE);
+            return $sf->getResults();
+        });
+
         $this->assertNotContains(
             $page->ID,
             $results->column('ID'),
@@ -296,7 +336,13 @@ class ZZZSearchFormTest extends FunctionalTest
 
         $member = $this->objFromFixture(Member::class, 'websiteuser');
         Security::setCurrentUser($member);
-        $results = $sf->getResults();
+
+        // Generate results on the Live stage for an accurate outcome
+        $results = Versioned::withVersionedMode(function () use ($sf) {
+            Versioned::set_stage(Versioned::LIVE);
+            return $sf->getResults();
+        });
+
         $this->assertContains(
             $page->ID,
             $results->column('ID'),
@@ -317,7 +363,13 @@ class ZZZSearchFormTest extends FunctionalTest
         $sf = new SearchForm($this->mockController);
 
         $page = $this->objFromFixture(SiteTree::class, 'dontShowInSearchPage');
-        $results = $sf->getResults();
+
+        // Generate results on the Live stage for an accurate outcome
+        $results = Versioned::withVersionedMode(function () use ($sf) {
+            Versioned::set_stage(Versioned::LIVE);
+            return $sf->getResults();
+        });
+
         $this->assertNotContains(
             $page->ID,
             $results->column('ID'),
@@ -343,7 +395,12 @@ class ZZZSearchFormTest extends FunctionalTest
         $showInSearchFile = $this->objFromFixture(File::class, 'showInSearchFile');
         $showInSearchFile->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
-        $results = $sf->getResults();
+        // Generate results on the Live stage for an accurate outcome
+        $results = Versioned::withVersionedMode(function () use ($sf) {
+            Versioned::set_stage(Versioned::LIVE);
+            return $sf->getResults();
+        });
+
         $this->assertNotContains(
             $dontShowInSearchFile->ID,
             $results->column('ID'),
@@ -355,7 +412,13 @@ class ZZZSearchFormTest extends FunctionalTest
         $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
-        $results = $sf->getResults();
+
+        // Generate results on the Live stage for an accurate outcome
+        $results = Versioned::withVersionedMode(function () use ($sf) {
+            Versioned::set_stage(Versioned::LIVE);
+            return $sf->getResults();
+        });
+
         $this->assertContains(
             $showInSearchFile->ID,
             $results->column('ID'),
@@ -382,7 +445,12 @@ class ZZZSearchFormTest extends FunctionalTest
         $pageWithSpecialChars = $this->objFromFixture(SiteTree::class, 'pageWithSpecialChars');
         $pageWithSpecialChars->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
-        $results = $sf->getResults();
+        // Generate results on the Live stage for an accurate outcome
+        $results = Versioned::withVersionedMode(function () use ($sf) {
+            Versioned::set_stage(Versioned::LIVE);
+            return $sf->getResults();
+        });
+
         $this->assertContains(
             $pageWithSpecialChars->ID,
             $results->column('ID'),
@@ -394,7 +462,13 @@ class ZZZSearchFormTest extends FunctionalTest
         $request->setSession($this->session());
         $this->mockController->setRequest($request);
         $sf = new SearchForm($this->mockController);
-        $results = $sf->getResults();
+
+        // Generate results on the Live stage for an accurate outcome
+        $results = Versioned::withVersionedMode(function () use ($sf) {
+            Versioned::set_stage(Versioned::LIVE);
+            return $sf->getResults();
+        });
+
         $this->assertContains(
             $pageWithSpecialChars->ID,
             $results->column('ID'),
