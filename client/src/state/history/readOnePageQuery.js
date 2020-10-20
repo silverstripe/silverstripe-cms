@@ -8,38 +8,38 @@ import gql from 'graphql-tag';
 const query = gql`
 query ReadHistoryViewerPage ($page_id: ID!, $limit: Int!, $offset: Int!) {
   readOnePage(
-    Versioning: {
-      Mode: ALL_VERSIONS
+    versioning: {
+      mode: ALL_VERSIONS
     },
-    ID: $page_id
+    filter: {
+      id: { eq: $page_id }
+    }
   ) {
-    ID
-    Versions (limit: $limit, offset: $offset, sortBy: [{
-      field: Version,
-      direction: DESC
-    }]) {
+    id
+    versions (limit: $limit, offset: $offset, sort: {
+      version: DESC
+    }) {
       pageInfo {
         totalCount
       }
-      edges {
-        node {
-          Version
-          AbsoluteLink
-          Author {
-            FirstName
-            Surname
-          }
-          Publisher {
-            FirstName
-            Surname
-          }
-          Deleted
-          Draft
-          Published
-          LiveVersion
-          LatestDraftVersion
-          LastEdited
+
+      node {
+        version
+        absoluteLink
+        author {
+          firstName
+          surname
         }
+        publisher {
+          firstName
+          surname
+        }
+        deleted
+        draft
+        published
+        liveVersion
+        latestDraftVersion
+        lastEdited
       }
     }
   }

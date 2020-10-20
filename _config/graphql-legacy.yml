@@ -1,7 +1,7 @@
 ---
 Name: cmsgraphql
-Only:
-  classexists: 'SilverStripe\GraphQL\Manager'
+Except:
+  classexists: 'SilverStripe\GraphQL\Schema\Schema'
 ---
 SilverStripe\GraphQL\Manager:
   schemas:

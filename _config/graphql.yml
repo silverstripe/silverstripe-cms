@@ -21,7 +21,7 @@ SilverStripe\GraphQL\Schema\Schema:
   schemas:
     admin:
       models:
-        SilverStripe\CMS\Model\SiteTree:
+        Page:
           fields:
             id: true
             lastEdited: true
