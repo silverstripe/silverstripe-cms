@@ -13,6 +13,10 @@ use SilverStripe\GraphQL\Schema\Interfaces\ModelQueryPlugin;
 use SilverStripe\GraphQL\Schema\Schema;
 use SilverStripe\ORM\DataList;
 
+if (!interface_exists(ModelQueryPlugin::class)) {
+    return;
+}
+
 class LinkablePlugin implements ModelQueryPlugin
 {
     use Configurable;
