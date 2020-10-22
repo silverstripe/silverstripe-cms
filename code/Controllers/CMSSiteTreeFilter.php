@@ -203,7 +203,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
 
             switch ($name) {
                 case 'Term':
-                    $query = $query->filterAny(array(
+                    $query = $query->filterAny([
                         'URLSegment:PartialMatch' => Convert::raw2url($val),
                         'Title:PartialMatch' => $val,
                         'MenuTitle:PartialMatch' => $val,
