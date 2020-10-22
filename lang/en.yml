@@ -215,7 +215,7 @@ en:
     METADESC: 'Meta Description'
     METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'Custom Meta Tags'
-    METAEXTRAHELP: 'HTML tags for additional meta information. For example <meta name="customName" content="your custom content here" />'
+    METAEXTRAHELP: 'HTML tags for additional meta information. For example <meta name="customName" content="your custom content here">'
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
     MetadataToggle: Metadata

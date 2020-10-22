@@ -5,6 +5,7 @@ namespace SilverStripe\CMS\Controllers;
 use SilverStripe\Admin\LeftAndMain_SearchFilter;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Core\ClassInfo;
+use SilverStripe\Core\Convert;
 use SilverStripe\Core\Injector\Injectable;
 use SilverStripe\Forms\DateField;
 use SilverStripe\ORM\DataList;
@@ -203,10 +204,16 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
             switch ($name) {
                 case 'Term':
                     $query = $query->filterAny([
-                        'URLSegment:PartialMatch' => $val,
+                        'URLSegment:PartialMatch' => Convert::raw2url($val),
                         'Title:PartialMatch' => $val,
                         'MenuTitle:PartialMatch' => $val,
                         'Content:PartialMatch' => $val
+                    ]);
+                    break;
+
+                case 'URLSegment':
+                    $query = $query->filter([
+                        'URLSegment:PartialMatch' => Convert::raw2url($val),
                     ]);
                     break;
 

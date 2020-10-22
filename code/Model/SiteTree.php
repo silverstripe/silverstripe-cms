@@ -326,6 +326,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     private static $runCMSFieldsExtensions = true;
 
     /**
+     * Deleting this page also deletes all its children when set to true.
+     *
      * @config
      * @var boolean
      */
@@ -2101,7 +2103,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             ->setRightTitle(
                 _t(
                     'SilverStripe\\CMS\\Model\\SiteTree.METAEXTRAHELP',
-                    "HTML tags for additional meta information. For example <meta name=\"customName\" content=\"your custom content here\" />"
+                    "HTML tags for additional meta information. For example <meta name=\"customName\" content=\"your custom content here\">"
                 )
             )
             ->addExtraClass('help');

@@ -29,3 +29,6 @@ Page:
   page3b:
     Parent: =>Page.page3
     Title: Page 3b
+  page8:
+    Title: EncodedUrlSegment
+    URLSegment: lake-wanaka+adventure
