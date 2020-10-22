@@ -33,7 +33,7 @@ matrix:
     - php: 7.1
       env: DB=MYSQL RECIPE_VERSION=4.x-dev PHPUNIT_TEST=1 PHPCS_TEST=1 PDO=1 COMPOSER_ARG=--prefer-lowest
     - php: 7.2
-      env: DB=PGSQL RECIPE_VERSION=4.x-dev PHPUNIT_COVERAGE_TEST=1
+      env: DB=PGSQL RECIPE_VERSION=4.x-dev PHPUNIT_TEST=1 PHPUNIT_COVERAGE_TEST=1
     - php: 7.3
       env: DB=MYSQL RECIPE_VERSION=4.x-dev BEHAT_TEST=1
     - php: 7.3
