@@ -8,12 +8,17 @@ SilverStripe\GraphQL\Manager:
     admin:
       scaffolding:
         types:
-          SilverStripe\CMS\Model\SiteTree:
+          Page:
             fields: [ID, LastEdited, AbsoluteLink]
             operations:
               copyToStage: true
               rollback: true
-              readOne: true
+              readOne:
+                args:
+                  filter:
+                    type: IDFilterType
+                    required: true
+                resolver: ['SilverStripe\CMS\GraphQL\ReadOneResolver', 'resolve']
           SilverStripe\Security\Member:
             fields: [ID, FirstName, Surname]
             operations:

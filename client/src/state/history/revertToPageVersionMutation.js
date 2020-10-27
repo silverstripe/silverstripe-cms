@@ -4,12 +4,12 @@ import gql from 'graphql-tag';
 const mutation = gql`
 mutation revertPageToVersion($id:ID!, $fromStage:VersionedStage!, $toStage:VersionedStage!, $fromVersion:Int!) {
   copySilverStripeSiteTreeToStage(Input: {
-    ID: $id
-    FromVersion: $fromVersion
-    FromStage: $fromStage
-    ToStage: $toStage
+    id: $id
+    fromVersion: $fromVersion
+    fromStage: $fromStage
+    toStage: $toStage
   }) {
-    ID
+    id
   }
 }
 

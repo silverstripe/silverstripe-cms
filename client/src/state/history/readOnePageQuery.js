@@ -22,8 +22,7 @@ query ReadHistoryViewerPage ($page_id: ID!, $limit: Int!, $offset: Int!) {
       pageInfo {
         totalCount
       }
-
-      node {
+      nodes {
         version
         absoluteLink
         author {

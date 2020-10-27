@@ -4,10 +4,10 @@ import gql from 'graphql-tag';
 const mutation = gql`
 mutation rollbackPage($id:ID!, $toVersion:Int!) {
   rollbackSilverStripeSiteTree(
-    ID: $id
-    ToVersion: $toVersion
+    id: $id
+    toVersion: $toVersion
   ) {
-    ID
+    id
   }
 }
 `;
