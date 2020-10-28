@@ -32,10 +32,14 @@ matrix:
   include:
     - php: 7.1
       env: DB=MYSQL RECIPE_VERSION=4.x-dev PHPUNIT_TEST=1 PHPCS_TEST=1 PDO=1 COMPOSER_ARG=--prefer-lowest
+    - php: 7.1
+      env: BACKWARD_COMPAT=1 DB=MYSQL RECIPE_VERSION=4.x-dev PHPUNIT_TEST=1 PHPCS_TEST=1 PDO=1 COMPOSER_ARG=--prefer-lowest
     - php: 7.2
       env: DB=PGSQL RECIPE_VERSION=4.x-dev PHPUNIT_COVERAGE_TEST=1
     - php: 7.3
       env: DB=MYSQL RECIPE_VERSION=4.x-dev BEHAT_TEST=1
+    - php: 7.3
+      env: DB=MYSQL RECIPE_VERSION=4.x-dev BEHAT_TEST=1 BACKWARD_COMPAT=1
     - php: 7.3
       env: DB=MYSQL RECIPE_VERSION=4.x-dev PHPUNIT_TEST=1 NPM_TEST=1
     - php: 7.4
@@ -64,6 +68,7 @@ before_script:
   # Remove once everything is merged
   - cd vendor/silverstripe/graphql
   - git checkout -t origin/master
+  - if [[ $BACKWARD_COMPAT ]]; then git remote add -f https://github.com/unclecheese/silverstripe-graphql && git checkout pulls/3/schemageddon-compat; fi
   - cd ../admin
   - git remote add -f uc https://github.com/unclecheese/silverstripe-admin
   - git checkout pulls/1/schemageddon
