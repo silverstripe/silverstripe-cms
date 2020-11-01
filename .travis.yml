@@ -68,7 +68,7 @@ before_script:
   # Remove once everything is merged
   - cd vendor/silverstripe/graphql
   - git checkout -t origin/master
-  - if [[ $BACKWARD_COMPAT ]]; then git remote add -f https://github.com/unclecheese/silverstripe-graphql && git checkout pulls/3/schemageddon-compat; fi
+  - if [[ $BACKWARD_COMPAT ]]; then git remote add -f uc https://github.com/unclecheese/silverstripe-graphql && git checkout pulls/3/schemageddon-compat; fi
   - cd ../admin
   - git remote add -f uc https://github.com/unclecheese/silverstripe-admin
   - git checkout pulls/1/schemageddon
