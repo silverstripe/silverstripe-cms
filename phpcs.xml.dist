@@ -9,6 +9,7 @@
 		<exclude name="PSR2.Classes.PropertyDeclaration.Underscore" />
 		<exclude name="Squiz.Classes.ValidClassName.NotCamelCaps" />
 		<exclude name="Generic.Files.LineLength.TooLong" />
+		<exclude name="PSR1.Files.SideEffects.FoundWithSymbols" />
 	</rule>
 
 	<!-- use short array syntax -->
