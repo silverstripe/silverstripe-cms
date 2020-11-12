@@ -16,6 +16,7 @@ if (!class_exists(ReadOne::class)) {
  * Shim to make readOnePage work like GraphQL 4
  *
  * @internal Use GraphQL v4
+ * @deprecated 4.8..5.0 Use silverstripe/graphql:^4 functionality.
  */
 class ReadOneResolver
 {
