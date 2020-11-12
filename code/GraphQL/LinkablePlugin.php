@@ -8,6 +8,7 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Core\Config\Configurable;
 use SilverStripe\Core\Injector\Injectable;
 use SilverStripe\GraphQL\Schema\DataObject\Plugin\QueryFilter\QueryFilter;
+use SilverStripe\GraphQL\Schema\Exception\SchemaBuilderException;
 use SilverStripe\GraphQL\Schema\Field\ModelQuery;
 use SilverStripe\GraphQL\Schema\Interfaces\ModelQueryPlugin;
 use SilverStripe\GraphQL\Schema\Schema;
@@ -38,6 +39,12 @@ class LinkablePlugin implements ModelQueryPlugin
         return self::IDENTIFIER;
     }
 
+    /**
+     * @param ModelQuery $query
+     * @param Schema $schema
+     * @param array $config
+     * @throws SchemaBuilderException
+     */
     public function apply(ModelQuery $query, Schema $schema, array $config = []): void
     {
         $class = $query->getModel()->getSourceClass();
@@ -45,10 +52,12 @@ class LinkablePlugin implements ModelQueryPlugin
         if ($class !== SiteTree::class && !is_subclass_of($class, SiteTree::class)) {
             return;
         }
-        // if the query is intended to return a list, `link` doesn't apply here
-        if ($query->isList()) {
-            return;
-        }
+        Schema::invariant(
+            $query->isList(),
+            'Plugin %s only applies to queries that return lists. Query "%s" does not',
+            static::getIdentifier(),
+            $query->getName()
+        );
 
         $filterPluginID = QueryFilter::singleton()->getIdentifier();
         $fieldName = $this->config()->get('field_name');

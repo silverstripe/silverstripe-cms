@@ -24,7 +24,8 @@ class ReadOneResolver
         $idKey = StaticSchema::inst()->formatField('ID');
         $id = $args['filter'][$idKey]['eq'];
         $readOne = Injector::inst()->createWithArgs(ReadOne::class, ['Page']);
-        $args = [$idKey => $id];
+        unset($args['filter']);
+        $args[$idKey] = $id;
         return $readOne->resolve($obj, $args, $context, $info);
     }
 }

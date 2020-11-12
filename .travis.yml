@@ -66,8 +66,8 @@ before_script:
 
   ######## Remove once GraphQL 4 is merged #########
   - composer require silverstripe/admin:"dev-pulls/1/schemageddon as 1.x-dev" silverstripe/asset-admin:"dev-pulls/1/schemageddon as 1.x-dev" silverstripe/versioned-admin:"dev-pulls/1/schemageddon as 1.x-dev" silverstripe/versioned:"dev-pulls/1/schemageddon as 1.x-dev" silverstripe/graphql:"4.x-dev as 3.x-dev" --no-update
-  - 'if [[ $BACKWARD_COMPAT ]]; then composer require silverstripe/graphql:"dev-pulls/3/schemageddon-compat as 3.x-dev" --no-update; fi'
   ##################################################
+  - 'if [[ $BACKWARD_COMPAT ]]; then composer require silverstripe/graphql:"dev-pulls/3/schemageddon-compat as 3.x-dev" --no-update; fi'
 
   - composer update --prefer-source --no-interaction --no-progress --no-suggest --optimize-autoloader --verbose --profile $COMPOSER_ARG
 
