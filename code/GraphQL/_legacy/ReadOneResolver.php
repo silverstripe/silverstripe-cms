@@ -14,6 +14,8 @@ if (!class_exists(ReadOne::class)) {
 
 /**
  * Shim to make readOnePage work like GraphQL 4
+ *
+ * @internal Use GraphQL v4
  */
 class ReadOneResolver
 {
