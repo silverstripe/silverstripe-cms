@@ -32,10 +32,14 @@ matrix:
   include:
     - php: 7.1
       env: DB=MYSQL RECIPE_VERSION=4.x-dev PHPUNIT_TEST=1 PHPCS_TEST=1 PDO=1 COMPOSER_ARG=--prefer-lowest
+    - php: 7.1
+      env: BACKWARD_COMPAT=1 DB=MYSQL RECIPE_VERSION=4.x-dev PHPUNIT_TEST=1 PHPCS_TEST=1 PDO=1 COMPOSER_ARG=--prefer-lowest
     - php: 7.2
       env: DB=PGSQL RECIPE_VERSION=4.x-dev PHPUNIT_TEST=1 PHPUNIT_COVERAGE_TEST=1
     - php: 7.3
       env: DB=MYSQL RECIPE_VERSION=4.x-dev BEHAT_TEST=1
+    - php: 7.3
+      env: DB=MYSQL RECIPE_VERSION=4.x-dev BEHAT_TEST=1 BACKWARD_COMPAT=1
     - php: 7.3
       env: DB=MYSQL RECIPE_VERSION=4.x-dev PHPUNIT_TEST=1 NPM_TEST=1
     - php: 7.4
@@ -59,6 +63,12 @@ before_script:
   # Fix for running phpunit 5 on php 7.4+
   - composer require --no-update sminnee/phpunit-mock-objects:^3
   - if [[ $DB == PGSQL ]]; then composer require --no-update silverstripe/postgresql:^2; fi
+
+  ######## Remove once GraphQL 4 is merged #########
+  - composer require silverstripe/asset-admin:"dev-pulls/1/schemageddon as 1.x-dev" silverstripe/versioned:"dev-pulls/1/schemageddon as 1.x-dev" silverstripe/graphql:"4.x-dev as 3.x-dev" --no-update
+  ##################################################
+  - 'if [[ $BACKWARD_COMPAT ]]; then composer require silverstripe/graphql:"dev-pulls/3/schemageddon-compat as 3.x-dev" --no-update; fi'
+
   - composer update --prefer-source --no-interaction --no-progress --no-suggest --optimize-autoloader --verbose --profile $COMPOSER_ARG
 
 # Install NPM dependencies

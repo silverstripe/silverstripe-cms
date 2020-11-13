@@ -1,0 +1,25 @@
+---
+Name: cmsgraphql
+Except:
+  classexists: 'SilverStripe\GraphQL\Schema\Schema'
+---
+SilverStripe\GraphQL\Manager:
+  schemas:
+    admin:
+      scaffolding:
+        types:
+          Page:
+            fields: [ID, LastEdited, AbsoluteLink]
+            operations:
+              copyToStage: true
+              rollback: true
+              readOne:
+                args:
+                  filter:
+                    type: IDFilterType
+                    required: true
+                resolver: ['SilverStripe\CMS\GraphQL\ReadOneResolver', 'resolve']
+          SilverStripe\Security\Member:
+            fields: [ID, FirstName, Surname]
+            operations:
+              readOne: true
