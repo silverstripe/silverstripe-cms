@@ -43,7 +43,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SilverStripe\\CMS\\": ["code/", "code/GraphQL/_legacy"],
+            "SilverStripe\\CMS\\": ["code/", "_legacy/"],
             "SilverStripe\\CMS\\Tests\\": "code/php/",
             "SilverStripe\\CMS\\Tests\\Behaviour\\": "tests/behat/src/"
         }
