@@ -215,7 +215,6 @@ eo:
     METADESC: Metapriskribo
     METADESCHELP: 'Serĉiloj uzas ĉi tiun enhavon por vidigi serĉajn rezultojn (kvankam ĝi ne influos ilian rangon).'
     METAEXTRA: 'Propraj Meta-etikedoj '
-    METAEXTRAHELP: 'HTML-etikedoj por plua metainformo. Ekzemple &lt;meta name="customName" content="via propra enhavo ĉi tie" /&gt;'
     MODIFIEDONDRAFTHELP: 'Paĝo enhavas nepublikigitajn ŝanĝojn'
     MODIFIEDONDRAFTSHORT: Ŝanĝita
     MetadataToggle: Metadatumoj
@@ -327,7 +326,6 @@ eo:
     ParameterLiveCheckbox: 'Kontroli publikan retejon'
   SilverStripe\CMS\Reports\EmptyPagesReport:
     ContentGroupTitle: 'Raportoj pri enhavo'
-    EMPTYPAGES: 'Malplenaj paĝoj'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'Raportoj pri enhavo'
     LAST2WEEKS: 'Paĝoj redaktitaj dum la lastaj 2 semajnoj'

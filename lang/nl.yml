@@ -215,7 +215,6 @@ nl:
     METADESC: 'Meta omschrijving'
     METADESCHELP: 'Zoekmachines gebruiken deze inhoud voor het weergeven van zoekresultaten (hoewel het hun ranking niet zal beïnvloeden).'
     METAEXTRA: 'Andere meta tags'
-    METAEXTRAHELP: 'HTML-tags voor extra meta-informatie. Bijvoorbeeld <meta name="customName" content="your custom content here" />'
     MODIFIEDONDRAFTHELP: 'Pagina heeft wijzigingen die nog niet gepubliceerd zijn'
     MODIFIEDONDRAFTSHORT: Aangepast
     MetadataToggle: Metadata
@@ -327,7 +326,6 @@ nl:
     ParameterLiveCheckbox: 'Controleer gepubliceerde site'
   SilverStripe\CMS\Reports\EmptyPagesReport:
     ContentGroupTitle: Inhoudsrapporten
-    EMPTYPAGES: 'Pagina''s zonder inhoud'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: Inhoudsrapporten
     LAST2WEEKS: 'Pagina''s die de laatste 2 weken zijn bewerkt'

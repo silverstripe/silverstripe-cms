@@ -281,7 +281,6 @@ sk:
     ParameterLiveCheckbox: 'Skontrolovať publikovaný web'
   SilverStripe\CMS\Reports\EmptyPagesReport:
     ContentGroupTitle: 'Výkazy obsahu'
-    EMPTYPAGES: 'Stránky bez obsahu'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'Výkazy obsahu'
     LAST2WEEKS: 'Stránky upravené počas posledných 2 týždňov'
