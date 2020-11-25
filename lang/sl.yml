@@ -217,6 +217,7 @@ sl:
     METADESC: Opis
     METADESCHELP: 'Iskalniki to vsebino uporabljajo pri prikazu rezultatov. (Vsebina nima vpliva na vrstni red prikaza med zadetki v iskalniku.)'
     METAEXTRA: 'Meta tagi po meri'
+    METAEXTRAHELP: 'HTML oznake za dodatne meta podatke. Primer: <meta name="customName" content="your custom content here" />'
     MODIFIEDONDRAFTHELP: 'Stran vsebuje še neobjavljene spremembe.'
     MODIFIEDONDRAFTSHORT: Spremenjeno
     MetadataToggle: Metapodatki
@@ -334,6 +335,7 @@ sl:
     ParameterLiveCheckbox: 'Preverite, kaj je objavljeno'
   SilverStripe\CMS\Reports\EmptyPagesReport:
     ContentGroupTitle: 'Poročila o stanju vsebine'
+    EMPTYPAGES: 'Strani brez vsebine'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'Poročila o stanju vsebine'
     LAST2WEEKS: 'Strani, ki so bile spremenjene v zadnjih dveh tednih'

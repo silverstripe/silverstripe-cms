@@ -262,6 +262,7 @@ hr:
     ParameterLiveCheckbox: 'Pregledaj objavljenu stranicu'
   SilverStripe\CMS\Reports\EmptyPagesReport:
     ContentGroupTitle: 'Sadržajni izvještaji'
+    EMPTYPAGES: 'Stranice bez sadržaja'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'Sadržajni izvještaji'
     LAST2WEEKS: 'Stranice mijenjane u zadnja 2 tjedna'
