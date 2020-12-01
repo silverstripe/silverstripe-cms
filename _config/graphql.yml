@@ -3,13 +3,6 @@ Name: cms-graphql
 Only:
   classexists: 'SilverStripe\GraphQL\Schema\Schema'
 ---
-SilverStripe\Core\Injector\Injector:
-  SilverStripe\GraphQL\Schema\Registry\ResolverRegistry:
-    constructor:
-      cmsResolver: '%$SilverStripe\CMS\GraphQL\Resolver'
-  SilverStripe\GraphQL\Schema\Registry\PluginRegistry:
-    constructor:
-      linkable: '%$SilverStripe\CMS\GraphQL\LinkablePlugin'
 SilverStripe\CMS\Model\SiteTree:
   graphql_blacklisted_fields:
     HasBrokenFile: true
@@ -20,28 +13,5 @@ SilverStripe\CMS\Model\SiteTree:
 SilverStripe\GraphQL\Schema\Schema:
   schemas:
     admin:
-      models:
-        Page:
-          fields:
-            id: true
-            lastEdited: true
-            absoluteLink:
-              type: String
-          operations:
-            copyToStage: true
-            rollback: true
-            readOne: true
-        SilverStripe\Security\Member:
-          fields:
-            id: true
-            firstName: true
-            surname: true
-          operations:
-            readOne: true
-      modelConfig:
-        DataObject:
-          operations:
-            read:
-              plugins:
-                getByLink:
-                  after: filter
+      src:
+        - 'silverstripe/cms: _graphql'

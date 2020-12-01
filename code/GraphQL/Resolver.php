@@ -4,13 +4,8 @@
 namespace SilverStripe\CMS\GraphQL;
 
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\GraphQL\Schema\Resolver\DefaultResolverProvider;
 
-if (!class_exists(DefaultResolverProvider::class)) {
-    return;
-}
-
-class Resolver extends DefaultResolverProvider
+class Resolver
 {
     public static function resolveGetPageByLink($obj, array $args = [])
     {

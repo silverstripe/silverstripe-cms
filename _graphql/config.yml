@@ -1,0 +1,9 @@
+resolvers:
+  - 'SilverStripe\CMS\GraphQL\Resolver'
+modelConfig:
+  DataObject:
+    operations:
+      read:
+        plugins:
+          getByLink:
+            after: filter
