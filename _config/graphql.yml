@@ -3,6 +3,10 @@ Name: cms-graphql
 Only:
   classexists: 'SilverStripe\GraphQL\Schema\Schema'
 ---
+SilverStripe\Core\Injector\Injector:
+  SilverStripe\GraphQL\Schema\Registry\PluginRegistry:
+    constructor:
+      - 'SilverStripe\CMS\GraphQL\LinkablePlugin'
 SilverStripe\CMS\Model\SiteTree:
   graphql_blacklisted_fields:
     HasBrokenFile: true
