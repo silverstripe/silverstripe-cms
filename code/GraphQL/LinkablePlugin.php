@@ -53,45 +53,15 @@ class LinkablePlugin implements ModelQueryPlugin
             return;
         }
         Schema::invariant(
-            $query->isList(),
-            'Plugin %s only applies to queries that return lists. Query "%s" does not',
+            !$query->isList(),
+            'Plugin %s cannot be applied to queries that return lists. Query "%s" is a list',
             static::getIdentifier(),
             $query->getName()
         );
-
-        $filterPluginID = QueryFilter::singleton()->getIdentifier();
         $fieldName = $this->config()->get('field_name');
-
-        if ($query->hasPlugin($filterPluginID)) {
-            $args = $query->getArgs();
-            $filterArg = null;
-            foreach ($args as $arg) {
-                if ($arg->getName() === QueryFilter::config()->get('field_name')) {
-                    $filterArg = $arg;
-                    break;
-                }
-            }
-            Schema::invariant(
-                $filterArg,
-                'Plugin "%s" was applied but the "%s" plugin has not run yet. Make sure it is set to after: %s',
-                $this->getIdentifier(),
-                $filterPluginID,
-                $filterPluginID
-            );
-            $inputTypeName = $filterArg->getType();
-            $inputType = $schema->getType($inputTypeName);
-            Schema::invariant(
-                $inputType,
-                'Input type "%s" is not in the schema but the %s plugin is applied',
-                $inputTypeName,
-                $filterPluginID
-            );
-            $inputType->addField($fieldName, 'String');
-            $query->addResolverAfterware([static::class, 'applyLinkFilter']);
-        } else {
-            $query->addArg($fieldName, 'String');
-            $query->addResolverAfterware([static::class, 'applyLinkFilter']);
-        }
+        
+        $query->addArg($fieldName, 'String');
+        $query->addResolverAfterware([static::class, 'applyLinkFilter']);
     }
 
     /**
