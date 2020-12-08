@@ -15,7 +15,3 @@ SilverStripe\GraphQL\Schema\Schema:
     admin:
       src:
         - 'silverstripe/cms: _graphql'
-SilverStripe\Core\Injector\Injector:
-  SilverStripe\GraphQL\Schema\Registry\PluginRegistry:
-    constructor:
-      getByLink: '%$SilverStripe\CMS\GraphQL\LinkablePlugin'
