@@ -215,6 +215,7 @@ da:
     METADESC: Meta-beskrivelse
     METADESCHELP: 'Søgemaskiner viser dette indhold i søgeresultaterne (teksten påvirker ikke placeringen).'
     METAEXTRA: 'Brugerdefinerede Meta Tags'
+    METAEXTRAHELP: 'HTML koder for ekstra meta information. For eksempel <meta name="customName" content="your custom content here" />'
     MODIFIEDONDRAFTHELP: 'Siden har ikke-udgivne ændringer'
     MODIFIEDONDRAFTSHORT: Ændret
     MetadataToggle: Metadata
@@ -326,6 +327,7 @@ da:
     ParameterLiveCheckbox: 'Tjek det udgivne websted'
   SilverStripe\CMS\Reports\EmptyPagesReport:
     ContentGroupTitle: Indholdsrapporter
+    EMPTYPAGES: 'Sider uden indhold'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: Indholdsrapporter
     LAST2WEEKS: 'Sider ændret indenfor de seneste 2 uger'

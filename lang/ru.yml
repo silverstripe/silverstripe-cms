@@ -307,6 +307,7 @@ ru:
     ParameterLiveCheckbox: 'Проверить опубликованный сайт'
   SilverStripe\CMS\Reports\EmptyPagesReport:
     ContentGroupTitle: 'Отчеты по контенту'
+    EMPTYPAGES: 'Пустые страницы'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'Отчеты по контенту'
     LAST2WEEKS: 'Страницы, которые редактировались в последние 2 недели'

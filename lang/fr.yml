@@ -207,6 +207,7 @@ fr:
     METADESC: 'Meta Description'
     METADESCHELP: 'Les moteurs de recherche reprennent cette description dans leurs résultats (bien qu’elle n’ait pas d’influence sur le classement).'
     METAEXTRA: 'Balises Méta personnalisées'
+    METAEXTRAHELP: 'Balises HTML pour des informations meta supplémentaires. <meta name="customName" content="your custom content here" /> par exemple.'
     MODIFIEDONDRAFTHELP: 'Des changements effectués sur cette page n''''ont pas été publiés'
     MODIFIEDONDRAFTSHORT: Modifiée
     MetadataToggle: Métadonnées
@@ -306,6 +307,7 @@ fr:
     ParameterLiveCheckbox: 'Consulter le site public'
   SilverStripe\CMS\Reports\EmptyPagesReport:
     ContentGroupTitle: 'Rapports sur le contenu'
+    EMPTYPAGES: 'Pages sans contenu'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'Rapports sur le contenu'
     LAST2WEEKS: 'Pages modifiées les 2 dernières semaines'

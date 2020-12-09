@@ -284,6 +284,7 @@ es:
     BrokenLinksGroupTitle: 'Reportes de enlaces rotos'
   SilverStripe\CMS\Reports\EmptyPagesReport:
     ContentGroupTitle: 'Reportes de contenido'
+    EMPTYPAGES: 'Páginas sin contenido'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'Reportes de contenido'
     LAST2WEEKS: 'Páginas editadas en las últimas 2 semanas'
