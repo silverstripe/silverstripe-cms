@@ -58,6 +58,7 @@
     "@silverstripe/webpack-config": "^1.3.0",
     "babel-jest": "^23.6.0",
     "babel-polyfill": "^6.26.0",
+    "copy-webpack-plugin": "^4",
     "jest-cli": "^23.6.0"
   },
   "jest": {
