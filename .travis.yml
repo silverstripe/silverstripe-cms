@@ -1,92 +1,10 @@
-language: php
+version: ~> 1.0
 
-dist: xenial
-
-services:
-  - mysql
-  - postgresql
-  - xvfb
-
-cache:
-  directories:
-    - $HOME/.composer/cache/files
-
-addons:
-  apt:
-    packages:
-      - tidy
-      - chromium-chromedriver
-      - chromium-browser
+import:
+  - silverstripe/silverstripe-travis-shared:config/provision/standard-jobs-fixed-behat-npm.yml
 
 env:
   global:
-    - COMPOSER_ROOT_VERSION="4.x-dev"
-    - TRAVIS_NODE_VERSION="10"
-    - DISPLAY=":99"
-    - XVFBARGS=":99 -ac -screen 0 1024x768x16"
-    - SS_BASE_URL="http://localhost:8080/"
-    - SS_ENVIRONMENT_TYPE="dev"
-
-matrix:
-  fast_finish: true
-  include:
-    - php: 7.1
-      env: DB=MYSQL RECIPE_VERSION=4.x-dev PHPUNIT_TEST=1 PHPCS_TEST=1 PDO=1 COMPOSER_ARG=--prefer-lowest
-    - php: 7.2
-      env: DB=PGSQL RECIPE_VERSION=4.x-dev PHPUNIT_TEST=1 PHPUNIT_COVERAGE_TEST=1
-    - php: 7.3
-      env: DB=MYSQL RECIPE_VERSION=4.x-dev BEHAT_TEST=1
-    - php: 7.3
-      env: DB=MYSQL RECIPE_VERSION=4.x-dev PHPUNIT_TEST=1 NPM_TEST=1
-    - php: 7.4
-      env: DB=MYSQL RECIPE_VERSION=4.x-dev PHPUNIT_TEST=1
-    - php: nightly
-      env: DB=MYSQL RECIPE_VERSION=4.x-dev PHPUNIT_TEST=1 COMPOSER_ARG=--ignore-platform-reqs WITH_XDEBUG=1
-
-before_script:
-# Extra $PATH
-  - export PATH=/usr/lib/chromium-browser/:$PATH
-
-# Init PHP
-  - phpenv rehash
-  - if [[ ! $WITH_XDEBUG ]] ; then phpenv config-rm xdebug.ini; fi
-  - export PATH=~/.composer/vendor/bin:$PATH
-  - echo 'memory_limit = 2G' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
-
-# Install composer dependencies
-  - composer validate
-  - composer require --no-update silverstripe/recipe-cms:$RECIPE_VERSION silverstripe/recipe-testing:^1
-  # Fix for running phpunit 5 on php 7.4+
-  - composer require --no-update sminnee/phpunit-mock-objects:^3
-  - if [[ $DB == PGSQL ]]; then composer require --no-update silverstripe/postgresql:^2; fi
-  - composer update --prefer-source --no-interaction --no-progress --no-suggest --optimize-autoloader --verbose --profile $COMPOSER_ARG
-
-# Install NPM dependencies
-  - if [[ $NPM_TEST ]]; then nvm install $TRAVIS_NODE_VERSION && nvm use $TRAVIS_NODE_VERSION && npm install -g yarn && yarn install --network-concurrency 1 && yarn run build; fi
-
-# Remove preinstalled Chrome (google-chrome)
-# this would conflict with our chromium-browser installation
-# and its version is incompatible with chromium-chromedriver
-  - sudo apt-get remove -y --purge google-chrome-stable || true
-
-# Start behat services
-  - if [[ $BEHAT_TEST ]]; then mkdir artifacts; fi
-  - if [[ $BEHAT_TEST ]]; then cp composer.lock artifacts/; fi
-  - if [[ $BEHAT_TEST ]]; then sh -e /etc/init.d/xvfb start; sleep 3; fi
-  - if [[ $BEHAT_TEST ]]; then (chromedriver > artifacts/chromedriver.log 2>&1 &); fi
-  - if [[ $BEHAT_TEST ]]; then (vendor/bin/serve --bootstrap-file tests/behat/serve-bootstrap.php &> artifacts/serve.log &); fi
-
-script:
- - if [[ $PHPUNIT_TEST ]]; then vendor/bin/phpunit tests/php/ flush=1; fi
- - if [[ $BEHAT_TEST ]]; then vendor/bin/behat @cms; fi
- - if [[ $NPM_TEST ]]; then git diff-files --quiet -w --relative=client; fi
- - if [[ $NPM_TEST ]]; then git diff -w --no-color --relative=client; fi
- - if [[ $NPM_TEST ]]; then yarn run lint; fi
- - if [[ $NPM_TEST ]]; then yarn run test; fi
- - if [[ $PHPCS_TEST ]]; then composer run-script lint; fi
-
-after_success:
-  - if [[ $PHPUNIT_COVERAGE_TEST ]]; then bash <(curl -s https://codecov.io/bash) -f coverage.xml; fi
-
-after_failure:
-  - if [[ $BEHAT_TEST ]]; then php ./vendor/silverstripe/framework/tests/behat/travis-upload-artifacts.php --if-env BEHAT_TEST,ARTIFACTS_BUCKET,ARTIFACTS_KEY,ARTIFACTS_SECRET --target-path $TRAVIS_REPO_SLUG/$TRAVIS_BUILD_ID/$TRAVIS_JOB_ID --artifacts-base-url https://s3.amazonaws.com/$ARTIFACTS_BUCKET/ --artifacts-path ./artifacts/; fi
+    - COMPOSER_ROOT_VERSION="4.7.x-dev"
+    - REQUIRE_RECIPE="4.7.x-dev"
+    - BEHAT_SUITE="cms"
