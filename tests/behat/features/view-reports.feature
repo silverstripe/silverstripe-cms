@@ -9,7 +9,7 @@ Feature: View Reports
     And I am logged in with "ADMIN" permissions
     And I go to "/admin/reports"
 
-  Scenario: I can view the "Pages without content" report
+  Scenario: I can view the "Pages with no content" report
     When I follow "Pages without content"
     Then I should see "Empty Page"
     But I should not see "Filled Page"

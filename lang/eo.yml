@@ -34,12 +34,14 @@ eo:
     NEWPAGE: 'Nova {pagetype}'
     PAGENOTEXISTS: 'Ĉi tiu paĝo ne ekzistas'
     PAGES: 'Stato de paĝo'
+    PAGESALLOPT: 'Ĉiuj paĝoj'
     PAGETYPEANYOPT: Ajna
     PAGETYPEOPT: 'Tipo de paĝo'
     PAGETYPE_TITLE: '(Paĝa tipo: {type}) {title}'
     PLEASESAVE: 'Bonvolu konservi paĝon: ne povis ĝisdatigi ĉi tiun paĝon ĉar ĝi ankoraŭ estas nekonservita.'
     PUBALLCONFIRM: 'Bonvolu eldoni ĉiun paĝon en la retejo, kopiante enhavan stadion al la publika'
     PUBALLFUN: 'Funkcio "Eldoni Ĉiujn"'
+    PUBALLFUN2: 'Premi ĉi tiun butonon faros same kiel iri al ĉiu paĝo kaj premi je "Publikigi". Oni celas ke ĝi uziĝu post multaj redaktoj de la enhavo, ekzemple kiam la retejo unue konstruiĝis. Por grandaj retejoj, ĉi tiu tasko eble ne ruliĝos ĝis kompleteco. Tiuokaze, ni rekomendas ke vi parolu kun viaj programistoj por krei propran taskon.'
     PUBLISHED: 'Sukcese publikigis je ''{title}'''
     PUBPAGES: 'Farite: publikigis {count} paĝojn'
     PageAdded: 'Sukcese kreis paĝon'
@@ -56,6 +58,7 @@ eo:
     ROLLEDBACKVERSIONv2: 'Malfaris ŝanĝojn ĝis versio #{version}.'
     SAVED: 'Sukcese konservis je ''{title}'''
     SAVEDRAFT: Konservi
+    SEARCHRESULTS: 'Rezultoj de serĉo'
     SHOW_AS_LIST: 'vidigi kiel liston'
     TOO_MANY_PAGES: 'Tro da paĝoj'
     TabContent: Enhavo
@@ -76,6 +79,7 @@ eo:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Aŭtoro
     COMPAREMODE: 'Kompara reĝimo (elektu du)'
+    COMPARINGVERSION: 'Komparas versiojn {version1} kaj {version2}.'
     MENUTITLE: Historio
     MULTISELECT: 'Staplaj agoj'
     NOTPUBLISHED: 'Ne publikigita'
@@ -143,6 +147,7 @@ eo:
     SELECT_PAGE: 'Elekti paĝon'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Rezigni
+    EMPTY: 'Bonvolu enigi URL-segmenton aŭ alklaki al Rezigni'
     Edit: Redakti
     HelpChars: 'Aŭtomate konvertas aŭ forigas specialajn signojn.'
     OK: Akcepti
@@ -199,6 +204,7 @@ eo:
     HASBROKENLINKS: 'Ĉi tiu paĝo havas rompitajn ligilojn.'
     HTMLEDITORTITLE: Enhavo
     INHERIT: 'Heredi de patra paĝo'
+    INHERITSITECONFIG: 'Heredi el retejaliraj agordoj'
     LASTPUBLISHED: 'Lasta publikigo'
     LASTSAVED: 'Laste konservita'
     LASTUPDATED: 'Lastfoje ĝisdatigita'
@@ -240,8 +246,12 @@ eo:
     SHOWINSEARCH: 'Vidigi en serĉo?'
     SINGULARNAME: Paĝo
     TABBEHAVIOUR: Konduto
+    TABCONTENT: 'Ĉefa enhavo'
     TABDEPENDENT: 'Dependaj paĝoj'
     TOPLEVEL: 'Enhavo de Retejo (Supra Nivelo)'
+    UNTITLED: 'Sentitola {pagetype}'
+    URLSegment: URL-segmento
+    UntitledDependentObject: 'Sentitola {instanceType}'
     VIEWERGROUPS: 'Grupoj de vidantoj'
     VIEWER_GROUPS_FIELD_DESC: 'Grupoj kun ĉieaj vidigaj permesoj: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Vidigi ajnan paĝon'
