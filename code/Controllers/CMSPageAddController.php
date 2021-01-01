@@ -21,6 +21,7 @@ use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\ValidationResult;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
+use SilverStripe\SiteConfig\SiteConfig;
 
 class CMSPageAddController extends CMSPageEditController
 {
@@ -79,7 +80,7 @@ class CMSPageAddController extends CMSPageEditController
             $parentModeField = new SelectionGroup(
                 "ParentModeField",
                 [
-                    new SelectionGroup_Item(
+                    $topField = new SelectionGroup_Item(
                         "top",
                         null,
                         $topTitle
@@ -144,6 +145,13 @@ class CMSPageAddController extends CMSPageEditController
             $parentField->setValue((int)$parentID);
         } else {
             $parentModeField->setValue('top');
+        }
+
+        // Check if the current user has enough permissions to create top level pages
+        // If not, then disable the option to do that
+        if (!SiteConfig::current_site_config()->canCreateTopLevel()) {
+            $topField->setDisabled(true);
+            $parentModeField->setValue('child');
         }
 
         $actions = new FieldList(
