@@ -818,7 +818,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             $virtualPages = VirtualPage::get()->filter("CopyContentFromID", $node->ID);
             foreach ($virtualPages as $virtualPage) {
                 $statusUpdates['modified'][$virtualPage->ID] = [
-                    'TreeTitle' => $virtualPage->TreeTitle()
+                    'TreeTitle' => $virtualPage->TreeTitle
                 ];
             }
 
