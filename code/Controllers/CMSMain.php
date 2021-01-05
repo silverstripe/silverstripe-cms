@@ -2121,28 +2121,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         return new CMSBatchActionHandler($this, 'batchactions');
     }
 
-    public function BatchActionParameters()
-    {
-        $batchActions = CMSBatchActionHandler::config()->batch_actions;
-
-        $forms = array();
-        foreach ($batchActions as $urlSegment => $batchAction) {
-            $SNG_action = singleton($batchAction);
-            if ($SNG_action->canView() && $fieldset = $SNG_action->getParameterFields()) {
-                $formHtml = '';
-                /** @var FormField $field */
-                foreach ($fieldset as $field) {
-                    $formHtml .= $field->Field();
-                }
-                $forms[$urlSegment] = $formHtml;
-            }
-        }
-        $pageHtml = '';
-        foreach ($forms as $urlSegment => $html) {
-            $pageHtml .= "<div class=\"params\" id=\"BatchActionParameters_$urlSegment\">$html</div>\n\n";
-        }
-        return new LiteralField("BatchActionParameters", '<div id="BatchActionParameters" style="display:none">' . $pageHtml . '</div>');
-    }
     /**
      * Returns a list of batch actions
      */
