@@ -2114,8 +2114,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         return new CMSBatchActionHandler($this, 'batchactions');
     }
 
+    /**
+     * @deprecated 4.7.0:5.0.0
+     * @return LiteralField
+     */
     public function BatchActionParameters()
     {
+        Deprecation::notice('4.7.0');
+
         $batchActions = CMSBatchActionHandler::config()->batch_actions;
 
         $forms = [];
