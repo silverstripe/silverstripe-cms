@@ -1,6 +1,6 @@
 ## SilverStripe CMS
 
-[![Build Status](https://api.travis-ci.org/silverstripe/silverstripe-cms.svg?branch=master)](https://travis-ci.org/silverstripe/silverstripe-cms)
+[![Build Status](https://api.travis-ci.com/silverstripe/silverstripe-cms.svg?branch=4)](https://travis-ci.com/silverstripe/silverstripe-cms)
 [![Latest Stable Version](https://poser.pugx.org/silverstripe/cms/version.svg)](http://www.silverstripe.org/stable-download/)
 [![Latest Unstable Version](https://poser.pugx.org/silverstripe/cms/v/unstable.svg)](https://packagist.org/packages/silverstripe/cms)
 [![codecov](https://codecov.io/gh/silverstripe/silverstripe-cms/branch/master/graph/badge.svg)](https://codecov.io/gh/silverstripe/silverstripe-cms)
