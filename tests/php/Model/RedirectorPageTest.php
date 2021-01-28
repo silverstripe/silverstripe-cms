@@ -66,7 +66,7 @@ class RedirectorPageTest extends FunctionalTest
 
         $this->autoFollowRedirection = false;
         $response = $this->get(Director::makeRelative($page->Link()));
-        $this->assertEquals(Director::absoluteURL('/redirection-dest/'), $response->getHeader("Location"));
+        $this->assertEquals(Director::absoluteURL('/redirection-dest'), $response->getHeader("Location"));
     }
 
     public function testExternalURLGetsPrefixIfNotSet()

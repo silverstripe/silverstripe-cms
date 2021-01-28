@@ -502,8 +502,8 @@ class SiteTreeTest extends SapphireTest
         $parent->URLSegment = 'changed-on-draft';
         $parent->write();
 
-        $this->assertStringEndsWith('changed-on-live/my-staff/', $child->getAbsoluteLiveLink(false));
-        $this->assertStringEndsWith('changed-on-live/my-staff/?stage=Live', $child->getAbsoluteLiveLink());
+        $this->assertStringEndsWith('changed-on-live/my-staff', $child->getAbsoluteLiveLink(false));
+        $this->assertStringEndsWith('changed-on-live/my-staff?stage=Live', $child->getAbsoluteLiveLink());
     }
 
     public function testDuplicateChildrenRetainSort()
