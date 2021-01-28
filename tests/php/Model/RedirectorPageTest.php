@@ -30,15 +30,15 @@ class RedirectorPageTest extends FunctionalTest
     {
         /* For good redirectors, the final destination URL will be returned */
         $this->assertEquals("http://www.google.com", $this->objFromFixture(RedirectorPage::class, 'goodexternal')->Link());
-        $this->assertEquals("/redirection-dest/", $this->objFromFixture(RedirectorPage::class, 'goodinternal')->redirectionLink());
-        $this->assertEquals("/redirection-dest/", $this->objFromFixture(RedirectorPage::class, 'goodinternal')->Link());
+        $this->assertEquals("/redirection-dest", $this->objFromFixture(RedirectorPage::class, 'goodinternal')->redirectionLink());
+        $this->assertEquals("/redirection-dest", $this->objFromFixture(RedirectorPage::class, 'goodinternal')->Link());
     }
 
     public function testEmptyRedirectors()
     {
         /* If a redirector page is misconfigured, then its link method will just return the usual URLSegment-generated value */
         $page1 = $this->objFromFixture(RedirectorPage::class, 'badexternal');
-        $this->assertEquals('/bad-external/', $page1->Link());
+        $this->assertEquals('/bad-external', $page1->Link());
 
         /* An error message will be shown if you visit it */
         $content = $this->get(Director::makeRelative($page1->Link()))->getBody();
@@ -46,7 +46,7 @@ class RedirectorPageTest extends FunctionalTest
 
         /* This also applies for internal links */
         $page2 = $this->objFromFixture(RedirectorPage::class, 'badinternal');
-        $this->assertEquals('/bad-internal/', $page2->Link());
+        $this->assertEquals('/bad-internal', $page2->Link());
         $content = $this->get(Director::makeRelative($page2->Link()))->getBody();
         $this->assertContains('message-setupWithoutRedirect', $content);
     }
@@ -55,14 +55,14 @@ class RedirectorPageTest extends FunctionalTest
     {
         /* Reflexive redirectors are those that point to themselves.  They should behave the same as an empty redirector */
         $page = $this->objFromFixture(RedirectorPage::class, 'reflexive');
-        $this->assertEquals('/reflexive/', $page->Link());
+        $this->assertEquals('/reflexive', $page->Link());
         $content = $this->get(Director::makeRelative($page->Link()))->getBody();
         $this->assertContains('message-setupWithoutRedirect', $content);
 
         /* Transitive redirectors are those that point to another redirector page.  They should send people to the URLSegment
          * of the destination page - the middle-stop, so to speak.  That should redirect to the final destination */
         $page = $this->objFromFixture(RedirectorPage::class, 'transitive');
-        $this->assertEquals('/good-internal/', $page->Link());
+        $this->assertEquals('/good-internal', $page->Link());
 
         $this->autoFollowRedirection = false;
         $response = $this->get(Director::makeRelative($page->Link()));

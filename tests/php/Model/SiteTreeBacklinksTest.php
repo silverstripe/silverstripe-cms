@@ -94,7 +94,7 @@ class SiteTreeBacklinksTest extends SapphireTest
 
         // assert hyperlink to page 1's current url exists on page 3
         $links = HTTP::getLinksIn($page3->obj('Content')->forTemplate());
-        $this->assertContains(Director::baseURL().'page1/', $links, 'Assert hyperlink to page 1\'s current url exists on page 3');
+        $this->assertContains(Director::baseURL().'page1', $links, 'Assert hyperlink to page 1\'s current url exists on page 3');
 
         // change url of page 1
         $page1->URLSegment = 'new-url-segment';
@@ -105,7 +105,7 @@ class SiteTreeBacklinksTest extends SapphireTest
 
         // assert hyperlink to page 1's new url exists
         $links = HTTP::getLinksIn($page3->obj('Content')->forTemplate());
-        $this->assertContains(Director::baseURL().'new-url-segment/', $links, 'Assert hyperlink to page 1\'s new url exists on page 3');
+        $this->assertContains(Director::baseURL().'new-url-segment', $links, 'Assert hyperlink to page 1\'s new url exists on page 3');
     }
 
     public function testChangingUrlOnLiveSiteRewritesLink()
@@ -125,7 +125,7 @@ class SiteTreeBacklinksTest extends SapphireTest
 
         // assert hyperlink to page 1's current url exists on page 3
         $links = HTTP::getLinksIn($page3live->obj('Content')->forTemplate());
-        $this->assertContains(Director::baseURL().'page1/', $links, 'Assert hyperlink to page 1\'s current url exists on page 3');
+        $this->assertContains(Director::baseURL().'page1', $links, 'Assert hyperlink to page 1\'s current url exists on page 3');
 
         // change url of page 1
         $page1live->URLSegment = 'new-url-segment';
@@ -137,7 +137,7 @@ class SiteTreeBacklinksTest extends SapphireTest
         // assert hyperlink to page 1's new url exists
         Versioned::set_stage(Versioned::LIVE);
         $links = HTTP::getLinksIn($page3live->obj('Content')->forTemplate());
-        $this->assertContains(Director::baseURL().'new-url-segment/', $links, 'Assert hyperlink to page 1\'s new url exists on page 3');
+        $this->assertContains(Director::baseURL().'new-url-segment', $links, 'Assert hyperlink to page 1\'s new url exists on page 3');
     }
 
     public function testPublishingPageWithModifiedUrlRewritesLink()
@@ -154,7 +154,7 @@ class SiteTreeBacklinksTest extends SapphireTest
 
         // assert hyperlink to page 1's current url exists
         $links = HTTP::getLinksIn($page3live->obj('Content')->forTemplate());
-        $this->assertContains(Director::baseURL().'page1/', $links, 'Assert hyperlink to page 1\'s current url exists on page 3');
+        $this->assertContains(Director::baseURL().'page1', $links, 'Assert hyperlink to page 1\'s current url exists on page 3');
 
         // rename url of page 1 on stage
         $page1->URLSegment = 'new-url-segment';
@@ -164,7 +164,7 @@ class SiteTreeBacklinksTest extends SapphireTest
         $page3live = Versioned::get_one_by_stage('Page', 'Live', '"SiteTree"."ID" = ' . $page3->ID);
         Versioned::set_stage(Versioned::LIVE);
         $links = HTTP::getLinksIn($page3live->obj('Content')->forTemplate());
-        $this->assertContains(Director::baseURL().'page1/', $links, 'Assert hyperlink to page 1\'s current published url exists on page 3');
+        $this->assertContains(Director::baseURL().'page1', $links, 'Assert hyperlink to page 1\'s current published url exists on page 3');
 
 
         // publish page 1
@@ -173,7 +173,7 @@ class SiteTreeBacklinksTest extends SapphireTest
         // assert hyperlink to page 1's new published url exists
         $page3live = Versioned::get_one_by_stage('Page', 'Live', '"SiteTree"."ID" = ' . $page3->ID);
         $links = HTTP::getLinksIn($page3live->obj('Content')->forTemplate());
-        $this->assertContains(Director::baseURL().'new-url-segment/', $links, 'Assert hyperlink to page 1\'s new published url exists on page 3');
+        $this->assertContains(Director::baseURL().'new-url-segment', $links, 'Assert hyperlink to page 1\'s new published url exists on page 3');
     }
 
     public function testPublishingPageWithModifiedLinksRewritesLinks()
@@ -186,7 +186,7 @@ class SiteTreeBacklinksTest extends SapphireTest
 
         // assert hyperlink to page 1's current url exists
         $links = HTTP::getLinksIn($page3->obj('Content')->forTemplate());
-        $this->assertContains(Director::baseURL().'page1/', $links, 'Assert hyperlink to page 1\'s current published url exists on page 3');
+        $this->assertContains(Director::baseURL().'page1', $links, 'Assert hyperlink to page 1\'s current published url exists on page 3');
 
         // change page 1 url on draft
         $page1->URLSegment = 'new-url-segment';
@@ -197,7 +197,7 @@ class SiteTreeBacklinksTest extends SapphireTest
         // assert page 3 on draft contains new page 1 url
         $page3 = $this->objFromFixture('Page', 'page3');
         $links = HTTP::getLinksIn($page3->obj('Content')->forTemplate());
-        $this->assertContains(Director::baseURL().'new-url-segment/', $links, 'Assert hyperlink to page 1\'s current draft url exists on page 3');
+        $this->assertContains(Director::baseURL().'new-url-segment', $links, 'Assert hyperlink to page 1\'s current draft url exists on page 3');
 
         // publish page 3
         $this->assertTrue($page3->publishRecursive());
@@ -206,7 +206,7 @@ class SiteTreeBacklinksTest extends SapphireTest
         $page3live = Versioned::get_one_by_stage('Page', 'Live', '"SiteTree"."ID" = ' . $page3->ID);
         Versioned::set_stage(Versioned::LIVE);
         $links = HTTP::getLinksIn($page3live->obj('Content')->forTemplate());
-        $this->assertContains(Director::baseURL().'page1/', $links, 'Assert hyperlink to page 1\'s current published url exists on page 3');
+        $this->assertContains(Director::baseURL().'page1', $links, 'Assert hyperlink to page 1\'s current published url exists on page 3');
 
         // publish page 1
         $this->assertTrue($page1->publishRecursive());
@@ -214,7 +214,7 @@ class SiteTreeBacklinksTest extends SapphireTest
         // assert page 3 on published site contains new page 1 url
         $page3live = Versioned::get_one_by_stage('Page', 'Live', '"SiteTree"."ID" = ' . $page3->ID);
         $links = HTTP::getLinksIn($page3live->obj('Content')->forTemplate());
-        $this->assertContains(Director::baseURL().'new-url-segment/', $links, 'Assert hyperlink to page 1\'s current published url exists on page 3');
+        $this->assertContains(Director::baseURL().'new-url-segment', $links, 'Assert hyperlink to page 1\'s current published url exists on page 3');
     }
 
     public function testLinkTrackingOnExtraContentFields()
@@ -244,17 +244,17 @@ class SiteTreeBacklinksTest extends SapphireTest
 
         // confirm that draft link on page2 has been rewritten
         $page2 = $this->objFromFixture('Page', 'page2');
-        $this->assertEquals('<p><a href="'.Director::baseURL().'page1-new-url/">Testing page 1 link</a></p>', $page2->obj('ExtraContent')->forTemplate());
+        $this->assertEquals('<p><a href="'.Director::baseURL().'page1-new-url">Testing page 1 link</a></p>', $page2->obj('ExtraContent')->forTemplate());
 
         // confirm that published link hasn't
         $page2Live = Versioned::get_one_by_stage("Page", "Live", "\"SiteTree\".\"ID\" = $page2->ID");
         Versioned::set_stage(Versioned::LIVE);
-        $this->assertEquals('<p><a href="'.Director::baseURL().'page1/">Testing page 1 link</a></p>', $page2Live->obj('ExtraContent')->forTemplate());
+        $this->assertEquals('<p><a href="'.Director::baseURL().'page1">Testing page 1 link</a></p>', $page2Live->obj('ExtraContent')->forTemplate());
 
         // publish page1 and confirm that the link on the published page2 has now been updated
         $page1->publishRecursive();
         $page2Live = Versioned::get_one_by_stage("Page", "Live", "\"SiteTree\".\"ID\" = $page2->ID");
-        $this->assertEquals('<p><a href="'.Director::baseURL().'page1-new-url/">Testing page 1 link</a></p>', $page2Live->obj('ExtraContent')->forTemplate());
+        $this->assertEquals('<p><a href="'.Director::baseURL().'page1-new-url">Testing page 1 link</a></p>', $page2Live->obj('ExtraContent')->forTemplate());
 
         // Edit draft again
         Versioned::set_stage(Versioned::DRAFT);

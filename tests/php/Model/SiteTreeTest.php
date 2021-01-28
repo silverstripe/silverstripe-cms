@@ -474,8 +474,8 @@ class SiteTreeTest extends SapphireTest
 
         Config::modify()->set(SiteTree::class, 'nested_urls', true);
 
-        $this->assertEquals('about-us/', $about->RelativeLink(), 'Matches URLSegment on top level without parameters');
-        $this->assertEquals('about-us/my-staff/', $staff->RelativeLink(), 'Matches URLSegment plus parent on second level without parameters');
+        $this->assertEquals('about-us', $about->RelativeLink(), 'Matches URLSegment on top level without parameters');
+        $this->assertEquals('about-us/my-staff', $staff->RelativeLink(), 'Matches URLSegment plus parent on second level without parameters');
         $this->assertEquals('about-us/edit', $about->RelativeLink('edit'), 'Matches URLSegment plus parameter on top level');
         $this->assertEquals('about-us/tom&jerry', $about->RelativeLink('tom&jerry'), 'Doesnt url encode parameter');
     }
