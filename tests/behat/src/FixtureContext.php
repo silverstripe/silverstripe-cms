@@ -2,8 +2,10 @@
 
 namespace SilverStripe\CMS\Tests\Behaviour;
 
+use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Mink\Element\DocumentElement;
 use Behat\Mink\Element\NodeElement;
+use SilverStripe\BehatExtension\Context\BasicContext;
 use SilverStripe\BehatExtension\Context\FixtureContext as BehatFixtureContext;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
@@ -17,6 +19,18 @@ use SilverStripe\Versioned\Versioned;
  */
 class FixtureContext extends BehatFixtureContext
 {
+    /**
+     * @var BasicContext
+     */
+    protected $basicContext;
+
+
+    /** @BeforeScenario */
+    public function gatherContexts(BeforeScenarioScope $scope)
+    {
+        $this->basicContext = $scope->getEnvironment()->getContext(BasicContext::class);
+    }
+
     protected function scaffoldDefaultFixtureFactory()
     {
         $factory = parent::scaffoldDefaultFixtureFactory();
@@ -79,6 +93,18 @@ class FixtureContext extends BehatFixtureContext
         assertNotNull($element, sprintf('Element %s not found', $selector));
 
         $element->click();
+    }
+
+    /**
+     * Needs to be in single command to avoid "unexpected alert open" errors in Selenium.
+     *
+     * @When /^I click the "([^"]+)" element, confirming the dialog$/
+     * @param $selector
+     */
+    public function iClickTheElementConfirmingTheDialog($selector)
+    {
+        $this->iClickTheElement($selector);
+        $this->basicContext->iConfirmTheDialog();
     }
 
     /**

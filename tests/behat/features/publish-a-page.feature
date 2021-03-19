@@ -82,9 +82,11 @@ Feature: Publish a page
 
     When I press the "Unpublish" button, confirming the dialog
     And I click "More options" in the "#ActionMenus" element
-    Then I should see an "Archive" button
+    # Use a css-selector instead of the the "Archive" button otherwise it will get confused with
+    # the "Archive" model admin
+    Then I see the "#Form_EditForm_action_archive" element
+    When I click the "#Form_EditForm_action_archive" element, confirming the dialog
 
-    When I press the "Archive" button, confirming the dialog
     Then I should see a "Restore" button
     And I should not see a "Published" button
     And I should not see a "Publish" button
