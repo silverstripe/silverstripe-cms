@@ -33,9 +33,9 @@ Feature: Create a page
   Scenario: I cannot add root level pages without permission
     When I go to "/admin/settings"
     And I click the "Access" CMS tab
-    And I click the "#Form_EditForm_CanCreateTopLevelType_OnlyTheseUsers" element
+    And I click on the "#Form_EditForm_CanCreateTopLevelType_OnlyTheseUsers" element
     And I press the "Save" button
-    And I click the ".cms-login-status__logout-link" element
+    And I click on the ".cms-login-status__logout-link" element
     When I am logged in with "AUTHOR" permissions
     And I press the "Add new" button
     Then I see the "Top level" radio button "disabled" attribute equals "1"

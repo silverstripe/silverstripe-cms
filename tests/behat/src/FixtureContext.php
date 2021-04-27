@@ -81,33 +81,6 @@ class FixtureContext extends BehatFixtureContext
     }
 
     /**
-     * @When /^I click the "([^"]+)" element$/
-     * @param $selector
-     */
-    public function iClickTheElement($selector)
-    {
-        /** @var DocumentElement $page */
-        $page = $this->getMainContext()->getSession()->getPage();
-        $element = $page->find('css', $selector);
-
-        assertNotNull($element, sprintf('Element %s not found', $selector));
-
-        $element->click();
-    }
-
-    /**
-     * Needs to be in single command to avoid "unexpected alert open" errors in Selenium.
-     *
-     * @When /^I click the "([^"]+)" element, confirming the dialog$/
-     * @param $selector
-     */
-    public function iClickTheElementConfirmingTheDialog($selector)
-    {
-        $this->iClickTheElement($selector);
-        $this->basicContext->iConfirmTheDialog();
-    }
-
-    /**
      * @When /^I see the "([^"]+)" element$/
      * @param $selector
      */
