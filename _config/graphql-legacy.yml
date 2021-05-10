@@ -8,6 +8,10 @@ SilverStripe\GraphQL\Manager:
     admin:
       scaffolding:
         types:
+          # Expose this so that Page can appear anywhere in the hierarchy, rather than assuming
+          # it is a direct descendant of SiteTree.
+          SilverStripe\CMS\Model\SiteTree:
+            fields: [ID]
           Page:
             fields: [ID, LastEdited, AbsoluteLink]
             operations:
