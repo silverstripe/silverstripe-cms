@@ -134,23 +134,22 @@ class VirtualPage extends Page
     }
 
     /**
-     * For VirtualPage, add a canonical link tag linking to the original page
-     * See TRAC #6828 & http://support.google.com/webmasters/bin/answer.py?hl=en&answer=139394
-     *
-     * @param boolean $includeTitle Show default <title>-tag, set to false for custom templating
-     * @return string The XHTML metatags
+     * @return array
      */
-    public function MetaTags($includeTitle = true)
+    public function MetaComponents()
     {
-        $tags = parent::MetaTags($includeTitle);
+        $tags = parent::MetaComponents();
+
         $copied = $this->CopyContentFrom();
         if ($copied && $copied->exists()) {
-            $tags .= HTML::createTag('link', [
-                'rel' => 'canonical',
-                'href' => $copied->Link()
-            ]);
-            $tags .= "\n";
+            $tags['canonical'] = [
+                'attributes' => [
+                    'rel' => 'canonical',
+                    'content' => $copied->AbsoluteLink(),
+                ],
+            ];
         }
+
         return $tags;
     }
 
