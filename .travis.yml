@@ -5,6 +5,5 @@ import:
 
 env:
   global:
-    - COMPOSER_ROOT_VERSION="4.x-dev"
-    - REQUIRE_RECIPE="4.x-dev"
+    - REQUIRE_RECIPE="4.8.x-dev"
     - BEHAT_SUITE="cms"
