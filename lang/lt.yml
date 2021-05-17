@@ -1,9 +1,13 @@
 lt:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISH_PAGES: Publikuoti
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Priėjimas prie ''{title}'' dalies'
     ACCESS_HELP: 'Leisti peržiūrėti svetainės medžio ir turinio skiltį. Peržiūros, bei redagavimo leidimai gali būti pakeisti per iškrentančius pasirinkimus ir per atskirus "Turinio leidimai".'
     ARCHIVE: Archyvas
     ARCHIVEDPAGE: 'Suarchyvuotas puslapis ''{title}'''
+    AddNew: 'Pridėti naują puslapį'
+    AddNewButton: 'Pridėti naują'
     AddPageRestriction: 'Pastaba: kai kurie puslapių tipai šioje vietoje neleidžiami'
     Cancel: Atšaukti
     ChoosePageParentMode: 'Pasirinkite kur sukurti šį puslapį'
@@ -13,7 +17,9 @@ lt:
     DUPLICATEDWITHCHILDREN: 'Puslapis ''{title}'' , bei jo vaikai kopijuoti sėkmingai'
     NEWPAGE: 'Naujas {pagetype}'
     PAGENOTEXISTS: 'Šis puslapis neegzistuoja'
+    PAGESALLOPT: 'Visi puslapiai'
     PAGETYPEANYOPT: 'Bet koks'
+    PAGETYPEOPT: 'Puslapio tipas'
     PUBALLCONFIRM: 'Prašome publikuoti kiekvieną svetainės puslapį, kopijuojant turinį į svetainę'
     PUBALLFUN: '"Publikuoti viską" funkcionalumas'
     PUBPAGES: 'Įvykdyta: Publikuoti {count} puslapiai'
@@ -26,6 +32,8 @@ lt:
     RESTORE_TO_ROOT_DESC: 'Atstatyti suarchyvuotą versiją kaip aukščiausio lygio juodraštinį puslapį'
     ROLLEDBACKPUBv2: 'Sugrįžta prie publikuotos versijos.'
     ROLLEDBACKVERSIONv2: 'Sugrįžta prie  #{version} versijos.'
+    SAVEDRAFT: Išsaugoti
+    SEARCHRESULTS: 'Paieškos rezultatai'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Po kitu puslapiu'
     ParentMode_top: 'Aukščiausias lygmuo'

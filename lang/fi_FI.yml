@@ -212,7 +212,6 @@ fi_FI:
     METADESC: Meta-kuvaus
     METADESCHELP: 'Hakukoneet näyttävät tämän sisällön hakutuloksissa (sisältö ei kuitenkaan vaikuta sijoitukseen hakutuloksessa).'
     METAEXTRA: 'Omat meta-tagit'
-    METAEXTRAHELP: 'HTML-tagit ylimääräiselle metatiedoille. Esimerkiksi <meta name="customName" content="your custom content here" />'
     MODIFIEDONDRAFTHELP: 'Sivulla on julkaisemattomia muutoksia'
     MODIFIEDONDRAFTSHORT: Muokattu
     MetadataToggle: Meta-tiedot
@@ -320,7 +319,6 @@ fi_FI:
     ParameterLiveCheckbox: 'Tarkista live-sivusto'
   SilverStripe\CMS\Reports\EmptyPagesReport:
     ContentGroupTitle: Sisältöraportit
-    EMPTYPAGES: 'Sivut, joilla ei ole sisältöä'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: Sisältöraportit
     LAST2WEEKS: 'Sivut, joita on muokattu viimeisen 2 viikon aikana'

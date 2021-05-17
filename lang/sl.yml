@@ -1,7 +1,7 @@
 sl:
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Umaknili iz objave in arhivirali smo %d stran/i.'
-    TITLE: 'Arhiviraj'
+    TITLE: Arhiviraj
   SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
     PUBLISHED_PAGES: 'Objavili smo %d stran/i, neuspešnih je bilo %d poskus/ov.'
     PUBLISH_PAGES: Objavi
@@ -17,7 +17,7 @@ sl:
     ARCHIVE: Arhiv
     ARCHIVEDPAGE: 'Arhivirana stran ''{title}'''
     AddNew: 'Dodaj novo stran'
-    AddNewButton: 'Dodaj'
+    AddNewButton: Dodaj
     AddPageRestriction: 'Pozor: nekateri tipi strani niso dovoljeni za to izbiro'
     ArchiveWarning: 'Stran bomo umaknili iz objave in arhivirali.\n\nŽelite nadaljevati?'
     ArchiveWarningWithCampaigns: 'Stran bomo pred arhiviranjem odstranili iz vseh ({NumCampaigns}) kampanj.\n\nŽelite nadaljevati?'
@@ -33,7 +33,7 @@ sl:
     EMAIL: E-pošta
     NEWPAGE: 'Dodaj {pagetype}'
     PAGENOTEXISTS: 'Stran na tem naslovu ne obstaja'
-    PAGES: 'Status'
+    PAGES: Status
     PAGESALLOPT: 'Vse strani'
     PAGETYPEANYOPT: Poljubna
     PAGETYPEOPT: 'Tip strani'
@@ -83,7 +83,7 @@ sl:
     MENUTITLE: Zgodovina
     MULTISELECT: 'Paketno urejanje'
     NOTPUBLISHED: 'Ni objavljeno'
-    PREVIEW: 'Predogled'
+    PREVIEW: Predogled
     PUBLISHER: Objavljavec
     REVERTTOTHISVERSION: 'Povrni v to različico'
     SHOWUNPUBLISHED: 'Prikaži neobjavljeno različico'
@@ -96,9 +96,9 @@ sl:
     MENUTITLE: 'Uredi stran'
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filter
-    ListView: 'Seznam'
+    ListView: Seznam
     MENUTITLE: 'Seznam strani'
-    TreeView: 'Drevo'
+    TreeView: Drevo
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Spremenjene strani'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
@@ -110,7 +110,7 @@ sl:
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
     Title: 'Arhivirane strani'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Osnutki'
+    Title: Osnutki
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Objavljeno, vendar odstranjeno iz osnutka'
   SilverStripe\CMS\Controllers\ContentController:
@@ -126,9 +126,9 @@ sl:
     InstallSuccessCongratulations: 'Silverstripe je uspešno nameščen.'
     LOGGEDINAS: 'Prijavljen-a kot'
     LOGIN: Prijava
-    LOGOUT: 'Odjava'
+    LOGOUT: Odjava
     NOTEWONTBESHOWN: 'Opomba: neprijavljeni obiskovalci spletnega mesta tega obvestila ne bodo videli.'
-    NOTLOGGEDIN: 'Neprijavljen'
+    NOTLOGGEDIN: Neprijavljen
     PUBLISHED: Objavljeno
     PUBLISHEDSITE: 'Objavljeno spletno mesto'
     Password: Geslo
@@ -191,7 +191,7 @@ sl:
     DEFAULTABOUTCONTENT: '<p>To stran lahko napolnite z lastno vsebino ali pa jo izbrišete in ustvarite novo.</p>'
     DEFAULTABOUTTITLE: 'O nas'
     DEFAULTCONTACTCONTENT: '<p>To stran lahko napolnite z lastno vsebino ali pa jo izbrišete in ustvarite novo.</p>'
-    DEFAULTCONTACTTITLE: 'Kontakt'
+    DEFAULTCONTACTTITLE: Kontakt
     DEFAULTHOMECONTENT: '<p>Dobrodošli! To je privzeta vstopna stran sistema Silverstripe. Lahko jo začnete urejati tako, da se prijavite v <a href="admin/">sistem za upravljanje z vsebino</a>.</p><p>Vabimo vas tudi, da si preberete <a href="http://docs.silverstripe.org">dokumentacijo</a> ali katero od <a href="http://www.silverstripe.org/learn/lessons">lekcij</a>.</p>'
     DEFAULTHOMETITLE: Domov
     DEPENDENT_NOTE: 'Naslednje strani so odvisne od vsebine tukaj (vključuje navidezne strani, preusmerjevalne strani in strani s povezavami v vsebini)'
@@ -214,7 +214,7 @@ sl:
     LINKSALREADYUNIQUE: '{url} je že v uporabi'
     LINKSCHANGEDTO: 'spremenba {url1} -> {url2}'
     MENUTITLE: 'Naziv v navigaciji'
-    METADESC: 'Opis'
+    METADESC: Opis
     METADESCHELP: 'Iskalniki to vsebino uporabljajo pri prikazu rezultatov. (Vsebina nima vpliva na vrstni red prikaza med zadetki v iskalniku.)'
     METAEXTRA: 'Meta tagi po meri'
     METAEXTRAHELP: 'Dodatne meta (HTML) oznake. Na primer: <meta name="customName" content="your custom content here">'
@@ -237,7 +237,7 @@ sl:
     PERMISSION_GRANTACCESS_HELP: 'Dovoli nastavitve pravic za dostop do izbrane strani v sklopu "Strani".'
     PLURALNAME: Strani
     PLURALS:
-      one: 'Stran'
+      one: Stran
       two: '{count} strani'
       few: '{count} strani'
       other: '{count} strani'

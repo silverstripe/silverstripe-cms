@@ -207,7 +207,6 @@ sv:
     METADESC: Metabeskrivning
     METADESCHELP: 'Sökmotorer använder detta innehåll vid visning av sökresultatet (rangordningen påverkas dock inte av detta innehåll).'
     METAEXTRA: 'Egna metataggar'
-    METAEXTRAHELP: 'HTML-taggar för övrig meta-information. Till exempel <meta name="customName" content="your custom content here" />'
     MODIFIEDONDRAFTHELP: 'Sidan har ej publicerade ändringar'
     MODIFIEDONDRAFTSHORT: Ändrad
     MetadataToggle: Metadata
@@ -307,7 +306,6 @@ sv:
     ParameterLiveCheckbox: 'Kontrollera live-sajt'
   SilverStripe\CMS\Reports\EmptyPagesReport:
     ContentGroupTitle: Innehållsrapport
-    EMPTYPAGES: 'Tomma sidor'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: Innehållsrapport
     LAST2WEEKS: 'Sidor som har redigerats de senaste 2 veckorna'
