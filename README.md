@@ -7,8 +7,6 @@
 [![SilverStripe supported module](https://img.shields.io/badge/silverstripe-supported-0071C4.svg)](https://www.silverstripe.org/software/addons/silverstripe-commercially-supported-module-list/)
 [![Total Downloads](https://poser.pugx.org/silverstripe/cms/downloads.svg)](https://packagist.org/packages/silverstripe/cms)
 [![License](https://poser.pugx.org/silverstripe/cms/license.svg)](https://github.com/silverstripe/silverstripe-cms#license)
-[![Dependency Status](https://www.versioneye.com/php/silverstripe:cms/badge.svg)](https://www.versioneye.com/php/silverstripe:cms)
-[![Reference Status](https://www.versioneye.com/php/silverstripe:cms/reference_badge.svg?style=flat)](https://www.versioneye.com/php/silverstripe:cms/references)
 
 PHP Content Management System (CMS), see [http://silverstripe.org](http://silverstripe.org). Requires the [`framework`](http://github.com/silverstripe/silverstripe-framework) module and a [`silverstripe-installer`](http://github.com/silverstripe/silverstripe-installer) base project.
 
