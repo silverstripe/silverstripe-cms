@@ -6,6 +6,9 @@ use Page;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\RedirectorPageController;
 use SilverStripe\Control\Director;
+use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Control\HTTPResponse_Exception;
+use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\FunctionalTest;
 
 class RedirectorPageTest extends FunctionalTest
@@ -18,7 +21,7 @@ class RedirectorPageTest extends FunctionalTest
     {
         parent::setUp();
         Director::config()->update('alternate_base_url', 'http://www.mysite.com/');
-
+        Config::modify()->set(RedirectorPageController::class, 'should_respond_404', false);
         // Ensure all pages are published
         /** @var Page $page */
         foreach (Page::get() as $page) {
@@ -39,6 +42,8 @@ class RedirectorPageTest extends FunctionalTest
         /* If a redirector page is misconfigured, then its link method will just return the usual URLSegment-generated value */
         $page1 = $this->objFromFixture(RedirectorPage::class, 'badexternal');
         $this->assertEquals('/bad-external/', $page1->Link());
+        $response = $this->get($page1->Link());
+        $this->assertEquals(200, $response->getStatusCode());
 
         /* An error message will be shown if you visit it */
         $content = $this->get(Director::makeRelative($page1->Link()))->getBody();
@@ -47,8 +52,10 @@ class RedirectorPageTest extends FunctionalTest
         /* This also applies for internal links */
         $page2 = $this->objFromFixture(RedirectorPage::class, 'badinternal');
         $this->assertEquals('/bad-internal/', $page2->Link());
-        $content = $this->get(Director::makeRelative($page2->Link()))->getBody();
+        $response = $this->get(Director::makeRelative($page2->Link()));
+        $content = $response->getBody();
         $this->assertContains('message-setupWithoutRedirect', $content);
+        $this->assertEquals(200, $response->getStatusCode());
     }
 
     public function testReflexiveAndTransitiveInternalRedirectors()
@@ -116,5 +123,32 @@ class RedirectorPageTest extends FunctionalTest
 
         $page->write();
         $this->assertEmpty($page->ExternalURL);
+    }
+
+    public function testOnUnpublishedTargetPage()
+    {
+        // Check to make sure that redirector page is still published
+        $page = $this->objFromFixture(RedirectorPage::class, 'goodinternal');
+        $this->assertEquals('/redirection-dest/', $page->Link());
+        $link = Director::makeRelative($page->Link());
+        $response = $this->get($link);
+        $this->assertEquals(200, $response->getStatusCode());
+
+        // Check to make sure target page is still published
+        $targetPage = $this->objFromFixture(Page::class, 'dest');
+        $response = $this->get(Director::makeRelative($targetPage->Link()));
+        $this->assertEquals(200, $response->getStatusCode());
+
+        // Override to display 404
+        Config::modify()->set(RedirectorPageController::class, 'should_respond_404', true);
+
+        // Unpublish the target page of this redirector page.
+        $this->assertTrue($targetPage->doUnpublish());
+        $response = $this->get(Director::makeRelative($targetPage->Link()));
+        $this->assertEquals(404, $response->getStatusCode());
+
+        // Check redirector page should show 404 as well
+        $response = $this->get($link);
+        $this->assertEquals(404, $response->getStatusCode());
     }
 }
