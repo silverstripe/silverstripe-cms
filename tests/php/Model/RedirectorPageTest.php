@@ -8,6 +8,8 @@ use SilverStripe\CMS\Model\RedirectorPageController;
 use SilverStripe\Control\Director;
 use SilverStripe\Assets\File;
 use SilverStripe\Assets\Dev\TestAssetStore;
+use SilverStripe\Control\Controller;
+use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\FunctionalTest;
 
 class RedirectorPageTest extends FunctionalTest
@@ -59,12 +61,30 @@ class RedirectorPageTest extends FunctionalTest
         );
     }
 
-    public function testEmptyRedirectors()
+    public function provideEmptyRedirectors()
     {
+        return [
+            'use 200' => [
+                'use404' => false,
+            ],
+            'use 404' => [
+                'use404' => true,
+            ],
+        ];
+    }
+
+    /**
+     * @dataProvider provideEmptyRedirectors
+     */
+    public function testEmptyRedirectors(bool $use404)
+    {
+        Config::modify()->set(RedirectorPageController::class, 'missing_redirect_is_404', $use404);
         // If a redirector page is misconfigured, then its link method will just return the usual
         // URLSegment-generated value
         $page1 = $this->objFromFixture(RedirectorPage::class, 'badexternal');
         $this->assertEquals('/bad-external', $page1->Link());
+        $response = $this->get($page1->Link());
+        $this->assertEquals(200, $response->getStatusCode());
 
         // An error message will be shown if you visit it
         $content = $this->get(Director::makeRelative($page1->Link()))->getBody();
@@ -73,8 +93,13 @@ class RedirectorPageTest extends FunctionalTest
         // This also applies for internal links
         $page2 = $this->objFromFixture(RedirectorPage::class, 'badinternal');
         $this->assertEquals('/bad-internal', $page2->Link());
-        $content = $this->get(Director::makeRelative($page2->Link()))->getBody();
-        $this->assertStringContainsString('message-setupWithoutRedirect', $content);
+        $response = $this->get(Director::makeRelative($page2->Link()));
+        $content = $response->getBody();
+        if ($use404) {
+            $this->assertNull($response->getBody());
+        } else {
+            $this->assertStringContainsString('message-setupWithoutRedirect', $content);
+        }
     }
 
     public function testReflexiveAndTransitiveInternalRedirectors()
@@ -154,5 +179,52 @@ class RedirectorPageTest extends FunctionalTest
     {
         $page = $this->objFromFixture(RedirectorPage::class, 'file');
         $this->assertStringContainsString("FileTest.txt", $page->Link());
+    }
+
+    public function provideUnpublishedTarget()
+    {
+        return [
+            'use 200 with sitetree' => [
+                'use404' => false,
+                'isFile' => false,
+            ],
+            'use 404 with sitetree' => [
+                'use404' => true,
+                'isFile' => false,
+            ],
+            'use 200 with file' => [
+                'use404' => false,
+                'isFile' => true,
+            ],
+            'use 404 with file' => [
+                'use404' => true,
+                'isFile' => true,
+            ],
+        ];
+    }
+
+    /**
+     * @dataProvider provideUnpublishedTarget
+     */
+    public function testUnpublishedTarget(bool $use404, bool $isFile)
+    {
+        Config::modify()->set(RedirectorPageController::class, 'missing_redirect_is_404', $use404);
+        $redirectorPage = $this->objFromFixture(RedirectorPage::class, $isFile ? 'file' : 'goodinternal');
+        $targetModel = $isFile ? $redirectorPage->LinkToFile() : $redirectorPage->LinkTo();
+        $targetModel->publishSingle();
+        $redirectorPage->publishSingle();
+        $this->assertEquals(Controller::normaliseTrailingSlash($isFile ? '/filedirector' : '/good-internal'), $redirectorPage->regularLink());
+        $redirectorPageLink = Director::makeRelative($redirectorPage->regularLink());
+
+        // redirector page should give 301 (redirection) status code
+        $response = $this->get($redirectorPageLink);
+        $this->assertEquals(301, $response->getStatusCode());
+
+        // Unpublish the target model of this redirector page.
+        $targetModel->doUnpublish();
+
+        // redirector page should give a 404 or a 200 based on config when there's no page to redirect to
+        $response = $this->get($redirectorPageLink);
+        $this->assertEquals($use404 ? 404 : 200, $response->getStatusCode());
     }
 }
