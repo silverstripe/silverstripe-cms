@@ -83,6 +83,7 @@ en:
     MENUTITLE: History
     MULTISELECT: 'Batch actions'
     NOTPUBLISHED: 'Not published'
+    NO_PREVIEW: 'No preview available'
     PREVIEW: 'Website preview'
     PUBLISHER: Publisher
     REVERTTOTHISVERSION: 'Revert to this version'
