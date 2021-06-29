@@ -1703,7 +1703,10 @@ class SiteTreeTest extends SapphireTest
         $cache = $method->invokeArgs($provider, []);
         $method = $reflector->getMethod('deriveCacheKey');
         $method->setAccessible(true);
-        $key = $method->invokeArgs($provider, [$url]);
+        $class = 'leftAlone ss-htmleditorfield-file embed';
+        $width = '480';
+        $height = '270';
+        $key = $method->invokeArgs($provider, [$url, $class, $width, $height]);
 
         // Set cache (VersionedCacheAdapter) on both DRAFT and LIVE
         foreach ([Versioned::DRAFT, Versioned::LIVE] as $stage) {
