@@ -18,53 +18,47 @@ const noop = () => null;
 class AnchorSelectorField extends SilverStripeComponent {
   constructor(props) {
     super(props);
+    this.state = {
+      anchors: [],
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleLoadingError = this.handleLoadingError.bind(this);
   }
 
   componentDidMount() {
-    this.ensurePagesLoaded();
+    this.fetchAnchors();
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.pageId !== prevProps.pageId) {
-      this.ensurePagesLoaded();
+      this.fetchAnchors();
     }
   }
 
   /**
-   * Lazy-triggers load of the dropdown based on pageId
+   * Load values for the dropdown based on pageId
    *
    * @param {Object} props - Props to check
-   * @return {Promise} The promise object
    */
-  ensurePagesLoaded(props = this.props) {
-    // Only load if dirty and a valid ID
-    if (
-      props.loadingState === anchorSelectorStates.UPDATING
-      || props.loadingState === anchorSelectorStates.SUCCESS
-      || !props.pageId
-    ) {
-      return Promise.resolve();
+  fetchAnchors(props = this.props) {
+    if (!props.pageId) {
+      return;
     }
-
-    // Mark page updating
-    props.actions.anchorSelector.beginUpdating(props.pageId);
-
-    // Query endpoint for anchors for this page
-    const fetchURL = props.data.endpoint.replace(/:id/, props.pageId);
-    return fetch(fetchURL, { credentials: 'same-origin' })
-      .then(response => response.json())
-      .then((anchors) => {
-        // Update anchors
-        props.actions.anchorSelector.updated(props.pageId, anchors);
-        return anchors;
+    const doFetch = async () => {
+      const fetchURL = props.data.endpoint.replace(/:id/, props.pageId);
+      const response = await fetch(fetchURL, { credentials: 'same-origin' });
+      let anchors = [];
+      if (response.ok) {
+        anchors = await response.json();
+      }
+      return Promise.resolve(anchors);
+    };
+    doFetch()
+      .then(anchors => {
+        this.setState({ anchors });
       })
-      .catch((error) => {
-        props.actions.anchorSelector.updateFailed(props.pageId);
-        this.handleLoadingError(error, props);
-      });
+      .catch((error) => this.handleLoadingError(error, props));
   }
 
   /**
@@ -73,9 +67,9 @@ class AnchorSelectorField extends SilverStripeComponent {
    * @return {Array}
    */
   getDropdownOptions() {
-    const options = this.props.anchors.map(value => ({ value }));
+    const options = this.state.anchors.map(value => ({ value }));
     // Ensure value is available in the list
-    if (this.props.value && !this.props.anchors.find(value => value === this.props.value)) {
+    if (this.props.value && !this.state.anchors.find(value => value === this.props.value)) {
       options.unshift({ value: this.props.value });
     }
     return options;
@@ -141,7 +135,6 @@ AnchorSelectorField.propTypes = {
   value: PropTypes.string,
   attributes: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   pageId: PropTypes.number,
-  anchors: PropTypes.array,
   loadingState: PropTypes.oneOf(Object
       .keys(anchorSelectorStates)
       .map((key) => anchorSelectorStates[key])),
@@ -159,41 +152,13 @@ AnchorSelectorField.defaultProps = {
   attributes: {},
 };
 
+
 function mapStateToProps(state, ownProps) {
   // Get pageId From selector field
   const selector = formValueSelector(ownProps.formid, getFormState);
   const targetFieldName = (ownProps && ownProps.data && ownProps.data.targetFieldName) || 'PageID';
   const pageId = Number(selector(state, targetFieldName) || 0);
-
-  // Load anchors from page
-  let anchors = [];
-  const page = pageId
-    ? state.cms.anchorSelector.pages.find(next => next.id === pageId)
-    : null;
-  if (page
-    && (
-      page.loadingState === anchorSelectorStates.SUCCESS
-      || page.loadingState === anchorSelectorStates.DIRTY
-    )
-  ) {
-    // eslint-disable-next-line prefer-destructuring
-    anchors = page.anchors;
-  }
-
-  // Check status
-  let loadingState = null;
-  if (page) {
-    // eslint-disable-next-line prefer-destructuring
-    loadingState = page.loadingState;
-  } else if (pageId) {
-    // Triggers an update
-    loadingState = anchorSelectorStates.DIRTY;
-  } else {
-    // No page = success
-    loadingState = anchorSelectorStates.SUCCESS;
-  }
-
-  return { pageId, anchors, loadingState };
+  return { pageId };
 }
 
 function mapDispatchToProps(dispatch) {
