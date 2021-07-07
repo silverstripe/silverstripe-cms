@@ -3,6 +3,8 @@
 namespace SilverStripe\CMS\Model;
 
 use Page;
+use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Assets\File;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\HeaderField;
 use SilverStripe\Forms\OptionsetField;
@@ -20,7 +22,7 @@ use SilverStripe\Versioned\Versioned;
  */
 class RedirectorPage extends Page
 {
-    private static $description = 'Redirects to an internal page or an external URL';
+    private static $description = 'Redirects requests to another location';
 
     private static $icon_class = 'font-icon-p-redirect';
 
@@ -29,7 +31,7 @@ class RedirectorPage extends Page
     private static $show_live_link = false;
 
     private static $db = [
-        "RedirectionType" => "Enum('Internal,External','Internal')",
+        "RedirectionType" => "Enum('Internal,External,File','Internal')",
         "ExternalURL" => "Varchar(2083)" // 2083 is the maximum length of a URL in Internet Explorer.
     ];
 
@@ -39,6 +41,11 @@ class RedirectorPage extends Page
 
     private static $has_one = [
         "LinkTo" => SiteTree::class,
+        "LinkToFile" => File::class
+    ];
+
+    private static $owns = [
+        'LinkToFile'
     ];
 
     private static $table_name = 'RedirectorPage';
@@ -46,12 +53,15 @@ class RedirectorPage extends Page
     /**
      * Returns this page if the redirect is external, otherwise
      * returns the target page.
-     * @return SiteTree
+     *
+     * @return SiteTree|File
      */
     public function ContentSource()
     {
         if ($this->RedirectionType == 'Internal') {
             return $this->LinkTo();
+        } elseif ($this->RedirectionType == 'File') {
+            return $this->LinkToFile();
         } else {
             return $this;
         }
@@ -69,6 +79,7 @@ class RedirectorPage extends Page
     public function Link($action = null)
     {
         $link = $this->redirectionLink();
+
         if ($link) {
             return $link;
         } else {
@@ -99,6 +110,12 @@ class RedirectorPage extends Page
         // Check external redirect
         if ($this->RedirectionType == 'External') {
             $result = $this->ExternalURL ?: null;
+
+            $this->extend('updateRedirectionLink', $result);
+
+            return $result;
+        } elseif ($this->RedirectionType == 'File') {
+            $result = $this->LinkToFile()->exists() ? $this->LinkToFile()->getURL() : null;
 
             $this->extend('updateRedirectionLink', $result);
 
@@ -139,7 +156,14 @@ class RedirectorPage extends Page
                     ->filter('ID', $this->LinkToID)
                     ->count() === 0;
             } else {
-                // An incomplete redirector page definitely has a broken link
+                $this->HasBrokenLink = true;
+            }
+        } elseif ($this->RedirectionType == 'File') {
+            if ($this->LinkToFileID) {
+                $this->HasBrokenLink = Versioned::get_by_stage(File::class, Versioned::DRAFT)
+                    ->filter('ID', $this->LinkToFileID)
+                    ->count() === 0;
+            } else {
                 $this->HasBrokenLink = true;
             }
         } else {
@@ -190,6 +214,7 @@ class RedirectorPage extends Page
                         [
                             "Internal" => _t(__CLASS__.'.REDIRECTTOPAGE', "A page on your website"),
                             "External" => _t(__CLASS__.'.REDIRECTTOEXTERNAL', "Another website"),
+                            "File" => _t(__CLASS__.'.REDIRECTTOFILE', "A file on your website"),
                         ],
                         "Internal"
                     ),
@@ -198,6 +223,7 @@ class RedirectorPage extends Page
                         _t(__CLASS__.'.YOURPAGE', "Page on your website"),
                         SiteTree::class
                     ),
+                    new UploadField('LinkToFileID', _t(__CLASS__.'.FILE', "File")),
                     new TextField("ExternalURL", _t(__CLASS__.'.OTHERURL', "Other website URL"))
                 ]
             );
