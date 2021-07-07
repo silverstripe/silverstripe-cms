@@ -93,7 +93,7 @@ class ModelAsControllerTest extends FunctionalTest
         $response = $this->get('newlevel1/level2');
         $this->assertEquals($response->getStatusCode(), 301);
         $this->assertEquals(
-            Controller::join_links(Director::baseURL() . 'newlevel1/newlevel2/'),
+            Controller::join_links(Director::baseURL() . 'newlevel1/newlevel2'),
             $response->getHeader('Location')
         );
 
@@ -101,7 +101,7 @@ class ModelAsControllerTest extends FunctionalTest
         $response = $this->get('newlevel1/newlevel2/level3');
         $this->assertEquals($response->getStatusCode(), 301);
         $this->assertEquals(
-            Controller::join_links(Director::baseURL() . 'newlevel1/newlevel2/newlevel3/'),
+            Controller::join_links(Director::baseURL() . 'newlevel1/newlevel2/newlevel3'),
             $response->getHeader('Location')
         );
 
@@ -154,10 +154,10 @@ class ModelAsControllerTest extends FunctionalTest
         $page5->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
         // Test that the redirect still works fine when trying to access the most nested page
-        $response = $this->get('oldurl/level2/level3/level4/level5/');
+        $response = $this->get('oldurl/level2/level3/level4/level5');
         $this->assertEquals($response->getStatusCode(), 301);
         $this->assertEquals(
-            Controller::join_links(Director::baseURL() . 'newurl/level2/level3/level4/level5/'),
+            Controller::join_links(Director::baseURL() . 'newurl/level2/level3/level4/level5'),
             $response->getHeader('Location')
         );
     }
@@ -171,7 +171,7 @@ class ModelAsControllerTest extends FunctionalTest
         $response = $this->get('newlevel3');
         $this->assertEquals(301, $response->getStatusCode());
         $this->assertEquals(
-            Director::baseURL() . 'newlevel1/newlevel2/newlevel3/',
+            Director::baseURL() . 'newlevel1/newlevel2/newlevel3',
             $response->getHeader("Location")
         );
 
@@ -179,7 +179,7 @@ class ModelAsControllerTest extends FunctionalTest
         $response = $this->get('level3');
         $this->assertEquals(301, $response->getStatusCode());
         $this->assertEquals(
-            Director::baseURL() . 'newlevel1/newlevel2/newlevel3/',
+            Director::baseURL() . 'newlevel1/newlevel2/newlevel3',
             $response->getHeader("Location")
         );
     }
@@ -215,10 +215,10 @@ class ModelAsControllerTest extends FunctionalTest
         $this->generateNestedPagesFixture();
 
         // check third level URLSegment
-        $response = $this->get('newlevel1/newlevel2/level3/?foo=bar&test=test');
+        $response = $this->get('newlevel1/newlevel2/level3?foo=bar&test=test');
         $this->assertEquals($response->getStatusCode(), 301);
         $this->assertEquals(
-            Controller::join_links(Director::baseURL() . 'newlevel1/newlevel2/newlevel3/', '?foo=bar&test=test'),
+            Controller::join_links(Director::baseURL() . 'newlevel1/newlevel2/newlevel3', '?foo=bar&test=test'),
             $response->getHeader('Location')
         );
     }

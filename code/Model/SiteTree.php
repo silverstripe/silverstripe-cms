@@ -666,7 +666,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $action = null;
         }
 
-        return Controller::join_links($base, '/', $action);
+        return Controller::join_links($base, $action);
     }
 
     /**
