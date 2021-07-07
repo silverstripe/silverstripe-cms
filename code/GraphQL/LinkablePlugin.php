@@ -12,6 +12,7 @@ use SilverStripe\GraphQL\Schema\Exception\SchemaBuilderException;
 use SilverStripe\GraphQL\Schema\Field\ModelQuery;
 use SilverStripe\GraphQL\Schema\Interfaces\ModelQueryPlugin;
 use SilverStripe\GraphQL\Schema\Schema;
+use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataList;
 
 if (!interface_exists(ModelQueryPlugin::class)) {
@@ -30,6 +31,11 @@ class LinkablePlugin implements ModelQueryPlugin
      * @config
      */
     private static $field_name = 'link';
+
+    /**
+     * @var array
+     */
+    private static $resolver = [__CLASS__, 'applyLinkFilter'];
 
     /**
      * @return string
@@ -52,43 +58,44 @@ class LinkablePlugin implements ModelQueryPlugin
         if ($class !== SiteTree::class && !is_subclass_of($class, SiteTree::class)) {
             return;
         }
-        Schema::invariant(
-            !$query->isList(),
-            'Plugin %s cannot be applied to queries that return lists. Query "%s" is a list',
-            static::getIdentifier(),
-            $query->getName()
+        $singleFieldName = $this->config()->get('field_name');
+        $pluraliser = $schema->getConfig()->getPluraliser();
+        $fieldName = $query->isList() ? $pluraliser($singleFieldName) : $singleFieldName;
+        $type = $query->isList() ? '[String]' : 'String';
+        $query->addArg($fieldName, $type);
+        $query->addResolverAfterware(
+            static::config()->get('resolver'),
+            ['fieldName' => $fieldName]
         );
-        $fieldName = $this->config()->get('field_name');
-        
-        $query->addArg($fieldName, 'String');
-        $query->addResolverAfterware([static::class, 'applyLinkFilter']);
     }
 
     /**
-     * @param $obj
-     * @param array $args
      * @param array $context
-     * @param ResolveInfo $info
-     * @param callable $done
-     * @return SiteTree|DataList|null
+     * @return callable
      */
-    public static function applyLinkFilter(
-        $obj,
-        array $args,
-        array $context,
-        ResolveInfo $info,
-        callable $done
-    ) {
-        $fieldName = static::config()->get('field_name');
-        $filterLink = $args['filter'][$fieldName] ?? null;
-        $argLink = $args[$fieldName] ?? null;
-        $filterLink = $filterLink ?: $argLink;
+    public static function applyLinkFilter(array $context): callable
+    {
+        $fieldName = $context['fieldName'] ?? static::config()->get('field_name');
+        return function ($obj, array $args, array $context, ResolveInfo $info, callable $done) use ($fieldName) {
+            $filterLink = $args['filter'][$fieldName] ?? null;
+            $argLink = $args[$fieldName] ?? null;
+            $linkData = $filterLink ?: $argLink;
+            if (!$linkData) {
+                return $obj;
+            }
+            // Normalise to an array for both cases. The readOne operation will get
+            // ->first() run on it by the firstResult plugin.
+            $links = is_array($linkData) ? $linkData : [$linkData];
 
-        if ($filterLink) {
-            $done();
-            return SiteTree::get_by_link($filterLink);
-        }
+            $result = ArrayList::create();
 
-        return $obj;
+            foreach ($links as $link) {
+                $page = SiteTree::get_by_link($link);
+                if ($page) {
+                    $result->push($page);
+                }
+            }
+            return $result;
+        };
     }
 }
