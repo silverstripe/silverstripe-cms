@@ -16,6 +16,7 @@ export default function anchorSelectorReducer(state = initialState, action = nul
    * @return {Object} Updated state
    */
   const updatePage = (loadingState, anchors) => {
+    console.log(action);
     const id = action.payload.pageId;
     return deepFreeze({
       pages: [

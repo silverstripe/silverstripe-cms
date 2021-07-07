@@ -3288,24 +3288,31 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function getAnchorsOnPage()
     {
-        $parseSuccess = preg_match_all(
-            "/\\s+(name|id)\\s*=\\s*([\"'])([^\\2\\s>]*?)\\2|\\s+(name|id)\\s*=\\s*([^\"']+)[\\s +>]/im",
-            $this->Content,
-            $matches
-        );
+        $content = $this->Content ?: '';
+        $anchors = $this->getAnchorsInContent($content);
+        $this->extend('updateAnchorsOnPage', $anchors);
+        return $anchors;
+    }
 
+    /**
+     * This is split from getAnchorsOnPage() so that extensions can make use of the logic
+     *
+     * @param string $content
+     * @return array
+     */
+    public function getAnchorsInContent(string $content): array
+    {
+        $rx = "/\\s+(name|id)\\s*=\\s*([\"'])([^\\2\\s>]*?)\\2|\\s+(name|id)\\s*=\\s*([^\"']+)[\\s +>]/im";
+        $parseSuccess = preg_match_all($rx, $content, $matches);
         if (!$parseSuccess) {
             return [];
         }
-
-        $anchors = array_values(array_unique(array_filter(
+        return array_values(array_unique(array_filter(
             array_merge($matches[3], $matches[5])
         )));
-
-        $this->extend('updateAnchorsOnPage', $anchors);
-
-        return $anchors;
     }
+
+
 
     /**
      * Returns whether this is the home page or not
