@@ -41,7 +41,7 @@
     "graphql-tag": "^2.10.0",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.5.0",
-    "merge": "^1.2.1",
+    "merge": "^2.1.1",
     "popper.js": "^1.14.4",
     "prop-types": "^15.6.2",
     "react": "^16.6.1",
