@@ -45,8 +45,13 @@ class BrokenVirtualPagesReport extends Report
         ];
     }
 
+    /**
+     * @deprecated 4.7.0:5.0.0
+     * @return FieldList|bool
+     */
     public function getParameterFields()
     {
+        Deprecation::notice('4.7.0');
         return new FieldList(
             new CheckboxField('OnLive', _t(__CLASS__.'.ParameterLiveCheckbox', 'Check live site'))
         );
