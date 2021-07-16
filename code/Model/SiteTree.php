@@ -406,7 +406,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      *
      * @param string $link  The link of the page to search for
      * @param bool   $cache True (default) to use caching, false to force a fresh search from the database
-     * @return SiteTree
+     * @return SiteTree|null
      */
     public static function get_by_link($link, $cache = true)
     {
