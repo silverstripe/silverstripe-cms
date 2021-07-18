@@ -49,7 +49,6 @@ class LinkablePlugin implements ModelQueryPlugin
      * @param ModelQuery $query
      * @param Schema $schema
      * @param array $config
-     * @throws SchemaBuilderException
      */
     public function apply(ModelQuery $query, Schema $schema, array $config = []): void
     {
