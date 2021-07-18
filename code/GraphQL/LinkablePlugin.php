@@ -64,7 +64,7 @@ class LinkablePlugin implements ModelQueryPlugin
         $type = $query->isList() ? '[String]' : 'String';
         $query->addArg($fieldName, $type);
         $query->addResolverAfterware(
-            static::config()->get('resolver'),
+            $config['resolver'] ?? static::config()->get('resolver'),
             ['fieldName' => $fieldName]
         );
     }
