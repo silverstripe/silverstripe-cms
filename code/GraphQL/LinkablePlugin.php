@@ -33,6 +33,12 @@ class LinkablePlugin implements ModelQueryPlugin
     private static $field_name = 'link';
 
     /**
+     * @var string
+     * @config
+     */
+    private static $list_field_name = 'links';
+
+    /**
      * @var array
      */
     private static $resolver = [__CLASS__, 'applyLinkFilter'];
@@ -58,13 +64,12 @@ class LinkablePlugin implements ModelQueryPlugin
             return;
         }
         $singleFieldName = $this->config()->get('field_name');
-        $pluraliser = $schema->getConfig()->getPluraliser();
-        $fieldName = $query->isList() ? $pluraliser($singleFieldName) : $singleFieldName;
+        $pluralFieldName = $this->config()->get('list_field_name');
+        $fieldName = $query->isList() ? $pluralFieldName : $singleFieldName;
         $type = $query->isList() ? '[String]' : 'String';
         $query->addArg($fieldName, $type);
         $query->addResolverAfterware(
-            $config['resolver'] ?? static::config()->get('resolver'),
-            ['fieldName' => $fieldName]
+            $config['resolver'] ?? static::config()->get('resolver')
         );
     }
 
@@ -72,29 +77,28 @@ class LinkablePlugin implements ModelQueryPlugin
      * @param array $context
      * @return callable
      */
-    public static function applyLinkFilter(array $context): callable
+    public static function applyLinkFilter($obj, array $args, array $context, ResolveInfo $info)
     {
-        $fieldName = $context['fieldName'] ?? static::config()->get('field_name');
-        return function ($obj, array $args, array $context, ResolveInfo $info, callable $done) use ($fieldName) {
-            $filterLink = $args['filter'][$fieldName] ?? null;
-            $argLink = $args[$fieldName] ?? null;
-            $linkData = $filterLink ?: $argLink;
-            if (!$linkData) {
-                return $obj;
-            }
-            // Normalise to an array for both cases. The readOne operation will get
-            // ->first() run on it by the firstResult plugin.
-            $links = is_array($linkData) ? $linkData : [$linkData];
+        $singleFieldName = static::config()->get('field_name');
+        $pluralFieldName = static::config()->get('list_field_name');
+        $filterLink = $args['filter'][$singleFieldName] ?? ($args['filter'][$pluralFieldName] ?? null);
+        $argLink = $args[$singleFieldName] ?? ($args[$pluralFieldName] ?? null);
+        $linkData = $filterLink ?: $argLink;
+        if (!$linkData) {
+            return $obj;
+        }
+        // Normalise to an array for both cases. The readOne operation will get
+        // ->first() run on it by the firstResult plugin.
+        $links = is_array($linkData) ? $linkData : [$linkData];
 
-            $result = ArrayList::create();
+        $result = ArrayList::create();
 
-            foreach ($links as $link) {
-                $page = SiteTree::get_by_link($link);
-                if ($page) {
-                    $result->push($page);
-                }
+        foreach ($links as $link) {
+            $page = SiteTree::get_by_link($link);
+            if ($page) {
+                $result->push($page);
             }
-            return $result;
-        };
+        }
+        return $result;
     }
 }
