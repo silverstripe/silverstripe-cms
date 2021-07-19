@@ -64,8 +64,8 @@ class LinkablePlugin implements ModelQueryPlugin
             return;
         }
         $singleFieldName = $this->config()->get('field_name');
-        $pluralFieldName = $this->config()->get('list_field_name');
-        $fieldName = $query->isList() ? $pluralFieldName : $singleFieldName;
+        $listFieldName = $this->config()->get('list_field_name');
+        $fieldName = $query->isList() ? $listFieldName : $singleFieldName;
         $type = $query->isList() ? '[String]' : 'String';
         $query->addArg($fieldName, $type);
         $query->addResolverAfterware(
@@ -80,9 +80,9 @@ class LinkablePlugin implements ModelQueryPlugin
     public static function applyLinkFilter($obj, array $args, array $context, ResolveInfo $info)
     {
         $singleFieldName = static::config()->get('field_name');
-        $pluralFieldName = static::config()->get('list_field_name');
-        $filterLink = $args['filter'][$singleFieldName] ?? ($args['filter'][$pluralFieldName] ?? null);
-        $argLink = $args[$singleFieldName] ?? ($args[$pluralFieldName] ?? null);
+        $listFieldName = static::config()->get('list_field_name');
+        $filterLink = $args['filter'][$singleFieldName] ?? ($args['filter'][$listFieldName] ?? null);
+        $argLink = $args[$singleFieldName] ?? ($args[$listFieldName] ?? null);
         $linkData = $filterLink ?: $argLink;
         if (!$linkData) {
             return $obj;
