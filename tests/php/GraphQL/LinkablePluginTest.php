@@ -13,6 +13,15 @@ use SilverStripe\GraphQL\Schema\SchemaConfig;
 
 class LinkablePluginTest extends SapphireTest
 {
+    protected function setUp()
+    {
+        parent::setUp();
+
+        if (!class_exists(Schema::class)) {
+            $this->markTestSkipped('GraphQL 4 test ' . __CLASS__ . ' skipped');
+        }
+    }
+
     /**
      * @param bool $list
      * @dataProvider provideApply
