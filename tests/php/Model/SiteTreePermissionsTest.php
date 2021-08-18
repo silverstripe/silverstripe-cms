@@ -211,7 +211,7 @@ class SiteTreePermissionsTest extends FunctionalTest
             $page->canView(false),
             'Unauthenticated members cant view a page marked as "Viewable for any logged in users"'
         );
-        Security::setCurrentUser(null);
+        $this->logOut();
         $response = $this->get($page->RelativeLink());
         $this->assertEquals(
             $response->getStatusCode(),
@@ -225,14 +225,14 @@ class SiteTreePermissionsTest extends FunctionalTest
             $page->canView($websiteuser),
             'Authenticated members can view a page marked as "Viewable for any logged in users" even if they dont have access to the CMS'
         );
-        Security::setCurrentUser($websiteuser);
+        $this->logInAs($websiteuser);
         $response = $this->get($page->RelativeLink());
         $this->assertEquals(
             $response->getStatusCode(),
             200,
             'Authenticated members can view a page marked as "Viewable for any logged in users" even if they dont have access to the CMS'
         );
-        Security::setCurrentUser(null);
+        $this->logOut();
     }
 
     public function testRestrictedViewOnlyTheseUsers()
@@ -244,7 +244,7 @@ class SiteTreePermissionsTest extends FunctionalTest
             $page->canView(false),
             'Unauthenticated members cant view a page marked as "Viewable by these groups"'
         );
-        Security::setCurrentUser(null);
+        $this->logOut();
         $response = $this->get($page->RelativeLink());
         $this->assertEquals(
             $response->getStatusCode(),
@@ -258,14 +258,14 @@ class SiteTreePermissionsTest extends FunctionalTest
             $page->canView($subadminuser),
             'Authenticated members cant view a page marked as "Viewable by these groups" if theyre not in the listed groups'
         );
-        Security::setCurrentUser($subadminuser);
+        $this->LogInAs($subadminuser);
         $response = $this->get($page->RelativeLink());
         $this->assertEquals(
             $response->getStatusCode(),
             403,
             'Authenticated members cant view a page marked as "Viewable by these groups" if theyre not in the listed groups'
         );
-        Security::setCurrentUser(null);
+        $this->logOut();
 
         // website users
         $websiteuser = $this->objFromFixture(Member::class, 'websiteuser');
@@ -273,14 +273,14 @@ class SiteTreePermissionsTest extends FunctionalTest
             $page->canView($websiteuser),
             'Authenticated members can view a page marked as "Viewable by these groups" if theyre in the listed groups'
         );
-        Security::setCurrentUser($websiteuser);
+        $this->logInAs($websiteuser);
         $response = $this->get($page->RelativeLink());
         $this->assertEquals(
             $response->getStatusCode(),
             200,
             'Authenticated members can view a page marked as "Viewable by these groups" if theyre in the listed groups'
         );
-        Security::setCurrentUser(null);
+        $this->logOut();
     }
 
     public function testRestrictedEditLoggedInUsers()
@@ -344,7 +344,7 @@ class SiteTreePermissionsTest extends FunctionalTest
             $childPage->canView(false),
             'Unauthenticated members cant view a page marked as "Viewable by these groups" by inherited permission'
         );
-        Security::setCurrentUser(null);
+        $this->logOut();
         $response = $this->get($childPage->RelativeLink());
         $this->assertEquals(
             $response->getStatusCode(),
@@ -358,14 +358,14 @@ class SiteTreePermissionsTest extends FunctionalTest
             $childPage->canView($subadminuser),
             'Authenticated members can view a page marked as "Viewable by these groups" if theyre in the listed groups by inherited permission'
         );
-        Security::setCurrentUser($subadminuser);
+        $this->logInAs($subadminuser);
         $response = $this->get($childPage->RelativeLink());
         $this->assertEquals(
             $response->getStatusCode(),
             200,
             'Authenticated members can view a page marked as "Viewable by these groups" if theyre in the listed groups by inherited permission'
         );
-        Security::setCurrentUser(null);
+        $this->logOut();
     }
 
     public function testRestrictedEditInheritance()

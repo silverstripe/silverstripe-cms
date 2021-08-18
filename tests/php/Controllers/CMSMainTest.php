@@ -287,7 +287,7 @@ class CMSMainTest extends FunctionalTest
         $this->assertEquals(403, $response->getStatusCode(), 'Add TopLevel page must fail for normal user');
 
         // with correct permissions
-        Security::setCurrentUser($rootEditUser);
+        $this->logInAs($rootEditUser);
         $response = $this->get('admin/pages/add');
 
         $response = $this->post(
@@ -307,8 +307,7 @@ class CMSMainTest extends FunctionalTest
         $location = $response->getHeader('X-ControllerURL');
         $this->assertNotEmpty($location, 'Must be a redirect on success');
         $this->assertContains('/show/', $location, 'Must redirect to /show/ the new page');
-        // TODO Logout
-        Security::setCurrentUser(null);
+        $this->logOut();
 
         $this->autoFollowRedirection = $origFollow;
     }
@@ -318,8 +317,7 @@ class CMSMainTest extends FunctionalTest
         $origFollow = $this->autoFollowRedirection;
         $this->autoFollowRedirection = false;
 
-        $adminUser = $this->objFromFixture(Member::class, 'admin');
-        Security::setCurrentUser($adminUser);
+        $this->logInAs('admin');
 
         // Create toplevel page
         $this->get('admin/pages/add');
@@ -393,8 +391,7 @@ class CMSMainTest extends FunctionalTest
     {
         $page3 = $this->objFromFixture(Page::class, 'page3');
         $page31 = $this->objFromFixture(Page::class, 'page31');
-        $adminuser = $this->objFromFixture(Member::class, 'admin');
-        Security::setCurrentUser($adminuser);
+        $this->logInAs('admin');
 
         $response = $this->get('admin/pages/edit/show/' . $page31->ID);
         $parser = new CSSContentParser($response->getBody());
