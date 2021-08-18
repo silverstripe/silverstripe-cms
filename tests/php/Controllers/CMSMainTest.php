@@ -125,7 +125,7 @@ class CMSMainTest extends FunctionalTest
     {
         $page1 = $this->objFromFixture(Page::class, "page1");
         $page2 = $this->objFromFixture(Page::class, "page2");
-        $this->session()->set('loggedInAs', $this->idFromFixture(Member::class, 'admin'));
+        $this->logInAs('admin');
 
         $response = $this->get('admin/pages/publishall?confirm=1');
         $this->assertContains(
@@ -147,8 +147,6 @@ class CMSMainTest extends FunctionalTest
         $latestID = DB::prepared_query('select max("Version") from "RedirectorPage_Versions" where "RecordID" = ?', [$pageID])->value();
         $dsCount = DB::prepared_query('select count("Version") from "RedirectorPage_Versions" where "RecordID" = ? and "Version"= ?', [$pageID, $latestID])->value();
         $this->assertEquals(1, $dsCount, "Published page has no duplicate version records: it has " . $dsCount . " for version " . $latestID);
-
-        $this->session()->clear('loggedInAs');
     }
 
     /**
