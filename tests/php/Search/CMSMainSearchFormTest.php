@@ -12,7 +12,7 @@ class CMSMainSearchFormTest extends FunctionalTest
 
     public function testTitleFilter()
     {
-        $this->logInAs($this->idFromFixture(Member::class, 'admin'));
+        $this->logInAs('admin');
 
         $this->get(
             'admin/pages/?' .
