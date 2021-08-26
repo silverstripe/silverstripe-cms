@@ -8,18 +8,18 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
   ss.i18n.addDictionary('fr', {
     "CMS.ALERTCLASSNAME": "La page sera mise à jour après son enregistrement",
     "CMS.AddSubPage": "Ajouter une nouvelle page ici",
-    "CMS.ConfirmRestoreFromLive": "Are you sure you want to revert draft to when the page was last published?",
+    "CMS.ConfirmRestoreFromLive": "Êtes-vous sûr de vouloir rétablir le brouillon à la dernière page publiée ?",
     "CMS.Duplicate": "Dupliquer",
-    "CMS.EditPage": "Editer",
+    "CMS.EditPage": "Éditer",
     "CMS.ONLYSELECTTWO": "Vous ne pouvez comparez que deux versions pour le moment.",
-    "CMS.Restore": "Are you sure you want to restore this page from archive?",
-    "CMS.RestoreToRoot": "Are you sure you want to restore this page from archive?\n\nBecause the parent page is not available this will be restored to the top level.",
+    "CMS.Restore": "Êtes-vous sûr de vouloir rétablir cette page depuis l'archive ?",
+    "CMS.RestoreToRoot": "Êtes-vous sûr de vouloir rétablir cette page depuis l'archive ?\n\nLa page parent n'étant pas disponible, elle sera rétablie à la racine du site.",
     "CMS.RollbackToVersion": "Voulez-vous vraiment retourner à la version #%s de cette page ?",
     "CMS.ShowAsList": "Montrer les enfants en liste",
     "CMS.ThisPageAndSubpages": "Cette page et ses sous-pages",
     "CMS.ThisPageOnly": "Seulement cette page",
-    "CMS.Unpublish": "Are you sure you want to remove your page from the published site?\n\nThis page will still be available in the sitetree as draft.",
-    "CMS.UpdateURL": "Mettre à jour URL",
-    "CMS.ViewPage": "View"
+    "CMS.Unpublish": "Êtes-vous sûr de vouloir retirer votre page du site public ?\n\nCette page sera toujours disponible dans l'arbre du site en tant que brouillon.",
+    "CMS.UpdateURL": "Mettre à jour l'URL",
+    "CMS.ViewPage": "Vue"
 });
 }
