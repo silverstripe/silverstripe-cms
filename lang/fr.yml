@@ -34,6 +34,7 @@ fr:
     NEWPAGE: 'Nouveau {pagetype}'
     PAGENOTEXISTS: 'Cette page n''existe pas'
     PAGES: 'Statut de la page'
+    PAGESALLOPT: 'Toutes les pages'
     PAGETYPEANYOPT: Tous
     PAGETYPEOPT: 'Type de page'
     PAGETYPE_TITLE: '(Type de Page: {type}) {title}'
@@ -55,6 +56,8 @@ fr:
     ROLLEDBACKPUBv2: 'Revenir à la version publiée'
     ROLLEDBACKVERSIONv2: 'Revenir à la version #{version}'
     SAVED: 'Page ''{title}'' sauvegardée avec succès'
+    SAVEDRAFT: Sauvegarder
+    SEARCHRESULTS: 'Résultats de la recherche'
     SHOW_AS_LIST: 'Afficher sous forme de liste'
     TOO_MANY_PAGES: 'Pages trop nombreuses'
     TabContent: Contenu
@@ -75,6 +78,7 @@ fr:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Auteur
     COMPAREMODE: 'Comparer (en choisir deux)'
+    COMPARINGVERSION: 'Comparaison des versions {version1} et {version2}.'
     MENUTITLE: Historique
     MULTISELECT: 'Actions groupées'
     NOTPUBLISHED: 'Non publié'
@@ -127,7 +131,7 @@ fr:
     PUBLISHED: Publié
     PUBLISHEDSITE: 'Site Publié'
     Password: 'Mot de passe'
-    PostInstallTutorialIntro: 'Ceci est un site Silverstripe minimaliste. Pour le déployer, veuillez regarder {link}.'
+    PostInstallTutorialIntro: 'Ceci est un site Silverstripe 3 minimaliste. Pour le déployer, veuillez regarder {link}.'
     StartEditing: 'Vous pouvez commencer à créer ou modifier du contenu en accédant au <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Impossible de supprimer les fichiers d''installation. Merci de supprimer manuellement les fichiers suivants :'
     VIEWPAGEIN: 'Voir la page dans :'
@@ -142,6 +146,7 @@ fr:
     SELECT_PAGE: 'Choisir une page'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Annuler
+    EMPTY: 'Entrez un segment d''URL ou cliquez sur annuler'
     Edit: Editer
     HelpChars: 'Les caractères spéciaux sont automatiquement convertis ou supprimés.'
     OK: OK
@@ -175,6 +180,7 @@ fr:
     BUTTONDELETEDESC: 'Retirer du site public/brouillon et archiver'
     BUTTONPUBLISHED: Publié
     BUTTONSAVED: Sauvegardé
+    BUTTONSAVEPUBLISH: Publier
     BUTTONUNPUBLISH: 'Retirer du site publié'
     BUTTONUNPUBLISHDESC: Dépublier
     Comments: Commentaires
@@ -237,8 +243,11 @@ fr:
     SHOWINSEARCH: 'Afficher dans les recherches ?'
     SINGULARNAME: Page
     TABBEHAVIOUR: Comportement
+    TABCONTENT: 'Contenu principal'
     TABDEPENDENT: 'Pages dépendantes'
     TOPLEVEL: 'Contenu du Site ( Premier Niveau )'
+    UNTITLED: 'Sans titre {pagetype}'
+    URLSegment: 'Segment d''URL'
     VIEWERGROUPS: 'Groupes de Visualisation'
     VIEWER_GROUPS_FIELD_DESC: 'Groupes avec des autorisations globales de visualisation: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Voir toutes les pages'
@@ -306,6 +315,7 @@ fr:
     ParameterLiveCheckbox: 'Consulter le site public'
   SilverStripe\CMS\Reports\EmptyPagesReport:
     ContentGroupTitle: 'Rapports sur le contenu'
+    EMPTYPAGES: 'Pages sans contenu'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'Rapports sur le contenu'
     LAST2WEEKS: 'Pages modifiées les 2 dernières semaines'
@@ -326,4 +336,4 @@ fr:
     NONEREMOVED: 'Aucune page retirée'
     OPERATION_REMOVE: 'Retirer toutes les versions des pages sélectionnées (avertissement: seront supprimés à la fois l''historique et la version publique des pages sélectionnées)'
     SELECTALL: 'tout sélectionner'
-    UNSELECTALL: 'tout déselectionner'
+    UNSELECTALL: 'tout désélectionner'

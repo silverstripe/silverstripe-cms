@@ -84,7 +84,6 @@ en:
     MULTISELECT: 'Batch actions'
     NOTPUBLISHED: 'Not published'
     NO_PREVIEW: 'No preview available'
-    PREVIEW: 'Website preview'
     PUBLISHER: Publisher
     REVERTTOTHISVERSION: 'Revert to this version'
     SHOWUNPUBLISHED: 'Show unpublished versions'
@@ -156,10 +155,10 @@ en:
     DESCRIPTION: 'Redirects to an internal page or an external URL'
     HEADER: 'This page will redirect users to another page'
     OTHERURL: 'Other website URL'
-    PLURALNAME: 'Redirector Pages'
+    PLURALNAME: 'Base Pages'
     PLURALS:
       one: 'A Redirector Page'
-      other: '{count} Redirector Pages'
+      other: '{count} Base Pages'
     REDIRECTTO: 'Redirect to'
     REDIRECTTOEXTERNAL: 'Another website'
     REDIRECTTOPAGE: 'A page on your website'
@@ -286,10 +285,10 @@ en:
     EditLink: edit
     HEADER: 'This is a virtual page'
     HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
-    PLURALNAME: 'Virtual Pages'
+    PLURALNAME: 'Base Pages'
     PLURALS:
       one: 'A Virtual Page'
-      other: '{count} Virtual Pages'
+      other: '{count} Base Pages'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtual Page'
   SilverStripe\CMS\Reports\BrokenFilesReport:
