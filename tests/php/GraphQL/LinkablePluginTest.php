@@ -52,12 +52,43 @@ class LinkablePluginTest extends SapphireTest
         $page->write();
         $page->publishRecursive();
 
+        $page = SiteTree::create([
+            'Title' => 'Other test page',
+            'URLSegment' => 'other-test-page',
+            'ParentID' => 0,
+        ]);
+
+        $page->write();
+        $page->publishRecursive();
+
         $result = LinkablePlugin::applyLinkFilter('test', ['link' => 'test-page'], [], new FakeResolveInfo());
         $this->assertTrue($result->exists());
         $this->assertEquals('Test page', $result->first()->Title);
 
         $result = LinkablePlugin::applyLinkFilter('test', ['links' => ['test-page']], [], new FakeResolveInfo());
         $this->assertTrue($result->exists());
+        $this->assertEquals('Test page', $result->first()->Title);
+
+        $result = LinkablePlugin::applyLinkFilter(
+            'test',
+            ['links' => ['test-page', 'other-test-page']],
+            [],
+            new FakeResolveInfo()
+        );
+        $this->assertTrue($result->exists());
+        $this->assertCount(2, $result);
+        $titles = $result->column('Title');
+        $this->assertTrue(in_array('Test page', $titles));
+        $this->assertTrue(in_array('Other test page', $titles));
+
+        $result = LinkablePlugin::applyLinkFilter(
+            'test',
+            ['links' => ['test-page', 'fail-page']],
+            [],
+            new FakeResolveInfo()
+        );
+        $this->assertTrue($result->exists());
+        $this->assertCount(1, $result);
         $this->assertEquals('Test page', $result->first()->Title);
 
         $result = LinkablePlugin::applyLinkFilter('test', ['link' => 'fail-page'], [], new FakeResolveInfo());

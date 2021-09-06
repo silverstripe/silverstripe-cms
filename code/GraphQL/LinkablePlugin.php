@@ -30,7 +30,7 @@ class LinkablePlugin implements ModelQueryPlugin
      * @var string
      * @config
      */
-    private static $field_name = 'link';
+    private static $single_field_name = 'link';
 
     /**
      * @var string
@@ -63,7 +63,7 @@ class LinkablePlugin implements ModelQueryPlugin
         if ($class !== SiteTree::class && !is_subclass_of($class, SiteTree::class)) {
             return;
         }
-        $singleFieldName = $this->config()->get('field_name');
+        $singleFieldName = $this->config()->get('single_field_name');
         $listFieldName = $this->config()->get('list_field_name');
         $fieldName = $query->isList() ? $listFieldName : $singleFieldName;
         $type = $query->isList() ? '[String]' : 'String';
@@ -79,7 +79,7 @@ class LinkablePlugin implements ModelQueryPlugin
      */
     public static function applyLinkFilter($obj, array $args, array $context, ResolveInfo $info)
     {
-        $singleFieldName = static::config()->get('field_name');
+        $singleFieldName = static::config()->get('single_field_name');
         $listFieldName = static::config()->get('list_field_name');
         $filterLink = $args['filter'][$singleFieldName] ?? ($args['filter'][$listFieldName] ?? null);
         $argLink = $args[$singleFieldName] ?? ($args[$listFieldName] ?? null);
