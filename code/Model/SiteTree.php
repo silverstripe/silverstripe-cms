@@ -415,9 +415,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $urlSegmentExpr = sprintf('"%s"."URLSegment"', $tableName);
         $parentIDExpr = sprintf('"%s"."ParentID"', $tableName);
 
-        if (trim($link, '/')) {
-            $link = trim(Director::makeRelative($link), '/');
-        } else {
+        $link = trim(Director::makeRelative($link), '/');
+        if (!$link) {
             $link = RootURLController::get_homepage_link();
         }
 
