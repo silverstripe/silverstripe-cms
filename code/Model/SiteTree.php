@@ -3294,13 +3294,12 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $matches
         );
 
-        if (!$parseSuccess) {
-            return [];
+        $anchors = [];
+        if ($parseSuccess >= 1) {
+            $anchors = array_values(array_unique(array_filter(
+                array_merge($matches[3], $matches[5])
+            )));
         }
-
-        $anchors = array_values(array_unique(array_filter(
-            array_merge($matches[3], $matches[5])
-        )));
 
         $this->extend('updateAnchorsOnPage', $anchors);
 
