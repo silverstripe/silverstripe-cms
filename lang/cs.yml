@@ -75,7 +75,6 @@ cs:
     MENUTITLE: Historie
     MULTISELECT: 'Dávkové akce'
     NOTPUBLISHED: Nezveřejněno
-    PREVIEW: 'Náhled webu'
     PUBLISHER: Vydavatel
     REVERTTOTHISVERSION: 'Zpět na tuto verzi'
     SHOWUNPUBLISHED: 'Zobrazit nezveřejněné verze'
@@ -137,7 +136,6 @@ cs:
     DESCRIPTION: 'Přesměruje na interní stránku nebo na externí URL'
     HEADER: 'Tato stránka přesměruje uživatele na jinou stránku'
     OTHERURL: 'Jiná web adresa'
-    PLURALNAME: 'Přesměrovací stránky'
     REDIRECTTO: 'Přesměrovat na'
     REDIRECTTOEXTERNAL: 'Jiná web stránka'
     REDIRECTTOPAGE: 'Stránka na vašem webu'
@@ -242,7 +240,6 @@ cs:
     EditLink: editovat
     HEADER: 'Toto je virtuální stránka'
     HEADERWITHLINK: 'Toto je virtuální stránka, kopíruje se obsah z "{title}" ({link})'
-    PLURALNAME: 'Virtuální stránky'
     PageTypNotAllowedOnRoot: 'Původní stránka typu "{type}" není povolena na nejvyšší úrovni pro tuto virtuální stránku'
     SINGULARNAME: 'Virtuální stránka'
   SilverStripe\CMS\Reports\BrokenFilesReport:

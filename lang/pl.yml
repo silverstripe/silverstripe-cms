@@ -78,7 +78,6 @@ pl:
     MENUTITLE: Historia
     MULTISELECT: 'Operacje hurtem'
     NOTPUBLISHED: Nieopublikowano
-    PREVIEW: 'Podgląd strony'
     PUBLISHER: Edytor
     REVERTTOTHISVERSION: 'Wróć do tej wersji'
     SHOWUNPUBLISHED: 'Pokaż nieopublikowane wersje'
@@ -149,12 +148,6 @@ pl:
     DESCRIPTION: 'Przekierowuje do wskazanej wewnętrznej strony'
     HEADER: 'Ta strona przeniesie użytkowników na inną stronę'
     OTHERURL: 'Adres URL innej strony'
-    PLURALNAME: 'Strony przekierowujące'
-    PLURALS:
-      one: 'Strona przekierowująca'
-      few: 'Stron przekierowujących {count}'
-      many: 'Stron przekierowujących {count}'
-      other: 'Stron przekierowujących {count}'
     REDIRECTTO: 'Przenieś do'
     REDIRECTTOEXTERNAL: 'Inna strona'
     REDIRECTTOPAGE: 'Strona na Twojej witrynie'
@@ -268,12 +261,6 @@ pl:
     EditLink: edytuj
     HEADER: 'To jest wirtualna strona'
     HEADERWITHLINK: "Strona wirtualna odzwierciedlająca treść\_\"{title}\" ({link})"
-    PLURALNAME: 'Strony wirtualne'
-    PLURALS:
-      one: 'Strona wirtualna'
-      few: 'Stron wirtualnych {count}'
-      many: 'Stron wirtualnych {count}'
-      other: 'Stron wirtualnych {count}'
     PageTypNotAllowedOnRoot: '"{type}" nie jest dozwolona dla głównego poziomu wirtualnej strony'
     SINGULARNAME: 'Wirtualna Strona'
   SilverStripe\CMS\Reports\BrokenFilesReport:

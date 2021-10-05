@@ -81,7 +81,6 @@ fi_FI:
     MENUTITLE: Historia
     MULTISELECT: Sarjatehtävät
     NOTPUBLISHED: Julkaisematon
-    PREVIEW: 'Sivuston esikatselu'
     PUBLISHER: Julkaisija
     REVERTTOTHISVERSION: 'Palaa tähän versioon'
     SHOWUNPUBLISHED: 'Näytä julkaisemattomat versiot'
@@ -152,10 +151,6 @@ fi_FI:
     DESCRIPTION: 'Edelleenohjaa toiselle sisäiselle sivulle tai ulkoiseen URL-osoitteeseen'
     HEADER: 'Tämä sivu ohjaa käyttäjän toiselle sivulle'
     OTHERURL: 'Toisen verkkosivuston URL-osoite'
-    PLURALNAME: 'Uudelleenohjaavat sivut'
-    PLURALS:
-      one: 'Uudelleenohjaava sivu'
-      other: '{count} Uudelleenohjaavaa sivua'
     REDIRECTTO: 'Minne ohjataan?'
     REDIRECTTOEXTERNAL: 'Muu verkkosivusto'
     REDIRECTTOPAGE: 'Sivu verkkosivustollasi'
@@ -277,10 +272,6 @@ fi_FI:
     EditLink: muokkaa
     HEADER: 'Tämä on virtuaalisivu'
     HEADERWITHLINK: 'Tämä on virtuaalisivu, joka kopioi sisällön kohteesta "{title}" ({link})'
-    PLURALNAME: Virtuaalisivut
-    PLURALS:
-      one: 'Virtuaali sivu'
-      other: '{count} Virtuaali sivua'
     PageTypNotAllowedOnRoot: 'Alkuperäinen sivutyyppi "{type}" ei ole sallittu tämän virtuaalisen sivun päätasolla'
     SINGULARNAME: Virtuaalisivu
   SilverStripe\CMS\Reports\BrokenFilesReport:

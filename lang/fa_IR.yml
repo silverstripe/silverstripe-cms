@@ -90,7 +90,6 @@ fa_IR:
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'این صفحه کاربران را به صفحه‌ای دیگر هدایت می‌کند'
     OTHERURL: 'نشانی تارگاه دیگر'
-    PLURALNAME: 'صفحات هدایت‌گر'
     REDIRECTTO: 'بازگردانی به'
     REDIRECTTOEXTERNAL: 'یک تارگاه دیگر'
     REDIRECTTOPAGE: 'یک برگ روی تارگاه شما'
@@ -175,7 +174,6 @@ fa_IR:
     DESCRIPTION: 'نمایش‌دهنده‌ی محتوای صفحه‌ی دیگر'
     EditLink: ویرایش
     HEADER: 'این یک صفحه مجازی است'
-    PLURALNAME: 'صفحات مجازی'
     SINGULARNAME: 'صفحه مجازی'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: هر

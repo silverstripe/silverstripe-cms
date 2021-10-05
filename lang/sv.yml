@@ -78,7 +78,6 @@ sv:
     MENUTITLE: Historia
     MULTISELECT: Åtgärder
     NOTPUBLISHED: 'Ej publicerad'
-    PREVIEW: 'Förhandsgranska sida'
     PUBLISHER: 'Publicerad av'
     REVERTTOTHISVERSION: 'Ändra till denna version'
     SHOWUNPUBLISHED: 'Visa opublicerade versioner'
@@ -149,10 +148,6 @@ sv:
     DESCRIPTION: 'Omdirigerar till en annan intern eller extern sida'
     HEADER: 'Den här sidan omdirigerar användare till en annan sida'
     OTHERURL: 'Andra sidans URL'
-    PLURALNAME: 'Omdirigerings sidor'
-    PLURALS:
-      one: 'En omdirigeringssida'
-      other: '{count} omdirigerings-sidor'
     REDIRECTTO: 'Omdirigera till'
     REDIRECTTOEXTERNAL: 'En annan sajt'
     REDIRECTTOPAGE: 'En sida på din sajt'
@@ -264,10 +259,6 @@ sv:
     EditLink: redigera
     HEADER: 'Det här är en virutell sida'
     HEADERWITHLINK: 'Det här är en virtuell sida som kopierar innehållet från "{title}" ({link})'
-    PLURALNAME: 'Virtuella sidor'
-    PLURALS:
-      one: 'En virtuell sida'
-      other: '{count} Virtuella sidor'
     PageTypNotAllowedOnRoot: 'Ursprungliga sidan av typ "{type}" tillåts inte på rotnivå för denna virtuella sida'
     SINGULARNAME: 'Virtuell sida'
   SilverStripe\CMS\Reports\BrokenFilesReport:

@@ -67,7 +67,6 @@ hr:
     COMPAREMODE: 'Način usporedbe (odaberi dva)'
     MENUTITLE: Povijest
     NOTPUBLISHED: 'Nije objavljeno'
-    PREVIEW: 'Pregled web stranice'
     PUBLISHER: Izdavač
     REVERTTOTHISVERSION: 'Vrati na ovu verziju'
     SHOWUNPUBLISHED: 'Prikaži neobjavljene verzije'
@@ -128,7 +127,6 @@ hr:
     DESCRIPTION: 'Preusmjerava na internu stranicu ili vanjski URL'
     HEADER: 'Ova stranica preusmjeriti će korisnike na drugu stranicu'
     OTHERURL: 'URL drugog weba'
-    PLURALNAME: 'Preusmjeravajuće stranice'
     REDIRECTTO: 'Preusmjeri na'
     REDIRECTTOEXTERNAL: 'Drugi web'
     REDIRECTTOPAGE: 'Stranicu na Vašom webu'
@@ -225,7 +223,6 @@ hr:
     EditLink: uredi
     HEADER: 'Ovo je virtualna stranica'
     HEADERWITHLINK: 'Ova virtualna stranica kopira sadržaj sa  "{title}" ({link})'
-    PLURALNAME: 'Virtualne stranice'
     PageTypNotAllowedOnRoot: 'Originalni tip stranice  "{type}" nije dozvoljen na prvom nivu ove virtualne stranice'
     SINGULARNAME: 'Virtualna stranica'
   SilverStripe\CMS\Reports\BrokenFilesReport:

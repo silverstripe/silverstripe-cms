@@ -77,7 +77,6 @@ es_MX:
     MENUTITLE: Historial
     MULTISELECT: 'Acciones en lote'
     NOTPUBLISHED: 'No publicada'
-    PREVIEW: 'Vista previa del sitio'
     REVERTTOTHISVERSION: 'Revertir a esta versión'
     SHOWUNPUBLISHED: 'Mostrar versiones no publicadas'
     UNKNOWN: Desconocido
@@ -145,10 +144,6 @@ es_MX:
     DESCRIPTION: 'Redirecciona a una página interna o a una URL externa'
     HEADER: 'Esta página dirigirá al usuarios a otra página'
     OTHERURL: 'Otro URL del sitio web'
-    PLURALNAME: 'Páginas de redirección'
-    PLURALS:
-      one: 'Una Página de Redirección'
-      other: '{count} Páginas de Redirección'
     REDIRECTTO: 'Redirigir a'
     REDIRECTTOEXTERNAL: 'Otro sitio web'
     REDIRECTTOPAGE: 'Una página en tu sitio web'
@@ -231,10 +226,6 @@ es_MX:
     DESCRIPTION: 'Muestra el contenido de otra página'
     EditLink: editar
     HEADER: 'Esta es una página virtual'
-    PLURALNAME: 'Páginas Virtuales'
-    PLURALS:
-      one: 'Una Página Virtual'
-      other: '{count} Páginas Virtuales'
     SINGULARNAME: 'Página Virtual'
   SilverStripe\CMS\Reports\BrokenFilesReport:
     BROKENFILES: 'Páginas con archivos rotos'

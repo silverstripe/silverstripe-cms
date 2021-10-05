@@ -77,7 +77,6 @@ ru:
     MENUTITLE: История
     MULTISELECT: Действия
     NOTPUBLISHED: 'Не опубликовано'
-    PREVIEW: 'Предварительный просмотр сайта'
     PUBLISHER: Издатель
     REVERTTOTHISVERSION: 'Вернуться на эту версию'
     SHOWUNPUBLISHED: 'Показать неопубликованные версии'
@@ -146,12 +145,6 @@ ru:
     DESCRIPTION: 'Перенаправление на другую внутреннюю или внешнюю страницу'
     HEADER: 'Эта страница будет перенаправлять пользователей на другую страницу'
     OTHERURL: 'URL другого сайта'
-    PLURALNAME: 'Страницы перенаправления'
-    PLURALS:
-      one: 'Страница перенаправления'
-      few: '{count} страницы перенаправления'
-      many: '{count} страниц перенаправления'
-      other: '{count} страниц перенаправления'
     REDIRECTTO: 'Перенаправлять на'
     REDIRECTTOEXTERNAL: 'Другой сайт'
     REDIRECTTOPAGE: 'Страницу вашего сайта'
@@ -263,12 +256,6 @@ ru:
     EditLink: редактировать
     HEADER: 'Это виртуальная страница'
     HEADERWITHLINK: 'Это виртуальная страница, копирующая содержимое из "{title}" ({link})'
-    PLURALNAME: 'Виртуальные Страницы'
-    PLURALS:
-      one: 'Виртуальная страница'
-      few: '{count} виртуальные страницы'
-      many: '{count} виртуальных страниц'
-      other: '{count} виртуальных страниц'
     PageTypNotAllowedOnRoot: 'Страницы типа "{type}" недопустимы в качестве корневых для этой виртуальной страницы'
     SINGULARNAME: 'Виртуальная Страница'
   SilverStripe\CMS\Reports\BrokenFilesReport:

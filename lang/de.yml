@@ -79,10 +79,11 @@ de:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Vergleichsmodus (wähle zwei)'
+    COMPARINGVERSION: 'Vergleiche Versionen  {version1} und {version2}.'
     MENUTITLE: Historie
     MULTISELECT: Massenaktionen
     NOTPUBLISHED: 'Nicht veröffentlicht'
-    PREVIEW: 'Vorschau der Webseite'
+    NO_PREVIEW: 'Keine Vorschau verfügbar'
     PUBLISHER: Herausgeber
     REVERTTOTHISVERSION: 'Zurück zu dieser Version'
     SHOWUNPUBLISHED: 'Zeige unveröffentlichte Versionen'
@@ -154,10 +155,6 @@ de:
     DESCRIPTION: 'Leitet zu einer anderen internen oder externen Seite weiter'
     HEADER: 'Diese Seite wird Nutzer auf eine andere Seite weiterleiten'
     OTHERURL: 'Andere Webseiten URL'
-    PLURALNAME: Weiterleitungsseiten
-    PLURALS:
-      one: 'Eine Weiterleitungsseite'
-      other: '{count} Weiterleitungsseiten'
     REDIRECTTO: 'Weiterleiten zu'
     REDIRECTTOEXTERNAL: 'Andere Website'
     REDIRECTTOPAGE: 'Eine Seite auf Ihrer Website'
@@ -283,10 +280,6 @@ de:
     EditLink: Bearbeiten
     HEADER: 'Dies ist eine virtuelle Seite'
     HEADERWITHLINK: 'Dies ist eine virtuelle Seite, die den Inhalt von "{title}" ({link}) kopiert'
-    PLURALNAME: 'Virtuelle Seiten'
-    PLURALS:
-      one: 'Eine Virtuelle Seite'
-      other: '{count} Virtuelle Seiten'
     PageTypNotAllowedOnRoot: 'Der ursprüngliche Seitentyp "{type}" ist nicht zulässig für diese virtuelle Seite. '
     SINGULARNAME: 'Virtuelle Seite'
   SilverStripe\CMS\Reports\BrokenFilesReport:

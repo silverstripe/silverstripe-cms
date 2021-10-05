@@ -76,7 +76,6 @@ bg:
     MENUTITLE: История
     MULTISELECT: 'Групови действия'
     NOTPUBLISHED: Непубликувани
-    PREVIEW: 'Преглед на сайта'
     PUBLISHER: 'Публикувана от'
     REVERTTOTHISVERSION: 'Върни към тази версия'
     SHOWUNPUBLISHED: 'Покажи непублекуваната версия'
@@ -146,10 +145,6 @@ bg:
     DESCRIPTION: 'Пренасочва към страница от сайта или външен URL адрес'
     HEADER: 'Тази страница ще пренасочи потребители към друга страница'
     OTHERURL: 'Друг уебсайт URL'
-    PLURALNAME: 'Пренасочващи страници'
-    PLURALS:
-      one: 'Пренасочваща страница'
-      other: '{count} пренасочващи страници'
     REDIRECTTO: 'Пренасочи към'
     REDIRECTTOEXTERNAL: 'Друг уебсайт'
     REDIRECTTOPAGE: 'Страница на вашият уебсайт'
@@ -260,10 +255,6 @@ bg:
     EditLink: промени
     HEADER: 'Това е виртуална страница'
     HEADERWITHLINK: 'Виртуална страница, копираща съдържанието на "{title}" ({link})'
-    PLURALNAME: 'Виртуални страници'
-    PLURALS:
-      one: 'Виртуална страница'
-      other: '{count} Виртуални страници'
     SINGULARNAME: 'Виртуална страница'
   SilverStripe\CMS\Reports\BrokenFilesReport:
     BROKENFILES: 'Страници, съдържащи линк/ове към несъществуващи файлове'

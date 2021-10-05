@@ -82,7 +82,6 @@ fr:
     MENUTITLE: Historique
     MULTISELECT: 'Actions groupées'
     NOTPUBLISHED: 'Non publié'
-    PREVIEW: 'Aperçu du site'
     PUBLISHER: Éditeur
     REVERTTOTHISVERSION: 'Revenir à cette version'
     SHOWUNPUBLISHED: 'Afficher les versions non publiées'
@@ -154,10 +153,6 @@ fr:
     DESCRIPTION: 'Redirige vers une page interne ou une URL externe'
     HEADER: 'Cette page va rediriger les utilisateurs vers une autre page'
     OTHERURL: 'URL d''un autre site web'
-    PLURALNAME: 'Pages de redirection'
-    PLURALS:
-      one: 'Une page de redirection'
-      other: '{count} pages de redirection'
     REDIRECTTO: 'Rediriger vers'
     REDIRECTTOEXTERNAL: 'Autre site web'
     REDIRECTTOPAGE: 'Une page de votre site web'
@@ -273,10 +268,6 @@ fr:
     EditLink: éditer
     HEADER: 'Ceci est une page virtuelle'
     HEADERWITHLINK: 'Ceci est une page virtuelle dupliquant le contenu de "{title}" ({link})'
-    PLURALNAME: 'Page virtuelles'
-    PLURALS:
-      one: 'Une page virtuelle'
-      other: '{count} pages virtuelles'
     PageTypNotAllowedOnRoot: "Le type de page d’origine «\_{type}\_» n’est pas autorisé au niveau racine pour cette page virtuelle"
     SINGULARNAME: 'Page virtuelle'
   SilverStripe\CMS\Reports\BrokenFilesReport:

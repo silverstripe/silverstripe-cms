@@ -136,10 +136,6 @@ es:
     DESCRIPTION: 'Redirecciona a una página interna o a una URL externa'
     HEADER: 'Esta página redireccionará a los usuarios a otra página'
     OTHERURL: 'Otra dirección URL de un sitio web'
-    PLURALNAME: 'Páginas de redirección'
-    PLURALS:
-      one: 'Una Página de redirección'
-      other: '{count} Páginas de redirección'
     REDIRECTTO: 'Redireccionar a'
     REDIRECTTOEXTERNAL: 'Otro sitio web'
     REDIRECTTOPAGE: 'Una página en su sitio web'
@@ -247,10 +243,6 @@ es:
     EditLink: Editar
     HEADER: 'Esta es una página virtual'
     HEADERWITHLINK: 'Título con link'
-    PLURALNAME: 'Páginas virtuales'
-    PLURALS:
-      one: 'Una Página Virtuales'
-      other: '{count} Páginas Virtuales'
     PageTypNotAllowedOnRoot: 'Tipo de página original "{type}" no se permite en el nivel raíz para esta página virtual'
     SINGULARNAME: 'Página Virtual'
   SilverStripe\CMS\Reports\BrokenFilesReport:

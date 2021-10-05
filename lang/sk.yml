@@ -75,7 +75,6 @@ sk:
     MENUTITLE: História
     MULTISELECT: 'Dávkové akcie'
     NOTPUBLISHED: Nepublikované
-    PREVIEW: 'Náhľad webu'
     PUBLISHER: Vydavateľ
     REVERTTOTHISVERSION: 'Vrátiť sa k tejto verzii'
     SHOWUNPUBLISHED: 'Zobraziť nepublikované verzie'
@@ -137,7 +136,6 @@ sk:
     DESCRIPTION: 'Presmeruje na internú stránku alebo na externé URL'
     HEADER: 'Táto stránka presmeruje používateľov na inú stránku'
     OTHERURL: 'Iné web URL.'
-    PLURALNAME: 'Presmerovacie stránky'
     REDIRECTTO: 'Presmerovať na'
     REDIRECTTOEXTERNAL: 'Iná web stránka'
     REDIRECTTOPAGE: 'Stránka na vašom webe'
@@ -242,7 +240,6 @@ sk:
     EditLink: editovať
     HEADER: 'Toto je virtuálna stránka'
     HEADERWITHLINK: 'Toto je virtuálna stránka, kopíruje sa obsah z "{title}" ({link})'
-    PLURALNAME: 'Virtuálne stránky'
     PageTypNotAllowedOnRoot: 'Pôvodná stránka typu "{type}" nie je povolená na najvyššej úrovni pre túto virtuálnu stránku'
     SINGULARNAME: 'Virtuálna stránka'
   SilverStripe\CMS\Reports\BrokenFilesReport:

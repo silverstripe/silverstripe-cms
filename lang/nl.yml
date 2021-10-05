@@ -83,7 +83,7 @@ nl:
     MENUTITLE: Geschiedenis
     MULTISELECT: 'Meervoudige acties'
     NOTPUBLISHED: 'Niet gepubliceerd'
-    PREVIEW: 'Website voorbeeld'
+    NO_PREVIEW: 'Geen voorbeeld beschikbaar'
     PUBLISHER: 'Gepubliceerd door'
     REVERTTOTHISVERSION: 'Deze versie terugzetten'
     SHOWUNPUBLISHED: 'Toon nog niet gepubliceerde versies'
@@ -155,10 +155,10 @@ nl:
     DESCRIPTION: 'Stuurt door naar een interne pagina of een externe URL'
     HEADER: 'Deze pagina zal gebruikers naar een andere pagina doorsturen (redirect)'
     OTHERURL: 'Andere website URL'
-    PLURALNAME: 'Verwijzingspagina''s'
+    PLURALNAME: Verwijzingspagina
     PLURALS:
-      one: 'een verwijzingspagina'
-      other: '{count} verwijzingspagina''s'
+      one: Verwijzingspagina
+      other: '{count} Verwijzingspagina''s'
     REDIRECTTO: 'Doorverwijzen naar'
     REDIRECTTOEXTERNAL: 'Een andere website'
     REDIRECTTOPAGE: 'Een pagina op deze website'
@@ -285,10 +285,10 @@ nl:
     EditLink: wijzigen
     HEADER: 'Dit is een virtuele pagina'
     HEADERWITHLINK: 'Dit is een virtuele pagina met de inhoud van "{title}" ({link})'
-    PLURALNAME: 'Virtuele pagina''s'
+    PLURALNAME: 'Virtuele pagina'
     PLURALS:
-      one: 'een virtuele pagina'
-      other: '{count} virtuele pagina''s'
+      one: 'Virtuele pagina'
+      other: '{count} Virtuele pagina''s'
     PageTypNotAllowedOnRoot: 'Voor deze virtuele pagina is het originele paginatype "{type}" niet toegestaan op het hoogste niveau.'
     SINGULARNAME: 'Virtuele pagina'
   SilverStripe\CMS\Reports\BrokenFilesReport:

@@ -83,7 +83,6 @@ da:
     MENUTITLE: Historik
     MULTISELECT: Handlinger
     NOTPUBLISHED: 'Ikke udgivet'
-    PREVIEW: 'Webside preview'
     PUBLISHER: Udgiver
     REVERTTOTHISVERSION: 'Genskab denne version'
     SHOWUNPUBLISHED: 'Vis versioner der ikke er udgivne'
@@ -155,10 +154,6 @@ da:
     DESCRIPTION: 'Omdirigerer til en side eller en ekstern URL'
     HEADER: 'Denne side omdirigerer besøgende til en anden side'
     OTHERURL: 'Andet websteds URL'
-    PLURALNAME: 'Viderestillende side'
-    PLURALS:
-      one: 'En viderestillende side'
-      other: '{count} Viderestillende sider'
     REDIRECTTO: 'Omdiriger til'
     REDIRECTTOEXTERNAL: 'Et andet websted'
     REDIRECTTOPAGE: 'En side på dit websted'
@@ -284,10 +279,6 @@ da:
     EditLink: rediger
     HEADER: 'Dette er en virtuel side'
     HEADERWITHLINK: 'Dette er en virtuel side, der kopierer indhold fra "{title}" ({link})'
-    PLURALNAME: 'Virtuelle sider'
-    PLURALS:
-      one: 'En virtuel side'
-      other: '{count} Virtuelle sider'
     PageTypNotAllowedOnRoot: 'Original side type "{type}" er ikke tilladt på rodniveau for denne virtuelle side'
     SINGULARNAME: 'Virtuel side'
   SilverStripe\CMS\Reports\BrokenFilesReport:

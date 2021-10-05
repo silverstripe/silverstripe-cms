@@ -83,7 +83,6 @@ eo:
     MENUTITLE: Historio
     MULTISELECT: 'Staplaj agoj'
     NOTPUBLISHED: 'Ne publikigita'
-    PREVIEW: 'Antaŭvido de retejo'
     PUBLISHER: Publikiginto
     REVERTTOTHISVERSION: 'Malfari al ĉi tiu versio'
     SHOWUNPUBLISHED: 'Vidigi nepublikigitajn versiojn'
@@ -155,10 +154,6 @@ eo:
     DESCRIPTION: 'Alidirektas al interna paĝo aŭ ekstera URL'
     HEADER: 'Ĉi tiu paĝo redirektos uzantojn al alia paĝo'
     OTHERURL: 'URL de alia retejo'
-    PLURALNAME: 'Paĝoj pri alidirekto'
-    PLURALS:
-      one: 'Unu alidirekta paĝo'
-      other: '{count} alidirektaj paĝoj'
     REDIRECTTO: 'Alidirekti al'
     REDIRECTTOEXTERNAL: 'Alia retejo'
     REDIRECTTOPAGE: 'Paĝo en via retejo'
@@ -285,10 +280,6 @@ eo:
     EditLink: redakti
     HEADER: 'Ĉi tiu estas virtuala paĝo'
     HEADERWITHLINK: 'Ĉi tiu estas virtuala paĝo kopianta enhavon el "{title}" ({link})'
-    PLURALNAME: 'Virtualaj paĝoj'
-    PLURALS:
-      one: 'Unu virtuala paĝo'
-      other: '{count} virtualaj paĝoj'
     PageTypNotAllowedOnRoot: 'Origina paĝa tipo "{type}" ne estas permesita ĉe la root-nivelo por ĉi tiu virtuala paĝo.'
     SINGULARNAME: 'Virtuala paĝo'
   SilverStripe\CMS\Reports\BrokenFilesReport:

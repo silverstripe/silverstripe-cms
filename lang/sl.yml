@@ -83,7 +83,6 @@ sl:
     MENUTITLE: Zgodovina
     MULTISELECT: 'Paketno urejanje'
     NOTPUBLISHED: 'Ni objavljeno'
-    PREVIEW: Predogled
     PUBLISHER: Objavljavec
     REVERTTOTHISVERSION: 'Povrni v to različico'
     SHOWUNPUBLISHED: 'Prikaži neobjavljeno različico'
@@ -155,12 +154,6 @@ sl:
     DESCRIPTION: 'Uporabnik bo preusmerjen na stran s tega spletišča ali na poljuben spletni naslov.'
     HEADER: 'Ta stran bo preusmerila uporabnike na drugo stran'
     OTHERURL: 'URL druge spletne strani'
-    PLURALNAME: 'Preusmeritvene strani'
-    PLURALS:
-      one: 'Preusmeritvena stran'
-      two: '{count} preusmeritvenih strani'
-      few: '{count} preusmeritvenih strani'
-      other: '{count} preusmeritvenih strani'
     REDIRECTTO: 'Preusmeri na'
     REDIRECTTOEXTERNAL: 'Druga spletna stran'
     REDIRECTTOPAGE: 'Stran na tvojem spletnem mestu'
@@ -291,12 +284,6 @@ sl:
     EditLink: uredi
     HEADER: 'To je navidezna stran'
     HEADERWITHLINK: 'To je virtualna stran, ki vsebino črpa iz strani "{title}" ({link})'
-    PLURALNAME: 'Virtualne strani'
-    PLURALS:
-      one: 'Virtualna stran'
-      two: '{count} virtualni strani'
-      few: '{count} virtualnih strani'
-      other: '{count} virtualna stran'
     PageTypNotAllowedOnRoot: 'Tipa izvorne strani ({type}), ki je osnova za to virtualno stran, ni dovoljeno umestiti na korenskem nivoju'
     SINGULARNAME: 'Virtualna stran'
   SilverStripe\CMS\Reports\BrokenFilesReport:
