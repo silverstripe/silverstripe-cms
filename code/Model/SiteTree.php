@@ -1953,47 +1953,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function getCMSFields()
     {
-        // Status / message
-        // Create a status message for multiple parents
-        if ($this->ID && is_numeric($this->ID)) {
-            $linkedPages = $this->VirtualPages();
-
-            $parentPageLinks = [];
-
-            if ($linkedPages->count() > 0) {
-                /** @var VirtualPage $linkedPage */
-                foreach ($linkedPages as $linkedPage) {
-                    $parentPage = $linkedPage->Parent();
-                    if ($parentPage && $parentPage->exists()) {
-                        $link = Convert::raw2att($parentPage->CMSEditLink());
-                        $title = Convert::raw2xml($parentPage->Title);
-                    } else {
-                        $link = CMSPageEditController::singleton()->Link('show');
-                        $title = _t(__CLASS__.'.TOPLEVEL', 'Site Content (Top Level)');
-                    }
-                    $parentPageLinks[] = "<a class=\"cmsEditlink\" href=\"{$link}\">{$title}</a>";
-                }
-
-                $lastParent = array_pop($parentPageLinks);
-                $parentList = "'$lastParent'";
-
-                if (count($parentPageLinks)) {
-                    $parentList = "'" . implode("', '", $parentPageLinks) . "' and "
-                        . $parentList;
-                }
-
-                $statusMessage[] = _t(
-                    'SilverStripe\\CMS\\Model\\SiteTree.APPEARSVIRTUALPAGES',
-                    "This content also appears on the virtual pages in the {title} sections.",
-                    ['title' => $parentList]
-                );
-            }
-        }
-
-        if ($this->HasBrokenLink || $this->HasBrokenFile) {
-            $statusMessage[] = _t(__CLASS__.'.HASBROKENLINKS', "This page has broken links.");
-        }
-
         $dependentNote = '';
         $dependentTable = new LiteralField('DependentNote', '<p></p>');
 
