@@ -68,8 +68,7 @@ class SiteTreeLinkTracking_Parser
                     $broken = true;
                 } elseif (!empty($matches['anchor'])) {
                     // Ensure anchor isn't broken on target page
-                    $anchor = preg_quote($matches['anchor'], '/');
-                    $broken = !preg_match("/(name|id)=\"{$anchor}\"/", $page->Content);
+                    $broken = !in_array($matches['anchor'], $page->getAnchorsOnPage());
                 } else {
                     $broken = false;
                 }
