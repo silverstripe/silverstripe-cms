@@ -18,7 +18,7 @@ class DatabaseSearchEngineTest extends SapphireTest
      */
     protected $usesTransactions = false;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
 

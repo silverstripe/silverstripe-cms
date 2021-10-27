@@ -1,9 +1,9 @@
 <phpunit bootstrap="tests/bootstrap.php" colors="true">
-
-	<testsuite name="Default">
-		<directory>tests</directory>
-	</testsuite>
-
+	<testsuites>
+		<testsuite name="Default">
+			<directory>tests</directory>
+		</testsuite>
+	</testsuites>
 	<filter>
 		<whitelist addUncoveredFilesFromWhitelist="true">
 			<directory suffix=".php">.</directory>

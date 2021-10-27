@@ -32,7 +32,7 @@ class CMSMainTest extends FunctionalTest
 
     protected static $orig = [];
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -128,7 +128,7 @@ class CMSMainTest extends FunctionalTest
         $this->logInAs('admin');
 
         $response = $this->get('admin/pages/publishall?confirm=1');
-        $this->assertContains(
+        $this->assertStringContainsString(
             'Done: Published 30 pages',
             $response->getBody()
         );
@@ -218,7 +218,7 @@ class CMSMainTest extends FunctionalTest
         $this->assertTrue($livePage->canDelete());
 
         // Check that the 'restore' button exists as a simple way of checking that the correct page is returned.
-        $this->assertRegExp('/<button type="submit"[^>]+name="action_(restore|revert)"/i', $response->getBody());
+        $this->assertMatchesRegularExpression('/<button type="submit"[^>]+name="action_(restore|revert)"/i', $response->getBody());
     }
 
     /**
@@ -306,7 +306,7 @@ class CMSMainTest extends FunctionalTest
 
         $location = $response->getHeader('X-ControllerURL');
         $this->assertNotEmpty($location, 'Must be a redirect on success');
-        $this->assertContains('/show/', $location, 'Must redirect to /show/ the new page');
+        $this->assertStringContainsString('/show/', $location, 'Must redirect to /show/ the new page');
         $this->logOut();
 
         $this->autoFollowRedirection = $origFollow;

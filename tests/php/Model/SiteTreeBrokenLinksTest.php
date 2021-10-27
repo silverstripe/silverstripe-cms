@@ -25,7 +25,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         NotPageObject::class,
     ];
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -34,7 +34,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         $this->logInWithPermission('ADMIN');
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         TestAssetStore::reset();
         parent::tearDown();

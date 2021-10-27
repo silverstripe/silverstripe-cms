@@ -14,7 +14,7 @@ class RedirectorPageTest extends FunctionalTest
 
     protected $autoFollowRedirection = false;
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         Director::config()->update('alternate_base_url', 'http://www.mysite.com/');
@@ -42,13 +42,13 @@ class RedirectorPageTest extends FunctionalTest
 
         /* An error message will be shown if you visit it */
         $content = $this->get(Director::makeRelative($page1->Link()))->getBody();
-        $this->assertContains('message-setupWithoutRedirect', $content);
+        $this->assertStringContainsString('message-setupWithoutRedirect', $content);
 
         /* This also applies for internal links */
         $page2 = $this->objFromFixture(RedirectorPage::class, 'badinternal');
         $this->assertEquals('/bad-internal/', $page2->Link());
         $content = $this->get(Director::makeRelative($page2->Link()))->getBody();
-        $this->assertContains('message-setupWithoutRedirect', $content);
+        $this->assertStringContainsString('message-setupWithoutRedirect', $content);
     }
 
     public function testReflexiveAndTransitiveInternalRedirectors()
@@ -57,7 +57,7 @@ class RedirectorPageTest extends FunctionalTest
         $page = $this->objFromFixture(RedirectorPage::class, 'reflexive');
         $this->assertEquals('/reflexive/', $page->Link());
         $content = $this->get(Director::makeRelative($page->Link()))->getBody();
-        $this->assertContains('message-setupWithoutRedirect', $content);
+        $this->assertStringContainsString('message-setupWithoutRedirect', $content);
 
         /* Transitive redirectors are those that point to another redirector page.  They should send people to the URLSegment
          * of the destination page - the middle-stop, so to speak.  That should redirect to the final destination */

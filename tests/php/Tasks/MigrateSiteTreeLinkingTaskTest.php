@@ -14,7 +14,7 @@ class MigrateSiteTreeLinkingTaskTest extends SapphireTest
 
     protected static $use_draft_site = true;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
 
@@ -34,7 +34,7 @@ class MigrateSiteTreeLinkingTaskTest extends SapphireTest
         });
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -59,7 +59,7 @@ class MigrateSiteTreeLinkingTaskTest extends SapphireTest
         DB::quiet(false);
         $task = new MigrateSiteTreeLinkingTask();
         $task->run(null);
-        $this->assertContains(
+        $this->assertStringContainsString(
             "Migrated page links on 5 Pages",
             ob_get_contents(),
             'Rewritten links are correctly reported'

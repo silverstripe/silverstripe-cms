@@ -5,6 +5,7 @@ namespace SilverStripe\CMS\Tests\Behaviour;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Mink\Element\DocumentElement;
 use Behat\Mink\Element\NodeElement;
+use PHPUnit\Framework\Assert;
 use SilverStripe\BehatExtension\Context\BasicContext;
 use SilverStripe\BehatExtension\Context\FixtureContext as BehatFixtureContext;
 use SilverStripe\CMS\Model\RedirectorPage;
@@ -90,7 +91,7 @@ class FixtureContext extends BehatFixtureContext
         $page = $this->getMainContext()->getSession()->getPage();
         $element = $page->find('css', $selector);
 
-        assertNotNull($element, sprintf('Element %s not found', $selector));
+        Assert::assertNotNull($element, sprintf('Element %s not found', $selector));
     }
 
     /**
@@ -109,7 +110,7 @@ class FixtureContext extends BehatFixtureContext
             'radio',
             $this->getMainContext()->getXpathEscaper()->escapeLiteral($radioLabel)
         ]);
-        assertNotNull($radioButton);
-        assertEquals($value, $radioButton->getAttribute($attribute));
+        Assert::assertNotNull($radioButton);
+        Assert::assertEquals($value, $radioButton->getAttribute($attribute));
     }
 }

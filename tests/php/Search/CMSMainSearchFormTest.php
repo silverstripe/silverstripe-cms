@@ -28,7 +28,7 @@ class CMSMainSearchFormTest extends FunctionalTest
         $this->assertEquals(count($titles), 1);
         // For some reason the title gets split into two lines
 
-        $this->assertContains('Page 1', $titles[0]);
+        $this->assertStringContainsString('Page 1', $titles[0]);
     }
 
     protected function getPageTitles()
