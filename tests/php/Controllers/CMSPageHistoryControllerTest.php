@@ -28,7 +28,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
         CMSPageHistoryControllerTest\HistoryController::class,
     ];
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -73,7 +73,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
         $this->assertEquals($this->page->ID, $form->Fields()->dataFieldByName('ID')->Value());
         $this->assertEquals($this->versionPublishCheck2, $form->Fields()->dataFieldByName('Version')->Value());
 
-        $this->assertContains(
+        $this->assertStringContainsString(
             'Currently viewing the latest version',
             $form->Fields()->fieldByName('Root.Main.CurrentlyViewingMessage')->getContent()
         );
@@ -84,19 +84,19 @@ class CMSPageHistoryControllerTest extends FunctionalTest
 
         $this->assertEquals($this->page->ID, $form->Fields()->dataFieldByName('ID')->Value());
         $this->assertEquals($this->versionPublishCheck, $form->Fields()->dataFieldByName('Version')->Value());
-        $this->assertContains(
+        $this->assertStringContainsString(
             sprintf("Currently viewing version %s.", $this->versionPublishCheck),
             $form->Fields()->fieldByName('Root.Main.CurrentlyViewingMessage')->getContent()
         );
 
         // check that compare mode updates the message
         $form = $controller->getEditForm($this->page->ID, null, $this->versionPublishCheck, $this->versionPublishCheck2);
-        $this->assertContains(
+        $this->assertStringContainsString(
             sprintf("Comparing versions %s", $this->versionPublishCheck),
             $form->Fields()->fieldByName('Root.Main.CurrentlyViewingMessage')->getContent()
         );
 
-        $this->assertContains(
+        $this->assertStringContainsString(
             sprintf("and %s", $this->versionPublishCheck2),
             $form->Fields()->fieldByName('Root.Main.CurrentlyViewingMessage')->getContent()
         );
@@ -142,12 +142,12 @@ class CMSPageHistoryControllerTest extends FunctionalTest
         $i = 0;
         foreach ($rows as $tr) {
             // data-link must be present for the javascript to load new
-            $this->assertContains($expected[$i]['status'], (string) $tr->attributes()->class);
+            $this->assertStringContainsString($expected[$i]['status'], (string) $tr->attributes()->class);
             $i++;
         }
 
         // test highlighting
-        $this->assertContains('active', (string) $rows[0]->attributes()->class);
+        $this->assertStringContainsString('active', (string) $rows[0]->attributes()->class);
         $this->assertThat((string) $rows[1]->attributes()->class, $this->logicalNot($this->stringContains('active')));
     }
 
@@ -157,7 +157,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
         $checkbox = $this->cssParser()->getBySelector('#Form_VersionsForm_ShowUnpublished');
 
         $this->assertThat($checkbox[0], $this->logicalNot($this->isNull()));
-        $checked = $checkbox[0]->attributes()->checked;
+        $checked = $checkbox[0]->attributes()->checked ?: '';
 
         $this->assertThat($checked, $this->logicalNot($this->stringContains('checked')));
 
@@ -187,7 +187,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
 
         $field = $newList->dataFieldByName('field');
         $this->assertTrue($field instanceof HTMLReadonlyField);
-        $this->assertContains('<ins>', $field->forTemplate());
+        $this->assertStringContainsString('<ins>', $field->forTemplate());
 
         $groupField = $newList->fieldByName('group');
         $this->assertTrue($groupField instanceof FieldGroup);

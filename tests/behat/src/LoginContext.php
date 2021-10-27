@@ -3,6 +3,7 @@
 namespace SilverStripe\CMS\Tests\Behaviour;
 
 use Page;
+use PHPUnit\Framework\Assert;
 use SilverStripe\BehatExtension\Context\LoginContext as BehatLoginContext;
 
 class LoginContext extends BehatLoginContext
@@ -20,16 +21,16 @@ class LoginContext extends BehatLoginContext
     {
         // Reset permission cache
         $page = Page::get()->First();
-        assertNotNull($page, 'A page exists');
+        Assert::assertNotNull($page, 'A page exists');
         $email = "{$permCode}@example.org";
         $password = 'Password!456';
         $member = $this->generateMemberWithPermission($email, $password, $permCode);
         $canEdit = strstr($negative, 'not') ? false : true;
 
         if ($canEdit) {
-            assertTrue($page->canEdit($member), 'The member can edit this page');
+            Assert::assertTrue($page->canEdit($member), 'The member can edit this page');
         } else {
-            assertFalse($page->canEdit($member), 'The member cannot edit this page');
+            Assert::assertFalse($page->canEdit($member), 'The member cannot edit this page');
         }
     }
 }

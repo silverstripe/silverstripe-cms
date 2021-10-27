@@ -25,7 +25,7 @@ class SiteTreePermissionsTest extends FunctionalTest
         SiteTree::class => [SiteTreeSubsites::class],
     ];
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -63,7 +63,7 @@ class SiteTreePermissionsTest extends FunctionalTest
             $response = $responseException->getResponse();
         }
         $this->assertEquals($response->getStatusCode(), '302');
-        $this->assertContains(
+        $this->assertStringContainsString(
             Security::config()->get('login_url'),
             $response->getHeader('Location')
         );

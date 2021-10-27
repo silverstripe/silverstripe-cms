@@ -39,7 +39,7 @@ class ContentControllerPermissionsTest extends FunctionalTest
         }
         // should redirect to login
         $this->assertEquals($response->getStatusCode(), 302, 'Redirects to login page when not logged in for draft stage');
-        $this->assertContains(
+        $this->assertStringContainsString(
             Config::inst()->get('SilverStripe\\Security\\Security', 'login_url'),
             $response->getHeader('Location')
         );

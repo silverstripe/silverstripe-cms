@@ -11,7 +11,7 @@ use SilverStripe\View\Parsers\HTMLValue;
 class SiteTreeLinkTrackingTest extends SapphireTest
 {
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         Director::config()->set('alternate_base_url', 'http://www.mysite.com/');

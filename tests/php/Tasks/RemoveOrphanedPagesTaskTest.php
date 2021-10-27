@@ -38,7 +38,7 @@ class RemoveOrphanedPagesTaskTest extends FunctionalTest
 {
     protected static $fixture_file = 'RemoveOrphanedPagesTaskTest.yml';
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 

@@ -57,7 +57,7 @@ class ZZZSearchFormTest extends FunctionalTest
         }
     }
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         // HACK Postgres doesn't refresh TSearch indexes when the schema changes after CREATE TABLE
         // MySQL will need a different table type
@@ -69,7 +69,7 @@ class ZZZSearchFormTest extends FunctionalTest
         parent::setUpBeforeClass();
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -110,7 +110,7 @@ class ZZZSearchFormTest extends FunctionalTest
 
         $sf->setTemplate('BlankPage');
 
-        $this->assertContains(
+        $this->assertStringContainsString(
             '<body class="SearchForm Form BlankPage">',
             $sf->forTemplate()
         );

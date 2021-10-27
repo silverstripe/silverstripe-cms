@@ -26,7 +26,7 @@ class SiteTreeBacklinksTest extends SapphireTest
         SiteTreeBacklinksTestContentObject::class,
     ];
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -286,6 +286,6 @@ class SiteTreeBacklinksTest extends SapphireTest
 
         $content = $gridField->getColumnContent($list->first(), 'Title');
 
-        $this->assertContains('Untitled Backlink test content object', $content);
+        $this->assertStringContainsString('Untitled Backlink test content object', $content);
     }
 }
