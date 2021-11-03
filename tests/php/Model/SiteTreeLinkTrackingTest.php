@@ -3,6 +3,7 @@
 namespace SilverStripe\CMS\Tests\Model;
 
 use Page;
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\CMS\Model\SiteTreeLinkTracking_Parser;
 use SilverStripe\Control\Director;
 use SilverStripe\Dev\SapphireTest;
@@ -31,6 +32,8 @@ class SiteTreeLinkTrackingTest extends SapphireTest
 
     public function testParser()
     {
+        SiteTree::add_extension(Page::class, SiteTreeLinkTracking_Extension::class);
+
         // Shortcodes
         $this->assertTrue($this->isBroken('<a href="[sitetree_link,id=123]">link</a>'));
         $this->assertTrue($this->isBroken('<a href="[sitetree_link,id=123]#no-such-anchor">link</a>'));
@@ -52,6 +55,7 @@ class SiteTreeLinkTrackingTest extends SapphireTest
         $this->assertFalse($this->isBroken('<a id="anchor">anchor</a>'));
         $this->assertTrue($this->isBroken('<a href="##anchor">anchor</a>'));
 
+
         $page = new Page();
         $page->Content = '<a name="yes-name-anchor">name</a><a id="yes-id-anchor">id</a>';
         $page->write();
@@ -60,6 +64,10 @@ class SiteTreeLinkTrackingTest extends SapphireTest
         $this->assertFalse($this->isBroken("<a href=\"[sitetree_link,id=$page->ID]#yes-name-anchor\">link</a>"));
         $this->assertFalse($this->isBroken("<a href=\"[sitetree_link,id=$page->ID]#yes-id-anchor\">link</a>"));
         $this->assertTrue($this->isBroken("<a href=\"[sitetree_link,id=$page->ID]#http://invalid-anchor.com\"></a>"));
+
+        // Anchors Via updateAnchorsOnPage Extension
+        $this->assertFalse($this->isBroken("<a href=\"[sitetree_link,id=$page->ID]#extension-anchor\">link</a>"));
+        $this->assertTrue($this->isBroken("<a href=\"[sitetree_link,id=$page->ID]#no-such-anchor\"></a>"));
     }
 
     protected function highlight($content)
