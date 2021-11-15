@@ -467,6 +467,21 @@ class SiteTreeTest extends SapphireTest
         );
     }
 
+    public function testGetByLinkAbsolute()
+    {
+        $home     = $this->objFromFixture('Page', 'home');
+        $about    = $this->objFromFixture('Page', 'about');
+        $staff    = $this->objFromFixture('Page', 'staff');
+        $product  = $this->objFromFixture('Page', 'product1');
+
+        $base = 'https://example.test/';
+        $this->assertEquals($home->ID, SiteTree::get_by_link(Controller::join_links($base, '/'), false)->ID);
+        $this->assertEquals($home->ID, SiteTree::get_by_link(Controller::join_links($base, '/home/'), false)->ID);
+        $this->assertEquals($about->ID, SiteTree::get_by_link(Controller::join_links($base, $about->Link()), false)->ID);
+        $this->assertEquals($staff->ID, SiteTree::get_by_link(Controller::join_links($base, $staff->Link()), false)->ID);
+        $this->assertEquals($product->ID, SiteTree::get_by_link(Controller::join_links($base, $product->Link()), false)->ID);
+    }
+
     public function testRelativeLink()
     {
         $about    = $this->objFromFixture('Page', 'about');
