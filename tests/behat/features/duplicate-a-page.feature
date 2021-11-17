@@ -22,3 +22,6 @@ Feature: Duplicate a page
 		And I press the "Publish" button
 		Then I should see "Page1" in the tree
 		And I should see "Duplicate Page" in the tree
+		When I follow "Duplicate Page"
+		Then I should see "Page1a"
+		And I should see "Page1b"
