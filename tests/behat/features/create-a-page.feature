@@ -5,6 +5,7 @@ Feature: Create a page
 
   Background:
     Given a "page" "MyPage"
+    And a "virtual page" "MyVirtualPage"
     And a "group" "AUTHOR group" has permissions "Access to 'Pages' section"
     And I am logged in with "ADMIN" permissions
 
@@ -25,8 +26,15 @@ Feature: Create a page
     And I should see a "Add new" button in CMS Content Toolbar
     When I press the "Add new" button
     And I select the "Under another page" radio button
-    And I select "MyPage" in the "#Form_AddForm_ParentID_Holder" tree dropdown
+    # Virtual page doesn't allow children, page radio button below should be disabled
+    And I select "MyVirtualPage" in the "#Form_AddForm_ParentID_Holder" tree dropdown
+    And I wait for 2 seconds
+    Then I should see a "#Form_AddForm_PageType_Page[disabled]" element
+    # Normal pages allows children, page radio button below should not be disabled
+    When I select "MyPage" in the "#Form_AddForm_ParentID_Holder" tree dropdown
+    And I wait for 2 seconds
     And I select the "Page" radio button
+    Then I should not see a "#Form_AddForm_PageType_Page[disabled]" element
     And I press the "Create" button
     Then I should see an edit page form
 

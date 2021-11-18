@@ -81,6 +81,10 @@ class FixtureContext extends BehatFixtureContext
         $obj->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
     }
 
+    // These functions should be in a FeatureContext, however framework FeatureContext is already
+    // loaded and adding another FeatureContext within CMS that extends SilverStripeContext will
+    // expose duplicate functions to behat e.g. FillField
+
     /**
      * @When /^I see the "([^"]+)" element$/
      * @param $selector
@@ -112,5 +116,43 @@ class FixtureContext extends BehatFixtureContext
         ]);
         Assert::assertNotNull($radioButton);
         Assert::assertEquals($value, $radioButton->getAttribute($attribute));
+    }
+
+    /**
+     * Assumes you've just opened the Insert link menu, e.g.
+     * I click on the "div[aria-label='Insert link [Ctrl+K]'] button" element
+     *
+     * @When /^I select "(.+?)" from the TinyMCE menu with javascript$/
+     * @param string $label
+     */
+    public function iSelectFromTheTinyMceMenu($label)
+    {
+        // :visible and :contains are jQuery css selectors
+        $js = <<<JS
+            jQuery(".mce-menu-item:visible span:contains('{$label}')").click();
+JS;
+        $this->getMainContext()->getSession()->executeScript($js);
+    }
+
+    /**
+     * e.g. --PageOne,--PageTwo,---PageTwoChild,--PageThree
+     *
+     * @Then /^the site tree order should be "(.+?)"$/
+     * @param string $label
+     */
+    public function theSiteTreeOrderShouldBe($expected)
+    {
+        $js = <<<JS
+            jQuery('.jstree-no-checkboxes .item')
+                .map((i, el) => {
+                    let d = '';
+                    jQuery(el).parents('li').each(() => d += '-');
+                    return d + jQuery(el).html();
+                })
+                .get()
+                .join()
+JS;
+        $actual = $this->getMainContext()->getSession()->evaluateScript($js);
+        Assert::assertEquals($expected, $actual);
     }
 }
