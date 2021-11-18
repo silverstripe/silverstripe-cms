@@ -143,9 +143,10 @@ class VirtualPage extends Page
         $copied = $this->CopyContentFrom();
         if ($copied && $copied->exists()) {
             $tags['canonical'] = [
+                'tag' => 'link',
                 'attributes' => [
                     'rel' => 'canonical',
-                    'content' => $copied->AbsoluteLink(),
+                    'href' => $copied->AbsoluteLink(),
                 ],
             ];
         }

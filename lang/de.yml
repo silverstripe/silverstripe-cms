@@ -79,10 +79,12 @@ de:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Vergleichsmodus (wähle zwei)'
+    COMPARINGVERSION: 'Vergleiche Versionen  {version1} und {version2}.'
     MENUTITLE: Historie
     MULTISELECT: Massenaktionen
     NOTPUBLISHED: 'Nicht veröffentlicht'
     PREVIEW: 'Vorschau der Webseite'
+    NO_PREVIEW: 'Keine Vorschau verfügbar'
     PUBLISHER: Herausgeber
     REVERTTOTHISVERSION: 'Zurück zu dieser Version'
     SHOWUNPUBLISHED: 'Zeige unveröffentlichte Versionen'

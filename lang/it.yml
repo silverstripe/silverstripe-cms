@@ -84,6 +84,7 @@ it:
     MULTISELECT: 'Azioni di gruppo'
     NOTPUBLISHED: 'Non pubblicato'
     PREVIEW: 'Anteprima sito'
+    NO_PREVIEW: 'Nessuna anteprima disponibile'
     PUBLISHER: Editore
     REVERTTOTHISVERSION: 'Ripristina a questa versione'
     SHOWUNPUBLISHED: 'Mostra versioni nascoste'
@@ -155,10 +156,10 @@ it:
     DESCRIPTION: 'Reinoltra ad una pagina interna o una URL esterna'
     HEADER: 'Questa pagina redirigerà gli utenti su un''altra'
     OTHERURL: 'Altro indirizzo del sito web'
-    PLURALNAME: 'Pagine di reindirizzamento'
+    PLURALNAME: 'Pagine Base'
     PLURALS:
-      one: 'Una Pagina di Redirezione'
-      other: '{count} Pagine di Redirezione'
+      one: 'Una Pagina Base'
+      other: '{count} Pagine Base'
     REDIRECTTO: 'Redirigi a'
     REDIRECTTOEXTERNAL: 'Un altro sito web'
     REDIRECTTOPAGE: 'Una pagina sul tuo sito web'
@@ -285,10 +286,10 @@ it:
     EditLink: modifica
     HEADER: 'Questa è una pagina virtuale'
     HEADERWITHLINK: 'Questa è una pagina virtuale copiata da "{title}" ({link})'
-    PLURALNAME: 'Pagine virtuali'
+    PLURALNAME: 'Pagine Base'
     PLURALS:
-      one: 'Una Pagina Virtuale'
-      other: '{count} Pagine Virtuali'
+      one: 'Una Pagina Base'
+      other: '{count} Pagine Base'
     PageTypNotAllowedOnRoot: 'Il tipo di pagina originale "{type}" non è consentito al primo livello per questa pagina virtuale'
     SINGULARNAME: 'Pagina virtuale'
   SilverStripe\CMS\Reports\BrokenFilesReport:
