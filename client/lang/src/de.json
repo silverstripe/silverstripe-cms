@@ -4,7 +4,7 @@
     "CMS.ConfirmRestoreFromLive": "Sind Sie sicher, dass Sie den Entwurf zu der zuletzt veröffentlichten Version zurücksetzen wollen?",
     "CMS.Duplicate": "Duplizieren",
     "CMS.EditPage": "Bearbeiten",
-    "CMS.ONLYSELECTTWO": "You can only compare two versions at this time.",
+    "CMS.ONLYSELECTTWO": "Zur Zeit können nur 2 Versionen verglichen werden",
     "CMS.Restore": "Sind Sie sicher, dass Sie diese Seite aus dem Archiv wiederherstellen wollen?",
     "CMS.RestoreToRoot": "Sind Sie sicher, dass Sie diese Seite aus dem Archiv wiederherstellen wollen?\n\nWeil die ehemalige Elternseite nicht verfügbar ist wird diese Seite auf oberster Ebene wiederhergestellt.",
     "CMS.RollbackToVersion": "Wollen Sie wirklich Version #%s dieser Seite wiederherstellen?",
