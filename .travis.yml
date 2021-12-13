@@ -5,5 +5,4 @@ import:
 
 env:
   global:
-    - REQUIRE_RECIPE="4.x-dev"
     - BEHAT_SUITE="cms"
