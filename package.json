@@ -82,6 +82,7 @@
     }
   },
   "resolutions": {
+    "colors": "1.1.2",
     "eslint": "^4.6.1"
   },
   "babel": {
