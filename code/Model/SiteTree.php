@@ -2365,7 +2365,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // "unpublish"
         if ($isPublished && $isOnDraft && $canUnpublish) {
             $moreOptions->push(
-                FormAction::create('unpublish', _t(__CLASS__.'.BUTTONUNPUBLISH', 'Unpublish'), 'delete')
+                FormAction::create('unpublish', _t(__CLASS__.'.BUTTONUNPUBLISH', 'Unpublish'))
                     ->setDescription(_t(__CLASS__.'.BUTTONUNPUBLISHDESC', 'Remove this page from the published site'))
                     ->addExtraClass('btn-secondary' . ($this->isHomePage() ? ' homepage-warning' : ''))
             );
