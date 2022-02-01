@@ -2172,7 +2172,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         );
 
         $parentType->addExtraClass('noborder');
-        $visibility->setTitle($this->fieldLabel('Visibility'));
+        $visibility->setName('Visibility')->setTitle($this->fieldLabel('Visibility'));
 
 
         // This filter ensures that the ParentID dropdown selection does not show this node,
