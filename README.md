@@ -1,4 +1,4 @@
-## SilverStripe CMS
+## Silverstripe CMS
 
 [![Build Status](https://api.travis-ci.com/silverstripe/silverstripe-cms.svg?branch=4)](https://travis-ci.com/silverstripe/silverstripe-cms)
 [![Latest Stable Version](https://poser.pugx.org/silverstripe/cms/version.svg)](http://www.silverstripe.org/stable-download/)
@@ -21,7 +21,7 @@ Please read our [issue reporting guidelines](https://docs.silverstripe.org/en/co
 
 ## Development and Contribution 
 
-If you would like to make changes to the SilverStripe core codebase, we have an extensive [guide to contributing code](https://docs.silverstripe.org/en/contributing/code).
+If you would like to make changes to the Silverstripe core codebase, we have an extensive [guide to contributing code](https://docs.silverstripe.org/en/contributing/code).
 
 ## Links
 
