@@ -15,7 +15,7 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "CMS.Restore": "Sind Sie sicher, dass Sie diese Seite aus dem Archiv wiederherstellen wollen?",
     "CMS.RestoreToRoot": "Sind Sie sicher, dass Sie diese Seite aus dem Archiv wiederherstellen wollen?\n\nWeil die ehemalige Elternseite nicht verfügbar ist wird diese Seite auf oberster Ebene wiederhergestellt.",
     "CMS.RollbackToVersion": "Wollen Sie wirklich Version #%s dieser Seite wiederherstellen?",
-    "CMS.ShowAsList": "Kinder als LIste zeigen",
+    "CMS.ShowAsList": "Kinder als Liste zeigen",
     "CMS.ThisPageAndSubpages": "Diese Seite und Unterseiten",
     "CMS.ThisPageOnly": "Nur diese Seite",
     "CMS.Unpublish": "Sind Sie sicher, dass Sie diese Seite von der veröffentlichten Seite entfernen wollen?\n\nDie Seite wird weiterhin im Seitenbaum als Entwurf bleiben.",
