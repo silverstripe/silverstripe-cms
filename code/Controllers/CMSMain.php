@@ -1632,9 +1632,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         }
         $list = $this->getList($params, $parentID);
         $gridFieldConfig = GridFieldConfig::create()->addComponents(
-            new GridFieldSortableHeader(),
-            new GridFieldDataColumns(),
-            new GridFieldPaginator($this->config()->get('page_length'))
+            Injector::inst()->create(GridFieldSortableHeader::class),
+            Injector::inst()->create(GridFieldDataColumns::class),
+            Injector::inst()->createWithArgs(GridFieldPaginator::class, [$this->config()->get('page_length')])
         );
         if ($parentID) {
             $linkSpec = $this->LinkListViewChildren('%d');
@@ -1645,7 +1645,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             );
             $this->setCurrentPageID($parentID);
         }
-        $gridField = new GridField('Page', 'Pages', $list, $gridFieldConfig);
+        $gridField = GridField::create('Page', 'Pages', $list, $gridFieldConfig);
         $gridField->setAttribute('cms-loading-ignore-url-params', true);
         /** @var GridFieldDataColumns $columns */
         $columns = $gridField->getConfig()->getComponentByType(GridFieldDataColumns::class);

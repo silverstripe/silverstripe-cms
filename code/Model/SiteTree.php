@@ -1996,7 +1996,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                         );
                     }
                 ]);
-            $dependentTable->getConfig()->addComponent(new GridFieldLazyLoader());
+            $dependentTable->getConfig()->addComponent(Injector::inst()->create(GridFieldLazyLoader::class));
         }
 
         $baseLink = Controller::join_links(
