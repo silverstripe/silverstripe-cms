@@ -21,6 +21,7 @@ use SilverStripe\Core\Flushable;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Core\Manifest\ModuleResource;
 use SilverStripe\Core\Manifest\ModuleResourceLoader;
+use SilverStripe\Core\Manifest\VersionProvider;
 use SilverStripe\Core\Resettable;
 use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\CheckboxField;
@@ -339,7 +340,16 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * @config
      * @var string
      */
-    private static $meta_generator = 'SilverStripe - https://www.silverstripe.org';
+    private static $meta_generator = 'Silverstripe CMS';
+
+    /**
+     * Whether to display the version portion of the meta generator tag
+     * Set to false if it's viewed as a concern.
+     *
+     * @config
+     * @var bool
+     */
+    private static $show_meta_generator_version = true;
 
     protected $_cache_statusFlags = null;
 
@@ -394,6 +404,11 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * @var CacheInterface
      */
     protected $creatableChildrenCache;
+
+    /**
+     * @var VersionProvider
+     */
+    private $versionProvider;
 
     /**
      * Fetches the {@link SiteTree} object that maps to a link.
@@ -1401,13 +1416,13 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             'content' => $this->obj('Title')->forTemplate()
         ];
 
-        $generator = trim(Config::inst()->get(self::class, 'meta_generator'));
-        if (!empty($generator)) {
+        $generator = $this->getGenerator();
+        if ($generator) {
             $tags['generator'] = [
                 'attributes' => [
                     'name' => 'generator',
-                    'content' => $generator,
-                ],
+                    'content' => $generator
+                ]
             ];
         }
 
@@ -1448,6 +1463,49 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         return $tags;
     }
+
+    /**
+     * Create the value for the meta generator tag
+     * Will suffix on the major.minor version of a stable tag
+     *
+     * @return string
+     */
+    private function getGenerator(): string
+    {
+        $generator = trim(Config::inst()->get(self::class, 'meta_generator'));
+        if ($generator === '') {
+            return '';
+        }
+        if (self::config()->get('show_meta_generator_version')) {
+            $version = $this->getVersionProvider()->getModuleVersion('silverstripe/framework');
+            // Only include stable version numbers so as not to clutter any aggregate reports
+            // with non-standard versions e.g. forks
+            if (preg_match('#^([0-9]+\.[0-9]+)\.[0-9]+$#', $version, $m)) {
+                $generator .= ' ' . $m[1];
+            }
+        }
+        return $generator;
+    }
+
+    /**
+     * @return VersionProvider
+     */
+    public function getVersionProvider(): VersionProvider
+    {
+        if ($this->versionProvider === null) {
+            $this->versionProvider = VersionProvider::singleton();
+        }
+        return $this->versionProvider;
+    }
+
+    /**
+     * @param VersionProvider $versionProvider
+     */
+    public function setVersionProvider(VersionProvider $versionProvider): void
+    {
+        $this->versionProvider = $versionProvider;
+    }
+
 
     /**
      * Return the title, description, keywords and language metatags.
