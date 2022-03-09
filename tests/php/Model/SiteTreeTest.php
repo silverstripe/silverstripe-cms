@@ -14,6 +14,7 @@ use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Core\Manifest\VersionProvider;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\i18n\i18n;
 use SilverStripe\ORM\DataObject;
@@ -1432,6 +1433,12 @@ class SiteTreeTest extends SapphireTest
 
         $charset = Config::inst()->get(ContentNegotiator::class, 'encoding');
 
+        $mockVersionProvider = $this->getMockBuilder(VersionProvider::class)
+            ->setMethods(['getModuleVersion'])
+            ->getMock();
+        $mockVersionProvider->method('getModuleVersion')->willReturn('4.50.99');
+        $page->setVersionProvider($mockVersionProvider);
+
         $expected = [
             'title' => [
                 'tag' => 'title',
@@ -1440,7 +1447,11 @@ class SiteTreeTest extends SapphireTest
             'generator' => [
                 'attributes' => [
                     'name' => 'generator',
-                    'content' => Config::inst()->get(SiteTree::class, 'meta_generator')
+                    'content' => sprintf(
+                        '%s %s',
+                        Config::inst()->get(SiteTree::class, 'meta_generator'),
+                        '4.50'
+                    )
                 ],
             ],
             'contentType' => [
@@ -1469,6 +1480,12 @@ class SiteTreeTest extends SapphireTest
             ]
         ];
 
+        $this->assertEquals($expected, $page->MetaComponents());
+
+        // test the meta generator tag version can be configured off
+        Config::modify()->set(SiteTree::class, 'show_meta_generator_version', false);
+        $content = $expected['generator']['attributes']['content'];
+        $expected['generator']['attributes']['content'] = str_replace(' 4.50', '', $content);
         $this->assertEquals($expected, $page->MetaComponents());
     }
 
