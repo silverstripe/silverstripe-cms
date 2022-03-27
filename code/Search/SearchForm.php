@@ -146,7 +146,7 @@ class SearchForm extends Form
             }
         }
 
-        $keywords = $request->requestVar('Search');
+        $keywords = rtrim($request->requestVar('Search'), '- ');
 
         $andProcessor = function ($matches) {
             return ' +' . $matches[2] . ' +' . $matches[4] . ' ';
