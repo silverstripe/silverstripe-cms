@@ -163,7 +163,7 @@ class SearchForm extends Form
         $keywords = $this->addStarsToKeywords($keywords);
 
         $pageLength = $this->getPageLength();
-        $start = $request->requestVar('start') ?: 0;
+        $start = max(0, (int)$request->requestVar('start'));
 
         $booleanSearch =
             strpos($keywords, '"') !== false ||
