@@ -2183,8 +2183,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             asort($map);
             return $map;
         };
+        
         $viewAllGroupsMap = $mapFn(Permission::get_groups_by_permission(['SITETREE_VIEW_ALL', 'ADMIN']));
-        $editAllGroupsMap = $mapFn(Permission::get_groups_by_permission(['SITETREE_EDIT_ALL', 'ADMIN']));
+        $editAllGroupsMap = $viewAllGroupsMap;
 
         $fields = new FieldList(
             $rootTab = new TabSet(
