@@ -2,7 +2,11 @@ Page:
   dest:
     Title: Redirection Dest
     URLSegment: redirection-dest
-
+SilverStripe\Assets\File:
+  example_file:
+    FileFilename: FileTest.txt
+    FileHash: 55b443b60176235ef09801153cca4e6da7494a0c
+    Name: FileTest.txt
 SilverStripe\CMS\Model\RedirectorPage:
   goodexternal:
     Title: Good External
@@ -37,3 +41,8 @@ SilverStripe\CMS\Model\RedirectorPage:
     RedirectionType: Internal
     LinkTo: =>SilverStripe\CMS\Model\RedirectorPage.goodinternal
     URLSegment: transitive
+  file:
+    Title: 'Redirect to file'
+    RedirectionType: File
+    LinkToFile: =>SilverStripe\Assets\File.example_file
+    URLSegment: filedirector
