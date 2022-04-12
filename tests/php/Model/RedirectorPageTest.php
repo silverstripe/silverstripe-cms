@@ -6,6 +6,8 @@ use Page;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\RedirectorPageController;
 use SilverStripe\Control\Director;
+use SilverStripe\Assets\File;
+use SilverStripe\Assets\Dev\TestAssetStore;
 use SilverStripe\Dev\FunctionalTest;
 
 class RedirectorPageTest extends FunctionalTest
@@ -17,6 +19,20 @@ class RedirectorPageTest extends FunctionalTest
     protected function setUp(): void
     {
         parent::setUp();
+
+        // Set backend root to /ImageTest
+        TestAssetStore::activate('FileTest');
+
+        // Create a test files for each of the fixture references
+        $fileIDs = $this->allFixtureIDs(File::class);
+
+        foreach ($fileIDs as $fileID) {
+            /** @var File $file */
+            $file = File::get()->byId($fileID);
+            $file->setFromString(str_repeat('x', 1000000), $file->getFilename());
+            $file->publishSingle();
+        }
+
         Director::config()->update('alternate_base_url', 'http://www.mysite.com/');
 
         // Ensure all pages are published
@@ -116,5 +132,11 @@ class RedirectorPageTest extends FunctionalTest
 
         $page->write();
         $this->assertEmpty($page->ExternalURL);
+    }
+
+    public function testFileRedirector()
+    {
+        $page = $this->objFromFixture(RedirectorPage::class, 'file');
+        $this->assertStringContainsString("FileTest.txt", $page->Link());
     }
 }
