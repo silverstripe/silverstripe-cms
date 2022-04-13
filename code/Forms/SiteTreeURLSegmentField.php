@@ -82,7 +82,7 @@ class SiteTreeURLSegmentField extends TextField
         $page->URLSegment = $page->generateURLSegment($request->getVar('value'));
         $count = 2;
         while (!$page->validURLSegment()) {
-            $page->URLSegment = preg_replace('/-[0-9]+$/', null, $page->URLSegment) . '-' . $count;
+            $page->URLSegment = preg_replace('/-[0-9]+$/', '', $page->URLSegment) . '-' . $count;
             $count++;
         }
 
