@@ -52,12 +52,12 @@ class CmsReportsTest extends SapphireTest
 
         // ASSERT that the "draft" report is returning the correct results.
         $parameters = ['CheckSite' => 'Draft'];
-        $results = count($report->sourceRecords($parameters, null, null)) > 0;
+        $results = count($report->sourceRecords($parameters, null, null) ?? []) > 0;
         $isDraftBroken ? $this->assertTrue($results, "{$class} has NOT returned the correct DRAFT results, as NO pages were found.") : $this->assertFalse($results, "{$class} has NOT returned the correct DRAFT results, as pages were found.");
 
         // ASSERT that the "published" report is returning the correct results.
         $parameters = ['CheckSite' => 'Published', 'OnLive' => 1];
-        $results = count($report->sourceRecords($parameters, null, null)) > 0;
+        $results = count($report->sourceRecords($parameters, null, null) ?? []) > 0;
         $isPublishedBroken ? $this->assertTrue($results, "{$class} has NOT returned the correct PUBLISHED results, as NO pages were found.") : $this->assertFalse($results, "{$class} has NOT returned the correct PUBLISHED results, as pages were found.");
     }
 
@@ -124,7 +124,7 @@ class CmsReportsTest extends SapphireTest
 
         // Correct the "draft" broken link.
 
-        $page->Content = str_replace('987654321', $page->ID, $page->Content);
+        $page->Content = str_replace('987654321', $page->ID ?? '', $page->Content ?? '');
         $page->writeToStage('Stage');
 
         // ASSERT that the "draft" report has NOT detected the page having a broken link.
@@ -191,7 +191,7 @@ class CmsReportsTest extends SapphireTest
         $file = File::create();
         $file->Filename = 'name.pdf';
         $file->write();
-        $page->Content = str_replace('987654321', $file->ID, $page->Content);
+        $page->Content = str_replace('987654321', $file->ID ?? '', $page->Content ?? '');
         $page->writeToStage('Stage');
 
         // ASSERT that the "draft" report has NOT detected the page having a broken file.

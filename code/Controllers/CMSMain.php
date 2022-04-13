@@ -184,7 +184,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     {
         // set reading lang
         if (SiteTree::has_extension('Translatable') && !$this->getRequest()->isAjax()) {
-            Translatable::choose_site_locale(array_keys(Translatable::get_existing_content_languages(SiteTree::class)));
+            Translatable::choose_site_locale(array_keys(Translatable::get_existing_content_languages(SiteTree::class) ?? []));
         }
 
         parent::init();
@@ -454,7 +454,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         ];
         $link = Controller::join_links(
             $link,
-            array_filter(array_values($params)) ? '?' . http_build_query($params) : null
+            array_filter(array_values($params ?? [])) ? '?' . http_build_query($params) : null
         );
         $this->extend('updateLinkWithSearch', $link);
         return $link;
@@ -470,7 +470,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         }
 
         if ($placeholders) {
-            $link .= (strpos($link, '?') === false ? "?$placeholders" : "&$placeholders");
+            $link .= (strpos($link ?? '', '?') === false ? "?$placeholders" : "&$placeholders");
         }
 
         return $link;
@@ -627,7 +627,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         // Get status flag classes
         $flags = $node->getStatusFlags();
         if ($flags) {
-            $statuses = array_keys($flags);
+            $statuses = array_keys($flags ?? []);
             foreach ($statuses as $s) {
                 $classes .= ' status-' . $s;
             }
@@ -642,7 +642,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             $classes .= ' ' . $filterClasses;
         }
 
-        return trim($classes);
+        return trim($classes ?? '');
     }
 
     /**
@@ -664,8 +664,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         );
 
         // Trim off the outer tag
-        $html = preg_replace('/^[\s\t\r\n]*<ul[^>]*>/', '', $html);
-        $html = preg_replace('/<\/ul[^>]*>[\s\t\r\n]*$/', '', $html);
+        $html = preg_replace('/^[\s\t\r\n]*<ul[^>]*>/', '', $html ?? '');
+        $html = preg_replace('/<\/ul[^>]*>[\s\t\r\n]*$/', '', $html ?? '');
 
         return $html;
     }
@@ -682,7 +682,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function updatetreenodes($request)
     {
         $data = [];
-        $ids = explode(',', $request->getVar('ids'));
+        $ids = explode(',', $request->getVar('ids') ?? '');
         foreach ($ids as $id) {
             if ($id === "") {
                 continue; // $id may be a blank string, which is invalid and should be skipped over
@@ -824,7 +824,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
             $this->getResponse()->addHeader(
                 'X-Status',
-                rawurlencode(_t(__CLASS__.'.REORGANISATIONSUCCESSFUL', 'Reorganised the site tree successfully.'))
+                rawurlencode(_t(__CLASS__.'.REORGANISATIONSUCCESSFUL', 'Reorganised the site tree successfully.') ?? '')
             );
         }
 
@@ -852,7 +852,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
             $this->getResponse()->addHeader(
                 'X-Status',
-                rawurlencode(_t(__CLASS__.'.REORGANISATIONSUCCESSFUL', 'Reorganised the site tree successfully.'))
+                rawurlencode(_t(__CLASS__.'.REORGANISATIONSUCCESSFUL', 'Reorganised the site tree successfully.') ?? '')
             );
         }
 
@@ -923,7 +923,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         $searchParams = array_combine(array_map(function ($key) {
             return 'Search__' . $key;
-        }, array_keys($searchParams)), $searchParams);
+        }, array_keys($searchParams ?? [])), $searchParams ?? []);
 
         $schema = [
             'formSchemaUrl' => $schemaUrl,
@@ -1082,7 +1082,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         // Add all ancestors
         $ancestors = $record->getAncestors();
-        $ancestors = new ArrayList(array_reverse($ancestors->toArray()));
+        $ancestors = new ArrayList(array_reverse($ancestors->toArray() ?? []));
         $ancestors->push($record);
         /** @var SiteTree $ancestor */
         foreach ($ancestors as $ancestor) {
@@ -1144,7 +1144,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             // Check if can be created at the root
             $needsPerm = $obj->config()->get('need_permission');
             if (!$obj->config()->get('can_be_root')
-                || (!array_key_exists($class, $canCreate) || !$canCreate[$class])
+                || (!array_key_exists($class, $canCreate ?? []) || !$canCreate[$class])
                 || ($needsPerm && !$this->can($needsPerm))
             ) {
                 $def['Root']['disallowedChildren'][] = $class;
@@ -1226,7 +1226,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if ($id instanceof $treeClass) {
             return $id;
         }
-        if (substr($id, 0, 3) == 'new') {
+        if (substr($id ?? '', 0, 3) == 'new') {
             return $this->getNewItem($id);
         }
         if (!is_numeric($id)) {
@@ -1459,18 +1459,18 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         // Count number of affected change set
         $affectedChangeSetCount = 0;
-        if (count($inChangeSetIDs) > 0) {
+        if (count($inChangeSetIDs ?? []) > 0) {
             $affectedChangeSetCount = ChangeSet::get()
                 ->filter(['ID' => $inChangeSetIDs, 'State' => ChangeSet::STATE_OPEN])
                 ->count();
         }
 
         $numCampaigns = ChangeSet::singleton()->i18n_pluralise($affectedChangeSetCount);
-        $numCampaigns = mb_strtolower($numCampaigns);
+        $numCampaigns = mb_strtolower($numCampaigns ?? '');
 
-        if (count($descendants) > 0 && $affectedChangeSetCount > 0) {
+        if (count($descendants ?? []) > 0 && $affectedChangeSetCount > 0) {
             $archiveWarningMsg = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarningWithChildrenAndCampaigns', 'Warning: This page and all of its child pages will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?', [ 'NumCampaigns' => $numCampaigns ]);
-        } elseif (count($descendants) > 0) {
+        } elseif (count($descendants ?? []) > 0) {
             $archiveWarningMsg = $defaultMessage;
         } elseif ($affectedChangeSetCount > 0) {
             $archiveWarningMsg = _t('SilverStripe\\CMS\\Controllers\\CMSMain.ArchiveWarningWithCampaigns', 'Warning: This page will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?', [ 'NumCampaigns' => $numCampaigns ]);
@@ -1693,9 +1693,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 );
                 $breadcrumbs = $item->Breadcrumbs(20, true, false, true, '/');
                 // Remove item's tile
-                $breadcrumbs = preg_replace('/[^\/]+$/', '', trim($breadcrumbs));
+                $breadcrumbs = preg_replace('/[^\/]+$/', '', trim($breadcrumbs ?? ''));
                 // Trim spaces around delimiters
-                $breadcrumbs = preg_replace('/\s?\/\s?/', '/', trim($breadcrumbs));
+                $breadcrumbs = preg_replace('/\s?\/\s?/', '/', trim($breadcrumbs ?? ''));
                 return $title . sprintf('<p class="small cms-list__item-breadcrumbs">%s</p>', $breadcrumbs);
             }
         ]);
@@ -1752,7 +1752,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         // Existing or new record?
         $id = $data['ID'];
-        if (substr($id, 0, 3) != 'new') {
+        if (substr($id ?? '', 0, 3) != 'new') {
             /** @var SiteTree $record */
             $record = DataObject::get_by_id($className, $id);
             // Check edit permissions
@@ -1810,7 +1810,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             );
         }
 
-        $this->getResponse()->addHeader('X-Status', rawurlencode($message));
+        $this->getResponse()->addHeader('X-Status', rawurlencode($message ?? ''));
         return $this->getResponseNegotiator()->respond($this->getRequest());
     }
 
@@ -1825,9 +1825,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function getNewItem($id, $setID = true)
     {
         $parentClass = $this->config()->get('tree_class');
-        list(, $className, $parentID) = array_pad(explode('-', $id), 3, null);
+        list(, $className, $parentID) = array_pad(explode('-', $id ?? ''), 3, null);
 
-        if (!is_a($className, $parentClass, true)) {
+        if (!is_a($className, $parentClass ?? '', true)) {
             $response = Security::permissionFailure($this);
             if (!$response) {
                 $response = $this->getResponse();
@@ -1931,7 +1931,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 "Restored '{title}' successfully",
                 'Param {title} is a title',
                 ['title' => $record->Title]
-            ))
+            ) ?? '')
         );
 
         return $this->getResponseNegotiator()->respond($this->getRequest());
@@ -1967,7 +1967,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 __CLASS__ . '.REMOVEDPAGEFROMDRAFT',
                 "Removed '{title}' from the draft site",
                 ['title' => $record->Title]
-            ))
+            ) ?? '')
         );
 
         // Even if the record has been deleted from stage and live, it can be viewed in "archive mode"
@@ -2003,7 +2003,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 __CLASS__ . '.ARCHIVEDPAGE',
                 "Archived page '{title}'",
                 ['title' => $record->Title]
-            ))
+            ) ?? '')
         );
 
         // Even if the record has been deleted from stage and live, it can be viewed in "archive mode"
@@ -2038,7 +2038,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 __CLASS__ . '.REMOVEDPAGE',
                 "Removed '{title}' from the published site",
                 ['title' => $record->Title]
-            ))
+            ) ?? '')
         );
 
         return $this->getResponseNegotiator()->respond($this->getRequest());
@@ -2091,7 +2091,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             );
         }
 
-        $this->getResponse()->addHeader('X-Status', rawurlencode($message));
+        $this->getResponse()->addHeader('X-Status', rawurlencode($message ?? ''));
 
         // Can be used in different contexts: In normal page edit view, in which case the redirect won't have any effect.
         // Or in history view, in which case a revert causes the CMS to re-load the edit view.
@@ -2242,7 +2242,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 __CLASS__ . '.RESTORED',
                 "Restored '{title}' successfully",
                 ['title' => $restoredPage->Title]
-            ))
+            ) ?? '')
         );
 
         return $this->getResponseNegotiator()->respond($this->getRequest());
@@ -2280,7 +2280,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                     __CLASS__ . '.DUPLICATED',
                     "Duplicated '{title}' successfully",
                     ['title' => $newPage->Title]
-                ))
+                ) ?? '')
             );
             $url = $newPage->CMSEditLink();
             $this->getResponse()->addHeader('X-ControllerURL', $url);
@@ -2318,7 +2318,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                     __CLASS__ . '.DUPLICATEDWITHCHILDREN',
                     "Duplicated '{title}' and children successfully",
                     ['title' => $newPage->Title]
-                ))
+                ) ?? '')
             );
             $url = $newPage->CMSEditLink();
             $this->getResponse()->addHeader('X-ControllerURL', $url);
@@ -2370,7 +2370,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         $this->extend('updateHintsCacheKey', $baseKey);
 
-        return md5($baseKey);
+        return md5($baseKey ?? '');
     }
 
     /**

@@ -37,8 +37,8 @@ class SiteTreeBacklinksTest extends SapphireTest
         $page3 = $this->objFromFixture('Page', 'page3');
         $page3->Content = str_replace(
             '$page1.ID',
-            $this->objFromFixture('Page', 'page1')->ID,
-            $page3->Content
+            $this->objFromFixture('Page', 'page1')->ID ?? '',
+            $page3->Content ?? ''
         );
         $page3->write();
     }

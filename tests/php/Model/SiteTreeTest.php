@@ -146,7 +146,7 @@ class SiteTreeTest extends SapphireTest
     public function testDisallowedChildURLGeneration($title, $urlSegment)
     {
         // Using the same dataprovider, strip out the -2 from the admin and dev segment
-        $urlSegment = str_replace('-2', '', $urlSegment);
+        $urlSegment = str_replace('-2', '', $urlSegment ?? '');
         $page = Page::create(['Title' => $title, 'ParentID' => 1]);
         $id = $page->write();
         $page = Page::get()->byID($id);
@@ -821,9 +821,9 @@ class SiteTreeTest extends SapphireTest
 
         $diff = $page->compareVersions(1, 2);
 
-        $processedContent = trim($diff->Content);
-        $processedContent = preg_replace('/\s*</', '<', $processedContent);
-        $processedContent = preg_replace('/>\s*/', '>', $processedContent);
+        $processedContent = trim($diff->Content ?? '');
+        $processedContent = preg_replace('/\s*</', '<', $processedContent ?? '');
+        $processedContent = preg_replace('/>\s*/', '>', $processedContent ?? '');
         $this->assertEquals("<ins><span>This is a test</span></ins>", $processedContent);
 
         Diff::$html_cleaner_class = $oldCleanerClass;
@@ -1485,7 +1485,7 @@ class SiteTreeTest extends SapphireTest
         // test the meta generator tag version can be configured off
         Config::modify()->set(SiteTree::class, 'show_meta_generator_version', false);
         $content = $expected['generator']['attributes']['content'];
-        $expected['generator']['attributes']['content'] = str_replace(' 4.50', '', $content);
+        $expected['generator']['attributes']['content'] = str_replace(' 4.50', '', $content ?? '');
         $this->assertEquals($expected, $page->MetaComponents());
     }
 

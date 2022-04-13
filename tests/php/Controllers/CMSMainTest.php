@@ -56,8 +56,8 @@ class CMSMainTest extends FunctionalTest
         $rawHints = singleton(CMSMain::class)->SiteTreeHints();
         $this->assertNotNull($rawHints);
 
-        $rawHints = preg_replace('/^"(.*)"$/', '$1', Convert::xml2raw($rawHints));
-        $hints = json_decode($rawHints, true);
+        $rawHints = preg_replace('/^"(.*)"$/', '$1', Convert::xml2raw($rawHints) ?? '');
+        $hints = json_decode($rawHints ?? '', true);
 
         $this->assertArrayHasKey('Root', $hints);
         $this->assertArrayHasKey('Page', $hints);
@@ -100,7 +100,7 @@ class CMSMainTest extends FunctionalTest
 
         // Check query
         $response = $this->get('admin/pages/childfilter?ParentID=' . $pageA->ID);
-        $children = json_decode($response->getBody());
+        $children = json_decode($response->getBody() ?? '');
         $this->assertFalse($response->isError());
 
         // Page A can't have unrelated children
@@ -137,7 +137,7 @@ class CMSMainTest extends FunctionalTest
         $actions = CMSBatchActionHandler::config()->batch_actions;
         if (isset($actions['publish'])) {
             $response = $this->get('admin/pages/batchactions/publish?ajax=1&csvIDs=' . implode(',', [$page1->ID, $page2->ID]));
-            $responseData = json_decode($response->getBody(), true);
+            $responseData = json_decode($response->getBody() ?? '', true);
             $this->assertArrayHasKey($page1->ID, $responseData['modified']);
             $this->assertArrayHasKey($page2->ID, $responseData['modified']);
         }
@@ -335,7 +335,7 @@ class CMSMainTest extends FunctionalTest
             ]
         );
         $this->assertFalse($response->isError());
-        $ok = preg_match('/edit\/show\/(\d*)/', $response->getHeader('X-ControllerURL'), $matches);
+        $ok = preg_match('/edit\/show\/(\d*)/', $response->getHeader('X-ControllerURL') ?? '', $matches);
         $this->assertNotEmpty($ok);
         $newPageId = $matches[1];
 
@@ -360,7 +360,7 @@ class CMSMainTest extends FunctionalTest
         // Verify that the page was created and redirected to accurately
         $newerPage = SiteTree::get()->byID($newPageId)->AllChildren()->first();
         $this->assertNotEmpty($newerPage);
-        $ok = preg_match('/edit\/show\/(\d*)/', $response->getHeader('X-ControllerURL'), $matches);
+        $ok = preg_match('/edit\/show\/(\d*)/', $response->getHeader('X-ControllerURL') ?? '', $matches);
         $this->assertNotEmpty($ok);
         $newerPageID = $matches[1];
         $this->assertEquals($newerPage->ID, $newerPageID);
@@ -398,7 +398,7 @@ class CMSMainTest extends FunctionalTest
         $crumbs = $parser->getBySelector('.breadcrumbs-wrapper .crumb');
 
         $this->assertNotNull($crumbs);
-        $this->assertEquals(2, count($crumbs));
+        $this->assertEquals(2, count($crumbs ?? []));
         $this->assertEquals('Page 3', (string)$crumbs[0]);
         $this->assertEquals('Page 3.1', (string)$crumbs[1]);
 

@@ -41,8 +41,8 @@ class ModelAsController extends Controller implements NestedController
     {
         $controller = $sitetree->getControllerName();
 
-        if ($action && class_exists($controller . '_' . ucfirst($action))) {
-            $controller = $controller . '_' . ucfirst($action);
+        if ($action && class_exists($controller . '_' . ucfirst($action ?? ''))) {
+            $controller = $controller . '_' . ucfirst($action ?? '');
         }
 
         return Injector::inst()->create($controller, $sitetree);
@@ -131,7 +131,7 @@ class ModelAsController extends Controller implements NestedController
         // url encode unless it's multibyte (already pre-encoded in the database)
         $filter = URLSegmentFilter::create();
         if (!$filter->getAllowMultibyte()) {
-            $URLSegment = rawurlencode($URLSegment);
+            $URLSegment = rawurlencode($URLSegment ?? '');
         }
 
         // Select child page

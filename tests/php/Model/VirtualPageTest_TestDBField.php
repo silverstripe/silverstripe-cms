@@ -9,6 +9,6 @@ class VirtualPageTest_TestDBField extends DBVarchar implements TestOnly
 {
     public function forTemplate()
     {
-        return strtoupper($this->XML());
+        return strtoupper($this->XML() ?? '');
     }
 }

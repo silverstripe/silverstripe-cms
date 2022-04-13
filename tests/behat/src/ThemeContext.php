@@ -23,7 +23,7 @@ class ThemeContext implements Context
      */
     public function stepCreateTheme($theme)
     {
-        if (!preg_match('/^[0-9a-zA-Z_-]+$/', $theme)) {
+        if (!preg_match('/^[0-9a-zA-Z_-]+$/', $theme ?? '')) {
             throw new \InvalidArgumentException("Bad theme '$theme'");
         }
 
@@ -42,10 +42,10 @@ class ThemeContext implements Context
      */
     public function stepCreateTemplate($template, $theme, $content)
     {
-        if (!preg_match('/^[0-9a-zA-Z_-]+$/', $theme)) {
+        if (!preg_match('/^[0-9a-zA-Z_-]+$/', $theme ?? '')) {
             throw new \InvalidArgumentException("Bad theme '$theme'");
         }
-        if (!preg_match('/^(Layout\/)?[0-9a-zA-Z_-]+\.ss$/', $template)) {
+        if (!preg_match('/^(Layout\/)?[0-9a-zA-Z_-]+\.ss$/', $template ?? '')) {
             throw new \InvalidArgumentException("Bad template '$template'");
         }
 
@@ -56,16 +56,16 @@ class ThemeContext implements Context
     protected function requireFile($filename, $content)
     {
         // Already exists
-        if (file_exists($filename)) {
+        if (file_exists($filename ?? '')) {
             // If the content is different, remember old content for restoration
-            $origContent = file_get_contents($filename);
+            $origContent = file_get_contents($filename ?? '');
             if ($origContent != $content) {
-                file_put_contents($filename, $content);
+                file_put_contents($filename ?? '', $content);
                 $this->restoreFiles[$filename] = $origContent;
             }
         // Doesn't exist, mark it for deletion after test
         } else {
-            file_put_contents($filename, $content);
+            file_put_contents($filename ?? '', $content);
             $this->restoreFiles[$filename] = null;
         }
     }
@@ -73,8 +73,8 @@ class ThemeContext implements Context
     protected function requireDir($dirname)
     {
         // Directory doesn't exist, create it and mark it for deletion
-        if (!file_exists($dirname)) {
-            mkdir($dirname);
+        if (!file_exists($dirname ?? '')) {
+            mkdir($dirname ?? '');
             $this->restoreDirectories[] = $dirname;
         }
     }
@@ -92,9 +92,9 @@ class ThemeContext implements Context
         if ($this->restoreFiles) {
             foreach ($this->restoreFiles as $file => $origContent) {
                 if ($origContent === null) {
-                    unlink($file);
+                    unlink($file ?? '');
                 } else {
-                    file_put_contents($file, $origContent);
+                    file_put_contents($file ?? '', $origContent);
                 }
             }
 
@@ -104,9 +104,9 @@ class ThemeContext implements Context
         // Restore any created directories: that is, delete them
         if ($this->restoreDirectories) {
             // Flip the order so that nested direcotires are unlinked() first
-            $this->restoreDirectories = array_reverse($this->restoreDirectories);
+            $this->restoreDirectories = array_reverse($this->restoreDirectories ?? []);
             foreach ($this->restoreDirectories as $dir) {
-                rmdir($dir);
+                rmdir($dir ?? '');
             }
 
             $this->restoreDirectories = [];

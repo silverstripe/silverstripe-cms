@@ -112,7 +112,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
 
         $form = $this->cssParser()->getBySelector('#Form_VersionsForm');
 
-        $this->assertEquals(1, count($form));
+        $this->assertEquals(1, count($form ?? []));
 
         // check the page ID is present
         $hidden = $form[0]->xpath("fieldset/input[@type='hidden']");
@@ -122,7 +122,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
 
         // ensure that all the versions are present in the table and displayed
         $rows = $form[0]->xpath("fieldset/table/tbody/tr");
-        $this->assertEquals(4, count($rows));
+        $this->assertEquals(4, count($rows ?? []));
     }
 
     public function testVersionsFormTableContainsInformation()

@@ -6,8 +6,8 @@ if (defined('BASE_PATH')) {
 } else {
     $projectPath = getcwd() . '/app';
 }
-if (!is_dir($projectPath)) {
-    mkdir($projectPath, 02775);
+if (!is_dir($projectPath ?? '')) {
+    mkdir($projectPath ?? '', 02775);
     mkdir($projectPath . '/code', 02775);
     mkdir($projectPath . '/_config', 02775);
     copy(__DIR__ . '/fixtures/Page.php.fixture', $projectPath . '/code/Page.php');

@@ -173,8 +173,8 @@ class RedirectorPage extends Page
     {
         parent::onBeforeWrite();
 
-        if ($this->ExternalURL && substr($this->ExternalURL, 0, 2) !== '//') {
-            $urlParts = parse_url($this->ExternalURL);
+        if ($this->ExternalURL && substr($this->ExternalURL ?? '', 0, 2) !== '//') {
+            $urlParts = parse_url($this->ExternalURL ?? '');
             if ($urlParts) {
                 if (empty($urlParts['scheme'])) {
                     // no scheme, assume http

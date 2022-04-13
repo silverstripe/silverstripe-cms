@@ -23,7 +23,7 @@ class SilverStripeNavigatorTest extends SapphireTest
         $navigator = new SilverStripeNavigator($page);
 
         $items = $navigator->getItems();
-        $classes = array_map('get_class', $items->toArray());
+        $classes = array_map('get_class', $items->toArray() ?? []);
         $this->assertContains(
             SilverStripeNavigatorItem_StageLink::class,
             $classes,
@@ -48,18 +48,18 @@ class SilverStripeNavigatorTest extends SapphireTest
         // TODO Shouldn't be necessary but SapphireTest logs in as ADMIN by default
         $this->logInWithPermission('CMS_ACCESS_CMSMain');
         $items = $navigator->getItems();
-        $classes = array_map('get_class', $items->toArray());
+        $classes = array_map('get_class', $items->toArray() ?? []);
         $this->assertNotContains(SilverStripeNavigatorTest_ProtectedTestItem::class, $classes);
 
         $this->logInWithPermission('ADMIN');
         $items = $navigator->getItems();
-        $classes = array_map('get_class', $items->toArray());
+        $classes = array_map('get_class', $items->toArray() ?? []);
         $this->assertContains(SilverStripeNavigatorTest_ProtectedTestItem::class, $classes);
 
         // Unversioned record shouldn't be viewable in stage / live specific views
         $unversioned = new SilverStripeNavigatorTest\UnstagedRecord();
         $navigator2 = new SilverStripeNavigator($unversioned);
-        $classes = array_map('get_class', $navigator2->getItems()->toArray());
+        $classes = array_map('get_class', $navigator2->getItems()->toArray() ?? []);
         $this->assertNotContains(SilverStripeNavigatorItem_LiveLink::class, $classes);
         $this->assertNotContains(SilverStripeNavigatorItem_StageLink::class, $classes);
         $this->assertNotContains(SilverStripeNavigatorItem_ArchiveLink::class, $classes);

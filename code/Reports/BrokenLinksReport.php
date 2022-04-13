@@ -33,7 +33,7 @@ class BrokenLinksReport extends Report
         $join = '';
         $sortBrokenReason = false;
         if ($sort) {
-            $parts = explode(' ', $sort);
+            $parts = explode(' ', $sort ?? '');
             $field = $parts[0];
             $direction = $parts[1];
 
@@ -93,7 +93,7 @@ class BrokenLinksReport extends Report
                 }
 
                 if ($reason) {
-                    if (isset($params['Reason']) && $params['Reason'] && !in_array($params['Reason'], $reasonCodes)) {
+                    if (isset($params['Reason']) && $params['Reason'] && !in_array($params['Reason'], $reasonCodes ?? [])) {
                         continue;
                     }
                     $record->BrokenReason = $reason;

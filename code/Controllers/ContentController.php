@@ -156,7 +156,7 @@ class ContentController extends Controller
             $getVars = $_GET;
             unset($getVars['url']);
             if ($getVars) {
-                $url = "?" . http_build_query($getVars);
+                $url = "?" . http_build_query($getVars ?? []);
             } else {
                 $url = "";
             }
@@ -494,7 +494,7 @@ HTML;
         // TODO Allow this to work when allow_url_fopen=0
         if (isset($_SESSION['StatsID']) && $_SESSION['StatsID']) {
             $url = 'http://ss2stat.silverstripe.com/Installation/installed?ID=' . $_SESSION['StatsID'];
-            @file_get_contents($url);
+            @file_get_contents($url ?? '');
         }
 
         global $project;
@@ -532,11 +532,11 @@ HTML;
         $unsuccessful = new ArrayList();
         foreach ($installfiles as $installfile) {
             $installfilepath = PUBLIC_PATH . '/' . $installfile;
-            if (file_exists($installfilepath)) {
-                @unlink($installfilepath);
+            if (file_exists($installfilepath ?? '')) {
+                @unlink($installfilepath ?? '');
             }
 
-            if (file_exists($installfilepath)) {
+            if (file_exists($installfilepath ?? '')) {
                 $unsuccessful->push(new ArrayData(['File' => $installfile]));
             }
         }

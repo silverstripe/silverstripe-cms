@@ -81,11 +81,11 @@ class SiteTreeLinkTrackingTest extends SapphireTest
     public function testHighlighter()
     {
         $content = $this->highlight('<a href="[sitetree_link,id=123]" class="existing-class">link</a>');
-        $this->assertEquals(substr_count($content, 'ss-broken'), 1, 'A ss-broken class is added to the broken link.');
-        $this->assertEquals(substr_count($content, 'existing-class'), 1, 'Existing class is not removed.');
+        $this->assertEquals(substr_count($content ?? '', 'ss-broken'), 1, 'A ss-broken class is added to the broken link.');
+        $this->assertEquals(substr_count($content ?? '', 'existing-class'), 1, 'Existing class is not removed.');
 
         $content = $this->highlight('<a href="[sitetree_link,id=123]">link</a>');
-        $this->assertEquals(substr_count($content, 'ss-broken'), 1, 'ss-broken class is added to the broken link.');
+        $this->assertEquals(substr_count($content ?? '', 'ss-broken'), 1, 'ss-broken class is added to the broken link.');
 
         $otherPage = new Page();
         $otherPage->Content = '';
@@ -94,7 +94,7 @@ class SiteTreeLinkTrackingTest extends SapphireTest
         $content = $this->highlight(
             "<a href=\"[sitetree_link,id=$otherPage->ID]\" class=\"existing-class ss-broken ss-broken\">link</a>"
         );
-        $this->assertEquals(substr_count($content, 'ss-broken'), 0, 'All ss-broken classes are removed from good link');
-        $this->assertEquals(substr_count($content, 'existing-class'), 1, 'Existing class is not removed.');
+        $this->assertEquals(substr_count($content ?? '', 'ss-broken'), 0, 'All ss-broken classes are removed from good link');
+        $this->assertEquals(substr_count($content ?? '', 'existing-class'), 1, 'Existing class is not removed.');
     }
 }

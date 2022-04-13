@@ -26,8 +26,8 @@ class SiteTreeHTMLEditorFieldTest extends FunctionalTest
         $files = File::get()->exclude('ClassName', Folder::class);
         foreach ($files as $file) {
             $destPath = TestAssetStore::getLocalPath($file);
-            Filesystem::makeFolder(dirname($destPath));
-            file_put_contents($destPath, str_repeat('x', 1000000));
+            Filesystem::makeFolder(dirname($destPath ?? ''));
+            file_put_contents($destPath ?? '', str_repeat('x', 1000000));
         }
 
         // Ensure all pages are published

@@ -90,7 +90,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
         uasort($filterMap, function ($a, $b) {
             return ($a === CMSSiteTreeFilter_Search::title())
                 ? -1
-                : strcasecmp($a, $b);
+                : strcasecmp($a ?? '', $b ?? '');
         });
 
         return $filterMap;
@@ -164,7 +164,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
 
             while (!empty($parents)) {
                 $q = Versioned::get_including_deleted(SiteTree::class)
-                    ->byIDs(array_keys($parents));
+                    ->byIDs(array_keys($parents ?? []));
                 $list = $q->map('ID', 'ParentID');
                 $parents = [];
                 foreach ($list as $id => $parentID) {
