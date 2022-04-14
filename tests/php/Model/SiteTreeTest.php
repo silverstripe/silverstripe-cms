@@ -9,6 +9,8 @@ use ReflectionMethod;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\CMS\Model\VirtualPage;
+use SilverStripe\CMS\Tests\Controllers\SiteTreeTest_NamespaceMapTestController;
+use SilverStripe\CMS\Tests\Page\SiteTreeTest_NamespaceMapTest;
 use SilverStripe\Control\ContentNegotiator;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
@@ -1649,6 +1651,19 @@ class SiteTreeTest extends SapphireTest
         Config::inst()->update(Page::class, 'controller_name', 'This\\Is\\A\\New\\Controller');
         $class = new Page;
         $this->assertSame('This\\Is\\A\\New\\Controller', $class->getControllerName());
+    }
+
+    /**
+     * Test that the controller name for a Namespaced SiteTree instance can be gathered when set via namespace map
+     */
+    public function testGetControllerNameFromNamespaceMappingConfig()
+    {
+        Config::inst()->update(SiteTree::class, 'namespace_mapping', [
+            'SilverStripe\\CMS\\Tests\\Page' => 'SilverStripe\\CMS\\Tests\\Controllers',
+        ]);
+
+        $namespacedSiteTree = new SiteTreeTest_NamespaceMapTest();
+        $this->assertSame(SiteTreeTest_NamespaceMapTestController::class, $namespacedSiteTree->getControllerName());
     }
 
     /**

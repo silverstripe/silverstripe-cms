@@ -215,6 +215,22 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     private static $controller_name = null;
 
+    /**
+     * You can define the a map of Page namespaces to Controller namespaces here
+     * This will apply after the magic of appending Controller, and in order
+     * Must be applied to SiteTree config e.g.
+     *
+     * SilverStripe\CMS\Model\SiteTree:
+     *   namespace_map:
+     *     "App\Pages": "App\Control"
+     *
+     * Will map App\Pages\MyPage to App\Control\MyPageController
+     *
+     * @config
+     * @var string
+     */
+    private static $namespace_map = null;
+
     private static $db = [
         "URLSegment" => "Varchar(255)",
         "Title" => "Varchar(255)",
@@ -2989,6 +3005,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             return $controller;
         }
 
+        $namespaceMap = Config::inst()->get(SiteTree::class, 'namespace_mapping');
+
         //default controller for SiteTree objects
         $controller = ContentController::class;
 
@@ -3002,8 +3020,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             }
             // If we have a class of "{$ClassName}Controller" then we found our controller
             if (class_exists($candidate = sprintf('%sController', $class))) {
-                $controller = $candidate;
-                break;
+                return $candidate;
             } elseif (class_exists($candidate = sprintf('%s_Controller', $class))) {
                 // Support the legacy underscored filename, but raise a deprecation notice
                 Deprecation::notice(
@@ -3011,8 +3028,20 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                     'Underscored controller class names are deprecated. Use "MyController" instead of "My_Controller".',
                     Deprecation::SCOPE_GLOBAL
                 );
-                $controller = $candidate;
-                break;
+                return $candidate;
+            } elseif (is_array($namespaceMap)) {
+                foreach ($namespaceMap as $pageNamespace => $controllerNamespace) {
+                    if (strpos($class, $pageNamespace) !== 0) {
+                        continue;
+                    }
+                    $candidate = sprintf(
+                        '%sController',
+                        str_replace($pageNamespace, $controllerNamespace, $class)
+                    );
+                    if (class_exists($candidate)) {
+                        return $candidate;
+                    }
+                }
             }
         }
 
