@@ -98,14 +98,14 @@ class SearchForm extends Form
     public function classesToSearch($classes)
     {
         $supportedClasses = [SiteTree::class, File::class];
-        $illegalClasses = array_diff($classes, $supportedClasses);
+        $illegalClasses = array_diff($classes ?? [], $supportedClasses);
         if ($illegalClasses) {
             throw new BadMethodCallException(
                 "SearchForm::classesToSearch() passed illegal classes '" . implode("', '", $illegalClasses)
                 . "'.  At this stage, only File and SiteTree are allowed"
             );
         }
-        $legalClasses = array_intersect($classes, $supportedClasses);
+        $legalClasses = array_intersect($classes ?? [], $supportedClasses);
         $this->classesToSearch = $legalClasses;
     }
 
@@ -155,10 +155,10 @@ class SearchForm extends Form
             return ' -' . $matches[3];
         };
 
-        $keywords = preg_replace_callback('/()("[^()"]+")( and )("[^"()]+")()/i', $andProcessor, $keywords);
-        $keywords = preg_replace_callback('/(^| )([^() ]+)( and )([^ ()]+)( |$)/i', $andProcessor, $keywords);
-        $keywords = preg_replace_callback('/(^| )(not )("[^"()]+")/i', $notProcessor, $keywords);
-        $keywords = preg_replace_callback('/(^| )(not )([^() ]+)( |$)/i', $notProcessor, $keywords);
+        $keywords = preg_replace_callback('/()("[^()"]+")( and )("[^"()]+")()/i', $andProcessor, $keywords ?? '');
+        $keywords = preg_replace_callback('/(^| )([^() ]+)( and )([^ ()]+)( |$)/i', $andProcessor, $keywords ?? '');
+        $keywords = preg_replace_callback('/(^| )(not )("[^"()]+")/i', $notProcessor, $keywords ?? '');
+        $keywords = preg_replace_callback('/(^| )(not )([^() ]+)( |$)/i', $notProcessor, $keywords ?? '');
 
         $keywords = $this->addStarsToKeywords($keywords);
 
@@ -166,10 +166,10 @@ class SearchForm extends Form
         $start = max(0, (int)$request->requestVar('start'));
 
         $booleanSearch =
-            strpos($keywords, '"') !== false ||
-            strpos($keywords, '+') !== false ||
-            strpos($keywords, '-') !== false ||
-            strpos($keywords, '*') !== false;
+            strpos($keywords ?? '', '"') !== false ||
+            strpos($keywords ?? '', '+') !== false ||
+            strpos($keywords ?? '', '-') !== false ||
+            strpos($keywords ?? '', '*') !== false;
         $results = DB::get_conn()->searchEngine($this->classesToSearch, $keywords, $start, $pageLength, "\"Relevance\" DESC", "", $booleanSearch);
 
         // filter by permission
@@ -197,19 +197,19 @@ class SearchForm extends Form
 
     protected function addStarsToKeywords($keywords)
     {
-        if (!trim($keywords)) {
+        if (!trim($keywords ?? '')) {
             return "";
         }
         // Add * to each keyword
-        $splitWords = preg_split("/ +/", trim($keywords));
+        $splitWords = preg_split("/ +/", trim($keywords ?? ''));
         $newWords = [];
-        for ($i = 0; $i < count($splitWords); $i++) {
+        for ($i = 0; $i < count($splitWords ?? []); $i++) {
             $word = $splitWords[$i];
             if ($word[0] == '"') {
-                while (++$i < count($splitWords)) {
+                while (++$i < count($splitWords ?? [])) {
                     $subword = $splitWords[$i];
                     $word .= ' ' . $subword;
-                    if (substr($subword, -1) == '"') {
+                    if (substr($subword ?? '', -1) == '"') {
                         break;
                     }
                 }

@@ -78,8 +78,8 @@ class LinkablePluginTest extends SapphireTest
         $this->assertTrue($result->exists());
         $this->assertCount(2, $result);
         $titles = $result->column('Title');
-        $this->assertTrue(in_array('Test page', $titles));
-        $this->assertTrue(in_array('Other test page', $titles));
+        $this->assertTrue(in_array('Test page', $titles ?? []));
+        $this->assertTrue(in_array('Other test page', $titles ?? []));
 
         $result = LinkablePlugin::applyLinkFilter(
             'test',

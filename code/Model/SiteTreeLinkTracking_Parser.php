@@ -59,7 +59,7 @@ class SiteTreeLinkTracking_Parser
 
             // Link to a page on this site.
             $matches = [];
-            if (preg_match('/\[sitetree_link(?:\s*|%20|,)?id=(?<id>[0-9]+)\](#(?<anchor>.*))?/i', $href, $matches)) {
+            if (preg_match('/\[sitetree_link(?:\s*|%20|,)?id=(?<id>[0-9]+)\](#(?<anchor>.*))?/i', $href ?? '', $matches)) {
                 // Check if page link is broken
                 /** @var SiteTree $page */
                 $page = DataObject::get_by_id(SiteTree::class, $matches['id']);
@@ -68,7 +68,7 @@ class SiteTreeLinkTracking_Parser
                     $broken = true;
                 } elseif (!empty($matches['anchor'])) {
                     // Ensure anchor isn't broken on target page
-                    $broken = !in_array($matches['anchor'], $page->getAnchorsOnPage());
+                    $broken = !in_array($matches['anchor'], $page->getAnchorsOnPage() ?? []);
                 } else {
                     $broken = false;
                 }
@@ -85,14 +85,14 @@ class SiteTreeLinkTracking_Parser
             }
 
             // Local anchor.
-            if (preg_match('/^#(.*)/i', $href, $matches)) {
-                $anchor = preg_quote($matches[1], '#');
+            if (preg_match('/^#(.*)/i', $href ?? '', $matches)) {
+                $anchor = preg_quote($matches[1] ?? '', '#');
                 $results[] = [
                     'Type' => 'localanchor',
                     'Target' => null,
                     'Anchor' => $matches[1],
                     'DOMReference' => $link,
-                    'Broken' => !preg_match("#(name|id)=\"{$anchor}\"#", $htmlValue->getContent())
+                    'Broken' => !preg_match("#(name|id)=\"{$anchor}\"#", $htmlValue->getContent() ?? '')
                 ];
 
                 continue;

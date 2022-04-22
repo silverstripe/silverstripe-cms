@@ -29,7 +29,7 @@ class BrokenFilesReport extends Report
     {
         // Get class names for page types that are not virtual pages or redirector pages
         $classes = array_diff(
-            ClassInfo::subclassesFor(SiteTree::class),
+            ClassInfo::subclassesFor(SiteTree::class) ?? [],
             ClassInfo::subclassesFor(VirtualPage::class),
             ClassInfo::subclassesFor(RedirectorPage::class)
         );

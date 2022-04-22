@@ -190,13 +190,13 @@ class SiteTreeLinkTracking extends DataExtension
     protected function toggleElementClass(DOMElement $domReference, $class, $toggle)
     {
         // Get all existing classes.
-        $classes = array_filter(explode(' ', trim($domReference->getAttribute('class'))));
+        $classes = array_filter(explode(' ', trim($domReference->getAttribute('class') ?? '')));
 
         // Add or remove the broken class from the link, depending on the link status.
         if ($toggle) {
             $classes = array_unique(array_merge($classes, [$class]));
         } else {
-            $classes = array_diff($classes, [$class]);
+            $classes = array_diff($classes ?? [], [$class]);
         }
 
         if (!empty($classes)) {

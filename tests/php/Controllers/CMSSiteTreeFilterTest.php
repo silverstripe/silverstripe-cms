@@ -40,7 +40,7 @@ class CMSSiteTreeFilterTest extends SapphireTest
 
         $this->assertTrue($f->isPageIncluded($page1));
         $this->assertFalse($f->isPageIncluded($page2));
-        $this->assertEquals(1, count($results));
+        $this->assertEquals(1, count($results ?? []));
         $this->assertEquals(
             ['ID' => $page1->ID, 'ParentID' => 0],
             $results[0]
@@ -68,7 +68,7 @@ class CMSSiteTreeFilterTest extends SapphireTest
 
         $this->assertTrue($f->isPageIncluded($parent));
         $this->assertTrue($f->isPageIncluded($child));
-        $this->assertEquals(1, count($results));
+        $this->assertEquals(1, count($results ?? []));
         $this->assertEquals(
             ['ID' => $child->ID, 'ParentID' => $parent->ID],
             $results[0]
@@ -95,7 +95,7 @@ class CMSSiteTreeFilterTest extends SapphireTest
 
         $this->assertTrue($f->isPageIncluded($changedPage));
         $this->assertFalse($f->isPageIncluded($unchangedPage));
-        $this->assertEquals(1, count($results));
+        $this->assertEquals(1, count($results ?? []));
         $this->assertEquals(
             ['ID' => $changedPage->ID, 'ParentID' => 0],
             $results[0]
@@ -104,7 +104,7 @@ class CMSSiteTreeFilterTest extends SapphireTest
         // Check that only changed pages are returned
         $f = new CMSSiteTreeFilter_ChangedPages(['Term' => 'No Matches']);
         $results = $f->pagesIncluded();
-        $this->assertEquals(0, count($results));
+        $this->assertEquals(0, count($results ?? []));
 
         // If we roll back to an earlier version than what's on the published site, we should still show the changed
         $changedPage->Title = 'Changed 2';
@@ -115,7 +115,7 @@ class CMSSiteTreeFilterTest extends SapphireTest
         $f = new CMSSiteTreeFilter_ChangedPages(['Term' => 'Changed']);
         $results = $f->pagesIncluded();
 
-        $this->assertEquals(1, count($results));
+        $this->assertEquals(1, count($results ?? []));
         $this->assertEquals(['ID' => $changedPage->ID, 'ParentID' => 0], $results[0]);
     }
 
@@ -166,7 +166,7 @@ class CMSSiteTreeFilterTest extends SapphireTest
     {
         $draftPage = $this->objFromFixture('Page', 'page4');
         // Grab the date
-        $date = substr($draftPage->LastEdited, 0, 10);
+        $date = substr($draftPage->LastEdited ?? '', 0, 10);
         // Filter with that date
         $filter = new CMSSiteTreeFilter_Search([
             'LastEditedFrom' => $date,

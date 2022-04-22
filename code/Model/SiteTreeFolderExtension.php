@@ -41,7 +41,7 @@ class SiteTreeFolderExtension extends DataExtension
 
         // Get all classes that aren't folder
         $fileClasses = array_diff_key(
-            ClassInfo::subclassesFor(File::class),
+            ClassInfo::subclassesFor(File::class) ?? [],
             ClassInfo::subclassesFor(Folder::class)
         );
 
@@ -58,7 +58,7 @@ class SiteTreeFolderExtension extends DataExtension
             $where = [];
             $columns = [];
             foreach ($hasOnes as $relName => $joinClass) {
-                if (in_array($joinClass, $fileClasses)) {
+                if (in_array($joinClass, $fileClasses ?? [])) {
                     $column = $relName . 'ID';
                     $columns[] = $column;
                     $quotedColumn = $schema->sqlColumnForField($className, $column);

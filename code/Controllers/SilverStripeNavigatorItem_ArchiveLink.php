@@ -20,7 +20,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem
         $linkTitle = _t('SilverStripe\\CMS\\Controllers\\ContentController.ARCHIVEDSITE', 'Preview version');
         $recordLink = Convert::raw2att(Controller::join_links(
             $this->record->AbsoluteLink(),
-            '?archiveDate=' . urlencode($this->record->LastEdited)
+            '?archiveDate=' . urlencode($this->record->LastEdited ?? '')
         ));
         return "<a class=\"{$linkClass}\" href=\"$recordLink\" target=\"_blank\">$linkTitle</a>";
     }
@@ -48,7 +48,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem
     {
         return Controller::join_links(
             $this->record->PreviewLink(),
-            '?archiveDate=' . urlencode($this->record->LastEdited)
+            '?archiveDate=' . urlencode($this->record->LastEdited ?? '')
         );
     }
 

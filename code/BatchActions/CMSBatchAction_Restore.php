@@ -57,6 +57,6 @@ class CMSBatchAction_Restore extends CMSBatchAction
 
         // Get pages that exist in stage and remove them from the restore-able set
         $stageIDs = Versioned::get_by_stage($this->managedClass, Versioned::DRAFT)->column('ID');
-        return array_values(array_diff($ids, $stageIDs));
+        return array_values(array_diff($ids ?? [], $stageIDs));
     }
 }

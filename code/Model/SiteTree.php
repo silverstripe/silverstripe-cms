@@ -446,16 +446,16 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $urlSegmentExpr = sprintf('"%s"."URLSegment"', $tableName);
         $parentIDExpr = sprintf('"%s"."ParentID"', $tableName);
 
-        $link = trim(Director::makeRelative($link), '/');
+        $link = trim(Director::makeRelative($link) ?? '', '/');
         if (!$link) {
             $link = RootURLController::get_homepage_link();
         }
 
-        $parts = preg_split('|/+|', $link);
+        $parts = preg_split('|/+|', $link ?? '');
 
         // Grab the initial root level page to traverse down from.
         $URLSegment = array_shift($parts);
-        $conditions = [$urlSegmentExpr => rawurlencode($URLSegment)];
+        $conditions = [$urlSegmentExpr => rawurlencode($URLSegment ?? '')];
         if (self::config()->get('nested_urls')) {
             $conditions[] = [$parentIDExpr => 0];
         }
@@ -490,7 +490,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         // Check if we have any more URL parts to parse.
-        if (!self::config()->get('nested_urls') || !count($parts)) {
+        if (!self::config()->get('nested_urls') || !count($parts ?? [])) {
             return $sitetree;
         }
 
@@ -537,7 +537,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     {
         $classes = ClassInfo::getValidSubClasses();
 
-        $baseClassIndex = array_search(self::class, $classes);
+        $baseClassIndex = array_search(self::class, $classes ?? []);
         if ($baseClassIndex !== false) {
             unset($classes[$baseClassIndex]);
         }
@@ -558,10 +558,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // If any of the descendents don't want any of the elders to show up, cruelly render the elders surplus to
         // requirements
         if ($kill_ancestors) {
-            $kill_ancestors = array_unique($kill_ancestors);
+            $kill_ancestors = array_unique($kill_ancestors ?? []);
             foreach ($kill_ancestors as $mark) {
                 // unset from $classes
-                $idx = array_search($mark, $classes, true);
+                $idx = array_search($mark, $classes ?? [], true);
                 if ($idx !== false) {
                     unset($classes[$idx]);
                 }
@@ -749,7 +749,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function ElementName()
     {
-        return str_replace('/', '-', trim($this->RelativeLink(true), '/'));
+        return str_replace('/', '-', trim($this->RelativeLink(true) ?? '', '/'));
     }
 
     /**
@@ -778,7 +778,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function isSection()
     {
         return $this->isCurrent() || (
-            Director::get_current_page() instanceof SiteTree && in_array($this->ID, Director::get_current_page()->getAncestors()->column())
+            Director::get_current_page() instanceof SiteTree && in_array($this->ID, Director::get_current_page()->getAncestors()->column() ?? [])
         );
     }
 
@@ -947,7 +947,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         while ($page
             && $page->exists()
-            && (!$maxDepth || count($pages) < $maxDepth)
+            && (!$maxDepth || count($pages ?? []) < $maxDepth)
             && (!$stopAtPageType || $page->ClassName != $stopAtPageType)
         ) {
             if ($showHidden || $page->ShowInMenus || ($page->ID == $this->ID)) {
@@ -957,7 +957,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $page = $page->Parent();
         }
 
-        return new ArrayList(array_reverse($pages));
+        return new ArrayList(array_reverse($pages ?? []));
     }
 
 
@@ -1029,7 +1029,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $item = $item->getParent();
             $level--;
         }
-        return implode($separator, array_reverse($parts));
+        return implode($separator ?? '', array_reverse($parts ?? []));
     }
 
     /**
@@ -1059,8 +1059,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             return true;
         }
 
-        if (is_string($perm) && method_exists($this, 'can' . ucfirst($perm))) {
-            $method = 'can' . ucfirst($perm);
+        if (is_string($perm) && method_exists($this, 'can' . ucfirst($perm ?? ''))) {
+            $method = 'can' . ucfirst($perm ?? '');
             return $this->$method($member);
         }
 
@@ -1282,7 +1282,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // Block children not allowed for this parent type
         $parent = isset($context['Parent']) ? $context['Parent'] : null;
         $strictParentInstance = ($parent && $parent instanceof SiteTree);
-        if ($strictParentInstance && !in_array(static::class, $parent->allowedChildren())) {
+        if ($strictParentInstance && !in_array(static::class, $parent->allowedChildren() ?? [])) {
             return false;
         }
 
@@ -1357,7 +1357,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function getSiteConfig()
     {
         $configs = $this->invokeWithExtensions('alternateSiteConfig');
-        foreach (array_filter($configs) as $config) {
+        foreach (array_filter($configs ?? []) as $config) {
             return $config;
         }
 
@@ -1488,7 +1488,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     private function getGenerator(): string
     {
-        $generator = trim(Config::inst()->get(self::class, 'meta_generator'));
+        $generator = trim(Config::inst()->get(self::class, 'meta_generator') ?? '');
         if ($generator === '') {
             return '';
         }
@@ -1496,7 +1496,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $version = $this->getVersionProvider()->getModuleVersion('silverstripe/framework');
             // Only include stable version numbers so as not to clutter any aggregate reports
             // with non-standard versions e.g. forks
-            if (preg_match('#^([0-9]+\.[0-9]+)\.[0-9]+$#', $version, $m)) {
+            if (preg_match('#^([0-9]+\.[0-9]+)\.[0-9]+$#', $version ?? '', $m)) {
                 $generator .= ' ' . $m[1];
             }
         }
@@ -1533,7 +1533,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     {
         $tags = [];
         $tagsArray = $this->MetaComponents();
-        if (!$includeTitle || strtolower($includeTitle) == 'false') {
+        if (!$includeTitle || strtolower($includeTitle ?? '') == 'false') {
             unset($tagsArray['title']);
         }
 
@@ -1668,19 +1668,19 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // Ensure that this object has a non-conflicting URLSegment value.
         $count = 2;
         while (!$this->validURLSegment()) {
-            $this->URLSegment = preg_replace('/-[0-9]+$/', '', $this->URLSegment) . '-' . $count;
+            $this->URLSegment = preg_replace('/-[0-9]+$/', '', $this->URLSegment ?? '') . '-' . $count;
             $count++;
         }
 
         // Check to see if we've only altered fields that shouldn't affect versioning
         $fieldsIgnoredByVersioning = ['HasBrokenLink', 'Status', 'HasBrokenFile', 'ToDo', 'VersionID', 'SaveCount'];
-        $changedFields = array_keys($this->getChangedFields(true, 2));
+        $changedFields = array_keys($this->getChangedFields(true, 2) ?? []);
 
         // This more rigorous check is inline with the test that write() does to decide whether or not to write to the
         // DB. We use that to avoid cluttering the system with a migrateVersion() call that doesn't get used
-        $oneChangedFields = array_keys($this->getChangedFields(true, 1));
+        $oneChangedFields = array_keys($this->getChangedFields(true, 1) ?? []);
 
-        if ($oneChangedFields && !array_diff($changedFields, $fieldsIgnoredByVersioning)) {
+        if ($oneChangedFields && !array_diff($changedFields ?? [], $fieldsIgnoredByVersioning)) {
             $this->setNextWriteWithoutVersion(true);
         }
 
@@ -1771,7 +1771,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $subject = ($this instanceof VirtualPage && $this->CopyContentFromID)
                 ? $this->CopyContentFrom()
                 : $this;
-            if (!in_array($subject->ClassName, $allowed)) {
+            if (!in_array($subject->ClassName, $allowed ?? [])) {
                 $result->addError(
                     _t(
                         'SilverStripe\\CMS\\Model\\SiteTree.PageTypeNotAllowed',
@@ -1820,7 +1820,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                     return false;
                 }
             }
-        } elseif (in_array(strtolower($this->URLSegment), $this->getExcludedURLSegments())) {
+        } elseif (in_array(strtolower($this->URLSegment ?? ''), $this->getExcludedURLSegments() ?? [])) {
             // Guard against url segments for the base page
             // Default to '-2', onBeforeWrite takes care of further possible clashes
             return false;
@@ -2292,7 +2292,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $viewerGroupsField->setDescription(_t(
                 'SilverStripe\\CMS\\Model\\SiteTree.VIEWER_GROUPS_FIELD_DESC',
                 'Groups with global view permissions: {groupList}',
-                ['groupList' => implode(', ', array_values($viewAllGroupsMap))]
+                ['groupList' => implode(', ', array_values($viewAllGroupsMap ?? []))]
             ));
         }
 
@@ -2300,7 +2300,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $editorGroupsField->setDescription(_t(
                 'SilverStripe\\CMS\\Model\\SiteTree.EDITOR_GROUPS_FIELD_DESC',
                 'Groups with global edit permissions: {groupList}',
-                ['groupList' => implode(', ', array_values($editAllGroupsMap))]
+                ['groupList' => implode(', ', array_values($editAllGroupsMap ?? []))]
             ));
         }
 
@@ -2638,7 +2638,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             return false;
         }
 
-        return stripos($this->ID, 'new') === 0;
+        return stripos($this->ID ?? '', 'new') === 0;
     }
 
     /**
@@ -2689,9 +2689,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         if ($currentClass) {
             $currentPageTypeName = $result[$currentClass];
             unset($result[$currentClass]);
-            $result = array_reverse($result);
+            $result = array_reverse($result ?? []);
             $result[$currentClass] = $currentPageTypeName;
-            $result = array_reverse($result);
+            $result = array_reverse($result ?? []);
         }
 
         return $result;
@@ -2715,7 +2715,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                     $candidates = Config::inst()->get($class, 'allowed_children', Config::UNINHERITED);
                     break;
                 }
-                $class = get_parent_class($class);
+                $class = get_parent_class($class ?? '');
             }
             if (!$candidates || $candidates === 'none' || $candidates === 'SiteTree_root') {
                 return [];
@@ -2726,8 +2726,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             foreach ((array)$candidates as $candidate) {
                 // If a classname is prefixed by "*", such as "*Page", then only that class is allowed - no subclasses.
                 // Otherwise, the class and all its subclasses are allowed.
-                if (substr($candidate, 0, 1) == '*') {
-                    $allowedChildren[] = substr($candidate, 1);
+                if (substr($candidate ?? '', 0, 1) == '*') {
+                    $allowedChildren[] = substr($candidate ?? '', 1);
                 } elseif (($candidate !== 'SiteTree_root')
                     && ($subclasses = ClassInfo::subclassesFor($candidate))
                 ) {
@@ -2818,7 +2818,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $default = $this->config()->get('default_child');
         $allowed = $this->allowedChildren();
         if ($allowed) {
-            if (!$default || !in_array($default, $allowed)) {
+            if (!$default || !in_array($default, $allowed ?? [])) {
                 $default = reset($allowed);
             }
             return $default;
@@ -2945,7 +2945,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             Convert::raw2htmlid(static::class),
             $this->isHomePage() ? ' homepage' : '',
             Convert::raw2att(json_encode($children)),
-            Convert::raw2xml(str_replace(["\n","\r"], "", $this->MenuTitle))
+            Convert::raw2xml(str_replace(["\n","\r"], "", $this->MenuTitle ?? ''))
         );
         foreach ($flags as $class => $data) {
             if (is_string($data)) {
@@ -3172,7 +3172,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         if (!$icon) {
             return null;
         }
-        if (strpos($icon, 'data:image/') !== false) {
+        if (strpos($icon ?? '', 'data:image/') !== false) {
             return $icon;
         }
 
@@ -3313,15 +3313,15 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         // Build from rules
         foreach (Director::config()->get('rules') as $pattern => $rule) {
-            $route = explode('/', $pattern);
-            if (!empty($route) && strpos($route[0], '$') === false) {
-                $excludes[] = strtolower($route[0]);
+            $route = explode('/', $pattern ?? '');
+            if (!empty($route) && strpos($route[0] ?? '', '$') === false) {
+                $excludes[] = strtolower($route[0] ?? '');
             }
         }
 
         // Build from base folders
         foreach (glob(Director::publicFolder() . '/*', GLOB_ONLYDIR) as $folder) {
-            $excludes[] = strtolower(basename($folder));
+            $excludes[] = strtolower(basename($folder ?? ''));
         }
 
         $this->extend('updateExcludedURLSegments', $excludes);
@@ -3335,7 +3335,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     {
         $parseSuccess = preg_match_all(
             "/\\s+(name|id)\\s*=\\s*([\"'])([^\\2\\s>]*?)\\2|\\s+(name|id)\\s*=\\s*([^\"']+)[\\s +>]/im",
-            $this->Content,
+            $this->Content ?? '',
             $matches
         );
 

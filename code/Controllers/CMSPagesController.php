@@ -55,7 +55,7 @@ class CMSPagesController extends CMSMain
                     $params['ParentID'] = $page->ID;
                     $item = new stdClass();
                     $item->Title = $page->Title;
-                    $item->Link = Controller::join_links($this->Link(), '?' . http_build_query($params));
+                    $item->Link = Controller::join_links($this->Link(), '?' . http_build_query($params ?? []));
                     $items->push(new ArrayData($item));
                 }
             }

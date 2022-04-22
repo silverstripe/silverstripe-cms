@@ -46,7 +46,7 @@ class MigrateSiteTreeLinkingTaskTest extends SapphireTest
         ];
         foreach (DB::query('SELECT "ID", "Content" FROM "SiteTree"') as $row) {
             $id = (int)$row['ID'];
-            $content = str_replace(array_keys($replacements), array_values($replacements), $row['Content']);
+            $content = str_replace(array_keys($replacements ?? []), array_values($replacements ?? []), $row['Content'] ?? '');
             DB::prepared_query('UPDATE "SiteTree" SET "Content" = ? WHERE "ID" = ?', [$content, $id]);
         }
         DataObject::reset();

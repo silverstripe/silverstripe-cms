@@ -112,7 +112,7 @@ class CMSPageAddController extends CMSPageEditController
                 "PageType",
                 DBField::create_field(
                     'HTMLFragment',
-                    sprintf($numericLabelTmpl, 2, _t('SilverStripe\\CMS\\Controllers\\CMSMain.ChoosePageType', 'Choose page type'))
+                    sprintf($numericLabelTmpl ?? '', 2, _t('SilverStripe\\CMS\\Controllers\\CMSMain.ChoosePageType', 'Choose page type'))
                 ),
                 $pageTypes,
                 'Page'
@@ -121,7 +121,7 @@ class CMSPageAddController extends CMSPageEditController
 
         $parentModeField->setTitle(DBField::create_field(
             'HTMLFragment',
-            sprintf($numericLabelTmpl, 1, _t('SilverStripe\\CMS\\Controllers\\CMSMain.ChoosePageParentMode', 'Choose where to create this page'))
+            sprintf($numericLabelTmpl ?? '', 1, _t('SilverStripe\\CMS\\Controllers\\CMSMain.ChoosePageParentMode', 'Choose where to create this page'))
         ));
 
         $parentField->setSearchFunction(function ($sourceObject, $labelField, $search) {

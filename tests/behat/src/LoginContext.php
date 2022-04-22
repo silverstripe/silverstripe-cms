@@ -25,7 +25,7 @@ class LoginContext extends BehatLoginContext
         $email = "{$permCode}@example.org";
         $password = 'Password!456';
         $member = $this->generateMemberWithPermission($email, $password, $permCode);
-        $canEdit = strstr($negative, 'not') ? false : true;
+        $canEdit = strstr($negative ?? '', 'not') ? false : true;
 
         if ($canEdit) {
             Assert::assertTrue($page->canEdit($member), 'The member can edit this page');

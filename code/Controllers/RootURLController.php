@@ -56,7 +56,7 @@ class RootURLController extends Controller implements Resettable
      */
     public static function should_be_on_root(SiteTree $page)
     {
-        return (!self::$is_at_root && self::get_homepage_link() == trim($page->RelativeLink(true), '/'));
+        return (!self::$is_at_root && self::get_homepage_link() == trim($page->RelativeLink(true) ?? '', '/'));
     }
 
     /**
