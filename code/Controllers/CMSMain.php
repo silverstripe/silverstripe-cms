@@ -1653,7 +1653,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         // Don't allow navigating into children nodes on filtered lists
         $fields = [
             'getTreeTitle' => _t('SilverStripe\\CMS\\Model\\SiteTree.PAGETITLE', 'Page Title'),
-            'singular_name' => _t('SilverStripe\\CMS\\Model\\SiteTree.PAGETYPE', 'Page Type'),
+            'i18n_singular_name' => _t('SilverStripe\\CMS\\Model\\SiteTree.PAGETYPE', 'Page Type'),
             'LastEdited' => _t('SilverStripe\\CMS\\Model\\SiteTree.LASTUPDATED', 'Last Updated'),
         ];
         /** @var GridFieldSortableHeader $sortableHeader */
