@@ -46,10 +46,8 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem
 
     public function getLink()
     {
-        return Controller::join_links(
-            $this->record->PreviewLink(),
-            '?archiveDate=' . urlencode($this->record->LastEdited ?? '')
-        );
+        $link = $this->record->PreviewLink();
+        return $link ? Controller::join_links($link, '?archiveDate=' . urlencode($this->record->LastEdited ?? '')) : '';
     }
 
     public function canView($member = null)
@@ -62,6 +60,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem
             && $this->isArchived()
             // Don't follow redirects in preview, they break the CMS editing form
             && !($record instanceof RedirectorPage)
+            && $this->getLink()
         );
     }
 

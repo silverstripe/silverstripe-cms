@@ -19,7 +19,7 @@ class SilverStripeNavigatorItem_Unversioned extends SilverStripeNavigatorItem
 
     public function getLink()
     {
-        return $this->getRecord()->PreviewLink();
+        return $this->getRecord()->PreviewLink() ?? '';
     }
 
     public function getTitle()
@@ -42,6 +42,7 @@ class SilverStripeNavigatorItem_Unversioned extends SilverStripeNavigatorItem
         return (
             !$this->getRecord()->hasExtension(Versioned::class)
             && $this->showUnversionedLink()
+            && $this->getLink()
         );
     }
 

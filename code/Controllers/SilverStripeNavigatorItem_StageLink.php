@@ -50,8 +50,12 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem
     public function getLink()
     {
         $date = Versioned::current_archived_date();
+        $link = $this->record->PreviewLink();
+        if (!$link) {
+            return '';
+        }
         return Controller::join_links(
-            $this->record->PreviewLink(),
+            $link,
             '?stage=Stage',
             $date ? '?archiveDate=' . $date : null
         );
@@ -66,6 +70,7 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem
             && $this->showStageLink()
             && $record->hasStages()
             && $this->getDraftPage()
+            && $this->getLink()
         );
     }
 
