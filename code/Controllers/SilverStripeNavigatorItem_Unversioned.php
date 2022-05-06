@@ -40,10 +40,22 @@ class SilverStripeNavigatorItem_Unversioned extends SilverStripeNavigatorItem
     public function canView($member = null)
     {
         return (
-            !$this->getRecord()->hasExtension(Versioned::class)
+            $this->recordIsUnversioned()
             && $this->showUnversionedLink()
             && $this->getLink()
         );
+    }
+
+    private function recordIsUnversioned(): bool
+    {
+        $record = $this->getRecord();
+        // If the record has the Versioned extension, it can be considered unversioned
+        // for the purposes of this class if it has no stages and is not archived.
+        if ($record->hasExtension(Versioned::class)) {
+            return (!$record->hasStages()) && !$this->isArchived();
+        }
+        // Completely unversioned.
+        return true;
     }
 
     /**
