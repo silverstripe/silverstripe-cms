@@ -134,7 +134,7 @@ en:
     Password: Password
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
     StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
-    UNVERSIONEDPREVIEW: 'Preview'
+    UNVERSIONEDPREVIEW: Preview
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'View Page in:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
@@ -154,6 +154,7 @@ en:
     OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Redirects to an internal page or an external URL'
+    FILE: File
     HEADER: 'This page will redirect users to another page'
     OTHERURL: 'Other website URL'
     PLURALNAME: 'Base Pages'
@@ -162,6 +163,7 @@ en:
       other: '{count} Base Pages'
     REDIRECTTO: 'Redirect to'
     REDIRECTTOEXTERNAL: 'Another website'
+    REDIRECTTOFILE: 'A file on your website'
     REDIRECTTOPAGE: 'A page on your website'
     SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Page on your website'

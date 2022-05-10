@@ -327,6 +327,7 @@ de:
     ParameterLiveCheckbox: 'Veröffentlichte Seite überprüfen'
   SilverStripe\CMS\Reports\EmptyPagesReport:
     ContentGroupTitle: Inhaltsberichte
+    EMPTYPAGES: 'Seiten ohne Inhalt'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: Inhaltsberichte
     LAST2WEEKS: 'Seiten die in den letzten 2 Wochen bearbeitet wurden'
