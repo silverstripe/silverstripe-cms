@@ -7,12 +7,9 @@ use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Versioned\Versioned;
 
-/**
- * Versioned but not staged
- */
-class UnstagedRecord extends DataObject implements TestOnly, CMSPreviewable
+class VersionedRecord extends DataObject implements TestOnly, CMSPreviewable
 {
-    private static $table_name = 'SilverStripeNavigatorTest_UnstagedRecord';
+    private static $table_name = 'SilverStripeNavigatorTest_VersionedRecord';
 
     private static $show_stage_link = true;
 
@@ -20,22 +17,19 @@ class UnstagedRecord extends DataObject implements TestOnly, CMSPreviewable
 
     private static $show_unversioned_preview_link = true;
 
-    private static $extensions = [
-        Versioned::class . '.versioned',
+    private static $db = [
+        'PreviewLinkTestProperty' => 'Text',
     ];
 
-    public $previewLinkTestProperty = null;
+    private static $extensions = [
+        Versioned::class,
+    ];
 
     public function PreviewLink($action = null)
     {
-        return $this->previewLinkTestProperty;
+        return $this->PreviewLinkTestProperty;
     }
 
-    /**
-     * To determine preview mechanism (e.g. embedded / iframe)
-     *
-     * @return string
-     */
     public function getMimeType()
     {
         return 'text/html';
