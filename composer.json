@@ -21,7 +21,7 @@
     "require": {
         "silverstripe/admin": "^1.9@dev",
         "silverstripe/campaign-admin": "^1.7@dev",
-        "silverstripe/framework": "^4.11",
+        "silverstripe/framework": "4.x-dev#239a34fbf46fd060988c75937d7aa8123bdbd0fa",
         "silverstripe/reports": "^4.7@dev",
         "silverstripe/siteconfig": "^4.7@dev",
         "silverstripe/versioned": "^1.7@dev",
