@@ -30,12 +30,6 @@ const plugin = {
   init(editor) {
     editor.addCommand(commandName, () => {
       const field = jQuery(`#${editor.id}`).entwine('ss');
-      const currentPageID = Number(jQuery('#Form_EditForm_ID').val() || 0);
-      const validTargets = editor
-        .$('[id],[name]', editor.getBody())
-        .toArray()
-        .map((element) => element.id || element.name);
-      ss.store.dispatch(updated(currentPageID, validTargets, true));
       field.openLinkAnchorDialog();
     });
   },
