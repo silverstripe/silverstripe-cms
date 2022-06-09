@@ -49,6 +49,12 @@ class AnchorSelectorField extends SilverStripeComponent {
       return Promise.resolve();
     }
 
+    // Get anchors that belong to the current field
+    let fieldAnchors = [];
+    if (props.loadingState === anchorSelectorStates.FIELD_ONLY) {
+      fieldAnchors = this.props.anchors;
+    }
+
     // Mark page updating
     props.actions.anchorSelector.beginUpdating(props.pageId);
 
@@ -57,9 +63,11 @@ class AnchorSelectorField extends SilverStripeComponent {
     return fetch(fetchURL, { credentials: 'same-origin' })
       .then(response => response.json())
       .then((anchors) => {
+        // Fold in field anchors and ensure array has only unique values
+        const allAnchors = [...new Set([...anchors, ...fieldAnchors])];
         // Update anchors
-        props.actions.anchorSelector.updated(props.pageId, anchors);
-        return anchors;
+        props.actions.anchorSelector.updated(props.pageId, allAnchors);
+        return allAnchors;
       })
       .catch((error) => {
         props.actions.anchorSelector.updateFailed(props.pageId);
@@ -174,6 +182,7 @@ function mapStateToProps(state, ownProps) {
     && (
       page.loadingState === anchorSelectorStates.SUCCESS
       || page.loadingState === anchorSelectorStates.DIRTY
+      || page.loadingState === anchorSelectorStates.FIELD_ONLY
     )
   ) {
     // eslint-disable-next-line prefer-destructuring

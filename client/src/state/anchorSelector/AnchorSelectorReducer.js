@@ -42,6 +42,11 @@ export default function anchorSelectorReducer(state = initialState, action = nul
       return updatePage(newSelectorLoadingState, anchors);
     }
 
+    case ACTION_TYPES.ANCHORSELECTOR_CURRENT_FIELD: {
+      const { anchors } = action.payload;
+      return updatePage(anchorSelectorStates.FIELD_ONLY, anchors);
+    }
+
     case ACTION_TYPES.ANCHORSELECTOR_UPDATE_FAILED: {
       return updatePage(anchorSelectorStates.FAILED, []);
     }
