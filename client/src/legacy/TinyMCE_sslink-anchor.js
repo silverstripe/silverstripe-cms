@@ -9,7 +9,7 @@ import jQuery from 'jquery';
 import ShortcodeSerialiser from 'lib/ShortcodeSerialiser';
 import { createInsertLinkModal } from 'containers/InsertLinkModal/InsertLinkModal';
 import { provideInjector } from 'lib/Injector';
-import { updated } from '../state/anchorSelector/AnchorSelectorActions';
+import { updatedCurrentField } from '../state/anchorSelector/AnchorSelectorActions';
 
 const commandName = 'sslinkanchor';
 
@@ -30,6 +30,14 @@ const plugin = {
   init(editor) {
     editor.addCommand(commandName, () => {
       const field = jQuery(`#${editor.id}`).entwine('ss');
+      // Get the anchors in the current field and save them as props for AnchorSelectorField
+      const currentPageID = Number(jQuery('#Form_EditForm_ID').val() || 0);
+      const validTargets = editor
+        .$('[id],[name]', editor.getBody())
+        .toArray()
+        .map((element) => element.id || element.name);
+      ss.store.dispatch(updatedCurrentField(currentPageID, validTargets, editor.id));
+      // Open the anchor link form
       field.openLinkAnchorDialog();
     });
   },
