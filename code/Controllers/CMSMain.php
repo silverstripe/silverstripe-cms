@@ -2115,7 +2115,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     /**
      * Returns a LiteralField containing parameter field HTML
      * for batch actions
-     * 
+     *
      * Used by {@link LeftAndMain} to render batch actions in
      * the BatchActionsForm
      *
