@@ -2112,13 +2112,22 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         return new CMSBatchActionHandler($this, 'batchactions');
     }
 
+    /**
+     * Returns a LiteralField containing parameter field HTML
+     * for batch actions
+     * 
+     * Used by {@link LeftAndMain} to render batch actions in
+     * the BatchActionsForm
+     *
+     * @return LiteralField
+     */
     public function BatchActionParameters()
     {
         $batchActions = $this->batchactions()->registeredActions();
 
         $forms = [];
         foreach ($batchActions as $urlSegment => $batchAction) {
-            $SNG_action = singleton($batchAction["class"]);
+            $SNG_action = singleton($batchAction['class']);
             if ($SNG_action->canView() && $fieldList = $SNG_action->getParameterFields()) {
                 $formHtml = '';
                 /** @var FormField $field */
@@ -2130,10 +2139,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         }
         $pageHtml = '';
         foreach ($forms as $urlSegment => $html) {
-            $pageHtml .= "<div class=\"params\" id=\"BatchActionParameters_$urlSegment\" style=\"display:none\">$html</div>\n\n";
+            $pageHtml .= '<div class="params" id="BatchActionParameters_' . $urlSegment . '" style="display:none">' . $html . '</div>';
         }
-        return new LiteralField("BatchActionParameters", '<div id="BatchActionParameters" style="display:none">'.$pageHtml.'</div>');
+        return new LiteralField('BatchActionParameters', '<div id="BatchActionParameters" style="display:none">' . $pageHtml . '</div>');
     }
+
     /**
      * Returns a list of batch actions
      */
