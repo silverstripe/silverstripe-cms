@@ -2141,7 +2141,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         foreach ($forms as $urlSegment => $html) {
             $pageHtml .= '<div class="params" id="BatchActionParameters_' . $urlSegment . '" style="display:none">' . $html . '</div>';
         }
-        return new LiteralField('BatchActionParameters', '<div id="BatchActionParameters" style="display:none">' . $pageHtml . '</div>');
+        return new LiteralField('BatchActionParameters', '<div id="BatchActionParameters" class="action-parameters" style="display:none">' . $pageHtml . '</div>');
     }
 
     /**
