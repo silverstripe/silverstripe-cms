@@ -4,6 +4,7 @@ Name: cmsextensions
 SilverStripe\Admin\LeftAndMain:
   extensions:
     - SilverStripe\CMS\Controllers\LeftAndMainPageIconsExtension
+    - SilverStripe\CMS\Controllers\LeftAndMainBatchActionsExtension
 ---
 Name: cmsmodals
 ---
