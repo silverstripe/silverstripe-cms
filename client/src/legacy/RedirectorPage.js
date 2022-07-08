@@ -17,13 +17,13 @@ $.entwine('ss', function ($) {
       if ($(this).attr('value') == 'Internal') {
         $('#Form_EditForm_ExternalURL_Holder').hide();
         $('#Form_EditForm_LinkToID_Holder').show();
-        $('#Form_EditForm_LinkToFileID_Holder').hide();
+        $('#Form_EditForm_LinkToFile_Holder').hide();
       } else if ($(this).attr('value') == 'External') {
         $('#Form_EditForm_ExternalURL_Holder').show();
         $('#Form_EditForm_LinkToID_Holder').hide();
-        $('#Form_EditForm_LinkToFileID_Holder').hide();
+        $('#Form_EditForm_LinkToFile_Holder').hide();
       } else {
-        $('#Form_EditForm_LinkToFileID_Holder').show();
+        $('#Form_EditForm_LinkToFile_Holder').show();
         $('#Form_EditForm_ExternalURL_Holder').hide();
         $('#Form_EditForm_LinkToID_Holder').hide();
       }
