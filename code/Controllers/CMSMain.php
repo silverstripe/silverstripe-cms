@@ -2112,28 +2112,38 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         return new CMSBatchActionHandler($this, 'batchactions');
     }
 
+    /**
+     * Returns a LiteralField containing parameter field HTML
+     * for batch actions
+     *
+     * Used by {@link LeftAndMain} to render batch actions in
+     * the BatchActionsForm
+     *
+     * @return LiteralField
+     */
     public function BatchActionParameters()
     {
-        $batchActions = CMSBatchActionHandler::config()->batch_actions;
+        $batchActions = $this->batchactions()->registeredActions();
 
         $forms = [];
         foreach ($batchActions as $urlSegment => $batchAction) {
-            $SNG_action = singleton($batchAction);
-            if ($SNG_action->canView() && $fieldset = $SNG_action->getParameterFields()) {
+            $SNG_action = singleton($batchAction['class']);
+            if ($SNG_action->canView() && $fieldList = $SNG_action->getParameterFields()) {
                 $formHtml = '';
                 /** @var FormField $field */
-                foreach ($fieldset as $field) {
-                    $formHtml .= $field->Field();
+                foreach ($fieldList as $field) {
+                    $formHtml .= $field->FieldHolder();
                 }
                 $forms[$urlSegment] = $formHtml;
             }
         }
         $pageHtml = '';
         foreach ($forms as $urlSegment => $html) {
-            $pageHtml .= "<div class=\"params\" id=\"BatchActionParameters_$urlSegment\">$html</div>\n\n";
+            $pageHtml .= '<div class="params" id="BatchActionParameters_' . $urlSegment . '" style="display:none">' . $html . '</div>';
         }
-        return new LiteralField("BatchActionParameters", '<div id="BatchActionParameters" style="display:none">'.$pageHtml.'</div>');
+        return new LiteralField('BatchActionParameters', '<div id="BatchActionParameters" class="action-parameters" style="display:none">' . $pageHtml . '</div>');
     }
+
     /**
      * Returns a list of batch actions
      */
