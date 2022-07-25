@@ -1084,14 +1084,19 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $ancestors = $record->getAncestors();
         $ancestors = new ArrayList(array_reverse($ancestors->toArray() ?? []));
         $ancestors->push($record);
+
+        $params = $this->getRequest()->getVars();
         /** @var SiteTree $ancestor */
         foreach ($ancestors as $ancestor) {
             $items->push(new ArrayData([
                 'Title' => $ancestor->getMenuTitle(),
                 'Link' => ($unlinked)
                     ? false
-                    : $ancestor->CMSEditLink()
-            ]));
+                    : Controller::join_links(
+                        $ancestor->CMSEditLink(),
+                        '?' . http_build_query($params ?? [])
+                    )
+                ]));
         }
 
         $this->extend('updateBreadcrumbs', $items);
