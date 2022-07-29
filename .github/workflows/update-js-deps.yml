@@ -1,9 +1,0 @@
-name: Update JS deps
-on:
-  # Run on a schedule once per quarter
-  schedule:
-    - cron: '0 0 1 */3 *'
-  workflow_dispatch:
-jobs:
-  ci:
-    uses: silverstripe/github-actions-ci-cd/.github/workflows/update-js-deps.yml@v0.1
