@@ -1,0 +1,17 @@
+name: Update JS
+
+on:
+  workflow_dispatch:
+  # Run on a schedule of once per quarter
+  schedule:
+    - cron: '0 0 1 */3 *'
+
+jobs:
+  update-js:
+    name: Update JS
+    # Only run cron on the silverstripe account
+    if: (github.event_name == 'schedule' && github.repository_owner == 'silverstripe') || (github.event_name != 'schedule')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update JS
+        uses: silverstripe/gha-update-js@v1
