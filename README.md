@@ -1,12 +1,7 @@
-## SilverStripe CMS
+## Silverstripe CMS
 
 [![CI](https://github.com/silverstripe/silverstripe-cms/actions/workflows/ci.yml/badge.svg)](https://github.com/silverstripe/silverstripe-cms/actions/workflows/ci.yml)
-[![Latest Stable Version](https://poser.pugx.org/silverstripe/cms/version.svg)](http://www.silverstripe.org/stable-download/)
-[![Latest Unstable Version](https://poser.pugx.org/silverstripe/cms/v/unstable.svg)](https://packagist.org/packages/silverstripe/cms)
-[![codecov](https://codecov.io/gh/silverstripe/silverstripe-cms/branch/master/graph/badge.svg)](https://codecov.io/gh/silverstripe/silverstripe-cms)
-[![SilverStripe supported module](https://img.shields.io/badge/silverstripe-supported-0071C4.svg)](https://www.silverstripe.org/software/addons/silverstripe-commercially-supported-module-list/)
-[![Total Downloads](https://poser.pugx.org/silverstripe/cms/downloads.svg)](https://packagist.org/packages/silverstripe/cms)
-[![License](https://poser.pugx.org/silverstripe/cms/license.svg)](https://github.com/silverstripe/silverstripe-cms#license)
+[![Silverstripe supported module](https://img.shields.io/badge/silverstripe-supported-0071C4.svg)](https://www.silverstripe.org/software/addons/silverstripe-commercially-supported-module-list/)
 
 PHP Content Management System (CMS), see [http://silverstripe.org](http://silverstripe.org). Requires the [`framework`](http://github.com/silverstripe/silverstripe-framework) module and a [`silverstripe-installer`](http://github.com/silverstripe/silverstripe-installer) base project.
 
@@ -21,7 +16,7 @@ Please read our [issue reporting guidelines](https://docs.silverstripe.org/en/co
 
 ## Development and Contribution 
 
-If you would like to make changes to the SilverStripe core codebase, we have an extensive [guide to contributing code](https://docs.silverstripe.org/en/contributing/code).
+If you would like to make changes to the Silverstripe core codebase, we have an extensive [guide to contributing code](https://docs.silverstripe.org/en/contributing/code).
 
 ## Links
 
