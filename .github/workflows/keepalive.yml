@@ -10,7 +10,7 @@ jobs:
   keepalive:
     name: Keepalive
     # Only run cron on the silverstripe account
-    if: (github.event_name == 'schedule' && startsWith(github.repository, 'silverstripe/')) || (github.event_name != 'schedule')
+    if: (github.event_name == 'schedule' && github.repository_owner == 'silverstripe') || (github.event_name != 'schedule')
     runs-on: ubuntu-latest
     steps:
       - name: Keepalive
