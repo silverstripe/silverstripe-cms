@@ -114,8 +114,6 @@ en:
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Live but removed from draft'
   SilverStripe\CMS\Controllers\ContentController:
-    ARCHIVEDSITE: 'Preview version'
-    ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
     DRAFT: Draft
     DRAFTSITE: 'Draft Site'
@@ -134,11 +132,8 @@ en:
     Password: Password
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
     StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
-    UNVERSIONEDPREVIEW: Preview
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'View Page in:'
-  SilverStripe\CMS\Controllers\SilverStripeNavigator:
-    ARCHIVED: Archived
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Anchor
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
