@@ -19,14 +19,14 @@
         }
     ],
     "require": {
-        "silverstripe/admin": "^1.9@dev",
-        "silverstripe/campaign-admin": "^1.7@dev",
-        "silverstripe/framework": "^4.11",
-        "silverstripe/reports": "^4.7@dev",
-        "silverstripe/siteconfig": "^4.7@dev",
-        "silverstripe/versioned": "^1.7@dev",
-        "silverstripe/vendor-plugin": "^1.0",
-        "php": "^7.4 || ^8.0"
+        "php": "^8.1",
+        "silverstripe/admin": "^2",
+        "silverstripe/campaign-admin": "^2",
+        "silverstripe/framework": "^5",
+        "silverstripe/reports": "^5",
+        "silverstripe/siteconfig": "^5",
+        "silverstripe/versioned": "^2",
+        "silverstripe/vendor-plugin": "^2"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
@@ -44,7 +44,10 @@
     },
     "autoload": {
         "psr-4": {
-            "SilverStripe\\CMS\\": ["code/", "_legacy/"],
+            "SilverStripe\\CMS\\": [
+                "code/",
+                "_legacy/"
+            ],
             "SilverStripe\\CMS\\Tests\\": "code/php/",
             "SilverStripe\\CMS\\Tests\\Behaviour\\": "tests/behat/src/"
         }
