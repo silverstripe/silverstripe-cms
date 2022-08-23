@@ -491,11 +491,7 @@ class VirtualPage extends Page
         return $copy && $copy->exists() && $copy->hasField($field);
     }
 
-    /**
-     * @param string $method
-     * @return bool
-     */
-    public function hasMethod($method)
+    public function hasMethod(string $method): bool
     {
         if (parent::hasMethod($method)) {
             return true;
@@ -523,7 +519,7 @@ class VirtualPage extends Page
     /**
      * {@inheritdoc}
      */
-    public function allMethodNames($custom = false)
+    public function allMethodNames(bool $custom = false): array
     {
         $methods = parent::allMethodNames($custom);
 
