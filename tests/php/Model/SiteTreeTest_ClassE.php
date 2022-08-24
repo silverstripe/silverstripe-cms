@@ -4,9 +4,9 @@ namespace SilverStripe\CMS\Tests\Model;
 
 use SilverStripe\Dev\TestOnly;
 use SilverStripe\ORM\HiddenClass;
-use Page;
+use SilverStripe\CMS\Model\SiteTree;
 
-class SiteTreeTest_ClassE extends Page implements TestOnly, HiddenClass
+class SiteTreeTest_ClassE extends SiteTree implements TestOnly, HiddenClass
 {
     private static $table_name = 'SiteTreeTest_ClassE';
 }

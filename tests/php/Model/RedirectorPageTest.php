@@ -2,7 +2,7 @@
 
 namespace SilverStripe\CMS\Tests\Model;
 
-use Page;
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\RedirectorPageController;
 use SilverStripe\Control\Director;
@@ -36,31 +36,41 @@ class RedirectorPageTest extends FunctionalTest
         Director::config()->update('alternate_base_url', 'http://www.mysite.com/');
 
         // Ensure all pages are published
-        /** @var Page $page */
-        foreach (Page::get() as $page) {
+        /** @var SiteTree $page */
+        foreach (SiteTree::get() as $page) {
             $page->publishSingle();
         }
     }
 
     public function testGoodRedirectors()
     {
-        /* For good redirectors, the final destination URL will be returned */
-        $this->assertEquals("http://www.google.com", $this->objFromFixture(RedirectorPage::class, 'goodexternal')->Link());
-        $this->assertEquals("/redirection-dest/", $this->objFromFixture(RedirectorPage::class, 'goodinternal')->redirectionLink());
-        $this->assertEquals("/redirection-dest/", $this->objFromFixture(RedirectorPage::class, 'goodinternal')->Link());
+        // For good redirectors, the final destination URL will be returned
+        $this->assertEquals(
+            "http://www.google.com",
+            $this->objFromFixture(RedirectorPage::class, 'goodexternal')->Link()
+        );
+        $this->assertEquals(
+            "/redirection-dest/",
+            $this->objFromFixture(RedirectorPage::class, 'goodinternal')->redirectionLink()
+        );
+        $this->assertEquals(
+            "/redirection-dest/",
+            $this->objFromFixture(RedirectorPage::class, 'goodinternal')->Link()
+        );
     }
 
     public function testEmptyRedirectors()
     {
-        /* If a redirector page is misconfigured, then its link method will just return the usual URLSegment-generated value */
+        // If a redirector page is misconfigured, then its link method will just return the usual
+        // URLSegment-generated value
         $page1 = $this->objFromFixture(RedirectorPage::class, 'badexternal');
         $this->assertEquals('/bad-external/', $page1->Link());
 
-        /* An error message will be shown if you visit it */
+        // An error message will be shown if you visit it
         $content = $this->get(Director::makeRelative($page1->Link()))->getBody();
         $this->assertStringContainsString('message-setupWithoutRedirect', $content);
 
-        /* This also applies for internal links */
+        // This also applies for internal links
         $page2 = $this->objFromFixture(RedirectorPage::class, 'badinternal');
         $this->assertEquals('/bad-internal/', $page2->Link());
         $content = $this->get(Director::makeRelative($page2->Link()))->getBody();
@@ -69,14 +79,16 @@ class RedirectorPageTest extends FunctionalTest
 
     public function testReflexiveAndTransitiveInternalRedirectors()
     {
-        /* Reflexive redirectors are those that point to themselves.  They should behave the same as an empty redirector */
+        // Reflexive redirectors are those that point to themselves.
+        // They should behave the same as an empty redirector
         $page = $this->objFromFixture(RedirectorPage::class, 'reflexive');
         $this->assertEquals('/reflexive/', $page->Link());
         $content = $this->get(Director::makeRelative($page->Link()))->getBody();
         $this->assertStringContainsString('message-setupWithoutRedirect', $content);
 
-        /* Transitive redirectors are those that point to another redirector page.  They should send people to the URLSegment
-         * of the destination page - the middle-stop, so to speak.  That should redirect to the final destination */
+        // Transitive redirectors are those that point to another redirector page.
+        // They should send people to the URLSegment of the destination page - the middle-stop, so to speak.
+        // That should redirect to the final destination
         $page = $this->objFromFixture(RedirectorPage::class, 'transitive');
         $this->assertEquals('/good-internal/', $page->Link());
 
@@ -90,7 +102,11 @@ class RedirectorPageTest extends FunctionalTest
         $page = $this->objFromFixture(RedirectorPage::class, 'externalnoprefix');
         $this->assertEquals($page->ExternalURL, 'http://google.com', 'onBeforeWrite has prefixed with http');
         $page->write();
-        $this->assertEquals($page->ExternalURL, 'http://google.com', 'onBeforeWrite will not double prefix if written again!');
+        $this->assertEquals(
+            $page->ExternalURL,
+            'http://google.com',
+            'onBeforeWrite will not double prefix if written again!'
+        );
     }
 
     public function testAllowsProtocolRelative()

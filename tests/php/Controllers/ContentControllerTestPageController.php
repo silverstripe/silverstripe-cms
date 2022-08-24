@@ -9,7 +9,7 @@ class ContentControllerTestPageController extends PageController implements Test
 {
     private static $allowed_actions = [
         'test',
-        'testwithouttemplate'
+        'testwithouttemplate',
     ];
 
     public function testwithouttemplate()

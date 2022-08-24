@@ -44,7 +44,7 @@ class LinkablePluginTest extends SapphireTest
 
     public function testResolver()
     {
-        $page = SiteTree::create([
+        $page = new SiteTree([
             'Title' => 'Test page',
             'URLSegment' => 'test-page',
             'ParentID' => 0,
@@ -52,7 +52,7 @@ class LinkablePluginTest extends SapphireTest
         $page->write();
         $page->publishRecursive();
 
-        $page = SiteTree::create([
+        $page = new SiteTree([
             'Title' => 'Other test page',
             'URLSegment' => 'other-test-page',
             'ParentID' => 0,

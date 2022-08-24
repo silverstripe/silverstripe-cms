@@ -1,4 +1,4 @@
-Page:
+SilverStripe\CMS\Model\SiteTree:
   page1:
     Title: Page 1
   page2:
@@ -15,19 +15,19 @@ Page:
   page7:
     Title: Page 7
   page7a:
-    Parent: =>Page.page7
+    Parent: =>SilverStripe\CMS\Model\SiteTree.page7
     Title: Page 7a
   page2a:
-    Parent: =>Page.page2
+    Parent: =>SilverStripe\CMS\Model\SiteTree.page2
     Title: Page 2a
   page2b:
-    Parent: =>Page.page2
+    Parent: =>SilverStripe\CMS\Model\SiteTree.page2
     Title: Page 2b
   page3a:
-    Parent: =>Page.page3
+    Parent: =>SilverStripe\CMS\Model\SiteTree.page3
     Title: Page 3a
   page3b:
-    Parent: =>Page.page3
+    Parent: =>SilverStripe\CMS\Model\SiteTree.page3
     Title: Page 3b
   page8:
     Title: EncodedUrlSegment

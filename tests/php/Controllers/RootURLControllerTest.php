@@ -13,7 +13,7 @@ class RootURLControllerTest extends SapphireTest
 
     public function testGetHomepageLink()
     {
-        $default = $this->objFromFixture('Page', 'home');
+        $default = $this->objFromFixture(SiteTree::class, 'home');
 
         Config::modify()->set(SiteTree::class, 'nested_urls', false);
         $this->assertEquals('home', RootURLController::get_homepage_link());

@@ -2,7 +2,6 @@
 
 namespace SilverStripe\CMS\Tests\Model;
 
-use Page;
 use Silverstripe\Assets\Dev\TestAssetStore;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
@@ -42,15 +41,15 @@ class SiteTreeBrokenLinksTest extends SapphireTest
 
     public function testBrokenLinksBetweenPages()
     {
-        /** @var Page $obj */
-        $obj = $this->objFromFixture('Page', 'content');
+        /** @var SiteTree $obj */
+        $obj = $this->objFromFixture(SiteTree::class, 'content');
 
         $obj->Content = '<a href="[sitetree_link,id=3423423]">this is a broken link</a>';
         $obj->syncLinkTracking();
         $this->assertTrue($obj->HasBrokenLink, 'Page has a broken link');
 
         $obj->Content = '<a href="[sitetree_link,id=' . $this->idFromFixture(
-            'Page',
+            SiteTree::class,
             'about'
         ) . ']">this is not a broken link</a>';
         $obj->syncLinkTracking();
@@ -62,8 +61,8 @@ class SiteTreeBrokenLinksTest extends SapphireTest
      */
     public function testBrokenLinksNonPage()
     {
-        /** @var Page $aboutPage */
-        $aboutPage = $this->objFromFixture('Page', 'about');
+        /** @var SiteTree $aboutPage */
+        $aboutPage = $this->objFromFixture(SiteTree::class, 'about');
 
         /** @var NotPageObject $obj */
         $obj = $this->objFromFixture(NotPageObject::class, 'object1');
@@ -94,7 +93,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         // About-page backlinks contains this object
         $this->assertListEquals(
             [
-                ['ID' => $obj->ID]
+                ['ID' => $obj->ID],
             ],
             $aboutPage->BackLinkTracking()
         );
@@ -102,9 +101,9 @@ class SiteTreeBrokenLinksTest extends SapphireTest
 
     public function testBrokenAnchorBetweenPages()
     {
-        /** @var Page $obj */
-        $obj = $this->objFromFixture('Page', 'content');
-        $target = $this->objFromFixture('Page', 'about');
+        /** @var SiteTree $obj */
+        $obj = $this->objFromFixture(SiteTree::class, 'content');
+        $target = $this->objFromFixture(SiteTree::class, 'about');
 
         $obj->Content = "<a href=\"[sitetree_link,id={$target->ID}]#no-anchor-here\">this is a broken link</a>";
         $obj->syncLinkTracking();
@@ -117,7 +116,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest
 
     public function testBrokenVirtualPages()
     {
-        $obj = $this->objFromFixture('Page', 'content');
+        $obj = $this->objFromFixture(SiteTree::class, 'content');
         $vp = new VirtualPage();
 
         $vp->CopyContentFromID = $obj->ID;
@@ -131,7 +130,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest
 
     public function testBrokenInternalRedirectorPages()
     {
-        $obj = $this->objFromFixture('Page', 'content');
+        $obj = $this->objFromFixture(SiteTree::class, 'content');
         $rp = new RedirectorPage();
 
         $rp->RedirectionType = 'Internal';
@@ -148,10 +147,10 @@ class SiteTreeBrokenLinksTest extends SapphireTest
     public function testDeletingMarksBackLinkedPagesAsBroken()
     {
         // Set up two published pages with a link from content -> about
-        $linkDest = $this->objFromFixture('Page', 'about');
+        $linkDest = $this->objFromFixture(SiteTree::class, 'about');
 
-        /** @var Page $linkSrc */
-        $linkSrc = $this->objFromFixture('Page', 'content');
+        /** @var SiteTree $linkSrc */
+        $linkSrc = $this->objFromFixture(SiteTree::class, 'content');
         $linkSrc->Content = "<p><a href=\"[sitetree_link,id=$linkDest->ID]\">about us</a></p>";
         $linkSrc->write();
 
@@ -163,7 +162,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest
 
         // Confirm draft has broken link
         $linkSrc->flushCache();
-        $linkSrc = $this->objFromFixture('Page', 'content');
+        $linkSrc = $this->objFromFixture(SiteTree::class, 'content');
 
         $this->assertEquals(1, (int)$linkSrc->HasBrokenLink);
     }
@@ -173,13 +172,13 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         $this->logInWithPermission('ADMIN');
 
         // Set up two draft pages with a link from content -> about
-        /** @var Page $linkDest */
-        $linkDest = $this->objFromFixture('Page', 'about');
+        /** @var SiteTree $linkDest */
+        $linkDest = $this->objFromFixture(SiteTree::class, 'about');
         // Ensure that it's not on the published site
         $linkDest->doUnpublish();
 
-        /** @var Page $linkSrc */
-        $linkSrc = $this->objFromFixture('Page', 'content');
+        /** @var SiteTree $linkSrc */
+        $linkSrc = $this->objFromFixture(SiteTree::class, 'content');
         $linkSrc->Content = "<p><a href=\"[sitetree_link,id=$linkDest->ID]\">about us</a></p>";
         $linkSrc->write();
 
@@ -191,20 +190,20 @@ class SiteTreeBrokenLinksTest extends SapphireTest
 
         // Live doesn't have separate broken link tracking
         $this->assertEquals(0, DB::query("SELECT \"HasBrokenLink\" FROM \"SiteTree_Live\"
-			WHERE \"ID\" = $linkSrc->ID")->value());
+            WHERE \"ID\" = $linkSrc->ID")->value());
     }
 
     public function testRestoreFixesBrokenLinks()
     {
         // Create page and virtual page
-        $p = new Page();
+        $p = new SiteTree();
         $p->Title = "source";
         $p->write();
         $pageID = $p->ID;
         $this->assertTrue($p->publishRecursive());
 
         // Content links are one kind of link to pages
-        $p2 = new Page();
+        $p2 = new SiteTree();
         $p2->Title = "regular link";
         $p2->Content = "<a href=\"[sitetree_link,id=$p->ID]\">test</a>";
         $p2->write();
@@ -264,14 +263,14 @@ class SiteTreeBrokenLinksTest extends SapphireTest
     public function testRevertToLiveFixesBrokenLinks()
     {
         // Create page and virutal page
-        $page = new Page();
+        $page = new SiteTree();
         $page->Title = "source";
         $page->write();
         $pageID = $page->ID;
         $this->assertTrue($page->publishRecursive());
 
         // Content links are one kind of link to pages
-        $page2 = new Page();
+        $page2 = new SiteTree();
         $page2->Title = "regular link";
         $page2->Content = "<a href=\"[sitetree_link,id={$pageID}]\">test</a>";
         $page2->write();
@@ -302,7 +301,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         $this->assertEquals(1, $redirectorPage->HasBrokenLink);
 
         // Call doRevertToLive and confirm that broken links are restored
-        /** @var Page $pageLive */
+        /** @var SiteTree $pageLive */
         $pageLive = Versioned::get_one_by_stage(SiteTree::class, 'Live', '"SiteTree"."ID" = ' . $pageID);
         $pageLive->doRevertToLive();
 
@@ -316,15 +315,17 @@ class SiteTreeBrokenLinksTest extends SapphireTest
 
     public function testBrokenAnchorLinksInAPage()
     {
-        /** @var Page $obj */
-        $obj = $this->objFromFixture('Page', 'content');
+        /** @var SiteTree $obj */
+        $obj = $this->objFromFixture(SiteTree::class, 'content');
         $origContent = $obj->Content;
 
-        $obj->Content = $origContent . '<a href="#no-anchor-here">this links to a non-existent in-page anchor or skiplink</a>';
+        $obj->Content = $origContent . '<a href="#no-anchor-here">this links to a non-existent in-page anchor or ' .
+            'skiplink</a>';
         $obj->syncLinkTracking();
         $this->assertTrue($obj->HasBrokenLink, 'Page has a broken anchor/skiplink');
 
-        $obj->Content = $origContent . '<a href="#yes-anchor-here">this links to an existent in-page anchor/skiplink</a>';
+        $obj->Content = $origContent . '<a href="#yes-anchor-here">this links to an existent in-page ' .
+            'anchor/skiplink</a>';
         $obj->syncLinkTracking();
         $this->assertFalse($obj->HasBrokenLink, 'Page doesn\'t have a broken anchor or skiplink');
     }

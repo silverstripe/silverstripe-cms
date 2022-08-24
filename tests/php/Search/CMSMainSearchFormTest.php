@@ -20,7 +20,7 @@ class CMSMainSearchFormTest extends FunctionalTest
                 'q' => [
                     'Term' => 'Page 10',
                     'FilterClass' => CMSSiteTreeFilter_Search::class,
-                ]
+                ],
             ])
         );
 

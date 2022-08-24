@@ -3,9 +3,9 @@
 namespace SilverStripe\CMS\Tests\Model;
 
 use SilverStripe\Dev\TestOnly;
-use Page;
+use SilverStripe\CMS\Model\SiteTree;
 
-class SiteTreeTest_Conflicted extends Page implements TestOnly
+class SiteTreeTest_Conflicted extends SiteTree implements TestOnly
 {
     private static $table_name = 'SiteTreeTest_Conflicted';
 }

@@ -8,7 +8,6 @@ use SilverStripe\CMS\Controllers\SilverStripeNavigatorItem_LiveLink;
 use SilverStripe\CMS\Controllers\SilverStripeNavigatorItem_StageLink;
 use SilverStripe\CMS\Controllers\SilverStripeNavigatorItem_Unversioned;
 use SilverStripe\Dev\SapphireTest;
-use SilverStripe\Security\Member;
 
 class SilverStripeNavigatorTest extends SapphireTest
 {

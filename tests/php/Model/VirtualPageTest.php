@@ -2,7 +2,6 @@
 
 namespace SilverStripe\CMS\Tests\Model;
 
-use Page;
 use SilverStripe\CMS\Controllers\ModelAsController;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
@@ -43,8 +42,8 @@ class VirtualPageTest extends FunctionalTest
 
     protected static $required_extensions = [
         SiteTree::class => [
-            VirtualPageTest_PageExtension::class
-        ]
+            VirtualPageTest_PageExtension::class,
+        ],
     ];
 
     protected function setUp(): void
@@ -63,8 +62,8 @@ class VirtualPageTest extends FunctionalTest
         );
 
         // Ensure all pages are published
-        /** @var Page $page */
-        foreach (Page::get() as $page) {
+        /** @var SiteTree $page */
+        foreach (SiteTree::get() as $page) {
             $page->publishSingle();
         }
     }
@@ -75,8 +74,8 @@ class VirtualPageTest extends FunctionalTest
      */
     public function testEditingSourcePageUpdatesVirtualPages()
     {
-        /** @var Page $master */
-        $master = $this->objFromFixture('Page', 'master');
+        /** @var SiteTree $master */
+        $master = $this->objFromFixture(SiteTree::class, 'master');
         $master->Title = "New title";
         $master->MenuTitle = "New menutitle";
         $master->Content = "<p>New content</p>";
@@ -97,7 +96,7 @@ class VirtualPageTest extends FunctionalTest
     public function testMetaTags()
     {
         $this->logInWithPermission('ADMIN');
-        $master = $this->objFromFixture('Page', 'master');
+        $master = $this->objFromFixture(SiteTree::class, 'master');
         $vp1 = $this->objFromFixture(VirtualPage::class, 'vp1');
 
         // Test with title
@@ -118,8 +117,8 @@ class VirtualPageTest extends FunctionalTest
     {
         $this->logInWithPermission('ADMIN');
 
-        /** @var Page $master */
-        $master = $this->objFromFixture('Page', 'master');
+        /** @var SiteTree $master */
+        $master = $this->objFromFixture(SiteTree::class, 'master');
         $master->publishRecursive();
 
         $master->Title = "New title";
@@ -160,13 +159,13 @@ class VirtualPageTest extends FunctionalTest
         $vp = new VirtualPage();
         $vp->write();
 
-        $vp->CopyContentFromID = $this->idFromFixture('Page', 'master');
+        $vp->CopyContentFromID = $this->idFromFixture(SiteTree::class, 'master');
         $vp->write();
 
         $this->assertEquals("My Page", $vp->Title);
         $this->assertEquals("My Page Nav", $vp->MenuTitle);
 
-        $vp->CopyContentFromID = $this->idFromFixture('Page', 'master2');
+        $vp->CopyContentFromID = $this->idFromFixture(SiteTree::class, 'master2');
         $vp->write();
 
         $this->assertEquals("My Other Page", $vp->Title);
@@ -180,7 +179,7 @@ class VirtualPageTest extends FunctionalTest
      */
     public function testPublishingAVirtualPageCopiedPublishedContentNotDraftContent()
     {
-        $p = new Page();
+        $p = new SiteTree();
         $p->Content = "published content";
         $p->write();
         $p->publishRecursive();
@@ -220,7 +219,7 @@ class VirtualPageTest extends FunctionalTest
     public function testCantPublishVirtualPagesBeforeTheirSource()
     {
         // An unpublished source page
-        $p = new Page();
+        $p = new SiteTree();
         $p->Content = "test content";
         $p->write();
 
@@ -241,7 +240,7 @@ class VirtualPageTest extends FunctionalTest
 
     public function testCanEdit()
     {
-        $parentPage = $this->objFromFixture('Page', 'master3');
+        $parentPage = $this->objFromFixture(SiteTree::class, 'master3');
         $virtualPage = $this->objFromFixture(VirtualPage::class, 'vp3');
         $bob = $this->objFromFixture(Member::class, 'bob');
         $andrew = $this->objFromFixture(Member::class, 'andrew');
@@ -259,8 +258,8 @@ class VirtualPageTest extends FunctionalTest
 
     public function testCanView()
     {
-        /** @var Page $parentPage */
-        $parentPage = $this->objFromFixture('Page', 'master3');
+        /** @var SiteTree $parentPage */
+        $parentPage = $this->objFromFixture(SiteTree::class, 'master3');
         $parentPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
         /** @var VirtualPage $virtualPage */
@@ -283,7 +282,7 @@ class VirtualPageTest extends FunctionalTest
     public function testVirtualPagesArentInappropriatelyPublished()
     {
         // Fixture
-        $p = new Page();
+        $p = new SiteTree();
         $p->Content = "test content";
         $p->write();
         $vp = new VirtualPage();
@@ -332,7 +331,7 @@ class VirtualPageTest extends FunctionalTest
     public function testUnpublishingSourcePageOfAVirtualPageAlsoUnpublishesVirtualPage()
     {
         // Create page and virutal page
-        $p = new Page();
+        $p = new SiteTree();
         $p->Title = "source";
         $p->write();
         $this->assertTrue($p->publishRecursive());
@@ -364,7 +363,7 @@ class VirtualPageTest extends FunctionalTest
     public function testDeletingFromLiveSourcePageOfAVirtualPageAlsoUnpublishesVirtualPage()
     {
         // Create page and virutal page
-        $p = new Page();
+        $p = new SiteTree();
         $p->Title = "source";
         $p->write();
         $this->assertTrue($p->publishRecursive());
@@ -384,7 +383,7 @@ class VirtualPageTest extends FunctionalTest
             ->byID($pID);
         $this->assertNull($vpDraft);
         // Delete the source page form live, confirm that the virtual page has also been unpublished
-        /** @var Page $pLive */
+        /** @var SiteTree $pLive */
         $pLive = Versioned::get_by_stage(SiteTree::class, Versioned::LIVE)
             ->byID($pID);
         $this->assertTrue($pLive->doUnpublish());

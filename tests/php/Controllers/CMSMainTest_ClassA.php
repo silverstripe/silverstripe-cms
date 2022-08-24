@@ -2,11 +2,11 @@
 
 namespace SilverStripe\CMS\Tests\Controllers;
 
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Dev\TestOnly;
 use SilverStripe\ORM\ValidationException;
-use Page;
 
-class CMSMainTest_ClassA extends Page implements TestOnly
+class CMSMainTest_ClassA extends SiteTree implements TestOnly
 {
     private static $table_name = 'CMSMainTest_ClassA';
 

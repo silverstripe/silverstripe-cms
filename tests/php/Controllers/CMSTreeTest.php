@@ -32,7 +32,7 @@ class CMSTreeTest extends FunctionalTest
         $data = [
             'SiblingIDs' => $siblingIDs,
             'ID' => $page2->ID,
-            'ParentID' => 0
+            'ParentID' => 0,
         ];
 
         $response = $this->post('admin/pages/edit/savetreenode', $data);
@@ -62,12 +62,12 @@ class CMSTreeTest extends FunctionalTest
         $siblingIDs = [
             $page31->ID,
             $page2->ID,
-            $page32->ID
+            $page32->ID,
         ];
         $data = [
             'SiblingIDs' => $siblingIDs,
             'ID' => $page2->ID,
-            'ParentID' => $page3->ID
+            'ParentID' => $page3->ID,
         ];
         $response = $this->post('admin/pages/edit/savetreenode', $data);
         $this->assertEquals(200, $response->getStatusCode());
@@ -95,7 +95,7 @@ class CMSTreeTest extends FunctionalTest
         $this->logInWithPermission('ADMIN');
 
         // Check page
-        $result = $this->get('admin/pages/edit/updatetreenodes?ids='.$page1->ID);
+        $result = $this->get('admin/pages/edit/updatetreenodes?ids=' . $page1->ID);
         $this->assertEquals(200, $result->getStatusCode());
         $this->assertEquals('application/json', $result->getHeader('Content-Type'));
         $data = json_decode($result->getBody() ?? '', true);
@@ -105,7 +105,7 @@ class CMSTreeTest extends FunctionalTest
         $this->assertEmpty($pageData['PrevID']);
 
         // check subpage
-        $result = $this->get('admin/pages/edit/updatetreenodes?ids='.$page31->ID);
+        $result = $this->get('admin/pages/edit/updatetreenodes?ids=' . $page31->ID);
         $this->assertEquals(200, $result->getStatusCode());
         $this->assertEquals('application/json', $result->getHeader('Content-Type'));
         $data = json_decode($result->getBody() ?? '', true);
@@ -115,7 +115,7 @@ class CMSTreeTest extends FunctionalTest
         $this->assertEmpty($pageData['PrevID']);
 
         // Multiple pages
-        $result = $this->get('admin/pages/edit/updatetreenodes?ids='.$page1->ID.','.$page2->ID);
+        $result = $this->get('admin/pages/edit/updatetreenodes?ids=' . $page1->ID . ',' . $page2->ID);
         $this->assertEquals(200, $result->getStatusCode());
         $this->assertEquals('application/json', $result->getHeader('Content-Type'));
         $data = json_decode($result->getBody() ?? '', true);

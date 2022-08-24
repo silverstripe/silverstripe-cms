@@ -4,9 +4,9 @@ namespace SilverStripe\CMS\Tests\Model;
 
 use SilverStripe\Dev\TestOnly;
 use SilverStripe\Security\Permission;
-use Page;
+use SilverStripe\CMS\Model\SiteTree;
 
-class SiteTreeActionsTest_Page extends Page implements TestOnly
+class SiteTreeActionsTest_Page extends SiteTree implements TestOnly
 {
     public function canEdit($member = null)
     {
