@@ -134,7 +134,7 @@ class SiteTreeURLSegmentField extends TextField
      */
     public function getURLPrefix()
     {
-        return $this->urlPrefix;
+        return rtrim($this->urlPrefix ?? '', '/') . '/';
     }
 
     public function getURLSuffix()
