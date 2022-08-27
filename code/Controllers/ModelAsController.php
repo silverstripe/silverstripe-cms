@@ -123,11 +123,6 @@ class ModelAsController extends Controller implements NestedController
             throw new Exception('ModelAsController->getNestedController(): was not passed a URLSegment value.');
         }
 
-        // Find page by link, regardless of current locale settings
-        if (class_exists('Translatable')) {
-            Translatable::disable_locale_filter();
-        }
-
         // url encode unless it's multibyte (already pre-encoded in the database)
         $filter = URLSegmentFilter::create();
         if (!$filter->getAllowMultibyte()) {
