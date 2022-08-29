@@ -30,31 +30,6 @@
 	}
 }
 
-.CMSPageHistoryController {
-	overflow: hidden; // Fixes weird bug for double scroll in history area on browser resize
-
-	ins {
-		background-color: #DFD;
-		padding: 2px;
-		text-decoration: none;
-	}
-
-	del {
-		background-color: #FDD;
-		padding: 2px;
-		color: darken(#FDD, 30%);
-	}
-
-  .htmleditorfield.readonly img {
-    max-width: 100%;
-    height: auto;
-  }
-
-	.cms-content-tools.collapsed {
-		overflow: hidden;
-	}
-}
-
 /** --------------------------------------------
  * Tree View (collapsed for sidebar)
  * -------------------------------------------- */
