@@ -688,15 +688,17 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $base = $this->URLSegment;
         }
 
-        $this->extend('updateRelativeLink', $base, $action);
-
         // Legacy support: If $action === true, retain URLSegment for homepages,
         // but don't append any action
         if ($action === true) {
             $action = null;
         }
 
-        return Controller::join_links($base, '/', $action);
+        $link = Controller::join_links($base, '/', $action);
+
+        $this->extend('updateRelativeLink', $link, $base, $action);
+
+        return $link;
     }
 
     /**

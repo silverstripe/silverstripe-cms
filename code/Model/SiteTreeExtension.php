@@ -75,13 +75,15 @@ abstract class SiteTreeExtension extends DataExtension
      * before {@link SiteTree::RelativeLink()} calls {@link Controller::join_links()}
      * on the $base and $action
      *
-     * @param string &$base The URL of this page relative to siteroot, not including
+     * @param string &$link The URL of this page relative to siteroot including
      * the action
-     * @param string|boolean &$action The action or subpage called on this page.
+     * @param string $base The URL of this page relative to siteroot, not including
+     * the action
+     * @param string|boolean $action The action or subpage called on this page.
      * (Legacy support) If this is true, then do not reduce the 'home' urlsegment
      * to an empty link
      */
-    public function updateRelativeLink(&$base, &$action)
+    public function updateRelativeLink(&$link, $base, $action)
     {
     }
 }
