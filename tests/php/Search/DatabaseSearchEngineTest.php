@@ -41,7 +41,7 @@ class DatabaseSearchEngineTest extends SapphireTest
         $page = new SiteTree();
         $page->Title = "This page provides food as bar";
         $page->write();
-        $page->doPublish();
+        $page->publishRecursive();
 
         $results = DB::get_conn()->searchEngine([ SiteTree::class, File::class ], "foo* as* bar*", 0, 100, "\"Relevance\" DESC", "", true);
 
