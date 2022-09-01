@@ -2076,7 +2076,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         }
 
         if ($version) {
-            $record->doRollbackTo($version);
+            $record->rollbackRecursive($version);
             $message = _t(
                 __CLASS__ . '.ROLLEDBACKVERSIONv2',
                 "Rolled back to version #{version}.",
