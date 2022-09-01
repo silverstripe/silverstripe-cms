@@ -108,7 +108,7 @@ class CMSSiteTreeFilterTest extends SapphireTest
         $changedPage->Title = 'Changed 2';
         $changedPage->write();
         $changedPage->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
-        $changedPage->doRollbackTo($changedPageVersion);
+        $changedPage->rollbackRecursive($changedPageVersion);
 
         $f = new CMSSiteTreeFilter_ChangedPages(['Term' => 'Changed']);
         $results = $f->pagesIncluded();
