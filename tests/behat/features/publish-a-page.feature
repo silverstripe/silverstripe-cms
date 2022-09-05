@@ -6,6 +6,8 @@ Feature: Publish a page
   Background:
     Given a "page" "My Page" with "URLSegment"="my-page" and "Content"="<p>initial content</p>"
     And the "page" "My Page" is not published
+    And the "group" "EDITOR" has permissions "Access to 'Pages' section"
+    And I am logged in as a member of "EDITOR" group
 
   @javascript
   Scenario: I can have a unpublished version of a page that is not publicly available
@@ -14,8 +16,7 @@ Feature: Publish a page
 
   @javascript
   Scenario: I can publish a previously never published page
-    Given I am logged in with "ADMIN" permissions
-    And I go to "/admin/pages"
+    Given I go to "/admin/pages"
     And I should see "My Page" in the tree
     And I click on "My Page" in the tree
     And I press the "Publish" button
@@ -27,8 +28,7 @@ Feature: Publish a page
 
   @javascript
   Scenario: I will get different options depending on the current publish state of the page
-    Given I am logged in with "ADMIN" permissions
-    And I go to "/admin/pages"
+    Given I go to "/admin/pages"
     And I should see "My Page" in the tree
     And I click on "My Page" in the tree
 
@@ -58,7 +58,6 @@ Feature: Publish a page
     And I go to "/hello"
     Then I should see "hello world"
 
-    Given I am logged in with "ADMIN" permissions
     And I go to "/admin/pages"
     And I should see "Hello" in the tree
     And I click on "Hello" in the tree
@@ -72,8 +71,7 @@ Feature: Publish a page
 
   @javascript
   Scenario: I can delete a page from live and draft stage to completely remove it
-    Given I am logged in with "ADMIN" permissions
-    And I go to "/admin/pages"
+    Given I go to "/admin/pages"
     And I should see "My Page" in the tree
     And I click on "My Page" in the tree
     And I press the "Publish" button

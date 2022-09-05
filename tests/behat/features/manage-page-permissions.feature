@@ -5,8 +5,8 @@ Feature: Manage page permissions
 
   Background:
     Given a "page" "Home" with "Content"="<p>Welcome</p>"
-    And a "group" "AUTHOR group" has permissions "Access to 'Pages' section"
-    And a "group" "SECURITY group" has permissions "Access to 'Security' section"
+    And a "group" "EDITOR" has permissions "Access to 'Pages' section"
+    And a "group" "SECURITY" has permissions "Access to 'Security' section"
     And I am logged in with "ADMIN" permissions
     And I go to "/admin/pages"
     And I click on "Home" in the tree
@@ -20,42 +20,44 @@ Feature: Manage page permissions
   #   When I am not logged in
   #   And I go to the homepage
   #   Then I should see "Welcome"
-
   Scenario: I can limit page view permissions to logged-in users
     Given I select "Logged-in users" from "Who can view this page?" input group
     And I press the "Publish" button
     When I am not logged in
     And I go to the homepage
     Then I should see a log-in form
-    When I am logged in with "AUTHOR" permissions
+    When I am logged in as a member of "EDITOR" group
     And I go to the homepage
     Then I should see "Welcome"
-
   Scenario: I can limit page view permissions to certain groups
     Given I select "Only these groups (choose from list)" from "Who can view this page?" input group
-    And I select "AUTHOR group" in the "#Form_EditForm_ViewerGroups_Holder" tree dropdown
+    And I select "EDITOR" in the "#Form_EditForm_ViewerGroups_Holder" tree dropdown
     And I press the "Publish" button
     When I am not logged in
     And I go to the homepage
     Then I should see a log-in form
-    When I am logged in with "SECURITY" permissions
+    When I am logged in as a member of "SECURITY" group
     And I go to the homepage
     Then I will see a "warning" log-in message
     When I am not logged in
-    And I am logged in with "AUTHOR" permissions
+    And I am logged in as a member of "EDITOR" group
     And I go to the homepage
     Then I should see "Welcome"
-
   Scenario: I can limit page edit permissions to logged-in users
-    Given I select "Logged-in users" from "Who can edit this page?" input group
+    Given I am not logged in
+    And I am logged in as a member of "EDITOR" group
+    And I go to "/admin/pages"
+    And I click on "Home" in the tree
+    Then I should see an edit page form
+    And I click the "Settings" CMS tab
+    And I select "Logged-in users" from "Who can edit this page?" input group
     And I press the "Publish" button
-    Then pages should be editable by "AUTHOR"
+    Then pages should be editable by "EDITOR"
     And pages should be editable by "ADMIN"
-
   Scenario: I can limit page edit permissions to certain groups
     Given I select "Only these groups (choose from list)" from "Who can edit this page?" input group
     And I select "ADMIN group" in the "#Form_EditForm_EditorGroups_Holder" tree dropdown
     And I press the "Publish" button
-    Then pages should not be editable by "AUTHOR"
+    Then pages should not be editable by "EDITOR"
     But pages should be editable by "ADMIN"
 
