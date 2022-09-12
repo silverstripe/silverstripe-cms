@@ -5,10 +5,11 @@ Feature: Preview a page
 
   Background:
     Given a "page" "About Us"
+    And the "group" "EDITOR" has permissions "Access to 'Pages' section"
+    And I am logged in as a member of "EDITOR" group
 
   @javascript
   Scenario: I can show a preview of the current page from the pages section
-    Given I am logged in with "ADMIN" permissions
     And I go to "/admin/pages"
     Then I should see "About Us" in the tree
 
@@ -23,7 +24,6 @@ Feature: Preview a page
   # - We should continue testing against it after we have fixtures ready
   @javascript
   Scenario: I can see an updated preview when editing content
-    Given I am logged in with "ADMIN" permissions
     And I go to "/admin/pages"
     Then I should see "About Us" in the tree
 

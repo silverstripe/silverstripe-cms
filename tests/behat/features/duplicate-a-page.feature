@@ -4,8 +4,9 @@ Feature: Duplicate a page
 	So that I can grow my website
 
 	Background:
-		Given I am logged in with "ADMIN" permissions
-		Given a "page" "Page1"
+		Given the "group" "EDITOR" has permissions "Access to 'Pages' section"
+    	And I am logged in as a member of "EDITOR" group
+		And a "page" "Page1"
 		And the "page" "Page1a" is a child of the "page" "Page1"
 		And the "page" "Page1b" is a child of the "page" "Page1"
 		And the "page" "Page1b1" is a child of the "page" "Page1b"

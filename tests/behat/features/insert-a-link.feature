@@ -8,7 +8,8 @@ So that I can link to a external website or a page on my site
     Given a "page" "Home"
       And a "page" "About Us" has the "Content" "<p>My awesome content</p>"
       And a "file" "file1.jpg"
-      And I am logged in with "ADMIN" permissions
+      And the "group" "EDITOR" has permissions "Access to 'Pages' section"
+      And I am logged in as a member of "EDITOR" group
       And I go to "/admin/pages"
       And I click on "About Us" in the tree
 

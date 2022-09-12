@@ -4,8 +4,8 @@ Feature: Sitetree
   So that I can operate my website
 
   Background:
-    Given the "group" "EDITOR group" has permissions "CMS_ACCESS_LeftAndMain" and "SITETREE_REORGANISE"
-    And I am logged in with "EDITOR" permissions
+    Given the "group" "EDITOR" has permissions "Access to 'Pages' section" and "SITETREE_REORGANISE"
+    And I am logged in as a member of "EDITOR" group
     And a "page" "One"
     And a "page" "Two"
     And a "page" "Three"
