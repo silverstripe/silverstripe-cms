@@ -1,0 +1,9 @@
+SilverStripe\CMS\Tests\CMSEditLinkExtensionTest\BelongsToPage:
+  one:
+    Name: 'some name'
+
+SilverStripe\CMS\Tests\CMSEditLinkExtensionTest\PageWithChild:
+  root:
+    Title: 'page has child'
+    ChildObjects:
+      - '=>SilverStripe\CMS\Tests\CMSEditLinkExtensionTest\BelongsToPage.one'

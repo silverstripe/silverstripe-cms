@@ -19,7 +19,7 @@
         }
     ],
     "require": {
-        "silverstripe/admin": "^1.9@dev",
+        "silverstripe/admin": "^1.12@dev",
         "silverstripe/campaign-admin": "^1.7@dev",
         "silverstripe/framework": "^4.11",
         "silverstripe/reports": "^4.7@dev",
