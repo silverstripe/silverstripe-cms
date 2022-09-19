@@ -62,7 +62,7 @@ Feature: Edit a page
     Then I should see "About Us"
     And I go to "/about-modified-us"
     Then I should not see "About Us"
-    
+
     # Assert URL segment + metadata on frontend
     When I go to "/admin/pages"
     And I click on "About Us" in the tree
@@ -79,19 +79,19 @@ Feature: Edit a page
     When I click on "About Us" in the tree
 
     # Embed files from the "Files" section of the admin area
-    And I click on the "div[aria-label='Insert from Files'] button" element
+    And I press the "Insert from Files" HTML field button
     And I click on the ".gallery__files .gallery-item__thumbnail" element
     And I press the "Insert file" button
 
     # Link to a file in the "Files" section of the admin area
-    And I click on the "div[aria-label='Insert link [Ctrl+K]'] button" element
-    And I select "Link to a file" from the TinyMCE menu with javascript
+    And I press the "Insert link" HTML field button
+    And I click "Link to a file" in the ".tox-collection__group" element
     And I click on the ".gallery__files .gallery-item__thumbnail" element
     And I fill in "Form_fileInsertForm_Text" with "MyImage"
     And I press the "Link to file" button
 
     # Embed media from a URL
-    And I click on the "div[aria-label='Insert media via URL'] button" element
+    And I press the "Insert media via URL" button
     And I fill in "Form_remoteCreateForm_Url" with "https://www.youtube.com/watch?v=ScMzIvxBSi4"
     And I press "Add media"
     And I wait for 15 seconds

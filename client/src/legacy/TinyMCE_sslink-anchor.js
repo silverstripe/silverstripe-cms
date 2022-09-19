@@ -19,7 +19,7 @@ TinyMCEActionRegistrar
     'sslink',
     {
       text: i18n._t('CMS.LINKLABEL_ANCHOR', 'Anchor on a page'),
-      onclick: (activeEditor) => activeEditor.execCommand(commandName),
+      onAction: (activeEditor) => activeEditor.execCommand(commandName),
       priority: 60,
     },
     editorIdentifier,
@@ -32,8 +32,8 @@ const plugin = {
       const field = jQuery(`#${editor.id}`).entwine('ss');
       // Get the anchors in the current field and save them as props for AnchorSelectorField
       const currentPageID = Number(jQuery('#Form_EditForm_ID').val() || 0);
-      const validTargets = editor
-        .$('[id],[name]', editor.getBody())
+      const validTargets = jQuery(editor.getBody())
+        .find('[id],[name]')
         .toArray()
         .map((element) => element.id || element.name);
       ss.store.dispatch(updatedCurrentField(currentPageID, validTargets, editor.id));

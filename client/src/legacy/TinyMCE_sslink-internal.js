@@ -18,7 +18,7 @@ TinyMCEActionRegistrar
     'sslink',
     {
       text: i18n._t('CMS.LINKLABEL_PAGE', 'Page on this site'),
-      onclick: (activeEditor) => activeEditor.execCommand(commandName),
+      onAction: (activeEditor) => activeEditor.execCommand(commandName),
       priority: 90,
     },
     editorIdentifier,
