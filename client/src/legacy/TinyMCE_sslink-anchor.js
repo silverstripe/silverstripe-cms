@@ -74,8 +74,9 @@ jQuery.entwine('ss', ($) => {
       const handleHide = () => this.close();
       const handleInsert = (...args) => this.handleInsert(...args);
       const attrs = this.getOriginalAttributes();
-      const selection = tinymce.activeEditor.selection;
-      const selectionContent = selection.getContent() || '';
+      const editor = this.getElement().getEditor();
+      const selection = editor.getInstance().selection;
+      const selectionContent = editor.getSelection();
       const tagName = selection.getNode().tagName;
       const requireLinkText = tagName !== 'A' && selectionContent.trim() === '';
       const currentPageID = Number($('#Form_EditForm_ID').val() || 0);
