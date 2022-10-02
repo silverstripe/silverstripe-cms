@@ -744,7 +744,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     {
         // This method has to be implemented here to satisfy the CMSPreviewable interface.
         // See the actual implementation in CMSEditLinkExtension.
-        return $this->extend('CMSEditLink')[0];
+        return $this->extend('CMSEditLink')[0] ?? '404-no-cms-edit-link';
     }
 
     /**
