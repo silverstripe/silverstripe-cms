@@ -119,22 +119,6 @@ class FixtureContext extends BehatFixtureContext
     }
 
     /**
-     * Assumes you've just opened the Insert link menu, e.g.
-     * I click on the "div[aria-label='Insert link [Ctrl+K]'] button" element
-     *
-     * @When /^I select "(.+?)" from the TinyMCE menu with javascript$/
-     * @param string $label
-     */
-    public function iSelectFromTheTinyMceMenu($label)
-    {
-        // :visible and :contains are jQuery css selectors
-        $js = <<<JS
-            jQuery(".mce-menu-item:visible span:contains('{$label}')").click();
-JS;
-        $this->getMainContext()->getSession()->executeScript($js);
-    }
-
-    /**
      * e.g. --PageOne,--PageTwo,---PageTwoChild,--PageThree
      *
      * @Then /^the site tree order should be "(.+?)"$/

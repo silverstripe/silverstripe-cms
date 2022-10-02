@@ -18,7 +18,7 @@ TinyMCEActionRegistrar
     'sslink',
     {
       text: i18n._t('CMS.LINKLABEL_PAGE', 'Page on this site'),
-      onclick: (activeEditor) => activeEditor.execCommand(commandName),
+      onAction: (activeEditor) => activeEditor.execCommand(commandName),
       priority: 90,
     },
     editorIdentifier,
@@ -95,8 +95,10 @@ jQuery.entwine('ss', ($) => {
      * @return {Boolean}
      */
     getRequireLinkText() {
-      const selection = this.getElement().getEditor().getInstance().selection;
-      const selectionContent = selection.getContent() || '';
+      const editor = this.getElement().getEditor();
+      const selection = editor.getInstance().selection;
+      const selectionContent = editor.getSelection();
+
       const tagName = selection.getNode().tagName;
       const requireLinkText = tagName !== 'A' && selectionContent.trim() === '';
 
