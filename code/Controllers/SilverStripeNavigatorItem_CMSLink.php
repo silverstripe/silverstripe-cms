@@ -3,6 +3,7 @@
 namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\Admin\LeftAndMain;
+use SilverStripe\Admin\Navigator\SilverStripeNavigatorItem;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\Control\Controller;
 
