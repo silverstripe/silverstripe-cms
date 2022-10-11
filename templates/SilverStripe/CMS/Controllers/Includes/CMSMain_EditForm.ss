@@ -28,7 +28,7 @@
 			</a>
 			<% end_if %>
 
-			<% include SilverStripe\\Admin\\LeftAndMain_ViewModeSelector SelectID="preview-mode-dropdown-in-content" %>
+			<% include SilverStripe\\Admin\\LeftAndMain_ViewModeSelector SelectID="preview-mode-dropdown-in-content", ExtraClass='' %>
 		</div>
 		<% end_if %>
 	</div>
