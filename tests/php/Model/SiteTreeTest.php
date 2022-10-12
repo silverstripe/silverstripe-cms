@@ -9,6 +9,8 @@ use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\CMS\Tests\Controllers\SiteTreeTest_NamespaceMapTestController;
+use SilverStripe\CMS\Tests\CMSEditLinkExtensionTest\BelongsToPage;
+use SilverStripe\CMS\Tests\CMSEditLinkExtensionTest\PageWithChild;
 use SilverStripe\CMS\Tests\Page\SiteTreeTest_NamespaceMapTest;
 use SilverStripe\Control\ContentNegotiator;
 use SilverStripe\Control\Controller;
@@ -42,7 +44,10 @@ use const RESOURCES_DIR;
 
 class SiteTreeTest extends SapphireTest
 {
-    protected static $fixture_file = 'SiteTreeTest.yml';
+    protected static $fixture_file = [
+        'SiteTreeTest.yml',
+        'CMSEditLinkExtensionTest/fixtures.yml',
+    ];
 
     protected static $illegal_extensions = [
         SiteTree::class => [
@@ -60,6 +65,8 @@ class SiteTreeTest extends SapphireTest
         SiteTreeTest_NotRoot::class,
         SiteTreeTest_StageStatusInherit::class,
         SiteTreeTest_DataObject::class,
+        PageWithChild::class,
+        BelongsToPage::class,
     ];
 
     public function reservedSegmentsProvider()
@@ -2042,5 +2049,29 @@ class SiteTreeTest extends SapphireTest
             'retore action has no form when page archived'
         );
         // END ARCHIVED
+    }
+
+    public function testGetCMSEditLinkForManagedDataObject()
+    {
+        $page = $this->objFromFixture(PageWithChild::class, 'root');
+        $child = $this->objFromFixture(BelongsToPage::class, 'one');
+        $this->assertSame(
+            "http://localhost/admin/pages/edit/show/$page->ID/field/ChildObjects/item/$child->ID",
+            $page->getCMSEditLinkForManagedDataObject($child, 'Parent')
+        );
+    }
+
+    public function testCMSEditLink()
+    {
+        $page = $this->objFromFixture(PageWithChild::class, 'root');
+        $child = $this->objFromFixture(BelongsToPage::class, 'one');
+        $this->assertSame(
+            "http://localhost/admin/pages/edit/show/$page->ID",
+            $page->CMSEditLink()
+        );
+        $this->assertSame(
+            "http://localhost/admin/pages/edit/show/$page->ID/field/ChildObjects/item/$child->ID",
+            $child->CMSEditLink()
+        );
     }
 }

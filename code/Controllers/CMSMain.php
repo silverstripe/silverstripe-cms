@@ -377,6 +377,16 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         return $this->Link('listview');
     }
 
+    /**
+     * Get the link for editing a page.
+     *
+     * @see CMSEditLinkExtension::getCMSEditLinkForManagedDataObject()
+     */
+    public function getCMSEditLinkForManagedDataObject(SiteTree $obj): string
+    {
+        return Controller::join_links(CMSPageEditController::singleton()->Link('show'), $obj->ID);
+    }
+
     public function LinkPageEdit($id = null)
     {
         if (!$id) {

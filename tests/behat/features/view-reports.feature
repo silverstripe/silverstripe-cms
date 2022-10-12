@@ -6,7 +6,8 @@ Feature: View Reports
   Background:
     Given a "page" "Empty Page"
     And a "page" "Filled Page" with "Content"="<p>Some Content</p>"
-    And I am logged in with "ADMIN" permissions
+    And the "group" "EDITOR" has permissions "Access to 'Pages' section" and "Access to 'Reports' section"
+    And I am logged in as a member of "EDITOR" group
     And I go to "/admin/reports"
 
   Scenario: I can view the "Pages with no content" report

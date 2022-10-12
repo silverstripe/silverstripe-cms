@@ -7,7 +7,9 @@ Feature: Edit a page
     Given a "page" "About Us" has the "Content" "<p>My content</p>"
     And a "image" "assets/file1.jpg"
     #And a file "assets/file1.jpg" with changes "image"="assets/folder1/file2.jpg" and "page"="About Us"
-    And I am logged in with "ADMIN" permissions
+		And the "group" "AUTHOR" has permissions "Access to 'Pages' section"
+    And the "group" "EDITOR" has permissions "Access to 'Pages' section" and "SITETREE_GRANT_ACCESS"
+    And I am logged in as a member of "AUTHOR" group
     And I go to "/admin/pages"
     Then I should see "About Us" in the tree
 
@@ -115,6 +117,10 @@ Feature: Edit a page
     Then I should see "Please choose a linked page in the main content fields in order to publish"
 
   Scenario: Change permission levels for who can view and edit the page, at an individual page level
+    Given I am not logged in
+    And I am logged in as a member of "EDITOR" group
+    And I go to "/admin/pages"
+    Then I should see "About Us" in the tree
     When I click on "About Us" in the tree
     And I click the "Settings" CMS tab
     And I select the "Form_EditForm_CanViewType_LoggedInUsers" radio button

@@ -4,7 +4,9 @@ namespace SilverStripe\CMS\Model;
 
 use Page;
 use Psr\SimpleCache\CacheInterface;
+use SilverStripe\Admin\CMSEditLinkExtension;
 use SilverStripe\Assets\Shortcodes\FileLinkTracking;
+use SilverStripe\CMS\Controllers\CMSMain;
 use SilverStripe\CMS\Controllers\CMSPageEditController;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\CMS\Controllers\ModelAsController;
@@ -113,7 +115,6 @@ use SilverStripe\View\SSViewer;
  */
 class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvider, CMSPreviewable, Resettable, Flushable, MemberCacheFlusher
 {
-
     /**
      * Indicates what kind of children this page type can have.
      * This can be an array of allowed child classes, or the string "none" -
@@ -216,6 +217,12 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     private static $controller_name = null;
 
     /**
+     * The class of the LeftAndMain controller where this class is managed.
+     * @see CMSEditLinkExtension::getCMSEditOwner()
+     */
+    private static string $cms_edit_owner = CMSMain::class;
+
+    /**
      * You can define the a map of Page namespaces to Controller namespaces here
      * This will apply after the magic of appending Controller, and in order
      * Must be applied to SiteTree config e.g.
@@ -316,6 +323,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         Hierarchy::class,
         Versioned::class,
         InheritedPermissionsExtension::class,
+        CMSEditLinkExtension::class,
     ];
 
     private static $searchable_fields = [
@@ -736,13 +744,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function CMSEditLink()
     {
-        $link = Controller::join_links(
-            CMSPageEditController::singleton()->Link('show'),
-            $this->ID
-        );
-        return Director::absoluteURL($link);
+        // This method has to be implemented here to satisfy the CMSPreviewable interface.
+        // See the actual implementation in CMSEditLinkExtension.
+        return $this->extend('CMSEditLink')[0];
     }
-
 
     /**
      * Return a CSS identifier generated from this page's link.

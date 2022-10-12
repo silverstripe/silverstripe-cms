@@ -8,7 +8,8 @@ Feature: Search for a page
     Given a "page" "Home"
     And a "page" "About Us"
     And a "page" "Contact Us"
-    And I am logged in with "ADMIN" permissions
+    And the "group" "EDITOR" has permissions "Access to 'Pages' section"
+    And I am logged in as a member of "EDITOR" group
     And I go to "/admin/pages"
     And I press the "Filter" button
 

@@ -5,7 +5,8 @@ Feature: Apply rich formatting to content
 
   Background:
     Given a "page" "About Us" has the "Content" "<h1>My awesome headline</h1><p>Some amazing content</p>"
-    And I am logged in with "ADMIN" permissions
+    Given the "group" "EDITOR" has permissions "Access to 'Pages' section"
+    And I am logged in as a member of "EDITOR" group
     And I go to "/admin/pages"
     Then I click on "About Us" in the tree
 

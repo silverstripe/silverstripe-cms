@@ -7,7 +7,8 @@ Feature: Redirector Pages
     Given a "page" "Page 1"
     And a "page" "My Redirect" which redirects to a "page" "Page 1"
     And a "image" "assets/file1.jpg"
-    And I am logged in with "ADMIN" permissions
+    And the "group" "EDITOR" has permissions "Access to 'Pages' section"
+    And I am logged in as a member of "EDITOR" group
     And I go to "/admin/pages"
 
   Scenario: Only the appropriate fields are shown
