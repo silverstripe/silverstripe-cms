@@ -141,7 +141,7 @@ class CMSBatchActionsTest extends SapphireTest
         $this->assertEquals($archivedID, $list->first()->ParentID);
 
         // Run restore
-        $result = json_decode($action->run($list) ?? '', true);
+        $result = json_decode($action->run($list)->getBody(), true);
         $this->assertEquals(
             [
                 $archivedxID => $archivedxID,
@@ -161,7 +161,7 @@ class CMSBatchActionsTest extends SapphireTest
         $this->assertEquals(0, $list->last()->ParentID); // archived (parent)
 
         // Run restore
-        $result = json_decode($action->run($list) ?? '', true);
+        $result = json_decode($action->run($list)->getBody(), true);
         $this->assertEquals(
             [
                 // Order of archived is opposite to order items are passed in, as

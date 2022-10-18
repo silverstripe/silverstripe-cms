@@ -192,12 +192,7 @@ class CMSPageAddController extends CMSPageEditController
         return $form;
     }
 
-    /**
-     * @param array $data
-     * @param Form $form
-     * @return HTTPResponse
-     */
-    public function doAdd($data, $form)
+    public function doAdd(array $data, Form $form): HTTPResponse
     {
         $className = isset($data['PageType']) ? $data['PageType'] : "Page";
         $parentID = isset($data['ParentID']) ? (int)$data['ParentID'] : 0;
@@ -241,7 +236,7 @@ class CMSPageAddController extends CMSPageEditController
         return $this->redirect(Controller::join_links($editController->Link('show'), $record->ID));
     }
 
-    public function doCancel($data, $form)
+    public function doCancel(array $data, Form $form): HTTPResponse
     {
         return $this->redirect(CMSMain::singleton()->Link());
     }

@@ -17,10 +17,9 @@ class OldPageRedirector extends Extension
      * On every URL that generates a 404, we'll capture it here and see if we can
      * find an old URL that it should be redirecting to.
      *
-     * @param HTTPRequest $request The request object
      * @throws HTTPResponse_Exception
      */
-    public function onBeforeHTTPError404($request)
+    public function onBeforeHTTPError404(HTTPRequest $request)
     {
         // We need to get the URL ourselves because $request->allParams() only has a max of 4 params
         $params = preg_split('|/+|', $request->getURL() ?? '');

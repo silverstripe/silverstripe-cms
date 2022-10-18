@@ -85,11 +85,7 @@ class RootURLController extends Controller implements Resettable
         }
     }
 
-    /**
-     * @param HTTPRequest $request
-     * @return HTTPResponse
-     */
-    public function handleRequest(HTTPRequest $request)
+    public function handleRequest(HTTPRequest $request): HTTPResponse
     {
         self::$is_at_root = true;
         $this->beforeHandleRequest($request);

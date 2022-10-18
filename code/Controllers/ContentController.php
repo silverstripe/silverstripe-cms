@@ -187,11 +187,9 @@ class ContentController extends Controller
      * This acts the same as {@link Controller::handleRequest()}, but if an action cannot be found this will attempt to
      * fall over to a child controller in order to provide functionality for nested URLs.
      *
-     * @param HTTPRequest $request
-     * @return HTTPResponse
      * @throws HTTPResponse_Exception
      */
-    public function handleRequest(HTTPRequest $request)
+    public function handleRequest(HTTPRequest $request): HTTPResponse
     {
         /** @var SiteTree $child */
         $child = null;

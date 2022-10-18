@@ -4,6 +4,7 @@ namespace SilverStripe\CMS\BatchActions;
 
 use SilverStripe\Admin\CMSBatchAction;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Control\HTTPResponse;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\Versioned\Versioned;
@@ -20,7 +21,7 @@ class CMSBatchAction_Restore extends CMSBatchAction
         return _t(__CLASS__ . '.RESTORE', 'Restore');
     }
 
-    public function run(SS_List $pages)
+    public function run(SS_List $pages): HTTPResponse
     {
         // Sort pages by depth
         $pageArray = $pages->toArray();
