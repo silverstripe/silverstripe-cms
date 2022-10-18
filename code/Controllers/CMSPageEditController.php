@@ -53,30 +53,27 @@ class CMSPageEditController extends CMSMain
 
     /**
      * Action handler for adding pages to a campaign
-     *
-     * @param array $data
-     * @param Form $form
-     * @return DBHTMLText|HTTPResponse
      */
-    public function addtocampaign($data, $form)
+    public function addtocampaign(array $data, Form $form): HTTPResponse
     {
         $id = $data['ID'];
         $record = \Page::get()->byID($id);
 
         $handler = AddToCampaignHandler::create($this, $record);
-        $results = $handler->addToCampaign($record, $data);
-        if (is_null($results)) {
-            return null;
+        $response = $handler->addToCampaign($record, $data);
+        $message = $response->getBody();
+        if (empty($message)) {
+            return $response;
         }
 
         if ($this->getSchemaRequested()) {
             // Send extra "message" data with schema response
-            $extraData = ['message' => $results];
+            $extraData = ['message' => $message];
             $schemaId = Controller::join_links($this->Link('schema/AddToCampaignForm'), $id);
             return $this->getSchemaResponse($schemaId, $form, null, $extraData);
         }
 
-        return $results;
+        return $response;
     }
 
     /**

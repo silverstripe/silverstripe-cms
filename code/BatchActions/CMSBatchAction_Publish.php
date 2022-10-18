@@ -3,6 +3,7 @@
 namespace SilverStripe\CMS\BatchActions;
 
 use SilverStripe\Admin\CMSBatchAction;
+use SilverStripe\Control\HTTPResponse;
 use SilverStripe\ORM\SS_List;
 
 /**
@@ -15,7 +16,7 @@ class CMSBatchAction_Publish extends CMSBatchAction
         return _t(__CLASS__ . '.PUBLISH_PAGES', 'Publish');
     }
 
-    public function run(SS_List $pages)
+    public function run(SS_List $pages): HTTPResponse
     {
         return $this->batchaction(
             $pages,

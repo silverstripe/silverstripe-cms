@@ -33,11 +33,9 @@ class ModelAsController extends Controller implements NestedController
      * Get the appropriate {@link ContentController} for handling a {@link SiteTree} object, link it to the object and
      * return it.
      *
-     * @param SiteTree $sitetree
      * @param string $action
-     * @return ContentController
      */
-    public static function controller_for(SiteTree $sitetree, $action = null)
+    public static function controller_for(SiteTree $sitetree, $action = null): ContentController
     {
         $controller = $sitetree->getControllerName();
 
@@ -72,10 +70,8 @@ class ModelAsController extends Controller implements NestedController
 
     /**
      * @uses ModelAsController::getNestedController()
-     * @param HTTPRequest $request
-     * @return HTTPResponse
      */
-    public function handleRequest(HTTPRequest $request)
+    public function handleRequest(HTTPRequest $request): HTTPResponse
     {
         $this->beforeHandleRequest($request);
 
@@ -95,14 +91,8 @@ class ModelAsController extends Controller implements NestedController
         }
 
         try {
-            $result = $this->getNestedController();
-
-            if ($result instanceof RequestHandler) {
-                $result = $result->handleRequest($this->getRequest());
-            } elseif (!($result instanceof HTTPResponse)) {
-                user_error("ModelAsController::getNestedController() returned bad object type '" .
-                    get_class($result)."'", E_USER_WARNING);
-            }
+            $result = $this->getNestedController()->handleRequest($this->getRequest());
+            $result = $result;
         } catch (HTTPResponse_Exception $responseException) {
             $result = $responseException->getResponse();
         }
@@ -112,10 +102,9 @@ class ModelAsController extends Controller implements NestedController
     }
 
     /**
-     * @return ContentController
      * @throws Exception If URLSegment not passed in as a request parameter.
      */
-    public function getNestedController()
+    public function getNestedController(): ContentController
     {
         $request = $this->getRequest();
 

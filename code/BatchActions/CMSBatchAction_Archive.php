@@ -4,6 +4,7 @@ namespace SilverStripe\CMS\BatchActions;
 
 use SilverStripe\ORM\SS_List;
 use SilverStripe\Admin\CMSBatchAction;
+use SilverStripe\Control\HTTPResponse;
 
 /**
  * Delete items batch action.
@@ -15,7 +16,7 @@ class CMSBatchAction_Archive extends CMSBatchAction
         return _t(__CLASS__ . '.TITLE', 'Unpublish and archive');
     }
 
-    public function run(SS_List $pages)
+    public function run(SS_List $pages): HTTPResponse
     {
         return $this->batchaction(
             $pages,
