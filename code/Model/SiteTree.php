@@ -2751,7 +2751,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
-     * @deprecated 5.0 use creatableChildPages instead
+     * @deprecated 5.0 Use creatableChildPages() instead
      *
      * Gets a list of the page types that can be created under this specific page
      *

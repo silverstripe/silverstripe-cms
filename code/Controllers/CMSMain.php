@@ -2163,7 +2163,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     }
 
     /**
-     * @deprecated 5.0 Please use custom logic for this
+     * @deprecated 5.0 Use custom logic instead
      * @param $request
      * @return HTTPResponse|string|void
      */

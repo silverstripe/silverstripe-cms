@@ -7,7 +7,7 @@ use SilverStripe\ORM\DataExtension;
 use SilverStripe\View\SSViewer;
 
 /**
- * @deprecated 4.2..5.0 Link tracking is baked into File class now
+ * @deprecated 4.2..5.0 Use FileLinkTracking instead
  * @property File $owner
  */
 class SiteTreeFileExtension extends DataExtension

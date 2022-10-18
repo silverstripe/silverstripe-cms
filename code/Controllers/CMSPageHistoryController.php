@@ -24,7 +24,7 @@ use SilverStripe\View\ViewableData;
 /**
  * Legacy CMS History controller. This functionality has been moved to the `silverstripe/versioned-admin` module and
  * this class will be removed completly in SilverStripe 5.0.0.
- * @deprecated 4.3.0:5.0.0
+ * @deprecated 4.3.0:5.0.0 Use silverstripe/versioned-admin instead
  */
 class CMSPageHistoryController extends CMSMain
 {

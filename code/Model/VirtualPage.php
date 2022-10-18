@@ -361,7 +361,7 @@ class VirtualPage extends Page
     }
 
     /**
-     * @deprecated 4.2..5.0
+     * @deprecated 4.2..5.0 Will be removed without equivalent functionality to replace it
      */
     public function updateImageTracking()
     {

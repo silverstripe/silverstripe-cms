@@ -15,7 +15,7 @@ use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 
 /**
- * @deprecated 4.2..5.0 Will be removed in cms 5.0
+ * @deprecated 4.2..5.0 Will be removed without equivalent functionality to replace it
  */
 class SiteTreeFolderExtension extends DataExtension
 {
@@ -29,7 +29,7 @@ class SiteTreeFolderExtension extends DataExtension
     /**
      * Looks for files used in system and create where clause which contains all ID's of files.
      *
-     * @deprecated 4.2..5.0
+     * @deprecated 4.2..5.0 Will be removed without equivalent functionality to replace it
      * @returns string where clause which will work as filter.
      */
     public function getUnusedFilesListFilter()
