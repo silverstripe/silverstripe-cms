@@ -2,12 +2,13 @@
 
 namespace SilverStripe\CMS\Model;
 
+use SilverStripe\Dev\Deprecation;
 use SilverStripe\Assets\File;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\View\SSViewer;
 
 /**
- * @deprecated 4.2..5.0 Use FileLinkTracking instead
+ * @deprecated 4.2.0 Use FileLinkTracking instead
  * @property File $owner
  */
 class SiteTreeFileExtension extends DataExtension
@@ -21,6 +22,11 @@ class SiteTreeFileExtension extends DataExtension
      *
      * @return string
      */
+    public function __construct()
+    {
+        Deprecation::notice('4.2.0', 'Use FileLinkTracking instead', Deprecation::SCOPE_CLASS);
+    }
+
     public function BackLinkHTMLList()
     {
         $viewer = SSViewer::create(['type' => 'Includes', self::class . '_description']);

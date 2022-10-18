@@ -2751,7 +2751,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
-     * @deprecated 5.0 Use creatableChildPages() instead
+     * @deprecated 4.12.0 Use creatableChildPages() instead
      *
      * Gets a list of the page types that can be created under this specific page
      *
@@ -2759,6 +2759,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function creatableChildren()
     {
+        Deprecation::notice('4.12.0', 'Use creatableChildPages() instead');
         // Build the list of candidate children
         $cache = SiteTree::singleton()->getCreatableChildrenCache();
         $cacheKey = $this->generateChildrenCacheKey(Security::getCurrentUser() ? Security::getCurrentUser()->ID : 0);
