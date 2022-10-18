@@ -2,6 +2,7 @@
 
 namespace SilverStripe\CMS\Controllers;
 
+use SilverStripe\Dev\Deprecation;
 use SilverStripe\Admin\LeftAndMainFormRequestHandler;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
@@ -24,7 +25,7 @@ use SilverStripe\View\ViewableData;
 /**
  * Legacy CMS History controller. This functionality has been moved to the `silverstripe/versioned-admin` module and
  * this class will be removed completly in SilverStripe 5.0.0.
- * @deprecated 4.3.0:5.0.0 Use silverstripe/versioned-admin instead
+ * @deprecated 4.3.0 Use silverstripe/versioned-admin instead
  */
 class CMSPageHistoryController extends CMSMain
 {
@@ -58,6 +59,11 @@ class CMSPageHistoryController extends CMSMain
      * @var int
      */
     protected $versionID = null;
+
+    public function __construct()
+    {
+        Deprecation::notice('4.3.0', 'Use silverstripe/versioned-admin instead', Deprecation::SCOPE_CLASS);
+    }
 
     public function getResponseNegotiator()
     {
