@@ -1,6 +1,6 @@
 ---
 Name: cmsversion
-After: 'framework/*'
+After: 'framework/coreconfig'
 ---
 SilverStripe\Core\Manifest\VersionProvider:
   modules:
