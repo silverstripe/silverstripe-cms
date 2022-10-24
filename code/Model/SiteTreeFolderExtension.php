@@ -15,26 +15,26 @@ use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 
 /**
- * @deprecated 4.2..5.0 Will be removed in cms 5.0
+ * @deprecated 4.2.0 Will be removed without equivalent functionality to replace it
  */
 class SiteTreeFolderExtension extends DataExtension
 {
     public function __construct()
     {
+        Deprecation::notice('4.2.0', 'Will be removed without equivalent functionality to replace it', Deprecation::SCOPE_CLASS);
         parent::__construct();
-        Deprecation::notice('5.0', 'Will be removed in 5.0');
     }
 
 
     /**
      * Looks for files used in system and create where clause which contains all ID's of files.
      *
-     * @deprecated 4.2..5.0
+     * @deprecated 4.2.0 Will be removed without equivalent functionality to replace it
      * @returns string where clause which will work as filter.
      */
     public function getUnusedFilesListFilter()
     {
-        Deprecation::notice('5.0', 'Will be removed in 5.0');
+        Deprecation::notice('4.2.0', 'Will be removed without equivalent functionality to replace it');
 
         // Add all records in link tracking
         $usedFiles = FileLink::get()->column('LinkedID');
