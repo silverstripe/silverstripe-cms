@@ -2,8 +2,8 @@
 import i18n from 'i18n';
 import TinyMCEActionRegistrar from 'lib/TinyMCEActionRegistrar';
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { ApolloProvider } from 'react-apollo';
+import { createRoot } from 'react-dom/client';
+import { ApolloProvider } from '@apollo/client';
 import { Provider } from 'react-redux';
 import jQuery from 'jquery';
 import ShortcodeSerialiser from 'lib/ShortcodeSerialiser';
@@ -68,6 +68,8 @@ jQuery.entwine('ss', ($) => {
    * Assumes that $('.insert-link__dialog-wrapper').entwine({}); is defined for shared functions
    */
   $(`#${modalId}`).entwine({
+    ReactRoot: null,
+
     renderModal(isOpen) {
       const store = ss.store;
       const client = ss.apolloClient;
@@ -82,7 +84,12 @@ jQuery.entwine('ss', ($) => {
       const currentPageID = Number($('#Form_EditForm_ID').val() || 0);
 
       // create/update the react component
-      ReactDOM.render(
+      let root = this.getReactRoot();
+      if (!root) {
+        root = createRoot(this[0]);
+        this.setReactRoot(root);
+      }
+      root.render(
         <ApolloProvider client={client}>
           <Provider store={store}>
             <InsertLinkInternalModal
@@ -98,8 +105,7 @@ jQuery.entwine('ss', ($) => {
               currentPageID={currentPageID}
             />
           </Provider>
-        </ApolloProvider>,
-        this[0]
+        </ApolloProvider>
       );
     },
 
