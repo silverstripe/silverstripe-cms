@@ -17,7 +17,6 @@ use SilverStripe\Dev\Debug;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
 use SilverStripe\View\Parsers\URLSegmentFilter;
-use Translatable;
 
 /**
  * ModelAsController deals with mapping the initial request to the first {@link SiteTree}/{@link ContentController}
@@ -123,11 +122,6 @@ class ModelAsController extends Controller implements NestedController
             throw new Exception('ModelAsController->getNestedController(): was not passed a URLSegment value.');
         }
 
-        // Find page by link, regardless of current locale settings
-        if (class_exists('Translatable')) {
-            Translatable::disable_locale_filter();
-        }
-
         // url encode unless it's multibyte (already pre-encoded in the database)
         $filter = URLSegmentFilter::create();
         if (!$filter->getAllowMultibyte()) {
@@ -143,19 +137,9 @@ class ModelAsController extends Controller implements NestedController
         /** @var SiteTree $sitetree */
         $sitetree = DataObject::get_one(SiteTree::class, $conditions);
 
-        // Check translation module
-        // @todo Refactor out module specific code
-        if (class_exists('Translatable')) {
-            Translatable::enable_locale_filter();
-        }
 
         if (!$sitetree) {
             $this->httpError(404, 'The requested page could not be found.');
-        }
-
-        // Enforce current locale setting to the loaded SiteTree object
-        if (class_exists('Translatable') && $sitetree->Locale) {
-            Translatable::set_current_locale($sitetree->Locale);
         }
 
         if (isset($_REQUEST['debug'])) {

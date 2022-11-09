@@ -71,7 +71,6 @@ use SilverStripe\Versioned\ChangeSetItem;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
-use Translatable;
 
 /**
  * The main "content" area of the CMS.
@@ -183,11 +182,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
     protected function init()
     {
-        // set reading lang
-        if (SiteTree::has_extension('Translatable') && !$this->getRequest()->isAjax()) {
-            Translatable::choose_site_locale(array_keys(Translatable::get_existing_content_languages(SiteTree::class) ?? []));
-        }
-
         parent::init();
 
         Requirements::javascript('silverstripe/cms: client/dist/js/bundle.js');
