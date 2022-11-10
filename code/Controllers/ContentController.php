@@ -209,7 +209,6 @@ class ContentController extends Controller
                 // url encode unless it's multibyte (already pre-encoded in the database)
                 'URLSegment' => $filter->getAllowMultibyte() ? $action : rawurlencode($action),
             ])->first();
-
         }
 
         // we found a page with this URLSegment.
@@ -219,7 +218,6 @@ class ContentController extends Controller
 
             $response = ModelAsController::controller_for($child)->handleRequest($request);
         } else {
-
             Director::set_current_page($this->data());
 
             try {
