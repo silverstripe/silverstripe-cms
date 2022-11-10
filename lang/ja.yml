@@ -83,7 +83,7 @@ ja:
     DEFAULTABOUTTITLE: 私たちについて
     DEFAULTCONTACTTITLE: 連絡はこちらまで
     DEFAULTHOMETITLE: ホーム
-    DEPENDENT_NOTE: 以下のページでは、このページに依存します。　これには仮想ページ、リダイレクタページ、コンテンツのリンクを持つページが含まれています。
+    DEPENDENT_NOTE: '以下のページでは、このページに依存します。　これには仮想ページ、リダイレクタページ、コンテンツのリンクを持つページが含まれています。'
     DependtPageColumnLinkType: リンクの種類
     EDITHEADER: このページを編集できる人
     EDITORGROUPS: 編集者グループ
@@ -127,7 +127,7 @@ ja:
     VIEW_ALL_DESCRIPTION: すべてのページを閲覧
     VIEW_ALL_HELP: 'このサイトのページを閲覧するには、アクセスタブの設定に関わらず、"ページのセクションへのアクセス"許可が必要です。'
     VIEW_DRAFT_CONTENT: ドラフトを見る
-    VIEW_DRAFT_CONTENT_HELP: CMSの編集モード以外のページを閲覧させる。　CMSアクセスなしの外部からの共同作業者に最適。
+    VIEW_DRAFT_CONTENT_HELP: 'CMSの編集モード以外のページを閲覧させる。　CMSアクセスなしの外部からの共同作業者に最適。'
     VIRTUALPAGEDRAFTWARNING: 仮想ページを公開するためにリンクしたページを公開してください
     VIRTUALPAGEWARNING: このページを公開するために、リンク先のページを選択して最初に保存してください
     VIRTUALPAGEWARNINGSETTINGS: 公開するために、主なコンテンツの分野からリンク先のページを選択してください

@@ -137,6 +137,7 @@ it:
     StartEditing: 'Puoi iniziare a modificare i contenuti del sito aprendo <a href="{link}">il CMS</a>.'
     UnableDeleteInstall: 'Impossibile eliminare i file di installazione. Cancella manualmente i file sotto indicati'
     VIEWPAGEIN: 'Mostra pagina in:'
+    UNVERSIONEDPREVIEW: Anteprima
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archiviato
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
@@ -160,11 +161,14 @@ it:
     PLURALS:
       one: 'Una Pagina Base'
       other: '{count} Pagine Base'
+      many: '{count} Pagine Base'
     REDIRECTTO: 'Redirigi a'
     REDIRECTTOEXTERNAL: 'Un altro sito web'
     REDIRECTTOPAGE: 'Una pagina sul tuo sito web'
     SINGULARNAME: 'Pagina di reindirizzamento'
     YOURPAGE: 'Pagina sul tuo sito web'
+    FILE: File
+    REDIRECTTOFILE: 'Un file sul tuo sito web'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Una pagina di redirect è stata impostata senza alcuna destinazione'
   SilverStripe\CMS\Model\SiteTree:
@@ -238,6 +242,7 @@ it:
     PLURALS:
       one: 'Una Pagina'
       other: '{count} Pagine'
+      many: '{count} Pagine'
     PageTypNotAllowedOnRoot: 'Il tipo di pagina "{type}" non è consentito al primo livello'
     PageTypeNotAllowed: 'Il tipo di pagina "{type}" non è consentito come figlio di questa pagina madre'
     REMOVE_INSTALL_WARNING: 'Attenzione: devi rimuovere install.php da questa installazione di SilverStripe per motivi di sicurezza.'
@@ -279,6 +284,7 @@ it:
     PLURALS:
       one: 'Un collegamento all''albero del sito'
       other: '{count} Collegamenti all''albero del Sito'
+      many: '{count} Collegamenti all''albero del Sito'
     SINGULARNAME: 'Link dell''albero del sito'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Pagina collegata'
@@ -290,6 +296,7 @@ it:
     PLURALS:
       one: 'Una Pagina Base'
       other: '{count} Pagine Base'
+      many: '{count} Pagine Base'
     PageTypNotAllowedOnRoot: 'Il tipo di pagina originale "{type}" non è consentito al primo livello per questa pagina virtuale'
     SINGULARNAME: 'Pagina virtuale'
   SilverStripe\CMS\Reports\BrokenFilesReport:

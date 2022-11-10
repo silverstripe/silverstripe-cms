@@ -137,6 +137,7 @@ eo:
     StartEditing: 'Vi povas ekredakti vian enhavon malfermante je <a href="{link}">la CMS</a>.'
     UnableDeleteInstall: 'Ne eblas forigi instalajn dosierojn. Bonvolu mane forigi la jenajn dosierojn'
     VIEWPAGEIN: 'Vidigi Paĝon en:'
+    UNVERSIONEDPREVIEW: Antaŭvido
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Enarkivigita
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
@@ -165,6 +166,8 @@ eo:
     REDIRECTTOPAGE: 'Paĝo en via retejo'
     SINGULARNAME: 'Paĝo pri alidirekto'
     YOURPAGE: 'Paĝo en via retejo'
+    FILE: Dosiero
+    REDIRECTTOFILE: 'Dosiero en via retejo'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Alidirekta paĝo estis agordita sen ie al kie alidirekti.'
   SilverStripe\CMS\Model\SiteTree:
