@@ -29,7 +29,6 @@ use SilverStripe\View\ArrayData;
 use SilverStripe\View\Parsers\URLSegmentFilter;
 use SilverStripe\View\Requirements;
 use SilverStripe\View\SSViewer;
-use Translatable;
 
 /**
  * The most common kind of controller; effectively a controller linked to a {@link DataObject}.
@@ -201,9 +200,6 @@ class ContentController extends Controller
         // nested URL.
         if ($action && SiteTree::config()->nested_urls && !$this->hasAction($action)) {
             // See ModelAdController->getNestedController() for similar logic
-            if (class_exists('Translatable')) {
-                Translatable::disable_locale_filter();
-            }
 
             $filter = URLSegmentFilter::create();
 
@@ -213,10 +209,6 @@ class ContentController extends Controller
                 // url encode unless it's multibyte (already pre-encoded in the database)
                 'URLSegment' => $filter->getAllowMultibyte() ? $action : rawurlencode($action),
             ])->first();
-
-            if (class_exists('Translatable')) {
-                Translatable::enable_locale_filter();
-            }
         }
 
         // we found a page with this URLSegment.
@@ -226,25 +218,6 @@ class ContentController extends Controller
 
             $response = ModelAsController::controller_for($child)->handleRequest($request);
         } else {
-            // If a specific locale is requested, and it doesn't match the page found by URLSegment,
-            // look for a translation and redirect (see #5001). Only happens on the last child in
-            // a potentially nested URL chain.
-            if (class_exists('Translatable')) {
-                $locale = $request->getVar('locale');
-                if ($locale
-                    && i18n::getData()->validate($locale)
-                    && $this->dataRecord
-                    && $this->dataRecord->Locale != $locale
-                ) {
-                    $translation = $this->dataRecord->getTranslation($locale);
-                    if ($translation) {
-                        $response = new HTTPResponse();
-                        $response->redirect($translation->Link(), 301);
-                        throw new HTTPResponse_Exception($response);
-                    }
-                }
-            }
-
             Director::set_current_page($this->data());
 
             try {
@@ -416,9 +389,7 @@ HTML;
 
     /**
      * Returns an RFC1766 compliant locale string, e.g. 'fr-CA'.
-     * Inspects the associated {@link dataRecord} for a {@link SiteTree->Locale} value if present,
-     * and falls back to {@link Translatable::get_current_locale()} or {@link i18n::default_locale()},
-     * depending if Translatable is enabled.
+     * Inspects the current locale with {@link i18n::get_locale()}
      *
      * Suitable for insertion into lang= and xml:lang=
      * attributes in HTML or XHTML output.
@@ -427,13 +398,7 @@ HTML;
      */
     public function ContentLocale()
     {
-        if ($this->dataRecord && $this->dataRecord->hasExtension('Translatable')) {
-            $locale = $this->dataRecord->Locale;
-        } elseif (class_exists('Translatable') && SiteTree::has_extension('Translatable')) {
-            $locale = Translatable::get_current_locale();
-        } else {
-            $locale = i18n::get_locale();
-        }
+        $locale = i18n::get_locale();
 
         return i18n::convert_rfc1766($locale);
     }
