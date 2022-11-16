@@ -25,6 +25,7 @@ use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\Versioned\Versioned;
+use SilverStripe\Dev\Deprecation;
 
 class CMSMainTest extends FunctionalTest
 {
@@ -123,6 +124,9 @@ class CMSMainTest extends FunctionalTest
      */
     public function testPublish()
     {
+        if (Deprecation::isEnabled()) {
+            $this->markTestSkipped('Test calls deprecated code');
+        }
         $page1 = $this->objFromFixture(Page::class, "page1");
         $page2 = $this->objFromFixture(Page::class, "page2");
         $this->logInAs('admin');

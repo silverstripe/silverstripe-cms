@@ -66,7 +66,7 @@ class SilverStripeNavigator extends ViewableData
         }
         ksort($items);
 
-        // Drop the keys and let the ArrayList handle the numbering, so $First, $Last and others work properly.
+        // Drop the keys and let the ArrayList handle the numbering, so $IsFirst, $IsLast and others work properly.
         return new ArrayList(array_values($items ?? []));
     }
 

@@ -412,11 +412,11 @@ class VirtualPageTest extends FunctionalTest
         $classCVirtual->write();
 
         $classBVirtual->ParentID = $classA->ID;
-        $valid = $classBVirtual->doValidate();
+        $valid = $classBVirtual->validate();
         $this->assertTrue($valid->isValid(), "Does allow child linked to virtual page type allowed by parent");
 
         $classCVirtual->ParentID = $classA->ID;
-        $valid = $classCVirtual->doValidate();
+        $valid = $classCVirtual->validate();
         $this->assertFalse($valid->isValid(), "Doesn't allow child linked to virtual page type disallowed by parent");
     }
 

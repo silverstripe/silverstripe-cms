@@ -30,7 +30,7 @@ use TractorCow\Fluent\Extension\FluentSiteTreeExtension;
 class ZZZSearchFormTest extends FunctionalTest
 {
 
-    protected static $fixture_file = 'SearchFormTest.yml';
+    protected static $fixture_file = 'ZZZSearchFormTest.yml';
 
     protected static $illegal_extensions = [
         SiteTree::class => [

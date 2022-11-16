@@ -18,12 +18,10 @@ use SilverStripe\Versioned\RecursivePublishable;
  * Uses tracking provided by {@see SiteTreeFileExtension} to generate this.
  *
  * @property File $owner
+ * @deprecated 4.12.0 Use UsedOnTable instead
  */
 class SiteTreeFileFormFactoryExtension extends DataExtension
 {
-    /**
-     * @deprecated 4.12.0 Use UsedOnTable instead
-     */
     public function __construct()
     {
         Deprecation::notice('4.12.0', 'Use UsedOnTable instead', Deprecation::SCOPE_CLASS);
