@@ -25,6 +25,7 @@
         "silverstripe/reports": "^4.7@dev",
         "silverstripe/siteconfig": "^4.7@dev",
         "silverstripe/versioned": "^1.7@dev",
+        "silverstripe/versioned-admin": "^1.7@dev",
         "silverstripe/vendor-plugin": "^1.0",
         "php": "^7.4 || ^8.0"
     },

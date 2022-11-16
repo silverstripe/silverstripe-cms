@@ -37,5 +37,8 @@ ShortcodeParser::get('default')->register(
 CMSMenu::remove_menu_class(CMSMain::class);
 CMSMenu::remove_menu_class(CMSPageEditController::class);
 CMSMenu::remove_menu_class(CMSPageSettingsController::class);
-CMSMenu::remove_menu_class(CMSPageHistoryController::class);
+if (class_exists(CMSPageHistoryController::class)) {
+    // this class will be removed in CMS 5
+    CMSMenu::remove_menu_class(CMSPageHistoryController::class);
+}
 CMSMenu::remove_menu_class(CMSPageAddController::class);

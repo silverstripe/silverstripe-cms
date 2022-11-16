@@ -72,6 +72,7 @@ use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
 use Translatable;
+use SilverStripe\VersionedAdmin\Controllers\CMSPageHistoryViewerController;
 
 /**
  * The main "content" area of the CMS.
@@ -411,7 +412,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     {
         if ($id = $this->currentPageID()) {
             return $this->LinkWithSearch(
-                Controller::join_links(CMSPageHistoryController::singleton()->Link('show'), $id)
+                Controller::join_links(CMSPageHistoryViewerController::singleton()->Link('show'), $id)
             );
         } else {
             return null;

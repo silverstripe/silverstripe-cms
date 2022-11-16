@@ -63,7 +63,9 @@ class CMSPageHistoryController extends CMSMain
     public function __construct()
     {
         parent::__construct();
-        Deprecation::notice('4.3.0', 'Use silverstripe/versioned-admin instead', Deprecation::SCOPE_CLASS);
+        Deprecation::withNoReplacement(function () {
+            Deprecation::notice('4.3.0', 'Use silverstripe/versioned-admin instead', Deprecation::SCOPE_CLASS);
+        });
     }
 
     public function getResponseNegotiator()
@@ -308,7 +310,7 @@ class CMSPageHistoryController extends CMSMain
         $compareModeChecked = ($action == "compare");
 
         if ($page) {
-            $versions = $page->allVersions();
+            $versions = $page->Versions();
             $versionID = (!$versionID) ? $page->Version : $versionID;
 
             if ($versions) {

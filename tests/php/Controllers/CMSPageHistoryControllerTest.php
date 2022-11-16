@@ -12,6 +12,7 @@ use SilverStripe\Forms\FieldGroup;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\HTMLReadonlyField;
+use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\TextField;
 
 class CMSPageHistoryControllerTest extends FunctionalTest
@@ -32,10 +33,12 @@ class CMSPageHistoryControllerTest extends FunctionalTest
     {
         parent::setUp();
 
-        Injector::inst()->registerService(
-            new CMSPageHistoryController(),
-            CMSPageHistoryController::class
-        );
+        Deprecation::withNoReplacement(function () {
+            Injector::inst()->registerService(
+                new CMSPageHistoryController(),
+                CMSPageHistoryController::class
+            );
+        });
 
         $this->loginWithPermission('ADMIN');
 
@@ -62,6 +65,9 @@ class CMSPageHistoryControllerTest extends FunctionalTest
 
     public function testGetEditForm()
     {
+        if (Deprecation::isEnabled()) {
+            $this->markTestSkipped('Test calls deprecated code');
+        }
         $controller = new CMSPageHistoryController();
         $controller->setRequest(Controller::curr()->getRequest());
 
@@ -108,7 +114,10 @@ class CMSPageHistoryControllerTest extends FunctionalTest
      */
     public function testVersionsForm()
     {
-        $this->get('admin/pages/legacyhistory/show/'. $this->page->ID);
+        if (Deprecation::isEnabled()) {
+            $this->markTestSkipped('Test calls deprecated code');
+        }
+        $this->get('admin/pages/legacyhistory/show/' . $this->page->ID);
 
         $form = $this->cssParser()->getBySelector('#Form_VersionsForm');
 
@@ -127,7 +136,10 @@ class CMSPageHistoryControllerTest extends FunctionalTest
 
     public function testVersionsFormTableContainsInformation()
     {
-        $this->get('admin/pages/legacyhistory/show/'. $this->page->ID);
+        if (Deprecation::isEnabled()) {
+            $this->markTestSkipped('Test calls deprecated code');
+        }
+        $this->get('admin/pages/legacyhistory/show/' . $this->page->ID);
         $form = $this->cssParser()->getBySelector('#Form_VersionsForm');
         $rows = $form[0]->xpath("fieldset/table/tbody/tr");
 
@@ -153,7 +165,10 @@ class CMSPageHistoryControllerTest extends FunctionalTest
 
     public function testVersionsFormSelectsUnpublishedCheckbox()
     {
-        $this->get('admin/pages/legacyhistory/show/'. $this->page->ID);
+        if (Deprecation::isEnabled()) {
+            $this->markTestSkipped('Test calls deprecated code');
+        }
+        $this->get('admin/pages/legacyhistory/show/' . $this->page->ID);
         $checkbox = $this->cssParser()->getBySelector('#Form_VersionsForm_ShowUnpublished');
 
         $this->assertThat($checkbox[0], $this->logicalNot($this->isNull()));
@@ -162,7 +177,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest
         $this->assertThat($checked, $this->logicalNot($this->stringContains('checked')));
 
         // viewing an unpublished
-        $this->get('admin/pages/legacyhistory/show/'.$this->page->ID .'/'.$this->versionUnpublishedCheck);
+        $this->get('admin/pages/legacyhistory/show/' . $this->page->ID . '/' . $this->versionUnpublishedCheck);
         $checkbox = $this->cssParser()->getBySelector('#Form_VersionsForm_ShowUnpublished');
 
         $this->assertThat($checkbox[0], $this->logicalNot($this->isNull()));
@@ -171,6 +186,9 @@ class CMSPageHistoryControllerTest extends FunctionalTest
 
     public function testTransformReadonly()
     {
+        if (Deprecation::isEnabled()) {
+            $this->markTestSkipped('Test calls deprecated code');
+        }
         /** @var CMSPageHistoryController $history */
         $history = new CMSPageHistoryController();
         $history->setRequest(Controller::curr()->getRequest());
