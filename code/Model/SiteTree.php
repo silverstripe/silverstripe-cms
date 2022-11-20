@@ -69,6 +69,7 @@ use SilverStripe\Versioned\RecursivePublishable;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\HTML;
+use SilverStripe\View\Parsers\HTMLValue;
 use SilverStripe\View\Parsers\ShortcodeParser;
 use SilverStripe\View\Parsers\URLSegmentFilter;
 use SilverStripe\View\Shortcodes\EmbedShortcodeProvider;
@@ -1684,6 +1685,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $this->setNextWriteWithoutVersion(true);
         }
 
+        $this->sanitiseExtraMeta();
+
         // Flush cached [embed] shortcodes
         // Flush on both DRAFT and LIVE because VersionedCacheAdapter has separate caches for both
         // Clear both caches at once for the scenario where a CMS-author updates a remote resource
@@ -1701,6 +1704,27 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 EmbedShortcodeProvider::flushCachedShortcodes($parser, $this->Content);
             });
         }
+    }
+
+    private function sanitiseExtraMeta(): void
+    {
+        $htmlValue = HTMLValue::create($this->ExtraMeta);
+        /** @var DOMElement $el */
+        foreach ($htmlValue->query('//*') as $el) {
+            /** @var DOMAttr $attr */
+            $attributes = $el->attributes;
+            for ($i = count($attributes) - 1; $i >= 0; $i--) {
+                $attr = $attributes->item($i);
+                // remove any attribute starting with 'on' e.g. onclick
+                // and remove the accesskey attribute
+                if (substr($attr->name, 0, 2) === 'on' ||
+                    $attr->name === 'accesskey'
+                ) {
+                    $el->removeAttributeNode($attr);
+                }
+            }
+        }
+        $this->ExtraMeta = $htmlValue->getContent();
     }
 
     /**
@@ -1794,6 +1818,16 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 ),
                 ValidationResult::TYPE_ERROR,
                 'CAN_BE_ROOT'
+            );
+        }
+
+        // Ensure ExtraMeta can be turned into valid HTML
+        if ($this->ExtraMeta && !HTMLValue::create($this->ExtraMeta)->getContent()) {
+            $result->addError(
+                _t(
+                    'SilverStripe\\CMS\\Model\\SiteTree.InvalidExtraMeta',
+                    'Custom Meta Tags does not contain valid HTML',
+                )
             );
         }
 
