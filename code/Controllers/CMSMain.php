@@ -2,6 +2,7 @@
 
 namespace SilverStripe\CMS\Controllers;
 
+use SilverStripe\Dev\Deprecation;
 use InvalidArgumentException;
 use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Admin\AdminRootController;
@@ -2148,10 +2149,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     }
 
     /**
-     * @deprecated 5.0 Please use custom logic for this
+     * @deprecated 4.12.0 Use custom logic instead
      */
     public function publishall(HTTPRequest $request): HTTPResponse
     {
+        Deprecation::notice('4.12.0', 'Use custom logic instead');
         if (!Permission::check('ADMIN')) {
             return Security::permissionFailure($this);
         }

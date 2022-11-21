@@ -41,6 +41,7 @@ use Page;
 use PageController;
 
 use const RESOURCES_DIR;
+use SilverStripe\Dev\Deprecation;
 
 class SiteTreeTest extends SapphireTest
 {
@@ -442,7 +443,7 @@ class SiteTreeTest extends SapphireTest
 
     public function testNoCascadingDeleteWithoutID()
     {
-        Config::inst()->update('SiteTree', 'enforce_strict_hierarchy', true);
+        Config::inst()->set('SiteTree', 'enforce_strict_hierarchy', true);
         $count = SiteTree::get()->count();
         $this->assertNotEmpty($count);
         $obj = new SiteTree();
@@ -1306,27 +1307,27 @@ class SiteTreeTest extends SapphireTest
         $classCext->write();
 
         $classB->ParentID = $page->ID;
-        $valid = $classB->doValidate();
+        $valid = $classB->validate();
         $this->assertTrue($valid->isValid(), "Does allow children on unrestricted parent");
 
         $classB->ParentID = $classA->ID;
-        $valid = $classB->doValidate();
+        $valid = $classB->validate();
         $this->assertTrue($valid->isValid(), "Does allow child specifically allowed by parent");
 
         $classC->ParentID = $classA->ID;
-        $valid = $classC->doValidate();
+        $valid = $classC->validate();
         $this->assertFalse($valid->isValid(), "Doesnt allow child on parents specifically restricting children");
 
         $classB->ParentID = $classC->ID;
-        $valid = $classB->doValidate();
+        $valid = $classB->validate();
         $this->assertFalse($valid->isValid(), "Doesnt allow child on parents disallowing all children");
 
         $classB->ParentID = $classCext->ID;
-        $valid = $classB->doValidate();
+        $valid = $classB->validate();
         $this->assertTrue($valid->isValid(), "Extensions of allowed classes are incorrectly reported as invalid");
 
         $classCext->ParentID = $classD->ID;
-        $valid = $classCext->doValidate();
+        $valid = $classCext->validate();
         $this->assertFalse(
             $valid->isValid(),
             "Doesnt allow child where only parent class is allowed on parent node, and asterisk prefixing is used"
@@ -1712,7 +1713,7 @@ class SiteTreeTest extends SapphireTest
      */
     public function testGetControllerNameFromConfig()
     {
-        Config::inst()->update(SiteTree::class, 'controller_name', 'This\\Is\\A\\New\\Controller');
+        Config::inst()->set(SiteTree::class, 'controller_name', 'This\\Is\\A\\New\\Controller');
         $page = new SiteTree();
         $this->assertSame('This\\Is\\A\\New\\Controller', $page->getControllerName());
     }
@@ -1722,7 +1723,7 @@ class SiteTreeTest extends SapphireTest
      */
     public function testGetControllerNameFromNamespaceMappingConfig()
     {
-        Config::inst()->update(SiteTree::class, 'namespace_mapping', [
+        Config::inst()->merge(SiteTree::class, 'namespace_mapping', [
             'SilverStripe\\CMS\\Tests\\Page' => 'SilverStripe\\CMS\\Tests\\Controllers',
         ]);
 
@@ -1735,6 +1736,9 @@ class SiteTreeTest extends SapphireTest
      */
     public function testGetControllerNameWithUnderscoresIsSupported()
     {
+        if (Deprecation::isEnabled()) {
+            $this->markTestSkipped('Test calls deprecated code');
+        }
         $class = new SiteTreeTest_LegacyControllerName();
         $this->assertEquals(SiteTreeTest_LegacyControllerName_Controller::class, $class->getControllerName());
     }
