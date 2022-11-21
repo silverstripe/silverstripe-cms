@@ -12,25 +12,32 @@ use SilverStripe\Admin\Forms\UsedOnTable;
 use SilverStripe\Versioned\RecursivePublishable;
 
 /**
- * @deprecated 5.0
- * No longer required - superceded by {@see UsedOnTable}
+ * @deprecated 4.12.0 Use UsedOnTable instead
  *
  * Extension applied to {@see FileFormFactory} to decorate with a "Used on:" information area.
  * Uses tracking provided by {@see SiteTreeFileExtension} to generate this.
  *
  * @property File $owner
+ * @deprecated 4.12.0 Use UsedOnTable instead
  */
 class SiteTreeFileFormFactoryExtension extends DataExtension
 {
+    public function __construct()
+    {
+        Deprecation::notice('4.12.0', 'Use UsedOnTable instead', Deprecation::SCOPE_CLASS);
+    }
+
+    /**
+     * @deprecated 4.12.0 Use UsedOnTable instead
+     */
     public function updateFormFields(FieldList $fields, $controller, $formName, $context)
     {
+        Deprecation::notice('4.12.0', 'Use UsedOnTable instead');
         /** @var TabSet $tabset */
         $tabset = $fields->fieldByName('Editor');
         if (!$tabset) {
             return;
         }
-        $class = UsedOnTable::class;
-        Deprecation::notice('5.0', "Use the $class to show this table");
 
         $usedOnField = UsedOnTable::create('UsedOnTableReplacement');
         $usedOnField->setRecord($context['Record']);
