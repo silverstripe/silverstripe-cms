@@ -36,10 +36,10 @@ $.entwine('ss', function($){
     onadd: function() {
       var self = this;
       // See SelectionGroup.js for logic which hides / shows ParentID
-      this.find('#Form_AddForm_ParentID_Holder .TreeDropdownField').on('change', function() {
+      this.find('#Form_AddForm_ParentID_Holder .TreeDropdownField').bind('change', function() {
         self.updateTypeList();
       });
-      this.find(".SelectionGroup.parent-mode").on('change',  function() {
+      this.find(".SelectionGroup.parent-mode").bind('change',  function() {
         self.updateTypeList();
       });
       if ($(".cms-add-form .parent-mode :input").val() == 'top') {

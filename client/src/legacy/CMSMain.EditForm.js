@@ -36,7 +36,7 @@ $.entwine('ss', function($){
 
 			if (urlSegmentInput.length > 0) {
 				self._addActions();
-				this.on('change', function(e) {
+				this.bind('change', function(e) {
 					var origTitle = self.data('OrigVal');
 					var title = self.val();
 					self.data('OrigVal', title);
@@ -154,8 +154,8 @@ $.entwine('ss', function($){
 		// Constructor: onmatch
 		onmatch : function() {
 			var self = this;
-			this.find(':input[name=ParentType]').on('click', function(e) {self._toggleSelection(e);});
-			this.find('.TreeDropdownField').on('change', function(e) {self._changeParentId(e);});
+			this.find(':input[name=ParentType]').bind('click', function(e) {self._toggleSelection(e);});
+			this.find('.TreeDropdownField').bind('change', function(e) {self._changeParentId(e);});
 
 			this._changeParentId();
 			this._toggleSelection();

@@ -12,6 +12,8 @@ class MigrateSiteTreeLinkingTaskTest extends SapphireTest
 {
     protected static $fixture_file = 'MigrateSiteTreeLinkingTaskTest.yml';
 
+    protected static $use_draft_site = true;
+
     public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();

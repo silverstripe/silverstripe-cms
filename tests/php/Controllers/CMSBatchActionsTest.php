@@ -25,7 +25,7 @@ class CMSBatchActionsTest extends SapphireTest
         $this->logInWithPermission('ADMIN');
 
         // Tests assume strict hierarchy is enabled
-        Config::inst()->set(SiteTree::class, 'enforce_strict_hierarchy', true);
+        Config::inst()->update(SiteTree::class, 'enforce_strict_hierarchy', true);
 
         // published page
         $published = $this->objFromFixture(SiteTree::class, 'published');

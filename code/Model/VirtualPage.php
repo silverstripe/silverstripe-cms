@@ -361,11 +361,11 @@ class VirtualPage extends Page
     }
 
     /**
-     * @deprecated 4.2.0 Will be removed without equivalent functionality to replace it
+     * @deprecated 4.2..5.0
      */
     public function updateImageTracking()
     {
-        Deprecation::notice('4.2.0', 'Will be removed without equivalent functionality to replace it');
+        Deprecation::notice('5.0', 'This will be removed in 5.0');
 
         // Doesn't work on unsaved records
         if (!$this->isInDB()) {

@@ -33,7 +33,7 @@ class RedirectorPageTest extends FunctionalTest
             $file->publishSingle();
         }
 
-        Director::config()->set('alternate_base_url', 'http://www.mysite.com/');
+        Director::config()->update('alternate_base_url', 'http://www.mysite.com/');
 
         // Ensure all pages are published
         /** @var SiteTree $page */
