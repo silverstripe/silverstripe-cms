@@ -652,8 +652,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function PreviewLink($action = null)
     {
         if ($this->hasMethod('alternatePreviewLink')) {
-            Deprecation::notice('5.0', 'Use updatePreviewLink or override PreviewLink method');
-            return $this->alternatePreviewLink($action);
+            Deprecation::withNoReplacement(function () use ($action) {
+                Deprecation::notice('5.0', 'Use updatePreviewLink or override PreviewLink method');
+                return $this->alternatePreviewLink($action);
+            });
         }
 
         $link = $this->AbsoluteLink($action);
