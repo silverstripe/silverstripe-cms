@@ -2,7 +2,6 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-use SilverStripe\Dev\Deprecation;
 use InvalidArgumentException;
 use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Admin\AdminRootController;
@@ -198,7 +197,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         Requirements::css('silverstripe/cms: client/dist/styles/bundle.css');
         Requirements::customCSS($this->generatePageIconsCss(), self::PAGE_ICONS_ID);
 
-        Requirements::add_i18n_javascript('silverstripe/cms: client/lang', false, true);
+        Requirements::add_i18n_javascript('silverstripe/cms: client/lang', false);
 
         CMSBatchActionHandler::register('restore', CMSBatchAction_Restore::class);
         CMSBatchActionHandler::register('archive', CMSBatchAction_Archive::class);
@@ -2146,77 +2145,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function BatchActionList()
     {
         return $this->batchactions()->batchActionList();
-    }
-
-    /**
-     * @deprecated 4.12.0 Use custom logic instead
-     */
-    public function publishall(HTTPRequest $request): HTTPResponse
-    {
-        Deprecation::notice('4.12.0', 'Use custom logic instead');
-        if (!Permission::check('ADMIN')) {
-            return Security::permissionFailure($this);
-        }
-
-        Environment::increaseTimeLimitTo();
-        Environment::increaseMemoryLimitTo();
-
-        $response = "";
-
-        if (isset($this->requestParams['confirm'])) {
-            // Protect against CSRF on destructive action
-            if (!SecurityToken::inst()->checkRequest($request)) {
-                $this->httpError(400);
-            }
-
-            $start = 0;
-            $pages = SiteTree::get()->limit("$start,30");
-            $count = 0;
-            while ($pages) {
-                /** @var SiteTree $page */
-                foreach ($pages as $page) {
-                    if ($page && !$page->canPublish()) {
-                        return Security::permissionFailure($this);
-                    }
-
-                    $page->publishRecursive();
-                    $page->destroy();
-                    unset($page);
-                    $count++;
-                    $response .= "<li>$count</li>";
-                }
-                if ($pages->count() > 29) {
-                    $start += 30;
-                    $pages = SiteTree::get()->limit("$start,30");
-                } else {
-                    break;
-                }
-            }
-            $response .= _t(__CLASS__ . '.PUBPAGES', "Done: Published {count} pages", ['count' => $count]);
-        } else {
-            $token = SecurityToken::inst();
-            $fields = new FieldList();
-            $token->updateFieldSet($fields);
-            $tokenField = $fields->first();
-            $tokenHtml = ($tokenField) ? $tokenField->FieldHolder() : '';
-            $publishAllDescription = _t(
-                __CLASS__ . '.PUBALLFUN2',
-                'Pressing this button will do the equivalent of going to every page and pressing "publish".  '
-                . 'It\'s intended to be used after there have been massive edits of the content, such as when '
-                . 'the site was first built. '
-                . 'For large websites, this task might not be able to run through to completion. '
-                . 'In this case, we recommend talking to your developers to create a custom task'
-            );
-            $response .= '<h1>' . _t(__CLASS__ . '.PUBALLFUN', '"Publish All" functionality') . '</h1>
-				<p>' . $publishAllDescription . '</p>
-				<form method="post" action="publishall">
-					<input type="submit" name="confirm" value="'
-                    . _t(__CLASS__ . '.PUBALLCONFIRM', "Please publish every page in the site, copying content stage to live", 'Confirmation button') .'" />'
-                    . $tokenHtml .
-                '</form>';
-        }
-
-        return HTTPResponse::create()->setBody($response);
     }
 
     /**

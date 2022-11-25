@@ -25,7 +25,6 @@ use SilverStripe\Core\Manifest\ModuleResource;
 use SilverStripe\Core\Manifest\ModuleResourceLoader;
 use SilverStripe\Core\Manifest\VersionProvider;
 use SilverStripe\Core\Resettable;
-use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\DropdownField;
@@ -651,11 +650,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function PreviewLink($action = null)
     {
-        if ($this->hasMethod('alternatePreviewLink')) {
-            Deprecation::notice('5.0', 'Use updatePreviewLink or override PreviewLink method');
-            return $this->alternatePreviewLink($action);
-        }
-
         $link = $this->AbsoluteLink($action);
         $this->extend('updatePreviewLink', $link, $action);
         return $link;
@@ -2755,35 +2749,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
-     * @deprecated 4.12.0 Use creatableChildPages() instead
-     *
-     * Gets a list of the page types that can be created under this specific page
-     *
-     * @return array
-     */
-    public function creatableChildren()
-    {
-        Deprecation::notice('4.12.0', 'Use creatableChildPages() instead');
-        // Build the list of candidate children
-        $cache = SiteTree::singleton()->getCreatableChildrenCache();
-        $cacheKey = $this->generateChildrenCacheKey(Security::getCurrentUser() ? Security::getCurrentUser()->ID : 0);
-        $children = $cache->get($cacheKey, []);
-        if (!$children || !isset($children[$this->ID])) {
-            $children[$this->ID] = [];
-            $candidates = static::page_type_classes();
-            foreach ($candidates as $childClass) {
-                $child = singleton($childClass);
-                if ($child->canCreate(null, ['Parent' => $this])) {
-                    $children[$this->ID][$childClass] = $child->i18n_singular_name();
-                }
-            }
-            $cache->set($cacheKey, $children);
-        }
-
-        return $children[$this->ID];
-    }
-
-    /**
      *
      * Gets a list of the page types that can be created under this specific page, including font icons
      *
@@ -3030,14 +2995,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             }
             // If we have a class of "{$ClassName}Controller" then we found our controller
             if (class_exists($candidate = sprintf('%sController', $class))) {
-                return $candidate;
-            } elseif (class_exists($candidate = sprintf('%s_Controller', $class))) {
-                // Support the legacy underscored filename, but raise a deprecation notice
-                Deprecation::notice(
-                    '5.0',
-                    'Underscored controller class names are deprecated. Use "MyController" instead of "My_Controller".',
-                    Deprecation::SCOPE_GLOBAL
-                );
                 return $candidate;
             } elseif (is_array($namespaceMap)) {
                 foreach ($namespaceMap as $pageNamespace => $controllerNamespace) {
@@ -3302,7 +3259,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
-     * Cache key for creatableChildren() method
+     * Cache key for creatableChildPages() method
      *
      * @param int $memberID
      * @return string
