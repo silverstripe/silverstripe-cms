@@ -4,7 +4,6 @@ namespace SilverStripe\CMS\Model;
 
 use Page;
 use SilverStripe\Core\Convert;
-use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\ReadonlyTransformation;
@@ -358,30 +357,6 @@ class VirtualPage extends Page
         }
 
         return $result;
-    }
-
-    /**
-     * @deprecated 4.2.0 Will be removed without equivalent functionality to replace it
-     */
-    public function updateImageTracking()
-    {
-        Deprecation::notice('4.2.0', 'Will be removed without equivalent functionality to replace it');
-
-        // Doesn't work on unsaved records
-        if (!$this->isInDB()) {
-            return;
-        }
-
-        // Remove CopyContentFrom() from the cache
-        unset($this->components['CopyContentFrom']);
-
-        // Update ImageTracking
-        $copyContentFrom = $this->CopyContentFrom();
-        if (!$copyContentFrom || !$copyContentFrom->isInDB()) {
-            return;
-        }
-
-        $this->FileTracking()->setByIDList($copyContentFrom->FileTracking()->column('ID'));
     }
 
     public function CMSTreeClasses()

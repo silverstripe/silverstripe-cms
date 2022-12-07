@@ -24,7 +24,6 @@ use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\Versioned\Versioned;
-use SilverStripe\Dev\Deprecation;
 
 class CMSMainTest extends FunctionalTest
 {
@@ -116,42 +115,6 @@ class CMSMainTest extends FunctionalTest
             $children,
             'Limited parent omits explicitly allowed classes in disallowedChildren'
         );
-    }
-
-    /**
-     * @todo Test the results of a publication better
-     */
-    public function testPublish()
-    {
-        if (Deprecation::isEnabled()) {
-            $this->markTestSkipped('Test calls deprecated code');
-        }
-        $page1 = $this->objFromFixture(SiteTree::class, 'page1');
-        $page2 = $this->objFromFixture(SiteTree::class, 'page2');
-        $this->logInAs('admin');
-
-        $response = $this->get('admin/pages/publishall?confirm=1');
-        $this->assertStringContainsString(
-            'Done: Published 30 pages',
-            $response->getBody()
-        );
-
-        // Some modules (e.g., cmsworkflow) will remove this action
-        $actions = CMSBatchActionHandler::config()->batch_actions;
-        if (isset($actions['publish'])) {
-            $response = $this->get(
-                'admin/pages/batchactions/publish?ajax=1&csvIDs=' . implode(',', [$page1->ID, $page2->ID])
-            );
-            $responseData = json_decode($response->getBody() ?? '', true);
-            $this->assertArrayHasKey($page1->ID, $responseData['modified']);
-            $this->assertArrayHasKey($page2->ID, $responseData['modified']);
-        }
-
-        // Get the latest version of the redirector page
-        $pageID = $this->idFromFixture(RedirectorPage::class, 'page5');
-        $latestID = DB::prepared_query('SELECT MAX("Version") FROM "RedirectorPage_Versions" WHERE "RecordID" = ?', [$pageID])->value();
-        $dsCount = DB::prepared_query('SELECT COUNT("Version") FROM "RedirectorPage_Versions" WHERE "RecordID" = ? AND "Version"= ?', [$pageID, $latestID])->value();
-        $this->assertEquals(1, $dsCount, "Published page has no duplicate version records: it has " . $dsCount . " for version " . $latestID);
     }
 
     /**

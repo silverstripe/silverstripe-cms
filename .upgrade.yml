@@ -39,8 +39,6 @@ mappings:
   RedirectorPage_Controller: SilverStripe\CMS\Model\RedirectorPageController
   SiteTree: SilverStripe\CMS\Model\SiteTree
   SiteTreeExtension: SilverStripe\CMS\Model\SiteTreeExtension
-  SiteTreeFileExtension: SilverStripe\CMS\Model\SiteTreeFileExtension
-  SiteTreeFolderExtension: SilverStripe\CMS\Model\SiteTreeFolderExtension
   SiteTreeLinkTracking: SilverStripe\CMS\Model\SiteTreeLinkTracking
   SiteTreeLinkTracking_Parser: SilverStripe\CMS\Model\SiteTreeLinkTracking_Parser
   VirtualPage: SilverStripe\CMS\Model\VirtualPage

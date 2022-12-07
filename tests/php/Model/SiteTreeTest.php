@@ -41,7 +41,6 @@ use Page;
 use PageController;
 
 use const RESOURCES_DIR;
-use SilverStripe\Dev\Deprecation;
 
 class SiteTreeTest extends SapphireTest
 {
@@ -888,7 +887,7 @@ class SiteTreeTest extends SapphireTest
             "SELECT \"AuthorID\", \"PublisherID\" FROM \"SiteTree_Versions\"
             WHERE \"RecordID\" = ? ORDER BY \"Version\" DESC",
             [$about->ID]
-        )->first();
+        )->record();
         $this->assertEquals($member->ID, $savedVersion['AuthorID']);
         $this->assertEquals(0, $savedVersion['PublisherID']);
 
@@ -898,7 +897,7 @@ class SiteTreeTest extends SapphireTest
             "SELECT \"AuthorID\", \"PublisherID\" FROM \"SiteTree_Versions\"
             WHERE \"RecordID\" = ? ORDER BY \"Version\" DESC",
             [$about->ID]
-        )->first();
+        )->record();
 
         // Check the version created
         $this->assertEquals($member->ID, $publishedVersion['AuthorID']);
@@ -1729,18 +1728,6 @@ class SiteTreeTest extends SapphireTest
 
         $namespacedSiteTree = new SiteTreeTest_NamespaceMapTest();
         $this->assertSame(SiteTreeTest_NamespaceMapTestController::class, $namespacedSiteTree->getControllerName());
-    }
-
-    /**
-     * Test that underscored class names (legacy) are still supported (deprecation notice is issued though).
-     */
-    public function testGetControllerNameWithUnderscoresIsSupported()
-    {
-        if (Deprecation::isEnabled()) {
-            $this->markTestSkipped('Test calls deprecated code');
-        }
-        $class = new SiteTreeTest_LegacyControllerName();
-        $this->assertEquals(SiteTreeTest_LegacyControllerName_Controller::class, $class->getControllerName());
     }
 
     public function testTreeTitleCache()
