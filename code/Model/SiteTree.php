@@ -637,7 +637,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         if ($this->hasMethod('alternateAbsoluteLink')) {
             return $this->alternateAbsoluteLink($action);
         } else {
-            return Director::absoluteURL($this->Link($action));
+            return Director::absoluteURL((string) $this->Link($action));
         }
     }
 
