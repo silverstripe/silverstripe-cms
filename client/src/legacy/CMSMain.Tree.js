@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import i18n from 'i18n';
-import reactConfirm from "@silverstripe/reactstrap-confirm";
+import reactConfirm from 'reactstrap-confirm';
 
 $.entwine('ss.tree', function($) {
   $('.cms-tree').entwine({
