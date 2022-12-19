@@ -2021,4 +2021,51 @@ class SiteTreeTest extends SapphireTest
             $child->CMSEditLink()
         );
     }
+
+    /**
+     * @dataProvider provideSanitiseExtraMeta
+     */
+    public function testSanitiseExtraMeta(string $extraMeta, string $expected, string $message): void
+    {
+        $siteTree = new SiteTree();
+        $siteTree->ExtraMeta = $extraMeta;
+        $siteTree->write();
+        $this->assertSame($expected, $siteTree->ExtraMeta, $message);
+    }
+
+    public function provideSanitiseExtraMeta(): array
+    {
+        return [
+            [
+                '<link rel="canonical" accesskey="X" sometrigger="alert(1)" />',
+                '<link rel="canonical" sometrigger="alert(1)">',
+                'accesskey attribute is removed'
+            ],
+            [
+                '<link rel="canonical" onclick="alert(1)" /><meta name="x" onerror="alert(0)">',
+                '<link rel="canonical"><meta name="x">',
+                'Attributes starting with "on" are removed'
+            ],
+            [
+                '<link rel="canonical" onclick=alert(1) /><meta name="x" onerror=\'alert(0)\'>',
+                '<link rel="canonical"><meta name="x">',
+                'Attributes with different quote styles are removed'
+            ],
+            [
+                '<link rel="canonical" ONCLICK=alert(1) /><meta name="x" oNeRrOr=\'alert(0)\'>',
+                '<link rel="canonical"><meta name="x">',
+                'Mixed case attributes are removed'
+            ],
+            [
+                '<link rel="canonical" accesskey="X" onclick="alert(1)" name="x" />',
+                '<link rel="canonical" name="x">',
+                'Multiple attributes are removed'
+            ],
+            [
+                '<link rel="canonical" href="valid" ;;// somethingdodgy < onmouseover=alert(1)',
+                '<link rel="canonical" href="valid" somethingdodgy="">',
+                'Invalid HTML is converted to valid HTML and parsed'
+            ],
+        ];
+    }
 }
