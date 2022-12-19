@@ -136,6 +136,7 @@ nl:
     StartEditing: 'U kunt de inhoud aanpassen via <a href="{link}">het CMS</a>.'
     UnableDeleteInstall: 'De installatiebestanden konden niet verwijderd worden. Verwijder onderstaande bestanden handmatig:'
     VIEWPAGEIN: 'Bekijk pagina in:'
+    UNVERSIONEDPREVIEW: Voorbeeld
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Gearchiveerd
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
@@ -164,6 +165,8 @@ nl:
     REDIRECTTOPAGE: 'Een pagina op deze website'
     SINGULARNAME: Verwijzingspagina
     YOURPAGE: 'Pagina op deze website'
+    FILE: Bestand
+    REDIRECTTOFILE: 'Een bestand op deze website'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Er is een verwijspagina ingesteld, zonder ergens naar te verwijzen.'
   SilverStripe\CMS\Model\SiteTree:

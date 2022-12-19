@@ -234,6 +234,7 @@ fr:
     PLURALS:
       one: 'Une page'
       other: '{count} pages'
+      many: '{count} pages'
     PageTypNotAllowedOnRoot: "Le type de page «\_{type}\_» n’est pas autorisé à la racine du site"
     PageTypeNotAllowed: 'Le type de page "{type}" ne peut pas être créé sous cette page'
     REMOVE_INSTALL_WARNING: "Attention\_: Vous devriez supprimer install.php pour des raisons de sécurité."

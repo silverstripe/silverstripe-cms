@@ -206,6 +206,7 @@ es_MX:
     PLURALS:
       one: 'Una página'
       other: '{count} Páginas'
+      many: '{count} Páginas'
     REORGANISE_DESCRIPTION: 'Cambiar la estructura del sitio'
     REORGANISE_HELP: 'Reorganizar páginas en el árbol del sitio arrastrando y soltando.'
     SHOWINMENUS: '¿Mostrar en menús?'
