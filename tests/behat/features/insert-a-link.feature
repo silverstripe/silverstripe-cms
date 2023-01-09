@@ -18,8 +18,7 @@ So that I can link to a external website or a page on my site
       And I press the "Insert link" HTML field button
       And I click "Page on this site" in the ".tox-collection__group" element
     Then I should see an "form#Form_editorInternalLink" element
-    When I click "(Search or choose Page)" in the ".Select-multi-value-wrapper" element
-      And I click "About Us" in the ".treedropdownfield__menu" element
+    When I select "About Us" in the "#Form_editorInternalLink_PageID_Holder" tree dropdown
       And I fill in "my desc" for "Link description"
       And I press the "Insert link" button
     Then the "Content" HTML field should contain "<a title="my desc" href="[sitetree_link,id=2]">awesome</a>"
@@ -32,11 +31,10 @@ So that I can link to a external website or a page on my site
       And I press the "Insert link" HTML field button
       And I click "Page on this site" in the ".tox-collection__group" element
       And I should see an "form#Form_editorInternalLink" element
-    Then I should see "About Us" in the ".Select-value" element
+    Then I should see "About Us" in the ".treedropdownfield__value-container" element
       And the "Link description" field should contain "my desc"
     # This doesn't seem to suffer from that issue
-    When I click "About Us" in the ".Select-value" element
-      And I click "Home" in the ".treedropdownfield__menu" element
+    When I select "Home" in the "#Form_editorInternalLink_PageID_Holder" tree dropdown
       And I fill in "my new desc" for "Link description"
       And I press the "Insert link" button
     Then the "Content" HTML field should contain "<a title="my new desc" href="[sitetree_link,id=1]">awesome</a>"
