@@ -8,6 +8,7 @@ use Behat\Mink\Element\NodeElement;
 use PHPUnit\Framework\Assert;
 use SilverStripe\BehatExtension\Context\BasicContext;
 use SilverStripe\BehatExtension\Context\FixtureContext as BehatFixtureContext;
+use SilverStripe\BehatExtension\Utility\StepHelper;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Core\ClassInfo;
@@ -20,6 +21,8 @@ use SilverStripe\Versioned\Versioned;
  */
 class FixtureContext extends BehatFixtureContext
 {
+    use StepHelper;
+
     /**
      * @var BasicContext
      */
@@ -138,5 +141,34 @@ class FixtureContext extends BehatFixtureContext
 JS;
         $actual = $this->getMainContext()->getSession()->evaluateScript($js);
         Assert::assertEquals($expected, $actual);
+    }
+
+    /**
+     * Select a value in the anchor selector field
+     *
+     * @When /^I select "([^"]*)" in the "([^"]*)" anchor dropdown$/
+     */
+    public function iSelectValueInAnchorDropdown($text, $selector)
+    {
+        $page = $this->getMainContext()->getSession()->getPage();
+        /** @var NodeElement $parentElement */
+        $parentElement = null;
+        $this->retryThrowable(function () use (&$parentElement, &$page, $selector) {
+            $parentElement = $page->find('css', $selector);
+            Assert::assertNotNull($parentElement, sprintf('"%s" element not found', $selector));
+            $page = $this->getMainContext()->getSession()->getPage();
+        });
+
+        $this->retryThrowable(function () use ($parentElement, $selector) {
+            $dropdown = $parentElement->find('css', '.anchorselectorfield__dropdown-indicator');
+            Assert::assertNotNull($dropdown, sprintf('Unable to find the dropdown in "%s"', $selector));
+            $dropdown->click();
+        });
+
+        $this->retryThrowable(function () use ($text, $parentElement, $selector) {
+            $element = $parentElement->find('xpath', sprintf('//*[count(*)=0 and .="%s"]', $text));
+            Assert::assertNotNull($element, sprintf('"%s" not found in "%s"', $text, $selector));
+            $element->click();
+        });
     }
 }

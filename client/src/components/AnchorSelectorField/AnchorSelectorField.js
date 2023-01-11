@@ -8,7 +8,8 @@ import SilverStripeComponent from 'lib/SilverStripeComponent';
 import * as anchorSelectorActions from 'state/anchorSelector/AnchorSelectorActions';
 import anchorSelectorStates from 'state/anchorSelector/AnchorSelectorStates';
 import fieldHolder from 'components/FieldHolder/FieldHolder';
-import { Creatable } from 'react-select';
+import CreatableSelect from 'react-select/creatable';
+import EmotionCssCacheProvider from 'containers/EmotionCssCacheProvider/EmotionCssCacheProvider';
 import getFormState from 'lib/getFormState';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
@@ -117,26 +118,26 @@ class AnchorSelectorField extends SilverStripeComponent {
   }
 
   render() {
-    const inputProps = {
-      id: this.props.id,
-    };
     const className = classnames('anchorselectorfield', this.props.extraClass);
     const options = this.getDropdownOptions();
-    const value = this.props.value || '';
+    const rawValue = this.props.value || '';
     const placeholder = i18n._t('CMS.ANCHOR_SELECT_OR_TYPE', 'Select or enter anchor');
     return (
-      <Creatable
-        searchable
-        options={options}
-        className={className}
-        name={this.props.name}
-        inputProps={inputProps}
-        onChange={this.handleChange}
-        onBlurResetsInput
-        value={value}
-        placeholder={placeholder}
-        labelKey="value"
-      />
+      <EmotionCssCacheProvider>
+        <CreatableSelect
+          isSearchable
+          isClearable
+          options={options}
+          className={className}
+          name={this.props.name}
+          onChange={this.handleChange}
+          value={{value: rawValue}}
+          noOptionsMessage={() => i18n._t('CMS.ANCHOR_NO_OPTIONS', 'No options')}
+          placeholder={placeholder}
+          getOptionLabel={({ value }) => value}
+          classNamePrefix="anchorselectorfield"
+        />
+      </EmotionCssCacheProvider>
     );
   }
 }
