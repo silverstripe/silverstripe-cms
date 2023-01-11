@@ -352,7 +352,6 @@ class ContentController extends Controller
         if (Director::isDev() || Permission::check('CMS_ACCESS_CMSMain') || Permission::check('VIEW_DRAFT_CONTENT')) {
             if ($this->dataRecord) {
                 Requirements::css('silverstripe/cms: client/dist/styles/SilverStripeNavigator.css');
-                Requirements::javascript('silverstripe/admin: thirdparty/jquery-query/jquery.query.js');
                 Requirements::javascript('silverstripe/cms: client/dist/js/SilverStripeNavigator.js');
 
                 $return = $nav = SilverStripeNavigator::get_for_record($this->dataRecord);
