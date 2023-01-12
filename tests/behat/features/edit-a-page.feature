@@ -54,7 +54,7 @@ Feature: Edit a page
     Then the rendered HTML should contain "/about-modified-us"
 
     # Add metadata
-    When I click on the "#ui-accordion-Form_EditForm_Metadata-header-0" element
+    When I click on the ".ui-accordion-header" element
     And I wait for 1 second
     And I fill in "Meta Description" with "MyMetaDesc"
 
