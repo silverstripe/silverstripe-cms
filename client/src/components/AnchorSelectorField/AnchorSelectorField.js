@@ -131,7 +131,7 @@ class AnchorSelectorField extends SilverStripeComponent {
           className={className}
           name={this.props.name}
           onChange={this.handleChange}
-          value={{value: rawValue}}
+          value={{ value: rawValue }}
           noOptionsMessage={() => i18n._t('CMS.ANCHOR_NO_OPTIONS', 'No options')}
           placeholder={placeholder}
           getOptionLabel={({ value }) => value}
