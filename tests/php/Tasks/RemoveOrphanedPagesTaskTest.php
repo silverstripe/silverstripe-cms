@@ -5,6 +5,7 @@ namespace SilverStripe\CMS\Tests\Tasks;
 use SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\Dev\FunctionalTest;
+use SilverStripe\Dev\Deprecation;
 
 /**
  * <h2>Fixture tree</h2>
@@ -40,6 +41,9 @@ class RemoveOrphanedPagesTaskTest extends FunctionalTest
 
     protected function setUp(): void
     {
+        if (Deprecation::isEnabled()) {
+            $this->markTestSkipped('Test calls deprecated code');
+        }
         parent::setUp();
 
         $parent1_published = $this->objFromFixture('Page', 'parent1_published');

@@ -5,6 +5,7 @@ namespace SilverStripe\CMS\Tasks;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Dev\BuildTask;
 use SilverStripe\Dev\Debug;
+use SilverStripe\Dev\Deprecation;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
 use SilverStripe\Versioned\Versioned;
@@ -12,6 +13,8 @@ use SilverStripe\Versioned\Versioned;
 /**
  * Updates legacy SiteTree link tracking into new polymorphic many_many relation.
  * This should be done for any site upgrading to 4.2.0
+ *
+ * @deprecated 4.13.0 Will be removed without equivalent functionality to replace it
  */
 class MigrateSiteTreeLinkingTask extends BuildTask
 {
@@ -20,6 +23,15 @@ class MigrateSiteTreeLinkingTask extends BuildTask
     protected $title = 'Migrate SiteTree Linking Task';
 
     protected $description = 'Updates legacy SiteTree link tracking into new polymorphic many_many relation';
+
+    public function __construct()
+    {
+        Deprecation::notice(
+            '4.13.0',
+            'Will be removed without equivalent functionality to replace it',
+            Deprecation::SCOPE_CLASS
+        );
+    }
 
     public function run($request)
     {
