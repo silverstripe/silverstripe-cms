@@ -5,8 +5,6 @@ After: '#coreroutes'
 SilverStripe\Control\Director:
   rules:
     '': 'SilverStripe\CMS\Controllers\RootURLController'
-    'RemoveOrphanedPagesTask//$Action/$ID/$OtherID': 'SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask'
-    'SiteTreeMaintenanceTask//$Action/$ID/$OtherID': 'SilverStripe\CMS\Tasks\SiteTreeMaintenanceTask'
 ---
 Name: legacycmsroutes
 ---
