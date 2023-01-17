@@ -18,6 +18,7 @@ use SilverStripe\Versioned\Versioned;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\Security;
 use SilverStripe\View\Requirements;
+use SilverStripe\Dev\Deprecation;
 
 /**
  * Identify "orphaned" pages which point to a parent
@@ -36,6 +37,8 @@ use SilverStripe\View\Requirements;
  * before and after orphan removal.
  *
  * @author Ingo Schommer (<firstname>@silverstripe.com), SilverStripe Ltd.
+ *
+ * @deprecated 4.13.0 Will be removed without equivalent functionality to replace it
  */
 class RemoveOrphanedPagesTask extends Controller
 {
@@ -64,6 +67,15 @@ in the other stage:<br />
 	";
 
     protected $orphanedSearchClass = SiteTree::class;
+
+    public function __construct()
+    {
+        Deprecation::notice(
+            '4.13.0',
+            'Will be removed without equivalent functionality to replace it',
+            Deprecation::SCOPE_CLASS
+        );
+    }
 
     protected function init()
     {

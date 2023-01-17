@@ -7,6 +7,7 @@ use SilverStripe\CMS\Tasks\MigrateSiteTreeLinkingTask;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
+use SilverStripe\Dev\Deprecation;
 
 class MigrateSiteTreeLinkingTaskTest extends SapphireTest
 {
@@ -34,6 +35,9 @@ class MigrateSiteTreeLinkingTaskTest extends SapphireTest
 
     protected function setUp(): void
     {
+        if (Deprecation::isEnabled()) {
+            $this->markTestSkipped('Test calls deprecated code');
+        }
         parent::setUp();
 
         // Manually bootstrap all Content blocks with soft coded IDs (raw sql to avoid save hooks)

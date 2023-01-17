@@ -6,12 +6,25 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\Dev\Deprecation;
 
+/**
+ * @deprecated 4.13.0 Will be removed without equivalent functionality to replace it
+ */
 class SiteTreeMaintenanceTask extends Controller
 {
     private static $allowed_actions = [
         '*' => 'ADMIN'
     ];
+
+    public function __construct()
+    {
+        Deprecation::notice(
+            '4.13.0',
+            'Will be removed without equivalent functionality to replace it',
+            Deprecation::SCOPE_CLASS
+        );
+    }
 
     public function makelinksunique()
     {
