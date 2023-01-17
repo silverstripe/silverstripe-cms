@@ -203,6 +203,7 @@ en:
     HTMLEDITORTITLE: Content
     INHERIT: 'Inherit from parent page'
     INHERITSITECONFIG: 'Inherit from site access settings'
+    InvalidExtraMeta: 'Custom Meta Tags does not contain valid HTML'
     LASTPUBLISHED: 'Last published'
     LASTSAVED: 'Last saved'
     LASTUPDATED: 'Last Updated'

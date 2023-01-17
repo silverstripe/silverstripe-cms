@@ -212,6 +212,7 @@ es:
     PLURALS:
       one: 'Una Página'
       other: '{count} Páginas'
+      many: '{count} Páginas'
     PageTypNotAllowedOnRoot: 'La página tipo "{type}" no está permitida en el nivel raiz'
     PageTypeNotAllowed: 'El tipo de página "{type}" no está permitido como hijo de esta página padre'
     REMOVE_INSTALL_WARNING: 'Aviso: Deberías eliminar install.php de esta instalación de SilverStripe por motivos de seguridad.'
