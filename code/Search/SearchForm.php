@@ -13,16 +13,10 @@ use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\SS_List;
-use Translatable;
 
 /**
  * Standard basic search form which conducts a fulltext search on all {@link SiteTree}
  * objects.
- *
- * If multilingual content is enabled through the {@link Translatable} extension,
- * only pages the currently set language on the holder for this searchform are found.
- * The language is set through a hidden field in the form, which is prepoluated
- * with {@link Translatable::get_current_locale()} when then form is constructed.
  *
  * @see Use ModelController and SearchContext for a more generic search implementation based around DataObject
  */
@@ -68,12 +62,6 @@ class SearchForm extends Form
             $fields = new FieldList(
                 new TextField('Search', _t(__CLASS__.'.SEARCH', 'Search'))
             );
-        }
-
-        if (class_exists('Translatable')
-            && SiteTree::singleton()->hasExtension('Translatable')
-        ) {
-            $fields->push(new HiddenField('searchlocale', 'searchlocale', Translatable::get_current_locale()));
         }
 
         if (!$actions) {
@@ -130,22 +118,6 @@ class SearchForm extends Form
         // Get request data from request handler
         $request = $this->getRequestHandler()->getRequest();
 
-        // set language (if present)
-        $locale = null;
-        $origLocale = null;
-        if (class_exists('Translatable')) {
-            $locale = $request->requestVar('searchlocale');
-            if (SiteTree::singleton()->hasExtension('Translatable') && $locale) {
-                if ($locale === "ALL") {
-                    Translatable::disable_locale_filter();
-                } else {
-                    $origLocale = Translatable::get_current_locale();
-
-                    Translatable::set_current_locale($locale);
-                }
-            }
-        }
-
         $keywords = $request->requestVar('Search');
 
         $andProcessor = function ($matches) {
@@ -177,17 +149,6 @@ class SearchForm extends Form
             foreach ($results as $result) {
                 if (!$result->canView()) {
                     $results->remove($result);
-                }
-            }
-        }
-
-        // reset locale
-        if (class_exists('Translatable')) {
-            if (SiteTree::singleton()->hasExtension('Translatable') && $locale) {
-                if ($locale == "ALL") {
-                    Translatable::enable_locale_filter();
-                } else {
-                    Translatable::set_current_locale($origLocale);
                 }
             }
         }
