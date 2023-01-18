@@ -9,8 +9,6 @@ use SilverStripe\ORM\DataObject;
  *
  * @method DataObject Parent() Parent object
  * @method SiteTree Linked() Page being linked to
- *
- * Run `MigrateSiteTreeLinkingTask` to migrate from old table to this.
  */
 class SiteTreeLink extends DataObject
 {

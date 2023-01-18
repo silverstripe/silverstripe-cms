@@ -56,9 +56,6 @@ mappings:
   SideReport_RecentlyEdited: SilverStripe\CMS\Reports\RecentlyEditedReport
   ContentControllerSearchExtension: SilverStripe\CMS\Search\ContentControllerSearchExtension
   SearchForm: SilverStripe\CMS\Search\SearchForm
-  MigrateSiteTreeLinkingTask: SilverStripe\CMS\Tasks\MigrateSiteTreeLinkingTask
-  RemoveOrphanedPagesTask: SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask
-  SiteTreeMaintenanceTask: SilverStripe\CMS\Tasks\SiteTreeMaintenanceTask
   AssetAdmin: SilverStripe\AssetAdmin\Controller\AssetAdmin
   AssetTableField: SilverStripe\AssetAdmin\Controller\AssetAdmin
   CMSAddPageController: SilverStripe\CMS\Controllers\CMSPageAddController
@@ -142,8 +139,6 @@ mappings:
   CmsReportsTest: SilverStripe\CMS\Tests\CmsReportsTest
   CMSMainSearchFormTest: SilverStripe\CMS\Tests\CMSMainSearchFormTest
   ZZZSearchFormTest: SilverStripe\CMS\Tests\ZZZSearchFormTest
-  MigrateSiteTreeLinkingTaskTest: SilverStripe\CMS\Tests\MigrateSiteTreeLinkingTaskTest
-  RemoveOrphanedPagesTaskTest: SilverStripe\CMS\Tests\RemoveOrphanedPagesTaskTest
 excludedPaths:
   - '*/_config/legacy.yml'
 warnings:
