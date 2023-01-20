@@ -1,8 +1,0 @@
----
-Name: cmslegacy
----
-SilverStripe\ORM\DatabaseAdmin:
-  classname_value_remapping:
-    SiteTree: 'SilverStripe\CMS\Model\SiteTree'
-    RedirectorPage: SilverStripe\CMS\Model\RedirectorPage
-    VirtualPage: SilverStripe\CMS\Model\VirtualPage

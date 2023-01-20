@@ -95,9 +95,6 @@ class ZZZSearchFormTest extends FunctionalTest
         return $supports;
     }
 
-    /**
-     * @skipUpgrade
-     */
     public function testSearchFormTemplateCanBeChanged()
     {
         if (!$this->checkFulltextSupport()) {
@@ -114,9 +111,6 @@ class ZZZSearchFormTest extends FunctionalTest
         );
     }
 
-    /**
-     * @skipUpgrade
-     */
     public function testPublishedPagesMatchedByTitle()
     {
         if (!$this->checkFulltextSupport()) {
@@ -147,9 +141,6 @@ class ZZZSearchFormTest extends FunctionalTest
         );
     }
 
-    /**
-     * @skipUpgrade
-     */
     public function testDoubleQuotesPublishedPagesMatchedByTitle()
     {
         if (!$this->checkFulltextSupport()) {
@@ -182,9 +173,6 @@ class ZZZSearchFormTest extends FunctionalTest
         );
     }
 
-    /**
-     * @skipUpgrade
-     */
     public function testUnpublishedPagesNotIncluded()
     {
         if (!$this->checkFulltextSupport()) {

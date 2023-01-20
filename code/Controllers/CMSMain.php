@@ -984,7 +984,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         );
 
         // Create the form
-        /** @skipUpgrade */
         $form = Form::create(
             $this,
             'SearchForm',
@@ -1336,7 +1335,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         }
 
         // Added in-line to the form, but plucked into different view by LeftAndMain.Preview.js upon load
-        /** @skipUpgrade */
         if (($record instanceof CMSPreviewable || $record->has_extension(CMSPreviewable::class))
             && !$fields->fieldByName('SilverStripeNavigator')
         ) {

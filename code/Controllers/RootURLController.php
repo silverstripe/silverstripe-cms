@@ -73,7 +73,6 @@ class RootURLController extends Controller implements Resettable
 
         self::$is_at_root = true;
 
-        /** @skipUpgrade */
         if (!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
             $this->getResponse()->redirect(Controller::join_links(
                 Director::absoluteBaseURL(),
@@ -91,7 +90,6 @@ class RootURLController extends Controller implements Resettable
         $this->beforeHandleRequest($request);
 
         if (!$this->getResponse()->isFinished()) {
-            /** @skipUpgrade */
             if (!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
                 $this->getResponse()->redirect(Director::absoluteBaseURL() . 'dev/build?returnURL=' . (isset($_GET['url']) ? urlencode($_GET['url']) : null));
                 return $this->getResponse();

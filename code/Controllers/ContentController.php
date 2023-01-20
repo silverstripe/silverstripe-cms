@@ -175,7 +175,6 @@ class ContentController extends Controller
         }
 
         // Check page permissions
-        /** @skipUpgrade */
         if ($this->dataRecord && $this->URLSegment != 'Security' && !$this->dataRecord->canView()) {
             Security::permissionFailure($this);
             return;
