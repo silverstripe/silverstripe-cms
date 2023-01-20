@@ -512,12 +512,12 @@ class SiteTreeTest extends SapphireTest
         Config::modify()->set(SiteTree::class, 'nested_urls', true);
 
         $this->assertEquals(
-            'about-us/',
+            'about-us',
             $about->RelativeLink(),
             'Matches URLSegment on top level without parameters'
         );
         $this->assertEquals(
-            'about-us/my-staff/',
+            'about-us/my-staff',
             $staff->RelativeLink(),
             'Matches URLSegment plus parent on second level without parameters'
         );
@@ -555,8 +555,8 @@ class SiteTreeTest extends SapphireTest
         $parent->URLSegment = 'changed-on-draft';
         $parent->write();
 
-        $this->assertStringEndsWith('changed-on-live/my-staff/', $child->getAbsoluteLiveLink(false));
-        $this->assertStringEndsWith('changed-on-live/my-staff/?stage=Live', $child->getAbsoluteLiveLink());
+        $this->assertStringEndsWith('changed-on-live/my-staff', $child->getAbsoluteLiveLink(false));
+        $this->assertStringEndsWith('changed-on-live/my-staff?stage=Live', $child->getAbsoluteLiveLink());
     }
 
     public function testDuplicateChildrenRetainSort()

@@ -697,7 +697,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $action = null;
         }
 
-        $link = Controller::join_links($base, '/', $action);
+        $link = Controller::join_links($base, $action);
 
         $this->extend('updateRelativeLink', $link, $base, $action);
 

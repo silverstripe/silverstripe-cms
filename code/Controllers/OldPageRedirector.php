@@ -102,7 +102,7 @@ class OldPageRedirector extends Extension
                     // No valid page found.
                     if ($redirect) {
                         // If we had some redirect to be done, lets do it. imagine /foo/action -> /bar/action, we still want this redirect to happen if action isn't a page
-                        return $page->Link() . implode('/', $params);
+                        return Controller::join_links($page->Link(), implode('/', $params));
                     }
                 }
             } else {

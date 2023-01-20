@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import { joinUrlPaths } from 'lib/urls';
 
 /**
  * Behaviour for the CMS Content Toolbar.
@@ -81,7 +82,7 @@ $.entwine('ss', function ($) {
       localStorage.setItem('ss.pages-view-type', viewType);
       if(isContentViewInSidebar && viewType === VIEW_TYPE_LIST) {
         const baseUrl = $('base').attr('href') || '';  // Edge17 and IE11 need absolute path
-        window.location.assign(baseUrl + $contentView.data('url-listviewroot'));
+        window.location.assign(joinUrlPaths(baseUrl, $contentView.data('url-listviewroot')));
 
         return;
       }

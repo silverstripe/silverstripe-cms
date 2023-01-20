@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import i18n from 'i18n';
 import reactConfirm from 'reactstrap-confirm';
+import { joinUrlPaths } from 'lib/urls';
 
 $.entwine('ss.tree', function($) {
   $('.cms-tree').entwine({
@@ -45,7 +46,7 @@ $.entwine('ss.tree', function($) {
       });
 
       const baseUrl = $('base').attr('href') || ''; // Edge17 and IE11 require absolute paths
-      window.location.assign(baseUrl + urlWithParams);
+      window.location.assign(joinUrlPaths(baseUrl, urlWithParams));
     },
 
     getTreeConfig: function() {
