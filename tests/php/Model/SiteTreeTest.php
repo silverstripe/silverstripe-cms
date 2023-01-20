@@ -2106,8 +2106,8 @@ class SiteTreeTest extends SapphireTest
                 'Multiple attributes are removed'
             ],
             [
-                '<link rel="canonical" href="valid" ;;// somethingdodgy < onmouseover=alert(1)',
-                '<link rel="canonical" href="valid" somethingdodgy="">',
+                '<link rel="canonical" href="valid" ;;// somethingdodgy <onmouseover=alert(1)>',
+                '<link rel="canonical" href="valid" somethingdodgy=""><onmouseover></onmouseover>',
                 'Invalid HTML is converted to valid HTML and parsed'
             ],
         ];
