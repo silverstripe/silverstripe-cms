@@ -45,7 +45,6 @@ class SearchForm extends Form
     ];
 
     /**
-     * @skipUpgrade
      * @param RequestHandler $controller
      * @param string $name The name of the form (used in URL addressing)
      * @param FieldList $fields Optional, defaults to a single field named "Search". Search logic needs to be customized

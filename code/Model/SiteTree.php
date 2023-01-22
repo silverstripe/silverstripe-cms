@@ -2460,7 +2460,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // "readonly"/viewing version that isn't the current version of the record
         /** @var SiteTree $stageRecord */
         $stageRecord = Versioned::get_by_stage(static::class, Versioned::DRAFT)->byID($this->ID);
-        /** @skipUpgrade */
         if ($stageRecord && $stageRecord->Version != $this->Version) {
             $moreOptions->push(FormAction::create('email', _t('SilverStripe\\CMS\\Controllers\\CMSMain.EMAIL', 'Email')));
             $moreOptions->push(FormAction::create('rollback', _t('SilverStripe\\CMS\\Controllers\\CMSMain.ROLLBACK', 'Roll back to this version')));
