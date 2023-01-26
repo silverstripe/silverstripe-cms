@@ -40,6 +40,9 @@ use SilverStripe\View\Shortcodes\EmbedShortcodeProvider;
 use TractorCow\Fluent\Extension\FluentSiteTreeExtension;
 use const RESOURCES_DIR;
 use SilverStripe\Dev\Deprecation;
+use SilverStripe\HTML5\HTML5Value;
+use SilverStripe\View\Parsers\HTMLValue;
+use SilverStripe\View\Parsers\HTML4Value;
 
 class SiteTreeTest extends SapphireTest
 {
@@ -2060,12 +2063,50 @@ class SiteTreeTest extends SapphireTest
                 '<link rel="canonical" accesskey="X" onclick="alert(1)" name="x" />',
                 '<link rel="canonical" name="x">',
                 'Multiple attributes are removed'
-            ],
+            ]
+        ];
+    }
+
+   /**
+    * @dataProvider provideSanatiseInvalidExtraMeta
+    */
+    public function testSanatiseInvalidExtraMetaHTML4Value(string $extraMeta, string $expected): void
+    {
+        Injector::inst()->registerService(HTML4Value::create(), HTMLValue::class);
+        $siteTree = new SiteTree();
+        $siteTree->ExtraMeta = $extraMeta;
+        $siteTree->write();
+        $this->assertSame(
+            $expected,
+            $siteTree->ExtraMeta,
+            'Invalid HTML is converted to valid HTML and parsed'
+        );
+    }
+
+    /**
+     * @dataProvider provideSanatiseInvalidExtraMeta
+     */
+    public function testSanatiseInvalidExtraMetaHTML5Value(string $extraMeta): void
+    {
+        // HTML5Value comes from the module silverstripe/html5
+        if (!class_exists(HTML5Value::class)) {
+            $this->markTestSkipped('HTML5Value class does not exist');
+        }
+        Injector::inst()->registerService(HTML5Value::create(), HTMLValue::class);
+        $this->expectException(ValidationException::class);
+        $this->expectExceptionMessage('Custom Meta Tags does not contain valid HTML');
+        $siteTree = new SiteTree();
+        $siteTree->ExtraMeta = $extraMeta;
+        $siteTree->write();
+    }
+
+    public function provideSanatiseInvalidExtraMeta(): array
+    {
+        return [
             [
                 '<link rel="canonical" href="valid" ;;// somethingdodgy < onmouseover=alert(1)',
-                '<link rel="canonical" href="valid" somethingdodgy="">',
-                'Invalid HTML is converted to valid HTML and parsed'
-            ],
+                '<link rel="canonical" href="valid" somethingdodgy="">'
+            ]
         ];
     }
 }
