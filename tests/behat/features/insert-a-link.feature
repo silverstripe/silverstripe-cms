@@ -31,7 +31,7 @@ So that I can link to a external website or a page on my site
       And I press the "Insert link" HTML field button
       And I click "Page on this site" in the ".tox-collection__group" element
       And I should see an "form#Form_editorInternalLink" element
-    Then I should see "About Us" in the ".treedropdownfield__value-container" element
+    Then I should see "About Us" in the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__value-container" element
       And the "Link description" field should contain "my desc"
     # This doesn't seem to suffer from that issue
     When I select "Home" in the "#Form_editorInternalLink_PageID_Holder" tree dropdown
