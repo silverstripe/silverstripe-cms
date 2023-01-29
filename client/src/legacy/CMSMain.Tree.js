@@ -169,12 +169,13 @@ $.entwine('ss.tree', function($) {
         'By changing the URL segment visitors will not be able to view it.'
       );
 
-      return await reactConfirm(message, {
+      return await reactConfirm({
         title: i18n._t(
           'CMS.RemoveHomePageWarningTitle',
           'Remove your home page?'
         ),
-        confirmLabel: i18n._t(
+        message,
+        confirmText: i18n._t(
           'CMS.RemoveHomePageWarningLabel',
           'Remove'
         ),

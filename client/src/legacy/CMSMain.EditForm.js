@@ -497,12 +497,13 @@ $.entwine('ss', function($){
         'By changing the URL segment visitors will not be able to view it.'
       );
 
-      if (await reactConfirm(message, {
+      if (await reactConfirm({
         title: i18n._t(
           'CMS.RemoveHomePageWarningTitle',
           'Remove your home page?'
         ),
-        confirmLabel: i18n._t(
+        message,
+        confirmText: i18n._t(
           'CMS.RemoveHomePageWarningLabel',
           'Remove'
         ),

@@ -19,10 +19,10 @@ So that I can link to a external website or a page on my site
       And I press the "Insert link" HTML field button
       And I click "Anchor on a page" in the ".tox-collection__group" element
     Then I should see an "form#Form_editorAnchorLink" element
-      And I should see "About Us" in the ".treedropdownfield__value-container" element
+      And I should see "About Us" in the "#Form_editorAnchorLink_PageID_Holder .treedropdownfield__value-container" element
     When I select "Details" in the "#Form_editorAnchorLink_PageID_Holder" tree dropdown
       And I select "youranchor" in the "#Form_editorAnchorLink_Anchor_Holder" anchor dropdown
-    Then I should see "youranchor" in the ".anchorselectorfield__value-container" element
+    Then I should see "youranchor" in the "#Form_editorAnchorLink_Anchor_Holder .anchorselectorfield__value-container" element
     When I fill in "my desc" for "Link description"
       And I press the "Insert link" button
     Then the "Content" HTML field should contain "<a title="my desc" href="[sitetree_link,id=3]#youranchor">awesome</a>"
@@ -34,9 +34,9 @@ So that I can link to a external website or a page on my site
       And I press the "Insert link" HTML field button
       And I click "Anchor on a page" in the ".tox-collection__group" element
     Then I should see an "form#Form_editorAnchorLink" element
-      And I should see "About Us" in the ".treedropdownfield__value-container" element
+      And I should see "About Us" in the "#Form_editorAnchorLink_PageID_Holder .treedropdownfield__value-container" element
     When I select "dataobject-anchor" in the "#Form_editorAnchorLink_Anchor_Holder" anchor dropdown
-    Then I should see "dataobject-anchor" in the ".anchorselectorfield__value-container" element
+    Then I should see "dataobject-anchor" in the "#Form_editorAnchorLink_Anchor_Holder .anchorselectorfield__value-container" element
     When I fill in "my desc" for "Link description"
       And I press the "Insert link" button
     Then the "Content" HTML field should contain "<a title="my desc" href="[sitetree_link,id=2]#dataobject-anchor">awesome</a>"
@@ -49,11 +49,11 @@ So that I can link to a external website or a page on my site
       And I press the "Insert link" HTML field button
       And I click "Anchor on a page" in the ".tox-collection__group" element
     Then I should see an "form#Form_editorAnchorLink" element
-      And I should see "About Us" in the ".treedropdownfield__value-container" element
+      And I should see "About Us" in the "#Form_editorAnchorLink_PageID_Holder .treedropdownfield__value-container" element
     When I click on the ".anchorselectorfield__dropdown-indicator" element
       Then I should see "dataobject-anchor" in the ".anchorselectorfield__menu-list" element
     When I select "unsaved-anchor" in the "#Form_editorAnchorLink_Anchor_Holder" anchor dropdown
-    Then I should see "unsaved-anchor" in the ".anchorselectorfield__value-container" element
+    Then I should see "unsaved-anchor" in the "#Form_editorAnchorLink_Anchor_Holder .anchorselectorfield__value-container" element
     When I fill in "my desc" for "Link description"
       And I press the "Insert link" button
     Then the "Content" HTML field should contain "<a title="my desc" href="[sitetree_link,id=2]#unsaved-anchor">awesome</a>"
