@@ -1,4 +1,4 @@
-/* global tinymce, editorIdentifier, ss */
+/* global tinymce, ss */
 import i18n from 'i18n';
 import TinyMCEActionRegistrar from 'lib/TinyMCEActionRegistrar';
 import React from 'react';
@@ -12,6 +12,7 @@ import { provideInjector } from 'lib/Injector';
 import { updatedCurrentField } from '../state/anchorSelector/AnchorSelectorActions';
 
 const commandName = 'sslinkanchor';
+let editorIdentifier;
 
 // Link to external url
 TinyMCEActionRegistrar
@@ -157,6 +158,9 @@ jQuery.entwine('ss', ($) => {
 });
 
 // Adds the plugin class to the list of available TinyMCE plugins
-tinymce.PluginManager.add(commandName, (editor) => plugin.init(editor));
+tinymce.PluginManager.add(commandName, (editor) => { 
+  editorIdentifier = editor.getParam('editorIdentifier');
+  plugin.init(editor)
+});
 
 export default plugin;
