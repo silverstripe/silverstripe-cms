@@ -2030,10 +2030,20 @@ class SiteTreeTest extends SapphireTest
      */
     public function testSanitiseExtraMeta(string $extraMeta, string $expected, string $message): void
     {
+        // If using HTML5Value then the 'somethingdodgy' test won't be converted to valid html
+        // However if using the default HTMLValue, then it will be converted to valid html
+        $isDodgyAndUsingHTML5 = strpos($expected, 'somethingdodgy') !== false &&
+            (HTMLValue::create() instanceof HTML5Value);
+        if ($isDodgyAndUsingHTML5) {
+            $this->expectException(ValidationException::class);
+            $this->expectExceptionMessage('Custom Meta Tags does not contain valid HTML');
+        }
         $siteTree = new SiteTree();
         $siteTree->ExtraMeta = $extraMeta;
         $siteTree->write();
-        $this->assertSame($expected, $siteTree->ExtraMeta, $message);
+        if (!$isDodgyAndUsingHTML5) {
+            $this->assertSame($expected, $siteTree->ExtraMeta, $message);
+        }
     }
 
     public function provideSanitiseExtraMeta(): array
