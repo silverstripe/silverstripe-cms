@@ -32,7 +32,7 @@ use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\Subsites\Extensions\SiteTreeSubsites;
 use SilverStripe\Versioned\Versioned;
-use SilverStripe\View\Parsers\Diff;
+use SilverStripe\View\Parsers\HtmlDiff;
 use SilverStripe\View\Parsers\ShortcodeParser;
 use SilverStripe\View\Parsers\URLSegmentFilter;
 use SilverStripe\View\Shortcodes\EmbedShortcodeProvider;
@@ -847,8 +847,8 @@ class SiteTreeTest extends SapphireTest
     public function testCompareVersions()
     {
         // Necessary to avoid
-        $oldCleanerClass = Diff::$html_cleaner_class;
-        Diff::$html_cleaner_class = SiteTreeTest_NullHtmlCleaner::class;
+        $oldCleanerClass = HtmlDiff::$html_cleaner_class;
+        HtmlDiff::$html_cleaner_class = SiteTreeTest_NullHtmlCleaner::class;
 
         $page = new SiteTree();
         $page->write();
@@ -868,7 +868,7 @@ class SiteTreeTest extends SapphireTest
         $processedContent = preg_replace('/>\s*/', '>', $processedContent ?? '');
         $this->assertEquals("<ins><span>This is a test</span></ins>", $processedContent);
 
-        Diff::$html_cleaner_class = $oldCleanerClass;
+        HtmlDiff::$html_cleaner_class = $oldCleanerClass;
     }
 
     public function testAuthorIDAndPublisherIDFilledOutOnPublish()
