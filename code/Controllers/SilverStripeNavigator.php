@@ -4,6 +4,7 @@ namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\Core\ClassInfo;
+use SilverStripe\Dev\Deprecation;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\SS_List;
@@ -18,6 +19,9 @@ use SilverStripe\View\ViewableData;
  * New item types can be defined by extending the {@link SilverStripeNavigatorItem} class,
  * for example the "cmsworkflow" module defines a new "future state" item with a date selector
  * to view embargoed data at a future point in time. So the item doesn't always have to be a simple link.
+ *
+ * Class will be moved from `silverstripe/cms` to `silverstripe/admin`
+ * @deprecated 4.13.0 Will be renamed SilverStripe\Admin\Navigator\SilverStripeNavigator
  */
 class SilverStripeNavigator extends ViewableData
 {
@@ -32,6 +36,13 @@ class SilverStripeNavigator extends ViewableData
      */
     public function __construct(CMSPreviewable $record)
     {
+        Deprecation::withNoReplacement(function () {
+            Deprecation::notice(
+                '4.13.0',
+                'Will be renamed SilverStripe\Admin\Navigator\SilverStripeNavigator',
+                Deprecation::SCOPE_CLASS
+            );
+        });
         parent::__construct();
         $this->record = $record;
     }

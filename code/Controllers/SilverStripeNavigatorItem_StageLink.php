@@ -1,17 +1,33 @@
 <?php
 namespace SilverStripe\CMS\Controllers;
 
-use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\Control\Controller;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Convert;
+use SilverStripe\Dev\Deprecation;
+use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Versioned\Versioned;
 use SiteTreeFutureState;
 
+/**
+ * Class will be moved from `silverstripe/cms` to `silverstripe/admin`.
+ * @deprecated 4.13.0 Will be renamed SilverStripe\VersionedAdmin\Navigator\SilverStripeNavigatorItem_StageLink
+ */
 class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem
 {
+    public function __construct(CMSPreviewable $record)
+    {
+        Deprecation::withNoReplacement(function () {
+            Deprecation::notice(
+                '4.13.0',
+                'Will be renamed SilverStripe\VersionedAdmin\Navigator\SilverStripeNavigatorItem_StageLink',
+                Deprecation::SCOPE_CLASS
+            );
+        });
+        parent::__construct($record);
+    }
     /** @config */
     private static $priority = 20;
 

@@ -2,6 +2,7 @@
 
 namespace SilverStripe\CMS\Controllers;
 
+use SilverStripe\Dev\Deprecation;
 use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Versioned\Versioned;
@@ -12,6 +13,9 @@ use SilverStripe\View\ViewableData;
  * Navigator items are links that appear in the $SilverStripeNavigator bar.
  * To add an item, extend this class - it will be automatically picked up.
  * When instanciating items manually, please ensure to call {@link canView()}.
+ *
+ * Class have been moved from `silverstripe/cms` to `silverstripe/admin` and renamed.
+ * @deprecated Will be renamed SilverStripe\Admin\Navigator\SilverStripeNavigatorItem
  */
 abstract class SilverStripeNavigatorItem extends ViewableData
 {
@@ -24,11 +28,26 @@ abstract class SilverStripeNavigatorItem extends ViewableData
     /** @var string */
     protected $recordLink;
 
-    /**
-     * @param DataObject|CMSPreviewable $record
-     */
     public function __construct(CMSPreviewable $record)
     {
+        Deprecation::withNoReplacement(function () {
+            switch (static::class) {
+                // These classes have their own deprecation notice
+                case 'SilverStripe\CMS\Controllers\SilverStripeNavigatorItem_ArchiveLink':
+                case 'SilverStripe\CMS\Controllers\SilverStripeNavigatorItem_LiveLink':
+                case 'SilverStripe\CMS\Controllers\SilverStripeNavigatorItem_StageLink':
+                case 'SilverStripe\CMS\Controllers\SilverStripeNavigatorItem_Unversioned':
+                // This class is not deprecated and doesn't have a deprecation notice
+                case 'SilverStripe\CMS\Controllers\SilverStripeNavigatorItem_CMSLink':
+                    break;
+                default:
+                    Deprecation::notice(
+                        '4.13.0',
+                        'Will be renamed SilverStripe\Admin\Navigator\SilverStripeNavigatorItem',
+                        Deprecation::SCOPE_CLASS
+                    );
+            }
+        });
         parent::__construct();
         $this->record = $record;
     }
