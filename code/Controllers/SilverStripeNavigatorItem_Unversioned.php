@@ -5,11 +5,29 @@ namespace SilverStripe\CMS\Controllers;
 use SilverStripe\CMS\Controllers\SilverStripeNavigatorItem;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Convert;
+use SilverStripe\Dev\Deprecation;
+use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\Security\Member;
 use SilverStripe\Versioned\Versioned;
 
+/**
+ * Class will be moved from `silverstripe/cms` to `silverstripe/admin`.
+ * @deprecated 4.13.0 Will be renamed SilverStripe\Admin\Navigator\SilverStripeNavigatorItem_Unversioned
+ */
 class SilverStripeNavigatorItem_Unversioned extends SilverStripeNavigatorItem
 {
+    public function __construct(CMSPreviewable $record)
+    {
+        Deprecation::withNoReplacement(function () {
+            Deprecation::notice(
+                '4.13.0',
+                'Will be renamed SilverStripe\Admin\Navigator\SilverStripeNavigatorItem_Unversioned',
+                Deprecation::SCOPE_CLASS
+            );
+        });
+        parent::__construct($record);
+    }
+
     public function getHTML()
     {
         $recordLink = Convert::raw2att($this->getLink());
