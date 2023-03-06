@@ -1,14 +1,15 @@
 [main]
 host = https://www.transifex.com
 
-[silverstripe-cms.master]
+[o:silverstripe:p:silverstripe-cms:r:master]
 file_filter = lang/<lang>.yml
 source_file = lang/en.yml
 source_lang = en
-type = YML
+type        = YML
 
-[silverstripe-cms.master-js]
+[o:silverstripe:p:silverstripe-cms:r:master-js]
 file_filter = client/lang/src/<lang>.json
 source_file = client/lang/src/en.json
 source_lang = en
-type = KEYVALUEJSON
+type        = KEYVALUEJSON
+

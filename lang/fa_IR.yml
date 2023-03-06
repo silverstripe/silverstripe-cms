@@ -4,8 +4,10 @@ fa_IR:
     TITLE: 'عدم انتشار و بایگانی'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
     PUBLISH_PAGES: انتشار
+    PUBLISHED_PAGES: 'انتشار %d صفحه، %d عدم موفقیت'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
     RESTORE: بازیابی
+    RESTORED_PAGES: 'بازنشاندن %d صفحه'
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'دسترسی به بخش ''{title}'''
     ARCHIVE: بایگانی
@@ -38,12 +40,30 @@ fa_IR:
     ROLLEDBACKVERSIONv2: 'بازگردانی به نسخه‌ی #{version}.'
     SAVED: 'دخیره‌سازی ''{title}'' باموفقیت انجام شد.'
     UNPUBLISH_AND_ARCHIVE: 'عدم انتشار و بایگانی'
+    AddNew: 'افزودن صفحه جدید'
+    AddNewButton: جدید
+    EMAIL: ایمیل
+    PAGESALLOPT: 'تمامی صفحات'
+    PLEASESAVE: 'لطفاً صفحه را ذخیره کنید : این صفحه نمی تواند بروز شود چراکه هنوز ذخیره نشده است.'
+    ROLLBACK: 'بازگردانی به این نسخه'
+    SAVEDRAFT: ذخیره
+    SEARCHRESULTS: 'نتایج جستجو'
+    SHOW_AS_LIST: 'نمایش به‌صورت لیست'
+    TOO_MANY_PAGES: 'صفحات بسیار زیاد'
+    TabContent: محتوا
+    TabHistory: تاریخچه
+    TabSettings: تنظیمات
+    TreeFiltered: 'نمایش نتایج جستجو'
+    TreeFilteredClear: پاک‌کردن
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'افزودن صفحه'
     ParentMode_child: 'زیر صفحه‌ی دیگر'
     ParentMode_top: 'سطح بالا'
+    Title: 'اضافه کردن صفحه'
   SilverStripe\CMS\Controllers\CMSPageEditController:
     MENUTITLE: 'ویرایش صفحه'
+    ErrorItemPermissionDenied: 'به نظر می‌رسد شما دسترسی‌های لازم برای افزودن {ObjectTitle} به کمپین را ندارید'
+    ErrorNotFound: 'این {Type} یافت نشد'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     COMPAREMODE: 'وضعیت مقایسه (دو مورد انتخاب کنید)'
     MENUTITLE: تاریخچه
@@ -52,10 +72,20 @@ fa_IR:
     VIEW: نمایش
     VIEWINGLATEST: 'در حال حاضر آخرین نسخه را مشاهده می‌کنید.'
     VIEWINGVERSION: 'در حال حاضر نسخه {version} را مشاهده می‌کنید.'
+    AUTHOR: نگارنده
+    COMPARINGVERSION: 'مقایسه نسخه‌های {version1} و {version2}.'
+    MULTISELECT: 'عملکردهای دسته'
+    NOTPUBLISHED: 'منتشر نشده'
+    PUBLISHER: 'منتشر کننده'
+    UNKNOWN: نامشخص
+    WHEN: 'چه وقت'
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'ویرایش صفحه'
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: صفحات
+    FILTER: پالایش
+    ListView: 'نمایش لیستی'
+    TreeView: 'نمایش درختی'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'صفحات تغییر یافته'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
@@ -83,19 +113,31 @@ fa_IR:
     PUBLISHED: 'منتشر شده'
     PUBLISHEDSITE: 'سایت منتشر شده'
     VIEWPAGEIN: 'مشاهده صفحه در'
+    Email: ایمیل
+    InstallFilesDeleted: 'فایل‌های نصبی با موفقیت حذف شدند.'
+    InstallSecurityWarning: 'به دلایل امنیتی باید هم‌اکنون فایل‌های نصبی را حذف نمایید، مگر قصد دارید بعداً دوباره نصب نمایید (<em>نیازمند ورود مدیر سایت، بالا را ببینید</em>). وب‌سرور همچنین هم‌اکنون نیازمند دسترسی نگاشتن به پوشه‌ی «دارایی‌ها» ("assets") است، می‌توانید دسترسی نگاشتن را از دیگر پوشه‌ها بردارید. <a href="{link}" style="text-align: center;">اینجا را کلیک کنید تا فایل‌های نصبی حذف شوند.</a>'
+    InstallSuccessCongratulations: 'سیلوراسترایپ با موفقیت نصب شد!'
+    Password: گذرواژه
+    StartEditing: 'شما می‌توانید با گشودن <a href="{link}">سی‌ام‌اس</a> آغاز به ویرایش محتوا کنید.'
+    UNVERSIONEDPREVIEW: پیش‌نمایش
+    UnableDeleteInstall: 'ناتوان از حذف فایل‌های نصبی. لطفاً فایل‌های زیر را بصورت دستی حذف نمایید'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 'بایگانی شده'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'کاراکترهای ویژه به‌طور خودکار تبدیل یا حذف می‌شوند.'
+    Cancel: لغو
+    Edit: ویرایش
+    OK: تایید
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'این صفحه کاربران را به صفحه‌ای دیگر هدایت می‌کند'
     OTHERURL: 'نشانی تارگاه دیگر'
-    PLURALNAME: 'صفحات هدایت‌گر'
+    PLURALNAME: 'صفحه اصلی'
     REDIRECTTO: 'بازگردانی به'
     REDIRECTTOEXTERNAL: 'یک تارگاه دیگر'
     REDIRECTTOPAGE: 'یک برگ روی تارگاه شما'
     SINGULARNAME: 'صفحه هدایت‌گر'
     YOURPAGE: 'برگ روی تارگاه شما'
+    FILE: فايل
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: همه
     ACCESSHEADER: 'چه کسی بتواند این صفحه را مشاهده کنید ؟'
@@ -170,12 +212,19 @@ fa_IR:
     many_many_BackLinkTracking: 'ردیابی بک‌لینک'
     many_many_ImageTracking: 'ردیابی تصویر'
     many_many_LinkTracking: 'ردیابی پیوند'
+    BUTTONSAVEPUBLISH: انتشار
+    LASTPUBLISHED: 'آخرین انتشار'
+    LASTSAVED: 'آخرین ذخیره‌سازی'
+    NOTPUBLISHED: 'منتشر نشده'
+    ONLIVEONLYSHORTHELP: 'صفحه منتشر شده، اما از پیش‌نویس حذف گردیده است'
+    PLURALNAME: صفحات
+    SINGULARNAME: صفحه
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'صفحه ارجاعی'
     DESCRIPTION: 'نمایش‌دهنده‌ی محتوای صفحه‌ی دیگر'
     EditLink: ویرایش
     HEADER: 'این یک صفحه مجازی است'
-    PLURALNAME: 'صفحات مجازی'
+    PLURALNAME: 'صفحه اصلی'
     SINGULARNAME: 'صفحه مجازی'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: هر
@@ -216,3 +265,33 @@ fa_IR:
     NONEREMOVED: 'هیچ‌کدام حذف نگشت'
     SELECTALL: 'انتخاب همه'
     UNSELECTALL: 'لغو انتخاب همه'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISHED_PAGES: 'عدم انتشار %d صفحه'
+    UNPUBLISH_PAGES: 'عدم انتشار'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
+    Title: 'صفحات منتشر شده'
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'توضیحات لینک'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'یک صفحه‌ی هدایت‌گر ایجاد گردیده است بدون این‌که به جایی ارجاع داشته باشد.'
+  SilverStripe\CMS\Model\SiteTreeFileExtension:
+    TITLE_INDEX: '#'
+    TITLE_TYPE: نوع
+    TITLE_USED_ON: 'استفاده شده در'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 'صفحات دارای فایل معیوب'
+    BrokenLinksGroupTitle: 'گزارش پیوندهای معیوب'
+    ParameterLiveCheckbox: 'بررسی سایت به صورت زنده'
+  SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
+    BROKENREDIRECTORPAGES: 'صفحات هدایت‌گر اشاره‌کننده به صفحات حذف شده'
+    BrokenLinksGroupTitle: 'گزارش پیوندهای معیوب'
+    ParameterLiveCheckbox: 'بررسی سایت به صورت زنده'
+  SilverStripe\CMS\Reports\BrokenVirtualPagesReport:
+    BROKENVIRTUALPAGES: 'صفحات مجازی اشاره‌کننده به صفحات حذف شده'
+    BrokenLinksGroupTitle: 'گزارش پیوندهای معیوب'
+    ParameterLiveCheckbox: 'بررسی سایت به صورت زنده'
+  SilverStripe\CMS\Reports\EmptyPagesReport:
+    ContentGroupTitle: 'گزارشات محتوا'
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    ContentGroupTitle: 'گزارشات محتوا'
+    LAST2WEEKS: 'صفحات ویرایش شده در 2 هفته گذشته'

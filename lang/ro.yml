@@ -20,9 +20,23 @@ ro:
     RESTORED: 'Restaurare ''{title}'' cu succes'
     ROLLEDBACKPUBv2: 'Revenire la versiunea publicată'
     ROLLEDBACKVERSIONv2: 'Revenire la versiunea #{version}'
+    ARCHIVE: Arhivă
+    AddNew: 'Adăugaţi o pagină nouă'
+    AddNewButton: 'Adăugaţi o nouă'
+    Cancel: Anulare
+    EMAIL: E-mail
+    PAGESALLOPT: 'Toate paginile'
+    PAGETYPEOPT: 'Tipul paginii'
+    ROLLBACK: 'Revenire la versiunea aceasta'
+    SAVEDRAFT: Salvează
+    TabContent: Continut
+    TabHistory: Istorie
+    TabSettings: Setări
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Sub altă pagină'
     ParentMode_top: 'Nivel top'
+    MENUTITLE: 'Adăugare pagină'
+    Title: 'Adăugare pagină'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     COMPAREMODE: 'Mod comparare (selectează 2)'
     REVERTTOTHISVERSION: 'Revernire la versiune'
@@ -30,8 +44,18 @@ ro:
     VIEW: Vizualizare
     VIEWINGLATEST: 'Vizualizare curentă a ultimii versiuni.'
     VIEWINGVERSION: 'Vizualizarea versiunii {version}.'
+    AUTHOR: Autor
+    COMPARINGVERSION: 'Comparație versiuni {version1} și {version2}.'
+    MENUTITLE: Istorie
+    NOTPUBLISHED: Nepublicat
+    PUBLISHER: Redactor
+    UNKNOWN: Necunoscut
+    WHEN: Când
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: Pagini
+    FILTER: Filtru
+    ListView: 'View listă'
+    TreeView: 'View Arbore'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Toate paginile'
   SilverStripe\CMS\Controllers\ContentController:
@@ -49,10 +73,22 @@ ro:
     PUBLISHED: Publicat
     PUBLISHEDSITE: 'Site publicat'
     VIEWPAGEIN: 'Vizualizează pagina în:'
+    Email: E-mail
+    InstallFilesDeleted: 'Fișierele de instalarea au fost șterse cu succes.'
+    InstallSecurityWarning: 'Din motive de secutitate ar trebuii să ștergeți acum fișierele de instalare, în cazul în care nu planificați o reinstalare ulterioară (<em>necesită drepturi de admin, referințe mai sue</em>). De acum serverul necesită doar drepturi de scriere in directorul "assets", puteți șterge dreturile de scriere pentru celelalte directoare.. <a href="{link}" style="text-align: center;">Click aici pentru ștergerea fișierelor de instalare.</a>'
+    InstallSuccessCongratulations: 'Silverstripe a fost instalat cu succes!'
+    Password: Parola
+    PostInstallTutorialIntro: 'Website-ul este o versiune simplificată a site-ului Silverstripe 3. Pentru a-l extinde, urmăriți link-ul {link}'
+    StartEditing: 'Puteți începe editarea conținutului deschizând <a href="{link}">CMS-ul</a>.'
+    UNVERSIONEDPREVIEW: Previzualizare
+    UnableDeleteInstall: 'Fișierele de instalare nu pot fi șterse. Vă rugăm ștergeți fișierele următore manual'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arhivă
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Caracterele speciale sunt convertite automat sau șterse'
+    Cancel: Anulare
+    Edit: Editare
+    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Pagina v-a redirecționa utilizatorii către altă pagină'
     OTHERURL: 'URL-ul altui website'
@@ -60,6 +96,8 @@ ro:
     REDIRECTTOEXTERNAL: 'Alt website'
     REDIRECTTOPAGE: 'O pagină de pe website-ul dumneavoastră'
     YOURPAGE: 'Pagină de pe website-ul dumneavoastră'
+    FILE: Fisier
+    SINGULARNAME: 'Pagină referitoare'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Oricine
     ACCESSHEADER: 'Cine poate vizualiza această pagină pe site-ul meu?'
@@ -133,12 +171,23 @@ ro:
     many_many_BackLinkTracking: 'Urmărire link invers'
     many_many_ImageTracking: 'Urmărire Imagine'
     many_many_LinkTracking: 'Urmărire Link'
+    ARCHIVEDPAGESHORT: Arhivă
+    BUTTONSAVEPUBLISH: Publicare
+    DESCRIPTION: 'Pagina cu conținut generic '
+    LASTPUBLISHED: 'Ultima publicare'
+    LASTSAVED: 'Ultima salvare'
+    NOTPUBLISHED: Nepublicat
+    ONLIVEONLYSHORTHELP: 'Pagina este publicată, dar a fost ștearsă din ciornă'
+    PLURALNAME: Pagini
+    SINGULARNAME: Pagină
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Pagina referință'
     EditLink: editare
     HEADER: 'Aceasta este o pagină virtuală '
     HEADERWITHLINK: 'Aceasta este o pagina virtuală care copiază conținut din "{title}" ({link})'
     PageTypNotAllowedOnRoot: 'Tipul original al pagini "{type}" nu este permis pe nivelul rădăcină pentru pagina virtuală'
+    DESCRIPTION: 'Afișează conținutul altei pagini'
+    SINGULARNAME: 'Pagina Virtuala'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Oricare
     BROKENLINKS: 'Raport cu link-uri nefuncţionale'
@@ -167,3 +216,36 @@ ro:
     GO: Start
     SEARCH: Căutare
     SearchResults: 'Rezultate căutare'
+    FILTERLABELTEXT: Căutare
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: '%d pagini publicate, %d erori'
+    PUBLISH_PAGES: Publicare
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Restaurează
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: Ascunde
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Editează Pagina'
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Editează Pagina'
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Descriere link'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'O pagină referitoare a fost creată fără a direcționa către ceva'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 'Pagini cu fișiere incorecte'
+    BrokenLinksGroupTitle: 'Raport referințe nefuncționale'
+    ParameterLiveCheckbox: 'Verifică site live'
+  SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
+    BROKENREDIRECTORPAGES: 'Pagini referitoare indică spre pagini șterse'
+    BrokenLinksGroupTitle: 'Raport referințe nefuncționale'
+    ParameterLiveCheckbox: 'Verifică site live'
+  SilverStripe\CMS\Reports\BrokenVirtualPagesReport:
+    BROKENVIRTUALPAGES: 'Pagini virtuale indică spre pagini șterse'
+    BrokenLinksGroupTitle: 'Raport referințe nefuncționale'
+    ParameterLiveCheckbox: 'Verifică site live'
+  SilverStripe\CMS\Reports\EmptyPagesReport:
+    ContentGroupTitle: 'Rapoarte conținut'
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    ContentGroupTitle: 'Rapoarte conținut'
+    LAST2WEEKS: 'Pagini editate în ultimele 2 săptămâni'

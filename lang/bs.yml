@@ -5,6 +5,14 @@ bs:
     PUBALLCONFIRM: 'Molimo, objavite svaku stavku na ovoj stranici, kopiranjem sadržaja na aktivnu stranicu'
     PUBALLFUN: 'Funkcija "Objavi sve"'
     REMOVEDPAGEFROMDRAFT: 'Uklonjeno ''{title}'' sa privremenog nacrta stranice'
+    ARCHIVE: Arhiva
+    EMAIL: E-mail
+    PAGETYPEANYOPT: 'Bilo koji'
+    PAGETYPEOPT: 'Tip stranice'
+    PLEASESAVE: 'Molimo snimite stranicu: Ova stranica ne može biti ažurirana ako nije prethodno snimljena.'
+    ROLLBACK: 'Vrati na ovo izdanje'
+    SAVEDRAFT: Snimi
+    TabContent: Sadržaj
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Ova stranica će preusmjeriti korisnike na drugu stranicu'
     OTHERURL: 'URL druge web stranice'
@@ -12,6 +20,7 @@ bs:
     REDIRECTTOEXTERNAL: 'Drugu web stranicu'
     REDIRECTTOPAGE: 'Na stavku na Vašoj web stranici'
     YOURPAGE: 'Stavku na Vašoj web stranici'
+    FILE: Datoteka
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'Svi korisnici'
     ACCESSHEADER: 'Ko može pregledati ovu stavku na mojoj stranici?'
@@ -36,10 +45,31 @@ bs:
     SHOWINSEARCH: 'Prikaži u pretrazi?'
     TABBEHAVIOUR: Ponašanje
     TOPLEVEL: 'Sadržaj stranice (Glavni nivo)'
+    Content: Sadržaj
+    SINGULARNAME: Stranica
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Ovo je virtualna stranica'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: 'Bilo koji'
+    PageName: 'Ime stranice'
   SilverStripe\CMS\Search\SearchForm:
     GO: Idi
     SEARCH: Pretraga
+    FILTERLABELTEXT: Pretraga
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: 'Opozovi objavljivanje'
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: Filter
+  SilverStripe\CMS\Controllers\ContentController:
+    Email: E-mail
+    Password: Šifra
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Sidro
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Opis linka'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Stranica za preusmjeravanje je podešena bez odredišta.'
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    LAST2WEEKS: 'Izmjenjene stranice u posljednje 2 sedmice'

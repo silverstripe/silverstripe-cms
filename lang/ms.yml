@@ -6,6 +6,7 @@ ms:
     REDIRECTTOEXTERNAL: 'Laman web lain'
     REDIRECTTOPAGE: 'Tambah halaman ke laman anda'
     YOURPAGE: 'Halaman di laman anda'
+    FILE: Fail
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'Sesiapa sahaja'
     ACCESSHEADER: 'Siapa yang boleh melihat mukasurat ini?'
@@ -32,5 +33,24 @@ ms:
     TABBEHAVIOUR: Perilaku
     TOPLEVEL: 'Kandungan Laman (Peringkat Atas)'
     has_one_Parent: 'Halaman Induk'
+    SINGULARNAME: Halaman
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Ini adalah mukasurat maya'
+    SINGULARNAME: 'Halaman Maya'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: 'Tidak diterbitkan'
+  SilverStripe\CMS\Controllers\CMSMain:
+    EMAIL: Emel
+    PAGETYPEOPT: 'Jenis halaman'
+    TabContent: Kandungan
+  SilverStripe\CMS\Controllers\ContentController:
+    Email: Emel
+    Password: 'Kata Laluan'
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Deskripsi pautan'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Mukasurat pengalih destinasi dihasilkan tanpa menyatakan destinasi alihan.'
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    PageName: 'Nama halaman'

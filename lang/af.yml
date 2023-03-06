@@ -2,8 +2,23 @@ af:
   SilverStripe\CMS\Controllers\CMSMain:
     PAGENOTEXISTS: 'Hierdie bladsy bestaan nie'
     PUBALLCONFIRM: 'Publiseer asseblief elke bladsy in die werf en kopieër inhoud fase na lewendig'
+    ARCHIVE: 'Stoor in argiewe'
+    CANT_REORGANISE: 'Jy het nie toestemming om Top vlak bladsye te verander nie. Jou verandering is nie gestoor nie.'
+    Cancel: 'Kanselleer '
+    Create: Skep
+    EMAIL: Epos
+    PAGETYPEANYOPT: Enige
+    PAGETYPEOPT: 'Blaai soort'
+    PLEASESAVE: 'Stoor asseblief die bladsy: Die bladsy kon nie opgedateer word nie omdat dit nog nie gestoor is nie'
+    REORGANISATIONSUCCESSFUL: 'Die ''site tree'' is suksesvol geheorganiseer'
+    ROLLBACK: 'Rol terug na hierdie weergawe'
+    SAVEDRAFT: Stoor
+    TabContent: Inhoud
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: CMSPagesController
+    FILTER: Filtreer
+    ListView: 'Lys aansig'
+    TreeView: 'Boom aansig'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'Enige iemand'
     ACCESSHEADER: 'Wie mag hierdie bladsy sien?'
@@ -30,8 +45,48 @@ af:
     TABCONTENT: Inhoud
     has_one_Parent: 'Ouer Bladsy'
     TABMAIN: Hoof
+    BUTTONSAVED: Gestoor
+    PAGELOCATION: 'Bladsy plek'
+    PLURALNAME: CMSPagesController
+    SINGULARNAME: Bladsy
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Hierdie is ''n virtuele bladsy'
+    SINGULARNAME: 'Virtuele Bladsy'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Enige
     BROKENLINKS: 'Gebreekte skakels verslag'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: Onpubliseer
+  SilverStripe\CMS\Controllers\ContentController:
+    Email: Epos
+    LOGOUT: 'Teken af'
+    Password: Wagwoord
+    UNVERSIONEDPREVIEW: Voorskou
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Anker
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Skakel beskrywing'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Cancel: 'Kanselleer '
+    Edit: Verander
+  SilverStripe\CMS\Model\RedirectorPage:
+    FILE: Lêer
+    REDIRECTTOEXTERNAL: 'Ander webwerf'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 'Bladsye met gebreekte lêers'
+    BrokenLinksGroupTitle: 'Gebreekte skakels verslae'
+    ParameterLiveCheckbox: 'Kies lewendige werf'
+  SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
+    BrokenLinksGroupTitle: 'Gebreekte skakels verslae'
+    ParameterLiveCheckbox: 'Kies lewendige werf'
+  SilverStripe\CMS\Reports\BrokenVirtualPagesReport:
+    BrokenLinksGroupTitle: 'Gebreekte skakels verslae'
+    ParameterLiveCheckbox: 'Kies lewendige werf'
+  SilverStripe\CMS\Reports\EmptyPagesReport:
+    ContentGroupTitle: 'Inhoud verslae'
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    ContentGroupTitle: 'Inhoud verslae'
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERLABELTEXT: Soek
+    GO: 'Gaan voort'
+    SEARCH: Soek

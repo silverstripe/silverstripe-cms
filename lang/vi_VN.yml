@@ -1,6 +1,10 @@
 vi_VN:
   SilverStripe\CMS\Controllers\CMSMain:
     PAGENOTEXISTS: 'Không tìm thấy trang này.'
+    Create: T
+    PAGETYPEOPT: Loại
+    SAVEDRAFT: Lưu
+    TabContent: 'Nội dung'
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Trang này sẽ di chuyển người dùng đến một trang khác'
     OTHERURL: 'Đường dẩn website khác'
@@ -32,3 +36,14 @@ vi_VN:
     SHOWINSEARCH: 'Hiển thị khi tìm kiếm?'
     TABBEHAVIOUR: 'Hoạt động'
     TABCONTENT: 'Thông tin'
+    Content: 'Nội dung'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: Ẩn
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Một trang di chuyển chưa cấu hình đích di chuyển đến.'
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    PageName: 'Tên trang'
+  SilverStripe\CMS\Search\SearchForm:
+    GO: Đi

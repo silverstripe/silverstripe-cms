@@ -5,6 +5,14 @@ es_AR:
     PUBALLCONFIRM: 'Por favor publica todas las páginas del sitio, copiando el contenido del boceto al sitio público'
     PUBALLFUN: 'Funcionalidad "Publicar Todo"'
     REMOVEDPAGEFROMDRAFT: 'Quitados ''{title}'' del borrador del sitio'
+    EMAIL: 'Dirección Email'
+    PAGETYPEANYOPT: Cualquiera
+    PAGETYPEOPT: 'Tipo de Página'
+    PLEASESAVE: 'Por favor Guarda la Página: No se puede actualizar esta página porque aún no se ha guardado.'
+    ROLLBACK: 'Restaurar a ésta versión'
+    SAVEDRAFT: Guardar
+    SEARCHRESULTS: 'Resultado de la búsqueda'
+    TabContent: Contenido
   SilverStripe\CMS\Controllers\ContentController:
     DRAFTSITE: 'Sitio borrador'
     LOGGEDINAS: 'Conectado como'
@@ -14,6 +22,8 @@ es_AR:
     NOTLOGGEDIN: 'No conectado'
     PUBLISHEDSITE: 'Sitio publicado'
     VIEWPAGEIN: 'Ver página en:'
+    Email: 'Dirección Email'
+    Password: Contraseña
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Esta página dirigirá al usuarios a otra página'
     OTHERURL: 'Otro URL del sitio web'
@@ -21,6 +31,7 @@ es_AR:
     REDIRECTTOEXTERNAL: 'Otro sitio web'
     REDIRECTTOPAGE: 'Una página en tu sitio web'
     YOURPAGE: 'Página en tu sitio web'
+    FILE: Archivo
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Cualquiera
     ACCESSHEADER: '¿Quién puede ver ésta página?'
@@ -69,8 +80,11 @@ es_AR:
     many_many_BackLinkTracking: 'Seguimiento de Backlink'
     many_many_ImageTracking: 'Seguimiento de Imágen'
     many_many_LinkTracking: 'Seguimiento de Enlace'
+    BUTTONSAVEPUBLISH: Publicar
+    SINGULARNAME: Página
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Esta es una página virtual'
+    SINGULARNAME: 'Página Virtual'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Cualquiera
     BROKENLINKS: 'Informe de enlaces rotos'
@@ -96,3 +110,42 @@ es_AR:
     GO: Ir
     SEARCH: Buscar
     SearchResults: 'Resultados de la búsqueda'
+    FILTERLABELTEXT: Buscar
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: 'Se publicaron %d páginas, %d fallas'
+    PUBLISH_PAGES: Publicar
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Restaurar
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: 'No Publicar'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Editar Página'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    AUTHOR: Autor
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Editar Página'
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Anclar
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Descripción del enlace'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Se ha instalado una página de redirección  sin algún lugar a donde redireccionar.'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 'Páginas con archivos rotos'
+    BrokenLinksGroupTitle: 'Informes de enlaces rotos'
+    ParameterLiveCheckbox: 'Verificar el sitio en vivo'
+  SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
+    BROKENREDIRECTORPAGES: 'RedirectorPages apunta a páginas eliminadas'
+    BrokenLinksGroupTitle: 'Informes de enlaces rotos'
+    ParameterLiveCheckbox: 'Verificar el sitio en vivo'
+  SilverStripe\CMS\Reports\BrokenVirtualPagesReport:
+    BROKENVIRTUALPAGES: 'VirtualPages apunta a páginas eliminadas'
+    BrokenLinksGroupTitle: 'Informes de enlaces rotos'
+    ParameterLiveCheckbox: 'Verificar el sitio en vivo'
+  SilverStripe\CMS\Reports\EmptyPagesReport:
+    ContentGroupTitle: 'Informes del contenido'
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    ContentGroupTitle: 'Informes del contenido'
+    LAST2WEEKS: 'Páginas editadas en las últimas 2 semanas'

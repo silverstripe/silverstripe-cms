@@ -90,6 +90,7 @@ fi:
     VIEWINGLATEST: 'Katsot viimeisintä versiota.'
     VIEWINGVERSION: 'Katsot versiota {version}.'
     WHEN: Milloin
+    COMPARINGVERSION: 'Vertaillaan versioita {version1} ja {version2}'
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Muokkaa sivua'
   SilverStripe\CMS\Controllers\CMSPagesController:
@@ -134,6 +135,7 @@ fi:
     StartEditing: 'Voit aloittaa sisällön muokkauksen avaamalla <a href="{link}">sisällönhallintajärjestelmän ylläpitopuolen</a>'
     UnableDeleteInstall: 'Asennustiedostojen automaattinen poistaminen ei onnistunut. Ole hyvä ja poista seuraavat tiedostot manuaalisesti'
     VIEWPAGEIN: 'Tarkastele sivua:'
+    UNVERSIONEDPREVIEW: Esikatselu
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arkistoitu
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
@@ -153,7 +155,7 @@ fi:
     DESCRIPTION: 'Edelleenohjaa toiselle sisäiselle sivulle tai ulkoiseen URL-osoitteeseen'
     HEADER: 'Tämä sivu ohjaa käyttäjän toiselle sivulle'
     OTHERURL: 'Toisen verkkosivuston URL-osoite'
-    PLURALNAME: 'Uudelleenohjaavat sivut'
+    PLURALNAME: Pohjasivut
     PLURALS:
       one: 'Uudelleenohjaava sivu'
       other: '{count} Uudelleenohjaavaa sivua'
@@ -162,6 +164,7 @@ fi:
     REDIRECTTOPAGE: 'Sivu verkkosivustollasi'
     SINGULARNAME: 'Uudelleenohjaava sivu'
     YOURPAGE: 'Sivu verkkosivustollasi'
+    FILE: Tiedosto
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Uudelleenohjaava sivu on valmis, mutta ei ohjaa mihinkään.'
   SilverStripe\CMS\Model\SiteTree:
@@ -282,7 +285,7 @@ fi:
     EditLink: muokkaa
     HEADER: 'Tämä on virtuaalisivu'
     HEADERWITHLINK: 'Tämä on virtuaalisivu, joka kopioi sisällön kohteesta "{title}" ({link})'
-    PLURALNAME: Virtuaalisivut
+    PLURALNAME: Pohjasivut
     PLURALS:
       one: 'Virtuaali sivu'
       other: '{count} Virtuaali sivua'
