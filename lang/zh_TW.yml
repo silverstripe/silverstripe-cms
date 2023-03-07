@@ -3,17 +3,36 @@ zh_TW:
     PAGENOTEXISTS: 這頁不存在
     PUBALLCONFIRM: 請發布所有網頁
     PUBALLFUN: '"全部發布" 功能'
+    EMAIL: 電子郵件
+    PAGESALLOPT: 所有網頁
+    PAGETYPEOPT: 網頁類型
+    PLEASESAVE: 請儲存：這個網頁沒有被更新因為尚未被儲存。
+    ROLLBACK: 回複到這個的版本
+    SAVEDRAFT: 儲存
+    TabContent: 內容
+    TabHistory: 歷史
+    TabSettings: 設定值
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     COMPAREMODE: 比較模式(選擇兩個)
     REVERTTOTHISVERSION: 回復到此版本
     SHOWUNPUBLISHED: 顯示未出版的版本
     VIEW: 瀏覽
+    AUTHOR: 作者
+    MENUTITLE: 歷史
+    NOTPUBLISHED: 未發行的
+    PUBLISHER: 發行者
+    UNKNOWN: 未知的
+    WHEN: 何時
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: 網頁
+    ListView: 清單瀏覽
+    TreeView: 樹狀瀏覽
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 所有網頁
   SilverStripe\CMS\Controllers\ContentController:
     NOTEWONTBESHOWN: '備註: 此訊息將不會顯示給您的訪客看'
+    Email: 電子郵件
+    Password: 密碼
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 本網頁將重新導向用戶至別的網頁
     OTHERURL: 其他網站網址
@@ -21,6 +40,7 @@ zh_TW:
     REDIRECTTOEXTERNAL: 別的網站
     REDIRECTTOPAGE: 在您網站上的一個網頁
     YOURPAGE: 在您網站上的網頁
+    FILE: 檔案
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 所有人
     ACCESSHEADER: 誰可以瀏覽這頁？
@@ -78,5 +98,33 @@ zh_TW:
     many_many_BackLinkTracking: 背面鏈結追蹤
     many_many_ImageTracking: 影像追蹤
     many_many_LinkTracking: 鏈結追蹤
+    BUTTONSAVEPUBLISH: 出版
+    NOTPUBLISHED: 未發行的
+    PLURALNAME: 網頁
+    SINGULARNAME: 網頁
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 這是一個虛擬網頁
+    DESCRIPTION: 顯示其他網頁的內容
+    SINGULARNAME: 虛擬網頁
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: '已出版 %d 網頁, %d 失敗'
+    PUBLISH_PAGES: 出版
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: 取消發布
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 編輯網頁
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 編輯網頁
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 連結敘述
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 沒有任何地方被重新導向的一個重新導向網頁已被設定.
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    ColumnURL: 網址
+    PageName: 網頁名稱
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    LAST2WEEKS: 網頁在過去兩個禮拜有被更改過
+  SilverStripe\CMS\Search\SearchForm:
+    GO: 執行

@@ -137,6 +137,7 @@ sl:
     StartEditing: 'Zdaj lahko začnete urejati vsebino. Prijavite se v <a href="{link}">sistem za upravljanje z vsebino</a>.'
     UnableDeleteInstall: 'Namestitvenih datotek nismo mogli odstraniti, zato spodaj navedene datoteke odstranite ročno.'
     VIEWPAGEIN: 'Ogled strani v:'
+    UNVERSIONEDPREVIEW: Predogled
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arhivirano
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
@@ -167,6 +168,7 @@ sl:
     REDIRECTTOPAGE: 'Stran na tvojem spletnem mestu'
     SINGULARNAME: 'Preusmeritvena stran'
     YOURPAGE: 'Stran na tvojem spletnem mestu'
+    FILE: Datoteka
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Nastavljena preusmeritev še nima določenega cilja.'
   SilverStripe\CMS\Model\SiteTree:

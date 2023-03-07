@@ -152,7 +152,7 @@ fi_FI:
     DESCRIPTION: 'Edelleenohjaa toiselle sisäiselle sivulle tai ulkoiseen URL-osoitteeseen'
     HEADER: 'Tämä sivu ohjaa käyttäjän toiselle sivulle'
     OTHERURL: 'Toisen verkkosivuston URL-osoite'
-    PLURALNAME: 'Uudelleenohjaavat sivut'
+    PLURALNAME: Pohjasivut
     PLURALS:
       one: 'Uudelleenohjaava sivu'
       other: '{count} Uudelleenohjaavaa sivua'
@@ -277,7 +277,7 @@ fi_FI:
     EditLink: muokkaa
     HEADER: 'Tämä on virtuaalisivu'
     HEADERWITHLINK: 'Tämä on virtuaalisivu, joka kopioi sisällön kohteesta "{title}" ({link})'
-    PLURALNAME: Virtuaalisivut
+    PLURALNAME: Pohjasivut
     PLURALS:
       one: 'Virtuaali sivu'
       other: '{count} Virtuaali sivua'

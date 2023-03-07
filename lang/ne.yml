@@ -7,6 +7,7 @@ ne:
     REDIRECTTOEXTERNAL: 'अर्को वेबसाईट'
     REDIRECTTOPAGE: 'तपाईंको वेबसाईटमा एउटा पेज'
     YOURPAGE: 'तपाईंको वेबसाईटमा एउटा पेज'
+    FILE: फाइल
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: जोकोहिले
     ACCESSHEADER: 'मेरो सईटमा कसले यो पजे हेर्न सक्छ ? '
@@ -31,5 +32,25 @@ ne:
     TABCONTENT: सामाग्री
     TOPLEVEL: 'साईट सामाग्री (उच्च स्तान)'
     TABMAIN: मुख्य
+    Content: सामाग्री
+    SINGULARNAME: पेज
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'यो भरचुअल पेज हो'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: 'प्रकाशित नगरनुहोस्'
+  SilverStripe\CMS\Controllers\CMSMain:
+    EMAIL: इमेल
+    PAGETYPEOPT: 'पेज किसिम'
+    TabContent: सामाग्री
+  SilverStripe\CMS\Controllers\ContentController:
+    Email: इमेल
+    Password: पासओड
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'लिन्क विवरण'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'कुनै पनि पुनर्निर्देशनबिना नै एउटा पुनर्निदेशन पृष्ठ सेटअप गरियो । '
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    ColumnURL: 'यू.र्.ल् '
+    PageName: 'पेजको नाम'

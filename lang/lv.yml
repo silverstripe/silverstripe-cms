@@ -9,6 +9,8 @@ lv:
     NOTLOGGEDIN: 'Nav pieslēdzies'
     PUBLISHEDSITE: 'Publicētā vietne'
     VIEWPAGEIN: 'Skatīt lapu:'
+    Email: E-pasts
+    Password: Parole
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Šī lapa novirzīs lietotājus uz citu lapu '
     OTHERURL: 'Citas tīmekļa vietnes URL'
@@ -16,6 +18,7 @@ lv:
     REDIRECTTOEXTERNAL: 'Cita tīmekļa vietni'
     REDIRECTTOPAGE: 'Tīmekļa vietnes lapu'
     YOURPAGE: 'Tīmekļa vietnes lapa'
+    FILE: Fails
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Ikviens
     ACCESSHEADER: 'Kas drīkst aplūkot šo lapu?'
@@ -69,9 +72,35 @@ lv:
     many_many_BackLinkTracking: 'Atpakaļsaišu izsekošana'
     many_many_ImageTracking: 'Attēlu izsekošana'
     many_many_LinkTracking: 'Saišu izsekošana'
+    SINGULARNAME: Lapa
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Šī ir virtuāla lapa'
+    SINGULARNAME: 'Virtuālās lapa'
   SilverStripe\CMS\Search\SearchForm:
     GO: Aiziet
     SEARCH: Meklēt
     SearchResults: 'Meklēšanas rezultāti'
+    FILTERLABELTEXT: Meklēt
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Restaurēt
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: Nebpublicēt
+  SilverStripe\CMS\Controllers\CMSMain:
+    EMAIL: E-pasts
+    PAGETYPEANYOPT: Jebkuru
+    PAGETYPEOPT: 'Lapas tips'
+    SAVEDRAFT: Saglabāt
+    TabContent: Saturs
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Enkurs
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Saites apraksts'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Novirzītājlapa ir uzstādīta bez norādes uz kurieni novirzīt.'
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    Any: Jebkuru
+    CheckSiteDropdownDraft: 'Melnrakstu vietne'
+    CheckSiteDropdownPublished: 'Publicētā vietne'
+    PageName: 'Lapas nosaukums'

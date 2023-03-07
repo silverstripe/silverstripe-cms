@@ -6,13 +6,13 @@ bg:
     PUBLISHED_PAGES: 'Бяха публикувани %d страници, %d грешки'
     PUBLISH_PAGES: Публикувай
   SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
-    RESTORE: Възтанови
+    RESTORE: Възстанови
     RESTORED_PAGES: 'Бяха възстановени %d страници'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
     UNPUBLISHED_PAGES: 'Бяха премахнати от публикация %d страници'
     UNPUBLISH_PAGES: 'Премахни от публикация'
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Достъп до ''{title}'' секция'
+    ACCESS: 'Достъп до секция ''{title}'''
     ACCESS_HELP: 'Разреши излгед на раздела съдържащ структурното дърво и съдържанието. Правата за достъп и редактиране могат да бъдат променени през падащи менюта (dropdowns), както и чрез отделни права на съдържанието'
     ARCHIVE: Архивирай
     ARCHIVEDPAGE: 'Страница ''{title}'' беше архивирана'
@@ -61,6 +61,8 @@ bg:
     TreeFiltered: 'Резултати от търсенето.'
     TreeFilteredClear: 'Изчисти филтъра'
     UNPUBLISH_AND_ARCHIVE: 'Премахни от публикация и архивирай'
+    PAGESALLOPT: 'Всички страници'
+    SAVEDRAFT: Запис
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Добавяне на страница'
     ParentMode_child: 'Под друга страница'
@@ -85,6 +87,7 @@ bg:
     VIEWINGLATEST: 'Последна версия'
     VIEWINGVERSION: 'Версия {version}.'
     WHEN: Кога
+    COMPARINGVERSION: 'Сравняване на версии {version1} и {version2}.'
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Редактиране на страница'
   SilverStripe\CMS\Controllers\CMSPagesController:
@@ -128,6 +131,7 @@ bg:
     StartEditing: 'Можете да започнете да редактирате съдържанието на вашия сайт, влизайки в <a href="{link}">СУС (CMS)</a>.'
     UnableDeleteInstall: 'Инсталационните файлове не могат да бъдат изтрити. Моля, изтрийте ги ръчно.'
     VIEWPAGEIN: 'Изглед на страница в:'
+    UNVERSIONEDPREVIEW: Преглед
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Архивирани
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
@@ -155,6 +159,7 @@ bg:
     REDIRECTTOPAGE: 'Страница на вашият уебсайт'
     SINGULARNAME: 'Пренасочваща страница'
     YOURPAGE: 'Страница на вашият уебсайт'
+    FILE: Файл
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Създадена е страница за пренасочване без да пренасочва на никъде.'
   SilverStripe\CMS\Model\SiteTree:
@@ -250,6 +255,7 @@ bg:
     many_many_BackLinkTracking: 'Следене на "обратни връзки"'
     many_many_ImageTracking: 'Следене на снимките'
     many_many_LinkTracking: 'Следене на връзките'
+    BUTTONSAVEPUBLISH: Публикувай
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Тип
@@ -320,3 +326,8 @@ bg:
     NONEREMOVED: 'Не бяха изтрити страници'
     SELECTALL: 'избери всички'
     UNSELECTALL: 'премахни селекцията'
+  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
+    USAGE: Употреба
+  SilverStripe\CMS\Model\SiteTreeLink:
+    PLURALNAME: 'Връзки към Дървото на сайта'
+    SINGULARNAME: 'Връзка към Дървото на сайта'

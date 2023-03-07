@@ -1,3 +1,50 @@
 id_ID:
   SilverStripe\CMS\Model\SiteTree:
     TABMAIN: Utama
+    BUTTONSAVED: Tersimpan
+    Content: Konten
+    HTMLEDITORTITLE: Konten
+    SINGULARNAME: Laman
+  SilverStripe\CMS\Controllers\CMSMain:
+    ACCESS: 'Akses ke bagian ''{title}'''
+    ARCHIVE: Arsip
+    CANT_REORGANISE: 'Anda tidak diijinkan mengubah laman Tingkat Atas. Pengubahan Anda tidak tersimpan.'
+    Cancel: Batal
+    Create: Buat
+    EMAIL: Email
+    PAGETYPEANYOPT: Semua
+    PLEASESAVE: 'Mohon Simpan Laman: Laman ini tidak dapat diperbarui karena belum disimpan.'
+    REORGANISATIONSUCCESSFUL: 'Pengaturan ulang struktur situs berhasil.'
+    SAVEDRAFT: Simpan
+    SHOW_AS_LIST: 'tampilkan sebagai daftar'
+    TOO_MANY_PAGES: 'Terlalu banyak laman'
+    TabContent: Konten
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    ErrorNotFound: '{Type} tidak ditemukan'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    UNKNOWN: 'Tidak diketahui'
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: Saring
+  SilverStripe\CMS\Controllers\ContentController:
+    Email: Email
+    LOGOUT: Keluar
+    NOTLOGGEDIN: 'Belum masuk'
+    Password: 'Kata kunci'
+    UNVERSIONEDPREVIEW: Pratinjau
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Jangkar
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Deskripsi tautan'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Cancel: Batal
+    Edit: Edit
+  SilverStripe\CMS\Model\RedirectorPage:
+    FILE: Berkas
+    REDIRECTTOEXTERNAL: 'Situs lain'
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    Any: Semua
+    ColumnURL: URL
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERLABELTEXT: Cari
+    GO: Lanjut
+    SEARCH: Cari
