@@ -20,9 +20,23 @@ pt:
     RESTORED: '''{title}'' restaurado com sucesso'
     ROLLEDBACKPUBv2: 'Voltar para a versão publicada.'
     ROLLEDBACKVERSIONv2: 'Voltar para a versão #{version}.'
+    ARCHIVE: Arquivar
+    AddNew: 'Adicionar nova página'
+    AddNewButton: Novo
+    Cancel: Cancelar
+    PAGESALLOPT: 'Todas as páginas'
+    PAGETYPEOPT: 'Tipo de Página'
+    PLEASESAVE: 'Por favor salve a página: Esta página não pode ser atulizada porque ainda não foi salva.'
+    ROLLBACK: 'Voltar para esta versão'
+    SAVEDRAFT: Guardar
+    TabContent: Conteúdo
+    TabHistory: Histórico
+    TabSettings: Configurações
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Por cima de outra página'
     ParentMode_top: 'Nível de topo'
+    MENUTITLE: 'Adicionar página'
+    Title: 'Adicionar página'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     COMPAREMODE: 'Modo de comparação (selecione duas)'
     REVERTTOTHISVERSION: 'Reverter para esta versão'
@@ -30,8 +44,18 @@ pt:
     VIEW: ver
     VIEWINGLATEST: 'Atualmente está a ver a última versão'
     VIEWINGVERSION: 'Actualmente está a ver a versão nº {version}.'
+    AUTHOR: Autor
+    COMPARINGVERSION: 'Comparando as versões {version1} e {version2}.'
+    MENUTITLE: Histórico
+    NOTPUBLISHED: 'Não publicada'
+    PUBLISHER: Publicador
+    UNKNOWN: Desconhecido
+    WHEN: Quando
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: Páginas
+    FILTER: Filtrar
+    ListView: 'Vista em lista'
+    TreeView: 'Vista em árvore'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Todas as páginas'
   SilverStripe\CMS\Controllers\ContentController:
@@ -47,8 +71,18 @@ pt:
     NOTLOGGEDIN: 'Não autenticado'
     PUBLISHEDSITE: 'Site Publicado'
     VIEWPAGEIN: 'Ver página em:'
+    DRAFT: Rascunho
+    InstallFilesDeleted: 'Ficheiros de instalação foram removidos com sucesso.'
+    InstallSecurityWarning: 'Por razões de segurança deverá apagar os ficheiros de instalação, a menos que esteja a planear uma instalação futura (<em> requer acesso de administrador, ver acima </em>). O servidor apenas necessita de permissões de escrita na pasta "assets", poderá remover todos os acessos de escrita nas restantes pastas.<a href="{link}" style="text-align: Clique aqui para apagar os ficheiros de instalação.</a>'
+    InstallSuccessCongratulations: 'SilverStripe foi instalado com sucesso'
+    Password: Palavra-chave
+    PostInstallTutorialIntro: 'Este site é uma versão simplificada do SilverStripe 3. Para adicionar novas funcionalidades visita {link}.'
+    UNVERSIONEDPREVIEW: Pré-visualização
+    UnableDeleteInstall: 'Impossível remover os ficheiros de instalação. Por favor, remova-os manualmente.'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Os caracteres especiais são automaticamente convertido ou removidos.'
+    Cancel: Cancelar
+    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Esta página irá redireccionar os utilizadores para outra página'
     OTHERURL: 'Outro Site'
@@ -56,6 +90,8 @@ pt:
     REDIRECTTOEXTERNAL: 'Outro site'
     REDIRECTTOPAGE: 'Uma página no seu site'
     YOURPAGE: 'Página no seu site'
+    FILE: Ficheiro
+    SINGULARNAME: 'A página redirecciona para uma que não existe'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Todos
     ACCESSHEADER: 'Quem pode ver esta página no site?'
@@ -116,12 +152,21 @@ pt:
     has_one_Parent: 'Página Parente'
     many_many_ImageTracking: 'Rastreamento de imagens'
     many_many_LinkTracking: 'Rastreamento de links'
+    BUTTONSAVED: Guardado
+    BUTTONSAVEPUBLISH: Publicar
+    DESCRIPTION: 'Página de conteúdo genérico'
+    NOTPUBLISHED: 'Não publicada'
+    ONLIVEONLYSHORTHELP: 'A página está publicada mas foi removida dos rascunhos'
+    PLURALNAME: Páginas
+    SINGULARNAME: Página
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Página associada'
     EditLink: editar
     HEADER: 'Esta é uma página virtual'
     HEADERWITHLINK: 'Esta é uma página virtual com o conteúdo copiado da página "{title}" ({link})'
     PageTypNotAllowedOnRoot: 'Páginas do tipo "{type}" não tem permissões para serem criadas a este nível.'
+    DESCRIPTION: 'Apresentar o conteúdo de outra página'
+    SINGULARNAME: 'Página Virtual'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Qualquer
     BROKENLINKS: 'Relatório de links inválidos'
@@ -149,3 +194,38 @@ pt:
     GO: Ir
     SEARCH: Procurar
     SearchResults: 'Resultados da pesquisa'
+    FILTERLABELTEXT: Procurar
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: 'Publicadas %d páginas, %d falhas'
+    PUBLISH_PAGES: Publicar
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Restaurar
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: 'Remover do site Publicado'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Editar página'
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Editar página'
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Âncora
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Descrição do link'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Uma página de redireccionamento foi criada sem nenhum destino.'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 'Páginas com ficheiros corrompidos'
+    BrokenLinksGroupTitle: 'Relatório de links inválidos'
+    ParameterLiveCheckbox: 'Verificar site publicado'
+  SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
+    BROKENREDIRECTORPAGES: 'As páginas redireccionadas apontam para páginas apagadas'
+    BrokenLinksGroupTitle: 'Relatório de links inválidos'
+    ParameterLiveCheckbox: 'Verificar site publicado'
+  SilverStripe\CMS\Reports\BrokenVirtualPagesReport:
+    BROKENVIRTUALPAGES: 'Página virtuais apontam para páginas apagadas'
+    BrokenLinksGroupTitle: 'Relatório de links inválidos'
+    ParameterLiveCheckbox: 'Verificar site publicado'
+  SilverStripe\CMS\Reports\EmptyPagesReport:
+    ContentGroupTitle: 'Conteúdo dos relatórios'
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    ContentGroupTitle: 'Conteúdo dos relatórios'
+    LAST2WEEKS: 'Páginas editadas nas 2 últimas semanas'

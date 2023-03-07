@@ -23,9 +23,28 @@ ja:
     RESTORED: '{title}を復旧しました'
     ROLLEDBACKPUBv2: 公開されたバージョンにロールバックされました。
     ROLLEDBACKVERSIONv2: '#{version}. のバージョンにロールバック'
+    AddNew: 新しいページを追加
+    AddNewButton: 新しく追加
+    CANT_REORGANISE: 最上層のページを変更する権限がありません。あなたの変更は保存されませんでした。
+    EMAIL: メール
+    PAGES: ページステータス
+    PAGESALLOPT: 全ページ
+    PAGETYPEOPT: ページタイプ
+    PLEASESAVE: '保存してください: 保存してないため更新できません。'
+    REORGANISATIONSUCCESSFUL: サイトツリーの再編集に成功しました。
+    ROLLBACK: このバージョンへ戻す
+    SAVEDRAFT: 保存
+    SHOW_AS_LIST: リストとして表示する
+    TOO_MANY_PAGES: あまりにも多くのページ
+    TabContent: 内容
+    TabHistory: 履歴
+    TabSettings: 設定
+    TreeFilteredClear: クリア
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 他のページの下に作成
     ParentMode_top: 最上位層
+    MENUTITLE: ページを追加
+    Title: ページを追加
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     COMPAREMODE: 比較モード（２つを選択）
     REVERTTOTHISVERSION: このバージョンに戻す
@@ -33,8 +52,18 @@ ja:
     VIEW: 表示
     VIEWINGLATEST: 現在最新のバージョンを表示。
     VIEWINGVERSION: '現在表示しているバージョンは{version}です。'
+    AUTHOR: 作成者
+    COMPARINGVERSION: '{version1}と{version2}を比較しています。'
+    MENUTITLE: 履歴
+    NOTPUBLISHED: 公開されていません
+    PUBLISHER: パブリッシャー
+    UNKNOWN: 不明
+    WHEN: いつ
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: ページ
+    FILTER: フィルタ
+    ListView: 一覧表示
+    TreeView: ツリー表示
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 全ページ
   SilverStripe\CMS\Controllers\ContentController:
@@ -52,10 +81,21 @@ ja:
     PUBLISHED: 公開された
     PUBLISHEDSITE: 公開サイト
     VIEWPAGEIN: 以下からページを表示する：
+    Email: メール
+    InstallFilesDeleted: インストール関連ファイルは正しく削除されました
+    InstallSecurityWarning: '後で再インストールすることを予定していない限り、セキュリティ上の理由のために、あなたは今インストールファイルを削除する必要があります(<em> 管理者のログインを必要とする、上記参照 </em>)。 今はウェブサーバーも"アセット"フォルダへの書き込みアクセスが必要なだけで、その他すべてのフォルダからの書き込みアクセスを削除することができます。<a href="{link}" style="text-align: center;"> ここをクリックしてインストールファイルを削除。</a>'
+    InstallSuccessCongratulations: SilverStripeは正常にインストールされています！
+    Password: パスワード
+    PostInstallTutorialIntro: 'このウェブサイトは、SilverStripe3サイトの単純なバージョンです。 これを拡張するには、{link} をご覧ください。'
+    StartEditing: '<a href="{link}">the CMS</a> を開いて、あなたのコンテンツの編集を開始することができます。'
+    UNVERSIONEDPREVIEW: プレビュー
+    UnableDeleteInstall: インストールファイルを削除することができませんでした。次のファイルを手動で削除してください。
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: アーカイブされた
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 特殊文字は自動的に変換されたか取り除かれました
+    Cancel: キャンセル
+    Edit: 編集
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: このページをユーザーを変更して他のページにしますか？
     OTHERURL: 他のウェブサイトのURL
@@ -63,6 +103,8 @@ ja:
     REDIRECTTOEXTERNAL: 他のウェブサイト
     REDIRECTTOPAGE: 貴方のウェブサイトを表示します
     YOURPAGE: 貴方のウェブサイトを表示します
+    FILE: ファイル
+    SINGULARNAME: リダイレクトページ
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 誰でも
     ACCESSHEADER: このページを閲覧できる人
@@ -137,12 +179,22 @@ ja:
     many_many_BackLinkTracking: リンク元を追跡
     many_many_ImageTracking: 画像へのリンクを追跡
     many_many_LinkTracking: リンクを追跡
+    BUTTONSAVEPUBLISH: 公開
+    DESCRIPTION: 通常のコンテンツページ
+    LASTPUBLISHED: 最後に公開された
+    LASTSAVED: 最後に保存した
+    NOTPUBLISHED: 公開されていません
+    ONLIVEONLYSHORTHELP: ページが公開されていますが、下書きから削除されています
+    PLURALNAME: ページ
+    SINGULARNAME: ページ
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: リンクされたページ
     EditLink: 編集
     HEADER: これがバーチャルページです
     HEADERWITHLINK: 'これは "{title}" ({link}) からコンテンツをコピーしている仮想ページです'
     PageTypNotAllowedOnRoot: 'この仮想ページに対して元のページの種類{type}はルートレベルに配置されることが許可されていません。'
+    DESCRIPTION: 別のページのコンテンツを表示
+    SINGULARNAME: 仮想ページ
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: 何でも
     BROKENLINKS: 壊れたリンクのレポート
@@ -172,3 +224,46 @@ ja:
     PAGEFILTERDATEHEADING: 最後に編集された
     SEARCH: 検索
     SearchResults: 検索結果
+    FILTERLABELTEXT: 検索
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: '%dページを公開しましたが、%dページの公開に失敗しました。'
+    PUBLISH_PAGES: 公開
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: 復元
+    RESTORED_PAGES: '%dページを復元しました'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISHED_PAGES: '%dページを非公開にしました'
+    UNPUBLISH_PAGES: 非公開
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: ページの編集
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: ページの編集
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
+    Title: 公開済みページ
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
+    Title: アーカイブされたページ
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDraftPages:
+    Title: 下書きページ
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: アンカー
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: リンクの説明
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 転送URLを含むページには、転送先がない状態で設定されています。
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 壊れているファイルがあるページ
+    BrokenLinksGroupTitle: 壊れているリンクのレポート
+    ParameterLiveCheckbox: ライブ配信のサイトをチェックする
+  SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
+    BROKENREDIRECTORPAGES: リダイレクトしたページが削除されています
+    BrokenLinksGroupTitle: 壊れているリンクのレポート
+    ParameterLiveCheckbox: ライブ配信のサイトをチェックする
+  SilverStripe\CMS\Reports\BrokenVirtualPagesReport:
+    BROKENVIRTUALPAGES: 削除されたページを参照している仮想ページ
+    BrokenLinksGroupTitle: 壊れているリンクのレポート
+    ParameterLiveCheckbox: ライブ配信のサイトをチェックする
+  SilverStripe\CMS\Reports\EmptyPagesReport:
+    ContentGroupTitle: コンテンツのレポート
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    ContentGroupTitle: コンテンツのレポート
+    LAST2WEEKS: 過去２週間以内に編集されたページ

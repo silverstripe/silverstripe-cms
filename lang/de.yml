@@ -137,6 +137,7 @@ de:
     StartEditing: 'Sie können den Inhalt <a href="{link}">im CMS</a> bearbeiten.'
     UnableDeleteInstall: 'Die Installationsdateien konnten nicht gelöscht werden. Bitte löschen Sie die Dateien manuell.'
     VIEWPAGEIN: 'Seite anzeigen in:'
+    UNVERSIONEDPREVIEW: Vorschau
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archiviert
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
@@ -156,7 +157,7 @@ de:
     DESCRIPTION: 'Leitet zu einer anderen internen oder externen Seite weiter'
     HEADER: 'Diese Seite wird Nutzer auf eine andere Seite weiterleiten'
     OTHERURL: 'Andere Webseiten URL'
-    PLURALNAME: Weiterleitungsseiten
+    PLURALNAME: 'Basis Seiten'
     PLURALS:
       one: 'Eine Weiterleitungsseite'
       other: '{count} Weiterleitungsseiten'
@@ -165,6 +166,7 @@ de:
     REDIRECTTOPAGE: 'Eine Seite auf Ihrer Website'
     SINGULARNAME: Weiterleitungsseite
     YOURPAGE: 'Seite auf Ihrer Website'
+    FILE: Datei
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Eine Weiterleitungsseite wurde erstellt ohne das eine Weiterleitung definiert wurde.'
   SilverStripe\CMS\Model\SiteTree:
@@ -285,7 +287,7 @@ de:
     EditLink: Bearbeiten
     HEADER: 'Dies ist eine virtuelle Seite'
     HEADERWITHLINK: 'Dies ist eine virtuelle Seite, die den Inhalt von "{title}" ({link}) kopiert'
-    PLURALNAME: 'Virtuelle Seiten'
+    PLURALNAME: 'Basis Seiten'
     PLURALS:
       one: 'Eine Virtuelle Seite'
       other: '{count} Virtuelle Seiten'

@@ -62,6 +62,9 @@ ru:
     TreeFiltered: 'Результаты поиска'
     TreeFilteredClear: Сбросить
     UNPUBLISH_AND_ARCHIVE: 'Отменить публикацию и отправить в архив'
+    PAGESALLOPT: 'Все страницы'
+    SAVEDRAFT: Сохранить
+    SEARCHRESULTS: 'Результаты поиска'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Добавить страницу'
     ParentMode_child: 'Под другой страницей'
@@ -86,6 +89,7 @@ ru:
     VIEWINGLATEST: 'Вы просматриваете самую новую версию.'
     VIEWINGVERSION: 'Вы просматриваете версию {version}.'
     WHEN: Когда
+    COMPARINGVERSION: 'Сравнение версий {version1} и {version2}.'
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Редактировать Страницу'
   SilverStripe\CMS\Controllers\CMSPagesController:
@@ -128,6 +132,7 @@ ru:
     StartEditing: 'Вы можете приступить к редактированию содержимого сайта, открыв <a href="{link}">CMS</a>.'
     UnableDeleteInstall: 'Не удалось удалить инсталляционные файлы. Пожалуйста, удалите следующие файлы вручную'
     VIEWPAGEIN: 'Просмотреть страницу в:'
+    UNVERSIONEDPREVIEW: Просмотр
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Архивные
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
@@ -146,7 +151,7 @@ ru:
     DESCRIPTION: 'Перенаправление на другую внутреннюю или внешнюю страницу'
     HEADER: 'Эта страница будет перенаправлять пользователей на другую страницу'
     OTHERURL: 'URL другого сайта'
-    PLURALNAME: 'Страницы перенаправления'
+    PLURALNAME: 'Базовые страницы'
     PLURALS:
       one: 'Страница перенаправления'
       few: '{count} страницы перенаправления'
@@ -157,6 +162,7 @@ ru:
     REDIRECTTOPAGE: 'Страницу вашего сайта'
     SINGULARNAME: 'Страница перенаправления'
     YOURPAGE: 'Страница вашего сайта'
+    FILE: Файл
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Все
     ACCESSHEADER: 'Кто может просматривать эту страницу на моем сайте?'
@@ -253,6 +259,7 @@ ru:
     many_many_BackLinkTracking: 'Отслеживание обратных ссылок'
     many_many_ImageTracking: 'Отслеживание изображений'
     many_many_LinkTracking: 'Отслеживание ссылок'
+    BUTTONSAVEPUBLISH: Опубликовать
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: №
     TITLE_TYPE: Тип
@@ -263,7 +270,7 @@ ru:
     EditLink: редактировать
     HEADER: 'Это виртуальная страница'
     HEADERWITHLINK: 'Это виртуальная страница, копирующая содержимое из "{title}" ({link})'
-    PLURALNAME: 'Виртуальные Страницы'
+    PLURALNAME: 'Базовые страницы'
     PLURALS:
       one: 'Виртуальная страница'
       few: '{count} виртуальные страницы'
@@ -328,3 +335,7 @@ ru:
     OPERATION_REMOVE: 'Удалить все версии выбранного (ВНИМАНИЕ: Это действие удалит все выбранные страниц из черновиков и с опубликованного сайта)'
     SELECTALL: 'выбрать все'
     UNSELECTALL: 'снять выделение со всех'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
+    Title: 'Опубликованные страницы'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Страница перенаправления установлена без указания места перенаправления.'

@@ -4,6 +4,13 @@ ca:
     PUBALLCONFIRM: 'Publica cada pàgina del lloc web, copiant el contingut cap a la versió publicada'
     PUBALLFUN: 'Funcionalitat de "Publica-ho tot"'
     REMOVEDPAGEFROMDRAFT: 'S''ha suprimit  ''{title}'' del lloc esborrany'
+    EMAIL: 'Correu electrònic'
+    PAGETYPEOPT: 'Tipus de pàgina'
+    PLEASESAVE: 'Si us plau, deseu la pàgina: aquesta pàgina no s''ha pogut actualitzar perquè encara no s''ha desat.'
+    ROLLBACK: 'Torna a aquesta versió'
+    SAVEDRAFT: Desa
+    SEARCHRESULTS: 'Resultats de la cerca'
+    TabContent: Contingut
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Aquesta pàgina redirigirà usuaris a una altra pàgina'
     OTHERURL: 'URL del lloc web'
@@ -11,6 +18,7 @@ ca:
     REDIRECTTOEXTERNAL: 'Un altre lloc web'
     REDIRECTTOPAGE: 'Una pàgina del vostre lloc web'
     YOURPAGE: 'Pàgina del vostre lloc web'
+    FILE: Fitxer
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Qualsevol
     ACCESSHEADER: 'Qui pot veure aquesta pàgina al meu lloc web?'
@@ -45,8 +53,37 @@ ca:
     many_many_BackLinkTracking: 'Seguiment d''enllaços retroactius'
     many_many_ImageTracking: 'Seguiment d''imatges'
     many_many_LinkTracking: 'Seguiment d''enllaços'
+    SINGULARNAME: Pàgina
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Aquesta és una pàgina virtual'
+    SINGULARNAME: 'Pàgina virtual'
   SilverStripe\CMS\Search\SearchForm:
     GO: Vés
     SEARCH: Cerca
+    FILTERLABELTEXT: Cerca
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Restaura
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: Despublica
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Edita la pàgina'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    AUTHOR: Autor
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Edita la pàgina'
+  SilverStripe\CMS\Controllers\ContentController:
+    Email: 'Correu electrònic'
+    LOGIN: Entrar
+    Password: Contrasenya
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Ancla
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Descripció de l''enllaç'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'S''ha definit una pàgina redirectora sense cap lloc on redirigir.'
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    PageName: 'Nom de la pàgina'
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    LAST2WEEKS: 'Pàgines editades les dues darreres setmanes'

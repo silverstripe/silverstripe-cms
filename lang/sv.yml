@@ -63,6 +63,9 @@ sv:
     TreeFiltered: 'Visar sökresultat.'
     TreeFilteredClear: Rensa
     UNPUBLISH_AND_ARCHIVE: 'Avpublicerad och arkivera'
+    PAGESALLOPT: 'Alla sidor'
+    SAVEDRAFT: Spara
+    SEARCHRESULTS: Sökresultat
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Skapa sida'
     ParentMode_child: 'Under en annan sida'
@@ -87,6 +90,7 @@ sv:
     VIEWINGLATEST: 'Nu visas den senaste versionen.'
     VIEWINGVERSION: 'Nu visas version {version}.'
     WHEN: När
+    COMPARINGVERSION: 'Jämför version {version1} och {version2}.'
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Redigera sida'
   SilverStripe\CMS\Controllers\CMSPagesController:
@@ -131,6 +135,7 @@ sv:
     StartEditing: 'Du kan börja redigera innehållet genom att öppna <a href="{link}">CMS:et</a>.'
     UnableDeleteInstall: 'Lyckades inte radera installationsfilerna. Radera följande filer manuellt.'
     VIEWPAGEIN: 'titta på sidan i:'
+    UNVERSIONEDPREVIEW: Förhandsgranska
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arkiverad
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
@@ -149,7 +154,7 @@ sv:
     DESCRIPTION: 'Omdirigerar till en annan intern eller extern sida'
     HEADER: 'Den här sidan omdirigerar användare till en annan sida'
     OTHERURL: 'Andra sidans URL'
-    PLURALNAME: 'Omdirigerings sidor'
+    PLURALNAME: Bas-sidor
     PLURALS:
       one: 'En omdirigeringssida'
       other: '{count} omdirigerings-sidor'
@@ -158,6 +163,7 @@ sv:
     REDIRECTTOPAGE: 'En sida på din sajt'
     SINGULARNAME: Omdirigeringssida
     YOURPAGE: 'Sida på din sajt'
+    FILE: Fil
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'En omdirigeringssida har skapats utan att ha något mål.'
   SilverStripe\CMS\Model\SiteTree:
@@ -254,6 +260,7 @@ sv:
     many_many_BackLinkTracking: 'Spåra inlänkar'
     many_many_ImageTracking: 'Spåra bild'
     many_many_LinkTracking: 'Spåra länk'
+    BUTTONSAVEPUBLISH: Publicera
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Typ
@@ -264,7 +271,7 @@ sv:
     EditLink: redigera
     HEADER: 'Det här är en virutell sida'
     HEADERWITHLINK: 'Det här är en virtuell sida som kopierar innehållet från "{title}" ({link})'
-    PLURALNAME: 'Virtuella sidor'
+    PLURALNAME: Bas-sidor
     PLURALS:
       one: 'En virtuell sida'
       other: '{count} Virtuella sidor'
@@ -327,3 +334,8 @@ sv:
     OPERATION_REMOVE: 'Radera valda sidor (VARNING: Detta kommer att radera samtliga valda sidor från både stage och live) '
     SELECTALL: 'Välj alla'
     UNSELECTALL: 'avmarkera alla'
+  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
+    USAGE: Användning
+  SilverStripe\CMS\Model\SiteTreeLink:
+    PLURALNAME: Sidträds-länkar
+    SINGULARNAME: Sidträds-länk

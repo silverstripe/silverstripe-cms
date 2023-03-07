@@ -1,3 +1,48 @@
 sr@latin:
   SilverStripe\CMS\Model\SiteTree:
     TABMAIN: Glavno
+    BUTTONSAVED: Sačuvano.
+    Comments: Komentari
+    Content: Sadržaj
+    HTMLEDITORTITLE: Sadržaj
+    SINGULARNAME: Stranica
+  SilverStripe\CMS\Controllers\CMSMain:
+    ACCESS: 'Pristup ''{title}'' sekciji'
+    CANT_REORGANISE: 'Nemate pravo da menjate stranice vršnog nivoa. Vaše izmene nisu sačuvane.'
+    Cancel: Odustani
+    Create: Kreiraj
+    EMAIL: 'Elektronska pošta'
+    PAGETYPEANYOPT: 'Bilo koji'
+    PLEASESAVE: 'Sačuvajte stranu: ova strana ne može da bude ažurirana jer još uvek nije sačuvana.'
+    REORGANISATIONSUCCESSFUL: 'Stablo sajta je uspešno reorganizovano.'
+    SAVEDRAFT: Sačuvaj
+    SHOW_AS_LIST: 'prikaži u vidu liste'
+    TOO_MANY_PAGES: 'Previše stranica'
+    TabContent: Sadržaj
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    UNKNOWN: Nepoznato
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: Filter
+  SilverStripe\CMS\Controllers\ContentController:
+    Email: 'Elektronska pošta'
+    LOGOUT: 'Odjavi se'
+    NOTLOGGEDIN: 'Niste prijavljeni'
+    Password: Lozinka
+    UNVERSIONEDPREVIEW: 'Prethodni pregled'
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Sidro
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Opis linka'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Cancel: Odustani
+    Edit: Izmeni
+  SilverStripe\CMS\Model\RedirectorPage:
+    FILE: Datoteka
+    REDIRECTTOEXTERNAL: 'drugi vebsajt'
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    Any: 'Bilo koji'
+    ColumnURL: URL
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERLABELTEXT: Pretraga
+    GO: Idi
+    SEARCH: Pretraga

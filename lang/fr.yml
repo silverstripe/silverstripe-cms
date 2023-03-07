@@ -135,6 +135,7 @@ fr:
     StartEditing: 'Vous pouvez commencer à créer ou modifier du contenu en accédant au <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Impossible de supprimer les fichiers d''installation. Merci de supprimer manuellement les fichiers suivants :'
     VIEWPAGEIN: 'Voir la page dans :'
+    UNVERSIONEDPREVIEW: Aperçu
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archivé
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
@@ -154,7 +155,7 @@ fr:
     DESCRIPTION: 'Redirige vers une page interne ou une URL externe'
     HEADER: 'Cette page va rediriger les utilisateurs vers une autre page'
     OTHERURL: 'URL d''un autre site web'
-    PLURALNAME: 'Pages de redirection'
+    PLURALNAME: 'Base Pages'
     PLURALS:
       one: 'Une page de redirection'
       other: '{count} pages de redirection'
@@ -163,6 +164,7 @@ fr:
     REDIRECTTOPAGE: 'Une page de votre site web'
     SINGULARNAME: 'Page de redirection'
     YOURPAGE: 'Page de votre site web'
+    FILE: Fichier
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Une page de redirection a été configurée... Sans redirection'
   SilverStripe\CMS\Model\SiteTree:
@@ -274,7 +276,7 @@ fr:
     EditLink: éditer
     HEADER: 'Ceci est une page virtuelle'
     HEADERWITHLINK: 'Ceci est une page virtuelle dupliquant le contenu de "{title}" ({link})'
-    PLURALNAME: 'Page virtuelles'
+    PLURALNAME: 'Base Pages'
     PLURALS:
       one: 'Une page virtuelle'
       other: '{count} pages virtuelles'
@@ -338,3 +340,8 @@ fr:
     OPERATION_REMOVE: 'Retirer toutes les versions des pages sélectionnées (avertissement: seront supprimés à la fois l''historique et la version publique des pages sélectionnées)'
     SELECTALL: 'tout sélectionner'
     UNSELECTALL: 'tout désélectionner'
+  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
+    USAGE: Usage
+  SilverStripe\CMS\Model\SiteTreeLink:
+    PLURALNAME: 'Liens Site Tree'
+    SINGULARNAME: 'Lien Site Tree'

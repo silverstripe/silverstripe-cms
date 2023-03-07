@@ -46,9 +46,23 @@ zh:
     ROLLEDBACKPUBv2: 回滚到已发布版本。
     ROLLEDBACKVERSIONv2: '回滚到版本#{version}。'
     SAVED: ' ''{title}'' 保存成功。'
+    CANT_REORGANISE: 您没有权限更改顶层页面。您的更改没有保存。
+    PAGESALLOPT: 所有页面
+    REORGANISATIONSUCCESSFUL: 重新组织网站地图已成功
+    SAVEDRAFT: 保存
+    SHOW_AS_LIST: 以列表方式展示
+    TOO_MANY_PAGES: 页面数目过多
+    TabContent: 内容
+    TabHistory: 历史记录
+    TabSettings: 设置
+    TreeFiltered: 显示查询结果.
+    TreeFilteredClear: 清除
+    UNPUBLISH_AND_ARCHIVE: 取消并归档
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 根据另一个页面
     ParentMode_top: 顶层
+    MENUTITLE: 添加页面
+    Title: 添加页面
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     COMPAREMODE: 比较模式（选择两个）
     REVERTTOTHISVERSION: 恢复到这个版本
@@ -56,8 +70,18 @@ zh:
     VIEW: 查看
     VIEWINGLATEST: 当前正在查看最新版本。
     VIEWINGVERSION: '当前正在查看版本{version}。'
+    AUTHOR: 作者
+    COMPARINGVERSION: '正在对比版本{version1}和{version2}。'
+    MENUTITLE: 历史记录
+    NOTPUBLISHED: 未发布
+    PUBLISHER: 发布者
+    UNKNOWN: 未知的
+    WHEN: 何时
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: 页面
+    FILTER: 过滤器
+    ListView: 列表视图
+    TreeView: 树视图
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 所有页面
   SilverStripe\CMS\Controllers\ContentController:
@@ -75,10 +99,22 @@ zh:
     PUBLISHED: 已发布
     PUBLISHEDSITE: 已发布站点
     VIEWPAGEIN: 查看页面，在：
+    Email: 电子邮件
+    InstallFilesDeleted: 安装文件已经成功删除。
+    InstallSecurityWarning: '出于安全原因，您应该现在删除安装文件，除非您计划以后（<em>需要以管理员身份登录，详见下方</em>）重新安装。web服务器现在仅需要对“assets”文件夹的写权限，您可以删除所有其他文件夹的写权限。<a href="{link}" style="text-align: center;">点击这里删除安装文件。</a>'
+    InstallSuccessCongratulations: SilverStripe已经成功安装！
+    Password: 密码
+    PostInstallTutorialIntro: '该网站是一个简化版的SilverStrip 3 站点。对其进行扩展，请查看{link}。'
+    StartEditing: '您可以通过打开<a href="{link}">;内容管理系统</a>开始编辑您的内容。'
+    UNVERSIONEDPREVIEW: 预览
+    UnableDeleteInstall: 无法删除安装文件。请手动删除以下文件
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 已存档
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 特殊字符已自动转换或删除。
+    Cancel: 取消
+    Edit: 编辑
+    OK: 确认
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 该页面将会使用户转向另外一个页面
     OTHERURL: 其他网站URL
@@ -86,6 +122,9 @@ zh:
     REDIRECTTOEXTERNAL: 另一个网站
     REDIRECTTOPAGE: 您网站上的一个页面
     YOURPAGE: 您网站的页面
+    FILE: 文件
+    PLURALNAME: 基本页面
+    SINGULARNAME: 重定向页
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 任何人
     ACCESSHEADER: 谁可以查看该页面？
@@ -159,12 +198,24 @@ zh:
     many_many_BackLinkTracking: 后连接跟踪
     many_many_ImageTracking: 图像跟踪
     many_many_LinkTracking: 链接跟踪
+    ARCHIVEDPAGESHORT: 已存档
+    BUTTONSAVEPUBLISH: 发布
+    DESCRIPTION: 通用内容页面
+    LASTPUBLISHED: 最后发布时间
+    LASTSAVED: 最后保存时间
+    NOTPUBLISHED: 未发布
+    ONLIVEONLYSHORTHELP: 页面已发布，但是已从草稿中删除
+    PLURALNAME: 页面
+    SINGULARNAME: 页面
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 链接的页面
     EditLink: 编辑
     HEADER: 这是一个虚拟页面
     HEADERWITHLINK: '这是一个从“{标题}”复制内容的虚拟页面（{链接}）'
     PageTypNotAllowedOnRoot: '此虚拟页面的根级不允许使用原页面类型 "{type}"'
+    DESCRIPTION: 显示另一个页面的内容
+    PLURALNAME: 基本页面
+    SINGULARNAME: 虚拟页面
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: 任意
     BROKENLINKS: 报告无效链接
@@ -193,3 +244,33 @@ zh:
     GO: 到
     SEARCH: 搜索
     SearchResults: 搜索结果
+    FILTERLABELTEXT: 查询
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 编辑页面
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 编辑页面
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: 固定
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 链接描述
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 建立了一个没有任何跳转目标的重定向页。
+  SilverStripe\CMS\Model\SiteTreeFileExtension:
+    TITLE_TYPE: 类型
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 页面含有无效文件的
+    BrokenLinksGroupTitle: 无效链接报告
+    ParameterLiveCheckbox: 检查线上站点
+  SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
+    BROKENREDIRECTORPAGES: 重定向页面指向了已删除页面
+    BrokenLinksGroupTitle: 无效链接报告
+    ParameterLiveCheckbox: 检查线上站点
+  SilverStripe\CMS\Reports\BrokenVirtualPagesReport:
+    BROKENVIRTUALPAGES: 虚拟页面指向了已删除页面
+    BrokenLinksGroupTitle: 无效链接报告
+    ParameterLiveCheckbox: 检查线上站点
+  SilverStripe\CMS\Reports\EmptyPagesReport:
+    ContentGroupTitle: 内容报告
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    ContentGroupTitle: 内容报告
+    LAST2WEEKS: 过去2周内编辑过的页面
