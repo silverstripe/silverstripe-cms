@@ -1,3 +1,56 @@
 sr_RS:
   SilverStripe\CMS\Model\SiteTree:
     TABMAIN: Главно
+    BUTTONSAVED: Сачувано.
+    Content: Садржај
+    HTMLEDITORTITLE: Садржај
+    SINGULARNAME: Страница
+  SilverStripe\CMS\Controllers\CMSMain:
+    ACCESS: 'Приступ ''{title}'' секцији'
+    CANT_REORGANISE: 'Немате право да мењате странице вршног нивоа. Ваше измене нису сачуване.'
+    Cancel: Одустани
+    Create: Креирај
+    EMAIL: Email
+    PAGETYPEANYOPT: 'Било који'
+    PLEASESAVE: 'Сачувајте страну: ова страна не може да буде ажурирана јер још увек није сачувана.'
+    REORGANISATIONSUCCESSFUL: 'Стабло сајта је успешно реорганизовано.'
+    SAVEDRAFT: Сачувај
+    SHOW_AS_LIST: 'прикажи у виду листе'
+    TOO_MANY_PAGES: 'Превише страница'
+    TabContent: Садржај
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Измени страницу'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    UNKNOWN: Непознато
+    WHEN: When
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Измени страницу'
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: Филтер
+  SilverStripe\CMS\Controllers\ContentController:
+    Email: Email
+    LOGOUT: 'Одјави се'
+    NOTLOGGEDIN: 'Нисте пријављени'
+    Password: Лозинка
+    UNVERSIONEDPREVIEW: 'Претходни преглед'
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Сидро
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Опис линка'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Cancel: Одустани
+    Edit: Измени
+  SilverStripe\CMS\Model\RedirectorPage:
+    FILE: Датотека
+    PLURALNAME: 'User Defined Forms'
+    REDIRECTTOEXTERNAL: 'други вебсајт'
+  SilverStripe\CMS\Model\VirtualPage:
+    PLURALNAME: 'User Defined Forms'
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    Any: 'Било који'
+    ColumnURL: URL
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERDATEFROM: From
+    FILTERLABELTEXT: Претрага
+    GO: Иди
+    SEARCH: Претрага

@@ -21,9 +21,22 @@ ko:
     RESTORED: '{title}를 복구했습니다'
     ROLLEDBACKPUBv2: '공개된 버전으로 롤백되었습니다.'
     ROLLEDBACKVERSIONv2: '#{version}. 버전으로 롤백'
+    ARCHIVE: 저장소
+    AddNew: '새 페이지를 추가'
+    AddNewButton: '새로 추가'
+    EMAIL: 이메일
+    PAGESALLOPT: '전체 페이지'
+    PAGETYPEOPT: '페이지 유형'
+    ROLLBACK: '이 버전으로 복원'
+    SAVEDRAFT: 저장
+    TabContent: 내용
+    TabHistory: 기록
+    TabSettings: 설정
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: '다른 페이지 아래에 작성'
     ParentMode_top: '최상위 계층'
+    MENUTITLE: '페이지 추가'
+    Title: '페이지 추가'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     COMPAREMODE: '비교 모드 (2개 선택)'
     REVERTTOTHISVERSION: '이 버전으로 복원'
@@ -31,8 +44,18 @@ ko:
     VIEW: 표시
     VIEWINGLATEST: '현재 최신 버전을 보고있는 중.'
     VIEWINGVERSION: '현재 {version}버젼을 보고 있는 중.'
+    AUTHOR: 작성자
+    COMPARINGVERSION: '{version1}과 {version2}을 비교하고 있습니다.'
+    MENUTITLE: 기록
+    NOTPUBLISHED: '공개되지 않습니다'
+    PUBLISHER: 게시자
+    UNKNOWN: '알 수 없슴'
+    WHEN: 언제
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: 페이지
+    FILTER: 필터
+    ListView: 목록보기
+    TreeView: 트리보기
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: '전체 페이지'
   SilverStripe\CMS\Controllers\ContentController:
@@ -50,10 +73,22 @@ ko:
     PUBLISHED: 공개됨
     PUBLISHEDSITE: '공개 사이트'
     VIEWPAGEIN: '다음에서 페이지를 표시한다 : '
+    Email: 이메일
+    InstallFilesDeleted: '설치 관련 파일이 성공적으로 삭제되었습니다'
+    InstallSecurityWarning: '나중에 다시 설치할 계획이 없는 한, 보안상의 이유로, 당신은 지금 설치 파일을 삭제해야합니다 (<em> 관리자 로그인 필요, 위를 참조 </em>). 웹서버는 또한 지금 "asset" 폴더에 대한 쓰기권한을 필요할 뿐이며, 당신은 다른 모든 폴더에대한 쓰기 권한을 제거할 수 있습니다. <a href="{link}" style="text-align: center;"> 여기를 클릭하여 설치 파일을 삭제합니다. </a>'
+    InstallSuccessCongratulations: 'SilverStripe이 성공적으로 설치되었습니다!'
+    Password: 암호
+    PostInstallTutorialIntro: '이 웹사이트는 SilverStripe3 사이트의 간단한 버전입니다. 이것을 확장하려면 {link}를 참조하십시오.'
+    StartEditing: '<a href="{link}"> CMS </a>을 열어서 콘텐츠를 편집할 수 있습니다.'
+    UNVERSIONEDPREVIEW: 미리보기
+    UnableDeleteInstall: '설치 파일을 제거 할 수 없습니다. 다음 파일을 수동으로 삭제하십시오.'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 보관됨
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: '특수 문자는 자동으로 변환되었는지 제거되었습니다'
+    Cancel: 취소
+    Edit: 편집
+    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: '이 페이지는 다른 페이지로 사용자들을 이동시킵니다.'
     OTHERURL: '다른 웹사이트 URL'
@@ -61,6 +96,7 @@ ko:
     REDIRECTTOEXTERNAL: '다른 웹사이트'
     REDIRECTTOPAGE: '당신의 웹사이트의 페이지'
     YOURPAGE: '당신의 웹사이트의 페이지'
+    SINGULARNAME: '리디렉션 페이지'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 누구나
     ACCESSHEADER: '누가 이 페이지를 볼 수 있나?'
@@ -134,12 +170,23 @@ ko:
     many_many_BackLinkTracking: '원본을 추적'
     many_many_ImageTracking: '이미지 링크 추적'
     many_many_LinkTracking: '링크 추적'
+    ARCHIVEDPAGESHORT: 보관됨
+    BUTTONSAVEPUBLISH: 공개
+    DESCRIPTION: '일반 콘텐츠 페이지'
+    LASTPUBLISHED: '마지막으로 공개됨'
+    LASTSAVED: '마지막으로 저장됨'
+    NOTPUBLISHED: '공개되지 않습니다'
+    ONLIVEONLYSHORTHELP: '페이지가 공개되어 있지만 초안에서 삭제됩니다'
+    PLURALNAME: 페이지
+    SINGULARNAME: 페이지
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: '링크된 페이지'
     EditLink: 편집
     HEADER: '가상 페이지입니다'
     HEADERWITHLINK: '이것은 "{title}"({link})에서 콘텐츠를 복사하는 가상 페이지입니다'
     PageTypNotAllowedOnRoot: '이 가상 페이지에 대해 원본 페이지 형식 {type}는 루트 레벨에 배치되는 것을 허용하지 않습니다.'
+    DESCRIPTION: '다른 페이지의 내용보기'
+    SINGULARNAME: '가상 페이지'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: 아무거나
     BROKENLINKS: '깨진 링크 보고서'
@@ -168,3 +215,36 @@ ko:
     GO: 시작
     SEARCH: 검색
     SearchResults: '검색 결과'
+    FILTERLABELTEXT: 검색
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: '%d페이지를 공개하고, %d페이지는 공개에서 실패했습니다.'
+    PUBLISH_PAGES: 공개
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: 복원
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: 비공개
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: '페이지 편집'
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: '페이지 편집'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: '살아있으나 초안으로부터는 제거됨'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: '다른곳으로 리다이렉트되지않고 리다이렉터 페이지가 설치되었습니다.'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: '손상된 파일이 있는 페이지'
+    BrokenLinksGroupTitle: '깨진 링크에 관한 보고서'
+    ParameterLiveCheckbox: '라이브 사이트를 확인'
+  SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
+    BROKENREDIRECTORPAGES: '리디렉션된 페이지가 삭제됩니다'
+    BrokenLinksGroupTitle: '깨진 링크에 관한 보고서'
+    ParameterLiveCheckbox: '라이브 사이트를 확인'
+  SilverStripe\CMS\Reports\BrokenVirtualPagesReport:
+    BROKENVIRTUALPAGES: '삭제된 페이지를 참조하는 가상 페이지'
+    BrokenLinksGroupTitle: '깨진 링크에 관한 보고서'
+    ParameterLiveCheckbox: '라이브 사이트를 확인'
+  SilverStripe\CMS\Reports\EmptyPagesReport:
+    ContentGroupTitle: '콘텐츠의 보고서'
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    ContentGroupTitle: '콘텐츠의 보고서'
+    LAST2WEEKS: '지난 2 주 이내에 편집된 페이지'

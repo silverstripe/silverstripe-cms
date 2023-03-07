@@ -1,6 +1,7 @@
 ar:
   SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
     PUBLISH_PAGES: نشر
+    PUBLISHED_PAGES: '%d من الصفحات المنشورة'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
     RESTORE: استعادة
     RESTORED_PAGES: '%d صفحة تم استعادتها'
@@ -36,10 +37,24 @@ ar:
     ROLLEDBACKPUBv2: 'التراجع إلى النسخة المنشورة.'
     ROLLEDBACKVERSIONv2: 'التراجع إلى النسخة #{version}.'
     SHOW_AS_LIST: 'عرض كقائمة'
+    CANT_REORGANISE: 'ليس لديك تصريح لتغيير صفحات المستوى الأعلى. لم يتم حفظ التغيير.'
+    EMAIL: 'البريد الإلكتروني'
+    PAGESALLOPT: 'كل الصفحات'
+    PLEASESAVE: 'فضلاً احفظ الصفحة: هذه الصفحة لا يمكن تحديثها لأنها لم تحفظ بعد'
+    REORGANISATIONSUCCESSFUL: 'تم إعادة تنظيم خريطة الموقع بنجاح'
+    ROLLBACK: 'عودة إلى هذا الإصدار'
+    SAVEDRAFT: حفظ
+    SEARCHRESULTS: 'نتائج البحث'
+    TOO_MANY_PAGES: 'صفحات كثيرة جداً'
+    TabContent: المحتوى
+    TabHistory: السوابق
+    TabSettings: الإعدادات
+    TreeFiltered: 'استعراض نتائج البحث'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'تحت صفحة أخرى'
     ParentMode_top: 'أعلى مستوى'
     Title: 'اضافة صفحة'
+    MENUTITLE: 'اضافة صفحة'
   SilverStripe\CMS\Controllers\CMSPageEditController:
     MENUTITLE: 'تعديل الصفحة'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
@@ -50,12 +65,19 @@ ar:
     VIEW: عرض
     VIEWINGLATEST: 'يقع حاليا عرض أحدث إصدار.'
     VIEWINGVERSION: 'يقع حاليا عرض إصدار  {version}.'
+    AUTHOR: الكاتب
+    COMPARINGVERSION: 'مقارنة الإصدارين {version1} و {version2}.'
+    MENUTITLE: السوابق
+    NOTPUBLISHED: 'غير منشورة'
+    PUBLISHER: الناشر
+    WHEN: متى
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'تحرير الصفحة'
   SilverStripe\CMS\Controllers\CMSPagesController:
     ListView: 'عرض كقائمة'
     MENUTITLE: الصفحات
     TreeView: 'عرض كشجرة'
+    FILTER: مرشح
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'كل الصفحات'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
@@ -76,11 +98,20 @@ ar:
     PUBLISHEDSITE: 'موقع منشور'
     Password: 'كلمة المرور'
     VIEWPAGEIN: 'مشاهدة الصفحة في:'
+    Email: 'البريد الإلكتروني'
+    InstallFilesDeleted: 'تم حذف ملفات التثبيت بنجاح.'
+    InstallSecurityWarning: 'لأسباب أمنية يجب عليك الآن حذف ملفات التثبيت، إلا إذا كنت تخطط لإعادة التثبيت في وقت لاحق (<em>يتطلب تسجيل الدخول كمسؤول، انظر أعلاه </em>). ملقم الويب أيضا يحتاج الآن إلى حق الكتابة في مجلد "الأصول"، يمكنك إزالة حق الكتابة من جميع المجلدات الأخرى. <a href="{link}" style="text-align: center;">اضغط هنا لحذف ملفات التثبيت.</a>'
+    InstallSuccessCongratulations: 'قد تمّ تثبيت SilverStripe بنجاح!'
+    PostInstallTutorialIntro: 'هذا الموقع هو نسخة مبسطة من موقع سيلفر سترايب 3. لإلقاء نظرة على النسخة المفصلة، يرجى إلقاء نظرة على {link}.'
+    StartEditing: 'يمكنك البدء في تحرير المحتوى الخاص بك عن طريق فتح  <a href="{link}">the CMS</a>.'
+    UNVERSIONEDPREVIEW: معاينة
+    UnableDeleteInstall: 'غير ممكن حذف ملفات التثبيت. يرجى حذف الملفات التالية يدويا'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: المؤرشف
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKTEXT: 'نص الرابط'
     SELECT_PAGE: 'اختيار صفحة'
+    LINKDESCR: 'وصف الرابط'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: الغاء
     Edit: تحرير
@@ -93,6 +124,9 @@ ar:
     REDIRECTTOEXTERNAL: 'موقع آخر'
     REDIRECTTOPAGE: 'صفحة في موقعك الشخصي'
     YOURPAGE: 'صفحة في موقعك الشخصي'
+    FILE: الملف
+    PLURALNAME: 'الصفحات الأساسية'
+    SINGULARNAME: 'معيد توجيه الصفحة'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: الجميع
     ACCESSHEADER: 'من يستطيع مشاهدة هذه الصفحة ؟'
@@ -167,6 +201,14 @@ ar:
     many_many_BackLinkTracking: 'متابعة التعقيبات'
     many_many_ImageTracking: 'متابعة الصور'
     many_many_LinkTracking: 'متابعة الروابط'
+    ARCHIVEDPAGESHORT: المؤرشف
+    BUTTONSAVEPUBLISH: نشر
+    DESCRIPTION: 'صفحة المحتوى العام'
+    LASTPUBLISHED: 'آخر منشور'
+    LASTSAVED: 'آخر محفوظ'
+    NOTPUBLISHED: 'غير منشورة'
+    ONLIVEONLYSHORTHELP: 'تم نشر الصفحة، ولكن تم حذفها من المسودة'
+    PLURALNAME: الصفحات
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_TYPE: النوع
   SilverStripe\CMS\Model\VirtualPage:
@@ -175,6 +217,9 @@ ar:
     HEADER: 'هذه صفحة افتراضية'
     HEADERWITHLINK: 'هذه صفحة افتراضية تنسخ المحتوى من "{title}" ({link})'
     PageTypNotAllowedOnRoot: 'نوع الصفحة الأصلية "{type}"غير مسموح به على مستوى الجذر لهذه الصفحة الافتراضية'
+    DESCRIPTION: 'يعرض محتوى صفحة أخرى'
+    PLURALNAME: 'الصفحات الأساسية'
+    SINGULARNAME: 'الصفحة الافتراضية'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: أي
     BROKENLINKS: 'تقرير الروابط المكسورة'
@@ -199,10 +244,15 @@ ar:
     VirtualPageNonExistent: 'الصفحة الظاهرية تشير الى صفحة غير موجودة..'
   SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
     BrokenLinksGroupTitle: 'تقارير الروابط المعطوبة'
+    BROKENREDIRECTORPAGES: 'معيد التوجيه الصفحات يشير إلى صفحات محذوفة'
+    ParameterLiveCheckbox: 'عرض الموقع'
   SilverStripe\CMS\Reports\BrokenVirtualPagesReport:
     ParameterLiveCheckbox: 'عرض الموقع'
+    BROKENVIRTUALPAGES: 'الصفحات الظاهرية تشير إالى صفحات محذوفة'
+    BrokenLinksGroupTitle: 'تقارير الروابط المعطوبة'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'تقاير المحتوى'
+    LAST2WEEKS: 'صفحات تم تعديلها في آخر أسبوعين'
   SilverStripe\CMS\Search\SearchForm:
     FILTERDATEFROM: من
     FILTERDATETO: إلى
@@ -214,3 +264,15 @@ ar:
     CHOOSEOPERATION: 'اختر عملية'
     SELECTALL: 'تحديد الكل'
     UNSELECTALL: 'الغاء تحديد الكل'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
+    Title: 'الصفحات المنشورة'
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: رابط
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'صفحة التحويل تم تهيئتها بدون تحديد وجهة التحويل'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 'صفحات مع ملفات مكسورة'
+    BrokenLinksGroupTitle: 'تقارير الروابط المعطوبة'
+    ParameterLiveCheckbox: 'عرض الموقع'
+  SilverStripe\CMS\Reports\EmptyPagesReport:
+    ContentGroupTitle: 'تقاير المحتوى'

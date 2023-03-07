@@ -4,6 +4,13 @@ zh_CN:
     PUBALLCONFIRM: 请发布该站的每一网页，这样，预备发布站上的内容就会复制到正式发布站上
     PUBALLFUN: “全部发布“功能
     REMOVEDPAGEFROMDRAFT: '已从测试站点删除 ''{title}'''
+    EMAIL: 电子邮件
+    PAGETYPEOPT: 网页类型
+    PLEASESAVE: 请先保存：因为该网页还未保存，所以该页无法更新。
+    ROLLBACK: 恢复到这一版本
+    SAVEDRAFT: 保存
+    SEARCHRESULTS: 搜索结果
+    TabContent: 内容
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 该页会将用户重新导向另一网页
     OTHERURL: 另一网站的URL
@@ -11,6 +18,7 @@ zh_CN:
     REDIRECTTOEXTERNAL: 另一网站
     REDIRECTTOPAGE: 您网站中的一个网页
     YOURPAGE: 您网站中的网页
+    FILE: 文件
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 任何人
     ACCESSHEADER: 在我的网站上，谁可以浏览此页？
@@ -34,5 +42,39 @@ zh_CN:
     SHOWINSEARCH: 是否包括在搜索结果中？
     TABBEHAVIOUR: 行为特点
     TOPLEVEL: 网站内容（顶层）
+    Content: 内容
+    DESCRIPTION: 通用内容页
+    PLURALNAME: 页
+    SINGULARNAME: 页面
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 这是一个虚拟页
+    DESCRIPTION: 显示另一页的内容
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: 撤消发布
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 编辑
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    AUTHOR: 作者
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 编辑
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    MENUTITLE: 页
+  SilverStripe\CMS\Controllers\ContentController:
+    Email: 电子邮件
+    LOGIN: 登录
+    Password: 密码
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 链接描述
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 重导网页被生成，却没有什么地方由它来重导。
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    ColumnURL: （路径）URL
+    PageName: 网页名称
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    LAST2WEEKS: 在过去2周内编辑过的网页
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERLABELTEXT: 搜索
+    GO: 执行
+    SEARCH: 搜索

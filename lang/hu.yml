@@ -18,9 +18,23 @@ hu:
     RESTORED: '''{title}'' sikeresen helyreállítva'
     ROLLEDBACKPUBv2: 'Visszatérés a publikált verzióhoz.'
     ROLLEDBACKVERSIONv2: '#{version} verzió beállítva.'
+    ARCHIVE: Archív
+    AddNew: 'Új oldal hozzáadása'
+    AddNewButton: 'Új hozzáadása'
+    EMAIL: E-mail
+    PAGESALLOPT: 'Összes oldal'
+    PAGETYPEOPT: 'Oldal típusa'
+    PLEASESAVE: 'Kérjük, mentsd el az oldalt: az oldalt nem lehetett frissíteni, mivel még nem került elmentésre.'
+    ROLLBACK: 'Visszaállítás ehhez a verzióhoz'
+    SAVEDRAFT: Mentés
+    TabContent: Tartalom
+    TabHistory: Történet
+    TabSettings: Beállítások
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Másik oldal alatt'
     ParentMode_top: 'Felső szint'
+    MENUTITLE: 'Oldal hozzáadása'
+    Title: 'Oldal hozzáadása'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     COMPAREMODE: 'Összehasonlítás (select two)'
     REVERTTOTHISVERSION: 'Visszatérés erre a verzióra'
@@ -28,8 +42,18 @@ hu:
     VIEW: megtekintés
     VIEWINGLATEST: 'Jelenleg ez az utolsó verzió'
     VIEWINGVERSION: 'Verziószám: {version}'
+    AUTHOR: Szerző
+    COMPARINGVERSION: '{version1} és {version2} verziók összehaonlítása. '
+    MENUTITLE: Történet
+    NOTPUBLISHED: 'Nincs publikálva'
+    PUBLISHER: Szerző
+    UNKNOWN: Ismeretlen
+    WHEN: Mikor
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: Oldalak
+    FILTER: Szűrő
+    ListView: 'Lista nézet'
+    TreeView: '"Fa" nézet'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Összes oldal'
   SilverStripe\CMS\Controllers\ContentController:
@@ -47,10 +71,19 @@ hu:
     PUBLISHED: Publikált
     PUBLISHEDSITE: 'Publikált oldal'
     VIEWPAGEIN: 'Oldal megtekintése'
+    Email: E-mail
+    InstallFilesDeleted: 'A telepítő állományok sikeresen tőrőlve lettek.'
+    InstallSuccessCongratulations: 'A SilverStripe sikeresen telepítve lett!'
+    Password: Jelszó
+    UNVERSIONEDPREVIEW: Előnézet
+    UnableDeleteInstall: 'A telepítő állományok törlése nem sikerült. Kérjük törölje az alábbi állományokat kézzel.'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archiválva
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'A speciális karakterek automatikusan konvertálódnak vagy törlődnek.'
+    Cancel: Mégsem
+    Edit: Szerkeszt
+    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Ez az oldal egy másik oldalra fogja írányítani a felhasználókat'
     OTHERURL: 'Egy másik weboldal URL-je '
@@ -58,6 +91,8 @@ hu:
     REDIRECTTOEXTERNAL: 'Egy másik weboldal'
     REDIRECTTOPAGE: 'Egy oldal a weblapodon'
     YOURPAGE: 'Oldal a weblapodon'
+    FILE: Fájl
+    SINGULARNAME: 'Átirányító oldal'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Mindenki
     ACCESSHEADER: 'Ki láthatja ezt az oldalt a weblapon?'
@@ -119,10 +154,20 @@ hu:
     many_many_BackLinkTracking: 'Backlink követés'
     many_many_ImageTracking: 'Kép követése'
     many_many_LinkTracking: 'Link követés'
+    ARCHIVEDPAGESHORT: Archiválva
+    BUTTONSAVEPUBLISH: Publikálni
+    DESCRIPTION: 'Egyszerű oldal'
+    LASTPUBLISHED: 'Publikálás utolsó időpontja'
+    LASTSAVED: 'Utoljára frissítve'
+    NOTPUBLISHED: 'Nincs publikálva'
+    ONLIVEONLYSHORTHELP: 'Az oldal publikálva lett, de törölve lett a vázlatok közül'
+    PLURALNAME: Oldalak
+    SINGULARNAME: Oldal
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Hivatkozott oldal'
     EditLink: szerkeszt
     HEADER: 'Ez egy virtuális oldal'
+    SINGULARNAME: 'Virtuális oldal'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Bármely
     BROKENLINKS: 'Hibás linkek listája'
@@ -150,3 +195,36 @@ hu:
     GO: Mehet
     SEARCH: Keresés
     SearchResults: Találatok
+    FILTERLABELTEXT: Keresés
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: '%d oldal publikálva, %d hibás'
+    PUBLISH_PAGES: Publikálni
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Visszaállítás
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: 'Publikálás visszavonása'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Oldal szerkesztése'
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Oldal szerkesztése'
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Link leírása'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Egy átirányító oldal került létrehozásra, anélkül hogy lenne hova átirányítania.'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 'Oldalak hibás fájl hivatkozásokkal'
+    BrokenLinksGroupTitle: 'Hibás linkek listája'
+    ParameterLiveCheckbox: 'Éles oldal megtekintése'
+  SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
+    BROKENREDIRECTORPAGES: 'RedirectorPage-ek törölt oldalakra hivatkoznak'
+    BrokenLinksGroupTitle: 'Hibás linkek listája'
+    ParameterLiveCheckbox: 'Éles oldal megtekintése'
+  SilverStripe\CMS\Reports\BrokenVirtualPagesReport:
+    BROKENVIRTUALPAGES: 'VirtualPages törölt oldalakra mutatnak'
+    BrokenLinksGroupTitle: 'Hibás linkek listája'
+    ParameterLiveCheckbox: 'Éles oldal megtekintése'
+  SilverStripe\CMS\Reports\EmptyPagesReport:
+    ContentGroupTitle: 'Tartalommal kapcsolatos riportok'
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    ContentGroupTitle: 'Tartalommal kapcsolatos riportok'
+    LAST2WEEKS: 'Elmúlt 2 héten belül szerkesztett oldalak'

@@ -1,0 +1,187 @@
+ja_JP:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: '%dページを公開しましたが、%dページの公開に失敗しました。'
+    PUBLISH_PAGES: 公開
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: 復元
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: 非公開
+  SilverStripe\CMS\Controllers\CMSMain:
+    ARCHIVE: アーカイブ
+    AddNew: 新しいページを追加
+    AddNewButton: 新しく追加
+    CANT_REORGANISE: 最上層のページを変更する権限がありません。あなたの変更は保存されませんでした。
+    ChoosePageParentMode: このページを作成する場所を選択
+    ChoosePageType: ページの種類を選択
+    Create: 作成
+    EMAIL: メールアドレス
+    PAGENOTEXISTS: このページは存在しません
+    PAGESALLOPT: 全ページ
+    PAGETYPEANYOPT: 何でも
+    PAGETYPEOPT: ページタイプ
+    PUBPAGES: '完了: {count}ページを公開しました'
+    PageAdded: ページの作成に成功
+    REMOVEDPAGE: '''{title}''を公開されているサイトから削除しました'
+    REORGANISATIONSUCCESSFUL: サイトツリーの再編集に成功しました。
+    RESTORED: '{title}を復旧しました'
+    ROLLBACK: このバージョンへ戻す
+    SAVEDRAFT: 保存
+    TabContent: 内容
+    TabHistory: 履歴
+    TabSettings: 設定
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: ページを追加
+    ParentMode_child: 他のページの下に作成
+    ParentMode_top: 最上位層
+    Title: ページを追加
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: ページの編集
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    AUTHOR: 作成者
+    COMPAREMODE: 比較モード（２つを選択）
+    COMPARINGVERSION: '{version1}と{version2}を比較しています。'
+    MENUTITLE: 履歴
+    NOTPUBLISHED: 未公開
+    PUBLISHER: パブリッシャー
+    REVERTTOTHISVERSION: このバージョンに戻す
+    SHOWUNPUBLISHED: 公開されていないバージョンを表示
+    UNKNOWN: 不明
+    VIEW: 表示
+    VIEWINGVERSION: '現在表示しているバージョンは{version}です。'
+    WHEN: いつ
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: ページの編集
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: フィルタ
+    ListView: 一覧表示
+    MENUTITLE: ページ
+    TreeView: ツリー表示
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
+    Title: 全ページ
+  SilverStripe\CMS\Controllers\ContentController:
+    DRAFT: 下書き
+    DRAFTSITE: 下書きサイト
+    Email: メールアドレス
+    InstallFilesDeleted: インストール関連ファイルは正しく削除されました
+    LOGGEDINAS: ログイン中：
+    LOGIN: ログイン
+    LOGOUT: ログアウト
+    NOTLOGGEDIN: ログインされていません
+    PUBLISHEDSITE: 公開サイト
+    Password: パスワード
+    UNVERSIONEDPREVIEW: プレビュー
+    UnableDeleteInstall: インストールファイルを削除することができませんでした。次のファイルを手動で削除してください。
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: アンカー
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: リンクの説明
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
+    HelpChars: 特殊文字は自動的に変換されたか取り除かれました
+  SilverStripe\CMS\Model\RedirectorPage:
+    FILE: ファイル
+    HEADER: このページをユーザーを変更して他のページにしますか？
+    OTHERURL: 他のウェブサイトのURL
+    REDIRECTTO: 変更は
+    REDIRECTTOEXTERNAL: 他のウェブサイト
+    REDIRECTTOPAGE: 貴方のウェブサイトを表示します
+    SINGULARNAME: リダイレクトページ
+    YOURPAGE: 貴方のウェブサイトを表示します
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 転送URLを含むページには、転送先がない状態で設定されています。
+  SilverStripe\CMS\Model\SiteTree:
+    ACCESSANYONE: 誰でも
+    ACCESSHEADER: このページを閲覧できる人
+    ACCESSLOGGEDIN: ログインしたユーザ
+    ADDEDTODRAFTHELP: ページはまだ公開されていません
+    ADDEDTODRAFTSHORT: 下書き
+    APPEARSVIRTUALPAGES: 'このコンテンツは{title}として仮想ページにおいても表示されます。'
+    BUTTONCANCELDRAFT: 草稿の編集内容を取り消します
+    BUTTONCANCELDRAFTDESC: 草稿と前回公開されたページを削除します
+    BUTTONSAVED: 保存しました
+    BUTTONSAVEPUBLISH: 公開
+    BUTTONUNPUBLISH: 非公開
+    BUTTONUNPUBLISHDESC: 公開サイトから取り除きました
+    Comments: コメント
+    Content: 内容
+    DEFAULTABOUTTITLE: 私たちについて
+    DEFAULTCONTACTTITLE: 連絡はこちらまで
+    DEFAULTHOMETITLE: ホーム
+    DESCRIPTION: 通常のコンテンツページ
+    EDITHEADER: このページを編集できる人
+    EDITORGROUPS: 編集者グループ
+    EDIT_ALL_DESCRIPTION: すべてのページを編集
+    Editors: 編集グループ
+    HASBROKENLINKS: このページはリンク切れがあります
+    HTMLEDITORTITLE: 内容
+    INHERIT: 親ページを受け継ぐ
+    MENUTITLE: メニュー表示
+    METADESC: 説明
+    METAEXTRA: メタタグをカスタム
+    MODIFIEDONDRAFTHELP: 公開されていない変更がページにあります
+    MetadataToggle: メタデータ
+    NOTPUBLISHED: 未公開
+    PAGELOCATION: ページの場所
+    PAGETITLE: ページ名
+    PAGETYPE: ページタイプ
+    PARENTID: 親ページ
+    PARENTTYPE: ページの場所
+    PARENTTYPE_ROOT: 最上位層のページ
+    PARENTTYPE_SUBPAGE: 親ページの下にあるサブページ
+    PERMISSION_GRANTACCESS_DESCRIPTION: コンテンツへのアクセス権限を編集
+    PLURALNAME: ページ
+    PageTypNotAllowedOnRoot: 'ページタイプ"{type}"は最上位層のページになることができません'
+    PageTypeNotAllowed: 'ページタイプ"{type}"はこの親ページの子になることができません'
+    REMOVE_INSTALL_WARNING: '警告: セキュリティ上の理由から、SilverStripeのインストール先にあるinstall.phpを削除してください。'
+    REORGANISE_DESCRIPTION: サイト構造を変更
+    REORGANISE_HELP: サイトツリー内のページをドラッグ・アンド・ドロップで再編集
+    SHOWINMENUS: メニューに表示しますか？
+    SHOWINSEARCH: 検索に表示しますか？
+    SINGULARNAME: ページ
+    TABBEHAVIOUR: 動作
+    TABDEPENDENT: 依存ページ
+    TOPLEVEL: 'サイトの内容 (最上位層)'
+    VIEW_ALL_DESCRIPTION: すべてのページを閲覧
+    VIEW_DRAFT_CONTENT: ドラフトを見る
+    Viewers: 閲覧者のグループ
+    Visibility: 表示・非表示
+    has_one_Parent: 親ページ
+    many_many_BackLinkTracking: リンク元を追跡
+    many_many_ImageTracking: 画像へのリンクを追跡
+    many_many_LinkTracking: リンクを追跡
+  SilverStripe\CMS\Model\VirtualPage:
+    DESCRIPTION: 別のページのコンテンツを表示
+    HEADER: これがバーチャルページです
+    PageTypNotAllowedOnRoot: 'この仮想ページに対して元のページの種類{type}はルートレベルに配置されることが許可されていません。'
+    SINGULARNAME: 仮想ページ
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 壊れているファイルがあるページ
+    BrokenLinksGroupTitle: 壊れているリンクのレポート
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    Any: 何でも
+    BROKENLINKS: 壊れたリンクのレポート
+    CheckSiteDropdownDraft: 下書きサイト
+    CheckSiteDropdownPublished: 公開サイト
+    ColumnDateLastModified: 最終更新日
+    ColumnDateLastPublished: 最終公開日
+    ColumnProblemType: 問題の種類
+    HoverTitleEditPage: ページの編集
+    PageName: ページ名
+    ReasonDropdownBROKENFILE: 壊れたファイル
+    ReasonDropdownBROKENLINK: 壊れているリンク
+    ReasonDropdownRPBROKENLINK: 存在しないページを指しているリダイレクトページ
+    ReasonDropdownVPBROKENLINK: 存在しないページを指している仮想ページ
+    RedirectorNonExistent: 存在しないページを指しているリダイレクトページ
+    VirtualPageNonExistent: 存在しないページを指している仮想ページ
+  SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
+    BrokenLinksGroupTitle: 壊れているリンクのレポート
+  SilverStripe\CMS\Reports\BrokenVirtualPagesReport:
+    BROKENVIRTUALPAGES: 削除されたページを参照している仮想ページ
+    BrokenLinksGroupTitle: 壊れているリンクのレポート
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERDATEFROM: 開始日
+    FILTERDATETO: 終了日
+    FILTERLABELTEXT: 検索
+    GO: 開始
+    SEARCH: 検索
+    SearchResults: 検索結果

@@ -20,9 +20,28 @@ mi:
     RESTORED: 'I momoho te whakaora i te ''{title}'''
     ROLLEDBACKPUBv2: 'I hoki ki te tauira kua whakaputaina.'
     ROLLEDBACKVERSIONv2: 'I hoki ki te tauira #{version}.'
+    ARCHIVE: Puranga
+    AddNew: 'Tāpiri whārangi hōu'
+    AddNewButton: 'Tāpiri Hou'
+    CANT_REORGANISE: 'Kāore tō mana whakakē i ngā whārangi taumata Matua. Kāore tō huringa i tiakina.'
+    Cancel: Whakakore
+    EMAIL: Īmēra
+    PAGESALLOPT: 'Ngā Whārangi Katoa'
+    PAGETYPEOPT: 'Tūmomo wharangi '
+    PLEASESAVE: 'Tiaki Whārangi: Kāore i taea tēnei whārangi te whakahōu nā te mea kāore anō kia tiakina.'
+    REORGANISATIONSUCCESSFUL: 'Kua momoho te whakaraupapa anō i te rākau pae'
+    ROLLBACK: 'Hoki whakamuri ki tēnei putanga.'
+    SAVEDRAFT: Tiaki
+    SHOW_AS_LIST: 'whakaaturia hei rārangi'
+    TOO_MANY_PAGES: 'He nui rawa ngā whārangi'
+    TabContent: 'Ngā ihirangi'
+    TabHistory: Hītori
+    TabSettings: 'Ngā Tautuhinga'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     ParentMode_child: 'Kei raro i tētahi atu whārangi'
     ParentMode_top: 'Taumata matua'
+    MENUTITLE: 'Tāpiri whārangi'
+    Title: 'Tāpiri whārangi'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     COMPAREMODE: 'Whakataurite Aratau (tīpakohia kia rua)'
     REVERTTOTHISVERSION: 'Hoki ki tēnei putanga'
@@ -30,8 +49,18 @@ mi:
     VIEW: Tiro
     VIEWINGLATEST: 'Tirohia ana te tauira hou rawa ināianei.'
     VIEWINGVERSION: 'Tiro ana i te putanga {version} ināianei.'
+    AUTHOR: Kaituhi
+    COMPARINGVERSION: 'Whakataurite ana i te putanga {version1} me te putanga {version2}.'
+    MENUTITLE: Hītori
+    NOTPUBLISHED: 'Kāore i whakaputaina'
+    PUBLISHER: Pūwhakaputa
+    UNKNOWN: 'Tē Mōhiotia'
+    WHEN: Inahea
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: 'Ngā Whārangi'
+    FILTER: Tātari
+    ListView: 'Tirohanga Rārangi'
+    TreeView: 'Tirohanga Rākau'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Ngā Whārangi Katoa'
   SilverStripe\CMS\Controllers\ContentController:
@@ -49,10 +78,22 @@ mi:
     PUBLISHED: 'I whakaputaina'
     PUBLISHEDSITE: 'Pae Kua Whakaputaina'
     VIEWPAGEIN: 'Tiro Whārangi i'
+    Email: Īmēra
+    InstallFilesDeleted: 'Kua momoho te muku i ngā kōnae tāuta'
+    InstallSecurityWarning: 'Me muku koe i ngā kōnae tāuta mō ngā pūtake haumaru, engari ia kei te whakaaro koe ki te tāuta ā muri atu (<em>ka hiahiatia te takiuru kaiwhakahaere, tirohia ki runga</em>). Ka hiahia te tūmau tukutuku ināianei i te uru tuhituhi anake ki te kōpaki "ngā rawa", ka taea te tango i te uru tuhituhi mai i ērā atu kōpaki katoa. <a href="{link}" style="text-align: center;">Pāwhiri ki konei ki te muku i ngā kōnae tāuta.</a>'
+    InstallSuccessCongratulations: 'Kua tāuta momohotia te Silverstripe!'
+    Password: Kupuhipa
+    PostInstallTutorialIntro: 'He tauira rūnā tēnei paetukutuku o tētahi paetukutuku SilverStripe 3. Hei toro i tēnei, tirohia te {link}'
+    StartEditing: 'Ka taea te tīmata ki te whakatika i ō ihirangi mā te whakatuwhera i <a href="{link}">the CMS</a>.'
+    UNVERSIONEDPREVIEW: Arokite
+    UnableDeleteInstall: 'Kāore i taea te muku i ngā kōnae tāuta. Mukua ā-ringa ngā kōnae kei raro'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 'I putumōhiotia'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     HelpChars: 'Ka tahuri aunoatia, ka tangohia rānei ngā pūāhua motuhake'
+    Cancel: Whakakore
+    Edit: Whakatika
+    OK: ĀE
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Ka tuku anō tēnei whārangi i ngā kaiwhakamahi ki whārangi kē'
     OTHERURL: 'Tētahi atu PRO paetukutuku'
@@ -60,6 +101,9 @@ mi:
     REDIRECTTOEXTERNAL: 'Tētahi atu paetukutuku'
     REDIRECTTOPAGE: 'Whārangi kei tō paetukutuku'
     YOURPAGE: 'Whārangi kei tō paetukutuku'
+    FILE: Kōnae
+    PLURALNAME: 'Ngā Whārangi Taketake'
+    SINGULARNAME: 'Whārangi Tuku Anō'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'Tētahi tangata'
     ACCESSHEADER: 'Mā wai tēnei whārangi e tiro?'
@@ -133,12 +177,24 @@ mi:
     many_many_BackLinkTracking: 'Taki Hono i Waho'
     many_many_ImageTracking: 'Taki Atahanga'
     many_many_LinkTracking: 'Taki Hono'
+    ARCHIVEDPAGESHORT: 'I putumōhiotia'
+    BUTTONSAVEPUBLISH: Whakaputa
+    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
+    LASTPUBLISHED: 'Whakaputanga hou rawa'
+    LASTSAVED: 'Tiakinga hou rawa'
+    NOTPUBLISHED: 'Kāore i whakaputaina'
+    ONLIVEONLYSHORTHELP: 'Kua whakaputaina te whārangi, engari kua mukua i te hukihuki'
+    PLURALNAME: 'Ngā Whārangi'
+    SINGULARNAME: Whārangi
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Whārangi kua honoa'
     EditLink: Whakatika
     HEADER: 'He whārangi mariko tēnei'
     HEADERWITHLINK: 'He whārangi mariko tēnei e tārua ihirangi ana i "{title}" ({link})'
     PageTypNotAllowedOnRoot: 'Kāore e whakaaetia te momo whārangi taketake "{type}" i te taumata pūtake o tēnei whārangi mariko'
+    DESCRIPTION: 'Ka whakaatu i ngā ihirangi o tētahi atu whārangi'
+    PLURALNAME: 'Ngā Whārangi Taketake'
+    SINGULARNAME: 'Whārangi Mariko'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: 'Ko tētahi'
     BROKENLINKS: 'Pūrongo hono whati'
@@ -167,3 +223,40 @@ mi:
     GO: Haere
     SEARCH: Rapu
     SearchResults: 'Ngā Hua Rapu'
+    FILTERLABELTEXT: Rapu
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: '%d ngā whārangi kua whakaputaina, %d i rahua'
+    PUBLISH_PAGES: Whakaputa
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Whakaora
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: Wetewhakaputa
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Whakatika Whārangi'
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Whakatika Whārangi'
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Punga
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Whakaahuatanga hono'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Kua tatū he whārangi tuku anō me te kore whai wāhi hei tuku anō.'
+  SilverStripe\CMS\Model\SiteTreeFileExtension:
+    TITLE_TYPE: Momo
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 'Ngā whārangi me ngā kōnae whati'
+    BrokenLinksGroupTitle: 'Ngā pūrongo hononga whati'
+    ParameterLiveCheckbox: 'Tirohia te pae ora'
+  SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
+    BROKENREDIRECTORPAGES: 'Ngā WhārangiTukuAnō e tohu ana ki ngā whārangi kua mukua'
+    BrokenLinksGroupTitle: 'Ngā pūrongo hononga whati'
+    ParameterLiveCheckbox: 'Tirohia te pae ora'
+  SilverStripe\CMS\Reports\BrokenVirtualPagesReport:
+    BROKENVIRTUALPAGES: 'Ngā WhārangiMariko e tohu ana ki ngā whārangi kua mukua'
+    BrokenLinksGroupTitle: 'Ngā pūrongo hononga whati'
+    ParameterLiveCheckbox: 'Tirohia te pae ora'
+  SilverStripe\CMS\Reports\EmptyPagesReport:
+    ContentGroupTitle: 'Ngā pūrongo ihirangi'
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    ContentGroupTitle: 'Ngā pūrongo ihirangi'
+    LAST2WEEKS: 'Ngā whārangi i whakatikatia i ngā wiki e 2 kua hipa'

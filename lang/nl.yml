@@ -122,7 +122,7 @@ nl:
     Email: E-mail
     INSTALL_SUCCESS: 'Installatie voltooid!'
     InstallFilesDeleted: 'De installatiebestanden zijn verwijderd.'
-    InstallSecurityWarning: 'Om veiligheidsredenen dient u de installatiebestanden nu te verwijderen, tenzij u van plan bent om later opnieuw te installeren (<em>dit vereist   toegang als administrator, zie hierboven</em>). De webserver heeft vanaf nu alleen nog schrijftoegang nodig tot de "assets" map, u kunt de schrijftoegang van alle andere mappen verwijderen. <a href="{link}" style="text-align:center;">Klik hier om de installatiebestanden te verwijderen.</a> '
+    InstallSecurityWarning: 'Om veiligheidsredenen dient u de installatiebestanden nu te verwijderen, tenzij u van plan bent om later opnieuw te installeren (<em>dit vereist  toegang als administrator, zie hierboven</em>). De webserver heeft vanaf nu alleen nog schrijftoegang nodig tot de "assets" map, u kunt de schrijftoegang van alle andere mappen verwijderen. <a href="{link}" style="text-align:center;">Klik hier om de installatiebestanden te verwijderen.</a> '
     InstallSuccessCongratulations: 'SilverStripe is met succes geïnstalleerd!'
     LOGGEDINAS: 'Ingelogd als'
     LOGIN: Inloggen

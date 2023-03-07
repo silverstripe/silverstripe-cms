@@ -136,6 +136,7 @@ da:
     StartEditing: 'Du kan nu starte med at redigere dit indhold ved at åbne dit<a href="{link}">CMS</a>.'
     UnableDeleteInstall: 'Var ikke i stand til at slette installationsfilerne. Slet venligst filerne herunder manuelt.'
     VIEWPAGEIN: 'Vis side i:'
+    UNVERSIONEDPREVIEW: Forhåndsvisning
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arkiveret
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
