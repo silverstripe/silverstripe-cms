@@ -19,13 +19,13 @@
         }
     ],
     "require": {
-        "silverstripe/admin": "1.13.x-dev",
-        "silverstripe/campaign-admin": "1.13.x-dev",
-        "silverstripe/framework": "4.13.x-dev",
-        "silverstripe/reports": "4.13.x-dev",
-        "silverstripe/siteconfig": "4.13.x-dev",
-        "silverstripe/versioned": "1.13.x-dev",
-        "silverstripe/versioned-admin": "1.13.x-dev",
+        "silverstripe/admin": "1.13.0-beta1",
+        "silverstripe/campaign-admin": "1.13.0-beta1",
+        "silverstripe/framework": "4.13.0-beta1",
+        "silverstripe/reports": "4.13.0-beta1",
+        "silverstripe/siteconfig": "4.13.0-beta1",
+        "silverstripe/versioned": "1.13.0-beta1",
+        "silverstripe/versioned-admin": "1.13.0-beta1",
         "silverstripe/vendor-plugin": "^1.0",
         "php": "^7.4 || ^8.0"
     },
