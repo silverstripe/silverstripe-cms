@@ -4,13 +4,8 @@ on:
   push:
   pull_request:
   workflow_dispatch:
-  # Every Tuesday at 1:20pm UTC
-  schedule:
-    - cron: '20 13 * * 2'
 
 jobs:
   ci:
     name: CI
-    # Only run cron on the silverstripe account
-    if: (github.event_name == 'schedule' && github.repository_owner == 'silverstripe') || (github.event_name != 'schedule')
     uses: silverstripe/gha-ci/.github/workflows/ci.yml@v1
