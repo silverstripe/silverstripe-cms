@@ -52,8 +52,8 @@
     "redux-form": "^8.3.8"
   },
   "devDependencies": {
-    "@silverstripe/eslint-config": "^1.0.0-alpha6",
-    "@silverstripe/webpack-config": "^2.0.0-alpha6",
+    "@silverstripe/eslint-config": "^1.0.0",
+    "@silverstripe/webpack-config": "^2.0.0",
     "babel-jest": "^29.3.0",
     "copy-webpack-plugin": "^11.0.0",
     "core-js": "^3.26.0",

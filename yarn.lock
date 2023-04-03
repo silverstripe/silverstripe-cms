@@ -1674,10 +1674,10 @@
   resolved "https://registry.yarnpkg.com/@sect/modernizr-loader/-/modernizr-loader-1.0.3.tgz#7fd8cec372426c53f113f3cfd9344cb29e959825"
   integrity sha512-47zKwv4/1I0CYptZz8s4aSYSe0awmuyqa+HFKxN89/75h2q8hr6V752TZ9VjhGDhQ4gU0EU7Plew7b+7bf2crg==
 
-"@silverstripe/eslint-config@^1.0.0-alpha6":
-  version "1.0.0-alpha6"
-  resolved "https://registry.yarnpkg.com/@silverstripe/eslint-config/-/eslint-config-1.0.0-alpha6.tgz#1f243b003fddf3503a4abea37f35a8a5968cc96e"
-  integrity sha512-+P7UzhMRSmc7UlRYCiSXwjauLFYU11oBPwHl/bpacJ7xUcFY3Jt3CgcDt6d+XLvAJO8zMRsG9RcOm5MnxsyCsg==
+"@silverstripe/eslint-config@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@silverstripe/eslint-config/-/eslint-config-1.0.0.tgz#dcf3f9cf2158bb587d8048a7c2860c0513221d40"
+  integrity sha512-pcHzB+6KWd8BPStBhHM8achdNY/Yj1p3WSTEs/CSw61VRcfBfg5GZECtvEerTSX/0ZeawAM1ABvstIAYihcfAg==
   dependencies:
     eslint "^8.26.0"
     eslint-config-airbnb "^19.0.4"
@@ -1687,10 +1687,10 @@
     eslint-plugin-react "^7.31.10"
     eslint-webpack-plugin "^3.2.0"
 
-"@silverstripe/webpack-config@^2.0.0-alpha6":
-  version "2.0.0-alpha7"
-  resolved "https://registry.yarnpkg.com/@silverstripe/webpack-config/-/webpack-config-2.0.0-alpha7.tgz#c825f30fa0991222ac3e89a114bdc4cca2b2c254"
-  integrity sha512-XkqdnED1E072QXxFSovP8KrJuVtZGIeW9fLMdLI8tJwzf6651ziwYFWYwep72C0Eb+jpUabxNQl7eqlAHO52xA==
+"@silverstripe/webpack-config@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@silverstripe/webpack-config/-/webpack-config-2.0.0.tgz#278a72a1adbc6fa2362497d60424c78fba58e8e1"
+  integrity sha512-m1qGRxlsdhWL567cWe7IZNBUCzeyg3T1Y9yY9Y6XClwAqlg1oIO9uLfvfauA4dbtECrzU5n1AkaaU6kMRtN6Aw==
   dependencies:
     "@babel/core" "^7.19.6"
     "@babel/preset-env" "^7.19.4"
