@@ -7,7 +7,7 @@ PHP Content Management System (CMS), see [http://silverstripe.org](http://silver
 
 ## Installation
 
-See [installation instructions](https://docs.silverstripe.org/en/getting_started/installation/).
+See the [getting started documentation](https://docs.silverstripe.org/en/getting_started/).
 
 ## Bugtracker
 
