@@ -1,4 +1,9 @@
-/* global jest, describe, beforeEach, it, expect, setTimeout */
+/* global jest, test, describe, beforeEach, it, expect, setTimeout */
+
+import React from 'react';
+import { Component as AnchorSelectorField } from '../AnchorSelectorField';
+import anchorSelectorStates from 'state/anchorSelector/AnchorSelectorStates';
+import { render, screen } from '@testing-library/react';
 
 jest.mock('isomorphic-fetch', () =>
   () => Promise.resolve({
@@ -6,98 +11,119 @@ jest.mock('isomorphic-fetch', () =>
 }));
 jest.mock('i18n');
 
-import React from 'react';
-import ReactTestUtils from 'react-dom/test-utils';
-import { Component as AnchorSelectorField } from '../AnchorSelectorField';
-import anchorSelectorStates from 'state/anchorSelector/AnchorSelectorStates';
+function makeProps(obj = {}) {
+  return {
+    id: 'Form_Test',
+    name: 'Test',
+    data: {
+      endpoint: 'url-callback',
+    },
+    pageId: 4,
+    anchors: ['anchor1', 'anchor2'],
+    value: 'selectedanchor',
+    loadingState: anchorSelectorStates.SUCCESS,
+    CreatableSelectComponent: ({ options }) => (
+      <div data-testid="test-creatable-select">
+        {options.map(option => <div key={option.value} data-option={option.value}/>)}
+      </div>
+    ),
+    ...obj,
+  };
+}
 
-describe('AnchorSelectorField', () => {
-  let props = null;
-  let field = null;
-
-  beforeEach(() => {
-    props = {
-      id: 'Form_Test',
-      name: 'Test',
-      data: {
-        endpoint: 'url-callback',
+test('AnchorSelectorField componentDidMount() Loads dirty selectors', async () => {
+  const beginUpdating = jest.fn();
+  render(<AnchorSelectorField {...makeProps({
+    loadingState: anchorSelectorStates.DIRTY,
+    actions: {
+      anchorSelector: {
+        beginUpdating,
+        updated: () => {},
+        updateFailed: () => {},
       },
-      pageId: 4,
-      anchors: ['anchor1', 'anchor2'],
-      value: 'selectedanchor',
-      loadingState: anchorSelectorStates.SUCCESS,
-      actions: {
-        anchorSelector: {
-          beginUpdating: jest.fn(),
-          updated: jest.fn(),
-          updateFailed: jest.fn(),
-        },
+    },
+  })}
+  />);
+  await screen.findByTestId('test-creatable-select');
+  expect(beginUpdating).toBeCalledWith(4);
+});
+
+test('AnchorSelectorField Merges value with page anchors', async () => {
+  const beginUpdating = jest.fn();
+  const { container } = render(<AnchorSelectorField {...makeProps({
+    loadingState: anchorSelectorStates.DIRTY,
+    actions: {
+      anchorSelector: {
+        beginUpdating,
+        updated: () => {},
+        updateFailed: () => {},
       },
-    };
-  });
+    },
+  })}
+  />);
+  const select = await screen.findByTestId('test-creatable-select');
+  const options = select.querySelectorAll('[data-option]');
+  expect(options).toHaveLength(3);
+  expect(options[0].getAttribute('data-option')).toBe('selectedanchor');
+  expect(options[1].getAttribute('data-option')).toBe('anchor1');
+  expect(options[2].getAttribute('data-option')).toBe('anchor2');
+});
 
-  describe('componentDidMount()', () => {
-    it('Loads dirty selectors', () => {
-      props.loadingState = anchorSelectorStates.DIRTY;
-      field = ReactTestUtils.renderIntoDocument(<AnchorSelectorField {...props} />);
-      expect(props.actions.anchorSelector.beginUpdating)
-        .toHaveBeenCalledWith(4);
-    });
-    it('Does not load success selectors', () => {
-      props.loadingState = anchorSelectorStates.SUCCESS;
-      field = ReactTestUtils.renderIntoDocument(<AnchorSelectorField {...props} />);
-      expect(props.actions.anchorSelector.beginUpdating)
-        .not
-        .toHaveBeenCalled();
-    });
-  });
+test('AnchorSelectorField componentDidMount() Does not load success selectors', async () => {
+  const beginUpdating = jest.fn();
+  render(<AnchorSelectorField {...makeProps({
+    loadingState: anchorSelectorStates.SUCCESS,
+    actions: {
+      anchorSelector: {
+        beginUpdating,
+        updated: () => {},
+        updateFailed: () => {},
+      },
+    },
+  })}
+  />);
+  await screen.findByTestId('test-creatable-select');
+  expect(beginUpdating).not.toBeCalled();
+});
 
-  describe('getDropdownOptions()', () => {
-    it('Merges value with page anchors', () => {
-      field = ReactTestUtils.renderIntoDocument(<AnchorSelectorField {...props} />);
-      expect(field.getDropdownOptions()).toEqual([
-        { value: 'selectedanchor' },
-        { value: 'anchor1' },
-        { value: 'anchor2' },
-      ]);
-    });
-  });
+test('AnchorSelectorField ensurePagesLoaded Triggers loading on dirty', async () => {
+  const beginUpdating = jest.fn();
+  const updated = jest.fn();
+  const updateFailed = jest.fn();
+  render(<AnchorSelectorField {...makeProps({
+    loadingState: anchorSelectorStates.DIRTY,
+    actions: {
+      anchorSelector: {
+        beginUpdating,
+        updated,
+        updateFailed,
+      },
+    },
+  })}
+  />);
+  await screen.findByTestId('test-creatable-select');
+  expect(beginUpdating).toBeCalledWith(4);
+  expect(updated).toBeCalledWith(4, ['anchor3', 'anchor4']);
+  expect(updateFailed).not.toBeCalled();
+});
 
-  describe('ensurePagesLoaded', () => {
-    it('Triggers loading on dirty', () => {
-      props.loadingState = anchorSelectorStates.DIRTY;
-      field = ReactTestUtils.renderIntoDocument(<AnchorSelectorField {...props} />);
-      return field
-        .ensurePagesLoaded()
-        .then((result) => {
-          expect(props.actions.anchorSelector.beginUpdating)
-            .toHaveBeenCalledWith(4);
-          expect(props.actions.anchorSelector.updated)
-            .toHaveBeenCalledWith(4, ['anchor3', 'anchor4']);
-          expect(props.actions.anchorSelector.updateFailed)
-            .not
-            .toHaveBeenCalled();
-          expect(result).toEqual(['anchor3', 'anchor4']);
-        });
-    });
-
-    it('Does not trigger updating', () => {
-      props.loadingState = anchorSelectorStates.UPDATING;
-      field = ReactTestUtils.renderIntoDocument(<AnchorSelectorField {...props} />);
-      return field
-        .ensurePagesLoaded()
-        .then((result) => {
-          expect(props.actions.anchorSelector.beginUpdating)
-            .not
-            .toHaveBeenCalled();
-          expect(props.actions.anchorSelector.updated)
-            .not
-            .toHaveBeenCalled();
-          expect(props.actions.anchorSelector.updateFailed)
-            .not
-            .toHaveBeenCalled();
-          expect(result).toBe(undefined);
-        });
-    });
-  });
+test('AnchorSelectorField ensurePagesLoaded Does not trigger updating', async () => {
+  const beginUpdating = jest.fn();
+  const updated = jest.fn();
+  const updateFailed = jest.fn();
+  render(<AnchorSelectorField {...makeProps({
+    loadingState: anchorSelectorStates.UPDATING,
+    actions: {
+      anchorSelector: {
+        beginUpdating,
+        updated,
+        updateFailed,
+      },
+    },
+  })}
+  />);
+  await screen.findByTestId('test-creatable-select');
+  expect(beginUpdating).not.toBeCalled();
+  expect(updated).not.toBeCalled();
+  expect(updateFailed).not.toBeCalled();
 });

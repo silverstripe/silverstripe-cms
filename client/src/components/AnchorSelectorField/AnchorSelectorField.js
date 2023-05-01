@@ -118,13 +118,14 @@ class AnchorSelectorField extends SilverStripeComponent {
   }
 
   render() {
-    const className = classnames('anchorselectorfield', this.props.extraClass);
+    const { extraClass, CreatableSelectComponent } = this.props;
+    const className = classnames('anchorselectorfield', extraClass);
     const options = this.getDropdownOptions();
     const rawValue = this.props.value || '';
     const placeholder = i18n._t('CMS.ANCHOR_SELECT_OR_TYPE', 'Select or enter anchor');
     return (
       <EmotionCssCacheProvider>
-        <CreatableSelect
+        <CreatableSelectComponent
           isSearchable
           isClearable
           options={options}
@@ -166,6 +167,7 @@ AnchorSelectorField.defaultProps = {
   extraClass: '',
   onLoadingError: noop,
   attributes: {},
+  CreatableSelectComponent: CreatableSelect
 };
 
 function mapStateToProps(state, ownProps) {
