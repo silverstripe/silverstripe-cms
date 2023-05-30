@@ -271,6 +271,7 @@ eo:
     many_many_BackLinkTracking: 'Spuri retroligilojn'
     many_many_ImageTracking: 'Spuri Bildojn'
     many_many_LinkTracking: 'Spuri Ligilojn'
+    InvalidExtraMeta: 'Propraj meta-etikedoj ne enhavas validan HTML'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
