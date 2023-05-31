@@ -81,7 +81,7 @@ nl:
     COMPAREMODE: 'Vergelijken (selecteer 2)'
     COMPARINGVERSION: 'U vergelijkt versie {version1} en {version2}.'
     MENUTITLE: Geschiedenis
-    MULTISELECT: 'Meervoudige acties'
+    MULTISELECT: 'Bulk acties'
     NOTPUBLISHED: 'Niet gepubliceerd'
     NO_PREVIEW: 'Geen voorbeeld beschikbaar'
     PUBLISHER: 'Gepubliceerd door'
@@ -270,6 +270,7 @@ nl:
     many_many_BackLinkTracking: 'Backlinks traceren'
     many_many_ImageTracking: 'Afbeeldingen traceren'
     many_many_LinkTracking: 'Links traceren'
+    InvalidExtraMeta: 'De HTML bij Andere meta-tags is incorrect'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Type
