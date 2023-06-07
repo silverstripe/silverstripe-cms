@@ -525,4 +525,66 @@ class SiteTreePermissionsTest extends FunctionalTest
             'to OnlyTheseUsers'
         );
     }
+
+    /**
+     * Test permissions on duplicate page
+     * @dataProvider groupWithPermissions
+     */
+    public function testDuplicatePageWithGroupPermissions(string $userName, string $method, bool $expected)
+    {
+        $originalPage = $this->objFromFixture(SiteTree::class, 'originalpage');
+        $user = $this->objFromFixture(Member::class, $userName);
+        $dupe = $originalPage->duplicate();
+
+        $this->assertEquals($originalPage->Title, $dupe->Title);
+        $this->assertEquals($dupe->CanViewType, 'OnlyTheseUsers');
+        $this->assertEquals($dupe->CanEditType, 'OnlyTheseUsers');
+        $this->assertSame($dupe->{$method}($user), $expected);
+    }
+
+    public function groupWithPermissions(): array
+    {
+        return [
+            'Subadmin can view page duplicate.' => [
+                'subadmin',
+                'canView',
+                true,
+            ],
+            'Subadmin can edit page duplicate.' => [
+                'subadmin',
+                'canEdit',
+                true,
+            ],
+            'Editor can view page duplicate.' => [
+                'editor',
+                'canView',
+                true,
+            ],
+            'Editor can edit page duplicate.' => [
+                'editor',
+                'canEdit',
+                true,
+            ],
+            'User with "allsections" permission can view page duplicate.' => [
+                'allsections',
+                'canView',
+                true,
+            ],
+            'User with "allsections" permission cannot edit page duplicate.' => [
+                'allsections',
+                'canEdit',
+                false,
+            ],
+            'Websiteuser permission cannot view page duplicate.' => [
+                'websiteuser',
+                'canView',
+                false,
+            ],
+            'Websiteuser permission cannot edit page duplicate.' => [
+                'websiteuser',
+                'canEdit',
+                false,
+            ],
+        ];
+    }
 }
