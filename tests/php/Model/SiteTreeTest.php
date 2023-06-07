@@ -2112,4 +2112,82 @@ class SiteTreeTest extends SapphireTest
             ],
         ];
     }
+
+    /**
+     * Test permissions on duplicate page
+     * @dataProvider groupWithPermissions
+     * @param string $userName
+     * @param string $action
+     * @param array  $expected
+     * @param string $assertionMessage
+     */
+    public function testDuplicatePageWithGroupPermissions($userName, $action, $assertion, $message)
+    {
+        $originalPage = $this->objFromFixture(SiteTree::class, 'originalpage');
+        $user = $this->objFromFixture(Member::class, $userName);
+        $dupe = $originalPage->duplicate();
+
+        $this->assertEquals($originalPage->Title, $dupe->Title);
+        $this->assertEquals($dupe->CanViewType, 'OnlyTheseUsers');
+        $this->assertEquals($dupe->CanEditType, 'OnlyTheseUsers');
+
+        $this->{$assertion}($dupe->{$action}($user), $message);
+    }
+
+    /**
+     * @return array
+     */
+    public function groupWithPermissions()
+    {
+        return [
+            [
+                'admin',
+                'canView',
+                'assertTrue',
+                'Admin can view page duplicate.',
+            ],
+            [
+                'admin',
+                'canEdit',
+                'assertTrue',
+                'Admin can edit page duplicate.',
+            ],
+            [
+                'editor',
+                'canView',
+                'assertTrue',
+                'Editor can view page duplicate.',
+            ],
+            [
+                'editor',
+                'canEdit',
+                'assertTrue',
+                'Editor can edit page duplicate.',
+            ],
+            [
+                'allsections',
+                'canView',
+                'assertTrue',
+                'User with "allsections" permission can view page duplicate.',
+            ],
+            [
+                'allsections',
+                'canEdit',
+                'assertFalse',
+                'User with "allsections" permission cannot edit page duplicate.',
+            ],
+            [
+                'websiteuser',
+                'canView',
+                'assertFalse',
+                'Websiteuser permission cannot view page duplicate.',
+            ],
+            [
+                'websiteuser',
+                'canEdit',
+                'assertFalse',
+                'Websiteuser permission cannot edit page duplicate.',
+            ],
+        ];
+    }
 }

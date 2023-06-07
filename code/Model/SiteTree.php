@@ -270,6 +270,11 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         'VirtualPages',
     ];
 
+    private static $cascade_duplicates = [
+        'ViewerGroups',
+        'EditorGroups',
+    ];
+
     private static $casting = [
         "Breadcrumbs" => "HTMLFragment",
         "LastEdited" => "Datetime",
