@@ -96,6 +96,7 @@ et_EE:
     FILE: Fail
     PLURALNAME: 'User Defined Forms'
     SINGULARNAME: Ümbersuunamisleht
+    has_one_LinkTo: Lingi
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Igaüks
     ACCESSHEADER: 'Kes tohib seda lehekülge minu veebisaidil vaadata?'
@@ -172,6 +173,8 @@ et_EE:
     ONLIVEONLYSHORTHELP: 'Lehekülg on avalikustatud, kuid mustand on kustutatud'
     PLURALNAME: Lehed
     SINGULARNAME: Leht
+    db_Content: Sisu
+    db_Title: Pealkiri
   SilverStripe\CMS\Model\VirtualPage:
     EditLink: redigeeri
     HEADER: 'See on virtuaalne leht'

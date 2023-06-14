@@ -150,6 +150,7 @@ hr:
     SINGULARNAME: 'Preusmjeravajuća stranica'
     YOURPAGE: 'Stranica na Vašem webu'
     FILE: Datoteka
+    has_one_LinkTo: 'Poveži na'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Svi
     ACCESSHEADER: 'Tko može pregledavati ovu stranicu?'
@@ -234,6 +235,9 @@ hr:
     BUTTONSAVEPUBLISH: Objavi
     DEFAULTABOUTCONTENT: '<p>Možete popuniti ovu stranicu s Vašim sadržajem, ili obrisati je i kreirati novu stranicu.</p>'
     DEFAULTCONTACTCONTENT: '<p>Možete popuniti ovu stranicu s Vašim sadržajem, ili obrisati je i kreirati novu stranicu.</p>'
+    db_Content: Sadržaj
+    db_Title: Naslov
+    has_one_Subsite: Podsajt
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tip
@@ -310,3 +314,5 @@ hr:
     ANCHORVALUE: Sidro
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Stranica za preusjeravanje nema postavljenog preusmjeravanja'
+  SilverStripe\CMS\Model\SiteTreeLink:
+    has_one_Parent: Roditelj

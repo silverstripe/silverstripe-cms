@@ -168,6 +168,7 @@ eo:
     YOURPAGE: 'Paĝo en via retejo'
     FILE: Dosiero
     REDIRECTTOFILE: 'Dosiero en via retejo'
+    has_one_LinkTo: 'Ligilo al'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Alidirekta paĝo estis agordita sen ie al kie alidirekti.'
   SilverStripe\CMS\Model\SiteTree:
@@ -272,6 +273,11 @@ eo:
     many_many_ImageTracking: 'Spuri Bildojn'
     many_many_LinkTracking: 'Spuri Ligilojn'
     InvalidExtraMeta: 'Propraj meta-etikedoj ne enhavas validan HTML'
+    db_Content: Enhavo
+    db_Sort: Ordigi
+    db_Title: Titolo
+    db_URLSegment: URL-segmento
+    has_one_Subsite: Subretejo
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
@@ -284,6 +290,7 @@ eo:
       one: 'unu reteja arba ligilo'
       other: '{count} retejaj arbaj ligiloj'
     SINGULARNAME: 'Reteja arba ligilo'
+    has_one_Parent: Patra
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Ligita paĝo'
     DESCRIPTION: 'Vidigas la enhavon de alia paĝo'

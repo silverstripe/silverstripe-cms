@@ -18,6 +18,7 @@ si:
     REDIRECTTOPAGE: 'ඔබේ අඩවියේ පිටුවක්'
     YOURPAGE: 'ඔබේ අඩවියේ පිටුවක්'
     FILE: ලිපිය
+    has_one_LinkTo: බැදේ
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'සියලු දෙනා'
     ACCESSHEADER: 'මෙම පිටුව බැලිය හැකි අය'
@@ -44,6 +45,8 @@ si:
     TOPLEVEL: අන්ර්ගතය
     has_one_Parent: 'මවු පිටුව'
     SINGULARNAME: පිටුව
+    db_Content: අන්තර්ගතය
+    db_Title: මතකව
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'මෙය මනඃකල්පිත පිටුවකි'
     SINGULARNAME: 'මනඃකල්පිත පිටුව'

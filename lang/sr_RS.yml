@@ -5,6 +5,8 @@ sr_RS:
     Content: Садржај
     HTMLEDITORTITLE: Садржај
     SINGULARNAME: Страница
+    db_Content: Садржај
+    db_Title: Наслов
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Приступ ''{title}'' секцији'
     CANT_REORGANISE: 'Немате право да мењате странице вршног нивоа. Ваше измене нису сачуване.'
@@ -44,6 +46,7 @@ sr_RS:
     FILE: Датотека
     PLURALNAME: 'User Defined Forms'
     REDIRECTTOEXTERNAL: 'други вебсајт'
+    has_one_LinkTo: 'Повежи на'
   SilverStripe\CMS\Model\VirtualPage:
     PLURALNAME: 'User Defined Forms'
   SilverStripe\CMS\Reports\BrokenLinksReport:

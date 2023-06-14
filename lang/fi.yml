@@ -165,6 +165,7 @@ fi:
     SINGULARNAME: 'Uudelleenohjaava sivu'
     YOURPAGE: 'Sivu verkkosivustollasi'
     FILE: Tiedosto
+    has_one_LinkTo: Linkitä
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Uudelleenohjaava sivu on valmis, mutta ei ohjaa mihinkään.'
   SilverStripe\CMS\Model\SiteTree:
@@ -267,6 +268,11 @@ fi:
     many_many_BackLinkTracking: 'Käänteinen seuranta'
     many_many_ImageTracking: 'Kuvan seuranta'
     many_many_LinkTracking: 'Linkin seuranta'
+    db_Content: Sisältö
+    db_Sort: Järjestä
+    db_Title: Otsikko
+    db_URLSegment: 'URL-osoitteen osio'
+    has_one_Subsite: Alasivusto
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tyyppi
@@ -279,6 +285,7 @@ fi:
       one: 'Hakemistopuun linkki'
       other: '{count} hakemistopuun linkkiä'
     SINGULARNAME: 'Hakemistopuun linkki'
+    has_one_Parent: Isäntä
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Linkitetty sivu'
     DESCRIPTION: 'Näyttää toisen sivun sisällön'

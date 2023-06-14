@@ -267,6 +267,9 @@ da:
     many_many_BackLinkTracking: 'Bagud rettet sporing '
     many_many_ImageTracking: 'Sporing af billeder'
     many_many_LinkTracking: 'Sporing af links'
+    db_Content: Indhold
+    db_Title: Titel
+    db_URLSegment: 'URL adresse'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Type

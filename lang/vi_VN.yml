@@ -37,6 +37,7 @@ vi_VN:
     TABBEHAVIOUR: 'Hoạt động'
     TABCONTENT: 'Thông tin'
     Content: 'Nội dung'
+    db_Content: 'Nội dung'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
     UNPUBLISH_PAGES: Ẩn
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:

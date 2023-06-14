@@ -104,6 +104,7 @@ mi:
     FILE: Kōnae
     PLURALNAME: 'Ngā Whārangi Taketake'
     SINGULARNAME: 'Whārangi Tuku Anō'
+    has_one_LinkTo: 'Hono ki'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'Tētahi tangata'
     ACCESSHEADER: 'Mā wai tēnei whārangi e tiro?'
@@ -186,6 +187,9 @@ mi:
     ONLIVEONLYSHORTHELP: 'Kua whakaputaina te whārangi, engari kua mukua i te hukihuki'
     PLURALNAME: 'Ngā Whārangi'
     SINGULARNAME: Whārangi
+    db_Content: 'Ngā ihirangi'
+    db_Title: Taitara
+    has_one_Subsite: 'Pae iti'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Whārangi kua honoa'
     EditLink: Whakatika
@@ -260,3 +264,5 @@ mi:
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'Ngā pūrongo ihirangi'
     LAST2WEEKS: 'Ngā whārangi i whakatikatia i ngā wiki e 2 kua hipa'
+  SilverStripe\CMS\Model\SiteTreeLink:
+    has_one_Parent: Matua

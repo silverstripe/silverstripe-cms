@@ -19,6 +19,7 @@ az:
     REDIRECTTOPAGE: 'web səhifənizdə olan səhifə'
     YOURPAGE: 'Web saytınızda olan səhifə'
     FILE: Fayl
+    has_one_LinkTo: 'Linki qoy'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'Hər kəs'
     ACCESSHEADER: 'Bu səhifəyə kimlər baxa bilər?'
@@ -61,6 +62,8 @@ az:
     many_many_ImageTracking: 'Şəkil izləmə'
     many_many_LinkTracking: 'Keçidin izlənməsi'
     SINGULARNAME: Səhifə
+    db_Content: Məzmun
+    db_Title: Başlıq
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Bu virtual səhifədir'
     SINGULARNAME: 'Virtual səhifə'

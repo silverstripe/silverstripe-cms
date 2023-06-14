@@ -165,6 +165,7 @@ fr:
     SINGULARNAME: 'Page de redirection'
     YOURPAGE: 'Page de votre site web'
     FILE: Fichier
+    has_one_LinkTo: 'Lier à'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Une page de redirection a été configurée... Sans redirection'
   SilverStripe\CMS\Model\SiteTree:
@@ -266,6 +267,10 @@ fr:
     many_many_BackLinkTracking: 'Suivi des liens retour'
     many_many_ImageTracking: 'Suivi des images'
     many_many_LinkTracking: 'Suivi des Liens'
+    db_Content: Contenu
+    db_Sort: Tri
+    db_Title: Titre
+    db_URLSegment: 'Segment d''URL'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Type
@@ -345,3 +350,4 @@ fr:
   SilverStripe\CMS\Model\SiteTreeLink:
     PLURALNAME: 'Liens Site Tree'
     SINGULARNAME: 'Lien Site Tree'
+    has_one_Parent: Parent

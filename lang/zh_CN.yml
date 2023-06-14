@@ -19,6 +19,7 @@ zh_CN:
     REDIRECTTOPAGE: 您网站中的一个网页
     YOURPAGE: 您网站中的网页
     FILE: 文件
+    has_one_LinkTo: 链接到
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 任何人
     ACCESSHEADER: 在我的网站上，谁可以浏览此页？
@@ -46,6 +47,8 @@ zh_CN:
     DESCRIPTION: 通用内容页
     PLURALNAME: 页
     SINGULARNAME: 页面
+    db_Content: 内容
+    db_Title: 标题
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 这是一个虚拟页
     DESCRIPTION: 显示另一页的内容

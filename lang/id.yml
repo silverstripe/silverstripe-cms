@@ -108,6 +108,7 @@ id:
     FILE: Berkas
     PLURALNAME: 'Laman Dasar'
     SINGULARNAME: 'Laman Pengarah'
+    has_one_LinkTo: 'Tautan ke'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'Siapa saja'
     ACCESSHEADER: 'Siapa yang dapat melihat laman ini?'
@@ -189,6 +190,9 @@ id:
     ONLIVEONLYSHORTHELP: 'Laman sudah terbit, tapi telah dihapus dari draft'
     PLURALNAME: Laman
     SINGULARNAME: Laman
+    db_Content: Konten
+    db_Title: Judul
+    has_one_Subsite: Subsitus
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Laman Tertaut'
     EditLink: edit
@@ -263,3 +267,5 @@ id:
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'Laporan konten'
     LAST2WEEKS: 'Laman diedit dalam 2 minggu terakhir'
+  SilverStripe\CMS\Model\SiteTreeLink:
+    has_one_Parent: Induk
