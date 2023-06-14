@@ -8,6 +8,7 @@ ne:
     REDIRECTTOPAGE: 'तपाईंको वेबसाईटमा एउटा पेज'
     YOURPAGE: 'तपाईंको वेबसाईटमा एउटा पेज'
     FILE: फाइल
+    has_one_LinkTo: 'लिन्क गर्नुस्'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: जोकोहिले
     ACCESSHEADER: 'मेरो सईटमा कसले यो पजे हेर्न सक्छ ? '
@@ -34,6 +35,7 @@ ne:
     TABMAIN: मुख्य
     Content: सामाग्री
     SINGULARNAME: पेज
+    db_Content: सामाग्री
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'यो भरचुअल पेज हो'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:

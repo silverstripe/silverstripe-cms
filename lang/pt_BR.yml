@@ -21,6 +21,7 @@ pt_BR:
     REDIRECTTOPAGE: 'Uma página no seu website'
     YOURPAGE: 'Página no seu website'
     FILE: Arquivo
+    has_one_LinkTo: 'Link para'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'Qualquer pessoa'
     ACCESSHEADER: 'Quem pode ver esta página?'
@@ -60,6 +61,8 @@ pt_BR:
     PAGELOCATION: 'Lugar da página'
     PLURALNAME: Páginas
     SINGULARNAME: Página
+    db_Content: Conteúdo
+    db_Title: Título
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Esta é uma página virtual'
     SINGULARNAME: 'Página virtual'

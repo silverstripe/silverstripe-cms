@@ -169,6 +169,7 @@ sl:
     SINGULARNAME: 'Preusmeritvena stran'
     YOURPAGE: 'Stran na tvojem spletnem mestu'
     FILE: Datoteka
+    has_one_LinkTo: 'Poveži na'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Nastavljena preusmeritev še nima določenega cilja.'
   SilverStripe\CMS\Model\SiteTree:
@@ -274,6 +275,9 @@ sl:
     many_many_BackLinkTracking: 'Spremljanje povezav "nazaj"'
     many_many_ImageTracking: 'Spremljanje slik'
     many_many_LinkTracking: 'Spremljanje povezav'
+    db_Content: Vsebina
+    db_Title: Naziv
+    db_URLSegment: 'Naslov URL'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tip

@@ -41,6 +41,7 @@ zh_TW:
     REDIRECTTOPAGE: 在您網站上的一個網頁
     YOURPAGE: 在您網站上的網頁
     FILE: 檔案
+    has_one_LinkTo: 連結至
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 所有人
     ACCESSHEADER: 誰可以瀏覽這頁？
@@ -102,6 +103,8 @@ zh_TW:
     NOTPUBLISHED: 未發行的
     PLURALNAME: 網頁
     SINGULARNAME: 網頁
+    db_Content: 內容
+    db_Title: 標題
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 這是一個虛擬網頁
     DESCRIPTION: 顯示其他網頁的內容

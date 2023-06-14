@@ -7,6 +7,7 @@ ms:
     REDIRECTTOPAGE: 'Tambah halaman ke laman anda'
     YOURPAGE: 'Halaman di laman anda'
     FILE: Fail
+    has_one_LinkTo: 'Paut ke'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'Sesiapa sahaja'
     ACCESSHEADER: 'Siapa yang boleh melihat mukasurat ini?'
@@ -34,6 +35,7 @@ ms:
     TOPLEVEL: 'Kandungan Laman (Peringkat Atas)'
     has_one_Parent: 'Halaman Induk'
     SINGULARNAME: Halaman
+    db_Content: Kandungan
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Ini adalah mukasurat maya'
     SINGULARNAME: 'Halaman Maya'

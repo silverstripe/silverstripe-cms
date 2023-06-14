@@ -106,6 +106,8 @@ el:
     NOTPUBLISHED: 'Δεν έχει δημοσιευθεί'
     PLURALNAME: Σελίδες
     SINGULARNAME: Σελίδα
+    db_Content: Περιεχόμενο
+    db_Title: Τίτλος
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Συνδεδεμένη σελίδα'
     EditLink: επεξεργασία

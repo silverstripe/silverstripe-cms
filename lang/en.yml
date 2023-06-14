@@ -167,6 +167,10 @@ en:
     REDIRECTTOPAGE: 'A page on your website'
     SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Page on your website'
+    db_ExternalURL: 'External URL'
+    db_RedirectionType: 'Redirection type'
+    has_one_LinkTo: 'Link to'
+    has_one_LinkToFile: 'Link to file'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'A redirector page has been set up without anywhere to redirect to.'
   SilverStripe\CMS\Model\SiteTree:
@@ -271,6 +275,43 @@ en:
     many_many_BackLinkTracking: 'Backlink Tracking'
     many_many_ImageTracking: 'Image Tracking'
     many_many_LinkTracking: 'Link Tracking'
+    belongs_many_many_ContentReviewGroups: 'Content review groups'
+    belongs_many_many_ContentReviewUsers: 'Content review users'
+    belongs_many_many_RelationFieldsTestPages: 'Relation fields test pages'
+    db_CanEditType: 'Can edit type'
+    db_CanViewType: 'Can view type'
+    db_Content: Content
+    db_ContentReviewType: 'Content review type'
+    db_ExtraMeta: 'Extra meta'
+    db_HasBrokenFile: 'Has broken file'
+    db_HasBrokenLink: 'Has broken link'
+    db_LastEditedByName: 'Last edited by name'
+    db_MenuTitle: 'Menu title'
+    db_MetaDescription: 'Meta description'
+    db_NextReviewDate: 'Next review date'
+    db_OwnerNames: 'Owner names'
+    db_PublicHistory: 'Public history'
+    db_ReportClass: 'Report class'
+    db_ReviewPeriodDays: 'Review period days'
+    db_ShareTokenSalt: 'Share token salt'
+    db_ShowInMenus: 'Show in menus'
+    db_ShowInSearch: 'Show in search'
+    db_ShowPageUtilities: 'Show page utilities'
+    db_Sort: Sort
+    db_Title: Title
+    db_URLSegment: 'URL segment'
+    db_Version: Version
+    has_many_BackLinks: 'Back links'
+    has_many_ReviewLogs: 'Review logs'
+    has_many_ShareTokens: 'Share tokens'
+    has_many_VirtualPages: 'Virtual pages'
+    has_one_RelationFieldsTestPage: 'Relation fields test page'
+    has_one_Subsite: Subsite
+    has_one_WorkflowDefinition: 'Workflow definition'
+    many_many_AdditionalWorkflowDefinitions: 'Additional workflow definitions'
+    many_many_CrossSubsiteLinkTracking: 'Cross subsite link tracking'
+    many_many_EditorGroups: 'Editor groups'
+    many_many_ViewerGroups: 'Viewer groups'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Type
@@ -283,6 +324,8 @@ en:
       one: 'A Site Tree Link'
       other: '{count} Site Tree Links'
     SINGULARNAME: 'Site Tree Link'
+    has_one_Linked: Linked
+    has_one_Parent: Parent
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Linked Page'
     DESCRIPTION: 'Displays the content of another page'
@@ -295,6 +338,8 @@ en:
       other: '{count} Base Pages'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtual Page'
+    db_VersionID: 'Version ID'
+    has_one_CopyContentFrom: 'Copy content from'
   SilverStripe\CMS\Reports\BrokenFilesReport:
     BROKENFILES: 'Pages with broken files'
     BrokenLinksGroupTitle: 'Broken links reports'
@@ -353,3 +398,5 @@ en:
     OPERATION_REMOVE: 'Remove selected from all stages (WARNING: Will destroy all selected pages from both stage and live)'
     SELECTALL: 'select all'
     UNSELECTALL: 'unselect all'
+  SilverStripe\CMS\Model\SiteTreeLinkTracking:
+    many_many_LinkTracking: 'Link tracking'

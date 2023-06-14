@@ -6,6 +6,8 @@ sr@latin:
     Content: Sadržaj
     HTMLEDITORTITLE: Sadržaj
     SINGULARNAME: Stranica
+    db_Content: Sadržaj
+    db_Title: Naslov
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Pristup ''{title}'' sekciji'
     CANT_REORGANISE: 'Nemate pravo da menjate stranice vršnog nivoa. Vaše izmene nisu sačuvane.'
@@ -39,6 +41,7 @@ sr@latin:
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Datoteka
     REDIRECTTOEXTERNAL: 'drugi vebsajt'
+    has_one_LinkTo: 'Poveži na'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: 'Bilo koji'
     ColumnURL: URL
@@ -46,3 +49,5 @@ sr@latin:
     FILTERLABELTEXT: Pretraga
     GO: Idi
     SEARCH: Pretraga
+  SilverStripe\CMS\Model\SiteTreeLink:
+    has_one_Parent: Roditelj

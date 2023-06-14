@@ -63,6 +63,7 @@ gl_ES:
     REDIRECTTOPAGE: 'Unha páxina no teu sitio web'
     YOURPAGE: 'Páxina no teu sitio web'
     FILE: Ficheiro
+    has_one_LinkTo: 'Ligar a'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Ninguén
     ACCESSHEADER: 'Quen pode ver esta páxina?'
@@ -118,6 +119,8 @@ gl_ES:
     NOTPUBLISHED: 'Non publicado'
     PLURALNAME: Páxinas
     SINGULARNAME: Páxina
+    db_Content: Contido
+    db_Title: Título
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Esta é unha páxina virtual'
     DESCRIPTION: 'Visualizar o contido doutra páxina'

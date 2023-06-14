@@ -19,6 +19,7 @@ ca:
     REDIRECTTOPAGE: 'Una pàgina del vostre lloc web'
     YOURPAGE: 'Pàgina del vostre lloc web'
     FILE: Fitxer
+    has_one_LinkTo: 'Enllaça a'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Qualsevol
     ACCESSHEADER: 'Qui pot veure aquesta pàgina al meu lloc web?'
@@ -54,6 +55,8 @@ ca:
     many_many_ImageTracking: 'Seguiment d''imatges'
     many_many_LinkTracking: 'Seguiment d''enllaços'
     SINGULARNAME: Pàgina
+    db_Content: Contingut
+    db_Title: Títol
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Aquesta és una pàgina virtual'
     SINGULARNAME: 'Pàgina virtual'
