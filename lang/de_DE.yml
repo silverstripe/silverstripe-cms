@@ -7,6 +7,7 @@ de_DE:
     DESCRIPTION: 'Fügt ein anpassbares Formular hinzu'
     PLURALNAME: Seiten
     SINGULARNAME: Seite
+    db_Title: Titel
   SilverStripe\CMS\Search\SearchForm:
     SEARCH: Suche
     SearchResults: Suchergebnisse

@@ -87,6 +87,7 @@ ja_JP:
     REDIRECTTOPAGE: 貴方のウェブサイトを表示します
     SINGULARNAME: リダイレクトページ
     YOURPAGE: 貴方のウェブサイトを表示します
+    has_one_LinkTo: リンクする
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 転送URLを含むページには、転送先がない状態で設定されています。
   SilverStripe\CMS\Model\SiteTree:
@@ -149,6 +150,8 @@ ja_JP:
     many_many_BackLinkTracking: リンク元を追跡
     many_many_ImageTracking: 画像へのリンクを追跡
     many_many_LinkTracking: リンクを追跡
+    db_Content: 内容
+    db_Title: タイトル
   SilverStripe\CMS\Model\VirtualPage:
     DESCRIPTION: 別のページのコンテンツを表示
     HEADER: これがバーチャルページです

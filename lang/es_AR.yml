@@ -32,6 +32,7 @@ es_AR:
     REDIRECTTOPAGE: 'Una página en tu sitio web'
     YOURPAGE: 'Página en tu sitio web'
     FILE: Archivo
+    has_one_LinkTo: 'Enlazar a'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Cualquiera
     ACCESSHEADER: '¿Quién puede ver ésta página?'
@@ -82,6 +83,8 @@ es_AR:
     many_many_LinkTracking: 'Seguimiento de Enlace'
     BUTTONSAVEPUBLISH: Publicar
     SINGULARNAME: Página
+    db_Content: Contenido
+    db_Title: Título
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Esta es una página virtual'
     SINGULARNAME: 'Página Virtual'

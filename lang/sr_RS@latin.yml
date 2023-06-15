@@ -103,6 +103,7 @@ sr_RS@latin:
     YOURPAGE: 'Stranica na Vašem veb sajtu'
     FILE: Datoteka
     SINGULARNAME: 'Stranica za preusmeravanje'
+    has_one_LinkTo: 'Poveži na'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Svako
     ACCESSHEADER: 'Ko može da vidi ovu stranicu?'
@@ -185,6 +186,8 @@ sr_RS@latin:
     ONLIVEONLYSHORTHELP: 'Stranice je objavljena, ali je izbrisana iz nacrta'
     PLURALNAME: Stranice
     SINGULARNAME: Stranica
+    db_Content: Sadržaj
+    db_Title: Naslov
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Povezana stranica'
     EditLink: izmeni

@@ -160,6 +160,7 @@ bg:
     SINGULARNAME: 'Пренасочваща страница'
     YOURPAGE: 'Страница на вашият уебсайт'
     FILE: Файл
+    has_one_LinkTo: 'Препратка към'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Създадена е страница за пренасочване без да пренасочва на никъде.'
   SilverStripe\CMS\Model\SiteTree:
@@ -256,6 +257,8 @@ bg:
     many_many_ImageTracking: 'Следене на снимките'
     many_many_LinkTracking: 'Следене на връзките'
     BUTTONSAVEPUBLISH: Публикувай
+    db_Content: Съдържание
+    db_Title: Заглавие
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Тип

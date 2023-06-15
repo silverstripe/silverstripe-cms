@@ -21,6 +21,7 @@ bs:
     REDIRECTTOPAGE: 'Na stavku na Vašoj web stranici'
     YOURPAGE: 'Stavku na Vašoj web stranici'
     FILE: Datoteka
+    has_one_LinkTo: 'Poveži sa'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'Svi korisnici'
     ACCESSHEADER: 'Ko može pregledati ovu stavku na mojoj stranici?'
@@ -47,6 +48,8 @@ bs:
     TOPLEVEL: 'Sadržaj stranice (Glavni nivo)'
     Content: Sadržaj
     SINGULARNAME: Stranica
+    db_Content: Sadržaj
+    db_Title: Naslov
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Ovo je virtualna stranica'
   SilverStripe\CMS\Reports\BrokenLinksReport:

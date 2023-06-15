@@ -93,6 +93,7 @@ hu:
     YOURPAGE: 'Oldal a weblapodon'
     FILE: Fájl
     SINGULARNAME: 'Átirányító oldal'
+    has_one_LinkTo: 'Linkelés ide:'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Mindenki
     ACCESSHEADER: 'Ki láthatja ezt az oldalt a weblapon?'
@@ -163,6 +164,8 @@ hu:
     ONLIVEONLYSHORTHELP: 'Az oldal publikálva lett, de törölve lett a vázlatok közül'
     PLURALNAME: Oldalak
     SINGULARNAME: Oldal
+    db_Content: Tartalom
+    db_Title: Cím
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Hivatkozott oldal'
     EditLink: szerkeszt
@@ -228,3 +231,5 @@ hu:
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'Tartalommal kapcsolatos riportok'
     LAST2WEEKS: 'Elmúlt 2 héten belül szerkesztett oldalak'
+  SilverStripe\CMS\Model\SiteTreeLink:
+    has_one_Parent: Szülő

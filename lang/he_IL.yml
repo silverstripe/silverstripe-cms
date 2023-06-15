@@ -156,6 +156,8 @@ he_IL:
     ONLIVEONLYSHORTHELP: 'העמוד לא פורסם, אך נמחק מהטיוטות'
     PLURALNAME: עמודים
     SINGULARNAME: עמוד
+    db_Content: תוכן
+    db_Title: כותרת
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'זהו עמוד וירטואלי'
     PageTypNotAllowedOnRoot: 'סוג העמוד המקורי „{type}“ אינו מורשה ברמת העל של עמוד וירטואלי זה'

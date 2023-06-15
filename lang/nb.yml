@@ -111,6 +111,7 @@ nb:
     YOURPAGE: 'Side på ditt nettsted'
     FILE: Fil
     SINGULARNAME: Omdirigeringsside
+    has_one_LinkTo: 'Lenk til'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Alle
     ACCESSHEADER: 'Hvem kan se denne siden?'
@@ -195,6 +196,8 @@ nb:
     ONLIVEONLYSHORTHELP: 'Siden er publisert, men har blitt slettet fra utkastet.'
     PLURALNAME: Sider
     SINGULARNAME: Side
+    db_Content: Innhold
+    db_Title: Tittel
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Lenket side'
     EditLink: rediger

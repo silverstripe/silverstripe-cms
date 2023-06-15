@@ -138,6 +138,7 @@ fa_IR:
     SINGULARNAME: 'صفحه هدایت‌گر'
     YOURPAGE: 'برگ روی تارگاه شما'
     FILE: فايل
+    has_one_LinkTo: 'لینک به'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: همه
     ACCESSHEADER: 'چه کسی بتواند این صفحه را مشاهده کنید ؟'
@@ -219,6 +220,10 @@ fa_IR:
     ONLIVEONLYSHORTHELP: 'صفحه منتشر شده، اما از پیش‌نویس حذف گردیده است'
     PLURALNAME: صفحات
     SINGULARNAME: صفحه
+    db_Content: محتوا
+    db_Sort: مرتب‌سازی
+    db_Title: عنوان
+    has_one_Subsite: 'زیر سایت'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'صفحه ارجاعی'
     DESCRIPTION: 'نمایش‌دهنده‌ی محتوای صفحه‌ی دیگر'
@@ -295,3 +300,5 @@ fa_IR:
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'گزارشات محتوا'
     LAST2WEEKS: 'صفحات ویرایش شده در 2 هفته گذشته'
+  SilverStripe\CMS\Model\SiteTreeLink:
+    has_one_Parent: والد

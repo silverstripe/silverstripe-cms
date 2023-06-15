@@ -170,6 +170,7 @@ pl:
     YOURPAGE: 'Strona na Twojej witrynie'
     FILE: Plik
     REDIRECTTOFILE: 'Plik na stronie'
+    has_one_LinkTo: 'Linkuj do'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Strona przekierowująca została ustawiona bez celu, do którego ma przekierowywać.'
   SilverStripe\CMS\Model\SiteTree:
@@ -275,6 +276,9 @@ pl:
     UNTITLED: 'Nowa {pagetype}'
     URLSegment: URL
     UntitledDependentObject: 'Nowa {pagetype}'
+    db_Content: Zawartość
+    db_Title: Tytuł
+    db_URLSegment: URL
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: 'Rodzaj strony'

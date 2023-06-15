@@ -92,6 +92,7 @@ pt:
     YOURPAGE: 'Página no seu site'
     FILE: Ficheiro
     SINGULARNAME: 'A página redirecciona para uma que não existe'
+    has_one_LinkTo: 'Link para'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Todos
     ACCESSHEADER: 'Quem pode ver esta página no site?'
@@ -159,6 +160,8 @@ pt:
     ONLIVEONLYSHORTHELP: 'A página está publicada mas foi removida dos rascunhos'
     PLURALNAME: Páginas
     SINGULARNAME: Página
+    db_Content: Conteúdo
+    db_Title: Título
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Página associada'
     EditLink: editar

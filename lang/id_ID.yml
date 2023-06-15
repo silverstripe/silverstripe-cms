@@ -5,6 +5,8 @@ id_ID:
     Content: Konten
     HTMLEDITORTITLE: Konten
     SINGULARNAME: Laman
+    db_Content: Konten
+    db_Title: Judul
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Akses ke bagian ''{title}'''
     ARCHIVE: Arsip
@@ -41,6 +43,7 @@ id_ID:
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Berkas
     REDIRECTTOEXTERNAL: 'Situs lain'
+    has_one_LinkTo: 'Tautan ke'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Semua
     ColumnURL: URL

@@ -19,6 +19,7 @@ lv:
     REDIRECTTOPAGE: 'Tīmekļa vietnes lapu'
     YOURPAGE: 'Tīmekļa vietnes lapa'
     FILE: Fails
+    has_one_LinkTo: 'Saite uz'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Ikviens
     ACCESSHEADER: 'Kas drīkst aplūkot šo lapu?'
@@ -73,6 +74,8 @@ lv:
     many_many_ImageTracking: 'Attēlu izsekošana'
     many_many_LinkTracking: 'Saišu izsekošana'
     SINGULARNAME: Lapa
+    db_Content: Saturs
+    db_Title: Virsraksts
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Šī ir virtuāla lapa'
     SINGULARNAME: 'Virtuālās lapa'

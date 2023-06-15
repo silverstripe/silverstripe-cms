@@ -159,6 +159,7 @@ es_MX:
     SINGULARNAME: 'Página de Redirección'
     YOURPAGE: 'Página en tu sitio web'
     FILE: Archivo
+    has_one_LinkTo: 'Enlazar a'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'La página de redirección ha sido configurada sin ningún destino.'
   SilverStripe\CMS\Model\SiteTree:
@@ -231,6 +232,8 @@ es_MX:
     BUTTONSAVEPUBLISH: Publicar
     NOTPUBLISHED: 'No publicada'
     SINGULARNAME: Página
+    db_Content: Contenido
+    db_Title: Título
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tipo

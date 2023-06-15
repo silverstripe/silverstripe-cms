@@ -72,6 +72,7 @@ uk:
     REDIRECTTOPAGE: 'Сторінку на Вашому сайті'
     YOURPAGE: 'Сторінки на Вашому сайті'
     FILE: Файл
+    has_one_LinkTo: 'Посилатися на'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Будь-хто
     ACCESSHEADER: 'Хто може переглядати цю сторінку?'
@@ -140,6 +141,8 @@ uk:
     ONLIVEONLYSHORTHELP: 'Сторінка опублікована, але видалена з чорнового сайту'
     PLURALNAME: Сторінки
     SINGULARNAME: Сторінка
+    db_Content: Вміст
+    db_Title: Назва
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Це віртуальна сторінка'
     PageTypNotAllowedOnRoot: 'Тип сторінки "{type}" не допускається на кореневому рівні для цієї віртуальної сторінки'

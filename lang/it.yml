@@ -169,6 +169,7 @@ it:
     YOURPAGE: 'Pagina sul tuo sito web'
     FILE: File
     REDIRECTTOFILE: 'Un file sul tuo sito web'
+    has_one_LinkTo: 'Collega a'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Una pagina di redirect è stata impostata senza alcuna destinazione'
   SilverStripe\CMS\Model\SiteTree:
@@ -273,6 +274,11 @@ it:
     many_many_BackLinkTracking: 'Monitoriaggio link di ritorno'
     many_many_ImageTracking: 'Monitoraggio immagine'
     many_many_LinkTracking: 'Monitoraggio link'
+    db_Content: Contenuto
+    db_Sort: Ordine
+    db_Title: Titolo
+    db_URLSegment: 'Segmento URL'
+    has_one_Subsite: Sottosito
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
@@ -286,6 +292,7 @@ it:
       other: '{count} Collegamenti all''albero del Sito'
       many: '{count} Collegamenti all''albero del Sito'
     SINGULARNAME: 'Link dell''albero del sito'
+    has_one_Parent: Parente
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Pagina collegata'
     DESCRIPTION: 'Mostra il contenuto di un''altra pagina'

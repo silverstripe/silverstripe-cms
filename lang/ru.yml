@@ -163,6 +163,7 @@ ru:
     SINGULARNAME: 'Страница перенаправления'
     YOURPAGE: 'Страница вашего сайта'
     FILE: Файл
+    has_one_LinkTo: 'Ссылка на'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Все
     ACCESSHEADER: 'Кто может просматривать эту страницу на моем сайте?'
@@ -260,6 +261,10 @@ ru:
     many_many_ImageTracking: 'Отслеживание изображений'
     many_many_LinkTracking: 'Отслеживание ссылок'
     BUTTONSAVEPUBLISH: Опубликовать
+    db_Content: Содержимое
+    db_Sort: Сортировать
+    db_Title: Заголовок
+    has_one_Subsite: Подсайт
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: №
     TITLE_TYPE: Тип
@@ -339,3 +344,5 @@ ru:
     Title: 'Опубликованные страницы'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Страница перенаправления установлена без указания места перенаправления.'
+  SilverStripe\CMS\Model\SiteTreeLink:
+    has_one_Parent: Родительская
