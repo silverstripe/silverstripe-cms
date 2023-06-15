@@ -173,6 +173,7 @@ en:
     ACCESSANYONE: Anyone
     ACCESSHEADER: 'Who can view this page?'
     ACCESSLOGGEDIN: 'Logged-in users'
+    ACCESSONLYMEMBERS: 'Only these users (choose from list)'
     ACCESSONLYTHESE: 'Only these groups (choose from list)'
     ADDEDTODRAFTHELP: 'Page has not been published yet'
     ADDEDTODRAFTSHORT: Draft
@@ -200,6 +201,7 @@ en:
     DependtPageColumnLinkType: 'Link type'
     EDITHEADER: 'Who can edit this page?'
     EDITORGROUPS: 'Editor Groups'
+    EDITORMEMBERS: 'Editor Users'
     EDITOR_GROUPS_FIELD_DESC: 'Groups with global edit permissions: {groupList}'
     EDIT_ALL_DESCRIPTION: 'Edit any page'
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
@@ -257,6 +259,7 @@ en:
     URLSegment: 'URL segment'
     UntitledDependentObject: 'Untitled {instanceType}'
     VIEWERGROUPS: 'Viewer Groups'
+    VIEWERMEMBERS: 'Viewer Users'
     VIEWER_GROUPS_FIELD_DESC: 'Groups with global view permissions: {groupList}'
     VIEW_ALL_DESCRIPTION: 'View any page'
     VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
