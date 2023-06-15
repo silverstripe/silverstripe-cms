@@ -150,6 +150,7 @@ sk:
     SINGULARNAME: 'Presmerovacia stránka'
     YOURPAGE: 'Stránka na vašom webe'
     FILE: Súbor
+    has_one_LinkTo: 'Odkaz na'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Ktokoľvek
     ACCESSHEADER: 'Kto môže prezerať túto stránku?'
@@ -240,6 +241,9 @@ sk:
     many_many_ImageTracking: 'Záznamy o obrázkoch'
     many_many_LinkTracking: 'Záznamy o odkazoch'
     BUTTONSAVEPUBLISH: Zverejniť
+    db_Content: Obsah
+    db_Sort: Usporiadanie
+    db_Title: Názov
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Typ
@@ -318,3 +322,5 @@ sk:
     LINKDESCR: 'Popis odkazu'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Stránka na presmerovanie bola nastavená bez cieľa.'
+  SilverStripe\CMS\Model\SiteTreeLink:
+    has_one_Parent: 'Komentovaný príspevok'

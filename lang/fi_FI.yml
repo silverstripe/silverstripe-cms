@@ -259,6 +259,8 @@ fi_FI:
     many_many_BackLinkTracking: 'Käänteinen seuranta'
     many_many_ImageTracking: 'Kuvan seuranta'
     many_many_LinkTracking: 'Linkin seuranta'
+    db_Content: Sisältö
+    db_Title: Otsikko
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tyyppi

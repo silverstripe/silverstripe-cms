@@ -164,6 +164,7 @@ sv:
     SINGULARNAME: Omdirigeringssida
     YOURPAGE: 'Sida på din sajt'
     FILE: Fil
+    has_one_LinkTo: 'Länka till'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'En omdirigeringssida har skapats utan att ha något mål.'
   SilverStripe\CMS\Model\SiteTree:
@@ -261,6 +262,9 @@ sv:
     many_many_ImageTracking: 'Spåra bild'
     many_many_LinkTracking: 'Spåra länk'
     BUTTONSAVEPUBLISH: Publicera
+    db_Content: Innehåll
+    db_Sort: Sortera
+    db_Title: Titel
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Typ
@@ -339,3 +343,4 @@ sv:
   SilverStripe\CMS\Model\SiteTreeLink:
     PLURALNAME: Sidträds-länkar
     SINGULARNAME: Sidträds-länk
+    has_one_Parent: Förälder

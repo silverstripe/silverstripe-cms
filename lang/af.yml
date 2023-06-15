@@ -49,6 +49,8 @@ af:
     PAGELOCATION: 'Bladsy plek'
     PLURALNAME: CMSPagesController
     SINGULARNAME: Bladsy
+    db_Content: Inhoud
+    db_Title: Tietel
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Hierdie is ''n virtuele bladsy'
     SINGULARNAME: 'Virtuele Bladsy'
@@ -72,6 +74,7 @@ af:
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Lêer
     REDIRECTTOEXTERNAL: 'Ander webwerf'
+    has_one_LinkTo: 'Koppel aan'
   SilverStripe\CMS\Reports\BrokenFilesReport:
     BROKENFILES: 'Bladsye met gebreekte lêers'
     BrokenLinksGroupTitle: 'Gebreekte skakels verslae'

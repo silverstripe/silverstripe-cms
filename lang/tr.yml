@@ -46,6 +46,7 @@ tr:
     REDIRECTTOPAGE: 'Web sitenizdeki bir sayfa'
     YOURPAGE: 'Web sitenizdeki bir sayfa'
     FILE: Dosya
+    has_one_LinkTo: 'Bağlantı oluştur'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Herkes
     ACCESSHEADER: 'Bu sayfayı kimler görüntüleyebilir?'
@@ -97,6 +98,8 @@ tr:
     PAGELOCATION: 'Sayfa konumu'
     PLURALNAME: Sayfalar
     SINGULARNAME: Sayfa
+    db_Content: İçerik
+    db_Title: Başlık
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Bu sanal bir sayfadır'
     SINGULARNAME: 'Sanal Sayfa'

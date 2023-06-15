@@ -151,6 +151,7 @@ cs:
     SINGULARNAME: 'Přesměrovací stránka'
     YOURPAGE: 'Stránka na vašem webu'
     FILE: Soubor
+    has_one_LinkTo: 'Odkaz na'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Kdokoliv
     ACCESSHEADER: 'Kdo může tuto stránku prohlížet?'
@@ -241,6 +242,8 @@ cs:
     many_many_ImageTracking: 'Stopování obrázku'
     many_many_LinkTracking: 'Stopování odkazu'
     BUTTONSAVEPUBLISH: Zveřejnit
+    db_Content: Obsah
+    db_Title: Název
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Typ

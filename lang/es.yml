@@ -159,6 +159,7 @@ es:
     SINGULARNAME: 'Página de redirección'
     YOURPAGE: 'Página en su sitio web'
     FILE: Archivo
+    has_one_LinkTo: 'Enlazar a'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Una página de redirección a sido creada sin ningún sitio al cual redireccionar.'
   SilverStripe\CMS\Model\SiteTree:
@@ -255,6 +256,9 @@ es:
     BUTTONSAVEPUBLISH: Publicar
     DEFAULTABOUTCONTENT: '<p>Puede llenar esta página con su propio contenido, o eliminarla y crear sus propias páginas.</p>'
     DEFAULTCONTACTCONTENT: '<p>Puede llenar esta página con su propio contenido, o eliminarla y crear sus propias páginas.</p>'
+    db_Content: Contenido
+    db_Sort: Ordenar
+    db_Title: Título
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
@@ -333,3 +337,4 @@ es:
   SilverStripe\CMS\Model\SiteTreeLink:
     PLURALNAME: 'Enlaces del árbol del sitio'
     SINGULARNAME: 'Enlace del árbol del sitio'
+    has_one_Parent: Padre

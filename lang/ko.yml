@@ -179,6 +179,8 @@ ko:
     ONLIVEONLYSHORTHELP: '페이지가 공개되어 있지만 초안에서 삭제됩니다'
     PLURALNAME: 페이지
     SINGULARNAME: 페이지
+    db_Content: 내용
+    db_Title: 제목
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: '링크된 페이지'
     EditLink: 편집

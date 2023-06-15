@@ -16,6 +16,7 @@ fo:
     REDIRECTTOPAGE: 'Ein síða á tínari heimasíðu'
     YOURPAGE: 'Síða á tínari heimasíðu'
     FILE: Fíla
+    has_one_LinkTo: 'Leinka til'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Øll
     ACCESSHEADER: 'Hvør skal kunna síggja hesa síðuna?'
@@ -43,6 +44,8 @@ fo:
     TOPLEVEL: 'Heimasíðu innihald (Fyrsta støði)'
     has_one_Parent: Yvirsíða
     SINGULARNAME: Síða
+    db_Content: Innihald
+    db_Title: Heiti
   SilverStripe\CMS\Search\SearchForm:
     GO: Víðari
     SEARCH: Leita

@@ -16,6 +16,7 @@ is:
     REDIRECTTOPAGE: 'Síða á heimasíðunni þinni'
     YOURPAGE: 'Síða á heimasíðunni þinni'
     FILE: Skrá
+    has_one_LinkTo: 'Hlekkur í'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Allir
     ACCESSHEADER: 'Hver má skoða þessa síðu á heimasíðunni minni?'
@@ -47,6 +48,8 @@ is:
     PARENTTYPE: 'Staðsetning síðu'
     PLURALNAME: Síður
     SINGULARNAME: Síða
+    db_Content: Efni
+    db_Title: Titill
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Þetta er sýndarsíða'
     SINGULARNAME: 'Sýndar síða'

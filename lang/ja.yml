@@ -105,6 +105,7 @@ ja:
     YOURPAGE: 貴方のウェブサイトを表示します
     FILE: ファイル
     SINGULARNAME: リダイレクトページ
+    has_one_LinkTo: リンクする
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 誰でも
     ACCESSHEADER: このページを閲覧できる人
@@ -187,6 +188,9 @@ ja:
     ONLIVEONLYSHORTHELP: ページが公開されていますが、下書きから削除されています
     PLURALNAME: ページ
     SINGULARNAME: ページ
+    db_Content: 内容
+    db_Title: タイトル
+    has_one_Subsite: サブサイト
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: リンクされたページ
     EditLink: 編集

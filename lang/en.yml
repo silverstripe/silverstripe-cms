@@ -322,8 +322,6 @@ en:
     SINGULARNAME: 'Site Tree Link'
     has_one_Linked: Linked
     has_one_Parent: Parent
-  SilverStripe\CMS\Model\SiteTreeLinkTracking:
-    many_many_LinkTracking: 'Link tracking'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Linked Page'
     DESCRIPTION: 'Displays the content of another page'
@@ -396,3 +394,5 @@ en:
     OPERATION_REMOVE: 'Remove selected from all stages (WARNING: Will destroy all selected pages from both stage and live)'
     SELECTALL: 'select all'
     UNSELECTALL: 'unselect all'
+  SilverStripe\CMS\Model\SiteTreeLinkTracking:
+    many_many_LinkTracking: 'Link tracking'
