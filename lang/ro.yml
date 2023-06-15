@@ -98,6 +98,7 @@ ro:
     YOURPAGE: 'Pagină de pe website-ul dumneavoastră'
     FILE: Fisier
     SINGULARNAME: 'Pagină referitoare'
+    has_one_LinkTo: 'Link la'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Oricine
     ACCESSHEADER: 'Cine poate vizualiza această pagină pe site-ul meu?'
@@ -180,6 +181,8 @@ ro:
     ONLIVEONLYSHORTHELP: 'Pagina este publicată, dar a fost ștearsă din ciornă'
     PLURALNAME: Pagini
     SINGULARNAME: Pagină
+    db_Content: Continut
+    db_Title: Titlu
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Pagina referință'
     EditLink: editare
@@ -249,3 +252,5 @@ ro:
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'Rapoarte conținut'
     LAST2WEEKS: 'Pagini editate în ultimele 2 săptămâni'
+  SilverStripe\CMS\Model\SiteTreeLink:
+    has_one_Parent: Părinte

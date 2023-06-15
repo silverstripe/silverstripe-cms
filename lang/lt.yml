@@ -119,6 +119,7 @@ lt:
     FILE: Byla
     PLURALNAME: 'Baziniai puslapiai'
     SINGULARNAME: 'Nukreipimo puslapis'
+    has_one_LinkTo: 'Nuoroda į'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'Bet kas'
     ACCESSHEADER: 'Kas gali matyti šį puslapį?'
@@ -203,6 +204,8 @@ lt:
     ONLIVEONLYSHORTHELP: 'Puslapis buvo publikuotas, tačiau buvo ištrintas iš juodraščių.'
     PLURALNAME: Puslapiai
     SINGULARNAME: Puslapis
+    db_Content: Turinys
+    db_Title: Pavadinimas
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Prijungtas puslapis'
     EditLink: redaguoti
@@ -285,3 +288,5 @@ lt:
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'Turinio ataskaitos'
     LAST2WEEKS: 'Paskutines 2 savaites keisti puslapiai'
+  SilverStripe\CMS\Model\SiteTreeLink:
+    has_one_Parent: Priklauso

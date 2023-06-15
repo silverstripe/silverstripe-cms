@@ -274,6 +274,10 @@ pl_PL:
     many_many_BackLinkTracking: 'Śledzenie backlinków'
     many_many_ImageTracking: 'Śledzenie obrazków'
     many_many_LinkTracking: 'Śledzenie linków'
+    db_Content: Zawartość
+    db_Title: Tytuł
+    db_URLSegment: URL
+    has_one_Subsite: Podwitryna
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Typ
@@ -288,6 +292,7 @@ pl_PL:
       many: 'Stron {count}'
       other: 'Strony {count}'
     SINGULARNAME: Strony
+    has_one_Parent: Rodzic
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Podlinkowanych stron'
     DESCRIPTION: 'Wyświetla zawartość innej strony'

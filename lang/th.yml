@@ -82,6 +82,7 @@ th:
     YOURPAGE: หน้าเว็บที่อยู่บนเว็บไซต์ของคุณ
     FILE: ไฟล์
     SINGULARNAME: หน้าเว็บเปลี่ยนเส้นทาง
+    has_one_LinkTo: ลิงค์ไปที่
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: ทุกคน
     ACCESSHEADER: 'ใครบ้างที่สามารถเปิดดูหน้านี้ได้?'
@@ -153,6 +154,8 @@ th:
     ONLIVEONLYSHORTHELP: 'หน้าเว็บถูกเผยแพร่แล้ว แต่ถูกลบออกจากฉบับร่างด้วยเช่นกัน'
     PLURALNAME: หน้า
     SINGULARNAME: หน้า
+    db_Content: เนื้อหา
+    db_Title: หัวเรื่อง
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: นี่เป็นหน้าเว็บจำลอง
     PageTypNotAllowedOnRoot: 'ชนิดของหน้าเว็บดั้งเดิม "{type}" ไม่ได้รับอนุญาตให้ใช้งานกับหน้าเว็บจำลองที่ตำแหน่ง root'

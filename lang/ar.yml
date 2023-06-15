@@ -127,6 +127,7 @@ ar:
     FILE: الملف
     PLURALNAME: 'الصفحات الأساسية'
     SINGULARNAME: 'معيد توجيه الصفحة'
+    has_one_LinkTo: 'رابط إلى'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: الجميع
     ACCESSHEADER: 'من يستطيع مشاهدة هذه الصفحة ؟'
@@ -209,6 +210,9 @@ ar:
     NOTPUBLISHED: 'غير منشورة'
     ONLIVEONLYSHORTHELP: 'تم نشر الصفحة، ولكن تم حذفها من المسودة'
     PLURALNAME: الصفحات
+    db_Content: المحتوى
+    db_Title: عنوان
+    has_one_Subsite: 'الموقع الفرعي'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_TYPE: النوع
   SilverStripe\CMS\Model\VirtualPage:
@@ -276,3 +280,5 @@ ar:
     ParameterLiveCheckbox: 'عرض الموقع'
   SilverStripe\CMS\Reports\EmptyPagesReport:
     ContentGroupTitle: 'تقاير المحتوى'
+  SilverStripe\CMS\Model\SiteTreeLink:
+    has_one_Parent: والد

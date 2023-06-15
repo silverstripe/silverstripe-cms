@@ -103,6 +103,7 @@ sr:
     YOURPAGE: 'Страница на Вашем веб сајту'
     FILE: Датотека
     SINGULARNAME: 'Страница за преусмеравање'
+    has_one_LinkTo: 'Повежи на'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Свако
     ACCESSHEADER: 'Ко може да види ову страницу?'
@@ -185,6 +186,8 @@ sr:
     ONLIVEONLYSHORTHELP: 'Странице је објављена, али је избрисана из нацрта'
     PLURALNAME: Странице
     SINGULARNAME: Страница
+    db_Content: Садржај
+    db_Title: Наслов
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Повезана страница'
     EditLink: измени

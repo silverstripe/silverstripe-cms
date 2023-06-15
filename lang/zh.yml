@@ -125,6 +125,7 @@ zh:
     FILE: 文件
     PLURALNAME: 基本页面
     SINGULARNAME: 重定向页
+    has_one_LinkTo: 链接到
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 任何人
     ACCESSHEADER: 谁可以查看该页面？
@@ -207,6 +208,9 @@ zh:
     ONLIVEONLYSHORTHELP: 页面已发布，但是已从草稿中删除
     PLURALNAME: 页面
     SINGULARNAME: 页面
+    db_Content: 内容
+    db_Title: 题目
+    has_one_Subsite: 子网站
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 链接的页面
     EditLink: 编辑
@@ -274,3 +278,5 @@ zh:
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 内容报告
     LAST2WEEKS: 过去2周内编辑过的页面
+  SilverStripe\CMS\Model\SiteTreeLink:
+    has_one_Parent: 父
