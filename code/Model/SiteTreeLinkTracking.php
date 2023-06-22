@@ -116,13 +116,19 @@ class SiteTreeLinkTracking extends DataExtension
         $allFields = DataObject::getSchema()->fieldSpecs($this->owner);
         $linkedPages = [];
         $anyBroken = false;
+        $hasTrackedFields = false;
         foreach ($allFields as $field => $fieldSpec) {
             $fieldObj = $this->owner->dbObject($field);
             if ($fieldObj instanceof DBHTMLText) {
+                $hasTrackedFields = true;
                 // Merge links in this field with global list.
                 $linksInField = $this->trackLinksInField($field, $anyBroken);
                 $linkedPages = array_merge($linkedPages, $linksInField);
             }
+        }
+
+        if (!$hasTrackedFields) {
+            return;
         }
 
         // Soft support for HasBrokenLink db field (e.g. SiteTree)
