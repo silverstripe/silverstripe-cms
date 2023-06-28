@@ -88,11 +88,11 @@ const config = {
         versions: {
           ...versions,
           goToPage(page) {
-           refetch({
+            refetch({
               offset: ((page || 1) - 1) * limit,
               limit,
               page_id: recordId,
-           });
+            });
           }
         },
       },

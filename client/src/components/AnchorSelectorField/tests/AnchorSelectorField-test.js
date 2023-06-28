@@ -1,14 +1,14 @@
 /* global jest, test, describe, beforeEach, it, expect, setTimeout */
 
 import React from 'react';
-import { Component as AnchorSelectorField } from '../AnchorSelectorField';
 import anchorSelectorStates from 'state/anchorSelector/AnchorSelectorStates';
 import { render, screen } from '@testing-library/react';
+import { Component as AnchorSelectorField } from '../AnchorSelectorField';
 
 jest.mock('isomorphic-fetch', () =>
   () => Promise.resolve({
     json: () => ['anchor3', 'anchor4'],
-}));
+  }));
 jest.mock('i18n');
 
 function makeProps(obj = {}) {
@@ -50,7 +50,7 @@ test('AnchorSelectorField componentDidMount() Loads dirty selectors', async () =
 
 test('AnchorSelectorField Merges value with page anchors', async () => {
   const beginUpdating = jest.fn();
-  const { container } = render(<AnchorSelectorField {...makeProps({
+  render(<AnchorSelectorField {...makeProps({
     loadingState: anchorSelectorStates.DIRTY,
     actions: {
       anchorSelector: {
