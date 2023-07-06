@@ -35,6 +35,7 @@ use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldDataColumns;
 use SilverStripe\Forms\GridField\GridFieldLazyLoader;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+use SilverStripe\Forms\ListboxField;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\OptionsetField;
 use SilverStripe\Forms\Tab;
@@ -1187,6 +1188,14 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             return true;
         }
 
+        // check for specific users
+        if ($this->CanViewType === InheritedPermissions::ONLY_THESE_MEMBERS
+            && $member
+            && $this->ViewerMembers()->filter('ID', $member->ID)->count() > 0
+        ) {
+            return true;
+        }
+
         return false;
     }
 
@@ -2238,6 +2247,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         };
         $viewAllGroupsMap = $mapFn(Permission::get_groups_by_permission(['SITETREE_VIEW_ALL', 'ADMIN']));
         $editAllGroupsMap = $mapFn(Permission::get_groups_by_permission(['SITETREE_EDIT_ALL', 'ADMIN']));
+        $membersMap = Member::get()->map('ID', 'Name');
 
         $fields = new FieldList(
             $rootTab = new TabSet(
@@ -2269,6 +2279,11 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                         _t(__CLASS__.'.VIEWERGROUPS', "Viewer Groups"),
                         Group::class
                     ),
+                    $viewerMembersField = ListboxField::create(
+                        "ViewerMembers",
+                        _t(__CLASS__.'.VIEWERMEMBERS', "Viewer Users"),
+                        $membersMap,
+                    ),
                     $editorsOptionsField = new OptionsetField(
                         "CanEditType",
                         _t(__CLASS__.'.EDITHEADER', "Who can edit this page?")
@@ -2277,6 +2292,11 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                         "EditorGroups",
                         _t(__CLASS__.'.EDITORGROUPS', "Editor Groups"),
                         Group::class
+                    ),
+                    $editorMembersField = ListboxField::create(
+                        "EditorMembers",
+                        _t(__CLASS__.'.EDITORMEMBERS', "Editor Users"),
+                        $membersMap
                     )
                 )
             )
@@ -2317,6 +2337,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 __CLASS__.'.ACCESSONLYTHESE',
                 "Only these groups (choose from list)"
             ),
+            InheritedPermissions::ONLY_THESE_MEMBERS => _t(
+                __CLASS__.'.ACCESSONLYMEMBERS',
+                "Only these users (choose from list)"
+            ),
         ];
         $viewersOptionsField->setSource($viewersOptionsSource);
 
@@ -2343,17 +2367,27 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         if (!Permission::check('SITETREE_GRANT_ACCESS')) {
             $fields->makeFieldReadonly($viewersOptionsField);
-            if ($this->CanEditType === InheritedPermissions::ONLY_THESE_USERS) {
+            if ($this->CanViewType === InheritedPermissions::ONLY_THESE_USERS) {
                 $fields->makeFieldReadonly($viewerGroupsField);
+                $fields->removeByName('ViewerMembers');
+            } elseif ($this->CanViewType === InheritedPermissions::ONLY_THESE_MEMBERS) {
+                $fields->makeFieldReadonly($viewerMembersField);
+                $fields->removeByName('ViewerGroups');
             } else {
                 $fields->removeByName('ViewerGroups');
+                $fields->removeByName('ViewerMembers');
             }
 
             $fields->makeFieldReadonly($editorsOptionsField);
             if ($this->CanEditType === InheritedPermissions::ONLY_THESE_USERS) {
                 $fields->makeFieldReadonly($editorGroupsField);
+                $fields->removeByName('EditorMembers');
+            } elseif ($this->CanEditType === InheritedPermissions::ONLY_THESE_MEMBERS) {
+                $fields->makeFieldReadonly($editorMembersField);
+                $fields->removeByName('EditorGroups');
             } else {
                 $fields->removeByName('EditorGroups');
+                $fields->removeByName('EditorMembers');
             }
         }
 
