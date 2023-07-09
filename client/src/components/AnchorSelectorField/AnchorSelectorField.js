@@ -153,8 +153,8 @@ AnchorSelectorField.propTypes = {
   pageId: PropTypes.number,
   anchors: PropTypes.array,
   loadingState: PropTypes.oneOf(Object
-      .keys(anchorSelectorStates)
-      .map((key) => anchorSelectorStates[key])),
+    .keys(anchorSelectorStates)
+    .map((key) => anchorSelectorStates[key])),
   onLoadingError: PropTypes.func,
   data: PropTypes.shape({
     endpoint: PropTypes.string,
