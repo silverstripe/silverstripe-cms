@@ -187,7 +187,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         Requirements::javascript('silverstripe/cms: client/dist/js/bundle.js');
         Requirements::javascript('silverstripe/cms: client/dist/js/SilverStripeNavigator.js');
         Requirements::css('silverstripe/cms: client/dist/styles/bundle.css');
-        Requirements::customCSS($this->generatePageIconsCss(), self::PAGE_ICONS_ID);
 
         Requirements::add_i18n_javascript('silverstripe/cms: client/lang', false);
 
