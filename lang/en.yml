@@ -308,9 +308,11 @@ en:
     many_many_BackLinkTracking: 'Backlink Tracking'
     many_many_CrossSubsiteLinkTracking: 'Cross subsite link tracking'
     many_many_EditorGroups: 'Editor groups'
+    many_many_EditorMembers: 'Editor members'
     many_many_ImageTracking: 'Image Tracking'
     many_many_LinkTracking: 'Link Tracking'
     many_many_ViewerGroups: 'Viewer groups'
+    many_many_ViewerMembers: 'Viewer members'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Type
@@ -325,6 +327,8 @@ en:
     SINGULARNAME: 'Site Tree Link'
     has_one_Linked: Linked
     has_one_Parent: Parent
+  SilverStripe\CMS\Model\SiteTreeLinkTracking:
+    many_many_LinkTracking: 'Link tracking'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Linked Page'
     DESCRIPTION: 'Displays the content of another page'
@@ -397,5 +401,3 @@ en:
     OPERATION_REMOVE: 'Remove selected from all stages (WARNING: Will destroy all selected pages from both stage and live)'
     SELECTALL: 'select all'
     UNSELECTALL: 'unselect all'
-  SilverStripe\CMS\Model\SiteTreeLinkTracking:
-    many_many_LinkTracking: 'Link tracking'
