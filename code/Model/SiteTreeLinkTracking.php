@@ -127,6 +127,7 @@ class SiteTreeLinkTracking extends DataExtension
             }
         }
 
+        // We need a boolean flag instead of checking linkedPages because it can be empty when pages are removed
         if (!$hasTrackedFields) {
             return;
         }
