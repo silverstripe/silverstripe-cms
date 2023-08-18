@@ -29,8 +29,10 @@ hr:
     NEWPAGE: 'Novi {pagetype}'
     PAGENOTEXISTS: 'Stranica ne postoji'
     PAGES: 'Status stranice'
+    PAGESALLOPT: 'Sve stranice'
     PAGETYPEANYOPT: 'Bilo koji'
     PAGETYPEOPT: 'Tip stranice'
+    PLEASESAVE: 'Molim spremite stranicu: Stranica ne može biti ažurirana jer još uvijek nije spremljena.'
     PUBALLCONFIRM: 'Molim objavi svaku stranicu, kopirajući sadržaj'
     PUBALLFUN: '"Objavi sve"'
     PUBLISHED: 'Uspješno objavljen ''{title}'''
@@ -47,6 +49,8 @@ hr:
     ROLLEDBACKPUBv2: 'Vraćeno na objavljenu verziju'
     ROLLEDBACKVERSIONv2: 'Vraćeno na verziju #{version}.'
     SAVED: 'Uspješno spremljen ''{title}'''
+    SAVEDRAFT: Spremi
+    SEARCHRESULTS: 'Rezultati pretraživanja'
     SHOW_AS_LIST: 'prikaži kao listu'
     TOO_MANY_PAGES: 'Previše stranica'
     TabContent: Sadržaj
@@ -55,23 +59,21 @@ hr:
     TreeFiltered: 'Prikazujem rezultate pretraživanja.'
     TreeFilteredClear: Očisti
     UNPUBLISH_AND_ARCHIVE: 'Odjavi i arhiviraj'
-    PAGESALLOPT: 'Sve stranice'
-    PLEASESAVE: 'Molim spremite stranicu: Stranica ne može biti ažurirana jer još uvijek nije spremljena.'
-    SAVEDRAFT: Spremi
-    SEARCHRESULTS: 'Rezultati pretraživanja'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Dodaj stranicu'
     ParentMode_child: 'Ispod druge stranice'
     ParentMode_top: 'Najviši nivo'
     Title: 'Dodaj stranicu'
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Uredi stranicu'
     ErrorItemPermissionDenied: 'Izgleda kako nemate potrebna prava za dodati {ObjectTitle} na kampanju'
     ErrorNotFound: '{Type} nije pronađen'
+    MENUTITLE: 'Uredi stranicu'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Način usporedbe (odaberi dva)'
+    COMPARINGVERSION: 'Uspoređujem verzije {version1} i {version2}.'
     MENUTITLE: Povijest
+    MULTISELECT: 'Grupne radnje'
     NOTPUBLISHED: 'Nije objavljeno'
     PREVIEW: 'Pregled web stranice'
     PUBLISHER: Izdavač
@@ -82,8 +84,6 @@ hr:
     VIEWINGLATEST: 'Trenutno pregledavam zadnju verziju.'
     VIEWINGVERSION: 'Trenutno pregledavam verziju {version}.'
     WHEN: Kada
-    COMPARINGVERSION: 'Uspoređujem verzije {version1} i {version2}.'
-    MULTISELECT: 'Grupne radnje'
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Uredi stranicu'
   SilverStripe\CMS\Controllers\CMSPagesController:
@@ -95,6 +95,8 @@ hr:
     Title: 'Izmjenjene stranice'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
     Title: 'Sve stranice, uključujući arhivirane'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
+    Title: 'Objavljene stranice'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Sve stranice'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
@@ -111,6 +113,9 @@ hr:
     DRAFTSITE: Predložak
     Email: Email
     INSTALL_SUCCESS: 'Instalacija uspješna!'
+    InstallFilesDeleted: 'Instalacijske datoteke su uspješno obrisane.'
+    InstallSecurityWarning: 'Zbog sigurnosnih razloga trebali bi ste obrisati instalacijske datoteke, osima ako planirate reinstalaciju kasnije (<em>zahtjeva administracijsku prijavu, pogledaj iznad</em>). Web server sada treba samo dozvole pisanja na "assets" direktorij, pa možete maknuti pravo pisanja sa svih drugih direktorija. <a href="{link}" style="text-align: center;">kliknite ovjde za brisanje instalacijskih datoteka.</a>'
+    InstallSuccessCongratulations: 'SilverStripe je uspješno instaliran!'
     LOGGEDINAS: 'Prijavi se kao'
     LOGIN: Prijavi
     LOGOUT: Odjava
@@ -119,16 +124,15 @@ hr:
     PUBLISHED: Objavljeno
     PUBLISHEDSITE: 'Objavljena stranica'
     Password: Lozinka
-    VIEWPAGEIN: 'Pregledaj stranice u:'
-    InstallFilesDeleted: 'Instalacijske datoteke su uspješno obrisane.'
-    InstallSecurityWarning: 'Zbog sigurnosnih razloga trebali bi ste obrisati instalacijske datoteke, osima ako planirate reinstalaciju kasnije (<em>zahtjeva administracijsku prijavu, pogledaj iznad</em>). Web server sada treba samo dozvole pisanja na "assets" direktorij, pa možete maknuti pravo pisanja sa svih drugih direktorija. <a href="{link}" style="text-align: center;">kliknite ovjde za brisanje instalacijskih datoteka.</a>'
-    InstallSuccessCongratulations: 'SilverStripe je uspješno instaliran!'
     PostInstallTutorialIntro: 'Ova web stranica je pojednostavljena verzija SilverStripe 3 stranice. Kako bi ste nadogradili, pogledajte {link}.'
     StartEditing: 'Možete početi uređivati vaš sadržaj otvarajući <a href="{link}">CMS sučelje</a>.'
     UNVERSIONEDPREVIEW: Pregled
     UnableDeleteInstall: 'Nemoguće obrisati instalacijske datoteke. Molimo obrišite datoteke ručno'
+    VIEWPAGEIN: 'Pregledaj stranice u:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arhivirano
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Sidro
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Opis linka'
     LINKOPENNEWWIN: 'Otvori u novom prozoru/tabu'
@@ -141,6 +145,7 @@ hr:
     OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Preusmjerava na internu stranicu ili vanjski URL'
+    FILE: Datoteka
     HEADER: 'Ova stranica preusmjeriti će korisnike na drugu stranicu'
     OTHERURL: 'URL drugog weba'
     PLURALNAME: 'Osnovne stranice'
@@ -149,8 +154,9 @@ hr:
     REDIRECTTOPAGE: 'Stranicu na Vašom webu'
     SINGULARNAME: 'Preusmjeravajuća stranica'
     YOURPAGE: 'Stranica na Vašem webu'
-    FILE: Datoteka
     has_one_LinkTo: 'Poveži na'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Stranica za preusjeravanje nema postavljenog preusmjeravanja'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Svi
     ACCESSHEADER: 'Tko može pregledavati ovu stranicu?'
@@ -166,11 +172,14 @@ hr:
     BUTTONDELETEDESC: 'Ukloni iz nacrta/objavljeno i pošalji u arhivu'
     BUTTONPUBLISHED: Objavljeno
     BUTTONSAVED: Spremljeno
+    BUTTONSAVEPUBLISH: Objavi
     BUTTONUNPUBLISH: Odjavi
     BUTTONUNPUBLISHDESC: 'Izbrišite ovu stranicu sa objavljene'
     Comments: Komentari
     Content: Sadržaj
+    DEFAULTABOUTCONTENT: '<p>Možete popuniti ovu stranicu s Vašim sadržajem, ili obrisati je i kreirati novu stranicu.</p>'
     DEFAULTABOUTTITLE: 'O nama'
+    DEFAULTCONTACTCONTENT: '<p>Možete popuniti ovu stranicu s Vašim sadržajem, ili obrisati je i kreirati novu stranicu.</p>'
     DEFAULTCONTACTTITLE: Kontakt
     DEFAULTHOMECONTENT: '<p>Dobrodošli na SilverStripe! Ovo je zadana početna stranica. Možete je urediti otvarajući <a href="admin/"> CMS</a>.</p><p>Možete pristupiti  <a href="http://docs.silverstripe.org">razvojnoj dokumentaciji</a>, ili početi <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lekcije</a>.</p>'
     DEFAULTHOMETITLE: Početna
@@ -228,20 +237,19 @@ hr:
     VIRTUALPAGEWARNINGSETTINGS: 'Molimo odaberite povezanu stranicu u glavnom sadržajnom polju kako bi ste je objavili'
     Viewers: 'Grupe preglednika'
     Visibility: Vidljivost
+    db_Content: Sadržaj
+    db_Title: Naslov
     has_one_Parent: 'Matična stranica'
+    has_one_Subsite: Podsajt
     many_many_BackLinkTracking: 'Praćenje Backlinkova'
     many_many_ImageTracking: 'Praćenje slika'
     many_many_LinkTracking: 'Praćenje linkova'
-    BUTTONSAVEPUBLISH: Objavi
-    DEFAULTABOUTCONTENT: '<p>Možete popuniti ovu stranicu s Vašim sadržajem, ili obrisati je i kreirati novu stranicu.</p>'
-    DEFAULTCONTACTCONTENT: '<p>Možete popuniti ovu stranicu s Vašim sadržajem, ili obrisati je i kreirati novu stranicu.</p>'
-    db_Content: Sadržaj
-    db_Title: Naslov
-    has_one_Subsite: Podsajt
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tip
     TITLE_USED_ON: 'Korišteno na'
+  SilverStripe\CMS\Model\SiteTreeLink:
+    has_one_Parent: Roditelj
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Povezane stranice'
     DESCRIPTION: 'Prikazuje sadržaj druge stranice'
@@ -253,8 +261,8 @@ hr:
     SINGULARNAME: 'Virtualna stranica'
   SilverStripe\CMS\Reports\BrokenFilesReport:
     BROKENFILES: 'Stranice s neispravnim datotekama'
-    ParameterLiveCheckbox: 'Pregledaj objavljenu stranicu'
     BrokenLinksGroupTitle: 'Izvješća prekinutih linkova'
+    ParameterLiveCheckbox: 'Pregledaj objavljenu stranicu'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: 'bilo koji'
     BROKENLINKS: 'Izvješće prekinutih linkova'
@@ -282,9 +290,9 @@ hr:
     BrokenLinksGroupTitle: 'Izvješća prekinutih linkova'
     ParameterLiveCheckbox: 'Pregledaj objavljenu stranicu'
   SilverStripe\CMS\Reports\BrokenVirtualPagesReport:
+    BROKENVIRTUALPAGES: 'Virtualne stranice pokazuje na obrisane stranice'
     BrokenLinksGroupTitle: 'Izvješća prekinutih linkova'
     ParameterLiveCheckbox: 'Pregledaj objavljenu stranicu'
-    BROKENVIRTUALPAGES: 'Virtualne stranice pokazuje na obrisane stranice'
   SilverStripe\CMS\Reports\EmptyPagesReport:
     ContentGroupTitle: 'Sadržajni izvještaji'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
@@ -308,11 +316,3 @@ hr:
     OPERATION_REMOVE: 'Ukloni označeno sa svih stanja (UPOZORENJE: to će uništiti sve označene stranice s nacrta i objavljeno)'
     SELECTALL: 'označi sve'
     UNSELECTALL: 'odznači sve'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
-    Title: 'Objavljene stranice'
-  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
-    ANCHORVALUE: Sidro
-  SilverStripe\CMS\Model\RedirectorPageController:
-    HASBEENSETUP: 'Stranica za preusjeravanje nema postavljenog preusmjeravanja'
-  SilverStripe\CMS\Model\SiteTreeLink:
-    has_one_Parent: Roditelj

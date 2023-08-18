@@ -133,9 +133,9 @@ fr:
     Password: 'Mot de passe'
     PostInstallTutorialIntro: 'Ceci est un site Silverstripe 3 minimaliste. Pour le déployer, veuillez regarder {link}.'
     StartEditing: 'Vous pouvez commencer à créer ou modifier du contenu en accédant au <a href="{link}">the CMS</a>.'
+    UNVERSIONEDPREVIEW: Aperçu
     UnableDeleteInstall: 'Impossible de supprimer les fichiers d''installation. Merci de supprimer manuellement les fichiers suivants :'
     VIEWPAGEIN: 'Voir la page dans :'
-    UNVERSIONEDPREVIEW: Aperçu
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archivé
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
@@ -153,6 +153,7 @@ fr:
     OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Redirige vers une page interne ou une URL externe'
+    FILE: Fichier
     HEADER: 'Cette page va rediriger les utilisateurs vers une autre page'
     OTHERURL: 'URL d''un autre site web'
     PLURALNAME: 'Base Pages'
@@ -164,7 +165,6 @@ fr:
     REDIRECTTOPAGE: 'Une page de votre site web'
     SINGULARNAME: 'Page de redirection'
     YOURPAGE: 'Page de votre site web'
-    FILE: Fichier
     has_one_LinkTo: 'Lier à'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Une page de redirection a été configurée... Sans redirection'
@@ -235,9 +235,9 @@ fr:
     PERMISSION_GRANTACCESS_HELP: 'Autoriser le réglage de restrictions spécifiques dans la section "Pages".'
     PLURALNAME: Pages
     PLURALS:
+      many: '{count} pages'
       one: 'Une page'
       other: '{count} pages'
-      many: '{count} pages'
     PageTypNotAllowedOnRoot: "Le type de page «\_{type}\_» n’est pas autorisé à la racine du site"
     PageTypeNotAllowed: 'Le type de page "{type}" ne peut pas être créé sous cette page'
     REMOVE_INSTALL_WARNING: "Attention\_: Vous devriez supprimer install.php pour des raisons de sécurité."
@@ -263,18 +263,24 @@ fr:
     VIRTUALPAGEWARNINGSETTINGS: 'Veuillez choisir une page liée dans le contenu principal avant de publier'
     Viewers: 'Groupes de visualisation'
     Visibility: Visibilité
-    has_one_Parent: 'Page parente'
-    many_many_BackLinkTracking: 'Suivi des liens retour'
-    many_many_ImageTracking: 'Suivi des images'
-    many_many_LinkTracking: 'Suivi des Liens'
     db_Content: Contenu
     db_Sort: Tri
     db_Title: Titre
     db_URLSegment: 'Segment d''URL'
+    has_one_Parent: 'Page parente'
+    many_many_BackLinkTracking: 'Suivi des liens retour'
+    many_many_ImageTracking: 'Suivi des images'
+    many_many_LinkTracking: 'Suivi des Liens'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Type
     TITLE_USED_ON: 'Utilisé dans'
+  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
+    USAGE: Usage
+  SilverStripe\CMS\Model\SiteTreeLink:
+    PLURALNAME: 'Liens Site Tree'
+    SINGULARNAME: 'Lien Site Tree'
+    has_one_Parent: Parent
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Page liée'
     DESCRIPTION: 'Affiche le contenu d''une autre page'
@@ -345,9 +351,3 @@ fr:
     OPERATION_REMOVE: 'Retirer toutes les versions des pages sélectionnées (avertissement: seront supprimés à la fois l''historique et la version publique des pages sélectionnées)'
     SELECTALL: 'tout sélectionner'
     UNSELECTALL: 'tout désélectionner'
-  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    USAGE: Usage
-  SilverStripe\CMS\Model\SiteTreeLink:
-    PLURALNAME: 'Liens Site Tree'
-    SINGULARNAME: 'Lien Site Tree'
-    has_one_Parent: Parent

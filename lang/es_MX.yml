@@ -34,6 +34,7 @@ es_MX:
     NEWPAGE: 'Nueva {pagetype}'
     PAGENOTEXISTS: 'Esta página no existe'
     PAGES: 'Estado de página'
+    PAGESALLOPT: 'Todas las páginas'
     PAGETYPEANYOPT: Cualquier
     PAGETYPEOPT: 'Tipo de página'
     PLEASESAVE: 'Por favor guardar página: esta página no ha sido actualizada porque aún no ha sido guardada.'
@@ -54,6 +55,8 @@ es_MX:
     ROLLEDBACKPUBv2: 'Regresar a la versión publicada.'
     ROLLEDBACKVERSIONv2: 'Restaurada a la versión #{version}.'
     SAVED: '''{title}'' guardada con éxito.'
+    SAVEDRAFT: Guardar
+    SEARCHRESULTS: 'Resultados de la búsqueda'
     SHOW_AS_LIST: 'Mostrar como lista'
     TOO_MANY_PAGES: 'Demasiadas páginas'
     TabContent: Contenido
@@ -62,9 +65,6 @@ es_MX:
     TreeFiltered: 'Mostrando resultados de búsqueda.'
     TreeFilteredClear: Limpiar
     UNPUBLISH_AND_ARCHIVE: 'Despublicar y archivar'
-    PAGESALLOPT: 'Todas las páginas'
-    SAVEDRAFT: Guardar
-    SEARCHRESULTS: 'Resultados de la búsqueda'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Agregar página'
     ParentMode_child: 'Como sub página'
@@ -99,6 +99,8 @@ es_MX:
     Title: 'Páginas modificadas'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
     Title: 'Todas las páginas, incluyendo archivadas'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
+    Title: 'Páginas publicadas'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Todas las páginas'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
@@ -128,9 +130,9 @@ es_MX:
     Password: Contraseña
     PostInstallTutorialIntro: 'Este sitio web es una versión simplificada de un sitio de SilverStripe 3. Para extenderlo, por favor ver en {link}.'
     StartEditing: 'Puedes comenzar a editar el contenido abriendo <a href="{link}">el CMS</a>.'
+    UNVERSIONEDPREVIEW: Previo
     UnableDeleteInstall: 'No se han podido eliminar los archivos de instalación. Por favor elimina manualmente los archivos mostrados debajo'
     VIEWPAGEIN: 'Ver página en:'
-    UNVERSIONEDPREVIEW: Previo
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archivado
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
@@ -147,6 +149,7 @@ es_MX:
     OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Redirecciona a una página interna o a una URL externa'
+    FILE: Archivo
     HEADER: 'Esta página dirigirá al usuarios a otra página'
     OTHERURL: 'Otro URL del sitio web'
     PLURALNAME: 'User Defined Forms'
@@ -158,7 +161,6 @@ es_MX:
     REDIRECTTOPAGE: 'Una página en tu sitio web'
     SINGULARNAME: 'Página de Redirección'
     YOURPAGE: 'Página en tu sitio web'
-    FILE: Archivo
     has_one_LinkTo: 'Enlazar a'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'La página de redirección ha sido configurada sin ningún destino.'
@@ -177,6 +179,7 @@ es_MX:
     BUTTONDELETEDESC: 'Eliminar de borrador/público y archivar'
     BUTTONPUBLISHED: Publicado
     BUTTONSAVED: Guardado
+    BUTTONSAVEPUBLISH: Publicar
     BUTTONUNPUBLISH: 'Ocultar al público'
     BUTTONUNPUBLISHDESC: 'Quitar ésta página del sitio público'
     Comments: Comentarios
@@ -201,6 +204,7 @@ es_MX:
     MENUTITLE: 'Etiqueta de navegación'
     METADESC: Descripción
     METAEXTRA: 'Etiquetas meta personalizadas'
+    NOTPUBLISHED: 'No publicada'
     PAGELOCATION: 'Ubicación de la página'
     PAGETITLE: 'Nombre de página'
     PAGETYPE: 'Tipo de página'
@@ -210,13 +214,14 @@ es_MX:
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Controlar los derechos de acceso al contenido'
     PLURALNAME: Páginas
     PLURALS:
+      many: '{count} Páginas'
       one: 'Una página'
       other: '{count} Páginas'
-      many: '{count} Páginas'
     REORGANISE_DESCRIPTION: 'Cambiar la estructura del sitio'
     REORGANISE_HELP: 'Reorganizar páginas en el árbol del sitio arrastrando y soltando.'
     SHOWINMENUS: '¿Mostrar en menús?'
     SHOWINSEARCH: '¿Mostrar en búsqueda?'
+    SINGULARNAME: Página
     TABBEHAVIOUR: Compotamiento
     TABDEPENDENT: 'Páginas dependientes'
     TOPLEVEL: 'Contenido del sitio (Nivel Superior)'
@@ -225,15 +230,12 @@ es_MX:
     VIEW_DRAFT_CONTENT: 'Ver el contenido del boceto'
     Viewers: 'Grupos de Espectadores'
     Visibility: Visibilidad
+    db_Content: Contenido
+    db_Title: Título
     has_one_Parent: 'Página ascendiente'
     many_many_BackLinkTracking: 'Seguimiento en retrospectiva'
     many_many_ImageTracking: 'Seguir la Imagen'
     many_many_LinkTracking: 'Seguir el Enlace'
-    BUTTONSAVEPUBLISH: Publicar
-    NOTPUBLISHED: 'No publicada'
-    SINGULARNAME: Página
-    db_Content: Contenido
-    db_Title: Título
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
@@ -305,5 +307,3 @@ es_MX:
     OPERATION_REMOVE: 'Eliminar selección de todos los entornos (ADVERTENCIA: esto destruirá todas las páginas seleccionadas del entorno de pruebas y de producción)'
     SELECTALL: 'seleccionar todo'
     UNSELECTALL: 'deseleccionar todo'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
-    Title: 'Páginas publicadas'

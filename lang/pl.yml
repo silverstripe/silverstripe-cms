@@ -34,12 +34,14 @@ pl:
     NEWPAGE: 'Nowa {pagetype}'
     PAGENOTEXISTS: 'Ta strona nie istnieje'
     PAGES: 'Status strony'
+    PAGESALLOPT: 'Wszystkie strony'
     PAGETYPEANYOPT: Jakikolwiek
     PAGETYPEOPT: 'Typ storny'
     PAGETYPE_TITLE: '(Typ strony: {type}) {title}'
     PLEASESAVE: 'Proszę zapisać stronę. Ta strona nie mogła zostać uaktualniona, ponieważ nie została jeszcze zapisana.'
     PUBALLCONFIRM: 'Opublikuj każdą stronę w witrynie'
     PUBALLFUN: '"Opublikuj wszystko"'
+    PUBALLFUN2: 'Naciśnięcie tego przycisku będzie równoznaczne z przejściem do każdej strony i naciśnięciem "opublikuj". Jest przeznaczony do użytku po masowych edycjach treści, na przykład podczas tworzenia witryny. W przypadku dużych witryn internetowych wykonanie tego zadania może nie być możliwe. W takim przypadku zalecamy rozmowę z programistami w celu utworzenia niestandardowego zadania'
     PUBLISHED: 'Opublikowano ''{title}'' '
     PUBPAGES: 'Zrobiono:  Opublikowano {count} stron'
     PageAdded: 'Pomyślnie utworzono stronę'
@@ -55,6 +57,8 @@ pl:
     ROLLEDBACKPUBv2: 'Przywrócono opublikowaną wersję'
     ROLLEDBACKVERSIONv2: 'Przywrócono wersję #{version}.'
     SAVED: 'Zapisano ''{title}''.'
+    SAVEDRAFT: Zapisz
+    SEARCHRESULTS: 'Wyniki wyszukiwania'
     SHOW_AS_LIST: 'pokaż jako listę'
     TOO_MANY_PAGES: 'Zbyt wiele stron'
     TabContent: Zawartość
@@ -63,10 +67,6 @@ pl:
     TreeFiltered: 'Pokaż wyniki wyszukiwania:'
     TreeFilteredClear: Wyczyść
     UNPUBLISH_AND_ARCHIVE: 'Usuń z opublikowanych i dodaj do archiwum'
-    PAGESALLOPT: 'Wszystkie strony'
-    PUBALLFUN2: 'Naciśnięcie tego przycisku będzie równoznaczne z przejściem do każdej strony i naciśnięciem "opublikuj". Jest przeznaczony do użytku po masowych edycjach treści, na przykład podczas tworzenia witryny. W przypadku dużych witryn internetowych wykonanie tego zadania może nie być możliwe. W takim przypadku zalecamy rozmowę z programistami w celu utworzenia niestandardowego zadania'
-    SAVEDRAFT: Zapisz
-    SEARCHRESULTS: 'Wyniki wyszukiwania'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Dodaj stronę'
     ParentMode_child: 'Pod inną stroną'
@@ -79,9 +79,11 @@ pl:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Tryb porównywania (wybierz dwie)'
+    COMPARINGVERSION: 'Porównanie wersji {version1} i {version2}.'
     MENUTITLE: Historia
     MULTISELECT: 'Operacje hurtem'
     NOTPUBLISHED: Nieopublikowano
+    NO_PREVIEW: 'Brak dostępnych opcji'
     PREVIEW: 'Podgląd strony'
     PUBLISHER: Edytor
     REVERTTOTHISVERSION: 'Wróć do tej wersji'
@@ -91,8 +93,6 @@ pl:
     VIEWINGLATEST: 'Obecnie oglądasz najnowszą wersję'
     VIEWINGVERSION: 'Obecnie oglądasz wersję {version}.'
     WHEN: Kiedy
-    COMPARINGVERSION: 'Porównanie wersji {version1} i {version2}.'
-    NO_PREVIEW: 'Brak dostępnych opcji'
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Edytuj Stronę'
   SilverStripe\CMS\Controllers\CMSPagesController:
@@ -135,9 +135,9 @@ pl:
     Password: Hasło
     PostInstallTutorialIntro: 'Ta strona jest uproszczoną wersją witryny SilverStripe 3. Aby ją rozszerzyć, zajrzyj proszę na stronę: {link}'
     StartEditing: 'Możesz zacząć edytować Twoją stronę otwierając <a href="{link}">CMS</a>.'
+    UNVERSIONEDPREVIEW: Podgląd
     UnableDeleteInstall: 'Nie można usunąć plików instalacyjnych. Proszę usunąć je ręcznie'
     VIEWPAGEIN: 'Zobacz stronę w:'
-    UNVERSIONEDPREVIEW: Podgląd
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Zarchiwizowane
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
@@ -149,27 +149,27 @@ pl:
     SELECT_PAGE: 'Wybierz stronę'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Anuluj
+    EMPTY: 'Proszę podać adres URL lub kliknąć anuluj'
     Edit: Edytuj
     HelpChars: 'Znaki specjalne są automatycznie konwertowane lub usuwane.'
     OK: OK
-    EMPTY: 'Proszę podać adres URL lub kliknąć anuluj'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Przekierowuje do wskazanej wewnętrznej strony'
+    FILE: Plik
     HEADER: 'Ta strona przeniesie użytkowników na inną stronę'
     OTHERURL: 'Adres URL innej strony'
     PLURALNAME: 'Strony bazowe'
     PLURALS:
-      one: 'Strona przekierowująca'
       few: 'Stron przekierowujących {count}'
       many: 'Stron przekierowujących {count}'
+      one: 'Strona przekierowująca'
       other: 'Stron przekierowujących {count}'
     REDIRECTTO: 'Przenieś do'
     REDIRECTTOEXTERNAL: 'Inna strona'
+    REDIRECTTOFILE: 'Plik na stronie'
     REDIRECTTOPAGE: 'Strona na Twojej witrynie'
     SINGULARNAME: 'Strona przekierowująca'
     YOURPAGE: 'Strona na Twojej witrynie'
-    FILE: Plik
-    REDIRECTTOFILE: 'Plik na stronie'
     has_one_LinkTo: 'Linkuj do'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Strona przekierowująca została ustawiona bez celu, do którego ma przekierowywać.'
@@ -188,6 +188,7 @@ pl:
     BUTTONDELETEDESC: Usunięto
     BUTTONPUBLISHED: Opublikowano
     BUTTONSAVED: Zapisano
+    BUTTONSAVEPUBLISH: Opublikuj
     BUTTONUNPUBLISH: Nieopublikowane
     BUTTONUNPUBLISHDESC: 'Usuń tę stronę z opublikowanej witryny'
     Comments: Komentarze
@@ -210,6 +211,7 @@ pl:
     HASBROKENLINKS: 'Ta strona ma niedziałający link'
     HTMLEDITORTITLE: Zawartość
     INHERIT: 'Dziedzicz ze strony nadrzędnej'
+    INHERITSITECONFIG: 'Dziedzicz ustawień strony'
     LASTPUBLISHED: 'Data ostatniej publikacji'
     LASTSAVED: 'Ostania zmiana'
     LASTUPDATED: 'Ostania zmiana'
@@ -220,6 +222,7 @@ pl:
     METADESC: Opis
     METADESCHELP: "Wyszukiwarki internetowe używają tej treści w wynikach wyszukiwania (ta treść\_nie wpłynie na ich pozycjonowanie)"
     METAEXTRA: 'Własne meta tagi'
+    METAEXTRAHELP: 'HTML zawierający dodatkowe metainformacje, n.p. &lt;meta name="jakaśNazwa" content="jakaś zawartość" /&gt;'
     MODIFIEDONDRAFTHELP: 'Na stronie znajdują się nieopublikowane zmiany'
     MODIFIEDONDRAFTSHORT: Zmodyfikowana
     MetadataToggle: Metadane
@@ -239,9 +242,9 @@ pl:
     PERMISSION_GRANTACCESS_HELP: 'Zezwól na ustawienie wymagań dostępu dla konkretnej strony w sekcji "Strony".'
     PLURALNAME: Strony
     PLURALS:
-      one: Strona
       few: '{count} stron'
       many: '{count} stron'
+      one: Strona
       other: '{count} stron'
     PageTypNotAllowedOnRoot: '"{type}" nie jest dozwolona na głównym poziomie'
     PageTypeNotAllowed: '"{type}" nie jest dozwolona jako strona podrzędna dla tej strony'
@@ -252,8 +255,12 @@ pl:
     SHOWINSEARCH: 'Pokazuj w wyszukiwarce?'
     SINGULARNAME: Strona
     TABBEHAVIOUR: Zachowanie
+    TABCONTENT: Zawartość
     TABDEPENDENT: 'Strony zależne'
     TOPLEVEL: 'Zawartość witryny (główny poziom)'
+    UNTITLED: 'Nowa {pagetype}'
+    URLSegment: URL
+    UntitledDependentObject: 'Nowa {pagetype}'
     VIEWERGROUPS: 'Grupy przeglądających'
     VIEWER_GROUPS_FIELD_DESC: 'Grupy z globalnymi uprawnieniami podglądu: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Przeglądanie stron'
@@ -265,24 +272,27 @@ pl:
     VIRTUALPAGEWARNINGSETTINGS: 'Aby opublikować wybierz stronę powiązaną w sekcji głównej'
     Viewers: 'Grupy przeglądających'
     Visibility: Widoczność
+    db_Content: Zawartość
+    db_Title: Tytuł
+    db_URLSegment: URL
     has_one_Parent: 'Strona Nadrzędna'
     many_many_BackLinkTracking: 'Śledzenie backlinków'
     many_many_ImageTracking: 'Śledzenie obrazków'
     many_many_LinkTracking: 'Śledzenie linków'
-    BUTTONSAVEPUBLISH: Opublikuj
-    INHERITSITECONFIG: 'Dziedzicz ustawień strony'
-    METAEXTRAHELP: 'HTML zawierający dodatkowe metainformacje, n.p. &lt;meta name="jakaśNazwa" content="jakaś zawartość" /&gt;'
-    TABCONTENT: Zawartość
-    UNTITLED: 'Nowa {pagetype}'
-    URLSegment: URL
-    UntitledDependentObject: 'Nowa {pagetype}'
-    db_Content: Zawartość
-    db_Title: Tytuł
-    db_URLSegment: URL
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: 'Rodzaj strony'
     TITLE_USED_ON: 'Używany na:'
+  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
+    USAGE: Używane
+  SilverStripe\CMS\Model\SiteTreeLink:
+    PLURALNAME: Strony
+    PLURALS:
+      few: 'Stron {count}'
+      many: 'Stron {count}'
+      one: Strona
+      other: "Stron {count}\_"
+    SINGULARNAME: Strony
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Linkowana strona'
     DESCRIPTION: 'Wyświetla zawartość innej strony'
@@ -291,9 +301,9 @@ pl:
     HEADERWITHLINK: "Strona wirtualna odzwierciedlająca treść\_\"{title}\" ({link})"
     PLURALNAME: 'Podstawowe strony'
     PLURALS:
-      one: 'Wirtualna strona'
       few: 'Wirtualnych stron {count}'
       many: 'Wirtualnych stron {count}'
+      one: 'Wirtualna strona'
       other: 'Wirtualnych stron {count}'
     PageTypNotAllowedOnRoot: '"{type}" nie jest dozwolona dla głównego poziomu wirtualnej strony'
     SINGULARNAME: 'Wirtualna Strona'
@@ -355,13 +365,3 @@ pl:
     OPERATION_REMOVE: 'Usuń wszystkie wybrane strony (Uwaga: dotyczy opublikowanych i tych zapisanych jako szkice)'
     SELECTALL: 'Zaznacz wszystkie'
     UNSELECTALL: 'Odznacz wszystkie'
-  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    USAGE: Używane
-  SilverStripe\CMS\Model\SiteTreeLink:
-    PLURALNAME: Strony
-    PLURALS:
-      one: Strona
-      few: 'Stron {count}'
-      many: 'Stron {count}'
-      other: "Stron {count}\_"
-    SINGULARNAME: Strony

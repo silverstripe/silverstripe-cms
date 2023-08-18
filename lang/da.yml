@@ -134,9 +134,9 @@ da:
     Password: Adgangskode
     PostInstallTutorialIntro: 'Denne webside er en enkel version af en SilverStripe 3 side. For at udvide denne, kig venligts på {link}.'
     StartEditing: 'Du kan nu starte med at redigere dit indhold ved at åbne dit<a href="{link}">CMS</a>.'
+    UNVERSIONEDPREVIEW: Forhåndsvisning
     UnableDeleteInstall: 'Var ikke i stand til at slette installationsfilerne. Slet venligst filerne herunder manuelt.'
     VIEWPAGEIN: 'Vis side i:'
-    UNVERSIONEDPREVIEW: Forhåndsvisning
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arkiveret
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
@@ -263,13 +263,13 @@ da:
     VIRTUALPAGEWARNINGSETTINGS: 'Vælg en linket side i de primære indholdsfelter, for at udgive denne side'
     Viewers: Visningsgrupper
     Visibility: Synlighed
+    db_Content: Indhold
+    db_Title: Titel
+    db_URLSegment: 'URL adresse'
     has_one_Parent: 'Overliggende side'
     many_many_BackLinkTracking: 'Bagud rettet sporing '
     many_many_ImageTracking: 'Sporing af billeder'
     many_many_LinkTracking: 'Sporing af links'
-    db_Content: Indhold
-    db_Title: Titel
-    db_URLSegment: 'URL adresse'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Type

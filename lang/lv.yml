@@ -1,25 +1,43 @@
 lv:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Restaurēt
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: Nebpublicēt
+  SilverStripe\CMS\Controllers\CMSMain:
+    EMAIL: E-pasts
+    PAGETYPEANYOPT: Jebkuru
+    PAGETYPEOPT: 'Lapas tips'
+    SAVEDRAFT: Saglabāt
+    TabContent: Saturs
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITEFROM: 'Arhivēta vietne no'
     DRAFTSITE: 'Melnrakstu vietne'
+    Email: E-pasts
     LOGGEDINAS: 'Pieslēdzies kā'
     LOGIN: Pieslēgties
     LOGOUT: Atslēgties
     NOTEWONTBESHOWN: 'Piezīme: šī ziņa nebūs redzama Jūsu apmeklētājiem'
     NOTLOGGEDIN: 'Nav pieslēdzies'
     PUBLISHEDSITE: 'Publicētā vietne'
-    VIEWPAGEIN: 'Skatīt lapu:'
-    Email: E-pasts
     Password: Parole
+    VIEWPAGEIN: 'Skatīt lapu:'
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Enkurs
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Saites apraksts'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
+    FILE: Fails
     HEADER: 'Šī lapa novirzīs lietotājus uz citu lapu '
     OTHERURL: 'Citas tīmekļa vietnes URL'
     REDIRECTTO: 'Novirzīt uz '
     REDIRECTTOEXTERNAL: 'Cita tīmekļa vietni'
     REDIRECTTOPAGE: 'Tīmekļa vietnes lapu'
     YOURPAGE: 'Tīmekļa vietnes lapa'
-    FILE: Fails
     has_one_LinkTo: 'Saite uz'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Novirzītājlapa ir uzstādīta bez norādes uz kurieni novirzīt.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Ikviens
     ACCESSHEADER: 'Kas drīkst aplūkot šo lapu?'
@@ -61,6 +79,7 @@ lv:
     REORGANISE_HELP: 'Pārkārtot lapas koka struktūra ar "vilkt un nomest" paņēmienu.'
     SHOWINMENUS: 'Rādīt izvēlnēs?'
     SHOWINSEARCH: 'Rādīt meklēšanas rezultātos?'
+    SINGULARNAME: Lapa
     TABBEHAVIOUR: Uzvedība
     TABDEPENDENT: 'Atkarīgās lapas'
     TOPLEVEL: 'Vietnes Saturs (Augšējais līmenis)'
@@ -69,41 +88,22 @@ lv:
     VIEW_DRAFT_CONTENT: 'Aplūkot melnraksa saturu'
     VIEW_DRAFT_CONTENT_HELP: 'Attiecās uz lapu aplūkošanu ārpus CMS melnraksta režīmā. Var būt noderīgi ārējiem darbiniekiem, kuriem nav piekļuve CMS.'
     Viewers: 'Skatītāju grupas'
+    db_Content: Saturs
+    db_Title: Virsraksts
     has_one_Parent: 'Lapas vecāks'
     many_many_BackLinkTracking: 'Atpakaļsaišu izsekošana'
     many_many_ImageTracking: 'Attēlu izsekošana'
     many_many_LinkTracking: 'Saišu izsekošana'
-    SINGULARNAME: Lapa
-    db_Content: Saturs
-    db_Title: Virsraksts
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Šī ir virtuāla lapa'
     SINGULARNAME: 'Virtuālās lapa'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Aiziet
-    SEARCH: Meklēt
-    SearchResults: 'Meklēšanas rezultāti'
-    FILTERLABELTEXT: Meklēt
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
-    RESTORE: Restaurēt
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
-    UNPUBLISH_PAGES: Nebpublicēt
-  SilverStripe\CMS\Controllers\CMSMain:
-    EMAIL: E-pasts
-    PAGETYPEANYOPT: Jebkuru
-    PAGETYPEOPT: 'Lapas tips'
-    SAVEDRAFT: Saglabāt
-    TabContent: Saturs
-  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
-    ANCHORVALUE: Enkurs
-  SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    LINKDESCR: 'Saites apraksts'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
-  SilverStripe\CMS\Model\RedirectorPageController:
-    HASBEENSETUP: 'Novirzītājlapa ir uzstādīta bez norādes uz kurieni novirzīt.'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Jebkuru
     CheckSiteDropdownDraft: 'Melnrakstu vietne'
     CheckSiteDropdownPublished: 'Publicētā vietne'
     PageName: 'Lapas nosaukums'
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERLABELTEXT: Meklēt
+    GO: Aiziet
+    SEARCH: Meklēt
+    SearchResults: 'Meklēšanas rezultāti'

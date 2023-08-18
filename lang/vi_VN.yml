@@ -1,10 +1,14 @@
 vi_VN:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: Ẩn
   SilverStripe\CMS\Controllers\CMSMain:
-    PAGENOTEXISTS: 'Không tìm thấy trang này.'
     Create: T
+    PAGENOTEXISTS: 'Không tìm thấy trang này.'
     PAGETYPEOPT: Loại
     SAVEDRAFT: Lưu
     TabContent: 'Nội dung'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Trang này sẽ di chuyển người dùng đến một trang khác'
     OTHERURL: 'Đường dẩn website khác'
@@ -12,6 +16,8 @@ vi_VN:
     REDIRECTTOEXTERNAL: 'Website khác'
     REDIRECTTOPAGE: 'Một trang trên website'
     YOURPAGE: Trang
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Một trang di chuyển chưa cấu hình đích di chuyển đến.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'Bất cứ ai'
     ACCESSHEADER: 'Ai có thể xem trang này ?'
@@ -21,6 +27,7 @@ vi_VN:
     BUTTONCANCELDRAFTDESC: 'Xóa khỏi mục nháp và khôi phục lại trang gốc'
     BUTTONUNPUBLISH: Ẩn
     BUTTONUNPUBLISHDESC: 'Xóa trang này khỏi trang hoạt động'
+    Content: 'Nội dung'
     DEFAULTABOUTTITLE: 'Giới thiệu'
     DEFAULTCONTACTTITLE: 'Liên hệ'
     DEFAULTHOMETITLE: 'Trang chủ'
@@ -36,14 +43,7 @@ vi_VN:
     SHOWINSEARCH: 'Hiển thị khi tìm kiếm?'
     TABBEHAVIOUR: 'Hoạt động'
     TABCONTENT: 'Thông tin'
-    Content: 'Nội dung'
     db_Content: 'Nội dung'
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
-    UNPUBLISH_PAGES: Ẩn
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
-  SilverStripe\CMS\Model\RedirectorPageController:
-    HASBEENSETUP: 'Một trang di chuyển chưa cấu hình đích di chuyển đến.'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     PageName: 'Tên trang'
   SilverStripe\CMS\Search\SearchForm:

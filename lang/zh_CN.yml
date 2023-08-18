@@ -1,59 +1,18 @@
 zh_CN:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: 撤消发布
   SilverStripe\CMS\Controllers\CMSMain:
+    EMAIL: 电子邮件
     PAGENOTEXISTS: 该网页不存在
+    PAGETYPEOPT: 网页类型
+    PLEASESAVE: 请先保存：因为该网页还未保存，所以该页无法更新。
     PUBALLCONFIRM: 请发布该站的每一网页，这样，预备发布站上的内容就会复制到正式发布站上
     PUBALLFUN: “全部发布“功能
     REMOVEDPAGEFROMDRAFT: '已从测试站点删除 ''{title}'''
-    EMAIL: 电子邮件
-    PAGETYPEOPT: 网页类型
-    PLEASESAVE: 请先保存：因为该网页还未保存，所以该页无法更新。
     ROLLBACK: 恢复到这一版本
     SAVEDRAFT: 保存
     SEARCHRESULTS: 搜索结果
     TabContent: 内容
-  SilverStripe\CMS\Model\RedirectorPage:
-    HEADER: 该页会将用户重新导向另一网页
-    OTHERURL: 另一网站的URL
-    REDIRECTTO: 重新导向
-    REDIRECTTOEXTERNAL: 另一网站
-    REDIRECTTOPAGE: 您网站中的一个网页
-    YOURPAGE: 您网站中的网页
-    FILE: 文件
-    has_one_LinkTo: 链接到
-  SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: 任何人
-    ACCESSHEADER: 在我的网站上，谁可以浏览此页？
-    ACCESSLOGGEDIN: 已登录的用户
-    ACCESSONLYTHESE: 只有这些人（请从下列清单中选择）
-    BUTTONCANCELDRAFT: 取消草稿的改动
-    BUTTONCANCELDRAFTDESC: 将您的草稿恢复到目前正式发布的版本
-    BUTTONUNPUBLISH: 撤消发布
-    BUTTONUNPUBLISHDESC: 将此页从正式发布站删除
-    DEFAULTABOUTTITLE: 关于我们
-    EDITHEADER: 谁能在CMS中编辑此页？
-    HASBROKENLINKS: 该页有失效链接。
-    HTMLEDITORTITLE: 内容
-    INHERIT: 从父页面继承
-    MENUTITLE: 导航标签
-    METADESC: 网页描述标签
-    METAEXTRA: 自定义Meta标签
-    PAGETITLE: 网页名称
-    PAGETYPE: 网页类型
-    SHOWINMENUS: 是否出现在菜单中？
-    SHOWINSEARCH: 是否包括在搜索结果中？
-    TABBEHAVIOUR: 行为特点
-    TOPLEVEL: 网站内容（顶层）
-    Content: 内容
-    DESCRIPTION: 通用内容页
-    PLURALNAME: 页
-    SINGULARNAME: 页面
-    db_Content: 内容
-    db_Title: 标题
-  SilverStripe\CMS\Model\VirtualPage:
-    HEADER: 这是一个虚拟页
-    DESCRIPTION: 显示另一页的内容
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
-    UNPUBLISH_PAGES: 撤消发布
   SilverStripe\CMS\Controllers\CMSPageEditController:
     MENUTITLE: 编辑
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
@@ -70,8 +29,49 @@ zh_CN:
     LINKDESCR: 链接描述
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Edit: Edit
+  SilverStripe\CMS\Model\RedirectorPage:
+    FILE: 文件
+    HEADER: 该页会将用户重新导向另一网页
+    OTHERURL: 另一网站的URL
+    REDIRECTTO: 重新导向
+    REDIRECTTOEXTERNAL: 另一网站
+    REDIRECTTOPAGE: 您网站中的一个网页
+    YOURPAGE: 您网站中的网页
+    has_one_LinkTo: 链接到
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 重导网页被生成，却没有什么地方由它来重导。
+  SilverStripe\CMS\Model\SiteTree:
+    ACCESSANYONE: 任何人
+    ACCESSHEADER: 在我的网站上，谁可以浏览此页？
+    ACCESSLOGGEDIN: 已登录的用户
+    ACCESSONLYTHESE: 只有这些人（请从下列清单中选择）
+    BUTTONCANCELDRAFT: 取消草稿的改动
+    BUTTONCANCELDRAFTDESC: 将您的草稿恢复到目前正式发布的版本
+    BUTTONUNPUBLISH: 撤消发布
+    BUTTONUNPUBLISHDESC: 将此页从正式发布站删除
+    Content: 内容
+    DEFAULTABOUTTITLE: 关于我们
+    DESCRIPTION: 通用内容页
+    EDITHEADER: 谁能在CMS中编辑此页？
+    HASBROKENLINKS: 该页有失效链接。
+    HTMLEDITORTITLE: 内容
+    INHERIT: 从父页面继承
+    MENUTITLE: 导航标签
+    METADESC: 网页描述标签
+    METAEXTRA: 自定义Meta标签
+    PAGETITLE: 网页名称
+    PAGETYPE: 网页类型
+    PLURALNAME: 页
+    SHOWINMENUS: 是否出现在菜单中？
+    SHOWINSEARCH: 是否包括在搜索结果中？
+    SINGULARNAME: 页面
+    TABBEHAVIOUR: 行为特点
+    TOPLEVEL: 网站内容（顶层）
+    db_Content: 内容
+    db_Title: 标题
+  SilverStripe\CMS\Model\VirtualPage:
+    DESCRIPTION: 显示另一页的内容
+    HEADER: 这是一个虚拟页
   SilverStripe\CMS\Reports\BrokenLinksReport:
     ColumnURL: （路径）URL
     PageName: 网页名称

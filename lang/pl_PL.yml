@@ -159,9 +159,9 @@ pl_PL:
     OTHERURL: 'Adres URL innej strony'
     PLURALNAME: 'Podstawowe strony'
     PLURALS:
-      one: 'Strona przekierowująca'
       few: 'Stron przekierowujących {count}'
       many: 'Stron przekierowujących {count}'
+      one: 'Strona przekierowująca'
       other: 'Stron przekierowujących {count}'
     REDIRECTTO: 'Przenieś do'
     REDIRECTTOEXTERNAL: 'Inna strona'
@@ -240,9 +240,9 @@ pl_PL:
     PERMISSION_GRANTACCESS_HELP: 'Zezwól na ustawienie wymagań dostępu dla konkretnej strony w sekcji "Strony".'
     PLURALNAME: Strony
     PLURALS:
-      one: Strona
       few: 'Kilka stron {count} '
       many: 'Wiele stron {count}'
+      one: Strona
       other: 'Stron {count}'
     PageTypNotAllowedOnRoot: '"{type}" nie jest dozwolona na głównym poziomie'
     PageTypeNotAllowed: '"{type}" nie jest dozwolona jako strona podrzędna dla tej strony'
@@ -270,14 +270,14 @@ pl_PL:
     VIRTUALPAGEWARNINGSETTINGS: 'Aby opublikować wybierz stronę powiązaną'
     Viewers: 'Grupy Edytorów'
     Visibility: Widoczność
-    has_one_Parent: 'Strona nadrzędna'
-    many_many_BackLinkTracking: 'Śledzenie backlinków'
-    many_many_ImageTracking: 'Śledzenie obrazków'
-    many_many_LinkTracking: 'Śledzenie linków'
     db_Content: Zawartość
     db_Title: Tytuł
     db_URLSegment: URL
+    has_one_Parent: 'Strona nadrzędna'
     has_one_Subsite: Podwitryna
+    many_many_BackLinkTracking: 'Śledzenie backlinków'
+    many_many_ImageTracking: 'Śledzenie obrazków'
+    many_many_LinkTracking: 'Śledzenie linków'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Typ
@@ -287,9 +287,9 @@ pl_PL:
   SilverStripe\CMS\Model\SiteTreeLink:
     PLURALNAME: Strony
     PLURALS:
-      one: Strona
       few: 'Stron {count}'
       many: 'Stron {count}'
+      one: Strona
       other: 'Strony {count}'
     SINGULARNAME: Strony
     has_one_Parent: Rodzic
@@ -301,9 +301,9 @@ pl_PL:
     HEADERWITHLINK: "Strona wirtualna odzwierciedlająca treść\_\"{title}\" ({link})"
     PLURALNAME: 'Podstawowe strony'
     PLURALS:
-      one: 'Strona wirtualna'
       few: 'Stron wirtualnych {count}'
       many: 'Stron wirtualnych {count}'
+      one: 'Strona wirtualna'
       other: 'Wirtualnych stron {count}'
     PageTypNotAllowedOnRoot: '"{type}" nie jest dozwolona dla głównego poziomu wirtualnej strony'
     SINGULARNAME: 'Wirtualna strona'

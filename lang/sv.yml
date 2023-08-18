@@ -34,6 +34,7 @@ sv:
     NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Den här sidan finns inte'
     PAGES: Sidstatus
+    PAGESALLOPT: 'Alla sidor'
     PAGETYPEANYOPT: 'Vilken som helst'
     PAGETYPEOPT: Sidtyp
     PAGETYPE_TITLE: '(Sidtyp: {type}) {title}'
@@ -55,6 +56,8 @@ sv:
     ROLLEDBACKPUBv2: 'Återställde till den publicerade versionen.'
     ROLLEDBACKVERSIONv2: 'Återställde till version #{version}.'
     SAVED: 'Sparade  ''{title}'' lyckades.'
+    SAVEDRAFT: Spara
+    SEARCHRESULTS: Sökresultat
     SHOW_AS_LIST: 'visa som lista'
     TOO_MANY_PAGES: 'För många sidor'
     TabContent: Innehåll
@@ -63,9 +66,6 @@ sv:
     TreeFiltered: 'Visar sökresultat.'
     TreeFilteredClear: Rensa
     UNPUBLISH_AND_ARCHIVE: 'Avpublicerad och arkivera'
-    PAGESALLOPT: 'Alla sidor'
-    SAVEDRAFT: Spara
-    SEARCHRESULTS: Sökresultat
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Skapa sida'
     ParentMode_child: 'Under en annan sida'
@@ -78,6 +78,7 @@ sv:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Författare
     COMPAREMODE: 'Jämföringsläge (välj två)'
+    COMPARINGVERSION: 'Jämför version {version1} och {version2}.'
     MENUTITLE: Historia
     MULTISELECT: Åtgärder
     NOTPUBLISHED: 'Ej publicerad'
@@ -90,7 +91,6 @@ sv:
     VIEWINGLATEST: 'Nu visas den senaste versionen.'
     VIEWINGVERSION: 'Nu visas version {version}.'
     WHEN: När
-    COMPARINGVERSION: 'Jämför version {version1} och {version2}.'
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Redigera sida'
   SilverStripe\CMS\Controllers\CMSPagesController:
@@ -133,9 +133,9 @@ sv:
     Password: Lösenord
     PostInstallTutorialIntro: 'Denna webbplats är en enklare version av en Silverstripe 3 hemsida. För att bygga ut, ta en titt på {link}.'
     StartEditing: 'Du kan börja redigera innehållet genom att öppna <a href="{link}">CMS:et</a>.'
+    UNVERSIONEDPREVIEW: Förhandsgranska
     UnableDeleteInstall: 'Lyckades inte radera installationsfilerna. Radera följande filer manuellt.'
     VIEWPAGEIN: 'titta på sidan i:'
-    UNVERSIONEDPREVIEW: Förhandsgranska
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arkiverad
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
@@ -152,6 +152,7 @@ sv:
     OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Omdirigerar till en annan intern eller extern sida'
+    FILE: Fil
     HEADER: 'Den här sidan omdirigerar användare till en annan sida'
     OTHERURL: 'Andra sidans URL'
     PLURALNAME: Bas-sidor
@@ -163,7 +164,6 @@ sv:
     REDIRECTTOPAGE: 'En sida på din sajt'
     SINGULARNAME: Omdirigeringssida
     YOURPAGE: 'Sida på din sajt'
-    FILE: Fil
     has_one_LinkTo: 'Länka till'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'En omdirigeringssida har skapats utan att ha något mål.'
@@ -182,6 +182,7 @@ sv:
     BUTTONDELETEDESC: 'Radera från utkast och live, och lägg till i arkiv'
     BUTTONPUBLISHED: Publicerad
     BUTTONSAVED: Sparad
+    BUTTONSAVEPUBLISH: Publicera
     BUTTONUNPUBLISH: Avpublicera
     BUTTONUNPUBLISHDESC: 'Ta bort den här sidan från den publicerade sajten'
     Comments: Kommentarer
@@ -257,18 +258,23 @@ sv:
     VIRTUALPAGEWARNINGSETTINGS: 'Välj en länkad sida i huvudinnehållsfälten för att kunna publicera'
     Viewers: Åskådargrupper
     Visibility: Synlighet
+    db_Content: Innehåll
+    db_Sort: Sortera
+    db_Title: Titel
     has_one_Parent: 'Överordnad sida'
     many_many_BackLinkTracking: 'Spåra inlänkar'
     many_many_ImageTracking: 'Spåra bild'
     many_many_LinkTracking: 'Spåra länk'
-    BUTTONSAVEPUBLISH: Publicera
-    db_Content: Innehåll
-    db_Sort: Sortera
-    db_Title: Titel
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Typ
     TITLE_USED_ON: 'Använd på'
+  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
+    USAGE: Användning
+  SilverStripe\CMS\Model\SiteTreeLink:
+    PLURALNAME: Sidträds-länkar
+    SINGULARNAME: Sidträds-länk
+    has_one_Parent: Förälder
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Länkad sida'
     DESCRIPTION: 'Visar innehåll från en annan sida'
@@ -338,9 +344,3 @@ sv:
     OPERATION_REMOVE: 'Radera valda sidor (VARNING: Detta kommer att radera samtliga valda sidor från både stage och live) '
     SELECTALL: 'Välj alla'
     UNSELECTALL: 'avmarkera alla'
-  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    USAGE: Användning
-  SilverStripe\CMS\Model\SiteTreeLink:
-    PLURALNAME: Sidträds-länkar
-    SINGULARNAME: Sidträds-länk
-    has_one_Parent: Förälder
