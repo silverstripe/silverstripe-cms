@@ -1,36 +1,43 @@
 sr:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: 'Објављено %d страница. Није успело објављивање %d страница.'
+    PUBLISH_PAGES: Објави
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Обнови
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: 'Поништи објаву'
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Приступ ''{title}'' секцији'
     ACCESS_HELP: 'Дозвољава преглед секције која садржи стабло страница и садржај. Дозволе за преглед и уређивање могу се подесити путем специфичних падајућих листи појединачних страница, као и путем "Дозволе за садржај".'
+    ARCHIVE: Архива
+    AddNew: 'Додај нову страницу'
+    AddNewButton: 'Додај нову'
     AddPageRestriction: 'Напомена: Неки типови страница нису дозвољени за овај избор'
+    CANT_REORGANISE: 'Немате право да мењате странице вршног нивоа. Ваше измене нису сачуване.'
+    Cancel: Одустани
     ChoosePageParentMode: 'Изаберите где желите да креирате ову страницу'
     ChoosePageType: 'Изабери тип странице'
     Create: Креирај
     DUPLICATED: '''{title}'' успешно дуплиран'
     DUPLICATEDWITHCHILDREN: '''{title}'' и деца успешно дуплирани'
+    EMAIL: Е-пошта
     NEWPAGE: 'Нова {pagetype}'
     PAGENOTEXISTS: 'Ова страница не постоји'
+    PAGESALLOPT: 'Све странице'
     PAGETYPEANYOPT: 'Било која'
+    PAGETYPEOPT: 'Тип странице'
+    PLEASESAVE: 'Сачувајте страну: ова страна не може да буде ажурирана јер још увек није сачувана.'
     PUBALLCONFIRM: 'Објавите сваку страну на овом сајту копирањем садржај на жив сајт.'
     PUBALLFUN: 'Функција „Објави све“ '
     PUBPAGES: 'Урађено: Објављено {count} страница'
     PageAdded: 'Успешно креирана страница'
     REMOVEDPAGE: 'Са објављеног сајта уклоњена је страница ''{title}'''
     REMOVEDPAGEFROMDRAFT: 'Страница ''{title}'' је уклоњена из нацрта сајта'
+    REORGANISATIONSUCCESSFUL: 'Стабло сајта је успешно реорганизовано.'
     RESTORED: '''{title}'' успешно обновљен'
+    ROLLBACK: 'Врати се на ову верзију'
     ROLLEDBACKPUBv2: 'Враћено на објављену верзију.'
     ROLLEDBACKVERSIONv2: 'Враћено на верзију #{version}.'
-    ARCHIVE: Архива
-    AddNew: 'Додај нову страницу'
-    AddNewButton: 'Додај нову'
-    CANT_REORGANISE: 'Немате право да мењате странице вршног нивоа. Ваше измене нису сачуване.'
-    Cancel: Одустани
-    EMAIL: Е-пошта
-    PAGESALLOPT: 'Све странице'
-    PAGETYPEOPT: 'Тип странице'
-    PLEASESAVE: 'Сачувајте страну: ова страна не може да буде ажурирана јер још увек није сачувана.'
-    REORGANISATIONSUCCESSFUL: 'Стабло сајта је успешно реорганизовано.'
-    ROLLBACK: 'Врати се на ову верзију'
     SAVEDRAFT: Сачувај
     SHOW_AS_LIST: 'прикажи у виду листе'
     TOO_MANY_PAGES: 'Превише страница'
@@ -38,28 +45,32 @@ sr:
     TabHistory: Историја
     TabSettings: Подешавања
   SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Додај страницу'
     ParentMode_child: 'Као подстраницу друге странице'
     ParentMode_top: 'Вршни ниво'
-    MENUTITLE: 'Додај страницу'
     Title: 'Додај страницу'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Измени страницу'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 'Режим поређења (изабери два)'
-    REVERTTOTHISVERSION: 'Врати на ову верзију'
-    SHOWUNPUBLISHED: 'Прикажи необјављене верзије'
-    VIEW: преглед
-    VIEWINGLATEST: 'Тренутно се приказује последња верзија.'
-    VIEWINGVERSION: 'Тренутно је приказана верзија {version}.'
     AUTHOR: Аутор
+    COMPAREMODE: 'Режим поређења (изабери два)'
     COMPARINGVERSION: 'Поређење верзија {version1} и {version2}.'
     MENUTITLE: Историја
     NOTPUBLISHED: Необјављено
     PUBLISHER: Објављивач
+    REVERTTOTHISVERSION: 'Врати на ову верзију'
+    SHOWUNPUBLISHED: 'Прикажи необјављене верзије'
     UNKNOWN: Непознато
+    VIEW: преглед
+    VIEWINGLATEST: 'Тренутно се приказује последња верзија.'
+    VIEWINGVERSION: 'Тренутно је приказана верзија {version}.'
     WHEN: Датум
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Измени страницу'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: Странице
     FILTER: Филтер
     ListView: 'Приказ у виду листе'
+    MENUTITLE: Странице
     TreeView: 'Приказ у виду стабла'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Све странице'
@@ -69,7 +80,11 @@ sr:
     CMS: CMS
     DRAFT: Нацрт
     DRAFTSITE: 'Нарцт сајта'
+    Email: Е-пошта
     INSTALL_SUCCESS: 'Инсталација је успешно обављена!'
+    InstallFilesDeleted: 'Инсталационе датотеке су успешно обрисане.'
+    InstallSecurityWarning: 'Из безбедносних разлога требали би да обришете инсталационе датотеке, осим ако не планирате да касније поново покрећете инсталацију (<em>захтева администраторски приступ, види изнад</em>). Такође, web server захтева право писања само за "assets" фасциклу, па можете уклонити право писања за све друге фасцикле. <a href="{link}" style="text-align: center;">Кликни овде да обришеш инсталационе датотеке.</a>'
+    InstallSuccessCongratulations: 'SilverStripe је успешно инсталиран!'
     LOGGEDINAS: 'Пријављен као'
     LOGIN: Пријава
     LOGOUT: Одјава
@@ -77,33 +92,35 @@ sr:
     NOTLOGGEDIN: 'Нисте пријављени'
     PUBLISHED: Објаљено
     PUBLISHEDSITE: 'Објављени сајт'
-    VIEWPAGEIN: 'Прикажи страницу у:'
-    Email: Е-пошта
-    InstallFilesDeleted: 'Инсталационе датотеке су успешно обрисане.'
-    InstallSecurityWarning: 'Из безбедносних разлога требали би да обришете инсталационе датотеке, осим ако не планирате да касније поново покрећете инсталацију (<em>захтева администраторски приступ, види изнад</em>). Такође, web server захтева право писања само за "assets" фасциклу, па можете уклонити право писања за све друге фасцикле. <a href="{link}" style="text-align: center;">Кликни овде да обришеш инсталационе датотеке.</a>'
-    InstallSuccessCongratulations: 'SilverStripe је успешно инсталиран!'
     Password: Лозинка
     PostInstallTutorialIntro: 'Овај сајт је поједностављена верзија SilverStripe 3 сајта. Сазнајте више о могућностима проширења сајта на {link}.'
     StartEditing: 'Можете започети са изменама садржаја отварањем <a href="{link}">CMS-а</a>.'
     UNVERSIONEDPREVIEW: 'Претходни преглед'
     UnableDeleteInstall: 'Инсталационе датотеке не могу бити избрисане. Ручно избришите следеће датотеке:'
+    VIEWPAGEIN: 'Прикажи страницу у:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Архивирано
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Сидро
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Опис линка'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    HelpChars: 'Специјални карактери су аутоматски конвертовани или уклоњени.'
     Cancel: Одустани
     Edit: Измени
+    HelpChars: 'Специјални карактери су аутоматски конвертовани или уклоњени.'
     OK: 'У реду'
   SilverStripe\CMS\Model\RedirectorPage:
+    FILE: Датотека
     HEADER: 'Ова страница ће преусмерити кориснике на другу страницу'
     OTHERURL: 'URL другог веб сајта'
     REDIRECTTO: 'Преусмери на'
     REDIRECTTOEXTERNAL: 'Други веб сајт'
     REDIRECTTOPAGE: 'Страницу на Вашем веб сајту'
-    YOURPAGE: 'Страница на Вашем веб сајту'
-    FILE: Датотека
     SINGULARNAME: 'Страница за преусмеравање'
+    YOURPAGE: 'Страница на Вашем веб сајту'
     has_one_LinkTo: 'Повежи на'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Страници за преусмеравање није подешено одредиште на које преусмерава.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Свако
     ACCESSHEADER: 'Ко може да види ову страницу?'
@@ -112,10 +129,12 @@ sr:
     ADDEDTODRAFTHELP: 'Страница још није објављена'
     ADDEDTODRAFTSHORT: Нацрт
     APPEARSVIRTUALPAGES: 'Овај садржај се приказује и у секцијама {title} виртуелних страницâ.'
+    ARCHIVEDPAGESHORT: Архивирано
     BUTTONCANCELDRAFT: 'Откажи промене нацрта'
     BUTTONCANCELDRAFTDESC: 'Избришите свој нацрт и вратите се на тренутно објављену страну'
     BUTTONPUBLISHED: Објаљено
     BUTTONSAVED: Сачувано.
+    BUTTONSAVEPUBLISH: Објави
     BUTTONUNPUBLISH: 'Поништи објаву'
     BUTTONUNPUBLISHDESC: 'Уклони ову страницу из објављеног сајта'
     Comments: Коментари
@@ -124,6 +143,7 @@ sr:
     DEFAULTCONTACTTITLE: 'Контактирајте нас'
     DEFAULTHOMETITLE: 'Почетна страница'
     DEPENDENT_NOTE: 'Следеће странице зависе од ове странице. Ово подразумева витруелне странице, странице за преусмеравање и странице са линковима на садржај.'
+    DESCRIPTION: 'Обична страница'
     DependtPageColumnLinkType: 'Тип линка'
     EDITHEADER: 'Ко може да измени ову страницу?'
     EDITORGROUPS: 'Групе за измене'
@@ -133,6 +153,8 @@ sr:
     HASBROKENLINKS: 'Ова страница садржи оштећене линкове.'
     HTMLEDITORTITLE: Садржај
     INHERIT: 'Наследити од родитељске странице'
+    LASTPUBLISHED: 'Последњи пут објављено'
+    LASTSAVED: 'Последњи пут сачувано'
     LASTUPDATED: 'Последњи пут ажурирано'
     LINKCHANGENOTE: 'Промена линка ове странице утицаће, такође, на линкове свих подстраница.'
     MENUTITLE: 'Натпис за навигацију'
@@ -143,7 +165,9 @@ sr:
     MODIFIEDONDRAFTSHORT: Измењено
     MetadataToggle: 'Мета подаци'
     MoreOptions: 'Више опција'
+    NOTPUBLISHED: Необјављено
     OBSOLETECLASS: 'Тип ове странице: {type} није више шодржан. Ако сачувате страницу њен тип ће бити промењен, па можете изгубити своје податке'
+    ONLIVEONLYSHORTHELP: 'Странице је објављена, али је избрисана из нацрта'
     PAGELOCATION: 'Локација странице'
     PAGETITLE: 'Назив странице'
     PAGETYPE: 'Тип странице'
@@ -153,6 +177,7 @@ sr:
     PARENTTYPE_SUBPAGE: 'Подстраница родитељске странице'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Управљај дозволама за садржај'
     PERMISSION_GRANTACCESS_HELP: 'Омогућава подешавање ограничења приступа у секцији "Странице" за сваку страницу појединачно.'
+    PLURALNAME: Странице
     PageTypNotAllowedOnRoot: 'Тип странице "{type}" није дозвољен на вршном нивоу'
     PageTypeNotAllowed: 'Тип странице "{type}" није дозвољен за децу ове родитељске странице'
     REMOVE_INSTALL_WARNING: 'Упозорење: из безбедносних разлога било би пожељно да обришете датотеку  install.php ове SilverStripe инсталације'
@@ -160,6 +185,7 @@ sr:
     REORGANISE_HELP: 'Преуреди странице у стаблу сајта користећи поступак повуци и испусти.'
     SHOWINMENUS: 'Приказати у менијима?'
     SHOWINSEARCH: 'Приказати у претраживањима?'
+    SINGULARNAME: Страница
     TABBEHAVIOUR: Понашање
     TABDEPENDENT: 'Зависне странице'
     TOPLEVEL: 'Садржај сајта (вршни ниво)'
@@ -173,29 +199,24 @@ sr:
     VIRTUALPAGEWARNINGSETTINGS: 'Молимо Вас да изаберете повезану страницу у пољима главног садржаја да би сте објавили'
     Viewers: 'Групе за преглед'
     Visibility: Видљивост
+    db_Content: Садржај
+    db_Title: Наслов
     has_one_Parent: 'Родитељска страница'
     many_many_BackLinkTracking: 'Праћење повратних линкова'
     many_many_ImageTracking: 'Праћење слика'
     many_many_LinkTracking: 'Праћење линкова'
-    ARCHIVEDPAGESHORT: Архивирано
-    BUTTONSAVEPUBLISH: Објави
-    DESCRIPTION: 'Обична страница'
-    LASTPUBLISHED: 'Последњи пут објављено'
-    LASTSAVED: 'Последњи пут сачувано'
-    NOTPUBLISHED: Необјављено
-    ONLIVEONLYSHORTHELP: 'Странице је објављена, али је избрисана из нацрта'
-    PLURALNAME: Странице
-    SINGULARNAME: Страница
-    db_Content: Садржај
-    db_Title: Наслов
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Повезана страница'
+    DESCRIPTION: 'Приказује садржај друге странице'
     EditLink: измени
     HEADER: 'Ово је виртуелна страница'
     HEADERWITHLINK: 'Ово је виртуелна страница која копира садржај из "{title}" ({link})'
     PageTypNotAllowedOnRoot: 'Оригинални тип странице "{type}" није дозвољен на вршном нивоу за ову виртуелну страницу'
-    DESCRIPTION: 'Приказује садржај друге странице'
     SINGULARNAME: 'Виртуелна страница'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 'Странице са оштећеним датотекама'
+    BrokenLinksGroupTitle: 'Извештај о оштећеним линковима'
+    ParameterLiveCheckbox: 'Провери објављени сајт'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: 'Било који'
     BROKENLINKS: 'Извештај о оштећеним линковима'
@@ -218,34 +239,6 @@ sr:
     ReasonDropdownVPBROKENLINK: 'Виртуелна страница која показује на непостојећу страницу'
     RedirectorNonExistent: 'страница за преусмеривање која показује на непостојећу страницу'
     VirtualPageNonExistent: 'виртуелна страница која показује на непостојећу страницу'
-  SilverStripe\CMS\Search\SearchForm:
-    FILTERDATEFROM: Од
-    FILTERDATETO: За
-    GO: Иди
-    SEARCH: Претражи
-    SearchResults: 'Резултати претраживања'
-    FILTERLABELTEXT: Претражи
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
-    PUBLISHED_PAGES: 'Објављено %d страница. Није успело објављивање %d страница.'
-    PUBLISH_PAGES: Објави
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
-    RESTORE: Обнови
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
-    UNPUBLISH_PAGES: 'Поништи објаву'
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Измени страницу'
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Измени страницу'
-  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
-    ANCHORVALUE: Сидро
-  SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    LINKDESCR: 'Опис линка'
-  SilverStripe\CMS\Model\RedirectorPageController:
-    HASBEENSETUP: 'Страници за преусмеравање није подешено одредиште на које преусмерава.'
-  SilverStripe\CMS\Reports\BrokenFilesReport:
-    BROKENFILES: 'Странице са оштећеним датотекама'
-    BrokenLinksGroupTitle: 'Извештај о оштећеним линковима'
-    ParameterLiveCheckbox: 'Провери објављени сајт'
   SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
     BROKENREDIRECTORPAGES: 'Странице за преусмеривање које показују на избрисане странице'
     BrokenLinksGroupTitle: 'Извештај о оштећеним линковима'
@@ -259,3 +252,10 @@ sr:
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'Извештаји о садржају'
     LAST2WEEKS: 'Странице мењане у задње 2 недеље'
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERDATEFROM: Од
+    FILTERDATETO: За
+    FILTERLABELTEXT: Претражи
+    GO: Иди
+    SEARCH: Претражи
+    SearchResults: 'Резултати претраживања'

@@ -20,6 +20,7 @@ zh:
     AddNewButton: 增加一个新的
     AddPageRestriction: 备注：某些类型页面是不允许选择该项的
     ArchiveWarning: 警告：在进行归档前，当前页面将被取消发布？是否继续？
+    CANT_REORGANISE: 您没有权限更改顶层页面。您的更改没有保存。
     Cancel: 取消
     ChoosePageParentMode: 选择在哪创建此页面
     ChoosePageType: 选择页面类型
@@ -30,6 +31,7 @@ zh:
     NEWPAGE: '新建{pagetype}'
     PAGENOTEXISTS: 该页面不存在
     PAGES: 页面状态
+    PAGESALLOPT: 所有页面
     PAGETYPEANYOPT: 任何
     PAGETYPEOPT: 页面类型
     PLEASESAVE: '请保存页面: 当前页面未被保存，导致未能更新成功'
@@ -40,15 +42,13 @@ zh:
     PageAdded: 成功创建页面
     REMOVEDPAGE: '从已发布站点删除’{title}'''
     REMOVEDPAGEFROMDRAFT: 从草稿站点删除‘s%’
+    REORGANISATIONSUCCESSFUL: 重新组织网站地图已成功
     RESTORE: 恢复草稿
     RESTORED: '成功恢复’{title}‘'
     ROLLBACK: 回滚至当前版本
     ROLLEDBACKPUBv2: 回滚到已发布版本。
     ROLLEDBACKVERSIONv2: '回滚到版本#{version}。'
     SAVED: ' ''{title}'' 保存成功。'
-    CANT_REORGANISE: 您没有权限更改顶层页面。您的更改没有保存。
-    PAGESALLOPT: 所有页面
-    REORGANISATIONSUCCESSFUL: 重新组织网站地图已成功
     SAVEDRAFT: 保存
     SHOW_AS_LIST: 以列表方式展示
     TOO_MANY_PAGES: 页面数目过多
@@ -59,28 +59,32 @@ zh:
     TreeFilteredClear: 清除
     UNPUBLISH_AND_ARCHIVE: 取消并归档
   SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 添加页面
     ParentMode_child: 根据另一个页面
     ParentMode_top: 顶层
-    MENUTITLE: 添加页面
     Title: 添加页面
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 编辑页面
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 比较模式（选择两个）
-    REVERTTOTHISVERSION: 恢复到这个版本
-    SHOWUNPUBLISHED: 显示未发布的版本
-    VIEW: 查看
-    VIEWINGLATEST: 当前正在查看最新版本。
-    VIEWINGVERSION: '当前正在查看版本{version}。'
     AUTHOR: 作者
+    COMPAREMODE: 比较模式（选择两个）
     COMPARINGVERSION: '正在对比版本{version1}和{version2}。'
     MENUTITLE: 历史记录
     NOTPUBLISHED: 未发布
     PUBLISHER: 发布者
+    REVERTTOTHISVERSION: 恢复到这个版本
+    SHOWUNPUBLISHED: 显示未发布的版本
     UNKNOWN: 未知的
+    VIEW: 查看
+    VIEWINGLATEST: 当前正在查看最新版本。
+    VIEWINGVERSION: '当前正在查看版本{version}。'
     WHEN: 何时
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 编辑页面
   SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: 页面
     FILTER: 过滤器
     ListView: 列表视图
+    MENUTITLE: 页面
     TreeView: 树视图
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 所有页面
@@ -90,7 +94,11 @@ zh:
     CMS: 内容管理系统
     DRAFT: 草稿
     DRAFTSITE: 草稿站点
+    Email: 电子邮件
     INSTALL_SUCCESS: 安装成功
+    InstallFilesDeleted: 安装文件已经成功删除。
+    InstallSecurityWarning: '出于安全原因，您应该现在删除安装文件，除非您计划以后（<em>需要以管理员身份登录，详见下方</em>）重新安装。web服务器现在仅需要对“assets”文件夹的写权限，您可以删除所有其他文件夹的写权限。<a href="{link}" style="text-align: center;">点击这里删除安装文件。</a>'
+    InstallSuccessCongratulations: SilverStripe已经成功安装！
     LOGGEDINAS: 当前登录
     LOGIN: 登录
     LOGOUT: 注销
@@ -98,34 +106,36 @@ zh:
     NOTLOGGEDIN: 未登录
     PUBLISHED: 已发布
     PUBLISHEDSITE: 已发布站点
-    VIEWPAGEIN: 查看页面，在：
-    Email: 电子邮件
-    InstallFilesDeleted: 安装文件已经成功删除。
-    InstallSecurityWarning: '出于安全原因，您应该现在删除安装文件，除非您计划以后（<em>需要以管理员身份登录，详见下方</em>）重新安装。web服务器现在仅需要对“assets”文件夹的写权限，您可以删除所有其他文件夹的写权限。<a href="{link}" style="text-align: center;">点击这里删除安装文件。</a>'
-    InstallSuccessCongratulations: SilverStripe已经成功安装！
     Password: 密码
     PostInstallTutorialIntro: '该网站是一个简化版的SilverStrip 3 站点。对其进行扩展，请查看{link}。'
     StartEditing: '您可以通过打开<a href="{link}">;内容管理系统</a>开始编辑您的内容。'
     UNVERSIONEDPREVIEW: 预览
     UnableDeleteInstall: 无法删除安装文件。请手动删除以下文件
+    VIEWPAGEIN: 查看页面，在：
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 已存档
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: 固定
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 链接描述
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    HelpChars: 特殊字符已自动转换或删除。
     Cancel: 取消
     Edit: 编辑
+    HelpChars: 特殊字符已自动转换或删除。
     OK: 确认
   SilverStripe\CMS\Model\RedirectorPage:
+    FILE: 文件
     HEADER: 该页面将会使用户转向另外一个页面
     OTHERURL: 其他网站URL
+    PLURALNAME: 基本页面
     REDIRECTTO: 重定向到
     REDIRECTTOEXTERNAL: 另一个网站
     REDIRECTTOPAGE: 您网站上的一个页面
-    YOURPAGE: 您网站的页面
-    FILE: 文件
-    PLURALNAME: 基本页面
     SINGULARNAME: 重定向页
+    YOURPAGE: 您网站的页面
     has_one_LinkTo: 链接到
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 建立了一个没有任何跳转目标的重定向页。
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 任何人
     ACCESSHEADER: 谁可以查看该页面？
@@ -134,10 +144,12 @@ zh:
     ADDEDTODRAFTHELP: 页面尚未发布
     ADDEDTODRAFTSHORT: 草稿
     APPEARSVIRTUALPAGES: '该内容也出现在{title}部分的虚拟页面中。'
+    ARCHIVEDPAGESHORT: 已存档
     BUTTONCANCELDRAFT: 取消草稿改动
     BUTTONCANCELDRAFTDESC: 删除您的草稿并回复至当前已发布的页面
     BUTTONPUBLISHED: 已发布
     BUTTONSAVED: 已保存
+    BUTTONSAVEPUBLISH: 发布
     BUTTONUNPUBLISH: 未发布
     BUTTONUNPUBLISHDESC: 将该页面从已发布的站点中删除
     Comments: 评论
@@ -146,6 +158,7 @@ zh:
     DEFAULTCONTACTTITLE: 联络我们
     DEFAULTHOMETITLE: 首页
     DEPENDENT_NOTE: 以下页面依赖该页。包括虚拟页面，重定向页，以及有内容链接的页面。
+    DESCRIPTION: 通用内容页面
     DependtPageColumnLinkType: 链接类型
     EDITHEADER: 谁可以修改该页面？
     EDITORGROUPS: 编辑分组
@@ -155,6 +168,8 @@ zh:
     HASBROKENLINKS: 该页面包含无效链接。
     HTMLEDITORTITLE: 内容
     INHERIT: 从父页面继承
+    LASTPUBLISHED: 最后发布时间
+    LASTSAVED: 最后保存时间
     LASTUPDATED: 最后更新
     LINKCHANGENOTE: 改变该页面的链接将会影响到所有子页面的链接。
     MENUTITLE: 导航标签
@@ -165,7 +180,9 @@ zh:
     MODIFIEDONDRAFTSHORT: 已修改
     MetadataToggle: 元数据
     MoreOptions: 更多选项
+    NOTPUBLISHED: 未发布
     OBSOLETECLASS: '该页面属于陈旧的类型{type}。保存将会重置它的类型，可能会造成您的数据丢失'
+    ONLIVEONLYSHORTHELP: 页面已发布，但是已从草稿中删除
     PAGELOCATION: 页面位置
     PAGETITLE: 页面名称
     PAGETYPE: 页面类型
@@ -175,6 +192,7 @@ zh:
     PARENTTYPE_SUBPAGE: 父页面之下的子页面
     PERMISSION_GRANTACCESS_DESCRIPTION: 管理访问内容的权限
     PERMISSION_GRANTACCESS_HELP: 允许在“页面”部分设置针对页面的访问限制。
+    PLURALNAME: 页面
     PageTypNotAllowedOnRoot: '页面类型“{type}”不允许做为根级页'
     PageTypeNotAllowed: '页面类型“{type}”不允许作为该父页面的子页面'
     REMOVE_INSTALL_WARNING: 警告：出于安全原因考虑，您应该从该SilverStripe安装副本中删除install.php。
@@ -182,6 +200,7 @@ zh:
     REORGANISE_HELP: 在站点树上通过拖放重新安排页面
     SHOWINMENUS: 在菜单中显示？
     SHOWINSEARCH: 在搜索结果中显示？
+    SINGULARNAME: 页面
     TABBEHAVIOUR: 行为
     TABDEPENDENT: 依赖页面
     TOPLEVEL: 站点内容（顶层）
@@ -195,31 +214,30 @@ zh:
     VIRTUALPAGEWARNINGSETTINGS: 请在主目录栏选择一个链接的页面以待发布
     Viewers: 浏览者分组
     Visibility: 可见性
+    db_Content: 内容
+    db_Title: 题目
     has_one_Parent: 父页面
+    has_one_Subsite: 子网站
     many_many_BackLinkTracking: 后连接跟踪
     many_many_ImageTracking: 图像跟踪
     many_many_LinkTracking: 链接跟踪
-    ARCHIVEDPAGESHORT: 已存档
-    BUTTONSAVEPUBLISH: 发布
-    DESCRIPTION: 通用内容页面
-    LASTPUBLISHED: 最后发布时间
-    LASTSAVED: 最后保存时间
-    NOTPUBLISHED: 未发布
-    ONLIVEONLYSHORTHELP: 页面已发布，但是已从草稿中删除
-    PLURALNAME: 页面
-    SINGULARNAME: 页面
-    db_Content: 内容
-    db_Title: 题目
-    has_one_Subsite: 子网站
+  SilverStripe\CMS\Model\SiteTreeFileExtension:
+    TITLE_TYPE: 类型
+  SilverStripe\CMS\Model\SiteTreeLink:
+    has_one_Parent: 父
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 链接的页面
+    DESCRIPTION: 显示另一个页面的内容
     EditLink: 编辑
     HEADER: 这是一个虚拟页面
     HEADERWITHLINK: '这是一个从“{标题}”复制内容的虚拟页面（{链接}）'
-    PageTypNotAllowedOnRoot: '此虚拟页面的根级不允许使用原页面类型 "{type}"'
-    DESCRIPTION: 显示另一个页面的内容
     PLURALNAME: 基本页面
+    PageTypNotAllowedOnRoot: '此虚拟页面的根级不允许使用原页面类型 "{type}"'
     SINGULARNAME: 虚拟页面
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 页面含有无效文件的
+    BrokenLinksGroupTitle: 无效链接报告
+    ParameterLiveCheckbox: 检查线上站点
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: 任意
     BROKENLINKS: 报告无效链接
@@ -242,29 +260,6 @@ zh:
     ReasonDropdownVPBROKENLINK: 虚拟页面指向的页面不存在
     RedirectorNonExistent: 页面重定向工具指向的页面不存在
     VirtualPageNonExistent: 虚拟页面指向的页面不存在
-  SilverStripe\CMS\Search\SearchForm:
-    FILTERDATEFROM: 从
-    FILTERDATETO: 到
-    GO: 到
-    SEARCH: 搜索
-    SearchResults: 搜索结果
-    FILTERLABELTEXT: 查询
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 编辑页面
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 编辑页面
-  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
-    ANCHORVALUE: 固定
-  SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    LINKDESCR: 链接描述
-  SilverStripe\CMS\Model\RedirectorPageController:
-    HASBEENSETUP: 建立了一个没有任何跳转目标的重定向页。
-  SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_TYPE: 类型
-  SilverStripe\CMS\Reports\BrokenFilesReport:
-    BROKENFILES: 页面含有无效文件的
-    BrokenLinksGroupTitle: 无效链接报告
-    ParameterLiveCheckbox: 检查线上站点
   SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
     BROKENREDIRECTORPAGES: 重定向页面指向了已删除页面
     BrokenLinksGroupTitle: 无效链接报告
@@ -278,5 +273,10 @@ zh:
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 内容报告
     LAST2WEEKS: 过去2周内编辑过的页面
-  SilverStripe\CMS\Model\SiteTreeLink:
-    has_one_Parent: 父
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERDATEFROM: 从
+    FILTERDATETO: 到
+    FILTERLABELTEXT: 查询
+    GO: 到
+    SEARCH: 搜索
+    SearchResults: 搜索结果

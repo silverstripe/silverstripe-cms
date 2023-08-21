@@ -1,21 +1,32 @@
 fo:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Endurstovna
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: 'Óalmenna kunngerð'
   SilverStripe\CMS\Controllers\CMSMain:
+    EMAIL: Teldupostur
     PAGENOTEXISTS: 'Hendan síðan finst ikki.'
+    PAGETYPEOPT: 'Slag av síðu'
+    PLEASESAVE: 'Vinarliga goym síðuna: Hendan síðan kundi ikki blíva dagført, tí at hon er ikki goymd enn.'
     PUBALLCONFIRM: 'Vinarliga almenna kunngerð allar síðurnar á heimasíðuni,  avrita innihaldsstøðið til beinleiðis'
     PUBALLFUN: '"Ger alt alment" funka'
     REMOVEDPAGEFROMDRAFT: 'Strikaði ''{title}'' frá kladdu heimasíðuni'
-    EMAIL: Teldupostur
-    PAGETYPEOPT: 'Slag av síðu'
-    PLEASESAVE: 'Vinarliga goym síðuna: Hendan síðan kundi ikki blíva dagført, tí at hon er ikki goymd enn.'
     ROLLBACK: 'Far aftur til hesa útgávuna'
     SAVEDRAFT: Goym
     TabContent: Innihald
+  SilverStripe\CMS\Controllers\ContentController:
+    Email: Teldupostur
+    Password: Loyniorð
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Leinku frágreiðing'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
+    FILE: Fíla
     REDIRECTTO: 'Víðarisend til'
     REDIRECTTOEXTERNAL: 'Onnur heimasíðu'
     REDIRECTTOPAGE: 'Ein síða á tínari heimasíðu'
     YOURPAGE: 'Síða á tínari heimasíðu'
-    FILE: Fíla
     has_one_LinkTo: 'Leinka til'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Øll
@@ -40,28 +51,17 @@ fo:
     PAGETYPE: 'Slag av síðu'
     SHOWINMENUS: 'Vís á vælmyndum?'
     SHOWINSEARCH: 'Vís í leiting?'
+    SINGULARNAME: Síða
     TABBEHAVIOUR: Virkisháttur
     TOPLEVEL: 'Heimasíðu innihald (Fyrsta støði)'
-    has_one_Parent: Yvirsíða
-    SINGULARNAME: Síða
     db_Content: Innihald
     db_Title: Heiti
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Víðari
-    SEARCH: Leita
-    FILTERLABELTEXT: Leita
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
-    RESTORE: Endurstovna
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
-    UNPUBLISH_PAGES: 'Óalmenna kunngerð'
-  SilverStripe\CMS\Controllers\ContentController:
-    Email: Teldupostur
-    Password: Loyniorð
-  SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    LINKDESCR: 'Leinku frágreiðing'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
+    has_one_Parent: Yvirsíða
   SilverStripe\CMS\Reports\BrokenLinksReport:
     PageName: 'Navn á síðuni'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     LAST2WEEKS: 'Síður broyttar seinastu 2 vikurnar'
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERLABELTEXT: Leita
+    GO: Víðari
+    SEARCH: Leita

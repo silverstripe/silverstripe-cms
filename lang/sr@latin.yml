@@ -1,13 +1,4 @@
 sr@latin:
-  SilverStripe\CMS\Model\SiteTree:
-    TABMAIN: Glavno
-    BUTTONSAVED: Sačuvano.
-    Comments: Komentari
-    Content: Sadržaj
-    HTMLEDITORTITLE: Sadržaj
-    SINGULARNAME: Stranica
-    db_Content: Sadržaj
-    db_Title: Naslov
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Pristup ''{title}'' sekciji'
     CANT_REORGANISE: 'Nemate pravo da menjate stranice vršnog nivoa. Vaše izmene nisu sačuvane.'
@@ -42,6 +33,17 @@ sr@latin:
     FILE: Datoteka
     REDIRECTTOEXTERNAL: 'drugi vebsajt'
     has_one_LinkTo: 'Poveži na'
+  SilverStripe\CMS\Model\SiteTree:
+    BUTTONSAVED: Sačuvano.
+    Comments: Komentari
+    Content: Sadržaj
+    HTMLEDITORTITLE: Sadržaj
+    SINGULARNAME: Stranica
+    TABMAIN: Glavno
+    db_Content: Sadržaj
+    db_Title: Naslov
+  SilverStripe\CMS\Model\SiteTreeLink:
+    has_one_Parent: Roditelj
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: 'Bilo koji'
     ColumnURL: URL
@@ -49,5 +51,3 @@ sr@latin:
     FILTERLABELTEXT: Pretraga
     GO: Idi
     SEARCH: Pretraga
-  SilverStripe\CMS\Model\SiteTreeLink:
-    has_one_Parent: Roditelj

@@ -1,7 +1,13 @@
 lt:
   SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
-    PUBLISH_PAGES: Publikuoti
     PUBLISHED_PAGES: 'Publikuoti %d puslapiai, %d klaidų.'
+    PUBLISH_PAGES: Publikuoti
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Atstatyti
+    RESTORED_PAGES: 'Atstatyti %d puslapiai'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISHED_PAGES: 'Nebepublikuojami %d puslapiai'
+    UNPUBLISH_PAGES: Nebepublikuoti
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Priėjimas prie ''{title}'' dalies'
     ACCESS_HELP: 'Leisti peržiūrėti svetainės medžio ir turinio skiltį. Peržiūros, bei redagavimo leidimai gali būti pakeisti per iškrentančius pasirinkimus ir per atskirus "Turinio leidimai".'
@@ -10,38 +16,38 @@ lt:
     AddNew: 'Pridėti naują puslapį'
     AddNewButton: 'Pridėti naują'
     AddPageRestriction: 'Pastaba: kai kurie puslapių tipai šioje vietoje neleidžiami'
+    CANT_REORGANISE: 'Jūs neturite leidimo keisti aukščiausio lygio puslapių. Jūsų pakeitimai neišsaugoti.'
     Cancel: Atšaukti
     ChoosePageParentMode: 'Pasirinkite kur sukurti šį puslapį'
     ChoosePageType: 'Pasirinkite puslapio tipą'
     Create: Sukurti
     DUPLICATED: 'Puslapis ''{title}'' kopijuotas sėkmingai'
     DUPLICATEDWITHCHILDREN: 'Puslapis ''{title}'' , bei jo vaikai kopijuoti sėkmingai'
+    EMAIL: 'E. paštas'
     NEWPAGE: 'Naujas {pagetype}'
     PAGENOTEXISTS: 'Šis puslapis neegzistuoja'
+    PAGES: 'Puslapio būsena'
     PAGESALLOPT: 'Visi puslapiai'
     PAGETYPEANYOPT: 'Bet koks'
     PAGETYPEOPT: 'Puslapio tipas'
+    PLEASESAVE: 'Prašome išsaugoti puslapį: Šis puslapis negali būti atnaujintas, nes jis dar nėra išsaugotas.'
     PUBALLCONFIRM: 'Prašome publikuoti kiekvieną svetainės puslapį, kopijuojant turinį į svetainę'
     PUBALLFUN: '"Publikuoti viską" funkcionalumas'
     PUBPAGES: 'Įvykdyta: Publikuoti {count} puslapiai'
     PageAdded: 'Puslapis sėkmingai sukurtas'
     REMOVEDPAGE: 'Iš publikuojamos svetainės pašalintas ''{title}'''
     REMOVEDPAGEFROMDRAFT: '''{title}'' pašalintas iš juodraštinės svetainės'
+    REORGANISATIONSUCCESSFUL: 'Puslapių medis pertvarkytas sėkmingai.'
+    RESTORE: Atstatyti
     RESTORED: '''{title}'' atstatytas sėkmingai'
     RESTORE_DESC: 'Atstatyti suarchyvuotą versiją kaip juodraštinį puslapį'
     RESTORE_TO_ROOT: 'Atstatyti juodraštį aukščiausiame lygyje'
     RESTORE_TO_ROOT_DESC: 'Atstatyti suarchyvuotą versiją kaip aukščiausio lygio juodraštinį puslapį'
+    ROLLBACK: 'Grįžti prie šios versijos'
     ROLLEDBACKPUBv2: 'Sugrįžta prie publikuotos versijos.'
     ROLLEDBACKVERSIONv2: 'Sugrįžta prie  #{version} versijos.'
     SAVEDRAFT: Išsaugoti
     SEARCHRESULTS: 'Paieškos rezultatai'
-    CANT_REORGANISE: 'Jūs neturite leidimo keisti aukščiausio lygio puslapių. Jūsų pakeitimai neišsaugoti.'
-    EMAIL: 'E. paštas'
-    PAGES: 'Puslapio būsena'
-    PLEASESAVE: 'Prašome išsaugoti puslapį: Šis puslapis negali būti atnaujintas, nes jis dar nėra išsaugotas.'
-    REORGANISATIONSUCCESSFUL: 'Puslapių medis pertvarkytas sėkmingai.'
-    RESTORE: Atstatyti
-    ROLLBACK: 'Grįžti prie šios versijos'
     SHOW_AS_LIST: 'rodyti kaip sąrašą'
     TOO_MANY_PAGES: 'Per daug puslapių'
     TabContent: Turinys
@@ -50,32 +56,46 @@ lt:
     TreeFiltered: 'Rodomi paieškos rezultatai.'
     TreeFilteredClear: 'Išvalyti filtrą'
   SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Pridėti puslapį'
     ParentMode_child: 'Po kitu puslapiu'
     ParentMode_top: 'Aukščiausias lygmuo'
-    MENUTITLE: 'Pridėti puslapį'
     Title: 'Pridėti puslapį'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Redaguoti puslapį'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 'Palyginimo režimas (pasirinkite du)'
-    REVERTTOTHISVERSION: 'Palikti šią versiją'
-    SHOWUNPUBLISHED: 'Rodyti nepublikuojamas versijas'
-    VIEW: peržiūrėti
-    VIEWINGLATEST: 'Dabar peržiūrima naujausia versija.'
-    VIEWINGVERSION: 'Dabar peržiūrima versija {version}.'
     AUTHOR: Autorius
+    COMPAREMODE: 'Palyginimo režimas (pasirinkite du)'
     COMPARINGVERSION: 'Lyginamos versijos {version1} ir {version2}.'
     MENUTITLE: Istorija
     MULTISELECT: 'Daugybinis pasirinkimas'
     NOTPUBLISHED: Nepublikuotas
     PUBLISHER: Publikavo
+    REVERTTOTHISVERSION: 'Palikti šią versiją'
+    SHOWUNPUBLISHED: 'Rodyti nepublikuojamas versijas'
     UNKNOWN: Nežinoma
+    VIEW: peržiūrėti
+    VIEWINGLATEST: 'Dabar peržiūrima naujausia versija.'
+    VIEWINGVERSION: 'Dabar peržiūrima versija {version}.'
     WHEN: Kada
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Redaguoti puslapį'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: Puslapiai
     FILTER: Filtruoti
     ListView: 'Sąrašo rodinys'
+    MENUTITLE: Puslapiai
     TreeView: 'Medžio rodinys'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
+    Title: 'Pakeisti puslapiai'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
+    Title: 'Visi puslapiai, taip pat ir archyvuoti'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
+    Title: 'Publikuoti puslapiai'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Visi puslapiai'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Archyvuoti puslapiai'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Juodraštiniai puslapiai'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Publikuotas, bet pašalintas iš juodraščių'
   SilverStripe\CMS\Controllers\ContentController:
@@ -84,7 +104,11 @@ lt:
     CMS: TVS
     DRAFT: Juodraštis
     DRAFTSITE: 'Juodraštinė svetainė'
+    Email: 'E. paštas'
     INSTALL_SUCCESS: 'Įdiegta sėkmingai!'
+    InstallFilesDeleted: 'Įdiegimo bylos pašalintos sėkmingai.'
+    InstallSecurityWarning: 'Saugumo sumetimais Jūs turėtumėte ištrinti įdiegimo bylas, nebent vėliau planuojate diegimo procesą atlikti iš naujo (<em>bus reikalinga administravimo prieiga, žiūrėkite viršuje</em>). Web serveris turi turėti rašymo teises "assets" katalogui, kitiems katalogams tokių teisių nereikia. <a href="{link}" style="text-align: center;">Spauskite čia jei norite ištrinti įdiegimo bylas</a>'
+    InstallSuccessCongratulations: 'SilverStripe sėkmingai įdiegta!'
     LOGGEDINAS: 'Prisijungėte kaip '
     LOGIN: Prisijungti
     LOGOUT: Atsijungti
@@ -92,34 +116,36 @@ lt:
     NOTLOGGEDIN: Neprisijungęs
     PUBLISHED: Publikuota
     PUBLISHEDSITE: 'Publikuojama svetainė'
-    VIEWPAGEIN: 'Peržiūrėti puslapį:'
-    Email: 'E. paštas'
-    InstallFilesDeleted: 'Įdiegimo bylos pašalintos sėkmingai.'
-    InstallSecurityWarning: 'Saugumo sumetimais Jūs turėtumėte ištrinti įdiegimo bylas, nebent vėliau planuojate diegimo procesą atlikti iš naujo (<em>bus reikalinga administravimo prieiga, žiūrėkite viršuje</em>). Web serveris turi turėti rašymo teises "assets" katalogui, kitiems katalogams tokių teisių nereikia. <a href="{link}" style="text-align: center;">Spauskite čia jei norite ištrinti įdiegimo bylas</a>'
-    InstallSuccessCongratulations: 'SilverStripe sėkmingai įdiegta!'
     Password: Slaptažodis
     PostInstallTutorialIntro: 'Ši svetainė ir supaprastinta SilverStripe 3 svetainės versija. Norėdami praplėsti funkcionalumą apsilankykite {link}'
     StartEditing: 'Jūs galite pradėti redaguoti turinį atsidarę <a href="{link}">TVS</a>.'
     UNVERSIONEDPREVIEW: Peržiūra
     UnableDeleteInstall: 'Nepavyko ištrinti įdiegimo bylų. Prašome pašalinti bylas rankiniu būdu.'
+    VIEWPAGEIN: 'Peržiūrėti puslapį:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archyvuota
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Nuoroda
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Nuorodos aprašymas'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    HelpChars: 'Specialūs simboliai automatiškai pakeičiami arba pašalinami.'
     Cancel: Atšaukti
     Edit: Redaguoti
+    HelpChars: 'Specialūs simboliai automatiškai pakeičiami arba pašalinami.'
     OK: Gerai
   SilverStripe\CMS\Model\RedirectorPage:
+    FILE: Byla
     HEADER: 'Šis puslapis nukreips lankytojus į kitą puslapį'
     OTHERURL: 'Kitos svetainės URL adresas'
+    PLURALNAME: 'Baziniai puslapiai'
     REDIRECTTO: 'Nukreipti į'
     REDIRECTTOEXTERNAL: 'Kita svetainė'
     REDIRECTTOPAGE: 'Puslapis Jūsų svetainėje'
-    YOURPAGE: 'Puslapį Jūsų svetainėje'
-    FILE: Byla
-    PLURALNAME: 'Baziniai puslapiai'
     SINGULARNAME: 'Nukreipimo puslapis'
+    YOURPAGE: 'Puslapį Jūsų svetainėje'
     has_one_LinkTo: 'Nuoroda į'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Nukreipimo puslapis neturintis nukreipimo.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'Bet kas'
     ACCESSHEADER: 'Kas gali matyti šį puslapį?'
@@ -134,6 +160,7 @@ lt:
     BUTTONCANCELDRAFTDESC: 'Ištrinti juodraštį ir grįžti prie šiuo metu publikuojamo puslapio'
     BUTTONPUBLISHED: Publikuota
     BUTTONSAVED: Išsaugota
+    BUTTONSAVEPUBLISH: Publikuoti
     BUTTONUNPUBLISH: Nebepublikuoti
     BUTTONUNPUBLISHDESC: 'Pašalinti šį puslapį iš publikuojamos svetainės'
     Comments: Komentarai
@@ -143,6 +170,7 @@ lt:
     DEFAULTHOMECONTENT: '<p>Sveiki atvykę į SilverStripe! Tai yra pagrindinis puslapis. Jūs galite redaguoti šį puslapį atsidarę <a href="admin/">TVS</a>. Dabar galite naudotis <a href="http://doc.silverstripe.com">programuotojų dokumentacija</a>, arba pradėti nuo <a href = "http://doc.silverstripe.com/doku.php?id=tutorials">SilverStripe pamokų.</a></p>'
     DEFAULTHOMETITLE: Pradžia
     DEPENDENT_NOTE: 'Šiam puslapiui priklauso šie puslapiai. Tai gali būti virtualūs, nukreipiantys puslapiai, bei puslapiai, rodantys kitų puslapių turinį.'
+    DESCRIPTION: 'Standartinio turinio puslapis'
     DependtPageColumnLinkType: 'Nuorodos tipas'
     EDITHEADER: 'Kas gali redaguoti šį puslapį?'
     EDITORGROUPS: 'Redaktorių grupės'
@@ -152,6 +180,8 @@ lt:
     HASBROKENLINKS: 'Šiame puslapyje yra nebegaliojančių nuorodų.'
     HTMLEDITORTITLE: Turinys
     INHERIT: 'Paveldėti iš pradinio puslapio'
+    LASTPUBLISHED: Publikuota
+    LASTSAVED: Išsaugota
     LASTUPDATED: Atnaujinta
     LINKCHANGENOTE: 'Keičiant šio puslapio nuorodą, keisis ir jam priklausančių puslapių nuorodos.'
     MENUTITLE: 'Navigacijos pavadinimas'
@@ -162,7 +192,9 @@ lt:
     MODIFIEDONDRAFTSHORT: Pakeistas
     MetadataToggle: Metaduomenys
     MoreOptions: 'Daugiau pasirinkimų'
+    NOTPUBLISHED: Nepublikuotas
     OBSOLETECLASS: 'Šis puslapio tipas {type} neegzistuoja. Išsaugojus bus pakeistas tipas ir galite prarasti duomenis'
+    ONLIVEONLYSHORTHELP: 'Puslapis buvo publikuotas, tačiau buvo ištrintas iš juodraščių.'
     PAGELOCATION: 'Puslapio vieta'
     PAGETITLE: 'Puslapio pavadinimas'
     PAGETYPE: 'Puslapio tipas'
@@ -172,6 +204,7 @@ lt:
     PARENTTYPE_SUBPAGE: 'Po kitu puslapiu'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Valdyti turinio redagavimo teises'
     PERMISSION_GRANTACCESS_HELP: 'Leisti nustatyti puslapiui galiojančias specifines teises, "Puslapiai" skiltyje.'
+    PLURALNAME: Puslapiai
     PageTypNotAllowedOnRoot: 'Puslapio tipas "{type}" neleidžiamas šakniniame lygmenyje'
     PageTypeNotAllowed: 'Puslapio tipas "{type}" neleidžiamas po pasirinktu puslapiu'
     REMOVE_INSTALL_WARNING: 'Perspėjimas: Saugumo sumetimais Jūs turėtumėte pašalinti install.php bylą iš SilverStripe.'
@@ -179,6 +212,7 @@ lt:
     REORGANISE_HELP: 'Perrikiuoti puslapius naudojant Tempti/Mesti būdą.'
     SHOWINMENUS: 'Ar įtraukti į rodomą meniu?'
     SHOWINSEARCH: 'Rodyti paieškoje?'
+    SINGULARNAME: Puslapis
     TABBEHAVIOUR: Elgsena
     TABDEPENDENT: 'Priklausantys puslapiai'
     TOPLEVEL: 'Svetainės turinys (aukščiausias lygmuo)'
@@ -192,29 +226,27 @@ lt:
     VIRTUALPAGEWARNINGSETTINGS: 'Norėdami publikuoti šį puslapį, turite pasirinkti prijungtą puslapį pagrindiniuose turinio laukuose'
     Viewers: 'Lankytojų grupės'
     Visibility: Matomumas
+    db_Content: Turinys
+    db_Title: Pavadinimas
     has_one_Parent: 'Po puslapiu'
     many_many_BackLinkTracking: 'Atgalinis stebėjimas'
     many_many_ImageTracking: 'Paveikslėlių sekimas'
     many_many_LinkTracking: 'Nuorodos sekimas'
-    BUTTONSAVEPUBLISH: Publikuoti
-    DESCRIPTION: 'Standartinio turinio puslapis'
-    LASTPUBLISHED: Publikuota
-    LASTSAVED: Išsaugota
-    NOTPUBLISHED: Nepublikuotas
-    ONLIVEONLYSHORTHELP: 'Puslapis buvo publikuotas, tačiau buvo ištrintas iš juodraščių.'
-    PLURALNAME: Puslapiai
-    SINGULARNAME: Puslapis
-    db_Content: Turinys
-    db_Title: Pavadinimas
+  SilverStripe\CMS\Model\SiteTreeLink:
+    has_one_Parent: Priklauso
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Prijungtas puslapis'
+    DESCRIPTION: 'Rodo kito puslapio turinį'
     EditLink: redaguoti
     HEADER: 'Tai yra virtualus puslapis'
     HEADERWITHLINK: 'Tai yra virtualus puslapis su turiniu iš puslapio "{title}" ({link})'
-    PageTypNotAllowedOnRoot: 'Norimas puslapio tipas "{type}" neleidžiamas šiam virtualiam puslapiui šakniniame lygmenyje.'
-    DESCRIPTION: 'Rodo kito puslapio turinį'
     PLURALNAME: 'Baziniai puslapiai'
+    PageTypNotAllowedOnRoot: 'Norimas puslapio tipas "{type}" neleidžiamas šiam virtualiam puslapiui šakniniame lygmenyje.'
     SINGULARNAME: 'Virtualus puslapis'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 'Puslapiai su sugadintomis bylomis'
+    BrokenLinksGroupTitle: 'Neveikiančių nuorodų ataskaitos'
+    ParameterLiveCheckbox: 'Patikrinti publikuojamą svetainę'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: 'Bet kurias'
     BROKENLINKS: 'Sugadintų nuorodų ataskaita'
@@ -237,44 +269,6 @@ lt:
     ReasonDropdownVPBROKENLINK: 'Virtualus puslapis veda į neegzistuojantį puslapį'
     RedirectorNonExistent: 'Peradresuojantis puslapis veda į neegzistuojantį puslapį'
     VirtualPageNonExistent: 'virtualus puslapis veda į neegzistuojantį puslapį'
-  SilverStripe\CMS\Search\SearchForm:
-    FILTERDATEFROM: Nuo
-    FILTERDATETO: Iki
-    GO: Vykdyti
-    PAGEFILTERDATEHEADING: Redaguota
-    SEARCH: Ieškoti
-    SearchResults: 'Paieškos rezultatai'
-    FILTERLABELTEXT: Ieškoti
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
-    RESTORE: Atstatyti
-    RESTORED_PAGES: 'Atstatyti %d puslapiai'
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
-    UNPUBLISHED_PAGES: 'Nebepublikuojami %d puslapiai'
-    UNPUBLISH_PAGES: Nebepublikuoti
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Redaguoti puslapį'
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Redaguoti puslapį'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
-    Title: 'Pakeisti puslapiai'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
-    Title: 'Visi puslapiai, taip pat ir archyvuoti'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
-    Title: 'Publikuoti puslapiai'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Archyvuoti puslapiai'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Juodraštiniai puslapiai'
-  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
-    ANCHORVALUE: Nuoroda
-  SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    LINKDESCR: 'Nuorodos aprašymas'
-  SilverStripe\CMS\Model\RedirectorPageController:
-    HASBEENSETUP: 'Nukreipimo puslapis neturintis nukreipimo.'
-  SilverStripe\CMS\Reports\BrokenFilesReport:
-    BROKENFILES: 'Puslapiai su sugadintomis bylomis'
-    BrokenLinksGroupTitle: 'Neveikiančių nuorodų ataskaitos'
-    ParameterLiveCheckbox: 'Patikrinti publikuojamą svetainę'
   SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
     BROKENREDIRECTORPAGES: 'Nukreipiantieji puslapiai, kurie nukreipia į ištrintus puslapius'
     BrokenLinksGroupTitle: 'Neveikiančių nuorodų ataskaitos'
@@ -288,5 +282,11 @@ lt:
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'Turinio ataskaitos'
     LAST2WEEKS: 'Paskutines 2 savaites keisti puslapiai'
-  SilverStripe\CMS\Model\SiteTreeLink:
-    has_one_Parent: Priklauso
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERDATEFROM: Nuo
+    FILTERDATETO: Iki
+    FILTERLABELTEXT: Ieškoti
+    GO: Vykdyti
+    PAGEFILTERDATEHEADING: Redaguota
+    SEARCH: Ieškoti
+    SearchResults: 'Paieškos rezultatai'

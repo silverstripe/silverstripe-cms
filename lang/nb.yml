@@ -1,41 +1,50 @@
 nb:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: 'Publiserte %d sider, %d feilet.'
+    PUBLISH_PAGES: Publiser
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Gjenopprett
+    RESTORED_PAGES: 'Gjenopprettet %d sider'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISHED_PAGES: 'Avpubliserte %d sider'
+    UNPUBLISH_PAGES: Avpubliser
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Adgang til seksjon for ''{title}'''
     ACCESS_HELP: 'Lar deg se seksjonen som inneholder sidetreet og annet innhold. Tillatelser for å vise og redigere kan behandles gjennom sidespesifikke nedtrekkslister, så vel som  separate "Innholdstillatelser".'
     ARCHIVE: Arkiver
     ARCHIVEDPAGE: 'Arkiverte side ''{title}'''
+    AddNew: 'Opprett ny side'
+    AddNewButton: 'Opprett ny'
     AddPageRestriction: 'Merk: Noen sidetyper er ikke tillatt for dette valget.'
+    CANT_REORGANISE: 'Du har ikke tilgang til å endre toppnivåsider. Endringen din ble ikke lagret.'
     Cancel: Avbryt
     ChoosePageParentMode: 'Velg hvor du vil opprette siden'
     ChoosePageType: 'Velg sidetype'
     Create: Opprett
     DUPLICATED: 'Vellykket duplisering av "{title}".'
     DUPLICATEDWITHCHILDREN: 'Vellykket duplisering av "{title}" og undersider.'
+    EMAIL: Epost
     NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Siden eksisterer ikke'
+    PAGESALLOPT: 'Alle sider'
     PAGETYPEANYOPT: 'Hvilken som helst'
+    PAGETYPEOPT: Sidetype
+    PLEASESAVE: 'Vennligst lagre siden: Denne siden kunne ikke oppdateres fordi den ikke har blitt lagret ennå.'
     PUBALLCONFIRM: 'Vennligst publiser hver eneste side på nettstedet, og kopier innhold til aktivt nettsted'
     PUBALLFUN: 'Funksjonalitet for "Publiser alle"'
     PUBPAGES: 'Ferdig: Publiserte {count} sider.'
     PageAdded: 'Siden ble opprettet.'
     REMOVEDPAGE: 'Fjernet "{title}" fra det publiserte nettstedet'
     REMOVEDPAGEFROMDRAFT: 'Fjernet ''{title}''  fra utkastnettstedet'
+    REORGANISATIONSUCCESSFUL: 'Omorganisering av sidetreet vellykket'
+    RESTORE: 'Gjenopprett utkast'
     RESTORED: 'Vellykket gjenoppretting av "{title}".'
     RESTORE_DESC: 'Gjenopprett arkivert versjon som utkast'
     RESTORE_TO_ROOT: 'Gjenopprett utkast på toppnivå'
     RESTORE_TO_ROOT_DESC: 'Gjenopprett arkivert versjon som utkast på toppnivå'
+    ROLLBACK: 'Tilbakestill til denne versjonen'
     ROLLEDBACKPUBv2: 'Tilbakestilte til den publiserte versjonen.'
     ROLLEDBACKVERSIONv2: 'Tilbakestile til versjon #{version}.'
-    AddNew: 'Opprett ny side'
-    AddNewButton: 'Opprett ny'
-    CANT_REORGANISE: 'Du har ikke tilgang til å endre toppnivåsider. Endringen din ble ikke lagret.'
-    EMAIL: Epost
-    PAGESALLOPT: 'Alle sider'
-    PAGETYPEOPT: Sidetype
-    PLEASESAVE: 'Vennligst lagre siden: Denne siden kunne ikke oppdateres fordi den ikke har blitt lagret ennå.'
-    REORGANISATIONSUCCESSFUL: 'Omorganisering av sidetreet vellykket'
-    RESTORE: 'Gjenopprett utkast'
-    ROLLBACK: 'Tilbakestill til denne versjonen'
     SAVEDRAFT: Lagre
     SEARCHRESULTS: Søkeresultat
     SHOW_AS_LIST: 'vis som liste'
@@ -44,31 +53,45 @@ nb:
     TabHistory: Historikk
     TabSettings: Innstillinger
   SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Legg til side'
     ParentMode_child: 'Under en annen side'
     ParentMode_top: Toppnivå
-    MENUTITLE: 'Legg til side'
     Title: 'Legg til side'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Rediger siden'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 'Sammenlign modus (velg to)'
-    REVERTTOTHISVERSION: 'Tilbakestill til denne versjonen'
-    SHOWUNPUBLISHED: 'Vis upubliserte versjoner'
-    VIEW: Visning
-    VIEWINGLATEST: 'Viser den nyeste versjonen.'
-    VIEWINGVERSION: 'Viser versjon {version}.'
     AUTHOR: Forfatter
+    COMPAREMODE: 'Sammenlign modus (velg to)'
     COMPARINGVERSION: 'Sammenligner versjon {version1} og {version2}.'
     MENUTITLE: Historikk
     NOTPUBLISHED: 'Ikke publisert'
     PUBLISHER: Utgiver
+    REVERTTOTHISVERSION: 'Tilbakestill til denne versjonen'
+    SHOWUNPUBLISHED: 'Vis upubliserte versjoner'
     UNKNOWN: Ukjent
+    VIEW: Visning
+    VIEWINGLATEST: 'Viser den nyeste versjonen.'
+    VIEWINGVERSION: 'Viser versjon {version}.'
     WHEN: Når
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Rediger siden'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: Sider
     FILTER: Filtrer
     ListView: Listevisning
+    MENUTITLE: Sider
     TreeView: Trevisning
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
+    Title: 'Endrede sider'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
+    Title: 'Alle sider, inklusive arkiverte'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
+    Title: 'Publiserte sider'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Alle sider'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Arkiverte sider'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDraftPages:
+    Title: Utkast
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Publisert men fjernet fra utkast'
   SilverStripe\CMS\Controllers\ContentController:
@@ -77,7 +100,11 @@ nb:
     CMS: Publiseringssystem
     DRAFT: Utkast
     DRAFTSITE: Utkastnettsted
+    Email: Epost
     INSTALL_SUCCESS: 'Installasjonen var vellykket!'
+    InstallFilesDeleted: 'Vellykket sletting av installasjonsfilene.'
+    InstallSecurityWarning: 'Av sikkerhetsgrunner bør du nå slette installsjonsfilene, med mindre du planlegger å reinstallere senere (<em>krever administrasjonsinnlogging, se over</em>). Webserveren trenger nå bare skrivetilgang til "assets"-mappen, så du kan fjerne skrivetilgang til alle andre mapper. <a href="{link}" style="text-align: center;">Trykk her for å slette installasjonsfilene.</a>'
+    InstallSuccessCongratulations: 'SilverStriper har blitt installert!'
     LOGGEDINAS: 'Logget inn som'
     LOGIN: Innlogging
     LOGOUT: 'Logg ut'
@@ -85,33 +112,35 @@ nb:
     NOTLOGGEDIN: 'Ikke logget inn'
     PUBLISHED: Publisert
     PUBLISHEDSITE: 'Publisert nettsted'
-    VIEWPAGEIN: 'Vis side i:'
-    Email: Epost
-    InstallFilesDeleted: 'Vellykket sletting av installasjonsfilene.'
-    InstallSecurityWarning: 'Av sikkerhetsgrunner bør du nå slette installsjonsfilene, med mindre du planlegger å reinstallere senere (<em>krever administrasjonsinnlogging, se over</em>). Webserveren trenger nå bare skrivetilgang til "assets"-mappen, så du kan fjerne skrivetilgang til alle andre mapper. <a href="{link}" style="text-align: center;">Trykk her for å slette installasjonsfilene.</a>'
-    InstallSuccessCongratulations: 'SilverStriper har blitt installert!'
     Password: Passord
     PostInstallTutorialIntro: 'Dette nettstedet er en simplistisk versjon av et nettsted for SilverStripe 3. For å utvide nettstedet kan du ta en titt på {link}.'
     StartEditing: 'Du kan redigere innholdet ved å åpne <a href="{link}">publiseringssystemet</a>.'
     UNVERSIONEDPREVIEW: Forhåndsvisning
     UnableDeleteInstall: 'Klarte ikke å slette installasjonsfilene. Vennligst slett filene under manuelt'
+    VIEWPAGEIN: 'Vis side i:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arkivert
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Lenke
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: Lenkebeskrivelse
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    HelpChars: 'Spesialtegn blir automatisk konvertert eller fjernet.'
     Cancel: Avbryt
     Edit: Rediger
+    HelpChars: 'Spesialtegn blir automatisk konvertert eller fjernet.'
     OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
+    FILE: Fil
     HEADER: 'Denne siden vil omdirigere brukere til en annen side'
     OTHERURL: 'Nettadresse til et annet nettsted'
     REDIRECTTO: 'Omdiriger til'
     REDIRECTTOEXTERNAL: 'Et annet nettsted'
     REDIRECTTOPAGE: 'En side på nettstedet'
-    YOURPAGE: 'Side på ditt nettsted'
-    FILE: Fil
     SINGULARNAME: Omdirigeringsside
+    YOURPAGE: 'Side på ditt nettsted'
     has_one_LinkTo: 'Lenk til'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'En omdirigeringssside har blitt satt opp uten et mål å omdirigere til.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Alle
     ACCESSHEADER: 'Hvem kan se denne siden?'
@@ -126,6 +155,7 @@ nb:
     BUTTONCANCELDRAFTDESC: 'Slett utkast og gå tilbake til publisert versjon av denne siden'
     BUTTONPUBLISHED: Publisert
     BUTTONSAVED: Lagret
+    BUTTONSAVEPUBLISH: Publiser
     BUTTONUNPUBLISH: Avpubliser
     BUTTONUNPUBLISHDESC: 'Fjern denne siden fra det publiserte nettstedet'
     Comments: Kommentarer
@@ -135,6 +165,7 @@ nb:
     DEFAULTHOMECONTENT: '<p>Velkommen til SilverStripe! Dette er standard-forsiden. Du kan redigere denne ved å gå til <a href="admin/">publiseringssystemet</a>.</p><p>Du kan nå gå til <a href="http://docs.silverstripe.org">dokumentasjonen for utviklere</a>, eller begynne med <a href="http://www.silverstripe.org/learn/lessons">SilverStripe-leksjoner</a>.</p>'
     DEFAULTHOMETITLE: Hjem
     DEPENDENT_NOTE: 'De følgende sidene avhenger av denne siden. Dette inkluderer virtuelle sider, omdirigeringssider og sider med innholdslenker.'
+    DESCRIPTION: 'Generisk innholdsside'
     DependtPageColumnLinkType: Lenketype
     EDITHEADER: 'Hvem kan redigere dette i kontrollpanelet?'
     EDITORGROUPS: Redaktørgrupper
@@ -144,6 +175,8 @@ nb:
     HASBROKENLINKS: 'Denne siden har ødelagte lenker.'
     HTMLEDITORTITLE: Innhold
     INHERIT: 'Arvet fra overordnet side'
+    LASTPUBLISHED: 'Sist publisert'
+    LASTSAVED: 'Sist lagret'
     LASTUPDATED: 'Sist oppdatert'
     LINKCHANGENOTE: 'Endring av denne sidens lenke vil også påvirke lenkene til alle underliggende sider.'
     MENUTITLE: Navigasjonsetikett
@@ -154,7 +187,9 @@ nb:
     MODIFIEDONDRAFTSHORT: Endret
     MetadataToggle: Metadata
     MoreOptions: 'Flere alternativer'
+    NOTPUBLISHED: 'Ikke publisert'
     OBSOLETECLASS: 'Denne siden er av den utdaterte typen {type}. Lagring vil tilbakestille typen og kan medføre tap av informasjon.'
+    ONLIVEONLYSHORTHELP: 'Siden er publisert, men har blitt slettet fra utkastet.'
     PAGELOCATION: Sideplassering
     PAGETITLE: Sidenavn
     PAGETYPE: Sidetype
@@ -164,6 +199,7 @@ nb:
     PARENTTYPE_SUBPAGE: Underside
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Kontroller hvilke grupper som har tilgang til eller kan endre sidene'
     PERMISSION_GRANTACCESS_HELP: 'Tillat tilordning av restriksjoner på sidenivå i sideseksjonen.'
+    PLURALNAME: Sider
     PageTypNotAllowedOnRoot: 'Sidetypen "{type}" er ikke tillatt på toppnivå'
     PageTypeNotAllowed: 'Sidetypen "{type}" er ikke tillatt som underside til denne siden.'
     REMOVE_INSTALL_WARNING: 'Advarsel: Du bør fjerne installer.php fra SilverStripe-installasjonen av sikkerhetsgrunner.'
@@ -171,6 +207,7 @@ nb:
     REORGANISE_HELP: 'Omorganiser sidene i sidetreet ved hjelp av dra-og-slipp.'
     SHOWINMENUS: 'Vis i menyer?'
     SHOWINSEARCH: 'Vis i søk?'
+    SINGULARNAME: Side
     TABBEHAVIOUR: Adferd
     TABDEPENDENT: Undersider
     TOPLEVEL: 'Nettstedets innhold (toppnivå)'
@@ -184,28 +221,24 @@ nb:
     VIRTUALPAGEWARNINGSETTINGS: 'Vennligst velg en lenket side i hovedinnholdsfeltene for å publisere siden'
     Viewers: Lesergrupper
     Visibility: Synlighet
+    db_Content: Innhold
+    db_Title: Tittel
     has_one_Parent: 'Overordnet side'
     many_many_BackLinkTracking: Referansesporing
     many_many_ImageTracking: Bildesporing
     many_many_LinkTracking: Lenkesporing
-    BUTTONSAVEPUBLISH: Publiser
-    DESCRIPTION: 'Generisk innholdsside'
-    LASTPUBLISHED: 'Sist publisert'
-    LASTSAVED: 'Sist lagret'
-    NOTPUBLISHED: 'Ikke publisert'
-    ONLIVEONLYSHORTHELP: 'Siden er publisert, men har blitt slettet fra utkastet.'
-    PLURALNAME: Sider
-    SINGULARNAME: Side
-    db_Content: Innhold
-    db_Title: Tittel
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Lenket side'
+    DESCRIPTION: 'Viser innholdet av en annen side'
     EditLink: rediger
     HEADER: 'Dette er en virituell side'
     HEADERWITHLINK: 'Dette er en virtuell side som kopierer innhold fra "{title}" ({link})'
     PageTypNotAllowedOnRoot: 'Originaltypen "{type}" er ikke tillatt på toppnivået for denne virtuelle siden.'
-    DESCRIPTION: 'Viser innholdet av en annen side'
     SINGULARNAME: 'Virtuell side'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 'Sider med ødelagte lenker'
+    BrokenLinksGroupTitle: 'Rapport over ødelagte lenker'
+    ParameterLiveCheckbox: 'Sjekk aktivt nettsted'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: 'Hvilken som helst'
     BROKENLINKS: 'Rapport over ødelagte lenker'
@@ -228,46 +261,6 @@ nb:
     ReasonDropdownVPBROKENLINK: 'Virtuell side peker til ikke-eksisterende side'
     RedirectorNonExistent: 'omdirigeringsside peker til ikke-eksisterende side'
     VirtualPageNonExistent: 'Virtuell side peker til ikke-eksisterende side'
-  SilverStripe\CMS\Search\SearchForm:
-    FILTERDATEFROM: Fra
-    FILTERDATETO: Til
-    GO: Utfør
-    SEARCH: Søk
-    SearchResults: Søkeresultater
-    FILTERLABELTEXT: Søk
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
-    PUBLISHED_PAGES: 'Publiserte %d sider, %d feilet.'
-    PUBLISH_PAGES: Publiser
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
-    RESTORE: Gjenopprett
-    RESTORED_PAGES: 'Gjenopprettet %d sider'
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
-    UNPUBLISHED_PAGES: 'Avpubliserte %d sider'
-    UNPUBLISH_PAGES: Avpubliser
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Rediger siden'
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Rediger siden'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
-    Title: 'Endrede sider'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
-    Title: 'Alle sider, inklusive arkiverte'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
-    Title: 'Publiserte sider'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
-    Title: 'Arkiverte sider'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDraftPages:
-    Title: Utkast
-  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
-    ANCHORVALUE: Lenke
-  SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    LINKDESCR: Lenkebeskrivelse
-  SilverStripe\CMS\Model\RedirectorPageController:
-    HASBEENSETUP: 'En omdirigeringssside har blitt satt opp uten et mål å omdirigere til.'
-  SilverStripe\CMS\Reports\BrokenFilesReport:
-    BROKENFILES: 'Sider med ødelagte lenker'
-    BrokenLinksGroupTitle: 'Rapport over ødelagte lenker'
-    ParameterLiveCheckbox: 'Sjekk aktivt nettsted'
   SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
     BROKENREDIRECTORPAGES: 'Omdirigeringssider som peker til slettede sider'
     BrokenLinksGroupTitle: 'Rapport over ødelagte lenker'
@@ -281,3 +274,10 @@ nb:
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: Innholdsrapporter
     LAST2WEEKS: 'Sider endret i de siste 2 ukene'
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERDATEFROM: Fra
+    FILTERDATETO: Til
+    FILTERLABELTEXT: Søk
+    GO: Utfør
+    SEARCH: Søk
+    SearchResults: Søkeresultater
