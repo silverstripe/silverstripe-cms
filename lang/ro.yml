@@ -1,16 +1,30 @@
 ro:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: '%d pagini publicate, %d erori'
+    PUBLISH_PAGES: Publicare
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Restaurează
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: Ascunde
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Acces la secţiunea ''{title}'' '
     ACCESS_HELP: 'Permite vizualizarea secțiunii cu arborele de pagini și conținut. Permisiunile de vizualizare și editare pot fi setate specific prin meniul vertical din pagini sau separat în "Permisiuni de conținut". '
+    ARCHIVE: Arhivă
+    AddNew: 'Adăugaţi o pagină nouă'
+    AddNewButton: 'Adăugaţi o nouă'
     AddPageRestriction: 'Notă: Unele tipuri de pagini nu sunt permise pentru aceasta selecție'
+    Cancel: Anulare
     ChoosePageParentMode: 'Alegeți unde veţi crea această pagină'
     ChoosePageType: 'Alegeţi tipul de pagină'
     Create: Creaţi
     DUPLICATED: '''{title}'' duplicat cu succes'
     DUPLICATEDWITHCHILDREN: '''{title}'' și descendenții săi duplicați cu succes'
+    EMAIL: E-mail
     NEWPAGE: '{pagetype} nouă'
     PAGENOTEXISTS: 'Această pagină nu există'
+    PAGESALLOPT: 'Toate paginile'
     PAGETYPEANYOPT: Oricare
+    PAGETYPEOPT: 'Tipul paginii'
     PUBALLCONFIRM: 'Vă rugăm publicați toate paginile din site, copiind conținutul curent în live'
     PUBALLFUN: 'Funcționalitatea "Publică Tot" '
     PUBPAGES: 'Finalizat: Publicate {count} pagini'
@@ -18,43 +32,40 @@ ro:
     REMOVEDPAGE: 'Înlătură ''{title}'' din site-ul publicat'
     REMOVEDPAGEFROMDRAFT: 'Înlătură ''{title}'' din site-ul ciornă'
     RESTORED: 'Restaurare ''{title}'' cu succes'
+    ROLLBACK: 'Revenire la versiunea aceasta'
     ROLLEDBACKPUBv2: 'Revenire la versiunea publicată'
     ROLLEDBACKVERSIONv2: 'Revenire la versiunea #{version}'
-    ARCHIVE: Arhivă
-    AddNew: 'Adăugaţi o pagină nouă'
-    AddNewButton: 'Adăugaţi o nouă'
-    Cancel: Anulare
-    EMAIL: E-mail
-    PAGESALLOPT: 'Toate paginile'
-    PAGETYPEOPT: 'Tipul paginii'
-    ROLLBACK: 'Revenire la versiunea aceasta'
     SAVEDRAFT: Salvează
     TabContent: Continut
     TabHistory: Istorie
     TabSettings: Setări
   SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Adăugare pagină'
     ParentMode_child: 'Sub altă pagină'
     ParentMode_top: 'Nivel top'
-    MENUTITLE: 'Adăugare pagină'
     Title: 'Adăugare pagină'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Editează Pagina'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 'Mod comparare (selectează 2)'
-    REVERTTOTHISVERSION: 'Revernire la versiune'
-    SHOWUNPUBLISHED: 'Afișează versiunile nepublicate'
-    VIEW: Vizualizare
-    VIEWINGLATEST: 'Vizualizare curentă a ultimii versiuni.'
-    VIEWINGVERSION: 'Vizualizarea versiunii {version}.'
     AUTHOR: Autor
+    COMPAREMODE: 'Mod comparare (selectează 2)'
     COMPARINGVERSION: 'Comparație versiuni {version1} și {version2}.'
     MENUTITLE: Istorie
     NOTPUBLISHED: Nepublicat
     PUBLISHER: Redactor
+    REVERTTOTHISVERSION: 'Revernire la versiune'
+    SHOWUNPUBLISHED: 'Afișează versiunile nepublicate'
     UNKNOWN: Necunoscut
+    VIEW: Vizualizare
+    VIEWINGLATEST: 'Vizualizare curentă a ultimii versiuni.'
+    VIEWINGVERSION: 'Vizualizarea versiunii {version}.'
     WHEN: Când
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Editează Pagina'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: Pagini
     FILTER: Filtru
     ListView: 'View listă'
+    MENUTITLE: Pagini
     TreeView: 'View Arbore'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Toate paginile'
@@ -64,7 +75,11 @@ ro:
     CMS: CMS
     DRAFT: Cironă
     DRAFTSITE: 'Site ciornă'
+    Email: E-mail
     INSTALL_SUCCESS: 'Instalare cu succes!'
+    InstallFilesDeleted: 'Fișierele de instalarea au fost șterse cu succes.'
+    InstallSecurityWarning: 'Din motive de secutitate ar trebuii să ștergeți acum fișierele de instalare, în cazul în care nu planificați o reinstalare ulterioară (<em>necesită drepturi de admin, referințe mai sue</em>). De acum serverul necesită doar drepturi de scriere in directorul "assets", puteți șterge dreturile de scriere pentru celelalte directoare.. <a href="{link}" style="text-align: center;">Click aici pentru ștergerea fișierelor de instalare.</a>'
+    InstallSuccessCongratulations: 'Silverstripe a fost instalat cu succes!'
     LOGGEDINAS: 'Logat ca'
     LOGIN: Login
     LOGOUT: Logout
@@ -72,33 +87,33 @@ ro:
     NOTLOGGEDIN: Ne-loginat
     PUBLISHED: Publicat
     PUBLISHEDSITE: 'Site publicat'
-    VIEWPAGEIN: 'Vizualizează pagina în:'
-    Email: E-mail
-    InstallFilesDeleted: 'Fișierele de instalarea au fost șterse cu succes.'
-    InstallSecurityWarning: 'Din motive de secutitate ar trebuii să ștergeți acum fișierele de instalare, în cazul în care nu planificați o reinstalare ulterioară (<em>necesită drepturi de admin, referințe mai sue</em>). De acum serverul necesită doar drepturi de scriere in directorul "assets", puteți șterge dreturile de scriere pentru celelalte directoare.. <a href="{link}" style="text-align: center;">Click aici pentru ștergerea fișierelor de instalare.</a>'
-    InstallSuccessCongratulations: 'Silverstripe a fost instalat cu succes!'
     Password: Parola
     PostInstallTutorialIntro: 'Website-ul este o versiune simplificată a site-ului Silverstripe 3. Pentru a-l extinde, urmăriți link-ul {link}'
     StartEditing: 'Puteți începe editarea conținutului deschizând <a href="{link}">CMS-ul</a>.'
     UNVERSIONEDPREVIEW: Previzualizare
     UnableDeleteInstall: 'Fișierele de instalare nu pot fi șterse. Vă rugăm ștergeți fișierele următore manual'
+    VIEWPAGEIN: 'Vizualizează pagina în:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arhivă
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Descriere link'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    HelpChars: 'Caracterele speciale sunt convertite automat sau șterse'
     Cancel: Anulare
     Edit: Editare
+    HelpChars: 'Caracterele speciale sunt convertite automat sau șterse'
     OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
+    FILE: Fisier
     HEADER: 'Pagina v-a redirecționa utilizatorii către altă pagină'
     OTHERURL: 'URL-ul altui website'
     REDIRECTTO: 'Redirecționare către'
     REDIRECTTOEXTERNAL: 'Alt website'
     REDIRECTTOPAGE: 'O pagină de pe website-ul dumneavoastră'
-    YOURPAGE: 'Pagină de pe website-ul dumneavoastră'
-    FILE: Fisier
     SINGULARNAME: 'Pagină referitoare'
+    YOURPAGE: 'Pagină de pe website-ul dumneavoastră'
     has_one_LinkTo: 'Link la'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'O pagină referitoare a fost creată fără a direcționa către ceva'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Oricine
     ACCESSHEADER: 'Cine poate vizualiza această pagină pe site-ul meu?'
@@ -107,10 +122,12 @@ ro:
     ADDEDTODRAFTHELP: 'Pagina nu a fost încă publicată'
     ADDEDTODRAFTSHORT: Ciornă
     APPEARSVIRTUALPAGES: 'Conținutul apare și în pagini virtuale în secțiuni {title}'
+    ARCHIVEDPAGESHORT: Arhivă
     BUTTONCANCELDRAFT: 'Anulează modificări ciornă'
     BUTTONCANCELDRAFTDESC: 'Șterge ciorna și revenire la pagina publicată curent '
     BUTTONPUBLISHED: Publicat
     BUTTONSAVED: Salvat
+    BUTTONSAVEPUBLISH: Publicare
     BUTTONUNPUBLISH: Ascunde
     BUTTONUNPUBLISHDESC: 'Șterge pagina din site-ul publicat'
     Comments: Comentarii
@@ -119,6 +136,7 @@ ro:
     DEFAULTCONTACTTITLE: Contactați-ne
     DEFAULTHOMETITLE: Acasă
     DEPENDENT_NOTE: 'Următoarele pagini depind de această pagină. Include și pagini virtuale, pagini redirecționate, și pagini cu link-uri către conținut.'
+    DESCRIPTION: 'Pagina cu conținut generic '
     DependtPageColumnLinkType: 'Tip referintă'
     EDITHEADER: 'Cine poate edita pagina?'
     EDITORGROUPS: 'Grupuri Editor'
@@ -128,6 +146,8 @@ ro:
     HASBROKENLINKS: 'Această pagină are referințe nefuncţionale'
     HTMLEDITORTITLE: Continut
     INHERIT: 'Mostenește din pagina părinte'
+    LASTPUBLISHED: 'Ultima publicare'
+    LASTSAVED: 'Ultima salvare'
     LASTUPDATED: 'Ultimul actualizat'
     LINKCHANGENOTE: 'Schimbarea link-urilor din pagină v-a afecta și link-urile din toți descendenții.'
     MENUTITLE: 'Etichetă navigare'
@@ -138,7 +158,9 @@ ro:
     MODIFIEDONDRAFTSHORT: Modificat
     MetadataToggle: Metadata
     MoreOptions: 'Mai multe opțiuni'
+    NOTPUBLISHED: Nepublicat
     OBSOLETECLASS: 'Această pagină este de un tip {type} scos din uz. Salvând se va reseta tipul și se pot pierde datele'
+    ONLIVEONLYSHORTHELP: 'Pagina este publicată, dar a fost ștearsă din ciornă'
     PAGELOCATION: 'Locația pagini'
     PAGETITLE: 'Nume pagină'
     PAGETYPE: 'Tipul paginii'
@@ -148,6 +170,7 @@ ro:
     PARENTTYPE_SUBPAGE: 'Subpagini de sub pagina părinte'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Administrează drepturi de acces la conținut'
     PERMISSION_GRANTACCESS_HELP: 'Permite setări de restricționare specifice per pagină în secțiunea "Pagini".'
+    PLURALNAME: Pagini
     PageTypNotAllowedOnRoot: 'Tipul paginii "{type}" nu este permis pe nivelul rădăcină'
     PageTypeNotAllowed: 'Tipul pagini "{type}" nu este permis ca și copil pentru pagina părinte'
     REMOVE_INSTALL_WARNING: 'Avertisment: Ar trebuii șters fișierul install.php din Instanța Silverstripe din motive de securitate. '
@@ -155,6 +178,7 @@ ro:
     REORGANISE_HELP: 'Rearanjează paginile în arborele site-ului prin drag&drop'
     SHOWINMENUS: 'Afişează in meniu?'
     SHOWINSEARCH: 'Afisează în căutare'
+    SINGULARNAME: Pagină
     TABBEHAVIOUR: Comportament
     TABDEPENDENT: 'Pagini dependente'
     TOPLEVEL: 'Conținut Site (Nivel Top)'
@@ -168,29 +192,26 @@ ro:
     VIRTUALPAGEWARNINGSETTINGS: 'Vă rugăm selectați o pagină referențiată în câmpurile de conținut principal pentru a publica'
     Viewers: 'Grupurile vizitatorilor'
     Visibility: Vizibilitate
+    db_Content: Continut
+    db_Title: Titlu
     has_one_Parent: 'Pagina Parinte'
     many_many_BackLinkTracking: 'Urmărire link invers'
     many_many_ImageTracking: 'Urmărire Imagine'
     many_many_LinkTracking: 'Urmărire Link'
-    ARCHIVEDPAGESHORT: Arhivă
-    BUTTONSAVEPUBLISH: Publicare
-    DESCRIPTION: 'Pagina cu conținut generic '
-    LASTPUBLISHED: 'Ultima publicare'
-    LASTSAVED: 'Ultima salvare'
-    NOTPUBLISHED: Nepublicat
-    ONLIVEONLYSHORTHELP: 'Pagina este publicată, dar a fost ștearsă din ciornă'
-    PLURALNAME: Pagini
-    SINGULARNAME: Pagină
-    db_Content: Continut
-    db_Title: Titlu
+  SilverStripe\CMS\Model\SiteTreeLink:
+    has_one_Parent: Părinte
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Pagina referință'
+    DESCRIPTION: 'Afișează conținutul altei pagini'
     EditLink: editare
     HEADER: 'Aceasta este o pagină virtuală '
     HEADERWITHLINK: 'Aceasta este o pagina virtuală care copiază conținut din "{title}" ({link})'
     PageTypNotAllowedOnRoot: 'Tipul original al pagini "{type}" nu este permis pe nivelul rădăcină pentru pagina virtuală'
-    DESCRIPTION: 'Afișează conținutul altei pagini'
     SINGULARNAME: 'Pagina Virtuala'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 'Pagini cu fișiere incorecte'
+    BrokenLinksGroupTitle: 'Raport referințe nefuncționale'
+    ParameterLiveCheckbox: 'Verifică site live'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Oricare
     BROKENLINKS: 'Raport cu link-uri nefuncţionale'
@@ -213,32 +234,6 @@ ro:
     ReasonDropdownVPBROKENLINK: 'Pagina virtuală indică spre o pagină inexistentă'
     RedirectorNonExistent: 'pagina de redirectare indică spre o pagină inexistentă'
     VirtualPageNonExistent: 'pagina virtuală indică spre o pagină inexistentă'
-  SilverStripe\CMS\Search\SearchForm:
-    FILTERDATEFROM: 'De la'
-    FILTERDATETO: La
-    GO: Start
-    SEARCH: Căutare
-    SearchResults: 'Rezultate căutare'
-    FILTERLABELTEXT: Căutare
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
-    PUBLISHED_PAGES: '%d pagini publicate, %d erori'
-    PUBLISH_PAGES: Publicare
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
-    RESTORE: Restaurează
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
-    UNPUBLISH_PAGES: Ascunde
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Editează Pagina'
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Editează Pagina'
-  SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    LINKDESCR: 'Descriere link'
-  SilverStripe\CMS\Model\RedirectorPageController:
-    HASBEENSETUP: 'O pagină referitoare a fost creată fără a direcționa către ceva'
-  SilverStripe\CMS\Reports\BrokenFilesReport:
-    BROKENFILES: 'Pagini cu fișiere incorecte'
-    BrokenLinksGroupTitle: 'Raport referințe nefuncționale'
-    ParameterLiveCheckbox: 'Verifică site live'
   SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
     BROKENREDIRECTORPAGES: 'Pagini referitoare indică spre pagini șterse'
     BrokenLinksGroupTitle: 'Raport referințe nefuncționale'
@@ -252,5 +247,10 @@ ro:
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'Rapoarte conținut'
     LAST2WEEKS: 'Pagini editate în ultimele 2 săptămâni'
-  SilverStripe\CMS\Model\SiteTreeLink:
-    has_one_Parent: Părinte
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERDATEFROM: 'De la'
+    FILTERDATETO: La
+    FILTERLABELTEXT: Căutare
+    GO: Start
+    SEARCH: Căutare
+    SearchResults: 'Rezultate căutare'

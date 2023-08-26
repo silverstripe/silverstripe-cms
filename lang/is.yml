@@ -1,21 +1,44 @@
 is:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Endurheimta
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: 'Taka úr birtingu'
+  SilverStripe\CMS\Controllers\CMSMain:
+    Cancel: 'Hætta við'
+    EMAIL: Tölvupóstur
+    PAGETYPEANYOPT: Einhver
+    PAGETYPEOPT: 'Tegund síðu'
+    SAVEDRAFT: Vista
+    TabContent: Efni
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    AUTHOR: Höfundur
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    MENUTITLE: Síður
   SilverStripe\CMS\Controllers\ContentController:
+    Email: Tölvupóstur
     LOGGEDINAS: 'Innskráður sem'
     LOGIN: Innskrá
     LOGOUT: Útskrá
     NOTLOGGEDIN: 'Ekki innskráður'
     PUBLISHEDSITE: 'Birt síða'
-    VIEWPAGEIN: 'Skoða síðu í:'
-    Email: Tölvupóstur
     Password: Lykilorð
+    VIEWPAGEIN: 'Skoða síðu í:'
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Markstikla
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Lýsing á hlekk'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Cancel: 'Hætta við'
+    Edit: Breyta
+    OK: 'Allt í lagi'
   SilverStripe\CMS\Model\RedirectorPage:
+    FILE: Skrá
     HEADER: 'Þessi síða mun áframsenda notendur á aðra síðu'
     OTHERURL: 'Slóð á aðra heimasíðu'
     REDIRECTTO: 'Áframsenda á'
     REDIRECTTOEXTERNAL: 'Önnur heimasíða'
     REDIRECTTOPAGE: 'Síða á heimasíðunni þinni'
     YOURPAGE: 'Síða á heimasíðunni þinni'
-    FILE: Skrá
     has_one_LinkTo: 'Hlekkur í'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Allir
@@ -40,49 +63,26 @@ is:
     PAGELOCATION: 'Staðsetning síðu'
     PAGETITLE: 'Nafn síðu'
     PAGETYPE: 'Tegund síðu'
-    SHOWINMENUS: 'Sýna í valmynd?'
-    SHOWINSEARCH: 'Sýna í leit?'
-    TABBEHAVIOUR: Hegðun
-    VIEW_DRAFT_CONTENT: 'Skoða uppkast'
-    has_one_Parent: 'Yfir síða'
     PARENTTYPE: 'Staðsetning síðu'
     PLURALNAME: Síður
+    SHOWINMENUS: 'Sýna í valmynd?'
+    SHOWINSEARCH: 'Sýna í leit?'
     SINGULARNAME: Síða
+    TABBEHAVIOUR: Hegðun
+    VIEW_DRAFT_CONTENT: 'Skoða uppkast'
     db_Content: Efni
     db_Title: Titill
+    has_one_Parent: 'Yfir síða'
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Þetta er sýndarsíða'
     SINGULARNAME: 'Sýndar síða'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Framkvæma
-    SEARCH: Leita
-    SearchResults: 'Leitar niðurstaða'
-    FILTERLABELTEXT: Leita
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
-    RESTORE: Endurheimta
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
-    UNPUBLISH_PAGES: 'Taka úr birtingu'
-  SilverStripe\CMS\Controllers\CMSMain:
-    Cancel: 'Hætta við'
-    EMAIL: Tölvupóstur
-    PAGETYPEANYOPT: Einhver
-    PAGETYPEOPT: 'Tegund síðu'
-    SAVEDRAFT: Vista
-    TabContent: Efni
-  SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    AUTHOR: Höfundur
-  SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: Síður
-  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
-    ANCHORVALUE: Markstikla
-  SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    LINKDESCR: 'Lýsing á hlekk'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Cancel: 'Hætta við'
-    Edit: Breyta
-    OK: 'Allt í lagi'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Einhver
     CheckSiteDropdownPublished: 'Birt síða'
     ColumnURL: 'Veffang (URL)'
     PageName: 'Nafn síðu'
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERLABELTEXT: Leita
+    GO: Framkvæma
+    SEARCH: Leita
+    SearchResults: 'Leitar niðurstaða'

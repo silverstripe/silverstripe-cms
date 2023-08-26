@@ -78,6 +78,7 @@ fi:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Kirjoittaja
     COMPAREMODE: 'Vertailutila (valitse kaksi)'
+    COMPARINGVERSION: 'Vertaillaan versioita {version1} ja {version2}'
     MENUTITLE: Historia
     MULTISELECT: Sarjatehtävät
     NOTPUBLISHED: Julkaisematon
@@ -90,7 +91,6 @@ fi:
     VIEWINGLATEST: 'Katsot viimeisintä versiota.'
     VIEWINGVERSION: 'Katsot versiota {version}.'
     WHEN: Milloin
-    COMPARINGVERSION: 'Vertaillaan versioita {version1} ja {version2}'
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Muokkaa sivua'
   SilverStripe\CMS\Controllers\CMSPagesController:
@@ -133,9 +133,9 @@ fi:
     Password: Salasana
     PostInstallTutorialIntro: 'Tämä sivusto on yksinkertaistettu versio SilverStripe 3 sivustosta. Laajentaaksesi tätä, ole hyvä ja tutustu: {link}.'
     StartEditing: 'Voit aloittaa sisällön muokkauksen avaamalla <a href="{link}">sisällönhallintajärjestelmän ylläpitopuolen</a>'
+    UNVERSIONEDPREVIEW: Esikatselu
     UnableDeleteInstall: 'Asennustiedostojen automaattinen poistaminen ei onnistunut. Ole hyvä ja poista seuraavat tiedostot manuaalisesti'
     VIEWPAGEIN: 'Tarkastele sivua:'
-    UNVERSIONEDPREVIEW: Esikatselu
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arkistoitu
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
@@ -153,6 +153,7 @@ fi:
     OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Edelleenohjaa toiselle sisäiselle sivulle tai ulkoiseen URL-osoitteeseen'
+    FILE: Tiedosto
     HEADER: 'Tämä sivu ohjaa käyttäjän toiselle sivulle'
     OTHERURL: 'Toisen verkkosivuston URL-osoite'
     PLURALNAME: Pohjasivut
@@ -164,7 +165,6 @@ fi:
     REDIRECTTOPAGE: 'Sivu verkkosivustollasi'
     SINGULARNAME: 'Uudelleenohjaava sivu'
     YOURPAGE: 'Sivu verkkosivustollasi'
-    FILE: Tiedosto
     has_one_LinkTo: Linkitä
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Uudelleenohjaava sivu on valmis, mutta ei ohjaa mihinkään.'
@@ -264,15 +264,15 @@ fi:
     VIRTUALPAGEWARNINGSETTINGS: 'Ole hyvä ja valitse linkitetty sivu sisältö kentästä, jotta julkaisu on mahdollista'
     Viewers: Katselijaryhmät
     Visibility: Näkyvyys
-    has_one_Parent: Sivupohja
-    many_many_BackLinkTracking: 'Käänteinen seuranta'
-    many_many_ImageTracking: 'Kuvan seuranta'
-    many_many_LinkTracking: 'Linkin seuranta'
     db_Content: Sisältö
     db_Sort: Järjestä
     db_Title: Otsikko
     db_URLSegment: 'URL-osoitteen osio'
+    has_one_Parent: Sivupohja
     has_one_Subsite: Alasivusto
+    many_many_BackLinkTracking: 'Käänteinen seuranta'
+    many_many_ImageTracking: 'Kuvan seuranta'
+    many_many_LinkTracking: 'Linkin seuranta'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tyyppi

@@ -1,61 +1,73 @@
 el:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISH_PAGES: Δημοσίευση
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Επαναφορά
   SilverStripe\CMS\Controllers\CMSMain:
-    Cancel: Άκυρο
-    ChoosePageType: 'Επιλέξτε τύπο σελίδας'
-    Create: Δημιουργία
-    NEWPAGE: 'Νέο {pagetype}'
-    PAGENOTEXISTS: 'Αυτή η σελίδα δεν υπάρχει'
-    PAGETYPEANYOPT: Οποιοδήποτε
-    PUBALLFUN: 'Λειτουργία "Δημοσίευση Όλων"'
-    PUBPAGES: 'Ολοκληρώθηκε: Δημοσίευση {count} σελίδων'
-    PageAdded: 'Η σελίδα δημιουργήθηκε με επιτυχία'
     ARCHIVE: Αρχείο
     AddNew: 'Προσθήκη σελίδας'
     AddNewButton: Προσθήκη
+    Cancel: Άκυρο
+    ChoosePageType: 'Επιλέξτε τύπο σελίδας'
+    Create: Δημιουργία
     EMAIL: Email
+    NEWPAGE: 'Νέο {pagetype}'
+    PAGENOTEXISTS: 'Αυτή η σελίδα δεν υπάρχει'
     PAGESALLOPT: 'Όλες οι σελίδες'
+    PAGETYPEANYOPT: Οποιοδήποτε
     PAGETYPEOPT: 'Τύπος σελίδας'
+    PUBALLFUN: 'Λειτουργία "Δημοσίευση Όλων"'
+    PUBPAGES: 'Ολοκληρώθηκε: Δημοσίευση {count} σελίδων'
+    PageAdded: 'Η σελίδα δημιουργήθηκε με επιτυχία'
     SAVEDRAFT: Αποθήκευση
     TabContent: Περιεχόμενο
     TabHistory: Ιστορικό
     TabSettings: Ρυθμίσεις
   SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Προσθήκη σελίδας'
     ParentMode_child: 'Κάτω από άλλη σελίδα'
     ParentMode_top: 'Επίπεδο κορυφής'
-    MENUTITLE: 'Προσθήκη σελίδας'
     Title: 'Προσθήκη σελίδας'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Επεξεργασία Σελίδας'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    REVERTTOTHISVERSION: 'Επαναφορά σε αυτήν την έκδοση'
-    VIEW: προβολή
     AUTHOR: Συγγραφέας
     COMPARINGVERSION: 'Σύγκριση Εκδόσεων {version1} και {version2}.'
     MENUTITLE: Ιστορικό
     NOTPUBLISHED: 'Δεν έχει δημοσιευθεί'
     PUBLISHER: Εκδότης
+    REVERTTOTHISVERSION: 'Επαναφορά σε αυτήν την έκδοση'
     UNKNOWN: Άγνωστο
+    VIEW: προβολή
     WHEN: Όταν
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Επεξεργασία Σελίδας'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: Σελίδες
     FILTER: Φίλτρο
     ListView: 'Προβολή Λίστας'
+    MENUTITLE: Σελίδες
     TreeView: 'Προβολή Δέντρου'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Όλες οι σελίδες'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: Προεπισκόπιση
+    Email: Email
     INSTALL_SUCCESS: 'Η Εγκατάσταση ήταν επιτυχής!'
     LOGGEDINAS: 'Συνδεδεμένος ως'
     LOGIN: Σύνδεση
     LOGOUT: Αποσύνδεση
     NOTLOGGEDIN: 'Δεν έχετε συνδεθεί'
     PUBLISHED: Δημοσιευμένο
-    VIEWPAGEIN: 'Προβολή Σελίδας σε:'
-    Email: Email
     PUBLISHEDSITE: 'Δημοσιευμένος Ιστότοπος'
     Password: Κωδικός
     UNVERSIONEDPREVIEW: Προεπισκόπιση
+    VIEWPAGEIN: 'Προβολή Σελίδας σε:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Αρχειοθετημένο
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Cancel: Άκυρο
+    Edit: Edit
+    OK: ΟΚ
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Αυτή η σελίδα θα ανακατευθύνει τους χρήστες σε μια άλλη σελίδα'
     REDIRECTTO: 'Ανακατεύθυνση σε'
@@ -64,20 +76,25 @@ el:
     ACCESSHEADER: 'Ποιος μπορεί να δεί αυτή τη σελίδα;'
     ACCESSLOGGEDIN: 'Συνδεδεμένοι χρήστες'
     ADDEDTODRAFTHELP: 'Η σελίδα δεν έχει δημοσιευθεί ακόμη'
+    ARCHIVEDPAGESHORT: Αρχειοθετημένο
     BUTTONPUBLISHED: Δημοσιευμένο
     BUTTONSAVED: Αποθηκεύτηκε
+    BUTTONSAVEPUBLISH: Δημοσίευση
     BUTTONUNPUBLISHDESC: 'Αφαίρεση αυτής της σελίδας απο τις δημοσιευμένες'
     Comments: Σχόλια
     Content: Περιεχόμενο
     DEFAULTABOUTTITLE: 'Ποιοί είμαστε'
     DEFAULTCONTACTTITLE: Επικοινωνία
     DEFAULTHOMETITLE: Αρχική
+    DESCRIPTION: 'Σελίδα γενικού περιεχομένου'
     DependtPageColumnLinkType: 'Τύπος συνδέσμου'
     EDITHEADER: 'Ποιος μπορεί να επεξεργαστεί αυτή τη σελίδα;'
     EDITORGROUPS: 'Ομάδες Συντακτών'
     Editors: 'Ομάδες Συντακτών'
     HASBROKENLINKS: 'Αυτή η σελίδα έχει ανενεργούς συνδέσμους '
     HTMLEDITORTITLE: Περιεχόμενο
+    LASTPUBLISHED: 'Τελευταία δημοσίευση'
+    LASTSAVED: 'Τελευταία αποθήκευση'
     LASTUPDATED: 'Τελευταία Ενημέρωση'
     MENUTITLE: 'Επίπεδο πλοίγησης'
     METADESC: Μετα-Περιγραφή
@@ -85,35 +102,32 @@ el:
     MODIFIEDONDRAFTSHORT: Τροποποιημένο
     MetadataToggle: Μετα-δεδομένα
     MoreOptions: 'Περισσότερες επιλογές'
+    NOTPUBLISHED: 'Δεν έχει δημοσιευθεί'
     PAGELOCATION: 'Θέση σελίδας'
     PAGETITLE: 'Όνομα σελίδας'
     PAGETYPE: 'Τύπος σελίδας'
     PARENTID: 'Γονική Σελίδα'
     PARENTTYPE: 'Θέση σελίδας'
+    PLURALNAME: Σελίδες
     REORGANISE_DESCRIPTION: 'Αλλαγή δομής του ιστοτόπου '
     SHOWINMENUS: 'Να φαίνεται στα μενού;'
     SHOWINSEARCH: 'Να φαίνεται στην αναζήτηση'
+    SINGULARNAME: Σελίδα
     TABBEHAVIOUR: Συμπεριφορά
     TABDEPENDENT: 'Εξαρτώμενες σελίδες '
     VIEW_ALL_DESCRIPTION: 'Δείτε κάθε σελίδα'
     Visibility: Ορατότητα
-    has_one_Parent: 'Γονική Σελίδα'
-    ARCHIVEDPAGESHORT: Αρχειοθετημένο
-    BUTTONSAVEPUBLISH: Δημοσίευση
-    DESCRIPTION: 'Σελίδα γενικού περιεχομένου'
-    LASTPUBLISHED: 'Τελευταία δημοσίευση'
-    LASTSAVED: 'Τελευταία αποθήκευση'
-    NOTPUBLISHED: 'Δεν έχει δημοσιευθεί'
-    PLURALNAME: Σελίδες
-    SINGULARNAME: Σελίδα
     db_Content: Περιεχόμενο
     db_Title: Τίτλος
+    has_one_Parent: 'Γονική Σελίδα'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Συνδεδεμένη σελίδα'
+    DESCRIPTION: 'Εμφανίζει το περιεχόμενο μιας άλλης σελίδας'
     EditLink: επεξεργασία
     HEADER: 'Αυτή είναι μια εικονική σελίδα'
-    DESCRIPTION: 'Εμφανίζει το περιεχόμενο μιας άλλης σελίδας'
     SINGULARNAME: 'Εικονική Σελίδα'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BrokenLinksGroupTitle: 'Αναφορές ανενεργών συνδέσμων'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Οποιοδήποτε
     BROKENLINKS: 'Αναφορά ανενεργών συνδέσμων'
@@ -135,27 +149,6 @@ el:
     ReasonDropdownVPBROKENLINK: 'Η εικονική σελίδα αντιστοιχεί σε ανύπαρκτη σελίδα'
     RedirectorNonExistent: 'η σελίδα ανακατεύθυνσης αντιστοιχεί σε ανύπαρκτη σελίδα'
     VirtualPageNonExistent: 'η εικονική σελίδα αντιστοιχεί σε ανύπαρκτη σελίδα'
-  SilverStripe\CMS\Search\SearchForm:
-    FILTERDATEFROM: Από
-    FILTERDATETO: Έως
-    GO: Μετάβαση
-    SEARCH: Αναζήτηση
-    SearchResults: 'Αποτελέσματα Αναζήτησης'
-    FILTERLABELTEXT: Αναζήτηση
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
-    PUBLISH_PAGES: Δημοσίευση
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
-    RESTORE: Επαναφορά
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Επεξεργασία Σελίδας'
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Επεξεργασία Σελίδας'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Cancel: Άκυρο
-    Edit: Edit
-    OK: ΟΚ
-  SilverStripe\CMS\Reports\BrokenFilesReport:
-    BrokenLinksGroupTitle: 'Αναφορές ανενεργών συνδέσμων'
   SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
     BrokenLinksGroupTitle: 'Αναφορές ανενεργών συνδέσμων'
   SilverStripe\CMS\Reports\BrokenVirtualPagesReport:
@@ -164,3 +157,10 @@ el:
     ContentGroupTitle: 'Αναφορές περιεχομένου'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'Αναφορές περιεχομένου'
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERDATEFROM: Από
+    FILTERDATETO: Έως
+    FILTERLABELTEXT: Αναζήτηση
+    GO: Μετάβαση
+    SEARCH: Αναζήτηση
+    SearchResults: 'Αποτελέσματα Αναζήτησης'

@@ -1,40 +1,46 @@
 id:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Pulihkan
+    RESTORED_PAGES: 'Pulihkan %d halaman'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISHED_PAGES: 'Batal Terbit %d halaman'
+    UNPUBLISH_PAGES: Batalterbitkan
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Akses ke bagian ''{title}'''
     ACCESS_HELP: 'Perbolehkan menampilkan bagian dengan struktur laman dan konten. Perijinan menampilkan dan mengedit dapat diatur melalui pilihan terkait laman, sebagaimana "Perijinan Konten".'
+    ARCHIVE: Arsip
+    AddNew: 'Tambah laman baru'
+    AddNewButton: 'Tambah baru'
     AddPageRestriction: 'Catatan: Sebagian jenis laman tidak dapat dipilih'
+    CANT_REORGANISE: 'Anda tidak diijinkan mengubah laman Tingkat Atas. Pengubahan Anda tidak tersimpan.'
     Cancel: Batal
     ChoosePageParentMode: 'Pilih lokasi untuk laman ini'
     ChoosePageType: 'Pilih jenis laman'
     Create: Buat
     DUPLICATED: '''{title}'' berhasil diduplikasi'
     DUPLICATEDWITHCHILDREN: '''{title}'' dan turunannya berhasil diduplikasi'
+    EMAIL: Email
     NEWPAGE: '{pagetype} baru'
     PAGENOTEXISTS: 'Laman ini tidak ada'
+    PAGESALLOPT: 'Semua laman'
     PAGETYPEANYOPT: Lain
+    PAGETYPEOPT: 'Tipe laman'
+    PLEASESAVE: 'Mohon Simpan Laman: Laman ini tidak dapat diperbarui karena belum disimpan.'
     PUBALLCONFIRM: 'Mohon terbitkan semua laman pada situs'
     PUBALLFUN: 'Fungsi "Terbitkan Semua"'
     PUBPAGES: 'Selesai: {count} laman terbit'
     PageAdded: 'Laman berhasil dibuat'
     REMOVEDPAGE: 'Menghapus ''{title}'' dari situs terbit'
     REMOVEDPAGEFROMDRAFT: 'Menghapus ''{title}'' dari draf situs'
+    REORGANISATIONSUCCESSFUL: 'Pengaturan ulang struktur situs berhasil.'
+    RESTORE: 'Pulihkan Draf'
     RESTORED: 'Pemulihan ''{title}'' sukses'
     RESTORE_DESC: 'Pulihkan versi arsip ke draf'
     RESTORE_TO_ROOT: 'Pulihkan draf pada level teratas'
     RESTORE_TO_ROOT_DESC: 'Pulihkan versi arsip ke draf sebagai halaman level teratas'
+    ROLLBACK: 'Kembali ke versi ini'
     ROLLEDBACKPUBv2: 'Kembali ke versi terbit'
     ROLLEDBACKVERSIONv2: 'Kembali ke versi #{version}.'
-    ARCHIVE: Arsip
-    AddNew: 'Tambah laman baru'
-    AddNewButton: 'Tambah baru'
-    CANT_REORGANISE: 'Anda tidak diijinkan mengubah laman Tingkat Atas. Pengubahan Anda tidak tersimpan.'
-    EMAIL: Email
-    PAGESALLOPT: 'Semua laman'
-    PAGETYPEOPT: 'Tipe laman'
-    PLEASESAVE: 'Mohon Simpan Laman: Laman ini tidak dapat diperbarui karena belum disimpan.'
-    REORGANISATIONSUCCESSFUL: 'Pengaturan ulang struktur situs berhasil.'
-    RESTORE: 'Pulihkan Draf'
-    ROLLBACK: 'Kembali ke versi ini'
     SAVEDRAFT: Simpan
     SHOW_AS_LIST: 'tampilkan sebagai daftar'
     TOO_MANY_PAGES: 'Terlalu banyak laman'
@@ -42,28 +48,32 @@ id:
     TabHistory: Sejarah
     TabSettings: Pengaturan
   SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Tambah laman'
     ParentMode_child: 'Di bawah laman lain'
     ParentMode_top: 'Laman atas'
-    MENUTITLE: 'Tambah laman'
     Title: 'Tambah laman'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Edit Laman'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 'Modus pembanding (pilih dua)'
-    REVERTTOTHISVERSION: 'Kembali ke versi ini'
-    SHOWUNPUBLISHED: 'Tampilkan versi batalterbit'
-    VIEW: tampilkan
-    VIEWINGLATEST: 'Versi terakhir sedang ditampilkan.'
-    VIEWINGVERSION: 'Versi {version} sedang ditampilkan.'
     AUTHOR: Penulis
+    COMPAREMODE: 'Modus pembanding (pilih dua)'
     COMPARINGVERSION: 'Bandingkan versi {version1} dan {version2}.'
     MENUTITLE: Sejarah
     NOTPUBLISHED: 'Tidak diterbitkan'
     PUBLISHER: Penerbit
+    REVERTTOTHISVERSION: 'Kembali ke versi ini'
+    SHOWUNPUBLISHED: 'Tampilkan versi batalterbit'
     UNKNOWN: 'Tidak diketahui'
+    VIEW: tampilkan
+    VIEWINGLATEST: 'Versi terakhir sedang ditampilkan.'
+    VIEWINGVERSION: 'Versi {version} sedang ditampilkan.'
     WHEN: Ketika
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Edit Laman'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: Laman
     FILTER: Saring
     ListView: 'Tampilan Daftar'
+    MENUTITLE: Laman
     TreeView: 'Tampilan Struktur'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Semua laman'
@@ -73,7 +83,11 @@ id:
     CMS: CMS
     DRAFT: Draf
     DRAFTSITE: 'Draf situs'
+    Email: Email
     INSTALL_SUCCESS: 'Penginstalan berhasil!'
+    InstallFilesDeleted: 'Berkas penginstalan telah berhasil dihapus.'
+    InstallSecurityWarning: 'Untuk alasan keamanan, sekarang Anda perlu menghapus berkas-berkas penginstalan, kecuali Anda berencana untuk melakukan penginstalan ulang lagi (<em>memerlukan login admin, lihat di atas</em>). Selanjutnya server juga memerlukan akses tulis ke folder "assets", Anda dapat mencabut akses tulis dari folder lainnya. <a href="{link}" style="text-align: center;">Klik di sini untuk menghapus berkas-berkas penginstalan.</a>'
+    InstallSuccessCongratulations: 'SilverStripe telah berhasil diinstal!'
     LOGGEDINAS: 'Masuk sebagai'
     LOGIN: Masuk
     LOGOUT: Keluar
@@ -81,34 +95,36 @@ id:
     NOTLOGGEDIN: 'Tidak masuk'
     PUBLISHED: Terbit
     PUBLISHEDSITE: 'Situs Terbit'
-    VIEWPAGEIN: 'Tampikan Laman pada:'
-    Email: Email
-    InstallFilesDeleted: 'Berkas penginstalan telah berhasil dihapus.'
-    InstallSecurityWarning: 'Untuk alasan keamanan, sekarang Anda perlu menghapus berkas-berkas penginstalan, kecuali Anda berencana untuk melakukan penginstalan ulang lagi (<em>memerlukan login admin, lihat di atas</em>). Selanjutnya server juga memerlukan akses tulis ke folder "assets", Anda dapat mencabut akses tulis dari folder lainnya. <a href="{link}" style="text-align: center;">Klik di sini untuk menghapus berkas-berkas penginstalan.</a>'
-    InstallSuccessCongratulations: 'SilverStripe telah berhasil diinstal!'
     Password: 'Kata kunci'
     PostInstallTutorialIntro: 'Situs ini adalah versi sederhana dari situs SilverStripe 3. Untuk meningkatkannya, mohon kunjungi {link}.'
     StartEditing: 'Anda dapat mulai mengedit konten dengan membuka <a href="{link}">CMS</a>.'
     UNVERSIONEDPREVIEW: Pratinjau
     UnableDeleteInstall: 'Gagal menghapus berkas-berkas penginstalan. Mohon lakukan penghapusan berkas-berkas berikut ini secara manual.'
+    VIEWPAGEIN: 'Tampikan Laman pada:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Terarsip
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Jangkar
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Deskripsi tautan'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    HelpChars: 'Karakter khusus akan dikonversi secara otomatis atau dihapus.'
     Cancel: Batal
     Edit: Edit
+    HelpChars: 'Karakter khusus akan dikonversi secara otomatis atau dihapus.'
     OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
+    FILE: Berkas
     HEADER: 'Laman ini akan mengarahkan pengguna ke laman lain'
     OTHERURL: 'URL situs web lain'
+    PLURALNAME: 'Laman Dasar'
     REDIRECTTO: 'Arahkan lagi ke'
     REDIRECTTOEXTERNAL: 'Situs web yang lain'
     REDIRECTTOPAGE: 'Laman pada situs Anda'
-    YOURPAGE: 'Laman pada situs Anda'
-    FILE: Berkas
-    PLURALNAME: 'Laman Dasar'
     SINGULARNAME: 'Laman Pengarah'
+    YOURPAGE: 'Laman pada situs Anda'
     has_one_LinkTo: 'Tautan ke'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Sebuah laman pengarah telah dibuat tanpa arah yang dituju.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'Siapa saja'
     ACCESSHEADER: 'Siapa yang dapat melihat laman ini?'
@@ -117,6 +133,7 @@ id:
     ADDEDTODRAFTHELP: 'Laman belum terbit'
     ADDEDTODRAFTSHORT: Darft
     APPEARSVIRTUALPAGES: 'Konten ini akan tampil juga pada laman virtual di bagian {title}.'
+    ARCHIVEDPAGESHORT: Terarsip
     BUTTONCANCELDRAFT: 'Batalkan perubahan draft'
     BUTTONCANCELDRAFTDESC: 'Hapus draft dan kembalikan ke laman terbit'
     BUTTONPUBLISHED: Terbit
@@ -129,6 +146,7 @@ id:
     DEFAULTCONTACTTITLE: 'Hubungi Kami'
     DEFAULTHOMETITLE: Beranda
     DEPENDENT_NOTE: 'Laman-laman berikut ini bergantung pada laman ini. Termasuk laman virtual, laman pengarah, dan laman-laman dengan tautan konten.'
+    DESCRIPTION: 'Laman konten biasa'
     DependtPageColumnLinkType: 'Jenis tautan'
     EDITHEADER: 'Siapa yang dapat mengedit laman ini?'
     EDITORGROUPS: 'Kelompok Editor'
@@ -138,6 +156,8 @@ id:
     HASBROKENLINKS: 'Laman ini mempunyai tautan yang rusak.'
     HTMLEDITORTITLE: Konten
     INHERIT: 'Warisi dari laman induk'
+    LASTPUBLISHED: 'Terakhir terbit'
+    LASTSAVED: 'Terakhir tersimpan'
     LASTUPDATED: 'Terakhir diperbarui'
     LINKCHANGENOTE: 'Mengganti tautan laman ini akan mempengaruhi semua tautan pada laman terkait.'
     MENUTITLE: 'Label navigasi'
@@ -148,7 +168,9 @@ id:
     MODIFIEDONDRAFTSHORT: Diubah
     MetadataToggle: Metadata
     MoreOptions: 'Pilihan lain'
+    NOTPUBLISHED: 'Tidak diterbitkan'
     OBSOLETECLASS: 'Jenis laman {type} ini sudah usang. Menyimpannya akan memperbarui jenisnya dan Anda kemungkinan akan kehilangan data'
+    ONLIVEONLYSHORTHELP: 'Laman sudah terbit, tapi telah dihapus dari draft'
     PAGELOCATION: 'Lokasi laman'
     PAGETITLE: 'Nama laman'
     PAGETYPE: 'Tipe laman'
@@ -158,6 +180,7 @@ id:
     PARENTTYPE_SUBPAGE: 'Sub-laman di bawah laman induk'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Kelola hak akses untuk konten ini'
     PERMISSION_GRANTACCESS_HELP: 'Perbolehkan pengaturan pencegahan akses ke laman tertentu di bagian "Laman".'
+    PLURALNAME: Laman
     PageTypNotAllowedOnRoot: 'Jenis laman {type} tidak diperbolehkan di tingkat atas'
     PageTypeNotAllowed: 'Jenis laman {type} tidak diperbolehkan menjadi turunan dari laman induk ini'
     REMOVE_INSTALL_WARNING: 'Peringatan: Anda perlu menghapus instal.php dari penginstalan SilverStripe ini untuk alasan keamanan.'
@@ -165,6 +188,7 @@ id:
     REORGANISE_HELP: 'Atur ulang laman pada struktur situs dengan drag&drop.'
     SHOWINMENUS: 'Perlihatkan dalam menu?'
     SHOWINSEARCH: 'Perlihatkan dalam pencarian'
+    SINGULARNAME: Laman
     TABBEHAVIOUR: Perilaku
     TABDEPENDENT: 'Laman terkait'
     TOPLEVEL: 'Konten Situs (Tingkat Atas)'
@@ -178,30 +202,30 @@ id:
     VIRTUALPAGEWARNINGSETTINGS: 'Mohon pilih laman tertaut pada konten utama untuk menayangkan'
     Viewers: 'Kelompok Penampil'
     Visibility: Visibilitas
+    db_Content: Konten
+    db_Title: Judul
     has_one_Parent: 'Laman Induk'
+    has_one_Subsite: Subsitus
     many_many_BackLinkTracking: 'Jajaki Tautan Balik'
     many_many_ImageTracking: 'Jajaki Gambar'
     many_many_LinkTracking: 'Jajaki Tautan'
-    ARCHIVEDPAGESHORT: Terarsip
-    DESCRIPTION: 'Laman konten biasa'
-    LASTPUBLISHED: 'Terakhir terbit'
-    LASTSAVED: 'Terakhir tersimpan'
-    NOTPUBLISHED: 'Tidak diterbitkan'
-    ONLIVEONLYSHORTHELP: 'Laman sudah terbit, tapi telah dihapus dari draft'
-    PLURALNAME: Laman
-    SINGULARNAME: Laman
-    db_Content: Konten
-    db_Title: Judul
-    has_one_Subsite: Subsitus
+  SilverStripe\CMS\Model\SiteTreeFileExtension:
+    TITLE_TYPE: Tipe
+  SilverStripe\CMS\Model\SiteTreeLink:
+    has_one_Parent: Induk
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Laman Tertaut'
+    DESCRIPTION: 'Tampilkan konten laman lain'
     EditLink: edit
     HEADER: 'Ini adalah laman virtual'
     HEADERWITHLINK: 'Ini adalah laman virtual dengan konten salinan dari "{title}" ({link})'
-    PageTypNotAllowedOnRoot: 'Laman asli jenis "{type}" tidak dibolehkan pada tingkat atas untuk laman virtual ini'
-    DESCRIPTION: 'Tampilkan konten laman lain'
     PLURALNAME: 'Laman Dasar'
+    PageTypNotAllowedOnRoot: 'Laman asli jenis "{type}" tidak dibolehkan pada tingkat atas untuk laman virtual ini'
     SINGULARNAME: 'Laman Virtual'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 'Laman dengan berkas rusak'
+    BrokenLinksGroupTitle: 'Laporan tautan-tautan rusak'
+    ParameterLiveCheckbox: 'Periksa situs live'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Lain
     BROKENLINKS: 'Laporan tautan rusak'
@@ -224,36 +248,6 @@ id:
     ReasonDropdownVPBROKENLINK: 'Laman virtual mengarah ke laman yang tidak ada'
     RedirectorNonExistent: 'laman pengarah mengarah ke laman yang tidak ada'
     VirtualPageNonExistent: 'laman virtual mengarah ke laman yang tidak ada'
-  SilverStripe\CMS\Search\SearchForm:
-    FILTERDATEFROM: Dari
-    FILTERDATETO: Ke
-    FILTERLABELTEXT: Cari
-    GO: Pergi
-    PAGEFILTERDATEHEADING: 'Terakhir diubah'
-    SEARCH: Cari
-    SearchResults: 'Hasil Pencarian'
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
-    RESTORE: Pulihkan
-    RESTORED_PAGES: 'Pulihkan %d halaman'
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
-    UNPUBLISHED_PAGES: 'Batal Terbit %d halaman'
-    UNPUBLISH_PAGES: Batalterbitkan
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Edit Laman'
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Edit Laman'
-  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
-    ANCHORVALUE: Jangkar
-  SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    LINKDESCR: 'Deskripsi tautan'
-  SilverStripe\CMS\Model\RedirectorPageController:
-    HASBEENSETUP: 'Sebuah laman pengarah telah dibuat tanpa arah yang dituju.'
-  SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_TYPE: Tipe
-  SilverStripe\CMS\Reports\BrokenFilesReport:
-    BROKENFILES: 'Laman dengan berkas rusak'
-    BrokenLinksGroupTitle: 'Laporan tautan-tautan rusak'
-    ParameterLiveCheckbox: 'Periksa situs live'
   SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
     BROKENREDIRECTORPAGES: 'LamanPengarah mengarah pada laman terhapus'
     BrokenLinksGroupTitle: 'Laporan tautan-tautan rusak'
@@ -267,5 +261,11 @@ id:
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'Laporan konten'
     LAST2WEEKS: 'Laman diedit dalam 2 minggu terakhir'
-  SilverStripe\CMS\Model\SiteTreeLink:
-    has_one_Parent: Induk
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERDATEFROM: Dari
+    FILTERDATETO: Ke
+    FILTERLABELTEXT: Cari
+    GO: Pergi
+    PAGEFILTERDATEHEADING: 'Terakhir diubah'
+    SEARCH: Cari
+    SearchResults: 'Hasil Pencarian'

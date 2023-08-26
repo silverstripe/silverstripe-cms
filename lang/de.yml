@@ -83,8 +83,8 @@ de:
     MENUTITLE: Historie
     MULTISELECT: Massenaktionen
     NOTPUBLISHED: 'Nicht veröffentlicht'
-    PREVIEW: 'Vorschau der Webseite'
     NO_PREVIEW: 'Keine Vorschau verfügbar'
+    PREVIEW: 'Vorschau der Webseite'
     PUBLISHER: Herausgeber
     REVERTTOTHISVERSION: 'Zurück zu dieser Version'
     SHOWUNPUBLISHED: 'Zeige unveröffentlichte Versionen'
@@ -135,9 +135,9 @@ de:
     Password: Passwort
     PostInstallTutorialIntro: 'Diese Webseite ist eine einfache Version von SilverStripe 3. Weitere Funktionen können Sie unter {link} finden.'
     StartEditing: 'Sie können den Inhalt <a href="{link}">im CMS</a> bearbeiten.'
+    UNVERSIONEDPREVIEW: Vorschau
     UnableDeleteInstall: 'Die Installationsdateien konnten nicht gelöscht werden. Bitte löschen Sie die Dateien manuell.'
     VIEWPAGEIN: 'Seite anzeigen in:'
-    UNVERSIONEDPREVIEW: Vorschau
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archiviert
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
@@ -155,6 +155,7 @@ de:
     OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Leitet zu einer anderen internen oder externen Seite weiter'
+    FILE: Datei
     HEADER: 'Diese Seite wird Nutzer auf eine andere Seite weiterleiten'
     OTHERURL: 'Andere Webseiten URL'
     PLURALNAME: 'Basis Seiten'
@@ -166,7 +167,6 @@ de:
     REDIRECTTOPAGE: 'Eine Seite auf Ihrer Website'
     SINGULARNAME: Weiterleitungsseite
     YOURPAGE: 'Seite auf Ihrer Website'
-    FILE: Datei
     has_one_LinkTo: 'Verweis zu'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Eine Weiterleitungsseite wurde erstellt ohne das eine Weiterleitung definiert wurde.'
@@ -266,15 +266,15 @@ de:
     VIRTUALPAGEWARNINGSETTINGS: 'Um diese Seite veröffentlichen zu können müssen Sie zu erst eine verknüpfte Seite im Reiter "Haupt-Inhalt" auswählen'
     Viewers: 'Betrachter Gruppen'
     Visibility: Sichtbarkeit
-    has_one_Parent: 'Übergeordnete Seite'
-    many_many_BackLinkTracking: Rückverweis-Verfolgung
-    many_many_ImageTracking: Bild-Verfolgung
-    many_many_LinkTracking: Link-Verfolgung
     db_Content: Inhalt
     db_Sort: Sortierung
     db_Title: Titel
     db_URLSegment: URL-Segment
+    has_one_Parent: 'Übergeordnete Seite'
     has_one_Subsite: Subseite
+    many_many_BackLinkTracking: Rückverweis-Verfolgung
+    many_many_ImageTracking: Bild-Verfolgung
+    many_many_LinkTracking: Link-Verfolgung
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Typ
