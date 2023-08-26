@@ -1,68 +1,85 @@
 gl_ES:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: '%d páxinas publicadas, %d erros'
+    PUBLISH_PAGES: Publicar
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Restaurar
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: 'Sen publicar'
   SilverStripe\CMS\Controllers\CMSMain:
-    ChoosePageParentMode: 'Escoller donde crear esta páxina'
-    ChoosePageType: 'Escoller tipo de páxina'
-    Create: Crear
-    PAGENOTEXISTS: 'Esta páxina non existe'
-    PAGETYPEANYOPT: Ningún
-    PUBALLCONFIRM: 'Por favor publica toda a páxina no sitio, copiando o contido a contorna de produción'
-    PUBALLFUN: 'Funcionalidade "Publicar Todo"'
-    REMOVEDPAGEFROMDRAFT: 'Eliminado ''{title}''  do borrador do sitio'
     ARCHIVE: Arquivo
     AddNew: 'Engadir nova páxina'
     AddNewButton: 'Engadir novo'
+    ChoosePageParentMode: 'Escoller donde crear esta páxina'
+    ChoosePageType: 'Escoller tipo de páxina'
+    Create: Crear
     EMAIL: Correo-e
+    PAGENOTEXISTS: 'Esta páxina non existe'
     PAGESALLOPT: 'Todas as páxinas'
+    PAGETYPEANYOPT: Ningún
     PAGETYPEOPT: 'Tipo de Páxina'
     PLEASESAVE: 'Por favor Garda Páxina: Esta páxina podería non ser actualizada porque inda non foi gardada.'
+    PUBALLCONFIRM: 'Por favor publica toda a páxina no sitio, copiando o contido a contorna de produción'
+    PUBALLFUN: 'Funcionalidade "Publicar Todo"'
+    REMOVEDPAGEFROMDRAFT: 'Eliminado ''{title}''  do borrador do sitio'
     ROLLBACK: 'Desfacer a esta versión'
     SAVEDRAFT: Gardar
     TabContent: Contido
     TabHistory: Historial
     TabSettings: Configuracións
   SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Engadir páxina'
     ParentMode_child: 'Baixo outra páxina'
     ParentMode_top: 'Nivel superior'
-    MENUTITLE: 'Engadir páxina'
     Title: 'Engadir páxina'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Editar Páxina'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     COMPAREMODE: 'Modo comparación (seleccionar dúas)'
-    REVERTTOTHISVERSION: 'Retornar a esta versión'
-    SHOWUNPUBLISHED: 'Amosar versións sen publicar'
-    VIEW: ver
     MENUTITLE: Historial
     NOTPUBLISHED: 'Non publicado'
     PUBLISHER: Editor
+    REVERTTOTHISVERSION: 'Retornar a esta versión'
+    SHOWUNPUBLISHED: 'Amosar versións sen publicar'
     UNKNOWN: Descoñecido
+    VIEW: ver
     WHEN: Cando
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Editar Páxina'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: Páxinas
     FILTER: Filtro
     ListView: 'Vista en Listado'
+    MENUTITLE: Páxinas
     TreeView: 'Vista en Árbore'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Todas as páxinas'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITEFROM: 'Sitio arquivado dende'
     DRAFTSITE: 'Sitio Borrador'
+    Email: Correo-e
     LOGGEDINAS: 'Iniciada sesión como'
     LOGIN: 'Iniciar sesión'
     LOGOUT: 'Pechar sesión'
     NOTEWONTBESHOWN: 'Nota: esta mensaxe non se amosará aos visitantes'
     NOTLOGGEDIN: 'Sen iniciar sesión'
     PUBLISHEDSITE: 'Sitio Publicado'
-    VIEWPAGEIN: 'Ver a Páxina en:'
-    Email: Correo-e
     Password: Contrasinal
     UNVERSIONEDPREVIEW: Previsualizar
+    VIEWPAGEIN: 'Ver a Páxina en:'
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Áncora
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Descrición da ligazón'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
+    FILE: Ficheiro
     HEADER: 'Esta páxina redirixirá os usuarios a outra páxina'
     OTHERURL: 'Outra URL do sitio web'
     REDIRECTTO: 'Redirixir a'
     REDIRECTTOEXTERNAL: 'Outro sitio web'
     REDIRECTTOPAGE: 'Unha páxina no teu sitio web'
     YOURPAGE: 'Páxina no teu sitio web'
-    FILE: Ficheiro
     has_one_LinkTo: 'Ligar a'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Ninguén
@@ -71,6 +88,8 @@ gl_ES:
     ACCESSONLYTHESE: 'Só esta xente (escoller da lista)'
     BUTTONCANCELDRAFT: 'Cancelar cambios do borrador'
     BUTTONCANCELDRAFTDESC: 'Eliminar o borrador e revertir a páxina publicada actualmente'
+    BUTTONSAVED: Gardado
+    BUTTONSAVEPUBLISH: Publicar
     BUTTONUNPUBLISH: 'Sen publicar'
     BUTTONUNPUBLISHDESC: 'Eliminar esta páxina do sitio publicado'
     Comments: Comentarios
@@ -78,6 +97,7 @@ gl_ES:
     DEFAULTABOUTTITLE: 'Sobre nós'
     DEFAULTCONTACTTITLE: Contactarnos
     DEFAULTHOMETITLE: Inicio
+    DESCRIPTION: 'Páxina de contido xenérico'
     DependtPageColumnLinkType: 'Tipo de ligazón'
     EDITHEADER: 'Quen pode editar esta páxina?'
     EDITORGROUPS: 'Grupos Editor'
@@ -91,6 +111,7 @@ gl_ES:
     METADESC: 'Meta Descrición'
     METAEXTRA: 'Personalizar Meta Tags'
     MODIFIEDONDRAFTSHORT: Modificado
+    NOTPUBLISHED: 'Non publicado'
     PAGELOCATION: 'Localización da páxina'
     PAGETITLE: 'Nome da páxina'
     PAGETYPE: 'Tipo de Páxina'
@@ -98,11 +119,13 @@ gl_ES:
     PARENTTYPE: 'Localización da páxina'
     PARENTTYPE_ROOT: 'Páxina nivel alto'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Xestionar dereitos de acceso para o contido'
+    PLURALNAME: Páxinas
     REMOVE_INSTALL_WARNING: 'Coidado: Deberías eliminar install.php da instalación deste Silverstripe por razóns de seguridade.'
     REORGANISE_DESCRIPTION: 'Cambiar a estrutura do sitio'
     REORGANISE_HELP: 'Reorganizar as páxinas na árbore do sitio a través de arrastrar e soltar.'
     SHOWINMENUS: 'Amosar nos menús?'
     SHOWINSEARCH: 'Amosar na busca?'
+    SINGULARNAME: Páxina
     TABBEHAVIOUR: Comportamento
     TABDEPENDENT: 'Páxinas dependentes'
     TOPLEVEL: 'Contido do Sitio (Nivel Superior)'
@@ -110,21 +133,19 @@ gl_ES:
     VIEW_ALL_DESCRIPTION: 'Ver calquera páxina'
     VIEW_DRAFT_CONTENT: 'Ver contido do borrador'
     Visibility: Visibilidade
+    db_Content: Contido
+    db_Title: Título
     has_one_Parent: 'Páxina pai'
     many_many_ImageTracking: 'Imaxe de Seguemento'
     many_many_LinkTracking: 'Ligazón de Seguemento'
-    BUTTONSAVED: Gardado
-    BUTTONSAVEPUBLISH: Publicar
-    DESCRIPTION: 'Páxina de contido xenérico'
-    NOTPUBLISHED: 'Non publicado'
-    PLURALNAME: Páxinas
-    SINGULARNAME: Páxina
-    db_Content: Contido
-    db_Title: Título
   SilverStripe\CMS\Model\VirtualPage:
-    HEADER: 'Esta é unha páxina virtual'
     DESCRIPTION: 'Visualizar o contido doutra páxina'
+    HEADER: 'Esta é unha páxina virtual'
     SINGULARNAME: 'Páxina Virtual'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 'Páxinas con ficheiros rotos'
+    BrokenLinksGroupTitle: 'Informes de ligazóns rotas'
+    ParameterLiveCheckbox: 'Probar o sitio en vivo'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Ningún
     BROKENLINKS: 'Informe de ligazóns rotas'
@@ -146,27 +167,6 @@ gl_ES:
     ReasonDropdownVPBROKENLINK: 'A páxina virtual está apuntando a unha páxina inexistente'
     RedirectorNonExistent: 'o redirector está apuntando a unha páxina inexistente'
     VirtualPageNonExistent: 'a páxina virtual está apuntando a unha páxina inexistente'
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
-    PUBLISHED_PAGES: '%d páxinas publicadas, %d erros'
-    PUBLISH_PAGES: Publicar
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
-    RESTORE: Restaurar
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
-    UNPUBLISH_PAGES: 'Sen publicar'
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Editar Páxina'
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Editar Páxina'
-  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
-    ANCHORVALUE: Áncora
-  SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    LINKDESCR: 'Descrición da ligazón'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
-  SilverStripe\CMS\Reports\BrokenFilesReport:
-    BROKENFILES: 'Páxinas con ficheiros rotos'
-    BrokenLinksGroupTitle: 'Informes de ligazóns rotas'
-    ParameterLiveCheckbox: 'Probar o sitio en vivo'
   SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
     BROKENREDIRECTORPAGES: 'RedirectorPages apuntando a páxinas eliminadas'
     BrokenLinksGroupTitle: 'Informes de ligazóns rotas'

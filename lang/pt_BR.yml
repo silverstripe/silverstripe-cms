@@ -1,27 +1,49 @@
 pt_BR:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Restaurar
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: 'Anular publicação'
   SilverStripe\CMS\Controllers\CMSMain:
+    EMAIL: E-mail
     PAGENOTEXISTS: 'Esta página não existe'
+    PAGETYPEOPT: 'Tipo de página'
+    PLEASESAVE: 'Por favor salve a página: Esta página não pode ser atulizada porque ainda não foi salva.'
     PUBALLCONFIRM: 'Por favor publique todas as páginas no site, copiando content stage to live'
     PUBALLFUN: 'Funcionalidade "Publicar Tudo"'
     REMOVEDPAGEFROMDRAFT: 'Removido ''{title}''  do site de rascunho'
-    EMAIL: E-mail
-    PAGETYPEOPT: 'Tipo de página'
-    PLEASESAVE: 'Por favor salve a página: Esta página não pode ser atulizada porque ainda não foi salva.'
     ROLLBACK: 'Reverter para esta versão'
     SAVEDRAFT: Salvar
     SEARCHRESULTS: 'Resultados da pesquisa'
     TabContent: Conteúdo
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Editar Página'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    AUTHOR: Autor
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Editar Página'
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: Páginas
+  SilverStripe\CMS\Controllers\ContentController:
+    Email: E-mail
+    LOGIN: Login
+    Password: Senha
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Âncora
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Descrição do link'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
+    FILE: Arquivo
     HEADER: 'Esta página redireccionará os utilizadores para outra página'
     OTHERURL: 'Outro website URL'
     REDIRECTTO: 'Redirecionar para'
     REDIRECTTOEXTERNAL: 'Outro website'
     REDIRECTTOPAGE: 'Uma página no seu website'
     YOURPAGE: 'Página no seu website'
-    FILE: Arquivo
     has_one_LinkTo: 'Link para'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Uma página de redireccionamento foi criada sem nenhum destino específicado'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'Qualquer pessoa'
     ACCESSHEADER: 'Quem pode ver esta página?'
@@ -44,55 +66,33 @@ pt_BR:
     MENUTITLE: 'Rótulo da navegação'
     METADESC: Descrição
     METAEXTRA: 'Meta tags personalizadas'
+    PAGELOCATION: 'Lugar da página'
     PAGETITLE: 'Nome da Página'
     PAGETYPE: 'Tipo de página'
     PARENTID: 'Página pai'
     PARENTTYPE: 'Lugar da página'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Controla os grupos que podem acessar ou editar determinadas páginas'
+    PLURALNAME: Páginas
     SHOWINMENUS: 'Mostrar nos menus?'
     SHOWINSEARCH: 'Uncluir na procura?'
+    SINGULARNAME: Página
     TABBEHAVIOUR: Comportamento
     TOPLEVEL: 'Conteúdo do Site (Top Level)'
     Viewers: 'Grupo de visualizadores'
+    db_Content: Conteúdo
+    db_Title: Título
     has_one_Parent: 'Página mãe'
     many_many_BackLinkTracking: 'Gerenciar Backlink '
     many_many_ImageTracking: 'Gerenciar Imagem'
     many_many_LinkTracking: 'Gerenciar Link'
-    PAGELOCATION: 'Lugar da página'
-    PLURALNAME: Páginas
-    SINGULARNAME: Página
-    db_Content: Conteúdo
-    db_Title: Título
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Esta é uma página virtual'
     SINGULARNAME: 'Página virtual'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Ir
-    SEARCH: Buscar
-    FILTERLABELTEXT: Buscar
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
-    RESTORE: Restaurar
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
-    UNPUBLISH_PAGES: 'Anular publicação'
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Editar Página'
-  SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    AUTHOR: Autor
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Editar Página'
-  SilverStripe\CMS\Controllers\ContentController:
-    Email: E-mail
-    LOGIN: Login
-    Password: Senha
-  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
-    ANCHORVALUE: Âncora
-  SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    LINKDESCR: 'Descrição do link'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
-  SilverStripe\CMS\Model\RedirectorPageController:
-    HASBEENSETUP: 'Uma página de redireccionamento foi criada sem nenhum destino específicado'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     PageName: 'Nome da Página'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     LAST2WEEKS: 'Páginas editadas nas últimas 2 semanas'
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERLABELTEXT: Buscar
+    GO: Ir
+    SEARCH: Buscar

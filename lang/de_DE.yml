@@ -1,18 +1,4 @@
 de_DE:
-  SilverStripe\CMS\Model\SiteTree:
-    PAGETYPE: Seitentyp
-    SHOWINSEARCH: 'In Suche anzeigen?'
-    BUTTONSAVEPUBLISH: Veröffentlichen
-    BUTTONUNPUBLISH: 'Veröffentlichung zurücknehmen'
-    DESCRIPTION: 'Fügt ein anpassbares Formular hinzu'
-    PLURALNAME: Seiten
-    SINGULARNAME: Seite
-    db_Title: Titel
-  SilverStripe\CMS\Search\SearchForm:
-    SEARCH: Suche
-    SearchResults: Suchergebnisse
-    FILTERDATEFROM: Formular
-    FILTERLABELTEXT: Suche
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: '%d Seite aus der Entwurfs- und Veröffentlichten Ansicht entfernt und archiviert'
     TITLE: 'Veröffentlichung zurücknehmen und archivieren'
@@ -56,7 +42,21 @@ de_DE:
     Edit: Bearbeiten
   SilverStripe\CMS\Model\RedirectorPage:
     PLURALNAME: 'Anpassbares Formular'
+  SilverStripe\CMS\Model\SiteTree:
+    BUTTONSAVEPUBLISH: Veröffentlichen
+    BUTTONUNPUBLISH: 'Veröffentlichung zurücknehmen'
+    DESCRIPTION: 'Fügt ein anpassbares Formular hinzu'
+    PAGETYPE: Seitentyp
+    PLURALNAME: Seiten
+    SHOWINSEARCH: 'In Suche anzeigen?'
+    SINGULARNAME: Seite
+    db_Title: Titel
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_TYPE: Typ
   SilverStripe\CMS\Model\VirtualPage:
     PLURALNAME: 'Anpassbares Formular'
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERDATEFROM: Formular
+    FILTERLABELTEXT: Suche
+    SEARCH: Suche
+    SearchResults: Suchergebnisse

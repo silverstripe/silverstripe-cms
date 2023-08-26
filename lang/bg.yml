@@ -32,6 +32,7 @@ bg:
     NEWPAGE: 'Нова страница {pagetype}'
     PAGENOTEXISTS: 'Тази страница не съществува'
     PAGES: 'Състояние на страницата'
+    PAGESALLOPT: 'Всички страници'
     PAGETYPEANYOPT: Всички
     PAGETYPEOPT: 'Тип на страницата'
     PAGETYPE_TITLE: '(Тип на страницата: {type}) {title}'
@@ -53,6 +54,7 @@ bg:
     ROLLEDBACKPUBv2: 'Беше върнато до публикуваната версия'
     ROLLEDBACKVERSIONv2: 'Беше върната версия #{version}.'
     SAVED: 'Страница ''{title}'' беше записана успешно.'
+    SAVEDRAFT: Запис
     SHOW_AS_LIST: 'покажи в списък'
     TOO_MANY_PAGES: 'Твърде много страници'
     TabContent: Съдържание
@@ -61,8 +63,6 @@ bg:
     TreeFiltered: 'Резултати от търсенето.'
     TreeFilteredClear: 'Изчисти филтъра'
     UNPUBLISH_AND_ARCHIVE: 'Премахни от публикация и архивирай'
-    PAGESALLOPT: 'Всички страници'
-    SAVEDRAFT: Запис
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Добавяне на страница'
     ParentMode_child: 'Под друга страница'
@@ -75,6 +75,7 @@ bg:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Автор
     COMPAREMODE: 'Режим на сравнение (Избери два)'
+    COMPARINGVERSION: 'Сравняване на версии {version1} и {version2}.'
     MENUTITLE: История
     MULTISELECT: 'Групови действия'
     NOTPUBLISHED: Непубликувани
@@ -87,7 +88,6 @@ bg:
     VIEWINGLATEST: 'Последна версия'
     VIEWINGVERSION: 'Версия {version}.'
     WHEN: Кога
-    COMPARINGVERSION: 'Сравняване на версии {version1} и {version2}.'
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Редактиране на страница'
   SilverStripe\CMS\Controllers\CMSPagesController:
@@ -129,9 +129,9 @@ bg:
     PUBLISHEDSITE: 'Публикувани страници'
     Password: Парола
     StartEditing: 'Можете да започнете да редактирате съдържанието на вашия сайт, влизайки в <a href="{link}">СУС (CMS)</a>.'
+    UNVERSIONEDPREVIEW: Преглед
     UnableDeleteInstall: 'Инсталационните файлове не могат да бъдат изтрити. Моля, изтрийте ги ръчно.'
     VIEWPAGEIN: 'Изглед на страница в:'
-    UNVERSIONEDPREVIEW: Преглед
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Архивирани
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
@@ -148,6 +148,7 @@ bg:
     OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Пренасочва към страница от сайта или външен URL адрес'
+    FILE: Файл
     HEADER: 'Тази страница ще пренасочи потребители към друга страница'
     OTHERURL: 'Друг уебсайт URL'
     PLURALNAME: 'Пренасочващи страници'
@@ -159,7 +160,6 @@ bg:
     REDIRECTTOPAGE: 'Страница на вашият уебсайт'
     SINGULARNAME: 'Пренасочваща страница'
     YOURPAGE: 'Страница на вашият уебсайт'
-    FILE: Файл
     has_one_LinkTo: 'Препратка към'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Създадена е страница за пренасочване без да пренасочва на никъде.'
@@ -178,6 +178,7 @@ bg:
     BUTTONDELETEDESC: 'Премахни от чернова/публикация и запиши в архива'
     BUTTONPUBLISHED: Публикувана
     BUTTONSAVED: Записана
+    BUTTONSAVEPUBLISH: Публикувай
     BUTTONUNPUBLISH: 'Премахни от публикация'
     BUTTONUNPUBLISHDESC: 'Премахни тази страница от публикувания сайт'
     Comments: Коментари
@@ -252,17 +253,21 @@ bg:
     VIRTUALPAGEWARNINGSETTINGS: 'Изберете свързана страница и запишете, за да можете да публикувате тази страница.'
     Viewers: 'Групи потребители'
     Visibility: Видимост
+    db_Content: Съдържание
+    db_Title: Заглавие
     has_one_Parent: 'Предишната в йерархията страница'
     many_many_BackLinkTracking: 'Следене на "обратни връзки"'
     many_many_ImageTracking: 'Следене на снимките'
     many_many_LinkTracking: 'Следене на връзките'
-    BUTTONSAVEPUBLISH: Публикувай
-    db_Content: Съдържание
-    db_Title: Заглавие
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Тип
     TITLE_USED_ON: 'Използвано в'
+  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
+    USAGE: Употреба
+  SilverStripe\CMS\Model\SiteTreeLink:
+    PLURALNAME: 'Връзки към Дървото на сайта'
+    SINGULARNAME: 'Връзка към Дървото на сайта'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Свързани страници'
     DESCRIPTION: 'Показва съдържанието на друга страница'
@@ -329,8 +334,3 @@ bg:
     NONEREMOVED: 'Не бяха изтрити страници'
     SELECTALL: 'избери всички'
     UNSELECTALL: 'премахни селекцията'
-  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    USAGE: Употреба
-  SilverStripe\CMS\Model\SiteTreeLink:
-    PLURALNAME: 'Връзки към Дървото на сайта'
-    SINGULARNAME: 'Връзка към Дървото на сайта'

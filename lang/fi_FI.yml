@@ -255,12 +255,12 @@ fi_FI:
     VIRTUALPAGEWARNINGSETTINGS: 'Ole hyvä ja valitse linkitetty sivu sisältö kentästä, jotta julkaisu on mahdollista'
     Viewers: Katselijaryhmät
     Visibility: Näkyvyys
+    db_Content: Sisältö
+    db_Title: Otsikko
     has_one_Parent: Sivupohja
     many_many_BackLinkTracking: 'Käänteinen seuranta'
     many_many_ImageTracking: 'Kuvan seuranta'
     many_many_LinkTracking: 'Linkin seuranta'
-    db_Content: Sisältö
-    db_Title: Otsikko
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tyyppi
