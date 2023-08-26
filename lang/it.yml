@@ -83,8 +83,8 @@ it:
     MENUTITLE: Storico
     MULTISELECT: 'Azioni di gruppo'
     NOTPUBLISHED: 'Non pubblicato'
-    PREVIEW: 'Anteprima sito'
     NO_PREVIEW: 'Nessuna anteprima disponibile'
+    PREVIEW: 'Anteprima sito'
     PUBLISHER: Editore
     REVERTTOTHISVERSION: 'Ripristina a questa versione'
     SHOWUNPUBLISHED: 'Mostra versioni nascoste'
@@ -135,9 +135,9 @@ it:
     Password: Password
     PostInstallTutorialIntro: 'Questo sito web è una versione semplificata di un sito SilverStripe 3. Per estenderlo, dai un''occhiata a {link}.'
     StartEditing: 'Puoi iniziare a modificare i contenuti del sito aprendo <a href="{link}">il CMS</a>.'
+    UNVERSIONEDPREVIEW: Anteprima
     UnableDeleteInstall: 'Impossibile eliminare i file di installazione. Cancella manualmente i file sotto indicati'
     VIEWPAGEIN: 'Mostra pagina in:'
-    UNVERSIONEDPREVIEW: Anteprima
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archiviato
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
@@ -155,20 +155,20 @@ it:
     OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Reinoltra ad una pagina interna o una URL esterna'
+    FILE: File
     HEADER: 'Questa pagina redirigerà gli utenti su un''altra'
     OTHERURL: 'Altro indirizzo del sito web'
     PLURALNAME: 'Pagine Base'
     PLURALS:
+      many: '{count} Pagine Base'
       one: 'Una Pagina Base'
       other: '{count} Pagine Base'
-      many: '{count} Pagine Base'
     REDIRECTTO: 'Redirigi a'
     REDIRECTTOEXTERNAL: 'Un altro sito web'
+    REDIRECTTOFILE: 'Un file sul tuo sito web'
     REDIRECTTOPAGE: 'Una pagina sul tuo sito web'
     SINGULARNAME: 'Pagina di reindirizzamento'
     YOURPAGE: 'Pagina sul tuo sito web'
-    FILE: File
-    REDIRECTTOFILE: 'Un file sul tuo sito web'
     has_one_LinkTo: 'Collega a'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Una pagina di redirect è stata impostata senza alcuna destinazione'
@@ -241,9 +241,9 @@ it:
     PERMISSION_GRANTACCESS_HELP: 'Consenti le impostazioni di restrizione d''accesso a pagine specifiche nella sezione "Pagine".'
     PLURALNAME: Pagine
     PLURALS:
+      many: '{count} Pagine'
       one: 'Una Pagina'
       other: '{count} Pagine'
-      many: '{count} Pagine'
     PageTypNotAllowedOnRoot: 'Il tipo di pagina "{type}" non è consentito al primo livello'
     PageTypeNotAllowed: 'Il tipo di pagina "{type}" non è consentito come figlio di questa pagina madre'
     REMOVE_INSTALL_WARNING: 'Attenzione: devi rimuovere install.php da questa installazione di SilverStripe per motivi di sicurezza.'
@@ -270,15 +270,15 @@ it:
     VIRTUALPAGEWARNINGSETTINGS: 'Perfavore scegli una pagina da linkare nel campo "Contenuto" per poter pubblicare.'
     Viewers: 'Gruppi di visualizzatori'
     Visibility: Visibilità
-    has_one_Parent: 'Pagina madre'
-    many_many_BackLinkTracking: 'Monitoriaggio link di ritorno'
-    many_many_ImageTracking: 'Monitoraggio immagine'
-    many_many_LinkTracking: 'Monitoraggio link'
     db_Content: Contenuto
     db_Sort: Ordine
     db_Title: Titolo
     db_URLSegment: 'Segmento URL'
+    has_one_Parent: 'Pagina madre'
     has_one_Subsite: Sottosito
+    many_many_BackLinkTracking: 'Monitoriaggio link di ritorno'
+    many_many_ImageTracking: 'Monitoraggio immagine'
+    many_many_LinkTracking: 'Monitoraggio link'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
@@ -288,9 +288,9 @@ it:
   SilverStripe\CMS\Model\SiteTreeLink:
     PLURALNAME: 'Link dell''albero del sito'
     PLURALS:
+      many: '{count} Collegamenti all''albero del Sito'
       one: 'Un collegamento all''albero del sito'
       other: '{count} Collegamenti all''albero del Sito'
-      many: '{count} Collegamenti all''albero del Sito'
     SINGULARNAME: 'Link dell''albero del sito'
     has_one_Parent: Parente
   SilverStripe\CMS\Model\VirtualPage:
@@ -301,9 +301,9 @@ it:
     HEADERWITHLINK: 'Questa è una pagina virtuale copiata da "{title}" ({link})'
     PLURALNAME: 'Pagine Base'
     PLURALS:
+      many: '{count} Pagine Base'
       one: 'Una Pagina Base'
       other: '{count} Pagine Base'
-      many: '{count} Pagine Base'
     PageTypNotAllowedOnRoot: 'Il tipo di pagina originale "{type}" non è consentito al primo livello per questa pagina virtuale'
     SINGULARNAME: 'Pagina virtuale'
   SilverStripe\CMS\Reports\BrokenFilesReport:

@@ -1,38 +1,59 @@
 es_AR:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: 'Se publicaron %d páginas, %d fallas'
+    PUBLISH_PAGES: Publicar
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Restaurar
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: 'No Publicar'
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS_HELP: 'Permitir la visualización de la sección que contiene el árbol de páginas y el contenido. Ver y editar permisos que se pueden manejar mediante listas desplegables específicas de la página, así como el apartado "Permisos del contenido".'
-    PAGENOTEXISTS: 'Esta página no existe'
-    PUBALLCONFIRM: 'Por favor publica todas las páginas del sitio, copiando el contenido del boceto al sitio público'
-    PUBALLFUN: 'Funcionalidad "Publicar Todo"'
-    REMOVEDPAGEFROMDRAFT: 'Quitados ''{title}'' del borrador del sitio'
     EMAIL: 'Dirección Email'
+    PAGENOTEXISTS: 'Esta página no existe'
     PAGETYPEANYOPT: Cualquiera
     PAGETYPEOPT: 'Tipo de Página'
     PLEASESAVE: 'Por favor Guarda la Página: No se puede actualizar esta página porque aún no se ha guardado.'
+    PUBALLCONFIRM: 'Por favor publica todas las páginas del sitio, copiando el contenido del boceto al sitio público'
+    PUBALLFUN: 'Funcionalidad "Publicar Todo"'
+    REMOVEDPAGEFROMDRAFT: 'Quitados ''{title}'' del borrador del sitio'
     ROLLBACK: 'Restaurar a ésta versión'
     SAVEDRAFT: Guardar
     SEARCHRESULTS: 'Resultado de la búsqueda'
     TabContent: Contenido
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Editar Página'
+  SilverStripe\CMS\Controllers\CMSPageHistoryController:
+    AUTHOR: Autor
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Editar Página'
   SilverStripe\CMS\Controllers\ContentController:
     DRAFTSITE: 'Sitio borrador'
+    Email: 'Dirección Email'
     LOGGEDINAS: 'Conectado como'
     LOGIN: 'Iniciar sesión'
     LOGOUT: Desconectarse
     NOTEWONTBESHOWN: 'Nota: este mensage no se mostrará a sus visitantes'
     NOTLOGGEDIN: 'No conectado'
     PUBLISHEDSITE: 'Sitio publicado'
-    VIEWPAGEIN: 'Ver página en:'
-    Email: 'Dirección Email'
     Password: Contraseña
+    VIEWPAGEIN: 'Ver página en:'
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Anclar
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Descripción del enlace'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
+    FILE: Archivo
     HEADER: 'Esta página dirigirá al usuarios a otra página'
     OTHERURL: 'Otro URL del sitio web'
     REDIRECTTO: 'Redirigir a'
     REDIRECTTOEXTERNAL: 'Otro sitio web'
     REDIRECTTOPAGE: 'Una página en tu sitio web'
     YOURPAGE: 'Página en tu sitio web'
-    FILE: Archivo
     has_one_LinkTo: 'Enlazar a'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Se ha instalado una página de redirección  sin algún lugar a donde redireccionar.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Cualquiera
     ACCESSHEADER: '¿Quién puede ver ésta página?'
@@ -40,6 +61,7 @@ es_AR:
     ACCESSONLYTHESE: 'Únicamente estas personas (selecciona de la lista)'
     BUTTONCANCELDRAFT: 'Cancelar cambios al borrador'
     BUTTONCANCELDRAFTDESC: 'Eliminar el borrador y regresar a la página actualmente publicada'
+    BUTTONSAVEPUBLISH: Publicar
     BUTTONUNPUBLISH: 'No Publicar'
     BUTTONUNPUBLISHDESC: 'Quitar ésta página del sitio público'
     Comments: Comentarios
@@ -71,23 +93,26 @@ es_AR:
     REORGANISE_HELP: 'Reorganizar las páginas en el árbol del sitio mediante arrastrar y soltar.'
     SHOWINMENUS: '¿Mostrar en menús?'
     SHOWINSEARCH: '¿Mostrar en búsqueda?'
+    SINGULARNAME: Página
     TABBEHAVIOUR: Compotamiento
     TABDEPENDENT: 'Páginas dependientes'
     TOPLEVEL: 'Contenido del Sitio (Nivel Superior)'
     VIEW_ALL_DESCRIPTION: 'Ver cualquier página'
     VIEW_DRAFT_CONTENT: 'Ver contenido borrador'
     Viewers: 'Grupos de Observadores'
+    db_Content: Contenido
+    db_Title: Título
     has_one_Parent: 'Página Superior'
     many_many_BackLinkTracking: 'Seguimiento de Backlink'
     many_many_ImageTracking: 'Seguimiento de Imágen'
     many_many_LinkTracking: 'Seguimiento de Enlace'
-    BUTTONSAVEPUBLISH: Publicar
-    SINGULARNAME: Página
-    db_Content: Contenido
-    db_Title: Título
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Esta es una página virtual'
     SINGULARNAME: 'Página Virtual'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 'Páginas con archivos rotos'
+    BrokenLinksGroupTitle: 'Informes de enlaces rotos'
+    ParameterLiveCheckbox: 'Verificar el sitio en vivo'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Cualquiera
     BROKENLINKS: 'Informe de enlaces rotos'
@@ -109,36 +134,6 @@ es_AR:
     ReasonDropdownVPBROKENLINK: 'Página virtual apuntando a una página no existente'
     RedirectorNonExistent: 'la página de redireccionamiento apunta a una página inexistente'
     VirtualPageNonExistent: 'página virtual apuntando a una página no existente'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Ir
-    SEARCH: Buscar
-    SearchResults: 'Resultados de la búsqueda'
-    FILTERLABELTEXT: Buscar
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
-    PUBLISHED_PAGES: 'Se publicaron %d páginas, %d fallas'
-    PUBLISH_PAGES: Publicar
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
-    RESTORE: Restaurar
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
-    UNPUBLISH_PAGES: 'No Publicar'
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Editar Página'
-  SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    AUTHOR: Autor
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Editar Página'
-  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
-    ANCHORVALUE: Anclar
-  SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    LINKDESCR: 'Descripción del enlace'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
-  SilverStripe\CMS\Model\RedirectorPageController:
-    HASBEENSETUP: 'Se ha instalado una página de redirección  sin algún lugar a donde redireccionar.'
-  SilverStripe\CMS\Reports\BrokenFilesReport:
-    BROKENFILES: 'Páginas con archivos rotos'
-    BrokenLinksGroupTitle: 'Informes de enlaces rotos'
-    ParameterLiveCheckbox: 'Verificar el sitio en vivo'
   SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
     BROKENREDIRECTORPAGES: 'RedirectorPages apunta a páginas eliminadas'
     BrokenLinksGroupTitle: 'Informes de enlaces rotos'
@@ -152,3 +147,8 @@ es_AR:
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'Informes del contenido'
     LAST2WEEKS: 'Páginas editadas en las últimas 2 semanas'
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERLABELTEXT: Buscar
+    GO: Ir
+    SEARCH: Buscar
+    SearchResults: 'Resultados de la búsqueda'

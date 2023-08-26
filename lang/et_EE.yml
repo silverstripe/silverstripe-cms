@@ -1,30 +1,37 @@
 et_EE:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: 'Avaldatud %d lehte, %d tõrget'
+    PUBLISH_PAGES: Avalda
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: Taasta
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: 'Võta maha'
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: 'Juurdepääs jaotisele ''{title}'''
     ACCESS_HELP: 'Luba lehepuud ja sisu hõlmava jaotise vaatamine. Vaatamis- ja redigeerimisõigusi on võimalik hallata nii lehepõhiselt kui ka eraldi jaotise "Sisu õigused" abil.'
+    ARCHIVE: Arhiiv
+    AddNew: 'Lisa uus leht'
+    AddNewButton: 'Lisa uus'
+    CANT_REORGANISE: 'Teil ei ole õigusi kõrgema taseme lehtede muutmiseks. Teie muudatust ei salvestatud.'
+    Cancel: Loobu
     ChoosePageParentMode: 'Valige, kuhu see leht luua'
     ChoosePageType: 'Valige lehe tüüp'
     Create: Loo
+    EMAIL: Email
     NEWPAGE: 'Uus {pagetype}'
     PAGENOTEXISTS: 'Antud lehekülge ei eksisteeri'
+    PAGESALLOPT: 'Kõik lehed'
     PAGETYPEANYOPT: Kõik
+    PAGETYPEOPT: 'Lehe tüüp'
+    PLEASESAVE: 'Palun Salvesta Lehekülg: Antud lehekülge ei uuendatud, kuna seda ei ole veel salvestatud.'
     PUBALLCONFIRM: 'Palun avaldage iga leht selles saidis'
     PUBALLFUN: '"Avalda Kõik" funktsionaalsus'
     PUBPAGES: 'Valmis: {count} lehte avaldatud'
     PageAdded: 'Lehekülje loomine õnnestus'
     REMOVEDPAGE: 'Leht ''{title}'' eemaldati avaldatud saitide hulgast'
     REMOVEDPAGEFROMDRAFT: '''{title}'' eemaldatud visandi lehelt'
-    RESTORED: '''{title}'' taastati edukalt'
-    ARCHIVE: Arhiiv
-    AddNew: 'Lisa uus leht'
-    AddNewButton: 'Lisa uus'
-    CANT_REORGANISE: 'Teil ei ole õigusi kõrgema taseme lehtede muutmiseks. Teie muudatust ei salvestatud.'
-    Cancel: Loobu
-    EMAIL: Email
-    PAGESALLOPT: 'Kõik lehed'
-    PAGETYPEOPT: 'Lehe tüüp'
-    PLEASESAVE: 'Palun Salvesta Lehekülg: Antud lehekülge ei uuendatud, kuna seda ei ole veel salvestatud.'
     REORGANISATIONSUCCESSFUL: 'Saidipuu korraldati edukalt ümber.'
+    RESTORED: '''{title}'' taastati edukalt'
     ROLLBACK: 'Pööra tagasi sellesse versiooni'
     SAVEDRAFT: Salvesta
     SEARCHRESULTS: 'Otsingu tulemused'
@@ -34,27 +41,31 @@ et_EE:
     TabHistory: Ajalugu
     TabSettings: Seaded
   SilverStripe\CMS\Controllers\CMSPageAddController:
+    MENUTITLE: 'Lisa leht'
     ParentMode_child: 'Teise lehe all'
     ParentMode_top: 'Kõrgem tase'
-    MENUTITLE: 'Lisa leht'
     Title: 'Lisa leht'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 'Muuda lehte'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 'Võrdlusrežiim (valige kaks)'
-    REVERTTOTHISVERSION: 'Taasta valitud versioon'
-    SHOWUNPUBLISHED: 'Näita ka avaldamata versioone'
-    VIEW: vaade
-    VIEWINGVERSION: 'Hetkel kuvatud versioon {version}.'
     AUTHOR: Autor
+    COMPAREMODE: 'Võrdlusrežiim (valige kaks)'
     COMPARINGVERSION: 'Versioonide {version1} ja {version2} võrdlus.'
     MENUTITLE: Ajalugu
     NOTPUBLISHED: Avaldamata
     PUBLISHER: Avaldaja
+    REVERTTOTHISVERSION: 'Taasta valitud versioon'
+    SHOWUNPUBLISHED: 'Näita ka avaldamata versioone'
     UNKNOWN: Tundmatu
+    VIEW: vaade
+    VIEWINGVERSION: 'Hetkel kuvatud versioon {version}.'
     WHEN: When
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 'Muuda lehte'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: Lehed
     FILTER: Filtreeri
     ListView: Loendivaade
+    MENUTITLE: Lehed
     TreeView: Puuvaade
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Kõik lehed'
@@ -63,7 +74,11 @@ et_EE:
     ARCHIVEDSITEFROM: 'Arhiveeritud sait asukohast'
     DRAFT: Mustand
     DRAFTSITE: 'Mustandi sait'
+    Email: Email
     INSTALL_SUCCESS: 'Paigaldus oli edukas!'
+    InstallFilesDeleted: 'Installifailid on edukalt kustutatud.'
+    InstallSecurityWarning: 'Turvalisuse põhjustel soovitame nüüd installifailid kustutada, juhul kui te ei plaani hiljem uuesti installida (<em>nõuab administraatorina sisselogimist, vt ülevalt</em>). Edaspidi vajab veebiserver juurdepääsu kirjutamiseks ainult kaustale "assets". Võite eemaldada kõigi teiste kaustade kirjutusõigused. <a href="{link}" style="text-align: center;">Klõpsake siin installifailide kustutamiseks.</a>'
+    InstallSuccessCongratulations: 'SilverStripe edukalt paigaldatud!'
     LOGGEDINAS: 'Sisse logitud kui'
     LOGIN: 'Logi sisse'
     LOGOUT: 'Logi välja'
@@ -71,32 +86,34 @@ et_EE:
     NOTLOGGEDIN: 'Pole sisse logitud'
     PUBLISHED: Avaldatud
     PUBLISHEDSITE: 'Avaldatud sait'
-    VIEWPAGEIN: 'Kuva leht:'
-    Email: Email
-    InstallFilesDeleted: 'Installifailid on edukalt kustutatud.'
-    InstallSecurityWarning: 'Turvalisuse põhjustel soovitame nüüd installifailid kustutada, juhul kui te ei plaani hiljem uuesti installida (<em>nõuab administraatorina sisselogimist, vt ülevalt</em>). Edaspidi vajab veebiserver juurdepääsu kirjutamiseks ainult kaustale "assets". Võite eemaldada kõigi teiste kaustade kirjutusõigused. <a href="{link}" style="text-align: center;">Klõpsake siin installifailide kustutamiseks.</a>'
-    InstallSuccessCongratulations: 'SilverStripe edukalt paigaldatud!'
     Password: Parool
     PostInstallTutorialIntro: 'See veebisait on SilverStripe 3 lihtsustatud versioon. Lehe laiendamiseks külastage aadressi {link}.'
     UNVERSIONEDPREVIEW: Eelvaade
     UnableDeleteInstall: 'Installifaile ei olnud võimalik kustutada. Kustutage allolevad failid käsitsi.'
+    VIEWPAGEIN: 'Kuva leht:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arhiveeritud
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Link
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Lingi kirjeldus'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    HelpChars: 'Erimärgid teisendatakse või eemaldatakse automaatselt.'
     Cancel: Loobu
     Edit: Redigeeri
+    HelpChars: 'Erimärgid teisendatakse või eemaldatakse automaatselt.'
   SilverStripe\CMS\Model\RedirectorPage:
+    FILE: Fail
     HEADER: 'See lehekülg suunab kasutajad teisele leheküljele'
     OTHERURL: 'Teise veebisaidi URL'
+    PLURALNAME: 'User Defined Forms'
     REDIRECTTO: 'Suuna ümber'
     REDIRECTTOEXTERNAL: 'Teisele veebisaidile'
     REDIRECTTOPAGE: 'Leheküljele sinu veebisaidil'
-    YOURPAGE: 'Lehekülg sinu veebisaidil'
-    FILE: Fail
-    PLURALNAME: 'User Defined Forms'
     SINGULARNAME: Ümbersuunamisleht
+    YOURPAGE: 'Lehekülg sinu veebisaidil'
     has_one_LinkTo: Lingi
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Suunav lehekülg seati üles ilma, et ta kuhugile suunaks.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Igaüks
     ACCESSHEADER: 'Kes tohib seda lehekülge minu veebisaidil vaadata?'
@@ -105,10 +122,12 @@ et_EE:
     ADDEDTODRAFTHELP: 'Leht ei ole veel avaldatud'
     ADDEDTODRAFTSHORT: Mustand
     APPEARSVIRTUALPAGES: 'Sisu on kuvatud ka virtuaalsetel lehtedel jaotistes {title}.'
+    ARCHIVEDPAGESHORT: Arhiveeritud
     BUTTONCANCELDRAFT: 'Tühista visandi muudatused'
     BUTTONCANCELDRAFTDESC: 'Kustuta oma visand ja pöördu tagasi hetkel avaldatud lehekülje kujule'
     BUTTONPUBLISHED: Avaldatud
     BUTTONSAVED: Salvestatud
+    BUTTONSAVEPUBLISH: Avalda
     BUTTONUNPUBLISH: 'Võta maha'
     BUTTONUNPUBLISHDESC: 'Eemalda see lehekülg avalikult saidilt'
     Comments: Komentaarid
@@ -117,6 +136,7 @@ et_EE:
     DEFAULTCONTACTTITLE: Kontakt
     DEFAULTHOMETITLE: Avaleht
     DEPENDENT_NOTE: 'Alljärgnevad lehed sõltuvad sellest lehest. See hõlmab virtuaalseid lehti, ümbersuunamislehti ja sisulinkidega lehti.'
+    DESCRIPTION: 'Üldine sisuleht'
     DependtPageColumnLinkType: 'Lingi tüüp'
     EDITHEADER: 'Kes tohib seda sisuhaldussüsteemi kaudu muuta?'
     EDITORGROUPS: Muutjagrupid
@@ -126,6 +146,8 @@ et_EE:
     HASBROKENLINKS: 'Sellel lehel on katkiseid linke.'
     HTMLEDITORTITLE: Sisu
     INHERIT: 'Päring vanemalt lehelt'
+    LASTPUBLISHED: 'Viimati avaldatud'
+    LASTSAVED: 'Viimati salvestatud'
     LASTUPDATED: 'Viimati uuendatud'
     LINKCHANGENOTE: 'Selle lehe lingi muutmine mõjutab ka kõigi alamlehtede linke.'
     MENUTITLE: 'Navigatsiooni silt'
@@ -135,6 +157,8 @@ et_EE:
     MODIFIEDONDRAFTHELP: 'Lehel on avaldamata muudatusi'
     MODIFIEDONDRAFTSHORT: Muudetud
     MetadataToggle: Metaandmed
+    NOTPUBLISHED: Avaldamata
+    ONLIVEONLYSHORTHELP: 'Lehekülg on avalikustatud, kuid mustand on kustutatud'
     PAGELOCATION: 'Lehe asukoht'
     PAGETITLE: 'Lehekülje nimi'
     PAGETYPE: 'Lehe tüüp'
@@ -144,6 +168,7 @@ et_EE:
     PARENTTYPE_SUBPAGE: 'Vanemlehe all olev alamleht'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Kontroli millised gruppid saavad ligipääsu ja võimaluse muuta mingeid lehti'
     PERMISSION_GRANTACCESS_HELP: 'Luba jaotises Lehed lehepõhiste juurdepääsupiirangute seadistamine.'
+    PLURALNAME: Lehed
     PageTypNotAllowedOnRoot: '"{type} tüüpi lehekülg ei ole juurkataloogi tasemel lubatud'
     PageTypeNotAllowed: 'Lehe tüüp "{type}" ei ole selle vanemlehe alamlehena lubatud'
     REMOVE_INSTALL_WARNING: 'Hoiatus! Peaksite eemaldama faili install.php sellest SilverStripe''i installist turvalisuse kaalutlustel.'
@@ -151,6 +176,7 @@ et_EE:
     REORGANISE_HELP: 'Korraldage lehti saidipuus ümber pukseerimisega.'
     SHOWINMENUS: 'Näita menüüdes?'
     SHOWINSEARCH: 'Näita otsingus?'
+    SINGULARNAME: Leht
     TABBEHAVIOUR: Käitumine
     TABDEPENDENT: 'Sõltuvad lehed'
     TOPLEVEL: 'Lehe sisu (kõrgeim tase)'
@@ -160,28 +186,23 @@ et_EE:
     VIEW_DRAFT_CONTENT_HELP: 'Rakendub lehe vaatamisel väljaspool CMS-i mustandirežiimis. Kasulik välistele kaastöötajatele, kellel puudub juurdepääs CMS-ile.'
     Viewers: 'Vaatajate gruppid'
     Visibility: Nähtavus
+    db_Content: Sisu
+    db_Title: Pealkiri
     has_one_Parent: 'Vanem leht'
     many_many_BackLinkTracking: 'Tagasilingi jälgimine'
     many_many_ImageTracking: 'Pildi jälgimine'
     many_many_LinkTracking: 'Lingi jälgimine'
-    ARCHIVEDPAGESHORT: Arhiveeritud
-    BUTTONSAVEPUBLISH: Avalda
-    DESCRIPTION: 'Üldine sisuleht'
-    LASTPUBLISHED: 'Viimati avaldatud'
-    LASTSAVED: 'Viimati salvestatud'
-    NOTPUBLISHED: Avaldamata
-    ONLIVEONLYSHORTHELP: 'Lehekülg on avalikustatud, kuid mustand on kustutatud'
-    PLURALNAME: Lehed
-    SINGULARNAME: Leht
-    db_Content: Sisu
-    db_Title: Pealkiri
   SilverStripe\CMS\Model\VirtualPage:
+    DESCRIPTION: 'Kuvab sisu teiselt lehelt'
     EditLink: redigeeri
     HEADER: 'See on virtuaalne leht'
-    PageTypNotAllowedOnRoot: 'Lehe originaaltüüp "{type}" ei ole selle virtuaalse lehe juurtasandil lubatud.'
-    DESCRIPTION: 'Kuvab sisu teiselt lehelt'
     PLURALNAME: 'User Defined Forms'
+    PageTypNotAllowedOnRoot: 'Lehe originaaltüüp "{type}" ei ole selle virtuaalse lehe juurtasandil lubatud.'
     SINGULARNAME: 'Virtuaalne leht'
+  SilverStripe\CMS\Reports\BrokenFilesReport:
+    BROKENFILES: 'Katkiste failidega lehed'
+    BrokenLinksGroupTitle: 'Katkiste linkide aruanded'
+    ParameterLiveCheckbox: 'Kontrolli avaldatud saiti'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: Kõik
     BROKENLINKS: 'Katkiste linkide aruanne'
@@ -204,34 +225,6 @@ et_EE:
     ReasonDropdownVPBROKENLINK: 'Virtuaalne leht suunab olematule lehele'
     RedirectorNonExistent: 'ümbersuunamisleht suunab olematule lehele'
     VirtualPageNonExistent: 'virtuaalne leht suunab olematule lehele'
-  SilverStripe\CMS\Search\SearchForm:
-    FILTERDATEFROM: Alates
-    FILTERDATETO: Kuni
-    GO: Mine
-    SEARCH: Otsi
-    SearchResults: Otsingutulemused
-    FILTERLABELTEXT: Otsi
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
-    PUBLISHED_PAGES: 'Avaldatud %d lehte, %d tõrget'
-    PUBLISH_PAGES: Avalda
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
-    RESTORE: Taasta
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
-    UNPUBLISH_PAGES: 'Võta maha'
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Muuda lehte'
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Muuda lehte'
-  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
-    ANCHORVALUE: Link
-  SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    LINKDESCR: 'Lingi kirjeldus'
-  SilverStripe\CMS\Model\RedirectorPageController:
-    HASBEENSETUP: 'Suunav lehekülg seati üles ilma, et ta kuhugile suunaks.'
-  SilverStripe\CMS\Reports\BrokenFilesReport:
-    BROKENFILES: 'Katkiste failidega lehed'
-    BrokenLinksGroupTitle: 'Katkiste linkide aruanded'
-    ParameterLiveCheckbox: 'Kontrolli avaldatud saiti'
   SilverStripe\CMS\Reports\BrokenRedirectorPagesReport:
     BROKENREDIRECTORPAGES: 'Ümbersuunamislehed, mis suunavad kustutatud lehtedele'
     BrokenLinksGroupTitle: 'Katkiste linkide aruanded'
@@ -245,3 +238,10 @@ et_EE:
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: Sisuaruanded
     LAST2WEEKS: 'Viimase kahe nädala jooksul muudetud leheküljed'
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERDATEFROM: Alates
+    FILTERDATETO: Kuni
+    FILTERLABELTEXT: Otsi
+    GO: Mine
+    SEARCH: Otsi
+    SearchResults: Otsingutulemused

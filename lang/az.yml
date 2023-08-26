@@ -1,25 +1,43 @@
 az:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
+    RESTORE: 'Bərpa et'
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: 'Dərci ləğv et'
+  SilverStripe\CMS\Controllers\CMSMain:
+    EMAIL: E-poçt
+    PAGETYPEANYOPT: İxtiyari
+    PAGETYPEOPT: 'Səhifə tipi'
+    SAVEDRAFT: 'Yadda saxla'
+    TabContent: Məzmun
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITEFROM: 'Arxivləşmiş sayt'
     DRAFTSITE: 'Qaralama sayt'
+    Email: E-poçt
     LOGGEDINAS: 'Kimi daxil olmusan'
     LOGIN: 'Daxil ol'
     LOGOUT: Çıxış
     NOTEWONTBESHOWN: 'Qeyd: Bu mesaj ziyarətçilər üçün görünməyəcək'
     NOTLOGGEDIN: 'Daxil olmayıb'
     PUBLISHEDSITE: 'Dərc olunmuş sayt'
-    VIEWPAGEIN: 'Səhifəni göstər:'
-    Email: E-poçt
     Password: Parol
+    VIEWPAGEIN: 'Səhifəni göstər:'
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Ankor
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Link təsviri'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
+    FILE: Fayl
     HEADER: 'Bu səhifə istifadəçiləri başqa səhifəyə yönləndirəcək'
     OTHERURL: 'Başqa Web saytın URL-i'
     REDIRECTTO: Yönləndir
     REDIRECTTOEXTERNAL: 'Başqa Web sayt'
     REDIRECTTOPAGE: 'web səhifənizdə olan səhifə'
     YOURPAGE: 'Web saytınızda olan səhifə'
-    FILE: Fayl
     has_one_LinkTo: 'Linki qoy'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Yönləndirmə səhifəsinə yönlənmə istiqaməti verilməyib.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'Hər kəs'
     ACCESSHEADER: 'Bu səhifəyə kimlər baxa bilər?'
@@ -53,45 +71,27 @@ az:
     REORGANISE_HELP: 'Səhifələri dart burax əməliyyatı ilə sırala.'
     SHOWINMENUS: 'Menyularda görünsün?'
     SHOWINSEARCH: 'Axtarışda görünsün?'
+    SINGULARNAME: Səhifə
     TABBEHAVIOUR: Davranış
     TABDEPENDENT: 'Asılı səhifələr'
     TOPLEVEL: 'Saytın məzmunu (yuxarı səviyyə)'
     VIEW_ALL_DESCRIPTION: 'İstənilən səhifəyə bax'
     VIEW_DRAFT_CONTENT: 'Qaralama məzmuna bax'
+    db_Content: Məzmun
+    db_Title: Başlıq
     has_one_Parent: 'Valideyn səhifəsi'
     many_many_ImageTracking: 'Şəkil izləmə'
     many_many_LinkTracking: 'Keçidin izlənməsi'
-    SINGULARNAME: Səhifə
-    db_Content: Məzmun
-    db_Title: Başlıq
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Bu virtual səhifədir'
     SINGULARNAME: 'Virtual səhifə'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Göndər
-    SEARCH: Axtar
-    SearchResults: 'Axtarış nəticələri'
-    FILTERLABELTEXT: Axtar
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
-    RESTORE: 'Bərpa et'
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
-    UNPUBLISH_PAGES: 'Dərci ləğv et'
-  SilverStripe\CMS\Controllers\CMSMain:
-    EMAIL: E-poçt
-    PAGETYPEANYOPT: İxtiyari
-    PAGETYPEOPT: 'Səhifə tipi'
-    SAVEDRAFT: 'Yadda saxla'
-    TabContent: Məzmun
-  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
-    ANCHORVALUE: Ankor
-  SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    LINKDESCR: 'Link təsviri'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
-  SilverStripe\CMS\Model\RedirectorPageController:
-    HASBEENSETUP: 'Yönləndirmə səhifəsinə yönlənmə istiqaməti verilməyib.'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: İxtiyari
     CheckSiteDropdownDraft: 'Qaralama sayt'
     CheckSiteDropdownPublished: 'Dərc olunmuş sayt'
     PageName: 'Səhifənin adı'
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERLABELTEXT: Axtar
+    GO: Göndər
+    SEARCH: Axtar
+    SearchResults: 'Axtarış nəticələri'

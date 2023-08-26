@@ -1,24 +1,35 @@
 si:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: 'අප්රසිද්ධ කරන්න'
   SilverStripe\CMS\Controllers\CMSMain:
+    EMAIL: 'ඊමේල් '
     PAGENOTEXISTS: 'මෙම  පිටුව තවදුරටත් නොපවතී'
+    PAGETYPEOPT: 'පිටු වර්ගය'
+    PLEASESAVE: 'පිටුව සේව් කරන්න, නැතිනම් මෙම පිටුව යාවත්කාලීන කල නොහැක'
     PUBALLCONFIRM: 'අඩවියේ ඇති සියලු පිටු, වේදිකාවට පිටපත් කර ප්රසිද්ධ කරන්න'
     PUBALLFUN: 'සියලු ක්රම වේද ප්රසිද්ධ කරන ලදී'
     REMOVEDPAGEFROMDRAFT: 'කටු අඩවියෙන් ''{title}'' මකන ලදී'
-    EMAIL: 'ඊමේල් '
-    PAGETYPEOPT: 'පිටු වර්ගය'
-    PLEASESAVE: 'පිටුව සේව් කරන්න, නැතිනම් මෙම පිටුව යාවත්කාලීන කල නොහැක'
     ROLLBACK: 'මෙම සංස්රනය ඉවත් කරනන්න'
     SAVEDRAFT: 'සේවි කරන්න'
     TabContent: අන්තර්ගතය
+  SilverStripe\CMS\Controllers\ContentController:
+    Email: 'ඊමේල් '
+    Password: 'මුර පදය'
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'බැදීම් විස්තරය'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
+    FILE: ලිපිය
     HEADER: 'මෙම පිටුව පරිබෝඡකයන් වෙනත් යොමු කරයි'
     OTHERURL: 'වෙනත් වෙබ් අඩවි URL'
     REDIRECTTO: 'යොමු කරන්න'
     REDIRECTTOEXTERNAL: 'වෙනත් වෙබ් අඩවි'
     REDIRECTTOPAGE: 'ඔබේ අඩවියේ පිටුවක්'
     YOURPAGE: 'ඔබේ අඩවියේ පිටුවක්'
-    FILE: ලිපිය
     has_one_LinkTo: බැදේ
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'යොමු කිරීමේ පිටුව කිසිවකට යොමු නොකරයි'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'සියලු දෙනා'
     ACCESSHEADER: 'මෙම පිටුව බැලිය හැකි අය'
@@ -41,26 +52,15 @@ si:
     PAGETYPE: 'පිටු වර්ගය'
     SHOWINMENUS: 'මෙනුවේ පෙන්වන්නද?'
     SHOWINSEARCH: 'සර්ච් ඵකේ පෙන්වන්නද?'
+    SINGULARNAME: පිටුව
     TABBEHAVIOUR: හැසිරීම
     TOPLEVEL: අන්ර්ගතය
-    has_one_Parent: 'මවු පිටුව'
-    SINGULARNAME: පිටුව
     db_Content: අන්තර්ගතය
     db_Title: මතකව
+    has_one_Parent: 'මවු පිටුව'
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'මෙය මනඃකල්පිත පිටුවකි'
     SINGULARNAME: 'මනඃකල්පිත පිටුව'
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
-    UNPUBLISH_PAGES: 'අප්රසිද්ධ කරන්න'
-  SilverStripe\CMS\Controllers\ContentController:
-    Email: 'ඊමේල් '
-    Password: 'මුර පදය'
-  SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    LINKDESCR: 'බැදීම් විස්තරය'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
-  SilverStripe\CMS\Model\RedirectorPageController:
-    HASBEENSETUP: 'යොමු කිරීමේ පිටුව කිසිවකට යොමු නොකරයි'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     PageName: 'පිටු නම'
   SilverStripe\CMS\Reports\RecentlyEditedReport:

@@ -146,12 +146,12 @@ ja_JP:
     VIEW_DRAFT_CONTENT: ドラフトを見る
     Viewers: 閲覧者のグループ
     Visibility: 表示・非表示
+    db_Content: 内容
+    db_Title: タイトル
     has_one_Parent: 親ページ
     many_many_BackLinkTracking: リンク元を追跡
     many_many_ImageTracking: 画像へのリンクを追跡
     many_many_LinkTracking: リンクを追跡
-    db_Content: 内容
-    db_Title: タイトル
   SilverStripe\CMS\Model\VirtualPage:
     DESCRIPTION: 別のページのコンテンツを表示
     HEADER: これがバーチャルページです

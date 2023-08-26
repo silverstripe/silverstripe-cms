@@ -1,47 +1,62 @@
 zh_TW:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
+    PUBLISHED_PAGES: '已出版 %d 網頁, %d 失敗'
+    PUBLISH_PAGES: 出版
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: 取消發布
   SilverStripe\CMS\Controllers\CMSMain:
-    PAGENOTEXISTS: 這頁不存在
-    PUBALLCONFIRM: 請發布所有網頁
-    PUBALLFUN: '"全部發布" 功能'
     EMAIL: 電子郵件
+    PAGENOTEXISTS: 這頁不存在
     PAGESALLOPT: 所有網頁
     PAGETYPEOPT: 網頁類型
     PLEASESAVE: 請儲存：這個網頁沒有被更新因為尚未被儲存。
+    PUBALLCONFIRM: 請發布所有網頁
+    PUBALLFUN: '"全部發布" 功能'
     ROLLBACK: 回複到這個的版本
     SAVEDRAFT: 儲存
     TabContent: 內容
     TabHistory: 歷史
     TabSettings: 設定值
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: 編輯網頁
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
-    COMPAREMODE: 比較模式(選擇兩個)
-    REVERTTOTHISVERSION: 回復到此版本
-    SHOWUNPUBLISHED: 顯示未出版的版本
-    VIEW: 瀏覽
     AUTHOR: 作者
+    COMPAREMODE: 比較模式(選擇兩個)
     MENUTITLE: 歷史
     NOTPUBLISHED: 未發行的
     PUBLISHER: 發行者
+    REVERTTOTHISVERSION: 回復到此版本
+    SHOWUNPUBLISHED: 顯示未出版的版本
     UNKNOWN: 未知的
+    VIEW: 瀏覽
     WHEN: 何時
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: 編輯網頁
   SilverStripe\CMS\Controllers\CMSPagesController:
-    MENUTITLE: 網頁
     ListView: 清單瀏覽
+    MENUTITLE: 網頁
     TreeView: 樹狀瀏覽
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 所有網頁
   SilverStripe\CMS\Controllers\ContentController:
-    NOTEWONTBESHOWN: '備註: 此訊息將不會顯示給您的訪客看'
     Email: 電子郵件
+    NOTEWONTBESHOWN: '備註: 此訊息將不會顯示給您的訪客看'
     Password: 密碼
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 連結敘述
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
+    FILE: 檔案
     HEADER: 本網頁將重新導向用戶至別的網頁
     OTHERURL: 其他網站網址
     REDIRECTTO: 重新導向到
     REDIRECTTOEXTERNAL: 別的網站
     REDIRECTTOPAGE: 在您網站上的一個網頁
     YOURPAGE: 在您網站上的網頁
-    FILE: 檔案
     has_one_LinkTo: 連結至
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 沒有任何地方被重新導向的一個重新導向網頁已被設定.
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 所有人
     ACCESSHEADER: 誰可以瀏覽這頁？
@@ -49,6 +64,7 @@ zh_TW:
     ACCESSONLYTHESE: 只有這些人(從清單選擇)
     BUTTONCANCELDRAFT: 取消草稿更變
     BUTTONCANCELDRAFTDESC: 刪除草稿並回複到正式發布的版本
+    BUTTONSAVEPUBLISH: 出版
     BUTTONUNPUBLISH: 取消發布
     BUTTONUNPUBLISHDESC: 從正式發布站移除
     Comments: 意見
@@ -72,6 +88,7 @@ zh_TW:
     METADESC: 敘述
     METAEXTRA: 自訂元標籤(meta-tags)
     MODIFIEDONDRAFTSHORT: 已修改
+    NOTPUBLISHED: 未發行的
     PAGELOCATION: 網頁位置
     PAGETITLE: 網頁名稱
     PAGETYPE: 網頁類型
@@ -81,11 +98,13 @@ zh_TW:
     PARENTTYPE_SUBPAGE: 在母頁下面的次頁
     PERMISSION_GRANTACCESS_DESCRIPTION: 管理內容的存取權限
     PERMISSION_GRANTACCESS_HELP: '允許設定在"網頁"部分的網頁-特定存取限制.'
+    PLURALNAME: 網頁
     REMOVE_INSTALL_WARNING: '警告: 為了安全理由你應該從SilverStripe的安裝中移除install.php.'
     REORGANISE_DESCRIPTION: 改變網站結構
     REORGANISE_HELP: '經由 拉&放 於網站樹狀架構內重新安排網頁.'
     SHOWINMENUS: 在選單裡顯示嗎？
     SHOWINSEARCH: 在搜尋結果裡顯示嗎？
+    SINGULARNAME: 網頁
     TABBEHAVIOUR: 作用
     TABDEPENDENT: 依賴網頁
     TOPLEVEL: '網站內容 (高層)'
@@ -95,35 +114,16 @@ zh_TW:
     VIEW_DRAFT_CONTENT_HELP: '應用於在草稿模式下觀看CMS以外的網頁. 沒有CMS存取權的外部合作者是有用的.'
     Viewers: 瀏覽者群組
     Visibility: 能見度
+    db_Content: 內容
+    db_Title: 標題
     has_one_Parent: 母頁
     many_many_BackLinkTracking: 背面鏈結追蹤
     many_many_ImageTracking: 影像追蹤
     many_many_LinkTracking: 鏈結追蹤
-    BUTTONSAVEPUBLISH: 出版
-    NOTPUBLISHED: 未發行的
-    PLURALNAME: 網頁
-    SINGULARNAME: 網頁
-    db_Content: 內容
-    db_Title: 標題
   SilverStripe\CMS\Model\VirtualPage:
-    HEADER: 這是一個虛擬網頁
     DESCRIPTION: 顯示其他網頁的內容
+    HEADER: 這是一個虛擬網頁
     SINGULARNAME: 虛擬網頁
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
-    PUBLISHED_PAGES: '已出版 %d 網頁, %d 失敗'
-    PUBLISH_PAGES: 出版
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
-    UNPUBLISH_PAGES: 取消發布
-  SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 編輯網頁
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 編輯網頁
-  SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    LINKDESCR: 連結敘述
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
-  SilverStripe\CMS\Model\RedirectorPageController:
-    HASBEENSETUP: 沒有任何地方被重新導向的一個重新導向網頁已被設定.
   SilverStripe\CMS\Reports\BrokenLinksReport:
     ColumnURL: 網址
     PageName: 網頁名稱

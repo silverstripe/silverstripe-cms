@@ -172,6 +172,7 @@ en:
     ACCESSANYONE: Anyone
     ACCESSHEADER: 'Who can view this page?'
     ACCESSLOGGEDIN: 'Logged-in users'
+    ACCESSONLYMEMBERS: 'Only these users (choose from list)'
     ACCESSONLYTHESE: 'Only these groups (choose from list)'
     ADDEDTODRAFTHELP: 'Page has not been published yet'
     ADDEDTODRAFTSHORT: Draft
@@ -199,6 +200,7 @@ en:
     DependtPageColumnLinkType: 'Link type'
     EDITHEADER: 'Who can edit this page?'
     EDITORGROUPS: 'Editor Groups'
+    EDITORMEMBERS: 'Editor Users'
     EDITOR_GROUPS_FIELD_DESC: 'Groups with global edit permissions: {groupList}'
     EDIT_ALL_DESCRIPTION: 'Edit any page'
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
@@ -256,6 +258,7 @@ en:
     URLSegment: 'URL segment'
     UntitledDependentObject: 'Untitled {instanceType}'
     VIEWERGROUPS: 'Viewer Groups'
+    VIEWERMEMBERS: 'Viewer Users'
     VIEWER_GROUPS_FIELD_DESC: 'Groups with global view permissions: {groupList}'
     VIEW_ALL_DESCRIPTION: 'View any page'
     VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
@@ -266,10 +269,6 @@ en:
     VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
     Viewers: 'Viewers Groups'
     Visibility: Visibility
-    has_one_Parent: 'Parent Page'
-    many_many_BackLinkTracking: 'Backlink Tracking'
-    many_many_ImageTracking: 'Image Tracking'
-    many_many_LinkTracking: 'Link Tracking'
     belongs_many_many_ContentReviewGroups: 'Content review groups'
     belongs_many_many_ContentReviewUsers: 'Content review users'
     belongs_many_many_RelationFieldsTestPages: 'Relation fields test pages'
@@ -300,13 +299,19 @@ en:
     has_many_ReviewLogs: 'Review logs'
     has_many_ShareTokens: 'Share tokens'
     has_many_VirtualPages: 'Virtual pages'
+    has_one_Parent: 'Parent Page'
     has_one_RelationFieldsTestPage: 'Relation fields test page'
     has_one_Subsite: Subsite
     has_one_WorkflowDefinition: 'Workflow definition'
     many_many_AdditionalWorkflowDefinitions: 'Additional workflow definitions'
+    many_many_BackLinkTracking: 'Backlink Tracking'
     many_many_CrossSubsiteLinkTracking: 'Cross subsite link tracking'
     many_many_EditorGroups: 'Editor groups'
+    many_many_EditorMembers: 'Editor members'
+    many_many_ImageTracking: 'Image Tracking'
+    many_many_LinkTracking: 'Link Tracking'
     many_many_ViewerGroups: 'Viewer groups'
+    many_many_ViewerMembers: 'Viewer members'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Type
@@ -321,6 +326,8 @@ en:
     SINGULARNAME: 'Site Tree Link'
     has_one_Linked: Linked
     has_one_Parent: Parent
+  SilverStripe\CMS\Model\SiteTreeLinkTracking:
+    many_many_LinkTracking: 'Link tracking'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Linked Page'
     DESCRIPTION: 'Displays the content of another page'
@@ -393,5 +400,3 @@ en:
     OPERATION_REMOVE: 'Remove selected from all stages (WARNING: Will destroy all selected pages from both stage and live)'
     SELECTALL: 'select all'
     UNSELECTALL: 'unselect all'
-  SilverStripe\CMS\Model\SiteTreeLinkTracking:
-    many_many_LinkTracking: 'Link tracking'

@@ -18,7 +18,7 @@ pa:
     SHOWINSEARCH: 'search ਿਵੱਚ ਿਦਖਾਉ?'
     TABBEHAVIOUR: ਵਰਤਾਉ
     TABCONTENT: 'ਸਮਾਨ '
-    TOPLEVEL: 'ਸਾਈਟ ਦਾ ਸਮਾਨ (Top Level)'
     TABMAIN: "ਮੁੱਖ\t"
+    TOPLEVEL: 'ਸਾਈਟ ਦਾ ਸਮਾਨ (Top Level)'
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'ਇਹ ਇੱਕ virtual ਪੰਨਾ ਹੈ।'

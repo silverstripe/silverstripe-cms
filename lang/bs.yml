@@ -1,27 +1,42 @@
 bs:
+  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
+    UNPUBLISH_PAGES: 'Opozovi objavljivanje'
   SilverStripe\CMS\Controllers\CMSMain:
-    Create: Kreiraj
-    PAGENOTEXISTS: 'Ova stranica ne postoji'
-    PUBALLCONFIRM: 'Molimo, objavite svaku stavku na ovoj stranici, kopiranjem sadržaja na aktivnu stranicu'
-    PUBALLFUN: 'Funkcija "Objavi sve"'
-    REMOVEDPAGEFROMDRAFT: 'Uklonjeno ''{title}'' sa privremenog nacrta stranice'
     ARCHIVE: Arhiva
+    Create: Kreiraj
     EMAIL: E-mail
+    PAGENOTEXISTS: 'Ova stranica ne postoji'
     PAGETYPEANYOPT: 'Bilo koji'
     PAGETYPEOPT: 'Tip stranice'
     PLEASESAVE: 'Molimo snimite stranicu: Ova stranica ne može biti ažurirana ako nije prethodno snimljena.'
+    PUBALLCONFIRM: 'Molimo, objavite svaku stavku na ovoj stranici, kopiranjem sadržaja na aktivnu stranicu'
+    PUBALLFUN: 'Funkcija "Objavi sve"'
+    REMOVEDPAGEFROMDRAFT: 'Uklonjeno ''{title}'' sa privremenog nacrta stranice'
     ROLLBACK: 'Vrati na ovo izdanje'
     SAVEDRAFT: Snimi
     TabContent: Sadržaj
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: Filter
+  SilverStripe\CMS\Controllers\ContentController:
+    Email: E-mail
+    Password: Šifra
+  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
+    ANCHORVALUE: Sidro
+  SilverStripe\CMS\Forms\InternalLinkFormFactory:
+    LINKDESCR: 'Opis linka'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
+    FILE: Datoteka
     HEADER: 'Ova stranica će preusmjeriti korisnike na drugu stranicu'
     OTHERURL: 'URL druge web stranice'
     REDIRECTTO: 'Preusmjeri na'
     REDIRECTTOEXTERNAL: 'Drugu web stranicu'
     REDIRECTTOPAGE: 'Na stavku na Vašoj web stranici'
     YOURPAGE: 'Stavku na Vašoj web stranici'
-    FILE: Datoteka
     has_one_LinkTo: 'Poveži sa'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Stranica za preusmjeravanje je podešena bez odredišta.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: 'Svi korisnici'
     ACCESSHEADER: 'Ko može pregledati ovu stavku na mojoj stranici?'
@@ -31,6 +46,7 @@ bs:
     BUTTONCANCELDRAFTDESC: 'Izbrišite Vaš privremeni nacrt stranice i vratite se na trenutno objavljenu stranicu'
     BUTTONUNPUBLISH: 'Opozovi objavljivanje'
     BUTTONUNPUBLISHDESC: 'Ukloni ovu stavku sa objavljene stranice'
+    Content: Sadržaj
     DEFAULTABOUTTITLE: 'O nama'
     DEFAULTCONTACTTITLE: 'Kontaktirajte nas'
     DEFAULTHOMETITLE: Početna
@@ -44,10 +60,9 @@ bs:
     PAGETYPE: 'Tip stranice'
     SHOWINMENUS: 'Prikaži u izbornicima?'
     SHOWINSEARCH: 'Prikaži u pretrazi?'
+    SINGULARNAME: Stranica
     TABBEHAVIOUR: Ponašanje
     TOPLEVEL: 'Sadržaj stranice (Glavni nivo)'
-    Content: Sadržaj
-    SINGULARNAME: Stranica
     db_Content: Sadržaj
     db_Title: Naslov
   SilverStripe\CMS\Model\VirtualPage:
@@ -55,24 +70,9 @@ bs:
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: 'Bilo koji'
     PageName: 'Ime stranice'
-  SilverStripe\CMS\Search\SearchForm:
-    GO: Idi
-    SEARCH: Pretraga
-    FILTERLABELTEXT: Pretraga
-  SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
-    UNPUBLISH_PAGES: 'Opozovi objavljivanje'
-  SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Filter
-  SilverStripe\CMS\Controllers\ContentController:
-    Email: E-mail
-    Password: Šifra
-  SilverStripe\CMS\Forms\AnchorLinkFormFactory:
-    ANCHORVALUE: Sidro
-  SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    LINKDESCR: 'Opis linka'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
-  SilverStripe\CMS\Model\RedirectorPageController:
-    HASBEENSETUP: 'Stranica za preusmjeravanje je podešena bez odredišta.'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     LAST2WEEKS: 'Izmjenjene stranice u posljednje 2 sedmice'
+  SilverStripe\CMS\Search\SearchForm:
+    FILTERLABELTEXT: Pretraga
+    GO: Idi
+    SEARCH: Pretraga

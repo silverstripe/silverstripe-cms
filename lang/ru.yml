@@ -34,6 +34,7 @@ ru:
     NEWPAGE: 'Новая {pagetype}'
     PAGENOTEXISTS: 'Страница не существует'
     PAGES: 'Статус страницы'
+    PAGESALLOPT: 'Все страницы'
     PAGETYPEANYOPT: Любой
     PAGETYPEOPT: 'Тип страницы'
     PLEASESAVE: 'Пожалуйста, сохраните страницу: ее нельзя обновить, т.к. она еще не была сохранена.'
@@ -54,6 +55,8 @@ ru:
     ROLLEDBACKPUBv2: 'Восстановлена опубликованная версия.'
     ROLLEDBACKVERSIONv2: 'Версия #{version} восстановлена.'
     SAVED: '''{title}'' сохранен'
+    SAVEDRAFT: Сохранить
+    SEARCHRESULTS: 'Результаты поиска'
     SHOW_AS_LIST: 'в виде списка'
     TOO_MANY_PAGES: 'Слишком много страниц'
     TabContent: Содержимое
@@ -62,9 +65,6 @@ ru:
     TreeFiltered: 'Результаты поиска'
     TreeFilteredClear: Сбросить
     UNPUBLISH_AND_ARCHIVE: 'Отменить публикацию и отправить в архив'
-    PAGESALLOPT: 'Все страницы'
-    SAVEDRAFT: Сохранить
-    SEARCHRESULTS: 'Результаты поиска'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Добавить страницу'
     ParentMode_child: 'Под другой страницей'
@@ -77,6 +77,7 @@ ru:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Автор
     COMPAREMODE: 'Режим сравнения двух страниц'
+    COMPARINGVERSION: 'Сравнение версий {version1} и {version2}.'
     MENUTITLE: История
     MULTISELECT: Действия
     NOTPUBLISHED: 'Не опубликовано'
@@ -89,7 +90,6 @@ ru:
     VIEWINGLATEST: 'Вы просматриваете самую новую версию.'
     VIEWINGVERSION: 'Вы просматриваете версию {version}.'
     WHEN: Когда
-    COMPARINGVERSION: 'Сравнение версий {version1} и {version2}.'
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Редактировать Страницу'
   SilverStripe\CMS\Controllers\CMSPagesController:
@@ -101,6 +101,8 @@ ru:
     Title: 'Изменённые страницы'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
     Title: 'Все страницы, включая архивные'
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
+    Title: 'Опубликованные страницы'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
     Title: 'Все страницы'
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
@@ -130,9 +132,9 @@ ru:
     Password: Пароль
     PostInstallTutorialIntro: 'Это упрощенная версия сайта, созданного с помощью SilverStripe 3. О возможностях расширения сайта можно узнать, щелкнув эту ссылку: {link}.'
     StartEditing: 'Вы можете приступить к редактированию содержимого сайта, открыв <a href="{link}">CMS</a>.'
+    UNVERSIONEDPREVIEW: Просмотр
     UnableDeleteInstall: 'Не удалось удалить инсталляционные файлы. Пожалуйста, удалите следующие файлы вручную'
     VIEWPAGEIN: 'Просмотреть страницу в:'
-    UNVERSIONEDPREVIEW: Просмотр
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Архивные
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
@@ -149,21 +151,23 @@ ru:
     OK: ОК
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Перенаправление на другую внутреннюю или внешнюю страницу'
+    FILE: Файл
     HEADER: 'Эта страница будет перенаправлять пользователей на другую страницу'
     OTHERURL: 'URL другого сайта'
     PLURALNAME: 'Базовые страницы'
     PLURALS:
-      one: 'Страница перенаправления'
       few: '{count} страницы перенаправления'
       many: '{count} страниц перенаправления'
+      one: 'Страница перенаправления'
       other: '{count} страниц перенаправления'
     REDIRECTTO: 'Перенаправлять на'
     REDIRECTTOEXTERNAL: 'Другой сайт'
     REDIRECTTOPAGE: 'Страницу вашего сайта'
     SINGULARNAME: 'Страница перенаправления'
     YOURPAGE: 'Страница вашего сайта'
-    FILE: Файл
     has_one_LinkTo: 'Ссылка на'
+  SilverStripe\CMS\Model\RedirectorPageController:
+    HASBEENSETUP: 'Страница перенаправления установлена без указания места перенаправления.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Все
     ACCESSHEADER: 'Кто может просматривать эту страницу на моем сайте?'
@@ -179,6 +183,7 @@ ru:
     BUTTONDELETEDESC: 'Отменить публикацию, удалить из черновиков и отправить в архив'
     BUTTONPUBLISHED: Опубликовано
     BUTTONSAVED: Сохранено
+    BUTTONSAVEPUBLISH: Опубликовать
     BUTTONUNPUBLISH: 'Отмена публикации'
     BUTTONUNPUBLISHDESC: 'Удалить эту страницу с опубликованного сайта'
     Comments: Комментарии
@@ -230,9 +235,9 @@ ru:
     PERMISSION_GRANTACCESS_HELP: 'Возможность устанавливать ограничения доступа в разделе "Страницы" для каждой страницы отдельно.'
     PLURALNAME: Страницы
     PLURALS:
-      one: Страница
       few: '{count} страницы'
       many: '{count} страниц'
+      one: Страница
       other: '{count} страниц'
     PageTypNotAllowedOnRoot: 'Страницы типа "{type}" не могут быть корневыми'
     PageTypeNotAllowed: 'Страницы типа "{type}" недопустимы для этой родительской страницы в качестве дочерних'
@@ -256,19 +261,20 @@ ru:
     VIRTUALPAGEWARNINGSETTINGS: 'Для опубликования выберите связанную страницу из области основного содержимого'
     Viewers: 'Группы чтения'
     Visibility: Отображение
-    has_one_Parent: 'Родительская страница'
-    many_many_BackLinkTracking: 'Отслеживание обратных ссылок'
-    many_many_ImageTracking: 'Отслеживание изображений'
-    many_many_LinkTracking: 'Отслеживание ссылок'
-    BUTTONSAVEPUBLISH: Опубликовать
     db_Content: Содержимое
     db_Sort: Сортировать
     db_Title: Заголовок
+    has_one_Parent: 'Родительская страница'
     has_one_Subsite: Подсайт
+    many_many_BackLinkTracking: 'Отслеживание обратных ссылок'
+    many_many_ImageTracking: 'Отслеживание изображений'
+    many_many_LinkTracking: 'Отслеживание ссылок'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: №
     TITLE_TYPE: Тип
     TITLE_USED_ON: 'Используется на'
+  SilverStripe\CMS\Model\SiteTreeLink:
+    has_one_Parent: Родительская
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Связанная страница'
     DESCRIPTION: 'Отображает содержимое другой страницы'
@@ -277,9 +283,9 @@ ru:
     HEADERWITHLINK: 'Это виртуальная страница, копирующая содержимое из "{title}" ({link})'
     PLURALNAME: 'Базовые страницы'
     PLURALS:
-      one: 'Виртуальная страница'
       few: '{count} виртуальные страницы'
       many: '{count} виртуальных страниц'
+      one: 'Виртуальная страница'
       other: '{count} виртуальных страниц'
     PageTypNotAllowedOnRoot: 'Страницы типа "{type}" недопустимы в качестве корневых для этой виртуальной страницы'
     SINGULARNAME: 'Виртуальная Страница'
@@ -340,9 +346,3 @@ ru:
     OPERATION_REMOVE: 'Удалить все версии выбранного (ВНИМАНИЕ: Это действие удалит все выбранные страниц из черновиков и с опубликованного сайта)'
     SELECTALL: 'выбрать все'
     UNSELECTALL: 'снять выделение со всех'
-  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
-    Title: 'Опубликованные страницы'
-  SilverStripe\CMS\Model\RedirectorPageController:
-    HASBEENSETUP: 'Страница перенаправления установлена без указания места перенаправления.'
-  SilverStripe\CMS\Model\SiteTreeLink:
-    has_one_Parent: Родительская

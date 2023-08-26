@@ -1,43 +1,4 @@
 ne:
-  SilverStripe\CMS\Model\RedirectorPage:
-    HASBEENSETUP: 'कुनै पनि पुनर्निर्देशनबिना नै एउटा पुनर्निदेशन पृष्ठ सेटअप गरियो । '
-    HEADER: 'यो पेजले प्रयोगकतालाई अर्को पेजमा लैजान्छ'
-    OTHERURL: 'अर्को वेबसाईटको यू.र्.ल्'
-    REDIRECTTO: 'अर्को पेजमा लैजाउ'
-    REDIRECTTOEXTERNAL: 'अर्को वेबसाईट'
-    REDIRECTTOPAGE: 'तपाईंको वेबसाईटमा एउटा पेज'
-    YOURPAGE: 'तपाईंको वेबसाईटमा एउटा पेज'
-    FILE: फाइल
-    has_one_LinkTo: 'लिन्क गर्नुस्'
-  SilverStripe\CMS\Model\SiteTree:
-    ACCESSANYONE: जोकोहिले
-    ACCESSHEADER: 'मेरो सईटमा कसले यो पजे हेर्न सक्छ ? '
-    ACCESSLOGGEDIN: 'भित्र छिरेक प्रयोगकर्तहरु'
-    ACCESSONLYTHESE: 'यि मान्छे मात्र (लिस्टबाट छान्)'
-    BUTTONCANCELDRAFT: 'द्राफ्ट्रमा भएका परिवर्तनहरु क्यान्सिल गर्नुहोस् '
-    BUTTONCANCELDRAFTDESC: 'द्राफ्ट्र हटाउनुहोस् र प्रकाशित पेजमा जानुहोस्'
-    BUTTONUNPUBLISH: 'प्रकाशित नगरनुहोस्'
-    BUTTONUNPUBLISHDESC: 'प्रकाशित साईटबाट यो पेजलाई हटाउनुहोस्'
-    EDITANYONE: 'जोकोहिले जो सि.म्.एस् भित्र छिरेका छन्'
-    EDITHEADER: 'कसले यो CMS भित्र मिलाउन सक्छ ?'
-    EDITONLYTHESE: 'यि मान्छे मात्र (लिस्टबाट छान्)'
-    HASBROKENLINKS: 'यो पजेमा टुटेका लिन्कहरु छन् ।'
-    HTMLEDITORTITLE: सामाग्री
-    MENUTITLE: 'अबलोकन नाम '
-    METADESC: विवरण
-    PAGETITLE: 'पेजको नाम'
-    PAGETYPE: 'पेज किसिम'
-    SHOWINMENUS: 'मेनुमा देखाउनुहोस् ? '
-    SHOWINSEARCH: 'खोजिमा देखाउनुहोस् ?'
-    TABBEHAVIOUR: बनी
-    TABCONTENT: सामाग्री
-    TOPLEVEL: 'साईट सामाग्री (उच्च स्तान)'
-    TABMAIN: मुख्य
-    Content: सामाग्री
-    SINGULARNAME: पेज
-    db_Content: सामाग्री
-  SilverStripe\CMS\Model\VirtualPage:
-    HEADER: 'यो भरचुअल पेज हो'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
     UNPUBLISH_PAGES: 'प्रकाशित नगरनुहोस्'
   SilverStripe\CMS\Controllers\CMSMain:
@@ -51,8 +12,47 @@ ne:
     LINKDESCR: 'लिन्क विवरण'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Edit: Edit
+  SilverStripe\CMS\Model\RedirectorPage:
+    FILE: फाइल
+    HASBEENSETUP: 'कुनै पनि पुनर्निर्देशनबिना नै एउटा पुनर्निदेशन पृष्ठ सेटअप गरियो । '
+    HEADER: 'यो पेजले प्रयोगकतालाई अर्को पेजमा लैजान्छ'
+    OTHERURL: 'अर्को वेबसाईटको यू.र्.ल्'
+    REDIRECTTO: 'अर्को पेजमा लैजाउ'
+    REDIRECTTOEXTERNAL: 'अर्को वेबसाईट'
+    REDIRECTTOPAGE: 'तपाईंको वेबसाईटमा एउटा पेज'
+    YOURPAGE: 'तपाईंको वेबसाईटमा एउटा पेज'
+    has_one_LinkTo: 'लिन्क गर्नुस्'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'कुनै पनि पुनर्निर्देशनबिना नै एउटा पुनर्निदेशन पृष्ठ सेटअप गरियो । '
+  SilverStripe\CMS\Model\SiteTree:
+    ACCESSANYONE: जोकोहिले
+    ACCESSHEADER: 'मेरो सईटमा कसले यो पजे हेर्न सक्छ ? '
+    ACCESSLOGGEDIN: 'भित्र छिरेक प्रयोगकर्तहरु'
+    ACCESSONLYTHESE: 'यि मान्छे मात्र (लिस्टबाट छान्)'
+    BUTTONCANCELDRAFT: 'द्राफ्ट्रमा भएका परिवर्तनहरु क्यान्सिल गर्नुहोस् '
+    BUTTONCANCELDRAFTDESC: 'द्राफ्ट्र हटाउनुहोस् र प्रकाशित पेजमा जानुहोस्'
+    BUTTONUNPUBLISH: 'प्रकाशित नगरनुहोस्'
+    BUTTONUNPUBLISHDESC: 'प्रकाशित साईटबाट यो पेजलाई हटाउनुहोस्'
+    Content: सामाग्री
+    EDITANYONE: 'जोकोहिले जो सि.म्.एस् भित्र छिरेका छन्'
+    EDITHEADER: 'कसले यो CMS भित्र मिलाउन सक्छ ?'
+    EDITONLYTHESE: 'यि मान्छे मात्र (लिस्टबाट छान्)'
+    HASBROKENLINKS: 'यो पजेमा टुटेका लिन्कहरु छन् ।'
+    HTMLEDITORTITLE: सामाग्री
+    MENUTITLE: 'अबलोकन नाम '
+    METADESC: विवरण
+    PAGETITLE: 'पेजको नाम'
+    PAGETYPE: 'पेज किसिम'
+    SHOWINMENUS: 'मेनुमा देखाउनुहोस् ? '
+    SHOWINSEARCH: 'खोजिमा देखाउनुहोस् ?'
+    SINGULARNAME: पेज
+    TABBEHAVIOUR: बनी
+    TABCONTENT: सामाग्री
+    TABMAIN: मुख्य
+    TOPLEVEL: 'साईट सामाग्री (उच्च स्तान)'
+    db_Content: सामाग्री
+  SilverStripe\CMS\Model\VirtualPage:
+    HEADER: 'यो भरचुअल पेज हो'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     ColumnURL: 'यू.र्.ल् '
     PageName: 'पेजको नाम'

@@ -134,9 +134,9 @@ nl:
     Password: Wachtwoord
     PostInstallTutorialIntro: 'Deze website is een eenvoudige versie van een SilverStripe 3 website. Voor uitbreidingen kunt u hier een kijkje nemen: {link}.'
     StartEditing: 'U kunt de inhoud aanpassen via <a href="{link}">het CMS</a>.'
+    UNVERSIONEDPREVIEW: Voorbeeld
     UnableDeleteInstall: 'De installatiebestanden konden niet verwijderd worden. Verwijder onderstaande bestanden handmatig:'
     VIEWPAGEIN: 'Bekijk pagina in:'
-    UNVERSIONEDPREVIEW: Voorbeeld
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Gearchiveerd
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
@@ -154,6 +154,7 @@ nl:
     OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Stuurt door naar een interne pagina of een externe URL'
+    FILE: Bestand
     HEADER: 'Deze pagina zal gebruikers naar een andere pagina doorsturen (redirect)'
     OTHERURL: 'Andere website URL'
     PLURALNAME: Verwijzingspagina
@@ -162,11 +163,10 @@ nl:
       other: '{count} Verwijzingspagina''s'
     REDIRECTTO: 'Doorverwijzen naar'
     REDIRECTTOEXTERNAL: 'Een andere website'
+    REDIRECTTOFILE: 'Een bestand op deze website'
     REDIRECTTOPAGE: 'Een pagina op deze website'
     SINGULARNAME: Verwijzingspagina
     YOURPAGE: 'Pagina op deze website'
-    FILE: Bestand
-    REDIRECTTOFILE: 'Een bestand op deze website'
     has_one_LinkTo: 'Verwijs naar'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Er is een verwijspagina ingesteld, zonder ergens naar te verwijzen.'
@@ -209,6 +209,7 @@ nl:
     HTMLEDITORTITLE: Inhoud
     INHERIT: 'Overnemen van de bovenliggende pagina'
     INHERITSITECONFIG: 'Overnemen van site-instellingen'
+    InvalidExtraMeta: 'De HTML bij Andere meta-tags is incorrect'
     LASTPUBLISHED: 'Laatst gepubliceerd'
     LASTSAVED: 'Laatst opgeslagen'
     LASTUPDATED: 'Laatst bijgewerkt'
@@ -267,16 +268,15 @@ nl:
     VIRTUALPAGEWARNINGSETTINGS: 'U dient een gekoppelde pagina te selecteren op het hoofdscherm voordat u kunt publiceren.'
     Viewers: Bekijkersgroepen
     Visibility: Zichtbaarheid
-    has_one_Parent: 'Bovenliggende pagina'
-    many_many_BackLinkTracking: 'Backlinks traceren'
-    many_many_ImageTracking: 'Afbeeldingen traceren'
-    many_many_LinkTracking: 'Links traceren'
-    InvalidExtraMeta: 'De HTML bij Andere meta-tags is incorrect'
     db_Content: Inhoud
     db_Sort: Volgorde
     db_Title: Titel
     db_URLSegment: 'URL segment'
+    has_one_Parent: 'Bovenliggende pagina'
     has_one_Subsite: Subsite
+    many_many_BackLinkTracking: 'Backlinks traceren'
+    many_many_ImageTracking: 'Afbeeldingen traceren'
+    many_many_LinkTracking: 'Links traceren'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Type
