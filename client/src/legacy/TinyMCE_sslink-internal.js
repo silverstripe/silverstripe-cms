@@ -95,8 +95,13 @@ jQuery.entwine('ss', ($) => {
      * @return {Boolean}
      */
     getRequireLinkText() {
-      const selection = this.getElement().getEditor().getInstance().selection;
-      const selectionContent = selection.getContent() || '';
+      const editor = this.getElement().getEditor();
+      const selection = editor.getInstance().selection;
+      let selectionContent = selection.getContent() || '';
+      if (!selectionContent) {
+        selectionContent = selection.getSel().toString();
+      }
+      selectionContent = selectionContent || '';
       const tagName = selection.getNode().tagName;
       const requireLinkText = tagName !== 'A' && selectionContent.trim() === '';
 
