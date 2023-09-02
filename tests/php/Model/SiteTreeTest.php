@@ -12,6 +12,7 @@ use SilverStripe\CMS\Model\VirtualPage;
 use SilverStripe\CMS\Tests\Controllers\SiteTreeTest_NamespaceMapTestController;
 use SilverStripe\CMS\Tests\CMSEditLinkExtensionTest\BelongsToPage;
 use SilverStripe\CMS\Tests\CMSEditLinkExtensionTest\PageWithChild;
+use SilverStripe\CMS\Tests\Model\SiteTreeBrokenLinksTest\NotPageObject;
 use SilverStripe\CMS\Tests\Page\SiteTreeTest_NamespaceMapTest;
 use SilverStripe\Control\ContentNegotiator;
 use SilverStripe\Control\Controller;
@@ -69,6 +70,7 @@ class SiteTreeTest extends SapphireTest
         SiteTreeTest_DataObject::class,
         PageWithChild::class,
         BelongsToPage::class,
+        NotPageObject::class,
     ];
 
     public function reservedSegmentsProvider()
@@ -2118,5 +2120,24 @@ class SiteTreeTest extends SapphireTest
                 '<link rel="canonical" href="valid" somethingdodgy="">'
             ]
         ];
+    }
+
+    public function testOnAfterRevertToLive()
+    {
+        // Create new page and publish it
+        $page = SiteTree::create();
+        $page->Content = 'Test content';
+        $id = $page->write();
+        $page->publishRecursive();
+
+        // Add link to non-page object
+        /** @var NotPageObject $obj */
+        $obj = $this->objFromFixture(NotPageObject::class, 'object1');
+        $obj->Content = '<a href="[sitetree_link,id='. $id .']">Link to Page</a>';
+        $obj->write();
+
+        //Test that method doesn't throw exception
+        $this->expectNotToPerformAssertions();
+        $page->onAfterRevertToLive();
     }
 }
