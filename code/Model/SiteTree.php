@@ -2607,8 +2607,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         // Need to update pages linking to this one as no longer broken
         foreach ($stageSelf->DependentPages() as $page) {
-            /** @var SiteTree $page */
-            $page->writeWithoutVersion();
+            if ($page->hasExtension(Versioned::class)) {
+                /** @var Versioned $page */
+                $page->writeWithoutVersion();
+            }
         }
     }
 
