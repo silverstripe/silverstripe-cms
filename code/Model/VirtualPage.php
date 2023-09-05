@@ -3,6 +3,7 @@
 namespace SilverStripe\CMS\Model;
 
 use Page;
+use SilverStripe\Admin\AdminRootController;
 use SilverStripe\Core\Convert;
 use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\FieldList;
@@ -247,7 +248,7 @@ class VirtualPage extends Page
                     'a',
                     [
                         'class' => 'cmsEditlink',
-                        'href' => 'admin/pages/edit/show/' . $this->CopyContentFromID,
+                        'href' => AdminRootController::config()->get('url_base') . '/pages/edit/show/' . $this->CopyContentFromID,
                     ],
                     _t(self::class . '.EditLink', 'edit')
                 );
