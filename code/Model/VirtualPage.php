@@ -248,7 +248,7 @@ class VirtualPage extends Page
                     'a',
                     [
                         'class' => 'cmsEditlink',
-                        'href' => AdminRootController::config()->get('url_base') . '/pages/edit/show/' . $this->CopyContentFromID,
+                        'href' => AdminRootController::get_admin_route() . '/pages/edit/show/' . $this->CopyContentFromID,
                     ],
                     _t(self::class . '.EditLink', 'edit')
                 );
