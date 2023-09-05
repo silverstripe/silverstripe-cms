@@ -128,3 +128,7 @@ SilverStripe\CMS\Tests\Model\SiteTreeTest_DataObject:
   relations:
     Title: 'Linked DataObject'
     Pages: =>SilverStripe\CMS\Model\SiteTree.home,=>SilverStripe\CMS\Model\SiteTree.about,=>SilverStripe\CMS\Model\SiteTree.staff
+
+SilverStripe\CMS\Tests\Model\SiteTreeBrokenLinksTest\NotPageObject:
+  object1:
+    Content: 'Everything will be ok'
