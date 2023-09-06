@@ -8,7 +8,8 @@ So that I can link to a external website or a page on my site
     Given a "page" "Home"
       And a "page" "About Us" has the "Content" "<p>My awesome content</p>"
       And a "file" "file1.jpg"
-      And the "group" "EDITOR" has permissions "Access to 'Pages' section"
+      # And the "group" "EDITOR" has permissions "Access to 'Pages' section"
+      And the "group" "EDITOR" has permissions "Access to 'Files' section" and "Access to 'Pages' section" and "FILE_EDIT_ALL"
       And I am logged in as a member of "EDITOR" group
       And I go to "/admin/pages"
       And I click on "About Us" in the tree
@@ -25,6 +26,20 @@ So that I can link to a external website or a page on my site
     Then the "Content" HTML field should contain "<a title="my desc" href="[sitetree_link,id=2]">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save" button
+
+  Scenario: I can wrap an image in a link to an internal page
+    Given I fill in the "Content" HTML field with "<p><img src='file1.jpg'></p>"
+    When I select the image "file1.jpg" in the "Content" HTML field
+      And I press the "Insert link" HTML field button
+      And I click "Page on this site" in the ".mce-menu" element
+    Then I should see an "form#Form_editorInternalLink" element
+      And I should not see "Link text"
+    When I click "(Search or choose Page)" in the ".Select-multi-value-wrapper" element
+      And I click "About Us" in the ".treedropdownfield__menu" element
+      And I press the "Insert" button
+    Then the "Content" HTML field should contain "<a href="[sitetree_link,id=2]"><img src="file1.jpg"></a>"
+      # Required to avoid "unsaved changed" browser dialog
+      And I press the "Save" button
 
   Scenario: I can edit a link to an internal page
     Given I fill in the "Content" HTML field with "<a title='my desc' href='[sitetree_link,id=2]'>awesome</a>"
@@ -55,7 +70,20 @@ So that I can link to a external website or a page on my site
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save" button
 
-  Scenario: I can edit a link
+  Scenario: I can wrap an image in a link to an external URL
+    Given I fill in the "Content" HTML field with "<p><img src='file1.jpg'></p>"
+    When I select the image "file1.jpg" in the "Content" HTML field
+      And I press the "Insert link" HTML field button
+    When I click "Link to external URL" in the ".mce-menu" element
+      And I should see an "form#Form_ModalsEditorExternalLink" element
+      And I should not see "Link text"
+    When I fill in "http://silverstripe.org" for "URL"
+      And I press the "Insert" button
+    Then the "Content" HTML field should contain "<a href="http://silverstripe.org"><img src="file1.jpg"></a>"
+      # Required to avoid "unsaved changed" browser dialog
+      And I press the "Save" button
+
+  Scenario: I can edit an external link
     Given I fill in the "Content" HTML field with "<p>My <a href='http://silverstripe.org'>awesome</a> content"
       And I select "awesome" in the "Content" HTML field
     When I press the "Insert link" HTML field button
@@ -69,7 +97,7 @@ So that I can link to a external website or a page on my site
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save" button
 
-  Scenario: I can remove a link
+  Scenario: I can remove an external link
     Given I fill in the "Content" HTML field with "My <a href='http://silverstripe.org'>awesome</a> content"
       And I select "awesome" in the "Content" HTML field
     When I press the "Remove link" button
