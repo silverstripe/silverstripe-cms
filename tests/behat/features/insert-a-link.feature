@@ -25,6 +25,19 @@ So that I can link to a external website or a page on my site
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save" button
 
+  Scenario: I can wrap an image in a link to an internal page
+    Given I fill in the "Content" HTML field with "<p><img src='file1.jpg'></p>"
+    When I select the image "file1.jpg" in the "Content" HTML field
+      And I press the "Insert link" HTML field button
+      And I click "Page on this site" in the ".tox-collection__group" element
+    Then I should see an "form#Form_editorInternalLink" element
+      And I should not see "Link text"
+    When I select "About Us" in the "#Form_editorInternalLink_PageID_Holder" tree dropdown
+      And I press the "Insert link" button
+    Then the "Content" HTML field should contain "<a href="[sitetree_link,id=2]"><img src="file1.jpg"></a>"
+      # Required to avoid "unsaved changed" browser dialog
+      And I press the "Save" button
+
   Scenario: I can edit a link to an internal page
     Given I fill in the "Content" HTML field with "<a title='my desc' href='[sitetree_link,id=2]'>awesome</a>"
       And I select "awesome" in the "Content" HTML field
@@ -52,6 +65,19 @@ So that I can link to a external website or a page on my site
     Then the "Content" HTML field should contain "<a rel="noopener" href="http://silverstripe.org" target="_blank">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save" button
+
+  Scenario: I can wrap an image in a link to an external URL
+    Given I fill in the "Content" HTML field with "<p><img src='file1.jpg'></p>"
+    When I select the image "file1.jpg" in the "Content" HTML field
+      And I press the "Insert link" HTML field button
+    When I click "Link to external URL" in the ".tox-collection__group" element
+      And I should see an "form#Form_ModalsEditorExternalLink" element
+      And I should not see "Link text"
+    When I fill in "http://silverstripe.org" for "URL"
+      And I press the "Insert link" button
+    Then the "Content" HTML field should contain "<a href="http://silverstripe.org"><img src="file1.jpg"></a>"
+      # Required to avoid "unsaved changed" browser dialog
+      And I press the "Save" button
 
   Scenario: I can edit a link
     Given I fill in the "Content" HTML field with "<p>My <a href='http://silverstripe.org'>awesome</a> content"
