@@ -13,12 +13,12 @@
     <div class="input-group">
         <input $AttributesHTML />
         <div class="input-group-append">
-            <button role="button" data-icon="accept" type="button" class="btn btn-primary update">
+            <button role="button" type="button" class="btn btn-primary update">
                 <%t SilverStripe\CMS\Forms\SiteTreeURLSegmentField.OK 'OK' %>
             </button>
         </div>
         <div class="input-group-append">
-            <button role="button" data-icon="cancel" type="button" class="btn btn-outline-secondary btn-sm input-group-append cancel">
+            <button role="button" type="button" class="btn btn-outline-secondary btn-sm input-group-append cancel">
                 <%t SilverStripe\CMS\Forms\SiteTreeURLSegmentField.Cancel 'Cancel' %>
             </button>
         </div>
