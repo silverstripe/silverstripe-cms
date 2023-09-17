@@ -76,11 +76,7 @@ jQuery.entwine('ss', ($) => {
       const handleHide = () => this.close();
       const handleInsert = (...args) => this.handleInsert(...args);
       const attrs = this.getOriginalAttributes();
-      const editor = this.getElement().getEditor();
-      const selection = editor.getInstance().selection;
-      const selectionContent = editor.getSelection();
-      const tagName = selection.getNode().tagName;
-      const requireLinkText = tagName !== 'A' && selectionContent.trim() === '';
+      const requireLinkText = this.getRequireLinkText();
       const currentPageID = Number($('#Form_EditForm_ID').val() || 0);
 
       // create/update the react component

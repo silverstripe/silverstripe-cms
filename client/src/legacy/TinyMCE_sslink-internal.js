@@ -96,22 +96,6 @@ jQuery.entwine('ss', ($) => {
     },
 
     /**
-     * Determine whether to show the link text field
-     *
-     * @return {Boolean}
-     */
-    getRequireLinkText() {
-      const editor = this.getElement().getEditor();
-      const selection = editor.getInstance().selection;
-      const selectionContent = editor.getSelection();
-
-      const tagName = selection.getNode().tagName;
-      const requireLinkText = tagName !== 'A' && selectionContent.trim() === '';
-
-      return requireLinkText;
-    },
-
-    /**
      * @param {Object} data - Posted data
      * @return {Object}
      */
