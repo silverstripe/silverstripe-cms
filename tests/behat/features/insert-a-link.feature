@@ -8,7 +8,8 @@ So that I can link to a external website or a page on my site
     Given a "page" "Home"
       And a "page" "About Us" has the "Content" "<p>My awesome content</p>"
       And a "file" "file1.jpg"
-      And the "group" "EDITOR" has permissions "Access to 'Pages' section"
+      # And the "group" "EDITOR" has permissions "Access to 'Pages' section"
+      And the "group" "EDITOR" has permissions "Access to 'Files' section" and "Access to 'Pages' section" and "FILE_EDIT_ALL"
       And I am logged in as a member of "EDITOR" group
       And I go to "/admin/pages"
       And I click on "About Us" in the tree
@@ -79,7 +80,7 @@ So that I can link to a external website or a page on my site
       # Required to avoid "unsaved changed" browser dialog
       And I press the "Save" button
 
-  Scenario: I can edit a link
+  Scenario: I can edit an external link
     Given I fill in the "Content" HTML field with "<p>My <a href='http://silverstripe.org'>awesome</a> content"
       And I select "awesome" in the "Content" HTML field
     When I press the "Insert link" HTML field button
@@ -93,7 +94,7 @@ So that I can link to a external website or a page on my site
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save" button
 
-  Scenario: I can remove a link
+  Scenario: I can remove an external link
     Given I fill in the "Content" HTML field with "My <a href='http://silverstripe.org'>awesome</a> content"
       And I select "awesome" in the "Content" HTML field
     When I press the "Remove link" button
