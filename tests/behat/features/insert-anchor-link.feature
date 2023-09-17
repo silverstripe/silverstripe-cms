@@ -31,6 +31,24 @@ So that I can link to a external website or a page on my site
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save" button
 
+  Scenario: I can wrap an image in a link to an anchor in an internal page
+    Given I fill in the "Content" HTML field with "<p><img src='file1.jpg'></p>"
+    When I select the image "file1.jpg" in the "Content" HTML field
+      And I press the "Insert link" HTML field button
+      And I click "Anchor on a page" in the ".mce-menu" element
+    Then I should see an "form#Form_editorAnchorLink" element
+      And I should not see "Link text"
+      And I should see "About Us" in the "#Form_editorAnchorLink_PageID_Holder .Select-multi-value-wrapper" element
+    When I click "About Us" in the "#Form_editorAnchorLink_PageID_Holder .Select-multi-value-wrapper" element
+      And I click "Details" in the "#Form_editorAnchorLink_PageID_Holder .Select-menu-outer" element
+      And I click "Select or enter anchor" in the "#Form_editorAnchorLink_Anchor_Holder .Select-multi-value-wrapper" element
+      And I click "youranchor" in the "#Form_editorAnchorLink_Anchor_Holder .Select-menu-outer" element
+    Then I should see "youranchor" in the "#Form_editorAnchorLink_Anchor_Holder .Select-value" element
+      And I press the "Insert" button
+    Then the "Content" HTML field should contain "<a href="[sitetree_link,id=3]#youranchor"><img src="file1.jpg"></a>"
+      # Required to avoid "unsaved changed" browser dialog
+      And I press the "Save" button
+
   Scenario: I can link to an anchor from a dataobject on the current page
     When I select "awesome" in the "Content" HTML field
       And I press the "Insert link" HTML field button
