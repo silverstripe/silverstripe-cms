@@ -3,7 +3,6 @@
 namespace SilverStripe\CMS\Model;
 
 use Page;
-use SilverStripe\Admin\AdminRootController;
 use SilverStripe\Core\Convert;
 use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\FieldList;
