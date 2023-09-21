@@ -37,7 +37,7 @@
     "bootstrap": "^4.6.2",
     "classnames": "^2.3.2",
     "deep-freeze-strict": "^1.1.1",
-    "graphql": "^16.6.0",
+    "graphql": "^16.8.1",
     "graphql-tag": "^2.12.6",
     "isomorphic-fetch": "^3.0.0",
     "merge": "^2.1.1",
