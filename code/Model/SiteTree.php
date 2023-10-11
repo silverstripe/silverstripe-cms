@@ -1958,7 +1958,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function BackLinkTracking()
     {
-        // @todo - Implement PolymorphicManyManyList to replace this
         $list = ArrayList::create();
 
         $siteTreelinkTable = SiteTreeLink::singleton()->baseTable();

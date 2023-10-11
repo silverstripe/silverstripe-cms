@@ -132,10 +132,6 @@ class CMSPageAddController extends CMSPageEditController
                 ]);
         });
 
-        // TODO Re-enable search once it allows for HTML title display,
-        // see http://open.silverstripe.org/ticket/7455
-        // $parentField->setShowSearch(true);
-
         $parentModeField->addExtraClass('parent-mode');
 
         // CMSMain->currentPageID() automatically sets the homepage,

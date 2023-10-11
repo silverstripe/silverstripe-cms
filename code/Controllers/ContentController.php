@@ -45,7 +45,6 @@ use SilverStripe\View\SSViewer;
  * Subclasses of ContentController are generally instantiated by ModelAsController; this will create
  * a controller based on the URLSegment action variable, by looking in the SiteTree table.
  *
- * @todo Can this be used for anything other than SiteTree controllers?
  */
 class ContentController extends Controller
 {
@@ -303,8 +302,6 @@ class ContentController extends Controller
     /**
      * Returns the default log-in form.
      *
-     * @todo Check if here should be returned just the default log-in form or
-     *       all available log-in forms (also OpenID...)
      * @return \SilverStripe\Security\MemberAuthenticator\MemberLoginForm
      */
     public function LoginForm()
@@ -449,7 +446,6 @@ HTML;
             $this->httpError(410);
         }
 
-        // TODO Allow this to work when allow_url_fopen=0
         if (isset($_SESSION['StatsID']) && $_SESSION['StatsID']) {
             $url = 'http://ss2stat.silverstripe.com/Installation/installed?ID=' . $_SESSION['StatsID'];
             @file_get_contents($url ?? '');

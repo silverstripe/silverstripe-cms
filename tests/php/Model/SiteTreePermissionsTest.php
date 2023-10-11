@@ -12,10 +12,6 @@ use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\Subsites\Extensions\SiteTreeSubsites;
 use SilverStripe\Versioned\Versioned;
 
-/**
- * @todo Test canAddChildren()
- * @todo Test canCreate()
- */
 class SiteTreePermissionsTest extends FunctionalTest
 {
     protected static $fixture_file = "SiteTreePermissionsTest.yml";
