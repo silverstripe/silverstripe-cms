@@ -164,7 +164,6 @@ class RedirectorPage extends Page
                 $this->HasBrokenLink = true;
             }
         } else {
-            // TODO implement checking of a remote site
             $this->HasBrokenLink = false;
         }
     }

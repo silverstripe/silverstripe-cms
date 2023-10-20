@@ -39,7 +39,7 @@ class BrokenVirtualPagesReport extends Report
     {
         return [
             "Title" => [
-                "title" => "Title", // todo: use NestedTitle(2)
+                "title" => "Title",
                 "link" => true,
             ],
         ];
