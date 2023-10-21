@@ -32,7 +32,6 @@ ShortcodeParser::get('default')->register(
     [SiteTree::class, 'link_shortcode_handler']
 );
 
-// TODO Remove once we can configure CMSMenu through static, nested configuration files
 CMSMenu::remove_menu_class(CMSMain::class);
 CMSMenu::remove_menu_class(CMSPageEditController::class);
 CMSMenu::remove_menu_class(CMSPageSettingsController::class);

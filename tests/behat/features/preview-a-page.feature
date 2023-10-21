@@ -19,10 +19,6 @@ Feature: Preview a page
     And the preview contains "About Us"
     Then I set the CMS mode to "Edit mode"
 
-  # TODO:
-  # - Only tests correctly on fresh database
-  # - We should continue testing against it after we have fixtures ready
-  @javascript
   Scenario: I can see an updated preview when editing content
     And I go to "/admin/pages"
     Then I should see "About Us" in the tree

@@ -80,8 +80,6 @@ use SilverStripe\View\Requirements;
  * This class creates a 2-frame layout - left-tree and right-form - to sit beneath the main
  * admin menu.
  *
- * @todo Create some base classes to contain the generic functionality that will be replicated.
- *
  * @mixin LeftAndMainPageIconsExtension
  */
 class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionProvider, Flushable, MemberCacheFlusher
@@ -702,7 +700,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             $markingSet->markUnexpanded($record);
 
             // Find the next & previous nodes, for proper positioning (Sort isn't good enough - it's not a raw offset)
-            // TODO: These methods should really be in hierarchy - for a start it assumes Sort exists
             $prev = null;
 
             $className = $this->config()->get('tree_class');
@@ -1372,7 +1369,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             }
         }
 
-        // TODO Can't merge $FormAttributes in template at the moment
         $form->addExtraClass('center ' . $this->BaseCSSClasses());
         // Set validation exemptions for specific actions
         $form->setValidationExemptActions([
@@ -1768,7 +1764,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             return Security::permissionFailure($this);
         }
 
-        // TODO Coupling to SiteTree
         $record->HasBrokenLink = 0;
         $record->HasBrokenFile = 0;
 
