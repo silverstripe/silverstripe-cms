@@ -203,10 +203,19 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * in the cms, set this to the old class name. Eg, if you extended Product
      * to make ImprovedProduct, then you would set $hide_ancestor to Product.
      *
+     * @deprecated 5.2.0 Use hide_pagetypes instead
+     *
      * @config
      * @var string
      */
     private static $hide_ancestor = null;
+
+    /**
+     * Any fully qualified class names added to this array will be hidden in the CMS
+     * when selecting page types, e.g. for creating a new page or changing the type
+     * of an existing page.
+     */
+    private static array $hide_pagetypes = [];
 
     /**
      * You can define the class of the controller that maps to your SiteTree object here if
@@ -538,7 +547,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
-     * Return a subclass map of SiteTree that shouldn't be hidden through {@link SiteTree::$hide_ancestor}
+     * Return a subclass map of SiteTree that shouldn't be hidden through {@link SiteTree::$hide_pagetypes}
      *
      * @return array
      */
@@ -551,7 +560,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             unset($classes[$baseClassIndex]);
         }
 
-        $kill_ancestors = [];
+        $kill_ancestors = self::config()->get('hide_pagetypes', Config::UNINHERITED) ?? [];
 
         // figure out if there are any classes we don't want to appear
         foreach ($classes as $class) {
