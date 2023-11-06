@@ -267,6 +267,7 @@ fr:
     db_Sort: Tri
     db_Title: Titre
     db_URLSegment: 'Segment d''URL'
+    db_Version: Version
     has_one_Parent: 'Page parente'
     many_many_BackLinkTracking: 'Suivi des liens retour'
     many_many_ImageTracking: 'Suivi des images'
