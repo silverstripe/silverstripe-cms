@@ -289,6 +289,9 @@ nl:
       one: '1 pagina link'
       other: '{count} pagina links'
     SINGULARNAME: 'Pagina link'
+    has_one_Parent: Bovenliggende
+  SilverStripe\CMS\Model\SiteTreeLinkTracking:
+    many_many_LinkTracking: 'Links volgen'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Gekoppelde pagina'
     DESCRIPTION: 'Toont de inhoud van een andere pagina'
