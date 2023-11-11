@@ -2255,7 +2255,16 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         };
         $viewAllGroupsMap = $mapFn(Permission::get_groups_by_permission(['SITETREE_VIEW_ALL', 'ADMIN']));
         $editAllGroupsMap = $mapFn(Permission::get_groups_by_permission(['SITETREE_EDIT_ALL', 'ADMIN']));
-        $membersMap = Member::get()->map('ID', 'Name');
+
+        // $membersMap is limited to 100 records specifically so that it does not crash the front-end
+        // if the website has a large number of Members, which is likely to happen if the website also
+        // uses the Member table for non-cms public users
+        // This limit should be removed if the ListboxField front-end component is switched out or
+        // modified so that it does not load all users at once and instead uses XHR to fetch a subset
+        // of users based on what the user types in
+        $membersMap = Member::get()
+            ->limit(100)
+            ->map('ID', 'Name');
 
         $fields = new FieldList(
             $rootTab = new TabSet(
