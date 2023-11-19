@@ -112,6 +112,9 @@ Page:
   breadcrumbs5:
     Title: 'Breadcrumbs 5'
     Parent: =>Page.breadcrumbs4
+  numeric0:
+    Title: 'urlsegment is 0'
+    URLSegment: '0'
 
 SilverStripe\CMS\Tests\Model\SiteTreeTest_Conflicted:
   parent:

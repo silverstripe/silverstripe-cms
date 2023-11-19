@@ -118,8 +118,9 @@ class ModelAsController extends Controller implements NestedController
     public function getNestedController()
     {
         $request = $this->getRequest();
+        $urlSegment = $request->param('URLSegment');
 
-        if (!$URLSegment = $request->param('URLSegment')) {
+        if ($urlSegment === false || $urlSegment === null || $urlSegment === '') {
             throw new Exception('ModelAsController->getNestedController(): was not passed a URLSegment value.');
         }
 
@@ -130,13 +131,14 @@ class ModelAsController extends Controller implements NestedController
 
         // url encode unless it's multibyte (already pre-encoded in the database)
         $filter = URLSegmentFilter::create();
+
         if (!$filter->getAllowMultibyte()) {
-            $URLSegment = rawurlencode($URLSegment ?? '');
+            $urlSegment = rawurlencode($urlSegment ?? '');
         }
 
         // Select child page
         $tableName = DataObject::singleton(SiteTree::class)->baseTable();
-        $conditions = [sprintf('"%s"."URLSegment"', $tableName) => $URLSegment];
+        $conditions = [sprintf('"%s"."URLSegment"', $tableName) => $urlSegment];
         if (SiteTree::config()->get('nested_urls')) {
             $conditions[] = [sprintf('"%s"."ParentID"', $tableName) => 0];
         }

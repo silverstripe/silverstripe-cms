@@ -456,7 +456,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $parentIDExpr = sprintf('"%s"."ParentID"', $tableName);
 
         $link = trim(Director::makeRelative($link) ?? '', '/');
-        if (!$link) {
+        if ($link === false || $link === null || $link === '') {
             $link = RootURLController::get_homepage_link();
         }
 
@@ -1633,6 +1633,11 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
     }
 
+    private function hasURLSegment(): bool
+    {
+        return $this->URLSegment !== false && $this->URLSegment !== null && $this->URLSegment !== '';
+    }
+
     protected function onBeforeWrite()
     {
         parent::onBeforeWrite();
@@ -1653,7 +1658,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             'New {pagetype}',
             ['pagetype' => $this->i18n_singular_name()]
         ));
-        if ((!$this->URLSegment || $this->URLSegment == $defaultSegment) && $this->Title) {
+        if ((!$this->hasURLSegment() || $this->URLSegment == $defaultSegment) && $this->Title) {
             $this->URLSegment = $this->generateURLSegment($this->Title);
         } elseif ($this->isChanged('URLSegment', 2)) {
             // Do a strict check on change level, to avoid double encoding caused by
@@ -1661,7 +1666,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $filter = URLSegmentFilter::create();
             $this->URLSegment = $filter->filter($this->URLSegment);
             // If after sanitising there is no URLSegment, give it a reasonable default
-            if (!$this->URLSegment) {
+            if (!$this->hasURLSegment()) {
                 $this->URLSegment = "page-$this->ID";
             }
         }
