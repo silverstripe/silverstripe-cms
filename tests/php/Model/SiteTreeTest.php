@@ -131,6 +131,7 @@ class SiteTreeTest extends SapphireTest
             'object'   => 'object',
             'controller' => 'controller',
             'numericonly' => '1930',
+            'numeric0' => '0',
         ];
 
         foreach ($expectedURLs as $fixture => $urlSegment) {
@@ -467,6 +468,7 @@ class SiteTreeTest extends SapphireTest
         $about    = $this->objFromFixture(SiteTree::class, 'about');
         $staff    = $this->objFromFixture(SiteTree::class, 'staff');
         $product  = $this->objFromFixture(SiteTree::class, 'product1');
+        $numeric0 = $this->objFromFixture(SiteTree::class, 'numeric0');
 
         SiteTree::config()->nested_urls = false;
 
@@ -475,6 +477,7 @@ class SiteTreeTest extends SapphireTest
         $this->assertEquals($about->ID, SiteTree::get_by_link($about->Link(), false)->ID);
         $this->assertEquals($staff->ID, SiteTree::get_by_link($staff->Link(), false)->ID);
         $this->assertEquals($product->ID, SiteTree::get_by_link($product->Link(), false)->ID);
+        $this->assertEquals($numeric0->ID, SiteTree::get_by_link($numeric0->Link(), false)->ID);
 
         Config::modify()->set(SiteTree::class, 'nested_urls', true);
 
@@ -483,6 +486,7 @@ class SiteTreeTest extends SapphireTest
         $this->assertEquals($about->ID, SiteTree::get_by_link($about->Link(), false)->ID);
         $this->assertEquals($staff->ID, SiteTree::get_by_link($staff->Link(), false)->ID);
         $this->assertEquals($product->ID, SiteTree::get_by_link($product->Link(), false)->ID);
+        $this->assertEquals($numeric0->ID, SiteTree::get_by_link($numeric0->Link(), false)->ID);
 
         $this->assertEquals(
             $staff->ID,
@@ -497,6 +501,7 @@ class SiteTreeTest extends SapphireTest
         $about = $this->objFromFixture(SiteTree::class, 'about');
         $staff = $this->objFromFixture(SiteTree::class, 'staff');
         $product = $this->objFromFixture(SiteTree::class, 'product1');
+        $numeric0 = $this->objFromFixture(SiteTree::class, 'numeric0');
 
         $base = 'https://example.test/';
         $this->assertEquals($home->ID, SiteTree::get_by_link(Controller::join_links($base, '/'), false)->ID);
@@ -504,12 +509,14 @@ class SiteTreeTest extends SapphireTest
         $this->assertEquals($about->ID, SiteTree::get_by_link(Controller::join_links($base, $about->Link()), false)->ID);
         $this->assertEquals($staff->ID, SiteTree::get_by_link(Controller::join_links($base, $staff->Link()), false)->ID);
         $this->assertEquals($product->ID, SiteTree::get_by_link(Controller::join_links($base, $product->Link()), false)->ID);
+        $this->assertEquals($numeric0->ID, SiteTree::get_by_link(Controller::join_links($base, $numeric0->Link()), false)->ID);
     }
 
     public function testRelativeLink()
     {
         $about = $this->objFromFixture(SiteTree::class, 'about');
         $staff = $this->objFromFixture(SiteTree::class, 'staff');
+        $numeric0 = $this->objFromFixture(SiteTree::class, 'numeric0');
 
         Config::modify()->set(SiteTree::class, 'nested_urls', true);
 
@@ -523,6 +530,7 @@ class SiteTreeTest extends SapphireTest
             $staff->RelativeLink(),
             'Matches URLSegment plus parent on second level without parameters'
         );
+        $this->assertEquals('0/', $numeric0->RelativeLink(), 'Matches URLSegment for segment = 0');
         $this->assertEquals(
             'about-us/edit',
             $about->RelativeLink('edit'),
