@@ -530,7 +530,11 @@ class SiteTreeTest extends SapphireTest
             $staff->RelativeLink(),
             'Matches URLSegment plus parent on second level without parameters'
         );
-        $this->assertEquals('0/', $numeric0->RelativeLink(), 'Matches URLSegment for segment = 0');
+        $this->assertEquals(
+            Controller::normaliseTrailingSlash('0/'),
+            $numeric0->RelativeLink(),
+            'Matches URLSegment for segment = 0'
+        );
         $this->assertEquals(
             'about-us/edit',
             $about->RelativeLink('edit'),
