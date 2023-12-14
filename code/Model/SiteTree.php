@@ -38,6 +38,7 @@ use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\ListboxField;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\OptionsetField;
+use SilverStripe\Forms\SearchableMultiDropdownField;
 use SilverStripe\Forms\Tab;
 use SilverStripe\Forms\TabSet;
 use SilverStripe\Forms\TextareaField;
@@ -2261,16 +2262,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $viewAllGroupsMap = $mapFn(Permission::get_groups_by_permission(['SITETREE_VIEW_ALL', 'ADMIN']));
         $editAllGroupsMap = $mapFn(Permission::get_groups_by_permission(['SITETREE_EDIT_ALL', 'ADMIN']));
 
-        // $membersMap is limited to 100 records specifically so that it does not crash the front-end
-        // if the website has a large number of Members, which is likely to happen if the website also
-        // uses the Member table for non-cms public users
-        // This limit should be removed if the ListboxField front-end component is switched out or
-        // modified so that it does not load all users at once and instead uses XHR to fetch a subset
-        // of users based on what the user types in
-        $membersMap = Member::get()
-            ->limit(100)
-            ->map('ID', 'Name');
-
         $fields = new FieldList(
             $rootTab = new TabSet(
                 "Root",
@@ -2301,11 +2292,13 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                         _t(__CLASS__.'.VIEWERGROUPS', "Viewer Groups"),
                         Group::class
                     ),
-                    $viewerMembersField = ListboxField::create(
+                    $viewerMembersField = SearchableMultiDropdownField::create(
                         "ViewerMembers",
                         _t(__CLASS__.'.VIEWERMEMBERS', "Viewer Users"),
-                        $membersMap,
-                    ),
+                        Member::get(),
+                    )
+                        ->setIsLazyLoaded(true)
+                        ->setUseSearchContext(true),
                     $editorsOptionsField = new OptionsetField(
                         "CanEditType",
                         _t(__CLASS__.'.EDITHEADER', "Who can edit this page?")
@@ -2315,11 +2308,13 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                         _t(__CLASS__.'.EDITORGROUPS', "Editor Groups"),
                         Group::class
                     ),
-                    $editorMembersField = ListboxField::create(
+                    $editorMembersField = SearchableMultiDropdownField::create(
                         "EditorMembers",
                         _t(__CLASS__.'.EDITORMEMBERS', "Editor Users"),
-                        $membersMap
+                        Member::get()
                     )
+                        ->setIsLazyLoaded(true)
+                        ->setUseSearchContext(true)
                 )
             )
         );
