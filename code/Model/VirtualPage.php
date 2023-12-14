@@ -21,8 +21,8 @@ use SilverStripe\View\HTML;
  *
  * Note: This Only duplicates $db fields and not the $has_one etc..
  *
- * @method SiteTree CopyContentFrom()
  * @property int $CopyContentFromID
+ * @method SiteTree CopyContentFrom()
  */
 class VirtualPage extends Page
 {

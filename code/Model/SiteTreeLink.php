@@ -7,8 +7,8 @@ use SilverStripe\ORM\DataObject;
 /**
  * Represents a link between a dataobject parent and a page in a HTML content area
  *
- * @method DataObject Parent() Parent object
- * @method SiteTree Linked() Page being linked to
+ * @method SiteTree Linked()
+ * @method DataObject Parent()
  */
 class SiteTreeLink extends DataObject
 {

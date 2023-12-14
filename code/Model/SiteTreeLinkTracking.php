@@ -27,7 +27,7 @@ use SilverStripe\View\Parsers\HTMLValue;
  * field to your `db` config and this extension will ensure it's flagged appropriately.
  *
  * @property DataObject|SiteTreeLinkTracking $owner
- * @method ManyManyThroughList LinkTracking() List of site pages linked on this dataobject
+ * @method ManyManyThroughList<SiteTree> LinkTracking()
  */
 class SiteTreeLinkTracking extends DataExtension
 {
