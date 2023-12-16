@@ -18,8 +18,8 @@ use SilverStripe\Versioned\Versioned;
  * @property string $RedirectionType Either 'Internal','External' or 'File'
  * @property string $ExternalURL URL to redirect to if $RedirectionType is 'External'
  * @property int $LinkToID
- * @method SiteTree LinkTo() Page to link to if $RedirectionType is 'Internal'
- * @method File LinkToFile() File to link to if $RedirectionType is 'File'
+ * @method SiteTree LinkTo()
+ * @method File LinkToFile()
  */
 class RedirectorPage extends Page
 {

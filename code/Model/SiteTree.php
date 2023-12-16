@@ -103,17 +103,14 @@ use SilverStripe\View\SSViewer;
  * @property bool $HasBrokenFile True if this page has a broken file shortcode
  * @property bool $HasBrokenLink True if this page has a broken page shortcode
  *
- * @method ManyManyList ViewerGroups() List of groups that can view this object.
- * @method ManyManyList EditorGroups() List of groups that can edit this object.
- * @method SiteTree Parent()
- * @method HasManyList|SiteTreeLink[] BackLinks() List of SiteTreeLink objects attached to this page
- *
  * @mixin Hierarchy
  * @mixin Versioned
  * @mixin RecursivePublishable
  * @mixin SiteTreeLinkTracking Added via linktracking.yml to DataObject directly
  * @mixin FileLinkTracking Added via filetracking.yml in silverstripe/assets
  * @mixin InheritedPermissionsExtension
+ * @method HasManyList<SiteTreeLink> BackLinks()
+ * @method HasManyList<VirtualPage> VirtualPages()
  */
 class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvider, CMSPreviewable, Resettable, Flushable, MemberCacheFlusher
 {
