@@ -683,7 +683,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function RelativeLink($action = null)
     {
-        if ($this->ParentID && self::config()->get('nested_urls')) {
+        if (self::config()->get('nested_urls') && $this->ParentID && $this->getParent()?->exists()) {
             $parent = $this->getParent();
             // If page is removed select parent from version history (for archive page view)
             if ((!$parent || !$parent->exists()) && !$this->isOnDraft()) {
@@ -1175,7 +1175,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         // check for inherit
         if ($this->CanViewType === InheritedPermissions::INHERIT) {
-            if ($this->ParentID) {
+            if ($this->ParentID && $this->getParent()?->exists()) {
                 return $this->getParent()->canView($member);
             } else {
                 return $this->getSiteConfig()->canViewPages($member);
@@ -1870,7 +1870,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function validURLSegment()
     {
         // Check known urlsegment blacklists
-        if (self::config()->get('nested_urls') && $this->ParentID) {
+        if (self::config()->get('nested_urls') && $this->ParentID && $this->getParent()?->exists()) {
             // Guard against url segments for sub-pages
             $parent = $this->getParent();
             if ($controller = ModelAsController::controller_for($parent)) {
@@ -2132,7 +2132,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         $baseLink = Controller::join_links(
             Director::absoluteBaseURL(),
-            (self::config()->get('nested_urls') && $this->ParentID ? $this->getParent()->RelativeLink(true) : null)
+            (self::config()->get('nested_urls') && $this->ParentID ? $this->getParent()?->RelativeLink(true) : null)
         );
 
         $urlsegment = SiteTreeURLSegmentField::create("URLSegment", $this->fieldLabel('URLSegment'))
@@ -3048,7 +3048,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function getPageLevel()
     {
         if ($this->ParentID) {
-            return 1 + $this->getParent()->getPageLevel();
+            return 1 + $this->getParent()?->getPageLevel();
         }
         return 1;
     }
