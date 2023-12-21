@@ -14,8 +14,12 @@ en:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: "Access to '{title}' section"
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
+    ADDEDTODRAFTSHORT: 'Draft'
+    ADDEDTODRAFTHELP: 'Page has not been published yet'
     ARCHIVE: Archive
     ARCHIVEDPAGE: "Archived page '{title}'"
+    ARCHIVEDPAGEHELP: 'Page is removed from draft and live'
+    ARCHIVEDPAGESHORT: 'Archived'
     AddNew: 'Add new page'
     AddNewButton: 'Add new'
     AddPageRestriction: 'Note: Some page types are not allowed for this selection'
@@ -31,7 +35,11 @@ en:
     DUPLICATED: "Duplicated '{title}' successfully"
     DUPLICATEDWITHCHILDREN: "Duplicated '{title}' and children successfully"
     EMAIL: Email
+    MODIFIEDONDRAFTSHORT: 'Modified'
+    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     NEWPAGE: 'New {pagetype}'
+    ONLIVEONLYSHORT: 'On live only'
+    ONLIVEONLYSHORTHELP: 'Page is published, but has been deleted from draft'
     PAGENOTEXISTS: "This page doesn't exist"
     PAGES: 'Page status'
     PAGESALLOPT: 'All pages'

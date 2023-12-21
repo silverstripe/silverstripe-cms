@@ -54,6 +54,7 @@ use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
+use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\HiddenClass;
 use SilverStripe\ORM\Hierarchy\Hierarchy;
@@ -1089,9 +1090,63 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             ]));
         }
 
+        $badge = null;
+        $status = $this->getStatusFlag($record);
+
+        if (count($status) > 0) {
+            $flags = '';
+            foreach ($status as $flag => $flagData) {
+                $flags .= sprintf(
+                    '<span class="badge version-status version-status--%s" %s>%s</span>',
+                    'status-' . Convert::raw2xml($flag),
+                    (isset($flagData['title'])) ? sprintf(' title="%s"', Convert::raw2xml($flagData['title'])) : '',
+                    Convert::raw2xml($flagData['text'])
+                );
+            }
+            $badge = DBField::create_field('HTMLFragment', $flags);
+        }
+
+        $this->extend('updateBadge', $badge);
+
+        if ($badge) {
+            /** @var ArrayData $lastItem */
+            $lastItem = $items->last();
+            $lastItem->setField('Extra', $badge);
+        }
+
         $this->extend('updateBreadcrumbs', $items);
 
         return $items;
+    }
+
+    private function getStatusFlag($record)
+    {
+        $flags = [];
+        if ($record->isOnLiveOnly()) {
+            $flags['removedfromdraft'] = [
+                'text' => _t(__CLASS__.'.ONLIVEONLYSHORT', 'On live only'),
+                'title' => _t(__CLASS__.'.ONLIVEONLYSHORTHELP', 'Page is published, but has been deleted from draft'),
+            ];
+        } elseif ($record->isArchived()) {
+            $flags['archived'] = [
+                'text' => _t(__CLASS__.'.ARCHIVEDPAGESHORT', 'Archived'),
+                'title' => _t(__CLASS__.'.ARCHIVEDPAGEHELP', 'Page is removed from draft and live'),
+            ];
+        } elseif ($record->isOnDraftOnly()) {
+            $flags['addedtodraft'] = [
+                'text' => _t(__CLASS__.'.ADDEDTODRAFTSHORT', 'Draft'),
+                'title' => _t(__CLASS__.'.ADDEDTODRAFTHELP', 'Page has not been published yet')
+            ];
+        } elseif ($record->isModifiedOnDraft() || $record->stagesDifferRecursive()) {
+            $flags['modified'] = [
+                'text' => _t(__CLASS__.'.MODIFIEDONDRAFTSHORT', 'Modified'),
+                'title' => _t(__CLASS__.'.MODIFIEDONDRAFTHELP', 'Page has unpublished changes'),
+            ];
+        }
+
+        $this->extend('updateStatusFlags', $flags);
+
+        return $flags;
     }
 
     /**
