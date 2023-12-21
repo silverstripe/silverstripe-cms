@@ -14,7 +14,6 @@ en:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: "Access to '{title}' section"
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
-    ADDEDTODRAFTSHORT: 'Draft'
     ADDEDTODRAFTHELP: 'Page has not been published yet'
     ARCHIVE: Archive
     ARCHIVEDPAGE: "Archived page '{title}'"

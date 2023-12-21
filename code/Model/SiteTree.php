@@ -2473,7 +2473,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // Get status of page
         $isOnDraft = $this->isOnDraft();
         $isPublished = $this->isPublished();
-        $stagesDiffer = $this->stagesDifferRecursive();
+        $stagesDiffer = $this->_cache_statusFlags ? true : $this->stagesDifferRecursive();
 
         // Check permissions
         $canPublish = $this->canPublish();

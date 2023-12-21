@@ -1096,10 +1096,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if (count($status) > 0) {
             $flags = '';
             foreach ($status as $flag => $flagData) {
+                $titleAttrebute = sprintf(' title="%s"', Convert::raw2xml($flagData['title']));
                 $flags .= sprintf(
                     '<span class="badge version-status version-status--%s" %s>%s</span>',
                     'status-' . Convert::raw2xml($flag),
-                    (isset($flagData['title'])) ? sprintf(' title="%s"', Convert::raw2xml($flagData['title'])) : '',
+                    (isset($flagData['title'])) ? $titleAttrebute : '',
                     Convert::raw2xml($flagData['text'])
                 );
             }
@@ -1119,31 +1120,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         return $items;
     }
 
-    private function getStatusFlag($record)
+    private function getStatusFlag(SiteTree $record): array
     {
-        $flags = [];
-        if ($record->isOnLiveOnly()) {
-            $flags['removedfromdraft'] = [
-                'text' => _t(__CLASS__.'.ONLIVEONLYSHORT', 'On live only'),
-                'title' => _t(__CLASS__.'.ONLIVEONLYSHORTHELP', 'Page is published, but has been deleted from draft'),
-            ];
-        } elseif ($record->isArchived()) {
-            $flags['archived'] = [
-                'text' => _t(__CLASS__.'.ARCHIVEDPAGESHORT', 'Archived'),
-                'title' => _t(__CLASS__.'.ARCHIVEDPAGEHELP', 'Page is removed from draft and live'),
-            ];
-        } elseif ($record->isOnDraftOnly()) {
-            $flags['addedtodraft'] = [
-                'text' => _t(__CLASS__.'.ADDEDTODRAFTSHORT', 'Draft'),
-                'title' => _t(__CLASS__.'.ADDEDTODRAFTHELP', 'Page has not been published yet')
-            ];
-        } elseif ($record->isModifiedOnDraft() || $record->stagesDifferRecursive()) {
-            $flags['modified'] = [
-                'text' => _t(__CLASS__.'.MODIFIEDONDRAFTSHORT', 'Modified'),
-                'title' => _t(__CLASS__.'.MODIFIEDONDRAFTHELP', 'Page has unpublished changes'),
-            ];
-        }
-
+        $flags = $record->getStatusFlags();
         $this->extend('updateStatusFlags', $flags);
 
         return $flags;
