@@ -45,11 +45,12 @@ use SilverStripe\View\SSViewer;
  * Subclasses of ContentController are generally instantiated by ModelAsController; this will create
  * a controller based on the URLSegment action variable, by looking in the SiteTree table.
  *
+ * @template T of SiteTree
  */
 class ContentController extends Controller
 {
     /**
-     * @var SiteTree
+     * @var T
      */
     protected $dataRecord;
 
@@ -71,7 +72,7 @@ class ContentController extends Controller
      * The ContentController will take the URLSegment parameter from the URL and use that to look
      * up a SiteTree record.
      *
-     * @param SiteTree $dataRecord
+     * @param T|null $dataRecord
      */
     public function __construct($dataRecord = null)
     {
@@ -110,7 +111,7 @@ class ContentController extends Controller
      * Return the children of a given page. The parent reference can either be a page link or an ID.
      *
      * @param string|int $parentRef
-     * @return SS_List
+     * @return SS_List<SiteTree>
      */
     public function ChildrenOf($parentRef)
     {
@@ -188,7 +189,6 @@ class ContentController extends Controller
      */
     public function handleRequest(HTTPRequest $request): HTTPResponse
     {
-        /** @var SiteTree $child */
         $child = null;
         $action = $request->param('Action');
 
@@ -243,6 +243,7 @@ class ContentController extends Controller
 
     /**
      * Returns the associated database record
+     * @return T
      */
     public function data()
     {
@@ -254,7 +255,7 @@ class ContentController extends Controller
     /**
      * Returns a fixed navigation menu of the given level.
      * @param int $level Menu level to return.
-     * @return ArrayList
+     * @return ArrayList<SiteTree>
      */
     public function getMenu($level = 1)
     {
@@ -284,7 +285,6 @@ class ContentController extends Controller
         // We might need to create a show in menu permission
         if (isset($result)) {
             foreach ($result as $page) {
-                /** @var SiteTree $page */
                 if ($page->canView()) {
                     $visible[] = $page;
                 }
@@ -294,6 +294,9 @@ class ContentController extends Controller
         return new ArrayList($visible);
     }
 
+    /**
+     * @return ArrayList<SiteTree>
+     */
     public function Menu($level)
     {
         return $this->getMenu($level);

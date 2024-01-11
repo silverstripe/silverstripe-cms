@@ -2,6 +2,7 @@
 
 namespace SilverStripe\CMS\Search;
 
+use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Extension;
 use SilverStripe\Forms\TextField;
@@ -12,6 +13,8 @@ use SilverStripe\ORM\Search\FulltextSearchable;
 
 /**
  * Extension to provide a search interface when applied to ContentController
+ *
+ * @extends Extension<ContentController>
  */
 class ContentControllerSearchExtension extends Extension
 {

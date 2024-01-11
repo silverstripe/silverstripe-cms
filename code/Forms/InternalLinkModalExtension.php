@@ -9,7 +9,8 @@ use SilverStripe\Forms\Form;
 
 /**
  * Decorates ModalController with insert internal link
- * @see ModalController
+ *
+ * @extends Extension<ModalController>
  */
 class InternalLinkModalExtension extends Extension
 {
@@ -21,17 +22,6 @@ class InternalLinkModalExtension extends Extension
         'editorInternalLink',
         'editorAnchorLink',
     ];
-
-    /**
-     * @return ModalController
-     */
-    public function getOwner()
-    {
-        /** @var ModalController $owner */
-        $owner = $this->owner;
-        return $owner;
-    }
-
 
     /**
      * Form for inserting internal link pages

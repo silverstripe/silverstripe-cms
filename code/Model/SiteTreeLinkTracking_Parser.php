@@ -61,7 +61,6 @@ class SiteTreeLinkTracking_Parser
             $matches = [];
             if (preg_match('/\[sitetree_link(?:\s*|%20|,)?id=(?<id>[0-9]+)\](#(?<anchor>.*))?/i', $href ?? '', $matches)) {
                 // Check if page link is broken
-                /** @var SiteTree $page */
                 $page = DataObject::get_by_id(SiteTree::class, $matches['id']);
                 if (!$page) {
                     // Page doesn't exist.

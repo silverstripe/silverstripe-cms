@@ -28,6 +28,8 @@ use SilverStripe\View\Parsers\HTMLValue;
  *
  * @property DataObject|SiteTreeLinkTracking $owner
  * @method ManyManyThroughList<SiteTree> LinkTracking()
+ *
+ * @extends DataExtension<DataObject>
  */
 class SiteTreeLinkTracking extends DataExtension
 {

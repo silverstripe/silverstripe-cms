@@ -10,9 +10,11 @@ use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Extension;
 
+/**
+ * @extends Extension<ContentController|ModelAsController>
+ */
 class OldPageRedirector extends Extension
 {
-
     /**
      * On every URL that generates a 404, we'll capture it here and see if we can
      * find an old URL that it should be redirecting to.
@@ -75,7 +77,6 @@ class OldPageRedirector extends Extension
                 'ParentID' => is_numeric($parent) ? $parent : $parent->ID,
             ]);
         }
-        /** @var SiteTree $page */
         $page = $pages->first();
         if (!$page) {
             // If we haven't found a candidate, lets resort to finding an old page with this URL segment

@@ -608,7 +608,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             return null; // There were no suitable matches at all.
         }
 
-        /** @var SiteTree $page */
         $link = Convert::raw2att($page->Link());
 
         if ($content) {
@@ -886,12 +885,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function duplicateWithChildren()
     {
-        /** @var SiteTree $clone */
         $clone = $this->duplicate();
         $children = $this->AllChildren();
 
         if ($children) {
-            /** @var SiteTree $child */
             $sort = 0;
             foreach ($children as $child) {
                 $childClone = method_exists($child, 'duplicateWithChildren')
@@ -914,7 +911,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function duplicateAsChild($id)
     {
-        /** @var SiteTree $newSiteTree */
         $newSiteTree = $this->duplicate();
         $newSiteTree->ParentID = $id;
         $newSiteTree->Sort = 0;
@@ -950,7 +946,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * @param boolean|string $stopAtPageType ClassName of a page to stop the upwards traversal.
      * @param boolean $showHidden Include pages marked with the attribute ShowInMenus = 0
      *
-     * @return ArrayList
+     * @return ArrayList<SiteTree>
     */
     public function getBreadcrumbItems($maxDepth = 20, $stopAtPageType = false, $showHidden = false)
     {
@@ -1416,7 +1412,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 if (eval("return $condition;")) {
                     $collator[] = $item;
                 }
-                /** @var SiteTree $item */
                 $item->collateDescendants($condition, $collator);
             }
             return true;
@@ -1768,7 +1763,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // If deleting this page, delete all its children.
         if ($this->isInDB() && SiteTree::config()->get('enforce_strict_hierarchy')) {
             foreach ($this->AllChildren() as $child) {
-                /** @var SiteTree $child */
                 $child->delete();
             }
         }
@@ -1966,7 +1960,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     /**
      * Get the back-link tracking objects that link to this page
      *
-     * @return ArrayList|DataObject[]
+     * @return ArrayList<DataObject>
      */
     public function BackLinkTracking()
     {
@@ -2007,7 +2001,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Returns the pages that depend on this page. This includes virtual pages, pages that link to it, etc.
      *
      * @param bool $includeVirtuals Set to false to exlcude virtual pages.
-     * @return ArrayList|SiteTree[]
+     * @return ArrayList<SiteTree>
      */
     public function DependentPages($includeVirtuals = true)
     {
@@ -2057,7 +2051,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     /**
      * Return all virtual pages that link to this page.
      *
-     * @return DataList
+     * @return DataList<SiteTree>
      */
     public function VirtualPages()
     {
@@ -2104,7 +2098,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 false,
                 $dependentPages
             );
-            /** @var GridFieldDataColumns $dataColumns */
             $dataColumns = $dependentTable->getConfig()->getComponentByType(GridFieldDataColumns::class);
             $dataColumns
                 ->setDisplayFields($dependentColumns)
@@ -3333,7 +3326,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $this->flushCache();
 
         // Need to mark pages depending to this one as broken
-        /** @var Page $page */
         foreach ($this->DependentPages() as $page) {
             // Update sync link tracking
             $page->syncLinkTracking();
