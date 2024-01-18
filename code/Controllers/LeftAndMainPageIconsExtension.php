@@ -5,6 +5,7 @@ namespace SilverStripe\CMS\Controllers;
 use Psr\SimpleCache\CacheInterface;
 use Psr\SimpleCache\InvalidArgumentException;
 use ReflectionException;
+use SilverStripe\Admin\LeftAndMain;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Config;
@@ -16,10 +17,11 @@ use SilverStripe\View\Requirements;
 
 /**
  * Extension to include custom page icons
+ *
+ * @extends Extension<LeftAndMain>
  */
 class LeftAndMainPageIconsExtension extends Extension implements Flushable
 {
-
     /**
      * @throws InvalidArgumentException
      * @throws ReflectionException

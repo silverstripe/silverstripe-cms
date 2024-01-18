@@ -9,7 +9,6 @@ use SilverStripe\Reports\Report;
 
 class EmptyPagesReport extends Report
 {
-
     public function title()
     {
         return _t(__CLASS__.'.EMPTYPAGES', "Pages without content");
@@ -29,7 +28,7 @@ class EmptyPagesReport extends Report
      * Gets the source records
      *
      * @param array $params
-     * @return DataList
+     * @return DataList<SiteTree>
      */
     public function sourceRecords($params = null)
     {

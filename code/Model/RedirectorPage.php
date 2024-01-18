@@ -120,7 +120,6 @@ class RedirectorPage extends Page
         }
 
         // Check internal redirect
-        /** @var SiteTree $linkTo */
         $linkTo = $this->LinkToID ? SiteTree::get()->byID($this->LinkToID) : null;
 
         if (empty($linkTo)) {

@@ -123,7 +123,6 @@ class ModelAsController extends Controller implements NestedController
         if (SiteTree::config()->get('nested_urls')) {
             $conditions[] = [sprintf('"%s"."ParentID"', $tableName) => 0];
         }
-        /** @var SiteTree $sitetree */
         $sitetree = DataObject::get_one(SiteTree::class, $conditions);
 
         if (!$sitetree) {

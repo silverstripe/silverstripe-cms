@@ -1038,10 +1038,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             ->Link;
     }
 
-    /**
-     * @param bool $unlinked
-     * @return ArrayList
-     */
     public function Breadcrumbs($unlinked = false)
     {
         $items = new ArrayList();
@@ -1293,7 +1289,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if (!$id) {
             $id = $this->currentPageID();
         }
-        /** @var SiteTree $record */
         $record = $this->getRecord($id);
 
         // Check parent form can be generated
@@ -1639,7 +1634,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         }
         $gridField = GridField::create('Page', 'Pages', $list, $gridFieldConfig);
         $gridField->setAttribute('cms-loading-ignore-url-params', true);
-        /** @var GridFieldDataColumns $columns */
         $columns = $gridField->getConfig()->getComponentByType(GridFieldDataColumns::class);
 
         // Don't allow navigating into children nodes on filtered lists
@@ -1648,7 +1642,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             'i18n_singular_name' => _t('SilverStripe\\CMS\\Model\\SiteTree.PAGETYPE', 'Page Type'),
             'LastEdited' => _t('SilverStripe\\CMS\\Model\\SiteTree.LASTUPDATED', 'Last Updated'),
         ];
-        /** @var GridFieldSortableHeader $sortableHeader */
         $sortableHeader = $gridField->getConfig()->getComponentByType(GridFieldSortableHeader::class);
         $sortableHeader->setFieldSorting(['getTreeTitle' => 'Title']);
         $gridField->getState()->ParentID = $parentID;
@@ -1891,7 +1884,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             throw new HTTPResponse_Exception("SiteTree #$id not found", 400);
         }
 
-        /** @var SiteTree $record */
         $table = DataObject::singleton(SiteTree::class)->baseTable();
         $liveTable = DataObject::singleton(SiteTree::class)->stageTable($table, Versioned::LIVE);
         $record = Versioned::get_one_by_stage(SiteTree::class, Versioned::LIVE, [
@@ -1964,7 +1956,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function archive(array $data, Form $form): HTTPResponse
     {
         $id = $data['ID'];
-        /** @var SiteTree $record */
         $record = SiteTree::get()->byID($id);
         if (!$record || !$record->exists()) {
             throw new HTTPResponse_Exception("Bad record ID #$id", 404);
@@ -2141,7 +2132,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         }
 
         $id = (int)$data['ID'];
-        /** @var SiteTree $restoredPage */
         $restoredPage = Versioned::get_latest_version(SiteTree::class, $id);
         if (!$restoredPage) {
             return new HTTPResponse("SiteTree #$id not found", 400);
@@ -2169,7 +2159,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         }
 
         if (($id = $this->urlParams['ID']) && is_numeric($id)) {
-            /** @var SiteTree $page */
             $page = SiteTree::get()->byID($id);
             if ($page && !$page->canCreate(null, ['Parent' => $page->Parent()])) {
                 return Security::permissionFailure($this);
@@ -2178,7 +2167,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 throw new HTTPResponse_Exception("Bad record ID #$id", 404);
             }
 
-            /** @var SiteTree $newPage */
             $newPage = $page->duplicate();
 
             // ParentID can be hard-set in the URL.  This is useful for pages with multiple parents
@@ -2213,7 +2201,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         }
         Environment::increaseTimeLimitTo();
         if (($id = $this->urlParams['ID']) && is_numeric($id)) {
-            /** @var SiteTree $page */
             $page = SiteTree::get()->byID($id);
             if ($page && !$page->canCreate(null, ['Parent' => $page->Parent()])) {
                 return Security::permissionFailure($this);
@@ -2222,7 +2209,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 throw new HTTPResponse_Exception("Bad record ID #$id", 404);
             }
 
-            /** @var SiteTree $newPage */
             $newPage = $page->duplicateWithChildren();
 
             $this->getResponse()->addHeader(

@@ -7,6 +7,8 @@ use SilverStripe\Control\HTTPResponse_Exception;
 
 /**
  * Controller for the {@link RedirectorPage}.
+ *
+ * @extends PageController<RedirectorPage>
  */
 class RedirectorPageController extends PageController
 {
@@ -26,7 +28,6 @@ class RedirectorPageController extends PageController
      */
     public function index(HTTPRequest $request)
     {
-        /** @var RedirectorPage $page */
         $page = $this->data();
 
         // Redirect if we can
