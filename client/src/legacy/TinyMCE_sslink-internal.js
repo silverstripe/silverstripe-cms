@@ -1,4 +1,4 @@
-/* global tinymce, editorIdentifier, ss */
+/* global tinymce, ss */
 import i18n from 'i18n';
 import TinyMCEActionRegistrar from 'lib/TinyMCEActionRegistrar';
 import React from 'react';
@@ -12,21 +12,22 @@ import { provideInjector } from 'lib/Injector';
 
 const commandName = 'sslinkinternal';
 
-// Link to external url
-TinyMCEActionRegistrar
-  .addAction(
-    'sslink',
-    {
-      text: i18n._t('CMS.LINKLABEL_PAGE', 'Page on this site'),
-      onclick: (activeEditor) => activeEditor.execCommand(commandName),
-      priority: 90,
-    },
-    editorIdentifier,
-  )
-  .addCommandWithUrlTest(commandName, /^\[sitetree_link.+]$/);
-
 const plugin = {
   init(editor) {
+    // Add "Page on this site" to link menu for this editor
+    TinyMCEActionRegistrar
+      .addAction(
+        'sslink',
+        {
+          text: i18n._t('CMS.LINKLABEL_PAGE', 'Page on this site'),
+          onclick: (activeEditor) => activeEditor.execCommand(commandName),
+          priority: 90,
+        },
+        editor.settings.editorIdentifier,
+      )
+      .addCommandWithUrlTest(commandName, /^\[sitetree_link.+]$/);
+
+    // Add a command that corresponds with the above menu item
     editor.addCommand(commandName, () => {
       const field = jQuery(`#${editor.id}`).entwine('ss');
 
