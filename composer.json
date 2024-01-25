@@ -20,7 +20,7 @@
     ],
     "require": {
         "php": "^8.1",
-        "silverstripe/admin": "^2",
+        "silverstripe/admin": "^2.1.11",
         "silverstripe/campaign-admin": "^2",
         "silverstripe/framework": "^5.1",
         "silverstripe/reports": "^5",
