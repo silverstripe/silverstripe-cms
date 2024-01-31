@@ -1,4 +1,4 @@
-/* global tinymce, editorIdentifier, ss */
+/* global tinymce, ss */
 import i18n from 'i18n';
 import TinyMCEActionRegistrar from 'lib/TinyMCEActionRegistrar';
 import React from 'react';
@@ -13,21 +13,22 @@ import { updatedCurrentField } from '../state/anchorSelector/AnchorSelectorActio
 
 const commandName = 'sslinkanchor';
 
-// Link to external url
-TinyMCEActionRegistrar
-  .addAction(
-    'sslink',
-    {
-      text: i18n._t('CMS.LINKLABEL_ANCHOR', 'Anchor on a page'),
-      onAction: (activeEditor) => activeEditor.execCommand(commandName),
-      priority: 60,
-    },
-    editorIdentifier,
-  )
-  .addCommandWithUrlTest(commandName, /^\[sitetree_link.+]#[^#\]]+$/);
-
 const plugin = {
   init(editor) {
+    // Add "Anchor on a page" to link menu for this editor
+    TinyMCEActionRegistrar
+    .addAction(
+      'sslink',
+      {
+        text: i18n._t('CMS.LINKLABEL_ANCHOR', 'Anchor on a page'),
+        onAction: (activeEditor) => activeEditor.execCommand(commandName),
+        priority: 60,
+      },
+      editor.getParam('editorIdentifier'),
+    )
+    .addCommandWithUrlTest(commandName, /^\[sitetree_link.+]#[^#\]]+$/);
+
+    // Add a command that corresponds with the above menu item
     editor.addCommand(commandName, () => {
       const field = jQuery(`#${editor.id}`).entwine('ss');
       // Get the anchors in the current field and save them as props for AnchorSelectorField
