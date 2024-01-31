@@ -110,7 +110,6 @@ use SilverStripe\View\SSViewer;
  * @mixin FileLinkTracking Added via filetracking.yml in silverstripe/assets
  * @mixin InheritedPermissionsExtension
  * @method HasManyList<SiteTreeLink> BackLinks()
- * @method HasManyList<VirtualPage> VirtualPages()
  */
 class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvider, CMSPreviewable, Resettable, Flushable, MemberCacheFlusher
 {
