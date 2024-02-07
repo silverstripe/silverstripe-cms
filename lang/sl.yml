@@ -70,7 +70,7 @@ sl:
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Dodaj stran'
     ParentMode_child: 'Nivo nižje'
-    ParentMode_top: 'Stran na prvem nivoju'
+    ParentMode_top: 'Stran na vrhnjem nivoju'
     Title: 'Dodaj stran'
   SilverStripe\CMS\Controllers\CMSPageEditController:
     ErrorItemPermissionDenied: 'Nimate potrebnih pravic, da bi lahko dodali {ObjectTitle} v kampanjo.'
@@ -166,17 +166,22 @@ sl:
       two: '{count} izvorni strani'
     REDIRECTTO: 'Preusmeri na'
     REDIRECTTOEXTERNAL: 'Druga spletna stran'
+    REDIRECTTOFILE: 'Datoteka z vašega spletišča'
     REDIRECTTOPAGE: 'Stran na tvojem spletnem mestu'
     SINGULARNAME: 'Preusmeritvena stran'
     YOURPAGE: 'Stran na tvojem spletnem mestu'
+    db_ExternalURL: 'Zunanja povezava'
+    db_RedirectionType: 'Tip preusmeritve'
     has_one_LinkTo: 'Poveži na'
+    has_one_LinkToFile: 'Povezava do datoteke'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Nastavljena preusmeritev še nima določenega cilja.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Vsakdo
     ACCESSHEADER: 'Kdo lahko vidi to stran?'
     ACCESSLOGGEDIN: 'Prijavljeni uporabniki'
-    ACCESSONLYTHESE: 'Samo ti uporabniki (izberite jih s seznama)'
+    ACCESSONLYMEMBERS: 'Izbrani uporabniki (izberite s seznama)'
+    ACCESSONLYTHESE: 'Izbrane skupine (izberite s seznama)'
     ADDEDTODRAFTHELP: 'Stran še ni bila objavljena'
     ADDEDTODRAFTSHORT: Osnutek
     APPEARSVIRTUALPAGES: 'Vsebina je uporabljena na navideznih straneh iz razdelka {title}.'
@@ -203,6 +208,7 @@ sl:
     DependtPageColumnLinkType: 'Tip povezave'
     EDITHEADER: 'Kdo lahko ureja to stran?'
     EDITORGROUPS: 'Skupine urednikov'
+    EDITORMEMBERS: Uredniki
     EDITOR_GROUPS_FIELD_DESC: 'Skupine s splošno pravico za urejanje vsebine: {groupList}'
     EDIT_ALL_DESCRIPTION: 'Urejanje poljubne strani'
     EDIT_ALL_HELP: 'Možnost urejanja katerekoli strani na spletnem mestu, ne glede na nastavitve v sklopu "Dostop". Zahteva dovoljenje za dostop do vsebine spletnega mesta.'
@@ -211,6 +217,7 @@ sl:
     HTMLEDITORTITLE: Vsebina
     INHERIT: 'Privzemi od nadrejene strani'
     INHERITSITECONFIG: 'Privzemi iz nastavitev spletišča'
+    InvalidExtraMeta: 'Prilagojene meta oznake ne uporabljajo pravilne kode HTML'
     LASTPUBLISHED: 'Nazadnje objavljeno'
     LASTSAVED: 'Nazadnje shranjeno'
     LASTUPDATED: 'Nazadnje urejeno'
@@ -234,9 +241,9 @@ sl:
     PAGETITLE: 'Naslov strani'
     PAGETYPE: 'Tip strani'
     PARENTID: 'Nadrejena stran'
-    PARENTTYPE: 'Lokacija strani'
-    PARENTTYPE_ROOT: 'Stran na prvem nivoju'
-    PARENTTYPE_SUBPAGE: 'Podstran (izberite nadrejeno stran spodaj)'
+    PARENTTYPE: Umestitev
+    PARENTTYPE_ROOT: 'Stran na vrhnjem nivoju'
+    PARENTTYPE_SUBPAGE: 'Podstran (izberite nadrejeno stran)'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Upravljaj s pravicami za dostop do vsebine'
     PERMISSION_GRANTACCESS_HELP: 'Dovoli nastavitve pravic za dostop do izbrane strani v sklopu "Strani".'
     PLURALNAME: Strani
@@ -250,17 +257,18 @@ sl:
     REMOVE_INSTALL_WARNING: 'Pozor: Zaradi varnosti priporočamo, da odstranite install.php it te SilverStripe namestitve.'
     REORGANISE_DESCRIPTION: 'Spremeni strukturo spletnega mesta'
     REORGANISE_HELP: 'Razvrsti strani v drevesni strukturi s funkcijo "povleci in izpusti".'
-    SHOWINMENUS: 'Prikaži v navigaciji'
-    SHOWINSEARCH: 'Prikaži v iskalnikih'
+    SHOWINMENUS: 'Izpiši v navigaciji'
+    SHOWINSEARCH: 'Izpiši med rezultati iskanja'
     SINGULARNAME: Stran
     TABBEHAVIOUR: Obnašanje
     TABCONTENT: 'Osrednja vsebina'
     TABDEPENDENT: 'Odvisne strani'
-    TOPLEVEL: 'Vsebina Strani (Zgornja Stopnja)'
+    TOPLEVEL: 'Vsebina spletišča (vrhnji nivo)'
     UNTITLED: '{pagetype} brez naslova'
     URLSegment: 'Naslov URL'
     UntitledDependentObject: '{instanceType} brez naslova'
-    VIEWERGROUPS: 'Skupine obiskovalcev'
+    VIEWERGROUPS: 'Skupine ogledovalcev'
+    VIEWERMEMBERS: Ogledovalci
     VIEWER_GROUPS_FIELD_DESC: 'Skupine s splošno pravico za ogled vsebine: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Ogled vsake strani'
     VIEW_ALL_HELP: 'Možnost ogleda katere koli strani ne glede na to, kako so nastavljene pravice za ogled strani v sklopu ''Dostop''. Predpogoj je pravica za dostop do razdelka "Seznam strani".'
@@ -271,13 +279,49 @@ sl:
     VIRTUALPAGEWARNINGSETTINGS: 'Najprej v glavnih vsebinskih poljih izberite povezano stran, potem boste lahko objavili stran.'
     Viewers: 'Skupine obiskovalcev (viewers)'
     Visibility: Vidnost
+    belongs_many_many_ContentReviewGroups: 'Skupine redaktorjev'
+    belongs_many_many_ContentReviewUsers: Redaktorji
+    belongs_many_many_RelationFieldsTestPages: 'Stran za preizkus relacij'
+    db_CanEditType: 'Lahko ureja'
+    db_CanViewType: 'Lahko ogleduje'
     db_Content: Vsebina
-    db_Title: Naziv
+    db_ContentReviewType: 'Lahko redagira'
+    db_ExtraMeta: 'Dodatne meta oznake'
+    db_HasBrokenFile: 'Vsebuje nedelujočo datoteko'
+    db_HasBrokenLink: 'Vsebuje nedelujočo povezavo'
+    db_LastEditedByName: 'Zadnje urejanje (poimensko)'
+    db_MenuTitle: 'Naslov v navigaciji'
+    db_MetaDescription: 'Meta opis'
+    db_NextReviewDate: 'Rok za naslednji pregled'
+    db_OwnerNames: 'Imena lastnikov'
+    db_PublicHistory: 'Javna zgodovina'
+    db_ReportClass: Poročilo
+    db_ReviewPeriodDays: 'Interval za pregled v dnevih'
+    db_ShareTokenSalt: 'Sol za ključe za dostop'
+    db_ShowInMenus: 'Izpiši v navigaciji'
+    db_ShowInSearch: 'Izpiši med rezultati iskanja'
+    db_ShowPageUtilities: 'Prikaži uporabo strani'
+    db_Sort: Razvrščanje
+    db_Title: Naslov
     db_URLSegment: 'Naslov URL'
+    db_Version: Verzija
+    has_many_BackLinks: 'Povratne povezave'
+    has_many_ReviewLogs: 'Dnevnik pregledov'
+    has_many_ShareTokens: 'Ključi za dostop'
+    has_many_VirtualPages: 'Navidezne strani'
     has_one_Parent: 'Nadrejena stran'
-    many_many_BackLinkTracking: 'Spremljanje povezav "nazaj"'
+    has_one_RelationFieldsTestPage: 'Stran za preizkus relacij'
+    has_one_Subsite: Podspletišče
+    has_one_WorkflowDefinition: 'Definicija uredniškega procesa'
+    many_many_AdditionalWorkflowDefinitions: 'Dodatne definicije uredniških procesov'
+    many_many_BackLinkTracking: 'Spremljanje povratnih povezav'
+    many_many_CrossSubsiteLinkTracking: 'Spremljanje povezav med podspletišči'
+    many_many_EditorGroups: 'Skupine urednikov'
+    many_many_EditorMembers: Uredniki
     many_many_ImageTracking: 'Spremljanje slik'
     many_many_LinkTracking: 'Spremljanje povezav'
+    many_many_ViewerGroups: 'Skupine ogledovalcev'
+    many_many_ViewerMembers: Ogledovalci
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Tip
@@ -292,6 +336,10 @@ sl:
       other: '{count} povezav v strukturi'
       two: '{count} povezavi v strukturi'
     SINGULARNAME: 'Povezava v strukturi'
+    has_one_Linked: Povezano
+    has_one_Parent: 'Nadrejeno pravilo'
+  SilverStripe\CMS\Model\SiteTreeLinkTracking:
+    many_many_LinkTracking: 'Spremljanje povezav'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Povezana stran'
     DESCRIPTION: 'Prikaže vsebino, ki je vnesena na drugi strani'
@@ -305,7 +353,9 @@ sl:
       other: '{count}  izvornih strani'
       two: '{count} izvorni strani'
     PageTypNotAllowedOnRoot: 'Tipa izvorne strani ({type}), ki je osnova za to virtualno stran, ni dovoljeno umestiti na korenskem nivoju'
-    SINGULARNAME: 'Virtualna stran'
+    SINGULARNAME: 'Navidezna stran'
+    db_VersionID: Različica
+    has_one_CopyContentFrom: 'Kopiraj vsebino iz'
   SilverStripe\CMS\Reports\BrokenFilesReport:
     BROKENFILES: 'Strani z nedelujočimi datotekami'
     BrokenLinksGroupTitle: 'Poročila o nedelujočih povezavah'

@@ -8,17 +8,17 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
   ss.i18n.addDictionary('nl', {
     "CMS.ALERTCLASSNAME": "Het paginatype wordt aangepast na het opslaan van de pagina",
     "CMS.AddSubPage": "Voeg nieuwe pagina toe",
-    "CMS.ConfirmRestoreFromLive": "Weet u zeker dat u terug wil naar de laatst gepubliceerde versie van deze pagina?",
+    "CMS.ConfirmRestoreFromLive": "Weet je zeker dat je terug wil naar de laatst gepubliceerde versie van deze pagina?",
     "CMS.Duplicate": "Dupliceren",
     "CMS.EditPage": "Aanpassen",
     "CMS.ONLYSELECTTWO": "Er kunnen maar 2 pagina's tegelijk worden vergeleken.",
-    "CMS.Restore": "Weet u zeker dat deze pagina hersteld moet worden?",
-    "CMS.RestoreToRoot": "Weet u zeker dat deze pagina hersteld moet worden?\n\nDe bovenliggende pagina bestaat niet meer, waardoor deze pagina op het hoofdniveau terecht komt.",
-    "CMS.RollbackToVersion": "Wilt u terugdraaien naar versie #%s van deze pagina?",
+    "CMS.Restore": "Weet je zeker dat deze pagina hersteld moet worden?",
+    "CMS.RestoreToRoot": "Weet je zeker dat deze pagina hersteld moet worden?\n\nDe bovenliggende pagina bestaat niet meer, waardoor deze pagina op het hoofdniveau terecht komt.",
+    "CMS.RollbackToVersion": "Wil je teruggaan naar versie #%s van deze pagina?",
     "CMS.ShowAsList": "Toon onderliggende pagina's als lijst",
     "CMS.ThisPageAndSubpages": "Deze pagina en subpagina's",
     "CMS.ThisPageOnly": "Enkel deze pagina",
-    "CMS.Unpublish": "Weet u zeker dat deze pagina verwijderd moet worden?\n\nDe pagina blijft wel als concept opgeslagen.",
+    "CMS.Unpublish": "Weet je zeker dat deze pagina verwijderd moet worden?\n\nDe pagina blijft wel als concept beschikbaar.",
     "CMS.UpdateURL": "URL aanpassen",
     "CMS.ViewPage": "Bekijk"
 });

@@ -37,9 +37,11 @@ sk:
     PAGESALLOPT: 'Všetky stránky'
     PAGETYPEANYOPT: Akákoľvek
     PAGETYPEOPT: 'Typ stránky'
+    PAGETYPE_TITLE: '(Typ stránky: {type}) {title}'
     PLEASESAVE: 'Prosím uložte stránku: Táto stránka nemôže byť aktualizovaná, lebo ešte nebola uložená.'
     PUBALLCONFIRM: 'Prosím, zverejnite všetky stránky webu, zkopírovaním obsahu na verejné'
     PUBALLFUN: 'Funkcia "Publikovať všetko"'
+    PUBALLFUN2: 'Stlačením tohto tlačidla sa vykoná ekvivalent prechodu na každú stránku a stlačenie tlačidla "publikovať". Je to určené na použitie po rozsiahlych úpravách obsahu, napríklad pri prvom spustení stránky. V prípade veľkých webových stránok sa táto úloha nemusí podariť dokončiť. V tomto prípade vám odporúčame porozprávať sa s vašimi vývojármi a vytvoriť vlastnú úlohu'
     PUBLISHED: 'Uverejnené "{title}" úspešne.'
     PUBPAGES: 'Hotovo: Publikované {count} stránky'
     PageAdded: 'Stránka vytvorená úspešne'
@@ -56,6 +58,7 @@ sk:
     ROLLEDBACKVERSIONv2: 'Vrátené späť na verziu #{version}.'
     SAVED: 'Uložené ''{title}'' úspešne.'
     SAVEDRAFT: Uložiť
+    SEARCHRESULTS: 'Výsledky vyhľadávania'
     SHOW_AS_LIST: 'ukázať ako zoznam'
     TOO_MANY_PAGES: 'Príliš veľa stránok'
     TabContent: Obsah
@@ -80,6 +83,7 @@ sk:
     MENUTITLE: História
     MULTISELECT: 'Dávkové akcie'
     NOTPUBLISHED: Nepublikované
+    NO_PREVIEW: 'Žiaden náhľad k dispozícii'
     PREVIEW: 'Náhľad webu'
     PUBLISHER: Vydavateľ
     REVERTTOTHISVERSION: 'Vrátiť sa k tejto verzii'
@@ -140,8 +144,12 @@ sk:
     ANCHORVALUE: Kotva
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Popis odkazu'
+    LINKOPENNEWWIN: 'Otvoriť v novom okne/záložke'
+    LINKTEXT: 'Text odkazu'
+    SELECT_PAGE: 'Vyberte stránku'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Zrušiť
+    EMPTY: 'Zadajte prosím URL segment alebo kliknite zrušiť'
     Edit: Editovať
     HelpChars: 'Špeciálne znaky sú automaticky zkonvertované alebo ostránené.'
     OK: OK
@@ -151,18 +159,28 @@ sk:
     HEADER: 'Táto stránka presmeruje používateľov na inú stránku'
     OTHERURL: 'Iné web URL.'
     PLURALNAME: 'Základné stránky'
+    PLURALS:
+      few: '{count} Základné stránky'
+      many: '{count} Základných stránok'
+      one: 'Presmerovacia stránka'
+      other: '{count} Základných stránok'
     REDIRECTTO: 'Presmerovať na'
     REDIRECTTOEXTERNAL: 'Iná web stránka'
+    REDIRECTTOFILE: 'Súbor na vašom webe'
     REDIRECTTOPAGE: 'Stránka na vašom webe'
     SINGULARNAME: 'Presmerovacia stránka'
     YOURPAGE: 'Stránka na vašom webe'
+    db_ExternalURL: 'Externá URL'
+    db_RedirectionType: 'Typ presmerovania'
     has_one_LinkTo: 'Odkaz na'
+    has_one_LinkToFile: 'Odkaz na súbor'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Stránka na presmerovanie bola nastavená bez cieľa.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Ktokoľvek
     ACCESSHEADER: 'Kto môže prezerať túto stránku?'
     ACCESSLOGGEDIN: 'Prihlásení používatelia'
+    ACCESSONLYMEMBERS: 'Iba títo používatelia (vyberte zo zoznamu)'
     ACCESSONLYTHESE: 'Iba títo ľudia (vyberte zo zoznamu)'
     ADDEDTODRAFTHELP: 'Stránka ešte nebola zverejnená'
     ADDEDTODRAFTSHORT: Koncept
@@ -190,12 +208,16 @@ sk:
     DependtPageColumnLinkType: 'Typ odkazu'
     EDITHEADER: 'Kto môže editovať túto stránku?'
     EDITORGROUPS: 'Skupiny upravovateľov'
+    EDITORMEMBERS: Upravovatelia
+    EDITOR_GROUPS_FIELD_DESC: 'Skupiny s globálnymi právami na úpravy: {groupList}'
     EDIT_ALL_DESCRIPTION: 'Upraviť akúkoľvek stránku'
     EDIT_ALL_HELP: 'Schopnosť upravovať ktorúkoľvek stránku na webe, nedbajúc na nastavenia v záložke prístupov. Vyžaduje "Prístup k ''Stránkam'' sekcia" povolenie'
     Editors: 'Skupiny upravovateľov'
     HASBROKENLINKS: 'Táto stránka obsahuje nefunkčné odkazy.'
     HTMLEDITORTITLE: Obsah
     INHERIT: 'Dediť od nadradenej stránky'
+    INHERITSITECONFIG: 'Zdediť z nastavení prístupu na stránku'
+    InvalidExtraMeta: 'Vlastné metaznačky neobsahujú platný kód HTML'
     LASTPUBLISHED: 'Posledne zverejnené'
     LASTSAVED: 'Posledne uložené'
     LASTUPDATED: 'Posledne aktualizované'
@@ -206,6 +228,7 @@ sk:
     METADESC: 'Meta Popis'
     METADESCHELP: 'Vyhľadávače používajú tento obsah pre zobrazovanie výsledkov vyhľadávania (aj keď to nebude mať vplyv na ich hodnotenie).'
     METAEXTRA: 'Vlastné Meta Tagy'
+    METAEXTRAHELP: 'HTML tagy pre ďalšie meta informácie. Napríklad <meta name="customName" content="your custom content here">'
     MODIFIEDONDRAFTHELP: 'Stránka má nezverejnené zmeny'
     MODIFIEDONDRAFTSHORT: Zmenené
     MetadataToggle: Metaúdaje
@@ -224,6 +247,11 @@ sk:
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Spravovať prístupové práva pre obsah'
     PERMISSION_GRANTACCESS_HELP: 'Povoliť nastavenie obmedzenia pre stránku v sekcií "Stránky".'
     PLURALNAME: Stránky
+    PLURALS:
+      few: '{count} Stránky'
+      many: '{count} Stránok'
+      one: Stránka
+      other: '{count} Stránok'
     PageTypNotAllowedOnRoot: 'Stránka typu "{type}" nie je povolená na najvyššej úrovni'
     PageTypeNotAllowed: 'Stránka typu "{type}" nie je povolená ako potomok nadradenej stránky'
     REMOVE_INSTALL_WARNING: 'Upozornenie: Z bezpečnostných dôvodov odstránte súbor install.php z SilverStripe inštalácie.'
@@ -233,9 +261,15 @@ sk:
     SHOWINSEARCH: 'Zobraziť v hľadaní?'
     SINGULARNAME: Stránka
     TABBEHAVIOUR: Správanie
+    TABCONTENT: 'Hlavný obsah'
     TABDEPENDENT: 'Závislé stránky'
     TOPLEVEL: 'Obsah Webu (Najvyššia úroveň)'
+    UNTITLED: 'Bez názvu {pagetype}'
+    URLSegment: 'Časť URL'
+    UntitledDependentObject: 'Bez názvu {instanceType}'
     VIEWERGROUPS: 'Skupiny prezeračov'
+    VIEWERMEMBERS: Prezerači
+    VIEWER_GROUPS_FIELD_DESC: 'Skupiny s globálnymi právami na zobrazenie: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Prezerať akúkoľvek stránku'
     VIEW_ALL_HELP: 'Schopnosť zobrazovať ktorúkoľvek stránku na webe, nedbajúc na nastavenia v záložke prístupov. Vyžaduje povolenie "Prístup k sekcii ''Stránky''"'
     VIEW_DRAFT_CONTENT: 'Zobraziť obsah konceptu'
@@ -245,19 +279,67 @@ sk:
     VIRTUALPAGEWARNINGSETTINGS: 'Zvolte prosím odkazovanú stránku v poliach hlavného obsahu pre zverejnenie'
     Viewers: 'Skupiny prezeračov'
     Visibility: Viditeľnosť
+    belongs_many_many_ContentReviewGroups: 'Skupiny na kontrolu obsahu'
+    belongs_many_many_ContentReviewUsers: 'Používatelia na kontrolu obsahu'
+    belongs_many_many_RelationFieldsTestPages: 'Testovacie stránky pre polia vzťahov'
+    db_CanEditType: 'Môže upraviť typ'
+    db_CanViewType: 'Môže zobraziť typ'
     db_Content: Obsah
+    db_ContentReviewType: 'Typ kontroly obsahu'
+    db_ExtraMeta: 'Extra meta'
+    db_HasBrokenFile: 'Obsahuje porušený súbor'
+    db_HasBrokenLink: 'Obsahuje porušený odkaz'
+    db_LastEditedByName: 'Naposledy upravené podľa mena'
+    db_MenuTitle: 'Titulok menu'
+    db_MetaDescription: 'Meta popis'
+    db_NextReviewDate: 'Dátum ďalšej kontroly'
+    db_OwnerNames: 'Mená vlastníkov'
+    db_PublicHistory: 'Verejná história'
+    db_ReportClass: 'Trieda správy'
+    db_ReviewPeriodDays: 'Počet dní na kontrolu'
+    db_ShareTokenSalt: 'Zdielať soľ znaku'
+    db_ShowInMenus: 'Zobraziť v ponuke'
+    db_ShowInSearch: 'Zobraziť vo vyhľadávaní'
+    db_ShowPageUtilities: 'Zobraziť nástroje stránky'
     db_Sort: Usporiadanie
     db_Title: Názov
+    db_URLSegment: 'Časť URL'
+    db_Version: Verzia
+    has_many_BackLinks: 'Spätné odkazy'
+    has_many_ReviewLogs: 'Prezerať záznamy'
+    has_many_ShareTokens: 'Zdielať znaky'
+    has_many_VirtualPages: 'Virtuálne stránky'
     has_one_Parent: 'Nadradená stránka'
+    has_one_RelationFieldsTestPage: 'Testovacia stránka pre polia vzťahov'
+    has_one_Subsite: Podstránka
+    has_one_WorkflowDefinition: 'Definícia pracovného toku'
+    many_many_AdditionalWorkflowDefinitions: 'Ďalšie definície pracovného toku'
     many_many_BackLinkTracking: 'Záznamy o Backlinkoch'
+    many_many_CrossSubsiteLinkTracking: 'Sledovanie odkazov naprieč podstránkami'
+    many_many_EditorGroups: 'Skupiny upravovateľov'
+    many_many_EditorMembers: 'Členovia upravovateľov'
     many_many_ImageTracking: 'Záznamy o obrázkoch'
     many_many_LinkTracking: 'Záznamy o odkazoch'
+    many_many_ViewerGroups: 'Skupiny prezeračov'
+    many_many_ViewerMembers: 'Členovia prezeračov'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_INDEX: '#'
     TITLE_TYPE: Typ
     TITLE_USED_ON: 'Použité na'
+  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
+    USAGE: Použitie
   SilverStripe\CMS\Model\SiteTreeLink:
+    PLURALNAME: 'Odkazy na strom stránky'
+    PLURALS:
+      few: '{count} Odkazy na strom stránky'
+      many: '{count} Odkazov na strom stránky'
+      one: 'Odkaz na strom stránky'
+      other: '{count} Odkazov na strom stránky'
+    SINGULARNAME: 'Odkaz na strom stránky'
+    has_one_Linked: Prepojené
     has_one_Parent: 'Komentovaný príspevok'
+  SilverStripe\CMS\Model\SiteTreeLinkTracking:
+    many_many_LinkTracking: 'Záznamy o odkazoch'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Odkazovaná stránka'
     DESCRIPTION: 'Zobrazí obsah inej stránky'
@@ -265,8 +347,15 @@ sk:
     HEADER: 'Toto je virtuálna stránka'
     HEADERWITHLINK: 'Toto je virtuálna stránka, kopíruje sa obsah z "{title}" ({link})'
     PLURALNAME: 'Základné stránky'
+    PLURALS:
+      few: '{count} Základné stránky'
+      many: '{count} Základných stránok'
+      one: 'Virtuálna stránka'
+      other: '{count} Základných stránok'
     PageTypNotAllowedOnRoot: 'Pôvodná stránka typu "{type}" nie je povolená na najvyššej úrovni pre túto virtuálnu stránku'
     SINGULARNAME: 'Virtuálna stránka'
+    db_VersionID: 'ID verzie'
+    has_one_CopyContentFrom: 'Kopírovať obsah z'
   SilverStripe\CMS\Reports\BrokenFilesReport:
     BROKENFILES: 'Stránky s poškodenými súbormi'
     BrokenLinksGroupTitle: 'Výkazy porušených odkazov'
@@ -303,6 +392,7 @@ sk:
     ParameterLiveCheckbox: 'Skontrolovať publikovaný web'
   SilverStripe\CMS\Reports\EmptyPagesReport:
     ContentGroupTitle: 'Výkazy obsahu'
+    EMPTYPAGES: 'Stránky bez obsahu'
   SilverStripe\CMS\Reports\RecentlyEditedReport:
     ContentGroupTitle: 'Výkazy obsahu'
     LAST2WEEKS: 'Stránky upravené počas posledných 2 týždňov'
@@ -315,7 +405,7 @@ sk:
     SEARCH: Hľadať
     SearchResults: 'Výsledky vyhľadávania'
   SilverStripe\CMS\Tasks\RemoveOrphanedPagesTask:
-    BUTTONRUN: Bež
+    BUTTONRUN: Spustiť
     CHOOSEOPERATION: 'Vyberte operáciu:'
     DELETEWARNING: 'Upozornenie: Tieto operácie sú nezvratné. Prosím buďte opatrní.'
     HEADER: 'Odstrániť všetky osamotené stránky'
