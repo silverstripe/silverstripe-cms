@@ -96,7 +96,6 @@ sk:
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Upraviť stránku'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Filter
     ListView: 'Zobraziť zoznam'
     MENUTITLE: Stránky
     TreeView: 'Zobraziť strom'
@@ -117,7 +116,6 @@ sk:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Zobrazenie verzie'
     ARCHIVEDSITEFROM: 'Archivovaný web z'
-    CMS: CMS
     DRAFT: Koncept
     DRAFTSITE: 'Koncept webu'
     Email: E-mail
@@ -152,7 +150,6 @@ sk:
     EMPTY: 'Zadajte prosím URL segment alebo kliknite zrušiť'
     Edit: Editovať
     HelpChars: 'Špeciálne znaky sú automaticky zkonvertované alebo ostránené.'
-    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Presmeruje na internú stránku alebo na externé URL'
     FILE: Súbor
@@ -286,7 +283,6 @@ sk:
     db_CanViewType: 'Môže zobraziť typ'
     db_Content: Obsah
     db_ContentReviewType: 'Typ kontroly obsahu'
-    db_ExtraMeta: 'Extra meta'
     db_HasBrokenFile: 'Obsahuje porušený súbor'
     db_HasBrokenLink: 'Obsahuje porušený odkaz'
     db_LastEditedByName: 'Naposledy upravené podľa mena'
@@ -323,7 +319,6 @@ sk:
     many_many_ViewerGroups: 'Skupiny prezeračov'
     many_many_ViewerMembers: 'Členovia prezeračov'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
     TITLE_TYPE: Typ
     TITLE_USED_ON: 'Použité na'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
@@ -369,7 +364,6 @@ sk:
     ColumnDateLastModified: 'Dátum poslednej úpravy'
     ColumnDateLastPublished: 'Dátum poslednej publikácie'
     ColumnProblemType: 'Problémový typ'
-    ColumnURL: URL
     HasBrokenFile: 'obsahuje porušený súbor'
     HasBrokenLink: 'obsahuje porušený odkaz'
     HasBrokenLinkAndFile: 'obsahuje porušený odkaz a súbor'

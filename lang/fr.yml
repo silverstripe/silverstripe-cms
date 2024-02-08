@@ -14,7 +14,6 @@ fr:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: "Accès à la section «\_{title}\_»"
     ACCESS_HELP: 'Autoriser la visualisation de la section contenant l''arborescence et le contenu. Les autorisations de voir ou modifier le contenu peuvent être gérées dans les menus déroulants spécifiques à chaque page, ainsi que dans les "permissions de contenu".'
-    ARCHIVE: Archive
     ARCHIVEDPAGE: 'Page ''{title}'' archivée'
     AddNew: 'Ajouter une nouvelle page'
     AddNewButton: Ajouter
@@ -30,7 +29,6 @@ fr:
     Create: Créer
     DUPLICATED: '''{title}'' dupliqué avec succès'
     DUPLICATEDWITHCHILDREN: '''{title}'' et ses enfants dupliqués avec succès'
-    EMAIL: Email
     NEWPAGE: 'Nouveau {pagetype}'
     PAGENOTEXISTS: 'Cette page n''existe pas'
     PAGES: 'Statut de la page'
@@ -96,7 +94,6 @@ fr:
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filtrer
     ListView: 'Affichage en liste'
-    MENUTITLE: Pages
     TreeView: Arborescence
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Page modifiées'
@@ -115,10 +112,8 @@ fr:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Aperçu de cette version'
     ARCHIVEDSITEFROM: 'Site archivé depuis'
-    CMS: CMS
     DRAFT: Brouillon
     DRAFTSITE: 'Site Brouillon'
-    Email: Email
     INSTALL_SUCCESS: 'Installation terminée!'
     InstallFilesDeleted: 'Les fichiers d''installation ont été supprimés avec succès'
     InstallSecurityWarning: "Pour des raisons de sécurité vous devriez maintenant supprimer les fichiers d’installation, à moins que vous n’ayez prévu de réinstaller le système ultérieurement (<em>ce qui nécessite de se connecter comme administrateur, voir plus haut</em>). Désormais, votre serveur n’aura besoin de droits d'accès en écriture que pour le dossier «\_assets\_», vous pouvez donc les révoquer pour tous les autres dossiers. <a href=\"{link}\" style=\"text-align: center;\">Cliquez ici pour supprimer les fichiers d’installation.</a>"
@@ -150,13 +145,11 @@ fr:
     EMPTY: 'Entrez un segment d''URL ou cliquez sur annuler'
     Edit: Editer
     HelpChars: 'Les caractères spéciaux sont automatiquement convertis ou supprimés.'
-    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Redirige vers une page interne ou une URL externe'
     FILE: Fichier
     HEADER: 'Cette page va rediriger les utilisateurs vers une autre page'
     OTHERURL: 'URL d''un autre site web'
-    PLURALNAME: 'Base Pages'
     PLURALS:
       one: 'Une page de redirection'
       other: '{count} pages de redirection'
@@ -213,7 +206,6 @@ fr:
     LINKSALREADYUNIQUE: ' {url} est déjà unique'
     LINKSCHANGEDTO: '{url1} changée pour {url2}'
     MENUTITLE: 'Titre dans les menus'
-    METADESC: 'Meta Description'
     METADESCHELP: 'Les moteurs de recherche reprennent cette description dans leurs résultats (bien qu’elle n’ait pas d’influence sur le classement).'
     METAEXTRA: 'Balises Méta personnalisées'
     MODIFIEDONDRAFTHELP: 'Des changements effectués sur cette page n''''ont pas été publiés'
@@ -233,7 +225,6 @@ fr:
     PARENTTYPE_SUBPAGE: 'Sous-page d''une page parente (choisir en-dessous) '
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Gérer les droits d''accès au contenu'
     PERMISSION_GRANTACCESS_HELP: 'Autoriser le réglage de restrictions spécifiques dans la section "Pages".'
-    PLURALNAME: Pages
     PLURALS:
       many: '{count} pages'
       one: 'Une page'
@@ -245,7 +236,6 @@ fr:
     REORGANISE_HELP: 'Réorganiser les pages du site par glisser & déposer.'
     SHOWINMENUS: 'Afficher dans les menus ?'
     SHOWINSEARCH: 'Afficher dans les recherches ?'
-    SINGULARNAME: Page
     TABBEHAVIOUR: Comportement
     TABCONTENT: 'Contenu principal'
     TABDEPENDENT: 'Pages dépendantes'
@@ -267,28 +257,21 @@ fr:
     db_Sort: Tri
     db_Title: Titre
     db_URLSegment: 'Segment d''URL'
-    db_Version: Version
     has_one_Parent: 'Page parente'
     many_many_BackLinkTracking: 'Suivi des liens retour'
     many_many_ImageTracking: 'Suivi des images'
     many_many_LinkTracking: 'Suivi des Liens'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
-    TITLE_TYPE: Type
     TITLE_USED_ON: 'Utilisé dans'
-  SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
-    USAGE: Usage
   SilverStripe\CMS\Model\SiteTreeLink:
     PLURALNAME: 'Liens Site Tree'
     SINGULARNAME: 'Lien Site Tree'
-    has_one_Parent: Parent
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Page liée'
     DESCRIPTION: 'Affiche le contenu d''une autre page'
     EditLink: éditer
     HEADER: 'Ceci est une page virtuelle'
     HEADERWITHLINK: 'Ceci est une page virtuelle dupliquant le contenu de "{title}" ({link})'
-    PLURALNAME: 'Base Pages'
     PLURALS:
       one: 'Une page virtuelle'
       other: '{count} pages virtuelles'
@@ -307,7 +290,6 @@ fr:
     ColumnDateLastModified: 'Date de la dernière modification'
     ColumnDateLastPublished: 'Date de la dernière publication'
     ColumnProblemType: 'Type de problème'
-    ColumnURL: URL
     HasBrokenFile: 'comporte un fichier brisé'
     HasBrokenLink: 'comporte un lien brisé'
     HasBrokenLinkAndFile: 'comporte un lien et un fichier brisés'

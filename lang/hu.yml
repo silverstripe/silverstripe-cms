@@ -96,7 +96,6 @@ hu:
     Cancel: Mégsem
     Edit: Szerkeszt
     HelpChars: 'A speciális karakterek automatikusan konvertálódnak vagy törlődnek.'
-    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Fájl
     HEADER: 'Ez az oldal egy másik oldalra fogja írányítani a felhasználókat'

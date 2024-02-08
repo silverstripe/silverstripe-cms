@@ -25,8 +25,6 @@ az:
     ANCHORVALUE: Ankor
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Link təsviri'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Fayl
     HEADER: 'Bu səhifə istifadəçiləri başqa səhifəyə yönləndirəcək'

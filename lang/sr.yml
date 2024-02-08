@@ -77,7 +77,6 @@ sr:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Верзија за претходни преглед'
     ARCHIVEDSITEFROM: 'Архивирани сајт из'
-    CMS: CMS
     DRAFT: Нацрт
     DRAFTSITE: 'Нарцт сајта'
     Email: Е-пошта
@@ -226,7 +225,6 @@ sr:
     ColumnDateLastModified: 'Датум последње измене'
     ColumnDateLastPublished: 'Датум последњег публиковања'
     ColumnProblemType: 'Тип проблема'
-    ColumnURL: URL
     HasBrokenFile: 'садржи оштећену датотеку'
     HasBrokenLink: 'садржи оштећен линк'
     HasBrokenLinkAndFile: 'садржи оштећене линк и датотеку'

@@ -41,8 +41,6 @@ es_AR:
     ANCHORVALUE: Anclar
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Descripción del enlace'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Archivo
     HEADER: 'Esta página dirigirá al usuarios a otra página'

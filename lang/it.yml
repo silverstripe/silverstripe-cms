@@ -30,7 +30,6 @@ it:
     Create: Crea
     DUPLICATED: '''{title}'' duplicato correttamente'
     DUPLICATEDWITHCHILDREN: '''{title}'' e figlie duplicate con successo'
-    EMAIL: Email
     NEWPAGE: 'Nuova {pagetype}'
     PAGENOTEXISTS: 'Questa pagina non esiste'
     PAGES: 'Stato pagina'
@@ -117,10 +116,8 @@ it:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Anteprima versione'
     ARCHIVEDSITEFROM: 'Sito archiviato da'
-    CMS: CMS
     DRAFT: Bozza
     DRAFTSITE: 'Sito Bozza'
-    Email: Email
     INSTALL_SUCCESS: 'Installazione conclusa con successo!'
     InstallFilesDeleted: 'I file di installazione sono stati eliminati con successo.'
     InstallSecurityWarning: 'Ora per motivi di sicurezza devi eliminare i file di installazione, a meno di non aver pianificato una nuova installazione (<em>richiede accesso da amministratore, vedi sopra</em>). Inoltre il server web richiede permessi di scrittura per la sola cartella "assets", puoi quindi rimuovere i permessi di scrittura da tutte le altre cartelle. <a href="{link}" style="text-align: center;">Clicca qui per cancellare i file di installazione.</a>'
@@ -132,7 +129,6 @@ it:
     NOTLOGGEDIN: 'Non connesso'
     PUBLISHED: Pubblicato
     PUBLISHEDSITE: 'Sito pubblicato'
-    Password: Password
     PostInstallTutorialIntro: 'Questo sito web è una versione semplificata di un sito SilverStripe 3. Per estenderlo, dai un''occhiata a {link}.'
     StartEditing: 'Puoi iniziare a modificare i contenuti del sito aprendo <a href="{link}">il CMS</a>.'
     UNVERSIONEDPREVIEW: Anteprima
@@ -152,10 +148,8 @@ it:
     EMPTY: 'Inserire un segmento URL o cliccare annulla'
     Edit: Modifica
     HelpChars: 'I caratteri speciali sono automaticamente convertiti o eliminati.'
-    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Reinoltra ad una pagina interna o una URL esterna'
-    FILE: File
     HEADER: 'Questa pagina redirigerà gli utenti su un''altra'
     OTHERURL: 'Altro indirizzo del sito web'
     PLURALNAME: 'Pagine Base'
@@ -197,7 +191,6 @@ it:
     DEFAULTCONTACTCONTENT: '<p>Puoi riempire questa pagina con i tuoi contenuti, oppure cancellarla e creare le tue pagine.</p>'
     DEFAULTCONTACTTITLE: Contattaci
     DEFAULTHOMECONTENT: '<p>Benvenuto in SilverStripe! Questa è la home page di default. Puoi modificare questa pagina direttamente <a href="admin/">dal CMS</a>.</p><p>Puoi accedere alla <a href="http://docs.silverstripe.org">documentazione per gli sviluppatori</a> o partire dalle <a href="http://www.silverstripe.org/learn/lessons">lezioni di SilverStripe</a>.</p>'
-    DEFAULTHOMETITLE: Home
     DEPENDENT_NOTE: 'Le seguenti pagine dipendono da questa pagina. Queste includono pagine virtuali, pagine di redirezione e pagine con link nel contenuto.'
     DESCRIPTION: 'Pagina di contenuto generico'
     DependtPageColumnLinkType: 'Tipo di link'
@@ -280,7 +273,6 @@ it:
     many_many_ImageTracking: 'Monitoraggio immagine'
     many_many_LinkTracking: 'Monitoraggio link'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Usato in'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
@@ -319,7 +311,6 @@ it:
     ColumnDateLastModified: 'Data ultima modifica'
     ColumnDateLastPublished: 'Data ultima pubblicazione'
     ColumnProblemType: 'Tipo problema'
-    ColumnURL: URL
     HasBrokenFile: 'ha un file non funzionante'
     HasBrokenLink: 'ha un link non funzionante'
     HasBrokenLinkAndFile: 'ha link e file non funzionanti'

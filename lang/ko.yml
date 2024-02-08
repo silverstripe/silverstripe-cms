@@ -74,7 +74,6 @@ ko:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: '미리보기 버젼'
     ARCHIVEDSITEFROM: '로부터 보관된 사이트'
-    CMS: CMS
     DRAFT: 초안
     DRAFTSITE: '초안 사이트'
     Email: 이메일
@@ -101,7 +100,6 @@ ko:
     Cancel: 취소
     Edit: 편집
     HelpChars: '특수 문자는 자동으로 변환되었는지 제거되었습니다'
-    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: '이 페이지는 다른 페이지로 사용자들을 이동시킵니다.'
     OTHERURL: '다른 웹사이트 URL'
@@ -217,7 +215,6 @@ ko:
     ColumnDateLastModified: '최종 수정일'
     ColumnDateLastPublished: '최종 게시일'
     ColumnProblemType: '문제 유형'
-    ColumnURL: URL
     HasBrokenFile: '깨진 파일이 있습니다'
     HasBrokenLink: '링크가 손상되었습니다'
     HasBrokenLinkAndFile: '손상된 링크와 파일이 있습니다'

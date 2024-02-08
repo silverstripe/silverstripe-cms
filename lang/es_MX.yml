@@ -30,7 +30,6 @@ es_MX:
     Create: Crear
     DUPLICATED: '''{title}'' se ha duplicado con éxito'
     DUPLICATEDWITHCHILDREN: '''{title}'' y sub páginas se han duplicado con éxito'
-    EMAIL: Email
     NEWPAGE: 'Nueva {pagetype}'
     PAGENOTEXISTS: 'Esta página no existe'
     PAGES: 'Estado de página'
@@ -112,10 +111,8 @@ es_MX:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Versión de vista previa'
     ARCHIVEDSITEFROM: 'Sito archivado de'
-    CMS: CMS
     DRAFT: Borrador
     DRAFTSITE: 'Proyecto del Sitio'
-    Email: Email
     INSTALL_SUCCESS: 'Instalación exitosa!'
     InstallFilesDeleted: 'Los archivos de instalación han sido eliminados con éxito.'
     InstallSecurityWarning: 'Por razones de seguridad debes eliminar los archivos de instalación, a menos que tengas planeado reinstalar luego (<em>requiere ingresar como administrador</em>). Además, el servidor web ahora solo requiere permisos de escritura sobre el directorio "assets", puedes remover el acceso de escritura a los demás directorios. <a href="{link}" style="text-align: center;">Haz click aquí para eliminar los archivos de instalación.</a>'
@@ -146,7 +143,6 @@ es_MX:
     Cancel: Cancelar
     Edit: Editar
     HelpChars: 'Carácteres especiales son automáticamente convertidos o eliminados.'
-    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Redirecciona a una página interna o a una URL externa'
     FILE: Archivo
@@ -237,7 +233,6 @@ es_MX:
     many_many_ImageTracking: 'Seguir la Imagen'
     many_many_LinkTracking: 'Seguir el Enlace'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Usado en'
   SilverStripe\CMS\Model\VirtualPage:
@@ -263,7 +258,6 @@ es_MX:
     ColumnDateLastModified: 'Fecha de última modificación'
     ColumnDateLastPublished: 'Fecha de última publicación'
     ColumnProblemType: 'Tipo de problema'
-    ColumnURL: URL
     HasBrokenFile: 'tiene un archivo defectuoso'
     HasBrokenLink: 'tiene un enlace roto'
     HasBrokenLinkAndFile: 'tiene un enlace roto y un archivo defectuoso'
