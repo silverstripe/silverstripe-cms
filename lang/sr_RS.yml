@@ -4,7 +4,6 @@ sr_RS:
     CANT_REORGANISE: 'Немате право да мењате странице вршног нивоа. Ваше измене нису сачуване.'
     Cancel: Одустани
     Create: Креирај
-    EMAIL: Email
     PAGETYPEANYOPT: 'Било који'
     PLEASESAVE: 'Сачувајте страну: ова страна не може да буде ажурирана јер још увек није сачувана.'
     REORGANISATIONSUCCESSFUL: 'Стабло сајта је успешно реорганизовано.'
@@ -16,13 +15,11 @@ sr_RS:
     MENUTITLE: 'Измени страницу'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     UNKNOWN: Непознато
-    WHEN: When
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Измени страницу'
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Филтер
   SilverStripe\CMS\Controllers\ContentController:
-    Email: Email
     LOGOUT: 'Одјави се'
     NOTLOGGEDIN: 'Нисте пријављени'
     Password: Лозинка
@@ -51,9 +48,7 @@ sr_RS:
     PLURALNAME: 'User Defined Forms'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: 'Било који'
-    ColumnURL: URL
   SilverStripe\CMS\Search\SearchForm:
-    FILTERDATEFROM: From
     FILTERLABELTEXT: Претрага
     GO: Иди
     SEARCH: Претрага

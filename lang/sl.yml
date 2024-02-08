@@ -96,7 +96,6 @@ sl:
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Uredi stran'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Filter
     ListView: Seznam
     MENUTITLE: 'Seznam strani'
     TreeView: Drevo
@@ -117,7 +116,6 @@ sl:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Predogled različice'
     ARCHIVEDSITEFROM: 'Arhivirana različica iz'
-    CMS: CMS
     DRAFT: Osnutek
     DRAFTSITE: 'Osnutek spletnega mesta'
     Email: E-pošta
@@ -323,7 +321,6 @@ sl:
     many_many_ViewerGroups: 'Skupine ogledovalcev'
     many_many_ViewerMembers: Ogledovalci
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
     TITLE_TYPE: Tip
     TITLE_USED_ON: 'Uporabljena na'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
@@ -369,7 +366,6 @@ sl:
     ColumnDateLastModified: 'Datum zadnje spremembe'
     ColumnDateLastPublished: 'Datum zadnje objave'
     ColumnProblemType: 'Vrsta težave'
-    ColumnURL: URL
     HasBrokenFile: 'vsebuje datoteko z napako'
     HasBrokenLink: 'ima nedelujočo povezavo'
     HasBrokenLinkAndFile: 'ima nedelujočo povezavo in vsebuje datoteko z napako'

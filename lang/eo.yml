@@ -117,7 +117,6 @@ eo:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Antaŭvida versio'
     ARCHIVEDSITEFROM: 'Enarkivigita retejo el'
-    CMS: CMS
     DRAFT: Malneta
     DRAFTSITE: 'Malneta retejo'
     Email: Retpoŝto
@@ -319,7 +318,6 @@ eo:
     many_many_ViewerGroups: 'Grupoj de vidantoj'
     many_many_ViewerMembers: 'Vidantaj membroj'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Uzita je'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
@@ -361,7 +359,6 @@ eo:
     ColumnDateLastModified: 'Dato de lasta modifo'
     ColumnDateLastPublished: 'Dato de lasta publikigo'
     ColumnProblemType: Problemtipo
-    ColumnURL: URL
     HasBrokenFile: 'havas rompitan dosieron'
     HasBrokenLink: 'havas rompitan ligilon'
     HasBrokenLinkAndFile: 'havas rompitan ligilon kaj dosieron'

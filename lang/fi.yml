@@ -115,7 +115,6 @@ fi:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Esikatselu versio'
     ARCHIVEDSITEFROM: 'Arkistoitu sivusto lähteestä:'
-    CMS: CMS
     DRAFT: Luonnos
     DRAFTSITE: Luonnossivusto
     Email: Sähköposti
@@ -150,7 +149,6 @@ fi:
     EMPTY: 'Ole hyvä ja anna URL-osoitteen osio tai napsauta Peruuta'
     Edit: Muokkaa
     HelpChars: 'Erikoismerkit muunnetaan tai poistetaan automaattisesti.'
-    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Edelleenohjaa toiselle sisäiselle sivulle tai ulkoiseen URL-osoitteeseen'
     FILE: Tiedosto
@@ -274,7 +272,6 @@ fi:
     many_many_ImageTracking: 'Kuvan seuranta'
     many_many_LinkTracking: 'Linkin seuranta'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
     TITLE_TYPE: Tyyppi
     TITLE_USED_ON: 'Käytössä:'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:

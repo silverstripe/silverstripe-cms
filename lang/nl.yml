@@ -95,7 +95,6 @@ nl:
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Bewerk pagina'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Filter
     ListView: Lijstweergave
     MENUTITLE: 'Pagina''s'
     TreeView: Boomstructuur
@@ -116,7 +115,6 @@ nl:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Voorbeeld van versie bekijken'
     ARCHIVEDSITEFROM: 'Gearchiveerde site van'
-    CMS: CMS
     DRAFT: Concept
     DRAFTSITE: 'Concept site'
     Email: E-mail
@@ -151,7 +149,6 @@ nl:
     EMPTY: 'Vul een URL segment in of klik op annuleren'
     Edit: Bewerken
     HelpChars: 'Speciale tekens worden automatische omgezet of verwijderd.'
-    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Stuurt door naar een interne pagina of een externe URL'
     FILE: Bestand
@@ -195,7 +192,6 @@ nl:
     DEFAULTCONTACTCONTENT: '<p>Je kan deze pagina vullen met nieuwe tekst, of verwijderen en nieuwe pagina''s aanmaken.</p>'
     DEFAULTCONTACTTITLE: Contact
     DEFAULTHOMECONTENT: '<p>Welkom bij Silverstripe! Dit is de standaard homepagina. Je kan deze pagina wijzigen door <a href="admin/">het CMS</a> te openen.</p><p>Je kan verder de <a href="http://docs.silverstripe.org">documentatie voor ontwikkelaars</a> raadplegen of aan <a href="http://www.silverstripe.org/learn/lessons">de tutorials</a> beginnen.</p>'
-    DEFAULTHOMETITLE: Home
     DEPENDENT_NOTE: 'De volgende pagina''s zijn afhankelijk van deze pagina. Hieronder vallen virtuele pagina''s, verwijzingspagina''s en pagina''s met links in hun inhoud.'
     DESCRIPTION: 'Algemene pagina'
     DependtPageColumnLinkType: Linktype
@@ -223,7 +219,6 @@ nl:
     METAEXTRAHELP: 'HTML-tags voor extra meta-informatie. Bijvoorbeeld <meta name="customName" content="your custom content here">'
     MODIFIEDONDRAFTHELP: 'Pagina heeft wijzigingen die nog niet gepubliceerd zijn'
     MODIFIEDONDRAFTSHORT: Aangepast
-    MetadataToggle: Metadata
     MoreOptions: 'Meer opties'
     NOTPUBLISHED: 'Niet gepubliceerd'
     OBSOLETECLASS: 'Deze pagina is van het type {type}. Dit type is niet meer in gebruik. Het opslaan van deze pagina zal het type wijzigen. Hierbij kan data verloren gaan.'
@@ -255,7 +250,6 @@ nl:
     TABDEPENDENT: 'Afhankelijke pagina''s'
     TOPLEVEL: 'Site inhoud (hoogste niveau)'
     UNTITLED: 'Naamloos {pagetype}'
-    URLSegment: 'URL segment'
     UntitledDependentObject: 'Naamloos {instanceType}'
     VIEWERGROUPS: Bekijkersgroepen
     VIEWER_GROUPS_FIELD_DESC: 'Groepen die alles mogen bekijken: {groupList}'
@@ -271,16 +265,12 @@ nl:
     db_Content: Inhoud
     db_Sort: Volgorde
     db_Title: Titel
-    db_URLSegment: 'URL segment'
     db_Version: Versie
     has_one_Parent: 'Bovenliggende pagina'
-    has_one_Subsite: Subsite
     many_many_BackLinkTracking: 'Backlinks traceren'
     many_many_ImageTracking: 'Afbeeldingen traceren'
     many_many_LinkTracking: 'Links traceren'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
-    TITLE_TYPE: Type
     TITLE_USED_ON: 'Gebruikt op:'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
     USAGE: Gebruik
@@ -318,7 +308,6 @@ nl:
     ColumnDateLastModified: 'Laatste wijzigingsdatum'
     ColumnDateLastPublished: 'Laatste publicatiedatum'
     ColumnProblemType: Probleemtype
-    ColumnURL: URL
     HasBrokenFile: 'heeft verbroken bestand'
     HasBrokenLink: 'heeft verbroken link'
     HasBrokenLinkAndFile: 'heeft verbroken link en bestand'

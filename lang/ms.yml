@@ -10,8 +10,6 @@ ms:
     Password: 'Kata Laluan'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Deskripsi pautan'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Fail
     HEADER: 'Mukasurat ini akan mengalih pengguna ke mukasurat lain'

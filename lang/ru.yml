@@ -30,7 +30,6 @@ ru:
     Create: Создать
     DUPLICATED: 'Копия ''{title}'' создана'
     DUPLICATEDWITHCHILDREN: 'Копия ''{title}'' и дочерних элементов создана'
-    EMAIL: Email
     NEWPAGE: 'Новая {pagetype}'
     PAGENOTEXISTS: 'Страница не существует'
     PAGES: 'Статус страницы'
@@ -114,10 +113,8 @@ ru:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Версия для просмотра'
     ARCHIVEDSITEFROM: 'Архив сайта от'
-    CMS: CMS
     DRAFT: Черновик
     DRAFTSITE: 'Черновой сайт'
-    Email: Email
     INSTALL_SUCCESS: 'Инсталляция прошла успешно!'
     InstallFilesDeleted: 'Установочные файлы были успешно удалены.'
     InstallSecurityWarning: 'Если вы не планируете в ближайшее время переустанавливать CMS, по соображениям безопасности рекомендуется удалить инсталляционные файлы (<em>для этого требуются права доступа администратора ‒ см. выше</em>). Теперь веб-серверу необходим доступ для записи только к папке "assets"; все остальные папки можно защитить от записи. <a href="{link}" style="text-align: center;">Щелкните здесь, чтобы удалить инсталляционные файлы.</a>'
@@ -302,7 +299,6 @@ ru:
     ColumnDateLastModified: 'Дата последнего изменения'
     ColumnDateLastPublished: 'Дата последней публикации'
     ColumnProblemType: 'Вид проблемы'
-    ColumnURL: URL
     HasBrokenFile: 'содержит поврежденный файл'
     HasBrokenLink: 'содержит нерабочую ссылку'
     HasBrokenLinkAndFile: 'содержит нерабочую ссылку и поврежденный файл'

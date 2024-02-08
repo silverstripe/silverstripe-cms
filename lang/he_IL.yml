@@ -87,7 +87,6 @@ he_IL:
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'תאור הקישור'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
     HelpChars: ' תווים מיוחדים מומרים אוטומטית או שהם מוסרים.'
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: קובץ

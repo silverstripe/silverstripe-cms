@@ -128,7 +128,6 @@ nb:
     Cancel: Avbryt
     Edit: Rediger
     HelpChars: 'Spesialtegn blir automatisk konvertert eller fjernet.'
-    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Fil
     HEADER: 'Denne siden vil omdirigere brukere til en annen side'
@@ -185,7 +184,6 @@ nb:
     METAEXTRA: 'Egendefinerte meta-elementer'
     MODIFIEDONDRAFTHELP: 'Siden har upubliserte forandringer'
     MODIFIEDONDRAFTSHORT: Endret
-    MetadataToggle: Metadata
     MoreOptions: 'Flere alternativer'
     NOTPUBLISHED: 'Ikke publisert'
     OBSOLETECLASS: 'Denne siden er av den utdaterte typen {type}. Lagring vil tilbakestille typen og kan medføre tap av informasjon.'
@@ -248,7 +246,6 @@ nb:
     ColumnDateLastModified: 'Dato sist endret'
     ColumnDateLastPublished: 'Dato sist publisert'
     ColumnProblemType: Problemtype
-    ColumnURL: URL
     HasBrokenFile: 'har ødelagt fil'
     HasBrokenLink: 'har ødelagt lenke'
     HasBrokenLinkAndFile: 'har ødelagt lenke og fil'

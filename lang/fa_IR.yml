@@ -106,7 +106,6 @@ fa_IR:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'نسخه پیش‌نمایش'
     ARCHIVEDSITEFROM: 'سایت بایگانی شده از'
-    CMS: CMS
     DRAFT: پیش‌نویس
     DRAFTSITE: 'سایت پیش‌نویس'
     Email: ایمیل
@@ -234,7 +233,6 @@ fa_IR:
     many_many_ImageTracking: 'ردیابی تصویر'
     many_many_LinkTracking: 'ردیابی پیوند'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
     TITLE_TYPE: نوع
     TITLE_USED_ON: 'استفاده شده در'
   SilverStripe\CMS\Model\SiteTreeLink:

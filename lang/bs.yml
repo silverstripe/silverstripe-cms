@@ -15,8 +15,6 @@ bs:
     ROLLBACK: 'Vrati na ovo izdanje'
     SAVEDRAFT: Snimi
     TabContent: Sadržaj
-  SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Filter
   SilverStripe\CMS\Controllers\ContentController:
     Email: E-mail
     Password: Šifra
@@ -24,8 +22,6 @@ bs:
     ANCHORVALUE: Sidro
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Opis linka'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Datoteka
     HEADER: 'Ova stranica će preusmjeriti korisnike na drugu stranicu'
