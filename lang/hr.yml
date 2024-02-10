@@ -25,7 +25,6 @@ hr:
     Create: Kreiraj
     DUPLICATED: 'Dupliciran ''{title}'' uspješno'
     DUPLICATEDWITHCHILDREN: 'Dupliciran ''{title}''  i podstranice uspješno'
-    EMAIL: Email
     NEWPAGE: 'Novi {pagetype}'
     PAGENOTEXISTS: 'Stranica ne postoji'
     PAGES: 'Status stranice'
@@ -87,7 +86,6 @@ hr:
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Uredi stranicu'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Filter
     ListView: Lista
     MENUTITLE: Stranice
     TreeView: Stablo
@@ -108,10 +106,8 @@ hr:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Pregledna verzija'
     ARCHIVEDSITEFROM: 'Arhivirana stranica iz'
-    CMS: CMS
     DRAFT: Predložak
     DRAFTSITE: Predložak
-    Email: Email
     INSTALL_SUCCESS: 'Instalacija uspješna!'
     InstallFilesDeleted: 'Instalacijske datoteke su uspješno obrisane.'
     InstallSecurityWarning: 'Zbog sigurnosnih razloga trebali bi ste obrisati instalacijske datoteke, osima ako planirate reinstalaciju kasnije (<em>zahtjeva administracijsku prijavu, pogledaj iznad</em>). Web server sada treba samo dozvole pisanja na "assets" direktorij, pa možete maknuti pravo pisanja sa svih drugih direktorija. <a href="{link}" style="text-align: center;">kliknite ovjde za brisanje instalacijskih datoteka.</a>'
@@ -142,7 +138,6 @@ hr:
     Cancel: Odustani
     Edit: Uredi
     HelpChars: 'Posebni znakovi se automatski pretvaraju ili uklanjaju.'
-    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Preusmjerava na internu stranicu ili vanjski URL'
     FILE: Datoteka
@@ -245,7 +240,6 @@ hr:
     many_many_ImageTracking: 'Praćenje slika'
     many_many_LinkTracking: 'Praćenje linkova'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
     TITLE_TYPE: Tip
     TITLE_USED_ON: 'Korišteno na'
   SilverStripe\CMS\Model\SiteTreeLink:

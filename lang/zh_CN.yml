@@ -27,8 +27,6 @@ zh_CN:
     Password: 密码
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 链接描述
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: 文件
     HEADER: 该页会将用户重新导向另一网页

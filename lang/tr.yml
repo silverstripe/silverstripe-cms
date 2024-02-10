@@ -62,8 +62,6 @@ tr:
     ANCHORVALUE: Çapa
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Bağlantı açıklaması'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Dosya
     HEADER: 'Bu sayfa, kullanıcıları başka bir sayfaya yönlendirir'

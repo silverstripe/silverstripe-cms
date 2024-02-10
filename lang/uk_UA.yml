@@ -1,0 +1,50 @@
+uk_UA:
+  SilverStripe\CMS\Controllers\CMSMain:
+    ACCESS_HELP: 'Дозволити перегляд розділу, що містить дерево сторінок і вміст. Дозволи на перегляд і редагування можна налаштувати за допомогою спадних меню для окремих сторінок, а також за допомогою окремих "вміст дозволів".'
+    PAGETYPEOPT: 'Тип сторінки'
+    PUBALLCONFIRM: 'Будь ласка, опублікуйте кожну сторінку сайту, скопіювавши етап вмісту'
+    PUBALLFUN2: 'Натискання цієї кнопки еквівалентно переходу на кожну сторінку та натисканню "опублікувати". Він призначений для використання після масових редагувань вмісту, наприклад під час створення сайту. Для великих веб-сайтів це завдання може бути не виконано до кінця. У цьому випадку ми рекомендуємо поговорити з вашими розробниками, щоб створити спеціальне завдання'
+    TabContent: Зміст
+  SilverStripe\CMS\Controllers\ContentController:
+    StartEditing: 'Ви можете почати редагувати свій зміст, відкривши <a href="{link}">CMS</a>.'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Редагувати
+  SilverStripe\CMS\Model\SiteTree:
+    APPEARSVIRTUALPAGES: 'Цей зміст також відображається на віртуальних сторінках у розділах {title}.'
+    Content: Зміст
+    DEFAULTABOUTCONTENT: '<p>Ви можете заповнити цю сторінку власним змістом або видалити її та створити власні сторінки.</p>'
+    DEFAULTCONTACTCONTENT: '<p>Ви можете заповнити цю сторінку власним змістом або видалити її та створити власні сторінки.</p>'
+    DEPENDENT_NOTE: 'Наступні сторінки залежать від цієї сторінки. Це включає віртуальні сторінки, сторінки перенаправлення та сторінки з посиланнями на зміст.'
+    DESCRIPTION: 'Сторінка загального змісту'
+    HTMLEDITORTITLE: Зміст
+    MENUTITLE: 'Навігаційна мітка'
+    METADESCHELP: 'Пошукові системи використовують цей зміст для відображення результатів пошуку (хоча це не вплине на їх рейтинг).'
+    METAEXTRAHELP: 'Теги HTML для додаткової метаінформації. Наприклад <meta name="customName" content="ваш спеціальний зміст тут">'
+    PAGELOCATION: 'Розташування сторінки'
+    PAGETITLE: 'Назва сторінки'
+    PAGETYPE: 'Тип сторінки'
+    PARENTID: 'Батьківська сторінка'
+    PARENTTYPE: 'Розташування сторінки'
+    PARENTTYPE_ROOT: 'Сторінка верхнього рівня'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Керувати правами доступу до змісту'
+    TABCONTENT: 'Основний зміст'
+    TOPLEVEL: 'Зміст сайту (верхній рівень)'
+    URLSegment: 'сегмент URL'
+    VIEW_DRAFT_CONTENT: 'Переглянути чернетку змісту'
+    VIRTUALPAGEWARNINGSETTINGS: 'Виберіть пов''язану сторінку в полях основного змісту, щоб опублікувати'
+    belongs_many_many_ContentReviewGroups: 'Групи перегляду змісту'
+    belongs_many_many_ContentReviewUsers: 'Користувачі перегляду змісту'
+    db_Content: Зміст
+    db_ContentReviewType: 'Тип перегляду змісту'
+    db_URLSegment: 'сегмент URL'
+  SilverStripe\CMS\Model\VirtualPage:
+    DESCRIPTION: 'Відображає зміст іншої сторінки'
+    HEADERWITHLINK: 'Це віртуальна сторінка, яка копіює вміст із "{title}" ({link})'
+    has_one_CopyContentFrom: 'Копіювати зміст із'
+  SilverStripe\CMS\Reports\BrokenLinksReport:
+    PageName: 'Назва сторінки'
+  SilverStripe\CMS\Reports\EmptyPagesReport:
+    ContentGroupTitle: 'Зміст звітів'
+    EMPTYPAGES: 'Сторінки без змісту'
+  SilverStripe\CMS\Reports\RecentlyEditedReport:
+    ContentGroupTitle: 'Зміст звітів'

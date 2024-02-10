@@ -82,7 +82,6 @@ uk:
     LINKDESCR: 'Опис посилання'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Відмінити
-    Edit: Edit
     HelpChars: 'Спеціальні символи автоматично перетворені або видалені.'
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Файл

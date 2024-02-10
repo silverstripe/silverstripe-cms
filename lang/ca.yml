@@ -29,8 +29,6 @@ ca:
     ANCHORVALUE: Ancla
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Descripció de l''enllaç'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Fitxer
     HEADER: 'Aquesta pàgina redirigirà usuaris a una altra pàgina'

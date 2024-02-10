@@ -68,7 +68,6 @@ sr_RS@latin:
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Izmeni stranicu'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Filter
     ListView: 'Prikaz u vidu liste'
     MENUTITLE: Stranice
     TreeView: 'Prikaz u vidu stabla'
@@ -77,7 +76,6 @@ sr_RS@latin:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Verzija za prethodni pregled'
     ARCHIVEDSITEFROM: 'Arhivirani sajt iz'
-    CMS: CMS
     DRAFT: Nacrt
     DRAFTSITE: 'Narct sajta'
     Email: E-pošta
@@ -226,7 +224,6 @@ sr_RS@latin:
     ColumnDateLastModified: 'Datum poslednje izmene'
     ColumnDateLastPublished: 'Datum poslednjeg publikovanja'
     ColumnProblemType: 'Tip problema'
-    ColumnURL: URL
     HasBrokenFile: 'sadrži oštećenu datoteku'
     HasBrokenLink: 'sadrži oštećen link'
     HasBrokenLinkAndFile: 'sadrži oštećene link i datoteku'

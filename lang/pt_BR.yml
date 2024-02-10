@@ -25,14 +25,11 @@ pt_BR:
     MENUTITLE: Páginas
   SilverStripe\CMS\Controllers\ContentController:
     Email: E-mail
-    LOGIN: Login
     Password: Senha
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Âncora
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Descrição do link'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Arquivo
     HEADER: 'Esta página redireccionará os utilizadores para outra página'
