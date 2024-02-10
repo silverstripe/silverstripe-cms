@@ -30,7 +30,6 @@ pl:
     Create: Utwórz
     DUPLICATED: 'Duplikowanie ''{title}'' zakończone powodzeniem'
     DUPLICATEDWITHCHILDREN: 'Duplikowanie ''{title}'' oraz podstron zakończone powodzeniem'
-    EMAIL: Email
     NEWPAGE: 'Nowa {pagetype}'
     PAGENOTEXISTS: 'Ta strona nie istnieje'
     PAGES: 'Status strony'
@@ -120,7 +119,6 @@ pl:
     CMS: 'System Zarządzania Treścią'
     DRAFT: Szkic
     DRAFTSITE: 'Szkic witryny'
-    Email: Email
     INSTALL_SUCCESS: 'Instalacja przebiegła pomyślnie'
     InstallFilesDeleted: 'Pliki instalacyjne zostały pomyślnie usunięte'
     InstallSecurityWarning: 'Dla bezpieczeństwa powinieneś skasować pliki instalacyjne, chyba że planujesz reinstalację w późniejszym czasie (<em>wymaga zalogowania się jako admin, patrz wyżej</em>). Serwer potrzebuje teraz tylko dostępu do folderu "assets", możesz usunąć dostęp do innych folderów. <a href="{link}" style="text-align: center;">Kliknij tutaj aby usunąć pliki instalacyjne.</a>'
@@ -152,7 +150,6 @@ pl:
     EMPTY: 'Proszę podać adres URL lub kliknąć anuluj'
     Edit: Edytuj
     HelpChars: 'Znaki specjalne są automatycznie konwertowane lub usuwane.'
-    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Przekierowuje do wskazanej wewnętrznej strony'
     FILE: Plik
@@ -280,7 +277,6 @@ pl:
     many_many_ImageTracking: 'Śledzenie obrazków'
     many_many_LinkTracking: 'Śledzenie linków'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
     TITLE_TYPE: 'Rodzaj strony'
     TITLE_USED_ON: 'Używany na:'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:

@@ -96,7 +96,6 @@ pt:
     LINKDESCR: 'Descrição do link'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Cancelar
-    Edit: Edit
     HelpChars: 'Os caracteres especiais são automaticamente convertido ou removidos.'
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Ficheiro

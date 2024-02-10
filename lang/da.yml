@@ -30,7 +30,6 @@ da:
     Create: Opret
     DUPLICATED: 'Dublerede ''{title}'' med succes'
     DUPLICATEDWITHCHILDREN: 'Dublerede ''{title}'' og undersider med succes'
-    EMAIL: Email
     NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Denne side eksisterer ikke'
     PAGES: 'Side status'
@@ -95,7 +94,6 @@ da:
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Rediger side'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Filter
     ListView: Listevisning
     MENUTITLE: Sider
     TreeView: Trævisning
@@ -114,12 +112,9 @@ da:
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
     Title: 'Udgivet men slettet fra kladde'
   SilverStripe\CMS\Controllers\ContentController:
-    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Arkiveret side fra'
-    CMS: CMS
     DRAFT: Kladde
     DRAFTSITE: Kladdeside
-    Email: Email
     INSTALL_SUCCESS: 'Installation gennemført succesfuldt'
     InstallFilesDeleted: 'Installationsfiler slettet succesfuldt.'
     InstallSecurityWarning: 'Af sikkerhedmæssige årsager bør du slette installationsfilerne, medmindre du planlægger at installere igen på et senere tidspunkt (<em>kræver admin login, se det ovenstående</em>). Webserveren behøver også kun skriverettigheder til mappen "assets", du kan fjerne skriverettigheder til alle de andre mapper. <a href="{link}" style="text-align: center;">Klik her for at slette installationsfilerne.</a>'
@@ -151,7 +146,6 @@ da:
     EMPTY: 'Indtast en URL eller klik annuller'
     Edit: Rediger
     HelpChars: 'Specialkarakterer bliver automatisk konverteret eller fjernet.'
-    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Omdirigerer til en side eller en ekstern URL'
     HEADER: 'Denne side omdirigerer besøgende til en anden side'
@@ -218,7 +212,6 @@ da:
     METAEXTRA: 'Brugerdefinerede Meta Tags'
     MODIFIEDONDRAFTHELP: 'Siden har ikke-udgivne ændringer'
     MODIFIEDONDRAFTSHORT: Ændret
-    MetadataToggle: Metadata
     MoreOptions: 'Flere muligheder'
     NOTPUBLISHED: 'Ikke udgivet'
     OBSOLETECLASS: 'Denne side er af den udgåede sidetype {type}. Gemmer du bliver sidetypen nulstillet og du kan tabe data.'
@@ -271,8 +264,6 @@ da:
     many_many_ImageTracking: 'Sporing af billeder'
     many_many_LinkTracking: 'Sporing af links'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
-    TITLE_TYPE: Type
     TITLE_USED_ON: 'Brugt på'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
     USAGE: Brug
@@ -307,7 +298,6 @@ da:
     ColumnDateLastModified: 'Dato for seneste ændring'
     ColumnDateLastPublished: 'Dato for seneste udgivelse'
     ColumnProblemType: Problemtype
-    ColumnURL: URL
     HasBrokenFile: 'har en ødelagt fil'
     HasBrokenLink: 'har et dårligt link'
     HasBrokenLinkAndFile: 'har et dårligt link og en ødelagt fil'

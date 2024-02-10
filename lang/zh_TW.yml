@@ -44,8 +44,6 @@ zh_TW:
     Password: 密碼
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 連結敘述
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: 檔案
     HEADER: 本網頁將重新導向用戶至別的網頁

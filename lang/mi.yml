@@ -77,7 +77,6 @@ mi:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Putanga Arokite'
     ARCHIVEDSITEFROM: 'Pae putumōhio mai i'
-    CMS: CMS
     DRAFT: Hukihuki
     DRAFTSITE: 'Pae Hukihuki'
     Email: Īmēra

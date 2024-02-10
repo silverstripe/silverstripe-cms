@@ -14,8 +14,6 @@ sr@latin:
     TabContent: Sadržaj
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     UNKNOWN: Nepoznato
-  SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Filter
   SilverStripe\CMS\Controllers\ContentController:
     Email: 'Elektronska pošta'
     LOGOUT: 'Odjavi se'
@@ -46,7 +44,6 @@ sr@latin:
     has_one_Parent: Roditelj
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: 'Bilo koji'
-    ColumnURL: URL
   SilverStripe\CMS\Search\SearchForm:
     FILTERLABELTEXT: Pretraga
     GO: Idi

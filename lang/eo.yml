@@ -117,7 +117,6 @@ eo:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Antaŭvida versio'
     ARCHIVEDSITEFROM: 'Enarkivigita retejo el'
-    CMS: CMS
     DRAFT: Malneta
     DRAFTSITE: 'Malneta retejo'
     Email: Retpoŝto
@@ -178,6 +177,7 @@ eo:
     ACCESSANYONE: Iu
     ACCESSHEADER: 'Kiuj povas vidi ĉi tiun paĝon?'
     ACCESSLOGGEDIN: 'Ensalutintaj uzantoj'
+    ACCESSONLYMEMBERS: 'Nur ĉi tiuj homoj (elektu el listo)'
     ACCESSONLYTHESE: 'Nur ĉi tiuj homoj (elektu el listo)'
     ADDEDTODRAFTHELP: 'Paĝo ankoraŭ estas ne publikigita'
     ADDEDTODRAFTSHORT: Malneto
@@ -205,6 +205,7 @@ eo:
     DependtPageColumnLinkType: 'Ligila tipo'
     EDITHEADER: 'Kiuj povas redakti ĉi tiun paĝon?'
     EDITORGROUPS: 'Grupoj de redaktantoj'
+    EDITORMEMBERS: 'Redaktantaj membroj'
     EDITOR_GROUPS_FIELD_DESC: 'Grupoj kun ĉieaj permesoj: {groupList}'
     EDIT_ALL_DESCRIPTION: 'Redakti ajnan paĝon'
     EDIT_ALL_HELP: 'Eblo redakti ajnan paĝon en la retejo, senkonsidere de la agordoj en la langeto Aliro. Necesas la permeso "Aliro al sekcio ''Paĝoj'' "'
@@ -262,6 +263,7 @@ eo:
     URLSegment: URL-segmento
     UntitledDependentObject: 'Sentitola {instanceType}'
     VIEWERGROUPS: 'Grupoj de vidantoj'
+    VIEWERMEMBERS: 'Vidantaj membroj'
     VIEWER_GROUPS_FIELD_DESC: 'Grupoj kun ĉieaj vidigaj permesoj: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Vidigi ajnan paĝon'
     VIEW_ALL_HELP: 'Povo vidigi ajnan paĝon en la retejo, senkonsidere la agordaĵojn en la langeto Aliro. Bezonatas la permeso "Aliro al sekcio ''Paĝoj''"'
@@ -310,11 +312,12 @@ eo:
     many_many_BackLinkTracking: 'Spuri retroligilojn'
     many_many_CrossSubsiteLinkTracking: 'Trans-subreteja ligspurado'
     many_many_EditorGroups: 'Grupoj de redaktantoj'
+    many_many_EditorMembers: 'Redaktantaj membroj'
     many_many_ImageTracking: 'Spuri Bildojn'
     many_many_LinkTracking: 'Spuri Ligilojn'
     many_many_ViewerGroups: 'Grupoj de vidantoj'
+    many_many_ViewerMembers: 'Vidantaj membroj'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Uzita je'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
@@ -356,7 +359,6 @@ eo:
     ColumnDateLastModified: 'Dato de lasta modifo'
     ColumnDateLastPublished: 'Dato de lasta publikigo'
     ColumnProblemType: Problemtipo
-    ColumnURL: URL
     HasBrokenFile: 'havas rompitan dosieron'
     HasBrokenLink: 'havas rompitan ligilon'
     HasBrokenLinkAndFile: 'havas rompitan ligilon kaj dosieron'

@@ -145,7 +145,6 @@ bg:
     Cancel: Отказ
     Edit: Редактирай
     HelpChars: 'Специалните символи са автоматично конвертирани или изтрити.'
-    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Пренасочва към страница от сайта или външен URL адрес'
     FILE: Файл
@@ -260,7 +259,6 @@ bg:
     many_many_ImageTracking: 'Следене на снимките'
     many_many_LinkTracking: 'Следене на връзките'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
     TITLE_TYPE: Тип
     TITLE_USED_ON: 'Използвано в'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:

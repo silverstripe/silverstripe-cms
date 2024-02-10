@@ -17,7 +17,6 @@ et_EE:
     ChoosePageParentMode: 'Valige, kuhu see leht luua'
     ChoosePageType: 'Valige lehe tüüp'
     Create: Loo
-    EMAIL: Email
     NEWPAGE: 'Uus {pagetype}'
     PAGENOTEXISTS: 'Antud lehekülge ei eksisteeri'
     PAGESALLOPT: 'Kõik lehed'
@@ -59,7 +58,6 @@ et_EE:
     UNKNOWN: Tundmatu
     VIEW: vaade
     VIEWINGVERSION: 'Hetkel kuvatud versioon {version}.'
-    WHEN: When
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Muuda lehte'
   SilverStripe\CMS\Controllers\CMSPagesController:
@@ -74,7 +72,6 @@ et_EE:
     ARCHIVEDSITEFROM: 'Arhiveeritud sait asukohast'
     DRAFT: Mustand
     DRAFTSITE: 'Mustandi sait'
-    Email: Email
     INSTALL_SUCCESS: 'Paigaldus oli edukas!'
     InstallFilesDeleted: 'Installifailid on edukalt kustutatud.'
     InstallSecurityWarning: 'Turvalisuse põhjustel soovitame nüüd installifailid kustutada, juhul kui te ei plaani hiljem uuesti installida (<em>nõuab administraatorina sisselogimist, vt ülevalt</em>). Edaspidi vajab veebiserver juurdepääsu kirjutamiseks ainult kaustale "assets". Võite eemaldada kõigi teiste kaustade kirjutusõigused. <a href="{link}" style="text-align: center;">Klõpsake siin installifailide kustutamiseks.</a>'
@@ -212,7 +209,6 @@ et_EE:
     ColumnDateLastModified: 'Viimane muutmiskuupäev'
     ColumnDateLastPublished: 'Viimane avaldamiskuupäev'
     ColumnProblemType: 'Probleemi tüüp'
-    ColumnURL: URL
     HasBrokenFile: 'sisaldab katkist faili'
     HasBrokenLink: 'sisaldab katkist linki'
     HasBrokenLinkAndFile: 'sisaldab katkist linki ja faili'

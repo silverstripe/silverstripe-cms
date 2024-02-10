@@ -96,7 +96,6 @@ de:
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Seite bearbeiten'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Filter
     ListView: Listenansicht
     MENUTITLE: Seiten
     TreeView: Baumansicht
@@ -117,7 +116,6 @@ de:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: Vorschauversion
     ARCHIVEDSITEFROM: 'Site archiviert von'
-    CMS: CMS
     DRAFT: Entwurf
     DRAFTSITE: Vorschau-Site
     Email: E-Mail
@@ -152,7 +150,6 @@ de:
     EMPTY: 'Bitte geben Sie ein URL-Segment ein oder drücken Sie auf Abbrechen'
     Edit: Bearbeiten
     HelpChars: 'Sonderzeichen werden automatisch umgewandelt oder entfernt.'
-    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Leitet zu einer anderen internen oder externen Seite weiter'
     FILE: Datei
@@ -276,7 +273,6 @@ de:
     many_many_ImageTracking: Bild-Verfolgung
     many_many_LinkTracking: Link-Verfolgung
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
     TITLE_TYPE: Typ
     TITLE_USED_ON: 'Verwendet auf'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
@@ -313,7 +309,6 @@ de:
     ColumnDateLastModified: 'Zuletzt geändert'
     ColumnDateLastPublished: 'Zuletzt veröffentlicht'
     ColumnProblemType: Problemtyp
-    ColumnURL: URL
     HasBrokenFile: 'Defekter Dateilink'
     HasBrokenLink: 'Defekter Link'
     HasBrokenLinkAndFile: 'Defekter Link und defekter Dateilink'

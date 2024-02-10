@@ -70,8 +70,6 @@ gl_ES:
     ANCHORVALUE: Áncora
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Descrición da ligazón'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Ficheiro
     HEADER: 'Esta páxina redirixirá os usuarios a outra páxina'

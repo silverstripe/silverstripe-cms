@@ -19,13 +19,13 @@ nl:
     AddNew: 'Voeg nieuwe pagina toe'
     AddNewButton: Nieuw...
     AddPageRestriction: 'Opmerking: Sommige paginatypes zijn niet toegestaan ​​voor deze selectie'
-    ArchiveWarning: 'Let op: de publicatie van deze pagina wordt ingetrokken voordat hij wordt gearchiveerd.\n\nWeet u zeker dat u wilt doorgaan?'
-    ArchiveWarningWithCampaigns: 'Let op: de publicatie van deze pagina wordt ingetrokken en de pagina wordt automatisch uit alle {NumCampaigns} campagnes verwijderd voordat deze wordt gearchiveerd.\n\nWeet u zeker dat u wilt doorgaan?'
-    ArchiveWarningWithChildren: 'Let op: deze pagina en alle bijbehorende subpagina''s worden van de gepubliceerde site verwijderd voordat ze worden gearchiveerd.\n\nWeet u zeker dat u wilt doorgaan?'
-    ArchiveWarningWithChildrenAndCampaigns: 'Let op: deze pagina en alle bijbehorende subpagina''s worden automatisch van de gepubliceerde site én uit alle {NumCampaigns} campagnes verwijderd, voordat ze worden gearchiveerd.\n\nWeet u zeker dat u wilt doorgaan?'
-    CANT_REORGANISE: 'U hebt onvoldoende rechten om pagina''s op het topniveau te wijzigen. Uw wijziging is niet opgeslagen.'
+    ArchiveWarning: 'Let op: de publicatie van deze pagina wordt ingetrokken voordat hij wordt gearchiveerd.\n\nWeet je zeker dat je wil doorgaan?'
+    ArchiveWarningWithCampaigns: 'Let op: de publicatie van deze pagina wordt ingetrokken en de pagina wordt automatisch uit alle {NumCampaigns} campagnes verwijderd voordat deze wordt gearchiveerd.\n\nWeet je zeker dat je wil doorgaan?'
+    ArchiveWarningWithChildren: 'Let op: deze pagina en alle bijbehorende subpagina''s worden van de gepubliceerde site verwijderd voordat ze worden gearchiveerd.\n\nWeet je zeker dat je wil doorgaan?'
+    ArchiveWarningWithChildrenAndCampaigns: 'Let op: deze pagina en alle bijbehorende subpagina''s worden automatisch van de gepubliceerde site én uit alle {NumCampaigns} campagnes verwijderd, voordat ze worden gearchiveerd.\n\nWeet je zeker dat je wil doorgaan?'
+    CANT_REORGANISE: 'Je hebt onvoldoende rechten om pagina''s op het topniveau te wijzigen. Je wijziging is niet opgeslagen.'
     Cancel: Annuleren
-    ChoosePageParentMode: 'Kies waar u deze pagina wilt aanmaken'
+    ChoosePageParentMode: 'Kies waar je deze pagina wilt aanmaken'
     ChoosePageType: 'Kies een pagina type'
     Create: Aanmaken
     DUPLICATED: '''{title}'' met succes gedupliceerd'
@@ -79,7 +79,7 @@ nl:
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Auteur
     COMPAREMODE: 'Vergelijken (selecteer 2)'
-    COMPARINGVERSION: 'U vergelijkt versie {version1} en {version2}.'
+    COMPARINGVERSION: 'Vergelijking versie {version1} en {version2}.'
     MENUTITLE: Geschiedenis
     MULTISELECT: 'Bulk acties'
     NOTPUBLISHED: 'Niet gepubliceerd'
@@ -89,13 +89,12 @@ nl:
     SHOWUNPUBLISHED: 'Toon nog niet gepubliceerde versies'
     UNKNOWN: Onbekend
     VIEW: toon
-    VIEWINGLATEST: 'U bekijkt nu de laatste versie.'
-    VIEWINGVERSION: 'U bekijkt nu versie {version}.'
+    VIEWINGLATEST: 'Je bekijkt nu de laatste versie.'
+    VIEWINGVERSION: 'Je bekijkt nu versie {version}.'
     WHEN: Wanneer
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Bewerk pagina'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Filter
     ListView: Lijstweergave
     MENUTITLE: 'Pagina''s'
     TreeView: Boomstructuur
@@ -116,7 +115,6 @@ nl:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Voorbeeld van versie bekijken'
     ARCHIVEDSITEFROM: 'Gearchiveerde site van'
-    CMS: CMS
     DRAFT: Concept
     DRAFTSITE: 'Concept site'
     Email: E-mail
@@ -133,7 +131,7 @@ nl:
     PUBLISHEDSITE: 'Gepubliceerde site'
     Password: Wachtwoord
     PostInstallTutorialIntro: 'Deze website is een eenvoudige versie van een SilverStripe 3 website. Voor uitbreidingen kunt u hier een kijkje nemen: {link}.'
-    StartEditing: 'U kunt de inhoud aanpassen via <a href="{link}">het CMS</a>.'
+    StartEditing: 'Je kan de inhoud aanpassen via <a href="{link}">het CMS</a>.'
     UNVERSIONEDPREVIEW: Voorbeeld
     UnableDeleteInstall: 'De installatiebestanden konden niet verwijderd worden. Verwijder onderstaande bestanden handmatig:'
     VIEWPAGEIN: 'Bekijk pagina in:'
@@ -151,7 +149,6 @@ nl:
     EMPTY: 'Vul een URL segment in of klik op annuleren'
     Edit: Bewerken
     HelpChars: 'Speciale tekens worden automatische omgezet of verwijderd.'
-    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Stuurt door naar een interne pagina of een externe URL'
     FILE: Bestand
@@ -190,12 +187,11 @@ nl:
     BUTTONUNPUBLISHDESC: 'Deze pagina verwijderen uit de gepubliceerde site'
     Comments: Commentaar
     Content: Inhoud
-    DEFAULTABOUTCONTENT: '<p>U kunt deze pagina vullen met eigen tekst, of deze verwijderen en nieuwe pagina''s aanmaken.</p>'
+    DEFAULTABOUTCONTENT: '<p>Je kan deze pagina vullen met eigen tekst, of deze verwijderen en nieuwe pagina''s aanmaken.</p>'
     DEFAULTABOUTTITLE: 'Over Ons'
-    DEFAULTCONTACTCONTENT: '<p>U kunt deze pagina vullen met nieuwe tekst, of verwijderen en nieuwe pagina''s aanmaken.</p>'
+    DEFAULTCONTACTCONTENT: '<p>Je kan deze pagina vullen met nieuwe tekst, of verwijderen en nieuwe pagina''s aanmaken.</p>'
     DEFAULTCONTACTTITLE: Contact
     DEFAULTHOMECONTENT: '<p>Welkom bij Silverstripe! Dit is de standaard homepagina. Je kan deze pagina wijzigen door <a href="admin/">het CMS</a> te openen.</p><p>Je kan verder de <a href="http://docs.silverstripe.org">documentatie voor ontwikkelaars</a> raadplegen of aan <a href="http://www.silverstripe.org/learn/lessons">de tutorials</a> beginnen.</p>'
-    DEFAULTHOMETITLE: Home
     DEPENDENT_NOTE: 'De volgende pagina''s zijn afhankelijk van deze pagina. Hieronder vallen virtuele pagina''s, verwijzingspagina''s en pagina''s met links in hun inhoud.'
     DESCRIPTION: 'Algemene pagina'
     DependtPageColumnLinkType: Linktype
@@ -223,7 +219,6 @@ nl:
     METAEXTRAHELP: 'HTML-tags voor extra meta-informatie. Bijvoorbeeld <meta name="customName" content="your custom content here">'
     MODIFIEDONDRAFTHELP: 'Pagina heeft wijzigingen die nog niet gepubliceerd zijn'
     MODIFIEDONDRAFTSHORT: Aangepast
-    MetadataToggle: Metadata
     MoreOptions: 'Meer opties'
     NOTPUBLISHED: 'Niet gepubliceerd'
     OBSOLETECLASS: 'Deze pagina is van het type {type}. Dit type is niet meer in gebruik. Het opslaan van deze pagina zal het type wijzigen. Hierbij kan data verloren gaan.'
@@ -255,7 +250,6 @@ nl:
     TABDEPENDENT: 'Afhankelijke pagina''s'
     TOPLEVEL: 'Site inhoud (hoogste niveau)'
     UNTITLED: 'Naamloos {pagetype}'
-    URLSegment: 'URL segment'
     UntitledDependentObject: 'Naamloos {instanceType}'
     VIEWERGROUPS: Bekijkersgroepen
     VIEWER_GROUPS_FIELD_DESC: 'Groepen die alles mogen bekijken: {groupList}'
@@ -263,23 +257,20 @@ nl:
     VIEW_ALL_HELP: 'Bevoegdheid om alle pagina''s op de site te wijzigen, onafhankelijk van de instellingen in het ''Toegang'' tabblad. Vereist "Toegang tot site inhoud" rechten'
     VIEW_DRAFT_CONTENT: 'Bekijk concept inhoud'
     VIEW_DRAFT_CONTENT_HELP: 'Bevoegdheid om pagina''s buiten het CMS in concept mode te bekijken. Nuttig voor externe medewerkers zonder CMS toegang.'
-    VIRTUALPAGEDRAFTWARNING: 'U dient eerst de gekoppelde pagina te publiceren voordat u de virtuele pagina publiceert.'
-    VIRTUALPAGEWARNING: 'U dient eerst een gekoppelde pagina te selecteren en op te slaan voordat u deze pagina kunt publiceren.'
-    VIRTUALPAGEWARNINGSETTINGS: 'U dient een gekoppelde pagina te selecteren op het hoofdscherm voordat u kunt publiceren.'
+    VIRTUALPAGEDRAFTWARNING: 'Publiceer eerst de gekoppelde pagina, om de virtuele pagina te kunnen publiceren'
+    VIRTUALPAGEWARNING: 'Kies eerst een gekoppelde pagina en sla deze eerst op, om deze pagina te kunnen publiceren'
+    VIRTUALPAGEWARNINGSETTINGS: 'Kies eerst een gekoppelde pagina op het hoofdscherm, voordat je deze pagina kan publiceren'
     Viewers: Bekijkersgroepen
     Visibility: Zichtbaarheid
     db_Content: Inhoud
     db_Sort: Volgorde
     db_Title: Titel
-    db_URLSegment: 'URL segment'
+    db_Version: Versie
     has_one_Parent: 'Bovenliggende pagina'
-    has_one_Subsite: Subsite
     many_many_BackLinkTracking: 'Backlinks traceren'
     many_many_ImageTracking: 'Afbeeldingen traceren'
     many_many_LinkTracking: 'Links traceren'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
-    TITLE_TYPE: Type
     TITLE_USED_ON: 'Gebruikt op:'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
     USAGE: Gebruik
@@ -317,7 +308,6 @@ nl:
     ColumnDateLastModified: 'Laatste wijzigingsdatum'
     ColumnDateLastPublished: 'Laatste publicatiedatum'
     ColumnProblemType: Probleemtype
-    ColumnURL: URL
     HasBrokenFile: 'heeft verbroken bestand'
     HasBrokenLink: 'heeft verbroken link'
     HasBrokenLinkAndFile: 'heeft verbroken link en bestand'

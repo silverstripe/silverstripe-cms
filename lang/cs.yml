@@ -114,7 +114,6 @@ cs:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Náhled verze'
     ARCHIVEDSITEFROM: 'Archivován web z'
-    CMS: CMS
     DRAFT: Koncept
     DRAFTSITE: 'Koncept webu'
     Email: E-mail
@@ -145,7 +144,6 @@ cs:
     Cancel: Storno
     Edit: Editovat
     HelpChars: 'Zvláštní znaky jsou automaticky zkonvertovány nebo odstraněny'
-    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Přesměruje na interní stránku nebo na externí URL'
     FILE: Soubor
@@ -209,7 +207,6 @@ cs:
     METAEXTRA: 'Vlastní meta tagy'
     MODIFIEDONDRAFTHELP: 'Stránka má nezveřejněné změny'
     MODIFIEDONDRAFTSHORT: Upraveno
-    MetadataToggle: Metadata
     MoreOptions: 'Více voleb'
     NOTPUBLISHED: Nezveřejněno
     OBSOLETECLASS: 'Tato stránka je zastaralého typu {type}. Uložení zpúsobí zrušení svého typu a múžete tak ztratit data'
@@ -253,7 +250,6 @@ cs:
     many_many_ImageTracking: 'Stopování obrázku'
     many_many_LinkTracking: 'Stopování odkazu'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
     TITLE_TYPE: Typ
     TITLE_USED_ON: 'Použito na'
   SilverStripe\CMS\Model\VirtualPage:
@@ -278,7 +274,6 @@ cs:
     ColumnDateLastModified: 'Datum poslední změny'
     ColumnDateLastPublished: 'Datum posledního zveřejnění'
     ColumnProblemType: 'Problém typu'
-    ColumnURL: URL
     HasBrokenFile: 'porušen soubor'
     HasBrokenLink: 'porušen odkaz'
     HasBrokenLinkAndFile: 'porušen odkaz a soubor'
