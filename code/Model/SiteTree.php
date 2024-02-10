@@ -2465,7 +2465,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // Get status of page
         $isOnDraft = $this->isOnDraft();
         $isPublished = $this->isPublished();
-        $stagesDiffer = $this->stagesDiffer();
+        $stagesDiffer = $this->_cache_statusFlags ? true : $this->stagesDifferRecursive();
 
         // Check permissions
         $canPublish = $this->canPublish();
@@ -2952,7 +2952,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                     'text' => _t(__CLASS__.'.ADDEDTODRAFTSHORT', 'Draft'),
                     'title' => _t(__CLASS__.'.ADDEDTODRAFTHELP', "Page has not been published yet")
                 ];
-            } elseif ($this->isModifiedOnDraft()) {
+            } elseif ($this->isModifiedOnDraft() || $this->stagesDifferRecursive()) {
                 $flags['modified'] = [
                     'text' => _t(__CLASS__.'.MODIFIEDONDRAFTSHORT', 'Modified'),
                     'title' => _t(__CLASS__.'.MODIFIEDONDRAFTHELP', 'Page has unpublished changes'),

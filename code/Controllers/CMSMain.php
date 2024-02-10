@@ -54,6 +54,7 @@ use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
+use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\HiddenClass;
 use SilverStripe\ORM\Hierarchy\Hierarchy;
@@ -1085,9 +1086,42 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             ]));
         }
 
+        $badge = null;
+        $status = $this->getStatusFlag($record);
+
+        if (count($status) > 0) {
+            $flags = '';
+            foreach ($status as $flag => $flagData) {
+                $titleAttrebute = sprintf(' title="%s"', Convert::raw2xml($flagData['title']));
+                $flags .= sprintf(
+                    '<span class="badge version-status version-status--%s" %s>%s</span>',
+                    'status-' . Convert::raw2xml($flag),
+                    (isset($flagData['title'])) ? $titleAttrebute : '',
+                    Convert::raw2xml($flagData['text'])
+                );
+            }
+            $badge = DBField::create_field('HTMLFragment', $flags);
+        }
+
+        $this->extend('updateBadge', $badge);
+
+        if ($badge) {
+            /** @var ArrayData $lastItem */
+            $lastItem = $items->last();
+            $lastItem->setField('Extra', $badge);
+        }
+
         $this->extend('updateBreadcrumbs', $items);
 
         return $items;
+    }
+
+    private function getStatusFlag(SiteTree $record): array
+    {
+        $flags = $record->getStatusFlags();
+        $this->extend('updateStatusFlags', $flags);
+
+        return $flags;
     }
 
     /**
