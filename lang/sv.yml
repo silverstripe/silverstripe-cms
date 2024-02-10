@@ -94,7 +94,6 @@ sv:
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Redigera sida'
   SilverStripe\CMS\Controllers\CMSPagesController:
-    FILTER: Filter
     ListView: Listvy
     MENUTITLE: Sidor
     TreeView: Trädvy
@@ -115,7 +114,6 @@ sv:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Utkast version'
     ARCHIVEDSITEFROM: 'Arkiverad sajt från'
-    CMS: CMS
     DRAFT: Utkast
     DRAFTSITE: Utkast
     Email: E-post
@@ -149,7 +147,6 @@ sv:
     Cancel: Avbryt
     Edit: Redigera
     HelpChars: 'Specialtecken konverteras eller tas bort'
-    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Omdirigerar till en annan intern eller extern sida'
     FILE: Fil
@@ -217,7 +214,6 @@ sv:
     METAEXTRA: 'Egna metataggar'
     MODIFIEDONDRAFTHELP: 'Sidan har ej publicerade ändringar'
     MODIFIEDONDRAFTSHORT: Ändrad
-    MetadataToggle: Metadata
     MoreOptions: 'Fler alternativ'
     NOTPUBLISHED: 'Ej publicerad'
     OBSOLETECLASS: 'Denna sida är den föråldrade typen {type}. Att spara kommer att återställa dess typ och du kan förlora data'
@@ -266,7 +262,6 @@ sv:
     many_many_ImageTracking: 'Spåra bild'
     many_many_LinkTracking: 'Spåra länk'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
     TITLE_TYPE: Typ
     TITLE_USED_ON: 'Använd på'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
@@ -300,7 +295,6 @@ sv:
     ColumnDateLastModified: 'Datum vid senaste modifiering'
     ColumnDateLastPublished: 'Datum vid senaste publicering'
     ColumnProblemType: Problemtyp
-    ColumnURL: URL
     HasBrokenFile: 'har trasig fil'
     HasBrokenLink: 'har trasig länk'
     HasBrokenLinkAndFile: 'har trasig länk och fil'

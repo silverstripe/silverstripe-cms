@@ -17,8 +17,6 @@ si:
     Password: 'මුර පදය'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'බැදීම් විස්තරය'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: ලිපිය
     HEADER: 'මෙම පිටුව පරිබෝඡකයන් වෙනත් යොමු කරයි'

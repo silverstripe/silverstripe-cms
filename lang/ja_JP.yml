@@ -76,7 +76,6 @@ ja_JP:
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: リンクの説明
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
     HelpChars: 特殊文字は自動的に変換されたか取り除かれました
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: ファイル

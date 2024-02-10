@@ -19,8 +19,6 @@ fo:
     Password: Loyniorð
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Leinku frágreiðing'
-  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
-    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Fíla
     REDIRECTTO: 'Víðarisend til'

@@ -151,7 +151,6 @@ pl_PL:
     EMPTY: 'Proszę podać adres URL lub kliknąć anuluj'
     Edit: Edytuj
     HelpChars: 'Znaki specjalne są automatycznie konwertowane lub usuwane.'
-    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Przekierowuje do wskazanej wewnętrznej strony'
     FILE: Plik
@@ -279,7 +278,6 @@ pl_PL:
     many_many_ImageTracking: 'Śledzenie obrazków'
     many_many_LinkTracking: 'Śledzenie linków'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
     TITLE_TYPE: Typ
     TITLE_USED_ON: 'Użyto na'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
@@ -320,7 +318,6 @@ pl_PL:
     ColumnDateLastModified: 'Data ostatniej modyfikacji'
     ColumnDateLastPublished: 'Data ostatniej publikacji'
     ColumnProblemType: 'Problem do sprawdzenia'
-    ColumnURL: URL
     HasBrokenFile: 'ma uszkodzony plik'
     HasBrokenLink: 'ma uszkodzony link'
     HasBrokenLinkAndFile: 'ma uszkodzony link oraz plik'

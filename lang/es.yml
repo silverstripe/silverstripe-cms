@@ -110,7 +110,6 @@ es:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Vista previa de la versión'
     ARCHIVEDSITEFROM: 'Sitio archivado desde'
-    CMS: CMS
     DRAFT: Borrador
     DRAFTSITE: 'Sitio en Borrador'
     Email: 'Correo electrónico'
@@ -211,7 +210,6 @@ es:
     METAEXTRA: 'Meta Tags Personalizadas'
     MODIFIEDONDRAFTHELP: 'La página tiene cambios sin publicar'
     MODIFIEDONDRAFTSHORT: Modificado
-    MetadataToggle: Metadata
     MoreOptions: 'Más opciones'
     NOTPUBLISHED: 'No publicado'
     OBSOLETECLASS: 'Clase obsoleta'
@@ -260,7 +258,6 @@ es:
     many_many_ImageTracking: 'Rastreo de Imágenes'
     many_many_LinkTracking: 'Rastreo de Enlaces'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
-    TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Usado en'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
@@ -294,7 +291,6 @@ es:
     ColumnDateLastModified: 'Fecha de última modificación'
     ColumnDateLastPublished: 'Fecha de última publicación'
     ColumnProblemType: 'Tipo de problema'
-    ColumnURL: URL
     HasBrokenFile: 'tiene un archivo roto'
     HasBrokenLink: 'tiene un enlace roto'
     HasBrokenLinkAndFile: 'tiene un enlace y archivo roto'
