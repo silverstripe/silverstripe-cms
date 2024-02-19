@@ -20,13 +20,13 @@
     ],
     "require": {
         "php": "^8.1",
-        "silverstripe/admin": "^2.2",
-        "silverstripe/campaign-admin": "^2",
-        "silverstripe/framework": "^5.2",
-        "silverstripe/reports": "^5",
-        "silverstripe/siteconfig": "^5",
-        "silverstripe/versioned": "^2",
-        "silverstripe/versioned-admin": "^2",
+        "silverstripe/admin": "^3",
+        "silverstripe/campaign-admin": "^3",
+        "silverstripe/framework": "^6",
+        "silverstripe/reports": "^6",
+        "silverstripe/siteconfig": "^6",
+        "silverstripe/versioned": "^3",
+        "silverstripe/versioned-admin": "^3",
         "silverstripe/vendor-plugin": "^2"
     },
     "require-dev": {
