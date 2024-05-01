@@ -24,7 +24,8 @@ So that I can link to a external website or a page on my site
       And I press the "Insert link" button
     Then the "Content" HTML field should contain "<a title="my desc" href="[sitetree_link,id=2]">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
-    Then I press the "Save" button
+    When I press the "Save" button
+    Then I should see a "Saved 'About Us' successfully" success toast
 
   Scenario: I can wrap an image in a link to an internal page
     Given I fill in the "Content" HTML field with "<p><img src='file1.jpg'></p>"
@@ -35,9 +36,10 @@ So that I can link to a external website or a page on my site
       And I should not see "Link text"
     When I select "About Us" in the "#Form_editorInternalLink_PageID_Holder" tree dropdown
       And I press the "Insert link" button
-    Then the "Content" HTML field should contain "<a href="[sitetree_link,id=2]"><img src="file1.jpg"></a>"
-      # Required to avoid "unsaved changed" browser dialog
-      And I press the "Save" button
+    Then the "Content" HTML field should contain "<a href="[sitetree_link,id=2]"><img src="file1.jpg" alt=""></a>"
+    # Required to avoid "unsaved changes" browser dialog
+    When I press the "Save" button
+    Then I should see a "Saved 'About Us' successfully" success toast
 
   Scenario: I can edit a link to an internal page
     Given I fill in the "Content" HTML field with "<a title='my desc' href='[sitetree_link,id=2]'>awesome</a>"
@@ -53,7 +55,8 @@ So that I can link to a external website or a page on my site
       And I press the "Insert link" button
     Then the "Content" HTML field should contain "<a title="my new desc" href="[sitetree_link,id=1]">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
-    Then I press the "Save" button
+    When I press the "Save" button
+    Then I should see a "Saved 'About Us' successfully" success toast
 
   Scenario: I can link to an external URL
     Given I select "awesome" in the "Content" HTML field
@@ -65,7 +68,8 @@ So that I can link to a external website or a page on my site
       And I press the "Insert link" button
     Then the "Content" HTML field should contain "<a rel="noopener" href="http://silverstripe.org" target="_blank">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
-    Then I press the "Save" button
+    When I press the "Save" button
+    Then I should see a "Saved 'About Us' successfully" success toast
 
   Scenario: I can wrap an image in a link to an external URL
     Given I fill in the "Content" HTML field with "<p><img src='file1.jpg'></p>"
@@ -76,9 +80,10 @@ So that I can link to a external website or a page on my site
       And I should not see "Link text"
     When I fill in "http://silverstripe.org" for "URL"
       And I press the "Insert link" button
-    Then the "Content" HTML field should contain "<a href="http://silverstripe.org"><img src="file1.jpg"></a>"
-      # Required to avoid "unsaved changed" browser dialog
-      And I press the "Save" button
+    Then the "Content" HTML field should contain "<a href="http://silverstripe.org"><img src="file1.jpg" alt=""></a>"
+    # Required to avoid "unsaved changes" browser dialog
+    When I press the "Save" button
+    Then I should see a "Saved 'About Us' successfully" success toast
 
   Scenario: I can edit an external link
     Given I fill in the "Content" HTML field with "<p>My <a href='http://silverstripe.org'>awesome</a> content"
@@ -92,7 +97,8 @@ So that I can link to a external website or a page on my site
     And I press the "Insert link" button
     Then the "Content" HTML field should contain "<a href="http://google.com">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
-    Then I press the "Save" button
+    When I press the "Save" button
+    Then I should see a "Saved 'About Us' successfully" success toast
 
   Scenario: I can remove an external link
     Given I fill in the "Content" HTML field with "My <a href='http://silverstripe.org'>awesome</a> content"
@@ -101,4 +107,5 @@ So that I can link to a external website or a page on my site
     Then the "Content" HTML field should contain "My awesome content"
       And the "Content" HTML field should not contain "http://silverstripe.org"
     # Required to avoid "unsaved changes" browser dialog
-    Then I press the "Save" button
+    When I press the "Save" button
+    Then I should see a "Saved 'About Us' successfully" success toast
