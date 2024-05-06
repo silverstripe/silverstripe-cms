@@ -8,6 +8,10 @@ So that I can link to a external website or a page on my site
     Given a "page" "Home"
       And a "page" "About Us" has the "Content" "<p>My awesome content</p>"
       And a "file" "file1.jpg"
+      And a "page" "Page 1"
+      And the "page" "Page 1.1" is a child of a "page" "Page 1"
+      And the "page" "Page 1.1.1" is a child of a "page" "Page 1.1"
+      And the "page" "Page 1.1.1.1" is a child of a "page" "Page 1.1.1"
       # And the "group" "EDITOR" has permissions "Access to 'Pages' section"
       And the "group" "EDITOR" has permissions "Access to 'Files' section" and "Access to 'Pages' section" and "FILE_EDIT_ALL"
       And I am logged in as a member of "EDITOR" group
@@ -109,3 +113,45 @@ So that I can link to a external website or a page on my site
     # Required to avoid "unsaved changes" browser dialog
     When I press the "Save" button
     Then I should see a "Saved 'About Us' successfully" success toast
+
+  Scenario: I can navigate list of Site tree links by clicking on the dropdown elements
+    When I select "awesome" in the "Content" HTML field
+      And I press the "Insert link" HTML field button
+      And I click "Page on this site" in the ".tox-collection__group" element
+    Then I should see an "form#Form_editorInternalLink" element
+    When I click on the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__value-container" element
+    Then I click on the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-button" element
+      And I should not see "Page 1.1.1" in the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-title" element
+      And I should see "Page 1.1" in the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-title" element
+    Then I click on the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-button" element
+      And I should not see "Page 1.1.1.1" in the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-title" element
+      And I should see "Page 1.1.1" in the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-title" element
+    Then I click on the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-button" element
+      And I should see "Page 1.1.1.1" in the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-title" element
+    When I select "Page 1.1.1.1" in the "#Form_editorInternalLink_PageID_Holder" tree dropdown
+      And I fill in "my new desc" for "Link description"
+      And I press the "Insert link" button
+    Then I press the "Save" button
+
+  Scenario: I can navigate list of Site tree links by using keyboard
+    When I select "awesome" in the "Content" HTML field
+      And I press the "Insert link" HTML field button
+      And I click "Page on this site" in the ".tox-collection__group" element
+    Then I should see an "form#Form_editorInternalLink" element
+    When I click on the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__value-container" element
+      And I press the "Down" key globally
+      And I press the "Down" key globally
+      And I press the "Down" key globally
+      And I press the "Right" key globally
+    Then I should see "Page 1.1" in the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-title" element
+      And I press the "Down" key globally
+      And I press the "Right" key globally
+    Then I should see "Page 1.1.1" in the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-title" element
+      And I press the "Down" key globally
+      And I press the "Right" key globally
+    Then I should see "Page 1.1.1.1" in the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-title" element
+      And I should not see the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-button" element
+      And I press the "Enter" key globally
+      And I fill in "my new desc" for "Link description"
+      And I press the "Insert link" button
+    Then I press the "Save" button
