@@ -23,6 +23,7 @@ de_DE:
     UNKNOWN: Unbekannt
     WHEN: Wann
   SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: Filter
     MENUTITLE: Seiten
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
     Title: 'Bearbeitete Seiten'

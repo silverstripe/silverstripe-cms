@@ -10,7 +10,7 @@ fo:
     PLEASESAVE: 'Vinarliga goym síðuna: Hendan síðan kundi ikki blíva dagført, tí at hon er ikki goymd enn.'
     PUBALLCONFIRM: 'Vinarliga almenna kunngerð allar síðurnar á heimasíðuni,  avrita innihaldsstøðið til beinleiðis'
     PUBALLFUN: '"Ger alt alment" funka'
-    REMOVEDPAGEFROMDRAFT: 'Strikaði ''{title}'' frá kladdu heimasíðuni'
+    REMOVEDPAGEFROMDRAFT: "Strikaði '{title}' frá kladdu heimasíðuni"
     ROLLBACK: 'Far aftur til hesa útgávuna'
     SAVEDRAFT: Goym
     TabContent: Innihald
@@ -19,6 +19,8 @@ fo:
     Password: Loyniorð
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Leinku frágreiðing'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Fíla
     REDIRECTTO: 'Víðarisend til'

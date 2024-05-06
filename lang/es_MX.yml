@@ -12,10 +12,10 @@ es_MX:
     UNPUBLISHED_PAGES: 'Se han despublicado %d páginas'
     UNPUBLISH_PAGES: Despublicar
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Acceso a la sección ''{title}'''
+    ACCESS: "Acceso a la sección '{title}'"
     ACCESS_HELP: 'Permitir acceso de lectura a la sección que contiene el árbol del sitio y el contenido. Los permisos de lectura y escritura se pueden manejar a través de desplegables específicos, así como los "Permisos de contenido" separados.'
     ARCHIVE: Archivar
-    ARCHIVEDPAGE: 'Se ha archivado la página ''{title}'''
+    ARCHIVEDPAGE: "Se ha archivado la página '{title}'"
     AddNew: 'Agregar página'
     AddNewButton: Agregar
     AddPageRestriction: 'Nota: algunos tipos de página no están permitidos en esta selección'
@@ -28,8 +28,9 @@ es_MX:
     ChoosePageParentMode: 'Elige donde crear esta página'
     ChoosePageType: 'Elige el tipo de página'
     Create: Crear
-    DUPLICATED: '''{title}'' se ha duplicado con éxito'
-    DUPLICATEDWITHCHILDREN: '''{title}'' y sub páginas se han duplicado con éxito'
+    DUPLICATED: "'{title}' se ha duplicado con éxito"
+    DUPLICATEDWITHCHILDREN: "'{title}' y sub páginas se han duplicado con éxito"
+    EMAIL: Email
     NEWPAGE: 'Nueva {pagetype}'
     PAGENOTEXISTS: 'Esta página no existe'
     PAGES: 'Estado de página'
@@ -39,21 +40,21 @@ es_MX:
     PLEASESAVE: 'Por favor guardar página: esta página no ha sido actualizada porque aún no ha sido guardada.'
     PUBALLCONFIRM: 'Por favor publique todas las páginas del sitio, copiando el contenido del boceto al sitio público'
     PUBALLFUN: 'Funcionalidad "Publicar todo"'
-    PUBLISHED: '''{title}'' publicada con éxito.'
+    PUBLISHED: "'{title}' publicada con éxito."
     PUBPAGES: 'Completado: {count} páginas publicadas'
     PageAdded: 'Página creada con éxito'
-    REMOVEDPAGE: 'Se ha eliminado ''{title}'' del sitio público'
-    REMOVEDPAGEFROMDRAFT: 'Se ha eliminado ''{title}'' del boceto del sitio'
+    REMOVEDPAGE: "Se ha eliminado '{title}' del sitio público"
+    REMOVEDPAGEFROMDRAFT: "Se ha eliminado '{title}' del boceto del sitio"
     REORGANISATIONSUCCESSFUL: 'Árbol del sitio reorganizado con éxito.'
     RESTORE: 'Recuperar borrador'
-    RESTORED: '''{title}'' recuperada con éxito'
+    RESTORED: "'{title}' recuperada con éxito"
     RESTORE_DESC: 'Restablecer la versión archivada a borrador'
     RESTORE_TO_ROOT: 'Restablecer borrador al primer nivel'
     RESTORE_TO_ROOT_DESC: 'Restablecer la versión archivada como borrador de página de primer nivel'
     ROLLBACK: 'Regresar a esta versión'
     ROLLEDBACKPUBv2: 'Regresar a la versión publicada.'
     ROLLEDBACKVERSIONv2: 'Restaurada a la versión #{version}.'
-    SAVED: '''{title}'' guardada con éxito.'
+    SAVED: "'{title}' guardada con éxito."
     SAVEDRAFT: Guardar
     SEARCHRESULTS: 'Resultados de la búsqueda'
     SHOW_AS_LIST: 'Mostrar como lista'
@@ -111,8 +112,10 @@ es_MX:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Versión de vista previa'
     ARCHIVEDSITEFROM: 'Sito archivado de'
+    CMS: CMS
     DRAFT: Borrador
     DRAFTSITE: 'Proyecto del Sitio'
+    Email: Email
     INSTALL_SUCCESS: 'Instalación exitosa!'
     InstallFilesDeleted: 'Los archivos de instalación han sido eliminados con éxito.'
     InstallSecurityWarning: 'Por razones de seguridad debes eliminar los archivos de instalación, a menos que tengas planeado reinstalar luego (<em>requiere ingresar como administrador</em>). Además, el servidor web ahora solo requiere permisos de escritura sobre el directorio "assets", puedes remover el acceso de escritura a los demás directorios. <a href="{link}" style="text-align: center;">Haz click aquí para eliminar los archivos de instalación.</a>'
@@ -143,6 +146,7 @@ es_MX:
     Cancel: Cancelar
     Edit: Editar
     HelpChars: 'Carácteres especiales son automáticamente convertidos o eliminados.'
+    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Redirecciona a una página interna o a una URL externa'
     FILE: Archivo
@@ -233,6 +237,7 @@ es_MX:
     many_many_ImageTracking: 'Seguir la Imagen'
     many_many_LinkTracking: 'Seguir el Enlace'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
+    TITLE_INDEX: '#'
     TITLE_TYPE: Tipo
     TITLE_USED_ON: 'Usado en'
   SilverStripe\CMS\Model\VirtualPage:
@@ -258,6 +263,7 @@ es_MX:
     ColumnDateLastModified: 'Fecha de última modificación'
     ColumnDateLastPublished: 'Fecha de última publicación'
     ColumnProblemType: 'Tipo de problema'
+    ColumnURL: URL
     HasBrokenFile: 'tiene un archivo defectuoso'
     HasBrokenLink: 'tiene un enlace roto'
     HasBrokenLinkAndFile: 'tiene un enlace roto y un archivo defectuoso'

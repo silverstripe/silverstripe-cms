@@ -10,6 +10,7 @@ el:
     Cancel: Άκυρο
     ChoosePageType: 'Επιλέξτε τύπο σελίδας'
     Create: Δημιουργία
+    EMAIL: Email
     NEWPAGE: 'Νέο {pagetype}'
     PAGENOTEXISTS: 'Αυτή η σελίδα δεν υπάρχει'
     PAGESALLOPT: 'Όλες οι σελίδες'
@@ -50,6 +51,7 @@ el:
     Title: 'Όλες οι σελίδες'
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: Προεπισκόπιση
+    Email: Email
     INSTALL_SUCCESS: 'Η Εγκατάσταση ήταν επιτυχής!'
     LOGGEDINAS: 'Συνδεδεμένος ως'
     LOGIN: Σύνδεση
@@ -64,6 +66,7 @@ el:
     ARCHIVED: Αρχειοθετημένο
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Άκυρο
+    Edit: Edit
     OK: ΟΚ
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Αυτή η σελίδα θα ανακατευθύνει τους χρήστες σε μια άλλη σελίδα'
@@ -133,6 +136,7 @@ el:
     ColumnDateLastModified: 'Ημερομηνία τελευταίας τροποποίησης'
     ColumnDateLastPublished: 'Ημερομηνία τελευταίας δημοσιεύσης'
     ColumnProblemType: 'Τύπος προβλήματος'
+    ColumnURL: URL
     HasBrokenFile: 'έχει ανενεργό αρχείο'
     HasBrokenLink: 'έχει ανενεργό σύνδεσμο '
     HasBrokenLinkAndFile: 'έχει ανενεργό σύνδεσμο και αρχείο'

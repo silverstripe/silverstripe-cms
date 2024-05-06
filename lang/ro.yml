@@ -7,7 +7,7 @@ ro:
   SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
     UNPUBLISH_PAGES: Ascunde
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Acces la secţiunea ''{title}'' '
+    ACCESS: "Acces la secţiunea '{title}' "
     ACCESS_HELP: 'Permite vizualizarea secțiunii cu arborele de pagini și conținut. Permisiunile de vizualizare și editare pot fi setate specific prin meniul vertical din pagini sau separat în "Permisiuni de conținut". '
     ARCHIVE: Arhivă
     AddNew: 'Adăugaţi o pagină nouă'
@@ -17,8 +17,8 @@ ro:
     ChoosePageParentMode: 'Alegeți unde veţi crea această pagină'
     ChoosePageType: 'Alegeţi tipul de pagină'
     Create: Creaţi
-    DUPLICATED: '''{title}'' duplicat cu succes'
-    DUPLICATEDWITHCHILDREN: '''{title}'' și descendenții săi duplicați cu succes'
+    DUPLICATED: "'{title}' duplicat cu succes"
+    DUPLICATEDWITHCHILDREN: "'{title}' și descendenții săi duplicați cu succes"
     EMAIL: E-mail
     NEWPAGE: '{pagetype} nouă'
     PAGENOTEXISTS: 'Această pagină nu există'
@@ -29,9 +29,9 @@ ro:
     PUBALLFUN: 'Funcționalitatea "Publică Tot" '
     PUBPAGES: 'Finalizat: Publicate {count} pagini'
     PageAdded: 'Pagină creată cu succes'
-    REMOVEDPAGE: 'Înlătură ''{title}'' din site-ul publicat'
-    REMOVEDPAGEFROMDRAFT: 'Înlătură ''{title}'' din site-ul ciornă'
-    RESTORED: 'Restaurare ''{title}'' cu succes'
+    REMOVEDPAGE: "Înlătură '{title}' din site-ul publicat"
+    REMOVEDPAGEFROMDRAFT: "Înlătură '{title}' din site-ul ciornă"
+    RESTORED: "Restaurare '{title}' cu succes"
     ROLLBACK: 'Revenire la versiunea aceasta'
     ROLLEDBACKPUBv2: 'Revenire la versiunea publicată'
     ROLLEDBACKVERSIONv2: 'Revenire la versiunea #{version}'
@@ -72,6 +72,7 @@ ro:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Previzualizare versiune'
     ARCHIVEDSITEFROM: 'Site arhivat din'
+    CMS: CMS
     DRAFT: Cironă
     DRAFTSITE: 'Site ciornă'
     Email: E-mail
@@ -80,6 +81,7 @@ ro:
     InstallSecurityWarning: 'Din motive de secutitate ar trebuii să ștergeți acum fișierele de instalare, în cazul în care nu planificați o reinstalare ulterioară (<em>necesită drepturi de admin, referințe mai sue</em>). De acum serverul necesită doar drepturi de scriere in directorul "assets", puteți șterge dreturile de scriere pentru celelalte directoare.. <a href="{link}" style="text-align: center;">Click aici pentru ștergerea fișierelor de instalare.</a>'
     InstallSuccessCongratulations: 'Silverstripe a fost instalat cu succes!'
     LOGGEDINAS: 'Logat ca'
+    LOGIN: Login
     LOGOUT: Logout
     NOTEWONTBESHOWN: 'Notă: acest mesaj nu v-a fi afișat vizitatorilor'
     NOTLOGGEDIN: Ne-loginat
@@ -99,6 +101,7 @@ ro:
     Cancel: Anulare
     Edit: Editare
     HelpChars: 'Caracterele speciale sunt convertite automat sau șterse'
+    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Fisier
     HEADER: 'Pagina v-a redirecționa utilizatorii către altă pagină'
@@ -153,6 +156,7 @@ ro:
     METAEXTRA: 'Etichetă Meta preferențială'
     MODIFIEDONDRAFTHELP: 'Pagina are modificări nepublicate'
     MODIFIEDONDRAFTSHORT: Modificat
+    MetadataToggle: Metadata
     MoreOptions: 'Mai multe opțiuni'
     NOTPUBLISHED: Nepublicat
     OBSOLETECLASS: 'Această pagină este de un tip {type} scos din uz. Salvând se va reseta tipul și se pot pierde datele'
@@ -217,6 +221,7 @@ ro:
     ColumnDateLastModified: 'Data ultimei modificări'
     ColumnDateLastPublished: 'Data ultimei publicări'
     ColumnProblemType: 'Tip problemă'
+    ColumnURL: URL
     HasBrokenFile: 'are fişiere corupte'
     HasBrokenLink: 'are link-uri nefuncţionale'
     HasBrokenLinkAndFile: 'are link-uri nefuncţionale şi fişiere corupte'

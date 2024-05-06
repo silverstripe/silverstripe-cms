@@ -7,7 +7,7 @@ pt:
   SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
     UNPUBLISH_PAGES: 'Remover do site Publicado'
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Acesso à secção ''{title}'''
+    ACCESS: "Acesso à secção '{title}'"
     ACCESS_HELP: 'Permitir a visualização da árvore de páginas e respectivos conteúdos. Ver e editar permissões que podem ser seleccionadas a partir de uma caixa de selecção, bem como os separadores de "permissões de conteúdo".'
     ARCHIVE: Arquivar
     AddNew: 'Adicionar nova página'
@@ -17,8 +17,8 @@ pt:
     ChoosePageParentMode: 'Escolha onde criar esta página'
     ChoosePageType: 'Escolher tipo de página'
     Create: Criar
-    DUPLICATED: 'Página ''{title}'' duplicada com sucesso'
-    DUPLICATEDWITHCHILDREN: 'Página ''{title}'' e filhos duplicados com sucesso'
+    DUPLICATED: "Página '{title}' duplicada com sucesso"
+    DUPLICATEDWITHCHILDREN: "Página '{title}' e filhos duplicados com sucesso"
     NEWPAGE: 'Nova {pagetype}'
     PAGENOTEXISTS: 'Esta página não existe'
     PAGESALLOPT: 'Todas as páginas'
@@ -29,9 +29,9 @@ pt:
     PUBALLFUN: 'funcionalidade "Publicar tudo"'
     PUBPAGES: 'Concluído: Publicadas {count} páginas'
     PageAdded: 'Página criada com sucesso'
-    REMOVEDPAGE: 'Remover ''{title}'' do site publicado'
-    REMOVEDPAGEFROMDRAFT: 'Removido ''{title}'' do site de rascunho'
-    RESTORED: '''{title}'' restaurado com sucesso'
+    REMOVEDPAGE: "Remover '{title}' do site publicado"
+    REMOVEDPAGEFROMDRAFT: "Removido '{title}' do site de rascunho"
+    RESTORED: "'{title}' restaurado com sucesso"
     ROLLBACK: 'Voltar para esta versão'
     ROLLEDBACKPUBv2: 'Voltar para a versão publicada.'
     ROLLEDBACKVERSIONv2: 'Voltar para a versão #{version}.'
@@ -96,6 +96,7 @@ pt:
     LINKDESCR: 'Descrição do link'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Cancelar
+    Edit: Edit
     HelpChars: 'Os caracteres especiais são automaticamente convertido ou removidos.'
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Ficheiro

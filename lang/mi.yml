@@ -7,7 +7,7 @@ mi:
   SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
     UNPUBLISH_PAGES: Wetewhakaputa
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Uru ki te wāhanga ''{title}'' '
+    ACCESS: "Uru ki te wāhanga '{title}' "
     ACCESS_HELP: 'Tukua kia kitea te wāhanga kei roto te whārangi rākau me ngā ihirangi. Ka taea te whakahaere i te tiro me te whakatika whakaaetanga mā ngā takaiho tauwhāiti-whārangi, mā "Ngā whakaaetanga ihirangi" motuhake hoki.'
     ARCHIVE: Puranga
     AddNew: 'Tāpiri whārangi hōu'
@@ -18,8 +18,8 @@ mi:
     ChoosePageParentMode: 'Kōwhiri ki hea hangaia ai tēnei whārangi'
     ChoosePageType: 'Kōwhiria te momo whārangi'
     Create: Hanga
-    DUPLICATED: 'I momoho te tārite i ''{title}'''
-    DUPLICATEDWITHCHILDREN: 'I momoho te tārite i ''{title}'' me ngā tamariki'
+    DUPLICATED: "I momoho te tārite i '{title}'"
+    DUPLICATEDWITHCHILDREN: "I momoho te tārite i '{title}' me ngā tamariki"
     EMAIL: Īmēra
     NEWPAGE: '{pagetype} hou'
     PAGENOTEXISTS: 'KIāore tēnei whārangi e tīari'
@@ -31,10 +31,10 @@ mi:
     PUBALLFUN: 'Te taumahinga "Whakaputaina Katoatia"'
     PUBPAGES: 'Kua oti: I whakaputaina ngā whārangi {count}'
     PageAdded: 'I momoho te hanga whārangi'
-    REMOVEDPAGE: 'I tango te ''{title}'' i te pae kua whakaputaina'
-    REMOVEDPAGEFROMDRAFT: 'I tangohia a ''{title}'' i te pae hukihuki'
+    REMOVEDPAGE: "I tango te '{title}' i te pae kua whakaputaina"
+    REMOVEDPAGEFROMDRAFT: "I tangohia a '{title}' i te pae hukihuki"
     REORGANISATIONSUCCESSFUL: 'Kua momoho te whakaraupapa anō i te rākau pae'
-    RESTORED: 'I momoho te whakaora i te ''{title}'''
+    RESTORED: "I momoho te whakaora i te '{title}'"
     ROLLBACK: 'Hoki whakamuri ki tēnei putanga.'
     ROLLEDBACKPUBv2: 'I hoki ki te tauira kua whakaputaina.'
     ROLLEDBACKVERSIONv2: 'I hoki ki te tauira #{version}.'
@@ -77,6 +77,7 @@ mi:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Putanga Arokite'
     ARCHIVEDSITEFROM: 'Pae putumōhio mai i'
+    CMS: CMS
     DRAFT: Hukihuki
     DRAFTSITE: 'Pae Hukihuki'
     Email: Īmēra

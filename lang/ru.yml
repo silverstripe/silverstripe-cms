@@ -12,10 +12,10 @@ ru:
     UNPUBLISHED_PAGES: '%d страниц сняты с публикации'
     UNPUBLISH_PAGES: 'Отмена публикации'
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Доступ к разделу ''{title}'''
+    ACCESS: "Доступ к разделу '{title}'"
     ACCESS_HELP: 'Возможность просматривать раздел, содержащий дерево страниц и контент. Настройка прав просмотра и редактирования производится через выпадающие меню на отдельных страницах, а также через "Права доступа к содержимому".'
     ARCHIVE: 'В архив'
-    ARCHIVEDPAGE: 'Страница ''{title}'' отправлена в архив'
+    ARCHIVEDPAGE: "Страница '{title}' отправлена в архив"
     AddNew: 'Добавить новую страницу'
     AddNewButton: Добавить
     AddPageRestriction: 'Внимание: некоторые типы страниц в этом случае недоступны для выбора'
@@ -28,8 +28,9 @@ ru:
     ChoosePageParentMode: 'Выберите, расположение страницы'
     ChoosePageType: 'Выберите тип страницы'
     Create: Создать
-    DUPLICATED: 'Копия ''{title}'' создана'
-    DUPLICATEDWITHCHILDREN: 'Копия ''{title}'' и дочерних элементов создана'
+    DUPLICATED: "Копия '{title}' создана"
+    DUPLICATEDWITHCHILDREN: "Копия '{title}' и дочерних элементов создана"
+    EMAIL: Email
     NEWPAGE: 'Новая {pagetype}'
     PAGENOTEXISTS: 'Страница не существует'
     PAGES: 'Статус страницы'
@@ -39,21 +40,21 @@ ru:
     PLEASESAVE: 'Пожалуйста, сохраните страницу: ее нельзя обновить, т.к. она еще не была сохранена.'
     PUBALLCONFIRM: 'Пожалуйста, опубликуйте каждую страницу сайта, перенося содержимое из чернового режима в опубликованный'
     PUBALLFUN: 'Функция "Опубликовать все"'
-    PUBLISHED: '''{title}'' опубликован'
+    PUBLISHED: "'{title}' опубликован"
     PUBPAGES: 'Готово: опубликовано {count} страниц'
     PageAdded: 'Страница успешно создана'
-    REMOVEDPAGE: 'Страница ''{title}'' удалена с опубликованного сайта'
-    REMOVEDPAGEFROMDRAFT: 'Страница ''{title}'' удалена с чернового сайта'
+    REMOVEDPAGE: "Страница '{title}' удалена с опубликованного сайта"
+    REMOVEDPAGEFROMDRAFT: "Страница '{title}' удалена с чернового сайта"
     REORGANISATIONSUCCESSFUL: 'Древесная структура сайта успешно реорганизована.'
     RESTORE: 'Восстановить черновик'
-    RESTORED: '''{title}'' успешно восстановлен'
+    RESTORED: "'{title}' успешно восстановлен"
     RESTORE_DESC: 'Восстановить архивную версию в черновик'
     RESTORE_TO_ROOT: 'Восстановить черновик в корень сайта'
     RESTORE_TO_ROOT_DESC: 'Восстановить архивную версию в черновик в корне сайта'
     ROLLBACK: 'Вернуться к этой версии'
     ROLLEDBACKPUBv2: 'Восстановлена опубликованная версия.'
     ROLLEDBACKVERSIONv2: 'Версия #{version} восстановлена.'
-    SAVED: '''{title}'' сохранен'
+    SAVED: "'{title}' сохранен"
     SAVEDRAFT: Сохранить
     SEARCHRESULTS: 'Результаты поиска'
     SHOW_AS_LIST: 'в виде списка'
@@ -113,8 +114,10 @@ ru:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Версия для просмотра'
     ARCHIVEDSITEFROM: 'Архив сайта от'
+    CMS: CMS
     DRAFT: Черновик
     DRAFTSITE: 'Черновой сайт'
+    Email: Email
     INSTALL_SUCCESS: 'Инсталляция прошла успешно!'
     InstallFilesDeleted: 'Установочные файлы были успешно удалены.'
     InstallSecurityWarning: 'Если вы не планируете в ближайшее время переустанавливать CMS, по соображениям безопасности рекомендуется удалить инсталляционные файлы (<em>для этого требуются права доступа администратора ‒ см. выше</em>). Теперь веб-серверу необходим доступ для записи только к папке "assets"; все остальные папки можно защитить от записи. <a href="{link}" style="text-align: center;">Щелкните здесь, чтобы удалить инсталляционные файлы.</a>'
@@ -299,6 +302,7 @@ ru:
     ColumnDateLastModified: 'Дата последнего изменения'
     ColumnDateLastPublished: 'Дата последней публикации'
     ColumnProblemType: 'Вид проблемы'
+    ColumnURL: URL
     HasBrokenFile: 'содержит поврежденный файл'
     HasBrokenLink: 'содержит нерабочую ссылку'
     HasBrokenLinkAndFile: 'содержит нерабочую ссылку и поврежденный файл'

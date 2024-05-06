@@ -7,6 +7,8 @@ vi_VN:
     PAGETYPEOPT: Loại
     SAVEDRAFT: Lưu
     TabContent: 'Nội dung'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: 'Trang này sẽ di chuyển người dùng đến một trang khác'
     OTHERURL: 'Đường dẩn website khác'

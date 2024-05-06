@@ -12,10 +12,10 @@ sv:
     UNPUBLISHED_PAGES: 'Avpublicerade %d sidor'
     UNPUBLISH_PAGES: Avpublicera
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Tillgång till sektionen ''{title}'''
+    ACCESS: "Tillgång till sektionen '{title}'"
     ACCESS_HELP: 'Tillåt visning av sektionen innehållande sidträdet och dess innehåll. Rättigheter att visa och redigera sidan kan hanteras i dess rullgardinsmenyer, liksom i "Innehållsbehörigheter".'
     ARCHIVE: Arkiv
-    ARCHIVEDPAGE: 'Arkiverade sidor ''{title}'''
+    ARCHIVEDPAGE: "Arkiverade sidor '{title}'"
     AddNew: 'Skapa ny sida'
     AddNewButton: 'Skapa ny'
     AddPageRestriction: 'OBS: Vissa sidtyper är inte tillåtna här'
@@ -28,8 +28,8 @@ sv:
     ChoosePageParentMode: 'Välj var du vill skapa denna sida'
     ChoosePageType: 'Välj sidtyp'
     Create: Skapa
-    DUPLICATED: 'Duplicerade ''{title}'' utan problem'
-    DUPLICATEDWITHCHILDREN: 'Duplicerade ''{title}'' och undersidor utan problem'
+    DUPLICATED: "Duplicerade '{title}' utan problem"
+    DUPLICATEDWITHCHILDREN: "Duplicerade '{title}' och undersidor utan problem"
     EMAIL: E-post
     NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Den här sidan finns inte'
@@ -41,21 +41,21 @@ sv:
     PLEASESAVE: 'Var god spara sidan. Den kan inte uppdateras eftersom den har inte sparats ännu.'
     PUBALLCONFIRM: 'Publicera alla sidor på sajten och kopiera dem till "live"'
     PUBALLFUN: '"Publicera alla"-funktion'
-    PUBLISHED: 'Publiceringen av  ''{title}'' lyckades'
+    PUBLISHED: "Publiceringen av  '{title}' lyckades"
     PUBPAGES: 'Klar: Publicerade {count} sidor'
     PageAdded: 'Lyckades skapa sida'
-    REMOVEDPAGE: 'Tog bort ''{title}'' från den publicerade sajten'
-    REMOVEDPAGEFROMDRAFT: 'Raderade ''{title}'' från utkast'
+    REMOVEDPAGE: "Tog bort '{title}' från den publicerade sajten"
+    REMOVEDPAGEFROMDRAFT: "Raderade '{title}' från utkast"
     REORGANISATIONSUCCESSFUL: 'Omorganisationen av sidträdet lyckades.'
     RESTORE: 'Återskapa utkast'
-    RESTORED: 'Återskapandet av  ''{title}'' lyckades'
+    RESTORED: "Återskapandet av  '{title}' lyckades"
     RESTORE_DESC: 'Återställ den arkiverade versionen av sidan som ett utkast'
     RESTORE_TO_ROOT: 'Återskapa utkast på top nivå'
     RESTORE_TO_ROOT_DESC: 'Återställ den arkiverade versionen till ett utkast som en top menu sida'
     ROLLBACK: 'Återställ den här versionen'
     ROLLEDBACKPUBv2: 'Återställde till den publicerade versionen.'
     ROLLEDBACKVERSIONv2: 'Återställde till version #{version}.'
-    SAVED: 'Sparade  ''{title}'' lyckades.'
+    SAVED: "Sparade  '{title}' lyckades."
     SAVEDRAFT: Spara
     SEARCHRESULTS: Sökresultat
     SHOW_AS_LIST: 'visa som lista'
@@ -94,6 +94,7 @@ sv:
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Redigera sida'
   SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: Filter
     ListView: Listvy
     MENUTITLE: Sidor
     TreeView: Trädvy
@@ -114,6 +115,7 @@ sv:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Utkast version'
     ARCHIVEDSITEFROM: 'Arkiverad sajt från'
+    CMS: CMS
     DRAFT: Utkast
     DRAFTSITE: Utkast
     Email: E-post
@@ -147,6 +149,7 @@ sv:
     Cancel: Avbryt
     Edit: Redigera
     HelpChars: 'Specialtecken konverteras eller tas bort'
+    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Omdirigerar till en annan intern eller extern sida'
     FILE: Fil
@@ -214,6 +217,7 @@ sv:
     METAEXTRA: 'Egna metataggar'
     MODIFIEDONDRAFTHELP: 'Sidan har ej publicerade ändringar'
     MODIFIEDONDRAFTSHORT: Ändrad
+    MetadataToggle: Metadata
     MoreOptions: 'Fler alternativ'
     NOTPUBLISHED: 'Ej publicerad'
     OBSOLETECLASS: 'Denna sida är den föråldrade typen {type}. Att spara kommer att återställa dess typ och du kan förlora data'
@@ -262,6 +266,7 @@ sv:
     many_many_ImageTracking: 'Spåra bild'
     many_many_LinkTracking: 'Spåra länk'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
+    TITLE_INDEX: '#'
     TITLE_TYPE: Typ
     TITLE_USED_ON: 'Använd på'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
@@ -295,6 +300,7 @@ sv:
     ColumnDateLastModified: 'Datum vid senaste modifiering'
     ColumnDateLastPublished: 'Datum vid senaste publicering'
     ColumnProblemType: Problemtyp
+    ColumnURL: URL
     HasBrokenFile: 'har trasig fil'
     HasBrokenLink: 'har trasig länk'
     HasBrokenLinkAndFile: 'har trasig länk och fil'

@@ -12,10 +12,10 @@ pl_PL:
     UNPUBLISHED_PAGES: 'Usunięto z opublikowanych %d stron'
     UNPUBLISH_PAGES: 'Cofnij publikację'
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Dostęp do sekcji ''{title}'''
+    ACCESS: "Dostęp do sekcji '{title}'"
     ACCESS_HELP: 'Zezwala na oglądanie sekcji zawierających drzewo stron oraz treść. Prawo Przeglądaj i edytuj może być obsługiwane przez pola wyboru dostępne na stronach oraz poprzez zakładkę uprawnień.'
     ARCHIVE: Archiwizuj
-    ARCHIVEDPAGE: 'Zarchiwizowano stronę ''{title}'''
+    ARCHIVEDPAGE: "Zarchiwizowano stronę '{title}'"
     AddNew: 'Dodaj nową'
     AddNewButton: Dodaj
     AddPageRestriction: 'Uwaga: Niektóre typy stron nie są dozwolone dla tego wyboru'
@@ -28,8 +28,8 @@ pl_PL:
     ChoosePageParentMode: 'Wybierz gdzie chcesz utworzyć stronę'
     ChoosePageType: 'Wybierz rodzaj strony'
     Create: Utwórz
-    DUPLICATED: 'Duplikowanie ''{title}'' zakończone powodzeniem'
-    DUPLICATEDWITHCHILDREN: 'Duplikowanie ''{title}'' oraz podstron zakończone powodzeniem'
+    DUPLICATED: "Duplikowanie '{title}' zakończone powodzeniem"
+    DUPLICATEDWITHCHILDREN: "Duplikowanie '{title}' oraz podstron zakończone powodzeniem"
     EMAIL: E-mail
     NEWPAGE: 'Nowa strona {pagetype}'
     PAGENOTEXISTS: 'Ta strona nie istnieje'
@@ -42,21 +42,21 @@ pl_PL:
     PUBALLCONFIRM: 'Opublikuj wszystko'
     PUBALLFUN: '"Opublikuj wszystko"'
     PUBALLFUN2: 'Naciśnięcie tego przycisku będzie równoznaczne z przejściem do każdej strony i naciśnięciem "opublikuj". Jest przeznaczony do użytku po masowych edycjach treści, na przykład podczas tworzenia witryny. W przypadku dużych witryn internetowych wykonanie tego zadania może nie być możliwe. W takim przypadku zalecamy rozmowę z programistami w celu utworzenia niestandardowego zadania'
-    PUBLISHED: 'Opublikowano ''{title}'' '
+    PUBLISHED: "Opublikowano '{title}' "
     PUBPAGES: 'Zrobiono:  Opublikowano {count} stron'
     PageAdded: 'Pomyślnie utworzono stronę'
-    REMOVEDPAGE: 'Usunięto ''{title}'' z opublikowanej witryny'
-    REMOVEDPAGEFROMDRAFT: '''{title}'' usunięto ze szkiców'
+    REMOVEDPAGE: "Usunięto '{title}' z opublikowanej witryny"
+    REMOVEDPAGEFROMDRAFT: "'{title}' usunięto ze szkiców"
     REORGANISATIONSUCCESSFUL: 'Pomyślnie zreorganizowano drzewo serwisu.'
     RESTORE: 'Przywróć wersję roboczą'
-    RESTORED: 'Pomyślnie przywrócono ''{title}'''
+    RESTORED: "Pomyślnie przywrócono '{title}'"
     RESTORE_DESC: 'Przywróć zarchiwizowaną wersję do wersji roboczej'
     RESTORE_TO_ROOT: 'Przywróć wersję roboczą na najwyższym poziomie'
     RESTORE_TO_ROOT_DESC: 'Przywróć zarchiwizowaną wersję do wersji roboczej jako stronę najwyższego poziomu'
     ROLLBACK: 'Wróć do tej wersji'
     ROLLEDBACKPUBv2: 'Przywrócono opublikowaną wersję'
     ROLLEDBACKVERSIONv2: 'Przywrócono wersję #{version}.'
-    SAVED: 'Zapisano ''{title}''.'
+    SAVED: "Zapisano '{title}'."
     SAVEDRAFT: Zapisz
     SEARCHRESULTS: 'Wyniki wyszukiwania'
     SHOW_AS_LIST: 'pokaż jako listę'
@@ -151,6 +151,7 @@ pl_PL:
     EMPTY: 'Proszę podać adres URL lub kliknąć anuluj'
     Edit: Edytuj
     HelpChars: 'Znaki specjalne są automatycznie konwertowane lub usuwane.'
+    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Przekierowuje do wskazanej wewnętrznej strony'
     FILE: Plik
@@ -278,6 +279,7 @@ pl_PL:
     many_many_ImageTracking: 'Śledzenie obrazków'
     many_many_LinkTracking: 'Śledzenie linków'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
+    TITLE_INDEX: '#'
     TITLE_TYPE: Typ
     TITLE_USED_ON: 'Użyto na'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
@@ -318,6 +320,7 @@ pl_PL:
     ColumnDateLastModified: 'Data ostatniej modyfikacji'
     ColumnDateLastPublished: 'Data ostatniej publikacji'
     ColumnProblemType: 'Problem do sprawdzenia'
+    ColumnURL: URL
     HasBrokenFile: 'ma uszkodzony plik'
     HasBrokenLink: 'ma uszkodzony link'
     HasBrokenLinkAndFile: 'ma uszkodzony link oraz plik'

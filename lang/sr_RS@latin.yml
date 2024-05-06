@@ -7,7 +7,7 @@ sr_RS@latin:
   SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
     UNPUBLISH_PAGES: 'Poništi objavu'
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Pristup ''{title}'' sekciji'
+    ACCESS: "Pristup '{title}' sekciji"
     ACCESS_HELP: 'Dozvoljava pregled sekcije koja sadrži stablo stranica i sadržaj. Dozvole za pregled i uređivanje mogu se podesiti putem specifičnih padajućih listi pojedinačnih stranica, kao i putem "Dozvole za sadržaj".'
     ARCHIVE: Arhiva
     AddNew: 'Dodaj novu stranicu'
@@ -18,8 +18,8 @@ sr_RS@latin:
     ChoosePageParentMode: 'Izaberite gde želite da kreirate ovu stranicu'
     ChoosePageType: 'Izaberi tip stranice'
     Create: Kreiraj
-    DUPLICATED: '''{title}'' uspešno dupliran'
-    DUPLICATEDWITHCHILDREN: '''{title}'' i deca uspešno duplirani'
+    DUPLICATED: "'{title}' uspešno dupliran"
+    DUPLICATEDWITHCHILDREN: "'{title}' i deca uspešno duplirani"
     EMAIL: E-pošta
     NEWPAGE: 'Nova {pagetype}'
     PAGENOTEXISTS: 'Ova stranica ne postoji'
@@ -31,10 +31,10 @@ sr_RS@latin:
     PUBALLFUN: 'Funkcija „Objavi sve“ '
     PUBPAGES: 'Urađeno: Objavljeno {count} stranica'
     PageAdded: 'Uspešno kreirana stranica'
-    REMOVEDPAGE: 'Sa objavljenog sajta uklonjena je stranica ''{title}'''
-    REMOVEDPAGEFROMDRAFT: 'Stranica ''{title}'' je uklonjena iz nacrta sajta'
+    REMOVEDPAGE: "Sa objavljenog sajta uklonjena je stranica '{title}'"
+    REMOVEDPAGEFROMDRAFT: "Stranica '{title}' je uklonjena iz nacrta sajta"
     REORGANISATIONSUCCESSFUL: 'Stablo sajta je uspešno reorganizovano.'
-    RESTORED: '''{title}'' uspešno obnovljen'
+    RESTORED: "'{title}' uspešno obnovljen"
     ROLLBACK: 'Vrati se na ovu verziju'
     ROLLEDBACKPUBv2: 'Vraćeno na objavljenu verziju.'
     ROLLEDBACKVERSIONv2: 'Vraćeno na verziju #{version}.'
@@ -68,6 +68,7 @@ sr_RS@latin:
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Izmeni stranicu'
   SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: Filter
     ListView: 'Prikaz u vidu liste'
     MENUTITLE: Stranice
     TreeView: 'Prikaz u vidu stabla'
@@ -76,6 +77,7 @@ sr_RS@latin:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Verzija za prethodni pregled'
     ARCHIVEDSITEFROM: 'Arhivirani sajt iz'
+    CMS: CMS
     DRAFT: Nacrt
     DRAFTSITE: 'Narct sajta'
     Email: E-pošta
@@ -224,6 +226,7 @@ sr_RS@latin:
     ColumnDateLastModified: 'Datum poslednje izmene'
     ColumnDateLastPublished: 'Datum poslednjeg publikovanja'
     ColumnProblemType: 'Tip problema'
+    ColumnURL: URL
     HasBrokenFile: 'sadrži oštećenu datoteku'
     HasBrokenLink: 'sadrži oštećen link'
     HasBrokenLinkAndFile: 'sadrži oštećene link i datoteku'

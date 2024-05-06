@@ -6,7 +6,7 @@ id:
     UNPUBLISHED_PAGES: 'Batal Terbit %d halaman'
     UNPUBLISH_PAGES: Batalterbitkan
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Akses ke bagian ''{title}'''
+    ACCESS: "Akses ke bagian '{title}'"
     ACCESS_HELP: 'Perbolehkan menampilkan bagian dengan struktur laman dan konten. Perijinan menampilkan dan mengedit dapat diatur melalui pilihan terkait laman, sebagaimana "Perijinan Konten".'
     ARCHIVE: Arsip
     AddNew: 'Tambah laman baru'
@@ -17,8 +17,9 @@ id:
     ChoosePageParentMode: 'Pilih lokasi untuk laman ini'
     ChoosePageType: 'Pilih jenis laman'
     Create: Buat
-    DUPLICATED: '''{title}'' berhasil diduplikasi'
-    DUPLICATEDWITHCHILDREN: '''{title}'' dan turunannya berhasil diduplikasi'
+    DUPLICATED: "'{title}' berhasil diduplikasi"
+    DUPLICATEDWITHCHILDREN: "'{title}' dan turunannya berhasil diduplikasi"
+    EMAIL: Email
     NEWPAGE: '{pagetype} baru'
     PAGENOTEXISTS: 'Laman ini tidak ada'
     PAGESALLOPT: 'Semua laman'
@@ -29,11 +30,11 @@ id:
     PUBALLFUN: 'Fungsi "Terbitkan Semua"'
     PUBPAGES: 'Selesai: {count} laman terbit'
     PageAdded: 'Laman berhasil dibuat'
-    REMOVEDPAGE: 'Menghapus ''{title}'' dari situs terbit'
-    REMOVEDPAGEFROMDRAFT: 'Menghapus ''{title}'' dari draf situs'
+    REMOVEDPAGE: "Menghapus '{title}' dari situs terbit"
+    REMOVEDPAGEFROMDRAFT: "Menghapus '{title}' dari draf situs"
     REORGANISATIONSUCCESSFUL: 'Pengaturan ulang struktur situs berhasil.'
     RESTORE: 'Pulihkan Draf'
-    RESTORED: 'Pemulihan ''{title}'' sukses'
+    RESTORED: "Pemulihan '{title}' sukses"
     RESTORE_DESC: 'Pulihkan versi arsip ke draf'
     RESTORE_TO_ROOT: 'Pulihkan draf pada level teratas'
     RESTORE_TO_ROOT_DESC: 'Pulihkan versi arsip ke draf sebagai halaman level teratas'
@@ -79,8 +80,10 @@ id:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Versi pratinjau'
     ARCHIVEDSITEFROM: 'Arsip dari'
+    CMS: CMS
     DRAFT: Draf
     DRAFTSITE: 'Draf situs'
+    Email: Email
     INSTALL_SUCCESS: 'Penginstalan berhasil!'
     InstallFilesDeleted: 'Berkas penginstalan telah berhasil dihapus.'
     InstallSecurityWarning: 'Untuk alasan keamanan, sekarang Anda perlu menghapus berkas-berkas penginstalan, kecuali Anda berencana untuk melakukan penginstalan ulang lagi (<em>memerlukan login admin, lihat di atas</em>). Selanjutnya server juga memerlukan akses tulis ke folder "assets", Anda dapat mencabut akses tulis dari folder lainnya. <a href="{link}" style="text-align: center;">Klik di sini untuk menghapus berkas-berkas penginstalan.</a>'
@@ -106,7 +109,9 @@ id:
     LINKDESCR: 'Deskripsi tautan'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Batal
+    Edit: Edit
     HelpChars: 'Karakter khusus akan dikonversi secara otomatis atau dihapus.'
+    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Berkas
     HEADER: 'Laman ini akan mengarahkan pengguna ke laman lain'
@@ -161,6 +166,7 @@ id:
     METAEXTRA: 'Penanda Meta'
     MODIFIEDONDRAFTHELP: 'Laman memiliki perubahan yang tidak terbit'
     MODIFIEDONDRAFTSHORT: Diubah
+    MetadataToggle: Metadata
     MoreOptions: 'Pilihan lain'
     NOTPUBLISHED: 'Tidak diterbitkan'
     OBSOLETECLASS: 'Jenis laman {type} ini sudah usang. Menyimpannya akan memperbarui jenisnya dan Anda kemungkinan akan kehilangan data'
@@ -210,6 +216,7 @@ id:
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Laman Tertaut'
     DESCRIPTION: 'Tampilkan konten laman lain'
+    EditLink: edit
     HEADER: 'Ini adalah laman virtual'
     HEADERWITHLINK: 'Ini adalah laman virtual dengan konten salinan dari "{title}" ({link})'
     PLURALNAME: 'Laman Dasar'
@@ -228,6 +235,7 @@ id:
     ColumnDateLastModified: 'Tanggal terakhir modifikasi'
     ColumnDateLastPublished: 'Tanggal terbit terakhir'
     ColumnProblemType: 'Jenis masalah'
+    ColumnURL: URL
     HasBrokenFile: 'terdapat berkas yang rusak'
     HasBrokenLink: 'terdapat tautan yang rusak'
     HasBrokenLinkAndFile: 'terdapat berkas dan tautan yang rusak'

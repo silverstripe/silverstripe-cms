@@ -21,7 +21,7 @@ ja_JP:
     PAGETYPEOPT: ページタイプ
     PUBPAGES: '完了: {count}ページを公開しました'
     PageAdded: ページの作成に成功
-    REMOVEDPAGE: '''{title}''を公開されているサイトから削除しました'
+    REMOVEDPAGE: "'{title}'を公開されているサイトから削除しました"
     REORGANISATIONSUCCESSFUL: サイトツリーの再編集に成功しました。
     RESTORED: '{title}を復旧しました'
     ROLLBACK: このバージョンへ戻す
@@ -76,6 +76,7 @@ ja_JP:
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: リンクの説明
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
     HelpChars: 特殊文字は自動的に変換されたか取り除かれました
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: ファイル

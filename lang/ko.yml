@@ -7,7 +7,7 @@ ko:
   SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
     UNPUBLISH_PAGES: 비공개
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: '''{title}'' 섹션으로 이동'
+    ACCESS: "'{title}' 섹션으로 이동"
     ACCESS_HELP: '페이지 트리 및 내용을 포함 섹션의 열람을 허용합니다. 표시 및 편집 권한은 페이지의 특정 드롭 다운뿐만 아니라 독립적 인 "콘텐츠의 권한"을 통해 처리 할 수 있습니다.'
     ARCHIVE: 저장소
     AddNew: '새 페이지를 추가'
@@ -17,8 +17,8 @@ ko:
     ChoosePageParentMode: '이 페이지를 만들 위치를 선택'
     ChoosePageType: '페이지 유형을 선택'
     Create: '새로 만들기'
-    DUPLICATED: '''{title}''의 복제가 완료되었습니다.'
-    DUPLICATEDWITHCHILDREN: '''{title}'' 와 그 하위에대한 복제가 완료되었습니다'
+    DUPLICATED: "'{title}'의 복제가 완료되었습니다."
+    DUPLICATEDWITHCHILDREN: "'{title}' 와 그 하위에대한 복제가 완료되었습니다"
     EMAIL: 이메일
     NEWPAGE: '새로운 {pagetype}'
     PAGENOTEXISTS: '이 페이지는 존재하지 않습니다'
@@ -29,7 +29,7 @@ ko:
     PUBALLFUN: ' "모두 공개"기능'
     PUBPAGES: '완료: {count} 페이지를 공개했습니다'
     PageAdded: '페이지를 만드는 데 성공'
-    REMOVEDPAGE: '''{title}''을 공개된 사이트에서 제거했습니다'
+    REMOVEDPAGE: "'{title}'을 공개된 사이트에서 제거했습니다"
     REMOVEDPAGEFROMDRAFT: '{title} 초안 사이트에서 제거했습니다'
     RESTORED: '{title}를 복구했습니다'
     ROLLBACK: '이 버전으로 복원'
@@ -74,6 +74,7 @@ ko:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: '미리보기 버젼'
     ARCHIVEDSITEFROM: '로부터 보관된 사이트'
+    CMS: CMS
     DRAFT: 초안
     DRAFTSITE: '초안 사이트'
     Email: 이메일
@@ -100,6 +101,7 @@ ko:
     Cancel: 취소
     Edit: 편집
     HelpChars: '특수 문자는 자동으로 변환되었는지 제거되었습니다'
+    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     HEADER: '이 페이지는 다른 페이지로 사용자들을 이동시킵니다.'
     OTHERURL: '다른 웹사이트 URL'
@@ -215,6 +217,7 @@ ko:
     ColumnDateLastModified: '최종 수정일'
     ColumnDateLastPublished: '최종 게시일'
     ColumnProblemType: '문제 유형'
+    ColumnURL: URL
     HasBrokenFile: '깨진 파일이 있습니다'
     HasBrokenLink: '링크가 손상되었습니다'
     HasBrokenLinkAndFile: '손상된 링크와 파일이 있습니다'

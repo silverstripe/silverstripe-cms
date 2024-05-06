@@ -7,7 +7,7 @@ he_IL:
   SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
     UNPUBLISH_PAGES: 'ביטול הפרסום'
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'גישה לאגף ''{title}'''
+    ACCESS: "גישה לאגף '{title}'"
     ACCESS_HELP: 'מתן האפשרות לצפות באגף המכיל את עץ העמודים והתוכן. ניתן לצפות ולערוך הרשאות באמצעות תיבות בחירה ייעודיות לכל עמוד, כמו גם „הרשאות התוכן“ הנפרדות.'
     ARCHIVE: ארכיון
     AddNew: 'הוספת עמוד חדש'
@@ -26,9 +26,9 @@ he_IL:
     PUBALLFUN: 'פרסום הכול'
     PUBPAGES: 'בוצע: פורסמו {count} עמודים'
     PageAdded: 'העמוד נוצר בהצלחה'
-    REMOVEDPAGE: '''{title}'' הוסר מהאתר שפורסם'
-    REMOVEDPAGEFROMDRAFT: '''$s'' הוסר מאתר הטיוטה'
-    RESTORED: '''{title}'' שוחזר בהצלחה'
+    REMOVEDPAGE: "'{title}' הוסר מהאתר שפורסם"
+    REMOVEDPAGEFROMDRAFT: "'$s' הוסר מאתר הטיוטה"
+    RESTORED: "'{title}' שוחזר בהצלחה"
     ROLLBACK: 'שחזור לגרסה זו'
     SAVEDRAFT: שמור
     TabContent: תוכן
@@ -87,6 +87,7 @@ he_IL:
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'תאור הקישור'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
     HelpChars: ' תווים מיוחדים מומרים אוטומטית או שהם מוסרים.'
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: קובץ

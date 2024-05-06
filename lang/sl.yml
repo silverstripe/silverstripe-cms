@@ -12,10 +12,10 @@ sl:
     UNPUBLISHED_PAGES: 'Iz objave smo umaknili %d stran/i'
     UNPUBLISH_PAGES: 'Umakni iz objave'
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Dostop do razdelka ''{title}'' '
+    ACCESS: "Dostop do razdelka '{title}' "
     ACCESS_HELP: 'Dovoli vpogled  sklop z drevesno strukturo in vsebino. Pravice za ogled in urejanje je možno urejati prek dropdown-seznamov za vsako posamezno stran, ali pa ločeno v sklopu Nastavitve pravic za upravljanje z vsebino (Content permissions). '
     ARCHIVE: Arhiv
-    ARCHIVEDPAGE: 'Arhivirana stran ''{title}'''
+    ARCHIVEDPAGE: "Arhivirana stran '{title}'"
     AddNew: 'Dodaj novo stran'
     AddNewButton: Dodaj
     AddPageRestriction: 'Pozor: nekateri tipi strani niso dovoljeni za to izbiro'
@@ -28,8 +28,8 @@ sl:
     ChoosePageParentMode: 'Izberite mesto, kjer želite ustvariti novo stran'
     ChoosePageType: 'Izberi tip strani'
     Create: Ustvari
-    DUPLICATED: 'Ustvarili smo kopijo ''{title}'''
-    DUPLICATEDWITHCHILDREN: 'Ustvarili smo kopijo ''{title}'' in podrejenih strani'
+    DUPLICATED: "Ustvarili smo kopijo '{title}'"
+    DUPLICATEDWITHCHILDREN: "Ustvarili smo kopijo '{title}' in podrejenih strani"
     EMAIL: E-pošta
     NEWPAGE: 'Dodaj {pagetype}'
     PAGENOTEXISTS: 'Stran na tem naslovu ne obstaja'
@@ -42,21 +42,21 @@ sl:
     PUBALLCONFIRM: 'Objavite vse strani spletnega mesta (vsebine bodo prekopirane v "objavljeno" različico spletnega mesta).'
     PUBALLFUN: 'Funkcionalnost "Objavi vse"'
     PUBALLFUN2: 'S to akcijo boste sprožili objavo vseh strani. Namenjena je objavljanju obsežnejših sprememb, kot je na primer lansiranje spletnega mesta. Pri obsežnejših spletnih mestih se akcija morda niti ne bo izvedla do konca. V tem primeru se obrnite na vašega razvijalca. '
-    PUBLISHED: 'Objavili smo stran ''{title}''.'
+    PUBLISHED: "Objavili smo stran '{title}'."
     PUBPAGES: 'Opravljeno: Objavljenih je {count} strani'
     PageAdded: 'Stran je bila uspešno ustvarjena'
-    REMOVEDPAGE: '''{title}'' je odstranjena z objavljenega spletnega mesta. '
-    REMOVEDPAGEFROMDRAFT: 'Vsebina, odstranjena iz osnutka spletnega mesta: ''{title}'''
+    REMOVEDPAGE: "'{title}' je odstranjena z objavljenega spletnega mesta. "
+    REMOVEDPAGEFROMDRAFT: "Vsebina, odstranjena iz osnutka spletnega mesta: '{title}'"
     REORGANISATIONSUCCESSFUL: 'Preuredili smo drevesno strukturo.'
     RESTORE: 'Obnovi osnutek'
-    RESTORED: 'Obnovili smo stran ''{title}''.'
+    RESTORED: "Obnovili smo stran '{title}'."
     RESTORE_DESC: 'Obnovi arhivirano različico v osnutek.'
     RESTORE_TO_ROOT: 'Obnovi osnutek na prvem nivoju.'
     RESTORE_TO_ROOT_DESC: 'Obnovi arhivirano različico kot osnutek na prvem nivoju.'
     ROLLBACK: 'Povrni v to različico'
     ROLLEDBACKPUBv2: 'Stran smo povrnili iz različice, ki je objavljena.'
     ROLLEDBACKVERSIONv2: 'Stran smo povrnili iz različice #{version}.'
-    SAVED: 'Uspešno shranjeno ''{title}''.'
+    SAVED: "Uspešno shranjeno '{title}'."
     SAVEDRAFT: Shrani
     SEARCHRESULTS: 'Rezultati iskanja'
     SHOW_AS_LIST: 'prikaži v obliki seznama'
@@ -96,6 +96,7 @@ sl:
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Uredi stran'
   SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: Filter
     ListView: Seznam
     MENUTITLE: 'Seznam strani'
     TreeView: Drevo
@@ -116,6 +117,7 @@ sl:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Predogled različice'
     ARCHIVEDSITEFROM: 'Arhivirana različica iz'
+    CMS: CMS
     DRAFT: Osnutek
     DRAFTSITE: 'Osnutek spletnega mesta'
     Email: E-pošta
@@ -321,6 +323,7 @@ sl:
     many_many_ViewerGroups: 'Skupine ogledovalcev'
     many_many_ViewerMembers: Ogledovalci
   SilverStripe\CMS\Model\SiteTreeFileExtension:
+    TITLE_INDEX: '#'
     TITLE_TYPE: Tip
     TITLE_USED_ON: 'Uporabljena na'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
@@ -366,6 +369,7 @@ sl:
     ColumnDateLastModified: 'Datum zadnje spremembe'
     ColumnDateLastPublished: 'Datum zadnje objave'
     ColumnProblemType: 'Vrsta težave'
+    ColumnURL: URL
     HasBrokenFile: 'vsebuje datoteko z napako'
     HasBrokenLink: 'ima nedelujočo povezavo'
     HasBrokenLinkAndFile: 'ima nedelujočo povezavo in vsebuje datoteko z napako'

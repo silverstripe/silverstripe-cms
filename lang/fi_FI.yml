@@ -12,10 +12,10 @@ fi_FI:
     UNPUBLISHED_PAGES: 'Poistettiin %d sivua julkaisusta'
     UNPUBLISH_PAGES: 'Poista julkaisusta'
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Pääsy ''{title}'' -osioon'
+    ACCESS: "Pääsy '{title}' -osioon"
     ACCESS_HELP: 'Oikeuttaa näkemään osion, joka sisältää sivurakenteen ja sisällön. Katselu- ja muokkausoikeuksia voidaan käsitellä sivukohtaisten pudotusvalikoiden kautta, kuten myös erillisestä "Sisällön oikeudet"-kohdasta.'
     ARCHIVE: Arkistoi
-    ARCHIVEDPAGE: 'Arkistoitiin sivu ''{title}'''
+    ARCHIVEDPAGE: "Arkistoitiin sivu '{title}'"
     AddNew: 'Lisää uusi sivu'
     AddNewButton: 'Lisää uusi'
     AddPageRestriction: 'Huomio: Tietyt sivutyypit eivät ole sallittuja valitun sivutyypin alle.'
@@ -28,8 +28,8 @@ fi_FI:
     ChoosePageParentMode: 'Valitse kohde, minne sivu luodaan'
     ChoosePageType: 'Valitse sivutyyppi'
     Create: Luo
-    DUPLICATED: '''{title}''  monistettu onnistuneesti'
-    DUPLICATEDWITHCHILDREN: '''{title}'' ja alasivu monistettiin onnistuneesti'
+    DUPLICATED: "'{title}'  monistettu onnistuneesti"
+    DUPLICATEDWITHCHILDREN: "'{title}' ja alasivu monistettiin onnistuneesti"
     EMAIL: Sähköposti
     NEWPAGE: 'Uusi {pagetype}'
     PAGENOTEXISTS: 'Tätä sivua ei ole olemassa'
@@ -41,21 +41,21 @@ fi_FI:
     PLEASESAVE: 'Tallenna sivu: tätä sivua ei voida päivittää, koska sitä ei ole vielä tallennettu.'
     PUBALLCONFIRM: 'Julkaise jokainen sivu tällä sivustolla kopioiden luonnosten sisältö julkiselle sivustolle'
     PUBALLFUN: 'Julkaise kaikki -toiminto'
-    PUBLISHED: 'Julkaistiin ''{title}'' onnistuneesti.'
+    PUBLISHED: "Julkaistiin '{title}' onnistuneesti."
     PUBPAGES: 'Valmis: julkaistiin {count} sivu(a)'
     PageAdded: 'Sivun luonti onnistui'
-    REMOVEDPAGE: '''{title}'' poistettiin julkaistulta sivustolta'
-    REMOVEDPAGEFROMDRAFT: 'Poistettu ''{title}'' luonnossivustolta'
+    REMOVEDPAGE: "'{title}' poistettiin julkaistulta sivustolta"
+    REMOVEDPAGEFROMDRAFT: "Poistettu '{title}' luonnossivustolta"
     REORGANISATIONSUCCESSFUL: 'Hakemistopuu uudelleenjärjestettiin onnistuneesti.'
     RESTORE: 'Palauta luonnos'
-    RESTORED: '''{title}'' palautettiin onnistuneesti'
+    RESTORED: "'{title}' palautettiin onnistuneesti"
     RESTORE_DESC: 'Palauta arkistoitu versio luonnokseksi'
     RESTORE_TO_ROOT: 'Palauta luonnos päätasolle'
     RESTORE_TO_ROOT_DESC: 'Palauta arkistoitu versio luonnoksena päätason sivuksi'
     ROLLBACK: 'Palauta tähän versioon'
     ROLLEDBACKPUBv2: 'Palattiin takaisin julkaistuun versioon'
     ROLLEDBACKVERSIONv2: 'Palautettu versioon #{version}.'
-    SAVED: 'Tallennettiin ''{title}'' onnistuneesti.'
+    SAVED: "Tallennettiin '{title}' onnistuneesti."
     SAVEDRAFT: Tallenna
     SEARCHRESULTS: Hakutulokset
     SHOW_AS_LIST: 'näytä listana'
@@ -114,6 +114,7 @@ fi_FI:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Esikatselu versio'
     ARCHIVEDSITEFROM: 'Arkistoitu sivusto lähteestä:'
+    CMS: CMS
     DRAFT: Luonnos
     DRAFTSITE: Luonnossivusto
     Email: Sähköposti
@@ -146,6 +147,7 @@ fi_FI:
     Cancel: Peruuta
     Edit: Muokkaa
     HelpChars: 'Erikoismerkit muunnetaan tai poistetaan automaattisesti.'
+    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Edelleenohjaa toiselle sisäiselle sivulle tai ulkoiseen URL-osoitteeseen'
     HEADER: 'Tämä sivu ohjaa käyttäjän toiselle sivulle'
@@ -260,6 +262,7 @@ fi_FI:
     many_many_ImageTracking: 'Kuvan seuranta'
     many_many_LinkTracking: 'Linkin seuranta'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
+    TITLE_INDEX: '#'
     TITLE_TYPE: Tyyppi
     TITLE_USED_ON: 'Käytössä:'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:

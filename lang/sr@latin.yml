@@ -1,6 +1,6 @@
 sr@latin:
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Pristup ''{title}'' sekciji'
+    ACCESS: "Pristup '{title}' sekciji"
     CANT_REORGANISE: 'Nemate pravo da menjate stranice vršnog nivoa. Vaše izmene nisu sačuvane.'
     Cancel: Odustani
     Create: Kreiraj
@@ -14,6 +14,8 @@ sr@latin:
     TabContent: Sadržaj
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     UNKNOWN: Nepoznato
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: Filter
   SilverStripe\CMS\Controllers\ContentController:
     Email: 'Elektronska pošta'
     LOGOUT: 'Odjavi se'
@@ -44,6 +46,7 @@ sr@latin:
     has_one_Parent: Roditelj
   SilverStripe\CMS\Reports\BrokenLinksReport:
     Any: 'Bilo koji'
+    ColumnURL: URL
   SilverStripe\CMS\Search\SearchForm:
     FILTERLABELTEXT: Pretraga
     GO: Idi

@@ -7,7 +7,7 @@ et_EE:
   SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
     UNPUBLISH_PAGES: 'Võta maha'
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Juurdepääs jaotisele ''{title}'''
+    ACCESS: "Juurdepääs jaotisele '{title}'"
     ACCESS_HELP: 'Luba lehepuud ja sisu hõlmava jaotise vaatamine. Vaatamis- ja redigeerimisõigusi on võimalik hallata nii lehepõhiselt kui ka eraldi jaotise "Sisu õigused" abil.'
     ARCHIVE: Arhiiv
     AddNew: 'Lisa uus leht'
@@ -17,6 +17,7 @@ et_EE:
     ChoosePageParentMode: 'Valige, kuhu see leht luua'
     ChoosePageType: 'Valige lehe tüüp'
     Create: Loo
+    EMAIL: Email
     NEWPAGE: 'Uus {pagetype}'
     PAGENOTEXISTS: 'Antud lehekülge ei eksisteeri'
     PAGESALLOPT: 'Kõik lehed'
@@ -27,10 +28,10 @@ et_EE:
     PUBALLFUN: '"Avalda Kõik" funktsionaalsus'
     PUBPAGES: 'Valmis: {count} lehte avaldatud'
     PageAdded: 'Lehekülje loomine õnnestus'
-    REMOVEDPAGE: 'Leht ''{title}'' eemaldati avaldatud saitide hulgast'
-    REMOVEDPAGEFROMDRAFT: '''{title}'' eemaldatud visandi lehelt'
+    REMOVEDPAGE: "Leht '{title}' eemaldati avaldatud saitide hulgast"
+    REMOVEDPAGEFROMDRAFT: "'{title}' eemaldatud visandi lehelt"
     REORGANISATIONSUCCESSFUL: 'Saidipuu korraldati edukalt ümber.'
-    RESTORED: '''{title}'' taastati edukalt'
+    RESTORED: "'{title}' taastati edukalt"
     ROLLBACK: 'Pööra tagasi sellesse versiooni'
     SAVEDRAFT: Salvesta
     SEARCHRESULTS: 'Otsingu tulemused'
@@ -58,6 +59,7 @@ et_EE:
     UNKNOWN: Tundmatu
     VIEW: vaade
     VIEWINGVERSION: 'Hetkel kuvatud versioon {version}.'
+    WHEN: When
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Muuda lehte'
   SilverStripe\CMS\Controllers\CMSPagesController:
@@ -72,6 +74,7 @@ et_EE:
     ARCHIVEDSITEFROM: 'Arhiveeritud sait asukohast'
     DRAFT: Mustand
     DRAFTSITE: 'Mustandi sait'
+    Email: Email
     INSTALL_SUCCESS: 'Paigaldus oli edukas!'
     InstallFilesDeleted: 'Installifailid on edukalt kustutatud.'
     InstallSecurityWarning: 'Turvalisuse põhjustel soovitame nüüd installifailid kustutada, juhul kui te ei plaani hiljem uuesti installida (<em>nõuab administraatorina sisselogimist, vt ülevalt</em>). Edaspidi vajab veebiserver juurdepääsu kirjutamiseks ainult kaustale "assets". Võite eemaldada kõigi teiste kaustade kirjutusõigused. <a href="{link}" style="text-align: center;">Klõpsake siin installifailide kustutamiseks.</a>'
@@ -168,7 +171,7 @@ et_EE:
     PLURALNAME: Lehed
     PageTypNotAllowedOnRoot: '"{type} tüüpi lehekülg ei ole juurkataloogi tasemel lubatud'
     PageTypeNotAllowed: 'Lehe tüüp "{type}" ei ole selle vanemlehe alamlehena lubatud'
-    REMOVE_INSTALL_WARNING: 'Hoiatus! Peaksite eemaldama faili install.php sellest SilverStripe''i installist turvalisuse kaalutlustel.'
+    REMOVE_INSTALL_WARNING: "Hoiatus! Peaksite eemaldama faili install.php sellest SilverStripe'i installist turvalisuse kaalutlustel."
     REORGANISE_DESCRIPTION: 'Muuda saidi struktuuri'
     REORGANISE_HELP: 'Korraldage lehti saidipuus ümber pukseerimisega.'
     SHOWINMENUS: 'Näita menüüdes?'
@@ -209,6 +212,7 @@ et_EE:
     ColumnDateLastModified: 'Viimane muutmiskuupäev'
     ColumnDateLastPublished: 'Viimane avaldamiskuupäev'
     ColumnProblemType: 'Probleemi tüüp'
+    ColumnURL: URL
     HasBrokenFile: 'sisaldab katkist faili'
     HasBrokenLink: 'sisaldab katkist linki'
     HasBrokenLinkAndFile: 'sisaldab katkist linki ja faili'

@@ -10,6 +10,8 @@ ne:
     Password: पासओड
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'लिन्क विवरण'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: फाइल
     HASBEENSETUP: 'कुनै पनि पुनर्निर्देशनबिना नै एउटा पुनर्निदेशन पृष्ठ सेटअप गरियो । '

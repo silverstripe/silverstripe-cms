@@ -21,7 +21,7 @@ tr:
     PUBALLCONFIRM: 'Lütfen taslak sitedeki tüm sayfaları yayınlanmakta olan siteye kopyalayıp yayınla.'
     PUBALLFUN: '"Hepsini Yayınla" özelliği'
     PageAdded: 'Sayfa başarıyla oluşturuldu'
-    REMOVEDPAGEFROMDRAFT: '''{title}'' taslak siteden silindi'
+    REMOVEDPAGEFROMDRAFT: "'{title}' taslak siteden silindi"
     ROLLBACK: 'Bu sürüme geri dön'
     SAVEDRAFT: Kaydet
     SEARCHRESULTS: 'Arama sonuçları'
@@ -62,6 +62,8 @@ tr:
     ANCHORVALUE: Çapa
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Bağlantı açıklaması'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Dosya
     HEADER: 'Bu sayfa, kullanıcıları başka bir sayfaya yönlendirir'

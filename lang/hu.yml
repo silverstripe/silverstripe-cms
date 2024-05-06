@@ -14,8 +14,8 @@ hu:
     ChoosePageParentMode: 'Adja meg az oldal létrehozásának helyét'
     ChoosePageType: 'Válassza ki az oldal típusát'
     Create: Létrehozni
-    DUPLICATED: '''{title}'' sikeresen duplikálva'
-    DUPLICATEDWITHCHILDREN: '''{title}'' és oldalai sikeresen duplikálva'
+    DUPLICATED: "'{title}' sikeresen duplikálva"
+    DUPLICATEDWITHCHILDREN: "'{title}' és oldalai sikeresen duplikálva"
     EMAIL: E-mail
     NEWPAGE: 'Új {pagetype}'
     PAGENOTEXISTS: 'Ez az oldal nem létezik.'
@@ -27,9 +27,9 @@ hu:
     PUBALLFUN: '"Összes publikálása" funkció'
     PUBPAGES: '{count} oldalt publikált'
     PageAdded: 'Oldal sikeresen létrehozva'
-    REMOVEDPAGE: '''{title}'' törölve a publikált oldalról'
-    REMOVEDPAGEFROMDRAFT: '''{title}'' törlése a piszkozatoldalról'
-    RESTORED: '''{title}'' sikeresen helyreállítva'
+    REMOVEDPAGE: "'{title}' törölve a publikált oldalról"
+    REMOVEDPAGEFROMDRAFT: "'{title}' törlése a piszkozatoldalról"
+    RESTORED: "'{title}' sikeresen helyreállítva"
     ROLLBACK: 'Visszaállítás ehhez a verzióhoz'
     ROLLEDBACKPUBv2: 'Visszatérés a publikált verzióhoz.'
     ROLLEDBACKVERSIONv2: '#{version} verzió beállítva.'
@@ -96,6 +96,7 @@ hu:
     Cancel: Mégsem
     Edit: Szerkeszt
     HelpChars: 'A speciális karakterek automatikusan konvertálódnak vagy törlődnek.'
+    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Fájl
     HEADER: 'Ez az oldal egy másik oldalra fogja írányítani a felhasználókat'

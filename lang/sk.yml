@@ -12,10 +12,10 @@ sk:
     UNPUBLISHED_PAGES: 'Nezverejnených %d stránok'
     UNPUBLISH_PAGES: Nezverejniť
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Pristup k ''{title}'' sekcii'
+    ACCESS: "Pristup k '{title}' sekcii"
     ACCESS_HELP: 'Povoliť prezeranie sekcie obsahujúcu strom stránok a obsah. Práva na prezeranie a úpravu môžu byť nastavené cez výber, ako aj jednotlivo  "Práva obsahu".'
     ARCHIVE: Archív
-    ARCHIVEDPAGE: 'Archivovaná stránka ''{title}'''
+    ARCHIVEDPAGE: "Archivovaná stránka '{title}'"
     AddNew: 'Pridať novú stránku'
     AddNewButton: 'Pridať nový'
     AddPageRestriction: 'Poznámka: Niektoré typy stránok nie sú povolené pre tento výber'
@@ -28,8 +28,8 @@ sk:
     ChoosePageParentMode: 'Vyberte, kde vytvoriť túto stránku'
     ChoosePageType: 'Vyberte typ stránky'
     Create: Vytvoriť
-    DUPLICATED: 'Duplikované ''{title}'' úspešne'
-    DUPLICATEDWITHCHILDREN: 'Duplikované ''{title}'' a potomkovia úspešne'
+    DUPLICATED: "Duplikované '{title}' úspešne"
+    DUPLICATEDWITHCHILDREN: "Duplikované '{title}' a potomkovia úspešne"
     EMAIL: E-mail
     NEWPAGE: 'Nová {pagetype}'
     PAGENOTEXISTS: 'Táto stránka neexistuje.'
@@ -45,18 +45,18 @@ sk:
     PUBLISHED: 'Uverejnené "{title}" úspešne.'
     PUBPAGES: 'Hotovo: Publikované {count} stránky'
     PageAdded: 'Stránka vytvorená úspešne'
-    REMOVEDPAGE: 'Zmazané ''{title}'' z verejného webu'
-    REMOVEDPAGEFROMDRAFT: 'Odstránené ''{title}'' z konceptu webu'
+    REMOVEDPAGE: "Zmazané '{title}' z verejného webu"
+    REMOVEDPAGEFROMDRAFT: "Odstránené '{title}' z konceptu webu"
     REORGANISATIONSUCCESSFUL: 'Strom webu bol reorganizovaný úspešne.'
     RESTORE: 'Obnoviť koncept'
-    RESTORED: 'Obnovené ''{title}'' úspešne'
+    RESTORED: "Obnovené '{title}' úspešne"
     RESTORE_DESC: 'Obnoviť archivovanú verziu na koncept'
     RESTORE_TO_ROOT: 'Obnoviť koncept na najvyšiu úroveň'
     RESTORE_TO_ROOT_DESC: 'Obnoviť archivovanú verziu na koncept ako stránku najvyššej úrovne'
     ROLLBACK: 'Návrat na túto verziu'
     ROLLEDBACKPUBv2: 'Vrátené späť na zverejnenú verziu.'
     ROLLEDBACKVERSIONv2: 'Vrátené späť na verziu #{version}.'
-    SAVED: 'Uložené ''{title}'' úspešne.'
+    SAVED: "Uložené '{title}' úspešne."
     SAVEDRAFT: Uložiť
     SEARCHRESULTS: 'Výsledky vyhľadávania'
     SHOW_AS_LIST: 'ukázať ako zoznam'
@@ -96,6 +96,7 @@ sk:
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
     MENUTITLE: 'Upraviť stránku'
   SilverStripe\CMS\Controllers\CMSPagesController:
+    FILTER: Filter
     ListView: 'Zobraziť zoznam'
     MENUTITLE: Stránky
     TreeView: 'Zobraziť strom'
@@ -116,6 +117,7 @@ sk:
   SilverStripe\CMS\Controllers\ContentController:
     ARCHIVEDSITE: 'Zobrazenie verzie'
     ARCHIVEDSITEFROM: 'Archivovaný web z'
+    CMS: CMS
     DRAFT: Koncept
     DRAFTSITE: 'Koncept webu'
     Email: E-mail
@@ -150,6 +152,7 @@ sk:
     EMPTY: 'Zadajte prosím URL segment alebo kliknite zrušiť'
     Edit: Editovať
     HelpChars: 'Špeciálne znaky sú automaticky zkonvertované alebo ostránené.'
+    OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Presmeruje na internú stránku alebo na externé URL'
     FILE: Súbor
@@ -283,6 +286,7 @@ sk:
     db_CanViewType: 'Môže zobraziť typ'
     db_Content: Obsah
     db_ContentReviewType: 'Typ kontroly obsahu'
+    db_ExtraMeta: 'Extra meta'
     db_HasBrokenFile: 'Obsahuje porušený súbor'
     db_HasBrokenLink: 'Obsahuje porušený odkaz'
     db_LastEditedByName: 'Naposledy upravené podľa mena'
@@ -319,6 +323,7 @@ sk:
     many_many_ViewerGroups: 'Skupiny prezeračov'
     many_many_ViewerMembers: 'Členovia prezeračov'
   SilverStripe\CMS\Model\SiteTreeFileExtension:
+    TITLE_INDEX: '#'
     TITLE_TYPE: Typ
     TITLE_USED_ON: 'Použité na'
   SilverStripe\CMS\Model\SiteTreeFileFormFactoryExtension:
@@ -364,6 +369,7 @@ sk:
     ColumnDateLastModified: 'Dátum poslednej úpravy'
     ColumnDateLastPublished: 'Dátum poslednej publikácie'
     ColumnProblemType: 'Problémový typ'
+    ColumnURL: URL
     HasBrokenFile: 'obsahuje porušený súbor'
     HasBrokenLink: 'obsahuje porušený odkaz'
     HasBrokenLinkAndFile: 'obsahuje porušený odkaz a súbor'

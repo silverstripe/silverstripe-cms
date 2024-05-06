@@ -9,10 +9,10 @@ ar:
     UNPUBLISHED_PAGES: '%d صفحة غير منشورة'
     UNPUBLISH_PAGES: 'الغاء النشر'
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'النفاذ إلى القسم ''{title}'''
+    ACCESS: "النفاذ إلى القسم '{title}'"
     ACCESS_HELP: 'سماح بعرض لقسم يحتوي على صفحة الشجرة والمحتوى. يمكن التعامل معها عرض وتحرير الأذونات من خلال القائمه المنسدله للروابط محددة صفحة، فضلا عن فصل "أذونات المحتوى".'
     ARCHIVE: أرشفة
-    ARCHIVEDPAGE: 'أرشفة الصفحة ''{title}'''
+    ARCHIVEDPAGE: "أرشفة الصفحة '{title}'"
     AddNew: 'اضافة صفحة جديدة'
     AddNewButton: 'اضافة جديد'
     AddPageRestriction: 'ملاحظة: لا يسمح ببعض أنواع الصفحات لهذا الاختيار'
@@ -21,8 +21,8 @@ ar:
     ChoosePageParentMode: 'اختر مكان إنشاء هذه الصفحة'
     ChoosePageType: 'اختر نوع الصفحة'
     Create: خلق
-    DUPLICATED: 'تكرار ''{title}'' بنجاح'
-    DUPLICATEDWITHCHILDREN: 'تكرار ''{title}'' والتوابع بنجاح'
+    DUPLICATED: "تكرار '{title}' بنجاح"
+    DUPLICATEDWITHCHILDREN: "تكرار '{title}' والتوابع بنجاح"
     EMAIL: 'البريد الإلكتروني'
     NEWPAGE: '{pagetype} جديد'
     PAGENOTEXISTS: 'هذه الصفحة غير موجودة'
@@ -35,10 +35,10 @@ ar:
     PUBALLFUN: '"نشر الجميع"خاصية '
     PUBPAGES: 'تمّ: نشر {count} صفحات'
     PageAdded: 'تم إنشاء الصفحة بنجاح'
-    REMOVEDPAGE: 'أزيل ''{title}'' من الموقع المنشور'
-    REMOVEDPAGEFROMDRAFT: '''{title}'' محذوف من مسودة الموقع'
+    REMOVEDPAGE: "أزيل '{title}' من الموقع المنشور"
+    REMOVEDPAGEFROMDRAFT: "'{title}' محذوف من مسودة الموقع"
     REORGANISATIONSUCCESSFUL: 'تم إعادة تنظيم خريطة الموقع بنجاح'
-    RESTORED: 'استعادة ''{title}'' بنجاح'
+    RESTORED: "استعادة '{title}' بنجاح"
     ROLLBACK: 'عودة إلى هذا الإصدار'
     ROLLEDBACKPUBv2: 'التراجع إلى النسخة المنشورة.'
     ROLLEDBACKVERSIONv2: 'التراجع إلى النسخة #{version}.'

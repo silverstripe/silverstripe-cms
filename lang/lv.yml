@@ -25,6 +25,8 @@ lv:
     ANCHORVALUE: Enkurs
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Saites apraksts'
+  SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
+    Edit: Edit
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Fails
     HEADER: 'Šī lapa novirzīs lietotājus uz citu lapu '
