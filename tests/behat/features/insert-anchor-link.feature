@@ -27,7 +27,8 @@ So that I can link to a external website or a page on my site
       And I press the "Insert link" button
     Then the "Content" HTML field should contain "<a title="my desc" href="[sitetree_link,id=3]#youranchor">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
-    Then I press the "Save" button
+    When I press the "Save" button
+    Then I should see a "Saved 'About Us' successfully" success toast
 
   Scenario: I can wrap an image in a link to an anchor in an internal page
     Given I fill in the "Content" HTML field with "<p><img src='file1.jpg'></p>"
@@ -40,9 +41,10 @@ So that I can link to a external website or a page on my site
     When I select "Details" in the "#Form_editorAnchorLink_PageID_Holder" tree dropdown
       And I select "youranchor" in the "#Form_editorAnchorLink_Anchor_Holder" anchor dropdown
       And I press the "Insert link" button
-    Then the "Content" HTML field should contain "<a href="[sitetree_link,id=3]#youranchor"><img src="file1.jpg"></a>"
-      # Required to avoid "unsaved changed" browser dialog
-      And I press the "Save" button
+    Then the "Content" HTML field should contain "<a href="[sitetree_link,id=3]#youranchor"><img src="file1.jpg" alt=""></a>"
+    # Required to avoid "unsaved changes" browser dialog
+    When I press the "Save" button
+    Then I should see a "Saved 'About Us' successfully" success toast
 
   Scenario: I can link to an anchor from a dataobject on the current page
     When I select "awesome" in the "Content" HTML field
@@ -56,7 +58,8 @@ So that I can link to a external website or a page on my site
       And I press the "Insert link" button
     Then the "Content" HTML field should contain "<a title="my desc" href="[sitetree_link,id=2]#dataobject-anchor">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
-    Then I press the "Save" button
+    When I press the "Save" button
+    Then I should see a "Saved 'About Us' successfully" success toast
 
   Scenario: I can link to an unsaved anchor in the current page
     Given I fill in the "Content" HTML field with "<p>My awesome content</p><p><a id='unsaved-anchor'></a>unsaved content</p>"
@@ -73,4 +76,5 @@ So that I can link to a external website or a page on my site
       And I press the "Insert link" button
     Then the "Content" HTML field should contain "<a title="my desc" href="[sitetree_link,id=2]#unsaved-anchor">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
-    Then I press the "Save" button
+    When I press the "Save" button
+    Then I should see a "Saved 'About Us' successfully" success toast
