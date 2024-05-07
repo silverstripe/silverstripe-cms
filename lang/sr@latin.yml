@@ -1,6 +1,6 @@
 sr@latin:
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Pristup ''{title}'' sekciji'
+    ACCESS: "Pristup '{title}' sekciji"
     CANT_REORGANISE: 'Nemate pravo da menjate stranice vršnog nivoa. Vaše izmene nisu sačuvane.'
     Cancel: Odustani
     Create: Kreiraj

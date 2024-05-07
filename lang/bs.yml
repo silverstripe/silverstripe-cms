@@ -11,7 +11,7 @@ bs:
     PLEASESAVE: 'Molimo snimite stranicu: Ova stranica ne može biti ažurirana ako nije prethodno snimljena.'
     PUBALLCONFIRM: 'Molimo, objavite svaku stavku na ovoj stranici, kopiranjem sadržaja na aktivnu stranicu'
     PUBALLFUN: 'Funkcija "Objavi sve"'
-    REMOVEDPAGEFROMDRAFT: 'Uklonjeno ''{title}'' sa privremenog nacrta stranice'
+    REMOVEDPAGEFROMDRAFT: "Uklonjeno '{title}' sa privremenog nacrta stranice"
     ROLLBACK: 'Vrati na ovo izdanje'
     SAVEDRAFT: Snimi
     TabContent: Sadržaj

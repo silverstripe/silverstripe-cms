@@ -12,10 +12,10 @@ es:
     UNPUBLISHED_PAGES: '%d páginas despublicadas'
     UNPUBLISH_PAGES: Despublicar
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Acceso a la sección ''{title}'''
+    ACCESS: "Acceso a la sección '{title}'"
     ACCESS_HELP: 'Permitir la visualización de la sección que contiene el árbol de la página y el contenido. Ver y editar permisos puede ser gestionado a través de menús desplegables específicos de las páginas, así como los "permisos de contenido" separados.'
     ARCHIVE: Archivar
-    ARCHIVEDPAGE: '''{title}'' páginas archivadas'
+    ARCHIVEDPAGE: "'{title}' páginas archivadas"
     AddNew: 'Agregar nueva página'
     AddNewButton: 'Agregar nuevo'
     AddPageRestriction: 'Agregar restricción a la página'
@@ -37,21 +37,21 @@ es:
     PLEASESAVE: 'Por favor Guarde la Página: Esta página no se ha podido actualizar porque aún no ha sido guardada.'
     PUBALLCONFIRM: 'Por favor publica todas las páginas del sitio, copiando el contenido del borrador al sitio público'
     PUBALLFUN: 'Función "Publicar Todo"'
-    PUBLISHED: '''{title}'' publicado satisfactoriamente.'
+    PUBLISHED: "'{title}' publicado satisfactoriamente."
     PUBPAGES: 'Hecho: Publicadas {count} páginas'
     PageAdded: 'Página creada correctamente'
-    REMOVEDPAGE: 'Eliminado ''{title}'' del sitio publicado'
-    REMOVEDPAGEFROMDRAFT: 'Borrado ''{title}'' desde el sitio no publicado'
+    REMOVEDPAGE: "Eliminado '{title}' del sitio publicado"
+    REMOVEDPAGEFROMDRAFT: "Borrado '{title}' desde el sitio no publicado"
     REORGANISATIONSUCCESSFUL: 'Reorganizado el árbol del sitio con éxito.'
     RESTORE: 'Restaurar borrador'
-    RESTORED: 'Restablecido ''{title}'' correctamente'
+    RESTORED: "Restablecido '{title}' correctamente"
     RESTORE_DESC: 'Recuperar la versión archivada del borrador'
     RESTORE_TO_ROOT: 'Recuperar borrador al nivel superior'
     RESTORE_TO_ROOT_DESC: 'Recuperar la versión archivada del borrador como de nivel superior'
     ROLLBACK: 'Restaurar esta versión'
     ROLLEDBACKPUBv2: Restaurado
     ROLLEDBACKVERSIONv2: 'Versión #{version} restaurada'
-    SAVED: '''{title}'' guardado satisfactoriamente.'
+    SAVED: "'{title}' guardado satisfactoriamente."
     SAVEDRAFT: Guardar
     SEARCHRESULTS: 'Resultados de búsqueda'
     SHOW_AS_LIST: 'mostrar como lista'

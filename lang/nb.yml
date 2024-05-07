@@ -9,10 +9,10 @@ nb:
     UNPUBLISHED_PAGES: 'Avpubliserte %d sider'
     UNPUBLISH_PAGES: Avpubliser
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Adgang til seksjon for ''{title}'''
+    ACCESS: "Adgang til seksjon for '{title}'"
     ACCESS_HELP: 'Lar deg se seksjonen som inneholder sidetreet og annet innhold. Tillatelser for å vise og redigere kan behandles gjennom sidespesifikke nedtrekkslister, så vel som  separate "Innholdstillatelser".'
     ARCHIVE: Arkiver
-    ARCHIVEDPAGE: 'Arkiverte side ''{title}'''
+    ARCHIVEDPAGE: "Arkiverte side '{title}'"
     AddNew: 'Opprett ny side'
     AddNewButton: 'Opprett ny'
     AddPageRestriction: 'Merk: Noen sidetyper er ikke tillatt for dette valget.'
@@ -35,7 +35,7 @@ nb:
     PUBPAGES: 'Ferdig: Publiserte {count} sider.'
     PageAdded: 'Siden ble opprettet.'
     REMOVEDPAGE: 'Fjernet "{title}" fra det publiserte nettstedet'
-    REMOVEDPAGEFROMDRAFT: 'Fjernet ''{title}''  fra utkastnettstedet'
+    REMOVEDPAGEFROMDRAFT: "Fjernet '{title}'  fra utkastnettstedet"
     REORGANISATIONSUCCESSFUL: 'Omorganisering av sidetreet vellykket'
     RESTORE: 'Gjenopprett utkast'
     RESTORED: 'Vellykket gjenoppretting av "{title}".'

@@ -21,7 +21,7 @@ gl_ES:
     PLEASESAVE: 'Por favor Garda Páxina: Esta páxina podería non ser actualizada porque inda non foi gardada.'
     PUBALLCONFIRM: 'Por favor publica toda a páxina no sitio, copiando o contido a contorna de produción'
     PUBALLFUN: 'Funcionalidade "Publicar Todo"'
-    REMOVEDPAGEFROMDRAFT: 'Eliminado ''{title}''  do borrador do sitio'
+    REMOVEDPAGEFROMDRAFT: "Eliminado '{title}'  do borrador do sitio"
     ROLLBACK: 'Desfacer a esta versión'
     SAVEDRAFT: Gardar
     TabContent: Contido

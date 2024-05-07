@@ -12,7 +12,7 @@ af:
     PAGETYPEOPT: 'Blaai soort'
     PLEASESAVE: 'Stoor asseblief die bladsy: Die bladsy kon nie opgedateer word nie omdat dit nog nie gestoor is nie'
     PUBALLCONFIRM: 'Publiseer asseblief elke bladsy in die werf en kopieër inhoud fase na lewendig'
-    REORGANISATIONSUCCESSFUL: 'Die ''site tree'' is suksesvol geheorganiseer'
+    REORGANISATIONSUCCESSFUL: "Die 'site tree' is suksesvol geheorganiseer"
     ROLLBACK: 'Rol terug na hierdie weergawe'
     SAVEDRAFT: Stoor
     TabContent: Inhoud
@@ -59,7 +59,7 @@ af:
     PARENTID: 'Ouer Bladsy'
     PARENTTYPE: 'Bladsy plek'
     PARENTTYPE_ROOT: 'Bo-vlak bladsy'
-    PARENTTYPE_SUBPAGE: 'Sub-bladsy onder ''n ouer bladsy (kies onder)'
+    PARENTTYPE_SUBPAGE: "Sub-bladsy onder 'n ouer bladsy (kies onder)"
     PLURALNAME: CMSPagesController
     REORGANISE_DESCRIPTION: 'Verander werf struktuur'
     SHOWINSEARCH: 'Wys in soektog?'
@@ -70,7 +70,7 @@ af:
     db_Title: Tietel
     has_one_Parent: 'Ouer Bladsy'
   SilverStripe\CMS\Model\VirtualPage:
-    HEADER: 'Hierdie is ''n virtuele bladsy'
+    HEADER: "Hierdie is 'n virtuele bladsy"
     SINGULARNAME: 'Virtuele Bladsy'
   SilverStripe\CMS\Reports\BrokenFilesReport:
     BROKENFILES: 'Bladsye met gebreekte lêers'

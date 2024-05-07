@@ -8,7 +8,7 @@ zh_CN:
     PLEASESAVE: 请先保存：因为该网页还未保存，所以该页无法更新。
     PUBALLCONFIRM: 请发布该站的每一网页，这样，预备发布站上的内容就会复制到正式发布站上
     PUBALLFUN: “全部发布“功能
-    REMOVEDPAGEFROMDRAFT: '已从测试站点删除 ''{title}'''
+    REMOVEDPAGEFROMDRAFT: "已从测试站点删除 '{title}'"
     ROLLBACK: 恢复到这一版本
     SAVEDRAFT: 保存
     SEARCHRESULTS: 搜索结果

@@ -11,7 +11,6 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "CMS.ConfirmRestoreFromLive": "آیا مطمئن هستید که پیش‌نویس به آخرین انتشار صفحه بازنشانی شود؟",
     "CMS.Duplicate": "دو نسخه کردن",
     "CMS.EditPage": "ویرایش",
-    "CMS.ONLYSELECTTWO": "You can only compare two versions at this time.",
     "CMS.Restore": "آیا مطمئن هستید که این صفحه از آرشیو بازنشانی شود؟",
     "CMS.RestoreToRoot": "آیا اطمینان دارید که می‌خواهید این صفحه را از بایگانی بازنشانی نمایید؟\n\nاز آن‌جائی‌که صفحه‌ی والد موجود نیست به بالاترین لول بازنشانی خواهد شد.",
     "CMS.RollbackToVersion": "آیا واقعاً می‌خواهید به نسخه #%s این صفحه بازگردید؟",

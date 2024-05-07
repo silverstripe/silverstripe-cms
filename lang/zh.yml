@@ -12,10 +12,10 @@ zh:
     UNPUBLISHED_PAGES: 取消发布%d页面
     UNPUBLISH_PAGES: 未发布
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: '访问 ''{title}'' 部分'
+    ACCESS: "访问 '{title}' 部分"
     ACCESS_HELP: '允许查看包含页面树及内容 部分。查看和编辑权限可以通过页面特定的下拉菜单进行控制，与使用单独的”内容权限“处理一样。'
     ARCHIVE: 归档
-    ARCHIVEDPAGE: '归档页面 ''{title}'''
+    ARCHIVEDPAGE: "归档页面 '{title}'"
     AddNew: 增加一个新的页面
     AddNewButton: 增加一个新的
     AddPageRestriction: 备注：某些类型页面是不允许选择该项的
@@ -36,10 +36,10 @@ zh:
     PLEASESAVE: '请保存页面: 当前页面未被保存，导致未能更新成功'
     PUBALLCONFIRM: 请发布站点上的所有页面，将内容复制到线上
     PUBALLFUN: “全部发布”功能
-    PUBLISHED: '''{title}'' 发布成功。'
+    PUBLISHED: "'{title}' 发布成功。"
     PUBPAGES: '完成：已发布{count}个页面'
     PageAdded: 成功创建页面
-    REMOVEDPAGE: '从已发布站点删除’{title}'''
+    REMOVEDPAGE: "从已发布站点删除’{title}'"
     REMOVEDPAGEFROMDRAFT: 从草稿站点删除‘s%’
     REORGANISATIONSUCCESSFUL: 重新组织网站地图已成功
     RESTORE: 恢复草稿
@@ -47,7 +47,7 @@ zh:
     ROLLBACK: 回滚至当前版本
     ROLLEDBACKPUBv2: 回滚到已发布版本。
     ROLLEDBACKVERSIONv2: '回滚到版本#{version}。'
-    SAVED: ' ''{title}'' 保存成功。'
+    SAVED: " '{title}' 保存成功。"
     SAVEDRAFT: 保存
     SHOW_AS_LIST: 以列表方式展示
     TOO_MANY_PAGES: 页面数目过多

@@ -12,10 +12,10 @@ hr:
     UNPUBLISHED_PAGES: 'Neobjavljeno %d stranica'
     UNPUBLISH_PAGES: Neobjavi
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Pristup ''{title}'' sekciji'
+    ACCESS: "Pristup '{title}' sekciji"
     ACCESS_HELP: 'Dozvoli pregledavati sekcije sadržanog stabla i sadržaja strancie. Dozvole za pregled i uređivanje mogu se mijenjati putem stranicama specifičnim padajućim izbornicima kao i posebnim "Sadržajnim dozvolama".'
     ARCHIVE: Arhiviraj
-    ARCHIVEDPAGE: 'Arhivirane stranice ''{title}'''
+    ARCHIVEDPAGE: "Arhivirane stranice '{title}'"
     AddNew: 'Dodaj novu stranicu'
     AddNewButton: 'Dodaj novi'
     AddPageRestriction: 'Napomena: neke vrste stranica nisu dozvoljene za ovu sekciju'
@@ -23,8 +23,8 @@ hr:
     ChoosePageParentMode: 'Odaberite gdje želite kreirati ovu stranicu'
     ChoosePageType: 'Odaberi vrstu stranice'
     Create: Kreiraj
-    DUPLICATED: 'Dupliciran ''{title}'' uspješno'
-    DUPLICATEDWITHCHILDREN: 'Dupliciran ''{title}''  i podstranice uspješno'
+    DUPLICATED: "Dupliciran '{title}' uspješno"
+    DUPLICATEDWITHCHILDREN: "Dupliciran '{title}'  i podstranice uspješno"
     NEWPAGE: 'Novi {pagetype}'
     PAGENOTEXISTS: 'Stranica ne postoji'
     PAGES: 'Status stranice'
@@ -34,20 +34,20 @@ hr:
     PLEASESAVE: 'Molim spremite stranicu: Stranica ne može biti ažurirana jer još uvijek nije spremljena.'
     PUBALLCONFIRM: 'Molim objavi svaku stranicu, kopirajući sadržaj'
     PUBALLFUN: '"Objavi sve"'
-    PUBLISHED: 'Uspješno objavljen ''{title}'''
+    PUBLISHED: "Uspješno objavljen '{title}'"
     PUBPAGES: 'Gotovo: Objavljeno {count} stranica'
     PageAdded: 'Uspješno kreirane stranice'
-    REMOVEDPAGE: 'Uklonjen ''{title}'' sa objavljene stranice'
-    REMOVEDPAGEFROMDRAFT: 'Uklonjen ''{title}'' sa nacrtne stranice'
+    REMOVEDPAGE: "Uklonjen '{title}' sa objavljene stranice"
+    REMOVEDPAGEFROMDRAFT: "Uklonjen '{title}' sa nacrtne stranice"
     RESTORE: 'Povrati nacrt'
-    RESTORED: 'Vraćeno ''{title}'' uspješno'
+    RESTORED: "Vraćeno '{title}' uspješno"
     RESTORE_DESC: 'Vrati arhiviranu verziju u nacrt'
     RESTORE_TO_ROOT: 'Povrati nacrt na najviši nivo'
     RESTORE_TO_ROOT_DESC: 'Povrati arhiviranu verziju u nacrt na najviši nivo'
     ROLLBACK: 'Vrati na ovu verziju'
     ROLLEDBACKPUBv2: 'Vraćeno na objavljenu verziju'
     ROLLEDBACKVERSIONv2: 'Vraćeno na verziju #{version}.'
-    SAVED: 'Uspješno spremljen ''{title}'''
+    SAVED: "Uspješno spremljen '{title}'"
     SAVEDRAFT: Spremi
     SEARCHRESULTS: 'Rezultati pretraživanja'
     SHOW_AS_LIST: 'prikaži kao listu'
