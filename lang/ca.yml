@@ -7,10 +7,10 @@ ca:
     EMAIL: 'Correu electrònic'
     PAGENOTEXISTS: 'Aquesta pàgina no existeix'
     PAGETYPEOPT: 'Tipus de pàgina'
-    PLEASESAVE: 'Si us plau, deseu la pàgina: aquesta pàgina no s''ha pogut actualitzar perquè encara no s''ha desat.'
+    PLEASESAVE: "Si us plau, deseu la pàgina: aquesta pàgina no s'ha pogut actualitzar perquè encara no s'ha desat."
     PUBALLCONFIRM: 'Publica cada pàgina del lloc web, copiant el contingut cap a la versió publicada'
     PUBALLFUN: 'Funcionalitat de "Publica-ho tot"'
-    REMOVEDPAGEFROMDRAFT: 'S''ha suprimit  ''{title}'' del lloc esborrany'
+    REMOVEDPAGEFROMDRAFT: "S'ha suprimit  '{title}' del lloc esborrany"
     ROLLBACK: 'Torna a aquesta versió'
     SAVEDRAFT: Desa
     SEARCHRESULTS: 'Resultats de la cerca'
@@ -28,7 +28,7 @@ ca:
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Ancla
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
-    LINKDESCR: 'Descripció de l''enllaç'
+    LINKDESCR: "Descripció de l'enllaç"
   SilverStripe\CMS\Model\RedirectorPage:
     FILE: Fitxer
     HEADER: 'Aquesta pàgina redirigirà usuaris a una altra pàgina'
@@ -39,13 +39,13 @@ ca:
     YOURPAGE: 'Pàgina del vostre lloc web'
     has_one_LinkTo: 'Enllaça a'
   SilverStripe\CMS\Model\RedirectorPageController:
-    HASBEENSETUP: 'S''ha definit una pàgina redirectora sense cap lloc on redirigir.'
+    HASBEENSETUP: "S'ha definit una pàgina redirectora sense cap lloc on redirigir."
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Qualsevol
     ACCESSHEADER: 'Qui pot veure aquesta pàgina al meu lloc web?'
     ACCESSLOGGEDIN: 'Usuaris connectats'
     ACCESSONLYTHESE: 'Només aquesta gent (trieu de la llista)'
-    BUTTONCANCELDRAFT: 'Cancel·la els canvis de l''esborrany'
+    BUTTONCANCELDRAFT: "Cancel·la els canvis de l'esborrany"
     BUTTONCANCELDRAFTDESC: 'Suprimeix el vostre esborrany i reverteix a la pàgina actualment publicada'
     BUTTONUNPUBLISH: Despublica
     BUTTONUNPUBLISHDESC: 'Suprimeix aquesta pàgina del lloc publicat'
@@ -55,7 +55,7 @@ ca:
     DEFAULTCONTACTTITLE: 'Contacteu amb nosaltres'
     DEFAULTHOMETITLE: Portada
     EDITHEADER: 'Qui pot editar-la des del SGC?'
-    Editors: 'Grups d''editors'
+    Editors: "Grups d'editors"
     HASBROKENLINKS: 'Aquesta pàgina té enllaços trencats'
     HTMLEDITORTITLE: Contingut
     INHERIT: 'Hereda de la pàgina pare'
@@ -74,9 +74,9 @@ ca:
     db_Content: Contingut
     db_Title: Títol
     has_one_Parent: 'Pàgina pare'
-    many_many_BackLinkTracking: 'Seguiment d''enllaços retroactius'
-    many_many_ImageTracking: 'Seguiment d''imatges'
-    many_many_LinkTracking: 'Seguiment d''enllaços'
+    many_many_BackLinkTracking: "Seguiment d'enllaços retroactius"
+    many_many_ImageTracking: "Seguiment d'imatges"
+    many_many_LinkTracking: "Seguiment d'enllaços"
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'Aquesta és una pàgina virtual'
     SINGULARNAME: 'Pàgina virtual'

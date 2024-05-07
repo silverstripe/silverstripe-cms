@@ -12,10 +12,10 @@ eo:
     UNPUBLISHED_PAGES: 'Malpublikiĝis %d paĝoj'
     UNPUBLISH_PAGES: Malpublikigi
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Aliro al sekcio ''{title}'''
+    ACCESS: "Aliro al sekcio '{title}'"
     ACCESS_HELP: 'Permesi vidigi la sekcion kiu enhavas paĝarbon kaj enhavon. Vidigaj kaj redaktaj permesoj estas trakteblaj per paĝspecifaj fallistoj, kaj ankaŭ la apartaj "Enhavaj permesoj".'
     ARCHIVE: Enarkivigi
-    ARCHIVEDPAGE: 'Enarkivigis paĝon ''{title}'''
+    ARCHIVEDPAGE: "Enarkivigis paĝon '{title}'"
     AddNew: 'Aldoni novan paĝon'
     AddNewButton: 'Aldoni novan'
     AddPageRestriction: 'Noto: iuj tipoj de paĝoj ne estas permesataj por ĉi tiu elektaĵo.'
@@ -28,8 +28,8 @@ eo:
     ChoosePageParentMode: 'Elekti kie krei ĉi tiun paĝon'
     ChoosePageType: 'Elekti tipon de paĝo'
     Create: Krei
-    DUPLICATED: 'Sukcese duobligis je ''{title}'''
-    DUPLICATEDWITHCHILDREN: 'Sukcese duobligis je ''{title}'' kaj idoj'
+    DUPLICATED: "Sukcese duobligis je '{title}'"
+    DUPLICATEDWITHCHILDREN: "Sukcese duobligis je '{title}' kaj idoj"
     EMAIL: Retpoŝto
     NEWPAGE: 'Nova {pagetype}'
     PAGENOTEXISTS: 'Ĉi tiu paĝo ne ekzistas'
@@ -42,21 +42,21 @@ eo:
     PUBALLCONFIRM: 'Bonvolu eldoni ĉiun paĝon en la retejo, kopiante enhavan stadion al la publika'
     PUBALLFUN: 'Funkcio "Eldoni Ĉiujn"'
     PUBALLFUN2: 'Premi ĉi tiun butonon faros same kiel iri al ĉiu paĝo kaj premi je "Publikigi". Oni celas ke ĝi uziĝu post multaj redaktoj de la enhavo, ekzemple kiam la retejo unue konstruiĝis. Por grandaj retejoj, ĉi tiu tasko eble ne ruliĝos ĝis kompleteco. Tiuokaze, ni rekomendas ke vi parolu kun viaj programistoj por krei propran taskon.'
-    PUBLISHED: 'Sukcese publikigis je ''{title}'''
+    PUBLISHED: "Sukcese publikigis je '{title}'"
     PUBPAGES: 'Farite: publikigis {count} paĝojn'
     PageAdded: 'Sukcese kreis paĝon'
-    REMOVEDPAGE: 'Forigis je ''{title}'' el la publikigita retejo'
-    REMOVEDPAGEFROMDRAFT: 'Forigis je ''{title}'' el la malneta retejo'
+    REMOVEDPAGE: "Forigis je '{title}' el la publikigita retejo"
+    REMOVEDPAGEFROMDRAFT: "Forigis je '{title}' el la malneta retejo"
     REORGANISATIONSUCCESSFUL: 'Sukcese reorganizis la retejan arbon.'
     RESTORE: 'Restaŭri malneton'
-    RESTORED: 'Sukcese restaŭris je ''{title}'''
+    RESTORED: "Sukcese restaŭris je '{title}'"
     RESTORE_DESC: 'Restaŭri la enarkivigitan version al malneto'
     RESTORE_TO_ROOT: 'Restaŭri malneton ĉe la supra nivelo'
     RESTORE_TO_ROOT_DESC: 'Restaŭri la enarkivigitan version al malneto kiel supranivela paĝo'
     ROLLBACK: 'Malfari al ĉi tiu versio'
     ROLLEDBACKPUBv2: 'Malfaris ŝanĝojn ĝis la publikigita versio.'
     ROLLEDBACKVERSIONv2: 'Malfaris ŝanĝojn ĝis versio #{version}.'
-    SAVED: 'Sukcese konservis je ''{title}'''
+    SAVED: "Sukcese konservis je '{title}'"
     SAVEDRAFT: Konservi
     SEARCHRESULTS: 'Rezultoj de serĉo'
     SHOW_AS_LIST: 'vidigi kiel liston'

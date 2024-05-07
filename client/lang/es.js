@@ -11,7 +11,6 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "CMS.ConfirmRestoreFromLive": "¿Estás seguro de que quieres revertir el borrador a la última página publicada?",
     "CMS.Duplicate": "Duplicar",
     "CMS.EditPage": "Editar",
-    "CMS.ONLYSELECTTWO": "You can only compare two versions at this time.",
     "CMS.Restore": "¿Estás seguro que quieres restaurar esta página desde el archivo?",
     "CMS.RestoreToRoot": "¿Estás seguro que quieres restaurar esta página desde el archivo?\n\nEl padre de esta página no está disponible, debido a ello, esta página será restaurada en el primer nivel del árbol",
     "CMS.RollbackToVersion": "¿Realmente quieres volver a la versión #%s de esta página?",

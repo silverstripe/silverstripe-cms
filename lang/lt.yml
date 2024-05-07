@@ -9,10 +9,10 @@ lt:
     UNPUBLISHED_PAGES: 'Nebepublikuojami %d puslapiai'
     UNPUBLISH_PAGES: Nebepublikuoti
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Priėjimas prie ''{title}'' dalies'
+    ACCESS: "Priėjimas prie '{title}' dalies"
     ACCESS_HELP: 'Leisti peržiūrėti svetainės medžio ir turinio skiltį. Peržiūros, bei redagavimo leidimai gali būti pakeisti per iškrentančius pasirinkimus ir per atskirus "Turinio leidimai".'
     ARCHIVE: Archyvas
-    ARCHIVEDPAGE: 'Suarchyvuotas puslapis ''{title}'''
+    ARCHIVEDPAGE: "Suarchyvuotas puslapis '{title}'"
     AddNew: 'Pridėti naują puslapį'
     AddNewButton: 'Pridėti naują'
     AddPageRestriction: 'Pastaba: kai kurie puslapių tipai šioje vietoje neleidžiami'
@@ -21,8 +21,8 @@ lt:
     ChoosePageParentMode: 'Pasirinkite kur sukurti šį puslapį'
     ChoosePageType: 'Pasirinkite puslapio tipą'
     Create: Sukurti
-    DUPLICATED: 'Puslapis ''{title}'' kopijuotas sėkmingai'
-    DUPLICATEDWITHCHILDREN: 'Puslapis ''{title}'' , bei jo vaikai kopijuoti sėkmingai'
+    DUPLICATED: "Puslapis '{title}' kopijuotas sėkmingai"
+    DUPLICATEDWITHCHILDREN: "Puslapis '{title}' , bei jo vaikai kopijuoti sėkmingai"
     EMAIL: 'E. paštas'
     NEWPAGE: 'Naujas {pagetype}'
     PAGENOTEXISTS: 'Šis puslapis neegzistuoja'
@@ -35,11 +35,11 @@ lt:
     PUBALLFUN: '"Publikuoti viską" funkcionalumas'
     PUBPAGES: 'Įvykdyta: Publikuoti {count} puslapiai'
     PageAdded: 'Puslapis sėkmingai sukurtas'
-    REMOVEDPAGE: 'Iš publikuojamos svetainės pašalintas ''{title}'''
-    REMOVEDPAGEFROMDRAFT: '''{title}'' pašalintas iš juodraštinės svetainės'
+    REMOVEDPAGE: "Iš publikuojamos svetainės pašalintas '{title}'"
+    REMOVEDPAGEFROMDRAFT: "'{title}' pašalintas iš juodraštinės svetainės"
     REORGANISATIONSUCCESSFUL: 'Puslapių medis pertvarkytas sėkmingai.'
     RESTORE: Atstatyti
-    RESTORED: '''{title}'' atstatytas sėkmingai'
+    RESTORED: "'{title}' atstatytas sėkmingai"
     RESTORE_DESC: 'Atstatyti suarchyvuotą versiją kaip juodraštinį puslapį'
     RESTORE_TO_ROOT: 'Atstatyti juodraštį aukščiausiame lygyje'
     RESTORE_TO_ROOT_DESC: 'Atstatyti suarchyvuotą versiją kaip aukščiausio lygio juodraštinį puslapį'
