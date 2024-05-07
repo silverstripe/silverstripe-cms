@@ -1,6 +1,6 @@
 sr_RS:
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Приступ ''{title}'' секцији'
+    ACCESS: "Приступ '{title}' секцији"
     CANT_REORGANISE: 'Немате право да мењате странице вршног нивоа. Ваше измене нису сачуване.'
     Cancel: Одустани
     Create: Креирај

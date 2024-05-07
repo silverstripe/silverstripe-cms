@@ -11,7 +11,6 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "CMS.ConfirmRestoreFromLive": "Ĉi vi vere volas malfari la malneton al kiam la paĝo estis laste publikigita?",
     "CMS.Duplicate": "Duobligi",
     "CMS.EditPage": "Redakti",
-    "CMS.ONLYSELECTTWO": "You can only compare two versions at this time.",
     "CMS.Restore": "Ĉi vi vere volas restaŭri ĉi tiun paĝon el la arkivo?",
     "CMS.RestoreToRoot": "Ĉu vi vere volas restaŭri la paĝon el la arkivo?\n\nĈar la patra paĝo ne disponeblas, ĝi restaŭriĝos al la supra nivelo.",
     "CMS.RollbackToVersion": "Cu vi vere volas malfare restaŭri al versio #%s de ĉi tiu paĝo?",

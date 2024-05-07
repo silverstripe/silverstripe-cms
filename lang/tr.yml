@@ -21,7 +21,7 @@ tr:
     PUBALLCONFIRM: 'Lütfen taslak sitedeki tüm sayfaları yayınlanmakta olan siteye kopyalayıp yayınla.'
     PUBALLFUN: '"Hepsini Yayınla" özelliği'
     PageAdded: 'Sayfa başarıyla oluşturuldu'
-    REMOVEDPAGEFROMDRAFT: '''{title}'' taslak siteden silindi'
+    REMOVEDPAGEFROMDRAFT: "'{title}' taslak siteden silindi"
     ROLLBACK: 'Bu sürüme geri dön'
     SAVEDRAFT: Kaydet
     SEARCHRESULTS: 'Arama sonuçları'

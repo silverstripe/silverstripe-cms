@@ -7,7 +7,7 @@ sr:
   SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
     UNPUBLISH_PAGES: 'Поништи објаву'
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Приступ ''{title}'' секцији'
+    ACCESS: "Приступ '{title}' секцији"
     ACCESS_HELP: 'Дозвољава преглед секције која садржи стабло страница и садржај. Дозволе за преглед и уређивање могу се подесити путем специфичних падајућих листи појединачних страница, као и путем "Дозволе за садржај".'
     ARCHIVE: Архива
     AddNew: 'Додај нову страницу'
@@ -18,8 +18,8 @@ sr:
     ChoosePageParentMode: 'Изаберите где желите да креирате ову страницу'
     ChoosePageType: 'Изабери тип странице'
     Create: Креирај
-    DUPLICATED: '''{title}'' успешно дуплиран'
-    DUPLICATEDWITHCHILDREN: '''{title}'' и деца успешно дуплирани'
+    DUPLICATED: "'{title}' успешно дуплиран"
+    DUPLICATEDWITHCHILDREN: "'{title}' и деца успешно дуплирани"
     EMAIL: Е-пошта
     NEWPAGE: 'Нова {pagetype}'
     PAGENOTEXISTS: 'Ова страница не постоји'
@@ -31,10 +31,10 @@ sr:
     PUBALLFUN: 'Функција „Објави све“ '
     PUBPAGES: 'Урађено: Објављено {count} страница'
     PageAdded: 'Успешно креирана страница'
-    REMOVEDPAGE: 'Са објављеног сајта уклоњена је страница ''{title}'''
-    REMOVEDPAGEFROMDRAFT: 'Страница ''{title}'' је уклоњена из нацрта сајта'
+    REMOVEDPAGE: "Са објављеног сајта уклоњена је страница '{title}'"
+    REMOVEDPAGEFROMDRAFT: "Страница '{title}' је уклоњена из нацрта сајта"
     REORGANISATIONSUCCESSFUL: 'Стабло сајта је успешно реорганизовано.'
-    RESTORED: '''{title}'' успешно обновљен'
+    RESTORED: "'{title}' успешно обновљен"
     ROLLBACK: 'Врати се на ову верзију'
     ROLLEDBACKPUBv2: 'Враћено на објављену верзију.'
     ROLLEDBACKVERSIONv2: 'Враћено на верзију #{version}.'
