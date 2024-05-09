@@ -11,7 +11,6 @@ use SilverStripe\Admin\LeftAndMainFormRequestHandler;
 use SilverStripe\Admin\Navigator\SilverStripeNavigator;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Archive;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Publish;
-use SilverStripe\CMS\BatchActions\CMSBatchAction_Restore;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish;
 use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search;
 use SilverStripe\CMS\Model\CurrentPageIdentifier;
@@ -188,7 +187,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         Requirements::add_i18n_javascript('silverstripe/cms: client/lang', false);
 
-        CMSBatchActionHandler::register('restore', CMSBatchAction_Restore::class);
         CMSBatchActionHandler::register('archive', CMSBatchAction_Archive::class);
         CMSBatchActionHandler::register('unpublish', CMSBatchAction_Unpublish::class);
         CMSBatchActionHandler::register('publish', CMSBatchAction_Publish::class);
