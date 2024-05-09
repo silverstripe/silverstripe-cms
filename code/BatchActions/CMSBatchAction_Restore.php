@@ -9,12 +9,21 @@ use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\Security\Permission;
+use SilverStripe\Dev\Deprecation;
 
 /**
  * Batch restore of pages
+ *
+ * @deprecated 5.3.0 Will be removed without equivalent functionality to replace it
  */
 class CMSBatchAction_Restore extends CMSBatchAction
 {
+    public function __construct()
+    {
+        Deprecation::withNoReplacement(function () {
+            Deprecation::notice('5.3.0', 'Will be removed without equivalent functionality to replace it', Deprecation::SCOPE_CLASS);
+        });
+    }
 
     public function getActionTitle()
     {
