@@ -18,8 +18,12 @@ class CMSPageSettingsController extends CMSMain
     public function getEditForm($id = null, $fields = null)
     {
         $record = $this->getRecord($id ?: $this->currentPageID());
-
-        return parent::getEditForm($id, ($record) ? $record->getSettingsFields() : null);
+        if ($record && $record->hasMethod('getSettingsFields')) {
+            $fields = $record->getSettingsFields();
+        } else {
+            $fields = null;
+        }
+        return parent::getEditForm($id, $fields);
     }
 
     public function getTabIdentifier()

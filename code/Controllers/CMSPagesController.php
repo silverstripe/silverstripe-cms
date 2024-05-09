@@ -2,7 +2,6 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataObject;
@@ -37,7 +36,7 @@ class CMSPagesController extends CMSMain
         $this->beforeExtending('updateBreadcrumbs', function (ArrayList $items) {
             //special case for building the breadcrumbs when calling the listchildren Pages ListView action
             if ($parentID = $this->getRequest()->getVar('ParentID')) {
-                $page = SiteTree::get()->byID($parentID);
+                $page = $this->getTreeClass()::get()->byID($parentID);
 
                 //build a reversed list of the parent tree
                 $pages = [];

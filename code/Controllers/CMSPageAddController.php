@@ -44,15 +44,16 @@ class CMSPageAddController extends CMSPageEditController
     public function AddForm()
     {
         $pageTypes = [];
-        $defaultIcon = Config::inst()->get(SiteTree::class, 'icon_class');
+        $defaultIcon = Config::inst()->get($this->getTreeClass(), 'icon_class');
 
         foreach ($this->PageTypes() as $type) {
             $class = $type->getField('ClassName');
             $icon = Config::inst()->get($class, 'icon_class') ?: $defaultIcon;
 
-            // If the icon is the SiteTree default and there's some specific icon being provided by `getPageIconURL`
+            // If the icon is the default and there's some specific icon being provided by `getPageIconURL`
             // then we don't need to add the icon class. Otherwise the class take precedence.
-            if ($icon === $defaultIcon && !empty(singleton($class)->getPageIconURL())) {
+            $singleton = $class::singleton();
+            if ($icon === $defaultIcon && !empty($singleton->hasMethod('getPageIconURL') ? $singleton->getPageIconURL() : null)) {
                 $icon = '';
             }
 
@@ -90,7 +91,7 @@ class CMSPageAddController extends CMSPageEditController
                         $parentField = new TreeDropdownField(
                             "ParentID",
                             "",
-                            SiteTree::class,
+                            $this->getTreeClass(),
                             'ID',
                             'TreeTitle'
                         ),
@@ -145,7 +146,7 @@ class CMSPageAddController extends CMSPageEditController
 
         // Check if the current user has enough permissions to create top level pages
         // If not, then disable the option to do that
-        if (!SiteConfig::current_site_config()->canCreateTopLevel()) {
+        if (is_a($this->getTreeClass(), SiteTree::class, true) && !SiteConfig::current_site_config()->canCreateTopLevel()) {
             $topField->setDisabled(true);
             $parentModeField->setValue('child');
         }
@@ -194,14 +195,14 @@ class CMSPageAddController extends CMSPageEditController
         $parentID = isset($data['ParentID']) ? (int)$data['ParentID'] : 0;
 
         if (!$parentID && isset($data['Parent'])) {
-            $page = SiteTree::get_by_link($data['Parent']);
+            $page = $this->getTreeClass()::get_by_link($data['Parent']);
             if ($page) {
                 $parentID = $page->ID;
             }
         }
 
         if (is_numeric($parentID) && $parentID > 0) {
-            $parentObj = SiteTree::get()->byID($parentID);
+            $parentObj = $this->getTreeClass()::get()->byID($parentID);
         } else {
             $parentObj = null;
         }

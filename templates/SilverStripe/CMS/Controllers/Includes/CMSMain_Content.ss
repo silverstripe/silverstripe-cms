@@ -15,11 +15,13 @@
 							<%t SilverStripe\\CMS\\Controllers\\CMSMain.TabContent 'Content' %>
 						</a>
 					</li>
+                    <% if $LinkPageSettings %>
 					<li class="nav-item content-listview<% if $TabIdentifier == 'settings' %> ui-tabs-active<% end_if %>">
 						<a href="$LinkPageSettings" class="nav-link cms-panel-link" title="Form_EditForm" data-href="$LinkPageSettings">
 							<%t SilverStripe\\CMS\\Controllers\\CMSMain.TabSettings 'Settings' %>
 						</a>
 					</li>
+                    <% end_if %>
 					<li class="nav-item content-listview<% if $TabIdentifier == 'history' %> ui-tabs-active<% end_if %>">
 						<a href="$LinkPageHistory" class="nav-link cms-panel-link" title="Form_EditForm" data-href="$LinkPageHistory">
 							<%t SilverStripe\\CMS\\Controllers\\CMSMain.TabHistory 'History' %>
