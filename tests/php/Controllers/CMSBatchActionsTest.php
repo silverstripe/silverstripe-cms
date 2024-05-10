@@ -4,7 +4,6 @@ namespace SilverStripe\CMS\Tests\Controllers;
 
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Archive;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Publish;
-use SilverStripe\CMS\BatchActions\CMSBatchAction_Restore;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Core\Config\Config;
@@ -104,78 +103,5 @@ class CMSBatchActionsTest extends SapphireTest
         $this->assertNotContains($this->idFromFixture(SiteTree::class, 'archived'), $applicable);
         $this->assertContains($this->idFromFixture(SiteTree::class, 'unpublished'), $applicable);
         $this->assertContains($this->idFromFixture(SiteTree::class, 'modified'), $applicable);
-    }
-
-    /**
-     * Test restore batch actions
-     */
-    public function testBatchRestoreApplicable()
-    {
-        $this->logInWithPermission('ADMIN');
-        $pages = Versioned::get_including_deleted(SiteTree::class);
-        $ids = $pages->column('ID');
-        $action = new CMSBatchAction_Restore();
-
-        // Test applicable pages
-        $applicable = $action->applicablePages($ids);
-        $this->assertNotContains($this->idFromFixture(SiteTree::class, 'published'), $applicable);
-        $this->assertContains($this->idFromFixture(SiteTree::class, 'archived'), $applicable);
-        $this->assertContains($this->idFromFixture(SiteTree::class, 'archivedx'), $applicable);
-        $this->assertContains($this->idFromFixture(SiteTree::class, 'archivedy'), $applicable);
-        $this->assertNotContains($this->idFromFixture(SiteTree::class, 'unpublished'), $applicable);
-        $this->assertNotContains($this->idFromFixture(SiteTree::class, 'modified'), $applicable);
-    }
-
-    public function testBatchRestore()
-    {
-        $this->logInWithPermission('ADMIN');
-        $pages = Versioned::get_including_deleted(SiteTree::class);
-        $action = new CMSBatchAction_Restore();
-        $archivedID = $this->idFromFixture(SiteTree::class, 'archived');
-        $archivedxID = $this->idFromFixture(SiteTree::class, 'archivedx');
-        $archivedyID = $this->idFromFixture(SiteTree::class, 'archivedy');
-
-        // Just restore one child
-        $list = $pages->filter('ID', $archivedxID);
-        $this->assertEquals(1, $list->count());
-        $this->assertEquals($archivedID, $list->first()->ParentID);
-
-        // Run restore
-        $result = json_decode($action->run($list)->getBody(), true);
-        $this->assertEquals(
-            [
-                $archivedxID => $archivedxID,
-            ],
-            $result['success']
-        );
-        $archivedx = SiteTree::get()->byID($archivedxID);
-        $this->assertNotNull($archivedx);
-        $this->assertEquals(0, $archivedx->ParentID); // Restore to root because parent is unrestored
-
-        // Restore both remaining pages
-        $list = $pages
-            ->filter('ID', [$archivedID, $archivedyID])
-            ->sort('Title');
-        $this->assertEquals(2, $list->count());
-        $this->assertEquals($archivedID, $list->first()->ParentID); // archivedy
-        $this->assertEquals(0, $list->last()->ParentID); // archived (parent)
-
-        // Run restore
-        $result = json_decode($action->run($list)->getBody(), true);
-        $this->assertEquals(
-            [
-                // Order of archived is opposite to order items are passed in, as
-                // these are sorted by level first
-                $archivedID => $archivedID,
-                $archivedyID => $archivedyID,
-            ],
-            $result['success']
-        );
-        $archived = SiteTree::get()->byID($archivedID);
-        $archivedy = SiteTree::get()->byID($archivedyID);
-        $this->assertNotNull($archived);
-        $this->assertNotNull($archivedy);
-        $this->assertEquals($archivedID, $archivedy->ParentID); // Not restored to root, but to the parent
-        $this->assertEquals(0, $archived->ParentID); // Root stays root
     }
 }

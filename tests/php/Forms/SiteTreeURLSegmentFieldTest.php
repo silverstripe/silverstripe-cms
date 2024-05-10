@@ -4,7 +4,6 @@ namespace SilverStripe\CMS\Tests\Controllers;
 
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Archive;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Publish;
-use SilverStripe\CMS\BatchActions\CMSBatchAction_Restore;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish;
 use SilverStripe\CMS\Forms\SiteTreeURLSegmentField;
 use SilverStripe\CMS\Model\SiteTree;
