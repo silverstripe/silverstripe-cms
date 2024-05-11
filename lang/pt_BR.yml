@@ -10,7 +10,7 @@ pt_BR:
     PLEASESAVE: 'Por favor salve a página: Esta página não pode ser atulizada porque ainda não foi salva.'
     PUBALLCONFIRM: 'Por favor publique todas as páginas no site, copiando content stage to live'
     PUBALLFUN: 'Funcionalidade "Publicar Tudo"'
-    REMOVEDPAGEFROMDRAFT: 'Removido ''{title}''  do site de rascunho'
+    REMOVEDPAGEFROMDRAFT: "Removido '{title}'  do site de rascunho"
     ROLLBACK: 'Reverter para esta versão'
     SAVEDRAFT: Salvar
     SEARCHRESULTS: 'Resultados da pesquisa'

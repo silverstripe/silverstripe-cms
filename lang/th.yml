@@ -7,7 +7,7 @@ th:
   SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish:
     UNPUBLISH_PAGES: ยังไม่ได้เผยแพร่
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'เข้าถึงเซ็กชั่น ''{title}'''
+    ACCESS: "เข้าถึงเซ็กชั่น '{title}'"
     ACCESS_HELP: 'อนุญาตให้เปิดดูส่วนของเซ็กชั่นที่บรรจุรายการหน้าเว็บแบบทรีและเนื้อหาได้ สิทธิ์ในการเปิดดูและแก้ไขสามารถจัดการได้ผ่านทางหน้าเว็บทีระบุอยู่ในเมนูแบบดรอปดาวน์ เช่นเดียวกับ "สิทธิ์อนุญาตของเนื้อหา" ที่แยกออกมาต่างหากด้วยเช่นกัน'
     ARCHIVE: รายการ
     AddNew: เพิ่มหน้าใหม่
@@ -27,9 +27,9 @@ th:
     PUBALLFUN: 'ฟังก์ชั่นการทำงาน "เผยแพร่ทั้งหมด"'
     PUBPAGES: 'เผยแแพร่หน้าเว็บแล้ว {count} หน้า'
     PageAdded: หน้าเว็บที่สร้างเสร็จเรียบร้อยแล้ว
-    REMOVEDPAGE: 'ลบ ''{title}'' ออกจากเว็บไซต์ที่เผยแพร่อยู่แล้ว'
-    REMOVEDPAGEFROMDRAFT: 'ลบ ''{title}'' ออกจากเว็บไซต์ฉบับร่างแล้ว'
-    RESTORED: 'เรียกคืนค่า ''{title}'' เสร็จเรียบร้อยแล้ว'
+    REMOVEDPAGE: "ลบ '{title}' ออกจากเว็บไซต์ที่เผยแพร่อยู่แล้ว"
+    REMOVEDPAGEFROMDRAFT: "ลบ '{title}' ออกจากเว็บไซต์ฉบับร่างแล้ว"
+    RESTORED: "เรียกคืนค่า '{title}' เสร็จเรียบร้อยแล้ว"
     ROLLBACK: ย้อนกลับไปที่รุ่นนี้
     SAVEDRAFT: บันทึก
     TabContent: เนื้อหา

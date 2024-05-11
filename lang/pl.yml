@@ -12,10 +12,10 @@ pl:
     UNPUBLISHED_PAGES: 'Usunięto z opublikowanych %d stron'
     UNPUBLISH_PAGES: 'Cofnij publikację'
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Dostęp do sekcji ''{title}'''
+    ACCESS: "Dostęp do sekcji '{title}'"
     ACCESS_HELP: 'Zezwala na oglądanie sekcji zawierających drzewo stron oraz treść. Prawo Przeglądaj i edytuj może być obsługiwane przez pola wyboru dostępne na stronach oraz poprzez zakładkę uprawnień.'
     ARCHIVE: Archiwizuj
-    ARCHIVEDPAGE: 'Zarchiwizowano stronę ''{title}'''
+    ARCHIVEDPAGE: "Zarchiwizowano stronę '{title}'"
     AddNew: 'Dodaj nową stronę'
     AddNewButton: Dodaj
     AddPageRestriction: 'Uwaga: Niektóre typy stron nie są dozwolone dla tego wyboru'
@@ -28,8 +28,8 @@ pl:
     ChoosePageParentMode: 'Wybierz gdzie chcesz utworzyć tę stronę'
     ChoosePageType: 'Wybierz rodzaj strony'
     Create: Utwórz
-    DUPLICATED: 'Duplikowanie ''{title}'' zakończone powodzeniem'
-    DUPLICATEDWITHCHILDREN: 'Duplikowanie ''{title}'' oraz podstron zakończone powodzeniem'
+    DUPLICATED: "Duplikowanie '{title}' zakończone powodzeniem"
+    DUPLICATEDWITHCHILDREN: "Duplikowanie '{title}' oraz podstron zakończone powodzeniem"
     NEWPAGE: 'Nowa {pagetype}'
     PAGENOTEXISTS: 'Ta strona nie istnieje'
     PAGES: 'Status strony'
@@ -41,21 +41,21 @@ pl:
     PUBALLCONFIRM: 'Opublikuj każdą stronę w witrynie'
     PUBALLFUN: '"Opublikuj wszystko"'
     PUBALLFUN2: 'Naciśnięcie tego przycisku będzie równoznaczne z przejściem do każdej strony i naciśnięciem "opublikuj". Jest przeznaczony do użytku po masowych edycjach treści, na przykład podczas tworzenia witryny. W przypadku dużych witryn internetowych wykonanie tego zadania może nie być możliwe. W takim przypadku zalecamy rozmowę z programistami w celu utworzenia niestandardowego zadania'
-    PUBLISHED: 'Opublikowano ''{title}'' '
+    PUBLISHED: "Opublikowano '{title}' "
     PUBPAGES: 'Zrobiono:  Opublikowano {count} stron'
     PageAdded: 'Pomyślnie utworzono stronę'
-    REMOVEDPAGE: 'Usunięto ''{title}'' z opublikowanej witryny'
-    REMOVEDPAGEFROMDRAFT: '''{title}'' usunięto ze szkiców'
+    REMOVEDPAGE: "Usunięto '{title}' z opublikowanej witryny"
+    REMOVEDPAGEFROMDRAFT: "'{title}' usunięto ze szkiców"
     REORGANISATIONSUCCESSFUL: 'Pomyślnie zreorganizowano drzewo serwisu.'
     RESTORE: 'Przywróć szkic'
-    RESTORED: 'Pomyślnie przywrócono ''{title}'''
+    RESTORED: "Pomyślnie przywrócono '{title}'"
     RESTORE_DESC: 'Przywróć jako szkic'
     RESTORE_TO_ROOT: 'Przywróć szkic'
     RESTORE_TO_ROOT_DESC: 'Przywróć jako szkic'
     ROLLBACK: 'Wróć do tej wersji'
     ROLLEDBACKPUBv2: 'Przywrócono opublikowaną wersję'
     ROLLEDBACKVERSIONv2: 'Przywrócono wersję #{version}.'
-    SAVED: 'Zapisano ''{title}''.'
+    SAVED: "Zapisano '{title}'."
     SAVEDRAFT: Zapisz
     SEARCHRESULTS: 'Wyniki wyszukiwania'
     SHOW_AS_LIST: 'pokaż jako listę'
@@ -167,13 +167,17 @@ pl:
     REDIRECTTOPAGE: 'Strona na Twojej witrynie'
     SINGULARNAME: 'Strona przekierowująca'
     YOURPAGE: 'Strona na Twojej witrynie'
+    db_ExternalURL: 'Zewnętrzny URL'
+    db_RedirectionType: 'Typ przekierowania'
     has_one_LinkTo: 'Linkuj do'
+    has_one_LinkToFile: 'Odnośnik do pliku'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Strona przekierowująca została ustawiona bez celu, do którego ma przekierowywać.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Ktokolwiek
     ACCESSHEADER: 'Kto może zobaczyć tę stronę?'
     ACCESSLOGGEDIN: 'Tylko zarejestrowani użytkownicy'
+    ACCESSONLYMEMBERS: 'Tylko ci użytkownicy (wybierz z listy)'
     ACCESSONLYTHESE: 'Tylko Ci ludzie (wybierz z listy)'
     ADDEDTODRAFTHELP: 'Strona nie została jeszcze opublikowana'
     ADDEDTODRAFTSHORT: Szkic
@@ -201,6 +205,7 @@ pl:
     DependtPageColumnLinkType: 'Typ linku'
     EDITHEADER: 'Kto może edytować wewnątrz systemu CMS?'
     EDITORGROUPS: 'Grupy edytujących'
+    EDITORMEMBERS: 'Użytkownicy edytorzy'
     EDITOR_GROUPS_FIELD_DESC: 'Grupy z globalnymi uprawnieniami do edycji: {groupList}'
     EDIT_ALL_DESCRIPTION: 'Edytuj jakąkolwiek stronę'
     EDIT_ALL_HELP: 'Możliwość edycji jakiejkolwiek strony w witrynie, bez względu na ustawienia w zakładce Dostęp. Wymaga uprawnienia "Dostęp do edycji treści"'
@@ -259,6 +264,7 @@ pl:
     URLSegment: URL
     UntitledDependentObject: 'Nowa {pagetype}'
     VIEWERGROUPS: 'Grupy przeglądających'
+    VIEWERMEMBERS: 'Użytkownicy przeglądający'
     VIEWER_GROUPS_FIELD_DESC: 'Grupy z globalnymi uprawnieniami podglądu: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Przeglądanie stron'
     VIEW_ALL_HELP: 'Uprawenienie do przeglądania wszystkich stron w witrynie, bez wzlędu na szczegółowe ustawienia w ich zakładkach Dostęp. Wymaga uprawenienia "Dostęp do sekcji ''Strony''" '
@@ -270,6 +276,11 @@ pl:
     Viewers: 'Grupy przeglądających'
     Visibility: Widoczność
     db_Content: Zawartość
+    db_MenuTitle: 'Tytuł menu'
+    db_MetaDescription: 'Opis meta'
+    db_NextReviewDate: 'Data kolejnej recenzji'
+    db_PublicHistory: 'Historia ogólnodostępna'
+    db_Sort: Sortuj
     db_Title: Tytuł
     db_URLSegment: URL
     has_one_Parent: 'Strona Nadrzędna'
