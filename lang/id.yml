@@ -6,7 +6,7 @@ id:
     UNPUBLISHED_PAGES: 'Batal Terbit %d halaman'
     UNPUBLISH_PAGES: Batalterbitkan
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Akses ke bagian ''{title}'''
+    ACCESS: "Akses ke bagian '{title}'"
     ACCESS_HELP: 'Perbolehkan menampilkan bagian dengan struktur laman dan konten. Perijinan menampilkan dan mengedit dapat diatur melalui pilihan terkait laman, sebagaimana "Perijinan Konten".'
     ARCHIVE: Arsip
     AddNew: 'Tambah laman baru'
@@ -17,8 +17,8 @@ id:
     ChoosePageParentMode: 'Pilih lokasi untuk laman ini'
     ChoosePageType: 'Pilih jenis laman'
     Create: Buat
-    DUPLICATED: '''{title}'' berhasil diduplikasi'
-    DUPLICATEDWITHCHILDREN: '''{title}'' dan turunannya berhasil diduplikasi'
+    DUPLICATED: "'{title}' berhasil diduplikasi"
+    DUPLICATEDWITHCHILDREN: "'{title}' dan turunannya berhasil diduplikasi"
     NEWPAGE: '{pagetype} baru'
     PAGENOTEXISTS: 'Laman ini tidak ada'
     PAGESALLOPT: 'Semua laman'
@@ -29,11 +29,11 @@ id:
     PUBALLFUN: 'Fungsi "Terbitkan Semua"'
     PUBPAGES: 'Selesai: {count} laman terbit'
     PageAdded: 'Laman berhasil dibuat'
-    REMOVEDPAGE: 'Menghapus ''{title}'' dari situs terbit'
-    REMOVEDPAGEFROMDRAFT: 'Menghapus ''{title}'' dari draf situs'
+    REMOVEDPAGE: "Menghapus '{title}' dari situs terbit"
+    REMOVEDPAGEFROMDRAFT: "Menghapus '{title}' dari draf situs"
     REORGANISATIONSUCCESSFUL: 'Pengaturan ulang struktur situs berhasil.'
     RESTORE: 'Pulihkan Draf'
-    RESTORED: 'Pemulihan ''{title}'' sukses'
+    RESTORED: "Pemulihan '{title}' sukses"
     RESTORE_DESC: 'Pulihkan versi arsip ke draf'
     RESTORE_TO_ROOT: 'Pulihkan draf pada level teratas'
     RESTORE_TO_ROOT_DESC: 'Pulihkan versi arsip ke draf sebagai halaman level teratas'

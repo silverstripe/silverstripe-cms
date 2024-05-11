@@ -11,7 +11,6 @@ if (typeof(ss) === 'undefined' || typeof(ss.i18n) === 'undefined') {
     "CMS.ConfirmRestoreFromLive": "Určitě chcete obnovit koncept do stavz, kdy stránka byla naposled zveřejněna?",
     "CMS.Duplicate": "Duplikovat",
     "CMS.EditPage": "Editovat",
-    "CMS.ONLYSELECTTWO": "You can only compare two versions at this time.",
     "CMS.Restore": "Určitě chcete obnovit tyto stránky z archívu?",
     "CMS.RestoreToRoot": "Určitě chcete obnovit tuto stránku z archívu?\n\nProtože nadřazená stránka není k dispozici, bude obnovena do nejvyšší úrovně.",
     "CMS.RollbackToVersion": "Skutečně chcete vrátit zpět na verzi #%s této stránky?",

@@ -12,10 +12,10 @@ cs:
     UNPUBLISHED_PAGES: 'Nezveřejněných %d stránek'
     UNPUBLISH_PAGES: Nezveřejnit
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Přístup k ''{title}'' sekci'
+    ACCESS: "Přístup k '{title}' sekci"
     ACCESS_HELP: 'Povolit prohlížení sekce obsahující strukturu a obsah webu. Oprávnění na prohlížení a úpravu mohou být nastavena skrze menu pro samostatnou stránku, také jako jednotlivé oprávnění pro obsah.'
     ARCHIVE: Archív
-    ARCHIVEDPAGE: 'Archivovaná stránka ''{title}'''
+    ARCHIVEDPAGE: "Archivovaná stránka '{title}'"
     AddNew: 'Přidat novou stránku'
     AddNewButton: 'Přidat nový'
     AddPageRestriction: 'Poznámka: Některé typy stránek nejsou povoleny při tomto výběru'
@@ -28,8 +28,8 @@ cs:
     ChoosePageParentMode: 'Vyberte, kde vytvořit tuto stránku'
     ChoosePageType: 'Vyberte typ stránky'
     Create: Vytvořit
-    DUPLICATED: 'Duplikováno ''{title}'' úspěšně'
-    DUPLICATEDWITHCHILDREN: 'Duplikováno ''{title}'' a potomci úspěšně'
+    DUPLICATED: "Duplikováno '{title}' úspěšně"
+    DUPLICATEDWITHCHILDREN: "Duplikováno '{title}' a potomci úspěšně"
     EMAIL: E-mail
     NEWPAGE: 'Nová {pagetype}'
     PAGENOTEXISTS: 'Tato stránka neexistuje'
@@ -40,21 +40,21 @@ cs:
     PLEASESAVE: 'Uložte stránku, prosím. Tato stránka nemůže být aktualizována, protože ještě nebyla uložena.'
     PUBALLCONFIRM: 'Prosím zveřejněte veškeré stránky z úschovny'
     PUBALLFUN: 'Funkce "Publikovat vše"'
-    PUBLISHED: 'Publikováno ''{title}'' úspěšně'
+    PUBLISHED: "Publikováno '{title}' úspěšně"
     PUBPAGES: 'Hotovo: Zveřejněno {count} stránek'
     PageAdded: 'Stránka vytvořena úspěšně'
-    REMOVEDPAGE: 'Odstraněno ''{title}'' ze zveřejněného webu'
-    REMOVEDPAGEFROMDRAFT: 'Odstraněno ''{title}'' z konceptu webu'
+    REMOVEDPAGE: "Odstraněno '{title}' ze zveřejněného webu"
+    REMOVEDPAGEFROMDRAFT: "Odstraněno '{title}' z konceptu webu"
     REORGANISATIONSUCCESSFUL: 'Strom webu reorganizován úspěšně.'
     RESTORE: 'Obnovit koncept'
-    RESTORED: 'Obnoveno ''{title}'' úspěšně'
+    RESTORED: "Obnoveno '{title}' úspěšně"
     RESTORE_DESC: 'Obnovit archivovanou verzi na koncept'
     RESTORE_TO_ROOT: 'Obnovit koncept do nejvyšší úrovně'
     RESTORE_TO_ROOT_DESC: 'Obnovit archivovanou verzi na koncept stránky nejvyšší úrovně'
     ROLLBACK: 'Vrátit zpět na tuto verzi'
     ROLLEDBACKPUBv2: 'Vráceno zpět na zveřejněnou verzi.'
     ROLLEDBACKVERSIONv2: 'Vráceno zpět na verzi #{version}.'
-    SAVED: 'Uloženo ''{title}'' úspěšně'
+    SAVED: "Uloženo '{title}' úspěšně"
     SAVEDRAFT: Uložit
     SEARCHRESULTS: 'Výsledky vyhledávání'
     SHOW_AS_LIST: 'ukázat jako seznam'

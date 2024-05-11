@@ -1,6 +1,6 @@
 id_ID:
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Akses ke bagian ''{title}'''
+    ACCESS: "Akses ke bagian '{title}'"
     ARCHIVE: Arsip
     CANT_REORGANISE: 'Anda tidak diijinkan mengubah laman Tingkat Atas. Pengubahan Anda tidak tersimpan.'
     Cancel: Batal

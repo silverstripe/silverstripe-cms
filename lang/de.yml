@@ -12,10 +12,10 @@ de:
     UNPUBLISHED_PAGES: 'Veröffentlichung von %d Seiten zurückgenommen'
     UNPUBLISH_PAGES: 'Veröffentlichung zurücknehmen'
   SilverStripe\CMS\Controllers\CMSMain:
-    ACCESS: 'Zugang zum Bereich ''{title}'''
+    ACCESS: "Zugang zum Bereich '{title}'"
     ACCESS_HELP: 'Seiteninhalt im CMS anzeigen. Anzeige- und Bearbeitungsberechtigungen können sowohl seitenspezifische als auch über die globalen Inhaltsberechtigungen gesetzt werden.'
     ARCHIVE: Archiv
-    ARCHIVEDPAGE: 'Seite ''{title}'' archiviert'
+    ARCHIVEDPAGE: "Seite '{title}' archiviert"
     AddNew: 'Neue Seite hinzufügen'
     AddNewButton: Hinzufügen
     AddPageRestriction: 'Hinweis: einige Seitentypen sind in diesem Bereich nicht erlaubt.'
@@ -28,8 +28,8 @@ de:
     ChoosePageParentMode: 'Wo soll diese Seite erstellt werden?'
     ChoosePageType: 'Seitentyp auswählen'
     Create: Erstellen
-    DUPLICATED: '''{title}''  wurde erfolgreich dupliziert'
-    DUPLICATEDWITHCHILDREN: '''{title}'' und alle Unterseiten wurden erfolgreich dupliziert'
+    DUPLICATED: "'{title}'  wurde erfolgreich dupliziert"
+    DUPLICATEDWITHCHILDREN: "'{title}' und alle Unterseiten wurden erfolgreich dupliziert"
     EMAIL: E-Mail
     NEWPAGE: 'Neue {pagetype}'
     PAGENOTEXISTS: 'Diese Seite existiert nicht'
@@ -42,21 +42,21 @@ de:
     PUBALLCONFIRM: 'Veröffentlicht jede Seite des Seitenbaumes und kopiert den Inhalt von Entwurf zu Live.'
     PUBALLFUN: '"Alle veröffentlichen"-Funktion'
     PUBALLFUN2: 'Wenn Sie auf diese Schaltfläche klicken, wird auf jede Seite gewechselt und auf "Veröffentlichen" geklickt. Es soll verwendet werden, nachdem umfangreiche Änderungen am Inhalt vorgenommen wurden, z. B. als die Website zum ersten Mal erstellt wurde. Bei großen Websites kann diese Aufgabe möglicherweise nicht vollständig ausgeführt werden. In diesem Fall empfehlen wir, mit Ihren Entwicklern zu sprechen, um eine benutzerdefinierte Aufgabe zu erstellen'
-    PUBLISHED: '''{title}'' wurde erfolgreich veröffentlicht.'
+    PUBLISHED: "'{title}' wurde erfolgreich veröffentlicht."
     PUBPAGES: 'Abgeschlossen: {count} Seiten wurden veröffentlicht'
     PageAdded: 'Seite erfolgreich erstellt'
-    REMOVEDPAGE: '''{title}'' wurde von der veröffentlichten Site entfernt'
-    REMOVEDPAGEFROMDRAFT: 'Lösche ''{title}'' von der Entwurfs-Site'
+    REMOVEDPAGE: "'{title}' wurde von der veröffentlichten Site entfernt"
+    REMOVEDPAGEFROMDRAFT: "Lösche '{title}' von der Entwurfs-Site"
     REORGANISATIONSUCCESSFUL: 'Der Seitenbaum wurde erfolgreich sortiert'
     RESTORE: 'Entwurf wiederherstellen'
-    RESTORED: '''{title}'' wurde wiederhergestellt'
+    RESTORED: "'{title}' wurde wiederhergestellt"
     RESTORE_DESC: 'Entwurf aus archivierter Version wiederherstellen'
     RESTORE_TO_ROOT: 'Entwurf in oberster Ebene wiederherstellen'
     RESTORE_TO_ROOT_DESC: 'Archivierte Version als Entwurf in oberster Ebene wiederherstellen'
     ROLLBACK: 'Diese Version wiederherstellen'
     ROLLEDBACKPUBv2: 'Veröffentlichte Version wiederhergestellt'
     ROLLEDBACKVERSIONv2: 'Version #{version} wiederhergestellt.'
-    SAVED: '''{title}'' erfolgreich gespeichert.'
+    SAVED: "'{title}' erfolgreich gespeichert."
     SAVEDRAFT: Speichern
     SEARCHRESULTS: Suchergebnisse
     SHOW_AS_LIST: 'als Liste zeigen'

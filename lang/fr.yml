@@ -14,7 +14,7 @@ fr:
   SilverStripe\CMS\Controllers\CMSMain:
     ACCESS: "Accès à la section «\_{title}\_»"
     ACCESS_HELP: 'Autoriser la visualisation de la section contenant l''arborescence et le contenu. Les autorisations de voir ou modifier le contenu peuvent être gérées dans les menus déroulants spécifiques à chaque page, ainsi que dans les "permissions de contenu".'
-    ARCHIVEDPAGE: 'Page ''{title}'' archivée'
+    ARCHIVEDPAGE: "Page '{title}' archivée"
     AddNew: 'Ajouter une nouvelle page'
     AddNewButton: Ajouter
     AddPageRestriction: 'Remarque : certains types de page ne sont pas autorisés pour cette sélection'
@@ -22,29 +22,29 @@ fr:
     ArchiveWarningWithCampaigns: 'Attention: cette page sera dépubliée et retirée automatiquement des {NumCampaigns} associées avant d''être archivée.\n\nEtes-vous sûr de vouloir poursuivre?'
     ArchiveWarningWithChildren: 'Attention: cette page et toutes les pages "enfant" seont dépubliées avant d''être archivées.\n\nEtes-vous sûr de vouloir poursuivre?'
     ArchiveWarningWithChildrenAndCampaigns: 'Attention: cette page et toutes les pages "enfant" seront dépubliées et retirées automatiquement des {NumCampaigns} associées avant d''être archivées.\n\nEtes-vous sûr de vouloir poursuivre?'
-    CANT_REORGANISE: 'Vous n''avez pas la permission de modifier les pages à la racine du site. Vos modifications n''ont pas été sauvegardées.'
+    CANT_REORGANISE: "Vous n'avez pas la permission de modifier les pages à la racine du site. Vos modifications n'ont pas été sauvegardées."
     Cancel: Annuler
     ChoosePageParentMode: 'Choisissez à quel emplacement créer cette page'
     ChoosePageType: 'Choisir le type de page'
     Create: Créer
-    DUPLICATED: '''{title}'' dupliqué avec succès'
-    DUPLICATEDWITHCHILDREN: '''{title}'' et ses enfants dupliqués avec succès'
+    DUPLICATED: "'{title}' dupliqué avec succès"
+    DUPLICATEDWITHCHILDREN: "'{title}' et ses enfants dupliqués avec succès"
     NEWPAGE: 'Nouveau {pagetype}'
-    PAGENOTEXISTS: 'Cette page n''existe pas'
+    PAGENOTEXISTS: "Cette page n'existe pas"
     PAGES: 'Statut de la page'
     PAGESALLOPT: 'Toutes les pages'
     PAGETYPEANYOPT: Tous
     PAGETYPEOPT: 'Type de page'
     PAGETYPE_TITLE: '(Type de Page: {type}) {title}'
-    PLEASESAVE: 'Merci de sauvegarder la page : elle n''a pas pu être mise à jour car elle n''a pas encore été enregistrée.'
+    PLEASESAVE: "Merci de sauvegarder la page : elle n'a pas pu être mise à jour car elle n'a pas encore été enregistrée."
     PUBALLCONFIRM: 'Merci de publier chaque page en copiant le contenu du site brouillon vers le site public'
     PUBALLFUN: 'Fonctionnalité "Tout Publier"'
-    PUBLISHED: 'Page ''{title}'' publiée avec succès'
+    PUBLISHED: "Page '{title}' publiée avec succès"
     PUBPAGES: '{count} pages ont été correctement publiées'
     PageAdded: 'La page a été créée avec succès '
     REMOVEDPAGE: "La page «\_{title}\_» a été retirée du site public "
-    REMOVEDPAGEFROMDRAFT: 'Page ''{title}'' retirée du site brouillon'
-    REORGANISATIONSUCCESSFUL: 'Réorganisation de l''arborescence réalisée avec succès'
+    REMOVEDPAGEFROMDRAFT: "Page '{title}' retirée du site brouillon"
+    REORGANISATIONSUCCESSFUL: "Réorganisation de l'arborescence réalisée avec succès"
     RESTORE: 'Restaurer la version brouillon'
     RESTORED: "Page «\_{title}\_» restaurée avec succès"
     RESTORE_DESC: 'Restaurer la version archivée dans le site brouillon'
@@ -53,7 +53,7 @@ fr:
     ROLLBACK: 'Revenir à cette version'
     ROLLEDBACKPUBv2: 'Revenir à la version publiée'
     ROLLEDBACKVERSIONv2: 'Revenir à la version #{version}'
-    SAVED: 'Page ''{title}'' sauvegardée avec succès'
+    SAVED: "Page '{title}' sauvegardée avec succès"
     SAVEDRAFT: Sauvegarder
     SEARCHRESULTS: 'Résultats de la recherche'
     SHOW_AS_LIST: 'Afficher sous forme de liste'
@@ -70,7 +70,7 @@ fr:
     ParentMode_top: 'A la racine du site'
     Title: 'Ajouter la page'
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    ErrorItemPermissionDenied: 'Vous n''avez apparemment pas les autorisations requises pour ajouter {ObjectTitle} à une campagne'
+    ErrorItemPermissionDenied: "Vous n'avez apparemment pas les autorisations requises pour ajouter {ObjectTitle} à une campagne"
     ErrorNotFound: '{Type} introuvable'
     MENUTITLE: 'Editer la page'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
@@ -115,7 +115,7 @@ fr:
     DRAFT: Brouillon
     DRAFTSITE: 'Site Brouillon'
     INSTALL_SUCCESS: 'Installation terminée!'
-    InstallFilesDeleted: 'Les fichiers d''installation ont été supprimés avec succès'
+    InstallFilesDeleted: "Les fichiers d'installation ont été supprimés avec succès"
     InstallSecurityWarning: "Pour des raisons de sécurité vous devriez maintenant supprimer les fichiers d’installation, à moins que vous n’ayez prévu de réinstaller le système ultérieurement (<em>ce qui nécessite de se connecter comme administrateur, voir plus haut</em>). Désormais, votre serveur n’aura besoin de droits d'accès en écriture que pour le dossier «\_assets\_», vous pouvez donc les révoquer pour tous les autres dossiers. <a href=\"{link}\" style=\"text-align: center;\">Cliquez ici pour supprimer les fichiers d’installation.</a>"
     InstallSuccessCongratulations: 'SilverStripe a été installé avec succès.'
     LOGGEDINAS: 'Connecté en tant que'
@@ -129,7 +129,7 @@ fr:
     PostInstallTutorialIntro: 'Ceci est un site Silverstripe 3 minimaliste. Pour le déployer, veuillez regarder {link}.'
     StartEditing: 'Vous pouvez commencer à créer ou modifier du contenu en accédant au <a href="{link}">the CMS</a>.'
     UNVERSIONEDPREVIEW: Aperçu
-    UnableDeleteInstall: 'Impossible de supprimer les fichiers d''installation. Merci de supprimer manuellement les fichiers suivants :'
+    UnableDeleteInstall: "Impossible de supprimer les fichiers d'installation. Merci de supprimer manuellement les fichiers suivants :"
     VIEWPAGEIN: 'Voir la page dans :'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archivé
@@ -142,14 +142,14 @@ fr:
     SELECT_PAGE: 'Choisir une page'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Annuler
-    EMPTY: 'Entrez un segment d''URL ou cliquez sur annuler'
+    EMPTY: "Entrez un segment d'URL ou cliquez sur annuler"
     Edit: Editer
     HelpChars: 'Les caractères spéciaux sont automatiquement convertis ou supprimés.'
   SilverStripe\CMS\Model\RedirectorPage:
     DESCRIPTION: 'Redirige vers une page interne ou une URL externe'
     FILE: Fichier
     HEADER: 'Cette page va rediriger les utilisateurs vers une autre page'
-    OTHERURL: 'URL d''un autre site web'
+    OTHERURL: "URL d'un autre site web"
     PLURALS:
       one: 'Une page de redirection'
       other: '{count} pages de redirection'
@@ -191,11 +191,11 @@ fr:
     DESCRIPTION: 'Page au contenu généric'
     DependtPageColumnLinkType: 'Type de lien'
     EDITHEADER: 'Qui peut modifier cette page?'
-    EDITORGROUPS: 'Groupes d''édition'
-    EDITOR_GROUPS_FIELD_DESC: 'Groupes avec des autorisations d''édition globales: {groupList}'
+    EDITORGROUPS: "Groupes d'édition"
+    EDITOR_GROUPS_FIELD_DESC: "Groupes avec des autorisations d'édition globales: {groupList}"
     EDIT_ALL_DESCRIPTION: 'Editer toutes les pages'
     EDIT_ALL_HELP: 'Possibilité d''éditer n''importe quelle page du site, quels que soient les paramètres définis dans l''onglet "accès". Requiert l''autorisation "Accès à la section pages".'
-    Editors: 'Groupes d''éditeurs'
+    Editors: "Groupes d'éditeurs"
     HASBROKENLINKS: 'Cette page comporte des liens rompus.'
     HTMLEDITORTITLE: Contenu
     INHERIT: 'Hérite de la page parente'
@@ -208,10 +208,10 @@ fr:
     MENUTITLE: 'Titre dans les menus'
     METADESCHELP: 'Les moteurs de recherche reprennent cette description dans leurs résultats (bien qu’elle n’ait pas d’influence sur le classement).'
     METAEXTRA: 'Balises Méta personnalisées'
-    MODIFIEDONDRAFTHELP: 'Des changements effectués sur cette page n''''ont pas été publiés'
+    MODIFIEDONDRAFTHELP: "Des changements effectués sur cette page n''ont pas été publiés"
     MODIFIEDONDRAFTSHORT: Modifiée
     MetadataToggle: Métadonnées
-    MoreOptions: 'Plus d''options'
+    MoreOptions: "Plus d'options"
     NOTPUBLISHED: 'Non publié'
     OBSOLETECLASS: 'Le type de cette page ({type}) est obsolète. En sauvegardant, vous allez réinitialiser le type de page et risquez de perdre des données'
     ONLIVEONLYSHORT: 'Sur le site public uniquement'
@@ -222,8 +222,8 @@ fr:
     PARENTID: 'Page parente'
     PARENTTYPE: 'Emplacement de la page'
     PARENTTYPE_ROOT: 'Page de premier niveau'
-    PARENTTYPE_SUBPAGE: 'Sous-page d''une page parente (choisir en-dessous) '
-    PERMISSION_GRANTACCESS_DESCRIPTION: 'Gérer les droits d''accès au contenu'
+    PARENTTYPE_SUBPAGE: "Sous-page d'une page parente (choisir en-dessous) "
+    PERMISSION_GRANTACCESS_DESCRIPTION: "Gérer les droits d'accès au contenu"
     PERMISSION_GRANTACCESS_HELP: 'Autoriser le réglage de restrictions spécifiques dans la section "Pages".'
     PLURALS:
       many: '{count} pages'
@@ -241,11 +241,11 @@ fr:
     TABDEPENDENT: 'Pages dépendantes'
     TOPLEVEL: 'Contenu du Site ( Premier Niveau )'
     UNTITLED: 'Sans titre {pagetype}'
-    URLSegment: 'Segment d''URL'
+    URLSegment: "Segment d'URL"
     VIEWERGROUPS: 'Groupes de Visualisation'
     VIEWER_GROUPS_FIELD_DESC: 'Groupes avec des autorisations globales de visualisation: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Voir toutes les pages'
-    VIEW_ALL_HELP: 'Possibilité de visualiser n''''importe quelle page du site, quels que soient les paramétrages de l''''onglet "accès". Requiert l''''autorisation "accès à la section pages"'
+    VIEW_ALL_HELP: "Possibilité de visualiser n''importe quelle page du site, quels que soient les paramétrages de l''onglet \"accès\". Requiert l''autorisation \"accès à la section pages\""
     VIEW_DRAFT_CONTENT: 'Voir les brouillons'
     VIEW_DRAFT_CONTENT_HELP: 'Concerne l’affichage des pages de manière externe au CMS en mode brouillon. Pratique pour les collaborateurs externes sans accès au CMS.'
     VIRTUALPAGEDRAFTWARNING: 'Veuillez publier la page liée avant de publier la page virtuelle'
@@ -256,7 +256,7 @@ fr:
     db_Content: Contenu
     db_Sort: Tri
     db_Title: Titre
-    db_URLSegment: 'Segment d''URL'
+    db_URLSegment: "Segment d'URL"
     has_one_Parent: 'Page parente'
     many_many_BackLinkTracking: 'Suivi des liens retour'
     many_many_ImageTracking: 'Suivi des images'
@@ -268,7 +268,7 @@ fr:
     SINGULARNAME: 'Lien Site Tree'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Page liée'
-    DESCRIPTION: 'Affiche le contenu d''une autre page'
+    DESCRIPTION: "Affiche le contenu d'une autre page"
     EditLink: éditer
     HEADER: 'Ceci est une page virtuelle'
     HEADERWITHLINK: 'Ceci est une page virtuelle dupliquant le contenu de "{title}" ({link})'
@@ -282,7 +282,7 @@ fr:
     BrokenLinksGroupTitle: 'Rapports des liens brisés'
     ParameterLiveCheckbox: 'Consulter le site public'
   SilverStripe\CMS\Reports\BrokenLinksReport:
-    Any: 'N''importe quel'
+    Any: "N'importe quel"
     BROKENLINKS: 'Rapport des liens brisés'
     CheckSite: 'Consulter le site'
     CheckSiteDropdownDraft: 'Site Brouillon'
@@ -331,6 +331,6 @@ fr:
     HEADER: 'Retirer toutes les pages orphelines'
     NONEFOUND: 'Aucune page orpheline trouvée'
     NONEREMOVED: 'Aucune page retirée'
-    OPERATION_REMOVE: 'Retirer toutes les versions des pages sélectionnées (avertissement: seront supprimés à la fois l''historique et la version publique des pages sélectionnées)'
+    OPERATION_REMOVE: "Retirer toutes les versions des pages sélectionnées (avertissement: seront supprimés à la fois l'historique et la version publique des pages sélectionnées)"
     SELECTALL: 'tout sélectionner'
     UNSELECTALL: 'tout désélectionner'

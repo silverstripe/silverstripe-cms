@@ -15,7 +15,7 @@ es_AR:
     PLEASESAVE: 'Por favor Guarda la Página: No se puede actualizar esta página porque aún no se ha guardado.'
     PUBALLCONFIRM: 'Por favor publica todas las páginas del sitio, copiando el contenido del boceto al sitio público'
     PUBALLFUN: 'Funcionalidad "Publicar Todo"'
-    REMOVEDPAGEFROMDRAFT: 'Quitados ''{title}'' del borrador del sitio'
+    REMOVEDPAGEFROMDRAFT: "Quitados '{title}' del borrador del sitio"
     ROLLBACK: 'Restaurar a ésta versión'
     SAVEDRAFT: Guardar
     SEARCHRESULTS: 'Resultado de la búsqueda'

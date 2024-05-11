@@ -31,7 +31,7 @@ uk_UA:
     TOPLEVEL: 'Зміст сайту (верхній рівень)'
     URLSegment: 'сегмент URL'
     VIEW_DRAFT_CONTENT: 'Переглянути чернетку змісту'
-    VIRTUALPAGEWARNINGSETTINGS: 'Виберіть пов''язану сторінку в полях основного змісту, щоб опублікувати'
+    VIRTUALPAGEWARNINGSETTINGS: "Виберіть пов'язану сторінку в полях основного змісту, щоб опублікувати"
     belongs_many_many_ContentReviewGroups: 'Групи перегляду змісту'
     belongs_many_many_ContentReviewUsers: 'Користувачі перегляду змісту'
     db_Content: Зміст

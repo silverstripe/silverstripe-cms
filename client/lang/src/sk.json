@@ -4,7 +4,6 @@
     "CMS.ConfirmRestoreFromLive": "Určite chcete obnoviť koncept do doby, kedy bola stránka naposledy zverejnená?",
     "CMS.Duplicate": "Duplikovať",
     "CMS.EditPage": "Editovať",
-    "CMS.ONLYSELECTTWO": "You can only compare two versions at this time.",
     "CMS.Restore": "Určite chcete obnoviť túto stánku z archívu?",
     "CMS.RestoreToRoot": "Určite chcete obnoviť túto stránku z archívu?\n\nPretože nadriadená stránka nie je k dispozícii, bude obnovena do najvyššej úrovne.",
     "CMS.RollbackToVersion": "Skutočne chcete vrátiť späť na verziu #%s tejto stránky?",

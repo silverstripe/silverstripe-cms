@@ -4,7 +4,6 @@
     "CMS.ConfirmRestoreFromLive": "Haluatko varmasti palata luonnoksen viimeisimpään julkaistuun versioon?",
     "CMS.Duplicate": "Monista",
     "CMS.EditPage": "Muokkaa",
-    "CMS.ONLYSELECTTWO": "You can only compare two versions at this time.",
     "CMS.Restore": "Haluatko varmasti palauttaa sivun arkistosta?",
     "CMS.RestoreToRoot": "Haluatko varmasti palauttaa tämän sivun arkistosta?\n\nKoska isäntäsivua ei ole saatavilla, sivu palautetaan päätasolle.",
     "CMS.RollbackToVersion": "Haluatko varmasti palauttaa #%s version tästä sivusta?",
