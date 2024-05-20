@@ -7,7 +7,7 @@ use SilverStripe\ORM\DataExtension;
 
 class SiteTreeLinkTracking_Extension extends DataExtension implements TestOnly
 {
-    public function updateAnchorsOnPage(&$anchors)
+    protected function updateAnchorsOnPage(&$anchors)
     {
         array_push(
             $anchors,

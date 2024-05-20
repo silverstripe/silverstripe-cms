@@ -19,7 +19,7 @@ abstract class SiteTreeExtension extends DataExtension
      *
      * @param SiteTree &$original The current Live SiteTree record prior to publish
      */
-    public function onBeforePublish(&$original)
+    protected function onBeforePublish(&$original)
     {
     }
 
@@ -28,14 +28,14 @@ abstract class SiteTreeExtension extends DataExtension
      *
      * @param SiteTree &$original The current Live SiteTree record prior to publish
      */
-    public function onAfterPublish(&$original)
+    protected function onAfterPublish(&$original)
     {
     }
 
     /**
      * Hook called before the page's {@link Versioned::doUnpublish()} action is completed
      */
-    public function onBeforeUnpublish()
+    protected function onBeforeUnpublish()
     {
     }
 
@@ -43,7 +43,7 @@ abstract class SiteTreeExtension extends DataExtension
     /**
      * Hook called after the page's {@link SiteTree::doUnpublish()} action is completed
      */
-    public function onAfterUnpublish()
+    protected function onAfterUnpublish()
     {
     }
 

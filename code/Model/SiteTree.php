@@ -872,7 +872,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * @param SiteTree $original
      * @param bool $doWrite
      */
-    public function onBeforeDuplicate($original, $doWrite)
+    protected function onBeforeDuplicate($original, $doWrite)
     {
         $this->Sort = 0;
     }
@@ -1755,7 +1755,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $this->extend('augmentSyncLinkTracking');
     }
 
-    public function onBeforeDelete()
+    protected function onBeforeDelete()
     {
         parent::onBeforeDelete();
 
@@ -1767,7 +1767,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
     }
 
-    public function onAfterDelete()
+    protected function onAfterDelete()
     {
         $this->updateDependentPages();
         parent::onAfterDelete();
@@ -2621,7 +2621,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         return $actions;
     }
 
-    public function onAfterPublish()
+    protected function onAfterPublish()
     {
         // Force live sort order to match stage sort order
         $sql = sprintf(
@@ -2638,7 +2638,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     /**
      * Update draft dependant pages
      */
-    public function onAfterRevertToLive()
+    protected function onAfterRevertToLive()
     {
         // Use an alias to get the updates made by $this->publish
         /** @var SiteTree $stageSelf */

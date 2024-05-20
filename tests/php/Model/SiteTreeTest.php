@@ -2153,8 +2153,10 @@ class SiteTreeTest extends SapphireTest
         $obj->Content = '<a href="[sitetree_link,id='. $id .']">Link to Page</a>';
         $obj->write();
 
-        //Test that method doesn't throw exception
+        // Test that method doesn't throw exception
         $this->expectNotToPerformAssertions();
-        $page->onAfterRevertToLive();
+        $method = new ReflectionMethod(SiteTree::class, 'onAfterRevertToLive');
+        $method->setAccessible(true);
+        $method->invoke($page);
     }
 }

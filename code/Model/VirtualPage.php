@@ -285,7 +285,7 @@ class VirtualPage extends Page
         return parent::getCMSFields();
     }
 
-    public function onBeforeWrite()
+    protected function onBeforeWrite()
     {
         $this->refreshFromCopied();
         parent::onBeforeWrite();
