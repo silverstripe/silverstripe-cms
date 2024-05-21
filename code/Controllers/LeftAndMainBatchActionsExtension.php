@@ -11,7 +11,7 @@ use SilverStripe\Core\Extension;
  */
 class LeftAndMainBatchActionsExtension extends Extension
 {
-    public function updateBatchActionsForm(&$form)
+    protected function updateBatchActionsForm(&$form)
     {
         $cmsMain = singleton(CMSMain::class);
         $form->Fields()->insertAfter('Action', $cmsMain->BatchActionParameters());
