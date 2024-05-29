@@ -2,9 +2,9 @@ name: Update JS
 
 on:
   workflow_dispatch:
-  # Run on a schedule of once per quarter
+  # At 9:45 AM UTC, on day 1 of the month, only in March and September
   schedule:
-    - cron: '45 9 1 */3 *'
+    - cron: '45 9 1 3,9 *'
 
 permissions: {}
 
