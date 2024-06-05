@@ -27,8 +27,8 @@ class CmsReportsTest extends SapphireTest
         parent::setUp();
 
         // set the dates by hand: impossible to set via yml
-        $afterThreshold = strtotime('-' . (self::$daysAgo - 1) . ' days', strtotime('31-06-2009 00:00:00'));
-        $beforeThreshold = strtotime('-' . (self::$daysAgo + 1) . ' days', strtotime('31-06-2009 00:00:00'));
+        $afterThreshold = strtotime('-' . (CmsReportsTest::$daysAgo - 1) . ' days', strtotime('31-06-2009 00:00:00'));
+        $beforeThreshold = strtotime('-' . (CmsReportsTest::$daysAgo + 1) . ' days', strtotime('31-06-2009 00:00:00'));
 
         $after = $this->objFromFixture(SiteTree::class, 'after');
         $before = $this->objFromFixture(SiteTree::class, 'before');
