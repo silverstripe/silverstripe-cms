@@ -2212,17 +2212,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             );
         }
 
-        if (file_exists(PUBLIC_PATH . '/install.php')) {
-            $fields->addFieldToTab('Root.Main', LiteralField::create(
-                'InstallWarningHeader',
-                '<div class="alert alert-warning">' . _t(
-                    __CLASS__ . '.REMOVE_INSTALL_WARNING',
-                    "Warning: You should remove install.php from this SilverStripe install for security reasons."
-                )
-                . '</div>'
-            ), 'Title');
-        }
-
         if (self::$runCMSFieldsExtensions) {
             $this->extend('updateCMSFields', $fields);
         }

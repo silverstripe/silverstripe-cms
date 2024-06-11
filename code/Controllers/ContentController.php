@@ -13,21 +13,17 @@ use SilverStripe\Control\Middleware\HTTPCacheControlMiddleware;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Core\Manifest\ModuleManifest;
-use SilverStripe\Dev\Deprecation;
 use SilverStripe\i18n\i18n;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\ORM\FieldType\DBField;
-use SilverStripe\ORM\FieldType\DBHTMLText;
-use SilverStripe\ORM\FieldType\DBVarchar;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\Security\MemberAuthenticator\MemberAuthenticator;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\Versioned\Versioned;
-use SilverStripe\View\ArrayData;
 use SilverStripe\View\Parsers\URLSegmentFilter;
 use SilverStripe\View\Requirements;
 use SilverStripe\View\SSViewer;
@@ -60,8 +56,6 @@ class ContentController extends Controller
     ];
 
     private static $allowed_actions = [
-        'successfullyinstalled',
-        'deleteinstallfiles', // secured through custom code
         'LoginForm',
     ];
 
@@ -437,88 +431,5 @@ HTML;
 
         $templates = array_merge(...$templatesFound);
         return SSViewer::create($templates);
-    }
-
-
-    /**
-     * This action is called by the installation system
-     *
-     * @deprecated 5.3.0 Will be removed without equivalent functionality
-     */
-    public function successfullyinstalled()
-    {
-        Deprecation::notice('5.3.0', 'Will be removed without equivalent functionality');
-        // Return 410 Gone if this site is not actually a fresh installation
-        if (!file_exists(PUBLIC_PATH . '/install.php')) {
-            $this->httpError(410);
-        }
-
-        if (isset($_SESSION['StatsID']) && $_SESSION['StatsID']) {
-            $url = 'http://ss2stat.silverstripe.com/Installation/installed?ID=' . $_SESSION['StatsID'];
-            @file_get_contents($url ?? '');
-        }
-
-        global $project;
-        $data = new ArrayData([
-            'Project' => Convert::raw2xml($project),
-            'Username' => Convert::raw2xml($this->getRequest()->getSession()->get('username')),
-            'Password' => Convert::raw2xml($this->getRequest()->getSession()->get('password')),
-        ]);
-
-        return [
-            "Title" =>  _t(__CLASS__ . ".INSTALL_SUCCESS", "Installation Successful!"),
-            "Content" => $data->renderWith([
-                'type' => 'Includes',
-                'Install_successfullyinstalled',
-            ]),
-        ];
-    }
-
-    /**
-     * @deprecated 5.3.0 Will be removed without equivalent functionality
-     */
-    public function deleteinstallfiles()
-    {
-        Deprecation::notice('5.3.0', 'Will be removed without equivalent functionality');
-        if (!Permission::check("ADMIN")) {
-            return Security::permissionFailure($this);
-        }
-
-        $title = new DBVarchar("Title");
-        $content = new DBHTMLText('Content');
-
-        // As of SS4, index.php is required and should never be deleted.
-        $installfiles = [
-            'install.php',
-            'install-frameworkmissing.html',
-            'index.html'
-        ];
-
-        $unsuccessful = new ArrayList();
-        foreach ($installfiles as $installfile) {
-            $installfilepath = PUBLIC_PATH . '/' . $installfile;
-            if (file_exists($installfilepath ?? '')) {
-                @unlink($installfilepath ?? '');
-            }
-
-            if (file_exists($installfilepath ?? '')) {
-                $unsuccessful->push(new ArrayData(['File' => $installfile]));
-            }
-        }
-
-        $data = new ArrayData([
-            'Username' => Convert::raw2xml($this->getRequest()->getSession()->get('username')),
-            'Password' => Convert::raw2xml($this->getRequest()->getSession()->get('password')),
-            'UnsuccessfulFiles' => $unsuccessful,
-        ]);
-        $content->setValue($data->renderWith([
-            'type' => 'Includes',
-            'Install_deleteinstallfiles',
-        ]));
-
-        return [
-            "Title" => $title,
-            "Content" => $content,
-        ];
     }
 }
