@@ -484,15 +484,15 @@ class VirtualPage extends Page
      * on this object.
      *
      * @param string $field
-     * @return string
+     * @return string|null
      */
-    public function castingHelper($field)
+    public function castingHelper($field, bool $useFallback = true)
     {
         $copy = $this->CopyContentFrom();
-        if ($copy && $copy->exists() && ($helper = $copy->castingHelper($field))) {
+        if ($copy && $copy->exists() && ($helper = $copy->castingHelper($field, $useFallback))) {
             return $helper;
         }
-        return parent::castingHelper($field);
+        return parent::castingHelper($field, $useFallback);
     }
 
     /**
