@@ -9,7 +9,7 @@
 }
 
 #SilverStripeNavigator * {
-	font-family: Arial,Helvetica,sans-serif;
+	font-family: "Arial","Helvetica",sans-serif;
 	font-size: 10px !important;
 }
 
@@ -18,12 +18,14 @@
 	padding-top : 4px;
 	padding-left : 3px;
 	padding-right : 6px;
-	color: white;
-	border-top: 1px solid #555555;
+	color: #fff;
+	border-top: 1px solid #555;
 }
+
 #SilverStripeNavigator #logInStatus {
 	float: right;
 }
+
 #SilverStripeNavigator #switchView {
 	float: left;
 
@@ -34,6 +36,7 @@
 	background-color: transparent;
 	text-decoration: underline;
 }
+
 #SilverStripeNavigator a:hover  {
 	background-color: transparent;
 }
@@ -49,15 +52,13 @@
 }
 
 #SilverStripeNavigatorMessage {
-	font-family: 'Lucida Grande', Verdana, Arial, 'sans-serif';
+	font-family: 'Lucida Grande', 'Verdana', 'Arial', sans-serif;
 	position: fixed;
 	z-index: 1000;
 	right: 20px;
 	top: 40px;
 	padding: 10px;
-	border-color: #c99;
 	color: #fff;
-	background-color: #c00;
 	border: 1px solid #000;
 }
 
@@ -68,10 +69,10 @@
 	height: 50px;
 	width: 350px;
 	left: 200px;
-	background-color: white;
-	border: 1px solid black;
+	background-color: #fff;
+	border: 1px solid #000;
 	z-index: 100;
-	color: black;
+	color: #000;
 	padding: 5px;
 }
 
@@ -80,9 +81,9 @@
 }
 
 #SilverStripeNavigatorLinkPopup a.close {
-	color: blue;
+	color: #00f;
 	text-align: right;
 	width: 80%;
-	border: none !important;
+	border: 0 !important;
 	cursor: pointer;
 }
