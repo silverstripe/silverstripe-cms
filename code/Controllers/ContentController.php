@@ -13,6 +13,7 @@ use SilverStripe\Control\Middleware\HTTPCacheControlMiddleware;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Core\Manifest\ModuleManifest;
+use SilverStripe\Dev\Deprecation;
 use SilverStripe\i18n\i18n;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataObject;
@@ -441,9 +442,12 @@ HTML;
 
     /**
      * This action is called by the installation system
+     *
+     * @deprecated 5.3.0 Will be removed without equivalent functionality
      */
     public function successfullyinstalled()
     {
+        Deprecation::notice('5.3.0', 'Will be removed without equivalent functionality');
         // Return 410 Gone if this site is not actually a fresh installation
         if (!file_exists(PUBLIC_PATH . '/install.php')) {
             $this->httpError(410);
@@ -470,8 +474,12 @@ HTML;
         ];
     }
 
+    /**
+     * @deprecated 5.3.0 Will be removed without equivalent functionality
+     */
     public function deleteinstallfiles()
     {
+        Deprecation::notice('5.3.0', 'Will be removed without equivalent functionality');
         if (!Permission::check("ADMIN")) {
             return Security::permissionFailure($this);
         }
