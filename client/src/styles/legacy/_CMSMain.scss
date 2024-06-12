@@ -49,14 +49,14 @@
 .cms-content-tools {
 	#cms-content-treeview {
 		.cms-content-toolbar {
-			border-bottom: none;
+			border-bottom: 0;
 			box-shadow: none;
 			margin-bottom: 0;
 		}
 		.cms-tree-expand-trigger {
 			display: block;
 			float: left;
-			margin: 0 0 2px 0;
+			margin: 0 0 2px;
 			span.ui-button-text {
 					padding-right: 8px;
 			}
@@ -135,7 +135,7 @@
   }
 
 	&.loading .form__field-label {
-		background-image: url(../../images/loading.gif);
+		background-image: url("../../images/loading.gif");
     background-repeat: no-repeat;
     background-position: right center;
     padding-right: 20px;
@@ -179,6 +179,6 @@
 
 .form__field-update-url {
     border-radius: 0 3px 3px 0;
-    margin-right: 0px;
+    margin-right: 0;
     margin-left: -1px;
 }
