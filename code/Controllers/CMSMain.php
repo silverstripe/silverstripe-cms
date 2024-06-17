@@ -105,7 +105,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
     private static $tree_class = SiteTree::class;
 
-    private static $session_namespace = self::class;
+    private static $session_namespace = CMSMain::class;
 
     private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
 
@@ -587,7 +587,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         // Render using full-subtree template
         return $markingSet->renderChildren(
-            [ self::class . '_SubTree', 'type' => 'Includes' ],
+            [ CMSMain::class . '_SubTree', 'type' => 'Includes' ],
             $this->getTreeNodeCustomisations()
         );
     }
@@ -607,7 +607,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 'rootTitle' => $rootTitle,
                 'extraClass' => $this->getTreeNodeClasses($node),
                 'Title' => _t(
-                    self::class . '.PAGETYPE_TITLE',
+                    CMSMain::class . '.PAGETYPE_TITLE',
                     '(Page type: {type}) {title}',
                     [
                         'type' => $node->i18n_singular_name(),
@@ -718,7 +718,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
             // Render using single node template
             $html = $markingSet->renderChildren(
-                [ self::class . '_TreeNode', 'type' => 'Includes'],
+                [ CMSMain::class . '_TreeNode', 'type' => 'Includes'],
                 $this->getTreeNodeCustomisations()
             );
 

@@ -16,7 +16,7 @@ class CMSMainTest_ClassA extends SiteTree implements TestOnly
     {
         parent::onBeforeWrite();
 
-        if ($this->ClassName !== self::class) {
+        if ($this->ClassName !== CMSMainTest_ClassA::class) {
             throw new ValidationException("Class saved with incorrect ClassName");
         }
     }

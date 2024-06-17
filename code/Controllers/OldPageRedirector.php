@@ -30,9 +30,9 @@ class OldPageRedirector extends Extension
         $getvars = $request->getVars();
         unset($getvars['url']);
 
-        $page = self::find_old_page($params, 0);
+        $page = OldPageRedirector::find_old_page($params, 0);
         if (!$page) {
-            $page = self::find_old_page($params);
+            $page = OldPageRedirector::find_old_page($params);
         }
         $cleanPage = trim(Director::makeRelative($page) ?? '', '/');
         if (!$cleanPage) {
@@ -95,7 +95,7 @@ class OldPageRedirector extends Extension
         if ($page && $page->canView()) {
             if (count($params ?? [])) {
                 // We have to go deeper!
-                $ret = self::find_old_page($params, $page, $redirect);
+                $ret = OldPageRedirector::find_old_page($params, $page, $redirect);
                 if ($ret) {
                     // A valid child page was found! We can return it
                     return $ret;

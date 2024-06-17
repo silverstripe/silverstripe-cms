@@ -39,12 +39,12 @@ class RootURLController extends Controller implements Resettable
      */
     public static function get_homepage_link()
     {
-        if (!self::$cached_homepage_link) {
+        if (!RootURLController::$cached_homepage_link) {
             $link = Config::inst()->get(__CLASS__, 'default_homepage_link');
             singleton(__CLASS__)->extend('updateHomepageLink', $link);
-            self::$cached_homepage_link = $link;
+            RootURLController::$cached_homepage_link = $link;
         }
-        return self::$cached_homepage_link;
+        return RootURLController::$cached_homepage_link;
     }
 
     /**
@@ -56,7 +56,7 @@ class RootURLController extends Controller implements Resettable
      */
     public static function should_be_on_root(SiteTree $page)
     {
-        return (!self::$is_at_root && self::get_homepage_link() == trim($page->RelativeLink(true) ?? '', '/'));
+        return (!RootURLController::$is_at_root && RootURLController::get_homepage_link() == trim($page->RelativeLink(true) ?? '', '/'));
     }
 
     /**
@@ -64,14 +64,14 @@ class RootURLController extends Controller implements Resettable
      */
     public static function reset()
     {
-        self::$cached_homepage_link = null;
+        RootURLController::$cached_homepage_link = null;
     }
 
     protected function beforeHandleRequest(HTTPRequest $request)
     {
         parent::beforeHandleRequest($request);
 
-        self::$is_at_root = true;
+        RootURLController::$is_at_root = true;
 
         if (!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
             $this->getResponse()->redirect(Controller::join_links(
@@ -86,7 +86,7 @@ class RootURLController extends Controller implements Resettable
 
     public function handleRequest(HTTPRequest $request): HTTPResponse
     {
-        self::$is_at_root = true;
+        RootURLController::$is_at_root = true;
         $this->beforeHandleRequest($request);
 
         if (!$this->getResponse()->isFinished()) {
@@ -95,7 +95,7 @@ class RootURLController extends Controller implements Resettable
                 return $this->getResponse();
             }
 
-            $request->setUrl(self::get_homepage_link() . '/');
+            $request->setUrl(RootURLController::get_homepage_link() . '/');
             $request->match('$URLSegment//$Action', true);
             $controller = new ModelAsController();
 
