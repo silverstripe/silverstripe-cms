@@ -133,6 +133,6 @@ class ModelAsController extends Controller implements NestedController
             Debug::message("Using record #$sitetree->ID of type " . get_class($sitetree) . " with link {$sitetree->Link()}");
         }
 
-        return self::controller_for($sitetree, $this->getRequest()->param('Action'));
+        return ModelAsController::controller_for($sitetree, $this->getRequest()->param('Action'));
     }
 }
