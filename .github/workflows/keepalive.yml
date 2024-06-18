@@ -1,10 +1,12 @@
 name: Keepalive
 
 on:
-  # At 6:30 PM UTC, on day 15 of the month
+  # At 2:10 AM UTC, on day 11 of the month
   schedule:
-    - cron: '30 18 15 * *'
+    - cron: '10 2 11 * *'
   workflow_dispatch:
+
+permissions: {}
 
 jobs:
   keepalive:
@@ -12,6 +14,8 @@ jobs:
     # Only run cron on the silverstripe account
     if: (github.event_name == 'schedule' && github.repository_owner == 'silverstripe') || (github.event_name != 'schedule')
     runs-on: ubuntu-latest
+    permissions:
+      actions: write
     steps:
       - name: Keepalive
         uses: silverstripe/gha-keepalive@v1
