@@ -48,7 +48,7 @@ class LinkablePlugin implements ModelQueryPlugin
      */
     public function getIdentifier(): string
     {
-        return self::IDENTIFIER;
+        return LinkablePlugin::IDENTIFIER;
     }
 
     /**
