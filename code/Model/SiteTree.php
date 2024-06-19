@@ -31,6 +31,7 @@ use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldGroup;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\FormAction;
+use SilverStripe\Forms\FormField;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldDataColumns;
 use SilverStripe\Forms\GridField\GridFieldLazyLoader;
@@ -1536,6 +1537,34 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $this->versionProvider = $versionProvider;
     }
 
+    public function scaffoldFormFieldForHasOne(
+        string $fieldName,
+        ?string $fieldTitle,
+        string $relationName,
+        DataObject $ownerRecord
+    ): FormField {
+        return TreeDropdownField::create($fieldName, $fieldTitle, static::class);
+    }
+
+    public function scaffoldFormFieldForHasMany(
+        string $relationName,
+        ?string $fieldTitle,
+        DataObject $ownerRecord,
+        bool &$includeInOwnTab
+    ): FormField {
+        $includeInOwnTab = false;
+        return TreeMultiselectField::create($relationName, $fieldTitle, static::class);
+    }
+
+    public function scaffoldFormFieldForManyMany(
+        string $relationName,
+        ?string $fieldTitle,
+        DataObject $ownerRecord,
+        bool &$includeInOwnTab
+    ): FormField {
+        $includeInOwnTab = false;
+        return TreeMultiselectField::create($relationName, $fieldTitle, static::class);
+    }
 
     /**
      * Return the title, description, keywords and language metatags.
