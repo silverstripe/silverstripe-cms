@@ -34,7 +34,7 @@ class VirtualPage extends Page
 
     /**
      * @var array Define fields that are not virtual - the virtual page must define these fields themselves.
-     * Note that anything in {@link self::config()->initially_copied_fields} is implicitly included in this list.
+     * Note that anything in {@link static::config()->initially_copied_fields} is implicitly included in this list.
      */
     private static $non_virtual_fields = [
         "ID",
@@ -107,7 +107,7 @@ class VirtualPage extends Page
      */
     public function getNonVirtualisedFields()
     {
-        $config = self::config();
+        $config = static::config();
         return array_merge(
             $config->get('non_virtual_fields'),
             $config->get('initially_copied_fields')
@@ -219,7 +219,7 @@ class VirtualPage extends Page
             // Setup the linking to the original page.
             $copyContentFromField = TreeDropdownField::create(
                 'CopyContentFromID',
-                _t(self::class . '.CHOOSE', "Linked Page"),
+                _t(VirtualPage::class . '.CHOOSE', "Linked Page"),
                 SiteTree::class
             );
 
@@ -248,10 +248,10 @@ class VirtualPage extends Page
                         'class' => 'cmsEditlink',
                         'href' => $this->CopyContentFrom()->CMSEditLink(),
                     ],
-                    _t(self::class . '.EditLink', 'edit')
+                    _t(VirtualPage::class . '.EditLink', 'edit')
                 );
                 $msgs[] = _t(
-                    self::class . '.HEADERWITHLINK',
+                    VirtualPage::class . '.HEADERWITHLINK',
                     "This is a virtual page copying content from \"{title}\" ({link})",
                     [
                         'title' => $this->CopyContentFrom()->obj('Title'),
@@ -259,7 +259,7 @@ class VirtualPage extends Page
                     ]
                 );
             } else {
-                $msgs[] = _t(self::class . '.HEADER', "This is a virtual page");
+                $msgs[] = _t(VirtualPage::class . '.HEADER', "This is a virtual page");
                 $msgs[] = _t(
                     'SilverStripe\\CMS\\Model\\SiteTree.VIRTUALPAGEWARNING',
                     'Please choose a linked page and save first in order to publish this page'
@@ -305,7 +305,7 @@ class VirtualPage extends Page
         // We also want to copy certain, but only if we're copying the source page for the first
         // time. After this point, the user is free to customise these for the virtual page themselves.
         if ($this->isChanged('CopyContentFromID', 2) && $this->CopyContentFromID) {
-            foreach (self::config()->get('initially_copied_fields') as $fieldName) {
+            foreach (static::config()->get('initially_copied_fields') as $fieldName) {
                 $this->$fieldName = $source->$fieldName;
             }
         }
@@ -347,7 +347,7 @@ class VirtualPage extends Page
         if ($orig && $orig->exists() && !$orig->config()->get('can_be_root') && !$this->ParentID) {
             $result->addError(
                 _t(
-                    self::class . '.PageTypNotAllowedOnRoot',
+                    VirtualPage::class . '.PageTypNotAllowedOnRoot',
                     'Original page type "{type}" is not allowed on the root level for this virtual page',
                     ['type' => $orig->i18n_singular_name()]
                 ),
