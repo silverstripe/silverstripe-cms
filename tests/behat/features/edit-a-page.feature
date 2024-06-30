@@ -103,11 +103,11 @@ Feature: Edit a page
     And I press the "Publish" button
     And I go to "/about-us"
     # insert from files
-    Then the rendered HTML should contain "<img src=\"/assets/file1.jpg\""
+    Then I should see an "img[src='/assets/file1.jpg']" element
     # link to a file
-    Then the rendered HTML should contain "<a href=\"/assets/file1.jpg\">"
+    Then I should see an "a[href='/assets/file1.jpg']" element
     # media embed
-    Then the rendered HTML should contain "src=\"https://www.youtube.com/embed/ScMzIvxBSi4?feature=oembed\""
+    Then I should see an "iframe[src='https://www.youtube.com/embed/ScMzIvxBSi4?feature=oembed']" element
 
   Scenario: Change page type
     When I click on "About Us" in the tree
