@@ -1,3 +1,4 @@
+@retry @job3
 Feature: View Reports
   As an author
   I want to review aggregate reports on pages

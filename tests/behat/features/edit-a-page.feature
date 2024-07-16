@@ -1,3 +1,4 @@
+@retry @job1
 Feature: Edit a page
   As an author
   I want to edit a page in the CMS

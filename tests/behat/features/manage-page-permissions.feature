@@ -1,3 +1,4 @@
+@retry @job2
 Feature: Manage page permissions
   As an administrator
   I want to manage view and edit permissions on pages

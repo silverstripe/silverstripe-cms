@@ -1,3 +1,4 @@
+@retry @job2
 Feature: Publish a page
   As a site owner
   I want content to go to a draft site before being published
