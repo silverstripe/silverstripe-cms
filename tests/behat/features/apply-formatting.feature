@@ -1,3 +1,4 @@
+@retry @job1
 Feature: Apply rich formatting to content
   As a cms author
   I want to work with content in the way I'm used to from word processing software

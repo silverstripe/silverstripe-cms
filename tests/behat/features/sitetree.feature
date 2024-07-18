@@ -1,3 +1,4 @@
+@retry @job3
 Feature: Sitetree
   As an author
   I want to operate the sitetree

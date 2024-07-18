@@ -1,4 +1,4 @@
-@retry
+@retry @job3
 Feature: Search for a page
   As an author
   I want to search for a page in the CMS
