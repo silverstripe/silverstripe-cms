@@ -1040,54 +1040,93 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
     public function Breadcrumbs($unlinked = false)
     {
-        $items = new ArrayList();
+        $items = ArrayList::create();
 
-        if ($this->TreeIsFiltered()) {
-            $items->push(new ArrayData([
-                'Title' => CMSPagesController::menu_title(),
-                'Link' => ($unlinked) ? false : $this->LinkPages()
-            ]));
-            $items->push(new ArrayData([
-                'Title' => _t('SilverStripe\\CMS\\Controllers\\CMSMain.SEARCHRESULTS', 'Search results'),
-                'Link' => ($unlinked) ? false : $this->LinkPages()
-            ]));
+        if (($this->getAction() !== 'index') && ($record = $this->currentPage())) {
+            // The page is being edited
+            $this->buildEditFormBreadcrumb($items, $record, $unlinked);
+        } else {
+            // Ensure we always have the "Pages" crumb first
+            $this->pushCrumb(
+                $items,
+                CMSPagesController::menu_title(),
+                $unlinked ? false : $this->LinkPages()
+            );
 
-            $this->extend('updateBreadcrumbs', $items);
-
-            return $items;
-        }
-
-        // Check if we are editing a page
-        /** @var SiteTree $record */
-        $record = $this->currentPage();
-        if (!$record) {
-            $items->push(new ArrayData([
-                'Title' => CMSPagesController::menu_title(),
-                'Link' => ($unlinked) ? false : $this->LinkPages()
-            ]));
-
-            $this->extend('updateBreadcrumbs', $items);
-
-            return $items;
-        }
-
-        // Add all ancestors
-        $ancestors = $record->getAncestors();
-        $ancestors = new ArrayList(array_reverse($ancestors->toArray() ?? []));
-        $ancestors->push($record);
-        /** @var SiteTree $ancestor */
-        foreach ($ancestors as $ancestor) {
-            $items->push(new ArrayData([
-                'Title' => $ancestor->getMenuTitle(),
-                'Link' => ($unlinked)
-                    ? false
-                    : $ancestor->CMSEditLink()
-            ]));
+            if ($this->TreeIsFiltered()) {
+                // Showing search results
+                $this->pushCrumb(
+                    $items,
+                    _t(CMSMain::class . '.SEARCHRESULTS', 'Search results'),
+                    ($unlinked) ? false : $this->LinkPages()
+                );
+            } elseif ($parentID = $this->getRequest()->getVar('ParentID')) {
+                // We're navigating the listview. ParentID is the page whose
+                // children are currently displayed.
+                if ($page = SiteTree::get()->byID($parentID)) {
+                    $this->buildListViewBreadcrumb($items, $page);
+                }
+            }
         }
 
         $this->extend('updateBreadcrumbs', $items);
 
         return $items;
+    }
+
+    /**
+     * Push the provided an extra breadcrumb crumb at the end of the provided List
+     */
+    private function pushCrumb(ArrayList $items, string $title, string|false $link): void
+    {
+        $items->push(ArrayData::create([
+            'Title' => $title,
+            'Link' => $link
+        ]));
+    }
+
+    /**
+     * Build Breadcrumb for the Edit page form. Each crumb links back to its own edit form.
+     */
+    private function buildEditFormBreadcrumb(ArrayList $items, SiteTree $page, bool $unlinked): void
+    {
+        // Find all ancestors of the provided page
+        $ancestors = $page->getAncestors(true);
+        $ancestors = array_reverse($ancestors->toArray() ?? []);
+        foreach ($ancestors as $ancestor) {
+            // Link to the ancestor's edit form
+            $this->pushCrumb(
+                $items,
+                $ancestor->getMenuTitle(),
+                $unlinked ? false : $ancestor->CMSEditLink()
+            );
+        }
+    }
+
+    /**
+     * Build Breadcrumb for the List view. Each crumb links to the list view for that page.
+     */
+    private function buildListViewBreadcrumb(ArrayList $items, SiteTree $page): void
+    {
+        // Find all ancestors of the provided page
+        $ancestors = $page->getAncestors(true);
+        $ancestors = array_reverse($ancestors->toArray() ?? []);
+        
+        //turns the title and link of the breadcrumbs into template-friendly variables
+        $params = array_filter([
+            'view' => $this->getRequest()->getVar('view'),
+            'q' => $this->getRequest()->getVar('q')
+        ]);
+        
+        foreach ($ancestors as $ancestor) {
+            // Link back to the list view for the current ancestor
+            $params['ParentID'] = $ancestor->ID;
+            $this->pushCrumb(
+                $items,
+                $ancestor->getMenuTitle(),
+                Controller::join_links($this->Link(), '?' . http_build_query($params ?? []))
+            );
+        }
     }
 
     /**
