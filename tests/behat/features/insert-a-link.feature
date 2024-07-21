@@ -1,4 +1,4 @@
-@assets @retry
+@assets @retry @job1
 Feature: Insert links into a page
 As a cms author
 I want to insert a link into my content

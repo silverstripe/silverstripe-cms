@@ -1,3 +1,4 @@
+@retry @job3
 Feature: Redirector Pages
   As an author
   I want to redirect to a different location
