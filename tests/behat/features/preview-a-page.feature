@@ -1,3 +1,4 @@
+@retry @job2
 Feature: Preview a page
   As an author
   I want to preview the page I'm editing in the CMS

@@ -1,3 +1,4 @@
+@retry @job1
 Feature: Create a page
   As an author
   I want to create a page in the CMS

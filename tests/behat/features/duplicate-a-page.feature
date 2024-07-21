@@ -1,3 +1,4 @@
+@retry @job1
 Feature: Duplicate a page
 	As an author
 	I want to duplicate a page in the CMS
