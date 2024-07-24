@@ -12,6 +12,10 @@ SilverStripe\CMS\Model\SiteTree:
     Title: Page 3.1
     Parent: =>SilverStripe\CMS\Model\SiteTree.page3
     Sort: 1
+  page311:
+    Title: Page 3.1.1
+    Parent: =>SilverStripe\CMS\Model\SiteTree.page31
+    Sort: 1
   page32:
     Title: Page 3.2
     Parent: =>SilverStripe\CMS\Model\SiteTree.page3

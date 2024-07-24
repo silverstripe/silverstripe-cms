@@ -357,20 +357,99 @@ class CMSMainTest extends FunctionalTest
 
     public function testBreadcrumbs()
     {
-        $page3 = $this->objFromFixture(SiteTree::class, 'page3');
         $page31 = $this->objFromFixture(SiteTree::class, 'page31');
         $this->logInAs('admin');
 
         $response = $this->get('admin/pages/edit/show/' . $page31->ID);
         $parser = new CSSContentParser($response->getBody());
+        $this->assertCrumbs(
+            ['Page 3', 'Page 3.1'],
+            $response,
+            'Edit breadcrumb includes all pages up to the one being edited without a tob level Page'
+        );
+    }
+
+    public function testBreadcrumbsListView()
+    {
+        $page311 = $this->objFromFixture(SiteTree::class, 'page311');
+        $this->logInAs('admin');
+
+        $response = $this->get('admin/pages?ParentID=' . $page311->ID);
+        $this->assertCrumbs(
+            ['Pages', 'Page 3', 'Page 3.1', 'Page 3.1.1'],
+            $response,
+            'List view breadcrumb includes all pages and a Page link back to the root level'
+        );
+    }
+
+    public function testBreadcrumbsListViewTopLevel()
+    {
+        $page311 = $this->objFromFixture(SiteTree::class, 'page311');
+        $this->logInAs('admin');
+
+        $response = $this->get('admin/pages');
+        $this->assertCrumbs(
+            ['Pages'],
+            $response,
+            'Top level of list view includes only a Page crumb'
+        );
+    }
+
+    public function testBreadcrumbsListViewWithPjax()
+    {
+        $page311 = $this->objFromFixture(SiteTree::class, 'page311');
+        $this->logInAs('admin');
+
+        $response = $this->get('admin/pages?ParentID=' . $page311->ID);
+        $this->assertCrumbs(
+            ['Pages', 'Page 3', 'Page 3.1', 'Page 3.1.1'],
+            $response,
+            'List view breadcrumb includes all pages and a Page link back to the root level'
+        );
+    }
+
+    public function testBreadcrumbsSearchView()
+    {
+        $page311 = $this->objFromFixture(SiteTree::class, 'page311');
+        $this->logInAs('admin');
+
+        $response = $this->get(
+            'admin/pages?ParentID=' . $page311->ID,
+            null,
+            [
+                'X-Pjax' => 'ListViewForm,Breadcrumbs',
+                'X-Requested-With' => 'XMLHttpRequest'
+            ]
+        );
+        $jsonStr = $response->getBody();
+        $data = json_decode($jsonStr, true);
+        
+        $parser = new CSSContentParser($data['Breadcrumbs']);
         $crumbs = $parser->getBySelector('.breadcrumbs-wrapper .crumb');
 
-        $this->assertNotNull($crumbs);
-        $this->assertEquals(2, count($crumbs ?? []));
-        $this->assertEquals('Page 3', (string)$crumbs[0]);
-        $this->assertEquals('Page 3.1', (string)$crumbs[1]);
+        $crumbs = array_map(function ($crumb) {
+            return (string)$crumb;
+        }, $crumbs);
 
-        Security::setCurrentUser(null);
+        $this->assertNotNull($crumbs, 'Should have found some crumbs');
+        $this->assertEquals(
+            ['Pages', 'Page 3', 'Page 3.1', 'Page 3.1.1'],
+            $crumbs,
+            'List view breadcrumb includes all pages and a Page link back to the root level when access wia PJAX'
+        );
+    }
+
+    private function assertCrumbs(array $expectedCrumbs, $response, string $message): void
+    {
+        $parser = new CSSContentParser($response->getBody());
+        $crumbs = $parser->getBySelector('.breadcrumbs-wrapper .crumb');
+
+        $crumbs = array_map(function ($crumb) {
+            return (string)$crumb;
+        }, $crumbs);
+
+        $this->assertNotNull($crumbs, $message);
+        $this->assertEquals($expectedCrumbs, $crumbs, $message);
     }
 
     public function testGetNewItem()
