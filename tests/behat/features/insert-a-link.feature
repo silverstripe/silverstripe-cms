@@ -39,7 +39,7 @@ So that I can link to a external website or a page on my site
       And I should not see "Link text"
     When I select "About Us" in the "#Form_editorInternalLink_PageID_Holder" tree dropdown
       And I press the "Insert link" button
-    Then the "Content" HTML field should contain "<a href="[sitetree_link,id=2]"><img src="file1.jpg"></a>"
+    Then the "Content" HTML field should contain "<a href="[sitetree_link,id=2]"><img src="file1.jpg" alt=""></a>"
       # Required to avoid "unsaved changed" browser dialog
       And I press the "Save" button
 
@@ -80,7 +80,7 @@ So that I can link to a external website or a page on my site
       And I should not see "Link text"
     When I fill in "http://silverstripe.org" for "URL"
       And I press the "Insert link" button
-    Then the "Content" HTML field should contain "<a href="http://silverstripe.org"><img src="file1.jpg"></a>"
+    Then the "Content" HTML field should contain "<a href="http://silverstripe.org"><img src="file1.jpg" alt=""></a>"
       # Required to avoid "unsaved changed" browser dialog
       And I press the "Save" button
 
