@@ -40,7 +40,7 @@ So that I can link to a external website or a page on my site
     When I select "Details" in the "#Form_editorAnchorLink_PageID_Holder" tree dropdown
       And I select "youranchor" in the "#Form_editorAnchorLink_Anchor_Holder" anchor dropdown
       And I press the "Insert link" button
-    Then the "Content" HTML field should contain "<a href="[sitetree_link,id=3]#youranchor"><img src="file1.jpg"></a>"
+    Then the "Content" HTML field should contain "<a href="[sitetree_link,id=3]#youranchor"><img src="file1.jpg" alt=""></a>"
       # Required to avoid "unsaved changed" browser dialog
       And I press the "Save" button
 
