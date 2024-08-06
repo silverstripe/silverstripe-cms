@@ -158,19 +158,24 @@ de:
     PLURALNAME: 'Basis Seiten'
     PLURALS:
       one: 'Eine Weiterleitungsseite'
-      other: '{count} Weiterleitungsseiten'
+      other: '{count} Basisseiten'
     REDIRECTTO: 'Weiterleiten zu'
     REDIRECTTOEXTERNAL: 'Andere Website'
+    REDIRECTTOFILE: 'Eine Datei auf Ihrer Webseite'
     REDIRECTTOPAGE: 'Eine Seite auf Ihrer Website'
     SINGULARNAME: Weiterleitungsseite
     YOURPAGE: 'Seite auf Ihrer Website'
+    db_ExternalURL: 'Externer Link'
+    db_RedirectionType: Weiterleitungstyp
     has_one_LinkTo: 'Verweis zu'
+    has_one_LinkToFile: 'Link zu einer Datei'
   SilverStripe\CMS\Model\RedirectorPageController:
     HASBEENSETUP: 'Eine Weiterleitungsseite wurde erstellt ohne das eine Weiterleitung definiert wurde.'
   SilverStripe\CMS\Model\SiteTree:
     ACCESSANYONE: Jeder
     ACCESSHEADER: 'Wer kann diese Seite auf meiner Website ansehen?'
     ACCESSLOGGEDIN: 'Angemeldete Benutzer'
+    ACCESSONLYMEMBERS: 'Nur diese Personen (von Liste wählen)'
     ACCESSONLYTHESE: 'Nur folgende Personen (aus der der Liste wählen)'
     ADDEDTODRAFTHELP: 'Die Seite wurde noch nicht veröffentlicht'
     ADDEDTODRAFTSHORT: Entwurf
@@ -198,6 +203,7 @@ de:
     DependtPageColumnLinkType: Linktyp
     EDITHEADER: 'Wer kann diese Seite im CMS verändern?'
     EDITORGROUPS: Bearbeitergruppen
+    EDITORMEMBERS: Bearbeitungsnutzer
     EDITOR_GROUPS_FIELD_DESC: 'Gruppen mit globalen Editierberechtigungen: {groupList}'
     EDIT_ALL_DESCRIPTION: 'Kann beliebige Seiten bearbeiten'
     EDIT_ALL_HELP: 'Kann beliebige Seiten auf der Site bearbeiten; seitenspezifische Sicherheitseinstellungen werden ignoriert.'
@@ -206,6 +212,7 @@ de:
     HTMLEDITORTITLE: Inhalt
     INHERIT: 'Von der übergeordneten Seite erben'
     INHERITSITECONFIG: 'Von den Zugriffseinstellungen der Seite erben'
+    InvalidExtraMeta: 'Benutzerdefinierte Meta-Tags enthalten kein gültiges HTML'
     LASTPUBLISHED: 'Zuletzt veröffentlicht'
     LASTSAVED: 'Zuletzt gespeichert'
     LASTUPDATED: 'Letzte Änderung'
@@ -216,6 +223,7 @@ de:
     METADESC: 'Meta Beschreibung'
     METADESCHELP: 'Suchmaschinen können diesen Inhalt für die Anzeige der Suchergebnisse verwenden (auch wenn es die Position nicht beeinflusst).'
     METAEXTRA: 'Benutzerdefinierte Meta-Tags'
+    METAEXTRAHELP: 'HTML Tags für zusätzliche Meta Informationen, z.B.: <meta name="ihrName" content="Ihr Inhalt" />'
     MODIFIEDONDRAFTHELP: 'Die Seite hat unveröffentlichte Änderungen'
     MODIFIEDONDRAFTSHORT: 'Zuletzt geändert'
     MetadataToggle: Metadaten
@@ -253,6 +261,7 @@ de:
     URLSegment: URL-Segment
     UntitledDependentObject: 'Unbenannt {instanceType}'
     VIEWERGROUPS: Betrachtergruppen
+    VIEWERMEMBERS: Betrachtergruppen
     VIEWER_GROUPS_FIELD_DESC: 'Gruppen mit globalen Berechtigungen zum Ansehen: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Kann beliebige Seiten betrachten'
     VIEW_ALL_HELP: 'Kann beliebige Seiten auf der Site betrachten; seitenspezifische Sicherheitseinstellungen werden ignoriert.'
@@ -263,15 +272,29 @@ de:
     VIRTUALPAGEWARNINGSETTINGS: 'Um diese Seite veröffentlichen zu können müssen Sie zu erst eine verknüpfte Seite im Reiter "Haupt-Inhalt" auswählen'
     Viewers: 'Betrachter Gruppen'
     Visibility: Sichtbarkeit
+    db_CanEditType: 'Kann Typ bearbeiten'
+    db_CanViewType: 'Kann Typ ansehen'
     db_Content: Inhalt
+    db_ExtraMeta: 'Zusätzliche Meta-Tags'
+    db_HasBrokenFile: 'Defekter Dateilink'
+    db_HasBrokenLink: 'Defekter Link'
+    db_MenuTitle: Navigationsbezeichnung
+    db_MetaDescription: 'Meta beschreibung'
+    db_ShowInMenus: 'In Menüs anzeigen'
+    db_ShowInSearch: 'In Suche anzeigen'
     db_Sort: Sortierung
     db_Title: Titel
     db_URLSegment: URL-Segment
+    has_many_VirtualPages: 'Virtuelle Seiten'
     has_one_Parent: 'Übergeordnete Seite'
     has_one_Subsite: Subseite
     many_many_BackLinkTracking: Rückverweis-Verfolgung
+    many_many_EditorGroups: Bearbeitungsgruppen
+    many_many_EditorMembers: Bearbeitungsnutzer
     many_many_ImageTracking: Bild-Verfolgung
     many_many_LinkTracking: Link-Verfolgung
+    many_many_ViewerGroups: Betrachtergruppen
+    many_many_ViewerMembers: Betrachtungsnutzer
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_TYPE: Typ
     TITLE_USED_ON: 'Verwendet auf'
@@ -284,6 +307,8 @@ de:
       other: '{count} Seitenbaum Links'
     SINGULARNAME: Seiten-Link
     has_one_Parent: Übergeordnet
+  SilverStripe\CMS\Model\SiteTreeLinkTracking:
+    many_many_LinkTracking: Link-Verfolgung
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Verknüpfte Seite'
     DESCRIPTION: 'Zeigt den Inhalt einer anderen Seite an'
@@ -293,9 +318,11 @@ de:
     PLURALNAME: 'Basis Seiten'
     PLURALS:
       one: 'Eine Virtuelle Seite'
-      other: '{count} Virtuelle Seiten'
+      other: '{count} Basisseiten'
     PageTypNotAllowedOnRoot: 'Der ursprüngliche Seitentyp "{type}" ist nicht zulässig für diese virtuelle Seite. '
     SINGULARNAME: 'Virtuelle Seite'
+    db_VersionID: 'Versions ID'
+    has_one_CopyContentFrom: 'Kopiere Inhalt von'
   SilverStripe\CMS\Reports\BrokenFilesReport:
     BROKENFILES: 'Seiten mit defekten Dateiverknüpfungen'
     BrokenLinksGroupTitle: 'Defekte Links'
