@@ -247,8 +247,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     private static $namespace_map = null;
 
     private static $db = [
-        "URLSegment" => "Varchar(255)",
         "Title" => "Varchar(255)",
+        "URLSegment" => "Varchar(255)",
         "MenuTitle" => "Varchar(100)",
         "Content" => "HTMLText",
         "MetaDescription" => "Text",
@@ -293,6 +293,25 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     private static $defaults = [
         "ShowInMenus" => 1,
         "ShowInSearch" => 1,
+    ];
+
+    private static array $scaffold_cms_fields_settings = [
+        'ignoreFields' => [
+            'ShowInMenus',
+            'ShowInSearch',
+            'Sort',
+            'HasBrokenFile',
+            'HasBrokenLink',
+            'ReportClass',
+            'Parent',
+            // The metadata fields will be added back with explicit fields
+            'MetaDescription',
+            'ExtraMeta',
+        ],
+        'ignoreRelations' => [
+            'VirtualPages',
+            'BackLinks',
+        ],
     ];
 
     private static $table_name = 'SiteTree';
@@ -2105,147 +2124,135 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function getCMSFields()
     {
-        $dependentNote = '';
-        $dependentTable = new LiteralField('DependentNote', '<p></p>');
+        $this->beforeUpdateCMSFields(function (FieldList $fields) {
+            $dependentNote = '';
+            $dependentTable = LiteralField::create('DependentNote', '<p></p>');
 
-        // Create a table for showing pages linked to this one
-        $dependentPages = $this->DependentPages();
-        $dependentPagesCount = $dependentPages->count();
-        if ($dependentPagesCount) {
-            $dependentColumns = [
-                'Title' => $this->fieldLabel('Title'),
-                'DependentLinkType' => _t(__CLASS__.'.DependtPageColumnLinkType', 'Link type'),
-            ];
-            if (class_exists(Subsite::class)) {
-                $dependentColumns['Subsite.Title'] = Subsite::singleton()->i18n_singular_name();
+            // Create a table for showing pages linked to this one
+            $dependentPages = $this->DependentPages();
+            $dependentPagesCount = $dependentPages->count();
+            if ($dependentPagesCount) {
+                $dependentColumns = [
+                    'Title' => $this->fieldLabel('Title'),
+                    'DependentLinkType' => _t(__CLASS__.'.DependtPageColumnLinkType', 'Link type'),
+                ];
+                if (class_exists(Subsite::class)) {
+                    $dependentColumns['Subsite.Title'] = Subsite::singleton()->i18n_singular_name();
+                }
+
+                $dependentNote = LiteralField::create('DependentNote', '<p>' . _t(__CLASS__.'.DEPENDENT_NOTE', 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.') . '</p>');
+                $dependentTable = GridField::create(
+                    'DependentPages',
+                    false,
+                    $dependentPages
+                );
+                $dataColumns = $dependentTable->getConfig()->getComponentByType(GridFieldDataColumns::class);
+                $dataColumns
+                    ->setDisplayFields($dependentColumns)
+                    ->setFieldFormatting([
+                        'Title' => function ($value, &$item) {
+                            $title = $item->Title;
+                            $untitled = _t(
+                                __CLASS__ . '.UntitledDependentObject',
+                                'Untitled {instanceType}',
+                                ['instanceType' => $item->i18n_singular_name()]
+                            );
+                            $tag = $item->hasMethod('CMSEditLink') ? 'a' : 'span';
+                            return sprintf(
+                                '<%s%s class="dependent-content__edit-link %s">%s</%s>',
+                                $tag,
+                                $tag === 'a' ? sprintf(' href="%s"', $item->CMSEditLink()) : '',
+                                $title ? '' : 'dependent-content__edit-link--untitled',
+                                $title ? Convert::raw2xml($title) : $untitled,
+                                $tag
+                            );
+                        }
+                    ]);
+                $dependentTable->getConfig()->addComponent(Injector::inst()->create(GridFieldLazyLoader::class));
             }
 
-            $dependentNote = new LiteralField('DependentNote', '<p>' . _t(__CLASS__.'.DEPENDENT_NOTE', 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.') . '</p>');
-            $dependentTable = GridField::create(
-                'DependentPages',
-                false,
-                $dependentPages
+            $baseLink = Controller::join_links(
+                Director::absoluteBaseURL(),
+                (static::config()->get('nested_urls') && $this->ParentID ? $this->Parent()->RelativeLink(true) : null)
             );
-            $dataColumns = $dependentTable->getConfig()->getComponentByType(GridFieldDataColumns::class);
-            $dataColumns
-                ->setDisplayFields($dependentColumns)
-                ->setFieldFormatting([
-                    'Title' => function ($value, &$item) {
-                        $title = $item->Title;
-                        $untitled = _t(
-                            __CLASS__ . '.UntitledDependentObject',
-                            'Untitled {instanceType}',
-                            ['instanceType' => $item->i18n_singular_name()]
-                        );
-                        $tag = $item->hasMethod('CMSEditLink') ? 'a' : 'span';
-                        return sprintf(
-                            '<%s%s class="dependent-content__edit-link %s">%s</%s>',
-                            $tag,
-                            $tag === 'a' ? sprintf(' href="%s"', $item->CMSEditLink()) : '',
-                            $title ? '' : 'dependent-content__edit-link--untitled',
-                            $title ? Convert::raw2xml($title) : $untitled,
-                            $tag
-                        );
-                    }
-                ]);
-            $dependentTable->getConfig()->addComponent(Injector::inst()->create(GridFieldLazyLoader::class));
-        }
 
-        $baseLink = Controller::join_links(
-            Director::absoluteBaseURL(),
-            (static::config()->get('nested_urls') && $this->ParentID ? $this->Parent()->RelativeLink(true) : null)
-        );
+            $urlsegment = SiteTreeURLSegmentField::create("URLSegment", $this->fieldLabel('URLSegment'))
+                ->setURLPrefix($baseLink)
+                ->setURLSuffix('?stage=Stage')
+                ->setDefaultURL($this->generateURLSegment(_t(
+                    'SilverStripe\\CMS\\Controllers\\CMSMain.NEWPAGE',
+                    'New {pagetype}',
+                    ['pagetype' => $this->i18n_singular_name()]
+                )))
+                ->addExtraClass(($this->isHomePage() ? 'homepage-warning' : ''));
+            $helpText = (static::config()->get('nested_urls') && $this->numChildren())
+                ? $this->fieldLabel('LinkChangeNote')
+                : '';
+            if (!URLSegmentFilter::create()->getAllowMultibyte()) {
+                $helpText .= _t('SilverStripe\\CMS\\Forms\\SiteTreeURLSegmentField.HelpChars', ' Special characters are automatically converted or removed.');
+            }
+            $urlsegment->setHelpText($helpText);
+            $fields->replaceField('URLSegment', $urlsegment);
 
-        $urlsegment = SiteTreeURLSegmentField::create("URLSegment", $this->fieldLabel('URLSegment'))
-            ->setURLPrefix($baseLink)
-            ->setURLSuffix('?stage=Stage')
-            ->setDefaultURL($this->generateURLSegment(_t(
-                'SilverStripe\\CMS\\Controllers\\CMSMain.NEWPAGE',
-                'New {pagetype}',
-                ['pagetype' => $this->i18n_singular_name()]
-            )))
-            ->addExtraClass(($this->isHomePage() ? 'homepage-warning' : ''));
-        $helpText = (static::config()->get('nested_urls') && $this->numChildren())
-            ? $this->fieldLabel('LinkChangeNote')
-            : '';
-        if (!URLSegmentFilter::create()->getAllowMultibyte()) {
-            $helpText .= _t('SilverStripe\\CMS\\Forms\\SiteTreeURLSegmentField.HelpChars', ' Special characters are automatically converted or removed.');
-        }
-        $urlsegment->setHelpText($helpText);
+            $fields->dataFieldByName('Content')?->addExtraClass('stacked');
 
-        $fields = new FieldList(
-            $rootTab = new TabSet(
-                "Root",
-                $tabMain = new Tab(
-                    'Main',
-                    new TextField("Title", $this->fieldLabel('Title')),
-                    $urlsegment,
-                    new TextField("MenuTitle", $this->fieldLabel('MenuTitle')),
-                    $htmlField = HTMLEditorField::create("Content", _t(__CLASS__.'.HTMLEDITORTITLE', "Content", 'HTML editor title')),
-                    ToggleCompositeField::create(
-                        'Metadata',
-                        _t(__CLASS__.'.MetadataToggle', 'Metadata'),
-                        [
-                            $metaFieldDesc = new TextareaField("MetaDescription", $this->fieldLabel('MetaDescription')),
-                            $metaFieldExtra = new TextareaField("ExtraMeta", $this->fieldLabel('ExtraMeta'))
-                        ]
-                    )->setHeadingLevel(4)
-                ),
-                $tabDependent = new Tab(
-                    'Dependent',
+            // Metadata fields
+            $fields->addFieldsToTab('Root.Main', [
+                ToggleCompositeField::create(
+                    'Metadata',
+                    _t(__CLASS__.'.MetadataToggle', 'Metadata'),
+                    [
+                        $metaFieldDesc = TextareaField::create("MetaDescription", $this->fieldLabel('MetaDescription')),
+                        $metaFieldExtra = TextareaField::create("ExtraMeta", $this->fieldLabel('ExtraMeta'))
+                    ]
+                )->setHeadingLevel(4),
+            ]);
+            // Help text for MetaData on page content editor
+            $metaFieldDesc
+                ->setRightTitle(
+                    _t(
+                        'SilverStripe\\CMS\\Model\\SiteTree.METADESCHELP',
+                        "Search engines use this content for displaying search results (although it will not influence their ranking)."
+                    )
+                )
+                ->addExtraClass('help');
+            $metaFieldExtra
+                ->setRightTitle(
+                    _t(
+                        'SilverStripe\\CMS\\Model\\SiteTree.METAEXTRAHELP',
+                        "HTML tags for additional meta information. For example <meta name=\"customName\" content=\"your custom content here\">"
+                    )
+                )
+                ->addExtraClass('help');
+
+            // Conditional dependent pages tab
+            if ($dependentPagesCount) {
+                $fields->addFieldsToTab('Root.Dependent', [
                     $dependentNote,
                     $dependentTable
-                )
-            )
-        );
-        $htmlField->addExtraClass('stacked');
+                ]);
+                $tabDependent = $fields->findTab('Root.Dependent');
+                $tabDependent->setTitle(_t(__CLASS__.'.TABDEPENDENT', "Dependent pages") . " ($dependentPagesCount)");
+            }
 
-        // Help text for MetaData on page content editor
-        $metaFieldDesc
-            ->setRightTitle(
-                _t(
-                    'SilverStripe\\CMS\\Model\\SiteTree.METADESCHELP',
-                    "Search engines use this content for displaying search results (although it will not influence their ranking)."
-                )
-            )
-            ->addExtraClass('help');
-        $metaFieldExtra
-            ->setRightTitle(
-                _t(
-                    'SilverStripe\\CMS\\Model\\SiteTree.METAEXTRAHELP',
-                    "HTML tags for additional meta information. For example <meta name=\"customName\" content=\"your custom content here\">"
-                )
-            )
-            ->addExtraClass('help');
+            $fields->findTab('Root.Main')->setTitle(_t(__CLASS__ . '.TABCONTENT', 'Main content'));
 
-        // Conditional dependent pages tab
-        if ($dependentPagesCount) {
-            $tabDependent->setTitle(_t(__CLASS__.'.TABDEPENDENT', "Dependent pages") . " ($dependentPagesCount)");
-        } else {
-            $fields->removeFieldFromTab('Root', 'Dependent');
-        }
+            if ($this->ObsoleteClassName) {
+                $obsoleteWarning = _t(
+                    'SilverStripe\\CMS\\Model\\SiteTree.OBSOLETECLASS',
+                    "This page is of obsolete type {type}. Saving will reset its type and you may lose data",
+                    ['type' => $this->ObsoleteClassName]
+                );
 
-        $tabMain->setTitle(_t(__CLASS__.'.TABCONTENT', "Main content"));
+                $fields->addFieldToTab(
+                    "Root.Main",
+                    LiteralField::create("ObsoleteWarningHeader", "<p class=\"alert alert-warning\">$obsoleteWarning</p>"),
+                    "Title"
+                );
+            }
+        });
 
-        if ($this->ObsoleteClassName) {
-            $obsoleteWarning = _t(
-                'SilverStripe\\CMS\\Model\\SiteTree.OBSOLETECLASS',
-                "This page is of obsolete type {type}. Saving will reset its type and you may lose data",
-                ['type' => $this->ObsoleteClassName]
-            );
-
-            $fields->addFieldToTab(
-                "Root.Main",
-                LiteralField::create("ObsoleteWarningHeader", "<p class=\"alert alert-warning\">$obsoleteWarning</p>"),
-                "Title"
-            );
-        }
-
-        if (SiteTree::$runCMSFieldsExtensions) {
-            $this->extend('updateCMSFields', $fields);
-        }
-
-        return $fields;
+        return parent::getCMSFields();
     }
 
 
