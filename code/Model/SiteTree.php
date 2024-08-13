@@ -25,6 +25,7 @@ use SilverStripe\Core\Manifest\ModuleResource;
 use SilverStripe\Core\Manifest\ModuleResourceLoader;
 use SilverStripe\Core\Manifest\VersionProvider;
 use SilverStripe\Core\Resettable;
+use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\DropdownField;
@@ -2567,18 +2568,21 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         // If a page is on any stage it can be archived
-        if (($isOnDraft || $isPublished) && $this->canArchive()) {
-            $title = $isPublished
-                ? _t('SilverStripe\\CMS\\Controllers\\CMSMain.UNPUBLISH_AND_ARCHIVE', 'Unpublish and archive')
-                : _t('SilverStripe\\CMS\\Controllers\\CMSMain.ARCHIVE', 'Archive');
-            $moreOptions->push(
-                FormAction::create('archive', $title)
-                    ->addExtraClass('delete btn btn-secondary' . ($this->isHomePage() ? ' homepage-warning' : ''))
-                    ->setDescription(_t(
-                        'SilverStripe\\CMS\\Model\\SiteTree.BUTTONDELETEDESC',
-                        'Remove from draft/live and send to archive'
-                    ))
-            );
+        if (($isOnDraft || $isPublished)) {
+            $canArchive = Deprecation::withNoReplacement(fn() => $this->canArchive());
+            if ($canArchive) {
+                $title = $isPublished
+                    ? _t('SilverStripe\\CMS\\Controllers\\CMSMain.UNPUBLISH_AND_ARCHIVE', 'Unpublish and archive')
+                    : _t('SilverStripe\\CMS\\Controllers\\CMSMain.ARCHIVE', 'Archive');
+                $moreOptions->push(
+                    FormAction::create('archive', $title)
+                        ->addExtraClass('delete btn btn-secondary' . ($this->isHomePage() ? ' homepage-warning' : ''))
+                        ->setDescription(_t(
+                            'SilverStripe\\CMS\\Model\\SiteTree.BUTTONDELETEDESC',
+                            'Remove from draft/live and send to archive'
+                        ))
+                );
+            }
         }
 
         // "save", supports an alternate state that is still clickable, but notifies the user that the action is not needed.
