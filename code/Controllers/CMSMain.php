@@ -29,7 +29,6 @@ use SilverStripe\Core\Convert;
 use SilverStripe\Core\Environment;
 use SilverStripe\Core\Flushable;
 use SilverStripe\Core\Injector\Injector;
-use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldGroup;
@@ -1998,8 +1997,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if (!$record || !$record->exists()) {
             throw new HTTPResponse_Exception("Bad record ID #$id", 404);
         }
-        $canArchive = Deprecation::withNoReplacement(fn() => $record->canArchive());
-        if (!$canArchive) {
+        if (!$record->canDelete()) {
             return Security::permissionFailure();
         }
 
