@@ -70,7 +70,7 @@ abstract class SiteTreeExtension extends DataExtension
      * logged in user
      * @return boolean|null Return false to deny rights, or null to yield to default
      */
-    public function canAddChildren($member)
+    protected function canAddChildren($member)
     {
     }
 
@@ -83,7 +83,7 @@ abstract class SiteTreeExtension extends DataExtension
      * logged in user
      * @return boolean|null Return false to deny rights, or null to yield to default
      */
-    public function canPublish($member)
+    protected function canPublish($member)
     {
     }
 
@@ -100,7 +100,7 @@ abstract class SiteTreeExtension extends DataExtension
      * (Legacy support) If this is true, then do not reduce the 'home' urlsegment
      * to an empty link
      */
-    public function updateRelativeLink(&$link, $base, $action)
+    protected function updateRelativeLink(&$link, $base, $action)
     {
     }
 }

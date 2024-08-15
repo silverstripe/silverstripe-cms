@@ -10,12 +10,12 @@ class SiteTreeTest_ExtensionB extends SiteTreeExtension implements TestOnly
 {
     public static $can_publish = true;
 
-    public function canPublish($member)
+    protected function canPublish($member)
     {
         return static::$can_publish;
     }
 
-    public function updateLink(&$link, $action = null)
+    protected function updateLink(&$link, $action = null)
     {
         $link = Controller::join_links('http://www.updatedhost.com', $link);
     }

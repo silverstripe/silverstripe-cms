@@ -26,7 +26,7 @@ class LeftAndMainPageIconsExtension extends Extension implements Flushable
      * @throws InvalidArgumentException
      * @throws ReflectionException
      */
-    public function init()
+    protected function onInit()
     {
         Requirements::customCSS($this->generatePageIconsCss(), CMSMain::PAGE_ICONS_ID);
     }

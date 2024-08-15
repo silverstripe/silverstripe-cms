@@ -10,27 +10,27 @@ use SilverStripe\ORM\DataExtension;
  */
 class SiteTreeTest_AdminDeniedExtension extends DataExtension implements TestOnly
 {
-    public function canCreate($member)
+    protected function canCreate($member)
     {
         return false;
     }
 
-    public function canEdit($member)
+    protected function canEdit($member)
     {
         return false;
     }
 
-    public function canDelete($member)
+    protected function canDelete($member)
     {
         return false;
     }
 
-    public function canAddChildren()
+    protected function canAddChildren()
     {
         return false;
     }
 
-    public function canView()
+    protected function canView()
     {
         return false;
     }
