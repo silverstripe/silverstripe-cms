@@ -5,6 +5,7 @@ namespace SilverStripe\CMS\BatchActions;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\Admin\CMSBatchAction;
 use SilverStripe\Control\HTTPResponse;
+use SilverStripe\Dev\Deprecation;
 
 /**
  * Delete items batch action.
@@ -27,6 +28,7 @@ class CMSBatchAction_Archive extends CMSBatchAction
 
     public function applicablePages($ids)
     {
-        return $this->applicablePagesHelper($ids, 'canArchive');
+        // canArchive() is deprecated, not $this->applicablePagesHelper()
+        return Deprecation::withNoReplacement(fn() => $this->applicablePagesHelper($ids, 'canArchive'));
     }
 }
