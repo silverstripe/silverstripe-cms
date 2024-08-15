@@ -16,7 +16,7 @@ class SilverStripeNavigatorItem_CMSLink extends SilverStripeNavigatorItem
     {
         return sprintf(
             '<a href="%s">%s</a>',
-            $this->record->CMSEditLink(),
+            $this->record->getCMSEditLink(),
             _t('SilverStripe\\CMS\\Controllers\\ContentController.CMS', 'CMS')
         );
     }
@@ -28,7 +28,7 @@ class SilverStripeNavigatorItem_CMSLink extends SilverStripeNavigatorItem
 
     public function getLink()
     {
-        return $this->record->CMSEditLink();
+        return $this->record->getCMSEditLink();
     }
 
     public function isActive()
