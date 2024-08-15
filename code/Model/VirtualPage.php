@@ -7,6 +7,8 @@ use SilverStripe\Core\Convert;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\ReadonlyTransformation;
+use SilverStripe\Forms\TextareaField;
+use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ValidationResult;
@@ -77,7 +79,22 @@ class VirtualPage extends Page
 
     private static $db = [
         "VersionID" => "Int",
+        'CustomMetaDescription' => 'Text',
+        'CustomExtraMeta' => 'HTMLText'
     ];
+
+    private static array $scaffold_cms_fields_settings = [
+        'ignoreFields' => [
+            'VersionID',
+            'CustomMetaDescription',
+            'CustomExtraMeta',
+        ],
+    ];
+
+    /**
+     * Whether to allow overriding the meta description and extra meta tags.
+     */
+    private static bool $allow_meta_overrides = true;
 
     private static $table_name = 'VirtualPage';
 
@@ -216,29 +233,24 @@ class VirtualPage extends Page
     public function getCMSFields()
     {
         $this->beforeUpdateCMSFields(function (FieldList $fields) {
-            // Setup the linking to the original page.
-            $copyContentFromField = TreeDropdownField::create(
-                'CopyContentFromID',
-                _t(VirtualPage::class . '.CHOOSE', "Linked Page"),
-                SiteTree::class
-            );
+            $copyContentFromField = $fields->dataFieldByName('CopyContentFromID');
+            $fields->addFieldToTab('Root.Main', $copyContentFromField, 'Title');
 
             // Setup virtual fields
             if ($virtualFields = $this->getVirtualFields()) {
                 $roTransformation = new ReadonlyTransformation();
-                foreach ($virtualFields as $virtualField) {
-                    if ($fields->dataFieldByName($virtualField)) {
+                foreach ($virtualFields as $virtualFieldName) {
+                    $virtualField = $fields->dataFieldByName($virtualFieldName);
+                    if ($virtualField) {
                         $fields->replaceField(
-                            $virtualField,
-                            $fields->dataFieldByName($virtualField)->transform($roTransformation)
+                            $virtualFieldName,
+                            $virtualField->transform($roTransformation)
                         );
                     }
                 }
             }
 
             $msgs = [];
-
-            $fields->addFieldToTab('Root.Main', $copyContentFromField, 'Title');
 
             // Create links back to the original object in the CMS
             if ($this->CopyContentFrom()->exists()) {
@@ -280,6 +292,25 @@ class VirtualPage extends Page
                 'VirtualPageMessage',
                 '<div class="alert alert-info">' . implode('. ', $msgs) . '.</div>'
             ), 'CopyContentFromID');
+
+            if (static::config()->get('allow_meta_overrides')) {
+                $fields->addFieldToTab(
+                    'Root.Main',
+                    TextareaField::create(
+                        'CustomMetaDescription',
+                        $this->fieldLabel('CustomMetaDescription')
+                    )->setDescription(_t(__CLASS__ . '.OverrideNote', 'Overrides inherited value from the source')),
+                    'MetaDescription'
+                );
+                $fields->addFieldToTab(
+                    'Root.Main',
+                    TextField::create(
+                        'CustomExtraMeta',
+                        $this->fieldLabel('CustomExtraMeta')
+                    )->setDescription(_t(__CLASS__ . '.OverrideNote', 'Overrides inherited value from the source')),
+                    'ExtraMeta'
+                );
+            }
         });
 
         return parent::getCMSFields();

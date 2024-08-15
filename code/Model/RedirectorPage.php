@@ -3,13 +3,10 @@
 namespace SilverStripe\CMS\Model;
 
 use Page;
-use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\File;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\HeaderField;
 use SilverStripe\Forms\OptionsetField;
-use SilverStripe\Forms\TextField;
-use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\Versioned\Versioned;
 
 /**
@@ -43,6 +40,13 @@ class RedirectorPage extends Page
     private static $has_one = [
         "LinkTo" => SiteTree::class,
         "LinkToFile" => File::class,
+    ];
+
+    private static array $scaffold_cms_fields_settings = [
+        'ignoreFields' => [
+            'RedirectionType',
+            'Content',
+        ],
     ];
 
     private static $table_name = 'RedirectorPage';
@@ -194,18 +198,19 @@ class RedirectorPage extends Page
     public function getCMSFields()
     {
         $this->beforeUpdateCMSFields(function (FieldList $fields) {
-            $fields->removeByName('Content', true);
-
             // Remove all metadata fields, does not apply for redirector pages
             $fields->removeByName('Metadata');
 
             $fields->addFieldsToTab(
                 'Root.Main',
                 [
-                    new HeaderField('RedirectorDescHeader', _t(__CLASS__.'.HEADER', "This page will redirect users to another page")),
-                    new OptionsetField(
-                        "RedirectionType",
-                        _t(__CLASS__.'.REDIRECTTO', "Redirect to"),
+                    HeaderField::create(
+                        'RedirectorDescHeader',
+                        _t(__CLASS__.'.HEADER', "This page will redirect users to another page")
+                    ),
+                    OptionsetField::create(
+                        'RedirectionType',
+                        $this->fieldLabel('RedirectionType'),
                         [
                             "Internal" => _t(__CLASS__.'.REDIRECTTOPAGE', "A page on your website"),
                             "External" => _t(__CLASS__.'.REDIRECTTOEXTERNAL', "Another website"),
@@ -213,14 +218,8 @@ class RedirectorPage extends Page
                         ],
                         "Internal"
                     ),
-                    new TreeDropdownField(
-                        "LinkToID",
-                        _t(__CLASS__.'.YOURPAGE', "Page on your website"),
-                        SiteTree::class
-                    ),
-                    new UploadField('LinkToFile', _t(__CLASS__.'.FILE', "File")),
-                    new TextField("ExternalURL", _t(__CLASS__.'.OTHERURL', "Other website URL"))
-                ]
+                ],
+                'ExternalURL'
             );
         });
 
