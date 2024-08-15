@@ -29,6 +29,7 @@ use SilverStripe\Core\Convert;
 use SilverStripe\Core\Environment;
 use SilverStripe\Core\Flushable;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldGroup;
@@ -1109,13 +1110,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         // Find all ancestors of the provided page
         $ancestors = $page->getAncestors(true);
         $ancestors = array_reverse($ancestors->toArray() ?? []);
-        
+
         //turns the title and link of the breadcrumbs into template-friendly variables
         $params = array_filter([
             'view' => $this->getRequest()->getVar('view'),
             'q' => $this->getRequest()->getVar('q')
         ]);
-        
+
         foreach ($ancestors as $ancestor) {
             // Link back to the list view for the current ancestor
             $params['ParentID'] = $ancestor->ID;
@@ -1997,7 +1998,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if (!$record || !$record->exists()) {
             throw new HTTPResponse_Exception("Bad record ID #$id", 404);
         }
-        if (!$record->canArchive()) {
+        $canArchive = Deprecation::withNoReplacement(fn() => $record->canArchive());
+        if (!$canArchive) {
             return Security::permissionFailure();
         }
 
