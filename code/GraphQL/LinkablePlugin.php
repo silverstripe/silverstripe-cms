@@ -14,11 +14,15 @@ use SilverStripe\GraphQL\Schema\Interfaces\ModelQueryPlugin;
 use SilverStripe\GraphQL\Schema\Schema;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataList;
+use SilverStripe\Dev\Deprecation;
 
 if (!interface_exists(ModelQueryPlugin::class)) {
     return;
 }
 
+/**
+ * @deprecated 5.3.0 Will be moved to the silverstripe/graphql module
+ */
 class LinkablePlugin implements ModelQueryPlugin
 {
     use Configurable;
@@ -42,6 +46,13 @@ class LinkablePlugin implements ModelQueryPlugin
      * @var array
      */
     private static $resolver = [__CLASS__, 'applyLinkFilter'];
+
+    public function __construct()
+    {
+        Deprecation::withNoReplacement(function () {
+            Deprecation::notice('5.3.0', 'Will be moved to the silverstripe/graphql module', Deprecation::SCOPE_CLASS);
+        });
+    }
 
     /**
      * @return string
