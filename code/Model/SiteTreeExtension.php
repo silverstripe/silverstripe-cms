@@ -4,15 +4,29 @@ namespace SilverStripe\CMS\Model;
 
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Security\Member;
+use SilverStripe\Dev\Deprecation;
+use SilverStripe\Core\Extension;
 
 /**
  * Plug-ins for additional functionality in your SiteTree classes.
  *
  * @template T of SiteTree
  * @extends DataExtension<T>
+ * @deprecated 5.3.0 Subclass SilverStripe\Core\Extension\Extension instead
  */
 abstract class SiteTreeExtension extends DataExtension
 {
+    public function __construct()
+    {
+        // Wrapping with Deprecation::withNoReplacement() to avoid triggering deprecation notices
+        // as we are unable to update existing subclasses of this class until a new major
+        // unless we add in the pointless empty methods that are in this class
+        Deprecation::withNoReplacement(function () {
+            $class = Extension::class;
+            Deprecation::notice('5.3.0', "Subclass $class instead", Deprecation::SCOPE_CLASS);
+        });
+        parent::__construct();
+    }
 
     /**
      * Hook called before the page's {@link Versioned::publishSingle()} action is completed
