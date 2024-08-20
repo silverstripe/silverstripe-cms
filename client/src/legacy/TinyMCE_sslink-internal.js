@@ -119,7 +119,17 @@ jQuery.entwine('ss', ($) => {
 
     getOriginalAttributes() {
       const editor = this.getElement().getEditor();
-      const node = $(editor.getSelectedNode());
+
+      // Find "a" node, issue https://github.com/silverstripe/silverstripe-cms/issues/2439
+      let linkNode = editor.getSelectedNode();
+      if (linkNode.nodeName !== 'A') {
+        let count = 0;
+        while (count < 10 && linkNode.parentNode && linkNode.nodeName !== 'A') {
+          linkNode = linkNode.parentNode;
+          count +=1;
+        }
+      }
+      const node = $(linkNode);
 
       // Get href
       const hrefParts = (node.attr('href') || '').split('#');
