@@ -29,7 +29,6 @@ class VirtualPageTest extends FunctionalTest
         VirtualPageTest_NotRoot::class,
         VirtualPageTest_PageExtension::class,
         VirtualPageTest_PageWithAllowedChildren::class,
-        VirtualPageTest_TestDBField::class,
         VirtualPageTest_VirtualPageSub::class,
     ];
 
