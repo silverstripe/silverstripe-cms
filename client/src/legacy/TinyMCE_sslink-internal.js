@@ -3,7 +3,6 @@ import i18n from 'i18n';
 import TinyMCEActionRegistrar from 'lib/TinyMCEActionRegistrar';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { ApolloProvider } from '@apollo/client';
 import { Provider } from 'react-redux';
 import jQuery from 'jquery';
 import ShortcodeSerialiser from 'lib/ShortcodeSerialiser';
@@ -65,7 +64,6 @@ jQuery.entwine('ss', ($) => {
 
     renderModal(isOpen) {
       const store = ss.store;
-      const client = ss.apolloClient;
       const handleHide = () => this.close();
       const handleInsert = (...args) => this.handleInsert(...args);
       const attrs = this.getOriginalAttributes();
@@ -78,21 +76,19 @@ jQuery.entwine('ss', ($) => {
         this.setReactRoot(root);
       }
       root.render(
-        <ApolloProvider client={client}>
-          <Provider store={store}>
-            <InsertLinkInternalModal
-              isOpen={isOpen}
-              onInsert={handleInsert}
-              onClosed={handleHide}
-              title={i18n._t('CMS.LINK_PAGE', 'Link to a page')}
-              bodyClassName="modal__dialog"
-              className="insert-link__dialog-wrapper--internal"
-              fileAttributes={attrs}
-              identifier="Admin.InsertLinkInternalModal"
-              requireLinkText={requireLinkText}
-            />
-          </Provider>
-        </ApolloProvider>
+        <Provider store={store}>
+          <InsertLinkInternalModal
+            isOpen={isOpen}
+            onInsert={handleInsert}
+            onClosed={handleHide}
+            title={i18n._t('CMS.LINK_PAGE', 'Link to a page')}
+            bodyClassName="modal__dialog"
+            className="insert-link__dialog-wrapper--internal"
+            fileAttributes={attrs}
+            identifier="Admin.InsertLinkInternalModal"
+            requireLinkText={requireLinkText}
+          />
+        </Provider>
       );
     },
 
