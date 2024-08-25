@@ -1505,7 +1505,7 @@ class SiteTreeTest extends SapphireTest
         $this->assertStringContainsString('<meta name="description" content="The &lt;br /&gt; and &lt;br&gt; tags"', $meta);
         $this->assertStringContainsString('<link rel="canonical" href="http://www.mysite.com/html-and-xml"', $meta);
         $this->assertStringContainsString('<meta name="x-page-id" content="' . $page->ID.'"', $meta);
-        $this->assertStringContainsString('<meta name="x-cms-edit-link" content="' . $page->CMSEditLink().'"', $meta);
+        $this->assertStringContainsString('<meta name="x-cms-edit-link" content="' . $page->getCMSEditLink().'"', $meta);
         $this->assertStringContainsString('<title>HTML &amp; XML</title>', $meta);
 
         // Test without title
@@ -1566,7 +1566,7 @@ class SiteTreeTest extends SapphireTest
             'cmsEditLink' => [
                 'attributes' => [
                     'name' => 'x-cms-edit-link',
-                    'content' => $page->CMSEditLink()
+                    'content' => $page->getCMSEditLink()
                 ]
             ]
         ];
@@ -2084,11 +2084,11 @@ class SiteTreeTest extends SapphireTest
         $child = $this->objFromFixture(BelongsToPage::class, 'one');
         $this->assertSame(
             "http://localhost/admin/pages/edit/show/$page->ID",
-            $page->CMSEditLink()
+            $page->getCMSEditLink()
         );
         $this->assertSame(
             "http://localhost/admin/pages/edit/show/$page->ID/field/ChildObjects/item/$child->ID",
-            $child->CMSEditLink()
+            $child->getCMSEditLink()
         );
     }
 

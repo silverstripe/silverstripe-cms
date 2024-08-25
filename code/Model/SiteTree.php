@@ -285,7 +285,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         'Link' => 'Text',
         'RelativeLink' => 'Text',
         'AbsoluteLink' => 'Text',
-        'CMSEditLink' => 'Text',
         'TreeTitle' => 'HTMLFragment',
         'MetaTags' => 'HTMLFragment',
     ];
@@ -756,20 +755,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         Versioned::set_reading_mode($oldReadingMode);
         return $link;
-    }
-
-    /**
-     * Generates a link to edit this page in the CMS.
-     *
-     * Implemented here to satisfy the CMSPreviewable interface, but data is intended to be loaded via Extension
-     *
-     * @see SilverStripe\Admin\CMSEditLinkExtension
-     *
-     * @return string
-     */
-    public function CMSEditLink()
-    {
-        return $this->extend('CMSEditLink')[0] ?? '';
     }
 
     /**
@@ -1504,7 +1489,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $tags['cmsEditLink'] = [
                 'attributes' => [
                     'name' => 'x-cms-edit-link',
-                    'content' => $this->CMSEditLink(),
+                    'content' => $this->getCMSEditLink(),
                 ],
             ];
         }
@@ -2157,11 +2142,11 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                                 'Untitled {instanceType}',
                                 ['instanceType' => $item->i18n_singular_name()]
                             );
-                            $tag = $item->hasMethod('CMSEditLink') ? 'a' : 'span';
+                            $tag = $item->hasMethod('getCMSEditLink') ? 'a' : 'span';
                             return sprintf(
                                 '<%s%s class="dependent-content__edit-link %s">%s</%s>',
                                 $tag,
-                                $tag === 'a' ? sprintf(' href="%s"', $item->CMSEditLink()) : '',
+                                $tag === 'a' ? sprintf(' href="%s"', $item->getCMSEditLink()) : '',
                                 $title ? '' : 'dependent-content__edit-link--untitled',
                                 $title ? Convert::raw2xml($title) : $untitled,
                                 $tag

@@ -258,7 +258,7 @@ class VirtualPage extends Page
                     'a',
                     [
                         'class' => 'cmsEditlink',
-                        'href' => $this->CopyContentFrom()->CMSEditLink(),
+                        'href' => $this->CopyContentFrom()->getCMSEditLink(),
                     ],
                     _t(VirtualPage::class . '.EditLink', 'edit')
                 );

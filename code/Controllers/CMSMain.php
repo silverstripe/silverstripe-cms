@@ -1096,7 +1096,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             $this->pushCrumb(
                 $items,
                 $ancestor->getMenuTitle(),
-                $unlinked ? false : $ancestor->CMSEditLink()
+                $unlinked ? false : $ancestor->getCMSEditLink()
             );
         }
     }
@@ -1710,7 +1710,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 /** @var SiteTree $item */
                 $title = sprintf(
                     '<a class="action-detail" href="%s">%s</a>',
-                    $item->CMSEditLink(),
+                    $item->getCMSEditLink(),
                     $item->TreeTitle // returns HTML, does its own escaping
                 );
                 $breadcrumbs = $item->Breadcrumbs(20, true, false, true, '/');
@@ -2103,7 +2103,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         // Can be used in different contexts: In normal page edit view, in which case the redirect won't have any effect.
         // Or in history view, in which case a revert causes the CMS to re-load the edit view.
         // The X-Pjax header forces a "full" content refresh on redirect.
-        $url = $record->CMSEditLink();
+        $url = $record->getCMSEditLink();
         $this->getResponse()->addHeader('X-ControllerURL', $url);
         $this->getRequest()->addHeader('X-Pjax', 'Content');
         $this->getResponse()->addHeader('X-Pjax', 'Content');
@@ -2220,7 +2220,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                     ['title' => $newPage->Title]
                 ) ?? '')
             );
-            $url = $newPage->CMSEditLink();
+            $url = $newPage->getCMSEditLink();
             $this->getResponse()->addHeader('X-ControllerURL', $url);
             $this->getRequest()->addHeader('X-Pjax', 'Content');
             $this->getResponse()->addHeader('X-Pjax', 'Content');
@@ -2256,7 +2256,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                     ['title' => $newPage->Title]
                 ) ?? '')
             );
-            $url = $newPage->CMSEditLink();
+            $url = $newPage->getCMSEditLink();
             $this->getResponse()->addHeader('X-ControllerURL', $url);
             $this->getRequest()->addHeader('X-Pjax', 'Content');
             $this->getResponse()->addHeader('X-Pjax', 'Content');
