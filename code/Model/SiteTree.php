@@ -1494,7 +1494,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             ];
         }
 
-        $this->extend('MetaComponents', $tags);
+        $this->extend('updateMetaComponents', $tags);
 
         return $tags;
     }
@@ -1598,7 +1598,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $tagString .= $this->obj('ExtraMeta')->forTemplate();
         }
 
-        $this->extend('MetaTags', $tagString);
+        $this->extend('updateMetaTags', $tagString);
 
         return $tagString;
     }
