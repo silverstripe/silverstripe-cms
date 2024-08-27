@@ -401,11 +401,8 @@ class VirtualPage extends Page
 
     /**
      * Use the target page's class name for fetching templates - as we need to take on its appearance
-     *
-     * @param string $suffix
-     * @return array
      */
-    public function getViewerTemplates($suffix = '')
+    public function getViewerTemplates(string $suffix = ''): array
     {
         $copy = $this->CopyContentFrom();
         if ($copy && $copy->exists()) {
@@ -418,11 +415,8 @@ class VirtualPage extends Page
     /**
      * Allow attributes on the master page to pass
      * through to the virtual page
-     *
-     * @param string $field
-     * @return mixed
      */
-    public function __get($field)
+    public function __get(string $field): mixed
     {
         if (parent::hasMethod($funcName = "get$field")) {
             return $this->$funcName();
@@ -436,7 +430,7 @@ class VirtualPage extends Page
         return null;
     }
 
-    public function getField($field)
+    public function getField(string $field): mixed
     {
         if ($this->isFieldVirtualised($field)) {
             return $this->CopyContentFrom()->getField($field);
@@ -484,17 +478,13 @@ class VirtualPage extends Page
         }
     }
 
-    /**
-     * @param string $field
-     * @return bool
-     */
-    public function hasField($field)
+    public function hasField(string $fieldName): bool
     {
-        if (parent::hasField($field)) {
+        if (parent::hasField($fieldName)) {
             return true;
         }
         $copy = $this->CopyContentFrom();
-        return $copy && $copy->exists() && $copy->hasField($field);
+        return $copy && $copy->exists() && $copy->hasField($fieldName);
     }
 
     /**
@@ -513,11 +503,8 @@ class VirtualPage extends Page
     /**
      * Return the "casting helper" (a piece of PHP code that when evaluated creates a casted value object) for a field
      * on this object.
-     *
-     * @param string $field
-     * @return string|null
      */
-    public function castingHelper($field, bool $useFallback = true)
+    public function castingHelper(string $field, bool $useFallback = true): ?string
     {
         $copy = $this->CopyContentFrom();
         if ($copy && $copy->exists() && ($helper = $copy->castingHelper($field, $useFallback))) {

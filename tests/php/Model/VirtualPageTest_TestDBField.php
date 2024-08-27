@@ -7,7 +7,7 @@ use SilverStripe\ORM\FieldType\DBVarchar;
 
 class VirtualPageTest_TestDBField extends DBVarchar implements TestOnly
 {
-    public function forTemplate()
+    public function forTemplate(): string
     {
         return strtoupper($this->XML() ?? '');
     }
