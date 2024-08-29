@@ -6,12 +6,12 @@ use DOMElement;
 use SilverStripe\Assets\Shortcodes\FileLinkTracking;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\FormScaffolder;
-use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\ManyManyThroughList;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\Parsers\HTMLValue;
+use SilverStripe\Core\Extension;
 
 /**
  * Adds tracking of links in any HTMLText fields which reference SiteTree or File items.
@@ -29,9 +29,9 @@ use SilverStripe\View\Parsers\HTMLValue;
  * @property DataObject|SiteTreeLinkTracking $owner
  * @method ManyManyThroughList<SiteTree> LinkTracking()
  *
- * @extends DataExtension<DataObject>
+ * @extends Extension<DataObject>
  */
-class SiteTreeLinkTracking extends DataExtension
+class SiteTreeLinkTracking extends Extension
 {
     /**
      * @var SiteTreeLinkTracking_Parser

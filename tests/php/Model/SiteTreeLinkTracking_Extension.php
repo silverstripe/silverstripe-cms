@@ -3,9 +3,9 @@
 namespace SilverStripe\CMS\Tests\Model;
 
 use SilverStripe\Dev\TestOnly;
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 
-class SiteTreeLinkTracking_Extension extends DataExtension implements TestOnly
+class SiteTreeLinkTracking_Extension extends Extension implements TestOnly
 {
     protected function updateAnchorsOnPage(&$anchors)
     {

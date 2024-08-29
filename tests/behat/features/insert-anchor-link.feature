@@ -5,7 +5,7 @@ I want to insert a link into my content
 So that I can link to a external website or a page on my site
 
   Background:
-    Given I add an extension "SilverStripe\CMS\Tests\Behaviour\AdditionalAnchorPageExtension" to the "Page" class
+    Given I add an extension "SilverStripe\CMS\Tests\Behaviour\AdditionalAnchorPageExtension" to the "Page" class without dev-build
       And a "page" "Home"
       And a "page" "About Us" has the "Content" "<p>My awesome content</p>"
       And a "page" "Details" has the "Content" "<p>My sub-par content<a name="youranchor"></a></p>"
