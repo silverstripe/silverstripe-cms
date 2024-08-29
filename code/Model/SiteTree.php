@@ -1137,7 +1137,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * - "CanViewType" directive is set to "LoggedInUsers" and no user is logged in
      * - "CanViewType" directive is set to "OnlyTheseUsers" and user is not in the given groups
      *
-     * @uses DataExtension->canView()
      * @uses ViewerGroups()
      *
      * @param Member $member
@@ -1284,7 +1283,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Use {@link canAddChildren()} to control behaviour of creating children under this page.
      *
      * @uses $can_create
-     * @uses DataExtension->canCreate()
      *
      * @param Member $member
      * @param array $context Optional array which may contain ['Parent' => $parentObj]
@@ -1341,7 +1339,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      *
      * @uses canView()
      * @uses EditorGroups()
-     * @uses DataExtension->canEdit()
      *
      * @param Member $member Set to false if you want to explicitly test permissions without a valid user (useful for
      *                       unit tests)

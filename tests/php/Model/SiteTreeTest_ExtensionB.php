@@ -2,11 +2,11 @@
 
 namespace SilverStripe\CMS\Tests\Model;
 
-use SilverStripe\CMS\Model\SiteTreeExtension;
 use SilverStripe\Control\Controller;
 use SilverStripe\Dev\TestOnly;
+use SilverStripe\Core\Extension;
 
-class SiteTreeTest_ExtensionB extends SiteTreeExtension implements TestOnly
+class SiteTreeTest_ExtensionB extends Extension implements TestOnly
 {
     public static $can_publish = true;
 

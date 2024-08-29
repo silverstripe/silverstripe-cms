@@ -1833,8 +1833,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     }
 
     /**
-     * @uses LeftAndMainExtension->augmentNewSiteTreeItem()
-     *
      * @param int|string $id
      * @param bool $setID
      * @return mixed|DataObject

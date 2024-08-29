@@ -5,9 +5,9 @@ namespace SilverStripe\CMS\Tests\Model;
 use SilverStripe\Dev\TestOnly;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 
-class SiteTreeBacklinksTest_DOD extends DataExtension implements TestOnly
+class SiteTreeBacklinksTest_DOD extends Extension implements TestOnly
 {
     private static $db = [
         'ExtraContent' => 'HTMLText',

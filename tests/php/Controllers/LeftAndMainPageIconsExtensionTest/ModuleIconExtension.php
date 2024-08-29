@@ -2,11 +2,11 @@
 
 namespace SilverStripe\CMS\Tests\Controllers\LeftAndMainpageIconsExtensionTest;
 
-use SilverStripe\CMS\Model\SiteTreeExtension;
 use SilverStripe\Core\Manifest\ModuleResourceLoader;
 use SilverStripe\Dev\TestOnly;
+use SilverStripe\Core\Extension;
 
-class ModuleIconExtension extends SiteTreeExtension implements TestOnly
+class ModuleIconExtension extends Extension implements TestOnly
 {
     public static function get_extra_config()
     {

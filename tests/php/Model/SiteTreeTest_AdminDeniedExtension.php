@@ -3,12 +3,12 @@
 namespace SilverStripe\CMS\Tests\Model;
 
 use SilverStripe\Dev\TestOnly;
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 
 /**
  * An extension that can even deny actions to admins
  */
-class SiteTreeTest_AdminDeniedExtension extends DataExtension implements TestOnly
+class SiteTreeTest_AdminDeniedExtension extends Extension implements TestOnly
 {
     protected function canCreate($member)
     {

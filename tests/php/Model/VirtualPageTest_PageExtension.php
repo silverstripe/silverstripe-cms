@@ -3,9 +3,9 @@
 namespace SilverStripe\CMS\Tests\Model;
 
 use SilverStripe\Dev\TestOnly;
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 
-class VirtualPageTest_PageExtension extends DataExtension implements TestOnly
+class VirtualPageTest_PageExtension extends Extension implements TestOnly
 {
     private static $db = [
         // These fields are just on an extension to simulate shared properties between Page and VirtualPage.
