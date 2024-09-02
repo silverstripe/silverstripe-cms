@@ -7,7 +7,6 @@ Feature: Edit a page
   Background:
     Given a "page" "About Us" has the "Content" "<p>My content</p>"
     And a "image" "assets/file1.jpg"
-    #And a file "assets/file1.jpg" with changes "image"="assets/folder1/file2.jpg" and "page"="About Us"
 		And the "group" "AUTHOR" has permissions "Access to 'Pages' section"
     And the "group" "EDITOR" has permissions "Access to 'Pages' section" and "SITETREE_GRANT_ACCESS"
     And I am logged in as a member of "AUTHOR" group
