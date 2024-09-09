@@ -194,7 +194,7 @@ en:
     DEFAULTABOUTTITLE: 'About Us'
     DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.</p>'
     DEFAULTCONTACTTITLE: 'Contact Us'
-    DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>.</p><p>You can now access the <a href="http://docs.silverstripe.org">developer documentation</a>, or begin the <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lessons</a>.</p>'
+    DEFAULTHOMECONTENT: '<p>Welcome to Silverstripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>.</p><p>You can now access the <a href="http://docs.silverstripe.org">developer documentation</a>, or begin the <a href="http://www.silverstripe.org/learn/lessons">SilverStripe lessons</a>.</p>'
     DEFAULTHOMETITLE: Home
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
     DESCRIPTION: 'Generic content page'
