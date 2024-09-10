@@ -619,14 +619,14 @@ class CMSMainTest extends FunctionalTest
         Security::setCurrentUser($user);
         $pageClass = array_values(SiteTree::page_type_classes())[0];
         $mockPageMissesCache = $this->getMockBuilder($pageClass)
-            ->setMethods(['canCreate'])
+            ->onlyMethods(['canCreate'])
             ->getMock();
         $mockPageMissesCache
             ->expects($this->exactly(3))
             ->method('canCreate');
 
         $mockPageHitsCache = $this->getMockBuilder($pageClass)
-            ->setMethods(['canCreate'])
+            ->onlyMethods(['canCreate'])
             ->getMock();
         $mockPageHitsCache
             ->expects($this->never())

@@ -11,6 +11,7 @@ use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\Subsites\Extensions\SiteTreeSubsites;
 use SilverStripe\Versioned\Versioned;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class SiteTreePermissionsTest extends FunctionalTest
 {
@@ -524,8 +525,8 @@ class SiteTreePermissionsTest extends FunctionalTest
 
     /**
      * Test permissions on duplicate page
-     * @dataProvider groupWithPermissions
      */
+    #[DataProvider('groupWithPermissions')]
     public function testDuplicatePageWithGroupPermissions(string $userName, string $method, bool $expected)
     {
         $originalPage = $this->objFromFixture(SiteTree::class, 'originalpage');
@@ -538,7 +539,7 @@ class SiteTreePermissionsTest extends FunctionalTest
         $this->assertSame($dupe->{$method}($user), $expected);
     }
 
-    public function groupWithPermissions(): array
+    public static function groupWithPermissions(): array
     {
         return [
             'Subadmin can view page duplicate.' => [

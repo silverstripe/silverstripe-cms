@@ -287,9 +287,6 @@ class ZZZSearchFormTest extends FunctionalTest
         Security::setCurrentUser(null);
     }
 
-    /**
-     *
-     */
     public function testInheritedRestrictedPagesNotIncluded()
     {
         $request = new HTTPRequest('GET', 'search', ['Search'=>'inheritRestrictedView']);

@@ -11,6 +11,7 @@ use SilverStripe\Assets\Dev\TestAssetStore;
 use SilverStripe\Control\Controller;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\FunctionalTest;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class RedirectorPageTest extends FunctionalTest
 {
@@ -61,7 +62,7 @@ class RedirectorPageTest extends FunctionalTest
         );
     }
 
-    public function provideEmptyRedirectors()
+    public static function provideEmptyRedirectors()
     {
         return [
             'use 200' => [
@@ -73,9 +74,7 @@ class RedirectorPageTest extends FunctionalTest
         ];
     }
 
-    /**
-     * @dataProvider provideEmptyRedirectors
-     */
+    #[DataProvider('provideEmptyRedirectors')]
     public function testEmptyRedirectors(bool $use404)
     {
         Config::modify()->set(RedirectorPageController::class, 'missing_redirect_is_404', $use404);
@@ -181,7 +180,7 @@ class RedirectorPageTest extends FunctionalTest
         $this->assertStringContainsString("FileTest.txt", $page->Link());
     }
 
-    public function provideUnpublishedTarget()
+    public static function provideUnpublishedTarget()
     {
         return [
             'use 200 with sitetree' => [
@@ -203,9 +202,7 @@ class RedirectorPageTest extends FunctionalTest
         ];
     }
 
-    /**
-     * @dataProvider provideUnpublishedTarget
-     */
+    #[DataProvider('provideUnpublishedTarget')]
     public function testUnpublishedTarget(bool $use404, bool $isFile)
     {
         Config::modify()->set(RedirectorPageController::class, 'missing_redirect_is_404', $use404);

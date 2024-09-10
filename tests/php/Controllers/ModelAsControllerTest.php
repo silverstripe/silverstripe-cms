@@ -207,7 +207,6 @@ class ModelAsControllerTest extends FunctionalTest
     /**
      *
      * NOTE: This test requires nested_urls
-     *
      */
     public function testRedirectsNestedRenamedPagesWithGetParameters()
     {
@@ -225,7 +224,6 @@ class ModelAsControllerTest extends FunctionalTest
     /**
      *
      * NOTE: This test requires nested_urls
-     *
      */
     public function testDoesntRedirectToNestedRenamedPageWhenNewExists()
     {
@@ -255,7 +253,6 @@ class ModelAsControllerTest extends FunctionalTest
     /**
      *
      * NOTE: This test requires nested_urls
-     *
      */
     public function testFindOldPage()
     {
