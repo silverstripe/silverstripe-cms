@@ -48,7 +48,7 @@ use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\Tab;
 use SilverStripe\Forms\TabSet;
 use SilverStripe\Forms\TextField;
-use SilverStripe\ORM\ArrayList;
+use SilverStripe\Model\List\ArrayList;
 use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
@@ -57,8 +57,8 @@ use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\HiddenClass;
 use SilverStripe\ORM\Hierarchy\Hierarchy;
 use SilverStripe\ORM\Hierarchy\MarkedSet;
-use SilverStripe\ORM\SS_List;
-use SilverStripe\ORM\ValidationResult;
+use SilverStripe\Model\List\SS_List;
+use SilverStripe\Core\Validation\ValidationResult;
 use SilverStripe\Security\InheritedPermissions;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
@@ -70,7 +70,7 @@ use SilverStripe\Versioned\ChangeSet;
 use SilverStripe\Versioned\ChangeSetItem;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\VersionedAdmin\Controllers\CMSPageHistoryViewerController;
-use SilverStripe\View\ArrayData;
+use SilverStripe\Model\ArrayData;
 use SilverStripe\View\Requirements;
 
 /**

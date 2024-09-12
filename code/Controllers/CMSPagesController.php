@@ -4,9 +4,9 @@ namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
-use SilverStripe\ORM\ArrayList;
+use SilverStripe\Model\List\ArrayList;
 use SilverStripe\ORM\DataObject;
-use SilverStripe\View\ArrayData;
+use SilverStripe\Model\ArrayData;
 use stdClass;
 
 class CMSPagesController extends CMSMain

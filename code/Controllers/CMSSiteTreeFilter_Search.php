@@ -3,7 +3,7 @@
 namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\ORM\SS_List;
+use SilverStripe\Model\List\SS_List;
 use SilverStripe\Versioned\Versioned;
 
 class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter

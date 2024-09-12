@@ -24,7 +24,7 @@ use SilverStripe\i18n\i18n;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\FieldType\DBDatetime;
-use SilverStripe\ORM\ValidationException;
+use SilverStripe\Core\Validation\ValidationException;
 use SilverStripe\Security\Group;
 use SilverStripe\Security\InheritedPermissions;
 use SilverStripe\Security\Member;

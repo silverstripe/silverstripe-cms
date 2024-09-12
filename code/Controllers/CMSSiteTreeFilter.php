@@ -9,7 +9,7 @@ use SilverStripe\Core\Convert;
 use SilverStripe\Core\Injector\Injectable;
 use SilverStripe\Forms\DateField;
 use SilverStripe\ORM\DataList;
-use SilverStripe\ORM\SS_List;
+use SilverStripe\Model\List\SS_List;
 use SilverStripe\Versioned\Versioned;
 
 /**
