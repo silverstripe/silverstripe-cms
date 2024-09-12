@@ -300,6 +300,15 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         "Stage",  "Live"
     ];
 
+    /**
+     * Fields which, if changed on their own, won't cause a new version/live record to be created
+     * @var string[]
+     */
+    private static array $fields_ignored_by_versioning = [
+        'HasBrokenFile',
+        'HasBrokenLink',
+    ];
+
     private static $default_sort = "\"Sort\"";
 
     /**
@@ -1692,7 +1701,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         // Check to see if we've only altered fields that shouldn't affect versioning
-        $fieldsIgnoredByVersioning = ['HasBrokenLink', 'Status', 'HasBrokenFile', 'ToDo', 'VersionID', 'SaveCount'];
+        $fieldsIgnoredByVersioning = $this->config()->get('fields_ignored_by_versioning') ?? [];
         $changedFields = array_keys($this->getChangedFields(true, 2) ?? []);
 
         // This more rigorous check is inline with the test that write() does to decide whether or not to write to the
