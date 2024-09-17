@@ -2578,7 +2578,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         // If a page is on any stage it can be archived
         if (($isOnDraft || $isPublished)) {
-            $canArchive = Deprecation::withNoReplacement(fn() => $this->canArchive());
+            $canArchive = Deprecation::withSuppressedNotice(fn() => $this->canArchive());
             if ($canArchive) {
                 $title = $isPublished
                     ? _t('SilverStripe\\CMS\\Controllers\\CMSMain.UNPUBLISH_AND_ARCHIVE', 'Unpublish and archive')
