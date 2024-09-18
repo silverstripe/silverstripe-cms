@@ -8,11 +8,11 @@ use ReflectionMethod;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\CMS\Model\VirtualPage;
-use SilverStripe\CMS\Tests\Controllers\SiteTreeTest_NamespaceMapTestController;
+use SilverStripe\CMS\Tests\Controllers\SiteTreeTest_NamespaceMapTestNodeController;
 use SilverStripe\CMS\Tests\CMSEditLinkExtensionTest\BelongsToPage;
 use SilverStripe\CMS\Tests\CMSEditLinkExtensionTest\PageWithChild;
 use SilverStripe\CMS\Tests\Model\SiteTreeBrokenLinksTest\NotPageObject;
-use SilverStripe\CMS\Tests\Page\SiteTreeTest_NamespaceMapTest;
+use SilverStripe\CMS\Tests\Page\SiteTreeTest_NamespaceMapTestNode;
 use SilverStripe\Control\ContentNegotiator;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
@@ -42,6 +42,7 @@ use Page;
 use PageController;
 
 use const RESOURCES_DIR;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class SiteTreeTest extends SapphireTest
 {
@@ -71,7 +72,7 @@ class SiteTreeTest extends SapphireTest
         NotPageObject::class,
     ];
 
-    public function reservedSegmentsProvider()
+    public static function reservedSegmentsProvider()
     {
         return [
             // segments reserved by rules
@@ -142,8 +143,8 @@ class SiteTreeTest extends SapphireTest
 
     /**
      * Check if reserved URL's are properly appended with a number at top level
-     * @dataProvider reservedSegmentsProvider
      */
+    #[DataProvider('reservedSegmentsProvider')]
     public function testDisallowedURLGeneration($title, $urlSegment)
     {
         $page = new SiteTree(['Title' => $title]);
@@ -155,8 +156,8 @@ class SiteTreeTest extends SapphireTest
     /**
      * Check if reserved URL's are not appended with a number on a child page
      * It's okay to have a URL like domain.com/my-page/admin as it won't interfere with domain.com/admin
-     * @dataProvider reservedSegmentsProvider
      */
+    #[DataProvider('reservedSegmentsProvider')]
     public function testDisallowedChildURLGeneration($title, $urlSegment)
     {
         // Using the same dataprovider, strip out the -2 from the admin and dev segment
@@ -1092,9 +1093,6 @@ class SiteTreeTest extends SapphireTest
         i18n::set_locale($oldLocale);
     }
 
-    /**
-     * @covers \SilverStripe\CMS\Model\SiteTree::validURLSegment
-     */
     public function testValidURLSegmentURLSegmentConflicts()
     {
         $sitetree = new SiteTree();
@@ -1124,9 +1122,6 @@ class SiteTreeTest extends SapphireTest
         $this->assertTrue($sitetree->validURLSegment());
     }
 
-    /**
-     * @covers \SilverStripe\CMS\Model\SiteTree::validURLSegment
-     */
     public function testValidURLSegmentClassNameConflicts()
     {
         $sitetree = new SiteTree();
@@ -1135,9 +1130,6 @@ class SiteTreeTest extends SapphireTest
         $this->assertTrue($sitetree->validURLSegment(), 'Class names are no longer conflicts');
     }
 
-    /**
-     * @covers \SilverStripe\CMS\Model\SiteTree::validURLSegment
-     */
     public function testValidURLSegmentControllerConflicts()
     {
         Config::modify()->set(SiteTree::class, 'nested_urls', true);
@@ -1273,11 +1265,11 @@ class SiteTreeTest extends SapphireTest
 
     /**
      * Tests that various types of SiteTree classes will or will not be returned from the allowedChildren method
-     * @dataProvider allowedChildrenProvider
      * @param string $className
      * @param array  $expected
      * @param string $assertionMessage
      */
+    #[DataProvider('allowedChildrenProvider')]
     public function testAllowedChildren($className, $expected, $assertionMessage)
     {
         $class = new $className;
@@ -1287,7 +1279,7 @@ class SiteTreeTest extends SapphireTest
     /**
      * @return array
      */
-    public function allowedChildrenProvider()
+    public static function allowedChildrenProvider()
     {
         return [
             [
@@ -1525,7 +1517,7 @@ class SiteTreeTest extends SapphireTest
         $charset = Config::inst()->get(ContentNegotiator::class, 'encoding');
 
         $mockVersionProvider = $this->getMockBuilder(VersionProvider::class)
-            ->setMethods(['getModuleVersion'])
+            ->onlyMethods(['getModuleVersion'])
             ->getMock();
         $mockVersionProvider->method('getModuleVersion')->willReturn('4.50.99');
         $page->setVersionProvider($mockVersionProvider);
@@ -1752,8 +1744,8 @@ class SiteTreeTest extends SapphireTest
             'SilverStripe\\CMS\\Tests\\Page' => 'SilverStripe\\CMS\\Tests\\Controllers',
         ]);
 
-        $namespacedSiteTree = new SiteTreeTest_NamespaceMapTest();
-        $this->assertSame(SiteTreeTest_NamespaceMapTestController::class, $namespacedSiteTree->getControllerName());
+        $namespacedSiteTree = new SiteTreeTest_NamespaceMapTestNode();
+        $this->assertSame(SiteTreeTest_NamespaceMapTestNodeController::class, $namespacedSiteTree->getControllerName());
     }
 
     public function testTreeTitleCache()
@@ -1764,14 +1756,14 @@ class SiteTreeTest extends SapphireTest
         $pageClass = array_values(SiteTree::page_type_classes())[0];
 
         $mockPageMissesCache = $this->getMockBuilder($pageClass)
-            ->setMethods(['canCreate'])
+            ->onlyMethods(['canCreate'])
             ->getMock();
         $mockPageMissesCache
             ->expects($this->exactly(3))
             ->method('canCreate');
 
         $mockPageHitsCache = $this->getMockBuilder($pageClass)
-            ->setMethods(['canCreate'])
+            ->onlyMethods(['canCreate'])
             ->getMock();
         $mockPageHitsCache
             ->expects($this->never())
@@ -2092,9 +2084,7 @@ class SiteTreeTest extends SapphireTest
         );
     }
 
-    /**
-     * @dataProvider provideSanitiseExtraMeta
-     */
+    #[DataProvider('provideSanitiseExtraMeta')]
     public function testSanitiseExtraMeta(string $extraMeta, string $expected, string $message): void
     {
         $siteTree = new SiteTree();
@@ -2103,7 +2093,7 @@ class SiteTreeTest extends SapphireTest
         $this->assertSame($expected, $siteTree->ExtraMeta, $message);
     }
 
-    public function provideSanitiseExtraMeta(): array
+    public static function provideSanitiseExtraMeta(): array
     {
         return [
             [

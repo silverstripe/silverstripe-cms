@@ -157,7 +157,6 @@ class ContentControllerTest extends FunctionalTest
     /**
      * Tests that {@link ContentController::getViewer()} chooses the correct templates.
      *
-     * @covers \SilverStripe\CMS\Controllers\ContentController::getViewer()
      **/
     public function testGetViewer()
     {
