@@ -29,6 +29,6 @@ class CMSBatchAction_Archive extends CMSBatchAction
     public function applicablePages($ids)
     {
         // canArchive() is deprecated, not $this->applicablePagesHelper()
-        return Deprecation::withNoReplacement(fn() => $this->applicablePagesHelper($ids, 'canArchive'));
+        return Deprecation::withSuppressedNotice(fn() => $this->applicablePagesHelper($ids, 'canArchive'));
     }
 }

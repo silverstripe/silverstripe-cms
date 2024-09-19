@@ -20,7 +20,7 @@ class CMSBatchAction_Restore extends CMSBatchAction
 {
     public function __construct()
     {
-        Deprecation::withNoReplacement(function () {
+        Deprecation::withSuppressedNotice(function () {
             Deprecation::notice('5.3.0', 'Will be removed without equivalent functionality to replace it', Deprecation::SCOPE_CLASS);
         });
     }

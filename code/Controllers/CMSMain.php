@@ -1998,7 +1998,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if (!$record || !$record->exists()) {
             throw new HTTPResponse_Exception("Bad record ID #$id", 404);
         }
-        $canArchive = Deprecation::withNoReplacement(fn() => $record->canArchive());
+        $canArchive = Deprecation::withSuppressedNotice(fn() => $record->canArchive());
         if (!$canArchive) {
             return Security::permissionFailure();
         }
