@@ -4,7 +4,7 @@ namespace SilverStripe\CMS\Tests\Controllers;
 
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Dev\TestOnly;
-use SilverStripe\ORM\ValidationException;
+use SilverStripe\Core\Validation\ValidationException;
 
 class CMSMainTest_ClassA extends SiteTree implements TestOnly
 {

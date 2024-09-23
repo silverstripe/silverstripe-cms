@@ -4,7 +4,7 @@ namespace SilverStripe\CMS\BatchActions;
 
 use SilverStripe\Admin\CMSBatchAction;
 use SilverStripe\Control\HTTPResponse;
-use SilverStripe\ORM\SS_List;
+use SilverStripe\Model\List\SS_List;
 
 /**
  * Publish items batch action.

@@ -2,7 +2,7 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-use SilverStripe\View\ArrayData;
+use SilverStripe\Model\ArrayData;
 
 class CMSPageSettingsController extends CMSMain
 {
