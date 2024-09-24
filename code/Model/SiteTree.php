@@ -2747,8 +2747,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     protected function getClassDropdown()
     {
         $classes = SiteTree::page_type_classes();
-        $currentClass = null;
-
         $result = [];
         foreach ($classes as $class) {
             $instance = singleton($class);
@@ -2774,20 +2772,15 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 }
             }
 
-            $pageTypeName = $instance->i18n_singular_name();
-
-            $currentClass = $class;
-            $result[$class] = $pageTypeName;
+            $result[$class] = $instance->i18n_singular_name();
         }
 
-        // sort alphabetically, and put current on top
+        // Sort alphabetically, and put current on top
         asort($result);
-        if ($currentClass) {
-            $currentPageTypeName = $result[$currentClass];
-            unset($result[$currentClass]);
-            $result = array_reverse($result ?? []);
-            $result[$currentClass] = $currentPageTypeName;
-            $result = array_reverse($result ?? []);
+        if (isset($result[$this->ClassName])) {
+            $currentPageTypeName = $result[$this->ClassName];
+            unset($result[$this->ClassName]);
+            $result = [$this->ClassName => $currentPageTypeName] + $result;
         }
 
         return $result;

@@ -1272,7 +1272,7 @@ class SiteTreeTest extends SapphireTest
     #[DataProvider('allowedChildrenProvider')]
     public function testAllowedChildren($className, $expected, $assertionMessage)
     {
-        $class = new $className;
+        $class = new $className();
         $this->assertEquals($expected, $class->allowedChildren(), $assertionMessage);
     }
 
@@ -1351,6 +1351,9 @@ class SiteTreeTest extends SapphireTest
         );
     }
 
+    /**
+     * @return void
+     */
     public function testClassDropdown()
     {
         $sitetree = new SiteTree();
@@ -1372,7 +1375,18 @@ class SiteTreeTest extends SapphireTest
 
         $this->assertArrayNotHasKey(SiteTreeTest_NotRoot::class, $method->invoke($rootPage));
         $this->assertArrayHasKey(SiteTreeTest_NotRoot::class, $method->invoke($nonRootPage));
-
+        foreach ([SiteTreeTest_ClassA::class, SiteTreeTest_ClassB::class] as $className) {
+            $otherPage = new $className();
+            $otherPage->write();
+            $result = $method->invoke(object: $otherPage);
+            $this->assertEquals(array_key_first($result), $className);
+            // remove the first element as this is not alphabetical
+            array_shift($result);
+            // create a sorted array
+            $resultSorted = $result;
+            asort($resultSorted);
+            $this->assertEquals($result, $resultSorted);
+        }
         Security::setCurrentUser(null);
     }
 
