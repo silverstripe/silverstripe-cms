@@ -7,6 +7,7 @@ use SilverStripe\Assets\File;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\HeaderField;
 use SilverStripe\Forms\OptionsetField;
+use SilverStripe\Forms\UrlField;
 use SilverStripe\Versioned\Versioned;
 
 /**
@@ -46,6 +47,9 @@ class RedirectorPage extends Page
         'ignoreFields' => [
             'RedirectionType',
             'Content',
+        ],
+        'fieldClasses' => [
+            'ExternalURL' => UrlField::class,
         ],
     ];
 
@@ -171,35 +175,12 @@ class RedirectorPage extends Page
         }
     }
 
-    protected function onBeforeWrite()
-    {
-        parent::onBeforeWrite();
-
-        if ($this->ExternalURL && substr($this->ExternalURL ?? '', 0, 2) !== '//') {
-            $urlParts = parse_url($this->ExternalURL ?? '');
-            if ($urlParts) {
-                if (empty($urlParts['scheme'])) {
-                    // no scheme, assume http
-                    $this->ExternalURL = 'http://' . $this->ExternalURL;
-                } elseif (!in_array($urlParts['scheme'], [
-                    'http',
-                    'https',
-                ])) {
-                    // we only allow http(s) urls
-                    $this->ExternalURL = '';
-                }
-            } else {
-                // malformed URL to reject
-                $this->ExternalURL = '';
-            }
-        }
-    }
-
     public function getCMSFields()
     {
         $this->beforeUpdateCMSFields(function (FieldList $fields) {
             // Remove all metadata fields, does not apply for redirector pages
             $fields->removeByName('Metadata');
+            $fields->dataFieldByName('ExternalURL')?->setAllowRelativeProtocol(true);
 
             $fields->addFieldsToTab(
                 'Root.Main',
