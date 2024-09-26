@@ -78,7 +78,7 @@ class RootURLController extends Controller implements Resettable
                 Director::absoluteBaseURL(),
                 'dev/build',
                 '?' . http_build_query([
-                    'returnURL' => isset($_GET['url']) ? $_GET['url'] : null,
+                    'BackURL' => isset($_GET['url']) ? $_GET['url'] : null,
                 ])
             ));
         }
@@ -91,7 +91,7 @@ class RootURLController extends Controller implements Resettable
 
         if (!$this->getResponse()->isFinished()) {
             if (!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
-                $this->getResponse()->redirect(Director::absoluteBaseURL() . 'dev/build?returnURL=' . (isset($_GET['url']) ? urlencode($_GET['url']) : null));
+                $this->getResponse()->redirect(Director::absoluteBaseURL() . 'dev/build?BackURL=' . (isset($_GET['url']) ? urlencode($_GET['url']) : null));
                 return $this->getResponse();
             }
 
