@@ -5,6 +5,8 @@ namespace SilverStripe\CMS\Tests\Controllers;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\CMS\Controllers\RootURLController;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\CMS\Tests\Controllers\ContentControllerTest\DummyTemplateContentController;
+use SilverStripe\CMS\Tests\Controllers\ContentControllerTest\DummyTemplateEngine;
 use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Config\Config;
@@ -162,7 +164,7 @@ class ContentControllerTest extends FunctionalTest
     {
         $this->useTestTheme(__DIR__, 'controllertest', function () {
 
-            // Test a page without a controller (ContentControllerTest_PageWithoutController.ss)
+            // Test a page without a controller (ContentControllerTest_PageWithoutController)
             $page = new ContentControllerTestPageWithoutController();
             $page->URLSegment = "test";
             $page->write();
@@ -171,7 +173,7 @@ class ContentControllerTest extends FunctionalTest
             $response = $this->get($page->RelativeLink());
             $this->assertEquals("ContentControllerTestPageWithoutController", trim($response->getBody() ?? ''));
 
-            // This should fall over to user Page.ss
+            // This should fall over to use Page
             $page = new ContentControllerTestPage();
             $page->URLSegment = "test";
             $page->write();
@@ -191,20 +193,27 @@ class ContentControllerTest extends FunctionalTest
             $this->assertEquals("ContentControllerTestPage_test", trim($response->getBody() ?? ''));
 
             // Test that an action without a template will default to the index template, which is
-            // to say the default Page.ss template
+            // to say the default Page template
             $response = $this->get($page->RelativeLink("testwithouttemplate"));
             $this->assertEquals("Page", trim($response->getBody() ?? ''));
 
-            // Test that an action with a template will render the both action template *and* the
+            // Test that an action with a template will render both the action template *and* the
             // correct parent template
-            $controller = new ContentController($page);
+            $controller = new DummyTemplateContentController($page);
             $viewer = $controller->getViewer('test');
-            $this->assertEquals(
-                __DIR__
-                . '/themes/controllertest/templates/SilverStripe/CMS/Tests/Controllers/'
-                . 'ContentControllerTestPage_test.ss',
-                $viewer->templates()['main']
-            );
+            /** @var DummyTemplateEngine $engine */
+            $engine = $viewer->getTemplateEngine();
+            $templateCandidates = $engine->getTemplates();
+            // Check for the action templates
+            $this->assertContains('SilverStripe\CMS\Tests\Controllers\ContentControllerTestPage_test', $templateCandidates);
+            $this->assertContains('SilverStripe\CMS\Model\SiteTree_test', $templateCandidates);
+            $this->assertContains('SilverStripe\CMS\Tests\Controllers\ContentControllerTest\DummyTemplateContentController_test', $templateCandidates);
+            $this->assertContains('SilverStripe\CMS\Controllers\ContentController_test', $templateCandidates);
+            // Check for the parent templates
+            $this->assertContains('SilverStripe\CMS\Tests\Controllers\ContentControllerTestPage', $templateCandidates);
+            $this->assertContains('SilverStripe\CMS\Model\SiteTree', $templateCandidates);
+            $this->assertContains('SilverStripe\CMS\Tests\Controllers\ContentControllerTest\DummyTemplateContentController', $templateCandidates);
+            $this->assertContains('SilverStripe\CMS\Controllers\ContentController', $templateCandidates);
         });
     }
 }
