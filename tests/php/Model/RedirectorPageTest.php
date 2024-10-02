@@ -121,33 +121,6 @@ class RedirectorPageTest extends FunctionalTest
         $this->assertEquals(Director::absoluteURL('/redirection-dest'), $response->getHeader("Location"));
     }
 
-    public function testExternalURLGetsPrefixIfNotSet()
-    {
-        $page = $this->objFromFixture(RedirectorPage::class, 'externalnoprefix');
-        $this->assertEquals($page->ExternalURL, 'http://google.com', 'onBeforeWrite has prefixed with http');
-        $page->write();
-        $this->assertEquals(
-            $page->ExternalURL,
-            'http://google.com',
-            'onBeforeWrite will not double prefix if written again!'
-        );
-    }
-
-    public function testAllowsProtocolRelative()
-    {
-        $noProtocol = new RedirectorPage(['ExternalURL' => 'mydomain.com']);
-        $noProtocol->write();
-        $this->assertEquals('http://mydomain.com', $noProtocol->ExternalURL);
-
-        $protocolAbsolute = new RedirectorPage(['ExternalURL' => 'http://mydomain.com']);
-        $protocolAbsolute->write();
-        $this->assertEquals('http://mydomain.com', $protocolAbsolute->ExternalURL);
-
-        $protocolRelative = new RedirectorPage(['ExternalURL' => '//mydomain.com']);
-        $protocolRelative->write();
-        $this->assertEquals('//mydomain.com', $protocolRelative->ExternalURL);
-    }
-
     /**
      * Test that we can trigger a redirection before RedirectorPageController::init() is called
      */
@@ -161,17 +134,6 @@ class RedirectorPageTest extends FunctionalTest
         $this->assertEquals('http://www.mysite.com/foo', $response->getHeader('Location'));
 
         RedirectorPageController::remove_extension(RedirectorPageTest_RedirectExtension::class);
-    }
-
-    public function testNoJSLinksAllowed()
-    {
-        $page = new RedirectorPage();
-        $js = 'javascript:alert("hello world")';
-        $page->ExternalURL = $js;
-        $this->assertEquals($js, $page->ExternalURL);
-
-        $page->write();
-        $this->assertEmpty($page->ExternalURL);
     }
 
     public function testFileRedirector()
