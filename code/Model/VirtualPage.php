@@ -369,7 +369,7 @@ class VirtualPage extends Page
         return $fields;
     }
 
-    public function validate()
+    public function validate(): ValidationResult
     {
         $result = parent::validate();
 
