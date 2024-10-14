@@ -32,6 +32,8 @@ class CMSPageAddController extends CMSPageEditController
     private static $menu_title = 'Add page';
     private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
 
+    private static $ignore_menuitem = true;
+
     private static $allowed_actions = [
         'AddForm',
         'doAdd',

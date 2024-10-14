@@ -28,6 +28,8 @@ class CMSPageEditController extends CMSMain
 
     private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
 
+    private static $ignore_menuitem = true;
+
     private static $allowed_actions = [
         'AddToCampaignForm',
     ];
