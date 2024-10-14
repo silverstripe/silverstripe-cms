@@ -34,7 +34,7 @@ class CMSPageEditController extends CMSMain
         'AddToCampaignForm',
     ];
 
-    public function getClientConfig()
+    public function getClientConfig(): array
     {
         return ArrayLib::array_merge_recursive(parent::getClientConfig(), [
             'form' => [
