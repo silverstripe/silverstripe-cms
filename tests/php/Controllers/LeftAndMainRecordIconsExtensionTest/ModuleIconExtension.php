@@ -1,6 +1,6 @@
 <?php
 
-namespace SilverStripe\CMS\Tests\Controllers\LeftAndMainpageIconsExtensionTest;
+namespace SilverStripe\CMS\Tests\Controllers\LeftAndMainRecordIconsExtensionTest;
 
 use SilverStripe\Core\Manifest\ModuleResourceLoader;
 use SilverStripe\Dev\TestOnly;
@@ -12,10 +12,10 @@ class ModuleIconExtension extends Extension implements TestOnly
     {
         // Mock a "fixed" path, but use a non-fixed resource url
         $path = ModuleResourceLoader::resourcePath(
-            'silverstripe/cms:tests/php/Controllers/LeftAndMainPageIconsExtensionTest/icon_c.jpg'
+            'silverstripe/cms:tests/php/Controllers/LeftAndMainRecordIconsExtensionTest/icon_c.jpg'
         );
         return [
-            'icon' => $path,
+            'cms_icon' => $path,
         ];
     }
 }

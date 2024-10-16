@@ -29,7 +29,7 @@ So that I can link to a external website or a page on my site
     Then the "Content" HTML field should contain "<a title="my desc" href="[sitetree_link,id=2]">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
     When I press the "Save" button
-    Then I should see a "Saved 'About Us' successfully" success toast
+    Then I should see a "Saved Page "About Us"" success toast
 
   Scenario: I can wrap an image in a link to an internal page
     Given I fill in the "Content" HTML field with "<p><img src='file1.jpg'></p>"
@@ -43,7 +43,7 @@ So that I can link to a external website or a page on my site
     Then the "Content" HTML field should contain "<a href="[sitetree_link,id=2]"><img src="file1.jpg" alt=""></a>"
     # Required to avoid "unsaved changes" browser dialog
     When I press the "Save" button
-    Then I should see a "Saved 'About Us' successfully" success toast
+    Then I should see a "Saved Page "About Us"" success toast
 
   Scenario: I can edit a link to an internal page
     Given I fill in the "Content" HTML field with "<a title='my desc' href='[sitetree_link,id=2]'>awesome</a>"
@@ -60,7 +60,7 @@ So that I can link to a external website or a page on my site
     Then the "Content" HTML field should contain "<a title="my new desc" href="[sitetree_link,id=1]">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
     When I press the "Save" button
-    Then I should see a "Saved 'About Us' successfully" success toast
+    Then I should see a "Saved Page "About Us"" success toast
 
   Scenario: I can link to an external URL
     Given I select "awesome" in the "Content" HTML field
@@ -73,7 +73,7 @@ So that I can link to a external website or a page on my site
     Then the "Content" HTML field should contain "<a rel="noopener" href="http://silverstripe.org" target="_blank">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
     When I press the "Save" button
-    Then I should see a "Saved 'About Us' successfully" success toast
+    Then I should see a "Saved Page "About Us"" success toast
 
   Scenario: I can wrap an image in a link to an external URL
     Given I fill in the "Content" HTML field with "<p><img src='file1.jpg'></p>"
@@ -87,7 +87,7 @@ So that I can link to a external website or a page on my site
     Then the "Content" HTML field should contain "<a href="http://silverstripe.org"><img src="file1.jpg" alt=""></a>"
     # Required to avoid "unsaved changes" browser dialog
     When I press the "Save" button
-    Then I should see a "Saved 'About Us' successfully" success toast
+    Then I should see a "Saved Page "About Us"" success toast
 
   Scenario: I can edit an external link
     Given I fill in the "Content" HTML field with "<p>My <a href='http://silverstripe.org'>awesome</a> content"
@@ -102,7 +102,7 @@ So that I can link to a external website or a page on my site
     Then the "Content" HTML field should contain "<a href="http://google.com">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
     When I press the "Save" button
-    Then I should see a "Saved 'About Us' successfully" success toast
+    Then I should see a "Saved Page "About Us"" success toast
 
   Scenario: I can remove an external link
     Given I fill in the "Content" HTML field with "My <a href='http://silverstripe.org'>awesome</a> content"
@@ -112,7 +112,7 @@ So that I can link to a external website or a page on my site
       And the "Content" HTML field should not contain "http://silverstripe.org"
     # Required to avoid "unsaved changes" browser dialog
     When I press the "Save" button
-    Then I should see a "Saved 'About Us' successfully" success toast
+    Then I should see a "Saved Page "About Us"" success toast
 
   Scenario: I can navigate list of Site tree links by clicking on the dropdown elements
     When I select "awesome" in the "Content" HTML field

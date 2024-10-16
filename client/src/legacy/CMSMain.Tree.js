@@ -81,8 +81,7 @@ $.entwine('ss.tree', function($) {
           }
 
           // Build a list for allowed children as submenu entries
-          var pagetype = node.data('pagetype'),
-              id = node.data('id'),
+          var id = node.data('id'),
               allowedChildren = node.find('>a .item').data('allowedchildren'),
               menuAllowedChildren = {},
               hasAllowedChildren = false;
@@ -91,7 +90,7 @@ $.entwine('ss.tree', function($) {
           $.each(allowedChildren, function(index, child) {
             hasAllowedChildren = true;
             menuAllowedChildren["allowedchildren-" + child.ClassName] = {
-              'label': '<span class="jstree-pageicon ' + child.IconClass + '"></span>' + child.Title,
+              'label': '<span class="jstree-recordicon ' + child.IconClass + '"></span>' + child.Title,
               '_class': 'class-' + child.ClassName.replace(/[^a-zA-Z0-9\-_:.]+/g, '_'),
               'action': function(obj) {
                 $('.cms-container').entwine('.ss').loadPanel(

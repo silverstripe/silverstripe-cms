@@ -23,7 +23,7 @@ class RedirectorPage extends Page
 {
     private static string $class_description = 'Redirects requests to another location';
 
-    private static $icon_class = 'font-icon-p-redirect';
+    private static $cms_icon_class = 'font-icon-p-redirect';
 
     private static $show_stage_link = false;
 

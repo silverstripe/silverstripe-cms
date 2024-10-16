@@ -30,7 +30,7 @@ class CMSSiteTreeFilter_StatusDeletedPages extends CMSSiteTreeFilter
     /**
      * Filters out all pages who's status is set to "Deleted".
      *
-     * @see {@link SiteTree::getStatusFlags()}
+     * @see {@link ModelData::getStatusFlags()}
      * @return SS_List
      */
     public function getFilteredPages()

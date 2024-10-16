@@ -113,7 +113,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
         return $this->numChildrenMethod;
     }
 
-    public function getPageClasses($page)
+    public function getRecordClasses($page)
     {
         if ($this->_cache_ids === null) {
             $this->populateIDs();
@@ -130,7 +130,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
     /**
      * Gets the list of filtered pages
      *
-     * @see {@link SiteTree::getStatusFlags()}
+     * @see {@link ModelData::getStatusFlags()}
      * @return SS_List
      */
     abstract public function getFilteredPages();
@@ -178,7 +178,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
         }
     }
 
-    public function isPageIncluded($page)
+    public function isRecordIncluded($page)
     {
         if ($this->_cache_ids === null) {
             $this->populateIDs();

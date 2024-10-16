@@ -28,9 +28,7 @@ class InternalLinkFormFactory extends LinkFormFactory
             TreeDropdownField::create(
                 'PageID',
                 _t(__CLASS__.'.SELECT_PAGE', 'Select a page'),
-                SiteTree::class,
-                'ID',
-                'TreeTitle'
+                SiteTree::class
             )
                 ->setTitleField('MenuTitle')
                 ->setHasEmptyDefault(true),

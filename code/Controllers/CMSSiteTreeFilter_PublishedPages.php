@@ -36,7 +36,7 @@ class CMSSiteTreeFilter_PublishedPages extends CMSSiteTreeFilter
     /**
      * Filters out all pages who's status who's status that doesn't exist on live
      *
-     * @see {@link SiteTree::getStatusFlags()}
+     * @see {@link ModelData::getStatusFlags()}
      * @return SS_List
      */
     public function getFilteredPages()

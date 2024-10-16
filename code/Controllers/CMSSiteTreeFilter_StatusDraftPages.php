@@ -20,7 +20,7 @@ class CMSSiteTreeFilter_StatusDraftPages extends CMSSiteTreeFilter
     /**
      * Filters out all pages who's status is set to "Draft".
      *
-     * @see {@link SiteTree::getStatusFlags()}
+     * @see {@link ModelData::getStatusFlags()}
      * @return SS_List
      */
     public function getFilteredPages()

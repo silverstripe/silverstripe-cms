@@ -44,7 +44,7 @@ Feature: Sitetree
     When I click on the ".toast__close" element
     # Wait a little time to ensure the last toast is cleared
     And I wait for 2 seconds
-    
+
     # Unpublish pages in a batch
     When I click on the "#record-2 .jstree-checkbox" element
     And I select "Unpublish" from the "Form_BatchActionsForm_Action" field with javascript
@@ -66,10 +66,10 @@ Feature: Sitetree
     Then I should not see "Three"
 
     # Toggle list and tree views
-    Then I should not see a "#Form_ListViewForm_Page" element
+    Then I should not see a "#Form_ListViewForm_Record" element
     When I click on the "[data-view='listview']" element
     And I wait for 5 seconds
-    Then I should see a "#Form_ListViewForm_Page" element
+    Then I should see a "#Form_ListViewForm_Record" element
     When I click on the "[data-view='treeview']" element
     And I wait for 5 seconds
-    Then I should not see a "#Form_ListViewForm_Page" element
+    Then I should not see a "#Form_ListViewForm_Record" element

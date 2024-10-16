@@ -2,4 +2,4 @@
 Name: cmsdefaultadmin
 ---
 SilverStripe\Admin\AdminRootController:
-  default_panel: SilverStripe\CMS\Controllers\CMSPagesController
+  default_panel: SilverStripe\CMS\Controllers\CMSMain

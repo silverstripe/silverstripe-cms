@@ -22,11 +22,6 @@
 			<% loop $Actions %>
 				$FieldHolder
 			<% end_loop %>
-				<% if $Controller.LinkPreview %>
-			<a href="$Controller.LinkPreview" target="_cmsPreview" class="cms-preview-toggle-link ss-ui-button" data-icon="preview">
-				<%t SilverStripe\Admin\LeftAndMain.PreviewButton 'Preview' %> &raquo;
-			</a>
-			<% end_if %>
 
 			<% include SilverStripe\\Admin\\LeftAndMain_ViewModeSelector SelectID="preview-mode-dropdown-in-content", ExtraClass='' %>
 		</div>

@@ -7,19 +7,19 @@ use SilverStripe\ORM\DataObject;
 /**
  * This interface lets us set up objects that will tell us what the current page is.
  */
-interface CurrentPageIdentifier
+interface CurrentRecordIdentifier
 {
 
     /**
      * Get the current page ID.
      * @return int
      */
-    public function currentPageID();
+    public function currentRecordID();
 
     /**
      * Check if the given DataObject is the current page.
      * @param DataObject $page The page to check.
      * @return boolean
      */
-    public function isCurrentPage(DataObject $page);
+    public function isCurrentRecord(DataObject $page);
 }

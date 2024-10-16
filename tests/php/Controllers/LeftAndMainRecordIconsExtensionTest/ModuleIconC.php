@@ -1,6 +1,6 @@
 <?php
 
-namespace SilverStripe\CMS\Tests\Controllers\LeftAndMainpageIconsExtensionTest;
+namespace SilverStripe\CMS\Tests\Controllers\LeftAndMainRecordIconsExtensionTest;
 
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Dev\TestOnly;
