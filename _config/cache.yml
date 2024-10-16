@@ -4,10 +4,10 @@ After:
   - '#corecache'
 ---
 SilverStripe\Core\Injector\Injector:
-  Psr\SimpleCache\CacheInterface.CMSMain_SiteTreeHints:
+  Psr\SimpleCache\CacheInterface.CMSMain_TreeHints:
     factory: SilverStripe\Core\Cache\CacheFactory
     constructor:
-      namespace: "CMSMain_SiteTreeHints"
+      namespace: "CMSMain_TreeHints"
   Psr\SimpleCache\CacheInterface.SiteTree_CreatableChildren:
     factory: SilverStripe\Core\Cache\CacheFactory
     constructor:

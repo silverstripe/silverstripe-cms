@@ -2,17 +2,15 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-use Page;
 use SilverStripe\Admin\LeftAndMain;
 use SilverStripe\CampaignAdmin\AddToCampaignHandler;
-use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Forms\Form;
 use SilverStripe\Core\ArrayLib;
-use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\Core\Validation\ValidationResult;
+use SilverStripe\ORM\DataObject;
 
 /**
  * @package cms
@@ -57,7 +55,7 @@ class CMSPageEditController extends CMSMain
     public function addtocampaign(array $data, Form $form): HTTPResponse
     {
         $id = $data['ID'];
-        $record = \Page::get()->byID($id);
+        $record = DataObject::get($this->getModelClass())->byID($id);
 
         $handler = AddToCampaignHandler::create($this, $record);
         $response = $handler->addToCampaign($record, $data);
@@ -95,15 +93,16 @@ class CMSPageEditController extends CMSMain
      */
     public function getAddToCampaignForm($id)
     {
+        $modelClass = $this->getModelClass();
         // Get record-specific fields
-        $record = SiteTree::get()->byID($id);
+        $record = DataObject::get($modelClass)->byID($id);
 
         if (!$record) {
             $this->httpError(404, _t(
                 __CLASS__ . '.ErrorNotFound',
                 'That {Type} couldn\'t be found',
                 '',
-                ['Type' => Page::singleton()->i18n_singular_name()]
+                ['Type' => DataObject::singleton($modelClass)->i18n_singular_name()]
             ));
             return null;
         }
@@ -112,7 +111,7 @@ class CMSPageEditController extends CMSMain
                 __CLASS__.'.ErrorItemPermissionDenied',
                 'It seems you don\'t have the necessary permissions to add {ObjectTitle} to a campaign',
                 '',
-                ['ObjectTitle' => Page::singleton()->i18n_singular_name()]
+                ['ObjectTitle' => DataObject::singleton($modelClass)->i18n_singular_name()]
             ));
             return null;
         }

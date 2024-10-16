@@ -2,16 +2,11 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\Control\Controller;
-use SilverStripe\Model\List\ArrayList;
 use SilverStripe\ORM\DataObject;
-use SilverStripe\Model\ArrayData;
-use stdClass;
 
+// @TODO What a pointless class!!!!!!
 class CMSPagesController extends CMSMain
 {
-
     private static $url_segment = 'pages';
 
     private static $url_rule = '/$Action/$ID/$OtherID';
@@ -27,7 +22,7 @@ class CMSPagesController extends CMSMain
         return false;
     }
 
-    public function isCurrentPage(DataObject $record)
+    public function isCurrentRecord(DataObject $record)
     {
         return false;
     }
