@@ -140,7 +140,7 @@ class BrokenLinksReport extends Report
                 'title' => _t(__CLASS__ . '.ColumnURL', 'URL'),
                 'formatting' => function ($value, $item) {
                     /** @var SiteTree $item */
-                    $liveLink = $item->AbsoluteLiveLink;
+                    $liveLink = $item->getAbsoluteLiveLink();
                     $stageLink = $item->AbsoluteLink();
                     return sprintf(
                         '%s <a href="%s">%s</a>',

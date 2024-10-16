@@ -4,13 +4,13 @@
 <% if $limited %>
     <ul><li class="readonly">
         <span class="item">
-            <%t SilverStripe\\CMS\\Controllers\\CMSMain.TOO_MANY_PAGES 'Too many pages' %>
+            <%t SilverStripe\\CMS\\Controllers\\CMSMain.TOO_MANY_RECORDS 'Too many records' %>
             (<a href="{$listViewLink.ATT}" class="subtree-list-link" data-id="$node.ID" data-pjax-target="Content"><%t SilverStripe\\CMS\\Controllers\\CMSMain.SHOW_AS_LIST 'show as list' %></a>)
         </span>
     </li></ul>
 <% else_if $children %>
     <ul>
-        <% loop $children %><% include SilverStripe\\CMS\\Controllers\\CMSMain_TreeNode %><% end_loop %>
+        <% loop $children %><% include SilverStripe\\CMS\\Controllers\\CMSMain_TreeNode Controller=$Top.Controller %><% end_loop %>
     </ul>
 <% end_if %>
 <% if not $node.IsInDB %>

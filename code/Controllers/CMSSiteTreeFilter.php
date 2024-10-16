@@ -114,10 +114,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
         return $this->numChildrenMethod;
     }
 
-    /**
-     * @deprecated 5.4.0 Will be renamed to getRecordClasses()
-     */
-    public function getPageClasses($page)
+    public function getRecordClasses($page)
     {
         Deprecation::noticeWithNoReplacment('5.4.0', 'Will be renamed to getRecordClasses()');
         if ($this->_cache_ids === null) {
@@ -135,7 +132,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
     /**
      * Gets the list of filtered pages
      *
-     * @see {@link SiteTree::getStatusFlags()}
+     * @see {@link ModelData::getStatusFlags()}
      * @return SS_List
      */
     abstract public function getFilteredPages();
@@ -183,10 +180,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
         }
     }
 
-    /**
-     * @deprecated 5.4.0 Will be renamed to isRecordIncluded()
-     */
-    public function isPageIncluded($page)
+    public function isRecordIncluded($page)
     {
         Deprecation::noticeWithNoReplacment('5.4.0', 'Will be renamed to isRecordIncluded()');
         if ($this->_cache_ids === null) {

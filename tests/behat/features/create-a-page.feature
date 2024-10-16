@@ -31,12 +31,12 @@ Feature: Create a page
     # Virtual page doesn't allow children, page radio button below should be disabled
     And I select "MyVirtualPage" in the "#Form_AddForm_ParentID_Holder" tree dropdown
     And I wait for 2 seconds
-    Then I should see a "#Form_AddForm_PageType_Page[disabled]" element
+    Then I should see a "#Form_AddForm_RecordType_Page[disabled]" element
     # Normal pages allows children, page radio button below should not be disabled
     When I select "MyPage" in the "#Form_AddForm_ParentID_Holder" tree dropdown
     And I wait for 2 seconds
     And I select the "Page" radio button
-    Then I should not see a "#Form_AddForm_PageType_Page[disabled]" element
+    Then I should not see a "#Form_AddForm_RecordType_Page[disabled]" element
     And I press the "Create" button
     Then I should see an edit page form
 

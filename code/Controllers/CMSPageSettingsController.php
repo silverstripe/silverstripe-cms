@@ -2,11 +2,10 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-use SilverStripe\Model\ArrayData;
+use SilverStripe\Forms\Form;
 
 class CMSPageSettingsController extends CMSMain
 {
-
     private static $url_segment = 'pages/settings';
 
     private static $url_rule = '/$Action/$ID/$OtherID';
@@ -17,11 +16,15 @@ class CMSPageSettingsController extends CMSMain
 
     private static $ignore_menuitem = true;
 
-    public function getEditForm($id = null, $fields = null)
+    public function getEditForm($id = null, $fields = null): Form
     {
         $record = $this->getRecord($id ?: $this->currentRecordID());
-
-        return parent::getEditForm($id, ($record) ? $record->getSettingsFields() : null);
+        if ($record && $record->hasMethod('getSettingsFields')) {
+            $fields = $record->getSettingsFields();
+        } else {
+            $fields = null;
+        }
+        return parent::getEditForm($id, $fields);
     }
 
     public function getTabIdentifier()

@@ -30,10 +30,7 @@ class VirtualPage extends Page
 {
     private static string $class_description = 'Displays the content of another page';
 
-    /**
-     * @deprecated 5.4.0 Will be renamed to cms_icon_class
-     */
-    private static $icon_class = 'font-icon-p-virtual';
+    private static $cms_icon_class = 'font-icon-p-virtual';
 
     public static $virtualFields;
 
@@ -405,13 +402,17 @@ class VirtualPage extends Page
         return $result;
     }
 
-    public function CMSTreeClasses()
+    /**
+     * Update the CSS classes to apply to this node in the CMS tree.
+     */
+    public function updateCMSTreeClasses(string &$classes): void
     {
+        parent::updateCMSTreeClasses($classes);
         $parentClass = sprintf(
             ' VirtualPage-%s',
             Convert::raw2htmlid($this->CopyContentFrom()->ClassName)
         );
-        return parent::CMSTreeClasses() . $parentClass;
+        $classes .= $parentClass;
     }
 
     /**

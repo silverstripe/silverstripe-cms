@@ -2,11 +2,16 @@
 
 namespace SilverStripe\CMS\Tests\Controllers;
 
+use LogicException;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\SimpleCache\CacheInterface;
+use ReflectionMethod;
 use SilverStripe\Admin\CMSBatchActionHandler;
 use SilverStripe\CMS\Controllers\CMSMain;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\CMS\Tests\Controllers\CMSMainTest\TestHierarchicalDataObject;
+use SilverStripe\CMS\Tests\Controllers\CMSMainTest\TestHierarchicalDataObjectWithSort;
 use SilverStripe\CMS\Tests\Controllers\CMSMainTest\TestStatusFlagsPage;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\HTTPRequest;
@@ -35,6 +40,8 @@ class CMSMainTest extends FunctionalTest
 
     protected static $extraDataObjects = [
         TestStatusFlagsPage::class,
+        TestHierarchicalDataObject::class,
+        TestHierarchicalDataObjectWithSort::class,
     ];
 
     protected function setUp(): void
@@ -50,15 +57,15 @@ class CMSMainTest extends FunctionalTest
         }
     }
 
-    public function testSiteTreeHints()
+    public function testTreeHints()
     {
-        $cache = Injector::inst()->get(CacheInterface::class . '.CMSMain_SiteTreeHints');
+        $cache = Injector::inst()->get(CacheInterface::class . '.CMSMain_TreeHints');
         // Login as user with root creation privileges
         $user = $this->objFromFixture(Member::class, 'rootedituser');
         Security::setCurrentUser($user);
         $cache->clear();
 
-        $rawHints = singleton(CMSMain::class)->SiteTreeHints();
+        $rawHints = singleton(CMSMain::class)->TreeHints();
         $this->assertNotNull($rawHints);
 
         $rawHints = preg_replace('/^"(.*)"$/', '$1', Convert::xml2raw($rawHints) ?? '');
@@ -127,7 +134,7 @@ class CMSMainTest extends FunctionalTest
      * Test that getCMSFields works on each page type.
      * Mostly, this is just checking that the method doesn't return an error
      */
-    public function testThatGetCMSFieldsWorksOnEveryPageType()
+    public function testThatGetCMSFieldsWorksOnEveryRecordType()
     {
         $classes = ClassInfo::subclassesFor(SiteTree::class);
         array_shift($classes);
@@ -245,10 +252,10 @@ class CMSMainTest extends FunctionalTest
         Security::setCurrentUser($cmsUser);
         $this->get('admin/pages/add');
         $response = $this->post(
-            'admin/pages/add/AddForm',
+            'admin/pages/AddForm',
             [
                 'ParentID' => '0',
-                'PageType' => RedirectorPage::class,
+                'RecordType' => RedirectorPage::class,
                 'Locale' => 'en_US',
                 'action_doAdd' => 1,
                 'ajax' => 1,
@@ -265,10 +272,10 @@ class CMSMainTest extends FunctionalTest
         $response = $this->get('admin/pages/add');
 
         $response = $this->post(
-            'admin/pages/add/AddForm',
+            'admin/pages/AddForm',
             [
                 'ParentID' => '0',
-                'PageType' => RedirectorPage::class,
+                'RecordType' => RedirectorPage::class,
                 'Locale' => 'en_US',
                 'action_doAdd' => 1,
                 'ajax' => 1,
@@ -296,10 +303,10 @@ class CMSMainTest extends FunctionalTest
         // Create toplevel page
         $this->get('admin/pages/add');
         $response = $this->post(
-            'admin/pages/add/AddForm',
+            'admin/pages/AddForm',
             [
                 'ParentID' => '0',
-                'PageType' => CMSMainTest_ClassA::class,
+                'RecordType' => CMSMainTest_ClassA::class,
                 'Locale' => 'en_US',
                 'action_doAdd' => 1,
                 'ajax' => 1,
@@ -316,10 +323,10 @@ class CMSMainTest extends FunctionalTest
         // Create allowed child
         $this->get('admin/pages/add');
         $response = $this->post(
-            'admin/pages/add/AddForm',
+            'admin/pages/AddForm',
             [
                 'ParentID' => $newPageId,
-                'PageType' => CMSMainTest_ClassB::class,
+                'RecordType' => CMSMainTest_ClassB::class,
                 'Locale' => 'en_US',
                 'action_doAdd' => 1,
                 'ajax' => 1,
@@ -342,10 +349,10 @@ class CMSMainTest extends FunctionalTest
         // Create disallowed child
         $this->get('admin/pages/add');
         $response = $this->post(
-            'admin/pages/add/AddForm',
+            'admin/pages/AddForm',
             [
                 'ParentID' => $newPageId,
-                'PageType' => RedirectorPage::class,
+                'RecordType' => RedirectorPage::class,
                 'Locale' => 'en_US',
                 'action_doAdd' => 1,
                 'ajax' => 1,
@@ -669,13 +676,15 @@ class CMSMainTest extends FunctionalTest
         $this->assertEquals('Class A', $newPage->Title);
     }
 
-    public function testSiteTreeHintsCache()
+    public function testTreeHintsCache()
     {
         $cms = CMSMain::create();
+        $reflectionAllowedSubclasses = new ReflectionMethod($cms, 'getAllowedSubClasses');
+        $reflectionAllowedSubclasses->setAccessible(true);
         /** @var Member $user */
         $user = $this->objFromFixture(Member::class, 'rootedituser');
         Security::setCurrentUser($user);
-        $pageClass = array_values(SiteTree::page_type_classes())[0];
+        $pageClass = array_values($reflectionAllowedSubclasses->invoke($cms))[0];
         $mockPageMissesCache = $this->getMockBuilder($pageClass)
             ->onlyMethods(['canCreate'])
             ->getMock();
@@ -693,31 +702,31 @@ class CMSMainTest extends FunctionalTest
 
         // Initially, cache misses (1)
         Injector::inst()->registerService($mockPageMissesCache, $pageClass);
-        $hints = $cms->SiteTreeHints();
+        $hints = $cms->TreeHints();
         $this->assertNotNull($hints);
 
         // Now it hits
         Injector::inst()->registerService($mockPageHitsCache, $pageClass);
-        $hints = $cms->SiteTreeHints();
+        $hints = $cms->TreeHints();
         $this->assertNotNull($hints);
 
         // Mutating member record invalidates cache. Misses (2)
         $user->FirstName = 'changed';
         $user->write();
         Injector::inst()->registerService($mockPageMissesCache, $pageClass);
-        $hints = $cms->SiteTreeHints();
+        $hints = $cms->TreeHints();
         $this->assertNotNull($hints);
 
         // Now it hits again
         Injector::inst()->registerService($mockPageHitsCache, $pageClass);
-        $hints = $cms->SiteTreeHints();
+        $hints = $cms->TreeHints();
         $this->assertNotNull($hints);
 
         // Different user. Misses. (3)
         $user = $this->objFromFixture(Member::class, 'allcmssectionsuser');
         Security::setCurrentUser($user);
         Injector::inst()->registerService($mockPageMissesCache, $pageClass);
-        $hints = $cms->SiteTreeHints();
+        $hints = $cms->TreeHints();
         $this->assertNotNull($hints);
     }
 
@@ -761,21 +770,118 @@ class CMSMainTest extends FunctionalTest
         );
     }
 
-    public function testCanOrganiseSitetree()
+    public function testCanOrganiseTree()
     {
         $cms = CMSMain::create();
 
-        $this->assertFalse($cms->CanOrganiseSitetree());
+        $this->assertFalse($cms->CanOrganiseTree());
 
         $this->logInWithPermission('CMS_ACCESS_CMSMain');
-        $this->assertFalse($cms->CanOrganiseSitetree());
+        $this->assertFalse($cms->CanOrganiseTree());
 
         $this->logOut();
         $this->logInWithPermission('SITETREE_REORGANISE');
-        $this->assertTrue($cms->CanOrganiseSitetree());
+        $this->assertTrue($cms->CanOrganiseTree());
 
         $this->logOut();
         $this->logInWithPermission('ADMIN');
-        $this->assertTrue($cms->CanOrganiseSitetree());
+        $this->assertTrue($cms->CanOrganiseTree());
+    }
+
+    public function testGetCreatableSubClassesCache()
+    {
+        // Use injector because CMSMain defines some injectable dependencies
+        $cms = CMSMain::create();
+        $reflectionMethod = new ReflectionMethod($cms, 'getCreatableSubClasses');
+        $reflectionMethod->setAccessible(true);
+
+        $siteTree = new SiteTree();
+        $user = $this->objFromFixture(Member::class, 'allcmssectionsuser');
+        Security::setCurrentUser($user);
+        $classes = ClassInfo::getValidSubClasses(SiteTree::class);
+        SiteTree::singleton()->updateAllowedSubClasses($classes);
+        $pageClass = array_values($classes)[0];
+
+        $mockPageMissesCache = $this->getMockBuilder($pageClass)
+            ->onlyMethods(['canCreate'])
+            ->getMock();
+        $mockPageMissesCache
+            ->expects($this->exactly(3))
+            ->method('canCreate');
+
+        $mockPageHitsCache = $this->getMockBuilder($pageClass)
+            ->onlyMethods(['canCreate'])
+            ->getMock();
+        $mockPageHitsCache
+            ->expects($this->never())
+            ->method('canCreate');
+
+        // Initially, cache misses (1)
+        Injector::inst()->registerService($mockPageMissesCache, $pageClass);
+        $result = $reflectionMethod->invoke($cms, $siteTree);
+        $this->assertNotNull($result);
+
+        // Now it hits
+        Injector::inst()->registerService($mockPageHitsCache, $pageClass);
+        $result = $reflectionMethod->invoke($cms, $siteTree);
+        $this->assertNotNull($result);
+
+
+        // Mutating member record invalidates cache. Misses (2)
+        $user->FirstName = 'changed';
+        $user->write();
+        Injector::inst()->registerService($mockPageMissesCache, $pageClass);
+        $result = $reflectionMethod->invoke($cms, $siteTree);
+        $this->assertNotNull($result);
+
+        // Now it hits again
+        Injector::inst()->registerService($mockPageHitsCache, $pageClass);
+        $result = $reflectionMethod->invoke($cms, $siteTree);
+        $this->assertNotNull($result);
+
+        // Different user. Misses. (3)
+        $user = $this->objFromFixture(Member::class, 'rootedituser');
+        Security::setCurrentUser($user);
+        Injector::inst()->registerService($mockPageMissesCache, $pageClass);
+        $result = $reflectionMethod->invoke($cms, $siteTree);
+        $this->assertNotNull($result);
+    }
+
+    public static function provideInit(): array
+    {
+        return [
+            [
+                'class' => DataObject::class,
+                'throwsException' => true,
+            ],
+            [
+                'class' => TestHierarchicalDataObject::class,
+                'throwsException' => true,
+            ],
+            [
+                'class' => TestHierarchicalDataObjectWithSort::class,
+                'throwsException' => false,
+            ],
+            [
+                'class' => SiteTree::class,
+                'throwsException' => false,
+            ],
+        ];
+    }
+
+    #[DataProvider('provideInit')]
+    public function testInit(string $class, bool $throwsException): void
+    {
+        CMSMain::config()->set('model_class', $class);
+        // Use injector because CMSMain defines some injectable dependencies
+        $cms = CMSMain::create();
+        $initReflection = new ReflectionMethod($cms, 'init');
+        $initReflection->setAccessible(true);
+        if ($throwsException) {
+            $this->expectException(LogicException::class);
+        } else {
+            $this->expectNotToPerformAssertions();
+        }
+        $initReflection->invoke($cms);
     }
 }

@@ -43,6 +43,7 @@ use PageController;
 
 use const RESOURCES_DIR;
 use PHPUnit\Framework\Attributes\DataProvider;
+use SilverStripe\Core\ClassInfo;
 
 class SiteTreeTest extends SapphireTest
 {
@@ -64,7 +65,6 @@ class SiteTreeTest extends SapphireTest
         SiteTreeTest_ClassC::class,
         SiteTreeTest_ClassD::class,
         SiteTreeTest_NotRoot::class,
-        SiteTreeTest_StageStatusInherit::class,
         SiteTreeTest_DataObject::class,
         PageWithChild::class,
         BelongsToPage::class,
@@ -445,7 +445,7 @@ class SiteTreeTest extends SapphireTest
 
     public function testNoCascadingDeleteWithoutID()
     {
-        Config::inst()->set('SiteTree', 'enforce_strict_hierarchy', true);
+        SiteTree::config()->set('enforce_strict_hierarchy', true);
         $count = SiteTree::get()->count();
         $this->assertNotEmpty($count);
         $obj = new SiteTree();
@@ -806,7 +806,7 @@ class SiteTreeTest extends SapphireTest
 
         // Clear permission cache
         /** @var InheritedPermissions $checker */
-        $checker = SiteTree::getPermissionChecker();
+        $checker = SiteTree::singleton()->getPermissionChecker();
         $checker->clearCache();
 
         // Confirm that Member.editor can now edit the page
@@ -1182,19 +1182,22 @@ class SiteTreeTest extends SapphireTest
     public function testHidePagetypes()
     {
         SiteTree::config()->set('hide_pagetypes', ['Page']);
-        $classes = SiteTree::page_type_classes();
+        $classes = ClassInfo::getValidSubClasses(SiteTree::class);
+        SiteTree::singleton()->updateAllowedSubClasses($classes);
         $this->assertNotContains('Page', $classes);
     }
 
     public function testPageTypeClasses()
     {
-        $classes = SiteTree::page_type_classes();
+        $classes = ClassInfo::getValidSubClasses(SiteTree::class);
+        SiteTree::singleton()->updateAllowedSubClasses($classes);
         $this->assertNotContains(SiteTree::class, $classes, 'Page types do not include base class');
         $this->assertContains('Page', $classes, 'Page types do contain subclasses');
 
         // Testing what happens in an incorrect config value is set - hide_ancestor should be a string
         Config::modify()->set(SiteTreeTest_ClassA::class, 'hide_ancestor', true);
-        $newClasses = SiteTree::page_type_classes();
+        $newClasses = ClassInfo::getValidSubClasses(SiteTree::class);
+        SiteTree::singleton()->updateAllowedSubClasses($newClasses);
         $this->assertEquals(
             $classes,
             $newClasses,
@@ -1203,7 +1206,8 @@ class SiteTreeTest extends SapphireTest
 
         // Testing what happens if a valid config value is set
         Config::modify()->set(SiteTreeTest_ClassA::class, 'hide_ancestor', 'Page');
-        $classes = SiteTree::page_type_classes();
+        $classes = ClassInfo::getValidSubClasses(SiteTree::class);
+        SiteTree::singleton()->updateAllowedSubClasses($classes);
         $this->assertNotContains('Page', $classes);
     }
 
@@ -1287,14 +1291,6 @@ class SiteTreeTest extends SapphireTest
         if (!$isDetected) {
             $this->fail('Fails validation with $can_be_root=false');
         }
-    }
-
-    public function testModifyStatusFlagByInheritance()
-    {
-        $node = new SiteTreeTest_StageStatusInherit();
-        $treeTitle = $node->getTreeTitle();
-        $this->assertStringContainsString('InheritedTitle', $treeTitle);
-        $this->assertStringContainsString('inherited-class', $treeTitle);
     }
 
     public function testMenuTitleIsUnsetWhenEqualsTitle()
@@ -1622,7 +1618,7 @@ class SiteTreeTest extends SapphireTest
      */
     public function testGetControllerNameFromConfig()
     {
-        Config::inst()->set(SiteTree::class, 'controller_name', 'This\\Is\\A\\New\\Controller');
+        SiteTree::config()->set('controller_name', 'This\\Is\\A\\New\\Controller');
         $page = new SiteTree();
         $this->assertSame('This\\Is\\A\\New\\Controller', $page->getControllerName());
     }
@@ -1632,64 +1628,12 @@ class SiteTreeTest extends SapphireTest
      */
     public function testGetControllerNameFromNamespaceMappingConfig()
     {
-        Config::inst()->merge(SiteTree::class, 'namespace_mapping', [
+        SiteTree::config()->merge('namespace_mapping', [
             'SilverStripe\\CMS\\Tests\\Page' => 'SilverStripe\\CMS\\Tests\\Controllers',
         ]);
 
         $namespacedSiteTree = new SiteTreeTest_NamespaceMapTestNode();
         $this->assertSame(SiteTreeTest_NamespaceMapTestNodeController::class, $namespacedSiteTree->getControllerName());
-    }
-
-    public function testTreeTitleCache()
-    {
-        $siteTree = new SiteTree();
-        $user = $this->objFromFixture(Member::class, 'allsections');
-        Security::setCurrentUser($user);
-        $pageClass = array_values(SiteTree::page_type_classes())[0];
-
-        $mockPageMissesCache = $this->getMockBuilder($pageClass)
-            ->onlyMethods(['canCreate'])
-            ->getMock();
-        $mockPageMissesCache
-            ->expects($this->exactly(3))
-            ->method('canCreate');
-
-        $mockPageHitsCache = $this->getMockBuilder($pageClass)
-            ->onlyMethods(['canCreate'])
-            ->getMock();
-        $mockPageHitsCache
-            ->expects($this->never())
-            ->method('canCreate');
-
-        // Initially, cache misses (1)
-        Injector::inst()->registerService($mockPageMissesCache, $pageClass);
-        $title = $siteTree->getTreeTitle();
-        $this->assertNotNull($title);
-
-        // Now it hits
-        Injector::inst()->registerService($mockPageHitsCache, $pageClass);
-        $title = $siteTree->getTreeTitle();
-        $this->assertNotNull($title);
-
-
-        // Mutating member record invalidates cache. Misses (2)
-        $user->FirstName = 'changed';
-        $user->write();
-        Injector::inst()->registerService($mockPageMissesCache, $pageClass);
-        $title = $siteTree->getTreeTitle();
-        $this->assertNotNull($title);
-
-        // Now it hits again
-        Injector::inst()->registerService($mockPageHitsCache, $pageClass);
-        $title = $siteTree->getTreeTitle();
-        $this->assertNotNull($title);
-
-        // Different user. Misses. (3)
-        $user = $this->objFromFixture(Member::class, 'editor');
-        Security::setCurrentUser($user);
-        Injector::inst()->registerService($mockPageMissesCache, $pageClass);
-        $title = $siteTree->getTreeTitle();
-        $this->assertNotNull($title);
     }
 
     public function testDependentPagesOnUnsavedRecord()

@@ -123,16 +123,16 @@ $.entwine('ss', function($){
      * @param {string} defaultChildClass
      */
     updateSelectionFilter: function(disallowedChildren, defaultChildClass) {
-      var currentSelection = this.find('#Form_AddForm_PageType div.radio.selected')[0];
+      var currentSelection = this.find('#Form_AddForm_RecordType div.radio.selected')[0];
       var keepSelection = false;
 
       // Limit selection
       var allAllowed = null; // troolian
-      this.find('#Form_AddForm_PageType div.radio').each(function (i, el) {
+      this.find('#Form_AddForm_RecordType div.radio').each(function (i, el) {
         var className = $(this).find('input').val(),
           isAllowed = ($.inArray(className, disallowedChildren) === -1);
 
-        // Avoid changing the selected pagetype if still allowed
+        // Avoid changing the selected record type if still allowed
         if (el === currentSelection && isAllowed) {
           keepSelection = true;
         }
@@ -153,16 +153,16 @@ $.entwine('ss', function($){
         var selectedEl = $(currentSelection).parents('li:first');
       } else if (defaultChildClass) {
         var selectedEl = this
-          .find('#Form_AddForm_PageType div.radio input[value=' + defaultChildClass + ']')
+          .find('#Form_AddForm_RecordType div.radio input[value=' + defaultChildClass + ']')
           .parents('li:first');
       } else {
-        var selectedEl = this.find('#Form_AddForm_PageType div.radio:not(.disabled):first');
+        var selectedEl = this.find('#Form_AddForm_RecordType div.radio:not(.disabled):first');
       }
       selectedEl.setSelected(true);
       selectedEl.siblings().setSelected(false);
 
-      // Disable the "Create" button if none of the pagetypes are available
-      if(this.find('#Form_AddForm_PageType div.radio:not(.disabled)').length) {
+      // Disable the "Create" button if none of the record types are available
+      if(this.find('#Form_AddForm_RecordType div.radio:not(.disabled)').length) {
         this.find('button[name=action_doAdd]').removeAttr('disabled');
       } else {
         this.find('button[name=action_doAdd]').attr('disabled', 'disabled');
@@ -172,7 +172,7 @@ $.entwine('ss', function($){
     }
   });
 
-  $(".cms-add-form #Form_AddForm_PageType div.radio").entwine({
+  $(".cms-add-form #Form_AddForm_RecordType div.radio").entwine({
     onclick: function(e) {
       this.setSelected(true);
     },

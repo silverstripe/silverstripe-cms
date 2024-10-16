@@ -24,8 +24,8 @@ class CMSSiteTreeFilterTest extends SapphireTest
         $f = new CMSSiteTreeFilter_Search();
         $results = $f->pagesIncluded();
 
-        $this->assertTrue($f->isPageIncluded($page1));
-        $this->assertTrue($f->isPageIncluded($page2));
+        $this->assertTrue($f->isRecordIncluded($page1));
+        $this->assertTrue($f->isRecordIncluded($page2));
     }
 
     public function testSearchFilterByTitle()
@@ -36,8 +36,8 @@ class CMSSiteTreeFilterTest extends SapphireTest
         $f = new CMSSiteTreeFilter_Search(['Title' => 'Page 1']);
         $results = $f->pagesIncluded();
 
-        $this->assertTrue($f->isPageIncluded($page1));
-        $this->assertFalse($f->isPageIncluded($page2));
+        $this->assertTrue($f->isRecordIncluded($page1));
+        $this->assertFalse($f->isRecordIncluded($page2));
         $this->assertEquals(1, count($results ?? []));
         $this->assertEquals(
             ['ID' => $page1->ID, 'ParentID' => 0],
@@ -50,10 +50,10 @@ class CMSSiteTreeFilterTest extends SapphireTest
         $page = $this->objFromFixture(SiteTree::class, 'page8');
 
         $filter = CMSSiteTreeFilter_Search::create(['Term' => 'lake-wanaka+adventure']);
-        $this->assertTrue($filter->isPageIncluded($page));
+        $this->assertTrue($filter->isRecordIncluded($page));
 
         $filter = CMSSiteTreeFilter_Search::create(['URLSegment' => 'lake-wanaka+adventure']);
-        $this->assertTrue($filter->isPageIncluded($page));
+        $this->assertTrue($filter->isRecordIncluded($page));
     }
 
     public function testIncludesParentsForNestedMatches()
@@ -64,8 +64,8 @@ class CMSSiteTreeFilterTest extends SapphireTest
         $f = new CMSSiteTreeFilter_Search(['Title' => 'Page 3b']);
         $results = $f->pagesIncluded();
 
-        $this->assertTrue($f->isPageIncluded($parent));
-        $this->assertTrue($f->isPageIncluded($child));
+        $this->assertTrue($f->isRecordIncluded($parent));
+        $this->assertTrue($f->isRecordIncluded($child));
         $this->assertEquals(1, count($results ?? []));
         $this->assertEquals(
             ['ID' => $child->ID, 'ParentID' => $parent->ID],
@@ -91,8 +91,8 @@ class CMSSiteTreeFilterTest extends SapphireTest
         $f = new CMSSiteTreeFilter_ChangedPages(['Term' => 'Changed']);
         $results = $f->pagesIncluded();
 
-        $this->assertTrue($f->isPageIncluded($changedPage));
-        $this->assertFalse($f->isPageIncluded($unchangedPage));
+        $this->assertTrue($f->isRecordIncluded($changedPage));
+        $this->assertFalse($f->isRecordIncluded($unchangedPage));
         $this->assertEquals(1, count($results ?? []));
         $this->assertEquals(
             ['ID' => $changedPage->ID, 'ParentID' => 0],
@@ -130,11 +130,11 @@ class CMSSiteTreeFilterTest extends SapphireTest
         );
 
         $f = new CMSSiteTreeFilter_DeletedPages(['Term' => 'Page']);
-        $this->assertTrue($f->isPageIncluded($deletedPage));
+        $this->assertTrue($f->isRecordIncluded($deletedPage));
 
         // Check that only changed pages are returned
         $f = new CMSSiteTreeFilter_DeletedPages(['Term' => 'No Matches']);
-        $this->assertFalse($f->isPageIncluded($deletedPage));
+        $this->assertFalse($f->isRecordIncluded($deletedPage));
     }
 
     public function testStatusDraftPagesFilter()
@@ -148,16 +148,16 @@ class CMSSiteTreeFilterTest extends SapphireTest
 
         // Check draft page is shown
         $f = new CMSSiteTreeFilter_StatusDraftPages(['Term' => 'Page']);
-        $this->assertTrue($f->isPageIncluded($draftPage));
+        $this->assertTrue($f->isRecordIncluded($draftPage));
 
         // Check filter respects parameters
         $f = new CMSSiteTreeFilter_StatusDraftPages(['Term' => 'No Match']);
-        $this->assertEmpty($f->isPageIncluded($draftPage));
+        $this->assertEmpty($f->isRecordIncluded($draftPage));
 
         // Ensures empty array returned if no data to show
         $f = new CMSSiteTreeFilter_StatusDraftPages();
         $draftPage->delete();
-        $this->assertEmpty($f->isPageIncluded($draftPage));
+        $this->assertEmpty($f->isRecordIncluded($draftPage));
     }
 
     public function testDateFromToLastSameDate()
@@ -171,7 +171,7 @@ class CMSSiteTreeFilterTest extends SapphireTest
             'LastEditedTo' => $date,
         ]);
         $this->assertTrue(
-            $filter->isPageIncluded($draftPage),
+            $filter->isRecordIncluded($draftPage),
             'Using the same date for from and to should show find that page'
         );
     }
@@ -189,16 +189,16 @@ class CMSSiteTreeFilterTest extends SapphireTest
 
         // Check live-only page is included
         $f = new CMSSiteTreeFilter_StatusRemovedFromDraftPages(['LastEditedFrom' => '2000-01-01 00:00']);
-        $this->assertTrue($f->isPageIncluded($removedDraftPage));
+        $this->assertTrue($f->isRecordIncluded($removedDraftPage));
 
         // Check filter is respected
         $f = new CMSSiteTreeFilter_StatusRemovedFromDraftPages(['LastEditedTo' => '1999-01-01 00:00']);
-        $this->assertEmpty($f->isPageIncluded($removedDraftPage));
+        $this->assertEmpty($f->isRecordIncluded($removedDraftPage));
 
         // Ensures empty array returned if no data to show
         $f = new CMSSiteTreeFilter_StatusRemovedFromDraftPages();
         $removedDraftPage->delete();
-        $this->assertEmpty($f->isPageIncluded($removedDraftPage));
+        $this->assertEmpty($f->isRecordIncluded($removedDraftPage));
     }
 
     public function testStatusDeletedFilter()
@@ -214,10 +214,10 @@ class CMSSiteTreeFilterTest extends SapphireTest
 
         // Check deleted page is included
         $f = new CMSSiteTreeFilter_StatusDeletedPages(['Title' => 'Page']);
-        $this->assertTrue($f->isPageIncluded($checkParentExists));
+        $this->assertTrue($f->isRecordIncluded($checkParentExists));
 
         // Check filter is respected
         $f = new CMSSiteTreeFilter_StatusDeletedPages(['Title' => 'Bobby']);
-        $this->assertFalse($f->isPageIncluded($checkParentExists));
+        $this->assertFalse($f->isRecordIncluded($checkParentExists));
     }
 }
