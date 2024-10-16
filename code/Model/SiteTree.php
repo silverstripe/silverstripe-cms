@@ -783,12 +783,12 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function isCurrent()
     {
-        $currentPage = Director::get_current_page();
-        if ($currentPage instanceof ContentController) {
-            $currentPage = $currentPage->data();
+        $currentRecord = Director::get_current_page();
+        if ($currentRecord instanceof ContentController) {
+            $currentRecord = $currentRecord->data();
         }
-        if ($currentPage instanceof SiteTree) {
-            return $currentPage === $this || $currentPage->ID === $this->ID;
+        if ($currentRecord instanceof SiteTree) {
+            return $currentRecord === $this || $currentRecord->ID === $this->ID;
         }
         return false;
     }
@@ -2778,9 +2778,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // Sort alphabetically, and put current on top
         asort($result);
         if (isset($result[$this->ClassName])) {
-            $currentPageTypeName = $result[$this->ClassName];
+            $currentRecordTypeName = $result[$this->ClassName];
             unset($result[$this->ClassName]);
-            $result = [$this->ClassName => $currentPageTypeName] + $result;
+            $result = [$this->ClassName => $currentRecordTypeName] + $result;
         }
 
         return $result;

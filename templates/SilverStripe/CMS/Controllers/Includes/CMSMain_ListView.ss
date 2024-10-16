@@ -1,6 +1,6 @@
-<% include SilverStripe\\CMS\\Controllers\\CMSPagesController_ContentToolActions %>
+<% include SilverStripe\\CMS\\Controllers\\CMSMain_ContentToolActions %>
 
-<div class="ss-dialog cms-page-add-form-dialog cms-dialog-content" id="cms-page-add-form" title="<%t SilverStripe\\CMS\\Controllers\\CMSMain.AddNew 'Add new page' %>">
+<div class="ss-dialog cms-page-add-form-dialog cms-dialog-content" id="cms-page-add-form" title="<%t SilverStripe\Admin\\LeftAndMain.AddNew 'Add new {name}' name=$getRecord('singleton').i18n_singular_name().lowercase %>">
 	$AddForm
 </div>
 
