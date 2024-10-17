@@ -2,7 +2,6 @@
 
 use SilverStripe\Admin\CMSMenu;
 use SilverStripe\CMS\Controllers\CMSMain;
-use SilverStripe\CMS\Controllers\CMSPageAddController;
 use SilverStripe\CMS\Controllers\CMSPageEditController;
 use SilverStripe\CMS\Controllers\CMSPageSettingsController;
 use SilverStripe\CMS\Model\SiteTree;
@@ -35,4 +34,3 @@ ShortcodeParser::get('default')->register(
 CMSMenu::remove_menu_class(CMSMain::class);
 CMSMenu::remove_menu_class(CMSPageEditController::class);
 CMSMenu::remove_menu_class(CMSPageSettingsController::class);
-CMSMenu::remove_menu_class(CMSPageAddController::class);

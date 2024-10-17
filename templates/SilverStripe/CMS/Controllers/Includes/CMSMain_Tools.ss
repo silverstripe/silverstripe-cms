@@ -2,7 +2,7 @@
     <div class="cms-content-header north vertical-align-items">
         <div class="cms-content-header-info vertical-align-items fill-width">
             <div class="section-heading flexbox-area-grow">
-                <span class="section-label"><a href="$LinkPages">{$MenuCurrentItem.Title}</a></span>
+                <span class="section-label"><a href="$LinkRecords">{$MenuCurrentItem.Title}</a></span>
             </div>
             <% include SilverStripe\\CMS\\Controllers\\CMSMain_Filter %>
         </div>
@@ -14,7 +14,7 @@
                 data-schema="$SearchFieldSchema"
             ></div>
         </div>
-        $PageListSidebar
+        $RecordListSidebar
     </div>
     <div class="cms-panel-content-collapsed">
         <h3 class="cms-panel-header">$SiteConfig.Title</h3>

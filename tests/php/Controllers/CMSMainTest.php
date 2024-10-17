@@ -44,15 +44,15 @@ class CMSMainTest extends FunctionalTest
         }
     }
 
-    public function testSiteTreeHints()
+    public function testTreeHints()
     {
-        $cache = Injector::inst()->get(CacheInterface::class . '.CMSMain_SiteTreeHints');
+        $cache = Injector::inst()->get(CacheInterface::class . '.CMSMain_TreeHints');
         // Login as user with root creation privileges
         $user = $this->objFromFixture(Member::class, 'rootedituser');
         Security::setCurrentUser($user);
         $cache->clear();
 
-        $rawHints = singleton(CMSMain::class)->SiteTreeHints();
+        $rawHints = singleton(CMSMain::class)->TreeHints();
         $this->assertNotNull($rawHints);
 
         $rawHints = preg_replace('/^"(.*)"$/', '$1', Convert::xml2raw($rawHints) ?? '');
@@ -423,7 +423,7 @@ class CMSMainTest extends FunctionalTest
         );
         $jsonStr = $response->getBody();
         $data = json_decode($jsonStr, true);
-        
+
         $parser = new CSSContentParser($data['Breadcrumbs']);
         $crumbs = $parser->getBySelector('.breadcrumbs-wrapper .crumb');
 
@@ -611,7 +611,7 @@ class CMSMainTest extends FunctionalTest
         $this->assertEquals('Class A', $newPage->Title);
     }
 
-    public function testSiteTreeHintsCache()
+    public function testTreeHintsCache()
     {
         $cms = CMSMain::create();
         /** @var Member $user */
@@ -635,31 +635,31 @@ class CMSMainTest extends FunctionalTest
 
         // Initially, cache misses (1)
         Injector::inst()->registerService($mockPageMissesCache, $pageClass);
-        $hints = $cms->SiteTreeHints();
+        $hints = $cms->TreeHints();
         $this->assertNotNull($hints);
 
         // Now it hits
         Injector::inst()->registerService($mockPageHitsCache, $pageClass);
-        $hints = $cms->SiteTreeHints();
+        $hints = $cms->TreeHints();
         $this->assertNotNull($hints);
 
         // Mutating member record invalidates cache. Misses (2)
         $user->FirstName = 'changed';
         $user->write();
         Injector::inst()->registerService($mockPageMissesCache, $pageClass);
-        $hints = $cms->SiteTreeHints();
+        $hints = $cms->TreeHints();
         $this->assertNotNull($hints);
 
         // Now it hits again
         Injector::inst()->registerService($mockPageHitsCache, $pageClass);
-        $hints = $cms->SiteTreeHints();
+        $hints = $cms->TreeHints();
         $this->assertNotNull($hints);
 
         // Different user. Misses. (3)
         $user = $this->objFromFixture(Member::class, 'allcmssectionsuser');
         Security::setCurrentUser($user);
         Injector::inst()->registerService($mockPageMissesCache, $pageClass);
-        $hints = $cms->SiteTreeHints();
+        $hints = $cms->TreeHints();
         $this->assertNotNull($hints);
     }
 
@@ -703,21 +703,21 @@ class CMSMainTest extends FunctionalTest
         );
     }
 
-    public function testCanOrganiseSitetree()
+    public function testCanOrganiseTree()
     {
         $cms = CMSMain::create();
 
-        $this->assertFalse($cms->CanOrganiseSitetree());
+        $this->assertFalse($cms->CanOrganiseTree());
 
         $this->logInWithPermission('CMS_ACCESS_CMSMain');
-        $this->assertFalse($cms->CanOrganiseSitetree());
+        $this->assertFalse($cms->CanOrganiseTree());
 
         $this->logOut();
         $this->logInWithPermission('SITETREE_REORGANISE');
-        $this->assertTrue($cms->CanOrganiseSitetree());
+        $this->assertTrue($cms->CanOrganiseTree());
 
         $this->logOut();
         $this->logInWithPermission('ADMIN');
-        $this->assertTrue($cms->CanOrganiseSitetree());
+        $this->assertTrue($cms->CanOrganiseTree());
     }
 }

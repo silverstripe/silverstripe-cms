@@ -1,6 +1,6 @@
 <div class="view-controls view-controls--{$ViewState}">
     <% if not $TreeIsFiltered %>
-        <%-- Change to data-pjax-target="Content-PageList" to enable in-edit listview --%>
+        <%-- Change to data-pjax-target="Content-RecordList" to enable in-edit listview --%>
         <a class="page-view-link btn btn-secondary btn--icon-sm btn--no-text font-icon-tree"
             href="$LinkTreeView.ATT"
             data-view="treeview"

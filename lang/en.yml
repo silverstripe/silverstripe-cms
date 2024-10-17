@@ -256,6 +256,8 @@ en:
     TABCONTENT: 'Main content'
     TABDEPENDENT: 'Dependent pages'
     TOPLEVEL: 'Site Content (Top Level)'
+    TREETITLE: 'Page name'
+    TREETYPE: 'Page type'
     UNTITLED: 'Untitled {pagetype}'
     URLSegment: 'URL segment'
     UntitledDependentObject: 'Untitled {instanceType}'
