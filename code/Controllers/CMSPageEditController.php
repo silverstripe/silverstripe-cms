@@ -28,11 +28,13 @@ class CMSPageEditController extends CMSMain
 
     private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
 
+    private static $ignore_menuitem = true;
+
     private static $allowed_actions = [
         'AddToCampaignForm',
     ];
 
-    public function getClientConfig()
+    public function getClientConfig(): array
     {
         return ArrayLib::array_merge_recursive(parent::getClientConfig(), [
             'form' => [
