@@ -1454,7 +1454,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         $tags['title'] = [
             'tag' => 'title',
-            'content' => $this->obj('Title')->forTemplate()
+            'content' => $this->obj('Title')?->forTemplate()
         ];
 
         $generator = $this->getGenerator();
@@ -1601,7 +1601,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         $tagString = implode("\n", $tags);
         if ($this->ExtraMeta) {
-            $tagString .= $this->obj('ExtraMeta')->forTemplate();
+            $tagString .= $this->obj('ExtraMeta')?->forTemplate();
         }
 
         $this->extend('updateMetaTags', $tagString);

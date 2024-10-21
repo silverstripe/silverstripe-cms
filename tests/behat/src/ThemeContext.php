@@ -33,7 +33,7 @@ class ThemeContext implements Context
     }
 
     /**
-     * Create a template within a test theme
+     * Create a template within a test theme. Only ss templates are supported.
      *
      * @Given /^a template "(?<template>[^"]+)" in theme "(?<theme>[^"]+)" with content "(?<content>[^"]+)"/
      * @param string $template
