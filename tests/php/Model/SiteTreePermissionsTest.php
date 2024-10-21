@@ -154,7 +154,7 @@ class SiteTreePermissionsTest extends FunctionalTest
         $page->publishSingle();
 
         // Then make sure there's a new version on Stage
-        $page->Title = 1;
+        $page->Title = '1';
         $page->write();
 
         $editor = $this->objFromFixture(Member::class, 'editor');
