@@ -102,10 +102,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
     private static $menu_priority = 10;
 
-    /**
-     * @deprecated 5.4.0 Will be renamed to model_class
-     */
-    private static $tree_class = SiteTree::class;
+    private static $model_class = SiteTree::class;
 
     private static $session_namespace = CMSMain::class;
 
@@ -505,7 +502,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     public function SiteTreeAsUL()
     {
-        $treeClass = $this->config()->get('tree_class');
+        $treeClass = $this->config()->get('model_class');
         $filter = $this->getSearchFilter();
 
         DataObject::singleton($treeClass)->prepopulateTreeDataCache(null, [
@@ -658,7 +655,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function getsubtree(HTTPRequest $request): HTTPResponse
     {
         $html = $this->getSiteTreeFor(
-            $this->config()->get('tree_class'),
+            $this->config()->get('model_class'),
             $request->getVar('ID'),
             null,
             null,
@@ -703,7 +700,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             // Find the next & previous nodes, for proper positioning (Sort isn't good enough - it's not a raw offset)
             $prev = null;
 
-            $className = $this->config()->get('tree_class');
+            $className = $this->config()->get('model_class');
             $next = DataObject::get($className)
                 ->filter('ParentID', $record->ParentID)
                 ->filter('Sort:GreaterThan', $record->Sort)
@@ -763,7 +760,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             );
         }
 
-        $className = $this->config()->get('tree_class');
+        $className = $this->config()->get('model_class');
         $id = $request->requestVar('ID');
         $parentID = $request->requestVar('ParentID');
         if (!is_numeric($id) || !is_numeric($parentID)) {
@@ -1253,7 +1250,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if (!$id) {
             return null;
         }
-        $treeClass = $this->config()->get('tree_class');
+        $treeClass = $this->config()->get('model_class');
         if ($id instanceof $treeClass) {
             return $id;
         }
@@ -1640,7 +1637,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if ($filter = $this->getQueryFilter($params)) {
             return $filter->getFilteredPages();
         } else {
-            $list = DataList::create($this->config()->get('tree_class'));
+            $list = DataList::create($this->config()->get('model_class'));
             $parentID = is_numeric($parentID) ? $parentID : 0;
             return $list->filter("ParentID", $parentID);
         }
@@ -1770,7 +1767,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     public function save(array $data, Form $form): HTTPResponse
     {
-        $className = $this->config()->get('tree_class');
+        $className = $this->config()->get('model_class');
 
         // Existing or new record?
         $id = $data['ID'];
@@ -1843,7 +1840,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     public function getNewItem($id, $setID = true)
     {
-        $parentClass = $this->config()->get('tree_class');
+        $parentClass = $this->config()->get('model_class');
         list(, $className, $parentID) = array_pad(explode('-', $id ?? ''), 3, null);
 
         if (!is_a($className, $parentClass ?? '', true)) {
@@ -2027,7 +2024,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
     public function unpublish(array $data, Form $form): HTTPResponse
     {
-        $className = $this->config()->get('tree_class');
+        $className = $this->config()->get('model_class');
         /** @var SiteTree $record */
         $record = DataObject::get_by_id($className, $data['ID']);
 
@@ -2078,7 +2075,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $version = (isset($data['Version'])) ? (int) $data['Version'] : null;
 
         /** @var SiteTree|Versioned $record */
-        $record = Versioned::get_latest_version($this->config()->get('tree_class'), $id);
+        $record = Versioned::get_latest_version($this->config()->get('model_class'), $id);
         if ($record && !$record->canEdit()) {
             return Security::permissionFailure($this);
         }
