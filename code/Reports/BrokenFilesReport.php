@@ -10,7 +10,7 @@ use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Reports\Report;
 use SilverStripe\ORM\DB;
-use SilverStripe\Versioned\Versioned;
+use SilverStripe\Versioned\Mode\Versioned;
 
 class BrokenFilesReport extends Report
 {

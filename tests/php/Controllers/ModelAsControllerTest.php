@@ -2,7 +2,7 @@
 
 namespace SilverStripe\CMS\Tests\Controllers;
 
-use SilverStripe\Versioned\Versioned;
+use SilverStripe\Versioned\Mode\Versioned;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\CMS\Controllers\OldPageRedirector;
 use SilverStripe\CMS\Controllers\RootURLController;

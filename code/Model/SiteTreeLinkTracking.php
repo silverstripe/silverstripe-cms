@@ -9,7 +9,7 @@ use SilverStripe\Forms\FormScaffolder;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\ManyManyThroughList;
-use SilverStripe\Versioned\Versioned;
+use SilverStripe\Versioned\Mode\Versioned;
 use SilverStripe\View\Parsers\HTMLValue;
 use SilverStripe\Core\Extension;
 

@@ -8,7 +8,7 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\CMS\Search\ContentControllerSearchExtension;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\ORM\Search\FulltextSearchable;
-use SilverStripe\Versioned\Versioned;
+use SilverStripe\Versioned\Mode\Versioned;
 
 class ContentControllerSearchExtensionTest extends SapphireTest
 {

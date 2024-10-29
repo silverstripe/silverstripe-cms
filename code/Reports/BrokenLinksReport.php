@@ -13,7 +13,7 @@ use SilverStripe\Subsites\Model\Subsite;
 use SilverStripe\Model\List\ArrayList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Reports\Report;
-use SilverStripe\Versioned\Versioned;
+use SilverStripe\Versioned\Mode\Versioned;
 
 /**
  * Content side-report listing pages with broken links

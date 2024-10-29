@@ -17,7 +17,7 @@ use SilverStripe\PostgreSQL\PostgreSQLDatabase;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
 use SilverStripe\Subsites\Extensions\SiteTreeSubsites;
-use SilverStripe\Versioned\Versioned;
+use SilverStripe\Versioned\Mode\Versioned;
 use TractorCow\Fluent\Extension\FluentSiteTreeExtension;
 
 /**

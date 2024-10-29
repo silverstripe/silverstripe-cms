@@ -3,7 +3,7 @@
 namespace SilverStripe\CMS\Tests\Controllers;
 
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\Versioned\Versioned;
+use SilverStripe\Versioned\Mode\Versioned;
 use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search;
 use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages;
 use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages;

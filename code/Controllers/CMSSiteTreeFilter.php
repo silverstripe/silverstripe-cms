@@ -10,7 +10,7 @@ use SilverStripe\Core\Injector\Injectable;
 use SilverStripe\Forms\DateField;
 use SilverStripe\ORM\DataList;
 use SilverStripe\Model\List\SS_List;
-use SilverStripe\Versioned\Versioned;
+use SilverStripe\Versioned\Mode\Versioned;
 
 /**
  * Base class for filtering the subtree for certain node statuses.

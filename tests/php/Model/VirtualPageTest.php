@@ -13,7 +13,7 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\Core\Validation\ValidationException;
 use SilverStripe\Security\Member;
 use SilverStripe\Subsites\Extensions\SiteTreeSubsites;
-use SilverStripe\Versioned\Versioned;
+use SilverStripe\Versioned\Mode\Versioned;
 use TractorCow\Fluent\Extension\FluentSiteTreeExtension;
 
 class VirtualPageTest extends FunctionalTest

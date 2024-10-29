@@ -13,7 +13,7 @@ use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Core\Validation\ValidationResult;
 use SilverStripe\Security\Member;
-use SilverStripe\Versioned\Versioned;
+use SilverStripe\Versioned\Mode\Versioned;
 use SilverStripe\View\HTML;
 
 /**

@@ -11,7 +11,7 @@ use SilverStripe\CMS\Tests\Model\SiteTreeBrokenLinksTest\NotPageObject;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
-use SilverStripe\Versioned\Versioned;
+use SilverStripe\Versioned\Mode\Versioned;
 
 /**
  * Tests {@see SiteTreeLinkTracking} broken links feature: LinkTracking
