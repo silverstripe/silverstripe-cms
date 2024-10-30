@@ -103,6 +103,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
     private static $menu_priority = 10;
 
+    /**
+     * @deprecated 5.4.0 Will be renamed to model_class
+     */
     private static $tree_class = SiteTree::class;
 
     private static $session_namespace = CMSMain::class;
