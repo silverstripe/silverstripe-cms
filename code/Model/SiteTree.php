@@ -115,32 +115,6 @@ use SilverStripe\View\SSViewer;
 class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvider, CMSPreviewable, Resettable, Flushable, MemberCacheFlusher
 {
     /**
-     * Indicates what kind of children this page type can have.
-     * This can be an array of allowed child classes, or the string "none" -
-     * indicating that this page type can't have children.
-     * If a classname is prefixed by "*", such as "*Page", then only that
-     * class is allowed - no subclasses. Otherwise, the class and all its
-     * subclasses are allowed.
-     * To control allowed children on root level (no parent), use {@link $can_be_root}.
-     *
-     * Note that this setting is cached when used in the CMS, use the "flush" query parameter to clear it.
-     *
-     * @config
-     * @var array
-     */
-    private static $allowed_children = [
-        SiteTree::class
-    ];
-
-    /**
-     * Used as a cache for `SiteTree::allowedChildren()`
-     * Drastically reduces admin page load when there are a lot of page types
-     * @var array
-     * @deprecated 5.4.0 will be moved to SilverStripe\ORM\Hierarchy\Hierarchy->cache_allowedChildren
-     */
-    protected static $_allowedChildren = [];
-
-    /**
      * Determines if the Draft Preview panel will appear when in the CMS admin
      * @var bool
      */
@@ -159,7 +133,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * @config
      * @var string
      */
-    private static $default_child = "Page";
+    private static $default_child = Page::class;
 
     /**
      * Default value for SiteTree.ClassName enum
@@ -168,16 +142,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * @config
      * @var string
      */
-    private static $default_classname = "Page";
-
-    /**
-     * The default parent class for this page.
-     * Note: Value might be cached, see {@link $allowed_chilren}.
-     *
-     * @config
-     * @var string
-     */
-    private static $default_parent = null;
+    private static $default_classname = Page::class;
 
     /**
      * Controls whether a page can be in the root of the site tree.
@@ -331,6 +296,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
     private static $default_sort = "\"Sort\"";
 
+    private static string $sort_field = 'Sort';
+
     /**
      * If this is false, the class cannot be created in the CMS by regular content authors, only by ADMINs.
      * @var boolean
@@ -411,8 +378,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     private static $show_meta_generator_version = true;
 
-    protected $_cache_statusFlags = null;
-
     /**
      * Plural form for SiteTree / Page classes. Not inherited by subclasses.
      *
@@ -430,33 +395,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     private static $base_singular_name = 'Page';
 
     /**
-     * Description of the class functionality, typically shown to a user
-     * when selecting which page type to create. Translated through {@link provideI18nEntities()}.
-     *
-     * @see SiteTree::classDescription()
-     * @see SiteTree::i18n_classDescription()
-     *
-     * @config
-     * @var string
-     * @deprecated 5.4.0 use class_description instead.
-     */
-    private static $description = null;
-
-    /**
      * Description for Page and SiteTree classes, but not inherited by subclasses.
-     * override SiteTree::$description in subclasses instead.
-     *
-     * @see SiteTree::classDescription()
-     * @see SiteTree::i18n_classDescription()
-     *
-     * @config
-     * @var string
-     * @deprecated 5.4.0 use base_class_description instead.
-     */
-    private static $base_description = 'Generic content page';
-
-    /**
-     * Description for Page and SiteTree classes, but not inherited by subclasses.
+     * override class_description in subclasses instead.
      */
     private static string $base_class_description = 'Generic content page';
 
@@ -900,32 +840,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
-     * Duplicates each child of this node recursively and returns the top-level duplicate node.
-     *
-     * @return static The duplicated object
-     */
-    public function duplicateWithChildren()
-    {
-        $clone = $this->duplicate();
-        $children = $this->AllChildren();
-
-        if ($children) {
-            $sort = 0;
-            foreach ($children as $child) {
-                $childClone = method_exists($child, 'duplicateWithChildren')
-                    ? $child->duplicateWithChildren()
-                    : $child->duplicate();
-                $childClone->ParentID = $clone->ID;
-                //retain sort order by manually setting sort values
-                $childClone->Sort = ++$sort;
-                $childClone->write();
-            }
-        }
-
-        return $clone;
-    }
-
-    /**
      * Duplicate this node and its children as a child of the node with the given ID
      *
      * @param int $id ID of the new node's new parent
@@ -1104,47 +1018,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
-     * This function should return true if the current user can add children to this page. It can be overloaded to
-     * customise the security model for an application.
-     *
-     * Denies permission if any of the following conditions is true:
-     * - alternateCanAddChildren() on a extension returns false
-     * - canEdit() is not granted
-     * - There are no classes defined in {@link $allowed_children}
-     *
-     * @uses SiteTreeExtension->canAddChildren()
-     * @uses canEdit()
-     * @uses $allowed_children
-     *
-     * @param Member|int $member
-     * @return bool True if the current user can add children
-     */
-    public function canAddChildren($member = null)
-    {
-        // Disable adding children to archived pages
-        if (!$this->isOnDraft()) {
-            return false;
-        }
-
-        if (!$member) {
-            $member = Security::getCurrentUser();
-        }
-
-        // Standard mechanism for accepting permission changes from extensions
-        $extended = $this->extendedCan('canAddChildren', $member);
-        if ($extended !== null) {
-            return $extended;
-        }
-
-        // Default permissions
-        if ($member && Permission::checkMember($member, "ADMIN")) {
-            return true;
-        }
-
-        return $this->canEdit($member) && $this->config()->get('allowed_children') !== 'none';
-    }
-
-    /**
      * This function should return true if the current user can view this page. It can be overloaded to customise the
      * security model for an application.
      *
@@ -1313,14 +1186,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             $member = Security::getCurrentUser();
         }
 
-        // Check parent (custom canCreate option for SiteTree)
-        // Block children not allowed for this parent type
-        $parent = isset($context['Parent']) ? $context['Parent'] : null;
-        $strictParentInstance = ($parent && $parent instanceof SiteTree);
-        if ($strictParentInstance && !in_array(static::class, $parent->allowedChildren() ?? [])) {
-            return false;
-        }
-
         // Standard mechanism for accepting permission changes from extensions
         $extended = $this->extendedCan(__FUNCTION__, $member, $context);
         if ($extended !== null) {
@@ -1332,14 +1197,16 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             return true;
         }
 
-        // Fall over to inherited permissions
-        if ($strictParentInstance && $parent->exists()) {
-            return $parent->canAddChildren($member);
-        } else {
+        // Check parent (added to context through CMSMain)
+        $parent = isset($context['Parent']) ? $context['Parent'] : null;
+        if (!$parent?->exists() || !($parent instanceof SiteTree)) {
             // This doesn't necessarily mean we are creating a root page, but that
             // we don't know if there is a parent, so default to this permission
             return SiteConfig::current_site_config()->canCreateTopLevel($member);
         }
+
+        // If we haven't returned by now, resort to edit permissions
+        return $this->canEdit($member);
     }
 
     /**
@@ -1820,12 +1687,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         parent::onAfterDelete();
     }
 
-    public function flushCache($persistent = true)
-    {
-        parent::flushCache($persistent);
-        $this->_cache_statusFlags = null;
-    }
-
     /**
      * Flushes the member specific cache for creatable children
      *
@@ -1849,41 +1710,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function validate()
     {
         $result = parent::validate();
-
-        // Allowed children validation
-        $parent = $this->getParent();
-        if ($parent && $parent->exists()) {
-            // No need to check for subclasses or instanceof, as allowedChildren() already
-            // deconstructs any inheritance trees already.
-            $allowed = $parent->allowedChildren();
-            $subject = ($this instanceof VirtualPage && $this->CopyContentFromID)
-                ? $this->CopyContentFrom()
-                : $this;
-            if (!in_array($subject->ClassName, $allowed ?? [])) {
-                $result->addError(
-                    _t(
-                        'SilverStripe\\CMS\\Model\\SiteTree.PageTypeNotAllowed',
-                        'Page type "{type}" not allowed as child of this parent page',
-                        ['type' => $subject->i18n_singular_name()]
-                    ),
-                    ValidationResult::TYPE_ERROR,
-                    'ALLOWED_CHILDREN'
-                );
-            }
-        }
-
-        // "Can be root" validation
-        if (!$this->config()->get('can_be_root') && !$this->ParentID) {
-            $result->addError(
-                _t(
-                    'SilverStripe\\CMS\\Model\\SiteTree.PageTypNotAllowedOnRoot',
-                    'Page type "{type}" is not allowed on the root level',
-                    ['type' => $this->i18n_singular_name()]
-                ),
-                ValidationResult::TYPE_ERROR,
-                'CAN_BE_ROOT'
-            );
-        }
 
         // Ensure ExtraMeta can be turned into valid HTML
         if ($this->ExtraMeta && !HTMLValue::create($this->ExtraMeta)->getContent()) {
@@ -2795,54 +2621,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
-     * Returns an array of the class names of classes that are allowed to be children of this class.
-     *
-     * @return string[]
-     */
-    public function allowedChildren()
-    {
-        if (isset(static::$_allowedChildren[$this->ClassName])) {
-            $allowedChildren = static::$_allowedChildren[$this->ClassName];
-        } else {
-            // Get config based on old FIRST_SET rules
-            $candidates = null;
-            $class = get_class($this);
-            while ($class) {
-                if (Config::inst()->exists($class, 'allowed_children', Config::UNINHERITED)) {
-                    $candidates = Config::inst()->get($class, 'allowed_children', Config::UNINHERITED);
-                    break;
-                }
-                $class = get_parent_class($class ?? '');
-            }
-            if (!$candidates || $candidates === 'none' || $candidates === 'SiteTree_root') {
-                return [];
-            }
-
-            // Parse candidate list
-            $allowedChildren = [];
-            foreach ((array)$candidates as $candidate) {
-                // If a classname is prefixed by "*", such as "*Page", then only that class is allowed - no subclasses.
-                // Otherwise, the class and all its subclasses are allowed.
-                if (substr($candidate ?? '', 0, 1) == '*') {
-                    $allowedChildren[] = substr($candidate ?? '', 1);
-                } elseif (($candidate !== 'SiteTree_root')
-                    && ($subclasses = ClassInfo::subclassesFor($candidate))
-                ) {
-                    foreach ($subclasses as $subclass) {
-                        if (!is_a($subclass, HiddenClass::class, true)) {
-                            $allowedChildren[] = $subclass;
-                        }
-                    }
-                }
-                static::$_allowedChildren[get_class($this)] = $allowedChildren;
-            }
-        }
-        $this->extend('updateAllowedChildren', $allowedChildren);
-
-        return $allowedChildren;
-    }
-
-    /**
      *
      * Gets a list of the page types that can be created under this specific page, including font icons
      *
@@ -2878,34 +2656,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
-     * Returns the class name of the default class for children of this page.
-     *
-     * @return string
-     */
-    public function defaultChild()
-    {
-        $default = $this->config()->get('default_child');
-        $allowed = $this->allowedChildren();
-        if ($allowed) {
-            if (!$default || !in_array($default, $allowed ?? [])) {
-                $default = reset($allowed);
-            }
-            return $default;
-        }
-        return null;
-    }
-
-    /**
-     * Returns the class name of the default class for the parent of this page.
-     *
-     * @return string
-     */
-    public function defaultParent()
-    {
-        return $this->config()->get('default_parent');
-    }
-
-    /**
      * Get the title for use in menus for this page. If the MenuTitle field is set it returns that, else it returns the
      * Title field.
      *
@@ -2936,55 +2686,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
-     * A flag provides the user with additional data about the current page status, for example a "removed from draft"
-     * status. Each page can have more than one status flag. Returns a map of a unique key to a (localized) title for
-     * the flag. The unique key can be reused as a CSS class. Use the 'updateStatusFlags' extension point to customize
-     * the flags.
-     *
-     * Example (simple):
-     *   "deletedonlive" => "Deleted"
-     *
-     * Example (with optional title attribute):
-     *   "deletedonlive" => ['text' => "Deleted", 'title' => 'This page has been deleted']
-     *
-     * @param bool $cached Whether to serve the fields from cache; false regenerate them
-     * @return array
-     */
-    public function getStatusFlags($cached = true)
-    {
-        if (!$this->_cache_statusFlags || !$cached) {
-            $flags = [];
-            if ($this->isOnLiveOnly()) {
-                $flags['removedfromdraft'] = [
-                    'text' => _t(__CLASS__.'.ONLIVEONLYSHORT', 'On live only'),
-                    'title' => _t(__CLASS__.'.ONLIVEONLYSHORTHELP', 'Page is published, but has been deleted from draft'),
-                ];
-            } elseif ($this->isArchived()) {
-                $flags['archived'] = [
-                    'text' => _t(__CLASS__.'.ARCHIVEDPAGESHORT', 'Archived'),
-                    'title' => _t(__CLASS__.'.ARCHIVEDPAGEHELP', 'Page is removed from draft and live'),
-                ];
-            } elseif ($this->isOnDraftOnly()) {
-                $flags['addedtodraft'] = [
-                    'text' => _t(__CLASS__.'.ADDEDTODRAFTSHORT', 'Draft'),
-                    'title' => _t(__CLASS__.'.ADDEDTODRAFTHELP', "Page has not been published yet")
-                ];
-            } elseif ($this->isModifiedOnDraft()) {
-                $flags['modified'] = [
-                    'text' => _t(__CLASS__.'.MODIFIEDONDRAFTSHORT', 'Modified'),
-                    'title' => _t(__CLASS__.'.MODIFIEDONDRAFTHELP', 'Page has unpublished changes'),
-                ];
-            }
-
-            $this->extend('updateStatusFlags', $flags);
-
-            $this->_cache_statusFlags = $flags;
-        }
-
-        return $this->_cache_statusFlags;
-    }
-
-    /**
      * Returns the CSS class used for the page icon in the site tree.
      *
      * @return string
@@ -3008,6 +2709,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     {
         $children = $this->creatableChildPages();
         $flags = $this->getStatusFlags();
+        $this->extend('updateStatusFlagsForTreeTitle', $flags);
         $treeTitle = sprintf(
             '<span class="jstree-pageicon page-icon %s class-%s%s"></span><span class="item" data-allowedchildren="%s">%s</span>',
             $this->getIconClass(),
@@ -3252,49 +2954,15 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         return null;
     }
 
-    /**
-     * Get description for this page type
-     *
-     * @return string|null
-     */
-    public function classDescription()
+    public function classDescription(): ?string
     {
         // Ensure base class has an appropriate description if not explicitly set,
         // since we can't set that config for projects.
         $base = in_array(static::class, [Page::class, SiteTree::class]);
-        if ($base) {
-            $baseDescription = static::config()->get('base_class_description');
-            // Fall back to the deprecated config
-            if (!$baseDescription) {
-                $baseDescription = static::config('base_description');
-            }
-            return $baseDescription;
+        if ($base && !static::config()->get('class_description', Config::UNINHERITED)) {
+            return $this->config()->get('base_class_description');
         }
-        // For all other classes, use the direct class_description config
-        $description = parent::classDescription();
-        if (!$description) {
-            // Fall back to the deprecated config
-            $description = static::config()->get('description');
-        }
-        return $description;
-    }
-
-    /**
-     * Overloaded to also provide entities for 'Page' class which is usually located in custom code, hence textcollector
-     * picks it up for the wrong folder.
-     *
-     * @return array
-     */
-    public function provideI18nEntities()
-    {
-        $entities = parent::provideI18nEntities();
-
-        // Add optional description
-        $description = $this->classDescription();
-        if ($description) {
-            $entities[static::class . '.DESCRIPTION'] = $description;
-        }
-        return $entities;
+        return parent::classDescription();
     }
 
     /**

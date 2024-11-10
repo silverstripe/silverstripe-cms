@@ -7,6 +7,7 @@ use SilverStripe\Admin\CMSBatchActionHandler;
 use SilverStripe\CMS\Controllers\CMSMain;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\CMS\Tests\Controllers\CMSMainTest\TestStatusFlagsPage;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse_Exception;
@@ -23,6 +24,7 @@ use SilverStripe\ORM\DB;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\Versioned\RecursivePublishable;
 use SilverStripe\Versioned\Versioned;
 
 class CMSMainTest extends FunctionalTest
@@ -30,6 +32,10 @@ class CMSMainTest extends FunctionalTest
     protected static $fixture_file = 'CMSMainTest.yml';
 
     protected static $orig = [];
+
+    protected static $extraDataObjects = [
+        TestStatusFlagsPage::class,
+    ];
 
     protected function setUp(): void
     {
@@ -358,10 +364,13 @@ class CMSMainTest extends FunctionalTest
     public function testBreadcrumbs()
     {
         $page31 = $this->objFromFixture(SiteTree::class, 'page31');
+        // Ensure there are no versioned badges populating the breadcrumbs
+        if ($page31->hasExtension(Versioned::class)) {
+            $page31->publishSingle();
+        }
         $this->logInAs('admin');
 
         $response = $this->get('admin/pages/edit/show/' . $page31->ID);
-        $parser = new CSSContentParser($response->getBody());
         $this->assertCrumbs(
             ['Page 3', 'Page 3.1'],
             $response,
@@ -369,9 +378,31 @@ class CMSMainTest extends FunctionalTest
         );
     }
 
+    public function testBreadcrumbsHaveStatusFlags()
+    {
+        $page = new TestStatusFlagsPage();
+        $page->write();
+        $this->logInAs('admin');
+
+        $response = $this->get('admin/pages/edit/show/' . $page->ID);
+        $parser = new CSSContentParser($response->getBody());
+        $badges = $parser->getBySelector('.breadcrumbs-wrapper .crumb .badge');
+        $badgesMarkup = '';
+        foreach ($badges as $badge) {
+            $badgesMarkup .= $badge->asXML();
+        }
+        $flagsMarkup = $page->getStatusFlagMarkup('badge--breadcrumbs');
+
+        $this->assertSame($flagsMarkup, $badgesMarkup);
+    }
+
     public function testBreadcrumbsListView()
     {
         $page311 = $this->objFromFixture(SiteTree::class, 'page311');
+        // Ensure there are no versioned badges populating the breadcrumbs
+        if ($page311->hasExtension(Versioned::class)) {
+            $page311->publishSingle();
+        }
         $this->logInAs('admin');
 
         $response = $this->get('admin/pages?ParentID=' . $page311->ID);
@@ -382,9 +413,26 @@ class CMSMainTest extends FunctionalTest
         );
     }
 
+    public function testBreadcrumbsListViewHasStatusFlags()
+    {
+        $page = new TestStatusFlagsPage();
+        $page->write();
+        $this->logInAs('admin');
+
+        $response = $this->get('admin/pages?ParentID=' . $page->ID);
+        $parser = new CSSContentParser($response->getBody());
+        $badges = $parser->getBySelector('.breadcrumbs-wrapper .crumb .badge');
+        $badgesMarkup = '';
+        foreach ($badges as $badge) {
+            $badgesMarkup .= $badge->asXML();
+        }
+        $flagsMarkup = $page->getStatusFlagMarkup('badge--breadcrumbs');
+
+        $this->assertSame($flagsMarkup, $badgesMarkup);
+    }
+
     public function testBreadcrumbsListViewTopLevel()
     {
-        $page311 = $this->objFromFixture(SiteTree::class, 'page311');
         $this->logInAs('admin');
 
         $response = $this->get('admin/pages');
@@ -398,6 +446,10 @@ class CMSMainTest extends FunctionalTest
     public function testBreadcrumbsListViewWithPjax()
     {
         $page311 = $this->objFromFixture(SiteTree::class, 'page311');
+        // Ensure there are no versioned badges populating the breadcrumbs
+        if ($page311->hasExtension(Versioned::class)) {
+            $page311->publishSingle();
+        }
         $this->logInAs('admin');
 
         $response = $this->get('admin/pages?ParentID=' . $page311->ID);
@@ -411,6 +463,10 @@ class CMSMainTest extends FunctionalTest
     public function testBreadcrumbsSearchView()
     {
         $page311 = $this->objFromFixture(SiteTree::class, 'page311');
+        // Ensure there are no versioned badges populating the breadcrumbs
+        if ($page311->hasExtension(Versioned::class)) {
+            $page311->publishSingle();
+        }
         $this->logInAs('admin');
 
         $response = $this->get(
@@ -423,12 +479,13 @@ class CMSMainTest extends FunctionalTest
         );
         $jsonStr = $response->getBody();
         $data = json_decode($jsonStr, true);
-        
+
         $parser = new CSSContentParser($data['Breadcrumbs']);
         $crumbs = $parser->getBySelector('.breadcrumbs-wrapper .crumb');
 
         $crumbs = array_map(function ($crumb) {
-            return (string)$crumb;
+            // Whitespace doesn't matter, just the actual text
+            return trim((string)$crumb);
         }, $crumbs);
 
         $this->assertNotNull($crumbs, 'Should have found some crumbs');
@@ -445,7 +502,8 @@ class CMSMainTest extends FunctionalTest
         $crumbs = $parser->getBySelector('.breadcrumbs-wrapper .crumb');
 
         $crumbs = array_map(function ($crumb) {
-            return (string)$crumb;
+            // Whitespace doesn't matter, just the actual text
+            return trim((string)$crumb);
         }, $crumbs);
 
         $this->assertNotNull($crumbs, $message);

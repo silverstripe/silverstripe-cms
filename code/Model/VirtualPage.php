@@ -28,11 +28,6 @@ use SilverStripe\View\HTML;
  */
 class VirtualPage extends Page
 {
-    /**
-     * @deprecated 5.4.0 use class_description instead.
-     */
-    private static $description = 'Displays the content of another page';
-
     private static string $class_description = 'Displays the content of another page';
 
     private static $icon_class = 'font-icon-p-virtual';
@@ -182,6 +177,18 @@ class VirtualPage extends Page
             return $copy->allowedChildren();
         }
         return [];
+    }
+
+    /**
+     * Get the record to check against for allowed children check in validation.
+     */
+    public function getRecordForAllowedChildrenValidation(): SiteTree
+    {
+        $copyFrom = $this->CopyContentFrom();
+        if ($copyFrom && $copyFrom->exists()) {
+            return $copyFrom;
+        }
+        return $this;
     }
 
     public function syncLinkTracking()

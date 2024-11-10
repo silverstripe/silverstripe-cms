@@ -1064,6 +1064,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 if ($page = SiteTree::get()->byID($parentID)) {
                     $this->buildListViewBreadcrumb($items, $page);
                 }
+                // At this stage we also know the parent ID is the "current" ID for this view
+                $this->setCurrentPageID($parentID);
             }
         }
 

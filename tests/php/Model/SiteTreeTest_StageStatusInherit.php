@@ -9,7 +9,7 @@ class SiteTreeTest_StageStatusInherit extends SiteTree implements TestOnly
 {
     private static $table_name = 'SiteTreeTest_StageStatusInherit';
 
-    public function getStatusFlags($cached = true)
+    public function getStatusFlags($cached = true): array
     {
         $flags = parent::getStatusFlags($cached);
         $flags['inherited-class'] = "InheritedTitle";

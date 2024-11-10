@@ -520,6 +520,8 @@ class VirtualPageTest extends FunctionalTest
         // but we want to test that it gets copied on class name change instead
         $page->write();
 
+        // We need to flush the static cache so we don't have a stale reference to $page in $virtual->components
+        $virtual->flushCache();
 
         $nonVirtual = $virtual;
         $nonVirtual->ClassName = VirtualPageTest_ClassA::class;
@@ -618,7 +620,7 @@ class VirtualPageTest extends FunctionalTest
         try {
             $childVirtualPage->write();
         } catch (ValidationException $e) {
-            $this->assertStringContainsString('not allowed as child of this parent page', $e->getMessage());
+            $this->assertStringContainsString('not allowed as child of this parent record', $e->getMessage());
             $isDetected = true;
         }
 

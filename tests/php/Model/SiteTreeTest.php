@@ -63,7 +63,6 @@ class SiteTreeTest extends SapphireTest
         SiteTreeTest_ClassB::class,
         SiteTreeTest_ClassC::class,
         SiteTreeTest_ClassD::class,
-        SiteTreeTest_ClassCext::class,
         SiteTreeTest_NotRoot::class,
         SiteTreeTest_StageStatusInherit::class,
         SiteTreeTest_DataObject::class,
@@ -572,39 +571,6 @@ class SiteTreeTest extends SapphireTest
 
         $this->assertStringEndsWith('changed-on-live/my-staff', $child->getAbsoluteLiveLink(false));
         $this->assertStringEndsWith('changed-on-live/my-staff?stage=Live', $child->getAbsoluteLiveLink());
-    }
-
-    public function testDuplicateChildrenRetainSort()
-    {
-        $parent = new SiteTree();
-        $parent->Title = 'Parent';
-        $parent->write();
-
-        $child1 = new SiteTree();
-        $child1->ParentID = $parent->ID;
-        $child1->Title = 'Child 1';
-        $child1->Sort = 2;
-        $child1->write();
-
-        $child2 = new SiteTree();
-        $child2->ParentID = $parent->ID;
-        $child2->Title = 'Child 2';
-        $child2->Sort = 1;
-        $child2->write();
-
-        $duplicateParent = $parent->duplicateWithChildren();
-        $duplicateChildren = $duplicateParent->AllChildren()->toArray();
-        $this->assertCount(2, $duplicateChildren);
-
-        $duplicateChild2 = array_shift($duplicateChildren);
-        $duplicateChild1 = array_shift($duplicateChildren);
-
-
-        $this->assertEquals('Child 1', $duplicateChild1->Title);
-        $this->assertEquals('Child 2', $duplicateChild2->Title);
-
-        // assertGreaterThan works by having the LOWER value first
-        $this->assertGreaterThan($duplicateChild2->Sort, $duplicateChild1->Sort);
     }
 
     public function testDeleteFromStageOperatesRecursively()
@@ -1260,94 +1226,6 @@ class SiteTreeTest extends SapphireTest
             SiteTreeTest_ClassE::class,
             $allowedChildren,
             'HiddenClass instances should not be returned'
-        );
-    }
-
-    /**
-     * Tests that various types of SiteTree classes will or will not be returned from the allowedChildren method
-     * @param string $className
-     * @param array  $expected
-     * @param string $assertionMessage
-     */
-    #[DataProvider('allowedChildrenProvider')]
-    public function testAllowedChildren($className, $expected, $assertionMessage)
-    {
-        $class = new $className();
-        $this->assertEquals($expected, $class->allowedChildren(), $assertionMessage);
-    }
-
-    /**
-     * @return array
-     */
-    public static function allowedChildrenProvider()
-    {
-        return [
-            [
-                // Class name
-                SiteTreeTest_ClassA::class,
-                // Expected
-                [ SiteTreeTest_ClassB::class ],
-                // Assertion message
-                'Direct setting of allowed children',
-            ],
-            [
-                SiteTreeTest_ClassB::class,
-                [ SiteTreeTest_ClassC::class, SiteTreeTest_ClassCext::class ],
-                'Includes subclasses',
-            ],
-            [
-                SiteTreeTest_ClassC::class,
-                [],
-                'Null setting',
-            ],
-            [
-                SiteTreeTest_ClassD::class,
-                [SiteTreeTest_ClassC::class],
-                'Excludes subclasses if class is prefixed by an asterisk',
-            ],
-        ];
-    }
-
-    public function testAllowedChildrenValidation()
-    {
-        $page = new SiteTree();
-        $page->write();
-        $classA = new SiteTreeTest_ClassA();
-        $classA->write();
-        $classB = new SiteTreeTest_ClassB();
-        $classB->write();
-        $classC = new SiteTreeTest_ClassC();
-        $classC->write();
-        $classD = new SiteTreeTest_ClassD();
-        $classD->write();
-        $classCext = new SiteTreeTest_ClassCext();
-        $classCext->write();
-
-        $classB->ParentID = $page->ID;
-        $valid = $classB->validate();
-        $this->assertTrue($valid->isValid(), "Does allow children on unrestricted parent");
-
-        $classB->ParentID = $classA->ID;
-        $valid = $classB->validate();
-        $this->assertTrue($valid->isValid(), "Does allow child specifically allowed by parent");
-
-        $classC->ParentID = $classA->ID;
-        $valid = $classC->validate();
-        $this->assertFalse($valid->isValid(), "Doesnt allow child on parents specifically restricting children");
-
-        $classB->ParentID = $classC->ID;
-        $valid = $classB->validate();
-        $this->assertFalse($valid->isValid(), "Doesnt allow child on parents disallowing all children");
-
-        $classB->ParentID = $classCext->ID;
-        $valid = $classB->validate();
-        $this->assertTrue($valid->isValid(), "Extensions of allowed classes are incorrectly reported as invalid");
-
-        $classCext->ParentID = $classD->ID;
-        $valid = $classCext->validate();
-        $this->assertFalse(
-            $valid->isValid(),
-            "Doesnt allow child where only parent class is allowed on parent node, and asterisk prefixing is used"
         );
     }
 
