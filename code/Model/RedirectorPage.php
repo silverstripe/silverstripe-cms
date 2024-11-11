@@ -23,7 +23,12 @@ use SilverStripe\Versioned\Versioned;
  */
 class RedirectorPage extends Page
 {
+    /**
+     * @deprecated 5.4.0 use class_description instead.
+     */
     private static $description = 'Redirects requests to another location';
+
+    private static string $class_description = 'Redirects requests to another location';
 
     private static $icon_class = 'font-icon-p-redirect';
 

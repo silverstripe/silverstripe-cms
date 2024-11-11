@@ -149,6 +149,7 @@ en:
     HelpChars: ' Special characters are automatically converted or removed.'
     OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
+    CLASS_DESCRIPTION: 'Redirects to an internal page or an external URL'
     DESCRIPTION: 'Redirects to an internal page or an external URL'
     FILE: File
     HEADER: 'This page will redirect users to another page'
@@ -188,6 +189,7 @@ en:
     BUTTONSAVEPUBLISH: Publish
     BUTTONUNPUBLISH: Unpublish
     BUTTONUNPUBLISHDESC: 'Remove this page from the published site'
+    CLASS_DESCRIPTION: 'Generic content page'
     Comments: Comments
     Content: Content
     DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.</p>'
@@ -332,6 +334,7 @@ en:
     many_many_LinkTracking: 'Link tracking'
   SilverStripe\CMS\Model\VirtualPage:
     CHOOSE: 'Linked Page'
+    CLASS_DESCRIPTION: 'Displays the content of another page'
     DESCRIPTION: 'Displays the content of another page'
     EditLink: edit
     HEADER: 'This is a virtual page'

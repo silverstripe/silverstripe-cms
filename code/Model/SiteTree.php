@@ -136,6 +136,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Used as a cache for `SiteTree::allowedChildren()`
      * Drastically reduces admin page load when there are a lot of page types
      * @var array
+     * @deprecated 5.4.0 will be moved to SilverStripe\ORM\Hierarchy\Hierarchy->cache_allowedChildren
      */
     protected static $_allowedChildren = [];
 
@@ -419,6 +420,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      *
      * @config
      * @var string
+     * @deprecated 5.4.0 use class_description instead.
      */
     private static $description = null;
 
@@ -431,8 +433,14 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      *
      * @config
      * @var string
+     * @deprecated 5.4.0 use base_class_description instead.
      */
     private static $base_description = 'Generic content page';
+
+    /**
+     * Description for Page and SiteTree classes, but not inherited by subclasses.
+     */
+    private static string $base_class_description = 'Generic content page';
 
     /**
      * @var array
@@ -3248,25 +3256,24 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public function classDescription()
     {
+        // Ensure base class has an appropriate description if not explicitly set,
+        // since we can't set that config for projects.
         $base = in_array(static::class, [Page::class, SiteTree::class]);
         if ($base) {
-            return $this->config()->get('base_description');
+            $baseDescription = static::config()->get('base_class_description');
+            // Fall back to the deprecated config
+            if (!$baseDescription) {
+                $baseDescription = static::config('base_description');
+            }
+            return $baseDescription;
         }
-        return $this->config()->get('description');
-    }
-
-    /**
-     * Get localised description for this page
-     *
-     * @return string|null
-     */
-    public function i18n_classDescription()
-    {
-        $description = $this->classDescription();
-        if ($description) {
-            return _t(static::class.'.DESCRIPTION', $description);
+        // For all other classes, use the direct class_description config
+        $description = parent::classDescription();
+        if (!$description) {
+            // Fall back to the deprecated config
+            $description = static::config()->get('description');
         }
-        return null;
+        return $description;
     }
 
     /**
