@@ -66,7 +66,7 @@ So that I can link to a external website or a page on my site
     Given I select "awesome" in the "Content" HTML field
       And I press the "Insert link" HTML field button
     When I click "Link to external URL" in the ".tox-collection__group" element
-      And I should see an "form#Form_ModalsEditorExternalLink" element
+      And I should see an "form#Form_EditorExternalLink" element
     When I fill in "http://silverstripe.org" for "URL"
       And I check "Open in new window/tab"
       And I press the "Insert link" button
@@ -80,7 +80,7 @@ So that I can link to a external website or a page on my site
     When I select the image "file1.jpg" in the "Content" HTML field
       And I press the "Insert link" HTML field button
     When I click "Link to external URL" in the ".tox-collection__group" element
-      And I should see an "form#Form_ModalsEditorExternalLink" element
+      And I should see an "form#Form_EditorExternalLink" element
       And I should not see "Link text"
     When I fill in "http://silverstripe.org" for "URL"
       And I press the "Insert link" button
@@ -94,7 +94,7 @@ So that I can link to a external website or a page on my site
       And I select "awesome" in the "Content" HTML field
     When I press the "Insert link" HTML field button
       And I click "Link to external URL" in the ".tox-collection__group" element
-      And I should see an "form#Form_ModalsEditorExternalLink" element
+      And I should see an "form#Form_EditorExternalLink" element
     Then the "URL" field should contain "http://silverstripe.org"
     # This doesn't seem to suffer from that issue
     When I fill in "http://google.com" for "URL"

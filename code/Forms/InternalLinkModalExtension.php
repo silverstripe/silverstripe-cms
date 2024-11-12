@@ -15,7 +15,7 @@ use SilverStripe\Forms\Form;
 class InternalLinkModalExtension extends Extension
 {
     private static $url_handlers = [
-        'editorAnchorLink/$ItemID' => 'editorAnchorLink', // Matches LeftAndMain::methodSchema args
+        'editorAnchorLink/$ItemID' => 'editorAnchorLink', // Matches FormSchemaController::schema args
     ];
 
     private static $allowed_actions = [
@@ -41,7 +41,7 @@ class InternalLinkModalExtension extends Extension
 
     public function editorAnchorLink()
     {
-        // Note: Should work both via MethodSchema and as direct request
+        // Note: Should work both via schema() and as direct request
         $request = $this->getOwner()->getRequest();
         $showLinkText = $request->getVar('requireLinkText');
         $pageID = $request->param('ItemID');
