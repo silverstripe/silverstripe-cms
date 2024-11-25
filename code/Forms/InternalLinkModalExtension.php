@@ -5,12 +5,14 @@ namespace SilverStripe\CMS\Forms;
 use SilverStripe\Admin\LeftAndMainFormRequestHandler;
 use SilverStripe\Admin\ModalController;
 use SilverStripe\Core\Extension;
+use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\Form;
 
 /**
  * Decorates ModalController with insert internal link
  *
  * @extends Extension<ModalController>
+ * @deprecated 5.4.0 Will be replaced with configuration on SilverStripe\Admin\ModalController
  */
 class InternalLinkModalExtension extends Extension
 {
@@ -22,6 +24,15 @@ class InternalLinkModalExtension extends Extension
         'editorInternalLink',
         'editorAnchorLink',
     ];
+
+    public function __construct()
+    {
+        Deprecation::noticeWithNoReplacment(
+            '5.4.0',
+            'Will be replaced with configuration on ' . ModalController::class,
+            Deprecation::SCOPE_CLASS
+        );
+    }
 
     /**
      * Form for inserting internal link pages
