@@ -9,8 +9,9 @@ SilverStripe\Admin\LeftAndMain:
 Name: cmsmodals
 ---
 SilverStripe\Admin\ModalController:
-  extensions:
-    - SilverStripe\CMS\Forms\InternalLinkModalExtension
+  link_modal_form_factories:
+    editorInternalLink: SilverStripe\CMS\Forms\InternalLinkFormFactory
+    editorAnchorLink: SilverStripe\CMS\Forms\AnchorLinkFormFactory
 ---
 Name: cmshierarchy
 ---

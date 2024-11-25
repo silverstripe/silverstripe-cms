@@ -36,7 +36,7 @@ const plugin = {
 };
 
 const modalId = 'insert-link__dialog-wrapper--internal';
-const sectionConfigKey = 'SilverStripe\\CMS\\Controllers\\CMSPageEditController';
+const sectionConfigKey = 'SilverStripe\\Admin\\LeftAndMain';
 const formName = 'editorInternalLink';
 const InsertLinkInternalModal = provideInjector(createInsertLinkModal(sectionConfigKey, formName));
 

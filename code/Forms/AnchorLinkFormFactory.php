@@ -10,7 +10,7 @@ class AnchorLinkFormFactory extends InternalLinkFormFactory
 
         // Ensure current page is selected
         $pageIDField = $fields->dataFieldByName('PageID');
-        $pageIDField->setValue((int)$context['PageID']);
+        $pageIDField->setValue((int)$context['ItemID']);
 
         // Get anchor selector field
         $fields->insertAfter(
@@ -22,6 +22,6 @@ class AnchorLinkFormFactory extends InternalLinkFormFactory
 
     public function getRequiredContext()
     {
-        return array_merge(parent::getRequiredContext(), [ 'PageID' ]);
+        return array_merge(parent::getRequiredContext(), [ 'ItemID' ]);
     }
 }

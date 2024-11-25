@@ -4,7 +4,6 @@ namespace SilverStripe\CMS\Controllers;
 
 use Page;
 use SilverStripe\Admin\LeftAndMain;
-use SilverStripe\Admin\ModalController;
 use SilverStripe\CampaignAdmin\AddToCampaignHandler;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
@@ -37,17 +36,10 @@ class CMSPageEditController extends CMSMain
 
     public function getClientConfig(): array
     {
-        $modalController = ModalController::singleton();
         return ArrayLib::array_merge_recursive(parent::getClientConfig(), [
             'form' => [
                 'AddToCampaignForm' => [
                     'schemaUrl' => $this->Link('schema/AddToCampaignForm'),
-                ],
-                'editorInternalLink' => [
-                    'schemaUrl' => $modalController->Link('schema/editorInternalLink'),
-                ],
-                'editorAnchorLink' => [
-                    'schemaUrl' => $modalController->Link('schema/editorAnchorLink/:pageid'),
                 ],
             ],
         ]);

@@ -22,8 +22,8 @@ So that I can link to a external website or a page on my site
     When I select "awesome" in the "Content" HTML field
       And I press the "Insert link" HTML field button
       And I click "Page on this site" in the ".tox-collection__group" element
-    Then I should see an "form#Form_editorInternalLink" element
-    When I select "About Us" in the "#Form_editorInternalLink_PageID_Holder" tree dropdown
+    Then I should see an "form#Form_linkModalFormeditorInternalLink" element
+    When I select "About Us" in the "#Form_linkModalFormeditorInternalLink_PageID_Holder" tree dropdown
       And I fill in "my desc" for "Link description"
       And I press the "Insert link" button
     Then the "Content" HTML field should contain "<a title="my desc" href="[sitetree_link,id=2]">awesome</a>"
@@ -36,9 +36,9 @@ So that I can link to a external website or a page on my site
     When I select the image "file1.jpg" in the "Content" HTML field
       And I press the "Insert link" HTML field button
       And I click "Page on this site" in the ".tox-collection__group" element
-    Then I should see an "form#Form_editorInternalLink" element
+    Then I should see an "form#Form_linkModalFormeditorInternalLink" element
       And I should not see "Link text"
-    When I select "About Us" in the "#Form_editorInternalLink_PageID_Holder" tree dropdown
+    When I select "About Us" in the "#Form_linkModalFormeditorInternalLink_PageID_Holder" tree dropdown
       And I press the "Insert link" button
     Then the "Content" HTML field should contain "<a href="[sitetree_link,id=2]"><img src="file1.jpg" alt=""></a>"
     # Required to avoid "unsaved changes" browser dialog
@@ -50,11 +50,11 @@ So that I can link to a external website or a page on my site
       And I select "awesome" in the "Content" HTML field
       And I press the "Insert link" HTML field button
       And I click "Page on this site" in the ".tox-collection__group" element
-      And I should see an "form#Form_editorInternalLink" element
-    Then I should see "About Us" in the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__value-container" element
+      And I should see an "form#Form_linkModalFormeditorInternalLink" element
+    Then I should see "About Us" in the "#Form_linkModalFormeditorInternalLink_PageID_Holder .treedropdownfield__value-container" element
       And the "Link description" field should contain "my desc"
     # This doesn't seem to suffer from that issue
-    When I select "Home" in the "#Form_editorInternalLink_PageID_Holder" tree dropdown
+    When I select "Home" in the "#Form_linkModalFormeditorInternalLink_PageID_Holder" tree dropdown
       And I fill in "my new desc" for "Link description"
       And I press the "Insert link" button
     Then the "Content" HTML field should contain "<a title="my new desc" href="[sitetree_link,id=1]">awesome</a>"
@@ -66,7 +66,7 @@ So that I can link to a external website or a page on my site
     Given I select "awesome" in the "Content" HTML field
       And I press the "Insert link" HTML field button
     When I click "Link to external URL" in the ".tox-collection__group" element
-      And I should see an "form#Form_EditorExternalLink" element
+      And I should see an "form#Form_linkModalFormEditorExternalLink" element
     When I fill in "http://silverstripe.org" for "URL"
       And I check "Open in new window/tab"
       And I press the "Insert link" button
@@ -80,7 +80,7 @@ So that I can link to a external website or a page on my site
     When I select the image "file1.jpg" in the "Content" HTML field
       And I press the "Insert link" HTML field button
     When I click "Link to external URL" in the ".tox-collection__group" element
-      And I should see an "form#Form_EditorExternalLink" element
+      And I should see an "form#Form_linkModalFormEditorExternalLink" element
       And I should not see "Link text"
     When I fill in "http://silverstripe.org" for "URL"
       And I press the "Insert link" button
@@ -94,7 +94,7 @@ So that I can link to a external website or a page on my site
       And I select "awesome" in the "Content" HTML field
     When I press the "Insert link" HTML field button
       And I click "Link to external URL" in the ".tox-collection__group" element
-      And I should see an "form#Form_EditorExternalLink" element
+      And I should see an "form#Form_linkModalFormEditorExternalLink" element
     Then the "URL" field should contain "http://silverstripe.org"
     # This doesn't seem to suffer from that issue
     When I fill in "http://google.com" for "URL"
@@ -118,17 +118,17 @@ So that I can link to a external website or a page on my site
     When I select "awesome" in the "Content" HTML field
       And I press the "Insert link" HTML field button
       And I click "Page on this site" in the ".tox-collection__group" element
-    Then I should see an "form#Form_editorInternalLink" element
-    When I click on the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__value-container" element
-    Then I click on the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-button" element
-      And I should not see "Page 1.1.1" in the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-title" element
-      And I should see "Page 1.1" in the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-title" element
-    Then I click on the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-button" element
-      And I should not see "Page 1.1.1.1" in the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-title" element
-      And I should see "Page 1.1.1" in the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-title" element
-    Then I click on the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-button" element
-      And I should see "Page 1.1.1.1" in the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-title" element
-    When I select "Page 1.1.1.1" in the "#Form_editorInternalLink_PageID_Holder" tree dropdown
+    Then I should see an "form#Form_linkModalFormeditorInternalLink" element
+    When I click on the "#Form_linkModalFormeditorInternalLink_PageID_Holder .treedropdownfield__value-container" element
+    Then I click on the "#Form_linkModalFormeditorInternalLink_PageID_Holder .treedropdownfield__option-button" element
+      And I should not see "Page 1.1.1" in the "#Form_linkModalFormeditorInternalLink_PageID_Holder .treedropdownfield__option-title" element
+      And I should see "Page 1.1" in the "#Form_linkModalFormeditorInternalLink_PageID_Holder .treedropdownfield__option-title" element
+    Then I click on the "#Form_linkModalFormeditorInternalLink_PageID_Holder .treedropdownfield__option-button" element
+      And I should not see "Page 1.1.1.1" in the "#Form_linkModalFormeditorInternalLink_PageID_Holder .treedropdownfield__option-title" element
+      And I should see "Page 1.1.1" in the "#Form_linkModalFormeditorInternalLink_PageID_Holder .treedropdownfield__option-title" element
+    Then I click on the "#Form_linkModalFormeditorInternalLink_PageID_Holder .treedropdownfield__option-button" element
+      And I should see "Page 1.1.1.1" in the "#Form_linkModalFormeditorInternalLink_PageID_Holder .treedropdownfield__option-title" element
+    When I select "Page 1.1.1.1" in the "#Form_linkModalFormeditorInternalLink_PageID_Holder" tree dropdown
       And I fill in "my new desc" for "Link description"
       And I press the "Insert link" button
     Then I press the "Save" button
@@ -137,20 +137,20 @@ So that I can link to a external website or a page on my site
     When I select "awesome" in the "Content" HTML field
       And I press the "Insert link" HTML field button
       And I click "Page on this site" in the ".tox-collection__group" element
-    Then I should see an "form#Form_editorInternalLink" element
-    When I click on the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__value-container" element
+    Then I should see an "form#Form_linkModalFormeditorInternalLink" element
+    When I click on the "#Form_linkModalFormeditorInternalLink_PageID_Holder .treedropdownfield__value-container" element
       And I press the "Down" key globally
       And I press the "Down" key globally
       And I press the "Down" key globally
       And I press the "Right" key globally
-    Then I should see "Page 1.1" in the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-title" element
+    Then I should see "Page 1.1" in the "#Form_linkModalFormeditorInternalLink_PageID_Holder .treedropdownfield__option-title" element
       And I press the "Down" key globally
       And I press the "Right" key globally
-    Then I should see "Page 1.1.1" in the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-title" element
+    Then I should see "Page 1.1.1" in the "#Form_linkModalFormeditorInternalLink_PageID_Holder .treedropdownfield__option-title" element
       And I press the "Down" key globally
       And I press the "Right" key globally
-    Then I should see "Page 1.1.1.1" in the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-title" element
-      And I should not see the "#Form_editorInternalLink_PageID_Holder .treedropdownfield__option-button" element
+    Then I should see "Page 1.1.1.1" in the "#Form_linkModalFormeditorInternalLink_PageID_Holder .treedropdownfield__option-title" element
+      And I should not see the "#Form_linkModalFormeditorInternalLink_PageID_Holder .treedropdownfield__option-button" element
       And I press the "Enter" key globally
       And I fill in "my new desc" for "Link description"
       And I press the "Insert link" button

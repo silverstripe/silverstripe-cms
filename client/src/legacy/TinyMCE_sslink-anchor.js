@@ -44,7 +44,7 @@ const plugin = {
 };
 
 const modalId = 'insert-link__dialog-wrapper--anchor';
-const sectionConfigKey = 'SilverStripe\\CMS\\Controllers\\CMSPageEditController';
+const sectionConfigKey = 'SilverStripe\\Admin\\LeftAndMain';
 const formName = 'editorAnchorLink';
 const InsertLinkInternalModal = provideInjector(createInsertLinkModal(sectionConfigKey, formName));
 
