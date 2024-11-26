@@ -101,7 +101,7 @@ class VirtualPageTest extends FunctionalTest
         // Test with title
         $meta = $vp1->MetaTags();
         $charset = Config::inst()->get(ContentNegotiator::class, 'encoding');
-        $this->assertStringContainsString('<meta http-equiv="Content-Type" content="text/html; charset='.$charset.'"', $meta);
+        $this->assertStringStartsWith('<meta charset="' . $charset . '"', $meta);
         $this->assertStringContainsString('<link rel="canonical" href="'.$master->AbsoluteLink().'"', $meta);
         $this->assertStringContainsString('<meta name="x-page-id" content="'.$vp1->ID.'"', $meta);
         $this->assertStringContainsString('<meta name="x-cms-edit-link" content="'.$vp1->getCMSEditLink().'"', $meta);
