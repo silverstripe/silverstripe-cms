@@ -483,10 +483,11 @@ class VirtualPage extends Page
      */
     public function __call($method, $args)
     {
-        if (parent::hasMethod($method)) {
+        if (parent::hasMethod($method) || !$this->CopyContentFromID) {
             return parent::__call($method, $args);
         } else {
-            return call_user_func_array([$this->CopyContentFrom(), $method], $args ?? []);
+            $record = $this->CopyContentFrom();
+            return $record->$method(...$args);
         }
     }
 
