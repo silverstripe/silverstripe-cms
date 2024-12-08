@@ -30,6 +30,9 @@ class RedirectorPage extends Page
 
     private static string $class_description = 'Redirects requests to another location';
 
+    /**
+     * @deprecated 5.4.0 Will be renamed to cms_icon_class
+     */
     private static $icon_class = 'font-icon-p-redirect';
 
     private static $show_stage_link = false;

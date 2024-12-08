@@ -8,6 +8,7 @@ use SilverStripe\Control\Session;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Convert;
+use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
@@ -23,6 +24,9 @@ use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
 
+/**
+ * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Forms\CMSMainAddForm
+ */
 class CMSPageAddController extends CMSPageEditController
 {
 
@@ -37,6 +41,16 @@ class CMSPageAddController extends CMSPageEditController
         'doAdd',
         'doCancel'
     ];
+
+    public function __construct()
+    {
+        Deprecation::noticeWithNoReplacment(
+            '5.4.0',
+            'Will be replaced with SilverStripe\CMS\Forms\CMSMainAddForm',
+            Deprecation::SCOPE_CLASS
+        );
+        parent::__construct();
+    }
 
     /**
      * @return Form
@@ -134,7 +148,7 @@ class CMSPageAddController extends CMSPageEditController
 
         $parentModeField->addExtraClass('parent-mode');
 
-        // CMSMain->currentPageID() automatically sets the homepage,
+        // CMSMain->currentRecordID() automatically sets the homepage,
         // which we need to counteract in the default selection (which should default to root, ID=0)
         if ($parentID = $this->getRequest()->getVar('ParentID')) {
             $parentModeField->setValue('child');
@@ -220,7 +234,7 @@ class CMSPageAddController extends CMSPageEditController
 
         $editController = CMSPageEditController::singleton();
         $editController->setRequest($this->getRequest());
-        $editController->setCurrentPageID($record->ID);
+        $editController->setCurrentRecordID($record->ID);
 
         $session = $this->getRequest()->getSession();
         $session->set(

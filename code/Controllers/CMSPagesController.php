@@ -4,11 +4,15 @@ namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
+use SilverStripe\Dev\Deprecation;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\View\ArrayData;
 use stdClass;
 
+/**
+ * @deprecated 5.4.0 Will be combined back into SilverStripe\CMS\Controllers\CMSMain
+ */
 class CMSPagesController extends CMSMain
 {
 
@@ -21,6 +25,16 @@ class CMSPagesController extends CMSMain
     private static $menu_title = 'Pages';
 
     private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
+
+    public function __construct()
+    {
+        Deprecation::noticeWithNoReplacment(
+            '5.4.0',
+            'Will be combined back into ' . CMSMain::class,
+            Deprecation::SCOPE_CLASS
+        );
+        parent::__construct();
+    }
 
     public function LinkPreview()
     {

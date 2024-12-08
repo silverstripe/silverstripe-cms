@@ -87,7 +87,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     /**
      * Unique ID for page icons CSS block
      */
-    const PAGE_ICONS_ID = 'PageIcons';
+    public const CMS_RECORD_ICONS_ID = 'PageIcons';
+
+    /**
+     * Unique ID for page icons CSS block
+     * @deprecated 5.4.0 use CMS_RECORD_ICONS_ID instead
+     */
+    const PAGE_ICONS_ID = CMSMain::CMS_RECORD_ICONS_ID;
 
     private static $url_segment = 'pages';
 
@@ -143,6 +149,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         'schema',
         'SearchForm',
         'SiteTreeAsUL',
+        'TreeAsUL',
         'getshowdeletedsubtree',
         'savetreenode',
         'getsubtree',
@@ -162,14 +169,17 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         'TreeIsFiltered' => 'Boolean',
         'AddForm' => 'HTMLFragment',
         'LinkPages' => 'Text',
+        'LinkRecords' => 'Text',
         'Link' => 'Text',
         'ListViewForm' => 'HTMLFragment',
         'ExtraTreeTools' => 'HTMLFragment',
         'PageList' => 'HTMLFragment',
         'PageListSidebar' => 'HTMLFragment',
         'SiteTreeHints' => 'HTMLFragment',
+        'TreeHints' => 'HTMLFragment',
         'SecurityID' => 'Text',
         'SiteTreeAsUL' => 'HTMLFragment',
+        'TreeAsUL' => 'HTMLFragment',
     ];
 
     private static $dependencies = [
@@ -201,7 +211,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         // In case we're not showing a specific record, explicitly remove any session state,
         // to avoid it being highlighted in the tree, and causing an edit form to show.
         if (!$request->param('Action')) {
-            $this->setCurrentPageID(null);
+            $this->setCurrentRecordID(null);
         }
 
         return parent::index($request);
@@ -223,9 +233,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * Get pages listing area
      *
      * @return DBHTMLText
+     * @deprecated 5.4.0 Will be renamed to RecordList
      */
     public function PageList()
     {
+        Deprecation::noticeWithNoReplacment('5.4.0', 'Will be renamed to RecordList');
         return $this->renderWith($this->getTemplatesWithSuffix('_PageList'));
     }
 
@@ -233,9 +245,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * Page list view for edit-form
      *
      * @return DBHTMLText
+     * @deprecated 5.4.0 Will be removed without equivalent functionality
      */
     public function PageListSidebar()
     {
+        Deprecation::noticeWithNoReplacment('5.4.0');
         return $this->renderWith($this->getTemplatesWithSuffix('_PageList_Sidebar'));
     }
 
@@ -260,7 +274,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function SwitchView($page = null)
     {
         if (!$page) {
-            $page = $this->currentPage();
+            $page = $this->currentRecord();
         }
 
         if ($page) {
@@ -293,14 +307,32 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         return $link;
     }
 
+    /**
+     * @deprecated 5.4.0 Use LinkRecords instead
+     */
     public function LinkPages()
+    {
+        Deprecation::notice('5.4.0', 'Use LinkRecords() instead.');
+        return $this->LinkRecords();
+    }
+
+    public function LinkRecords()
     {
         return CMSPagesController::singleton()->Link();
     }
 
+    /**
+     * @deprecated 5.4.0 Use LinkRecordsWithSearch instead
+     */
     public function LinkPagesWithSearch()
     {
-        return $this->LinkWithSearch($this->LinkPages());
+        Deprecation::notice('5.4.0', 'Use LinkRecordsWithSearch() instead.');
+        return $this->LinkRecordsWithSearch();
+    }
+
+    public function LinkRecordsWithSearch()
+    {
+        return $this->LinkWithSearch($this->LinkRecords());
     }
 
     /**
@@ -379,19 +411,37 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         return Controller::join_links(CMSPageEditController::singleton()->Link('show'), $obj->ID);
     }
 
+    /**
+     * @deprecated 5.4.0 Use LinkRecordEdit() instead.
+     */
     public function LinkPageEdit($id = null)
     {
+        Deprecation::notice('5.4.0', 'Use LinkRecordEdit() instead.');
+        return $this->LinkRecordEdit($id);
+    }
+
+    public function LinkRecordEdit($id = null)
+    {
         if (!$id) {
-            $id = $this->currentPageID();
+            $id = $this->currentRecordID();
         }
         return $this->LinkWithSearch(
             Controller::join_links(CMSPageEditController::singleton()->Link('show'), $id)
         );
     }
 
+    /**
+     * @deprecated 5.4.0 Use LinkRecordSettings() instead.
+     */
     public function LinkPageSettings()
     {
-        if ($id = $this->currentPageID()) {
+        Deprecation::notice('5.4.0', 'Use LinkRecordSettings() instead.');
+        return $this->LinkRecordSettings();
+    }
+
+    public function LinkRecordSettings()
+    {
+        if ($id = $this->currentRecordID()) {
             return $this->LinkWithSearch(
                 Controller::join_links(CMSPageSettingsController::singleton()->Link('show'), $id)
             );
@@ -400,10 +450,19 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         }
     }
 
+    /**
+     * @deprecated 5.4.0 Use LinkRecordHistory() instead.
+     */
     public function LinkPageHistory()
     {
+        Deprecation::notice('5.4.0', 'Use LinkRecordHistory() instead.');
+        return $this->LinkRecordHistory();
+    }
+
+    public function LinkRecordHistory()
+    {
         $controller = Injector::inst()->get(CMSPageHistoryViewerController::class);
-        if (($id = $this->currentPageID()) && $controller) {
+        if (($id = $this->currentRecordID()) && $controller) {
             if ($controller) {
                 return $this->LinkWithSearch(
                     Controller::join_links($controller->Link('show'), $id)
@@ -467,7 +526,16 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         return $link;
     }
 
+    /**
+     * @deprecated 5.4.0 Use LinkRecordAdd() instead.
+     */
     public function LinkPageAdd($extra = null, $placeholders = null)
+    {
+        Deprecation::notice('5.4.0', 'Use LinkRecordAdd() instead.');
+        return $this->LinkRecordAdd($extra, $placeholders);
+    }
+
+    public function LinkRecordAdd($extra = null, $placeholders = null)
     {
         $link = CMSPageAddController::singleton()->Link();
         $this->extend('updateLinkPageAdd', $link);
@@ -485,10 +553,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
     /**
      * @return string
+     * @deprecated 5.4.0 Use SilverStripe\CMS\Model\SiteTree::CMSEditLink() instead.
      */
     public function LinkPreview()
     {
-        $record = $this->getRecord($this->currentPageID());
+        Deprecation::notice('5.4.0', 'Use ' . SiteTree::class . '::CMSEditLink() instead.');
+        $record = $this->getRecord($this->currentRecordID());
         $baseLink = Director::absoluteBaseURL();
         if ($record && $record instanceof SiteTree) {
             // if we are an external redirector don't show a link
@@ -503,8 +573,18 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
     /**
      * Return the entire site tree as a nested set of ULs
+     * @deprecated 5.4.0 Use TreeAsUL() instead.
      */
     public function SiteTreeAsUL()
+    {
+        Deprecation::notice('5.4.0', 'Use TreeAsUL() instead.');
+        return $this->TreeAsUL();
+    }
+
+    /**
+     * Return the entire tree as a nested set of ULs
+     */
+    public function TreeAsUL()
     {
         $treeClass = $this->config()->get('tree_class');
         $filter = $this->getSearchFilter();
@@ -514,7 +594,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
             'numChildrenMethod' => $filter ? $filter->getNumChildrenMethod() : 'numChildren',
         ]);
 
-        $html = $this->getSiteTreeFor($treeClass);
+        $html = $this->getTreeFor($treeClass);
 
         $this->extend('updateSiteTreeAsUL', $html);
 
@@ -533,8 +613,41 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * @param callable $filterFunction
      * @param int $nodeCountThreshold
      * @return string Nested unordered list with links to each page
+     * @deprecated 5.4.0 Use getTreeFor() instead.
      */
     public function getSiteTreeFor(
+        $className,
+        $rootID = null,
+        $childrenMethod = null,
+        $numChildrenMethod = null,
+        $filterFunction = null,
+        $nodeCountThreshold = null
+    ) {
+        Deprecation::notice('5.4.0', 'Use getTreeFor() instead.');
+        return $this->getTreeFor(
+            $className,
+            $rootID,
+            $childrenMethod,
+            $numChildrenMethod,
+            $filterFunction,
+            $nodeCountThreshold
+        );
+    }
+
+    /**
+     * Get a tree HTML listing which displays the nodes under the given criteria.
+     *
+     * @param string $className The class of the root object
+     * @param string $rootID The ID of the root object.  If this is null then a complete tree will be
+     *  shown
+     * @param string $childrenMethod The method to call to get the children of the tree. For example,
+     *  Children, AllChildrenIncludingDeleted, or AllHistoricalChildren
+     * @param string $numChildrenMethod
+     * @param callable $filterFunction
+     * @param int $nodeCountThreshold
+     * @return string Nested unordered list with links to each record
+     */
+    public function getTreeFor(
         $className,
         $rootID = null,
         $childrenMethod = null,
@@ -573,7 +686,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $markingSet->markPartialTree();
 
         // Ensure current page is exposed
-        $currentPage = $this->currentPage();
+        $currentPage = $this->currentRecord();
         if ($currentPage) {
             $markingSet->markToExpose($currentPage);
         }
@@ -658,7 +771,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      */
     public function getsubtree(HTTPRequest $request): HTTPResponse
     {
-        $html = $this->getSiteTreeFor(
+        $html = $this->getTreeFor(
             $this->config()->get('tree_class'),
             $request->getVar('ID'),
             null,
@@ -754,7 +867,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         if (!SecurityToken::inst()->checkRequest($request)) {
             $this->httpError(400);
         }
-        if (!$this->CanOrganiseSitetree()) {
+        if (!$this->canOrganiseTree()) {
             $this->httpError(
                 403,
                 _t(
@@ -863,12 +976,21 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     /**
      * Whether the current member has the permission to reorganise SiteTree objects.
      * @return bool
+     * @deprecated 5.4.0 Use canOrganiseTree instead.
      */
     public function CanOrganiseSitetree()
     {
-        return Permission::check('SITETREE_REORGANISE');
+        Deprecation::notice('5.4.0', 'Use canOrganiseTree instead.');
+        return $this->canOrganiseTree();
     }
 
+    /**
+     * Whether the current member has the permission to reorganise SiteTree objects.
+     */
+    public function canOrganiseTree(): bool
+    {
+        return Permission::check('SITETREE_REORGANISE');
+    }
 
     /**
      * @return boolean
@@ -891,9 +1013,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * and can be modified on extensions through updateSearchContext
      *
      * @return \SilverStripe\ORM\Search\SearchContext
+     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Model\SiteTree::getDefaultSearchContext().
      */
     public function getSearchContext()
     {
+        Deprecation::notice('5.4.0', 'Will be replaced with ' . SiteTree::class . '::getDefaultSearchContext().');
         $context = SiteTree::singleton()->getDefaultSearchContext();
 
         $this->extend('updateSearchContext', $context);
@@ -963,7 +1087,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
         $pageClasses = DropdownField::create(
             'Search__ClassName',
             _t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGETYPEOPT', 'Page type', 'Dropdown for limiting search to a page type'),
-            $this->getPageTypes()
+            $this->getRecordTypes()
         );
         $pageClasses->setEmptyString(_t('SilverStripe\\CMS\\Controllers\\CMSMain.PAGETYPEANYOPT', 'Any'));
 
@@ -1007,15 +1131,25 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * Returns a sorted array suitable for a dropdown with pagetypes and their translated name
      *
      * @return array
+     * @deprecated 5.4.0 Use getRecordTypes() instead.
      */
     protected function getPageTypes()
     {
-        $pageTypes = [];
-        foreach (SiteTree::page_type_classes() as $pageTypeClass) {
-            $pageTypes[$pageTypeClass] = SiteTree::singleton($pageTypeClass)->i18n_singular_name();
+        Deprecation::notice('5.4.0', 'Use getRecordTypes() instead.');
+        return $this->getRecordTypes();
+    }
+
+    /**
+     * Returns a sorted array suitable for a dropdown with record types and their translated name
+     */
+    protected function getRecordTypes(): array
+    {
+        $types = [];
+        foreach (SiteTree::page_type_classes() as $class) {
+            $types[$class] = SiteTree::singleton($class)->i18n_singular_name();
         }
-        asort($pageTypes);
-        return $pageTypes;
+        asort($types);
+        return $types;
     }
 
     public function doSearch(array $data, Form $form): HTTPResponse
@@ -1044,7 +1178,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     {
         $items = ArrayList::create();
 
-        if (($this->getAction() !== 'index') && ($record = $this->currentPage())) {
+        if (($this->getAction() !== 'index') && ($record = $this->currentRecord())) {
             // The page is being edited
             $this->buildEditFormBreadcrumb($items, $record, $unlinked);
         } else {
@@ -1136,8 +1270,21 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * 'data-hints' attribute of root node of jsTree.
      *
      * @return string Serialized JSON
+     * @deprecated 5.4.0 Use TreeHints() instead.
      */
     public function SiteTreeHints()
+    {
+        Deprecation::notice('5.4.0', 'Use TreeHints() instead.');
+        return $this->TreeHints();
+    }
+
+    /**
+     * Create serialized JSON string with site tree hints data to be injected into
+     * 'data-hints' attribute of root node of jsTree.
+     *
+     * @return string Serialized JSON
+     */
+    public function TreeHints(): string
     {
         $classes = SiteTree::page_type_classes();
         $memberID = Security::getCurrentUser() ? Security::getCurrentUser()->ID : 0;
@@ -1209,8 +1356,19 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * which allows the user to change the page type.
      *
      * @return SS_List
+     * @deprecated 5.4.0 use RecordTypes() instead.
      */
     public function PageTypes()
+    {
+        Deprecation::notice('5.4.0', 'Use RecordTypes() instead.');
+        return $this->RecordTypes();
+    }
+
+    /**
+     * Populates an array of classes in the CMS
+     * which allows the user to change the record's ClassName field.
+     */
+    public function RecordTypes(): SS_List
     {
         $classes = SiteTree::page_type_classes();
 
@@ -1314,7 +1472,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                 $this->httpError(400);
                 return null;
             }
-            $this->setCurrentPageID($id);
+            $this->setCurrentRecordID($id);
         }
         return $this->getEditForm();
     }
@@ -1328,7 +1486,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     {
         // Get record
         if (!$id) {
-            $id = $this->currentPageID();
+            $id = $this->currentRecordID();
         }
         $record = $this->getRecord($id);
 
@@ -1574,7 +1732,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
     /**
      * Callback to request the list of page types allowed under a given page instance.
-     * Provides a slower but more precise response over SiteTreeHints
+     * Provides a slower but more precise response over TreeHints
      */
     public function childfilter(HTTPRequest $request): HTTPResponse
     {
@@ -1671,7 +1829,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
                     ->setLinkSpec($linkSpec)
                     ->setAttributes(['data-pjax-target' => 'ListViewForm,Breadcrumbs'])
             );
-            $this->setCurrentPageID($parentID);
+            $this->setCurrentRecordID($parentID);
         }
         $gridField = GridField::create('Page', 'Pages', $list, $gridFieldConfig);
         $gridField->setAttribute('cms-loading-ignore-url-params', true);
@@ -1758,6 +1916,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
         $this->extend('updateCurrentPageID', $id);
 
+        return $id;
+    }
+
+    public function currentRecordID(): ?int
+    {
+        $id = parent::currentRecordID();
+        $this->extend('updateCurrentPageID', $id);
         return $id;
     }
 
@@ -1894,6 +2059,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      *
      * @param Versioned|DataObject $record
      * @return mixed
+     * @deprecated 5.4.0 Use SilverStripe\Versioned\RecursivePublishable::publishRecursive() instead.
      */
     public function performPublish($record)
     {
@@ -2062,7 +2228,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     public function rollback()
     {
         return $this->doRollback([
-            'ID' => $this->currentPageID(),
+            'ID' => $this->currentRecordID(),
             'Version' => $this->getRequest()->param('VersionID')
         ], null);
     }
@@ -2300,7 +2466,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
     }
 
     /**
-     * Cache key for SiteTreeHints() method
+     * Cache key for TreeHints() method
      *
      * @param $memberID
      * @return string

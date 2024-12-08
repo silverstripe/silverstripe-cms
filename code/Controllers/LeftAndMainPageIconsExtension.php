@@ -13,22 +13,34 @@ use SilverStripe\Core\Convert;
 use SilverStripe\Core\Extension;
 use SilverStripe\Core\Flushable;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Dev\Deprecation;
 use SilverStripe\View\Requirements;
 
 /**
  * Extension to include custom page icons
  *
  * @extends Extension<LeftAndMain>
+ * @deprecated 5.4.0 Will be renamed to SilverStripe\CMS\Controllers\LeftAndMainRecordIconsExtension
  */
 class LeftAndMainPageIconsExtension extends Extension implements Flushable
 {
+    public function __construct()
+    {
+        Deprecation::noticeWithNoReplacment(
+            '5.4.0',
+            'Will be renamed to SilverStripe\CMS\Controllers\LeftAndMainRecordIconsExtension',
+            Deprecation::SCOPE_CLASS
+        );
+        parent::__construct();
+    }
+
     /**
      * @throws InvalidArgumentException
      * @throws ReflectionException
      */
     public function init()
     {
-        Requirements::customCSS($this->generatePageIconsCss(), CMSMain::PAGE_ICONS_ID);
+        Requirements::customCSS($this->generateRecordIconsCss(), CMSMain::CMS_RECORD_ICONS_ID);
     }
 
     /**
@@ -39,7 +51,6 @@ class LeftAndMainPageIconsExtension extends Extension implements Flushable
         Injector::inst()->get(CacheInterface::class . '.SiteTree_PageIcons')->clear();
     }
 
-
     /**
      * Include CSS for page icons. We're not using the JSTree 'types' option
      * because it causes too much performance overhead just to add some icons.
@@ -47,8 +58,22 @@ class LeftAndMainPageIconsExtension extends Extension implements Flushable
      * @return string CSS
      * @throws InvalidArgumentException
      * @throws ReflectionException
+     * @deprecated 5.4.0 Use generateRecordIconsCss() instead.
      */
     public function generatePageIconsCss()
+    {
+        Deprecation::notice('5.4.0', 'Use generateRecordIconsCss() instead.');
+        return $this->generateRecordIconsCss();
+    }
+
+    /**
+     * Include CSS for page icons. We're not using the JSTree 'types' option
+     * because it causes too much performance overhead just to add some icons.
+     *
+     * @throws InvalidArgumentException
+     * @throws ReflectionException
+     */
+    public function generateRecordIconsCss(): string
     {
         /** @var CacheInterface $cache */
         $cache = Injector::inst()->get(CacheInterface::class . '.SiteTree_PageIcons');

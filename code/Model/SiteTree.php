@@ -194,6 +194,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      *
      * @config
      * @var array
+     * @deprecated 5.4.0 Use canCreate() instead.
      */
     private static $need_permission = null;
 
@@ -327,6 +328,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * @see LeftAndMainPageIconsExtension::generatePageIconsCss()
      * @config
      * @var string
+     * @deprecated 5.4.0 Will be renamed to cms_icon
      */
     private static $icon = null;
 
@@ -334,6 +336,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Class attached to page icons in the CMS page tree. Also supports font-icon set.
      * @config
      * @var string
+     * @deprecated 5.4.0 Will be renamed to cms_icon_class
      */
     private static $icon_class = 'font-icon-page';
 
@@ -565,6 +568,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Return a subclass map of SiteTree that shouldn't be hidden through {@link SiteTree::$hide_pagetypes}
      *
      * @return array
+     * @deprecated 5.4.0 Will be replaced with updateAllowedSubClasses()
      */
     public static function page_type_classes()
     {
@@ -1022,9 +1026,14 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     /**
      * @param CacheInterface $cache
      * @return $this
+     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Controllers\CMSMain::setCreatableChildrenCache()
      */
     public function setCreatableChildrenCache(CacheInterface $cache)
     {
+        Deprecation::noticeWithNoReplacment(
+            '5.4.0',
+            'Will be replaced with ' . CMSMain::class . '::setCreatableChildrenCache()'
+        );
         $this->creatableChildrenCache = $cache;
 
         return $this;
@@ -1032,9 +1041,14 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
     /**
      * @return CacheInterface $cache
+     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Controllers\CMSMain::getCreatableChildrenCache()
      */
     public function getCreatableChildrenCache()
     {
+        Deprecation::noticeWithNoReplacment(
+            '5.4.0',
+            'Will be replaced with ' . CMSMain::class . '::getCreatableChildrenCache()'
+        );
         return $this->creatableChildrenCache;
     }
 
@@ -1399,9 +1413,11 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
     /**
      * @return PermissionChecker
+     * @deprecated 5.4.0 Will be replaced with a non-static method with the same name.
      */
     public static function getPermissionChecker()
     {
+        Deprecation::noticeWithNoReplacment('5.4.0', 'Will be replaced with a non-static method with the same name.');
         return Injector::inst()->get(PermissionChecker::class.'.sitetree');
     }
 
@@ -1801,9 +1817,14 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Flushes the member specific cache for creatable children
      *
      * @param array $memberIDs
+     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Controllers\CMSMain::clearCache()
      */
     public function flushMemberCache($memberIDs = null)
     {
+        Deprecation::noticeWithNoReplacment(
+            '5.4.0',
+            'Will be replaced with ' . CMSMain::class . '::clearCache()'
+        );
         $cache = SiteTree::singleton()->getCreatableChildrenCache();
 
         if (!$memberIDs) {
@@ -2844,9 +2865,14 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Gets a list of the page types that can be created under this specific page, including font icons
      *
      * @return array
+     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Controllers\CMSMain::getCreatableSubClasses()
      */
     public function creatableChildPages()
     {
+        Deprecation::noticeWithNoReplacment(
+            '5.4.0',
+            'Will be replaced with ' . CMSMain::class . '::getCreatableSubClasses()'
+        );
         // Build the list of candidate children
         $cache = SiteTree::singleton()->getCreatableChildrenCache();
         $cacheKey = $this->generateChildrenCacheKey(Security::getCurrentUser() ? Security::getCurrentUser()->ID : 0);
@@ -2985,9 +3011,14 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Returns the CSS class used for the page icon in the site tree.
      *
      * @return string
+     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Controllers\CMSMain::getRecordIconCssClass()
      */
     public function getIconClass()
     {
+        Deprecation::noticeWithNoReplacment(
+            '5.4.0',
+            'Will be replaced with ' . CMSMain::class . '::getRecordIconCssClass()'
+        );
         if ($this->config()->get('icon')) {
             return '';
         }
@@ -3223,9 +3254,14 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Generate link to this page's icon
      *
      * @return string
+     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Controllers\CMSMain::getRecordIconUrl()
      */
     public function getPageIconURL()
     {
+        Deprecation::noticeWithNoReplacment(
+            '5.4.0',
+            'Will be replaced with ' . CMSMain::class . '::getRecordIconUrl()'
+        );
         $icon = $this->config()->get('icon');
         if (!$icon) {
             return null;
@@ -3352,9 +3388,14 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      *
      * @param int $memberID
      * @return string
+     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Controllers\CMSMain::generateChildrenCacheKey()
      */
     protected function generateChildrenCacheKey($memberID)
     {
+        Deprecation::noticeWithNoReplacment(
+            '5.4.0',
+            'Will be replaced with ' . CMSMain::class . '::generateChildrenCacheKey()'
+        );
         return md5($memberID . '_' . __CLASS__);
     }
 
