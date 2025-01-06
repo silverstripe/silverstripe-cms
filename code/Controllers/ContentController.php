@@ -27,7 +27,6 @@ use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\Parsers\URLSegmentFilter;
 use SilverStripe\View\Requirements;
 use SilverStripe\View\SSViewer;
-use SilverStripe\Dev\Deprecation;
 
 /**
  * The most common kind of controller; effectively a controller linked to a {@link DataObject}.

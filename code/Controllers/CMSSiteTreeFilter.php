@@ -7,7 +7,6 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\Injector\Injectable;
-use SilverStripe\Dev\Deprecation;
 use SilverStripe\Forms\DateField;
 use SilverStripe\ORM\DataList;
 use SilverStripe\Model\List\SS_List;
@@ -116,7 +115,6 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
 
     public function getRecordClasses($page)
     {
-        Deprecation::noticeWithNoReplacment('5.4.0', 'Will be renamed to getRecordClasses()');
         if ($this->_cache_ids === null) {
             $this->populateIDs();
         }
@@ -182,7 +180,6 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
 
     public function isRecordIncluded($page)
     {
-        Deprecation::noticeWithNoReplacment('5.4.0', 'Will be renamed to isRecordIncluded()');
         if ($this->_cache_ids === null) {
             $this->populateIDs();
         }

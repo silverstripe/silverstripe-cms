@@ -1181,31 +1181,14 @@ class SiteTreeTest extends SapphireTest
 
     public function testHidePagetypes()
     {
+        // Check with default config
+        $classes = ClassInfo::getValidSubClasses(SiteTree::class);
+        SiteTree::singleton()->updateAllowedSubClasses($classes);
+        $this->assertNotContains(SiteTree::class, $classes);
+        $this->assertContains('Page', $classes);
+
+        // Confirm specifying to hide the class makes it hidden
         SiteTree::config()->set('hide_pagetypes', ['Page']);
-        $classes = ClassInfo::getValidSubClasses(SiteTree::class);
-        SiteTree::singleton()->updateAllowedSubClasses($classes);
-        $this->assertNotContains('Page', $classes);
-    }
-
-    public function testPageTypeClasses()
-    {
-        $classes = ClassInfo::getValidSubClasses(SiteTree::class);
-        SiteTree::singleton()->updateAllowedSubClasses($classes);
-        $this->assertNotContains(SiteTree::class, $classes, 'Page types do not include base class');
-        $this->assertContains('Page', $classes, 'Page types do contain subclasses');
-
-        // Testing what happens in an incorrect config value is set - hide_ancestor should be a string
-        Config::modify()->set(SiteTreeTest_ClassA::class, 'hide_ancestor', true);
-        $newClasses = ClassInfo::getValidSubClasses(SiteTree::class);
-        SiteTree::singleton()->updateAllowedSubClasses($newClasses);
-        $this->assertEquals(
-            $classes,
-            $newClasses,
-            'Setting hide_ancestor to a boolean (incorrect) value caused a page class to be hidden'
-        );
-
-        // Testing what happens if a valid config value is set
-        Config::modify()->set(SiteTreeTest_ClassA::class, 'hide_ancestor', 'Page');
         $classes = ClassInfo::getValidSubClasses(SiteTree::class);
         SiteTree::singleton()->updateAllowedSubClasses($classes);
         $this->assertNotContains('Page', $classes);

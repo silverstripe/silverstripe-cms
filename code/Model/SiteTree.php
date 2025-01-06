@@ -129,18 +129,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     private static $default_classname = Page::class;
 
     /**
-     * If you extend a class, and don't want to be able to select the old class
-     * in the cms, set this to the old class name. Eg, if you extended Product
-     * to make ImprovedProduct, then you would set $hide_ancestor to Product.
-     *
-     * @deprecated 5.2.0 Use hide_pagetypes instead
-     *
-     * @config
-     * @var string
-     */
-    private static $hide_ancestor = null;
-
-    /**
      * Any fully qualified class names added to this array will be hidden in the CMS
      * when selecting page types, e.g. for creating a new page or changing the type
      * of an existing page.
@@ -485,21 +473,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             unset($classes[$baseClassIndex]);
         }
 
-        $kill_ancestors = SiteTree::config()->get('hide_pagetypes', Config::UNINHERITED) ?? [];
-
-        // figure out if there are any classes we don't want to appear
-        foreach ($classes as $class) {
-            $instance = singleton($class);
-
-            // do any of the progeny want to hide an ancestor?
-            if ($ancestor_to_hide = $instance->config()->get('hide_ancestor')) {
-                // note for killing later
-                $kill_ancestors[] = $ancestor_to_hide;
-            }
-        }
-
         // If any of the descendents don't want any of the elders to show up, cruelly render the elders surplus to
         // requirements
+        $kill_ancestors = SiteTree::config()->get('hide_pagetypes', Config::UNINHERITED) ?? [];
         if ($kill_ancestors) {
             $kill_ancestors = array_unique($kill_ancestors);
             foreach ($kill_ancestors as $mark) {
