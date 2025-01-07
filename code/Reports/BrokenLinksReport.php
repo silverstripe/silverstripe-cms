@@ -29,8 +29,9 @@ class BrokenLinksReport extends Report
     public function sourceRecords($params, $sort, $limit)
     {
         $sitetreeTbl = DataObject::singleton(SiteTree::class)->baseTable();
+        $schema = DataObject::getSchema();
 
-        $join = '';
+        $joinArgs = [];
         $sortBrokenReason = false;
         if ($sort) {
             $parts = explode(' ', $sort ?? '');
@@ -41,12 +42,11 @@ class BrokenLinksReport extends Report
                 $sort = 'URLSegment ' . $direction;
             } elseif ($field == 'Subsite.Title') {
                 $subSiteTbl = DataObject::singleton(Subsite::class)->baseTable();
-                $join = sprintf(
-                    'LEFT JOIN "%s" ON "%s"."ID" = "%s"."SubsiteID"',
+                $joinArgs = [
                     $subSiteTbl,
-                    $subSiteTbl,
-                    $sitetreeTbl
-                );
+                    $schema->sqlColumnForField(Subsite::class, 'ID')
+                        . ' = ' . $schema->sqlColumnForField(SiteTree::class, 'SubsiteID')
+                ];
             } elseif ($field == 'BrokenReason') {
                 $sortBrokenReason = true;
                 $sort = '';
@@ -57,9 +57,12 @@ class BrokenLinksReport extends Report
         ];
         $isLive = !isset($params['CheckSite']) || $params['CheckSite'] === 'Published';
         if ($isLive) {
-            $ret = Versioned::get_by_stage(SiteTree::class, Versioned::LIVE, $brokenFilter, $sort, $join, $limit);
+            $ret = Versioned::get_by_stage(SiteTree::class, Versioned::LIVE, $brokenFilter, $sort, $limit);
         } else {
-            $ret = DataObject::get(SiteTree::class, $brokenFilter, $sort, $join, $limit);
+            $ret = DataObject::get(SiteTree::class, $brokenFilter, $sort, $limit);
+        }
+        if (!empty($joinArgs)) {
+            $ret->leftJoin(...$joinArgs);
         }
 
         $returnSet = ArrayList::create();
