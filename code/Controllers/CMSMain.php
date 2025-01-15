@@ -1757,7 +1757,7 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
                 if ($num) {
                     $screenReaderText = _t(__CLASS__ . '.NUM_CHILD_RECORDS', 'one child record|{count} child records', ['count' => $num]);
                     return sprintf(
-                        '<a class="btn btn-secondary btn--no-text btn--icon-large font-icon-right-dir cms-panel-link list-children-link" data-pjax-target="ListViewForm,Breadcrumbs" href="%s"><span class="sr-only">%s</span></a>',
+                        '<a class="btn btn-secondary btn--no-text btn--icon-large font-icon-right-dir cms-panel-link list-children-link" data-pjax-target="ListViewForm,Breadcrumbs" href="%s"><span class="visually-hidden">%s</span></a>',
                         $this->LinkListViewChildren((int)$item->ID),
                         $screenReaderText
                     );

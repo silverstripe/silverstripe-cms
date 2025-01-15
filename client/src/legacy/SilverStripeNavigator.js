@@ -46,7 +46,7 @@
       });
     }
 
-    const closeLinks = popup.querySelectorAll('a.close');
+    const closeLinks = popup.querySelectorAll('a.close,a.btn-close');
     if (closeLinks.length > 0) {
       for (const link of closeLinks.values()) {
         link.addEventListener('click', function(e) {
