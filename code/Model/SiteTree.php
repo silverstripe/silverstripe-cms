@@ -1612,7 +1612,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 _t(
                     'SilverStripe\\CMS\\Model\\SiteTree.InvalidExtraMeta',
                     'Custom Meta Tags does not contain valid HTML',
-                )
+                ),
+                value: $this->ExtraMeta,
             );
         }
 
