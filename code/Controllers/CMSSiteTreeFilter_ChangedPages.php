@@ -3,7 +3,7 @@
 namespace SilverStripe\CMS\Controllers;
 
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\DataList;
 use SilverStripe\Versioned\Versioned;
 
 /**
@@ -11,20 +11,18 @@ use SilverStripe\Versioned\Versioned;
  */
 class CMSSiteTreeFilter_ChangedPages extends CMSSiteTreeFilter
 {
-
-    public static function title()
+    public static function title(): string
     {
         return _t(__CLASS__ . '.Title', "Modified pages");
     }
 
-    public function getFilteredPages()
+    public function getFilteredPages(DataList $list): DataList
     {
-        $table = DataObject::singleton(SiteTree::class)->baseTable();
-        $liveTable = DataObject::singleton(SiteTree::class)->stageTable($table, Versioned::LIVE);
-        $pages = Versioned::get_by_stage(SiteTree::class, Versioned::DRAFT);
-        $pages = $this->applyDefaultFilters($pages)
-            ->leftJoin($liveTable, "\"$liveTable\".\"ID\" = \"$table\".\"ID\"")
+        $table = SiteTree::singleton()->baseTable();
+        $liveTable = SiteTree::singleton()->stageTable($table, Versioned::LIVE);
+        $list = Versioned::updateListToAlsoIncludeStage($list, Versioned::DRAFT);
+        $list = $list->leftJoin($liveTable, "\"$liveTable\".\"ID\" = \"$table\".\"ID\"")
             ->where("\"$table\".\"Version\" <> \"$liveTable\".\"Version\"");
-        return $pages;
+        return $list;
     }
 }

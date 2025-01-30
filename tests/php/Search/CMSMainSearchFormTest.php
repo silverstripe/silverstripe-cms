@@ -18,7 +18,7 @@ class CMSMainSearchFormTest extends FunctionalTest
             'admin/pages/?' .
             http_build_query([
                 'q' => [
-                    'Term' => 'Page 10',
+                    'q' => 'Page 10',
                     'FilterClass' => CMSSiteTreeFilter_Search::class,
                 ],
             ])

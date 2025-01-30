@@ -12,13 +12,11 @@
             <%-- Full breadcrumbs (useful for tree view which isn't available when viewing an edit form) --%>
             <% include SilverStripe\\Admin\\CMSBreadcrumbs %>
         <% end_if %>
-        <% include SilverStripe\\CMS\\Controllers\\CMSMain_Filter %>
+        $SearchForm.FilterButton($TreeIsFiltered)
     </div>
 </div>
 
 <div class="<% if $CurrentRecord %>panel panel--scrollable cms-panel-content<% else %>cms-content-fields ui-widget-content cms-panel-padded<% end_if %> flexbox-area-grow fill-height">
-    <div class="cms-content-filters<% if not $TreeIsFiltered %> cms-content-filters--hidden<% end_if %>">
-        <div class="search-holder search-holder--cms" data-schema="$SearchFieldSchema"></div>
-    </div>
+    $SearchForm.Placeholder($TreeIsFiltered)
     $RecordList
 </div>

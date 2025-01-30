@@ -2,8 +2,7 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\Model\List\SS_List;
+use SilverStripe\ORM\DataList;
 use SilverStripe\Versioned\Versioned;
 
 /**
@@ -11,33 +10,16 @@ use SilverStripe\Versioned\Versioned;
  */
 class CMSSiteTreeFilter_StatusDeletedPages extends CMSSiteTreeFilter
 {
-
-    /**
-     * @var string
-     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
-     */
-    protected $childrenMethod = "AllHistoricalChildren";
-
-    /**
-     * @var string
-     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
-     */
-    protected $numChildrenMethod = 'numHistoricalChildren';
-
-    public static function title()
+    public static function title(): string
     {
         return _t(__CLASS__ . '.Title', 'Archived pages');
     }
 
     /**
      * Filters out all pages who's status is set to "Deleted".
-     *
-     * @see {@link ModelData::getStatusFlags()}
-     * @return SS_List
      */
-    public function getFilteredPages()
+    public function getFilteredPages(DataList $list): DataList
     {
-        $pages = Versioned::getArchivedOnly(SiteTree::class);
-        return $this->applyDefaultFilters($pages);
+        return Versioned::updateListToOnlyIncludeArchived($list);
     }
 }

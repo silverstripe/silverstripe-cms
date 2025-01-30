@@ -14,13 +14,12 @@ Feature: Manage page permissions
     Then I should see an edit page form
     And I click the "Settings" CMS tab
 
-  # BUG: https://github.com/silverstripe/silverstripe-cms/issues/1897
-  # Scenario: I can open view permissions to everyone
-  #   Given I select "Anyone" from "Who can view this page?" input group
-  #   And I press the "Save" button
-  #   When I am not logged in
-  #   And I go to the homepage
-  #   Then I should see "Welcome"
+  Scenario: I can open view permissions to everyone
+    Given I select "Anyone" from "Who can view this page?" input group
+    And I press the "Save" button
+    When I am not logged in
+    And I go to the homepage
+    Then I should see "Welcome"
   Scenario: I can limit page view permissions to logged-in users
     Given I select "Logged-in users" from "Who can view this page?" input group
     And I press the "Publish" button

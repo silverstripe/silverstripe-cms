@@ -2,7 +2,6 @@
 
 namespace SilverStripe\CMS\Controllers;
 
-use InvalidArgumentException;
 use LogicException;
 use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Admin\AdminRootController;
@@ -13,11 +12,9 @@ use SilverStripe\Admin\Navigator\SilverStripeNavigator;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Archive;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Publish;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish;
-use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search;
 use SilverStripe\CMS\Forms\CMSMainAddForm;
 use SilverStripe\CMS\Model\CurrentRecordIdentifier;
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\CMS\Search\SearchForm;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPRequest;
@@ -33,10 +30,6 @@ use SilverStripe\Core\Flushable;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Core\Manifest\ModuleResource;
 use SilverStripe\Core\Manifest\ModuleResourceLoader;
-use SilverStripe\Dev\Deprecation;
-use SilverStripe\Forms\DateField;
-use SilverStripe\Forms\DropdownField;
-use SilverStripe\Forms\FieldGroup;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
@@ -67,11 +60,10 @@ use SilverStripe\Security\PermissionProvider;
 use SilverStripe\Security\Security;
 use SilverStripe\Security\SecurityToken;
 use SilverStripe\SiteConfig\SiteConfig;
-use SilverStripe\Versioned\ChangeSet;
-use SilverStripe\Versioned\ChangeSetItem;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\VersionedAdmin\Controllers\CMSPageHistoryViewerController;
 use SilverStripe\Model\ArrayData;
+use SilverStripe\ORM\Search\SearchContextForm;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\PermissionCheckable;
 use SilverStripe\Versioned\RecursivePublishable;
@@ -136,7 +128,7 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
         'submit',
         'EditForm',
         'schema',
-        'SearchForm',
+        'getSearchForm',
         'TreeAsUL',
         'getshowdeletedsubtree',
         'savetreenode',
@@ -151,6 +143,7 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
 
     private static array $url_handlers = [
         'EditForm/$ID' => 'EditForm',
+        'GET SearchForm' => 'getSearchForm',
     ];
 
     private static array $casting = [
@@ -497,11 +490,10 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
     public function TreeAsUL()
     {
         $modelClass = $this->getModelClass();
-        $filter = $this->getSearchFilter();
 
         DataObject::singleton($modelClass)->prepopulateTreeDataCache(null, [
-            'childrenMethod' => $filter ? $filter->getChildrenMethod() : 'AllChildrenIncludingDeleted',
-            'numChildrenMethod' => $filter ? $filter->getNumChildrenMethod() : 'numChildren',
+            'childrenMethod' => 'AllChildrenIncludingDeleted',
+            'numChildrenMethod' => 'numChildren',
         ]);
 
         $html = $this->getTreeFor($modelClass);
@@ -531,21 +523,6 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
         $nodeCountThreshold = null
     ) {
         $nodeCountThreshold = is_null($nodeCountThreshold) ? Config::inst()->get($className, 'node_threshold_total') : $nodeCountThreshold;
-        // Provide better defaults from filter
-        $filter = $this->getSearchFilter();
-        if ($filter) {
-            if (!$childrenMethod) {
-                $childrenMethod = $filter->getChildrenMethod();
-            }
-            if (!$numChildrenMethod) {
-                $numChildrenMethod = $filter->getNumChildrenMethod();
-            }
-            if (!$filterFunction) {
-                $filterFunction = function ($node) use ($filter) {
-                    return $filter->isRecordIncluded($node);
-                };
-            }
-        }
 
         // Build set from node and begin marking
         $record = ($rootID) ? $this->getRecord($rootID) : null;
@@ -626,15 +603,6 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
             foreach ($statuses as $s) {
                 $classes .= ' status-' . $s;
             }
-        }
-
-        // Get additional filter classes
-        $filter = $this->getSearchFilter();
-        if ($filter && ($filterClasses = $filter->getRecordClasses($node))) {
-            if (is_array($filterClasses)) {
-                $filterClasses = implode(' ', $filterClasses);
-            }
-            $classes .= ' ' . $filterClasses;
         }
 
         return trim($classes ?? '');
@@ -896,116 +864,16 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
     }
 
     /**
-     * Returns the search form schema for the current model
-     *
-     * @return string
-     * @deprecated 5.4.0 Will be replaced with SilverStripe\ORM\Search\SearchContextForm::getSchemaData()
+     * Returns a Form for record searching for use in templates.
      */
-    public function getSearchFieldSchema(): string
+    public function getSearchForm(): SearchContextForm
     {
-        Deprecation::noticeWithNoReplacment(
-            '5.4.0',
-            'Will be replaced with SilverStripe\ORM\Search\SearchContextForm::getSchemaData()'
-        );
-        $schemaUrl = $this->Link('schema/SearchForm');
-
-        $singleton = DataObject::singleton($this->getModelClass());
-        $context = $singleton->getDefaultSearchContext();
+        $context = DataObject::singleton($this->getModelClass())->getDefaultSearchContext();
         $params = $this->getRequest()->requestVar('q') ?: [];
         $context->setSearchParams($params);
-
-        $placeholder = _t(SearchForm::class . '.FILTERLABELTEXT2', 'Search "{model}"', ['model' => $singleton->i18n_plural_name()]);
-        $searchParams = $context->getSearchParams();
-        $searchParams = array_combine(array_map(function ($key) {
-            return 'Search__' . $key;
-        }, array_keys($searchParams ?? [])), $searchParams ?? []);
-
-        $schema = [
-            'formSchemaUrl' => $schemaUrl,
-            'name' => 'Term',
-            'placeholder' => $placeholder,
-            'filters' => $searchParams ?: new \stdClass // stdClass maps to empty json object '{}'
-        ];
-
-        return json_encode($schema);
-    }
-
-    /**
-     * Returns a Form for record searching for use in templates.
-     *
-     * Can be modified from a decorator by a 'updateSearchForm' method
-     */
-    public function getSearchForm(): Form
-    {
-        $modelClass = $this->getModelClass();
-        $singleton = DataObject::singleton($modelClass);
-        // Create the fields
-        $dateFrom = DateField::create(
-            'Search__LastEditedFrom',
-            _t(SearchForm::class . '.FILTERDATEFROM', 'From')
-        )->setLocale(Security::getCurrentUser()->Locale);
-        $dateTo = DateField::create(
-            'Search__LastEditedTo',
-            _t(SearchForm::class . '.FILTERDATETO', 'To')
-        )->setLocale(Security::getCurrentUser()->Locale);
-        $filters = CMSSiteTreeFilter::get_all_filters();
-        // Remove 'All records' as we set that to empty/default value
-        unset($filters[CMSSiteTreeFilter_Search::class]);
-        $recordFilter = DropdownField::create(
-            'Search__FilterClass',
-            _t(SearchForm::class . '.RECORD_STATUS', '{model} status', ['model' => $singleton->i18n_singular_name()]),
-            $filters
-        );
-        $recordFilter->setEmptyString(_t(
-            SearchForm::class . '.RECORDS_ALLOPT',
-            'All {model}',
-            ['model' => mb_strtolower($singleton->i18n_plural_name())]
-        ));
-        $classes = DropdownField::create(
-            'Search__ClassName',
-            _t(
-                SearchForm::class . '.RECORD_TYPEOPT',
-                '{model} type',
-                'Dropdown for limiting search to a record type',
-                ['model' => $singleton->i18n_singular_name()]
-            ),
-            $this->getRecordTypes()
-        );
-        $classes->setEmptyString(_t(SearchForm::class . '.RECORD_TYPEANYOPT', 'Any'));
-
-        // Group the Datefields
-        $dateGroup = FieldGroup::create(
-            _t(SearchForm::class . '.RECORD_FILTERDATEHEADING', 'Last edited'),
-            [$dateFrom, $dateTo]
-        )->setName('Search__LastEdited')
-        ->addExtraClass('fieldgroup--fill-width');
-
-        // Create the Field list
-        $fields = new FieldList(
-            $recordFilter,
-            $classes,
-            $dateGroup
-        );
-
-        // Create the form
-        $form = Form::create(
-            $this,
-            'SearchForm',
-            $fields,
-            new FieldList()
-        );
-        $form->addExtraClass('cms-search-form');
-        $form->setFormMethod('GET');
-        $form->setFormAction(CMSMain::singleton()->Link());
-        $form->disableSecurityToken();
-        $form->unsetValidator();
-
-        // Load the form with previously sent search data
-        $form->loadDataFrom($this->getRequest()->getVars());
-
+        $form = SearchContextForm::create($this, $context);
         // Allow decorators to modify the form
         $this->extend('updateSearchForm', $form);
-
         return $form;
     }
 
@@ -1667,61 +1535,20 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
     }
 
     /**
-     * Safely reconstruct a selected filter from a given set of query parameters
-     *
-     * @param array $params Query parameters to use, or null if none present
-     * @return CMSSiteTreeFilter The filter class
-     * @throws InvalidArgumentException if invalid filter class is passed.
-     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
-     */
-    protected function getQueryFilter($params)
-    {
-        Deprecation::noticeWithNoReplacment('5.4.0');
-        if (empty($params['FilterClass'])) {
-            return null;
-        }
-        $filterClass = $params['FilterClass'];
-        if (!is_subclass_of($filterClass, CMSSiteTreeFilter::class)) {
-            throw new InvalidArgumentException("Invalid filter class passed: {$filterClass}");
-        }
-        return $filterClass::create($params);
-    }
-
-    /**
-     * Returns the records meet a certain criteria as {@see CMSSiteTreeFilter} or the subrecords of a parent record
-     * defaulting to no filter and show all records in first level.
-     * Doubles as search results, if any search parameters are set through {@link SearchForm()}.
-     *
-     * @param array $params Search filter criteria
-     * @param int $parentID Optional parent node to filter on (can't be combined with other search criteria)
-     * @return SS_List
-     * @throws InvalidArgumentException if invalid filter class is passed.
-     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
-     */
-    public function getList($params = [], $parentID = 0)
-    {
-        Deprecation::noticeWithNoReplacment('5.4.0');
-        if ($filter = $this->getQueryFilter($params)) {
-            return $filter->getFilteredPages();
-        } else {
-            $list = DataObject::get($this->getModelClass());
-            $parentID = is_numeric($parentID) ? $parentID : 0;
-            return $list->filter("ParentID", $parentID);
-        }
-    }
-
-    /**
      * @return Form
      */
     public function ListViewForm()
     {
-        $params = $this->getRequest()->requestVar('q');
+        $modelClass = $this->getModelClass();
         $parentID = $this->getRequest()->requestVar('ParentID');
-        // Set default filter if other params are set
-        if ($params && empty($params['FilterClass'])) {
-            $params['FilterClass'] = CMSSiteTreeFilter_Search::class;
+        $params = $this->getRequest()->requestVar('q') ?? [];
+        if ($params) {
+            $form = $this->getSearchForm();
+            $params = $form->prepareValuesForSearchContext($params);
+            $list = DataObject::singleton($modelClass)->getDefaultSearchContext()->getQuery($params);
+        } else {
+            $list = DataObject::singleton($modelClass)::get()->filter('ParentID', is_numeric($parentID) ? $parentID : 0);
         }
-        $list = $this->getList($params, $parentID);
         $gridFieldConfig = GridFieldConfig::create()->addComponents(
             Injector::inst()->create(GridFieldSortableHeader::class),
             Injector::inst()->create(GridFieldDataColumns::class),
@@ -1741,7 +1568,6 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
         $columns = $gridField->getConfig()->getComponentByType(GridFieldDataColumns::class);
 
         // Set up columns and sorting for list view GridField
-        $modelClass = $this->getModelClass();
         $fields = [
             'getTreeTitle' => _t($modelClass . '.TREETITLE', 'Title'),
             'i18n_singular_name' => _t($modelClass . '.TREETYPE', 'Record Type'),

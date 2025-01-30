@@ -7,10 +7,13 @@ use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Admin\CMSEditLinkExtension;
 use SilverStripe\Assets\Shortcodes\FileLinkTracking;
 use SilverStripe\CMS\Controllers\CMSMain;
+use SilverStripe\CMS\Controllers\CMSSiteTreeFilter;
+use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\CMS\Controllers\ModelAsController;
 use SilverStripe\CMS\Controllers\RootURLController;
 use SilverStripe\CMS\Forms\SiteTreeURLSegmentField;
+use SilverStripe\CMS\Search\SiteTreeSearchContext;
 use SilverStripe\Control\ContentNegotiator;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
@@ -50,6 +53,8 @@ use SilverStripe\ORM\HasManyList;
 use SilverStripe\ORM\HiddenClass;
 use SilverStripe\ORM\Hierarchy\Hierarchy;
 use SilverStripe\Core\Validation\ValidationResult;
+use SilverStripe\Forms\DateField;
+use SilverStripe\Forms\EmailField;
 use SilverStripe\Forms\HiddenField;
 use SilverStripe\Security\Group;
 use SilverStripe\Security\InheritedPermissions;
@@ -64,6 +69,7 @@ use SilverStripe\Subsites\Model\Subsite;
 use SilverStripe\Versioned\RecursivePublishable;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\Model\ArrayData;
+use SilverStripe\ORM\Filters\WithinRangeFilter;
 use SilverStripe\Security\PermissionCheckable;
 use SilverStripe\View\HTML;
 use SilverStripe\View\Parsers\HTMLValue;
@@ -289,8 +295,29 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     ];
 
     private static $searchable_fields = [
-        'Title',
-        'Content',
+        // See also searchableFields() which adds `FilterClass`
+        'ClassName' => [
+            'general' => false,
+        ],
+        'LastEdited' => [
+            'general' => false,
+            'filter' => WithinRangeFilter::class,
+            'field' => DateField::class,
+        ],
+        // The below fields are excluded from the filter form but
+        // are included in the general search
+        'Title' => [
+            'field' => HiddenField::class,
+        ],
+        'URLSegment' => [
+            'field' => HiddenField::class,
+        ],
+        'MenuTitle' => [
+            'field' => HiddenField::class,
+        ],
+        'Content' => [
+            'field' => HiddenField::class,
+        ],
     ];
 
     private static $field_labels = [
@@ -2842,6 +2869,60 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function isHomePage(): bool
     {
         return $this->URLSegment === RootURLController::get_homepage_link();
+    }
+
+    public function getDefaultSearchContext()
+    {
+        return SiteTreeSearchContext::create(
+            static::class,
+            $this->scaffoldSearchFields(),
+            $this->defaultSearchFilters()
+        );
+    }
+
+    public function searchableFields()
+    {
+        $fields = parent::searchableFields();
+        // Push `FilterClass` to the top of the fields list
+        $fields = array_merge([
+            'FilterClass' => [
+                'filter' => '',
+                'general' => false,
+                'title' => _t(__CLASS__ . '.Filter_Status', 'Page status'),
+                'field' => DropdownField::class,
+            ]
+        ], $fields);
+        return $fields;
+    }
+
+    public function scaffoldSearchFields($_params = null)
+    {
+        $fields = parent::scaffoldSearchFields($_params);
+
+        // Update "Status" sources
+        $filters = CMSSiteTreeFilter::get_all_filters();
+        // Remove 'All records' as we set that to empty/default value
+        unset($filters[CMSSiteTreeFilter_Search::class]);
+        $filterClassField = $fields->dataFieldByName('FilterClass');
+        if ($filterClassField) {
+            $title = CMSSiteTreeFilter_Search::singleton()->title();
+            $filterClassField->setSource($filters)->setEmptyString($title);
+        }
+
+        // Update "Page type" sources
+        $classNames = [];
+        $validClasses = ClassInfo::getValidSubClasses(SiteTree::class);
+        $this->invokeWithExtensions('updateAllowedSubClasses', $validClasses);
+        foreach ($validClasses as $class) {
+            $classNames[$class] = SiteTree::singleton($class)->i18n_singular_name();
+        }
+        $classNameField = $fields->dataFieldByName('ClassName');
+        if ($classNameField) {
+            $emptyString = _t(__CLASS__ . '.Filter_ClassName_Any', 'Any');
+            $classNameField->setSource($classNames)->setEmptyString($emptyString);
+        }
+
+        return $fields;
     }
 
     /**

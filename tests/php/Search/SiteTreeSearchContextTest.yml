@@ -1,0 +1,34 @@
+SilverStripe\CMS\Model\SiteTree:
+  page1:
+    Title: Home
+  page2:
+    Title: Page 2
+  page3:
+    Title: Page 3
+  page4:
+    Title: Page 4
+  page5:
+    Title: Page 5
+    Content: 'Default text'
+  page6:
+    Title: Page 6
+  page7:
+    Title: Page 7
+  page7a:
+    Parent: =>SilverStripe\CMS\Model\SiteTree.page7
+    Title: Page 7a
+  page2a:
+    Parent: =>SilverStripe\CMS\Model\SiteTree.page2
+    Title: Page 2a
+  page2b:
+    Parent: =>SilverStripe\CMS\Model\SiteTree.page2
+    Title: Page 2b
+  page3a:
+    Parent: =>SilverStripe\CMS\Model\SiteTree.page3
+    Title: Page 3a
+  page3b:
+    Parent: =>SilverStripe\CMS\Model\SiteTree.page3
+    Title: Page 3b
+  page8:
+    Title: EncodedUrlSegment
+    URLSegment: lake-wanaka+adventure

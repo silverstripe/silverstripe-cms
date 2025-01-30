@@ -6,8 +6,13 @@ use LogicException;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\SimpleCache\CacheInterface;
 use ReflectionMethod;
+use ReflectionProperty;
 use SilverStripe\Admin\CMSBatchActionHandler;
 use SilverStripe\CMS\Controllers\CMSMain;
+use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages;
+use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search;
+use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages;
+use SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages;
 use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\CMS\Tests\Controllers\CMSMainTest\TestHierarchicalDataObject;
@@ -24,6 +29,7 @@ use SilverStripe\Dev\CSSContentParser;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Dev\TestOnly;
 use SilverStripe\Forms\FieldList;
+use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
 use SilverStripe\Security\Member;
@@ -541,24 +547,65 @@ class CMSMainTest extends FunctionalTest
     }
 
     /**
-     * Tests filtering in {@see CMSMain::getList()}
+     * Note this is not intended to be exhaustive - we're just validating
+     * that the search filter stuff is generally applied to ListViewForm.
+     * More robust testing of the filtering functionality is done separately.
      */
-    public function testGetList()
+    public static function provideListViewForm(): array
     {
-        $controller = CMSMain::create();
-        $controller->setRequest(Controller::curr()->getRequest());
+        return [
+            'include all pages' => [
+                'params' => [],
+                'limit' => 5,
+                'expectedPreLimitCount' => 26, // Note this explicitly excludes records with parents!
+                'expectedTitles' => ['Home', 'Page 10', 'Page 11', 'Page 13', 'Page 14'],
+            ],
+            'filter by terms' => [
+                'params' => ['q' => 'Page 4'],
+                'limit' => null,
+                'expectedPreLimitCount' => 3,
+                'expectedTitles' => ['Page 14', 'Page 24', 'Page 4'],
+            ],
+            'deleted pages only' => [
+                'params' => [
+                    'FilterClass' => CMSSiteTreeFilter_StatusDeletedPages::class,
+                ],
+                'limit' => null,
+                'expectedPreLimitCount' => 1,
+                'expectedTitles' => ['Page 1'],
+            ],
+            'pages removed from draft only' => [
+                'params' => [
+                    'FilterClass' => CMSSiteTreeFilter_StatusRemovedFromDraftPages::class,
+                ],
+                'limit' => null,
+                'expectedPreLimitCount' => 1,
+                'expectedTitles' => ['Page 12'],
+            ],
+            'published pages only' => [
+                'params' => [
+                    'FilterClass' => CMSSiteTreeFilter_PublishedPages::class,
+                ],
+                'limit' => null,
+                'expectedPreLimitCount' => 2,
+                'expectedTitles' => ['Page 11', 'Page 12'],
+            ],
+        ];
+    }
 
-        // Test all pages (stage)
-        $pages = $controller->getList()->sort('Title');
-        $this->assertEquals(28, $pages->count());
-        $this->assertEquals(
-            ['Home', 'Page 1', 'Page 10', 'Page 11', 'Page 12'],
-            $pages->Limit(5)->column('Title')
-        );
+    #[DataProvider('provideListViewForm')]
+    public function testListViewForm(array $params, ?int $limit, int $expectedPreLimitCount, array $expectedTitles): void
+    {
+        $request = Controller::curr()->getRequest();
+        $requestVarsReflection = new ReflectionProperty($request, 'getVars');
+        $requestVarsReflection->setValue($request, ['q' => $params]);
+        $controller = CMSMain::create()->setRequest($request);
+
+        /** @var DataList<SiteTree> $pages */
+        $pages = $controller->ListViewForm()->Fields()->dataFieldByName('Record')->getList();
 
         // Change state of tree
         $page1 = $this->objFromFixture(SiteTree::class, 'page1');
-        $page3 = $this->objFromFixture(SiteTree::class, 'page3');
         $page11 = $this->objFromFixture(SiteTree::class, 'page11');
         $page12 = $this->objFromFixture(SiteTree::class, 'page12');
         // Deleted
@@ -570,62 +617,48 @@ class CMSMainTest extends FunctionalTest
         $page12->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
         $page12->delete();
 
-        // Re-test all pages (stage)
-        $pages = $controller->getList()->sort('Title');
-        $this->assertEquals(26, $pages->count());
-        $this->assertEquals(
-            ['Home', 'Page 10', 'Page 11', 'Page 13', 'Page 14'],
-            $pages->Limit(5)->column('Title')
-        );
+        $this->assertSame($expectedTitles, $pages->sort('Title')->limit($limit)->column('Title'));
+        $this->assertCount($expectedPreLimitCount, $pages);
+    }
 
-        // Test deleted page filter
-        $params = [
-                'FilterClass' => 'SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_StatusDeletedPages',
+    public static function provideListViewFormParentID(): array
+    {
+        return [
+            [
+                'includeFilter' => true,
+            ],
+            [
+                'includeFilter' => false,
+            ],
         ];
-        $pages = $controller->getList($params);
-        $this->assertEquals(1, $pages->count());
-        $this->assertEquals(
-            ['Page 1'],
-            $pages->column('Title')
-        );
+    }
 
-        // Test live, but not on draft filter
-        $params = [
-            'FilterClass' => 'SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_StatusRemovedFromDraftPages',
-        ];
-        $pages = $controller->getList($params);
-        $this->assertEquals(1, $pages->count());
-        $this->assertEquals(
-            ['Page 12'],
-            $pages->column('Title')
-        );
+    #[DataProvider('provideListViewFormParentID')]
+    public function testListViewFormParentID(bool $includeFilter): void
+    {
+        $page3 = $this->objFromFixture(SiteTree::class, 'page3');
+        $page11 = $this->objFromFixture(SiteTree::class, 'page11');
+        $page12 = $this->objFromFixture(SiteTree::class, 'page12');
+        $page11->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
+        $page12->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
 
-        // Test live pages filter
-        $params = [
-            'FilterClass' => 'SilverStripe\\CMS\\Controllers\\CMSSiteTreeFilter_PublishedPages',
-        ];
-        $pages = $controller->getList($params);
-        $this->assertEquals(2, $pages->count());
-        $this->assertEquals(
-            ['Page 11', 'Page 12'],
-            $pages->column('Title')
-        );
+        $request = Controller::curr()->getRequest();
+        $params = ['ParentID' => $page3->ID];
+        if ($includeFilter) {
+            $params['q'] = ['FilterClass' => CMSSiteTreeFilter_PublishedPages::class];
+        }
+        $requestVarsReflection = new ReflectionProperty($request, 'getVars');
+        $requestVarsReflection->setValue($request, $params);
+        $controller = CMSMain::create()->setRequest($request);
 
-        // Test that parentID is ignored when filtering
-        $pages = $controller->getList($params, $page3->ID);
-        $this->assertEquals(2, $pages->count());
-        $this->assertEquals(
-            ['Page 11', 'Page 12'],
-            $pages->column('Title')
-        );
+        /** @var DataList<SiteTree> $pages */
+        $pages = $controller->ListViewForm()->Fields()->dataFieldByName('Record')->getList();
 
-        // Test that parentID is respected when not filtering
-        $pages = $controller->getList([], $page3->ID);
-        $this->assertEquals(2, $pages->count());
-        $this->assertEquals(
-            ['Page 3.1', 'Page 3.2'],
-            $pages->column('Title')
-        );
+        if ($includeFilter) {
+            $this->assertSame(['Page 11', 'Page 12'], $pages->column('Title'));
+        } else {
+            $this->assertSame(['Page 3.1', 'Page 3.2'], $pages->column('Title'));
+        }
     }
 
     /**
@@ -728,46 +761,6 @@ class CMSMainTest extends FunctionalTest
         Injector::inst()->registerService($mockPageMissesCache, $pageClass);
         $hints = $cms->TreeHints();
         $this->assertNotNull($hints);
-    }
-
-    public function testSearchField()
-    {
-        $cms = CMSMain::create();
-        $searchSchema = $cms->getSearchFieldSchema();
-
-        $this->assertJsonStringEqualsJsonString(
-            json_encode([
-                'formSchemaUrl' => 'admin/pages/schema/SearchForm',
-                'name' => 'Term',
-                'placeholder' => 'Search "Pages"',
-                'filters' => new \stdClass
-            ]),
-            $searchSchema
-        );
-
-        $request = new HTTPRequest(
-            'GET',
-            'admin/pages/schema/SearchForm',
-            ['q' => [
-                'Term' => 'test',
-                'FilterClass' => 'SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search'
-            ]]
-        );
-        $cms->setRequest($request);
-        $searchSchema = $cms->getSearchFieldSchema();
-
-        $this->assertJsonStringEqualsJsonString(
-            json_encode([
-                'formSchemaUrl' => 'admin/pages/schema/SearchForm',
-                'name' => 'Term',
-                'placeholder' => 'Search "Pages"',
-                'filters' => [
-                    'Search__Term' => 'test',
-                    'Search__FilterClass' => 'SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search'
-                ]
-            ]),
-            $searchSchema
-        );
     }
 
     public function testCanOrganiseTree()
