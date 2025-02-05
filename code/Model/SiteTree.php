@@ -40,6 +40,8 @@ use SilverStripe\Forms\ListboxField;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\OptionsetField;
 use SilverStripe\Forms\SearchableMultiDropdownField;
+use SilverStripe\Forms\SudoModeField;
+use SilverStripe\Forms\SudoModePasswordField;
 use SilverStripe\Forms\Tab;
 use SilverStripe\Forms\TabSet;
 use SilverStripe\Forms\TextareaField;
@@ -67,6 +69,8 @@ use SilverStripe\Security\Permission;
 use SilverStripe\Security\PermissionChecker;
 use SilverStripe\Security\PermissionProvider;
 use SilverStripe\Security\Security;
+use SilverStripe\Security\SudoMode\SudoModeService;
+use SilverStripe\Security\SudoMode\SudoModeServiceInterface;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\Subsites\Model\Subsite;
 use SilverStripe\Versioned\RecursivePublishable;
@@ -2290,6 +2294,47 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $viewAllGroupsMap = $mapFn(Permission::get_groups_by_permission(['SITETREE_VIEW_ALL', 'ADMIN']));
         $editAllGroupsMap = $mapFn(Permission::get_groups_by_permission(['SITETREE_EDIT_ALL', 'ADMIN']));
 
+        $editorsOptionsField = OptionsetField::create(
+            "CanEditType",
+            _t(__CLASS__.'.EDITHEADER', "Who can edit this page?")
+        );
+        $editorGroupsField = TreeMultiselectField::create(
+            "EditorGroups",
+            _t(__CLASS__.'.EDITORGROUPS', "Editor Groups"),
+            Group::class
+        );
+        $editorMembersField = SearchableMultiDropdownField::create(
+            "EditorMembers",
+            _t(__CLASS__.'.EDITORMEMBERS', "Editor Users"),
+            Member::get()
+        )
+            ->setIsLazyLoaded(true)
+            ->setUseSearchContext(true);
+        $editorFields = [
+            $editorsOptionsField,
+            $editorGroupsField,
+            $editorMembersField,
+        ];
+        $session = Controller::curr()?->getRequest()?->getSession();
+        if ($session && !Injector::inst()->get(SudoModeServiceInterface::class)->check($session)) {
+            foreach ($editorFields as $editorField) {
+                // need to setDisabled() rather than just setReadOnly() as the latter doesn't fully
+                // work on OptionsetField
+                $editorField->setDisabled(true);
+            }
+            $editorFields = [
+                CompositeField::create(
+                    FieldList::create([
+                        SudoModePasswordField::create(SudoModePasswordField::FIELD_NAME)
+                            ->setPanelPadded(false),
+                        ...$editorFields
+                    ])
+                )
+                    ->setTitle($editorsOptionsField->Title()),
+            ];
+            $editorsOptionsField->setTitle('');
+        }
+
         $fields = new FieldList(
             $rootTab = new TabSet(
                 "Root",
@@ -2327,22 +2372,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                     )
                         ->setIsLazyLoaded(true)
                         ->setUseSearchContext(true),
-                    $editorsOptionsField = new OptionsetField(
-                        "CanEditType",
-                        _t(__CLASS__.'.EDITHEADER', "Who can edit this page?")
-                    ),
-                    $editorGroupsField = TreeMultiselectField::create(
-                        "EditorGroups",
-                        _t(__CLASS__.'.EDITORGROUPS', "Editor Groups"),
-                        Group::class
-                    ),
-                    $editorMembersField = SearchableMultiDropdownField::create(
-                        "EditorMembers",
-                        _t(__CLASS__.'.EDITORMEMBERS', "Editor Users"),
-                        Member::get()
-                    )
-                        ->setIsLazyLoaded(true)
-                        ->setUseSearchContext(true)
+                    ...$editorFields
                 )
             )
         );
