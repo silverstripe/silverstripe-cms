@@ -35,13 +35,7 @@ class CMSSiteTreeFilter_StatusDeletedPages extends CMSSiteTreeFilter
      */
     public function getFilteredPages()
     {
-        $pages = Versioned::get_including_deleted(SiteTree::class);
-        $pages = $this->applyDefaultFilters($pages);
-
-        $pages = $pages->filterByCallback(function (SiteTree $page) {
-            // Doesn't exist on either stage or live
-            return $page->isArchived();
-        });
-        return $pages;
+        $pages = Versioned::getArchivedOnly(SiteTree::class);
+        return $this->applyDefaultFilters($pages);
     }
 }

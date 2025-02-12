@@ -152,12 +152,12 @@ class CMSSiteTreeFilterTest extends SapphireTest
 
         // Check filter respects parameters
         $f = new CMSSiteTreeFilter_StatusDraftPages(['Term' => 'No Match']);
-        $this->assertEmpty($f->isRecordIncluded($draftPage));
+        $this->assertFalse($f->isRecordIncluded($draftPage));
 
         // Ensures empty array returned if no data to show
         $f = new CMSSiteTreeFilter_StatusDraftPages();
         $draftPage->delete();
-        $this->assertEmpty($f->isRecordIncluded($draftPage));
+        $this->assertFalse($f->isRecordIncluded($draftPage));
     }
 
     public function testDateFromToLastSameDate()
@@ -193,12 +193,12 @@ class CMSSiteTreeFilterTest extends SapphireTest
 
         // Check filter is respected
         $f = new CMSSiteTreeFilter_StatusRemovedFromDraftPages(['LastEditedTo' => '1999-01-01 00:00']);
-        $this->assertEmpty($f->isRecordIncluded($removedDraftPage));
+        $this->assertFalse($f->isRecordIncluded($removedDraftPage));
 
         // Ensures empty array returned if no data to show
         $f = new CMSSiteTreeFilter_StatusRemovedFromDraftPages();
         $removedDraftPage->delete();
-        $this->assertEmpty($f->isRecordIncluded($removedDraftPage));
+        $this->assertFalse($f->isRecordIncluded($removedDraftPage));
     }
 
     public function testStatusDeletedFilter()

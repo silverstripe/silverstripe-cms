@@ -24,12 +24,14 @@ class CMSSiteTreeFilter_StatusRemovedFromDraftPages extends CMSSiteTreeFilter
      */
     public function getFilteredPages()
     {
-        $pages = Versioned::get_including_deleted(SiteTree::class);
-        $pages = $this->applyDefaultFilters($pages);
-        $pages = $pages->filterByCallback(function (SiteTree $page) {
-            // If page is removed from stage but not live
-            return $page->isOnLiveOnly();
-        });
-        return $pages;
+        $pages = SiteTree::get();
+        // Get all pages removed from stage but not live
+        // Don't just use withVersionedMode - that would just get the latest live versions
+        // including records which were not removed from draft.
+        $pages = $pages->setDataQueryParam([
+            'Versioned.mode' => 'stage_unique',
+            'Versioned.stage' => Versioned::LIVE,
+        ]);
+        return $this->applyDefaultFilters($pages);
     }
 }

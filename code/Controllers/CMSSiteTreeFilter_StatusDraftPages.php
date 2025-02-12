@@ -25,12 +25,14 @@ class CMSSiteTreeFilter_StatusDraftPages extends CMSSiteTreeFilter
      */
     public function getFilteredPages()
     {
-        $pages = Versioned::get_by_stage(SiteTree::class, 'Stage');
-        $pages = $this->applyDefaultFilters($pages);
-        $pages = $pages->filterByCallback(function (SiteTree $page) {
-            // If page exists on stage but not on live
-            return $page->isOnDraftOnly();
-        });
-        return $pages;
+        $pages = SiteTree::get();
+        // Get all pages existing in draft but not live
+        // Don't just use withVersionedMode - that would just get the latest draft versions
+        // including records which have since been published.
+        $pages = $pages->setDataQueryParam([
+            'Versioned.mode' => 'stage_unique',
+            'Versioned.stage' => Versioned::DRAFT,
+        ]);
+        return $this->applyDefaultFilters($pages);
     }
 }
