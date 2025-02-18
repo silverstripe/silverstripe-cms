@@ -1,23 +1,7 @@
 <?php
 
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\Core\Manifest\ModuleLoader;
-use SilverStripe\Forms\HTMLEditor\TinyMCEConfig;
 use SilverStripe\View\Parsers\ShortcodeParser;
-
-call_user_func(function () {
-    $module = ModuleLoader::inst()->getManifest()->getModule('silverstripe/cms');
-
-    // Enable insert-link to internal pages
-    TinyMCEConfig::get('cms')
-        ->enablePlugins([
-            'sslinkinternal' => $module
-                ->getResource('client/dist/js/TinyMCE_sslink-internal.js'),
-            'sslinkanchor' => $module
-                ->getResource('client/dist/js/TinyMCE_sslink-anchor.js'),
-        ]);
-});
-
 
 /**
  * Register the default internal shortcodes.

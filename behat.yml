@@ -11,6 +11,7 @@ default:
         - SilverStripe\BehatExtension\Context\EmailContext
         - SilverStripe\CMS\Tests\Behaviour\LoginContext
         - SilverStripe\CMS\Tests\Behaviour\ThemeContext
+        - SilverStripe\CMS\Tests\Behaviour\AnchorContext
         - SilverStripe\CMS\Tests\Behaviour\FixtureContext:
         # Note: double indent for args is intentional
             - "%paths.modules.cms%/tests/behat/features/files/"

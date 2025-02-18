@@ -143,38 +143,4 @@ JS;
         $actual = $this->getMainContext()->getSession()->evaluateScript($js);
         Assert::assertEquals($expected, $actual);
     }
-
-    /**
-     * Select a value in the anchor selector field
-     *
-     * @When /^I select "([^"]*)" in the "([^"]*)" anchor dropdown$/
-     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Tests\Behaviour\AnchorContext::iSelectValueInAnchorDropdown()
-     */
-    public function iSelectValueInAnchorDropdown($text, $selector)
-    {
-        Deprecation::notice(
-            '5.4.0',
-            'Will be replaced with SilverStripe\CMS\Tests\Behaviour\AnchorContext::iSelectValueInAnchorDropdown()'
-        );
-        $page = $this->getMainContext()->getSession()->getPage();
-        /** @var NodeElement $parentElement */
-        $parentElement = null;
-        $this->retryThrowable(function () use (&$parentElement, &$page, $selector) {
-            $parentElement = $page->find('css', $selector);
-            Assert::assertNotNull($parentElement, sprintf('"%s" element not found', $selector));
-            $page = $this->getMainContext()->getSession()->getPage();
-        });
-
-        $this->retryThrowable(function () use ($parentElement, $selector) {
-            $dropdown = $parentElement->find('css', '.anchorselectorfield__dropdown-indicator');
-            Assert::assertNotNull($dropdown, sprintf('Unable to find the dropdown in "%s"', $selector));
-            $dropdown->click();
-        });
-
-        $this->retryThrowable(function () use ($text, $parentElement, $selector) {
-            $element = $parentElement->find('xpath', sprintf('//*[count(*)=0 and .="%s"]', $text));
-            Assert::assertNotNull($element, sprintf('"%s" not found in "%s"', $text, $selector));
-            $element->click();
-        });
-    }
 }

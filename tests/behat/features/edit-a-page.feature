@@ -77,38 +77,6 @@ Feature: Edit a page
     When I go to "/admin/pages"
     And I click on "About Us" in the tree
 
-  Scenario: TinyMCE asset linking
-    When I click on "About Us" in the tree
-
-    # Embed files from the "Files" section of the admin area
-    And I press the "Insert from Files" HTML field button
-    And I click on the ".gallery__files .gallery-item__thumbnail" element
-    And I press the "Insert file" button
-
-    # Link to a file in the "Files" section of the admin area
-    And I press the "Insert link" HTML field button
-    And I click "Link to a file" in the ".tox-collection__group" element
-    And I click on the ".gallery__files .gallery-item__thumbnail" element
-    And I fill in "Form_fileInsertForm_Text" with "MyImage"
-    And I press the "Link to file" button
-
-    # Embed media from a URL
-    And I press the "Insert media via URL" button
-    And I fill in "Form_remoteCreateForm_Url" with "https://www.youtube.com/watch?v=ScMzIvxBSi4"
-    And I press "Add media"
-    And I wait for 15 seconds
-    And I press "Insert media"
-
-    # Assert on frontend
-    And I press the "Publish" button
-    And I go to "/about-us"
-    # insert from files
-    Then I should see an "img[src='/assets/file1.jpg']" element
-    # link to a file
-    Then I should see an "a[href='/assets/file1.jpg']" element
-    # media embed
-    Then I should see an "iframe[src='https://www.youtube.com/embed/ScMzIvxBSi4?feature=oembed']" element
-
   Scenario: Change page type
     When I click on "About Us" in the tree
     And I click the "Settings" CMS tab

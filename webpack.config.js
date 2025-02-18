@@ -15,8 +15,6 @@ const config = [
     .setEntry({
       bundle: `${PATHS.SRC}/bundles/bundle.js`,
       SilverStripeNavigator: `${PATHS.LEGACY_SRC}/SilverStripeNavigator.js`,
-      'TinyMCE_sslink-internal': `${PATHS.LEGACY_SRC}/TinyMCE_sslink-internal.js`,
-      'TinyMCE_sslink-anchor': `${PATHS.LEGACY_SRC}/TinyMCE_sslink-anchor.js`,
     })
     .mergeConfig({
       plugins: [
