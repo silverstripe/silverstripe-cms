@@ -33,6 +33,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
      * Caution: Unescaped data.
      *
      * @var array
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
      */
     protected $params = [];
 
@@ -40,6 +41,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
      * List of filtered items and all their parents
      *
      * @var array
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
      */
     protected $_cache_ids = null;
 
@@ -50,21 +52,25 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
      * others in the complete set.
      *
      * @var array
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
      */
     protected $_cache_highlight_ids = null;
 
     /**
      * @var array
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
      */
     protected $_cache_expanded = [];
 
     /**
      * @var string
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
      */
     protected $childrenMethod = null;
 
     /**
      * @var string
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
      */
     protected $numChildrenMethod = 'numChildren';
 
@@ -104,22 +110,30 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
         }
     }
 
+    /**
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
+     */
     public function getChildrenMethod()
     {
+        Deprecation::noticeWithNoReplacment('5.4.0');
         return $this->childrenMethod;
     }
 
+    /**
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
+     */
     public function getNumChildrenMethod()
     {
+        Deprecation::noticeWithNoReplacment('5.4.0');
         return $this->numChildrenMethod;
     }
 
     /**
-     * @deprecated 5.4.0 Will be renamed to getRecordClasses()
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it
      */
     public function getPageClasses($page)
     {
-        Deprecation::noticeWithNoReplacment('5.4.0', 'Will be renamed to getRecordClasses()');
+        Deprecation::noticeWithNoReplacment('5.4.0');
         if ($this->_cache_ids === null) {
             $this->populateIDs();
         }
@@ -142,18 +156,22 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
 
     /**
      * @return array Map of Page IDs to their respective ParentID values.
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it
      */
     public function pagesIncluded()
     {
+        Deprecation::noticeWithNoReplacment('5.4.0');
         return $this->mapIDs($this->getFilteredPages());
     }
 
     /**
      * Populate the IDs of the pages returned by pagesIncluded(), also including
      * the necessary parent helper pages.
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it
      */
     protected function populateIDs()
     {
+        Deprecation::noticeWithNoReplacment('5.4.0');
         $parents = [];
         $this->_cache_ids = [];
         $this->_cache_highlight_ids = [];
@@ -184,11 +202,11 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
     }
 
     /**
-     * @deprecated 5.4.0 Will be renamed to isRecordIncluded()
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it
      */
     public function isPageIncluded($page)
     {
-        Deprecation::noticeWithNoReplacment('5.4.0', 'Will be renamed to isRecordIncluded()');
+        Deprecation::noticeWithNoReplacment('5.4.0');
         if ($this->_cache_ids === null) {
             $this->populateIDs();
         }
@@ -201,9 +219,11 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
      *
      * @param DataList $query Unfiltered query
      * @return DataList Filtered query
+     * @deprecated 5.4.0 Will be replaced with a SearchContext subclass
      */
     protected function applyDefaultFilters($query)
     {
+        Deprecation::noticeWithNoReplacment('5.4.0', 'Will be replaced with a SearchContext subclass');
         $sng = SiteTree::singleton();
         foreach ($this->params as $name => $val) {
             if (empty($val)) {
@@ -259,9 +279,11 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
      *
      * @param SS_List $pages
      * @return array
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it
      */
     protected function mapIDs($pages)
     {
+        Deprecation::noticeWithNoReplacment('5.4.0');
         $ids = [];
         if ($pages) {
             foreach ($pages as $page) {

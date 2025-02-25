@@ -15,11 +15,13 @@ class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter
 
     /**
      * @var string
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
      */
     protected $childrenMethod = "AllHistoricalChildren";
 
     /**
      * @var string
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
      */
     protected $numChildrenMethod = 'numHistoricalChildren';
 

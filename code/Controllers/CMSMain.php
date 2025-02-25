@@ -1029,9 +1029,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * Returns the search form schema for the current model
      *
      * @return string
+     * @deprecated 5.4.0 Will be replaced with SilverStripe\ORM\Search\SearchContextForm::getSchemaData()
      */
     public function getSearchFieldSchema()
     {
+        Deprecation::noticeWithNoReplacment(
+            '5.4.0',
+            'Will be replaced with SilverStripe\ORM\Search\SearchContextForm::getSchemaData()'
+        );
         $schemaUrl = $this->Link('schema/SearchForm');
 
         $context = $this->getSearchContext();
@@ -1771,9 +1776,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * @param array $params Query parameters to use, or null if none present
      * @return CMSSiteTreeFilter The filter class
      * @throws InvalidArgumentException if invalid filter class is passed.
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
      */
     protected function getQueryFilter($params)
     {
+        Deprecation::noticeWithNoReplacment('5.4.0');
         if (empty($params['FilterClass'])) {
             return null;
         }
@@ -1793,9 +1800,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * @param int $parentID Optional parent node to filter on (can't be combined with other search criteria)
      * @return SS_List
      * @throws InvalidArgumentException if invalid filter class is passed.
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
      */
     public function getList($params = [], $parentID = 0)
     {
+        Deprecation::noticeWithNoReplacment('5.4.0');
         if ($filter = $this->getQueryFilter($params)) {
             return $filter->getFilteredPages();
         } else {
