@@ -13,6 +13,7 @@ use SilverStripe\CMS\Model\RedirectorPage;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Dev\Deprecation;
 use SilverStripe\Dev\FixtureBlueprint;
 use SilverStripe\Versioned\Versioned;
 
@@ -147,9 +148,14 @@ JS;
      * Select a value in the anchor selector field
      *
      * @When /^I select "([^"]*)" in the "([^"]*)" anchor dropdown$/
+     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Tests\Behaviour\AnchorContext::iSelectValueInAnchorDropdown()
      */
     public function iSelectValueInAnchorDropdown($text, $selector)
     {
+        Deprecation::notice(
+            '5.4.0',
+            'Will be replaced with SilverStripe\CMS\Tests\Behaviour\AnchorContext::iSelectValueInAnchorDropdown()'
+        );
         $page = $this->getMainContext()->getSession()->getPage();
         /** @var NodeElement $parentElement */
         $parentElement = null;
