@@ -396,6 +396,9 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     private static $show_meta_generator_version = true;
 
+    /**
+     * @deprecated 5.4.0 Will be moved to SilverStripe\Model\ModelData and made private
+     */
     protected $_cache_statusFlags = null;
 
     /**
@@ -454,6 +457,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
     /**
      * @var CacheInterface
+     * @deprecated 5.4.0 Will be moved to SilverStripe\CMS\Controllers\CMSMain and made private
      */
     protected $creatableChildrenCache;
 
