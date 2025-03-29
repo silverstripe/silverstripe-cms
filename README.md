@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/silverstripe/silverstripe-cms/actions/workflows/ci.yml/badge.svg)](https://github.com/silverstripe/silverstripe-cms/actions/workflows/ci.yml)
 [![Silverstripe supported module](https://img.shields.io/badge/silverstripe-supported-0071C4.svg)](https://www.silverstripe.org/software/addons/silverstripe-commercially-supported-module-list/)
+[![libs.tech recommends](https://libs.tech/project/1319183/badge.svg)](https://libs.tech/project/1319183/silverstripe-cms)
 
 PHP Content Management System (CMS), see [http://silverstripe.org](http://silverstripe.org). Requires the [`framework`](http://github.com/silverstripe/silverstripe-framework) module and a [`silverstripe-installer`](http://github.com/silverstripe/silverstripe-installer) base project.
 
