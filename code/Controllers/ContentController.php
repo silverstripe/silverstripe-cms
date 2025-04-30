@@ -445,11 +445,11 @@ HTML;
     /**
      * This action is called by the installation system
      *
-     * @deprecated 5.3.0 Will be removed without equivalent functionality
+     * @deprecated 5.3.0 Will be removed without equivalent functionality in a future major release
      */
     public function successfullyinstalled()
     {
-        Deprecation::notice('5.3.0', 'Will be removed without equivalent functionality');
+        Deprecation::notice('5.3.0', 'Will be removed without equivalent functionality in a future major release');
         // Return 410 Gone if this site is not actually a fresh installation
         if (!file_exists(PUBLIC_PATH . '/install.php')) {
             $this->httpError(410);
@@ -477,11 +477,11 @@ HTML;
     }
 
     /**
-     * @deprecated 5.3.0 Will be removed without equivalent functionality
+     * @deprecated 5.3.0 Will be removed without equivalent functionality in a future major release
      */
     public function deleteinstallfiles()
     {
-        Deprecation::notice('5.3.0', 'Will be removed without equivalent functionality');
+        Deprecation::notice('5.3.0', 'Will be removed without equivalent functionality in a future major release');
         if (!Permission::check("ADMIN")) {
             return Security::permissionFailure($this);
         }

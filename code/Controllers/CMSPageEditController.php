@@ -55,13 +55,13 @@ class CMSPageEditController extends CMSMain
     /**
      * Action handler for adding pages to a campaign
      *
-     * @deprecated 5.4.0 Will be moved to SilverStripe\CampaignAdmin\Extensions\AddToCampaignExtension
+     * @deprecated 5.4.0 Will be moved to SilverStripe\CampaignAdmin\Extensions\AddToCampaignExtension in a future major release
      */
     public function addtocampaign(array $data, Form $form): HTTPResponse
     {
         Deprecation::noticeWithNoReplacment(
             '5.4.0',
-            'Will be moved to SilverStripe\CampaignAdmin\Extensions\AddToCampaignExtension'
+            'Will be moved to SilverStripe\CampaignAdmin\Extensions\AddToCampaignExtension in a future major release'
         );
         $id = $data['ID'];
         $record = \Page::get()->byID($id);
@@ -88,13 +88,13 @@ class CMSPageEditController extends CMSMain
      *
      * @param HTTPRequest $request
      * @return Form
-     * @deprecated 5.4.0 Will be moved to SilverStripe\CampaignAdmin\Extensions\AddToCampaignExtension
+     * @deprecated 5.4.0 Will be moved to SilverStripe\CampaignAdmin\Extensions\AddToCampaignExtension in a future major release
      */
     public function AddToCampaignForm($request)
     {
         Deprecation::noticeWithNoReplacment(
             '5.4.0',
-            'Will be moved to SilverStripe\CampaignAdmin\Extensions\AddToCampaignExtension'
+            'Will be moved to SilverStripe\CampaignAdmin\Extensions\AddToCampaignExtension in a future major release'
         );
         // Get ID either from posted back value, or url parameter
         $id = $request->param('ID') ?: $request->postVar('ID');
@@ -104,13 +104,13 @@ class CMSPageEditController extends CMSMain
     /**
      * @param int $id
      * @return Form
-     * @deprecated 5.4.0 Will be moved to SilverStripe\CampaignAdmin\Extensions\AddToCampaignExtension
+     * @deprecated 5.4.0 Will be moved to SilverStripe\CampaignAdmin\Extensions\AddToCampaignExtension in a future major release
      */
     public function getAddToCampaignForm($id)
     {
         Deprecation::noticeWithNoReplacment(
             '5.4.0',
-            'Will be moved to SilverStripe\CampaignAdmin\Extensions\AddToCampaignExtension'
+            'Will be moved to SilverStripe\CampaignAdmin\Extensions\AddToCampaignExtension in a future major release'
         );
         // Get record-specific fields
         $record = SiteTree::get()->byID($id);

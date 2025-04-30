@@ -148,13 +148,13 @@ JS;
      * Select a value in the anchor selector field
      *
      * @When /^I select "([^"]*)" in the "([^"]*)" anchor dropdown$/
-     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Tests\Behaviour\AnchorContext::iSelectValueInAnchorDropdown()
+     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Tests\Behaviour\AnchorContext::iSelectValueInAnchorDropdown() in a future major release
      */
     public function iSelectValueInAnchorDropdown($text, $selector)
     {
         Deprecation::notice(
             '5.4.0',
-            'Will be replaced with SilverStripe\CMS\Tests\Behaviour\AnchorContext::iSelectValueInAnchorDropdown()'
+            'Will be replaced with SilverStripe\CMS\Tests\Behaviour\AnchorContext::iSelectValueInAnchorDropdown() in a future major release'
         );
         $page = $this->getMainContext()->getSession()->getPage();
         /** @var NodeElement $parentElement */

@@ -25,7 +25,7 @@ use SilverStripe\Security\Security;
 use SilverStripe\SiteConfig\SiteConfig;
 
 /**
- * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Forms\CMSMainAddForm
+ * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Forms\CMSMainAddForm in a future major release
  */
 class CMSPageAddController extends CMSPageEditController
 {
@@ -46,7 +46,7 @@ class CMSPageAddController extends CMSPageEditController
     {
         Deprecation::noticeWithNoReplacment(
             '5.4.0',
-            'Will be replaced with SilverStripe\CMS\Forms\CMSMainAddForm',
+            'Will be replaced with SilverStripe\CMS\Forms\CMSMainAddForm in a future major release',
             Deprecation::SCOPE_CLASS
         );
         parent::__construct();

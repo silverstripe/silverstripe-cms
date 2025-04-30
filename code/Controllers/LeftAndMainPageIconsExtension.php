@@ -28,7 +28,7 @@ class LeftAndMainPageIconsExtension extends Extension implements Flushable
     {
         Deprecation::noticeWithNoReplacment(
             '5.4.0',
-            'Will be renamed to SilverStripe\CMS\Controllers\LeftAndMainRecordIconsExtension',
+            'Will be renamed to SilverStripe\CMS\Controllers\LeftAndMainRecordIconsExtension in a future major release',
             Deprecation::SCOPE_CLASS
         );
         parent::__construct();

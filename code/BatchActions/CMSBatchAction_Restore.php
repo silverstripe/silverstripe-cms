@@ -14,14 +14,14 @@ use SilverStripe\Dev\Deprecation;
 /**
  * Batch restore of pages
  *
- * @deprecated 5.3.0 Will be removed without equivalent functionality to replace it
+ * @deprecated 5.3.0 Will be removed without equivalent functionality to replace it in a future major release
  */
 class CMSBatchAction_Restore extends CMSBatchAction
 {
     public function __construct()
     {
         Deprecation::withSuppressedNotice(function () {
-            Deprecation::notice('5.3.0', 'Will be removed without equivalent functionality to replace it', Deprecation::SCOPE_CLASS);
+            Deprecation::notice('5.3.0', 'Will be removed without equivalent functionality to replace it in a future major release', Deprecation::SCOPE_CLASS);
         });
     }
 

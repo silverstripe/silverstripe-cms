@@ -245,7 +245,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * Page list view for edit-form
      *
      * @return DBHTMLText
-     * @deprecated 5.4.0 Will be removed without equivalent functionality
+     * @deprecated 5.4.0 Will be removed without equivalent functionality in a future major release
      */
     public function PageListSidebar()
     {
@@ -1013,11 +1013,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * and can be modified on extensions through updateSearchContext
      *
      * @return \SilverStripe\ORM\Search\SearchContext
-     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Model\SiteTree::getDefaultSearchContext().
+     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Model\SiteTree::getDefaultSearchContext() in a future major release.
      */
     public function getSearchContext()
     {
-        Deprecation::notice('5.4.0', 'Will be replaced with ' . SiteTree::class . '::getDefaultSearchContext().');
+        Deprecation::notice('5.4.0', 'Will be replaced with ' . SiteTree::class . '::getDefaultSearchContext() in a future major release.');
         $context = SiteTree::singleton()->getDefaultSearchContext();
 
         $this->extend('updateSearchContext', $context);
@@ -1029,13 +1029,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * Returns the search form schema for the current model
      *
      * @return string
-     * @deprecated 5.4.0 Will be replaced with SilverStripe\ORM\Search\SearchContextForm::getSchemaData()
+     * @deprecated 5.4.0 Will be replaced with SilverStripe\ORM\Search\SearchContextForm::getSchemaData() in a future major release
      */
     public function getSearchFieldSchema()
     {
         Deprecation::noticeWithNoReplacment(
             '5.4.0',
-            'Will be replaced with SilverStripe\ORM\Search\SearchContextForm::getSchemaData()'
+            'Will be replaced with SilverStripe\ORM\Search\SearchContextForm::getSchemaData() in a future major release'
         );
         $schemaUrl = $this->Link('schema/SearchForm');
 
@@ -1776,7 +1776,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * @param array $params Query parameters to use, or null if none present
      * @return CMSSiteTreeFilter The filter class
      * @throws InvalidArgumentException if invalid filter class is passed.
-     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it in a future major release.
      */
     protected function getQueryFilter($params)
     {
@@ -1800,7 +1800,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
      * @param int $parentID Optional parent node to filter on (can't be combined with other search criteria)
      * @return SS_List
      * @throws InvalidArgumentException if invalid filter class is passed.
-     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it in a future major release.
      */
     public function getList($params = [], $parentID = 0)
     {

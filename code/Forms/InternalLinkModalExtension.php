@@ -12,7 +12,7 @@ use SilverStripe\Forms\Form;
  * Decorates ModalController with insert internal link
  *
  * @extends Extension<ModalController>
- * @deprecated 5.4.0 Will be replaced with configuration on SilverStripe\Admin\ModalController
+ * @deprecated 5.4.0 Will be replaced with configuration on SilverStripe\Admin\ModalController in a future major release
  */
 class InternalLinkModalExtension extends Extension
 {
@@ -29,7 +29,7 @@ class InternalLinkModalExtension extends Extension
     {
         Deprecation::noticeWithNoReplacment(
             '5.4.0',
-            'Will be replaced with configuration on ' . ModalController::class,
+            'Will be replaced with configuration on ' . ModalController::class . ' in a future major release',
             Deprecation::SCOPE_CLASS
         );
     }

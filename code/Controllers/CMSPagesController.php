@@ -11,7 +11,7 @@ use SilverStripe\View\ArrayData;
 use stdClass;
 
 /**
- * @deprecated 5.4.0 Will be combined back into SilverStripe\CMS\Controllers\CMSMain
+ * @deprecated 5.4.0 Will be combined back into SilverStripe\CMS\Controllers\CMSMain in a future major release
  */
 class CMSPagesController extends CMSMain
 {
@@ -30,7 +30,7 @@ class CMSPagesController extends CMSMain
     {
         Deprecation::noticeWithNoReplacment(
             '5.4.0',
-            'Will be combined back into ' . CMSMain::class,
+            'Will be combined back into ' . CMSMain::class . ' in a future major release',
             Deprecation::SCOPE_CLASS
         );
         parent::__construct();

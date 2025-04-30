@@ -33,7 +33,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
      * Caution: Unescaped data.
      *
      * @var array
-     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it in a future major release.
      */
     protected $params = [];
 
@@ -41,7 +41,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
      * List of filtered items and all their parents
      *
      * @var array
-     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it in a future major release.
      */
     protected $_cache_ids = null;
 
@@ -52,25 +52,25 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
      * others in the complete set.
      *
      * @var array
-     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it in a future major release.
      */
     protected $_cache_highlight_ids = null;
 
     /**
      * @var array
-     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it in a future major release.
      */
     protected $_cache_expanded = [];
 
     /**
      * @var string
-     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it in a future major release.
      */
     protected $childrenMethod = null;
 
     /**
      * @var string
-     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it in a future major release.
      */
     protected $numChildrenMethod = 'numChildren';
 
@@ -111,7 +111,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
     }
 
     /**
-     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it in a future major release.
      */
     public function getChildrenMethod()
     {
@@ -120,7 +120,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
     }
 
     /**
-     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it.
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it in a future major release.
      */
     public function getNumChildrenMethod()
     {
@@ -129,7 +129,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
     }
 
     /**
-     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it in a future major release
      */
     public function getPageClasses($page)
     {
@@ -156,7 +156,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
 
     /**
      * @return array Map of Page IDs to their respective ParentID values.
-     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it in a future major release
      */
     public function pagesIncluded()
     {
@@ -167,7 +167,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
     /**
      * Populate the IDs of the pages returned by pagesIncluded(), also including
      * the necessary parent helper pages.
-     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it in a future major release
      */
     protected function populateIDs()
     {
@@ -202,7 +202,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
     }
 
     /**
-     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it in a future major release
      */
     public function isPageIncluded($page)
     {
@@ -219,11 +219,11 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
      *
      * @param DataList $query Unfiltered query
      * @return DataList Filtered query
-     * @deprecated 5.4.0 Will be replaced with a SearchContext subclass
+     * @deprecated 5.4.0 Will be replaced with a SearchContext subclass in a future major release
      */
     protected function applyDefaultFilters($query)
     {
-        Deprecation::noticeWithNoReplacment('5.4.0', 'Will be replaced with a SearchContext subclass');
+        Deprecation::noticeWithNoReplacment('5.4.0', 'Will be replaced with a SearchContext subclass in a future major release');
         $sng = SiteTree::singleton();
         foreach ($this->params as $name => $val) {
             if (empty($val)) {
@@ -279,7 +279,7 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
      *
      * @param SS_List $pages
      * @return array
-     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it
+     * @deprecated 5.4.0 Will be removed without equivalent functionality to replace it in a future major release
      */
     protected function mapIDs($pages)
     {

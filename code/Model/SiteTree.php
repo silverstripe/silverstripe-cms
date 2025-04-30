@@ -136,7 +136,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Used as a cache for `SiteTree::allowedChildren()`
      * Drastically reduces admin page load when there are a lot of page types
      * @var array
-     * @deprecated 5.4.0 will be moved to SilverStripe\ORM\Hierarchy\Hierarchy->cache_allowedChildren
+     * @deprecated 5.4.0 will be moved to SilverStripe\ORM\Hierarchy\Hierarchy->cache_allowedChildren in a future major release
      */
     protected static $_allowedChildren = [];
 
@@ -397,7 +397,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     private static $show_meta_generator_version = true;
 
     /**
-     * @deprecated 5.4.0 Will be moved to SilverStripe\Model\ModelData and made private
+     * @deprecated 5.4.0 Will be moved to SilverStripe\Model\ModelData and made private in a future major release
      */
     protected $_cache_statusFlags = null;
 
@@ -457,7 +457,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
     /**
      * @var CacheInterface
-     * @deprecated 5.4.0 Will be moved to SilverStripe\CMS\Controllers\CMSMain and made private
+     * @deprecated 5.4.0 Will be moved to SilverStripe\CMS\Controllers\CMSMain and made private in a future major release
      */
     protected $creatableChildrenCache;
 
@@ -572,7 +572,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Return a subclass map of SiteTree that shouldn't be hidden through {@link SiteTree::$hide_pagetypes}
      *
      * @return array
-     * @deprecated 5.4.0 Will be replaced with updateAllowedSubClasses()
+     * @deprecated 5.4.0 Will be replaced with updateAllowedSubClasses() in a future major release
      */
     public static function page_type_classes()
     {
@@ -1030,13 +1030,13 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     /**
      * @param CacheInterface $cache
      * @return $this
-     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Controllers\CMSMain::setCreatableChildrenCache()
+     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Controllers\CMSMain::setCreatableChildrenCache() in a future major release
      */
     public function setCreatableChildrenCache(CacheInterface $cache)
     {
         Deprecation::noticeWithNoReplacment(
             '5.4.0',
-            'Will be replaced with ' . CMSMain::class . '::setCreatableChildrenCache()'
+            'Will be replaced with ' . CMSMain::class . '::setCreatableChildrenCache() in a future major release'
         );
         $this->creatableChildrenCache = $cache;
 
@@ -1045,13 +1045,13 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
     /**
      * @return CacheInterface $cache
-     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Controllers\CMSMain::getCreatableChildrenCache()
+     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Controllers\CMSMain::getCreatableChildrenCache() in a future major release
      */
     public function getCreatableChildrenCache()
     {
         Deprecation::noticeWithNoReplacment(
             '5.4.0',
-            'Will be replaced with ' . CMSMain::class . '::getCreatableChildrenCache()'
+            'Will be replaced with ' . CMSMain::class . '::getCreatableChildrenCache() in a future major release'
         );
         return $this->creatableChildrenCache;
     }
@@ -1417,11 +1417,11 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
     /**
      * @return PermissionChecker
-     * @deprecated 5.4.0 Will be replaced with a non-static method with the same name.
+     * @deprecated 5.4.0 Will be replaced with a non-static method with the same name in a future major release.
      */
     public static function getPermissionChecker()
     {
-        Deprecation::noticeWithNoReplacment('5.4.0', 'Will be replaced with a non-static method with the same name.');
+        Deprecation::noticeWithNoReplacment('5.4.0', 'Will be replaced with a non-static method with the same name in a future major release.');
         return Injector::inst()->get(PermissionChecker::class.'.sitetree');
     }
 
@@ -1821,13 +1821,13 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Flushes the member specific cache for creatable children
      *
      * @param array $memberIDs
-     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Controllers\CMSMain::clearCache()
+     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Controllers\CMSMain::clearCache() in a future major release
      */
     public function flushMemberCache($memberIDs = null)
     {
         Deprecation::noticeWithNoReplacment(
             '5.4.0',
-            'Will be replaced with ' . CMSMain::class . '::clearCache()'
+            'Will be replaced with ' . CMSMain::class . '::clearCache() in a future major release'
         );
         $cache = SiteTree::singleton()->getCreatableChildrenCache();
 
@@ -2869,13 +2869,13 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Gets a list of the page types that can be created under this specific page, including font icons
      *
      * @return array
-     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Controllers\CMSMain::getCreatableSubClasses()
+     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Controllers\CMSMain::getCreatableSubClasses() in a future major release
      */
     public function creatableChildPages()
     {
         Deprecation::noticeWithNoReplacment(
             '5.4.0',
-            'Will be replaced with ' . CMSMain::class . '::getCreatableSubClasses()'
+            'Will be replaced with ' . CMSMain::class . '::getCreatableSubClasses() in a future major release'
         );
         // Build the list of candidate children
         $cache = SiteTree::singleton()->getCreatableChildrenCache();
@@ -3015,13 +3015,13 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Returns the CSS class used for the page icon in the site tree.
      *
      * @return string
-     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Controllers\CMSMain::getRecordIconCssClass()
+     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Controllers\CMSMain::getRecordIconCssClass() in a future major release
      */
     public function getIconClass()
     {
         Deprecation::noticeWithNoReplacment(
             '5.4.0',
-            'Will be replaced with ' . CMSMain::class . '::getRecordIconCssClass()'
+            'Will be replaced with ' . CMSMain::class . '::getRecordIconCssClass() in a future major release'
         );
         if ($this->config()->get('icon')) {
             return '';
@@ -3258,13 +3258,13 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Generate link to this page's icon
      *
      * @return string
-     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Controllers\CMSMain::getRecordIconUrl()
+     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Controllers\CMSMain::getRecordIconUrl() in a future major release
      */
     public function getPageIconURL()
     {
         Deprecation::noticeWithNoReplacment(
             '5.4.0',
-            'Will be replaced with ' . CMSMain::class . '::getRecordIconUrl()'
+            'Will be replaced with ' . CMSMain::class . '::getRecordIconUrl() in a future major release'
         );
         $icon = $this->config()->get('icon');
         if (!$icon) {
@@ -3392,13 +3392,13 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      *
      * @param int $memberID
      * @return string
-     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Controllers\CMSMain::generateChildrenCacheKey()
+     * @deprecated 5.4.0 Will be replaced with SilverStripe\CMS\Controllers\CMSMain::generateChildrenCacheKey() in a future major release
      */
     protected function generateChildrenCacheKey($memberID)
     {
         Deprecation::noticeWithNoReplacment(
             '5.4.0',
-            'Will be replaced with ' . CMSMain::class . '::generateChildrenCacheKey()'
+            'Will be replaced with ' . CMSMain::class . '::generateChildrenCacheKey() in a future major release'
         );
         return md5($memberID . '_' . __CLASS__);
     }
