@@ -492,7 +492,7 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
         $modelClass = $this->getModelClass();
 
         DataObject::singleton($modelClass)->prepopulateTreeDataCache(null, [
-            'childrenMethod' => 'AllChildrenIncludingDeleted',
+            'childrenMethod' => Hierarchy::config()->get('default_children_method'),
             'numChildrenMethod' => 'numChildren',
         ]);
 
