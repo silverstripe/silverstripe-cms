@@ -2192,7 +2192,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         if (!isset(SiteTree::$_cache_field_labels[$cacheKey])) {
             $labels = parent::fieldLabels($includerelations);
             $labels['Title'] = _t(__CLASS__.'.PAGETITLE', "Page name");
-            $labels['MenuTitle'] = _t(__CLASS__.'.MENUTITLE', "Navigation label");
+            $labels['MenuTitle'] = _t(__CLASS__.'.MENUTITLE_CMS6', "Navigation label");
             $labels['MetaDescription'] = _t(__CLASS__.'.METADESC', "Meta Description");
             $labels['ExtraMeta'] = _t(__CLASS__.'.METAEXTRA', "Custom Meta Tags");
             $labels['ClassName'] = _t(__CLASS__.'.PAGETYPE', "Page type", 'Classname of a page object');
