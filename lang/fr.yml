@@ -1,4 +1,7 @@
 fr:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Revenir à la version publiée'
+    ROLLEDBACK_VERSION: 'Revenir à la version #{version}'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: '%d pages supprimées des sites brouillon / public et archivées'
     TITLE: 'Dépublier et archiver'
@@ -29,6 +32,7 @@ fr:
     Create: Créer
     DUPLICATED: "'{title}' dupliqué avec succès"
     DUPLICATEDWITHCHILDREN: "'{title}' et ses enfants dupliqués avec succès"
+    ListView: 'Affichage en liste'
     NEWPAGE: 'Nouveau {pagetype}'
     PAGENOTEXISTS: "Cette page n'existe pas"
     PAGES: 'Statut de la page'
@@ -61,8 +65,10 @@ fr:
     TabContent: Contenu
     TabHistory: Versions
     TabSettings: Paramètres
+    Title: 'Modèles de données'
     TreeFiltered: 'Affichage des résultats de la recherche'
     TreeFilteredClear: Effacer
+    TreeView: Arborescence
     UNPUBLISH_AND_ARCHIVE: 'Dépublier et archiver'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Ajouter une page'
@@ -72,7 +78,6 @@ fr:
   SilverStripe\CMS\Controllers\CMSPageEditController:
     ErrorItemPermissionDenied: "Vous n'avez apparemment pas les autorisations requises pour ajouter {ObjectTitle} à une campagne"
     ErrorNotFound: '{Type} introuvable'
-    MENUTITLE: 'Editer la page'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Auteur
     COMPAREMODE: 'Comparer (en choisir deux)'
@@ -89,8 +94,6 @@ fr:
     VIEWINGLATEST: 'Vous regardez la dernière version'
     VIEWINGVERSION: "Version affichée\_: {version}."
     WHEN: Quand
-  SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Éditer la page'
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filtrer
     ListView: 'Affichage en liste'
@@ -135,6 +138,8 @@ fr:
     ARCHIVED: Archivé
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Ancre
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'A la racine du site'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Description du lien'
     LINKOPENNEWWIN: 'Ouvrir dans une nouvelle fenêtre / un nouvel onglet'
@@ -199,6 +204,8 @@ fr:
     EDIT_ALL_DESCRIPTION: 'Editer toutes les pages'
     EDIT_ALL_HELP: 'Possibilité d''éditer n''importe quelle page du site, quels que soient les paramètres définis dans l''onglet "accès". Requiert l''autorisation "Accès à la section pages".'
     Editors: "Groupes d'éditeurs"
+    Filter_ClassName_Any: Tout
+    Filter_Status: 'Statut de la page'
     HASBROKENLINKS: 'Cette page comporte des liens rompus.'
     HTMLEDITORTITLE: Contenu
     INHERIT: 'Hérite de la page parente'
@@ -243,6 +250,8 @@ fr:
     TABCONTENT: 'Contenu principal'
     TABDEPENDENT: 'Pages dépendantes'
     TOPLEVEL: 'Contenu du Site ( Premier Niveau )'
+    TREETITLE: 'Nom de la page'
+    TREETYPE: 'Type de page'
     UNTITLED: 'Sans titre {pagetype}'
     URLSegment: "Segment d'URL"
     VIEWERGROUPS: 'Groupes de Visualisation'

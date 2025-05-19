@@ -1,4 +1,7 @@
 hu:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Visszatérés a publikált verzióhoz.'
+    ROLLEDBACK_VERSION: '#{version} verzió beállítva.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
     PUBLISHED_PAGES: '%d oldal publikálva, %d hibás'
     PUBLISH_PAGES: Publikálni
@@ -17,6 +20,8 @@ hu:
     DUPLICATED: "'{title}' sikeresen duplikálva"
     DUPLICATEDWITHCHILDREN: "'{title}' és oldalai sikeresen duplikálva"
     EMAIL: E-mail
+    ListView: 'Lista nézet'
+    MENUTITLE: Oldalak
     NEWPAGE: 'Új {pagetype}'
     PAGENOTEXISTS: 'Ez az oldal nem létezik.'
     PAGESALLOPT: 'Összes oldal'
@@ -37,13 +42,14 @@ hu:
     TabContent: Tartalom
     TabHistory: Történet
     TabSettings: Beállítások
+    TreeView: '"Fa" nézet'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Oldal hozzáadása'
     ParentMode_child: 'Másik oldal alatt'
     ParentMode_top: 'Felső szint'
     Title: 'Oldal hozzáadása'
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Oldal szerkesztése'
+    MENUTITLE: Oldalak
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Szerző
     COMPAREMODE: 'Összehasonlítás (select two)'
@@ -59,7 +65,7 @@ hu:
     VIEWINGVERSION: 'Verziószám: {version}'
     WHEN: Mikor
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Oldal szerkesztése'
+    MENUTITLE: Oldalak
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Szűrő
     ListView: 'Lista nézet'
@@ -90,6 +96,8 @@ hu:
     VIEWPAGEIN: 'Oldal megtekintése'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Archiválva
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Felső szint'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Link leírása'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
@@ -136,6 +144,7 @@ hu:
     EDITORGROUPS: 'Szerkesztők csoportja'
     EDIT_ALL_DESCRIPTION: 'Bármely oldal szerkesztése'
     Editors: 'Szerkesztők csoportja'
+    Filter_ClassName_Any: Bármely
     HASBROKENLINKS: 'Ez az oldal hibás linkeket tartalmaz.'
     HTMLEDITORTITLE: Tartalom
     INHERIT: 'Azonos a szülő értékével'
@@ -171,6 +180,8 @@ hu:
     TABBEHAVIOUR: Viselkedés
     TABDEPENDENT: 'Kapcsolodó oldalak'
     TOPLEVEL: 'Oldaltartalom (legfelső szint)'
+    TREETITLE: 'Oldal neve'
+    TREETYPE: 'Oldal típusa'
     VIEWERGROUPS: 'Olvasási joggal rendelkező csoportok'
     VIEW_ALL_DESCRIPTION: 'Bármely oldal megtekintése'
     VIEW_DRAFT_CONTENT: 'Piszkozat megtekintése'

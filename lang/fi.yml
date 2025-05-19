@@ -1,4 +1,7 @@
 fi:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Palattiin takaisin julkaistuun versioon'
+    ROLLEDBACK_VERSION: 'Palautettu versioon #{version}.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Poistettiin %d sivua luonnoksista ja julkaistuista sivuista sekä arkistoitiin'
     TITLE: 'Poista julkaisusta ja arkistoi'
@@ -31,6 +34,8 @@ fi:
     DUPLICATED: "'{title}'  monistettu onnistuneesti"
     DUPLICATEDWITHCHILDREN: "'{title}' ja alasivu monistettiin onnistuneesti"
     EMAIL: Sähköposti
+    ListView: Listanäkymä
+    MENUTITLE: Sivut
     NEWPAGE: 'Uusi {pagetype}'
     PAGENOTEXISTS: 'Tätä sivua ei ole olemassa'
     PAGES: 'Sivun tila'
@@ -63,8 +68,10 @@ fi:
     TabContent: Sisältö
     TabHistory: Historia
     TabSettings: Asetukset
+    Title: Datamallit
     TreeFiltered: 'Näytetään hakutulokset.'
     TreeFilteredClear: Tyhjennä
+    TreeView: Puunäkymä
     UNPUBLISH_AND_ARCHIVE: 'Poista julkaisusta ja arkistoi'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Lisää sivu'
@@ -74,7 +81,7 @@ fi:
   SilverStripe\CMS\Controllers\CMSPageEditController:
     ErrorItemPermissionDenied: 'Näyttää siltä, ettei sinulla ole tarvittavia oikeuksia lisätä kohdetta {ObjectTitle} kampanjaan'
     ErrorNotFound: 'Kyseistä {Type} ei löytynyt'
-    MENUTITLE: 'Muokkaa sivua'
+    MENUTITLE: Sivut
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Kirjoittaja
     COMPAREMODE: 'Vertailutila (valitse kaksi)'
@@ -92,7 +99,7 @@ fi:
     VIEWINGVERSION: 'Katsot versiota {version}.'
     WHEN: Milloin
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Muokkaa sivua'
+    MENUTITLE: Sivut
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Suodata
     ListView: Listanäkymä
@@ -139,6 +146,8 @@ fi:
     ARCHIVED: Arkistoitu
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Ankkuri
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: Ylätaso
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Linkin kuvaus'
     LINKOPENNEWWIN: 'Linkki avataan uudessa ikkunassa/välilehdellä'
@@ -203,6 +212,8 @@ fi:
     EDIT_ALL_DESCRIPTION: 'Muokkaa mitä tahansa sivua'
     EDIT_ALL_HELP: 'Mahdollisuus muokata mitä tahansa sivua sivustosta, riippumatta Käyttöoikeus-välilehden asetuksista. Vaatii "Käyttöoikeus sivuston sisältöön" -lupaa'
     Editors: Toimittajaryhmät
+    Filter_ClassName_Any: Yhtään
+    Filter_Status: 'Sivun tila'
     HASBROKENLINKS: 'Tällä sivulla on rikkinäisiä linkkejä'
     HTMLEDITORTITLE: Sisältö
     INHERIT: 'Sama kuin ylätason sivulla'
@@ -250,6 +261,8 @@ fi:
     TABCONTENT: Pääsisältö
     TABDEPENDENT: 'Riippuvaiset sivut'
     TOPLEVEL: 'Sivuston sisältö (ylin taso)'
+    TREETITLE: 'Sivun nimi'
+    TREETYPE: 'Sivun tyyppi'
     UNTITLED: 'Nimetön {pagetype}'
     URLSegment: 'URL-osoitteen osio'
     UntitledDependentObject: 'Nimetön {instanceType}'

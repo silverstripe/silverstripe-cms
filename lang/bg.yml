@@ -1,4 +1,7 @@
 bg:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Беше върнато до публикуваната версия'
+    ROLLEDBACK_VERSION: 'Беше върната версия #{version}.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Бяха изтрити %d страници от сайта и същите бяха архивирани'
     TITLE: 'Премахни от публикация и архивирай'
@@ -29,6 +32,8 @@ bg:
     DUPLICATED: "'{title}' беше успешно дублирана"
     DUPLICATEDWITHCHILDREN: "'{title}' и под-страниците бяха успешно дублирани"
     EMAIL: Еmail
+    ListView: 'Изглед в списък'
+    MENUTITLE: Страници
     NEWPAGE: 'Нова страница {pagetype}'
     PAGENOTEXISTS: 'Тази страница не съществува'
     PAGES: 'Състояние на страницата'
@@ -62,6 +67,7 @@ bg:
     TabSettings: Настройки
     TreeFiltered: 'Резултати от търсенето.'
     TreeFilteredClear: 'Изчисти филтъра'
+    TreeView: 'Дървовиден изглед'
     UNPUBLISH_AND_ARCHIVE: 'Премахни от публикация и архивирай'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Добавяне на страница'
@@ -71,7 +77,7 @@ bg:
   SilverStripe\CMS\Controllers\CMSPageEditController:
     ErrorItemPermissionDenied: 'Нямате необходимите права, за да добавите {ObjectTitle} към Кампания'
     ErrorNotFound: 'Този {Type} не можа да бъде намерен'
-    MENUTITLE: 'Редактиране на страница'
+    MENUTITLE: Страници
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Автор
     COMPAREMODE: 'Режим на сравнение (Избери два)'
@@ -89,7 +95,7 @@ bg:
     VIEWINGVERSION: 'Версия {version}.'
     WHEN: Кога
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Редактиране на страница'
+    MENUTITLE: Страници
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Филтър
     ListView: 'Изглед в списък'
@@ -136,6 +142,8 @@ bg:
     ARCHIVED: Архивирани
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Котва
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Най-високо ниво'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Описание на връаката'
     LINKOPENNEWWIN: 'Отвори в нов прозорец/таб'
@@ -199,6 +207,8 @@ bg:
     EDIT_ALL_DESCRIPTION: 'Редактиране на всяка от странциите'
     EDIT_ALL_HELP: 'Възможност за редактиране на всяка страница на сайта, независимо от настройките в раздела за достъп. Изисква "Достъп до раздел" секция достъп'
     Editors: 'Групи редактори'
+    Filter_ClassName_Any: Някой
+    Filter_Status: 'Състояние на страницата'
     HASBROKENLINKS: 'Тази страница съдържа невалидни връзки.'
     HTMLEDITORTITLE: Съдържание
     INHERIT: 'Наследи от предишната в йерархията страница'
@@ -243,6 +253,8 @@ bg:
     TABBEHAVIOUR: Поведение
     TABDEPENDENT: 'Зависими страници'
     TOPLEVEL: 'Съдържание на сайта (Top level)'
+    TREETITLE: 'Име на страница'
+    TREETYPE: 'Вид страница'
     VIEWERGROUPS: 'Групи потребители'
     VIEWER_GROUPS_FIELD_DESC: 'Групи с глобални права за преглед: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Достъп до всяка страница'

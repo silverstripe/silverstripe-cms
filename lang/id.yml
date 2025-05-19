@@ -1,4 +1,7 @@
 id:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Kembali ke versi terbit'
+    ROLLEDBACK_VERSION: 'Kembali ke versi #{version}.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Restore:
     RESTORE: Pulihkan
     RESTORED_PAGES: 'Pulihkan %d halaman'
@@ -19,6 +22,8 @@ id:
     Create: Buat
     DUPLICATED: "'{title}' berhasil diduplikasi"
     DUPLICATEDWITHCHILDREN: "'{title}' dan turunannya berhasil diduplikasi"
+    ListView: 'Tampilan Daftar'
+    MENUTITLE: Laman
     NEWPAGE: '{pagetype} baru'
     PAGENOTEXISTS: 'Laman ini tidak ada'
     PAGESALLOPT: 'Semua laman'
@@ -46,13 +51,15 @@ id:
     TabContent: Konten
     TabHistory: Sejarah
     TabSettings: Pengaturan
+    Title: 'Model Data'
+    TreeView: 'Tampilan Struktur'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Tambah laman'
     ParentMode_child: 'Di bawah laman lain'
     ParentMode_top: 'Laman atas'
     Title: 'Tambah laman'
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Edit Laman'
+    MENUTITLE: Laman
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Penulis
     COMPAREMODE: 'Modus pembanding (pilih dua)'
@@ -68,7 +75,7 @@ id:
     VIEWINGVERSION: 'Versi {version} sedang ditampilkan.'
     WHEN: Ketika
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Edit Laman'
+    MENUTITLE: Laman
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Saring
     ListView: 'Tampilan Daftar'
@@ -102,6 +109,8 @@ id:
     ARCHIVED: Terarsip
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Jangkar
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Laman atas'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Deskripsi tautan'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
@@ -149,6 +158,7 @@ id:
     EDIT_ALL_DESCRIPTION: 'Edit semua laman'
     EDIT_ALL_HELP: 'Bolehkan mengedit semua laman pada situs, terlepas dari pengaturan Akses. Memerlukan perijinan "Akses ke bagian ''Laman''".'
     Editors: 'Kelompok Editor'
+    Filter_ClassName_Any: Semua
     HASBROKENLINKS: 'Laman ini mempunyai tautan yang rusak.'
     HTMLEDITORTITLE: Konten
     INHERIT: 'Warisi dari laman induk'
@@ -187,6 +197,8 @@ id:
     TABBEHAVIOUR: Perilaku
     TABDEPENDENT: 'Laman terkait'
     TOPLEVEL: 'Konten Situs (Tingkat Atas)'
+    TREETITLE: 'Nama laman'
+    TREETYPE: 'Tipe laman'
     VIEWERGROUPS: 'Kelompok Penampil'
     VIEW_ALL_DESCRIPTION: 'Tampilkan semua laman'
     VIEW_ALL_HELP: 'Bolehkan menampilkan semua laman pada situs, terlepas dari pengaturan Akses. Memerlukan perijinan "Akses ke bagian ''Laman''".'

@@ -1,4 +1,7 @@
 de:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Veröffentlichte Version wiederhergestellt'
+    ROLLEDBACK_VERSION: 'Version #{version} wiederhergestellt.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: '%d Seiten wurden von der Entwurfs-Seite gelöscht und zum Archiv hinzugefügt'
     TITLE: 'Veröffentlichung zurücknehmen und archivieren'
@@ -31,6 +34,8 @@ de:
     DUPLICATED: "'{title}'  wurde erfolgreich dupliziert"
     DUPLICATEDWITHCHILDREN: "'{title}' und alle Unterseiten wurden erfolgreich dupliziert"
     EMAIL: E-Mail
+    ListView: Listenansicht
+    MENUTITLE: Seiten
     NEWPAGE: 'Neue {pagetype}'
     PAGENOTEXISTS: 'Diese Seite existiert nicht'
     PAGES: Seitenstatus
@@ -64,8 +69,10 @@ de:
     TabContent: Inhalt
     TabHistory: Verlauf
     TabSettings: Einstellungen
+    Title: Datenmodelle
     TreeFiltered: Suchergebnisse
     TreeFilteredClear: Löschen
+    TreeView: Baumansicht
     UNPUBLISH_AND_ARCHIVE: 'Veröffentlichung zurücknehmen und archivieren'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Seite hinzufügen'
@@ -75,7 +82,7 @@ de:
   SilverStripe\CMS\Controllers\CMSPageEditController:
     ErrorItemPermissionDenied: 'Sie haben nicht die nötigen Berechtigungen um {ObjectTitle} zu einer Kampagne hinzuzufügen'
     ErrorNotFound: 'Dieser {Type} konnte nicht gefunden werden'
-    MENUTITLE: 'Seite bearbeiten'
+    MENUTITLE: Seiten
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Vergleichsmodus (wähle zwei)'
@@ -94,7 +101,7 @@ de:
     VIEWINGVERSION: 'Momentan angezeigte Version: {version}.'
     WHEN: Wann
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Seite bearbeiten'
+    MENUTITLE: Seiten
   SilverStripe\CMS\Controllers\CMSPagesController:
     ListView: Listenansicht
     MENUTITLE: Seiten
@@ -140,6 +147,8 @@ de:
     ARCHIVED: Archiviert
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Anker
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Auf der obersten Ebene'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Beschreibung des Verweises'
     LINKOPENNEWWIN: 'In einem neuen Fenster/Reiter öffnen'
@@ -210,6 +219,8 @@ de:
     EDIT_ALL_DESCRIPTION: 'Kann beliebige Seiten bearbeiten'
     EDIT_ALL_HELP: 'Kann beliebige Seiten auf der Site bearbeiten; seitenspezifische Sicherheitseinstellungen werden ignoriert.'
     Editors: 'Bearbeiter Gruppen'
+    Filter_ClassName_Any: alle
+    Filter_Status: Seitenstatus
     HASBROKENLINKS: 'Diese Seite enthält ungültige Verweise.'
     HTMLEDITORTITLE: Inhalt
     INHERIT: 'Von der übergeordneten Seite erben'
@@ -259,6 +270,8 @@ de:
     TABCONTENT: Haupt-Inhalt
     TABDEPENDENT: 'Abhängige Seiten'
     TOPLEVEL: 'Seiten Inhalt (Top Level)'
+    TREETITLE: Seitenname
+    TREETYPE: Seitentyp
     UNTITLED: 'Unbenannt {pagetype}'
     URLSegment: URL-Segment
     UntitledDependentObject: 'Unbenannt {instanceType}'
@@ -318,6 +331,7 @@ de:
     EditLink: Bearbeiten
     HEADER: 'Dies ist eine virtuelle Seite'
     HEADERWITHLINK: 'Dies ist eine virtuelle Seite, die den Inhalt von "{title}" ({link}) kopiert'
+    OverrideNote: 'Überschreibt den geerbten Wert der Quelle'
     PLURALNAME: 'Virtuelle Seiten'
     PLURALS:
       one: 'Eine Virtuelle Seite'

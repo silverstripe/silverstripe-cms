@@ -10,6 +10,8 @@ el:
     Cancel: Άκυρο
     ChoosePageType: 'Επιλέξτε τύπο σελίδας'
     Create: Δημιουργία
+    ListView: 'Προβολή Λίστας'
+    MENUTITLE: Σελίδες
     NEWPAGE: 'Νέο {pagetype}'
     PAGENOTEXISTS: 'Αυτή η σελίδα δεν υπάρχει'
     PAGESALLOPT: 'Όλες οι σελίδες'
@@ -22,13 +24,14 @@ el:
     TabContent: Περιεχόμενο
     TabHistory: Ιστορικό
     TabSettings: Ρυθμίσεις
+    TreeView: 'Προβολή Δέντρου'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Προσθήκη σελίδας'
     ParentMode_child: 'Κάτω από άλλη σελίδα'
     ParentMode_top: 'Επίπεδο κορυφής'
     Title: 'Προσθήκη σελίδας'
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Επεξεργασία Σελίδας'
+    MENUTITLE: Σελίδες
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Συγγραφέας
     COMPARINGVERSION: 'Σύγκριση Εκδόσεων {version1} και {version2}.'
@@ -40,7 +43,7 @@ el:
     VIEW: προβολή
     WHEN: Όταν
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Επεξεργασία Σελίδας'
+    MENUTITLE: Σελίδες
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Φίλτρο
     ListView: 'Προβολή Λίστας'
@@ -62,6 +65,8 @@ el:
     VIEWPAGEIN: 'Προβολή Σελίδας σε:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Αρχειοθετημένο
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Επίπεδο κορυφής'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
     Cancel: Άκυρο
     OK: ΟΚ
@@ -89,6 +94,7 @@ el:
     EDITHEADER: 'Ποιος μπορεί να επεξεργαστεί αυτή τη σελίδα;'
     EDITORGROUPS: 'Ομάδες Συντακτών'
     Editors: 'Ομάδες Συντακτών'
+    Filter_ClassName_Any: Οποιοδήποτε
     HASBROKENLINKS: 'Αυτή η σελίδα έχει ανενεργούς συνδέσμους '
     HTMLEDITORTITLE: Περιεχόμενο
     LASTPUBLISHED: 'Τελευταία δημοσίευση'
@@ -113,6 +119,8 @@ el:
     SINGULARNAME: Σελίδα
     TABBEHAVIOUR: Συμπεριφορά
     TABDEPENDENT: 'Εξαρτώμενες σελίδες '
+    TREETITLE: Σελίδα
+    TREETYPE: 'Τύπος σελίδας'
     VIEW_ALL_DESCRIPTION: 'Δείτε κάθε σελίδα'
     Visibility: Ορατότητα
     db_Content: Περιεχόμενο

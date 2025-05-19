@@ -53,6 +53,8 @@ si:
     SINGULARNAME: පිටුව
     TABBEHAVIOUR: හැසිරීම
     TOPLEVEL: අන්ර්ගතය
+    TREETITLE: 'පිටු නම'
+    TREETYPE: 'පිටු වර්ගය'
     db_Content: අන්තර්ගතය
     db_Title: මතකව
     has_one_Parent: 'මවු පිටුව'

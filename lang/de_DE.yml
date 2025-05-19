@@ -14,14 +14,19 @@ de_DE:
   SilverStripe\CMS\Controllers\CMSMain:
     Cancel: Abbrechen
     EMAIL: E-Mail
+    MENUTITLE: Seiten
     PAGES: Seitenstatus
     PAGETYPEOPT: Seitentyp
     SAVEDRAFT: Speichern
     TreeFilteredClear: Löschen
     UNPUBLISH_AND_ARCHIVE: 'Veröffentlichung zurücknehmen und archivieren'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: Seiten
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     UNKNOWN: Unbekannt
     WHEN: Wann
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: Seiten
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: Seiten
   SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
@@ -46,10 +51,12 @@ de_DE:
     BUTTONUNPUBLISH: 'Veröffentlichung zurücknehmen'
     CLASS_DESCRIPTION: 'Fügt ein anpassbares Formular hinzu'
     DESCRIPTION: 'Fügt ein anpassbares Formular hinzu'
+    Filter_Status: Seitenstatus
     PAGETYPE: Seitentyp
     PLURALNAME: Seiten
     SHOWINSEARCH: 'In Suche anzeigen?'
     SINGULARNAME: Seite
+    TREETYPE: Seitentyp
     db_Title: Titel
   SilverStripe\CMS\Model\SiteTreeFileExtension:
     TITLE_TYPE: Typ

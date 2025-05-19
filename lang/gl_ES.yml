@@ -14,6 +14,8 @@ gl_ES:
     ChoosePageType: 'Escoller tipo de páxina'
     Create: Crear
     EMAIL: Correo-e
+    ListView: 'Vista en Listado'
+    MENUTITLE: Páxinas
     PAGENOTEXISTS: 'Esta páxina non existe'
     PAGESALLOPT: 'Todas as páxinas'
     PAGETYPEANYOPT: Ningún
@@ -27,13 +29,14 @@ gl_ES:
     TabContent: Contido
     TabHistory: Historial
     TabSettings: Configuracións
+    TreeView: 'Vista en Árbore'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Engadir páxina'
     ParentMode_child: 'Baixo outra páxina'
     ParentMode_top: 'Nivel superior'
     Title: 'Engadir páxina'
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Editar Páxina'
+    MENUTITLE: Páxinas
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     COMPAREMODE: 'Modo comparación (seleccionar dúas)'
     MENUTITLE: Historial
@@ -45,7 +48,7 @@ gl_ES:
     VIEW: ver
     WHEN: Cando
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Editar Páxina'
+    MENUTITLE: Páxinas
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filtro
     ListView: 'Vista en Listado'
@@ -68,6 +71,8 @@ gl_ES:
     VIEWPAGEIN: 'Ver a Páxina en:'
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Áncora
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Nivel superior'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Descrición da ligazón'
   SilverStripe\CMS\Model\RedirectorPage:
@@ -102,6 +107,7 @@ gl_ES:
     EDITORGROUPS: 'Grupos Editor'
     EDIT_ALL_DESCRIPTION: 'Editar calquer páxina'
     Editors: 'Grupos dos Editores'
+    Filter_ClassName_Any: Ningún
     HASBROKENLINKS: 'Esta páxina ten ligazóns rotas.'
     HTMLEDITORTITLE: Contido
     INHERIT: 'Herdado da páxina pai'
@@ -128,6 +134,8 @@ gl_ES:
     TABBEHAVIOUR: Comportamento
     TABDEPENDENT: 'Páxinas dependentes'
     TOPLEVEL: 'Contido do Sitio (Nivel Superior)'
+    TREETITLE: 'Nome da páxina'
+    TREETYPE: 'Tipo de Páxina'
     VIEWERGROUPS: 'Visor Grupos'
     VIEW_ALL_DESCRIPTION: 'Ver calquera páxina'
     VIEW_DRAFT_CONTENT: 'Ver contido do borrador'

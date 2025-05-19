@@ -1,4 +1,7 @@
 es:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: Restaurado
+    ROLLEDBACK_VERSION: 'Versión #{version} restaurada'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Eliminadas %d páginas desde el borrador y publicadas, y enviadas al archivo'
     TITLE: 'Despublicar y archivar'
@@ -27,6 +30,8 @@ es:
     DUPLICATED: Duplicado
     DUPLICATEDWITHCHILDREN: 'Duplicado con hijos'
     EMAIL: 'Correo electrónico'
+    ListView: 'Vista tipo lista'
+    MENUTITLE: Páginas
     NEWPAGE: 'Nuevo {pagetype}'
     PAGENOTEXISTS: 'Esta página no existe'
     PAGES: 'Estado de página'
@@ -59,8 +64,10 @@ es:
     TabContent: Contenido
     TabHistory: Historial
     TabSettings: Ajustes
+    Title: 'Modelos de datos'
     TreeFiltered: 'Mostrando resultados de la búsqueda.'
     TreeFilteredClear: Limpiar
+    TreeView: 'Vista tipo árbol'
     UNPUBLISH_AND_ARCHIVE: 'Despublicar y archivar'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Añadir página'
@@ -70,7 +77,7 @@ es:
   SilverStripe\CMS\Controllers\CMSPageEditController:
     ErrorItemPermissionDenied: 'Parece que no tienes los permisos necesarios para añadir {ObjectTitle} a una campaña'
     ErrorNotFound: 'Ese {Type} no pudo ser encontrado'
-    MENUTITLE: 'Editar página'
+    MENUTITLE: Páginas
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Modo comparación (seleccionar dos)'
@@ -87,7 +94,7 @@ es:
     VIEWINGVERSION: 'Actualmente viendo la versión {version}.'
     WHEN: Cuando
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Editar página'
+    MENUTITLE: Páginas
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filtrar
     ListView: 'Vista tipo lista'
@@ -134,6 +141,8 @@ es:
     ARCHIVED: Archivado
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Ancla
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Nivel superior'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Descripción del enlace'
     LINKOPENNEWWIN: 'Abrir en una nueva ventana/pestaña'
@@ -197,6 +206,8 @@ es:
     EDIT_ALL_DESCRIPTION: 'Editar cualquier página'
     EDIT_ALL_HELP: 'Posibilidad de editar cualquier página en el sitio, independientemente de la configuración de la pestaña de Acceso. Requiere permiso "Acceso a la sección ''Páginas''"'
     Editors: 'Grupo de Editores'
+    Filter_ClassName_Any: Cualquiera
+    Filter_Status: 'Estado de página'
     HASBROKENLINKS: 'Esta página contiene enlaces rotos.'
     HTMLEDITORTITLE: Contenido
     INHERIT: 'Heredar de página padre'
@@ -242,6 +253,8 @@ es:
     TABBEHAVIOUR: Comportamiento
     TABDEPENDENT: 'Páginas dependientes'
     TOPLEVEL: 'Contenido del Sitio (Top Level)'
+    TREETITLE: 'Nombre de la página'
+    TREETYPE: 'Tipo de Página'
     VIEWERGROUPS: 'Visor de Grupos'
     VIEW_ALL_DESCRIPTION: 'Ver cualquier página'
     VIEW_ALL_HELP: 'Ver toda la ayuda'

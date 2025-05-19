@@ -1,4 +1,7 @@
 pl_PL:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Przywrócono opublikowaną wersję'
+    ROLLEDBACK_VERSION: 'Przywrócono wersję #{version}.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Usunięto %d stron/y.'
     TITLE: 'Usuń i dodaj do archiwum'
@@ -31,6 +34,8 @@ pl_PL:
     DUPLICATED: "Duplikowanie '{title}' zakończone powodzeniem"
     DUPLICATEDWITHCHILDREN: "Duplikowanie '{title}' oraz podstron zakończone powodzeniem"
     EMAIL: E-mail
+    ListView: 'Widok listy'
+    MENUTITLE: Strony
     NEWPAGE: 'Nowa strona {pagetype}'
     PAGENOTEXISTS: 'Ta strona nie istnieje'
     PAGES: 'Status strony'
@@ -66,6 +71,7 @@ pl_PL:
     TabSettings: Ustawienia
     TreeFiltered: 'Pokaż wyniki wyszukiwania:'
     TreeFilteredClear: Wyczyść
+    TreeView: 'Widok drzewa'
     UNPUBLISH_AND_ARCHIVE: 'Usuń i dodaj do archiwum'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Dodaj nową'
@@ -75,7 +81,7 @@ pl_PL:
   SilverStripe\CMS\Controllers\CMSPageEditController:
     ErrorItemPermissionDenied: 'Wygląda na to, że nie masz wystarczających uprawnień, aby dodać {ObjectTitle} do kampanii.'
     ErrorNotFound: 'Ten {Type} nie został odnaleziony'
-    MENUTITLE: Edytuj
+    MENUTITLE: Strony
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Tryb porównywania (wybierz dwie)'
@@ -93,7 +99,7 @@ pl_PL:
     VIEWINGVERSION: 'Obecnie oglądasz wersję {version}.'
     WHEN: Data
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: Edytuj
+    MENUTITLE: Strony
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filtr
     ListView: 'Widok listy'
@@ -141,6 +147,8 @@ pl_PL:
     ARCHIVED: Zarchiwizowano
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Odnośnik
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Najwyższy poziom'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Opis linku'
     LINKOPENNEWWIN: 'Otwórz link w nowym oknie'
@@ -207,6 +215,8 @@ pl_PL:
     EDIT_ALL_DESCRIPTION: 'Zmień każdą stronę'
     EDIT_ALL_HELP: 'Możliwość edycji jakiejkolwiek strony w witrynie, bez względu na ustawienia w zakładce Dostęp. Wymaga uprawnienia "Dostęp do edycji treści"'
     Editors: 'Grupy Edytorów'
+    Filter_ClassName_Any: Jakikolwiek
+    Filter_Status: 'Status strony'
     HASBROKENLINKS: 'Ta strona ma niedziałający / zepsuty link'
     HTMLEDITORTITLE: Zawartość
     INHERIT: 'Dziedzicz ze strony nadrzędnej'
@@ -257,6 +267,8 @@ pl_PL:
     TABCONTENT: Zawartość
     TABDEPENDENT: 'Strony zależne'
     TOPLEVEL: 'Zawartość witryny (główny poziom)'
+    TREETITLE: 'Nazwa strony'
+    TREETYPE: 'Typ storny'
     UNTITLED: 'Nienazwana {pagetype}'
     URLSegment: URL
     UntitledDependentObject: 'Nienazwana {instanceType}'

@@ -7,6 +7,8 @@ af:
     Cancel: 'Kanselleer '
     Create: Skep
     EMAIL: Epos
+    ListView: 'Lys aansig'
+    MENUTITLE: CMSPagesController
     PAGENOTEXISTS: 'Hierdie bladsy bestaan nie'
     PAGETYPEANYOPT: Enige
     PAGETYPEOPT: 'Blaai soort'
@@ -16,6 +18,12 @@ af:
     ROLLBACK: 'Rol terug na hierdie weergawe'
     SAVEDRAFT: Stoor
     TabContent: Inhoud
+    Title: 'Data modelle'
+    TreeView: 'Boom aansig'
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: CMSPagesController
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: CMSPagesController
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filtreer
     ListView: 'Lys aansig'
@@ -53,6 +61,7 @@ af:
     EDITHEADER: 'Wie mag hierdie bladsy verander?'
     EDITONLYTHESE: 'Slegs hierdie mense (kies uit lys)'
     EDIT_ALL_DESCRIPTION: 'Verander enige bladsy'
+    Filter_ClassName_Any: Enige
     HTMLEDITORTITLE: Inhoud
     PAGELOCATION: 'Bladsy plek'
     PAGETYPE: 'Blaai soort'
@@ -66,6 +75,7 @@ af:
     SINGULARNAME: Bladsy
     TABCONTENT: Inhoud
     TABMAIN: Hoof
+    TREETYPE: 'Blaai soort'
     db_Content: Inhoud
     db_Title: Tietel
     has_one_Parent: 'Ouer Bladsy'

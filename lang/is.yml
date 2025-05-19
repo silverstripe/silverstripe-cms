@@ -6,12 +6,17 @@ is:
   SilverStripe\CMS\Controllers\CMSMain:
     Cancel: 'Hætta við'
     EMAIL: Tölvupóstur
+    MENUTITLE: Síður
     PAGETYPEANYOPT: Einhver
     PAGETYPEOPT: 'Tegund síðu'
     SAVEDRAFT: Vista
     TabContent: Efni
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    MENUTITLE: Síður
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Höfundur
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    MENUTITLE: Síður
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: Síður
   SilverStripe\CMS\Controllers\ContentController:
@@ -55,6 +60,7 @@ is:
     DEFAULTCONTACTTITLE: 'Hafa samband'
     DEFAULTHOMETITLE: Heim
     EDITHEADER: 'Hver getur breytt þessu í kerfinu?'
+    Filter_ClassName_Any: Einhver
     HASBROKENLINKS: 'Þessi síða inniheldur óvirkann hlekk.'
     HTMLEDITORTITLE: Efni
     INHERIT: 'Erfa frá foreldra síðu'
@@ -69,6 +75,8 @@ is:
     SHOWINSEARCH: 'Sýna í leit?'
     SINGULARNAME: Síða
     TABBEHAVIOUR: Hegðun
+    TREETITLE: 'Nafn síðu'
+    TREETYPE: 'Tegund síðu'
     VIEW_DRAFT_CONTENT: 'Skoða uppkast'
     db_Content: Efni
     db_Title: Titill

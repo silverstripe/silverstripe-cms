@@ -1,4 +1,7 @@
 sr_RS@latin:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Vraćeno na objavljenu verziju.'
+    ROLLEDBACK_VERSION: 'Vraćeno na verziju #{version}.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
     PUBLISHED_PAGES: 'Objavljeno %d stranica. Nije uspelo objavljivanje %d stranica.'
     PUBLISH_PAGES: Objavi
@@ -21,6 +24,8 @@ sr_RS@latin:
     DUPLICATED: "'{title}' uspešno dupliran"
     DUPLICATEDWITHCHILDREN: "'{title}' i deca uspešno duplirani"
     EMAIL: E-pošta
+    ListView: 'Prikaz u vidu liste'
+    MENUTITLE: Stranice
     NEWPAGE: 'Nova {pagetype}'
     PAGENOTEXISTS: 'Ova stranica ne postoji'
     PAGESALLOPT: 'Sve stranice'
@@ -44,13 +49,15 @@ sr_RS@latin:
     TabContent: Sadržaj
     TabHistory: Istorija
     TabSettings: Podešavanja
+    Title: 'Modeli podataka'
+    TreeView: 'Prikaz u vidu stabla'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Dodaj stranicu'
     ParentMode_child: 'Kao podstranicu druge stranice'
     ParentMode_top: 'Vršni nivo'
     Title: 'Dodaj stranicu'
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Izmeni stranicu'
+    MENUTITLE: Stranice
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Režim poređenja (izaberi dva)'
@@ -66,7 +73,7 @@ sr_RS@latin:
     VIEWINGVERSION: 'Trenutno je prikazana verzija {version}.'
     WHEN: Datum
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Izmeni stranicu'
+    MENUTITLE: Stranice
   SilverStripe\CMS\Controllers\CMSPagesController:
     ListView: 'Prikaz u vidu liste'
     MENUTITLE: Stranice
@@ -100,6 +107,8 @@ sr_RS@latin:
     ARCHIVED: Arhivirano
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Sidro
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Vršni nivo'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Opis linka'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
@@ -149,6 +158,7 @@ sr_RS@latin:
     EDIT_ALL_DESCRIPTION: 'Izmena bilo koje stranice'
     EDIT_ALL_HELP: 'Mogućnost menjanja bilo koje stranice na sajtu, bez obzira na podešavanja na kartici "Pristup". Zahteva dozvolu za pristup odeljku "Stranice".'
     Editors: 'Grupe za izmene'
+    Filter_ClassName_Any: 'Bilo koji'
     HASBROKENLINKS: 'Ova stranica sadrži oštećene linkove.'
     HTMLEDITORTITLE: Sadržaj
     INHERIT: 'Naslediti od roditeljske stranice'
@@ -188,6 +198,8 @@ sr_RS@latin:
     TABBEHAVIOUR: Ponašanje
     TABDEPENDENT: 'Zavisne stranice'
     TOPLEVEL: 'Sadržaj sajta (vršni nivo)'
+    TREETITLE: 'Naziv stranice'
+    TREETYPE: 'Tip stranice'
     VIEWERGROUPS: 'Grupe za pregled'
     VIEW_ALL_DESCRIPTION: 'Pogledaj bilo koju stranicu'
     VIEW_ALL_HELP: 'Mogućnost pregleda bilo koje stranice na sajtu, bez obzira na podešavanja na kartici "Pristup". Zahteva dozvolu za pristup odeljku "Stranice".'

@@ -54,6 +54,7 @@ az:
     EDITHEADER: 'Bu səhifəni kimlər deyişə bilər?'
     EDIT_ALL_DESCRIPTION: 'İstənilən səhifəni redaktə et'
     Editors: 'Redaktor qrupları'
+    Filter_ClassName_Any: İxtiyari
     HASBROKENLINKS: 'Səhifədə xarab linklər var.'
     HTMLEDITORTITLE: Məzmun
     INHERIT: 'Valideyn səhifədən törəmə'
@@ -73,6 +74,8 @@ az:
     TABBEHAVIOUR: Davranış
     TABDEPENDENT: 'Asılı səhifələr'
     TOPLEVEL: 'Saytın məzmunu (yuxarı səviyyə)'
+    TREETITLE: 'Səhifənin adı'
+    TREETYPE: 'Səhifə tipi'
     VIEW_ALL_DESCRIPTION: 'İstənilən səhifəyə bax'
     VIEW_DRAFT_CONTENT: 'Qaralama məzmuna bax'
     db_Content: Məzmun

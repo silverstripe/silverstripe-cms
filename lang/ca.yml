@@ -70,6 +70,8 @@ ca:
     SINGULARNAME: Pàgina
     TABBEHAVIOUR: Comportament
     TOPLEVEL: 'Contingut del lloc (Nivell principal)'
+    TREETITLE: 'Nom de la pàgina'
+    TREETYPE: 'Tipus de pàgina'
     Viewers: 'Grups de visitadors'
     db_Content: Contingut
     db_Title: Títol

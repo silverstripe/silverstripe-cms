@@ -3,6 +3,7 @@ zh_CN:
     UNPUBLISH_PAGES: 撤消发布
   SilverStripe\CMS\Controllers\CMSMain:
     EMAIL: 电子邮件
+    MENUTITLE: 页
     PAGENOTEXISTS: 该网页不存在
     PAGETYPEOPT: 网页类型
     PLEASESAVE: 请先保存：因为该网页还未保存，所以该页无法更新。
@@ -14,11 +15,11 @@ zh_CN:
     SEARCHRESULTS: 搜索结果
     TabContent: 内容
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 编辑
+    MENUTITLE: 页
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: 作者
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 编辑
+    MENUTITLE: 页
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: 页
   SilverStripe\CMS\Controllers\ContentController:
@@ -66,6 +67,8 @@ zh_CN:
     SINGULARNAME: 页面
     TABBEHAVIOUR: 行为特点
     TOPLEVEL: 网站内容（顶层）
+    TREETITLE: 网页名称
+    TREETYPE: 网页类型
     db_Content: 内容
     db_Title: 标题
   SilverStripe\CMS\Model\VirtualPage:

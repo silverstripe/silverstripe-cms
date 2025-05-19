@@ -1,4 +1,7 @@
 nl:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Teruggedraaid naar gepubliceerde versie.'
+    ROLLEDBACK_VERSION: 'Teruggedraaid naar versie #{version}.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: "%d pagina's verwijderd van de concept/live site en gearchiveerd"
     TITLE: 'Publicatie intrekken en archiveren'
@@ -31,6 +34,8 @@ nl:
     DUPLICATED: "'{title}' met succes gedupliceerd"
     DUPLICATEDWITHCHILDREN: "'{title}' en onderliggende items met succes gedupliceerd"
     EMAIL: E-mail
+    ListView: Lijstweergave
+    MENUTITLE: "Pagina's"
     NEWPAGE: 'Nieuwe {pagetype}'
     PAGENOTEXISTS: 'Deze pagina bestaat niet'
     PAGES: 'Pagina status'
@@ -64,8 +69,10 @@ nl:
     TabContent: Inhoud
     TabHistory: Historie
     TabSettings: Instellingen
+    Title: 'Data modellen'
     TreeFiltered: 'Zoekresultaten worden getoond.'
     TreeFilteredClear: Wissen
+    TreeView: Boomstructuur
     UNPUBLISH_AND_ARCHIVE: 'Publicatie intrekken en achiveren'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Pagina toevoegen'
@@ -75,7 +82,7 @@ nl:
   SilverStripe\CMS\Controllers\CMSPageEditController:
     ErrorItemPermissionDenied: 'Onvoldoende rechten om {ObjectTitle} aan de campagne toe te voegen'
     ErrorNotFound: '{Type} niet gevonden'
-    MENUTITLE: 'Bewerk pagina'
+    MENUTITLE: "Pagina's"
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Auteur
     COMPAREMODE: 'Vergelijken (selecteer 2)'
@@ -93,7 +100,7 @@ nl:
     VIEWINGVERSION: 'Je bekijkt nu versie {version}.'
     WHEN: Wanneer
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Bewerk pagina'
+    MENUTITLE: "Pagina's"
   SilverStripe\CMS\Controllers\CMSPagesController:
     ListView: Lijstweergave
     MENUTITLE: "Pagina's"
@@ -139,6 +146,8 @@ nl:
     ARCHIVED: Gearchiveerd
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Anker
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Hoogste niveau'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Omschrijving van de koppeling'
     LINKOPENNEWWIN: 'Open in een nieuw venster/tab'
@@ -209,6 +218,8 @@ nl:
     EDIT_ALL_DESCRIPTION: 'Kan elke pagina wijzigen'
     EDIT_ALL_HELP: "Bevoegdheid om alle pagina's op de site te wijzigen, onafhankelijk van de instellingen in het 'Toegang' tabblad. Vereist \"Toegang tot site inhoud\" rechten"
     Editors: Redacteursgroepen
+    Filter_ClassName_Any: Elke
+    Filter_Status: 'Pagina status'
     HASBROKENLINKS: 'Deze pagina heeft verbroken links.'
     HTMLEDITORTITLE: Inhoud
     INHERIT: 'Overnemen van de bovenliggende pagina'
@@ -257,6 +268,8 @@ nl:
     TABCONTENT: Hoofdinhoud
     TABDEPENDENT: "Afhankelijke pagina's"
     TOPLEVEL: 'Site inhoud (hoogste niveau)'
+    TREETITLE: Paginanaam
+    TREETYPE: Paginatype
     UNTITLED: 'Naamloos {pagetype}'
     UntitledDependentObject: 'Naamloos {instanceType}'
     VIEWERGROUPS: Bekijkersgroepen
@@ -331,6 +344,7 @@ nl:
     EditLink: wijzigen
     HEADER: 'Dit is een virtuele pagina'
     HEADERWITHLINK: 'Dit is een virtuele pagina met de inhoud van "{title}" ({link})'
+    OverrideNote: 'Overschrijft de overgenomen tekst van de gelinkte pagina'
     PLURALNAME: "Virtuele pagina's"
     PLURALS:
       one: 'Virtuele pagina'

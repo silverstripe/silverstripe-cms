@@ -1,4 +1,7 @@
 it:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Ripristinata la versione pubblicata.'
+    ROLLEDBACK_VERSION: 'Ripristinata la versione #{version}.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: "Eliminate %d pagine da bozza e live, e spedite all'archivio"
     TITLE: 'Nascondi e archivia'
@@ -30,6 +33,8 @@ it:
     Create: Crea
     DUPLICATED: "'{title}' duplicato correttamente"
     DUPLICATEDWITHCHILDREN: "'{title}' e figlie duplicate con successo"
+    ListView: 'Visualizzazione a lista'
+    MENUTITLE: Pagine
     NEWPAGE: 'Nuova {pagetype}'
     PAGENOTEXISTS: 'Questa pagina non esiste'
     PAGES: 'Stato pagina'
@@ -63,8 +68,10 @@ it:
     TabContent: Contenuto
     TabHistory: Storico
     TabSettings: Impostazioni
+    Title: 'Modelli di dati'
     TreeFiltered: 'Visualizzazione risultati ricerca.'
     TreeFilteredClear: Azzera
+    TreeView: 'Visualizzazione ad albero'
     UNPUBLISH_AND_ARCHIVE: 'Annulla pubblicazione e archivia'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Aggiungi pagina'
@@ -74,7 +81,7 @@ it:
   SilverStripe\CMS\Controllers\CMSPageEditController:
     ErrorItemPermissionDenied: 'Pare tu non abbia i privilegi necessari per aggiungere {ObjectTitle} alla campagna'
     ErrorNotFound: '{Type} non è stato trovato'
-    MENUTITLE: 'Modifica pagina'
+    MENUTITLE: Pagine
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autore
     COMPAREMODE: 'Modalità confronto (selezionane due)'
@@ -93,7 +100,7 @@ it:
     VIEWINGVERSION: 'Versione attualmente visualizzata {version}.'
     WHEN: Quando
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Modifica pagina'
+    MENUTITLE: Pagine
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filtra
     ListView: 'Visualizzazione a lista'
@@ -138,6 +145,8 @@ it:
     ARCHIVED: Archiviato
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Ancoraggio
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Primo livello'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Descrizione del link'
     LINKOPENNEWWIN: 'Apri in una nuova finestra/tab'
@@ -208,6 +217,8 @@ it:
     EDIT_ALL_DESCRIPTION: 'Modifica qualunque pagina'
     EDIT_ALL_HELP: 'Possibilità di modificare qualsiasi pagina nel sito, senza tenere conto delle impostazioni nella tab Access. Richiede i permessi di "Accesso ai contenuti del sito"'
     Editors: 'Gruppi di Editori'
+    Filter_ClassName_Any: Qualsiasi
+    Filter_Status: 'Stato pagina'
     HASBROKENLINKS: 'Questa pagina ha link non funzionanti.'
     HTMLEDITORTITLE: Contenuto
     INHERIT: 'Eredita dalla pagina madre'
@@ -258,6 +269,8 @@ it:
     TABCONTENT: 'Contenuto principale'
     TABDEPENDENT: 'Pagine dipendenti'
     TOPLEVEL: 'Contenuto del sito (Livello alto)'
+    TREETITLE: 'Nome pagina'
+    TREETYPE: 'Tipo di pagina'
     UNTITLED: '{pagetype} senza titolo'
     URLSegment: 'Segmento URL'
     UntitledDependentObject: '{instanceType} senza titolo'
@@ -339,6 +352,7 @@ it:
     EditLink: modifica
     HEADER: 'Questa è una pagina virtuale'
     HEADERWITHLINK: 'Questa è una pagina virtuale copiata da "{title}" ({link})'
+    OverrideNote: 'Sovrascrive il valore ereditato dal sorgente'
     PLURALNAME: 'Pagine virtuali'
     PLURALS:
       many: '{count} Pagine Base'
@@ -346,6 +360,8 @@ it:
       other: '{count} Pagine Base'
     PageTypNotAllowedOnRoot: 'Il tipo di pagina originale "{type}" non è consentito al primo livello per questa pagina virtuale'
     SINGULARNAME: 'Pagina virtuale'
+    db_CustomExtraMeta: 'Meta aggiuntivi personalizzati'
+    db_CustomMetaDescription: 'Meta descrizione personalizzata'
     db_VersionID: 'ID versione'
     has_one_CopyContentFrom: 'Copiare il contenuto da'
   SilverStripe\CMS\Reports\BrokenFilesReport:

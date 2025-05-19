@@ -1,4 +1,7 @@
 eo:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Malfaris ŝanĝojn ĝis la publikigita versio.'
+    ROLLEDBACK_VERSION: 'Malfaris ŝanĝojn ĝis versio #{version}.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Forigis %d paĝojn el malneta kaj publika, kaj sendis ilin al la arĥivo'
     TITLE: 'Malpublikigi kaj sendi al arkivo'
@@ -31,6 +34,8 @@ eo:
     DUPLICATED: "Sukcese duobligis je '{title}'"
     DUPLICATEDWITHCHILDREN: "Sukcese duobligis je '{title}' kaj idoj"
     EMAIL: Retpoŝto
+    ListView: 'Lista vido'
+    MENUTITLE: Paĝoj
     NEWPAGE: 'Nova {pagetype}'
     PAGENOTEXISTS: 'Ĉi tiu paĝo ne ekzistas'
     PAGES: 'Stato de paĝo'
@@ -64,8 +69,10 @@ eo:
     TabContent: Enhavo
     TabHistory: Historio
     TabSettings: Agordoj
+    Title: 'Datenaj modeloj'
     TreeFiltered: 'Vidigas rezultojn de serĉo.'
     TreeFilteredClear: Vakigi
+    TreeView: 'Arba vido'
     UNPUBLISH_AND_ARCHIVE: 'Malpublikigi kaj sendi al arkivo'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Enmeti paĝon'
@@ -75,7 +82,7 @@ eo:
   SilverStripe\CMS\Controllers\CMSPageEditController:
     ErrorItemPermissionDenied: 'Ŝajnas ke vi ne havas la bezonatajn permesojn por aldoni je {ObjectTitle} al kampanjo'
     ErrorNotFound: 'Ne eblis trovi tiun {Type}'
-    MENUTITLE: 'Redakti paĝon'
+    MENUTITLE: Paĝoj
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Aŭtoro
     COMPAREMODE: 'Kompara reĝimo (elektu du)'
@@ -94,7 +101,7 @@ eo:
     VIEWINGVERSION: 'Aktuale vidiĝas versio {version}.'
     WHEN: Kiam
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Redakti paĝon'
+    MENUTITLE: Paĝoj
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filtrilo
     ListView: 'Lista vido'
@@ -141,6 +148,8 @@ eo:
     ARCHIVED: Enarkivigita
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Ankri
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Supra nivelo'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Ligila priskribo'
     LINKOPENNEWWIN: 'Malfermi en nova fenestro/tabo'
@@ -212,6 +221,8 @@ eo:
     EDIT_ALL_DESCRIPTION: 'Redakti ajnan paĝon'
     EDIT_ALL_HELP: 'Eblo redakti ajnan paĝon en la retejo, senkonsidere de la agordoj en la langeto Aliro. Necesas la permeso "Aliro al sekcio ''Paĝoj'' "'
     Editors: 'Redaktaj Grupoj'
+    Filter_ClassName_Any: Ajna
+    Filter_Status: 'Stato de paĝo'
     HASBROKENLINKS: 'Ĉi tiu paĝo havas rompitajn ligilojn.'
     HTMLEDITORTITLE: Enhavo
     INHERIT: 'Heredi de patra paĝo'
@@ -261,6 +272,8 @@ eo:
     TABCONTENT: 'Ĉefa enhavo'
     TABDEPENDENT: 'Dependaj paĝoj'
     TOPLEVEL: 'Enhavo de Retejo (Supra Nivelo)'
+    TREETITLE: 'Nomo de paĝo'
+    TREETYPE: 'Tipo de paĝo'
     UNTITLED: 'Sentitola {pagetype}'
     URLSegment: URL-segmento
     UntitledDependentObject: 'Sentitola {instanceType}'
@@ -341,12 +354,15 @@ eo:
     EditLink: redakti
     HEADER: 'Ĉi tiu estas virtuala paĝo'
     HEADERWITHLINK: 'Ĉi tiu estas virtuala paĝo kopianta enhavon el "{title}" ({link})'
+    OverrideNote: 'Anstataŭigas hereditan valoron el la fonto'
     PLURALNAME: 'Virtualaj paĝoj'
     PLURALS:
       one: '{count} baza paĝo'
       other: '{count} bazaj paĝoj'
     PageTypNotAllowedOnRoot: 'Origina paĝa tipo "{type}" ne estas permesita ĉe la root-nivelo por ĉi tiu virtuala paĝo.'
     SINGULARNAME: 'Virtuala paĝo'
+    db_CustomExtraMeta: 'Propra kroma meta'
+    db_CustomMetaDescription: 'Propra metapriskribo'
     db_VersionID: Versio-ID
     has_one_CopyContentFrom: 'Kopii enhavon el'
   SilverStripe\CMS\Reports\BrokenFilesReport:

@@ -1,4 +1,7 @@
 ja:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 公開されたバージョンにロールバックされました。
+    ROLLEDBACK_VERSION: '#{version}. のバージョンにロールバック'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
     PUBLISHED_PAGES: '%dページを公開しましたが、%dページの公開に失敗しました。'
     PUBLISH_PAGES: 公開
@@ -24,6 +27,8 @@ ja:
     DUPLICATED: "'{title}' の複製が完了しました"
     DUPLICATEDWITHCHILDREN: "'{title}' と子の複製が完了しました"
     EMAIL: メール
+    ListView: 一覧表示
+    MENUTITLE: ページ
     NEWPAGE: '新しい {pagetype}'
     PAGENOTEXISTS: このページは存在しません
     PAGES: ページステータス
@@ -49,13 +54,14 @@ ja:
     TabHistory: 履歴
     TabSettings: 設定
     TreeFilteredClear: クリア
+    TreeView: ツリー表示
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: ページを追加
     ParentMode_child: 他のページの下に作成
     ParentMode_top: 最上位層
     Title: ページを追加
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: ページの編集
+    MENUTITLE: ページ
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: 作成者
     COMPAREMODE: 比較モード（２つを選択）
@@ -71,7 +77,7 @@ ja:
     VIEWINGVERSION: '現在表示しているバージョンは{version}です。'
     WHEN: いつ
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: ページの編集
+    MENUTITLE: ページ
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: フィルタ
     ListView: 一覧表示
@@ -112,6 +118,8 @@ ja:
     ARCHIVED: アーカイブされた
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: アンカー
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 最上位層
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: リンクの説明
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
@@ -161,6 +169,8 @@ ja:
     EDIT_ALL_DESCRIPTION: すべてのページを編集
     EDIT_ALL_HELP: 'アクセスタブの設定にかかわらず、このサイト上のページを編集するには、"''ページ''セクションへのアクセス"許可が必要です。'
     Editors: 編集グループ
+    Filter_ClassName_Any: 何でも
+    Filter_Status: ページステータス
     HASBROKENLINKS: このページはリンク切れがあります
     HTMLEDITORTITLE: 内容
     INHERIT: 親ページを受け継ぐ
@@ -200,6 +210,8 @@ ja:
     TABBEHAVIOUR: 動作
     TABDEPENDENT: 依存ページ
     TOPLEVEL: 'サイトの内容 (最上位層)'
+    TREETITLE: ページ名
+    TREETYPE: ページタイプ
     VIEWERGROUPS: ビューアのグループ
     VIEW_ALL_DESCRIPTION: すべてのページを閲覧
     VIEW_ALL_HELP: 'このサイトのページを閲覧するには、アクセスタブの設定に関わらず、"ページのセクションへのアクセス"許可が必要です。'

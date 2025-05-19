@@ -1,4 +1,7 @@
 mi:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'I hoki ki te tauira kua whakaputaina.'
+    ROLLEDBACK_VERSION: 'I hoki ki te tauira #{version}.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
     PUBLISHED_PAGES: '%d ngā whārangi kua whakaputaina, %d i rahua'
     PUBLISH_PAGES: Whakaputa
@@ -21,6 +24,8 @@ mi:
     DUPLICATED: "I momoho te tārite i '{title}'"
     DUPLICATEDWITHCHILDREN: "I momoho te tārite i '{title}' me ngā tamariki"
     EMAIL: Īmēra
+    ListView: 'Tirohanga Rārangi'
+    MENUTITLE: 'Ngā Whārangi'
     NEWPAGE: '{pagetype} hou'
     PAGENOTEXISTS: 'KIāore tēnei whārangi e tīari'
     PAGESALLOPT: 'Ngā Whārangi Katoa'
@@ -44,13 +49,15 @@ mi:
     TabContent: 'Ngā ihirangi'
     TabHistory: Hītori
     TabSettings: 'Ngā Tautuhinga'
+    Title: 'Ngā Tauira Raraunga'
+    TreeView: 'Tirohanga Rākau'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Tāpiri whārangi'
     ParentMode_child: 'Kei raro i tētahi atu whārangi'
     ParentMode_top: 'Taumata matua'
     Title: 'Tāpiri whārangi'
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Whakatika Whārangi'
+    MENUTITLE: 'Ngā Whārangi'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Kaituhi
     COMPAREMODE: 'Whakataurite Aratau (tīpakohia kia rua)'
@@ -66,7 +73,7 @@ mi:
     VIEWINGVERSION: 'Tiro ana i te putanga {version} ināianei.'
     WHEN: Inahea
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Whakatika Whārangi'
+    MENUTITLE: 'Ngā Whārangi'
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Tātari
     ListView: 'Tirohanga Rārangi'
@@ -101,6 +108,8 @@ mi:
     ARCHIVED: 'I putumōhiotia'
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Punga
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Taumata matua'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Whakaahuatanga hono'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
@@ -151,6 +160,7 @@ mi:
     EDIT_ALL_DESCRIPTION: 'Whakatikatia tētahi whārangi'
     EDIT_ALL_HELP: 'Te āhei ki te whakatika i tētahi whārangi i te pae, ahakoa ngā tautuhinga kei te ripa Uru. Ka hiahiatia te whakaaetanga o te "wāhanga Urui ki ''Ngā Whārangi''"'
     Editors: 'Ngā Rōpū Kaiwhakatika'
+    Filter_ClassName_Any: 'Ko tētahi'
     HASBROKENLINKS: 'He hononga whati kei tēnei whārangi.'
     HTMLEDITORTITLE: Kai
     INHERIT: 'I tukuna iho i te whārangi matua'
@@ -190,6 +200,8 @@ mi:
     TABBEHAVIOUR: Whanonga
     TABDEPENDENT: 'Ngā whārangi hāngai'
     TOPLEVEL: 'Ngā Ihirangi Pae (Taumata Matua)'
+    TREETITLE: 'Ingoa whārangi'
+    TREETYPE: 'Tūmomo wharangi '
     VIEWERGROUPS: 'Ngā Ropū Kaitirotiro'
     VIEW_ALL_DESCRIPTION: 'Tirohia tētahi whārangi'
     VIEW_ALL_HELP: 'Te āhei ki te tiro i tētahi whārangi i te pae, ahakoa ngā tautuhinga i te ripa Uru. Ka hiahia i te whakaaetanga "wāhanga Uru ki ''Ngā Whārangi''"'

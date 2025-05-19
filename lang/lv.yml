@@ -57,6 +57,7 @@ lv:
     EDIT_ALL_DESCRIPTION: 'Labot jebkuru lapu'
     EDIT_ALL_HELP: 'Iespēja labot jebkuru vietnes lapu, neskatoties uz uzstādijumiem Piekļuve cilnē'
     Editors: 'Redaktoru grupas'
+    Filter_ClassName_Any: Jebkuru
     HASBROKENLINKS: 'Šī lapa satur bojātas saites.'
     HTMLEDITORTITLE: Saturs
     INHERIT: 'Mantot no vecāka lapas'
@@ -81,6 +82,8 @@ lv:
     TABBEHAVIOUR: Uzvedība
     TABDEPENDENT: 'Atkarīgās lapas'
     TOPLEVEL: 'Vietnes Saturs (Augšējais līmenis)'
+    TREETITLE: 'Lapas nosaukums'
+    TREETYPE: 'Lapas tips'
     VIEWERGROUPS: 'Skatītāju grupas'
     VIEW_ALL_DESCRIPTION: 'Skatī jebkuru lapu'
     VIEW_DRAFT_CONTENT: 'Aplūkot melnraksa saturu'

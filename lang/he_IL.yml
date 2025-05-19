@@ -16,6 +16,8 @@ he_IL:
     ChoosePageType: 'נא לבחור בסוג העמוד'
     Create: יצירה
     EMAIL: 'דואר אלקטרוני'
+    ListView: 'תצוגת רשימה'
+    MENUTITLE: עמודים
     NEWPAGE: '{pagetype} חדש'
     PAGENOTEXISTS: 'עמוד זה אינו קיים במערכת'
     PAGESALLOPT: 'כל העמודים'
@@ -34,13 +36,14 @@ he_IL:
     TabContent: תוכן
     TabHistory: היסטורייה
     TabSettings: הגדרות
+    TreeView: 'תצוגת עץ'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'הוספת עמוד'
     ParentMode_child: 'תחת עמוד אחר'
     ParentMode_top: 'רמה עליונה'
     Title: 'הוספת עמוד'
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'עריכת העמוד'
+    MENUTITLE: עמודים
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: 'נוצר על ידי'
     COMPAREMODE: 'מצב השוואה (יש לבחור שניים)'
@@ -55,7 +58,7 @@ he_IL:
     VIEWINGVERSION: 'הגרסה הנוכחית המופיעה {version}.'
     WHEN: מתי
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'עריכת העמוד'
+    MENUTITLE: עמודים
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: מסנן
     ListView: 'תצוגת רשימה'
@@ -84,6 +87,8 @@ he_IL:
     UNVERSIONEDPREVIEW: 'תצוגה מקדימה'
     UnableDeleteInstall: 'לא ניתן למחוק את קובצי ההתקנה. נא למחוק את הקבצים שלהלן ידנית'
     VIEWPAGEIN: 'צפייה בעמוד תחת:'
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'רמה עליונה'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'תאור הקישור'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
@@ -126,6 +131,7 @@ he_IL:
     EDIT_ALL_DESCRIPTION: 'עריכת עמוד כלשהו'
     EDIT_ALL_HELP: 'היכולת לערוך כל עמוד באתר זה, ללא תלות בהגדרות בלשונית הגישה.  דורש את ההרשאה „גישה לאגף „עמודים““.'
     Editors: 'קבוצות עורכים'
+    Filter_ClassName_Any: כלשהם
     HASBROKENLINKS: 'דף זה מכיל קישורים שבורים'
     HTMLEDITORTITLE: תוכן
     INHERIT: 'הורשה מדף ההורה'
@@ -161,6 +167,8 @@ he_IL:
     TABBEHAVIOUR: התנהגות
     TABDEPENDENT: 'עמודים תלויים'
     TOPLEVEL: 'תוכן האתר (רמה עליונה)'
+    TREETITLE: 'שם העמוד'
+    TREETYPE: 'סוג דף'
     VIEWERGROUPS: 'קבוצות צופים'
     VIEW_ALL_DESCRIPTION: 'צפייה בכל עמוד שהוא'
     VIEW_DRAFT_CONTENT: 'צפייה בתוכן טיוטה'

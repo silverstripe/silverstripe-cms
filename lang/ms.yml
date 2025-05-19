@@ -47,6 +47,8 @@ ms:
     SINGULARNAME: Halaman
     TABBEHAVIOUR: Perilaku
     TOPLEVEL: 'Kandungan Laman (Peringkat Atas)'
+    TREETITLE: 'Nama halaman'
+    TREETYPE: 'Jenis halaman'
     db_Content: Kandungan
     has_one_Parent: 'Halaman Induk'
   SilverStripe\CMS\Model\VirtualPage:
