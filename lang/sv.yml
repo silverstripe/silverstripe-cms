@@ -1,4 +1,7 @@
 sv:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Återställde till den publicerade versionen.'
+    ROLLEDBACK_VERSION: 'Återställde till version #{version}.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Raderade %d sidor från utkast och live och arkiverade dem'
     TITLE: 'Avpublicera och arkivera'
@@ -31,6 +34,8 @@ sv:
     DUPLICATED: "Duplicerade '{title}' utan problem"
     DUPLICATEDWITHCHILDREN: "Duplicerade '{title}' och undersidor utan problem"
     EMAIL: E-post
+    ListView: Listvy
+    MENUTITLE: Sidor
     NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Den här sidan finns inte'
     PAGES: Sidstatus
@@ -63,8 +68,10 @@ sv:
     TabContent: Innehåll
     TabHistory: Historik
     TabSettings: Inställningar
+    Title: Datamodeller
     TreeFiltered: 'Visar sökresultat.'
     TreeFilteredClear: Rensa
+    TreeView: Trädvy
     UNPUBLISH_AND_ARCHIVE: 'Avpublicerad och arkivera'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Skapa sida'
@@ -74,7 +81,7 @@ sv:
   SilverStripe\CMS\Controllers\CMSPageEditController:
     ErrorItemPermissionDenied: 'Du har inte de rättigheter som krävs för att lägga till  {ObjectTitle} i en kampanj'
     ErrorNotFound: '{Type} hittades inte'
-    MENUTITLE: 'Redigera sida'
+    MENUTITLE: Sidor
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Författare
     COMPAREMODE: 'Jämföringsläge (välj två)'
@@ -92,7 +99,7 @@ sv:
     VIEWINGVERSION: 'Nu visas version {version}.'
     WHEN: När
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Redigera sida'
+    MENUTITLE: Sidor
   SilverStripe\CMS\Controllers\CMSPagesController:
     ListView: Listvy
     MENUTITLE: Sidor
@@ -138,6 +145,8 @@ sv:
     ARCHIVED: Arkiverad
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Ankare
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: Toppnivå
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: Länk-beskrivning
     LINKOPENNEWWIN: 'Öppna i nytt fönster/flik'
@@ -201,6 +210,8 @@ sv:
     EDIT_ALL_DESCRIPTION: 'Redigera alla sidor'
     EDIT_ALL_HELP: 'Möjlighet att redigera alla sidor på sajten, oavsett inställningarna under Åtkomstfliken. Kräver "Tillgång till ''Sidor''-delen"'
     Editors: Redaktörsgrupper
+    Filter_ClassName_Any: 'Vilken som helst'
+    Filter_Status: Sidstatus
     HASBROKENLINKS: 'Den här sidan har trasiga länkar.'
     HTMLEDITORTITLE: Innehåll
     INHERIT: 'Ärv från överordnad sida'
@@ -245,6 +256,8 @@ sv:
     TABBEHAVIOUR: Beteende
     TABDEPENDENT: 'Beroende sidor'
     TOPLEVEL: 'Sajtinnehåll (toppnivå)'
+    TREETITLE: Sidnamn
+    TREETYPE: Sidtyp
     VIEWERGROUPS: Åtkomstgrupper
     VIEWER_GROUPS_FIELD_DESC: 'Grupper med globala visnings-rättigheter: {groupList}'
     VIEW_ALL_DESCRIPTION: 'Visa alla sidor'

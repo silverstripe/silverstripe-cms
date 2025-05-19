@@ -17,6 +17,8 @@ th:
     ChoosePageType: เลือกประเภทของหน้าเว็บ
     Create: สร้าง
     EMAIL: อีเมล
+    ListView: มุมมองแบบแสดงรายการ
+    MENUTITLE: หน้า
     NEWPAGE: 'ใหม่ {pagetype}'
     PAGENOTEXISTS: ไม่มีหน้านี้อยู่
     PAGESALLOPT: หน้าทั้งหมด
@@ -35,13 +37,14 @@ th:
     TabContent: เนื้อหา
     TabHistory: ประวัติย้อนหลัง
     TabSettings: ตั้งค่า
+    TreeView: 'มุมมองแบบ Tree'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: เพิ่มหน้า
     ParentMode_child: อยู่ใต้หน้าอื่นๆ
     ParentMode_top: ระดับสูงสุด
     Title: เพิ่มหน้า
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: แก้ไขหน้าเว็บ
+    MENUTITLE: หน้า
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: ผู้แต่ง
     COMPAREMODE: 'โหมดเปรียบเทียบ (เลือกสองรายการ)'
@@ -56,7 +59,7 @@ th:
     VIEWINGVERSION: 'ขณะนี้กำลังเปิดดูในรุ่น {version}.'
     WHEN: เมื่อ
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: แก้ไขหน้าเว็บ
+    MENUTITLE: หน้า
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: ตัวกรองข้อมูล
     ListView: มุมมองแบบแสดงรายการ
@@ -85,6 +88,8 @@ th:
     UNVERSIONEDPREVIEW: ดูตัวอย่าง
     UnableDeleteInstall: 'ไม่สามารถลบไฟล์ติดตั้งได้ กรุณาลบไฟล์ดังกล่าวด้านล่างด้วยตนเอง'
     VIEWPAGEIN: 'เปิดดูหน้าเว็บใน:'
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: ระดับสูงสุด
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: คำอธิบายลิงค์
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
@@ -131,6 +136,7 @@ th:
     EDIT_ALL_DESCRIPTION: แก้ไขหน้าเว็บใดก็ได้
     EDIT_ALL_HELP: 'ความสามารถในการแก้ไขหน้าเว็บใดๆในเว็บไซต์, โดยไม่ต้องคำนึงถึงการตั้งค่าที่อยู่ในส่วนของแท็บการเข้าถึง, จำเป็นต้องได้รับสิทธิ์อนุญาติ "เข้าถึงส่วนของ''หน้าเว็บ''"'
     Editors: กลุ่มของบรรณาธิการ
+    Filter_ClassName_Any: ใดๆ
     HASBROKENLINKS: หน้าเว็บนี้มีลิงค์เสีย
     HTMLEDITORTITLE: เนื้อหา
     INHERIT: สืบทอดค่าจากหน้าเว็บต้นทาง
@@ -165,6 +171,8 @@ th:
     TABBEHAVIOUR: พฤติกรรม
     TABDEPENDENT: หน้าย่อย
     TOPLEVEL: 'เนื้อหาเว็บไซต์ (ระดับสูงสุด)'
+    TREETITLE: ชื่อของหน้าเว็บ
+    TREETYPE: 'ประเภท เอกสาร'
     VIEWERGROUPS: กลุ่มผู้ชม
     VIEW_ALL_DESCRIPTION: เปิดดูหน้าเว็บใดก็ได้
     VIEW_DRAFT_CONTENT: เปิดดูเนื้อหาฉบับร่าง

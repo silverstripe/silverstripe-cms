@@ -1,4 +1,7 @@
 sk:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Vrátené späť na zverejnenú verziu.'
+    ROLLEDBACK_VERSION: 'Vrátené späť na verziu #{version}.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Vymazaných %d stránok z konceptu a publikovania a presunuté do archívu.'
     TITLE: 'Nezverejniť a archivovať'
@@ -31,6 +34,8 @@ sk:
     DUPLICATED: "Duplikované '{title}' úspešne"
     DUPLICATEDWITHCHILDREN: "Duplikované '{title}' a potomkovia úspešne"
     EMAIL: E-mail
+    ListView: 'Zobraziť zoznam'
+    MENUTITLE: Stránky
     NEWPAGE: 'Nová {pagetype}'
     PAGENOTEXISTS: 'Táto stránka neexistuje.'
     PAGES: 'Stav stránky'
@@ -64,8 +69,10 @@ sk:
     TabContent: Obsah
     TabHistory: História
     TabSettings: Nastavenia
+    Title: 'Dátové modely'
     TreeFiltered: 'Zobrazenie výsledkov vyhľadávania.'
     TreeFilteredClear: Vyčistiť
+    TreeView: 'Zobraziť strom'
     UNPUBLISH_AND_ARCHIVE: 'Nezverejniť a archivovať'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Pridať stránku'
@@ -75,7 +82,7 @@ sk:
   SilverStripe\CMS\Controllers\CMSPageEditController:
     ErrorItemPermissionDenied: 'Zdá sa, že nemáte potrebné oprávnenia na pridanie {ObjectTitle} ku kampani.'
     ErrorNotFound: '{Type} nemožno nájsť'
-    MENUTITLE: 'Upraviť stránku'
+    MENUTITLE: Stránky
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Mód porovnania (vyberte dva)'
@@ -94,7 +101,7 @@ sk:
     VIEWINGVERSION: 'Práve sa zobrazuje verzia {version}.'
     WHEN: Keď
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Upraviť stránku'
+    MENUTITLE: Stránky
   SilverStripe\CMS\Controllers\CMSPagesController:
     ListView: 'Zobraziť zoznam'
     MENUTITLE: Stránky
@@ -140,6 +147,8 @@ sk:
     ARCHIVED: Archivované
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Kotva
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Najvyššia úroveň'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Popis odkazu'
     LINKOPENNEWWIN: 'Otvoriť v novom okne/záložke'
@@ -212,6 +221,8 @@ sk:
     EDIT_ALL_DESCRIPTION: 'Upraviť akúkoľvek stránku'
     EDIT_ALL_HELP: 'Schopnosť upravovať ktorúkoľvek stránku na webe, nedbajúc na nastavenia v záložke prístupov. Vyžaduje "Prístup k ''Stránkam'' sekcia" povolenie'
     Editors: 'Skupiny upravovateľov'
+    Filter_ClassName_Any: Každý
+    Filter_Status: 'Stav stránky'
     HASBROKENLINKS: 'Táto stránka obsahuje nefunkčné odkazy.'
     HTMLEDITORTITLE: Obsah
     INHERIT: 'Dediť od nadradenej stránky'
@@ -263,6 +274,8 @@ sk:
     TABCONTENT: 'Hlavný obsah'
     TABDEPENDENT: 'Závislé stránky'
     TOPLEVEL: 'Obsah Webu (Najvyššia úroveň)'
+    TREETITLE: 'Názov stránky'
+    TREETYPE: 'Typ stránky'
     UNTITLED: 'Bez názvu {pagetype}'
     URLSegment: 'Časť URL'
     UntitledDependentObject: 'Bez názvu {instanceType}'

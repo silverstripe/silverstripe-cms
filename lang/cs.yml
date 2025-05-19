@@ -1,4 +1,7 @@
 cs:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Vráceno zpět na zveřejněnou verzi.'
+    ROLLEDBACK_VERSION: 'Vráceno zpět na verzi #{version}.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Smazáno %d stránek z konceptu a webu a odesláno do archivu'
     TITLE: 'Nezveřejnit a archivovat'
@@ -31,6 +34,8 @@ cs:
     DUPLICATED: "Duplikováno '{title}' úspěšně"
     DUPLICATEDWITHCHILDREN: "Duplikováno '{title}' a potomci úspěšně"
     EMAIL: E-mail
+    ListView: 'Pohled seznam'
+    MENUTITLE: Stránky
     NEWPAGE: 'Nová {pagetype}'
     PAGENOTEXISTS: 'Tato stránka neexistuje'
     PAGES: 'Stav stránky'
@@ -62,8 +67,10 @@ cs:
     TabContent: Obsah
     TabHistory: Historie
     TabSettings: Nastavení
+    Title: 'Datové modely'
     TreeFiltered: 'Zobrazení výsledků vyhledávání.'
     TreeFilteredClear: Vyčistit
+    TreeView: 'Pohled strom'
     UNPUBLISH_AND_ARCHIVE: 'Nezveřejnit a archivovat'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Přidat stránku'
@@ -73,7 +80,7 @@ cs:
   SilverStripe\CMS\Controllers\CMSPageEditController:
     ErrorItemPermissionDenied: 'Vypadá to tak, že nemáte dost práv přidat {ObjectTitle} do kampaně'
     ErrorNotFound: 'Toto {Type} nebylo nalezeno'
-    MENUTITLE: 'Upravit stránku'
+    MENUTITLE: Stránky
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Porovnávací mód (vyberte dva)'
@@ -91,7 +98,7 @@ cs:
     VIEWINGVERSION: 'Právě prohlížíte verzi číslo {version}.'
     WHEN: Když
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Upravit stránku'
+    MENUTITLE: Stránky
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filtr
     ListView: 'Pohled seznam'
@@ -138,6 +145,8 @@ cs:
     ARCHIVED: Archivováno
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: 'Záložka (kotva)'
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Nejvyšší úroveň'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Popis odkazu'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
@@ -194,6 +203,8 @@ cs:
     EDIT_ALL_DESCRIPTION: 'Může editovat jakoukoli stránku webu, obcházeje bezpečnostní specifikaci stránky'
     EDIT_ALL_HELP: 'Možnost upravit libovolnou stránku na webu, bez ohledu na nastavení na kartě Přístup. Vyžaduje povolení "Přístup k sekci ''Stránky''"'
     Editors: 'Skupiny editorů'
+    Filter_ClassName_Any: Jakkýkoli
+    Filter_Status: 'Stav stránky'
     HASBROKENLINKS: 'Tato stránka obsahuje neplatné odkazy.'
     HTMLEDITORTITLE: Obsah
     INHERIT: 'Zděděno po rodičovské stránce'
@@ -235,6 +246,8 @@ cs:
     TABBEHAVIOUR: Chování
     TABDEPENDENT: 'Závislé stránky'
     TOPLEVEL: 'Obsah Webu (Nejvyšší úroveň)'
+    TREETITLE: 'Název stránky'
+    TREETYPE: 'Typ stránky'
     VIEWERGROUPS: 'Prohlížeč skupin'
     VIEW_ALL_DESCRIPTION: 'Může vidět jakoukoli stránku webu, obcházeje bezpečnostní specifikaci stránky'
     VIEW_ALL_HELP: 'Možnost zobrazit libovolnou stránku na webu, bez ohledu na nastevení kartě Přístup. Vyžaduje povolení "Přístup k  sekci ''Stránky''"'

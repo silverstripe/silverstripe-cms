@@ -17,6 +17,8 @@ uk:
     ChoosePageType: 'Виберіть тип сторінки'
     Create: Створити
     EMAIL: Е-пошта
+    ListView: 'У вигляді списку'
+    MENUTITLE: Сторінки
     PAGENOTEXISTS: 'Ця сторінка не існує'
     PAGESALLOPT: 'Всі сторінки'
     PAGETYPEANYOPT: Будь-який
@@ -32,13 +34,14 @@ uk:
     TabContent: Вміст
     TabHistory: Історія
     TabSettings: Налаштування
+    TreeView: 'У вигляді дерева'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Додати сторінку'
     ParentMode_child: 'Під іншою сторінкою'
     ParentMode_top: 'Вищий рівень'
     Title: 'Додати сторінку'
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Редагувати сторінку'
+    MENUTITLE: Сторінки
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Автор
     COMPAREMODE: 'Режим порівняння (виберіть два)'
@@ -53,7 +56,7 @@ uk:
     VIEWINGVERSION: 'Переглядається версія {version}.'
     WHEN: Коли
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Редагувати сторінку'
+    MENUTITLE: Сторінки
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Фільтр
     ListView: 'У вигляді списку'
@@ -78,6 +81,8 @@ uk:
     VIEWPAGEIN: 'Переглянути сторінку в:'
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Якір
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Вищий рівень'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Опис посилання'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
@@ -119,6 +124,7 @@ uk:
     EDIT_ALL_DESCRIPTION: 'Редагувати будь-яку сторінку'
     EDIT_ALL_HELP: 'Можливість редагувати будь-яку сторінку сайту, незалежно від налаштувань на вкладці Доступ. Потрібен дозвіл "Доступ до розділу "Сторінки "'
     Editors: 'Групи редакторів'
+    Filter_ClassName_Any: Будь-який
     HASBROKENLINKS: 'Ця сторінка має зламані посилання.'
     HTMLEDITORTITLE: Вміст
     INHERIT: 'Наслідувати з батьківської сторінки'
@@ -152,6 +158,8 @@ uk:
     TABBEHAVIOUR: Поводження
     TABDEPENDENT: 'Залежні сторінки'
     TOPLEVEL: 'Вміст Сайту (Верхній Рівень)'
+    TREETITLE: 'Назва сторінки'
+    TREETYPE: 'Тип сторінки'
     VIEWERGROUPS: 'Групи глядачів'
     VIEW_ALL_DESCRIPTION: 'Перегляд будь-якої сторінки'
     VIEW_DRAFT_CONTENT: 'Переглянути чорновий вміст'

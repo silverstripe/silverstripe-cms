@@ -41,6 +41,8 @@ vi_VN:
     SHOWINSEARCH: 'Hiển thị khi tìm kiếm?'
     TABBEHAVIOUR: 'Hoạt động'
     TABCONTENT: 'Thông tin'
+    TREETITLE: 'Tên trang'
+    TREETYPE: Loại
     db_Content: 'Nội dung'
   SilverStripe\CMS\Reports\BrokenLinksReport:
     PageName: 'Tên trang'

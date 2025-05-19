@@ -6,6 +6,8 @@ zh_TW:
     UNPUBLISH_PAGES: 取消發布
   SilverStripe\CMS\Controllers\CMSMain:
     EMAIL: 電子郵件
+    ListView: 清單瀏覽
+    MENUTITLE: 網頁
     PAGENOTEXISTS: 這頁不存在
     PAGESALLOPT: 所有網頁
     PAGETYPEOPT: 網頁類型
@@ -17,8 +19,9 @@ zh_TW:
     TabContent: 內容
     TabHistory: 歷史
     TabSettings: 設定值
+    TreeView: 樹狀瀏覽
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 編輯網頁
+    MENUTITLE: 網頁
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: 作者
     COMPAREMODE: 比較模式(選擇兩個)
@@ -31,7 +34,7 @@ zh_TW:
     VIEW: 瀏覽
     WHEN: 何時
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 編輯網頁
+    MENUTITLE: 網頁
   SilverStripe\CMS\Controllers\CMSPagesController:
     ListView: 清單瀏覽
     MENUTITLE: 網頁
@@ -106,6 +109,8 @@ zh_TW:
     TABBEHAVIOUR: 作用
     TABDEPENDENT: 依賴網頁
     TOPLEVEL: '網站內容 (高層)'
+    TREETITLE: 網頁名稱
+    TREETYPE: 網頁類型
     VIEWERGROUPS: 瀏覽者群組
     VIEW_ALL_DESCRIPTION: 瀏覽任何網頁
     VIEW_DRAFT_CONTENT: 瀏覽內容草稿

@@ -47,6 +47,7 @@ bs:
     DEFAULTCONTACTTITLE: 'Kontaktirajte nas'
     DEFAULTHOMETITLE: Početna
     EDITHEADER: 'Ko može izmijeniti ovu stavku unutar CMS-a?'
+    Filter_ClassName_Any: 'Bilo koji'
     HASBROKENLINKS: 'Ova stranica ima neispravnih linkova.'
     HTMLEDITORTITLE: Sadržaj
     MENUTITLE: 'Oznaka navigacije'
@@ -59,6 +60,8 @@ bs:
     SINGULARNAME: Stranica
     TABBEHAVIOUR: Ponašanje
     TOPLEVEL: 'Sadržaj stranice (Glavni nivo)'
+    TREETITLE: 'Ime stranice'
+    TREETYPE: 'Tip stranice'
     db_Content: Sadržaj
     db_Title: Naslov
   SilverStripe\CMS\Model\VirtualPage:

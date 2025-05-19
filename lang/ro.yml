@@ -1,4 +1,7 @@
 ro:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Revenire la versiunea publicată'
+    ROLLEDBACK_VERSION: 'Revenire la versiunea #{version}'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
     PUBLISHED_PAGES: '%d pagini publicate, %d erori'
     PUBLISH_PAGES: Publicare
@@ -20,6 +23,8 @@ ro:
     DUPLICATED: "'{title}' duplicat cu succes"
     DUPLICATEDWITHCHILDREN: "'{title}' și descendenții săi duplicați cu succes"
     EMAIL: E-mail
+    ListView: 'View listă'
+    MENUTITLE: Pagini
     NEWPAGE: '{pagetype} nouă'
     PAGENOTEXISTS: 'Această pagină nu există'
     PAGESALLOPT: 'Toate paginile'
@@ -39,13 +44,14 @@ ro:
     TabContent: Continut
     TabHistory: Istorie
     TabSettings: Setări
+    TreeView: 'View Arbore'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Adăugare pagină'
     ParentMode_child: 'Sub altă pagină'
     ParentMode_top: 'Nivel top'
     Title: 'Adăugare pagină'
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Editează Pagina'
+    MENUTITLE: Pagini
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Mod comparare (selectează 2)'
@@ -61,7 +67,7 @@ ro:
     VIEWINGVERSION: 'Vizualizarea versiunii {version}.'
     WHEN: Când
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Editează Pagina'
+    MENUTITLE: Pagini
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filtru
     ListView: 'View listă'
@@ -93,6 +99,8 @@ ro:
     VIEWPAGEIN: 'Vizualizează pagina în:'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: Arhivă
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Nivel top'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Descriere link'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
@@ -141,6 +149,7 @@ ro:
     EDIT_ALL_DESCRIPTION: 'Editează orice pagină'
     EDIT_ALL_HELP: 'Abilitatea de a edita orice pagină din site, indiferent de setările din tabul Acces. Necesită permisiunea de "Acces la secțiunea ''Pagini''"'
     Editors: 'Grupul editorilor'
+    Filter_ClassName_Any: Oricare
     HASBROKENLINKS: 'Această pagină are referințe nefuncţionale'
     HTMLEDITORTITLE: Continut
     INHERIT: 'Mostenește din pagina părinte'
@@ -179,6 +188,8 @@ ro:
     TABBEHAVIOUR: Comportament
     TABDEPENDENT: 'Pagini dependente'
     TOPLEVEL: 'Conținut Site (Nivel Top)'
+    TREETITLE: 'Nume pagină'
+    TREETYPE: 'Tipul paginii'
     VIEWERGROUPS: 'Grupuri Observatori'
     VIEW_ALL_DESCRIPTION: 'Vizualizează orice pagină'
     VIEW_ALL_HELP: 'Abilitatea de a vizualiza orice pagină din site, indiferent de setările din tabul de Acces. Necesită permisiunea "Acces la secțiunea ''Pagini''"'

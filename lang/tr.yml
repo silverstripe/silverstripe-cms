@@ -13,6 +13,7 @@ tr:
     ChoosePageType: 'Sayfa tipini seç'
     Create: Oluştur
     EMAIL: Eposta
+    MENUTITLE: Sayfalar
     PAGENOTEXISTS: 'Sayfa bulunamadı'
     PAGESALLOPT: 'Tüm sayfalar'
     PAGETYPEANYOPT: Herhangi
@@ -32,7 +33,7 @@ tr:
     MENUTITLE: 'Sayfa ekle'
     Title: 'Sayfa ekle'
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Sayfayı düzenle'
+    MENUTITLE: Sayfalar
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Yazar
     MENUTITLE: Geçmiş
@@ -41,7 +42,7 @@ tr:
     UNKNOWN: Bilinmeyen
     WHEN: 'Ne zaman'
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Sayfayı düzenle'
+    MENUTITLE: Sayfalar
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filtre
     MENUTITLE: Sayfalar
@@ -93,6 +94,7 @@ tr:
     DependtPageColumnLinkType: 'Link tipi'
     EDITHEADER: 'Bu sayfayı kimler düzenleyebilir?'
     Editors: 'Editör Grupları'
+    Filter_ClassName_Any: Herhangi
     HASBROKENLINKS: 'Bu sayfada hatalı linkler var.'
     HTMLEDITORTITLE: İçerik
     INHERIT: 'Üst sayfadan kalan'
@@ -118,6 +120,8 @@ tr:
     SINGULARNAME: Sayfa
     TABBEHAVIOUR: Davranış
     TOPLEVEL: 'Site İçeriği (Üst Seviye)'
+    TREETITLE: 'Sayfa ismi'
+    TREETYPE: 'Sayfa tipi'
     Viewers: 'Görüntüleyici Grupları'
     Visibility: Görünürlük
     db_Content: İçerik

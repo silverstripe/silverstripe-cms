@@ -15,6 +15,8 @@ ja_JP:
     ChoosePageType: ページの種類を選択
     Create: 作成
     EMAIL: メールアドレス
+    ListView: 一覧表示
+    MENUTITLE: ページ
     PAGENOTEXISTS: このページは存在しません
     PAGESALLOPT: 全ページ
     PAGETYPEANYOPT: 何でも
@@ -29,13 +31,14 @@ ja_JP:
     TabContent: 内容
     TabHistory: 履歴
     TabSettings: 設定
+    TreeView: ツリー表示
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: ページを追加
     ParentMode_child: 他のページの下に作成
     ParentMode_top: 最上位層
     Title: ページを追加
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: ページの編集
+    MENUTITLE: ページ
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: 作成者
     COMPAREMODE: 比較モード（２つを選択）
@@ -50,7 +53,7 @@ ja_JP:
     VIEWINGVERSION: '現在表示しているバージョンは{version}です。'
     WHEN: いつ
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: ページの編集
+    MENUTITLE: ページ
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: フィルタ
     ListView: 一覧表示
@@ -73,6 +76,8 @@ ja_JP:
     UnableDeleteInstall: インストールファイルを削除することができませんでした。次のファイルを手動で削除してください。
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: アンカー
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 最上位層
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: リンクの説明
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
@@ -113,6 +118,7 @@ ja_JP:
     EDITORGROUPS: 編集者グループ
     EDIT_ALL_DESCRIPTION: すべてのページを編集
     Editors: 編集グループ
+    Filter_ClassName_Any: 何でも
     HASBROKENLINKS: このページはリンク切れがあります
     HTMLEDITORTITLE: 内容
     INHERIT: 親ページを受け継ぐ
@@ -142,6 +148,8 @@ ja_JP:
     TABBEHAVIOUR: 動作
     TABDEPENDENT: 依存ページ
     TOPLEVEL: 'サイトの内容 (最上位層)'
+    TREETITLE: ページ名
+    TREETYPE: ページタイプ
     VIEW_ALL_DESCRIPTION: すべてのページを閲覧
     VIEW_DRAFT_CONTENT: ドラフトを見る
     Viewers: 閲覧者のグループ

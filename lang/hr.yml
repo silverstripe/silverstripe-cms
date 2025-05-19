@@ -1,4 +1,7 @@
 hr:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Vraćeno na objavljenu verziju'
+    ROLLEDBACK_VERSION: 'Vraćeno na verziju #{version}.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Obrisano %d stranica u statusu nacrt i objavljeno, i poslani u arhivu'
     TITLE: 'Odjavi i arhiviraj'
@@ -25,6 +28,8 @@ hr:
     Create: Kreiraj
     DUPLICATED: "Dupliciran '{title}' uspješno"
     DUPLICATEDWITHCHILDREN: "Dupliciran '{title}'  i podstranice uspješno"
+    ListView: Lista
+    MENUTITLE: Stranice
     NEWPAGE: 'Novi {pagetype}'
     PAGENOTEXISTS: 'Stranica ne postoji'
     PAGES: 'Status stranice'
@@ -55,8 +60,10 @@ hr:
     TabContent: Sadržaj
     TabHistory: Povijest
     TabSettings: Postavke
+    Title: 'Klasa podataka'
     TreeFiltered: 'Prikazujem rezultate pretraživanja.'
     TreeFilteredClear: Očisti
+    TreeView: Stablo
     UNPUBLISH_AND_ARCHIVE: 'Odjavi i arhiviraj'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Dodaj stranicu'
@@ -66,7 +73,7 @@ hr:
   SilverStripe\CMS\Controllers\CMSPageEditController:
     ErrorItemPermissionDenied: 'Izgleda kako nemate potrebna prava za dodati {ObjectTitle} na kampanju'
     ErrorNotFound: '{Type} nije pronađen'
-    MENUTITLE: 'Uredi stranicu'
+    MENUTITLE: Stranice
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Način usporedbe (odaberi dva)'
@@ -84,7 +91,7 @@ hr:
     VIEWINGVERSION: 'Trenutno pregledavam verziju {version}.'
     WHEN: Kada
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Uredi stranicu'
+    MENUTITLE: Stranice
   SilverStripe\CMS\Controllers\CMSPagesController:
     ListView: Lista
     MENUTITLE: Stranice
@@ -129,6 +136,8 @@ hr:
     ARCHIVED: Arhivirano
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Sidro
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Najviši nivo'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Opis linka'
     LINKOPENNEWWIN: 'Otvori u novom prozoru/tabu'
@@ -188,6 +197,8 @@ hr:
     EDIT_ALL_DESCRIPTION: 'Uredi bilo koju stranicu'
     EDIT_ALL_HELP: 'Mogućnost uređivanja bilo koje stranice, neovisno o postavkama na Pristup tabu. Zahtjeva "Pristup na ''Stranice'' sekciju" dozvolu'
     Editors: 'Uredničke grupe'
+    Filter_ClassName_Any: 'bilo koji'
+    Filter_Status: 'Status stranice'
     HASBROKENLINKS: 'Ova stranica ima pogrešne linkove'
     HTMLEDITORTITLE: Sadržaj
     INHERIT: 'Naslijedi od matične stranice'
@@ -225,6 +236,8 @@ hr:
     TABBEHAVIOUR: Karakteristike
     TABDEPENDENT: 'Zavisne stranice'
     TOPLEVEL: 'Sadržaj stranice (Top Level)'
+    TREETITLE: 'Ime stranice'
+    TREETYPE: 'Vrsta stranice'
     VIEWERGROUPS: 'Grupe preglednika'
     VIEW_ALL_DESCRIPTION: 'Pregled bilo koje stranice'
     VIEW_ALL_HELP: 'Mogućnost pregleda bilo koje stranice, neovisno o postavkama na Pristup tabu. Zahtjeva "Pristup na ''Stranice'' sekciju" dozvolu'

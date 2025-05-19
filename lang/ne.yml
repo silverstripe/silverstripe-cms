@@ -48,6 +48,8 @@ ne:
     TABCONTENT: सामाग्री
     TABMAIN: मुख्य
     TOPLEVEL: 'साईट सामाग्री (उच्च स्तान)'
+    TREETITLE: 'पेजको नाम'
+    TREETYPE: 'पेज किसिम'
     db_Content: सामाग्री
   SilverStripe\CMS\Model\VirtualPage:
     HEADER: 'यो भरचुअल पेज हो'

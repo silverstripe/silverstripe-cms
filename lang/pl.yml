@@ -1,4 +1,7 @@
 pl:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Przywrócono opublikowaną wersję'
+    ROLLEDBACK_VERSION: 'Przywrócono wersję #{version}.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Usunięto %d stron/y.'
     TITLE: 'Usuń z opublikowanych i dodaj do archiwum'
@@ -30,6 +33,8 @@ pl:
     Create: Utwórz
     DUPLICATED: "Duplikowanie '{title}' zakończone powodzeniem"
     DUPLICATEDWITHCHILDREN: "Duplikowanie '{title}' oraz podstron zakończone powodzeniem"
+    ListView: 'Widok listy'
+    MENUTITLE: Strony
     NEWPAGE: 'Nowa {pagetype}'
     PAGENOTEXISTS: 'Ta strona nie istnieje'
     PAGES: 'Status strony'
@@ -63,8 +68,10 @@ pl:
     TabContent: Zawartość
     TabHistory: Historia
     TabSettings: Ustawienia
+    Title: 'Modele danych'
     TreeFiltered: 'Pokaż wyniki wyszukiwania:'
     TreeFilteredClear: Wyczyść
+    TreeView: 'Widok drzewa'
     UNPUBLISH_AND_ARCHIVE: 'Usuń z opublikowanych i dodaj do archiwum'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Dodaj stronę'
@@ -74,7 +81,7 @@ pl:
   SilverStripe\CMS\Controllers\CMSPageEditController:
     ErrorItemPermissionDenied: 'Wygląda na to, że nie masz wystarczających uprawnień, aby dodać {ObjectTitle} do kampanii.'
     ErrorNotFound: 'Ten {Type} nie został odnaleziony'
-    MENUTITLE: 'Edytuj Stronę'
+    MENUTITLE: Strony
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Tryb porównywania (wybierz dwie)'
@@ -93,7 +100,7 @@ pl:
     VIEWINGVERSION: 'Obecnie oglądasz wersję {version}.'
     WHEN: Kiedy
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Edytuj Stronę'
+    MENUTITLE: Strony
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filtr
     ListView: 'Widok listy'
@@ -140,6 +147,8 @@ pl:
     ARCHIVED: Zarchiwizowane
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Odnośnik
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Główny poziom'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Opis linku'
     LINKOPENNEWWIN: 'Otworzyć link w nowym oknie?'
@@ -212,6 +221,8 @@ pl:
     EDIT_ALL_DESCRIPTION: 'Edytuj jakąkolwiek stronę'
     EDIT_ALL_HELP: 'Możliwość edycji jakiejkolwiek strony w witrynie, bez względu na ustawienia w zakładce Dostęp. Wymaga uprawnienia "Dostęp do edycji treści"'
     Editors: 'Grupy Edytorów'
+    Filter_ClassName_Any: Jakikolwiek
+    Filter_Status: 'Status strony'
     HASBROKENLINKS: 'Ta strona ma niedziałający link'
     HTMLEDITORTITLE: Zawartość
     INHERIT: 'Dziedzicz ze strony nadrzędnej'
@@ -262,6 +273,8 @@ pl:
     TABCONTENT: Zawartość
     TABDEPENDENT: 'Strony zależne'
     TOPLEVEL: 'Zawartość witryny (główny poziom)'
+    TREETITLE: 'Nazwa strony'
+    TREETYPE: 'Typ storny'
     UNTITLED: 'Nowa {pagetype}'
     URLSegment: URL
     UntitledDependentObject: 'Nowa {pagetype}'

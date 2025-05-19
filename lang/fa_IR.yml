@@ -1,4 +1,7 @@
 fa_IR:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'بازگردانی به نسخه‌ی منتشرشده.'
+    ROLLEDBACK_VERSION: 'بازگردانی به نسخه‌ی #{version}.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'حذف %d صفحه از سایت پیش‌نویس و زنده، و ارسال آنها به آرشیو'
     TITLE: 'عدم انتشار و بایگانی'
@@ -25,6 +28,8 @@ fa_IR:
     DUPLICATED: "'{title}' باموفقیت دونسخه شد"
     DUPLICATEDWITHCHILDREN: "'{title}' و زیرمجموعه‌های آن با موفقیت دونسخه شد"
     EMAIL: ایمیل
+    ListView: 'نمایش لیستی'
+    MENUTITLE: صفحات
     NEWPAGE: '{pagetype} جدید'
     PAGENOTEXISTS: 'این صفحه وجود ندارد'
     PAGES: 'وضعیت صفحه'
@@ -55,8 +60,10 @@ fa_IR:
     TabContent: محتوا
     TabHistory: تاریخچه
     TabSettings: تنظیمات
+    Title: 'مدل‌های داده'
     TreeFiltered: 'نمایش نتایج جستجو'
     TreeFilteredClear: پاک‌کردن
+    TreeView: 'نمایش درختی'
     UNPUBLISH_AND_ARCHIVE: 'عدم انتشار و بایگانی'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'افزودن صفحه'
@@ -66,7 +73,7 @@ fa_IR:
   SilverStripe\CMS\Controllers\CMSPageEditController:
     ErrorItemPermissionDenied: 'به نظر می‌رسد شما دسترسی‌های لازم برای افزودن {ObjectTitle} به کمپین را ندارید'
     ErrorNotFound: 'این {Type} یافت نشد'
-    MENUTITLE: 'ویرایش صفحه'
+    MENUTITLE: صفحات
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: نگارنده
     COMPAREMODE: 'وضعیت مقایسه (دو مورد انتخاب کنید)'
@@ -83,7 +90,7 @@ fa_IR:
     VIEWINGVERSION: 'در حال حاضر نسخه {version} را مشاهده می‌کنید.'
     WHEN: 'چه وقت'
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'ویرایش صفحه'
+    MENUTITLE: صفحات
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: پالایش
     ListView: 'نمایش لیستی'
@@ -127,6 +134,8 @@ fa_IR:
     VIEWPAGEIN: 'مشاهده صفحه در'
   SilverStripe\CMS\Controllers\SilverStripeNavigator:
     ARCHIVED: 'بایگانی شده'
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'سطح بالا'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'توضیحات لینک'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
@@ -179,6 +188,8 @@ fa_IR:
     EDITORGROUPS: 'گروه‌های ویرایشگر'
     EDIT_ALL_DESCRIPTION: 'ویرایش هر صفحه‌ای'
     Editors: 'گروه‌های ویرایشگران'
+    Filter_ClassName_Any: هر
+    Filter_Status: 'وضعیت صفحه'
     HASBROKENLINKS: 'این صفحه دارای پیوند معیوب است.'
     HTMLEDITORTITLE: درون‌مایه
     INHERIT: 'از صفحه والد ارث ببر'
@@ -217,6 +228,8 @@ fa_IR:
     TABBEHAVIOUR: رفتار
     TABDEPENDENT: 'صفحات وابسته'
     TOPLEVEL: 'محتوای سایت (سطح بالا)'
+    TREETITLE: 'نام صفحه'
+    TREETYPE: 'نوع برگ'
     VIEWERGROUPS: 'گروه‌های مشاهده‌کنندگان'
     VIEW_ALL_DESCRIPTION: 'مشاهده هر صفحه‌ای'
     VIEW_DRAFT_CONTENT: 'مشاهده محتوای پیش‌نویس'

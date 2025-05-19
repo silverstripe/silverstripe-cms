@@ -1,4 +1,7 @@
 ar:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'التراجع إلى النسخة المنشورة.'
+    ROLLEDBACK_VERSION: 'التراجع إلى النسخة #{version}.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
     PUBLISHED_PAGES: '%d من الصفحات المنشورة'
     PUBLISH_PAGES: نشر
@@ -24,6 +27,8 @@ ar:
     DUPLICATED: "تكرار '{title}' بنجاح"
     DUPLICATEDWITHCHILDREN: "تكرار '{title}' والتوابع بنجاح"
     EMAIL: 'البريد الإلكتروني'
+    ListView: 'عرض كقائمة'
+    MENUTITLE: الصفحات
     NEWPAGE: '{pagetype} جديد'
     PAGENOTEXISTS: 'هذه الصفحة غير موجودة'
     PAGES: 'حالة الصفحة'
@@ -49,14 +54,16 @@ ar:
     TabContent: المحتوى
     TabHistory: السوابق
     TabSettings: الإعدادات
+    Title: 'نماذج البيانات'
     TreeFiltered: 'استعراض نتائج البحث'
+    TreeView: 'عرض كشجرة'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'اضافة صفحة'
     ParentMode_child: 'تحت صفحة أخرى'
     ParentMode_top: 'أعلى مستوى'
     Title: 'اضافة صفحة'
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'تعديل الصفحة'
+    MENUTITLE: الصفحات
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: الكاتب
     COMPAREMODE: 'وضع المقارنة (حدد اثنين)'
@@ -72,7 +79,7 @@ ar:
     VIEWINGVERSION: 'يقع حاليا عرض إصدار  {version}.'
     WHEN: متى
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'تحرير الصفحة'
+    MENUTITLE: الصفحات
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: مرشح
     ListView: 'عرض كقائمة'
@@ -112,6 +119,8 @@ ar:
     ARCHIVED: المؤرشف
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: رابط
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'أعلى مستوى'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'وصف الرابط'
     LINKTEXT: 'نص الرابط'
@@ -164,6 +173,8 @@ ar:
     EDIT_ALL_DESCRIPTION: 'Can edit any page on the site, bypassing page specific security'
     EDIT_ALL_HELP: 'القدرة على تحرير أي صفحة على الموقع ، بغض النظر عن الإعدادات على علامة تبويب الوصول. يتطلب تصريح "الوصول إلى محتوى الموقع" '
     Editors: 'مجموعات المحررين'
+    Filter_ClassName_Any: أي
+    Filter_Status: 'حالة الصفحة'
     HASBROKENLINKS: 'هذه الصفحة تحتوي على روابط معطوبة'
     HTMLEDITORTITLE: محتوى
     INHERIT: 'استيراد من الصفحة المرجعية'
@@ -203,6 +214,8 @@ ar:
     TABBEHAVIOUR: الشسلوك
     TABDEPENDENT: 'الصفحات المعتدة'
     TOPLEVEL: 'محتوى الموقع ( مستوى أعلى )'
+    TREETITLE: 'اسم الصفحة'
+    TREETYPE: 'نوع الصفحة'
     VIEWERGROUPS: 'مجموعات الزوار'
     VIEW_ALL_DESCRIPTION: 'Can view any page on the site, bypassing page specific security'
     VIEW_ALL_HELP: 'القدرة على عرض أي صفحة على الموقع، بغض النظر عن الإعدادات على علامة التبويب Access. يتطلب الرخيص "قسم الوصول إلى "الصفحات" "  "Access to ''Pages'' section"'

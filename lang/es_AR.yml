@@ -73,6 +73,7 @@ es_AR:
     EDIT_ALL_DESCRIPTION: 'Editar cualquier página'
     EDIT_ALL_HELP: 'Capacidad para editar cualquier página en el sitio, independientemente de la configuración en la pestaña Acceso. Necesita del permiso "Acceder al contenido del sitio".'
     Editors: 'Grupos de Editores'
+    Filter_ClassName_Any: Cualquiera
     HASBROKENLINKS: 'Esta página tiene enlaces rotos.'
     HTMLEDITORTITLE: Contenido
     INHERIT: 'heredar de página superior'
@@ -95,6 +96,8 @@ es_AR:
     TABBEHAVIOUR: Compotamiento
     TABDEPENDENT: 'Páginas dependientes'
     TOPLEVEL: 'Contenido del Sitio (Nivel Superior)'
+    TREETITLE: 'Nombre de página'
+    TREETYPE: 'Tipo de Página'
     VIEW_ALL_DESCRIPTION: 'Ver cualquier página'
     VIEW_DRAFT_CONTENT: 'Ver contenido borrador'
     Viewers: 'Grupos de Observadores'

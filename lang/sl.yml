@@ -1,4 +1,7 @@
 sl:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Stran smo povrnili iz različice, ki je objavljena.'
+    ROLLEDBACK_VERSION: 'Stran smo povrnili iz različice #{version}.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Umaknili iz objave in arhivirali smo %d stran/i.'
     TITLE: Arhiviraj
@@ -31,6 +34,8 @@ sl:
     DUPLICATED: "Ustvarili smo kopijo '{title}'"
     DUPLICATEDWITHCHILDREN: "Ustvarili smo kopijo '{title}' in podrejenih strani"
     EMAIL: E-pošta
+    ListView: Seznam
+    MENUTITLE: 'Seznam strani'
     NEWPAGE: 'Dodaj {pagetype}'
     PAGENOTEXISTS: 'Stran na tem naslovu ne obstaja'
     PAGES: Status
@@ -64,8 +69,10 @@ sl:
     TabContent: Vsebina
     TabHistory: Zgodovina
     TabSettings: Nastavitve
+    Title: 'Podatkovni modeli'
     TreeFiltered: 'Prikazani so rezultati iskanja.'
     TreeFilteredClear: Ponastavi
+    TreeView: Drevo
     UNPUBLISH_AND_ARCHIVE: 'Umakni iz objave in arhiviraj'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Dodaj stran'
@@ -75,7 +82,7 @@ sl:
   SilverStripe\CMS\Controllers\CMSPageEditController:
     ErrorItemPermissionDenied: 'Nimate potrebnih pravic, da bi lahko dodali {ObjectTitle} v kampanjo.'
     ErrorNotFound: 'Tipa {Type} nismo našli'
-    MENUTITLE: 'Uredi stran'
+    MENUTITLE: 'Seznam strani'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Avtor
     COMPAREMODE: 'Način primerjanja (izberite dve)'
@@ -94,7 +101,7 @@ sl:
     VIEWINGVERSION: 'Trenutno prikazana različica {version}.'
     WHEN: Kdaj
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Uredi stran'
+    MENUTITLE: 'Seznam strani'
   SilverStripe\CMS\Controllers\CMSPagesController:
     ListView: Seznam
     MENUTITLE: 'Seznam strani'
@@ -140,6 +147,8 @@ sl:
     ARCHIVED: Arhivirano
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Sidro
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Stran na vrhnjem nivoju'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Opis povezave'
     LINKOPENNEWWIN: 'Odpri v novem zavihku'
@@ -213,6 +222,8 @@ sl:
     EDIT_ALL_DESCRIPTION: 'Urejanje poljubne strani'
     EDIT_ALL_HELP: 'Možnost urejanja katerekoli strani na spletnem mestu, ne glede na nastavitve v sklopu "Dostop". Zahteva dovoljenje za dostop do vsebine spletnega mesta.'
     Editors: 'Skupine urednikov'
+    Filter_ClassName_Any: Poljubna
+    Filter_Status: Status
     HASBROKENLINKS: 'Ta stran ima neveljavne povezave.'
     HTMLEDITORTITLE: Vsebina
     INHERIT: 'Privzemi od nadrejene strani'
@@ -264,6 +275,8 @@ sl:
     TABCONTENT: 'Osrednja vsebina'
     TABDEPENDENT: 'Odvisne strani'
     TOPLEVEL: 'Vsebina spletišča (vrhnji nivo)'
+    TREETITLE: 'Naslov strani'
+    TREETYPE: 'Tip strani'
     UNTITLED: '{pagetype} brez naslova'
     URLSegment: 'Naslov URL'
     UntitledDependentObject: '{instanceType} brez naslova'

@@ -1,4 +1,21 @@
 en:
+  SilverStripe\Admin\LeftAndMain:
+    ARCHIVED_RECORD: 'Archived {name} "{title}"'
+    AddNew: 'Add new {name}'
+    ArchiveWarning: 'Warning: This record will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?'
+    ArchiveWarningWithChildren: 'Warning: This record and all of its child records will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?'
+    CREATED_RECORD: 'Created {name} "{title}"'
+    DELETED_RECORD: 'Deleted {name} "{title}"'
+    DUPLICATED_RECORD: 'Duplicated {name} "{title}"'
+    DUPLICATED_RECORD_WITH_CHILDREN: 'Duplicated {name} "{title}" and children'
+    NEW_RECORD: 'New {recordtype}'
+    NewRecord: 'New {name}'
+    PUBLISHED_RECORD: 'Published {name} "{title}"'
+    RESTORED_RECORD: 'Restored {name} "{title}"'
+    ROLLEDBACK_PUBLISHED: 'Rolled back to published version.'
+    ROLLEDBACK_VERSION: 'Rolled back to version #{version}.'
+    SAVED_RECORD: 'Saved {name} "{title}"'
+    UNPUBLISHED_RECORD: 'Unpublished {name} "{title}"'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Deleted %d pages from draft and live, and sent them to the archive'
     TITLE: 'Unpublish and archive'
@@ -24,6 +41,8 @@ en:
     ArchiveWarningWithChildren: 'Warning: This page and all of its child pages will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?'
     ArchiveWarningWithChildrenAndCampaigns: 'Warning: This page and all of its child pages will be unpublished and automatically removed from their associated {NumCampaigns} before being sent to the archive.\n\nAre you sure you want to proceed?'
     CANT_REORGANISE: 'You do not have permission to alter Top level pages. Your change was not saved.'
+    CANT_REORGANISE2: 'You do not have permission to rearange the tree. Your change was not saved.'
+    CANT_REORGANISE_TOPLEVEL: 'You do not have permission to alter Top level records. Your change was not saved.'
     Cancel: Cancel
     ChoosePageParentMode: 'Choose where to create this page'
     ChoosePageType: 'Choose page type'
@@ -31,7 +50,12 @@ en:
     DUPLICATED: "Duplicated '{title}' successfully"
     DUPLICATEDWITHCHILDREN: "Duplicated '{title}' and children successfully"
     EMAIL: Email
+    ListView: 'List View'
+    MENUTITLE: Pages
     NEWPAGE: 'New {pagetype}'
+    NUM_CHILD_RECORDS:
+      one: 'one child record'
+      other: '{count} child records'
     PAGENOTEXISTS: "This page doesn't exist"
     PAGES: 'Page status'
     PAGESALLOPT: 'All pages'
@@ -39,15 +63,19 @@ en:
     PAGETYPEOPT: 'Page type'
     PAGETYPE_TITLE: '(Page type: {type}) {title}'
     PLEASESAVE: "Please Save Page: This page could not be updated because it hasn't been saved yet."
+    PLEASESAVE2: "Please Save Record: This record could not be updated because it hasn't been saved yet."
     PUBALLCONFIRM: 'Please publish every page in the site, copying content stage to live'
     PUBALLFUN: '"Publish All" functionality'
     PUBALLFUN2: 'Pressing this button will do the equivalent of going to every page and pressing "publish".  It''s intended to be used after there have been massive edits of the content, such as when the site was first built. For large websites, this task might not be able to run through to completion. In this case, we recommend talking to your developers to create a custom task'
     PUBLISHED: "Published '{title}' successfully."
     PUBPAGES: 'Done: Published {count} pages'
     PageAdded: 'Successfully created page'
+    RECORDNOTEXISTS: "This record doesn't exist"
+    RECORD_TYPE_TITLE: '(Record type: {type}) {title}'
     REMOVEDPAGE: "Removed '{title}' from the published site"
     REMOVEDPAGEFROMDRAFT: "Removed '{title}' from the draft site"
     REORGANISATIONSUCCESSFUL: 'Reorganised the site tree successfully.'
+    REORGANISATIONSUCCESSFUL2: 'Reorganised the tree successfully.'
     RESTORE: 'Restore draft'
     RESTORED: "Restored '{title}' successfully"
     RESTORE_DESC: 'Restore the archived version to draft'
@@ -61,11 +89,15 @@ en:
     SEARCHRESULTS: 'Search results'
     SHOW_AS_LIST: 'show as list'
     TOO_MANY_PAGES: 'Too many pages'
+    TOO_MANY_RECORDS: 'Too many records'
+    TREE_NO_TITLE: '(no title)'
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
+    Title: 'Data Models'
     TreeFiltered: 'Showing search results.'
     TreeFilteredClear: Clear
+    TreeView: 'Tree View'
     UNPUBLISH_AND_ARCHIVE: 'Unpublish and archive'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Add page'
@@ -75,7 +107,7 @@ en:
   SilverStripe\CMS\Controllers\CMSPageEditController:
     ErrorItemPermissionDenied: "It seems you don't have the necessary permissions to add {ObjectTitle} to a campaign"
     ErrorNotFound: "That {Type} couldn't be found"
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: Pages
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Author
     COMPAREMODE: 'Compare mode (select two)'
@@ -93,7 +125,7 @@ en:
     VIEWINGVERSION: 'Currently viewing version {version}.'
     WHEN: When
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: Pages
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filter
     ListView: 'List View'
@@ -137,6 +169,12 @@ en:
     VIEWPAGEIN: 'View Page in:'
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Anchor
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    AddRecordRestriction: 'Note: Some {model} types are not allowed for this selection'
+    ChooseParentMode: 'Choose where to create this record'
+    ChooseRecordType: 'Choose {model} type'
+    ParentMode_child: 'Under another {type}'
+    ParentMode_top: 'Top level'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Link description'
     LINKOPENNEWWIN: 'Open in new window/tab'
@@ -149,7 +187,7 @@ en:
     HelpChars: ' Special characters are automatically converted or removed.'
     OK: OK
   SilverStripe\CMS\Model\RedirectorPage:
-    CLASS_DESCRIPTION: 'Redirects to an internal page or an external URL'
+    CLASS_DESCRIPTION: 'Redirects requests to another location'
     DESCRIPTION: 'Redirects to an internal page or an external URL'
     FILE: File
     HEADER: 'This page will redirect users to another page'
@@ -209,6 +247,8 @@ en:
     EDIT_ALL_DESCRIPTION: 'Edit any page'
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     Editors: 'Editors Groups'
+    Filter_ClassName_Any: Any
+    Filter_Status: 'Page status'
     HASBROKENLINKS: 'This page has broken links.'
     HTMLEDITORTITLE: Content
     INHERIT: 'Inherit from parent page'
@@ -258,6 +298,8 @@ en:
     TABCONTENT: 'Main content'
     TABDEPENDENT: 'Dependent pages'
     TOPLEVEL: 'Site Content (Top Level)'
+    TREETITLE: 'Page name'
+    TREETYPE: 'Page type'
     UNTITLED: 'Untitled {pagetype}'
     URLSegment: 'URL segment'
     UntitledDependentObject: 'Untitled {instanceType}'
@@ -339,12 +381,15 @@ en:
     EditLink: edit
     HEADER: 'This is a virtual page'
     HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
+    OverrideNote: 'Overrides inherited value from the source'
     PLURALNAME: 'Virtual Pages'
     PLURALS:
       one: 'A Virtual Page'
       other: '{count} Virtual Pages'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtual Page'
+    db_CustomExtraMeta: 'Custom extra meta'
+    db_CustomMetaDescription: 'Custom meta description'
     db_VersionID: 'Version ID'
     has_one_CopyContentFrom: 'Copy content from'
   SilverStripe\CMS\Reports\BrokenFilesReport:

@@ -1,4 +1,7 @@
 sr:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Враћено на објављену верзију.'
+    ROLLEDBACK_VERSION: 'Враћено на верзију #{version}.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
     PUBLISHED_PAGES: 'Објављено %d страница. Није успело објављивање %d страница.'
     PUBLISH_PAGES: Објави
@@ -21,6 +24,8 @@ sr:
     DUPLICATED: "'{title}' успешно дуплиран"
     DUPLICATEDWITHCHILDREN: "'{title}' и деца успешно дуплирани"
     EMAIL: Е-пошта
+    ListView: 'Приказ у виду листе'
+    MENUTITLE: Странице
     NEWPAGE: 'Нова {pagetype}'
     PAGENOTEXISTS: 'Ова страница не постоји'
     PAGESALLOPT: 'Све странице'
@@ -44,13 +49,15 @@ sr:
     TabContent: Садржај
     TabHistory: Историја
     TabSettings: Подешавања
+    Title: 'Модели података'
+    TreeView: 'Приказ у виду стабла'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Додај страницу'
     ParentMode_child: 'Као подстраницу друге странице'
     ParentMode_top: 'Вршни ниво'
     Title: 'Додај страницу'
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Измени страницу'
+    MENUTITLE: Странице
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Аутор
     COMPAREMODE: 'Режим поређења (изабери два)'
@@ -66,7 +73,7 @@ sr:
     VIEWINGVERSION: 'Тренутно је приказана верзија {version}.'
     WHEN: Датум
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Измени страницу'
+    MENUTITLE: Странице
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Филтер
     ListView: 'Приказ у виду листе'
@@ -101,6 +108,8 @@ sr:
     ARCHIVED: Архивирано
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Сидро
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Вршни ниво'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Опис линка'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
@@ -150,6 +159,7 @@ sr:
     EDIT_ALL_DESCRIPTION: 'Измена било које странице'
     EDIT_ALL_HELP: 'Могућност мењања било које странице на сајту, без обзира на подешавања на картици "Приступ". Захтева дозволу за приступ одељку "Странице".'
     Editors: 'Групе за измене'
+    Filter_ClassName_Any: 'Било који'
     HASBROKENLINKS: 'Ова страница садржи оштећене линкове.'
     HTMLEDITORTITLE: Садржај
     INHERIT: 'Наследити од родитељске странице'
@@ -189,6 +199,8 @@ sr:
     TABBEHAVIOUR: Понашање
     TABDEPENDENT: 'Зависне странице'
     TOPLEVEL: 'Садржај сајта (вршни ниво)'
+    TREETITLE: 'Назив странице'
+    TREETYPE: 'Тип странице'
     VIEWERGROUPS: 'Групе за преглед'
     VIEW_ALL_DESCRIPTION: 'Погледај било коју страницу'
     VIEW_ALL_HELP: 'Могућност прегледа било које странице на сајту, без обзира на подешавања на картици "Приступ". Захтева дозволу за приступ одељку "Странице".'

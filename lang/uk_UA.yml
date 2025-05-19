@@ -30,6 +30,8 @@ uk_UA:
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Керувати правами доступу до змісту'
     TABCONTENT: 'Основний зміст'
     TOPLEVEL: 'Зміст сайту (верхній рівень)'
+    TREETITLE: 'Назва сторінки'
+    TREETYPE: 'Тип сторінки'
     URLSegment: 'сегмент URL'
     VIEW_DRAFT_CONTENT: 'Переглянути чернетку змісту'
     VIRTUALPAGEWARNINGSETTINGS: "Виберіть пов'язану сторінку в полях основного змісту, щоб опублікувати"

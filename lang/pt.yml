@@ -1,4 +1,7 @@
 pt:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Voltar para a versão publicada.'
+    ROLLEDBACK_VERSION: 'Voltar para a versão #{version}.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
     PUBLISHED_PAGES: 'Publicadas %d páginas, %d falhas'
     PUBLISH_PAGES: Publicar
@@ -19,6 +22,8 @@ pt:
     Create: Criar
     DUPLICATED: "Página '{title}' duplicada com sucesso"
     DUPLICATEDWITHCHILDREN: "Página '{title}' e filhos duplicados com sucesso"
+    ListView: 'Vista em lista'
+    MENUTITLE: Páginas
     NEWPAGE: 'Nova {pagetype}'
     PAGENOTEXISTS: 'Esta página não existe'
     PAGESALLOPT: 'Todas as páginas'
@@ -39,13 +44,14 @@ pt:
     TabContent: Conteúdo
     TabHistory: Histórico
     TabSettings: Configurações
+    TreeView: 'Vista em árvore'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Adicionar página'
     ParentMode_child: 'Por cima de outra página'
     ParentMode_top: 'Nível de topo'
     Title: 'Adicionar página'
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Editar página'
+    MENUTITLE: Páginas
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Modo de comparação (selecione duas)'
@@ -61,7 +67,7 @@ pt:
     VIEWINGVERSION: 'Actualmente está a ver a versão nº {version}.'
     WHEN: Quando
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Editar página'
+    MENUTITLE: Páginas
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filtrar
     ListView: 'Vista em lista'
@@ -92,6 +98,8 @@ pt:
     VIEWPAGEIN: 'Ver página em:'
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Âncora
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Nível de topo'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Descrição do link'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
@@ -136,6 +144,7 @@ pt:
     EDIT_ALL_DESCRIPTION: 'Editar qualquer página'
     EDIT_ALL_HELP: 'Capacidade de visualizar qualquer página do site, independentemente das configurações. Requer as permissões "Acesso ao conteúdo do site"'
     Editors: 'Grupos de Editores'
+    Filter_ClassName_Any: Qualquer
     HASBROKENLINKS: 'Esta página contém links quebrados.'
     HTMLEDITORTITLE: Conteúdo
     INHERIT: 'Herdado da página superior'
@@ -170,6 +179,8 @@ pt:
     TABBEHAVIOUR: Comportamento
     TABDEPENDENT: 'Páginas Dependentes'
     TOPLEVEL: 'Conteúdo do Site (Nível Superior)'
+    TREETITLE: 'Nome da página'
+    TREETYPE: 'Tipo de Página'
     VIEWERGROUPS: 'Ver grupos '
     VIEW_DRAFT_CONTENT: 'Ver o conteúdo de rascunho'
     Viewers: 'Grupo de Visualizadores'

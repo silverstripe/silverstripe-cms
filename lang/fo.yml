@@ -52,6 +52,8 @@ fo:
     SINGULARNAME: Síða
     TABBEHAVIOUR: Virkisháttur
     TOPLEVEL: 'Heimasíðu innihald (Fyrsta støði)'
+    TREETITLE: 'Navn á síðuni'
+    TREETYPE: 'Slag av síðu'
     db_Content: Innihald
     db_Title: Heiti
     has_one_Parent: Yvirsíða

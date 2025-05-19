@@ -5,6 +5,7 @@ pt_BR:
     UNPUBLISH_PAGES: 'Anular publicação'
   SilverStripe\CMS\Controllers\CMSMain:
     EMAIL: E-mail
+    MENUTITLE: Páginas
     PAGENOTEXISTS: 'Esta página não existe'
     PAGETYPEOPT: 'Tipo de página'
     PLEASESAVE: 'Por favor salve a página: Esta página não pode ser atulizada porque ainda não foi salva.'
@@ -16,11 +17,11 @@ pt_BR:
     SEARCHRESULTS: 'Resultados da pesquisa'
     TabContent: Conteúdo
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Editar Página'
+    MENUTITLE: Páginas
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Editar Página'
+    MENUTITLE: Páginas
   SilverStripe\CMS\Controllers\CMSPagesController:
     MENUTITLE: Páginas
   SilverStripe\CMS\Controllers\ContentController:
@@ -75,6 +76,8 @@ pt_BR:
     SINGULARNAME: Página
     TABBEHAVIOUR: Comportamento
     TOPLEVEL: 'Conteúdo do Site (Top Level)'
+    TREETITLE: 'Nome da Página'
+    TREETYPE: 'Tipo de página'
     Viewers: 'Grupo de visualizadores'
     db_Content: Conteúdo
     db_Title: Título

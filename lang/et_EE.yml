@@ -17,6 +17,8 @@ et_EE:
     ChoosePageParentMode: 'Valige, kuhu see leht luua'
     ChoosePageType: 'Valige lehe tüüp'
     Create: Loo
+    ListView: Loendivaade
+    MENUTITLE: Lehed
     NEWPAGE: 'Uus {pagetype}'
     PAGENOTEXISTS: 'Antud lehekülge ei eksisteeri'
     PAGESALLOPT: 'Kõik lehed'
@@ -39,13 +41,15 @@ et_EE:
     TabContent: Sisu
     TabHistory: Ajalugu
     TabSettings: Seaded
+    Title: Andmemudelid
+    TreeView: Puuvaade
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Lisa leht'
     ParentMode_child: 'Teise lehe all'
     ParentMode_top: 'Kõrgem tase'
     Title: 'Lisa leht'
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Muuda lehte'
+    MENUTITLE: Lehed
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autor
     COMPAREMODE: 'Võrdlusrežiim (valige kaks)'
@@ -59,7 +63,7 @@ et_EE:
     VIEW: vaade
     VIEWINGVERSION: 'Hetkel kuvatud versioon {version}.'
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Muuda lehte'
+    MENUTITLE: Lehed
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filtreeri
     ListView: Loendivaade
@@ -92,6 +96,8 @@ et_EE:
     ARCHIVED: Arhiveeritud
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Link
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Kõrgem tase'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Lingi kirjeldus'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
@@ -141,6 +147,7 @@ et_EE:
     EDIT_ALL_DESCRIPTION: 'Redigeeri mis tahes lehte'
     EDIT_ALL_HELP: 'Võimalus redigeerida mis tahes lehte sellel saidil, hoolimata vahekaardi Juurdepääs seadetest. Vajab jaotise "Juurdepääs  lehtedele" õigusi\n'
     Editors: 'Toimetajate gruppid'
+    Filter_ClassName_Any: Kõik
     HASBROKENLINKS: 'Sellel lehel on katkiseid linke.'
     HTMLEDITORTITLE: Sisu
     INHERIT: 'Päring vanemalt lehelt'
@@ -178,6 +185,8 @@ et_EE:
     TABBEHAVIOUR: Käitumine
     TABDEPENDENT: 'Sõltuvad lehed'
     TOPLEVEL: 'Lehe sisu (kõrgeim tase)'
+    TREETITLE: 'Lehe nimi'
+    TREETYPE: 'Lehe tüüp'
     VIEWERGROUPS: Vaatajagrupid
     VIEW_ALL_DESCRIPTION: 'Kuva mis tahes leht'
     VIEW_DRAFT_CONTENT: 'Kuva mustandi sisu'

@@ -1,4 +1,7 @@
 da:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Rullede tilbage til den udgivne version.'
+    ROLLEDBACK_VERSION: 'Rullede tilbage til version #{version}.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: 'Slettede %d sider fra kladde og udgivet webside og lagde dem i arkiv'
     TITLE: 'Fjern udgivelse og arkiver'
@@ -30,6 +33,8 @@ da:
     Create: Opret
     DUPLICATED: "Dublerede '{title}' med succes"
     DUPLICATEDWITHCHILDREN: "Dublerede '{title}' og undersider med succes"
+    ListView: Listevisning
+    MENUTITLE: Sider
     NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Denne side eksisterer ikke'
     PAGES: 'Side status'
@@ -65,6 +70,7 @@ da:
     TabSettings: Indstillinger
     TreeFiltered: 'Viser søgeresultater'
     TreeFilteredClear: Ryd
+    TreeView: Trævisning
     UNPUBLISH_AND_ARCHIVE: 'Fjern udgivelse og arkiver'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Tilføj side'
@@ -74,7 +80,7 @@ da:
   SilverStripe\CMS\Controllers\CMSPageEditController:
     ErrorItemPermissionDenied: 'Det ser ikke ud til at du har de nødvendige tilladelser til at tilføje {ObjectTitle} til en kampagne'
     ErrorNotFound: 'Typen  {Type} kunne ikke findes'
-    MENUTITLE: 'Rediger side'
+    MENUTITLE: Sider
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Forfatter
     COMPAREMODE: 'Sammenligningstilstand (vælg to)'
@@ -92,7 +98,7 @@ da:
     VIEWINGVERSION: 'Lige nu vises version {version}.'
     WHEN: Hvornår
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Rediger side'
+    MENUTITLE: Sider
   SilverStripe\CMS\Controllers\CMSPagesController:
     ListView: Listevisning
     MENUTITLE: Sider
@@ -136,6 +142,8 @@ da:
     ARCHIVED: Arkiveret
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Anker
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Højeste niveau'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Link beskrivelse'
     LINKOPENNEWWIN: 'Åben i nyt vindue/tab'
@@ -198,6 +206,8 @@ da:
     EDIT_ALL_DESCRIPTION: 'Rediger enhver side'
     EDIT_ALL_HELP: 'Mulighed for at redigere enhver side på sitet, uanset indstillingerne på indstillingerne på Adgangsfanebladet. Kræver adgangsrettigheden "Adgang til ''Sider'' sektionen"'
     Editors: Redaktionsgrupper
+    Filter_ClassName_Any: Enhver
+    Filter_Status: 'Side status'
     HASBROKENLINKS: 'Denne side har links der ikke virker.'
     HTMLEDITORTITLE: Indhold
     INHERIT: 'Nedarv fra overliggende side'
@@ -244,6 +254,8 @@ da:
     TABCONTENT: 'Primært indhold'
     TABDEPENDENT: 'Afhængige sider'
     TOPLEVEL: 'Sideindhold (Top niveau)'
+    TREETITLE: Sidenavn
+    TREETYPE: Sidetype
     UNTITLED: 'Ny {pagetype}'
     URLSegment: 'URL adresse'
     UntitledDependentObject: 'Unavngivet {instanceType}'

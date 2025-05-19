@@ -1,4 +1,7 @@
 nb:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Tilbakestilte til den publiserte versjonen.'
+    ROLLEDBACK_VERSION: 'Tilbakestile til versjon #{version}.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
     PUBLISHED_PAGES: 'Publiserte %d sider, %d feilet.'
     PUBLISH_PAGES: Publiser
@@ -24,6 +27,8 @@ nb:
     DUPLICATED: 'Vellykket duplisering av "{title}".'
     DUPLICATEDWITHCHILDREN: 'Vellykket duplisering av "{title}" og undersider.'
     EMAIL: Epost
+    ListView: Listevisning
+    MENUTITLE: Sider
     NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Siden eksisterer ikke'
     PAGESALLOPT: 'Alle sider'
@@ -52,13 +57,15 @@ nb:
     TabContent: Innhold
     TabHistory: Historikk
     TabSettings: Innstillinger
+    Title: Datamodeller
+    TreeView: Trevisning
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Legg til side'
     ParentMode_child: 'Under en annen side'
     ParentMode_top: Toppnivå
     Title: 'Legg til side'
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Rediger siden'
+    MENUTITLE: Sider
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Forfatter
     COMPAREMODE: 'Sammenlign modus (velg to)'
@@ -74,7 +81,7 @@ nb:
     VIEWINGVERSION: 'Viser versjon {version}.'
     WHEN: Når
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Rediger siden'
+    MENUTITLE: Sider
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filtrer
     ListView: Listevisning
@@ -122,6 +129,8 @@ nb:
     ARCHIVED: Arkivert
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Lenke
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: Toppnivå
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: Lenkebeskrivelse
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
@@ -173,6 +182,7 @@ nb:
     EDIT_ALL_DESCRIPTION: 'Rediger hvilken som helst side'
     EDIT_ALL_HELP: 'Lar deg redigere hvilken som helst side på nettstedet, uavhengig av innstillingene på adgangsfanen. Krever at du har tilgang til sideseksjonen.'
     Editors: Redaktørgrupper
+    Filter_ClassName_Any: Noen
     HASBROKENLINKS: 'Denne siden har ødelagte lenker.'
     HTMLEDITORTITLE: Innhold
     INHERIT: 'Arvet fra overordnet side'
@@ -211,6 +221,8 @@ nb:
     TABBEHAVIOUR: Adferd
     TABDEPENDENT: Undersider
     TOPLEVEL: 'Nettstedets innhold (toppnivå)'
+    TREETITLE: Sidenavn
+    TREETYPE: Sidetype
     VIEWERGROUPS: Publikumsgrupper
     VIEW_ALL_DESCRIPTION: 'Se på hvilken som helst side'
     VIEW_ALL_HELP: 'Viser alle sider på nettstedet, uavhengig av innstillingene på adgangsfanen. Krever at du har adgang til sideseksjonen.'

@@ -1,4 +1,7 @@
 lt:
+  SilverStripe\Admin\LeftAndMain:
+    ROLLEDBACK_PUBLISHED: 'Sugrįžta prie publikuotos versijos.'
+    ROLLEDBACK_VERSION: 'Sugrįžta prie  #{version} versijos.'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Publish:
     PUBLISHED_PAGES: 'Publikuoti %d puslapiai, %d klaidų.'
     PUBLISH_PAGES: Publikuoti
@@ -24,6 +27,8 @@ lt:
     DUPLICATED: "Puslapis '{title}' kopijuotas sėkmingai"
     DUPLICATEDWITHCHILDREN: "Puslapis '{title}' , bei jo vaikai kopijuoti sėkmingai"
     EMAIL: 'E. paštas'
+    ListView: 'Sąrašo rodinys'
+    MENUTITLE: Puslapiai
     NEWPAGE: 'Naujas {pagetype}'
     PAGENOTEXISTS: 'Šis puslapis neegzistuoja'
     PAGES: 'Puslapio būsena'
@@ -53,15 +58,17 @@ lt:
     TabContent: Turinys
     TabHistory: Istorija
     TabSettings: Nustatymai
+    Title: 'Duomenų objektai'
     TreeFiltered: 'Rodomi paieškos rezultatai.'
     TreeFilteredClear: 'Išvalyti filtrą'
+    TreeView: 'Medžio rodinys'
   SilverStripe\CMS\Controllers\CMSPageAddController:
     MENUTITLE: 'Pridėti puslapį'
     ParentMode_child: 'Po kitu puslapiu'
     ParentMode_top: 'Aukščiausias lygmuo'
     Title: 'Pridėti puslapį'
   SilverStripe\CMS\Controllers\CMSPageEditController:
-    MENUTITLE: 'Redaguoti puslapį'
+    MENUTITLE: Puslapiai
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Autorius
     COMPAREMODE: 'Palyginimo režimas (pasirinkite du)'
@@ -78,7 +85,7 @@ lt:
     VIEWINGVERSION: 'Dabar peržiūrima versija {version}.'
     WHEN: Kada
   SilverStripe\CMS\Controllers\CMSPageSettingsController:
-    MENUTITLE: 'Redaguoti puslapį'
+    MENUTITLE: Puslapiai
   SilverStripe\CMS\Controllers\CMSPagesController:
     FILTER: Filtruoti
     ListView: 'Sąrašo rodinys'
@@ -126,6 +133,8 @@ lt:
     ARCHIVED: Archyvuota
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Nuoroda
+  SilverStripe\CMS\Forms\CMSMainAddForm:
+    ParentMode_top: 'Aukščiausias lygmuo'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Nuorodos aprašymas'
   SilverStripe\CMS\Forms\SiteTreeURLSegmentField:
@@ -178,6 +187,8 @@ lt:
     EDIT_ALL_DESCRIPTION: 'Gali redaguoti puslapį, apeinant puslapio redagavimo teises'
     EDIT_ALL_HELP: 'Galimybė redaguoti bet kurį puslapį, nepriklausomai nuo "Priėjimo/Leidimų" skyriaus nustatymų. Būtinas leidimas "Prieiti prie ''Puslapių''"'
     Editors: 'Redaguotojų grupė'
+    Filter_ClassName_Any: 'Bet koks'
+    Filter_Status: 'Puslapio būsena'
     HASBROKENLINKS: 'Šiame puslapyje yra nebegaliojančių nuorodų.'
     HTMLEDITORTITLE: Turinys
     INHERIT: 'Paveldėti iš pradinio puslapio'
@@ -217,6 +228,8 @@ lt:
     TABBEHAVIOUR: Elgsena
     TABDEPENDENT: 'Priklausantys puslapiai'
     TOPLEVEL: 'Svetainės turinys (aukščiausias lygmuo)'
+    TREETITLE: 'Puslapio pavadinimas'
+    TREETYPE: 'Puslapio tipas'
     VIEWERGROUPS: 'Lankytojų grupės'
     VIEW_ALL_DESCRIPTION: 'Gali peržiūrėti bet kurį puslapį svetainėje, apeinant puslapio peržiūros teises'
     VIEW_ALL_HELP: 'Galimybė peržiūrėti bet kurį puslapį svetainėje, nepriklausomai nuo "Priėjimo/Leidimų" skyriaus nustatymų. Būtinas leidimas "Prieiti prie ''Puslapių''"'
