@@ -611,7 +611,7 @@ class CMSMainTest extends FunctionalTest
         $page12 = $this->objFromFixture(SiteTree::class, 'page12');
         // Deleted
         $page1->doUnpublish();
-        $page1->delete();
+        $page1->suppressDeletedVersion(fn () => $page1->delete());
         // Live and draft
         $page11->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
         // Live only
