@@ -103,9 +103,13 @@ abstract class CMSSiteTreeFilter implements LeftAndMain_SearchFilter
         return $filterMap;
     }
 
+    /**
+     * @deprecated 5.3.1 Will be removed without a constructor to replace it in a future major release.
+     */
     public function __construct($params = null)
     {
         if ($params) {
+            Deprecation::noticeWithNoReplacment('5.3.1', 'Will be removed without a constructor to replace it in a future major release.');
             $this->params = $params;
         }
     }
