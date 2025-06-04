@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@silverstripe/eslint-config": "^1.3.0",
-    "@silverstripe/webpack-config": "^3.0.0-alpha4",
+    "@silverstripe/webpack-config": "^3",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.1.0",
     "babel-jest": "^29.3.0",
