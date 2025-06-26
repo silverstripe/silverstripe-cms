@@ -71,9 +71,9 @@ class CMSTreeTest extends FunctionalTest
         ];
         $response = $this->post('admin/pages/edit/savetreenode', $data);
         $this->assertEquals(200, $response->getStatusCode());
-        $page2 = DataObject::get_by_id(SiteTree::class, $page2->ID, false);
-        $page31 = DataObject::get_by_id(SiteTree::class, $page31->ID, false);
-        $page32 = DataObject::get_by_id(SiteTree::class, $page32->ID, false);
+        $page2 = SiteTree::get()->byID($page2->ID);
+        $page31 = SiteTree::get()->byID($page31->ID);
+        $page32 = SiteTree::get()->byID($page32->ID);
 
         $this->assertEquals($page3->ID, $page2->ParentID, 'Moved page gets new parent');
         $this->assertEquals(1, $page31->Sort, 'Children pages before insertaion are unaffected');

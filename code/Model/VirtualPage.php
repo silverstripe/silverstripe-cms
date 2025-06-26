@@ -134,7 +134,7 @@ class VirtualPage extends Page
     public function setCopyContentFromID($val)
     {
         // Sanity check to prevent pages virtualising other virtual pages
-        if ($val && DataObject::get_by_id(SiteTree::class, $val) instanceof VirtualPage) {
+        if ($val && SiteTree::get()->setUseCache(true)->byID($val) instanceof VirtualPage) {
             $val = 0;
         }
         return $this->setField("CopyContentFromID", $val);

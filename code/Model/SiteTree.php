@@ -402,11 +402,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      */
     public static function get_by_link($link, $cache = true)
     {
-        // Compute the column names with dynamic a dynamic table name
-        $tableName = DataObject::singleton(SiteTree::class)->baseTable();
-        $urlSegmentExpr = sprintf('"%s"."URLSegment"', $tableName);
-        $parentIDExpr = sprintf('"%s"."ParentID"', $tableName);
-
         $link = trim(Director::makeRelative($link) ?? '', '/');
         if ($link === false || $link === null || $link === '') {
             $link = RootURLController::get_homepage_link();
@@ -416,19 +411,17 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         // Grab the initial root level page to traverse down from.
         $URLSegment = array_shift($parts);
-        $conditions = [$urlSegmentExpr => rawurlencode($URLSegment ?? '')];
+        $conditions = ['URLSegment' => rawurlencode($URLSegment ?? '')];
         if (static::config()->get('nested_urls')) {
-            $conditions[] = [$parentIDExpr => 0];
+            $conditions['ParentID'] = 0;
         }
         /** @var SiteTree $sitetree */
-        $sitetree = DataObject::get_one(SiteTree::class, $conditions, $cache);
+        $sitetree = SiteTree::get()->setUseCache($cache)->filter($conditions)->first();
 
         /// Fall back on a unique URLSegment for b/c.
         if (!$sitetree
             && static::config()->get('nested_urls')
-            && $sitetree = DataObject::get_one(SiteTree::class, [
-                $urlSegmentExpr => $URLSegment
-            ], $cache)
+            && $sitetree = SiteTree::get()->setUseCache($cache)->find('URLSegment', $URLSegment)
         ) {
             return $sitetree;
         }
@@ -457,14 +450,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
         // Traverse down the remaining URL segments and grab the relevant SiteTree objects.
         foreach ($parts as $segment) {
-            $next = DataObject::get_one(
-                SiteTree::class,
-                [
-                    $urlSegmentExpr => $segment,
-                    $parentIDExpr => $sitetree->ID
-                ],
-                $cache
-            );
+            $next = SiteTree::get()->setUseCache($cache)->filter([
+                'URLSegment' => $segment,
+                'ParentID' => $sitetree->ID
+            ])->first();
 
             if (!$next) {
                 $parentID = (int) $sitetree->ID;
@@ -541,7 +530,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         /** @var SiteTree $page */
-        if (!($page = DataObject::get_by_id(SiteTree::class, $arguments['id']))         // Get the current page by ID.
+        if (!($page = SiteTree::get()->setUseCache(true)->byID($arguments['id']))         // Get the current page by ID.
             && !($page = Versioned::get_latest_version(SiteTree::class, $arguments['id'])) // Attempt link to old version.
         ) {
             return null; // There were no suitable matches at all.
@@ -896,7 +885,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     {
         $parentID = $this->getField("ParentID");
         if ($parentID) {
-            return SiteTree::get_by_id(SiteTree::class, $parentID);
+            return SiteTree::get()->setUseCache(true)->byID($parentID);
         }
         return null;
     }

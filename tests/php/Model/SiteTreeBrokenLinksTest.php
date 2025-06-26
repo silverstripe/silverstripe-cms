@@ -233,10 +233,10 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         $p->delete();
         $p2->flushCache();
         /** @var SiteTree $p2 */
-        $p2 = DataObject::get_by_id(SiteTree::class, $p2->ID);
+        $p2 = SiteTree::get()->byID($p2->ID);
         $rp->flushCache();
         /** @var RedirectorPage $rp */
-        $rp = DataObject::get_by_id(SiteTree::class, $rp->ID);
+        $rp = SiteTree::get()->byID($rp->ID);
         $this->assertEquals(1, $p2->HasBrokenLink);
         $this->assertEquals(1, $rp->HasBrokenLink);
 
@@ -246,9 +246,9 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         $p->doRestoreToStage();
 
         $p2->flushCache();
-        $p2 = DataObject::get_by_id(SiteTree::class, $p2->ID);
+        $p2 = SiteTree::get()->byID($p2->ID);
         $rp->flushCache();
-        $rp = DataObject::get_by_id(SiteTree::class, $rp->ID);
+        $rp = SiteTree::get()->byID($rp->ID);
         $this->assertFalse((bool)$p2->HasBrokenLink);
         $this->assertFalse((bool)$rp->HasBrokenLink);
 
@@ -293,10 +293,10 @@ class SiteTreeBrokenLinksTest extends SapphireTest
 
         $page2->flushCache();
         /** @var SiteTree $page2 */
-        $page2 = DataObject::get_by_id(SiteTree::class, $page2->ID);
+        $page2 = SiteTree::get()->byID($page2->ID);
         $redirectorPage->flushCache();
         /** @var RedirectorPage $redirectorPage */
-        $redirectorPage = DataObject::get_by_id(SiteTree::class, $redirectorPage->ID);
+        $redirectorPage = SiteTree::get()->byID($redirectorPage->ID);
         $this->assertEquals(1, $page2->HasBrokenLink);
         $this->assertEquals(1, $redirectorPage->HasBrokenLink);
 
@@ -306,9 +306,9 @@ class SiteTreeBrokenLinksTest extends SapphireTest
         $pageLive->doRevertToLive();
 
         $page2->flushCache();
-        $page2 = DataObject::get_by_id(SiteTree::class, $page2->ID);
+        $page2 = SiteTree::get()->byID($page2->ID);
         $redirectorPage->flushCache();
-        $redirectorPage = DataObject::get_by_id(SiteTree::class, $redirectorPage->ID);
+        $redirectorPage = SiteTree::get()->byID($redirectorPage->ID);
         $this->assertFalse((bool)$page2->HasBrokenLink);
         $this->assertFalse((bool)$redirectorPage->HasBrokenLink);
     }

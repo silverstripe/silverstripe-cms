@@ -158,7 +158,7 @@ class CMSMainTest extends FunctionalTest
             $page->Title = "Test $class page";
             $page->write();
             $page->flushCache();
-            $page = DataObject::get_by_id(SiteTree::class, $page->ID);
+            $page = SiteTree::get()->byID($page->ID);
 
             $this->assertTrue($page->getCMSFields() instanceof FieldList);
         }

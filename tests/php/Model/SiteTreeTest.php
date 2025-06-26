@@ -285,6 +285,28 @@ class SiteTreeTest extends SapphireTest
         Versioned::set_reading_mode($oldMode);
     }
 
+    /**
+     * Confirm that cached DataList gets records from SiteTree_Live
+     */
+    public function testCachedListFromLive()
+    {
+        $s = new SiteTree();
+        $s->Title = "V1";
+        $s->URLSegment = "get-one-test-page";
+        $s->write();
+        $s->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
+        $s->Title = "V2";
+        $s->write();
+
+        $oldMode = Versioned::get_reading_mode();
+        Versioned::set_stage(Versioned::LIVE);
+
+        $checkSiteTree = SiteTree::get()->setUseCache(true)->find('URLSegment', 'get-one-test-page');
+        $this->assertEquals("V1", $checkSiteTree->Title);
+
+        Versioned::set_reading_mode($oldMode);
+    }
+
     public function testChidrenOfRootAreTopLevelPages()
     {
         $pages = SiteTree::get();
@@ -410,12 +432,12 @@ class SiteTreeTest extends SapphireTest
         $page = $this->objFromFixture(SiteTree::class, 'about');
         $pageID = $page->ID;
         $page->delete();
-        $this->assertTrue(!DataObject::get_by_id(SiteTree::class, $pageID));
+        $this->assertTrue(!SiteTree::get()->byID($pageID));
 
         $deletedPage = Versioned::get_latest_version(SiteTree::class, $pageID);
         $resultPage = $deletedPage->doRestoreToStage();
 
-        $requeriedPage = DataObject::get_by_id(SiteTree::class, $pageID);
+        $requeriedPage = SiteTree::get()->byID($pageID);
 
         $this->assertEquals($pageID, $resultPage->ID);
         $this->assertEquals($pageID, $requeriedPage->ID);
@@ -438,7 +460,7 @@ class SiteTreeTest extends SapphireTest
         );
 
         Versioned::set_stage(Versioned::DRAFT);
-        $requeriedPage = DataObject::get_by_id(SiteTree::class, $page2ID);
+        $requeriedPage = SiteTree::get()->byID($page2ID);
         $this->assertEquals('Products', $requeriedPage->Title);
         $this->assertInstanceOf(SiteTree::class, $requeriedPage);
     }
@@ -582,9 +604,9 @@ class SiteTreeTest extends SapphireTest
 
         $pageAbout->delete();
 
-        $this->assertNull(DataObject::get_by_id(SiteTree::class, $pageAbout->ID));
-        $this->assertTrue(DataObject::get_by_id(SiteTree::class, $pageStaff->ID) instanceof SiteTree);
-        $this->assertTrue(DataObject::get_by_id(SiteTree::class, $pageStaffDuplicate->ID) instanceof SiteTree);
+        $this->assertNull(SiteTree::get()->byID($pageAbout->ID));
+        $this->assertTrue(SiteTree::get()->byID($pageStaff->ID) instanceof SiteTree);
+        $this->assertTrue(SiteTree::get()->byID($pageStaffDuplicate->ID) instanceof SiteTree);
         Config::modify()->set(SiteTree::class, 'enforce_strict_hierarchy', true);
     }
 
@@ -596,9 +618,9 @@ class SiteTreeTest extends SapphireTest
 
         $pageAbout->delete();
 
-        $this->assertNull(DataObject::get_by_id(SiteTree::class, $pageAbout->ID));
-        $this->assertNull(DataObject::get_by_id(SiteTree::class, $pageStaff->ID));
-        $this->assertNull(DataObject::get_by_id(SiteTree::class, $pageStaffDuplicate->ID));
+        $this->assertNull(SiteTree::get()->byID($pageAbout->ID));
+        $this->assertNull(SiteTree::get()->byID($pageStaff->ID));
+        $this->assertNull(SiteTree::get()->byID($pageStaffDuplicate->ID));
     }
 
     public function testDuplicate()
@@ -628,9 +650,9 @@ class SiteTreeTest extends SapphireTest
 
         Versioned::set_stage(Versioned::LIVE);
 
-        $this->assertNull(DataObject::get_by_id(SiteTree::class, $pageAbout->ID));
-        $this->assertTrue(DataObject::get_by_id(SiteTree::class, $pageStaff->ID) instanceof SiteTree);
-        $this->assertTrue(DataObject::get_by_id(SiteTree::class, $pageStaffDuplicate->ID) instanceof SiteTree);
+        $this->assertNull(SiteTree::get()->byID($pageAbout->ID));
+        $this->assertTrue(SiteTree::get()->byID($pageStaff->ID) instanceof SiteTree);
+        $this->assertTrue(SiteTree::get()->byID($pageStaffDuplicate->ID) instanceof SiteTree);
         Versioned::set_stage(Versioned::DRAFT);
         Config::modify()->set(SiteTree::class, 'enforce_strict_hierarchy', true);
     }
@@ -651,9 +673,9 @@ class SiteTreeTest extends SapphireTest
         $parentPage->doUnpublish();
 
         Versioned::set_stage(Versioned::LIVE);
-        $this->assertNull(DataObject::get_by_id(SiteTree::class, $pageAbout->ID));
-        $this->assertTrue(DataObject::get_by_id(SiteTree::class, $pageStaff->ID) instanceof SiteTree);
-        $this->assertTrue(DataObject::get_by_id(SiteTree::class, $pageStaffDuplicate->ID) instanceof SiteTree);
+        $this->assertNull(SiteTree::get()->byID($pageAbout->ID));
+        $this->assertTrue(SiteTree::get()->byID($pageStaff->ID) instanceof SiteTree);
+        $this->assertTrue(SiteTree::get()->byID($pageStaffDuplicate->ID) instanceof SiteTree);
         Versioned::set_stage(Versioned::DRAFT);
         Config::modify()->set(SiteTree::class, 'enforce_strict_hierarchy', true);
     }
@@ -673,9 +695,9 @@ class SiteTreeTest extends SapphireTest
         $parentPage->doUnpublish();
 
         Versioned::set_stage(Versioned::LIVE);
-        $this->assertNull(DataObject::get_by_id(SiteTree::class, $pageAbout->ID));
-        $this->assertNull(DataObject::get_by_id(SiteTree::class, $pageStaff->ID));
-        $this->assertNull(DataObject::get_by_id(SiteTree::class, $pageStaffDuplicate->ID));
+        $this->assertNull(SiteTree::get()->byID($pageAbout->ID));
+        $this->assertNull(SiteTree::get()->byID($pageStaff->ID));
+        $this->assertNull(SiteTree::get()->byID($pageStaffDuplicate->ID));
         Versioned::set_stage(Versioned::DRAFT);
     }
 
@@ -950,9 +972,7 @@ class SiteTreeTest extends SapphireTest
         $this->assertFalse($productPage->isCurrent());
 
         $this->assertTrue(
-            DataObject::get_one(SiteTree::class, [
-                '"SiteTree"."Title"' => 'About Us',
-            ])->isCurrent(),
+            SiteTree::get()->setUseCache(true)->find('Title', 'About Us')->isCurrent(),
             'Assert that isCurrent works on another instance with the same ID.'
         );
 
@@ -1137,11 +1157,11 @@ class SiteTreeTest extends SapphireTest
 
         $sitetree->URLSegment = 'brötchen';
         $sitetree->write();
-        $sitetree = DataObject::get_by_id(SiteTree::class, $sitetree->ID, false);
+        $sitetree = SiteTree::get()->byID($sitetree->ID, false);
         $this->assertEquals($sitetree->URLSegment, rawurlencode('brötchen'));
 
         $sitetree->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
-        $sitetree = DataObject::get_by_id(SiteTree::class, $sitetree->ID, false);
+        $sitetree = SiteTree::get()->byID($sitetree->ID, false);
         $this->assertEquals($sitetree->URLSegment, rawurlencode('brötchen'));
         $sitetreeLive = Versioned::get_one_by_stage(
             SiteTree::class,

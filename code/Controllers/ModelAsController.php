@@ -118,12 +118,11 @@ class ModelAsController extends Controller implements NestedController
         }
 
         // Select child page
-        $tableName = DataObject::singleton(SiteTree::class)->baseTable();
-        $conditions = [sprintf('"%s"."URLSegment"', $tableName) => $urlSegment];
+        $conditions = ['URLSegment' => $urlSegment];
         if (SiteTree::config()->get('nested_urls')) {
-            $conditions[] = [sprintf('"%s"."ParentID"', $tableName) => 0];
+            $conditions['ParentID'] = 0;
         }
-        $sitetree = DataObject::get_one(SiteTree::class, $conditions);
+        $sitetree = SiteTree::get()->setUseCache(true)->filter($conditions)->first();
 
         if (!$sitetree) {
             $this->httpError(404, 'The requested page could not be found.');

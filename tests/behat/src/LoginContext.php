@@ -29,8 +29,7 @@ class LoginContext extends BehatLoginContext
         $canEdit = strstr($negative ?? '', 'not') ? false : true;
         // Flush the SiteConfig cache so that siteconfig behat tests that update a
         // SiteConfig DataObject will not be referring to a stale verion of itself
-        // which can happen because SiteConfig::current_site_config() uses DataObject::get_one()
-        // which will caches its result by default
+        // which can happen because SiteConfig::current_site_config() uses a cached query
         SiteConfig::current_site_config()->flushCache();
         if ($canEdit) {
             Assert::assertTrue($page->canEdit($member), 'The member can edit this page');

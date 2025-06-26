@@ -126,17 +126,17 @@ class VirtualPageTest extends FunctionalTest
         $master->write();
 
         /** @var VirtualPage $vp1 */
-        $vp1 = DataObject::get_by_id(VirtualPage::class, $this->idFromFixture(VirtualPage::class, 'vp1'));
+        $vp1 = $this->objFromFixture(VirtualPage::class, 'vp1');
         /** @var VirtualPage $vp2 */
-        $vp2 = DataObject::get_by_id(VirtualPage::class, $this->idFromFixture(VirtualPage::class, 'vp2'));
+        $vp2 = $this->objFromFixture(VirtualPage::class, 'vp2');
         $this->assertTrue($vp1->publishRecursive());
         $this->assertTrue($vp2->publishRecursive());
 
         $master->publishRecursive();
 
         Versioned::set_stage(Versioned::LIVE);
-        $vp1 = DataObject::get_by_id(VirtualPage::class, $this->idFromFixture(VirtualPage::class, 'vp1'));
-        $vp2 = DataObject::get_by_id(VirtualPage::class, $this->idFromFixture(VirtualPage::class, 'vp2'));
+        $vp1 = $this->objFromFixture(VirtualPage::class, 'vp1');
+        $vp2 = $this->objFromFixture(VirtualPage::class, 'vp2');
 
         $this->assertNotNull($vp1);
         $this->assertNotNull($vp2);
@@ -348,14 +348,14 @@ class VirtualPageTest extends FunctionalTest
 
         // The draft VP still has the CopyContentFromID link
         $vp->flushCache();
-        $vp = DataObject::get_by_id(SiteTree::class, $vpID);
+        $vp = SiteTree::get()->byID($vpID);
         $this->assertEquals($p->ID, $vp->CopyContentFromID);
         $vpLive = Versioned::get_by_stage(SiteTree::class, Versioned::LIVE)->byID($vpID);
         $this->assertNull($vpLive);
         // Delete from draft, ensure virtual page deletion cascades
         $p->delete();
         $vp->flushCache();
-        $vp = DataObject::get_by_id(SiteTree::class, $vpID);
+        $vp = SiteTree::get()->byID($vpID);
         $this->assertNull($vp);
     }
 
@@ -484,7 +484,7 @@ class VirtualPageTest extends FunctionalTest
         $virtual->CopyContentFromID = $page->ID;
         $virtual->write();
 
-        $virtual = DataObject::get_by_id(VirtualPage::class, $virtual->ID, false);
+        $virtual = VirtualPage::get()->byID($virtual->ID);
         $virtual->CopyContentFromID = $notRootPage->ID;
         $virtual->flushCache();
 

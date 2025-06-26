@@ -113,7 +113,7 @@ class ContentController extends Controller
         $parent = SiteTree::get_by_link($parentRef);
 
         if (!$parent && is_numeric($parentRef)) {
-            $parent = DataObject::get_by_id(SiteTree::class, $parentRef);
+            $parent = DataObject::get(SiteTree::class)->setUseCache(true)->byID($parentRef);
         }
 
         if ($parent) {
