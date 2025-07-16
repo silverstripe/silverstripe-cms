@@ -10,6 +10,7 @@ use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Resettable;
+use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
 
 class RootURLController extends Controller implements Resettable
@@ -73,7 +74,7 @@ class RootURLController extends Controller implements Resettable
 
         RootURLController::$is_at_root = true;
 
-        if (!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
+        if (!DataObject::getSchema()->tablesAreReadyForClass(SiteTree::class)) {
             $this->getResponse()->redirect(Controller::join_links(
                 Director::absoluteBaseURL(),
                 'dev/build',
@@ -90,7 +91,7 @@ class RootURLController extends Controller implements Resettable
         $this->beforeHandleRequest($request);
 
         if (!$this->getResponse()->isFinished()) {
-            if (!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
+            if (!DataObject::getSchema()->tablesAreReadyForClass(SiteTree::class)) {
                 $this->getResponse()->redirect(Director::absoluteBaseURL() . 'dev/build?BackURL=' . (isset($_GET['url']) ? urlencode($_GET['url']) : null));
                 return $this->getResponse();
             }

@@ -55,7 +55,7 @@ class ModelAsController extends Controller implements NestedController
     {
         parent::beforeHandleRequest($request);
         // If the database has not yet been created, redirect to the build page.
-        if (!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
+        if (!DataObject::getSchema()->tablesAreReadyForClass(SiteTree::class)) {
             $this->getResponse()->redirect(Controller::join_links(
                 Director::absoluteBaseURL(),
                 'dev/build',
@@ -80,7 +80,7 @@ class ModelAsController extends Controller implements NestedController
         }
 
         // If the database has not yet been created, redirect to the build page.
-        if (!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
+        if (!DataObject::getSchema()->tablesAreReadyForClass(SiteTree::class)) {
             $this->getResponse()->redirect(Controller::join_links(Director::absoluteBaseURL(), 'dev/build?BackURL=' . (isset($_GET['url']) ? urlencode($_GET['url']) : null)));
             $this->popCurrent();
 
