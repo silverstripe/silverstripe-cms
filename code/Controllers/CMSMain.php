@@ -1445,9 +1445,6 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
             $descendants = [];
         }
 
-        // Get the IDs of all changeset including at least one of the records.
-        $descendants[] = $record->ID;
-
         if (count($descendants ?? []) > 0) {
             $archiveWarningMsg = $defaultMessage;
         } else {

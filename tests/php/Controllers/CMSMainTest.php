@@ -947,4 +947,26 @@ class CMSMainTest extends FunctionalTest
         $actual = strip_tags($html);
         $this->assertSame($expected, $actual);
     }
+
+    public function testGetArchiveWarningMessage(): void
+    {
+        $controller = new CMSMain();
+        $reflectionMethod = new ReflectionMethod($controller, 'getArchiveWarningMessage');
+        $reflectionMethod->setAccessible(true);
+        $page = new SiteTree(['Title' => 'my page']);
+        $page->write();
+
+        $this->assertSame(
+            'Warning: This record will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?',
+            $reflectionMethod->invoke($controller, $page)
+        );
+
+        $childPage = new SiteTree(['ParentID' => $page->ID]);
+        $childPage->write();
+
+        $this->assertSame(
+            'Warning: This record and all of its child records will be unpublished before being sent to the archive.\n\nAre you sure you want to proceed?',
+            $reflectionMethod->invoke($controller, $page)
+        );
+    }
 }
