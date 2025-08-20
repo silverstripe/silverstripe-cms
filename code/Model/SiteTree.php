@@ -611,7 +611,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function RelativeLink($action = null)
     {
         if ($this->ParentID && static::config()->get('nested_urls')) {
-            $parent = $this->Parent();
+            $parent = $this->getParent();
             // If page is removed select parent from version history (for archive page view)
             if ((!$parent || !$parent->exists()) && !$this->isOnDraft()) {
                 $parent = Versioned::get_latest_version(SiteTree::class, $this->ParentID);
@@ -722,7 +722,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         // Parent must exist and not be an orphan itself
-        $parent = $this->Parent();
+        $parent = $this->getParent();
         return !$parent || !$parent->exists() || $parent->isOrphaned();
     }
 
@@ -776,7 +776,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             if ($sectionName === $page->URLSegment) {
                 return true;
             }
-            $page = $page->Parent();
+            $page = $page->getParent();
         }
         return false;
     }
@@ -850,7 +850,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 $pages[] = $page;
             }
 
-            $page = $page->Parent();
+            $page = $page->getParent();
         }
 
         return new ArrayList(array_reverse($pages ?? []));
@@ -879,7 +879,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     /**
      * Get the parent of this page.
      *
-     * @return SiteTree Parent of this page
+     * @return SiteTree|null Parent of this page
      */
     public function getParent()
     {
@@ -999,7 +999,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // check for inherit
         if ($this->CanViewType === InheritedPermissions::INHERIT) {
             if ($this->ParentID) {
-                return $this->Parent()->canView($member);
+                $parent = $this->getParent() ?? SiteTree::create();
+                return $parent->canView($member);
             } else {
                 return $this->getSiteConfig()->canViewPages($member);
             }
@@ -1502,12 +1503,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         // If there is no URLSegment set, generate one from Title
-        $defaultSegment = $this->generateURLSegment(_t(
-            'SilverStripe\\CMS\\Controllers\\CMSMain.NEWPAGE',
-            'New {pagetype}',
-            ['pagetype' => $this->i18n_singular_name()]
-        ));
-        if ((!$this->hasURLSegment() || $this->URLSegment == $defaultSegment) && $this->Title) {
+        if ($this->Title && (!$this->hasURLSegment() || $this->URLSegment === $this->getDefaultUrlSegment())) {
             $this->URLSegment = $this->generateURLSegment($this->Title);
         } elseif ($this->isChanged('URLSegment', 2)) {
             // Do a strict check on change level, to avoid double encoding caused by
@@ -1567,6 +1563,15 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 EmbedShortcodeProvider::flushCachedShortcodes($parser, $this->Content);
             });
         }
+    }
+
+    private function getDefaultUrlSegment(): string
+    {
+        return $this->generateURLSegment(_t(
+            'SilverStripe\\CMS\\Controllers\\CMSMain.NEWPAGE',
+            'New {pagetype}',
+            ['pagetype' => $this->i18n_singular_name()]
+        ));
     }
 
     private function sanitiseExtraMeta(): void
@@ -1649,7 +1654,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         // Check known urlsegment blacklists
         if (static::config()->get('nested_urls') && $this->ParentID) {
             // Guard against url segments for sub-pages
-            $parent = $this->Parent();
+            $parent = $this->getParent() ?? SiteTree::create();
             if ($controller = ModelAsController::controller_for($parent)) {
                 if ($controller instanceof Controller && $controller->hasAction($this->URLSegment)) {
                     return false;
@@ -1909,17 +1914,13 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
             $baseLink = Controller::join_links(
                 Director::absoluteBaseURL(),
-                (static::config()->get('nested_urls') && $this->ParentID ? $this->Parent()->RelativeLink(true) : null)
+                (static::config()->get('nested_urls') && $this->ParentID ? $this->getParent()?->RelativeLink(true) : null)
             );
 
             $urlsegment = SiteTreeURLSegmentField::create("URLSegment", $this->fieldLabel('URLSegment'))
                 ->setURLPrefix($baseLink)
                 ->setURLSuffix('?stage=Stage')
-                ->setDefaultURL($this->generateURLSegment(_t(
-                    'SilverStripe\\CMS\\Controllers\\CMSMain.NEWPAGE',
-                    'New {pagetype}',
-                    ['pagetype' => $this->i18n_singular_name()]
-                )))
+                ->setDefaultURL($this->getDefaultUrlSegment())
                 ->addExtraClass(($this->isHomePage() ? 'homepage-warning' : ''));
             $helpText = (static::config()->get('nested_urls') && $this->numChildren())
                 ? $this->fieldLabel('LinkChangeNote')
@@ -2513,7 +2514,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                 if ($instance instanceof HiddenClass) {
                     continue;
                 }
-                if (!$instance->canCreate(null, ['Parent' => $this->ParentID ? $this->Parent() : null])) {
+                if (!$instance->canCreate(null, ['Parent' => $this->ParentID ? $this->getParent() : null])) {
                     continue;
                 }
             }
@@ -2573,7 +2574,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     {
         $parent = $this;
         $stack = [$parent];
-        while (($parent = $parent->Parent()) && $parent->exists()) {
+        while (($parent = $parent->getParent()) && $parent->exists()) {
             array_unshift($stack, $parent);
         }
 
@@ -2588,7 +2589,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function getPageLevel()
     {
         if ($this->ParentID) {
-            return 1 + $this->Parent()->getPageLevel();
+            return 1 + ($this->getParent()?->getPageLevel() ?? 1);
         }
         return 1;
     }
