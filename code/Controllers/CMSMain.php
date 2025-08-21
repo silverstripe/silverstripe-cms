@@ -1466,8 +1466,8 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
      */
     protected function collateDescendants($recordIDs, &$collator)
     {
-
-        $children = DataObject::get($this->getModelClass())->filter(['ParentID' => $recordIDs])->column();
+        // Disabling sort improves performance
+        $children = DataObject::get($this->getModelClass())->filter(['ParentID' => $recordIDs])->sort(null)->column('ID');
         if ($children) {
             foreach ($children as $item) {
                 $collator[] = $item;
