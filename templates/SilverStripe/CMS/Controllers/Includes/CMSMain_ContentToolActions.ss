@@ -1,12 +1,14 @@
 <div class="toolbar toolbar--content cms-content-toolbar">
 	<div class="btn-toolbar cms-actions-buttons-row">
         <% if not $TreeIsFiltered %>
-            <a class="btn btn-primary cms-content-addpage-button tool-button font-icon-plus" href="$LinkRecordAdd" data-url-addpage="{$LinkRecordAdd('', 'ParentID=%s')}">
+            <a class="btn btn-primary cms-content-addpage-button tool-button" href="$LinkRecordAdd" data-url-addpage="{$LinkRecordAdd('', 'ParentID=%s')}">
+                <span class="font-icon-plus" aria-hidden="true"></span>
                 <%t SilverStripe\Admin\\LeftAndMain.AddNew 'Add new {name}' name=$getRecord('singleton').i18n_singular_name().lowercase %>
             </a>
 
             <% if $View == 'Tree' %>
-            <button type="button" class="cms-content-batchactions-button btn btn-secondary tool-button font-icon-check-mark-2 btn--last" data-toolid="batch-actions">
+            <button type="button" class="cms-content-batchactions-button btn btn-secondary tool-button btn--last" data-toolid="batch-actions">
+                <span class="font-icon-check-mark-2" aria-hidden="true"></span>
                 <%t SilverStripe\CMS\Controllers\CMSPageHistoryController.MULTISELECT "Batch actions" %>
             </button>
             <% end_if %>
