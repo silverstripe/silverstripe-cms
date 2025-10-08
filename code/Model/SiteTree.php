@@ -2306,7 +2306,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         if ($canEdit && !$isOnDraft && $isPublished) {
             $majorActions->push(
                 FormAction::create('revert', _t('SilverStripe\\CMS\\Controllers\\CMSMain.RESTORE', 'Restore'))
-                    ->addExtraClass('btn-warning font-icon-back-in-time')
+                        ->setIcon('back-in-time')
+                    ->addExtraClass('btn-warning')
                     ->setUseButtonTag(true)
             );
         }
@@ -2327,9 +2328,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             if (!$this->isParentArchived() || $restoreToRoot) {
                 $majorActions->push(
                     FormAction::create('restore', $title)
+                        ->setIcon('back-in-time')
                         ->setDescription($description)
                         ->setAttribute('data-to-root', $restoreToRoot)
-                        ->addExtraClass('btn-warning font-icon-back-in-time')
+                        ->addExtraClass('btn-warning')
                         ->setUseButtonTag(true)
                 );
             }
@@ -2351,12 +2353,14 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         }
 
         // "save", supports an alternate state that is still clickable, but notifies the user that the action is not needed.
-        $noChangesClasses = 'btn-outline-primary font-icon-tick';
+        $noChangesClasses = 'btn-outline-primary';
         if ($canEdit && $isOnDraft) {
             $majorActions->push(
                 FormAction::create('save', _t(__CLASS__.'.BUTTONSAVED', 'Saved'))
+                    ->setIcon('tick')
+                    ->setAttribute('data-icon-alternate', 'save')
                     ->addExtraClass($noChangesClasses)
-                    ->setAttribute('data-btn-alternate-add', 'btn-primary font-icon-save')
+                    ->setAttribute('data-btn-alternate-add', 'btn-primary')
                     ->setAttribute('data-btn-alternate-remove', $noChangesClasses)
                     ->setUseButtonTag(true)
                     ->setAttribute('data-text-alternate', _t('SilverStripe\\CMS\\Controllers\\CMSMain.SAVEDRAFT', 'Save'))
@@ -2367,8 +2371,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             // "publish", as with "save", it supports an alternate state to show when action is needed.
             $majorActions->push(
                 $publish = FormAction::create('publish', _t(__CLASS__.'.BUTTONPUBLISHED', 'Published'))
+                    ->setIcon('tick')
+                    ->setAttribute('data-icon-alternate', 'rocket')
                     ->addExtraClass($noChangesClasses)
-                    ->setAttribute('data-btn-alternate-add', 'btn-primary font-icon-rocket')
+                    ->setAttribute('data-btn-alternate-add', 'btn-primary')
                     ->setAttribute('data-btn-alternate-remove', $noChangesClasses)
                     ->setUseButtonTag(true)
                     ->setAttribute('data-text-alternate', _t(__CLASS__.'.BUTTONSAVEPUBLISH', 'Publish'))
@@ -2376,7 +2382,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
             // Set up the initial state of the button to reflect the state of the underlying SiteTree object.
             if ($stagesDiffer) {
-                $publish->addExtraClass('btn-primary font-icon-rocket');
+                $publish->setIcon('rocket');
+                $publish->addExtraClass('btn-primary');
                 $publish->setTitle(_t(__CLASS__.'.BUTTONSAVEPUBLISH', 'Publish'));
                 $publish->removeExtraClass($noChangesClasses);
             }
@@ -2833,13 +2840,13 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     public function getAnchorsOnPage()
     {
         $content = $this->Content ?? '';
-        
+
         // Shortcodes may contain name/id attributes, they mess up the parsing below
         // we replace them with their content first
         // Note: We don't use ShortcodeParser::parse() here as that would execute the shortcodes
         // which may have performance and side effects
         $tags = ShortcodeParser::get_active()->extractTags($content);
-        
+
         // replace any tags found with their content
         foreach ($tags as $tag) {
             $content = str_replace($tag['text'], $tag['content'], $content);

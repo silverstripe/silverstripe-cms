@@ -1207,7 +1207,7 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
             $titleText = _t(__CLASS__ . '.TREE_NO_TITLE', '(no title)');
         }
         $treeTitle = sprintf(
-            '<span class="%s"></span><span class="item" data-allowedchildren="%s">%s</span>',
+            '<span class="%s" aria-hidden="true"></span><span class="item" data-allowedchildren="%s">%s</span>',
             implode(' ', $iconClasses),
             Convert::raw2att(json_encode($children)),
             $titleText
@@ -1613,8 +1613,9 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
                 if ($num) {
                     $screenReaderText = _t(__CLASS__ . '.NUM_CHILD_RECORDS', 'one child record|{count} child records', ['count' => $num]);
                     return sprintf(
-                        '<a class="btn btn-secondary btn--no-text btn--icon-large font-icon-right-dir cms-panel-link list-children-link" data-pjax-target="ListViewForm,Breadcrumbs" href="%s"><span class="visually-hidden">%s</span></a>',
+                        '<a class="btn btn-secondary btn--no-text btn--icon-large font-icon-right-dir cms-panel-link list-children-link" data-pjax-target="ListViewForm,Breadcrumbs" href="%s" aria-label="%s" title="%s"></a>',
                         $this->LinkListViewChildren((int)$item->ID),
+                        $screenReaderText,
                         $screenReaderText
                     );
                 }

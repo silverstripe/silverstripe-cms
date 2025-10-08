@@ -191,7 +191,8 @@ class CMSMainAddForm extends Form
     {
         $actions = FieldList::create(
             FormAction::create('doAdd', _t(CMSMain::class . '.Create', 'Create'))
-                ->addExtraClass('btn-primary font-icon-plus-circled')
+                ->setIcon('plus-circled')
+                ->addExtraClass('btn-primary')
                 ->setUseButtonTag(true),
             FormAction::create('doCancel', _t(CMSMain::class . '.Cancel', 'Cancel'))
                 ->addExtraClass('btn-secondary')

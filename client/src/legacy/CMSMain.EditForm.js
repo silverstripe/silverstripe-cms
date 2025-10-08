@@ -377,6 +377,29 @@ $.entwine('ss', function($){
         if (alternateClassesRemove) {
           button.removeClass(alternateClassesRemove);
         }
+
+        // Icons in the child element can also be swapped out
+        const iconElement = button.find('.btn__icon');
+        if (iconElement.length === 0) {
+          return;
+        }
+        const alternateIcon = button.data('iconAlternate');
+        if (alternateIcon) {
+          // Find the original font-icon class name (if there was one) so we can toggle back to it
+          let standardIcon = '';
+          for (const classname of iconElement[0].className.split(' ')) {
+            if (classname.match(/^font-icon-/)) {
+              standardIcon = classname.replace(/^font-icon-/, '');
+              break;
+            }
+          }
+          // Remove the original icon and add the alternate
+          if (standardIcon) {
+            button.data('iconStandard', standardIcon);
+            iconElement.removeClass(`font-icon-${standardIcon}`);
+          }
+          iconElement.addClass(`font-icon-${alternateIcon}`);
+        }
       });
 
 			this._super(e);
@@ -410,6 +433,20 @@ $.entwine('ss', function($){
         const alternateClassesRemove = button.data('btnAlternateRemove');
         if (alternateClassesRemove) {
           button.addClass(alternateClassesRemove);
+        }
+
+        // Icons in the child element can also be swapped out
+        const iconElement = button.find('.btn__icon');
+        if (iconElement.length === 0) {
+          return;
+        }
+        const alternateIcon = button.data('iconAlternate');
+        if (alternateIcon) {
+          iconElement.removeClass(`font-icon-${alternateIcon}`);
+        }
+        const standardIcon = button.data('iconStandard');
+        if (standardIcon) {
+          iconElement.addClass(`font-icon-${standardIcon}`);
         }
       });
 
