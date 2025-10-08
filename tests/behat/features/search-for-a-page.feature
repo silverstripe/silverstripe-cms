@@ -30,7 +30,6 @@ Feature: Search for a page
   Scenario: I can search for a page by its oldest last edited date
     Given a "page" "Recent Page" was last edited "08-08-2007"
       And a "page" "Old Page" was last edited "03-03-2007"
-    And I take a screenshot after every step
     When I press the "Advanced" button
       And I fill in "Search__LastEdited_SearchFrom" with "06-06-2007"
       And I press the "Search" button
