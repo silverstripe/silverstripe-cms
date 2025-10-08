@@ -1287,8 +1287,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $charset = ContentNegotiator::config()->uninherited('encoding');
         $tags['contentType'] = [
             'attributes' => [
-                'http-equiv' => 'Content-Type',
-                'content' => 'text/html; charset=' . $charset,
+                'charset' => $charset
             ],
         ];
         if ($this->MetaDescription) {
