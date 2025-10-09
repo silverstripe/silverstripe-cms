@@ -185,6 +185,14 @@ $.entwine('ss.tree', function($) {
     }
   });
 
+  // Add role="tree" to the root level <ul> for accessibility
+  // This needs to be done with JS as jstree will override any attributes set server-side
+  $('.cms-tree > ul').entwine({
+    onmatch: function() {
+      this.attr('role', 'tree');
+    }
+  });
+
   // Scroll tree down to context of the current page, if it isn't
   // already visible
   $('.cms-tree a.jstree-clicked').entwine({

@@ -904,6 +904,78 @@ class CMSMainTest extends FunctionalTest
         $this->assertSame($expected, $actual);
     }
 
+    public function testTreeMarkupProvidesAriaForCollapsedAndLeafNodes(): void
+    {
+        $this->logInWithPermission('ADMIN');
+
+        $page1ID = $this->idFromFixture(SiteTree::class, 'page1');
+        $page3ID = $this->idFromFixture(SiteTree::class, 'page3');
+        $parser = $this->getTreeMarkupParser();
+
+        $this->assertCount(1, $parser->getByXpath('//ul[@role="tree"]'));
+        $this->assertCount(
+            1,
+            $parser->getByXpath(
+                '//li[@id="record-0"]/strong[@role="treeitem" and @aria-level="1" and @aria-expanded="false"]'
+            )
+        );
+        $this->assertCount(
+            1,
+            $parser->getByXpath(
+                '//li[@id="record-0"]/span[contains(@class, "jstree-icon--arrow") and @role="button" and @aria-label="Toggle site tree" and @aria-expanded="false"]'
+            )
+        );
+        $this->assertCount(
+            1,
+            $parser->getByXpath('//li[@id="record-' . $page1ID . '"]/a[@role="treeitem" and @aria-level="1"]')
+        );
+        $this->assertNull(
+            $this->getTreeMarkupAttribute($parser, '//li[@id="record-' . $page1ID . '"]/a[@role="treeitem"]', 'aria-expanded')
+        );
+        $this->assertCount(
+            0,
+            $parser->getByXpath(
+                '//li[@id="record-' . $page1ID . '"]/span[contains(@class, "jstree-icon--arrow") and @role="button"]'
+            )
+        );
+        $this->assertCount(
+            1,
+            $parser->getByXpath(
+                '//li[@id="record-' . $page3ID . '"]/a[@role="treeitem" and @aria-level="1" and @aria-expanded="false"]'
+            )
+        );
+        $this->assertCount(
+            1,
+            $parser->getByXpath(
+                '//li[@id="record-' . $page3ID . '"]/span[contains(@class, "jstree-icon--arrow") and @role="button" and @aria-label="Toggle child pages" and @aria-expanded="false"]'
+            )
+        );
+    }
+
+    public function testTreeMarkupProvidesAriaForExpandedAncestors(): void
+    {
+        $this->logInWithPermission('ADMIN');
+
+        $page3ID = $this->idFromFixture(SiteTree::class, 'page3');
+        $page31ID = $this->idFromFixture(SiteTree::class, 'page31');
+        $parser = $this->getTreeMarkupParser($this->idFromFixture(SiteTree::class, 'page311'));
+
+        $this->assertCount(
+            1,
+            $parser->getByXpath(
+                '//li[@id="record-' . $page3ID . '"]/a[@role="treeitem" and @aria-level="1" and @aria-expanded="true"]'
+            )
+        );
+        $this->assertCount(
+            1,
+            $parser->getByXpath(
+                '//li[@id="record-' . $page31ID . '"]/a[@role="treeitem" and @aria-level="2" and @aria-expanded="true"]'
+            )
+        );
+        $this->assertCount(1, $parser->getByXpath('//ul[@id="subtree-' . $page3ID . '" and @role="group"]'));
+        $this->assertCount(1, $parser->getByXpath('//ul[@id="subtree-' . $page31ID . '" and @role="group"]'));
+    }
+
     public static function provideGetRecordTreeMarkup(): array
     {
         return [
@@ -942,6 +1014,33 @@ class CMSMainTest extends FunctionalTest
         $html = $cmsMain->getRecordTreeMarkup($page);
         $actual = strip_tags($html);
         $this->assertSame($expected, $actual);
+    }
+
+    protected function getTreeMarkupParser(?int $currentRecordID = null): CSSContentParser
+    {
+        $cmsMain = CMSMain::create();
+        $cmsMain->setRequest(new HTTPRequest('GET', 'admin/pages'));
+        $cmsMain->setCurrentRecordID($currentRecordID);
+
+        return new CSSContentParser($cmsMain->TreeAsUL());
+    }
+
+    protected function getTreeMarkupAttribute(CSSContentParser $parser, string $selector, string $attribute)
+    {
+        $nodes = str_starts_with($selector, '//')
+            ? $parser->getByXpath($selector)
+            : $parser->getBySelector($selector);
+        if (empty($nodes)) {
+            return null;
+        }
+
+        foreach ($nodes[0]->attributes() as $key => $value) {
+            if ((string)$key === $attribute) {
+                return (string)$value;
+            }
+        }
+
+        return null;
     }
 
     public function testGetArchiveWarningMessage(): void
