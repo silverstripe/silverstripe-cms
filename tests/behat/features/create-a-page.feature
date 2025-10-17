@@ -50,5 +50,5 @@ Feature: Create a page
     And I click on the ".cms-login-status__logout-link" element
     When I am logged in as a member of "EDITOR" group
     And I press the "Add new" button
-    Then I see the "Top level" radio button "disabled" attribute equals "1"
-    And I see the "Under another page" radio button "checked" attribute equals "1"
+    Then I see the "Top level" radio button has boolean attribute "disabled"
+    And I see the "Under another page" radio button has boolean attribute "checked"

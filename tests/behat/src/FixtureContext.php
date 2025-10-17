@@ -103,7 +103,7 @@ class FixtureContext extends BehatFixtureContext
     }
 
     /**
-     * Selects the specified radio button
+     * Checks the value of an attribute on the specified radio button
      *
      * @Given /^I see the "([^"]*)" radio button "([^"]*)" attribute equals "([^"]*)"$/
      * @param string $radioLabel
@@ -120,6 +120,33 @@ class FixtureContext extends BehatFixtureContext
         ]);
         Assert::assertNotNull($radioButton);
         Assert::assertEquals($value, $radioButton->getAttribute($attribute));
+    }
+
+    /**
+     * Checks the specified radio button has a specific boolean attribute
+     *
+     * @Given /^I see the "([^"]*)" radio button has boolean attribute "([^"]*)"$/
+     * @param string $radioLabel
+     * @param string $attribute
+     */
+    public function iSeeTheRadioButtonHasBooleanAttribute($radioLabel, $attribute)
+    {
+        /** @var NodeElement $radioButton */
+        $session = $this->getMainContext()->getSession();
+        $radioButton = $session->getPage()->find('named', [
+            'radio',
+            $this->getMainContext()->getXpathEscaper()->escapeLiteral($radioLabel)
+        ]);
+        Assert::assertNotNull($radioButton);
+        Assert::assertTrue(
+            $radioButton->hasAttribute($attribute),
+            "Radio button $radioLabel has no attribute $attribute"
+        );
+        Assert::assertEquals(
+            '',
+            $radioButton->getAttribute($attribute),
+            "$attribute attribute on radio button $radioLabel is not a boolean attribute"
+        );
     }
 
     /**
