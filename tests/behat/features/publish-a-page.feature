@@ -33,7 +33,7 @@ Feature: Publish a page
     And I should see "My Page" in the tree
     And I click on "My Page" in the tree
 
-    When I click "More options" in the "#ActionMenus" element
+    When I press the "More options" button
     Then I should see "Not published" in the "#ActionMenus_MoreOptions" element
     And I should not see an "Unpublish" button
     And I should see an "Archive" button
@@ -41,13 +41,13 @@ Feature: Publish a page
     And I should see a "Saved" button
 
     When I fill in the "Content" HTML field with "<p>my new content</p>"
-    And I click "More options" in the "#ActionMenus" element
+    And I press the "More options" button
     Then I should not see an "Unpublish" button
     And I should see a "Publish" button
     And I should see a "Save" button
 
     When I press the "Publish" button
-    And I click "More options" in the "#ActionMenus" element
+    And I press the "More options" button
     Then I should see an "Unpublish" button
     And I should see an "Unpublish and archive" button
     And I should see a "Published" button
@@ -63,7 +63,7 @@ Feature: Publish a page
     And I should see "Hello" in the tree
     And I click on "Hello" in the tree
 
-    When I click "More options" in the "#ActionMenus" element
+    When I press the "More options" button
     And I press the "Unpublish" button, confirming the dialog
 
     Then I am not logged in
@@ -76,11 +76,11 @@ Feature: Publish a page
     And I should see "My Page" in the tree
     And I click on "My Page" in the tree
     And I press the "Publish" button
-    And I click "More options" in the "#ActionMenus" element
+    And I press the "More options" button
     Then I should see an "Unpublish" button
 
     When I press the "Unpublish" button, confirming the dialog
-    And I click "More options" in the "#ActionMenus" element
+    And I press the "More options" button
     # Use a css-selector instead of the the "Archive" button otherwise it will get confused with
     # the "Archive" model admin
     Then I see the "#Form_EditForm_action_archive" element

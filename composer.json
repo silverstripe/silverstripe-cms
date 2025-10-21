@@ -20,8 +20,8 @@
     ],
     "require": {
         "php": "^8.3",
-        "silverstripe/admin": "^3",
-        "silverstripe/framework": "^6.1",
+        "silverstripe/admin": "^3.2",
+        "silverstripe/framework": "^6.2",
         "silverstripe/reports": "^6",
         "silverstripe/siteconfig": "^6",
         "silverstripe/versioned": "^3",

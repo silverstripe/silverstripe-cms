@@ -2251,7 +2251,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             'MoreOptions',
             _t(__CLASS__.'.MoreOptions', 'More options', 'Expands a view for more buttons')
         );
-        $moreOptions->addExtraClass('popover-actions-simulate');
+        $moreOptions->setIcon('dot-3');
+        $moreOptions->addExtraClass('popover-actions-simulate popover-actions-simulate--no-icon btn--icon-xl');
         $rootTabSet->push($moreOptions);
         $rootTabSet->addExtraClass('ss-ui-action-tabset action-menus noborder');
 
