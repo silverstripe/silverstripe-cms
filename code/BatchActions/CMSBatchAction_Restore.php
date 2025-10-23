@@ -49,7 +49,8 @@ class CMSBatchAction_Restore extends CMSBatchAction
             $pages,
             'doRestoreToStage',
             _t(__CLASS__ . '.RESTORED_PAGES', 'Restored %d pages')
-        );
+        )
+            ->addHeader('Content-Type', 'application/json');
     }
 
     /**

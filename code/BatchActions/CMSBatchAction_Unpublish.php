@@ -22,7 +22,8 @@ class CMSBatchAction_Unpublish extends CMSBatchAction
             $pages,
             'doUnpublish',
             _t(__CLASS__ . '.UNPUBLISHED_PAGES', 'Unpublished %d pages')
-        );
+        )
+            ->addHeader('Content-Type', 'application/json');
     }
 
     public function applicablePages($ids)

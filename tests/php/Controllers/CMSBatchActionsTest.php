@@ -10,6 +10,7 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Versioned\Versioned;
+use SilverStripe\Control\HTTPResponse;
 
 /**
  * Tests CMS Specific subclasses of {@see CMSBatchAction}
@@ -141,7 +142,11 @@ class CMSBatchActionsTest extends SapphireTest
         $this->assertEquals($archivedID, $list->first()->ParentID);
 
         // Run restore
-        $result = json_decode($action->run($list)->getBody(), true);
+        /** @var HTTPResponse $response */
+        $response = $action->run($list);
+        $this->assertSame(200, $response->getStatusCode());
+        $this->assertSame('application/json', $response->getHeader('Content-Type'));
+        $result = json_decode($response->getBody(), true);
         $this->assertEquals(
             [
                 $archivedxID => $archivedxID,
@@ -161,7 +166,11 @@ class CMSBatchActionsTest extends SapphireTest
         $this->assertEquals(0, $list->last()->ParentID); // archived (parent)
 
         // Run restore
-        $result = json_decode($action->run($list)->getBody(), true);
+        /** @var HTTPResponse $response */
+        $response = $action->run($list);
+        $this->assertSame(200, $response->getStatusCode());
+        $this->assertSame('application/json', $response->getHeader('Content-Type'));
+        $result = json_decode($response->getBody(), true);
         $this->assertEquals(
             [
                 // Order of archived is opposite to order items are passed in, as

@@ -22,7 +22,8 @@ class CMSBatchAction_Publish extends CMSBatchAction
             $pages,
             'publishRecursive',
             _t(__CLASS__ . '.PUBLISHED_PAGES', 'Published %d pages, %d failures')
-        );
+        )
+            ->addHeader('Content-Type', 'application/json');
     }
 
     public function applicablePages($ids)

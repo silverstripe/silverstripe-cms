@@ -23,7 +23,8 @@ class CMSBatchAction_Archive extends CMSBatchAction
             $pages,
             'doArchive',
             _t(__CLASS__ . '.RESULT', 'Deleted %d pages from draft and live, and sent them to the archive')
-        );
+        )
+            ->addHeader('Content-Type', 'application/json');
     }
 
     public function applicablePages($ids)
