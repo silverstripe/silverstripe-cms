@@ -19,7 +19,7 @@ class SiteTreeSearchContext extends SearchContext
     {
         $origSearchParams = $searchParams;
         // Set default filter if other params are set
-        if ($searchParams && empty($searchParams['FilterClass'])) {
+        if ($searchParams && empty($searchParams['FilterClass']) && $this->getSearchFields()->dataFieldByName('FilterClass')) {
             $searchParams['FilterClass'] = CMSSiteTreeFilter_Search::class;
         }
         $query = parent::getQuery($searchParams, $sort, $limit, $existingQuery);
