@@ -177,7 +177,7 @@ class CMSMainTest extends FunctionalTest
         $parentPage->doUnpublish();
         $childPage->doUnpublish();
 
-        $actions = $childPage->getCMSActions()->dataFields();
+        $actions = $childPage->getCMSActions()->getDataFields();
         $this->assertArrayHasKey(
             'action_publish',
             $actions,

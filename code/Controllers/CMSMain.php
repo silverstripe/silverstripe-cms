@@ -1368,7 +1368,7 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
         }
 
         // Use <button> to allow full jQuery UI styling
-        $actionsFlattened = $actions->dataFields();
+        $actionsFlattened = $actions->getDataFields();
         if ($actionsFlattened) {
             /** @var FormAction $action */
             foreach ($actionsFlattened as $action) {
