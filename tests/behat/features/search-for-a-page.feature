@@ -124,3 +124,12 @@ Feature: Search for a page
     Then I should not see "Draft Page" in the cms list
       And I should not see "Deleted Page" in the cms list
       But I should see "Live Page" in the cms list
+
+  Scenario: Closing the search filter without searching doesn't kick me back to the site tree
+    When I click on "About Us" in the tree
+    Then I should see an edit page form
+    When I press the "Filter" button
+    Then I should see the "Advanced" button
+    When I press the "Close" button
+    Then I should not see the "Advanced" button
+    And I should see an edit page form
