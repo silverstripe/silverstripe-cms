@@ -108,6 +108,13 @@ en:
     ErrorItemPermissionDenied: "It seems you don't have the necessary permissions to add {ObjectTitle} to a campaign"
     ErrorNotFound: "That {Type} couldn't be found"
     MENUTITLE: Pages
+  SilverStripe\CMS\Controllers\CMSSiteTreeController:
+    ADD_PAGE_UNDER: 'Add page under this page'
+    DUPLICATE: 'Duplicate'
+    DUPLICATE_THIS_ONLY: 'This page only'
+    DUPLICATE_WITH_CHILDREN: 'This page and subpages'
+    SHOW_AS_LIST: 'Show children as list'
+    VIEW: 'View'
   SilverStripe\CMS\Controllers\CMSPageHistoryController:
     AUTHOR: Author
     COMPAREMODE: 'Compare mode (select two)'

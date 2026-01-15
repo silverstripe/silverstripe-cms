@@ -6,6 +6,7 @@ use LogicException;
 use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Admin\AdminRootController;
 use SilverStripe\Admin\CMSBatchActionHandler;
+use SilverStripe\Admin\HierarchyTreeTrait;
 use SilverStripe\Admin\LeftAndMain;
 use SilverStripe\Admin\LeftAndMainFormRequestHandler;
 use SilverStripe\Admin\Navigator\SilverStripeNavigator;
@@ -52,10 +53,8 @@ use SilverStripe\ORM\DB;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\HiddenClass;
 use SilverStripe\ORM\Hierarchy\Hierarchy;
-use SilverStripe\ORM\Hierarchy\MarkedSet;
 use SilverStripe\Model\List\SS_List;
 use SilverStripe\Core\Validation\ValidationResult;
-use SilverStripe\Security\InheritedPermissions;
 use SilverStripe\Security\PermissionProvider;
 use SilverStripe\Security\Security;
 use SilverStripe\Security\SecurityToken;
@@ -65,10 +64,10 @@ use SilverStripe\VersionedAdmin\Controllers\CMSPageHistoryViewerController;
 use SilverStripe\Model\ArrayData;
 use SilverStripe\ORM\Search\SearchContextForm;
 use SilverStripe\Security\Permission;
-use SilverStripe\Security\PermissionCheckable;
 use SilverStripe\Versioned\RecursivePublishable;
 use SilverStripe\View\Requirements;
 use SilverStripe\View\ThemeResourceLoader;
+use SilverStripe\CMS\Controllers\CMSSiteTreeController;
 
 /**
  * The main "content" area of the CMS.
@@ -78,6 +77,7 @@ use SilverStripe\View\ThemeResourceLoader;
  */
 class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, PermissionProvider, Flushable, MemberCacheFlusher
 {
+    use HierarchyTreeTrait;
     /**
      * Unique ID for page icons CSS block
      */
@@ -112,6 +112,8 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
      * Amount of results showing on a single page.
      */
     private static int $page_length = 15;
+
+    private static bool $use_legacy_tree = false;
 
     private static array $allowed_actions = [
         'add',
@@ -157,6 +159,8 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
         'TreeHints' => 'HTMLFragment',
         'SecurityID' => 'Text',
         'TreeAsUL' => 'HTMLFragment',
+        'TreeViewSchemaJson' => 'Text',
+        'useModernTreeView' => 'Boolean',
     ];
 
     private static array $dependencies = [
@@ -342,6 +346,31 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
     }
 
     /**
+     * Determine whether to use the modern React-based tree view.
+     *
+     * When true, the ComplexTreeView React component will be loaded instead of
+     * the legacy jsTree-based tree. This can be overridden in subclasses or via
+     * extensions to switch between implementations.
+     */
+    public function useModernTreeView(): bool
+    {
+        return !$this->config()->get('use_legacy_tree');
+    }
+
+    /**
+     * Get the schema JSON for the ComplexTreeView React component.
+     *
+     * This is used by the template to pass configuration to the React component
+     * via the Entwine adapter.
+     */
+    public function TreeViewSchemaJson(): string
+    {
+        $treeController = CMSSiteTreeController::singleton();
+        $treeView = $treeController->getComplexTreeView($this->currentRecordID());
+        return $treeView->getSchemaJson();
+    }
+
+    /**
      * Link to lazy-load deferred list view
      *
      * @return string
@@ -485,30 +514,27 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
     }
 
     /**
+     * Public wrapper for getTreePrepopulateOptions from the trait.
+     * This allows tests to access the method.
+     */
+    public function getTreeAsULPrepopulateOptions(string $modelClass): array
+    {
+        return $this->getTreePrepopulateOptions($modelClass);
+    }
+
+    /**
      * Return the entire tree as a nested set of ULs
      */
     public function TreeAsUL()
     {
         $modelClass = $this->getModelClass();
-        $options = $this->getTreeAsULPrepopulateOptions($modelClass);
+        $options = $this->getTreePrepopulateOptions($modelClass);
         DataObject::singleton($modelClass)->prepopulateTreeDataCache(null, $options);
         $html = $this->getTreeFor($modelClass);
         $this->extend('updateTreeAsUL', $html);
+        dc();
+        d($html);
         return $html;
-    }
-
-    /**
-     * Get the options used for the call to Hierarchy::prepopulateTreeDataCache()
-     */
-    private function getTreeAsULPrepopulateOptions(string $modelClass)
-    {
-        /** @var DataObject&Hierarchy $obj */
-        $obj = DataObject::singleton($modelClass);
-        $baseClass = $obj->getHierarchyBaseClass();
-        return [
-            'childrenMethod' => $baseClass::config()->get('tree_children_method'),
-            'numChildrenMethod' => 'numChildren',
-        ];
     }
 
     /**
@@ -532,41 +558,16 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
         $filterFunction = null,
         $nodeCountThreshold = null
     ) {
-        $nodeCountThreshold = is_null($nodeCountThreshold) ? Config::inst()->get($className, 'node_threshold_total') : $nodeCountThreshold;
-
-        // Build set from node and begin marking
-        $record = ($rootID) ? $this->getRecord($rootID) : null;
-        $rootNode = $record ? $record : DataObject::singleton($className);
-        $markingSet = MarkedSet::create($rootNode, $childrenMethod, $numChildrenMethod, $nodeCountThreshold);
-
-        // Set filter function
-        if ($filterFunction) {
-            $markingSet->setMarkingFilterFunction($filterFunction);
-        }
-
-        // Mark tree from this node
-        $markingSet->markPartialTree();
-
-        // Ensure current record is exposed
-        $currentRecord = $this->currentRecord();
-        if ($currentRecord) {
-            $markingSet->markToExpose($currentRecord);
-        }
-
-        // Pre-cache permissions if using a permission checker
-        $modelClass = $this->getModelClass();
-        if (is_a($modelClass, PermissionCheckable::class, true)) {
-            $checker = DataObject::singleton($modelClass)->getPermissionChecker();
-            if ($checker instanceof InheritedPermissions) {
-                $checker->prePopulatePermissionCache(
-                    InheritedPermissions::EDIT,
-                    $markingSet->markedNodeIDs()
-                );
-            }
-        }
-
+        $markedSet = $this->getMarkedSet(
+            $className,
+            $rootID,
+            $childrenMethod,
+            $numChildrenMethod,
+            $filterFunction,
+            $nodeCountThreshold
+        );
         // Render using full-subtree template
-        return $markingSet->renderChildren(
+        return $markedSet->renderChildren(
             [ CMSMain::class . '_SubTree', 'type' => 'Includes' ],
             $this->getTreeNodeCustomisations()
         );
@@ -648,58 +649,7 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
      */
     public function updatetreenodes(HTTPRequest $request): HTTPResponse
     {
-        $data = [];
-        $ids = explode(',', $request->getVar('ids') ?? '');
-        foreach ($ids as $id) {
-            if ($id === "") {
-                continue; // $id may be a blank string, which is invalid and should be skipped over
-            }
-
-            /** @var DataObject&Hierarchy $record */
-            $record = $this->getRecord($id);
-            if (!$record) {
-                continue; // In case a record is no longer available
-            }
-
-            // Create marking set with sole marked root
-            $markingSet = MarkedSet::create($record);
-            $markingSet->setMarkingFilterFunction(function () {
-                return false;
-            });
-            $markingSet->markUnexpanded($record);
-
-            // Find the next & previous nodes, for proper positioning (Sort isn't good enough - it's not a raw offset)
-            $prev = null;
-
-            $className = $this->getModelClass();
-            $sortField = $record->getSortField();
-            $list = DataObject::get($className)->filter('ParentID', $record->ParentID);
-            if ($sortField) {
-                $list = $list->filter($sortField . ':GreaterThan', $record->$sortField);
-            }
-            $next = $list->first();
-
-            if (!$next) {
-                $list = DataObject::get($className)->filter('ParentID', $record->ParentID);
-                if ($sortField) {
-                    $list = $list->filter($sortField . ':LessThan', $record->$sortField);
-                }
-                $prev = $list->reverse()->first();
-            }
-
-            // Render using single node template
-            $html = $markingSet->renderChildren(
-                [ CMSMain::class . '_TreeNode', 'type' => 'Includes'],
-                $this->getTreeNodeCustomisations()
-            );
-
-            $data[$id] = [
-                'html' => $html,
-                'ParentID' => $record->ParentID,
-                'NextID' => $next ? $next->ID : null,
-                'PrevID' => $prev ? $prev->ID : null
-            ];
-        }
+        $data = $this->updateTreeNodesInternal($request, true);
         return $this
             ->getResponse()
             ->addHeader('Content-Type', 'application/json')
@@ -720,105 +670,19 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
      */
     public function savetreenode(HTTPRequest $request): HTTPResponse
     {
-        if (!SecurityToken::inst()->checkRequest($request)) {
-            $this->httpError(400);
-        }
-        if (!$this->canOrganiseTree()) {
-            $this->httpError(
-                403,
-                _t(
-                    __CLASS__.'.CANT_REORGANISE2',
-                    "You do not have permission to rearange the tree. Your change was not saved.",
-                )
-            );
-        }
-
-        $className = $this->getModelClass();
-        $id = $request->requestVar('ID');
-        $parentID = $request->requestVar('ParentID');
-        if (!is_numeric($id) || !is_numeric($parentID)) {
-            $this->httpError(400);
-        }
-
-        // Check record exists in the DB
-        /** @var DataObject&Hierarchy $node */
-        $node = DataObject::get($className)->setUseCache(true)->byID($id);
-        if (!$node) {
-            $this->httpError(
-                500,
-                _t(
-                    __CLASS__.'.PLEASESAVE2',
-                    "Please Save Record: This record could not be updated because it hasn't been saved yet."
-                )
-            );
-        }
-
-        // Check top level permissions
-        $isRoot = $node->ParentID == 0;
-        if (($parentID == '0' || $isRoot) && !$this->canCreateTopLevel()) {
-            $this->httpError(
-                403,
-                _t(
-                    __CLASS__.'.CANT_REORGANISE_TOPLEVEL',
-                    'You do not have permission to alter Top level records. Your change was not saved.'
-                )
-            );
-        }
-
-        $siblingIDs = $request->requestVar('SiblingIDs');
-        $statusUpdates = ['modified'=>[]];
-
-        if (!$node->canEdit()) {
-            return Security::permissionFailure($this);
-        }
-
-        // Update hierarchy (only if ParentID changed)
-        $parentChanged = $node->ParentID != $parentID;
-        if ($parentChanged) {
-            $node->ParentID = (int)$parentID;
-            $node->write();
-
-            $statusUpdates['modified'][$node->ID] = [
-                'TreeTitle' => $this->getRecordTreeMarkup($node),
-            ];
-            $this->getResponse()->addHeader(
-                'X-Status',
-                rawurlencode(_t(__CLASS__.'.REORGANISATIONSUCCESSFUL2', 'Reorganised the tree successfully.') ?? '')
-            );
-        }
-
-        // Update sorting
-        $sortField = $node->getSortField();
-        $sortChanged = $sortField && is_array($siblingIDs);
-        if ($sortChanged) {
-            $counter = 0;
-            foreach ($siblingIDs as $id) {
-                if ($id == $node->ID) {
-                    $node->$sortField = ++$counter;
-                    $node->write();
-                    $statusUpdates['modified'][$node->ID] = [
-                        'TreeTitle' => $this->getRecordTreeMarkup($node),
-                    ];
-                } elseif (is_numeric($id)) {
-                    // Nodes that weren't "actually moved" shouldn't be registered as
-                    // having been edited; do a direct SQL update instead
-                    ++$counter;
-                    $table = DataObject::getSchema()->baseDataTable($className);
-                    DB::prepared_query(
-                        "UPDATE \"$table\" SET \"$sortField\" = ? WHERE \"ID\" = ?",
-                        [$counter, $id]
-                    );
-                }
+        $data = [
+            'ID' => $request->requestVar('ID'),
+            'ParentID' => $request->requestVar('ParentID'),
+            'SiblingIDs' => $request->requestVar('SiblingIDs')
+        ];
+        // update all IDs to be integers
+        $data = array_map(function ($value) {
+            if (is_array($value)) {
+                return array_map('intval', $value);
             }
-
-            $this->getResponse()->addHeader(
-                'X-Status',
-                rawurlencode(_t(__CLASS__.'.REORGANISATIONSUCCESSFUL2', 'Reorganised the tree successfully.') ?? '')
-            );
-        }
-
-        $node->invokeWithExtensions('updateSaveTreeNodeStatusUpdates', $statusUpdates, $parentChanged, $sortChanged);
-
+            return intval($value);
+        }, $data);
+        $statusUpdates = $this->saveTreeNodeInternal($request, $data, true);
         return $this
             ->getResponse()
             ->addHeader('Content-Type', 'application/json')

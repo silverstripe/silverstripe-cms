@@ -39,6 +39,10 @@ $.entwine('ss', function ($) {
       if(this.data('no-ajax')) {
         return;
       }
+      // Skip legacy tree loading if modern React tree is being used
+      if (this.siblings('.complex-tree-view__container').length > 0 || this.find('.complex-tree-view__container').length > 0) {
+        return;
+      }
       var viewType = localStorage.getItem('ss.pages-view-type') || VIEW_TYPE_TREE;
       if(this.closest('.cms-content-tools').length > 0) {
         // Always use treeview when in page edit mode
