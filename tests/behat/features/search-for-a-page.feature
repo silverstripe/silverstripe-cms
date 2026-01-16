@@ -126,7 +126,7 @@ Feature: Search for a page
   Scenario: Closing the search filter without searching doesn't kick me back to the site tree
     When I click on "About Us" in the tree
     Then I should see an edit page form
-    When I press the "Filter" button
+    When I press the "Open search and filter" button
     Then I should see the "Advanced" button
     When I press the "Close" button
     Then I should not see the "Advanced" button
