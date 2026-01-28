@@ -124,6 +124,9 @@ $.entwine('ss', function($){
      */
     updateSelectionFilter: function(disallowedChildren, defaultChildClass) {
       var currentSelection = this.find('#Form_AddForm_PageType div.radio.selected')[0];
+      if (!currentSelection) {
+        currentSelection = this.find('#Form_AddForm_PageType div.radio input:checked').parents('div.radio')[0];
+      }
       var keepSelection = false;
 
       // Limit selection
@@ -150,11 +153,11 @@ $.entwine('ss', function($){
 
       // Keep current selection if we can, or set default child selection, or fall back to first available option
       if (keepSelection) {
-        var selectedEl = $(currentSelection).parents('li:first');
+        var selectedEl = $(currentSelection);
       } else if (defaultChildClass) {
         var selectedEl = this
           .find('#Form_AddForm_PageType div.radio input[value=' + defaultChildClass + ']')
-          .parents('li:first');
+          .parents('div.radio');
       } else {
         var selectedEl = this.find('#Form_AddForm_PageType div.radio:not(.disabled):first');
       }

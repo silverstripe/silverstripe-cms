@@ -17,8 +17,10 @@ Feature: Create a page
     Then I should see "MyPage" in the tree
     And I should see a "Add new" button in CMS Content Toolbar
     When I press the "Add new" button
-    And I select the "Page" radio button
-    And I press the "Create" button
+    # default selected option is "Page"
+    Then I should see "Generic content page" in the "#Form_AddForm_PageType div.radio.selected" element
+    Then the "Generic content page" checkbox should be checked
+    When I press the "Create" button
     Then I should see an edit page form
 
   @javascript
@@ -51,4 +53,11 @@ Feature: Create a page
     When I am logged in as a member of "EDITOR" group
     And I press the "Add new" button
     Then I see the "Top level" radio button "disabled" attribute equals "1"
-    And I see the "Under another page" radio button "checked" attribute equals "1"
+
+  Scenario: I can change the default page type for new pages
+    Given I add an extension "SilverStripe\CMS\Tests\Behaviour\DefaultAddPageOptionExtension" to the "SilverStripe\CMS\Controllers\CMSPageAddController" class
+    And I am logged in as a member of "EDITOR" group
+    When I go to "/admin/pages"
+    And I press the "Add new" button
+    Then I should see "Virtual Page" in the "#Form_AddForm_PageType div.radio.selected" element
+    Then the "Virtual Page" checkbox should be checked
