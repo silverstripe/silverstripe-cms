@@ -184,14 +184,17 @@ class CMSPageAddController extends CMSPageEditController
         )->setHTMLID('Form_AddForm')->setStrictFormMethodCheck(false);
         $form->setAttribute('data-hints', $this->SiteTreeHints());
         $form->setAttribute('data-childfilter', $this->Link('childfilter'));
+        $form->setAttribute('data-pjax-fragment', 'CurrentForm');
         $form->setValidationResponseCallback(function (ValidationResult $errors) use ($negotiator, $form) {
             $request = $this->getRequest();
             if ($request->isAjax() && $negotiator) {
-                $result = $form->forTemplate();
                 return $negotiator->respond($request, [
-                    'CurrentForm' => function () use ($result) {
-                        return $result;
-                    }
+                    'Content' => function () use ($form) {
+                        return $this->renderWith($this->getTemplatesWithSuffix('_Content'), ['AddForm' => $form]);
+                    },
+                    'CurrentForm' => function () use ($form) {
+                        return $form->forTemplate();
+                    },
                 ]);
             }
             return null;

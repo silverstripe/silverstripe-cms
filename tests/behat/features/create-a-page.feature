@@ -61,3 +61,33 @@ Feature: Create a page
     And I press the "Add new" button
     Then I should see "Virtual Page" in the "#Form_AddForm_PageType div.radio.selected" element
     Then the "Virtual Page" checkbox should be checked
+
+  Scenario: I can create a page using the context menu
+    Given I am logged in as a member of "EDITOR" group
+    When I go to "/admin/pages"
+    And I right click on "MyPage" in the tree
+    And I hover on "Add new page here" in the context menu
+    And I click on "Page" in the context menu
+    Then I should see "New Page" in the tree
+    And I should see an edit page form
+
+  Scenario: Failed validation during page creation shows the validation error
+    Given I add an extension "SilverStripe\CMS\Tests\Behaviour\ValidationFailedAddPageExtension" to the "SilverStripe\CMS\Controllers\CMSPageAddController" class
+    And I am logged in as a member of "EDITOR" group
+    When I go to "/admin/pages"
+    # First use the context menu approach
+    And I right click on "MyPage" in the tree
+    And I hover on "Add new page here" in the context menu
+    And I click on "Page" in the context menu
+    And I should see a "Validation Error" error toast
+    And I should see a "form#Form_AddForm" element
+    And I should see "This field failed validation"
+    Then I should not see an edit page form
+    # Then check we get the same result with normal form submission
+    When I go to "/admin/pages"
+    And I press the "Add new" button
+    And I press the "Create" button
+    And I should see a "Validation Error" error toast
+    And I should see a "form#Form_AddForm" element
+    And I should see "This field failed validation"
+    Then I should not see an edit page form
