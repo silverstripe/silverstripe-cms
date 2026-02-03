@@ -1,7 +1,21 @@
 nl:
   SilverStripe\Admin\LeftAndMain:
+    ARCHIVED_RECORD: 'Gearchiveerd {name} "{title}"'
+    AddNew: 'Toevoegen {name}'
+    ArchiveWarning: 'Let op: Dit item wordt gedepubliceerd voordat het gearchiveerd kan worden.\n\nWeet je zeker dat je wilt doorgaan?'
+    ArchiveWarningWithChildren: 'Let op: Dit item en alle onderliggende items worden gedepubliceerd voordat het gearchiveerd kan worden.\n\nWeet je zeker dat je wilt doorgaan?'
+    CREATED_RECORD: 'Aangemaakt {name} "{title}"'
+    DELETED_RECORD: 'Verwijderd {name} "{title}"'
+    DUPLICATED_RECORD: 'Gedupliceerd {name} "{title}"'
+    DUPLICATED_RECORD_WITH_CHILDREN: 'Gedupliceerd {name} "{title}" en onderliggende items'
+    NEW_RECORD: 'Nieuw {recordtype}'
+    NewRecord: 'Nieuw {name}'
+    PUBLISHED_RECORD: 'Gepubliceerd {name} "{title}"'
+    RESTORED_RECORD: 'Hersteld {name} "{title}"'
     ROLLEDBACK_PUBLISHED: 'Teruggedraaid naar gepubliceerde versie.'
     ROLLEDBACK_VERSION: 'Teruggedraaid naar versie #{version}.'
+    SAVED_RECORD: 'Opgeslagen {name} "{title}"'
+    UNPUBLISHED_RECORD: 'Gedepubliceerd {name} "{title}"'
   SilverStripe\CMS\BatchActions\CMSBatchAction_Archive:
     RESULT: "%d pagina's verwijderd van de concept/live site en gearchiveerd"
     TITLE: 'Publicatie intrekken en archiveren'
@@ -27,6 +41,8 @@ nl:
     ArchiveWarningWithChildren: 'Let op: deze pagina en alle bijbehorende subpagina''s worden van de gepubliceerde site verwijderd voordat ze worden gearchiveerd.\n\nWeet je zeker dat je wil doorgaan?'
     ArchiveWarningWithChildrenAndCampaigns: 'Let op: deze pagina en alle bijbehorende subpagina''s worden automatisch van de gepubliceerde site én uit alle {NumCampaigns} campagnes verwijderd, voordat ze worden gearchiveerd.\n\nWeet je zeker dat je wil doorgaan?'
     CANT_REORGANISE: "Je hebt onvoldoende rechten om pagina's op het topniveau te wijzigen. Je wijziging is niet opgeslagen."
+    CANT_REORGANISE2: 'Je hebt geen toestemming om de volgorde aan te passen. Je wijziging is niet opgeslagen.'
+    CANT_REORGANISE_TOPLEVEL: 'Je hebt geen toestemming om items op hoofdniveau te veranderen. De wijziging is niet opgeslagen.'
     Cancel: Annuleren
     ChoosePageParentMode: 'Kies waar je deze pagina wilt aanmaken'
     ChoosePageType: 'Kies een pagina type'
@@ -37,6 +53,9 @@ nl:
     ListView: Lijstweergave
     MENUTITLE: "Pagina's"
     NEWPAGE: 'Nieuwe {pagetype}'
+    NUM_CHILD_RECORDS:
+      one: 'Eén onderliggend item'
+      other: '{count} onderliggende items'
     PAGENOTEXISTS: 'Deze pagina bestaat niet'
     PAGES: 'Pagina status'
     PAGESALLOPT: "Alle pagina's"
@@ -44,15 +63,19 @@ nl:
     PAGETYPEOPT: Paginatype
     PAGETYPE_TITLE: '(Paginatype: {type}) {title}'
     PLEASESAVE: 'Sla de pagina eerst op: deze pagina kon niet worden bijgewerkt, omdat hij nog niet was opgeslagen.'
+    PLEASESAVE2: 'Sla wijzigen op: het record kon niet bijgewerkt worden omdat deze nog niet opgeslagen is.'
     PUBALLCONFIRM: 'Publiceer elke pagina van de site: dit kopieert de inhoud van de concept site naar de live site'
     PUBALLFUN: '"Publiceer alles" functionaliteit'
     PUBALLFUN2: 'Op deze knop klikken heeft hetzelfde resultaat als bij elke pagina op "Publiceer" te klikken. Het is bedoeld om te gebruiken wanneer er erg grote inhoudsaanpassingen gebeurd zijn, bijvoorbeeld wanneer een nieuwe site voor het eerst gebouwd wordt. Bij grote sites kan het uitvoeren te lang duren. Neem in dat geval contact op met de web-ontwikkelaars om hiervoor een aangepaste taak te maken.'
     PUBLISHED: "Pagina '{title}' is gepubliceerd."
     PUBPAGES: "Gereed: {count} pagina's gepubliceerd"
     PageAdded: 'Pagina met succes aangemaakt'
+    RECORDNOTEXISTS: 'Dit item bestaat niet'
+    RECORD_TYPE_TITLE: '(Item type: {type}) {title}'
     REMOVEDPAGE: "'{title}' is van de gepubliceerde site verwijderd"
     REMOVEDPAGEFROMDRAFT: "'{title}' is verwijderd uit de concept site"
     REORGANISATIONSUCCESSFUL: 'Menu-indeling is aangepast'
+    REORGANISATIONSUCCESSFUL2: 'Nieuwe volgorde opgeslagen'
     RESTORE: 'Concept herstellen'
     RESTORED: "'{title}' is met succes hersteld"
     RESTORE_DESC: 'Herstel de gearchiveerde versie naar concept.'
@@ -66,6 +89,8 @@ nl:
     SEARCHRESULTS: Zoekresultaten
     SHOW_AS_LIST: 'Als lijst tonen'
     TOO_MANY_PAGES: "Te veel pagina's"
+    TOO_MANY_RECORDS: 'Teveel items'
+    TREE_NO_TITLE: '(geen titel)'
     TabContent: Inhoud
     TabHistory: Historie
     TabSettings: Instellingen
@@ -147,6 +172,10 @@ nl:
   SilverStripe\CMS\Forms\AnchorLinkFormFactory:
     ANCHORVALUE: Anker
   SilverStripe\CMS\Forms\CMSMainAddForm:
+    AddRecordRestriction: 'Let op: Niet alle {model}-types zij niet toegestaan in deze selectie'
+    ChooseParentMode: 'Waaronder wil je dit item aanmaken'
+    ChooseRecordType: 'Selecteer {model} type'
+    ParentMode_child: 'Onder ander {type}'
     ParentMode_top: 'Hoogste niveau'
   SilverStripe\CMS\Forms\InternalLinkFormFactory:
     LINKDESCR: 'Omschrijving van de koppeling'
@@ -158,6 +187,7 @@ nl:
     EMPTY: 'Vul een URL segment in of klik op annuleren'
     Edit: Bewerken
     HelpChars: 'Speciale tekens worden automatische omgezet of verwijderd.'
+    ViewDraft: 'Bekijk concept pagina'
   SilverStripe\CMS\Model\RedirectorPage:
     CLASS_DESCRIPTION: 'Stuurt door naar een interne pagina of een externe URL'
     DESCRIPTION: 'Stuurt door naar een interne pagina of een externe URL'
