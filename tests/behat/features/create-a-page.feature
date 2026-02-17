@@ -60,7 +60,8 @@ Feature: Create a page
     When I go to "/admin/pages"
     And I press the "Add new" button
     Then I should see "Virtual Page" in the "#Form_AddForm_PageType div.radio.selected" element
-    Then the "Virtual Page" checkbox should be checked
+    # Use the class description when selecting so the subsites virtual page isn't found in kitchen sink
+    Then the "Displays the content of another page" checkbox should be checked
 
   Scenario: I can create a page using the context menu
     Given I am logged in as a member of "EDITOR" group
