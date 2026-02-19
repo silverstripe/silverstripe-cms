@@ -93,9 +93,11 @@ $.entwine('ss.tree', function($) {
               'label': '<span class="jstree-recordicon ' + child.IconClass + '" aria-hidden="true"></span>' + child.Title,
               '_class': 'class-' + child.ClassName.replace(/[^a-zA-Z0-9\-_:.]+/g, '_'),
               'action': function(obj) {
+                // The %s we need for sprintf gets encoded to %25 in PHP, so we need to revert that first
+                const addPageUrl = self.data('urlAddpage').replaceAll('%25s', '%s');
                 $('.cms-container').entwine('.ss').loadPanel(
                   $.path.addSearchParams(
-                    i18n.sprintf(self.data('urlAddpage'), id, child.ClassName),
+                    i18n.sprintf(addPageUrl, id, child.ClassName),
                     self.data('extraParams')
                   )
                 );
