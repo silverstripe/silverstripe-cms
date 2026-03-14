@@ -894,7 +894,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * Return a string of the form "parent - page" or "grandparent - parent - page" using page titles
      *
      * @param int $level The maximum amount of levels to traverse.
-     * @param string $separator Seperating string
+     * @param string $separator Separating string
      * @return string The resulting string
      */
     public function NestedTitle($level = 2, $separator = " - ")
@@ -1705,7 +1705,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $filter = URLSegmentFilter::create();
         $filteredTitle = $filter->filter($title);
 
-        // Fallback to generic page name if path is empty (= no valid, convertable characters)
+        // Fallback to generic page name if path is empty (= no valid, convertible characters)
         if (!$filteredTitle || $filteredTitle == '-' || $filteredTitle == '-1') {
             $filteredTitle = "page-$this->ID";
         }
@@ -1789,7 +1789,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     /**
      * Returns the pages that depend on this page. This includes virtual pages, pages that link to it, etc.
      *
-     * @param bool $includeVirtuals Set to false to exlcude virtual pages.
+     * @param bool $includeVirtuals Set to false to exclude virtual pages.
      * @return ArrayList<SiteTree>
      */
     public function DependentPages($includeVirtuals = true)
@@ -2413,7 +2413,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
-     * Update draft dependant pages
+     * Update draft dependent pages
      */
     protected function onAfterRevertToLive()
     {
@@ -2605,7 +2605,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
     /**
      * Find the controller name by our convention of {$ModelClass}Controller
-     * Can be overriden by config variable
+     * Can be overridden by config variable
      *
      * @return string
      */
@@ -2665,7 +2665,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
     /**
      * Stops extendCMSFields() being called on getCMSFields(). This is useful when you need access to fields added by
-     * subclasses of SiteTree in a extension. Call before calling parent::getCMSFields(), and reenable afterwards.
+     * subclasses of SiteTree in a extension. Call before calling parent::getCMSFields(), and re-enable afterwards.
      */
     public static function disableCMSFieldsExtensions()
     {
@@ -2787,7 +2787,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
-     * Update dependant pages
+     * Update dependent pages
      */
     protected function updateDependentPages()
     {

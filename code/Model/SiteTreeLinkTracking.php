@@ -154,7 +154,7 @@ class SiteTreeLinkTracking extends Extension
     }
 
     /**
-     * Scrape the content of a field to detect anly links to local SiteTree pages or files
+     * Scrape the content of a field to detect any links to local SiteTree pages or files
      *
      * @param string $fieldName The name of the field on {@link @owner} to scrape
      * @param bool &$anyBroken Will be flagged to true (by reference) if a link is broken.

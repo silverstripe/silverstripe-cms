@@ -7,14 +7,14 @@ use SilverStripe\Core\Injector\Injectable;
 use SilverStripe\ORM\DataList;
 
 /**
- * Base class for filtering againt SiteTree for certain statuses (e.g. archived or draft only).
+ * Base class for filtering against SiteTree for certain statuses (e.g. archived or draft only).
  */
 abstract class CMSSiteTreeFilter
 {
     use Injectable;
 
     /**
-     * Returns a sorted array of all implementators of CMSSiteTreeFilter, suitable for use in a dropdown.
+     * Returns a sorted array of all implementers of CMSSiteTreeFilter, suitable for use in a dropdown.
      *
      * @return array<string, CMSSiteTreeFilter>
      */

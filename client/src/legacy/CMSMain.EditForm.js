@@ -70,7 +70,7 @@ $.entwine('ss', function($){
 		 *
 		 * Update the related fields if appropriate
 		 * (String) title The new title
-		 * (Stirng) origTitle The original title
+		 * (String) origTitle The original title
 		 */
 		updateRelatedFields: function(title, origTitle) {
 			// Update these fields only if their value was originally the same as the title

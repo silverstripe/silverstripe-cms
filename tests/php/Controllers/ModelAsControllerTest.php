@@ -301,7 +301,7 @@ class ModelAsControllerTest extends FunctionalTest
         Config::modify()->set(SiteTree::class, 'nested_urls', true);
 
         $draft = new SiteTree();
-        $draft->Title = 'Root Leve Draft Page';
+        $draft->Title = 'Root Level Draft Page';
         $draft->URLSegment = 'root';
         $draft->write();
 

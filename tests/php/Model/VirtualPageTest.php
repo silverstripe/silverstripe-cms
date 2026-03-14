@@ -329,7 +329,7 @@ class VirtualPageTest extends FunctionalTest
 
     public function testUnpublishingSourcePageOfAVirtualPageAlsoUnpublishesVirtualPage()
     {
-        // Create page and virutal page
+        // Create page and virtual page
         $p = new SiteTree();
         $p->Title = "source";
         $p->write();
@@ -361,7 +361,7 @@ class VirtualPageTest extends FunctionalTest
 
     public function testDeletingFromLiveSourcePageOfAVirtualPageAlsoUnpublishesVirtualPage()
     {
-        // Create page and virutal page
+        // Create page and virtual page
         $p = new SiteTree();
         $p->Title = "source";
         $p->write();
