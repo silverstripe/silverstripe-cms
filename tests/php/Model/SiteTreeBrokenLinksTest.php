@@ -262,7 +262,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest
 
     public function testRevertToLiveFixesBrokenLinks()
     {
-        // Create page and virutal page
+        // Create page and virtual page
         $page = new SiteTree();
         $page->Title = "source";
         $page->write();

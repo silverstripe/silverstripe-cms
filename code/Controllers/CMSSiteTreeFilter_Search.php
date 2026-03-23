@@ -13,7 +13,7 @@ class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter
     }
 
     /**
-     * Retun an array of maps containing the keys, 'ID' and 'ParentID' for each page to be displayed
+     * Returns an array of maps containing the keys, 'ID' and 'ParentID' for each page to be displayed
      * in the search.
      */
     public function getFilteredPages(DataList $list): DataList

@@ -87,7 +87,7 @@ class ThemeContext implements Context
     public function cleanThemesAfterScenario()
     {
         // Restore any created/modified files.
-        //  - If modified, revert then to original contnet
+        //  - If modified, revert then to original content
         //  - If created, delete them
         if ($this->restoreFiles) {
             foreach ($this->restoreFiles as $file => $origContent) {

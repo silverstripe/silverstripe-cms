@@ -18,7 +18,7 @@ use SilverStripe\View\HTML;
 
 /**
  * Virtual Page creates an instance of a  page, with the same fields that the original page had, but readonly.
- * This allows you can have a page in mulitple places in the site structure, with different children without
+ * This allows you can have a page in multiple places in the site structure, with different children without
  * duplicating the content.
  *
  * Note: This Only duplicates $db fields and not the $has_one etc..

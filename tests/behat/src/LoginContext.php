@@ -28,7 +28,7 @@ class LoginContext extends BehatLoginContext
         $member = $this->generateMemberWithPermission($email, $password, $permCode);
         $canEdit = strstr($negative ?? '', 'not') ? false : true;
         // Flush the SiteConfig cache so that siteconfig behat tests that update a
-        // SiteConfig DataObject will not be referring to a stale verion of itself
+        // SiteConfig DataObject will not be referring to a stale version of itself
         // which can happen because SiteConfig::current_site_config() uses a cached query
         SiteConfig::current_site_config()->flushCache();
         if ($canEdit) {

@@ -1209,7 +1209,7 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
         $record->invokeWithExtensions('updateTreeIconClasses', $iconClasses);
         $titleText = $record->getTreeTitle();
         // Hierarchy::getTreeTitle() will call Convert::raw2xml(), though this may have been
-        // overriden by another method that doesn't call this
+        // overridden by another method that doesn't call this
         // Check to see if it was converted first by calling the xml2raw() to before calling
         // raw2xml() to ensure we don't double convert and end up with "&amp;amp;"
         $wasChanged = Convert::xml2raw($titleText) !== $titleText;
@@ -1419,7 +1419,7 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
 
         $this->extend('updateEditForm', $form);
 
-        // Use custom reqest handler for LeftAndMain requests;
+        // Use custom request handler for LeftAndMain requests;
         // CMS Forms cannot be identified solely by name, but also need ID (and sometimes OtherID)
         $form->setRequestHandler(
             LeftAndMainFormRequestHandler::create($form, [$id])

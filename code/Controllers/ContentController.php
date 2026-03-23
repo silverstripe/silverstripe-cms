@@ -318,12 +318,13 @@ class ContentController extends Controller
             if ($member) {
                 $firstname = Convert::raw2xml($member->FirstName);
                 $surname = Convert::raw2xml($member->Surname);
-                $logInMessage = _t(__CLASS__ . '.LOGGEDINAS', 'Logged in as') . " {$firstname} {$surname} - <a href=\"Security/logout\">" . _t(__CLASS__ . '.LOGOUT', 'Log out') . "</a>";
+                $logoutUrl = Convert::raw2att(Security::logout_url());
+                $logInMessage = _t(__CLASS__ . '.LOGGEDINAS', 'Logged in as') . " {$firstname} {$surname} - <a href=\"{$logoutUrl}\">" . _t(__CLASS__ . '.LOGOUT', 'Log out') . "</a>";
             } else {
                 $logInMessage = sprintf(
                     '%s - <a href="%s">%s</a>',
                     _t(__CLASS__ . '.NOTLOGGEDIN', 'Not logged in'),
-                    Security::config()->login_url,
+                    Convert::raw2att(Security::login_url()),
                     _t(__CLASS__ . '.LOGIN', 'Login') . "</a>"
                 );
             }
