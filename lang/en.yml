@@ -89,6 +89,8 @@ en:
     SEARCHRESULTS: 'Search results'
     SHOW_AS_LIST: 'show as list'
     SITE_PAGE_NAVIGATION: 'Site Page Navigation'
+    TOGGLE_CHILD_PAGES: 'Toggle child pages'
+    TOGGLE_SITE_TREE: 'Toggle site tree'
     TOO_MANY_PAGES: 'Too many pages'
     TOO_MANY_RECORDS: 'Too many records'
     TREE_NO_TITLE: '(no title)'

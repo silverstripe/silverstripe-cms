@@ -599,12 +599,21 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
                 'hasCurrentPage' => $hasCurrentPage,
                 'listViewLink' => $this->LinkListViewChildren($node->ID),
                 'rootTitle' => $this->getCMSTreeTitle(),
+                'toggleSiteTreeLabel' => _t(CMSMain::class . '.TOGGLE_SITE_TREE', 'Toggle site tree'),
+                'toggleChildPagesLabel' => _t(CMSMain::class . '.TOGGLE_CHILD_PAGES', 'Toggle child pages'),
                 'extraClass' => $this->getTreeNodeClasses($node),
                 'Title' => _t(
                     CMSMain::class . '.RECORD_TYPE_TITLE',
                     '(Record type: {type}) {title}',
                     [
                         'type' => $node->i18n_singular_name(),
+                        'title' => $node->Title,
+                    ]
+                ),
+                'ToggleTitle' => _t(
+                    CMSMain::class . '.TOGGLE_CHILD_PAGES',
+                    'Toggle child pages of {title}',
+                    [
                         'title' => $node->Title,
                     ]
                 ),
