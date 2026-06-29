@@ -39,8 +39,6 @@ use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\Versioned\RecursivePublishable;
 use SilverStripe\Versioned\Versioned;
 
-use function Embed\html;
-
 class CMSMainTest extends FunctionalTest
 {
     protected static $fixture_file = 'CMSMainTest.yml';
@@ -942,6 +940,55 @@ class CMSMainTest extends FunctionalTest
         $html = $cmsMain->getRecordTreeMarkup($page);
         $actual = strip_tags($html);
         $this->assertSame($expected, $actual);
+    }
+
+    public static function provideGetListViewBreadcrumbs(): array
+    {
+        return [
+            'plain' => [
+                'parentTitle' => 'About Us',
+                'expected' => '<p class="small cms-list__item-breadcrumbs">About Us/</p>',
+            ],
+            'amp' => [
+                'parentTitle' => 'About & Us',
+                'expected' => '<p class="small cms-list__item-breadcrumbs">About &amp; Us/</p>',
+            ],
+            'script-tag' => [
+                'parentTitle' => '<script>alert(1)</script>',
+                'expected' => '<p class="small cms-list__item-breadcrumbs">'
+                    . '&lt;script&gt;alert(1)&lt;/script&gt;/</p>',
+            ],
+            'double-quote' => [
+                'parentTitle' => 'About " Us',
+                'expected' => '<p class="small cms-list__item-breadcrumbs">About &quot; Us/</p>',
+            ],
+        ];
+    }
+
+    #[DataProvider('provideGetListViewBreadcrumbs')]
+    public function testGetListViewBreadcrumbs(string $parentTitle, string $expected): void
+    {
+        $parent = new SiteTree(['Title' => $parentTitle]);
+        $parent->write();
+        $child = new SiteTree(['Title' => 'Child', 'ParentID' => $parent->ID]);
+        $child->write();
+
+        $controller = new CMSMain();
+        $reflectionMethod = new ReflectionMethod($controller, 'getListViewBreadcrumbs');
+        $this->assertSame($expected, $reflectionMethod->invoke($controller, $child));
+    }
+
+    public function testGetListViewBreadcrumbsNoAncestors(): void
+    {
+        $page = new SiteTree(['Title' => 'Top Level']);
+        $page->write();
+
+        $controller = new CMSMain();
+        $reflectionMethod = new ReflectionMethod($controller, 'getListViewBreadcrumbs');
+        $this->assertSame(
+            '<p class="small cms-list__item-breadcrumbs"></p>',
+            $reflectionMethod->invoke($controller, $page)
+        );
     }
 
     public function testGetArchiveWarningMessage(): void

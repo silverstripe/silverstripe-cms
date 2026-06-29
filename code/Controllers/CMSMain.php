@@ -1646,16 +1646,7 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
                     $this->LinkRecordEdit($item->ID),
                     $this->getRecordTreeMarkup($item) // returns HTML, does its own escaping
                 );
-                $pages = $item->getAncestors();
-                $pageNames = [];
-                foreach ($pages as $page) {
-                    $pageNames[] = $page->MenuTitle ?: $page->Title;
-                }
-                $breadcrumbs = implode('/', $pageNames);
-                if ($breadcrumbs) {
-                    $breadcrumbs .= '/';
-                }
-                return $title . sprintf('<p class="small cms-list__item-breadcrumbs">%s</p>', $breadcrumbs);
+                return $title . $this->getListViewBreadcrumbs($item);
             }
         ]);
 
@@ -1683,6 +1674,26 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
 
         $listview->disableSecurityToken();
         return $listview;
+    }
+
+    /**
+     * Build the escaped breadcrumb HTML fragment shown beneath a record's title in the list view.
+     *
+     * The ancestor titles are user-supplied content, so they must be escaped before being placed
+     * into the HTMLFragment to avoid XSS.
+     */
+    private function getListViewBreadcrumbs(DataObject $item): string
+    {
+        /** @var DataObject&Hierarchy $item */
+        $pageNames = [];
+        foreach ($item->getAncestors() as $page) {
+            $pageNames[] = Convert::raw2xml($page->MenuTitle ?: $page->Title);
+        }
+        $breadcrumbs = implode('/', $pageNames);
+        if ($breadcrumbs) {
+            $breadcrumbs .= '/';
+        }
+        return sprintf('<p class="small cms-list__item-breadcrumbs">%s</p>', $breadcrumbs);
     }
 
     /**
