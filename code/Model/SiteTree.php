@@ -1206,13 +1206,10 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     }
 
     /**
-     * Collate selected descendants of this page.
+     * Collate all descendants of this page into the $collator array.
      *
-     * {@link $condition} will be evaluated on each descendant, and if it is succeeds, that item will be added to the
-     * $collator array.
-     *
-     * @param string $condition The PHP condition to be evaluated. The page will be called $item
-     * @param array  $collator  An array, passed by reference, to collect all of the matching descendants.
+     * @param string $condition @deprecated - this parameter is unused and will be removed in a future major release
+     * @param array  $collator  An array, passed by reference, to collect all of the descendants.
      * @return bool
      */
     public function collateDescendants($condition, &$collator)
@@ -1226,9 +1223,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
         $children = $this->Children();
         if ($children) {
             foreach ($children as $item) {
-                if (eval("return $condition;")) {
-                    $collator[] = $item;
-                }
+                $collator[] = $item;
                 $item->collateDescendants($condition, $collator);
             }
             return true;
