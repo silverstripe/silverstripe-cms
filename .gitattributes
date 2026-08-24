@@ -12,6 +12,7 @@
 /.eslintignore export-ignore
 /.eslintrc.js
 /.sass-lint.yml
+/.yarnrc.yml export-ignore
 /yarn.lock export-ignore
 
 # Hide diffs
