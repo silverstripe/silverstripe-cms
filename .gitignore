@@ -3,3 +3,4 @@ silverstripe-cache
 vendor
 /**/*.js.map
 /**/*.css.map
+/.yarn/
