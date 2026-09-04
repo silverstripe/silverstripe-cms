@@ -95,3 +95,21 @@ Feature: Create a page
     And I should see a "form#Form_AddForm" element
     And I should see "This field failed validation"
     Then I should not see an edit page form
+
+  @javascript
+  Scenario: The parent is retained when adding a page from list view
+    Given a "page" "MyChildPage" with "Parent"="=>Page.MyPage"
+    When I am logged in as a member of "EDITOR" group
+    And I go to "/admin/pages"
+    And I click on the ".page-view-link[data-view='listview']" element
+    And I wait for 2 seconds
+    And I click on the ".list-children-link" element
+    And I wait for 2 seconds
+    And I press the "Add new" button
+    And I wait for 2 seconds
+    Then the "Under another page" checkbox should be checked
+    And I should see "MyPage" in the "#Form_AddForm_ParentID_Holder .treedropdownfield__value-container" element
+    # The chosen view is remembered in localStorage, so switch back to avoid leaking into other scenarios
+    When I go to "/admin/pages"
+    And I click on the ".page-view-link[data-view='treeview']" element
+    And I wait for 2 seconds
