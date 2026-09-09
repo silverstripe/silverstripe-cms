@@ -37,7 +37,11 @@ $.entwine('ss', function($) {
 
 			// Transfer current value to holder
 			var $link = this.find('.URL-link');
-			$link.attr('href', encodeURI(url + field.data('suffix'))).text(previewUrl);
+			var suffix = field.data('suffix');
+			if(typeof suffix === 'undefined') {
+				suffix = '';
+			}
+			$link.attr('href', encodeURI(url + suffix)).text(previewUrl);
 			$link.attr('aria-label', i18n.inject(
 				i18n._t(
 					'SilverStripe\\CMS\\Forms\\SiteTreeURLSegmentField.ViewDraftFor',
