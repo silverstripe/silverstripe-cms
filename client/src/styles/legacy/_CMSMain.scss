@@ -105,9 +105,14 @@
       margin-right: -5px;
     }
 
-    &.view-controls--treeview .font-icon-tree,
-    &.view-controls--listview .font-icon-list {
-      display: none;
+    &.view-controls--treeview a[data-view="treeview"],
+    &.view-controls--listview a[data-view="listview"] {
+      padding: 0;
+
+      .font-icon-tree,
+      .font-icon-list {
+        display: none;
+      }
     }
   }
 
