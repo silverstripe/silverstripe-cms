@@ -320,6 +320,43 @@ class ModelAsControllerTest extends FunctionalTest
         );
     }
 
+    /**
+     * A page that was moved out from under a parent should still redirect correctly
+     * even after that former parent has been deleted (unpublished & archived).
+     *
+     * NOTE: This test requires nested_urls
+     */
+    public function testRedirectsMovedPageWhenFormerParentIsDeleted()
+    {
+        $parent = new SiteTree();
+        $parent->Title = 'a';
+        $parent->URLSegment = 'a';
+        $parent->write();
+        $parent->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
+
+        $child = new SiteTree();
+        $child->Title = 'b';
+        $child->URLSegment = 'b';
+        $child->ParentID = $parent->ID;
+        $child->write();
+        $child->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
+
+        // Move the child page to the top level and publish
+        $child->ParentID = 0;
+        $child->write();
+        $child->copyVersionToStage(Versioned::DRAFT, Versioned::LIVE);
+
+        // Delete the former parent
+        $parent->doArchive();
+
+        $response = $this->get('a/b');
+        $this->assertEquals($response->getStatusCode(), 301);
+        $this->assertEquals(
+            Controller::join_links(Director::baseURL() . 'b'),
+            $response->getHeader('Location')
+        );
+    }
+
     public function testAllowMultibyte()
     {
         Config::modify()->set(URLSegmentFilter::class, 'default_allow_multibyte', true);
