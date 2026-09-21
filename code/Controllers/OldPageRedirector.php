@@ -88,6 +88,12 @@ class OldPageRedirector extends Extension
             $record = $pages->first();
             if ($record) {
                 $page = SiteTree::get()->byID($record->ID);
+                if (!$page && count($params ?? [])) {
+                    // The page itself no longer exists (e.g. it was deleted/archived), but there are
+                    // more URL segments to resolve. Use the historical record as a virtual parent so
+                    // we can still find a live child page that was moved out from under it.
+                    $page = $record;
+                }
                 $redirect = true;
             }
         }
