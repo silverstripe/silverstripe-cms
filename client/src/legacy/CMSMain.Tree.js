@@ -51,8 +51,10 @@ $.entwine('ss.tree', function($) {
 
     getTreeConfig: function() {
       var self = this,
-          config = this._super(),
-          hints = this.getHints();
+          config = this._super();
+      if (this.hasClass('no-context-menu')) {
+        return config;
+      }
       config.plugins.push('contextmenu');
       config.contextmenu = {
         'items': function(node) {
