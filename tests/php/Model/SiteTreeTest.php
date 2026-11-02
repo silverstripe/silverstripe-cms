@@ -1968,4 +1968,30 @@ class SiteTreeTest extends SapphireTest
         $this->assertEquals('heading1', $anchors[0]);
         $this->assertEquals('heading2', $anchors[1]);
     }
+
+    public function testCollateDescendantsDoesNotEvaluateCondition()
+    {
+        $parent = new SiteTree();
+        $parent->Title = 'Collate parent';
+        $parent->write();
+        $child = new SiteTree();
+        $child->Title = 'Collate child';
+        $child->ParentID = $parent->ID;
+        $child->write();
+
+        $marker = TEMP_PATH . '/sitetree-collate-descendants-rce.txt';
+        if (file_exists($marker)) {
+            unlink($marker);
+        }
+        // Mirrors an injected template method-call argument: a string that only causes harm if eval()'d as PHP.
+        $condition = "file_put_contents('" . $marker . "', 'pwned') !== false";
+        $collator = [];
+        $parent->collateDescendants($condition, $collator);
+
+        $this->assertFileDoesNotExist($marker);
+        $this->assertCount(1, $collator);
+        if (file_exists($marker)) {
+            unlink($marker);
+        }
+    }
 }
