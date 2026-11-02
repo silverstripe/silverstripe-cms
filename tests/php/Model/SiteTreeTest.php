@@ -1382,7 +1382,7 @@ class SiteTreeTest extends SapphireTest
         // Test with title
         $meta = $page->MetaTags();
         $charset = Config::inst()->get(ContentNegotiator::class, 'encoding');
-        $this->assertStringContainsString('<meta http-equiv="Content-Type" content="text/html; charset=' . $charset . '"', $meta);
+        $this->assertStringStartsWith('<meta charset="' . $charset . '"', $meta);
         $this->assertStringContainsString('<meta name="description" content="The &lt;br /&gt; and &lt;br&gt; tags"', $meta);
         $this->assertStringContainsString('<link rel="canonical" href="http://www.mysite.com/html-and-xml"', $meta);
         $this->assertStringContainsString('<meta name="x-page-id" content="' . $page->ID.'"', $meta);
@@ -1412,6 +1412,11 @@ class SiteTreeTest extends SapphireTest
         $page->setVersionProvider($mockVersionProvider);
 
         $expected = [
+            'contentType' => [
+                'attributes' => [
+                    'charset' => $charset,
+                ],
+            ],
             'title' => [
                 'tag' => 'title',
                 'content' => "HTML &amp; XML",
@@ -1424,12 +1429,6 @@ class SiteTreeTest extends SapphireTest
                         Config::inst()->get(SiteTree::class, 'meta_generator'),
                         '4.50'
                     )
-                ],
-            ],
-            'contentType' => [
-                'attributes' => [
-                    'http-equiv' => 'Content-Type',
-                    'content' => "text/html; charset=$charset",
                 ],
             ],
             'description' => [

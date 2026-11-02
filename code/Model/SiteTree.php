@@ -1254,6 +1254,13 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
     {
         $tags = [];
 
+        // HTML5 requires the charset declaration within the first 1024 bytes of the document
+        $tags['contentType'] = [
+            'attributes' => [
+                'charset' => ContentNegotiator::config()->uninherited('encoding'),
+            ],
+        ];
+
         $tags['title'] = [
             'tag' => 'title',
             'content' => $this->obj('Title')?->forTemplate()
@@ -1269,13 +1276,6 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
             ];
         }
 
-        $charset = ContentNegotiator::config()->uninherited('encoding');
-        $tags['contentType'] = [
-            'attributes' => [
-                'http-equiv' => 'Content-Type',
-                'content' => 'text/html; charset=' . $charset,
-            ],
-        ];
         if ($this->MetaDescription) {
             $tags['description'] = [
                 'attributes' => [
