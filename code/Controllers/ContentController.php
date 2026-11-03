@@ -169,10 +169,13 @@ class ContentController extends Controller
             return;
         }
 
-        // Check page permissions
-        if ($this->dataRecord && $this->URLSegment != 'Security' && !$this->dataRecord->canView()) {
-            Security::permissionFailure($this);
-            return;
+        // Security::getResponseController() renders the login form through a non-persisted holder whose URLSegment is "Security", and only that holder may bypass canView().
+        if ($this->dataRecord) {
+            $isSecurityLoginHolder = $this->URLSegment === 'Security' && !$this->dataRecord->isInDB();
+            if (!$isSecurityLoginHolder && !$this->dataRecord->canView()) {
+                Security::permissionFailure($this);
+                return;
+            }
         }
     }
 
