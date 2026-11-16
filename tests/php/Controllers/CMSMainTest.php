@@ -942,6 +942,18 @@ class CMSMainTest extends FunctionalTest
         $this->assertSame($expected, $actual);
     }
 
+    public function testGetRecordTreeMarkupPutsTheIconClassesOnTheIcon(): void
+    {
+        $page = new SiteTree(['Title' => 'Home', 'URLSegment' => 'home']);
+
+        $html = (new CMSMain())->getRecordTreeMarkup($page);
+
+        $this->assertStringStartsWith(
+            '<span class="jstree-recordicon record-icon font-icon-page class-SilverStripe_CMS_Model_SiteTree homepage"',
+            $html
+        );
+    }
+
     public static function provideGetListViewBreadcrumbs(): array
     {
         return [
