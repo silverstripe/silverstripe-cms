@@ -506,7 +506,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
 
     /**
      * Update CSS classes for the icon used in the CMS site tree
-     * {@see CMSMain::getRecordTreeIconClasses}
+     * {@see CMSMain::getRecordTreeMarkup}
      */
     public function updateTreeIconClasses(array &$classes): void
     {

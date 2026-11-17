@@ -1189,24 +1189,6 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
     }
 
     /**
-     * Get the CSS classes for the icon of a record in the site tree.
-     *
-     * getRecordTreeMarkup() puts these classes on the icon in the legacy tree. The React tree consumes these classes
-     * through CMSMainTreeController. The record and its extensions change these classes in updateTreeIconClasses().
-     */
-    public function getRecordTreeIconClasses(DataObject $record): array
-    {
-        $iconClasses = [
-            'jstree-recordicon',
-            'record-icon',
-            $this->getRecordIconCssClass($record),
-            'class-' . Convert::raw2htmlid(get_class($record)),
-        ];
-        $record->invokeWithExtensions('updateTreeIconClasses', $iconClasses);
-        return $iconClasses;
-    }
-
-    /**
      * Get the HTML markup to represent the record in a jstree structure.
      *
      * Returns three <span> html elements, an empty <span> with the class 'jstree-recordicon' in
@@ -1218,7 +1200,13 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
         /** @var DataObject&Hierarchy $record */
         $children = $this->getCreatableSubClasses($record);
         $flags = $record->getStatusFlags();
-        $iconClasses = $this->getRecordTreeIconClasses($record);
+        $iconClasses = [
+            'jstree-recordicon',
+            'record-icon',
+            $this->getRecordIconCssClass($record),
+            'class-' . Convert::raw2htmlid(get_class($record)),
+        ];
+        $record->invokeWithExtensions('updateTreeIconClasses', $iconClasses);
         $titleText = $record->getTreeTitle();
         // Hierarchy::getTreeTitle() will call Convert::raw2xml(), though this may have been
         // overridden by another method that doesn't call this
