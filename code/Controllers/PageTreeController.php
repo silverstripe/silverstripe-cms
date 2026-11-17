@@ -30,20 +30,6 @@ class PageTreeController extends AdminController
 {
     private static string $url_segment = 'pages/tree';
 
-    /**
-     * A priority above CMSMain, so a request to admin/pages/tree reaches this controller and not a CMSMain action.
-     */
-    private static int $url_priority = 43;
-
-    /**
-     * The permission code of CMSMain.
-     *
-     * canView() checks access through CMSMain and does not read this value. Without this value,
-     * getRequiredPermissions() returns a code for this class that no member holds. Keep this value the same as
-     * CMSMain::$required_permission_codes.
-     */
-    private static string|array $required_permission_codes = 'CMS_ACCESS_CMSMain';
-
     private static array $url_handlers = [
         'GET children/$ParentID' => 'apiReadChildren',
         'GET path/$ID' => 'apiReadPath',
