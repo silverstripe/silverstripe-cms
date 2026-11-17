@@ -7,5 +7,5 @@ use SilverStripe\Dev\TestOnly;
 
 class NoChildrenPage extends SiteTree implements TestOnly
 {
-    private static $allowed_children = 'none';
+    private static string $allowed_children = 'none';
 }

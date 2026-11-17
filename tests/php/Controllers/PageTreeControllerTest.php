@@ -59,7 +59,7 @@ class PageTreeControllerTest extends FunctionalTest
 
         $home = $this->findNode($nodes, 'home');
         $this->assertSame(
-            'jstree-recordicon record-icon font-icon-page class-SilverStripe_CMS_Model_SiteTree homepage',
+            'record-icon font-icon-page class-SilverStripe_CMS_Model_SiteTree homepage',
             $home['iconClasses']
         );
         $this->assertNull($home['listViewUrl']);
@@ -103,17 +103,17 @@ class PageTreeControllerTest extends FunctionalTest
     public static function provideIndex(): array
     {
         return [
-            'no action' => ['admin/pages/tree'],
-            'index action' => ['admin/pages/tree/index'],
+            'no action' => ['admin/pages/tree', 404],
+            'index action' => ['admin/pages/tree/index', 400],
         ];
     }
 
     #[DataProvider('provideIndex')]
-    public function testIndex(string $url): void
+    public function testIndex(string $url, int $expectedCode): void
     {
         $this->logInWithPermission('CMS_ACCESS_CMSMain');
 
-        $this->assertJsonError(404, $this->ajaxGet($url));
+        $this->assertJsonError($expectedCode, $this->ajaxGet($url));
     }
 
     public function testApiReadChildrenLeavesOutHiddenClasses(): void
@@ -150,10 +150,12 @@ class PageTreeControllerTest extends FunctionalTest
             'children of a parent that is not a number' => ['children/abc', 400],
             'children of a negative number' => ['children/-1', 400],
             'children without a parent' => ['children', 400],
-            'path of an unknown record' => ['path/999999', 404],
-            'path of the top level' => ['path/0', 400],
-            'path of a record that is not a number' => ['path/abc', 400],
-            'path without a record' => ['path', 400],
+            'children action URL' => ['apiReadChildren/0', 400],
+            'unknown record' => ['999999', 404],
+            'top level' => ['0', 404],
+            'record that is not a number' => ['abc', 400],
+            'negative number' => ['-1', 400],
+            'read action URL' => ['apiRead/1', 400],
         ];
     }
 
@@ -165,51 +167,50 @@ class PageTreeControllerTest extends FunctionalTest
         $this->assertJsonError($expectedCode, $this->ajaxGet('admin/pages/tree/' . $route));
     }
 
-    public function testApiReadPath(): void
+    public function testApiRead(): void
     {
         $this->logInWithPermission('CMS_ACCESS_CMSMain');
 
         $grandchildID = $this->idFromFixture(SiteTree::class, 'grandchild');
         $parentID = $this->idFromFixture(SiteTree::class, 'parent');
 
-        $this->assertSame(
-            ['path' => $this->idsOf(['parent', 'child'])],
-            $this->decodeSuccess($this->ajaxGet('admin/pages/tree/path/' . $grandchildID))
-        );
-        $this->assertSame(['path' => []], $this->decodeSuccess($this->ajaxGet('admin/pages/tree/path/' . $parentID)));
+        $grandchild = $this->decodeSuccess($this->ajaxGet('admin/pages/tree/' . $grandchildID));
+        $this->assertSame($this->idsOf(['parent', 'child']), $grandchild['path']);
+        $children = $this->getNodes('admin/pages/tree/children/' . $this->idFromFixture(SiteTree::class, 'child'));
+        $this->assertSame($this->findNode($children, 'grandchild'), $grandchild['node']);
+
+        $parent = $this->decodeSuccess($this->ajaxGet('admin/pages/tree/' . $parentID));
+        $this->assertSame([], $parent['path']);
+        $topLevel = $this->getNodes('admin/pages/tree/children/0');
+        $this->assertSame($this->findNode($topLevel, 'parent'), $parent['node']);
     }
 
-    public function testApiReadPathOfAPageTheMemberCannotView(): void
+    public function testApiReadOfAPageTheMemberCannotView(): void
     {
         $this->logInWithPermission('CMS_ACCESS_CMSMain');
 
         $cannotViewID = $this->idFromFixture(SiteTree::class, 'cannotView');
-        $this->assertSame(
-            ['path' => $this->idsOf(['parent', 'child'])],
-            $this->decodeSuccess($this->ajaxGet('admin/pages/tree/path/' . $cannotViewID))
-        );
+        $cannotView = $this->decodeSuccess($this->ajaxGet('admin/pages/tree/' . $cannotViewID));
+        $this->assertSame($this->idsOf(['parent', 'child']), $cannotView['path']);
+        $this->assertFalse($cannotView['node']['canView']);
     }
 
     public static function provideApiReadOnlyAllowsGet(): array
     {
         return [
-            'children route' => ['admin/pages/tree/children/0', null],
-            'children action' => ['admin/pages/tree/apiReadChildren/0', 405],
-            'path action' => ['admin/pages/tree/apiReadPath/1', 405],
+            'children route' => ['admin/pages/tree/children/0'],
+            'record route' => ['admin/pages/tree/1'],
+            'children action URL' => ['admin/pages/tree/apiReadChildren/0'],
+            'read action URL' => ['admin/pages/tree/apiRead/1'],
         ];
     }
 
     #[DataProvider('provideApiReadOnlyAllowsGet')]
-    public function testApiReadOnlyAllowsGet(string $url, ?int $expectedCode): void
+    public function testApiReadOnlyAllowsGet(string $url): void
     {
         $this->logInWithPermission('CMS_ACCESS_CMSMain');
 
-        $response = $this->post($url, []);
-        $this->assertNotSame(200, $response->getStatusCode());
-        $this->assertStringNotContainsString('"treeTitle"', (string) $response->getBody());
-        if ($expectedCode) {
-            $this->assertJsonError($expectedCode, $response);
-        }
+        $this->assertJsonError(405, $this->post($url, []));
     }
 
     public function testJsonErrorRunsTheHooks(): void
@@ -218,7 +219,7 @@ class PageTreeControllerTest extends FunctionalTest
         $this->logInWithPermission('CMS_ACCESS_CMSMain');
 
         $this->assertSame('404', $this->ajaxGet('admin/pages/tree/children/999999')->getHeader('X-Tree-Error'));
-        $this->assertSame('400', $this->ajaxGet('admin/pages/tree/path/abc')->getHeader('X-Tree-Error'));
+        $this->assertSame('400', $this->ajaxGet('admin/pages/tree/abc')->getHeader('X-Tree-Error'));
     }
 
     public function testApiReadChildrenStatusFlags(): void
@@ -280,11 +281,6 @@ class PageTreeControllerTest extends FunctionalTest
             {
                 return parent::getTreeNodeClasses($node) . ' node-from-section';
             }
-
-            public function getRecordTreeIconClasses(DataObject $record): array
-            {
-                return [...parent::getRecordTreeIconClasses($record), 'icon-from-section'];
-            }
         };
         Injector::inst()->load([CMSMain::class => ['class' => get_class($section)]]);
         $this->logInWithPermission('CMS_ACCESS_CMSMain');
@@ -292,7 +288,6 @@ class PageTreeControllerTest extends FunctionalTest
         $home = $this->findNode($this->getNodes('admin/pages/tree/children/0'), 'home');
 
         $this->assertContains('node-from-section', explode(' ', $home['classes']));
-        $this->assertContains('icon-from-section', explode(' ', $home['iconClasses']));
     }
 
     public function testApiReadChildrenCanDuplicateAtTheTopLevel(): void
@@ -324,6 +319,7 @@ class PageTreeControllerTest extends FunctionalTest
         $timeline = array_column($nodes, null, 'id')[$timelineID];
         $this->assertTrue($timeline['canEdit']);
         $this->assertFalse($timeline['canDuplicate'], 'A page under a parent the member cannot edit');
+        $this->assertSame($timeline, $this->decodeSuccess($this->ajaxGet('admin/pages/tree/' . $timelineID))['node']);
         $home = $this->findNode($this->getNodes('admin/pages/tree/children/0'), 'home');
         $this->assertTrue($home['canDuplicate']);
 
