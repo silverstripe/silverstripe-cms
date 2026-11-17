@@ -79,8 +79,9 @@ class PageTreeController extends AdminController
         $this->requireGetRequest($request);
         /** @var DataObject&Hierarchy $record */
         $record = $this->getRecordByID($this->getRequestID($request));
-        $parent = DataObject::get($this->getModelClass())->byID($record->ParentID) ?? $this->getModelClass()::create();
-        $ancestorIDs = array_map('intval', $record->getAncestors()->column('ID'));
+        $ancestors = $record->getAncestors();
+        $parent = $ancestors->first() ?? $this->getModelClass()::create();
+        $ancestorIDs = array_map('intval', $ancestors->column('ID'));
         return $this->jsonSuccess(200, [
             'node' => $this->getTreeNodeData($record, $parent),
             'path' => array_reverse($ancestorIDs),
