@@ -1,6 +1,6 @@
 <?php
 
-namespace SilverStripe\CMS\Tests\Controllers\CMSMainTreeControllerTest;
+namespace SilverStripe\CMS\Tests\Controllers\PageTreeControllerTest;
 
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Dev\TestOnly;

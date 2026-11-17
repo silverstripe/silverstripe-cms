@@ -26,7 +26,7 @@ use SilverStripe\ORM\Hierarchy\Hierarchy;
  * @internal The React tree view in admin is the only supported client. The routes and the responses can change in a
  * minor release.
  */
-class CMSMainTreeController extends AdminController
+class PageTreeController extends AdminController
 {
     private static string $url_segment = 'pages/tree';
 

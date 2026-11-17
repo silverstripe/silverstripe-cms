@@ -5,14 +5,14 @@ namespace SilverStripe\CMS\Tests\Controllers;
 use PHPUnit\Framework\Attributes\DataProvider;
 use ReflectionProperty;
 use SilverStripe\CMS\Controllers\CMSMain;
-use SilverStripe\CMS\Controllers\CMSMainTreeController;
+use SilverStripe\CMS\Controllers\PageTreeController;
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\CMS\Tests\Controllers\CMSMainTreeControllerTest\DenyAccessExtension;
-use SilverStripe\CMS\Tests\Controllers\CMSMainTreeControllerTest\EmptyTreeTitlePage;
-use SilverStripe\CMS\Tests\Controllers\CMSMainTreeControllerTest\HiddenFromTreePage;
-use SilverStripe\CMS\Tests\Controllers\CMSMainTreeControllerTest\JsonErrorExtension;
-use SilverStripe\CMS\Tests\Controllers\CMSMainTreeControllerTest\NoChildrenPage;
-use SilverStripe\CMS\Tests\Controllers\CMSMainTreeControllerTest\TreeNodeDataExtension;
+use SilverStripe\CMS\Tests\Controllers\PageTreeControllerTest\DenyAccessExtension;
+use SilverStripe\CMS\Tests\Controllers\PageTreeControllerTest\EmptyTreeTitlePage;
+use SilverStripe\CMS\Tests\Controllers\PageTreeControllerTest\HiddenFromTreePage;
+use SilverStripe\CMS\Tests\Controllers\PageTreeControllerTest\JsonErrorExtension;
+use SilverStripe\CMS\Tests\Controllers\PageTreeControllerTest\NoChildrenPage;
+use SilverStripe\CMS\Tests\Controllers\PageTreeControllerTest\TreeNodeDataExtension;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Injector\Injector;
@@ -22,9 +22,9 @@ use SilverStripe\ORM\Hierarchy\Hierarchy;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\Versioned\Versioned;
 
-class CMSMainTreeControllerTest extends FunctionalTest
+class PageTreeControllerTest extends FunctionalTest
 {
-    protected static $fixture_file = 'CMSMainTreeControllerTest.yml';
+    protected static $fixture_file = 'PageTreeControllerTest.yml';
 
     protected static $extra_dataobjects = [
         NoChildrenPage::class,
@@ -214,7 +214,7 @@ class CMSMainTreeControllerTest extends FunctionalTest
 
     public function testJsonErrorRunsTheHooks(): void
     {
-        CMSMainTreeController::add_extension(JsonErrorExtension::class);
+        PageTreeController::add_extension(JsonErrorExtension::class);
         $this->logInWithPermission('CMS_ACCESS_CMSMain');
 
         $this->assertSame('404', $this->ajaxGet('admin/pages/tree/children/999999')->getHeader('X-Tree-Error'));
@@ -265,7 +265,7 @@ class CMSMainTreeControllerTest extends FunctionalTest
 
     public function testApiReadChildrenUpdateTreeNodeDataHookSeesThePageFields(): void
     {
-        CMSMainTreeController::add_extension(TreeNodeDataExtension::class);
+        PageTreeController::add_extension(TreeNodeDataExtension::class);
         $this->logInWithPermission('CMS_ACCESS_CMSMain');
 
         $parentPage = $this->findNode($this->getNodes('admin/pages/tree/children/0'), 'parent');
