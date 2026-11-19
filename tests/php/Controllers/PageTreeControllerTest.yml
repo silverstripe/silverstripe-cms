@@ -1,0 +1,49 @@
+SilverStripe\Security\Group:
+  viewerGroup:
+    Title: Viewer group
+SilverStripe\CMS\Model\SiteTree:
+  home:
+    Title: Home
+    Sort: 1
+  parent:
+    Title: Parent
+    Sort: 2
+  child:
+    Title: Child
+    Parent: =>SilverStripe\CMS\Model\SiteTree.parent
+  grandchild:
+    Title: Grandchild
+    Parent: =>SilverStripe\CMS\Model\SiteTree.child
+    Sort: 1
+  cannotView:
+    Title: Cannot view
+    Parent: =>SilverStripe\CMS\Model\SiteTree.child
+    Sort: 2
+    CanViewType: OnlyTheseUsers
+    ViewerGroups: =>SilverStripe\Security\Group.viewerGroup
+    CanEditType: OnlyTheseUsers
+  viewableUnderCannotView:
+    Title: Viewable under cannot view
+    Parent: =>SilverStripe\CMS\Model\SiteTree.cannotView
+    Sort: 1
+    CanViewType: Anyone
+  cannotEdit:
+    Title: Cannot edit
+    Parent: =>SilverStripe\CMS\Model\SiteTree.parent
+    CanEditType: OnlyTheseUsers
+  limitedParent:
+    Title: Limited parent
+    Sort: 3
+  limitedChild1:
+    Title: Limited child 1
+    Parent: =>SilverStripe\CMS\Model\SiteTree.limitedParent
+  limitedChild2:
+    Title: Limited child 2
+    Parent: =>SilverStripe\CMS\Model\SiteTree.limitedParent
+  limitedChild3:
+    Title: Limited child 3
+    Parent: =>SilverStripe\CMS\Model\SiteTree.limitedParent
+  menuTitle:
+    Title: Title
+    MenuTitle: Menu title
+    Sort: 4
