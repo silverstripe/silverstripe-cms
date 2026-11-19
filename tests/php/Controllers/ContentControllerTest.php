@@ -11,6 +11,7 @@ use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\FunctionalTest;
+use SilverStripe\ORM\DB;
 use SilverStripe\Versioned\Versioned;
 
 class ContentControllerTest extends FunctionalTest
@@ -155,6 +156,36 @@ class ContentControllerTest extends FunctionalTest
         );
     }
 
+
+    /**
+     * A persisted, view-restricted page whose stored URLSegment is "Security" must still enforce
+     * canView() for an anonymous visitor. Only the synthetic login-form holder page may bypass it.
+     */
+    public function testRestrictedPageWithSecuritySegmentEnforcesCanView()
+    {
+        $this->autoFollowRedirection = false;
+        $this->logOut();
+        Config::modify()->set(SiteTree::class, 'nested_urls', true);
+        $parent = new SiteTree();
+        $parent->Title = 'Restricted parent';
+        $parent->URLSegment = 'restricted-parent';
+        $parent->CanViewType = 'Anyone';
+        $parent->write();
+        $parent->publishRecursive();
+        $child = new SiteTree();
+        $child->Title = 'Restricted child';
+        $child->URLSegment = 'restricted-child';
+        $child->CanViewType = 'LoggedInUsers';
+        $child->Content = 'RESTRICTED_PROBE_CONTENT';
+        $child->ParentID = $parent->ID;
+        $child->write();
+        $child->publishRecursive();
+        DB::prepared_query('UPDATE "SiteTree" SET "URLSegment" = ? WHERE "ID" = ?', ['Security', $child->ID]);
+        DB::prepared_query('UPDATE "SiteTree_Live" SET "URLSegment" = ? WHERE "ID" = ?', ['Security', $child->ID]);
+        $response = $this->get('restricted-parent/Security');
+        $this->assertEquals(302, $response->getStatusCode());
+        $this->assertStringNotContainsString('RESTRICTED_PROBE_CONTENT', $response->getBody() ?? '');
+    }
 
     /**
      * Tests that {@link ContentController::getViewer()} chooses the correct templates.
