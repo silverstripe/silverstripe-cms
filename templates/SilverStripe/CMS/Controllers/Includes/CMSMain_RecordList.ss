@@ -9,6 +9,7 @@
     <% if $TreeIsFiltered %>
         <% include SilverStripe\\CMS\\Controllers\\CMSMain_ListView %>
     <% else %>
-        <%-- Lazy-loaded via ajax --%>
+        <%-- CMSMain.js loads the list view in place of this tree view when the member chooses the list view. --%>
+        <% include SilverStripe\\CMS\\Controllers\\CMSMain_TreeView %>
     <% end_if %>
 </div>

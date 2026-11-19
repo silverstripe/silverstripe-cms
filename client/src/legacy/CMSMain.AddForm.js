@@ -208,6 +208,9 @@ $.entwine('ss', function($){
       if(tree.is(':visible')) {
         var selected = tree.jstree('get_selected');
         parentId = selected ? $(selected[0]).data('id') : null;
+      } else if ($('.cms-tree-view').length) {
+        // The React tree highlights the page in the edit form, so that page is the parent.
+        parentId = parseInt($('.cms-edit-form :input[name=ID]').val(), 10) || 0;
       } else {
         // The GridField is named after the model being managed, so match on the state suffix only
         var state = list.find('input[name$="[GridState]"]').val();
