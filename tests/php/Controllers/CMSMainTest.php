@@ -392,6 +392,38 @@ class CMSMainTest extends FunctionalTest
         );
     }
 
+    public static function provideTreeViewMountElement(): array
+    {
+        return [
+            'section with the tree view' => ['admin/pages'],
+            'deferred tree view' => ['admin/pages/treeview'],
+            'edit form side panel' => ['admin/pages/edit/show/%s'],
+        ];
+    }
+
+    #[DataProvider('provideTreeViewMountElement')]
+    public function testTreeViewMountElement(string $url): void
+    {
+        $page = $this->objFromFixture(SiteTree::class, 'page31');
+        $this->logInAs('admin');
+
+        $response = $this->get(sprintf($url, $page->ID));
+        $parser = new CSSContentParser($response->getBody());
+        // CSSContentParser::getBySelector() also matches a class that only starts with the name.
+        $mounts = $parser->getByXpath(
+            "//*[contains(concat(' ', normalize-space(@class), ' '), ' cms-tree-view ')]"
+        );
+
+        $this->assertCount(1, $mounts);
+        $attributes = [];
+        foreach ($mounts[0]->attributes() as $name => $value) {
+            $attributes[$name] = (string) $value;
+        }
+        $this->assertSame(SiteTree::class, $attributes['data-tree-id']);
+        $this->assertSame(SiteConfig::current_site_config()->Title, $attributes['data-title-row-text']);
+        $this->assertSame('Site Page Navigation', $attributes['data-label']);
+    }
+
     public function testBreadcrumbsHaveStatusFlags()
     {
         $page = new TestStatusFlagsPage();
