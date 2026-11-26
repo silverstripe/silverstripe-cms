@@ -44,36 +44,17 @@ $.entwine('ss', function ($) {
         // Always use treeview when in page edit mode
         viewType = VIEW_TYPE_TREE;
       }
-      let url = this.data(`url-${viewType}`);
+      const url = this.data(`url-${viewType}`);
 
-      let clearFiltered = localStorage.getItem('ss.pages-view-filtered');
-      if (typeof clearFiltered === 'string' && clearFiltered.toLowerCase() === 'false') {
-        // localStorage save `false` as a string
-        clearFiltered = false;
-      }
-
-      localStorage.setItem('ss.pages-view-filtered', false);
-
-      this.data('deferredNoCache', (clearFiltered || viewType === VIEW_TYPE_LIST));
-      
-      // Append current page ID to treeview URL if in page edit mode
+      // This panel skips `window._panelDeferredCache`. Saved HTML cannot restore a React root.
+      this.data('deferredNoCache', true);
+      // CMSMain_RecordList.ss already holds the tree view, so the tree view needs no fetch from `_super()`.
       if (viewType === VIEW_TYPE_TREE) {
-        const pageID = $('.cms-edit-form input[name=ID]').val();
-        if (pageID) {
-          url = `${url}/${pageID}`;
-        }
+        return;
       }
-      
+
       this.data('url', url + location.search);
       this._super();
-    }
-  });
-
-  $('.js-injector-boot .search-holder--cms').entwine({
-    search(data) {
-      localStorage.setItem('ss.pages-view-filtered', true)
-
-      this._super(data);
     }
   });
 
