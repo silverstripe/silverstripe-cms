@@ -54,6 +54,7 @@ use SilverStripe\ORM\HiddenClass;
 use SilverStripe\ORM\Hierarchy\Hierarchy;
 use SilverStripe\ORM\Hierarchy\MarkedSet;
 use SilverStripe\Model\List\SS_List;
+use SilverStripe\Core\Validation\ValidationException;
 use SilverStripe\Core\Validation\ValidationResult;
 use SilverStripe\Security\InheritedPermissions;
 use SilverStripe\Security\PermissionProvider;
@@ -1777,8 +1778,11 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
         // Check publishing permissions
         $doPublish = !empty($data['publish']);
         $isVersioned = $record->hasExtension(Versioned::class);
-        if ($isVersioned && $doPublish && !$record->canPublish()) {
-            return Security::permissionFailure($this);
+        if ($isVersioned && $doPublish) {
+            $validation = $record->validatePublishRecursive();
+            if (!$validation->isValid()) {
+                throw ValidationException::create($validation);
+            }
         }
 
         if ($isVersioned && !$record->ObsoleteClassName) {
@@ -1800,6 +1804,17 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
         if ($doPublish) {
             if (!$record->hasExtension(RecursivePublishable::class)) {
                 throw new HTTPResponse_Exception(get_class($record) . ' record is not publishable.', 400);
+            }
+            // Check again now the form data is saved, as it may have added owned records
+            if ($record->hasExtension(Versioned::class)) {
+                $validation = $record->validatePublishRecursive();
+                if (!$validation->isValid()) {
+                    throw ValidationException::create(_t(
+                        __CLASS__ . '.SAVED_NOT_PUBLISHED',
+                        'Saved as a draft, but not published. {message}',
+                        ['message' => implode(' ', array_column($validation->getMessages(), 'message'))]
+                    ));
+                }
             }
             $record->publishRecursive();
             $message = _t(
@@ -2098,6 +2113,13 @@ class CMSMain extends LeftAndMain implements CurrentRecordIdentifier, Permission
                 ['version' => $data['Version']]
             );
         } else {
+            $validation = $record->validatePublishRecursive();
+            if (!$validation->isValid()) {
+                $message = implode(' ', array_column($validation->getMessages(), 'message'));
+                return $this->getResponse()
+                    ->setStatusCode(403)
+                    ->addHeader('X-Status', rawurlencode($message));
+            }
             $record->doRevertToLive();
             $record->publishRecursive();
             $message = _t(

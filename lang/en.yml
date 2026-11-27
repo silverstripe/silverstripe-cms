@@ -84,6 +84,7 @@ en:
     ROLLBACK: 'Roll back to this version'
     ROLLEDBACKPUBv2: 'Rolled back to published version.'
     ROLLEDBACKVERSIONv2: 'Rolled back to version #{version}.'
+    SAVED_NOT_PUBLISHED: 'Saved as a draft, but not published. {message}'
     SAVED: "Saved '{title}' successfully."
     SAVEDRAFT: Save
     SEARCHRESULTS: 'Search results'

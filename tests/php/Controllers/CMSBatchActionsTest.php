@@ -6,8 +6,11 @@ use SilverStripe\CMS\BatchActions\CMSBatchAction_Archive;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Publish;
 use SilverStripe\CMS\BatchActions\CMSBatchAction_Unpublish;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\CMS\Tests\Controllers\CMSBatchActionsTest\OwnerPage;
+use SilverStripe\CMS\Tests\Controllers\CMSBatchActionsTest\RestrictedOwnedRecord;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Security\Security;
 use SilverStripe\Versioned\Versioned;
 
 /**
@@ -16,6 +19,11 @@ use SilverStripe\Versioned\Versioned;
 class CMSBatchActionsTest extends SapphireTest
 {
     protected static $fixture_file = 'CMSBatchActionsTest.yml';
+
+    protected static $extra_dataobjects = [
+        OwnerPage::class,
+        RestrictedOwnedRecord::class,
+    ];
 
     protected function setUp(): void
     {
@@ -66,6 +74,27 @@ class CMSBatchActionsTest extends SapphireTest
         $this->assertContains($this->idFromFixture(SiteTree::class, 'modified'), $applicable);
     }
 
+
+    public function testBatchPublishCountsPageBlockedByOwnedRecordAsFailure(): void
+    {
+        $owned = RestrictedOwnedRecord::create(['Title' => 'Blocked']);
+        $owned->write();
+        $blockedPage = OwnerPage::create(['Title' => 'Blocked page', 'OwnedID' => $owned->ID]);
+        $blockedPage->write();
+        $plainPage = SiteTree::create(['Title' => 'Plain page']);
+        $plainPage->write();
+        $member = $this->createMemberWithPermission(['CMS_ACCESS_CMSMain', 'SITETREE_EDIT_ALL', 'SITETREE_PUBLISH_ALL']);
+        Security::setCurrentUser($member);
+        $action = new CMSBatchAction_Publish();
+        $ids = [$blockedPage->ID, $plainPage->ID];
+        $this->assertEqualsCanonicalizing($ids, $action->applicablePages($ids));
+        $pages = SiteTree::get()->filter(['ID' => $ids]);
+        $response = $action->run($pages);
+        $this->assertSame('Published 1 pages, 1 failures', $response->getStatusDescription());
+        $this->assertNull(Versioned::get_by_stage(OwnerPage::class, Versioned::LIVE)->byID($blockedPage->ID));
+        $this->assertNotNull(Versioned::get_by_stage(SiteTree::class, Versioned::LIVE)->byID($plainPage->ID));
+        $this->assertFalse($owned->isPublished());
+    }
 
     /**
      * Test which pages can be unpublished via batch actions
